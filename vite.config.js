@@ -10,5 +10,5 @@ export default defineConfig({
   server: {
     open: true,
   },
-  base: './',
+  base: '/Gate_QA/',
 });

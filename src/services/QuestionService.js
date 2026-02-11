@@ -11,11 +11,14 @@ export class QuestionService {
 
     // For GitHub Pages, BASE_URL might be '/Gate_QA/' or './'.
     // We want to ensure we fetch from the correct root.
+    // BASE_URL is now explicit in vite.config.js
     const baseUrl = import.meta.env.BASE_URL.endsWith('/')
       ? import.meta.env.BASE_URL
       : `${import.meta.env.BASE_URL}/`;
 
-    const dataUrl = new URL('questions-filtered.json', new URL(baseUrl, window.location.origin)).href;
+    // Simple concatenation is safer when BASE_URL is known to be correct (e.g. '/Gate_QA/')
+    const dataUrl = `${baseUrl}questions-filtered.json`;
+    console.log("Fetching:", dataUrl);
     const response = await fetch(dataUrl, { cache: "no-cache" });
 
     if (!response.ok) {
