@@ -32,22 +32,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
-    - run: tar -czvf build.tar.gz ./dist/
     
-    - name: Upload GitHub Pages artifact
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: actions/upload-pages-artifact@v1.0.8
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        # Artifact name
-        name: github-pages
-        # Path of the directory containing the static assets.
-        path: dist
-    
-    
-    - name: Deploy GitHub Pages site
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: actions/deploy-pages@v2.0.1
-      with:
-        # GitHub token
-        token: ${{ github.token }}
-        artifact_name: github-pages
+        folder: dist
+        branch: gh-pages
