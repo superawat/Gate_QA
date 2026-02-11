@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
+      contents: 'write'
       id-token: 'write'
       pages: "write"
     strategy:
@@ -39,5 +39,6 @@ jobs:
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: JamesIves/github-pages-deploy-action@v4
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         folder: dist
         branch: gh-pages
