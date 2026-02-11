@@ -1,25 +1,40 @@
 import { MathJaxContext } from "better-react-mathjax";
+
 import Header from "./components/Header/Header";
 import Question from "./components/Question/Question";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import FilterTags from "./components/FilterTags/FilterTags";
 import { QuestionService } from "./services/QuestionService";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [filterTags, setFilterTags] = useState([]);
   const [question, setQuestion] = useState({});
-  useEffect(() => {
-    QuestionService.init(() => {
+
+  const loadQuestions = useCallback(async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      await QuestionService.init();
       setQuestion(QuestionService.getRandomQuestion());
+    } catch (err) {
+      setError(err.message || "Unable to load questions.");
+    } finally {
       setLoading(false);
-    });
+    }
   }, []);
+
+  useEffect(() => {
+    loadQuestions();
+  }, [loadQuestions]);
+
   return (
     <MathJaxContext>
       <div className="flex flex-col min-h-screen justify-between">
-        <Header></Header>
+        <Header />
 
         {loading ? (
           <div className="flex items-center justify-center h-screen grow">
@@ -45,20 +60,34 @@ function App() {
             </svg>
             <p className="text-gray-900">Loading...</p>
           </div>
+        ) : error ? (
+          <div className="grow flex flex-col items-center justify-center px-4 text-center">
+            <p className="text-red-700 mb-4">{error}</p>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={loadQuestions}
+            >
+              Retry
+            </button>
+          </div>
         ) : (
-          <div className="mb-auto grow ">
-            <FilterTags tagsSelected={(tags) => {
-              console.log("here==");
-              setFilterTags(tags);
-              setQuestion(QuestionService.getRandomQuestion(tags));
-            }}></FilterTags>
-            <Question question={question} changeQuestion={() => {
-              setQuestion(QuestionService.getRandomQuestion(filterTags));
-            }}></Question>
+          <div className="mb-auto grow">
+            <FilterTags
+              tagsSelected={(tags) => {
+                setFilterTags(tags);
+                setQuestion(QuestionService.getRandomQuestion(tags));
+              }}
+            />
+            <Question
+              question={question}
+              changeQuestion={() => {
+                setQuestion(QuestionService.getRandomQuestion(filterTags));
+              }}
+            />
           </div>
         )}
 
-        <Footer></Footer>
+        <Footer />
       </div>
     </MathJaxContext>
   );

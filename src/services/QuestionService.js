@@ -2,55 +2,97 @@ export class QuestionService {
   static questions = [];
   static loaded = false;
   static count = new Map();
+  static tags = [];
 
-  static init(cb) {
-    if (this.loaded) return;
-    if (localStorage.getItem("questions")) {
-      this.questions = JSON.parse(localStorage.getItem("questions"));
-      this.loaded = true;
-      cb();
-    } else {
-      fetch("/gater-frontend/questions-filtered.json")
-        .then((data) => data.json())
-        .then((data) => {
-          this.questions = data;
-          localStorage.setItem("questions", JSON.stringify(data));
-          this.loaded = true;
-          cb();
-        });
+  static async init() {
+    if (this.loaded) {
+      return;
     }
+
+    // In development (Vite), BASE_URL is "/" or "./".
+    // In production (GitHub Pages), it might be "/Gate_QA/".
+    // We need to construct the path correctly.
+
+    let base = import.meta.env.BASE_URL;
+    if (!base || base === "./" || base === "/") {
+      base = "";
+    } else {
+      base = base.replace(/\/$/, ""); // Remove trailing slash if present
+    }
+
+    const dataUrl = `${base}/questions-filtered.json`;
+    console.log("Fetching questions from:", dataUrl); // Debug log
+    const response = await fetch(dataUrl, { cache: "no-cache" });
+
+    if (!response.ok) {
+      throw new Error(`Failed to load questions (${response.status}).`);
+    }
+
+    const data = await response.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error("Question bank is empty or invalid.");
+    }
+
+    this.questions = data;
+    this.loaded = true;
+    this.buildIndexes();
   }
 
-  static getRandomQuestion(tags) {
-    console.log(tags);
+  static buildIndexes() {
+    this.count = new Map();
+    const tagSet = new Set();
+
+    for (const question of this.questions) {
+      for (const tag of question.tags || []) {
+        tagSet.add(tag);
+        this.count.set(tag, (this.count.get(tag) || 0) + 1);
+      }
+    }
+
+    this.tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+  }
+
+  static getErrorQuestion(title = "No matching question for this filter.") {
+    return {
+      title,
+      question: "",
+      link: "",
+      tags: [],
+    };
+  }
+
+  static getRandomQuestion(tags = []) {
+    if (!this.questions.length) {
+      return this.getErrorQuestion("Questions are not loaded yet.");
+    }
+
     if (!tags || tags.length === 0) {
-      console.log("aaa");
       return this.questions[Math.floor(Math.random() * this.questions.length)];
     }
-    let year = new Set();
-    let tag = new Set();
 
-    for (let t of tags) {
+    const year = new Set();
+    const tag = new Set();
+
+    for (const t of tags) {
       if (t.startsWith("gate")) {
         year.add(t);
       } else {
         tag.add(t);
       }
     }
-    console.log(year);
-    console.log(tag);
 
-    let filtered = this.questions.filter((question) => {
+    const filtered = this.questions.filter((question) => {
       let valid = false;
-      for (let y of year) {
+      for (const y of year) {
         if (question.tags.includes(y)) {
           valid = true;
           break;
         }
       }
+
       if (!valid && year.size !== 0) return false;
 
-      for (let t of tag) {
+      for (const t of tag) {
         if (question.tags.includes(t)) return true;
       }
 
@@ -59,39 +101,18 @@ export class QuestionService {
       return false;
     });
 
-    console.log(filtered);
     if (filtered.length === 0) {
-      return {
-        title: "Error: no question with this filters.",
-        question: "",
-        link: "",
-        tags: [],
-      };
+      return this.getErrorQuestion();
     }
+
     return filtered[Math.floor(Math.random() * filtered.length)];
   }
 
   static getTags() {
-    let tags = new Set();
-    for (let question of this.questions) {
-      for (let tag of question.tags) {
-        tags.add(tag);
-      }
-    }
-
-    return Array.from(tags);
+    return this.tags;
   }
 
   static getCount(tag) {
-    if (this.count.has(tag)) return this.count.get(tag);
-    else {
-      let cnt = 0;
-      for (let question of this.questions) {
-        if (question.tags.includes(tag)) cnt++;
-      }
-
-      this.count.set(tag, cnt);
-      return cnt;
-    }
+    return this.count.get(tag) || 0;
   }
 }

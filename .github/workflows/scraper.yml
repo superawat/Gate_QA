@@ -1,0 +1,50 @@
+name: Automate Scraper
+
+on:
+  schedule:
+    - cron: '0 0 1 */4 *' # Run every 4 months (Jan, May, Sep)
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+
+      - name: Run Scraper
+        run: |
+          python scraper/scrape_gateoverflow.py
+
+      - name: Merge Questions
+        run: |
+          python scraper/merge_questions.py
+
+      - name: Check for Changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain public/questions-filtered.json) ]]; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update question bank"
+          title: "Update Question Bank"
+          body: "Automated update from scraper run on $(date +'%Y-%m-%d')"
+          branch: "update-questions-$(date +'%Y-%m-%d')"
+          delete-branch: true

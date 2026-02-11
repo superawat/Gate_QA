@@ -17,12 +17,33 @@ import json
 import os
 import shutil
 from datetime import datetime
+import jsonschema
 
 # File paths
-EXISTING_FILE = os.path.join(os.path.dirname(__file__), "..", "public", "questions-filtered.json")
-NEW_FILE = os.path.join(os.path.dirname(__file__), "new_questions.json")
+BASE_DIR = os.path.dirname(__file__)
+EXISTING_FILE = os.path.join(BASE_DIR, "..", "public", "questions-filtered.json")
+NEW_FILE = os.path.join(BASE_DIR, "new_questions.json")
+SCHEMA_FILE = os.path.join(BASE_DIR, "question_schema.json")
 BACKUP_SUFFIX = f".backup-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
 
+def load_schema():
+    if not os.path.exists(SCHEMA_FILE):
+        print(f"Warning: Schema file not found at {SCHEMA_FILE}. Skipping validation.")
+        return None
+    with open(SCHEMA_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+SCHEMA = load_schema()
+
+def validate_question(q):
+    if not SCHEMA:
+        return True
+    try:
+        jsonschema.validate(instance=q, schema=SCHEMA)
+        return True
+    except jsonschema.ValidationError as e:
+        # print(f"  [Skipping Invalid] {e.message[:100]}...") 
+        return False
 
 def main():
     # --- Load existing questions ---
@@ -50,6 +71,7 @@ def main():
     seen_links = set()
     
     deleted_tags_count = 0
+    skipping_invalid_count = 0
     
     print("\nCleaning and merging...")
     
@@ -60,6 +82,11 @@ def main():
         if link and link in seen_links:
             continue
             
+        # Validate Schema (for new merges or sanity check)
+        if not validate_question(q):
+            skipping_invalid_count += 1
+            continue
+
         # Clean
         cleaned_q = clean_question(q)
         if cleaned_q:
@@ -81,9 +108,9 @@ def main():
     print(f"DONE!")
     print(f"  Total unique questions: {len(unique_questions)}")
     print(f"  Removed Non-CSE/IT:     {deleted_tags_count}")
+    print(f"  Skipped Invalid/Bad:    {skipping_invalid_count}")
     print(f"  (Processed {len(all_questions)})")
-    print(f"\nIMPORTANT: Clear your browser's localStorage to see the new questions!")
-    print(f"  (Open DevTools → Application → Local Storage → Clear)")
+    print("\nFrontend now fetches the latest dataset on page load.")
 
 
 def clean_question(q):
@@ -201,7 +228,7 @@ def clean_question(q):
                  # We assume they are okay if they passed the forbidden check
                  # But usually gate tags have branch.
                  pass
-
+        
         cleaned_tags_pass_2.append(tag)
 
 
@@ -220,4 +247,3 @@ def clean_question(q):
 
 if __name__ == "__main__":
     main()
-
