@@ -1,11 +1,12 @@
 import { MathJaxContext } from "better-react-mathjax";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import Header from "./components/Header/Header";
 import Question from "./components/Question/Question";
 import Footer from "./components/Footer/Footer";
 import FilterModal from "./components/Filters/FilterModal";
 import ActiveFilterChips from "./components/Filters/ActiveFilterChips";
+import CalculatorWidget from "./components/Calculator/CalculatorWidget";
 import { FilterProvider, useFilters } from "./contexts/FilterContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
@@ -168,6 +169,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const calculatorButtonRef = useRef(null);
 
   const loadQuestions = useCallback(async () => {
     setLoading(true);
@@ -188,10 +191,41 @@ function App() {
     loadQuestions();
   }, [loadQuestions]);
 
+  const toggleCalculator = useCallback(() => {
+    setIsCalculatorOpen((previous) => !previous);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setIsCalculatorOpen((previous) => !previous);
+      }
+      if (event.key === "Escape") {
+        setIsCalculatorOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <MathJaxContext>
       <div className="flex flex-col h-screen max-h-screen bg-gray-50">
-        <Header onOpenFilters={() => setIsMobileFilterOpen(true)} />
+        <Header
+          onOpenFilters={() => setIsMobileFilterOpen(true)}
+          onToggleCalculator={toggleCalculator}
+          isCalculatorOpen={isCalculatorOpen}
+          calculatorButtonRef={calculatorButtonRef}
+        />
+        <CalculatorWidget
+          isOpen={isCalculatorOpen}
+          onClose={() => setIsCalculatorOpen(false)}
+          anchorRef={calculatorButtonRef}
+        />
         <FilterProvider>
           <GateQAContent
             loading={loading}
@@ -202,6 +236,7 @@ function App() {
           />
         </FilterProvider>
         <Footer />
+
       </div>
     </MathJaxContext>
   );

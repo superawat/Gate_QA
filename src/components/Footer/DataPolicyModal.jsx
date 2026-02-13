@@ -9,14 +9,14 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+                className="absolute inset-0 bg-black/20 transition-opacity"
                 onClick={onClose}
                 aria-hidden="true"
             />
 
-            {/* Modal Content */}
+            {/* Modal Content - Aggressive Glassmorphism */}
             <div
-                className="relative bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col"
+                className="relative bg-white/20 dark:bg-gray-900/40 backdrop-blur-2xl border border-white/30 dark:border-white/10 rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] w-full max-w-2xl max-h-[90vh] flex flex-col"
                 role="dialog"
                 aria-labelledby="modal-title"
                 aria-modal="true"
@@ -79,7 +79,7 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
 
                     <section className="pt-4 border-t dark:border-gray-700">
                         <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                            This application is open-source and client-side only. No personal data is ever sent to our servers.
+                            This application is open-source and client-side only. No personal data is ever sent to any servers.
                         </p>
                     </section>
 

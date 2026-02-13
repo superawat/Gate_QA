@@ -34,6 +34,8 @@ jobs:
     - run: npm run build
     - name: Verify nojekyll marker
       run: test -f dist/.nojekyll
+    - name: Verify calculator bundle
+      run: test -f dist/calculator/calculator.html
     
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'

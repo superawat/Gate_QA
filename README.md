@@ -35,6 +35,14 @@ npm start
 npm run build
 ```
 
+## Calculator Assets
+
+- Source calculator files are stored in `calculator/` at repo root.
+- `npm start` syncs them to `public/calculator/` for local dev serving.
+- `npm run build` syncs them into `dist/calculator/` for GitHub Pages deployment.
+- Deployed calculator URL:
+  `https://superawat.github.io/Gate_QA/calculator/calculator.html`
+
 ## Offline Answer Extraction Pipeline (OCR)
 
 This repo includes a local-only OCR pipeline that extracts answer keys from scanned PDFs and generates versioned static JSON.

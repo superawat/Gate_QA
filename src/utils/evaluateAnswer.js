@@ -47,8 +47,17 @@ export function evaluateAnswer(record, userInput) {
     if (!Number.isFinite(submitted)) {
       return { status: "invalid_input", correct: false };
     }
-    const expected = Number(record.answer);
     const tolerance = Number(record.tolerance?.abs ?? 0);
+
+    if (Array.isArray(record.answer)) {
+      const correct = record.answer.some((ans) => {
+        const expected = Number(ans);
+        return Math.abs(submitted - expected) <= tolerance;
+      });
+      return { status: "evaluated", correct };
+    }
+
+    const expected = Number(record.answer);
     return {
       status: "evaluated",
       correct: Math.abs(submitted - expected) <= tolerance,
