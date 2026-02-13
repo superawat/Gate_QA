@@ -12,7 +12,7 @@ const Header = ({
       <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="shrink-0 transition-opacity hover:opacity-80"
             aria-label="Go to home page"
           >
