@@ -1,214 +1,158 @@
-## GATE_QA
+# Gate_QA 🚀
 
-Random GATE CSE question practice app (React frontend + Python scraper pipeline).
+**Gate_QA** is a specialized practice platform for GATE Computer Science & Information Technology (CS/IT) aspirants. It provides a clean, focused, and offline-first interface for solving previous year questions (PYQs) with built-in evaluation and support tools.
 
-## Project Structure
+[![Live Site](https://img.shields.io/badge/Live-Site-brightgreen)](https://superawat.github.io/Gate_QA/)
 
-- `src/`: Core React app code (components, services, utilities).
-- `scripts/`: Automation scripts.
-- `scripts/answers/`: OCR, parsing, mapping, validation, and answer database builders.
-- `scripts/deployment/`: Build/deploy helpers (for example `ensure-nojekyll.mjs`).
-- `scraper/`: Scrapy/Python data acquisition pipeline.
-- `data/`: Versioned static datasets and answer metadata.
-- `artifacts/`: Intermediate processing outputs and review reports.
-- `tests/`: Pytest suites for answer-processing logic.
-- `public/`: Static frontend assets and published JSON bundles.
-- `.github/workflows/`: CI/build/deploy workflows.
+---
 
-## Local Development
+## 📖 Table of Contents
+- [User Guide (For Students)](#-user-guide-for-students)
+- [Developer Quickstart](#-developer-quickstart)
+- [How it Works (Architecture)](#-how-it-works-architecture)
+- [Data & Pipeline](#-data--pipeline)
+- [FAQ & Troubleshooting](#-faq--troubleshooting)
+- [Performance & Security](#-performance--security)
+- [License & Attribution](#-license--attribution)
 
-1. Install frontend dependencies:
+---
 
+## 🖼️ Screenshots
+*To be added - placeholders indicate suggested captures*
+
+| Main Interface | Filter Panel |
+| :---: | :---: |
+| ![Home Interface](docs/images/home-desktop.png) | ![Filters Sidebar](docs/images/filters-sidebar.png) |
+| *Question practice area* | *Subject & Year filters* |
+
+| Calculator Widget | Dark Mode |
+| :---: | :---: |
+| ![Calculator Widget](docs/images/calculator-widget.png) | ![Dark theme variant](docs/images/dark-mode.png) |
+| *TCS Scientific Calculator* | *Eye-saver theme* |
+
+---
+
+## 🎓 User Guide (For Students)
+
+### In Simple Terms
+Gate_QA is like a digital question bank that you can use on your phone or computer. 
+- **Browse**: Find questions by subject (like Algorithms) or year.
+- **Solve**: Try the Multiple Choice (MCQ), Multiple Select (MSQ), or Numerical (NAT) questions.
+- **Calculator**: Use the built-in virtual calculator, which is exactly like the one provided in the actual GATE exam.
+- **Offline Proof**: Once the site loads, you can solve questions even if your internet is slow, as everything is processed on your device.
+
+### Key Features
+- ✅ **Authentic UI**: Modeled after modern practice platforms.
+- ✅ **TCS Calculator**: Identical to the GATE exam interface.
+- ✅ **Progress Tracking**: Your bookmarks and solved status are saved in your browser.
+- ✅ **Rich Content**: Supports mathematical formulas and code snippets (LaTeX rendering).
+
+---
+
+## 🛠️ Developer Quickstart
+
+### Technical Details
+Gate_QA is a **monorepo** consisting of a **React + Vite** frontend and a **Python** data pipeline. It is intentionally designed as a **serverless static site**, optimized for deployment on the GitHub Pages free tier.
+
+#### 1. Setup Environment
 ```bash
+# Clone the repo
+git clone https://github.com/superawat/Gate_QA.git
+cd Gate_QA
+
+# Install Node dependencies
 npm install
-```
 
-2. Start app:
-
-```bash
-npm start
-```
-
-3. Build production bundle:
-
-```bash
-npm run build
-```
-
-## Calculator Assets
-
-- Source calculator files are stored in `calculator/` at repo root.
-- `npm start` syncs them to `public/calculator/` for local dev serving.
-- `npm run build` syncs them into `dist/calculator/` for GitHub Pages deployment.
-- Deployed calculator URL:
-  `https://superawat.github.io/Gate_QA/calculator/calculator.html`
-
-## Offline Answer Extraction Pipeline (OCR)
-
-This repo includes a local-only OCR pipeline that extracts answer keys from scanned PDFs and generates versioned static JSON.
-
-### Setup
-
-```bash
+# Setup Python environment (for data pipeline)
 python -m venv .venv
 # Windows:
 .venv\Scripts\activate
 # macOS/Linux:
 source .venv/bin/activate
-
 pip install -r requirements.txt
 ```
 
-Preferred OCR engine:
-
+#### 2. Local Development
 ```bash
-pip install paddleocr
+# Start the Vite dev server
+npm start
 ```
+*Note: `npm start` automatically syncs calculator assets from `calculator/` to `public/calculator/`.*
 
-Optional fallback OCR path:
-
+#### 3. Build & Deploy
 ```bash
-pip install pytesseract pillow
-```
-
-Install Tesseract OCR binary locally if you use `--ocr-engine tesseract` (default in this repo on Windows).
-
-### Run one-command build
-
-```bash
-python scripts/answers/build_answers_db.py \
-  --vol1 c:/Users/himanshu/Desktop/PYQs/volume1.pdf \
-  --vol2 c:/Users/himanshu/Desktop/PYQs/volume2.pdf \
-  --subject-map data/subject_map.json \
-  --merge-questions-with-answers
-```
-
-Useful options:
-
-- `--ocr-engine tesseract|paddle`
-- `--normalization-profile data/answers/ocr_profile_tesseract.json`
-- `--questions public/questions-filtered.json`
-- `--dpi 400 --crop-top 0.05 --crop-bottom 0.05 --crop-left 0.03 --crop-right 0.03`
-- `--ocr-preprocess-mode threshold --ocr-threshold 165 --ocr-denoise-radius 3 --ocr-scale 1.3`
-
-### Generated outputs
-
-- `data/answers/answers_master_v1.json`
-- `data/answers/answers_master_v1.csv`
-- `data/answers/answers_by_question_uid_v1.json`
-- `data/answers/answer_to_question_map_v1.json`
-- `data/answers/manual_answers_patch_v1.json` (manual last-mile overrides)
-- `artifacts/review/suspicious_lines.csv`
-- `artifacts/review/id_mapping_unresolved.csv`
-- `artifacts/review/questions_missing_answers.csv`
-- `artifacts/review/error_report.json`
-- `artifacts/review/coverage_report.json`
-- `artifacts/review/validation_report.json`
-- `public/questions-filtered-with-ids.json`
-- `public/questions-with-answers.json` (when `--merge-questions-with-answers` is passed)
-- `public/data/answers/answers_master_v1.json` (frontend fetch target copy)
-- `public/data/answers/answers_by_question_uid_v1.json` (frontend join table)
-
-Frontend usage:
-
-- `QuestionService` ensures every question has a deterministic `question_uid`.
-- `AnswerService` loads `public/data/answers/answers_by_question_uid_v1.json` first, then falls back to `answers_master_v1.json` (URLs are built with `import.meta.env.BASE_URL` for GitHub Pages path safety).
-- `AnswerPanel` evaluates MCQ/MSQ/NAT client-side and stores progress/bookmarks in localStorage.
-
-### Update answers workflow
-
-1. Update `data/subject_map.json` if answer-key pages moved.
-2. Run `python scripts/answers/build_answers_db.py ...`.
-3. Review `artifacts/review/suspicious_lines.csv`.
-4. Review `artifacts/review/id_mapping_unresolved.csv`.
-5. Review `artifacts/review/questions_missing_answers.csv`.
-6. Add mapping fixes in `data/question_id_overrides.json` if needed.
-7. Add stubborn final fixes in `data/answers/manual_answers_patch_v1.json` if needed.
-8. Re-run until validation passes.
-9. Commit updated JSON artifacts.
-
-Override file supports either format:
-
-- `uid_to_question_id` (numeric GateOverflow IDs, auto-converted to `go:<id>`)
-- `uid_to_question_uid` (direct `go:<id>` / `local:<hash>`)
-
-If unresolved rows contain `question_id_hint` values that are not present in `public/questions-filtered.json`, those cannot be auto-mapped via overrides until the question dataset includes those IDs or you provide explicit `uid_to_question_uid` targets.
-
-Manual patch format (`data/answers/manual_answers_patch_v1.json`):
-
-- Keyed by `question_uid`
-- Supports:
-  - `{"type":"MCQ","answer":"A"}`
-  - `{"type":"MSQ","answer":["A","C"]}`
-  - `{"type":"NAT","value":2.32,"tolerance":{"abs":0.01}}`
-
-### Manual Resolution System
-
-For questions that are subjective, ambiguous, or need non-standard answers, use `data/answers/manual_resolutions_v1.json`. This file is merged with highest priority.
-
-**workflow:**
-1. Generate missing report:
-   ```bash
-   python scripts/answers/generate_missing_report.py \
-     --questions public/questions-filtered-with-ids.json \
-     --answers data/answers/answers_by_question_uid_v1.json \
-     --out artifacts/review/manual_review_v1.csv
-   ```
-2. Edit `artifacts/review/manual_review_v1.csv` to add `resolution_type` (`SUBJECTIVE`, `AMBIGUOUS`, `MCQ`, `MSQ`, `NAT`) and `value`.
-3. Apply resolutions:
-   ```bash
-   python scripts/answers/apply_resolutions.py \
-     --csv artifacts/review/manual_review_v1.csv \
-     --json data/answers/manual_resolutions_v1.json
-   ```
-4. Re-run `scripts/answers/build_answers_db.py`.
-
-### Validation gates
-
-Validation fails when configured thresholds are breached in `data/answers/validation_config.json`, including:
-
-- parse rate (`min_parse_rate`)
-- suspicious ratio (`max_suspicious_ratio`)
-- mapping coverage/conflicts (`min_mapping_coverage_ratio`, `max_mapping_conflicts`)
-- unresolved in-dataset mappings (`max_unresolved_mappings`)
-- missing answers report threshold (`max_questions_missing_answers`)
-- per-subject coverage mismatch (`max_coverage_mismatch_ratio`)
-
-`min_mapping_coverage_ratio` is evaluated using `coverage_ratio_in_dataset` from `data/answers/answer_to_question_map_v1.json` (rows whose hint IDs are absent from `questions-filtered.json` are tracked separately as `question_id_not_in_questions_dataset`).
-
-To enable strict per-subject coverage validation, populate `data/answers/subject_question_counts.json` with expected counts for each `v1`/`v2` subject code.
-
-## How to Update Question Bank
-
-### Option A: Automated (Recommended)
-This repo includes a GitHub Action `scraper.yml` that runs **automatically every 4 months**.
-To trigger it manually:
-1. Go to **Actions** tab in GitHub.
-2. Select **Automate Scraper** workflow.
-3. Click **Run workflow**.
-4. Wait for it to finish -> It will create a Pull Request with new questions.
-5. Merge the PR.
-
-## Build Scripts
-
-All answer-processing scripts are now modularized in `scripts/answers/`.
-
-### 1. Offline Answer Extraction Pipeline
-**Goal:** Extract answer keys from PDFs, clean them, and link them to Question IDs.
-
-```powershell
-# Run the full end-to-end pipeline (Windows PowerShell)
-.venv\Scripts\python.exe scripts/answers/build_answers_db.py `
-  --vol1 "path/to/volume1.pdf" `
-  --vol2 "path/to/volume2.pdf" `
-  --subject-map data/subject_map.json `
-  --ocr-engine tesseract `
-  --merge-questions-with-answers
-```
-
-### 2. Frontend Build
-```bash
+# Build for production
 npm run build
-# The build script automatically runs ensuring .nojekyll exists
 ```
+This generates a `dist/` folder ready for static hosting. The build script ensures a `.nojekyll` file is created to support GitHub Pages pathing logic.
 
+---
+
+## 🏗️ How it Works (Architecture)
+
+### "In Simple Terms"
+The app is built like a three-step factory:
+1. **The Scraper**: Goes out and collects questions from sources.
+2. **The Pipeline**: Cleans the text, extracts answers from PDF keys using AI/OCR, and packages everything into small files.
+3. **The Gallery (Frontend)**: A React app that displays these files beautifully on your screen.
+
+### "Technical Details"
+- **Frontend**: React 18, Vite, Tailwind CSS (for styling), and MathJax/KaTeX (for math).
+- **Hosting**: GitHub Pages (Static).
+- **No Backend**: All logic (filtering, searching, evaluation) happens client-side.
+- **Storage**: Questions and answers are bundled into JSON files loaded via `fetch`.
+- **States**: `localStorage` is used for persistent user data (bookmarks, attempts).
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for full details.
+
+---
+
+## ⚙️ Data & Pipeline
+
+The system processes data through several stages before it reaches the frontend:
+
+1. **Scrape**: Python/Scrapy extracts questions from online databases.
+2. **OCR Answers**: Extracts answer keys from scanned PDFs using `PaddleOCR` or `Tesseract`.
+3. **Validate**: Ensures every question has a valid answer and type.
+4. **Bundle**: Merges everything into `public/questions-with-answers.json`.
+
+Detailed logs and intermediate reports are stored in `artifacts/review/`.
+
+See [docs/DATA_PIPELINE.md](docs/DATA_PIPELINE.md) for data update workflows.
+
+---
+
+## ❓ FAQ & Troubleshooting
+
+### 404 Errors on Sub-paths
+Since this is a Single Page Application (SPA) on GitHub Pages, refreshing on a sub-route might cause a 404. We use a `.nojekyll` file and specific base-path routing in `vite.config.js` to mitigate this.
+
+### Why is the OCR failing?
+OCR depends on the quality of PDF scans. If parsing is poor:
+1. Increase `--dpi` in the build script.
+2. Update `data/answers/manual_answers_patch_v1.json` for persistent fixes.
+
+---
+
+## 🔒 Performance & Security
+
+- **Performance**: We use memoization and client-side indexing to handle datasets with 1000+ questions smoothly on mobile.
+- **Security**: All scraped HTML is sanitized before rendering to prevent XSS. We do not use any external APIs or tracking cookies.
+
+---
+
+## 📄 License & Attribution
+
+## License
+
+This project is open source. See [LICENSE](LICENSE) file for details.
+
+For attribution requirements related to GATE Overflow content, 
+see [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md).
+
+Data attribution: Questions scraped from GATE Overflow require proper attribution.
+Code license: Up to you to specify in a separate LICENSE file.
+
+---
+
+*Built with ❤️ for GATE Aspirants.*
