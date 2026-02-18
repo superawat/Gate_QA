@@ -45,8 +45,20 @@ artifacts/parsed/*
 *.summary.json
 
 # documentation
-# docs/ is now tracked
+# docs/ is tracked by default
 
 # analysis artifacts
 *.csv
+analysis_output.txt
+audit_questions.js
+target_question.json
+
+# generated json reports
+*_report.json
+*_summary.json
+id_mapping_unresolved.json
+suspicious_posts.json
+
+# generated calculator assets (source is in /calculator)
+/public/calculator/
 
