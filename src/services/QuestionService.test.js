@@ -7,6 +7,7 @@ describe("QuestionService", () => {
     QuestionService.count = new Map();
     QuestionService.tags = [];
     QuestionService.sourceUrl = "";
+    QuestionService.SUBJECT_ALIAS_CACHE = new Map();
   });
 
   test("builds tag indexes correctly", () => {
@@ -37,14 +38,14 @@ describe("QuestionService", () => {
     ];
     QuestionService.buildIndexes();
 
-    jest.spyOn(global.Math, "random").mockReturnValue(0);
+    vi.spyOn(global.Math, "random").mockReturnValue(0);
     const result = QuestionService.getRandomQuestion([
       "gatecse-2024-set1",
       "graphs",
     ]);
 
     expect(result.title).toBe("Q1");
-    global.Math.random.mockRestore();
+    vi.restoreAllMocks();
   });
 
   test("returns an error object when filter has no matches", () => {
@@ -65,5 +66,40 @@ describe("QuestionService", () => {
       link: "https://gateoverflow.in/371497/another-link",
     });
     expect(uid).toBe("go:497");
+  });
+
+  test("prefers first explicit subject tag when multiple explicit subjects exist", () => {
+    const subject = QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2025 | Set 2 | Question: 20",
+      tags: [
+        "gatecse-2025-set2",
+        "theory-of-computation",
+        "closure-property",
+        "computer-networks",
+        "routing-protocols",
+        "digital-logic",
+        "circuit-output",
+      ],
+    });
+
+    expect(subject).toBe("Theory of Computation");
+  });
+
+  test("classifies GA-n titles as General Aptitude", () => {
+    const subject = QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2017 Set 2 | Question: GA-8",
+      tags: ["gatecse-2017-set2", "number-representation"],
+    });
+
+    expect(subject).toBe("General Aptitude");
+  });
+
+  test("recognizes co-and-architecture as explicit CO & Architecture tag", () => {
+    const subject = QuestionService.resolveCanonicalSubject({
+      title: "Sample",
+      tags: ["gatecse-2023", "co-and-architecture", "memory-interfacing"],
+    });
+
+    expect(subject).toBe("CO & Architecture");
   });
 });

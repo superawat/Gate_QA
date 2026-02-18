@@ -47,7 +47,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                     {filteredQuestions.length} / {totalQuestions} results
                 </span>
                 <div className="flex items-center gap-2">
-                    {(filters.selectedYears.length > 0 || filters.selectedTopics.length > 0 || filters.selectedSubtopics.length > 0 || selectedTypes.length < QUESTION_TYPES.length || filters.hideSolved || filters.showOnlySolved || filters.showOnlyBookmarked) && (
+                    {(filters.selectedYearSets.length > 0 || filters.selectedSubjects.length > 0 || filters.selectedSubtopics.length > 0 || selectedTypes.length < QUESTION_TYPES.length || filters.hideSolved || filters.showOnlySolved || filters.showOnlyBookmarked) && (
                         <button
                             onClick={clearFilters}
                             className="text-xs font-bold text-blue-600 hover:text-blue-800 uppercase tracking-wide"

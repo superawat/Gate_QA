@@ -1,30 +1,41 @@
 import React from 'react';
 import { useFilters } from '../../contexts/FilterContext';
 import { FaTimes } from 'react-icons/fa';
+import { QuestionService } from '../../services/QuestionService';
 
 const ActiveFilterChips = () => {
     const { filters, updateFilters, clearFilters, structuredTags } = useFilters();
     const {
-        selectedYears,
-        selectedTopics,
+        selectedYearSets,
+        selectedSubjects,
         selectedSubtopics,
         yearRange,
         hideSolved,
         showOnlySolved,
         showOnlyBookmarked
     } = filters;
-    const { minYear, maxYear } = structuredTags;
+    const { minYear, maxYear, subjects = [], structuredSubtopics = {} } = structuredTags;
 
-    const removeYear = (year) => {
-        updateFilters({ selectedYears: selectedYears.filter(y => y !== year) });
+    const subjectLabelBySlug = new Map(subjects.map(subject => [subject.slug, subject.label]));
+    const subtopicLabelBySlug = new Map();
+    Object.keys(structuredSubtopics || {}).forEach((subjectSlug) => {
+        (structuredSubtopics[subjectSlug] || []).forEach((subtopic) => {
+            if (!subtopicLabelBySlug.has(subtopic.slug)) {
+                subtopicLabelBySlug.set(subtopic.slug, subtopic.label);
+            }
+        });
+    });
+
+    const removeYear = (yearSetKey) => {
+        updateFilters({ selectedYearSets: selectedYearSets.filter(y => y !== yearSetKey) });
     };
 
-    const removeTopic = (topic) => {
-        updateFilters({ selectedTopics: selectedTopics.filter(t => t !== topic) });
+    const removeSubject = (subjectSlug) => {
+        updateFilters({ selectedSubjects: selectedSubjects.filter(subject => subject !== subjectSlug) });
     };
 
-    const removeSubtopic = (sub) => {
-        updateFilters({ selectedSubtopics: selectedSubtopics.filter(s => s !== sub) });
+    const removeSubtopic = (subtopicSlug) => {
+        updateFilters({ selectedSubtopics: selectedSubtopics.filter(s => s !== subtopicSlug) });
     };
 
     const resetRange = () => {
@@ -44,33 +55,22 @@ const ActiveFilterChips = () => {
     };
 
     const isRangeActive = yearRange && (yearRange[0] !== minYear || yearRange[1] !== maxYear);
-    const hasActiveFilters = selectedYears.length > 0
-        || selectedTopics.length > 0
+    const hasActiveFilters = selectedYearSets.length > 0
+        || selectedSubjects.length > 0
         || selectedSubtopics.length > 0
         || isRangeActive
         || hideSolved
         || showOnlySolved
         || showOnlyBookmarked;
 
-    const formatYear = (tag) => {
-        // Remove non-digits first
-        const numericPart = tag.replace(/[^0-9]/g, '');
-        if (numericPart.length === 5) {
-            const year = numericPart.substring(0, 4);
-            const setNum = numericPart.substring(4);
-            return `${year} Set ${setNum}`;
-        }
-        return numericPart || tag;
-    };
-
     if (!hasActiveFilters) return null;
 
     return (
         <div className="flex flex-wrap gap-2 mb-4 animate-fadeIn">
-            {selectedYears.map(year => (
-                <span key={year} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    {formatYear(year)}
-                    <button onClick={() => removeYear(year)} className="ml-1.5 inline-flex text-blue-500 hover:text-blue-600 focus:outline-none">
+            {selectedYearSets.map((yearSetKey) => (
+                <span key={yearSetKey} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    {QuestionService.formatYearSetLabel(yearSetKey)}
+                    <button onClick={() => removeYear(yearSetKey)} className="ml-1.5 inline-flex text-blue-500 hover:text-blue-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -85,19 +85,19 @@ const ActiveFilterChips = () => {
                 </span>
             )}
 
-            {selectedTopics.map(topic => (
-                <span key={topic} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 capitalize">
-                    {topic.replace(/-/g, ' ')}
-                    <button onClick={() => removeTopic(topic)} className="ml-1.5 inline-flex text-green-500 hover:text-green-600 focus:outline-none">
+            {selectedSubjects.map((subjectSlug) => (
+                <span key={subjectSlug} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 capitalize">
+                    {subjectLabelBySlug.get(subjectSlug) || subjectSlug}
+                    <button onClick={() => removeSubject(subjectSlug)} className="ml-1.5 inline-flex text-green-500 hover:text-green-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
             ))}
 
-            {selectedSubtopics.map(sub => (
-                <span key={sub} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                    {sub.replace(/-/g, ' ')}
-                    <button onClick={() => removeSubtopic(sub)} className="ml-1.5 inline-flex text-yellow-500 hover:text-yellow-600 focus:outline-none">
+            {selectedSubtopics.map((subtopicSlug) => (
+                <span key={subtopicSlug} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                    {subtopicLabelBySlug.get(subtopicSlug) || subtopicSlug}
+                    <button onClick={() => removeSubtopic(subtopicSlug)} className="ml-1.5 inline-flex text-yellow-500 hover:text-yellow-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>

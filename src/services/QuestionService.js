@@ -1,4 +1,4 @@
-import { getExamUidFromQuestion } from "../utils/examUid";
+import { getExamUidFromQuestion } from "../utils/examUid.js";
 
 export class QuestionService {
   static questions = [];
@@ -6,6 +6,30 @@ export class QuestionService {
   static count = new Map();
   static tags = [];
   static sourceUrl = "";
+
+  static SUBJECT_ENUM = [
+    { slug: "algorithms", label: "Algorithms" },
+    { slug: "coa", label: "CO & Architecture" },
+    { slug: "compiler", label: "Compiler Design" },
+    { slug: "cn", label: "Computer Networks" },
+    { slug: "dbms", label: "Databases" },
+    { slug: "digital-logic", label: "Digital Logic" },
+    { slug: "discrete-math", label: "Discrete Mathematics" },
+    { slug: "engg-math", label: "Engineering Mathematics" },
+    { slug: "ga", label: "General Aptitude" },
+    { slug: "os", label: "Operating System" },
+    { slug: "prog-ds", label: "Programming and DS" },
+    { slug: "prog-c", label: "Programming in C" },
+    { slug: "toc", label: "Theory of Computation" },
+  ];
+
+  static SUBJECT_LABEL_TO_SLUG = new Map();
+
+  static SUBJECT_SLUG_TO_LABEL = new Map();
+
+  static YEAR_SET_TAG_PATTERN = /gate(?:cse|it)?-?(\d{4})(?:-set(\d+))?/i;
+  static TITLE_YEAR_SET_PATTERN = /GATE\s+(?:CSE|IT)\s+(\d{4})(?:\s*[| ]\s*Set\s*(\d+))?/i;
+  static LINK_YEAR_SET_PATTERN = /gate-(?:cse|it)-(\d{4})(?:-set-(\d+))?/i;
 
   static extractGateOverflowId(link = "") {
     const raw = String(link || "").trim();
@@ -66,6 +90,402 @@ export class QuestionService {
     return false;
   }
 
+  // Priority order for conflict resolution when multiple subjects are inferred
+  static SUBJECT_PRIORITY = [
+    "Digital Logic", "Computer Networks", "Operating System", "Databases", "Compiler Design", "CO & Architecture",
+    "Algorithms", "Programming and DS", "Theory of Computation", "Programming in C",
+    "Discrete Mathematics", "Engineering Mathematics", "General Aptitude"
+  ];
+
+  // Tag aliases that should map to a canonical subject label.
+  static SUBJECT_ALIAS_OVERRIDES = {
+    Algorithms: ["algorithms"],
+    "CO & Architecture": [
+      "co-and-architecture",
+      "computer-organization-and-architecture",
+      "computer-architecture",
+      "coa"
+    ],
+    "Compiler Design": ["compiler-design"],
+    "Computer Networks": ["computer-networks", "cn"],
+    Databases: ["databases", "dbms", "database-management-systems"],
+    "Digital Logic": ["digital-logic"],
+    "Discrete Mathematics": ["discrete-mathematics", "discrete-math"],
+    "Engineering Mathematics": ["engineering-mathematics", "engg-math"],
+    "General Aptitude": ["general-aptitude", "ga"],
+    "Operating System": ["operating-system", "os"],
+    "Programming and DS": ["programming-and-ds", "programming-ds", "prog-ds"],
+    "Programming in C": ["programming-in-c", "c-programming", "prog-c"],
+    "Theory of Computation": ["theory-of-computation", "toc"]
+  };
+
+  static SUBJECT_ALIAS_CACHE = new Map();
+
+  static getNormalizedSubjectAliases(subject) {
+    if (this.SUBJECT_ALIAS_CACHE.has(subject)) {
+      return this.SUBJECT_ALIAS_CACHE.get(subject);
+    }
+
+    const aliases = new Set();
+    const addAlias = (value) => {
+      const raw = String(value || "").trim();
+      if (!raw) return;
+      aliases.add(this.normalizeString(raw));
+      aliases.add(this.normalizeString(raw.replace(/-/g, " ")));
+    };
+
+    addAlias(subject);
+    addAlias(subject.replace(/&/g, "and"));
+
+    const slug = subject
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    addAlias(slug);
+
+    const customAliases = this.SUBJECT_ALIAS_OVERRIDES[subject] || [];
+    customAliases.forEach(addAlias);
+
+    const normalizedAliases = Array.from(aliases).filter(Boolean);
+    this.SUBJECT_ALIAS_CACHE.set(subject, normalizedAliases);
+    return normalizedAliases;
+  }
+
+  static getSubjectPriorityIndex(subject) {
+    const idx = this.SUBJECT_PRIORITY.indexOf(subject);
+    return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
+  }
+
+  static ensureSubjectMaps() {
+    if (this.SUBJECT_LABEL_TO_SLUG.size === this.SUBJECT_ENUM.length) {
+      return;
+    }
+    this.SUBJECT_LABEL_TO_SLUG = new Map(
+      this.SUBJECT_ENUM.map((item) => [item.label, item.slug])
+    );
+    this.SUBJECT_SLUG_TO_LABEL = new Map(
+      this.SUBJECT_ENUM.map((item) => [item.slug, item.label])
+    );
+  }
+
+  static slugifyToken(value = "") {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  static getSubjectSlugByLabel(label = "") {
+    this.ensureSubjectMaps();
+    return this.SUBJECT_LABEL_TO_SLUG.get(String(label || "").trim()) || "unknown";
+  }
+
+  static getSubjectLabelBySlug(slug = "") {
+    this.ensureSubjectMaps();
+    return this.SUBJECT_SLUG_TO_LABEL.get(this.slugifyToken(slug)) || "Unknown";
+  }
+
+  static normalizeSubjectSlug(value = "") {
+    this.ensureSubjectMaps();
+    const raw = String(value || "").trim();
+    if (!raw) return null;
+    const normalized = this.slugifyToken(raw);
+    if (this.SUBJECT_SLUG_TO_LABEL.has(normalized)) {
+      return normalized;
+    }
+    if (this.SUBJECT_LABEL_TO_SLUG.has(raw)) return this.SUBJECT_LABEL_TO_SLUG.get(raw);
+
+    const normalizedRaw = this.normalizeString(raw);
+    for (const subject of this.SUBJECT_ENUM) {
+      if (this.normalizeString(subject.label) === normalizedRaw) {
+        return subject.slug;
+      }
+      if (this.slugifyToken(subject.label) === normalized) {
+        return subject.slug;
+      }
+      const aliases = this.getNormalizedSubjectAliases(subject.label);
+      if (aliases.includes(normalizedRaw)) {
+        return subject.slug;
+      }
+    }
+    return null;
+  }
+
+  static normalizeTypeToken(rawType = "") {
+    const value = String(rawType || "").trim().toLowerCase();
+    if (value === "mcq") return "mcq";
+    if (value === "msq") return "msq";
+    if (value === "nat") return "nat";
+    return "unknown";
+  }
+
+  static buildYearSetKey(year, setNo) {
+    const yearNum = Number.parseInt(String(year || ""), 10);
+    if (!Number.isFinite(yearNum) || yearNum <= 0) {
+      return null;
+    }
+    const parsedSet = Number.parseInt(String(setNo ?? ""), 10);
+    const normalizedSet = Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : 0;
+    return `${yearNum}-s${normalizedSet}`;
+  }
+
+  static parseYearSetKey(rawValue = "") {
+    const value = String(rawValue || "").trim().toLowerCase();
+    const match = value.match(/^(\d{4})-s(\d+)$/);
+    if (!match) return null;
+    const year = Number.parseInt(match[1], 10);
+    const setNum = Number.parseInt(match[2], 10);
+    if (!Number.isFinite(year)) return null;
+    return {
+      year,
+      set: Number.isFinite(setNum) && setNum > 0 ? setNum : null,
+      key: `${year}-s${Number.isFinite(setNum) && setNum > 0 ? setNum : 0}`,
+    };
+  }
+
+  static formatYearSetLabel(yearSetKey = "") {
+    const parsed = this.parseYearSetKey(yearSetKey);
+    if (!parsed) return String(yearSetKey || "");
+    if (parsed.set) {
+      return `${parsed.year} Set ${parsed.set}`;
+    }
+    return String(parsed.year);
+  }
+
+  static extractYearSetFromTag(rawTag = "") {
+    const tag = String(rawTag || "").trim().toLowerCase();
+    const match = tag.match(this.YEAR_SET_TAG_PATTERN);
+    if (!match) return null;
+    const year = Number.parseInt(match[1], 10);
+    const set = Number.parseInt(match[2], 10);
+    if (!Number.isFinite(year)) return null;
+    return {
+      year,
+      set: Number.isFinite(set) && set > 0 ? set : null,
+    };
+  }
+
+  static extractExamMeta(question = {}) {
+    const candidates = [];
+
+    const pushCandidate = (yearRaw, setRaw, confidence = 0) => {
+      const year = Number.parseInt(String(yearRaw || ""), 10);
+      const set = Number.parseInt(String(setRaw ?? ""), 10);
+      if (!Number.isFinite(year) || year < 1990 || year > 2100) return;
+      candidates.push({
+        year,
+        set: Number.isFinite(set) && set > 0 ? set : null,
+        confidence,
+      });
+    };
+
+    // Prefer explicit exam object when present.
+    if (question.exam && typeof question.exam === "object") {
+      pushCandidate(question.exam.year, question.exam.set, 100);
+    }
+
+    // Existing source field used by the dataset.
+    const yearField = question.year;
+    const fromYearTag = this.extractYearSetFromTag(yearField);
+    if (fromYearTag) {
+      pushCandidate(fromYearTag.year, fromYearTag.set, 95);
+    } else if (yearField) {
+      pushCandidate(yearField, null, 90);
+    }
+
+    // Tags can encode year/set.
+    if (Array.isArray(question.tags)) {
+      question.tags.forEach((tag) => {
+        const parsed = this.extractYearSetFromTag(tag);
+        if (parsed) {
+          pushCandidate(parsed.year, parsed.set, parsed.set ? 85 : 80);
+        }
+      });
+    }
+
+    // Title fallback.
+    const title = String(question.title || "");
+    const titleMatch = title.match(this.TITLE_YEAR_SET_PATTERN);
+    if (titleMatch) {
+      pushCandidate(titleMatch[1], titleMatch[2], titleMatch[2] ? 70 : 65);
+    }
+
+    // Link fallback.
+    const link = String(question.link || "");
+    const linkMatch = link.match(this.LINK_YEAR_SET_PATTERN);
+    if (linkMatch) {
+      pushCandidate(linkMatch[1], linkMatch[2], linkMatch[2] ? 60 : 55);
+    }
+
+    if (!candidates.length) {
+      return {
+        paper: "CSE",
+        year: null,
+        set: null,
+        yearSetKey: null,
+        label: "Unknown",
+      };
+    }
+
+    candidates.sort((a, b) => b.confidence - a.confidence);
+    const best = candidates[0];
+    const yearSetKey = this.buildYearSetKey(best.year, best.set);
+
+    return {
+      paper: "CSE",
+      year: best.year,
+      set: best.set,
+      yearSetKey,
+      label: yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown",
+    };
+  }
+
+  static getSubtopicLookupForSubject(subjectLabel = "") {
+    const subjectSubtopics = this.TOPIC_HIERARCHY[subjectLabel] || [];
+    return new Map(
+      subjectSubtopics.map((subtopic) => [
+        this.normalizeString(subtopic),
+        {
+          slug: this.slugifyToken(subtopic),
+          label: subtopic,
+        },
+      ])
+    );
+  }
+
+  static extractCanonicalSubtopics(tags = [], subjectLabel = "") {
+    if (!Array.isArray(tags) || !subjectLabel || !this.TOPIC_HIERARCHY[subjectLabel]) {
+      return [];
+    }
+
+    const lookup = this.getSubtopicLookupForSubject(subjectLabel);
+    const unique = new Map();
+
+    tags.forEach((tag) => {
+      const entry = lookup.get(this.normalizeString(tag));
+      if (!entry || unique.has(entry.slug)) return;
+      unique.set(entry.slug, entry);
+    });
+
+    return Array.from(unique.values()).sort((a, b) => a.label.localeCompare(b.label));
+  }
+
+  static resolveCanonicalSubject(question) {
+    const tags = Array.isArray(question.tags) ? question.tags : [];
+    const normalizedTags = tags.map(t => this.normalizeString(t));
+    const normalizedTagSet = new Set(normalizedTags);
+    const firstTagIndex = new Map();
+
+    normalizedTags.forEach((tag, index) => {
+      if (!tag || firstTagIndex.has(tag)) return;
+      firstTagIndex.set(tag, index);
+    });
+
+    const title = String(question.title || "");
+    const isGeneralAptitudeTitle = /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s+\d+)\b/i.test(title);
+
+    // GA tags/titles must stay in GA regardless of overlapping generic tags.
+    if (isGeneralAptitudeTitle ||
+      normalizedTagSet.has("generalaptitude") ||
+      normalizedTagSet.has("quantitativeaptitude") ||
+      normalizedTagSet.has("verbalaptitude") ||
+      normalizedTagSet.has("analyticalaptitude")) {
+      return "General Aptitude";
+    }
+
+    const explicitCandidates = new Set();
+    const subjectStats = new Map();
+
+    Object.keys(this.TOPIC_HIERARCHY).forEach(subject => {
+      const aliases = this.getNormalizedSubjectAliases(subject);
+      const subtopics = this.TOPIC_HIERARCHY[subject] || [];
+
+      let explicitIndex = Number.MAX_SAFE_INTEGER;
+      aliases.forEach(alias => {
+        if (!normalizedTagSet.has(alias)) return;
+        const idx = firstTagIndex.get(alias);
+        if (idx !== undefined && idx < explicitIndex) {
+          explicitIndex = idx;
+        }
+      });
+
+      let subtopicCount = 0;
+      let firstSubtopicIndex = Number.MAX_SAFE_INTEGER;
+      subtopics.forEach(sub => {
+        const normSub = this.normalizeString(sub);
+        if (!normalizedTagSet.has(normSub)) return;
+        subtopicCount += 1;
+        const idx = firstTagIndex.get(normSub);
+        if (idx !== undefined && idx < firstSubtopicIndex) {
+          firstSubtopicIndex = idx;
+        }
+      });
+
+      if (explicitIndex !== Number.MAX_SAFE_INTEGER || subtopicCount > 0) {
+        subjectStats.set(subject, { explicitIndex, subtopicCount, firstSubtopicIndex });
+      }
+
+      if (explicitIndex !== Number.MAX_SAFE_INTEGER) {
+        explicitCandidates.add(subject);
+      }
+    });
+
+    if (explicitCandidates.size === 1) {
+      return Array.from(explicitCandidates)[0];
+    }
+
+    if (explicitCandidates.size > 1) {
+      const ranked = Array.from(explicitCandidates).sort((a, b) => {
+        const aStats = subjectStats.get(a);
+        const bStats = subjectStats.get(b);
+
+        if (aStats.explicitIndex !== bStats.explicitIndex) {
+          return aStats.explicitIndex - bStats.explicitIndex;
+        }
+
+        if (aStats.subtopicCount !== bStats.subtopicCount) {
+          return bStats.subtopicCount - aStats.subtopicCount;
+        }
+
+        if (aStats.firstSubtopicIndex !== bStats.firstSubtopicIndex) {
+          return aStats.firstSubtopicIndex - bStats.firstSubtopicIndex;
+        }
+
+        return this.getSubjectPriorityIndex(a) - this.getSubjectPriorityIndex(b);
+      });
+
+      return ranked[0];
+    }
+
+    if (subjectStats.size === 1) {
+      return Array.from(subjectStats.keys())[0];
+    }
+
+    if (subjectStats.size > 1) {
+      const ranked = Array.from(subjectStats.entries()).sort((a, b) => {
+        const [aSubject, aStats] = a;
+        const [bSubject, bStats] = b;
+
+        if (aStats.subtopicCount !== bStats.subtopicCount) {
+          return bStats.subtopicCount - aStats.subtopicCount;
+        }
+
+        if (aStats.firstSubtopicIndex !== bStats.firstSubtopicIndex) {
+          return aStats.firstSubtopicIndex - bStats.firstSubtopicIndex;
+        }
+
+        return this.getSubjectPriorityIndex(aSubject) - this.getSubjectPriorityIndex(bSubject);
+      });
+
+      return ranked[0][0];
+    }
+
+    return "Unknown";
+  }
+
   static normalizeQuestion(question = {}) {
     const normalized =
       question && typeof question === "object" ? { ...question } : {};
@@ -73,8 +493,40 @@ export class QuestionService {
     normalized.question = normalized.question || "";
     normalized.link = normalized.link || "";
     normalized.tags = Array.isArray(normalized.tags) ? normalized.tags : [];
+    normalized.tagsRaw = Array.isArray(normalized.tags)
+      ? [...normalized.tags]
+      : [];
     normalized.question_uid = this.buildQuestionUid(normalized);
     normalized.exam_uid = getExamUidFromQuestion(normalized) || "";
+
+    const exam = this.extractExamMeta(normalized);
+    const subjectLabel = this.resolveCanonicalSubject(normalized);
+    const subjectSlug = this.getSubjectSlugByLabel(subjectLabel);
+    const canonicalSubtopics = this.extractCanonicalSubtopics(
+      normalized.tagsRaw,
+      subjectLabel
+    );
+    const canonicalType = this.normalizeTypeToken(normalized.type);
+
+    normalized.canonical = {
+      uid: normalized.question_uid,
+      exam,
+      subject: subjectSlug,
+      subjectLabel,
+      topics: subjectSlug === "unknown" ? [] : [subjectSlug],
+      subtopics: canonicalSubtopics,
+      type: canonicalType,
+      tagsRaw: [...normalized.tagsRaw],
+    };
+
+    // Backward-compatible aliases consumed by filter/UI code.
+    normalized.subject = subjectLabel;
+    normalized.subjectSlug = subjectSlug;
+    normalized.exam = exam;
+    normalized.yearSetKey = exam.yearSetKey;
+    normalized.subtopics = canonicalSubtopics;
+    normalized.type = canonicalType;
+
     return normalized;
   }
 
@@ -347,134 +799,103 @@ export class QuestionService {
 
   // Helper to normalize strings for comparison (lowercase, handle slight variations if needed)
   static normalizeString(str) {
-    return str.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return String(str || "").toLowerCase().replace(/[^a-z0-9]/g, '');
   }
 
   static getStructuredTags() {
-    const years = [];
-    // Convert strict hierarchy to map for easier lookup
-    // Map<NormalizedSubtopic, DisplaySubtopic>
-    // We also need to map NormalizedTopic -> DisplayTopic
-    const topicMap = new Map();
-    const subtopicMap = new Map(); // NormalizedSubtopic -> Set<DisplayTopic> (One subtopic might belong to multiple topics potentially? Unlikely based on list, but good to handle)
+    const yearSetMap = new Map();
+    const subjectCountMap = new Map();
+    const structuredSubtopics = {};
 
-    const structuredTopics = {};
-
-    Object.keys(this.TOPIC_HIERARCHY).forEach(topic => {
-      structuredTopics[topic] = []; // Initialize
-      this.TOPIC_HIERARCHY[topic].forEach(sub => {
-        const normSub = this.normalizeString(sub);
-        subtopicMap.set(normSub, {
-          display: sub,
-          topic: topic
-        });
-      });
+    this.ensureSubjectMaps();
+    this.SUBJECT_ENUM.forEach((subject) => {
+      structuredSubtopics[subject.slug] = new Map();
+      subjectCountMap.set(subject.slug, 0);
     });
 
-    // We will scan all available tags in the system
-    // If a tag matches a known year, add to years.
-    // If a tag matches (roughly) a known topic or subtopic, classify it.
-
-    const validTopics = new Set(Object.keys(this.TOPIC_HIERARCHY));
-
-    // Some questions might use tags that match the TOPIC name itself (e.g. "Data Structures")
-    // or tags that match SUBTOPIC names.
-    // The user's provided list is Title Case like "Data Structures", "Graph Theory".
-    // Sometimes the tag in JSON might be "operating-system" (Topic) or "paging" (Subtopic).
-
-    for (const tag of this.tags) {
-      if (tag.startsWith("gate")) {
-        years.push(tag);
-      }
-    }
-
-    // Filter out redundant generic years (e.g., 'gate2024') if specific sets exist (e.g., 'gate20241')
-    // We group tags by their 4-digit year.
-    const yearGroups = {};
-    years.forEach(tag => {
-      const match = tag.match(/(\d{4})/);
-      if (match) {
-        const y = match[1];
-        if (!yearGroups[y]) yearGroups[y] = [];
-        yearGroups[y].push(tag);
-      }
-    });
-
-    const filteredYears = [];
-    Object.keys(yearGroups).forEach(year => {
-      const group = yearGroups[year];
-      // Check if this group has any "Set" tags.
-      // We assume a "Set" tag has more than 4 digits in its numeric part (e.g., 20241 has length 5).
-      const hasSets = group.some(t => t.replace(/[^0-9]/g, '').length > 4);
-
-      if (hasSets) {
-        // Only include the set-specific tags
-        group.forEach(t => {
-          if (t.replace(/[^0-9]/g, '').length > 4) {
-            filteredYears.push(t);
-          }
-        });
-      } else {
-        // Include all (likely just the generic one)
-        filteredYears.push(...group);
-      }
-    });
-
-    // Replace original years array with filtered one
-    years.length = 0;
-    years.push(...filteredYears);
-
-    // Now populate the structuredTopics based on what is actually present in the questions
-    // But the user explicitly said: "i want them only related syllabus topics not unnecessary topics"
-    // So we should only show subtopics that EXIST in the question set AND are Valid.
-
-    const availableSubtopics = new Set();
-
-    this.questions.forEach(q => {
-      q.tags.forEach(t => {
-        // Check if 't' matches any known subtopic (fuzzy match?)
-        // The JSON tags are hyphenated strings like "data-structures", "graph-theory".
-        // The user list is Title Case like "Data Structures", "Graph Theory".
-        const normTag = this.normalizeString(t);
-
-        if (subtopicMap.has(normTag)) {
-          const { display, topic } = subtopicMap.get(normTag);
-          if (!structuredTopics[topic].includes(display)) {
-            structuredTopics[topic].push(display);
-          }
+    this.questions.forEach((question) => {
+      const exam = question.exam || this.extractExamMeta(question);
+      if (exam && exam.yearSetKey) {
+        if (!yearSetMap.has(exam.yearSetKey)) {
+          yearSetMap.set(exam.yearSetKey, {
+            key: exam.yearSetKey,
+            year: exam.year,
+            set: exam.set,
+            label: exam.label || this.formatYearSetLabel(exam.yearSetKey),
+            count: 0,
+          });
         }
+        yearSetMap.get(exam.yearSetKey).count += 1;
+      }
 
-        // Also check if the tag matches a Topic name directly?
-        // e.g. if tag is "operating-system", does it map to "Operating System"?
-        // If so, it's a general tag for that topic.
-        // The user's request focused on cleaning subtopics.
+      const subjectSlug = this.normalizeSubjectSlug(question.subjectSlug) || "unknown";
+      if (subjectCountMap.has(subjectSlug)) {
+        subjectCountMap.set(subjectSlug, subjectCountMap.get(subjectSlug) + 1);
+      }
+
+      const canonicalSubtopics = Array.isArray(question.subtopics)
+        ? question.subtopics
+        : [];
+
+      if (!structuredSubtopics[subjectSlug] || !canonicalSubtopics.length) {
+        return;
+      }
+
+      canonicalSubtopics.forEach((entry) => {
+        if (!entry || typeof entry !== "object") return;
+        const slug = this.slugifyToken(entry.slug || entry.label || "");
+        const label = String(entry.label || "").trim();
+        if (!slug || !label) return;
+        if (!structuredSubtopics[subjectSlug].has(slug)) {
+          structuredSubtopics[subjectSlug].set(slug, { slug, label });
+        }
       });
     });
 
-    // Sort subtopics
-    Object.keys(structuredTopics).forEach(t => {
-      structuredTopics[t].sort();
-      // Remove topics with no active subtopics? 
-      // Or keep them? User "providing subjects and all subtopics I want them only filter".
-      // Let's keep only topics that have at least one subtopic or match? 
-      // Actually, if a topic has 0 matching subtopics found in the current dataset, it's useless filter.
-      if (structuredTopics[t].length === 0) {
-        delete structuredTopics[t];
+    const yearSets = Array.from(yearSetMap.values()).sort((a, b) => {
+      if (a.year !== b.year) {
+        return b.year - a.year;
       }
+      return (b.set || 0) - (a.set || 0);
     });
 
-    // Extract numeric years for range slider
-    const numericYears = years.map(y => {
-      const match = y.match(/\d{4}/);
-      return match ? parseInt(match[0], 10) : 0;
-    }).filter(y => y > 0);
+    const subjects = this.SUBJECT_ENUM
+      .filter((subject) => (subjectCountMap.get(subject.slug) || 0) > 0)
+      .map((subject) => ({
+        ...subject,
+        count: subjectCountMap.get(subject.slug) || 0,
+      }));
+
+    const normalizedStructuredSubtopics = {};
+    subjects.forEach((subject) => {
+      const subtopicEntries = structuredSubtopics[subject.slug]
+        ? Array.from(structuredSubtopics[subject.slug].values())
+        : [];
+      normalizedStructuredSubtopics[subject.slug] = subtopicEntries.sort((a, b) =>
+        a.label.localeCompare(b.label)
+      );
+    });
+
+    // Backward-compatibility for any legacy UI branch that still expects label keyed topics.
+    const structuredTopics = {};
+    subjects.forEach((subject) => {
+      structuredTopics[subject.label] = (normalizedStructuredSubtopics[subject.slug] || [])
+        .map((entry) => entry.label);
+    });
+
+    const numericYears = yearSets.map((entry) => entry.year).filter((year) => Number.isFinite(year));
+    const minYear = numericYears.length ? Math.min(...numericYears) : 2000;
+    const maxYear = numericYears.length ? Math.max(...numericYears) : 2025;
 
     return {
-      years: years.sort().reverse(), // descending
-      topics: Object.keys(structuredTopics).sort(),
+      yearSets,
+      years: yearSets.map((entry) => entry.key),
+      subjects,
+      topics: subjects.map((subject) => subject.slug),
+      structuredSubtopics: normalizedStructuredSubtopics,
       structuredTopics,
-      minYear: Math.min(...numericYears),
-      maxYear: Math.max(...numericYears)
+      minYear,
+      maxYear,
     };
   }
 

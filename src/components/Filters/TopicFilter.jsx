@@ -4,73 +4,70 @@ import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
 const TopicFilter = () => {
     const { structuredTags, filters, updateFilters } = useFilters();
-    const { structuredTopics } = structuredTags;
-    const { selectedTopics, selectedSubtopics } = filters;
+    const { subjects = [], structuredSubtopics = {} } = structuredTags;
+    const { selectedSubjects, selectedSubtopics } = filters;
     const [expandedTopics, setExpandedTopics] = useState([]);
 
-    const toggleTopicExpand = (topic) => {
-        if (expandedTopics.includes(topic)) {
-            setExpandedTopics(expandedTopics.filter(t => t !== topic));
+    const toggleTopicExpand = (subjectSlug) => {
+        if (expandedTopics.includes(subjectSlug)) {
+            setExpandedTopics(expandedTopics.filter(t => t !== subjectSlug));
         } else {
-            setExpandedTopics([...expandedTopics, topic]);
+            setExpandedTopics([...expandedTopics, subjectSlug]);
         }
     };
 
-    const handleTopicChange = (topic) => {
-        let newSelectedTopics;
-        if (selectedTopics.includes(topic)) {
-            newSelectedTopics = selectedTopics.filter(t => t !== topic);
-            // Optional: Auto-deselect subtopics if parent is deselected?
-            // For now, let's keep them selected or maybe clear them.
+    const handleSubjectChange = (subjectSlug) => {
+        let nextSubjects;
+        if (selectedSubjects.includes(subjectSlug)) {
+            nextSubjects = selectedSubjects.filter(t => t !== subjectSlug);
         } else {
-            newSelectedTopics = [...selectedTopics, topic];
-            // Auto-expand when selected
-            if (!expandedTopics.includes(topic)) {
-                setExpandedTopics([...expandedTopics, topic]);
+            nextSubjects = [...selectedSubjects, subjectSlug];
+            if (!expandedTopics.includes(subjectSlug)) {
+                setExpandedTopics([...expandedTopics, subjectSlug]);
             }
         }
-        updateFilters({ selectedTopics: newSelectedTopics });
+        updateFilters({ selectedSubjects: nextSubjects });
     };
 
-    const handleSubtopicChange = (subtopic) => {
-        let newSelectedSubtopics;
-        if (selectedSubtopics.includes(subtopic)) {
-            newSelectedSubtopics = selectedSubtopics.filter(t => t !== subtopic);
+    const handleSubtopicChange = (subtopicSlug) => {
+        let nextSubtopics;
+        if (selectedSubtopics.includes(subtopicSlug)) {
+            nextSubtopics = selectedSubtopics.filter(t => t !== subtopicSlug);
         } else {
-            newSelectedSubtopics = [...selectedSubtopics, subtopic];
+            nextSubtopics = [...selectedSubtopics, subtopicSlug];
         }
-        updateFilters({ selectedSubtopics: newSelectedSubtopics });
+        updateFilters({ selectedSubtopics: nextSubtopics });
     }
 
-    const topics = Object.keys(structuredTopics || {});
-
-    if (topics.length === 0) return null;
+    if (!subjects.length) return null;
 
     return (
         <div className="space-y-1">
-            {topics.map(topic => {
-                const subtopics = structuredTopics[topic] || [];
-                const isExpanded = expandedTopics.includes(topic);
-                const isSelected = selectedTopics.includes(topic);
+            {subjects.map((subject) => {
+                const subjectSlug = subject.slug;
+                const subjectLabel = subject.label;
+                const subtopics = structuredSubtopics[subjectSlug] || [];
+                const isExpanded = expandedTopics.includes(subjectSlug);
+                const isSelected = selectedSubjects.includes(subjectSlug);
                 const hasSubtopics = subtopics.length > 0;
 
                 return (
-                    <div key={topic} className="flex flex-col">
+                    <div key={subjectSlug} className="flex flex-col">
                         <div className="flex items-center justify-between group py-1">
                             <label className="flex items-center cursor-pointer flex-grow">
                                 <input
                                     type="checkbox"
                                     className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                     checked={isSelected}
-                                    onChange={() => handleTopicChange(topic)}
+                                    onChange={() => handleSubjectChange(subjectSlug)}
                                 />
-                                <span className={`ml-3 text-sm capitalize truncate ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`} title={topic.replace(/-/g, ' ')}>
-                                    {topic.replace(/-/g, ' ')}
+                                <span className={`ml-3 text-sm capitalize truncate ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`} title={subjectLabel}>
+                                    {subjectLabel}
                                 </span>
                             </label>
                             {hasSubtopics && (
                                 <button
-                                    onClick={() => toggleTopicExpand(topic)}
+                                    onClick={() => toggleTopicExpand(subjectSlug)}
                                     className="p-1 hover:bg-gray-100 rounded text-gray-400"
                                 >
                                     {isExpanded ? <FaChevronDown size={10} /> : <FaChevronRight size={10} />}
@@ -80,16 +77,16 @@ const TopicFilter = () => {
 
                         {hasSubtopics && isExpanded && (
                             <div className="ml-6 pl-2 border-l-2 border-gray-200 space-y-1 mt-1">
-                                {subtopics.map(sub => (
-                                    <label key={sub} className="flex items-center cursor-pointer py-0.5 group/sub">
+                                {subtopics.map((subtopic) => (
+                                    <label key={subtopic.slug} className="flex items-center cursor-pointer py-0.5 group/sub">
                                         <input
                                             type="checkbox"
                                             className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700"
-                                            checked={selectedSubtopics.includes(sub)}
-                                            onChange={() => handleSubtopicChange(sub)}
+                                            checked={selectedSubtopics.includes(subtopic.slug)}
+                                            onChange={() => handleSubtopicChange(subtopic.slug)}
                                         />
                                         <span className="ml-2 text-xs text-gray-500 dark:text-gray-400 group-hover/sub:text-gray-800 dark:group-hover/sub:text-gray-200">
-                                            {sub.replace(/-/g, ' ')}
+                                            {subtopic.label}
                                         </span>
                                     </label>
                                 ))}

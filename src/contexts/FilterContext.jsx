@@ -33,6 +33,68 @@ const normalizeSelectedTypes = (rawTypes, { fallbackToDefault = false } = {}) =>
     return orderedUnique;
 };
 
+const yearSetComparator = (a, b) => {
+    const parsedA = QuestionService.parseYearSetKey(a);
+    const parsedB = QuestionService.parseYearSetKey(b);
+    if (!parsedA || !parsedB) return String(a).localeCompare(String(b));
+    if (parsedA.year !== parsedB.year) {
+        return parsedB.year - parsedA.year;
+    }
+    return (parsedB.set || 0) - (parsedA.set || 0);
+};
+
+const normalizeYearSetTokens = (rawTokens) => {
+    const values = Array.isArray(rawTokens) ? rawTokens : [];
+    const unique = new Set();
+
+    values.forEach((rawToken) => {
+        const token = String(rawToken || '').trim();
+        if (!token) return;
+
+        const parsedKey = QuestionService.parseYearSetKey(token);
+        if (parsedKey) {
+            unique.add(parsedKey.key);
+            return;
+        }
+
+        const fromTag = QuestionService.extractYearSetFromTag(token);
+        if (fromTag) {
+            const key = QuestionService.buildYearSetKey(fromTag.year, fromTag.set);
+            if (key) unique.add(key);
+        }
+    });
+
+    return Array.from(unique).sort(yearSetComparator);
+};
+
+const normalizeSubjectSlugs = (rawSubjects) => {
+    const values = Array.isArray(rawSubjects) ? rawSubjects : [];
+    const unique = new Set();
+
+    values.forEach((rawSubject) => {
+        const subjectSlug = QuestionService.normalizeSubjectSlug(rawSubject);
+        if (subjectSlug && subjectSlug !== 'unknown') {
+            unique.add(subjectSlug);
+        }
+    });
+
+    return Array.from(unique).sort((a, b) => a.localeCompare(b));
+};
+
+const normalizeSubtopicSlugs = (rawSubtopics) => {
+    const values = Array.isArray(rawSubtopics) ? rawSubtopics : [];
+    const unique = new Set();
+
+    values.forEach((rawSubtopic) => {
+        const slug = QuestionService.slugifyToken(rawSubtopic);
+        if (slug) {
+            unique.add(slug);
+        }
+    });
+
+    return Array.from(unique).sort((a, b) => a.localeCompare(b));
+};
+
 const normalizeStoredIds = (rawIds) => {
     if (!Array.isArray(rawIds)) {
         return [];
@@ -110,17 +172,20 @@ export const useFilters = () => {
 
 export const FilterProvider = ({ children }) => {
     const [structuredTags, setStructuredTags] = useState({
+        yearSets: [],
         years: [],
+        subjects: [],
         topics: [],
+        structuredSubtopics: {},
         structuredTopics: {},
         minYear: 2000,
         maxYear: 2025
     });
 
     const [filters, setFilters] = useState({
-        selectedYears: [],
+        selectedYearSets: [],
         yearRange: [2000, 2025],
-        selectedTopics: [],
+        selectedSubjects: [],
         selectedSubtopics: [],
         selectedTypes: [...DEFAULT_SELECTED_TYPES],
         hideSolved: false,
@@ -157,11 +222,17 @@ export const FilterProvider = ({ children }) => {
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const urlTypes = params.get('types');
+        const rawYearTokens = params.get('years')?.split(',').filter(Boolean) || [];
+        const rawSubjectTokens = params.get('subjects')?.split(',').filter(Boolean)
+            || params.get('topics')?.split(',').filter(Boolean)
+            || [];
+        const rawSubtopicTokens = params.get('subtopics')?.split(',').filter(Boolean) || [];
+
         const urlFilters = {
-            selectedYears: params.get('years')?.split(',').filter(Boolean) || [],
+            selectedYearSets: normalizeYearSetTokens(rawYearTokens),
             yearRange: params.get('range')?.split('-').map(Number) || null,
-            selectedTopics: params.get('topics')?.split(',').filter(Boolean) || [],
-            selectedSubtopics: params.get('subtopics')?.split(',').filter(Boolean) || [],
+            selectedSubjects: normalizeSubjectSlugs(rawSubjectTokens),
+            selectedSubtopics: normalizeSubtopicSlugs(rawSubtopicTokens),
             selectedTypes: urlTypes === null
                 ? [...DEFAULT_SELECTED_TYPES]
                 : normalizeSelectedTypes(urlTypes.split(',').filter(Boolean)),
@@ -186,14 +257,18 @@ export const FilterProvider = ({ children }) => {
         const questionParam = existingParams.get('question');
 
         const params = new URLSearchParams();
-        if (filters.selectedYears.length) params.set('years', filters.selectedYears.join(','));
-        if (filters.selectedTopics.length) params.set('topics', filters.selectedTopics.join(','));
-        if (filters.selectedSubtopics.length) params.set('subtopics', filters.selectedSubtopics.join(','));
+        const selectedYearSets = normalizeYearSetTokens(filters.selectedYearSets);
+        const selectedSubjects = normalizeSubjectSlugs(filters.selectedSubjects);
+        const selectedSubtopics = normalizeSubtopicSlugs(filters.selectedSubtopics);
+
+        if (selectedYearSets.length) params.set('years', selectedYearSets.join(','));
+        if (selectedSubjects.length) params.set('subjects', selectedSubjects.join(','));
+        if (selectedSubtopics.length) params.set('subtopics', selectedSubtopics.join(','));
         if (filters.yearRange) params.set('range', filters.yearRange.join('-'));
 
         const selectedTypes = normalizeSelectedTypes(filters.selectedTypes);
         if (selectedTypes.length > 0 && selectedTypes.length < DEFAULT_SELECTED_TYPES.length) {
-            params.set('types', selectedTypes.join(','));
+            params.set('types', selectedTypes.map(type => type.toLowerCase()).join(','));
         }
 
         if (filters.hideSolved) {
@@ -215,6 +290,7 @@ export const FilterProvider = ({ children }) => {
         const newUrl = query
             ? `${window.location.pathname}?${query}`
             : window.location.pathname;
+
         window.history.replaceState({}, '', newUrl);
     }, [filters, isInitialized]);
 
@@ -306,8 +382,8 @@ export const FilterProvider = ({ children }) => {
         if (!QuestionService.questions.length) return;
 
         const {
-            selectedYears,
-            selectedTopics,
+            selectedYearSets,
+            selectedSubjects,
             selectedSubtopics,
             yearRange,
             hideSolved,
@@ -322,6 +398,18 @@ export const FilterProvider = ({ children }) => {
             const questionId = getQuestionTrackingId(q);
             const isSolved = questionId ? solvedQuestionSet.has(questionId) : false;
             const isBookmarked = questionId ? bookmarkedQuestionSet.has(questionId) : false;
+            const answer = AnswerService.getAnswerForQuestion(q);
+            const resolvedType = answer
+                ? QuestionService.normalizeTypeToken(answer.type)
+                : QuestionService.normalizeTypeToken(q.type);
+
+            // Keep the canonical type attached to each question object.
+            if (q.type !== resolvedType) {
+                q.type = resolvedType;
+                if (q.canonical && typeof q.canonical === 'object') {
+                    q.canonical.type = resolvedType;
+                }
+            }
 
             if (hideSolved && isSolved) {
                 return false;
@@ -335,60 +423,65 @@ export const FilterProvider = ({ children }) => {
                 return false;
             }
 
-            if (selectedTypes.length < DEFAULT_SELECTED_TYPES.length) {
-                const answer = AnswerService.getAnswerForQuestion(q);
-                const qType = answer ? answer.type : null;
-
-                const normalizedQType = qType ? qType.toUpperCase() : '';
-                const typeMatch = normalizedQType && selectedTypeSet.has(normalizedQType);
-
-                if (!typeMatch) return false;
-            }
-
             let yearMatch = true;
-            const qYearTag = q.tags.find(t => t.startsWith('gate'));
-            const qYearNum = qYearTag ? parseInt(qYearTag.match(/\d{4}/)?.[0] || '0', 10) : 0;
+            const qYearSetKey = q.exam?.yearSetKey || null;
+            const qYearNum = Number.isFinite(q.exam?.year) ? q.exam.year : 0;
 
-            if (selectedYears.length > 0) {
-                yearMatch = selectedYears.includes(qYearTag);
+            if (selectedYearSets.length > 0) {
+                yearMatch = qYearSetKey ? selectedYearSets.includes(qYearSetKey) : false;
             }
 
             let rangeMatch = true;
-            if (yearRange && yearRange.length === 2) {
-                rangeMatch = qYearNum >= yearRange[0] && qYearNum <= yearRange[1];
+            const isRangeConstrained = yearRange
+                && yearRange.length === 2
+                && (yearRange[0] > structuredTags.minYear || yearRange[1] < structuredTags.maxYear);
+            if (isRangeConstrained) {
+                rangeMatch = qYearNum > 0 && qYearNum >= yearRange[0] && qYearNum <= yearRange[1];
             }
 
             let topicMatch = true;
-            if (selectedTopics.length > 0) {
-                topicMatch = selectedTopics.some(selectedTopic => {
-                    const validSubtopics = QuestionService.TOPIC_HIERARCHY[selectedTopic] || [];
-                    return q.tags.some(tag => {
-                        const normTag = QuestionService.normalizeString(tag);
-                        if (normTag === QuestionService.normalizeString(selectedTopic)) return true;
-                        return validSubtopics.some(sub => QuestionService.normalizeString(sub) === normTag);
-                    });
-                });
+            if (selectedSubjects.length > 0) {
+                const subjectSlug = q.subjectSlug || 'unknown';
+                topicMatch = selectedSubjects.includes(subjectSlug);
             }
 
             let subtopicMatch = true;
             if (selectedSubtopics.length > 0) {
-                subtopicMatch = q.tags.some(tag => {
-                    const normTag = QuestionService.normalizeString(tag);
-                    return selectedSubtopics.some(sub => QuestionService.normalizeString(sub) === normTag);
-                });
+                const questionSubtopicSlugs = Array.isArray(q.subtopics)
+                    ? q.subtopics.map(sub => QuestionService.slugifyToken(sub.slug || sub.label || sub))
+                    : [];
+                subtopicMatch = questionSubtopicSlugs.some(slug => selectedSubtopics.includes(slug));
             }
 
-            return yearMatch && rangeMatch && topicMatch && subtopicMatch;
+            let typeMatch = true;
+            if (selectedTypes.length < DEFAULT_SELECTED_TYPES.length) {
+                typeMatch = selectedTypeSet.has(resolvedType.toUpperCase());
+            }
+
+            const keep = yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch;
+            if (!keep && (selectedSubjects.length > 0 || selectedSubtopics.length > 0)) {
+                // Optional: log rejected questions if debugging specific misses
+            }
+            return keep;
         });
 
         setFilteredQuestions(result);
-    }, [filters, isInitialized, solvedQuestionSet, bookmarkedQuestionSet]);
+    }, [filters, isInitialized, solvedQuestionSet, bookmarkedQuestionSet, structuredTags.minYear, structuredTags.maxYear]);
 
     const updateFilters = useCallback((newFilters) => {
         setFilters(prev => {
             const merged = { ...prev, ...newFilters };
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedTypes')) {
                 merged.selectedTypes = normalizeSelectedTypes(newFilters.selectedTypes);
+            }
+            if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedYearSets')) {
+                merged.selectedYearSets = normalizeYearSetTokens(newFilters.selectedYearSets);
+            }
+            if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedSubjects')) {
+                merged.selectedSubjects = normalizeSubjectSlugs(newFilters.selectedSubjects);
+            }
+            if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedSubtopics')) {
+                merged.selectedSubtopics = normalizeSubtopicSlugs(newFilters.selectedSubtopics);
             }
             return merged;
         });
@@ -487,9 +580,9 @@ export const FilterProvider = ({ children }) => {
     const clearFilters = useCallback(() => {
         const { minYear, maxYear } = structuredTags;
         setFilters({
-            selectedYears: [],
+            selectedYearSets: [],
             yearRange: [minYear, maxYear],
-            selectedTopics: [],
+            selectedSubjects: [],
             selectedSubtopics: [],
             selectedTypes: [...DEFAULT_SELECTED_TYPES],
             hideSolved: false,

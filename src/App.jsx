@@ -35,11 +35,29 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
 
     const params = new URLSearchParams(window.location.search);
     const questionId = params.get('question');
+    const hasActiveFilterParams = [
+      'years',
+      'subjects',
+      'topics',
+      'subtopics',
+      'types',
+      'range',
+      'hideSolved',
+      'showOnlySolved',
+      'showOnlyBookmarked',
+    ].some((key) => {
+      const value = params.get(key);
+      return value !== null && String(value).trim() !== "";
+    });
+
     if (questionId) {
       const found = getQuestionById(questionId);
       if (found) {
-        setCurrentQuestion(found);
-        return;
+        const inCurrentPool = filteredQuestions.some(q => q.question_uid === found.question_uid);
+        if (inCurrentPool || (!hasActiveFilterParams && filteredQuestions.length === 0)) {
+          setCurrentQuestion(found);
+          return;
+        }
       }
     }
     // Fall back to random question if no deep-link or invalid ID
@@ -60,6 +78,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
   useEffect(() => {
     if (isInitialized && filteredQuestions.length > 0 && currentQuestion) {
       const isValid = filteredQuestions.some(q => q.question_uid === currentQuestion.question_uid);
+
       if (!isValid) {
         pickRandomQuestion();
       }
@@ -67,6 +86,22 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
       setCurrentQuestion(null);
     }
   }, [isInitialized, filteredQuestions, currentQuestion, pickRandomQuestion]);
+
+  useEffect(() => {
+    if (!import.meta.env.DEV || !isInitialized || !currentQuestion) {
+      return;
+    }
+    const inPool = filteredQuestions.some(
+      (question) => question.question_uid === currentQuestion.question_uid
+    );
+    if (!inPool && filteredQuestions.length > 0) {
+      // Dev assertion guardrail: current question must always come from filtered pool.
+      console.error("[FilterInvariant] currentQuestion is outside filteredQuestions", {
+        currentQuestionUid: currentQuestion.question_uid,
+        filteredCount: filteredQuestions.length,
+      });
+    }
+  }, [isInitialized, currentQuestion, filteredQuestions]);
 
   // Sync ?question=<id> into the URL whenever currentQuestion changes
   useEffect(() => {

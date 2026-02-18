@@ -19,7 +19,8 @@
   "scripts": {
     "start": "node scripts/deployment/sync-calculator.mjs --public && vite",
     "build": "node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "audit:canonical": "node scripts/audit-canonical-filters.mjs"
   },
   "eslintConfig": {
     "extends": [
