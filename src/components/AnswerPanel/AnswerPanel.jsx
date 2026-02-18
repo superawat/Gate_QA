@@ -399,34 +399,36 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
         )}
       </div>
 
-      {/* --- Desktop Action Bar (Hidden on Mobile) --- */}
-      <div className="hidden md:flex items-center justify-between px-4 py-3 bg-white border-t border-gray-100 shadow-sm mt-8">
-        {/* Zone 1: Submit */}
-        <div>
-          {renderSubmitButton()}
+      {/* --- Action Bar (Responsive, In-Flow) --- */}
+      <div className="border-t border-gray-100 mt-8 pt-4 px-2">
+
+        {/* Desktop (md+): Single-row flex layout */}
+        <div className="hidden md:flex items-center justify-between">
+          <div>
+            {renderSubmitButton()}
+          </div>
+          <div className="flex-1 flex justify-center">
+            {renderIconTray()}
+          </div>
+          <div>
+            {renderNextButton()}
+          </div>
         </div>
 
-        {/* Zone 2: Icons */}
-        <div className="flex-1 flex justify-center">
-          {renderIconTray()}
+        {/* Mobile (< md): 2-row stacked layout */}
+        <div className="md:hidden flex flex-col gap-3">
+          {/* Row 1: 4 icon buttons in a centered grid */}
+          <div className="grid grid-cols-4 gap-3 justify-items-center">
+            {renderIconTray("contents")}
+          </div>
+
+          {/* Row 2: Submit + Next in a 2-column grid */}
+          <div className="grid grid-cols-2 gap-3">
+            {renderSubmitButton("w-full")}
+            {renderNextButton("w-full")}
+          </div>
         </div>
 
-        {/* Zone 3: Next */}
-        <div>
-          {renderNextButton()}
-        </div>
-      </div>
-
-      {/* --- Mobile Action Bar (Sticky Bottom) --- */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50 flex flex-col gap-3 pb-safe" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}>
-        {/* Row 1: Icons */}
-        {renderIconTray("justify-evenly w-full")}
-
-        {/* Row 2: Primary Buttons */}
-        <div className="grid grid-cols-2 gap-3">
-          {renderSubmitButton("w-full")}
-          {renderNextButton("w-full")}
-        </div>
       </div>
 
       {isStatusActionDisabled && (
@@ -434,9 +436,6 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
           Progress status is unavailable for this question identifier.
         </p>
       )}
-
-      {/* Spacer for Mobile Sticky Bar */}
-      <div className="h-40 md:h-0" aria-hidden="true" />
 
       <Toast message="Link copied!" visible={toastVisible} />
     </div>
