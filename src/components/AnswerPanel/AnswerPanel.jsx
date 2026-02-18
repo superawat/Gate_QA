@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState, useCallback } from "react";
+import { FaCheck, FaEye, FaEyeSlash, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilters } from "../../contexts/FilterContext";
-import QuestionStatusControls from "../QuestionStatusControls/QuestionStatusControls";
 import Toast from "../Toast/Toast";
 
 const PROGRESS_KEY = "gateqa_progress_v1";
@@ -103,6 +103,33 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     };
     writeJsonToLocalStorage(PROGRESS_KEY, progress);
   };
+
+  const handleMcqSelect = (option) => {
+    setMcqSelection(option);
+    setResult(null);
+  };
+
+  const handleMsqToggle = (option, checked) => {
+    if (checked) {
+      setMsqSelection((prev) => [...prev, option]);
+    } else {
+      setMsqSelection((prev) => prev.filter((item) => item !== option));
+    }
+    setResult(null);
+  };
+
+  const handleNatChange = (e) => {
+    setNatInput(e.target.value);
+    setResult(null);
+  };
+
+  const hasValidInput = useMemo(() => {
+    if (!answerRecord) return false;
+    if (answerRecord.type === "MCQ") return !!mcqSelection;
+    if (answerRecord.type === "MSQ") return msqSelection.length > 0;
+    if (answerRecord.type === "NAT") return !!natInput.trim();
+    return false;
+  }, [answerRecord, mcqSelection, msqSelection, natInput]);
 
   // --- Share Question ---
   const [toastVisible, setToastVisible] = useState(false);
@@ -210,7 +237,7 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
                 <button
                   key={option}
                   type="button"
-                  onClick={() => setMcqSelection(option)}
+                  onClick={() => handleMcqSelect(option)}
                   className={`flex-1 rounded border px-3 py-2 text-center text-sm font-medium transition-colors ${mcqSelection === option
                     ? "border-blue-600 bg-blue-600 text-white"
                     : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
@@ -236,13 +263,7 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
                     type="checkbox"
                     className="hidden"
                     checked={msqSelection.includes(option)}
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                        setMsqSelection([...msqSelection, option]);
-                      } else {
-                        setMsqSelection(msqSelection.filter((item) => item !== option));
-                      }
-                    }}
+                    onChange={(event) => handleMsqToggle(option, event.target.checked)}
                   />
                   {option}
                 </label>
@@ -255,7 +276,7 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
               <input
                 type="text"
                 value={natInput}
-                onChange={(event) => setNatInput(event.target.value)}
+                onChange={handleNatChange}
                 placeholder="Enter numeric answer"
                 className="w-full rounded border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               />
@@ -284,78 +305,106 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
         )}
       </div>
 
-      {/* Unified Action Bar */}
-      <div className="grid grid-cols-2 lg:grid-cols-6 gap-4">
+      {/* Unified Action Bar - 3 Zone Layout */}
+      <div className="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-100 shadow-sm mt-8">
 
-        {/* 1. Submit Answer */}
-        <button
-          type="button"
-          disabled={!isInteractive}
-          className={`flex items-center justify-center rounded px-4 py-3 text-sm font-bold shadow-sm transition-colors h-12 ${isInteractive
-            ? "bg-blue-600 text-white hover:bg-blue-700"
-            : "bg-gray-100 text-gray-400 cursor-not-allowed"
-            }`}
-          onClick={evaluateSubmission}
-        >
-          Submit Answer
-        </button>
-
-        {/* 2 + 3. Solved + Bookmark */}
-        <QuestionStatusControls
-          isSolved={isSolved}
-          isBookmarked={isBookmarked}
-          disabled={isStatusActionDisabled}
-          onToggleSolved={handleToggleSolved}
-          onToggleBookmark={handleToggleBookmark}
-        />
-
-        {/* 4. View Solution */}
-        {solutionLink ? (
-          <a
-            href={solutionLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center rounded border border-purple-300 bg-purple-50 px-4 py-3 text-sm font-medium text-purple-700 shadow-sm hover:bg-purple-100 transition-colors h-12"
+        {/* Zone 1: Primary Action (Submit Answer) - Left aligned */}
+        <div>
+          <button
+            type="button"
+            disabled={!isInteractive || !hasValidInput}
+            className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors ${!isInteractive || !hasValidInput
+              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+              : "bg-blue-600 text-white hover:bg-blue-700"
+              }`}
+            onClick={evaluateSubmission}
           >
-            View Solution
-          </a>
-        ) : (
-          <div className="flex items-center justify-center rounded bg-gray-50 border border-gray-200 px-4 py-3 text-sm text-gray-400 h-12 cursor-not-allowed">
-            No Solution
+            {result ? "Submit Again" : "Submit Answer"}
+          </button>
+        </div>
+
+        {/* Zone 2: Icon Tray (Secondary Actions) - Centered */}
+        <div className="flex-1 flex justify-center">
+          <div className="flex items-center gap-3">
+            {/* 1. Mark as Solved */}
+            <button
+              type="button"
+              disabled={isStatusActionDisabled}
+              onClick={handleToggleSolved}
+              title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+              className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
+                ? 'border-gray-200 bg-gray-50 text-gray-300 cursor-not-allowed'
+                : isSolved
+                  ? 'border-green-500 bg-green-100 text-green-600'
+                  : 'border-green-200 bg-green-50 text-green-300 hover:border-green-300 hover:text-green-500'
+                }`}
+            >
+              <FaCheck className="text-[20px]" />
+            </button>
+
+            {/* 2. Bookmark */}
+            <button
+              type="button"
+              disabled={isStatusActionDisabled}
+              onClick={handleToggleBookmark}
+              title={isBookmarked ? "Remove Bookmark" : "Bookmark Question"}
+              className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
+                ? 'border-gray-200 bg-gray-50 text-gray-300 cursor-not-allowed'
+                : isBookmarked
+                  ? 'border-yellow-500 bg-yellow-100 text-yellow-600'
+                  : 'border-yellow-200 bg-yellow-50 text-yellow-300 hover:border-yellow-300 hover:text-yellow-500'
+                }`}
+            >
+              {isBookmarked ? <FaStar className="text-[20px]" /> : <FaRegStar className="text-[20px]" />}
+            </button>
+
+            {/* 3. View Solution */}
+            {solutionLink ? (
+              <a
+                href={solutionLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View Solution"
+                className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-purple-200 bg-purple-50 text-purple-300 hover:border-purple-300 hover:text-purple-500"
+              >
+                <FaEye className="text-[20px]" />
+              </a>
+            ) : (
+              <div
+                title="No Solution Available"
+                className="w-11 h-11 rounded-full border-2 border-gray-200 bg-gray-50 text-gray-300 flex items-center justify-center cursor-not-allowed"
+              >
+                <FaEyeSlash className="text-[20px]" />
+              </div>
+            )}
+
+            {/* 4. Share */}
+            <button
+              type="button"
+              onClick={handleShare}
+              title="Share Question Link"
+              className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-gray-200 bg-gray-50 text-gray-400 hover:border-gray-300 hover:text-gray-500"
+            >
+              <FaLink className="text-[20px]" />
+            </button>
           </div>
-        )}
+        </div>
 
-        {/* 5. Share Question */}
-        <button
-          type="button"
-          onClick={handleShare}
-          className="flex items-center justify-center gap-2 rounded border border-gray-300 bg-gray-100 px-4 py-3 text-sm font-semibold text-gray-600 shadow-sm hover:bg-gray-200 transition-colors h-12"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-4 h-4 text-gray-500"
+        {/* Zone 3: Navigation (Next Question) - Right aligned */}
+        <div>
+          <button
+            type="button"
+            onClick={onNextQuestion}
+            className="px-6 h-12 rounded bg-teal-600 text-white font-bold text-sm shadow-sm hover:bg-teal-700 transition-colors"
           >
-            <path d="M12.232 4.232a2.5 2.5 0 0 1 3.536 3.536l-1.225 1.224a.75.75 0 0 0 1.061 1.06l1.224-1.224a4 4 0 0 0-5.656-5.656l-3 3a4 4 0 0 0 .225 5.865.75.75 0 0 0 .977-1.138 2.5 2.5 0 0 1-.142-3.667l3-3Z" />
-            <path d="M11.603 7.963a.75.75 0 0 0-.977 1.138 2.5 2.5 0 0 1 .142 3.667l-3 3a2.5 2.5 0 0 1-3.536-3.536l1.225-1.224a.75.75 0 0 0-1.061-1.06l-1.224 1.224a4 4 0 1 0 5.656 5.656l3-3a4 4 0 0 0-.225-5.865Z" />
-          </svg>
-          Share
-        </button>
-
-        {/* 6. Next Question */}
-        <button
-          type="button"
-          onClick={onNextQuestion}
-          className="flex items-center justify-center rounded bg-teal-600 px-4 py-3 text-base font-bold text-white shadow-sm hover:bg-teal-700 transition-colors h-12"
-        >
-          Next Question
-        </button>
+            Next Question
+          </button>
+        </div>
 
       </div>
 
       {isStatusActionDisabled && (
-        <p className="mt-3 text-xs text-amber-700">
+        <p className="mt-3 text-xs text-amber-700 text-center">
           Progress status is unavailable for this question identifier.
         </p>
       )}

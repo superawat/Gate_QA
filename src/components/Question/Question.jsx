@@ -11,6 +11,7 @@ export default function Question({ question = {}, changeQuestion }) {
     .replace(/\n\n/g, "<br />")
     .replace(/\n<li>/g, "<br><li>");
   const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtml);
+
   const questionProgressId = getQuestionProgressId(question);
   const isSolved = isQuestionSolved(questionProgressId);
   const isBookmarked = isQuestionBookmarked(questionProgressId);
