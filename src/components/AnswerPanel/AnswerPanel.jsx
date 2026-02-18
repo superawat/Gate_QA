@@ -289,6 +289,100 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
 
   const isInteractive = answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type);
 
+  // --- Render Helpers ---
+
+  const renderSubmitButton = (additionalClasses = "") => (
+    <button
+      type="button"
+      disabled={!isInteractive || !hasValidInput}
+      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!isInteractive || !hasValidInput
+        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+        : "bg-blue-600 text-white hover:bg-blue-700"
+        } ${additionalClasses}`}
+      onClick={evaluateSubmission}
+    >
+      {result ? "Submit Again" : "Submit Answer"}
+    </button>
+  );
+
+  const renderNextButton = (additionalClasses = "") => (
+    <button
+      type="button"
+      onClick={onNextQuestion}
+      className={`px-6 h-12 rounded bg-teal-600 text-white font-bold text-sm shadow-sm hover:bg-teal-700 transition-colors flex items-center justify-center ${additionalClasses}`}
+    >
+      Next Question
+    </button>
+  );
+
+  const renderIconTray = (containerClasses = "") => (
+    <div className={`flex items-center gap-3 ${containerClasses}`}>
+      {/* 1. Mark as Solved */}
+      <button
+        type="button"
+        disabled={isStatusActionDisabled}
+        onClick={handleToggleSolved}
+        title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+        aria-pressed={isSolved}
+        className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
+          ? 'border-gray-200 bg-gray-100 text-gray-300 cursor-not-allowed'
+          : isSolved
+            ? 'border-green-500 bg-green-100 text-green-600'
+            : 'border-green-200 bg-green-50 text-green-300 hover:border-green-300 hover:text-green-500'
+          }`}
+      >
+        <FaCheck className="text-[20px]" />
+      </button>
+
+      {/* 2. Bookmark */}
+      <button
+        type="button"
+        disabled={isStatusActionDisabled}
+        onClick={handleToggleBookmark}
+        title={isBookmarked ? "Remove Bookmark" : "Bookmark Question"}
+        aria-pressed={isBookmarked}
+        className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
+          ? 'border-gray-200 bg-gray-100 text-gray-300 cursor-not-allowed'
+          : isBookmarked
+            ? 'border-yellow-500 bg-yellow-100 text-yellow-600'
+            : 'border-yellow-200 bg-yellow-50 text-yellow-300 hover:border-yellow-300 hover:text-yellow-500'
+          }`}
+      >
+        {isBookmarked ? <FaStar className="text-[20px]" /> : <FaRegStar className="text-[20px]" />}
+      </button>
+
+      {/* 3. View Solution */}
+      {solutionLink ? (
+        <a
+          href={solutionLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="View Solution"
+          className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-purple-200 bg-purple-50 text-purple-300 hover:border-purple-300 hover:text-purple-500"
+        >
+          <FaEye className="text-[20px]" />
+        </a>
+      ) : (
+        <div
+          title="No Solution Available"
+          className="w-11 h-11 rounded-full border-2 border-gray-200 bg-gray-50 text-gray-300 flex items-center justify-center cursor-not-allowed"
+        >
+          <FaEyeSlash className="text-[20px]" />
+        </div>
+      )}
+
+      {/* 4. Share */}
+      <button
+        type="button"
+        onClick={handleShare}
+        title="Share Question Link"
+        className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-gray-200 bg-gray-50 text-gray-400 hover:border-gray-300 hover:text-gray-500"
+      >
+        <FaLink className="text-[20px]" />
+      </button>
+    </div>
+  );
+
   return (
     <div className="mt-6 border-t border-gray-200 pt-6">
 
@@ -305,102 +399,34 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
         )}
       </div>
 
-      {/* Unified Action Bar - 3 Zone Layout */}
-      <div className="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-100 shadow-sm mt-8">
-
-        {/* Zone 1: Primary Action (Submit Answer) - Left aligned */}
+      {/* --- Desktop Action Bar (Hidden on Mobile) --- */}
+      <div className="hidden md:flex items-center justify-between px-4 py-3 bg-white border-t border-gray-100 shadow-sm mt-8">
+        {/* Zone 1: Submit */}
         <div>
-          <button
-            type="button"
-            disabled={!isInteractive || !hasValidInput}
-            className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors ${!isInteractive || !hasValidInput
-              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-              : "bg-blue-600 text-white hover:bg-blue-700"
-              }`}
-            onClick={evaluateSubmission}
-          >
-            {result ? "Submit Again" : "Submit Answer"}
-          </button>
+          {renderSubmitButton()}
         </div>
 
-        {/* Zone 2: Icon Tray (Secondary Actions) - Centered */}
+        {/* Zone 2: Icons */}
         <div className="flex-1 flex justify-center">
-          <div className="flex items-center gap-3">
-            {/* 1. Mark as Solved */}
-            <button
-              type="button"
-              disabled={isStatusActionDisabled}
-              onClick={handleToggleSolved}
-              title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
-              className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
-                ? 'border-gray-200 bg-gray-50 text-gray-300 cursor-not-allowed'
-                : isSolved
-                  ? 'border-green-500 bg-green-100 text-green-600'
-                  : 'border-green-200 bg-green-50 text-green-300 hover:border-green-300 hover:text-green-500'
-                }`}
-            >
-              <FaCheck className="text-[20px]" />
-            </button>
-
-            {/* 2. Bookmark */}
-            <button
-              type="button"
-              disabled={isStatusActionDisabled}
-              onClick={handleToggleBookmark}
-              title={isBookmarked ? "Remove Bookmark" : "Bookmark Question"}
-              className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
-                ? 'border-gray-200 bg-gray-50 text-gray-300 cursor-not-allowed'
-                : isBookmarked
-                  ? 'border-yellow-500 bg-yellow-100 text-yellow-600'
-                  : 'border-yellow-200 bg-yellow-50 text-yellow-300 hover:border-yellow-300 hover:text-yellow-500'
-                }`}
-            >
-              {isBookmarked ? <FaStar className="text-[20px]" /> : <FaRegStar className="text-[20px]" />}
-            </button>
-
-            {/* 3. View Solution */}
-            {solutionLink ? (
-              <a
-                href={solutionLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="View Solution"
-                className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-purple-200 bg-purple-50 text-purple-300 hover:border-purple-300 hover:text-purple-500"
-              >
-                <FaEye className="text-[20px]" />
-              </a>
-            ) : (
-              <div
-                title="No Solution Available"
-                className="w-11 h-11 rounded-full border-2 border-gray-200 bg-gray-50 text-gray-300 flex items-center justify-center cursor-not-allowed"
-              >
-                <FaEyeSlash className="text-[20px]" />
-              </div>
-            )}
-
-            {/* 4. Share */}
-            <button
-              type="button"
-              onClick={handleShare}
-              title="Share Question Link"
-              className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-gray-200 bg-gray-50 text-gray-400 hover:border-gray-300 hover:text-gray-500"
-            >
-              <FaLink className="text-[20px]" />
-            </button>
-          </div>
+          {renderIconTray()}
         </div>
 
-        {/* Zone 3: Navigation (Next Question) - Right aligned */}
+        {/* Zone 3: Next */}
         <div>
-          <button
-            type="button"
-            onClick={onNextQuestion}
-            className="px-6 h-12 rounded bg-teal-600 text-white font-bold text-sm shadow-sm hover:bg-teal-700 transition-colors"
-          >
-            Next Question
-          </button>
+          {renderNextButton()}
         </div>
+      </div>
 
+      {/* --- Mobile Action Bar (Sticky Bottom) --- */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50 flex flex-col gap-3 pb-safe" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}>
+        {/* Row 1: Icons */}
+        {renderIconTray("justify-evenly w-full")}
+
+        {/* Row 2: Primary Buttons */}
+        <div className="grid grid-cols-2 gap-3">
+          {renderSubmitButton("w-full")}
+          {renderNextButton("w-full")}
+        </div>
       </div>
 
       {isStatusActionDisabled && (
@@ -408,6 +434,9 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
           Progress status is unavailable for this question identifier.
         </p>
       )}
+
+      {/* Spacer for Mobile Sticky Bar */}
+      <div className="h-40 md:h-0" aria-hidden="true" />
 
       <Toast message="Link copied!" visible={toastVisible} />
     </div>
