@@ -29,7 +29,7 @@ const Footer = () => {
               className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-red-50 hover:bg-red-100 dark:bg-red-900/10 dark:hover:bg-red-900/20 text-black text-xs font-semibold rounded border border-red-500 dark:border-red-500 transition-colors"
             >
               <FaExclamationTriangle className="text-red-600 dark:text-red-400" />
-              <span>Read This: Data Persistence & Policy</span>
+              <span>Data Persistence & Policy</span>
             </button>
           </div>
 

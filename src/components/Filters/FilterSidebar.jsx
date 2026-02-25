@@ -4,6 +4,7 @@ import YearRangeFilter from './YearRangeFilter';
 import TopicFilter from './TopicFilter';
 import ProgressBar from './ProgressBar';
 import ProgressFilterToggles from './ProgressFilterToggles';
+import ProgressManager from '../ProgressManager/ProgressManager';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
@@ -69,23 +70,19 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 </div>
             </div>
 
-            <div className="p-4 border-b border-gray-200 bg-white z-10 flex-shrink-0">
-                <div className="flex flex-col lg:flex-row gap-4 h-full items-stretch">
+            <div className="px-4 py-2 border-b border-gray-200 bg-white z-10 flex-shrink-0">
+                <div className="flex flex-col lg:flex-row gap-3 lg:items-stretch">
                     <div className="flex-1 min-w-0 flex flex-col">
                         <ProgressBar
                             solvedCount={solvedCount}
                             totalQuestions={totalQuestions}
                             progressPercentage={progressPercentage}
-                            className="flex-1"
-                        />
-                        {!isProgressStorageAvailable && (
-                            <p className="mt-2 text-xs text-amber-700">
-                                Progress persistence is unavailable.
-                            </p>
-                        )}
+                        >
+                            <ProgressManager />
+                        </ProgressBar>
                     </div>
-                    <div className="lg:w-[45%] flex flex-col justify-center">
-                        <div className="bg-gray-50 rounded-lg p-3 border border-gray-100 h-full flex flex-col justify-center">
+                    <div className="lg:w-[45%] flex flex-col">
+                        <div className="bg-gray-50 rounded-lg p-3 border border-gray-100 flex flex-col justify-center flex-1">
                             <ProgressFilterToggles
                                 hideSolved={filters.hideSolved}
                                 showOnlySolved={filters.showOnlySolved}
@@ -161,18 +158,13 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 </div>
             </div>
 
+
             {/* Sticky Bottom: Year Range */}
             <div className="p-4 border-t border-gray-200 bg-gray-50 z-10 flex-shrink-0">
                 <div className="mb-2">
                     <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Year Range</h3>
                 </div>
                 <YearRangeFilter />
-
-                <div className="mt-4 border-t border-gray-200 pt-4">
-                    <p className="text-xs text-gray-500 text-center">
-                        {bookmarkedCount} bookmarked questions in current view
-                    </p>
-                </div>
             </div>
         </aside>
     );

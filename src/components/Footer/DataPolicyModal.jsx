@@ -71,6 +71,8 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
                             How to protect your data?
                         </h3>
                         <ul className="list-disc list-outside ml-4 space-y-2 text-sm">
+                            <li><strong>Use Export JSON regularly</strong> — open the filter panel, find the <em>Your Progress</em> card, and click <strong>Export JSON</strong> to download a backup file. This is your only safety net if browser data is lost.</li>
+                            <li><strong>Transfer across devices</strong> — export on one device, then use <strong>Import</strong> on another to restore. You can choose to merge with or replace existing progress.</li>
                             <li>Avoid using Private/Incognito windows if you want to save progress.</li>
                             <li>Stick to one browser on one device for the best experience.</li>
                             <li>Periodically check that your bookmarks are persisting after a page reload.</li>

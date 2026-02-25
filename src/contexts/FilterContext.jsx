@@ -604,6 +604,16 @@ export const FilterProvider = ({ children }) => {
         ));
     }, []);
 
+    const refreshProgressState = useCallback(() => {
+        if (typeof window === 'undefined' || !canUseBrowserStorage()) {
+            return;
+        }
+        const storedSolved = normalizeStoredIds(readJsonFromStorage(STORAGE_KEYS.solved, []));
+        const storedBookmarked = normalizeStoredIds(readJsonFromStorage(STORAGE_KEYS.bookmarked, []));
+        setSolvedQuestionIds(storedSolved);
+        setBookmarkedQuestionIds(storedBookmarked);
+    }, []);
+
     const getQuestionProgressId = useCallback((question = {}) => {
         return getQuestionTrackingId(question);
     }, []);
@@ -717,6 +727,7 @@ export const FilterProvider = ({ children }) => {
         isQuestionSolved,
         isQuestionBookmarked,
         getQuestionProgressId,
+        refreshProgressState,
         setHideSolved,
         setShowOnlySolved,
         setShowOnlyBookmarked
@@ -724,6 +735,7 @@ export const FilterProvider = ({ children }) => {
         updateFilters, clearFilters, getQuestionById,
         toggleSolved, toggleBookmark, isQuestionSolved,
         isQuestionBookmarked, getQuestionProgressId,
+        refreshProgressState,
         setHideSolved, setShowOnlySolved, setShowOnlyBookmarked
     ]);
 
