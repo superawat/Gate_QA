@@ -3,10 +3,10 @@ import { MathJax } from "better-react-mathjax";
 import DOMPurify from "dompurify";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import AnswerPanel from "../AnswerPanel/AnswerPanel";
-import { useFilters } from "../../contexts/FilterContext";
+import { useFilterActions } from "../../contexts/FilterContext";
 
 export default function Question({ question = {}, changeQuestion }) {
-  const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilters();
+  const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
   const questionHtml = (question.question || "")
     .replace(/\n\n/g, "<br />")
     .replace(/\n<li>/g, "<br><li>");

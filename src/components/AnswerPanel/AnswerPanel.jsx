@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { FaCheck, FaEye, FaEyeSlash, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
-import { useFilters } from "../../contexts/FilterContext";
+import { useFilterActions } from "../../contexts/FilterContext";
 import Toast from "../Toast/Toast";
 
 const PROGRESS_KEY = "gateqa_progress_v1";
@@ -32,7 +32,7 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     isQuestionSolved,
     isQuestionBookmarked,
     getQuestionProgressId,
-  } = useFilters();
+  } = useFilterActions();
 
   const questionIdentity = useMemo(
     () => AnswerService.getQuestionIdentity(question),

@@ -7,12 +7,13 @@ import Footer from "./components/Footer/Footer";
 import FilterModal from "./components/Filters/FilterModal";
 import ActiveFilterChips from "./components/Filters/ActiveFilterChips";
 import CalculatorWidget from "./components/Calculator/CalculatorWidget";
-import { FilterProvider, useFilters } from "./contexts/FilterContext";
+import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 
 const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setIsMobileFilterOpen }) => {
-  const { filteredQuestions, isInitialized, totalQuestions, allQuestions, getQuestionById } = useFilters();
+  const { filteredQuestions, isInitialized, totalQuestions, allQuestions } = useFilterState();
+  const { getQuestionById } = useFilterActions();
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const hasResolvedDeepLink = useRef(false);
 

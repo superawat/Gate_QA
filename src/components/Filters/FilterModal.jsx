@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { useFilters } from '../../contexts/FilterContext';
+import { useFilterState } from '../../contexts/FilterContext';
 import FilterSidebar from './FilterSidebar';
 import { FaTimes } from 'react-icons/fa';
 
 const FilterModal = ({ isOpen, onClose }) => {
-    const { filteredQuestions, totalQuestions } = useFilters();
+    const { filteredQuestions, totalQuestions } = useFilterState();
 
     // Prevent background scrolling when modal is open
     useEffect(() => {

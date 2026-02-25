@@ -163,14 +163,6 @@ const getQuestionTrackingId = (question = {}) => {
     return normalized || null;
 };
 
-export const useFilters = () => {
-    const state = useContext(FilterStateContext);
-    const actions = useContext(FilterActionsContext);
-    if (!state || !actions) {
-        throw new Error('useFilters must be used within a FilterProvider');
-    }
-    return { ...state, ...actions };
-};
 
 /** Use only filter state (data) — re-renders when data changes. */
 export const useFilterState = () => {
@@ -394,6 +386,20 @@ export const FilterProvider = ({ children }) => {
     const solvedQuestionSet = useMemo(() => new Set(solvedQuestionIds), [solvedQuestionIds]);
     const bookmarkedQuestionSet = useMemo(() => new Set(bookmarkedQuestionIds), [bookmarkedQuestionIds]);
 
+    // ── Reverse map: subtopicSlug → parent subjectSlug (for scoped filtering) ──
+    const subtopicToSubjectSlug = useMemo(() => {
+        const map = new Map();
+        const subs = structuredTags.structuredSubtopics || {};
+        Object.keys(subs).forEach(subjectSlug => {
+            (subs[subjectSlug] || []).forEach(entry => {
+                if (entry && entry.slug) {
+                    map.set(entry.slug, subjectSlug);
+                }
+            });
+        });
+        return map;
+    }, [structuredTags.structuredSubtopics]);
+
     // ── Layer 3: useMemo-based filtered questions ────────────────────────
     const filteredQuestions = useMemo(() => {
         if (!QuestionService.questions.length) return [];
@@ -410,6 +416,18 @@ export const FilterProvider = ({ children }) => {
 
         const selectedTypes = normalizeSelectedTypes(filters.selectedTypes);
         const selectedTypeSet = new Set(selectedTypes.map(type => type.toUpperCase()));
+
+        // Group selected subtopics by their parent subject for scoped AND filtering.
+        // e.g. { "dbms": Set(["b-tree"]), "os": Set(["virtual-memory"]) }
+        const subtopicsByParentSubject = new Map();
+        selectedSubtopics.forEach(subtopicSlug => {
+            const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+            if (!parentSlug) return;
+            if (!subtopicsByParentSubject.has(parentSlug)) {
+                subtopicsByParentSubject.set(parentSlug, new Set());
+            }
+            subtopicsByParentSubject.get(parentSlug).add(subtopicSlug);
+        });
 
         return QuestionService.questions.filter(q => {
             const questionId = getQuestionTrackingId(q);
@@ -456,18 +474,31 @@ export const FilterProvider = ({ children }) => {
                 rangeMatch = qYearNum > 0 && qYearNum >= yearRange[0] && qYearNum <= yearRange[1];
             }
 
+            const qSubjectSlug = q.subjectSlug || 'unknown';
+
             let topicMatch = true;
             if (selectedSubjects.length > 0) {
-                const subjectSlug = q.subjectSlug || 'unknown';
-                topicMatch = selectedSubjects.includes(subjectSlug);
+                topicMatch = selectedSubjects.includes(qSubjectSlug);
             }
 
+            // Subtopic match: scoped to parent subject (AND logic).
+            // A question must belong to the parent subject of the selected subtopic
+            // AND have that subtopic in its canonical subtopics list.
             let subtopicMatch = true;
-            if (selectedSubtopics.length > 0) {
-                const questionSubtopicSlugs = Array.isArray(q.subtopics)
-                    ? q.subtopics.map(sub => QuestionService.slugifyToken(sub.slug || sub.label || sub))
-                    : [];
-                subtopicMatch = questionSubtopicSlugs.some(slug => selectedSubtopics.includes(slug));
+            if (subtopicsByParentSubject.size > 0) {
+                const requiredSubtopics = subtopicsByParentSubject.get(qSubjectSlug);
+                if (requiredSubtopics) {
+                    // Question is in a subject that has subtopic filters active —
+                    // it must match at least one of the required subtopics.
+                    const questionSubtopicSlugs = Array.isArray(q.subtopics)
+                        ? q.subtopics.map(sub => QuestionService.slugifyToken(sub.slug || sub.label || sub))
+                        : [];
+                    subtopicMatch = questionSubtopicSlugs.some(slug => requiredSubtopics.has(slug));
+                } else {
+                    // Question belongs to a subject with no subtopic filter —
+                    // let it pass (subtopic filter doesn't constrain this subject).
+                    subtopicMatch = true;
+                }
             }
 
             let typeMatch = true;
@@ -477,7 +508,22 @@ export const FilterProvider = ({ children }) => {
 
             return yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch;
         });
-    }, [filters, isInitialized, solvedQuestionSet, bookmarkedQuestionSet, structuredTags.minYear, structuredTags.maxYear]);
+    }, [
+        filters.selectedTypes,
+        filters.selectedSubtopics,
+        filters.selectedSubjects,
+        filters.selectedYearSets,
+        filters.yearRange,
+        filters.hideSolved,
+        filters.showOnlySolved,
+        filters.showOnlyBookmarked,
+        isInitialized,
+        solvedQuestionSet,
+        bookmarkedQuestionSet,
+        structuredTags.minYear,
+        structuredTags.maxYear,
+        subtopicToSubjectSlug
+    ]);
 
     const updateFilters = useCallback((newFilters) => {
         setFilters(prev => {
@@ -490,13 +536,41 @@ export const FilterProvider = ({ children }) => {
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedSubjects')) {
                 merged.selectedSubjects = normalizeSubjectSlugs(newFilters.selectedSubjects);
+
+                // Auto-remove orphaned subtopics when a subject is deselected.
+                // If a subtopic belongs to a subject that is no longer selected,
+                // it must be removed to prevent impossible filter states.
+                const activeSubjectSet = new Set(merged.selectedSubjects);
+                if (merged.selectedSubtopics.length > 0) {
+                    merged.selectedSubtopics = merged.selectedSubtopics.filter(subtopicSlug => {
+                        const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+                        // Keep subtopic if its parent subject is still selected
+                        // or if we can't determine the parent (defensive)
+                        return !parentSlug || activeSubjectSet.has(parentSlug);
+                    });
+                }
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedSubtopics')) {
                 merged.selectedSubtopics = normalizeSubtopicSlugs(newFilters.selectedSubtopics);
+
+                // Auto-add parent subject when a subtopic is selected.
+                // This ensures the subject+subtopic always form a valid AND pair.
+                const currentSubjects = new Set(merged.selectedSubjects);
+                let subjectsChanged = false;
+                merged.selectedSubtopics.forEach(subtopicSlug => {
+                    const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+                    if (parentSlug && !currentSubjects.has(parentSlug)) {
+                        currentSubjects.add(parentSlug);
+                        subjectsChanged = true;
+                    }
+                });
+                if (subjectsChanged) {
+                    merged.selectedSubjects = normalizeSubjectSlugs(Array.from(currentSubjects));
+                }
             }
             return merged;
         });
-    }, []);
+    }, [subtopicToSubjectSlug]);
 
     const toggleSolved = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'

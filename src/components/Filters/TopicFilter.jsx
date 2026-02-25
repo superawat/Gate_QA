@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useFilters } from '../../contexts/FilterContext';
+import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
 const TopicFilter = () => {
-    const { structuredTags, filters, updateFilters } = useFilters();
+    const { structuredTags, filters } = useFilterState();
+    const { updateFilters } = useFilterActions();
     const { subjects = [], structuredSubtopics = {} } = structuredTags;
     const { selectedSubjects, selectedSubtopics } = filters;
     const [expandedTopics, setExpandedTopics] = useState([]);

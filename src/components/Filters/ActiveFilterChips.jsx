@@ -1,10 +1,11 @@
 import React from 'react';
-import { useFilters } from '../../contexts/FilterContext';
+import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 import { FaTimes } from 'react-icons/fa';
 import { QuestionService } from '../../services/QuestionService';
 
 const ActiveFilterChips = () => {
-    const { filters, updateFilters, clearFilters, structuredTags } = useFilters();
+    const { filters, structuredTags } = useFilterState();
+    const { updateFilters, clearFilters } = useFilterActions();
     const {
         selectedYearSets,
         selectedSubjects,

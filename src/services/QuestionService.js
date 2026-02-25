@@ -1,4 +1,5 @@
 import { getExamUidFromQuestion } from "../utils/examUid.js";
+import { isQuotaExceededError } from "../utils/localStorageState.js";
 import precomputedLookup from "../generated/subtopicLookup.json";
 
 // ── Performance: build-time precomputed caches ──────────────────────────
@@ -7,7 +8,7 @@ const PRECOMPUTED_NORMALIZED = precomputedLookup.normalizedSubtopicsBySubject;
 const PRECOMPUTED_ALIASES = precomputedLookup.subjectAliases;
 
 // ── Performance: localStorage cache for processed questions ─────────────
-const INIT_CACHE_VERSION = 'v1';
+const INIT_CACHE_VERSION = 'v2';
 const INIT_CACHE_KEY = `gateqa_init_cache_${INIT_CACHE_VERSION}`;
 
 export class QuestionService {
@@ -388,6 +389,15 @@ export class QuestionService {
     return lookupMap;
   }
 
+  // ── Max subtopic matches per question ─────────────────────────────────
+  // GateOverflow scraped data is known to carry section-wide tag pollution:
+  // every question in an exam section may receive ALL subtopic tags for that
+  // section, not just its own.  Tag order preserves specificity — the first
+  // subtopic-matching tag is almost always correct, later ones are noise.
+  // GATE questions are narrowly focused on a single subtopic, so capping at
+  // 1 eliminates cross-subtopic contamination entirely.
+  static MAX_SUBTOPICS_PER_QUESTION = 1;
+
   static extractCanonicalSubtopics(tags = [], subjectLabel = "") {
     if (!Array.isArray(tags) || !subjectLabel || !this.TOPIC_HIERARCHY[subjectLabel]) {
       return [];
@@ -396,12 +406,31 @@ export class QuestionService {
     const lookup = this.getSubtopicLookupForSubject(subjectLabel);
     const unique = new Map();
 
-    tags.forEach((tag) => {
+    // Iterate tags in order (tag order preserves specificity).
+    for (const tag of tags) {
+      if (unique.size >= this.MAX_SUBTOPICS_PER_QUESTION) break;
       const norm = this.normalizeString(tag);
       const entry = lookup.get(norm);
-      if (!entry || unique.has(entry.slug)) return;
+      if (!entry || unique.has(entry.slug)) continue;
       unique.set(entry.slug, entry);
-    });
+    }
+
+    // Dev-mode diagnostic: warn when over-tagging contamination is detected.
+    if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+      let totalMatches = 0;
+      for (const tag of tags) {
+        const norm = this.normalizeString(tag);
+        if (lookup.has(norm)) totalMatches++;
+      }
+      if (totalMatches > this.MAX_SUBTOPICS_PER_QUESTION + 1) {
+        console.debug(
+          '[SubtopicContamination] %s — %d subtopic tags found, capped to %d. Tags: %o → Kept: %o',
+          subjectLabel, totalMatches, unique.size,
+          tags.filter(t => lookup.has(this.normalizeString(t))),
+          Array.from(unique.values()).map(e => e.label)
+        );
+      }
+    }
 
     return Array.from(unique.values()).sort((a, b) => a.label.localeCompare(b.label));
   }
@@ -594,6 +623,8 @@ export class QuestionService {
   // ── Layer 4 helpers: localStorage cache ────────────────────────────────
   static _readCache() {
     try {
+      // Migration: clean up legacy v1 cache
+      localStorage.removeItem('gateqa_init_cache_v1');
       const raw = localStorage.getItem(INIT_CACHE_KEY);
       if (!raw) return null;
       const cached = JSON.parse(raw);
@@ -637,9 +668,12 @@ export class QuestionService {
         questions: this._stripForCache(this.questions),
       };
       localStorage.setItem(INIT_CACHE_KEY, JSON.stringify(payload));
-    } catch {
-      // Storage full or unavailable — silently skip
-      console.warn('[QuestionService] Cache write failed (quota exceeded?)');
+    } catch (err) {
+      if (isQuotaExceededError(err)) {
+        console.warn('[QuestionService] Cache write failed (quota exceeded)');
+      } else {
+        console.warn('[QuestionService] Cache write failed (storage unavailable)');
+      }
     }
   }
 
@@ -663,7 +697,7 @@ export class QuestionService {
       this.loaded = true;
       this.buildIndexes();
       console.timeEnd('QuestionService.init');
-      console.log('[QuestionService] Loaded from cache (%d questions)', this.questions.length);
+
       return;
     }
 
@@ -741,7 +775,7 @@ export class QuestionService {
     this._writeCache();
 
     console.timeEnd('QuestionService.init');
-    console.log('[QuestionService] Processed %d questions (fresh)', this.questions.length);
+
   }
 
   static buildIndexes() {

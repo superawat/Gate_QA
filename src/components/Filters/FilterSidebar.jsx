@@ -4,7 +4,7 @@ import YearRangeFilter from './YearRangeFilter';
 import TopicFilter from './TopicFilter';
 import ProgressBar from './ProgressBar';
 import ProgressFilterToggles from './ProgressFilterToggles';
-import { useFilters } from '../../contexts/FilterContext';
+import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
     MCQ: {
@@ -27,16 +27,19 @@ const FilterSidebar = ({ className = "", onClose }) => {
         filteredQuestions,
         totalQuestions,
         filters,
-        updateFilters,
-        clearFilters,
         solvedCount,
         bookmarkedCount,
         progressPercentage,
-        isProgressStorageAvailable,
+        isProgressStorageAvailable
+    } = useFilterState();
+
+    const {
+        updateFilters,
+        clearFilters,
         setHideSolved,
         setShowOnlyBookmarked,
         setShowOnlySolved
-    } = useFilters();
+    } = useFilterActions();
     const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [...QUESTION_TYPES];
 
     return (

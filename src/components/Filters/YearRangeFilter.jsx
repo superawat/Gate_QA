@@ -1,10 +1,11 @@
 import React from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { useFilters } from '../../contexts/FilterContext';
+import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const YearRangeFilter = () => {
-    const { structuredTags, filters, updateFilters } = useFilters();
+    const { structuredTags, filters } = useFilterState();
+    const { updateFilters } = useFilterActions();
     const { minYear, maxYear } = structuredTags;
     const { yearRange } = filters;
 

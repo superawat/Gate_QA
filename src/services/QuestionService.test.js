@@ -102,4 +102,23 @@ describe("QuestionService", () => {
 
     expect(subject).toBe("CO & Architecture");
   });
+
+  test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {
+    // We mock the lookup map just for this test
+    const mockLookupObj = {
+      'sqlqueries': { slug: 'sql-queries', label: 'SQL' },
+      'schemanormalization': { slug: 'schema-normalization', label: 'Normalization' },
+    };
+    const mockMap = new Map(Object.entries(mockLookupObj));
+    vi.spyOn(QuestionService, 'getSubtopicLookupForSubject').mockReturnValue(mockMap);
+
+    // Test that the first matched tag (schema-normalization) is taken, and remainder are skipped
+    const tags = ['dbms_bad_tag', 'schema-normalization', 'sql-queries'];
+    const subtopics = QuestionService.extractCanonicalSubtopics(tags, 'Databases');
+
+    expect(subtopics).toHaveLength(1);
+    expect(subtopics[0].slug).toBe('schema-normalization');
+
+    vi.restoreAllMocks();
+  });
 });

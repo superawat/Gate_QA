@@ -1,8 +1,9 @@
 import React from 'react';
-import { useFilters } from '../../contexts/FilterContext';
+import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const YearFilter = () => {
-    const { structuredTags, filters, updateFilters } = useFilters();
+    const { structuredTags, filters } = useFilterState();
+    const { updateFilters } = useFilterActions();
     const { yearSets = [] } = structuredTags;
     const { selectedYearSets } = filters;
 
