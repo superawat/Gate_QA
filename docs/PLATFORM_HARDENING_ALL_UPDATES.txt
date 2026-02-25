@@ -3,218 +3,156 @@ Date: 2026-02-25
 Project: GateQA (Vite + React SPA, GitHub Pages)
 
 ================================================================
-PILLAR 1: DATA INTEGRITY AND CONTENT QUALITY
+SESSION SUMMARY
 ================================================================
 
-1) Data integrity validation script added
-Path:
-- scripts/qa/validate-data.js
-
-What it checks:
-- Reads questions from public/questions-filtered.json (default)
-- Reads answers from first existing candidate:
-  1) public/data/answers/answers_master_v1.json
-  2) public/data/answers/answersmasterv1.json
-  3) public/answersmasterv1.json
-  4) answersmasterv1.json
-- Matches question UID coverage
-- Detects orphan answer rows
-- Flags idstrmissing-style orphan IDs
-- Separates missing answers into actionable/subjective/unsupported buckets
-- Writes JSON report to artifacts/review/data-integrity-report.json
-
-Current strict-mode exit behavior (implementation-accurate):
-- Exit 1 when questions without UID exist
-- Exit 1 when idstrmissing-style orphans exist
-- Actionable coverage gaps currently log warning output (not exit 1)
-
-Commands:
-- npm run qa:validate-data
-- node scripts/qa/validate-data.js --no-strict
-- node scripts/qa/validate-data.js --questions <path> --answers <path> --unsupported <path> --report <path>
-
-2) QA hardening checklist added
-Path:
-- docs/QA_HARDENING_CHECKLIST.md
-
-Coverage includes:
-- MathJax rendering checks
-- DOMPurify XSS sanitization checks
-- Deep-link and URL sync checks
-- localStorage edge-case checks
-- Lighthouse and workflow checks
+This record now includes all major work streams completed on 2026-02-25:
+1) performance precompute + init cache hardening
+2) BUG-007 subtopic contamination fix
+3) FilterContext state/actions split enforcement
+4) cache migration and storage error hardening
+5) SUG-2026-0002 progress import/export manager
 
 ================================================================
-PILLAR 2: USER STATE AND BROWSER EDGE CASES
+1) PERFORMANCE / INIT HARDENING
 ================================================================
-
-1) localStorage state utility added
-Path:
-- src/utils/localStorageState.js
-
-Exports:
-- USER_STATE_STORAGE_KEYS
-- readStorageJson
-- writeStorageJson
-- isQuotaExceededError
-- exportUserState
-- importUserState
-
-Behavior:
-- Safe JSON reads with fallback
-- Structured import results instead of throw
-- Quota-exceeded classification by name/code
-- Supports solved/bookmarked/metadata/progress payload
-
-2) Utility tests added
-Path:
-- src/utils/localStorageState.test.js
-
-Tested scenarios:
-- successful read/write/export/import
-- invalid JSON import handling
-- quota exceeded write/import behavior
-
-3) npm test scripts added
-Path:
-- package.json
-
-Added scripts:
-- test:unit
-- test:watch
-
-================================================================
-PILLAR 3: PERFORMANCE AND LOAD LIMITS
-================================================================
-
-1) Vite build hardening
-Path:
-- vite.config.js
-
-Changes:
-- manual vendor chunk splitting:
-  - vendor-react
-  - vendor-mathjax
-  - vendor-ui
-  - vendor-misc
-- cssCodeSplit: true
-- modulePreload polyfill disabled
-- sourcemap disabled for production
-- chunkSizeWarningLimit set to 350
-
-2) Lighthouse CI configuration added
-Path:
-- lighthouserc.json
-
-Highlights:
-- Runs against preview server at 127.0.0.1:4173
-- Mobile-style assertions configured
-- 3 runs
-- Performance warning threshold
-- Accessibility error threshold
-- LCP and CLS assertions
-
-3) Lighthouse script added
-Path:
-- package.json
 
 Added:
-- lighthouse:mobile
+- scripts/precompute-subtopics.mjs
 
-Commands:
-- npm run build
-- npm run lighthouse:mobile
+Generated output:
+- src/generated/subtopicLookup.json
 
-================================================================
-PILLAR 4: ANALYTICS UTILITIES
-================================================================
+NPM wiring:
+- precompute script added
+- start/build now run precompute before app build steps
 
-1) SPA pageview hook utility added
-Path:
-- src/hooks/useGoatCounterSPA.js
-
-Behavior:
-- Tracks location changes through React Router location object
-- Path dedupe per render cycle
-- Optional first-load skip to avoid double count
-
-Important current state:
-- Hook is not mounted in App.jsx yet
-- Hook depends on react-router-dom; main app currently does not use router
-
-2) GoatCounter client utility added
-Path:
-- src/utils/goatCounterClient.js
-
-Capabilities:
-- waitForGoatCounter retries
-- trackGoatCounterPageview
-- createGoatCounterActionId
-- trackGoatCounterEventOnce with TTL dedupe
-- resetGoatCounterEventDedup
+QuestionService changes:
+- INIT_CACHE_VERSION = v2
+- cache key now gateqa_init_cache_v2
+- _processChunked retained for chunked normalization
+- precomputed subject/subtopic maps consumed at runtime
 
 ================================================================
-PILLAR 5: AUTOMATED MAINTENANCE
+2) BUG-007 FIX: SUBTOPIC CONTAMINATION
 ================================================================
 
-1) Scheduled maintenance workflow added
-Path:
-- .github/workflows/scheduled-maintenance.yml
+Root cause:
+- scraped section-level tags were leaking into individual question tags
 
-Behavior:
-- Trigger every 3 months and manual dispatch
-- Setup Python + Node
-- Run scraper and merge
-- Run non-strict integrity report generation
-- Commit/push data changes to main only when diff exists
-- Build and verify deployment artifacts
-- Deploy dist to gh-pages only when data changed
-- Uses workflow concurrency group
+Fix implemented:
+- MAX_SUBTOPICS_PER_QUESTION = 1
+- extractCanonicalSubtopics keeps first matched canonical subtopic only
+- scoped subtopic filtering added in FilterContext
+- reverse map subtopicToSubjectSlug added
 
-2) Existing CI and scraper workflows retained
-Paths:
-- .github/workflows/node.js.yml
-- .github/workflows/scraper.yml
+Known limitation:
+- genuine multi-subtopic questions can be discoverable only via first matched subtopic
 
 ================================================================
-PACKAGE AND TOOLING UPDATES
+3) CONTEXT SPLIT ENFORCEMENT
 ================================================================
 
-Modified:
+FilterContext split:
+- FilterStateContext
+- FilterActionsContext
+
+Hooks:
+- useFilterState()
+- useFilterActions()
+
+Removed:
+- useFilters() compatibility hook
+
+Additional action:
+- refreshProgressState() for post-import state sync
+
+Migration scope:
+- App.jsx and all filter/question/answer components migrated to split hooks
+
+================================================================
+4) CACHE MIGRATION AND STORAGE HARDENING
+================================================================
+
+QuestionService:
+- _readCache() removes legacy gateqa_init_cache_v1 key
+- _writeCache() classifies quota errors with isQuotaExceededError()
+
+localStorage utility:
+- read/write helpers and quota classification already present and reused
+
+================================================================
+5) SUG-2026-0002: PROGRESS MANAGER
+================================================================
+
+Added files:
+- src/components/ProgressManager/ProgressManager.jsx
+- src/components/ProgressManager/ImportConfirmationModal.jsx
+
+Injected into:
+- src/components/Filters/FilterSidebar.jsx
+
+Features shipped:
+- JSON export of progress
+- enriched CSV export (questionUid, year, subject, subtopic, type, status)
+- import flow with Merge/Replace confirmation
+- schema-version warning path
+- quota/write error handling
+- refreshProgressState() on successful import
+- file input reset in all paths
+- inline help popover
+
+================================================================
+DATA POLICY UPDATE
+================================================================
+
+DataPolicyModal updated with:
+- backup guidance using Export JSON
+- cross-device transfer instructions using Import
+- merge/replace strategy explanation
+
+================================================================
+TOOLING CLEANUP
+================================================================
+
+Removed dead artifacts:
+- scripts/audit-canonical-filters.mjs
+- audit:canonical script in package.json
+
+================================================================
+TEST STATUS SNAPSHOT
+================================================================
+
+Observed:
+- 24 unit tests passing
+
+Includes new tests for:
+- subtopic cap behavior
+- orphan subtopic removal on subject deselect
+
+================================================================
+FILES OF INTEREST (2026-02-25 SESSION)
+================================================================
+
+Added:
+- scripts/precompute-subtopics.mjs
+- src/components/ProgressManager/ProgressManager.jsx
+- src/components/ProgressManager/ImportConfirmationModal.jsx
+- src/contexts/FilterContext.test.jsx
+
+Modified (high impact):
+- src/services/QuestionService.js
+- src/contexts/FilterContext.jsx
+- src/components/Filters/FilterSidebar.jsx
+- src/components/Filters/TopicFilter.jsx
+- src/components/Filters/YearFilter.jsx
+- src/components/Filters/YearRangeFilter.jsx
+- src/components/Filters/ActiveFilterChips.jsx
+- src/components/Filters/FilterModal.jsx
+- src/components/Question/Question.jsx
+- src/components/AnswerPanel/AnswerPanel.jsx
+- src/components/Footer/DataPolicyModal.jsx
 - package.json
-- package-lock.json
-- vite.config.js
-
-Added dev dependencies:
-- vitest
-- @lhci/cli
-
-================================================================
-FILES ADDED IN HARDENING WAVE
-================================================================
-
-- scripts/qa/validate-data.js
-- src/utils/localStorageState.js
-- src/utils/localStorageState.test.js
-- src/utils/goatCounterClient.js
-- src/hooks/useGoatCounterSPA.js
-- lighthouserc.json
-- .github/workflows/scheduled-maintenance.yml
-- docs/QA_HARDENING_CHECKLIST.md
-- docs/PLATFORM_HARDENING_ALL_UPDATES.txt
-
-================================================================
-VERIFICATION SNAPSHOT (AS RECORDED)
-================================================================
-
-Executed in hardening cycle:
-- npm run test:unit
-- npm run build
-- npm run qa:validate-data
-
-Observed summary:
-- Unit tests: pass
-- Build: pass
-- Integrity check: report generated; unresolved coverage gaps may remain depending on dataset state
+- .gitignore
 
 END OF RECORD

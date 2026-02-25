@@ -2,37 +2,41 @@
 
 This folder is the source of truth for engineering documentation in GateQA.
 
-## Read First
+## Read first
 
 1. `ARCHITECTURE.md`
 2. `FRONTEND_GUIDE.md`
-3. `DATA_PIPELINE.md`
-4. `DEPLOYMENT.md`
+3. `KNOWN-LIMITATIONS.md`
+4. `DATA-POLICY.md`
 5. `TESTING.md`
 
-## Full Document Map
+## Full map
 
 - `ARCHITECTURE.md`
-  - Runtime architecture, state model, URL contract, invariants
+  - runtime architecture, 4-layer init model, context split
 - `REPO_STRUCTURE.md`
-  - Current filesystem map and ownership guide
+  - filesystem layout and ownership map
 - `FRONTEND_GUIDE.md`
-  - UI behavior, filters, persistence, deep-link mechanics
+  - filter behavior, hook contract, ProgressManager UX
 - `DATA_PIPELINE.md`
-  - Scraper + answer ETL + integrity/reporting flow
+  - scrape/enrich/answers/validation/precompute flow
 - `DEPLOYMENT.md`
-  - Build/deploy model, workflow behavior, production checks
+  - build/deploy chain and workflow behavior
 - `TESTING.md`
-  - Unit/pipeline/manual QA strategy and gates
+  - automated + manual QA strategy
 - `CONTRIBUTING.md`
-  - Contribution standards and review priorities
+  - development guardrails and release bump rules
 - `CHANGELOG.md`
-  - Versioned change history
+  - versioned release notes
+- `KNOWN-LIMITATIONS.md`
+  - intentional tradeoffs and known false negatives
+- `DATA-POLICY.md`
+  - persistence, backup, and transfer policy
 - `QA_HARDENING_CHECKLIST.md`
-  - Release hardening checklist by risk pillar
+  - release hardening checklist
 - `PLATFORM_HARDENING_ALL_UPDATES.txt`
-  - Consolidated hardening implementation record
+  - hardening record log
 
-## Maintenance Rule
+## Maintenance rule
 
-Whenever behavior, scripts, workflows, or data contracts change, update the relevant file in this folder in the same PR.
+Whenever behavior, scripts, workflows, or contracts change, update the relevant docs file in the same PR.

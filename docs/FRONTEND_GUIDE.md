@@ -1,6 +1,6 @@
 ﻿# Frontend Guide
 
-This guide covers local development, UI behavior, state persistence, and safe refactor rules for the React frontend.
+This guide covers frontend runtime behavior, state contract, and safe refactor rules.
 
 ## Prerequisites
 
@@ -11,143 +11,128 @@ This guide covers local development, UI behavior, state persistence, and safe re
 
 ```bash
 npm install
+npm run precompute
 npm start
 npm run build
 npm run serve
 npm run test:unit
-npm run test:watch
-npm run qa:validate-data
-npm run lighthouse:mobile
 ```
 
-### Script Details
+### Script behavior
 
+- `npm run precompute`
+  - runs `node scripts/precompute-subtopics.mjs`
+  - generates `src/generated/subtopicLookup.json`
 - `npm start`
-  - Runs `scripts/deployment/sync-calculator.mjs --public`
-  - Starts Vite dev server (auto-open enabled in `vite.config.js`)
+  1. precompute subtopic lookup
+  2. sync calculator into `public/`
+  3. start Vite dev server
 - `npm run build`
-  - Syncs calculator into `public/`
-  - Builds Vite bundle to `dist/`
-  - Creates `dist/.nojekyll`
-  - Syncs calculator into `dist/calculator/`
-- `npm run serve`
-  - Serves built app from `dist/`
+  1. precompute subtopic lookup
+  2. sync calculator into `public/`
+  3. Vite build to `dist/`
+  4. ensure `dist/.nojekyll`
+  5. sync calculator into `dist/calculator/`
 
-## App Layout
+## Context contract (mandatory)
 
-- `Header`
-  - Home logo link (`import.meta.env.BASE_URL`)
-  - Calculator button
-  - Filter button
-- `FilterModal`
-  - Full-screen modal with sticky header/footer
-  - Wraps `FilterSidebar`
-- Main card area
-  - `ActiveFilterChips`
-  - `Question` card with MathJax-rendered, sanitized content
-  - `AnswerPanel` for answer interaction and actions
-- `Footer`
-  - Data policy modal trigger
-  - Support modal trigger
-- `CalculatorWidget`
-  - Draggable desktop panel, full-screen mobile sheet
+`FilterContext` is split:
 
-## Filter UX Contract
+- `useFilterState()` for reactive state reads
+- `useFilterActions()` for callbacks
 
-### Active Dimensions
+`useFilters()` no longer exists and must not be reintroduced.
 
-- Year set (`selectedYearSets`)
-- Year range (`yearRange`)
-- Subject (`selectedSubjects`, slug-based)
-- Subtopic (`selectedSubtopics`, slug-based)
-- Type (`MCQ`, `MSQ`, `NAT`)
-- Progress toggles:
-  - `hideSolved`
-  - `showOnlySolved`
-  - `showOnlyBookmarked`
+All frontend filter components are expected to consume one or both of the split hooks.
 
-### Rules
+## Filter behavior updates (2026-02-25)
 
-- All filters auto-apply immediately.
-- `hideSolved` and `showOnlySolved` are mutually exclusive.
-- If all three types are selected, type filtering is skipped.
-- `clearFilters()` resets to defaults, including progress toggles.
+### Scoped subtopic filtering
 
-## URL State and Deep Linking
+- `selectedSubtopics` are matched within parent subject scope.
+- Internal reverse map: `subtopicToSubjectSlug`.
+- Selecting a subtopic can auto-add its parent subject.
+- Deselecting a subject removes orphaned subtopics.
 
-### Query Parameters
+### BUG-007 guardrail
 
-- `question=<question_uid>`
-- `years=2025-s2,2024-s0`
-- `subjects=os,dbms`
-- `subtopics=deadlock-prevention-avoidance-detection,sql`
-- `range=2016-2025`
-- `types=mcq,nat`
-- `hideSolved=1`
-- `showOnlySolved=1`
-- `showOnlyBookmarked=1`
+- `QuestionService` caps extracted subtopics per question to one (`MAX_SUBTOPICS_PER_QUESTION = 1`).
+- This prevents contaminated section-level tags from over-filtering results.
 
-### Deep-link Behavior
+## ProgressManager in sidebar
 
-- On first initialized render, app checks `question` param and tries to resolve exact question.
-- If resolved question is in current filtered pool, it becomes current question.
-- If question is invalid or excluded by active filters, app falls back to random filtered question.
-- Share action in `AnswerPanel` copies URL with `?question=<uid>`.
-- Filter URL sync preserves existing `question` param.
+`FilterSidebar` now includes `ProgressManager` inside `ProgressBar`.
 
-## Progress Persistence
+Features:
 
-### Keys Used by FilterContext
+- Export JSON backup (`solvedQuestions`, `bookmarkedQuestions`, schema + app version)
+- Export enriched CSV (view-only):
+  - `questionUid,year,subject,subtopic,type,status`
+- Import JSON with confirmation modal strategies:
+  - Merge
+  - Replace
+- Import success path calls `refreshProgressState()` from `FilterActionsContext`
+- Handles quota/storage write errors
+- File input is reset in all paths so same file can be reselected
+- Inline help popover (`i`) explains export/import actions
+
+### Related UI changes observed in same session
+
+- Progress card now hosts import/export controls directly.
+- Previous bottom "bookmarked count" text in sidebar footer is no longer shown.
+- `AnswerPanel` desktop/mobile action layout now includes explicit `Solution` button (separate from icon tray).
+- Icon tray is now solved/bookmark/share only.
+
+## Deep-link and URL behavior
+
+Supported params:
+
+- `question`
+- `years`
+- `subjects`
+- `subtopics`
+- `range`
+- `types`
+- `hideSolved`
+- `showOnlySolved`
+- `showOnlyBookmarked`
+
+Rules:
+
+- Filter changes are auto-applied and synced via `replaceState`.
+- `question` param is preserved during filter writes.
+- Share action in `AnswerPanel` writes deep-link URL with `question=<uid>`.
+
+## Persistence keys
 
 - `gate_qa_solved_questions`
 - `gate_qa_bookmarked_questions`
 - `gate_qa_progress_metadata`
-
-### Additional Key Used by AnswerPanel
-
 - `gateqa_progress_v1` (attempt metadata)
 
-### Storage Behavior
+## Responsive notes
 
-- Storage availability is probed with a write/remove health check.
-- Legacy bookmarks key (`gateqa_bookmarks_v1`) is migrated once.
-- Invalid IDs are pruned when canonical question ID set is available.
-- If storage writes fail, persistence is marked unavailable and UI shows warning text.
+- Filter modal remains full-screen overlay on all sizes.
+- Sidebar internals:
+  - progress + toggles at top
+  - type toggles
+  - topic/year columns
+  - year range footer
+- Calculator behavior:
+  - desktop: draggable floating panel
+  - mobile: full-screen panel
 
-## Responsive Behavior
+## Known caveats
 
-- `< 768px`
-  - Filter sections stack vertically
-  - Calculator becomes full-screen panel
-  - AnswerPanel action bar uses stacked mobile layout
-- `>= 768px`
-  - Topics and years shown side-by-side in filter modal
-  - Calculator is draggable floating panel
-- `>= 1024px`
-  - Progress bar and progress toggles shown in horizontal split
-
-## Security and Rendering
-
-- Question HTML is sanitized with DOMPurify before rendering.
-- Math is rendered through `better-react-mathjax`.
-- `index.html` defines MathJax config and includes analytics scripts.
-
-## Known Caveats
-
-- There are still `dark:` classes in components even though product direction is light-first.
+- Some UI files still contain `dark:` classes while product style remains light-first.
 - `useGoatCounterSPA` exists but is not mounted in `App.jsx`.
-- `useGoatCounterSPA` imports `react-router-dom`; app currently has no router.
+- `useGoatCounterSPA` imports `react-router-dom` while app runtime has no router integration.
 
-## Safe Refactor Checklist
+## Safe refactor checklist
 
-Before merging frontend/filter changes:
-
-- [ ] URL round-trip still works for all active params.
-- [ ] `question` deep-link survives filter updates.
-- [ ] Current question never drifts outside filtered pool.
-- [ ] `clearFilters()` returns exact default state.
-- [ ] Mutually exclusive solved toggles still enforce exclusion.
-- [ ] Subject and subtopic chips use canonical labels, not raw slugs.
-- [ ] Progress counts remain based on all questions (not current filtered subset).
-- [ ] Mobile and desktop action bars are both usable.
-- [ ] Calculator can open/close with button, `Ctrl+K`, and `Escape`.
+- [ ] Use split context hooks only (`useFilterState`, `useFilterActions`).
+- [ ] Do not break subtopic-to-subject scoped filtering.
+- [ ] Keep subject deselect -> orphan subtopic cleanup behavior.
+- [ ] Keep `question` param preservation during filter sync.
+- [ ] Keep `refreshProgressState()` call after import success.
+- [ ] Keep precompute generation path intact for dev/build.

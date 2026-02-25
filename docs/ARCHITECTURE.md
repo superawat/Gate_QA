@@ -1,139 +1,155 @@
 ﻿# Architecture
 
-GateQA is a static React single-page application (SPA) hosted on GitHub Pages.
-There is no backend, no API server, and no database. All runtime state is in browser memory and browser localStorage.
+GateQA is a static React SPA hosted on GitHub Pages.
+There is no backend, no database, and no server-side rendering.
 
 ## Runtime Topology
 
-1. Static host: GitHub Pages serves files from `dist/`.
-2. App bootstrap: `src/index.jsx` mounts `<App />`.
-3. Data load:
-   - `QuestionService.init()` fetches questions JSON.
-   - `AnswerService.init()` fetches answer indexes.
-4. State layer: `FilterProvider` computes filtered pool, progress, URL sync.
-5. UI layer: Header, filter modal, question card, answer panel, footer modals, calculator widget.
+1. Static host serves `dist/`.
+2. `src/index.jsx` mounts `App`.
+3. `App` initializes services:
+   - `QuestionService.init()`
+   - `AnswerService.init()`
+4. `FilterProvider` owns filter/progress state and filtering results.
+5. UI renders filter modal, question card, answer panel, calculator, and footer modals.
 
-## Startup Sequence (Exact)
+## Four-layer initialization model (2026-02-25)
 
-1. `App.jsx` calls `loadQuestions()` on mount.
-2. `QuestionService.init()` attempts candidates in order:
-   - `questions-with-answers.json`
-   - `questions-filtered-with-ids.json`
-   - `questions-filtered.json`
-3. Each candidate is scored by native join coverage (`hasNativeJoinIdentity`).
-4. Best candidate is normalized question-by-question via `normalizeQuestion()`.
-5. `AnswerService.init()` loads:
-   - `data/answers/answers_by_question_uid_v1.json`
-   - `data/answers/answers_master_v1.json`
-   - `data/answers/answers_by_exam_uid_v1.json`
-   - `data/answers/unsupported_question_uids_v1.json`
-6. `FilterProvider` initializes structured tags, reads URL params, reads localStorage progress, then computes filtered questions.
-7. `GateQAContent` resolves deep-link `?question=<question_uid>` if present, otherwise picks a random filtered question.
+### Layer 1: Build-time precompute
 
-## Canonical Question Model
+- Script: `scripts/precompute-subtopics.mjs`
+- Output: `src/generated/subtopicLookup.json`
+- Precompute runs before dev/build via npm scripts.
+- Purpose: remove runtime regex/normalization cost for subtopic and alias lookup.
 
-`QuestionService.normalizeQuestion()` enriches each row with canonical fields used by filters and UI:
+### Layer 2: Chunked normalization
 
-- `question_uid`: deterministic identity (`go:<id>` from GateOverflow link when possible, otherwise hash fallback).
-- `exam_uid`: parsed from existing `exam_uid` or derived from link/title/year.
-- `exam`: `{ paper, year, set, yearSetKey, label }`.
-- `subject` and `subjectSlug`: canonical subject mapping.
-- `subtopics`: canonical subtopics for selected subject.
-- `type`: normalized token (`mcq`, `msq`, `nat`, or `unknown`).
-- `canonical`: internal normalized summary object.
+- `QuestionService._processChunked(rows, chunkSize=500)` processes question rows in chunks.
+- Uses yielding (`setTimeout(..., 0)`) to avoid long main-thread blocking.
 
-## Answer Resolution Strategy
+### Layer 3: Memoized filter engine + split contexts
 
-`AnswerService.getAnswerForQuestion()` tries in strict order:
+- `FilterContext` is split into:
+  - `FilterStateContext` (data)
+  - `FilterActionsContext` (callbacks)
+- Hooks:
+  - `useFilterState()`
+  - `useFilterActions()`
+- `useFilters()` has been removed permanently.
+- `filteredQuestions` is computed via `useMemo` in `FilterContext`.
 
-1. `question_uid` lookup (`answersByQuestionUid`)
-2. `answer_uid` lookup (`v<volume>:<id_str>` in `answersByUid`)
-3. `exam_uid` lookup (`answersByExamUid`)
-4. Unsupported registry fallback (`type: "UNSUPPORTED"` sentinel)
+### Layer 4: localStorage init cache
 
-If no match exists, it returns `null`.
+- Cache key version:
+  - `INIT_CACHE_VERSION = 'v2'`
+  - runtime key `gateqa_init_cache_v2`
+- `_readCache()` migrates by removing legacy `gateqa_init_cache_v1`.
+- `_writeCache()` handles quota/storage errors via `isQuotaExceededError()`.
 
-## Filter State Model
+## Services
 
-`FilterContext` state:
+## `QuestionService`
 
-- `selectedYearSets`: `YYYY-sN` keys
-- `yearRange`: `[minYear, maxYear]`
-- `selectedSubjects`: subject slugs
-- `selectedSubtopics`: subtopic slugs
-- `selectedTypes`: subset of `MCQ`, `MSQ`, `NAT`
-- `hideSolved`: boolean
-- `showOnlySolved`: boolean
-- `showOnlyBookmarked`: boolean
-- `searchQuery`: string (reserved, not currently used in filtering)
+Responsibilities:
 
-Progress state:
+- Candidate JSON selection with join-coverage scoring.
+- Question normalization (`question_uid`, `exam_uid`, canonical subject/subtopic/type).
+- Structured tag generation for filter UI.
+- Init cache read/write and migration.
 
-- Solved IDs and bookmarked IDs are stored as arrays of stable tracking IDs.
-- Tracking key is resolved through `AnswerService.getStorageKeyForQuestion()`.
-- Keys used by `FilterContext`:
-  - `gate_qa_solved_questions`
-  - `gate_qa_bookmarked_questions`
-  - `gate_qa_progress_metadata`
-- Legacy bookmark key migration is supported from `gateqa_bookmarks_v1`.
+Performance constants:
 
-`AnswerPanel` also stores per-question attempt data in `gateqa_progress_v1`.
+- `MAX_SUBTOPICS_PER_QUESTION = 1`
+- `INIT_CACHE_VERSION = 'v2'`
 
-## URL Contract
+BUG-007 guardrail:
 
-Filters are synchronized to query params via `history.replaceState`.
+- Subtopic extraction is capped to first matched subtopic per question to prevent section-tag contamination.
 
-- `question`: deep-link question UID (managed by `App.jsx`)
-- `years`: comma-separated year-set keys (`2025-s2,2024-s0`)
-- `subjects`: comma-separated subject slugs (`os,dbms`)
-- `subtopics`: comma-separated subtopic slugs
-- `range`: `min-max`
-- `types`: lowercase list when not all selected (`mcq,nat`)
-- `hideSolved=1`
-- `showOnlySolved=1`
-- `showOnlyBookmarked=1`
+## `AnswerService`
 
-Important behavior: `FilterContext` intentionally preserves existing `question` param when writing filter params, so deep-link is not erased.
+Answer resolution order:
 
-## Filtering Pipeline (Per Change)
+1. by `question_uid`
+2. by `answer_uid` (`v<volume>:<id_str>`)
+3. by `exam_uid`
+4. unsupported registry sentinel (`type: "UNSUPPORTED"`)
 
-For each question:
+## Filter and progress state model
 
-1. Resolve progress status (`solved`, `bookmarked`).
-2. Resolve canonical type (prefer answer record type).
-3. Apply progress toggles (`hideSolved`, `showOnlySolved`, `showOnlyBookmarked`).
-4. Apply year-set include filter.
-5. Apply year range filter.
-6. Apply subject slug filter.
-7. Apply subtopic slug filter.
-8. Apply question type filter.
+### Filter state (`FilterStateContext`)
 
-Result is stored in `filteredQuestions` and drives random selection and displayed counts.
+- `selectedYearSets`
+- `yearRange`
+- `selectedSubjects`
+- `selectedSubtopics`
+- `selectedTypes`
+- `hideSolved`
+- `showOnlySolved`
+- `showOnlyBookmarked`
+- `searchQuery` (reserved)
 
-## Key Invariants
+### Actions (`FilterActionsContext`)
+
+- `updateFilters`, `clearFilters`
+- `toggleSolved`, `toggleBookmark`
+- `setHideSolved`, `setShowOnlySolved`, `setShowOnlyBookmarked`
+- `refreshProgressState`
+- question lookup/progress helpers
+
+### Scoped subtopic filtering
+
+- A reverse map `subtopicToSubjectSlug` is built from structured tags.
+- Subtopic predicates are applied within their parent subject scope.
+- Selecting subtopics can auto-add parent subjects.
+- Deselecting subjects removes orphaned subtopics.
+
+## URL contract
+
+Synchronized params:
+
+- `question`
+- `years`
+- `subjects`
+- `subtopics`
+- `range`
+- `types`
+- `hideSolved`
+- `showOnlySolved`
+- `showOnlyBookmarked`
+
+`question` is preserved during filter URL writes.
+
+## UI component map
+
+- `Header` (filter/calculator controls)
+- `FilterModal`
+  - `FilterSidebar`
+    - `ProgressBar`
+    - `ProgressManager` (JSON/CSV export, import)
+    - `ProgressFilterToggles`
+    - `TopicFilter`, `YearFilter`, `YearRangeFilter`
+- `ActiveFilterChips`
+- `Question`
+- `AnswerPanel`
+- `CalculatorWidget`
+- `Footer` + policy/support modals
+
+## Data persistence keys
+
+- `gate_qa_solved_questions`
+- `gate_qa_bookmarked_questions`
+- `gate_qa_progress_metadata`
+- `gateqa_progress_v1` (attempt metadata, used by AnswerPanel)
+
+## Invariants
 
 - `hideSolved` and `showOnlySolved` are mutually exclusive.
-- `clearFilters()` must reset all toggles and selections to default values.
-- `vite.config.js` `base` must match Pages path (`/Gate_QA/`) or static fetch paths break.
-- `dist/.nojekyll` must exist for Pages compatibility.
-- Current question must stay inside `filteredQuestions` pool; dev mode logs an invariant error if violated.
+- `question` query param must not be dropped during filter sync.
+- `clearFilters()` resets all filter dimensions.
+- Build must include `.nojekyll` and synced calculator assets.
+- `base` in `vite.config.js` must stay `/Gate_QA/` for current hosting path.
 
-## Observability and Debug Hooks
+## Known limitation reference
 
-When a question is active, `App.jsx` exposes:
-
-- `window.__gateqa_q`: active question object
-- `window.__gateqa_lookup`: lookup diagnostics (identity, source URL, answer index counts)
-
-## Performance and Safety
-
-- Filtering is O(n) over full question list per committed state change.
-- Solved/bookmarked sets are memoized for O(1) membership checks.
-- Question HTML is sanitized with DOMPurify before render.
-- Math rendering is handled by MathJax via `better-react-mathjax` context.
-
-## Current Caveats
-
-- The codebase contains several `dark:` Tailwind classes even though product direction is light-first.
-- `src/hooks/useGoatCounterSPA.js` and `src/utils/goatCounterClient.js` exist but are not wired into `App.jsx` yet.
-- `useGoatCounterSPA` depends on `react-router-dom`; the app currently does not use React Router.
+See `docs/KNOWN-LIMITATIONS.md` for the subtopic cap tradeoff and expected false negatives on genuine multi-subtopic questions.

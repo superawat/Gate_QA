@@ -2,73 +2,123 @@
 
 All notable changes to GateQA are documented in this file.
 
-Format follows Keep a Changelog principles and uses semantic-style version tags used in this repo.
-
 ## [Unreleased]
 
 ### Planned
 
-- Router-backed navigation model (if/when multi-view UI is introduced)
-- End-to-end browser automation for filter/deep-link regressions
-- UI for export/import of user state using `localStorageState` utilities
+- Router-backed navigation model (if multi-view UI is introduced)
+- Browser E2E regression suite for filtering and deep links
+- Import/export UI polish and schema v2 support
 
 ## [1.4.0] - 2026-02-25
 
-### Added
+This release captures the full 2026-02-25 development session.
 
-- Data integrity gate script: `scripts/qa/validate-data.js`.
-- New npm scripts:
-  - `qa:validate-data`
-  - `test:unit`
-  - `test:watch`
-  - `lighthouse:mobile`
-- Lighthouse CI configuration (`lighthouserc.json`) with performance/accessibility/LCP/CLS assertions.
-- Local storage utility module and tests:
-  - `src/utils/localStorageState.js`
-  - `src/utils/localStorageState.test.js`
-- GoatCounter SPA tracking utilities:
-  - `src/utils/goatCounterClient.js`
-  - `src/hooks/useGoatCounterSPA.js`
-- Scheduled maintenance workflow: `.github/workflows/scheduled-maintenance.yml`.
-- QA hardening documentation:
-  - `docs/QA_HARDENING_CHECKLIST.md`
-  - `docs/PLATFORM_HARDENING_ALL_UPDATES.txt`
+### Performance
 
-### Changed
+- Added build-time subtopic precompute pipeline:
+  - `scripts/precompute-subtopics.mjs`
+  - output: `src/generated/subtopicLookup.json`
+- Added `precompute` npm script.
+- Wired precompute step into:
+  - `npm start`
+  - `npm run build`
+- `QuestionService` now uses precomputed lookup payload for:
+  - normalized subtopics
+  - subject aliases
+- Added init cache v2:
+  - `INIT_CACHE_VERSION = 'v2'`
+  - cache key `gateqa_init_cache_v2`
+- Kept chunked normalization path via `_processChunked(...)`.
 
-- Vite build hardening in `vite.config.js`:
-  - manual vendor chunk splitting
-  - `cssCodeSplit: true`
-  - module preload polyfill disabled
-  - sourcemaps disabled for production build
-  - custom chunk warning threshold
-- Frontend docs refreshed to match current architecture, deep-link, and pipeline behavior.
+### BUG-007 (Closed): Subtopic contamination from section-wide tags
 
-### Notes
+- Root cause: scraped GateOverflow data can carry section-level subtopic tags across all questions in a section.
+- Fix: `MAX_SUBTOPICS_PER_QUESTION = 1` in `QuestionService.extractCanonicalSubtopics(...)`.
+- Added scoped subtopic filtering in `FilterContext` using parent-subject mapping.
+- Added reverse map `subtopicToSubjectSlug` in filter state layer.
+- Known limitation (documented): genuine multi-subtopic questions are indexed under first matched subtopic only.
 
-- GoatCounter SPA hook is currently present but not yet mounted in `App.jsx`.
-- Strict data validation currently fails on UID/orphan sentinel issues; actionable mapping gaps are logged as warnings.
+### Context split enforcement
+
+- `FilterContext` split into:
+  - `FilterStateContext`
+  - `FilterActionsContext`
+- New hooks:
+  - `useFilterState()`
+  - `useFilterActions()`
+- `useFilters()` compatibility hook removed.
+- All filter consumers migrated to state/actions hook pair.
+- Added `refreshProgressState()` action for post-import sync.
+
+### Cache hardening and migration
+
+- `_readCache()` now removes legacy key `gateqa_init_cache_v1` on read.
+- `_writeCache()` now uses shared `isQuotaExceededError()` helper from `localStorageState.js`.
+- Added cache strip/hydrate helpers to keep payload under localStorage limits.
+
+### SUG-2026-0002: Progress import/export manager
+
+- Added `src/components/ProgressManager/ProgressManager.jsx`.
+- Added `src/components/ProgressManager/ImportConfirmationModal.jsx`.
+- Injected ProgressManager into filter sidebar progress card.
+- Added JSON export of solved/bookmarked progress.
+- Added enriched CSV export (view-only) with columns:
+  - `questionUid,year,subject,subtopic,type,status`
+- Added JSON import with explicit strategies:
+  - Replace
+  - Merge
+- Added schema/version checks and user warning flow.
+- Added quota/write failure handling.
+- Added `refreshProgressState()` call after successful import.
+- Added file input reset on all paths to allow re-selecting same file.
+- Added inline help popover (`i`) explaining Export JSON / Export CSV / Import.
+
+### UI side effects documented
+
+- `FilterSidebar` progress card now embeds import/export controls.
+- Sidebar footer no longer shows legacy bookmarked-count text line.
+- `AnswerPanel` action layout now includes explicit `Solution` button and a smaller icon tray.
+
+### Data policy update
+
+- Updated Data Persistence and Privacy text in UI (`DataPolicyModal`) with explicit backup and transfer steps.
+
+### Tests
+
+- Unit suite now passing with 24 tests total:
+  - `src/services/AnswerService.test.js` (12)
+  - `src/services/QuestionService.test.js` (8)
+  - `src/utils/localStorageState.test.js` (3)
+  - `src/contexts/FilterContext.test.jsx` (1)
+- Added new tests:
+  - subtopic cap behavior in `QuestionService`
+  - orphan subtopic removal on subject deselect in `FilterContext`
+
+### Tooling cleanup
+
+- Removed dead script file: `scripts/audit-canonical-filters.mjs`.
+- Removed dead npm script entry: `audit:canonical`.
 
 ## [1.3.0] - 2026-02-18
 
 ### Added
 
 - `showOnlySolved` filter toggle.
-- Mutual exclusion logic between `hideSolved` and `showOnlySolved`.
-- Active chip for solved-only mode.
+- Mutual exclusion between `hideSolved` and `showOnlySolved`.
 - URL support for `showOnlySolved=1`.
 
 ### Changed
 
 - Progress/toggle layout split updated for larger screens.
-- `clearFilters()` now explicitly resets solved-only state.
+- `clearFilters()` resets solved-only state.
 
 ## [1.2.0] - 2026-02-15
 
 ### Added
 
 - Initial `docs/` developer documentation set.
-- Project-level README with quick start.
+- Project README with quick start.
 
 ## [1.1.0] - 2026-02-13
 
@@ -76,22 +126,18 @@ Format follows Keep a Changelog principles and uses semantic-style version tags 
 
 - Draggable scientific calculator widget.
 - Header calculator trigger and `Ctrl+K` shortcut.
-- Support and policy modal UI blocks.
 
 ### Fixed
 
-- Drag interaction stability for iframe-based calculator.
+- Drag interaction stability for iframe calculator.
 - Calculator close behavior edge cases.
 
 ## [1.0.0] - 2026-02-11
 
 ### Added
 
-- Core filter system (year/year-range/subject/subtopic/type/progress toggles).
-- Centralized `FilterContext` URL-synced state model.
-- `QuestionService` normalization and taxonomy mapping.
-- `AnswerService` multi-index resolution with unsupported fallback.
-- Solved/bookmarked progress persistence.
-- Active filter chips and clear-all controls.
-- MathJax and DOMPurify integration for safe math-capable rendering.
+- Core filter system and URL-synced filter state.
+- Question normalization and answer resolution services.
+- Solved/bookmarked persistence and active filter chips.
+- MathJax + DOMPurify rendering path.
 - GitHub Pages static deployment pipeline.

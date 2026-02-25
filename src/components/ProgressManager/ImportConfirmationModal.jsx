@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 
 /**
  * ImportConfirmationModal
@@ -17,15 +18,26 @@ export default function ImportConfirmationModal({
     importedBookmarkedCount,
     schemaWarning,
 }) {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
-    return (
+    return ReactDOM.createPortal(
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
             onClick={onClose}
         >
             <div
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-md mx-4 p-6"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto z-[10000] relative"
                 onClick={(e) => e.stopPropagation()}
             >
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -87,6 +99,7 @@ export default function ImportConfirmationModal({
                     </button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }

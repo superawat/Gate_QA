@@ -4,61 +4,58 @@ GateQA deploys as a static site to GitHub Pages.
 
 Live URL: `https://superawat.github.io/Gate_QA/`
 
-## Build Artifact
+## Build artifact requirements
 
-- Output directory: `dist/`
-- Required marker: `dist/.nojekyll`
-- Required static assets:
-  - `dist/questions-with-answers.json`
-  - `dist/data/answers/*.json`
-  - `dist/calculator/calculator.html`
-  - `dist/logo.png`
+- `dist/.nojekyll`
+- `dist/calculator/calculator.html`
+- `dist/questions-with-answers.json`
+- `dist/data/answers/*.json`
+- `dist/logo.png`
 
-## Build Command
+## Build command
 
 ```bash
 npm run build
 ```
 
-Current build pipeline:
+Current build chain:
 
-1. `node scripts/deployment/sync-calculator.mjs --public`
-2. `vite build`
-3. `node scripts/deployment/ensure-nojekyll.mjs`
-4. `node scripts/deployment/sync-calculator.mjs --dist`
+1. `node scripts/precompute-subtopics.mjs`
+2. `node scripts/deployment/sync-calculator.mjs --public`
+3. `vite build`
+4. `node scripts/deployment/ensure-nojekyll.mjs`
+5. `node scripts/deployment/sync-calculator.mjs --dist`
 
-## Hosting Configuration
+## Hosting configuration
 
-- Vite base path in `vite.config.js` must be `/Gate_QA/`.
-- `homepage` in `package.json` is `https://superawat.github.io/Gate_QA/`.
-- Runtime fetches use `import.meta.env.BASE_URL`.
+- `vite.config.js` base must be `/Gate_QA/`.
+- `package.json` homepage is `https://superawat.github.io/Gate_QA/`.
+- runtime static fetches use `import.meta.env.BASE_URL`.
 
-## CI/CD Workflows
+## CI/CD workflows
 
 ### `.github/workflows/node.js.yml`
 
-- Triggers: push and PR on `main`
-- Runs:
-  - `npm ci`
-  - `npm run build`
-  - verifies `.nojekyll` and calculator artifact
-- Deploys to `gh-pages` on push to `main`
+- triggers: push/pull_request on `main`
+- runs `npm ci` and `npm run build`
+- verifies `.nojekyll` and calculator artifact
+- deploys to `gh-pages` on push to `main`
 
 ### `.github/workflows/scheduled-maintenance.yml`
 
-- Trigger: every 3 months (`0 2 1 */3 *`) + manual dispatch
-- Runs scraper and merge scripts
-- Generates integrity report (`--no-strict`)
-- Commits/pushes updated data to `main` only when there are changes
-- Builds and deploys to `gh-pages` only when data changed
+- trigger: every 3 months + manual
+- refreshes scrape/merge data
+- runs non-strict integrity report
+- commits data changes only when needed
+- builds/deploys only when changes exist
 
 ### `.github/workflows/scraper.yml`
 
-- Trigger: every 4 months (`0 0 1 */4 *`) + manual dispatch
-- Runs scrape + merge
-- Opens PR with updated question bank when diff exists
+- trigger: every 4 months + manual
+- scrape and merge
+- open PR if question corpus changed
 
-## Manual Deployment (if needed)
+## Manual deploy
 
 ```bash
 npm run build
@@ -71,58 +68,54 @@ Alternative:
 git subtree push --prefix dist origin gh-pages
 ```
 
-## Pre-Deploy Checklist
+## Pre-deploy checklist
 
-- [ ] `npm run build` completes without error.
+- [ ] `npm run build` succeeds.
+- [ ] Precompute output was generated (`src/generated/subtopicLookup.json` in build workspace).
 - [ ] `dist/.nojekyll` exists.
 - [ ] `dist/calculator/calculator.html` exists.
-- [ ] `dist/questions-with-answers.json` exists and is non-empty.
-- [ ] `dist/data/answers/answers_master_v1.json` exists.
-- [ ] `dist/data/answers/answers_by_question_uid_v1.json` exists.
-- [ ] `dist/data/answers/answers_by_exam_uid_v1.json` exists.
-- [ ] `dist/data/answers/unsupported_question_uids_v1.json` exists.
-- [ ] Base path and deploy URL are aligned (`/Gate_QA/`).
+- [ ] required question/answer JSON files exist in `dist`.
+- [ ] base path and live URL are aligned.
 
-## Post-Deploy Smoke Checks
+## Post-deploy smoke checks
 
-- [ ] Home URL loads without blank screen.
-- [ ] Question data loads (no persistent loading state).
-- [ ] Filter modal opens and closes.
-- [ ] Share link copies and opens same question.
-- [ ] Calculator opens via button and `Ctrl+K`.
+- [ ] app loads without blank screen
+- [ ] question data fetch completes
+- [ ] filters open and apply
+- [ ] share deep-link works
+- [ ] calculator button and `Ctrl+K` work
+- [ ] ProgressManager export/import controls visible in filter sidebar
 
-## Performance Regression Gate (Optional but Recommended)
+## Lighthouse check
 
 ```bash
 npm run build
 npm run lighthouse:mobile
 ```
 
-Lighthouse config (`lighthouserc.json`) currently asserts:
+Current assertions:
 
-- performance: warning if score < 0.80
-- accessibility: error if score < 0.95
-- LCP warning if > 3500 ms
-- CLS error if > 0.1
+- performance >= 0.80 (warn)
+- accessibility >= 0.95 (error)
+- LCP <= 3500 ms (warn)
+- CLS <= 0.1 (error)
 
 ## Troubleshooting
 
-### JS/CSS/JSON 404 after deploy
+### JSON/asset 404s
 
-- Cause: incorrect `base` path.
-- Fix: ensure `vite.config.js` has `base: '/Gate_QA/'`.
+- verify `base: '/Gate_QA/'` in `vite.config.js`
 
-### Calculator does not load
+### Missing generated lookup
 
-- Cause: sync script did not copy calculator assets.
-- Fix: verify root `calculator/` exists, rerun `npm run build`.
+- run `npm run precompute`
+- confirm `src/generated/subtopicLookup.json` exists in local workspace
 
-### Data fetch fails
+### Calculator missing
 
-- Cause: missing files in `public/` before build or stale deploy.
-- Fix: verify source JSON files exist in `public/`, rebuild, redeploy.
+- verify root `calculator/` exists
+- rerun `npm run build`
 
-### `.nojekyll` missing
+### Missing `.nojekyll`
 
-- Cause: build helper not run.
-- Fix: rerun `npm run build`; helper script writes marker automatically.
+- rerun `npm run build` (helper script creates it)
