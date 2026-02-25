@@ -9,6 +9,7 @@ Gate_QA/
 |-- index.html
 |-- package.json
 |-- package-lock.json
+|-- pipeline-state.json
 |-- vite.config.js
 |-- lighthouserc.json
 |-- tailwind.config.js
@@ -100,6 +101,12 @@ Gate_QA/
 |   |-- deployment/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
+|   |-- pipeline/
+|   |   |-- scrape.mjs
+|   |   |-- normalise.mjs
+|   |   |-- answer-backfill.mjs
+|   |   |-- merge.mjs
+|   |   `-- validate.mjs
 |   `-- answers/
 |       |-- apply_resolutions.py
 |       |-- backfill_gateoverflow_answers.py
@@ -155,8 +162,12 @@ Gate_QA/
 |   |-- QA_HARDENING_CHECKLIST.md
 |   `-- PLATFORM_HARDENING_ALL_UPDATES.txt
 |
+|-- audit/
+|   `-- (FEAT-003 pipeline audit outputs)
+|
 |-- .github/workflows/
 |   |-- node.js.yml
+|   |-- gate-question-pipeline.yml
 |   |-- scraper.yml
 |   `-- scheduled-maintenance.yml
 |

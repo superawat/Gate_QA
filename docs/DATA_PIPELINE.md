@@ -141,3 +141,39 @@ npm run precompute
 
 - `scripts/audit-canonical-filters.mjs` has been removed.
 - `audit:canonical` npm script has been removed.
+
+## FEAT-003: Automated GATE Question Pipeline
+
+Forward-looking pipeline starting at 2026. Never touches historical data.
+
+### Workflow
+
+`.github/workflows/gate-question-pipeline.yml`
+
+Trigger: cron (Apr 1, Oct 1) + `workflow_dispatch` with optional `force_year`.
+
+### Stages
+
+1. **Scrape** (`scripts/pipeline/scrape.mjs`) — Discover tags, paginate, extract questions, dedup against existing bank.
+2. **Normalise** (`scripts/pipeline/normalise.mjs`) — Map to canonical structure (uid, subject, type, year/set).
+3. **Answer Backfill** (`scripts/pipeline/answer-backfill.mjs`) — Fetch answers from GateOverflow widgets.
+4. **Merge** (`scripts/pipeline/merge.mjs`) — Append to `public/questions-filtered.json` and `questions-with-answers.json`.
+5. **Validate** (`scripts/pipeline/validate.mjs`) — Volume check (65/130/195), dedup check, completeness check.
+6. **Build & Deploy** — `npm run build` + deploy to gh-pages.
+
+### State file
+
+`pipeline-state.json` — tracks `nextTargetYear`, `questionsTotal`, `lastRunAt`.
+
+### Audit files (committed, never read by frontend)
+
+- `audit/raw-scrape-{year}-{timestamp}.json`
+- `audit/count-by-subject-{year}.json`
+- `audit/count-by-year-set-{year}.json`
+- `audit/unknown-subjects-{year}.json`
+- `audit/new-questions-added-{year}.json`
+- `audit/validation-report-{year}.json`
+
+### Failure behavior
+
+All abort scenarios leave the live site on the last successful deploy. A GitHub Issue is auto-created with error details.

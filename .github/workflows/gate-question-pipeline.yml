@@ -1,0 +1,203 @@
+# FEAT-003: Automated GATE Question Pipeline
+# Triggered: Apr 1, Oct 1 (cron) + manual dispatch with optional force_year
+# 6 stages: Scrape → Normalise → Answer Backfill → Merge → Validate → Build & Deploy
+
+name: GATE Question Pipeline
+
+on:
+  schedule:
+    # 1st of April and October at 04:00 UTC
+    - cron: "0 4 1 4,10 *"
+  workflow_dispatch:
+    inputs:
+      force_year:
+        description: "Force a specific target year (e.g. 2026). Leave empty to use pipeline-state.json."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: gate-question-pipeline
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # ── Setup ────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine target year
+        id: target
+        run: |
+          if [ -n "${{ github.event.inputs.force_year }}" ]; then
+            echo "year=${{ github.event.inputs.force_year }}" >> "$GITHUB_OUTPUT"
+          else
+            YEAR=$(node -e "const s=JSON.parse(require('fs').readFileSync('pipeline-state.json','utf8'));console.log(s.nextTargetYear)")
+            echo "year=$YEAR" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── Stage 1: Scrape ──────────────────────────────────────────────
+      - name: "Stage 1 — Scrape"
+        id: scrape
+        run: node scripts/pipeline/scrape.mjs --year ${{ steps.target.outputs.year }}
+
+      - name: Check if new questions found
+        id: check_new
+        run: |
+          FILE="audit/scraped-${{ steps.target.outputs.year }}.json"
+          if [ ! -f "$FILE" ]; then
+            echo "has_new=false" >> "$GITHUB_OUTPUT"
+            echo "📭 No scraped data file — off-cycle run."
+          else
+            COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('$FILE','utf8'));console.log(Array.isArray(d)?d.length:0)")
+            echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+            if [ "$COUNT" -eq "0" ]; then
+              echo "has_new=false" >> "$GITHUB_OUTPUT"
+              echo "📭 Zero new questions. Off-cycle — exiting cleanly."
+            else
+              echo "has_new=true" >> "$GITHUB_OUTPUT"
+              echo "✅ Found $COUNT new questions."
+            fi
+          fi
+
+      # ── Stage 2: Normalise ───────────────────────────────────────────
+      - name: "Stage 2 — Normalise"
+        if: steps.check_new.outputs.has_new == 'true'
+        run: node scripts/pipeline/normalise.mjs --year ${{ steps.target.outputs.year }}
+
+      # ── Stage 3: Answer Backfill ─────────────────────────────────────
+      - name: "Stage 3 — Answer Backfill"
+        if: steps.check_new.outputs.has_new == 'true'
+        run: node scripts/pipeline/answer-backfill.mjs --year ${{ steps.target.outputs.year }}
+
+      # ── Stage 4: Merge ───────────────────────────────────────────────
+      - name: "Stage 4 — Merge"
+        if: steps.check_new.outputs.has_new == 'true'
+        run: node scripts/pipeline/merge.mjs --year ${{ steps.target.outputs.year }}
+
+      # ── Stage 5: Validate (hard gate) ────────────────────────────────
+      - name: "Stage 5 — Validate"
+        if: steps.check_new.outputs.has_new == 'true'
+        id: validate
+        run: node scripts/pipeline/validate.mjs --year ${{ steps.target.outputs.year }}
+
+      # ── Stage 6: Build & Deploy ──────────────────────────────────────
+      - name: "Stage 6 — Build"
+        if: steps.check_new.outputs.has_new == 'true'
+        run: npm run build
+
+      - name: Verify deploy artifacts
+        if: steps.check_new.outputs.has_new == 'true'
+        run: |
+          test -f dist/.nojekyll
+          test -f dist/calculator/calculator.html
+
+      - name: Update pipeline state for next year
+        if: steps.check_new.outputs.has_new == 'true'
+        run: |
+          node -e "
+            const fs = require('fs');
+            const state = JSON.parse(fs.readFileSync('pipeline-state.json', 'utf8'));
+            state.nextTargetYear = parseInt('${{ steps.target.outputs.year }}', 10) + 1;
+            state.lastRunAt = new Date().toISOString();
+            state.volumeCheckPassed = true;
+            fs.writeFileSync('pipeline-state.json', JSON.stringify(state, null, 2));
+          "
+
+      - name: Commit pipeline state and audit files
+        if: steps.check_new.outputs.has_new == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add pipeline-state.json
+          git add audit/
+          git add public/questions-filtered.json
+          git add public/questions-with-answers.json
+          git add data/answers/manual_answers_patch_v1.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            YEAR="${{ steps.target.outputs.year }}"
+            git commit -m "chore(pipeline): FEAT-003 auto-update for GATE ${YEAR} [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: Deploy to GitHub Pages
+        if: steps.check_new.outputs.has_new == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: dist
+          clean: true
+
+      # ── Commit audit files on off-cycle (no deploy) ──────────────────
+      - name: Commit audit files (off-cycle)
+        if: steps.check_new.outputs.has_new == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add audit/ pipeline-state.json || true
+          if git diff --cached --quiet; then
+            echo "No audit changes."
+          else
+            git commit -m "chore(pipeline): off-cycle audit log [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      # ── Failure: Open GitHub Issue ───────────────────────────────────
+      - name: Open GitHub Issue on scrape failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const year = '${{ steps.target.outputs.year }}';
+            let errorDetail = 'No additional error details available.';
+
+            // Try to read error/validation files
+            for (const f of ['audit/scrape-error.json', 'audit/validation-failure.json']) {
+              try {
+                const data = JSON.parse(fs.readFileSync(f, 'utf8'));
+                errorDetail = '```json\n' + JSON.stringify(data, null, 2) + '\n```';
+                break;
+              } catch {}
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 FEAT-003 Pipeline Failed — GATE ${year}`,
+              body: `## Automated GATE Question Pipeline Failure\n\n` +
+                    `**Year:** ${year}\n` +
+                    `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n` +
+                    `**Timestamp:** ${new Date().toISOString()}\n\n` +
+                    `### Error Details\n\n${errorDetail}\n\n` +
+                    `### Action Required\n\n` +
+                    `1. Check the workflow run logs for details.\n` +
+                    `2. The live site is **unaffected** — last successful deploy is still active.\n` +
+                    `3. Fix the issue and re-run with \`workflow_dispatch\`.`,
+              labels: ['pipeline', 'bug', 'automated'],
+            });
