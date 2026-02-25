@@ -1,98 +1,131 @@
-# Contributing
+﻿# Contributing
 
-> Developer-only contribution process. This repo uses `docs/` as internal documentation (gitignored). All contributors are assumed to have read `ARCHITECTURE.md` and `FRONTEND_GUIDE.md`.
+This document defines contribution expectations for GateQA.
+
+## Scope and Philosophy
+
+- Keep runtime static-first (no backend assumptions in frontend code).
+- Prefer deterministic IDs and canonical normalization paths.
+- Preserve URL/deep-link and progress persistence behavior when changing filters.
 
 ## Branch Naming
 
-```
-feat/short-description      # New features
-fix/short-description       # Bug fixes
-docs/short-description      # Documentation only
-refactor/short-description  # Code restructure (no behavior change)
-chore/short-description     # Build, deps, CI, tooling
-```
+Use one of:
 
-**Examples**:
-- `feat/deep-link-question`
-- `fix/year-slider-overflow`
-- `refactor/extract-filter-hooks`
+- `feat/<short-description>`
+- `fix/<short-description>`
+- `docs/<short-description>`
+- `refactor/<short-description>`
+- `chore/<short-description>`
 
-## Commit Messages
+Examples:
 
-Use conventional prefix format:
+- `feat/question-export-state`
+- `fix/deep-link-filter-sync`
+- `docs/update-hardening-guide`
 
-```
-feat: add deep link for individual questions
-fix: year range slider not updating on data reload
-docs: update ARCHITECTURE.md with answer join strategy
-refactor: extract progress tracking into custom hook
-chore: bump vite to 7.4
-```
+## Commit Message Style
 
-**Rules**:
-- Lowercase after prefix
-- No period at end
-- Imperative mood ("add", not "added")
+Use conventional prefix:
+
+- `feat: ...`
+- `fix: ...`
+- `docs: ...`
+- `refactor: ...`
+- `chore: ...`
+- `test: ...`
+
+Rules:
+
+- Imperative mood (`add`, `fix`, `update`)
+- Lowercase summary after prefix
 - One logical change per commit
 
-## Pull Request Template
+## Local Quality Gates Before PR
 
-Every PR description must include:
+Run what applies to your change:
+
+```bash
+npm run test:unit
+npm run build
+npm run qa:validate-data
+python -m pytest tests/answers -q
+```
+
+For performance-sensitive UI changes:
+
+```bash
+npm run lighthouse:mobile
+```
+
+## PR Template (Recommended)
 
 ```markdown
 ## What
-<!-- One sentence: what does this PR do? -->
+One-sentence change summary.
 
 ## Why
-<!-- Motivation: bug report, feature request, tech debt -->
+Bug, feature need, or maintenance reason.
 
 ## How
-<!-- Key implementation decisions. Link to relevant docs if non-obvious -->
+Key implementation decisions and touched modules.
 
-## Testing
-<!-- What did you verify? Reference TESTING.md checklist items -->
-- [ ] Filter round-trip (set → reload → same state)
-- [ ] No layout regressions at mobile/desktop widths
-- [ ] No console errors
+## Validation
+- [ ] npm run test:unit
+- [ ] npm run build
+- [ ] npm run qa:validate-data
+- [ ] Manual checks for affected UI paths
 
-## Screenshots
-<!-- Before/after if UI change, or N/A -->
+## Risks / Follow-ups
+Known caveats and deferred items.
 ```
 
-## Before Submitting
+## High-Risk Areas (Read Before Editing)
 
-- [ ] `npm run build` completes without errors
-- [ ] Manual QA for affected area (see `docs/TESTING.md`)
-- [ ] URL persistence is intact (if filter-related changes)
-- [ ] No new `dark:` Tailwind classes (light theme only)
-- [ ] No hardcoded paths (use `import.meta.env.BASE_URL`)
-- [ ] No `console.log` left in production code (use `console.warn` for legitimate warnings only)
+- Filter state and URL contract: `src/contexts/FilterContext.jsx`
+- Deep-link question synchronization: `src/App.jsx`
+- Question normalization and subject resolution: `src/services/QuestionService.js`
+- Answer join order and unsupported fallback: `src/services/AnswerService.js`
+- Attempt evaluation semantics (MCQ/MSQ/NAT): `src/utils/evaluateAnswer.js`
+- Build/deploy scripts: `scripts/deployment/*.mjs`
+- Data integrity gate logic: `scripts/qa/validate-data.js`
 
-## Bug Report Format (Internal)
+## Required Invariants
 
-When filing an issue or adding a TODO:
+Do not merge changes that break these:
+
+- `hideSolved` and `showOnlySolved` remain mutually exclusive.
+- `question` query param is preserved during filter URL writes.
+- `clearFilters()` restores full default filter state.
+- Built artifact contains `.nojekyll` and synced calculator assets.
+- `vite.config.js` base remains aligned with Pages path.
+
+## Documentation Rules
+
+- Update relevant files in `docs/` with every behavior/config change.
+- `docs/` is tracked in git and should stay code-accurate.
+- Keep command names and paths exact (copy from `package.json` and filesystem).
+
+## Bug Report Format
 
 ```markdown
-**Problem**: [What's broken]
-**Expected**: [What should happen]
-**Actual**: [What happens instead]
-**Repro steps**:
-1. Open app at [URL]
-2. Click [element]
-3. Observe [behavior]
-**Screenshot**: [attach if visual]
-**Browser**: [Chrome/Firefox/Safari + version]
-**Severity**: [blocks usage | visual glitch | minor]
+Problem:
+Expected:
+Actual:
+Repro steps:
+1.
+2.
+3.
+Browser/OS:
+Severity:
+Evidence (screenshots/logs):
 ```
 
-## File Ownership Quick Reference
+## Review Focus
 
-| Area | Key files | Before changing, verify… |
-|------|-----------|--------------------------|
-| Filter logic | `FilterContext.jsx` | URL round-trip, chip sync, mutual exclusion |
-| Filter UI | `Filters/*.jsx` | Responsive layout at all breakpoints |
-| Data loading | `QuestionService.js` | Fallback candidate selection, tag indexing |
-| Answer lookup | `AnswerService.js` | All three join strategies still resolve |
-| Topic whitelist | `QuestionService.TOPIC_HIERARCHY` | New subtopic exists in question data |
-| Build pipeline | `package.json`, `scripts/deployment/` | `npm run build` still works end-to-end |
-| Data pipeline | `scripts/answers/` | Output JSONs are valid, file sizes reasonable |
+When reviewing PRs, prioritize:
+
+1. Behavioral regressions in filtering/deep-link/persistence.
+2. Incorrect data assumptions in normalization/join logic.
+3. Missing validation coverage or stale docs.
+4. Build/deploy breakage risk.

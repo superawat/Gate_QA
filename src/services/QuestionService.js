@@ -1,4 +1,14 @@
 import { getExamUidFromQuestion } from "../utils/examUid.js";
+import precomputedLookup from "../generated/subtopicLookup.json";
+
+// ── Performance: build-time precomputed caches ──────────────────────────
+const PRECOMPUTED_SUBTOPICS = precomputedLookup.subtopicsBySubject;
+const PRECOMPUTED_NORMALIZED = precomputedLookup.normalizedSubtopicsBySubject;
+const PRECOMPUTED_ALIASES = precomputedLookup.subjectAliases;
+
+// ── Performance: localStorage cache for processed questions ─────────────
+const INIT_CACHE_VERSION = 'v1';
+const INIT_CACHE_KEY = `gateqa_init_cache_${INIT_CACHE_VERSION}`;
 
 export class QuestionService {
   static questions = [];
@@ -122,6 +132,11 @@ export class QuestionService {
   static SUBJECT_ALIAS_CACHE = new Map();
 
   static getNormalizedSubjectAliases(subject) {
+    // Fast path: use build-time precomputed aliases
+    if (PRECOMPUTED_ALIASES[subject]) {
+      return PRECOMPUTED_ALIASES[subject];
+    }
+
     if (this.SUBJECT_ALIAS_CACHE.has(subject)) {
       return this.SUBJECT_ALIAS_CACHE.get(subject);
     }
@@ -343,17 +358,34 @@ export class QuestionService {
     };
   }
 
+  // ── Performance: subtopic lookup cache (backed by precomputed JSON) ────
+  static _subtopicLookupCache = new Map();
+
   static getSubtopicLookupForSubject(subjectLabel = "") {
-    const subjectSubtopics = this.TOPIC_HIERARCHY[subjectLabel] || [];
-    return new Map(
-      subjectSubtopics.map((subtopic) => [
-        this.normalizeString(subtopic),
-        {
-          slug: this.slugifyToken(subtopic),
-          label: subtopic,
-        },
-      ])
-    );
+    // Fast path: use build-time precomputed lookup object as a Map
+    if (this._subtopicLookupCache.has(subjectLabel)) {
+      return this._subtopicLookupCache.get(subjectLabel);
+    }
+
+    let lookupMap;
+    if (PRECOMPUTED_SUBTOPICS[subjectLabel]) {
+      // The precomputed JSON stores { normalizedKey: { slug, label } }
+      lookupMap = new Map(Object.entries(PRECOMPUTED_SUBTOPICS[subjectLabel]));
+    } else {
+      const subjectSubtopics = this.TOPIC_HIERARCHY[subjectLabel] || [];
+      lookupMap = new Map(
+        subjectSubtopics.map((subtopic) => [
+          this.normalizeString(subtopic),
+          {
+            slug: this.slugifyToken(subtopic),
+            label: subtopic,
+          },
+        ])
+      );
+    }
+
+    this._subtopicLookupCache.set(subjectLabel, lookupMap);
+    return lookupMap;
   }
 
   static extractCanonicalSubtopics(tags = [], subjectLabel = "") {
@@ -365,7 +397,8 @@ export class QuestionService {
     const unique = new Map();
 
     tags.forEach((tag) => {
-      const entry = lookup.get(this.normalizeString(tag));
+      const norm = this.normalizeString(tag);
+      const entry = lookup.get(norm);
       if (!entry || unique.has(entry.slug)) return;
       unique.set(entry.slug, entry);
     });
@@ -401,7 +434,8 @@ export class QuestionService {
 
     Object.keys(this.TOPIC_HIERARCHY).forEach(subject => {
       const aliases = this.getNormalizedSubjectAliases(subject);
-      const subtopics = this.TOPIC_HIERARCHY[subject] || [];
+      // Use precomputed normalized subtopic strings (zero regex at runtime)
+      const normalizedSubs = PRECOMPUTED_NORMALIZED[subject] || [];
 
       let explicitIndex = Number.MAX_SAFE_INTEGER;
       aliases.forEach(alias => {
@@ -414,8 +448,7 @@ export class QuestionService {
 
       let subtopicCount = 0;
       let firstSubtopicIndex = Number.MAX_SAFE_INTEGER;
-      subtopics.forEach(sub => {
-        const normSub = this.normalizeString(sub);
+      normalizedSubs.forEach(normSub => {
         if (!normalizedTagSet.has(normSub)) return;
         subtopicCount += 1;
         const idx = firstTagIndex.get(normSub);
@@ -530,14 +563,111 @@ export class QuestionService {
     return normalized;
   }
 
+  // ── Layer 2 helper: process questions in yielding chunks ───────────────
+  static _processChunked(rows, chunkSize = 500) {
+    return new Promise((resolve) => {
+      const results = [];
+      let offset = 0;
+
+      const processNext = () => {
+        const end = Math.min(offset + chunkSize, rows.length);
+        for (let i = offset; i < end; i++) {
+          const normalized = this.normalizeQuestion(rows[i]);
+          if (normalized.title !== "General") {
+            results.push(normalized);
+          }
+        }
+        offset = end;
+        if (offset < rows.length) {
+          // Yield the thread briefly so the browser can paint/handle events
+          setTimeout(processNext, 0);
+        } else {
+          resolve(results);
+        }
+      };
+
+      // First chunk runs synchronously to populate UI quickly
+      processNext();
+    });
+  }
+
+  // ── Layer 4 helpers: localStorage cache ────────────────────────────────
+  static _readCache() {
+    try {
+      const raw = localStorage.getItem(INIT_CACHE_KEY);
+      if (!raw) return null;
+      const cached = JSON.parse(raw);
+      if (!cached || !Array.isArray(cached.questions) || !cached.sourceUrl) {
+        return null;
+      }
+      return cached;
+    } catch {
+      return null;
+    }
+  }
+
+  // Strip large duplicate fields so the payload fits in ~5MB localStorage quota
+  static _stripForCache(questions) {
+    return questions.map(q => {
+      const slim = { ...q };
+      delete slim.tagsRaw;  // duplicate of tags
+      if (slim.canonical) {
+        slim.canonical = { ...slim.canonical };
+        delete slim.canonical.tagsRaw;  // another duplicate
+      }
+      return slim;
+    });
+  }
+
+  // Restore stripped fields when reading from cache
+  static _hydrateFromCache(questions) {
+    return questions.map(q => {
+      q.tagsRaw = Array.isArray(q.tags) ? [...q.tags] : [];
+      if (q.canonical && typeof q.canonical === 'object') {
+        q.canonical.tagsRaw = [...q.tagsRaw];
+      }
+      return q;
+    });
+  }
+
+  static _writeCache() {
+    try {
+      const payload = {
+        sourceUrl: this.sourceUrl,
+        questions: this._stripForCache(this.questions),
+      };
+      localStorage.setItem(INIT_CACHE_KEY, JSON.stringify(payload));
+    } catch {
+      // Storage full or unavailable — silently skip
+      console.warn('[QuestionService] Cache write failed (quota exceeded?)');
+    }
+  }
+
+  /** Bust the init cache (call after pushing new question data). */
+  static clearInitCache() {
+    try { localStorage.removeItem(INIT_CACHE_KEY); } catch { /* noop */ }
+  }
+
   static async init() {
     if (this.loaded) {
       return;
     }
 
-    // For GitHub Pages, BASE_URL might be '/Gate_QA/' or './'.
-    // We want to ensure we fetch from the correct root.
-    // BASE_URL is now explicit in vite.config.js
+    console.time('QuestionService.init');
+
+    // ── Layer 4: try localStorage cache first ───────────────────────────
+    const cached = this._readCache();
+    if (cached) {
+      this.sourceUrl = cached.sourceUrl;
+      this.questions = this._hydrateFromCache(cached.questions);
+      this.loaded = true;
+      this.buildIndexes();
+      console.timeEnd('QuestionService.init');
+      console.log('[QuestionService] Loaded from cache (%d questions)', this.questions.length);
+      return;
+    }
+
+    // ── Network fetch (unchanged candidate logic) ───────────────────────
     const baseUrl = import.meta.env.BASE_URL.endsWith('/')
       ? import.meta.env.BASE_URL
       : `${import.meta.env.BASE_URL}/`;
@@ -594,9 +724,9 @@ export class QuestionService {
     }
 
     this.sourceUrl = bestCandidate.dataUrl;
-    this.questions = bestCandidate.data
-      .map((question) => this.normalizeQuestion(question))
-      .filter((q) => q.title !== "General");
+
+    // ── Layer 2: chunked idle-time processing ───────────────────────────
+    this.questions = await this._processChunked(bestCandidate.data);
 
     if (bestCandidate.joinCoverage < 1) {
       console.warn(
@@ -606,6 +736,12 @@ export class QuestionService {
 
     this.loaded = true;
     this.buildIndexes();
+
+    // ── Layer 4: persist to localStorage for instant subsequent loads ────
+    this._writeCache();
+
+    console.timeEnd('QuestionService.init');
+    console.log('[QuestionService] Processed %d questions (fresh)', this.questions.length);
   }
 
   static buildIndexes() {

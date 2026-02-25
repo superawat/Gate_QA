@@ -2,7 +2,8 @@ import React, { createContext, useContext, useState, useEffect, useMemo, useCall
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
 
-const FilterContext = createContext();
+const FilterStateContext = createContext();
+const FilterActionsContext = createContext();
 
 const DEFAULT_SELECTED_TYPES = ['MCQ', 'MSQ', 'NAT'];
 const STORAGE_KEYS = {
@@ -163,11 +164,26 @@ const getQuestionTrackingId = (question = {}) => {
 };
 
 export const useFilters = () => {
-    const context = useContext(FilterContext);
-    if (!context) {
+    const state = useContext(FilterStateContext);
+    const actions = useContext(FilterActionsContext);
+    if (!state || !actions) {
         throw new Error('useFilters must be used within a FilterProvider');
     }
-    return context;
+    return { ...state, ...actions };
+};
+
+/** Use only filter state (data) — re-renders when data changes. */
+export const useFilterState = () => {
+    const ctx = useContext(FilterStateContext);
+    if (!ctx) throw new Error('useFilterState must be used within a FilterProvider');
+    return ctx;
+};
+
+/** Use only filter actions (callbacks) — stable, never causes re-renders. */
+export const useFilterActions = () => {
+    const ctx = useContext(FilterActionsContext);
+    if (!ctx) throw new Error('useFilterActions must be used within a FilterProvider');
+    return ctx;
 };
 
 export const FilterProvider = ({ children }) => {
@@ -194,7 +210,7 @@ export const FilterProvider = ({ children }) => {
         searchQuery: ''
     });
 
-    const [filteredQuestions, setFilteredQuestions] = useState([]);
+
     const [totalQuestions, setTotalQuestions] = useState(0);
     const [isInitialized, setIsInitialized] = useState(false);
 
@@ -378,8 +394,9 @@ export const FilterProvider = ({ children }) => {
     const solvedQuestionSet = useMemo(() => new Set(solvedQuestionIds), [solvedQuestionIds]);
     const bookmarkedQuestionSet = useMemo(() => new Set(bookmarkedQuestionIds), [bookmarkedQuestionIds]);
 
-    useEffect(() => {
-        if (!QuestionService.questions.length) return;
+    // ── Layer 3: useMemo-based filtered questions ────────────────────────
+    const filteredQuestions = useMemo(() => {
+        if (!QuestionService.questions.length) return [];
 
         const {
             selectedYearSets,
@@ -394,7 +411,7 @@ export const FilterProvider = ({ children }) => {
         const selectedTypes = normalizeSelectedTypes(filters.selectedTypes);
         const selectedTypeSet = new Set(selectedTypes.map(type => type.toUpperCase()));
 
-        const result = QuestionService.questions.filter(q => {
+        return QuestionService.questions.filter(q => {
             const questionId = getQuestionTrackingId(q);
             const isSolved = questionId ? solvedQuestionSet.has(questionId) : false;
             const isBookmarked = questionId ? bookmarkedQuestionSet.has(questionId) : false;
@@ -458,14 +475,8 @@ export const FilterProvider = ({ children }) => {
                 typeMatch = selectedTypeSet.has(resolvedType.toUpperCase());
             }
 
-            const keep = yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch;
-            if (!keep && (selectedSubjects.length > 0 || selectedSubtopics.length > 0)) {
-                // Optional: log rejected questions if debugging specific misses
-            }
-            return keep;
+            return yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch;
         });
-
-        setFilteredQuestions(result);
     }, [filters, isInitialized, solvedQuestionSet, bookmarkedQuestionSet, structuredTags.minYear, structuredTags.maxYear]);
 
     const updateFilters = useCallback((newFilters) => {
@@ -602,33 +613,51 @@ export const FilterProvider = ({ children }) => {
         return allQuestions.find(q => q.question_uid === trimmed) || null;
     }, [allQuestions]);
 
+    // ── Layer 3: split state and actions into separate contexts ──────────
+    const stateValue = useMemo(() => ({
+        filters,
+        filteredQuestions,
+        allQuestions,
+        structuredTags,
+        totalQuestions,
+        isInitialized,
+        solvedQuestionIds,
+        bookmarkedQuestionIds,
+        solvedCount,
+        bookmarkedCount,
+        progressPercentage,
+        isProgressStorageAvailable
+    }), [
+        filters, filteredQuestions, allQuestions, structuredTags,
+        totalQuestions, isInitialized, solvedQuestionIds,
+        bookmarkedQuestionIds, solvedCount, bookmarkedCount,
+        progressPercentage, isProgressStorageAvailable
+    ]);
+
+    const actionsValue = useMemo(() => ({
+        updateFilters,
+        clearFilters,
+        getQuestionById,
+        toggleSolved,
+        toggleBookmark,
+        isQuestionSolved,
+        isQuestionBookmarked,
+        getQuestionProgressId,
+        setHideSolved,
+        setShowOnlySolved,
+        setShowOnlyBookmarked
+    }), [
+        updateFilters, clearFilters, getQuestionById,
+        toggleSolved, toggleBookmark, isQuestionSolved,
+        isQuestionBookmarked, getQuestionProgressId,
+        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked
+    ]);
+
     return (
-        <FilterContext.Provider value={{
-            filters,
-            updateFilters,
-            clearFilters,
-            filteredQuestions,
-            allQuestions,
-            getQuestionById,
-            structuredTags,
-            totalQuestions,
-            isInitialized,
-            solvedQuestionIds,
-            bookmarkedQuestionIds,
-            solvedCount,
-            bookmarkedCount,
-            progressPercentage,
-            isProgressStorageAvailable,
-            toggleSolved,
-            toggleBookmark,
-            isQuestionSolved,
-            isQuestionBookmarked,
-            getQuestionProgressId,
-            setHideSolved,
-            setShowOnlySolved,
-            setShowOnlyBookmarked
-        }}>
-            {children}
-        </FilterContext.Provider>
+        <FilterStateContext.Provider value={stateValue}>
+            <FilterActionsContext.Provider value={actionsValue}>
+                {children}
+            </FilterActionsContext.Provider>
+        </FilterStateContext.Provider>
     );
 };

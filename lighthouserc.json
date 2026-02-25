@@ -1,0 +1,47 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npm run serve -- --host 127.0.0.1 --port 4173",
+      "startServerReadyPattern": "4173",
+      "startServerReadyTimeout": 120000,
+      "url": [
+        "http://127.0.0.1:4173/Gate_QA/"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "chromeFlags": "--headless=new --no-sandbox"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": [
+          "warn",
+          {
+            "minScore": 0.8
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "largest-contentful-paint": [
+          "warn",
+          {
+            "maxNumericValue": 3500
+          }
+        ],
+        "cumulative-layout-shift": [
+          "error",
+          {
+            "maxNumericValue": 0.1
+          }
+        ]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

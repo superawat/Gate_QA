@@ -1,132 +1,181 @@
-# Repository Structure
+﻿# Repository Structure
 
-## Project Root
+This file documents the current tracked layout of `Gate_QA`.
 
-```
+## Root Layout
+
+```text
 Gate_QA/
-├── index.html                  # SPA entry point (MathJax config, analytics)
-├── package.json                # Dependencies, scripts (start, build, serve)
-├── vite.config.js              # Vite config (base: /Gate_QA/, output: dist/)
-├── tailwind.config.js          # Tailwind v3 config (src/**/*.{js,jsx})
-├── postcss.config.js           # PostCSS (tailwindcss + autoprefixer)
-│
-├── src/                        # ── React Application ──
-│   ├── index.jsx               # ReactDOM entry, StrictMode wrapper
-│   ├── index.css               # Tailwind directives + global styles
-│   ├── App.jsx                 # Root component: init services, routing, layout
-│   │
-│   ├── contexts/
-│   │   └── FilterContext.jsx   # All filter state, progress tracking, URL sync
-│   │
-│   ├── services/
-│   │   ├── QuestionService.js      # Data loader, TOPIC_HIERARCHY, tag indexing
-│   │   ├── QuestionService.test.js # Unit tests for question parsing
-│   │   ├── AnswerService.js        # Multi-index answer lookup (3 join strategies)
-│   │   └── AnswerService.test.js   # Unit tests for answer resolution
-│   │
-│   ├── utils/
-│   │   ├── evaluateAnswer.js   # Answer comparison logic (MCQ/NAT tolerance)
-│   │   └── examUid.js          # Exam UID extraction from question metadata
-│   │
-│   └── components/
-│       ├── Header/
-│       │   └── Header.jsx      # Sticky header: logo, title, filter + calc buttons
-│       ├── Footer/
-│       │   └── Footer.jsx      # App footer
-│       ├── Question/
-│       │   └── Question.jsx    # Question card (title, body, tags, next button)
-│       ├── AnswerPanel/
-│       │   └── AnswerPanel.jsx # Answer display + evaluation
-│       ├── QuestionStatusControls/
-│       │   └── QuestionStatusControls.jsx  # Solved checkbox, bookmark star
-│       ├── Calculator/
-│       │   └── CalculatorWidget.jsx / CalculatorButton.jsx
-│       ├── FilterTags/
-│       │   └── FilterTags.jsx  # (Legacy) tag display component
-│       └── Filters/
-│           ├── FilterModal.jsx         # Full-screen modal wrapper
-│           ├── FilterSidebar.jsx       # Main filter panel layout
-│           ├── FilterSection.jsx       # Collapsible section container
-│           ├── TopicFilter.jsx         # Topic + subtopic tree checkboxes
-│           ├── YearFilter.jsx          # Year tag checkboxes
-│           ├── YearRangeFilter.jsx     # rc-slider year range
-│           ├── ProgressBar.jsx         # Solved count bar + stats
-│           ├── ProgressFilterToggles.jsx # Hide/Show solved + bookmarked toggles
-│           └── ActiveFilterChips.jsx   # Active filter pills with remove buttons
-│
-├── public/                     # ── Static Assets (copied to dist/) ──
-│   ├── .nojekyll               # Prevents GitHub Pages Jekyll processing
-│   ├── logo.png                # App favicon + header logo
-│   ├── questions-with-answers.json     # Primary question dataset (~3.8 MB)
-│   ├── questions-filtered-with-ids.json # Enriched dataset with UIDs
-│   ├── questions-filtered.json         # Base filtered dataset
-│   ├── calculator/             # TCS scientific calculator (standalone HTML/JS/CSS)
-│   └── data/
-│       └── answers/
-│           ├── answers_by_question_uid_v1.json  # question_uid → answer map
-│           ├── answers_master_v1.json           # Master answer records
-│           ├── answers_by_exam_uid_v1.json      # exam_uid → answer map
-│           └── unsupported_question_uids_v1.json # Known unparseable questions
-│
-├── calculator/                 # ── Calculator Source ──
-│   └── (HTML/JS/CSS files)     # Synced to public/ and dist/ by build script
-│
-├── scraper/                    # ── Question Scraper (Python) ──
-│   ├── scrape_gateoverflow.py  # Fetches questions from GateOverflow
-│   ├── merge_questions.py      # Deduplicates and normalizes scraped data
-│   ├── list_tags.py            # Debug: print all unique tags
-│   ├── debug_filters.py        # Debug: test filtering rules
-│   ├── question_schema.json    # JSON schema for a question object
-│   └── requirements.txt       # Python dependencies (requests, beautifulsoup4)
-│
-├── scripts/                    # ── Build + Data Scripts ──
-│   ├── deployment/
-│   │   ├── ensure-nojekyll.mjs     # Post-build: create dist/.nojekyll
-│   │   └── sync-calculator.mjs     # Copy calculator/ to public/ or dist/
-│   ├── answers/                    # Answer pipeline scripts (Python)
-│   │   ├── build_answers_db.py     # Master answer database builder
-│   │   ├── build_answers_by_exam_uid.py
-│   │   ├── enrich_questions_with_ids.py
-│   │   ├── parse_answer_key.py
-│   │   ├── validate_answers.py
-│   │   └── (other pipeline scripts)
-│   ├── analyze_questions.py
-│   └── analyze_types.py
-│
-├── tests/                      # ── Test Files ──
-│   └── answers/                # Answer-related test data
-│
-├── .github/
-│   └── workflows/
-│       └── scraper.yml         # Scheduled scraper (every 4 months) + auto-PR
-│
-├── docs/                       # ── Developer Docs (gitignored) ──
-│   ├── ARCHITECTURE.md
-│   ├── REPO_STRUCTURE.md       # ← You are here
-│   ├── FRONTEND_GUIDE.md
-│   ├── DATA_PIPELINE.md
-│   ├── DEPLOYMENT.md
-│   ├── TESTING.md
-│   ├── CONTRIBUTING.md
-│   └── CHANGELOG.md
-│
-└── artifacts/                  # ── Generated Artifacts (gitignored) ──
-    └── (OCR pages, parsed answers, normalized text)
+|-- index.html
+|-- package.json
+|-- package-lock.json
+|-- vite.config.js
+|-- lighthouserc.json
+|-- tailwind.config.js
+|-- postcss.config.js
+|-- README.md
+|-- requirements.txt
+|
+|-- src/
+|   |-- index.jsx
+|   |-- index.css
+|   |-- App.jsx
+|   |-- contexts/
+|   |   `-- FilterContext.jsx
+|   |-- services/
+|   |   |-- QuestionService.js
+|   |   |-- QuestionService.test.js
+|   |   |-- AnswerService.js
+|   |   `-- AnswerService.test.js
+|   |-- utils/
+|   |   |-- evaluateAnswer.js
+|   |   |-- examUid.js
+|   |   |-- goatCounterClient.js
+|   |   |-- localStorageState.js
+|   |   `-- localStorageState.test.js
+|   |-- hooks/
+|   |   `-- useGoatCounterSPA.js
+|   `-- components/
+|       |-- Header/Header.jsx
+|       |-- Question/Question.jsx
+|       |-- AnswerPanel/AnswerPanel.jsx
+|       |-- Toast/Toast.jsx
+|       |-- Calculator/CalculatorButton.jsx
+|       |-- Calculator/CalculatorWidget.jsx
+|       |-- Filters/FilterModal.jsx
+|       |-- Filters/FilterSidebar.jsx
+|       |-- Filters/TopicFilter.jsx
+|       |-- Filters/YearFilter.jsx
+|       |-- Filters/YearRangeFilter.jsx
+|       |-- Filters/ProgressBar.jsx
+|       |-- Filters/ProgressFilterToggles.jsx
+|       |-- Filters/ActiveFilterChips.jsx
+|       |-- Filters/FilterSection.jsx
+|       |-- Footer/Footer.jsx
+|       |-- Footer/DataPolicyModal.jsx
+|       |-- Footer/SupportModal.jsx
+|       `-- FilterTags/FilterTags.jsx
+|
+|-- public/
+|   |-- .nojekyll
+|   |-- logo.png
+|   |-- questions-filtered.json
+|   |-- questions-filtered-with-ids.json
+|   |-- questions-with-answers.json
+|   |-- calculator/
+|   `-- data/answers/
+|       |-- answers_by_question_uid_v1.json
+|       |-- answers_master_v1.json
+|       |-- answers_by_exam_uid_v1.json
+|       `-- unsupported_question_uids_v1.json
+|
+|-- data/
+|   |-- question_id_overrides.json
+|   |-- subject_map.json
+|   `-- answers/
+|       |-- answers.schema.json
+|       |-- answers_master_v1.csv
+|       |-- answers_by_question_uid_v1.json
+|       |-- answers_by_exam_uid_v1.json
+|       |-- answer_to_question_map_v1.json
+|       |-- manual_answers_patch_v1.json
+|       |-- manual_resolutions_v1.json
+|       |-- ocr_profile_tesseract.json
+|       |-- subject_question_counts.json
+|       `-- validation_config.json
+|
+|-- scripts/
+|   |-- README.md
+|   |-- audit-canonical-filters.mjs
+|   |-- analyze_questions.py
+|   |-- analyze_types.py
+|   |-- find_text.py
+|   |-- show_question.py
+|   |-- qa/validate-data.js
+|   |-- deployment/
+|   |   |-- sync-calculator.mjs
+|   |   `-- ensure-nojekyll.mjs
+|   `-- answers/
+|       |-- apply_resolutions.py
+|       |-- backfill_gateoverflow_answers.py
+|       |-- build_answers_db.py
+|       |-- build_answers_by_exam_uid.py
+|       |-- build_unsupported_questions.py
+|       |-- enrich_questions_with_ids.py
+|       |-- extract_answer_pages.py
+|       |-- ocr_answer_pages.py
+|       |-- normalize_ocr_text.py
+|       |-- parse_answer_key.py
+|       |-- merge_answers_into_questions.py
+|       |-- validate_answers.py
+|       |-- generate_missing_report.py
+|       |-- common.py
+|       `-- __init__.py
+|
+|-- scraper/
+|   |-- scrape_gateoverflow.py
+|   |-- merge_questions.py
+|   |-- list_tags.py
+|   |-- debug_filters.py
+|   |-- question_schema.json
+|   |-- requirements.txt
+|   `-- README.md
+|
+|-- tests/
+|   `-- answers/
+|       |-- test_parse_answer_key.py
+|       |-- test_normalize_ocr_text.py
+|       `-- fixtures/
+|
+|-- calculator/
+|   |-- calculator.html
+|   |-- calculator.js
+|   |-- content.js
+|   |-- background.js
+|   |-- real.css
+|   `-- manifest.json
+|
+|-- docs/
+|   |-- ARCHITECTURE.md
+|   |-- REPO_STRUCTURE.md
+|   |-- FRONTEND_GUIDE.md
+|   |-- DATA_PIPELINE.md
+|   |-- DEPLOYMENT.md
+|   |-- TESTING.md
+|   |-- CONTRIBUTING.md
+|   |-- CHANGELOG.md
+|   |-- QA_HARDENING_CHECKLIST.md
+|   `-- PLATFORM_HARDENING_ALL_UPDATES.txt
+|
+|-- .github/workflows/
+|   |-- node.js.yml
+|   |-- scraper.yml
+|   `-- scheduled-maintenance.yml
+|
+|-- artifacts/
+|   `-- (generated review, OCR, and validation outputs)
+|
+`-- dist/
+    `-- (build artifact, generated)
 ```
 
-## Where to Find X
+## Important Ownership Map
 
-| Looking for… | Location |
-|-------------|----------|
-| Filter state & logic | `src/contexts/FilterContext.jsx` |
-| Filter UI components | `src/components/Filters/` |
-| Question data loading | `src/services/QuestionService.js` |
-| Answer resolution | `src/services/AnswerService.js` |
-| Topic whitelist | `QuestionService.TOPIC_HIERARCHY` (line 232) |
-| Progress tracking (solved/bookmarked) | `FilterContext.jsx` (localStorage keys, toggle functions) |
-| Deployment config | `vite.config.js` (base path), `package.json` (build script) |
-| Build helpers | `scripts/deployment/` |
-| Answer data pipeline | `scripts/answers/` |
-| Scraper automation | `.github/workflows/scraper.yml` |
-| Static data files | `public/` (questions JSON, answer JSONs) |
-| Calculator | `calculator/` (source), `public/calculator/` (synced copy) |
+- Filtering state and URL sync: `src/contexts/FilterContext.jsx`
+- Question normalization and taxonomy: `src/services/QuestionService.js`
+- Answer identity and joins: `src/services/AnswerService.js`
+- Question UI + sanitizer + MathJax: `src/components/Question/Question.jsx`
+- Attempt evaluation and actions: `src/components/AnswerPanel/AnswerPanel.jsx`
+- Build and deploy scripts: `scripts/deployment/`
+- Data integrity gate script: `scripts/qa/validate-data.js`
+- Answer ETL scripts: `scripts/answers/`
+- Scraper automation: `.github/workflows/scraper.yml`
+- CI build + deploy: `.github/workflows/node.js.yml`
+- Scheduled refresh + conditional deploy: `.github/workflows/scheduled-maintenance.yml`
+
+## Notes
+
+- `docs/` is tracked in git (not ignored).
+- `public/calculator/` is generated by `scripts/deployment/sync-calculator.mjs` from root `calculator/`.
+- `dist/` is generated and should not be edited manually.
+- `artifacts/` can contain large generated files and is partially ignored depending on subpath.

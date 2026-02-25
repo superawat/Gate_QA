@@ -1,156 +1,153 @@
-# Frontend Guide
+﻿# Frontend Guide
 
-> **Plain-English Summary**
-> This guide covers how to run the app locally, how the UI layout works across screen sizes, and the exact rules governing the filter system. Read this before touching any filter component, sidebar layout, or URL persistence logic. If you break URL sync, every shared link breaks.
+This guide covers local development, UI behavior, state persistence, and safe refactor rules for the React frontend.
 
-## Local Development
+## Prerequisites
 
-### Prerequisites
+- Node.js 18+
+- npm 9+
 
-- Node.js ≥ 18
-- npm ≥ 9
-
-### Commands
+## Commands
 
 ```bash
-npm install             # Install dependencies
-npm start               # Dev server (syncs calculator → public/, opens browser)
-npm run build           # Production build → dist/ (includes .nojekyll + calculator sync)
-npm run serve           # Preview production build locally
+npm install
+npm start
+npm run build
+npm run serve
+npm run test:unit
+npm run test:watch
+npm run qa:validate-data
+npm run lighthouse:mobile
 ```
 
-### What `npm start` does
+### Script Details
 
-1. Runs `sync-calculator.mjs --public` (copies `calculator/` → `public/calculator/`)
-2. Starts Vite dev server with `base: /Gate_QA/`
+- `npm start`
+  - Runs `scripts/deployment/sync-calculator.mjs --public`
+  - Starts Vite dev server (auto-open enabled in `vite.config.js`)
+- `npm run build`
+  - Syncs calculator into `public/`
+  - Builds Vite bundle to `dist/`
+  - Creates `dist/.nojekyll`
+  - Syncs calculator into `dist/calculator/`
+- `npm run serve`
+  - Serves built app from `dist/`
 
-### What `npm run build` does
+## App Layout
 
-1. Syncs calculator to `public/`
-2. `vite build` → writes to `dist/`
-3. `ensure-nojekyll.mjs` → creates `dist/.nojekyll`
-4. `sync-calculator.mjs --dist` → copies calculator to `dist/calculator/`
+- `Header`
+  - Home logo link (`import.meta.env.BASE_URL`)
+  - Calculator button
+  - Filter button
+- `FilterModal`
+  - Full-screen modal with sticky header/footer
+  - Wraps `FilterSidebar`
+- Main card area
+  - `ActiveFilterChips`
+  - `Question` card with MathJax-rendered, sanitized content
+  - `AnswerPanel` for answer interaction and actions
+- `Footer`
+  - Data policy modal trigger
+  - Support modal trigger
+- `CalculatorWidget`
+  - Draggable desktop panel, full-screen mobile sheet
 
-## UI Layout Rules
+## Filter UX Contract
 
-### All Screen Sizes
+### Active Dimensions
 
-- **Single-page app** — no routing, no page navigation.
-- **FilterModal** is full-screen overlay triggered by the "Filters" button in the header.
-- **No persistent sidebar** — the sidebar only exists inside the modal.
-- Main content area is centered (`max-w-[1200px]`) with padding.
+- Year set (`selectedYearSets`)
+- Year range (`yearRange`)
+- Subject (`selectedSubjects`, slug-based)
+- Subtopic (`selectedSubtopics`, slug-based)
+- Type (`MCQ`, `MSQ`, `NAT`)
+- Progress toggles:
+  - `hideSolved`
+  - `showOnlySolved`
+  - `showOnlyBookmarked`
 
-### Filter Modal Internals
+### Rules
 
-The `FilterModal` wraps `FilterSidebar` and adds:
-- A sticky header with "Filters" title and close button
-- A sticky footer with "Show X Questions" button
+- All filters auto-apply immediately.
+- `hideSolved` and `showOnlySolved` are mutually exclusive.
+- If all three types are selected, type filtering is skipped.
+- `clearFilters()` resets to defaults, including progress toggles.
 
-Inside `FilterSidebar`:
-- **Top section**: result count + Reset button
-- **Progress section**: horizontal split on `lg+` (progress bar left, toggles right); stacked on mobile
-- **Question type** toggles (MCQ / MSQ / NAT)
-- **Two-column grid** (`md+`): Topics (left) and Years (right); single column on mobile
-- **Year range slider** at bottom
-- **Bookmarked count** info text
+## URL State and Deep Linking
 
-### Responsive Breakpoints
+### Query Parameters
 
-| Breakpoint | Width | Behavior |
-|-----------|-------|----------|
-| Default | < 640px | Stacked layout, full-width everything |
-| `sm` | ≥ 640px | Minor spacing/font adjustments |
-| `md` | ≥ 768px | Topics + Years in 2-column grid |
-| `lg` | ≥ 1024px | Progress section goes horizontal (bar left, toggles right) |
+- `question=<question_uid>`
+- `years=2025-s2,2024-s0`
+- `subjects=os,dbms`
+- `subtopics=deadlock-prevention-avoidance-detection,sql`
+- `range=2016-2025`
+- `types=mcq,nat`
+- `hideSolved=1`
+- `showOnlySolved=1`
+- `showOnlyBookmarked=1`
 
-## Filter UX Rules
+### Deep-link Behavior
 
-### Auto-Apply
+- On first initialized render, app checks `question` param and tries to resolve exact question.
+- If resolved question is in current filtered pool, it becomes current question.
+- If question is invalid or excluded by active filters, app falls back to random filtered question.
+- Share action in `AnswerPanel` copies URL with `?question=<uid>`.
+- Filter URL sync preserves existing `question` param.
 
-All filters apply immediately on change. There is no "Apply" button inside the sidebar. The modal footer "Show X Questions" button is just a close action — it does not apply anything.
+## Progress Persistence
 
-### Filter Chips
+### Keys Used by FilterContext
 
-Active filters appear as removable pill chips (`ActiveFilterChips.jsx`) above the question card:
-- Year chips (blue)
-- Year range chip (purple) — only if range ≠ full span
-- Topic chips (green)
-- Subtopic chips (yellow)
-- "Hide solved" chip (emerald)
-- "Solved only" chip (indigo)
-- "Bookmarked only" chip (orange)
-- "Clear all" link resets everything
+- `gate_qa_solved_questions`
+- `gate_qa_bookmarked_questions`
+- `gate_qa_progress_metadata`
 
-### Year Range Slider
+### Additional Key Used by AnswerPanel
 
-- Uses `rc-slider` (Range mode) bound to `filters.yearRange`.
-- Min/max are computed dynamically from the question dataset.
-- The chip only appears when the range differs from the full dataset span.
+- `gateqa_progress_v1` (attempt metadata)
 
-### Progress Filters — Mutual Exclusion
+### Storage Behavior
 
-- **Hide Solved** + **Show Only Solved** are mutually exclusive (enabling one disables the other).
-- **Show Only Bookmarked** is independent and can combine with either solved filter.
-- All three are reset by `clearFilters()`.
+- Storage availability is probed with a write/remove health check.
+- Legacy bookmarks key (`gateqa_bookmarks_v1`) is migrated once.
+- Invalid IDs are pruned when canonical question ID set is available.
+- If storage writes fail, persistence is marked unavailable and UI shows warning text.
 
-### Question Type Toggles
+## Responsive Behavior
 
-- Three type buttons: MCQ, MSQ, NAT.
-- All ON by default. Clicking toggles individual types on/off.
-- Type is resolved via `AnswerService.getAnswerForQuestion(q).type`.
-- If all three are selected, the type filter is skipped entirely (optimization).
+- `< 768px`
+  - Filter sections stack vertically
+  - Calculator becomes full-screen panel
+  - AnswerPanel action bar uses stacked mobile layout
+- `>= 768px`
+  - Topics and years shown side-by-side in filter modal
+  - Calculator is draggable floating panel
+- `>= 1024px`
+  - Progress bar and progress toggles shown in horizontal split
 
-## URL Persistence
+## Security and Rendering
 
-Filter state is serialized to URL query params via `history.replaceState`:
+- Question HTML is sanitized with DOMPurify before rendering.
+- Math is rendered through `better-react-mathjax`.
+- `index.html` defines MathJax config and includes analytics scripts.
 
-| Param | Format | Example |
-|-------|--------|---------|
-| `years` | Comma-separated tags | `gate20241,gate20242` |
-| `topics` | Comma-separated | `Algorithms,Databases` |
-| `subtopics` | Comma-separated | `Sorting,SQL` |
-| `range` | `min-max` | `2015-2024` |
-| `types` | Comma-separated (only if not all selected) | `MCQ,NAT` |
-| `hideSolved` | `1` | `1` |
-| `showOnlySolved` | `1` | `1` |
-| `showOnlyBookmarked` | `1` | `1` |
+## Known Caveats
 
-**Invariant**: If a filter is at its default value, it is omitted from the URL.
-
-## Debugging
-
-### Empty Results
-
-1. Open browser DevTools → check `window.__gateqa_lookup` for current question identity info.
-2. Check active filter chips — a forgotten toggle (Show Only Solved with 0 solved questions) often causes this.
-3. Check URL params for corrupted state — manually clear query string as a test.
-
-### Whitelist Filtering Removing Tags
-
-Tags that exist in the data but aren't in `TOPIC_HIERARCHY` will not appear in the Topics filter. This is intentional. To add a missing subtopic, add it to the correct parent in `QuestionService.TOPIC_HIERARCHY`.
-
-### URL Params Not Syncing
-
-- The URL-write `useEffect` only runs after `isInitialized === true`.
-- The URL-read `useEffect` runs once on mount (empty dependency array).
-- If both run in unexpected order on hot reload, clear the URL manually.
-
-### MathJax Not Rendering
-
-- MathJax config is in `index.html` (global `MathJax` object).
-- `MathJaxContext` wraps the entire app in `App.jsx`.
-- If rendering fails, check that the question body contains valid LaTeX delimiters (`$...$` or `\(...\)`).
+- There are still `dark:` classes in components even though product direction is light-first.
+- `useGoatCounterSPA` exists but is not mounted in `App.jsx`.
+- `useGoatCounterSPA` imports `react-router-dom`; app currently has no router.
 
 ## Safe Refactor Checklist
 
-Before merging any change to filter-related code:
+Before merging frontend/filter changes:
 
-- [ ] URL round-trip: set filters → reload page → same filters are restored
-- [ ] `clearFilters()` resets all state to defaults (check URL is clean after)
-- [ ] Active filter chips render for every non-default filter
-- [ ] Clicking a chip removes only that specific filter
-- [ ] Result count in sidebar header matches `filteredQuestions.length`
-- [ ] Type filter: deselecting all three types still works (shows 0 results, no crash)
-- [ ] Year range slider: dragging handles updates results in real time
-- [ ] Progress bar always shows total `solvedCount / totalQuestions` regardless of active filters
-- [ ] All keyboard-navigable (Tab through toggles, Enter to activate)
+- [ ] URL round-trip still works for all active params.
+- [ ] `question` deep-link survives filter updates.
+- [ ] Current question never drifts outside filtered pool.
+- [ ] `clearFilters()` returns exact default state.
+- [ ] Mutually exclusive solved toggles still enforce exclusion.
+- [ ] Subject and subtopic chips use canonical labels, not raw slugs.
+- [ ] Progress counts remain based on all questions (not current filtered subset).
+- [ ] Mobile and desktop action bars are both usable.
+- [ ] Calculator can open/close with button, `Ctrl+K`, and `Escape`.

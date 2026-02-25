@@ -1,0 +1,220 @@
+﻿GATEQA PLATFORM HARDENING - UPDATE RECORD
+Date: 2026-02-25
+Project: GateQA (Vite + React SPA, GitHub Pages)
+
+================================================================
+PILLAR 1: DATA INTEGRITY AND CONTENT QUALITY
+================================================================
+
+1) Data integrity validation script added
+Path:
+- scripts/qa/validate-data.js
+
+What it checks:
+- Reads questions from public/questions-filtered.json (default)
+- Reads answers from first existing candidate:
+  1) public/data/answers/answers_master_v1.json
+  2) public/data/answers/answersmasterv1.json
+  3) public/answersmasterv1.json
+  4) answersmasterv1.json
+- Matches question UID coverage
+- Detects orphan answer rows
+- Flags idstrmissing-style orphan IDs
+- Separates missing answers into actionable/subjective/unsupported buckets
+- Writes JSON report to artifacts/review/data-integrity-report.json
+
+Current strict-mode exit behavior (implementation-accurate):
+- Exit 1 when questions without UID exist
+- Exit 1 when idstrmissing-style orphans exist
+- Actionable coverage gaps currently log warning output (not exit 1)
+
+Commands:
+- npm run qa:validate-data
+- node scripts/qa/validate-data.js --no-strict
+- node scripts/qa/validate-data.js --questions <path> --answers <path> --unsupported <path> --report <path>
+
+2) QA hardening checklist added
+Path:
+- docs/QA_HARDENING_CHECKLIST.md
+
+Coverage includes:
+- MathJax rendering checks
+- DOMPurify XSS sanitization checks
+- Deep-link and URL sync checks
+- localStorage edge-case checks
+- Lighthouse and workflow checks
+
+================================================================
+PILLAR 2: USER STATE AND BROWSER EDGE CASES
+================================================================
+
+1) localStorage state utility added
+Path:
+- src/utils/localStorageState.js
+
+Exports:
+- USER_STATE_STORAGE_KEYS
+- readStorageJson
+- writeStorageJson
+- isQuotaExceededError
+- exportUserState
+- importUserState
+
+Behavior:
+- Safe JSON reads with fallback
+- Structured import results instead of throw
+- Quota-exceeded classification by name/code
+- Supports solved/bookmarked/metadata/progress payload
+
+2) Utility tests added
+Path:
+- src/utils/localStorageState.test.js
+
+Tested scenarios:
+- successful read/write/export/import
+- invalid JSON import handling
+- quota exceeded write/import behavior
+
+3) npm test scripts added
+Path:
+- package.json
+
+Added scripts:
+- test:unit
+- test:watch
+
+================================================================
+PILLAR 3: PERFORMANCE AND LOAD LIMITS
+================================================================
+
+1) Vite build hardening
+Path:
+- vite.config.js
+
+Changes:
+- manual vendor chunk splitting:
+  - vendor-react
+  - vendor-mathjax
+  - vendor-ui
+  - vendor-misc
+- cssCodeSplit: true
+- modulePreload polyfill disabled
+- sourcemap disabled for production
+- chunkSizeWarningLimit set to 350
+
+2) Lighthouse CI configuration added
+Path:
+- lighthouserc.json
+
+Highlights:
+- Runs against preview server at 127.0.0.1:4173
+- Mobile-style assertions configured
+- 3 runs
+- Performance warning threshold
+- Accessibility error threshold
+- LCP and CLS assertions
+
+3) Lighthouse script added
+Path:
+- package.json
+
+Added:
+- lighthouse:mobile
+
+Commands:
+- npm run build
+- npm run lighthouse:mobile
+
+================================================================
+PILLAR 4: ANALYTICS UTILITIES
+================================================================
+
+1) SPA pageview hook utility added
+Path:
+- src/hooks/useGoatCounterSPA.js
+
+Behavior:
+- Tracks location changes through React Router location object
+- Path dedupe per render cycle
+- Optional first-load skip to avoid double count
+
+Important current state:
+- Hook is not mounted in App.jsx yet
+- Hook depends on react-router-dom; main app currently does not use router
+
+2) GoatCounter client utility added
+Path:
+- src/utils/goatCounterClient.js
+
+Capabilities:
+- waitForGoatCounter retries
+- trackGoatCounterPageview
+- createGoatCounterActionId
+- trackGoatCounterEventOnce with TTL dedupe
+- resetGoatCounterEventDedup
+
+================================================================
+PILLAR 5: AUTOMATED MAINTENANCE
+================================================================
+
+1) Scheduled maintenance workflow added
+Path:
+- .github/workflows/scheduled-maintenance.yml
+
+Behavior:
+- Trigger every 3 months and manual dispatch
+- Setup Python + Node
+- Run scraper and merge
+- Run non-strict integrity report generation
+- Commit/push data changes to main only when diff exists
+- Build and verify deployment artifacts
+- Deploy dist to gh-pages only when data changed
+- Uses workflow concurrency group
+
+2) Existing CI and scraper workflows retained
+Paths:
+- .github/workflows/node.js.yml
+- .github/workflows/scraper.yml
+
+================================================================
+PACKAGE AND TOOLING UPDATES
+================================================================
+
+Modified:
+- package.json
+- package-lock.json
+- vite.config.js
+
+Added dev dependencies:
+- vitest
+- @lhci/cli
+
+================================================================
+FILES ADDED IN HARDENING WAVE
+================================================================
+
+- scripts/qa/validate-data.js
+- src/utils/localStorageState.js
+- src/utils/localStorageState.test.js
+- src/utils/goatCounterClient.js
+- src/hooks/useGoatCounterSPA.js
+- lighthouserc.json
+- .github/workflows/scheduled-maintenance.yml
+- docs/QA_HARDENING_CHECKLIST.md
+- docs/PLATFORM_HARDENING_ALL_UPDATES.txt
+
+================================================================
+VERIFICATION SNAPSHOT (AS RECORDED)
+================================================================
+
+Executed in hardening cycle:
+- npm run test:unit
+- npm run build
+- npm run qa:validate-data
+
+Observed summary:
+- Unit tests: pass
+- Build: pass
+- Integrity check: report generated; unresolved coverage gaps may remain depending on dataset state
+
+END OF RECORD

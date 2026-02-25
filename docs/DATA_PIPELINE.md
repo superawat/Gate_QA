@@ -1,126 +1,193 @@
-# Data Pipeline
+﻿# Data Pipeline
 
-## Overview
+GateQA ships static JSON artifacts. Runtime never calls a backend service.
+All scraping, answer extraction, validation, and enrichment happen offline through scripts.
 
-The question dataset is produced through a multi-stage pipeline that scrapes, normalizes, enriches, and validates question + answer data. The final outputs are static JSON files consumed by the React frontend at runtime.
+## Pipeline Overview
 
-**Key principle**: The frontend only reads static JSON from `public/`. All pipeline scripts are offline tools that run locally or in CI. No backend is involved at runtime.
+1. Scrape and normalize question corpus.
+2. Enrich question rows with stable IDs.
+3. Extract and parse answer-key sources.
+4. Build answer indexes.
+5. Merge answers into frontend dataset.
+6. Validate data integrity and schema.
+7. Publish outputs into `public/` for runtime fetch.
 
-## Pipeline Stages
+## Stage 1: Question Scrape and Merge
 
-```
-Stage 1: SCRAPE        Stage 2: ENRICH         Stage 3: ANSWERS         Stage 4: OUTPUT
-─────────────────      ─────────────────       ──────────────────       ─────────────────
-GateOverflow.in        Raw questions JSON      Answer key PDFs          public/ JSON files
-      │                      │                  (external source)            │
-      ▼                      ▼                       │                      ▼
-  scraper/              scripts/answers/             ▼                  Frontend reads
-  scrape_gateoverflow   enrich_questions_       parse_answer_key.py     at runtime
-      │                 with_ids.py             ocr_answer_pages.py
-      ▼                      │                       │
-  scraper/                   ▼                       ▼
-  merge_questions.py    questions-filtered-     build_answers_db.py
-      │                 with-ids.json           build_answers_by_
-      ▼                                         exam_uid.py
-  questions-                                         │
-  filtered.json                                      ▼
-                                                data/answers/
-                                                *.v1.json
-```
+Primary scripts:
 
-## Stage Details
+- `scraper/scrape_gateoverflow.py`
+- `scraper/merge_questions.py`
 
-### Stage 1: Scraping (`scraper/`)
+Outputs:
 
-| Script | Purpose |
-|--------|---------|
-| `scrape_gateoverflow.py` | Fetches question pages from GateOverflow.in. Outputs raw JSON array. |
-| `merge_questions.py` | Deduplicates, normalizes tags, removes invalid entries. Outputs `questions-filtered.json`. |
+- `public/questions-filtered.json`
+- (and refreshes related merged outputs depending on local workflow)
 
-- Automated via GitHub Actions (`.github/workflows/scraper.yml`): runs every 4 months or on manual dispatch.
-- On changes, the workflow creates a PR with the updated `questions-filtered.json`.
+Automation:
 
-### Stage 2: Enrichment (`scripts/answers/`)
+- `.github/workflows/scraper.yml` runs every 4 months (`0 0 1 */4 *`) and can open a PR when question data changes.
 
-| Script | Purpose |
-|--------|---------|
-| `enrich_questions_with_ids.py` | Adds `question_uid` fields to each question. Outputs `questions-filtered-with-ids.json`. |
-| `merge_answers_into_questions.py` | Merges answer data directly into question objects. Outputs `questions-with-answers.json`. |
+## Stage 2: Question Identity Enrichment
 
-### Stage 3: Answer Processing (`scripts/answers/`)
+Script:
 
-| Script | Purpose |
-|--------|---------|
-| `extract_answer_pages.py` | Extracts individual pages from answer key PDFs. |
-| `ocr_answer_pages.py` | Runs OCR on extracted pages. |
-| `normalize_ocr_text.py` | Cleans and normalizes raw OCR text. |
-| `parse_answer_key.py` | Parses normalized text into structured answer records. |
-| `build_answers_db.py` | Builds the master answer database (`answers_master_v1.json`). |
-| `build_answers_by_exam_uid.py` | Builds the exam-UID-indexed lookup (`answers_by_exam_uid_v1.json`). |
-| `build_unsupported_questions.py` | Generates the unsupported questions list. |
-| `validate_answers.py` | Cross-validates answers against multiple sources. |
-| `backfill_gateoverflow_answers.py` | Fills gaps from GateOverflow community answers. |
+- `scripts/answers/enrich_questions_with_ids.py`
 
-### Stage 4: Output Files (in `public/`)
+Purpose:
 
-| File | Size | Description |
-|------|------|-------------|
-| `questions-with-answers.json` | ~3.8 MB | Primary dataset (questions + embedded answers). Preferred by `QuestionService`. |
-| `questions-filtered-with-ids.json` | ~3.1 MB | Questions with UIDs but no embedded answers. Fallback. |
-| `questions-filtered.json` | ~3.0 MB | Base dataset. Last-resort fallback. |
-| `data/answers/answers_by_question_uid_v1.json` | ~0.9 MB | `question_uid → answer` lookup. |
-| `data/answers/answers_master_v1.json` | ~1.2 MB | Full answer records by `answer_uid`. |
-| `data/answers/answers_by_exam_uid_v1.json` | ~0.7 MB | `exam_uid → answer` lookup. |
-| `data/answers/unsupported_question_uids_v1.json` | ~18 KB | Known unparseable/unsupported questions. |
+- Adds deterministic `question_uid`/identity fields needed for answer joins.
 
-## Tag Whitelisting (Why It Exists)
+Output:
 
-Question tags from scraped sources often include noise: coaching site names, mock test identifiers, and unrelated metadata. `QuestionService.TOPIC_HIERARCHY` is a strict whitelist of **382 subtopics** organized under 12 parent topics.
+- `public/questions-filtered-with-ids.json`
 
-**Rules**:
-- Only tags that normalize-match an entry in `TOPIC_HIERARCHY` appear in the Topics filter.
-- Tags are never removed from the data — they're just excluded from the filter UI.
-- To add a new valid subtopic: add it to the appropriate parent array in `TOPIC_HIERARCHY`.
+## Stage 3: Answer Extraction and Parsing
 
-## Year Tag Format
+Core scripts in `scripts/answers/`:
 
-Tags like `gate2024`, `gate20241`, `gate20242` represent years and sets:
-- `gate2024` → "2024" (generic, no sets)
-- `gate20241` → "2024 Set 1"
-- `gate20242` → "2024 Set 2"
+- `extract_answer_pages.py`
+- `ocr_answer_pages.py`
+- `normalize_ocr_text.py`
+- `parse_answer_key.py`
 
-If set-specific tags exist for a year, the generic tag is suppressed from the year filter.
+Supporting sources/config:
 
-## Answer Join Strategy
+- `data/answers/ocr_profile_tesseract.json`
+- OCR/page artifacts under `artifacts/`
 
-`AnswerService` tries three indexes in order:
-1. `question_uid` (e.g., `go:12345`) → `answers_by_question_uid_v1.json`
-2. `answer_uid` (e.g., `v1:CS-2024-Q42`) → `answers_master_v1.json`
-3. `exam_uid` (e.g., `GATE-CS-2024-42`) → `answers_by_exam_uid_v1.json`
+## Stage 4: Answer Index Build
 
-If none match, it checks the unsupported list and returns a sentinel `type: "UNSUPPORTED"` record.
+Core scripts:
 
-## Running the Pipeline Locally
+- `build_answers_db.py`
+- `build_answers_by_exam_uid.py`
+- `build_unsupported_questions.py`
+- `validate_answers.py`
+- `backfill_gateoverflow_answers.py`
+- `apply_resolutions.py`
+- `generate_missing_report.py`
+
+Primary artifacts (source-of-truth workspace):
+
+- `data/answers/answers_master_v1.csv`
+- `data/answers/answers_by_question_uid_v1.json`
+- `data/answers/answers_by_exam_uid_v1.json`
+- `data/answers/answer_to_question_map_v1.json`
+- `data/answers/manual_answers_patch_v1.json`
+- `data/answers/manual_resolutions_v1.json`
+
+Runtime artifacts copied/committed in `public/data/answers/`:
+
+- `answers_master_v1.json`
+- `answers_by_question_uid_v1.json`
+- `answers_by_exam_uid_v1.json`
+- `unsupported_question_uids_v1.json`
+
+## Stage 5: Merge Answers into Questions
+
+Script:
+
+- `scripts/answers/merge_answers_into_questions.py`
+
+Output:
+
+- `public/questions-with-answers.json`
+
+This is the first-choice dataset fetched by `QuestionService`.
+
+## Stage 6: Integrity Validation and QA Gates
+
+### Data integrity script
+
+- `scripts/qa/validate-data.js`
+
+Default inputs:
+
+- Questions: `public/questions-filtered.json`
+- Answers (first existing candidate):
+  - `public/data/answers/answers_master_v1.json`
+  - `public/data/answers/answersmasterv1.json`
+  - `public/answersmasterv1.json`
+  - `answersmasterv1.json`
+- Unsupported list candidate:
+  - `public/data/answers/unsupported_question_uids_v1.json`
+  - `data/answers/unsupported_question_uids_v1.json`
+
+Report output:
+
+- `artifacts/review/data-integrity-report.json`
+
+Command:
 
 ```bash
-# Prerequisites: Python 3.9+, pip install -r requirements.txt
+npm run qa:validate-data
+```
 
-# Step 1: Scrape (or use existing data)
+CLI flags:
+
+```bash
+node scripts/qa/validate-data.js \
+  --questions <path> \
+  --answers <path> \
+  --unsupported <path> \
+  --report <path> \
+  --no-strict
+```
+
+Strict-mode behavior in current implementation:
+
+- Fails (`exit 1`) when:
+  - questions without UID exist, or
+  - `idstrmissing`-style orphan answers exist.
+- Coverage gaps in actionable missing answers currently produce warnings, not a failing exit.
+
+### Canonical subject audit
+
+Script:
+
+- `scripts/audit-canonical-filters.mjs`
+
+Outputs CSV summaries in project root:
+
+- `counts_by_subject.csv`
+- `counts_by_yearset.csv`
+- `unknown_subject.csv`
+- `subject_conflicts.csv`
+- `leakage_test.csv`
+
+## End-to-End Local Run (Typical)
+
+```bash
+# 1) Refresh question corpus
 python scraper/scrape_gateoverflow.py
 python scraper/merge_questions.py
 
-# Step 2: Enrich with IDs
+# 2) Enrich IDs
 python scripts/answers/enrich_questions_with_ids.py
 
-# Step 3: Build answer databases (requires source answer files in artifacts/)
+# 3) Build/refresh answer outputs (may require OCR/artifact inputs)
 python scripts/answers/build_answers_db.py
 python scripts/answers/build_answers_by_exam_uid.py
-
-# Step 4: Merge answers into questions
 python scripts/answers/merge_answers_into_questions.py
 
-# Step 5: Validate
+# 4) Validate
 python scripts/answers/validate_answers.py
+npm run qa:validate-data
 ```
 
-> **Note**: Steps 3–5 require answer source files (PDFs, OCR artifacts) that are not checked into the repository. These are generated locally and the resulting JSON files are committed to `public/`.
+## CI/Automation Touchpoints
+
+- `scraper.yml`: scheduled scrape PR flow every 4 months.
+- `scheduled-maintenance.yml`: every 3 months, refreshes data on main if changed, builds, verifies artifacts, deploys Pages.
+- `node.js.yml`: build/deploy on push to `main` and build on PR.
+
+## Runtime Consumption Contract
+
+Frontend runtime reads only static files via `import.meta.env.BASE_URL`:
+
+- Questions dataset in app root (`questions-with-answers.json` preferred)
+- Answer indexes in `data/answers/`
+
+No runtime mutation of these files occurs in browser.

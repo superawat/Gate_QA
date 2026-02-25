@@ -1,0 +1,94 @@
+name: Scheduled Maintenance
+
+on:
+  schedule:
+    # Every 3 months at 02:00 UTC on day 1.
+    - cron: "0 2 1 */3 *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: scheduled-maintenance
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Python dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Run scraper
+        run: python scraper/scrape_gateoverflow.py
+
+      - name: Merge scraped questions
+        run: python scraper/merge_questions.py
+
+      - name: Generate data integrity report
+        run: node scripts/qa/validate-data.js --no-strict
+
+      - name: Commit and push updated data
+        id: commit_changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add public/questions-filtered.json
+          git add public/questions-filtered-with-ids.json
+          git add public/questions-with-answers.json
+          git add public/data/answers
+          git add data/answers
+          git add artifacts/review/data-integrity-report.json
+
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          commit_date="$(date -u +'%Y-%m-%d')"
+          git commit -m "chore(data): scheduled refresh ${commit_date} [skip ci]"
+          git push origin HEAD:main
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+
+      - name: Build static site
+        if: steps.commit_changes.outputs.has_changes == 'true'
+        run: npm run build
+
+      - name: Verify deploy artifacts
+        if: steps.commit_changes.outputs.has_changes == 'true'
+        run: |
+          test -f dist/.nojekyll
+          test -f dist/calculator/calculator.html
+
+      - name: Deploy to gh-pages
+        if: steps.commit_changes.outputs.has_changes == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: dist
+          clean: true

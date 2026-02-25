@@ -1,113 +1,155 @@
-# Testing
+﻿# Testing
 
-## Current Test Coverage
+This project uses a mix of JavaScript unit tests, Python pipeline tests, and manual QA.
 
-Unit tests exist for services only:
+## 1) JavaScript Unit Tests (Vitest)
 
-| File | Tests |
-|------|-------|
-| `src/services/QuestionService.test.js` | Question UID generation, normalization, tag parsing |
-| `src/services/AnswerService.test.js` | Answer lookup resolution, identity extraction, multi-index join |
+Current tests:
 
-Run existing tests:
+- `src/services/QuestionService.test.js`
+- `src/services/AnswerService.test.js`
+- `src/utils/localStorageState.test.js`
+
+Run:
+
 ```bash
-npx vitest run           # One-shot run
-npx vitest               # Watch mode
+npm run test:unit
+npm run test:watch
 ```
 
-## Manual QA Checklist
+Notes:
 
-### Filter Functionality
+- Vite test environment is configured as `node` in `vite.config.js`.
+- These tests validate core identity parsing, answer lookup fallback order, and localStorage utility behaviors.
 
-- [ ] **Default state**: All types selected (MCQ, MSQ, NAT), no year/topic selection, full year range, all progress toggles OFF
-- [ ] **Type toggles**: Deselect MCQ → only MSQ+NAT questions shown. Re-select → MCQ questions return.
-- [ ] **Year selection**: Click a year checkbox → only that year's questions shown. Count updates.
-- [ ] **Year range slider**: Drag handles → results filter to range. Chip appears if range ≠ full span.
-- [ ] **Topic filter**: Select a topic → only questions with matching tags shown. Subtopics expand.
-- [ ] **Subtopic filter**: Select a subtopic → narrows within the parent topic.
-- [ ] **Hide Solved**: Toggle ON → solved questions disappear. Toggle OFF → they return.
-- [ ] **Show Only Solved**: Toggle ON → only solved questions shown. "Hide Solved" auto-disables.
-- [ ] **Show Only Bookmarked**: Toggle ON → only bookmarked questions shown. Works with either solved toggle.
-- [ ] **Combined filters**: Type=MCQ + Year=2024 + Topic=Algorithms → results are the intersection. Count is correct.
-- [ ] **Clear All**: Click "Clear all" chip or "Reset" button → all filters reset, URL params cleared.
-- [ ] **Empty results**: Set impossible filter combo → "No questions match your filters" message appears (no crash).
+## 2) Python Pipeline Tests (pytest)
 
-### URL Persistence
+Current tests:
 
-- [ ] Set filters → copy URL → open in new tab → same filters are active
-- [ ] Set filters → reload page → same filters are restored
-- [ ] Clear all filters → URL has no query params
-- [ ] Only non-default filters appear as URL params (no `types=MCQ,MSQ,NAT` when all are selected)
+- `tests/answers/test_parse_answer_key.py`
+- `tests/answers/test_normalize_ocr_text.py`
 
-### Active Filter Chips
+Run from repo root:
 
-- [ ] Each active filter has a visible chip above the question card
-- [ ] Clicking × on a chip removes only that filter
-- [ ] "Clear all" removes all chips and resets URL
-- [ ] Chip colors are distinct per filter type (blue=year, green=topic, etc.)
+```bash
+python -m pytest tests/answers -q
+```
 
-### Progress Tracking
+Prereq:
 
-- [ ] Mark question as solved → counter increments, progress bar updates
-- [ ] Bookmark question → star fills, bookmarked count updates
-- [ ] Refresh page → solved/bookmarked state persists (localStorage)
-- [ ] Progress bar always shows `solvedCount / totalQuestions` (not affected by active filters)
+```bash
+pip install -r requirements.txt
+```
 
-### Responsive Layout
+## 3) Data Integrity Gate
 
-| Test | Expected |
-|------|----------|
-| Desktop (≥ 1024px) | Filter modal: progress bar left, toggles right (horizontal split) |
-| Desktop (≥ 768px) | Filter modal: Topics + Years in 2-column grid |
-| Mobile (< 768px) | Filter modal: everything stacked vertically |
-| Mobile | Modal has "Show X Questions" footer button |
-| All widths | No horizontal overflow, no clipped content |
+Run:
+
+```bash
+npm run qa:validate-data
+```
+
+Output report:
+
+- `artifacts/review/data-integrity-report.json`
+
+Expected behavior in strict mode:
+
+- Fails on UID gaps and `idstrmissing`-style orphan records.
+- Coverage gaps in actionable missing answers currently produce warning logs.
+
+For non-blocking report generation:
+
+```bash
+node scripts/qa/validate-data.js --no-strict
+```
+
+## 4) Build and Artifact Validation
+
+Run:
+
+```bash
+npm run build
+```
+
+Verify:
+
+- `dist/.nojekyll`
+- `dist/calculator/calculator.html`
+- `dist/questions-with-answers.json`
+- `dist/data/answers/*.json`
+
+## 5) Lighthouse Regression Check
+
+Run:
+
+```bash
+npm run build
+npm run lighthouse:mobile
+```
+
+Current assertions from `lighthouserc.json`:
+
+- performance >= 0.80 (warn)
+- accessibility >= 0.95 (error)
+- LCP <= 3500 ms (warn)
+- CLS <= 0.1 (error)
+
+## 6) Manual QA Checklist
+
+### Core App Flow
+
+- [ ] App loads questions without retry state.
+- [ ] "Next Question" always picks from filtered pool.
+- [ ] No console invariant error about `currentQuestion` outside pool.
+
+### Filtering
+
+- [ ] Year-set checkboxes filter correctly.
+- [ ] Year range slider filters correctly.
+- [ ] Subject and subtopic filters intersect correctly.
+- [ ] Type buttons (MCQ/MSQ/NAT) apply correctly.
+- [ ] `hideSolved` and `showOnlySolved` stay mutually exclusive.
+- [ ] `showOnlyBookmarked` can combine with solved toggles.
+- [ ] `Reset` and `Clear all` restore default filters.
+
+### URL and Deep Link
+
+- [ ] Filter state writes to URL using expected params.
+- [ ] Reload preserves active filters.
+- [ ] `?question=<uid>` opens the expected question when valid.
+- [ ] Share action copies usable deep-link URL.
+- [ ] Filter updates keep `question` param intact.
+
+### Progress and Persistence
+
+- [ ] Solved and bookmarked status persist across reload.
+- [ ] Legacy bookmark migration path does not error.
+- [ ] Storage-unavailable warning appears when storage fails.
+- [ ] Progress bar reflects total solved over total corpus.
+
+### Answer Interaction
+
+- [ ] MCQ submission validates single selection.
+- [ ] MSQ submission validates set equality.
+- [ ] NAT submission honors tolerance and invalid input handling.
+- [ ] Unsupported questions show non-interactive status block.
 
 ### Calculator
 
-- [ ] Click calculator button in header → calculator opens
-- [ ] `Ctrl+K` → calculator toggles
-- [ ] `Escape` → calculator closes
-- [ ] Drag calculator by header → smooth repositioning (no lag)
-- [ ] Calculator does not close when clicking elsewhere on the page
+- [ ] Header button toggles calculator.
+- [ ] `Ctrl+K` toggles calculator.
+- [ ] `Escape` closes calculator.
+- [ ] Desktop drag is smooth and does not get stuck over iframe.
+- [ ] Mobile calculator opens full-screen and closes reliably.
 
-### Cross-Browser Quick Checks
+### Footer Modals
 
-| Browser | Check |
-|---------|-------|
-| Chrome (latest) | Full test pass |
-| Firefox (latest) | Filter toggles, MathJax rendering, year slider |
-| Safari (latest) | localStorage persistence, CSS layout, MathJax |
+- [ ] Data policy modal opens/closes with backdrop and close button.
+- [ ] Support modal opens/closes and mail link is clickable.
 
-## Performance Sanity
+## 7) Current Gaps
 
-| Metric | Target | How to measure |
-|--------|--------|----------------|
-| Initial data load | < 3s on 4G | DevTools → Network → questions-with-answers.json |
-| Filter change → UI update | < 100ms | DevTools → Performance → record a filter toggle |
-| MathJax render (single question) | < 500ms | Visual — no visible reflow after initial paint |
-
-## Unit Test Targets (Future)
-
-Priority targets for automated tests:
-
-### QuestionService
-
-- [ ] `buildQuestionUid()`: deterministic UID from GO link, from metadata, from hash
-- [ ] `normalizeQuestion()`: fills defaults, assigns UID
-- [ ] `getStructuredTags()`: year deduplication (generic vs set-specific), subtopic whitelist filtering
-- [ ] `init()`: picks highest join-coverage candidate
-
-### FilterContext
-
-- [ ] URL read → state: parse `?types=MCQ&hideSolved=1` correctly
-- [ ] State → URL write: only non-default values serialized
-- [ ] Mutual exclusion: enabling `showOnlySolved` disables `hideSolved`
-- [ ] `clearFilters()`: returns to exact default state
-- [ ] Filter pipeline: each filter dimension independently correct
-
-### AnswerService
-
-- [ ] Multi-index resolution: `question_uid` lookup → `answer_uid` fallback → `exam_uid` fallback
-- [ ] Unsupported question detection: returns `type: "UNSUPPORTED"` sentinel
-- [ ] `getStorageKeyForQuestion()`: returns best available UID
+- No browser E2E automation (Playwright/Cypress not configured).
+- GoatCounter SPA hook is not currently mounted, so route-change tracking tests do not apply.
+- No dedicated accessibility snapshot tests beyond Lighthouse assertions.

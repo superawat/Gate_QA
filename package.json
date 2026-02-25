@@ -17,8 +17,9 @@
     "react-select": "^5.7.3"
   },
   "scripts": {
-    "start": "node scripts/deployment/sync-calculator.mjs --public && vite",
-    "build": "node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
+    "precompute": "node scripts/precompute-subtopics.mjs",
+    "start": "node scripts/precompute-subtopics.mjs && node scripts/deployment/sync-calculator.mjs --public && vite",
+    "build": "node scripts/precompute-subtopics.mjs && node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
     "serve": "vite preview",
     "audit:canonical": "node scripts/audit-canonical-filters.mjs",
     "qa:validate-data": "node scripts/qa/validate-data.js",
