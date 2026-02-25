@@ -9,20 +9,19 @@ Gate_QA/
 |-- index.html
 |-- package.json
 |-- package-lock.json
-|-- pipeline-state.json
+|-- pipeline-state.json          # Pipeline persistent state (nextTargetYear, totals)
 |-- vite.config.js
 |-- lighthouserc.json
 |-- tailwind.config.js
 |-- postcss.config.js
 |-- README.md
-|-- requirements.txt
 |
 |-- src/
 |   |-- index.jsx
 |   |-- index.css
 |   |-- App.jsx
 |   |-- generated/
-|   |   `-- subtopicLookup.json (generated, ignored)
+|   |   `-- subtopicLookup.json  (generated, ignored)
 |   |-- contexts/
 |   |   |-- FilterContext.jsx
 |   |   `-- FilterContext.test.jsx
@@ -76,68 +75,22 @@ Gate_QA/
 |       `-- unsupported_question_uids_v1.json
 |
 |-- data/
-|   |-- question_id_overrides.json
-|   |-- subject_map.json
 |   `-- answers/
-|       |-- answers.schema.json
-|       |-- answers_master_v1.csv
-|       |-- answers_by_question_uid_v1.json
-|       |-- answers_by_exam_uid_v1.json
-|       |-- answer_to_question_map_v1.json
-|       |-- manual_answers_patch_v1.json
-|       |-- manual_resolutions_v1.json
-|       |-- ocr_profile_tesseract.json
-|       |-- subject_question_counts.json
-|       `-- validation_config.json
+|       |-- answers_by_question_uid_v1.json   # Read by pipeline answer-backfill
+|       `-- manual_answers_patch_v1.json      # Live answer patch queue (written by pipeline)
 |
 |-- scripts/
-|   |-- README.md
 |   |-- precompute-subtopics.mjs
-|   |-- analyze_questions.py
-|   |-- analyze_types.py
-|   |-- find_text.py
-|   |-- show_question.py
 |   |-- qa/validate-data.js
 |   |-- deployment/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
-|   |-- pipeline/
-|   |   |-- scrape.mjs
-|   |   |-- normalise.mjs
-|   |   |-- answer-backfill.mjs
-|   |   |-- merge.mjs
-|   |   `-- validate.mjs
-|   `-- answers/
-|       |-- apply_resolutions.py
-|       |-- backfill_gateoverflow_answers.py
-|       |-- build_answers_db.py
-|       |-- build_answers_by_exam_uid.py
-|       |-- build_unsupported_questions.py
-|       |-- enrich_questions_with_ids.py
-|       |-- extract_answer_pages.py
-|       |-- ocr_answer_pages.py
-|       |-- normalize_ocr_text.py
-|       |-- parse_answer_key.py
-|       |-- merge_answers_into_questions.py
-|       |-- validate_answers.py
-|       |-- generate_missing_report.py
-|       |-- common.py
-|       `-- __init__.py
-|
-|-- scraper/
-|   |-- scrape_gateoverflow.py
-|   |-- merge_questions.py
-|   |-- list_tags.py
-|   |-- debug_filters.py
-|   |-- question_schema.json
-|   |-- requirements.txt
-|   `-- README.md
-|
-|-- tests/
-|   `-- answers/
-|       |-- test_parse_answer_key.py
-|       |-- test_normalize_ocr_text.py
-|       `-- fixtures/
+|   `-- pipeline/
+|       |-- scrape.mjs            # Stage 1: Tag discovery, pagination, question extraction
+|       |-- normalise.mjs         # Stage 2: Canonical structure mapping (subject, type, year/set)
+|       |-- answer-backfill.mjs   # Stage 3: GateOverflow answer widget + fallback parsing
+|       |-- merge.mjs             # Stage 4: Dedup merge into question bank
+|       `-- validate.mjs          # Stage 5: Volume / dedup / completeness hard gate
 |
 |-- calculator/
 |   |-- calculator.html
@@ -152,7 +105,7 @@ Gate_QA/
 |   |-- ARCHITECTURE.md
 |   |-- REPO_STRUCTURE.md
 |   |-- FRONTEND_GUIDE.md
-|   |-- DATA_PIPELINE.md
+|   |-- DATA_PIPELINE.md          # Pipeline primary documentation
 |   |-- DEPLOYMENT.md
 |   |-- TESTING.md
 |   |-- CONTRIBUTING.md
@@ -160,19 +113,14 @@ Gate_QA/
 |   |-- KNOWN-LIMITATIONS.md
 |   |-- DATA-POLICY.md
 |   |-- QA_HARDENING_CHECKLIST.md
-|   `-- PLATFORM_HARDENING_ALL_UPDATES.txt
+|   `-- FEAT-003_PHASE0_SIGNOFF.md
 |
-|-- audit/
-|   `-- (FEAT-003 pipeline audit outputs)
+|-- audit/                        # Pipeline-generated outputs, committed after every run,
+|   `-- .gitkeep                  # never read by frontend
 |
 |-- .github/workflows/
-|   |-- node.js.yml
-|   |-- gate-question-pipeline.yml
-|   |-- scraper.yml
-|   `-- scheduled-maintenance.yml
-|
-|-- artifacts/
-|   `-- generated OCR/review outputs
+|   |-- node.js.yml                          # Build + deploy to GitHub Pages
+|   `-- gate-question-pipeline.yml           # 6-stage automated GATE question pipeline (FEAT-003)
 |
 `-- dist/
     `-- build artifacts
@@ -186,6 +134,17 @@ Gate_QA/
 - Progress import/export UI: `src/components/ProgressManager/`
 - Build-time precompute generator: `scripts/precompute-subtopics.mjs`
 - Data integrity gate: `scripts/qa/validate-data.js`
+- Automated data pipeline: `scripts/pipeline/` + `.github/workflows/gate-question-pipeline.yml`
+- Pipeline documentation: `docs/DATA_PIPELINE.md`
+
+## Archived Python scripts
+
+Python-based data preparation scripts used to build the 2014–2025 dataset have been removed
+in CLEANUP-001. The Node.js pipeline in `scripts/pipeline/` handles all future data ingestion
+from GATE 2026 onward. The archive branch `archive/pre-cleanup-2026-02-26` retains the deleted
+files for reference.
+
+Removed directories: `scraper/`, `scripts/answers/`, `tests/`, `artifacts/`.
 
 ## Notes
 
@@ -193,3 +152,5 @@ Gate_QA/
 - `scripts/audit-canonical-filters.mjs` has been removed.
 - `public/calculator/` is generated from root `calculator/` by deployment sync script.
 - `dist/` should never be edited manually.
+- `pipeline-state.json` is read at the start of each pipeline run and overwritten on success.
+- `audit/` directory contents are committed after every pipeline run but never read by the frontend.

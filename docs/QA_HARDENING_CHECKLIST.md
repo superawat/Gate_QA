@@ -79,9 +79,8 @@ Expected thresholds:
 ## Pillar 5: Automation and maintenance
 
 - [ ] `node.js.yml` still builds/deploys
-- [ ] `scraper.yml` still opens PR on question changes
-- [ ] `scheduled-maintenance.yml` still deploys only when changes exist
-- [ ] docs do not reference removed script `scripts/audit-canonical-filters.mjs`
+- [ ] `gate-question-pipeline.yml` runs successfully (manual dispatch test)
+- [ ] docs do not reference removed Python scripts without archive note
 - [ ] docs do not reference removed npm script `audit:canonical`
 
 ## Sign-off summary for release

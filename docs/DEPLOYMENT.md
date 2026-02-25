@@ -41,19 +41,12 @@ Current build chain:
 - verifies `.nojekyll` and calculator artifact
 - deploys to `gh-pages` on push to `main`
 
-### `.github/workflows/scheduled-maintenance.yml`
+### `.github/workflows/gate-question-pipeline.yml`
 
-- trigger: every 3 months + manual
-- refreshes scrape/merge data
-- runs non-strict integrity report
-- commits data changes only when needed
-- builds/deploys only when changes exist
-
-### `.github/workflows/scraper.yml`
-
-- trigger: every 4 months + manual
-- scrape and merge
-- open PR if question corpus changed
+- trigger: cron (Apr 1, Oct 1) + manual with optional `force_year`
+- 6-stage pipeline: scrape → normalise → answer backfill → merge → validate → build/deploy
+- see `docs/DATA_PIPELINE.md` for full stage documentation
+- auto-creates GitHub Issue on failure; live site remains on last successful deploy
 
 ## Manual deploy
 
