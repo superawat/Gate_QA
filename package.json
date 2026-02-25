@@ -20,7 +20,11 @@
     "start": "node scripts/deployment/sync-calculator.mjs --public && vite",
     "build": "node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
     "serve": "vite preview",
-    "audit:canonical": "node scripts/audit-canonical-filters.mjs"
+    "audit:canonical": "node scripts/audit-canonical-filters.mjs",
+    "qa:validate-data": "node scripts/qa/validate-data.js",
+    "test:unit": "vitest run",
+    "test:watch": "vitest",
+    "lighthouse:mobile": "lhci autorun --config=./lighthouserc.json"
   },
   "eslintConfig": {
     "extends": [
@@ -41,10 +45,12 @@
     ]
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "@vitejs/plugin-react": "^5.1.4",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vitest": "^3.2.4"
   }
 }
