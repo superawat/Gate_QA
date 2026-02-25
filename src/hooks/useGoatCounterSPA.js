@@ -1,62 +1,60 @@
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { trackGoatCounterPageview } from "../utils/goatCounterClient";
 
-function buildPath(location, includeHash) {
-  if (!location) {
-    return "/";
-  }
-  const hash = includeHash ? location.hash || "" : "";
-  return `${location.pathname || "/"}${location.search || ""}${hash}`;
-}
-
 /**
- * Tracks SPA route transitions for GoatCounter.
+ * Tracks SPA pageviews for GoatCounter.
  *
- * If your GoatCounter script still auto-counts on load, keep trackInitialPageview=false
- * to avoid double counting the first page.
+ * This app does NOT use React Router — it manages URL state via
+ * window.location + history.replaceState. This hook watches for
+ * URL changes by polling window.location on a short interval and
+ * fires a GoatCounter pageview whenever the path changes.
+ *
+ * If GoatCounter's script auto-counts on initial load, keep
+ * trackInitialPageview = false to avoid double-counting.
  */
 export function useGoatCounterSPA({
   includeHash = false,
   trackInitialPageview = false,
   maxRetries = 20,
   retryDelayMs = 120,
+  pollIntervalMs = 800,
   titleFactory = () =>
-    (typeof document !== "undefined" ? document.title : "GateQA"),
+    typeof document !== "undefined" ? document.title : "GateQA",
 } = {}) {
-  const location = useLocation();
   const lastPathRef = useRef(null);
   const hasRenderedRef = useRef(false);
 
   useEffect(() => {
-    const path = buildPath(location, includeHash);
-
-    if (lastPathRef.current === path) {
-      return;
+    function getCurrentPath() {
+      if (typeof window === "undefined") return "/";
+      const hash = includeHash ? window.location.hash || "" : "";
+      return `${window.location.pathname || "/"}${window.location.search || ""}${hash}`;
     }
 
-    const isFirstObservedRoute = !hasRenderedRef.current;
-    hasRenderedRef.current = true;
-    lastPathRef.current = path;
+    function checkAndTrack() {
+      const path = getCurrentPath();
+      if (lastPathRef.current === path) return;
 
-    if (isFirstObservedRoute && !trackInitialPageview) {
-      return;
+      const isFirstObservedRoute = !hasRenderedRef.current;
+      hasRenderedRef.current = true;
+      lastPathRef.current = path;
+
+      if (isFirstObservedRoute && !trackInitialPageview) return;
+
+      void trackGoatCounterPageview({
+        path,
+        title: titleFactory(path),
+        maxRetries,
+        retryDelayMs,
+      });
     }
 
-    void trackGoatCounterPageview({
-      path,
-      title: titleFactory(path),
-      maxRetries,
-      retryDelayMs,
-    });
-  }, [
-    location.pathname,
-    location.search,
-    location.hash,
-    includeHash,
-    trackInitialPageview,
-    maxRetries,
-    retryDelayMs,
-    titleFactory,
-  ]);
+    // Check immediately on mount
+    checkAndTrack();
+
+    // Poll for URL changes (replaceState doesn't fire events)
+    const intervalId = setInterval(checkAndTrack, pollIntervalMs);
+
+    return () => clearInterval(intervalId);
+  }, [includeHash, trackInitialPageview, maxRetries, retryDelayMs, pollIntervalMs, titleFactory]);
 }

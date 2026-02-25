@@ -10,6 +10,7 @@ import CalculatorWidget from "./components/Calculator/CalculatorWidget";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
+import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
 
 const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setIsMobileFilterOpen }) => {
   const { filteredQuestions, isInitialized, totalQuestions, allQuestions } = useFilterState();
@@ -237,6 +238,9 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
 };
 
 function App() {
+  // GoatCounter SPA pageview tracking
+  useGoatCounterSPA();
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
