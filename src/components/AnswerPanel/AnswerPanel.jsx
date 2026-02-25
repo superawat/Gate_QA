@@ -315,6 +315,31 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     </button>
   );
 
+  const renderSolutionButton = (additionalClasses = "") => {
+    const baseClasses = `px-6 h-12 rounded bg-slate-600 text-white font-bold text-sm shadow-sm hover:bg-slate-700 transition-colors flex items-center justify-center ${additionalClasses}`;
+    if (solutionLink) {
+      return (
+        <a
+          href={solutionLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={baseClasses}
+        >
+          Solution
+        </a>
+      );
+    }
+    return (
+      <button
+        type="button"
+        disabled
+        className={`px-6 h-12 rounded bg-slate-600 text-white font-bold text-sm shadow-sm flex items-center justify-center cursor-not-allowed opacity-50 ${additionalClasses}`}
+      >
+        Solution
+      </button>
+    );
+  };
+
   const renderIconTray = (containerClasses = "") => (
     <div className={`flex items-center gap-3 ${containerClasses}`}>
       {/* 1. Mark as Solved */}
@@ -351,26 +376,6 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
         {isBookmarked ? <FaStar className="text-[20px]" /> : <FaRegStar className="text-[20px]" />}
       </button>
 
-      {/* 3. View Solution */}
-      {solutionLink ? (
-        <a
-          href={solutionLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          title="View Solution"
-          className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-purple-200 bg-purple-50 text-purple-300 hover:border-purple-300 hover:text-purple-500"
-        >
-          <FaEye className="text-[20px]" />
-        </a>
-      ) : (
-        <div
-          title="No Solution Available"
-          className="w-11 h-11 rounded-full border-2 border-gray-200 bg-gray-50 text-gray-300 flex items-center justify-center cursor-not-allowed"
-        >
-          <FaEyeSlash className="text-[20px]" />
-        </div>
-      )}
-
       {/* 4. Share */}
       <button
         type="button"
@@ -404,27 +409,31 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
 
         {/* Desktop (md+): Single-row flex layout */}
         <div className="hidden md:flex items-center justify-between">
-          <div>
+          <div className="flex items-center gap-2">
             {renderSubmitButton()}
-          </div>
-          <div className="flex-1 flex justify-center">
             {renderIconTray()}
           </div>
-          <div>
+          <div className="flex items-center gap-2">
+            {renderSolutionButton()}
             {renderNextButton()}
           </div>
         </div>
 
-        {/* Mobile (< md): 2-row stacked layout */}
+        {/* Mobile (< md): stacked layout */}
         <div className="md:hidden flex flex-col gap-3">
-          {/* Row 1: 4 icon buttons in a centered grid */}
-          <div className="grid grid-cols-4 gap-3 justify-items-center">
+          {/* Row 1: 3 icon buttons in a centered grid */}
+          <div className="grid grid-cols-3 gap-3 justify-items-center">
             {renderIconTray("contents")}
           </div>
 
-          {/* Row 2: Submit + Next in a 2-column grid */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* Row 2: Submit */}
+          <div>
             {renderSubmitButton("w-full")}
+          </div>
+
+          {/* Row 3: Solution + Next in a 2-column grid */}
+          <div className="grid grid-cols-2 gap-3">
+            {renderSolutionButton("w-full")}
             {renderNextButton("w-full")}
           </div>
         </div>

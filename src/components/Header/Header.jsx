@@ -57,6 +57,7 @@ const Header = ({
                 onClick={onOpenFilters}
                 className="flex items-center gap-2 rounded-lg bg-gray-800 px-3 py-2 text-white shadow-sm transition-colors hover:bg-gray-700"
                 aria-label="Open filters"
+                title="Filters"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +73,7 @@ const Header = ({
                     d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
                   />
                 </svg>
-                <span className="hidden text-sm font-medium sm:inline">Filters</span>
+                <span className="sr-only">Filters</span>
               </button>
             )}
           </div>
