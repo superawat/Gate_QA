@@ -318,7 +318,7 @@ export default function ProgressManager() {
 
                     <button
                         onClick={() => setHelpOpen((v) => !v)}
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:text-gray-200 dark:hover:bg-gray-700 transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-200 transition-colors"
                         title="What do these buttons do?"
                         aria-expanded={helpOpen}
                         aria-label="Help for export and import"
@@ -327,20 +327,20 @@ export default function ProgressManager() {
                     </button>
                 </div>
 
-                <p className="mt-2 text-xs text-gray-400">
+                <p className="mt-2 text-xs text-gray-500">
                     {solvedQuestionIds.length} solved{" · "}{bookmarkedQuestionIds.length} bookmarked
                 </p>
 
                 {helpOpen && (
-                    <div className="mt-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 text-[11px] text-gray-500 dark:text-gray-400 space-y-1.5">
-                        <div>
-                            <span className="font-semibold text-gray-600 dark:text-gray-300">Export JSON</span> — Downloads a backup of your solved and bookmarked questions. Use it to transfer progress to another device.
+                    <div className="mt-2 p-2.5 rounded-lg bg-white/80 border border-gray-200 text-[11px] text-gray-600 space-y-2 shadow-sm">
+                        <div className="leading-snug">
+                            <span className="font-semibold text-gray-800">Export JSON</span> — Downloads a backup of your solved and bookmarked questions. Use it to transfer progress to another device.
                         </div>
-                        <div>
-                            <span className="font-semibold text-gray-600 dark:text-gray-300">Export CSV</span> — Downloads a read-only spreadsheet with year, subject, subtopic, and type for each question. Not importable.
+                        <div className="leading-snug">
+                            <span className="font-semibold text-gray-800">Export CSV</span> — Downloads a read-only spreadsheet with year, subject, subtopic, and type for each question. Not importable.
                         </div>
-                        <div>
-                            <span className="font-semibold text-gray-600 dark:text-gray-300">Import</span> — Upload a previously exported .json file. You can merge with or replace your current progress.
+                        <div className="leading-snug">
+                            <span className="font-semibold text-gray-800">Import</span> — Upload a previously exported .json file. You can merge with or replace your current progress.
                         </div>
                     </div>
                 )}
