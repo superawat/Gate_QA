@@ -29,24 +29,11 @@ Important precondition:
 
 - if `src/generated/subtopicLookup.json` is missing in a fresh workspace, run `npm run precompute` before unit tests
 
-## 2) Python pipeline tests
+## 2) Python pipeline tests (removed)
 
-Suites:
-
-- `tests/answers/test_parse_answer_key.py`
-- `tests/answers/test_normalize_ocr_text.py`
-
-Run:
-
-```bash
-python -m pytest tests/answers -q
-```
-
-Prereq:
-
-```bash
-pip install -r requirements.txt
-```
+The Python answer pipeline scripts and their tests (`tests/answers/`) were removed in the
+CLEANUP-001 post-FEAT-003 cleanup. The Node.js pipeline (`scripts/pipeline/`) replaces them.
+See `docs/DATA_PIPELINE.md` for the current pipeline documentation.
 
 ## 3) Data integrity gate
 

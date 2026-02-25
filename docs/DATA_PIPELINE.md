@@ -13,57 +13,17 @@ All scraping, enrichment, parsing, and validation happen offline through scripts
 6. Generate frontend precompute lookup.
 7. Publish static JSON files consumed by frontend.
 
-## Stage 1: Scrape and merge questions
+## Historical pipeline (Python, removed in CLEANUP-001)
 
-Scripts:
+Stages 1–4 of the original pipeline used Python scripts (`scraper/`, `scripts/answers/`)
+to build the initial 1987–2025 question bank. Those scripts, their `requirements.txt`,
+their tests (`tests/answers/`), and the intermediate data files they produced were removed
+after FEAT-003 replaced them with Node.js equivalents in `scripts/pipeline/`.
 
-- `scraper/scrape_gateoverflow.py`
-- `scraper/merge_questions.py`
+The old workflows (`scraper.yml`, `scheduled-maintenance.yml`) were also removed.
+All deleted files are preserved on the `archive/pre-cleanup-2026-02-26` branch.
 
-Primary output:
-
-- `public/questions-filtered.json`
-
-Automation:
-
-- `.github/workflows/scraper.yml` runs every 4 months and opens PR on data changes.
-
-## Stage 2: Enrich question IDs
-
-Script:
-
-- `scripts/answers/enrich_questions_with_ids.py`
-
-Output:
-
-- `public/questions-filtered-with-ids.json`
-
-## Stage 3: Answer parse and build
-
-Core scripts:
-
-- `scripts/answers/extract_answer_pages.py`
-- `scripts/answers/ocr_answer_pages.py`
-- `scripts/answers/normalize_ocr_text.py`
-- `scripts/answers/parse_answer_key.py`
-- `scripts/answers/build_answers_db.py`
-- `scripts/answers/build_answers_by_exam_uid.py`
-- `scripts/answers/build_unsupported_questions.py`
-- `scripts/answers/validate_answers.py`
-- `scripts/answers/backfill_gateoverflow_answers.py`
-- `scripts/answers/apply_resolutions.py`
-
-## Stage 4: Merge answers into frontend payload
-
-Script:
-
-- `scripts/answers/merge_answers_into_questions.py`
-
-Output:
-
-- `public/questions-with-answers.json`
-
-## Stage 5: Integrity gate
+## Integrity gate
 
 Script:
 
@@ -85,7 +45,7 @@ Strict-mode current behavior:
 - fails on idstrmissing-style orphan answer rows
 - actionable missing-answer coverage gaps are reported as warnings
 
-## Stage 6: Frontend precompute artifacts
+## Frontend precompute artifacts
 
 Script:
 
@@ -117,30 +77,18 @@ From `public/`:
 - `data/answers/answers_by_exam_uid_v1.json`
 - `data/answers/unsupported_question_uids_v1.json`
 
-## End-to-end local flow (typical)
-
-```bash
-python scraper/scrape_gateoverflow.py
-python scraper/merge_questions.py
-python scripts/answers/enrich_questions_with_ids.py
-python scripts/answers/build_answers_db.py
-python scripts/answers/build_answers_by_exam_uid.py
-python scripts/answers/merge_answers_into_questions.py
-python scripts/answers/validate_answers.py
-npm run qa:validate-data
-npm run precompute
-```
-
 ## CI touchpoints
 
 - `node.js.yml`: build/deploy on main and build on PR
-- `scraper.yml`: scheduled scrape PR flow
-- `scheduled-maintenance.yml`: periodic refresh/build/deploy when data changed
+- `gate-question-pipeline.yml`: automated GATE question pipeline (FEAT-003)
 
 ## Removed/dead paths
 
 - `scripts/audit-canonical-filters.mjs` has been removed.
 - `audit:canonical` npm script has been removed.
+- `scraper.yml`: removed (superseded by FEAT-003 pipeline).
+- `scheduled-maintenance.yml`: removed (superseded by FEAT-003 pipeline).
+- All Python scraper/answer scripts: removed (CLEANUP-001).
 
 ## FEAT-003: Automated GATE Question Pipeline
 
