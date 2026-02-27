@@ -78,6 +78,13 @@ export const SessionProvider = ({ children }) => {
     // Memoize the solved set so we don't rebuild on every render
     const solvedSet = useMemo(() => new Set(solvedQuestionIds), [solvedQuestionIds]);
 
+    // Keep a ref to the latest solvedSet so the queue-rebuild effect can
+    // read it without listing it as a dependency.  This prevents auto-solve
+    // (FEAT-011) from triggering a full queue rebuild + navigation reset
+    // (BUG-010).
+    const solvedSetRef = useRef(solvedSet);
+    useEffect(() => { solvedSetRef.current = solvedSet; }, [solvedSet]);
+
     // Ephemeral set — intentionally NOT persisted to localStorage
     const seenThisSession = useRef(new Set());
 
@@ -96,21 +103,42 @@ export const SessionProvider = ({ children }) => {
         return map;
     }, [filteredQuestions]);
 
-    // Rebuild queue whenever filteredQuestions changes (filter change)
-    // We use a ref to track the previous filteredQuestions identity to avoid
-    // unnecessary rebuilds.
-    const prevFilteredRef = useRef(filteredQuestions);
+    // Rebuild queue whenever the actual pool of question UIDs changes
+    // (i.e. a real filter change).
+    //
+    // Why the UID-set comparison?
+    // FilterContext's `filteredQuestions` useMemo depends on
+    // `solvedQuestionSet`, so marking a question solved produces a NEW
+    // array reference even when `hideSolved`/`showOnlySolved` are off and
+    // the content is identical.  Without this guard the queue would
+    // rebuild + reset currentIndex → unwanted auto-navigation (BUG-010).
+    const prevFilteredUidsRef = useRef(new Set());
 
     useEffect(() => {
-        // Always rebuild when filteredQuestions reference changes
-        // (useMemo in FilterContext guarantees referential stability when deps don't change)
+        // Build the new UID set
+        const newUids = new Set();
+        for (const q of filteredQuestions) {
+            if (q.question_uid) newUids.add(q.question_uid);
+        }
+
+        // Compare with previous — skip rebuild if UIDs are identical
+        const prev = prevFilteredUidsRef.current;
+        if (
+            newUids.size === prev.size &&
+            newUids.size > 0 &&
+            [...newUids].every(uid => prev.has(uid))
+        ) {
+            prevFilteredUidsRef.current = newUids;
+            return;
+        }
+
+        prevFilteredUidsRef.current = newUids;
         seenThisSession.current.clear();
-        const queue = buildSessionQueue(filteredQuestions, seenThisSession.current, solvedSet);
+        const queue = buildSessionQueue(filteredQuestions, seenThisSession.current, solvedSetRef.current);
         setSessionQueue(queue);
         setCurrentIndex(0);
         setShowExhaustionBanner(false);
-        prevFilteredRef.current = filteredQuestions;
-    }, [filteredQuestions, solvedSet]);
+    }, [filteredQuestions]);
 
     /**
      * Mark a UID as seen this session.
@@ -151,7 +179,7 @@ export const SessionProvider = ({ children }) => {
             const newQueue = buildSessionQueue(
                 filteredQuestions,
                 seenThisSession.current,
-                solvedSet
+                solvedSetRef.current
             );
             setSessionQueue(newQueue);
             setCurrentIndex(0);
@@ -174,7 +202,7 @@ export const SessionProvider = ({ children }) => {
         const nextUid = sessionQueue[nextIndex];
         seenThisSession.current.add(nextUid);
         return questionMap.get(nextUid) || null;
-    }, [sessionQueue, currentIndex, filteredQuestions, solvedSet, questionMap]);
+    }, [sessionQueue, currentIndex, filteredQuestions, questionMap]);
 
     /**
      * Handle deep-linked question: mark it as seen so it doesn't
