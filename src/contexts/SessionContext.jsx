@@ -91,6 +91,7 @@ export const SessionProvider = ({ children }) => {
     const [sessionQueue, setSessionQueue] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showExhaustionBanner, setShowExhaustionBanner] = useState(false);
+    const exhaustionTimeoutRef = useRef(null);
 
     // Build a UID→question lookup for fast retrieval
     const questionMap = useMemo(() => {
@@ -138,7 +139,18 @@ export const SessionProvider = ({ children }) => {
         setSessionQueue(queue);
         setCurrentIndex(0);
         setShowExhaustionBanner(false);
+        if (exhaustionTimeoutRef.current) {
+            clearTimeout(exhaustionTimeoutRef.current);
+        }
     }, [filteredQuestions]);
+
+    useEffect(() => {
+        return () => {
+            if (exhaustionTimeoutRef.current) {
+                clearTimeout(exhaustionTimeoutRef.current);
+            }
+        };
+    }, []);
 
     /**
      * Mark a UID as seen this session.
@@ -190,7 +202,10 @@ export const SessionProvider = ({ children }) => {
             }
 
             // Auto-dismiss the banner after a short delay
-            setTimeout(() => {
+            if (exhaustionTimeoutRef.current) {
+                clearTimeout(exhaustionTimeoutRef.current);
+            }
+            exhaustionTimeoutRef.current = setTimeout(() => {
                 setShowExhaustionBanner(false);
             }, 4000);
 

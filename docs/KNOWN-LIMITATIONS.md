@@ -33,8 +33,3 @@ GateOverflow scrape data can include section-level tag pollution where many subt
 - `QuestionService` imports `src/generated/subtopicLookup.json`.
 - File is generated and ignored in git.
 - Fresh environments must run `npm run precompute` (or `npm start` / `npm run build`) before relying on this artifact.
-
-## Analytics hook not wired
-
-- `useGoatCounterSPA` utility exists but is not mounted in `App.jsx`.
-- It depends on React Router location context, which the current SPA does not use.
