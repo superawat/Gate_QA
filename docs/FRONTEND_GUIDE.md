@@ -45,6 +45,27 @@ npm run test:unit
 
 All frontend filter components are expected to consume one or both of the split hooks.
 
+### Session Queue (`SessionContext`, FEAT-012)
+
+`SessionContext` provides smart randomisation state:
+
+- `useSession()` — single hook for all session queue state and actions.
+
+State items:
+
+- `sessionQueue: uid[]` — ordered question walk array, rebuilt on filter change.
+- `currentIndex: number` — pointer into the queue, advanced by `advanceQueue()`.
+- `showExhaustionBanner: boolean` — true when queue is exhausted.
+
+Actions:
+
+- `advanceQueue()` — advances index, returns next question object.
+- `markSeen(uid)` — marks a UID as seen this session.
+- `markDeepLinkedQuestion(uid)` — marks deep-linked question as seen.
+- `dismissExhaustionBanner()` — manually dismiss the exhaustion banner.
+
+`seenThisSession` lives as an internal `useRef(Set)` — ephemeral, never persisted.
+
 ## Filter behavior updates (2026-02-25)
 
 ### Scoped subtopic filtering

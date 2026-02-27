@@ -10,6 +10,40 @@ All notable changes to GateQA are documented in this file.
 - Browser E2E regression suite for filtering and deep links
 - Import/export UI polish and schema v2 support
 
+## [1.5.0] - 2026-02-27
+
+This release adds smart question randomisation and auto-solve on correct answer.
+
+### FEAT-012: Smart Randomisation — Session Queue with Priority-Weighted Shuffle
+
+- Added `src/contexts/SessionContext.jsx` — new lightweight context for session queue state.
+- Replaced `Math.random()` question picking with a deterministic session queue walk.
+- Session queue is built from `filteredQuestions` using a three-bucket priority-weighted Fisher-Yates shuffle:
+  - **Bucket 1 (front):** unseen + unsolved questions.
+  - **Bucket 2 (middle):** unseen + already-solved questions.
+  - **Bucket 3 (back):** already-seen questions.
+- Each bucket is independently shuffled before concatenation.
+- `currentIndex` pointer advances on each "Next Question" click — no question repeats until the entire filtered pool is exhausted.
+- `seenThisSession` is an ephemeral in-memory `Set` (React ref) — cleared on page reload and filter change, never persisted to `localStorage`.
+- Queue fully rebuilds on any filter change, resetting index and clearing session memory.
+- Deep-linked questions (`?question=<id>`) still load directly on page load; the queue takes over from the first "Next Question" click. The deep-linked UID is added to `seenThisSession`.
+- Exhaustion banner shown when the user cycles through all questions in the current filter: "You've seen all X questions in this filter. Starting over with a fresh shuffle."
+  - Auto-dismisses after 4 seconds or on manual dismiss.
+  - Queue reshuffles and resets on exhaustion.
+- Added `animate-fade-in` Tailwind animation keyframe for banner entrance.
+- `filteredQuestions` `useMemo` in `FilterContext` is **not modified**.
+- Progress system (solved/bookmark/progress bar) is **unaffected**.
+- Updated `docs/ARCHITECTURE.md` with Session Queue section.
+- Updated `docs/FRONTEND_GUIDE.md` with `SessionContext` contract.
+
+### FEAT-011: Auto-Mark Solved on Correct Answer
+
+- Correct MCQ, MSQ, or NAT submissions now automatically mark the question as solved.
+- Triggers immediately after answer evaluation in `AnswerPanel.evaluateSubmission()`.
+- Skips if the question is already solved or has no progress ID.
+- Manual "Mark as Solved" toggle remains fully functional and independent.
+- No new UI elements — the existing solved indicator updates reactively.
+
 ## [1.4.0] - 2026-02-25
 
 This release captures the full 2026-02-25 development session.
@@ -74,11 +108,24 @@ This release captures the full 2026-02-25 development session.
 - Added file input reset on all paths to allow re-selecting same file.
 - Added inline help popover (`i`) explaining Export JSON / Export CSV / Import.
 
-### UI side effects documented
+### Header and UI refinements
 
+- Header action buttons converted to icon-only with `sr-only` text labels and native `title` tooltips.
+- Help popover (`i` button) made darker for better visibility; text shortened and cleaned.
 - `FilterSidebar` progress card now embeds import/export controls.
 - Sidebar footer no longer shows legacy bookmarked-count text line.
 - `AnswerPanel` action layout now includes explicit `Solution` button and a smaller icon tray.
+- `ImportConfirmationModal` converted to React portal to resolve styling bleed-through.
+
+### Analytics
+
+- Wired GoatCounter SPA tracking via `useGoatCounterSPA` hook in `App.jsx`.
+
+### Repository cleanup (CLEANUP-001)
+
+- Archived pre-pipeline branch and removed redundant Python scripts, intermediate files, and stale configs.
+- Updated `REPO_STRUCTURE.md`, `DATA_PIPELINE.md`, `DEPLOYMENT.md`, `QA_HARDENING.md` post-cleanup.
+- Configured GitHub Actions permissions for automated pipeline pushes.
 
 ### Data policy update
 
@@ -104,14 +151,28 @@ This release captures the full 2026-02-25 development session.
 
 ### Added
 
+- Question deep linking via `?question=<id>` URL parameter.
+- "Share Question" button that copies direct link to clipboard.
+- Reusable `Toast` notification component for share feedback.
 - `showOnlySolved` filter toggle.
 - Mutual exclusion between `hideSolved` and `showOnlySolved`.
 - URL support for `showOnlySolved=1`.
+- `showOnlyBookmarked` filter toggle with URL support.
+- Comprehensive developer documentation overhaul (`docs/`).
 
 ### Changed
 
+- `AnswerPanel` action bar refactored to responsive in-flow layout:
+  - Mobile: 2-row stacked layout (icon tray + primary buttons).
+  - Desktop: single-row flex layout.
+- Action bar buttons visually differentiated with distinct colour coding.
 - Progress/toggle layout split updated for larger screens.
-- `clearFilters()` resets solved-only state.
+- `clearFilters()` resets solved-only and bookmarked-only state.
+
+### Fixed
+
+- Deep-link `?question=<id>` preserved during filter URL sync writes.
+- Edge cases for invalid question IDs and clipboard API fallback.
 
 ## [1.2.0] - 2026-02-15
 
@@ -126,10 +187,11 @@ This release captures the full 2026-02-25 development session.
 
 - Draggable scientific calculator widget.
 - Header calculator trigger and `Ctrl+K` shortcut.
+- Glassmorphism effects for modals and support button.
 
 ### Fixed
 
-- Drag interaction stability for iframe calculator.
+- Drag interaction stability for iframe calculator (60fps performance).
 - Calculator close behavior edge cases.
 
 ## [1.0.0] - 2026-02-11

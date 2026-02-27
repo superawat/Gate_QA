@@ -8,6 +8,7 @@ import FilterModal from "./components/Filters/FilterModal";
 import ActiveFilterChips from "./components/Filters/ActiveFilterChips";
 import CalculatorWidget from "./components/Calculator/CalculatorWidget";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
+import { SessionProvider, useSession } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
@@ -15,18 +16,25 @@ import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
 const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setIsMobileFilterOpen }) => {
   const { filteredQuestions, isInitialized, totalQuestions, allQuestions } = useFilterState();
   const { getQuestionById } = useFilterActions();
+  const {
+    sessionQueue,
+    advanceQueue,
+    markSeen,
+    markDeepLinkedQuestion,
+    showExhaustionBanner,
+    dismissExhaustionBanner,
+  } = useSession();
+
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const hasResolvedDeepLink = useRef(false);
 
-  // Pick a random question from the filtered list
-  const pickRandomQuestion = useCallback(() => {
-    if (filteredQuestions.length === 0) {
-      setCurrentQuestion(null);
-      return;
+  // Advance through the session queue instead of random picking
+  const handleNextQuestion = useCallback(() => {
+    const nextQ = advanceQueue();
+    if (nextQ) {
+      setCurrentQuestion(nextQ);
     }
-    const randomIndex = Math.floor(Math.random() * filteredQuestions.length);
-    setCurrentQuestion(filteredQuestions[randomIndex]);
-  }, [filteredQuestions]);
+  }, [advanceQueue]);
 
   // Deep-link: on init, resolve ?question=<id> to a real question
   useEffect(() => {
@@ -58,23 +66,38 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
         const inCurrentPool = filteredQuestions.some(q => q.question_uid === found.question_uid);
         if (inCurrentPool || (!hasActiveFilterParams && filteredQuestions.length === 0)) {
           setCurrentQuestion(found);
+          // Mark the deep-linked question as seen so it goes to bucket 3 next time
+          markDeepLinkedQuestion(found.question_uid);
           return;
         }
       }
     }
-    // Fall back to random question if no deep-link or invalid ID
-    if (!currentQuestion && filteredQuestions.length > 0) {
-      const randomIndex = Math.floor(Math.random() * filteredQuestions.length);
-      setCurrentQuestion(filteredQuestions[randomIndex]);
+    // Fall back to first item in session queue if no deep-link or invalid ID
+    if (!currentQuestion && sessionQueue.length > 0) {
+      const firstUid = sessionQueue[0];
+      const firstQ = filteredQuestions.find(q => q.question_uid === firstUid);
+      if (firstQ) {
+        setCurrentQuestion(firstQ);
+        markSeen(firstQ.question_uid);
+      }
     }
-  }, [isInitialized, allQuestions, filteredQuestions, getQuestionById, currentQuestion]);
+  }, [isInitialized, allQuestions, filteredQuestions, getQuestionById, currentQuestion, sessionQueue, markSeen, markDeepLinkedQuestion]);
 
-  // Pick random when data is ready and no question is set (non-deep-link path)
+  // When session queue changes (filter change) and deep-link already resolved,
+  // pick the first item from the new queue.
   useEffect(() => {
-    if (isInitialized && filteredQuestions.length > 0 && !currentQuestion && hasResolvedDeepLink.current) {
-      pickRandomQuestion();
+    if (isInitialized && sessionQueue.length > 0 && hasResolvedDeepLink.current) {
+      const firstUid = sessionQueue[0];
+      const firstQ = filteredQuestions.find(q => q.question_uid === firstUid);
+      if (firstQ) {
+        setCurrentQuestion(firstQ);
+        markSeen(firstQ.question_uid);
+      }
+    } else if (isInitialized && filteredQuestions.length === 0 && hasResolvedDeepLink.current) {
+      setCurrentQuestion(null);
     }
-  }, [isInitialized, filteredQuestions, currentQuestion, pickRandomQuestion]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionQueue]);
 
   // Validate current question against filtered list
   useEffect(() => {
@@ -82,12 +105,21 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
       const isValid = filteredQuestions.some(q => q.question_uid === currentQuestion.question_uid);
 
       if (!isValid) {
-        pickRandomQuestion();
+        // Current question no longer in filtered pool — pick first from queue
+        if (sessionQueue.length > 0) {
+          const firstQ = filteredQuestions.find(q => q.question_uid === sessionQueue[0]);
+          if (firstQ) {
+            setCurrentQuestion(firstQ);
+            markSeen(firstQ.question_uid);
+            return;
+          }
+        }
+        setCurrentQuestion(null);
       }
     } else if (isInitialized && filteredQuestions.length === 0 && currentQuestion) {
       setCurrentQuestion(null);
     }
-  }, [isInitialized, filteredQuestions, currentQuestion, pickRandomQuestion]);
+  }, [isInitialized, filteredQuestions, currentQuestion, sessionQueue, markSeen]);
 
   useEffect(() => {
     if (!import.meta.env.DEV || !isInitialized || !currentQuestion) {
@@ -198,28 +230,32 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
       <main className="flex-1 flex flex-col w-full transition-all duration-300">
         <div className="p-4 md:p-6 max-w-[1200px] mx-auto w-full">
 
-          {/* HIDDEN - Result count and Mobile Filter Button removed per user feedback (Moved to Header) */}
-          {/* 
-          <div className="flex justify-between items-center mb-4 xl:hidden">
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {filteredQuestions.length} results
-            </span>
-            <button
-              onClick={() => setIsMobileFilterOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700"
-            >
-              <FaFilter className="text-gray-500 dark:text-gray-400" />
-              Filters
-            </button>
-          </div>
-          */}
-
           <ActiveFilterChips />
+
+          {/* Exhaustion Banner */}
+          {showExhaustionBanner && (
+            <div
+              className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-800 shadow-sm animate-fade-in"
+              role="status"
+            >
+              <span>
+                🔄 You've seen all <strong>{filteredQuestions.length}</strong> question{filteredQuestions.length !== 1 ? 's' : ''} in this filter. Starting over with a fresh shuffle.
+              </span>
+              <button
+                type="button"
+                onClick={dismissExhaustionBanner}
+                className="ml-2 rounded px-2 py-1 text-blue-600 hover:bg-blue-100 transition-colors"
+                aria-label="Dismiss"
+              >
+                ✕
+              </button>
+            </div>
+          )}
 
           {currentQuestion ? (
             <Question
               question={currentQuestion}
-              changeQuestion={pickRandomQuestion}
+              changeQuestion={handleNextQuestion}
             />
           ) : (
             <div className="text-center py-20">
@@ -302,13 +338,15 @@ function App() {
           anchorRef={calculatorButtonRef}
         />
         <FilterProvider>
-          <GateQAContent
-            loading={loading}
-            error={error}
-            loadQuestions={loadQuestions}
-            isMobileFilterOpen={isMobileFilterOpen}
-            setIsMobileFilterOpen={setIsMobileFilterOpen}
-          />
+          <SessionProvider>
+            <GateQAContent
+              loading={loading}
+              error={error}
+              loadQuestions={loadQuestions}
+              isMobileFilterOpen={isMobileFilterOpen}
+              setIsMobileFilterOpen={setIsMobileFilterOpen}
+            />
+          </SessionProvider>
         </FilterProvider>
         <Footer />
 

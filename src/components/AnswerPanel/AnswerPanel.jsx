@@ -92,6 +92,11 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     const evaluation = evaluateAnswer(answerRecord, submission);
     setResult(evaluation);
 
+    // FEAT-011: Auto-mark solved on correct answer submit
+    if (evaluation.correct && questionProgressId && !isSolved) {
+      toggleSolved(questionProgressId);
+    }
+
     const progress = readJsonFromLocalStorage(PROGRESS_KEY, {});
     const current = progress[storageKey] || { attempts: 0 };
     progress[storageKey] = {

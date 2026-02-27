@@ -104,6 +104,40 @@ Answer resolution order:
 - Selecting subtopics can auto-add parent subjects.
 - Deselecting subjects removes orphaned subtopics.
 
+## Session Queue (FEAT-012, 2026-02-27)
+
+Smart randomisation replaces pure `Math.random()` question picking with a session queue.
+
+### State (`SessionContext`)
+
+- `sessionQueue: uid[]` — ordered walk array, rebuilt on every filter change.
+- `currentIndex: number` — pointer into queue, advances on Next Question.
+- `seenThisSession: Set<uid>` — ephemeral in-memory set (React ref), cleared on page reload and filter change. Never persisted to localStorage.
+- `showExhaustionBanner: boolean` — true when the user exhausts the current queue.
+
+### Bucket priority order
+
+Queue is built from `filteredQuestions` using a priority-weighted Fisher-Yates shuffle:
+
+1. **Bucket 1 (front):** UIDs not in `seenThisSession` AND not in `solvedQuestionIds` — never seen, unsolved.
+2. **Bucket 2 (middle):** UIDs not in `seenThisSession` AND in `solvedQuestionIds` — never seen this session, already solved.
+3. **Bucket 3 (back):** UIDs in `seenThisSession` — already seen this session.
+
+Each bucket is independently Fisher-Yates shuffled. Final queue = Bucket 1 + Bucket 2 + Bucket 3.
+
+### Queue lifecycle
+
+- **Filter change:** `useEffect` watching `filteredQuestions` triggers full rebuild, resets `currentIndex` to 0, clears `seenThisSession`.
+- **Next Question:** increments `currentIndex` by 1, marks new UID as seen.
+- **Deep link:** loads the specified question directly, marks its UID as seen so it doesn't reappear at front.
+
+### Exhaustion behaviour
+
+- When `currentIndex` reaches end of queue on Next Question click:
+  - Banner shown: "You've seen all X questions in this filter. Starting over with a fresh shuffle."
+  - Queue reshuffled from full filtered pool, `currentIndex` reset to 0.
+  - Banner auto-dismisses after 4 seconds or on manual dismiss.
+
 ## URL contract
 
 Synchronized params:
