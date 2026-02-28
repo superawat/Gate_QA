@@ -4,6 +4,16 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### FEAT-019: Add Google Analytics 4 (GA4) to GateQA -> Status: Done
+- Handled via `src/utils/analytics.js` for lightweight wrapper to cleanly capture SPA behavior logic.
+- Installed gtag inside `index.html` using custom `G-G3KZ7KSPHG` ID with automatic pageview capturing bypassed (`send_page_view: false`).
+- Firing custom page_view events across Landing, Practice, and Mock via transient `appView` component to prevent large numbers of query-string 'Pages'.
+- Specific user event streams tied deeply within React for accurate metrics:
+    - start_random_practice
+    - start_targeted_practice
+    - open_filters
+    - share_question
+
 ### FEAT-016: Horizontal Bar Loader (init screen) -> Status: Done
 
 - Created reusable `<HorizontalBarLoader />` component using MageCDN SVG design.

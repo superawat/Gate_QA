@@ -5,6 +5,7 @@ import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilterActions } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
 import Toast from "../Toast/Toast";
+import { trackEvent } from "../../utils/analytics";
 
 const PROGRESS_KEY = "gateqa_progress_v1";
 const OPTIONS = ["A", "B", "C", "D"];
@@ -151,6 +152,7 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     const showToast = () => {
       setToastVisible(true);
       setTimeout(() => setToastVisible(false), 2000);
+      trackEvent("share_question", { question_uid: questionId });
     };
 
     if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {

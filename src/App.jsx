@@ -14,6 +14,7 @@ import { SessionProvider, useSession } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
+import { pageview, trackEvent } from "./utils/analytics";
 
 const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"];
 
@@ -379,6 +380,7 @@ const GateQAContent = ({
 
   const handleModeStart = useCallback((mode) => {
     if (mode === "random") {
+      trackEvent("start_random_practice", { mode: "random", source: "landing" });
       clearFilters();
       shouldOpenFilterOnEnter.current = false;
       setAppView("practice");
@@ -387,6 +389,7 @@ const GateQAContent = ({
     }
 
     if (mode === "targeted") {
+      trackEvent("start_targeted_practice", { mode: "targeted", source: "landing" });
       shouldOpenFilterOnEnter.current = true;
       setAppView("practice");
       writeModeParam("targeted");
@@ -464,7 +467,10 @@ const GateQAShell = ({
       <Header
         appView={appView}
         onGoHome={handleGoHome}
-        onOpenFilters={appView === "practice" ? () => setIsMobileFilterOpen(true) : undefined}
+        onOpenFilters={appView === "practice" ? () => {
+          trackEvent("open_filters", { source: "header" });
+          setIsMobileFilterOpen(true);
+        } : undefined}
         onToggleCalculator={appView !== "landing" ? toggleCalculator : undefined}
         isCalculatorOpen={isCalculatorOpen}
         calculatorButtonRef={calculatorButtonRef}
@@ -537,6 +543,16 @@ function App() {
   useEffect(() => {
     loadQuestions();
   }, [loadQuestions]);
+
+  useEffect(() => {
+    if (appView === "landing") {
+      pageview("Landing");
+    } else if (appView === "practice") {
+      pageview("Practice");
+    } else if (appView === "mock") {
+      pageview("Mock");
+    }
+  }, [appView]);
 
   const toggleCalculator = useCallback(() => {
     setIsCalculatorOpen((previous) => !previous);
