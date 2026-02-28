@@ -4,6 +4,12 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### FEAT-016: Horizontal Bar Loader (init screen) -> Status: Done
+
+- Created reusable `<HorizontalBarLoader />` component using MageCDN SVG design.
+- Replaced global full-screen spinner with localized loader in the question card area space.
+- Added `isInitializing` state to App.jsx to handle smooth transition between data loading, initialization, and question rendering.
+
 ### Planned
 
 - Router-backed navigation model (if multi-view UI is introduced)
