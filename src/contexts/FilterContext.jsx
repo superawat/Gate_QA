@@ -218,10 +218,14 @@ export const FilterProvider = ({ children }) => {
             setTotalQuestions(QuestionService.questions.length);
 
             const { minYear, maxYear } = tags;
-            setFilters(prev => ({
-                ...prev,
-                yearRange: [minYear, maxYear]
-            }));
+            setFilters(prev => {
+                // Only overwrite if it was completely pristine
+                const hasCustomRange = prev.yearRange && prev.yearRange.length === 2 && (prev.yearRange[0] > 2000 || prev.yearRange[1] < 2025);
+                return {
+                    ...prev,
+                    yearRange: hasCustomRange ? prev.yearRange : [minYear, maxYear]
+                };
+            });
 
             setIsInitialized(true);
         }
@@ -249,12 +253,23 @@ export const FilterProvider = ({ children }) => {
             showOnlyBookmarked: parseBooleanParam(params.get('showOnlyBookmarked'))
         };
 
-        if (urlFilters.yearRange && urlFilters.yearRange.length === 2 && !isNaN(urlFilters.yearRange[0])) {
-            setFilters(prev => ({ ...prev, ...urlFilters }));
-        } else {
-            const { yearRange, ...rest } = urlFilters;
-            setFilters(prev => ({ ...prev, ...rest }));
-        }
+        // Apply state safely using standard initial values + url overrides to ensure stability
+        setFilters(prev => {
+            const merged = { ...prev };
+            // Copy explicitly so we don't drop types accidentally
+            merged.selectedTypes = urlFilters.selectedTypes;
+            merged.selectedYearSets = urlFilters.selectedYearSets;
+            merged.selectedSubjects = urlFilters.selectedSubjects;
+            merged.selectedSubtopics = urlFilters.selectedSubtopics;
+            merged.hideSolved = urlFilters.hideSolved;
+            merged.showOnlySolved = urlFilters.showOnlySolved;
+            merged.showOnlyBookmarked = urlFilters.showOnlyBookmarked;
+
+            if (urlFilters.yearRange && urlFilters.yearRange.length === 2 && !isNaN(urlFilters.yearRange[0])) {
+                merged.yearRange = urlFilters.yearRange;
+            }
+            return merged;
+        });
     }, []);
 
     useEffect(() => {

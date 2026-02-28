@@ -134,7 +134,7 @@ jobs:
           git add audit/
           git add public/questions-filtered.json
           git add public/questions-with-answers.json
-          git add data/answers/manual_answers_patch_v1.json
+          git add data/answers/manual-answers-patch-v1.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."

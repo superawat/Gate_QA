@@ -10,7 +10,7 @@
  *   1. Answer widget pattern (<span>Answer:</span><button>X</button>)
  *   2. Selected answer text fallback (regex patterns)
  *
- * Unresolved → manual patch queue (data/answers/manual_answers_patch_v1.json)
+ * Unresolved → manual patch queue (data/answers/manual-answers-patch-v1.json)
  * Questions included in bank with answer: null
  *
  * Usage:
@@ -220,7 +220,7 @@ async function main() {
         ROOT,
         "data",
         "answers",
-        "manual_answers_patch_v1.json"
+        "manual-answers-patch-v1.json"
     );
     const manualPatchPayload = readJson(manualPatchPath) || {};
     const manualPatch = manualPatchPayload.records_by_question_uid || {};

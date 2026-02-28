@@ -19,6 +19,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
   const {
     sessionQueue,
     advanceQueue,
+    currentIndex,
     markSeen,
     markDeepLinkedQuestion,
     showExhaustionBanner,
@@ -27,6 +28,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
 
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const hasResolvedDeepLink = useRef(false);
+  const hasIgnoredFirstQueueSync = useRef(false);
 
   // Advance through the session queue instead of random picking
   const handleNextQuestion = useCallback(() => {
@@ -83,21 +85,34 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
     }
   }, [isInitialized, allQuestions, filteredQuestions, getQuestionById, currentQuestion, sessionQueue, markSeen, markDeepLinkedQuestion]);
 
-  // When session queue changes (filter change) and deep-link already resolved,
-  // pick the first item from the new queue.
+  // When session queue updates or index changes, sync the current question.
+  // We check if the UID matches to prevent overwriting the current selection needlessly.
   useEffect(() => {
     if (isInitialized && sessionQueue.length > 0 && hasResolvedDeepLink.current) {
-      const firstUid = sessionQueue[0];
-      const firstQ = filteredQuestions.find(q => q.question_uid === firstUid);
-      if (firstQ) {
-        setCurrentQuestion(firstQ);
-        markSeen(firstQ.question_uid);
+      const targetUid = sessionQueue[currentIndex];
+      if (targetUid && targetUid !== currentQuestion?.question_uid) {
+        // Deep-link preservation: If this is the very first queue generation on load,
+        // and we ALREADY have a valid currentQuestion from deep linking, DO NOT overwrite it.
+        if (!hasIgnoredFirstQueueSync.current) {
+          hasIgnoredFirstQueueSync.current = true;
+          if (currentQuestion) {
+            // Wait to sync until the user navigates
+            return;
+          }
+        }
+
+        const targetQ = filteredQuestions.find(q => q.question_uid === targetUid);
+        if (targetQ) {
+          setCurrentQuestion(targetQ);
+          markSeen(targetUid);
+        }
       }
     } else if (isInitialized && filteredQuestions.length === 0 && hasResolvedDeepLink.current) {
-      setCurrentQuestion(null);
+      if (currentQuestion !== null) {
+        setCurrentQuestion(null);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionQueue]);
+  }, [sessionQueue, currentIndex, isInitialized, filteredQuestions, currentQuestion, markSeen]);
 
   // Validate current question against filtered list
   useEffect(() => {

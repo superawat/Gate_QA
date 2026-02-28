@@ -229,12 +229,23 @@ export const SessionProvider = ({ children }) => {
         }
     }, []);
 
+    /**
+     * Go back to the previously seen question in the session queue.
+     */
+    const goBack = useCallback(() => {
+        setCurrentIndex(prev => Math.max(0, prev - 1));
+    }, []);
+
+    const canGoBack = currentIndex > 0;
+
     const value = useMemo(() => ({
         sessionQueue,
         currentIndex,
         showExhaustionBanner,
         getCurrentQuestion,
         advanceQueue,
+        goBack,
+        canGoBack,
         markSeen,
         markDeepLinkedQuestion,
         dismissExhaustionBanner: () => setShowExhaustionBanner(false),
@@ -244,6 +255,8 @@ export const SessionProvider = ({ children }) => {
         showExhaustionBanner,
         getCurrentQuestion,
         advanceQueue,
+        goBack,
+        canGoBack,
         markSeen,
         markDeepLinkedQuestion,
     ]);

@@ -77,7 +77,7 @@ Gate_QA/
 |-- data/
 |   `-- answers/
 |       |-- answers_by_question_uid_v1.json   # Read by pipeline answer-backfill
-|       `-- manual_answers_patch_v1.json      # Live answer patch queue (written by pipeline)
+|       `-- manual-answers-patch-v1.json      # Live answer patch queue (written by pipeline)
 |
 |-- scripts/
 |   |-- precompute-subtopics.mjs

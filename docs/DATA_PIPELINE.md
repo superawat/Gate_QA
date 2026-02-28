@@ -14,7 +14,7 @@ The resulting data files are the permanent outputs of that work:
 
 - `public/questions-with-answers.json` — the primary question bank (3,418 questions)
 - `public/data/answers/answers_by_question_uid_v1.json` — answer lookup by question UID
-- `data/answers/manual_answers_patch_v1.json` — manual answer patch queue
+- `data/answers/manual-answers-patch-v1.json` — manual answer patch queue
 
 No further action is needed for historical data. The Python scripts were removed in
 CLEANUP-001 and are preserved on the `archive/pre-cleanup-2026-02-26` branch.
@@ -35,7 +35,7 @@ Trigger: cron (Apr 1, Oct 1) + `workflow_dispatch` with optional `force_year`.
 
 1. **Scrape** (`scripts/pipeline/scrape.mjs`) — Discover active tags for the target year, paginate through all questions, deduplicate against existing bank UIDs, save raw audit file.
 2. **Normalise** (`scripts/pipeline/normalise.mjs`) — Map each scraped question to canonical structure (uid, subject, type, year/set). Route unknown-subject questions to audit quarantine.
-3. **Answer Backfill** (`scripts/pipeline/answer-backfill.mjs`) — Fetch answers from GateOverflow using widget pattern and selected-answer fallback. Unresolved answers go to `manual_answers_patch_v1.json`.
+3. **Answer Backfill** (`scripts/pipeline/answer-backfill.mjs`) — Fetch answers from GateOverflow using widget pattern and selected-answer fallback. Unresolved answers go to `manual-answers-patch-v1.json`.
 4. **Merge** (`scripts/pipeline/merge.mjs`) — Append new questions to `public/questions-filtered.json` and `public/questions-with-answers.json`. Deduplicate by UID (`go:<id>`).
 5. **Validate** (`scripts/pipeline/validate.mjs`) — Hard gate with three checks: volume (65/130/195 per GATE standard), full-bank dedup (1987–now), completeness (year/subject/type on new questions).
 6. **Build & Deploy** — `npm run build` + deploy to gh-pages via `JamesIves/github-pages-deploy-action@v4`.

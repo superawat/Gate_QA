@@ -3,6 +3,7 @@ import { FaCheck, FaEye, FaEyeSlash, FaLink, FaRegStar, FaStar } from "react-ico
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilterActions } from "../../contexts/FilterContext";
+import { useSession } from "../../contexts/SessionContext";
 import Toast from "../Toast/Toast";
 
 const PROGRESS_KEY = "gateqa_progress_v1";
@@ -33,6 +34,8 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     isQuestionBookmarked,
     getQuestionProgressId,
   } = useFilterActions();
+
+  const { goBack, canGoBack } = useSession();
 
   const questionIdentity = useMemo(
     () => AnswerService.getQuestionIdentity(question),
@@ -316,7 +319,21 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
       onClick={onNextQuestion}
       className={`px-6 h-12 rounded bg-teal-600 text-white font-bold text-sm shadow-sm hover:bg-teal-700 transition-colors flex items-center justify-center ${additionalClasses}`}
     >
-      Next Question
+      Next &rarr;
+    </button>
+  );
+
+  const renderPreviousButton = (additionalClasses = "") => (
+    <button
+      type="button"
+      disabled={!canGoBack}
+      onClick={goBack}
+      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canGoBack
+        ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
+        : "border border-teal-500 text-teal-600 bg-white hover:bg-teal-50"
+        } ${additionalClasses}`}
+    >
+      &larr; Previous
     </button>
   );
 
@@ -420,6 +437,7 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
           </div>
           <div className="flex items-center gap-2">
             {renderSolutionButton()}
+            {renderPreviousButton()}
             {renderNextButton()}
           </div>
         </div>
@@ -436,9 +454,10 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
             {renderSubmitButton("w-full")}
           </div>
 
-          {/* Row 3: Solution + Next in a 2-column grid */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* Row 3: Solution, Previous, Next in a 3-column grid */}
+          <div className="grid grid-cols-3 gap-2 w-full">
             {renderSolutionButton("w-full")}
+            {renderPreviousButton("w-full")}
             {renderNextButton("w-full")}
           </div>
         </div>
