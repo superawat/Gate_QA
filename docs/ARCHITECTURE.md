@@ -11,7 +11,12 @@ There is no backend, no database, and no server-side rendering.
    - `QuestionService.init()`
    - `AnswerService.init()`
 4. `FilterProvider` owns filter/progress state and filtering results.
-5. UI renders filter modal, question card, answer panel, calculator, and footer modals.
+5. `App` resolves `appView` (`landing | practice | mock`) from URL params after questions load.
+6. UI renders one of:
+   - Landing mode selector dashboard
+   - Practice view (filter modal, chips, question card, answer panel)
+   - Mock placeholder view
+7. Header, calculator, and footer remain shared shell components.
 
 ## Four-layer initialization model (2026-02-25)
 
@@ -138,10 +143,39 @@ Each bucket is independently Fisher-Yates shuffled. Final queue = Bucket 1 + Buc
   - Queue reshuffled from full filtered pool, `currentIndex` reset to 0.
   - Banner auto-dismisses after 4 seconds or on manual dismiss.
 
+## Landing / Mode Selection (FEAT-017, 2026-02-28)
+
+`App.jsx` owns transient UI state:
+
+- `appView`: `landing | practice | mock` (never persisted)
+- `shouldOpenFilterOnEnter`: one-shot `ref` used to auto-open `FilterModal` when entering filtered practice
+
+Mount-time URL-to-view resolver (one-shot, after `allQuestions` is available):
+
+1. If `?question=<uid>` exists -> force `practice` (deep-link wins)
+2. Else check `?mode=`:
+   - `random` -> `clearFilters()` then `practice`
+   - `filtered` -> set one-shot filter-open flag then `practice`
+   - `targeted` -> `practice`
+   - `mock` -> `mock`
+3. Else if any shareable filter params exist (`years`, `subjects`, `subtopics`, `range`, `types`) -> `practice`
+4. Else -> `landing`
+
+Landing actions:
+
+- Random start always calls `clearFilters()` before entering practice.
+- Filtered start sets one-shot auto-open modal flag.
+- Targeted start uses existing `selectedSubjects` / `selectedSubtopics` from `FilterStateContext`.
+- Mock card is visible but disabled with "Coming soon" badge.
+- "Continue where you left off" is shown only when solved or bookmarked local progress exists.
+
+`?mode=` writes use `window.history.replaceState(...)` only.
+
 ## URL contract
 
 Synchronized params:
 
+- `mode`
 - `question`
 - `years`
 - `subjects`
@@ -153,10 +187,13 @@ Synchronized params:
 - `showOnlyBookmarked`
 
 `question` is preserved during filter URL writes.
+`mode` is written on landing mode start with `replaceState` (never `pushState`).
 
 ## UI component map
 
 - `Header` (filter/calculator controls)
+- `Landing/ModeSelectionPage`
+  - `Landing/ModeCard`
 - `FilterModal`
   - `FilterSidebar`
     - `ProgressBar`
@@ -181,6 +218,12 @@ Synchronized params:
 - `hideSolved` and `showOnlySolved` are mutually exclusive.
 - `question` query param must not be dropped during filter sync.
 - `clearFilters()` resets all filter dimensions.
+- `?question=<uid>` must always bypass landing and open practice.
+- Shared filter URLs (`years`, `subjects`, `subtopics`, `range`, `types`) must bypass landing.
+- Random mode must clear filters before entering practice.
+- Targeted mode enablement is derived from `selectedSubjects`/`selectedSubtopics` in `useFilterState()`.
+- `appView` is not persisted to localStorage.
+- `?mode=` writes must use `replaceState`.
 - Build must include `.nojekyll` and synced calculator assets.
 - `base` in `vite.config.js` must stay `/Gate_QA/` for current hosting path.
 

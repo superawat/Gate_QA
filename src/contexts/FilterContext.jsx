@@ -283,11 +283,22 @@ export const FilterProvider = ({ children }) => {
         const selectedYearSets = normalizeYearSetTokens(filters.selectedYearSets);
         const selectedSubjects = normalizeSubjectSlugs(filters.selectedSubjects);
         const selectedSubtopics = normalizeSubtopicSlugs(filters.selectedSubtopics);
+        const normalizedYearRange = Array.isArray(filters.yearRange)
+            ? filters.yearRange.map(Number)
+            : [];
+        const hasValidYearRange = normalizedYearRange.length === 2
+            && Number.isFinite(normalizedYearRange[0])
+            && Number.isFinite(normalizedYearRange[1]);
+        const isDefaultYearRange = hasValidYearRange
+            && normalizedYearRange[0] === Number(structuredTags.minYear)
+            && normalizedYearRange[1] === Number(structuredTags.maxYear);
 
         if (selectedYearSets.length) params.set('years', selectedYearSets.join(','));
         if (selectedSubjects.length) params.set('subjects', selectedSubjects.join(','));
         if (selectedSubtopics.length) params.set('subtopics', selectedSubtopics.join(','));
-        if (filters.yearRange) params.set('range', filters.yearRange.join('-'));
+        if (hasValidYearRange && !isDefaultYearRange) {
+            params.set('range', normalizedYearRange.join('-'));
+        }
 
         const selectedTypes = normalizeSelectedTypes(filters.selectedTypes);
         if (selectedTypes.length > 0 && selectedTypes.length < DEFAULT_SELECTED_TYPES.length) {
@@ -315,7 +326,7 @@ export const FilterProvider = ({ children }) => {
             : window.location.pathname;
 
         window.history.replaceState({}, '', newUrl);
-    }, [filters, isInitialized]);
+    }, [filters, isInitialized, structuredTags.minYear, structuredTags.maxYear]);
 
     useEffect(() => {
         if (typeof window === 'undefined') {

@@ -14,38 +14,30 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="w-full bg-gray-50 border-t border-gray-200 py-8 px-4 sm:px-6 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-6">
-
-          {/* Copyright & Attribution Section */}
-          <div className="flex-1 max-w-3xl">
-            <p className="text-sm text-gray-800 mb-2">
-              Question database powered by <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">GATE Overflow</a> ©.
-            </p>
-
-            {/* Data Policy Link - Made Prominent */}
+      <footer className="w-full bg-gray-50 border-t border-gray-200 py-2 px-2 sm:px-4 mt-auto">
+        <div className="max-w-7xl mx-auto flex flex-row items-center justify-between text-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-gray-800">
+              Powered by <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">GATE Overflow</a> ©
+            </span>
             <button
               onClick={() => setIsDataPolicyOpen(true)}
-              className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-red-50 hover:bg-red-100 dark:bg-red-900/10 dark:hover:bg-red-900/20 text-black text-xs font-semibold rounded border border-red-500 dark:border-red-500 transition-colors"
+              className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-50 hover:bg-red-100 text-black rounded border border-red-500 transition-colors"
+              title="Data Persistence & Policy"
             >
-              <FaExclamationTriangle className="text-red-600 dark:text-red-400" />
-              <span>Data Persistence & Policy</span>
+              <FaExclamationTriangle className="text-red-600 size-3" />
+              <span className="hidden sm:inline">Data Policy</span>
             </button>
           </div>
-
-          {/* Support Section */}
-          <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
-            <button
-              onClick={() => setIsSupportOpen(true)}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 dark:bg-white dark:hover:bg-gray-100 backdrop-blur-md border border-gray-200 dark:border-gray-200 text-black dark:text-black text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all group"
-              aria-label="Support me"
-            >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                Support Me
-              </span>
-              <FaHeart className="text-xl text-red-500 animate-pulse group-hover:scale-110 transition-transform" />
-            </button>
-          </div>
+          <button
+            onClick={() => setIsSupportOpen(true)}
+            className="inline-flex items-center gap-1 px-3 py-1 bg-white hover:bg-gray-50 border border-gray-200 text-black rounded-full shadow-sm hover:shadow transition-all group"
+          >
+            <span className="hidden sm:inline font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+              Support Me
+            </span>
+            <FaHeart className="text-red-500 animate-pulse group-hover:scale-110 transition-transform size-3 sm:size-4" />
+          </button>
         </div>
       </footer>
 

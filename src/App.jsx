@@ -8,14 +8,24 @@ import FilterModal from "./components/Filters/FilterModal";
 import ActiveFilterChips from "./components/Filters/ActiveFilterChips";
 import CalculatorWidget from "./components/Calculator/CalculatorWidget";
 import HorizontalBarLoader from "./components/Loaders/HorizontalBarLoader";
+import ModeSelectionPage from "./components/Landing/ModeSelectionPage";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
 
-const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setIsMobileFilterOpen }) => {
-  const { filteredQuestions, isInitialized, totalQuestions, allQuestions } = useFilterState();
+const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"];
+
+const GateQAPracticeView = ({
+  loading,
+  error,
+  loadQuestions,
+  isMobileFilterOpen,
+  setIsMobileFilterOpen,
+  shouldOpenFilterOnEnter,
+}) => {
+  const { filteredQuestions, isInitialized, allQuestions } = useFilterState();
   const { getQuestionById } = useFilterActions();
   const {
     sessionQueue,
@@ -30,8 +40,14 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const hasResolvedDeepLink = useRef(false);
   const hasIgnoredFirstQueueSync = useRef(false);
-
   const [isInitializing, setIsInitializing] = useState(true);
+
+  useEffect(() => {
+    if (shouldOpenFilterOnEnter.current) {
+      setIsMobileFilterOpen(true);
+      shouldOpenFilterOnEnter.current = false;
+    }
+  }, [setIsMobileFilterOpen, shouldOpenFilterOnEnter]);
 
   useEffect(() => {
     if (!loading && isInitialized) {
@@ -57,17 +73,17 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
     hasResolvedDeepLink.current = true;
 
     const params = new URLSearchParams(window.location.search);
-    const questionId = params.get('question');
+    const questionId = params.get("question");
     const hasActiveFilterParams = [
-      'years',
-      'subjects',
-      'topics',
-      'subtopics',
-      'types',
-      'range',
-      'hideSolved',
-      'showOnlySolved',
-      'showOnlyBookmarked',
+      "years",
+      "subjects",
+      "topics",
+      "subtopics",
+      "types",
+      "range",
+      "hideSolved",
+      "showOnlySolved",
+      "showOnlyBookmarked",
     ].some((key) => {
       const value = params.get(key);
       return value !== null && String(value).trim() !== "";
@@ -76,7 +92,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
     if (questionId) {
       const found = getQuestionById(questionId);
       if (found) {
-        const inCurrentPool = filteredQuestions.some(q => q.question_uid === found.question_uid);
+        const inCurrentPool = filteredQuestions.some((q) => q.question_uid === found.question_uid);
         if (inCurrentPool || (!hasActiveFilterParams && filteredQuestions.length === 0)) {
           setCurrentQuestion(found);
           // Mark the deep-linked question as seen so it goes to bucket 3 next time
@@ -85,16 +101,26 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
         }
       }
     }
+
     // Fall back to first item in session queue if no deep-link or invalid ID
     if (!currentQuestion && sessionQueue.length > 0) {
       const firstUid = sessionQueue[0];
-      const firstQ = filteredQuestions.find(q => q.question_uid === firstUid);
+      const firstQ = filteredQuestions.find((q) => q.question_uid === firstUid);
       if (firstQ) {
         setCurrentQuestion(firstQ);
         markSeen(firstQ.question_uid);
       }
     }
-  }, [isInitialized, allQuestions, filteredQuestions, getQuestionById, currentQuestion, sessionQueue, markSeen, markDeepLinkedQuestion]);
+  }, [
+    isInitialized,
+    allQuestions,
+    filteredQuestions,
+    getQuestionById,
+    currentQuestion,
+    sessionQueue,
+    markSeen,
+    markDeepLinkedQuestion,
+  ]);
 
   // When session queue updates or index changes, sync the current question.
   // We check if the UID matches to prevent overwriting the current selection needlessly.
@@ -112,7 +138,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
           }
         }
 
-        const targetQ = filteredQuestions.find(q => q.question_uid === targetUid);
+        const targetQ = filteredQuestions.find((q) => q.question_uid === targetUid);
         if (targetQ) {
           setCurrentQuestion(targetQ);
           markSeen(targetUid);
@@ -128,12 +154,12 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
   // Validate current question against filtered list
   useEffect(() => {
     if (isInitialized && filteredQuestions.length > 0 && currentQuestion) {
-      const isValid = filteredQuestions.some(q => q.question_uid === currentQuestion.question_uid);
+      const isValid = filteredQuestions.some((q) => q.question_uid === currentQuestion.question_uid);
 
       if (!isValid) {
-        // Current question no longer in filtered pool — pick first from queue
+        // Current question no longer in filtered pool - pick first from queue
         if (sessionQueue.length > 0) {
-          const firstQ = filteredQuestions.find(q => q.question_uid === sessionQueue[0]);
+          const firstQ = filteredQuestions.find((q) => q.question_uid === sessionQueue[0]);
           if (firstQ) {
             setCurrentQuestion(firstQ);
             markSeen(firstQ.question_uid);
@@ -151,6 +177,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
     if (!import.meta.env.DEV || !isInitialized || !currentQuestion) {
       return;
     }
+
     const inPool = filteredQuestions.some(
       (question) => question.question_uid === currentQuestion.question_uid
     );
@@ -169,9 +196,9 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
       return;
     }
     const params = new URLSearchParams(window.location.search);
-    params.set('question', currentQuestion.question_uid);
+    params.set("question", currentQuestion.question_uid);
     const newUrl = `${window.location.pathname}?${params.toString()}`;
-    window.history.replaceState({}, '', newUrl);
+    window.history.replaceState({}, "", newUrl);
   }, [currentQuestion]);
 
   // Update window object for debug/external services
@@ -179,6 +206,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
     if (typeof window === "undefined" || !currentQuestion) {
       return;
     }
+
     const identity = AnswerService.getQuestionIdentity(currentQuestion);
     const answer = AnswerService.getAnswerForQuestion(currentQuestion);
     window.__gateqa_q = currentQuestion;
@@ -211,7 +239,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
 
   return (
     <div className="flex flex-col grow relative">
-      {/* 
+      {/*
           UNIFIED FILTER UX:
           - Persistent sidebar removed.
           - Filters are controlled solely by the Header button opening FilterModal.
@@ -227,7 +255,6 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
       {/* Main Content */}
       <main className="flex-1 flex flex-col w-full transition-all duration-300">
         <div className="p-4 md:p-6 max-w-[1200px] mx-auto w-full">
-
           <ActiveFilterChips />
 
           {/* Exhaustion Banner */}
@@ -237,7 +264,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
               role="status"
             >
               <span>
-                🔄 You've seen all <strong>{filteredQuestions.length}</strong> question{filteredQuestions.length !== 1 ? 's' : ''} in this filter. Starting over with a fresh shuffle.
+                You&apos;ve seen all <strong>{filteredQuestions.length}</strong> question{filteredQuestions.length !== 1 ? "s" : ""} in this filter. Starting over with a fresh shuffle.
               </span>
               <button
                 type="button"
@@ -245,7 +272,7 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
                 className="ml-2 rounded px-2 py-1 text-blue-600 hover:bg-blue-100 transition-colors"
                 aria-label="Dismiss"
               >
-                ✕
+                &times;
               </button>
             </div>
           )}
@@ -276,15 +303,221 @@ const GateQAContent = ({ loading, error, loadQuestions, isMobileFilterOpen, setI
   );
 };
 
+const GateQAContent = ({
+  loading,
+  error,
+  loadQuestions,
+  isMobileFilterOpen,
+  setIsMobileFilterOpen,
+  appView,
+  setAppView,
+  shouldOpenFilterOnEnter,
+  hasPriorProgress,
+}) => {
+  const { allQuestions, isInitialized } = useFilterState();
+  const { clearFilters } = useFilterActions();
+  const hasResolvedAppView = useRef(false);
+
+  useEffect(() => {
+    if (!isInitialized || allQuestions.length === 0 || hasResolvedAppView.current) {
+      return;
+    }
+    hasResolvedAppView.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+
+    // Step 1: deep-link always wins.
+    const questionId = params.get("question");
+    if (questionId) {
+      setAppView("practice");
+      return;
+    }
+
+    // Step 2: explicit mode param.
+    const mode = params.get("mode");
+    if (mode === "random") {
+      clearFilters();
+      setAppView("practice");
+      return;
+    }
+    if (mode === "targeted") {
+      shouldOpenFilterOnEnter.current = true;
+      setAppView("practice");
+      return;
+    }
+    if (mode === "mock") {
+      setAppView("mock");
+      return;
+    }
+    // Legacy/unknown mode links should still enter practice gracefully.
+    if (mode) {
+      setAppView("practice");
+      return;
+    }
+
+    // Step 3: shared filter URLs should open practice.
+    const hasFilterParams = LANDING_FILTER_KEYS.some((key) => {
+      const value = params.get(key);
+      return value !== null && String(value).trim() !== "";
+    });
+    if (hasFilterParams) {
+      setAppView("practice");
+      return;
+    }
+
+    // Step 4: default to landing.
+    setAppView("landing");
+  }, [allQuestions, clearFilters, isInitialized, setAppView, shouldOpenFilterOnEnter]);
+
+  const writeModeParam = useCallback((mode) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("mode", mode);
+    const query = params.toString();
+    const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+    window.history.replaceState({}, "", newUrl);
+  }, []);
+
+  const handleModeStart = useCallback((mode) => {
+    if (mode === "random") {
+      clearFilters();
+      shouldOpenFilterOnEnter.current = false;
+      setAppView("practice");
+      writeModeParam("random");
+      return;
+    }
+
+    if (mode === "targeted") {
+      shouldOpenFilterOnEnter.current = true;
+      setAppView("practice");
+      writeModeParam("targeted");
+      return;
+    }
+
+    if (mode === "mock") {
+      shouldOpenFilterOnEnter.current = false;
+      setAppView("mock");
+      writeModeParam("mock");
+    }
+  }, [clearFilters, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
+
+  if (appView === "landing") {
+    return (
+      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 md:px-8">
+        <ModeSelectionPage
+          onModeStart={handleModeStart}
+          hasPriorProgress={hasPriorProgress}
+        />
+      </main>
+    );
+  }
+
+  if (appView === "mock") {
+    return (
+      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 md:px-8">
+        <div className="mx-auto max-w-3xl rounded-xl border border-gray-200 bg-white p-6 text-center text-gray-700 shadow-sm">
+          Mock Test mode coming soon. This will be implemented in FEAT-014.
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <GateQAPracticeView
+      loading={loading}
+      error={error}
+      loadQuestions={loadQuestions}
+      isMobileFilterOpen={isMobileFilterOpen}
+      setIsMobileFilterOpen={setIsMobileFilterOpen}
+      shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
+    />
+  );
+};
+
+const GateQAShell = ({
+  loading,
+  error,
+  loadQuestions,
+  isMobileFilterOpen,
+  setIsMobileFilterOpen,
+  appView,
+  setAppView,
+  shouldOpenFilterOnEnter,
+  hasPriorProgress,
+  isCalculatorOpen,
+  setIsCalculatorOpen,
+  toggleCalculator,
+  calculatorButtonRef,
+}) => {
+  const { clearFilters } = useFilterActions();
+
+  const handleGoHome = useCallback(() => {
+    clearFilters();
+    shouldOpenFilterOnEnter.current = false;
+    setIsMobileFilterOpen(false);
+    setIsCalculatorOpen(false);
+    setAppView("landing");
+    window.history.replaceState({}, "", window.location.pathname);
+  }, [clearFilters, setAppView, setIsCalculatorOpen, setIsMobileFilterOpen, shouldOpenFilterOnEnter]);
+
+  return (
+    <>
+      <Header
+        appView={appView}
+        onGoHome={handleGoHome}
+        onOpenFilters={appView === "practice" ? () => setIsMobileFilterOpen(true) : undefined}
+        onToggleCalculator={appView !== "landing" ? toggleCalculator : undefined}
+        isCalculatorOpen={isCalculatorOpen}
+        calculatorButtonRef={calculatorButtonRef}
+      />
+      {appView !== "landing" && (
+        <CalculatorWidget
+          isOpen={isCalculatorOpen}
+          onClose={() => setIsCalculatorOpen(false)}
+          anchorRef={calculatorButtonRef}
+        />
+      )}
+      <GateQAContent
+        loading={loading}
+        error={error}
+        loadQuestions={loadQuestions}
+        isMobileFilterOpen={isMobileFilterOpen}
+        setIsMobileFilterOpen={setIsMobileFilterOpen}
+        appView={appView}
+        setAppView={setAppView}
+        shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
+        hasPriorProgress={hasPriorProgress}
+      />
+    </>
+  );
+};
+
 function App() {
   // GoatCounter SPA pageview tracking
   useGoatCounterSPA();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [appView, setAppView] = useState("landing");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const calculatorButtonRef = useRef(null);
+  const shouldOpenFilterOnEnter = useRef(false);
+
+  const [hasPriorProgress] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    try {
+      const solved = JSON.parse(localStorage.getItem("gate_qa_solved_questions") || "[]");
+      const bookmarked = JSON.parse(localStorage.getItem("gate_qa_bookmarked_questions") || "[]");
+      const solvedCount = Array.isArray(solved) ? solved.length : 0;
+      const bookmarkedCount = Array.isArray(bookmarked) ? bookmarked.length : 0;
+      return solvedCount > 0 || bookmarkedCount > 0;
+    } catch (storageError) {
+      return false;
+    }
+  });
 
   const loadQuestions = useCallback(async () => {
     setLoading(true);
@@ -312,6 +545,9 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        if (appView === "landing") {
+          return;
+        }
         event.preventDefault();
         setIsCalculatorOpen((previous) => !previous);
       }
@@ -324,35 +560,31 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [appView]);
 
   return (
     <MathJaxContext>
       <div className="flex flex-col h-screen max-h-screen bg-gray-50">
-        <Header
-          onOpenFilters={() => setIsMobileFilterOpen(true)}
-          onToggleCalculator={toggleCalculator}
-          isCalculatorOpen={isCalculatorOpen}
-          calculatorButtonRef={calculatorButtonRef}
-        />
-        <CalculatorWidget
-          isOpen={isCalculatorOpen}
-          onClose={() => setIsCalculatorOpen(false)}
-          anchorRef={calculatorButtonRef}
-        />
         <FilterProvider>
           <SessionProvider>
-            <GateQAContent
+            <GateQAShell
               loading={loading}
               error={error}
               loadQuestions={loadQuestions}
               isMobileFilterOpen={isMobileFilterOpen}
               setIsMobileFilterOpen={setIsMobileFilterOpen}
+              appView={appView}
+              setAppView={setAppView}
+              shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
+              hasPriorProgress={hasPriorProgress}
+              isCalculatorOpen={isCalculatorOpen}
+              setIsCalculatorOpen={setIsCalculatorOpen}
+              toggleCalculator={toggleCalculator}
+              calculatorButtonRef={calculatorButtonRef}
             />
           </SessionProvider>
         </FilterProvider>
         <Footer />
-
       </div>
     </MathJaxContext>
   );

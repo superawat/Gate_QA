@@ -45,6 +45,12 @@ npm run test:unit
 
 All frontend filter components are expected to consume one or both of the split hooks.
 
+`App` view shell state:
+
+- `appView` controls `landing | practice | mock` rendering.
+- `appView` is URL-derived at mount and is never stored in localStorage.
+- `shouldOpenFilterOnEnter` is a one-shot ref to auto-open filters on filtered mode entry.
+
 ### Session Queue (`SessionContext`, FEAT-012)
 
 `SessionContext` provides smart randomisation state:
@@ -108,6 +114,7 @@ Features:
 
 Supported params:
 
+- `mode`
 - `question`
 - `years`
 - `subjects`
@@ -120,9 +127,18 @@ Supported params:
 
 Rules:
 
+- URL is managed without React Router (History API only).
 - Filter changes are auto-applied and synced via `replaceState`.
 - `question` param is preserved during filter writes.
 - Share action in `AnswerPanel` writes deep-link URL with `question=<uid>`.
+- Landing resolver priority (one-shot after questions load):
+  1. `?question=<uid>` -> practice (always wins)
+  2. `?mode=` (`random`, `filtered`, `targeted`, `mock`)
+  3. any filter param (`years`, `subjects`, `subtopics`, `range`, `types`) -> practice
+  4. fallback -> landing
+- Landing start actions write `?mode=` using `replaceState` only (never `pushState`).
+- `mode=random` must call `clearFilters()` before entering practice.
+- `mode=filtered` sets one-shot auto-open `FilterModal` on first practice render.
 
 ## Persistence keys
 
@@ -146,12 +162,15 @@ Rules:
 ## Known caveats
 
 - Some UI files still contain `dark:` classes while product style remains light-first.
-- `useGoatCounterSPA` exists but is not mounted in `App.jsx`.
-- `useGoatCounterSPA` imports `react-router-dom` while app runtime has no router integration.
 
 ## Safe refactor checklist
 
 - [ ] Use split context hooks only (`useFilterState`, `useFilterActions`).
+- [ ] Keep `appView` transient (no localStorage persistence).
+- [ ] Preserve deep-link precedence: `?question` must beat landing/mode resolution.
+- [ ] Preserve filter-share URL bypass to practice.
+- [ ] Keep `?mode=` writes on `replaceState`.
+- [ ] Keep random start path calling `clearFilters()` before practice.
 - [ ] Do not break subtopic-to-subject scoped filtering.
 - [ ] Keep subject deselect -> orphan subtopic cleanup behavior.
 - [ ] Keep `question` param preservation during filter sync.

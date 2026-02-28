@@ -2,11 +2,18 @@ import React from "react";
 import CalculatorButton from "../Calculator/CalculatorButton";
 
 const Header = ({
+  appView,
+  onGoHome,
   onOpenFilters,
   onToggleCalculator,
   isCalculatorOpen,
   calculatorButtonRef,
 }) => {
+  const isLandingView = appView === "landing";
+  const showHomeButton = !isLandingView && !!onGoHome;
+  const showCalculatorButton = !isLandingView && !!onToggleCalculator;
+  const showFilterButton = !isLandingView && !!onOpenFilters;
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white shadow-sm">
       <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
@@ -42,9 +49,35 @@ const Header = ({
           </div>
         </div>
 
-        {(onOpenFilters || onToggleCalculator) && (
+        {(showHomeButton || showFilterButton || showCalculatorButton) && (
           <div className="flex shrink-0 items-center gap-2">
-            {onToggleCalculator && (
+            {showHomeButton && (
+              <button
+                type="button"
+                onClick={onGoHome}
+                className="flex items-center gap-2 rounded-lg px-3 py-2 text-white shadow-sm transition-colors bg-slate-800 hover:bg-slate-700"
+                aria-label="Home"
+                title="Home"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 11.5L12 4l9 7.5M6 10v10h12V10"
+                  />
+                </svg>
+                <span className="sr-only">Home</span>
+              </button>
+            )}
+
+            {showCalculatorButton && (
               <CalculatorButton
                 ref={calculatorButtonRef}
                 onClick={onToggleCalculator}
@@ -52,7 +85,7 @@ const Header = ({
               />
             )}
 
-            {onOpenFilters && (
+            {showFilterButton && (
               <button
                 onClick={onOpenFilters}
                 className="flex items-center gap-2 rounded-lg bg-gray-800 px-3 py-2 text-white shadow-sm transition-colors hover:bg-gray-700"

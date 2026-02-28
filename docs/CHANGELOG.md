@@ -16,6 +16,47 @@ All notable changes to GateQA are documented in this file.
 - Browser E2E regression suite for filtering and deep links
 - Import/export UI polish and schema v2 support
 
+## [1.6.0] - 2026-02-28
+
+This release adds a landing dashboard for explicit mode selection before entering practice.
+
+### FEAT-017: Landing / Practice Mode Selection Dashboard -> Status: Done
+
+- Added landing-first shell flow in `src/App.jsx` using transient `appView` state (`landing | practice | mock`), never persisted to localStorage.
+- Added one-shot `shouldOpenFilterOnEnter` ref in `App.jsx` for targeted mode auto-open behavior.
+- Added strict mount-time URL resolver priority:
+  - `?question=<uid>` always wins and forces practice.
+  - `?mode=` supports `random`, `targeted`, `mock`.
+  - shareable filter params (`years`, `subjects`, `subtopics`, `range`, `types`) bypass landing.
+  - fallback route is landing.
+- Added `?mode=` writes via `window.history.replaceState(...)` only.
+- Added `hasPriorProgress` gate in `App.jsx`, computed once from:
+  - `gate_qa_solved_questions`
+  - `gate_qa_bookmarked_questions`
+- Added new landing components:
+  - `src/components/Landing/ModeSelectionPage.jsx`
+  - `src/components/Landing/ModeCard.jsx`
+- Implemented three mode cards in required order:
+  - Random Practice
+  - Targeted Practice
+  - Mock Test (disabled, `Coming soon` badge)
+- Added "Continue where you left off" action (conditional on prior solved/bookmarked progress).
+- Preserved existing practice stack behavior (Session queue, deep-link sync, filter URL sync, answer/calculator/progress components).
+- Enforced FEAT-017 invariants:
+  - INVARIANT-LANDING-001: deep-link `?question` bypasses landing.
+  - INVARIANT-LANDING-002: filter-share params bypass landing.
+  - INVARIANT-LANDING-003: random entry path clears filters before practice.
+  - INVARIANT-LANDING-004: targeted start enters practice and opens filter modal once (no forced inline selection).
+  - INVARIANT-LANDING-005: `appView` never persisted.
+  - INVARIANT-LANDING-006: `?mode=` writes use `replaceState`, never `pushState`.
+- FEAT-017c amendment:
+  - Removed: Filtered Practice card.
+  - Removed: `targetedValid`, `targetedError`, inline subject picker, forced selection validation.
+  - Changed: Layout `lg:grid-cols-2` -> `lg:grid-cols-3`.
+  - Changed: Targeted Practice description updated.
+  - Changed: `mode=` URL values now `random | targeted | mock` only.
+  - Net: cleaner 3-mode UX, same underlying behavior, less code.
+
 ## [1.5.0] - 2026-02-27
 
 This release adds smart question randomisation and auto-solve on correct answer.
