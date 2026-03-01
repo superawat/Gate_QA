@@ -1,0 +1,103 @@
+/* GATE Mock Test UI Spec */
+
+.palette-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+/* Base Hexagon/Polygon Shapes using CSS Clip Path */
+
+/* Answered (Green downward-right pointing pentagon originally from screenshots, simplified to roughly match) */
+.answered {
+  background-color: #5cb85c;
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+  border-radius: 2px;
+}
+
+/* Not Answered (Red descending pentagon) */
+.not_answered {
+  background-color: #d9534f;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);
+  border-radius: 2px;
+}
+
+/* Not Visited (Silver rectangle) */
+.not_visited {
+  background-color: #e4e4e4;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Marked for Review (Purple circle) */
+.review {
+  background-color: #6a5acd;
+  border-radius: 50%;
+  clip-path: circle(50% at 50% 50%);
+}
+
+/* Answered & Marked for Review (Purple circle with green check mark badge) */
+.review_answered {
+  background-color: #6a5acd;
+  border-radius: 50%;
+  clip-path: circle(50% at 50% 50%);
+}
+
+/* The small green square check badge for review_answered */
+.review-check {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 10px;
+  height: 10px;
+  background-color: #5cb85c;
+  border: 1px solid white;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+/* Status Legend Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+}
+
+.status-badge.not_visited {
+    background-color: #e4e4e4;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+.status-badge.answered::before { content: ""; }
+.status-badge.not_answered::before { content: ""; }
+
+/* Custom Scrollbar for question area */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8; 
+}

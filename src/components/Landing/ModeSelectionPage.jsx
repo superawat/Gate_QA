@@ -92,11 +92,10 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
           type="button"
           onClick={handleStart}
           disabled={isStartDisabled}
-          className={`w-full rounded-lg py-3 font-semibold text-white ${
-            isStartDisabled
-              ? "cursor-not-allowed bg-blue-600 opacity-50"
-              : "bg-blue-600 hover:bg-blue-700"
-          }`}
+          className={`w-full rounded-lg py-3 font-semibold text-white ${isStartDisabled
+            ? "cursor-not-allowed bg-blue-600 opacity-50"
+            : "bg-blue-600 hover:bg-blue-700"
+            }`}
         >
           Start &rarr;
         </button>

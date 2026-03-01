@@ -11,12 +11,32 @@ import HorizontalBarLoader from "./components/Loaders/HorizontalBarLoader";
 import ModeSelectionPage from "./components/Landing/ModeSelectionPage";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
+import { MockTestProvider } from "./contexts/MockTestContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
 import { pageview, trackEvent } from "./utils/analytics";
+import MockTestShell from "./components/MockTest/MockTestShell";
 
 const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"];
+
+const resolveAppViewFromUrl = () => {
+  const params = new URLSearchParams(window.location.search);
+  const questionId = params.get("question");
+  if (questionId) return "practice";
+
+  const mode = params.get("mode");
+  if (mode === "random" || mode === "targeted" || (mode && mode !== "mock")) return "practice";
+  if (mode === "mock") return "mock";
+
+  const hasFilterParams = LANDING_FILTER_KEYS.some((key) => {
+    const value = params.get(key);
+    return value !== null && String(value).trim() !== "";
+  });
+  if (hasFilterParams) return "practice";
+
+  return "landing";
+};
 
 const GateQAPracticeView = ({
   loading,
@@ -370,12 +390,21 @@ const GateQAContent = ({
     setAppView("landing");
   }, [allQuestions, clearFilters, isInitialized, setAppView, shouldOpenFilterOnEnter]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      const resolvedView = resolveAppViewFromUrl();
+      setAppView(resolvedView);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [setAppView]);
+
   const writeModeParam = useCallback((mode) => {
     const params = new URLSearchParams(window.location.search);
     params.set("mode", mode);
     const query = params.toString();
     const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
-    window.history.replaceState({}, "", newUrl);
+    window.history.pushState({}, "", newUrl);
   }, []);
 
   const handleModeStart = useCallback((mode) => {
@@ -416,10 +445,10 @@ const GateQAContent = ({
 
   if (appView === "mock") {
     return (
-      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 md:px-8">
-        <div className="mx-auto max-w-3xl rounded-xl border border-gray-200 bg-white p-6 text-center text-gray-700 shadow-sm">
-          Mock Test mode coming soon. This will be implemented in FEAT-014.
-        </div>
+      <main className="flex-1 w-full relative">
+        <MockTestProvider>
+          <MockTestShell onExit={() => setAppView("landing")} />
+        </MockTestProvider>
       </main>
     );
   }
@@ -451,16 +480,21 @@ const GateQAShell = ({
   toggleCalculator,
   calculatorButtonRef,
 }) => {
-  const { clearFilters } = useFilterActions();
+
 
   const handleGoHome = useCallback(() => {
-    clearFilters();
     shouldOpenFilterOnEnter.current = false;
     setIsMobileFilterOpen(false);
     setIsCalculatorOpen(false);
     setAppView("landing");
-    window.history.replaceState({}, "", window.location.pathname);
-  }, [clearFilters, setAppView, setIsCalculatorOpen, setIsMobileFilterOpen, shouldOpenFilterOnEnter]);
+
+    // Clear mode param but preserve others (like filters/question) using replaceState
+    const params = new URLSearchParams(window.location.search);
+    params.delete("mode");
+    const query = params.toString();
+    const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+    window.history.replaceState({}, "", newUrl);
+  }, [setAppView, setIsCalculatorOpen, setIsMobileFilterOpen, shouldOpenFilterOnEnter]);
 
   return (
     <>
