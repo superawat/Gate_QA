@@ -55,13 +55,13 @@ const Header = ({
               <button
                 type="button"
                 onClick={onGoHome}
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-white shadow-sm transition-colors bg-slate-800 hover:bg-slate-700"
-                aria-label="Home"
-                title="Home"
+                className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 sm:px-3 sm:py-2 text-white shadow-sm transition-colors bg-slate-800 hover:bg-slate-700 text-xs sm:text-sm font-medium"
+                aria-label="Back to Practice Modes"
+                title="Back to Practice Modes"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -70,10 +70,11 @@ const Header = ({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 11.5L12 4l9 7.5M6 10v10h12V10"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                <span className="sr-only">Home</span>
+                <span className="hidden sm:inline">Back to Modes</span>
+                <span className="inline sm:hidden">Modes</span>
               </button>
             )}
 
