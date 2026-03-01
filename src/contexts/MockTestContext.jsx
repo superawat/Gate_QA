@@ -146,6 +146,12 @@ export const MockTestProvider = ({ children }) => {
         }
     }, []);
 
+    const goToPrevious = useCallback(() => {
+        if (currentQuestionIndex > 0) {
+            goToQuestion(currentQuestionIndex - 1);
+        }
+    }, [currentQuestionIndex, goToQuestion]);
+
     const endMockTest = useCallback(() => {
         setTestActive(false);
         setTestSubmitted(false);
@@ -169,6 +175,7 @@ export const MockTestProvider = ({ children }) => {
         clearResponse,
         saveAndNext,
         markForReviewAndNext,
+        goToPrevious,
         currentSection,
         setCurrentSection,
         STATUS

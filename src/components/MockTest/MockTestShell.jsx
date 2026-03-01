@@ -59,7 +59,7 @@ const MockTestShell = ({ onExit }) => {
     };
 
     return (
-        <div className="flex h-screen w-full flex-col bg-[#e8f4fd] font-sans text-sm selection:bg-blue-200">
+        <div className="mocktest-root flex h-screen w-full flex-col bg-[#e8f4fd] text-sm selection:bg-blue-200">
             <MockTestHeader />
 
             <div className="flex flex-1 flex-col overflow-hidden sm:flex-row">

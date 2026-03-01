@@ -46,14 +46,15 @@ const QuestionPalette = () => {
     });
 
     return (
-        <div className="flex h-full w-full flex-col bg-[#e8f4fd] border-l border-gray-300 font-sans shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">
-            {/* Candidate Info Profile */}
+        <div className="flex h-full w-full flex-col bg-[#e8f4fd] border-l border-gray-300 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">
+            {/* Candidate Info Profile — using the real GATE candidate image */}
             <div className="flex items-center gap-3 border-b border-gray-300 bg-white p-3 shadow-sm h-[75px]">
                 <div className="h-12 w-12 overflow-hidden rounded bg-gray-200 border-2 border-gray-300 shadow-inner">
-                    <svg viewBox="0 0 24 24" fill="none" className="h-full w-full text-gray-400">
-                        <circle cx="12" cy="8" r="4" fill="currentColor" />
-                        <path d="M4 22c0-4 4-6 8-6s8 2 8 6" fill="currentColor" />
-                    </svg>
+                    <img
+                        src="mocktest/NewCandidateImage.jpg"
+                        alt="Candidate"
+                        className="h-full w-full object-cover"
+                    />
                 </div>
                 <div className="flex flex-col">
                     <span className="text-[17px] font-bold text-gray-800 tracking-tight">John Smith</span>
@@ -65,25 +66,25 @@ const QuestionPalette = () => {
                 {/* Row 1 */}
                 <div className="grid grid-cols-2 gap-2">
                     <div className="flex items-center gap-2">
-                        <span className="status-badge answered">0</span> Answered
+                        <span className="status-badge answered">{stats.answered}</span> Answered
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="status-badge not_answered">1</span> Not Answered
+                        <span className="status-badge not_answered">{stats.not_answered}</span> Not Answered
                     </div>
                 </div>
                 {/* Row 2 */}
                 <div className="grid grid-cols-2 gap-2">
                     <div className="flex items-center gap-2">
-                        <span className="status-badge not_visited">9</span> Not Visited
+                        <span className="status-badge not_visited">{stats.not_visited}</span> Not Visited
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="status-badge review">0</span> Marked for Review
+                        <span className="status-badge review">{stats.review}</span> Marked for Review
                     </div>
                 </div>
                 {/* Row 3 */}
                 <div className="flex items-start gap-2 pt-1 border-t border-gray-100">
-                    <span className="status-badge review_answered shrink-0">0<span className="review-check"></span></span>
-                    <span className="leading-tight text-[11px] text-gray-600">Answered & Marked for Review (will also be evaluated)</span>
+                    <span className="status-badge review_answered shrink-0">{stats.review_answered}<span className="review-check"></span></span>
+                    <span className="leading-tight text-[11px] text-gray-600">Answered &amp; Marked for Review (will also be evaluated)</span>
                 </div>
             </div>
 

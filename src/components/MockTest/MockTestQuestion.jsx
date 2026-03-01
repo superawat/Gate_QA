@@ -51,22 +51,50 @@ const MockTestQuestion = () => {
     return (
         <div className="flex flex-1 flex-col overflow-y-auto bg-white p-2">
 
-            {/* Subject Tabs */}
+            {/* Subject Tabs with Navigation Arrows */}
             <div className="flex w-full items-center justify-between border-b border-gray-300">
-                <div className="flex gap-1" style={{ width: '100%', overflowX: 'auto' }}>
+                {/* Left nav arrow */}
+                <button
+                    className="shrink-0 px-1 opacity-50 hover:opacity-100 transition-opacity"
+                    aria-label="Previous section"
+                    onClick={() => setCurrentSection('GA')}
+                >
+                    <img
+                        src="mocktest/previnactive.png"
+                        alt="Previous"
+                        className="h-6 w-6"
+                    />
+                </button>
+
+                <div className="flex gap-1 flex-1 overflow-x-auto">
                     <button
                         onClick={() => setCurrentSection('GA')}
-                        className={`rounded-t-sm px-3 py-1 font-bold ${currentSection === 'GA' ? 'bg-[#0e76a8] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                        className={`flex items-center gap-1.5 rounded-t-sm px-3 py-1 font-bold ${currentSection === 'GA' ? 'bg-[#0e76a8] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                     >
                         General Aptitude
+                        <img src="mocktest/info.gif" alt="" className="h-3.5 w-3.5" />
                     </button>
                     <button
                         onClick={() => setCurrentSection('CS')}
-                        className={`rounded-t-sm px-3 py-1 font-bold ${currentSection !== 'GA' ? 'bg-[#0e76a8] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                        className={`flex items-center gap-1.5 rounded-t-sm px-3 py-1 font-bold ${currentSection !== 'GA' ? 'bg-[#0e76a8] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                     >
-                        CS Computer Science
+                        CS Computer Scienc...
+                        <img src="mocktest/info.gif" alt="" className="h-3.5 w-3.5" />
                     </button>
                 </div>
+
+                {/* Right nav arrow */}
+                <button
+                    className="shrink-0 px-1 hover:opacity-80 transition-opacity"
+                    aria-label="Next section"
+                    onClick={() => setCurrentSection('CS')}
+                >
+                    <img
+                        src="mocktest/nextactive.png"
+                        alt="Next"
+                        className="h-6 w-6"
+                    />
+                </button>
             </div>
 
             {/* Question Info Bar */}

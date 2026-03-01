@@ -78,12 +78,11 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
 
         <ModeCard
           title="Mock Test"
-          description="Full timed exam simulation. Coming in a future update."
+          description="Full timed exam simulation replicating the GATE 2026 UI."
           icon={<ClockIcon />}
           selected={selectedMode === "mock"}
-          disabled={true}
+          disabled={false}
           onClick={() => handleModeSelect("mock")}
-          badge="Coming soon"
         />
       </div>
 

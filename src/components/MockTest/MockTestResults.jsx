@@ -11,7 +11,7 @@ const MockTestResults = ({ onExit }) => {
     ).length;
 
     return (
-        <div className="flex h-screen w-full flex-col items-center bg-gray-50 py-10 px-4 font-sans text-gray-800">
+        <div className="flex h-screen w-full flex-col items-center bg-gray-50 py-10 px-4 text-gray-800">
             <div className="w-full max-w-3xl rounded-xl bg-white p-8 shadow-lg border border-gray-200">
                 <h2 className="text-3xl font-bold text-[#125B9A] mb-2 text-center">Exam Submitted Successfully</h2>
                 <p className="text-center text-gray-500 mb-8 border-b pb-6">Your responses have been recorded.</p>
