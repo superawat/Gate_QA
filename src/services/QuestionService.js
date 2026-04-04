@@ -780,6 +780,26 @@ export class QuestionService {
     return normalized;
   }
 
+  static isPracticeExcludedQuestion(question = {}) {
+    if (!question || typeof question !== "object") {
+      return false;
+    }
+
+    const answerType = String(question?.answer_meta?.type || "")
+      .trim()
+      .toUpperCase();
+    if (answerType && !["MCQ", "MSQ", "NAT"].includes(answerType)) {
+      return true;
+    }
+
+    const tags = Array.isArray(question.tags) ? question.tags : [];
+    const hasDescriptiveTag = tags.some(
+      (tag) => String(tag || "").trim().toLowerCase() === "descriptive"
+    );
+
+    return hasDescriptiveTag && !question.answer_meta;
+  }
+
   static getCanonicalQuestionKey(question = {}) {
     const parsedExamUid = parseExamUid(question.canonicalExamUid || question.exam_uid || "");
     if (parsedExamUid && parsedExamUid.year >= 2010) {
@@ -865,7 +885,9 @@ export class QuestionService {
   }
 
   static finalizeQuestions(questions = []) {
-    const normalizedQuestions = Array.isArray(questions) ? questions : [];
+    const normalizedQuestions = Array.isArray(questions)
+      ? questions.filter((question) => !this.isPracticeExcludedQuestion(question))
+      : [];
     const yearToSetMap = new Map();
 
     normalizedQuestions.forEach((question) => {
@@ -927,6 +949,9 @@ export class QuestionService {
       const processNext = () => {
         const end = Math.min(offset + chunkSize, rows.length);
         for (let i = offset; i < end; i++) {
+          if (this.isPracticeExcludedQuestion(rows[i])) {
+            continue;
+          }
           const normalized = this.normalizeQuestion(rows[i]);
           if (normalized.title !== "General") {
             results.push(normalized);

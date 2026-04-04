@@ -66,6 +66,8 @@ describe("ViewSwitch resume flow", () => {
     test("resume enters practice without clearing filters", () => {
         const setAppView = vi.fn();
         const shouldOpenFilterOnEnter = { current: false };
+        const replaceStateSpy = vi.spyOn(window.history, "replaceState");
+        const pushStateSpy = vi.spyOn(window.history, "pushState");
 
         render(
             <ViewSwitch
@@ -88,6 +90,11 @@ describe("ViewSwitch resume flow", () => {
         expect(setAppView).toHaveBeenCalledWith("practice");
         expect(shouldOpenFilterOnEnter.current).toBe(false);
         expect(window.location.search).toContain("mode=resume");
+        expect(replaceStateSpy).toHaveBeenCalled();
+        expect(pushStateSpy).not.toHaveBeenCalled();
+
+        replaceStateSpy.mockRestore();
+        pushStateSpy.mockRestore();
     });
 
     test("?mode=resume resolves to practice on URL load", () => {

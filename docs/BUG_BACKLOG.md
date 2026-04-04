@@ -11,43 +11,27 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Current Status
 
-- Unit tests currently pass: `94/94`
+- Unit tests currently pass: `95/95`
 - Historical paper audit is currently clean: `paper_count: 27`, `questions_without_paper_meta: 0`
 - The bugs below come from repo inspection and audit artifacts, not from failing unit tests
 
 ## Open Bugs
 
-### BUG-017: Landing page Hindi subtitle text is encoding-broken
-
-- Status: Open
-- Severity: Low
-- Source: Observed from source file
-- Where:
-  `src/shells/LandingShell.jsx`
-- What happens:
-  the Hindi subtitle string is stored as mojibake text instead of valid readable Hindi
-- User impact:
-  the landing header can render broken text and reduce polish/trust
-- Fix idea:
-  replace the corrupted literal with a verified UTF-8 string
+## Recently Closed
 
 ### BUG-018: URL history behavior and docs are out of sync
 
-- Status: Open
+- Status: Fixed on 2026-04-04
 - Severity: Low
 - Source: Observed from docs vs implementation
 - Where:
   `src/App.jsx`
   `docs/ARCHITECTURE.md`
   `docs/FRONTEND_GUIDE.md`
-- What happens:
-  docs describe `?mode=` writes with `replaceState`, but the app currently uses `pushState` for mode changes
-- User impact:
-  browser back/forward behavior may differ from what maintainers expect
-- Fix idea:
-  either update docs to match intended behavior or switch implementation back to the documented contract
-
-## Recently Closed
+- Resolution:
+  landing mode transitions now write `?mode=` with `replaceState`, matching the documented history contract and avoiding extra browser-history entries.
+- Current state:
+  `App.jsx` no longer uses `pushState` for landing mode changes, and `App.test.jsx` asserts that `replaceState` is used instead
 
 ### BUG-015: "Continue where you left off" does not actually resume prior context
 

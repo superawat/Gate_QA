@@ -4,6 +4,15 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### BUG-018: URL history behavior and docs are out of sync -> Status: Done
+- Restored landing `?mode=` URL writes in `App.jsx` to use `window.history.replaceState(...)` instead of `pushState(...)`.
+- Added a regression assertion in `App.test.jsx` to keep landing mode transitions off the browser history stack.
+
+### DATA-CLEANUP: Remove descriptive/query-style non-practice rows from the shipped bank -> Status: Done
+- Excluded subjective/descriptive prompts from the runtime practice bank in `QuestionService`, so long-form items such as “Write an SQL query…” no longer appear in practice mode.
+- Cleaned the published `public/questions-with-answers.json`, `public/questions-filtered.json`, and `public/questions-filtered-with-ids.json` snapshots to remove the same non-practice rows.
+- Added a `QuestionService` regression test to keep descriptive no-answer rows out while preserving valid objective NAT/MCQ/MSQ items.
+
 ### BUG-015: "Continue where you left off" does not actually resume prior context -> Status: Done
 - Routed the landing-page continue CTA through a dedicated resume action instead of the random-practice start path.
 - Resume now re-enters practice without clearing the current filter/question context.

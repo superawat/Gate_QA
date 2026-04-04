@@ -17,7 +17,7 @@ const LandingHeader = () => (
                     className="logo-icon h-8 w-8 object-contain sm:h-10 sm:w-10"
                 />
             </a>
-            <div className="min-w-0 text-left">
+            <div className="hidden min-w-0 text-left sm:block">
                 <h1
                     className="text-lg font-bold tracking-wide text-gray-900 sm:text-xl md:text-2xl"
                     lang="en"

@@ -252,4 +252,47 @@ describe("QuestionService", () => {
     expect(finalized[0].question_uid).toBe("go:388950");
     expect(finalized[0].exam_uid).toBe("cse:2017:set2:main:q33");
   });
+
+  test("excludes subjective and descriptive-no-answer rows from the practice bank", () => {
+    const finalized = QuestionService.finalizeQuestions([
+      QuestionService.normalizeQuestion({
+        question_uid: "go:205817",
+        title: "GATE CSE 1999 | Question: 20-b",
+        year: "gate1999",
+        link: "https://gateoverflow.in/205817/gate-cse-1999-question-20-b",
+        exam_uid: "cse:1999:set1:main:q20-b",
+        tags: ["gate1999", "operating-system", "descriptive"],
+        answer_meta: {
+          type: "SUBJECTIVE",
+          answer: null,
+          tolerance: null,
+          source: "question_uid",
+        },
+      }),
+      QuestionService.normalizeQuestion({
+        question_uid: "go:92961",
+        title: "GATE CSE 1989 | Question: 12b",
+        year: "gate1989",
+        link: "https://gateoverflow.in/92961/gate-cse-1989-question-12b",
+        exam_uid: "cse:1989:set1:main:q12b",
+        tags: ["gate1989", "databases", "descriptive"],
+      }),
+      QuestionService.normalizeQuestion({
+        question_uid: "go:94333",
+        title: "GATE CSE 1988 | Question: 2xv",
+        year: "gate1988",
+        link: "https://gateoverflow.in/94333/gate-cse-1988-question-2xv",
+        exam_uid: "cse:1988:set1:main:q2xv",
+        tags: ["gate1988", "compiler-design", "descriptive"],
+        answer_meta: {
+          type: "NAT",
+          answer: 10,
+          tolerance: { abs: 0.01 },
+          source: "question_uid",
+        },
+      }),
+    ]);
+
+    expect(finalized.map((question) => question.question_uid)).toEqual(["go:94333"]);
+  });
 });

@@ -103,7 +103,8 @@ export const ViewSwitch = ({
     return () => window.removeEventListener("popstate", handlePopState);
   }, [setAppView]);
 
-  // Write mode+stage to URL via pushState (creates one history entry per mode transition).
+  // Write mode+stage to URL via replaceState so landing mode changes
+  // do not create extra browser-history entries.
   const writeModeParam = useCallback((mode, stage) => {
     const params = new URLSearchParams(window.location.search);
     params.set("mode", mode);
@@ -114,7 +115,7 @@ export const ViewSwitch = ({
     }
     const query = params.toString();
     const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
-    window.history.pushState({}, "", newUrl);
+    window.history.replaceState({}, "", newUrl);
   }, []);
 
   // Write stage only via replaceState (no new history entry).

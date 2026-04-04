@@ -61,6 +61,7 @@ Responsibilities:
 
 - Candidate JSON selection with join-coverage scoring.
 - Question normalization (`question_uid`, `exam_uid`, canonical subject/subtopic/type).
+- Practice-bank exclusion of non-objective rows, including subjective/descriptive prompts that should not appear in the practice queue.
 - Structured tag generation for filter UI.
 - Init cache read/write and migration.
 
