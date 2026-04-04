@@ -3,6 +3,8 @@
  */
 import { describe, test, expect } from "vitest";
 
+const MOCK_TEST_MODE_ENABLED = false;
+
 // ── Issue 007: Setup filter builder logic ────────────────────────────────
 describe("Issue 007 — Setup filter builder (unit logic)", () => {
     const OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
@@ -208,7 +210,7 @@ describe("Issue 008 — View switching from URL", () => {
         const mode = params.get("mode");
         if (mode === "random" || mode === "targeted" || (mode && mode !== "mock")) return "practice";
 
-        if (mode === "mock") {
+        if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
             const stage = params.get("stage");
             if (stage === "exam") return "mockExam";
             return "mockSetup";
@@ -223,16 +225,16 @@ describe("Issue 008 — View switching from URL", () => {
         return "landing";
     };
 
-    test("?mode=mock&stage=setup resolves to mockSetup", () => {
-        expect(resolveAppViewFromUrl("?mode=mock&stage=setup")).toBe("mockSetup");
+    test("?mode=mock&stage=setup resolves to landing while disabled", () => {
+        expect(resolveAppViewFromUrl("?mode=mock&stage=setup")).toBe("landing");
     });
 
-    test("?mode=mock&stage=exam resolves to mockExam", () => {
-        expect(resolveAppViewFromUrl("?mode=mock&stage=exam")).toBe("mockExam");
+    test("?mode=mock&stage=exam resolves to landing while disabled", () => {
+        expect(resolveAppViewFromUrl("?mode=mock&stage=exam")).toBe("landing");
     });
 
-    test("?mode=mock without stage defaults to mockSetup", () => {
-        expect(resolveAppViewFromUrl("?mode=mock")).toBe("mockSetup");
+    test("?mode=mock without stage resolves to landing while disabled", () => {
+        expect(resolveAppViewFromUrl("?mode=mock")).toBe("landing");
     });
 
     test("?question=X makes practice view win (deep-link precedence)", () => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModeCard from "./ModeCard";
 import { useFilterActions } from "../../contexts/FilterContext";
+import { MOCK_TEST_MODE_ENABLED } from "../../constants/featureFlags";
 
 const DiceIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -79,11 +80,16 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
         <ModeCard
           title="Mock Test"
           description="Full timed exam simulation replicating the GATE 2026 UI."
+          badge="Coming Soon"
           icon={<ClockIcon />}
           selected={selectedMode === "mock"}
-          disabled={false}
+          disabled={!MOCK_TEST_MODE_ENABLED}
           onClick={() => handleModeSelect("mock")}
-        />
+        >
+          <p className="text-sm font-medium text-blue-700">
+            It will come for the 2027 exam very soon.
+          </p>
+        </ModeCard>
       </div>
 
       <div className="mx-auto mt-6 w-full max-w-xl">

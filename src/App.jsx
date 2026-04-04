@@ -10,6 +10,7 @@ import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
 import { pageview, trackEvent } from "./utils/analytics";
+import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
 const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"];
 
@@ -27,7 +28,7 @@ const resolveAppViewFromUrl = () => {
   if (mode === "random" || mode === "targeted" || (mode && mode !== "mock")) return "practice";
 
   // Issue 008: mock mode splits into mockSetup / mockExam based on stage param
-  if (mode === "mock") {
+  if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
     const stage = params.get("stage");
     if (stage === "exam") return "mockExam";
     return "mockSetup"; // default stage for mock is setup
@@ -74,12 +75,13 @@ const ViewSwitch = ({
     const mode = params.get("mode");
     if (mode === "random") { clearFilters(); setAppView("practice"); return; }
     if (mode === "targeted") { shouldOpenFilterOnEnter.current = true; setAppView("practice"); return; }
-    if (mode === "mock") {
+    if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
       const stage = params.get("stage");
       if (stage === "exam") { setAppView("mockExam"); }
       else { setAppView("mockSetup"); }
       return;
     }
+    if (mode === "mock") { setAppView("landing"); return; }
     if (mode) { setAppView("practice"); return; }  // legacy/unknown
 
     // 3. Shared filter URL
@@ -144,10 +146,11 @@ const ViewSwitch = ({
       writeModeParam("targeted");
       return;
     }
-    if (mode === "mock") {
+    if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
       shouldOpenFilterOnEnter.current = false;
       setAppView("mockSetup");
       writeModeParam("mock", "setup");
+      return;
     }
   }, [clearFilters, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
 
