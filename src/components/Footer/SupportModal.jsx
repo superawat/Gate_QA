@@ -1,72 +1,80 @@
 
 import React from 'react';
 import { FaTimes, FaHeart, FaEnvelope } from 'react-icons/fa';
+import qrCodeImage from '../../../qrcode.png';
 
 const SupportModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/20 transition-opacity"
+                className="absolute inset-0 bg-slate-900/30 backdrop-blur-[2px] transition-opacity"
                 onClick={onClose}
                 aria-hidden="true"
             />
 
-            {/* Modal Content - Force Light Glassmorphism with Dark Text */}
             <div
-                className="relative bg-white/70 backdrop-blur-2xl border border-white/40 rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] w-full max-w-sm flex flex-col items-center text-center p-8 text-gray-900"
+                className="relative w-full max-w-sm overflow-hidden rounded-[28px] border border-slate-200 bg-white text-center text-slate-900 shadow-[0_22px_70px_rgba(15,23,42,0.16)] animate-fade-in"
                 role="dialog"
                 aria-labelledby="support-modal-title"
                 aria-modal="true"
             >
-                {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100 transition-colors"
+                    className="absolute right-3 top-3 rounded-full p-2 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
                     aria-label="Close modal"
                 >
                     <FaTimes />
                 </button>
 
-                {/* Icon */}
-                <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6">
-                    <FaHeart className="w-8 h-8 text-red-500 animate-pulse" />
-                </div>
+                <div className="px-5 pb-5 pt-7 sm:px-6 sm:pb-6">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-500">
+                        <FaHeart className="h-5 w-5" />
+                    </div>
 
-                {/* Content */}
-                <h2 id="support-modal-title" className="text-2xl font-bold text-gray-900 mb-2">
-                    Support Me
-                </h2>
+                    <h2 id="support-modal-title" className="text-2xl font-semibold tracking-tight text-slate-900">
+                        Support Me
+                    </h2>
 
-                <p className="text-gray-700 mb-6 font-medium">
-                    Thank you for your interest in supporting this project!
-                    <br />
-                    <span className="font-semibold text-blue-600">other options are coming soon.</span>
-                </p>
-
-                {/* Feedback Section */}
-                <div className="mb-6 w-full pt-4 border-t border-gray-200/50">
-                    <p className="text-sm text-gray-700 mb-2 font-medium">
-                        Have feedback or suggestions?
+                    <p className="mx-auto mt-2.5 max-w-[18rem] text-sm leading-5 text-slate-600">
+                        Many have benefited from this product at no cost; if you'd like to support
+                        its journey, any help would mean a lot.
                     </p>
-                    <a
-                        href="mailto:rawathr01@gmail.com"
-                        className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-800 font-bold transition-colors"
-                    >
-                        <FaEnvelope />
-                        rawathr01@gmail.com
-                    </a>
-                </div>
 
-                {/* Footer Action */}
-                <button
-                    onClick={onClose}
-                    className="px-6 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium rounded-lg transition-colors w-full"
-                >
-                    Got it!
-                </button>
+                    <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-3.5 sm:p-4">
+                        <div className="mx-auto max-w-[180px] rounded-2xl border border-slate-200 bg-white p-2.5 shadow-sm">
+                            <img
+                                src={qrCodeImage}
+                                alt="QR code to support the project"
+                                className="h-auto w-full rounded-xl"
+                            />
+                        </div>
+                        <p className="mt-3 text-xs leading-5 text-slate-500">
+                            Scan with your preferred payment app.
+                        </p>
+                    </div>
+
+                    <div className="mt-5 border-t border-slate-200 pt-4">
+                        <p className="text-sm font-medium text-slate-700">
+                            Feedback or suggestions
+                        </p>
+                        <a
+                            href="mailto:rawathr01@gmail.com"
+                            className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition-colors hover:text-slate-900"
+                        >
+                            <FaEnvelope className="text-slate-400" />
+                            rawathr01@gmail.com
+                        </a>
+                    </div>
+
+                    <button
+                        onClick={onClose}
+                        className="mt-5 w-full rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+                    >
+                        Close
+                    </button>
+                </div>
             </div>
         </div>
     );

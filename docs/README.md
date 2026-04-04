@@ -19,7 +19,7 @@ This folder is the source of truth for engineering documentation in GateQA.
 - `FRONTEND_GUIDE.md`
   - filter behavior, hook contract, ProgressManager UX
 - `DATA_PIPELINE.md`
-  - scrape/enrich/answers/validation/precompute flow
+  - historical repairs plus scrape/enrich/answers/validation/precompute flow
 - `DEPLOYMENT.md`
   - build/deploy chain and workflow behavior
 - `TESTING.md`
@@ -34,9 +34,14 @@ This folder is the source of truth for engineering documentation in GateQA.
   - persistence, backup, and transfer policy
 - `QA_HARDENING_CHECKLIST.md`
   - release hardening checklist
+- `ROADMAP_AND_DECISIONS.md`
+  - future features, priorities, and product/technical decisions
+- `BUG_BACKLOG.md`
+  - open bugs, likely regressions, and triage notes
 - `PLATFORM_HARDENING_ALL_UPDATES.txt`
   - hardening record log
 
 ## Maintenance rule
 
 Whenever behavior, scripts, workflows, or contracts change, update the relevant docs file in the same PR.
+Question-bank imports/repairs and `INIT_CACHE_VERSION` bumps count as behavior changes for this rule.

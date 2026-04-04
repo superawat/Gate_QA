@@ -81,7 +81,14 @@ Gate_QA/
 |
 |-- scripts/
 |   |-- precompute-subtopics.mjs
-|   |-- qa/validate-data.js
+|   |-- qa/
+|   |   |-- historical-paper-audit.js         # Historical 65-question paper audit
+|   |   |-- import-missing-paper-from-tag.js  # Targeted single-paper GateOverflow import
+|   |   |-- pre-2010-gateoverflow-audit.js    # Pre-2010 GateOverflow year-tag comparison
+|   |   |-- repair-pre-2010-questions.js      # Pre-2010 question reconciliation + backfill
+|   |   |-- repair-historical-exam-uids.js    # Canonical exam_uid repair pass
+|   |   |-- repair-historical-paper-counts.js # Historical paper recovery + dedup + cleanup
+|   |   `-- validate-data.js                  # Full-bank answer/data integrity gate
 |   |-- deployment/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
@@ -113,6 +120,8 @@ Gate_QA/
 |   |-- KNOWN-LIMITATIONS.md
 |   |-- DATA-POLICY.md
 |   |-- QA_HARDENING_CHECKLIST.md
+|   |-- ROADMAP_AND_DECISIONS.md
+|   |-- BUG_BACKLOG.md
 |   `-- FEAT-003_PHASE0_SIGNOFF.md
 |
 |-- audit/                        # Pipeline-generated outputs, committed after every run,
@@ -134,6 +143,7 @@ Gate_QA/
 - Progress import/export UI: `src/components/ProgressManager/`
 - Build-time precompute generator: `scripts/precompute-subtopics.mjs`
 - Data integrity gate: `scripts/qa/validate-data.js`
+- Historical paper audit/repair flow: `scripts/qa/`
 - Automated data pipeline: `scripts/pipeline/` + `.github/workflows/gate-question-pipeline.yml`
 - Pipeline documentation: `docs/DATA_PIPELINE.md`
 

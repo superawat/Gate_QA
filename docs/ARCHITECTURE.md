@@ -46,10 +46,12 @@ There is no backend, no database, and no server-side rendering.
 ### Layer 4: localStorage init cache
 
 - Cache key version:
-  - `INIT_CACHE_VERSION = 'v2'`
-  - runtime key `gateqa_init_cache_v2`
-- `_readCache()` migrates by removing legacy `gateqa_init_cache_v1`.
+  - `INIT_CACHE_VERSION = 'v7'`
+  - runtime key `gateqa_init_cache_v7`
+- `_readCache()` migrates by removing legacy `gateqa_init_cache_v1`, `gateqa_init_cache_v2`, and `gateqa_init_cache_v3`.
 - `_writeCache()` handles quota/storage errors via `isQuotaExceededError()`.
+- Filter defaults treat the current year as the fallback max year until structured question data is loaded, so newly imported years such as 2026 can appear in the filter UI as soon as the cache is refreshed.
+- Cache version should be bumped whenever the live question bank is replaced with a materially repaired snapshot, such as the 2026-04-04 historical paper repairs.
 
 ## Services
 
@@ -65,7 +67,7 @@ Responsibilities:
 Performance constants:
 
 - `MAX_SUBTOPICS_PER_QUESTION = 1`
-- `INIT_CACHE_VERSION = 'v2'`
+- `INIT_CACHE_VERSION = 'v7'`
 
 BUG-007 guardrail:
 
@@ -107,6 +109,7 @@ Answer resolution order:
 - A reverse map `subtopicToSubjectSlug` is built from structured tags.
 - Subtopic predicates are applied within their parent subject scope.
 - Selecting subtopics can auto-add parent subjects.
+- URL-hydrated subtopics are normalized through the same parent-subject auto-add path before filtering.
 - Deselecting subjects removes orphaned subtopics.
 
 ## Session Queue (FEAT-012, 2026-02-27)
@@ -157,6 +160,7 @@ Mount-time URL-to-view resolver (one-shot, after `allQuestions` is available):
    - `random` -> `clearFilters()` then `practice`
    - `filtered` -> set one-shot filter-open flag then `practice`
    - `targeted` -> `practice`
+   - `resume` -> `practice` without clearing filters
    - `mock` -> `mock`
 3. Else if any shareable filter params exist (`years`, `subjects`, `subtopics`, `range`, `types`) -> `practice`
 4. Else -> `landing`
@@ -166,6 +170,7 @@ Landing actions:
 - Random start always calls `clearFilters()` before entering practice.
 - Filtered start sets one-shot auto-open modal flag.
 - Targeted start uses existing `selectedSubjects` / `selectedSubtopics` from `FilterStateContext`.
+- "Continue where you left off" resumes the current practice/question/filter state instead of routing through random mode.
 - Mock card is visible but disabled with "Coming soon" badge.
 - "Continue where you left off" is shown only when solved or bookmarked local progress exists.
 

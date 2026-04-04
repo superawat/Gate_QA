@@ -18,14 +18,14 @@ const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"]
  * Pure function: resolve appView from current URL.
  * Priority: ?question → ?mode+stage → filter params → landing
  */
-const resolveAppViewFromUrl = () => {
+export const resolveAppViewFromUrl = () => {
   const params = new URLSearchParams(window.location.search);
 
   // Deep-link always wins
   if (params.get("question")) return "practice";
 
   const mode = params.get("mode");
-  if (mode === "random" || mode === "targeted" || (mode && mode !== "mock")) return "practice";
+  if (mode === "random" || mode === "targeted" || mode === "resume" || (mode && mode !== "mock")) return "practice";
 
   // Issue 008: mock mode splits into mockSetup / mockExam based on stage param
   if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
@@ -47,7 +47,7 @@ const resolveAppViewFromUrl = () => {
  * ViewSwitch — resolves appView on mount from URL, handles mode starts,
  * popstate, and renders exactly one shell.
  */
-const ViewSwitch = ({
+export const ViewSwitch = ({
   loading,
   error,
   loadQuestions,
@@ -75,6 +75,7 @@ const ViewSwitch = ({
     const mode = params.get("mode");
     if (mode === "random") { clearFilters(); setAppView("practice"); return; }
     if (mode === "targeted") { shouldOpenFilterOnEnter.current = true; setAppView("practice"); return; }
+    if (mode === "resume") { shouldOpenFilterOnEnter.current = false; setAppView("practice"); return; }
     if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
       const stage = params.get("stage");
       if (stage === "exam") { setAppView("mockExam"); }
@@ -146,6 +147,13 @@ const ViewSwitch = ({
       writeModeParam("targeted");
       return;
     }
+    if (mode === "resume") {
+      trackEvent("resume_practice", { mode: "resume", source: "landing" });
+      shouldOpenFilterOnEnter.current = false;
+      setAppView("practice");
+      writeModeParam("resume");
+      return;
+    }
     if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
       shouldOpenFilterOnEnter.current = false;
       setAppView("mockSetup");
@@ -153,6 +161,10 @@ const ViewSwitch = ({
       return;
     }
   }, [clearFilters, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
+
+  const handleResumePractice = useCallback(() => {
+    handleModeStart("resume");
+  }, [handleModeStart]);
 
   // Go-home handler passed to PracticeShell / MockShell.
   const handleGoHome = useCallback(() => {
@@ -181,6 +193,7 @@ const ViewSwitch = ({
     return (
       <LandingShell
         onModeStart={handleModeStart}
+        onResumePractice={handleResumePractice}
         hasPriorProgress={hasPriorProgress}
       />
     );

@@ -78,7 +78,7 @@ export class AnswerService {
   }
 
   static getExamUid(question = {}) {
-    return getExamUidFromQuestion(question);
+    return question?.canonicalExamUid || getExamUidFromQuestion(question);
   }
 
   static getStorageKeyForQuestion(question = {}) {

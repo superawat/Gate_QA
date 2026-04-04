@@ -66,6 +66,16 @@ function buildSessionQueue(filteredQuestions, seenThisSession, solvedSet) {
     return [...bucket1, ...bucket2, ...bucket3];
 }
 
+function getPinnedQuestionUidFromUrl() {
+    if (typeof window === 'undefined') {
+        return null;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const questionUid = String(params.get('question') || '').trim();
+    return questionUid || null;
+}
+
 export const useSession = () => {
     const ctx = useContext(SessionContext);
     if (!ctx) throw new Error('useSession must be used within a SessionProvider');
@@ -136,8 +146,11 @@ export const SessionProvider = ({ children }) => {
         prevFilteredUidsRef.current = newUids;
         seenThisSession.current.clear();
         const queue = buildSessionQueue(filteredQuestions, seenThisSession.current, solvedSetRef.current);
+        const pinnedQuestionUid = getPinnedQuestionUidFromUrl();
+        const pinnedIndex = pinnedQuestionUid ? queue.indexOf(pinnedQuestionUid) : -1;
+
         setSessionQueue(queue);
-        setCurrentIndex(0);
+        setCurrentIndex(pinnedIndex >= 0 ? pinnedIndex : 0);
         setShowExhaustionBanner(false);
         if (exhaustionTimeoutRef.current) {
             clearTimeout(exhaustionTimeoutRef.current);

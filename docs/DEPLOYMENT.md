@@ -47,6 +47,7 @@ Current build chain:
 - 6-stage pipeline: scrape → normalise → answer backfill → merge → validate → build/deploy
 - see `docs/DATA_PIPELINE.md` for full stage documentation
 - auto-creates GitHub Issue on failure; live site remains on last successful deploy
+- because scrape and answer-backfill intentionally respect GateOverflow crawl delay, long runs may require manual catch-up via the local runbook if the scheduled job times out
 
 ## Manual deploy
 
@@ -61,9 +62,21 @@ Alternative:
 git subtree push --prefix dist origin gh-pages
 ```
 
+## Manual data refresh deploy
+
+When a year is imported locally instead of through GitHub Actions:
+
+1. run the relevant `scripts/pipeline/*.mjs` stages
+2. confirm `audit/validation-report-{year}.json` passes
+3. run `npm run build`
+4. publish the generated `dist/` folder with the normal GitHub Pages flow
+
+For the exact data-ingestion sequence, use `docs/DATA_PIPELINE.md`.
+
 ## Pre-deploy checklist
 
 - [ ] `npm run build` succeeds.
+- [ ] if this deploy includes a manual data import, `audit/validation-report-{year}.json` shows `passed: true`.
 - [ ] Precompute output was generated (`src/generated/subtopicLookup.json` in build workspace).
 - [ ] `dist/.nojekyll` exists.
 - [ ] `dist/calculator/calculator.html` exists.

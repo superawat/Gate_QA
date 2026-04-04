@@ -39,7 +39,18 @@ Run what applies:
 npm run test:unit
 npm run build
 npm run qa:validate-data
-python -m pytest tests/answers -q
+```
+
+For question-bank repairs or historical data updates:
+
+```bash
+npm run qa:audit-historical-papers
+npm run qa:repair-historical-paper-counts
+npm run qa:import-missing-paper -- --year <YYYY> --set <N> --tag gatecse-YYYY-setN
+npm run qa:audit-historical-papers
+npm run qa:audit-pre-2010-gateoverflow
+npm run qa:repair-pre-2010-questions
+npm run qa:audit-pre-2010-gateoverflow
 ```
 
 For perf-sensitive changes:
@@ -72,6 +83,7 @@ Do not merge changes that break:
 
 - bump `INIT_CACHE_VERSION` in `src/services/QuestionService.js` when:
   - question source shape changes, or
+  - question-bank imports/repairs change available year/set inventory, or
   - subtopic extraction/normalization logic changes, or
   - precompute format changes
 - bump `APP_VERSION` in `src/components/ProgressManager/ProgressManager.jsx` when publishing release builds that change import/export payload expectations
@@ -84,6 +96,11 @@ Do not merge changes that break:
 - `src/components/ProgressManager/ProgressManager.jsx`
 - `scripts/precompute-subtopics.mjs`
 - `scripts/qa/validate-data.js`
+- `scripts/qa/historical-paper-audit.js`
+- `scripts/qa/import-missing-paper-from-tag.js`
+- `scripts/qa/pre-2010-gateoverflow-audit.js`
+- `scripts/qa/repair-pre-2010-questions.js`
+- `scripts/qa/repair-historical-paper-counts.js`
 
 ## PR template (recommended)
 

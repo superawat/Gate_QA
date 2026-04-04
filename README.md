@@ -1,6 +1,6 @@
 ﻿# GATE QA
 
-Extensive, searchable, and filterable GATE CSE previous-year question bank — 3,400+ questions from 1987 to 2025, with automated ingestion for 2026 onward.
+Extensive, searchable, and filterable GATE CSE previous-year question bank — 3,500+ questions from 1987 to 2026, with a forward-ingestion pipeline for new exam years.
 
 ## Live demo
 
@@ -81,15 +81,22 @@ npm run test:unit
 npm run qa:validate-data
 ```
 
-Current unit suite status: 24 passing tests.
+Current unit suite status: 88 passing tests.
 
 ## Automated Data Pipeline (FEAT-003)
 
-Starting with GATE 2026, new questions are automatically scraped, normalised, answer-backfilled, merged, validated, and deployed via a GitHub Actions workflow.
+Starting with GATE 2026, new questions are scraped, normalised, answer-backfilled, merged, validated, and deployed through the FEAT-003 pipeline.
 
-- **Schedule:** April 1 and October 1 (configurable via cron)
+- **Schedule:** April 1 and October 1 via `.github/workflows/gate-question-pipeline.yml`
 - **Manual trigger:** `workflow_dispatch` with optional `force_year` input
+- **Manual fallback:** if the scheduled run misses the window or times out during the long scrape/backfill stages, run the pipeline locally from `scripts/pipeline/` and then rebuild/deploy
 - **Failure safety:** Live site remains on last successful deploy; a GitHub Issue is auto-created on failure
+
+Current status:
+
+- GATE 2026 question import completed on 2026-04-04 with all 130 questions captured (65 per set)
+- Historical paper-count repair completed on 2026-04-04; audited papers from 2010 onward now resolve to 65 questions each
+- 2026 answer backfill is still pending, so the imported 2026 rows currently have `answer: null`
 
 Pipeline scripts live in `scripts/pipeline/` and are documented in `docs/DATA_PIPELINE.md`.
 
@@ -110,6 +117,7 @@ See `docs/README.md` for full documentation map, including:
 - Do not hand-edit generated lookup files.
 - Known limitation: to prevent subtopic contamination from scrape tags, each question currently keeps at most one canonical subtopic (TECH-DEBT-001).
 - Historical Python scripts (pre-2026 data prep) have been archived on branch `archive/pre-cleanup-2026-02-26`.
+- After replacing `public/questions-with-answers.json`, bump `INIT_CACHE_VERSION` in `src/services/QuestionService.js` so browsers drop stale localStorage snapshots.
 
 ## Contributing
 

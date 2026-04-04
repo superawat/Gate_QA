@@ -5,7 +5,7 @@ import { FaCheckCircle, FaStar } from "react-icons/fa";
 import AnswerPanel from "../AnswerPanel/AnswerPanel";
 import { useFilterActions } from "../../contexts/FilterContext";
 
-export default function Question({ question = {}, changeQuestion }) {
+function Question({ question = {}, changeQuestion }) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
   const questionHtml = (question.question || "")
     .replace(/\n\n/g, "<br />")
@@ -58,3 +58,5 @@ export default function Question({ question = {}, changeQuestion }) {
     </div>
   );
 }
+
+export default React.memo(Question);

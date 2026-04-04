@@ -11,6 +11,8 @@ const STORAGE_KEYS = {
     bookmarked: 'gate_qa_bookmarked_questions',
     metadata: 'gate_qa_progress_metadata'
 };
+const DEFAULT_MIN_YEAR = 2000;
+const DEFAULT_MAX_YEAR = new Date().getFullYear();
 const LEGACY_STORAGE_KEYS = {
     bookmarked: 'gateqa_bookmarks_v1'
 };
@@ -94,6 +96,54 @@ const normalizeSubtopicSlugs = (rawSubtopics) => {
     });
 
     return Array.from(unique).sort((a, b) => a.localeCompare(b));
+};
+
+const buildSubtopicToSubjectSlugMap = (structuredSubtopics = {}) => {
+    const map = new Map();
+
+    Object.entries(structuredSubtopics || {}).forEach(([subjectSlug, entries]) => {
+        (entries || []).forEach((entry) => {
+            const slug = QuestionService.slugifyToken(entry?.slug || entry?.label || entry);
+            if (slug) {
+                map.set(slug, subjectSlug);
+            }
+        });
+    });
+
+    return map;
+};
+
+const reconcileSubjectAndSubtopicFilters = (baseFilters, incomingFilters, subtopicToSubjectSlug) => {
+    const merged = { ...baseFilters };
+    const hasSelectedSubjects = Object.prototype.hasOwnProperty.call(incomingFilters, 'selectedSubjects');
+    const hasSelectedSubtopics = Object.prototype.hasOwnProperty.call(incomingFilters, 'selectedSubtopics');
+
+    if (hasSelectedSubjects) {
+        merged.selectedSubjects = normalizeSubjectSlugs(incomingFilters.selectedSubjects);
+
+        if (merged.selectedSubtopics.length > 0) {
+            const activeSubjectSet = new Set(merged.selectedSubjects);
+            merged.selectedSubtopics = normalizeSubtopicSlugs(merged.selectedSubtopics).filter((subtopicSlug) => {
+                const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+                return !parentSlug || activeSubjectSet.has(parentSlug);
+            });
+        }
+    }
+
+    if (hasSelectedSubtopics) {
+        merged.selectedSubtopics = normalizeSubtopicSlugs(incomingFilters.selectedSubtopics);
+
+        const selectedSubjects = new Set(merged.selectedSubjects);
+        merged.selectedSubtopics.forEach((subtopicSlug) => {
+            const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+            if (parentSlug) {
+                selectedSubjects.add(parentSlug);
+            }
+        });
+        merged.selectedSubjects = normalizeSubjectSlugs(Array.from(selectedSubjects));
+    }
+
+    return merged;
 };
 
 const normalizeStoredIds = (rawIds) => {
@@ -186,13 +236,13 @@ export const FilterProvider = ({ children }) => {
         topics: [],
         structuredSubtopics: {},
         structuredTopics: {},
-        minYear: 2000,
-        maxYear: 2025
+        minYear: DEFAULT_MIN_YEAR,
+        maxYear: DEFAULT_MAX_YEAR
     });
 
     const [filters, setFilters] = useState({
         selectedYearSets: [],
-        yearRange: [2000, 2025],
+        yearRange: [DEFAULT_MIN_YEAR, DEFAULT_MAX_YEAR],
         selectedSubjects: [],
         selectedSubtopics: [],
         selectedTypes: [...DEFAULT_SELECTED_TYPES],
@@ -210,6 +260,10 @@ export const FilterProvider = ({ children }) => {
     const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState([]);
     const [isProgressStorageAvailable, setIsProgressStorageAvailable] = useState(true);
     const [hasLoadedProgressState, setHasLoadedProgressState] = useState(false);
+    const urlHydrationSubtopicToSubjectSlug = useMemo(
+        () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics),
+        [structuredTags.structuredSubtopics]
+    );
 
     useEffect(() => {
         if (QuestionService.questions.length > 0) {
@@ -220,7 +274,12 @@ export const FilterProvider = ({ children }) => {
             const { minYear, maxYear } = tags;
             setFilters(prev => {
                 // Only overwrite if it was completely pristine
-                const hasCustomRange = prev.yearRange && prev.yearRange.length === 2 && (prev.yearRange[0] > 2000 || prev.yearRange[1] < 2025);
+                const hasCustomRange = prev.yearRange
+                    && prev.yearRange.length === 2
+                    && (
+                        prev.yearRange[0] > DEFAULT_MIN_YEAR
+                        || prev.yearRange[1] < DEFAULT_MAX_YEAR
+                    );
                 return {
                     ...prev,
                     yearRange: hasCustomRange ? prev.yearRange : [minYear, maxYear]
@@ -232,6 +291,10 @@ export const FilterProvider = ({ children }) => {
     }, [QuestionService.loaded]);
 
     useEffect(() => {
+        if (!isInitialized) {
+            return;
+        }
+
         const params = new URLSearchParams(window.location.search);
         const urlTypes = params.get('types');
         const rawYearTokens = params.get('years')?.split(',').filter(Boolean) || [];
@@ -255,22 +318,28 @@ export const FilterProvider = ({ children }) => {
 
         // Apply state safely using standard initial values + url overrides to ensure stability
         setFilters(prev => {
-            const merged = { ...prev };
+            let merged = { ...prev };
             // Copy explicitly so we don't drop types accidentally
             merged.selectedTypes = urlFilters.selectedTypes;
             merged.selectedYearSets = urlFilters.selectedYearSets;
-            merged.selectedSubjects = urlFilters.selectedSubjects;
-            merged.selectedSubtopics = urlFilters.selectedSubtopics;
             merged.hideSolved = urlFilters.hideSolved;
             merged.showOnlySolved = urlFilters.showOnlySolved;
             merged.showOnlyBookmarked = urlFilters.showOnlyBookmarked;
+            merged = reconcileSubjectAndSubtopicFilters(
+                merged,
+                {
+                    selectedSubjects: urlFilters.selectedSubjects,
+                    selectedSubtopics: urlFilters.selectedSubtopics
+                },
+                urlHydrationSubtopicToSubjectSlug
+            );
 
             if (urlFilters.yearRange && urlFilters.yearRange.length === 2 && !isNaN(urlFilters.yearRange[0])) {
                 merged.yearRange = urlFilters.yearRange;
             }
             return merged;
         });
-    }, []);
+    }, [isInitialized, urlHydrationSubtopicToSubjectSlug]);
 
     useEffect(() => {
         if (!isInitialized) return;
@@ -413,18 +482,10 @@ export const FilterProvider = ({ children }) => {
     const bookmarkedQuestionSet = useMemo(() => new Set(bookmarkedQuestionIds), [bookmarkedQuestionIds]);
 
     // ── Reverse map: subtopicSlug → parent subjectSlug (for scoped filtering) ──
-    const subtopicToSubjectSlug = useMemo(() => {
-        const map = new Map();
-        const subs = structuredTags.structuredSubtopics || {};
-        Object.keys(subs).forEach(subjectSlug => {
-            (subs[subjectSlug] || []).forEach(entry => {
-                if (entry && entry.slug) {
-                    map.set(entry.slug, subjectSlug);
-                }
-            });
-        });
-        return map;
-    }, [structuredTags.structuredSubtopics]);
+    const subtopicToSubjectSlug = useMemo(
+        () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics),
+        [structuredTags.structuredSubtopics]
+    );
 
     // ── Layer 3: useMemo-based filtered questions ────────────────────────
     const filteredQuestions = useMemo(() => {
@@ -553,48 +614,14 @@ export const FilterProvider = ({ children }) => {
 
     const updateFilters = useCallback((newFilters) => {
         setFilters(prev => {
-            const merged = { ...prev, ...newFilters };
+            let merged = { ...prev, ...newFilters };
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedTypes')) {
                 merged.selectedTypes = normalizeSelectedTypes(newFilters.selectedTypes);
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedYearSets')) {
                 merged.selectedYearSets = normalizeYearSetTokens(newFilters.selectedYearSets);
             }
-            if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedSubjects')) {
-                merged.selectedSubjects = normalizeSubjectSlugs(newFilters.selectedSubjects);
-
-                // Auto-remove orphaned subtopics when a subject is deselected.
-                // If a subtopic belongs to a subject that is no longer selected,
-                // it must be removed to prevent impossible filter states.
-                const activeSubjectSet = new Set(merged.selectedSubjects);
-                if (merged.selectedSubtopics.length > 0) {
-                    merged.selectedSubtopics = merged.selectedSubtopics.filter(subtopicSlug => {
-                        const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
-                        // Keep subtopic if its parent subject is still selected
-                        // or if we can't determine the parent (defensive)
-                        return !parentSlug || activeSubjectSet.has(parentSlug);
-                    });
-                }
-            }
-            if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedSubtopics')) {
-                merged.selectedSubtopics = normalizeSubtopicSlugs(newFilters.selectedSubtopics);
-
-                // Auto-add parent subject when a subtopic is selected.
-                // This ensures the subject+subtopic always form a valid AND pair.
-                const currentSubjects = new Set(merged.selectedSubjects);
-                let subjectsChanged = false;
-                merged.selectedSubtopics.forEach(subtopicSlug => {
-                    const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
-                    if (parentSlug && !currentSubjects.has(parentSlug)) {
-                        currentSubjects.add(parentSlug);
-                        subjectsChanged = true;
-                    }
-                });
-                if (subjectsChanged) {
-                    merged.selectedSubjects = normalizeSubjectSlugs(Array.from(currentSubjects));
-                }
-            }
-            return merged;
+            return reconcileSubjectAndSubtopicFilters(merged, newFilters, subtopicToSubjectSlug);
         });
     }, [subtopicToSubjectSlug]);
 

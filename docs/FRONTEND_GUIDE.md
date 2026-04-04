@@ -79,6 +79,7 @@ Actions:
 - `selectedSubtopics` are matched within parent subject scope.
 - Internal reverse map: `subtopicToSubjectSlug`.
 - Selecting a subtopic can auto-add its parent subject.
+- URL hydration for shared `?subtopics=` links also auto-adds the parent subject before filters are applied.
 - Deselecting a subject removes orphaned subtopics.
 
 ### BUG-007 guardrail
@@ -133,12 +134,13 @@ Rules:
 - Share action in `AnswerPanel` writes deep-link URL with `question=<uid>`.
 - Landing resolver priority (one-shot after questions load):
   1. `?question=<uid>` -> practice (always wins)
-  2. `?mode=` (`random`, `filtered`, `targeted`, `mock`)
+  2. `?mode=` (`random`, `filtered`, `targeted`, `resume`, `mock`)
   3. any filter param (`years`, `subjects`, `subtopics`, `range`, `types`) -> practice
   4. fallback -> landing
 - Landing start actions write `?mode=` using `replaceState` only (never `pushState`).
 - `mode=random` must call `clearFilters()` before entering practice.
 - `mode=filtered` sets one-shot auto-open `FilterModal` on first practice render.
+- `mode=resume` must preserve the current practice/question/filter context and must not clear filters.
 
 ## Persistence keys
 

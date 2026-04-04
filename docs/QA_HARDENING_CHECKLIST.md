@@ -87,7 +87,7 @@ Expected thresholds:
 
 Record:
 
-- unit test result (should show 24 passing tests)
+- unit test result (`npm run test:unit` output)
 - build result
 - integrity report path
 - lighthouse summary

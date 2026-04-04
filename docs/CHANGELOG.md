@@ -4,6 +4,46 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### BUG-015: "Continue where you left off" does not actually resume prior context -> Status: Done
+- Routed the landing-page continue CTA through a dedicated resume action instead of the random-practice start path.
+- Resume now re-enters practice without clearing the current filter/question context.
+- Added regression coverage for the landing CTA wiring and `?mode=resume` routing behavior.
+
+### BUG-014: Shared subtopic URLs can show unrelated questions -> Status: Done
+- Normalized URL-hydrated `selectedSubtopics` through the same parent-subject reconciliation path used by interactive filter updates.
+- Fixed shared `?subtopics=` links so they auto-add the matching parent subject before filtering questions.
+- Added a `FilterContext` regression test covering subtopic-only shared URLs and unrelated-question leakage.
+
+### BUG-008: Repair historical paper counts -> Status: Done
+- Added `scripts/qa/historical-paper-audit.js` as the repeatable 65-question audit for historical papers.
+- Added `scripts/qa/import-missing-paper-from-tag.js` for targeted single-paper backfills from live GateOverflow year/set tags.
+- Added `scripts/qa/pre-2010-gateoverflow-audit.js` to compare 1987–2009 papers against live GateOverflow year-tag totals using deduped question labels.
+- Added `scripts/qa/repair-pre-2010-questions.js` to reconcile 1987–2009 papers with the live GateOverflow year-tag question set, remove off-tag rows, and backfill missing legacy questions.
+- Added `scripts/qa/repair-historical-exam-uids.js` to canonicalize malformed historical `exam_uid` values before slot-level reconciliation.
+- Added `scripts/qa/repair-historical-paper-counts.js` to:
+  - remove non-paper GateOverflow rows that leaked into historical year tags
+  - drop duplicate historical variant rows once canonical slots are known
+  - recover missing historical questions directly from GateOverflow
+  - sanitize hidden bidi characters in affected historical titles
+- Rebuilt `public/questions-with-answers.json` from the repaired historical snapshot.
+- Restored the missing `2014 Set 1` paper from GateOverflow and synced `65` questions plus `65` answers into the canonical bank.
+- Historical audit now reports zero missing slots, zero duplicate slots, and zero malformed `exam_uid` rows for papers audited from 2010 onward.
+- Historical audit now covers `27` clean post-2010 papers and reports `questions_without_paper_meta = 0`.
+- Pre-2010 audit now reports full question-count and question-label parity against live GateOverflow year tags across all 23 audited years.
+- Bumped `QuestionService` init cache version to `v6` so browsers invalidate stale localStorage snapshots after the historical repairs.
+- Bumped `QuestionService` init cache version again to `v7` so browsers invalidate stale localStorage snapshots after the `2014 Set 1` import.
+- Updated project docs to document the historical repair flow and cache-bump requirement.
+
+### FEAT-003: 2026 Question Import Catch-up -> Status: Done
+- Completed the first live FEAT-003 catch-up import for GATE 2026 on 2026-04-04.
+- Captured all 130 questions across both sets:
+  - 65 questions from Set 1
+  - 65 questions from Set 2
+- Updated pipeline subject mapping so General Aptitude imports correctly classify spatial/pattern-style GA tags instead of quarantining them as unknown.
+- Busted the runtime init cache and removed 2025-only filter fallbacks so the filter page surfaces 2026 immediately after the data import.
+- Updated documentation with the manual catch-up runbook and current scheduled-workflow timeout caveat.
+- 2026 answer backfill remains pending; the imported 2026 rows currently carry `answer: null`.
+
 ### FEAT-019: Add Google Analytics 4 (GA4) to GateQA -> Status: Done
 - Handled via `src/utils/analytics.js` for lightweight wrapper to cleanly capture SPA behavior logic.
 - Installed gtag inside `index.html` using custom `G-G3KZ7KSPHG` ID with automatic pageview capturing bypassed (`send_page_view: false`).

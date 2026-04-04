@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ModeCard from "./ModeCard";
-import { useFilterActions } from "../../contexts/FilterContext";
 import { MOCK_TEST_MODE_ENABLED } from "../../constants/featureFlags";
 
 const DiceIcon = () => (
@@ -28,9 +27,7 @@ const ClockIcon = () => (
   </svg>
 );
 
-const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
-  const { clearFilters } = useFilterActions();
-
+const ModeSelectionPage = ({ onModeStart, onResumePractice, hasPriorProgress }) => {
   const [selectedMode, setSelectedMode] = useState(null);
 
   const isStartDisabled = selectedMode === null;
@@ -44,10 +41,6 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
       return;
     }
 
-    if (selectedMode === "random") {
-      clearFilters();
-    }
-
     onModeStart(selectedMode);
   };
 
@@ -56,12 +49,16 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
       <div className="text-center">
         <h1 className="text-2xl font-bold text-gray-900">Choose Your Practice Mode</h1>
         <p className="mt-2 text-sm text-gray-500">Select how you want to practice today</p>
+        <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+          <span className="h-2 w-2 rounded-full bg-emerald-500" />
+          GATE 2026 questions added
+        </div>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
         <ModeCard
           title="Random Practice"
-          description="Jump into 3,418 questions in a randomised order. No setup needed."
+          description="Jump straight into question solving with a randomised mix. No setup needed."
           icon={<DiceIcon />}
           selected={selectedMode === "random"}
           disabled={false}
@@ -105,7 +102,7 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
           <div className="mt-3 text-center">
             <button
               type="button"
-              onClick={() => onModeStart("random")}
+              onClick={onResumePractice}
               className="cursor-pointer text-sm text-gray-500 underline hover:text-gray-700"
             >
               Continue where you left off &rarr;

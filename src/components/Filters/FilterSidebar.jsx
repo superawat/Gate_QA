@@ -42,6 +42,13 @@ const FilterSidebar = ({ className = "", onClose }) => {
         setShowOnlySolved
     } = useFilterActions();
     const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [...QUESTION_TYPES];
+    const hasActiveFilters = filters.selectedYearSets.length > 0
+        || filters.selectedSubjects.length > 0
+        || filters.selectedSubtopics.length > 0
+        || selectedTypes.length < QUESTION_TYPES.length
+        || filters.hideSolved
+        || filters.showOnlySolved
+        || filters.showOnlyBookmarked;
 
     return (
         <aside className={`flex flex-col flex-shrink-0 bg-gray-50 border-r border-gray-200 h-full min-h-0 overflow-y-auto ${className}`}>
@@ -50,15 +57,15 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 <span className="text-sm font-semibold text-gray-700">
                     {filteredQuestions.length} / {totalQuestions} results
                 </span>
-                <div className="flex items-center gap-2">
-                    {(filters.selectedYearSets.length > 0 || filters.selectedSubjects.length > 0 || filters.selectedSubtopics.length > 0 || selectedTypes.length < QUESTION_TYPES.length || filters.hideSolved || filters.showOnlySolved || filters.showOnlyBookmarked) && (
-                        <button
-                            onClick={clearFilters}
-                            className="text-xs font-bold text-blue-600 hover:text-blue-800 uppercase tracking-wide"
-                        >
-                            Reset
-                        </button>
-                    )}
+                <div className="flex min-w-[3.75rem] items-center justify-end gap-2">
+                    <button
+                        onClick={clearFilters}
+                        disabled={!hasActiveFilters}
+                        aria-hidden={!hasActiveFilters}
+                        className={`text-xs font-bold uppercase tracking-wide transition-colors ${hasActiveFilters ? 'text-blue-600 hover:text-blue-800' : 'pointer-events-none opacity-0'}`}
+                    >
+                        Reset
+                    </button>
                     {onClose && (
                         <button onClick={onClose} className="text-gray-500 hover:text-gray-700 md:hidden">
                             <span className="sr-only">Close</span>

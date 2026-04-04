@@ -151,6 +151,18 @@ const SUBJECT_ALIASES = {
         "verbal-ability",
         "numerical-ability",
         "logical-reasoning",
+        "spatial-aptitude",
+        "assembling-pieces",
+        "paper-folding",
+        "patterns-in-2d",
+        "patterns-in-two-dimensions",
+        "patterns-in-3d",
+        "patterns-in-three-dimensions",
+        "3d-structure",
+        "image-rotation",
+        "mirror-image",
+        "grouping",
+        "counting-figure",
     ],
     "Operating System": [
         "operating-system",
@@ -234,12 +246,15 @@ function normalizeTag(tag) {
         .replace(/^-+|-+$/g, "");
 }
 
-function resolveSubject(tags) {
+function resolveSubject(tags, title = "") {
     const normalizedTags = new Set(tags.map(normalizeTag));
+    const isGeneralAptitudeTitle = /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s+\d+)\b/i.test(
+        String(title || "")
+    );
 
     // Check GA first (per QuestionService logic)
     const gaAliases = SUBJECT_ALIASES["General Aptitude"].map(normalizeTag);
-    if (gaAliases.some((a) => normalizedTags.has(a))) {
+    if (isGeneralAptitudeTitle || gaAliases.some((a) => normalizedTags.has(a))) {
         return "General Aptitude";
     }
 
@@ -341,7 +356,7 @@ function main() {
         if (!examYear) examYear = targetYear;
 
         // Resolve subject
-        const subject = resolveSubject(q.tags || []);
+        const subject = resolveSubject(q.tags || [], q.title || "");
 
         // Detect type
         const type = detectType(q.tags || [], q.title || "");
@@ -379,13 +394,15 @@ function main() {
     console.log(`  Output: ${normalisedPath}`);
 
     // Save unknown subjects audit
+    const unknownPath = path.join(
+        AUDIT_DIR,
+        `unknown-subjects-${targetYear}.json`
+    );
     if (unknownSubjects.length) {
-        const unknownPath = path.join(
-            AUDIT_DIR,
-            `unknown-subjects-${targetYear}.json`
-        );
         writeJson(unknownPath, unknownSubjects);
         console.log(`  Unknown subjects audit: ${unknownPath}`);
+    } else if (fs.existsSync(unknownPath)) {
+        fs.unlinkSync(unknownPath);
     }
 
     // Subject count audit

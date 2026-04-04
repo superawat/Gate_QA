@@ -108,6 +108,10 @@ const PracticeView = ({
 
     // Queue sync
     useEffect(() => {
+        if (isMobileFilterOpen) {
+            return;
+        }
+
         if (isInitialized && sessionQueue.length > 0 && hasResolvedDeepLink.current) {
             const targetUid = sessionQueue[currentIndex];
             if (targetUid && targetUid !== currentQuestion?.question_uid) {
@@ -124,10 +128,14 @@ const PracticeView = ({
         } else if (isInitialized && filteredQuestions.length === 0 && hasResolvedDeepLink.current) {
             if (currentQuestion !== null) setCurrentQuestion(null);
         }
-    }, [sessionQueue, currentIndex, isInitialized, filteredQuestions, currentQuestion, markSeen]);
+    }, [sessionQueue, currentIndex, isInitialized, filteredQuestions, currentQuestion, markSeen, isMobileFilterOpen]);
 
     // Validate current question against filtered list
     useEffect(() => {
+        if (isMobileFilterOpen) {
+            return;
+        }
+
         if (isInitialized && filteredQuestions.length > 0 && currentQuestion) {
             const isValid = filteredQuestions.some((q) => q.question_uid === currentQuestion.question_uid);
             if (!isValid) {
@@ -144,7 +152,7 @@ const PracticeView = ({
         } else if (isInitialized && filteredQuestions.length === 0 && currentQuestion) {
             setCurrentQuestion(null);
         }
-    }, [isInitialized, filteredQuestions, currentQuestion, sessionQueue, markSeen]);
+    }, [isInitialized, filteredQuestions, currentQuestion, sessionQueue, markSeen, isMobileFilterOpen]);
 
     // Dev invariant check
     useEffect(() => {
@@ -207,7 +215,7 @@ const PracticeView = ({
             />
             <main className="flex-1 flex flex-col w-full transition-all duration-300">
                 <div className="p-4 md:p-6 max-w-[1200px] mx-auto w-full">
-                    <ActiveFilterChips />
+                    {!isMobileFilterOpen && <ActiveFilterChips />}
 
                     {showExhaustionBanner && !isInitializing && (
                         <div

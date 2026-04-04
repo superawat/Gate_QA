@@ -1,4 +1,8 @@
-import { getExamUidFromQuestion } from "../utils/examUid.js";
+import {
+  getExamUidFromQuestion,
+  getCanonicalExamUidFromQuestion,
+  parseExamUid,
+} from "../utils/examUid.js";
 import { isQuotaExceededError } from "../utils/localStorageState.js";
 import precomputedLookup from "../generated/subtopicLookup.json";
 
@@ -8,7 +12,7 @@ const PRECOMPUTED_NORMALIZED = precomputedLookup.normalizedSubtopicsBySubject;
 const PRECOMPUTED_ALIASES = precomputedLookup.subjectAliases;
 
 // ── Performance: localStorage cache for processed questions ─────────────
-const INIT_CACHE_VERSION = 'v2';
+const INIT_CACHE_VERSION = 'v7';
 const INIT_CACHE_KEY = `gateqa_init_cache_${INIT_CACHE_VERSION}`;
 
 export class QuestionService {
@@ -123,7 +127,22 @@ export class QuestionService {
     "Digital Logic": ["digital-logic"],
     "Discrete Mathematics": ["discrete-mathematics", "discrete-math"],
     "Engineering Mathematics": ["engineering-mathematics", "engg-math"],
-    "General Aptitude": ["general-aptitude", "ga"],
+    "General Aptitude": [
+      "general-aptitude",
+      "ga",
+      "spatial-aptitude",
+      "assembling-pieces",
+      "paper-folding",
+      "patterns-in-2d",
+      "patterns-in-two-dimensions",
+      "patterns-in-3d",
+      "patterns-in-three-dimensions",
+      "3d-structure",
+      "image-rotation",
+      "mirror-image",
+      "grouping",
+      "counting-figure"
+    ],
     "Operating System": ["operating-system", "os"],
     "Programming and DS": ["programming-and-ds", "programming-ds", "prog-ds"],
     "Programming in C": ["programming-in-c", "c-programming", "prog-c"],
@@ -418,6 +437,13 @@ export class QuestionService {
       });
     };
 
+    const parsedExamUid =
+      parseExamUid(question.canonicalExamUid || "") ||
+      parseExamUid(question.exam_uid || "");
+    if (parsedExamUid) {
+      pushCandidate(parsedExamUid.year, parsedExamUid.set, 110);
+    }
+
     // Prefer explicit exam object when present.
     if (question.exam && typeof question.exam === "object") {
       pushCandidate(question.exam.year, question.exam.set, 100);
@@ -476,6 +502,32 @@ export class QuestionService {
       set: best.set,
       yearSetKey,
       label: yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown",
+    };
+  }
+
+  static buildExamMetaFromParsedUid(parsedExamUid = null, multiSetYears = new Set()) {
+    if (!parsedExamUid || !Number.isFinite(parsedExamUid.year)) {
+      return {
+        paper: "CSE",
+        year: null,
+        set: null,
+        yearSetKey: null,
+        label: "Unknown",
+      };
+    }
+
+    const hasMultipleSets = multiSetYears.has(parsedExamUid.year);
+    const set = hasMultipleSets ? parsedExamUid.set : null;
+    const yearSetKey = this.buildYearSetKey(parsedExamUid.year, set);
+
+    return {
+      paper: "CSE",
+      year: parsedExamUid.year,
+      set,
+      yearSetKey,
+      label: hasMultipleSets
+        ? `${parsedExamUid.year} Set ${parsedExamUid.set}`
+        : String(parsedExamUid.year),
     };
   }
 
@@ -679,7 +731,17 @@ export class QuestionService {
       ? [...normalized.tags]
       : [];
     normalized.question_uid = this.buildQuestionUid(normalized);
-    normalized.exam_uid = getExamUidFromQuestion(normalized) || "";
+    normalized.rawExamUid = getExamUidFromQuestion(normalized) || "";
+    normalized.canonicalExamUid =
+      getCanonicalExamUidFromQuestion(
+        {
+          ...normalized,
+          exam_uid: normalized.rawExamUid,
+        },
+        { fromYear: 2010 }
+      ) ||
+      normalized.rawExamUid;
+    normalized.exam_uid = normalized.canonicalExamUid || normalized.rawExamUid;
 
     const exam = this.extractExamMeta(normalized);
     const subjectLabel = this.resolveCanonicalSubject(normalized);
@@ -718,6 +780,144 @@ export class QuestionService {
     return normalized;
   }
 
+  static getCanonicalQuestionKey(question = {}) {
+    const parsedExamUid = parseExamUid(question.canonicalExamUid || question.exam_uid || "");
+    if (parsedExamUid && parsedExamUid.year >= 2010) {
+      return parsedExamUid.examUid;
+    }
+
+    const questionUid = String(question.question_uid || "").trim();
+    if (questionUid) {
+      return `question:${questionUid}`;
+    }
+
+    const answerUid = String(question.answer_uid || "").trim();
+    if (answerUid) {
+      return `answer:${answerUid}`;
+    }
+
+    const examUid = String(question.exam_uid || "").trim();
+    if (examUid) {
+      return `exam:${examUid}`;
+    }
+
+    return this.buildQuestionUid(question);
+  }
+
+  static getCanonicalQuestionScore(question = {}) {
+    const rawExamUid = String(question.rawExamUid || "").trim();
+    const canonicalExamUid = String(
+      question.canonicalExamUid || question.exam_uid || ""
+    ).trim();
+
+    let score = 0;
+    if (rawExamUid && canonicalExamUid && rawExamUid === canonicalExamUid) {
+      score += 100;
+    }
+    if (question.answer_uid) {
+      score += 30;
+    }
+    if (question.answer_meta && typeof question.answer_meta === "object") {
+      score += 20;
+    }
+    if (question.question_uid && !String(question.question_uid).startsWith("local:")) {
+      score += 15;
+    }
+    if (Array.isArray(question.tags) && question.tags.length > 0) {
+      score += 10;
+    }
+    score += Math.min(String(question.question || "").length, 2000) / 1000;
+    score += Math.min(String(question.title || "").length, 200) / 1000;
+
+    return score;
+  }
+
+  static pickPreferredQuestionForSlot(existingQuestion, candidateQuestion) {
+    if (!existingQuestion) {
+      return candidateQuestion;
+    }
+
+    const existingScore = this.getCanonicalQuestionScore(existingQuestion);
+    const candidateScore = this.getCanonicalQuestionScore(candidateQuestion);
+
+    if (candidateScore > existingScore) {
+      return candidateQuestion;
+    }
+
+    if (candidateScore < existingScore) {
+      return existingQuestion;
+    }
+
+    const existingRawExamUid = String(existingQuestion.rawExamUid || "").trim();
+    const candidateRawExamUid = String(candidateQuestion.rawExamUid || "").trim();
+    const existingVariantPenalty =
+      /(?:modified|version|ugcnet|isro|pgee)/i.test(existingRawExamUid) ? 1 : 0;
+    const candidateVariantPenalty =
+      /(?:modified|version|ugcnet|isro|pgee)/i.test(candidateRawExamUid) ? 1 : 0;
+
+    if (candidateVariantPenalty !== existingVariantPenalty) {
+      return candidateVariantPenalty < existingVariantPenalty
+        ? candidateQuestion
+        : existingQuestion;
+    }
+
+    return existingQuestion;
+  }
+
+  static finalizeQuestions(questions = []) {
+    const normalizedQuestions = Array.isArray(questions) ? questions : [];
+    const yearToSetMap = new Map();
+
+    normalizedQuestions.forEach((question) => {
+      const parsedExamUid = parseExamUid(question.canonicalExamUid || question.exam_uid || "");
+      if (!parsedExamUid || !Number.isFinite(parsedExamUid.year)) {
+        return;
+      }
+
+      if (!yearToSetMap.has(parsedExamUid.year)) {
+        yearToSetMap.set(parsedExamUid.year, new Set());
+      }
+      yearToSetMap.get(parsedExamUid.year).add(parsedExamUid.set);
+    });
+
+    const multiSetYears = new Set(
+      Array.from(yearToSetMap.entries())
+        .filter(([, setNumbers]) => setNumbers.size > 1)
+        .map(([year]) => year)
+    );
+
+    const dedupedQuestions = new Map();
+
+    normalizedQuestions.forEach((question) => {
+      const finalizedQuestion =
+        question && typeof question === "object" ? { ...question } : question;
+      const parsedExamUid = parseExamUid(
+        finalizedQuestion.canonicalExamUid || finalizedQuestion.exam_uid || ""
+      );
+
+      if (parsedExamUid) {
+        const exam = this.buildExamMetaFromParsedUid(parsedExamUid, multiSetYears);
+        finalizedQuestion.exam = exam;
+        finalizedQuestion.yearSetKey = exam.yearSetKey;
+        if (finalizedQuestion.canonical && typeof finalizedQuestion.canonical === "object") {
+          finalizedQuestion.canonical = {
+            ...finalizedQuestion.canonical,
+            exam,
+          };
+        }
+      }
+
+      const slotKey = this.getCanonicalQuestionKey(finalizedQuestion);
+      const existingQuestion = dedupedQuestions.get(slotKey);
+      dedupedQuestions.set(
+        slotKey,
+        this.pickPreferredQuestionForSlot(existingQuestion, finalizedQuestion)
+      );
+    });
+
+    return Array.from(dedupedQuestions.values());
+  }
+
   // ── Layer 2 helper: process questions in yielding chunks ───────────────
   static _processChunked(rows, chunkSize = 500) {
     return new Promise((resolve) => {
@@ -737,7 +937,7 @@ export class QuestionService {
           // Yield the thread briefly so the browser can paint/handle events
           setTimeout(processNext, 0);
         } else {
-          resolve(results);
+          resolve(this.finalizeQuestions(results));
         }
       };
 
@@ -749,8 +949,10 @@ export class QuestionService {
   // ── Layer 4 helpers: localStorage cache ────────────────────────────────
   static _readCache() {
     try {
-      // Migration: clean up legacy v1 cache
+      // Migration: clean up legacy caches
       localStorage.removeItem('gateqa_init_cache_v1');
+      localStorage.removeItem('gateqa_init_cache_v2');
+      localStorage.removeItem('gateqa_init_cache_v3');
       const raw = localStorage.getItem(INIT_CACHE_KEY);
       if (!raw) return null;
       const cached = JSON.parse(raw);
@@ -778,13 +980,15 @@ export class QuestionService {
 
   // Restore stripped fields when reading from cache
   static _hydrateFromCache(questions) {
-    return questions.map(q => {
+    const hydratedQuestions = questions.map(q => {
       q.tagsRaw = Array.isArray(q.tags) ? [...q.tags] : [];
       if (q.canonical && typeof q.canonical === 'object') {
         q.canonical.tagsRaw = [...q.tagsRaw];
       }
       return q;
     });
+
+    return this.finalizeQuestions(hydratedQuestions);
   }
 
   static _writeCache() {
@@ -1181,7 +1385,7 @@ export class QuestionService {
 
     const numericYears = yearSets.map((entry) => entry.year).filter((year) => Number.isFinite(year));
     const minYear = numericYears.length ? Math.min(...numericYears) : 2000;
-    const maxYear = numericYears.length ? Math.max(...numericYears) : 2025;
+    const maxYear = numericYears.length ? Math.max(...numericYears) : new Date().getFullYear();
 
     return {
       yearSets,
@@ -1203,7 +1407,7 @@ export class QuestionService {
         if (match) years.push(parseInt(match[0], 10));
       }
     }
-    if (years.length === 0) return { min: 2000, max: 2025 };
+    if (years.length === 0) return { min: 2000, max: new Date().getFullYear() };
     return { min: Math.min(...years), max: Math.max(...years) };
   }
 
