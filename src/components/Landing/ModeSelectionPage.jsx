@@ -85,11 +85,7 @@ const ModeSelectionPage = ({ onModeStart, hasPriorProgress }) => {
           selected={selectedMode === "mock"}
           disabled={!MOCK_TEST_MODE_ENABLED}
           onClick={() => handleModeSelect("mock")}
-        >
-          <p className="text-sm font-medium text-blue-700">
-            It will come for the 2027 exam very soon.
-          </p>
-        </ModeCard>
+        />
       </div>
 
       <div className="mx-auto mt-6 w-full max-w-xl">
