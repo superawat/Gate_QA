@@ -38,7 +38,7 @@ export default function Question({ question = {}, changeQuestion }) {
             </div>
           </div>
           <MathJax
-            dynamic="true"
+            dynamic
             className="text-gray-500 mt-1 leading-6 text-xl overflow-auto whitespace-normal"
           >
             <div

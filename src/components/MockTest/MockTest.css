@@ -1,118 +1,859 @@
-/* GATE Mock Test UI Spec */
+/* Scope mock-test styling strictly under .mocktest-root */
 
-/* Scope Open Sans to mock test only */
-.mocktest-root,
-.mocktest-root * {
-  font-family: 'Open Sans', sans-serif;
+.mocktest-root {
+  --mock-top-banner-h: 54px;
+  --mock-header-h: 36px;
+  --mock-info-row-h: 46px;
+  --mock-sections-label-row-h: 30px;
+  --mock-tabs-row-h: 36px;
+  --mock-meta-row-h: 30px;
+  --mock-timer-width: 7ch;
+  --mock-palette-width-expanded: 280px;
+  --mock-palette-width-collapsed: 20px;
+  --mock-submit-lane-width: var(--mock-palette-width-expanded);
+  --mock-palette-bg: #d7e8f7;
+  --mock-sidebar-expanded-w: var(--mock-palette-width-expanded);
+  --mock-question-tile-size: 46px;
+  --mock-question-tile-gap: 10px;
+  --mock-footer-height: 52px;
+  --mock-action-h: var(--mock-footer-height);
+  --mock-action-btn-h: 38px;
+  --gate-icon-size-legend: 28px;
+  --gate-icon-size-tile: var(--mock-question-tile-size);
+  --gate-icon-border: 1px;
+  --gate-color-answered: #34a853;
+  --gate-color-not-answered: #ee4f2e;
+  --gate-color-not-visited: #d6d6d6;
+  --gate-color-marked: #7d4cb6;
+  --gate-color-current-ring: #1a63c6;
+  --gate-color-check: #84e04f;
 }
 
-.palette-btn {
+.mocktest-root,
+.mocktest-root *:not(mjx-container):not(mjx-container *) {
+  font-family: "Open Sans", sans-serif;
+}
+
+.mocktest-root .mock-question-content,
+.mocktest-root .mock-question-content *:not(mjx-container):not(mjx-container *) {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HEADER — Top banner + dark header bar
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-header-wrap {
+  flex-shrink: 0;
+}
+
+.mocktest-root .mocktest-top-banner {
+  height: var(--mock-top-banner-h);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 100%);
+  border-top: 3px solid #1a8bc5;
+  border-bottom: 1px solid #c7c7c7;
+}
+
+.mocktest-root .mocktest-top-center {
+  min-width: 0;
+}
+
+.mocktest-root .mocktest-top-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a8bc5;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.mocktest-root .mocktest-top-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a8bc5;
+  line-height: 1.2;
+}
+
+.mocktest-root .mocktest-top-logo {
+  flex-shrink: 0;
+}
+
+.mocktest-root .mocktest-header {
+  height: var(--mock-header-h);
+  min-height: var(--mock-header-h);
+  border-top: 2px solid #1a8bc5;
+  border-bottom: 1px solid #393939;
+}
+
+.mocktest-root .mocktest-header-title {
+  line-height: 1;
+}
+
+.mocktest-root .mocktest-header-actions {
+  white-space: nowrap;
+}
+
+.mocktest-root .mocktest-header-btn {
+  display: inline-flex;
+  height: 20px;
+  align-items: center;
+  gap: 7px;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mocktest-root .mocktest-paper-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #35be70;
+  border: 1px solid #c8efd9;
+  position: relative;
+  display: inline-block;
+}
+
+.mocktest-root .mocktest-paper-icon::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 5px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 1px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HEADER GRID — Lines 3-5 with right profile column (Issue 006)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-header-grid {
+  display: grid;
+  grid-template-columns: 1fr var(--mock-palette-width-expanded);
+  width: 100%;
+}
+
+.mocktest-root .mocktest-header-left {
+  min-width: 0;
+}
+
+/* Profile column — spans lines 3-5, aligned with palette width */
+.mocktest-root .mocktest-header-profile {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-  position: relative;
-  transition: all 0.2s ease;
-  user-select: none;
+  gap: 6px;
+  padding: 8px 10px;
+  border-left: 1px solid #c5d4e2;
+  background: #e8f0f8;
 }
 
-/* Base Hexagon/Polygon Shapes using CSS Clip Path */
-
-/* Answered (Green downward-right pointing pentagon originally from screenshots, simplified to roughly match) */
-.answered {
-  background-color: #5cb85c;
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-  border-radius: 2px;
+.mocktest-root .mocktest-profile-avatar-wrap {
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 0;
+  border: 1px solid #b9c6d4;
+  background: #e5e7eb;
+  flex-shrink: 0;
 }
 
-/* Not Answered (Red descending pentagon) */
-.not_answered {
-  background-color: #d9534f;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);
-  border-radius: 2px;
+.mocktest-root .mocktest-profile-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
 }
 
-/* Not Visited (Silver rectangle) */
-.not_visited {
-  background-color: #e4e4e4;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+/* ═══════════════════════════════════════════════════════════════════════
+   INFO ROW — Current section pill + calculator (in header, line 3)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-info-row {
+  display: flex;
+  height: var(--mock-info-row-h);
+  border-bottom: 1px solid #c4c4c4;
+  background: #d6d6d8;
 }
 
-/* Marked for Review (Purple circle) */
-.review {
-  background-color: #6a5acd;
-  border-radius: 50%;
-  clip-path: circle(50% at 50% 50%);
+.mocktest-root .mocktest-info-left {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
 }
 
-/* Answered & Marked for Review (Purple circle with green check mark badge) */
-.review_answered {
-  background-color: #6a5acd;
-  border-radius: 50%;
-  clip-path: circle(50% at 50% 50%);
-}
-
-/* The small green square check badge for review_answered */
-.review-check {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 10px;
-  height: 10px;
-  background-color: #5cb85c;
-  border: 1px solid white;
-  border-radius: 2px;
-  z-index: 10;
-}
-
-/* Status Legend Badges */
-.status-badge {
+.mocktest-root .mocktest-row-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mocktest-root .mocktest-current-section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 200px;
+  border-radius: 4px;
+  background: #2387bf;
+  color: #ffffff;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mocktest-root .mocktest-section-tools {
+  flex-shrink: 0;
+}
+
+.mocktest-root .mocktest-calc-btn {
   width: 28px;
   height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d4a017;
+  border-radius: 4px;
+  background: #f5c71a;
+  color: #7c2d12;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mocktest-root .mocktest-calc-btn:hover {
+  background: #e0b414;
+}
+
+.mocktest-root .mocktest-calc-btn.is-open {
+  background: #e0b414;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SECTIONS ROW (Sections label + Timer) — header line 4
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-sections-label-row {
+  display: flex;
+  height: var(--mock-sections-label-row-h);
+  border-bottom: 1px solid #b9b9b9;
+  background: #dfdfdf;
+}
+
+.mocktest-root .mocktest-sections-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #243446;
+}
+
+.mocktest-root .mocktest-timer {
+  min-width: 190px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mocktest-root .mocktest-timer-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2b38;
+}
+
+.mocktest-root .mocktest-timer-value {
+  display: inline-block;
+  width: var(--mock-timer-width);
+  text-align: right;
+  letter-spacing: 0.15px;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2b38;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABS ROW — Section tab buttons (General Aptitude / CS) — header line 5
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-tabs-row {
+  display: flex;
+  height: var(--mock-tabs-row-h);
+  border-bottom: 1px solid #b9b9b9;
+  background: #dfdfdf;
+}
+
+.mocktest-root .mocktest-section-tabs {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+
+.mocktest-root .mocktest-section-tab-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mocktest-root .mocktest-section-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #b8c4cf;
+  background: #f0f0f0;
+  color: #0f6aa3;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 140px;
+}
+
+.mocktest-root .mocktest-section-tab.is-active {
+  background: #1f85bd;
+  border-color: #1777aa;
+  color: #ffffff;
+}
+
+/* Info icon inside section tabs */
+.mocktest-root .mocktest-info-icon {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SECTION INFO POPOVER (Issue 003)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-section-info-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  width: 260px;
+  margin-top: 4px;
+  background: #ffffff;
+  border: 1px solid #b8c6d5;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+
+.mocktest-root .mocktest-popover-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f2b38;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e0e6ec;
+}
+
+.mocktest-root .mocktest-popover-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mocktest-root .mocktest-popover-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 11px;
-  font-weight: bold;
-  color: white;
+  color: #374151;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   META ROW — Question Type + Marks
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-meta-row {
+  height: var(--mock-meta-row-h);
+  line-height: 1;
+  border-bottom: 1px solid #c8d3df;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   QUESTION PANEL
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-question-panel {
+  min-width: 0;
+}
+
+.mocktest-root .mocktest-question-scroll,
+.mocktest-root .mocktest-question-body {
+  background-color: #ffffff;
+}
+
+.mocktest-root .mocktest-question-stem {
+  background-color: #ffffff;
+  background-image: none;
+}
+
+/* ── Option selector controls (identifier-only) ──────────────── */
+.mocktest-root .mock-option-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mocktest-root .mock-option-label {
+  font-weight: 500;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* Question No. row — number + arrow icons */
+.mocktest-root .mocktest-question-number-row {
+  border-bottom: 1px solid #dce4ec;
+  background: #f6f9fc;
+}
+
+.mocktest-root .mocktest-scroll-arrows {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mocktest-root .mocktest-scroll-arrow-btn {
+  width: 22px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #a8b8c8;
+  background: #e8eef4;
+  color: #2f6da3;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.mocktest-root .mocktest-scroll-arrow-btn:hover {
+  background: #d4e0ea;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SIDEBAR / PALETTE PANEL
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-sidebar {
   position: relative;
 }
 
-.status-badge.not_visited {
-  background-color: #e4e4e4;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+.mocktest-root .mocktest-palette-root {
+  background: transparent;
 }
 
-.status-badge.answered::before {
+/* Collapse toggle strip (vertical bar on left edge) */
+.mocktest-root .mocktest-collapse-tab {
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  z-index: 20;
+  width: 12px;
+  height: 48px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #374151;
+  border-radius: 0;
+  background: #1f2937;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mocktest-root .mocktest-collapse-tab:hover {
+  background: #374151;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LEGEND — Status icons & counts
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-legend-wrap {
+  border-bottom: 1px solid #c5d4e2;
+  padding: 8px 10px;
+  background: #ffffff;
+}
+
+.mocktest-root .mocktest-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 6px;
+  row-gap: 6px;
+}
+
+.mocktest-root .mocktest-legend-item {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  color: #374151;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.mocktest-root .mocktest-legend-item-wide {
+  grid-column: span 2;
+}
+
+/* Status badges — shaped according to GATE CBT reference:
+   - answered = green circle
+   - not_answered = red pentagon (downward pointing)
+   - not_visited = grey square
+   - review = purple circle
+   - review_answered = green circle with purple dot */
+
+/* GATE status icon system (legend + tile) */
+.mocktest-root .gate-status-icon,
+.mocktest-root .status-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  font-weight: 700;
+  color: #ffffff;
+  border: var(--gate-icon-border) solid transparent;
+  box-sizing: border-box;
+}
+
+.mocktest-root .gate-status-icon--legend,
+.mocktest-root .status-badge {
+  width: var(--gate-icon-size-legend);
+  height: var(--gate-icon-size-legend);
+  font-size: 12px;
+}
+
+.mocktest-root .gate-status-icon--tile {
+  width: var(--gate-icon-size-tile);
+  height: var(--gate-icon-size-tile);
+  font-size: 15px;
+}
+
+.mocktest-root .gate-status-icon__value {
+  position: relative;
+  z-index: 1;
+}
+
+.mocktest-root .gate-status--answered,
+.mocktest-root .status-badge.answered {
+  background: linear-gradient(180deg, #53c96a 0%, var(--gate-color-answered) 86%);
+  border-color: #2d8e45;
+  clip-path: polygon(0 36%, 32% 0, 68% 0, 100% 36%, 100% 100%, 0 100%);
+}
+
+.mocktest-root .gate-status--not-answered,
+.mocktest-root .status-badge.not_answered {
+  background: linear-gradient(180deg, #f36545 0%, var(--gate-color-not-answered) 88%);
+  border-color: #be3a20;
+  clip-path: polygon(0 0, 100% 0, 100% 66%, 68% 100%, 32% 100%, 0 66%);
+}
+
+.mocktest-root .gate-status--not-visited,
+.mocktest-root .status-badge.not_visited {
+  background: linear-gradient(180deg, #ececec 0%, var(--gate-color-not-visited) 100%);
+  border-color: #9f9f9f;
+  color: #222222;
+  clip-path: none;
+}
+
+.mocktest-root .gate-status--marked,
+.mocktest-root .gate-status--answered-marked,
+.mocktest-root .status-badge.review,
+.mocktest-root .status-badge.review_answered {
+  background: linear-gradient(180deg, #8c63bf 0%, var(--gate-color-marked) 86%);
+  border-color: #64379f;
+  border-radius: 50%;
+  clip-path: none;
+}
+
+.mocktest-root .gate-status-check,
+.mocktest-root .review-check {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+  background: var(--gate-color-check);
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mocktest-root .gate-status-check svg {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.mocktest-root .gate-status-check path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mocktest-root .review-check::before {
   content: "";
+  display: block;
+  width: 7px;
+  height: 4px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg);
+  margin-top: -1px;
 }
 
-.status-badge.not_answered::before {
-  content: "";
+.mocktest-root .mocktest-palette-section-header {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  background: #1a8bc5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 12px;
 }
 
-/* Custom Scrollbar for question area */
-::-webkit-scrollbar {
+.mocktest-root .mocktest-palette-choose-header {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #c5d4e2;
+  background: #f0f4f8;
+  color: #2c3e50;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+.mocktest-root .mocktest-palette-scroll {
+  background: #d5e5ef;
+}
+
+.mocktest-root .mocktest-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--mock-question-tile-size));
+  grid-auto-rows: var(--mock-question-tile-size);
+  gap: var(--mock-question-tile-gap);
+  align-content: start;
+  justify-content: start;
+}
+
+/* Palette tile buttons — use CBT shapes */
+.mocktest-root .palette-btn {
+  position: relative;
+  width: var(--mock-question-tile-size);
+  height: var(--mock-question-tile-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transform: none;
+  transition: outline-color 120ms ease, box-shadow 120ms ease;
+}
+
+.mocktest-root .gate-tile {
+  overflow: visible;
+}
+
+.mocktest-root .gate-tile .gate-status-icon--tile {
+  width: var(--gate-icon-size-tile);
+  height: var(--gate-icon-size-tile);
+}
+
+.mocktest-root .gate-tile--not-visited .gate-status-icon__value {
+  color: #222222;
+}
+
+.mocktest-root .gate-tile--not-answered,
+.mocktest-root .gate-tile--answered,
+.mocktest-root .gate-tile--marked,
+.mocktest-root .gate-tile--answered-marked,
+.mocktest-root .gate-tile--not-visited {
+  transform: none;
+}
+
+.mocktest-root .gate-current-ring {
+  outline: 2px solid var(--gate-color-current-ring);
+  outline-offset: 2px;
+}
+
+.mocktest-root .mocktest-action-bar {
+  height: var(--mock-footer-height);
+  min-height: var(--mock-footer-height);
+  flex-shrink: 0;
+}
+
+.mocktest-root .mocktest-action-main {
+  white-space: nowrap;
+  background: #ffffff;
+}
+
+.mocktest-root .mocktest-action-zone {
+  flex-shrink: 0;
+}
+
+.mocktest-root .mocktest-action-btn,
+.mocktest-root .mocktest-action-submit-btn {
+  height: var(--mock-action-btn-h);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Option A: submit lane keeps expanded palette width in both states to avoid collapse coupling. */
+.mocktest-root .mocktest-submit-lane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mock-submit-lane-width);
+  min-width: var(--mock-submit-lane-width);
+  max-width: var(--mock-submit-lane-width);
+  border-left: 1px solid #b8c6d5;
+  background: var(--mock-palette-bg);
+  padding: 0 12px;
+}
+
+.mocktest-root .submit-lane--expanded,
+.mocktest-root .submit-lane--collapsed,
+.mocktest-root .mocktest-submit-lane--expanded,
+.mocktest-root .mocktest-submit-lane--collapsed {
+  width: var(--mock-submit-lane-width);
+}
+
+.mocktest-root .mocktest-action-submit-btn {
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SUBMIT MODAL
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-submit-modal {
+  border: 1px solid #d1d5db;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PORTAL & SETUP screens
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root .mocktest-portal-wrap,
+.mocktest-root .mocktest-setup-wrap {
+  background: linear-gradient(180deg, #e6f1fb 0%, #dcebf9 100%);
+}
+
+.mocktest-root .mocktest-portal-card,
+.mocktest-root .mocktest-setup-card {
+  min-height: 540px;
+}
+
+.mocktest-root .mocktest-portal-grid {
+  align-content: start;
+}
+
+.mocktest-root .mocktest-portal-option {
+  min-height: 124px;
+}
+
+.mocktest-root .mocktest-setup-checkgrid input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  accent-color: #0e76a8;
+}
+
+.mocktest-root .mocktest-setup-wrap input[type="range"] {
+  accent-color: #0e76a8;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SCROLLBAR STYLING
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.mocktest-root *::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.mocktest-root *::-webkit-scrollbar-track {
+  background: #e6edf5;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+.mocktest-root *::-webkit-scrollbar-thumb {
+  background: #b9c6d3;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+.mocktest-root *::-webkit-scrollbar-thumb:hover {
+  background: #a7b5c2;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1366px) {
+  .mocktest-root .mocktest-profile-name {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .mocktest-root .mocktest-action-main {
+    gap: 8px;
+  }
+
+  .mocktest-root .mocktest-action-btn,
+  .mocktest-root .mocktest-action-submit-btn {
+    font-size: 11px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

@@ -15,16 +15,23 @@ const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"]
 
 /**
  * Pure function: resolve appView from current URL.
- * Priority: ?question → ?mode → filter params → landing
+ * Priority: ?question → ?mode+stage → filter params → landing
  */
 const resolveAppViewFromUrl = () => {
   const params = new URLSearchParams(window.location.search);
 
+  // Deep-link always wins
   if (params.get("question")) return "practice";
 
   const mode = params.get("mode");
   if (mode === "random" || mode === "targeted" || (mode && mode !== "mock")) return "practice";
-  if (mode === "mock") return "mock";
+
+  // Issue 008: mock mode splits into mockSetup / mockExam based on stage param
+  if (mode === "mock") {
+    const stage = params.get("stage");
+    if (stage === "exam") return "mockExam";
+    return "mockSetup"; // default stage for mock is setup
+  }
 
   const hasFilterParams = LANDING_FILTER_KEYS.some((key) => {
     const value = params.get(key);
@@ -67,7 +74,12 @@ const ViewSwitch = ({
     const mode = params.get("mode");
     if (mode === "random") { clearFilters(); setAppView("practice"); return; }
     if (mode === "targeted") { shouldOpenFilterOnEnter.current = true; setAppView("practice"); return; }
-    if (mode === "mock") { setAppView("mock"); return; }
+    if (mode === "mock") {
+      const stage = params.get("stage");
+      if (stage === "exam") { setAppView("mockExam"); }
+      else { setAppView("mockSetup"); }
+      return;
+    }
     if (mode) { setAppView("practice"); return; }  // legacy/unknown
 
     // 3. Shared filter URL
@@ -88,13 +100,31 @@ const ViewSwitch = ({
     return () => window.removeEventListener("popstate", handlePopState);
   }, [setAppView]);
 
-  // Write mode to URL via pushState (creates one history entry per mode transition).
-  const writeModeParam = useCallback((mode) => {
+  // Write mode+stage to URL via pushState (creates one history entry per mode transition).
+  const writeModeParam = useCallback((mode, stage) => {
     const params = new URLSearchParams(window.location.search);
     params.set("mode", mode);
+    if (stage) {
+      params.set("stage", stage);
+    } else {
+      params.delete("stage");
+    }
     const query = params.toString();
     const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
     window.history.pushState({}, "", newUrl);
+  }, []);
+
+  // Write stage only via replaceState (no new history entry).
+  const writeStageParam = useCallback((stage) => {
+    const params = new URLSearchParams(window.location.search);
+    if (stage) {
+      params.set("stage", stage);
+    } else {
+      params.delete("stage");
+    }
+    const query = params.toString();
+    const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+    window.history.replaceState({}, "", newUrl);
   }, []);
 
   // Callback given to LandingShell's ModeSelectionPage.
@@ -116,8 +146,8 @@ const ViewSwitch = ({
     }
     if (mode === "mock") {
       shouldOpenFilterOnEnter.current = false;
-      setAppView("mock");
-      writeModeParam("mock");
+      setAppView("mockSetup");
+      writeModeParam("mock", "setup");
     }
   }, [clearFilters, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
 
@@ -126,10 +156,22 @@ const ViewSwitch = ({
     setAppView("landing");
     const params = new URLSearchParams(window.location.search);
     params.delete("mode");
+    params.delete("stage");
     const query = params.toString();
     const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
     window.history.replaceState({}, "", newUrl);
   }, [setAppView]);
+
+  // Stage change handler for mock setup → exam transitions
+  const handleMockStageChange = useCallback((stage) => {
+    if (stage === "exam") {
+      setAppView("mockExam");
+      writeStageParam("exam");
+    } else if (stage === "setup") {
+      setAppView("mockSetup");
+      writeStageParam("setup");
+    }
+  }, [setAppView, writeStageParam]);
 
   // ── Render exactly one shell ──
   if (appView === "landing") {
@@ -141,8 +183,14 @@ const ViewSwitch = ({
     );
   }
 
-  if (appView === "mock") {
-    return <MockShell onExit={handleGoHome} />;
+  if (appView === "mockSetup" || appView === "mockExam") {
+    return (
+      <MockShell
+        onExit={handleGoHome}
+        stage={appView === "mockExam" ? "exam" : "setup"}
+        onStageChange={handleMockStageChange}
+      />
+    );
   }
 
   // Default: practice
@@ -193,7 +241,8 @@ function App() {
   useEffect(() => {
     if (appView === "landing") pageview("Landing");
     else if (appView === "practice") pageview("Practice");
-    else if (appView === "mock") pageview("Mock");
+    else if (appView === "mockSetup") pageview("MockSetup");
+    else if (appView === "mockExam") pageview("MockExam");
   }, [appView]);
 
   return (

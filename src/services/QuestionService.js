@@ -238,6 +238,126 @@ export class QuestionService {
     return "unknown";
   }
 
+  static OPTION_LABELS = ["A", "B", "C", "D"];
+
+  static stripHtmlToText(html = "") {
+    return String(html || "")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  static normalizeQuestionOptionsFromRaw(rawOptions) {
+    const options = [];
+    const seen = new Set();
+    const pushOption = (rawLabel, rawValue, index) => {
+      const fallbackLabel = this.OPTION_LABELS[index] || null;
+      const label = String(rawLabel || fallbackLabel || "")
+        .trim()
+        .toUpperCase();
+      if (!label || seen.has(label)) return;
+
+      const html = String(rawValue ?? "").trim();
+      const text = this.stripHtmlToText(html);
+      if (!html && !text) return;
+
+      seen.add(label);
+      options.push({
+        label,
+        text: text || html,
+        html: html || text,
+      });
+    };
+
+    if (Array.isArray(rawOptions)) {
+      rawOptions.forEach((entry, index) => {
+        if (entry && typeof entry === "object" && !Array.isArray(entry)) {
+          pushOption(
+            entry.label || entry.option || entry.key,
+            entry.html || entry.text || entry.value || entry.optionText,
+            index
+          );
+          return;
+        }
+        pushOption(this.OPTION_LABELS[index], entry, index);
+      });
+      return options;
+    }
+
+    if (rawOptions && typeof rawOptions === "object") {
+      this.OPTION_LABELS.forEach((label, index) => {
+        pushOption(label, rawOptions[label], index);
+      });
+
+      if (options.length === 0) {
+        Object.entries(rawOptions).forEach(([key, value], index) => {
+          pushOption(key, value, index);
+        });
+      }
+      return options;
+    }
+
+    return options;
+  }
+
+  static extractOptionsFromQuestionHtml(questionHtml = "") {
+    const html = String(questionHtml || "");
+    if (!html.trim()) {
+      return [];
+    }
+
+    const options = [];
+    const liMatches = html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi);
+    for (const match of liMatches) {
+      if (options.length >= this.OPTION_LABELS.length) {
+        break;
+      }
+      const optionHtml = String(match[1] || "").trim();
+      const optionText = this.stripHtmlToText(optionHtml);
+      if (!optionHtml && !optionText) {
+        continue;
+      }
+      const label = this.OPTION_LABELS[options.length];
+      options.push({
+        label,
+        text: optionText || optionHtml,
+        html: optionHtml || optionText,
+      });
+    }
+    return options;
+  }
+
+  static normalizeQuestionOptions(rawOptions, questionHtml = "") {
+    const fromRaw = this.normalizeQuestionOptionsFromRaw(rawOptions);
+    if (fromRaw.length > 0) {
+      return fromRaw;
+    }
+    return this.extractOptionsFromQuestionHtml(questionHtml);
+  }
+
+  static getNormalizedOptions(question = {}) {
+    if (!question || typeof question !== "object") {
+      return [];
+    }
+
+    if (Array.isArray(question.normalizedOptions)) {
+      return question.normalizedOptions;
+    }
+
+    const normalizedOptions = this.normalizeQuestionOptions(
+      question.options,
+      question.question || ""
+    );
+
+    question.normalizedOptions = normalizedOptions;
+    if (question.canonical && typeof question.canonical === "object") {
+      question.canonical.options = normalizedOptions;
+    }
+
+    return normalizedOptions;
+  }
+
   static buildYearSetKey(year, setNo) {
     const yearNum = Number.parseInt(String(year || ""), 10);
     if (!Number.isFinite(yearNum) || yearNum <= 0) {
@@ -569,6 +689,10 @@ export class QuestionService {
       subjectLabel
     );
     const canonicalType = this.normalizeTypeToken(normalized.type);
+    const normalizedOptions = this.normalizeQuestionOptions(
+      normalized.options,
+      normalized.question
+    );
 
     normalized.canonical = {
       uid: normalized.question_uid,
@@ -578,6 +702,7 @@ export class QuestionService {
       topics: subjectSlug === "unknown" ? [] : [subjectSlug],
       subtopics: canonicalSubtopics,
       type: canonicalType,
+      options: normalizedOptions,
       tagsRaw: [...normalized.tagsRaw],
     };
 
@@ -588,6 +713,7 @@ export class QuestionService {
     normalized.yearSetKey = exam.yearSetKey;
     normalized.subtopics = canonicalSubtopics;
     normalized.type = canonicalType;
+    normalized.normalizedOptions = normalizedOptions;
 
     return normalized;
   }

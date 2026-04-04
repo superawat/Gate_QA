@@ -121,4 +121,34 @@ describe("QuestionService", () => {
 
     vi.restoreAllMocks();
   });
+
+  test("normalizes explicit options object into stable A-D entries", () => {
+    const options = QuestionService.normalizeQuestionOptions({
+      A: "Option alpha",
+      B: "Option beta",
+      C: "Option gamma",
+      D: "Option delta",
+    });
+
+    expect(options.map((entry) => entry.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options[0].text).toBe("Option alpha");
+    expect(options[3].text).toBe("Option delta");
+  });
+
+  test("extracts option entries from question html when options map is missing", () => {
+    const html = `
+      <p>Pick one.</p>
+      <ol style="list-style-type:upper-alpha">
+        <li>Alpha</li>
+        <li>Beta</li>
+        <li>Gamma</li>
+        <li>Delta</li>
+      </ol>
+    `;
+
+    const options = QuestionService.normalizeQuestionOptions(undefined, html);
+
+    expect(options.map((entry) => entry.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options.map((entry) => entry.text)).toEqual(["Alpha", "Beta", "Gamma", "Delta"]);
+  });
 });

@@ -1,44 +1,76 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
-import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
 const TopicFilter = () => {
     const { structuredTags, filters } = useFilterState();
     const { updateFilters } = useFilterActions();
     const { subjects = [], structuredSubtopics = {} } = structuredTags;
-    const { selectedSubjects, selectedSubtopics } = filters;
-    const [expandedTopics, setExpandedTopics] = useState([]);
+    const { selectedSubjects = [], selectedSubtopics = [] } = filters;
+    const [expandedSubjectSlug, setExpandedSubjectSlug] = useState(null);
 
-    const toggleTopicExpand = (subjectSlug) => {
-        if (expandedTopics.includes(subjectSlug)) {
-            setExpandedTopics(expandedTopics.filter(t => t !== subjectSlug));
-        } else {
-            setExpandedTopics([...expandedTopics, subjectSlug]);
+    const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
+
+    useEffect(() => {
+        if (!expandedSubjectSlug) {
+            return;
         }
+        if (!selectedSubjects.includes(expandedSubjectSlug)) {
+            setExpandedSubjectSlug(selectedSubjects[0] || null);
+        }
+    }, [expandedSubjectSlug, selectedSubjects]);
+
+    const getSortedSubtopics = (subjectSlug) => {
+        const subtopics = structuredSubtopics[subjectSlug] || [];
+        return [...subtopics].sort((left, right) =>
+            String(left?.label || left?.slug || '').localeCompare(String(right?.label || right?.slug || ''))
+        );
     };
 
     const handleSubjectChange = (subjectSlug) => {
-        let nextSubjects;
-        if (selectedSubjects.includes(subjectSlug)) {
-            nextSubjects = selectedSubjects.filter(t => t !== subjectSlug);
-        } else {
-            nextSubjects = [...selectedSubjects, subjectSlug];
-            if (!expandedTopics.includes(subjectSlug)) {
-                setExpandedTopics([...expandedTopics, subjectSlug]);
+        const isAlreadySelected = selectedSubjects.includes(subjectSlug);
+        const nextSubjects = isAlreadySelected
+            ? selectedSubjects.filter((slug) => slug !== subjectSlug)
+            : [...selectedSubjects, subjectSlug];
+
+        if (isAlreadySelected) {
+            if (expandedSubjectSlug === subjectSlug) {
+                setExpandedSubjectSlug(nextSubjects[0] || null);
             }
+        } else {
+            setExpandedSubjectSlug(subjectSlug);
         }
+
         updateFilters({ selectedSubjects: nextSubjects });
     };
 
     const handleSubtopicChange = (subtopicSlug) => {
-        let nextSubtopics;
-        if (selectedSubtopics.includes(subtopicSlug)) {
-            nextSubtopics = selectedSubtopics.filter(t => t !== subtopicSlug);
-        } else {
-            nextSubtopics = [...selectedSubtopics, subtopicSlug];
-        }
+        const nextSubtopics = selectedSubtopics.includes(subtopicSlug)
+            ? selectedSubtopics.filter((slug) => slug !== subtopicSlug)
+            : [...selectedSubtopics, subtopicSlug];
         updateFilters({ selectedSubtopics: nextSubtopics });
-    }
+    };
+
+    const handleSubjectBulkToggle = (subjectSlug) => {
+        const subjectSubtopics = getSortedSubtopics(subjectSlug);
+        const subjectSubtopicSlugs = subjectSubtopics
+            .map((subtopic) => subtopic?.slug)
+            .filter(Boolean);
+
+        if (subjectSubtopicSlugs.length === 0) return;
+
+        const allSelected = subjectSubtopicSlugs.every((slug) => selectedSubtopicSet.has(slug));
+
+        if (allSelected) {
+            const removeSet = new Set(subjectSubtopicSlugs);
+            const nextSubtopics = selectedSubtopics.filter((slug) => !removeSet.has(slug));
+            updateFilters({ selectedSubtopics: nextSubtopics });
+            return;
+        }
+
+        const nextSet = new Set(selectedSubtopics);
+        subjectSubtopicSlugs.forEach((slug) => nextSet.add(slug));
+        updateFilters({ selectedSubtopics: Array.from(nextSet) });
+    };
 
     if (!subjects.length) return null;
 
@@ -46,47 +78,71 @@ const TopicFilter = () => {
         <div className="space-y-1">
             {subjects.map((subject) => {
                 const subjectSlug = subject.slug;
-                const subjectLabel = subject.label;
-                const subtopics = structuredSubtopics[subjectSlug] || [];
-                const isExpanded = expandedTopics.includes(subjectSlug);
                 const isSelected = selectedSubjects.includes(subjectSlug);
+                const subtopics = getSortedSubtopics(subjectSlug);
                 const hasSubtopics = subtopics.length > 0;
+                const isExpanded = expandedSubjectSlug === subjectSlug;
+                const showSubtopics = isSelected && hasSubtopics && isExpanded;
+                const subjectSubtopicSlugs = subtopics
+                    .map((subtopic) => subtopic?.slug)
+                    .filter(Boolean);
+
+                const allSubtopicsSelected = showSubtopics
+                    && subjectSubtopicSlugs.every((slug) => selectedSubtopicSet.has(slug));
 
                 return (
-                    <div key={subjectSlug} className="flex flex-col">
-                        <div className="flex items-center justify-between group py-1">
-                            <label className="flex items-center cursor-pointer flex-grow">
+                    <div key={subjectSlug} className="flex min-w-0 flex-col">
+                        <div className="flex items-center justify-between gap-2 py-1">
+                            <label className="flex min-w-0 cursor-pointer items-center">
                                 <input
                                     type="checkbox"
                                     className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                     checked={isSelected}
                                     onChange={() => handleSubjectChange(subjectSlug)}
                                 />
-                                <span className={`ml-3 text-sm capitalize truncate ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`} title={subjectLabel}>
-                                    {subjectLabel}
+                                <span
+                                    className={`ml-3 truncate text-sm ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`}
+                                    title={subject.label}
+                                >
+                                    {subject.label}
                                 </span>
                             </label>
-                            {hasSubtopics && (
-                                <button
-                                    onClick={() => toggleTopicExpand(subjectSlug)}
-                                    className="p-1 hover:bg-gray-100 rounded text-gray-400"
-                                >
-                                    {isExpanded ? <FaChevronDown size={10} /> : <FaChevronRight size={10} />}
-                                </button>
-                            )}
+
+                            <div className="flex shrink-0 items-center gap-1.5">
+                                {isSelected && hasSubtopics && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setExpandedSubjectSlug(isExpanded ? null : subjectSlug)}
+                                        aria-label={isExpanded ? `Hide ${subject.label} subtopics` : `Show ${subject.label} subtopics`}
+                                        className="rounded border border-gray-300 px-1.5 py-0.5 text-[10px] font-semibold text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    >
+                                        {isExpanded ? '▾' : '▸'}
+                                    </button>
+                                )}
+                                {showSubtopics && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleSubjectBulkToggle(subjectSlug)}
+                                        aria-label={allSubtopicsSelected ? `Clear all ${subject.label} subtopics` : `Select all ${subject.label} subtopics`}
+                                        className="rounded border border-blue-300 px-2 py-0.5 text-xs font-semibold text-blue-700 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    >
+                                        {allSubtopicsSelected ? 'Clear All' : 'Select All'}
+                                    </button>
+                                )}
+                            </div>
                         </div>
 
-                        {hasSubtopics && isExpanded && (
-                            <div className="ml-6 pl-2 border-l-2 border-gray-200 space-y-1 mt-1">
+                        {showSubtopics && (
+                            <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-gray-200 pl-2 pr-1">
                                 {subtopics.map((subtopic) => (
-                                    <label key={subtopic.slug} className="flex items-center cursor-pointer py-0.5 group/sub">
+                                    <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
                                         <input
                                             type="checkbox"
-                                            className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-700"
-                                            checked={selectedSubtopics.includes(subtopic.slug)}
+                                            className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400"
+                                            checked={selectedSubtopicSet.has(subtopic.slug)}
                                             onChange={() => handleSubtopicChange(subtopic.slug)}
                                         />
-                                        <span className="ml-2 text-xs text-gray-500 dark:text-gray-400 group-hover/sub:text-gray-800 dark:group-hover/sub:text-gray-200">
+                                        <span className="ml-2 truncate text-xs text-gray-500 group-hover/sub:text-gray-800" title={subtopic.label}>
                                             {subtopic.label}
                                         </span>
                                     </label>
@@ -96,6 +152,10 @@ const TopicFilter = () => {
                     </div>
                 );
             })}
+
+            {selectedSubjects.length === 0 && (
+                <p className="pt-1 text-xs text-gray-500">Select subject(s) to narrow subtopics.</p>
+            )}
         </div>
     );
 };
