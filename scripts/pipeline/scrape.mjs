@@ -17,10 +17,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { JSDOM } from "jsdom";
+import { fetchTextWithRetry, sleep, writeGithubOutput } from "./shared.mjs";
 
 // ── Configuration ───────────────────────────────────────────────────────
 const CRAWL_DELAY_MS = 31_000; // 31s to respect robots.txt Crawl-delay: 30
-const MAX_RETRIES = 3;
 const USER_AGENT =
     "Mozilla/5.0 (compatible; GateQA-Pipeline/1.0; +https://github.com/superawat/Gate_QA)";
 const BASE_URL = "https://gateoverflow.in";
@@ -64,46 +64,13 @@ function buildUid(link) {
     return goId ? `go:${goId}` : null;
 }
 
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function fetchWithRetry(url, retries = MAX_RETRIES) {
-    for (let attempt = 1; attempt <= retries; attempt++) {
-        try {
-            const response = await fetch(url, {
-                headers: { "User-Agent": USER_AGENT },
-                signal: AbortSignal.timeout(30_000),
-            });
-
-            if (response.status === 429 || response.status >= 500) {
-                const backoff = Math.pow(2, attempt) * 10_000; // 20s, 40s, 80s
-                console.warn(
-                    `  ⚠ Rate limited/server error (${response.status}) on attempt ${attempt}/${retries}. Waiting ${backoff / 1000}s…`
-                );
-                if (attempt === retries) {
-                    throw new Error(
-                        `Rate limited after ${retries} retries: ${response.status} ${url}`
-                    );
-                }
-                await sleep(backoff);
-                continue;
-            }
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status} for ${url}`);
-            }
-
-            return await response.text();
-        } catch (err) {
-            if (attempt === retries) throw err;
-            const backoff = Math.pow(2, attempt) * 10_000;
-            console.warn(
-                `  ⚠ Fetch error on attempt ${attempt}/${retries}: ${err.message}. Retrying in ${backoff / 1000}s…`
-            );
-            await sleep(backoff);
-        }
-    }
+async function fetchWithRetry(url) {
+    return fetchTextWithRetry(url, {
+        headers: { "User-Agent": USER_AGENT },
+        retries: 3,
+        logger: console,
+        logPrefix: "  ⚠ ",
+    });
 }
 
 // ── Tag Discovery ───────────────────────────────────────────────────────
@@ -128,7 +95,8 @@ async function discoverActiveTags(year) {
     const candidates = buildTagCandidates(year);
     const activeTags = [];
 
-    for (const tag of candidates) {
+    for (let index = 0; index < candidates.length; index += 1) {
+        const tag = candidates[index];
         const url = `${BASE_URL}/tag/${tag}`;
         console.log(`  Probing tag: ${url}`);
         try {
@@ -156,7 +124,9 @@ async function discoverActiveTags(year) {
         } catch (err) {
             console.log(`    ✗ Error probing ${tag}: ${err.message}`);
         }
-        await sleep(CRAWL_DELAY_MS);
+        if (index < candidates.length - 1) {
+            await sleep(CRAWL_DELAY_MS);
+        }
     }
 
     return activeTags;
@@ -337,7 +307,7 @@ async function main() {
             timestamp: new Date().toISOString(),
         });
         // Signal to workflow: zero new questions
-        console.log("::set-output name=new_question_count::0");
+        writeGithubOutput("new_question_count", 0);
         process.exit(0);
     }
 
@@ -347,12 +317,15 @@ async function main() {
 
     // Collect all question links from all active tags
     const allLinks = new Set();
-    for (const tag of activeTags) {
+    for (let index = 0; index < activeTags.length; index += 1) {
+        const tag = activeTags[index];
         console.log(`\nProcessing tag: ${tag}`);
         const links = await getQuestionLinksFromTag(tag);
         console.log(`  Total links for ${tag}: ${links.length}`);
         links.forEach((l) => allLinks.add(l));
-        await sleep(CRAWL_DELAY_MS);
+        if (index < activeTags.length - 1) {
+            await sleep(CRAWL_DELAY_MS);
+        }
     }
 
     console.log(`\n📊 Total unique links discovered: ${allLinks.size}`);
@@ -381,7 +354,7 @@ async function main() {
             newQuestions: [],
             timestamp: new Date().toISOString(),
         });
-        console.log("::set-output name=new_question_count::0");
+        writeGithubOutput("new_question_count", 0);
         process.exit(0);
     }
 
@@ -396,7 +369,9 @@ async function main() {
         } else {
             console.log(`    ⚠ Failed to extract content`);
         }
-        await sleep(CRAWL_DELAY_MS);
+        if (i < newLinks.length - 1) {
+            await sleep(CRAWL_DELAY_MS);
+        }
     }
 
     console.log(`\n✅ Successfully scraped ${scraped.length} new questions`);
@@ -425,8 +400,8 @@ async function main() {
     console.log(`  Stage output: ${outputPath}`);
 
     // GitHub Actions output
-    console.log(`::set-output name=new_question_count::${scraped.length}`);
-    console.log(`::set-output name=target_year::${targetYear}`);
+    writeGithubOutput("new_question_count", scraped.length);
+    writeGithubOutput("target_year", targetYear);
 }
 
 main().catch((err) => {

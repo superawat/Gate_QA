@@ -19,6 +19,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { fetchTextWithRetry, sleep, writeGithubOutput } from "./shared.mjs";
 
 const ROOT = path.resolve(
     path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1")),
@@ -39,10 +40,6 @@ function readJson(filePath) {
 function writeJson(filePath, data) {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
-}
-
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 const ALLOWED_OPTIONS = new Set(["A", "B", "C", "D"]);
@@ -162,12 +159,12 @@ function parseFromSelectedAnswer(html) {
 }
 
 async function fetchHtml(url) {
-    const response = await fetch(url, {
+    return fetchTextWithRetry(url, {
         headers: { "User-Agent": USER_AGENT },
-        signal: AbortSignal.timeout(30_000),
+        retries: 3,
+        logger: console,
+        logPrefix: "  ⚠ ",
     });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return response.text();
 }
 
 // ── Main ────────────────────────────────────────────────────────────────
@@ -315,7 +312,9 @@ async function main() {
             console.log(`    ✗ Error: ${err.message}`);
         }
 
-        await sleep(CRAWL_DELAY_MS);
+        if (i < questions.length - 1) {
+            await sleep(CRAWL_DELAY_MS);
+        }
     }
 
     console.log(`\n📊 Answer backfill results:`);
@@ -339,8 +338,8 @@ async function main() {
     );
 
     // GitHub Actions output
-    console.log(`::set-output name=answers_resolved::${resolved}`);
-    console.log(`::set-output name=answers_unresolved::${unresolved}`);
+    writeGithubOutput("answers_resolved", resolved);
+    writeGithubOutput("answers_unresolved", unresolved);
 }
 
 main().catch((err) => {

@@ -8,6 +8,9 @@ Live URL: `https://superawat.github.io/Gate_QA/`
 
 - `dist/.nojekyll`
 - `dist/calculator/calculator.html`
+- `dist/question-bank-manifest.json`
+- `dist/question-search-index.json`
+- `dist/question-detail-shards/*.json`
 - `dist/questions-with-answers.json`
 - `dist/data/answers/*.json`
 - `dist/logo.png`
@@ -21,10 +24,11 @@ npm run build
 Current build chain:
 
 1. `node scripts/precompute-subtopics.mjs`
-2. `node scripts/deployment/sync-calculator.mjs --public`
-3. `vite build`
-4. `node scripts/deployment/ensure-nojekyll.mjs`
-5. `node scripts/deployment/sync-calculator.mjs --dist`
+2. `node scripts/build-public-artifacts.mjs`
+3. `node scripts/deployment/sync-calculator.mjs --public`
+4. `vite build`
+5. `node scripts/deployment/ensure-nojekyll.mjs`
+6. `node scripts/deployment/sync-calculator.mjs --dist`
 
 ## Hosting configuration
 
@@ -37,17 +41,18 @@ Current build chain:
 ### `.github/workflows/node.js.yml`
 
 - triggers: push/pull_request on `main`
-- runs `npm ci` and `npm run build`
-- verifies `.nojekyll` and calculator artifact
+- runs `npm ci`, `npm run test:unit`, `npm run qa:validate-data`, `npm run build`, and `npm run qa:validate-public-parity`
+- verifies `.nojekyll`, calculator, and generated public artifacts
 - deploys to `gh-pages` on push to `main`
 
 ### `.github/workflows/gate-question-pipeline.yml`
 
-- trigger: cron (Apr 1, Oct 1) + manual with optional `force_year`
+- trigger: cron retry window (Apr 1-5, Oct 1-5) + manual with optional `force_year`
 - 6-stage pipeline: scrape → normalise → answer backfill → merge → validate → build/deploy
+- runs `npm run qa:validate-public-parity` before deploying updated artifacts
 - see `docs/DATA_PIPELINE.md` for full stage documentation
 - auto-creates GitHub Issue on failure; live site remains on last successful deploy
-- because scrape and answer-backfill intentionally respect GateOverflow crawl delay, long runs may require manual catch-up via the local runbook if the scheduled job times out
+- scheduled retries skip themselves once `nextTargetYear` is ahead of the current calendar year, so the release-window cron does not keep probing the future after a successful import
 
 ## Manual deploy
 
@@ -76,17 +81,22 @@ For the exact data-ingestion sequence, use `docs/DATA_PIPELINE.md`.
 ## Pre-deploy checklist
 
 - [ ] `npm run build` succeeds.
+- [ ] generated public artifacts are refreshed (`question-bank-manifest.json`, `question-search-index.json`, `docs/generated/data-status.json`).
+- [ ] generated detail shards are refreshed under `public/question-detail-shards/`.
 - [ ] if this deploy includes a manual data import, `audit/validation-report-{year}.json` shows `passed: true`.
 - [ ] Precompute output was generated (`src/generated/subtopicLookup.json` in build workspace).
 - [ ] `dist/.nojekyll` exists.
 - [ ] `dist/calculator/calculator.html` exists.
+- [ ] `dist/question-bank-manifest.json`, `dist/question-search-index.json`, and `dist/question-detail-shards/*.json` exist.
 - [ ] required question/answer JSON files exist in `dist`.
 - [ ] base path and live URL are aligned.
 
 ## Post-deploy smoke checks
 
 - [ ] app loads without blank screen
-- [ ] question data fetch completes
+- [ ] landing loads before practice entry without pulling the full bank on the critical path
+- [ ] practice entry fetches the search index and answer lookups without downloading the full bank
+- [ ] the first opened practice question resolves from the matching detail shard
 - [ ] filters open and apply
 - [ ] share deep-link works
 - [ ] calculator button and `Ctrl+K` work

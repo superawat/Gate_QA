@@ -12,7 +12,7 @@ everything into the canonical JSON payloads.
 
 The resulting data files are the permanent outputs of that work:
 
-- `public/questions-with-answers.json` — the primary question bank (3,747 questions as of 2026-04-04)
+- `public/questions-with-answers.json` — the primary published practice bank (see `docs/generated/DATA_STATUS.md` for the current generated count snapshot)
 - `public/data/answers/answers_by_question_uid_v1.json` — answer lookup by question UID
 - `data/answers/manual-answers-patch-v1.json` — manual answer patch queue
 
@@ -87,14 +87,15 @@ exist in the bank with `answer: null`.
 
 `.github/workflows/gate-question-pipeline.yml`
 
-Trigger: cron (Apr 1, Oct 1) + `workflow_dispatch` with optional `force_year`.
+Trigger: cron (Apr 1-5, Oct 1-5) + `workflow_dispatch` with optional `force_year`.
 
 Operational note:
 
-- the scheduled workflow currently runs only on April 1 and October 1
-- if the scrape or answer-backfill stages exceed the workflow timeout window, the run will
-  not retry automatically later in the month
-- use `workflow_dispatch` or the local manual runbook below for catch-up imports
+- the scheduled workflow now retries daily during the first five days of April and October
+- the GitHub Actions job timeout is extended to cover the full robots-compliant scrape and answer-backfill path
+- scheduled retries automatically no-op when `nextTargetYear` has already advanced into a future year
+- scheduled no-new-question runs do not commit off-cycle audit logs to `main`
+- use `workflow_dispatch` or the local manual runbook below for manual catch-up imports
 
 ### Stages
 
@@ -103,11 +104,11 @@ Operational note:
 3. **Answer Backfill** (`scripts/pipeline/answer-backfill.mjs`) — Fetch answers from GateOverflow using widget pattern and selected-answer fallback. Unresolved answers go to `manual-answers-patch-v1.json`.
 4. **Merge** (`scripts/pipeline/merge.mjs`) — Append new questions to `public/questions-filtered.json` and `public/questions-with-answers.json`. Deduplicate by UID (`go:<id>`).
 5. **Validate** (`scripts/pipeline/validate.mjs`) — Hard gate with three checks: volume (65/130/195 per GATE standard), full-bank dedup (1987–now), completeness (year/subject/type on new questions).
-6. **Build & Deploy** — `npm run build` + deploy to gh-pages via `JamesIves/github-pages-deploy-action@v4`.
+6. **Build & Deploy** — `npm run build` regenerates the manifest, search index, detail shards, and generated docs snapshot before deploy to `gh-pages` via `JamesIves/github-pages-deploy-action@v4`.
 
 ### State file
 
-`pipeline-state.json` — tracks `nextTargetYear`, `questionsTotal`, `lastRunAt`.
+`pipeline-state.json` — tracks `nextTargetYear`, `questionsTotal`, `publishedQuestionsTotal`, `lastRunAt`.
 Read at the start of each run, overwritten on success. `nextTargetYear` advances by 1
 only after a successful deploy.
 
@@ -115,10 +116,15 @@ If the stages are run locally instead of through GitHub Actions, update `pipelin
 manually after a successful merge/validate/build pass. The local stage scripts do not
 advance `nextTargetYear` on their own.
 
+As of 2026-04-05, the parity drift has been reconciled. `pipeline-state.json`,
+`audit/validation-report-YYYY.json`, the generated docs snapshot, and the published public
+bank now agree on the same public-bank count, and `npm run qa:validate-public-parity`
+is part of CI.
+
 When `public/questions-with-answers.json` changes materially, bump
 `INIT_CACHE_VERSION` in `src/services/QuestionService.js` so browsers do not keep serving a
 stale localStorage snapshot of the old question bank.
-The current init cache version after the `2014 Set 1` import is `v7`.
+The current init cache version after the startup/data split work is `v8`.
 
 ### Audit files (committed, never read by frontend)
 
@@ -234,10 +240,60 @@ Note:
 - output is generated and ignored by git (`/src/generated/` in `.gitignore`)
 - script is automatically run by `npm start` and `npm run build`
 
+## Generated public/runtime artifacts
+
+Script:
+
+- `scripts/build-public-artifacts.mjs`
+
+Outputs:
+
+- `public/question-bank-manifest.json`
+- `public/question-search-index.json`
+- `public/question-detail-shards/*.json`
+- `docs/generated/data-status.json`
+- `docs/generated/DATA_STATUS.md`
+- `artifacts/review/remote-image-report.json`
+
+Purpose:
+
+- publish a lightweight landing/search contract alongside on-demand question detail shards
+- generate docs count/status text from artifacts instead of hardcoding it
+- keep the remote GateOverflow blob-image backlog visible
+
+This script is automatically run by `npm start` and `npm run build`.
+
+## Public parity check
+
+Script:
+
+- `scripts/qa/validate-public-parity.js`
+
+Run:
+
+```bash
+npm run qa:validate-public-parity
+```
+
+Scope:
+
+- `public/questions-with-answers.json`
+- `public/questions-filtered.json`
+- `public/question-bank-manifest.json`
+- `docs/generated/data-status.json`
+- `pipeline-state.json`
+- latest `audit/validation-report-YYYY.json`
+- `artifacts/review/data-integrity-report.json`
+
+Use this to guard against count drift between the published bank, pipeline state,
+validation totals, and generated docs.
+
 ## Runtime artifacts consumed by app
 
 From `public/`:
 
+- `question-bank-manifest.json`
+- `question-search-index.json`
 - `questions-with-answers.json` (preferred)
 - `questions-filtered-with-ids.json` (fallback)
 - `questions-filtered.json` (fallback)
@@ -248,8 +304,8 @@ From `public/`:
 
 ## CI touchpoints
 
-- `node.js.yml`: build/deploy on main and build on PR
-- `gate-question-pipeline.yml`: automated GATE question pipeline (FEAT-003)
+- `node.js.yml`: build/deploy on main and build on PR, including `qa:validate-public-parity`
+- `gate-question-pipeline.yml`: automated GATE question pipeline (FEAT-003), including parity verification before deploy
 
 ## Tech Debt (TECH-DEBT-001)
 

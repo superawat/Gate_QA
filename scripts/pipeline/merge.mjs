@@ -6,6 +6,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { writeGithubOutput } from "./shared.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1")), "../..");
 const AUDIT_DIR = path.join(ROOT, "audit");
@@ -65,11 +66,12 @@ function main() {
     state.lastRunAt = new Date().toISOString();
     state.lastYearScraped = year;
     state.questionsTotal = merged.length;
+    state.publishedQuestionsTotal = merged.length;
     state.answersTotal = (state.answersTotal || 0) + newQ.filter(q => q.answer != null).length;
     writeJson(STATE_PATH, state);
 
-    console.log(`::set-output name=added_count::${added.length}`);
-    console.log(`::set-output name=total_count::${merged.length}`);
+    writeGithubOutput("added_count", added.length);
+    writeGithubOutput("total_count", merged.length);
 }
 
 main();

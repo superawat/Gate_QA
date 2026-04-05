@@ -28,6 +28,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
         filteredQuestions,
         totalQuestions,
         filters,
+        structuredTags,
         solvedCount,
         bookmarkedCount,
         progressPercentage,
@@ -42,13 +43,22 @@ const FilterSidebar = ({ className = "", onClose }) => {
         setShowOnlySolved
     } = useFilterActions();
     const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [...QUESTION_TYPES];
+    const hasSearchQuery = String(filters.searchQuery || '').trim() !== '';
+    const isRangeActive = Array.isArray(filters.yearRange)
+        && filters.yearRange.length === 2
+        && (
+            Number(filters.yearRange[0]) !== Number(structuredTags.minYear)
+            || Number(filters.yearRange[1]) !== Number(structuredTags.maxYear)
+        );
     const hasActiveFilters = filters.selectedYearSets.length > 0
         || filters.selectedSubjects.length > 0
         || filters.selectedSubtopics.length > 0
         || selectedTypes.length < QUESTION_TYPES.length
+        || isRangeActive
         || filters.hideSolved
         || filters.showOnlySolved
-        || filters.showOnlyBookmarked;
+        || filters.showOnlyBookmarked
+        || hasSearchQuery;
 
     return (
         <aside className={`flex flex-col flex-shrink-0 bg-gray-50 border-r border-gray-200 h-full min-h-0 overflow-y-auto ${className}`}>
@@ -75,6 +85,21 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         </button>
                     )}
                 </div>
+            </div>
+
+            <div className="p-4 border-b border-gray-200 bg-white z-10 flex-shrink-0">
+                <label htmlFor="practice-search" className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">
+                    Search
+                </label>
+                <input
+                    id="practice-search"
+                    type="search"
+                    value={filters.searchQuery}
+                    onChange={(event) => updateFilters({ searchQuery: event.target.value })}
+                    placeholder="Search title, tags, or question text"
+                    autoComplete="off"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                />
             </div>
 
             <div className="px-4 py-2 border-b border-gray-200 bg-white z-10 flex-shrink-0">

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FaTimes, FaHeart, FaEnvelope } from 'react-icons/fa';
-import qrCodeImage from '../../../qrcode.png';
+import qrCodeImage from './assets/qrcode.png';
 
 const SupportModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;

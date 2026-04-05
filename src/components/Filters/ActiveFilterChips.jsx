@@ -13,7 +13,8 @@ const ActiveFilterChips = () => {
         yearRange,
         hideSolved,
         showOnlySolved,
-        showOnlyBookmarked
+        showOnlyBookmarked,
+        searchQuery
     } = filters;
     const { minYear, maxYear, subjects = [], structuredSubtopics = {} } = structuredTags;
 
@@ -55,23 +56,43 @@ const ActiveFilterChips = () => {
         updateFilters({ showOnlyBookmarked: false });
     };
 
+    const resetSearchQuery = () => {
+        updateFilters({ searchQuery: '' });
+    };
+
     const isRangeActive = yearRange && (yearRange[0] !== minYear || yearRange[1] !== maxYear);
+    const hasSearchQuery = String(searchQuery || '').trim() !== '';
     const hasActiveFilters = selectedYearSets.length > 0
         || selectedSubjects.length > 0
         || selectedSubtopics.length > 0
         || isRangeActive
         || hideSolved
         || showOnlySolved
-        || showOnlyBookmarked;
+        || showOnlyBookmarked
+        || hasSearchQuery;
 
     if (!hasActiveFilters) return null;
 
     return (
         <div className="flex flex-wrap gap-2 mb-4 animate-fadeIn">
+            {hasSearchQuery && (
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                    Search: {searchQuery}
+                    <button
+                        type="button"
+                        aria-label="Remove search filter"
+                        onClick={resetSearchQuery}
+                        className="ml-1.5 inline-flex text-slate-500 hover:text-slate-700 focus:outline-none"
+                    >
+                        <FaTimes />
+                    </button>
+                </span>
+            )}
+
             {selectedYearSets.map((yearSetKey) => (
                 <span key={yearSetKey} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                     {QuestionService.formatYearSetLabel(yearSetKey)}
-                    <button onClick={() => removeYear(yearSetKey)} className="ml-1.5 inline-flex text-blue-500 hover:text-blue-600 focus:outline-none">
+                    <button type="button" onClick={() => removeYear(yearSetKey)} className="ml-1.5 inline-flex text-blue-500 hover:text-blue-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -80,7 +101,7 @@ const ActiveFilterChips = () => {
             {isRangeActive && (
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                     {yearRange[0]} - {yearRange[1]}
-                    <button onClick={resetRange} className="ml-1.5 inline-flex text-purple-500 hover:text-purple-600 focus:outline-none">
+                    <button type="button" onClick={resetRange} className="ml-1.5 inline-flex text-purple-500 hover:text-purple-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -89,7 +110,7 @@ const ActiveFilterChips = () => {
             {selectedSubjects.map((subjectSlug) => (
                 <span key={subjectSlug} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 capitalize">
                     {subjectLabelBySlug.get(subjectSlug) || subjectSlug}
-                    <button onClick={() => removeSubject(subjectSlug)} className="ml-1.5 inline-flex text-green-500 hover:text-green-600 focus:outline-none">
+                    <button type="button" onClick={() => removeSubject(subjectSlug)} className="ml-1.5 inline-flex text-green-500 hover:text-green-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -98,7 +119,7 @@ const ActiveFilterChips = () => {
             {selectedSubtopics.map((subtopicSlug) => (
                 <span key={subtopicSlug} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
                     {subtopicLabelBySlug.get(subtopicSlug) || subtopicSlug}
-                    <button onClick={() => removeSubtopic(subtopicSlug)} className="ml-1.5 inline-flex text-yellow-500 hover:text-yellow-600 focus:outline-none">
+                    <button type="button" onClick={() => removeSubtopic(subtopicSlug)} className="ml-1.5 inline-flex text-yellow-500 hover:text-yellow-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -107,7 +128,7 @@ const ActiveFilterChips = () => {
             {hideSolved && (
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                     Hide solved
-                    <button onClick={resetHideSolved} className="ml-1.5 inline-flex text-emerald-500 hover:text-emerald-600 focus:outline-none">
+                    <button type="button" onClick={resetHideSolved} className="ml-1.5 inline-flex text-emerald-500 hover:text-emerald-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -116,7 +137,7 @@ const ActiveFilterChips = () => {
             {showOnlySolved && (
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
                     Solved only
-                    <button onClick={resetShowOnlySolved} className="ml-1.5 inline-flex text-indigo-500 hover:text-indigo-600 focus:outline-none">
+                    <button type="button" onClick={resetShowOnlySolved} className="ml-1.5 inline-flex text-indigo-500 hover:text-indigo-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
@@ -125,13 +146,14 @@ const ActiveFilterChips = () => {
             {showOnlyBookmarked && (
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                     Bookmarked only
-                    <button onClick={resetShowBookmarkedOnly} className="ml-1.5 inline-flex text-orange-500 hover:text-orange-600 focus:outline-none">
+                    <button type="button" onClick={resetShowBookmarkedOnly} className="ml-1.5 inline-flex text-orange-500 hover:text-orange-600 focus:outline-none">
                         <FaTimes />
                     </button>
                 </span>
             )}
 
             <button
+                type="button"
                 onClick={clearFilters}
                 className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline decoration-dotted"
             >

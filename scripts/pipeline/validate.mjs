@@ -93,6 +93,7 @@ function main() {
         timestamp: new Date().toISOString(),
         newQuestionCount: count,
         totalBankSize: bank.length,
+        publishedQuestionCount: bank.length,
         duplicatesInBank: duplicates.length,
         incompleteNewQuestions: incomplete.length,
         passed: failures.length === 0,
@@ -116,6 +117,8 @@ function main() {
     // Update pipeline state
     const state = readJson(STATE_PATH) || {};
     state.volumeCheckPassed = true;
+    state.questionsTotal = bank.length;
+    state.publishedQuestionsTotal = bank.length;
     writeJson(STATE_PATH, state);
 }
 

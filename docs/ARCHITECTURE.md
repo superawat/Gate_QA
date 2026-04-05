@@ -7,16 +7,26 @@ There is no backend, no database, and no server-side rendering.
 
 1. Static host serves `dist/`.
 2. `src/index.jsx` mounts `App`.
-3. `App` initializes services:
-   - `QuestionService.init()`
-   - `AnswerService.init()`
-4. `FilterProvider` owns filter/progress state and filtering results.
-5. `App` resolves `appView` (`landing | practice | mock`) from URL params after questions load.
-6. UI renders one of:
+3. `App` initializes the lightweight landing manifest on mount:
+   - `QuestionBankManifestService.init()`
+4. `FilterProvider` seeds summary state from the manifest and owns filter/progress state.
+5. `App` resolves `appView` (`landing | practice | mockSetup | mockExam`) directly from URL params.
+6. `QuestionService.init()` and `AnswerService.init()` run only when practice or mock entry needs question data:
+   - practice loads the lightweight search index plus answer lookups
+   - mock still loads the full question bank
+7. UI renders one of:
    - Landing mode selector dashboard
    - Practice view (filter modal, chips, question card, answer panel)
-   - Mock placeholder view
-7. Header, calculator, and footer remain shared shell components.
+   - Mock setup shell
+   - Mock exam shell
+8. Header, calculator, and footer remain shared shell components.
+
+The landing route now stays on a lightweight startup path:
+
+- `index.html` no longer includes analytics, Google Fonts, or MathJax tags
+- `App.jsx` lazy-loads practice and mock shells only when the user enters them
+- `src/components/Math/MathRuntime.jsx` imports MathJax only inside practice/mock runtime
+- `src/utils/analytics.js` defers the single remaining analytics provider until first interaction or idle
 
 ## Four-layer initialization model (2026-02-25)
 
@@ -45,13 +55,37 @@ There is no backend, no database, and no server-side rendering.
 
 ### Layer 4: localStorage init cache
 
-- Cache key version:
-  - `INIT_CACHE_VERSION = 'v7'`
-  - runtime key `gateqa_init_cache_v7`
-- `_readCache()` migrates by removing legacy `gateqa_init_cache_v1`, `gateqa_init_cache_v2`, and `gateqa_init_cache_v3`.
+- `INIT_CACHE_VERSION = 'v8'`
+- runtime keys `gateqa_index_cache_v8` and `gateqa_full_bank_cache_v8`
+- `_readCache()` migrates by removing legacy `gateqa_init_cache_v1`, `gateqa_init_cache_v2`, `gateqa_init_cache_v3`, and `gateqa_init_cache_v7`.
 - `_writeCache()` handles quota/storage errors via `isQuotaExceededError()`.
 - Filter defaults treat the current year as the fallback max year until structured question data is loaded, so newly imported years such as 2026 can appear in the filter UI as soon as the cache is refreshed.
 - Cache version should be bumped whenever the live question bank is replaced with a materially repaired snapshot, such as the 2026-04-04 historical paper repairs.
+
+## Generated public artifacts
+
+Script:
+
+- `scripts/build-public-artifacts.mjs`
+
+Outputs:
+
+- `public/question-bank-manifest.json`
+- `public/question-search-index.json`
+- `public/question-detail-shards/*.json`
+- `docs/generated/data-status.json`
+- `docs/generated/DATA_STATUS.md`
+- `artifacts/review/remote-image-report.json`
+
+Purpose:
+
+- give the landing page a lightweight manifest contract
+- provide a lightweight search/filter index separate from full question HTML
+- serve full question HTML in year/set detail shards that are fetched only for active practice questions
+- publish one generated count/status snapshot for docs
+- keep remote GateOverflow image debt visible
+
+These artifacts are generated before dev/build via the npm scripts in `package.json`.
 
 ## Services
 
@@ -60,6 +94,7 @@ There is no backend, no database, and no server-side rendering.
 Responsibilities:
 
 - Candidate JSON selection with join-coverage scoring.
+- Practice-mode index hydration and detail-shard lookup.
 - Question normalization (`question_uid`, `exam_uid`, canonical subject/subtopic/type).
 - Practice-bank exclusion of non-objective rows, including subjective/descriptive prompts that should not appear in the practice queue.
 - Structured tag generation for filter UI.
@@ -68,7 +103,7 @@ Responsibilities:
 Performance constants:
 
 - `MAX_SUBTOPICS_PER_QUESTION = 1`
-- `INIT_CACHE_VERSION = 'v7'`
+- `INIT_CACHE_VERSION = 'v8'`
 
 BUG-007 guardrail:
 
@@ -95,7 +130,7 @@ Answer resolution order:
 - `hideSolved`
 - `showOnlySolved`
 - `showOnlyBookmarked`
-- `searchQuery` (reserved)
+- `searchQuery`
 
 ### Actions (`FilterActionsContext`)
 
@@ -112,6 +147,13 @@ Answer resolution order:
 - Selecting subtopics can auto-add parent subjects.
 - URL-hydrated subtopics are normalized through the same parent-subject auto-add path before filtering.
 - Deselecting subjects removes orphaned subtopics.
+
+### Search filtering
+
+- `searchQuery` is normalized as trimmed, lowercase, whitespace-collapsed text.
+- `filteredQuestions` applies tokenized AND matching against index-row `question.searchText`.
+- Search uses `useDeferredValue` so live typing does not block the rest of the filter work.
+- Search stays index-only in practice mode and does not require `ensureQuestionDetail()` or shard fetches.
 
 ## Session Queue (FEAT-012, 2026-02-27)
 
@@ -151,26 +193,25 @@ Each bucket is independently Fisher-Yates shuffled. Final queue = Bucket 1 + Buc
 
 `App.jsx` owns transient UI state:
 
-- `appView`: `landing | practice | mock` (never persisted)
-- `shouldOpenFilterOnEnter`: one-shot `ref` used to auto-open `FilterModal` when entering filtered practice
+- `appView`: `landing | practice | mockSetup | mockExam` (never persisted)
+- `shouldOpenFilterOnEnter`: one-shot `ref` used to auto-open `FilterModal` when entering targeted practice
 
-Mount-time URL-to-view resolver (one-shot, after `allQuestions` is available):
+Mount-time URL-to-view resolver (one-shot on mount):
 
 1. If `?question=<uid>` exists -> force `practice` (deep-link wins)
 2. Else check `?mode=`:
    - `random` -> `clearFilters()` then `practice`
-   - `filtered` -> set one-shot filter-open flag then `practice`
-   - `targeted` -> `practice`
+   - `targeted` -> set one-shot filter-open flag then `practice`
    - `resume` -> `practice` without clearing filters
-   - `mock` -> `mock`
-3. Else if any shareable filter params exist (`years`, `subjects`, `subtopics`, `range`, `types`) -> `practice`
+   - `mock` -> `mockSetup` or `mockExam` when the feature flag is enabled
+   - any other non-mock mode value -> `practice` for backward compatibility
+3. Else if any shareable filter params exist (`years`, `subjects`, `subtopics`, `range`, `types`, `search`) -> `practice`
 4. Else -> `landing`
 
 Landing actions:
 
 - Random start always calls `clearFilters()` before entering practice.
-- Filtered start sets one-shot auto-open modal flag.
-- Targeted start uses existing `selectedSubjects` / `selectedSubtopics` from `FilterStateContext`.
+- Targeted start sets the one-shot auto-open modal flag and keeps any existing filter state intact.
 - "Continue where you left off" resumes the current practice/question/filter state instead of routing through random mode.
 - Mock card is visible but disabled with "Coming soon" badge.
 - "Continue where you left off" is shown only when solved or bookmarked local progress exists.
@@ -188,6 +229,7 @@ Synchronized params:
 - `subtopics`
 - `range`
 - `types`
+- `search`
 - `hideSolved`
 - `showOnlySolved`
 - `showOnlyBookmarked`
@@ -223,15 +265,34 @@ Synchronized params:
 
 - `hideSolved` and `showOnlySolved` are mutually exclusive.
 - `question` query param must not be dropped during filter sync.
-- `clearFilters()` resets all filter dimensions.
+- `clearFilters()` resets all filter dimensions, including `searchQuery`.
 - `?question=<uid>` must always bypass landing and open practice.
-- Shared filter URLs (`years`, `subjects`, `subtopics`, `range`, `types`) must bypass landing.
+- Shared filter URLs (`years`, `subjects`, `subtopics`, `range`, `types`, `search`) must bypass landing.
 - Random mode must clear filters before entering practice.
-- Targeted mode enablement is derived from `selectedSubjects`/`selectedSubtopics` in `useFilterState()`.
+- Targeted mode must open the filter modal once after entering practice.
 - `appView` is not persisted to localStorage.
 - `?mode=` writes must use `replaceState`.
 - Build must include `.nojekyll` and synced calculator assets.
+- Build should also include generated manifest, search index, and detail-shard artifacts.
 - `base` in `vite.config.js` must stay `/Gate_QA/` for current hosting path.
+
+## Startup Split Status (Phase 1 / 1b)
+
+The startup split is now live end to end:
+
+- Landing boots from `public/question-bank-manifest.json`.
+- Practice boot loads `public/question-search-index.json` instead of the full bank.
+- `QuestionService` and `AnswerService` initialize only when practice, deep-link, or filter URLs require question data.
+- `FilterProvider` can seed totals/year ranges/subject lists from the manifest before the full bank is loaded.
+- Practice and mock shells are lazy-loaded from `App.jsx` instead of being parsed on cold landing load.
+- Practice question HTML is fetched lazily from `public/question-detail-shards/*.json` for the active question only.
+- Mock mode still requests the full bank, which keeps the existing setup/exam flows intact.
+- MathJax runtime loads only inside practice/mock shell code.
+- The app uses one deferred GoatCounter loader instead of eager third-party tags in `index.html`.
+
+Still pending for full Phase 1 completion:
+
+- add automated bundle/network assertions so the landing path stays lean over time
 
 ## Known limitation reference
 

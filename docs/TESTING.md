@@ -6,24 +6,38 @@ GateQA uses JavaScript unit tests, QA scripts, and manual QA.
 
 Current suites:
 
-- `src/services/AnswerService.test.js` (12 tests)
-- `src/services/QuestionService.test.js` (15 tests)
-- `scripts/qa/repair-historical-exam-uids.test.js` (6 tests)
-- `src/utils/localStorageState.test.js` (3 tests)
-- `src/contexts/FilterContext.test.jsx` (2 tests)
-- `src/contexts/MockTestContext.test.jsx` (1 test)
-- `src/components/MockTest/MockSetupAndRouting.test.jsx` (16 tests)
-- `src/components/MockTest/MockTestQuestion.test.jsx` (19 tests)
-- `src/components/MockTest/MockTestActionBar.test.jsx` (3 tests)
-- `src/components/MockTest/MockTestShell.test.jsx` (2 tests)
-- `src/components/MockTest/QuestionPalette.test.jsx` (9 tests)
+- `src/services/AnswerService.test.js`
+- `src/services/QuestionService.test.js`
+- `scripts/qa/repair-historical-exam-uids.test.js`
+- `scripts/pipeline/shared.test.js`
+- `src/utils/localStorageState.test.js`
+- `src/contexts/FilterContext.test.jsx`
+- `src/contexts/MockTestContext.test.jsx`
+- `src/components/MockTest/MockSetupAndRouting.test.jsx`
+- `src/components/MockTest/MockTestQuestion.test.jsx`
+- `src/components/MockTest/MockTestActionBar.test.jsx`
+- `src/components/MockTest/MockTestShell.test.jsx`
+- `src/components/MockTest/QuestionPalette.test.jsx`
+- `src/App.test.jsx`
+- `src/contexts/SessionContext.test.jsx`
+- `src/components/Landing/ModeSelectionPage.test.jsx`
 
-Current total: 88 passing tests.
+Run the suite to get the current exact total; avoid hardcoding this number in other docs.
 
 Newly added in 2026-02-25 session:
 
 - `extractCanonicalSubtopics` cap behavior test (QuestionService)
 - orphan subtopic removal on subject deselect (FilterContext)
+
+Search/filter routing regressions now covered in:
+
+- `src/contexts/FilterContext.test.jsx`
+  - URL hydration from `?search=...`
+  - normalized AND-token search filtering
+  - search URL sync preserving `question`
+  - removing the search chip and clearing search state
+- `src/App.test.jsx`
+  - landing bypass / direct practice boot when `search` is present
 
 Run:
 
@@ -92,7 +106,24 @@ What this flow checks:
 - pre-2010 year totals are checked separately against live GateOverflow year tags using deduped question labels, because those older papers do not follow the 65-question pattern
 - pre-2010 repair removes off-tag legacy discussion rows, collapses duplicate question-label variants, and backfills missing legacy questions directly from live GateOverflow pages
 
-## 5) Build and artifact validation
+## 5) Public parity gate
+
+Run:
+
+```bash
+npm run qa:validate-public-parity
+```
+
+What this checks:
+
+- public question payload counts match each other
+- generated manifest and generated docs snapshot agree with the public bank
+- pipeline state and latest validation totals do not silently drift away from the published bank
+- build-published detail/index artifacts stay aligned with the canonical public bank
+
+This gate now runs in CI before deploy.
+
+## 6) Build and artifact validation
 
 Run:
 
@@ -104,10 +135,13 @@ Verify:
 
 - `dist/.nojekyll`
 - `dist/calculator/calculator.html`
+- `dist/question-bank-manifest.json`
+- `dist/question-search-index.json`
+- `dist/question-detail-shards/*.json`
 - `dist/questions-with-answers.json`
 - `dist/data/answers/*.json`
 
-## 6) Lighthouse regression check
+## 7) Lighthouse regression check
 
 Run:
 
@@ -123,17 +157,22 @@ Assertions from `lighthouserc.json`:
 - LCP <= 3500 ms (warn)
 - CLS <= 0.1 (error)
 
-## 7) Manual QA checklist
+## 8) Manual QA checklist
 
 ### Core flow
 
 - [ ] app loads questions without retry state
+- [ ] landing does not eagerly fetch the full question bank before practice entry
+- [ ] practice entry fetches the lightweight search index before any per-question detail shard
+- [ ] opening a practice question fetches only its matching `question-detail-shards/<year-set>.json` shard
 - [ ] Next Question always picks from filtered pool
 - [ ] no dev invariant error for currentQuestion outside filtered pool
 
 ### Filtering and BUG-007 behavior
 
 - [ ] year/year-range/subject/subtopic/type filters intersect correctly
+- [ ] search intersects with year/year-range/subject/subtopic/type filters
+- [ ] multi-word search requires all words to match `question.searchText`
 - [ ] `hideSolved` and `showOnlySolved` remain mutually exclusive
 - [ ] subtopic selection auto-adds parent subject
 - [ ] subject deselection removes orphan subtopics
@@ -143,9 +182,11 @@ Assertions from `lighthouserc.json`:
 
 - [ ] URL writes expected query params
 - [ ] reload preserves filters
+- [ ] `?search=<query>` bypasses landing and opens practice directly
 - [ ] `?question=<uid>` opens expected question when valid
 - [ ] share action copies usable question URL
-- [ ] filter updates keep `question` param intact
+- [ ] filter updates keep `question` param intact, including while `search` changes
+- [ ] removing the search chip or Reset clears `search` from the URL
 
 ### Progress import/export
 
@@ -164,8 +205,8 @@ Assertions from `lighthouserc.json`:
 - [ ] desktop drag remains smooth over iframe
 - [ ] Data Policy modal includes backup/transfer instructions
 
-## 8) Current gaps
+## 9) Current gaps
 
 - no browser E2E suite yet
-- GoatCounter SPA hook is not mounted in `App.jsx`
+- no automated bundle-budget or network assertion yet for manifest/index/detail-shard fetch boundaries
 - no dedicated accessibility snapshot tests beyond Lighthouse assertions

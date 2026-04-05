@@ -12,15 +12,25 @@ const PRECOMPUTED_NORMALIZED = precomputedLookup.normalizedSubtopicsBySubject;
 const PRECOMPUTED_ALIASES = precomputedLookup.subjectAliases;
 
 // ── Performance: localStorage cache for processed questions ─────────────
-const INIT_CACHE_VERSION = 'v7';
-const INIT_CACHE_KEY = `gateqa_init_cache_${INIT_CACHE_VERSION}`;
+const INIT_CACHE_VERSION = "v8";
+const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
+const FULL_BANK_CACHE_KEY = `gateqa_full_bank_cache_${INIT_CACHE_VERSION}`;
 
 export class QuestionService {
   static questions = [];
   static loaded = false;
+  static loadMode = "none";
   static count = new Map();
   static tags = [];
   static sourceUrl = "";
+  static questionsByUid = new Map();
+  static detailCache = new Map();
+  static detailShardCache = new Map();
+  static detailShardPromises = new Map();
+  static pendingLoads = {
+    index: null,
+    full: null,
+  };
 
   static SUBJECT_ENUM = [
     { slug: "algorithms", label: "Algorithms" },
@@ -103,6 +113,34 @@ export class QuestionService {
       return true;
     }
     return false;
+  }
+
+  static getCacheKey({ fullBank = false } = {}) {
+    return fullBank ? FULL_BANK_CACHE_KEY : INDEX_CACHE_KEY;
+  }
+
+  static hasLoadedDataset({ fullBank = false } = {}) {
+    if (!this.loaded) {
+      return false;
+    }
+    if (fullBank) {
+      return this.loadMode === "full";
+    }
+    return this.loadMode === "index" || this.loadMode === "full";
+  }
+
+  static getDetailShardKey(question = {}) {
+    const explicitShardKey = String(question?.detailShardKey || "").trim();
+    if (explicitShardKey) {
+      return explicitShardKey;
+    }
+
+    const explicitYearSetKey = String(question?.yearSetKey || question?.exam?.yearSetKey || "").trim();
+    if (explicitYearSetKey) {
+      return explicitYearSetKey;
+    }
+
+    return "unknown";
   }
 
   // Priority order for conflict resolution when multiple subjects are inferred
@@ -531,6 +569,25 @@ export class QuestionService {
     };
   }
 
+  static buildExamMetaFromIndexQuestion(question = {}) {
+    const year = Number.parseInt(String(question?.year ?? ""), 10);
+    const parsedSet = Number.parseInt(String(question?.set ?? ""), 10);
+    const set = Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : null;
+    const yearSetKey = String(
+      question?.yearSetKey || this.buildYearSetKey(year, set) || ""
+    ).trim() || null;
+    const label = String(question?.yearSetLabel || "").trim()
+      || (yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown");
+
+    return {
+      paper: "CSE",
+      year: Number.isFinite(year) ? year : null,
+      set,
+      yearSetKey,
+      label,
+    };
+  }
+
   // ── Performance: subtopic lookup cache (backed by precomputed JSON) ────
   static _subtopicLookupCache = new Map();
 
@@ -780,6 +837,59 @@ export class QuestionService {
     return normalized;
   }
 
+  static hydrateIndexedQuestion(question = {}) {
+    const indexed =
+      question && typeof question === "object" ? { ...question } : {};
+
+    indexed.title = indexed.title || "";
+    indexed.question = "";
+    indexed.link = indexed.link || "";
+    indexed.preview = String(indexed.preview || "").trim();
+    indexed.searchText = String(indexed.searchText || "").trim();
+    indexed.tags = Array.isArray(indexed.tags) ? indexed.tags : [];
+    indexed.tagsRaw = [...indexed.tags];
+    indexed.question_uid = this.buildQuestionUid(indexed);
+    indexed.detailShardKey = this.getDetailShardKey(indexed);
+    indexed.rawExamUid = String(indexed.exam_uid || "").trim();
+    indexed.canonicalExamUid = indexed.rawExamUid;
+    indexed.exam_uid = indexed.rawExamUid;
+
+    const exam = this.buildExamMetaFromIndexQuestion(indexed);
+    const subjectLabel = this.resolveCanonicalSubject(indexed);
+    const subjectSlug = this.getSubjectSlugByLabel(subjectLabel);
+    const canonicalSubtopics = this.extractCanonicalSubtopics(
+      indexed.tagsRaw,
+      subjectLabel
+    );
+    const canonicalType = this.normalizeTypeToken(indexed.type);
+
+    indexed.canonical = {
+      uid: indexed.question_uid,
+      exam,
+      subject: subjectSlug,
+      subjectLabel,
+      topics: subjectSlug === "unknown" ? [] : [subjectSlug],
+      subtopics: canonicalSubtopics,
+      type: canonicalType,
+      options: [],
+      tagsRaw: [...indexed.tagsRaw],
+      isIndexEntry: true,
+    };
+
+    indexed.subject = subjectLabel;
+    indexed.subjectSlug = subjectSlug;
+    indexed.exam = exam;
+    indexed.year = exam.year;
+    indexed.set = exam.set;
+    indexed.yearSetKey = exam.yearSetKey;
+    indexed.yearSetLabel = exam.label;
+    indexed.subtopics = canonicalSubtopics;
+    indexed.type = canonicalType;
+    indexed.normalizedOptions = [];
+
+    return indexed;
+  }
+
   static isPracticeExcludedQuestion(question = {}) {
     if (!question || typeof question !== "object") {
       return false;
@@ -940,6 +1050,77 @@ export class QuestionService {
     return Array.from(dedupedQuestions.values());
   }
 
+  static buildDetailedQuestion(rawQuestion = {}, indexedQuestion = null) {
+    const normalizedDetail = this.normalizeQuestion(rawQuestion);
+    const mergedExam = indexedQuestion?.exam || normalizedDetail.exam;
+    const mergedSubjectLabel = indexedQuestion?.subject || normalizedDetail.subject;
+    const mergedSubjectSlug = indexedQuestion?.subjectSlug || normalizedDetail.subjectSlug;
+    const mergedSubtopics = Array.isArray(indexedQuestion?.subtopics)
+      && indexedQuestion.subtopics.length > 0
+      ? indexedQuestion.subtopics
+      : normalizedDetail.subtopics;
+    const mergedType = this.normalizeTypeToken(
+      indexedQuestion?.type || normalizedDetail.type
+    );
+    const mergedTags = Array.isArray(normalizedDetail.tags) && normalizedDetail.tags.length > 0
+      ? normalizedDetail.tags
+      : Array.isArray(indexedQuestion?.tags)
+        ? indexedQuestion.tags
+        : [];
+
+    return {
+      ...normalizedDetail,
+      preview: indexedQuestion?.preview || "",
+      searchText: indexedQuestion?.searchText || "",
+      detailShardKey: this.getDetailShardKey(indexedQuestion || normalizedDetail),
+      tags: mergedTags,
+      tagsRaw: [...mergedTags],
+      exam: mergedExam,
+      year: mergedExam?.year ?? normalizedDetail.year,
+      set: mergedExam?.set ?? normalizedDetail.set,
+      yearSetKey: mergedExam?.yearSetKey || normalizedDetail.yearSetKey,
+      yearSetLabel: mergedExam?.label || normalizedDetail.yearSetLabel,
+      subject: mergedSubjectLabel,
+      subjectSlug: mergedSubjectSlug,
+      subtopics: mergedSubtopics,
+      type: mergedType,
+      canonical: {
+        ...(normalizedDetail.canonical || {}),
+        exam: mergedExam,
+        subject: mergedSubjectSlug,
+        subjectLabel: mergedSubjectLabel,
+        subtopics: mergedSubtopics,
+        type: mergedType,
+        tagsRaw: [...mergedTags],
+      },
+    };
+  }
+
+  static _processIndexChunked(rows, chunkSize = 1000) {
+    return new Promise((resolve) => {
+      const results = [];
+      let offset = 0;
+
+      const processNext = () => {
+        const end = Math.min(offset + chunkSize, rows.length);
+        for (let i = offset; i < end; i += 1) {
+          const hydrated = this.hydrateIndexedQuestion(rows[i]);
+          if (hydrated.title !== "General") {
+            results.push(hydrated);
+          }
+        }
+        offset = end;
+        if (offset < rows.length) {
+          setTimeout(processNext, 0);
+        } else {
+          resolve(results);
+        }
+      };
+
+      processNext();
+    });
+  }
+
   // ── Layer 2 helper: process questions in yielding chunks ───────────────
   static _processChunked(rows, chunkSize = 500) {
     return new Promise((resolve) => {
@@ -972,13 +1153,14 @@ export class QuestionService {
   }
 
   // ── Layer 4 helpers: localStorage cache ────────────────────────────────
-  static _readCache() {
+  static _readCache({ fullBank = false } = {}) {
     try {
       // Migration: clean up legacy caches
-      localStorage.removeItem('gateqa_init_cache_v1');
-      localStorage.removeItem('gateqa_init_cache_v2');
-      localStorage.removeItem('gateqa_init_cache_v3');
-      const raw = localStorage.getItem(INIT_CACHE_KEY);
+      localStorage.removeItem("gateqa_init_cache_v1");
+      localStorage.removeItem("gateqa_init_cache_v2");
+      localStorage.removeItem("gateqa_init_cache_v3");
+      localStorage.removeItem("gateqa_init_cache_v7");
+      const raw = localStorage.getItem(this.getCacheKey({ fullBank }));
       if (!raw) return null;
       const cached = JSON.parse(raw);
       if (!cached || !Array.isArray(cached.questions) || !cached.sourceUrl) {
@@ -1004,7 +1186,7 @@ export class QuestionService {
   }
 
   // Restore stripped fields when reading from cache
-  static _hydrateFromCache(questions) {
+  static _hydrateFromCache(questions, { fullBank = false } = {}) {
     const hydratedQuestions = questions.map(q => {
       q.tagsRaw = Array.isArray(q.tags) ? [...q.tags] : [];
       if (q.canonical && typeof q.canonical === 'object') {
@@ -1013,16 +1195,19 @@ export class QuestionService {
       return q;
     });
 
-    return this.finalizeQuestions(hydratedQuestions);
+    if (fullBank) {
+      return this.finalizeQuestions(hydratedQuestions);
+    }
+    return hydratedQuestions;
   }
 
-  static _writeCache() {
+  static _writeCache({ fullBank = false } = {}) {
     try {
       const payload = {
         sourceUrl: this.sourceUrl,
         questions: this._stripForCache(this.questions),
       };
-      localStorage.setItem(INIT_CACHE_KEY, JSON.stringify(payload));
+      localStorage.setItem(this.getCacheKey({ fullBank }), JSON.stringify(payload));
     } catch (err) {
       if (isQuotaExceededError(err)) {
         console.warn('[QuestionService] Cache write failed (quota exceeded)');
@@ -1034,33 +1219,39 @@ export class QuestionService {
 
   /** Bust the init cache (call after pushing new question data). */
   static clearInitCache() {
-    try { localStorage.removeItem(INIT_CACHE_KEY); } catch { /* noop */ }
+    try {
+      localStorage.removeItem(INDEX_CACHE_KEY);
+      localStorage.removeItem(FULL_BANK_CACHE_KEY);
+      localStorage.removeItem("gateqa_init_cache_v7");
+    } catch { /* noop */ }
   }
 
-  static async init() {
-    if (this.loaded) {
-      return;
+  static async _loadIndexedDataset(baseUrl) {
+    const dataUrl = `${baseUrl}question-search-index.json`;
+    const response = await fetch(dataUrl, { cache: "no-cache" });
+    if (!response.ok) {
+      throw new Error(`Failed to load question search index (${response.status}).`);
     }
 
-    console.time('QuestionService.init');
-
-    // ── Layer 4: try localStorage cache first ───────────────────────────
-    const cached = this._readCache();
-    if (cached) {
-      this.sourceUrl = cached.sourceUrl;
-      this.questions = this._hydrateFromCache(cached.questions);
-      this.loaded = true;
-      this.buildIndexes();
-      console.timeEnd('QuestionService.init');
-
-      return;
+    const payload = await response.json();
+    if (!Array.isArray(payload) || payload.length === 0) {
+      throw new Error("Question search index payload is invalid.");
     }
 
-    // ── Network fetch (unchanged candidate logic) ───────────────────────
-    const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-      ? import.meta.env.BASE_URL
-      : `${import.meta.env.BASE_URL}/`;
+    const objectRows = payload.filter(
+      (question) => question && typeof question === "object"
+    );
+    if (!objectRows.length) {
+      throw new Error("Question search index payload is invalid.");
+    }
 
+    return {
+      sourceUrl: dataUrl,
+      questions: await this._processIndexChunked(objectRows),
+    };
+  }
+
+  static async _loadFullBankDataset(baseUrl) {
     const dataCandidates = [
       `${baseUrl}questions-with-answers.json`,
       `${baseUrl}questions-filtered-with-ids.json`,
@@ -1079,7 +1270,6 @@ export class QuestionService {
       if (!Array.isArray(payload) || payload.length === 0) {
         continue;
       }
-
       const objectRows = payload.filter(
         (question) => question && typeof question === "object"
       );
@@ -1112,32 +1302,101 @@ export class QuestionService {
       throw new Error(`Failed to load questions (${lastStatus}).`);
     }
 
-    this.sourceUrl = bestCandidate.dataUrl;
+    return {
+      sourceUrl: bestCandidate.dataUrl,
+      questions: await this._processChunked(bestCandidate.data),
+      joinCoverage: bestCandidate.joinCoverage,
+      joinReadyCount: bestCandidate.joinReadyCount,
+      candidateCount: bestCandidate.data.length,
+      candidateUrl: bestCandidate.dataUrl,
+    };
+  }
 
-    // ── Layer 2: chunked idle-time processing ───────────────────────────
-    this.questions = await this._processChunked(bestCandidate.data);
-
-    if (bestCandidate.joinCoverage < 1) {
-      console.warn(
-        `[QuestionService] Using ${bestCandidate.dataUrl} with ${bestCandidate.joinReadyCount}/${bestCandidate.data.length} native join identities.`
-      );
+  static async init({ fullBank = false } = {}) {
+    if (this.hasLoadedDataset({ fullBank })) {
+      return;
     }
 
-    this.loaded = true;
-    this.buildIndexes();
+    const mode = fullBank ? "full" : "index";
+    if (this.pendingLoads[mode]) {
+      return this.pendingLoads[mode];
+    }
 
+    const timingLabel = fullBank
+      ? "QuestionService.init:full"
+      : "QuestionService.init:index";
+    console.time(timingLabel);
+
+    // ── Layer 4: try localStorage cache first ───────────────────────────
+    this.pendingLoads[mode] = (async () => {
+      const cached = this._readCache({ fullBank });
+      if (cached) {
+        this.sourceUrl = cached.sourceUrl;
+        this.questions = this._hydrateFromCache(cached.questions, { fullBank });
+        this.loaded = true;
+        this.loadMode = fullBank ? "full" : "index";
+        if (fullBank) {
+          this.detailCache = new Map(
+            this.questions
+              .filter((question) => question?.question_uid)
+              .map((question) => [question.question_uid, question])
+          );
+        }
+        this.buildIndexes();
+        return;
+      }
+
+    // ── Network fetch (unchanged candidate logic) ───────────────────────
+      const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+      const dataset = fullBank
+        ? await this._loadFullBankDataset(baseUrl)
+        : await this._loadIndexedDataset(baseUrl);
+
+      this.sourceUrl = dataset.sourceUrl;
+      this.questions = dataset.questions;
+      this.loaded = true;
+      this.loadMode = fullBank ? "full" : "index";
+      if (fullBank) {
+        this.detailCache = new Map(
+          this.questions
+            .filter((question) => question?.question_uid)
+            .map((question) => [question.question_uid, question])
+        );
+      }
+      this.buildIndexes();
+
+      if (fullBank && dataset.joinCoverage < 1) {
+        console.warn(
+          `[QuestionService] Using ${dataset.candidateUrl} with ${dataset.joinReadyCount}/${dataset.candidateCount} native join identities.`
+        );
+      }
+
+      this._writeCache({ fullBank });
+    })()
+      .finally(() => {
+        this.pendingLoads[mode] = null;
+        console.timeEnd(timingLabel);
+      });
+
+    return this.pendingLoads[mode];
+
+    
+
+    // ── Layer 2: chunked idle-time processing ───────────────────────────
     // ── Layer 4: persist to localStorage for instant subsequent loads ────
-    this._writeCache();
-
-    console.timeEnd('QuestionService.init');
-
   }
 
   static buildIndexes() {
     this.count = new Map();
     const tagSet = new Set();
+    this.questionsByUid = new Map();
 
     for (const question of this.questions) {
+      if (question?.question_uid) {
+        this.questionsByUid.set(question.question_uid, question);
+      }
       for (const tag of question.tags || []) {
         tagSet.add(tag);
         this.count.set(tag, (this.count.get(tag) || 0) + 1);
@@ -1145,6 +1404,76 @@ export class QuestionService {
     }
 
     this.tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+  }
+
+  static async loadDetailShard(shardKey = "unknown") {
+    const normalizedShardKey = String(shardKey || "unknown").trim() || "unknown";
+    if (this.detailShardCache.has(normalizedShardKey)) {
+      return this.detailShardCache.get(normalizedShardKey);
+    }
+    if (this.detailShardPromises.has(normalizedShardKey)) {
+      return this.detailShardPromises.get(normalizedShardKey);
+    }
+
+    const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+      ? import.meta.env.BASE_URL
+      : `${import.meta.env.BASE_URL}/`;
+    const shardUrl = `${baseUrl}question-detail-shards/${encodeURIComponent(normalizedShardKey)}.json`;
+
+    const shardPromise = fetch(shardUrl, { cache: "no-cache" })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load question detail shard (${response.status}).`);
+        }
+        const payload = await response.json();
+        const recordsByQuestionUid = payload?.recordsByQuestionUid;
+        if (!recordsByQuestionUid || typeof recordsByQuestionUid !== "object") {
+          throw new Error("Question detail shard payload is invalid.");
+        }
+        this.detailShardCache.set(normalizedShardKey, recordsByQuestionUid);
+        return recordsByQuestionUid;
+      })
+      .finally(() => {
+        this.detailShardPromises.delete(normalizedShardKey);
+      });
+
+    this.detailShardPromises.set(normalizedShardKey, shardPromise);
+    return shardPromise;
+  }
+
+  static async ensureQuestionDetail(questionOrUid = null) {
+    const questionUid = typeof questionOrUid === "string"
+      ? String(questionOrUid || "").trim()
+      : String(questionOrUid?.question_uid || "").trim();
+    if (!questionUid) {
+      return null;
+    }
+
+    if (this.detailCache.has(questionUid)) {
+      return this.detailCache.get(questionUid);
+    }
+
+    const indexedQuestion = typeof questionOrUid === "object" && questionOrUid
+      ? questionOrUid
+      : this.questionsByUid.get(questionUid) || null;
+    if (!indexedQuestion) {
+      return null;
+    }
+
+    if (this.loadMode === "full") {
+      return this.questionsByUid.get(questionUid) || null;
+    }
+
+    const shardKey = this.getDetailShardKey(indexedQuestion);
+    const recordsByQuestionUid = await this.loadDetailShard(shardKey);
+    const rawQuestion = recordsByQuestionUid?.[questionUid];
+    if (!rawQuestion) {
+      throw new Error(`Question detail not found for ${questionUid}.`);
+    }
+
+    const detailedQuestion = this.buildDetailedQuestion(rawQuestion, indexedQuestion);
+    this.detailCache.set(questionUid, detailedQuestion);
+    return detailedQuestion;
   }
 
   static getErrorQuestion(title = "No matching question for this filter.") {

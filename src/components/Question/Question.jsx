@@ -1,9 +1,9 @@
 import React from "react";
-import { MathJax } from "better-react-mathjax";
 import DOMPurify from "dompurify";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import AnswerPanel from "../AnswerPanel/AnswerPanel";
 import { useFilterActions } from "../../contexts/FilterContext";
+import { MathContent } from "../Math/MathRuntime";
 
 function Question({ question = {}, changeQuestion }) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
@@ -37,7 +37,8 @@ function Question({ question = {}, changeQuestion }) {
               )}
             </div>
           </div>
-          <MathJax
+          <MathContent
+            as="div"
             dynamic
             className="text-gray-500 mt-1 leading-6 text-xl overflow-auto whitespace-normal"
           >
@@ -46,7 +47,7 @@ function Question({ question = {}, changeQuestion }) {
                 __html: sanitizedQuestionHtml,
               }}
             ></div>
-          </MathJax>
+          </MathContent>
         </div>
 
         <AnswerPanel

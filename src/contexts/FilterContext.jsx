@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useDeferredValue } from 'react';
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
 
@@ -17,6 +17,65 @@ const LEGACY_STORAGE_KEYS = {
     bookmarked: 'gateqa_bookmarks_v1'
 };
 const STORAGE_HEALTH_KEY = '__gate_qa_storage_health_check__';
+
+const buildStructuredTagsFromManifest = (manifest = null) => {
+    const yearSets = Array.isArray(manifest?.yearSets)
+        ? manifest.yearSets
+            .map((entry) => ({
+                key: String(entry?.key || '').trim(),
+                year: Number(entry?.year),
+                set: Number.isFinite(Number(entry?.set)) && Number(entry?.set) > 0
+                    ? Number(entry?.set)
+                    : null,
+                label: String(entry?.label || '').trim(),
+                count: Number(entry?.count || 0),
+            }))
+            .filter((entry) => entry.key && Number.isFinite(entry.year) && entry.label)
+        : [];
+
+    const subjects = Array.isArray(manifest?.subjects)
+        ? manifest.subjects
+            .map((subject) => ({
+                slug: QuestionService.normalizeSubjectSlug(subject?.slug || subject?.label || '') || 'unknown',
+                label: String(subject?.label || QuestionService.getSubjectLabelBySlug(subject?.slug || '') || 'Unknown').trim(),
+                count: Number(subject?.count || 0),
+            }))
+            .filter((subject) => subject.slug && subject.label && subject.slug !== 'unknown')
+        : [];
+
+    const structuredSubtopics = {};
+    const structuredTopics = {};
+    subjects.forEach((subject) => {
+        structuredSubtopics[subject.slug] = [];
+        structuredTopics[subject.label] = [];
+    });
+
+    const numericYears = yearSets
+        .map((entry) => entry.year)
+        .filter((year) => Number.isFinite(year));
+    const minYear = numericYears.length ? Math.min(...numericYears) : DEFAULT_MIN_YEAR;
+    const maxYear = numericYears.length ? Math.max(...numericYears) : DEFAULT_MAX_YEAR;
+
+    return {
+        yearSets,
+        years: yearSets.map((entry) => entry.key),
+        subjects,
+        topics: subjects.map((subject) => subject.slug),
+        structuredSubtopics,
+        structuredTopics,
+        minYear,
+        maxYear
+    };
+};
+
+const hasCustomYearRange = (yearRange, minYear, maxYear) => (
+    Array.isArray(yearRange)
+    && yearRange.length === 2
+    && (
+        Number(yearRange[0]) !== Number(minYear)
+        || Number(yearRange[1]) !== Number(maxYear)
+    )
+);
 
 const normalizeSelectedTypes = (rawTypes, { fallbackToDefault = false } = {}) => {
     if (!Array.isArray(rawTypes)) {
@@ -174,6 +233,18 @@ const parseBooleanParam = (value) => {
     return normalized === '1' || normalized === 'true' || normalized === 'yes';
 };
 
+const normalizeSearchQuery = (value) => (
+    String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+);
+
+const tokenizeSearchQuery = (value) => {
+    const normalized = normalizeSearchQuery(value);
+    return normalized ? normalized.split(' ') : [];
+};
+
 const canUseBrowserStorage = () => {
     if (typeof window === 'undefined') {
         return false;
@@ -228,21 +299,18 @@ export const useFilterActions = () => {
     return ctx;
 };
 
-export const FilterProvider = ({ children }) => {
-    const [structuredTags, setStructuredTags] = useState({
-        yearSets: [],
-        years: [],
-        subjects: [],
-        topics: [],
-        structuredSubtopics: {},
-        structuredTopics: {},
-        minYear: DEFAULT_MIN_YEAR,
-        maxYear: DEFAULT_MAX_YEAR
-    });
+export const FilterProvider = ({
+    children,
+    initialManifest = null,
+    questionDataRevision = 0
+}) => {
+    const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest));
 
-    const [filters, setFilters] = useState({
+    const [filters, setFilters] = useState(() => {
+        const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest);
+        return {
         selectedYearSets: [],
-        yearRange: [DEFAULT_MIN_YEAR, DEFAULT_MAX_YEAR],
+        yearRange: [manifestStructuredTags.minYear, manifestStructuredTags.maxYear],
         selectedSubjects: [],
         selectedSubtopics: [],
         selectedTypes: [...DEFAULT_SELECTED_TYPES],
@@ -250,10 +318,11 @@ export const FilterProvider = ({ children }) => {
         showOnlySolved: false,
         showOnlyBookmarked: false,
         searchQuery: ''
+        };
     });
 
 
-    const [totalQuestions, setTotalQuestions] = useState(0);
+    const [totalQuestions, setTotalQuestions] = useState(() => Number(initialManifest?.questionCount || 0));
     const [isInitialized, setIsInitialized] = useState(false);
 
     const [solvedQuestionIds, setSolvedQuestionIds] = useState([]);
@@ -266,6 +335,24 @@ export const FilterProvider = ({ children }) => {
     );
 
     useEffect(() => {
+        if (!initialManifest || QuestionService.questions.length > 0) {
+            return;
+        }
+
+        const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest);
+        setStructuredTags(manifestStructuredTags);
+        setTotalQuestions(Number(initialManifest.questionCount || 0));
+
+        const { minYear, maxYear } = manifestStructuredTags;
+        setFilters(prev => ({
+            ...prev,
+            yearRange: hasCustomYearRange(prev.yearRange, structuredTags.minYear, structuredTags.maxYear)
+                ? prev.yearRange
+                : [minYear, maxYear]
+        }));
+    }, [initialManifest]);
+
+    useEffect(() => {
         if (QuestionService.questions.length > 0) {
             const tags = QuestionService.getStructuredTags();
             setStructuredTags(tags);
@@ -273,22 +360,17 @@ export const FilterProvider = ({ children }) => {
 
             const { minYear, maxYear } = tags;
             setFilters(prev => {
-                // Only overwrite if it was completely pristine
-                const hasCustomRange = prev.yearRange
-                    && prev.yearRange.length === 2
-                    && (
-                        prev.yearRange[0] > DEFAULT_MIN_YEAR
-                        || prev.yearRange[1] < DEFAULT_MAX_YEAR
-                    );
                 return {
                     ...prev,
-                    yearRange: hasCustomRange ? prev.yearRange : [minYear, maxYear]
+                    yearRange: hasCustomYearRange(prev.yearRange, DEFAULT_MIN_YEAR, DEFAULT_MAX_YEAR)
+                        ? prev.yearRange
+                        : [minYear, maxYear]
                 };
             });
 
             setIsInitialized(true);
         }
-    }, [QuestionService.loaded]);
+    }, [questionDataRevision]);
 
     useEffect(() => {
         if (!isInitialized) {
@@ -313,7 +395,8 @@ export const FilterProvider = ({ children }) => {
                 : normalizeSelectedTypes(urlTypes.split(',').filter(Boolean)),
             hideSolved: parseBooleanParam(params.get('hideSolved')),
             showOnlySolved: parseBooleanParam(params.get('showOnlySolved')),
-            showOnlyBookmarked: parseBooleanParam(params.get('showOnlyBookmarked'))
+            showOnlyBookmarked: parseBooleanParam(params.get('showOnlyBookmarked')),
+            searchQuery: normalizeSearchQuery(params.get('search'))
         };
 
         // Apply state safely using standard initial values + url overrides to ensure stability
@@ -325,6 +408,7 @@ export const FilterProvider = ({ children }) => {
             merged.hideSolved = urlFilters.hideSolved;
             merged.showOnlySolved = urlFilters.showOnlySolved;
             merged.showOnlyBookmarked = urlFilters.showOnlyBookmarked;
+            merged.searchQuery = urlFilters.searchQuery;
             merged = reconcileSubjectAndSubtopicFilters(
                 merged,
                 {
@@ -382,6 +466,11 @@ export const FilterProvider = ({ children }) => {
         }
         if (filters.showOnlyBookmarked) {
             params.set('showOnlyBookmarked', '1');
+        }
+
+        const normalizedSearchQuery = normalizeSearchQuery(filters.searchQuery);
+        if (normalizedSearchQuery) {
+            params.set('search', normalizedSearchQuery);
         }
 
         // Re-attach the question param so deep-link is not wiped by filter sync
@@ -460,7 +549,7 @@ export const FilterProvider = ({ children }) => {
                 .map(question => getQuestionTrackingId(question))
                 .filter(Boolean)
         );
-    }, [isInitialized, totalQuestions]);
+    }, [isInitialized, totalQuestions, questionDataRevision]);
 
     useEffect(() => {
         if (!isInitialized || validQuestionIdSet.size === 0) {
@@ -485,6 +574,15 @@ export const FilterProvider = ({ children }) => {
     const subtopicToSubjectSlug = useMemo(
         () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics),
         [structuredTags.structuredSubtopics]
+    );
+    const deferredSearchQuery = useDeferredValue(filters.searchQuery);
+    const normalizedDeferredSearchQuery = useMemo(
+        () => normalizeSearchQuery(deferredSearchQuery),
+        [deferredSearchQuery]
+    );
+    const searchTokens = useMemo(
+        () => tokenizeSearchQuery(normalizedDeferredSearchQuery),
+        [normalizedDeferredSearchQuery]
     );
 
     // ── Layer 3: useMemo-based filtered questions ────────────────────────
@@ -593,7 +691,15 @@ export const FilterProvider = ({ children }) => {
                 typeMatch = selectedTypeSet.has(resolvedType.toUpperCase());
             }
 
-            return yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch;
+            let searchMatch = true;
+            if (searchTokens.length > 0) {
+                const searchText = String(q.searchText || '').toLowerCase();
+                searchMatch = searchText
+                    ? searchTokens.every((token) => searchText.includes(token))
+                    : false;
+            }
+
+            return yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch && searchMatch;
         });
     }, [
         filters.selectedTypes,
@@ -609,7 +715,8 @@ export const FilterProvider = ({ children }) => {
         bookmarkedQuestionSet,
         structuredTags.minYear,
         structuredTags.maxYear,
-        subtopicToSubjectSlug
+        subtopicToSubjectSlug,
+        searchTokens
     ]);
 
     const updateFilters = useCallback((newFilters) => {
@@ -620,6 +727,9 @@ export const FilterProvider = ({ children }) => {
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedYearSets')) {
                 merged.selectedYearSets = normalizeYearSetTokens(newFilters.selectedYearSets);
+            }
+            if (Object.prototype.hasOwnProperty.call(newFilters, 'searchQuery')) {
+                merged.searchQuery = normalizeSearchQuery(newFilters.searchQuery);
             }
             return reconcileSubjectAndSubtopicFilters(merged, newFilters, subtopicToSubjectSlug);
         });

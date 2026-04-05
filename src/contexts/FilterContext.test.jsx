@@ -2,8 +2,9 @@
  * @vitest-environment jsdom
  */
 import React from 'react';
-import { render, act, waitFor } from '@testing-library/react';
+import { render, act, screen, waitFor } from '@testing-library/react';
 import { FilterProvider, useFilterState, useFilterActions } from './FilterContext';
+import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
 import { QuestionService } from '../services/QuestionService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 
@@ -17,6 +18,7 @@ vi.mock('../services/QuestionService', () => ({
             {
                 question_uid: 'go:1',
                 title: 'Q1',
+                searchText: 'database schema normalization functional dependency',
                 subjectSlug: 'databases',
                 subtopics: [{ slug: 'schema-normalization' }],
                 exam: { year: 2024 }
@@ -24,6 +26,7 @@ vi.mock('../services/QuestionService', () => ({
             {
                 question_uid: 'go:2',
                 title: 'Q2',
+                searchText: 'operating system deadlock prevention resource allocation',
                 subjectSlug: 'os',
                 subtopics: [{ slug: 'deadlock' }],
                 exam: { year: 2024 }
@@ -50,7 +53,8 @@ vi.mock('../services/QuestionService', () => ({
         normalizeSubjectSlug: vi.fn(s => String(s).toLowerCase()),
         slugifyToken: vi.fn(s => String(s).toLowerCase()),
         normalizeTypeToken: vi.fn(t => (t || 'MCQ').toUpperCase()),
-        formatYearSetLabel: vi.fn(s => s)
+        formatYearSetLabel: vi.fn(s => s),
+        ensureQuestionDetail: vi.fn()
     },
 }));
 
@@ -76,7 +80,9 @@ describe('FilterContext', () => {
                 <div data-testid="subjects">{filters.selectedSubjects.join(',')}</div>
                 <div data-testid="subtopics">{filters.selectedSubtopics.join(',')}</div>
                 <div data-testid="year-range">{filters.yearRange.join(',')}</div>
+                <div data-testid="search-query">{filters.searchQuery}</div>
                 <div data-testid="filtered-question-uids">{filteredQuestions.map((question) => question.question_uid).join(',')}</div>
+                <ActiveFilterChips />
                 <button
                     data-testid="add-both"
                     onClick={() => updateFilters({ selectedSubjects: ['databases'], selectedSubtopics: ['schema-normalization'] })}
@@ -85,6 +91,18 @@ describe('FilterContext', () => {
                     data-testid="remove-subject"
                     onClick={() => updateFilters({ selectedSubjects: [] })}
                 >Remove</button>
+                <button
+                    data-testid="set-search"
+                    onClick={() => updateFilters({ searchQuery: 'deadlock' })}
+                >Search</button>
+                <button
+                    data-testid="set-search-match"
+                    onClick={() => updateFilters({ searchQuery: '  DEAD   lock   prevention ' })}
+                >SearchMatch</button>
+                <button
+                    data-testid="set-search-miss"
+                    onClick={() => updateFilters({ searchQuery: 'deadlock normalization' })}
+                >SearchMiss</button>
             </div>
         );
     };
@@ -159,5 +177,84 @@ describe('FilterContext', () => {
         );
 
         expect(getByTestId('year-range').textContent).toBe('1987,2026');
+    });
+
+    test('hydrates search from URL, normalizes it, and applies AND token matching without loading detail shards', async () => {
+        window.history.replaceState({}, '', '/?search=%20DEAD%20%20LOCK%20prevention%20');
+
+        const { getByTestId } = render(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('search-query').textContent).toBe('dead lock prevention');
+        });
+
+        expect(getByTestId('filtered-question-uids').textContent).toBe('go:2');
+        expect(new URLSearchParams(window.location.search).get('search')).toBe('dead lock prevention');
+        expect(QuestionService.ensureQuestionDetail).not.toHaveBeenCalled();
+
+        act(() => {
+            getByTestId('set-search-miss').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('search-query').textContent).toBe('deadlock normalization');
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('filtered-question-uids').textContent).toBe('');
+        });
+    });
+
+    test('preserves question while syncing search and clears search from chip actions', async () => {
+        window.history.replaceState({}, '', '/?question=go:2&search=deadlock');
+
+        const { getByTestId } = render(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('search-query').textContent).toBe('deadlock');
+        });
+
+        expect(screen.getByText('Search: deadlock')).toBeTruthy();
+        expect(new URLSearchParams(window.location.search).get('question')).toBe('go:2');
+
+        act(() => {
+            screen.getByRole('button', { name: /remove search filter/i }).click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('search-query').textContent).toBe('');
+        });
+
+        let params = new URLSearchParams(window.location.search);
+        expect(params.get('question')).toBe('go:2');
+        expect(params.get('search')).toBeNull();
+
+        act(() => {
+            getByTestId('set-search').click();
+        });
+
+        await waitFor(() => {
+            expect(screen.getByText('Search: deadlock')).toBeTruthy();
+        });
+
+        act(() => {
+            screen.getByRole('button', { name: /clear all/i }).click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('search-query').textContent).toBe('');
+        });
+
+        params = new URLSearchParams(window.location.search);
+        expect(params.get('question')).toBe('go:2');
+        expect(params.get('search')).toBeNull();
     });
 });

@@ -1,6 +1,8 @@
 ﻿# GATE QA
 
-Extensive, searchable, and filterable GATE CSE previous-year question bank — 3,500+ questions from 1987 to 2026, with a forward-ingestion pipeline for new exam years.
+Extensive, searchable, and filterable GATE CSE previous-year question bank from 1987 to 2026, with a forward-ingestion pipeline for new exam years.
+
+Published data count/status is generated into `docs/generated/DATA_STATUS.md` so docs do not have to hardcode question totals.
 
 ## Live demo
 
@@ -18,6 +20,7 @@ https://superawat.github.io/Gate_QA/
   - Import JSON with Merge/Replace confirmation
 - Built-in draggable scientific calculator (`Ctrl+K`)
 - Math rendering with MathJax and content sanitization via DOMPurify
+- Generated public manifest and lightweight search index for landing/search work
 - Automated GATE question pipeline for 2026+ (FEAT-003)
 
 ## Tech stack
@@ -51,6 +54,7 @@ npm start
 `npm start` runs precompute first:
 
 - `scripts/precompute-subtopics.mjs`
+- `scripts/build-public-artifacts.mjs`
 - calculator asset sync
 - Vite dev server
 
@@ -63,10 +67,11 @@ npm run build
 Build pipeline includes:
 
 1. precompute subtopic lookup
-2. calculator sync to `public/`
-3. Vite build
-4. `.nojekyll` creation
-5. calculator sync to `dist/`
+2. generated public artifact refresh
+3. calculator sync to `public/`
+4. Vite build
+5. `.nojekyll` creation
+6. calculator sync to `dist/`
 
 ### Preview
 
@@ -79,24 +84,23 @@ npm run serve
 ```bash
 npm run test:unit
 npm run qa:validate-data
+npm run qa:validate-public-parity
 ```
-
-Current unit suite status: 88 passing tests.
 
 ## Automated Data Pipeline (FEAT-003)
 
 Starting with GATE 2026, new questions are scraped, normalised, answer-backfilled, merged, validated, and deployed through the FEAT-003 pipeline.
 
-- **Schedule:** April 1 and October 1 via `.github/workflows/gate-question-pipeline.yml`
+- **Schedule:** April 1-5 and October 1-5 via `.github/workflows/gate-question-pipeline.yml`
 - **Manual trigger:** `workflow_dispatch` with optional `force_year` input
-- **Manual fallback:** if the scheduled run misses the window or times out during the long scrape/backfill stages, run the pipeline locally from `scripts/pipeline/` and then rebuild/deploy
+- **Manual fallback:** if the scheduled retry window still misses the release or a manual intervention is needed, run the pipeline locally from `scripts/pipeline/` and then rebuild/deploy
 - **Failure safety:** Live site remains on last successful deploy; a GitHub Issue is auto-created on failure
 
 Current status:
 
 - GATE 2026 question import completed on 2026-04-04 with all 130 questions captured (65 per set)
 - Historical paper-count repair completed on 2026-04-04; audited papers from 2010 onward now resolve to 65 questions each
-- 2026 answer backfill is still pending, so the imported 2026 rows currently have `answer: null`
+- public data status snapshot now lives in `docs/generated/DATA_STATUS.md`, and public parity is now CI-guarded
 
 Pipeline scripts live in `scripts/pipeline/` and are documented in `docs/DATA_PIPELINE.md`.
 
@@ -105,6 +109,7 @@ Pipeline scripts live in `scripts/pipeline/` and are documented in `docs/DATA_PI
 See `docs/README.md` for full documentation map, including:
 
 - `docs/ARCHITECTURE.md` — system architecture and data flow
+- `docs/FREE_PLATFORM_IMPROVEMENT_PLAN.md` — current platform priorities and phased startup/trust plan
 - `docs/DATA_PIPELINE.md` — historical data context, forward pipeline, crawl policy
 - `docs/REPO_STRUCTURE.md` — complete repository layout
 - `docs/DEPLOYMENT.md` — CI/CD and manual deploy instructions

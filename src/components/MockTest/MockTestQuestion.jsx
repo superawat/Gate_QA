@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
-import { MathJax } from "better-react-mathjax";
 import DOMPurify from "dompurify";
 import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
+import { MathContent } from "../Math/MathRuntime";
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
 
@@ -193,13 +193,14 @@ const MockTestQuestion = ({
                     >
                         {/* Question stem */}
                         <div className="mocktest-question-stem mb-6 border-l-2 border-transparent py-3">
-                            <MathJax
+                            <MathContent
+                                as="div"
                                 key={questionUid}
                                 dynamic
                                 className="mt-1 max-w-full overflow-auto whitespace-normal text-xl leading-6 text-gray-500"
                             >
                                 <div dangerouslySetInnerHTML={{ __html: sanitizedQuestionHtml }}></div>
-                            </MathJax>
+                            </MathContent>
                         </div>
 
                         {/* Options area */}
@@ -287,13 +288,14 @@ const MockTestQuestion = ({
                                                             />
                                                             <span className="mock-option-label font-medium flex-shrink-0">{OPTION_LABELS[index] ?? optionValue}.</span>
                                                             {sanitizedOptionHtml ? (
-                                                                <MathJax
+                                                                <MathContent
+                                                                    as="span"
                                                                     key={`${questionUid}-opt-${optionValue}`}
                                                                     dynamic
                                                                     className="mock-option-text flex-1 overflow-auto"
                                                                 >
                                                                     <span dangerouslySetInnerHTML={{ __html: sanitizedOptionHtml }} />
-                                                                </MathJax>
+                                                                </MathContent>
                                                             ) : (
                                                                 <span className="mock-option-text flex-1">{optionValue}</span>
                                                             )}

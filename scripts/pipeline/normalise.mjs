@@ -15,6 +15,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { writeGithubOutput } from "./shared.mjs";
 
 const ROOT = path.resolve(
     path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1")),
@@ -427,10 +428,8 @@ function main() {
     );
 
     // GitHub Actions output
-    console.log(`::set-output name=normalised_count::${normalised.length}`);
-    console.log(
-        `::set-output name=unknown_subject_count::${unknownSubjects.length}`
-    );
+    writeGithubOutput("normalised_count", normalised.length);
+    writeGithubOutput("unknown_subject_count", unknownSubjects.length);
 }
 
 main();

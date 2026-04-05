@@ -4,6 +4,26 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### BUG-022: Loading states used inconsistent visuals across the app -> Status: Done
+- Added a shared `LoadingState` wrapper around the existing horizontal bar loader so the app no longer mixes text-only and ad hoc loading UIs.
+- Reused the same loading animation for shell fallback, landing manifest loading, practice initialization, question-detail hydration, and calculator loading.
+
+### BUG-020: Public bank counts disagree across artifacts and docs -> Status: Done
+- Reconciled the published public-bank count across `public`, `pipeline-state.json`, `audit/validation-report-2026.json`, and `docs/generated/data-status.json`.
+- Added published-count fields to the pipeline state and validation report so parity checks compare the public bank consistently.
+- Promoted `npm run qa:validate-public-parity` into CI before deploy.
+
+### BUG-021: Practice startup depended on the full question bank payload -> Status: Done
+- Split practice startup onto `public/question-search-index.json` instead of eagerly depending on `questions-with-answers.json`.
+- Added generated `public/question-detail-shards/*.json` so full question HTML is fetched only for the active practice question.
+- Updated `QuestionService` to cache index/full-bank datasets separately and hydrate question detail on demand.
+
+### BUG-019: Landing cold start eagerly loads the full runtime -> Status: Done
+- Lazy-loaded `PracticeShell` and `MockShell` from `App.jsx`, so the landing route no longer parses those shells on first paint.
+- Kept MathJax behind `src/components/Math/MathRuntime.jsx`, which now loads only inside practice/mock runtime instead of the cold landing path.
+- Removed the old unused GoatCounter SPA helper files after consolidating analytics in `src/utils/analytics.js`.
+- Production build now emits separate `PracticeShell` and `MockShell` chunks, shrinking the landing entry bundle materially.
+
 ### BUG-018: URL history behavior and docs are out of sync -> Status: Done
 - Restored landing `?mode=` URL writes in `App.jsx` to use `window.history.replaceState(...)` instead of `pushState(...)`.
 - Added a regression assertion in `App.test.jsx` to keep landing mode transitions off the browser history stack.
@@ -51,6 +71,7 @@ All notable changes to GateQA are documented in this file.
 - Updated pipeline subject mapping so General Aptitude imports correctly classify spatial/pattern-style GA tags instead of quarantining them as unknown.
 - Busted the runtime init cache and removed 2025-only filter fallbacks so the filter page surfaces 2026 immediately after the data import.
 - Updated documentation with the manual catch-up runbook and current scheduled-workflow timeout caveat.
+- Hardened the automatic FEAT-003 workflow with a release-window retry schedule, a long enough unattended timeout budget, fast-fail handling for non-retryable 4xx tag probes, and transient retry handling for answer backfill.
 - 2026 answer backfill remains pending; the imported 2026 rows currently carry `answer: null`.
 
 ### FEAT-019: Add Google Analytics 4 (GA4) to GateQA -> Status: Done

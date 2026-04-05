@@ -18,8 +18,9 @@
   },
   "scripts": {
     "precompute": "node scripts/precompute-subtopics.mjs",
-    "start": "node scripts/precompute-subtopics.mjs && node scripts/deployment/sync-calculator.mjs --public && vite",
-    "build": "node scripts/precompute-subtopics.mjs && node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
+    "build:public-artifacts": "node scripts/build-public-artifacts.mjs",
+    "start": "node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs && node scripts/deployment/sync-calculator.mjs --public && vite",
+    "build": "node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs && node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
     "serve": "vite preview",
     "qa:audit-historical-papers": "node scripts/qa/historical-paper-audit.js",
     "qa:audit-pre-2010-gateoverflow": "node scripts/qa/pre-2010-gateoverflow-audit.js",
@@ -28,6 +29,7 @@
     "qa:repair-historical-exam-uids": "node scripts/qa/repair-historical-exam-uids.js",
     "qa:repair-historical-paper-counts": "node scripts/qa/repair-historical-paper-counts.js",
     "qa:validate-data": "node scripts/qa/validate-data.js",
+    "qa:validate-public-parity": "node scripts/qa/validate-public-parity.js",
     "test:unit": "vitest run",
     "test:watch": "vitest",
     "lighthouse:mobile": "lhci autorun --config=./lighthouserc.json"

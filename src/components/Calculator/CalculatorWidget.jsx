@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import LoadingState from "../Loaders/LoadingState";
 
 const MOBILE_BREAKPOINT = 768;
 const DESKTOP_WIDTH = 470;
@@ -275,9 +276,12 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
 
         <div className="relative h-[calc(100%-41px)] w-full bg-gray-50">
           {isLoading && (
-            <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/80 text-sm font-medium text-gray-700">
-              Loading calculator...
-            </div>
+            <LoadingState
+              label="Loading calculator..."
+              size="md"
+              className="absolute inset-0 z-10 bg-white/80"
+              textClassName="text-sm font-medium text-gray-700"
+            />
           )}
 
           {hasFrameError && (

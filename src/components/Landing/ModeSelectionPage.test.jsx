@@ -42,4 +42,25 @@ describe("ModeSelectionPage", () => {
 
         expect(onModeStart).toHaveBeenCalledWith("random");
     });
+
+    test("renders manifest summary badges without requiring question-bank init", () => {
+        render(
+            <ModeSelectionPage
+                onModeStart={vi.fn()}
+                onResumePractice={vi.fn()}
+                hasPriorProgress={false}
+                questionBankManifest={{
+                    questionCount: 3271,
+                    latestYear: 2026,
+                    yearSets: [{ key: "2026-s1" }, { key: "2026-s2" }],
+                }}
+                manifestLoading={false}
+                manifestError=""
+            />
+        );
+
+        expect(screen.getByText(/3,271 questions ready/i)).toBeTruthy();
+        expect(screen.getByText(/through 2026/i)).toBeTruthy();
+        expect(screen.getByText(/2 year sets/i)).toBeTruthy();
+    });
 });

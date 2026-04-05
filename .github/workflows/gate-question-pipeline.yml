@@ -1,13 +1,13 @@
 # FEAT-003: Automated GATE Question Pipeline
-# Triggered: Apr 1, Oct 1 (cron) + manual dispatch with optional force_year
+# Triggered: Apr 1-5, Oct 1-5 (cron retry window) + manual dispatch with optional force_year
 # 6 stages: Scrape → Normalise → Answer Backfill → Merge → Validate → Build & Deploy
 
 name: GATE Question Pipeline
 
 on:
   schedule:
-    # 1st of April and October at 04:00 UTC
-    - cron: "0 4 1 4,10 *"
+    # Release-window retries: April 1-5 and October 1-5 at 04:00 UTC
+    - cron: "0 4 1-5 4,10 *"
   workflow_dispatch:
     inputs:
       force_year:
@@ -28,7 +28,7 @@ concurrency:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 330
 
     steps:
       # ── Setup ────────────────────────────────────────────────────────
@@ -43,9 +43,6 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Determine target year
         id: target
         run: |
@@ -56,13 +53,32 @@ jobs:
             echo "year=$YEAR" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Guard scheduled runs for future target years
+        id: guard
+        run: |
+          CURRENT_YEAR=$(date -u +%Y)
+          TARGET_YEAR=${{ steps.target.outputs.year }}
+
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$TARGET_YEAR" -gt "$CURRENT_YEAR" ]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "⏭️ Target year $TARGET_YEAR is in the future relative to $CURRENT_YEAR. Skipping scheduled retry."
+          else
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.guard.outputs.should_run == 'true'
+        run: npm ci
+
       # ── Stage 1: Scrape ──────────────────────────────────────────────
       - name: "Stage 1 — Scrape"
         id: scrape
+        if: steps.guard.outputs.should_run == 'true'
         run: node scripts/pipeline/scrape.mjs --year ${{ steps.target.outputs.year }}
 
       - name: Check if new questions found
         id: check_new
+        if: steps.guard.outputs.should_run == 'true'
         run: |
           FILE="audit/scraped-${{ steps.target.outputs.year }}.json"
           if [ ! -f "$FILE" ]; then
@@ -82,38 +98,46 @@ jobs:
 
       # ── Stage 2: Normalise ───────────────────────────────────────────
       - name: "Stage 2 — Normalise"
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: node scripts/pipeline/normalise.mjs --year ${{ steps.target.outputs.year }}
 
       # ── Stage 3: Answer Backfill ─────────────────────────────────────
       - name: "Stage 3 — Answer Backfill"
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: node scripts/pipeline/answer-backfill.mjs --year ${{ steps.target.outputs.year }}
 
       # ── Stage 4: Merge ───────────────────────────────────────────────
       - name: "Stage 4 — Merge"
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: node scripts/pipeline/merge.mjs --year ${{ steps.target.outputs.year }}
 
       # ── Stage 5: Validate (hard gate) ────────────────────────────────
       - name: "Stage 5 — Validate"
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         id: validate
         run: node scripts/pipeline/validate.mjs --year ${{ steps.target.outputs.year }}
 
       # ── Stage 6: Build & Deploy ──────────────────────────────────────
       - name: "Stage 6 — Build"
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: npm run build
 
+      - name: Verify public parity
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
+        run: npm run qa:validate-public-parity
+
       - name: Verify deploy artifacts
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: |
           test -f dist/.nojekyll
           test -f dist/calculator/calculator.html
+          test -f dist/question-bank-manifest.json
+          test -f dist/question-search-index.json
+          test -d dist/question-detail-shards
+          find dist/question-detail-shards -maxdepth 1 -name '*.json' -print -quit | grep -q .
 
       - name: Update pipeline state for next year
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: |
           node -e "
             const fs = require('fs');
@@ -125,13 +149,18 @@ jobs:
           "
 
       - name: Commit pipeline state and audit files
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add pipeline-state.json
           git add audit/
+          git add docs/generated/
+          git add artifacts/review/remote-image-report.json
+          git add public/question-bank-manifest.json
+          git add public/question-search-index.json
+          git add public/question-detail-shards
           git add public/questions-filtered.json
           git add public/questions-with-answers.json
           git add data/answers/manual-answers-patch-v1.json
@@ -145,7 +174,7 @@ jobs:
           fi
 
       - name: Deploy to GitHub Pages
-        if: steps.check_new.outputs.has_new == 'true'
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -154,8 +183,8 @@ jobs:
           clean: true
 
       # ── Commit audit files on off-cycle (no deploy) ──────────────────
-      - name: Commit audit files (off-cycle)
-        if: steps.check_new.outputs.has_new == 'false'
+      - name: Commit audit files (manual off-cycle)
+        if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'false' && github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -169,7 +198,7 @@ jobs:
 
       # ── Failure: Open GitHub Issue ───────────────────────────────────
       - name: Open GitHub Issue on scrape failure
-        if: failure()
+        if: failure() && steps.guard.outputs.should_run == 'true'
         uses: actions/github-script@v7
         with:
           script: |

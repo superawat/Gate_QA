@@ -9,7 +9,7 @@ Gate_QA/
 |-- index.html
 |-- package.json
 |-- package-lock.json
-|-- pipeline-state.json          # Pipeline persistent state (nextTargetYear, totals)
+|-- pipeline-state.json          # Pipeline persistent state (nextTargetYear, source totals, published totals)
 |-- vite.config.js
 |-- lighthouserc.json
 |-- tailwind.config.js
@@ -20,27 +20,38 @@ Gate_QA/
 |   |-- index.jsx
 |   |-- index.css
 |   |-- App.jsx
+|   |-- constants/
+|   |   `-- featureFlags.js
 |   |-- generated/
 |   |   `-- subtopicLookup.json  (generated, ignored)
 |   |-- contexts/
 |   |   |-- FilterContext.jsx
+|   |   |-- MockTestContext.jsx
+|   |   |-- SessionContext.jsx
 |   |   `-- FilterContext.test.jsx
 |   |-- services/
 |   |   |-- QuestionService.js
 |   |   |-- QuestionService.test.js
 |   |   |-- AnswerService.js
+|   |   |-- QuestionBankManifestService.js
 |   |   `-- AnswerService.test.js
+|   |-- shells/
+|   |   |-- LandingShell.jsx
+|   |   |-- PracticeShell.jsx
+|   |   `-- MockShell.jsx
 |   |-- utils/
 |   |   |-- evaluateAnswer.js
 |   |   |-- examUid.js
-|   |   |-- goatCounterClient.js
+|   |   |-- analytics.js
 |   |   |-- localStorageState.js
 |   |   `-- localStorageState.test.js
-|   |-- hooks/
-|   |   `-- useGoatCounterSPA.js
 |   `-- components/
+|       |-- Landing/ModeSelectionPage.jsx
+|       |-- Landing/ModeCard.jsx
+|       |-- Loaders/LoadingState.jsx
 |       |-- Header/Header.jsx
 |       |-- Question/Question.jsx
+|       |-- Math/MathRuntime.jsx
 |       |-- AnswerPanel/AnswerPanel.jsx
 |       |-- Toast/Toast.jsx
 |       |-- Calculator/CalculatorButton.jsx
@@ -59,11 +70,15 @@ Gate_QA/
 |       |-- Footer/Footer.jsx
 |       |-- Footer/DataPolicyModal.jsx
 |       |-- Footer/SupportModal.jsx
+|       |-- Footer/assets/qrcode.png
 |       `-- FilterTags/FilterTags.jsx
 |
 |-- public/
 |   |-- .nojekyll
 |   |-- logo.png
+|   |-- question-bank-manifest.json
+|   |-- question-search-index.json
+|   |-- question-detail-shards/          # Generated detail payloads keyed by year/set
 |   |-- questions-filtered.json
 |   |-- questions-filtered-with-ids.json
 |   |-- questions-with-answers.json
@@ -81,6 +96,7 @@ Gate_QA/
 |
 |-- scripts/
 |   |-- precompute-subtopics.mjs
+|   |-- build-public-artifacts.mjs
 |   |-- qa/
 |   |   |-- historical-paper-audit.js         # Historical 65-question paper audit
 |   |   |-- import-missing-paper-from-tag.js  # Targeted single-paper GateOverflow import
@@ -88,15 +104,18 @@ Gate_QA/
 |   |   |-- repair-pre-2010-questions.js      # Pre-2010 question reconciliation + backfill
 |   |   |-- repair-historical-exam-uids.js    # Canonical exam_uid repair pass
 |   |   |-- repair-historical-paper-counts.js # Historical paper recovery + dedup + cleanup
-|   |   `-- validate-data.js                  # Full-bank answer/data integrity gate
+|   |   |-- validate-data.js                  # Full-bank answer/data integrity gate
+|   |   `-- validate-public-parity.js         # Public artifact/pipeline count parity gate
 |   |-- deployment/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
 |   `-- pipeline/
+|       |-- shared.mjs            # Shared retry/sleep/output helpers for pipeline stages
 |       |-- scrape.mjs            # Stage 1: Tag discovery, pagination, question extraction
 |       |-- normalise.mjs         # Stage 2: Canonical structure mapping (subject, type, year/set)
 |       |-- answer-backfill.mjs   # Stage 3: GateOverflow answer widget + fallback parsing
 |       |-- merge.mjs             # Stage 4: Dedup merge into question bank
+|       |-- shared.test.js        # Retry behavior coverage for shared pipeline helper
 |       `-- validate.mjs          # Stage 5: Volume / dedup / completeness hard gate
 |
 |-- calculator/
@@ -112,6 +131,7 @@ Gate_QA/
 |   |-- ARCHITECTURE.md
 |   |-- REPO_STRUCTURE.md
 |   |-- FRONTEND_GUIDE.md
+|   |-- FREE_PLATFORM_IMPROVEMENT_PLAN.md
 |   |-- DATA_PIPELINE.md          # Pipeline primary documentation
 |   |-- DEPLOYMENT.md
 |   |-- TESTING.md
@@ -122,7 +142,13 @@ Gate_QA/
 |   |-- QA_HARDENING_CHECKLIST.md
 |   |-- ROADMAP_AND_DECISIONS.md
 |   |-- BUG_BACKLOG.md
+|   |-- generated/
+|   |   |-- data-status.json
+|   |   `-- DATA_STATUS.md
 |   `-- FEAT-003_PHASE0_SIGNOFF.md
+
+|-- artifacts/
+|   `-- review/                   # Generated QA/audit review outputs
 |
 |-- audit/                        # Pipeline-generated outputs, committed after every run,
 |   `-- .gitkeep                  # never read by frontend
@@ -154,11 +180,12 @@ in CLEANUP-001. The Node.js pipeline in `scripts/pipeline/` handles all future d
 from GATE 2026 onward. The archive branch `archive/pre-cleanup-2026-02-26` retains the deleted
 files for reference.
 
-Removed directories: `scraper/`, `scripts/answers/`, `tests/`, `artifacts/`.
+Removed directories: `scraper/`, `scripts/answers/`, and the legacy Python `tests/answers/`.
 
 ## Notes
 
 - `src/generated/subtopicLookup.json` is generated and ignored by git.
+- `public/question-bank-manifest.json`, `public/question-search-index.json`, `public/question-detail-shards/`, and `docs/generated/` are refreshed by `scripts/build-public-artifacts.mjs`.
 - `scripts/audit-canonical-filters.mjs` has been removed.
 - `public/calculator/` is generated from root `calculator/` by deployment sync script.
 - `dist/` should never be edited manually.

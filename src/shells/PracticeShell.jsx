@@ -6,12 +6,13 @@ import Footer from "../components/Footer/Footer";
 import FilterModal from "../components/Filters/FilterModal";
 import ActiveFilterChips from "../components/Filters/ActiveFilterChips";
 import CalculatorWidget from "../components/Calculator/CalculatorWidget";
-import HorizontalBarLoader from "../components/Loaders/HorizontalBarLoader";
+import LoadingState from "../components/Loaders/LoadingState";
 import { useFilterState, useFilterActions } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { QuestionService } from "../services/QuestionService";
 import { AnswerService } from "../services/AnswerService";
 import { trackEvent } from "../utils/analytics";
+import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 
 /**
  * Inner practice view — question display, deep-link resolution, queue management.
@@ -38,6 +39,10 @@ const PracticeView = ({
     } = useSession();
 
     const [currentQuestion, setCurrentQuestion] = useState(null);
+    const [resolvedQuestion, setResolvedQuestion] = useState(null);
+    const [questionDetailError, setQuestionDetailError] = useState("");
+    const [isQuestionDetailLoading, setIsQuestionDetailLoading] = useState(false);
+    const [questionDetailRequestNonce, setQuestionDetailRequestNonce] = useState(0);
     const hasResolvedDeepLink = useRef(false);
     const hasIgnoredFirstQueueSync = useRef(false);
     const [isInitializing, setIsInitializing] = useState(true);
@@ -51,11 +56,66 @@ const PracticeView = ({
 
     useEffect(() => {
         if (!loading && isInitialized) {
-            if (currentQuestion || filteredQuestions.length === 0) {
+            if (filteredQuestions.length === 0) {
+                setIsInitializing(false);
+                return;
+            }
+
+            if (
+                currentQuestion
+                && resolvedQuestion
+                && currentQuestion.question_uid === resolvedQuestion.question_uid
+            ) {
                 setIsInitializing(false);
             }
         }
-    }, [loading, isInitialized, currentQuestion, filteredQuestions.length]);
+    }, [loading, isInitialized, currentQuestion, resolvedQuestion, filteredQuestions.length]);
+
+    useEffect(() => {
+        if (!currentQuestion || !currentQuestion.question_uid) {
+            setResolvedQuestion(null);
+            setQuestionDetailError("");
+            setIsQuestionDetailLoading(false);
+            return;
+        }
+
+        if (currentQuestion.question && String(currentQuestion.question).trim()) {
+            setResolvedQuestion(currentQuestion);
+            setQuestionDetailError("");
+            setIsQuestionDetailLoading(false);
+            return;
+        }
+
+        let isActive = true;
+        setResolvedQuestion(null);
+        setQuestionDetailError("");
+        setIsQuestionDetailLoading(true);
+
+        QuestionService.ensureQuestionDetail(currentQuestion)
+            .then((questionDetail) => {
+                if (!isActive) {
+                    return;
+                }
+                setResolvedQuestion(questionDetail);
+                setQuestionDetailError(questionDetail ? "" : "Unable to load question detail.");
+            })
+            .catch((err) => {
+                if (!isActive) {
+                    return;
+                }
+                setResolvedQuestion(null);
+                setQuestionDetailError(err.message || "Unable to load question detail.");
+            })
+            .finally(() => {
+                if (isActive) {
+                    setIsQuestionDetailLoading(false);
+                }
+            });
+
+        return () => {
+            isActive = false;
+        };
+    }, [currentQuestion, questionDetailRequestNonce]);
 
     const handleNextQuestion = useCallback(() => {
         const nextQ = advanceQueue();
@@ -63,6 +123,10 @@ const PracticeView = ({
             setCurrentQuestion(nextQ);
         }
     }, [advanceQueue]);
+
+    const retryCurrentQuestionDetail = useCallback(() => {
+        setQuestionDetailRequestNonce((value) => value + 1);
+    }, []);
 
     // Deep-link resolution
     useEffect(() => {
@@ -74,7 +138,7 @@ const PracticeView = ({
         const params = new URLSearchParams(window.location.search);
         const questionId = params.get("question");
         const hasActiveFilterParams = [
-            "years", "subjects", "topics", "subtopics", "types", "range",
+            "years", "subjects", "topics", "subtopics", "types", "range", "search",
             "hideSolved", "showOnlySolved", "showOnlyBookmarked",
         ].some((key) => {
             const value = params.get(key);
@@ -179,10 +243,10 @@ const PracticeView = ({
 
     // Debug window object
     useEffect(() => {
-        if (typeof window === "undefined" || !currentQuestion) return;
-        const identity = AnswerService.getQuestionIdentity(currentQuestion);
-        const answer = AnswerService.getAnswerForQuestion(currentQuestion);
-        window.__gateqa_q = currentQuestion;
+        if (typeof window === "undefined" || !resolvedQuestion) return;
+        const identity = AnswerService.getQuestionIdentity(resolvedQuestion);
+        const answer = AnswerService.getAnswerForQuestion(resolvedQuestion);
+        window.__gateqa_q = resolvedQuestion;
         window.__gateqa_lookup = {
             identity,
             hasAnswer: !!answer,
@@ -191,7 +255,7 @@ const PracticeView = ({
             answersByQuestionUidCount: Object.keys(AnswerService.answersByQuestionUid || {}).length,
             answersByExamUidCount: Object.keys(AnswerService.answersByExamUid || {}).length,
         };
-    }, [currentQuestion]);
+    }, [resolvedQuestion]);
 
     if (error) {
         return (
@@ -237,13 +301,37 @@ const PracticeView = ({
                     )}
 
                     {isInitializing ? (
-                        <div className="flex flex-col items-center justify-center py-20 min-h-[400px]">
-                            <HorizontalBarLoader />
-                            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">Loading questions...</p>
+                        <LoadingState
+                            label="Loading questions..."
+                            size="lg"
+                            className="py-20 min-h-[400px]"
+                            textClassName="text-sm text-gray-500 dark:text-gray-400"
+                        />
+                    ) : questionDetailError ? (
+                        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-5 text-center shadow-sm">
+                            <p className="text-sm font-medium text-red-800">{questionDetailError}</p>
+                            <button
+                                type="button"
+                                onClick={retryCurrentQuestionDetail}
+                                className="mt-3 rounded bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700"
+                            >
+                                Retry question
+                            </button>
                         </div>
-                    ) : currentQuestion ? (
+                    ) : currentQuestion && (
+                        isQuestionDetailLoading
+                        || !resolvedQuestion
+                        || resolvedQuestion.question_uid !== currentQuestion.question_uid
+                    ) ? (
+                        <LoadingState
+                            label="Loading question..."
+                            size="lg"
+                            className="py-20 min-h-[400px]"
+                            textClassName="text-sm text-gray-500 dark:text-gray-400"
+                        />
+                    ) : resolvedQuestion ? (
                         <Question
-                            question={currentQuestion}
+                            question={resolvedQuestion}
                             changeQuestion={handleNextQuestion}
                         />
                     ) : (
@@ -304,7 +392,7 @@ const PracticeShell = ({
     }, [onGoHome, shouldOpenFilterOnEnter]);
 
     return (
-        <>
+        <MathRuntimeProvider>
             <Header
                 appView="practice"
                 onGoHome={handleGoHome}
@@ -330,7 +418,7 @@ const PracticeShell = ({
                 shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
             />
             <Footer />
-        </>
+        </MathRuntimeProvider>
     );
 };
 

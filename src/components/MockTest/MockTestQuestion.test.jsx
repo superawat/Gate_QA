@@ -13,8 +13,8 @@ vi.mock("../../contexts/MockTestContext", () => ({
   useMockTest: () => mockContextValue,
 }));
 
-vi.mock("better-react-mathjax", () => ({
-  MathJax: ({ children, dynamic, className }) => (
+vi.mock("../Math/MathRuntime", () => ({
+  MathContent: ({ children, dynamic, className }) => (
     <div data-mathjax="true" data-dynamic={String(!!dynamic)} className={className}>
       {children}
     </div>
@@ -314,4 +314,3 @@ describe("MockTestQuestion", () => {
     expect(stemMathJax.textContent).not.toContain("Sample question stem");
   });
 });
-

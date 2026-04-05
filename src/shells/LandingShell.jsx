@@ -36,7 +36,14 @@ const LandingHeader = () => (
     </header>
 );
 
-const LandingShell = ({ onModeStart, onResumePractice, hasPriorProgress }) => (
+const LandingShell = ({
+    onModeStart,
+    onResumePractice,
+    hasPriorProgress,
+    questionBankManifest,
+    manifestLoading,
+    manifestError,
+}) => (
     <>
         <LandingHeader />
         <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 md:px-8">
@@ -44,6 +51,9 @@ const LandingShell = ({ onModeStart, onResumePractice, hasPriorProgress }) => (
                 onModeStart={onModeStart}
                 onResumePractice={onResumePractice}
                 hasPriorProgress={hasPriorProgress}
+                questionBankManifest={questionBankManifest}
+                manifestLoading={manifestLoading}
+                manifestError={manifestError}
             />
         </main>
     </>

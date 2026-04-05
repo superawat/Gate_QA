@@ -4,11 +4,18 @@ describe("QuestionService", () => {
   beforeEach(() => {
     QuestionService.questions = [];
     QuestionService.loaded = false;
+    QuestionService.loadMode = "none";
     QuestionService.count = new Map();
     QuestionService.tags = [];
     QuestionService.sourceUrl = "";
+    QuestionService.questionsByUid = new Map();
+    QuestionService.detailCache = new Map();
+    QuestionService.detailShardCache = new Map();
+    QuestionService.detailShardPromises = new Map();
+    QuestionService.pendingLoads = { index: null, full: null };
     QuestionService.SUBJECT_ALIAS_CACHE = new Map();
     QuestionService._subtopicLookupCache = new Map();
+    vi.restoreAllMocks();
   });
 
   test("builds tag indexes correctly", () => {
@@ -193,6 +200,79 @@ describe("QuestionService", () => {
 
     expect(finalized.exam_uid).toBe("cse:2026:set1:ga:q2");
     expect(finalized.exam.yearSetKey).toBe("2026-s0");
+  });
+
+  test("hydrates index questions with canonical subject, exam meta, and shard key", () => {
+    const indexed = QuestionService.hydrateIndexedQuestion({
+      question_uid: "go:523076",
+      title: "GATE CSE 2026 | Set 1 | Question: 4",
+      year: 2026,
+      set: 1,
+      yearSetKey: "2026-s1",
+      yearSetLabel: "2026 Set 1",
+      detailShardKey: "2026-s1",
+      link: "https://gateoverflow.in/523076/gate-cse-2026-set-1-question-4",
+      tags: ["gatecse-2026-set1", "co-and-architecture", "addressing-modes"],
+      type: "MSQ",
+    });
+
+    expect(indexed.question).toBe("");
+    expect(indexed.detailShardKey).toBe("2026-s1");
+    expect(indexed.subject).toBe("CO & Architecture");
+    expect(indexed.subjectSlug).toBe("coa");
+    expect(indexed.exam.yearSetKey).toBe("2026-s1");
+    expect(indexed.type).toBe("msq");
+  });
+
+  test("loads and hydrates question detail from a shard when only index data is present", async () => {
+    QuestionService.questions = [
+      QuestionService.hydrateIndexedQuestion({
+        question_uid: "go:500001",
+        title: "GATE CSE 2023 | Question: 1",
+        year: 2023,
+        set: null,
+        yearSetKey: "2023-s0",
+        yearSetLabel: "2023",
+        detailShardKey: "2023-s0",
+        link: "https://gateoverflow.in/500001/gate-cse-2023-question-1",
+        tags: ["gatecse-2023", "algorithms", "sorting"],
+      }),
+    ];
+    QuestionService.loaded = true;
+    QuestionService.loadMode = "index";
+    QuestionService.buildIndexes();
+
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        recordsByQuestionUid: {
+          "go:500001": {
+            question_uid: "go:500001",
+            title: "GATE CSE 2023 | Question: 1",
+            year: "gatecse-2023",
+            link: "https://gateoverflow.in/500001/gate-cse-2023-question-1",
+            tags: ["gatecse-2023", "algorithms", "sorting"],
+            question: "<p>What is the running time?</p>",
+            options: {
+              A: "O(1)",
+              B: "O(log n)",
+              C: "O(n log n)",
+              D: "O(n^2)",
+            },
+            exam_uid: "cse:2023:set1:main:q1",
+          },
+        },
+      }),
+    });
+
+    const detailed = await QuestionService.ensureQuestionDetail("go:500001");
+
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch.mock.calls[0][0]).toContain("question-detail-shards/2023-s0.json");
+    expect(detailed.question).toContain("running time");
+    expect(detailed.subjectSlug).toBe("algorithms");
+    expect(detailed.exam.yearSetKey).toBe("2023-s0");
+    expect(QuestionService.detailCache.get("go:500001")).toEqual(detailed);
   });
 
   test("finalizeQuestions collapses single-set years but keeps explicit split sets", () => {

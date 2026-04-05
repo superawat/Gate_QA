@@ -1,6 +1,7 @@
 import React from "react";
 import { MockTestProvider } from "../contexts/MockTestContext";
 import MockTestShell from "../components/MockTest/MockTestShell";
+import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 
 /**
  * MockShell — full-screen exam layout.
@@ -13,13 +14,15 @@ import MockTestShell from "../components/MockTest/MockTestShell";
  *  - onStageChange: callback(stage) to sync URL when transitioning setup→exam or exam→setup
  */
 const MockShell = ({ onExit, stage = "setup", onStageChange }) => (
-    <MockTestProvider>
-        <MockTestShell
-            onExit={onExit}
-            initialStage={stage}
-            onStageChange={onStageChange}
-        />
-    </MockTestProvider>
+    <MathRuntimeProvider>
+        <MockTestProvider>
+            <MockTestShell
+                onExit={onExit}
+                initialStage={stage}
+                onStageChange={onStageChange}
+            />
+        </MockTestProvider>
+    </MathRuntimeProvider>
 );
 
 export default MockShell;

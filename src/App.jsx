@@ -1,18 +1,29 @@
-import { MathJaxContext } from "better-react-mathjax";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 
 import LandingShell from "./shells/LandingShell";
-import PracticeShell from "./shells/PracticeShell";
-import MockShell from "./shells/MockShell";
-import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
+import { FilterProvider, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
-import { useGoatCounterSPA } from "./hooks/useGoatCounterSPA";
+import { QuestionBankManifestService } from "./services/QuestionBankManifestService";
+import LoadingState from "./components/Loaders/LoadingState";
 import { pageview, trackEvent } from "./utils/analytics";
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
-const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"];
+const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types", "search"];
+const loadPracticeShell = () => import("./shells/PracticeShell");
+const loadMockShell = () => import("./shells/MockShell");
+const PracticeShell = lazy(loadPracticeShell);
+const MockShell = lazy(loadMockShell);
+
+const ShellLoader = ({ label }) => (
+  <LoadingState
+    label={label}
+    size="lg"
+    className="grow px-4 py-10"
+    textClassName="text-sm text-gray-500"
+  />
+);
 
 /**
  * Pure function: resolve appView from current URL.
@@ -55,15 +66,17 @@ export const ViewSwitch = ({
   setAppView,
   shouldOpenFilterOnEnter,
   hasPriorProgress,
+  questionBankManifest,
+  manifestLoading,
+  manifestError,
 }) => {
-  const { allQuestions, isInitialized } = useFilterState();
   const { clearFilters } = useFilterActions();
   const hasResolvedAppView = useRef(false);
 
-  // Mount-time resolution (same strict priority as resolveAppViewFromUrl,
-  // but with side-effects like clearFilters for random mode).
+  // Mount-time side effects for the current URL (same strict priority as
+  // resolveAppViewFromUrl, but with side-effects like clearFilters for random mode).
   useEffect(() => {
-    if (!isInitialized || allQuestions.length === 0 || hasResolvedAppView.current) return;
+    if (hasResolvedAppView.current) return;
     hasResolvedAppView.current = true;
 
     const params = new URLSearchParams(window.location.search);
@@ -94,7 +107,7 @@ export const ViewSwitch = ({
 
     // 4. Default
     setAppView("landing");
-  }, [allQuestions, clearFilters, isInitialized, setAppView, shouldOpenFilterOnEnter]);
+  }, [clearFilters, setAppView, shouldOpenFilterOnEnter]);
 
   // Popstate handler for browser Back/Forward (mode transitions only).
   useEffect(() => {
@@ -135,33 +148,41 @@ export const ViewSwitch = ({
   const handleModeStart = useCallback((mode) => {
     if (mode === "random") {
       trackEvent("start_random_practice", { mode: "random", source: "landing" });
+      void loadPracticeShell();
       clearFilters();
       shouldOpenFilterOnEnter.current = false;
       setAppView("practice");
       writeModeParam("random");
+      void loadQuestions();
       return;
     }
     if (mode === "targeted") {
       trackEvent("start_targeted_practice", { mode: "targeted", source: "landing" });
+      void loadPracticeShell();
       shouldOpenFilterOnEnter.current = true;
       setAppView("practice");
       writeModeParam("targeted");
+      void loadQuestions();
       return;
     }
     if (mode === "resume") {
       trackEvent("resume_practice", { mode: "resume", source: "landing" });
+      void loadPracticeShell();
       shouldOpenFilterOnEnter.current = false;
       setAppView("practice");
       writeModeParam("resume");
+      void loadQuestions();
       return;
     }
     if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
+      void loadMockShell();
       shouldOpenFilterOnEnter.current = false;
       setAppView("mockSetup");
       writeModeParam("mock", "setup");
+      void loadQuestions({ fullBank: true });
       return;
     }
-  }, [clearFilters, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
+  }, [clearFilters, loadQuestions, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
 
   const handleResumePractice = useCallback(() => {
     handleModeStart("resume");
@@ -173,6 +194,7 @@ export const ViewSwitch = ({
     const params = new URLSearchParams(window.location.search);
     params.delete("mode");
     params.delete("stage");
+    params.delete("question");
     const query = params.toString();
     const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
     window.history.replaceState({}, "", newUrl);
@@ -196,39 +218,49 @@ export const ViewSwitch = ({
         onModeStart={handleModeStart}
         onResumePractice={handleResumePractice}
         hasPriorProgress={hasPriorProgress}
+        questionBankManifest={questionBankManifest}
+        manifestLoading={manifestLoading}
+        manifestError={manifestError}
       />
     );
   }
 
   if (appView === "mockSetup" || appView === "mockExam") {
     return (
-      <MockShell
-        onExit={handleGoHome}
-        stage={appView === "mockExam" ? "exam" : "setup"}
-        onStageChange={handleMockStageChange}
-      />
+      <Suspense fallback={<ShellLoader label="Loading mock interface..." />}>
+        <MockShell
+          onExit={handleGoHome}
+          stage={appView === "mockExam" ? "exam" : "setup"}
+          onStageChange={handleMockStageChange}
+        />
+      </Suspense>
     );
   }
 
   // Default: practice
   return (
-    <PracticeShell
-      loading={loading}
-      error={error}
-      loadQuestions={loadQuestions}
-      onGoHome={handleGoHome}
-      shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
-    />
+    <Suspense fallback={<ShellLoader label="Preparing practice..." />}>
+      <PracticeShell
+        loading={loading}
+        error={error}
+        loadQuestions={loadQuestions}
+        onGoHome={handleGoHome}
+        shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
+      />
+    </Suspense>
   );
 };
 
 function App() {
-  useGoatCounterSPA();
-
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => resolveAppViewFromUrl() !== "landing");
   const [error, setError] = useState("");
-  const [appView, setAppView] = useState("landing");
+  const [appView, setAppView] = useState(() => resolveAppViewFromUrl());
+  const [questionDataRevision, setQuestionDataRevision] = useState(0);
+  const [questionBankManifest, setQuestionBankManifest] = useState(() => QuestionBankManifestService.manifest);
+  const [manifestLoading, setManifestLoading] = useState(() => !QuestionBankManifestService.loaded);
+  const [manifestError, setManifestError] = useState(() => QuestionBankManifestService.loadError || "");
   const shouldOpenFilterOnEnter = useRef(false);
+  const questionLoadPromiseRef = useRef(null);
 
   const [hasPriorProgress] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -240,20 +272,81 @@ function App() {
     } catch { return false; }
   });
 
-  const loadQuestions = useCallback(async () => {
-    setLoading(true);
-    setError("");
+  const loadQuestionBankManifest = useCallback(async () => {
+    if (QuestionBankManifestService.loaded && QuestionBankManifestService.manifest) {
+      setQuestionBankManifest(QuestionBankManifestService.manifest);
+      setManifestError("");
+      setManifestLoading(false);
+      return QuestionBankManifestService.manifest;
+    }
+
+    setManifestLoading(true);
     try {
-      await QuestionService.init();
-      await AnswerService.init();
+      const manifest = await QuestionBankManifestService.init();
+      setQuestionBankManifest(manifest);
+      setManifestError("");
+      return manifest;
     } catch (err) {
-      setError(err.message || "Unable to load questions.");
+      setManifestError(err.message || "Unable to load question bank summary.");
+      return null;
     } finally {
-      setLoading(false);
+      setManifestLoading(false);
     }
   }, []);
 
-  useEffect(() => { loadQuestions(); }, [loadQuestions]);
+  const loadQuestions = useCallback(async ({ fullBank = false } = {}) => {
+    const hasRequiredQuestions = QuestionService.loaded
+      && (!fullBank || QuestionService.loadMode === "full");
+    if (hasRequiredQuestions && AnswerService.loaded) {
+      setError("");
+      setLoading(false);
+      return;
+    }
+
+    if (
+      questionLoadPromiseRef.current
+      && (!fullBank || questionLoadPromiseRef.current.fullBank)
+    ) {
+      return questionLoadPromiseRef.current.promise;
+    }
+
+    setLoading(true);
+    setError("");
+    const loadPromise = (async () => {
+      try {
+        await Promise.all([
+          QuestionService.init({ fullBank }),
+          AnswerService.init(),
+        ]);
+        setQuestionDataRevision((value) => value + 1);
+      } catch (err) {
+        setError(err.message || "Unable to load questions.");
+      } finally {
+        setLoading(false);
+        if (questionLoadPromiseRef.current?.promise === loadPromise) {
+          questionLoadPromiseRef.current = null;
+        }
+      }
+    })();
+    questionLoadPromiseRef.current = {
+      promise: loadPromise,
+      fullBank,
+    };
+
+    return loadPromise;
+  }, []);
+
+  useEffect(() => {
+    void loadQuestionBankManifest();
+  }, [loadQuestionBankManifest]);
+
+  useEffect(() => {
+    if (appView === "landing") {
+      setLoading(false);
+      return;
+    }
+    void loadQuestions({ fullBank: appView === "mockSetup" || appView === "mockExam" });
+  }, [appView, loadQuestions]);
 
   useEffect(() => {
     if (appView === "landing") pageview("Landing");
@@ -263,23 +356,27 @@ function App() {
   }, [appView]);
 
   return (
-    <MathJaxContext>
-      <div className="flex flex-col h-screen max-h-screen bg-gray-50">
-        <FilterProvider>
-          <SessionProvider>
-            <ViewSwitch
-              loading={loading}
-              error={error}
-              loadQuestions={loadQuestions}
-              appView={appView}
-              setAppView={setAppView}
-              shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
-              hasPriorProgress={hasPriorProgress}
-            />
-          </SessionProvider>
-        </FilterProvider>
-      </div>
-    </MathJaxContext>
+    <div className="flex flex-col h-screen max-h-screen bg-gray-50">
+      <FilterProvider
+        initialManifest={questionBankManifest}
+        questionDataRevision={questionDataRevision}
+      >
+        <SessionProvider>
+          <ViewSwitch
+            loading={loading}
+            error={error}
+            loadQuestions={loadQuestions}
+            appView={appView}
+            setAppView={setAppView}
+            shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
+            hasPriorProgress={hasPriorProgress}
+            questionBankManifest={questionBankManifest}
+            manifestLoading={manifestLoading}
+            manifestError={manifestError}
+          />
+        </SessionProvider>
+      </FilterProvider>
+    </div>
   );
 }
 

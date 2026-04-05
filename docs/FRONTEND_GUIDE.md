@@ -12,6 +12,7 @@ This guide covers frontend runtime behavior, state contract, and safe refactor r
 ```bash
 npm install
 npm run precompute
+npm run build:public-artifacts
 npm start
 npm run build
 npm run serve
@@ -23,16 +24,21 @@ npm run test:unit
 - `npm run precompute`
   - runs `node scripts/precompute-subtopics.mjs`
   - generates `src/generated/subtopicLookup.json`
+- `npm run build:public-artifacts`
+  - runs `node scripts/build-public-artifacts.mjs`
+  - refreshes the landing manifest, practice search index, detail shards, and generated docs snapshot
 - `npm start`
   1. precompute subtopic lookup
-  2. sync calculator into `public/`
-  3. start Vite dev server
+  2. build public/runtime artifacts
+  3. sync calculator into `public/`
+  4. start Vite dev server
 - `npm run build`
   1. precompute subtopic lookup
-  2. sync calculator into `public/`
-  3. Vite build to `dist/`
-  4. ensure `dist/.nojekyll`
-  5. sync calculator into `dist/calculator/`
+  2. build public/runtime artifacts
+  3. sync calculator into `public/`
+  4. Vite build to `dist/`
+  5. ensure `dist/.nojekyll`
+  6. sync calculator into `dist/calculator/`
 
 ## Context contract (mandatory)
 
@@ -47,9 +53,16 @@ All frontend filter components are expected to consume one or both of the split 
 
 `App` view shell state:
 
-- `appView` controls `landing | practice | mock` rendering.
+- `appView` controls `landing | practice | mockSetup | mockExam` rendering.
 - `appView` is URL-derived at mount and is never stored in localStorage.
-- `shouldOpenFilterOnEnter` is a one-shot ref to auto-open filters on filtered mode entry.
+- `shouldOpenFilterOnEnter` is a one-shot ref used to auto-open the filter modal when the user starts targeted practice from landing.
+
+### Landing startup contract
+
+- `QuestionBankManifestService` hydrates the landing page from `public/question-bank-manifest.json`.
+- Landing summary pills read the manifest count/latest-year/year-set totals without loading the full bank.
+- Practice boot reads `public/question-search-index.json`, while question HTML is fetched later from `public/question-detail-shards/*.json`.
+- Mock mode remains the only entry path that asks `QuestionService` for the full bank up front.
 
 ### Session Queue (`SessionContext`, FEAT-012)
 
@@ -87,6 +100,13 @@ Actions:
 - `QuestionService` caps extracted subtopics per question to one (`MAX_SUBTOPICS_PER_QUESTION = 1`).
 - This prevents contaminated section-level tags from over-filtering results.
 
+### Search filtering
+
+- `searchQuery` is normalized to trimmed, lowercase, whitespace-collapsed text.
+- Filter matching uses AND-token behavior against each question's prebuilt `searchText`.
+- Search is part of the same filter intersection as year, subject, subtopic, and type filters.
+- Practice search stays index-backed and does not require detail-shard hydration for every result.
+
 ## ProgressManager in sidebar
 
 `FilterSidebar` now includes `ProgressManager` inside `ProgressBar`.
@@ -122,6 +142,7 @@ Supported params:
 - `subtopics`
 - `range`
 - `types`
+- `search`
 - `hideSolved`
 - `showOnlySolved`
 - `showOnlyBookmarked`
@@ -132,15 +153,17 @@ Rules:
 - Filter changes are auto-applied and synced via `replaceState`.
 - `question` param is preserved during filter writes.
 - Share action in `AnswerPanel` writes deep-link URL with `question=<uid>`.
-- Landing resolver priority (one-shot after questions load):
+- Landing resolver priority (one-shot on mount):
   1. `?question=<uid>` -> practice (always wins)
-  2. `?mode=` (`random`, `filtered`, `targeted`, `resume`, `mock`)
-  3. any filter param (`years`, `subjects`, `subtopics`, `range`, `types`) -> practice
+  2. `?mode=` (`random`, `targeted`, `resume`, `mock`)
+  3. any filter param (`years`, `subjects`, `subtopics`, `range`, `types`, `search`) -> practice
   4. fallback -> landing
 - Landing start actions write `?mode=` using `replaceState` only (never `pushState`).
 - `mode=random` must call `clearFilters()` before entering practice.
-- `mode=filtered` sets one-shot auto-open `FilterModal` on first practice render.
+- `mode=targeted` sets one-shot auto-open `FilterModal` on first practice render.
 - `mode=resume` must preserve the current practice/question/filter context and must not clear filters.
+- Search writes must preserve `question` while updating `search` and must remove `search` when cleared.
+- Legacy unknown non-mock `mode=` values still route to practice for backward compatibility, but they should not be used for new links.
 
 ## Persistence keys
 
@@ -173,8 +196,11 @@ Rules:
 - [ ] Preserve filter-share URL bypass to practice.
 - [ ] Keep `?mode=` writes on `replaceState`.
 - [ ] Keep random start path calling `clearFilters()` before practice.
+- [ ] Keep targeted start opening the filter modal once without forcing any inline landing selection.
 - [ ] Do not break subtopic-to-subject scoped filtering.
+- [ ] Keep normalized AND-token search behavior on `question.searchText`.
+- [ ] Keep `search` URL sync preserving `question` and clearing cleanly when search is removed.
 - [ ] Keep subject deselect -> orphan subtopic cleanup behavior.
 - [ ] Keep `question` param preservation during filter sync.
 - [ ] Keep `refreshProgressState()` call after import success.
-- [ ] Keep precompute generation path intact for dev/build.
+- [ ] Keep precompute plus public-artifact generation paths intact for dev/build.

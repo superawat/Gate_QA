@@ -200,7 +200,7 @@ describe("Issue 007 — Setup filter builder (unit logic)", () => {
 // ── Issue 008: View switching logic ──────────────────────────────────────
 describe("Issue 008 — View switching from URL", () => {
     // Replicate the resolveAppViewFromUrl logic inline for testing
-    const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types"];
+    const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types", "search"];
 
     const resolveAppViewFromUrl = (search) => {
         const params = new URLSearchParams(search);
@@ -258,5 +258,6 @@ describe("Issue 008 — View switching from URL", () => {
     test("filter params without mode resolves to practice", () => {
         expect(resolveAppViewFromUrl("?subjects=algorithms")).toBe("practice");
         expect(resolveAppViewFromUrl("?years=2023")).toBe("practice");
+        expect(resolveAppViewFromUrl("?search=deadlock")).toBe("practice");
     });
 });
