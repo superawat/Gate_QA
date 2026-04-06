@@ -2,18 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-bg: #f4f7fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #d9e2ec;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-accent: #0f766e;
+  --color-accent-soft: #ccfbf1;
+  --radius-hero: 32px;
+  --radius-card: 24px;
+  --shadow-card: 0 24px 60px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.08), transparent 24%),
+    linear-gradient(180deg, #eef4fb 0%, #f8fbff 18%, #f4f7fb 100%);
+  color: var(--color-text);
+  font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+pre {
+  overflow: auto;
+}
+
 ol,
 ul {
   list-style-position: outside;
   margin-left: 1.5rem;
-  /* Add indentation for the markers */
 }
 
 li {
   padding-left: 0.5rem;
-  /* Space between marker and content */
   margin-bottom: 0.5rem;
-  /* Space between options */
 }
 
 .logo-icon {

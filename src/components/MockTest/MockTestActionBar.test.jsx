@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { describe, test, expect, beforeEach, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import MockTestActionBar from "./MockTestActionBar";
 import QuestionPalette from "./QuestionPalette";
 
@@ -50,9 +50,11 @@ describe("MockTest footer submit ownership", () => {
 
         const submitButton = screen.getByTestId("mock-submit-button");
         const submitLane = screen.getByTestId("mock-submit-lane");
+        const exitButton = screen.getByTestId("mock-exit-button");
 
         expect(submitButton).toBeTruthy();
         expect(submitLane).toBeTruthy();
+        expect(exitButton).toBeTruthy();
     });
 
     test("does not render Submit inside QuestionPalette", () => {
@@ -82,5 +84,17 @@ describe("MockTest footer submit ownership", () => {
         const collapsedButton = screen.getByTestId("mock-submit-button");
         expect(collapsedLane.className).toContain("submit-lane--collapsed");
         expect(collapsedButton.className).toContain("whitespace-nowrap");
+    });
+
+    test("confirms exit before calling the exit handler", () => {
+        const onExitAttempt = vi.fn();
+        render(<MockTestActionBar isPaletteCollapsed={false} onExitAttempt={onExitAttempt} />);
+
+        fireEvent.click(screen.getByTestId("mock-exit-button"));
+        expect(screen.getByText(/exit confirmation/i)).toBeTruthy();
+
+        fireEvent.click(screen.getByRole("button", { name: /^exit$/i }));
+
+        expect(onExitAttempt).toHaveBeenCalledTimes(1);
     });
 });

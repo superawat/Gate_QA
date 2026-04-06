@@ -1,42 +1,44 @@
-import React, { useMemo } from "react";
-import { useMockTest } from "../../contexts/MockTestContext";
+import React, { useMemo, useRef } from "react";
 import DOMPurify from "dompurify";
-import { AnswerService } from "../../services/AnswerService";
+import { useMockTest } from "../../contexts/MockTestContext";
 import { QuestionService } from "../../services/QuestionService";
+import {
+    formatExpectedAnswer,
+    formatMockResponse,
+} from "../../utils/mockTest";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 
-const OPTION_LABELS = ['A', 'B', 'C', 'D'];
+const OPTION_LABELS = ["A", "B", "C", "D"];
 
-const resolveMarks = (question = {}, typeLabel = "MCQ") => {
-    const rawMarks = Number(question?.marks);
-    if (Number.isFinite(rawMarks) && rawMarks > 0) {
-        return String(rawMarks);
+const formatNegativeMarks = (value) => {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue) || numericValue <= 0) {
+        return "0";
     }
-    if (typeLabel === "NAT") {
-        return "2";
+    if (Math.abs(numericValue - 0.3333333333) < 0.0001) {
+        return "1/3";
     }
-    return "1";
+    if (Math.abs(numericValue - 0.6666666667) < 0.0001) {
+        return "2/3";
+    }
+    return numericValue.toString();
 };
 
-const buildCorrectOptionSet = (answerRecord) => {
+const buildCorrectOptionSet = (answerRecord = null) => {
     const set = new Set();
-    if (!answerRecord || !answerRecord.type) {
-        return set;
-    }
+    const type = String(answerRecord?.type || "").toUpperCase();
 
-    const answerType = String(answerRecord.type || "").toUpperCase();
-    if (answerType === "MCQ") {
-        const option = String(answerRecord.answer || "").toUpperCase().trim();
+    if (type === "MCQ") {
+        const option = String(answerRecord?.answer || "").trim().toUpperCase();
         if (option) {
             set.add(option);
         }
-        return set;
     }
 
-    if (answerType === "MSQ" && Array.isArray(answerRecord.answer)) {
+    if (type === "MSQ" && Array.isArray(answerRecord?.answer)) {
         answerRecord.answer.forEach((option) => {
-            const value = String(option || "").toUpperCase().trim();
+            const value = String(option || "").trim().toUpperCase();
             if (value) {
                 set.add(value);
             }
@@ -46,92 +48,85 @@ const buildCorrectOptionSet = (answerRecord) => {
     return set;
 };
 
-const MockTestQuestion = ({
-    isReviewPhase = false,
-}) => {
+const getVerdictCopy = (result = null) => {
+    switch (result?.status) {
+        case "correct":
+            return { label: "Correct", tone: "text-[#0f6f2f]" };
+        case "incorrect":
+            return { label: "Incorrect", tone: "text-[#c4302b]" };
+        case "missing_answer":
+            return { label: "No mapped answer record", tone: "text-[#9b2a2a]" };
+        case "unsupported_type":
+            return { label: "Unsupported answer type", tone: "text-[#9b2a2a]" };
+        case "unanswered":
+        default:
+            return { label: "Unanswered", tone: "text-[#6a7f94]" };
+    }
+};
+
+const MockTestQuestion = ({ isReviewPhase = false }) => {
     const {
         currentQuestion,
+        currentQuestionMeta,
+        currentQuestionResult,
         currentSection,
         currentSectionIndex,
-        sectionQuestionUids,
         responses,
         saveResponse,
+        sectionQuestionUids,
     } = useMockTest();
-    const questionUid = currentQuestion?.question_uid || "";
 
-    const typeLabel = String(currentQuestion?.type || "MCQ").toUpperCase();
-    const marks = resolveMarks(currentQuestion, typeLabel);
-    const negativeMarks = typeLabel === "MCQ" ? (marks === "1" ? "1/3" : "2/3") : "0";
+    const questionUid = String(currentQuestion?.question_uid || "").trim();
+    if (!currentQuestion || !questionUid) {
+        return null;
+    }
 
-    const rawQuestionHtml = (currentQuestion?.question || "")
-        .replace(/\n\n/g, "<br />")
-        .replace(/\n<li>/g, "<br><li>");
-
-    // Strip embedded option text ("A. …", "B. …") from the stem HTML for
-    // MCQ / MSQ questions when a structured options array is present.
-    const shouldStripOptions =
-        (typeLabel === "MCQ" || typeLabel === "MSQ") &&
-        Array.isArray(currentQuestion?.normalizedOptions
-            ? currentQuestion.normalizedOptions
-            : currentQuestion?.options) &&
-        (currentQuestion?.normalizedOptions || currentQuestion?.options || []).length > 0;
-
-    const questionHtml = shouldStripOptions
-        ? stripEmbeddedOptions(rawQuestionHtml)
-        : rawQuestionHtml;
-    const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtml);
-
+    const typeLabel = String(currentQuestionMeta?.type || "MCQ").toUpperCase();
+    const marks = Number(currentQuestionMeta?.marks || 0);
+    const negativeMarks = formatNegativeMarks(currentQuestionMeta?.negativeMarks);
     const isNAT = typeLabel === "NAT";
     const isMSQ = typeLabel === "MSQ";
     const currentResponse = responses[questionUid];
+    const reviewResult = isReviewPhase ? currentQuestionResult : null;
+    const verdictCopy = getVerdictCopy(reviewResult);
+    const correctOptionSet = useMemo(
+        () => buildCorrectOptionSet(reviewResult?.answerRecord),
+        [reviewResult?.answerRecord]
+    );
+
+    const rawQuestionHtml = String(currentQuestion?.question || "")
+        .replace(/\n\n/g, "<br />")
+        .replace(/\n<li>/g, "<br><li>");
+
+    const sanitizedQuestionHtml = DOMPurify.sanitize(rawQuestionHtml);
+
+    const normalizedOptions = useMemo(
+        () => QuestionService.getNormalizedOptions(currentQuestion),
+        [currentQuestion]
+    );
+
+    // Check if options are explicitly provided in the array, so we must render them
+    // separately above the A/B/C/D selector.
+    const explicitOptions = useMemo(
+        () => QuestionService.normalizeQuestionOptionsFromRaw(currentQuestion?.options || []),
+        [currentQuestion]
+    );
 
     const sectionTotal = currentSection === "CS"
         ? sectionQuestionUids.CS.length
         : sectionQuestionUids.GA.length;
     const sectionPosition = sectionTotal > 0 ? currentSectionIndex + 1 : 0;
-
-    const normalizedOptions = useMemo(() => {
-        if (!currentQuestion) {
-            return [];
-        }
-        return QuestionService.getNormalizedOptions(currentQuestion);
-    }, [currentQuestion]);
-
-    const answerRecord = useMemo(() => {
-        if (!isReviewPhase) {
-            return null;
-        }
-        if (!currentQuestion) {
-            return null;
-        }
-        return AnswerService.getAnswerForQuestion(currentQuestion);
-    }, [currentQuestion, isReviewPhase]);
-
-    const answerStatusMessage = useMemo(() => {
-        if (!isReviewPhase) {
-            return "";
-        }
-        if (!answerRecord) {
-            return "No mapped answer record.";
-        }
-        const answerType = String(answerRecord.type || "").toUpperCase();
-        if (answerType === "UNSUPPORTED") {
-            return "Unsupported question type.";
-        }
-        if (!["MCQ", "MSQ", "NAT"].includes(answerType)) {
-            return "Unsupported question type.";
-        }
-        return "";
-    }, [answerRecord, isReviewPhase]);
-
-    const correctOptionSet = useMemo(() => {
-        if (!isReviewPhase) {
-            return new Set();
-        }
-        return buildCorrectOptionSet(answerRecord);
-    }, [answerRecord, isReviewPhase]);
-
-    if (!currentQuestion) return null;
+    const reviewScoreDelta = Number(reviewResult?.scoreDelta || 0);
+    const reviewScoreText = reviewScoreDelta > 0
+        ? `+${reviewScoreDelta}`
+        : String(reviewScoreDelta);
+    const reviewExpectedAnswer = formatExpectedAnswer(reviewResult?.answerRecord);
+    const reviewResponseText = formatMockResponse(reviewResult?.response, typeLabel);
+    const reviewMessage = reviewResult?.status === "missing_answer"
+        ? "No mapped answer record."
+        : reviewResult?.status === "unsupported_type"
+            ? "Unsupported answer type."
+            : "";
 
     const handleOptionSelect = (optionValue) => {
         if (isReviewPhase) {
@@ -143,7 +138,7 @@ const MockTestQuestion = ({
             const newSelected = currentSelected.includes(optionValue)
                 ? currentSelected.filter((value) => value !== optionValue)
                 : [...currentSelected, optionValue];
-            saveResponse(currentQuestion.question_uid, newSelected);
+            saveResponse(questionUid, newSelected);
             return;
         }
 
@@ -157,9 +152,68 @@ const MockTestQuestion = ({
         saveResponse(questionUid, event.target.value);
     };
 
+    const natInputRef = useRef(null);
+
+    const handleNatInsert = (char) => {
+        if (isReviewPhase) return;
+        const input = natInputRef.current;
+        if (!input) {
+            saveResponse(questionUid, (currentResponse || "") + char);
+            return;
+        }
+        const start = input.selectionStart || 0;
+        const end = input.selectionEnd || 0;
+        const val = currentResponse || "";
+        const newVal = val.slice(0, start) + char + val.slice(end);
+        saveResponse(questionUid, newVal);
+        setTimeout(() => {
+            if (natInputRef.current) {
+                natInputRef.current.setSelectionRange(start + char.length, start + char.length);
+                natInputRef.current.focus();
+            }
+        }, 0);
+    };
+
+    const handleNatBackspace = () => {
+        if (isReviewPhase) return;
+        const input = natInputRef.current;
+        if (!input) return;
+        const start = input.selectionStart || 0;
+        const end = input.selectionEnd || 0;
+        const val = currentResponse || "";
+        if (start === end && start > 0) {
+            const newVal = val.slice(0, start - 1) + val.slice(end);
+            saveResponse(questionUid, newVal);
+            setTimeout(() => {
+                if (natInputRef.current) {
+                    natInputRef.current.setSelectionRange(start - 1, start - 1);
+                    natInputRef.current.focus();
+                }
+            }, 0);
+        } else if (start !== end) {
+            const newVal = val.slice(0, start) + val.slice(end);
+            saveResponse(questionUid, newVal);
+            setTimeout(() => {
+                if (natInputRef.current) {
+                    natInputRef.current.setSelectionRange(start, start);
+                    natInputRef.current.focus();
+                }
+            }, 0);
+        }
+    };
+
+    const handleNatArrow = (dir) => {
+        if (isReviewPhase) return;
+        const input = natInputRef.current;
+        if (!input) return;
+        const start = input.selectionStart || 0;
+        const newPos = dir === 'left' ? Math.max(0, start - 1) : Math.min((currentResponse || "").length, start + 1);
+        input.setSelectionRange(newPos, newPos);
+        input.focus();
+    };
+
     return (
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-white">
-            {/* ── Meta row — Question Type + Marks ── */}
             <div className="mocktest-meta-row flex items-center justify-between bg-white px-3 text-[13px] text-[#1f2a36]">
                 <div className="font-semibold">
                     Question Type: <span className="font-bold">{typeLabel}</span>
@@ -171,27 +225,28 @@ const MockTestQuestion = ({
                 </div>
             </div>
 
-            {/* ── Question body area ── */}
             <div className="mocktest-question-scroll flex-1 overflow-y-auto bg-white">
                 <div className="mocktest-question-body w-full bg-white px-4 pb-16 md:px-6">
-                    {/* Question No. row with scroll arrows */}
                     <div className="mocktest-question-number-row flex items-center justify-between px-1 py-2">
                         <h2 className="text-[18px] font-bold text-black">Question No. {sectionPosition}</h2>
-                        <div className="mocktest-scroll-arrows">
-                            <button type="button" className="mocktest-scroll-arrow-btn" aria-label="Scroll down">
-                                <span>▼</span>
-                            </button>
-                            <button type="button" className="mocktest-scroll-arrow-btn" aria-label="Scroll up">
-                                <span>▲</span>
-                            </button>
-                        </div>
                     </div>
+
+                    {isReviewPhase ? (
+                        <div className="mb-4 rounded border border-[#d7e3ee] bg-[#f6f9fc] px-4 py-3 text-sm">
+                            <div className={`font-semibold ${verdictCopy.tone}`}>{verdictCopy.label}</div>
+                            <div className="mt-2 text-[#41576c]">Your answer: {reviewResponseText}</div>
+                            <div className="mt-1 text-[#41576c]">Expected answer: {reviewExpectedAnswer}</div>
+                            <div className="mt-1 text-[#41576c]">Score change: {reviewScoreText}</div>
+                            {reviewMessage ? (
+                                <div className="mt-2 text-[#9b2a2a]">{reviewMessage}</div>
+                            ) : null}
+                        </div>
+                    ) : null}
 
                     <div
                         className="mock-question-content font-sans"
                         data-testid="mock-question-content"
                     >
-                        {/* Question stem */}
                         <div className="mocktest-question-stem mb-6 border-l-2 border-transparent py-3">
                             <MathContent
                                 as="div"
@@ -203,39 +258,67 @@ const MockTestQuestion = ({
                             </MathContent>
                         </div>
 
-                        {/* Options area */}
                         <div className="pl-1">
                             {isNAT ? (
                                 <div className="relative z-10 mt-4 flex flex-col gap-2">
-                                    <label className="text-sm font-bold text-gray-800">
-                                        Enter your numerical answer here:
-                                    </label>
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex flex-col items-center p-3 bg-[#f3f4f6] rounded-md border border-gray-300 w-[180px]">
                                         <input
-                                            type="number"
-                                            inputMode="decimal"
+                                            ref={natInputRef}
+                                            type="text"
+                                            inputMode="text"
                                             data-testid="mock-nat-input"
                                             value={currentResponse || ""}
                                             onChange={handleNatChange}
                                             readOnly={isReviewPhase}
-                                            className="h-10 w-48 border border-gray-400 bg-white px-3 text-lg font-bold shadow-inner focus:border-blue-500 focus:outline-none"
-                                            placeholder="Enter answer"
+                                            className="h-8 w-full mb-2 border-[2px] border-black bg-white px-2 text-[15px] font-bold focus:outline-none"
                                         />
-                                        {!isReviewPhase && (
-                                            <button
-                                                className="h-8 rounded border border-gray-400 bg-[#e1e1e1] px-4 text-sm font-bold shadow-sm"
-                                                onClick={() => saveResponse(questionUid, "")}
-                                            >
-                                                Backspace
-                                            </button>
-                                        )}
+                                        {!isReviewPhase ? (
+                                            <>
+                                                <button
+                                                    type="button"
+                                                    className="w-full h-8 mb-2 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                    onClick={handleNatBackspace}
+                                                >
+                                                    Backspace
+                                                </button>
+                                                <div className="grid grid-cols-3 gap-1.5 mb-2 w-full">
+                                                    {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.', '-'].map(key => (
+                                                        <button
+                                                            key={key}
+                                                            type="button"
+                                                            className="h-9 w-full rounded border border-gray-400 bg-[#f4f4f4] text-[16px] font-bold shadow-sm hover:bg-[#e8e8e8] active:bg-[#d8d8d8]"
+                                                            onClick={() => handleNatInsert(key)}
+                                                        >
+                                                            {key}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                                <div className="flex justify-center gap-1.5 mb-2 w-full">
+                                                    <button
+                                                        type="button"
+                                                        className="flex-1 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[16px] font-bold shadow-sm flex items-center justify-center hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                        onClick={() => handleNatArrow('left')}
+                                                    >
+                                                        &#8592;
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        className="flex-1 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[16px] font-bold shadow-sm flex items-center justify-center hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                        onClick={() => handleNatArrow('right')}
+                                                    >
+                                                        &#8594;
+                                                    </button>
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    className="w-full h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                    onClick={() => saveResponse(questionUid, "")}
+                                                >
+                                                    Clear All
+                                                </button>
+                                            </>
+                                        ) : null}
                                     </div>
-                                    {isReviewPhase && answerStatusMessage && (
-                                        <p className="mt-1 text-xs font-semibold text-[#9b2a2a]">{answerStatusMessage}</p>
-                                    )}
-                                    <p className="mt-1 text-xs italic text-gray-500">
-                                        Use virtual keypad or physical keyboard.
-                                    </p>
                                 </div>
                             ) : (
                                 <div className="mt-2 flex flex-col gap-3">
@@ -244,37 +327,52 @@ const MockTestQuestion = ({
                                             Options unavailable for this question data.
                                         </div>
                                     ) : (
-                                        <>
-                                            {/* ── Selection controls with option text ── */}
-                                            <div
-                                                className="mt-1 flex flex-col gap-2"
-                                                data-testid="mock-options-display"
-                                            >
+                                        <div
+                                            className="mt-1 flex flex-col gap-2"
+                                            data-testid="mock-options-display"
+                                        >
+                                            {explicitOptions.length > 0 ? (
+                                                <div className="mb-4 flex flex-col gap-2 border-b border-gray-200 pb-4">
+                                                    {explicitOptions.map((option, index) => {
+                                                        const optionHtml = option.html || option.text || "";
+                                                        if (!optionHtml) return null;
+                                                        return (
+                                                            <div key={index} className="flex items-start gap-2 text-[15px] text-gray-800">
+                                                                <span className="font-bold flex-shrink-0">{OPTION_LABELS[index] ?? option.label}.</span>
+                                                                <MathContent
+                                                                    as="div"
+                                                                    dynamic
+                                                                    className="mock-option-text flex-1 overflow-auto"
+                                                                >
+                                                                    <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(optionHtml) }} />
+                                                                </MathContent>
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
+                                            ) : null}
+
+                                            <div className="font-semibold text-gray-700 mb-1">Select your answer:</div>
+                                            <div className="flex flex-row flex-wrap gap-4">
                                                 {normalizedOptions.map((option, index) => {
                                                     const optionValue = option.label;
-                                                    const optionHtml = option.html || option.text || "";
-                                                    const sanitizedOptionHtml = optionHtml
-                                                        ? DOMPurify.sanitize(optionHtml)
-                                                        : "";
                                                     const isChecked = isMSQ
                                                         ? Array.isArray(currentResponse) && currentResponse.includes(optionValue)
                                                         : currentResponse === optionValue;
-
                                                     const isCorrect = isReviewPhase && correctOptionSet.has(optionValue);
                                                     const isIncorrectSelection = isReviewPhase && isChecked && !isCorrect;
-
                                                     const rowClass = isReviewPhase
                                                         ? (isCorrect
-                                                            ? "border border-[#1e8f3f] bg-[#eef9f1]"
+                                                            ? "border border-[#1e8f3f] bg-[#eef9f1] text-[#0f6f2f]"
                                                             : isIncorrectSelection
-                                                                ? "border border-[#cc5d5d] bg-[#fff1f1]"
-                                                                : "border border-transparent")
-                                                        : (isChecked ? "bg-blue-50/50" : "");
+                                                                ? "border border-[#cc5d5d] bg-[#fff1f1] text-[#c4302b]"
+                                                                : "border border-gray-300 text-gray-500 opacity-70")
+                                                        : (isChecked ? "border-[#0e76a8] bg-[#f0f7fb] text-[#0e76a8] ring-1 ring-[#0e76a8]" : "border-gray-300 text-gray-700");
 
                                                     return (
                                                         <label
                                                             key={optionValue}
-                                                            className={`mock-option-selector flex items-start gap-2 rounded-sm px-2 py-1 ${isReviewPhase ? "cursor-default" : "cursor-pointer hover:bg-gray-50"} ${rowClass}`}
+                                                            className={`mock-option-selector flex items-center justify-center gap-2 rounded-md border px-4 py-3 min-w-[70px] ${isReviewPhase ? "cursor-default" : "cursor-pointer hover:bg-gray-50 transition-colors"} ${rowClass}`}
                                                             data-testid={`mock-option-selector-${OPTION_LABELS[index] ?? optionValue}`}
                                                         >
                                                             <input
@@ -284,29 +382,16 @@ const MockTestQuestion = ({
                                                                 checked={isChecked}
                                                                 onChange={() => handleOptionSelect(optionValue)}
                                                                 disabled={isReviewPhase}
-                                                                className={`mt-1 h-[18px] w-[18px] flex-shrink-0 border-2 border-gray-400 accent-[#0e76a8] ${isMSQ ? "rounded-sm" : ""}`}
+                                                                className={`h-[18px] w-[18px] flex-shrink-0 cursor-pointer accent-[#0e76a8] focus:ring-0 ${isMSQ ? "rounded-sm" : ""}`}
                                                             />
-                                                            <span className="mock-option-label font-medium flex-shrink-0">{OPTION_LABELS[index] ?? optionValue}.</span>
-                                                            {sanitizedOptionHtml ? (
-                                                                <MathContent
-                                                                    as="span"
-                                                                    key={`${questionUid}-opt-${optionValue}`}
-                                                                    dynamic
-                                                                    className="mock-option-text flex-1 overflow-auto"
-                                                                >
-                                                                    <span dangerouslySetInnerHTML={{ __html: sanitizedOptionHtml }} />
-                                                                </MathContent>
-                                                            ) : (
-                                                                <span className="mock-option-text flex-1">{optionValue}</span>
-                                                            )}
+                                                            <span className="mock-option-label text-[16px] font-bold">
+                                                                {OPTION_LABELS[index] ?? optionValue}
+                                                            </span>
                                                         </label>
                                                     );
                                                 })}
                                             </div>
-                                        </>
-                                    )}
-                                    {isReviewPhase && answerStatusMessage && (
-                                        <p className="text-xs font-semibold text-[#9b2a2a]">{answerStatusMessage}</p>
+                                        </div>
                                     )}
                                 </div>
                             )}

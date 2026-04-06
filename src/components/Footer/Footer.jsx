@@ -28,7 +28,7 @@ const Footer = () => {
 
           <button
             onClick={() => setIsSupportOpen(true)}
-            className="group inline-flex items-center gap-1 rounded-full border border-pink-400 bg-pink-400 px-1.5 py-0 text-[10px] text-white transition-all hover:border-pink-500 hover:bg-pink-500 sm:text-xs shadow-sm hover:shadow-md"
+            className="group inline-flex items-center gap-1 rounded-full border border-pink-500 bg-pink-500 px-1.5 py-0 text-[10px] text-white transition-all hover:border-pink-600 hover:bg-pink-600 sm:text-xs shadow-sm hover:shadow-md"
           >
             <span className="hidden font-semibold tracking-tight text-white sm:inline">
               Support Me

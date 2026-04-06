@@ -104,7 +104,7 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
 
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
                     <div className="mocktest-palette-section-header">
-                        {currentSection === "GA" ? "General Aptitude" : "CS 2 Computer Science ..."}
+                        {currentSection === "GA" ? "General Aptitude" : "Computer Science and IT"}
                     </div>
                     <div className="mocktest-palette-choose-header">
                         Choose a Question

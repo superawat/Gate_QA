@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
 
-const MockTestActionBar = ({ isReviewPhase = false, onBackToResults, isPaletteCollapsed = false }) => {
+const getBaseAssetUrl = () => (
+    import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`
+);
+
+const MockTestActionBar = ({
+    isReviewPhase = false,
+    onBackToResults,
+    isPaletteCollapsed = false,
+    onExitAttempt,
+}) => {
     const {
         saveAndNext,
         markForReviewAndNext,
@@ -12,6 +23,8 @@ const MockTestActionBar = ({ isReviewPhase = false, onBackToResults, isPaletteCo
         currentSectionIndex,
     } = useMockTest();
     const [showSubmitWarning, setShowSubmitWarning] = useState(false);
+    const [showExitWarning, setShowExitWarning] = useState(false);
+    const baseAssetUrl = getBaseAssetUrl();
 
     if (isReviewPhase) {
         return (
@@ -96,13 +109,21 @@ const MockTestActionBar = ({ isReviewPhase = false, onBackToResults, isPaletteCo
                 {/* Submit zone (aligned with sidebar width) — Issue 005 */}
                 <div
                     data-testid="mock-submit-lane"
-                    className={`mocktest-submit-lane ${submitLaneStateClass}`}
+                    className={`mocktest-submit-lane flex items-center justify-center gap-2 px-3 ${submitLaneStateClass}`}
                 >
+                    <button
+                        data-testid="mock-exit-button"
+                        type="button"
+                        onClick={() => setShowExitWarning(true)}
+                        className="mocktest-action-btn whitespace-nowrap rounded-[2px] border border-[#adb9c5] bg-white px-4 text-[12px] font-semibold text-[#1c2a3a] hover:bg-[#ecf1f5]"
+                    >
+                        Exit Test
+                    </button>
                     <button
                         data-testid="mock-submit-button"
                         type="button"
                         onClick={() => setShowSubmitWarning(true)}
-                        className="mocktest-action-submit-btn whitespace-nowrap rounded-[2px] border border-[#5aa3cb] bg-[#65add2] px-7 text-[13px] font-semibold text-white hover:bg-[#559bc0]"
+                        className="mocktest-action-submit-btn whitespace-nowrap rounded-[2px] border border-[#0d6b97] bg-[#0e76a8] px-7 text-[13px] font-semibold text-white hover:bg-[#0c688f]"
                     >
                         Submit
                     </button>
@@ -115,7 +136,7 @@ const MockTestActionBar = ({ isReviewPhase = false, onBackToResults, isPaletteCo
                     <div className="mocktest-submit-modal w-[400px] max-w-[90vw] rounded bg-white p-5 shadow-xl">
                         <div className="mb-3 flex items-start gap-3">
                             <img
-                                src="mocktest/warning-icon.png"
+                                src={`${baseAssetUrl}mocktest/warning-icon.png`}
                                 alt="Warning"
                                 className="mt-0.5 h-7 w-7 shrink-0"
                             />
@@ -143,6 +164,45 @@ const MockTestActionBar = ({ isReviewPhase = false, onBackToResults, isPaletteCo
                                 className="rounded border border-[#0d6ea1] bg-[#0e76a8] px-4 py-1.5 text-sm font-bold text-white hover:bg-[#0c688f]"
                             >
                                 Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showExitWarning && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                    <div className="mocktest-submit-modal w-[400px] max-w-[90vw] rounded bg-white p-5 shadow-xl">
+                        <div className="mb-3 flex items-start gap-3">
+                            <img
+                                src={`${baseAssetUrl}mocktest/warning-icon.png`}
+                                alt="Warning"
+                                className="mt-0.5 h-7 w-7 shrink-0"
+                            />
+                            <div>
+                                <h3 className="mb-1 text-base font-bold text-[#1a2a3a]">Exit Confirmation</h3>
+                                <p className="text-sm leading-5 text-[#3a4c5f]">
+                                    Exit this mock test now? Your current attempt will be discarded and nothing will be saved.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="mt-5 flex justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setShowExitWarning(false)}
+                                className="rounded border border-[#b2bfcb] bg-white px-4 py-1.5 text-sm font-semibold text-[#30465d] hover:bg-[#f1f5f8]"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setShowExitWarning(false);
+                                    onExitAttempt?.();
+                                }}
+                                className="rounded border border-[#0d6ea1] bg-[#0e76a8] px-4 py-1.5 text-sm font-bold text-white hover:bg-[#0c688f]"
+                            >
+                                Exit
                             </button>
                         </div>
                     </div>
