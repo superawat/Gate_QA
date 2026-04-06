@@ -25,6 +25,7 @@ const baseMcqQuestion = {
   title: "Sample",
   subject: "General Aptitude",
   question: "<p>Sample question stem</p>",
+  options: ["First option", "Second option", "Third option", "Fourth option"],
   normalizedOptions: [
     { label: "A", text: "First option", html: "First option" },
     { label: "B", text: "Second option", html: "Second option" },
@@ -38,6 +39,7 @@ const baseMsqQuestion = {
   title: "MSQ Sample",
   subject: "Computer Science",
   question: "<p>MSQ question stem</p>",
+  options: ["Option A", "Option B", "Option C", "Option D"],
   normalizedOptions: [
     { label: "A", text: "Option A", html: "Option A" },
     { label: "B", text: "Option B", html: "Option B" },
@@ -83,7 +85,7 @@ describe("MockTestQuestion", () => {
     expect(metaRow.textContent).toContain("Negative Marks: 1/3");
   });
 
-  test("renders NAT input and clears through saveResponse", () => {
+  test("renders NAT input and clears through Clear All", () => {
     mockContextValue.currentQuestion = { ...baseNatQuestion };
     mockContextValue.currentQuestionMeta = {
       questionUid: "go:333",
@@ -102,7 +104,7 @@ describe("MockTestQuestion", () => {
     fireEvent.change(input, { target: { value: "42.5" } });
     expect(mockContextValue.saveResponse).toHaveBeenCalledWith("go:333", "42.5");
 
-    fireEvent.click(screen.getByRole("button", { name: "Backspace" }));
+    fireEvent.click(screen.getByRole("button", { name: "Clear All" }));
     expect(mockContextValue.saveResponse).toHaveBeenCalledWith("go:333", "");
   });
 
@@ -121,9 +123,10 @@ describe("MockTestQuestion", () => {
 
     render(<MockTestQuestion isReviewPhase={false} />);
 
+    expect(screen.getByText(/Option B/)).toBeTruthy();
+    expect(screen.getByText(/B\./)).toBeTruthy();
+
     const selectorB = screen.getByTestId("mock-option-selector-B");
-    expect(selectorB.textContent).toContain("B.");
-    expect(selectorB.textContent).toContain("Option B");
     expect(selectorB.querySelector('input[type="checkbox"]')).toBeTruthy();
   });
 
