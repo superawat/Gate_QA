@@ -27,7 +27,14 @@ function writeJsonToLocalStorage(key, payload) {
   }
 }
 
-export default function AnswerPanel({ question = {}, onNextQuestion, solutionLink }) {
+export default function AnswerPanel({
+  question = {},
+  onNextQuestion,
+  onPreviousQuestion,
+  canGoPrevious,
+  canGoNext,
+  solutionLink,
+}) {
   const {
     toggleSolved,
     toggleBookmark,
@@ -37,6 +44,8 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
   } = useFilterActions();
 
   const { goBack, canGoBack } = useSession();
+  const canMovePrevious = typeof canGoPrevious === "boolean" ? canGoPrevious : canGoBack;
+  const canMoveNext = typeof canGoNext === "boolean" ? canGoNext : typeof onNextQuestion === "function";
 
   const questionIdentity = useMemo(
     () => AnswerService.getQuestionIdentity(question),
@@ -95,6 +104,11 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
     }
     const evaluation = evaluateAnswer(answerRecord, submission);
     setResult(evaluation);
+    trackEvent("answer_submit", {
+      question_uid: question.question_uid || storageKey || "unknown",
+      type: answerRecord.type,
+      correct: evaluation.correct ? "yes" : "no",
+    });
 
     // FEAT-011: Auto-mark solved on correct answer submit
     if (evaluation.correct && questionProgressId && !isSolved) {
@@ -318,8 +332,12 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
   const renderNextButton = (additionalClasses = "") => (
     <button
       type="button"
+      disabled={!canMoveNext || typeof onNextQuestion !== "function"}
       onClick={onNextQuestion}
-      className={`px-6 h-12 rounded bg-teal-600 text-white font-bold text-sm shadow-sm hover:bg-teal-700 transition-colors flex items-center justify-center ${additionalClasses}`}
+      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMoveNext || typeof onNextQuestion !== "function"
+        ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
+        : "bg-teal-600 text-white hover:bg-teal-700"
+        } ${additionalClasses}`}
     >
       Next &rarr;
     </button>
@@ -328,9 +346,9 @@ export default function AnswerPanel({ question = {}, onNextQuestion, solutionLin
   const renderPreviousButton = (additionalClasses = "") => (
     <button
       type="button"
-      disabled={!canGoBack}
-      onClick={goBack}
-      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canGoBack
+      disabled={!canMovePrevious}
+      onClick={onPreviousQuestion || goBack}
+      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMovePrevious
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
         : "border border-teal-500 text-teal-600 bg-white hover:bg-teal-50"
         } ${additionalClasses}`}

@@ -1,62 +1,51 @@
 import React, { useState } from 'react';
+import { FaExclamationTriangle, FaHeart } from 'react-icons/fa';
+
 import DataPolicyModal from './DataPolicyModal';
 import SupportModal from './SupportModal';
-import { FaHeart, FaExclamationTriangle } from 'react-icons/fa';
 
 const Footer = () => {
   const [isDataPolicyOpen, setIsDataPolicyOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
 
-  // Current year or fixed year range as requested "2014-2025" (User mentioned dynamic or fixed, keeping fixed per specific text request, or dynamic end year to be safe? User text: "2014-2025". I will use dynamic end year to be smart about it, or revert to static if strict.)
-  // User Text Requirement: "Copyright © GATE Overflow 2014-2025."
-  // I will stick to the static text for now to be precise, or use dynamic if I want to be proactive. 
-  // Let's use 2025 as requested in the text block.
-
   return (
     <>
-      <footer className="w-full bg-gray-50 border-t border-gray-200 py-1 px-1 sm:px-2 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-row items-center justify-between text-[10px] sm:text-xs leading-none">
-          <div className="flex items-center gap-1.5 sm:gap-2">
+      <footer className="mt-auto w-full border-t border-gray-200 bg-gray-50 px-1 py-0 sm:px-1.5">
+        <div className="mx-auto flex max-w-7xl flex-row items-center justify-between text-[10px] leading-none sm:min-h-[24px] sm:text-xs">
+          <div className="flex items-center gap-1 sm:gap-1.5">
             <span className="text-gray-800">
-              Powered by <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold inline-block">GATE Overflow</a>
+              Powered by <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="inline-block font-semibold text-blue-600 hover:underline">GATE Overflow</a>
             </span>
             <button
               onClick={() => setIsDataPolicyOpen(true)}
-              className="inline-flex items-center gap-1 px-1 py-0.5 bg-red-50 hover:bg-red-100 text-black rounded border border-red-500 transition-colors"
+              className="inline-flex items-center gap-1 rounded border border-red-500 bg-red-50 px-1 py-0 text-[10px] text-black transition-colors hover:bg-red-100 sm:text-xs"
               title="Data Persistence & Policy"
             >
-              <FaExclamationTriangle className="text-red-600 size-2.5 sm:size-3" />
+              <FaExclamationTriangle className="size-2 text-red-600 sm:size-2.5" />
               <span className="hidden sm:inline">Data Policy</span>
             </button>
           </div>
+
           <button
             onClick={() => setIsSupportOpen(true)}
-            className="inline-flex items-center gap-1 px-2 py-0.5 bg-white hover:bg-gray-50 border border-gray-200 text-black rounded-full shadow-sm hover:shadow transition-all group"
+            className="group inline-flex items-center gap-1 rounded-full border border-pink-400 bg-pink-400 px-1.5 py-0 text-[10px] text-white transition-all hover:border-pink-500 hover:bg-pink-500 sm:text-xs shadow-sm hover:shadow-md"
           >
-            <span className="hidden sm:inline font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 tracking-tight">
+            <span className="hidden font-semibold tracking-tight text-white sm:inline">
               Support Me
             </span>
-            <FaHeart className="text-red-500 hover:scale-110 transition-transform size-2.5 sm:size-3" />
+            <FaHeart className="size-2 text-white transition-transform hover:scale-110 sm:size-2.5" />
           </button>
         </div>
       </footer>
 
-      {/* Data Policy Modal */}
       <DataPolicyModal
         isOpen={isDataPolicyOpen}
         onClose={() => setIsDataPolicyOpen(false)}
       />
 
-      {/* Support Modal */}
       <SupportModal
         isOpen={isSupportOpen}
         onClose={() => setIsSupportOpen(false)}
-      />
-
-      {/* Data Policy Modal */}
-      <DataPolicyModal
-        isOpen={isDataPolicyOpen}
-        onClose={() => setIsDataPolicyOpen(false)}
       />
     </>
   );

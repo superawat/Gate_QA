@@ -1,0 +1,258 @@
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FaFilter, FaSlidersH } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import PageShell from "../components/Layout/PageShell";
+import FilterModal from "../components/Filters/FilterModal";
+import FilterSidebar from "../components/Filters/FilterSidebar";
+import ActiveFilterChips from "../components/Filters/ActiveFilterChips";
+import LoadingState from "../components/Loaders/LoadingState";
+import QuestionPickerList from "../components/Practice/QuestionPickerList";
+import PaginationControls from "../components/Practice/PaginationControls";
+import { useFilterActions, useFilterState } from "../contexts/FilterContext";
+import { useSession } from "../contexts/SessionContext";
+import { trackEvent } from "../utils/analytics";
+import { writeLastSession } from "../utils/lastSession";
+import { buildSolvePath, parsePageParam, PRACTICE_ROUTE, writePageParam } from "../utils/routes";
+
+const PAGE_SIZE = 25;
+
+const ExplorePage = ({
+  loading,
+  error,
+  loadQuestions,
+  hasResumeRoute,
+  onResumePractice,
+}) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const filterChangeRef = useRef(null);
+
+  const { filteredQuestions, filters, isInitialized, totalQuestions } = useFilterState();
+  const { isQuestionSolved, isQuestionBookmarked } = useFilterActions();
+  const { startOrderedSession } = useSession();
+
+  const totalPages = Math.max(1, Math.ceil(filteredQuestions.length / PAGE_SIZE));
+  const requestedPage = parsePageParam(location.search, 1);
+  const currentPage = Math.min(requestedPage, totalPages);
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const pagedQuestions = filteredQuestions.slice(startIndex, startIndex + PAGE_SIZE);
+
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
+  const prevPageRef = useRef(currentPage);
+  const transitionTimerRef = useRef(null);
+
+  useEffect(() => {
+    if (prevPageRef.current !== currentPage && isInitialized && filteredQuestions.length > 0) {
+      setIsPageTransitioning(true);
+      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
+      transitionTimerRef.current = setTimeout(() => setIsPageTransitioning(false), 350);
+    }
+    prevPageRef.current = currentPage;
+    return () => {
+      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
+    };
+  }, [currentPage, filteredQuestions.length, isInitialized]);
+
+  useEffect(() => {
+    if (requestedPage !== currentPage) {
+      navigate(
+        {
+          pathname: PRACTICE_ROUTE,
+          search: writePageParam(location.search, currentPage),
+        },
+        { replace: true }
+      );
+    }
+  }, [currentPage, location.search, navigate, requestedPage]);
+
+  useEffect(() => {
+    if (!isInitialized) {
+      return;
+    }
+
+    const nextSnapshot = JSON.stringify(filters);
+    if (filterChangeRef.current === null) {
+      filterChangeRef.current = nextSnapshot;
+      return;
+    }
+
+    if (filterChangeRef.current === nextSnapshot) {
+      return;
+    }
+
+    filterChangeRef.current = nextSnapshot;
+    trackEvent("filter_apply", { source: "explore" });
+
+    const nextSearch = writePageParam(location.search, 1);
+    if (nextSearch !== location.search) {
+      navigate(
+        {
+          pathname: PRACTICE_ROUTE,
+          search: nextSearch,
+        },
+        { replace: true }
+      );
+    }
+  }, [filters, isInitialized, location.search, navigate]);
+
+  useEffect(() => {
+    writeLastSession({
+      route: `${PRACTICE_ROUTE}${location.search}`,
+      exploreSearch: location.search || "",
+      resultPage: currentPage,
+      mode: "ordered",
+    });
+  }, [currentPage, location.search]);
+
+  const handleOpenFilters = () => {
+    trackEvent("filter_open", { source: "explore" });
+    setIsMobileFilterOpen(true);
+  };
+
+  const handleOpenQuestion = (question) => {
+    startOrderedSession(filteredQuestions, question.question_uid);
+    trackEvent("result_open", { question_uid: question.question_uid, source: "explore" });
+    writeLastSession({
+      route: `${buildSolvePath(question.question_uid)}${location.search || ""}`,
+      exploreSearch: location.search || "",
+      resultPage: currentPage,
+      questionUid: question.question_uid,
+      mode: "ordered",
+    });
+    navigate({
+      pathname: buildSolvePath(question.question_uid),
+      search: location.search,
+    });
+  };
+
+  const resultSummary = useMemo(() => {
+    if (!isInitialized) {
+      return "Preparing question bank...";
+    }
+    if (filteredQuestions.length === 0) {
+      return "No questions match the current filters.";
+    }
+    const rangeStart = startIndex + 1;
+    const rangeEnd = Math.min(startIndex + PAGE_SIZE, filteredQuestions.length);
+    return `Showing ${rangeStart}-${rangeEnd} of ${filteredQuestions.length} matching questions`;
+  }, [filteredQuestions.length, isInitialized, startIndex]);
+
+  return (
+    <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
+      <FilterModal
+        isOpen={isMobileFilterOpen}
+        onClose={() => setIsMobileFilterOpen(false)}
+      />
+
+      <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] 2xl:grid-cols-[380px_minmax(0,1fr)]">
+        <div className="hidden xl:block">
+          <div className="sticky top-24 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)]">
+            <FilterSidebar className="h-[calc(100vh-8rem)] border-r-0 bg-white" />
+          </div>
+        </div>
+
+        <section className="space-y-5">
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)]">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Filters</p>
+                <h1 className="mt-2 text-3xl font-semibold text-slate-950">Filter questions and open the exact one you want.</h1>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                  Choose year, subject, subtopic, type, or progress status, then pick directly from the filtered question list.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">
+                  {totalQuestions} total questions
+                </div>
+                <button
+                  type="button"
+                  onClick={handleOpenFilters}
+                  className="inline-flex min-h-[44px] items-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 xl:hidden"
+                >
+                  <FaFilter className="mr-2" />
+                  Filters
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-800">
+                <FaSlidersH />
+                {resultSummary}
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <ActiveFilterChips />
+            </div>
+          </div>
+
+          {error ? (
+            <div className="rounded-[var(--radius-card)] border border-rose-200 bg-rose-50 p-6 text-center shadow-[var(--shadow-soft)]">
+              <p className="text-sm font-medium text-rose-800">{error}</p>
+              <button
+                type="button"
+                onClick={() => loadQuestions()}
+                className="mt-4 inline-flex min-h-[44px] items-center rounded-xl bg-rose-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-rose-800"
+              >
+                Retry
+              </button>
+            </div>
+          ) : loading && !isInitialized ? (
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+              <LoadingState
+                label="Loading filter page..."
+                size="lg"
+                className="min-h-[320px]"
+                textClassName="text-sm text-slate-500"
+              />
+            </div>
+          ) : filteredQuestions.length === 0 ? (
+            <div className="rounded-[var(--radius-card)] border border-dashed border-slate-300 bg-white p-10 text-center shadow-[var(--shadow-soft)]">
+              <h2 className="text-xl font-semibold text-slate-900">No questions match these filters.</h2>
+              <p className="mt-2 text-sm text-slate-600">
+                Try removing one or two filters, broadening the year range, or clearing the search text.
+              </p>
+            </div>
+          ) : isPageTransitioning ? (
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+              <LoadingState
+                label="Loading page..."
+                size="md"
+                className="min-h-[200px]"
+                textClassName="text-sm text-slate-500"
+              />
+            </div>
+          ) : (
+            <>
+              <QuestionPickerList
+                questions={pagedQuestions}
+                pageStartIndex={startIndex}
+                isQuestionSolved={isQuestionSolved}
+                isQuestionBookmarked={isQuestionBookmarked}
+                onOpenQuestion={handleOpenQuestion}
+              />
+
+              <PaginationControls
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(nextPage) => {
+                  navigate({
+                    pathname: PRACTICE_ROUTE,
+                    search: writePageParam(location.search, nextPage),
+                  });
+                }}
+              />
+            </>
+          )}
+        </section>
+      </div>
+    </PageShell>
+  );
+};
+
+export default ExplorePage;

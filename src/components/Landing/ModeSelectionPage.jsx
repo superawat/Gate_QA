@@ -135,7 +135,7 @@ const ModeSelectionPage = ({
         <ModeCard
           title="Mock Test"
           description="Full timed exam simulation replicating the GATE 2026 UI."
-          badge="Coming Soon"
+          badge={MOCK_TEST_MODE_ENABLED ? null : "Coming Soon"}
           icon={<ClockIcon />}
           selected={selectedMode === "mock"}
           disabled={!MOCK_TEST_MODE_ENABLED}

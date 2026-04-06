@@ -38,7 +38,7 @@ const SupportModal = ({ isOpen, onClose }) => {
                     </h2>
 
                     <p className="mx-auto mt-2.5 max-w-[18rem] text-sm leading-5 text-slate-600">
-                        Many have benefited from this product at no cost; if you'd like to support its journey, any help would mean a lot.
+                        GATE QA has been free for everyone and has helped many along the way. If you’d like to support the journey, any contribution means a lot.
                     </p>
 
                     <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-3.5 sm:p-4">

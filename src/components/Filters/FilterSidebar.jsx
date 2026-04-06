@@ -61,7 +61,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
         || hasSearchQuery;
 
     return (
-        <aside className={`flex flex-col flex-shrink-0 bg-gray-50 border-r border-gray-200 h-full min-h-0 overflow-y-auto ${className}`}>
+        <aside className={`flex min-h-0 flex-shrink-0 flex-col overflow-y-auto border-r border-gray-200 bg-gray-50 ${className}`}>
             {/* Reset / Clean filters (if needed) */}
             <div className="p-4 border-b border-gray-200 bg-white z-10 flex justify-between items-center flex-shrink-0">
                 <span className="text-sm font-semibold text-gray-700">
@@ -102,9 +102,9 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 />
             </div>
 
-            <div className="px-4 py-2 border-b border-gray-200 bg-white z-10 flex-shrink-0">
-                <div className="flex flex-col lg:flex-row gap-3 lg:items-stretch">
-                    <div className="flex-1 min-w-0 flex flex-col">
+            <div className="border-b border-gray-200 bg-white px-4 py-3 z-10 flex-shrink-0">
+                <div className="flex flex-col gap-3">
+                    <div className="min-w-0 flex flex-col">
                         <ProgressBar
                             solvedCount={solvedCount}
                             totalQuestions={totalQuestions}
@@ -113,8 +113,8 @@ const FilterSidebar = ({ className = "", onClose }) => {
                             <ProgressManager />
                         </ProgressBar>
                     </div>
-                    <div className="lg:w-[45%] flex flex-col">
-                        <div className="bg-gray-50 rounded-lg p-3 border border-gray-100 flex flex-col justify-center flex-1">
+                    <div className="flex flex-col">
+                        <div className="flex-1 rounded-lg border border-gray-100 bg-gray-50 p-3">
                             <ProgressFilterToggles
                                 hideSolved={filters.hideSolved}
                                 showOnlySolved={filters.showOnlySolved}
@@ -164,25 +164,23 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             {/* Scrollable Filter Content */}
-            <div className="p-2 relative">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:h-[min(42vh,24rem)] md:min-h-[14rem]">
+            <div className="p-3">
+                <div className="flex flex-col gap-4">
 
-                    {/* Left Column: Topics */}
-                    <div className="md:border-r border-gray-200 pr-0 md:pr-2 flex flex-col min-h-0 overflow-hidden">
-                        <div className="py-2 mb-2 border-b border-gray-100 flex-shrink-0 bg-gray-50">
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
+                        <div className="mb-2 border-b border-gray-100 bg-gray-50 px-3 py-2 flex-shrink-0">
                             <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Topics</h3>
                         </div>
-                        <div className="overflow-y-auto max-h-56 md:max-h-none md:flex-1 md:min-h-0 custom-scrollbar">
+                        <div className="custom-scrollbar max-h-72 overflow-y-auto px-3 pb-3">
                             <TopicFilter />
                         </div>
                     </div>
 
-                    {/* Right Column: Years */}
-                    <div className="pl-0 md:pl-2 flex flex-col min-h-0 overflow-hidden">
-                        <div className="py-2 mb-2 border-b border-gray-100 flex-shrink-0 bg-gray-50">
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
+                        <div className="mb-2 border-b border-gray-100 bg-gray-50 px-3 py-2 flex-shrink-0">
                             <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Years</h3>
                         </div>
-                        <div className="overflow-y-auto max-h-56 md:max-h-none md:flex-1 md:min-h-0 custom-scrollbar">
+                        <div className="custom-scrollbar max-h-64 overflow-y-auto px-3 pb-3">
                             <YearFilter />
                         </div>
                     </div>

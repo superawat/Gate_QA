@@ -155,8 +155,9 @@ const ActiveFilterChips = () => {
             <button
                 type="button"
                 onClick={clearFilters}
-                className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 underline decoration-dotted"
+                className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500"
             >
+                <FaTimes className="text-[10px]" />
                 Clear all
             </button>
         </div>

@@ -5,7 +5,14 @@ import AnswerPanel from "../AnswerPanel/AnswerPanel";
 import { useFilterActions } from "../../contexts/FilterContext";
 import { MathContent } from "../Math/MathRuntime";
 
-function Question({ question = {}, changeQuestion }) {
+function Question({
+  question = {},
+  onNextQuestion,
+  changeQuestion,
+  onPreviousQuestion,
+  canGoPrevious,
+  canGoNext,
+}) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
   const questionHtml = (question.question || "")
     .replace(/\n\n/g, "<br />")
@@ -15,14 +22,15 @@ function Question({ question = {}, changeQuestion }) {
   const questionProgressId = getQuestionProgressId(question);
   const isSolved = isQuestionSolved(questionProgressId);
   const isBookmarked = isQuestionBookmarked(questionProgressId);
+  const nextHandler = onNextQuestion || changeQuestion;
+  const showStatusChips = isSolved || isBookmarked;
 
   return (
     <div>
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="mb-4">
-          <div className="flex flex-wrap items-start justify-between gap-3 pb-3">
-            <h2 className="text-2xl font-medium">{question.title}</h2>
-            <div className="flex items-center gap-2">
+          {showStatusChips ? (
+            <div className="flex flex-wrap items-start justify-end gap-2 pb-3">
               {isSolved && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-800">
                   <FaCheckCircle className="text-green-600" />
@@ -36,7 +44,7 @@ function Question({ question = {}, changeQuestion }) {
                 </span>
               )}
             </div>
-          </div>
+          ) : null}
           <MathContent
             as="div"
             dynamic
@@ -52,7 +60,10 @@ function Question({ question = {}, changeQuestion }) {
 
         <AnswerPanel
           question={question}
-          onNextQuestion={changeQuestion}
+          onNextQuestion={nextHandler}
+          onPreviousQuestion={onPreviousQuestion}
+          canGoPrevious={canGoPrevious}
+          canGoNext={canGoNext}
           solutionLink={question.link}
         />
       </div>
