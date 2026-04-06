@@ -31,7 +31,7 @@
     "qa:repair-historical-paper-counts": "node scripts/qa/repair-historical-paper-counts.js",
     "qa:validate-data": "node scripts/qa/validate-data.js",
     "qa:validate-public-parity": "node scripts/qa/validate-public-parity.js",
-    "test:unit": "vitest run",
+    "test:unit": "npm run precompute && vitest run",
     "test:watch": "vitest",
     "lighthouse:mobile": "lhci autorun --config=./lighthouserc.json"
   },
