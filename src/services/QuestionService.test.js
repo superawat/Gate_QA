@@ -126,6 +126,39 @@ describe("QuestionService", () => {
     expect(subject).toBe("CO & Architecture");
   });
 
+  test("infers Engineering Mathematics from canonical math subtopic tags", () => {
+    const subject = QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2026 | Set 1 | Question: 22",
+      tags: ["gatecse-2026-set1", "calculus", "continuity", "numerical-answers"],
+    });
+
+    expect(subject).toBe("Engineering Mathematics");
+  });
+
+  test("infers Discrete Mathematics from graph and logic aliases", () => {
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2026 | Set 2 | Question: 1",
+      tags: ["gatecse-2026-set2", "mathematical-logic", "first-order-logic"],
+    })).toBe("Discrete Mathematics");
+
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2026 | Set 1 | Question: 37",
+      tags: ["gatecse-2026-set1", "graph-theory", "degree-of-graph"],
+    })).toBe("Discrete Mathematics");
+  });
+
+  test("classifies legacy software and language questions into Legacy / Other", () => {
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2015 Set 1 | Question: 42",
+      tags: ["gatecse-2015-set1", "is&software-engineering", "software-testing"],
+    })).toBe("Legacy / Other");
+
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 1995 | Question: 1.13",
+      tags: ["gate1995", "pascal", "out-of-syllabus-now"],
+    })).toBe("Legacy / Other");
+  });
+
   test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {
     // We mock the lookup map just for this test
     const mockLookupObj = {
@@ -219,9 +252,29 @@ describe("QuestionService", () => {
     expect(indexed.question).toBe("");
     expect(indexed.detailShardKey).toBe("2026-s1");
     expect(indexed.subject).toBe("CO & Architecture");
+    expect(indexed.subjectLabel).toBe("CO & Architecture");
     expect(indexed.subjectSlug).toBe("coa");
     expect(indexed.exam.yearSetKey).toBe("2026-s1");
     expect(indexed.type).toBe("msq");
+  });
+
+  test("hydrates stale index rows with refreshed subject labels", () => {
+    const indexed = QuestionService.hydrateIndexedQuestion({
+      question_uid: "go:523058",
+      title: "GATE CSE 2026 | Set 1 | Question: 22",
+      subjectSlug: "unknown",
+      subjectLabel: "Unknown",
+      year: 2026,
+      set: 1,
+      yearSetKey: "2026-s1",
+      yearSetLabel: "2026 Set 1",
+      detailShardKey: "2026-s1",
+      tags: ["gatecse-2026-set1", "calculus", "continuity", "numerical-answers"],
+    });
+
+    expect(indexed.subject).toBe("Engineering Mathematics");
+    expect(indexed.subjectLabel).toBe("Engineering Mathematics");
+    expect(indexed.subjectSlug).toBe("engg-math");
   });
 
   test("loads and hydrates question detail from a shard when only index data is present", async () => {

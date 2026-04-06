@@ -1,1 +1,1 @@
-export const MOCK_TEST_MODE_ENABLED = false;
+export const MOCK_TEST_MODE_ENABLED = true;

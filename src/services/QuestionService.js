@@ -12,7 +12,7 @@ const PRECOMPUTED_NORMALIZED = precomputedLookup.normalizedSubtopicsBySubject;
 const PRECOMPUTED_ALIASES = precomputedLookup.subjectAliases;
 
 // ── Performance: localStorage cache for processed questions ─────────────
-const INIT_CACHE_VERSION = "v8";
+const INIT_CACHE_VERSION = "v10";
 const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
 const FULL_BANK_CACHE_KEY = `gateqa_full_bank_cache_${INIT_CACHE_VERSION}`;
 
@@ -42,6 +42,7 @@ export class QuestionService {
     { slug: "discrete-math", label: "Discrete Mathematics" },
     { slug: "engg-math", label: "Engineering Mathematics" },
     { slug: "ga", label: "General Aptitude" },
+    { slug: "legacy-other", label: "Legacy / Other" },
     { slug: "os", label: "Operating System" },
     { slug: "prog-ds", label: "Programming and DS" },
     { slug: "prog-c", label: "Programming in C" },
@@ -147,7 +148,7 @@ export class QuestionService {
   static SUBJECT_PRIORITY = [
     "Digital Logic", "Computer Networks", "Operating System", "Databases", "Compiler Design", "CO & Architecture",
     "Algorithms", "Programming and DS", "Theory of Computation", "Programming in C",
-    "Discrete Mathematics", "Engineering Mathematics", "General Aptitude"
+    "Discrete Mathematics", "Engineering Mathematics", "Legacy / Other", "General Aptitude"
   ];
 
   // Tag aliases that should map to a canonical subject label.
@@ -162,9 +163,25 @@ export class QuestionService {
     "Compiler Design": ["compiler-design"],
     "Computer Networks": ["computer-networks", "cn"],
     Databases: ["databases", "dbms", "database-management-systems"],
-    "Digital Logic": ["digital-logic"],
-    "Discrete Mathematics": ["discrete-mathematics", "discrete-math"],
-    "Engineering Mathematics": ["engineering-mathematics", "engg-math"],
+    "Digital Logic": ["digital-logic", "integrated-circuits"],
+    "Discrete Mathematics": [
+      "discrete-mathematics",
+      "discrete-math",
+      "graph-theory",
+      "mathematical-logic",
+      "set-theory-and-algebra",
+      "set-theory&algebra",
+      "equivalence-class",
+    ],
+    "Engineering Mathematics": [
+      "engineering-mathematics",
+      "engg-math",
+      "linear-algebra",
+      "numerical-methods",
+      "newton-raphson",
+      "simpsons-rule",
+      "simplex-method",
+    ],
     "General Aptitude": [
       "general-aptitude",
       "ga",
@@ -181,9 +198,43 @@ export class QuestionService {
       "grouping",
       "counting-figure"
     ],
+    "Legacy / Other": [
+      "Web Technologies",
+      "HTML",
+      "Software Engineering",
+      "Cyclomatic Complexity",
+      "Software Testing",
+      "COCOMO Model",
+      "Project Cost",
+      "Software Requirement Specification",
+      "Test Cases",
+      "Data Flow Diagram",
+      "Function Point Metric",
+      "Object Oriented Programming",
+      "Fortran",
+      "Pascal"
+    ],
     "Operating System": ["operating-system", "os"],
-    "Programming and DS": ["programming-and-ds", "programming-ds", "prog-ds"],
-    "Programming in C": ["programming-in-c", "c-programming", "prog-c"],
+    "Programming and DS": [
+      "programming-and-ds",
+      "programming-ds",
+      "prog-ds",
+      "data-structures",
+      "tree-traversal",
+    ],
+    "Programming in C": ["programming-in-c", "c-programming", "prog-c", "programming"],
+    "Legacy / Other": [
+      "legacy-other",
+      "legacy-out-of-syllabus",
+      "web-technologies",
+      "html",
+      "is&software-engineering",
+      "is-software-engineering",
+      "software-engineering",
+      "object-oriented-programming",
+      "fortran",
+      "pascal",
+    ],
     "Theory of Computation": ["theory-of-computation", "toc"]
   };
 
@@ -827,9 +878,11 @@ export class QuestionService {
 
     // Backward-compatible aliases consumed by filter/UI code.
     normalized.subject = subjectLabel;
+    normalized.subjectLabel = subjectLabel;
     normalized.subjectSlug = subjectSlug;
     normalized.exam = exam;
     normalized.yearSetKey = exam.yearSetKey;
+    normalized.yearSetLabel = exam.label;
     normalized.subtopics = canonicalSubtopics;
     normalized.type = canonicalType;
     normalized.normalizedOptions = normalizedOptions;
@@ -877,6 +930,7 @@ export class QuestionService {
     };
 
     indexed.subject = subjectLabel;
+    indexed.subjectLabel = subjectLabel;
     indexed.subjectSlug = subjectSlug;
     indexed.exam = exam;
     indexed.year = exam.year;
@@ -1031,6 +1085,7 @@ export class QuestionService {
         const exam = this.buildExamMetaFromParsedUid(parsedExamUid, multiSetYears);
         finalizedQuestion.exam = exam;
         finalizedQuestion.yearSetKey = exam.yearSetKey;
+        finalizedQuestion.yearSetLabel = exam.label;
         if (finalizedQuestion.canonical && typeof finalizedQuestion.canonical === "object") {
           finalizedQuestion.canonical = {
             ...finalizedQuestion.canonical,
@@ -1081,6 +1136,7 @@ export class QuestionService {
       yearSetKey: mergedExam?.yearSetKey || normalizedDetail.yearSetKey,
       yearSetLabel: mergedExam?.label || normalizedDetail.yearSetLabel,
       subject: mergedSubjectLabel,
+      subjectLabel: mergedSubjectLabel,
       subjectSlug: mergedSubjectSlug,
       subtopics: mergedSubtopics,
       type: mergedType,
@@ -1578,6 +1634,12 @@ export class QuestionService {
       "Noun Verb Adjective", "Opposite", "Passage Reading", "Phrasal Verb", "Phrase Meaning",
       "Prepositions", "Pronouns", "Sentence Ordering", "Statement Sufficiency", "Statements Follow",
       "Synonyms", "Tenses", "Verbal Reasoning", "Word Meaning", "Word Pairs"
+    ],
+    "Legacy / Other": [
+      "Web Technologies", "HTML", "Software Engineering", "Cyclomatic Complexity",
+      "Software Testing", "COCOMO Model", "Project Cost", "Software Requirement Specification",
+      "Test Cases", "Data Flow Diagram", "Function Point Metric", "Object Oriented Programming",
+      "Fortran", "Pascal"
     ],
     "Algorithms": [
       "Algorithm Design", "Algorithm Design Technique", "Asymptotic Notation", "Asymptotic Notations",

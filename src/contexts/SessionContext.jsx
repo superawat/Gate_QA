@@ -1,25 +1,17 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import { useFilterState } from './FilterContext';
 import { AnswerService } from '../services/AnswerService';
 
 const SessionContext = createContext();
 
-/**
- * Fisher-Yates (Knuth) in-place shuffle.
- * Mutates the array and returns it.
- */
 function fisherYatesShuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i > 0; i -= 1) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
 }
 
-/**
- * Get the tracking ID used by the progress/solved system for a question.
- * Mirrors the logic in FilterContext's getQuestionTrackingId.
- */
 function getTrackingId(question) {
     if (!question || typeof question !== 'object') return null;
     const candidate = AnswerService.getStorageKeyForQuestion(question);
@@ -28,25 +20,16 @@ function getTrackingId(question) {
     return normalized || null;
 }
 
-/**
- * Build a priority-weighted shuffled queue from filteredQuestions.
- *
- * Bucket 1 (front): UIDs not in seenThisSession AND not in solvedQuestionIds
- * Bucket 2 (middle): UIDs not in seenThisSession AND in solvedQuestionIds
- * Bucket 3 (back): UIDs in seenThisSession
- *
- * Each bucket is independently Fisher-Yates shuffled before concatenation.
- */
-function buildSessionQueue(filteredQuestions, seenThisSession, solvedSet) {
-    const bucket1 = []; // unseen + unsolved
-    const bucket2 = []; // unseen + solved
-    const bucket3 = []; // already seen
+function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
+    const bucket1 = [];
+    const bucket2 = [];
+    const bucket3 = [];
 
-    for (const q of filteredQuestions) {
-        const uid = q.question_uid;
+    for (const question of questionPool) {
+        const uid = String(question?.question_uid || '').trim();
         if (!uid) continue;
 
-        const trackingId = getTrackingId(q);
+        const trackingId = getTrackingId(question);
         const isSeen = seenThisSession.has(uid);
         const isSolved = trackingId ? solvedSet.has(trackingId) : false;
 
@@ -66,14 +49,27 @@ function buildSessionQueue(filteredQuestions, seenThisSession, solvedSet) {
     return [...bucket1, ...bucket2, ...bucket3];
 }
 
-function getPinnedQuestionUidFromUrl() {
-    if (typeof window === 'undefined') {
-        return null;
-    }
+function uniqueQuestionList(questionPool = []) {
+    const seen = new Set();
+    const ordered = [];
 
-    const params = new URLSearchParams(window.location.search);
-    const questionUid = String(params.get('question') || '').trim();
-    return questionUid || null;
+    (Array.isArray(questionPool) ? questionPool : []).forEach((question) => {
+        const uid = String(question?.question_uid || '').trim();
+        if (!uid || seen.has(uid)) {
+            return;
+        }
+        seen.add(uid);
+        ordered.push(question);
+    });
+
+    return ordered;
+}
+
+function findIndexForUid(queue = [], uid = '') {
+    if (!uid) {
+        return -1;
+    }
+    return queue.indexOf(String(uid).trim());
 }
 
 export const useSession = () => {
@@ -83,195 +79,249 @@ export const useSession = () => {
 };
 
 export const SessionProvider = ({ children }) => {
-    const { filteredQuestions, solvedQuestionIds } = useFilterState();
-
-    // Memoize the solved set so we don't rebuild on every render
+    const { allQuestions, solvedQuestionIds } = useFilterState();
     const solvedSet = useMemo(() => new Set(solvedQuestionIds), [solvedQuestionIds]);
-
-    // Keep a ref to the latest solvedSet so the queue-rebuild effect can
-    // read it without listing it as a dependency.  This prevents auto-solve
-    // (FEAT-011) from triggering a full queue rebuild + navigation reset
-    // (BUG-010).
     const solvedSetRef = useRef(solvedSet);
-    useEffect(() => { solvedSetRef.current = solvedSet; }, [solvedSet]);
+    solvedSetRef.current = solvedSet;
+    const activeQuestionMapRef = useRef(new Map());
 
-    // Ephemeral set — intentionally NOT persisted to localStorage
-    const seenThisSession = useRef(new Set());
-
-    const [sessionQueue, setSessionQueue] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [showExhaustionBanner, setShowExhaustionBanner] = useState(false);
-    const exhaustionTimeoutRef = useRef(null);
-
-    // Build a UID→question lookup for fast retrieval
     const questionMap = useMemo(() => {
         const map = new Map();
-        for (const q of filteredQuestions) {
-            if (q.question_uid) {
-                map.set(q.question_uid, q);
+        allQuestions.forEach((question) => {
+            const uid = String(question?.question_uid || '').trim();
+            if (uid) {
+                map.set(uid, question);
             }
-        }
+        });
         return map;
-    }, [filteredQuestions]);
+    }, [allQuestions]);
 
-    // Rebuild queue whenever the actual pool of question UIDs changes
-    // (i.e. a real filter change).
-    //
-    // Why the UID-set comparison?
-    // FilterContext's `filteredQuestions` useMemo depends on
-    // `solvedQuestionSet`, so marking a question solved produces a NEW
-    // array reference even when `hideSolved`/`showOnlySolved` are off and
-    // the content is identical.  Without this guard the queue would
-    // rebuild + reset currentIndex → unwanted auto-navigation (BUG-010).
-    const prevFilteredUidsRef = useRef(new Set());
+    const [sessionMode, setSessionMode] = useState(null);
+    const [sessionQueue, setSessionQueue] = useState([]);
+    const [sourceQuestionUids, setSourceQuestionUids] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [showExhaustionBanner, setShowExhaustionBanner] = useState(false);
+    const seenThisSession = useRef(new Set());
 
-    useEffect(() => {
-        // Build the new UID set
-        const newUids = new Set();
-        for (const q of filteredQuestions) {
-            if (q.question_uid) newUids.add(q.question_uid);
+    const resolveQuestionPool = useCallback((questionPool = []) => {
+        const normalizedQuestions = uniqueQuestionList(questionPool);
+        return normalizedQuestions
+            .map((question) => questionMap.get(question.question_uid) || question)
+            .filter(Boolean);
+    }, [questionMap]);
+
+    const getQuestionByUid = useCallback((uid = '') => {
+        const normalizedUid = String(uid || '').trim();
+        if (!normalizedUid) {
+            return null;
+        }
+        return questionMap.get(normalizedUid) || activeQuestionMapRef.current.get(normalizedUid) || null;
+    }, [questionMap]);
+
+    const startRandomSession = useCallback((questionPool = []) => {
+        const normalizedQuestions = resolveQuestionPool(questionPool);
+        if (normalizedQuestions.length === 0) {
+            setSessionMode('random');
+            setSessionQueue([]);
+            setSourceQuestionUids([]);
+            setCurrentIndex(0);
+            setShowExhaustionBanner(false);
+            seenThisSession.current.clear();
+            return null;
         }
 
-        // Compare with previous — skip rebuild if UIDs are identical
-        const prev = prevFilteredUidsRef.current;
-        if (
-            newUids.size === prev.size &&
-            newUids.size > 0 &&
-            [...newUids].every(uid => prev.has(uid))
-        ) {
-            prevFilteredUidsRef.current = newUids;
+        activeQuestionMapRef.current = new Map(
+            normalizedQuestions.map((question) => [question.question_uid, question])
+        );
+        seenThisSession.current.clear();
+        const nextQueue = buildSessionQueue(normalizedQuestions, seenThisSession.current, solvedSetRef.current);
+        const firstUid = nextQueue[0] || '';
+        if (firstUid) {
+            seenThisSession.current.add(firstUid);
+        }
+
+        setSessionMode('random');
+        setSessionQueue(nextQueue);
+        setSourceQuestionUids(normalizedQuestions.map((question) => question.question_uid));
+        setCurrentIndex(0);
+        setShowExhaustionBanner(false);
+
+        return firstUid ? getQuestionByUid(firstUid) : null;
+    }, [getQuestionByUid, resolveQuestionPool]);
+
+    const startOrderedSession = useCallback((questionPool = [], initialUid = '') => {
+        const normalizedQuestions = resolveQuestionPool(questionPool);
+        const orderedUids = normalizedQuestions.map((question) => question.question_uid);
+        activeQuestionMapRef.current = new Map(
+            normalizedQuestions.map((question) => [question.question_uid, question])
+        );
+        const requestedUid = String(initialUid || '').trim();
+        const resolvedIndex = requestedUid ? findIndexForUid(orderedUids, requestedUid) : 0;
+        const nextIndex = Math.max(0, resolvedIndex);
+        const firstUid = orderedUids[nextIndex] || '';
+
+        setSessionMode('ordered');
+        setSessionQueue(orderedUids);
+        setSourceQuestionUids(orderedUids);
+        setCurrentIndex(nextIndex);
+        setShowExhaustionBanner(false);
+
+        return firstUid ? getQuestionByUid(firstUid) : null;
+    }, [getQuestionByUid, resolveQuestionPool]);
+
+    const setCurrentQuestionUid = useCallback((uid = '') => {
+        const normalizedUid = String(uid || '').trim();
+        if (!normalizedUid || sessionQueue.length === 0) {
             return;
         }
 
-        prevFilteredUidsRef.current = newUids;
-        seenThisSession.current.clear();
-        const queue = buildSessionQueue(filteredQuestions, seenThisSession.current, solvedSetRef.current);
-        const pinnedQuestionUid = getPinnedQuestionUidFromUrl();
-        const pinnedIndex = pinnedQuestionUid ? queue.indexOf(pinnedQuestionUid) : -1;
-
-        setSessionQueue(queue);
-        setCurrentIndex(pinnedIndex >= 0 ? pinnedIndex : 0);
-        setShowExhaustionBanner(false);
-        if (exhaustionTimeoutRef.current) {
-            clearTimeout(exhaustionTimeoutRef.current);
-        }
-    }, [filteredQuestions]);
-
-    useEffect(() => {
-        return () => {
-            if (exhaustionTimeoutRef.current) {
-                clearTimeout(exhaustionTimeoutRef.current);
-            }
-        };
-    }, []);
-
-    /**
-     * Mark a UID as seen this session.
-     */
-    const markSeen = useCallback((uid) => {
-        if (uid) {
-            seenThisSession.current.add(uid);
-        }
-    }, []);
-
-    /**
-     * Get the current question object from the queue.
-     */
-    const getCurrentQuestion = useCallback(() => {
-        if (sessionQueue.length === 0) return null;
-        const safeIndex = Math.min(currentIndex, sessionQueue.length - 1);
-        const uid = sessionQueue[safeIndex];
-        return questionMap.get(uid) || null;
-    }, [sessionQueue, currentIndex, questionMap]);
-
-    /**
-     * Advance to the next question in the queue.
-     * Returns the next question object (or null).
-     *
-     * On exhaustion: shows banner, reshuffles, and resets.
-     */
-    const advanceQueue = useCallback(() => {
-        if (sessionQueue.length === 0) return null;
-
-        const nextIndex = currentIndex + 1;
-
-        if (nextIndex >= sessionQueue.length) {
-            // Exhaustion — all questions seen
-            setShowExhaustionBanner(true);
-
-            // Reshuffle the full pool (seenThisSession is now full, so all go to bucket3,
-            // but we rebuild to get a fresh random order)
-            const newQueue = buildSessionQueue(
-                filteredQuestions,
-                seenThisSession.current,
-                solvedSetRef.current
-            );
-            setSessionQueue(newQueue);
-            setCurrentIndex(0);
-
-            // Mark the first question in the new queue as seen
-            if (newQueue.length > 0) {
-                seenThisSession.current.add(newQueue[0]);
-            }
-
-            // Auto-dismiss the banner after a short delay
-            if (exhaustionTimeoutRef.current) {
-                clearTimeout(exhaustionTimeoutRef.current);
-            }
-            exhaustionTimeoutRef.current = setTimeout(() => {
-                setShowExhaustionBanner(false);
-            }, 4000);
-
-            return newQueue.length > 0 ? questionMap.get(newQueue[0]) || null : null;
+        const nextIndex = findIndexForUid(sessionQueue, normalizedUid);
+        if (nextIndex === -1) {
+            return;
         }
 
-        // Normal advancement
         setCurrentIndex(nextIndex);
-        const nextUid = sessionQueue[nextIndex];
-        seenThisSession.current.add(nextUid);
-        return questionMap.get(nextUid) || null;
-    }, [sessionQueue, currentIndex, filteredQuestions, questionMap]);
+        if (sessionMode === 'random') {
+            seenThisSession.current.add(normalizedUid);
+        }
+    }, [sessionMode, sessionQueue]);
 
-    /**
-     * Handle deep-linked question: mark it as seen so it doesn't
-     * reappear at the front of the queue.
-     */
-    const markDeepLinkedQuestion = useCallback((uid) => {
-        if (uid) {
-            seenThisSession.current.add(uid);
+    const getCurrentQuestion = useCallback(() => {
+        const currentUid = sessionQueue[currentIndex] || '';
+        return currentUid ? getQuestionByUid(currentUid) : null;
+    }, [currentIndex, getQuestionByUid, sessionQueue]);
+
+    const getNavigationState = useCallback((uid = '') => {
+        const normalizedUid = String(uid || '').trim();
+        const resolvedIndex = findIndexForUid(sessionQueue, normalizedUid);
+        const index = resolvedIndex >= 0 ? resolvedIndex : currentIndex;
+        const previousUid = index > 0 ? sessionQueue[index - 1] : null;
+        const nextUid = index < sessionQueue.length - 1 ? sessionQueue[index + 1] : null;
+
+        return {
+            mode: sessionMode,
+            index,
+            total: sessionQueue.length,
+            previousUid,
+            nextUid,
+            canGoPrevious: !!previousUid,
+            canGoNext: !!nextUid || (sessionMode === 'random' && sourceQuestionUids.length > 0),
+        };
+    }, [currentIndex, sessionMode, sessionQueue, sourceQuestionUids.length]);
+
+    const rebuildRandomQueue = useCallback(() => {
+        const sourcePool = sourceQuestionUids
+            .map((uid) => getQuestionByUid(uid))
+            .filter(Boolean);
+
+        if (sourcePool.length === 0) {
+            setSessionQueue([]);
+            setCurrentIndex(0);
+            return null;
+        }
+
+        const nextQueue = buildSessionQueue(sourcePool, seenThisSession.current, solvedSetRef.current);
+        const firstUid = nextQueue[0] || '';
+        if (firstUid) {
+            seenThisSession.current.add(firstUid);
+        }
+
+        setSessionQueue(nextQueue);
+        setCurrentIndex(0);
+        setShowExhaustionBanner(true);
+        return firstUid ? getQuestionByUid(firstUid) : null;
+    }, [getQuestionByUid, sourceQuestionUids]);
+
+    const goToPreviousQuestion = useCallback((uid = '') => {
+        const navigation = getNavigationState(uid);
+        const { previousUid } = navigation;
+        if (!previousUid) {
+            return null;
+        }
+
+        setCurrentIndex(Math.max(0, navigation.index - 1));
+        return getQuestionByUid(previousUid);
+    }, [getNavigationState, getQuestionByUid]);
+
+    const goToNextQuestion = useCallback((uid = '') => {
+        const navigation = getNavigationState(uid);
+        if (navigation.nextUid) {
+            const nextIndex = navigation.index + 1;
+            const nextUid = navigation.nextUid;
+            setCurrentIndex(nextIndex);
+            if (sessionMode === 'random') {
+                seenThisSession.current.add(nextUid);
+            }
+            return getQuestionByUid(nextUid);
+        }
+
+        if (sessionMode === 'random') {
+            return rebuildRandomQueue();
+        }
+
+        return null;
+    }, [getNavigationState, getQuestionByUid, rebuildRandomQueue, sessionMode]);
+
+    const advanceQueue = useCallback(() => {
+        const currentUid = sessionQueue[currentIndex] || '';
+        return goToNextQuestion(currentUid);
+    }, [currentIndex, goToNextQuestion, sessionQueue]);
+
+    const goBack = useCallback(() => {
+        const currentUid = sessionQueue[currentIndex] || '';
+        return goToPreviousQuestion(currentUid);
+    }, [currentIndex, goToPreviousQuestion, sessionQueue]);
+
+    const markSeen = useCallback((uid) => {
+        const normalizedUid = String(uid || '').trim();
+        if (normalizedUid) {
+            seenThisSession.current.add(normalizedUid);
         }
     }, []);
 
-    /**
-     * Go back to the previously seen question in the session queue.
-     */
-    const goBack = useCallback(() => {
-        setCurrentIndex(prev => Math.max(0, prev - 1));
+    const markDeepLinkedQuestion = useCallback((uid) => {
+        const normalizedUid = String(uid || '').trim();
+        if (normalizedUid) {
+            seenThisSession.current.add(normalizedUid);
+        }
     }, []);
-
-    const canGoBack = currentIndex > 0;
 
     const value = useMemo(() => ({
+        sessionMode,
         sessionQueue,
+        sourceQuestionUids,
         currentIndex,
         showExhaustionBanner,
         getCurrentQuestion,
+        getNavigationState,
+        startRandomSession,
+        startOrderedSession,
+        setCurrentQuestionUid,
+        goToPreviousQuestion,
+        goToNextQuestion,
         advanceQueue,
         goBack,
-        canGoBack,
+        canGoBack: currentIndex > 0,
         markSeen,
         markDeepLinkedQuestion,
         dismissExhaustionBanner: () => setShowExhaustionBanner(false),
     }), [
-        sessionQueue,
-        currentIndex,
-        showExhaustionBanner,
-        getCurrentQuestion,
         advanceQueue,
+        currentIndex,
+        getCurrentQuestion,
+        getNavigationState,
         goBack,
-        canGoBack,
-        markSeen,
+        goToNextQuestion,
+        goToPreviousQuestion,
         markDeepLinkedQuestion,
+        markSeen,
+        sessionMode,
+        sessionQueue,
+        showExhaustionBanner,
+        sourceQuestionUids,
+        startOrderedSession,
+        startRandomSession,
+        setCurrentQuestionUid,
     ]);
 
     return (

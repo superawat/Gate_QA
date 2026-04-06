@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { render, act, screen, waitFor } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
 import { QuestionService } from '../services/QuestionService';
@@ -40,27 +41,27 @@ vi.mock('../services/QuestionService', () => ({
                 { slug: 'os', label: 'Operating System' }
             ],
             structuredSubtopics: {
-                'databases': [
+                databases: [
                     { slug: 'schema-normalization', label: 'Schema Normalization' }
                 ],
-                'os': [
+                os: [
                     { slug: 'deadlock', label: 'Deadlock' }
                 ]
             }
         })),
         parseYearSetKey: vi.fn(() => null),
         extractYearSetFromTag: vi.fn(() => null),
-        normalizeSubjectSlug: vi.fn(s => String(s).toLowerCase()),
-        slugifyToken: vi.fn(s => String(s).toLowerCase()),
-        normalizeTypeToken: vi.fn(t => (t || 'MCQ').toUpperCase()),
-        formatYearSetLabel: vi.fn(s => s),
+        normalizeSubjectSlug: vi.fn((s) => String(s).toLowerCase()),
+        slugifyToken: vi.fn((s) => String(s).toLowerCase()),
+        normalizeTypeToken: vi.fn((t) => (t || 'MCQ').toUpperCase()),
+        formatYearSetLabel: vi.fn((s) => s),
         ensureQuestionDetail: vi.fn()
     },
 }));
 
 vi.mock('../services/AnswerService', () => ({
     AnswerService: {
-        getStorageKeyForQuestion: vi.fn(q => q.question_uid),
+        getStorageKeyForQuestion: vi.fn((q) => q.question_uid),
         getAnswerForQuestion: vi.fn(() => null)
     }
 }));
@@ -68,8 +69,14 @@ vi.mock('../services/AnswerService', () => ({
 describe('FilterContext', () => {
     beforeEach(() => {
         vi.clearAllMocks();
-        window.history.replaceState({}, '', '/');
+        window.history.replaceState({}, '', '/practice');
     });
+
+    const renderWithRouter = (ui) => render(
+        <BrowserRouter>
+            {ui}
+        </BrowserRouter>
+    );
 
     const TestComponent = () => {
         const { filters, filteredQuestions } = useFilterState();
@@ -108,13 +115,11 @@ describe('FilterContext', () => {
     };
 
     test('removes orphaned subtopics when parent subject is unselected', async () => {
-        const { getByTestId } = render(
+        const { getByTestId } = renderWithRouter(
             <FilterProvider>
                 <TestComponent />
             </FilterProvider>
         );
-
-        // Initial loaded effect will run since QuestionService.loaded = true
 
         act(() => {
             getByTestId('add-both').click();
@@ -128,16 +133,13 @@ describe('FilterContext', () => {
         });
 
         expect(getByTestId('subjects').textContent).toBe('');
-
-        // The subtopic should have been automatically removed when its subject
-        // 'databases' was removed from the selectedSubjects list.
         expect(getByTestId('subtopics').textContent).toBe('');
     });
 
     test('hydrates subtopic-only URLs through parent subject normalization', async () => {
-        window.history.replaceState({}, '', '/?subtopics=schema-normalization');
+        window.history.replaceState({}, '', '/practice?subtopics=schema-normalization');
 
-        const { getByTestId } = render(
+        const { getByTestId } = renderWithRouter(
             <FilterProvider>
                 <TestComponent />
             </FilterProvider>
@@ -170,7 +172,7 @@ describe('FilterContext', () => {
             }
         });
 
-        const { getByTestId } = render(
+        const { getByTestId } = renderWithRouter(
             <FilterProvider>
                 <TestComponent />
             </FilterProvider>
@@ -180,9 +182,9 @@ describe('FilterContext', () => {
     });
 
     test('hydrates search from URL, normalizes it, and applies AND token matching without loading detail shards', async () => {
-        window.history.replaceState({}, '', '/?search=%20DEAD%20%20LOCK%20prevention%20');
+        window.history.replaceState({}, '', '/practice?search=%20DEAD%20%20LOCK%20prevention%20');
 
-        const { getByTestId } = render(
+        const { getByTestId } = renderWithRouter(
             <FilterProvider>
                 <TestComponent />
             </FilterProvider>
@@ -209,10 +211,10 @@ describe('FilterContext', () => {
         });
     });
 
-    test('preserves question while syncing search and clears search from chip actions', async () => {
-        window.history.replaceState({}, '', '/?question=go:2&search=deadlock');
+    test('syncs search on practice routes and clears it through chip actions', async () => {
+        window.history.replaceState({}, '', '/practice?search=deadlock');
 
-        const { getByTestId } = render(
+        const { getByTestId } = renderWithRouter(
             <FilterProvider>
                 <TestComponent />
             </FilterProvider>
@@ -223,7 +225,6 @@ describe('FilterContext', () => {
         });
 
         expect(screen.getByText('Search: deadlock')).toBeTruthy();
-        expect(new URLSearchParams(window.location.search).get('question')).toBe('go:2');
 
         act(() => {
             screen.getByRole('button', { name: /remove search filter/i }).click();
@@ -234,7 +235,6 @@ describe('FilterContext', () => {
         });
 
         let params = new URLSearchParams(window.location.search);
-        expect(params.get('question')).toBe('go:2');
         expect(params.get('search')).toBeNull();
 
         act(() => {
@@ -254,7 +254,6 @@ describe('FilterContext', () => {
         });
 
         params = new URLSearchParams(window.location.search);
-        expect(params.get('question')).toBe('go:2');
         expect(params.get('search')).toBeNull();
     });
 });

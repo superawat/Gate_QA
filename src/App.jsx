@@ -1,265 +1,349 @@
-import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
+import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
-import LandingShell from "./shells/LandingShell";
+import HomePage from "./pages/HomePage";
 import { FilterProvider, useFilterActions } from "./contexts/FilterContext";
-import { SessionProvider } from "./contexts/SessionContext";
+import { SessionProvider, useSession } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
 import { QuestionBankManifestService } from "./services/QuestionBankManifestService";
 import LoadingState from "./components/Loaders/LoadingState";
+import MockCatalogLoaderCard from "./components/Loaders/MockCatalogLoaderCard";
 import { pageview, trackEvent } from "./utils/analytics";
+import { readLastSession } from "./utils/lastSession";
+import {
+  buildSolvePath,
+  getLegacyRedirectTarget,
+  HOME_ROUTE,
+  MOCK_HISTORY_ROUTE,
+  MOCK_ROUTE,
+  PRACTICE_ROUTE,
+} from "./utils/routes";
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
-const LANDING_FILTER_KEYS = ["years", "subjects", "subtopics", "range", "types", "search"];
-const loadPracticeShell = () => import("./shells/PracticeShell");
-const loadMockShell = () => import("./shells/MockShell");
-const PracticeShell = lazy(loadPracticeShell);
-const MockShell = lazy(loadMockShell);
+const ExplorePage = lazy(() => import("./pages/ExplorePage"));
+const MockHistoryPage = lazy(() => import("./pages/MockHistoryPage"));
+const SolvePage = lazy(() => import("./pages/SolvePage"));
+const MockShell = lazy(() => import("./shells/MockShell"));
 
-const ShellLoader = ({ label }) => (
-  <LoadingState
-    label={label}
-    size="lg"
-    className="grow px-4 py-10"
-    textClassName="text-sm text-gray-500"
-  />
+const RouteLoader = ({ label = "Loading..." }) => (
+  <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto flex max-w-7xl justify-center rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+      <LoadingState
+        label={label}
+        size="lg"
+        className="min-h-[320px]"
+        textClassName="text-sm text-slate-500"
+      />
+    </div>
+  </div>
 );
 
-/**
- * Pure function: resolve appView from current URL.
- * Priority: ?question → ?mode+stage → filter params → landing
- */
-export const resolveAppViewFromUrl = () => {
-  const params = new URLSearchParams(window.location.search);
+const ScrollToTop = () => {
+  const location = useLocation();
 
-  // Deep-link always wins
-  if (params.get("question")) return "practice";
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname, location.search]);
 
-  const mode = params.get("mode");
-  if (mode === "random" || mode === "targeted" || mode === "resume" || (mode && mode !== "mock")) return "practice";
-
-  // Issue 008: mock mode splits into mockSetup / mockExam based on stage param
-  if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
-    const stage = params.get("stage");
-    if (stage === "exam") return "mockExam";
-    return "mockSetup"; // default stage for mock is setup
-  }
-
-  const hasFilterParams = LANDING_FILTER_KEYS.some((key) => {
-    const value = params.get(key);
-    return value !== null && String(value).trim() !== "";
-  });
-  if (hasFilterParams) return "practice";
-
-  return "landing";
+  return null;
 };
 
-/**
- * ViewSwitch — resolves appView on mount from URL, handles mode starts,
- * popstate, and renders exactly one shell.
- */
-export const ViewSwitch = ({
-  loading,
-  error,
-  loadQuestions,
-  appView,
-  setAppView,
-  shouldOpenFilterOnEnter,
-  hasPriorProgress,
-  questionBankManifest,
-  manifestLoading,
-  manifestError,
-}) => {
-  const { clearFilters } = useFilterActions();
-  const hasResolvedAppView = useRef(false);
+// ── Isolated Mock Test Branch ──────────────────────────────────────────────
+// Renders outside the practice provider tree so mock test navigation,
+// filters, and session state never interfere with practice-mode effects.
+const MockBranch = ({ loadQuestions, questionBankManifest, questionDataRevision }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const stage = new URLSearchParams(location.search).get("stage") === "exam" ? "exam" : "setup";
 
-  // Mount-time side effects for the current URL (same strict priority as
-  // resolveAppViewFromUrl, but with side-effects like clearFilters for random mode).
+  // Load questions (full bank) when entering the mock route
   useEffect(() => {
-    if (hasResolvedAppView.current) return;
-    hasResolvedAppView.current = true;
+    void loadQuestions({ fullBank: true });
+  }, [loadQuestions]);
 
-    const params = new URLSearchParams(window.location.search);
-
-    // 1. Deep-link wins
-    if (params.get("question")) { setAppView("practice"); return; }
-
-    // 2. Explicit mode
-    const mode = params.get("mode");
-    if (mode === "random") { clearFilters(); setAppView("practice"); return; }
-    if (mode === "targeted") { shouldOpenFilterOnEnter.current = true; setAppView("practice"); return; }
-    if (mode === "resume") { shouldOpenFilterOnEnter.current = false; setAppView("practice"); return; }
-    if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
-      const stage = params.get("stage");
-      if (stage === "exam") { setAppView("mockExam"); }
-      else { setAppView("mockSetup"); }
-      return;
-    }
-    if (mode === "mock") { setAppView("landing"); return; }
-    if (mode) { setAppView("practice"); return; }  // legacy/unknown
-
-    // 3. Shared filter URL
-    const hasFilterParams = LANDING_FILTER_KEYS.some((key) => {
-      const value = params.get(key);
-      return value !== null && String(value).trim() !== "";
-    });
-    if (hasFilterParams) { setAppView("practice"); return; }
-
-    // 4. Default
-    setAppView("landing");
-  }, [clearFilters, setAppView, shouldOpenFilterOnEnter]);
-
-  // Popstate handler for browser Back/Forward (mode transitions only).
   useEffect(() => {
-    const handlePopState = () => setAppView(resolveAppViewFromUrl());
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [setAppView]);
-
-  // Write mode+stage to URL via replaceState so landing mode changes
-  // do not create extra browser-history entries.
-  const writeModeParam = useCallback((mode, stage) => {
-    const params = new URLSearchParams(window.location.search);
-    params.set("mode", mode);
-    if (stage) {
-      params.set("stage", stage);
-    } else {
-      params.delete("stage");
-    }
-    const query = params.toString();
-    const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
-    window.history.replaceState({}, "", newUrl);
+    pageview("Mock");
   }, []);
 
-  // Write stage only via replaceState (no new history entry).
-  const writeStageParam = useCallback((stage) => {
-    const params = new URLSearchParams(window.location.search);
-    if (stage) {
-      params.set("stage", stage);
-    } else {
-      params.delete("stage");
-    }
-    const query = params.toString();
-    const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
-    window.history.replaceState({}, "", newUrl);
-  }, []);
+  const handleExit = useCallback(() => {
+    navigate(HOME_ROUTE);
+  }, [navigate]);
 
-  // Callback given to LandingShell's ModeSelectionPage.
-  const handleModeStart = useCallback((mode) => {
-    if (mode === "random") {
-      trackEvent("start_random_practice", { mode: "random", source: "landing" });
-      void loadPracticeShell();
-      clearFilters();
-      shouldOpenFilterOnEnter.current = false;
-      setAppView("practice");
-      writeModeParam("random");
-      void loadQuestions();
-      return;
-    }
-    if (mode === "targeted") {
-      trackEvent("start_targeted_practice", { mode: "targeted", source: "landing" });
-      void loadPracticeShell();
-      shouldOpenFilterOnEnter.current = true;
-      setAppView("practice");
-      writeModeParam("targeted");
-      void loadQuestions();
-      return;
-    }
-    if (mode === "resume") {
-      trackEvent("resume_practice", { mode: "resume", source: "landing" });
-      void loadPracticeShell();
-      shouldOpenFilterOnEnter.current = false;
-      setAppView("practice");
-      writeModeParam("resume");
-      void loadQuestions();
-      return;
-    }
-    if (mode === "mock" && MOCK_TEST_MODE_ENABLED) {
-      void loadMockShell();
-      shouldOpenFilterOnEnter.current = false;
-      setAppView("mockSetup");
-      writeModeParam("mock", "setup");
-      void loadQuestions({ fullBank: true });
-      return;
-    }
-  }, [clearFilters, loadQuestions, setAppView, shouldOpenFilterOnEnter, writeModeParam]);
-
-  const handleResumePractice = useCallback(() => {
-    handleModeStart("resume");
-  }, [handleModeStart]);
-
-  // Go-home handler passed to PracticeShell / MockShell.
-  const handleGoHome = useCallback(() => {
-    setAppView("landing");
-    const params = new URLSearchParams(window.location.search);
-    params.delete("mode");
-    params.delete("stage");
-    params.delete("question");
-    const query = params.toString();
-    const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
-    window.history.replaceState({}, "", newUrl);
-  }, [setAppView]);
-
-  // Stage change handler for mock setup → exam transitions
-  const handleMockStageChange = useCallback((stage) => {
-    if (stage === "exam") {
-      setAppView("mockExam");
-      writeStageParam("exam");
-    } else if (stage === "setup") {
-      setAppView("mockSetup");
-      writeStageParam("setup");
-    }
-  }, [setAppView, writeStageParam]);
-
-  // ── Render exactly one shell ──
-  if (appView === "landing") {
-    return (
-      <LandingShell
-        onModeStart={handleModeStart}
-        onResumePractice={handleResumePractice}
-        hasPriorProgress={hasPriorProgress}
-        questionBankManifest={questionBankManifest}
-        manifestLoading={manifestLoading}
-        manifestError={manifestError}
-      />
+  const handleStageChange = useCallback((nextStage) => {
+    navigate(
+      {
+        pathname: MOCK_ROUTE,
+        search: nextStage === "exam" ? "?stage=exam" : "?stage=setup",
+      },
+      { replace: true }
     );
+  }, [navigate]);
+
+  if (!MOCK_TEST_MODE_ENABLED) {
+    return <Navigate to={HOME_ROUTE} replace />;
   }
 
-  if (appView === "mockSetup" || appView === "mockExam") {
-    return (
-      <Suspense fallback={<ShellLoader label="Loading mock interface..." />}>
+  return (
+    <FilterProvider
+      initialManifest={questionBankManifest}
+      questionDataRevision={questionDataRevision}
+    >
+      <Suspense fallback={<MockCatalogLoaderCard />}>
         <MockShell
-          onExit={handleGoHome}
-          stage={appView === "mockExam" ? "exam" : "setup"}
-          onStageChange={handleMockStageChange}
+          onExit={handleExit}
+          stage={stage}
+          onStageChange={handleStageChange}
         />
       </Suspense>
-    );
-  }
-
-  // Default: practice
-  return (
-    <Suspense fallback={<ShellLoader label="Preparing practice..." />}>
-      <PracticeShell
-        loading={loading}
-        error={error}
-        loadQuestions={loadQuestions}
-        onGoHome={handleGoHome}
-        shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
-      />
-    </Suspense>
+    </FilterProvider>
   );
 };
 
-function App() {
-  const [loading, setLoading] = useState(() => resolveAppViewFromUrl() !== "landing");
+// ── Legacy Navigation Handler ──────────────────────────────────────────────
+const LegacyNavigationHandler = ({ loadQuestions, resumeRoute = "" }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { clearFilters } = useFilterActions();
+  const { startRandomSession } = useSession();
+  const lastHandledKeyRef = useRef("");
+
+  useEffect(() => {
+    const redirectTarget = getLegacyRedirectTarget({
+      pathname: location.pathname,
+      search: location.search,
+      mockModeEnabled: MOCK_TEST_MODE_ENABLED,
+      resumeRoute,
+    });
+
+    if (!redirectTarget) {
+      lastHandledKeyRef.current = "";
+      return;
+    }
+
+    const redirectKey = `${location.pathname}${location.search}`;
+    if (lastHandledKeyRef.current === redirectKey) {
+      return;
+    }
+    lastHandledKeyRef.current = redirectKey;
+
+    if (redirectTarget.kind === "random") {
+      let active = true;
+
+      (async () => {
+        await loadQuestions();
+        if (!active) {
+          return;
+        }
+
+        clearFilters();
+        const firstQuestion = startRandomSession(QuestionService.questions);
+        if (firstQuestion?.question_uid) {
+          navigate(
+            {
+              pathname: buildSolvePath(firstQuestion.question_uid),
+              search: "",
+            },
+            { replace: true }
+          );
+          return;
+        }
+
+        navigate(
+          {
+            pathname: PRACTICE_ROUTE,
+            search: "",
+          },
+          { replace: true }
+        );
+      })();
+
+      return () => {
+        active = false;
+      };
+    }
+
+    navigate(
+      {
+        pathname: redirectTarget.pathname,
+        search: redirectTarget.search,
+      },
+      { replace: true }
+    );
+
+    return undefined;
+  }, [clearFilters, loadQuestions, location.pathname, location.search, navigate, resumeRoute, startRandomSession]);
+
+  return null;
+};
+
+// ── Practice Routes (home, explore, solve, mock-history) ───────────────────
+const PracticeRoutes = ({
+  loading,
+  error,
+  loadQuestions,
+  questionBankManifest,
+  manifestLoading,
+  manifestError,
+  hasPriorProgress,
+}) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { clearFilters } = useFilterActions();
+  const { startRandomSession } = useSession();
+  const lastSession = readLastSession();
+  const resumeRoute = typeof lastSession?.route === "string" ? lastSession.route : "";
+  const hasResumeRoute = !!resumeRoute || hasPriorProgress;
+
+  const handleResumePractice = useCallback(() => {
+    const session = readLastSession();
+    trackEvent("resume", {
+      source: location.pathname === HOME_ROUTE ? "home" : "header",
+    });
+
+    if (typeof session?.route === "string" && session.route.trim()) {
+      const [pathname, rawSearch = ""] = session.route.split("?");
+      navigate(
+        {
+          pathname: pathname || PRACTICE_ROUTE,
+          search: rawSearch ? `?${rawSearch}` : "",
+        }
+      );
+      return;
+    }
+
+    navigate(PRACTICE_ROUTE);
+  }, [location.pathname, navigate]);
+
+  const handleStartRandomPractice = useCallback(async () => {
+    trackEvent("home_cta", { target: "random", source: "home" });
+    await loadQuestions();
+    clearFilters();
+    const firstQuestion = startRandomSession(QuestionService.questions);
+
+    if (firstQuestion?.question_uid) {
+      navigate({
+        pathname: buildSolvePath(firstQuestion.question_uid),
+        search: "",
+      });
+      return;
+    }
+
+    navigate(PRACTICE_ROUTE);
+  }, [clearFilters, loadQuestions, navigate, startRandomSession]);
+
+  const handleExplorePractice = useCallback(() => {
+    trackEvent("home_cta", { target: "explore", source: "home" });
+    const session = readLastSession();
+    navigate({
+      pathname: PRACTICE_ROUTE,
+      search: session?.exploreSearch || "",
+    });
+  }, [navigate]);
+
+  const handleStartMockTest = useCallback(() => {
+    trackEvent("home_cta", { target: "mock", source: "home" });
+    navigate({
+      pathname: MOCK_ROUTE,
+      search: "?stage=setup",
+    });
+  }, [navigate]);
+
+  const handleOpenMockHistory = useCallback(() => {
+    trackEvent("home_cta", { target: "mock_history", source: "home" });
+    navigate(MOCK_HISTORY_ROUTE);
+  }, [navigate]);
+
+  return (
+    <>
+      <ScrollToTop />
+      <LegacyNavigationHandler loadQuestions={loadQuestions} resumeRoute={resumeRoute} />
+
+      <Routes>
+        <Route
+          path={HOME_ROUTE}
+          element={(
+            <HomePage
+              questionBankManifest={questionBankManifest}
+              manifestLoading={manifestLoading}
+              manifestError={manifestError}
+              hasResumeRoute={hasResumeRoute}
+              lastSession={lastSession}
+              mockModeEnabled={MOCK_TEST_MODE_ENABLED}
+              onStartRandomPractice={handleStartRandomPractice}
+              onExplorePractice={handleExplorePractice}
+              onOpenMockHistory={handleOpenMockHistory}
+              onStartMockTest={handleStartMockTest}
+              onResumePractice={handleResumePractice}
+            />
+          )}
+        />
+        <Route
+          path={PRACTICE_ROUTE}
+          element={(
+            <Suspense fallback={<RouteLoader label="Loading Explore..." />}>
+              <ExplorePage
+                loading={loading}
+                error={error}
+                loadQuestions={loadQuestions}
+                hasResumeRoute={hasResumeRoute}
+                onResumePractice={handleResumePractice}
+              />
+            </Suspense>
+          )}
+        />
+        <Route
+          path={`${PRACTICE_ROUTE}/question/:questionUid`}
+          element={(
+            <Suspense fallback={<RouteLoader label="Loading Solve..." />}>
+              <SolvePage
+                loading={loading}
+                error={error}
+                loadQuestions={loadQuestions}
+                hasResumeRoute={hasResumeRoute}
+                onResumePractice={handleResumePractice}
+              />
+            </Suspense>
+          )}
+        />
+        <Route
+          path={MOCK_HISTORY_ROUTE}
+          element={MOCK_TEST_MODE_ENABLED ? (
+            <Suspense fallback={<RouteLoader label="Loading Mock History..." />}>
+              <MockHistoryPage
+                hasResumeRoute={hasResumeRoute}
+                onResumePractice={handleResumePractice}
+                onStartMockTest={handleStartMockTest}
+              />
+            </Suspense>
+          ) : (
+            <Navigate to={HOME_ROUTE} replace />
+          )}
+        />
+        <Route path="*" element={<Navigate to={HOME_ROUTE} replace />} />
+      </Routes>
+    </>
+  );
+};
+
+// ── App Runtime (top-level state + branch split) ───────────────────────────
+const AppRuntime = () => {
+  const location = useLocation();
+  const [loading, setLoading] = useState(() => (
+    location.pathname.startsWith(PRACTICE_ROUTE) || location.pathname.startsWith(MOCK_ROUTE)
+  ));
   const [error, setError] = useState("");
-  const [appView, setAppView] = useState(() => resolveAppViewFromUrl());
   const [questionDataRevision, setQuestionDataRevision] = useState(0);
   const [questionBankManifest, setQuestionBankManifest] = useState(() => QuestionBankManifestService.manifest);
   const [manifestLoading, setManifestLoading] = useState(() => !QuestionBankManifestService.loaded);
   const [manifestError, setManifestError] = useState(() => QuestionBankManifestService.loadError || "");
-  const shouldOpenFilterOnEnter = useRef(false);
   const questionLoadPromiseRef = useRef(null);
 
   const [hasPriorProgress] = useState(() => {
@@ -267,9 +351,11 @@ function App() {
     try {
       const solved = JSON.parse(localStorage.getItem("gate_qa_solved_questions") || "[]");
       const bookmarked = JSON.parse(localStorage.getItem("gate_qa_bookmarked_questions") || "[]");
-      return (Array.isArray(solved) ? solved.length : 0) > 0 ||
-        (Array.isArray(bookmarked) ? bookmarked.length : 0) > 0;
-    } catch { return false; }
+      return (Array.isArray(solved) ? solved.length : 0) > 0
+        || (Array.isArray(bookmarked) ? bookmarked.length : 0) > 0;
+    } catch {
+      return false;
+    }
   });
 
   const loadQuestionBankManifest = useCallback(async () => {
@@ -286,8 +372,8 @@ function App() {
       setQuestionBankManifest(manifest);
       setManifestError("");
       return manifest;
-    } catch (err) {
-      setManifestError(err.message || "Unable to load question bank summary.");
+    } catch (manifestLoadError) {
+      setManifestError(manifestLoadError.message || "Unable to load question bank summary.");
       return null;
     } finally {
       setManifestLoading(false);
@@ -319,8 +405,8 @@ function App() {
           AnswerService.init(),
         ]);
         setQuestionDataRevision((value) => value + 1);
-      } catch (err) {
-        setError(err.message || "Unable to load questions.");
+      } catch (questionLoadError) {
+        setError(questionLoadError.message || "Unable to load questions.");
       } finally {
         setLoading(false);
         if (questionLoadPromiseRef.current?.promise === loadPromise) {
@@ -328,6 +414,7 @@ function App() {
         }
       }
     })();
+
     questionLoadPromiseRef.current = {
       promise: loadPromise,
       fullBank,
@@ -340,43 +427,90 @@ function App() {
     void loadQuestionBankManifest();
   }, [loadQuestionBankManifest]);
 
+  // ── Top-level branch: /mock gets its own isolated tree ─────────────────
+  const isMockRoute = location.pathname === MOCK_ROUTE
+    || location.pathname.startsWith(`${MOCK_ROUTE}/`);
+  // Exclude /history/mock-tests — that goes through the practice tree
+  const isIsolatedMockRoute = isMockRoute
+    && !location.pathname.startsWith(MOCK_HISTORY_ROUTE);
+
+  // Load questions automatically only for practice routes (mock branch handles its own)
   useEffect(() => {
-    if (appView === "landing") {
+    if (isIsolatedMockRoute) {
+      return;
+    }
+
+    const needsQuestionData = location.pathname.startsWith(PRACTICE_ROUTE);
+    if (!needsQuestionData) {
       setLoading(false);
       return;
     }
-    void loadQuestions({ fullBank: appView === "mockSetup" || appView === "mockExam" });
-  }, [appView, loadQuestions]);
 
+    void loadQuestions();
+  }, [isIsolatedMockRoute, loadQuestions, location.pathname]);
+
+  // Pageview tracking for non-mock routes (mock branch tracks its own)
   useEffect(() => {
-    if (appView === "landing") pageview("Landing");
-    else if (appView === "practice") pageview("Practice");
-    else if (appView === "mockSetup") pageview("MockSetup");
-    else if (appView === "mockExam") pageview("MockExam");
-  }, [appView]);
+    if (isIsolatedMockRoute) {
+      return;
+    }
+
+    if (location.pathname === HOME_ROUTE) {
+      pageview("Home");
+      return;
+    }
+    if (location.pathname === PRACTICE_ROUTE) {
+      pageview("Explore");
+      return;
+    }
+    if (location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`)) {
+      pageview("Solve");
+      return;
+    }
+    if (location.pathname.startsWith(MOCK_HISTORY_ROUTE)) {
+      pageview("MockHistory");
+    }
+  }, [isIsolatedMockRoute, location.pathname]);
+
+  if (isIsolatedMockRoute) {
+    return (
+      <div className="min-h-screen bg-[color:var(--color-bg)]">
+        <MockBranch
+          loadQuestions={loadQuestions}
+          questionBankManifest={questionBankManifest}
+          questionDataRevision={questionDataRevision}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col h-screen max-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[color:var(--color-bg)]">
       <FilterProvider
         initialManifest={questionBankManifest}
         questionDataRevision={questionDataRevision}
       >
         <SessionProvider>
-          <ViewSwitch
+          <PracticeRoutes
             loading={loading}
             error={error}
             loadQuestions={loadQuestions}
-            appView={appView}
-            setAppView={setAppView}
-            shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
-            hasPriorProgress={hasPriorProgress}
             questionBankManifest={questionBankManifest}
             manifestLoading={manifestLoading}
             manifestError={manifestError}
+            hasPriorProgress={hasPriorProgress}
           />
         </SessionProvider>
       </FilterProvider>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <AppRuntime />
+    </BrowserRouter>
   );
 }
 

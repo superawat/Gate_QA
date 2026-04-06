@@ -6,176 +6,230 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-    clearFilters: vi.fn(),
-    trackEvent: vi.fn(),
-    questionInit: vi.fn(() => Promise.resolve()),
-    answerInit: vi.fn(() => Promise.resolve()),
-    manifestInit: vi.fn(() => Promise.resolve({
-        questionCount: 3271,
-        latestYear: 2026,
-        yearSets: [{ key: "2026-s1" }, { key: "2026-s2" }],
-    })),
+  clearFilters: vi.fn(),
+  startRandomSession: vi.fn(() => ({ question_uid: "go:random" })),
+  questionInit: vi.fn(() => Promise.resolve()),
+  answerInit: vi.fn(() => Promise.resolve()),
+  manifestInit: vi.fn(() => Promise.resolve({
+    questionCount: 3271,
+    latestYear: 2026,
+    yearSets: [{ key: "2026-s1" }, { key: "2026-s2" }],
+  })),
+  trackEvent: vi.fn(),
+  mockTestModeEnabled: false,
 }));
 
-vi.mock("./shells/LandingShell", () => ({
-    default: ({ onResumePractice, questionBankManifest, manifestLoading }) => (
-        <div>
-            <button type="button" onClick={onResumePractice}>
-                Resume practice
-            </button>
-            <div data-testid="landing-manifest-state">
-                {manifestLoading ? "loading" : String(questionBankManifest?.questionCount || 0)}
-            </div>
-        </div>
-    ),
+vi.mock("./pages/HomePage", () => ({
+  default: ({
+    questionBankManifest,
+    manifestLoading,
+    onOpenMockHistory,
+    onResumePractice,
+    onStartRandomPractice,
+    onStartMockTest,
+  }) => (
+    <div>
+      <div data-testid="home-manifest-state">
+        {manifestLoading ? "loading" : String(questionBankManifest?.questionCount || 0)}
+      </div>
+      <button type="button" onClick={onResumePractice}>Resume</button>
+      <button type="button" onClick={onStartRandomPractice}>Random</button>
+      <button type="button" onClick={onStartMockTest}>Mock</button>
+      <button type="button" onClick={onOpenMockHistory}>History</button>
+    </div>
+  ),
 }));
 
-vi.mock("./shells/PracticeShell", () => ({
-    default: () => <div>Practice shell</div>,
+vi.mock("./pages/ExplorePage", () => ({
+  default: () => <div>Explore page</div>,
+}));
+
+vi.mock("./pages/MockHistoryPage", () => ({
+  default: () => <div>Mock history page</div>,
+}));
+
+vi.mock("./pages/SolvePage", () => ({
+  default: () => <div>Solve page</div>,
 }));
 
 vi.mock("./shells/MockShell", () => ({
-    default: () => <div>Mock shell</div>,
+  default: () => <div>Mock shell</div>,
 }));
 
 vi.mock("./contexts/FilterContext", () => ({
-    FilterProvider: ({ children }) => children,
-    useFilterState: () => ({
-        allQuestions: [{ question_uid: "go:1" }],
-        isInitialized: true,
-    }),
-    useFilterActions: () => ({
-        clearFilters: mocks.clearFilters,
-    }),
+  FilterProvider: ({ children }) => children,
+  useFilterActions: () => ({
+    clearFilters: mocks.clearFilters,
+  }),
 }));
 
 vi.mock("./contexts/SessionContext", () => ({
-    SessionProvider: ({ children }) => children,
+  SessionProvider: ({ children }) => children,
+  useSession: () => ({
+    startRandomSession: mocks.startRandomSession,
+  }),
 }));
 
 vi.mock("./utils/analytics", () => ({
-    pageview: vi.fn(),
-    trackEvent: mocks.trackEvent,
+  pageview: vi.fn(),
+  trackEvent: mocks.trackEvent,
 }));
 
 vi.mock("./constants/featureFlags", () => ({
-    MOCK_TEST_MODE_ENABLED: false,
+  get MOCK_TEST_MODE_ENABLED() {
+    return mocks.mockTestModeEnabled;
+  },
 }));
 
 vi.mock("./services/QuestionService", () => ({
-    QuestionService: {
-        init: mocks.questionInit,
-        loaded: false,
-    },
+  QuestionService: {
+    init: mocks.questionInit,
+    loaded: false,
+    loadMode: "none",
+    questions: [{ question_uid: "go:1" }, { question_uid: "go:random" }],
+  },
 }));
 
 vi.mock("./services/AnswerService", () => ({
-    AnswerService: {
-        init: mocks.answerInit,
-        loaded: false,
-    },
+  AnswerService: {
+    init: mocks.answerInit,
+    loaded: false,
+  },
 }));
 
 vi.mock("./services/QuestionBankManifestService", () => ({
-    QuestionBankManifestService: {
-        init: mocks.manifestInit,
-        loaded: false,
-        manifest: null,
-        loadError: "",
-    },
+  QuestionBankManifestService: {
+    init: mocks.manifestInit,
+    loaded: false,
+    manifest: null,
+    loadError: "",
+  },
 }));
 
-import App, { ViewSwitch, resolveAppViewFromUrl } from "./App";
+import App from "./App";
 
-describe("ViewSwitch resume flow", () => {
-    beforeEach(() => {
-        mocks.clearFilters.mockReset();
-        mocks.trackEvent.mockReset();
-        mocks.questionInit.mockClear();
-        mocks.answerInit.mockClear();
-        mocks.manifestInit.mockClear();
-        window.history.replaceState({}, "", "/");
+describe("App routes", () => {
+  beforeEach(() => {
+    mocks.clearFilters.mockReset();
+    mocks.startRandomSession.mockReset();
+    mocks.startRandomSession.mockReturnValue({ question_uid: "go:random" });
+    mocks.questionInit.mockClear();
+    mocks.answerInit.mockClear();
+    mocks.manifestInit.mockClear();
+    mocks.trackEvent.mockReset();
+    mocks.mockTestModeEnabled = false;
+    window.localStorage.clear();
+    window.scrollTo = vi.fn();
+    window.history.replaceState({}, "", "/Gate_QA/");
+  });
+
+  test("loads only the manifest on the Home route", async () => {
+    render(<App />);
+
+    await waitFor(() => {
+      expect(mocks.manifestInit).toHaveBeenCalledTimes(1);
+      expect(screen.getByTestId("home-manifest-state").textContent).toContain("3271");
     });
 
-    test("resume enters practice without clearing filters", () => {
-        const setAppView = vi.fn();
-        const shouldOpenFilterOnEnter = { current: false };
-        const replaceStateSpy = vi.spyOn(window.history, "replaceState");
-        const pushStateSpy = vi.spyOn(window.history, "pushState");
+    expect(mocks.questionInit).not.toHaveBeenCalled();
+    expect(mocks.answerInit).not.toHaveBeenCalled();
+  });
 
-        render(
-            <ViewSwitch
-                loading={false}
-                error=""
-                loadQuestions={vi.fn()}
-                appView="landing"
-                setAppView={setAppView}
-                shouldOpenFilterOnEnter={shouldOpenFilterOnEnter}
-                hasPriorProgress
-            />
-        );
+  test("initializes questions on the Explore route", async () => {
+    window.history.replaceState({}, "", "/Gate_QA/practice");
 
-        setAppView.mockClear();
+    render(<App />);
 
-        fireEvent.click(screen.getByRole("button", { name: /resume practice/i }));
-
-        expect(mocks.clearFilters).not.toHaveBeenCalled();
-        expect(mocks.trackEvent).toHaveBeenCalledWith("resume_practice", { mode: "resume", source: "landing" });
-        expect(setAppView).toHaveBeenCalledWith("practice");
-        expect(shouldOpenFilterOnEnter.current).toBe(false);
-        expect(window.location.search).toContain("mode=resume");
-        expect(replaceStateSpy).toHaveBeenCalled();
-        expect(pushStateSpy).not.toHaveBeenCalled();
-
-        replaceStateSpy.mockRestore();
-        pushStateSpy.mockRestore();
+    await waitFor(() => {
+      expect(mocks.questionInit).toHaveBeenCalledTimes(1);
+      expect(mocks.answerInit).toHaveBeenCalledTimes(1);
     });
 
-    test("?mode=resume resolves to practice on URL load", () => {
-        window.history.replaceState({}, "", "/?mode=resume");
-        expect(resolveAppViewFromUrl()).toBe("practice");
+    expect(await screen.findByText("Explore page")).toBeTruthy();
+  });
+
+  test("redirects legacy search URLs to /practice", async () => {
+    window.history.replaceState({}, "", "/Gate_QA/?search=deadlock");
+
+    render(<App />);
+
+    await waitFor(() => {
+      expect(mocks.questionInit).toHaveBeenCalledTimes(1);
+      expect(window.location.pathname).toBe("/Gate_QA/practice");
     });
 
-    test("?search=deadlock resolves to practice on URL load", () => {
-        window.history.replaceState({}, "", "/?search=deadlock");
-        expect(resolveAppViewFromUrl()).toBe("practice");
+    expect(window.location.search).toContain("search=deadlock");
+    expect(await screen.findByText("Explore page")).toBeTruthy();
+  });
+
+  test("redirects legacy question links to /practice/question/:uid", async () => {
+    window.history.replaceState({}, "", "/Gate_QA/?question=go%3A1");
+
+    render(<App />);
+
+    await waitFor(() => {
+      expect(mocks.questionInit).toHaveBeenCalledTimes(1);
+      expect(window.location.pathname).toBe("/Gate_QA/practice/question/go%3A1");
     });
 
-    test("App loads only the manifest on the landing route", async () => {
-        render(<App />);
+    expect(await screen.findByText("Solve page")).toBeTruthy();
+  });
 
-        await waitFor(() => {
-            expect(mocks.manifestInit).toHaveBeenCalledTimes(1);
-        });
+  test("resume button navigates to the stored last session route", async () => {
+    window.localStorage.setItem("gateqa_last_session_v1", JSON.stringify({
+      route: "/practice/question/go:stored?subjects=algorithms&page=2",
+    }));
 
-        expect(mocks.questionInit).not.toHaveBeenCalled();
-        expect(mocks.answerInit).not.toHaveBeenCalled();
-        expect(screen.getByTestId("landing-manifest-state").textContent).toContain("3271");
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /resume/i }));
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/Gate_QA/practice/question/go:stored");
     });
 
-    test("App initializes questions when the URL resolves directly to practice", async () => {
-        window.history.replaceState({}, "", "/?mode=resume");
+    expect(window.location.search).toContain("subjects=algorithms");
+  });
 
-        render(<App />);
+  test("legacy random mode clears filters and opens the first random question", async () => {
+    window.history.replaceState({}, "", "/Gate_QA/?mode=random");
 
-        await waitFor(() => {
-            expect(mocks.questionInit).toHaveBeenCalledTimes(1);
-            expect(mocks.answerInit).toHaveBeenCalledTimes(1);
-        });
+    render(<App />);
 
-        expect(await screen.findByText("Practice shell")).toBeTruthy();
+    await waitFor(() => {
+      expect(mocks.questionInit).toHaveBeenCalled();
+      expect(mocks.clearFilters).toHaveBeenCalledTimes(1);
+      expect(mocks.startRandomSession).toHaveBeenCalledTimes(1);
+      expect(window.location.pathname).toBe("/Gate_QA/practice/question/go%3Arandom");
+    });
+  });
+
+  test("home mock button opens the mock route when the feature flag is enabled", async () => {
+    mocks.mockTestModeEnabled = true;
+
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /mock/i }));
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/Gate_QA/mock");
+      expect(window.location.search).toBe("?stage=setup");
     });
 
-    test("App initializes questions when search is present in the URL", async () => {
-        window.history.replaceState({}, "", "/?search=deadlock");
+    expect(await screen.findByText("Mock shell")).toBeTruthy();
+  });
 
-        render(<App />);
+  test("home history button opens the mock history page when the feature flag is enabled", async () => {
+    mocks.mockTestModeEnabled = true;
 
-        await waitFor(() => {
-            expect(mocks.questionInit).toHaveBeenCalledTimes(1);
-            expect(mocks.answerInit).toHaveBeenCalledTimes(1);
-        });
+    render(<App />);
 
-        expect(await screen.findByText("Practice shell")).toBeTruthy();
+    fireEvent.click(await screen.findByRole("button", { name: /history/i }));
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/Gate_QA/history/mock-tests");
     });
+
+    expect(await screen.findByText("Mock history page")).toBeTruthy();
+  });
 });

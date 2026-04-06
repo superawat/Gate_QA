@@ -4,9 +4,9 @@
 import React from 'react';
 import { act, render, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import { FilterProvider, useFilterActions } from './FilterContext';
+import { BrowserRouter } from 'react-router-dom';
+import { FilterProvider } from './FilterContext';
 import { SessionProvider, useSession } from './SessionContext';
-import { QuestionService } from '../services/QuestionService';
 
 vi.spyOn(Math, 'random').mockReturnValue(0);
 
@@ -77,51 +77,96 @@ vi.mock('../services/AnswerService', () => ({
     },
 }));
 
-const SessionHarness = () => {
-    const { updateFilters } = useFilterActions();
-    const { sessionQueue, currentIndex } = useSession();
+let latestSession = null;
 
-    return (
-        <div>
-            <div data-testid="queue">{sessionQueue.join(',')}</div>
-            <div data-testid="current-uid">{sessionQueue[currentIndex] || ''}</div>
-            <button
-                data-testid="filter-2024"
-                onClick={() => updateFilters({ selectedYearSets: ['2024-s0'] })}
-            >
-                Filter 2024
-            </button>
-        </div>
-    );
+const SessionHarness = () => {
+    latestSession = useSession();
+    return null;
 };
 
 describe('SessionContext', () => {
     beforeEach(() => {
+        latestSession = null;
         vi.clearAllMocks();
         window.localStorage.clear();
-        window.history.replaceState({}, '', '/?question=q1');
+        window.history.replaceState({}, '', '/practice');
     });
 
-    test('keeps the deep-linked current question pinned when a year filter rebuilds the queue', async () => {
-        const { getByTestId } = render(
+    const renderHarness = () => render(
+        <BrowserRouter>
             <FilterProvider>
                 <SessionProvider>
                     <SessionHarness />
                 </SessionProvider>
             </FilterProvider>
-        );
+        </BrowserRouter>
+    );
+
+    test('supports ordered navigation for Explore -> Solve flows', async () => {
+        renderHarness();
 
         await waitFor(() => {
-            expect(getByTestId('current-uid').textContent).toBe('q1');
+            expect(latestSession).toBeTruthy();
         });
 
-        await act(async () => {
-            getByTestId('filter-2024').click();
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startOrderedSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+                { question_uid: 'q3' },
+            ], 'q2');
         });
+
+        expect(firstQuestion.question_uid).toBe('q2');
+        expect(latestSession.getNavigationState('q2')).toMatchObject({
+            previousUid: 'q1',
+            nextUid: 'q3',
+            canGoPrevious: true,
+            canGoNext: true,
+        });
+
+        let previousQuestion;
+        act(() => {
+            previousQuestion = latestSession.goToPreviousQuestion('q2');
+        });
+
+        expect(previousQuestion.question_uid).toBe('q1');
+        expect(latestSession.getNavigationState('q1').canGoPrevious).toBe(false);
+    });
+
+    test('supports random sessions and reshuffles when the queue is exhausted', async () => {
+        renderHarness();
 
         await waitFor(() => {
-            expect(getByTestId('queue').textContent).toBe('q2,q1');
-            expect(getByTestId('current-uid').textContent).toBe('q1');
+            expect(latestSession).toBeTruthy();
         });
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startRandomSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+            ]);
+        });
+
+        expect(['q1', 'q2']).toContain(firstQuestion.question_uid);
+
+        let secondQuestion;
+        act(() => {
+            secondQuestion = latestSession.goToNextQuestion(firstQuestion.question_uid);
+        });
+
+        expect(secondQuestion.question_uid).not.toBe(firstQuestion.question_uid);
+        expect(latestSession.showExhaustionBanner).toBe(false);
+
+        let reshuffledQuestion;
+        act(() => {
+            reshuffledQuestion = latestSession.goToNextQuestion(secondQuestion.question_uid);
+        });
+
+        expect(reshuffledQuestion).toBeTruthy();
+        expect(latestSession.showExhaustionBanner).toBe(true);
+        expect(latestSession.getNavigationState(reshuffledQuestion.question_uid).total).toBe(2);
     });
 });

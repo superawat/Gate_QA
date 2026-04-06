@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useDeferredValue } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useDeferredValue, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
+import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
 
 const FilterStateContext = createContext();
 const FilterActionsContext = createContext();
@@ -225,6 +227,17 @@ const normalizeStoredIds = (rawIds) => {
     return normalized;
 };
 
+const normalizeProgressTargets = (rawTargets) => {
+    const values = Array.isArray(rawTargets) ? rawTargets : [rawTargets];
+    return normalizeStoredIds(
+        values
+            .map((target) => (typeof target === 'string'
+                ? String(target || '').trim()
+                : getQuestionTrackingId(target)))
+            .filter(Boolean)
+    );
+};
+
 const parseBooleanParam = (value) => {
     if (typeof value !== 'string') {
         return false;
@@ -304,7 +317,10 @@ export const FilterProvider = ({
     initialManifest = null,
     questionDataRevision = 0
 }) => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest));
+    const lastHydratedSearchRef = useRef(null);
 
     const [filters, setFilters] = useState(() => {
         const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest);
@@ -333,6 +349,8 @@ export const FilterProvider = ({
         () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics),
         [structuredTags.structuredSubtopics]
     );
+    const isPracticePath = location.pathname === PRACTICE_ROUTE
+        || location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`);
 
     useEffect(() => {
         if (!initialManifest || QuestionService.questions.length > 0) {
@@ -377,7 +395,17 @@ export const FilterProvider = ({
             return;
         }
 
-        const params = new URLSearchParams(window.location.search);
+        if (!isPracticePath) {
+            return;
+        }
+
+        const currentSearch = location.search || '';
+        if (lastHydratedSearchRef.current === currentSearch) {
+            return;
+        }
+        lastHydratedSearchRef.current = currentSearch;
+
+        const params = new URLSearchParams(currentSearch);
         const urlTypes = params.get('types');
         const rawYearTokens = params.get('years')?.split(',').filter(Boolean) || [];
         const rawSubjectTokens = params.get('subjects')?.split(',').filter(Boolean)
@@ -423,16 +451,15 @@ export const FilterProvider = ({
             }
             return merged;
         });
-    }, [isInitialized, urlHydrationSubtopicToSubjectSlug]);
+    }, [isInitialized, isPracticePath, location.search, urlHydrationSubtopicToSubjectSlug]);
 
     useEffect(() => {
-        if (!isInitialized) return;
+        if (!isInitialized || !isPracticePath) return;
 
-        // Preserve any existing `question` param set by App.jsx deep-linking
-        const existingParams = new URLSearchParams(window.location.search);
-        const questionParam = existingParams.get('question');
-
-        const params = new URLSearchParams();
+        const params = new URLSearchParams(location.search);
+        FILTER_QUERY_KEYS.forEach((key) => {
+            params.delete(key);
+        });
         const selectedYearSets = normalizeYearSetTokens(filters.selectedYearSets);
         const selectedSubjects = normalizeSubjectSlugs(filters.selectedSubjects);
         const selectedSubtopics = normalizeSubtopicSlugs(filters.selectedSubtopics);
@@ -473,18 +500,29 @@ export const FilterProvider = ({
             params.set('search', normalizedSearchQuery);
         }
 
-        // Re-attach the question param so deep-link is not wiped by filter sync
-        if (questionParam) {
-            params.set('question', questionParam);
+        const nextSearch = params.toString() ? `?${params.toString()}` : '';
+        if (nextSearch === location.search) {
+            return;
         }
 
-        const query = params.toString();
-        const newUrl = query
-            ? `${window.location.pathname}?${query}`
-            : window.location.pathname;
-
-        window.history.replaceState({}, '', newUrl);
-    }, [filters, isInitialized, structuredTags.minYear, structuredTags.maxYear]);
+        lastHydratedSearchRef.current = nextSearch;
+        navigate(
+            {
+                pathname: location.pathname,
+                search: nextSearch,
+            },
+            { replace: true }
+        );
+    }, [
+        filters,
+        isInitialized,
+        isPracticePath,
+        location.pathname,
+        location.search,
+        navigate,
+        structuredTags.minYear,
+        structuredTags.maxYear
+    ]);
 
     useEffect(() => {
         if (typeof window === 'undefined') {
@@ -767,6 +805,22 @@ export const FilterProvider = ({
         ));
     }, []);
 
+    const markQuestionsSolved = useCallback((questionOrIds) => {
+        const questionIds = normalizeProgressTargets(questionOrIds);
+        if (questionIds.length === 0) {
+            return;
+        }
+
+        setSolvedQuestionIds((prev) => {
+            const nextSet = new Set(prev);
+            questionIds.forEach((questionId) => {
+                nextSet.add(questionId);
+            });
+            const next = Array.from(nextSet);
+            return next.length === prev.length ? prev : next;
+        });
+    }, []);
+
     const refreshProgressState = useCallback(() => {
         if (typeof window === 'undefined' || !canUseBrowserStorage()) {
             return;
@@ -886,6 +940,7 @@ export const FilterProvider = ({
         clearFilters,
         getQuestionById,
         toggleSolved,
+        markQuestionsSolved,
         toggleBookmark,
         isQuestionSolved,
         isQuestionBookmarked,
@@ -896,7 +951,7 @@ export const FilterProvider = ({
         setShowOnlyBookmarked
     }), [
         updateFilters, clearFilters, getQuestionById,
-        toggleSolved, toggleBookmark, isQuestionSolved,
+        toggleSolved, markQuestionsSolved, toggleBookmark, isQuestionSolved,
         isQuestionBookmarked, getQuestionProgressId,
         refreshProgressState,
         setHideSolved, setShowOnlySolved, setShowOnlyBookmarked
