@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-05T08:36:05.216Z",
+  "generatedAt": "2026-04-06T07:33:43.457Z",
   "shardKey": "2024-s2",
   "yearSetKey": "2024-s2",
   "year": 2024,
   "set": 2,
   "label": "2024 Set 2",
-  "questionCount": 69,
+  "questionCount": 65,
   "recordsByQuestionUid": {
     "go:422906": {
       "title": "GATE CSE 2024 | Set 2 | GA Question: 1",
@@ -1894,122 +1894,6 @@
         "tolerance": {
           "abs": 0.01
         },
-        "source": "question_uid"
-      }
-    },
-    "go:460833": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 2",
-      "year": "gatecse-2024-set2",
-      "link": "https://gateoverflow.in/460833/gate-cse-2025-set-2-question-2",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460833\"></a><div itemprop=\"text\"><p>​​​​​The value of $x$ such that $x&gt;1$, satisfying teh equation $\\int_1^x t \\ln t \\: dt = \\frac{1}{4}$ is</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>$\\sqrt{e}$</li><li>$e$</li><li>$e^2$</li><li>$e-1$</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "calculus",
-        "definite-integral",
-        "one-mark",
-        "gatecse-2024-set2",
-        "gatecse-2023",
-        "numerical-answers"
-      ],
-      "question_uid": "go:460833",
-      "exam_uid": "cse:2025:set2:main:q2",
-      "answer_uid": "v1:5.2.3",
-      "answer_meta": {
-        "type": "MCQ",
-        "answer": "A",
-        "tolerance": null,
-        "source": "question_uid"
-      }
-    },
-    "go:460818": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 17",
-      "year": "gatecse-2024-set2",
-      "link": "https://gateoverflow.in/460818/gate-cse-2025-set-2-question-17",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460818\"></a><div itemprop=\"text\"><p>​​​​An audit of a banking transactions system has found that on an earlier occasion, two joint holders of account $A$ attempted simultaneous transfers of Rs. $10000$ each from account $A$ to account $B$. Both transactions read the same value, Rs.$11000$, as the initial balance in $A$ and were allowed to go through. $B$ was credited Rs.$10000$ twice. $A$ was debited only once and ended up with a balance of Rs. $1000$.<br/><br/>Which of the following properties is/are certain to have been violated by the system?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>Atomicity</li><li>Consistency</li><li>Isolation</li><li>Durability</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "databases",
-        "transaction-and-concurrency",
-        "multiple-selects",
-        "one-mark",
-        "conflict-serializable",
-        "two-marks",
-        "sql",
-        "database-normalization",
-        "gatecse-2024-set2",
-        "two-phase-locking-protocol"
-      ],
-      "question_uid": "go:460818",
-      "exam_uid": "cse:2025:set2:main:q17",
-      "answer_uid": "v2:5.19.24",
-      "answer_meta": {
-        "type": "MSQ",
-        "answer": [
-          "B",
-          "C"
-        ],
-        "tolerance": null,
-        "source": "question_uid"
-      }
-    },
-    "go:460800": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 35",
-      "year": "gatecse-2024-set2",
-      "link": "https://gateoverflow.in/460800/gate-cse-2025-set-2-question-35",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460800\"></a><div itemprop=\"text\"><p>​​​Consider a stack data structure into which we can PUSH and POP records. Assume that each record pushed in the stack has a positive integer key and that all keys are distinct.<br/><br/>We wish to augment the stack data structure with an $O(1)$ time MIN operation that returns a pointer to the record with smallest key present in the stack</p><ol><li>without deleting the corresponding record, and</li><li>without increasing the complexities of the standard stack operations.</li></ol><p><br/>Which one or more of the following approach(es) can achieve it?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>Keep with every record in the stack, a pointer to the record with the smallest key below it.</li><li>Keep a pointer to the record with the smallest key in the stack.</li><li>Keep an auxiliary array in which the key values of the records in the stack are maintained in sorted order.</li><li>Keep a Min-Heap in which the key values of the records in the stack are maintained.</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "data-structures",
-        "stack",
-        "multiple-selects",
-        "two-marks",
-        "time-complexity",
-        "gatecse-2024-set2",
-        "binary-tree",
-        "one-mark",
-        "binary-search-tree",
-        "numerical-answers",
-        "easy"
-      ],
-      "question_uid": "go:460800",
-      "exam_uid": "cse:2025:set2:main:q35",
-      "answer_uid": "v2:8.13.14",
-      "answer_meta": {
-        "type": "MCQ",
-        "answer": "A",
-        "tolerance": null,
-        "source": "question_uid"
-      }
-    },
-    "go:460796": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 39",
-      "year": "gatecse-2024-set2",
-      "link": "https://gateoverflow.in/460796/gate-cse-2025-set-2-question-39",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460796\"></a><div itemprop=\"text\"><p>Three floating point numbers $X, Y$, and $Z$ are stored in three registers $\\mathrm{R}_{\\mathrm{X}}, \\mathrm{R}_{\\mathrm{Y}}$, and $\\mathrm{R}_{\\mathrm{Z}}$, respectively in $IEEE$ $754$ single precision format as given below in hexadecimal:</p><p>$$\\mathrm{R}_{\\mathrm{X}}=0 \\mathrm{xC} 1100000, \\mathrm{R}_{\\mathrm{Y}}=0 \\mathrm{x}  40 \\mathrm{C} 00000, \\text { and } \\mathrm{R}_{\\mathrm{Z}}=0 \\mathrm{x} 41400000$$</p><p>Which of the following option(s) is/are CORRECT?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>$4(X+Y)+Z=0$</li><li>$2 Y-Z=0$</li><li>$4 X+3 Z=0$</li><li>$X+Y+Z=0$</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "digital-logic",
-        "number-representation",
-        "ieee-representation",
-        "multiple-selects",
-        "two-marks",
-        "gatecse-2024-set2",
-        "floating-point-representation",
-        "one-mark",
-        "gatecse-2021-set2",
-        "gatecse-2017-set2"
-      ],
-      "question_uid": "go:460796",
-      "exam_uid": "cse:2025:set2:main:q39",
-      "answer_uid": "v2:6.17.8",
-      "answer_meta": {
-        "type": "MSQ",
-        "answer": [
-          "A",
-          "B",
-          "C"
-        ],
-        "tolerance": null,
         "source": "question_uid"
       }
     }

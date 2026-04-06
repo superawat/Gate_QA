@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-05T08:36:05.216Z",
+  "generatedAt": "2026-04-06T07:33:43.457Z",
   "shardKey": "2022-s0",
   "yearSetKey": "2022-s0",
   "year": 2022,
   "set": null,
   "label": "2022",
-  "questionCount": 68,
+  "questionCount": 65,
   "recordsByQuestionUid": {
     "go:371505": {
       "title": "GATE CSE 2022 | GA Question: 1",
@@ -1518,92 +1518,6 @@
         "tolerance": {
           "abs": 0.01
         },
-        "source": "question_uid"
-      }
-    },
-    "go:460054": {
-      "title": "GATE CSE 2025 | Set 1 | Question: 26",
-      "year": "gatecse-2022",
-      "link": "https://gateoverflow.in/460054/gate-cse-2025-set-1-question-26",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460054\"></a><div itemprop=\"text\"><p>Consider a memory system with $1 \\mathrm{M}$ bytes of main memory and $16 \\mathrm{~K}$ bytes of cache memory. Assume that the processor generates $20$-bit memory address, and the cache block size is $16$ bytes. If the cache uses direct mapping, how many bits will be required to store all the $\\operatorname{tag}$ values? [Assume memory is byte addressable, $1 \\mathrm{~K}=2^{10}$, $1 \\mathrm{M}=2^{20}$.]</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>$6 \\times 2^{10}$</li><li>$8 \\times 2^{10}$</li><li>$2^{12}$</li><li>$2^{14}$</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set1",
-        "co-and-architecture",
-        "cache-memory",
-        "direct-mapping",
-        "easy",
-        "two-marks",
-        "gatecse-2025-set2",
-        "multilevel-cache",
-        "average-memory-access-time",
-        "numerical-answers",
-        "machine-instruction",
-        "gatecse-2022",
-        "multiple-selects"
-      ],
-      "question_uid": "go:460054",
-      "exam_uid": "cse:2025:set1:main:q26",
-      "answer_uid": "manual:go:460054",
-      "answer_meta": {
-        "type": "MCQ",
-        "answer": "A",
-        "tolerance": null,
-        "source": "question_uid"
-      }
-    },
-    "go:460806": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 29",
-      "year": "gatecse-2022",
-      "link": "https://gateoverflow.in/460806/gate-cse-2025-set-2-question-29",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460806\"></a><div itemprop=\"text\"><p>​​​​For a direct-mapped cache, $4$ bits are used for the tag field and $12$ bits are used to index into a cache block. The size of each cache block is one byte. Assume that there is no other information stored for each cache block.<br/><br/>Which ONE of the following is the CORRECT option for the sizes of the main memory and the cache memory in this system (byte addressable), respectively?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>$64$ KB and $4$ KB</li><li>$128$ KB and $16$ KB</li><li>$64$ KB and $8$ KB</li><li>$128$ KB and $6$ KB</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "co-and-architecture",
-        "direct-mapping",
-        "cache-memory",
-        "two-marks",
-        "gatecse-2025-set1",
-        "easy",
-        "average-memory-access-time",
-        "multilevel-cache",
-        "numerical-answers",
-        "gatecse-2022",
-        "multiple-selects",
-        "isro-2020",
-        "normal"
-      ],
-      "question_uid": "go:460806",
-      "exam_uid": "cse:2025:set2:main:q29",
-      "answer_uid": "manual:go:460806",
-      "answer_meta": {
-        "type": "MCQ",
-        "answer": "A",
-        "tolerance": null,
-        "source": "question_uid"
-      }
-    },
-    "go:460798": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 37",
-      "year": "gatecse-2022",
-      "link": "https://gateoverflow.in/460798/gate-cse-2025-set-2-question-37",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460798\"></a><div itemprop=\"text\"><p>​Consider a demand paging system with three frames, and the following page reference string: 1 2 3 4 5 4 1 6 4 5 1 3 2 . The contents of the frames are as follows initially and after each reference (from left to right):<br/>$$  \\begin{array}{|c|lllllllllllll|} \\hline \\text{initially} &amp; \\text{after} \\\\ \\hline <br/> -&amp;1^* &amp;2^* &amp; 3^* &amp; 4^* &amp; 5^* &amp; 4  &amp; 1  &amp; 6^* &amp; 4  &amp; 5  &amp; 1^* &amp; 3^* &amp; 2^*  \\\\ \\hline<br/>-&amp;1   &amp; 1   &amp; 1   &amp; 1   &amp; 1   &amp; 1  &amp; 1  &amp; 6   &amp; 6  &amp; 6  &amp; 6   &amp; 6   &amp; 2  \\\\  \\hline<br/>-&amp;-   &amp; 2   &amp; 2   &amp; 4   &amp; 4   &amp; 4  &amp; 4  &amp; 4   &amp; 4  &amp; 4  &amp; 1   &amp; 1   &amp; 1  \\\\  \\hline -&amp;-   &amp; -   &amp; 3   &amp; 3   &amp; 5   &amp; 5  &amp; 5  &amp; 5   &amp; 5  &amp; 5  &amp; 5   &amp; 3   &amp; 3 \\\\\\hline<br/>\\end{array}$$<br/>The *-marked references cause page replacements.</p><p>Which one or more of the following could be the page replacement policy/policies in use?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>Least Recently Used page replacement policy</li><li>Least Frequently Used page replacement policy</li><li>Most Frequently Used page replacement policy</li><li>Optimal page replacement policy</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "operating-system",
-        "page-replacement",
-        "demand-paging",
-        "multiple-selects",
-        "two-marks",
-        "gatecse-2022",
-        "numerical-answers"
-      ],
-      "question_uid": "go:460798",
-      "exam_uid": "cse:2025:set2:main:q37",
-      "answer_uid": "v2:7.16.30",
-      "answer_meta": {
-        "type": "MCQ",
-        "answer": "D",
-        "tolerance": null,
         "source": "question_uid"
       }
     }

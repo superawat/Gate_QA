@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-05T08:36:05.216Z",
+  "generatedAt": "2026-04-06T07:33:43.457Z",
   "shardKey": "2024-s1",
   "yearSetKey": "2024-s1",
   "year": 2024,
   "set": 1,
   "label": "2024 Set 1",
-  "questionCount": 68,
+  "questionCount": 65,
   "recordsByQuestionUid": {
     "go:422786": {
       "title": "GATE CSE 2024 | Set 1 | GA Question: 1",
@@ -1876,94 +1876,6 @@
         "tolerance": {
           "abs": 0.01
         },
-        "source": "question_uid"
-      }
-    },
-    "go:460092": {
-      "title": "GATE CSE 2025 | Set 1 | GA Question: 9",
-      "year": "gatecse-2024-set1",
-      "link": "https://gateoverflow.in/460092/gate-cse-2025-set-1-ga-question-9",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460092\"></a><div itemprop=\"text\"><p>A square paper, shown in figure $(I)$, is folded along the dotted lines as shown in the figures $(II)$ and $(III)$. Then a few cuts are made as shown in figure $(IV)$. Which one of the following patterns will be obtained when the paper is unfolded?</p><div><p>Note: The figures shown are representative.</p><p style=\"text-align:center\"><img alt=\"\" height=\"192\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=12776002391693517573\" width=\"600\"/></p><p> ​​​​</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li><h1><img alt=\"\" height=\"200\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=4020672311166310599\" width=\"200\"/></h1></li><li><h1><img alt=\"\" height=\"200\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=13763868169104718046\" width=\"200\"/></h1></li><li><h1><img alt=\"\" height=\"200\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=7105292955375656820\" width=\"200\"/></h1></li><li><h1><img alt=\"\" height=\"200\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=3686712681937115125\" width=\"200\"/></h1></li></ol></div><p> </p></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set1",
-        "spatial-aptitude",
-        "paper-folding",
-        "two-marks",
-        "gatecse-2024-set1",
-        "area",
-        "gatecse-2025-set2",
-        "easy",
-        "one-mark",
-        "gatecse-2021-set1"
-      ],
-      "question_uid": "go:460092",
-      "exam_uid": "cse:2025:set1:ga:q9",
-      "answer_uid": "v1:10.6.4",
-      "answer_meta": {
-        "type": "NAT",
-        "answer": 1065,
-        "tolerance": {
-          "abs": 0.01
-        },
-        "source": "question_uid"
-      }
-    },
-    "go:460067": {
-      "title": "GATE CSE 2025 | Set 1 | Question: 13",
-      "year": "gatecse-2024-set1",
-      "link": "https://gateoverflow.in/460067/gate-cse-2025-set-1-question-13",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460067\"></a><div itemprop=\"text\"><p>Consider the given system of linear equations for variables $x$ and $y$, where $k$ is a real-valued constant. Which of the following option(s) is/are CORRECT?<br/>$$ \\begin{array}{l} x+k y=1 \\\\ k x+y=-1 \\end{array} $$</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>There is exactly one value of $k$ for which the above system of equations has no solution.</li><li>There exist an infinite number of values of $k$ for which the system of equations has no solution.</li><li>There exists exactly one value of $k$ for which the system of equations has exactly one solution.</li><li>There exists exactly one value of $k$ for which the system of equations has an infinite number of solutions.</li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set1",
-        "linear-algebra",
-        "system-of-equations",
-        "multiple-selects",
-        "one-mark",
-        "gatecse-2025-set2",
-        "matrix",
-        "lu-decomposition",
-        "two-marks",
-        "gatecse-2024-set1",
-        "eigen-value",
-        "easy"
-      ],
-      "question_uid": "go:460067",
-      "exam_uid": "cse:2025:set1:main:q13",
-      "answer_uid": "manual:go:460067",
-      "answer_meta": {
-        "type": "MSQ",
-        "answer": [
-          "A",
-          "D"
-        ],
-        "tolerance": null,
-        "source": "question_uid"
-      }
-    },
-    "go:460850": {
-      "title": "GATE CSE 2025 | Set 2 | Question: 43",
-      "year": "gatecse-2024-set1",
-      "link": "https://gateoverflow.in/460850/gate-cse-2025-set-2-question-43",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460850\"></a><div itemprop=\"text\"><p>Consider the database transactions T1 and T2 , and data items X and Y . Which of the schedule(s) is/are conflict serializable?</p><p>$$\\begin{array}{|ll|} \\hline  \\textbf{Transaction T1}   \\\\ \\text{R1(X)}  \\\\   \\text{W1(Y)} \\\\  \\text{R1(X)} \\\\ \\text{W1(X)} \\\\ \\text{COMMIT(T1)} \\\\\\hline \\end{array} \\quad \\begin{array}{|ll|} \\hline  \\textbf{Transaction T2}   \\\\ \\text{W2(X)} \\\\ \\text{W2(Y)} \\\\ \\text{COMMIT(T2)}  \\\\\\hline \\end{array} $$</p><ol style=\"list-style-type:upper-alpha\"><li> R1(X), W2(X), W1(Y), W2(Y), R1(X), W1(X), COMMIT(T2), COMMIT(T1) </li><li>W2(X), R1(X), W2(Y), W1(Y), R1(X), COMMIT(T2), W1(X), COMMIT(T1) </li><li>R1(X), W1(Y), W2(X), W2(Y), R1(X), W1(X), COMMIT(T1), COMMIT(T2) </li><li>W2(X), R1(X), W1(Y), W2(Y), R1(X), COMMIT(T2), W1(X), COMMIT(T1)<p> </p></li></ol></div>\n</div>",
-      "tags": [
-        "gatecse-2025-set2",
-        "databases",
-        "conflict-serializable",
-        "multiple-selects",
-        "two-marks",
-        "sql",
-        "database-normalization",
-        "transaction-and-concurrency",
-        "one-mark",
-        "gatecse-2024-set1"
-      ],
-      "question_uid": "go:460850",
-      "exam_uid": "cse:2025:set2:main:q43",
-      "answer_uid": "v2:5.3.9",
-      "answer_meta": {
-        "type": "MCQ",
-        "answer": "B",
-        "tolerance": null,
         "source": "question_uid"
       }
     }
