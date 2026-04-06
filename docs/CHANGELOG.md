@@ -93,7 +93,11 @@ All notable changes to GateQA are documented in this file.
 - Busted the runtime init cache and removed 2025-only filter fallbacks so the filter page surfaces 2026 immediately after the data import.
 - Updated documentation with the manual catch-up runbook and current scheduled-workflow timeout caveat.
 - Hardened the automatic FEAT-003 workflow with a release-window retry schedule, a long enough unattended timeout budget, fast-fail handling for non-retryable 4xx tag probes, and transient retry handling for answer backfill.
-- 2026 answer backfill remains pending; the imported 2026 rows currently carry `answer: null`.
+- Completed the 2026 answer backfill using the official answer keys, updating all 130 questions across both sets with correct solution maps.
+
+### DOCS-2026: Free Platform Improvement Plan Updates -> Status: Done
+- Created \`plan2026.md\` to structure future platform performance, UX, and workflow improvements.
+- Refined \`FREE_PLATFORM_IMPROVEMENT_PLAN.md\` aligning to current roadmap strategies.
 
 ### FEAT-019: Add Google Analytics 4 (GA4) to GateQA -> Status: Done
 - Handled via `src/utils/analytics.js` for lightweight wrapper to cleanly capture SPA behavior logic.
