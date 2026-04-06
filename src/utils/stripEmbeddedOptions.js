@@ -49,6 +49,11 @@ const OPTION_LINE_RE =
 const OPTION_LIST_RE =
     /<(ol|ul)\b[^>]*>\s*(?:<li\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-D]\)?[\.\):])\s*[\s\S]*?<\/li>\s*){2,4}<\/\1>/gi;
 
+// Matches alpha-style lists used by many scraped MCQ/MSQ options, even when
+// the list is nested inside a wrapping <div>.
+const ALPHA_OPTION_LIST_RE =
+    /<(ol|ul)\b[^>]*(?:list-style-type\s*:\s*(?:upper-alpha|lower-alpha)|\btype\s*=\s*["']?[Aa]["']?)[^>]*>\s*(?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5}<\/\1>/gi;
+
 // Matches a generic <ol> or <ul> list at the very end of the HTML that has
 // exactly 2 to 5 <li> elements. Scraped questions sometimes just use 
 // <ol style="list-style-type:upper-alpha"> with no visible "A." text.
@@ -71,6 +76,7 @@ export function stripEmbeddedOptions(html = "") {
     // 1. Strip full <ol>/<ul> blocks that are purely option lists 
     // (with explicit labels A./B., or trailing lists without labels)
     cleaned = cleaned.replace(OPTION_LIST_RE, "");
+    cleaned = cleaned.replace(ALPHA_OPTION_LIST_RE, "");
     cleaned = cleaned.replace(TRAILING_OPTION_LIST_RE, "");
 
     // 2. Strip individual <p>/<div>/<li> option blocks

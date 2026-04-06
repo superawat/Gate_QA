@@ -8,6 +8,12 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
 const DOCS_GENERATED_DIR = path.join(ROOT, "docs", "generated");
 const REVIEW_DIR = path.join(ROOT, "artifacts", "review");
+const PRECOMPUTED_SUBTOPIC_LOOKUP_PATH = path.join(
+  ROOT,
+  "src",
+  "generated",
+  "subtopicLookup.json"
+);
 
 const QUESTION_BANK_CANDIDATES = [
   path.join(PUBLIC_DIR, "questions-with-answers.json"),
@@ -27,6 +33,7 @@ const UNSUPPORTED_QUESTION_UIDS_PATH = path.join(
   "answers",
   "unsupported_question_uids_v1.json"
 );
+const MOCK_CATALOG_PATH = path.join(PUBLIC_DIR, "mock_catalog_v1.json");
 const PIPELINE_STATE_PATH = path.join(ROOT, "pipeline-state.json");
 const VALIDATION_REPORT_DIR = path.join(ROOT, "audit");
 const DATA_INTEGRITY_REPORT_PATH = path.join(
@@ -94,6 +101,22 @@ const SUBJECTS = [
     ],
   },
   {
+    slug: "legacy-other",
+    label: "Legacy / Other",
+    aliases: [
+      "legacy-other",
+      "legacy-out-of-syllabus",
+      "web-technologies",
+      "html",
+      "is&software-engineering",
+      "is-software-engineering",
+      "software-engineering",
+      "object-oriented-programming",
+      "fortran",
+      "pascal",
+    ],
+  },
+  {
     slug: "os",
     label: "Operating System",
     aliases: ["operating-system", "os"],
@@ -115,12 +138,28 @@ const SUBJECTS = [
   },
 ];
 
-const SUBJECT_TAG_LOOKUP = new Map();
-for (const subject of SUBJECTS) {
-  for (const alias of subject.aliases) {
-    SUBJECT_TAG_LOOKUP.set(alias, subject);
-  }
-}
+const SUBJECT_BY_LABEL = new Map(
+  SUBJECTS.map((subject) => [subject.label, subject])
+);
+const SUBJECT_PRIORITY = [
+  "Digital Logic",
+  "Computer Networks",
+  "Operating System",
+  "Databases",
+  "Compiler Design",
+  "CO & Architecture",
+  "Algorithms",
+  "Programming and DS",
+  "Theory of Computation",
+  "Programming in C",
+  "Discrete Mathematics",
+  "Engineering Mathematics",
+  "General Aptitude",
+];
+const PRECOMPUTED_SUBTOPIC_LOOKUP = readJson(PRECOMPUTED_SUBTOPIC_LOOKUP_PATH, {});
+const SUBJECT_ALIASES_BY_LABEL = PRECOMPUTED_SUBTOPIC_LOOKUP?.subjectAliases || {};
+const NORMALIZED_SUBTOPICS_BY_SUBJECT =
+  PRECOMPUTED_SUBTOPIC_LOOKUP?.normalizedSubtopicsBySubject || {};
 
 function ensureDir(targetDir) {
   fs.mkdirSync(targetDir, { recursive: true });
@@ -190,6 +229,13 @@ function normalizeToken(value = "") {
     .toLowerCase();
 }
 
+function normalizeSubjectInferenceToken(value = "") {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
 function slugify(value = "") {
   return String(value || "")
     .trim()
@@ -215,6 +261,49 @@ function stripHtmlToText(html = "") {
     .trim();
 }
 
+const OPTION_BLOCK_RE =
+  /<(p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-D]\)?[\.\):])\s*[\s\S]*?<\/\1>/gi;
+const OPTION_LINE_RE =
+  /(?:^|\n|<br\s*\/?>)\s*(?:\(?[A-D]\)?[\.\):])\s+[^\n<]+(?=\s*(?:<br\s*\/?>|\n|$))/gi;
+const OPTION_LIST_RE =
+  /<(ol|ul)\b[^>]*>\s*(?:<li\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-D]\)?[\.\):])\s*[\s\S]*?<\/li>\s*){2,4}<\/\1>/gi;
+const ALPHA_OPTION_LIST_RE =
+  /<(ol|ul)\b[^>]*(?:list-style-type\s*:\s*(?:upper-alpha|lower-alpha)|\btype\s*=\s*["']?[Aa]["']?)[^>]*>\s*(?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5}<\/\1>/gi;
+const TRAILING_OPTION_LIST_RE =
+  /<(ol|ul)\b[^>]*>\s*(?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5}<\/\1>\s*(?:<br\s*\/?>|\s)*$/gi;
+const ALPHA_OPTION_LIST_TEST_RE =
+  /<(ol|ul)\b[^>]*(?:list-style-type\s*:\s*(?:upper-alpha|lower-alpha)|\btype\s*=\s*["']?[Aa]["']?)[^>]*>\s*(?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5}<\/\1>/i;
+const LABELED_OPTION_BLOCK_TEST_RE =
+  /<(?:p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-D]\)?[\.\):])/i;
+
+function stripEmbeddedOptionsFromHtml(html = "") {
+  return String(html || "")
+    .replace(OPTION_LIST_RE, "")
+    .replace(ALPHA_OPTION_LIST_RE, "")
+    .replace(TRAILING_OPTION_LIST_RE, "")
+    .replace(OPTION_BLOCK_RE, "")
+    .replace(OPTION_LINE_RE, "")
+    .replace(/(<br\s*\/?>|\s)+$/i, "")
+    .trim();
+}
+
+function buildPreviewSourceHtml(question = {}) {
+  const questionHtml = String(question?.question || "");
+  const typeToken = String(question?.type || "").trim().toLowerCase();
+  const shouldStripOptions =
+    typeToken === "mcq"
+    || typeToken === "msq"
+    || ALPHA_OPTION_LIST_TEST_RE.test(questionHtml)
+    || LABELED_OPTION_BLOCK_TEST_RE.test(questionHtml);
+
+  if (!shouldStripOptions) {
+    return questionHtml;
+  }
+
+  const stripped = stripEmbeddedOptionsFromHtml(questionHtml);
+  return stripped || questionHtml;
+}
+
 function buildPreview(text = "", maxLength = 180) {
   const normalized = String(text || "").trim();
   if (!normalized) return "";
@@ -229,13 +318,15 @@ function getDetailShardKey(yearSet = null) {
 
 function parseYearSet(question = {}) {
   const candidates = [
-    String(question.year || ""),
     String(question.title || ""),
+    String(question.year || ""),
     String(question.link || ""),
   ];
 
   for (const candidate of candidates) {
-    const match = candidate.match(/(?:gate(?:cse|it|da)?[- ]?)(\d{4})(?:[- |]*set[- ]?(\d+))?/i);
+    const match = candidate.match(
+      /\bgate(?:\s+|-)?(?:cse|it|da)?(?:\s+|-)?(\d{4})(?:\s*(?:\||-|\s)\s*set\s*[- ]?(\d+))?/i
+    );
     if (!match) {
       continue;
     }
@@ -260,25 +351,348 @@ function parseYearSet(question = {}) {
   };
 }
 
-function inferSubject(question = {}, yearSet = null) {
-  const title = String(question.title || "");
-  if (/\|\s*GA\s*\|/i.test(title) || /Question:\s*GA-/i.test(title)) {
-    return SUBJECT_TAG_LOOKUP.get("ga");
-  }
+const MOCK_SECTION_COUNTS = {
+  GA: 10,
+  CS: 55,
+};
 
-  const normalizedTags = Array.isArray(question.tags)
-    ? question.tags.map((tag) => normalizeToken(tag))
-    : [];
+const MOCK_OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
 
-  for (const tag of normalizedTags) {
-    const subject = SUBJECT_TAG_LOOKUP.get(tag);
-    if (subject) {
-      return subject;
+function parseMockSectionPosition(question = {}) {
+  const title = String(question.title || "").trim();
+
+  const gaPatterns = [
+    /\|\s*GA\s*\|[\s\S]*?\bQuestion:\s*(?:GA[- ]?)?0*(\d+)\b/i,
+    /\|\s*GA\s*Question:\s*0*(\d+)\b/i,
+    /\bQuestion:\s*GA[- ]?0*(\d+)\b/i,
+  ];
+
+  for (const pattern of gaPatterns) {
+    const gaMatch = title.match(pattern);
+    if (!gaMatch) {
+      continue;
+    }
+
+    const orderIndex = Number.parseInt(gaMatch[1], 10);
+    if (Number.isFinite(orderIndex) && orderIndex > 0) {
+      return {
+        section: "GA",
+        orderIndex,
+      };
     }
   }
 
+  const csMatch = title.match(/\|\s*Question:\s*(\d+)\b/i);
+  if (csMatch) {
+    const orderIndex = Number.parseInt(csMatch[1], 10);
+    if (Number.isFinite(orderIndex) && orderIndex > 0) {
+      const yearSet = parseYearSet(question);
+      if (yearSet.set == null && yearSet.year >= 2010 && yearSet.year <= 2013) {
+        if (orderIndex >= 56 && orderIndex <= 65) {
+          return {
+            section: "GA",
+            orderIndex: orderIndex - 55,
+          };
+        }
+
+        if (orderIndex >= 1 && orderIndex <= MOCK_SECTION_COUNTS.CS) {
+          return {
+            section: "CS",
+            orderIndex,
+          };
+        }
+      }
+
+      return {
+        section: "CS",
+        orderIndex,
+      };
+    }
+  }
+
+  return null;
+}
+
+function resolveMockMarks(section, orderIndex) {
+  if (section === "GA" && orderIndex >= 1 && orderIndex <= MOCK_SECTION_COUNTS.GA) {
+    return orderIndex <= 5 ? 1 : 2;
+  }
+
+  if (section === "CS" && orderIndex >= 1 && orderIndex <= MOCK_SECTION_COUNTS.CS) {
+    return orderIndex <= 25 ? 1 : 2;
+  }
+
+  return null;
+}
+
+function resolveNegativeMarks(type, marks) {
+  if (type !== "MCQ") {
+    return 0;
+  }
+  if (marks === 1) {
+    return 0.3333333333;
+  }
+  return 0.6666666667;
+}
+
+function hasCompletePaperSection(positionSet = new Set(), expectedCount = 0) {
+  if (!(positionSet instanceof Set) || positionSet.size !== expectedCount) {
+    return false;
+  }
+
+  for (let index = 1; index <= expectedCount; index += 1) {
+    if (!positionSet.has(index)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
+  const byQuestionUid = {};
+  const paperGroups = new Map();
+
+  questions.forEach((question) => {
+    const questionUid = buildQuestionUid(question);
+    const yearSet = parseYearSet(question);
+    const paperPosition = parseMockSectionPosition(question);
+
+    if (!yearSet.key || !paperPosition) {
+      return;
+    }
+
+    const answerRecord = answersByQuestionUid[questionUid] || null;
+    const answerType = String(answerRecord?.type || "").trim().toUpperCase();
+    const type = MOCK_OBJECTIVE_TYPES.has(answerType) ? answerType : null;
+    const marks = resolveMockMarks(paperPosition.section, paperPosition.orderIndex);
+    const negativeMarks = type && marks ? resolveNegativeMarks(type, marks) : null;
+    const scorable = Boolean(type && marks !== null);
+
+    const meta = {
+      questionUid,
+      yearSetKey: yearSet.key,
+      orderIndex: paperPosition.orderIndex,
+      section: paperPosition.section,
+      type,
+      marks,
+      negativeMarks,
+      paperReady: false,
+      scorable,
+    };
+
+    byQuestionUid[questionUid] = meta;
+
+    if (!paperGroups.has(yearSet.key)) {
+      paperGroups.set(yearSet.key, {
+        yearSetKey: yearSet.key,
+        year: yearSet.year,
+        set: yearSet.set,
+        label: yearSet.label,
+        gaPositions: new Set(),
+        csPositions: new Set(),
+        questionUids: [],
+        hasDuplicatePosition: false,
+        scorableCandidateCount: 0,
+      });
+    }
+
+    const group = paperGroups.get(yearSet.key);
+    const positionSet = paperPosition.section === "GA" ? group.gaPositions : group.csPositions;
+    if (positionSet.has(paperPosition.orderIndex)) {
+      group.hasDuplicatePosition = true;
+    }
+    positionSet.add(paperPosition.orderIndex);
+    group.questionUids.push(questionUid);
+
+      if (scorable) {
+        group.scorableCandidateCount += 1;
+      }
+  });
+
+  const papers = Array.from(paperGroups.values())
+    .map((group) => {
+      const gaCount = group.gaPositions.size;
+      const csCount = group.csPositions.size;
+      const paperReady =
+        !group.hasDuplicatePosition
+        && group.questionUids.length === MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS
+        && hasCompletePaperSection(group.gaPositions, MOCK_SECTION_COUNTS.GA)
+        && hasCompletePaperSection(group.csPositions, MOCK_SECTION_COUNTS.CS)
+        && group.scorableCandidateCount === MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
+
+      group.questionUids.forEach((questionUid) => {
+        if (byQuestionUid[questionUid]) {
+          byQuestionUid[questionUid].paperReady = paperReady;
+        }
+      });
+
+      return {
+        yearSetKey: group.yearSetKey,
+        year: group.year,
+        set: group.set,
+        label: group.label,
+        paperReady,
+        gaCount,
+        csCount,
+      };
+    })
+    .sort((left, right) => {
+      if (left.year !== right.year) {
+        return (right.year || 0) - (left.year || 0);
+      }
+      return (right.set || 0) - (left.set || 0);
+    });
+
+  const scorableQuestionUids = Object.values(byQuestionUid)
+    .filter((meta) => meta.scorable)
+    .sort((left, right) => {
+      const paperCompare = String(left.yearSetKey || "").localeCompare(
+        String(right.yearSetKey || ""),
+        undefined,
+        { numeric: true, sensitivity: "base" }
+      );
+      if (paperCompare !== 0) {
+        return paperCompare;
+      }
+      if (left.section !== right.section) {
+        return left.section === "GA" ? -1 : 1;
+      }
+      return left.orderIndex - right.orderIndex;
+    })
+    .map((meta) => meta.questionUid);
+
+  return {
+    version: "v1",
+    papers,
+    byQuestionUid,
+    scorableQuestionUids,
+  };
+}
+
+function inferSubject(question = {}, yearSet = null) {
+  const title = String(question.title || "");
+  if (/\|\s*GA\s*\|/i.test(title) || /Question:\s*GA-/i.test(title)) {
+    return SUBJECT_BY_LABEL.get("General Aptitude");
+  }
+
+  const normalizedTags = Array.isArray(question.tags)
+    ? question.tags.map((tag) => normalizeSubjectInferenceToken(tag)).filter(Boolean)
+    : [];
+  const normalizedTagSet = new Set(normalizedTags);
+  const firstTagIndex = new Map();
+
+  normalizedTags.forEach((tag, index) => {
+    if (!firstTagIndex.has(tag)) {
+      firstTagIndex.set(tag, index);
+    }
+  });
+
   if (yearSet?.year && /general aptitude/i.test(title)) {
-    return SUBJECT_TAG_LOOKUP.get("ga");
+    return SUBJECT_BY_LABEL.get("General Aptitude");
+  }
+
+  if (
+    normalizedTagSet.has("generalaptitude")
+    || normalizedTagSet.has("quantitativeaptitude")
+    || normalizedTagSet.has("verbalaptitude")
+    || normalizedTagSet.has("analyticalaptitude")
+  ) {
+    return SUBJECT_BY_LABEL.get("General Aptitude");
+  }
+
+  const explicitCandidates = new Set();
+  const subjectStats = new Map();
+
+  SUBJECTS.forEach((subject) => {
+    const aliases = SUBJECT_ALIASES_BY_LABEL[subject.label] || subject.aliases.map(normalizeSubjectInferenceToken);
+    const normalizedSubtopics = NORMALIZED_SUBTOPICS_BY_SUBJECT[subject.label] || [];
+
+    let explicitIndex = Number.MAX_SAFE_INTEGER;
+    aliases.forEach((alias) => {
+      if (!normalizedTagSet.has(alias)) {
+        return;
+      }
+      const index = firstTagIndex.get(alias);
+      if (index !== undefined && index < explicitIndex) {
+        explicitIndex = index;
+      }
+    });
+
+    let subtopicCount = 0;
+    let firstSubtopicIndex = Number.MAX_SAFE_INTEGER;
+    normalizedSubtopics.forEach((subtopic) => {
+      if (!normalizedTagSet.has(subtopic)) {
+        return;
+      }
+      subtopicCount += 1;
+      const index = firstTagIndex.get(subtopic);
+      if (index !== undefined && index < firstSubtopicIndex) {
+        firstSubtopicIndex = index;
+      }
+    });
+
+    if (explicitIndex !== Number.MAX_SAFE_INTEGER || subtopicCount > 0) {
+      subjectStats.set(subject.label, {
+        explicitIndex,
+        subtopicCount,
+        firstSubtopicIndex,
+      });
+    }
+
+    if (explicitIndex !== Number.MAX_SAFE_INTEGER) {
+      explicitCandidates.add(subject.label);
+    }
+  });
+
+  if (explicitCandidates.size === 1) {
+    return SUBJECT_BY_LABEL.get(Array.from(explicitCandidates)[0]);
+  }
+
+  if (explicitCandidates.size > 1) {
+    const ranked = Array.from(explicitCandidates).sort((left, right) => {
+      const leftStats = subjectStats.get(left);
+      const rightStats = subjectStats.get(right);
+
+      if (leftStats.explicitIndex !== rightStats.explicitIndex) {
+        return leftStats.explicitIndex - rightStats.explicitIndex;
+      }
+
+      if (leftStats.subtopicCount !== rightStats.subtopicCount) {
+        return rightStats.subtopicCount - leftStats.subtopicCount;
+      }
+
+      if (leftStats.firstSubtopicIndex !== rightStats.firstSubtopicIndex) {
+        return leftStats.firstSubtopicIndex - rightStats.firstSubtopicIndex;
+      }
+
+      return SUBJECT_PRIORITY.indexOf(left) - SUBJECT_PRIORITY.indexOf(right);
+    });
+
+    return SUBJECT_BY_LABEL.get(ranked[0]);
+  }
+
+  if (subjectStats.size === 1) {
+    return SUBJECT_BY_LABEL.get(Array.from(subjectStats.keys())[0]);
+  }
+
+  if (subjectStats.size > 1) {
+    const ranked = Array.from(subjectStats.entries()).sort((left, right) => {
+      const [leftLabel, leftStats] = left;
+      const [rightLabel, rightStats] = right;
+
+      if (leftStats.subtopicCount !== rightStats.subtopicCount) {
+        return rightStats.subtopicCount - leftStats.subtopicCount;
+      }
+
+      if (leftStats.firstSubtopicIndex !== rightStats.firstSubtopicIndex) {
+        return leftStats.firstSubtopicIndex - rightStats.firstSubtopicIndex;
+      }
+
+      return SUBJECT_PRIORITY.indexOf(leftLabel) - SUBJECT_PRIORITY.indexOf(rightLabel);
+    });
+
+    return SUBJECT_BY_LABEL.get(ranked[0][0]);
   }
 
   return {
@@ -345,7 +759,8 @@ function buildArtifacts() {
 
     const yearSet = parseYearSet(question);
     const subject = inferSubject(question, yearSet);
-    const plainText = stripHtmlToText(question.question || "");
+    const previewSourceHtml = buildPreviewSourceHtml(question);
+    const plainText = stripHtmlToText(previewSourceHtml);
     const preview = buildPreview(plainText);
     const normalizedTags = Array.isArray(question.tags)
       ? question.tags.map((tag) => String(tag || "").trim()).filter(Boolean)
@@ -499,6 +914,10 @@ function buildArtifacts() {
       String(pipelineState?.lastRunAt || "").trim() ||
       generatedAt,
   };
+  const mockCatalog = {
+    generatedAt,
+    ...buildMockCatalog(questions, answersByQuestionUid),
+  };
 
   const dataStatusJson = {
     generatedAt,
@@ -544,6 +963,7 @@ function buildArtifacts() {
   ensureDir(DETAIL_SHARDS_DIR);
 
   writeJson(path.join(PUBLIC_DIR, "question-bank-manifest.json"), manifest);
+  writeJson(MOCK_CATALOG_PATH, mockCatalog);
   writeJson(path.join(PUBLIC_DIR, "question-search-index.json"), searchIndex);
   for (const [detailShardKey, payload] of detailShards.entries()) {
     writeJson(path.join(DETAIL_SHARDS_DIR, `${detailShardKey}.json`), payload);
@@ -553,7 +973,7 @@ function buildArtifacts() {
   writeJson(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
 
   console.log(
-    `[build-public-artifacts] Generated manifest, search index, and ${detailShards.size} detail shards for ${publicQuestionCount} questions`
+    `[build-public-artifacts] Generated manifest, mock catalog, search index, and ${detailShards.size} detail shards for ${publicQuestionCount} questions`
   );
 }
 

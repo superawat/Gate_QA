@@ -72,6 +72,12 @@ const TOPIC_HIERARCHY = {
         'Prepositions', 'Pronouns', 'Sentence Ordering', 'Statement Sufficiency', 'Statements Follow',
         'Synonyms', 'Tenses', 'Verbal Reasoning', 'Word Meaning', 'Word Pairs'
     ],
+    'Legacy / Other': [
+        'Web Technologies', 'HTML', 'Software Engineering', 'Cyclomatic Complexity',
+        'Software Testing', 'COCOMO Model', 'Project Cost', 'Software Requirement Specification',
+        'Test Cases', 'Data Flow Diagram', 'Function Point Metric', 'Object Oriented Programming',
+        'Fortran', 'Pascal'
+    ],
     Algorithms: [
         'Algorithm Design', 'Algorithm Design Technique', 'Asymptotic Notation', 'Asymptotic Notations',
         'Bellman Ford', 'Binary Search', 'Bitonic Array', 'Depth First Search', 'Dijkstras Algorithm',
@@ -150,13 +156,41 @@ const SUBJECT_ALIAS_OVERRIDES = {
     'Compiler Design': ['compiler-design'],
     'Computer Networks': ['computer-networks', 'cn'],
     Databases: ['databases', 'dbms', 'database-management-systems'],
-    'Digital Logic': ['digital-logic'],
-    'Discrete Mathematics': ['discrete-mathematics', 'discrete-math'],
-    'Engineering Mathematics': ['engineering-mathematics', 'engg-math'],
+    'Digital Logic': ['digital-logic', 'integrated-circuits'],
+    'Discrete Mathematics': [
+        'discrete-mathematics',
+        'discrete-math',
+        'graph-theory',
+        'mathematical-logic',
+        'set-theory-and-algebra',
+        'set-theory&algebra',
+        'equivalence-class'
+    ],
+    'Engineering Mathematics': [
+        'engineering-mathematics',
+        'engg-math',
+        'linear-algebra',
+        'numerical-methods',
+        'newton-raphson',
+        'simpsons-rule',
+        'simplex-method'
+    ],
     'General Aptitude': ['general-aptitude', 'ga'],
+    'Legacy / Other': [
+        'legacy-other',
+        'legacy-out-of-syllabus',
+        'web-technologies',
+        'html',
+        'is&software-engineering',
+        'is-software-engineering',
+        'software-engineering',
+        'object-oriented-programming',
+        'fortran',
+        'pascal'
+    ],
     'Operating System': ['operating-system', 'os'],
-    'Programming and DS': ['programming-and-ds', 'programming-ds', 'prog-ds'],
-    'Programming in C': ['programming-in-c', 'c-programming', 'prog-c'],
+    'Programming and DS': ['programming-and-ds', 'programming-ds', 'prog-ds', 'data-structures', 'tree-traversal'],
+    'Programming in C': ['programming-in-c', 'c-programming', 'prog-c', 'programming'],
     'Theory of Computation': ['theory-of-computation', 'toc']
 };
 
