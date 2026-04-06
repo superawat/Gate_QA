@@ -3,57 +3,50 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L9J7GVZ63S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-L9J7GVZ63S');
-  </script>
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [
-          ["$", "$"],
-          ["\\(", "\\)"],
-        ],
-        processEscapes: true,
-      },
-      svg: {
-        fontCache: "global",
-        linebreaks: { automatic: true },
-      },
-    };
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Solve any and every GATE CSE PYQ (previous year question) anywhere anytime!" />
-  <title>Gate_QA</title>
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Practice GATE CSE previous-year questions with a dedicated Home, Explore, and Solve flow." />
+  <title>GateQA</title>
   <link rel="icon" type="image/png" href="./logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     pre {
       overflow: auto;
     }
   </style>
-  <script type="module" crossorigin src="/Gate_QA/assets/index-BFHsrghr.js"></script>
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-react-ChzoVYDr.js">
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-misc-CObmxhJx.js">
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-ui-DoGtXyQp.js">
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-mathjax-DI0vt5gz.js">
+
+  <script>
+    (function (location) {
+      if (location.search[1] !== "/") {
+        return;
+      }
+
+      var decoded = location.search
+        .slice(1)
+        .split("&")
+        .map(function (segment) {
+          return segment.replace(/~and~/g, "&");
+        })
+        .join("?");
+
+      window.history.replaceState(
+        null,
+        "",
+        location.pathname.slice(0, -1) + decoded + location.hash
+      );
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/Gate_QA/assets/index-DLSQXeLr.js"></script>
+  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-react-CSbKAafd.js">
+  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-misc-BaMi5vLu.js">
+  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-ui-DqeFZDyf.js">
   <link rel="stylesheet" crossorigin href="/Gate_QA/assets/vendor-ui-CwBLJBHs.css">
-  <link rel="stylesheet" crossorigin href="/Gate_QA/assets/index-Dc3vP3uK.css">
+  <link rel="stylesheet" crossorigin href="/Gate_QA/assets/index-CMPl4LKN.css">
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <script data-goatcounter="https://superawat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

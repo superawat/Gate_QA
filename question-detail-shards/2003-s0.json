@@ -1,0 +1,1913 @@
+{
+  "generatedAt": "2026-04-06T11:23:17.148Z",
+  "shardKey": "2003-s0",
+  "yearSetKey": "2003-s0",
+  "year": 2003,
+  "set": null,
+  "label": "2003",
+  "questionCount": 90,
+  "recordsByQuestionUid": {
+    "go:892": {
+      "title": "GATE CSE 2003 | Question: 1",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/892/gate-cse-2003-question-1",
+      "question": "<p>Consider the following $C$ function.</p>\n<p>For large values of $y$, the return value of the function $f$ best approximates</p>\n<pre class=\"prettyprint lang-c_cpp\">float f,(float x, int y) {\n    float p, s; int i;\n    for (s=1,p=1,i=1; i&lt;y; i++) {\n        p *= x/i;\n        s += p;\n    }\n    return s;\n}\n\n</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$x^y$</li>\n<li>$e^x$</li>\n<li>$\\text{ln} (1+x)$</li>\n<li>$x^x$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "identify-function",
+        "normal"
+      ],
+      "question_uid": "go:892",
+      "exam_uid": "cse:2003:set1:main:q1",
+      "answer_uid": "v2:1.18.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:893": {
+      "title": "GATE CSE 2003 | Question: 2",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/893/gate-cse-2003-question-2",
+      "question": "<p>Assume the following C variable declaration:</p>\n<pre class=\"prettyprint lang-c_cpp\">int *A[10], B[10][10];</pre>\n<p>Of the following expressions:</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>$A[2]$</li>\n<li>$A[2][3]$</li>\n<li>$B[1]$</li>\n<li>$B[2][3]$</li>\n</ol>\n<p>which will not give compile-time errors if used as left hand sides of assignment statements in a C program?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I, II, and IV only</li>\n<li>II, III, and IV only</li>\n<li>II and IV only</li>\n<li>IV only</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "programming",
+        "programming-in-c",
+        "easy",
+        "pointers"
+      ],
+      "question_uid": "go:893",
+      "exam_uid": "cse:2003:set1:main:q2",
+      "answer_uid": "v2:9.9.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:894": {
+      "title": "GATE CSE 2003 | Question: 3",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/894/gate-cse-2003-question-3",
+      "question": "<p>Let $P(E)$ denote the probability of the event $E$. Given $P(A) = 1$, $P(B) =\\dfrac{1}{2}$, the values of $P(A\\mid B)$ and $P(B\\mid A)$ respectively are</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left(\\dfrac{1}{4}\\right),\\left(\\dfrac{1}{2}\\right)$</li>\n<li>$\\left(\\dfrac{1}{2}\\right),\\left(\\dfrac{1}{4}\\right)$</li>\n<li>$\\left(\\dfrac{1}{2}\\right),{1}$</li>\n<li>  ${1},\\left(\\dfrac{1}{2}\\right)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "probability",
+        "easy",
+        "conditional-probability"
+      ],
+      "question_uid": "go:894",
+      "exam_uid": "cse:2003:set1:main:q3",
+      "answer_uid": "v1:7.5.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:895": {
+      "title": "GATE CSE 2003 | Question: 4",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/895/gate-cse-2003-question-4",
+      "question": "<p>Let $A$ be a sequence of $8$ distinct integers sorted in ascending order. How many distinct pairs of sequences, $B$ and $C$ are there such that</p>\n<ol style=\"list-style-type:lower-roman\">\n<li>each is sorted in ascending order,</li>\n<li>$B$ has $5$ and $C$ has $3$ elements, and</li>\n<li>the result of merging $B$ and $C$ gives $A$</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$30$</li>\n<li>$56$</li>\n<li>$256$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "combinatory",
+        "normal"
+      ],
+      "question_uid": "go:895",
+      "exam_uid": "cse:2003:set1:main:q4",
+      "answer_uid": "v1:1.2.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:896": {
+      "title": "GATE CSE 2003 | Question: 5",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/896/gate-cse-2003-question-5",
+      "question": "<p>$n$ couples are invited to a party with the condition that every husband should be accompanied by his wife. However, a wife need not be accompanied by her husband. The number of different gatherings possible at the party is</p>\n<ol class=\"shrink-inline-options\" style=\"list-style-type:upper-alpha\">\n<li>\\(^{2n}\\mathrm{C}_n\\times 2^n\\)</li>\n<li>\\(3^n\\)</li>\n<li>\\(\\frac{(2n)!}{2^n}\\)</li>\n<li>\\(^{2n}\\mathrm{C}_n\\)</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "combinatory",
+        "normal"
+      ],
+      "question_uid": "go:896",
+      "exam_uid": "cse:2003:set1:main:q5",
+      "answer_uid": "v1:1.2.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:897": {
+      "title": "GATE CSE 2003 | Question: 6",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/897/gate-cse-2003-question-6",
+      "question": "<p>Let $T(n)$ be the number of different binary search trees on $n$ distinct elements.</p>\n<p>Then $T(n) = \\sum_{k=1}^{n} T(k-1)T(x)$, where $x$ is </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$n-k+1$</li>\n<li>$n-k$</li>\n<li>$n-k-1$</li>\n<li>$n-k-2$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "normal",
+        "binary-search-tree"
+      ],
+      "question_uid": "go:897",
+      "exam_uid": "cse:2003:set1:main:q6",
+      "answer_uid": "v2:8.4.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:898": {
+      "title": "GATE CSE 2003 | Question: 7",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/898/gate-cse-2003-question-7",
+      "question": "<p>Consider the set $\\Sigma^*$ of all strings over the alphabet $\\Sigma = \\{0, 1\\}$. $\\Sigma^*$ with the concatenation operator for strings</p>\n<ol start=\"1\" style=\"list-style-type: upper-alpha;\">\n<li>does not form a group</li>\n<li>forms a non-commutative group</li>\n<li>does not have a right identity element</li>\n<li>forms a group if the empty string is removed from $\\Sigma^*$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "set-theory&algebra",
+        "group-theory",
+        "normal"
+      ],
+      "question_uid": "go:898",
+      "exam_uid": "cse:2003:set1:main:q7",
+      "answer_uid": "v1:4.4.15",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:899": {
+      "title": "GATE CSE 2003 | Question: 8, ISRO2009-53",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/899/gate-cse-2003-question-8-isro2009-53",
+      "question": "<p>Let $\\text{G}$ be an arbitrary graph with $n$ nodes and $k$ components. If a vertex is removed from $\\text{G}$, the number of components in the resultant graph must necessarily lie down between</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$k$ and $n$</li>\n<li>$k-1$ and $k+1$</li>\n<li>$k-1$ and $n-1$</li>\n<li>$k+1$ and $n-k$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "graph-theory",
+        "graph-connectivity",
+        "normal",
+        "isro2009"
+      ],
+      "question_uid": "go:899",
+      "exam_uid": "cse:2003:set1:main:q8-isro2009-53",
+      "answer_uid": "v1:2.4.14",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:900": {
+      "title": "GATE CSE 2003 | Question: 9",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/900/gate-cse-2003-question-9",
+      "question": "<p>Assuming all numbers are in $2’s$ complement representation, which of the following numbers is divisible by $11111011$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$11100111$</p>\n</li>\n<li>\n<p>$11100100$</p>\n</li>\n<li>\n<p>$11010111$</p>\n</li>\n<li>\n<p>$11011011$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "number-representation",
+        "normal"
+      ],
+      "question_uid": "go:900",
+      "exam_uid": "cse:2003:set1:main:q9",
+      "answer_uid": "v2:6.24.23",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:901": {
+      "title": "GATE CSE 2003 | Question: 10, ISRO-DEC2017-41",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/901/gate-cse-2003-question-10-isro-dec2017-41",
+      "question": "<p>For a pipelined CPU with a single ALU, consider the following situations</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>The ${j+1}^{st}$ instruction uses the result of the $j^{th}$ instruction as an operand</p>\n</li>\n<li>\n<p>The execution of a conditional jump instruction</p>\n</li>\n<li>\n<p>The $j^{th}$ and ${j+1}^{st}$ instructions require the ALU at the same time.</p>\n</li>\n</ol>\n<p>Which of the above can cause a hazard</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I and II only</li>\n<li>II and III only</li>\n<li>III only</li>\n<li>All the three</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "co-and-architecture",
+        "pipelining",
+        "normal",
+        "isrodec2017"
+      ],
+      "question_uid": "go:901",
+      "exam_uid": "cse:2003:set1:main:q10-isro-dec2017-41",
+      "answer_uid": "manual:go:901",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:902": {
+      "title": "GATE CSE 2003 | Question: 11",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/902/gate-cse-2003-question-11",
+      "question": "<p>Consider an array multiplier for multiplying two $n$ bit numbers. If each gate in the circuit has a unit delay, the total delay of the multiplier is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\Theta(1)$</li>\n<li>$\\Theta(\\log n)$</li>\n<li>$\\Theta(n)$</li>\n<li>$\\Theta(n^2)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "normal",
+        "array-multiplier"
+      ],
+      "question_uid": "go:902",
+      "exam_uid": "cse:2003:set1:main:q11",
+      "answer_uid": "v2:6.2.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:903": {
+      "title": "GATE CSE 2003 | Question: 12",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/903/gate-cse-2003-question-12",
+      "question": "<a name=\"903\"></a><div itemprop=\"text\"><p>Ram and Shyam have been asked to show that a certain problem $\\Pi$ is $\\text{NP-complete}.$ Ram shows a polynomial time reduction from the $\\text{3-SAT}$ problem to $\\Pi$, and Shyam shows a polynomial time reduction from $\\Pi$ to $\\text{3-SAT.}$ Which of the following can be inferred from these reductions?</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>\n\t<p>$\\Pi$ is NP-hard but not NP-complete</p>\n\t</li>\n\t<li>\n\t<p>$\\Pi$ is in NP, but is not NP-complete</p>\n\t</li>\n\t<li>\n\t<p>$\\Pi$ is NP-complete</p>\n\t</li>\n\t<li>\n\t<p>$\\Pi$ is neither NP-hard, nor in NP</p>\n\t</li>\n</ol></div>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "p-np-npc-nph",
+        "normal",
+        "out-of-gatecse-syllabus",
+        "gatecse-2006",
+        "isrodec2017",
+        "gatecse-2008",
+        "gatecse-2004",
+        "easy",
+        "isro2017",
+        "gate1992",
+        "multiple-selects"
+      ],
+      "question_uid": "go:903",
+      "exam_uid": "cse:2003:set1:main:q12"
+    },
+    "go:904": {
+      "title": "GATE CSE 2003 | Question: 13",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/904/gate-cse-2003-question-13",
+      "question": "<p>Nobody knows yet if $P=NP$. Consider the language $L$ defined as follows.$$L = \\begin{cases} (0+1)^* &amp; \\text{ if } P = NP \\\\ \\phi &amp; otherwise \\end{cases} $$Which of the following statements is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$L$ is recursive</li>\n<li>$L$ is recursively enumerable but not recursive</li>\n<li>$L$ is not recursively enumerable</li>\n<li>Whether $L$ is recursively enumerable or not will be known after we find out if $P=NP$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "normal",
+        "recursive-and-recursively-enumerable-languages"
+      ],
+      "question_uid": "go:904",
+      "exam_uid": "cse:2003:set1:main:q13",
+      "answer_uid": "v2:10.15.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:905": {
+      "title": "GATE CSE 2003 | Question: 14",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/905/gate-cse-2003-question-14",
+      "question": "<p>The regular expression $0^*(10^*)^*$ denotes the same set as</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$(1^*0)^*1^*$</li>\n<li>$0+(0+10)^*$</li>\n<li>$(0+1)^*10(0+1)^*$</li>\n<li>None of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "regular-expression",
+        "easy"
+      ],
+      "question_uid": "go:905",
+      "exam_uid": "cse:2003:set1:main:q14",
+      "answer_uid": "manual:go:905",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:120": {
+      "title": "GATE CSE 2003 | Question: 15",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/120/gate-cse-2003-question-15",
+      "question": "<p>If the strings of a language $L$ can be effectively enumerated in lexicographic (i.e., alphabetic) order, which of the following statements is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$L$ is necessarily finite</li>\n<li>$L$ is regular but not necessarily finite</li>\n<li>$L$ is context free but not necessarily regular</li>\n<li>$L$ is recursive but not necessarily context-free</li>\n</ol>",
+      "tags": [
+        "theory-of-computation",
+        "gatecse-2003",
+        "normal",
+        "recursive-and-recursively-enumerable-languages"
+      ],
+      "question_uid": "go:120",
+      "exam_uid": "cse:2003:set1:main:q15",
+      "answer_uid": "v2:10.15.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:906": {
+      "title": "GATE CSE 2003 | Question: 16",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/906/gate-cse-2003-question-16",
+      "question": "<p>Which of the following suffices to convert an arbitrary CFG to an LL(1) grammar?</p>\n<ol style=\"list-style-type:upper-alpha\"><li>Removing left recursion alone</li>\n<li>Factoring the grammar alone</li>\n<li>Removing left recursion and factoring the grammar</li>\n<li>None of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "parsing",
+        "easy"
+      ],
+      "question_uid": "go:906",
+      "exam_uid": "cse:2003:set1:main:q16",
+      "answer_uid": "v2:3.17.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:907": {
+      "title": "GATE CSE 2003 | Question: 17",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/907/gate-cse-2003-question-17",
+      "question": "<p>Assume that the SLR parser for a grammar G has $n_1$ states and the LALR parser for G has $n_2$ states. The relationship between $n_1$ and $n_2$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$n_1$ is necessarily less than $n_2$</li>\n<li>$n_1$ is necessarily equal to $n_2$</li>\n<li>$n_1$ is necessarily greater than $n_2$</li>\n<li>None of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "parsing",
+        "easy"
+      ],
+      "question_uid": "go:907",
+      "exam_uid": "cse:2003:set1:main:q17",
+      "answer_uid": "v2:3.10.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:908": {
+      "title": "GATE CSE 2003 | Question: 18",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/908/gate-cse-2003-question-18",
+      "question": "<p>In a bottom-up evaluation of a syntax directed definition, inherited attributes can</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>always be evaluated</li>\n<li>be evaluated only if the definition is L-attributed</li>\n<li>be evaluated only if the definition has synthesized attributes</li>\n<li>never be evaluated</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "syntax-directed-translation",
+        "normal"
+      ],
+      "question_uid": "go:908",
+      "exam_uid": "cse:2003:set1:main:q18",
+      "answer_uid": "v2:3.22.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:909": {
+      "title": "GATE CSE 2003 | Question: 19, ISRO2009-24",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/909/gate-cse-2003-question-19-isro2009-24",
+      "question": "<p>Suppose the numbers $7, 5, 1, 8, 3, 6, 0, 9, 4, 2$ are inserted in that order into an initially empty binary search tree. The binary search tree uses the usual ordering on natural numbers. What is the in-order traversal sequence of the resultant tree?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$7 \\ 5  \\ 1 \\ 0 \\ 3 \\ 2 \\ 4 \\ 6 \\ 8 \\ 9$</p>\n</li>\n<li>\n<p>$0 \\ 2 \\ 4 \\ 3 \\ 1 \\ 6 \\ 5  \\ 9  \\ 8  \\ 7$</p>\n</li>\n<li>\n<p>$0 \\ 1 \\ 2 \\ 3 \\ 4 \\ 5 \\ 6 \\ 7 \\ 8 \\ 9$</p>\n</li>\n<li>\n<p>$9 \\ 8 \\ 6 \\ 4  \\ 2  \\ 3 \\ 0 \\ 1 \\ 5 \\ 7$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "binary-search-tree",
+        "easy",
+        "isro2009"
+      ],
+      "question_uid": "go:909",
+      "exam_uid": "cse:2003:set1:main:q19-isro2009-24",
+      "answer_uid": "v2:8.4.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:910": {
+      "title": "GATE CSE 2003 | Question: 20",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/910/gate-cse-2003-question-20",
+      "question": "<p>Consider the following three claims:</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>$(n+k)^m = \\Theta(n^m)$ where $k$ and $m$ are constants</li>\n<li>$2^{n+1} = O(2^n)$</li>\n<li>$2^{2n+1} = O(2^n)$</li>\n</ol>\n<p>Which of the following claims are correct?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I and II</li>\n<li>I and III</li>\n<li>II and III</li>\n<li>I, II, and III</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "asymptotic-notations",
+        "normal"
+      ],
+      "question_uid": "go:910",
+      "exam_uid": "cse:2003:set1:main:q20",
+      "answer_uid": "v2:1.4.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:911": {
+      "title": "GATE CSE 2003 | Question: 21",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/911/gate-cse-2003-question-21",
+      "question": "<p>Consider the following graph: </p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"262\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=8486370802175947015\" width=\"314\"/></p>\n<p>Among the following sequences:</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>abeghf</li>\n<li>abfehg</li>\n<li>abfhge</li>\n<li>afghbe</li>\n</ol>\n<p>Which are the depth-first traversals of the above graph?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I, II and IV only</li>\n<li>I and IV only</li>\n<li>II, III and IV only</li>\n<li>I, III and IV only</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "graph-algorithms",
+        "normal",
+        "graph-search"
+      ],
+      "question_uid": "go:911",
+      "exam_uid": "cse:2003:set1:main:q21",
+      "answer_uid": "v2:1.14.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:912": {
+      "title": "GATE CSE 2003 | Question: 22",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/912/gate-cse-2003-question-22",
+      "question": "<p>The usual $\\Theta(n^2)$ implementation of Insertion Sort to sort an array uses linear search to identify the position where an element is to be inserted into the already sorted part of the array. If, instead, we use binary search to identify the position, the worst case running time will</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>remain $\\Theta(n^2)$</li>\n<li>become $\\Theta(n  (\\log n)^2)$</li>\n<li>become $\\Theta(n \\log n)$</li>\n<li>become $\\Theta(n)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "sorting",
+        "time-complexity",
+        "normal"
+      ],
+      "question_uid": "go:912",
+      "exam_uid": "cse:2003:set1:main:q22",
+      "answer_uid": "v2:1.19.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1110": {
+      "title": "GATE CSE 2003 | Question: 23",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/1110/gate-cse-2003-question-23",
+      "question": "<p>In a min-heap with $n$ elements with the smallest element at the root, the $7^{th}$ smallest element can be found in time</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\Theta (n \\log n)$</li>\n<li>$\\Theta (n)$</li>\n<li>$\\Theta(\\log n)$</li>\n<li>$\\Theta(1)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "data-structures",
+        "heap"
+      ],
+      "question_uid": "go:1110",
+      "exam_uid": "cse:2003:set1:main:q23",
+      "answer_uid": "v2:8.3.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:914": {
+      "title": "GATE CSE 2003 | Question: 24",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/914/gate-cse-2003-question-24",
+      "question": "<p>Which of the following statements is FALSE?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>In statically typed languages, each variable in a program has a fixed type</li>\n<li>In un-typed languages, values do not have any types</li>\n<li>In dynamically typed languages, variables have no types</li>\n<li>In all statically typed languages, each variable in a program is associated with values of only a single type during the execution of the program</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "programming",
+        "normal",
+        "type-checking"
+      ],
+      "question_uid": "go:914",
+      "exam_uid": "cse:2003:set1:main:q24",
+      "answer_uid": "manual:go:914",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:915": {
+      "title": "GATE CSE 2003 | Question: 25, ISRO2009-12",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/915/gate-cse-2003-question-25-isro2009-12",
+      "question": "<p>Using a larger block size in a fixed block size file system leads to</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>better disk throughput but poorer disk space utilization</li>\n<li>better disk throughput and better disk space utilization</li>\n<li>poorer disk throughput but better disk space utilization</li>\n<li>poorer disk throughput and poorer disk space utilization</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "disk",
+        "normal",
+        "isro2009"
+      ],
+      "question_uid": "go:915",
+      "exam_uid": "cse:2003:set1:main:q25-isro2009-12",
+      "answer_uid": "v2:7.3.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:916": {
+      "title": "GATE CSE 2003 | Question: 26",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/916/gate-cse-2003-question-26",
+      "question": "<p>In a system with $\\text{32 bit}$ virtual addresses and $\\text{1 KB}$ page size, use of one-level page tables for virtual to physical address translation is not practical because of </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>the large amount of internal fragmentation</li>\n<li>the large amount of external fragmentation</li>\n<li>the large memory overhead in maintaining page tables</li>\n<li>the large computation overhead in the translation process</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "virtual-memory",
+        "normal"
+      ],
+      "question_uid": "go:916",
+      "exam_uid": "cse:2003:set1:main:q26",
+      "answer_uid": "manual:go:916",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:917": {
+      "title": "GATE CSE 2003 | Question: 27",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/917/gate-cse-2003-question-27",
+      "question": "<p>Which of the following assertions is FALSE about the Internet Protocol (IP)?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>It is possible for a computer to have multiple IP addresses</li>\n<li>IP packets from the same source to the same destination can take different routes in the network</li>\n<li>IP ensures that a packet is discarded if it is unable to reach its destination within a given number of hops</li>\n<li>The packet source cannot set the route of an outgoing packets; the route is determined only by the routing tables in the routers on the way</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "computer-networks",
+        "ip-addressing",
+        "normal"
+      ],
+      "question_uid": "go:917",
+      "exam_uid": "cse:2003:set1:main:q27",
+      "answer_uid": "v2:4.14.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:918": {
+      "title": "GATE CSE 2003 | Question: 28",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/918/gate-cse-2003-question-28",
+      "question": "<p>Which of the following functionality <em>must </em>be implemented by a transport protocol over and above the network protocol?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Recovery from packet losses</li>\n<li>Detection of duplicate packets</li>\n<li>Packet delivery in the correct order</li>\n<li>End to end connectivity</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "computer-networks",
+        "network-layering",
+        "easy"
+      ],
+      "question_uid": "go:918",
+      "exam_uid": "cse:2003:set1:main:q28",
+      "answer_uid": "v2:4.19.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:919": {
+      "title": "GATE CSE 2003 | Question: 29, ISRO2009-73",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/919/gate-cse-2003-question-29-isro2009-73",
+      "question": "<p>Which of the following scenarios may lead to an irrecoverable error in a database system?</p>\n<ol style=\"list-style-type:upper-alpha\"><li>A transaction writes a data item after it is read by an uncommitted transaction</li>\n<li>A transaction reads a data item after it is read by an uncommitted transaction</li>\n<li>A transaction reads a data item after it is written by a committed transaction</li>\n<li>A transaction reads a data item after it is written by an uncommitted transaction</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "databases",
+        "transaction-and-concurrency",
+        "easy",
+        "isro2009"
+      ],
+      "question_uid": "go:919",
+      "exam_uid": "cse:2003:set1:main:q29-isro2009-73",
+      "answer_uid": "v2:5.19.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:920": {
+      "title": "GATE CSE 2003 | Question: 30",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/920/gate-cse-2003-question-30",
+      "question": "<p>Consider the following SQL query</p>\n<p><strong>Select distinct </strong>$a_1, a_2, …, a_n$</p>\n<p><strong>from </strong>$r_1, r_2, …, r_m$</p>\n<p><strong>where </strong>P</p>\n<p>For an arbitrary predicate P, this query is equivalent to which of the following relational algebra expressions?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\Pi_{a_1, a_2, … a_n}  \\sigma_p \\left(r_1 \\times r_2 \\times \\dots \\times r_m\\right)$</p>\n</li>\n<li>\n<p>$\\Pi_{a_1, a_2, … a_n}  \\sigma_p \\left(r_1 \\bowtie r_2 \\bowtie \\dots \\bowtie r_m \\right)$</p>\n</li>\n<li>\n<p>$\\Pi_{a_1, a_2, … a_n}  \\sigma_p \\left(r_1 \\cup r_2 \\cup \\dots \\cup r_m \\right)$</p>\n</li>\n<li>\n<p>$\\Pi_{a_1, a_2, … a_n}  \\sigma_p \\left(r_1 \\cap r_2 \\cap \\dots \\cap r_m \\right)$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "databases",
+        "relational-algebra",
+        "normal"
+      ],
+      "question_uid": "go:920",
+      "exam_uid": "cse:2003:set1:main:q30",
+      "answer_uid": "manual:go:920",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:921": {
+      "title": "GATE CSE 2003 | Question: 31",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/921/gate-cse-2003-question-31",
+      "question": "<p>Let $(S, \\leq)$ be a partial order with two minimal elements a and b, and a maximum element c. Let P: S \\(\\to\\) {<strong>True, False</strong>} be a predicate defined on S. Suppose that P(a) = <strong>True</strong>, P(b) = <strong>False</strong> and P(x) \\(\\implies\\) P(y) for all $x, y \\in S$ satisfying $x \\leq y$, where $\\implies$ stands for logical implication. Which of the following statements CANNOT be true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>P(x) = <strong>True</strong> for all x \\(\\in\\) S such that x ≠ b</li>\n<li>P(x) = <strong>False</strong> for all x \\(\\in\\) S such that x ≠ a and x ≠ c</li>\n<li>P(x) = <strong>False</strong> for all x \\(\\in\\) S such that b ≤ x and x ≠ c</li>\n<li>P(x) = <strong>False</strong> for all x \\(\\in\\) S such that a ≤ x and b ≤ x</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "set-theory&algebra",
+        "partial-order",
+        "normal",
+        "propositional-logic"
+      ],
+      "question_uid": "go:921",
+      "exam_uid": "cse:2003:set1:main:q31",
+      "answer_uid": "manual:go:921",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:922": {
+      "title": "GATE CSE 2003 | Question: 32",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/922/gate-cse-2003-question-32",
+      "question": "<p>Which of the following is a valid first order formula? (Here \\(\\alpha\\) and \\(\\beta\\) are first order formulae with $x$ as their only free variable)</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$((∀x)[α] ⇒ (∀x)[β]) ⇒ (∀x)[α ⇒ β]$</li>\n<li>$(∀x)[α] ⇒ (∃x)[α ∧ β]$</li>\n<li>$((∀x)[α ∨ β] ⇒ (∃x)[α]) ⇒ (∀x)[α]$</li>\n<li>$(∀x)[α ⇒ β] ⇒ (((∀x)[α]) ⇒ (∀x)[β])$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "mathematical-logic",
+        "first-order-logic",
+        "normal"
+      ],
+      "question_uid": "go:922",
+      "exam_uid": "cse:2003:set1:main:q32",
+      "answer_uid": "v1:3.1.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:923": {
+      "title": "GATE CSE 2003 | Question: 33",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/923/gate-cse-2003-question-33",
+      "question": "<p>Consider the following formula and its two interpretations \\(I_1\\) and \\(I_2\\).<br/>\n<br/>\n\\(\\alpha: (\\forall x)\\left[P_x \\Leftrightarrow (\\forall y)\\left[Q_{xy} \\Leftrightarrow \\neg Q_{yy} \\right]\\right] \\Rightarrow (\\forall x)\\left[\\neg P_x\\right]\\)<br/>\n<br/>\n\\(I_1\\) : Domain: the set of natural numbers<br/>\n<br/>\n\\(P_x\\) =  '$x$ is a prime number'<br/>\n<br/>\n\\(Q_{xy}\\) = '$y$ divides $x$'<br/>\n<br/>\n\\(I_2\\) : same as \\(I_1\\) except that \\(P_x\\) = '$x$ is a composite number'.<br/>\n<br/>\nWhich of the following statements is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\\(I_1\\) satisfies \\(\\alpha\\), \\(I_2\\) does not</li>\n<li>\\(I_2\\) satisfies \\(\\alpha\\), \\(I_1\\) does not</li>\n<li>Neither \\(I_1\\) nor \\(I_2\\) satisfies \\(\\alpha\\)</li>\n<li>Both \\(I_1\\) and \\(I_2\\) satisfies \\(\\alpha\\)</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "mathematical-logic",
+        "difficult",
+        "first-order-logic"
+      ],
+      "question_uid": "go:923",
+      "exam_uid": "cse:2003:set1:main:q33",
+      "answer_uid": "v1:3.1.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:924": {
+      "title": "GATE CSE 2003 | Question: 34",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/924/gate-cse-2003-question-34",
+      "question": "<p>$m$ identical balls are to be placed in $n$ distinct bags. You are given that $m \\geq kn$, where $k$ is a natural number $\\geq 1$. In how many ways can the balls be placed in the bags if each bag must contain at least $k$ balls?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left( \\begin{array}{c} m - k \\\\ n - 1 \\end{array} \\right)$</li>\n<li>$\\left( \\begin{array}{c} m - kn + n - 1 \\\\ n - 1 \\end{array} \\right)$</li>\n<li>$\\left( \\begin{array}{c} m - 1 \\\\ n - k \\end{array} \\right)$</li>\n<li>$\\left( \\begin{array}{c} m - kn + n + k - 2 \\\\ n - k \\end{array} \\right)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "combinatory",
+        "balls-in-bins",
+        "normal"
+      ],
+      "question_uid": "go:924",
+      "exam_uid": "cse:2003:set1:main:q34",
+      "answer_uid": "v1:1.1.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:925": {
+      "title": "GATE CSE 2003 | Question: 35",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/925/gate-cse-2003-question-35",
+      "question": "<p>Consider the following recurrence relation</p>\n<p>$T(1)=1$</p>\n<p>$T(n+1) = T(n)+\\lfloor \\sqrt{n+1} \\rfloor$ for all $n \\geq 1$</p>\n<p>The value of $T(m^2)$ for $m \\geq 1$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\frac{m}{6}\\left(21m-39\\right)+4$</li>\n<li>$\\frac{m}{6}\\left(4m^2-3m+5\\right)$</li>\n<li>$\\frac{m}{2}\\left(3m^{2.5}-11m+20\\right)-5$</li>\n<li>$\\frac{m}{6}\\left(5m^3-34m^2+137m-104\\right)+\\frac{5}{6}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "time-complexity",
+        "recurrence-relation",
+        "difficult"
+      ],
+      "question_uid": "go:925",
+      "exam_uid": "cse:2003:set1:main:q35",
+      "answer_uid": "v2:1.27.16",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:926": {
+      "title": "GATE CSE 2003 | Question: 36",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/926/gate-cse-2003-question-36",
+      "question": "<p>How many perfect matching are there in a complete graph of $6$ vertices?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$15$</li>\n<li>$24$</li>\n<li>$30$</li>\n<li>$60$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "graph-theory",
+        "graph-matching",
+        "normal"
+      ],
+      "question_uid": "go:926",
+      "exam_uid": "cse:2003:set1:main:q36",
+      "answer_uid": "v1:2.6.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:927": {
+      "title": "GATE CSE 2003 | Question: 37",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/927/gate-cse-2003-question-37",
+      "question": "<p>Let \\(f : A \\to B\\) be an injective (one-to-one) function. Define \\(g : 2^A \\to 2^B\\) as:<br/>\n\\(g(C) = \\left \\{f(x) \\mid x \\in C\\right\\} \\), for all subsets $C$ of $A$.<br/>\nDefine \\(h : 2^B \\to 2^A\\) as: \\(h(D) = \\{x \\mid x \\in A, f(x) \\in D\\}\\), for all subsets $D$ of $B$. Which of the following statements is always true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\\(g(h(D)) \\subseteq D\\)</li>\n<li>\\(g(h(D)) \\supseteq D\\)</li>\n<li>\\(g(h(D)) \\cap D = \\phi\\)</li>\n<li>\\(g(h(D)) \\cap (B - D) \\ne \\phi\\)</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "set-theory&algebra",
+        "functions",
+        "normal"
+      ],
+      "question_uid": "go:927",
+      "exam_uid": "cse:2003:set1:main:q37",
+      "answer_uid": "v1:4.3.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:929": {
+      "title": "GATE CSE 2003 | Question: 38",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/929/gate-cse-2003-question-38",
+      "question": "<p>Consider the set \\(\\{a, b, c\\}\\) with binary operators \\(+\\) and \\(*\\) defined as follows:</p>\n<p>$$\\begin{array}{|c|c|c|c|} \\hline \\textbf{+} &amp; \\textbf{a}&amp; \\textbf{b} &amp;\\textbf{c}\\\\\\hline \\textbf{a} &amp; \\text{b}&amp; \\text{a} &amp; \\text{c} \\\\\\hline \\textbf{b} &amp; \\text{a}&amp; \\text{b} &amp; \\text{c}\\\\\\hline \\textbf{c} &amp; \\text{a}&amp; \\text{c} &amp; \\text{b}\\\\\\hline \\end{array}\\qquad \\begin{array}{|c|c|c|c|} \\hline \\textbf{*} &amp; \\textbf{a}&amp; \\textbf{b} &amp;\\textbf{c}\\\\\\hline \\textbf{a} &amp; \\text{a}&amp; \\text{b} &amp; \\text{c} \\\\\\hline \\textbf{b} &amp; \\text{b}&amp; \\text{c} &amp; \\text{a}\\\\\\hline \\textbf{c} &amp; \\text{c}&amp; \\text{c} &amp; \\text{b}\\\\\\hline \\end{array}$$</p>\n<p>For example, \\(a + c = c, c + a = a, c * b = c\\) and \\(b * c = a\\).</p>\n<p>Given the following set of equations:</p>\n<ul>\n<li>$(a * x) + (a * y) = c $</li>\n<li>$(b * x) + (c * y) = c$</li>\n</ul>\n<p>The number of solution(s) (i.e., pair(s) $(x, y)$ that satisfy the equations) is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$0$</li>\n<li>$1$</li>\n<li>$2$</li>\n<li>$3$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "set-theory&algebra",
+        "normal",
+        "binary-operation"
+      ],
+      "question_uid": "go:929",
+      "exam_uid": "cse:2003:set1:main:q38",
+      "answer_uid": "v1:4.1.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:930": {
+      "title": "GATE CSE 2003 | Question: 39",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/930/gate-cse-2003-question-39",
+      "question": "<p>Let $\\Sigma = \\left\\{a, b, c, d, e\\right\\}$ be an alphabet. We define an encoding scheme as follows:</p>\n<p>$g(a) = 3, g(b) = 5, g(c) = 7, g(d) = 9, g(e) = 11$.</p>\n<p>Let $p_i$ denote the i-th prime number $\\left(p_1 = 2\\right)$.</p>\n<p>For a non-empty string $s=a_1 \\dots a_n$, where each $a_i \\in \\Sigma$, define $f(s)= \\Pi^n_{i=1}P_i^{g(a_i)}$.</p>\n<p>For a non-empty sequence$\\left \\langle s_j, \\dots,s_n\\right \\rangle$ of stings from $\\Sigma^+$, define $h\\left(\\left \\langle s_i \\dots s_n\\right \\rangle\\right)=\\Pi^n_{i=1}P_i^{f\\left(s_i\\right)}$</p>\n<p>Which of the following numbers is the encoding, $h$, of a non-empty sequence of strings?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$2^73^75^7$</p>\n</li>\n<li>\n<p>$2^83^85^8$</p>\n</li>\n<li>\n<p>$2^93^95^9$</p>\n</li>\n<li>\n<p>$2^{10}3^{10}5^{10}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "set-theory&algebra",
+        "functions",
+        "normal"
+      ],
+      "question_uid": "go:930",
+      "exam_uid": "cse:2003:set1:main:q39",
+      "answer_uid": "v1:4.3.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:931": {
+      "title": "GATE CSE 2003 | Question: 40",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/931/gate-cse-2003-question-40",
+      "question": "<p>A graph $G=(V,E)$ satisfies $\\mid E \\mid \\leq 3 \\mid V \\mid  - 6$. The min-degree of $G$ is defined as $\\min_{v\\in V}\\left\\{ \\text{degree }(v)\\right \\}$. Therefore, min-degree of $G$ cannot be </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$3$</li>\n<li>$4$</li>\n<li>$5$</li>\n<li>$6$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "graph-theory",
+        "normal",
+        "degree-of-graph"
+      ],
+      "question_uid": "go:931",
+      "exam_uid": "cse:2003:set1:main:q40",
+      "answer_uid": "v1:2.2.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:932": {
+      "title": "GATE CSE 2003 | Question: 41",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/932/gate-cse-2003-question-41",
+      "question": "<p>Consider the following system of linear equations $$\\left( \\begin{array}{ccc} 2 &amp; 1 &amp; -4 \\\\ 4 &amp; 3 &amp; -12 \\\\ 1 &amp; 2 &amp; -8 \\end{array} \\right) \\left( \\begin{array}{ccc} x \\\\ y \\\\ z \\end{array} \\right) = \\left( \\begin{array}{ccc} \\alpha \\\\ 5 \\\\ 7 \\end{array} \\right)$$ Notice that the second and the third columns of the coefficient matrix are linearly dependent. For how many values of $\\alpha$, does this system of equations have infinitely many solutions?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>\\(0\\)</li>\n<li>\\(1\\)</li>\n<li>\\(2\\)</li>\n<li>\\(3\\)</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "linear-algebra",
+        "system-of-equations",
+        "normal"
+      ],
+      "question_uid": "go:932",
+      "exam_uid": "cse:2003:set1:main:q41",
+      "answer_uid": "manual:go:932",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:933": {
+      "title": "GATE CSE 2003 | Question: 42",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/933/gate-cse-2003-question-42",
+      "question": "<a name=\"933\"></a><div itemprop=\"text\"><p>A piecewise linear function $f(x)$ is plotted using thick solid lines in the figure below (the plot is drawn to scale).</p>\n\n<p><img alt=\"\" height=\"255\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=8309327974443728489\" width=\"395\"></p>\n\n<p>If we use the Newton-Raphson method to find the roots of \\(f(x)=0\\) using \\(x_0, x_1,\\) and \\(x_2\\) respectively as initial guesses, the roots obtained would be</p>\n\n<ol style=\"list-style-type: upper-alpha;\">\n\t<li>1.3, 0.6, and 0.6 respectively</li>\n\t<li>0.6, 0.6, and 1.3 respectively</li>\n\t<li>1.3, 1.3, and 0.6 respectively</li>\n\t<li>1.3, 0.6, and 1.3 respectively</li>\n</ol></div>",
+      "tags": [
+        "gatecse-2003",
+        "numerical-methods",
+        "newton-raphson",
+        "normal",
+        "out-of-syllabus-now",
+        "gate1996",
+        "gate1999",
+        "gatecse-2008",
+        "gatecse-2007"
+      ],
+      "question_uid": "go:933",
+      "exam_uid": "cse:2003:set1:main:q42"
+    },
+    "go:934": {
+      "title": "GATE CSE 2003 | Question: 43",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/934/gate-cse-2003-question-43",
+      "question": "<p>The following is a scheme for floating point number representation using $16$ bits.</p>\n<p><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=3062571920889462072\" width=\"450\"/></p>\n<p>Let $s, e,$ and $m$ be the numbers represented in binary in the sign, exponent, and mantissa fields respectively. Then the floating point number represented is:</p>\n<p>$$\\begin{cases}(-1)^s \\left(1+m \\times 2^{-9}\\right) 2^{e-31}, &amp; \\text{ if the exponent } \\neq 111111 \\\\  0, &amp; \\text{ otherwise} \\end{cases}$$</p>\n<p>What is the maximum difference between two successive real numbers representable in this system?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2^{-40}$</li>\n<li>$2^{-9}$</li>\n<li>$2^{22}$</li>\n<li>$2^{31}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "number-representation",
+        "floating-point-representation",
+        "normal"
+      ],
+      "question_uid": "go:934",
+      "exam_uid": "cse:2003:set1:main:q43",
+      "answer_uid": "v2:6.15.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:935": {
+      "title": "GATE CSE 2003 | Question: 44",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/935/gate-cse-2003-question-44",
+      "question": "<p>A $\\text{1-input}$, $\\text{2-output}$ synchronous sequential circuit behaves as follows:</p>\n<p>Let $z_k, n_k$ denote the number of $0’s$ and $1’s$ respectively in initial <em>$k$ </em>bits of the input</p>\n<p>$(z_k+n_k=k)$. The circuit outputs $00$ until one of the following conditions holds.</p>\n<ul>\n<li>$z_k-n_k=2$. In this case, the output at the k-th and all subsequent clock ticks is $10$.</li>\n<li>$n_k-z_k=2$. In this case, the output at the <em>k</em>-th and all subsequent clock ticks is $01$.</li>\n</ul>\n<p>What is the minimum number of states required in the state transition graph of the above circuit?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$5$</li>\n<li>$6$</li>\n<li>$7$</li>\n<li>$8$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "synchronous-asynchronous-circuits",
+        "normal"
+      ],
+      "question_uid": "go:935",
+      "exam_uid": "cse:2003:set1:main:q44",
+      "answer_uid": "v2:6.31.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:936": {
+      "title": "GATE CSE 2003 | Question: 45",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/936/gate-cse-2003-question-45",
+      "question": "<p>The literal count of a Boolean expression is the sum of the number of times each literal appears in the expression. For example, the literal count of $\\left(xy+xz'\\right)$ is $4.$ What are the minimum possible literal counts of the product-of-sum and sum-of-product representations respectively of the function given by the following Karnaugh map? Here, $X$ denotes \"don't care\"</p>\n<p> </p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"238\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=17324418675822304302\" width=\"241\"/></p>\n<p> </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$(11, 9)$</li>\n<li>$(9, 13)$</li>\n<li>$(9, 10)$</li>\n<li>$(11,11)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "k-map",
+        "normal"
+      ],
+      "question_uid": "go:936",
+      "exam_uid": "cse:2003:set1:main:q45",
+      "answer_uid": "v2:6.18.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:937": {
+      "title": "GATE CSE 2003 | Question: 46",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/937/gate-cse-2003-question-46",
+      "question": "<p>Consider the ALU shown below.</p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"345\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=1856404516948256541\" width=\"600\"/></p>\n<p> </p>\n<p>If the operands are in $2’s$ complement representation, which of the following operations can be performed by suitably setting the control lines $K$ and $C_0$ only (+ and – denote addition and subtraction respectively)?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$A + B$, and $A – B$, but not $A + 1$</li>\n<li>$A + B$, and $A + 1$, but not $A – B$</li>\n<li>$A + B$, but not $A – B$ or $A + 1$</li>\n<li>$A + B$, and $A – B$, and $A + 1$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "normal",
+        "adder"
+      ],
+      "question_uid": "go:937",
+      "exam_uid": "cse:2003:set1:main:q46",
+      "answer_uid": "v2:6.1.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:29098": {
+      "title": "GATE CSE 2003 | Question: 47",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/29098/gate-cse-2003-question-47",
+      "question": "<p>Consider the following circuit composed of XOR gates and non-inverting buffers.</p>\n<p><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=14895110248385472791\"/></p>\n<p>The non-inverting buffers have delays $\\delta_1 = 2 ns$ and $\\delta_2 = 4 ns$ as shown in the figure. Both XOR gates and all wires have zero delays. Assume that all gate inputs, outputs, and wires are stable at logic level $0$ at time $0$. If the following waveform is applied at input $A$, how many transition(s) (change of logic levels) occur(s) at $B$ during the interval from $0$ to $10$ ns?</p>\n<p><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=13975612741309214604\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1$</li>\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "digital-logic",
+        "digital-circuits"
+      ],
+      "question_uid": "go:29098",
+      "exam_uid": "cse:2003:set1:main:q47",
+      "answer_uid": "v2:6.10.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:938": {
+      "title": "GATE CSE 2003 | Question: 48",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/938/gate-cse-2003-question-48",
+      "question": "<p>Consider the following assembly language program for a hypothetical processor $A, B,$ and $C$ are $8-$bit registers. The meanings of various instructions are shown as comments.<br/>\n$$\\small \\begin{array}{lll} &amp; \\text{MOV B, #0}&amp;&amp; \\text{;} &amp; \\text{$B \\leftarrow 0$} \\\\&amp; \\text{MOV C, #8} &amp;&amp; \\text{;}&amp; \\text{$C \\leftarrow 8$} \\\\<br/>\n\\text{Z:} &amp; \\text{CMP C, #0} &amp;&amp;\\text{;}&amp; \\text{compare C with 0} \\\\ <br/>\n&amp; \\text{JZ X} &amp;&amp; \\text{;}&amp; \\text{jump to X if zero flag is set}  \\\\<br/>\n&amp; \\text{SUB C, #1} &amp;&amp; \\text{;}&amp; \\text{$C \\gets C-1$}  \\\\ <br/>\n&amp; \\text{RRC A, #1} &amp;&amp; \\text{;}&amp; \\text{right rotate A through carry by one bit. Thus:}  \\\\  &amp; \\text{} &amp;&amp; \\text{;}&amp; \\text{If the initial values of A and the carry flag are $a_7\\ldots a_0$ and}  \\\\ <br/>\n&amp; \\text{} &amp;&amp; \\text{;}&amp; \\text{$c_0$ respectively, their values after the execution of this}  \\\\ <br/>\n&amp; \\text{} &amp;&amp; \\text{;}&amp; \\text{instruction will be $c_0a_7\\ldots a_1$ and $a_0$ respectively.}  \\\\ <br/>\n&amp; \\text{JC Y} &amp;&amp; \\text{;}&amp; \\text{jump to Y if carry flag is set}  \\\\<br/>\n&amp; \\text{JMP Z} &amp;&amp; \\text{;}&amp; \\text{jump to Z}  \\\\<br/>\n\\text{Y:} &amp; \\text{ADD B, #1} &amp;&amp; \\text{;}&amp; \\text{$B \\gets B+1$}  \\\\ <br/>\n&amp; \\text{JMP Z} &amp;&amp; \\text{;}&amp; \\text{jump to Z}  \\\\ <br/>\n\\text{X:}&amp; \\text{} &amp;&amp; \\text{;}&amp; \\text{}  \\\\ \\end{array}$$<br/>\nIf the initial value of register A is A0 the value of register B after the program execution will be</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>the number of $0$ bits in $A_0$</li>\n<li>the number of $1$ bits in $A_0$</li>\n<li>$A_0$</li>\n<li>$8$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "co-and-architecture",
+        "machine-instructions",
+        "normal"
+      ],
+      "question_uid": "go:938",
+      "exam_uid": "cse:2003:set1:main:q48",
+      "answer_uid": "v2:2.14.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43577": {
+      "title": "GATE CSE 2003 | Question: 49",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/43577/gate-cse-2003-question-49",
+      "question": "<p>Consider the following assembly language program for a hypothetical processor $A, B,$ and $C$ are $8$ bit registers. The meanings of various instructions are shown as comments.</p>\n<table border=\"0\" cellpadding=\"1\">\n<tbody>\n<tr>\n<td style=\"width:8%\"> </td>\n<td>\n<p>MOV B, #0</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>$B \\leftarrow 0$</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:125px\">\n<p>MOV C, #8</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>$C \\leftarrow 8$</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Z:</p>\n</td>\n<td style=\"width:85px\">\n<p>CMP C, #0</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>compare C with 0</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\">\n<p>JZ X</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>jump to X if zero flag is set</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\">\n<p>SUB C, #1</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>$C \\gets C-1$</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\">\n<p>RRC A, #1</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>right rotate A through carry by one bit. Thus:</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\"> </td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>If the initial values of A and the carry flag are $a_7..a_0$ and </p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\"> </td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>$c_0$ respectively, their values after the execution of this</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\"> </td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>instruction will be $c_0a_7..a_1$ and $a_0$ respectively.</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\">\n<p>JC Y</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>jump to Y if carry flag is set</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\">\n<p>JMP Z</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>jump to Z</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Y:</p>\n</td>\n<td style=\"width:85px\">\n<p>ADD B, #1</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>$B \\gets B+1$</p>\n</td>\n</tr>\n<tr>\n<td> </td>\n<td style=\"width:85px\">\n<p>JMP Z</p>\n</td>\n<td style=\"width:1px\">\n<p>;</p>\n</td>\n<td>\n<p>jump to Z</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>X:</p>\n</td>\n<td style=\"width:85px\"> </td>\n<td style=\"width:1px\"> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>Which of the following instructions when inserted at location $X$ will ensure that the value of the register $A$ after program execution is as same as its initial value?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{RRC A}, \\#1$</li>\n<li>$\\text{NOP} ;$ no operation</li>\n<li>$\\text{LRC A,} \\#1; $  left rotate $A$ through carry flag by one bit</li>\n<li>$\\text{ADD A,} \\#1$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "co-and-architecture",
+        "machine-instructions",
+        "normal"
+      ],
+      "question_uid": "go:43577",
+      "exam_uid": "cse:2003:set1:main:q49",
+      "answer_uid": "manual:go:43577",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:939": {
+      "title": "GATE CSE 2003 | Question: 50",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/939/gate-cse-2003-question-50",
+      "question": "<p>Consider the following deterministic finite state automaton $M$.</p>\n<p><img alt=\"\" height=\"143\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=13745932056510180602\" width=\"452\"/></p>\n<p>Let $S$ denote the set of seven bit binary strings in which the first, the fourth, and the last bits are $1$. The number of strings in $S$ that are accepted by $M$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1$</li>\n<li>$5$</li>\n<li>$7$</li>\n<li>$8$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "finite-automata",
+        "normal"
+      ],
+      "question_uid": "go:939",
+      "exam_uid": "cse:2003:set1:main:q50",
+      "answer_uid": "v2:10.7.10",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:940": {
+      "title": "GATE CSE 2003 | Question: 51",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/940/gate-cse-2003-question-51",
+      "question": "<p>Let $G=\\left(\\left\\{S\\right\\}, \\left\\{a,b\\right\\},R,S\\right)$ be a context free grammar where the rule set R is $S \\to a S b \\mid S S \\mid \\epsilon$</p>\n<p>Which of the following statements is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$G$ is not ambiguous</li>\n<li>There exist $x, y \\in L(G)$ such that $xy \\notin L(G)$</li>\n<li>There is a deterministic pushdown automaton that accepts $L(G)$</li>\n<li>We can find a deterministic finite state automaton that accepts $L(G)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "context-free-language",
+        "normal"
+      ],
+      "question_uid": "go:940",
+      "exam_uid": "cse:2003:set1:main:q51",
+      "answer_uid": "v2:10.3.10",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:356": {
+      "title": "GATE CSE 2003 | Question: 52",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/356/gate-cse-2003-question-52",
+      "question": "<p>Consider two languages $L_1$ and $L_2$ each on the alphabet $\\Sigma$. Let $f : \\Sigma^* \\to \\Sigma^*$ be a polynomial time computable bijection such that $(\\forall x) [ x\\in L_1$ iff $f(x) \\in L_2]$. Further, let $f^{-1}$ be also polynomial time computable.</p>\n<p>Which of the following <strong>CANNOT</strong> be true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$L_1$ $\\in P$ and $L_2$ is finite</li>\n<li>$L_1$ $\\in NP$ and $L_2$ $\\in P$</li>\n<li>$L_1$ is undecidable and $L_2$ is decidable</li>\n<li>$L_1$ is recursively enumerable and $L_2$ is recursive</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "normal",
+        "decidability"
+      ],
+      "question_uid": "go:356",
+      "exam_uid": "cse:2003:set1:main:q52",
+      "answer_uid": "v2:10.5.14",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:941": {
+      "title": "GATE CSE 2003 | Question: 53",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/941/gate-cse-2003-question-53",
+      "question": "<p>A single tape Turing Machine $M$ has two states $q0$ and $q1$, of which $q0$ is the starting state. The tape alphabet of $M$ is $\\{0, 1, B\\}$ and its input alphabet is $\\{0, 1\\}$. The symbol $B$ is the blank symbol used to indicate end of an input string. The transition function of $M$ is described in the following table.</p>\n<p>$$\\begin{array}{|l|l|l|l|}\\hline \\text{}  &amp;  \\text{$0$} &amp; \\text{$1$} &amp; \\text{$B$} \\\\\\hline \\text{$q0$}  &amp;  \\text{$q1, 1, R$} &amp; \\text{$q1, 1, R$} &amp; \\text{$Halt$} \\\\\\hline \\text{$q1$}  &amp;  \\text{$q1, 1, R$} &amp; \\text{$q0, 1, L$} &amp; \\text{$q0, B, L$} \\\\\\hline  \\end{array}$$</p>\n<p>The table is interpreted as illustrated below.</p>\n<p>The entry $(q1, 1, R)$ in row $q0$ and column $1$ signifies that if $M$ is in state $q0$ and reads $1$ on the current page square, then it writes $1$ on the same tape square, moves its tape head one position to the right and transitions to state $q1$.</p>\n<p>Which of the following statements is true about $M$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$M$ does not halt on any string in $(0+1)^+$</li>\n<li>$M$ does not halt on any string in $(00+1)^*$</li>\n<li>$M$ halts on all strings ending in a $0$</li>\n<li>$M$ halts on all strings ending in a $1$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "turing-machine",
+        "normal"
+      ],
+      "question_uid": "go:941",
+      "exam_uid": "cse:2003:set1:main:q53",
+      "answer_uid": "v2:10.5.15",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:355": {
+      "title": "GATE CSE 2003 | Question: 54",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/355/gate-cse-2003-question-54",
+      "question": "<p>Define languages $L_0$ and $L_1$ as follows :<br/>\n<br/>\n$L_0 = \\{\\langle M, w, 0 \\rangle \\mid M \\text{ halts on }w\\} $<br/>\n<br/>\n$L_1 = \\{\\langle M, w, 1 \\rangle \\mid M \\text{ does not halts on }w\\}$<br/>\n<br/>\nHere $\\langle M, w, i \\rangle$ is a triplet, whose first component $M$ is an encoding of a Turing<br/>\nMachine, second component $ w$ is a string, and third component $i$  is a bit.<br/>\n<br/>\nLet $L = L_0 \\cup L_1$. Which of the following is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$L$ is recursively enumerable, but $L'$ is not</li>\n<li>$L'$ is recursively enumerable, but $ L$ is not</li>\n<li>Both $L$ and $L'$ are recursive  </li>\n<li>Neither $L$ nor $L'$ is recursively enumerable</li>\n</ol>",
+      "tags": [
+        "theory-of-computation",
+        "turing-machine",
+        "gatecse-2003",
+        "difficult"
+      ],
+      "question_uid": "go:355",
+      "exam_uid": "cse:2003:set1:main:q54",
+      "answer_uid": "v2:10.15.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:943": {
+      "title": "GATE CSE 2003 | Question: 55",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/943/gate-cse-2003-question-55",
+      "question": "<p>Consider the NFA $M$ shown below.</p>\n<p><img alt=\"\" height=\"278\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=9403429412565475414\" width=\"318\"/></p>\n<p>Let the language accepted by $M$ be $L$<em>. </em>Let $L_1$<em> </em>be the language accepted by the NFA $M_1$ obtained by changing the accepting state of $M$ to a non-accepting state and by changing the non-accepting states of $M$ to accepting states. Which of the following statements is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$L_1 = \\{0,1\\}^*-L$</li>\n<li>$L_1 = \\{0,1\\}^*$</li>\n<li>$L_1 \\subseteq L$</li>\n<li>$L_1 = L$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "theory-of-computation",
+        "finite-automata",
+        "normal"
+      ],
+      "question_uid": "go:943",
+      "exam_uid": "cse:2003:set1:main:q55",
+      "answer_uid": "v2:10.7.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:944": {
+      "title": "GATE CSE 2003 | Question: 56",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/944/gate-cse-2003-question-56",
+      "question": "<p>Consider the grammar shown below</p>\n<ul>\n<li>$S \\rightarrow i E t S S’ \\mid a$</li>\n<li>$S’ \\rightarrow e S \\mid \\epsilon$</li>\n<li>$E \\rightarrow b$</li>\n</ul>\n<p>In the predictive parse table, $M,$ of this grammar, the entries $M[S’ , e]$ and $M[S’ , \\$]$ respectively are</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\{S’ \\rightarrow e S\\}$ and $\\{S’ \\rightarrow \\epsilon\\}$</li>\n<li>$\\{S’ \\rightarrow e S\\}$ and $\\{ \\}$</li>\n<li>$\\{S’ \\rightarrow \\epsilon\\}$ and $\\{S’  \\rightarrow \\epsilon\\}$</li>\n<li>$\\{S’ \\rightarrow  e S, S’ \\rightarrow \\varepsilon$} and $\\{S’  \\rightarrow \\epsilon\\}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "grammar",
+        "normal",
+        "parsing"
+      ],
+      "question_uid": "go:944",
+      "exam_uid": "cse:2003:set1:main:q56",
+      "answer_uid": "v2:3.8.22",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:945": {
+      "title": "GATE CSE 2003 | Question: 57",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/945/gate-cse-2003-question-57",
+      "question": "<p>Consider the grammar shown below. </p>\n<ul>\n<li>$S \\rightarrow C \\ C$</li>\n<li>$C \\rightarrow c \\ C \\mid d$</li>\n</ul>\n<p>This grammar is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>LL(1)</li>\n<li>SLR(1) but not LL(1)</li>\n<li>LALR(1) but not SLR(1)</li>\n<li>LR(I) but not LALR(1)</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "grammar",
+        "parsing",
+        "normal"
+      ],
+      "question_uid": "go:945",
+      "exam_uid": "cse:2003:set1:main:q57",
+      "answer_uid": "v2:3.8.23",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:946": {
+      "title": "GATE CSE 2003 | Question: 58",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/946/gate-cse-2003-question-58",
+      "question": "<p>Consider the translation scheme shown below.</p>\n<ul>\n<li>$S \\rightarrow T\\;R$</li>\n<li>$R \\rightarrow + T \\{\\text{print}(‘+’);\\} R\\mid \\varepsilon$</li>\n<li>$T  \\rightarrow$ <strong>num </strong>$\\{\\text{print}$(<strong>num.</strong>val)$;\\}$</li>\n</ul>\n<p>Here <strong>num</strong> is a token that represents an integer and <strong>num</strong>.val represents the corresponding integer value. For an input string ‘$9 + 5 + 2$’, this translation scheme will print</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$9 + 5 + 2$</li>\n<li>$9 \\ 5 + 2 +$</li>\n<li>$9 \\ 5 \\ 2 + +$</li>\n<li>$+ + 9 \\ 5 \\ 2$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "grammar",
+        "normal"
+      ],
+      "question_uid": "go:946",
+      "exam_uid": "cse:2003:set1:main:q58",
+      "answer_uid": "v2:3.8.24",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:947": {
+      "title": "GATE CSE 2003 | Question: 59",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/947/gate-cse-2003-question-59",
+      "question": "<p>Consider the syntax directed definition shown below.$$\\begin{array}{ll}<br/>\nS \\rightarrow \\mathbf{ id :=} E&amp;\\qquad \\{gen(\\mathbf{ id}.place = E.place;);\\}\\\\<br/>\nE \\rightarrow E_1 + E_2 &amp;\\qquad \\{t = newtemp;\\\\<br/>\n&amp;\\qquad gen(t = E_1.place + E_2.place;);\\\\<br/>\n&amp;\\qquad E.place = t;\\}\\\\<br/>\nE \\rightarrow id&amp;\\qquad \\{E.place = \\mathbf{id}.place;\\}<br/>\n\\end{array}$$Here, $gen$ is a function that generates the output code, and $newtemp$ is a function that returns the name of a new temporary variable on every call. Assume that $t_i'$s are the temporary variable names generated by $newtemp$. For the statement $\\text{‘}X : = Y + Z\\text{'},$ the $3$-address code sequence generated by this definition is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$X = Y + Z$</li>\n<li>$t_1 = Y+Z; X=t_1$</li>\n<li>$t_1 =Y; t_2=t_1 +Z; X=t_2$</li>\n<li>$t_1 =Y; t_2=Z; t_3=t_1+t_2; X=t_3$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "target-code-generation",
+        "normal"
+      ],
+      "question_uid": "go:947",
+      "exam_uid": "cse:2003:set1:main:q59",
+      "answer_uid": "v2:3.22.8",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:948": {
+      "title": "GATE CSE 2003 | Question: 60, ISRO2007-45",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/948/gate-cse-2003-question-60-isro2007-45",
+      "question": "<p>A program consists of two modules executed sequentially. Let $f_1(t)$ and $f_2(t)$ respectively denote the probability density functions of time taken to execute the two modules. The probability density function of the overall time taken to execute the program is given by </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$f_1(t)+f_2(t)$</p>\n</li>\n<li>\n<p>$\\int_0^t f_1(x)f_2(x)dx$</p>\n</li>\n<li>\n<p>$\\int_0^t f_1(x)f_2(t-x)dx$</p>\n</li>\n<li>\n<p>$\\max\\{f_1(t),f_2(t)\\}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "probability",
+        "normal",
+        "isro2007",
+        "probability-density-function"
+      ],
+      "question_uid": "go:948",
+      "exam_uid": "cse:2003:set1:main:q60-isro2007-45",
+      "answer_uid": "manual:go:948",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:949": {
+      "title": "GATE CSE 2003 | Question: 61",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/949/gate-cse-2003-question-61",
+      "question": "<p>In a permutation \\(a_1 ... a_n\\), of n distinct integers, an inversion is a pair \\((a_i, a_j)\\) such that \\(i &lt; j\\) and \\(a_i &gt; a_j\\).</p>\n<p>If all permutations are equally likely, what is the expected number of inversions in a randomly chosen permutation of \\(1. . . n\\)?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\\(\\frac{n(n-1)}{2}\\)</li>\n<li>\\(\\frac{n(n-1)}{4}\\)</li>\n<li>\\(\\frac{n(n+1)}{4}\\)</li>\n<li>\\(2n[\\log_2n]\\)</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "sorting",
+        "inversion",
+        "normal"
+      ],
+      "question_uid": "go:949",
+      "exam_uid": "cse:2003:set1:main:q61",
+      "answer_uid": "v2:1.31.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43576": {
+      "title": "GATE CSE 2003 | Question: 62",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/43576/gate-cse-2003-question-62",
+      "question": "<p>In a permutation $a_1\\ldots a_n$, of $n$ distinct integers, an inversion is a pair $(a_i, a_j)$ such that $i &lt; j$ and $a_i &gt; a_j.$</p>\n<p>What would be the worst case time complexity of the Insertion Sort algorithm, if the inputs are restricted to permutations of $1. . . n$ with at most $n$ inversions?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\Theta(n^2)$</li>\n<li>$\\Theta(n\\log n)$</li>\n<li>$\\Theta(n^{1.5})$</li>\n<li>$\\Theta(n)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "sorting",
+        "normal",
+        "insertion-sort"
+      ],
+      "question_uid": "go:43576",
+      "exam_uid": "cse:2003:set1:main:q62",
+      "answer_uid": "v2:1.19.3",
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": [
+          "A",
+          "C"
+        ],
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:950": {
+      "title": "GATE CSE 2003 | Question: 63, ISRO2009-25",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/950/gate-cse-2003-question-63-isro2009-25",
+      "question": "<p>A data structure is required for storing a set of integers such that each of the following operations can be done in $O(\\log n)$ time, where $n$ is the number of elements in the set.</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>Deletion of the smallest element</p>\n</li>\n<li>Insertion of an element if it is not already present in the set</li>\n</ol>\n<p>Which of the following data structures can be used for this purpose?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>A heap can be used but not a balanced binary search tree</li>\n<li>\n<p>A balanced binary search tree can be used but not a heap</p>\n</li>\n<li>\n<p>Both balanced binary search tree and heap can be used</p>\n</li>\n<li>\n<p>Neither balanced search tree nor heap can be used</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "data-structures",
+        "easy",
+        "isro2009",
+        "binary-search-tree"
+      ],
+      "question_uid": "go:950",
+      "exam_uid": "cse:2003:set1:main:q63-isro2009-25",
+      "answer_uid": "v2:8.4.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:951": {
+      "title": "GATE CSE 2003 | Question: 64",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/951/gate-cse-2003-question-64",
+      "question": "<p>Let <strong>S </strong>be a stack of size $n \\geq1$. Starting with the empty stack, suppose we push the first <em>n</em> natural numbers in sequence, and then perform $n$<em> </em>pop operations. Assume that Push and Pop operations take $X$ seconds each, and $Y$ seconds elapse between the end of one such stack operation and the start of the next operation. For $m \\geq1$, define the stack-life of <em>$m$ </em>as the time elapsed from the end of $Push(m)$ to the start of the pop operation that removes <em>$m$ </em>from <strong>S</strong>. The average stack-life of an element of this stack is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$n(X+Y)$</li>\n<li>$3Y+2X$</li>\n<li>$n(X+Y)-X$</li>\n<li>$Y+2X$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "data-structures",
+        "stack",
+        "normal"
+      ],
+      "question_uid": "go:951",
+      "exam_uid": "cse:2003:set1:main:q64",
+      "answer_uid": "v2:8.13.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:952": {
+      "title": "GATE CSE 2003 | Question: 65",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/952/gate-cse-2003-question-65",
+      "question": "<p>Consider the following $2-3-4$ tree (i.e., B-tree with a minimum degree of two) in which each data item is a letter. The usual alphabetical ordering of letters is used in constructing the tree.</p>\n<p><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=18396545262188367840\" width=\"450\"/></p>\n<p>What is the result of inserting $G$ in the above tree?</p>\n<ol class=\"shrink-inline-options2\" start=\"1\" style=\"list-style-type:upper-alpha\">\n<li><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=3361670589055603008\" width=\"400\"/></li>\n<li><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=1554343305327793797\" width=\"400\"/></li>\n<li><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=11961061422917796830\" width=\"400\"/></li>\n<li>None of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "databases",
+        "b-tree",
+        "normal"
+      ],
+      "question_uid": "go:952",
+      "exam_uid": "cse:2003:set1:main:q65",
+      "answer_uid": "v2:5.1.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:258": {
+      "title": "GATE CSE 2003 | Question: 66",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/258/gate-cse-2003-question-66",
+      "question": "<p>The cube root of a natural number $n$ is defined as the largest natural number $m$ such that $(m^3 \\leq n)$ . The complexity of computing the cube root of $n$ ($n$ is represented by binary notation) is </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$O(n)$ but not $O(n^{0.5})$</li>\n<li>$O(n^{0.5})$ but not $O((\\log n)^k)$ for any constant $k&gt;0$</li>\n<li>$O((\\log n)^k)$ for some constant $k&gt;0$, but not $O( (\\log \\log n)^m)$ for any constant $m&gt;0$</li>\n<li>$O( (\\log \\log n)^k )$ for some constant $k &gt; 0.5$, but not $O( (\\log \\log n)^{0.5} )$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "time-complexity",
+        "normal"
+      ],
+      "question_uid": "go:258",
+      "exam_uid": "cse:2003:set1:main:q66",
+      "answer_uid": "manual:go:258",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:954": {
+      "title": "GATE CSE 2003 | Question: 67",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/954/gate-cse-2003-question-67",
+      "question": "<p>Let $G =(V,E)$ be an undirected graph with a subgraph $G_1 = (V_1, E_1)$. Weights are assigned to edges of $G$<em> </em>as follows.</p>\n<p>$$w(e) = \\begin{cases} 0 \\text{,   if } e \\in E_1 \\\\1 \\text{,   otherwise} \\end{cases}$$</p>\n<p>A single-source shortest path algorithm is executed on the weighted graph $(V,E,w)$ with an arbitrary vertex $v_1$ of $V_1$ as the source. Which of the following can always be inferred from the path costs computed?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>The number of edges in the shortest paths from $v_1$ to all vertices of $G$</li>\n<li>$G_1$ is connected</li>\n<li>$V_1$ forms a clique in $G$</li>\n<li>$G_1$ is a tree</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "graph-algorithms",
+        "normal"
+      ],
+      "question_uid": "go:954",
+      "exam_uid": "cse:2003:set1:main:q67",
+      "answer_uid": "v2:1.30.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:955": {
+      "title": "GATE CSE 2003 | Question: 68",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/955/gate-cse-2003-question-68",
+      "question": "<p>What is the weight of a minimum spanning tree of the following graph?</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=8417759754365671160\" width=\"520\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$29$</li>\n<li>$31$</li>\n<li>$38$</li>\n<li>$41$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "spanning-tree",
+        "normal"
+      ],
+      "question_uid": "go:955",
+      "exam_uid": "cse:2003:set1:main:q68",
+      "answer_uid": "v2:1.24.9",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:956": {
+      "title": "GATE CSE 2003 | Question: 69",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/956/gate-cse-2003-question-69",
+      "question": "<p>The following are the starting and ending times of activities $A, B, C, D, E, F, G$ and $H$ respectively in chronological order: $“a_s \\: b_s \\: c_s \\: a_e \\: d_s \\: c_e \\: e_s \\: f_s \\: b_e \\: d_e \\: g_s \\: e_e \\: f_e \\: h_s \\: g_e \\: h_e”$. Here, $x_s$ denotes the starting time and $x_e$ denotes the ending time of activity X. We need to schedule the activities in a set of rooms available to us. An activity can be scheduled in a room only if the room is reserved for the activity for its entire duration. What is the minimum number of rooms required?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$3$</li>\n<li>$4$</li>\n<li>$5$</li>\n<li>$6$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "normal",
+        "greedy-algorithm"
+      ],
+      "question_uid": "go:956",
+      "exam_uid": "cse:2003:set1:main:q69",
+      "answer_uid": "v2:1.15.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:957": {
+      "title": "GATE CSE 2003 | Question: 70",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/957/gate-cse-2003-question-70",
+      "question": "<p>Let $G= (V,E)$<em> </em>be a directed graph with $n$<em> </em>vertices. A path from $v_i$ to $v_j$ in $G$ is a sequence of vertices ($v_{i},v_{i+1}, \\dots , v_j$) such that $(v_k, v_{k+1}) \\in E$ for all $k$ in $i$ through $j-1$. A simple path is a path in which no vertex appears more than once.</p>\n<p>Let $A$<em> </em>be an $n \\times n$ array initialized as follows:</p>\n<p>$$A[j,k] = \\begin{cases} 1 \\text {,   if } (j,k) \\in E \\\\ 0 \\text{,   otherwise} \\end{cases}$$</p>\n<p>Consider the following algorithm:</p>\n<pre class=\"prettyprint lang-c_cpp\">for i=1 to n\n    for j=1 to n\n        for k=1 to n\n            A[j,k] = max(A[j,k], A[j,i] + A[i,k]);  </pre>\n<p>Which of the following statements is necessarily true for all $j$<em> </em>and $k$<em> </em>after termination of the above algorithm?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$A[j,k] \\leq n$</li>\n<li>If $A[j,j] \\geq n-1$ then $G$<em> </em>has a Hamiltonian cycle</li>\n<li>If there exists a path from $j$<em> </em>to $k$<em>, </em>$A[j,k]$<em> </em>contains  the longest path length from $j$ to $k$</li>\n<li>If there exists a path from $j$ to $k$, every simple path from $j$ to $k$ contains at most $A[j,k]$ edges</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "graph-algorithms",
+        "normal"
+      ],
+      "question_uid": "go:957",
+      "exam_uid": "cse:2003:set1:main:q70",
+      "answer_uid": "v2:1.13.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:958": {
+      "title": "GATE CSE 2003 | Question: 71",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/958/gate-cse-2003-question-71",
+      "question": "<a name=\"958\"></a><div itemprop=\"text\"><p>Consider the following logic program P</p>\n\n<p>$\\begin{align*} A(x) &amp;\\gets B(x,y), C(y) \\\\ &amp;\\gets B(x,x) \\end{align*}$</p>\n\n<p>Which of the following first order sentences is equivalent to P?</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>\n\t<p>$(\\forall &nbsp;x) [(\\exists y) [B(x,y) \\land C(y)] \\Rightarrow A(x)] \\land \\neg (\\exists x)[B(x,x)]$</p>\n\t</li>\n\t<li>\n\t<p>$(\\forall &nbsp;x) [(\\forall y) [B(x,y) \\land C(y)] \\Rightarrow A(x)] \\land \\neg (\\exists x)[B(x,x)]$</p>\n\t</li>\n\t<li>\n\t<p>$(\\forall &nbsp;x) [(\\exists y) [B(x,y) \\land C(y)] \\Rightarrow A(x)] \\vee \\neg (\\exists x)[B(x,x)]$</p>\n\t</li>\n\t<li>\n\t<p>$(\\forall &nbsp;x) [(\\forall y) [B(x,y) \\land C(y)] \\Rightarrow A(x)] \\land &nbsp;(\\exists x)[B(x,x)]$</p>\n\t</li>\n</ol></div>",
+      "tags": [
+        "gatecse-2003",
+        "programming",
+        "logic-programming",
+        "out-of-syllabus-now",
+        "variable-binding",
+        "normal",
+        "numerical-methods",
+        "newton-raphson",
+        "programming-in-c",
+        "pointers",
+        "type-checking"
+      ],
+      "question_uid": "go:958",
+      "exam_uid": "cse:2003:set1:main:q71"
+    },
+    "go:959": {
+      "title": "GATE CSE 2003 | Question: 72",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/959/gate-cse-2003-question-72",
+      "question": "<p>The following resolution rule is used in logic programming.<br/>\nDerive clause $(P \\vee Q)$ from clauses $(P\\vee R),(Q \\vee ¬R)$<br/>\nWhich of the following statements related to this rule is FALSE?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$((P ∨ R)∧(Q ∨ ¬R))⇒(P ∨ Q)$ is logically valid</li>\n<li>$(P ∨ Q)⇒((P ∨ R)∧(Q ∨ ¬R))$ is logically valid</li>\n<li>$(P ∨ Q)$ is satisfiable if and only if $(P ∨ R)∧(Q ∨ ¬R)$ is satisfiable</li>\n<li>$(P ∨ Q)⇒ \\text{FALSE}$ if and only if both $P$ and $Q$ are unsatisfiable</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "mathematical-logic",
+        "normal",
+        "propositional-logic"
+      ],
+      "question_uid": "go:959",
+      "exam_uid": "cse:2003:set1:main:q72",
+      "answer_uid": "v1:3.3.21",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:960": {
+      "title": "GATE CSE 2003 | Question: 73",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/960/gate-cse-2003-question-73",
+      "question": "<p>The following program fragment is written in a programming language that allows global variables and does not allow nested declarations of functions.</p>\n<pre class=\"prettyprint lang-c_cpp\">global int i=100, j=5;\nvoid P(x) {\n\tint i=10;\n    print(x+10);\n    i=200;\n    j=20;\n    print (x);\n}\nmain {P(i+j);}\n</pre>\n<p>If the programming language uses static scoping and call by need parameter passing mechanism, the values printed by the above program are:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$115, 220$</li>\n<li>$25, 220$</li>\n<li>$25, 15$</li>\n<li>$115, 105$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "normal",
+        "runtime-environment",
+        "parameter-passing"
+      ],
+      "question_uid": "go:960",
+      "exam_uid": "cse:2003:set1:main:q73",
+      "answer_uid": "v2:9.8.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43575": {
+      "title": "GATE CSE 2003 | Question: 74",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/43575/gate-cse-2003-question-74",
+      "question": "<p>The following program fragment is written in a programming language that allows global variables and does not allow nested declarations of functions.</p>\n<pre class=\"prettyprint lang-c_cpp\">global int i=100, j=5;\nvoid P(x) {\n\tint i=10;\n    print(x+10);\n    i=200;\n    j=20;\n    print (x);\n}\nmain {P(i+j);}\n</pre>\n<p>If the programming language uses dynamic scoping and call by name parameter passing mechanism, the values printed by the above program are</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$115, 220$</li>\n<li>$25, 220$</li>\n<li>$25, 15$</li>\n<li>$115, 105$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "programming",
+        "compiler-design",
+        "parameter-passing",
+        "runtime-environment",
+        "normal"
+      ],
+      "question_uid": "go:43575",
+      "exam_uid": "cse:2003:set1:main:q74"
+    },
+    "go:961": {
+      "title": "GATE CSE 2003 | Question: 75",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/961/gate-cse-2003-question-75",
+      "question": "<a name=\"961\"></a><div itemprop=\"text\"><p>Consider the following class definitions in a hypothetical Object Oriented language that supports inheritance and uses dynamic binding. The language should not be assumed to&nbsp; be either Java or C++, though the syntax is similar.</p>\n\n<pre class=\"prettyprint lang-c_cpp\">Class P {\n    Class Q subclass of P {\n        void f(int i) {\n            void f(int i) {\n                print(i);\n                print(2*i);\n            }\n        }\n    }\n}  </pre>\n\n<p>Now consider the following program fragment:</p>\n\n<p>P x = new Q();</p>\n\n<p>Q y = new Q();</p>\n\n<p>P z = new Q();</p>\n\n<p>x.f(1); ((P)y).f(1); z.f(1);</p>\n\n<p>Here ((P)y) denotes a typecast of y to P. The output produced by executing the above program fragment will be</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>1 2 1</li>\n\t<li>2 1 1</li>\n\t<li>2 1 2</li>\n\t<li>2 2 2</li>\n</ol></div>",
+      "tags": [
+        "gatecse-2003",
+        "programming",
+        "variable-binding",
+        "normal",
+        "out-of-syllabus-now",
+        "gate1999",
+        "gateit-2007",
+        "logic-programming",
+        "numerical-methods",
+        "newton-raphson"
+      ],
+      "question_uid": "go:961",
+      "exam_uid": "cse:2003:set1:main:q75"
+    },
+    "go:962": {
+      "title": "GATE CSE 2003 | Question: 76",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/962/gate-cse-2003-question-76",
+      "question": "<p>Which of the following is NOT an advantage of using shared, dynamically linked libraries as opposed to using statistically linked libraries?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>Smaller sizes of executable files</p>\n</li>\n<li>\n<p>Lesser overall page fault rate in the system</p>\n</li>\n<li>\n<p>Faster program startup</p>\n</li>\n<li>\n<p>Existing programs need not be re-linked to take advantage of newer versions of libraries</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "compiler-design",
+        "runtime-environment",
+        "linker",
+        "easy"
+      ],
+      "question_uid": "go:962",
+      "exam_uid": "cse:2003:set1:main:q76",
+      "answer_uid": "v2:3.12.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:963": {
+      "title": "GATE CSE 2003 | Question: 77",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/963/gate-cse-2003-question-77",
+      "question": "<p>A uni-processor computer system only has two processes, both of which alternate $10$ $\\text{ms}$ CPU bursts with $90$ $\\text{ms}$ I/O bursts. Both the processes were created at nearly the same time. The I/O of both processes can proceed in parallel. Which of the following scheduling strategies will result in the <em>least </em>CPU utilization (over a long period of time) for this system?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>First come first served scheduling</li>\n<li>Shortest remaining time first scheduling</li>\n<li>Static priority scheduling with different priorities for the two processes</li>\n<li>Round robin scheduling with a time quantum of $5$ $\\text{ms}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "process-scheduling",
+        "normal"
+      ],
+      "question_uid": "go:963",
+      "exam_uid": "cse:2003:set1:main:q77",
+      "answer_uid": "v2:7.19.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:788": {
+      "title": "GATE CSE 2003 | Question: 78",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/788/gate-cse-2003-question-78",
+      "question": "<p>A processor uses $2-level$ page tables for virtual to physical address translation. Page tables for both levels are stored in the main memory. Virtual and physical addresses are both $32$ bits wide. The memory is byte addressable. For virtual to physical address translation, the $10$ most significant bits of the virtual address are used as index into the first level page table while the next $10$ bits are used as index into the second level page table. The $12$ least significant bits of the virtual address are used as offset within the page. Assume that the page table entries in both levels of page tables are $4$ bytes wide. Further, the processor has a translation look-aside buffer (TLB), with a hit rate of $\\text{96%}$. The TLB caches recently used virtual page numbers and the corresponding physical page numbers. The processor also has a physically addressed cache with a hit rate of $\\text{90%}$. Main memory access time is $10$ ns, cache access time is $1$ ns, and TLB access time is also $1$ ns.</p>\n<p>Assuming that no page faults occur, the average time taken to access a virtual address is approximately (to the nearest $0.5$ ns)</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1.5$ ns</li>\n<li>$2$ ns</li>\n<li>$3$ ns</li>\n<li>$4$ ns</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "normal",
+        "virtual-memory"
+      ],
+      "question_uid": "go:788",
+      "exam_uid": "cse:2003:set1:main:q78",
+      "answer_uid": "manual:go:788",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43578": {
+      "title": "GATE CSE 2003 | Question: 79",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/43578/gate-cse-2003-question-79",
+      "question": "<p>A processor uses $\\text{2-level}$ page tables for virtual to physical address translation. Page tables for both levels are stored in the main memory. Virtual and physical addresses are both $32$ bits wide. The memory is byte addressable. For virtual to physical address translation, the $10$ most significant bits of the virtual address are used as index into the first level page table while the next $10$ bits are used as index into the second level page table. The $12$ least significant bits of the virtual address are used as offset within the page. Assume that the page table entries in both levels of page tables are $4$ bytes wide. Further, the processor has a translation look-aside buffer (TLB), with a hit rate of $\\text{96%}$. The TLB caches recently used virtual page numbers and the corresponding physical page numbers. The processor also has a physically addressed cache with a hit rate of $\\text{90%}$. Main memory access time is $10$ ns, cache access time is $1$ ns, and TLB access time is also $1$ ns.</p>\n<p>Suppose a process has only the following pages in its virtual address space: two contiguous code pages starting at virtual address $0x00000000$, two contiguous data pages starting at virtual address $0x00400000$, and a stack page starting at virtual address $0xFFFFF000$. The amount of memory required for storing the page tables of this process is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{8 KB}$</li>\n<li>$\\text{12 KB}$</li>\n<li>$\\text{16 KB}$</li>\n<li>$\\text{20 KB}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "normal",
+        "virtual-memory"
+      ],
+      "question_uid": "go:43578",
+      "exam_uid": "cse:2003:set1:main:q79",
+      "answer_uid": "manual:go:43578",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:964": {
+      "title": "GATE CSE 2003 | Question: 80",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/964/gate-cse-2003-question-80",
+      "question": "<p>Suppose we want to synchronize two concurrent processes $P$ and $Q$ using binary semaphores $S$ and $T$. The code for the processes $P$ and $Q$ is shown below.</p>\n<table border=\"1\" cellpadding=\"1\" style=\"width:90%\">\n<thead>\n<tr>\n<th scope=\"col\">Process P:</th>\n<th scope=\"col\">Process Q:</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">while(1){\nW:\n    print '0';\n    print '0';\nX:\n}\n</pre>\n</td>\n<td>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">while(1){\nY:\n    print '1';\n    print '1';\nZ:\n}\n</pre>\n</td>\n</tr>\n</tbody>\n</table>\n<p> </p>\n<p>Synchronization statements can be inserted only at points $W, X, Y,$ and $Z$</p>\n<p>Which of the following will always lead to an output staring with $\\text{‘}001100110011\\text{’}$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$P(S)$ at $W, V(S)$ at $X, P(T)$ at $Y, V(T)$ at $Z, S$ and $T$ initially $1$</p>\n</li>\n<li>\n<p>$P(S)$ at $W, V(T)$ at $X, P(T)$ at $Y, V(S)$ at $Z, S$ initially $1,$ and $T$ initially $0$</p>\n</li>\n<li>\n<p>$P(S)$ at $W, V(T)$ at $X, P(T)$ at $Y, V(S)$ at $Z, S$ and $T$ initially $1$</p>\n</li>\n<li>\n<p>$P(S)$ at $W, V(S)$ at $X, P(T)$ at $Y, V(T)$ at $Z, S$ initially $1$ , and $T$ initially $0$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "process-synchronization",
+        "normal"
+      ],
+      "question_uid": "go:964",
+      "exam_uid": "cse:2003:set1:main:q80",
+      "answer_uid": "v2:7.20.24",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43574": {
+      "title": "GATE CSE 2003 | Question: 81",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/43574/gate-cse-2003-question-81",
+      "question": "<p>Suppose we want to synchronize two concurrent processes $P$ and $Q$ using binary semaphores $S$ and $T$. The code for the processes $P$ and $Q$ is shown below.</p>\n<p>$$\\begin{array}{|l|l|}\\hline \\text{Process P:}  &amp;  \\text{Process Q: } \\\\\\hline  \\text{ while(1) \\{ } &amp; \\text{while(1) \\{} \\\\  \\text{W:} &amp; \\text{Y:} \\\\  \\text{ print ‘0';} &amp; \\text{ print ‘1';} \\\\  \\text{ print ‘0';} &amp; \\text{ print ‘1';} \\\\   \\text{X:} &amp; \\text{Z:} \\\\   \\text{\\}} &amp; \\text{\\}} \\\\\\hline   \\end{array}$$</p>\n<p>Synchronization statements can be inserted only at points $W, X, Y,$ and $Z$</p>\n<p>Which of the following will ensure that the output string never contains a substring of the form $01^n0$ and $10^n1$ where $n$ is odd?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$P(S)$ at $W, V(S)$ at $X, P(T)$ at $Y, V(T)$ at $Z, S$ and $T$ initially $1$</li>\n<li>$P(S)$ at $W, V(T)$ at $X, P(T)$ at $Y, V(S)$ at $Z, S$ and $T$ initially $1$</li>\n<li>$P(S)$ at $W, V(S)$ at $X, P(S)$ at $Y, V(S)$ at $Z, S$ initially $1$</li>\n<li>$V(S)$ at $W, V(T)$ at $X, P(S)$ at $Y, P(T)$ at $Z, S$ and $T$ initially $1$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "operating-system",
+        "process-synchronization",
+        "normal"
+      ],
+      "question_uid": "go:43574",
+      "exam_uid": "cse:2003:set1:main:q81",
+      "answer_uid": "v2:7.20.25",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:965": {
+      "title": "GATE CSE 2003 | Question: 82, ISRO2009-1",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/965/gate-cse-2003-question-82-isro2009-1",
+      "question": "<p>The subnet mask for a particular network is $255.255.31.0.$ Which of the following pairs of $\\text{IP}$ addresses could belong to this network?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$172.57.88.62$ and $172.56.87.23$</p>\n</li>\n<li>\n<p>$10.35.28.2$ and $10.35.29.4$</p>\n</li>\n<li>\n<p>$191.203.31.87$ and $191.234.31.88$</p>\n</li>\n<li>\n<p>$128.8.129.43$ and $128.8.161.55$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "computer-networks",
+        "subnetting",
+        "normal",
+        "isro2009"
+      ],
+      "question_uid": "go:965",
+      "exam_uid": "cse:2003:set1:main:q82-isro2009-1",
+      "answer_uid": "v2:4.29.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:966": {
+      "title": "GATE CSE 2003 | Question: 83",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/966/gate-cse-2003-question-83",
+      "question": "<p>A $2$ $km$ long broadcast LAN has $10^7$ bps bandwidth and uses CSMA/CD. The signal travels along the wire at $2 \\times 10^8$ m/s. What is the minimum packet size that can be used on this network?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$50$ $\\text{bytes}$</li>\n<li>$100$ $\\text{bytes}$</li>\n<li>$200$ $\\text{bytes}$</li>\n<li>None of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "computer-networks",
+        "lan-technologies",
+        "normal"
+      ],
+      "question_uid": "go:966",
+      "exam_uid": "cse:2003:set1:main:q83",
+      "answer_uid": "v2:4.16.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:967": {
+      "title": "GATE CSE 2003 | Question: 84",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/967/gate-cse-2003-question-84",
+      "question": "<p>Host $A$ is sending data to host $B$ over a full duplex link. $A$ and $B$ are using the sliding window protocol for flow control. The send and receive window sizes are $5$ packets each. Data packets (sent only from $A$ to $B$) are all $1000$ bytes long and the transmission time for such a packet is $50$ $μs$. Acknowledgment packets (sent only from $B$ to $A$) are very small and require negligible transmission time. The propagation delay over the link is $200$ $μs$. What is the maximum achievable throughput in this communication?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$7.69 \\times 10^6$ Bps</li>\n<li>$11.11 \\times 10^6$ Bps</li>\n<li>$12.33 \\times 10^6$ Bps</li>\n<li>$15.00 \\times 10^6$ Bps</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "computer-networks",
+        "sliding-window",
+        "normal"
+      ],
+      "question_uid": "go:967",
+      "exam_uid": "cse:2003:set1:main:q84",
+      "answer_uid": "v2:4.26.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:968": {
+      "title": "GATE CSE 2003 | Question: 85",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/968/gate-cse-2003-question-85",
+      "question": "<p>Consider the following functional dependencies in a database.$$\\begin{array}{|l|l|}\\hline \\text{Date_of_Birth } \\to \\text{Age} &amp; \\text{Age } \\to \\text{Eligibility} \\\\\\hline  \\text{Name } \\to \\text{Roll_number} &amp; \\text{Roll_number }\\to \\text{Name} \\\\\\hline   \\text{Course_number }\\to \\text{Course_name} &amp; \\text{Course_number } \\to\\text{Instructor} \\\\\\hline  \\text{(Roll_number, Course_number) }\\to\\text{Grade} &amp; \\text{}  \\\\\\hline \\end{array}$$The relation (Roll_number, Name, Date_of_birth, Age) is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>in second normal form but not in third normal form</li>\n<li>in third normal form but not in BCNF</li>\n<li>in BCNF</li>\n<li>in none of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "databases",
+        "database-normalization",
+        "normal"
+      ],
+      "question_uid": "go:968",
+      "exam_uid": "cse:2003:set1:main:q85",
+      "answer_uid": "v2:5.5.21",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:969": {
+      "title": "GATE CSE 2003 | Question: 86",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/969/gate-cse-2003-question-86",
+      "question": "<p>Consider the set of relations shown below and the SQL query that follows.</p>\n<p>Students: (Roll_number, Name, Date_of_birth)</p>\n<p>Courses: (Course_number, Course_name, Instructor)</p>\n<p>Grades: (Roll_number, Course_number, Grade)</p>\n<pre class=\"prettyprint lang-c_cpp\">Select distinct Name\nfrom Students, Courses, Grades\nwhere Students.Roll_number=Grades.Roll_number\n\tand Courses.Instructor = 'Korth'\n\tand Courses.Course_number = Grades.Course_number\n\tand Grades.Grade = 'A'\n</pre>\n<p>Which of the following sets is computed by the above query?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Names of students who have got an A grade in all courses taught by Korth</li>\n<li>\n<p>Names of students who have got an A grade in all courses</p>\n</li>\n<li>\n<p>Names of students who have got an A grade in at least one of the courses taught by Korth</p>\n</li>\n<li>\n<p>None of the above</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "databases",
+        "sql",
+        "easy"
+      ],
+      "question_uid": "go:969",
+      "exam_uid": "cse:2003:set1:main:q86",
+      "answer_uid": "v2:5.18.17",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:970": {
+      "title": "GATE CSE 2003 | Question: 87",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/970/gate-cse-2003-question-87",
+      "question": "<p>Consider three data items $D1, D2,$ and $D3,$ and the following execution schedule of transactions $T1, T2,$ and $T3.$ In the diagram, $R(D)$ and $W(D)$ denote the actions reading and writing the data item $D$ respectively.<br/>\n$$ \\begin{array}{|l|l|l|}\\hline \\textbf{T1}  &amp;  \\textbf{T2} &amp; \\textbf{T3}  \\\\\\hline \\text{} &amp; \\text{R(D3);} &amp; \\text{}\\\\ \\text{} &amp; \\text{R(D2);} &amp; \\text{} \\\\ \\text{} &amp; \\text{W(D2);} &amp; \\text{} \\\\ \\text{} &amp; \\text{} &amp; \\text{R(D2);} \\\\ \\text{} &amp; \\text{} &amp; \\text{R(D3);} \\\\ \\text{R(D1);} &amp; \\text{} &amp; \\text{} \\\\ \\text{W(D1);} &amp; \\text{} &amp; \\text{} \\\\ \\text{} &amp; \\text{} &amp; \\text{W(D2);} \\\\ \\text{} &amp; \\text{} &amp; \\text{W(D3);} \\\\ \\text{} &amp; \\text{R(D1);} &amp; \\text{} \\\\ \\text{R(D2);} &amp; \\text{} &amp; \\text{}   \\\\ \\text{W(D2);} &amp; \\text{} &amp; \\text{} \\\\ \\text{} &amp; \\text{W(D1);} &amp; \\text{}\\\\\\hline \\end{array}$$Which of the following statements is correct?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>The schedule is serializable as $T2; T3; T1$</p>\n</li>\n<li>\n<p>The schedule is serializable as $T2; T1; T3$</p>\n</li>\n<li>\n<p>The schedule is serializable as $T3; T2; T1$</p>\n</li>\n<li>\n<p>The schedule is not serializable</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "databases",
+        "transaction-and-concurrency",
+        "normal"
+      ],
+      "question_uid": "go:970",
+      "exam_uid": "cse:2003:set1:main:q87",
+      "answer_uid": "v2:5.19.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:971": {
+      "title": "GATE CSE 2003 | Question: 88",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/971/gate-cse-2003-question-88",
+      "question": "<p>In the following $C$ program fragment, $j$, $k$, $n$ and TwoLog_n are integer variables, and $A$ is an array of integers. The variable $n$ is initialized to an integer $\\geqslant 3$, and TwoLog_n is initialized to the value of $2^*\\lceil \\log_2(n) \\rceil$</p>\n<pre class=\"prettyprint lang-c_cpp\">for (k = 3;  k &lt;= n; k++)\n        A[k] = 0;\nfor (k = 2; k &lt;= TwoLog_n; k++)\n    for (j = k+1; j &lt;= n; j++)\n        A[j] = A[j] || (j%k);\nfor (j = 3; j &lt;= n; j++)\n    if (!A[j]) printf(\"%d\", j);\n</pre>\n<p>The set of numbers printed by this program fragment is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\left\\{m \\mid m \\leq n, (\\exists i)\\left[m=i!\\right]\\right\\}$</p>\n</li>\n<li>\n<p>$\\left\\{m \\mid m \\leq n, (\\exists i) \\left[m=i^2\\right]\\right\\}$</p>\n</li>\n<li>\n<p>$\\left\\{m \\mid m \\leq n, \\text{m is prime} \\right\\}$</p>\n</li>\n<li>\n<p>{ }</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "algorithms",
+        "identify-function",
+        "normal"
+      ],
+      "question_uid": "go:971",
+      "exam_uid": "cse:2003:set1:main:q88",
+      "answer_uid": "v2:1.18.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:972": {
+      "title": "GATE CSE 2003 | Question: 89",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/972/gate-cse-2003-question-89",
+      "question": "<p>Consider the C program shown below:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n#define print(x) printf(\"%d\", x)\n\nint x;\nvoid Q(int z)\n{\n        z+=x;\n        print(z);\n}\n\nvoid P(int *y)\n{\n        int x = *y + 2;\n        Q(x);\n        *y = x - 1;\n        print(x);\n}\nmain(void) {\n        x = 5;\n        P(&amp;x);\n        print(x);\n}\n</pre>\n<p>The output of this program is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$12 \\ 7 \\ 6$</li>\n<li>$22 \\ 12 \\ 11$</li>\n<li>$14 \\ 6 \\ 6$</li>\n<li>$7 \\ 6 \\ 6$</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "programming",
+        "programming-in-c",
+        "normal",
+        "pointers"
+      ],
+      "question_uid": "go:972",
+      "exam_uid": "cse:2003:set1:main:q89",
+      "answer_uid": "v2:9.9.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:973": {
+      "title": "GATE CSE 2003 | Question: 90",
+      "year": "gatecse-2003",
+      "link": "https://gateoverflow.in/973/gate-cse-2003-question-90",
+      "question": "<p>Consider the function $f$ defined below.</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">struct item {\n        int data;\n        struct item * next;\n};\nint f(struct item *p) {\n    return ((p == NULL) || (p-&gt;next == NULL)|| \n        ((p-&gt;data &lt;= p -&gt;next -&gt; data) &amp;&amp;\n        f(p-&gt;next)));\n}</pre>\n<p>For a given linked list $p$, the function $f$ returns $1$ if and only if</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>the list is empty or has exactly one element</p>\n</li>\n<li>\n<p>the elements in the list are sorted in non-decreasing order of data value</p>\n</li>\n<li>\n<p>the elements in the list are sorted in non-increasing order of data value</p>\n</li>\n<li>\n<p>not all elements in the list have the same data value</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2003",
+        "data-structures",
+        "linked-list",
+        "normal"
+      ],
+      "question_uid": "go:973",
+      "exam_uid": "cse:2003:set1:main:q90",
+      "answer_uid": "v2:8.9.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    }
+  }
+}

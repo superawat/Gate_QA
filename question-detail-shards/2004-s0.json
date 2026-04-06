@@ -1,0 +1,3369 @@
+{
+  "generatedAt": "2026-04-06T11:23:17.148Z",
+  "shardKey": "2004-s0",
+  "yearSetKey": "2004-s0",
+  "year": 2004,
+  "set": null,
+  "label": "2004",
+  "questionCount": 162,
+  "recordsByQuestionUid": {
+    "go:998": {
+      "title": "GATE CSE 2004 | Question: 1",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/998/gate-cse-2004-question-1",
+      "question": "<p>The goal of structured programming is to:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>have well indented programs</li>\n<li>be able to infer the flow of control from the compiled code</li>\n<li>be able to infer the flow of control from the program text</li>\n<li>avoid the use of GOTO statements</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "programming",
+        "easy",
+        "programming-paradigms"
+      ],
+      "question_uid": "go:998",
+      "exam_uid": "cse:2004:set1:main:q1",
+      "answer_uid": "v2:9.12.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:999": {
+      "title": "GATE CSE 2004 | Question: 2,ISRO2017-54",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/999/gate-cse-2004-question-2-isro2017-54",
+      "question": "<p>Consider the following function</p>\n<pre class=\"prettyprint lang-c_cpp\">void swap(int a, int b)  \n{       \n    int temp;\n    temp = a;\n    a = b;\n    b = temp;  \n}  </pre>\n<p>In order to exchange the values of two variables $x$ and $y$.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>call $swap(x, y)$</p>\n</li>\n<li>\n<p>call $swap(\\&amp;x, \\&amp;y)$</p>\n</li>\n<li>\n<p>$swap (x, y)$ cannot be used as it does not return any value</p>\n</li>\n<li>\n<p>$swap (x, y)$ cannot be used as the parameters are passed by value</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "compiler-design",
+        "programming-in-c",
+        "parameter-passing",
+        "easy",
+        "isro2017",
+        "runtime-environment"
+      ],
+      "question_uid": "go:999",
+      "exam_uid": "cse:2004:set1:main:q2-isro2017-54",
+      "answer_uid": "v2:3.16.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1000": {
+      "title": "GATE CSE 2004 | Question: 3",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1000/gate-cse-2004-question-3",
+      "question": "<p>A single array $A[1 \\ldots \\text{MAXSIZE}]$ is used to implement two stacks. The two stacks grow from opposite ends of the array. Variables $top1$ and $top2$ $(top1 &lt; top 2)$ point to the location of the topmost element in each of the stacks. If the space is to be used efficiently, the condition for $\\text{“}\\textsf{stack full}\\text{”}$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$(top1 = \\text{MAXSIZE} / 2)$ and $(top2 = \\text{MAXSIZE} / 2 + 1)$</p>\n</li>\n<li>\n<p>$top1 + top2 = \\text{MAXSIZE}$</p>\n</li>\n<li>\n<p>$(top1 = \\text{MAXSIZE} / 2)$ or $(top2 = \\text{MAXSIZE})$</p>\n</li>\n<li>\n<p>$top1 = top2 - 1$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "stack",
+        "easy"
+      ],
+      "question_uid": "go:1000",
+      "exam_uid": "cse:2004:set1:main:q3",
+      "answer_uid": "v2:8.13.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1001": {
+      "title": "GATE CSE 2004 | Question: 4, ISRO2009-26",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1001/gate-cse-2004-question-4-isro2009-26",
+      "question": "<p>The following numbers are inserted into an empty binary search tree in the given order: $10, 1, 3, 5, 15, 12, 16$. What is the height of the binary search tree (the height is the maximum distance of a leaf node from the root)?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n<li>$6$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "binary-search-tree",
+        "easy",
+        "isro2009"
+      ],
+      "question_uid": "go:1001",
+      "exam_uid": "cse:2004:set1:main:q4-isro2009-26",
+      "answer_uid": "v2:8.4.8",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1002": {
+      "title": "GATE CSE 2004 | Question: 5",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1002/gate-cse-2004-question-5",
+      "question": "<p>The best data structure to check whether an arithmetic expression has balanced parentheses is a</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>queue</li>\n<li>stack</li>\n<li>tree</li>\n<li>list</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "easy",
+        "stack"
+      ],
+      "question_uid": "go:1002",
+      "exam_uid": "cse:2004:set1:main:q5",
+      "answer_uid": "v2:8.13.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1003": {
+      "title": "GATE CSE 2004 | Question: 6",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1003/gate-cse-2004-question-6",
+      "question": "<p>Level order traversal of a rooted tree can be done by starting from the root and performing</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>preorder traversal</p>\n</li>\n<li>\n<p>in-order traversal</p>\n</li>\n<li>\n<p>depth first search</p>\n</li>\n<li>\n<p>breadth first search</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "tree",
+        "easy"
+      ],
+      "question_uid": "go:1003",
+      "exam_uid": "cse:2004:set1:main:q6",
+      "answer_uid": "v2:8.15.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1004": {
+      "title": "GATE CSE 2004 | Question: 7",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1004/gate-cse-2004-question-7",
+      "question": "<p>Given the following input $(4322, 1334, 1471, 9679, 1989, 6171, 6173, 4199)$ and the hash function $x$ mod $10$, which of the following statements are true?</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>$9679, 1989, 4199$ hash to the same value</p>\n</li>\n<li>\n<p>$1471, 6171$ hash to the same value</p>\n</li>\n<li>\n<p>All elements hash to the same value</p>\n</li>\n<li>\n<p>Each element hashes to a different value</p>\n</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I only</li>\n<li>II only</li>\n<li>I and II only</li>\n<li>III or IV</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "hashing",
+        "easy"
+      ],
+      "question_uid": "go:1004",
+      "exam_uid": "cse:2004:set1:main:q7",
+      "answer_uid": "v2:8.7.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1005": {
+      "title": "GATE CSE 2004 | Question: 8",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1005/gate-cse-2004-question-8",
+      "question": "<p>Which of the following grammar rules violate the requirements of an operator grammar? $P, Q, R$ are nonterminals, and $r, s, t$ are terminals.</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>$P \\rightarrow Q R$</p>\n</li>\n<li>\n<p>$P \\rightarrow Q s R$</p>\n</li>\n<li>\n<p>$P \\rightarrow \\: \\varepsilon$</p>\n</li>\n<li>\n<p>$P \\rightarrow Q t R r $</p>\n</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>(I) only</li>\n<li>(I) and (III) only</li>\n<li>(II) and (III) only</li>\n<li>(III) and (IV) only</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "compiler-design",
+        "grammar",
+        "normal"
+      ],
+      "question_uid": "go:1005",
+      "exam_uid": "cse:2004:set1:main:q8",
+      "answer_uid": "v2:3.8.26",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1006": {
+      "title": "GATE CSE 2004 | Question: 9",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1006/gate-cse-2004-question-9",
+      "question": "<p>Consider a program $P$ that consists of two source modules $M_1$ and $M_2$ contained in two different files. If $M_1$ contains a reference to a function defined in $M_2$ the reference will be resolved at </p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Edit time</li>\n<li>Compile time</li>\n<li>Link time</li>\n<li>Load time</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "compiler-design",
+        "easy",
+        "linker"
+      ],
+      "question_uid": "go:1006",
+      "exam_uid": "cse:2004:set1:main:q9",
+      "answer_uid": "v2:3.12.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:4069": {
+      "title": "GATE CSE 2004 | Question: 10",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/4069/gate-cse-2004-question-10",
+      "question": "<p>Consider the grammar rule $E \\rightarrow E1 – E2$ for arith­metic expressions. The code generated is targeted to a CPU having a single user register. The sub­traction operation requires the first operand to be in the register. If $E1$ and $E2$ do not have any com­mon sub expression, in order to get the shortest possible code</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$E1$ should be evaluated first</li>\n<li>$E2$ should be evaluated first</li>\n<li>Evaluation of $E1$ and $E2$ should necessarily be interleaved</li>\n<li>Order of evaluation of $E1$ and $E2$ is of no consequence</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "compiler-design",
+        "target-code-generation",
+        "normal"
+      ],
+      "question_uid": "go:4069",
+      "exam_uid": "cse:2004:set1:main:q10",
+      "answer_uid": "v2:3.18.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1008": {
+      "title": "GATE CSE 2004 | Question: 11",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1008/gate-cse-2004-question-11",
+      "question": "<p>Consider the following statements with respect to user-level threads and kernel-supported threads</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>context switch is faster with kernel-supported threads</p>\n</li>\n<li>\n<p>for user-level threads, a system call can block the entire process</p>\n</li>\n<li>\n<p>Kernel supported threads can be scheduled independently</p>\n</li>\n<li>\n<p>User level threads are transparent to the kernel</p>\n</li>\n</ol>\n<p>Which of the above statements are true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>(II), (III) and (IV) only</li>\n<li>(II) and (III) only</li>\n<li>(I) and (III) only</li>\n<li>(I) and (II) only</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "operating-system",
+        "threads",
+        "normal"
+      ],
+      "question_uid": "go:1008",
+      "exam_uid": "cse:2004:set1:main:q11",
+      "answer_uid": "manual:go:1008",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1009": {
+      "title": "GATE CSE 2004 | Question: 12",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1009/gate-cse-2004-question-12",
+      "question": "<p>Consider an operating system capable of loading and executing a single sequential user process at a time. The disk head scheduling algorithm used is First Come First Served (FCFS). If FCFS is replaced by Shortest Seek Time First (SSTF), claimed by the vendor to give $50 \\%$ better benchmark results, what is the expected improvement in the I/O performance of user programs?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$50 \\%$</li>\n<li>$40\\%$</li>\n<li>$25\\%$</li>\n<li>$0\\%$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "operating-system",
+        "disk-scheduling",
+        "normal"
+      ],
+      "question_uid": "go:1009",
+      "exam_uid": "cse:2004:set1:main:q12",
+      "answer_uid": "v2:7.4.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1010": {
+      "title": "GATE CSE 2004 | Question: 13",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1010/gate-cse-2004-question-13",
+      "question": "<p>Let $R_1 \\left(\\underline{A}, B, C\\right)$ and $R_2\\left(\\underline{D}, E \\right) $ be two relation schema, where the primary keys are shown underlined, and let C be a foreign key in $R_1$ referring to $R_2$. Suppose there is no violation of the above referential integrity constraint in the corresponding relation instances $r_1$ and $r_2$. Which of the following relational algebra expressions would necessarily produce an empty relation?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\Pi_D (r_2) - \\Pi_C (r_1)$</p>\n</li>\n<li>\n<p>$\\Pi_C (r_1) - \\Pi_D (r_2)$</p>\n</li>\n<li>\n<p>$\\Pi_D \\left(r_1 \\bowtie_{C \\neq  D}r_2\\right)$</p>\n</li>\n<li>\n<p>$\\Pi_C \\left(r_1 \\bowtie_{C = D}r_2\\right)$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "databases",
+        "relational-calculus",
+        "easy"
+      ],
+      "question_uid": "go:1010",
+      "exam_uid": "cse:2004:set1:main:q13",
+      "answer_uid": "v2:5.16.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1011": {
+      "title": "GATE CSE 2004 | Question: 14",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1011/gate-cse-2004-question-14",
+      "question": "<p>Consider the following relation schema pertaining to a students database:</p>\n<ul>\n<li>Students (<ins>rollno,</ins> name, address)</li>\n<li>Enroll (<ins>rollno, courseno</ins>, coursename)</li>\n</ul>\n<p>where the primary keys are shown underlined. The number of tuples in the student and Enroll tables are $120$ and $8$ respectively. What are the maximum and minimum number of tuples that can be present in (Student * Enroll), where ‘*’ denotes natural join?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8, 8$</li>\n<li>$120, 8$</li>\n<li>$960, 8$</li>\n<li>$960, 120$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "databases",
+        "easy",
+        "joins",
+        "natural-join"
+      ],
+      "question_uid": "go:1011",
+      "exam_uid": "cse:2004:set1:main:q14",
+      "answer_uid": "v2:5.10.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1012": {
+      "title": "GATE CSE 2004 | Question: 15",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1012/gate-cse-2004-question-15",
+      "question": "<p>Choose the best matching between $\\text{Group 1}$ and $\\text{Group 2}$</p>\n<p>$$\\begin{array}{|l|l|}\\hline \\textbf{Group-1} &amp; \\textbf{Group-2} \\\\\\hline  \\text{P. Data link layer} &amp; \\text{1. Ensures reliable transport of data over a physical point-}\\\\ &amp; \\text{to-point link} \\\\\\hline   \\text{Q. Network layer} &amp; \\text{2. Encodes/decodes data for physical transmission} \\\\\\hline  \\text{R. Transport layer} &amp; \\text{3. Allows end-to-end communication between two }\\\\ &amp; \\text{processes} \\\\\\hline \\text{} &amp; \\text{4. Routes data from one network node to the next} \\\\\\hline \\end{array}$$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{P-1, Q-4, R-3}$</li>\n<li>$\\text{P-2, Q-4, R-1}$</li>\n<li>$\\text{P-2, Q-3, R-1}$</li>\n<li>$\\text{P-1, Q-3, R-2}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "computer-networks",
+        "network-layering",
+        "normal"
+      ],
+      "question_uid": "go:1012",
+      "exam_uid": "cse:2004:set1:main:q15",
+      "answer_uid": "v2:4.19.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1013": {
+      "title": "GATE CSE 2004 | Question: 16",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1013/gate-cse-2004-question-16",
+      "question": "<p>Which of the following is NOT true with respect to a transparent bridge and a router?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>Both bridge and router selectively forward data packets</p>\n</li>\n<li>\n<p>A bridge uses IP addresses while a router uses MAC addresses</p>\n</li>\n<li>\n<p>A bridge builds up its routing table by inspecting incoming packets</p>\n</li>\n<li>\n<p>A router can connect between a LAN and a WAN</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "computer-networks",
+        "routers-bridge-hubs-switches",
+        "normal"
+      ],
+      "question_uid": "go:1013",
+      "exam_uid": "cse:2004:set1:main:q16",
+      "answer_uid": "v2:4.4.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1014": {
+      "title": "GATE CSE 2004 | Question: 17",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1014/gate-cse-2004-question-17",
+      "question": "<p>A Boolean function $x’y’ + xy + x’y$ is equivalent to</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$x' + y'$</li>\n<li>$x + y$</li>\n<li>$x + y'$</li>\n<li>$x' + y$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "easy",
+        "boolean-algebra"
+      ],
+      "question_uid": "go:1014",
+      "exam_uid": "cse:2004:set1:main:q17",
+      "answer_uid": "v2:6.3.15",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1015": {
+      "title": "GATE CSE 2004 | Question: 18, ISRO2007-31",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1015/gate-cse-2004-question-18-isro2007-31",
+      "question": "<p>In an $SR$ latch made by cross-coupling two NAND gates, if both $S$ and $R$ inputs are set to $0$, then it will result in</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$Q = 0, Q' = 1$</li>\n<li>$Q = 1, Q' = 0$</li>\n<li>$Q = 1, Q' = 1$</li>\n<li>Indeterminate states</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "easy",
+        "isro2007",
+        "flip-flop"
+      ],
+      "question_uid": "go:1015",
+      "exam_uid": "cse:2004:set1:main:q18-isro2007-31",
+      "answer_uid": "v2:6.14.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1016": {
+      "title": "GATE CSE 2004 | Question: 19",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1016/gate-cse-2004-question-19",
+      "question": "<p>If $73_x$ (in base-x number system) is equal to $54_y$ (in base $y$-number system), the possible values of $x$ and $y$ are</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8, 16$</li>\n<li>$10, 12$</li>\n<li>$9, 13$</li>\n<li>$8, 11$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "number-representation",
+        "easy"
+      ],
+      "question_uid": "go:1016",
+      "exam_uid": "cse:2004:set1:main:q19",
+      "answer_uid": "v2:6.24.24",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1017": {
+      "title": "GATE CSE 2004 | Question: 20",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1017/gate-cse-2004-question-20",
+      "question": "<p>Which of the following addressing modes are suitable for program relocation at run time?</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>Absolute addressing</p>\n</li>\n<li>\n<p>Based addressing</p>\n</li>\n<li>\n<p>Relative addressing</p>\n</li>\n<li>\n<p>Indirect addressing</p>\n</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I and IV</li>\n<li>I and II</li>\n<li>II and III</li>\n<li>I, II and IV</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "addressing-modes",
+        "easy"
+      ],
+      "question_uid": "go:1017",
+      "exam_uid": "cse:2004:set1:main:q20",
+      "answer_uid": "v2:2.1.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1018": {
+      "title": "GATE CSE 2004 | Question: 21, ISRO2007-44",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1018/gate-cse-2004-question-21-isro2007-44",
+      "question": "<p>The minimum number of page frames that must be allocated to a running process in a virtual memory environment is determined by</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>the instruction set architecture</li>\n<li>page size</li>\n<li>number of processes in memory</li>\n<li>physical memory size</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "operating-system",
+        "virtual-memory",
+        "page-replacement",
+        "normal",
+        "isro2007"
+      ],
+      "question_uid": "go:1018",
+      "exam_uid": "cse:2004:set1:main:q21-isro2007-44",
+      "answer_uid": "v2:7.16.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1020": {
+      "title": "GATE CSE 2004 | Question: 23, ISRO2007-32",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1020/gate-cse-2004-question-23-isro2007-32",
+      "question": "<p>Identify the correct translation into logical notation of the following assertion.<br/>\n<br/>\nSome boys in the class are taller than all the girls<br/>\n<br/>\nNote: $\\text{taller} (x, y)$ is true if $x$ is taller than $y$.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$(\\exists x) (\\text{boy}(x) \\rightarrow (\\forall y) (\\text{girl}(y) \\land \\text{taller}(x, y)))$</li>\n<li>$(\\exists x) (\\text{boy}(x) \\land (\\forall y) (\\text{girl}(y) \\land \\text{taller}(x, y)))$</li>\n<li>$(\\exists x) (\\text{boy}(x) \\rightarrow (\\forall y) (\\text{girl}(y) \\rightarrow \\text{taller}(x, y)))$</li>\n<li>$(\\exists x) (\\text{boy}(x) \\land (\\forall y) (\\text{girl}(y) \\rightarrow \\text{taller}(x, y)))$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "mathematical-logic",
+        "easy",
+        "isro2007",
+        "first-order-logic"
+      ],
+      "question_uid": "go:1020",
+      "exam_uid": "cse:2004:set1:main:q23-isro2007-32",
+      "answer_uid": "v1:3.1.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1021": {
+      "title": "GATE CSE 2004 | Question: 24",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1021/gate-cse-2004-question-24",
+      "question": "<p>Consider the binary relation:</p>\n<p>$S= \\left\\{\\left(x, y\\right) \\mid y=x+1 \\text{ and } x, y \\in \\left\\{0, 1, 2\\right\\} \\right\\}$</p>\n<p>The reflexive transitive closure is $S$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\left\\{\\left(x, y\\right) \\mid y &gt;x \\text{ and } x, y \\in \\left\\{0, 1, 2\\right\\} \\right\\}$ </p>\n</li>\n<li>\n<p>$\\left\\{\\left(x, y\\right) \\mid y \\geq x \\text{ and } x, y \\in \\left\\{0, 1, 2\\right\\} \\right\\}$ </p>\n</li>\n<li>\n<p>$\\left\\{\\left(x, y\\right) \\mid y &lt; x \\text{ and } x, y \\in \\left\\{0, 1, 2\\right\\} \\right\\}$ </p>\n</li>\n<li>\n<p>$\\left\\{\\left(x, y\\right) \\mid y \\leq x \\text{ and } x, y \\in \\left\\{0, 1, 2\\right\\} \\right\\}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "set-theory&algebra",
+        "easy",
+        "relations"
+      ],
+      "question_uid": "go:1021",
+      "exam_uid": "cse:2004:set1:main:q24",
+      "answer_uid": "manual:go:1021",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1022": {
+      "title": "GATE CSE 2004 | Question: 25",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1022/gate-cse-2004-question-25",
+      "question": "<p>If a fair coin is tossed four times. What is the probability that two heads and two tails will result?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\frac{3}{8}$</p>\n</li>\n<li>\n<p>$\\frac{1}{2}$</p>\n</li>\n<li>\n<p>$\\frac{5}{8}$</p>\n</li>\n<li>\n<p>$\\frac{3}{4}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "probability",
+        "easy"
+      ],
+      "question_uid": "go:1022",
+      "exam_uid": "cse:2004:set1:main:q25",
+      "answer_uid": "v1:7.12.8",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1023": {
+      "title": "GATE CSE 2004 | Question: 26",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1023/gate-cse-2004-question-26",
+      "question": "<p>The number of different $n \\times n $ symmetric matrices with each element being either 0 or 1 is: (Note: $\\text{power} \\left(2, X\\right)$ is same as $2^X$)</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{power} \\left(2, n\\right)$</li>\n<li>$\\text{power} \\left(2, n^2\\right)$</li>\n<li>$\\text{power} \\left(2,\\frac{ \\left(n^2+ n \\right) }{2}\\right)$</li>\n<li>$\\text{power} \\left(2, \\frac{\\left(n^2 - n\\right)}{2}\\right)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "linear-algebra",
+        "normal",
+        "matrix"
+      ],
+      "question_uid": "go:1023",
+      "exam_uid": "cse:2004:set1:main:q26",
+      "answer_uid": "manual:go:1023",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1024": {
+      "title": "GATE CSE 2004 | Question: 27",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1024/gate-cse-2004-question-27",
+      "question": "<p>Let $A, B, C, D$ be $n \\times n$ matrices, each with non-zero determinant. If $ABCD = I$, then $B^{-1}$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>   $D^{-1}C^{-1}A^{-1}$</li>\n<li>   $CDA$</li>\n<li>   $ADC$</li>\n<li>   Does not necessarily exist</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "linear-algebra",
+        "normal",
+        "matrix"
+      ],
+      "question_uid": "go:1024",
+      "exam_uid": "cse:2004:set1:main:q27",
+      "answer_uid": "manual:go:1024",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1025": {
+      "title": "GATE CSE 2004 | Question: 28",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1025/gate-cse-2004-question-28",
+      "question": "<p>What is the result of evaluating the following two expressions using three-digit floating point arithmetic with rounding?</p>\n<p>$(113. + -111.) + 7.51$</p>\n<p>$113. + (-111. + 7.51)$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$9.51$ and $10.0$ respectively</p>\n</li>\n<li>\n<p>$10.0$ and $9.51$ respectively</p>\n</li>\n<li>\n<p>$9.51$ and $9.51$ respectively</p>\n</li>\n<li>\n<p>$10.0$ and $10.0$ respectively</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "number-representation",
+        "normal"
+      ],
+      "question_uid": "go:1025",
+      "exam_uid": "cse:2004:set1:main:q28",
+      "answer_uid": "v2:6.24.25",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1026": {
+      "title": "GATE CSE 2004 | Question: 29",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1026/gate-cse-2004-question-29",
+      "question": "<p>The tightest lower bound on the number of comparisons, in the worst case, for comparison-based sorting is of the order of</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>$n$</li>\n<li>$n^2$</li>\n<li>$n \\log n$</li>\n<li>$n \\log^2n$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "sorting",
+        "asymptotic-notations",
+        "easy"
+      ],
+      "question_uid": "go:1026",
+      "exam_uid": "cse:2004:set1:main:q29",
+      "answer_uid": "v2:1.4.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1027": {
+      "title": "GATE CSE 2004 | Question: 30, ISRO2017-10",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1027/gate-cse-2004-question-30-isro2017-10",
+      "question": "<a name=\"1027\"></a><div itemprop=\"text\"><p>The problem $\\text{3-SAT}$ and $\\text{2-SAT}$ are&nbsp;</p>\n\n<ol style=\"list-style-type:upper-alpha\">\n\t<li>\n\t<p>both in $\\text{P}$</p>\n\t</li>\n\t<li>\n\t<p>both $\\text{NP}$ complete</p>\n\t</li>\n\t<li>\n\t<p>$\\text{NP}$-complete and in $\\text{P}$ respectively</p>\n\t</li>\n\t<li>\n\t<p>undecidable and $\\text{NP}$ complete respectively</p>\n\t</li>\n</ol></div>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "p-np-npc-nph",
+        "easy",
+        "isro2017",
+        "out-of-gatecse-syllabus",
+        "compiler-design",
+        "programming-in-c",
+        "parameter-passing",
+        "runtime-environment",
+        "gatecse-2014-set3",
+        "is&software-engineering",
+        "gate1994",
+        "recurrence-relation",
+        "computer-networks",
+        "serial-communication",
+        "normal"
+      ],
+      "question_uid": "go:1027",
+      "exam_uid": "cse:2004:set1:main:q30"
+    },
+    "go:1028": {
+      "title": "GATE CSE 2004 | Question: 31, ISRO2008-40",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1028/gate-cse-2004-question-31-isro2008-40",
+      "question": "<p>Consider the following C function:</p>\n<pre class=\"prettyprint lang-c_cpp\">int f(int n)\n{\n    static int i = 1;\n    if(n &gt;= 5) return n;\n    n = n+i;\n    i++;\n    return f(n);\n}</pre>\n<p>The value returned by $f(1)$ is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$5$</li>\n<li>$6$</li>\n<li>$7$</li>\n<li>$8$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "programming",
+        "programming-in-c",
+        "recursion",
+        "easy",
+        "isro2008"
+      ],
+      "question_uid": "go:1028",
+      "exam_uid": "cse:2004:set1:main:q31-isro2008-40",
+      "answer_uid": "v2:9.13.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1029": {
+      "title": "GATE CSE 2004 | Question: 32",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1029/gate-cse-2004-question-32",
+      "question": "<p>Consider the following program fragment for reversing the digits in a given integer to obtain a new integer.</p>\n<p>Let $n = d_1\\, d_2\\, \\ldots\\, d_m$.</p>\n<pre class=\"prettyprint lang-c_cpp\">int n, rev;\nrev = 0;\nwhile(n &gt; 0) {\n    rev = rev * 10 + n%10;\n    n = n/10;\n}</pre>\n<p>The loop invariant condition at the end of the $i^{th}$ iteration is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$n=d_1\\, d_2 \\,\\ldots\\, d_{m-i} \\qquad \\mathbf{and} \\qquad \\text{rev} = d_m\\,d_{m-1} \\,\\ldots\\, d_{m-i+1}$</p>\n</li>\n<li>\n<p>$n= d_{m-i+1} \\,\\ldots\\, d_{m-1}\\, d_m \\qquad \\mathbf{or} \\qquad \\text{rev} = d_{m-i} \\,\\ldots\\, d_2\\,d_1$</p>\n</li>\n<li>\n<p>$n \\neq \\text{rev}$</p>\n</li>\n<li>\n<p>$n=d_1\\, d_2 \\,\\ldots\\, d_m \\qquad \\mathbf{or} \\qquad \\text{rev} =d_m \\,\\ldots\\, d_2\\, d_1$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "programming",
+        "loop-invariants",
+        "normal"
+      ],
+      "question_uid": "go:1029",
+      "exam_uid": "cse:2004:set1:main:q32",
+      "answer_uid": "v2:9.6.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1030": {
+      "title": "GATE CSE 2004 | Question: 33",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1030/gate-cse-2004-question-33",
+      "question": "<p>Consider the following C program segment:</p>\n<pre class=\"prettyprint lang-c_cpp\">char p[20]; int i;\nchar* s = \"string\";\nint length = strlen(s);\nfor(i = 0; i &lt; length; i++)\n    p[i] = s[length-i];\nprintf(\"%s\", p);</pre>\n<p>The output of the program is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>gnirts</li>\n<li>string</li>\n<li>gnirt</li>\n<li>no output is printed</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "programming",
+        "programming-in-c",
+        "easy"
+      ],
+      "question_uid": "go:1030",
+      "exam_uid": "cse:2004:set1:main:q33",
+      "answer_uid": "v2:9.11.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1031": {
+      "title": "GATE CSE 2004 | Question: 34",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1031/gate-cse-2004-question-34",
+      "question": "<p>It is desired to design an object-oriented employee record system for a company. Each employee has a name, unique id, and salary. Employees belong to different categories and their salary is determined by their category. The functions get name, getId and compute salary are required. Given the class hierarchy below, possible locations for these functions are:</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>getId is implemented in the superclass</p>\n</li>\n<li>\n<p>getId is implemented in the subclass</p>\n</li>\n<li>\n<p>getName is an abstract function in the superclass</p>\n</li>\n<li>\n<p>getName is implemented in superclass</p>\n</li>\n<li>\n<p>getName is implemented in subclass</p>\n</li>\n<li>\n<p>getSalary is an abstract function in the superclass</p>\n</li>\n<li>\n<p>getSalary is implemented in the superclass</p>\n</li>\n<li>\n<p>getSalary is implemented in the subclass</p>\n</li>\n</ol>\n<p><img alt=\"\" height=\"157\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=5982054219653344969\" width=\"427\"/></p>\n<p><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=17327951007155603608\"/></p>\n<p>Choose the best design</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I, IV, VI, VIII</li>\n<li>I, IV, VII</li>\n<li>I, III, V, VI, VIII</li>\n<li>II, V, VIII</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "object-oriented-programming",
+        "normal"
+      ],
+      "question_uid": "go:1031",
+      "exam_uid": "cse:2004:set1:main:q34",
+      "answer_uid": "manual:go:1031",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1032": {
+      "title": "GATE CSE 2004 | Question: 35",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1032/gate-cse-2004-question-35",
+      "question": "<p>Consider the label sequences obtained by the following pairs of traversals on a labeled binary tree. Which of these pairs identify a tree uniquely?</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<p>preorder and postorder</p>\n</li>\n<li>\n<p>inorder and postorder</p>\n</li>\n<li>\n<p>preorder and inorder</p>\n</li>\n<li>\n<p>level order and postorder</p>\n</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>I only</li>\n<li>II, III</li>\n<li>III only</li>\n<li>IV only</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "binary-tree",
+        "normal"
+      ],
+      "question_uid": "go:1032",
+      "exam_uid": "cse:2004:set1:main:q35",
+      "answer_uid": "v2:8.5.24",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1033": {
+      "title": "GATE CSE 2004 | Question: 36",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1033/gate-cse-2004-question-36",
+      "question": "<p>A circularly linked list is used to represent a Queue. A single variable $p$ is used to access the Queue. To which node should $p$ point such that both the operations $\\text{enQueue}$ and $\\text{deQueue}$ can be performed in constant time?</p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"184\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=543162888522397383\" width=\"521\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>rear node</li>\n<li>front node</li>\n<li>not possible with a single pointer</li>\n<li>node next to front</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "linked-list",
+        "normal"
+      ],
+      "question_uid": "go:1033",
+      "exam_uid": "cse:2004:set1:main:q36",
+      "answer_uid": "v2:8.9.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1034": {
+      "title": "GATE CSE 2004 | Question: 37",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1034/gate-cse-2004-question-37",
+      "question": "<p>The elements $32, 15, 20, 30, 12, 25, 16,$ are inserted one by one in the given order into a maxHeap. The resultant maxHeap is</p>\n<ol class=\"shrink-inline-options2\" style=\"list-style-type:upper-alpha\">\n<li> <img alt=\"\" height=\"169\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=4657742569677615821\" width=\"259\"/></li>\n<li><img alt=\"\" height=\"191\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=7880957841734369224\" width=\"292\"/></li>\n<li><img alt=\"\" height=\"196\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=18306799088551482783\" width=\"300\"/></li>\n<li><img alt=\"\" height=\"198\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=3431414533345992006\" width=\"303\"/></li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "heap",
+        "normal"
+      ],
+      "question_uid": "go:1034",
+      "exam_uid": "cse:2004:set1:main:q37",
+      "answer_uid": "v2:8.3.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1035": {
+      "title": "GATE CSE 2004 | Question: 38, ISRO2009-27",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1035/gate-cse-2004-question-38-isro2009-27",
+      "question": "<p>Assume that the operators $+, -, \\times$ are left associative and $^\\hat{}$ is right associative. The order of precedence (from highest to lowest) is $ \\ ^\\hat{}, \\times, +, -$. The postfix expression corresponding to the infix expression $a+ b \\times c-d ^ \\ \\ \\hat{}\\ e^ \\  \\hat{} \\ f$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$abc\\times+def \\ \\ \\hat{}{} \\ \\ \\ \\hat{}-$</p>\n</li>\n<li>\n<p>$abc\\times+de\\ \\ \\hat{} \\ \\ f \\ \\ \\hat{} \\ \\ -$</p>\n</li>\n<li>\n<p>$ab+c\\times d-e \\ \\ \\hat{} \\ \\ f \\ \\ \\hat{}$</p>\n</li>\n<li>\n<p>$-+a\\times bc \\ \\ \\hat{} \\ \\ \\ \\hat{} \\ \\ def$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "stack",
+        "isro2009",
+        "infix-prefix"
+      ],
+      "question_uid": "go:1035",
+      "exam_uid": "cse:2004:set1:main:q38-isro2009-27",
+      "answer_uid": "v2:8.8.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1036": {
+      "title": "GATE CSE 2004 | Question: 39",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1036/gate-cse-2004-question-39",
+      "question": "<p>Two matrices $M_1$ and $M_2$ are to be stored in arrays $A$ and $B$ respectively. Each array can be stored either in row-major or column-major order in contiguous memory locations. The time complexity of an algorithm to compute $M_1 \\times M_2$ will be</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>best if $A$ is in row-major, and $B$ is in column-major order</p>\n</li>\n<li>\n<p>best if both are in row-major order</p>\n</li>\n<li>\n<p>best if both are in column-major order</p>\n</li>\n<li>\n<p>independent of the storage scheme</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "time-complexity",
+        "easy"
+      ],
+      "question_uid": "go:1036",
+      "exam_uid": "cse:2004:set1:main:q39",
+      "answer_uid": "manual:go:1036",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1037": {
+      "title": "GATE CSE 2004 | Question: 40",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1037/gate-cse-2004-question-40",
+      "question": "<p>Suppose each set is represented as a linked list with elements in arbitrary order. Which of the operations among $\\text{union, intersection, membership, cardinality}$ will be the slowest?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{union}$ only</p>\n</li>\n<li>\n<p>$\\text{intersection, membership}$</p>\n</li>\n<li>\n<p>$\\text{membership, cardinality}$</p>\n</li>\n<li>\n<p>$\\text{union, intersection}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "linked-list",
+        "normal"
+      ],
+      "question_uid": "go:1037",
+      "exam_uid": "cse:2004:set1:main:q40",
+      "answer_uid": "v2:8.9.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1038": {
+      "title": "GATE CSE 2004 | Question: 41",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1038/gate-cse-2004-question-41",
+      "question": "<p>Consider the following C program</p>\n<pre class=\"prettyprint lang-c_cpp\">main\n{ \n    int x, y, m, n;\n    scanf(\"%d %d\", &amp;x, &amp;y);\n    /* Assume x&gt;0 and y&gt;0*/\n    m = x; n = y;\n    while(m != n)\n        { \n            if (m &gt; n)\n                m = m-n;\n            else\n                n = n-m;\n        }\n    printf(\"%d\", n);\n}</pre>\n<p>The program computes</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$x+y$ using repeated subtraction</p>\n</li>\n<li>\n<p>$x \\mod y$ using repeated subtraction</p>\n</li>\n<li>\n<p>the greatest common divisor of $x$ and $y$</p>\n</li>\n<li>\n<p>the least common multiple of $x$ and $y$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "normal",
+        "identify-function"
+      ],
+      "question_uid": "go:1038",
+      "exam_uid": "cse:2004:set1:main:q41",
+      "answer_uid": "v2:1.18.14",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1039": {
+      "title": "GATE CSE 2004 | Question: 42",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1039/gate-cse-2004-question-42",
+      "question": "<p>What does the following algorithm approximate? (Assume $m &gt; 1, \\epsilon &gt;0$).</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">x = m;\ny = 1;\nWhile (x-y &gt; ϵ)\n{\n    x = (x+y)/2;\n    y = m/x;\n}\nprint(x);</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\log \\, m$</li>\n<li>$m^2$</li>\n<li>$m^{\\frac{1}{2}}$</li>\n<li>$m^{\\frac{1}{3}}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "identify-function",
+        "normal"
+      ],
+      "question_uid": "go:1039",
+      "exam_uid": "cse:2004:set1:main:q42",
+      "answer_uid": "v2:1.18.15",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1040": {
+      "title": "GATE CSE 2004 | Question: 43",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1040/gate-cse-2004-question-43",
+      "question": "<p>Consider the following C program segment</p>\n<pre class=\"prettyprint lang-c_cpp\">struct CellNode{\n    struct CellNode *leftChild\n    int element;\n    struct CellNode *rightChild;\n    };\n\nint Dosomething (struct CellNode *ptr)\n{\n    int value = 0;\n    if(ptr != NULL)\n    { \n        if (ptr -&gt; leftChild != NULL)\n            value = 1 + DoSomething (ptr -&gt; leftChild);\n        if (ptr -&gt; rightChild != NULL)\n            value = max(value, 1 + Dosomething (ptr -&gt; rightChild));\n    }\n    return(value);\n}</pre>\n<p>The value returned by the function $\\text{DoSomething}$ when a pointer to the root of a non-empty tree is passed as argument is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>The number of leaf nodes in the tree</li>\n<li>The number of nodes in the tree</li>\n<li>The number of internal nodes in the tree</li>\n<li>The height of the tree</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "data-structures",
+        "binary-tree",
+        "normal"
+      ],
+      "question_uid": "go:1040",
+      "exam_uid": "cse:2004:set1:main:q43",
+      "answer_uid": "v2:8.5.25",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1041": {
+      "title": "GATE CSE 2004 | Question: 44",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1041/gate-cse-2004-question-44",
+      "question": "<p>Suppose we run Dijkstra’s single source shortest path algorithm on the following edge-weighted directed graph with vertex $P$ as the source.</p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"218\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=4462792251269685359\" width=\"251\"/></p>\n<p>In what order do the nodes get included into the set of vertices for which the shortest path distances are finalized?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$P,Q,R,S,T,U$</li>\n<li>$P,Q,R,U,S,T$</li>\n<li>$P,Q,R,U,T,S$</li>\n<li>$P,Q,T,R,U,S$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "graph-algorithms",
+        "normal"
+      ],
+      "question_uid": "go:1041",
+      "exam_uid": "cse:2004:set1:main:q44",
+      "answer_uid": "v2:1.9.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1042": {
+      "title": "GATE CSE 2004 | Question: 45",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1042/gate-cse-2004-question-45",
+      "question": "<p>Consider the grammar with the following translation rules and $E$ as the start symbol$$\\begin{array}{lll}<br/>\nE \\rightarrow   E_ 1\\# \\: T &amp; \\qquad\\left\\{E.value = E_1.value * T.value\\right\\}\\\\<br/>\n\\qquad\\mid T &amp; \\qquad \\{E.value = T.value\\}\\\\<br/>\nT \\rightarrow  T_1 \\&amp; \\: F &amp;\\qquad \\{T.value = T_1.value + F.value\\}\\\\<br/>\n\\qquad\\mid F&amp;\\qquad \\{T.value = F.value\\}\\\\<br/>\nF \\rightarrow \\text{num}&amp;\\qquad \\{F.value=num.value\\}<br/>\n\\end{array}$$Compute E.value for the root of the parse tree for the expression:$2$ # $3$ &amp; $5$ # $6$ &amp; $4$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$200$</li>\n<li>$180$</li>\n<li>$160$</li>\n<li>$40$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "compiler-design",
+        "grammar",
+        "normal"
+      ],
+      "question_uid": "go:1042",
+      "exam_uid": "cse:2004:set1:main:q45",
+      "answer_uid": "v2:3.8.25",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1043": {
+      "title": "GATE CSE 2004 | Question: 46",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1043/gate-cse-2004-question-46",
+      "question": "<p>Consider the following set of processes, with the arrival times and the CPU-burst times gives in milliseconds.$$\\small \\begin{array}{|c|c|c|} \\hline \\textbf{Process} &amp; \\textbf{Arrival Time} &amp; \\textbf{Burst Time}\\\\\\hline \\text{P1} &amp; 0 &amp; 5\\\\ \\text{P2} &amp; 1 &amp; 3\\\\ \\text{P3} &amp; 2 &amp; 3 \\\\ \\text{P4} &amp; 4 &amp; 1\\\\\\hline  \\end{array}$$What is the average turnaround time for these processes with the preemptive shortest remaining processing time first (SRPT) algorithm?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$5.50$</li>\n<li>$5.75$</li>\n<li>$6.00$</li>\n<li>$6.25$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "operating-system",
+        "process-scheduling",
+        "normal"
+      ],
+      "question_uid": "go:1043",
+      "exam_uid": "cse:2004:set1:main:q46",
+      "answer_uid": "v2:7.19.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:318": {
+      "title": "GATE CSE 2004 | Question: 47",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/318/gate-cse-2004-question-47",
+      "question": "<p>Consider a system with a two-level paging scheme in which a regular memory access takes $150$ $nanoseconds$, and servicing a page fault takes $8$ $milliseconds$. An average instruction takes $100$ nanoseconds of CPU time, and two memory accesses. The TLB hit ratio is $90$%, and the page fault rate is one in every $10,000$ instructions. What is the effective average instruction execution time?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{645 nanoseconds}$</li>\n<li>$\\text{1050 nanoseconds}$</li>\n<li>$\\text{1215 nanoseconds}$</li>\n<li>$\\text{1230 nanoseconds}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "virtual-memory",
+        "normal"
+      ],
+      "question_uid": "go:318",
+      "exam_uid": "cse:2004:set1:main:q47",
+      "answer_uid": "manual:go:318",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1044": {
+      "title": "GATE CSE 2004 | Question: 48",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1044/gate-cse-2004-question-48",
+      "question": "<p>Consider two processes $P_1$ and $P_2$ accessing the shared variables $X$ and $Y$ protected by two binary semaphores $S_X$ and $S_Y$ respectively, both initialized to 1. $P$ and $V$ denote the usual semaphore operators, where $P$ decrements the semaphore value, and $V$ increments the semaphore value. The pseudo-code of $P_1$ and $P_2$ is as follows:<br/>\n$$\\begin{array}{|l|l|}\\hline \\text{$P_1$:}  &amp;  \\text{$P_2$:}  \\\\\\hline  \\text{While true do \\{} &amp; \\text{While true do \\{} \\\\ L_1:\\ldots\\ldots &amp; L_3:\\ldots\\ldots \\\\  L_2:\\ldots\\ldots &amp; L_4:\\ldots\\ldots \\\\ \\text{X = X + 1;} &amp; \\text{Y = Y + 1;} \\\\ Y=Y-1;&amp;X = Y-1;<br/>\n\\\\  \\text{$V(S_X);$} &amp; \\text{$V(S_Y);$} \\\\  \\text{$V(S_Y);$} &amp; \\text{$V(S_X);$} \\\\\\}&amp;\\} \\\\\\hline  \\end{array}$$<br/>\nIn order to avoid deadlock, the correct operators at $L_1$, $L_2$, $L_3$ and $L_4$ are respectively.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$P(S_Y), P(S_X); P(S_X), P(S_Y)$</p>\n</li>\n<li>\n<p>$P(S_X), P(S_Y); P(S_Y), P(S_X)$</p>\n</li>\n<li>\n<p>$P(S_X), P(S_X); P(S_Y), P(S_Y)$</p>\n</li>\n<li>\n<p>$P(S_X), P(S_Y); P(S_X), P(S_Y)$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "operating-system",
+        "process-synchronization",
+        "normal"
+      ],
+      "question_uid": "go:1044",
+      "exam_uid": "cse:2004:set1:main:q48",
+      "answer_uid": "v2:7.20.26",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1045": {
+      "title": "GATE CSE 2004 | Question: 49",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1045/gate-cse-2004-question-49",
+      "question": "<p>A unix-style I-nodes has $10$ direct pointers and one single, one double and one triple indirect pointers. Disk block size is $1$ Kbyte, disk block address is $32$ bits, and $48$-bit integers are used. What is the maximum possible file size?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2^{24}$ bytes</li>\n<li>$2^{32}$ bytes</li>\n<li>$2^{34}$ bytes</li>\n<li>$2^{48}$ bytes</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "operating-system",
+        "disk",
+        "normal"
+      ],
+      "question_uid": "go:1045",
+      "exam_uid": "cse:2004:set1:main:q49",
+      "answer_uid": "v2:7.3.14",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1046": {
+      "title": "GATE CSE 2004 | Question: 50",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1046/gate-cse-2004-question-50",
+      "question": "<p>The relation scheme $\\text{Student Performance (name, courseNo, rollNo, grade)}$ has the following functional dependencies:</p>\n<ul>\n<li>name, courseNo, $\\rightarrow$ grade</li>\n<li>rollNo, courseNo $\\rightarrow$ grade</li>\n<li>name $\\rightarrow$ rollNo</li>\n<li>rollNo $\\rightarrow$ name</li>\n</ul>\n<p>The highest normal form of this relation scheme is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{2NF}$</li>\n<li>$\\text{3NF}$</li>\n<li>$\\text{BCNF}$</li>\n<li>$\\text{4NF}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "databases",
+        "database-normalization",
+        "normal"
+      ],
+      "question_uid": "go:1046",
+      "exam_uid": "cse:2004:set1:main:q50",
+      "answer_uid": "v2:5.5.22",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1047": {
+      "title": "GATE CSE 2004 | Question: 51",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1047/gate-cse-2004-question-51",
+      "question": "<p>Consider the relation Student (<ins>name</ins>, sex, marks), where the primary key is shown underlined, pertaining to students in a class that has at least one boy and one girl. What does the following relational algebra expression produce? (Note: $\\rho$ is the rename operator).</p>\n<p>$\\displaystyle \\pi_{name} \\{\\sigma_{sex=female} (\\text{Student}) \\} - \\pi_{name} (\\text{Student}\\bowtie _{(sex=female \\wedge x=male \\wedge marks \\leq m)} \\rho_{n, x, m}(\\text{Student}))$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>names of girl students with the highest marks</li>\n<li>names of girl students with more marks than some boy student</li>\n<li>names of girl students with marks not less than some boy student</li>\n<li>names of girl students with more marks than all the boy students</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "databases",
+        "relational-algebra",
+        "normal"
+      ],
+      "question_uid": "go:1047",
+      "exam_uid": "cse:2004:set1:main:q51",
+      "answer_uid": "manual_res:go:1047",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1048": {
+      "title": "GATE CSE 2004 | Question: 52",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1048/gate-cse-2004-question-52",
+      "question": "<p>The order of an internal node in a $B+$ tree index is the maximum number of children it can have. Suppose that a child pointer takes $6$ bytes, the search field value takes $14$ bytes, and the block size is $512$ bytes. What is the order of the internal node?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$24$</li>\n<li>$25$</li>\n<li>$26$</li>\n<li>$27$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "databases",
+        "b-tree",
+        "normal"
+      ],
+      "question_uid": "go:1048",
+      "exam_uid": "cse:2004:set1:main:q52",
+      "answer_uid": "v2:5.1.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1049": {
+      "title": "GATE CSE 2004 | Question: 53",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1049/gate-cse-2004-question-53",
+      "question": "<p>The employee information in a company is stored in the relation</p>\n<ul>\n<li>Employee (name, sex, salary, deptName)</li>\n</ul>\n<p>Consider the following SQL query</p>\n<pre class=\"sql\">Select deptName\n    From Employee\n    Where sex = ‘M’\n    Group by deptName\n    Having avg(salary) &gt;\n        (select avg (salary) from Employee)\n</pre>\n<p>It returns the names of the department in which</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>the average salary is more than the average salary in the company</p>\n</li>\n<li>\n<p>the average salary of male employees is more than the average salary of all male employees in the company</p>\n</li>\n<li>\n<p>the average salary of male employees is more than the average salary of employees in same the department</p>\n</li>\n<li>\n<p>the average salary of male employees is more than the average salary in the company</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "databases",
+        "sql",
+        "normal"
+      ],
+      "question_uid": "go:1049",
+      "exam_uid": "cse:2004:set1:main:q53",
+      "answer_uid": "v2:5.18.18",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1050": {
+      "title": "GATE CSE 2004 | Question: 54",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1050/gate-cse-2004-question-54",
+      "question": "<p>$A$ and $B$ are the only two stations on an Ethernet. Each has a steady queue of frames to send. Both $A$ and $B$ attempt to transmit a frame, collide, and $A$ wins the first backoff race. At the end of this successful transmission by $A$, both $A$ and $B$ attempt to transmit and collide. The probability that $A$ wins the second backoff race is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$0.5$</li>\n<li>$0.625$</li>\n<li>$0.75$</li>\n<li>$1.0$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "computer-networks",
+        "ethernet",
+        "probability",
+        "normal"
+      ],
+      "question_uid": "go:1050",
+      "exam_uid": "cse:2004:set1:main:q54",
+      "answer_uid": "v2:4.12.1",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1051": {
+      "title": "GATE CSE 2004 | Question: 55",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1051/gate-cse-2004-question-55",
+      "question": "<p>The routing table of a router  is shown below:<br/>\n$$\\begin{array}{|l|l|l|} \\hline \\textbf {Destination} &amp; \\textbf {Subnet Mask} &amp; \\textbf{Interface}  \\\\\\hline \\text {128.75.43.0} &amp;  \\text{255.255.255.0} &amp; \\text{Eth$0$} \\\\\\hline\\text {128.75.43.0} &amp;  \\text{255.255.255.128} &amp; \\text{Eth$1$} \\\\\\hline\\text {192.12.17.5} &amp;  \\text{255.255.255.255} &amp; \\text{Eth$3$}\\\\\\hline \\text {Default} &amp;  \\text{} &amp; \\text{Eth$2$}\\\\\\hline\\end{array}$$<br/>\nOn which interface will the router forward packets addressed to destinations $128.75.43.16$ and $192.12.17.10$ respectively?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Eth$1$ and Eth$2$</li>\n<li>Eth$0$ and Eth$2$</li>\n<li>Eth$0$ and Eth$3$</li>\n<li>Eth$1$ and Eth$3$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "computer-networks",
+        "subnetting",
+        "normal"
+      ],
+      "question_uid": "go:1051",
+      "exam_uid": "cse:2004:set1:main:q55",
+      "answer_uid": "v2:4.29.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1052": {
+      "title": "GATE CSE 2004 | Question: 56",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1052/gate-cse-2004-question-56",
+      "question": "<p>Consider three IP networks $A, B$ and $C$. Host $H_A$ in network $A$ sends messages each containing $180$ bytes of application data to a host $H_C$ in network $C$. The $\\text{TCP}$ layer prefixes $20$ byte header to the message.</p>\n<p>This passes through an intermediate network $B$.The maximum packet size, including $20$ byte IP header, in each network is:</p>\n<ul>\n<li>A: $\\text{1000 bytes}$</li>\n<li>B: $\\text{100 bytes}$</li>\n<li>C: $\\text{1000 bytes}$</li>\n</ul>\n<p>The network $A$ and $B$ are connected through a $1$ Mbps link, while $B$ and $C$<br/>\n are connected by a $512$ Kbps link (bps = bits per second).        </p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=17391285651520696272\"/></p>\n<p>Assuming that the packets are correctly delivered, how many bytes, including headers, are delivered to the $IP$ layer at the destination for one application message, in the best case? Consider only data packets.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$200$</li>\n<li>$220$</li>\n<li>$240$</li>\n<li>$260$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "computer-networks",
+        "ip-addressing",
+        "tcp",
+        "normal"
+      ],
+      "question_uid": "go:1052",
+      "exam_uid": "cse:2004:set1:main:q56",
+      "answer_uid": "v2:4.14.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43572": {
+      "title": "GATE CSE 2004 | Question: 57",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/43572/gate-cse-2004-question-57",
+      "question": "<p>Consider three IP networks $A, B$ and $C$. Host $H_A$ in network $A$ sends messages each containing $180$ $bytes$ of application data to a host $H_C$ in network $C$. The TCP layer prefixes $20$ byte header to the message. This passes through an intermediate network $B$. The maximum packet size, including $20$ byte IP header, in each network, is:</p>\n<ul>\n<li>$A:$ $1000$ $\\text{bytes}$</li>\n<li>$B: 100$   $\\text{bytes}$</li>\n<li>$C: 1000$ $\\text{bytes}$</li>\n</ul>\n<p>The network $A$ and $B$ are connected through a $1$ $Mbps$ link, while $B$ and $C$ are connected by a $512$ $Kbps$ link (bps = bits per second).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=3017461663168796687\"/></p>\n<p>What is the rate at which application data is transferred to host $H_C$? Ignore errors, acknowledgments, and other overheads.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$325.5$ $\\text{Kbps}$</li>\n<li>$354.5$ $\\text{Kbps}$</li>\n<li>$409.6$ $\\text{Kbps}$</li>\n<li>$512.0$ $\\text{Kbps}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "computer-networks",
+        "ip-addressing",
+        "tcp",
+        "normal"
+      ],
+      "question_uid": "go:43572",
+      "exam_uid": "cse:2004:set1:main:q57",
+      "answer_uid": "v2:4.14.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1053": {
+      "title": "GATE CSE 2004 | Question: 58",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1053/gate-cse-2004-question-58",
+      "question": "<p>A circuit outputs a digit in the form of $4$ bits. $0$ is represented by $0000, 1$ by $0001, \\ldots, 9$ by $1001$. A combinational circuit is to be designed which takes these $4$ bits as input and outputs $1$ if the digit $\\geq$ $5$, and $0$ otherwise. If only $\\textsf{AND}, \\textsf{OR}$ and $\\textsf{NOT}$ gates may be used, what is the minimum number of gates required?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n<li>$5$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "normal",
+        "min-no-gates"
+      ],
+      "question_uid": "go:1053",
+      "exam_uid": "cse:2004:set1:main:q58",
+      "answer_uid": "v2:6.20.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1054": {
+      "title": "GATE CSE 2004 | Question: 59",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1054/gate-cse-2004-question-59",
+      "question": "<p>Which are the essential prime implicants of the following Boolean function?</p>\n<p>$f(a, b, c)= a' c+ ac'+b' c$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$a' c$ and $ac'$</li>\n<li>$a' c$ and $b' c$</li>\n<li>$a' c$ only.</li>\n<li>$ac'$ and $bc'$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "normal",
+        "prime-implicants"
+      ],
+      "question_uid": "go:1054",
+      "exam_uid": "cse:2004:set1:main:q59",
+      "answer_uid": "v2:6.25.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1055": {
+      "title": "GATE CSE 2004 | Question: 60",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1055/gate-cse-2004-question-60",
+      "question": "<p>Consider a multiplexer with $X$ and $Y$ as data inputs and $Z$ the as the control input. $Z=0$ selects input $X$, and $Z=1$ selects input $Y$. What are the connections required to realize the 2-variable Boolean function $f=T+R$, without using any additional hardware?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{R to X, 1 to Y, T to Z}$</li>\n<li>$\\text{T to X, R to Y, T to Z}$</li>\n<li>$\\text{T to X, R to Y, 0 to Z}$</li>\n<li>$\\text{R to X, 0 to Y, T to Z}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "normal",
+        "multiplexer"
+      ],
+      "question_uid": "go:1055",
+      "exam_uid": "cse:2004:set1:main:q60",
+      "answer_uid": "v2:6.23.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1056": {
+      "title": "GATE CSE 2004 | Question: 61",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1056/gate-cse-2004-question-61",
+      "question": "<p>Consider the partial implementation of a $2-bit$ counter using $T$ flip-flops following the sequence $0-2-3-1-0,$ as shown below.</p>\n<p><img alt=\"\" height=\"238\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=5997767203235691310\" width=\"422\"/></p>\n<p>To complete the circuit, the input $X$ should be</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$Q_2^c$</li>\n<li>$Q_2 + Q_1$</li>\n<li>$\\left(Q_1 + Q_2\\right)^c$</li>\n<li>$Q_1 \\oplus Q_2$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "circuit-output",
+        "normal"
+      ],
+      "question_uid": "go:1056",
+      "exam_uid": "cse:2004:set1:main:q61",
+      "answer_uid": "v2:6.7.20",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1057": {
+      "title": "GATE CSE 2004 | Question: 62",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1057/gate-cse-2004-question-62",
+      "question": "<p>A 4-bit carry look ahead adder, which adds two 4-bit numbers, is designed using AND, OR, NOT, NAND, NOR gates only. Assuming that all the inputs are available in both complemented and uncomplemented forms and the delay of each gate is one time unit, what is the overall propagation delay of the adder? Assume that the carry network has been implemented using two-level AND-OR logic.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>4 time units</li>\n<li>6 time units</li>\n<li>10 time units</li>\n<li>12 time units</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "normal",
+        "adder"
+      ],
+      "question_uid": "go:1057",
+      "exam_uid": "cse:2004:set1:main:q62",
+      "answer_uid": "v2:6.1.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1058": {
+      "title": "GATE CSE 2004 | Question: 63",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1058/gate-cse-2004-question-63",
+      "question": "<p>Consider the following program segment for a hypothetical CPU having three user registers $R_1, R_2$ and $R_3.$ $$\\begin{array}{|l|l|c|} \\hline \\text {Instruction}  &amp;  \\text{Operation }&amp; \\text{Instruction size} \\\\&amp;&amp; \\text{(in words)} \\\\\\hline \\text{MOV $R_1,5000$} &amp; \\text{$R_1$} \\leftarrow  \\text{Memory$[5000]$}&amp; \\text{$2$} \\\\\\hline\\text{MOV $R2,(R1)$} &amp; \\text{$R2$} \\leftarrow  \\text{Memory$[(R_1)]$}&amp; \\text{$1$} \\\\\\hline \\text{ADD $R_2,R_3$} &amp; \\text{$R2$} \\leftarrow  \\text{$R_2 + R_3$} &amp; \\text{$1$} \\\\\\hline \\text{MOV $6000,R_2$} &amp; \\text{Memory$[6000]$} \\leftarrow  \\text{$R_2$} &amp; \\text{$2$} \\\\\\hline \\text{HALT} &amp; \\text{Machine Halts} &amp; \\text{$1$} \\\\\\hline \\end{array}$$Consider that the memory is byte addressable with size $32$ bits, and the program has been loaded starting from memory location $1000$ (decimal). If an interrupt occurs while the CPU has been halted after executing the HALT instruction, the return address (in decimal) saved in the stack will be</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1007$</li>\n<li>$1020$</li>\n<li>$1024$</li>\n<li>$1028$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "machine-instructions",
+        "normal"
+      ],
+      "question_uid": "go:1058",
+      "exam_uid": "cse:2004:set1:main:q63",
+      "answer_uid": "manual:go:1058",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:43570": {
+      "title": "GATE CSE 2004 | Question: 64",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/43570/gate-cse-2004-question-64",
+      "question": "<p>Consider the following program segment for a hypothetical CPU having three user registers $R_1, R_2$ and $R_3.$</p>\n<p>\\begin{array}{|l|l|c|} \\hline \\text {Instruction}  &amp;  \\text{Operation }&amp; \\text{Instruction size (in Words)} \\\\\\hline \\text{MOV $R_1,5000$} <br/>\n&amp; \\text{$R1$} \\leftarrow  \\text{Memory$[5000]$}&amp; \\text{$2$} \\\\\\hline\\text{MOV $R_2(R_1)$} &amp; \\text{$R2$} \\leftarrow  \\text{Memory$[(R_1)]$}&amp; \\text{$1$} \\\\\\hline \\text{ADD $R_2,R_3$} &amp; \\text{$R_2$} \\leftarrow  \\text{$R_2 + R_3$} &amp; \\text{$1$} \\\\\\hline \\text{MOV $6000,R_2$} &amp; \\text{Memory$[6000]$} \\leftarrow  \\text{$R_2$} &amp; \\text{$2$} \\\\\\hline \\text{Halt} &amp; \\text{Machine Halts} &amp; \\text{$1$} \\\\\\hline \\end{array}</p>\n<p>Let the clock cycles required for various operations be as follows:</p>\n<p>\\begin{array}{|l|l|} \\hline \\text {Register to/from memory transfer}  &amp;  \\text{3 clock cycles } \\\\\\hline  \\text {ADD with both operands in register}  &amp;  \\text{1 clock cycles } \\\\\\hline \\text {Instruction fetch and decode}  &amp;  \\text{2 clock cycles }\\\\\\hline \\end{array}</p>\n<p>The total number of clock cycles required to execute the program is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$29$</li>\n<li>$24$</li>\n<li>$23$</li>\n<li>$20$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "machine-instructions",
+        "normal"
+      ],
+      "question_uid": "go:43570",
+      "exam_uid": "cse:2004:set1:main:q64",
+      "answer_uid": "manual:go:43570",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1059": {
+      "title": "GATE CSE 2004 | Question: 65",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1059/gate-cse-2004-question-65",
+      "question": "<p>Consider a small two-way set-associative cache memory, consisting of four blocks. For choosing the block to be replaced, use the least recently used (LRU) scheme. The number of cache misses for the following sequence of block addresses is:</p>\n<p>$8, 12, 0, 12, 8$.</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n<li>$5$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "cache-memory",
+        "normal"
+      ],
+      "question_uid": "go:1059",
+      "exam_uid": "cse:2004:set1:main:q65",
+      "answer_uid": "manual:go:1059",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1060": {
+      "title": "GATE CSE 2004 | Question: 66",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1060/gate-cse-2004-question-66",
+      "question": "<p>Let $A = 1111 1010$ and $B = 0000 1010$ be two $8-bit$ $2’s$ complement numbers. Their product in $2’s$ complement is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1100 0100$</li>\n<li>$1001 1100$</li>\n<li>$1010 0101$</li>\n<li>$1101 0101$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "digital-logic",
+        "number-representation",
+        "easy"
+      ],
+      "question_uid": "go:1060",
+      "exam_uid": "cse:2004:set1:main:q66",
+      "answer_uid": "v2:6.24.26",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1061": {
+      "title": "GATE CSE 2004 | Question: 67",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1061/gate-cse-2004-question-67",
+      "question": "<p>The microinstructions stored in the control memory of a processor have a width of $26$ bits. Each microinstruction is divided into three fields: a micro-operation field of $13$ bits, a next address field $(X),$ and a MUX select field $(Y).$ There are $8$ status bits in the input of the MUX.</p>\n<p><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=17933537052434479943\" width=\"500\"/></p>\n<p>How many bits are there in the $X$ and $Y$ fields, and what is the size of the control memory in number of words?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$10, 3, 1024$</li>\n<li>$8, 5, 256$</li>\n<li>$5, 8, 2048$</li>\n<li>$10, 3, 512$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "microprogramming",
+        "normal"
+      ],
+      "question_uid": "go:1061",
+      "exam_uid": "cse:2004:set1:main:q67",
+      "answer_uid": "v2:2.16.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1062": {
+      "title": "GATE CSE 2004 | Question: 68",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1062/gate-cse-2004-question-68",
+      "question": "<p>A hard disk with a transfer rate of $10$ Mbytes/second is constantly transferring data to memory using DMA. The processor runs at $600$ MHz, and takes $300$ and $900$ clock cycles to initiate and complete DMA transfer respectively. If the size of the transfer is $20$ Kbytes, what is the percentage of processor time consumed for the transfer operation?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$5.0 \\%$</li>\n<li>$1.0\\%$</li>\n<li>$0.5\\%$</li>\n<li>$0.1\\%$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "dma",
+        "normal",
+        "co-and-architecture"
+      ],
+      "question_uid": "go:1062",
+      "exam_uid": "cse:2004:set1:main:q68",
+      "answer_uid": "manual:go:1062",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1063": {
+      "title": "GATE CSE 2004 | Question: 69",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1063/gate-cse-2004-question-69",
+      "question": "<p>A 4-stage pipeline has the stage delays as $150$, $120$, $160$ and $140$ $nanoseconds$, respectively. Registers that are used between the stages have a delay of $5$ $nanoseconds$ each. Assuming constant clocking rate, the total time taken to process $1000$ data items on this pipeline will be:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{120.4 microseconds}$</p>\n</li>\n<li>\n<p>$\\text{160.5 microseconds}$</p>\n</li>\n<li>\n<p>$\\text{165.5 microseconds}$</p>\n</li>\n<li>\n<p>$\\text{590.0 microseconds}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "co-and-architecture",
+        "pipelining",
+        "normal"
+      ],
+      "question_uid": "go:1063",
+      "exam_uid": "cse:2004:set1:main:q69",
+      "answer_uid": "manual:go:1063",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1064": {
+      "title": "GATE CSE 2004 | Question: 70",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1064/gate-cse-2004-question-70",
+      "question": "<p>The following propositional statement is  $\\left(P \\implies \\left(Q \\vee R\\right)\\right) \\implies \\left(\\left(P \\wedge Q \\right)\\implies R\\right)$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>   satisfiable but not valid</li>\n<li>   valid</li>\n<li>   a contradiction</li>\n<li>   None of the above</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "mathematical-logic",
+        "normal",
+        "propositional-logic"
+      ],
+      "question_uid": "go:1064",
+      "exam_uid": "cse:2004:set1:main:q70",
+      "answer_uid": "v1:3.3.22",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1065": {
+      "title": "GATE CSE 2004 | Question: 71",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1065/gate-cse-2004-question-71",
+      "question": "<p>How many solutions does the following system of linear equations have?</p>\n<ul>\n<li>$-x + 5y = -1$</li>\n<li>$x - y = 2$</li>\n<li>$x + 3y = 3$</li>\n</ul>\n<ol style=\"list-style-type:upper-alpha\">\n<li>infinitely many</li>\n<li>two distinct solutions</li>\n<li>unique</li>\n<li>none</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "linear-algebra",
+        "system-of-equations",
+        "normal"
+      ],
+      "question_uid": "go:1065",
+      "exam_uid": "cse:2004:set1:main:q71",
+      "answer_uid": "manual:go:1065",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1066": {
+      "title": "GATE CSE 2004 | Question: 72",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1066/gate-cse-2004-question-72",
+      "question": "<p>The following is the incomplete operation table of a $4-$element group.</p>\n<p>$$\\begin{array}{|l|l|l|l|l|} \\hline \\textbf{*} &amp; \\textbf{e}&amp; \\textbf{a} &amp;\\textbf{b} &amp; \\textbf{c}\\\\\\hline \\textbf{e} &amp; \\text{e}&amp; \\text{a} &amp; \\text{b} &amp; \\text{c} \\\\\\hline \\textbf{a} &amp; \\text{a}&amp; \\text{b} &amp; \\text{c} &amp; \\text{e}\\\\\\hline \\textbf{b}\\\\\\hline \\textbf{c} \\\\\\hline\\end{array}$$</p>\n<p>The last row of the table is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$c\\;a\\;e\\; b$</li>\n<li>$c\\; b\\; a\\; e$</li>\n<li>$c\\; b\\; e\\; a$</li>\n<li>$c\\; e\\; a\\; b$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "set-theory&algebra",
+        "group-theory",
+        "normal"
+      ],
+      "question_uid": "go:1066",
+      "exam_uid": "cse:2004:set1:main:q72",
+      "answer_uid": "v1:4.4.16",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1067": {
+      "title": "GATE CSE 2004 | Question: 73",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1067/gate-cse-2004-question-73",
+      "question": "<p>The inclusion of which of the following sets into</p>\n<p>$S = \\left\\{ \\left\\{1, 2\\right\\}, \\left\\{1, 2, 3\\right\\}, \\left\\{1, 3, 5\\right\\}, \\left\\{1, 2, 4\\right\\}, \\left\\{1, 2, 3, 4, 5\\right\\} \\right\\} $</p>\n<p>is necessary and sufficient to make $S$ a complete lattice under the partial order defined by set containment?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\{1\\}$</li>\n<li>$\\{1\\}, \\{2, 3\\}$</li>\n<li>$\\{1\\}, \\{1, 3\\}$</li>\n<li>$\\{1\\}, \\{1, 3\\}, \\{1, 2, 3, 4\\}, \\{1, 2, 3, 5\\}$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "set-theory&algebra",
+        "partial-order",
+        "normal"
+      ],
+      "question_uid": "go:1067",
+      "exam_uid": "cse:2004:set1:main:q73",
+      "answer_uid": "manual:go:1067",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1068": {
+      "title": "GATE CSE 2004 | Question: 74",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1068/gate-cse-2004-question-74",
+      "question": "<p>An examination paper has $150$ multiple choice questions of one mark each, with each question having four choices. Each incorrect answer fetches $-0.25$ marks. Suppose $1000$ students choose all their answers randomly with uniform probability. The sum total of the expected marks obtained by all these students is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$0$</li>\n<li>$2550$</li>\n<li>$7525$</li>\n<li>$9375$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "probability",
+        "expectation",
+        "normal"
+      ],
+      "question_uid": "go:1068",
+      "exam_uid": "cse:2004:set1:main:q74",
+      "answer_uid": "v1:7.7.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1069": {
+      "title": "GATE CSE 2004 | Question: 75",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1069/gate-cse-2004-question-75",
+      "question": "<p>Mala has the colouring book in which each English letter is drawn two times. She wants to paint each of these $52$ prints with one of $k$ colours, such that the colour pairs used to colour any two letters are different. Both prints of a letter can also be coloured with the same colour. What is the minimum value of $k$ that satisfies this requirement?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$9$</li>\n<li>$8$</li>\n<li>$7$</li>\n<li>$6$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "combinatory"
+      ],
+      "question_uid": "go:1069",
+      "exam_uid": "cse:2004:set1:main:q75",
+      "answer_uid": "v1:1.2.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1070": {
+      "title": "GATE CSE 2004 | Question: 76",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1070/gate-cse-2004-question-76",
+      "question": "<p>In an $M \\times N$ matrix all non-zero entries are covered in $a$ rows and $b$ columns. Then the maximum number of non-zero entries, such that no two are on the same row or column, is</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>$\\leq a +b$</li>\n<li>$\\leq \\max(a, b)$</li>\n<li>$\\leq \\min(M-a, N-b)$</li>\n<li>$\\leq \\min(a, b)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "linear-algebra",
+        "normal",
+        "matrix"
+      ],
+      "question_uid": "go:1070",
+      "exam_uid": "cse:2004:set1:main:q76",
+      "answer_uid": "manual:go:1070",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1071": {
+      "title": "GATE CSE 2004 | Question: 77",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1071/gate-cse-2004-question-77",
+      "question": "<p>The minimum number of colours required to colour the following graph, such that no two adjacent vertices are assigned the same color, is</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=7781467705093671626\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n<li>$5$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "graph-theory",
+        "graph-coloring",
+        "easy"
+      ],
+      "question_uid": "go:1071",
+      "exam_uid": "cse:2004:set1:main:q77",
+      "answer_uid": "v1:2.3.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1072": {
+      "title": "GATE CSE 2004 | Question: 78",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1072/gate-cse-2004-question-78",
+      "question": "<p>Two $n$ bit binary strings, $S_1$ and $S_2$ are chosen randomly with uniform probability. The probability that the Hamming distance between these strings (the number of bit positions where the two strings differ) is equal to $d$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\dfrac{^{n}C_{d}}{2^{n}}$</p>\n</li>\n<li>\n<p>$\\dfrac{^{n}C_{d}}{2^{d}}$</p>\n</li>\n<li>\n<p>$\\dfrac{d}{2^{n}}$</p>\n</li>\n<li>\n<p>$\\dfrac{1}{2^{d}}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "probability",
+        "normal",
+        "uniform-distribution"
+      ],
+      "question_uid": "go:1072",
+      "exam_uid": "cse:2004:set1:main:q78",
+      "answer_uid": "manual:go:1072",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1073": {
+      "title": "GATE CSE 2004 | Question: 79",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1073/gate-cse-2004-question-79",
+      "question": "<p>How many graphs on $n$ labeled vertices exist which have at least $\\frac{(n^2 - 3n)}{ 2}$ edges ?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>$^{\\left(\\frac{n^2-n}{2}\\right)}C_{\\left(\\frac{n^2-3n} {2}\\right)}$</li>\n<li>$^{{\\large\\sum\\limits_{k=0}^{\\left (\\frac{n^2-3n}{2} \\right )}}.\\left(n^2-n\\right)}C_k$</li>\n<li>$^{\\left(\\frac{n^2-n}{2}\\right)}C_n$</li>\n<li>$^{{\\large\\sum\\limits_{k=0}^n}.\\left(\\frac{n^2-n}{2}\\right)}C_k$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "graph-theory",
+        "combinatory",
+        "normal",
+        "counting"
+      ],
+      "question_uid": "go:1073",
+      "exam_uid": "cse:2004:set1:main:q79",
+      "answer_uid": "v1:2.1.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1074": {
+      "title": "GATE CSE 2004 | Question: 80",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1074/gate-cse-2004-question-80",
+      "question": "<p>A point is randomly selected with uniform probability in the $X-Y$ plane within the rectangle with corners at $(0,0), (1,0), (1,2)$ and $(0,2).$ If $p$ is the length of the position vector of the point, the expected value of $p^{2}$ is</p>\n<ol start=\"1\" style=\"list-style-type: upper-alpha;\">\n<li>$\\left(\\dfrac{2}{3}\\right)$</li>\n<li>$\\quad 1$</li>\n<li>$\\left(\\dfrac{4}{3}\\right)$</li>\n<li>$\\left(\\dfrac{5}{3}\\right)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "probability",
+        "uniform-distribution",
+        "expectation",
+        "normal"
+      ],
+      "question_uid": "go:1074",
+      "exam_uid": "cse:2004:set1:main:q80",
+      "answer_uid": "manual:go:1074",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1075": {
+      "title": "GATE CSE 2004 | Question: 81",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1075/gate-cse-2004-question-81",
+      "question": "<p>Let $G_1=(V,E_1)$ and $G_2 =(V,E_2)$ be connected graphs on the same vertex set $V$ with more than two vertices. If $G_1 \\cap G_2= (V,E_1\\cap E_2)$  is not a connected graph, then the graph $G_1\\cup G_2=(V,E_1\\cup E_2)$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>cannot have a cut vertex</li>\n<li>must have a cycle</li>\n<li>must have a cut-edge (bridge)</li>\n<li>has chromatic number strictly greater than those of $G_1$ and $G_2$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "graph-algorithms",
+        "normal"
+      ],
+      "question_uid": "go:1075",
+      "exam_uid": "cse:2004:set1:main:q81",
+      "answer_uid": "v1:2.4.15",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1076": {
+      "title": "GATE CSE 2004 | Question: 82",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1076/gate-cse-2004-question-82",
+      "question": "<p>Let $A[1,\\ldots,n]$ be an array storing a bit ($1$ or $0$) at each location, and $f(m)$ is a function whose time complexity is $\\Theta(m)$. Consider the following program fragment written in a C like language:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">counter = 0;\nfor (i=1; i&lt;=n; i++)\n{ \n    if (a[i] == 1) counter++;\n    else {f (counter); counter = 0;}\n}</pre>\n<p>The complexity of this program fragment is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\Omega(n^2)$</p>\n</li>\n<li>\n<p>$\\Omega (n\\log n) \\text{ and } O(n^2)$</p>\n</li>\n<li>\n<p>$\\Theta(n)$</p>\n</li>\n<li>\n<p>$o(n)$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "time-complexity",
+        "normal"
+      ],
+      "question_uid": "go:1076",
+      "exam_uid": "cse:2004:set1:main:q82",
+      "answer_uid": "manual:go:1076",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1077": {
+      "title": "GATE CSE 2004 | Question: 83, ISRO2015-40",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1077/gate-cse-2004-question-83-isro2015-40",
+      "question": "<p>The time complexity of the following C function is (assume $n &gt; 0$)</p>\n<pre class=\"prettyprint lang-c_cpp\">int recursive (int n) {\n    if(n == 1)\n        return (1);\n    else\n        return (recursive (n-1) + recursive (n-1));\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$O(n)$</li>\n<li>$O(n \\log n)$</li>\n<li>$O(n^2)$</li>\n<li>$O(2^n)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "recurrence-relation",
+        "time-complexity",
+        "normal",
+        "isro2015"
+      ],
+      "question_uid": "go:1077",
+      "exam_uid": "cse:2004:set1:main:q83-isro2015-40",
+      "answer_uid": "v2:1.27.17",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1078": {
+      "title": "GATE CSE 2004 | Question: 84",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1078/gate-cse-2004-question-84",
+      "question": "<p>The recurrence equation<br/>\n$ T(1) = 1$<br/>\n$T(n) = 2T(n-1) + n, n \\geq 2$<br/>\n<br/>\nevaluates to</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2^{n+1} - n - 2$</li>\n<li>$2^n - n$</li>\n<li>$2^{n+1} - 2n - 2$</li>\n<li>$2^n + n $</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "algorithms",
+        "recurrence-relation",
+        "normal"
+      ],
+      "question_uid": "go:1078",
+      "exam_uid": "cse:2004:set1:main:q84",
+      "answer_uid": "v2:1.27.18",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1079": {
+      "title": "GATE CSE 2004 | Question: 85",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1079/gate-cse-2004-question-85",
+      "question": "<p>A program takes as input a balanced binary search tree with $n$ leaf nodes and computes the value of a function $g(x)$ for each node $x$. If the cost of computing $g(x)$ is: $$\\Large \\min \\left ( \\substack{\\text{number of leaf-nodes}\\\\\\text{in left-subtree of $x$}}\\;,\\; \\substack{\\text{number of leaf-nodes}\\\\\\text{in right-subtree of $x$}}\\right )$$</p>\n<p>Then the worst-case time complexity of the program is?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\Theta (n)$</li>\n<li>$\\Theta (n \\log n)$</li>\n<li>$\\Theta(n^2)$</li>\n<li>$\\Theta (n^2\\log n)$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "binary-search-tree",
+        "normal",
+        "data-structures"
+      ],
+      "question_uid": "go:1079",
+      "exam_uid": "cse:2004:set1:main:q85",
+      "answer_uid": "v2:8.4.9",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1080": {
+      "title": "GATE CSE 2004 | Question: 86",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1080/gate-cse-2004-question-86",
+      "question": "<p>The following finite state machine accepts all those binary strings in which the number of $1$’s and $0$’s are respectively:</p>\n<p>     </p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=6974303844392939091\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>divisible by $3$ and $2$</p>\n</li>\n<li>\n<p>odd and even</p>\n</li>\n<li>\n<p>even and odd</p>\n</li>\n<li>\n<p>divisible by $2$ and $3$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "theory-of-computation",
+        "finite-automata",
+        "easy"
+      ],
+      "question_uid": "go:1080",
+      "exam_uid": "cse:2004:set1:main:q86",
+      "answer_uid": "v2:10.7.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1081": {
+      "title": "GATE CSE 2004 | Question: 87",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1081/gate-cse-2004-question-87",
+      "question": "<p>The language $\\left\\{a^mb^nc^{m+n} \\mid m, n \\geq1\\right\\}$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>regular</p>\n</li>\n<li>\n<p>context-free but not regular</p>\n</li>\n<li>\n<p>context-sensitive but not context free</p>\n</li>\n<li>\n<p>type-0 but not context sensitive</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "theory-of-computation",
+        "normal",
+        "identify-class-language"
+      ],
+      "question_uid": "go:1081",
+      "exam_uid": "cse:2004:set1:main:q87",
+      "answer_uid": "manual:go:1081",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1082": {
+      "title": "GATE CSE 2004 | Question: 88",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1082/gate-cse-2004-question-88",
+      "question": "<p>Consider the following grammar G:</p>\n<p>$S \\rightarrow bS \\mid aA \\mid b$</p>\n<p>$A \\rightarrow bA \\mid aB$</p>\n<p>$B \\rightarrow bB \\mid aS \\mid a$</p>\n<p>Let $N_a(w)$ and $N_b(w)$ denote the number of a’s and b’s in a string $\\omega$ respectively.</p>\n<p>The language $L(G)$ over  $\\left\\{a, b\\right\\}^+$ generated by $G$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\left\\{w \\mid N_a(w) &gt; 3N_b(w)\\right\\}$</p>\n</li>\n<li>\n<p>$\\left\\{w \\mid N_b(w) &gt; 3N_a(w)\\right\\}$</p>\n</li>\n<li>\n<p>$\\left\\{w \\mid N_a(w) = 3k, k \\in \\left\\{0, 1, 2, …\\right\\}\\right\\}$</p>\n</li>\n<li>\n<p>$\\left\\{w \\mid N_b(w) = 3k, k \\in \\left\\{0, 1, 2, …\\right\\}\\right\\}$</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "compiler-design",
+        "grammar",
+        "normal"
+      ],
+      "question_uid": "go:1082",
+      "exam_uid": "cse:2004:set1:main:q88",
+      "answer_uid": "v2:3.8.27",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1083": {
+      "title": "GATE CSE 2004 | Question: 89",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1083/gate-cse-2004-question-89",
+      "question": "<p>$L_1$ is a recursively enumerable language over $\\Sigma$. An algorithm $A$ effectively enumerates its words as $\\omega_1, \\omega_2, \\omega_3, \\dots .$ Define another language $L_2$ over $\\Sigma \\cup \\left\\{\\text{#}\\right\\}$ as $\\left\\{w_i \\text{#} w_j \\mid w_i, w_j \\in L_1, i &lt; j \\right\\}$. Here # is new symbol. Consider the following assertions.</p>\n<ul>\n<li>$S_1:L_1$ is recursive implies $L_2$ is recursive</li>\n<li>$S_2:L_2$ is recursive implies $L_1$ is recursive</li>\n</ul>\n<p>Which of the following statements is true?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>Both $S_1$ and $S_2$ are true</p>\n</li>\n<li>\n<p>$S_1$ is true but $S_2$ is not necessarily true</p>\n</li>\n<li>\n<p>$S_2$ is true but $S_1$ is not necessarily true</p>\n</li>\n<li>\n<p>Neither is necessarily true</p>\n</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "theory-of-computation",
+        "turing-machine",
+        "difficult"
+      ],
+      "question_uid": "go:1083",
+      "exam_uid": "cse:2004:set1:main:q89",
+      "answer_uid": "v2:10.15.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:1084": {
+      "title": "GATE CSE 2004 | Question: 90",
+      "year": "gatecse-2004",
+      "link": "https://gateoverflow.in/1084/gate-cse-2004-question-90",
+      "question": "<p>Choose the best matching between the programming styles in Group 1 and their characteristics in Group 2.$$\\begin{array}{|ll|ll|}\\hline \\rlap{\\textbf{Group 1}} &amp;  &amp; \\rlap{\\textbf{Group 2}} \\\\\\hline P. &amp; \\text{Functional} &amp; 1. &amp; \\text{Common-based, procedural} \\\\ Q. &amp; \\text{Logic} &amp; 2. &amp; \\text{Imperative, abstract data types} \\\\ R. &amp; \\text{Object-oriented} &amp; 3. &amp; \\text{Side-effect free, declarative, expression evaluations} \\\\ S. &amp; \\text{Imperative} &amp; 4. &amp; \\text{Declarative, clausal representation, theorem proving} \\\\\\hline \\end{array}$$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$P-2\\quad  Q-3\\quad R-4\\quad S-1$</li>\n<li>$P-4\\quad Q-3 \\quad R-2\\quad S-1$</li>\n<li>$P-3\\quad Q-4 \\quad R-1\\quad S-2$</li>\n<li>$P-3\\quad Q-4\\quad R-2\\quad S-1$</li>\n</ol>",
+      "tags": [
+        "gatecse-2004",
+        "programming",
+        "normal",
+        "programming-paradigms"
+      ],
+      "question_uid": "go:1084",
+      "exam_uid": "cse:2004:set1:main:q90",
+      "answer_uid": "v2:9.12.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:790": {
+      "title": "GATE IT 2004 | Question: 50",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/790/gate-it-2004-question-50",
+      "question": "<p>In an enhancement of a design of a CPU, the speed of a floating point unit has been increased by $\\text{20%}$ and the speed of a fixed point unit has been increased by $\\text{10%}$. What is the overall speedup achieved if the ratio of the number of floating point operations to the number of fixed point operations is $2:3$ and the floating point operation used to take twice the time taken by the fixed point operation in the original design?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1.155$</li>\n<li>$1.185$</li>\n<li>$1.255$</li>\n<li>$1.285$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "normal",
+        "co-and-architecture",
+        "speedup"
+      ],
+      "question_uid": "go:790",
+      "answer_uid": "manual:go:790",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3642": {
+      "title": "GATE IT 2004 | Question: 1",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3642/gate-it-2004-question-1",
+      "question": "<p>In a population of $N$ families, $50 \\%$ of the families have three children, $30 \\%$ of the families have two children and the remaining families have one child. What is the probability that a randomly picked child belongs to a family with two children?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left(\\dfrac{3}{23}\\right)$</li>\n<li>$\\left(\\dfrac{6}{23}\\right)$</li>\n<li>$\\left(\\dfrac{3}{10}\\right)$</li>\n<li>$\\left(\\dfrac{3}{5}\\right)$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "probability",
+        "normal"
+      ],
+      "question_uid": "go:3642",
+      "answer_uid": "v1:7.12.26",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3643": {
+      "title": "GATE IT 2004 | Question: 2",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3643/gate-it-2004-question-2",
+      "question": "<p>In a class of $200$ students, $125$ students have taken Programming Language course, $85$ students have taken Data Structures course, $65$ students have taken Computer Organization course; $50$ students have taken both Programming Language and Data Structures, $35$ students have taken both Programming Language and Computer Organization; $30$ students have taken both Data Structures and Computer Organization, $15$ students have taken all the three courses.</p>\n<p>How many students have not taken any of the three courses?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$15$</li>\n<li>$20$</li>\n<li>$25$</li>\n<li>$30$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "set-theory&algebra",
+        "easy",
+        "set-theory"
+      ],
+      "question_uid": "go:3643",
+      "answer_uid": "manual:go:3643",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3644": {
+      "title": "GATE IT 2004 | Question: 3",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3644/gate-it-2004-question-3",
+      "question": "<p>Let $a(x, y), b(x, y,)$ and $c(x, y)$ be three statements with variables $x$ and $y$ chosen from some universe. Consider the following statement:<br/>\n<br/>\n$\\qquad(\\exists x)(\\forall y)[(a(x, y) \\wedge b(x, y)) \\wedge \\neg c(x, y)]$<br/>\n<br/>\nWhich one of the following is its equivalent?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$(\\forall x)(\\exists y)[(a(x, y) \\vee b(x, y)) \\to c(x, y)]$</li>\n<li>$(\\exists x)(\\forall y)[(a(x, y) \\vee b(x, y)) \\wedge\\neg c(x, y)]$</li>\n<li>$\\neg (\\forall x)(\\exists y)[(a(x, y) \\wedge b(x, y)) \\to c(x, y)]$</li>\n<li>$\\neg (\\forall x)(\\exists y)[(a(x, y) \\vee b(x, y)) \\to c(x, y)]$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "mathematical-logic",
+        "normal",
+        "discrete-mathematics",
+        "first-order-logic"
+      ],
+      "question_uid": "go:3644",
+      "answer_uid": "v1:3.1.29",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3645": {
+      "title": "GATE IT 2004 | Question: 4",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3645/gate-it-2004-question-4",
+      "question": "<p>Let $R_{1}$ be a relation from $A = \\left \\{ 1,3,5,7 \\right \\}$ to $B = \\left \\{ 2,4,6,8 \\right \\}$ and $R_{2}$ be another relation from $B$ to $C = \\{1, 2, 3, 4\\}$ as defined below:</p>\n<ol style=\"list-style-type:lower-roman\">\n<li>An element $x$ in $A$ is related to an element $y$ in $B$ (under $R_{1}$) if $x + y$ is divisible by $3.$</li>\n<li>An element $x$ in $B$ is related to an element $y$ in $C$ (under $R_{2}$) if $x + y$ is even but not divisible by $3.$</li>\n</ol>\n<p>Which is the composite relation $R_{1}R_{2}$ from $A$ to $C$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$R_{1}R_{2}  =  \\{(1, 2), (1, 4), (3, 3), (5, 4), (7, 3)\\} $</li>\n<li>$R_{1}R_{2} =  \\{(1, 2), (1, 3), (3, 2), (5, 2), (7, 3)\\} $</li>\n<li>$R_{1}R_{2} =  \\{(1, 2), (3, 2), (3, 4), (5, 4), (7, 2)\\} $</li>\n<li>$R_{1}R_{2}  =  \\{(3, 2), (3, 4), (5, 1), (5, 3), (7, 1)\\} $</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "set-theory&algebra",
+        "relations",
+        "normal"
+      ],
+      "question_uid": "go:3645",
+      "answer_uid": "manual:go:3645",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3646": {
+      "title": "GATE IT 2004 | Question: 5",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3646/gate-it-2004-question-5",
+      "question": "<p>What is the maximum number of edges in an acyclic undirected graph with $n$ vertices?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$n-1$</li>\n<li>$n$</li>\n<li>$n+1$</li>\n<li>$2n-1$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "graph-theory",
+        "graph-connectivity",
+        "normal"
+      ],
+      "question_uid": "go:3646",
+      "answer_uid": "v1:2.4.35",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3647": {
+      "title": "GATE IT 2004 | Question: 6",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3647/gate-it-2004-question-6",
+      "question": "<p>What values of x, y and z satisfy the following system of linear equations?</p>\n<p>$$\\begin{bmatrix} 1 &amp;2 &amp;3 \\\\ 1&amp; 3 &amp;4 \\\\ 2&amp; 2 &amp;3 \\end{bmatrix} \\begin{bmatrix} x\\\\y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 6\\\\8 \\\\ 12 \\end{bmatrix}$$</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$x = 6$, $y = 3$, $z = 2$</li>\n<li>$x = 12$, $y = 3$, $z = - 4$</li>\n<li>$x = 6$, $y = 6$, $z = - 4$</li>\n<li>$x = 12$, $y = - 3$, $z = 0$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "linear-algebra",
+        "system-of-equations",
+        "easy"
+      ],
+      "question_uid": "go:3647",
+      "answer_uid": "manual:go:3647",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3648": {
+      "title": "GATE IT 2004 | Question: 7",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3648/gate-it-2004-question-7",
+      "question": "<p>Which one of the following regular expressions is NOT equivalent to the regular expression $(a + b + c)^*$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$(a^* + b^* + c^*)^*$</li>\n<li>$(a^*b^*c^*)^*$</li>\n<li>$((ab)^* + c^*)^*$</li>\n<li>$(a^*b^* + c^*)^*$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "theory-of-computation",
+        "regular-expression",
+        "normal"
+      ],
+      "question_uid": "go:3648",
+      "answer_uid": "manual:go:3648",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3649": {
+      "title": "GATE IT 2004 | Question: 8",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3649/gate-it-2004-question-8",
+      "question": "<p>What is the minimum number of $\\text{NAND}$ gates required to implement a $2\\text{-input EXCLUSIVE-OR}$ function without using any other logic gate?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$4$</li>\n<li>$5$</li>\n<li>$6$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "digital-logic",
+        "min-no-gates",
+        "normal"
+      ],
+      "question_uid": "go:3649",
+      "answer_uid": "v2:6.20.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3650": {
+      "title": "GATE IT 2004 | Question: 9",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3650/gate-it-2004-question-9",
+      "question": "<p>Which one of the following statements is FALSE?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>There exist context-free languages such that all the context-free grammars generating them are ambiguous</li>\n<li>\n<p>An unambiguous context-free grammar always has a unique parse tree for each string of the language generated by it</p>\n</li>\n<li>\n<p>Both deterministic and non-deterministic pushdown automata always accept the same set of languages</p>\n</li>\n<li>\n<p>A finite set of string from some alphabet is always a regular language</p>\n</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "theory-of-computation",
+        "easy",
+        "non-determinism"
+      ],
+      "question_uid": "go:3650",
+      "answer_uid": "v2:10.11.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3651": {
+      "title": "GATE IT 2004 | Question: 10",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3651/gate-it-2004-question-10",
+      "question": "<p>What is the minimum size of ROM required to store the complete truth table of an $8-bit \\times 8-bit$ multiplier?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$32 K \\times 16$ bits</li>\n<li>$64 K \\times 16$ bits</li>\n<li>$16 K \\times 32$ bits</li>\n<li>$64 K \\times 32$ bits</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "digital-logic",
+        "normal",
+        "rom"
+      ],
+      "question_uid": "go:3651",
+      "answer_uid": "v2:6.26.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3652": {
+      "title": "GATE IT 2004 | Question: 11, ISRO2011-33",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3652/gate-it-2004-question-11-isro2011-33",
+      "question": "<p>What is the bit rate of a video terminal unit with $80$ characters/line, $8$ $\\text{bits/character}$ and horizontal sweep time of $100$ $\\text{µs}$ (including $20$ $\\text{µs}$ of retrace time)?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$8$ $\\text{Mbps}$</li>\n<li>$6.4$ $\\text{Mbps}$</li>\n<li>$0.8$ $\\text{Mbps}$</li>\n<li>$0.64$ $\\text{Mbps}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "io-handling",
+        "easy",
+        "isro2011"
+      ],
+      "question_uid": "go:3652",
+      "answer_uid": "v2:7.7.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3653": {
+      "title": "GATE IT 2004 | Question: 12, ISRO2016-77",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3653/gate-it-2004-question-12-isro2016-77",
+      "question": "<div style=\"text-align: justify;\">Consider a system with $2$ level cache. Access times of Level $1$ cache, Level $2$ cache and main memory are $1$ $ns$, $10$ $ns$, and $500$ $ns$ respectively. The hit rates of Level $1$ and Level $2$ caches are $0.8$ and $0.9$, respectively. What is the average access time of the system ignoring the search time within the cache?</div>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$13.0$</li>\n<li>$12.8$</li>\n<li>$12.6$</li>\n<li>$12.4$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "co-and-architecture",
+        "cache-memory",
+        "normal",
+        "isro2016"
+      ],
+      "question_uid": "go:3653",
+      "answer_uid": "manual:go:3653",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3654": {
+      "title": "GATE IT 2004 | Question: 13",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3654/gate-it-2004-question-13",
+      "question": "<p>Let $P$ be a singly linked list. Let $Q$ be the pointer to an intermediate node $x$ in the list. What is the worst-case time complexity of the best-known algorithm to delete the node $x$ from the list ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$O(n)$</li>\n<li>$O(\\log^2 n)$</li>\n<li>$O(\\log n)$</li>\n<li>$O(1)$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "data-structures",
+        "linked-list",
+        "normal",
+        "ambiguous"
+      ],
+      "question_uid": "go:3654",
+      "answer_uid": "v2:8.9.22",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3655": {
+      "title": "GATE IT 2004 | Question: 14",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3655/gate-it-2004-question-14",
+      "question": "<p>Which one of the following is NOT shared by the threads of the same process ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Stack</li>\n<li>Address Space</li>\n<li>File Descriptor Table</li>\n<li>Message Queue</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "easy",
+        "threads"
+      ],
+      "question_uid": "go:3655",
+      "answer_uid": "manual:go:3655",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3656": {
+      "title": "GATE IT 2004 | Question: 15",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3656/gate-it-2004-question-15",
+      "question": "<p>Let $x$ be an integer which can take a value of $0$ or $1$. The statement</p>\n<pre class=\"prettyprint lang-c_cpp\">if (x == 0) x = 1; else x = 0;</pre>\n<p>is equivalent to which one of the following ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$x = 1 + x;$</li>\n<li>$x  = 1 - x;$</li>\n<li>$x = x - 1;$</li>\n<li>$x = 1\\% x;$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "programming",
+        "easy",
+        "identify-function"
+      ],
+      "question_uid": "go:3656",
+      "answer_uid": "v2:9.5.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3662": {
+      "title": "GATE IT 2004 | Question: 21",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3662/gate-it-2004-question-21",
+      "question": "<p>Which level of locking provides the highest degree of concurrency in a relational database ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Page</li>\n<li>Table</li>\n<li>Row</li>\n<li>Page, table and row level locking allow the same degree of concurrency</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "normal",
+        "transaction-and-concurrency"
+      ],
+      "question_uid": "go:3662",
+      "answer_uid": "v2:5.19.25",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3663": {
+      "title": "GATE IT 2004 | Question: 22",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3663/gate-it-2004-question-22",
+      "question": "<p>Which one of the following statements is FALSE?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>Packet switching leads to better utilization of bandwidth resources than circuit switching</li>\n<li>Packet switching results in less variation in delay than circuit switching</li>\n<li>Packet switching requires more per-packet processing than circuit switching</li>\n<li>Packet switching can lead to reordering unlike in circuit switching</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "network-switching",
+        "normal"
+      ],
+      "question_uid": "go:3663",
+      "answer_uid": "v2:4.21.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3664": {
+      "title": "GATE IT 2004 | Question: 23",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3664/gate-it-2004-question-23",
+      "question": "<p>Which one of the following statements is FALSE?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>TCP guarantees a minimum communication rate</li>\n<li>TCP ensures in-order delivery</li>\n<li>TCP reacts to congestion by reducing sender window size</li>\n<li>TCP employs retransmission to compensate for packet loss</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "tcp",
+        "normal"
+      ],
+      "question_uid": "go:3664",
+      "answer_uid": "v2:4.30.18",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3665": {
+      "title": "GATE IT 2004 | Question: 24",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3665/gate-it-2004-question-24",
+      "question": "<p>Which one of the following statements is FALSE?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>HTTP runs over TCP</li>\n<li>HTTP describes the structure of web pages</li>\n<li>HTTP allows information to be stored in a URL</li>\n<li>HTTP can be used to test the validity of a hypertext link</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "web-technologies",
+        "normal"
+      ],
+      "question_uid": "go:3665",
+      "answer_uid": "manual:go:3665",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3667": {
+      "title": "GATE IT 2004 | Question: 26",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3667/gate-it-2004-question-26",
+      "question": "<p>A subnet has been assigned a subnet mask of $255.255.255.192$. What is the maximum number of hosts that can belong to this subnet?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$14$</li>\n<li>$30$</li>\n<li>$62$</li>\n<li>$126$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "subnetting",
+        "normal"
+      ],
+      "question_uid": "go:3667",
+      "answer_uid": "v2:4.29.16",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3668": {
+      "title": "GATE IT 2004 | Question: 27",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3668/gate-it-2004-question-27",
+      "question": "<p>A host is connected to a Department network which is part of a University network. The University network, in turn, is part of the Internet. The largest network in which the Ethernet address of the host is unique is</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>the subnet to which the host belongs</li>\n<li>the Department network</li>\n<li>the University network</li>\n<li>the Internet</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "lan-technologies",
+        "ethernet",
+        "normal"
+      ],
+      "question_uid": "go:3668",
+      "answer_uid": "v2:4.16.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3669": {
+      "title": "GATE IT 2004 | Question: 28",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3669/gate-it-2004-question-28",
+      "question": "<p>In TCP, a unique sequence number is assigned to each</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>byte</li>\n<li>word</li>\n<li>segment</li>\n<li>message</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "tcp",
+        "normal"
+      ],
+      "question_uid": "go:3669",
+      "answer_uid": "v2:4.30.19",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3674": {
+      "title": "GATE IT 2004 | Question: 31",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3674/gate-it-2004-question-31",
+      "question": "<p>Let $p, q, r$ and $s$ be four primitive statements. Consider the following arguments:</p>\n<ul>\n<li>$P:  [(¬p\\vee  q) ∧ (r → s) ∧ (p \\vee  r)] → (¬s → q)$</li>\n<li>$Q:  [(¬p ∧q) ∧ [q → (p → r)]] → ¬r$</li>\n<li>$R:  [[(q ∧ r) → p] ∧ (¬q \\vee  p)] → r$</li>\n<li>$S:  [p ∧ (p → r) ∧ (q \\vee  ¬ r)] → q$</li>\n</ul>\n<p><br/>\nWhich of the above arguments are valid?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$P$ and $Q$ only</li>\n<li>$P$ and $R$ only</li>\n<li>$P$ and $S$ only</li>\n<li>$P, Q, R$ and $S$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "mathematical-logic",
+        "normal",
+        "propositional-logic"
+      ],
+      "question_uid": "go:3674",
+      "answer_uid": "v1:3.3.40",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3675": {
+      "title": "GATE IT 2004 | Question: 32",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3675/gate-it-2004-question-32",
+      "question": "<p>Let $A$ be an $n \\times n$ matrix of the following form.</p>\n<p>$$A = \\begin{bmatrix}3&amp;1&amp;0&amp;0&amp;0&amp;\\ldots&amp;0&amp;0&amp;0\\\\<br/>\n1&amp;3&amp;1&amp;0&amp;0&amp;\\ldots&amp;0&amp;0&amp;0\\\\<br/>\n0&amp;1&amp;3&amp;1&amp;0&amp;\\ldots&amp;0&amp;0&amp;0\\\\<br/>\n0&amp;0&amp;1&amp;3&amp;1&amp;\\ldots&amp;0&amp;0&amp;0\\\\<br/>\n\\ldots\\\\<br/>\n\\ldots \\\\<br/>\n0&amp;0&amp;0&amp;0&amp;0&amp;\\ldots&amp;1&amp;3&amp;1\\\\<br/>\n0&amp;0&amp;0&amp;0&amp;0&amp;\\ldots&amp;0&amp;1&amp;3\\\\<br/>\n  \\end{bmatrix}_{n\\times n}$$<br/>\nWhat is the value of the determinant of $A$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left(\\frac{5+\\sqrt3}{2}\\right)^{n-1} \\left(\\frac{5\\sqrt3 + 7}{2 \\sqrt 3}\\right) +\\left(\\frac{5-\\sqrt3}{2}\\right)^{n-1} \\left(\\frac{5\\sqrt3 - 7}{2 \\sqrt 3}\\right) $</li>\n<li>$\\left(\\frac{7+\\sqrt5}{2}\\right)^{n-1} \\left(\\frac{7\\sqrt5 + 3}{2 \\sqrt 5}\\right) +\\left(\\frac{7-\\sqrt5}{2}\\right)^{n-1} \\left(\\frac{7\\sqrt5 - 3}{2 \\sqrt 5}\\right) $</li>\n<li>$\\left(\\frac{3+\\sqrt7}{2}\\right)^{n-1} \\left(\\frac{3\\sqrt7 + 5}{2 \\sqrt 7}\\right) +\\left(\\frac{3-\\sqrt7}{2}\\right)^{n-1} \\left(\\frac{3\\sqrt7 - 5}{2 \\sqrt 7}\\right) $</li>\n<li>$\\left(\\frac{3+\\sqrt5}{2}\\right)^{n-1} \\left(\\frac{3\\sqrt5 + 7}{2 \\sqrt 5}\\right) + \\left(\\frac{3-\\sqrt5}{2}\\right)^{n-1} \\left(\\frac{3\\sqrt5 - 7}{2 \\sqrt 5}\\right) $</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "linear-algebra",
+        "matrix",
+        "normal"
+      ],
+      "question_uid": "go:3675",
+      "answer_uid": "manual:go:3675",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3676": {
+      "title": "GATE IT 2004 | Question: 33",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3676/gate-it-2004-question-33",
+      "question": "<p>Let $X$ and $Y$ be two exponentially distributed and independent random variables with mean $α$ and $β$, respectively. If $Z$ = min $(X, Y)$, then the mean of $Z$ is given by</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left(\\dfrac{1}{\\alpha + \\beta}\\right)$</li>\n<li>$\\min (\\alpha, \\beta)$</li>\n<li>$\\left(\\dfrac{\\alpha\\beta}{\\alpha + \\beta}\\right)$</li>\n<li>$\\alpha + \\beta$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "probability",
+        "exponential-distribution",
+        "random-variable",
+        "normal"
+      ],
+      "question_uid": "go:3676",
+      "answer_uid": "v1:7.8.5",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3677": {
+      "title": "GATE IT 2004 | Question: 34",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3677/gate-it-2004-question-34",
+      "question": "<p>Let $H_1, H_2, H_3,$ ... be harmonic numbers. Then, for $n \\in Z^+$,  $\\sum_{j=1}^{n} H_j$ can be expressed as</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$nH_{n+1} - (n + 1)$</li>\n<li>$(n + 1)H_n - n$</li>\n<li>$nH_n - n$</li>\n<li>$(n + 1) H_{n+1} - (n + 1)$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "recurrence-relation",
+        "combinatory",
+        "normal"
+      ],
+      "question_uid": "go:3677",
+      "answer_uid": "v1:1.7.6",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3678": {
+      "title": "GATE IT 2004 | Question: 35",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3678/gate-it-2004-question-35",
+      "question": "<p>In how many ways can we distribute $5$ distinct balls, $B_1, B_2, \\ldots, B_5$ in $5$ distinct cells, $C_1, C_2, \\ldots, C_5$ such that Ball $B_i$ is not in cell $C_i$, $\\forall i= 1,2,\\ldots 5$  and each cell contains exactly one ball?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$44$</li>\n<li>$96$</li>\n<li>$120$</li>\n<li>$3125$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "combinatory",
+        "normal",
+        "balls-in-bins"
+      ],
+      "question_uid": "go:3678",
+      "answer_uid": "v1:1.1.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3679": {
+      "title": "GATE IT 2004 | Question: 36",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3679/gate-it-2004-question-36",
+      "question": "<p>If matrix $X = \\begin{bmatrix} a &amp; 1 \\\\ -a^2+a-1 &amp; 1-a \\end{bmatrix}$  and $X^2 - X + I = O$ ($I$ is the identity matrix and $O$ is the zero matrix), then the inverse of $X$ is</p>\n<ol class=\"shrink-inline-options2\" style=\"list-style-type:upper-alpha\">\n<li> $\\begin{bmatrix}<br/>\n1-a &amp;-1 \\\\ <br/>\n a^2&amp; a<br/>\n\\end{bmatrix}$</li>\n<li>$\\begin{bmatrix}<br/>\n1-a &amp;-1 \\\\ <br/>\n a^2-a+1&amp; a<br/>\n\\end{bmatrix}$</li>\n<li>$\\begin{bmatrix}<br/>\n-a &amp;1 \\\\ <br/>\n -a^2+a-1&amp; 1-a<br/>\n\\end{bmatrix}$</li>\n<li>$\\begin{bmatrix}<br/>\na^2-a+1 &amp;a \\\\ <br/>\n 1&amp; 1-a<br/>\n\\end{bmatrix}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "linear-algebra",
+        "matrix",
+        "normal"
+      ],
+      "question_uid": "go:3679",
+      "answer_uid": "manual:go:3679",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3680": {
+      "title": "GATE IT 2004 | Question: 37",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3680/gate-it-2004-question-37",
+      "question": "<p>What is the number of vertices in an undirected connected graph with $27$ edges, $6$ vertices of degree $2, 3$ vertices of degree $4$ and remaining of degree $3$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$10$</li>\n<li>$11$</li>\n<li>$18$</li>\n<li>$19$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "graph-theory",
+        "graph-connectivity",
+        "normal"
+      ],
+      "question_uid": "go:3680",
+      "answer_uid": "v1:2.4.34",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3681": {
+      "title": "GATE IT 2004 | Question: 38",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3681/gate-it-2004-question-38",
+      "question": "<p>If f(l) = 2, f(2) = 4 and f(4) = 16, what is the value of f(3) using Lagrange's interpolation formula?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>8</li>\n<li>8(1/3)</li>\n<li>8(2/3)</li>\n<li>9</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "numerical-methods",
+        "lagranges-interpolation",
+        "normal"
+      ],
+      "question_uid": "go:3681",
+      "answer_uid": "manual:go:3681",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3682": {
+      "title": "GATE IT 2004 | Question: 39",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3682/gate-it-2004-question-39",
+      "question": "<p>Consider the following iterative root finding methods and convergence properties:</p>\n<table border=\"1\" cellpadding=\"1\" style=\"width:500px; border-spacing: 1px;\">\n<thead>\n<tr>\n<th scope=\"col\"> </th>\n<th scope=\"col\">Iterative root finding methods</th>\n<th scope=\"col\"> </th>\n<th scope=\"col\">Convergence properties</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Q.</td>\n<td>False Position</td>\n<td>I.</td>\n<td>Order of convergence = 1.62</td>\n</tr>\n<tr>\n<td>R.</td>\n<td>Newton Raphson</td>\n<td>II.</td>\n<td>Order of convergence = 2</td>\n</tr>\n<tr>\n<td>S.</td>\n<td>Secant</td>\n<td>III.</td>\n<td>Order of convergence = 1 with guarantee of convergence</td>\n</tr>\n<tr>\n<td>T.</td>\n<td>Successive Approximation</td>\n<td>IV.</td>\n<td>Order of convergence = 1 with no guarantee of convergence</td>\n</tr>\n</tbody>\n</table>\n<p>The correct matching of the methods and properties is</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>Q-II, R-IV, S-III, T-I</li>\n<li>Q-III, R-II, S-I, T-IV</li>\n<li>Q-II, R-I, S-IV, T-III</li>\n<li>Q-I, R-IV, S-II, T-III</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "numerical-methods",
+        "normal"
+      ],
+      "question_uid": "go:3682",
+      "answer_uid": "manual:go:3682",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3683": {
+      "title": "GATE IT 2004 | Question: 40",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3683/gate-it-2004-question-40",
+      "question": "<p>Let $M = (K, Σ, Г, Δ, s, F)$ be a pushdown automaton, where</p>\n<p>$K = (s, f), F = \\{f\\}, \\Sigma = \\{a, b\\}, Г = \\{a\\}$ and<br/>\n$Δ = \\{((s, a, \\epsilon), (s, a)), ((s, b, \\epsilon), (s, a)), (( s, a, a), (f, \\epsilon)), ((f, a, a), (f, \\epsilon)), ((f, b, a), (f, \\epsilon))\\}$.</p>\n<p>Which one of the following strings is not a member of $L(M)$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$aaa$</li>\n<li>$aabab$</li>\n<li>$baaba$</li>\n<li>$bab$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "theory-of-computation",
+        "pushdown-automata",
+        "normal"
+      ],
+      "question_uid": "go:3683",
+      "answer_uid": "v2:10.14.12",
+      "answer_meta": {
+        "type": "NAT",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "source": "question_uid"
+      }
+    },
+    "go:3684": {
+      "title": "GATE IT 2004 | Question: 41",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3684/gate-it-2004-question-41",
+      "question": "<p>Let $M=(K, Σ, \\sigma, s, F)$ be a finite state automaton, where</p>\n<p>$K = \\{A, B\\}, Σ = \\{a, b\\}, s = A, F = \\{B\\},$<br/>\n$\\sigma(A, a) = A, \\sigma(A, b) = B, \\sigma(B, a) = B \\text{ and}  \\ \\sigma(B, b) = A$</p>\n<p>A grammar to generate the language accepted by $M$ can be specified as $G = (V, Σ, R, S), $ where $V = K \\cup Σ$, and $S = A.$<br/>\n<br/>\nWhich one of the following set of rules will make $L(G) = L(M)$ ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\{A → aB, A → bA, B → bA, B → aA, B → \\epsilon)$</li>\n<li>$\\{A → aA, A → bB, B → aB, B → bA, B → \\epsilon)$</li>\n<li>$\\{A → bB, A → aB, B → aA, B → bA, B → \\epsilon)$</li>\n<li>$\\{A → aA, A → bA, B → aB, B → bA, A → \\epsilon)$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "theory-of-computation",
+        "finite-automata",
+        "normal"
+      ],
+      "question_uid": "go:3684",
+      "answer_uid": "v2:10.7.32",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3685": {
+      "title": "GATE IT 2004 | Question: 42",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3685/gate-it-2004-question-42",
+      "question": "<p>Using a $4-bit$ $2's$ complement arithmetic, which of the following additions will result in an overflow?</p>\n<ol style=\"list-style-type:lower-roman\">\n<li>$1100 + 1100$</li>\n<li>$0011 + 0111$</li>\n<li>$1111 + 0111$</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>i only</li>\n<li>ii only</li>\n<li>iii only</li>\n<li>i and iii only</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "digital-logic",
+        "number-representation",
+        "normal"
+      ],
+      "question_uid": "go:3685",
+      "answer_uid": "v2:6.24.53",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3686": {
+      "title": "GATE IT 2004 | Question: 43",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3686/gate-it-2004-question-43",
+      "question": "<p>The number $(123456)_8$ is equivalent to</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{(A72E)}_{16}$ and $(22130232)_4$</li>\n<li>$\\text{(A72E)}_{16}$ and $(22131122)_4$</li>\n<li>$\\text{(A73E)}_{16}$ and $(22130232)_4$</li>\n<li>$\\text{(A62E)}_{16}$ and $(22120232)_4$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "digital-logic",
+        "number-representation",
+        "normal"
+      ],
+      "question_uid": "go:3686",
+      "answer_uid": "v2:6.24.54",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3687": {
+      "title": "GATE IT 2004 | Question: 44",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3687/gate-it-2004-question-44",
+      "question": "<p>The function $A \\bar B C + \\bar A B C + AB \\bar C+ \\bar A \\bar B C+ A \\bar B \\bar C$ is equivalent to</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$A \\bar C + AB+ \\bar A C$</li>\n<li>$A \\bar B+ A \\bar C+ \\bar A C$</li>\n<li>$\\bar A B+ A \\bar C+ A \\bar B$</li>\n<li>$\\bar AB+ AC+ A \\bar B$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "digital-logic",
+        "boolean-algebra",
+        "easy"
+      ],
+      "question_uid": "go:3687",
+      "answer_uid": "v2:6.3.33",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3689": {
+      "title": "GATE IT 2004 | Question: 46",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3689/gate-it-2004-question-46",
+      "question": "<p>If we use internal data forwarding to speed up the performance of a CPU (R1, R2 and R3 are registers and M[100] is a memory reference), then the sequence of operations</p>\n<p>R1 → M[100]<br/>\nM[100] → R2<br/>\nM[100] → R3</p>\n<p>can be replaced by</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>R1 → R3<br/>\nR2 → M[100]</li>\n<li>M[100] → R2<br/>\nR1 → R2<br/>\nR1 → R3</li>\n<li>R1 → M[100]<br/>\nR2 → R3</li>\n<li>R1 → R2<br/>\nR1 → R3<br/>\nR1 → M[100]</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "co-and-architecture",
+        "machine-instructions",
+        "easy"
+      ],
+      "question_uid": "go:3689",
+      "answer_uid": "v2:2.14.19",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3690": {
+      "title": "GATE IT 2004 | Question: 47",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3690/gate-it-2004-question-47",
+      "question": "<p>Consider a pipeline processor with $4$ stages $S1$ to $S4$. We want to execute the following loop:</p>\n<pre class=\"prettyprint lang-c_cpp\">for (i = 1; i &lt; = 1000; i++) \n    {I1, I2, I3, I4} </pre>\n<p>where the time taken (in ns) by instructions $I1$ to $I4$ for stages $S1$ to $S4$ are given below:</p>\n<p>$$\\begin{array}{|c|c|c|c|c|} \\hline  &amp; \\textbf {$S _1$} &amp;\\textbf {$S _2$} &amp; \\textbf {$S _3$} &amp;  \\textbf{$S _4$ } \\\\\\hline \\textbf{I1}&amp; \\text{$1$} &amp; \\text{$2$}  &amp; \\text{$1$} &amp; \\text{$2$} \\\\\\hline \\textbf{I2} &amp; \\text{$2$} &amp; \\text{$1$} &amp; \\text{$2$}  &amp; \\text{$1$}\\\\\\hline  \\textbf{I3}&amp; \\text{$1$} &amp; \\text{$1$}  &amp; \\text{$2$} &amp; \\text{$1$} \\\\\\hline \\textbf{I4} &amp; \\text{$2$} &amp; \\text{$1$} &amp; \\text{$2$}  &amp; \\text{$1$} \\\\\\hline \\end{array}$$</p>\n<p>The output of  $I1$ for $i = 2$ will be available after</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{11 ns}$</li>\n<li>$\\text{12 ns}$</li>\n<li>$\\text{13 ns}$</li>\n<li>$\\text{28 ns}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "co-and-architecture",
+        "pipelining",
+        "normal"
+      ],
+      "question_uid": "go:3690",
+      "answer_uid": "manual:go:3690",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3691": {
+      "title": "GATE IT 2004 | Question: 48",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3691/gate-it-2004-question-48",
+      "question": "<p>Consider a fully associative cache with $8$ cache blocks (numbered $0-7$) and the following sequence of memory block requests:</p>\n<p>$4, 3, 25, 8, 19, 6, 25, 8, 16, 35, 45, 22, 8, 3, 16, 25, 7$<br/>\nIf LRU replacement policy is used, which cache block will have memory block $7$?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$4$</li>\n<li>$5$</li>\n<li>$6$</li>\n<li>$7$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "co-and-architecture",
+        "cache-memory",
+        "normal"
+      ],
+      "question_uid": "go:3691",
+      "answer_uid": "v2:2.4.67",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3692": {
+      "title": "GATE IT 2004 | Question: 49",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3692/gate-it-2004-question-49",
+      "question": "<p>A CPU has only three instructions $I1, I2$ and $I3,$ which use the following signals in time steps $T1-T5$:</p>\n<p>$I1 : T1$ : Ain, Bout, Cin<br/>\n         $T2$ : PCout, Bin<br/>\n         $T3$ : Zout, Ain<br/>\n         $T4$ : Bin, Cout<br/>\n         $T5$ : End</p>\n<p>$I2 : T1$ : Cin, Bout, Din<br/>\n        $T2$ : Aout, Bin<br/>\n        $T3$ : Zout, Ain<br/>\n        $T4$ : Bin, Cout<br/>\n        $T5$ : End</p>\n<p>$I3 : T1$ : Din, Aout<br/>\n        $T2$ : Ain, Bout<br/>\n        $T3$ : Zout, Ain<br/>\n        $T4$ : Dout, Ain<br/>\n        $T5$ : End</p>\n<p>Which of the following logic functions will generate the hardwired control for the signal Ain ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$T1.I1 + T2.I3 + T4.I3 + T3$</li>\n<li>$(T1 + T2 + T3).I3 + T1.I1$</li>\n<li>$(T1 + T2 ).I1 + (T2 + T4).I3 + T3$</li>\n<li>$(T1 + T2 ).I2 + (T1 + T3).I1 + T3$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "co-and-architecture",
+        "microprogramming",
+        "normal"
+      ],
+      "question_uid": "go:3692",
+      "answer_uid": "manual:go:3692",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3694": {
+      "title": "GATE IT 2004 | Question: 51",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3694/gate-it-2004-question-51",
+      "question": "<p>The storage area of a disk has the innermost diameter of $10$ cm and outermost diameter of $20$ cm. The maximum storage density of the disk is $1400$ bits/cm. The disk rotates at a speed of $4200$ RPM. The main memory of a computer has $64$-bit word length and $1$µs cycle time. If cycle stealing is used for data transfer from the disk, the percentage of memory cycles stolen for transferring one word is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$0.5 \\%$</li>\n<li>$1 \\%$</li>\n<li>$5\\%$</li>\n<li>$10\\%$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "co-and-architecture",
+        "dma",
+        "normal"
+      ],
+      "question_uid": "go:3694",
+      "answer_uid": "v2:2.6.9",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3695": {
+      "title": "GATE IT 2004 | Question: 52",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3695/gate-it-2004-question-52",
+      "question": "<p>A program attempts to generate as many permutations as possible of the string, '$abcd$' by pushing the characters $a, b, c, d$ in the same order onto a stack, but it may pop off the top character at any time. Which one of the following strings CANNOT be generated using this program?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$abcd$</li>\n<li>$dcba$</li>\n<li>$cbad$</li>\n<li>$cabd$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "data-structures",
+        "normal",
+        "stack"
+      ],
+      "question_uid": "go:3695",
+      "answer_uid": "v2:8.13.16",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3696": {
+      "title": "GATE IT 2004 | Question: 53",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3696/gate-it-2004-question-53",
+      "question": "<p>An array of integers of size $n$ can be converted into a heap by adjusting the heaps rooted at each internal node of the complete binary tree starting at the node $\\left \\lfloor (n - 1) /2 \\right \\rfloor$, and doing this adjustment up to the root node (root node is at index $0$) in the order $\\left \\lfloor (n - 1) /2 \\right \\rfloor$, $\\left \\lfloor (n - 3) /2 \\right \\rfloor$, ....., $0$. The time required to construct a heap in this manner is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$O(\\log n)$</li>\n<li>$O(n)$</li>\n<li>$O (n \\log \\log n)$</li>\n<li>$O(n \\log n)$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "data-structures",
+        "heap",
+        "normal"
+      ],
+      "question_uid": "go:3696",
+      "answer_uid": "v2:8.3.27",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3697": {
+      "title": "GATE IT 2004 | Question: 54",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3697/gate-it-2004-question-54",
+      "question": "<p>Which one of the following binary trees has its inorder and preorder traversals as $BCAD$  and $ABCD$, respectively?</p>\n<ol class=\"shrink-inline-options\" style=\"list-style-type:upper-alpha\" type=\"A\">\n<li><img alt=\"\" height=\"193\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=11884103077558666867\" width=\"141\"/></li>\n<li><img alt=\"\" height=\"206\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=13177689439878496852\" width=\"174\"/></li>\n<li><img alt=\"\" height=\"223\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=3620235370105556664\" width=\"164\"/></li>\n<li><img alt=\"\" height=\"226\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=18372728060506908794\" width=\"167\"/></li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "binary-tree",
+        "easy",
+        "data-structures"
+      ],
+      "question_uid": "go:3697",
+      "answer_uid": "v2:8.5.46",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3698": {
+      "title": "GATE IT 2004 | Question: 55",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3698/gate-it-2004-question-55",
+      "question": "<p>Let $f(n)$, $g(n)$ and $h(n)$ be functions defined for positive integers such that <br/>\n$f(n) = O(g(n))$, $g(n) \\neq O(f(n))$, $g(n) = O(h(n))$, and $h(n) = O(g(n))$.</p>\n<p>Which one of the following statements is FALSE?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$f(n) + g(n) = O(h(n) + h(n))$</li>\n<li>$f(n) = O(h(n))$</li>\n<li>$h(n) \\neq O(f(n))$</li>\n<li>$f(n)h(n) \\neq O(g(n)h(n))$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "algorithms",
+        "asymptotic-notations",
+        "normal"
+      ],
+      "question_uid": "go:3698",
+      "answer_uid": "v2:1.4.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3699": {
+      "title": "GATE IT 2004 | Question: 56",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3699/gate-it-2004-question-56",
+      "question": "<p>Consider the undirected graph below:</p>\n<p><img alt=\"\" height=\"278\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=6434530301766717919\" width=\"343\"/></p>\n<p>Using Prim's algorithm to construct a minimum spanning tree starting with node A, which one of the following sequences of edges represents a possible order in which the edges would be added to construct the minimum spanning tree?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{(E, G), (C, F), (F, G), (A, D), (A, B), (A, C)}$</li>\n<li>$\\text{(A, D), (A, B), (A, C), (C, F), (G, E), (F, G)}$</li>\n<li>$\\text{(A, B), (A, D), (D, F), (F, G), (G, E), (F, C)}$</li>\n<li>$\\text{(A, D), (A, B), (D, F), (F, C), (F, G), (G, E)}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "algorithms",
+        "graph-algorithms",
+        "normal"
+      ],
+      "question_uid": "go:3699",
+      "answer_uid": "v2:1.25.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3700": {
+      "title": "GATE IT 2004 | Question: 57",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3700/gate-it-2004-question-57",
+      "question": "<p>Consider a list of recursive algorithms and a list of recurrence relations as shown below. Each recurrence relation corresponds to exactly one algorithm and is used to derive the time complexity of the algorithm.</p>\n<p>$$\\begin{array}{|l|l|l|l|}\\hline \\text{}  &amp;  \\textbf{Recursive Algorithm } &amp; \\text{} &amp; \\textbf{Recurrence Relation} \\\\\\hline  \\text{P} &amp; \\text{Binary search} &amp; \\text{l.} &amp; \\text{$T(n) = T(n-k) +T(k) +cn$} \\\\\\hline  \\text{Q.} &amp; \\text{Merge sort} &amp;\\text{ll.}  &amp;  \\text{$T(n) = 2T(n-1) + 1$ }\\\\\\hline\\text{R.}  &amp;  \\text{Quick sort}&amp; \\text{lll.}  &amp;  \\text{$T(n) = 2T(n/2) + cn$}\\\\\\hline \\text{S.}  &amp;  \\text{Tower of Hanoi} &amp; \\text{lV.}  &amp;  \\text{$T(n) = T(n/2) + 1$} \\\\\\hline \\end{array}$$</p>\n<p>Which of the following is the correct match between the algorithms and their recurrence relations?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{P-II, Q-III, R-IV, S-I}$</li>\n<li>$\\text{P-IV, Q-III, R-I, S-II}$</li>\n<li>$\\text{P-III, Q-II, R-IV, S-I}$</li>\n<li>$\\text{P-IV, Q-II, R-I, S-III}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "algorithms",
+        "recurrence-relation",
+        "normal"
+      ],
+      "question_uid": "go:3700",
+      "answer_uid": "v2:1.27.34",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3701": {
+      "title": "GATE IT 2004 | Question: 58",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3701/gate-it-2004-question-58",
+      "question": "<p>Consider the following C program which is supposed to compute the transpose of a given $4 \\times 4$ matrix $M$. Note that, there is an $X$ in the program which indicates some missing statements. Choose the correct option to replace $X$ in the program.</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n#define ROW 4\n#define COL 4\nint M[ROW][COL] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};\nmain\n{\n    int i, j, t;\n    for (i = 0; i &lt; 4; ++i)\n    {\n        X\n    }\n    for (i = 0; i &lt; 4; ++i)\n        for (j = 0; j &lt; 4; ++j)\n            printf (\"%d\", M[i][j]);\n}</pre>\n<ol class=\"shrink-inline-options2\" style=\"list-style-type:upper-alpha\">\n<li>\n<pre class=\"prettyprint lang-c_cpp\">for(j = 0; j &lt; 4; ++j){\n     t = M[i][j];\n     M[i][j] = M[j][i];\n     M[j][i] = t;\n}\n</pre>\n</li>\n<li>\n<pre class=\"prettyprint lang-c_cpp\">for(j = 0; j &lt; 4; ++j){\n     M[i][j] = t;\n     t = M[j][i];\n     M[j][i] = M[i][j];\n}\n</pre>\n</li>\n<li>\n<pre class=\"prettyprint lang-c_cpp\">for(j = i; j &lt; 4; ++j){\n     t = M[i][j];\n     M[i][j] = M[j][i];\n     M[j][i] = t;\n}\n</pre>\n</li>\n<li>\n<pre class=\"prettyprint lang-c_cpp\">for(j = i; j &lt; 4; ++j){\n     M[i][j] = t;\n     t = M[j][i];\n     M[j][i] = M[i][j];\n}</pre>\n</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "programming",
+        "easy",
+        "programming-in-c",
+        "array"
+      ],
+      "question_uid": "go:3701",
+      "answer_uid": "v2:9.2.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3702": {
+      "title": "GATE IT 2004 | Question: 59",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3702/gate-it-2004-question-59",
+      "question": "<p>What is the output of the following program?</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include&lt;stdio.h&gt;\nint funcf (int x);\nint funcg (int y);\nmain \n{\n    int x = 5, y = 10, count;\n    for (count = 1; count &lt;= 2; ++count) {\n        y += funcf(x) + funcg(x);\n        printf (\"%d\", y);\n    }\n}\nfuncf (int x) {\n    int y;\n    y = funcg(x);\n    return (y);\n}\nfuncg (int x) {\n    static int y = 10;\n    y += 1;\n    return (y + x);\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$43 \\ 80$</li>\n<li>$42 \\ 74$</li>\n<li>$33 \\ 37$</li>\n<li>$32 \\ 32$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "programming",
+        "programming-in-c",
+        "normal"
+      ],
+      "question_uid": "go:3702",
+      "answer_uid": "v2:9.11.27",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3703": {
+      "title": "GATE IT 2004 | Question: 60",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3703/gate-it-2004-question-60",
+      "question": "<p>Choose the correct option to fill the $?1$ and $?2$ so that the program prints an input string in reverse order. Assume that the input string is terminated by a new line character.</p>\n<pre class=\"prettyprint lang-c_cpp\">#include &lt;stdio.h&gt;\nvoid wrt_it (void);\nint main (void)\n{\n    printf(\"Enter Text\"); \n    printf (\"\\n\");\n    wrt_it;\n    printf (\"\\n\");\n    return 0;\n}\nvoid wrt_it (void)\n{\n    int c;\n    if (?1)\n        wrt_it;\n    ?2\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$?1$ is  $getchar ! =$ '\\n'<br/>\n$?2$ is  $getchar(c);$</li>\n<li>$?1$ is  $(c = getchar); ! =$ '\\n'<br/>\n$?2$ is  $getchar(c);$</li>\n<li>$?1$ is  $c! =$ '\\n'<br/>\n$?2$ is  $putchar(c);$</li>\n<li>$?1$ is  $(c = getchar) ! =$ '\\n'<br/>\n$?2$ is  $putchar(c);$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "programming",
+        "programming-in-c",
+        "normal"
+      ],
+      "question_uid": "go:3703",
+      "answer_uid": "v2:9.11.28",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3704": {
+      "title": "GATE IT 2004 | Question: 61",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3704/gate-it-2004-question-61",
+      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include &lt;stdio.h&gt;\ntypedef struct {\n    char *a;\n    char *b;\n    } t;\nvoid f1 (t s);\nvoid f2 (t *p);\nmain\n{\n    static t s = {\"A\", \"B\"};\n    printf (\"%s %s\\n\", s.a, s.b);\n    f1(s);\n    printf (\"%s %s\\n\", s.a, s.b);\n    f2(&amp;s);\n}\nvoid f1 (t s)\n{\n    s.a = \"U\";\n    s.b = \"V\";\n    printf (\"%s %s\\n\", s.a, s.b);\n    return;\n}\nvoid f2(t *p)\n{\n    p -&gt; a  = \"V\";\n    p -&gt; b = \"W\";\n    printf(\"%s %s\\n\", p -&gt; a, p -&gt; b);\n    return;\n}</pre>\n<p>What is the output generated by the program ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$A \\ B$<br/>\n$U \\ V$<br/>\n$V \\ W$<br/>\n$V \\ W$</li>\n<li>$A \\ B$<br/>\n$U \\ V$<br/>\n$A \\ B$<br/>\n$V \\ W$</li>\n<li>$A \\ B$<br/>\n$U \\ V$<br/>\n$U \\ V$<br/>\n$V \\ W$</li>\n<li>$A \\ B$<br/>\n$U \\ V$<br/>\n$V \\ W$<br/>\n$U \\ V$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "programming",
+        "programming-in-c",
+        "normal",
+        "structure"
+      ],
+      "question_uid": "go:3704",
+      "answer_uid": "v2:9.15.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3705": {
+      "title": "GATE IT 2004 | Question: 62",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3705/gate-it-2004-question-62",
+      "question": "<p>A disk has $200$ tracks (numbered $0$ through $199$). At a given time, it was servicing the request of reading data from track $120$, and at the previous request, service was for track $90$. The pending requests (in order of their arrival) are for track numbers.</p>\n<p>$30 \\ 70 \\ 115 \\ 130 \\ 110 \\ 80 \\ 20 \\ 25.$</p>\n<p>How many times will the head change its direction for the disk scheduling policies SSTF(Shortest Seek Time First) and FCFS (First Come First Serve)?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$ and $3$</li>\n<li>$3$ and $3$</li>\n<li>$3$ and $4$</li>\n<li>$4$ and $4$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "disk-scheduling",
+        "normal"
+      ],
+      "question_uid": "go:3705",
+      "answer_uid": "v2:7.4.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3706": {
+      "title": "GATE IT 2004 | Question: 63",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3706/gate-it-2004-question-63",
+      "question": "<p>In a certain operating system, deadlock prevention is attempted using the following scheme. Each process is assigned a unique timestamp, and is restarted with the same timestamp if killed. Let $P_h$ be the process holding a resource $R, P_r$ be a process requesting for the same resource $R,$ and $T(P_h)$ and $T(P_r)$ be their timestamps respectively. The decision to wait or preempt one of the processes is based on the following algorithm.</p>\n<pre class=\"prettyprint lang-c_cpp\">if T(Pr) &lt; T(Ph) then \n    kill Pr \nelse wait</pre>\n<p>Which one of the following is TRUE?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>The scheme is deadlock-free, but not starvation-free</li>\n<li>The scheme is not deadlock-free, but starvation-free</li>\n<li>The scheme is neither deadlock-free nor starvation-free</li>\n<li>The scheme is both deadlock-free and starvation-free</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "normal",
+        "deadlock-prevention-avoidance-detection"
+      ],
+      "question_uid": "go:3706",
+      "answer_uid": "v2:7.2.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3707": {
+      "title": "GATE IT 2004 | Question: 64",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3707/gate-it-2004-question-64",
+      "question": "<p>A process executes the following segment of code :</p>\n<pre class=\"prettyprint lang-c_cpp\">for(i = 1; i &lt;= n; i++)\n    fork ;</pre>\n<p><br/>\nThe number of new processes created is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$n$</li>\n<li>$((n(n + 1))/2)$</li>\n<li>$2^n - 1$</li>\n<li>$3^n - 1$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "fork-system-call",
+        "easy"
+      ],
+      "question_uid": "go:3707",
+      "answer_uid": "v2:7.6.7",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3708": {
+      "title": "GATE IT 2004 | Question: 65",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3708/gate-it-2004-question-65",
+      "question": "<p>The semaphore variables full, empty and mutex are initialized to $0$, $n$ and $1$, respectively. Process P<sub>1</sub> repeatedly adds one item at a time to a buffer of size $n$, and process P<sub>2</sub> repeatedly removes one item at a time from the same buffer using the programs given below. In the programs, $K$, $L$, $M$ and $N$ are unspecified statements.</p>\n<table border=\"0\" cellpadding=\"1\" style=\"border-spacing: 1px;\">\n<tbody>\n<tr>\n<td>$P_1$</td>\n<td>\n<pre class=\"prettyprint lang-c_cpp\">while (1) {\n    K;\n    P(mutex);\n    Add an item to the buffer;\n    V(mutex);\n    L;\n}</pre>\n</td>\n</tr>\n<tr>\n<td>$P_2$</td>\n<td>\n<pre class=\"prettyprint lang-c_cpp\">while (1) {\n    M;\n    P(mutex);\n    Remove an item from the buffer;\n    V(mutex);\n    N;\n}</pre>\n</td>\n</tr>\n</tbody>\n</table>\n<p>The statements $K$, $L$, $M$ and $N$ are respectively</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>P(full), V(empty), P(full), V(empty)</li>\n<li>P(full), V(empty), P(empty), V(full)</li>\n<li>P(empty), V(full), P(empty), V(full)</li>\n<li>P(empty), V(full), P(full), V(empty)</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "process-synchronization",
+        "normal"
+      ],
+      "question_uid": "go:3708",
+      "answer_uid": "v2:7.20.46",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3709": {
+      "title": "GATE IT 2004 | Question: 66",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3709/gate-it-2004-question-66",
+      "question": "<p>In a virtual memory system, size of the virtual address is $32$-bit, size of the physical address is $30$-bit, page size is $4$ Kbyte and size of each page table entry is $32$-bit. The main memory is byte addressable. Which one of the following is the maximum number of bits that can be used for storing protection and other information in each page table entry?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$10$</li>\n<li>$12$</li>\n<li>$14$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "virtual-memory",
+        "normal"
+      ],
+      "question_uid": "go:3709",
+      "answer_uid": "manual:go:3709",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3710": {
+      "title": "GATE IT 2004 | Question: 67",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3710/gate-it-2004-question-67",
+      "question": "<p>In a particular Unix OS, each data block is of size $1024$ bytes, each node has $10$ direct data block addresses and three additional addresses: one for single indirect block, one for double indirect block and one for triple indirect block. Also, each block can contain addresses for $128$ blocks. Which one of the following is approximately the maximum size of a file in the file system?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$512$ MB</li>\n<li>$2$ GB</li>\n<li>$8$ GB</li>\n<li>$16$ GB</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "operating-system",
+        "file-system",
+        "normal"
+      ],
+      "question_uid": "go:3710",
+      "answer_uid": "v2:7.5.9",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3717": {
+      "title": "GATE IT 2004 | Question: 73",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3717/gate-it-2004-question-73",
+      "question": "<p>Consider the following entity relationship diagram $(ERD)$, where two entities $E1$ and $E2$ have a relation $R$ of cardinality 1:m.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"https://gateoverflow.in/?qa=blob&amp;qa_blobid=15445994923890028188\"/></p>\n<p>The attributes of $E1$ are $A11$, $A12$ and $A13$ where $A11$ is the key attribute. The attributes of $E2$ are $A21$, $A22$ and $A23$ where $A21$ is the key attribute and $A23$ is a multi-valued attribute. Relation $R$ does not have any attribute. A relational database containing minimum number of tables with each table satisfying the requirements of the third normal form ($3NF$) is designed from the above $ERD$. The number of tables in the database is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2$</li>\n<li>$3$</li>\n<li>$5$</li>\n<li>$4$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "er-diagram",
+        "normal"
+      ],
+      "question_uid": "go:3717",
+      "answer_uid": "v2:5.7.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3718": {
+      "title": "GATE IT 2004 | Question: 74",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3718/gate-it-2004-question-74",
+      "question": "<p>A relational database contains two tables student and department in which student table has columns roll_no, name and dept_id and department table has columns dept_id and dept_name. The following insert statements were executed successfully to populate the empty tables:</p>\n<pre class=\"prettyprint lang-sql\">Insert into department values (1, 'Mathematics')\nInsert into department values (2, 'Physics')\nInsert into student values (l, 'Navin', 1)\nInsert into student values (2, 'Mukesh', 2)\nInsert into student values (3, 'Gita', 1)</pre>\n<p>How many rows and columns will be retrieved by the following SQL statement?</p>\n<pre class=\"prettyprint lang-sql\">Select * from student, department</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>0 row and 4 columns</li>\n<li>3 rows and 4 columns</li>\n<li>3 rows and 5 columns</li>\n<li>6 rows and 5 columns</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "sql",
+        "normal"
+      ],
+      "question_uid": "go:3718",
+      "answer_uid": "manual_res:go:3718",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3719": {
+      "title": "GATE IT 2004 | Question: 75",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3719/gate-it-2004-question-75",
+      "question": "<p>A relation $\\text{Empdtl}$ is defined with attributes empcode (unique), name, street, city, state and pincode. For any pincode, there is only one city and state. Also, for any given street, city and state, there is just one pincode. In normalization terms, $\\text{Empdtl}$ is a relation in</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\textsf{1NF}$ only</li>\n<li>$\\textsf{2NF}$ and hence also in $\\textsf{1NF}$</li>\n<li>$\\textsf{3NF}$ and hence also in $\\textsf{2NF}$ and $\\textsf{1NF}$</li>\n<li>$\\textsf{BCNF}$ and hence also in $\\textsf{3NF}$, $\\textsf{2NF}$ and $\\textsf{1NF}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "database-normalization",
+        "normal"
+      ],
+      "question_uid": "go:3719",
+      "answer_uid": "v2:5.5.50",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3720": {
+      "title": "GATE IT 2004 | Question: 76",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3720/gate-it-2004-question-76",
+      "question": "<p>A table T1 in a relational database has the following rows and columns: <br/>\n$$\\begin{array}{|c|c|c|} \\hline \\text {Roll no. } &amp; \\text {Marks} \\\\\\hline 1&amp;  10 \\\\\\hline 2 &amp; 20 \\\\\\hline3 &amp; 30  \\\\\\hline 4 &amp; \\text{NULL}\\\\\\hline \\end{array}$$<br/>\nThe following sequence of SQL statements was successfully executed on table T1.</p>\n<pre class=\"prettyprint lang-sql\">Update T1 set marks = marks + 5\nSelect avg(marks) from T1</pre>\n<p><br/>\nWhat is the output of the select statement?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$18.75$</li>\n<li>$20$</li>\n<li>$25$</li>\n<li>$\\text{Null}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "sql",
+        "normal"
+      ],
+      "question_uid": "go:3720",
+      "answer_uid": "v2:5.18.53",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3721": {
+      "title": "GATE IT 2004 | Question: 77",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3721/gate-it-2004-question-77",
+      "question": "<p>Consider the following schedule $S$ of transactions $T1$ and $T2:$</p>\n<p>$${\\begin{array}{l|l}<br/>\n\\textbf{T1}&amp;    \\textbf{T2} \\\\\\hline<br/>\n\\text{Read(A)} \\\\<br/>\n\\text{A = A – 10}\\\\<br/>\n&amp;   \\text{Read(A) }\\\\  <br/>\n&amp;  \\text{Temp = 0.2*A} \\\\<br/>\n&amp; \\text{Write(A)} \\\\<br/>\n&amp; \\text{Read(B)} \\\\    <br/>\n\\text{Write(A)}\\\\<br/>\n \\text{Read(B)}\\\\<br/>\n\\text{B = B + 10}\\\\<br/>\n\\text{Write(B)} \\\\<br/>\n&amp; \\text{B = B + Temp}  \\\\  <br/>\n&amp; \\text{Write(B)}\\\\ <br/>\n\\end{array}}$$</p>\n<p>Which of the following is TRUE about the schedule $S$ ?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$S$ is serializable only as $T1, T2$</li>\n<li>$S$ is serializable only as $T2, T1$</li>\n<li>$S$ is serializable both as $T1, T2$ and $T2, T1$</li>\n<li>$S$ is not serializable either as $T1,T2$ or as $T2,T1$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "transaction-and-concurrency",
+        "normal"
+      ],
+      "question_uid": "go:3721",
+      "answer_uid": "manual:go:3721",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3722": {
+      "title": "GATE IT 2004 | Question: 78",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3722/gate-it-2004-question-78",
+      "question": "<p>Consider two tables in a relational database with columns and rows as follows:</p>\n<p>$$\\overset{\\text{Table: Student}}{\\begin{array}{|c|c|c|} \\hline \\textbf {Roll_no} &amp; \\textbf{Name} &amp; \\textbf{Dept_id} \\\\\\hline  1&amp; \\text{ABC} &amp; 1\\\\\\hline 2&amp; \\text{DEF} &amp; 1 \\\\\\hline 3 &amp; \\text{GHI} &amp; 2\\\\\\hline 4 &amp; \\text{JKL} &amp; 3\\\\\\hline  \\end{array}} \\qquad \\overset{\\text{Table: Department}}{\\begin{array}{|c|c|c|} \\hline \\textbf {Dept_id} &amp; \\textbf{Dept_name} \\\\\\hline  1&amp; \\text{A} \\\\\\hline 2&amp; \\text{B}  \\\\\\hline 3 &amp; \\text{C} \\\\\\hline  \\end{array}}$$</p>\n<p>Roll_no is the primary key of the Student table, Dept_id is the primary key of the Department table and Student.Dept_id is a foreign key from Department.Dept_id<br/>\nWhat will happen if we try to execute the following two SQL statements?</p>\n<ol style=\"list-style-type:lower-roman\">\n<li>update Student set Dept_id = Null where Roll_on = 1</li>\n<li>update Department set Dept_id = Null where Dept_id = 1</li>\n</ol>\n<ol style=\"list-style-type:upper-alpha\">\n<li>Both i and ii will fail</li>\n<li>i will fail but ii will succeed</li>\n<li>i will succeed but ii will fail</li>\n<li>Both i and ii will succeed</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "sql",
+        "normal"
+      ],
+      "question_uid": "go:3722",
+      "answer_uid": "v2:5.18.54",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3723": {
+      "title": "GATE IT 2004 | Question: 79",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3723/gate-it-2004-question-79",
+      "question": "<p>Consider a table $T$ in a relational database with a key field $K$. A $B$-tree of order $p$ is used as an access structure on $K$, where $p$ denotes the maximum number of tree pointers in a B-tree index node. Assume that $K$ is $10$ $bytes$ long; disk block size is $512$ $bytes$; each data pointer P<sub>D</sub> is $8$ bytes long and each block pointer P<sub>B</sub> is $5$ bytes long. In order for each $B$-tree node to fit in a single disk block, the maximum value of $p$ is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$20$</li>\n<li>$22$</li>\n<li>$23$</li>\n<li>$32$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "databases",
+        "b-tree",
+        "normal"
+      ],
+      "question_uid": "go:3723",
+      "answer_uid": "v2:5.1.27",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3724": {
+      "title": "GATE IT 2004 | Question: 80",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3724/gate-it-2004-question-80",
+      "question": "<p>In a data link protocol, the frame delimiter flag is given by $0111$. Assuming that bit stuffing is employed, the transmitter sends the data sequence $01110110$ as</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$01101011$</li>\n<li>$011010110$</li>\n<li>$011101100$</li>\n<li>$0110101100$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "network-flow",
+        "normal"
+      ],
+      "question_uid": "go:3724",
+      "answer_uid": "v2:4.3.2",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3725": {
+      "title": "GATE IT 2004 | Question: 81",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3725/gate-it-2004-question-81",
+      "question": "<p>In a sliding window $ARQ$ scheme, the transmitter's window size is $N$ and the receiver's window size is $M$. The minimum number of distinct sequence numbers required to ensure correct operation of the $ARQ$ scheme is</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\min (M, N)$</li>\n<li>$\\max (M, N)$</li>\n<li>$M + N$</li>\n<li>$MN$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "sliding-window",
+        "normal"
+      ],
+      "question_uid": "go:3725",
+      "answer_uid": "v2:4.26.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3727": {
+      "title": "GATE IT 2004 | Question: 83",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3727/gate-it-2004-question-83",
+      "question": "<p>A $20$ $\\text{Kbps}$ satellite link has a propagation delay of $400$ $\\text{ms}$. The transmitter employs the \"go back $n$ $ARQ$\" scheme with $n$ set to $10$. Assuming that each frame is $100$ $\\text{byte}$ long, what is the maximum data rate possible?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$5$ $\\text{Kbps}$</li>\n<li>$10$ $\\text{Kbps}$​​​​​​​</li>\n<li>$15$ $\\text{Kbps}$​​​​​​​</li>\n<li>$20$ $\\text{Kbps}$​​​​​​​</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "sliding-window",
+        "normal"
+      ],
+      "question_uid": "go:3727",
+      "answer_uid": "v2:4.26.12",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3729": {
+      "title": "GATE IT 2004 | Question: 85",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3729/gate-it-2004-question-85",
+      "question": "<p>Consider a simplified time slotted MAC protocol, where each host always has data to send and transmits with probability $p$ = $0.2$ in every slot. There is no backoff and one frame can be transmitted in one slot. If more than one host transmits in the same slot, then the transmissions are unsuccessful due to collision. What is the maximum number of hosts which this protocol can support if each host has to be provided a minimum throughput of $0.16$ frames per time slot?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$1$</li>\n<li>$2$</li>\n<li>$3$</li>\n<li>$4$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "congestion-control",
+        "mac-protocol",
+        "normal"
+      ],
+      "question_uid": "go:3729",
+      "answer_uid": "v2:4.17.4",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3730": {
+      "title": "GATE IT 2004 | Question: 86",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3730/gate-it-2004-question-86",
+      "question": "<p>In the TCP/IP protocol suite, which one of the following is NOT part of the IP header?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>Fragment Offset</li>\n<li>Source IP address</li>\n<li>Destination IP address</li>\n<li>Destination port number</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "ip-packet",
+        "normal"
+      ],
+      "question_uid": "go:3730",
+      "answer_uid": "v2:4.15.11",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3731": {
+      "title": "GATE IT 2004 | Question: 87",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3731/gate-it-2004-question-87",
+      "question": "<p>A TCP message consisting of $2100$  $bytes$ is passed to IP for delivery across two networks. The first network can carry a maximum payload of $1200$ $bytes$ per frame and the second network can carry a maximum payload of $400$ $bytes$ per frame, excluding network overhead. Assume that IP overhead per packet is $20$ $bytes$. What is the total IP overhead in the second network for this transmission?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\text{40 bytes}$</li>\n<li>$\\text{80 bytes}$</li>\n<li>$\\text{120 bytes}$</li>\n<li>$\\text{160 bytes}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "network-flow",
+        "normal"
+      ],
+      "question_uid": "go:3731",
+      "answer_uid": "v2:4.18.3",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3732": {
+      "title": "GATE IT 2004 | Question: 88",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3732/gate-it-2004-question-88",
+      "question": "<p>Suppose that the maximum transmit window size for a TCP connection is $12000$ $\\text{bytes}$. Each packet consists of $2000$ $\\text{bytes}$. At some point in time, the connection is in slow-start phase with a current transmit window of $4000$ $\\text{bytes}$. Subsequently, the transmitter receives two acknowledgments. Assume that no packets are lost and there are no time-outs. What is the maximum possible value of the current transmit window?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$4000$ $\\text{bytes}$</li>\n<li>$8000$ $\\text{bytes}$</li>\n<li>$10000$ $\\text{bytes}$</li>\n<li>$12000$ $\\text{bytes}$</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "computer-networks",
+        "sliding-window",
+        "normal"
+      ],
+      "question_uid": "go:3732",
+      "answer_uid": "v2:4.26.13",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    },
+    "go:3734": {
+      "title": "GATE IT 2004 | Question: 90",
+      "year": "gateit-2004",
+      "link": "https://gateoverflow.in/3734/gate-it-2004-question-90",
+      "question": "<p>Given below are several usages of the anchor tag in HTML.</p>\n<ol style=\"list-style-type:upper-roman\">\n<li>\n<pre class=\"prettyprint lang-html\">&lt;A HREF = \"http://www.gate.ac.in/HTML/BASIC/testpage.html\"&gt;Test Me&lt;/A&gt;</pre>\n</li>\n<li>\n<pre class=\"prettyprint lang-html\">&lt;A HREF = \"/BASIC/testpage.html\"&gt;Test Me&lt;/A&gt;</pre>\n</li>\n<li>\n<pre class=\"prettyprint lang-html\">&lt;A HREF = \"testpage.html\"&gt;Test Me&lt;/A&gt;</pre>\n</li>\n<li>\n<pre class=\"prettyprint lang-html\">&lt;A HREF = \"testpage.html#test\"&gt;Test Me&lt;/A&gt;</pre>\n</li>\n</ol>\n<p>Which of the above are valid?</p>\n<ol style=\"list-style-type: upper-alpha;\">\n<li>I and II only</li>\n<li>I and III only</li>\n<li>I, II and III only</li>\n<li>I, II, III and IV</li>\n</ol>",
+      "tags": [
+        "gateit-2004",
+        "web-technologies",
+        "html",
+        "normal"
+      ],
+      "question_uid": "go:3734",
+      "answer_uid": "manual:go:3734",
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "question_uid"
+      }
+    }
+  }
+}

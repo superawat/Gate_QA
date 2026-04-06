@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>GateQA</title>
+  <script>
+    (function () {
+      var pathSegmentsToKeep = 1;
+      var locationPath = window.location.pathname.split("/").filter(Boolean);
+      var basePath = locationPath.slice(0, pathSegmentsToKeep).join("/");
+      var routePath = locationPath.slice(pathSegmentsToKeep).join("/");
+      var query = window.location.search
+        .slice(1)
+        .replace(/&/g, "~and~");
+      var redirect = "/" + basePath + "/?/" + routePath;
+
+      if (query) {
+        redirect += "&" + query;
+      }
+
+      if (window.location.hash) {
+        redirect += window.location.hash;
+      }
+
+      window.location.replace(redirect);
+    }());
+  </script>
+</head>
+<body></body>
+</html>
