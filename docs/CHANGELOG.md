@@ -1,8 +1,29 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
+
+### FEAT-027: Full Mock Test Release -> Status: Done
+- Enabled full Mock Test mode (`MOCK_TEST_MODE_ENABLED = true`), unlocking the Mock card on the landing page.
+- Added a complete Mock Test portal allowing the selection of "Full Mock" (180 min, 65 questions), "Past Paper", and "Custom Builder" modes.
+- Implemented a desktop-centric Mock Test Shell (`MockTestShell.jsx`) with realistic timed constraints, an interactive question palette, and a persistent calculator widget.
+- Added a `MockTestResults` evaluation screen to review performance post-submission.
+- Introduced `MockTestContext` to isolate mock state (timer, active question, results) from the transient practice session state.
+- **Architecture Refactor**: Added top-level layout split in `App.jsx` for `/mock` route with `MockBranch` and isolated `FilterProvider`, eliminating race conditions between mock and practice mode.
+- **Tab Protection**: Added `beforeunload` event listener in `MockTestShell.jsx` to natively prevent accidental tab close/reload during an active exam.
+- **Effect Guards**: Enforced strict `exitInProgressRef` guards on all step-modifying effects in `MockTestShell` to shield state from navigation lag.
+- **Code Optimization**: Prevented mounting of `SessionProvider`, `ScrollToTop`, `LegacyNavigationHandler`, and tracking instances during exams by isolating practice environment dependencies.
+
+### FEAT-028: Mock Test UI Refinements & NAT Keypad -> Status: Done
+- **NAT Virtual Keypad**: Implemented an interactive, cursor-aware virtual numerical keypad for Numerical Answer Type (NAT) questions, exactly mimicking traditional exam interfaces.
+- **NAT Input Replaced**: Changed NAT input type from `number` to `text` to eliminate native browser spin buttons and stabilize caret selection on desktop browsers.
+- **Embedded Options Preseved**: Disabled `stripEmbeddedOptions` across the mock test so "agnostic" native question stems do not unintentionally erase embedded choice fragments.
+- **Split Option Rendering**: Render explicit options correctly ordered above the "Select your answer" controls, leaving only clean `A, B, C, D` selection nodes for the user to interact with.
+- **Header Space Compression**: Radically compressed `MockTestHeader.jsx` to maximize vertical space for the active question:
+  - Migrated `{currentSectionLabel}` and `{attemptSubtitle}` inline into the dark master header bar `#2f2f31`.
+  - Merged separate header row blocks into a single un-wrappable (`flex-nowrap`) ultra-thin `<nav>` strip.
+  - Flattened the massive right-side `MockTestProfile` column into a tight, single-line horizontal flex element, eliminating invisible vertical void space.
 
 ### BUG-022: Loading states used inconsistent visuals across the app -> Status: Done
 - Added a shared `LoadingState` wrapper around the existing horizontal bar loader so the app no longer mixes text-only and ad hoc loading UIs.

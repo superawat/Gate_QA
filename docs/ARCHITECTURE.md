@@ -1,4 +1,4 @@
-﻿# Architecture
+# Architecture
 
 GateQA is a static React SPA hosted on GitHub Pages.
 There is no backend, no database, and no server-side rendering.
@@ -213,10 +213,37 @@ Landing actions:
 - Random start always calls `clearFilters()` before entering practice.
 - Targeted start sets the one-shot auto-open modal flag and keeps any existing filter state intact.
 - "Continue where you left off" resumes the current practice/question/filter state instead of routing through random mode.
-- Mock card is visible but disabled with "Coming soon" badge.
+- Mock card is visible and provides access to the Mock Test portal.
 - "Continue where you left off" is shown only when solved or bookmarked local progress exists.
 
 `?mode=` writes use `window.history.replaceState(...)` only.
+
+## Mock Test Architecture Refactor (2026-04-06)
+
+### 1. Top-Level Layout Split (`App.jsx`)
+
+`AppRuntime` now checks if the current route is `/mock` at the top level:
+
+- **If on mock** → renders `MockBranch` with its own isolated `FilterProvider`, completely separate from practice mode.
+- **If not on mock** → renders the existing `FilterProvider` → `SessionProvider` → `PracticeRoutes` tree.
+
+This guarantees zero shared effects between mock and practice, eliminating navigation race conditions. The legacy `MockRoute` component handling mock-specific overrides was eliminated, keeping navigation straightforward.
+
+### 2. Exam Tab Close Protection (`MockTestShell.jsx`)
+
+- Added a `beforeunload` event listener that activates when `testActive` is `true`.
+- The browser will natively show a confirmation dialog if the user attempts to close or reload the tab during an active exam.
+
+### 3. Effect Guards (`MockTestShell.jsx`)
+
+- All step-modifying effects in `MockTestShell` now actively check `exitInProgressRef` before making any state changes.
+
+### Key Benefits
+
+- **No race conditions**: Mock and practice environments cannot interfere with each other.
+- **Better performance**: Components like `SessionProvider`, `ScrollToTop`, `LegacyNavigationHandler`, and practice pageview tracking do not mount or run during exams.
+- **Tab close protection**: Prevents accidental exam loss during active tests.
+- **Cleaner codebase**: Eradicated mock conditional logic intertwined with practice setups.
 
 ## URL contract
 

@@ -1,4 +1,4 @@
-﻿# GATE QA
+# GATE QA
 
 Extensive, searchable, and filterable GATE CSE previous-year question bank from 1987 to 2026, with a forward-ingestion pipeline for new exam years.
 
@@ -14,6 +14,7 @@ https://superawat.github.io/Gate_QA/
 - Scoped subtopic filtering with subject/subtopic consistency guards
 - Deep-link support (`?question=<uid>` plus filter query params)
 - Solved/bookmarked progress persistence in localStorage
+- Full-length Mock Test mode with timed exam environment and performance summary
 - ProgressManager in sidebar:
   - Export JSON backup
   - Export enriched CSV (analysis only)

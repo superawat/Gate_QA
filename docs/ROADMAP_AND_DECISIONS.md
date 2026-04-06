@@ -72,7 +72,7 @@ This file is the working backlog for future product improvements and important d
 | P0 | Data trust | Public parity is fixed, but answer coverage and future regressions still matter | keep parity green and improve coverage discipline |
 | P0 | QA automation | The repo already has strong audit scripts; failures should block regressions earlier | keep parity/data validation in CI and add Lighthouse discipline |
 | P1 | Practice UX | Practice flow is the core product, so small friction here hurts every session | add real search from the lightweight index and keep deep links predictable |
-| P1 | Mock test readiness | Mock mode exists in code but is still feature-flagged off | keep it disabled until startup and trust work are green |
+| P1 | Mock test readiness | Mock mode is now fully enabled and shipped | monitor usage and feedback |
 | P2 | Learning layer | Better learning feedback improves repeat usage more than raw question count alone | add weak-topic insights, review queues, and explanation feedback |
 
 ## Seed Backlog
@@ -86,7 +86,7 @@ This file is the working backlog for future product improvements and important d
 | FEAT-024 | P1 | Proposed | Implement real question search | Use `public/question-search-index.json`, not the full HTML bank |
 | FEAT-025 | P1 | Proposed | Add "report a bad question" flow | Open a prefilled GitHub issue without adding a backend |
 | FEAT-026 | P1 | Done | Improve resume and landing clarity | Resume flow, manifest summary, and unified loading states now keep practice entry clearer |
-| FEAT-027 | P1 | Proposed | Keep mock mode disabled until Phase 1/2 are green | Do not spend polish time before startup and trust are fixed |
+| FEAT-027 | P1 | Done | Ship Mock mode after Phase 1/2 are green | Mock mode is now enabled and available on the landing page |
 | FEAT-028 | P2 | Proposed | Add weak-topic analytics | Show solved accuracy by subject/subtopic and recent mistakes |
 | FEAT-029 | P2 | Proposed | Add offline/PWA support | Start with shell/current question/recent local state; keep full-bank offline opt-in |
 

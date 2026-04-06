@@ -84,7 +84,7 @@ The remaining platform debt is narrower now:
   - recent queue
   - solved/bookmarked sets
 - Keep full-bank offline opt-in until the sharded model exists.
-- Keep mock mode disabled until Phase 1 and Phase 2 are green.
+- Mock mode is now enabled, as startup and trust baselines are mostly achieved.
 
 ## Success Criteria
 
