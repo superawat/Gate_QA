@@ -30,6 +30,7 @@
     "qa:audit-pre-2010-gateoverflow": "node scripts/qa/pre-2010-gateoverflow-audit.js",
     "qa:import-missing-paper": "node scripts/qa/import-missing-paper-from-tag.js",
     "qa:import-external-aptitude": "node --max-old-space-size=4096 scripts/qa/import-external-aptitude.mjs --write",
+    "qa:backfill-gateoverflow-top-answers": "node scripts/qa/backfill-gateoverflow-top-answers.mjs --write",
     "qa:repair-pre-2010-questions": "node scripts/qa/repair-pre-2010-questions.js",
     "qa:repair-historical-exam-uids": "node scripts/qa/repair-historical-exam-uids.js",
     "qa:repair-historical-paper-counts": "node scripts/qa/repair-historical-paper-counts.js",

@@ -57,27 +57,24 @@ describe("MockCatalogService", () => {
     const readyPaperKeys = papers
       .filter((paper) => paper.paperReady)
       .map((paper) => paper.yearSetKey);
-    const blocked2019Paper = papers.find((paper) => paper.yearSetKey === "2019-s0");
+    const blocked2017Paper = papers.find((paper) => paper.yearSetKey === "2017-s1");
 
     expect(readyPaperKeys).toEqual(expect.arrayContaining([
       "2025-s1",
       "2024-s1",
       "2023-s0",
+      "2019-s0",
+      "2016-s1",
+      "2015-s1",
       "2017-s2",
       "2014-s1",
     ]));
     expect(readyPaperKeys.length).toBeGreaterThanOrEqual(10);
-    expect(blocked2019Paper).toMatchObject({
+    expect(blocked2017Paper).toMatchObject({
       paperReady: false,
       missingScorableCount: 1,
     });
-    expect(blocked2019Paper.statusReason).toMatch(/missing verified answers/i);
-    expect(blocked2019Paper.blockedQuestions).toEqual(expect.arrayContaining([
-      expect.objectContaining({
-        questionUid: "go:302794",
-        section: "CS",
-        orderIndex: 54,
-      }),
-    ]));
+    expect(blocked2017Paper.statusReason).toMatch(/parsed 64\/65 total questions/i);
+    expect(blocked2017Paper.blockedQuestions).toEqual([]);
   });
 });
