@@ -255,9 +255,21 @@ describe("ExplorePage", () => {
   test("opens the mobile filter modal from the filters button", async () => {
     renderExplorePage();
 
-    fireEvent.click(await screen.findByRole("button", { name: /^filters$/i }));
+    fireEvent.click(await screen.findByRole("button", { name: /filters/i }));
 
     expect(screen.getByText("Mock filter modal")).toBeTruthy();
+  });
+
+  test("shows the active filter count on the filters button", async () => {
+    renderExplorePage();
+
+    expect((await screen.findByRole("button", { name: /filters/i })).textContent).toContain("All questions");
+
+    fireEvent.click(screen.getByRole("button", { name: /choose algorithms/i }));
+
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: /filters/i }).textContent).toContain("1 active");
+    });
   });
 
   test("subject filter updates the URL and resets the page param", async () => {

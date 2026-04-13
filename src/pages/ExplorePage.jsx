@@ -34,7 +34,7 @@ const ExplorePage = ({
   const pullStartRef = useRef(null);
   const pullActiveRef = useRef(false);
 
-  const { filteredQuestions, filters, isInitialized, totalQuestions } = useFilterState();
+  const { filteredQuestions, filters, isInitialized, structuredTags, totalQuestions } = useFilterState();
   const { isQuestionSolved, isQuestionBookmarked } = useFilterActions();
   const { startOrderedSession } = useSession();
 
@@ -217,6 +217,44 @@ const ExplorePage = ({
     return `Showing ${rangeStart}-${rangeEnd} of ${filteredQuestions.length} · ${totalQuestions} total questions`;
   }, [filteredQuestions.length, isInitialized, startIndex, totalQuestions]);
 
+  const activeFilterCount = useMemo(() => {
+    const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [];
+    const hasSearchQuery = String(filters.searchQuery || "").trim() !== "";
+    const hasYearRange = Array.isArray(filters.yearRange)
+      && filters.yearRange.length === 2
+      && (
+        Number(filters.yearRange[0]) !== Number(structuredTags?.minYear)
+        || Number(filters.yearRange[1]) !== Number(structuredTags?.maxYear)
+      );
+    const hasProgressFilter = Boolean(
+      filters.hideSolved
+      || filters.showOnlySolved
+      || filters.showOnlyBookmarked
+    );
+
+    return [
+      filters.selectedYearSets.length > 0,
+      filters.selectedSubjects.length > 0,
+      filters.selectedSubtopics.length > 0,
+      selectedTypes.length > 0 && selectedTypes.length < 3,
+      hasYearRange,
+      hasProgressFilter,
+      hasSearchQuery,
+    ].filter(Boolean).length;
+  }, [
+    filters.hideSolved,
+    filters.searchQuery,
+    filters.selectedSubtopics.length,
+    filters.selectedSubjects.length,
+    filters.selectedTypes,
+    filters.selectedYearSets.length,
+    filters.showOnlyBookmarked,
+    filters.showOnlySolved,
+    filters.yearRange,
+    structuredTags?.maxYear,
+    structuredTags?.minYear,
+  ]);
+
   return (
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
       <FilterModal
@@ -251,10 +289,17 @@ const ExplorePage = ({
                 <button
                   type="button"
                   onClick={handleOpenFilters}
-                  className="inline-flex min-h-[48px] items-center rounded-xl bg-sky-600 px-6 py-2.5 text-base font-bold text-white shadow-md transition hover:bg-sky-700 active:scale-95 xl:hidden"
+                  className="inline-flex min-h-[56px] items-center gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-left text-sm font-semibold text-slate-900 shadow-[var(--shadow-soft)] ring-1 ring-sky-100 transition hover:border-sky-400 hover:bg-sky-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
                 >
-                  <FaFilter className="mr-3" size={24} />
-                  Filters
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 text-white shadow-sm">
+                    <FaFilter className="h-5 w-5" />
+                  </span>
+                  <span className="flex flex-col leading-tight">
+                    <span>Filters</span>
+                    <span className="text-xs font-medium text-slate-600">
+                      {activeFilterCount > 0 ? `${activeFilterCount} active` : "All questions"}
+                    </span>
+                  </span>
                 </button>
               </div>
             </div>
