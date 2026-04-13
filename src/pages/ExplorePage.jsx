@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaFilter, FaSlidersH } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
@@ -251,20 +251,15 @@ const ExplorePage = ({
                 <button
                   type="button"
                   onClick={handleOpenFilters}
-                  className="inline-flex min-h-[44px] items-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 xl:hidden"
+                  className="inline-flex min-h-[48px] items-center rounded-xl bg-sky-600 px-6 py-2.5 text-base font-bold text-white shadow-md transition hover:bg-sky-700 active:scale-95 xl:hidden"
                 >
-                  <FaFilter className="mr-2" />
+                  <FaFilter className="mr-3" size={24} />
                   Filters
                 </button>
               </div>
             </div>
 
-            <div className="mt-4 grid gap-3 border-t border-slate-100 pt-4 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:items-start">
-              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-800">
-                <FaSlidersH />
-                Filters update instantly
-              </div>
-
+            <div className="mt-4 border-t border-slate-100 pt-4">
               <QuestionSearchInput
                 id="explore-search"
                 label="Search questions"
