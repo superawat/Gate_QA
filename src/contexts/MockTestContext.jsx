@@ -273,9 +273,13 @@ export const MockTestProvider = ({ children }) => {
     () => (catalog?.byQuestionUid && typeof catalog.byQuestionUid === "object" ? catalog.byQuestionUid : {}),
     [catalog]
   );
-  const readyPapers = useMemo(
-    () => (Array.isArray(catalog?.papers) ? catalog.papers.filter((paper) => paper?.paperReady) : []),
+  const paperCatalog = useMemo(
+    () => (Array.isArray(catalog?.papers) ? catalog.papers : []),
     [catalog]
+  );
+  const readyPapers = useMemo(
+    () => paperCatalog.filter((paper) => paper?.paperReady),
+    [paperCatalog]
   );
   const scorableQuestionUidSet = useMemo(
     () => catalog?.scorableQuestionUidSet || EMPTY_UID_SET,
@@ -854,6 +858,11 @@ export const MockTestProvider = ({ children }) => {
     const index = getSectionIndex(currentSection);
     if (index < targetUids.length - 1) {
       goToQuestion(index + 1, currentSection);
+    } else if (currentSection === "GA") {
+      const csUids = getSectionUids("CS");
+      if (csUids.length > 0) {
+        goToQuestion(0, "CS");
+      }
     }
   }, [currentSection, getSectionIndex, getSectionUids, goToQuestion]);
 
@@ -970,6 +979,7 @@ export const MockTestProvider = ({ children }) => {
     currentSectionIndex,
     endMockTest,
     getQuestionMeta,
+    paperCatalog,
     goToNext,
     goToPrevious,
     goToQuestion,

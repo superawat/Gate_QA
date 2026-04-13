@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { FilterProvider, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
@@ -22,6 +23,7 @@ import {
   buildSolvePath,
   getLegacyRedirectTarget,
   HOME_ROUTE,
+  INSIGHTS_ROUTE,
   MOCK_HISTORY_ROUTE,
   MOCK_ROUTE,
   PRACTICE_ROUTE,
@@ -29,6 +31,7 @@ import {
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
+const InsightsPage = lazy(() => import("./pages/InsightsPage"));
 const MockHistoryPage = lazy(() => import("./pages/MockHistoryPage"));
 const SolvePage = lazy(() => import("./pages/SolvePage"));
 const MockShell = lazy(() => import("./shells/MockShell"));
@@ -92,18 +95,20 @@ const MockBranch = ({ loadQuestions, questionBankManifest, questionDataRevision 
   }
 
   return (
-    <FilterProvider
-      initialManifest={questionBankManifest}
-      questionDataRevision={questionDataRevision}
-    >
-      <Suspense fallback={<MockCatalogLoaderCard />}>
-        <MockShell
-          onExit={handleExit}
-          stage={stage}
-          onStageChange={handleStageChange}
-        />
-      </Suspense>
-    </FilterProvider>
+      <FilterProvider
+        initialManifest={questionBankManifest}
+        questionDataRevision={questionDataRevision}
+      >
+        <ErrorBoundary>
+          <Suspense fallback={<MockCatalogLoaderCard />}>
+            <MockShell
+              onExit={handleExit}
+              stage={stage}
+              onStageChange={handleStageChange}
+            />
+          </Suspense>
+        </ErrorBoundary>
+      </FilterProvider>
   );
 };
 
@@ -261,6 +266,11 @@ const PracticeRoutes = ({
     navigate(MOCK_HISTORY_ROUTE);
   }, [navigate]);
 
+  const handleOpenInsights = useCallback(() => {
+    trackEvent("home_cta", { target: "insights", source: "home" });
+    navigate(INSIGHTS_ROUTE);
+  }, [navigate]);
+
   return (
     <>
       <ScrollToTop />
@@ -270,47 +280,68 @@ const PracticeRoutes = ({
         <Route
           path={HOME_ROUTE}
           element={(
-            <HomePage
-              questionBankManifest={questionBankManifest}
-              manifestLoading={manifestLoading}
-              manifestError={manifestError}
-              hasResumeRoute={hasResumeRoute}
-              lastSession={lastSession}
-              mockModeEnabled={MOCK_TEST_MODE_ENABLED}
-              onStartRandomPractice={handleStartRandomPractice}
-              onExplorePractice={handleExplorePractice}
-              onOpenMockHistory={handleOpenMockHistory}
-              onStartMockTest={handleStartMockTest}
-              onResumePractice={handleResumePractice}
-            />
+            <ErrorBoundary>
+              <HomePage
+                questionBankManifest={questionBankManifest}
+                manifestLoading={manifestLoading}
+                manifestError={manifestError}
+                hasResumeRoute={hasResumeRoute}
+                lastSession={lastSession}
+                mockModeEnabled={MOCK_TEST_MODE_ENABLED}
+                onStartRandomPractice={handleStartRandomPractice}
+                onExplorePractice={handleExplorePractice}
+                onOpenInsights={handleOpenInsights}
+                onOpenMockHistory={handleOpenMockHistory}
+                onStartMockTest={handleStartMockTest}
+                onResumePractice={handleResumePractice}
+              />
+            </ErrorBoundary>
           )}
         />
         <Route
           path={PRACTICE_ROUTE}
           element={(
-            <Suspense fallback={<RouteLoader label="Loading Explore..." />}>
-              <ExplorePage
-                loading={loading}
-                error={error}
-                loadQuestions={loadQuestions}
-                hasResumeRoute={hasResumeRoute}
-                onResumePractice={handleResumePractice}
-              />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Explore..." />}>
+                <ExplorePage
+                  loading={loading}
+                  error={error}
+                  loadQuestions={loadQuestions}
+                  hasResumeRoute={hasResumeRoute}
+                  onResumePractice={handleResumePractice}
+                />
+              </Suspense>
+            </ErrorBoundary>
           )}
         />
         <Route
           path={`${PRACTICE_ROUTE}/question/:questionUid`}
           element={(
-            <Suspense fallback={<RouteLoader label="Loading Solve..." />}>
-              <SolvePage
-                loading={loading}
-                error={error}
-                loadQuestions={loadQuestions}
-                hasResumeRoute={hasResumeRoute}
-                onResumePractice={handleResumePractice}
-              />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Solve..." />}>
+                <SolvePage
+                  loading={loading}
+                  error={error}
+                  loadQuestions={loadQuestions}
+                  hasResumeRoute={hasResumeRoute}
+                  onResumePractice={handleResumePractice}
+                />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
+        <Route
+          path={INSIGHTS_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Insights..." />}>
+                <InsightsPage
+                  questionBankManifest={questionBankManifest}
+                  hasResumeRoute={hasResumeRoute}
+                  onResumePractice={handleResumePractice}
+                />
+              </Suspense>
+            </ErrorBoundary>
           )}
         />
         <Route
@@ -465,6 +496,10 @@ const AppRuntime = () => {
     }
     if (location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`)) {
       pageview("Solve");
+      return;
+    }
+    if (location.pathname === INSIGHTS_ROUTE) {
+      pageview("Insights");
       return;
     }
     if (location.pathname.startsWith(MOCK_HISTORY_ROUTE)) {

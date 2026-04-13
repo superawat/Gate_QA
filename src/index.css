@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
   --color-bg: #f4f7fb;
   --color-surface: #ffffff;
   --color-surface-muted: #f8fafc;
@@ -15,6 +16,928 @@
   --radius-card: 24px;
   --shadow-card: 0 24px 60px rgba(15, 23, 42, 0.08);
   --shadow-soft: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #030712;
+  --color-surface: #0f172a;
+  --color-surface-muted: #111c31;
+  --color-border: #22324d;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-accent: #22d3ee;
+  --color-accent-soft: #164e63;
+  --shadow-card: 0 24px 60px rgba(2, 6, 23, 0.5);
+  --shadow-soft: 0 14px 35px rgba(2, 6, 23, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE — COMPREHENSIVE OVERRIDES
+   Covers: slate, gray, white, plus every semantic color used in the app
+   (rose, amber, emerald, sky, violet, purple, orange, teal, blue, green,
+    red, yellow, pink, indigo, cyan)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── White / Surface backgrounds ──────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-white,
+:root[data-theme="dark"] .bg-white\/75,
+:root[data-theme="dark"] .bg-white\/80,
+:root[data-theme="dark"] .bg-white\/85,
+:root[data-theme="dark"] .bg-white\/50,
+:root[data-theme="dark"] .bg-white\/95 {
+  background-color: var(--color-surface) !important;
+}
+
+/* ─── Slate / Gray neutral backgrounds ─────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-slate-50,
+:root[data-theme="dark"] .bg-slate-50\/80,
+:root[data-theme="dark"] .bg-slate-50\/85,
+:root[data-theme="dark"] .bg-slate-50\/50,
+:root[data-theme="dark"] .bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+:root[data-theme="dark"] .bg-slate-100,
+:root[data-theme="dark"] .bg-gray-100,
+:root[data-theme="dark"] .bg-gray-200 {
+  background-color: #1e293b !important;
+}
+
+:root[data-theme="dark"] .bg-slate-200 {
+  background-color: #1e293b !important;
+}
+
+:root[data-theme="dark"] .bg-slate-900 {
+  background-color: #0284c7 !important; /* sky-600 for contrast with white text */
+  color: #f8fafc !important; 
+}
+
+/* Ensure subtext in primary buttons stays readable */
+:root[data-theme="dark"] .bg-slate-900 .text-slate-400 {
+  color: #bae6fd !important; /* sky-200 */
+}
+
+:root[data-theme="dark"] .bg-gray-800 {
+  background-color: #334155 !important;
+}
+
+/* ─── Rose backgrounds ─────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-rose-50,
+:root[data-theme="dark"] .bg-rose-50\/30 {
+  background-color: rgba(159, 18, 57, 0.2) !important;
+}
+
+:root[data-theme="dark"] .bg-rose-100 {
+  background-color: rgba(159, 18, 57, 0.25) !important;
+}
+
+:root[data-theme="dark"] .bg-rose-700 {
+  background-color: #e11d48 !important;
+}
+
+:root[data-theme="dark"] .bg-rose-800 {
+  background-color: #be123c !important;
+}
+
+/* ─── Amber backgrounds ────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-amber-50,
+:root[data-theme="dark"] .bg-amber-50\/30 {
+  background-color: rgba(146, 64, 14, 0.2) !important;
+}
+
+:root[data-theme="dark"] .bg-amber-100 {
+  background-color: rgba(146, 64, 14, 0.25) !important;
+}
+
+/* ─── Emerald backgrounds ──────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-emerald-50,
+:root[data-theme="dark"] .bg-emerald-50\/30,
+:root[data-theme="dark"] .bg-emerald-50\/60 {
+  background-color: rgba(6, 78, 59, 0.2) !important;
+}
+
+:root[data-theme="dark"] .bg-emerald-100,
+:root[data-theme="dark"] .bg-emerald-100\/60 {
+  background-color: rgba(6, 78, 59, 0.25) !important;
+}
+
+:root[data-theme="dark"] .bg-emerald-600 {
+  background-color: #059669 !important;
+}
+
+:root[data-theme="dark"] .bg-emerald-700 {
+  background-color: #047857 !important;
+}
+
+/* ─── Sky backgrounds ──────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-sky-50,
+:root[data-theme="dark"] .bg-sky-50\/60 {
+  background-color: rgba(7, 89, 133, 0.2) !important;
+}
+
+:root[data-theme="dark"] .bg-sky-100 {
+  background-color: rgba(7, 89, 133, 0.25) !important;
+}
+
+:root[data-theme="dark"] .bg-sky-600 {
+  background-color: #0284c7 !important;
+}
+
+:root[data-theme="dark"] .bg-sky-700 {
+  background-color: #0369a1 !important;
+}
+
+:root[data-theme="dark"] .bg-sky-800 {
+  background-color: #075985 !important;
+}
+
+/* ─── Violet backgrounds ───────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-violet-50 {
+  background-color: rgba(76, 29, 149, 0.2) !important;
+}
+
+:root[data-theme="dark"] .bg-violet-100 {
+  background-color: rgba(76, 29, 149, 0.25) !important;
+}
+
+/* ─── Purple backgrounds ──────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-purple-50 {
+  background-color: rgba(88, 28, 135, 0.2) !important;
+}
+
+/* ─── Blue backgrounds ─────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-blue-50 {
+  background-color: rgba(30, 64, 175, 0.15) !important;
+}
+
+:root[data-theme="dark"] .bg-blue-500 {
+  background-color: #3b82f6 !important;
+}
+
+:root[data-theme="dark"] .bg-blue-600 {
+  background-color: #2563eb !important;
+}
+
+:root[data-theme="dark"] .bg-blue-700 {
+  background-color: #1d4ed8 !important;
+}
+
+/* ─── Orange backgrounds ───────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-orange-50 {
+  background-color: rgba(154, 52, 18, 0.2) !important;
+}
+
+/* ─── Teal backgrounds ─────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-teal-600 {
+  background-color: #0d9488 !important;
+}
+
+:root[data-theme="dark"] .bg-teal-700 {
+  background-color: #0f766e !important;
+}
+
+/* ─── Green backgrounds ────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-green-100 {
+  background-color: rgba(6, 78, 59, 0.25) !important;
+}
+
+:root[data-theme="dark"] .bg-green-50 {
+  background-color: rgba(6, 78, 59, 0.2) !important;
+}
+
+/* ─── Red backgrounds ──────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-red-100 {
+  background-color: rgba(159, 18, 57, 0.25) !important;
+}
+
+:root[data-theme="dark"] .bg-red-600 {
+  background-color: #dc2626 !important;
+}
+
+:root[data-theme="dark"] .bg-red-700 {
+  background-color: #b91c1c !important;
+}
+
+/* ─── Yellow backgrounds ───────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-yellow-50 {
+  background-color: rgba(113, 63, 18, 0.2) !important;
+}
+
+:root[data-theme="dark"] .bg-yellow-100 {
+  background-color: rgba(113, 63, 18, 0.25) !important;
+}
+
+/* ─── Pink backgrounds ─────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-pink-800 {
+  background-color: #9d174d !important;
+}
+
+:root[data-theme="dark"] .bg-pink-900 {
+  background-color: #831843 !important;
+}
+
+/* ─── Indigo backgrounds ───────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-indigo-50 {
+  background-color: rgba(55, 48, 163, 0.2) !important;
+}
+
+/* ─── Cyan backgrounds ─────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .bg-cyan-50 {
+  background-color: rgba(21, 94, 117, 0.2) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEXT COLORS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Slate / Gray text ────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-slate-950,
+:root[data-theme="dark"] .text-slate-900,
+:root[data-theme="dark"] .text-gray-900,
+:root[data-theme="dark"] .text-gray-800 {
+  color: #f1f5f9 !important;
+}
+
+:root[data-theme="dark"] .text-slate-800,
+:root[data-theme="dark"] .text-slate-700,
+:root[data-theme="dark"] .text-gray-700,
+:root[data-theme="dark"] .text-gray-600,
+:root[data-theme="dark"] .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+:root[data-theme="dark"] .text-slate-500,
+:root[data-theme="dark"] .text-gray-500,
+:root[data-theme="dark"] .text-slate-400,
+:root[data-theme="dark"] .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+:root[data-theme="dark"] .text-slate-300 {
+  color: #94a3b8 !important;
+}
+
+/* ─── Rose text ────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-rose-900,
+:root[data-theme="dark"] .text-rose-800 {
+  color: #fda4af !important;
+}
+
+:root[data-theme="dark"] .text-rose-700,
+:root[data-theme="dark"] .text-rose-600 {
+  color: #fb7185 !important;
+}
+
+:root[data-theme="dark"] .text-rose-500 {
+  color: #f43f5e !important;
+}
+
+/* ─── Amber text ───────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-amber-950,
+:root[data-theme="dark"] .text-amber-900,
+:root[data-theme="dark"] .text-amber-800 {
+  color: #fcd34d !important;
+}
+
+:root[data-theme="dark"] .text-amber-700,
+:root[data-theme="dark"] .text-amber-600 {
+  color: #fbbf24 !important;
+}
+
+:root[data-theme="dark"] .text-amber-500 {
+  color: #f59e0b !important;
+}
+
+/* ─── Emerald text ─────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-emerald-900,
+:root[data-theme="dark"] .text-emerald-800 {
+  color: #6ee7b7 !important;
+}
+
+:root[data-theme="dark"] .text-emerald-700,
+:root[data-theme="dark"] .text-emerald-600 {
+  color: #34d399 !important;
+}
+
+:root[data-theme="dark"] .text-emerald-500 {
+  color: #10b981 !important;
+}
+
+/* ─── Sky text ─────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-sky-900,
+:root[data-theme="dark"] .text-sky-800 {
+  color: #7dd3fc !important;
+}
+
+:root[data-theme="dark"] .text-sky-700 {
+  color: #38bdf8 !important;
+}
+
+:root[data-theme="dark"] .text-sky-600 {
+  color: #0ea5e9 !important;
+}
+
+/* ─── Violet text ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-violet-900,
+:root[data-theme="dark"] .text-violet-800 {
+  color: #c4b5fd !important;
+}
+
+:root[data-theme="dark"] .text-violet-700,
+:root[data-theme="dark"] .text-violet-600 {
+  color: #a78bfa !important;
+}
+
+/* ─── Purple text ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-purple-900,
+:root[data-theme="dark"] .text-purple-700 {
+  color: #c084fc !important;
+}
+
+/* ─── Blue text ────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-blue-700,
+:root[data-theme="dark"] .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+:root[data-theme="dark"] .text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+/* ─── Orange text ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-orange-700 {
+  color: #fb923c !important;
+}
+
+/* ─── Teal text ────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-teal-600 {
+  color: #2dd4bf !important;
+}
+
+/* ─── Green text ───────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-green-800,
+:root[data-theme="dark"] .text-green-700 {
+  color: #4ade80 !important;
+}
+
+:root[data-theme="dark"] .text-green-600,
+:root[data-theme="dark"] .text-green-500 {
+  color: #22c55e !important;
+}
+
+/* ─── Red text ─────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-red-800,
+:root[data-theme="dark"] .text-red-700 {
+  color: #fca5a5 !important;
+}
+
+/* ─── Yellow text ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-yellow-600,
+:root[data-theme="dark"] .text-yellow-500 {
+  color: #facc15 !important;
+}
+
+/* ─── Indigo text ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-indigo-500 {
+  color: #818cf8 !important;
+}
+
+/* ─── Pink text ────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .text-pink-800,
+:root[data-theme="dark"] .text-pink-900 {
+  color: #f9a8d4 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BORDER COLORS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Slate / Gray borders ─────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-slate-50,
+:root[data-theme="dark"] .border-slate-100,
+:root[data-theme="dark"] .border-slate-200,
+:root[data-theme="dark"] .border-slate-200\/60,
+:root[data-theme="dark"] .border-slate-300,
+:root[data-theme="dark"] .border-slate-400,
+:root[data-theme="dark"] .border-gray-200,
+:root[data-theme="dark"] .border-gray-300 {
+  border-color: var(--color-border) !important;
+}
+
+/* ─── Rose borders ─────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-rose-200,
+:root[data-theme="dark"] .border-rose-300 {
+  border-color: rgba(225, 29, 72, 0.35) !important;
+}
+
+/* ─── Amber borders ────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-amber-200,
+:root[data-theme="dark"] .border-amber-300 {
+  border-color: rgba(217, 119, 6, 0.35) !important;
+}
+
+/* ─── Emerald borders ──────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-emerald-200,
+:root[data-theme="dark"] .border-emerald-300 {
+  border-color: rgba(5, 150, 105, 0.35) !important;
+}
+
+:root[data-theme="dark"] .border-emerald-400 {
+  border-color: rgba(52, 211, 153, 0.5) !important;
+}
+
+/* ─── Sky borders ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-sky-200,
+:root[data-theme="dark"] .border-sky-300 {
+  border-color: rgba(14, 165, 233, 0.35) !important;
+}
+
+:root[data-theme="dark"] .border-sky-400 {
+  border-color: rgba(56, 189, 248, 0.5) !important;
+}
+
+:root[data-theme="dark"] .border-sky-700 {
+  border-color: #0369a1 !important;
+}
+
+/* ─── Violet borders ───────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-violet-200,
+:root[data-theme="dark"] .border-violet-300 {
+  border-color: rgba(139, 92, 246, 0.35) !important;
+}
+
+:root[data-theme="dark"] .border-violet-400 {
+  border-color: rgba(167, 139, 250, 0.5) !important;
+}
+
+/* ─── Purple borders ───────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-purple-300 {
+  border-color: rgba(168, 85, 247, 0.35) !important;
+}
+
+/* ─── Blue borders ─────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-blue-300 {
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+
+:root[data-theme="dark"] .border-blue-500 {
+  border-color: #3b82f6 !important;
+}
+
+:root[data-theme="dark"] .border-blue-600 {
+  border-color: #2563eb !important;
+}
+
+/* ─── Orange borders ───────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-orange-300 {
+  border-color: rgba(249, 115, 22, 0.35) !important;
+}
+
+/* ─── Green borders ────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-green-200,
+:root[data-theme="dark"] .border-green-300,
+:root[data-theme="dark"] .border-green-500 {
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+/* ─── Yellow borders ───────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-yellow-200,
+:root[data-theme="dark"] .border-yellow-300 {
+  border-color: rgba(234, 179, 8, 0.35) !important;
+}
+
+:root[data-theme="dark"] .border-yellow-500 {
+  border-color: rgba(234, 179, 8, 0.5) !important;
+}
+
+/* ─── Pink borders ─────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-pink-800,
+:root[data-theme="dark"] .border-pink-900 {
+  border-color: #9d174d !important;
+}
+
+/* ─── Red borders ──────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-red-200 {
+  border-color: rgba(220, 38, 38, 0.35) !important;
+}
+
+/* ─── Indigo borders ───────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .border-indigo-300 {
+  border-color: rgba(99, 102, 241, 0.35) !important;
+}
+
+/* ─── Dashed slate borders (empty states) ──────────────────────────────── */
+
+:root[data-theme="dark"] .border-dashed.border-slate-300 {
+  border-color: #334155 !important;
+}
+
+:root[data-theme="dark"] .border-dashed.border-emerald-300 {
+  border-color: rgba(5, 150, 105, 0.4) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RING COLORS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] .ring-slate-200,
+:root[data-theme="dark"] .ring-gray-200 {
+  --tw-ring-color: rgba(148, 163, 184, 0.2) !important;
+}
+
+:root[data-theme="dark"] .ring-sky-200,
+:root[data-theme="dark"] .ring-sky-100 {
+  --tw-ring-color: rgba(14, 165, 233, 0.2) !important;
+}
+
+:root[data-theme="dark"] .ring-emerald-200,
+:root[data-theme="dark"] .ring-emerald-100 {
+  --tw-ring-color: rgba(5, 150, 105, 0.2) !important;
+}
+
+:root[data-theme="dark"] .ring-amber-200 {
+  --tw-ring-color: rgba(217, 119, 6, 0.2) !important;
+}
+
+:root[data-theme="dark"] .ring-violet-200,
+:root[data-theme="dark"] .ring-violet-100 {
+  --tw-ring-color: rgba(139, 92, 246, 0.2) !important;
+}
+
+:root[data-theme="dark"] .ring-blue-400,
+:root[data-theme="dark"] .ring-blue-500 {
+  --tw-ring-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+:root[data-theme="dark"] .ring-rose-500 {
+  --tw-ring-color: rgba(244, 63, 94, 0.3) !important;
+}
+
+:root[data-theme="dark"] .ring-inset.ring-sky-200 {
+  --tw-ring-color: rgba(14, 165, 233, 0.15) !important;
+}
+
+:root[data-theme="dark"] .ring-inset.ring-emerald-200 {
+  --tw-ring-color: rgba(5, 150, 105, 0.15) !important;
+}
+
+:root[data-theme="dark"] .ring-inset.ring-amber-200 {
+  --tw-ring-color: rgba(217, 119, 6, 0.15) !important;
+}
+
+:root[data-theme="dark"] .ring-inset.ring-violet-200 {
+  --tw-ring-color: rgba(139, 92, 246, 0.15) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SHADOWS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] .shadow-lg,
+:root[data-theme="dark"] .shadow-md,
+:root[data-theme="dark"] .shadow-sm,
+:root[data-theme="dark"] .shadow-xl,
+:root[data-theme="dark"] .shadow-2xl {
+  --tw-shadow-color: rgba(2, 6, 23, 0.55);
+}
+
+:root[data-theme="dark"] .shadow-inner {
+  --tw-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOVER STATE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] .hover\:bg-slate-50:hover,
+:root[data-theme="dark"] .hover\:bg-slate-100:hover,
+:root[data-theme="dark"] .hover\:bg-gray-50:hover,
+:root[data-theme="dark"] .hover\:bg-gray-100:hover {
+  background-color: #162033 !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-slate-800:hover {
+  background-color: #0ea5e9 !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-slate-200:hover {
+  background-color: #1e293b !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-sky-50\/60:hover {
+  background-color: rgba(7, 89, 133, 0.15) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-emerald-100\/60:hover {
+  background-color: rgba(6, 78, 59, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-blue-50:hover {
+  background-color: rgba(30, 64, 175, 0.15) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-blue-200:hover {
+  background-color: rgba(37, 99, 235, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-purple-200:hover {
+  background-color: rgba(147, 51, 234, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-green-200:hover {
+  background-color: rgba(22, 163, 74, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-yellow-200:hover {
+  background-color: rgba(202, 138, 4, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-emerald-200:hover {
+  background-color: rgba(5, 150, 105, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-indigo-200:hover {
+  background-color: rgba(79, 70, 229, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-orange-200:hover {
+  background-color: rgba(234, 88, 12, 0.25) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-slate-50\/50:hover {
+  background-color: rgba(15, 23, 42, 0.4) !important;
+}
+
+:root[data-theme="dark"] .hover\:bg-white\/50:hover {
+  background-color: rgba(15, 23, 42, 0.3) !important;
+}
+
+/* ─── Hover border changes ─────────────────────────────────────────────── */
+
+:root[data-theme="dark"] .hover\:border-slate-300:hover,
+:root[data-theme="dark"] .hover\:border-slate-400:hover,
+:root[data-theme="dark"] .hover\:border-gray-300:hover {
+  border-color: #475569 !important;
+}
+
+:root[data-theme="dark"] .hover\:border-sky-300:hover {
+  border-color: rgba(14, 165, 233, 0.5) !important;
+}
+
+:root[data-theme="dark"] .hover\:border-emerald-300:hover {
+  border-color: rgba(5, 150, 105, 0.5) !important;
+}
+
+:root[data-theme="dark"] .hover\:border-rose-300:hover {
+  border-color: rgba(225, 29, 72, 0.5) !important;
+}
+
+/* ─── Hover text color changes ─────────────────────────────────────────── */
+
+:root[data-theme="dark"] .hover\:text-slate-700:hover {
+  color: #e2e8f0 !important;
+}
+
+:root[data-theme="dark"] .hover\:text-blue-700:hover {
+  color: #93c5fd !important;
+}
+
+:root[data-theme="dark"] .hover\:text-purple-700:hover {
+  color: #c084fc !important;
+}
+
+:root[data-theme="dark"] .hover\:text-green-700:hover {
+  color: #86efac !important;
+}
+
+:root[data-theme="dark"] .hover\:text-yellow-700:hover {
+  color: #fbbf24 !important;
+}
+
+:root[data-theme="dark"] .hover\:text-emerald-700:hover {
+  color: #6ee7b7 !important;
+}
+
+:root[data-theme="dark"] .hover\:text-indigo-700:hover {
+  color: #a5b4fc !important;
+}
+
+:root[data-theme="dark"] .hover\:text-orange-700:hover {
+  color: #fdba74 !important;
+}
+
+:root[data-theme="dark"] .hover\:text-sky-500:hover {
+  color: #38bdf8 !important;
+}
+
+:root[data-theme="dark"] .hover\:text-rose-600:hover {
+  color: #fb7185 !important;
+}
+
+:root[data-theme="dark"] .hover\:text-gray-500:hover {
+  color: #cbd5e1 !important;
+}
+
+/* (Removed override forcing text-white on colored backgrounds to be black) */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GRADIENT OVERRIDES
+   Tailwind gradient classes with from- and to- that use light colors
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] .bg-gradient-to-br.from-sky-50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-sky-50.to-white {
+  background: linear-gradient(to bottom right, rgba(7, 89, 133, 0.15), var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-br.from-rose-50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-rose-50.to-white,
+:root[data-theme="dark"] .bg-gradient-to-br.from-rose-50\/50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-rose-50\/50.to-white {
+  background: linear-gradient(to bottom right, rgba(159, 18, 57, 0.15), var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-br.from-amber-50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-amber-50.to-white {
+  background: linear-gradient(to bottom right, rgba(146, 64, 14, 0.15), var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-br.from-emerald-50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-emerald-50.to-white,
+:root[data-theme="dark"] .bg-gradient-to-br.from-emerald-50\/50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-emerald-50\/50.to-white {
+  background: linear-gradient(to bottom right, rgba(6, 78, 59, 0.15), var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-br.from-violet-50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-violet-50.to-white {
+  background: linear-gradient(to bottom right, rgba(76, 29, 149, 0.15), var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-br.from-slate-50,
+:root[data-theme="dark"] .bg-gradient-to-br.from-slate-50.to-white {
+  background: linear-gradient(to bottom right, #111827, var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-r.from-emerald-50\/30,
+:root[data-theme="dark"] .bg-gradient-to-r.from-emerald-50\/30.to-white {
+  background: linear-gradient(to right, rgba(6, 78, 59, 0.12), var(--color-surface)) !important;
+}
+
+:root[data-theme="dark"] .bg-gradient-to-r.from-rose-50\/30,
+:root[data-theme="dark"] .bg-gradient-to-r.from-rose-50\/30.to-white {
+  background: linear-gradient(to right, rgba(159, 18, 57, 0.12), var(--color-surface)) !important;
+}
+
+/* Hero radial gradients (InsightsPage header, etc.) */
+:root[data-theme="dark"] [class*="bg-\[radial-gradient"] {
+  background: var(--color-surface) !important;
+}
+
+/* linear-gradient backgrounds in MockTest components */
+:root[data-theme="dark"] [class*="bg-\[linear-gradient(180deg"] {
+  background: var(--color-surface) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FORM INPUTS & SELECT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] input[type="text"],
+:root[data-theme="dark"] input[type="number"],
+:root[data-theme="dark"] input[type="search"],
+:root[data-theme="dark"] input[type="email"],
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CHECKBOX STYLING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] input[type="checkbox"] {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CHART / SVG OVERRIDES
+   Recharts renders inline but we can target the tooltip and axis text
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] .recharts-cartesian-grid line {
+  stroke: #1e293b !important;
+}
+
+:root[data-theme="dark"] .recharts-text {
+  fill: #94a3b8 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MISC / EDGE CASES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* AnswerPanel green/red result banners */
+:root[data-theme="dark"] .bg-green-100.text-green-800 {
+  background-color: rgba(6, 78, 59, 0.25) !important;
+  color: #6ee7b7 !important;
+}
+
+:root[data-theme="dark"] .bg-red-100.text-red-800 {
+  background-color: rgba(159, 18, 57, 0.25) !important;
+  color: #fda4af !important;
+}
+
+/* SVG circle "currentColor" inside progress rings */
+:root[data-theme="dark"] .text-slate-100 {
+  color: #1e293b !important;
+}
+
+/* Tooltip backdrop */
+:root[data-theme="dark"] .backdrop-blur {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+}
+
+/* shadow-inner on tab bar */
+:root[data-theme="dark"] .bg-slate-100.shadow-inner {
+  background-color: #0f172a !important;
 }
 
 html {
@@ -30,6 +953,12 @@ body {
   color: var(--color-text);
   font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   text-rendering: optimizeLegibility;
+}
+
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 22%),
+    linear-gradient(180deg, #020617 0%, #0b1220 24%, #030712 100%);
 }
 
 #root {

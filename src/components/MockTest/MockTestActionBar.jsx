@@ -67,8 +67,8 @@ const MockTestActionBar = ({
         <>
             <div className="mocktest-action-bar relative z-10 flex w-full items-stretch border-t border-[#b8c6d5] bg-white shadow-[0_-1px_3px_rgba(0,0,0,0.08)]">
                 {/* Left zone: Mark for Review & Next, Clear Response */}
-                <div className="mocktest-action-main flex min-w-0 flex-1 items-center justify-between gap-5 px-4 py-2">
-                    <div className="mocktest-action-zone flex items-center gap-3">
+                <div className="mocktest-action-main flex flex-wrap min-w-0 flex-1 items-center justify-between gap-5 px-4 py-2">
+                    <div className="mocktest-action-zone flex flex-wrap items-center gap-3">
                         <button
                             type="button"
                             onClick={markForReviewAndNext}
@@ -86,7 +86,7 @@ const MockTestActionBar = ({
                     </div>
 
                     {/* Right zone: Previous (conditional), Save & Next */}
-                    <div className="mocktest-action-zone ml-auto flex items-center gap-3">
+                    <div className="mocktest-action-zone ml-auto flex flex-wrap items-center gap-3 mt-2 sm:mt-0">
                         {currentSectionIndex > 0 && (
                             <button
                                 type="button"

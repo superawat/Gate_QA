@@ -24,6 +24,7 @@ vi.mock("./pages/HomePage", () => ({
     questionBankManifest,
     manifestLoading,
     onOpenMockHistory,
+    onOpenInsights,
     onResumePractice,
     onStartRandomPractice,
     onStartMockTest,
@@ -36,6 +37,7 @@ vi.mock("./pages/HomePage", () => ({
       <button type="button" onClick={onStartRandomPractice}>Random</button>
       <button type="button" onClick={onStartMockTest}>Mock</button>
       <button type="button" onClick={onOpenMockHistory}>History</button>
+      <button type="button" onClick={onOpenInsights}>Insights</button>
     </div>
   ),
 }));
@@ -46,6 +48,12 @@ vi.mock("./pages/ExplorePage", () => ({
 
 vi.mock("./pages/MockHistoryPage", () => ({
   default: () => <div>Mock history page</div>,
+}));
+
+vi.mock("./pages/InsightsPage", () => ({
+  default: ({ questionBankManifest }) => (
+    <div>Insights page {String(questionBankManifest?.questionCount || 0)}</div>
+  ),
 }));
 
 vi.mock("./pages/SolvePage", () => ({
@@ -231,5 +239,17 @@ describe("App routes", () => {
     });
 
     expect(await screen.findByText("Mock history page")).toBeTruthy();
+  });
+
+  test("home insights button opens the insights page", async () => {
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /insights/i }));
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/Gate_QA/insights");
+    });
+
+    expect(await screen.findByText("Insights page 3271")).toBeTruthy();
   });
 });

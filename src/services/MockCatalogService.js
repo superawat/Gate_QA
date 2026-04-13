@@ -9,7 +9,13 @@ export class MockCatalogService {
       return null;
     }
 
-    const papers = Array.isArray(payload.papers) ? payload.papers : [];
+    const papers = Array.isArray(payload.papers)
+      ? payload.papers.map((paper) => ({
+        ...paper,
+        blockedQuestions: Array.isArray(paper?.blockedQuestions) ? paper.blockedQuestions : [],
+        statusReason: String(paper?.statusReason || ""),
+      }))
+      : [];
     const byQuestionUid = payload.byQuestionUid && typeof payload.byQuestionUid === "object"
       ? payload.byQuestionUid
       : {};
@@ -92,5 +98,9 @@ export class MockCatalogService {
     return Array.isArray(this.catalog?.papers)
       ? this.catalog.papers.filter((paper) => paper?.paperReady)
       : [];
+  }
+
+  static getPapers() {
+    return Array.isArray(this.catalog?.papers) ? this.catalog.papers : [];
   }
 }

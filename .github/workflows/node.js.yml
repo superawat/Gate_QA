@@ -34,6 +34,12 @@ jobs:
     - run: npm run test:unit
     - run: npm run qa:validate-data
     - run: npm run build
+    - run: npx playwright install --with-deps chromium
+    - run: npm run test:e2e
+    - run: npm run qa:a11y:axe
+    - run: npm run qa:validate-bundle-budget
+    - run: npm run qa:validate-landing-network
+    - run: npm run lighthouse:mobile
     - run: npm run qa:validate-public-parity
     - name: Verify nojekyll marker
       run: test -f dist/.nojekyll

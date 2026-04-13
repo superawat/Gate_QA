@@ -395,4 +395,425 @@ describe("MockTestContext", () => {
 
     expect(readMockTestHistory()).toEqual([]);
   });
+
+  test("wrong 1-mark MCQ applies negative marks on submission", async () => {
+    const question = buildQuestion("ga:mcq-1", "General Aptitude", "2024-s1", 2024);
+    mockAllQuestions = [question];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:mcq-1": {
+          questionUid: "ga:mcq-1",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["ga:mcq-1"],
+    });
+    MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid["ga:mcq-1"] = {
+      type: "MCQ",
+      answer: "A",
+    };
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        gaQuestions: [question],
+        meta: { kindId: "custom" },
+      });
+      latest.saveResponse("ga:mcq-1", "B");
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.resultSummary).toMatchObject({
+        attempted: 1,
+        incorrect: 1,
+        score: -0.3333,
+      });
+      expect(latest.resultSummary.perQuestionResult["ga:mcq-1"]).toMatchObject({
+        correct: false,
+        scoreDelta: -0.3333333333,
+      });
+    });
+  });
+
+  test("wrong 2-mark MCQ applies two-third negative marks on submission", async () => {
+    const question = buildQuestion("cs:mcq-2", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [question];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "cs:mcq-2": {
+          questionUid: "cs:mcq-2",
+          section: "CS",
+          type: "MCQ",
+          marks: 2,
+          negativeMarks: 0.6666666667,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["cs:mcq-2"],
+    });
+    MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid["cs:mcq-2"] = {
+      type: "MCQ",
+      answer: "C",
+    };
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        csQuestions: [question],
+        meta: { kindId: "custom" },
+      });
+      latest.saveResponse("cs:mcq-2", "A");
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.resultSummary).toMatchObject({
+        attempted: 1,
+        incorrect: 1,
+        score: -0.6667,
+      });
+      expect(latest.resultSummary.perQuestionResult["cs:mcq-2"].scoreDelta).toBe(-0.6666666667);
+    });
+  });
+
+  test("partial MSQ answers score zero without negative marks", async () => {
+    const question = buildQuestion("cs:msq", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [question];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "cs:msq": {
+          questionUid: "cs:msq",
+          section: "CS",
+          type: "MSQ",
+          marks: 2,
+          negativeMarks: 0,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["cs:msq"],
+    });
+    MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid["cs:msq"] = {
+      type: "MSQ",
+      answer: ["A", "C"],
+    };
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        csQuestions: [question],
+        meta: { kindId: "custom" },
+      });
+      latest.saveResponse("cs:msq", ["A"]);
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.resultSummary).toMatchObject({
+        attempted: 1,
+        incorrect: 1,
+        score: 0,
+      });
+      expect(latest.resultSummary.perQuestionResult["cs:msq"]).toMatchObject({
+        correct: false,
+        scoreDelta: 0,
+      });
+    });
+  });
+
+  test("NAT answers within tolerance receive full marks", async () => {
+    const question = buildQuestion("cs:nat-tolerance", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [question];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "cs:nat-tolerance": {
+          questionUid: "cs:nat-tolerance",
+          section: "CS",
+          type: "NAT",
+          marks: 2,
+          negativeMarks: 0,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["cs:nat-tolerance"],
+    });
+    MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid["cs:nat-tolerance"] = {
+      type: "NAT",
+      answer: "42",
+      tolerance: { abs: 0.1 },
+    };
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        csQuestions: [question],
+        meta: { kindId: "custom" },
+      });
+      latest.saveResponse("cs:nat-tolerance", "42.08");
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.resultSummary).toMatchObject({
+        attempted: 1,
+        correct: 1,
+        score: 2,
+      });
+      expect(latest.resultSummary.perQuestionResult["cs:nat-tolerance"]).toMatchObject({
+        correct: true,
+        scoreDelta: 2,
+      });
+    });
+  });
+
+  test("NAT answers outside tolerance stay incorrect without negative marks", async () => {
+    const question = buildQuestion("cs:nat-outside", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [question];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "cs:nat-outside": {
+          questionUid: "cs:nat-outside",
+          section: "CS",
+          type: "NAT",
+          marks: 2,
+          negativeMarks: 0,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["cs:nat-outside"],
+    });
+    MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid["cs:nat-outside"] = {
+      type: "NAT",
+      answer: "42",
+      tolerance: { abs: 0.1 },
+    };
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        csQuestions: [question],
+        meta: { kindId: "custom" },
+      });
+      latest.saveResponse("cs:nat-outside", "42.4");
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.resultSummary).toMatchObject({
+        attempted: 1,
+        incorrect: 1,
+        score: 0,
+      });
+      expect(latest.resultSummary.perQuestionResult["cs:nat-outside"]).toMatchObject({
+        correct: false,
+        scoreDelta: 0,
+      });
+    });
+  });
+
+  test("goToNext on last GA question navigates to first CS question", async () => {
+    const ga1 = buildQuestion("ga:1", "General Aptitude", "2024-s1", 2024);
+    const ga2 = buildQuestion("ga:2", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:1", "Operating System", "2024-s1", 2024);
+    
+    mockAllQuestions = [ga1, ga2, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:1": {
+          questionUid: "ga:1",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+        "ga:2": {
+          questionUid: "ga:2",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          yearSetKey: "2024-s1",
+          orderIndex: 2,
+          scorable: true,
+          paperReady: false,
+        },
+        "cs:1": {
+          questionUid: "cs:1",
+          section: "CS",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["ga:1", "ga:2", "cs:1"],
+    });
+    MockCatalogService.loaded = true;
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        gaQuestions: [ga1, ga2],
+        csQuestions: [cs1],
+        meta: { kindId: "custom" },
+      });
+    });
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.currentSection).toBe("GA");
+      expect(latest.currentSectionIndex).toBe(0);
+    });
+
+    act(() => {
+      latest.goToQuestion(1, "GA"); // last GA question
+    });
+
+    await waitFor(() => {
+      expect(latest.currentSectionIndex).toBe(1);
+    });
+
+    act(() => {
+      latest.goToNext(); // should move to CS index 0
+    });
+
+    await waitFor(() => {
+      expect(latest.currentSection).toBe("CS");
+      expect(latest.currentSectionIndex).toBe(0);
+      expect(latest.currentQuestion.question_uid).toBe("cs:1");
+    });
+  });
 });

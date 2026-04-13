@@ -8,6 +8,7 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
 const DOCS_GENERATED_DIR = path.join(ROOT, "docs", "generated");
 const REVIEW_DIR = path.join(ROOT, "artifacts", "review");
+const SITE_ORIGIN = "https://superawat.github.io/Gate_QA";
 const PRECOMPUTED_SUBTOPIC_LOOKUP_PATH = path.join(
   ROOT,
   "src",
@@ -180,6 +181,91 @@ function writeJson(filePath, payload) {
 function writeText(filePath, contents) {
   ensureDir(path.dirname(filePath));
   fs.writeFileSync(filePath, contents, "utf8");
+}
+
+function escapeXml(value = "") {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function buildCanonicalUrl(pathname = "/", query = null) {
+  const normalizedBase = SITE_ORIGIN.replace(/\/+$/, "");
+  const normalizedPath = String(pathname || "/").startsWith("/")
+    ? String(pathname || "/")
+    : `/${String(pathname || "/")}`;
+  const url = new URL(`${normalizedBase}${normalizedPath}`);
+  if (query && typeof query === "object") {
+    Object.entries(query).forEach(([key, value]) => {
+      const rawValue = String(value || "").trim();
+      if (!rawValue) {
+        return;
+      }
+      url.searchParams.set(key, rawValue);
+    });
+  }
+  return url.toString();
+}
+
+function buildSitemapXml(manifest = {}, generatedAt = new Date().toISOString()) {
+  const urls = new Set([
+    buildCanonicalUrl("/"),
+    buildCanonicalUrl("/practice"),
+    buildCanonicalUrl("/mock"),
+    buildCanonicalUrl("/history/mock-tests"),
+  ]);
+
+  const yearSets = Array.isArray(manifest.yearSets) ? manifest.yearSets : [];
+  yearSets.forEach((entry) => {
+    const yearSetKey = String(entry?.key || "").trim();
+    if (!yearSetKey) {
+      return;
+    }
+    urls.add(buildCanonicalUrl("/practice", { years: yearSetKey }));
+  });
+
+  const subjects = Array.isArray(manifest.subjects) ? manifest.subjects : [];
+  subjects.forEach((entry) => {
+    const slug = String(entry?.slug || "").trim();
+    if (!slug || slug === "unknown") {
+      return;
+    }
+    urls.add(buildCanonicalUrl("/practice", { subjects: slug }));
+  });
+
+  const lastModDate = String(generatedAt || "").split("T")[0];
+  const sortedUrls = Array.from(urls).sort((left, right) => left.localeCompare(right));
+
+  const rows = sortedUrls.map((url) => {
+    const escapedUrl = escapeXml(url);
+    return [
+      "  <url>",
+      `    <loc>${escapedUrl}</loc>`,
+      `    <lastmod>${lastModDate}</lastmod>`,
+      "  </url>",
+    ].join("\n");
+  });
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    rows.join("\n"),
+    "</urlset>",
+    "",
+  ].join("\n");
+}
+
+function buildRobotsTxt() {
+  return [
+    "User-agent: *",
+    "Allow: /",
+    "",
+    `Sitemap: ${buildCanonicalUrl("/sitemap.xml")}`,
+    "",
+  ].join("\n");
 }
 
 function getQuestionBankPath() {
@@ -449,6 +535,13 @@ function hasCompletePaperSection(positionSet = new Set(), expectedCount = 0) {
   return true;
 }
 
+function sortMockMetaByOrder(left = {}, right = {}) {
+  if (left.section !== right.section) {
+    return left.section === "GA" ? -1 : 1;
+  }
+  return Number(left.orderIndex || 0) - Number(right.orderIndex || 0);
+}
+
 function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
   const byQuestionUid = {};
   const paperGroups = new Map();
@@ -474,6 +567,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       yearSetKey: yearSet.key,
       orderIndex: paperPosition.orderIndex,
       section: paperPosition.section,
+      title: String(question.title || "").trim(),
       type,
       marks,
       negativeMarks,
@@ -494,6 +588,8 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         questionUids: [],
         hasDuplicatePosition: false,
         scorableCandidateCount: 0,
+        scorableGaCount: 0,
+        scorableCsCount: 0,
       });
     }
 
@@ -505,21 +601,50 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     positionSet.add(paperPosition.orderIndex);
     group.questionUids.push(questionUid);
 
-      if (scorable) {
-        group.scorableCandidateCount += 1;
+    if (scorable) {
+      group.scorableCandidateCount += 1;
+      if (paperPosition.section === "GA") {
+        group.scorableGaCount += 1;
+      } else if (paperPosition.section === "CS") {
+        group.scorableCsCount += 1;
       }
+    }
   });
 
   const papers = Array.from(paperGroups.values())
     .map((group) => {
       const gaCount = group.gaPositions.size;
       const csCount = group.csPositions.size;
+      const hasCompleteGaSection = hasCompletePaperSection(group.gaPositions, MOCK_SECTION_COUNTS.GA);
+      const hasCompleteCsSection = hasCompletePaperSection(group.csPositions, MOCK_SECTION_COUNTS.CS);
+      const blockedQuestions = group.questionUids
+        .map((questionUid) => byQuestionUid[questionUid])
+        .filter((meta) => meta && !meta.scorable)
+        .sort(sortMockMetaByOrder)
+        .map((meta) => ({
+          questionUid: meta.questionUid,
+          title: meta.title,
+          section: meta.section,
+          orderIndex: meta.orderIndex,
+          marks: meta.marks,
+        }));
       const paperReady =
         !group.hasDuplicatePosition
         && group.questionUids.length === MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS
-        && hasCompletePaperSection(group.gaPositions, MOCK_SECTION_COUNTS.GA)
-        && hasCompletePaperSection(group.csPositions, MOCK_SECTION_COUNTS.CS)
+        && hasCompleteGaSection
+        && hasCompleteCsSection
         && group.scorableCandidateCount === MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
+      let statusReason = "Release-ready.";
+
+      if (group.hasDuplicatePosition) {
+        statusReason = "Duplicate paper slots detected in the parsed question set.";
+      } else if (group.questionUids.length !== MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS) {
+        statusReason = `Parsed ${group.questionUids.length}/65 total questions for this paper.`;
+      } else if (!hasCompleteGaSection || !hasCompleteCsSection) {
+        statusReason = `Incomplete paper structure (${gaCount} GA / ${csCount} CS parsed).`;
+      } else if (blockedQuestions.length > 0) {
+        statusReason = `Missing verified answers for ${blockedQuestions.length} question${blockedQuestions.length === 1 ? "" : "s"}.`;
+      }
 
       group.questionUids.forEach((questionUid) => {
         if (byQuestionUid[questionUid]) {
@@ -535,6 +660,15 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         paperReady,
         gaCount,
         csCount,
+        scorableCount: group.scorableCandidateCount,
+        scorableGaCount: group.scorableGaCount,
+        scorableCsCount: group.scorableCsCount,
+        missingScorableCount: Math.max(
+          MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS - group.scorableCandidateCount,
+          0
+        ),
+        statusReason,
+        blockedQuestions,
       };
     })
     .sort((left, right) => {
@@ -751,11 +885,15 @@ function buildArtifacts() {
   const detailShards = new Map();
 
   const yearSetMap = new Map();
+  const yearSetAnswerCoverageMap = new Map();
   const subjectCountMap = new Map();
 
   const searchIndex = questions.map((question) => {
     const questionUid = buildQuestionUid(question);
     questionUidSet.add(questionUid);
+    const hasDirectAnswer = directAnswerUidSet.has(questionUid);
+    const isUnsupported = unsupportedQuestionUids.has(questionUid);
+    const hasAnswerCoverage = hasDirectAnswer || isUnsupported;
 
     const yearSet = parseYearSet(question);
     const subject = inferSubject(question, yearSet);
@@ -779,6 +917,27 @@ function buildArtifacts() {
         });
       }
       yearSetMap.get(yearSet.key).count += 1;
+
+      if (!yearSetAnswerCoverageMap.has(yearSet.key)) {
+        yearSetAnswerCoverageMap.set(yearSet.key, {
+          key: yearSet.key,
+          year: yearSet.year,
+          set: yearSet.set,
+          label: yearSet.label,
+          total: 0,
+          covered: 0,
+          unsupported: 0,
+        });
+      }
+
+      const answerCoverageEntry = yearSetAnswerCoverageMap.get(yearSet.key);
+      answerCoverageEntry.total += 1;
+      if (hasAnswerCoverage) {
+        answerCoverageEntry.covered += 1;
+      }
+      if (isUnsupported) {
+        answerCoverageEntry.unsupported += 1;
+      }
     }
 
     const subjectKey = subject.slug || "unknown";
@@ -905,6 +1064,26 @@ function buildArtifacts() {
         publicQuestionCount > 0
           ? Number((directAnswerCoverageCount / publicQuestionCount).toFixed(4))
           : 0,
+      yearSets: Array.from(yearSetAnswerCoverageMap.values())
+        .sort((left, right) => {
+          if (left.year !== right.year) {
+            return (right.year || 0) - (left.year || 0);
+          }
+          return (right.set || 0) - (left.set || 0);
+        })
+        .map((entry) => ({
+          key: entry.key,
+          year: entry.year,
+          set: entry.set,
+          label: entry.label,
+          total: entry.total,
+          covered: entry.covered,
+          unsupported: entry.unsupported,
+          estimatedCoverageRatio:
+            entry.total > 0
+              ? Number((entry.covered / entry.total).toFixed(4))
+              : 0,
+        })),
     },
     remoteImages: {
       questionCount: remoteImageQuestionUids.size,
@@ -914,6 +1093,33 @@ function buildArtifacts() {
       String(pipelineState?.lastRunAt || "").trim() ||
       generatedAt,
   };
+  const latestYearCoverageEntries = manifest.answerCoverage.yearSets.filter(
+    (entry) => Number(entry.year) === Number(manifest.latestYear)
+  );
+  const latestYearCoverage = latestYearCoverageEntries.length > 0
+    ? latestYearCoverageEntries.reduce((aggregate, entry) => ({
+      year: entry.year,
+      set: null,
+      label: String(entry.year),
+      covered: aggregate.covered + entry.covered,
+      total: aggregate.total + entry.total,
+      unsupported: aggregate.unsupported + entry.unsupported,
+      estimatedCoverageRatio: 0,
+    }), {
+      year: manifest.latestYear,
+      set: null,
+      label: String(manifest.latestYear),
+      covered: 0,
+      total: 0,
+      unsupported: 0,
+      estimatedCoverageRatio: 0,
+    })
+    : null;
+  if (latestYearCoverage && latestYearCoverage.total > 0) {
+    latestYearCoverage.estimatedCoverageRatio = Number(
+      (latestYearCoverage.covered / latestYearCoverage.total).toFixed(4)
+    );
+  }
   const mockCatalog = {
     generatedAt,
     ...buildMockCatalog(questions, answersByQuestionUid),
@@ -926,6 +1132,17 @@ function buildArtifacts() {
     latestYear: manifest.latestYear,
     directAnswerCoverageCount,
     directAnswerCoverageRatio: manifest.answerCoverage.estimatedCoverageRatio,
+    latestYearAnswerCoverage: latestYearCoverage
+      ? {
+        year: latestYearCoverage.year,
+        set: latestYearCoverage.set,
+        label: latestYearCoverage.label,
+        covered: latestYearCoverage.covered,
+        total: latestYearCoverage.total,
+        unsupported: latestYearCoverage.unsupported,
+        ratio: latestYearCoverage.estimatedCoverageRatio,
+      }
+      : null,
     remoteGateOverflowImageQuestionCount: remoteImageQuestionUids.size,
     pipelineStatePublishedQuestionCount,
     validationReportPublishedQuestionCount,
@@ -945,6 +1162,10 @@ function buildArtifacts() {
     "- Public question count: " + publicQuestionCount,
     "- Latest year in public bank: " + (manifest.latestYear || "Unknown"),
     "- Direct answer coverage: " + `${directAnswerCoverageCount}/${publicQuestionCount} (${(manifest.answerCoverage.estimatedCoverageRatio * 100).toFixed(1)}%)`,
+    latestYearCoverage
+      ? "- Latest year answer coverage: "
+        + `${latestYearCoverage.label}: ${latestYearCoverage.covered}/${latestYearCoverage.total} (${(latestYearCoverage.estimatedCoverageRatio * 100).toFixed(1)}%)`
+      : "- Latest year answer coverage: Unknown",
     "- Remote GateOverflow blob-image questions: " + remoteImageQuestionUids.size,
     "- Pipeline-state published question count: " + dataStatusJson.pipelineStatePublishedQuestionCount,
     "- Validation-report published question count: " + dataStatusJson.validationReportPublishedQuestionCount,
@@ -965,6 +1186,8 @@ function buildArtifacts() {
   writeJson(path.join(PUBLIC_DIR, "question-bank-manifest.json"), manifest);
   writeJson(MOCK_CATALOG_PATH, mockCatalog);
   writeJson(path.join(PUBLIC_DIR, "question-search-index.json"), searchIndex);
+  writeText(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(manifest, generatedAt));
+  writeText(path.join(PUBLIC_DIR, "robots.txt"), buildRobotsTxt());
   for (const [detailShardKey, payload] of detailShards.entries()) {
     writeJson(path.join(DETAIL_SHARDS_DIR, `${detailShardKey}.json`), payload);
   }

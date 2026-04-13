@@ -6,6 +6,7 @@ import PageShell from "../components/Layout/PageShell";
 import FilterModal from "../components/Filters/FilterModal";
 import FilterSidebar from "../components/Filters/FilterSidebar";
 import ActiveFilterChips from "../components/Filters/ActiveFilterChips";
+import QuestionSearchInput from "../components/Filters/QuestionSearchInput";
 import LoadingState from "../components/Loaders/LoadingState";
 import QuestionPickerList from "../components/Practice/QuestionPickerList";
 import PaginationControls from "../components/Practice/PaginationControls";
@@ -27,7 +28,11 @@ const ExplorePage = ({
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [pullDistance, setPullDistance] = useState(0);
+  const [isPullRefreshing, setIsPullRefreshing] = useState(false);
   const filterChangeRef = useRef(null);
+  const pullStartRef = useRef(null);
+  const pullActiveRef = useRef(false);
 
   const { filteredQuestions, filters, isInitialized, totalQuestions } = useFilterState();
   const { isQuestionSolved, isQuestionBookmarked } = useFilterActions();
@@ -106,6 +111,79 @@ const ExplorePage = ({
     });
   }, [currentPage, location.search]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const isInteractiveTarget = (target) => (
+      target instanceof Element && Boolean(target.closest("button, a, input, textarea, select, label"))
+    );
+
+    const handleTouchStart = (event) => {
+      if (window.innerWidth >= 768 || isMobileFilterOpen || isPullRefreshing || window.scrollY > 0) {
+        pullActiveRef.current = false;
+        pullStartRef.current = null;
+        return;
+      }
+
+      if (isInteractiveTarget(event.target)) {
+        pullActiveRef.current = false;
+        pullStartRef.current = null;
+        return;
+      }
+
+      const touch = event.touches?.[0];
+      if (!touch) {
+        return;
+      }
+
+      pullStartRef.current = touch.clientY;
+      pullActiveRef.current = true;
+    };
+
+    const handleTouchMove = (event) => {
+      if (!pullActiveRef.current || pullStartRef.current == null || window.scrollY > 0) {
+        return;
+      }
+
+      const touch = event.touches?.[0];
+      if (!touch) {
+        return;
+      }
+
+      const nextDistance = Math.max(0, touch.clientY - pullStartRef.current);
+      setPullDistance(Math.min(nextDistance, 96));
+    };
+
+    const handleTouchEnd = () => {
+      const shouldRefresh = pullActiveRef.current && pullDistance >= 72 && !isPullRefreshing;
+      pullActiveRef.current = false;
+      pullStartRef.current = null;
+      setPullDistance(0);
+
+      if (!shouldRefresh) {
+        return;
+      }
+
+      setIsPullRefreshing(true);
+      trackEvent("pull_to_refresh", { source: "explore" });
+      window.setTimeout(() => {
+        window.location.reload();
+      }, 240);
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isMobileFilterOpen, isPullRefreshing, pullDistance]);
+
   const handleOpenFilters = () => {
     trackEvent("filter_open", { source: "explore" });
     setIsMobileFilterOpen(true);
@@ -154,6 +232,14 @@ const ExplorePage = ({
         </div>
 
         <section className="space-y-5">
+          {(pullDistance > 0 || isPullRefreshing) ? (
+            <div className="sticky top-20 z-20 -mb-2 flex justify-center md:hidden">
+              <div className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 shadow-[var(--shadow-soft)]">
+                {isPullRefreshing ? "Refreshing..." : pullDistance >= 72 ? "Release to refresh" : "Pull to refresh"}
+              </div>
+            </div>
+          ) : null}
+
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)]">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
@@ -179,11 +265,19 @@ const ExplorePage = ({
               </div>
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4">
+            <div className="mt-4 grid gap-3 border-t border-slate-100 pt-4 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:items-start">
               <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-800">
                 <FaSlidersH />
                 {resultSummary}
               </div>
+
+              <QuestionSearchInput
+                id="explore-search"
+                label="Search the current pool"
+                placeholder="Try keywords like dijkstra, paging, or SQL"
+                helperText="Search stays index-backed and updates the result list after a short pause."
+                compact
+              />
             </div>
 
             <div className="mt-4">

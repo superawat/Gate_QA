@@ -198,4 +198,68 @@ describe("MockTest smoke flow", () => {
 
     expect(onExit).toHaveBeenCalledTimes(1);
   }, 15000);
+
+  test("Save & Next moves from the last GA question to the first CS question", async () => {
+    const gaQuestionOne = buildQuestion("ga:1", "MCQ", [
+      { label: "A", text: "Opt A", html: "Opt A" },
+      { label: "B", text: "Opt B", html: "Opt B" },
+      { label: "C", text: "Opt C", html: "Opt C" },
+      { label: "D", text: "Opt D", html: "Opt D" },
+    ]);
+    const gaQuestionTwo = buildQuestion("ga:2", "MCQ", [
+      { label: "A", text: "Opt A", html: "Opt A" },
+      { label: "B", text: "Opt B", html: "Opt B" },
+      { label: "C", text: "Opt C", html: "Opt C" },
+      { label: "D", text: "Opt D", html: "Opt D" },
+    ]);
+    const csQuestion = buildQuestion("cs:1", "MCQ", [
+      { label: "A", text: "Opt A", html: "Opt A" },
+      { label: "B", text: "Opt B", html: "Opt B" },
+      { label: "C", text: "Opt C", html: "Opt C" },
+      { label: "D", text: "Opt D", html: "Opt D" },
+    ]);
+
+    mockAllQuestions = [gaQuestionOne, gaQuestionTwo, csQuestion];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:1": { questionUid: "ga:1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "ga:2": { questionUid: "ga:2", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 2, scorable: true, paperReady: false },
+        "cs:1": { questionUid: "cs:1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 3, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:1", "ga:2", "cs:1"],
+    });
+    MockCatalogService.loaded = true;
+
+    renderShell();
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    const countInput = screen
+      .getAllByRole("spinbutton")
+      .find((element) => element.getAttribute("max") === "65");
+    fireEvent.change(countInput, { target: { value: "3" } });
+    fireEvent.click(screen.getByRole("button", { name: "Start Mock" }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Question No. 1")).toBeTruthy();
+      expect(screen.getByTestId("mock-question-content").textContent).toMatch(/ga:/);
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "Save & Next" }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Question No. 2")).toBeTruthy();
+      expect(screen.getByTestId("mock-question-content").textContent).toMatch(/ga:/);
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "Save & Next" }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Question No. 1")).toBeTruthy();
+      expect(screen.getByTestId("mock-question-content").textContent).toContain("cs:1");
+    });
+  }, 15000);
 });

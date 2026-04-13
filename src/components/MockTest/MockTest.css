@@ -52,7 +52,7 @@
 }
 
 .mocktest-root .mocktest-top-banner {
-  height: var(--mock-top-banner-h);
+  min-height: var(--mock-top-banner-h);
   background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 100%);
   border-top: 3px solid #1a8bc5;
   border-bottom: 1px solid #c7c7c7;
@@ -83,7 +83,6 @@
 }
 
 .mocktest-root .mocktest-header {
-  height: var(--mock-header-h);
   min-height: var(--mock-header-h);
   border-top: 2px solid #1a8bc5;
   border-bottom: 1px solid #393939;
@@ -186,7 +185,6 @@
 
 .mocktest-root .mocktest-info-row {
   display: flex;
-  height: var(--mock-info-row-h);
   min-height: var(--mock-info-row-h);
   border-bottom: 1px solid #c4c4c4;
   background: #d6d6d8;
@@ -287,7 +285,7 @@
 
 .mocktest-root .mocktest-sections-label-row {
   display: flex;
-  height: var(--mock-sections-label-row-h);
+  min-height: var(--mock-sections-label-row-h);
   border-bottom: 1px solid #b9b9b9;
   background: #dfdfdf;
 }
@@ -332,7 +330,7 @@
 
 .mocktest-root .mocktest-tabs-row {
   display: flex;
-  height: var(--mock-tabs-row-h);
+  min-height: var(--mock-tabs-row-h);
   border-bottom: 1px solid #b9b9b9;
   background: #dfdfdf;
 }
@@ -425,7 +423,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 .mocktest-root .mocktest-meta-row {
-  height: var(--mock-meta-row-h);
+  min-height: var(--mock-meta-row-h);
   line-height: 1;
   border-bottom: 1px solid #c8d3df;
 }
@@ -758,7 +756,6 @@
 }
 
 .mocktest-root .mocktest-action-bar {
-  height: var(--mock-footer-height);
   min-height: var(--mock-footer-height);
   flex-shrink: 0;
 }
@@ -774,7 +771,7 @@
 
 .mocktest-root .mocktest-action-btn,
 .mocktest-root .mocktest-action-submit-btn {
-  height: var(--mock-action-btn-h);
+  min-height: var(--mock-action-btn-h);
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -9,6 +9,7 @@ Gate_QA/
 |-- index.html
 |-- package.json
 |-- package-lock.json
+|-- playwright.config.cjs
 |-- pipeline-state.json          # Pipeline persistent state (nextTargetYear, source totals, published totals)
 |-- vite.config.js
 |-- lighthouserc.json
@@ -28,13 +29,29 @@ Gate_QA/
 |   |   |-- FilterContext.jsx
 |   |   |-- MockTestContext.jsx
 |   |   |-- SessionContext.jsx
-|   |   `-- FilterContext.test.jsx
+|   |   |-- FilterContext.test.jsx
+|   |   `-- MockTestContext.test.jsx
 |   |-- services/
 |   |   |-- QuestionService.js
 |   |   |-- QuestionService.test.js
 |   |   |-- AnswerService.js
 |   |   |-- QuestionBankManifestService.js
+|   |   |-- question-service/
+|   |   |   |-- QuestionLoader.js
+|   |   |   |-- QuestionNormalizer.js
+|   |   |   `-- SubjectTaxonomy.js
 |   |   `-- AnswerService.test.js
+|   |-- pages/
+|   |   |-- HomePage.jsx
+|   |   |-- HomePage.test.jsx
+|   |   |-- ExplorePage.jsx
+|   |   |-- ExplorePage.test.jsx
+|   |   |-- SolvePage.jsx
+|   |   |-- SolvePage.test.jsx
+|   |   |-- InsightsPage.jsx
+|   |   |-- InsightsPage.test.jsx
+|   |   |-- MockHistoryPage.jsx
+|   |   `-- MockHistoryPage.test.jsx
 |   |-- shells/
 |   |   |-- LandingShell.jsx
 |   |   |-- PracticeShell.jsx
@@ -46,6 +63,8 @@ Gate_QA/
 |   |   |-- localStorageState.js
 |   |   `-- localStorageState.test.js
 |   `-- components/
+|       |-- ErrorBoundary/ErrorBoundary.jsx
+|       |-- ErrorBoundary/ErrorBoundary.test.jsx
 |       |-- Landing/ModeSelectionPage.jsx
 |       |-- Landing/ModeCard.jsx
 |       |-- Loaders/LoadingState.jsx
@@ -71,17 +90,23 @@ Gate_QA/
 |       |-- Footer/DataPolicyModal.jsx
 |       |-- Footer/SupportModal.jsx
 |       |-- Footer/assets/qrcode.png
+|       |-- Layout/MobileBottomNav.jsx
+|       |-- Layout/MobileBottomNav.test.jsx
 |       `-- FilterTags/FilterTags.jsx
 |
 |-- public/
 |   |-- .nojekyll
 |   |-- logo.png
+|   |-- manifest.webmanifest
+|   |-- offline.html
 |   |-- question-bank-manifest.json
+|   |-- question-images/                 # Mirrored GateOverflow blob assets for published questions
 |   |-- question-search-index.json
 |   |-- question-detail-shards/          # Generated detail payloads keyed by year/set
 |   |-- questions-filtered.json
 |   |-- questions-filtered-with-ids.json
 |   |-- questions-with-answers.json
+|   |-- sw.js
 |   |-- calculator/
 |   `-- data/answers/
 |       |-- answers_by_question_uid_v1.json
@@ -96,6 +121,7 @@ Gate_QA/
 |
 |-- scripts/
 |   |-- precompute-subtopics.mjs
+|   |-- mirror-gateoverflow-images.mjs
 |   |-- build-public-artifacts.mjs
 |   |-- qa/
 |   |   |-- historical-paper-audit.js         # Historical 65-question paper audit
@@ -147,6 +173,13 @@ Gate_QA/
 |   |   `-- DATA_STATUS.md
 |   `-- FEAT-003_PHASE0_SIGNOFF.md
 
+|-- tests/
+|   `-- e2e/
+|       |-- a11y.axe.spec.js
+|       |-- helpers.js
+|       |-- mock-test-flow.spec.js
+|       `-- practice-flow.spec.js
+
 |-- artifacts/
 |   `-- review/                   # Generated QA/audit review outputs
 |
@@ -186,6 +219,7 @@ Removed directories: `scraper/`, `scripts/answers/`, and the legacy Python `test
 
 - `src/generated/subtopicLookup.json` is generated and ignored by git.
 - `public/question-bank-manifest.json`, `public/question-search-index.json`, `public/question-detail-shards/`, and `docs/generated/` are refreshed by `scripts/build-public-artifacts.mjs`.
+- `public/question-images/` is refreshed by `scripts/mirror-gateoverflow-images.mjs` before public artifact generation.
 - `scripts/audit-canonical-filters.mjs` has been removed.
 - `public/calculator/` is generated from root `calculator/` by deployment sync script.
 - `dist/` should never be edited manually.

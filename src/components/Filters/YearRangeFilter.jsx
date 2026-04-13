@@ -8,6 +8,7 @@ const YearRangeFilter = () => {
     const { updateFilters } = useFilterActions();
     const { minYear, maxYear } = structuredTags;
     const { yearRange } = filters;
+    const handleLabels = ['Minimum year', 'Maximum year'];
 
     if (minYear === 0 || maxYear === 0) return null;
 
@@ -28,6 +29,18 @@ const YearRangeFilter = () => {
                 defaultValue={[minYear, maxYear]}
                 value={yearRange || [minYear, maxYear]}
                 onChange={handleRangeChange}
+                ariaLabelForHandle={handleLabels}
+                ariaValueTextFormatterForHandle={[
+                    (value) => `Minimum year ${value}`,
+                    (value) => `Maximum year ${value}`,
+                ]}
+                handleRender={(node, handleProps) => {
+                    const label = handleLabels[handleProps.index] || 'Year';
+                    return React.cloneElement(node, {
+                        'aria-label': label,
+                        title: `${label}: ${handleProps.value}`,
+                    });
+                }}
                 trackStyle={[{ backgroundColor: '#3b82f6' }]}
                 handleStyle={[
                     { borderColor: '#3b82f6', backgroundColor: '#3b82f6' },

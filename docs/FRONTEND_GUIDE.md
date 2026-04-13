@@ -25,16 +25,17 @@ npm run test:unit
   - runs `node scripts/precompute-subtopics.mjs`
   - generates `src/generated/subtopicLookup.json`
 - `npm run build:public-artifacts`
-  - runs `node scripts/build-public-artifacts.mjs`
+  - runs `node scripts/mirror-gateoverflow-images.mjs && node scripts/build-public-artifacts.mjs`
+  - mirrors GateOverflow blob images into `public/question-images/`
   - refreshes the landing manifest, practice search index, detail shards, and generated docs snapshot
 - `npm start`
   1. precompute subtopic lookup
-  2. build public/runtime artifacts
+  2. mirror question images + build public/runtime artifacts
   3. sync calculator into `public/`
   4. start Vite dev server
 - `npm run build`
   1. precompute subtopic lookup
-  2. build public/runtime artifacts
+  2. mirror question images + build public/runtime artifacts
   3. sync calculator into `public/`
   4. Vite build to `dist/`
   5. ensure `dist/.nojekyll`
@@ -51,18 +52,43 @@ npm run test:unit
 
 All frontend filter components are expected to consume one or both of the split hooks.
 
-`App` view shell state:
+`App` route shell contract:
 
-- `appView` controls `landing | practice | mockSetup | mockExam` rendering.
-- `appView` is URL-derived at mount and is never stored in localStorage.
-- `shouldOpenFilterOnEnter` is a one-shot ref used to auto-open the filter modal when the user starts targeted practice from landing.
+- `BrowserRouter` uses `import.meta.env.BASE_URL` as the basename.
+- `/mock` renders through an isolated top-level branch with its own `FilterProvider`.
+- all non-mock routes render through the shared practice tree:
+  - `FilterProvider`
+  - `SessionProvider`
+  - `PracticeRoutes`
+- mock setup/exam must never share session effects with practice mode.
+
+### Route map
+
+- `/` — `HomePage`
+- `/practice` — `ExplorePage`
+- `/practice/question/:questionUid` — `SolvePage`
+- `/insights` — `InsightsPage`
+- `/history/mock-tests` — `MockHistoryPage`
+- `/mock?stage=setup|exam` — isolated `MockShell`
 
 ### Landing startup contract
 
 - `QuestionBankManifestService` hydrates the landing page from `public/question-bank-manifest.json`.
 - Landing summary pills read the manifest count/latest-year/year-set totals without loading the full bank.
+- Landing also surfaces manifest-backed answer coverage and subject distribution.
 - Practice boot reads `public/question-search-index.json`, while question HTML is fetched later from `public/question-detail-shards/*.json`.
 - Mock mode remains the only entry path that asks `QuestionService` for the full bank up front.
+
+### Home and Insights routes
+
+- `HomePage` is the primary landing dashboard for:
+  - random practice
+  - filtered practice
+  - mock test entry/history
+- a lightweight CTA into the dedicated insights route
+- `InsightsPage` is a dedicated full-screen analytics route backed by `loadWeakTopicInsights()`.
+- `InsightsPage` also surfaces manifest-backed answer coverage tracking (`Verified Answers`, `Still Pending`, overall coverage, and latest-year coverage) from `question-bank-manifest.json`.
+- The Home insights card CTA navigates to `/insights`.
 
 ### Session Queue (`SessionContext`, FEAT-012)
 
@@ -171,36 +197,54 @@ Rules:
 - `gate_qa_bookmarked_questions`
 - `gate_qa_progress_metadata`
 - `gateqa_progress_v1` (attempt metadata)
+- `gate_qa_theme`
+- `gateqa_mock_attempt_v1`
+- `gateqa_mock_palette_collapsed`
+
+## Theme contract
+
+- Theme preference is controlled from `AppHeader`.
+- The selected theme is written to `gate_qa_theme`.
+- `document.documentElement[data-theme]` is the single source of truth for CSS theme application.
+- If no preference is stored, the app falls back to `prefers-color-scheme`.
+- `/mock` is always forced to light mode and does not expose the dark-mode toggle.
 
 ## Responsive notes
 
+- `PageShell` now reserves space for the mobile bottom navigation bar.
+- `MobileBottomNav` appears on small screens for Home, Practice, Insights, and Mock History navigation.
 - Filter modal remains full-screen overlay on all sizes.
 - Sidebar internals:
   - progress + toggles at top
   - type toggles
   - topic/year columns
   - year range footer
+- Explore page supports pull-to-refresh on touch devices.
+- Solve page supports horizontal swipe navigation between questions in an ordered/random session.
+- `AnswerPanel` collapses into a more compact mobile workspace instead of forcing the full desktop layout.
 - Calculator behavior:
   - desktop: draggable floating panel
   - mobile: full-screen panel
 
 ## Known caveats
 
-- Some UI files still contain `dark:` classes while product style remains light-first.
+- Some UI files still contain `dark:` classes while the shared token-based theme system remains the source of truth.
+- Mock exam surfaces intentionally ignore dark mode for exam parity.
 
 ## Safe refactor checklist
 
 - [ ] Use split context hooks only (`useFilterState`, `useFilterActions`).
-- [ ] Keep `appView` transient (no localStorage persistence).
+- [ ] Keep `/mock` isolated from the shared practice provider tree.
 - [ ] Preserve deep-link precedence: `?question` must beat landing/mode resolution.
 - [ ] Preserve filter-share URL bypass to practice.
 - [ ] Keep `?mode=` writes on `replaceState`.
 - [ ] Keep random start path calling `clearFilters()` before practice.
-- [ ] Keep targeted start opening the filter modal once without forcing any inline landing selection.
 - [ ] Do not break subtopic-to-subject scoped filtering.
 - [ ] Keep normalized AND-token search behavior on `question.searchText`.
 - [ ] Keep `search` URL sync preserving `question` and clearing cleanly when search is removed.
 - [ ] Keep subject deselect -> orphan subtopic cleanup behavior.
 - [ ] Keep `question` param preservation during filter sync.
 - [ ] Keep `refreshProgressState()` call after import success.
+- [ ] Keep `gate_qa_theme` + `data-theme` in sync and keep `/mock` locked to light mode.
+- [ ] Keep the mobile bottom-nav spacing in `PageShell`.
 - [ ] Keep precompute plus public-artifact generation paths intact for dev/build.

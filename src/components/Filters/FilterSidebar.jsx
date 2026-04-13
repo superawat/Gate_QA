@@ -5,6 +5,7 @@ import TopicFilter from './TopicFilter';
 import ProgressBar from './ProgressBar';
 import ProgressFilterToggles from './ProgressFilterToggles';
 import ProgressManager from '../ProgressManager/ProgressManager';
+import QuestionSearchInput from './QuestionSearchInput';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
@@ -77,7 +78,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         Reset
                     </button>
                     {onClose && (
-                        <button onClick={onClose} className="text-gray-500 hover:text-gray-700 md:hidden">
+                        <button type="button" onClick={onClose} aria-label="Close filters" className="text-gray-500 hover:text-gray-700 md:hidden">
                             <span className="sr-only">Close</span>
                             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -88,17 +89,12 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             <div className="p-4 border-b border-gray-200 bg-white z-10 flex-shrink-0">
-                <label htmlFor="practice-search" className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Search
-                </label>
-                <input
+                <QuestionSearchInput
                     id="practice-search"
-                    type="search"
-                    value={filters.searchQuery}
-                    onChange={(event) => updateFilters({ searchQuery: event.target.value })}
+                    label="Search"
                     placeholder="Search title, tags, or question text"
-                    autoComplete="off"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                    helperText="Matches are combined with the subject, year, type, and progress filters below."
+                    compact
                 />
             </div>
 

@@ -17,7 +17,9 @@ const Footer = () => {
               Powered by <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="inline-block font-semibold text-blue-600 hover:underline">GATE Overflow</a>
             </span>
             <button
+              type="button"
               onClick={() => setIsDataPolicyOpen(true)}
+              aria-label="Open data policy"
               className="inline-flex items-center gap-1 rounded border border-red-500 bg-red-50 px-1 py-0 text-[10px] text-black transition-colors hover:bg-red-100 sm:text-xs"
               title="Data Persistence & Policy"
             >
@@ -27,8 +29,10 @@ const Footer = () => {
           </div>
 
           <button
+            type="button"
             onClick={() => setIsSupportOpen(true)}
-            className="group inline-flex items-center gap-1 rounded-full border border-pink-500 bg-pink-500 px-1.5 py-0 text-[10px] text-white transition-all hover:border-pink-600 hover:bg-pink-600 sm:text-xs shadow-sm hover:shadow-md"
+            aria-label="Support Gate QA"
+            className="group inline-flex items-center gap-1 rounded-full border border-pink-800 bg-pink-800 px-1.5 py-0 text-[10px] text-white transition-all hover:border-pink-900 hover:bg-pink-900 sm:text-xs shadow-sm hover:shadow-md"
           >
             <span className="hidden font-semibold tracking-tight text-white sm:inline">
               Support Me

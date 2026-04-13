@@ -4,6 +4,32 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### PLAN-2026: Insights Coverage Tracking -> Status: Done
+- Moved manifest-backed answer coverage tracking off the Home dashboard and into the dedicated `InsightsPage`.
+- Added `Verified Answers`, `Still Pending`, overall coverage, and latest-year coverage cards sourced from `question-bank-manifest.json`.
+- Added regression coverage to keep the Home page free of answer-coverage counters while ensuring the Insights route receives manifest data.
+
+### PLAN-2026: Resilience, Theme, and Offline Follow-through -> Status: Done
+- Added route-level `ErrorBoundary` protection around Home, Explore, Solve, Insights, and Mock shells so unexpected render failures now degrade to a retryable fallback instead of a white screen.
+- Added a dedicated `ErrorBoundary` component with reset support and regression tests.
+- Completed the dark-mode hardcoded-color audit for non-mock routes while keeping `/mock` locked to light mode for exam parity, with header regression coverage for the route-specific theme behavior.
+- Added shell-first offline support with a production service worker, install prompt handling, web manifest, and offline fallback page for GitHub Pages deployment.
+- Added generated latest-year answer coverage status so docs now verify `2026: 130/130` answer availability from the shipped answer registry.
+
+### PLAN-2026: Test Hardening and Docs Sync -> Status: Done
+- Added page-level unit smoke/regression coverage for Explore, Solve, and Insights routes.
+- Expanded mock scoring coverage for wrong MCQ negatives, partial MSQ zero-scoring, and NAT tolerance handling.
+- Brought the testing, frontend, roadmap, and free-platform docs back in sync with the shipped route/theme/search/offline state.
+
+### PLAN-2026: Mock E2E, Insights Route, and Image Localization -> Status: Done
+- Added dedicated Playwright coverage for the mock test landing card, portal entry, exam-shell start flow, and mock history navigation.
+- Moved detailed weak-topic analytics onto the dedicated `/insights` page and replaced the Home-page inline analytics block with a focused CTA.
+- Mirrored `446` GateOverflow blob images into `public/question-images/` and rewrote the published question payloads so the live app no longer depends on remote blob-hosted question images.
+- Regenerated the public artifact set and remote-image audit so the published bank now reports `0` remote blob-image questions.
+
+### PLAN-2026: Lighthouse Follow-through -> Status: Done
+- Re-ran the mobile LHCI profile on `2026-04-10`; all assertions passed with a median landing result of performance `0.97`, accessibility `0.95`, LCP `2111 ms`, and TBT `120 ms`.
+
 ### FEAT-027: Full Mock Test Release -> Status: Done
 - Enabled full Mock Test mode (`MOCK_TEST_MODE_ENABLED = true`), unlocking the Mock card on the landing page.
 - Added a complete Mock Test portal allowing the selection of "Full Mock" (180 min, 65 questions), "Past Paper", and "Custom Builder" modes.

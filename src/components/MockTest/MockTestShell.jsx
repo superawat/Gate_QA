@@ -172,6 +172,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         catalogLoading,
         clearAttemptError,
         endMockTest,
+        paperCatalog,
         questionMetaByUid,
         questions,
         readyPapers,
@@ -316,16 +317,16 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         }
 
         const requestedKey = String(setupState.selectedPaperYearSetKey || "").trim();
-        if (requestedKey && readyPapers.some((paper) => paper.yearSetKey === requestedKey)) {
+        if (requestedKey && paperCatalog.some((paper) => paper.yearSetKey === requestedKey)) {
             return requestedKey;
         }
 
-        return readyPapers[0]?.yearSetKey || null;
-    }, [readyPapers, selectedKind?.id, setupState.selectedPaperYearSetKey]);
+        return readyPapers[0]?.yearSetKey || paperCatalog[0]?.yearSetKey || null;
+    }, [paperCatalog, readyPapers, selectedKind?.id, setupState.selectedPaperYearSetKey]);
 
     const selectedPaper = useMemo(
-        () => readyPapers.find((paper) => paper.yearSetKey === selectedPaperYearSetKey) || null,
-        [readyPapers, selectedPaperYearSetKey]
+        () => paperCatalog.find((paper) => paper.yearSetKey === selectedPaperYearSetKey) || null,
+        [paperCatalog, selectedPaperYearSetKey]
     );
 
     const selectedSetupTypes = useMemo(
@@ -425,7 +426,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
         const rows = scorableQuestions.filter((question) => {
             const questionMeta = questionMetaByUid[question.question_uid];
-            return questionMeta?.paperReady && questionMeta.yearSetKey === selectedPaperYearSetKey;
+            return questionMeta?.scorable && questionMeta.yearSetKey === selectedPaperYearSetKey;
         });
 
         return sortByCatalogOrder(rows, questionMetaByUid);
@@ -471,15 +472,15 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 };
             }
 
-            const isReadyPaper =
-                paperGaQuestions.length === MOCK_SECTION_COUNTS.GA
-                && paperCsQuestions.length === MOCK_SECTION_COUNTS.CS;
+            const isReadyPaper = Boolean(selectedPaper?.paperReady);
 
             return {
                 canStart: isReadyPaper,
                 requiredSummary: "10 GA + 55 CS",
                 availableSummary: paperSectionSummary,
-                message: isReadyPaper ? "" : "This paper is not release-ready yet.",
+                message: isReadyPaper
+                    ? ""
+                    : (selectedPaper?.statusReason || "This paper is not release-ready yet."),
             };
         }
 
@@ -539,6 +540,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         scorableGaCount,
         scorableSectionSummary,
         selectedKind,
+        selectedPaper,
         selectedPaperYearSetKey,
         selectedSetupTypes.length,
     ]);
@@ -613,10 +615,10 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const minYear = structuredTags?.minYear || 2000;
         const maxYear = structuredTags?.maxYear || 2025;
         const defaultPaperKey = kindId === "paper_mode"
-            ? (readyPapers[0]?.yearSetKey || "")
+            ? (readyPapers[0]?.yearSetKey || paperCatalog[0]?.yearSetKey || "")
             : "";
         setSetupState(buildDefaultSetupState(minYear, maxYear, kindId, defaultPaperKey));
-    }, [readyPapers, selectedKindId, structuredTags?.maxYear, structuredTags?.minYear]);
+    }, [paperCatalog, readyPapers, selectedKindId, structuredTags?.maxYear, structuredTags?.minYear]);
 
     const handleContinueFromPortal = useCallback(() => {
         if (!selectedKindId) {
@@ -750,7 +752,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     );
 
     const renderExamLayout = (isReviewPhase = false) => (
-        <div className="mocktest-root flex h-screen w-full flex-col overflow-hidden bg-[#dcebf9] text-sm selection:bg-blue-200">
+        <div className="mocktest-root flex min-h-screen h-[100dvh] w-full flex-col overflow-y-auto bg-[#dcebf9] text-sm selection:bg-blue-200">
             <MockTestHeader
                 timeLeft={timeLeft}
                 onToggleCalculator={() => setIsCalculatorOpen((prev) => !prev)}
@@ -797,7 +799,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 <div className="w-full max-w-md rounded-lg border border-[#c5d4e2] bg-white p-6 shadow-sm">
                     <h2 className="text-xl font-bold text-[#223549]">Try on desktop</h2>
                     <p className="mt-2 text-sm text-[#5f7285]">
-                        Mock Test stays desktop-only for the beta release and requires a minimum width of 1024px.
+                        Mock Test currently requires a minimum width of 1024px.
                     </p>
                     <button
                         type="button"
@@ -851,7 +853,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         subjects={structuredTags?.subjects || []}
                         availability={availability}
                         livePreview={livePreview}
-                        paperOptions={readyPapers}
+                        paperOptions={paperCatalog}
                         selectedPaperYearSetKey={selectedPaperYearSetKey || ""}
                         customDurationMinutes={customDurationMinutes}
                         recentYearRangeLabel={`${recentYearStart} - ${setupState.maxYear}`}

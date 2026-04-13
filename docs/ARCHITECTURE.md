@@ -6,7 +6,7 @@ There is no backend, no database, and no server-side rendering.
 ## Runtime Topology
 
 1. Static host serves `dist/`.
-2. `src/index.jsx` mounts `App`.
+2. `src/index.jsx` mounts `App`, defers non-critical stylesheet loading until after first frame, and registers the production service worker.
 3. `App` initializes the lightweight landing manifest on mount:
    - `QuestionBankManifestService.init()`
 4. `FilterProvider` seeds summary state from the manifest and owns filter/progress state.
@@ -20,6 +20,32 @@ There is no backend, no database, and no server-side rendering.
    - Mock setup shell
    - Mock exam shell
 8. Header, calculator, and footer remain shared shell components.
+
+## Error Boundaries
+
+- `src/components/ErrorBoundary/ErrorBoundary.jsx` wraps route content that is expensive or async-heavy.
+- `App.jsx` places boundaries around:
+  - `HomePage`
+  - `ExplorePage`
+  - `SolvePage`
+  - `InsightsPage`
+  - `MockShell`
+- Failures inside those trees now render a local retryable fallback instead of collapsing the entire SPA.
+
+## Dark Mode
+
+- Theme selection is stored under `gate_qa_theme`.
+- `AppHeader.jsx` applies the active theme by setting `document.documentElement[data-theme]`.
+- The app defaults to `prefers-color-scheme` when there is no stored preference.
+- `/mock` is intentionally forced to light mode and hides the dark-mode toggle to preserve exam parity.
+- `src/index.css` carries the shared `[data-theme="dark"]` token palette plus utility-class overrides for older Tailwind-heavy surfaces.
+
+## PWA / Offline
+
+- `index.html` ships a web manifest and mobile install metadata.
+- `src/index.jsx` registers `public/sw.js` only in production builds.
+- `public/sw.js` precaches the shell and runtime-caches the manifest, search index, detail shards, answer payloads, and static assets.
+- `public/offline.html` is used as the navigation fallback when shell content is unavailable offline.
 
 The landing route now stays on a lightweight startup path:
 
@@ -73,8 +99,10 @@ Outputs:
 - `public/question-bank-manifest.json`
 - `public/question-search-index.json`
 - `public/question-detail-shards/*.json`
+- `public/question-images/*`
 - `docs/generated/data-status.json`
 - `docs/generated/DATA_STATUS.md`
+- `artifacts/review/local-image-mirror-report.json`
 - `artifacts/review/remote-image-report.json`
 
 Purpose:
@@ -82,14 +110,21 @@ Purpose:
 - give the landing page a lightweight manifest contract
 - provide a lightweight search/filter index separate from full question HTML
 - serve full question HTML in year/set detail shards that are fetched only for active practice questions
+- localize GateOverflow blob images into first-party static assets before publish
 - publish one generated count/status snapshot for docs
-- keep remote GateOverflow image debt visible
+- keep remote-image debt visible and enforce the zero-remote-image target
 
 These artifacts are generated before dev/build via the npm scripts in `package.json`.
 
 ## Services
 
 ## `QuestionService`
+
+`QuestionService.js` is now a thin static facade over three focused modules:
+
+- `src/services/question-service/SubjectTaxonomy.js`
+- `src/services/question-service/QuestionNormalizer.js`
+- `src/services/question-service/QuestionLoader.js`
 
 Responsibilities:
 
@@ -267,6 +302,7 @@ Synchronized params:
 ## UI component map
 
 - `Header` (filter/calculator controls)
+- `ErrorBoundary`
 - `Landing/ModeSelectionPage`
   - `Landing/ModeCard`
 - `FilterModal`
@@ -279,6 +315,8 @@ Synchronized params:
 - `Question`
 - `AnswerPanel`
 - `CalculatorWidget`
+- `MobileBottomNav`
+- `InsightsPage`
 - `Footer` + policy/support modals
 
 ## Data persistence keys
@@ -303,6 +341,43 @@ Synchronized params:
 - Build should also include generated manifest, search index, and detail-shard artifacts.
 - `base` in `vite.config.js` must stay `/Gate_QA/` for current hosting path.
 
+## CSS Deferral Analysis
+
+`src/index.css` is **~5 KB** total (202 lines). Breakdown:
+
+- `:root` light-mode vars (L5–19) — needed for first paint
+- `[data-theme="dark"]` overrides (L21–131) — not needed for first paint, but tiny
+- Resets and typography (L132–194)
+- `.logo-icon` (L196–201)
+
+**Decision: no-split — too small to justify.** At 5 KB uncompressed (~1.6 KB gzip), the overhead of an async loader, FOUC risk, and extra HTTP request outweigh any LCP gain from deferring dark-mode overrides. The entire file is inlined into the landing CSS chunk by Vite's `cssCodeSplit`, which is already efficient.
+
+## Bundle Composition
+
+Verified via `npm run analyze:bundle` (2026-04-10). Chunks sorted by size:
+
+| Chunk | Raw | Gzip | Notes |
+|-------|-----|------|-------|
+| `index` (app shell + landing) | 159.02 kB | 42.80 kB | FilterProvider, routing, Home/Landing, PageShell |
+| `vendor-react` | 142.34 kB | 45.82 kB | React 18 + ReactDOM + Scheduler |
+| `MockShell` | 79.81 kB | 21.66 kB | **Lazy chunk** — mock test context + UI |
+| `vendor-misc` | 50.52 kB | 18.61 kB | DOMPurify, KaTeX, react-router |
+| `ExplorePage` | 44.14 kB | 11.65 kB | **Lazy chunk** — explore/browse |
+| `vendor-ui` | 37.65 kB | 14.30 kB | react-icons, rc-slider, react-select |
+| `SolvePage` | 22.71 kB | 7.00 kB | **Lazy chunk** — solve/practice question |
+| `MockHistoryPage` | 9.48 kB | 2.45 kB | **Lazy chunk** — mock attempt history |
+| `CalculatorWidget` | 8.05 kB | 3.14 kB | **Lazy chunk** — scientific calculator |
+| `InsightsPage` | 7.84 kB | 2.23 kB | **Lazy chunk** — weak-topic insights |
+| `vendor-mathjax` | 5.88 kB | 2.26 kB | MathJax loader shim (deferred) |
+| `Toast` | 0.37 kB | 0.29 kB | **Lazy chunk** — toast notification |
+
+Key observations:
+
+- **MathJax is NOT in the landing chunk.** `vendor-mathjax` is a separate lazy chunk loaded only inside practice/mock shells.
+- **PracticeShell and MockShell are lazy chunks**, loaded on-demand when the user enters practice or mock mode.
+- **Landing critical path**: `index` + `vendor-react` + `vendor-misc` + `vendor-ui` = ~390 kB raw / ~121 kB gzip.
+- CSS is split into `index` (73.73 kB), `MockShell` (15.22 kB), and `vendor-ui` (4.92 kB). MockShell CSS loads only with its JS chunk.
+
 ## Startup Split Status (Phase 1 / 1b)
 
 The startup split is now live end to end:
@@ -316,10 +391,8 @@ The startup split is now live end to end:
 - Mock mode still requests the full bank, which keeps the existing setup/exam flows intact.
 - MathJax runtime loads only inside practice/mock shell code.
 - The app uses one deferred GoatCounter loader instead of eager third-party tags in `index.html`.
-
-Still pending for full Phase 1 completion:
-
-- add automated bundle/network assertions so the landing path stays lean over time
+- Bundle budget CI gate (`qa:validate-bundle-budget`) enforces chunk limits on every build.
+- Landing network CI gate (`qa:validate-landing-network`) ensures the landing path stays lean.
 
 ## Known limitation reference
 

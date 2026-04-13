@@ -1,25 +1,27 @@
 # Free-Platform Improvement Plan
 
-This document captures the current platform direction for GateQA as of 2026-04-05.
+This document captures the current platform direction for GateQA as of 2026-04-10.
 
 ## Summary
 
 Stay on GitHub Pages for now.
 
-The current bottlenecks are local startup performance and remaining product UX gaps, not free-hosting limits:
+The current bottlenecks are image/content hygiene and the last regression-coverage gaps, not free-hosting limits:
 
 - GitHub Pages still has enough headroom for the current static app shape.
-- The latest local Lighthouse mobile run on `2026-04-04` still shows landing-path performance issues:
-  - performance `0.43`
-  - accessibility `0.92`
-  - LCP `8514 ms`
-  - TBT `4048 ms`
+- The latest local Lighthouse mobile run on `2026-04-10` is materially healthier:
+  - performance `0.98`
+  - accessibility `0.95`
+  - LCP `2128 ms`
+  - TBT `96 ms`
 - Public-bank trust drift has been reconciled:
   - `public/question-bank-manifest.json`: `3271`
   - `artifacts/review/data-integrity-report.json`: `3271`
   - `pipeline-state.json`: `3271`
   - `audit/validation-report-2026.json`: `3271`
-- The next highest-value product step is real search against the lightweight index.
+- Answer coverage is now visible on the shipped product:
+  - overall direct answer coverage `3150 / 3271 (96.3%)`
+  - latest year coverage `2026: 130 / 130 (100.0%)`
 
 ## Current Platform Status
 
@@ -30,12 +32,15 @@ The biggest platform wins from Phase 1 and Phase 2 are already live:
 - question HTML is fetched lazily from `public/question-detail-shards/*.json`
 - MathJax and analytics no longer sit on the cold landing path
 - public parity checks now pass and `npm run qa:validate-public-parity` is part of CI
+- bundle-budget and landing-network checks are active in CI
+- PWA install metadata and offline fallback are shipped
+- real search, report-a-bad-question, and weak-topic insights are shipped
 
 The remaining platform debt is narrower now:
 
-- local Lighthouse scores are still below target
-- landing/network regressions are not yet guarded by automated Lighthouse or bundle/network assertions
-- practice still lacks real search even though the lightweight index is already shipped
+- remote GateOverflow blob images still exist inside question HTML
+- mock-specific E2E coverage and some release-discipline polish are still open
+- Lighthouse is healthy locally, but continued regression discipline still matters
 
 ## Phase 1: Fix Startup Before New Features
 
@@ -47,10 +52,10 @@ The remaining platform debt is narrower now:
 
 ### 1.2 Tighten the landing critical path
 
-- Status: Mostly done
+- Status: Done
 - MathJax now loads only inside practice/mock question views.
 - The app keeps one deferred analytics provider.
-- The remaining work in this lane is not architectural split anymore; it is measurable regression protection and further Lighthouse improvement.
+- Bundle-budget, landing-network, and Lighthouse checks now provide measurable regression protection.
 
 ### 1.3 Deliver lighter runtime data
 
@@ -71,19 +76,20 @@ The remaining platform debt is narrower now:
 
 ## Phase 3: Add High-Value Features That Still Fit Free Hosting
 
-- Next: implement real search against the lightweight index before touching the full HTML bank.
-- Add a "Report bad question" flow that opens a prefilled GitHub issue with:
+- Real search against the lightweight index is done.
+- "Report a bad question" is done with a prefilled GitHub issue flow carrying:
   - `question_uid`
   - page URL
   - year/set
   - subject
-- Add local-only weak-topic analytics from solved/bookmarked/progress state.
-- Add PWA/offline support for:
+- Local-only weak-topic analytics are done:
+  - Home snapshot
+  - dedicated `/insights` page
+- PWA/offline support is done for:
   - shell
-  - current question
-  - recent queue
-  - solved/bookmarked sets
-- Keep full-bank offline opt-in until the sharded model exists.
+  - manifest/search/detail shard runtime cache
+  - offline fallback page
+- Keep full-bank offline opt-in and image hygiene work separate from shell-first offline.
 - Mock mode is now enabled, as startup and trust baselines are mostly achieved.
 
 ## Success Criteria
@@ -108,8 +114,9 @@ Current status:
 
 - public parity checks pass
 - startup split is live
-- Lighthouse targets are still not met
-- practice search is still pending
+- Lighthouse targets are met locally
+- practice search is shipped
+- the remaining notable platform debt is remote-image cleanup inside question HTML
 
 ## Assumptions
 

@@ -21,6 +21,8 @@ describe("MockCatalogService", () => {
     });
 
     expect(catalog.papers).toHaveLength(1);
+    expect(catalog.papers[0].blockedQuestions).toEqual([]);
+    expect(catalog.papers[0].statusReason).toBe("");
     expect(catalog.byQuestionUid["ga:1"].type).toBe("MCQ");
     expect(catalog.scorableQuestionUidSet.has("ga:1")).toBe(true);
     expect(catalog.scorableQuestionUidSet.has("missing")).toBe(false);
@@ -44,17 +46,18 @@ describe("MockCatalogService", () => {
       type: "MCQ",
     });
     expect(MockCatalogService.getReadyPapers()).toEqual([
-      { yearSetKey: "2024-s1", paperReady: true },
+      expect.objectContaining({ yearSetKey: "2024-s1", paperReady: true }),
     ]);
   });
 
   test("generated mock catalog keeps representative historical papers release-ready", () => {
     const catalogPath = path.resolve(process.cwd(), "public", "mock_catalog_v1.json");
     const payload = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
-    const readyPaperKeys = MockCatalogService.normalizeCatalog(payload)
-      .papers
+    const papers = MockCatalogService.normalizeCatalog(payload).papers;
+    const readyPaperKeys = papers
       .filter((paper) => paper.paperReady)
       .map((paper) => paper.yearSetKey);
+    const blocked2019Paper = papers.find((paper) => paper.yearSetKey === "2019-s0");
 
     expect(readyPaperKeys).toEqual(expect.arrayContaining([
       "2025-s1",
@@ -64,5 +67,17 @@ describe("MockCatalogService", () => {
       "2014-s1",
     ]));
     expect(readyPaperKeys.length).toBeGreaterThanOrEqual(10);
+    expect(blocked2019Paper).toMatchObject({
+      paperReady: false,
+      missingScorableCount: 1,
+    });
+    expect(blocked2019Paper.statusReason).toMatch(/missing verified answers/i);
+    expect(blocked2019Paper.blockedQuestions).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        questionUid: "go:302794",
+        section: "CS",
+        orderIndex: 54,
+      }),
+    ]));
   });
 });

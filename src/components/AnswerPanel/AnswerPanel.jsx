@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useCallback } from "react";
-import { FaCheck, FaEye, FaEyeSlash, FaLink, FaRegStar, FaStar } from "react-icons/fa";
+import { FaCheck, FaChevronDown, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilterActions } from "../../contexts/FilterContext";
@@ -64,6 +64,12 @@ export default function AnswerPanel({
   const [msqSelection, setMsqSelection] = useState([]);
   const [natInput, setNatInput] = useState("");
   const [result, setResult] = useState(null);
+  const [isMobileWorkspaceOpen, setIsMobileWorkspaceOpen] = useState(false);
+  const [isDesktopViewport, setIsDesktopViewport] = useState(() => (
+    typeof window === "undefined"
+      || typeof window.matchMedia !== "function"
+      || window.matchMedia("(min-width: 768px)").matches
+  ));
   const questionProgressId = useMemo(
     () => getQuestionProgressId(question),
     [question, getQuestionProgressId]
@@ -77,7 +83,29 @@ export default function AnswerPanel({
     setMsqSelection([]);
     setNatInput("");
     setResult(null);
+    setIsMobileWorkspaceOpen(false);
   }, [storageKey]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const handleViewportChange = (event) => {
+      setIsDesktopViewport(event.matches);
+    };
+
+    setIsDesktopViewport(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleViewportChange);
+      return () => mediaQuery.removeEventListener("change", handleViewportChange);
+    }
+
+    mediaQuery.addListener(handleViewportChange);
+    return () => mediaQuery.removeListener(handleViewportChange);
+  }, []);
 
   const handleToggleSolved = () => {
     if (!questionProgressId) {
@@ -104,6 +132,7 @@ export default function AnswerPanel({
     }
     const evaluation = evaluateAnswer(answerRecord, submission);
     setResult(evaluation);
+    setIsMobileWorkspaceOpen(true);
     trackEvent("answer_submit", {
       question_uid: question.question_uid || storageKey || "unknown",
       type: answerRecord.type,
@@ -119,6 +148,8 @@ export default function AnswerPanel({
     const current = progress[storageKey] || { attempts: 0 };
     progress[storageKey] = {
       attempts: current.attempts + 1,
+      correctAttempts: Number(current.correctAttempts || 0) + (evaluation.correct ? 1 : 0),
+      incorrectAttempts: Number(current.incorrectAttempts || 0) + (evaluation.correct ? 0 : 1),
       correct: evaluation.correct,
       lastSubmittedAt: new Date().toISOString(),
       type: answerRecord.type,
@@ -130,6 +161,7 @@ export default function AnswerPanel({
   const handleMcqSelect = (option) => {
     setMcqSelection(option);
     setResult(null);
+    setIsMobileWorkspaceOpen(true);
   };
 
   const handleMsqToggle = (option, checked) => {
@@ -139,11 +171,13 @@ export default function AnswerPanel({
       setMsqSelection((prev) => prev.filter((item) => item !== option));
     }
     setResult(null);
+    setIsMobileWorkspaceOpen(true);
   };
 
   const handleNatChange = (e) => {
     setNatInput(e.target.value);
     setResult(null);
+    setIsMobileWorkspaceOpen(true);
   };
 
   const hasValidInput = useMemo(() => {
@@ -156,6 +190,26 @@ export default function AnswerPanel({
 
   // --- Share Question ---
   const [toastVisible, setToastVisible] = useState(false);
+  const reportIssueUrl = useMemo(() => {
+    const questionUid = String(question.question_uid || storageKey || "").trim() || "unknown-question";
+    const yearLabel = String(question.exam?.label || question.yearSetLabel || question.year || "Unknown").trim();
+    const subjectLabel = String(question.subjectLabel || question.subject || "Unknown").trim();
+    const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+    const issueBody = [
+      "Describe the problem:",
+      "",
+      "Question metadata",
+      `- question_uid: ${questionUid}`,
+      `- year/set: ${yearLabel}`,
+      `- subject: ${subjectLabel}`,
+      `- page: ${pageUrl}`,
+    ].join("\n");
+    const params = new URLSearchParams({
+      title: `[Question report] ${questionUid}`,
+      body: issueBody,
+    });
+    return `https://github.com/superawat/Gate_QA/issues/new?${params.toString()}`;
+  }, [question, storageKey]);
 
   const handleShare = useCallback(() => {
     const questionId = question.question_uid || '';
@@ -210,8 +264,21 @@ export default function AnswerPanel({
 
     if (!answerRecord) {
       return (
-        <div className="rounded border border-gray-300 bg-gray-50 p-3">
-          <div className="mb-2 text-sm text-gray-700">No answer record.</div>
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-amber-950">
+          <p className="text-sm font-semibold">Answer unavailable</p>
+          <p className="mt-2 text-sm leading-6 text-amber-900">
+            This question does not have a verified answer in the current bank yet. You can still bookmark it, share it, or report the gap for review.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <a
+              href={reportIssueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[40px] items-center rounded-xl border border-amber-300 bg-white px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            >
+              Report this question
+            </a>
+          </div>
         </div>
       );
     }
@@ -312,6 +379,12 @@ export default function AnswerPanel({
   };
 
   const isInteractive = answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type);
+  const mobileWorkspaceLabel = !answerRecord
+    ? "Answer unavailable"
+    : isInteractive
+      ? `${answerRecord.type} answer workspace`
+      : `${answerRecord.type} review state`;
+  const shouldRenderWorkspace = isDesktopViewport || isMobileWorkspaceOpen;
 
   // --- Render Helpers ---
 
@@ -390,6 +463,7 @@ export default function AnswerPanel({
         disabled={isStatusActionDisabled}
         onClick={handleToggleSolved}
         title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+        aria-label={isSolved ? "Mark question as unsolved" : "Mark question as solved"}
         aria-pressed={isSolved}
         className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
           ? 'border-gray-200 bg-gray-100 text-gray-300 cursor-not-allowed'
@@ -407,6 +481,7 @@ export default function AnswerPanel({
         disabled={isStatusActionDisabled}
         onClick={handleToggleBookmark}
         title={isBookmarked ? "Remove Bookmark" : "Bookmark Question"}
+        aria-label={isBookmarked ? "Remove question bookmark" : "Bookmark question"}
         aria-pressed={isBookmarked}
         className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
           ? 'border-gray-200 bg-gray-100 text-gray-300 cursor-not-allowed'
@@ -423,66 +498,86 @@ export default function AnswerPanel({
         type="button"
         onClick={handleShare}
         title="Share Question Link"
+        aria-label="Copy question link"
         className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-gray-200 bg-gray-50 text-gray-400 hover:border-gray-300 hover:text-gray-500"
       >
         <FaLink className="text-[20px]" />
       </button>
+
+      <a
+        href={reportIssueUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Report a bad question"
+        aria-label="Report a bad question on GitHub"
+        className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-rose-200 bg-rose-50 text-rose-400 hover:border-rose-300 hover:text-rose-600"
+      >
+        <FaFlag className="text-[18px]" />
+      </a>
     </div>
   );
 
   return (
     <div className="mt-6 border-t border-gray-200 pt-6">
+      {!isDesktopViewport ? (
+        <button
+          type="button"
+          onClick={() => setIsMobileWorkspaceOpen((previous) => !previous)}
+          aria-expanded={isMobileWorkspaceOpen}
+          className="mb-4 inline-flex min-h-[52px] w-full items-center justify-between rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-left shadow-sm transition hover:border-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        >
+          <span className="min-w-0">
+            <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Answer workspace</span>
+            <span className="mt-1 block truncate text-sm font-semibold text-slate-900">{mobileWorkspaceLabel}</span>
+          </span>
+          <FaChevronDown className={`ml-3 shrink-0 text-slate-500 transition-transform ${isMobileWorkspaceOpen ? "rotate-180" : ""}`} />
+        </button>
+      ) : null}
 
-      {/* Input / Status Section */}
-      <div className="mb-6">
-        {renderInputSection()}
+      {shouldRenderWorkspace ? (
+        <>
+          <div className="mb-6">
+            {renderInputSection()}
 
-        {/* Result Feedback */}
-        {result && (
-          <div className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-            }`}>
-            {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
-          </div>
-        )}
-      </div>
-
-      {/* --- Action Bar (Responsive, In-Flow) --- */}
-      <div className="border-t border-gray-100 mt-8 pt-4 px-2">
-
-        {/* Desktop (md+): Single-row flex layout */}
-        <div className="hidden md:flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            {renderSubmitButton()}
-            {renderIconTray()}
-          </div>
-          <div className="flex items-center gap-2">
-            {renderSolutionButton()}
-            {renderPreviousButton()}
-            {renderNextButton()}
-          </div>
-        </div>
-
-        {/* Mobile (< md): stacked layout */}
-        <div className="md:hidden flex flex-col gap-3">
-          {/* Row 1: 3 icon buttons in a centered grid */}
-          <div className="grid grid-cols-3 gap-3 justify-items-center">
-            {renderIconTray("contents")}
+            {result && (
+              <div className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                }`}>
+                {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
+              </div>
+            )}
           </div>
 
-          {/* Row 2: Submit */}
-          <div>
-            {renderSubmitButton("w-full")}
-          </div>
+          <div className="mt-8 border-t border-gray-100 px-2 pt-4">
+            <div className="hidden items-center justify-between md:flex">
+              <div className="flex items-center gap-2">
+                {renderSubmitButton()}
+                {renderIconTray()}
+              </div>
+              <div className="flex items-center gap-2">
+                {renderSolutionButton()}
+                {renderPreviousButton()}
+                {renderNextButton()}
+              </div>
+            </div>
 
-          {/* Row 3: Solution, Previous, Next in a 3-column grid */}
-          <div className="grid grid-cols-3 gap-2 w-full">
-            {renderSolutionButton("w-full")}
-            {renderPreviousButton("w-full")}
-            {renderNextButton("w-full")}
-          </div>
-        </div>
+            <div className="flex flex-col gap-3 md:hidden">
+              <div className="grid grid-cols-4 gap-3 justify-items-center">
+                {renderIconTray("contents")}
+              </div>
 
-      </div>
+              <div>
+                {renderSubmitButton("w-full")}
+              </div>
+
+              <div className="grid w-full grid-cols-3 gap-2">
+                {renderSolutionButton("w-full")}
+                {renderPreviousButton("w-full")}
+                {renderNextButton("w-full")}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
 
       {isStatusActionDisabled && (
         <p className="mt-3 text-xs text-amber-700 text-center">

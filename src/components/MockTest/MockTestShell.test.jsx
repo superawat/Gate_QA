@@ -88,6 +88,9 @@ describe("MockTestShell", () => {
       },
       questionStates: { "go:111": STATUS.NOT_VISITED },
       questions: [question],
+      paperCatalog: [
+        { yearSetKey: "2024-s1", year: 2024, set: 1, label: "2024 Set 1", paperReady: true, gaCount: 10, csCount: 55, blockedQuestions: [], statusReason: "" },
+      ],
       readyPapers: [
         { yearSetKey: "2024-s1", year: 2024, set: 1, label: "2024 Set 1", paperReady: true, gaCount: 10, csCount: 55 },
       ],
@@ -215,6 +218,38 @@ describe("MockTestShell", () => {
     expect(screen.getByTestId("mock-paper-option-2024-s1")).toBeTruthy();
     expect(screen.queryAllByRole("combobox")).toHaveLength(0);
     expect(screen.queryByText("Supported papers")).toBeNull();
+  });
+
+  test("shows near-ready blocked papers with the missing-answer reason", () => {
+    mockMockTestContext.paperCatalog = [
+      { yearSetKey: "2024-s1", year: 2024, set: 1, label: "2024 Set 1", paperReady: true, gaCount: 10, csCount: 55, blockedQuestions: [], statusReason: "" },
+      {
+        yearSetKey: "2019-s0",
+        year: 2019,
+        set: null,
+        label: "2019",
+        paperReady: false,
+        gaCount: 10,
+        csCount: 55,
+        missingScorableCount: 1,
+        statusReason: "Missing verified answers for 1 question.",
+        blockedQuestions: [{ questionUid: "go:302794", section: "CS", orderIndex: 54 }],
+      },
+    ];
+
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-paper_mode"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    expect(screen.getByTestId("mock-paper-option-2019-s0")).toBeTruthy();
+    expect(screen.getByText("Missing verified answers for 1 question.")).toBeTruthy();
+    expect(screen.getByText(/Missing: CS Q54/i)).toBeTruthy();
+
+    fireEvent.click(screen.getByTestId("mock-paper-option-2019-s0"));
+
+    expect(screen.getByRole("button", { name: /start mock/i }).disabled).toBe(true);
+    expect(screen.getAllByText("Missing verified answers for 1 question.").length).toBeGreaterThan(0);
   });
 
   test("keeps font override scoped to question content while preserving shell chrome", async () => {

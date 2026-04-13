@@ -11,18 +11,39 @@ Current suites:
 - `scripts/qa/repair-historical-exam-uids.test.js`
 - `scripts/pipeline/shared.test.js`
 - `src/utils/localStorageState.test.js`
+- `src/utils/mockTest.test.js`
+- `src/utils/mockTestHistory.test.jsx`
+- `src/utils/mobileGestures.test.js`
+- `src/utils/stripEmbeddedOptions.test.js`
+- `src/utils/weakTopicAnalyzer.test.js`
 - `src/contexts/FilterContext.test.jsx`
 - `src/contexts/MockTestContext.test.jsx`
+- `src/contexts/SessionContext.test.jsx`
 - `src/components/MockTest/MockSetupAndRouting.test.jsx`
 - `src/components/MockTest/MockTestQuestion.test.jsx`
 - `src/components/MockTest/MockTestActionBar.test.jsx`
 - `src/components/MockTest/MockTestShell.test.jsx`
+- `src/components/MockTest/MockTestFlow.test.jsx`
 - `src/components/MockTest/QuestionPalette.test.jsx`
+- `src/components/Layout/AppHeader.test.jsx`
+- `src/components/Layout/MobileBottomNav.test.jsx`
+- `src/components/ErrorBoundary/ErrorBoundary.test.jsx`
+- `src/components/Practice/QuestionPickerList.test.jsx`
+- `src/components/Practice/QuestionResultCard.test.jsx`
 - `src/App.test.jsx`
-- `src/contexts/SessionContext.test.jsx`
+- `src/pages/ExplorePage.test.jsx`
+- `src/pages/SolvePage.test.jsx`
+- `src/pages/InsightsPage.test.jsx`
+- `src/pages/MockHistoryPage.test.jsx`
 - `src/components/Landing/ModeSelectionPage.test.jsx`
+- `src/services/MockCatalogService.test.js`
 
-Run the suite to get the current exact total; avoid hardcoding this number in other docs.
+Latest verification snapshot on `2026-04-10`:
+
+- `33` passing test files
+- `173` passing unit tests
+
+Treat that as a point-in-time check. Re-run the suite instead of relying on the doc for an exact count.
 
 Newly added in 2026-02-25 session:
 
@@ -50,13 +71,39 @@ Important precondition:
 
 - if `src/generated/subtopicLookup.json` is missing in a fresh workspace, run `npm run precompute` before unit tests
 
-## 2) Python pipeline tests (removed)
+## 2) Browser E2E and axe coverage
+
+Current suites:
+
+- `tests/e2e/practice-flow.spec.js`
+- `tests/e2e/a11y.axe.spec.js`
+- `tests/e2e/mock-test-flow.spec.js`
+
+Run:
+
+```bash
+npm run test:e2e
+npm run qa:a11y:axe
+```
+
+Coverage today:
+
+- landing page load and runtime-error smoke
+- practice routing, deep links, search, and share flows
+- mock card visibility, mock portal entry, exam-shell start flow, and mock history navigation
+- axe checks for landing, explore, and solve routes
+
+Latest verification snapshot on `2026-04-10`:
+
+- `15` passing Playwright tests
+
+## 3) Python pipeline tests (removed)
 
 The Python answer pipeline scripts and their tests (`tests/answers/`) were removed in the
 CLEANUP-001 post-FEAT-003 cleanup. The Node.js pipeline (`scripts/pipeline/`) replaces them.
 See `docs/DATA_PIPELINE.md` for the current pipeline documentation.
 
-## 3) Data integrity gate
+## 4) Data integrity gate
 
 Run:
 
@@ -74,7 +121,7 @@ Strict-mode behavior:
 - fails on idstrmissing-style orphan rows
 - actionable missing-answer coverage gaps are warning-level in current implementation
 
-## 4) Historical paper-count QA
+## 5) Historical paper-count QA
 
 Run:
 
@@ -106,7 +153,7 @@ What this flow checks:
 - pre-2010 year totals are checked separately against live GateOverflow year tags using deduped question labels, because those older papers do not follow the 65-question pattern
 - pre-2010 repair removes off-tag legacy discussion rows, collapses duplicate question-label variants, and backfills missing legacy questions directly from live GateOverflow pages
 
-## 5) Public parity gate
+## 6) Public parity gate
 
 Run:
 
@@ -123,7 +170,7 @@ What this checks:
 
 This gate now runs in CI before deploy.
 
-## 6) Build and artifact validation
+## 7) Build and artifact validation
 
 Run:
 
@@ -141,7 +188,16 @@ Verify:
 - `dist/questions-with-answers.json`
 - `dist/data/answers/*.json`
 
-## 7) Lighthouse regression check
+Bundle and landing-network regression guards:
+
+```bash
+npm run qa:validate-bundle-budget
+npm run qa:validate-landing-network
+```
+
+These checks are active in CI and keep the landing route off the full-bank/runtime-heavy path.
+
+## 8) Lighthouse regression check
 
 Run:
 
@@ -157,7 +213,7 @@ Assertions from `lighthouserc.json`:
 - LCP <= 3500 ms (warn)
 - CLS <= 0.1 (error)
 
-## 8) Manual QA checklist
+## 9) Manual QA checklist
 
 ### Core flow
 
@@ -205,8 +261,7 @@ Assertions from `lighthouserc.json`:
 - [ ] desktop drag remains smooth over iframe
 - [ ] Data Policy modal includes backup/transfer instructions
 
-## 9) Current gaps
+## 10) Current gaps
 
-- no browser E2E suite yet
-- no automated bundle-budget or network assertion yet for manifest/index/detail-shard fetch boundaries
-- no dedicated accessibility snapshot tests beyond Lighthouse assertions
+- no dedicated accessibility snapshot suite beyond Lighthouse + axe route audits
+- no visual-regression screenshot suite yet

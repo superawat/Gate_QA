@@ -179,7 +179,15 @@ const MockTestSetup = ({
     const requestedCount = isCustom ? `${setupState.customCount} Questions` : "65 Questions";
     const poolTotalLabel = livePreview?.total ? `${livePreview.total} Questions` : "0 Questions";
     const summaryNote = isPaperMode
-        ? (selectedPaper ? `${selectedPaper.gaCount} GA and ${selectedPaper.csCount} CS questions in paper order.` : "Select a paper to continue.")
+        ? (
+            selectedPaper
+                ? (
+                    selectedPaper.paperReady
+                        ? `${selectedPaper.gaCount} GA and ${selectedPaper.csCount} CS questions in paper order.`
+                        : (selectedPaper.statusReason || "This paper is not release-ready yet.")
+                )
+                : "Select a paper to continue."
+        )
         : isCustom
             ? `Will sample ${setupState.customCount} question${Number(setupState.customCount) === 1 ? "" : "s"} from the filtered pool when you start.`
             : "";
@@ -257,6 +265,10 @@ const MockTestSetup = ({
                 <div className="grid gap-4 md:grid-cols-2">
                     {paperOptions.map((paper) => {
                         const isSelected = paper.yearSetKey === selectedPaperYearSetKey;
+                        const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
+                        const statusLabel = paper.paperReady
+                            ? "Release-ready"
+                            : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
                         return (
                             <button
                                 key={paper.yearSetKey}
@@ -267,19 +279,39 @@ const MockTestSetup = ({
                                     "rounded-[var(--radius-card)] border p-4 text-left transition",
                                     isSelected
                                         ? "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100"
-                                        : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
+                                        : (paper.paperReady
+                                            ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
+                                            : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
                                 )}
                             >
                                 <div className="flex items-start justify-between gap-3">
                                     <div>
                                         <div className="text-lg font-semibold text-slate-950">{paper.label}</div>
                                         <p className="mt-2 text-sm text-slate-600">
-                                            {paper.gaCount} GA questions and {paper.csCount} CS questions in paper order.
+                                            {paper.gaCount} GA questions and {paper.csCount} CS questions parsed.
                                         </p>
+                                        {!paper.paperReady && paper.statusReason ? (
+                                            <p className="mt-2 text-sm font-medium text-amber-700">
+                                                {paper.statusReason}
+                                            </p>
+                                        ) : null}
+                                        {!paper.paperReady && blockedQuestions.length > 0 ? (
+                                            <p className="mt-2 text-xs text-slate-500">
+                                                Missing:
+                                                {" "}
+                                                {blockedQuestions.slice(0, 3).map((question) => `${question.section} Q${question.orderIndex}`).join(", ")}
+                                                {blockedQuestions.length > 3 ? "..." : ""}
+                                            </p>
+                                        ) : null}
                                     </div>
-                                    {isSelected ? (
-                                        <span className="inline-flex rounded-full bg-sky-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-700">
-                                            Selected
+                                    {isSelected || !paper.paperReady ? (
+                                        <span className={joinClasses(
+                                            "inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]",
+                                            isSelected
+                                                ? "bg-sky-50 text-sky-700"
+                                                : "bg-amber-50 text-amber-700"
+                                        )}>
+                                            {isSelected ? "Selected" : statusLabel}
                                         </span>
                                     ) : null}
                                 </div>

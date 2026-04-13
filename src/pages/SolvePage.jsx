@@ -11,6 +11,7 @@ import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { QuestionService } from "../services/QuestionService";
+import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
 
@@ -26,6 +27,7 @@ const SolvePage = ({
   const location = useLocation();
   const navigate = useNavigate();
   const calculatorButtonRef = useRef(null);
+  const touchStartRef = useRef(null);
 
   const [resolvedQuestion, setResolvedQuestion] = useState(null);
   const [questionDetailError, setQuestionDetailError] = useState("");
@@ -196,6 +198,54 @@ const SolvePage = ({
     setQuestionDetailRequestNonce((value) => value + 1);
   };
 
+  const handleQuestionTouchStart = useCallback((event) => {
+    const touch = event.touches?.[0];
+    if (!touch) {
+      touchStartRef.current = null;
+      return;
+    }
+
+    const interactiveTarget = event.target instanceof Element
+      ? event.target.closest("button, a, input, textarea, select, label")
+      : null;
+
+    if (interactiveTarget) {
+      touchStartRef.current = null;
+      return;
+    }
+
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+  }, []);
+
+  const handleQuestionTouchEnd = useCallback((event) => {
+    const startPoint = touchStartRef.current;
+    touchStartRef.current = null;
+
+    const touch = event.changedTouches?.[0];
+    if (!startPoint || !touch) {
+      return;
+    }
+
+    const navigationIntent = resolveHorizontalSwipeNavigation({
+      startX: startPoint.x,
+      startY: startPoint.y,
+      endX: touch.clientX,
+      endY: touch.clientY,
+    });
+
+    if (navigationIntent === "next") {
+      handleGoNext();
+      return;
+    }
+
+    if (navigationIntent === "previous") {
+      handleGoPrevious();
+    }
+  }, [handleGoNext, handleGoPrevious]);
+
   const questionYearLabel = resolvedQuestion?.exam?.label || indexedQuestion?.yearSetLabel || "Unknown";
   const questionSubjectLabel = resolvedQuestion?.subjectLabel
     || indexedQuestion?.subjectLabel
@@ -261,6 +311,11 @@ const SolvePage = ({
                     <h1 className="text-[clamp(1.9rem,2.7vw,2.85rem)] font-semibold leading-tight text-slate-950">
                       {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
                     </h1>
+                    {(navigationState.canGoPrevious || navigationState.canGoNext) ? (
+                      <p className="mt-2 text-sm text-slate-500 md:hidden">
+                        Swipe left or right on the question card to move through this session.
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -293,7 +348,11 @@ const SolvePage = ({
           />
 
           {showExhaustionBanner ? (
-            <div className="flex items-center justify-between gap-3 rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-900 shadow-[var(--shadow-soft)]">
+            <div
+              className="flex items-center justify-between gap-3 rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-900 shadow-[var(--shadow-soft)]"
+              role="status"
+              aria-live="polite"
+            >
               <span>
                 You&apos;ve reached the end of this random session. A fresh shuffle is ready.
               </span>
@@ -355,13 +414,15 @@ const SolvePage = ({
               />
             </div>
           ) : (
-            <Question
-              question={resolvedQuestion}
-              onNextQuestion={handleGoNext}
-              onPreviousQuestion={handleGoPrevious}
-              canGoPrevious={navigationState.canGoPrevious}
-              canGoNext={navigationState.canGoNext}
-            />
+            <div onTouchStart={handleQuestionTouchStart} onTouchEnd={handleQuestionTouchEnd}>
+              <Question
+                question={resolvedQuestion}
+                onNextQuestion={handleGoNext}
+                onPreviousQuestion={handleGoPrevious}
+                canGoPrevious={navigationState.canGoPrevious}
+                canGoNext={navigationState.canGoNext}
+              />
+            </div>
           )}
         </section>
       </PageShell>

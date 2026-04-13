@@ -3,7 +3,14 @@
  */
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, test, vi } from "vitest";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+
+const readMockTestHistoryMock = vi.fn(() => []);
+const loadWeakTopicInsightsMock = vi.fn(async () => ({
+  subjects: [],
+  subtopics: [],
+  attemptedQuestionCount: 0,
+}));
 
 vi.mock("../contexts/FilterContext", () => ({
   useFilterState: () => ({
@@ -18,9 +25,28 @@ vi.mock("../components/Layout/PageShell", () => ({
   default: ({ children }) => <div>{children}</div>,
 }));
 
+vi.mock("../utils/mockTestHistory", () => ({
+  readMockTestHistory: () => readMockTestHistoryMock(),
+}));
+
+vi.mock("../utils/weakTopicAnalyzer", () => ({
+  loadWeakTopicInsights: () => loadWeakTopicInsightsMock(),
+}));
+
 import HomePage from "./HomePage";
 
 describe("HomePage", () => {
+  beforeEach(() => {
+    readMockTestHistoryMock.mockReset();
+    readMockTestHistoryMock.mockReturnValue([]);
+    loadWeakTopicInsightsMock.mockClear();
+    loadWeakTopicInsightsMock.mockResolvedValue({
+      subjects: [],
+      subtopics: [],
+      attemptedQuestionCount: 0,
+    });
+  });
+
   test("shows a compact svg loader while the question bank summary is loading", () => {
     render(
       <HomePage
@@ -32,6 +58,7 @@ describe("HomePage", () => {
         mockModeEnabled={false}
         onStartRandomPractice={vi.fn()}
         onExplorePractice={vi.fn()}
+        onOpenInsights={vi.fn()}
         onOpenMockHistory={vi.fn()}
         onStartMockTest={vi.fn()}
         onResumePractice={vi.fn()}
@@ -46,6 +73,46 @@ describe("HomePage", () => {
     const onStartMockTest = vi.fn();
     const onOpenMockHistory = vi.fn();
 
+    readMockTestHistoryMock.mockReturnValue([
+      { score: 44, maxScore: 100 },
+    ]);
+
+    render(
+      <HomePage
+        questionBankManifest={{
+          questionCount: 3271,
+          latestYear: 2026,
+          yearSets: [{ key: "2026-s1" }, { key: "2026-s2" }],
+          answerCoverage: {
+            directQuestionUidMatches: 3150,
+            estimatedCoverageRatio: 0.963,
+          },
+        }}
+        manifestLoading={false}
+        manifestError=""
+        hasResumeRoute={false}
+        lastSession={null}
+        mockModeEnabled
+        onStartRandomPractice={vi.fn()}
+        onExplorePractice={vi.fn()}
+        onOpenInsights={vi.fn()}
+        onOpenMockHistory={onOpenMockHistory}
+        onStartMockTest={onStartMockTest}
+        onResumePractice={vi.fn()}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /open mock test/i }));
+    expect(onStartMockTest).toHaveBeenCalledTimes(1);
+
+    fireEvent.click(screen.getByRole("button", { name: /mock.* attempted/i }));
+    expect(onOpenMockHistory).toHaveBeenCalledTimes(1);
+  });
+
+
+  test("opens the dedicated insights page from the insights button", () => {
+    const onOpenInsights = vi.fn();
+
     render(
       <HomePage
         questionBankManifest={{
@@ -57,22 +124,48 @@ describe("HomePage", () => {
         manifestError=""
         hasResumeRoute={false}
         lastSession={null}
-        mockModeEnabled
+        mockModeEnabled={false}
         onStartRandomPractice={vi.fn()}
         onExplorePractice={vi.fn()}
-        onOpenMockHistory={onOpenMockHistory}
-        onStartMockTest={onStartMockTest}
+        onOpenInsights={onOpenInsights}
+        onOpenMockHistory={vi.fn()}
+        onStartMockTest={vi.fn()}
         onResumePractice={vi.fn()}
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: /open mock test/i }));
-    fireEvent.click(screen.getByRole("button", { name: /attempted mock tests/i }));
+    fireEvent.click(screen.getByRole("button", { name: /view performance insights/i }));
 
-    expect(screen.getByText(/mock test is ready to try/i)).toBeTruthy();
-    expect(screen.queryByText(/1 saved attempt in this browser/i)).toBeNull();
-    expect(screen.queryByText(/score 44 \/ 100/i)).toBeNull();
-    expect(onStartMockTest).toHaveBeenCalledTimes(1);
-    expect(onOpenMockHistory).toHaveBeenCalledTimes(1);
+    expect(onOpenInsights).toHaveBeenCalledTimes(1);
+  });
+
+  test("does not show answer coverage tracking on the home dashboard", () => {
+    render(
+      <HomePage
+        questionBankManifest={{
+          questionCount: 3271,
+          latestYear: 2026,
+          yearSets: [{ key: "2026-s1" }, { key: "2026-s2" }],
+          answerCoverage: {
+            directQuestionUidMatches: 3150,
+            estimatedCoverageRatio: 0.963,
+          },
+        }}
+        manifestLoading={false}
+        manifestError=""
+        hasResumeRoute={false}
+        lastSession={null}
+        mockModeEnabled={false}
+        onStartRandomPractice={vi.fn()}
+        onExplorePractice={vi.fn()}
+        onOpenInsights={vi.fn()}
+        onOpenMockHistory={vi.fn()}
+        onStartMockTest={vi.fn()}
+        onResumePractice={vi.fn()}
+      />
+    );
+
+    expect(screen.queryByText(/verified answers/i)).toBeNull();
+    expect(screen.queryByText(/still pending/i)).toBeNull();
   });
 });

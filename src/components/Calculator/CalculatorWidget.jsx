@@ -26,6 +26,7 @@ function getCalculatorUrl() {
 
 export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
   const panelRef = useRef(null);
+  const closeButtonRef = useRef(null);
   const frameTimeoutRef = useRef(null);
   const closeTimeoutRef = useRef(null);
   const animationFrameRef = useRef(null);
@@ -84,6 +85,53 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
     }, ANIMATION_DURATION_MS);
     return () => clearTimeout(closeTimeoutRef.current);
   }, [isOpen, isRendered]);
+
+  useEffect(() => {
+    if (!isRendered || !isOpen) {
+      return undefined;
+    }
+
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !panelRef.current) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        panelRef.current.querySelectorAll(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+
+      if (!focusableElements.length) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, isRendered, onClose]);
 
   useEffect(() => {
     if (!isRendered || !isLoading) {
@@ -264,6 +312,7 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
 
           <div className="flex items-center gap-2">
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={onClose}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-800"
@@ -308,6 +357,7 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
             src={calculatorUrl}
             title="GATE Scientific Calculator"
             className="h-full w-full border-0"
+            tabIndex={0}
             onLoad={handleFrameLoaded}
             onError={handleFrameError}
             // Also add pointer-events-none style directly to iframe when dragging as a backup
