@@ -308,4 +308,39 @@ export const buildWeakTopicInsights = ({
   };
 };
 
-export const loadWeakTopicInsights = 
+export const loadWeakTopicInsights = async ({
+  fetchImpl = typeof fetch === "function" ? fetch : null,
+  storage = typeof window !== "undefined" ? window.localStorage : null,
+  baseUrl = typeof import.meta !== "undefined" ? import.meta.env.BASE_URL : "/",
+} = {}) => {
+  if (!fetchImpl || !storage) {
+    return { subjects: [], subtopics: [], attemptedQuestionCount: 0 };
+  }
+
+  const progressRecords = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
+  const solvedQuestionIds = parseJson(storage.getItem(SOLVED_STORAGE_KEY), []);
+  const hasProgressRecords = progressRecords && typeof progressRecords === "object" && Object.keys(progressRecords).length > 0;
+  const hasSolvedQuestions = Array.isArray(solvedQuestionIds) && solvedQuestionIds.length > 0;
+
+  if (!hasProgressRecords && !hasSolvedQuestions) {
+    return { subjects: [], subtopics: [], attemptedQuestionCount: 0 };
+  }
+
+  const normalizedBase = String(baseUrl || "/").endsWith("/")
+    ? String(baseUrl || "/")
+    : `${String(baseUrl || "/")}/`;
+  const response = await fetchImpl(`${normalizedBase}question-search-index.json`, {
+    cache: "force-cache",
+  });
+
+  if (!response?.ok) {
+    throw new Error("Unable to load practice analytics.");
+  }
+
+  const questions = await response.json();
+  return buildWeakTopicInsights({
+    questions,
+    progressRecords,
+    solvedQuestionIds,
+  });
+};

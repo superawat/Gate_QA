@@ -214,8 +214,8 @@ const ExplorePage = ({
     }
     const rangeStart = startIndex + 1;
     const rangeEnd = Math.min(startIndex + PAGE_SIZE, filteredQuestions.length);
-    return `Showing ${rangeStart}-${rangeEnd} of ${filteredQuestions.length} matching questions`;
-  }, [filteredQuestions.length, isInitialized, startIndex]);
+    return `Showing ${rangeStart}-${rangeEnd} of ${filteredQuestions.length} · ${totalQuestions} total questions`;
+  }, [filteredQuestions.length, isInitialized, startIndex, totalQuestions]);
 
   return (
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
@@ -243,17 +243,11 @@ const ExplorePage = ({
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)]">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Filters</p>
-                <h1 className="mt-2 text-3xl font-semibold text-slate-950">Filter questions and open the exact one you want.</h1>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-                  Choose year, subject, subtopic, type, or progress status, then pick directly from the filtered question list.
-                </p>
+                <h1 className="text-2xl font-semibold text-slate-950 sm:text-3xl">Explore questions</h1>
+                <p className="mt-2 text-sm font-medium text-slate-600">{resultSummary}</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">
-                  {totalQuestions} total questions
-                </div>
                 <button
                   type="button"
                   onClick={handleOpenFilters}
@@ -268,15 +262,15 @@ const ExplorePage = ({
             <div className="mt-4 grid gap-3 border-t border-slate-100 pt-4 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:items-start">
               <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-800">
                 <FaSlidersH />
-                {resultSummary}
+                Filters update instantly
               </div>
 
               <QuestionSearchInput
                 id="explore-search"
-                label="Search the current pool"
-                placeholder="Try keywords like dijkstra, paging, or SQL"
-                helperText="Search stays index-backed and updates the result list after a short pause."
+                label="Search questions"
+                placeholder="Search keywords like dijkstra, paging, or SQL"
                 compact
+                hideLabel
               />
             </div>
 

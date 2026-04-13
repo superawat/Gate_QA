@@ -246,8 +246,8 @@ describe("ExplorePage", () => {
   test("renders the filter shell with the current result list", async () => {
     renderExplorePage();
 
-    expect(await screen.findByRole("heading", { name: /filter questions and open the exact one you want/i })).toBeTruthy();
-    expect(screen.getByText(/showing 1-3 of 3 matching questions/i)).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: /explore questions/i })).toBeTruthy();
+    expect(screen.getByText(/showing 1-3 of 3 · 3 total questions/i)).toBeTruthy();
     expect(screen.getByText("Dijkstra shortest path")).toBeTruthy();
     expect(screen.getByText("Paging and segmentation")).toBeTruthy();
   });
@@ -278,7 +278,7 @@ describe("ExplorePage", () => {
     vi.useFakeTimers();
     renderExplorePage({ route: "/practice?page=2" });
 
-    const searchInput = await screen.findByLabelText(/search the current pool/i);
+    const searchInput = await screen.findByLabelText(/search questions/i);
     fireEvent.change(searchInput, { target: { value: "pipeline" } });
 
     await act(async () => {
@@ -297,7 +297,7 @@ describe("ExplorePage", () => {
     vi.useFakeTimers();
     renderExplorePage();
 
-    const searchInput = await screen.findByLabelText(/search the current pool/i);
+    const searchInput = await screen.findByLabelText(/search questions/i);
     fireEvent.change(searchInput, { target: { value: "no-match-token" } });
 
     await act(async () => {
