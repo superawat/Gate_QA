@@ -283,4 +283,35 @@ describe("MockTestShell", () => {
     expect(header.className).not.toContain("mock-question-content");
     expect(footer.className).not.toContain("mock-question-content");
   });
+
+  test("keeps the exam shell available at the minimum supported desktop width", async () => {
+    Object.defineProperty(window, "innerWidth", {
+      configurable: true,
+      writable: true,
+      value: 1024,
+    });
+
+    mockMockTestContext.testActive = true;
+    mockMockTestContext.attemptMeta = {
+      kindId: "full_length",
+      kindTitle: "Full-length generated mock",
+      durationMinutes: 180,
+      questionCount: 1,
+    };
+
+    const { container } = renderInMockRoute(
+      <MockTestShell onExit={vi.fn()} initialStage="exam" />,
+      "/mock?stage=exam"
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("mock-question-content")).toBeTruthy();
+      expect(screen.getByRole("button", { name: /save & next/i })).toBeTruthy();
+      expect(screen.getByTestId("mock-submit-button")).toBeTruthy();
+    });
+
+    expect(screen.queryByText("Try on desktop")).toBeNull();
+    expect(container.querySelector(".mocktest-palette-root")).toBeTruthy();
+    expect(container.querySelector(".mocktest-action-bar")).toBeTruthy();
+  });
 });

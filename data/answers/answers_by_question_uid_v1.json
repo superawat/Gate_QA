@@ -1,10 +1,10 @@
 {
   "version": "v1",
-  "generated_at": "2026-04-13T07:24:11.791Z",
+  "generated_at": "2026-04-13T08:24:16.335Z",
   "stats": {
-    "records": 3952,
+    "records": 3987,
     "mapping_conflicts": 0,
-    "manual_patch_applied": 816,
+    "manual_patch_applied": 851,
     "manual_patch_invalid": 0,
     "manual_resolutions_applied": 453
   },
@@ -52036,6 +52036,445 @@
         "link": "https://gateoverflow.in/302794/gate-cse-2019-question-54",
         "note": "97",
         "updated_at": "2026-04-13T07:24:11.791Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:80029": {
+      "answer_uid": "manual_res:go:80029",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_hardware_reasoning :: Leftmost circuit is the standard TTL sink-driver configuration; TTL sinks LED current more reliably than it sources it.",
+        "updated_at": "2026-04-13T08:24:16.332Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:80562": {
+      "answer_uid": "manual_res:go:80562",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_reasoning :: None of the listed statements is generally true for Newton-Raphson convergence.",
+        "updated_at": "2026-04-13T08:24:16.332Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:82548": {
+      "answer_uid": "manual_res:go:82548",
+      "type": "NAT",
+      "answer": 2.4785971428571423,
+      "tolerance": {
+        "abs": 0.001
+      },
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_derivation :: Lagrange interpolation at x=301 gives approximately 2.4785971428571423.",
+        "updated_at": "2026-04-13T08:24:16.332Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:82550": {
+      "answer_uid": "manual_res:go:82550",
+      "type": "NAT",
+      "answer": 0.693,
+      "tolerance": {
+        "abs": 0.001
+      },
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_derivation :: Composite Simpson rule with h=0.25 gives approximately 0.6932539683, so the 3-decimal answer is 0.693.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:511": {
+      "answer_uid": "manual_res:go:511",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Match: IEEE 488 -> R, IEEE 796 -> S, IEEE 696 -> Q, RS232-C -> P.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:529": {
+      "answer_uid": "manual_res:go:529",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Short answers: (i) y := x > 5; (ii) S; while not B do S; (iii) optimal BST root stop, left if, right while; (iv) every subsystem remains consistent, but not necessarily complete.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:599": {
+      "answer_uid": "manual_res:go:599",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_language_semantics :: FORTRAN 77 spacing and implicit typing make (a), (c), and (d) valid, while (b) is invalid.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:606": {
+      "answer_uid": "manual_res:go:606",
+      "type": "NAT",
+      "answer": 0.3333333333333333,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_series_derivation :: Using the root test on ((3m)!/(m!)^3) * x^(3m) gives radius 1/3.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:608": {
+      "answer_uid": "manual_res:go:608",
+      "type": "NAT",
+      "answer": 0.005,
+      "tolerance": {
+        "abs": 0.001
+      },
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_derivation :: A single second-order Runge-Kutta step with h=0.1 gives y(0.1)=0.005.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:609": {
+      "answer_uid": "manual_res:go:609",
+      "type": "NAT",
+      "answer": -2,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_language_semantics :: FORTRAN 77 gives implicit integer type for I; with integer division 3/4=0, the assigned value is -2.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:612": {
+      "answer_uid": "manual_res:go:612",
+      "type": "NAT",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_vector_calculus_derivation :: By the divergence theorem, div(V)=1 over the unit cube, so the flux is 1.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:614": {
+      "answer_uid": "manual_res:go:614",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_symbolic_derivation :: Laplace transform: -1 / ((s^2 + 1)(e^(pi s) - 1)).",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2291": {
+      "answer_uid": "manual_res:go:2291",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Subanswers: 7.1 -> C, 7.2 -> B, 7.3 -> A.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2293": {
+      "answer_uid": "manual_res:go:2293",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "D"
+      ],
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_language_semantics :: The fragment causes a runtime error due to nil-pointer dereferencing.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2317": {
+      "answer_uid": "manual_res:go:2317",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Function: read 5 bytes from input port 20H and store them sequentially starting at the address loaded into HL from memory locations 5000H/5001H. Registers: B is the loop counter, A holds the input byte, HL is the destination pointer.",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2439": {
+      "answer_uid": "manual_res:go:2439",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_reasoning :: Backward Euler uses y_(n+1) = y_n + h f(x_(n+1), y_(n+1)).",
+        "updated_at": "2026-04-13T08:24:16.333Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2478": {
+      "answer_uid": "manual_res:go:2478",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_hardware_reasoning :: False. Address/data multiplexing reduces pin count, not instruction execution time.",
+        "updated_at": "2026-04-13T08:24:16.334Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2496": {
+      "answer_uid": "manual_res:go:2496",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Match: ECL -> (c), GaAs -> (a), TTL -> (d), CMOS -> (b).",
+        "updated_at": "2026-04-13T08:24:16.334Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2600": {
+      "answer_uid": "manual_res:go:2600",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_language_semantics :: Only <> is definitely a complete token without inspecting the next character.",
+        "updated_at": "2026-04-13T08:24:16.334Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2623": {
+      "answer_uid": "manual_res:go:2623",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_storage_layout_derivation :: Each record uses 4 bytes for the fixed integer plus max(8,16)=16 bytes for the variant part, so 100 records need 2000 bytes.",
+        "updated_at": "2026-04-13T08:24:16.334Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2645": {
+      "answer_uid": "manual_res:go:2645",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Part (a): inside 'with A do', names A and B resolve to fields of record A; inside 'with B do', names A and B resolve to fields of record B. Part (b): '2.5A' is the lexical error; the remaining issues are not lexical.",
+        "updated_at": "2026-04-13T08:24:16.334Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2652": {
+      "answer_uid": "manual_res:go:2652",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Function: search up to 10 bytes starting at 1C40H for value 05H. Initial registers: A=05H, B=0AH. Final HL points to the first matching byte, or to 1C4AH if no match is found.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2758": {
+      "answer_uid": "manual_res:go:2758",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: The loop continuously outputs an incrementing count to port 00H; the lowest three bits cycle as 000, 001, 010, 011, 100, 101, 110, 111, then repeat.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2244": {
+      "answer_uid": "manual_res:go:2244",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_reasoning :: Forward Euler on y'=v and v'=f(t) gives y0=0, y1=0, y2=h^2 f(0), y3=2 h^2 f(0) + h^2 f(h); option B is the intended scan despite the dropped h^2 before f(h).",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2249": {
+      "answer_uid": "manual_res:go:2249",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_scope_reasoning :: In S1 the accessible variables are x of B, z, and y; in S2 they are x of A, i, and y.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2267": {
+      "answer_uid": "manual_res:go:2267",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Legacy design prompt preserved as subjective: derive the FFH output-port interface using D3 and generate a square wave with 7-bus-cycle on/off timing.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2268": {
+      "answer_uid": "manual_res:go:2268",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Legacy Pascal fill-in-the-boxes prompt preserved as subjective.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2282": {
+      "answer_uid": "manual_res:go:2282",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_grammar_derivation :: One unambiguous grammar is: S -> id := E | while E do S | begin L end; L -> S | S ; L; E -> A | A < A; A -> A + F | F; F -> id.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:2284": {
+      "answer_uid": "manual_res:go:2284",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Legacy Pascal scope/call-visibility prompt preserved as subjective; the scanned question does not expose a single machine-readable key in the current dataset.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:1515": {
+      "answer_uid": "manual_res:go:1515",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Legacy runtime-stack snapshot prompt preserved as subjective.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:1517": {
+      "answer_uid": "manual_res:go:1517",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_legacy_subjective_resolution :: Legacy 8085 memory-design prompt preserved as subjective: implement 2K x 8 from four 1K x 4 chips over 1000H-17FFH using two chip pairs and address decoding.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:834": {
+      "answer_uid": "manual_res:go:834",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_hardware_reasoning :: 5DH + 6BH = C8H, so AC=1 and CY=0.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:933": {
+      "answer_uid": "manual_res:go:933",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_graph_reasoning :: From the plotted tangents: x0 converges to 1.3, x1 to 0.6, and x2 to 1.3.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:958": {
+      "answer_uid": "manual_res:go:958",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_logic_semantics :: The program corresponds to forall x (((exists y)(B(x,y) and C(y))) => A(x)) and not exists x B(x,x).",
+        "updated_at": "2026-04-13T08:24:16.335Z"
+      },
+      "is_manual_resolution": true
+    },
+    "go:1226": {
+      "answer_uid": "manual_res:go:1226",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "pdf": "manual_resolution",
+        "notes": "manual_numerical_reasoning :: This is Newton-Raphson for x^2 - 9/4 = 0, so the sequence converges to the positive root 1.5.",
+        "updated_at": "2026-04-13T08:24:16.335Z"
       },
       "is_manual_resolution": true
     }
