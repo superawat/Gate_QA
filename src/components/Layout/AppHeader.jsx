@@ -156,13 +156,15 @@ const AppHeader = ({ onHomeNavigate = null }) => {
           className="flex min-w-0 items-center gap-4"
           aria-label="GATE QA home"
         >
-          <img
-            src={logoSrc}
-            alt="GATE QA logo"
-            width="64"
-            height="64"
-            className="logo-icon h-14 w-14 object-contain sm:h-16 sm:w-16"
-          />
+          <span className="app-header-logo-frame shrink-0">
+            <img
+              src={logoSrc}
+              alt="GATE QA logo"
+              width="64"
+              height="64"
+              className="logo-icon app-header-logo h-14 w-14 object-contain sm:h-16 sm:w-16"
+            />
+          </span>
           <div className="min-w-0">
             <p className="text-lg font-semibold uppercase tracking-[0.28em] text-sky-700 sm:text-2xl">GATE QA</p>
           </div>

@@ -227,7 +227,7 @@ describe("App routes", () => {
     expect(await screen.findByText("Mock shell")).toBeTruthy();
   });
 
-  test("home history button opens the mock history page when the feature flag is enabled", async () => {
+  test("home history button opens the mock history tab in insights when the feature flag is enabled", async () => {
     mocks.mockTestModeEnabled = true;
 
     render(<App />);
@@ -235,10 +235,11 @@ describe("App routes", () => {
     fireEvent.click(await screen.findByRole("button", { name: /history/i }));
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/Gate_QA/history/mock-tests");
+      expect(window.location.pathname).toBe("/Gate_QA/insights");
+      expect(window.location.search).toBe("?tab=mock-history");
     });
 
-    expect(await screen.findByText("Mock history page")).toBeTruthy();
+    expect(await screen.findByText("Insights page 3271")).toBeTruthy();
   });
 
   test("home insights button opens the insights page", async () => {

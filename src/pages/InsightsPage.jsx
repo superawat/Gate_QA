@@ -14,8 +14,9 @@ import {
   FaFilter,
   FaTrophy,
   FaFireAlt,
+  FaHistory,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -38,6 +39,7 @@ import PageShell from "../components/Layout/PageShell";
 import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
+import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -113,6 +115,7 @@ const TABS = [
   { id: "overview", label: "Overview", icon: FaChartLine },
   { id: "analysis", label: "Strengths & Weaknesses", icon: FaBullseye },
   { id: "wrong", label: "Wrong Answers", icon: FaTimesCircle },
+  { id: "mock-history", label: "Mock History", icon: FaHistory },
 ];
 
 /* ── Chart tooltip ──────────────────────────────────────────────────────── */
@@ -1089,7 +1092,17 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
 
 /* ── Main InsightsPage ──────────────────────────────────────────────────── */
 
-const InsightsPage = ({ questionBankManifest, hasResumeRoute, onResumePractice }) => {
+const InsightsPage = ({
+  questionBankManifest,
+  hasResumeRoute,
+  onResumePractice,
+  onStartMockTest,
+}) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const initialTab = queryParams.get("tab") || "overview";
+
   const [insights, setInsights] = useState({
     subjects: [],
     subtopics: [],
@@ -1098,7 +1111,14 @@ const InsightsPage = ({ questionBankManifest, hasResumeRoute, onResumePractice }
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  const handleTabChange = useCallback((tabId) => {
+    setActiveTab(tabId);
+    const params = new URLSearchParams(location.search);
+    params.set("tab", tabId);
+    navigate({ search: `?${params.toString()}` }, { replace: true });
+  }, [location.search, navigate]);
 
   useEffect(() => {
     let active = true;
@@ -1258,7 +1278,7 @@ const InsightsPage = ({ questionBankManifest, hasResumeRoute, onResumePractice }
                   <button
                     key={tab.id}
                     type="button"
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => handleTabChange(tab.id)}
                     className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
                       isActive
                         ? "bg-white text-slate-900 shadow-md"
@@ -1287,6 +1307,9 @@ const InsightsPage = ({ questionBankManifest, hasResumeRoute, onResumePractice }
               )}
               {activeTab === "wrong" && (
                 <WrongAnswersTab wrongQuestions={insights.wrongQuestions || []} />
+              )}
+              {activeTab === "mock-history" && (
+                <MockHistoryPanel onStartMockTest={onStartMockTest} />
               )}
             </div>
           </>

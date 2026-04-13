@@ -8,26 +8,55 @@ const TopicFilter = () => {
     const { selectedSubjects = [], selectedSubtopics = [] } = filters;
     const [expandedSubjectSlug, setExpandedSubjectSlug] = useState(null);
 
+    const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
     const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
+    const sortedSubtopicsBySubject = useMemo(() => {
+        const nextMap = new Map();
+
+        subjects.forEach((subject) => {
+            const subjectSlug = subject?.slug;
+            const subtopics = structuredSubtopics[subjectSlug] || [];
+            nextMap.set(
+                subjectSlug,
+                [...subtopics].sort((left, right) =>
+                    String(left?.label || left?.slug || '').localeCompare(String(right?.label || right?.slug || ''))
+                )
+            );
+        });
+
+        return nextMap;
+    }, [structuredSubtopics, subjects]);
 
     useEffect(() => {
-        if (!expandedSubjectSlug) {
+        if (selectedSubjects.length === 0) {
+            if (expandedSubjectSlug !== null) {
+                setExpandedSubjectSlug(null);
+            }
             return;
         }
-        if (!selectedSubjects.includes(expandedSubjectSlug)) {
-            setExpandedSubjectSlug(selectedSubjects[0] || null);
-        }
-    }, [expandedSubjectSlug, selectedSubjects]);
 
-    const getSortedSubtopics = (subjectSlug) => {
-        const subtopics = structuredSubtopics[subjectSlug] || [];
-        return [...subtopics].sort((left, right) =>
-            String(left?.label || left?.slug || '').localeCompare(String(right?.label || right?.slug || ''))
+        if (expandedSubjectSlug && selectedSubjectSet.has(expandedSubjectSlug)) {
+            return;
+        }
+
+        const firstSubjectWithActiveSubtopic = selectedSubjects.find((subjectSlug) =>
+            (sortedSubtopicsBySubject.get(subjectSlug) || []).some((subtopic) => selectedSubtopicSet.has(subtopic.slug))
         );
-    };
+        const nextExpandedSubject = firstSubjectWithActiveSubtopic || selectedSubjects[0] || null;
+
+        if (nextExpandedSubject !== expandedSubjectSlug) {
+            setExpandedSubjectSlug(nextExpandedSubject);
+        }
+    }, [
+        expandedSubjectSlug,
+        selectedSubjectSet,
+        selectedSubjects,
+        selectedSubtopicSet,
+        sortedSubtopicsBySubject,
+    ]);
 
     const handleSubjectChange = (subjectSlug) => {
-        const isAlreadySelected = selectedSubjects.includes(subjectSlug);
+        const isAlreadySelected = selectedSubjectSet.has(subjectSlug);
         const nextSubjects = isAlreadySelected
             ? selectedSubjects.filter((slug) => slug !== subjectSlug)
             : [...selectedSubjects, subjectSlug];
@@ -51,7 +80,7 @@ const TopicFilter = () => {
     };
 
     const handleSubjectBulkToggle = (subjectSlug) => {
-        const subjectSubtopics = getSortedSubtopics(subjectSlug);
+        const subjectSubtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
         const subjectSubtopicSlugs = subjectSubtopics
             .map((subtopic) => subtopic?.slug)
             .filter(Boolean);
@@ -78,8 +107,8 @@ const TopicFilter = () => {
         <div className="space-y-1">
             {subjects.map((subject) => {
                 const subjectSlug = subject.slug;
-                const isSelected = selectedSubjects.includes(subjectSlug);
-                const subtopics = getSortedSubtopics(subjectSlug);
+                const isSelected = selectedSubjectSet.has(subjectSlug);
+                const subtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
                 const hasSubtopics = subtopics.length > 0;
                 const isExpanded = expandedSubjectSlug === subjectSlug;
                 const showSubtopics = isSelected && hasSubtopics && isExpanded;
@@ -114,9 +143,9 @@ const TopicFilter = () => {
                                         type="button"
                                         onClick={() => setExpandedSubjectSlug(isExpanded ? null : subjectSlug)}
                                         aria-label={isExpanded ? `Hide ${subject.label} subtopics` : `Show ${subject.label} subtopics`}
-                                        className="rounded border border-gray-300 px-1.5 py-0.5 text-[10px] font-semibold text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        className="rounded border border-gray-300 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     >
-                                        {isExpanded ? '▾' : '▸'}
+                                        {isExpanded ? 'Hide' : 'Show'}
                                     </button>
                                 )}
                                 {showSubtopics && (
@@ -152,10 +181,6 @@ const TopicFilter = () => {
                     </div>
                 );
             })}
-
-            {selectedSubjects.length === 0 && (
-                <p className="pt-1 text-xs text-gray-500">Select subject(s) to narrow subtopics.</p>
-            )}
         </div>
     );
 };

@@ -8,6 +8,7 @@ import { MemoryRouter } from "react-router-dom";
 
 const mocks = vi.hoisted(() => ({
   loadWeakTopicInsights: vi.fn(),
+  readMockTestHistory: vi.fn().mockReturnValue([]),
 }));
 
 vi.mock("../components/Layout/PageShell", () => ({
@@ -16,6 +17,10 @@ vi.mock("../components/Layout/PageShell", () => ({
 
 vi.mock("../utils/weakTopicAnalyzer", () => ({
   loadWeakTopicInsights: mocks.loadWeakTopicInsights,
+}));
+
+vi.mock("../utils/mockTestHistory", () => ({
+  readMockTestHistory: mocks.readMockTestHistory,
 }));
 
 import InsightsPage from "./InsightsPage";
@@ -39,6 +44,8 @@ const renderInsightsPage = (props = {}) => render(
 describe("InsightsPage", () => {
   beforeEach(() => {
     mocks.loadWeakTopicInsights.mockReset();
+    mocks.readMockTestHistory.mockReset();
+    mocks.readMockTestHistory.mockReturnValue([]);
   });
 
   test("shows a loading message while local insights are being built", async () => {
@@ -210,5 +217,50 @@ describe("InsightsPage", () => {
     await waitFor(() => {
       expect(screen.getByRole("link", { name: /open practice/i }).getAttribute("href")).toBe("/practice");
     });
+  });
+
+  test("renders the Mock History tab and respect ?tab=mock-history query param", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+    mocks.readMockTestHistory.mockReturnValueOnce([
+      {
+        id: "mock1",
+        kindTitle: "Full Mock",
+        submittedAt: "2026-04-10T10:00:00Z",
+        score: 80,
+        maxScore: 100,
+        questionCount: 65,
+        durationMinutes: 180,
+        attempted: 60,
+        correct: 50,
+        incorrect: 10,
+        unanswered: 5,
+        correctQuestions: [{ questionUid: "q1", label: "Logic Question", type: "MCQ", scoreDelta: 1 }],
+        incorrectQuestions: [],
+        unansweredQuestions: [],
+      },
+    ]);
+
+    // Render with initial search param
+    render(
+      <MemoryRouter initialEntries={["/insights?tab=mock-history"]}>
+        <InsightsPage hasResumeRoute={false} onResumePractice={vi.fn()} />
+      </MemoryRouter>
+    );
+
+    // Should show Mock History section immediately
+    expect(await screen.findByText(/recent mock attempts/i)).toBeTruthy();
+    expect(screen.getAllByText("Full Mock").length).toBeGreaterThan(0);
+
+    // Expand details
+    const summary = screen.getAllByText("Full Mock")[0].closest("summary");
+    fireEvent.click(summary);
+
+    expect(screen.getByText("Logic Question")).toBeTruthy();
+    expect(screen.getByText(/id q1/i)).toBeTruthy();
   });
 });

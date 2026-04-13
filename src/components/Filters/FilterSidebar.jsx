@@ -31,9 +31,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
         filters,
         structuredTags,
         solvedCount,
-        bookmarkedCount,
         progressPercentage,
-        isProgressStorageAvailable
     } = useFilterState();
 
     const {
@@ -92,8 +90,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 <QuestionSearchInput
                     id="practice-search"
                     label="Search"
-                    placeholder="Search title, tags, or question text"
-                    helperText="Matches are combined with the subject, year, type, and progress filters below."
+                    placeholder="Search keywords..."
                     compact
                 />
             </div>
@@ -183,7 +180,6 @@ const FilterSidebar = ({ className = "", onClose }) => {
 
                 </div>
             </div>
-
 
             {/* Sticky Bottom: Year Range */}
             <div className="p-4 border-t border-gray-200 bg-gray-50 z-10 flex-shrink-0">

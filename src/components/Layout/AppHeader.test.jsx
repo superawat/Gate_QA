@@ -72,5 +72,6 @@ describe("AppHeader", () => {
 
     expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
     expect(screen.getByRole("switch", { name: /switch to light mode/i })).toBeTruthy();
+    expect(screen.getByAltText(/gate qa logo/i).closest(".app-header-logo-frame")).toBeTruthy();
   });
 });

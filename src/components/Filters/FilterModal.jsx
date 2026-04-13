@@ -83,10 +83,7 @@ const FilterModal = ({ isOpen, onClose }) => {
                 aria-labelledby="filter-modal-title"
             >
                 <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4">
-                    <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Question Filters</p>
-                        <h2 id="filter-modal-title" className="text-lg font-semibold text-slate-900">Pick Questions</h2>
-                    </div>
+                    <h2 id="filter-modal-title" className="text-lg font-semibold text-slate-900">Filters</h2>
                     <button
                         ref={closeButtonRef}
                         type="button"

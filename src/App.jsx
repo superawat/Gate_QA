@@ -32,7 +32,6 @@ import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const InsightsPage = lazy(() => import("./pages/InsightsPage"));
-const MockHistoryPage = lazy(() => import("./pages/MockHistoryPage"));
 const SolvePage = lazy(() => import("./pages/SolvePage"));
 const MockShell = lazy(() => import("./shells/MockShell"));
 
@@ -263,7 +262,7 @@ const PracticeRoutes = ({
 
   const handleOpenMockHistory = useCallback(() => {
     trackEvent("home_cta", { target: "mock_history", source: "home" });
-    navigate(MOCK_HISTORY_ROUTE);
+    navigate(`${INSIGHTS_ROUTE}?tab=mock-history`);
   }, [navigate]);
 
   const handleOpenInsights = useCallback(() => {
@@ -338,25 +337,17 @@ const PracticeRoutes = ({
                 <InsightsPage
                   questionBankManifest={questionBankManifest}
                   hasResumeRoute={hasResumeRoute}
+                  onStartMockTest={handleStartMockTest}
                   onResumePractice={handleResumePractice}
                 />
               </Suspense>
             </ErrorBoundary>
           )}
         />
+
         <Route
           path={MOCK_HISTORY_ROUTE}
-          element={MOCK_TEST_MODE_ENABLED ? (
-            <Suspense fallback={<RouteLoader label="Loading Mock History..." />}>
-              <MockHistoryPage
-                hasResumeRoute={hasResumeRoute}
-                onResumePractice={handleResumePractice}
-                onStartMockTest={handleStartMockTest}
-              />
-            </Suspense>
-          ) : (
-            <Navigate to={HOME_ROUTE} replace />
-          )}
+          element={<Navigate to={`${INSIGHTS_ROUTE}?tab=mock-history`} replace />}
         />
         <Route path="*" element={<Navigate to={HOME_ROUTE} replace />} />
       </Routes>

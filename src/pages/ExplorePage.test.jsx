@@ -305,6 +305,34 @@ describe("ExplorePage", () => {
     expect(screen.queryByText("Dijkstra shortest path")).toBeNull();
   });
 
+  test("search and subject filters compose into the correct result summary", async () => {
+    vi.useFakeTimers();
+    renderExplorePage();
+
+    const searchInput = await screen.findByLabelText(/search questions/i);
+    fireEvent.change(searchInput, { target: { value: "dynamic" } });
+
+    await act(async () => {
+      vi.advanceTimersByTime(350);
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /choose algorithms/i }));
+
+    await waitFor(() => {
+      const locationText = screen.getByTestId("location-probe").textContent || "";
+      const [, search = ""] = locationText.split("?");
+      const params = new URLSearchParams(search);
+
+      expect(params.get("subjects")).toBe("algorithms");
+      expect(params.get("search")).toBe("dynamic");
+    });
+
+    expect(screen.getByText(/showing 1-1 of 1/i)).toBeTruthy();
+    expect(screen.getByText(/dynamic programming states/i)).toBeTruthy();
+    expect(screen.queryByText("Dijkstra shortest path")).toBeNull();
+    expect(screen.queryByText("Paging and segmentation")).toBeNull();
+  });
+
   test("no-match search shows the empty-state message and clearing search restores results", async () => {
     vi.useFakeTimers();
     renderExplorePage();

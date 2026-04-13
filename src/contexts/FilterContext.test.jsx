@@ -6,6 +6,7 @@ import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
+import TopicFilter from '../components/Filters/TopicFilter';
 import { QuestionService } from '../services/QuestionService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 
@@ -21,6 +22,7 @@ vi.mock('../services/QuestionService', () => ({
                 title: 'Q1',
                 searchText: 'database schema normalization functional dependency',
                 subjectSlug: 'databases',
+                type: 'MCQ',
                 subtopics: [{ slug: 'schema-normalization' }],
                 exam: { year: 2024 }
             },
@@ -29,6 +31,7 @@ vi.mock('../services/QuestionService', () => ({
                 title: 'Q2',
                 searchText: 'operating system deadlock prevention resource allocation',
                 subjectSlug: 'os',
+                type: 'NAT',
                 subtopics: [{ slug: 'deadlock' }],
                 exam: { year: 2024 }
             }
@@ -88,8 +91,10 @@ describe('FilterContext', () => {
                 <div data-testid="subtopics">{filters.selectedSubtopics.join(',')}</div>
                 <div data-testid="year-range">{filters.yearRange.join(',')}</div>
                 <div data-testid="search-query">{filters.searchQuery}</div>
+                <div data-testid="selected-types">{filters.selectedTypes.join(',')}</div>
                 <div data-testid="filtered-question-uids">{filteredQuestions.map((question) => question.question_uid).join(',')}</div>
                 <ActiveFilterChips />
+                <TopicFilter />
                 <button
                     data-testid="add-both"
                     onClick={() => updateFilters({ selectedSubjects: ['databases'], selectedSubtopics: ['schema-normalization'] })}
@@ -110,6 +115,14 @@ describe('FilterContext', () => {
                     data-testid="set-search-miss"
                     onClick={() => updateFilters({ searchQuery: 'deadlock normalization' })}
                 >SearchMiss</button>
+                <button
+                    data-testid="set-combined-filters"
+                    onClick={() => updateFilters({
+                        selectedSubjects: ['os'],
+                        selectedTypes: ['nat'],
+                        searchQuery: '  deadlock   prevention ',
+                    })}
+                >Combined</button>
             </div>
         );
     };
@@ -152,6 +165,22 @@ describe('FilterContext', () => {
         expect(getByTestId('subtopics').textContent).toBe('schema-normalization');
         expect(getByTestId('filtered-question-uids').textContent).toBe('go:1');
         expect(window.location.search).toContain('subjects=databases');
+    });
+
+    test('auto-expands the active subject when subtopics are preselected', async () => {
+        window.history.replaceState({}, '', '/practice?subtopics=schema-normalization');
+
+        renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(screen.getByRole('button', { name: /clear all databases subtopics/i })).toBeTruthy();
+        });
+
+        expect(screen.getByLabelText('Schema Normalization').checked).toBe(true);
     });
 
     test('hydrates the default year range from structured tags when a new year is added', async () => {
@@ -255,5 +284,25 @@ describe('FilterContext', () => {
 
         params = new URLSearchParams(window.location.search);
         expect(params.get('search')).toBeNull();
+    });
+
+    test('composes subject, type, and search filters correctly', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        act(() => {
+            getByTestId('set-combined-filters').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('os');
+        });
+
+        expect(getByTestId('selected-types').textContent).toBe('NAT');
+        expect(getByTestId('search-query').textContent).toBe('deadlock prevention');
+        expect(getByTestId('filtered-question-uids').textContent).toBe('go:2');
     });
 });
