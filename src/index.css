@@ -1010,3 +1010,29 @@ li {
   object-fit: contain;
   display: block;
 }
+
+.app-header-logo-frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  transition: background-color 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.app-header-logo {
+  position: relative;
+  z-index: 1;
+}
+
+:root[data-theme="dark"] .app-header-logo-frame {
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(226, 232, 240, 0.92));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 10px 24px rgba(2, 6, 23, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  padding: 0.35rem;
+}
+
+:root[data-theme="dark"] .logo-icon {
+  filter: invert(1) brightness(1.2);
+}
