@@ -5,11 +5,102 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Practice GATE CSE previous-year questions with a dedicated Home, Explore, and Solve flow." />
-  <title>GateQA</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="Practice GATE CSE previous-year questions with Home, Explore, Solve, and Mock Test flows built for fast local-first revision." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GateQA" />
+  <meta property="og:description" content="Filter, search, solve, and review GATE CSE previous-year questions in a fast local-first study app." />
+  <meta property="og:image" content="https://superawat.github.io/Gate_QA/logo.png" />
+  <meta property="og:url" content="https://superawat.github.io/Gate_QA/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="GateQA | GATE CSE Previous-Year Questions" />
+  <meta name="twitter:description" content="Practice GATE CSE previous-year questions with search, mock tests, and answer coverage visibility." />
+  <script>
+    (function () {
+      try {
+        var isMockWindow = /\/mock(?:\/|$)/.test(window.location.pathname);
+        var storedTheme = window.localStorage.getItem("gate_qa_theme");
+        var isStoredThemeValid = storedTheme === "light" || storedTheme === "dark";
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = isMockWindow
+          ? "light"
+          : (isStoredThemeValid ? storedTheme : (prefersDark ? "dark" : "light"));
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    }());
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "GateQA",
+      "applicationCategory": "EducationalApplication",
+      "description": "Practice GATE CSE previous-year questions with local-first filters, solving workflows, and mock-test support.",
+      "url": "https://superawat.github.io/Gate_QA/",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "publisher": {
+        "@type": "Organization",
+        "name": "GateQA"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "GATE CSE previous year questions"
+        },
+        {
+          "@type": "Thing",
+          "name": "Computer Science and Engineering exam practice"
+        }
+      ]
+    }
+  </script>
+  <title>GateQA | GATE CSE Previous-Year Questions</title>
+  <link rel="canonical" href="https://superawat.github.io/Gate_QA/" />
   <link rel="icon" type="image/png" href="./logo.png" />
+  <link rel="manifest" href="/Gate_QA/manifest.webmanifest" />
+  <link rel="preload" href="/Gate_QA/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(14, 165, 233, 0.08), transparent 24%),
+        linear-gradient(180deg, #eef4fb 0%, #f8fbff 18%, #f4f7fb 100%);
+      color: #0f172a;
+      font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
     pre {
       overflow: auto;
     }
@@ -36,12 +127,10 @@
       );
     }(window.location));
   </script>
-  <script type="module" crossorigin src="/Gate_QA/assets/index-DLSQXeLr.js"></script>
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-react-CSbKAafd.js">
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-misc-BaMi5vLu.js">
-  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-ui-DqeFZDyf.js">
-  <link rel="stylesheet" crossorigin href="/Gate_QA/assets/vendor-ui-CwBLJBHs.css">
-  <link rel="stylesheet" crossorigin href="/Gate_QA/assets/index-CMPl4LKN.css">
+  <script type="module" crossorigin src="/Gate_QA/assets/index-BcuWLpOs.js"></script>
+  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-react-DJ2pkVjc.js">
+  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-router-DmMaYHUO.js">
+  <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-icons-rhFLW29o.js">
 </head>
 
 <body>
