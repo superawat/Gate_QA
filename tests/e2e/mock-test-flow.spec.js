@@ -28,9 +28,9 @@ test("mock card is visible on the landing page", async ({ page }) => {
   });
 });
 
-test("mock history entry is visible on the landing page", async ({ page }) => {
+test("insights entry is visible on the landing page", async ({ page }) => {
   await page.goto(appPath("/"));
-  await expect(page.getByRole("button", { name: /attempted mock tests/i })).toBeVisible({
+  await expect(page.getByRole("button", { name: /view performance insights/i })).toBeVisible({
     timeout: 15000,
   });
 });
@@ -66,15 +66,15 @@ test("starting a full mock shows the exam shell", async ({ page }) => {
   });
 });
 
-test("mock history page loads from the landing CTA", async ({ page }) => {
+test("insights page loads from the landing CTA", async ({ page }) => {
   await page.goto(appPath("/"));
-  await expect(page.getByRole("button", { name: /attempted mock tests/i })).toBeVisible({
+  await expect(page.getByRole("button", { name: /view performance insights/i })).toBeVisible({
     timeout: 15000,
   });
-  await page.getByRole("button", { name: /attempted mock tests/i }).click();
+  await page.getByRole("button", { name: /view performance insights/i }).click();
 
-  await expect(page).toHaveURL(/\/Gate_QA\/history\/mock-tests/, { timeout: 15000 });
-  await expect(page.getByRole("heading", { name: /attempted mock tests/i })).toBeVisible({
+  await expect(page).toHaveURL(/\/Gate_QA\/insights/, { timeout: 15000 });
+  await expect(page.getByRole("heading", { name: /Practice performance insights/i })).toBeVisible({
     timeout: 15000,
   });
 });
