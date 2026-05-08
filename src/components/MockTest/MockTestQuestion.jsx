@@ -5,6 +5,7 @@ import { QuestionService } from "../../services/QuestionService";
 import {
     formatExpectedAnswer,
     formatMockResponse,
+    isMockAutoAwardType,
 } from "../../utils/mockTest";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
@@ -50,6 +51,8 @@ const buildCorrectOptionSet = (answerRecord = null) => {
 
 const getVerdictCopy = (result = null) => {
     switch (result?.status) {
+        case "bonus":
+            return { label: "Awarded to all", tone: "text-[#0f6f2f]" };
         case "correct":
             return { label: "Correct", tone: "text-[#0f6f2f]" };
         case "incorrect":
@@ -62,6 +65,14 @@ const getVerdictCopy = (result = null) => {
         default:
             return { label: "Unanswered", tone: "text-[#6a7f94]" };
     }
+};
+
+const formatQuestionTypeLabel = (type = "") => {
+    const normalized = String(type || "").trim().toUpperCase();
+    if (normalized === "MARKS_TO_ALL") {
+        return "MARKS TO ALL";
+    }
+    return normalized || "MCQ";
 };
 
 const MockTestQuestion = ({ isReviewPhase = false }) => {
@@ -81,11 +92,13 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         return null;
     }
 
-    const typeLabel = String(currentQuestionMeta?.type || "MCQ").toUpperCase();
+    const typeLabel = formatQuestionTypeLabel(currentQuestionMeta?.type);
+    const rawType = String(currentQuestionMeta?.type || "").trim().toUpperCase();
     const marks = Number(currentQuestionMeta?.marks || 0);
     const negativeMarks = formatNegativeMarks(currentQuestionMeta?.negativeMarks);
-    const isNAT = typeLabel === "NAT";
-    const isMSQ = typeLabel === "MSQ";
+    const isNAT = rawType === "NAT";
+    const isMSQ = rawType === "MSQ";
+    const isAutoAwarded = isMockAutoAwardType(rawType);
     const currentResponse = responses[questionUid];
     const reviewResult = isReviewPhase ? currentQuestionResult : null;
     const verdictCopy = getVerdictCopy(reviewResult);
@@ -121,8 +134,12 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         ? `+${reviewScoreDelta}`
         : String(reviewScoreDelta);
     const reviewExpectedAnswer = formatExpectedAnswer(reviewResult?.answerRecord);
-    const reviewResponseText = formatMockResponse(reviewResult?.response, typeLabel);
-    const reviewMessage = reviewResult?.status === "missing_answer"
+    const reviewResponseText = reviewResult?.status === "bonus"
+        ? "Not required"
+        : formatMockResponse(reviewResult?.response, rawType);
+    const reviewMessage = reviewResult?.status === "bonus"
+        ? "This question was awarded automatically."
+        : reviewResult?.status === "missing_answer"
         ? "No mapped answer record."
         : reviewResult?.status === "unsupported_type"
             ? "Unsupported answer type."
@@ -259,7 +276,11 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                         </div>
 
                         <div className="pl-1">
-                            {isNAT ? (
+                            {isAutoAwarded ? (
+                                <div className="rounded border border-[#c8e6d1] bg-[#f1fbf4] px-3 py-3 text-sm font-semibold text-[#0f6f2f]">
+                                    This question is awarded to all candidates. No response is required.
+                                </div>
+                            ) : isNAT ? (
                                 <div className="relative z-10 mt-4 flex flex-col gap-2">
                                     <div className="flex flex-col items-center p-3 bg-[#f3f4f6] rounded-md border border-gray-300 w-[180px]">
                                         <input

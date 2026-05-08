@@ -80,7 +80,7 @@ describe("InsightsPage", () => {
     expect(screen.getByRole("link", { name: /start practice/i }).getAttribute("href")).toBe("/practice");
   });
 
-  test("shows answer coverage tracking from the manifest even before practice insights exist", async () => {
+  test("does not show internal answer coverage tracking on the insights page", async () => {
     mocks.loadWeakTopicInsights.mockResolvedValueOnce({
       subjects: [],
       subtopics: [],
@@ -104,13 +104,10 @@ describe("InsightsPage", () => {
       },
     });
 
-    expect(await screen.findByText(/answer coverage/i)).toBeTruthy();
-    expect(screen.getAllByText(/verified answers/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/still pending/i)).toBeTruthy();
-    expect(screen.getByText("3,150")).toBeTruthy();
-    expect(screen.getByText("121")).toBeTruthy();
-    expect(screen.getByText("96.3%")).toBeTruthy();
-    expect(screen.getByText("100%")).toBeTruthy();
+    expect(await screen.findByText(/no insights yet/i)).toBeTruthy();
+    expect(screen.queryByText(/answer coverage/i)).toBeNull();
+    expect(screen.queryByText(/verified answers/i)).toBeNull();
+    expect(screen.queryByText(/still pending/i)).toBeNull();
   });
 
   test("shows an error banner when insight generation fails", async () => {

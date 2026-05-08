@@ -37,36 +37,36 @@ export default function ImportConfirmationModal({
             onClick={onClose}
         >
             <div
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto z-[10000] relative"
+                className="relative z-[10000] max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 text-[color:var(--color-text)] shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <h2 className="mb-4 text-lg font-semibold text-[color:var(--color-text)]">
                     Import Progress
                 </h2>
 
                 {schemaWarning && (
-                    <div className="mb-4 p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700 rounded-lg text-sm text-yellow-800 dark:text-yellow-200">
+                    <div className="mb-4 rounded-lg border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-3 text-sm text-[color:var(--color-warning-text)]">
                         ⚠️ {schemaWarning}
                     </div>
                 )}
 
                 <div className="space-y-3 mb-6">
-                    <div className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                        <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    <div className="rounded-lg bg-[color:var(--color-surface-muted)] p-3">
+                        <p className="mb-1 text-sm font-medium text-[color:var(--color-text-muted)]">
                             Your current progress
                         </p>
-                        <p className="text-sm text-gray-900 dark:text-white">
+                        <p className="text-sm text-[color:var(--color-text)]">
                             <span className="font-semibold">{currentSolvedCount}</span> solved
                             {" · "}
                             <span className="font-semibold">{currentBookmarkedCount}</span>{" "}
                             bookmarked
                         </p>
                     </div>
-                    <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-                        <p className="text-sm font-medium text-blue-600 dark:text-blue-300 mb-1">
+                    <div className="rounded-lg bg-[color:var(--color-primary-soft)] p-3">
+                        <p className="mb-1 text-sm font-medium text-[color:var(--color-primary-text)]">
                             File contains
                         </p>
-                        <p className="text-sm text-gray-900 dark:text-white">
+                        <p className="text-sm text-[color:var(--color-text)]">
                             <span className="font-semibold">{importedSolvedCount}</span> solved
                             {" · "}
                             <span className="font-semibold">{importedBookmarkedCount}</span>{" "}
@@ -78,22 +78,22 @@ export default function ImportConfirmationModal({
                 <div className="space-y-2">
                     <button
                         onClick={onMerge}
-                        className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-sm"
+                        className="w-full rounded-lg bg-[color:var(--color-primary)] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[color:var(--color-primary-hover)]"
                     >
                         Merge — combine with existing progress
                     </button>
                     <button
                         onClick={onReplace}
-                        className="w-full py-2.5 px-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors text-sm"
+                        className="w-full rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-red-700"
                     >
                         Replace — discard existing progress
                     </button>
-                    <p className="text-xs text-red-500 dark:text-red-400 text-center">
+                    <p className="text-center text-xs text-[color:var(--color-danger-text)]">
                         Replace will permanently remove your current progress.
                     </p>
                     <button
                         onClick={onClose}
-                        className="w-full py-2.5 px-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-lg transition-colors text-sm"
+                        className="w-full rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 py-2.5 text-sm font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface)]"
                     >
                         Cancel
                     </button>

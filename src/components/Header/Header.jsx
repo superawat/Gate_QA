@@ -20,7 +20,7 @@ const Header = ({
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <a
             href={import.meta.env.BASE_URL}
-            className="shrink-0 transition-opacity hover:opacity-80"
+            className="app-header-logo-frame shrink-0 transition-opacity hover:opacity-80"
             aria-label="Go to home page"
           >
             <img
@@ -28,7 +28,7 @@ const Header = ({
               alt="GATE QA Logo"
               width="40"
               height="40"
-              className="logo-icon h-8 w-8 object-contain sm:h-10 sm:w-10"
+              className="logo-icon app-header-logo h-8 w-8 object-contain sm:h-10 sm:w-10"
             />
           </a>
 

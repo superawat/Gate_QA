@@ -6,8 +6,10 @@ import path from "node:path";
 const ROOT = process.cwd();
 const DIST_DIR = path.join(ROOT, "dist");
 const MANIFEST_PATH = path.join(DIST_DIR, ".vite", "manifest.json");
+const REPORT_PATH = path.join(ROOT, "artifacts", "review", "bundle-budget-report.json");
 const LANDING_ENTRY_BUDGET_BYTES = 300 * 1024;
 const LANDING_INITIAL_JS_BUDGET_BYTES = 700 * 1024;
+const WARNING_THRESHOLD_RATIO = 0.9;
 
 function assert(condition, message) {
   if (!condition) {
@@ -26,6 +28,23 @@ function getByteSize(relativeFilePath) {
 
 function formatKb(bytes) {
   return `${(bytes / 1024).toFixed(1)} KB`;
+}
+
+function getBudgetStatus(bytes, budgetBytes) {
+  if (bytes > budgetBytes) {
+    return "fail";
+  }
+
+  if (bytes >= budgetBytes * WARNING_THRESHOLD_RATIO) {
+    return "warn";
+  }
+
+  return "pass";
+}
+
+function writeReport(report) {
+  fs.mkdirSync(path.dirname(REPORT_PATH), { recursive: true });
+  fs.writeFileSync(REPORT_PATH, `${JSON.stringify(report, null, 2)}\n`);
 }
 
 function getEntryRecord(manifest) {
@@ -69,19 +88,61 @@ function main() {
   const entryChunkBytes = getByteSize(entryRecord.file);
   const totalInitialJsBytes = initialJsFiles.reduce((sum, file) => sum + getByteSize(file), 0);
   const hasInitialMathJaxChunk = initialJsFiles.some((file) => file.includes("vendor-mathjax"));
+  const checks = [
+    {
+      name: "landingEntry",
+      bytes: entryChunkBytes,
+      budgetBytes: LANDING_ENTRY_BUDGET_BYTES,
+      status: getBudgetStatus(entryChunkBytes, LANDING_ENTRY_BUDGET_BYTES),
+      file: entryRecord.file,
+    },
+    {
+      name: "landingInitialJs",
+      bytes: totalInitialJsBytes,
+      budgetBytes: LANDING_INITIAL_JS_BUDGET_BYTES,
+      status: getBudgetStatus(totalInitialJsBytes, LANDING_INITIAL_JS_BUDGET_BYTES),
+      files: initialJsFiles,
+    },
+    {
+      name: "landingMathJaxIsolation",
+      status: hasInitialMathJaxChunk ? "fail" : "pass",
+      files: initialJsFiles.filter((file) => file.includes("vendor-mathjax")),
+    },
+  ];
+  const report = {
+    generatedAt: new Date().toISOString(),
+    warningThresholdRatio: WARNING_THRESHOLD_RATIO,
+    checks,
+    initialJsFiles: initialJsFiles.map((file) => ({
+      file,
+      bytes: getByteSize(file),
+      size: formatKb(getByteSize(file)),
+    })),
+  };
+
+  writeReport(report);
 
   console.log(`[bundle-budget] landing entry: ${formatKb(entryChunkBytes)} (${entryRecord.file})`);
   console.log(`[bundle-budget] landing initial JS: ${formatKb(totalInitialJsBytes)} (${initialJsFiles.length} chunks)`);
+  console.log(`[bundle-budget] report: ${path.relative(ROOT, REPORT_PATH)}`);
+
+  checks
+    .filter((check) => check.status === "warn")
+    .forEach((check) => {
+      console.warn(
+        `[bundle-budget] warning: ${check.name} is at ${formatKb(check.bytes)} of ${formatKb(check.budgetBytes)}.`
+      );
+    });
 
   assert(
-    entryChunkBytes <= LANDING_ENTRY_BUDGET_BYTES,
+    checks.find((check) => check.name === "landingEntry")?.status !== "fail",
     `Landing entry chunk exceeds budget: ${formatKb(entryChunkBytes)} > ${formatKb(LANDING_ENTRY_BUDGET_BYTES)}`
   );
   assert(
-    totalInitialJsBytes <= LANDING_INITIAL_JS_BUDGET_BYTES,
+    checks.find((check) => check.name === "landingInitialJs")?.status !== "fail",
     `Landing initial JS exceeds budget: ${formatKb(totalInitialJsBytes)} > ${formatKb(LANDING_INITIAL_JS_BUDGET_BYTES)}`
   );
-  assert(!hasInitialMathJaxChunk, "vendor-mathjax is part of the landing chunk graph.");
+  assert(checks.find((check) => check.name === "landingMathJaxIsolation")?.status !== "fail", "vendor-mathjax is part of the landing chunk graph.");
 }
 
 main();

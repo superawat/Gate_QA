@@ -6,6 +6,7 @@ import { useFilterActions } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
 import Toast from "../Toast/Toast";
 import { trackEvent } from "../../utils/analytics";
+import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 
 const PROGRESS_KEY = "gateqa_progress_v1";
 const OPTIONS = ["A", "B", "C", "D"];
@@ -252,6 +253,85 @@ export default function AnswerPanel({
     document.body.removeChild(textarea);
   };
 
+  const isInteractive = answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type);
+  const mobileWorkspaceLabel = !answerRecord
+    ? "Answer unavailable"
+    : isInteractive
+      ? `${answerRecord.type} answer workspace`
+      : `${answerRecord.type} review state`;
+  const shouldRenderWorkspace = isDesktopViewport || isMobileWorkspaceOpen;
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const shortcutKey = getShortcutKey(event);
+      const isTypingTarget = isEditableTarget(event.target);
+
+      if (shortcutKey === "Enter" && isTypingTarget && isInteractive && hasValidInput) {
+        event.preventDefault();
+        evaluateSubmission();
+        return;
+      }
+
+      if (shouldIgnorePlainShortcut(event)) {
+        return;
+      }
+
+      if (["1", "2", "3", "4"].includes(shortcutKey) && ["MCQ", "MSQ"].includes(answerRecord?.type)) {
+        const option = OPTIONS[Number(shortcutKey) - 1];
+        if (!option) {
+          return;
+        }
+        event.preventDefault();
+        if (answerRecord.type === "MCQ") {
+          handleMcqSelect(option);
+        } else {
+          handleMsqToggle(option, !msqSelection.includes(option));
+        }
+        return;
+      }
+
+      if (shortcutKey === "s" && isInteractive && hasValidInput) {
+        event.preventDefault();
+        evaluateSubmission();
+        return;
+      }
+
+      if (shortcutKey === "b" && !isStatusActionDisabled) {
+        event.preventDefault();
+        handleToggleBookmark();
+        return;
+      }
+
+      if (shortcutKey === "m" && !isStatusActionDisabled) {
+        event.preventDefault();
+        handleToggleSolved();
+        return;
+      }
+
+      if (shortcutKey === "l") {
+        event.preventDefault();
+        handleShare();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [
+    answerRecord,
+    evaluateSubmission,
+    handleMcqSelect,
+    handleShare,
+    handleMsqToggle,
+    handleToggleBookmark,
+    handleToggleSolved,
+    hasValidInput,
+    isInteractive,
+    isStatusActionDisabled,
+    mcqSelection,
+    msqSelection,
+    natInput,
+  ]);
+
   // --- Render Logic for Input Section ---
   const renderInputSection = () => {
     if (!questionIdentity.hasIdentity) {
@@ -324,11 +404,12 @@ export default function AnswerPanel({
         <div>
           {answerRecord.type === "MCQ" && (
             <div className="flex gap-2">
-              {OPTIONS.map((option) => (
+              {OPTIONS.map((option, index) => (
                 <button
                   key={option}
                   type="button"
                   onClick={() => handleMcqSelect(option)}
+                  aria-keyshortcuts={String(index + 1)}
                   className={`flex-1 rounded border px-3 py-2 text-center text-sm font-medium transition-colors ${mcqSelection === option
                     ? "border-blue-600 bg-blue-600 text-white"
                     : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
@@ -342,9 +423,10 @@ export default function AnswerPanel({
 
           {answerRecord.type === "MSQ" && (
             <div className="flex flex-wrap gap-2">
-              {OPTIONS.map((option) => (
+              {OPTIONS.map((option, index) => (
                 <label
                   key={option}
+                  aria-keyshortcuts={String(index + 1)}
                   className={`flex-1 flex items-center justify-center gap-2 rounded border px-3 py-2 cursor-pointer transition-colors ${msqSelection.includes(option)
                     ? "border-blue-600 bg-blue-50 text-blue-700 font-medium"
                     : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
@@ -369,6 +451,7 @@ export default function AnswerPanel({
                 value={natInput}
                 onChange={handleNatChange}
                 placeholder="Enter numeric answer"
+                aria-keyshortcuts="Enter"
                 className="w-full rounded border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               />
             </div>
@@ -378,20 +461,13 @@ export default function AnswerPanel({
     );
   };
 
-  const isInteractive = answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type);
-  const mobileWorkspaceLabel = !answerRecord
-    ? "Answer unavailable"
-    : isInteractive
-      ? `${answerRecord.type} answer workspace`
-      : `${answerRecord.type} review state`;
-  const shouldRenderWorkspace = isDesktopViewport || isMobileWorkspaceOpen;
-
   // --- Render Helpers ---
 
   const renderSubmitButton = (additionalClasses = "") => (
     <button
       type="button"
       disabled={!isInteractive || !hasValidInput}
+      aria-keyshortcuts="S Enter"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!isInteractive || !hasValidInput
         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
         : "bg-blue-600 text-white hover:bg-blue-700"
@@ -407,6 +483,7 @@ export default function AnswerPanel({
       type="button"
       disabled={!canMoveNext || typeof onNextQuestion !== "function"}
       onClick={onNextQuestion}
+      aria-keyshortcuts="ArrowRight"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMoveNext || typeof onNextQuestion !== "function"
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
         : "bg-teal-600 text-white hover:bg-teal-700"
@@ -421,6 +498,7 @@ export default function AnswerPanel({
       type="button"
       disabled={!canMovePrevious}
       onClick={onPreviousQuestion || goBack}
+      aria-keyshortcuts="ArrowLeft"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMovePrevious
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
         : "border border-teal-500 text-teal-600 bg-white hover:bg-teal-50"
@@ -462,6 +540,7 @@ export default function AnswerPanel({
         type="button"
         disabled={isStatusActionDisabled}
         onClick={handleToggleSolved}
+        aria-keyshortcuts="M"
         title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
         aria-label={isSolved ? "Mark question as unsolved" : "Mark question as solved"}
         aria-pressed={isSolved}
@@ -480,6 +559,7 @@ export default function AnswerPanel({
         type="button"
         disabled={isStatusActionDisabled}
         onClick={handleToggleBookmark}
+        aria-keyshortcuts="B"
         title={isBookmarked ? "Remove Bookmark" : "Bookmark Question"}
         aria-label={isBookmarked ? "Remove question bookmark" : "Bookmark question"}
         aria-pressed={isBookmarked}
@@ -499,6 +579,7 @@ export default function AnswerPanel({
         onClick={handleShare}
         title="Share Question Link"
         aria-label="Copy question link"
+        aria-keyshortcuts="L"
         className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-gray-200 bg-gray-50 text-gray-400 hover:border-gray-300 hover:text-gray-500"
       >
         <FaLink className="text-[20px]" />

@@ -6,11 +6,21 @@ export const MOCK_SECTION_COUNTS = {
 };
 
 export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT"];
+export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL"];
 
 export const normalizeMockType = (value = "") => {
   const normalized = String(value || "").trim().toUpperCase();
   return MOCK_OBJECTIVE_TYPES.includes(normalized) ? normalized : "";
 };
+
+export const normalizeMockAutoAwardType = (value = "") => {
+  const normalized = String(value || "").trim().toUpperCase();
+  return MOCK_AUTO_AWARD_TYPES.includes(normalized) ? normalized : "";
+};
+
+export const isMockAutoAwardType = (value = "") => (
+  Boolean(normalizeMockAutoAwardType(value))
+);
 
 export const getNegativeMarksForQuestion = (type = "", marks = 0) => {
   const normalizedType = normalizeMockType(type);
@@ -64,6 +74,10 @@ export const formatExpectedAnswer = (answerRecord = null) => {
     return "Unavailable";
   }
 
+  if (isMockAutoAwardType(answerRecord.type)) {
+    return "Awarded to all";
+  }
+
   const type = normalizeMockType(answerRecord.type);
   if (type === "MCQ") {
     return String(answerRecord.answer || "").trim().toUpperCase() || "Unavailable";
@@ -104,12 +118,18 @@ export const buildMockQuestionResult = ({
   answerRecord = null,
 } = {}) => {
   const questionUid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
-  const type = normalizeMockType(questionMeta?.type || answerRecord?.type || "");
+  const type = normalizeMockType(questionMeta?.type || answerRecord?.type || "")
+    || normalizeMockAutoAwardType(questionMeta?.type || answerRecord?.type || "");
+  const autoAwarded = Boolean(
+    questionMeta?.autoAwarded
+    || isMockAutoAwardType(questionMeta?.type)
+    || isMockAutoAwardType(answerRecord?.type)
+  );
   const marks = Number(questionMeta?.marks || 0);
   const negativeMarks = Number.isFinite(Number(questionMeta?.negativeMarks))
     ? Number(questionMeta.negativeMarks)
     : getNegativeMarksForQuestion(type, marks);
-  const answered = hasMeaningfulResponse(response, type);
+  const answered = autoAwarded ? false : hasMeaningfulResponse(response, type);
 
   const baseResult = {
     questionUid,
@@ -124,7 +144,16 @@ export const buildMockQuestionResult = ({
     scoreDelta: 0,
     status: answered ? "incorrect" : "unanswered",
     correct: false,
+    autoAwarded,
   };
+
+  if (autoAwarded) {
+    return {
+      ...baseResult,
+      status: "bonus",
+      scoreDelta: Number.isFinite(marks) ? marks : 0,
+    };
+  }
 
   if (!answered) {
     return baseResult;
@@ -172,11 +201,12 @@ export const buildMockResultSummary = ({
     correct: 0,
     incorrect: 0,
     unanswered: 0,
+    bonus: 0,
     score: 0,
     maxScore: 0,
     sectionSummary: {
-      GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, score: 0, maxScore: 0 },
-      CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, score: 0, maxScore: 0 },
+      GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
+      CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
     },
     perQuestionResult: {},
   };
@@ -207,6 +237,12 @@ export const buildMockResultSummary = ({
     if (Number.isFinite(Number(result.marks)) && Number(result.marks) > 0) {
       summary.maxScore += Number(result.marks);
       sectionSummary.maxScore += Number(result.marks);
+    }
+
+    if (result.status === "bonus") {
+      summary.bonus += 1;
+      sectionSummary.bonus += 1;
+      return;
     }
 
     if (!result.answered) {

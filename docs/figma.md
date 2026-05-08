@@ -55,7 +55,7 @@ The focused workspace for solving a single question.
   - **Main Area:** The current question.
   - **Sidebar:** A palette of question numbers (color-coded by state: Unanswered, Answered, Marked for Review). 
   - **Top Bar:** Exam timer (countdown) and "Submit Exam" button.
-- **History & Analysis (`MockHistoryPage.jsx`):** Post-exam dashboard showing score, accuracy, time taken, and a detailed breakdown of correct/incorrect questions.
+- **History & Analysis (`MockHistoryPanel.jsx` inside Insights):** Post-exam dashboard showing score, accuracy, time taken, and a detailed breakdown of correct/incorrect questions.
 
 ---
 

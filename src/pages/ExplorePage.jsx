@@ -13,6 +13,7 @@ import PaginationControls from "../components/Practice/PaginationControls";
 import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { trackEvent } from "../utils/analytics";
+import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { writeLastSession } from "../utils/lastSession";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE, writePageParam } from "../utils/routes";
 
@@ -184,10 +185,37 @@ const ExplorePage = ({
     };
   }, [isMobileFilterOpen, isPullRefreshing, pullDistance]);
 
-  const handleOpenFilters = () => {
+  const handleOpenFilters = useCallback(() => {
     trackEvent("filter_open", { source: "explore" });
     setIsMobileFilterOpen(true);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (shouldIgnorePlainShortcut(event)) {
+        return;
+      }
+
+      const shortcutKey = getShortcutKey(event);
+      if (shortcutKey === "/") {
+        event.preventDefault();
+        document.getElementById("explore-search")?.focus();
+        return;
+      }
+
+      if (shortcutKey === "f") {
+        event.preventDefault();
+        handleOpenFilters();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleOpenFilters]);
 
   const handleOpenQuestion = (question) => {
     startOrderedSession(filteredQuestions, question.question_uid);
@@ -265,7 +293,7 @@ const ExplorePage = ({
       <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] 2xl:grid-cols-[380px_minmax(0,1fr)]">
         <div className="hidden xl:block">
           <div className="sticky top-24 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)]">
-            <FilterSidebar className="h-[calc(100vh-8rem)] border-r-0 bg-white" />
+            <FilterSidebar className="h-[calc(100vh-8rem)] border-r-0 bg-[color:var(--color-surface)]" />
           </div>
         </div>
 
@@ -289,6 +317,7 @@ const ExplorePage = ({
                 <button
                   type="button"
                   onClick={handleOpenFilters}
+                  aria-keyshortcuts="F"
                   className="inline-flex min-h-[56px] items-center gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-left text-sm font-semibold text-slate-900 shadow-[var(--shadow-soft)] ring-1 ring-sky-100 transition hover:border-sky-400 hover:bg-sky-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
                 >
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 text-white shadow-sm">
@@ -309,6 +338,7 @@ const ExplorePage = ({
                 id="explore-search"
                 label="Search questions"
                 placeholder="Search keywords like dijkstra, paging, or SQL"
+                ariaKeyShortcuts="/"
                 compact
                 hideLabel
               />

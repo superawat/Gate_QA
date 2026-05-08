@@ -34,6 +34,15 @@ vi.mock('../services/QuestionService', () => ({
                 type: 'NAT',
                 subtopics: [{ slug: 'deadlock' }],
                 exam: { year: 2024 }
+            },
+            {
+                question_uid: 'go:3',
+                title: 'Q3',
+                searchText: 'legacy pascal runtime environment older syllabus topic',
+                subjectSlug: 'legacy-other',
+                type: 'MCQ',
+                subtopics: [{ slug: 'pascal' }],
+                exam: { year: 1995 }
             }
         ],
         getStructuredTags: vi.fn(() => ({
@@ -41,7 +50,8 @@ vi.mock('../services/QuestionService', () => ({
             maxYear: 2025,
             subjects: [
                 { slug: 'databases', label: 'Databases' },
-                { slug: 'os', label: 'Operating System' }
+                { slug: 'os', label: 'Operating System' },
+                { slug: 'legacy-other', label: 'Other / Optional' }
             ],
             structuredSubtopics: {
                 databases: [
@@ -49,6 +59,9 @@ vi.mock('../services/QuestionService', () => ({
                 ],
                 os: [
                     { slug: 'deadlock', label: 'Deadlock' }
+                ],
+                'legacy-other': [
+                    { slug: 'pascal', label: 'Pascal' }
                 ]
             }
         })),
@@ -181,6 +194,19 @@ describe('FilterContext', () => {
         });
 
         expect(screen.getByLabelText('Schema Normalization').checked).toBe(true);
+    });
+
+    test('renders a dedicated optional legacy section in the topic filter', async () => {
+        renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        expect(await screen.findByText('Optional legacy topics')).toBeTruthy();
+        expect(screen.getByText('Older or out-of-syllabus questions from past papers.')).toBeTruthy();
+        expect(screen.getByText('Other / Optional')).toBeTruthy();
+        expect(screen.getByText('Optional')).toBeTruthy();
     });
 
     test('hydrates the default year range from structured tags when a new year is added', async () => {

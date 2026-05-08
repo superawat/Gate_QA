@@ -46,11 +46,36 @@ export default defineConfig(async ({ mode }) => {
               return 'vendor-react';
             }
             if (
-              id.includes('react-icons') ||
-              id.includes('rc-slider') ||
-              id.includes('react-select')
+              id.includes('react-router') ||
+              id.includes('@remix-run/router')
             ) {
-              return 'vendor-ui';
+              return 'vendor-router';
+            }
+            if (
+              id.includes('recharts') ||
+              id.includes('/d3-') ||
+              id.includes('d3-array') ||
+              id.includes('d3-color') ||
+              id.includes('d3-format') ||
+              id.includes('d3-interpolate') ||
+              id.includes('d3-path') ||
+              id.includes('d3-scale') ||
+              id.includes('d3-shape') ||
+              id.includes('d3-time') ||
+              id.includes('d3-time-format') ||
+              id.includes('decimal.js') ||
+              id.includes('internmap')
+            ) {
+              return 'vendor-charts';
+            }
+            if (id.includes('dompurify')) {
+              return 'vendor-sanitize';
+            }
+            if (id.includes('react-icons')) {
+              return 'vendor-icons';
+            }
+            if (id.includes('rc-slider') || id.includes('react-select')) {
+              return 'vendor-form-controls';
             }
             return 'vendor-misc';
           },
@@ -68,6 +93,7 @@ export default defineConfig(async ({ mode }) => {
         'node_modules/**',
         'dist/**',
         '.git/**',
+        '.codeboarding/**',
       ],
     },
     base: '/Gate_QA/',

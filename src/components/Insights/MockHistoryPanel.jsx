@@ -4,6 +4,7 @@ import {
   FaChevronDown,
   FaQuestionCircle,
   FaRegClock,
+  FaStar,
   FaTimesCircle,
   FaHistory
 } from "react-icons/fa";
@@ -53,6 +54,13 @@ const ATTEMPT_GROUP_STYLES = {
     value: "text-amber-900",
     pill: "border-amber-200 bg-white text-amber-900 shadow-sm transition-shadow hover:shadow-md",
     meta: "text-amber-700/80",
+  },
+  bonus: {
+    panel: "border-sky-200 bg-sky-50/80",
+    label: "text-sky-700",
+    value: "text-sky-900",
+    pill: "border-sky-200 bg-white text-sky-900 shadow-sm transition-shadow hover:shadow-md",
+    meta: "text-sky-700/80",
   },
 };
 
@@ -208,7 +216,7 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
 
               {isOpen && (
                 <div className="mt-5 space-y-6 border-t border-slate-100 pt-5">
-                  <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+                  <div className="grid gap-3 grid-cols-2 md:grid-cols-5">
                     <div className="rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-3">
                       <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Attempted</p>
                       <p className="mt-1 text-xl font-bold text-slate-900">{attempt.attempted}</p>
@@ -231,9 +239,15 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
                       </p>
                       <p className="mt-1 text-xl font-bold text-amber-900">{attempt.unanswered}</p>
                     </div>
+                    <div className="rounded-xl border border-sky-200 bg-sky-50 px-3 py-3">
+                      <p className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-sky-700">
+                        <FaStar className="text-[8px]" /> Bonus
+                      </p>
+                      <p className="mt-1 text-xl font-bold text-sky-900">{attempt.bonus || 0}</p>
+                    </div>
                   </div>
 
-                  <div className="grid gap-4 xl:grid-cols-3">
+                  <div className="grid gap-4 xl:grid-cols-4">
                     <QuestionRecordGroup
                       title="Correct"
                       tone="correct"
@@ -251,6 +265,12 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
                       tone="unanswered"
                       questions={attempt.unansweredQuestions}
                       emptyLabel="None skipped."
+                    />
+                    <QuestionRecordGroup
+                      title="Bonus"
+                      tone="bonus"
+                      questions={attempt.bonusQuestions}
+                      emptyLabel="None auto-awarded."
                     />
                   </div>
                 </div>

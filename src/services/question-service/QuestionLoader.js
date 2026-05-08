@@ -1,6 +1,6 @@
 import { isQuotaExceededError } from "../../utils/localStorageState.js";
 
-const INIT_CACHE_VERSION = "v10";
+const INIT_CACHE_VERSION = "v11";
 const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
 const FULL_BANK_CACHE_KEY = `gateqa_full_bank_cache_${INIT_CACHE_VERSION}`;
 

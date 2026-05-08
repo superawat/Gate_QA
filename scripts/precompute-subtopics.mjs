@@ -72,7 +72,7 @@ const TOPIC_HIERARCHY = {
         'Prepositions', 'Pronouns', 'Sentence Ordering', 'Statement Sufficiency', 'Statements Follow',
         'Synonyms', 'Tenses', 'Verbal Reasoning', 'Word Meaning', 'Word Pairs'
     ],
-    'Legacy / Other': [
+    'Other / Optional': [
         'Web Technologies', 'HTML', 'Software Engineering', 'Cyclomatic Complexity',
         'Software Testing', 'COCOMO Model', 'Project Cost', 'Software Requirement Specification',
         'Test Cases', 'Data Flow Diagram', 'Function Point Metric', 'Object Oriented Programming',
@@ -176,9 +176,15 @@ const SUBJECT_ALIAS_OVERRIDES = {
         'simplex-method'
     ],
     'General Aptitude': ['general-aptitude', 'ga'],
-    'Legacy / Other': [
+    'Other / Optional': [
+        'legacy / other',
+        'other / optional',
+        'other-optional',
+        'optional',
         'legacy-other',
         'legacy-out-of-syllabus',
+        'out-of-syllabus-now',
+        'out-of-gatecse-syllabus',
         'web-technologies',
         'html',
         'is&software-engineering',

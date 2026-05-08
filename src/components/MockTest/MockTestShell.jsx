@@ -861,9 +861,10 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         onPatchState={patchSetupState}
                         onToggleSelection={toggleSelection}
                         onBack={() => setStep("portal")}
+                        backLabel="Back to Modes"
                         onReset={() => resetSetupState(selectedKind.id)}
                         onStart={handleStartExam}
-                        showBackButton={false}
+                        showBackButton={true}
                     />
                 )
         );

@@ -159,6 +159,7 @@ const MockTestSetup = ({
     onStart,
     onPatchState,
     onToggleSelection,
+    backLabel = "Back",
     showBackButton = true,
 }) => {
     const canStart = Boolean(availability?.canStart);
@@ -532,7 +533,7 @@ const MockTestSetup = ({
                             onClick={onBack}
                             className="rounded-2xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
                         >
-                            Back
+                            {backLabel}
                         </button>
                     ) : null}
 

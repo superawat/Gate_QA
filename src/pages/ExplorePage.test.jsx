@@ -260,6 +260,25 @@ describe("ExplorePage", () => {
     expect(screen.getByText("Mock filter modal")).toBeTruthy();
   });
 
+  test("opens the filter modal with the F keyboard shortcut", async () => {
+    renderExplorePage();
+
+    await screen.findByRole("heading", { name: /explore questions/i });
+    fireEvent.keyDown(window, { key: "f" });
+
+    expect(screen.getByText("Mock filter modal")).toBeTruthy();
+    expect(mocks.trackEvent).toHaveBeenCalledWith("filter_open", { source: "explore" });
+  });
+
+  test("focuses search with the slash keyboard shortcut", async () => {
+    renderExplorePage();
+
+    const searchInput = await screen.findByLabelText(/search questions/i);
+    fireEvent.keyDown(window, { key: "/" });
+
+    expect(document.activeElement).toBe(searchInput);
+  });
+
   test("shows the active filter count on the filters button", async () => {
     renderExplorePage();
 

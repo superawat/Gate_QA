@@ -4,10 +4,29 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
-### PLAN-2026: Insights Coverage Tracking -> Status: Done
+### PLAN-2026: May 2026 Plan Cleanup and Bug Follow-through -> Status: Done
+- Removed the Insights subtitle and internal Answer Coverage panel so the dashboard stays focused on learner-facing analytics.
+- Kept the Skill Radar stable by disabling radar animation after render.
+- Fixed the dark-mode logo regression by removing the dark-mode inversion filter while keeping the logo contrast frame.
+- Switched the landing resume CTA title and subtitle to theme tokens for readable dark-mode contrast.
+- Completed the B4 non-mock dark-mode readability audit across Home, Practice, and Insights with a production contrast smoke.
+- Moved Home quick actions and the mock-history shortcut onto theme-token surfaces, added indigo dark-mode overrides, wrapped the legacy header logo in the contrast frame, and darkened primary blue buttons for white-text contrast.
+- Verified C1 past-paper visibility: mock paper setup renders the full generated catalog, including blocked near-ready papers with status reasons, instead of hiding everything except release-ready papers.
+- Completed the C2/C3 near-ready paper pass: 2021 Set 1 is release-ready with verified NAT answers for `go:357428`, and 2017 Set 1 now includes its missing Q23 row.
+- Advanced C4 by importing 2014 Set 2 Q51 with verified NAT answer `5`.
+- Added a mock-only auto-award policy for `AMBIGUOUS` and `MARKS_TO_ALL` answer records, so historical papers can include official edge-case questions without converting them into fake normal answers.
+- Completed the near-modern C4 pass: 2017 Set 1, 2013, and 2012 are now release-ready; 2012 Q15/Q26 were restored, 2012 Q26 uses verified MCQ answer `B`, and marks-to-all records are awarded automatically.
+- Reconciled public count snapshots after the imports so the public payloads, manifest, generated docs, pipeline state, data-integrity report, and validation report all agree on `3,550` questions.
+- Bumped the question loader init cache version to `v11` after the public question bank changed.
+- Added a `Back to Modes` control on mock setup sub-pages and covered it with a regression test.
+- Excluded `.codeboarding/**` from Vitest collection so local analysis snapshots do not break `npm run test:unit`.
+- Removed confirmed dead code files: `src/shells/LandingShell.jsx`, `src/shells/PracticeShell.jsx`, `src/components/Filters/FilterSection.jsx`, `src/components/FilterTags/FilterTags.jsx`, and `check_case.js`.
+- Slimmed `gateqa_master_plan.md` to open work only.
+
+### PLAN-2026: Insights Coverage Tracking -> Status: Superseded
 - Moved manifest-backed answer coverage tracking off the Home dashboard and into the dedicated `InsightsPage`.
-- Added `Verified Answers`, `Still Pending`, overall coverage, and latest-year coverage cards sourced from `question-bank-manifest.json`.
-- Added regression coverage to keep the Home page free of answer-coverage counters while ensuring the Insights route receives manifest data.
+- This internal coverage panel was later removed from Insights in the May 2026 cleanup; generated data-status docs remain the source for answer coverage.
+- Added regression coverage to keep answer-coverage counters out of the Home page and Insights page.
 
 ### PLAN-2026: Resilience, Theme, and Offline Follow-through -> Status: Done
 - Added route-level `ErrorBoundary` protection around Home, Explore, Solve, Insights, and Mock shells so unexpected render failures now degrade to a retryable fallback instead of a white screen.

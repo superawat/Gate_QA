@@ -15,6 +15,7 @@ const QuestionSearchInput = ({
   debounceMs = DEFAULT_DEBOUNCE_MS,
   hideLabel = false,
   id: providedId,
+  ariaKeyShortcuts,
 }) => {
   const generatedId = useId();
   const inputId = providedId || `question-search-${generatedId}`;
@@ -43,13 +44,13 @@ const QuestionSearchInput = ({
     <div className={`space-y-2 ${className}`}>
       <label
         htmlFor={inputId}
-        className={hideLabel ? "sr-only" : "block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500"}
+        className={hideLabel ? "sr-only" : "block text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)]"}
       >
         {label}
       </label>
 
       <div className="relative">
-        <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+        <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[color:var(--color-text-muted)]">
           <FaSearch className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} />
         </span>
 
@@ -61,7 +62,8 @@ const QuestionSearchInput = ({
           placeholder={placeholder}
           autoComplete="off"
           aria-describedby={helperId}
-          className={`w-full rounded-2xl border border-slate-300 bg-white pl-10 pr-12 text-slate-900 shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 ${
+          aria-keyshortcuts={ariaKeyShortcuts}
+          className={`w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-10 pr-12 text-[color:var(--color-text)] shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 ${
             compact ? "min-h-[44px] py-2.5 text-sm" : "min-h-[48px] py-3 text-sm"
           } ${inputClassName}`}
         />
@@ -73,7 +75,7 @@ const QuestionSearchInput = ({
               setDraftValue("");
               updateFilters({ searchQuery: "" });
             }}
-            className="absolute inset-y-0 right-0 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-r-2xl text-slate-400 transition hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="absolute inset-y-0 right-0 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-r-2xl text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-sky-500"
             aria-label="Clear search text"
           >
             <FaTimes className="h-3.5 w-3.5" />
@@ -82,7 +84,7 @@ const QuestionSearchInput = ({
       </div>
 
       {helperText ? (
-        <p id={helperId} className="text-xs leading-5 text-slate-500">
+        <p id={helperId} className="text-xs leading-5 text-[color:var(--color-text-muted)]">
           {helperText}
         </p>
       ) : null}

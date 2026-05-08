@@ -57,6 +57,8 @@ Artifacts:
 
 Current status:
 
+- targeted mock-readiness backfills on 2026-05-08 added the missing 2017 Set 1 Q23 row as `AMBIGUOUS`, added 2021 Set 1 Q23 accepted NAT answers `205` / `820`, added 2014 Set 2 Q51 with NAT answer `5`, and restored 2012 Q15/Q26
+- mock catalog generation treats `AMBIGUOUS` and `MARKS_TO_ALL` answer records as auto-awarded mock-only questions; normal practice answer evaluation remains MCQ/MSQ/NAT
 - historical repair completed on 2026-04-04
 - targeted import of missing `2014 Set 1` completed on 2026-04-04
 - audited papers from 2010 onward now show:
@@ -116,15 +118,15 @@ If the stages are run locally instead of through GitHub Actions, update `pipelin
 manually after a successful merge/validate/build pass. The local stage scripts do not
 advance `nextTargetYear` on their own.
 
-As of 2026-04-05, the parity drift has been reconciled. `pipeline-state.json`,
+As of 2026-05-08, the parity drift has been reconciled. `pipeline-state.json`,
 `audit/validation-report-YYYY.json`, the generated docs snapshot, and the published public
 bank now agree on the same public-bank count, and `npm run qa:validate-public-parity`
 is part of CI.
 
 When `public/questions-with-answers.json` changes materially, bump
-`INIT_CACHE_VERSION` in `src/services/QuestionService.js` so browsers do not keep serving a
+`INIT_CACHE_VERSION` in `src/services/question-service/QuestionLoader.js` so browsers do not keep serving a
 stale localStorage snapshot of the old question bank.
-The current init cache version after the startup/data split work is `v8`.
+The current init cache version after the May 2026 mock-readiness backfills is `v11`.
 
 ### Audit files (committed, never read by frontend)
 

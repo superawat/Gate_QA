@@ -102,22 +102,6 @@ const SUBJECTS = [
     ],
   },
   {
-    slug: "legacy-other",
-    label: "Legacy / Other",
-    aliases: [
-      "legacy-other",
-      "legacy-out-of-syllabus",
-      "web-technologies",
-      "html",
-      "is&software-engineering",
-      "is-software-engineering",
-      "software-engineering",
-      "object-oriented-programming",
-      "fortran",
-      "pascal",
-    ],
-  },
-  {
     slug: "os",
     label: "Operating System",
     aliases: ["operating-system", "os"],
@@ -136,6 +120,28 @@ const SUBJECTS = [
     slug: "toc",
     label: "Theory of Computation",
     aliases: ["theory-of-computation", "toc"],
+  },
+  {
+    slug: "legacy-other",
+    label: "Other / Optional",
+    aliases: [
+      "legacy / other",
+      "other / optional",
+      "other-optional",
+      "optional",
+      "legacy-other",
+      "legacy-out-of-syllabus",
+      "out-of-syllabus-now",
+      "out-of-gatecse-syllabus",
+      "web-technologies",
+      "html",
+      "is&software-engineering",
+      "is-software-engineering",
+      "software-engineering",
+      "object-oriented-programming",
+      "fortran",
+      "pascal",
+    ],
   },
 ];
 
@@ -156,6 +162,7 @@ const SUBJECT_PRIORITY = [
   "Discrete Mathematics",
   "Engineering Mathematics",
   "General Aptitude",
+  "Other / Optional",
 ];
 const PRECOMPUTED_SUBTOPIC_LOOKUP = readJson(PRECOMPUTED_SUBTOPIC_LOOKUP_PATH, {});
 const SUBJECT_ALIASES_BY_LABEL = PRECOMPUTED_SUBTOPIC_LOOKUP?.subjectAliases || {};
@@ -443,6 +450,7 @@ const MOCK_SECTION_COUNTS = {
 };
 
 const MOCK_OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
+const MOCK_AUTO_AWARD_TYPES = new Set(["AMBIGUOUS", "MARKS_TO_ALL"]);
 
 function parseMockSectionPosition(question = {}) {
   const title = String(question.title || "").trim();
@@ -557,7 +565,9 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
 
     const answerRecord = answersByQuestionUid[questionUid] || null;
     const answerType = String(answerRecord?.type || "").trim().toUpperCase();
-    const type = MOCK_OBJECTIVE_TYPES.has(answerType) ? answerType : null;
+    const isObjectiveType = MOCK_OBJECTIVE_TYPES.has(answerType);
+    const isAutoAwardType = MOCK_AUTO_AWARD_TYPES.has(answerType);
+    const type = isObjectiveType || isAutoAwardType ? answerType : null;
     const marks = resolveMockMarks(paperPosition.section, paperPosition.orderIndex);
     const negativeMarks = type && marks ? resolveNegativeMarks(type, marks) : null;
     const scorable = Boolean(type && marks !== null);
@@ -573,6 +583,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       negativeMarks,
       paperReady: false,
       scorable,
+      autoAwarded: isAutoAwardType,
     };
 
     byQuestionUid[questionUid] = meta;
@@ -733,6 +744,14 @@ function inferSubject(question = {}, yearSet = null) {
     || normalizedTagSet.has("analyticalaptitude")
   ) {
     return SUBJECT_BY_LABEL.get("General Aptitude");
+  }
+
+  if (
+    normalizedTagSet.has("outofsyllabusnow")
+    || normalizedTagSet.has("outofgatecsesyllabus")
+    || normalizedTagSet.has("legacyoutofsyllabus")
+  ) {
+    return SUBJECT_BY_LABEL.get("Other / Optional");
   }
 
   const explicitCandidates = new Set();

@@ -46,10 +46,6 @@ vi.mock("./pages/ExplorePage", () => ({
   default: () => <div>Explore page</div>,
 }));
 
-vi.mock("./pages/MockHistoryPage", () => ({
-  default: () => <div>Mock history page</div>,
-}));
-
 vi.mock("./pages/InsightsPage", () => ({
   default: ({ questionBankManifest }) => (
     <div>Insights page {String(questionBankManifest?.questionCount || 0)}</div>

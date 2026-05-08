@@ -10,16 +10,16 @@ import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
     MCQ: {
-        selected: 'bg-blue-100 text-blue-800 border-blue-300 hover:bg-blue-200',
-        unselected: 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200 hover:text-gray-700'
+        selected: 'bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] border-[color:var(--color-info-border)] hover:bg-[color:var(--color-primary-soft-hover)]',
+        unselected: 'bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] border-[color:var(--color-border)] hover:bg-[color:var(--color-surface)] hover:text-[color:var(--color-text)]'
     },
     MSQ: {
-        selected: 'bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200',
-        unselected: 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200 hover:text-gray-700'
+        selected: 'bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] border-[color:var(--color-warning-border)] hover:bg-[color:var(--color-warning-soft)]',
+        unselected: 'bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] border-[color:var(--color-border)] hover:bg-[color:var(--color-surface)] hover:text-[color:var(--color-text)]'
     },
     NAT: {
-        selected: 'bg-purple-100 text-purple-800 border-purple-300 hover:bg-purple-200',
-        unselected: 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200 hover:text-gray-700'
+        selected: 'bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] border-[color:var(--color-purple-border)] hover:bg-[color:var(--color-purple-soft)]',
+        unselected: 'bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] border-[color:var(--color-border)] hover:bg-[color:var(--color-surface)] hover:text-[color:var(--color-text)]'
     }
 };
 const QUESTION_TYPES = ['MCQ', 'MSQ', 'NAT'];
@@ -60,10 +60,10 @@ const FilterSidebar = ({ className = "", onClose }) => {
         || hasSearchQuery;
 
     return (
-        <aside className={`flex min-h-0 flex-shrink-0 flex-col overflow-y-auto border-r border-gray-200 bg-gray-50 ${className}`}>
+        <aside className={`flex min-h-0 flex-shrink-0 flex-col overflow-y-auto border-r border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] ${className}`}>
             {/* Reset / Clean filters (if needed) */}
-            <div className="p-4 border-b border-gray-200 bg-white z-10 flex justify-between items-center flex-shrink-0">
-                <span className="text-sm font-semibold text-gray-700">
+            <div className="z-10 flex flex-shrink-0 items-center justify-between border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
+                <span className="text-sm font-semibold text-[color:var(--color-text)]">
                     {filteredQuestions.length} / {totalQuestions} results
                 </span>
                 <div className="flex min-w-[3.75rem] items-center justify-end gap-2">
@@ -71,12 +71,12 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         onClick={clearFilters}
                         disabled={!hasActiveFilters}
                         aria-hidden={!hasActiveFilters}
-                        className={`text-xs font-bold uppercase tracking-wide transition-colors ${hasActiveFilters ? 'text-blue-600 hover:text-blue-800' : 'pointer-events-none opacity-0'}`}
+                        className={`text-xs font-bold uppercase tracking-wide transition-colors ${hasActiveFilters ? 'text-[color:var(--color-primary-text)] hover:text-[color:var(--color-primary-hover)]' : 'pointer-events-none opacity-0'}`}
                     >
                         Reset
                     </button>
                     {onClose && (
-                        <button type="button" onClick={onClose} aria-label="Close filters" className="text-gray-500 hover:text-gray-700 md:hidden">
+                        <button type="button" onClick={onClose} aria-label="Close filters" className="text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] md:hidden">
                             <span className="sr-only">Close</span>
                             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -86,7 +86,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 </div>
             </div>
 
-            <div className="p-4 border-b border-gray-200 bg-white z-10 flex-shrink-0">
+            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
                 <QuestionSearchInput
                     id="practice-search"
                     label="Search"
@@ -95,7 +95,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 />
             </div>
 
-            <div className="border-b border-gray-200 bg-white px-4 py-3 z-10 flex-shrink-0">
+            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3">
                 <div className="flex flex-col gap-3">
                     <div className="min-w-0 flex flex-col">
                         <ProgressBar
@@ -107,7 +107,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         </ProgressBar>
                     </div>
                     <div className="flex flex-col">
-                        <div className="flex-1 rounded-lg border border-gray-100 bg-gray-50 p-3">
+                        <div className="flex-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3">
                             <ProgressFilterToggles
                                 hideSolved={filters.hideSolved}
                                 showOnlySolved={filters.showOnlySolved}
@@ -122,9 +122,9 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             {/* Question Type Filter (Horizontal Toggles) */}
-            <div className="p-4 border-b border-gray-200 bg-white z-10 relative flex-shrink-0">
+            <div className="relative z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
                 <div className="mb-2">
-                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Question Type</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Question Type</h3>
                 </div>
                 <div className="flex gap-2">
                     {QUESTION_TYPES.map((type) => {
@@ -160,18 +160,18 @@ const FilterSidebar = ({ className = "", onClose }) => {
             <div className="p-3">
                 <div className="flex flex-col gap-4">
 
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
-                        <div className="mb-2 border-b border-gray-100 bg-gray-50 px-3 py-2 flex-shrink-0">
-                            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Topics</h3>
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+                        <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
+                            <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Topics</h3>
                         </div>
                         <div className="custom-scrollbar max-h-72 overflow-y-auto px-3 pb-3">
                             <TopicFilter />
                         </div>
                     </div>
 
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
-                        <div className="mb-2 border-b border-gray-100 bg-gray-50 px-3 py-2 flex-shrink-0">
-                            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Years</h3>
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+                        <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
+                            <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Years</h3>
                         </div>
                         <div className="custom-scrollbar max-h-64 overflow-y-auto px-3 pb-3">
                             <YearFilter />
@@ -182,9 +182,9 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             {/* Sticky Bottom: Year Range */}
-            <div className="p-4 border-t border-gray-200 bg-gray-50 z-10 flex-shrink-0">
+            <div className="z-10 flex-shrink-0 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4">
                 <div className="mb-2">
-                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Year Range</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Year Range</h3>
                 </div>
                 <YearRangeFilter />
             </div>

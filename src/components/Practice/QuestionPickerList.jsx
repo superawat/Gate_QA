@@ -2,10 +2,10 @@ import React from "react";
 import { FaArrowRight, FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 
 const typeStyles = {
-  mcq: "bg-sky-50 text-sky-700 ring-sky-200",
-  msq: "bg-amber-50 text-amber-700 ring-amber-200",
-  nat: "bg-violet-50 text-violet-700 ring-violet-200",
-  unknown: "bg-slate-100 text-slate-600 ring-slate-200",
+  mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
+  msq: "bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] ring-[color:var(--color-warning-border)]",
+  nat: "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]",
+  unknown: "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-neutral-text)] ring-[color:var(--color-neutral-border)]",
 };
 
 const getStatusLabel = ({ isSolved, isBookmarked }) => {
@@ -13,8 +13,8 @@ const getStatusLabel = ({ isSolved, isBookmarked }) => {
     return {
       label: "Solved",
       icon: FaCheckCircle,
-      className: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-      iconClassName: "text-emerald-600",
+      className: "bg-[color:var(--color-success-soft)] text-[color:var(--color-success-text)] ring-[color:var(--color-success-border)]",
+      iconClassName: "text-[color:var(--color-success-text)]",
     };
   }
 
@@ -22,16 +22,16 @@ const getStatusLabel = ({ isSolved, isBookmarked }) => {
     return {
       label: "Saved",
       icon: FaStar,
-      className: "bg-amber-50 text-amber-700 ring-amber-200",
-      iconClassName: "text-amber-500",
+      className: "bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] ring-[color:var(--color-warning-border)]",
+      iconClassName: "text-[color:var(--color-warning-text)]",
     };
   }
 
   return {
     label: "Ready",
     icon: FaRegStar,
-    className: "bg-slate-50 text-slate-500 ring-slate-200",
-    iconClassName: "text-slate-400",
+    className: "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-neutral-text)] ring-[color:var(--color-neutral-border)]",
+    iconClassName: "text-[color:var(--color-neutral-text)]",
   };
 };
 
@@ -42,16 +42,16 @@ const QuestionPickerList = ({
   isQuestionBookmarked = () => false,
   onOpenQuestion,
 }) => (
-  <section className="overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white shadow-[var(--shadow-card)]">
-    <div className="border-b border-slate-200 px-5 py-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Question Picker</p>
-      <h2 className="mt-1 text-xl font-semibold text-slate-950">Choose a question directly</h2>
-      <p className="mt-1 text-sm leading-6 text-slate-600">
+  <section className="overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)]">
+    <div className="border-b border-[color:var(--color-border)] px-5 py-4">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-primary-text)]">Question Picker</p>
+      <h2 className="mt-1 text-xl font-semibold text-[color:var(--color-text)]">Choose a question directly</h2>
+      <p className="mt-1 text-sm leading-6 text-[color:var(--color-text-muted)]">
         Apply your filters, scan the matching list, and open the exact question you want.
       </p>
     </div>
 
-    <div className="hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 md:grid">
+    <div className="hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
       <span>Index</span>
       <span>Question</span>
       <span>Year</span>
@@ -59,7 +59,7 @@ const QuestionPickerList = ({
       <span className="text-right">Open</span>
     </div>
 
-    <div className="divide-y divide-slate-200">
+    <div className="divide-y divide-[color:var(--color-border)]">
       {questions.map((question, index) => {
         const sequenceNumber = pageStartIndex + index + 1;
         const typeToken = String(question?.type || "unknown").trim().toLowerCase() || "unknown";
@@ -77,27 +77,27 @@ const QuestionPickerList = ({
             key={question.question_uid}
             type="button"
             onClick={() => onOpenQuestion(question)}
-            className="group block w-full px-5 py-4 text-left transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+            className="group block w-full px-5 py-4 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
           >
             <div className="flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
               <div className="flex items-center justify-between gap-3 md:block">
-                <span className="text-sm font-semibold text-slate-900">#{sequenceNumber}</span>
+                <span className="text-sm font-semibold text-[color:var(--color-text)]">#{sequenceNumber}</span>
                 <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}>
                   {typeToken}
                 </span>
               </div>
 
               <div className="min-w-0">
-                <p className="text-base font-semibold leading-6 text-slate-950">
+                <p className="text-base font-semibold leading-6 text-[color:var(--color-text)]">
                   {question?.title || "Untitled question"}
                 </p>
-                <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600 md:hidden">
+                <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)] md:hidden">
                   <span>{question?.yearSetLabel || "Unknown Year"}</span>
-                  <span className="h-1 w-1 rounded-full bg-slate-300" />
+                  <span className="h-1 w-1 rounded-full bg-[color:var(--color-neutral-border)]" />
                   <span>{subjectLabel}</span>
                   {subtopicLabel ? (
                     <>
-                      <span className="h-1 w-1 rounded-full bg-slate-300" />
+                      <span className="h-1 w-1 rounded-full bg-[color:var(--color-neutral-border)]" />
                       <span>{subtopicLabel}</span>
                     </>
                   ) : null}
@@ -107,23 +107,23 @@ const QuestionPickerList = ({
                     <StatusIcon className={status.iconClassName} />
                     {status.label}
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
                     Open
                     <FaArrowRight className="text-[0.7rem]" />
                   </span>
                 </div>
               </div>
 
-              <div className="hidden text-sm font-medium text-slate-700 md:block">
+              <div className="hidden text-sm font-medium text-[color:var(--color-text)] md:block">
                 {question?.yearSetLabel || "Unknown Year"}
               </div>
 
               <div className="hidden min-w-0 md:block">
-                <p className="truncate text-sm font-medium text-slate-700">
+                <p className="truncate text-sm font-medium text-[color:var(--color-text)]">
                   {subjectLabel}
                 </p>
                 {subtopicLabel ? (
-                  <p className="mt-1 truncate text-xs text-slate-500">{subtopicLabel}</p>
+                  <p className="mt-1 truncate text-xs text-[color:var(--color-text-muted)]">{subtopicLabel}</p>
                 ) : (
                   <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
                     {typeToken}
@@ -136,7 +136,7 @@ const QuestionPickerList = ({
                   <StatusIcon className={status.iconClassName} />
                   {status.label}
                 </span>
-                <span className="inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-slate-800">
+                <span className="inline-flex min-h-[40px] items-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-[color:var(--color-primary-hover)]">
                   Open
                   <FaArrowRight className="text-xs" />
                 </span>

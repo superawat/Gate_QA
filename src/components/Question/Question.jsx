@@ -27,19 +27,19 @@ function Question({
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="rounded-lg bg-[color:var(--color-surface)] p-6 shadow-lg">
         <div className="mb-4">
           {showStatusChips ? (
             <div className="flex flex-wrap items-start justify-end gap-2 pb-3">
               {isSolved && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-800">
-                  <FaCheckCircle className="text-green-600" />
+                <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--color-success-soft)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-success-text)]">
+                  <FaCheckCircle className="text-[color:var(--color-success-text)]" />
                   Solved
                 </span>
               )}
               {isBookmarked && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-semibold text-orange-800">
-                  <FaStar className="text-orange-500" />
+                <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--color-warning-soft)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-warning-text)]">
+                  <FaStar className="text-[color:var(--color-warning-text)]" />
                   Bookmarked
                 </span>
               )}
@@ -48,7 +48,7 @@ function Question({
           <MathContent
             as="div"
             dynamic
-            className="text-gray-500 mt-1 leading-6 text-xl overflow-auto whitespace-normal"
+            className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text-muted)]"
           >
             <div
               dangerouslySetInnerHTML={{

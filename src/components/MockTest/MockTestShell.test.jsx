@@ -209,6 +209,21 @@ describe("MockTestShell", () => {
     expect(screen.queryByText("Year Range Start")).toBeNull();
   });
 
+  test("lets setup sub-pages return to the mock mode selection", () => {
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-paper_mode"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    expect(screen.getByText("Mock Test Setup")).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: /back to modes/i }));
+
+    expect(screen.getByTestId("mock-portal-option-full_length")).toBeTruthy();
+    expect(screen.getByTestId("mock-portal-option-paper_mode")).toBeTruthy();
+    expect(screen.getByTestId("mock-portal-option-custom")).toBeTruthy();
+  });
+
   test("uses direct paper cards instead of year and set dropdowns", () => {
     renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
 

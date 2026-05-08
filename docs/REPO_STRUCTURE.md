@@ -49,12 +49,8 @@ Gate_QA/
 |   |   |-- SolvePage.jsx
 |   |   |-- SolvePage.test.jsx
 |   |   |-- InsightsPage.jsx
-|   |   |-- InsightsPage.test.jsx
-|   |   |-- MockHistoryPage.jsx
-|   |   `-- MockHistoryPage.test.jsx
+|   |   `-- InsightsPage.test.jsx
 |   |-- shells/
-|   |   |-- LandingShell.jsx
-|   |   |-- PracticeShell.jsx
 |   |   `-- MockShell.jsx
 |   |-- utils/
 |   |   |-- evaluateAnswer.js
@@ -68,6 +64,7 @@ Gate_QA/
 |       |-- Landing/ModeSelectionPage.jsx
 |       |-- Landing/ModeCard.jsx
 |       |-- Loaders/LoadingState.jsx
+|       |-- Insights/MockHistoryPanel.jsx
 |       |-- Header/Header.jsx
 |       |-- Question/Question.jsx
 |       |-- Math/MathRuntime.jsx
@@ -83,7 +80,6 @@ Gate_QA/
 |       |-- Filters/ProgressBar.jsx
 |       |-- Filters/ProgressFilterToggles.jsx
 |       |-- Filters/ActiveFilterChips.jsx
-|       |-- Filters/FilterSection.jsx
 |       |-- ProgressManager/ProgressManager.jsx
 |       |-- ProgressManager/ImportConfirmationModal.jsx
 |       |-- Footer/Footer.jsx
@@ -91,8 +87,7 @@ Gate_QA/
 |       |-- Footer/SupportModal.jsx
 |       |-- Footer/assets/qrcode.png
 |       |-- Layout/MobileBottomNav.jsx
-|       |-- Layout/MobileBottomNav.test.jsx
-|       `-- FilterTags/FilterTags.jsx
+|       `-- Layout/MobileBottomNav.test.jsx
 |
 |-- public/
 |   |-- .nojekyll
@@ -103,6 +98,7 @@ Gate_QA/
 |   |-- question-images/                 # Mirrored GateOverflow blob assets for published questions
 |   |-- question-search-index.json
 |   |-- question-detail-shards/          # Generated detail payloads keyed by year/set
+|   |-- mocktest/                        # Mock exam image assets used by the exam shell
 |   |-- questions-filtered.json
 |   |-- questions-filtered-with-ids.json
 |   |-- questions-with-answers.json

@@ -17,6 +17,7 @@ const SectionSummaryCard = ({ title, summary }) => (
             <div>Correct: <span className="font-semibold">{summary.correct}</span></div>
             <div>Incorrect: <span className="font-semibold">{summary.incorrect}</span></div>
             <div>Unanswered: <span className="font-semibold">{summary.unanswered}</span></div>
+            <div>Bonus: <span className="font-semibold">{summary.bonus || 0}</span></div>
             <div>Score: <span className="font-semibold">{summary.score} / {summary.maxScore}</span></div>
         </div>
     </div>
@@ -30,11 +31,12 @@ const MockTestResults = ({ onExit, onReview }) => {
         correct: 0,
         incorrect: 0,
         unanswered: questions.length,
+        bonus: 0,
         score: 0,
         maxScore: 0,
         sectionSummary: {
-            GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, score: 0, maxScore: 0 },
-            CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, score: 0, maxScore: 0 },
+            GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
+            CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
         },
     };
 
@@ -46,7 +48,7 @@ const MockTestResults = ({ onExit, onReview }) => {
                     Your responses have been evaluated. Review mode is available below.
                 </p>
 
-                <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-5">
+                <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-6">
                     <ResultCard
                         label="Score"
                         value={`${summary.score} / ${summary.maxScore}`}
@@ -71,6 +73,11 @@ const MockTestResults = ({ onExit, onReview }) => {
                         label="Unanswered"
                         value={summary.unanswered}
                         accentClass="border-amber-100 bg-amber-50 text-amber-700"
+                    />
+                    <ResultCard
+                        label="Bonus"
+                        value={summary.bonus || 0}
+                        accentClass="border-emerald-100 bg-emerald-50 text-emerald-700"
                     />
                 </div>
 

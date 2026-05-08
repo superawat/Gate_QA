@@ -52,6 +52,7 @@ const HomePage = ({
 
   return (
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
+      <h1 className="sr-only">GateQA practice dashboard</h1>
 
       {/* ── Quick actions row ─────────────────────────────────────── */}
       <section className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -87,14 +88,14 @@ const HomePage = ({
           <button
             type="button"
             onClick={onStartMockTest}
-            className="group flex items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50/60 px-5 py-5 text-left shadow-sm transition hover:border-emerald-300 hover:bg-emerald-100/60 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="group flex items-center gap-4 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-5 text-left shadow-sm transition hover:border-emerald-300 hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-emerald-500"
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 transition group-hover:bg-emerald-200">
               <FaRegClock size={18} />
             </span>
             <span>
-              <span className="block text-sm font-bold text-emerald-900">Open Mock Test</span>
-              <span className="block text-xs text-emerald-700">Full-length practice</span>
+              <span className="block text-sm font-bold text-[color:var(--color-text)]">Open Mock Test</span>
+              <span className="block text-xs text-[color:var(--color-text-muted)]">Full-length practice</span>
             </span>
           </button>
         ) : (
@@ -112,14 +113,14 @@ const HomePage = ({
         <button
           type="button"
           onClick={onOpenInsights}
-          className="group flex items-center gap-4 rounded-2xl border border-indigo-200 bg-indigo-50/60 px-5 py-5 text-left shadow-sm transition hover:border-indigo-300 hover:bg-indigo-100/60 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="group flex items-center gap-4 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-5 text-left shadow-sm transition hover:border-violet-300 hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-violet-500"
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 transition group-hover:bg-indigo-200">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 transition group-hover:bg-violet-200">
             <FaChartLine size={18} />
           </span>
           <span>
-            <span className="block text-sm font-bold text-indigo-900">View Performance Insights</span>
-            <span className="block text-xs text-indigo-600">Track your progress</span>
+            <span className="block text-sm font-bold text-[color:var(--color-text)]">View Performance Insights</span>
+            <span className="block text-xs text-[color:var(--color-text-muted)]">Track your progress</span>
           </span>
         </button>
       </section>
@@ -127,10 +128,10 @@ const HomePage = ({
       {/* ── Resume banner ─────────────────────────────────────────── */}
       {hasResumeRoute && lastSession && (
         <section className="mb-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-sky-200 bg-sky-50/80 px-5 py-4 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-4 shadow-sm">
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-sky-900">Continue your last session</p>
-              <p className="mt-0.5 truncate text-sm text-sky-700">
+              <p className="text-sm font-semibold text-[color:var(--color-text)]">Continue your last session</p>
+              <p className="mt-0.5 truncate text-sm text-[color:var(--color-text-muted)]">
                 {lastSession.questionUid
                   ? `Resume at ${lastSession.questionUid}`
                   : "Return to your last page"}
@@ -203,7 +204,7 @@ const HomePage = ({
             className="group flex w-full items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-4 text-left shadow-sm transition hover:border-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
             <div className="flex items-center gap-4">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]">
                 <FaHistory size={16} />
               </span>
               <span>

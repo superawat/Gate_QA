@@ -11,6 +11,7 @@ import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { QuestionService } from "../services/QuestionService";
+import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
@@ -53,21 +54,6 @@ const SolvePage = ({
   const hasExploreContext = Boolean(location.search);
   const questionExistsInFilteredPool = filteredQuestions.some((question) => question.question_uid === questionUid);
   const navigationState = getNavigationState(questionUid);
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        setIsCalculatorOpen((previous) => !previous);
-      }
-      if (event.key === "Escape") {
-        setIsCalculatorOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   useEffect(() => {
     if (!isInitialized || !indexedQuestion) {
@@ -193,6 +179,41 @@ const SolvePage = ({
       search: location.search,
     });
   }, [goToNextQuestion, location.search, navigate, questionUid]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const shortcutKey = getShortcutKey(event);
+
+      if ((event.ctrlKey || event.metaKey) && shortcutKey === "k") {
+        event.preventDefault();
+        setIsCalculatorOpen((previous) => !previous);
+        return;
+      }
+
+      if (event.key === "Escape") {
+        setIsCalculatorOpen(false);
+        return;
+      }
+
+      if (shouldIgnorePlainShortcut(event)) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft" && navigationState.canGoPrevious) {
+        event.preventDefault();
+        handleGoPrevious();
+        return;
+      }
+
+      if (event.key === "ArrowRight" && navigationState.canGoNext) {
+        event.preventDefault();
+        handleGoNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleGoNext, handleGoPrevious, navigationState.canGoNext, navigationState.canGoPrevious]);
 
   const retryCurrentQuestionDetail = () => {
     setQuestionDetailRequestNonce((value) => value + 1);

@@ -14,11 +14,11 @@ export const SUBJECT_ENUM = [
   { slug: "discrete-math", label: "Discrete Mathematics" },
   { slug: "engg-math", label: "Engineering Mathematics" },
   { slug: "ga", label: "General Aptitude" },
-  { slug: "legacy-other", label: "Legacy / Other" },
   { slug: "os", label: "Operating System" },
   { slug: "prog-ds", label: "Programming and DS" },
   { slug: "prog-c", label: "Programming in C" },
   { slug: "toc", label: "Theory of Computation" },
+  { slug: "legacy-other", label: "Other / Optional" },
 ];
 
 // Priority order for conflict resolution when multiple subjects are inferred.
@@ -35,8 +35,8 @@ export const SUBJECT_PRIORITY = [
   "Programming in C",
   "Discrete Mathematics",
   "Engineering Mathematics",
-  "Legacy / Other",
   "General Aptitude",
+  "Other / Optional",
 ];
 
 // Tag aliases that should map to a canonical subject label.
@@ -86,9 +86,15 @@ export const SUBJECT_ALIAS_OVERRIDES = {
     "grouping",
     "counting-figure",
   ],
-  "Legacy / Other": [
+  "Other / Optional": [
+    "legacy / other",
+    "other / optional",
+    "other-optional",
+    "optional",
     "legacy-other",
     "legacy-out-of-syllabus",
+    "out-of-syllabus-now",
+    "out-of-gatecse-syllabus",
     "web-technologies",
     "html",
     "is&software-engineering",
@@ -313,7 +319,7 @@ export const TOPIC_HIERARCHY = {
     "Word Meaning",
     "Word Pairs",
   ],
-  "Legacy / Other": [
+  "Other / Optional": [
     "Web Technologies",
     "HTML",
     "Software Engineering",
@@ -794,6 +800,14 @@ export function resolveCanonicalSubject(question) {
     normalizedTagSet.has("analyticalaptitude")
   ) {
     return "General Aptitude";
+  }
+
+  if (
+    normalizedTagSet.has("outofsyllabusnow") ||
+    normalizedTagSet.has("outofgatecsesyllabus") ||
+    normalizedTagSet.has("legacyoutofsyllabus")
+  ) {
+    return "Other / Optional";
   }
 
   const explicitCandidates = new Set();

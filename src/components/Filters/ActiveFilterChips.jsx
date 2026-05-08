@@ -108,7 +108,7 @@ const ActiveFilterChips = () => {
             )}
 
             {selectedSubjects.map((subjectSlug) => (
-                <span key={subjectSlug} className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-green-100 px-3 py-1.5 text-sm font-medium capitalize text-green-800 dark:bg-green-900 dark:text-green-200">
+                <span key={subjectSlug} className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-[color:var(--color-success-soft)] px-3 py-1.5 text-sm font-medium capitalize text-[color:var(--color-success-text)]">
                     {subjectLabelBySlug.get(subjectSlug) || subjectSlug}
                     <button type="button" onClick={() => removeSubject(subjectSlug)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-green-500 transition hover:bg-green-200 hover:text-green-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
                         <FaTimes />
@@ -117,7 +117,7 @@ const ActiveFilterChips = () => {
             ))}
 
             {selectedSubtopics.map((subtopicSlug) => (
-                <span key={subtopicSlug} className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-yellow-100 px-3 py-1.5 text-sm font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                <span key={subtopicSlug} className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-[color:var(--color-warning-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-warning-text)]">
                     {subtopicLabelBySlug.get(subtopicSlug) || subtopicSlug}
                     <button type="button" onClick={() => removeSubtopic(subtopicSlug)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-yellow-500 transition hover:bg-yellow-200 hover:text-yellow-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
                         <FaTimes />

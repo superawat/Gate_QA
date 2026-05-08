@@ -34,14 +34,13 @@ Current suites:
 - `src/pages/ExplorePage.test.jsx`
 - `src/pages/SolvePage.test.jsx`
 - `src/pages/InsightsPage.test.jsx`
-- `src/pages/MockHistoryPage.test.jsx`
 - `src/components/Landing/ModeSelectionPage.test.jsx`
 - `src/services/MockCatalogService.test.js`
 
-Latest verification snapshot on `2026-04-10`:
+Latest verification snapshot on `2026-05-08`:
 
-- `33` passing test files
-- `173` passing unit tests
+- `32` passing test files
+- `186` passing unit tests
 
 Treat that as a point-in-time check. Re-run the suite instead of relying on the doc for an exact count.
 
@@ -70,6 +69,7 @@ npm run test:watch
 Important precondition:
 
 - if `src/generated/subtopicLookup.json` is missing in a fresh workspace, run `npm run precompute` before unit tests
+- Vitest excludes `.codeboarding/**` so local analysis snapshots do not get collected as duplicate project tests.
 
 ## 2) Browser E2E and axe coverage
 

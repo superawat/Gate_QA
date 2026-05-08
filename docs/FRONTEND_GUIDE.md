@@ -68,14 +68,14 @@ All frontend filter components are expected to consume one or both of the split 
 - `/practice` — `ExplorePage`
 - `/practice/question/:questionUid` — `SolvePage`
 - `/insights` — `InsightsPage`
-- `/history/mock-tests` — `MockHistoryPage`
+- `/history/mock-tests` — legacy redirect to `/insights?tab=mock-history`
 - `/mock?stage=setup|exam` — isolated `MockShell`
 
 ### Landing startup contract
 
 - `QuestionBankManifestService` hydrates the landing page from `public/question-bank-manifest.json`.
 - Landing summary pills read the manifest count/latest-year/year-set totals without loading the full bank.
-- Landing also surfaces manifest-backed answer coverage and subject distribution.
+- Landing surfaces manifest-backed question-bank totals and subject distribution without loading the full bank.
 - Practice boot reads `public/question-search-index.json`, while question HTML is fetched later from `public/question-detail-shards/*.json`.
 - Mock mode remains the only entry path that asks `QuestionService` for the full bank up front.
 
@@ -87,7 +87,8 @@ All frontend filter components are expected to consume one or both of the split 
   - mock test entry/history
 - a lightweight CTA into the dedicated insights route
 - `InsightsPage` is a dedicated full-screen analytics route backed by `loadWeakTopicInsights()`.
-- `InsightsPage` also surfaces manifest-backed answer coverage tracking (`Verified Answers`, `Still Pending`, overall coverage, and latest-year coverage) from `question-bank-manifest.json`.
+- `InsightsPage` intentionally hides internal answer-coverage tracking and focuses on learner-facing practice analytics.
+- Mock test history is rendered inside the Insights mock-history tab; the old `/history/mock-tests` route redirects there.
 - The Home insights card CTA navigates to `/insights`.
 
 ### Session Queue (`SessionContext`, FEAT-012)
@@ -208,6 +209,9 @@ Rules:
 - `document.documentElement[data-theme]` is the single source of truth for CSS theme application.
 - If no preference is stored, the app falls back to `prefers-color-scheme`.
 - `/mock` is always forced to light mode and does not expose the dark-mode toggle.
+- Home, Practice, and Insights have a completed dark-mode readability pass; keep primary dark-mode blue buttons at WCAG-readable contrast with white text.
+- Mock setup sub-pages expose a `Back to Modes` control that returns to the mock mode selection screen without leaving `/mock`.
+- In mock review/results, `AMBIGUOUS` and `MARKS_TO_ALL` records are shown as auto-awarded bonus questions; they require no response and should not be styled as ordinary correct MCQ/MSQ/NAT answers.
 
 ## Responsive notes
 
@@ -228,7 +232,7 @@ Rules:
 
 ## Known caveats
 
-- Some UI files still contain `dark:` classes while the shared token-based theme system remains the source of truth.
+- Some legacy UI files still contain `dark:` classes; treat them as Tailwind-to-token cleanup work unless a concrete contrast regression is found.
 - Mock exam surfaces intentionally ignore dark mode for exam parity.
 
 ## Safe refactor checklist

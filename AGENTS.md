@@ -30,7 +30,7 @@
 | Deep architecture details | `docs/ARCHITECTURE.md` |
 | Full testing guide | `docs/TESTING.md` |
 | Frontend contracts | `docs/FRONTEND_GUIDE.md` |
-| Task backlog | `plan2026.md` |
+| Task backlog | `gateqa_master_plan.md` |
 | Repo file map | `docs/REPO_STRUCTURE.md` |
 | Change history | `docs/CHANGELOG.md` |
 | Bug history | `docs/BUG_BACKLOG.md` |
@@ -52,7 +52,7 @@
 
 ```
 1. READ   → AGENTS.md + .llm-memory/ (fast context)
-2. PLAN   → Read plan2026.md for current task priorities
+2. PLAN   → Read gateqa_master_plan.md for current task priorities
 3. CHECK  → Read relevant docs/ files for full contracts BEFORE editing
 4. DO     → Implement changes
 5. TEST   → npm run test:unit + npm run build (mandatory guards)
@@ -71,7 +71,7 @@ npm run build              # Must succeed
 
 ```bash
 npm start                  # Dev server (auto-precomputes + builds artifacts)
-npm run test:unit          # 173 unit tests
+npm run test:unit          # 186 unit tests
 npm run test:e2e           # 15 Playwright E2E tests
 npm run build              # Production build to dist/
 npm run precompute         # Regenerate subtopicLookup.json

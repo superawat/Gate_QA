@@ -313,6 +313,25 @@ describe("SolvePage", () => {
     });
   });
 
+  test("right arrow moves to the next question when session navigation allows it", async () => {
+    mocks.goToNextQuestion.mockReturnValueOnce({ question_uid: "go:2" });
+    mocks.getNavigationState.mockReturnValue({
+      index: 0,
+      total: 2,
+      canGoPrevious: false,
+      canGoNext: true,
+    });
+
+    renderSolvePage();
+
+    await screen.findByText("Question view: Question go:1");
+    fireEvent.keyDown(window, { key: "ArrowRight" });
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3A2?subjects=algorithms&page=2");
+    });
+  });
+
   test("previous question navigation uses the session helper and preserves search params", async () => {
     mocks.goToPreviousQuestion.mockReturnValueOnce({ question_uid: "go:0" });
     mocks.getNavigationState.mockReturnValue({
@@ -330,6 +349,30 @@ describe("SolvePage", () => {
     });
 
     fireEvent.click(await screen.findByRole("button", { name: /previous in session/i }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3A0?subjects=algorithms");
+    });
+  });
+
+  test("left arrow moves to the previous question when session navigation allows it", async () => {
+    mocks.goToPreviousQuestion.mockReturnValueOnce({ question_uid: "go:0" });
+    mocks.getNavigationState.mockReturnValue({
+      index: 1,
+      total: 2,
+      canGoPrevious: true,
+      canGoNext: false,
+    });
+
+    renderSolvePage({
+      route: "/practice/question/go%3A1?subjects=algorithms",
+      sessionOverrides: {
+        getNavigationState: mocks.getNavigationState,
+      },
+    });
+
+    await screen.findByText("Question view: Question go:1");
+    fireEvent.keyDown(window, { key: "ArrowLeft" });
 
     await waitFor(() => {
       expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3A0?subjects=algorithms");

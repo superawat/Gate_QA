@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-13T08:48:50.920Z",
+  "generatedAt": "2026-05-08T10:51:47.185Z",
   "shardKey": "2017-s1",
   "yearSetKey": "2017-s1",
   "year": 2017,
   "set": 1,
   "label": "2017 Set 1",
-  "questionCount": 64,
+  "questionCount": 65,
   "recordsByQuestionUid": {
     "go:118403": {
       "title": "GATE CSE 2017 Set 1 | Question: GA-1",
@@ -201,7 +201,7 @@
       "title": "GATE CSE 2017 Set 1 | Question: GA-10",
       "year": "gatecse-2017-set1",
       "link": "https://gateoverflow.in/118413/gate-cse-2017-set-1-question-ga-10",
-      "question": "<p>A contour line joins locations having the same height above the mean sea level. The following is a contour plot of a geographical region. Contour lines are shown at $25$ m intervals in this plot. If in a flood, the water level rises to $525$ m, which of the villages $P, Q, R, S, T$ get submerged?</p>\n<p><img alt=\"\" src=\"/Gate_QA/question-images/992094509423868580.jpg\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$P, Q$</li>\n<li>$P, Q, T$</li>\n<li>$R, S, T$</li>\n<li>$Q, R, S$</li>\n</ol>",
+      "question": "<p>A contour line joins locations having the same height above the mean sea level. The following is a contour plot of a geographical region. Contour lines are shown at $25$ m intervals in this plot. If in a flood, the water level rises to $525$ m, which of the villages $P, Q, R, S, T$ get submerged?</p>\n<p><img alt=\"\" src=\"/Gate_QA/question-images/992094509423868580.webp\"/></p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$P, Q$</li>\n<li>$P, Q, T$</li>\n<li>$R, S, T$</li>\n<li>$Q, R, S$</li>\n</ol>",
       "tags": [
         "gatecse-2017-set1",
         "general-aptitude",
@@ -642,7 +642,7 @@
       "title": "GATE CSE 2017 Set 1 | Question: 21",
       "year": "gatecse-2017-set1",
       "link": "https://gateoverflow.in/118301/gate-cse-2017-set-1-question-21",
-      "question": "<p>Consider the Karnaugh map given below, where $X$ represents <em>\"don't care\" </em>and blank represents $0$.</p>\n<p> </p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"269\" src=\"/Gate_QA/question-images/8927096346179624195.jpg\" width=\"272\"/></p>\n<p>Assume for all inputs $\\left ( a,b,c,d \\right )$, the respective complements $\\left ( \\bar{a}, \\bar{b}, \\bar{c}, \\bar{d} \\right )$ are also available. The above logic is implemented using $2$-input $\\text{NOR}$ gates only. The minimum number of gates required is ____________ .</p>",
+      "question": "<p>Consider the Karnaugh map given below, where $X$ represents <em>\"don't care\" </em>and blank represents $0$.</p>\n<p> </p>\n<p style=\"text-align:center\"><img alt=\"\" height=\"269\" src=\"/Gate_QA/question-images/8927096346179624195.webp\" width=\"272\"/></p>\n<p>Assume for all inputs $\\left ( a,b,c,d \\right )$, the respective complements $\\left ( \\bar{a}, \\bar{b}, \\bar{c}, \\bar{d} \\right )$ are also available. The above logic is implemented using $2$-input $\\text{NOR}$ gates only. The minimum number of gates required is ____________ .</p>",
       "tags": [
         "gatecse-2017-set1",
         "digital-logic",
@@ -683,6 +683,27 @@
         "tolerance": {
           "abs": 0.01
         },
+        "source": "question_uid"
+      }
+    },
+    "go:118303": {
+      "title": "GATE CSE 2017 Set 1 | Question: 23",
+      "year": "gatecse-2017-set1",
+      "link": "https://gateoverflow.in/118303/gate-cse-2017-set-1-question-23",
+      "question": "<p>Consider a database that has the relation schema EMP (EmpId, EmpName, and DeptName). An instance of the schema EMP and a SQL query on it are given below:</p>\n<p>$$\\overset{\\text{EMP}}{\\begin{array}{|c|c|c|}\\hline\\\\<br/>\n\\textbf{EmpId}&amp;    \\textbf{EmpName}&amp;  \\textbf{DeptName}\\\\\\hline<br/>\n1&amp;     \\text{XYA}&amp; \\text{AA}   \\\\ \\hline   <br/>\n2&amp;     \\text{XYB}&amp; \\text{AA} \\\\     \\hline<br/>\n3&amp;     \\text{XYC}&amp; \\text{AA}       \\\\\\hline<br/>\n4&amp;     \\text{XYD}&amp; \\text{AA}     \\\\\\hline<br/>\n5&amp;     \\text{XYE}&amp; \\text{AB}   \\\\\\hline    <br/>\n6&amp;     \\text{XYF}&amp; \\text{AB}     \\\\\\hline   <br/>\n7&amp;     \\text{XYG}&amp; \\text{AB}       \\\\\\hline <br/>\n8&amp;     \\text{XYH}&amp; \\text{AC}       \\\\\\hline <br/>\n9&amp;     \\text{XYI}&amp; \\text{AC}       \\\\\\hline <br/>\n10&amp;     \\text{XYJ}&amp; \\text{AC} \\\\\\hline 11&amp;\\text{XYK} &amp; \\text{AD} \\\\\\hline 12 &amp; \\text{XYL}&amp; \\text{AD} \\\\\\hline 13 &amp; \\text{XYM} &amp; \\text{AE}<br/>\n\\\\\\hline\\end{array}}$$</p>\n<pre class=\"prettyprint lang-c_cpp\">SELECT AVG(EC.Num)\nFROM EC\nWHERE (DeptName, Num) IN\n    (SELECT DeptName, COUNT(EmpId) AS\n                        EC(DeptName, Num)\n    FROM EMP\n    GROUP BY DeptName)</pre>\n<p>The output of executing the SQL query is _____________ .</p>",
+      "tags": [
+        "gatecse-2017-set1",
+        "databases",
+        "sql",
+        "numerical-answers"
+      ],
+      "question_uid": "go:118303",
+      "exam_uid": "cse:2017:set1:main:q23",
+      "answer_uid": "manual_res:go:118303",
+      "answer_meta": {
+        "type": "AMBIGUOUS",
+        "answer": null,
+        "tolerance": null,
         "source": "question_uid"
       }
     },
@@ -882,7 +903,7 @@
       "title": "GATE CSE 2017 Set 1 | Question: 33",
       "year": "gatecse-2017-set1",
       "link": "https://gateoverflow.in/118315/gate-cse-2017-set-1-question-33",
-      "question": "<p>Consider a combination of $\\text{T}$ and $\\text{D}$ flip-flops connected as shown below. The output of the $\\text{D}$ flip-flop is connected to the input of the $\\text{T}$ flip-flop and the output of the $\\text{T}$ flip-flop is connected to the input of the $\\text{D}$ flip-flop.</p>\n<p><img alt=\"\" src=\"/Gate_QA/question-images/3886956125177836916.png\" width=\"500\"/></p>\n<p>Initially, both $Q_{0}$ and $Q_{1}$ are set to $1$ (before the $1^{\\text{st}}$ clock cycle). The outputs</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $11$ and after the $4^{\\text{th}}$ cycle are $00$ respectively.</li>\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $11$ and after the $4^{\\text{th}}$ cycle are $01$ respectively.</li>\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $00$ and after the $4^{\\text{th}}$ cycle are $11$ respectively.</li>\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $01$ and after the $4^{\\text{th}}$ cycle are $01$ respectively.</li>\n</ol>",
+      "question": "<p>Consider a combination of $\\text{T}$ and $\\text{D}$ flip-flops connected as shown below. The output of the $\\text{D}$ flip-flop is connected to the input of the $\\text{T}$ flip-flop and the output of the $\\text{T}$ flip-flop is connected to the input of the $\\text{D}$ flip-flop.</p>\n<p><img alt=\"\" src=\"/Gate_QA/question-images/3886956125177836916.webp\" width=\"500\"/></p>\n<p>Initially, both $Q_{0}$ and $Q_{1}$ are set to $1$ (before the $1^{\\text{st}}$ clock cycle). The outputs</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $11$ and after the $4^{\\text{th}}$ cycle are $00$ respectively.</li>\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $11$ and after the $4^{\\text{th}}$ cycle are $01$ respectively.</li>\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $00$ and after the $4^{\\text{th}}$ cycle are $11$ respectively.</li>\n<li>$Q_{1}Q_{0}$ after the $3^{\\text{rd}}$ cycle are $01$ and after the $4^{\\text{th}}$ cycle are $01$ respectively.</li>\n</ol>",
       "tags": [
         "gatecse-2017-set1",
         "digital-logic",

@@ -16,35 +16,39 @@ describe("mockTestHistory", () => {
     window.localStorage.clear();
   });
 
-  test("buildMockAttemptHistoryEntry captures correct, incorrect, and unanswered questions", () => {
+  test("buildMockAttemptHistoryEntry captures correct, incorrect, unanswered, and bonus questions", () => {
     const entry = buildMockAttemptHistoryEntry({
       attemptMeta: {
         kindId: "custom",
         kindTitle: "Custom / Topic-based test",
-        questionCount: 3,
+        questionCount: 4,
         durationMinutes: 40,
       },
       questionMetaByUid: {
         "ga:1": { section: "GA", orderIndex: 1, type: "MCQ" },
         "cs:2": { section: "CS", orderIndex: 2, type: "MSQ" },
         "cs:3": { section: "CS", orderIndex: 3, type: "NAT" },
+        "cs:4": { section: "CS", orderIndex: 4, type: "MARKS_TO_ALL" },
       },
       questions: [
         { question_uid: "ga:1" },
         { question_uid: "cs:2" },
         { question_uid: "cs:3" },
+        { question_uid: "cs:4" },
       ],
       resultSummary: {
-        score: 1.6667,
-        maxScore: 5,
+        score: 3.6667,
+        maxScore: 7,
         attempted: 2,
         correct: 1,
         incorrect: 1,
         unanswered: 1,
+        bonus: 1,
         perQuestionResult: {
           "ga:1": { questionUid: "ga:1", section: "GA", orderIndex: 1, type: "MCQ", correct: true, answered: true, scoreDelta: 2 },
           "cs:2": { questionUid: "cs:2", section: "CS", orderIndex: 2, type: "MSQ", correct: false, answered: true, scoreDelta: -0.3333 },
           "cs:3": { questionUid: "cs:3", section: "CS", orderIndex: 3, type: "NAT", correct: false, answered: false, scoreDelta: 0 },
+          "cs:4": { questionUid: "cs:4", section: "CS", orderIndex: 4, type: "MARKS_TO_ALL", status: "bonus", correct: false, answered: false, scoreDelta: 2 },
         },
       },
       submittedAt: "2026-04-05T12:30:00.000Z",
@@ -55,6 +59,7 @@ describe("mockTestHistory", () => {
       correct: 1,
       incorrect: 1,
       unanswered: 1,
+      bonus: 1,
     });
     expect(entry.correctQuestions).toEqual([
       expect.objectContaining({ questionUid: "ga:1", label: "GA-1" }),
@@ -64,6 +69,9 @@ describe("mockTestHistory", () => {
     ]);
     expect(entry.unansweredQuestions).toEqual([
       expect.objectContaining({ questionUid: "cs:3", label: "CS-3" }),
+    ]);
+    expect(entry.bonusQuestions).toEqual([
+      expect.objectContaining({ questionUid: "cs:4", label: "CS-4" }),
     ]);
   });
 

@@ -63,9 +63,11 @@ const normalizeAttemptEntry = (entry = {}) => {
     correct: Number.isFinite(Number(entry.correct)) ? Number(entry.correct) : 0,
     incorrect: Number.isFinite(Number(entry.incorrect)) ? Number(entry.incorrect) : 0,
     unanswered: Number.isFinite(Number(entry.unanswered)) ? Number(entry.unanswered) : 0,
+    bonus: Number.isFinite(Number(entry.bonus)) ? Number(entry.bonus) : 0,
     correctQuestions: normalizeQuestionRecordList(entry.correctQuestions),
     incorrectQuestions: normalizeQuestionRecordList(entry.incorrectQuestions),
     unansweredQuestions: normalizeQuestionRecordList(entry.unansweredQuestions),
+    bonusQuestions: normalizeQuestionRecordList(entry.bonusQuestions),
   };
 };
 
@@ -138,6 +140,7 @@ export const buildMockAttemptHistoryEntry = ({
   const correctQuestions = [];
   const incorrectQuestions = [];
   const unansweredQuestions = [];
+  const bonusQuestions = [];
 
   (Array.isArray(questions) ? questions : []).forEach((question) => {
     const questionUid = String(question?.question_uid || "").trim();
@@ -168,6 +171,11 @@ export const buildMockAttemptHistoryEntry = ({
       return;
     }
 
+    if (result.status === "bonus") {
+      bonusQuestions.push(record);
+      return;
+    }
+
     if (result.correct) {
       correctQuestions.push(record);
       return;
@@ -195,8 +203,10 @@ export const buildMockAttemptHistoryEntry = ({
     correct: resultSummary.correct,
     incorrect: resultSummary.incorrect,
     unanswered: resultSummary.unanswered,
+    bonus: resultSummary.bonus || 0,
     correctQuestions,
     incorrectQuestions,
     unansweredQuestions,
+    bonusQuestions,
   });
 };

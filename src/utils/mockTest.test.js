@@ -49,6 +49,29 @@ describe("mockTest utilities", () => {
     });
   });
 
+  test("auto-awarded mock questions score without requiring a response", () => {
+    const result = buildMockQuestionResult({
+      questionMeta: {
+        questionUid: "q-bonus",
+        section: "CS",
+        type: "MARKS_TO_ALL",
+        marks: 2,
+        negativeMarks: 0,
+        autoAwarded: true,
+      },
+      response: "",
+      answerRecord: { type: "MARKS_TO_ALL", answer: null },
+    });
+
+    expect(result).toMatchObject({
+      status: "bonus",
+      answered: false,
+      autoAwarded: true,
+      scoreDelta: 2,
+    });
+    expect(formatExpectedAnswer({ type: "MARKS_TO_ALL" })).toBe("Awarded to all");
+  });
+
   test("buildMockResultSummary aggregates per-section scoring and unanswered counts", () => {
     const questions = [
       { question_uid: "ga:1" },
@@ -96,6 +119,39 @@ describe("mockTest utilities", () => {
       correct: 1,
       unanswered: 1,
       score: 2,
+    });
+  });
+
+  test("buildMockResultSummary separates auto-awarded questions from attempted counts", () => {
+    const summary = buildMockResultSummary({
+      questions: [{ question_uid: "bonus:1" }],
+      responses: {},
+      questionMetaByUid: {
+        "bonus:1": {
+          questionUid: "bonus:1",
+          section: "CS",
+          type: "AMBIGUOUS",
+          marks: 1,
+          negativeMarks: 0,
+          autoAwarded: true,
+        },
+      },
+      getAnswerRecord: () => ({ type: "AMBIGUOUS", answer: null }),
+    });
+
+    expect(summary).toMatchObject({
+      attempted: 0,
+      correct: 0,
+      incorrect: 0,
+      unanswered: 0,
+      bonus: 1,
+      score: 1,
+      maxScore: 1,
+    });
+    expect(summary.sectionSummary.CS).toMatchObject({
+      bonus: 1,
+      score: 1,
+      maxScore: 1,
     });
   });
 

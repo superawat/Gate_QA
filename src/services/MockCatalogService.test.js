@@ -57,7 +57,9 @@ describe("MockCatalogService", () => {
     const readyPaperKeys = papers
       .filter((paper) => paper.paperReady)
       .map((paper) => paper.yearSetKey);
-    const blocked2017Paper = papers.find((paper) => paper.yearSetKey === "2017-s1");
+    const ready2017Paper = papers.find((paper) => paper.yearSetKey === "2017-s1");
+    const ready2013Paper = papers.find((paper) => paper.yearSetKey === "2013-s0");
+    const ready2012Paper = papers.find((paper) => paper.yearSetKey === "2012-s0");
 
     expect(readyPaperKeys).toEqual(expect.arrayContaining([
       "2025-s1",
@@ -67,14 +69,20 @@ describe("MockCatalogService", () => {
       "2016-s1",
       "2015-s1",
       "2017-s2",
+      "2017-s1",
+      "2021-s1",
+      "2014-s2",
       "2014-s1",
+      "2013-s0",
+      "2012-s0",
     ]));
-    expect(readyPaperKeys.length).toBeGreaterThanOrEqual(10);
-    expect(blocked2017Paper).toMatchObject({
-      paperReady: false,
-      missingScorableCount: 1,
+    expect(readyPaperKeys.length).toBeGreaterThanOrEqual(27);
+    expect(ready2017Paper).toMatchObject({
+      paperReady: true,
+      scorableCount: 65,
+      missingScorableCount: 0,
     });
-    expect(blocked2017Paper.statusReason).toMatch(/parsed 64\/65 total questions/i);
-    expect(blocked2017Paper.blockedQuestions).toEqual([]);
+    expect(ready2013Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
+    expect(ready2012Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
   });
 });

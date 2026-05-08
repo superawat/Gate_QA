@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FaDownload, FaUpload, FaFileCsv } from "react-icons/fa";
+import { FaDownload, FaFileCsv, FaInfoCircle, FaUpload } from "react-icons/fa";
 import { useFilterState, useFilterActions } from "../../contexts/FilterContext";
 import {
     readStorageJson,
@@ -291,7 +291,7 @@ export default function ProgressManager() {
                 <div className="flex flex-wrap items-center gap-2">
                     <button
                         onClick={handleExportJson}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[color:var(--color-primary-hover)]"
                         title="Export Progress (JSON)"
                     >
                         <FaDownload className="text-xs" />
@@ -300,7 +300,7 @@ export default function ProgressManager() {
 
                     <button
                         onClick={handleExportCsv}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 transition-colors"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2 text-sm font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface)]"
                         title="Export as CSV (View Only)"
                     >
                         <FaFileCsv className="text-xs" />
@@ -309,7 +309,7 @@ export default function ProgressManager() {
 
                     <button
                         onClick={handleImportClick}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 transition-colors"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2 text-sm font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface)]"
                         title="Import Progress"
                     >
                         <FaUpload className="text-xs" />
@@ -318,21 +318,22 @@ export default function ProgressManager() {
 
                     <button
                         onClick={() => setHelpOpen((v) => !v)}
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-200 transition-colors"
+                        className="progress-manager-help-button inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition-colors hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)]"
                         title="What do these buttons do?"
                         aria-expanded={helpOpen}
                         aria-label="Help for export and import"
                     >
+                        <FaInfoCircle aria-hidden="true" className="text-sm" />
                         <span className="text-base leading-none">ⓘ</span>
                     </button>
                 </div>
 
-                <p className="mt-2 text-xs text-gray-500">
+                <p className="mt-2 text-xs text-[color:var(--color-text-muted)]">
                     {solvedQuestionIds.length} solved{" · "}{bookmarkedQuestionIds.length} bookmarked
                 </p>
 
                 {helpOpen && (
-                    <div className="mt-2 p-2.5 rounded-lg bg-white/80 border border-gray-200 text-[11px] text-gray-600 space-y-2 shadow-sm">
+                    <div className="mt-2 space-y-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-2.5 text-[11px] text-[color:var(--color-text-muted)] shadow-sm">
                         <div className="leading-snug">
                             <span className="font-semibold text-gray-800">Export JSON</span> — Downloads a backup of your solved and bookmarked questions. Use it to transfer progress to another device.
                         </div>

@@ -89,7 +89,7 @@ Do not merge changes that break:
 
 ### Version bump requirements
 
-- bump `INIT_CACHE_VERSION` in `src/services/QuestionService.js` when:
+- bump `INIT_CACHE_VERSION` in `src/services/question-service/QuestionLoader.js` when:
   - question source shape changes, or
   - question-bank imports/repairs change available year/set inventory, or
   - subtopic extraction/normalization logic changes, or

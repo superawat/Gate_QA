@@ -249,67 +249,6 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel }) => {
   );
 };
 
-const AnswerCoveragePanel = ({ answerCoverage }) => {
-  if (!answerCoverage) {
-    return null;
-  }
-
-  const latestYearLabel = answerCoverage.latestYearCoverage
-    ? `${answerCoverage.latestYearCoverage.label} coverage`
-    : "Coverage";
-
-  return (
-    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h2 className="text-xl font-semibold text-slate-950">Answer Coverage</h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Manifest-backed tracking for verified answers across the published question bank.
-          </p>
-        </div>
-        <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">
-          {formatNumber(answerCoverage.totalQuestions)} questions
-        </span>
-      </div>
-
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          label="Verified Answers"
-          value={formatNumber(answerCoverage.verifiedCount)}
-          icon={FaCheckCircle}
-          accent="emerald"
-          sublabel={`of ${formatNumber(answerCoverage.totalQuestions)} published`}
-        />
-        <StatCard
-          label="Still Pending"
-          value={formatNumber(answerCoverage.pendingCount)}
-          icon={FaExclamationTriangle}
-          accent={answerCoverage.pendingCount > 0 ? "amber" : "emerald"}
-          sublabel="questions without a verified answer"
-        />
-        <StatCard
-          label="Coverage"
-          value={formatPercent(answerCoverage.coverageRatio * 100, 1)}
-          icon={FaChartLine}
-          accent={answerCoverage.coverageRatio >= 0.95 ? "sky" : "amber"}
-          sublabel={`${formatNumber(answerCoverage.unsupportedCount)} unsupported by current resolver`}
-        />
-        <StatCard
-          label={latestYearLabel}
-          value={answerCoverage.latestYearCoverage
-            ? formatPercent(answerCoverage.latestYearCoverage.coverageRatio * 100)
-            : "—"}
-          icon={FaBullseye}
-          accent="violet"
-          sublabel={answerCoverage.latestYearCoverage
-            ? `${formatNumber(answerCoverage.latestYearCoverage.covered)} of ${formatNumber(answerCoverage.latestYearCoverage.total)} covered`
-            : "latest year unavailable"}
-        />
-      </div>
-    </section>
-  );
-};
-
 /* ── Accuracy bar ───────────────────────────────────────────────────────── */
 
 const AccuracyBar = ({ accuracyRate, className = "" }) => {
@@ -460,6 +399,7 @@ const SubjectRadarChart = ({ data = [] }) => {
             fill="#0ea5e9"
             fillOpacity={0.15}
             strokeWidth={2}
+            isAnimationActive={false}
           />
           <Radar
             name="Coverage"
@@ -469,6 +409,7 @@ const SubjectRadarChart = ({ data = [] }) => {
             fillOpacity={0.1}
             strokeWidth={2}
             strokeDasharray="4 4"
+            isAnimationActive={false}
           />
         </RadarChart>
       </ResponsiveContainer>
@@ -1156,54 +1097,14 @@ const InsightsPage = ({
     const averageSubjectAccuracy = subjects.length
       ? subjects.reduce((total, item) => total + Number(item.accuracyRate || 0), 0) / subjects.length
       : 0;
-    const answerCoverage = questionBankManifest?.answerCoverage;
-    const totalQuestions = Number(questionBankManifest?.questionCount || 0);
-    const coverageYearSets = Array.isArray(answerCoverage?.yearSets) ? answerCoverage.yearSets : [];
-    const latestYear = Number(questionBankManifest?.latestYear || 0);
-    const latestYearCoverageSets = latestYear
-      ? coverageYearSets.filter((item) => Number(item?.year) === latestYear)
-      : [];
-    const latestYearCoverage = latestYearCoverageSets.length
-      ? latestYearCoverageSets.reduce((totals, item) => ({
-        label: `${latestYear}`,
-        total: totals.total + Number(item?.total || 0),
-        covered: totals.covered + Number(item?.covered || 0),
-        unsupported: totals.unsupported + Number(item?.unsupported || 0),
-        coverageRatio: 0,
-      }), {
-        label: `${latestYear}`,
-        total: 0,
-        covered: 0,
-        unsupported: 0,
-        coverageRatio: 0,
-      })
-      : null;
-
-    if (latestYearCoverage && latestYearCoverage.total > 0) {
-      latestYearCoverage.coverageRatio = latestYearCoverage.covered / latestYearCoverage.total;
-    }
-
-    const verifiedCount = Number(answerCoverage?.directQuestionUidMatches || 0);
-    const answerCoverageSummary = answerCoverage && totalQuestions > 0
-      ? {
-        verifiedCount,
-        pendingCount: Math.max(totalQuestions - verifiedCount, 0),
-        unsupportedCount: Number(answerCoverage.unsupportedQuestionCount || 0),
-        coverageRatio: Number(answerCoverage.estimatedCoverageRatio || 0),
-        totalQuestions,
-        latestYearCoverage,
-      }
-      : null;
-
     return {
       attemptedQuestionCount: Number(insights.attemptedQuestionCount || 0),
       weakSubjectCount: subjects.filter((item) => Number(item.accuracyRate || 0) < 0.7).length,
       weakSubtopicCount: subtopics.filter((item) => Number(item.accuracyRate || 0) < 0.7).length,
       averageSubjectAccuracy,
       wrongQuestionCount: wrongQuestions.length,
-      answerCoverage: answerCoverageSummary,
     };
-  }, [insights, questionBankManifest]);
+  }, [insights]);
 
   const wrongCount = Array.isArray(insights.wrongQuestions) ? insights.wrongQuestions.length : 0;
 
@@ -1221,9 +1122,6 @@ const InsightsPage = ({
               <h1 className="mt-4 text-3xl font-semibold text-slate-950">
                 Practice performance insights
               </h1>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-                Understand your strengths, identify weaknesses, and review every wrong answer — all in one place.
-              </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
@@ -1237,8 +1135,6 @@ const InsightsPage = ({
             </div>
           </div>
         </header>
-
-        <AnswerCoveragePanel answerCoverage={summary.answerCoverage} />
 
         {isLoading ? (
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-6 shadow-[var(--shadow-card)]">

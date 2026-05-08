@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
+const LEGACY_OPTIONAL_SUBJECT_SLUG = 'legacy-other';
+
 const TopicFilter = () => {
     const { structuredTags, filters } = useFilterState();
     const { updateFilters } = useFilterActions();
@@ -26,6 +28,30 @@ const TopicFilter = () => {
 
         return nextMap;
     }, [structuredSubtopics, subjects]);
+
+    const subjectGroups = useMemo(() => {
+        const coreSubjects = subjects.filter((subject) => subject?.slug !== LEGACY_OPTIONAL_SUBJECT_SLUG);
+        const optionalSubjects = subjects.filter((subject) => subject?.slug === LEGACY_OPTIONAL_SUBJECT_SLUG);
+
+        return [
+            {
+                key: 'core',
+                subjects: coreSubjects,
+                heading: null,
+                description: null,
+                className: '',
+            },
+            optionalSubjects.length > 0
+                ? {
+                    key: 'optional',
+                    subjects: optionalSubjects,
+                    heading: 'Optional legacy topics',
+                    description: 'Older or out-of-syllabus questions from past papers.',
+                    className: 'rounded-xl border border-amber-200 bg-amber-50/70 p-3',
+                }
+                : null,
+        ].filter(Boolean);
+    }, [subjects]);
 
     useEffect(() => {
         if (selectedSubjects.length === 0) {
@@ -104,83 +130,107 @@ const TopicFilter = () => {
     if (!subjects.length) return null;
 
     return (
-        <div className="space-y-1">
-            {subjects.map((subject) => {
-                const subjectSlug = subject.slug;
-                const isSelected = selectedSubjectSet.has(subjectSlug);
-                const subtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
-                const hasSubtopics = subtopics.length > 0;
-                const isExpanded = expandedSubjectSlug === subjectSlug;
-                const showSubtopics = isSelected && hasSubtopics && isExpanded;
-                const subjectSubtopicSlugs = subtopics
-                    .map((subtopic) => subtopic?.slug)
-                    .filter(Boolean);
-
-                const allSubtopicsSelected = showSubtopics
-                    && subjectSubtopicSlugs.every((slug) => selectedSubtopicSet.has(slug));
-
-                return (
-                    <div key={subjectSlug} className="flex min-w-0 flex-col">
-                        <div className="flex items-center justify-between gap-2 py-1">
-                            <label className="flex min-w-0 cursor-pointer items-center">
-                                <input
-                                    type="checkbox"
-                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                    checked={isSelected}
-                                    onChange={() => handleSubjectChange(subjectSlug)}
-                                />
-                                <span
-                                    className={`ml-3 truncate text-sm ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`}
-                                    title={subject.label}
-                                >
-                                    {subject.label}
-                                </span>
-                            </label>
-
-                            <div className="flex shrink-0 items-center gap-1.5">
-                                {isSelected && hasSubtopics && (
-                                    <button
-                                        type="button"
-                                        onClick={() => setExpandedSubjectSlug(isExpanded ? null : subjectSlug)}
-                                        aria-label={isExpanded ? `Hide ${subject.label} subtopics` : `Show ${subject.label} subtopics`}
-                                        className="rounded border border-gray-300 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    >
-                                        {isExpanded ? 'Hide' : 'Show'}
-                                    </button>
-                                )}
-                                {showSubtopics && (
-                                    <button
-                                        type="button"
-                                        onClick={() => handleSubjectBulkToggle(subjectSlug)}
-                                        aria-label={allSubtopicsSelected ? `Clear all ${subject.label} subtopics` : `Select all ${subject.label} subtopics`}
-                                        className="rounded border border-blue-300 px-2 py-0.5 text-xs font-semibold text-blue-700 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    >
-                                        {allSubtopicsSelected ? 'Clear All' : 'Select All'}
-                                    </button>
-                                )}
-                            </div>
+        <div className="space-y-3">
+            {subjectGroups.map((group) => (
+                <section key={group.key} className={group.className}>
+                    {group.heading && (
+                        <div className="mb-2">
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-800">
+                                {group.heading}
+                            </p>
+                            <p className="mt-1 text-xs text-amber-900/80">
+                                {group.description}
+                            </p>
                         </div>
+                    )}
 
-                        {showSubtopics && (
-                            <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-gray-200 pl-2 pr-1">
-                                {subtopics.map((subtopic) => (
-                                    <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
-                                        <input
-                                            type="checkbox"
-                                            className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400"
-                                            checked={selectedSubtopicSet.has(subtopic.slug)}
-                                            onChange={() => handleSubtopicChange(subtopic.slug)}
-                                        />
-                                        <span className="ml-2 truncate text-xs text-gray-500 group-hover/sub:text-gray-800" title={subtopic.label}>
-                                            {subtopic.label}
-                                        </span>
-                                    </label>
-                                ))}
-                            </div>
-                        )}
+                    <div className="space-y-1">
+                        {group.subjects.map((subject) => {
+                            const subjectSlug = subject.slug;
+                            const isSelected = selectedSubjectSet.has(subjectSlug);
+                            const subtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
+                            const hasSubtopics = subtopics.length > 0;
+                            const isExpanded = expandedSubjectSlug === subjectSlug;
+                            const showSubtopics = isSelected && hasSubtopics && isExpanded;
+                            const subjectSubtopicSlugs = subtopics
+                                .map((subtopic) => subtopic?.slug)
+                                .filter(Boolean);
+
+                            const allSubtopicsSelected = showSubtopics
+                                && subjectSubtopicSlugs.every((slug) => selectedSubtopicSet.has(slug));
+
+                            return (
+                                <div key={subjectSlug} className="flex min-w-0 flex-col">
+                                    <div className="flex items-center justify-between gap-2 py-1">
+                                        <label className="flex min-w-0 cursor-pointer items-center">
+                                            <input
+                                                type="checkbox"
+                                                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                                checked={isSelected}
+                                                onChange={() => handleSubjectChange(subjectSlug)}
+                                            />
+                                            <span className="ml-3 flex min-w-0 items-center gap-2">
+                                                <span
+                                                    className={`truncate text-sm ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`}
+                                                    title={subject.label}
+                                                >
+                                                    {subject.label}
+                                                </span>
+                                                {subjectSlug === LEGACY_OPTIONAL_SUBJECT_SLUG && (
+                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                                                        Optional
+                                                    </span>
+                                                )}
+                                            </span>
+                                        </label>
+
+                                        <div className="flex shrink-0 items-center gap-1.5">
+                                            {isSelected && hasSubtopics && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setExpandedSubjectSlug(isExpanded ? null : subjectSlug)}
+                                                    aria-label={isExpanded ? `Hide ${subject.label} subtopics` : `Show ${subject.label} subtopics`}
+                                                    className="rounded border border-gray-300 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                                >
+                                                    {isExpanded ? 'Hide' : 'Show'}
+                                                </button>
+                                            )}
+                                            {showSubtopics && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleSubjectBulkToggle(subjectSlug)}
+                                                    aria-label={allSubtopicsSelected ? `Clear all ${subject.label} subtopics` : `Select all ${subject.label} subtopics`}
+                                                    className="rounded border border-blue-300 px-2 py-0.5 text-xs font-semibold text-blue-700 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                                >
+                                                    {allSubtopicsSelected ? 'Clear All' : 'Select All'}
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {showSubtopics && (
+                                        <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-gray-200 pl-2 pr-1">
+                                            {subtopics.map((subtopic) => (
+                                                <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
+                                                    <input
+                                                        type="checkbox"
+                                                        className="h-3 w-3 rounded border-gray-300 text-blue-500 focus:ring-blue-400"
+                                                        checked={selectedSubtopicSet.has(subtopic.slug)}
+                                                        onChange={() => handleSubtopicChange(subtopic.slug)}
+                                                    />
+                                                    <span className="ml-2 truncate text-xs text-gray-500 group-hover/sub:text-gray-800" title={subtopic.label}>
+                                                        {subtopic.label}
+                                                    </span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
-                );
-            })}
+                </section>
+            ))}
         </div>
     );
 };

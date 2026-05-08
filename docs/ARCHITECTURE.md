@@ -81,8 +81,8 @@ The landing route now stays on a lightweight startup path:
 
 ### Layer 4: localStorage init cache
 
-- `INIT_CACHE_VERSION = 'v8'`
-- runtime keys `gateqa_index_cache_v8` and `gateqa_full_bank_cache_v8`
+- `INIT_CACHE_VERSION = 'v11'`
+- runtime keys `gateqa_index_cache_v11` and `gateqa_full_bank_cache_v11`
 - `_readCache()` migrates by removing legacy `gateqa_init_cache_v1`, `gateqa_init_cache_v2`, `gateqa_init_cache_v3`, and `gateqa_init_cache_v7`.
 - `_writeCache()` handles quota/storage errors via `isQuotaExceededError()`.
 - Filter defaults treat the current year as the fallback max year until structured question data is loaded, so newly imported years such as 2026 can appear in the filter UI as soon as the cache is refreshed.
@@ -138,7 +138,7 @@ Responsibilities:
 Performance constants:
 
 - `MAX_SUBTOPICS_PER_QUESTION = 1`
-- `INIT_CACHE_VERSION = 'v8'`
+- `INIT_CACHE_VERSION = 'v11'`
 
 BUG-007 guardrail:
 
@@ -273,6 +273,12 @@ This guarantees zero shared effects between mock and practice, eliminating navig
 
 - All step-modifying effects in `MockTestShell` now actively check `exitInProgressRef` before making any state changes.
 
+### 4. Mock Auto-Award Policy
+
+- `MCQ`, `MSQ`, and `NAT` remain the only normally evaluated answer types.
+- `AMBIGUOUS` and `MARKS_TO_ALL` records are mock-only auto-awarded questions: they count toward paper completeness, add their marks automatically, and do not require a response.
+- Auto-awarded mock questions are not converted into normal answers and are not written back as solved practice progress.
+
 ### Key Benefits
 
 - **No race conditions**: Mock and practice environments cannot interfere with each other.
@@ -354,29 +360,28 @@ Synchronized params:
 
 ## Bundle Composition
 
-Verified via `npm run analyze:bundle` (2026-04-10). Chunks sorted by size:
+Verified via `npm run build` (2026-05-08). Chunks sorted by size:
 
 | Chunk | Raw | Gzip | Notes |
 |-------|-----|------|-------|
-| `index` (app shell + landing) | 159.02 kB | 42.80 kB | FilterProvider, routing, Home/Landing, PageShell |
-| `vendor-react` | 142.34 kB | 45.82 kB | React 18 + ReactDOM + Scheduler |
-| `MockShell` | 79.81 kB | 21.66 kB | **Lazy chunk** — mock test context + UI |
-| `vendor-misc` | 50.52 kB | 18.61 kB | DOMPurify, KaTeX, react-router |
-| `ExplorePage` | 44.14 kB | 11.65 kB | **Lazy chunk** — explore/browse |
-| `vendor-ui` | 37.65 kB | 14.30 kB | react-icons, rc-slider, react-select |
-| `SolvePage` | 22.71 kB | 7.00 kB | **Lazy chunk** — solve/practice question |
-| `MockHistoryPage` | 9.48 kB | 2.45 kB | **Lazy chunk** — mock attempt history |
-| `CalculatorWidget` | 8.05 kB | 3.14 kB | **Lazy chunk** — scientific calculator |
-| `InsightsPage` | 7.84 kB | 2.23 kB | **Lazy chunk** — weak-topic insights |
+| `vendor-misc` | 458.25 kB | 136.41 kB | shared third-party runtime |
+| `index` (app shell + landing) | 150.58 kB | 40.87 kB | routing, Home/Landing, PageShell |
+| `vendor-react` | 142.34 kB | 45.83 kB | React 18 + ReactDOM + Scheduler |
+| `MockShell` | 81.04 kB | 22.02 kB | **Lazy chunk** - mock test context + UI |
+| `ExplorePage` | 45.38 kB | 12.03 kB | **Lazy chunk** - explore/browse |
+| `InsightsPage` | 45.26 kB | 10.65 kB | **Lazy chunk** - practice analytics + mock history tab |
+| `vendor-ui` | 41.04 kB | 15.40 kB | react-icons, rc-slider, react-select |
+| `SolvePage` | 22.71 kB | 7.01 kB | **Lazy chunk** - solve/practice question |
+| `CalculatorWidget` | 8.05 kB | 3.14 kB | **Lazy chunk** - scientific calculator |
 | `vendor-mathjax` | 5.88 kB | 2.26 kB | MathJax loader shim (deferred) |
-| `Toast` | 0.37 kB | 0.29 kB | **Lazy chunk** — toast notification |
+| `Toast` | 0.37 kB | 0.30 kB | **Lazy chunk** - toast notification |
 
 Key observations:
 
 - **MathJax is NOT in the landing chunk.** `vendor-mathjax` is a separate lazy chunk loaded only inside practice/mock shells.
-- **PracticeShell and MockShell are lazy chunks**, loaded on-demand when the user enters practice or mock mode.
-- **Landing critical path**: `index` + `vendor-react` + `vendor-misc` + `vendor-ui` = ~390 kB raw / ~121 kB gzip.
-- CSS is split into `index` (73.73 kB), `MockShell` (15.22 kB), and `vendor-ui` (4.92 kB). MockShell CSS loads only with its JS chunk.
+- **Practice pages and MockShell are lazy chunks**, loaded on-demand when the user enters practice, solve, insights, or mock mode.
+- **Mock history now lives inside `InsightsPage`**; `/history/mock-tests` redirects to `/insights?tab=mock-history`.
+- CSS is split into `index`, `MockShell`, and `vendor-ui`. MockShell CSS loads only with its JS chunk.
 
 ## Startup Split Status (Phase 1 / 1b)
 
@@ -386,7 +391,7 @@ The startup split is now live end to end:
 - Practice boot loads `public/question-search-index.json` instead of the full bank.
 - `QuestionService` and `AnswerService` initialize only when practice, deep-link, or filter URLs require question data.
 - `FilterProvider` can seed totals/year ranges/subject lists from the manifest before the full bank is loaded.
-- Practice and mock shells are lazy-loaded from `App.jsx` instead of being parsed on cold landing load.
+- Practice route pages and the mock shell are lazy-loaded from `App.jsx` instead of being parsed on cold landing load.
 - Practice question HTML is fetched lazily from `public/question-detail-shards/*.json` for the active question only.
 - Mock mode still requests the full bank, which keeps the existing setup/exam flows intact.
 - MathJax runtime loads only inside practice/mock shell code.

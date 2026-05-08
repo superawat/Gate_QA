@@ -147,16 +147,34 @@ describe("QuestionService", () => {
     })).toBe("Discrete Mathematics");
   });
 
-  test("classifies legacy software and language questions into Legacy / Other", () => {
+  test("maps legacy filter labels onto the stable legacy-other slug", () => {
+    expect(QuestionService.normalizeSubjectSlug("Legacy / Other")).toBe("legacy-other");
+    expect(QuestionService.normalizeSubjectSlug("Other / Optional")).toBe("legacy-other");
+    expect(QuestionService.getSubjectLabelBySlug("legacy-other")).toBe("Other / Optional");
+  });
+
+  test("classifies legacy software and language questions into Other / Optional", () => {
     expect(QuestionService.resolveCanonicalSubject({
       title: "GATE CSE 2015 Set 1 | Question: 42",
       tags: ["gatecse-2015-set1", "is&software-engineering", "software-testing"],
-    })).toBe("Legacy / Other");
+    })).toBe("Other / Optional");
 
     expect(QuestionService.resolveCanonicalSubject({
       title: "GATE CSE 1995 | Question: 1.13",
       tags: ["gate1995", "pascal", "out-of-syllabus-now"],
-    })).toBe("Legacy / Other");
+    })).toBe("Other / Optional");
+  });
+
+  test("reclassifies curated out-of-syllabus 1990s questions into Other / Optional", () => {
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 1995 | Question: 2.15",
+      tags: ["gate1995", "numerical-methods", "newton-raphson", "out-of-syllabus-now"],
+    })).toBe("Other / Optional");
+
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 1996 | Question: 1.22",
+      tags: ["gate1996", "co-and-architecture", "8085-microprocessor", "out-of-syllabus-now"],
+    })).toBe("Other / Optional");
   });
 
   test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {
