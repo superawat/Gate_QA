@@ -14,29 +14,29 @@ const lossScenarios = [
     title: 'Private / Incognito window',
     description: 'Progress disappears when that private window is closed.',
     icon: FaExclamationTriangle,
-    iconClassName: 'text-amber-600',
-    surfaceClassName: 'border-amber-200 bg-amber-50'
+    iconClassName: 'text-[color:var(--color-warning-text)]',
+    surfaceClassName: 'border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)]'
   },
   {
     title: 'Browser data is cleared',
     description: 'If site data or local storage is cleared, your progress is removed too.',
     icon: FaTrashAlt,
-    iconClassName: 'text-rose-600',
-    surfaceClassName: 'border-rose-200 bg-rose-50'
+    iconClassName: 'text-[color:var(--color-danger-text)]',
+    surfaceClassName: 'border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)]'
   },
   {
     title: 'Different browser or device',
     description: 'Your laptop, phone, Chrome, and Safari do not share the same saved data.',
     icon: FaLaptop,
-    iconClassName: 'text-sky-600',
-    surfaceClassName: 'border-sky-200 bg-sky-50'
+    iconClassName: 'text-[color:var(--color-info-text)]',
+    surfaceClassName: 'border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)]'
   },
   {
     title: 'Storage is full',
     description: 'In rare low-space cases, the browser may stop saving new progress.',
     icon: FaExclamationTriangle,
-    iconClassName: 'text-orange-600',
-    surfaceClassName: 'border-orange-200 bg-orange-50'
+    iconClassName: 'text-[color:var(--color-warning-text)]',
+    surfaceClassName: 'border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)]'
   }
 ];
 
@@ -60,19 +60,19 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
       />
 
       <div
-        className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_32px_80px_rgba(15,23,42,0.18)]"
+        className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_32px_80px_rgba(15,23,42,0.18)]"
         role="dialog"
         aria-labelledby="data-policy-title"
         aria-modal="true"
       >
-        <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 sm:px-6">
-          <h2 id="data-policy-title" className="flex items-center gap-2 text-lg font-semibold text-slate-950 sm:text-xl">
-            <FaShieldAlt className="text-sky-600" />
+        <div className="flex items-center justify-between border-b border-[color:var(--color-border)] px-5 py-4 sm:px-6">
+          <h2 id="data-policy-title" className="flex items-center gap-2 text-lg font-semibold text-[color:var(--color-text)] sm:text-xl">
+            <FaShieldAlt className="text-[color:var(--color-info-text)]" />
             Data Persistence & Privacy Policy
           </h2>
           <button
             onClick={onClose}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-text-muted)] transition hover:border-[color:var(--color-border)] hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)]"
             aria-label="Close modal"
           >
             <FaTimes />
@@ -80,29 +80,29 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
         </div>
 
         <div className="flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
-          <div className="space-y-6 text-slate-700">
-            <section className="rounded-[24px] border border-slate-200 bg-[linear-gradient(135deg,#f8fbff_0%,#eef7ff_100%)] p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">Quick Summary</p>
-              <h3 className="mt-2 text-2xl font-semibold text-slate-950">Your progress stays on your device</h3>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+          <div className="space-y-6 text-[color:var(--color-text)]">
+            <section className="rounded-[24px] border border-[color:var(--color-border)] bg-[color:var(--color-primary-soft)] p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--color-info-text)]">Quick Summary</p>
+              <h3 className="mt-2 text-2xl font-semibold text-[color:var(--color-text)]">Your progress stays on your device</h3>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-[color:var(--color-text-muted)] sm:text-base">
                 Solved status and bookmarks are saved in your browser using local storage. We do not store this progress on a central server, so it stays private, but it also does not sync automatically.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-emerald-200 bg-white p-4">
-                  <p className="text-sm font-semibold text-emerald-800">Good news</p>
-                  <p className="mt-1 text-sm leading-6 text-slate-600">No account needed. No personal progress is stored on our servers.</p>
+                <div className="rounded-2xl border border-[color:var(--color-success-border)] bg-[color:var(--color-surface)] p-4">
+                  <p className="text-sm font-semibold text-[color:var(--color-success-text)]">Good news</p>
+                  <p className="mt-1 text-sm leading-6 text-[color:var(--color-text-muted)]">No account needed. No personal progress is stored on our servers.</p>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                  <p className="text-sm font-semibold text-slate-900">Main limitation</p>
-                  <p className="mt-1 text-sm leading-6 text-slate-600">If browser storage is lost, your saved progress is lost too.</p>
+                <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
+                  <p className="text-sm font-semibold text-[color:var(--color-text)]">Main limitation</p>
+                  <p className="mt-1 text-sm leading-6 text-[color:var(--color-text-muted)]">If browser storage is lost, your saved progress is lost too.</p>
                 </div>
               </div>
             </section>
 
             <section>
               <div className="flex items-center gap-2">
-                <FaExclamationTriangle className="text-amber-500" />
-                <h3 className="text-lg font-semibold text-slate-950">When progress may not be saved</h3>
+                <FaExclamationTriangle className="text-[color:var(--color-warning-text)]" />
+                <h3 className="text-lg font-semibold text-[color:var(--color-text)]">When progress may not be saved</h3>
               </div>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {lossScenarios.map((item) => {
@@ -113,12 +113,12 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
                       className={`rounded-2xl border p-4 ${item.surfaceClassName}`}
                     >
                       <div className="flex items-start gap-3">
-                        <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm">
+                        <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[color:var(--color-surface)] shadow-sm">
                           <Icon className={item.iconClassName} />
                         </span>
                         <div>
-                          <p className="text-sm font-semibold text-slate-950">{item.title}</p>
-                          <p className="mt-1 text-sm leading-6 text-slate-700">{item.description}</p>
+                          <p className="text-sm font-semibold text-[color:var(--color-text)]">{item.title}</p>
+                          <p className="mt-1 text-sm leading-6 text-[color:var(--color-text)]">{item.description}</p>
                         </div>
                       </div>
                     </div>
@@ -127,45 +127,45 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
               </div>
             </section>
 
-            <section className="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+            <section className="rounded-[24px] border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-5">
               <div className="flex items-center gap-2">
-                <FaCloudDownloadAlt className="text-sky-600" />
-                <h3 className="text-lg font-semibold text-slate-950">How to protect your progress</h3>
+                <FaCloudDownloadAlt className="text-[color:var(--color-info-text)]" />
+                <h3 className="text-lg font-semibold text-[color:var(--color-text)]">How to protect your progress</h3>
               </div>
               <ol className="mt-4 space-y-3">
                 {safetySteps.map((step, index) => (
-                  <li key={step} className="flex gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+                  <li key={step} className="flex gap-3 rounded-2xl bg-[color:var(--color-surface)] px-4 py-3 shadow-sm">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-text)] text-xs font-semibold text-[color:var(--color-surface)]">
                       {index + 1}
                     </span>
-                    <span className="text-sm leading-6 text-slate-700">{step}</span>
+                    <span className="text-sm leading-6 text-[color:var(--color-text)]">{step}</span>
                   </li>
                 ))}
               </ol>
             </section>
 
-            <section className="rounded-[24px] border border-emerald-200 bg-emerald-50 p-5">
+            <section className="rounded-[24px] border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] p-5">
               <div className="flex items-center gap-2">
-                <FaCheckCircle className="text-emerald-600" />
-                <h3 className="text-lg font-semibold text-slate-950">Backup and transfer</h3>
+                <FaCheckCircle className="text-[color:var(--color-success-text)]" />
+                <h3 className="text-lg font-semibold text-[color:var(--color-text)]">Backup and transfer</h3>
               </div>
-              <p className="mt-3 text-sm leading-7 text-slate-700">
+              <p className="mt-3 text-sm leading-7 text-[color:var(--color-text)]">
                 Use <strong>Export JSON</strong> to download a backup. On another browser or device, use <strong>Import</strong> to restore it. You can merge with existing progress or replace it fully.
               </p>
             </section>
 
-            <section className="border-t border-slate-200 pt-4">
-              <p className="text-center text-xs leading-6 text-slate-500">
+            <section className="border-t border-[color:var(--color-border)] pt-4">
+              <p className="text-center text-xs leading-6 text-[color:var(--color-text-muted)]">
                 This app is client-side only. No personal progress data is sent to a server.
               </p>
             </section>
           </div>
         </div>
 
-        <div className="flex justify-end border-t border-slate-200 px-5 py-4 sm:px-6">
+        <div className="flex justify-end border-t border-[color:var(--color-border)] px-5 py-4 sm:px-6">
           <button
             onClick={onClose}
-            className="inline-flex min-h-[44px] items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="inline-flex min-h-[44px] items-center rounded-xl bg-[color:var(--color-text)] px-4 py-2 text-sm font-semibold text-[color:var(--color-surface)] transition hover:bg-slate-800"
           >
             Understood
           </button>
