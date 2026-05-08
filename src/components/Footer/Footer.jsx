@@ -10,34 +10,31 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="mt-auto w-full border-t border-gray-200 bg-gray-50 px-1 py-0 sm:px-1.5">
-        <div className="mx-auto flex max-w-7xl flex-row items-center justify-between text-[10px] leading-none sm:min-h-[24px] sm:text-xs">
-          <div className="flex items-center gap-1 sm:gap-1.5">
-            <span className="text-gray-800">
-              Powered by <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="inline-block font-semibold text-blue-600 hover:underline">GATE Overflow</a>
-            </span>
-            <button
-              type="button"
-              onClick={() => setIsDataPolicyOpen(true)}
-              aria-label="Open data policy"
-              className="inline-flex items-center gap-1 rounded border border-red-500 bg-red-50 px-1 py-0 text-[10px] text-black transition-colors hover:bg-red-100 sm:text-xs"
-              title="Data Persistence & Policy"
-            >
-              <FaExclamationTriangle className="size-2 text-red-600 sm:size-2.5" />
-              <span className="hidden sm:inline">Data Policy</span>
-            </button>
-          </div>
-
+      <footer className="mt-auto w-full border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-1.5 px-4">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 text-[10px] sm:text-xs text-[color:var(--color-text-muted)]">
+          <span>
+            Powered by{' '}
+            <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[color:var(--color-primary-text)] hover:underline">
+              GATE Overflow
+            </a>
+          </span>
+          <span className="text-[color:var(--color-border)]">|</span>
+          <button
+            type="button"
+            onClick={() => setIsDataPolicyOpen(true)}
+            aria-label="Open data policy"
+            className="hover:text-[color:var(--color-text)] transition-colors inline-flex items-center gap-1"
+          >
+            <FaExclamationTriangle className="size-2 sm:size-2.5 text-amber-500" /> Data Policy
+          </button>
+          <span className="text-[color:var(--color-border)]">|</span>
           <button
             type="button"
             onClick={() => setIsSupportOpen(true)}
             aria-label="Support Gate QA"
-            className="group inline-flex items-center gap-1 rounded-full border border-pink-800 bg-pink-800 px-1.5 py-0 text-[10px] text-white transition-all hover:border-pink-900 hover:bg-pink-900 sm:text-xs shadow-sm hover:shadow-md"
+            className="hover:text-[color:var(--color-text)] transition-colors inline-flex items-center gap-1"
           >
-            <span className="hidden font-semibold tracking-tight text-white sm:inline">
-              Support Me
-            </span>
-            <FaHeart className="size-2 text-white transition-transform hover:scale-110 sm:size-2.5" />
+            Support Me <FaHeart className="size-2 sm:size-2.5 text-pink-500 transition-transform hover:scale-110" />
           </button>
         </div>
       </footer>
