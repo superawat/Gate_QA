@@ -4,6 +4,15 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### PLAN-2026: Phase 4 UI Polish and WebP Optimizations -> Status: Done
+- Converted 453 question images from PNG/JPG to WebP format, saving 10.59 MB (72.9% reduction) in `public/question-images/`.
+- Regenerated all 58 question detail shards and the search index to point to the new `.webp` image references.
+- Added extensive keyboard shortcuts (`src/utils/keyboardShortcuts.js`): `/` to focus search, `F` to focus filters, and `1-4`, `Enter`, `B`, `M`, `S` for answer panel actions.
+- Replaced hardcoded `dark:` Tailwind classes across Explore, Solve, and Practice UI surfaces with theme-aware CSS variables for a consistent dark mode.
+- Added strict Axe accessibility snapshots asserting landmark, heading, and named-control structures.
+- Added an automated bundle budget reporting script (`scripts/qa/validate-bundle-budget.mjs`) to warn when chunk sizes exceed strict limits.
+- Fixed E2E Playwright tests that were broken by the Insights UI migration and search input label changes.
+
 ### PLAN-2026: May 2026 Plan Cleanup and Bug Follow-through -> Status: Done
 - Removed the Insights subtitle and internal Answer Coverage panel so the dashboard stays focused on learner-facing analytics.
 - Kept the Skill Radar stable by disabling radar animation after render.
