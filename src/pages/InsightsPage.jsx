@@ -1010,19 +1010,19 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
   return (
     <div className="space-y-4">
       <div className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-amber-700">Due Now</p>
-          <p className="text-2xl font-bold text-amber-900">{formatNumber(reviewQueue.length)}</p>
+        <div className="rounded-2xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-warning-text)]">Due Now</p>
+          <p className="text-2xl font-bold text-[color:var(--color-warning-text)]">{formatNumber(reviewQueue.length)}</p>
         </div>
-        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-rose-700">Hard Due</p>
-          <p className="text-2xl font-bold text-rose-900">
+        <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Hard Due</p>
+          <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">
             {formatNumber(reviewQueue.filter((item) => item.difficultyLabel === "Hard").length)}
           </p>
         </div>
-        <div className="rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-sky-700">Oldest</p>
-          <p className="text-2xl font-bold text-sky-900">
+        <div className="rounded-2xl border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">Oldest</p>
+          <p className="text-2xl font-bold text-[color:var(--color-info-text)]">
             {formatNumber(Math.max(...reviewQueue.map((item) => Number(item.daysOverdue || 0)), 0))}d
           </p>
         </div>
@@ -1043,33 +1043,33 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
               key={`${item.storageKey}-${index}`}
               type="button"
               onClick={() => handleNavigateToQuestion(item.storageKey)}
-              className="group block w-full rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50/60 to-white px-4 py-3.5 text-left transition hover:border-amber-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-amber-300"
+              className="group block w-full rounded-2xl border border-[color:var(--color-warning-border)] bg-gradient-to-r from-[color:var(--color-warning-soft)] to-[color:var(--color-surface)] px-4 py-3.5 text-left transition hover:border-[color:var(--color-warning-text)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[color:var(--color-warning-border)]"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <FaCalendarCheck className="text-amber-500" />
-                    <p className="truncate text-sm font-semibold text-slate-900">{item.storageKey}</p>
+                    <FaCalendarCheck className="text-[color:var(--color-warning-text)]" />
+                    <p className="truncate text-sm font-semibold text-[color:var(--color-text)]">{item.storageKey}</p>
                     <DifficultyBadge label={item.difficultyLabel} score={item.difficultyScore} />
                     {item.type ? (
-                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                      <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
                         {item.type}
                       </span>
                     ) : null}
                   </div>
-                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                    <span className="rounded-full bg-sky-50 px-2 py-0.5 font-semibold text-sky-700">{item.subjectLabel}</span>
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)]">
+                    <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-info-text)]">{item.subjectLabel}</span>
                     {subtopicLabels.map((label) => (
-                      <span key={label} className="rounded-full bg-violet-50 px-2 py-0.5 font-semibold text-violet-700">
+                      <span key={label} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-primary-text)]">
                         {label}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div className="shrink-0 text-right">
-                  <p className="text-xs font-semibold text-amber-700">{dueLabel}</p>
-                  <p className="mt-0.5 text-[10px] text-slate-500">Level {item.reviewLevel || 0}</p>
-                  <FaArrowRight className="mt-1.5 text-xs text-slate-300 transition-colors group-hover:text-amber-600 ml-auto" />
+                  <p className="text-xs font-semibold text-[color:var(--color-warning-text)]">{dueLabel}</p>
+                  <p className="mt-0.5 text-[10px] text-[color:var(--color-text-muted)]">Level {item.reviewLevel || 0}</p>
+                  <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] transition-colors group-hover:text-[color:var(--color-warning-text)] ml-auto" />
                 </div>
               </div>
             </button>
@@ -1138,29 +1138,29 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
     <div className="space-y-5">
       {/* Summary strip */}
       <div className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Total Wrong</p>
-          <p className="text-2xl font-bold text-slate-900">{formatNumber(wrongQuestions.length)}</p>
+        <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">Total Wrong</p>
+          <p className="text-2xl font-bold text-[color:var(--color-text)]">{formatNumber(wrongQuestions.length)}</p>
         </div>
-        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-rose-600">Still Wrong</p>
-          <p className="text-2xl font-bold text-rose-900">{formatNumber(stillWrongCount)}</p>
-          <p className="text-[10px] text-rose-600">Last attempt was incorrect</p>
+        <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Still Wrong</p>
+          <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">{formatNumber(stillWrongCount)}</p>
+          <p className="text-[10px] text-[color:var(--color-danger-text)]">Last attempt was incorrect</p>
         </div>
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-emerald-600">Recovered</p>
-          <p className="text-2xl font-bold text-emerald-900">{formatNumber(recoveredCount)}</p>
-          <p className="text-[10px] text-emerald-600">Now answered correctly</p>
+        <div className="rounded-2xl border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-success-text)]">Recovered</p>
+          <p className="text-2xl font-bold text-[color:var(--color-success-text)]">{formatNumber(recoveredCount)}</p>
+          <p className="text-[10px] text-[color:var(--color-success-text)]">Now answered correctly</p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-        <FaFilter className="text-slate-400 text-sm" />
+      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-sm">
+        <FaFilter className="text-[color:var(--color-text-muted)] text-sm" />
         <select
           value={subjectFilter}
           onChange={(e) => setSubjectFilter(e.target.value)}
-          className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-sm text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:ring-1 focus:ring-[color:var(--color-primary)]"
         >
           <option value="all">All Subjects</option>
           {subjects.map((s) => (
@@ -1170,13 +1170,13 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-sm text-[color:var(--color-text)] focus:border-[color:var(--color-primary)] focus:ring-1 focus:ring-[color:var(--color-primary)]"
         >
           <option value="all">All Status</option>
           <option value="still-wrong">Still Wrong</option>
           <option value="recovered">Recovered</option>
         </select>
-        <span className="ml-auto text-xs text-slate-500">
+        <span className="ml-auto text-xs text-[color:var(--color-text-muted)]">
           {filtered.length} question{filtered.length !== 1 ? "s" : ""}
         </span>
       </div>
@@ -1194,8 +1194,8 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
               key={`${q.storageKey}-${index}`}
               className={`group rounded-2xl border px-4 py-3.5 transition-all hover:shadow-md cursor-pointer ${
                 q.lastCorrect
-                  ? "border-emerald-200 bg-gradient-to-r from-emerald-50/30 to-white hover:border-emerald-300"
-                  : "border-rose-200 bg-gradient-to-r from-rose-50/30 to-white hover:border-rose-300"
+                  ? "border-[color:var(--color-success-border)] bg-gradient-to-r from-[color:var(--color-success-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-success-text)]"
+                  : "border-[color:var(--color-danger-border)] bg-gradient-to-r from-[color:var(--color-danger-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-danger-text)]"
               }`}
               onClick={() => handleNavigateToQuestion(q.storageKey)}
               role="button"
@@ -1206,26 +1206,26 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     {q.lastCorrect ? (
-                      <FaCheckCircle className="text-emerald-500 shrink-0" />
+                      <FaCheckCircle className="text-[color:var(--color-success-text)] shrink-0" />
                     ) : (
-                      <FaTimesCircle className="text-rose-500 shrink-0" />
+                      <FaTimesCircle className="text-[color:var(--color-danger-text)] shrink-0" />
                     )}
-                    <p className="text-sm font-semibold text-slate-900 truncate">
+                    <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">
                       {q.storageKey}
                     </p>
                     {q.type && (
-                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                      <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
                         {q.type}
                       </span>
                     )}
                     <DifficultyBadge label={q.difficultyLabel} score={q.difficultyScore} />
                   </div>
                   <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                    <span className="rounded-full bg-sky-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-700">
+                    <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">
                       {q.subjectLabel}
                     </span>
                     {subtopicLabels.map((st) => (
-                      <span key={st} className="rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-600">
+                      <span key={st} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 text-[10px] font-semibold text-[color:var(--color-primary-text)]">
                         {st}
                       </span>
                     ))}
@@ -1233,16 +1233,16 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
                 </div>
 
                 <div className="shrink-0 text-right">
-                  <p className="text-xs text-slate-500">{relativeTimeLabel(q.lastSubmittedAt)}</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">
+                  <p className="text-xs text-[color:var(--color-text-muted)]">{relativeTimeLabel(q.lastSubmittedAt)}</p>
+                  <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
                     {q.correctAttempts}✓ {q.incorrectAttempts}✗ of {q.attempts}
                   </p>
                   {q.averageDurationMs > 0 ? (
-                    <p className="text-[10px] text-slate-400 mt-0.5">
+                    <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
                       Avg {formatDuration(q.averageDurationMs)}
                     </p>
                   ) : null}
-                  <FaArrowRight className="mt-1.5 text-xs text-slate-300 group-hover:text-sky-500 transition-colors ml-auto" />
+                  <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] group-hover:text-[color:var(--color-primary)] transition-colors ml-auto" />
                 </div>
               </div>
             </div>
