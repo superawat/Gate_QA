@@ -46,6 +46,7 @@ import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
+import useChartTheme from "../hooks/useChartTheme";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -145,42 +146,42 @@ const ChartTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="rounded-xl border border-slate-200 bg-white/95 p-4 shadow-xl backdrop-blur">
-        <p className="font-semibold text-slate-900">{data.label || data.name}</p>
+      <div className="rounded-xl p-4 shadow-xl backdrop-blur" style={{ backgroundColor: "var(--chart-tooltip-bg)", border: "1px solid var(--chart-tooltip-border)" }}>
+        <p className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{data.label || data.name}</p>
         {data.subjectLabel ? (
-          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+          <p className="text-[11px] font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--chart-tooltip-muted)" }}>
             {data.subjectLabel}
           </p>
         ) : null}
         <div className="grid gap-1.5 mt-2">
           {data.accuracyRate != null && (
-            <p className="text-sm flex justify-between gap-4 text-slate-600">
+            <p className="text-sm flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>
               <span>Accuracy:</span>
-              <span className="font-semibold text-slate-900">
+              <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>
                 {formatPercent(data.accuracyRate * 100)}
               </span>
             </p>
           )}
           {data.attemptedCount != null && (
-            <p className="text-sm flex justify-between gap-4 text-slate-600">
+            <p className="text-sm flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>
               <span>Attempts:</span>
-              <span className="font-semibold text-slate-900">
+              <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>
                 {formatNumber(data.attemptedCount)}
               </span>
             </p>
           )}
           {data.coverageRate != null && (
-            <p className="text-sm flex justify-between gap-4 text-slate-600">
+            <p className="text-sm flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>
               <span>Coverage:</span>
-              <span className="font-semibold text-slate-900">
+              <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>
                 {formatPercent(data.coverageRate * 100)}
               </span>
             </p>
           )}
           {data.value != null && data.accuracyRate == null && (
-            <p className="text-sm flex justify-between gap-4 text-slate-600">
+            <p className="text-sm flex justify-between gap-4" style={{ color: "var(--chart-tooltip-muted)" }}>
               <span>Count:</span>
-              <span className="font-semibold text-slate-900">{data.value}</span>
+              <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{data.value}</span>
             </p>
           )}
         </div>
@@ -211,8 +212,7 @@ const ProgressRing = ({ value, size = 80, strokeWidth = 7, color = "#059669", la
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke="currentColor"
-            className="text-slate-100"
+            stroke="var(--chart-ring-track)"
             strokeWidth={strokeWidth}
           />
           <circle
@@ -229,13 +229,13 @@ const ProgressRing = ({ value, size = 80, strokeWidth = 7, color = "#059669", la
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-base font-bold text-slate-900">
+          <span className="text-base font-bold" style={{ color: "var(--chart-tooltip-text)" }}>
             {formatPercent(safeValue)}
           </span>
         </div>
       </div>
-      {label && <p className="text-xs font-semibold text-slate-700 text-center leading-tight">{label}</p>}
-      {sublabel && <p className="text-[10px] text-slate-500 text-center">{sublabel}</p>}
+      {label && <p className="text-xs font-semibold text-center leading-tight" style={{ color: "var(--chart-tooltip-text)" }}>{label}</p>}
+      {sublabel && <p className="text-[10px] text-center" style={{ color: "var(--chart-tooltip-muted)" }}>{sublabel}</p>}
     </div>
   );
 };
@@ -291,6 +291,7 @@ const AccuracyBar = ({ accuracyRate, className = "" }) => {
 /* ── Subject Performance Chart ──────────────────────────────────────────── */
 
 const SubjectAccuracyChart = ({ data = [] }) => {
+  const chartTheme = useChartTheme();
   const chartData = useMemo(() => {
     return [...data]
       .sort((a, b) => a.accuracyRate - b.accuracyRate)
@@ -311,23 +312,23 @@ const SubjectAccuracyChart = ({ data = [] }) => {
           data={chartData}
           margin={{ top: 20, right: 30, left: -20, bottom: 65 }}
         >
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartTheme.grid} />
           <XAxis
             dataKey="shortLabel"
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 12, fill: "#64748b" }}
+            tick={{ fontSize: 12, fill: chartTheme.tick }}
             angle={-45}
             textAnchor="end"
           />
           <YAxis
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 12, fill: "#64748b" }}
+            tick={{ fontSize: 12, fill: chartTheme.tick }}
             domain={[0, 100]}
             tickFormatter={(val) => `${val}%`}
           />
-          <RechartsTooltip content={<ChartTooltip />} cursor={{ fill: "rgba(241, 245, 249, 0.5)" }} />
+          <RechartsTooltip content={<ChartTooltip />} cursor={{ fill: chartTheme.cursor }} />
           <Bar dataKey="displayAccuracy" radius={[6, 6, 0, 0]} maxBarSize={60}>
             {chartData.map((entry, index) => {
               const tone = getAccuracyTone(entry.accuracyRate);
@@ -343,6 +344,7 @@ const SubjectAccuracyChart = ({ data = [] }) => {
 /* ── Weak Subtopics Chart ───────────────────────────────────────────────── */
 
 const WeakSubtopicsChart = ({ data = [] }) => {
+  const chartTheme = useChartTheme();
   const chartData = useMemo(() => {
     return [...data]
       .filter((item) => item.accuracyRate < 0.7)
@@ -362,12 +364,12 @@ const WeakSubtopicsChart = ({ data = [] }) => {
     <div className="h-[350px] w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={chartTheme.grid} />
           <XAxis
             type="number"
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 12, fill: "#64748b" }}
+            tick={{ fontSize: 12, fill: chartTheme.tick }}
             domain={[0, 100]}
             tickFormatter={(val) => `${val}%`}
           />
@@ -377,9 +379,9 @@ const WeakSubtopicsChart = ({ data = [] }) => {
             axisLine={false}
             tickLine={false}
             width={160}
-            tick={{ fontSize: 11, fill: "#475569" }}
+            tick={{ fontSize: 11, fill: chartTheme.tick }}
           />
-          <RechartsTooltip content={<ChartTooltip />} cursor={{ fill: "rgba(241, 245, 249, 0.5)" }} />
+          <RechartsTooltip content={<ChartTooltip />} cursor={{ fill: chartTheme.cursor }} />
           <Bar dataKey="displayAccuracy" radius={[0, 6, 6, 0]} maxBarSize={40}>
             {chartData.map((entry, index) => {
               const tone = getAccuracyTone(entry.accuracyRate);
@@ -395,6 +397,7 @@ const WeakSubtopicsChart = ({ data = [] }) => {
 /* ── Radar chart for subject overview ───────────────────────────────────── */
 
 const SubjectRadarChart = ({ data = [] }) => {
+  const chartTheme = useChartTheme();
   const radarData = useMemo(() => {
     return data.map((item) => ({
       subject: item.label.length > 12 ? item.label.substring(0, 10) + "..." : item.label,
@@ -410,9 +413,9 @@ const SubjectRadarChart = ({ data = [] }) => {
     <div className="h-[300px] w-full">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
-          <PolarGrid stroke="#e2e8f0" />
-          <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: "#475569" }} />
-          <PolarRadiusAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "#94a3b8" }} />
+          <PolarGrid stroke={chartTheme.grid} />
+          <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: chartTheme.tick }} />
+          <PolarRadiusAxis domain={[0, 100]} tick={{ fontSize: 10, fill: chartTheme.tickSecondary }} />
           <Radar
             name="Accuracy"
             dataKey="accuracy"
@@ -477,6 +480,7 @@ const CorrectIncorrectPie = ({ correct, incorrect }) => {
 /* ── Subject detail card (collapsible) ──────────────────────────────────── */
 
 const TimeTrendChart = ({ data = [] }) => {
+  const chartTheme = useChartTheme();
   const chartData = useMemo(() => (
     [...data]
       .slice(-14)
@@ -499,9 +503,9 @@ const TimeTrendChart = ({ data = [] }) => {
     <div className="h-[280px] w-full">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 20, right: 24, left: -20, bottom: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-          <XAxis dataKey="displayDate" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748b" }} />
-          <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748b" }} allowDecimals={false} />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartTheme.grid} />
+          <XAxis dataKey="displayDate" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: chartTheme.tick }} />
+          <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: chartTheme.tick }} allowDecimals={false} />
           <RechartsTooltip
             content={({ active, payload }) => {
               if (!active || !payload?.length) {
@@ -509,11 +513,11 @@ const TimeTrendChart = ({ data = [] }) => {
               }
               const item = payload[0].payload;
               return (
-                <div className="rounded-xl border border-slate-200 bg-white/95 p-4 text-sm shadow-xl">
-                  <p className="font-semibold text-slate-900">{item.date}</p>
-                  <p className="mt-2 text-slate-600">Attempts: <span className="font-semibold text-slate-900">{item.attempts}</span></p>
-                  <p className="text-slate-600">Accuracy: <span className="font-semibold text-slate-900">{formatPercent(item.accuracyPercent)}</span></p>
-                  <p className="text-slate-600">Avg time: <span className="font-semibold text-slate-900">{formatDuration(item.averageDurationMs)}</span></p>
+                <div className="rounded-xl p-4 text-sm shadow-xl" style={{ backgroundColor: "var(--chart-tooltip-bg)", border: "1px solid var(--chart-tooltip-border)" }}>
+                  <p className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.date}</p>
+                  <p className="mt-2 text-slate-600">Attempts: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.attempts}</span></p>
+                  <p className="text-slate-600">Accuracy: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatPercent(item.accuracyPercent)}</span></p>
+                  <p className="text-slate-600">Avg time: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatDuration(item.averageDurationMs)}</span></p>
                 </div>
               );
             }}

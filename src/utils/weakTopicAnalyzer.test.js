@@ -242,4 +242,41 @@ describe("buildWeakTopicInsights", () => {
     expect(insights.difficultySummary.counts.Hard).toBe(1);
     expect(insights.difficultySummary.hardQuestions[0].storageKey).toBe("go:20");
   });
+
+  test("returns currentStreak=0 when last active date is 2+ days before now (BUG-G)", () => {
+    const insights = buildWeakTopicInsights({
+      now: new Date("2026-05-12T10:00:00.000Z"),
+      questions: [
+        {
+          question_uid: "go:30",
+          title: "GATE CSE 2025 | Question: 30",
+          year: 2025,
+          set: null,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "sorting"],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: {
+        "go:30": {
+          attempts: 2,
+          correctAttempts: 1,
+          incorrectAttempts: 1,
+          correct: true,
+          lastSubmittedAt: "2026-05-08T10:00:00.000Z",
+          history: [
+            { submittedAt: "2026-05-07T10:00:00.000Z", correct: false, durationMs: 30000 },
+            { submittedAt: "2026-05-08T10:00:00.000Z", correct: true, durationMs: 40000 },
+          ],
+        },
+      },
+    });
+
+    // Last active was May 8, now is May 12 — 4-day gap → streak must be 0
+    expect(insights.studyActivity.currentStreak).toBe(0);
+    // But the historical consecutive run (May 7-8) should still count as longestStreak
+    expect(insights.studyActivity.longestStreak).toBe(2);
+    expect(insights.studyActivity.activeDayCount).toBe(2);
+  });
 });

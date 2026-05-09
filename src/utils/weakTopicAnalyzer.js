@@ -268,7 +268,7 @@ const addDays = (date, days) => {
   return next;
 };
 
-const buildStudyActivity = (attemptTimeline = []) => {
+const buildStudyActivity = (attemptTimeline = [], now = new Date()) => {
   const activeDates = attemptTimeline
     .map((entry) => entry.date)
     .filter(Boolean)
@@ -294,11 +294,19 @@ const buildStudyActivity = (attemptTimeline = []) => {
 
   let currentStreak = 0;
   if (activeDates.length > 0) {
-    currentStreak = 1;
-    let cursor = new Date(`${activeDates[activeDates.length - 1]}T00:00:00.000Z`);
-    while (activeDateSet.has(toDateKey(addDays(cursor, -1)))) {
-      currentStreak += 1;
-      cursor = addDays(cursor, -1);
+    const lastActiveDate = new Date(`${activeDates[activeDates.length - 1]}T00:00:00.000Z`);
+    const todayKey = toDateKey(now);
+    const yesterdayKey = toDateKey(addDays(new Date(`${todayKey}T00:00:00.000Z`), -1));
+    const lastKey = activeDates[activeDates.length - 1];
+
+    // Only count a current streak if the user was active today or yesterday
+    if (lastKey === todayKey || lastKey === yesterdayKey) {
+      currentStreak = 1;
+      let cursor = lastActiveDate;
+      while (activeDateSet.has(toDateKey(addDays(cursor, -1)))) {
+        currentStreak += 1;
+        cursor = addDays(cursor, -1);
+      }
     }
   }
 
@@ -557,7 +565,7 @@ export const buildWeakTopicInsights = ({
     wrongQuestions,
     reviewQueue,
     attemptTimeline,
-    studyActivity: buildStudyActivity(attemptTimeline),
+    studyActivity: buildStudyActivity(attemptTimeline, now),
     timeSummary: {
       totalDurationMs,
       timedAttemptCount,
