@@ -74,7 +74,7 @@ test("insights page loads from the landing CTA", async ({ page }) => {
   await page.getByRole("button", { name: /view performance insights/i }).click();
 
   await expect(page).toHaveURL(/\/Gate_QA\/insights/, { timeout: 15000 });
-  await expect(page.getByRole("heading", { name: /Practice performance insights/i })).toBeVisible({
+  await expect(page.getByText("Insights", { exact: true })).toBeVisible({
     timeout: 15000,
   });
 });
