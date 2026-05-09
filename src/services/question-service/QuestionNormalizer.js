@@ -422,6 +422,7 @@ export function normalizeQuestion(question = {}) {
   normalized.subtopics = canonicalSubtopics;
   normalized.type = canonicalType;
   normalized.normalizedOptions = normalizedOptions;
+  normalized.malformed = isMalformedContent(normalized.question);
 
   return normalized;
 }
@@ -472,13 +473,43 @@ export function hydrateIndexedQuestion(question = {}) {
   indexed.subtopics = canonicalSubtopics;
   indexed.type = canonicalType;
   indexed.normalizedOptions = [];
+  indexed.malformed = false; // index entries have no full content; malformed is checked after detail hydration
 
   return indexed;
+}
+
+/**
+ * Detect malformed question content — empty body, link-only stubs, or
+ * redirect pages that were scraped by mistake.  Used as a normalization
+ * guard so these rows are flagged before reaching the practice bank.
+ */
+export function isMalformedContent(html = "") {
+  const raw = String(html || "").trim();
+  if (!raw) return true;
+
+  // Strip all HTML tags and collapse whitespace
+  const textOnly = raw
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!textOnly) return true;
+
+  // Content is essentially just a bare URL or anchor link — no real question body
+  const URL_ONLY = /^https?:\/\/\S+$/i;
+  if (URL_ONLY.test(textOnly)) return true;
+
+  return false;
 }
 
 export function isPracticeExcludedQuestion(question = {}) {
   if (!question || typeof question !== "object") {
     return false;
+  }
+
+  // Exclude malformed/link-only content
+  if (question.malformed) {
+    return true;
   }
 
   const answerType = String(question?.answer_meta?.type || "")

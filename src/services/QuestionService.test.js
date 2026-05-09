@@ -246,6 +246,7 @@ describe("QuestionService", () => {
         year: "gatecse-2026-set1",
         link: "https://gateoverflow.in/523088/gate-cse-2026-set-1-ga-question-2",
         tags: ["gatecse-2026-set1", "spatial-aptitude"],
+        question: "<p>Which figure completes the pattern?</p>",
       }),
     ]);
 
@@ -354,6 +355,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/400001/gate-cse-2023-question-1",
         exam_uid: "cse:2023:set1:main:q1",
         tags: ["gatecse-2023", "algorithms"],
+        question: "<p>What is the running time of merge sort?</p>",
       }),
       QuestionService.normalizeQuestion({
         title: "GATE CSE 2025 | Question: 1",
@@ -361,6 +363,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/500001/gate-cse-2025-question-1",
         exam_uid: "cse:2025:set1:main:q1",
         tags: ["gatecse-2025", "algorithms"],
+        question: "<p>Determine the recurrence relation.</p>",
       }),
       QuestionService.normalizeQuestion({
         title: "GATE CSE 2025 | Question: 1",
@@ -368,6 +371,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/500101/gate-cse-2025-question-1",
         exam_uid: "cse:2025:set2:main:q1",
         tags: ["gatecse-2025", "algorithms"],
+        question: "<p>What is the time complexity of DFS?</p>",
       }),
     ]);
 
@@ -388,6 +392,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/388950/gate-cse-2017-set-2-question-33",
         exam_uid: "cse:2017:set2:main:q33",
         tags: ["gatecse-2017-set2", "algorithms"],
+        question: "<p>Determine the worst-case time complexity.</p>",
       }),
       QuestionService.normalizeQuestion({
         question_uid: "go:388951",
@@ -396,6 +401,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/388951/gate-cse-2017-set-2-question-33-msq-version",
         exam_uid: "cse:2017:set2:main:q33-msq-version",
         tags: ["gatecse-2017-set2", "algorithms"],
+        question: "<p>Select all correct time complexities.</p>",
       }),
     ]);
 
@@ -419,6 +425,7 @@ describe("QuestionService", () => {
           tolerance: null,
           source: "question_uid",
         },
+        question: "<p>Explain the scheduling algorithm.</p>",
       }),
       QuestionService.normalizeQuestion({
         question_uid: "go:92961",
@@ -427,6 +434,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/92961/gate-cse-1989-question-12b",
         exam_uid: "cse:1989:set1:main:q12b",
         tags: ["gate1989", "databases", "descriptive"],
+        question: "<p>Write an SQL query to find all employees.</p>",
       }),
       QuestionService.normalizeQuestion({
         question_uid: "go:94333",
@@ -435,6 +443,7 @@ describe("QuestionService", () => {
         link: "https://gateoverflow.in/94333/gate-cse-1988-question-2xv",
         exam_uid: "cse:1988:set1:main:q2xv",
         tags: ["gate1988", "compiler-design", "descriptive"],
+        question: "<p>How many tokens are generated?</p>",
         answer_meta: {
           type: "NAT",
           answer: 10,

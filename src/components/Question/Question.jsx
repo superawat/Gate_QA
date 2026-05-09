@@ -18,6 +18,7 @@ function Question({
     .replace(/\n\n/g, "<br />")
     .replace(/\n<li>/g, "<br><li>");
   const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtml);
+  const isMalformed = question.malformed || !sanitizedQuestionHtml.trim();
 
   const questionProgressId = getQuestionProgressId(question);
   const isSolved = isQuestionSolved(questionProgressId);
@@ -45,17 +46,40 @@ function Question({
               )}
             </div>
           ) : null}
-          <MathContent
-            as="div"
-            dynamic
-            className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text-muted)]"
-          >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: sanitizedQuestionHtml,
-              }}
-            ></div>
-          </MathContent>
+
+          {isMalformed ? (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
+              <p className="text-sm font-semibold">⚠️ Question content unavailable</p>
+              <p className="mt-2 text-sm leading-6 text-amber-900">
+                This question could not be loaded — the source data may be missing or malformed.
+                {question.link ? (
+                  <>
+                    {" "}You can try viewing it directly on{" "}
+                    <a
+                      href={question.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold underline hover:text-amber-700"
+                    >
+                      GateOverflow
+                    </a>.
+                  </>
+                ) : null}
+              </p>
+            </div>
+          ) : (
+            <MathContent
+              as="div"
+              dynamic
+              className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text-muted)]"
+            >
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: sanitizedQuestionHtml,
+                }}
+              ></div>
+            </MathContent>
+          )}
         </div>
 
         <AnswerPanel
