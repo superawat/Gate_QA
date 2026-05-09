@@ -161,4 +161,85 @@ describe("buildWeakTopicInsights", () => {
       incorrectAttempts: 1,
     });
   });
+
+  test("builds review queue, time trend, difficulty, and streak summaries", () => {
+    const insights = buildWeakTopicInsights({
+      now: new Date("2026-05-08T10:00:00.000Z"),
+      questions: [
+        {
+          question_uid: "go:20",
+          title: "GATE CSE 2025 | Question: 20",
+          year: 2025,
+          set: null,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "graphs"],
+          type: "MCQ",
+        },
+        {
+          question_uid: "go:21",
+          title: "GATE CSE 2025 | Question: 21",
+          year: 2025,
+          set: null,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "dynamic-programming"],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: {
+        "go:20": {
+          attempts: 3,
+          correctAttempts: 0,
+          incorrectAttempts: 3,
+          correct: false,
+          lastSubmittedAt: "2026-05-06T10:00:00.000Z",
+          reviewDueAt: "2026-05-07T10:00:00.000Z",
+          totalDurationMs: 240000,
+          timedAttemptCount: 3,
+          history: [
+            { submittedAt: "2026-05-05T10:00:00.000Z", correct: false, durationMs: 80000 },
+            { submittedAt: "2026-05-06T10:00:00.000Z", correct: false, durationMs: 90000 },
+          ],
+        },
+        "go:21": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          lastSubmittedAt: "2026-05-07T10:00:00.000Z",
+          reviewDueAt: "2026-05-10T10:00:00.000Z",
+          totalDurationMs: 60000,
+          timedAttemptCount: 1,
+          history: [
+            { submittedAt: "2026-05-07T10:00:00.000Z", correct: true, durationMs: 60000 },
+          ],
+        },
+      },
+    });
+
+    expect(insights.reviewQueue).toHaveLength(1);
+    expect(insights.reviewQueue[0]).toMatchObject({
+      storageKey: "go:20",
+      difficultyLabel: "Hard",
+      daysOverdue: 1,
+    });
+    expect(insights.timeSummary).toMatchObject({
+      totalDurationMs: 300000,
+      timedAttemptCount: 4,
+      averageDurationMs: 75000,
+    });
+    expect(insights.attemptTimeline.map((entry) => entry.date)).toEqual([
+      "2026-05-05",
+      "2026-05-06",
+      "2026-05-07",
+    ]);
+    expect(insights.studyActivity).toMatchObject({
+      activeDayCount: 3,
+      currentStreak: 3,
+      longestStreak: 3,
+    });
+    expect(insights.difficultySummary.counts.Hard).toBe(1);
+    expect(insights.difficultySummary.hardQuestions[0].storageKey).toBe("go:20");
+  });
 });

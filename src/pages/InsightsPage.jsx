@@ -15,6 +15,10 @@ import {
   FaTrophy,
   FaFireAlt,
   FaHistory,
+  FaCalendarCheck,
+  FaClock,
+  FaLayerGroup,
+  FaMedal,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -33,6 +37,8 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   Radar,
+  LineChart,
+  Line,
 } from "recharts";
 
 import PageShell from "../components/Layout/PageShell";
@@ -53,6 +59,20 @@ const formatPercent = (value, digits = 0) => {
   const numeric = Number(value);
   if (!Number.isFinite(numeric)) return "0%";
   return `${numeric.toFixed(digits)}%`;
+};
+
+const formatDuration = (durationMs) => {
+  const numeric = Number(durationMs);
+  if (!Number.isFinite(numeric) || numeric <= 0) {
+    return "0m";
+  }
+  const minutes = Math.max(1, Math.round(numeric / 60000));
+  if (minutes < 60) {
+    return `${minutes}m`;
+  }
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return remainingMinutes > 0 ? `${hours}h ${remainingMinutes}m` : `${hours}h`;
 };
 
 const getAccuracyTone = (accuracyRate) => {
@@ -114,6 +134,7 @@ const relativeTimeLabel = (isoString) => {
 const TABS = [
   { id: "overview", label: "Overview", icon: FaChartLine },
   { id: "analysis", label: "Strengths & Weaknesses", icon: FaBullseye },
+  { id: "review", label: "Review Queue", icon: FaCalendarCheck },
   { id: "wrong", label: "Wrong Answers", icon: FaTimesCircle },
   { id: "mock-history", label: "Mock History", icon: FaHistory },
 ];
@@ -455,6 +476,80 @@ const CorrectIncorrectPie = ({ correct, incorrect }) => {
 
 /* ── Subject detail card (collapsible) ──────────────────────────────────── */
 
+const TimeTrendChart = ({ data = [] }) => {
+  const chartData = useMemo(() => (
+    [...data]
+      .slice(-14)
+      .map((entry) => ({
+        ...entry,
+        displayDate: entry.date ? entry.date.slice(5) : "",
+        accuracyPercent: Math.round(Number(entry.accuracyRate || 0) * 100),
+      }))
+  ), [data]);
+
+  if (chartData.length === 0) {
+    return (
+      <div className="flex h-[260px] items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50 text-sm text-slate-500">
+        Timed attempt trends will appear after your next submission.
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-[280px] w-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={chartData} margin={{ top: 20, right: 24, left: -20, bottom: 10 }}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+          <XAxis dataKey="displayDate" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748b" }} />
+          <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748b" }} allowDecimals={false} />
+          <RechartsTooltip
+            content={({ active, payload }) => {
+              if (!active || !payload?.length) {
+                return null;
+              }
+              const item = payload[0].payload;
+              return (
+                <div className="rounded-xl border border-slate-200 bg-white/95 p-4 text-sm shadow-xl">
+                  <p className="font-semibold text-slate-900">{item.date}</p>
+                  <p className="mt-2 text-slate-600">Attempts: <span className="font-semibold text-slate-900">{item.attempts}</span></p>
+                  <p className="text-slate-600">Accuracy: <span className="font-semibold text-slate-900">{formatPercent(item.accuracyPercent)}</span></p>
+                  <p className="text-slate-600">Avg time: <span className="font-semibold text-slate-900">{formatDuration(item.averageDurationMs)}</span></p>
+                </div>
+              );
+            }}
+          />
+          <Line
+            type="monotone"
+            dataKey="attempts"
+            name="Attempts"
+            stroke="#0ea5e9"
+            strokeWidth={3}
+            dot={{ r: 4, strokeWidth: 2 }}
+            activeDot={{ r: 6 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+const DifficultyBadge = ({ label = "Unrated", score = 0 }) => {
+  const normalized = String(label || "Unrated");
+  const classes = normalized === "Hard"
+    ? "border-rose-200 bg-rose-50 text-rose-700"
+    : normalized === "Medium"
+      ? "border-amber-200 bg-amber-50 text-amber-700"
+      : normalized === "Light"
+        ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+        : "border-slate-200 bg-slate-50 text-slate-600";
+
+  return (
+    <span className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${classes}`}>
+      {normalized}{Number(score) > 0 ? ` ${Math.round(score)}` : ""}
+    </span>
+  );
+};
+
 const SubjectDetailCard = ({ item, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const tone = getAccuracyTone(item.accuracyRate);
@@ -530,11 +625,13 @@ const OverviewTab = ({ insights, summary }) => {
   const totalIncorrect = useMemo(() =>
     insights.subjects.reduce((sum, s) => sum + s.incorrectAttempts, 0)
   , [insights.subjects]);
+  const studyActivity = insights.studyActivity || {};
+  const difficultySummary = insights.difficultySummary || { counts: {} };
 
   return (
     <div className="space-y-6">
       {/* Stat cards row */}
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
           label="Attempted"
           value={formatNumber(summary.attemptedQuestionCount)}
@@ -557,20 +654,62 @@ const OverviewTab = ({ insights, summary }) => {
           sublabel={`of ${formatNumber(totalCorrect + totalIncorrect)} total`}
         />
         <StatCard
-          label="Weak Subjects"
-          value={formatNumber(summary.weakSubjectCount)}
-          icon={FaExclamationTriangle}
-          accent="rose"
-          sublabel="below 70%"
+          label="Due Review"
+          value={formatNumber(summary.dueReviewCount)}
+          icon={FaCalendarCheck}
+          accent={summary.dueReviewCount > 0 ? "amber" : "emerald"}
+          sublabel="questions ready"
         />
         <StatCard
-          label="Weak Subtopics"
-          value={formatNumber(summary.weakSubtopicCount)}
+          label="Avg Time"
+          value={formatDuration(summary.averageDurationMs)}
+          icon={FaClock}
+          accent="violet"
+          sublabel="per timed attempt"
+        />
+        <StatCard
+          label="Streak"
+          value={`${formatNumber(studyActivity.currentStreak || 0)}d`}
+          icon={FaFireAlt}
+          accent={(studyActivity.currentStreak || 0) >= 3 ? "emerald" : "amber"}
+          sublabel={`best ${formatNumber(studyActivity.longestStreak || 0)}d`}
+        />
+        <StatCard
+          label="XP"
+          value={formatNumber(studyActivity.xp || 0)}
+          icon={FaMedal}
+          accent="sky"
+          sublabel={`${formatNumber(studyActivity.activeDayCount || 0)} active days`}
+        />
+        <StatCard
+          label="Hard Questions"
+          value={formatNumber(difficultySummary.counts?.Hard || 0)}
+          icon={FaLayerGroup}
+          accent={(difficultySummary.counts?.Hard || 0) > 0 ? "rose" : "emerald"}
+          sublabel={`avg score ${formatNumber(difficultySummary.averageDifficultyScore || 0)}`}
+        />
+        <StatCard
+          label="Weak Areas"
+          value={`${formatNumber(summary.weakSubjectCount)} / ${formatNumber(summary.weakSubtopicCount)}`}
           icon={FaExclamationTriangle}
           accent="amber"
-          sublabel="below 70%"
+          sublabel="subjects / subtopics"
         />
       </div>
+
+      {Array.isArray(studyActivity.badges) && studyActivity.badges.length > 0 ? (
+        <section className="rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-5 py-4 shadow-[var(--shadow-soft)]">
+          <div className="flex flex-wrap items-center gap-2">
+            <FaMedal className="text-sky-600" />
+            <span className="text-sm font-semibold text-slate-900">Badges</span>
+            {studyActivity.badges.map((badge) => (
+              <span key={badge} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-sky-700 shadow-sm">
+                {badge}
+              </span>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {/* Charts row */}
       <div className="grid gap-6 xl:grid-cols-2">
@@ -610,6 +749,16 @@ const OverviewTab = ({ insights, summary }) => {
           </div>
         </section>
       </div>
+
+      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
+        <h2 className="text-xl font-semibold text-slate-950">Practice Trend</h2>
+        <p className="mt-1 text-sm text-slate-600">
+          Daily attempt volume from your local submission history.
+        </p>
+        <div className="mt-4">
+          <TimeTrendChart data={insights.attemptTimeline || []} />
+        </div>
+      </section>
 
       {/* Target subtopics */}
       {insights.subtopics.some((s) => s.accuracyRate < 0.7) && (
@@ -839,6 +988,98 @@ const AnalysisTab = ({ insights }) => {
 
 /* ── Wrong Answers tab ──────────────────────────────────────────────────── */
 
+const ReviewQueueTab = ({ reviewQueue = [] }) => {
+  const navigate = useNavigate();
+
+  const handleNavigateToQuestion = useCallback((storageKey) => {
+    navigate(buildSolvePath(storageKey));
+  }, [navigate]);
+
+  if (!reviewQueue.length) {
+    return (
+      <div className="rounded-[var(--radius-card)] border border-dashed border-emerald-300 bg-emerald-50 p-8 text-center shadow-[var(--shadow-soft)]">
+        <FaCalendarCheck className="mx-auto text-3xl text-emerald-500 mb-3" />
+        <h2 className="text-xl font-semibold text-emerald-900">No due reviews</h2>
+        <p className="mt-2 text-sm text-emerald-700">
+          Your scheduled reviews are clear. New due cards appear automatically after practice submissions.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-amber-700">Due Now</p>
+          <p className="text-2xl font-bold text-amber-900">{formatNumber(reviewQueue.length)}</p>
+        </div>
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-rose-700">Hard Due</p>
+          <p className="text-2xl font-bold text-rose-900">
+            {formatNumber(reviewQueue.filter((item) => item.difficultyLabel === "Hard").length)}
+          </p>
+        </div>
+        <div className="rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 shadow-[var(--shadow-soft)]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-sky-700">Oldest</p>
+          <p className="text-2xl font-bold text-sky-900">
+            {formatNumber(Math.max(...reviewQueue.map((item) => Number(item.daysOverdue || 0)), 0))}d
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        {reviewQueue.map((item, index) => {
+          const subtopicLabels = (Array.isArray(item.subtopics) ? item.subtopics : [])
+            .map((subtopic) => subtopic?.label || subtopic?.slug || "")
+            .filter(Boolean)
+            .slice(0, 2);
+          const dueLabel = Number(item.daysOverdue || 0) > 0
+            ? `${item.daysOverdue}d overdue`
+            : "Due today";
+
+          return (
+            <button
+              key={`${item.storageKey}-${index}`}
+              type="button"
+              onClick={() => handleNavigateToQuestion(item.storageKey)}
+              className="group block w-full rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50/60 to-white px-4 py-3.5 text-left transition hover:border-amber-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-amber-300"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <FaCalendarCheck className="text-amber-500" />
+                    <p className="truncate text-sm font-semibold text-slate-900">{item.storageKey}</p>
+                    <DifficultyBadge label={item.difficultyLabel} score={item.difficultyScore} />
+                    {item.type ? (
+                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                        {item.type}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                    <span className="rounded-full bg-sky-50 px-2 py-0.5 font-semibold text-sky-700">{item.subjectLabel}</span>
+                    {subtopicLabels.map((label) => (
+                      <span key={label} className="rounded-full bg-violet-50 px-2 py-0.5 font-semibold text-violet-700">
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-xs font-semibold text-amber-700">{dueLabel}</p>
+                  <p className="mt-0.5 text-[10px] text-slate-500">Level {item.reviewLevel || 0}</p>
+                  <FaArrowRight className="mt-1.5 text-xs text-slate-300 transition-colors group-hover:text-amber-600 ml-auto" />
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 const ITEMS_PER_PAGE = 15;
 
 const WrongAnswersTab = ({ wrongQuestions = [] }) => {
@@ -977,6 +1218,7 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
                         {q.type}
                       </span>
                     )}
+                    <DifficultyBadge label={q.difficultyLabel} score={q.difficultyScore} />
                   </div>
                   <div className="flex flex-wrap items-center gap-2 mt-1.5">
                     <span className="rounded-full bg-sky-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-700">
@@ -995,6 +1237,11 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
                   <p className="text-[10px] text-slate-400 mt-0.5">
                     {q.correctAttempts}✓ {q.incorrectAttempts}✗ of {q.attempts}
                   </p>
+                  {q.averageDurationMs > 0 ? (
+                    <p className="text-[10px] text-slate-400 mt-0.5">
+                      Avg {formatDuration(q.averageDurationMs)}
+                    </p>
+                  ) : null}
                   <FaArrowRight className="mt-1.5 text-xs text-slate-300 group-hover:text-sky-500 transition-colors ml-auto" />
                 </div>
               </div>
@@ -1048,6 +1295,11 @@ const InsightsPage = ({
     subjects: [],
     subtopics: [],
     wrongQuestions: [],
+    reviewQueue: [],
+    attemptTimeline: [],
+    studyActivity: {},
+    timeSummary: {},
+    difficultySummary: { counts: {} },
     attemptedQuestionCount: 0,
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -1094,6 +1346,13 @@ const InsightsPage = ({
     const subjects = Array.isArray(insights.subjects) ? insights.subjects : [];
     const subtopics = Array.isArray(insights.subtopics) ? insights.subtopics : [];
     const wrongQuestions = Array.isArray(insights.wrongQuestions) ? insights.wrongQuestions : [];
+    const reviewQueue = Array.isArray(insights.reviewQueue) ? insights.reviewQueue : [];
+    const timeSummary = insights.timeSummary && typeof insights.timeSummary === "object"
+      ? insights.timeSummary
+      : {};
+    const difficultySummary = insights.difficultySummary && typeof insights.difficultySummary === "object"
+      ? insights.difficultySummary
+      : {};
     const averageSubjectAccuracy = subjects.length
       ? subjects.reduce((total, item) => total + Number(item.accuracyRate || 0), 0) / subjects.length
       : 0;
@@ -1103,10 +1362,14 @@ const InsightsPage = ({
       weakSubtopicCount: subtopics.filter((item) => Number(item.accuracyRate || 0) < 0.7).length,
       averageSubjectAccuracy,
       wrongQuestionCount: wrongQuestions.length,
+      dueReviewCount: reviewQueue.length,
+      averageDurationMs: Number(timeSummary.averageDurationMs || 0),
+      hardQuestionCount: Number(difficultySummary.counts?.Hard || 0),
     };
   }, [insights]);
 
   const wrongCount = Array.isArray(insights.wrongQuestions) ? insights.wrongQuestions.length : 0;
+  const dueReviewCount = Array.isArray(insights.reviewQueue) ? insights.reviewQueue.length : 0;
 
   return (
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
@@ -1188,6 +1451,11 @@ const InsightsPage = ({
                         {wrongCount}
                       </span>
                     )}
+                    {tab.id === "review" && dueReviewCount > 0 && (
+                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-amber-100 text-amber-700" : "bg-slate-200 text-slate-600"}`}>
+                        {dueReviewCount}
+                      </span>
+                    )}
                   </button>
                 );
               })}
@@ -1200,6 +1468,9 @@ const InsightsPage = ({
               )}
               {activeTab === "analysis" && (
                 <AnalysisTab insights={insights} />
+              )}
+              {activeTab === "review" && (
+                <ReviewQueueTab reviewQueue={insights.reviewQueue || []} />
               )}
               {activeTab === "wrong" && (
                 <WrongAnswersTab wrongQuestions={insights.wrongQuestions || []} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { FaCheck, FaChevronDown, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
@@ -7,26 +7,9 @@ import { useSession } from "../../contexts/SessionContext";
 import Toast from "../Toast/Toast";
 import { trackEvent } from "../../utils/analytics";
 import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
+import { recordPracticeAttempt } from "../../utils/practiceProgress";
 
-const PROGRESS_KEY = "gateqa_progress_v1";
 const OPTIONS = ["A", "B", "C", "D"];
-
-function readJsonFromLocalStorage(key, fallback) {
-  try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
-  } catch (error) {
-    return fallback;
-  }
-}
-
-function writeJsonToLocalStorage(key, payload) {
-  try {
-    localStorage.setItem(key, JSON.stringify(payload));
-  } catch (error) {
-    // ignore storage write failures
-  }
-}
 
 export default function AnswerPanel({
   question = {},
@@ -60,6 +43,7 @@ export default function AnswerPanel({
     () => AnswerService.getStorageKeyForQuestion(question),
     [question]
   );
+  const questionOpenedAtRef = useRef(Date.now());
 
   const [mcqSelection, setMcqSelection] = useState("");
   const [msqSelection, setMsqSelection] = useState([]);
@@ -85,6 +69,7 @@ export default function AnswerPanel({
     setNatInput("");
     setResult(null);
     setIsMobileWorkspaceOpen(false);
+    questionOpenedAtRef.current = Date.now();
   }, [storageKey]);
 
   useEffect(() => {
@@ -145,18 +130,16 @@ export default function AnswerPanel({
       toggleSolved(questionProgressId);
     }
 
-    const progress = readJsonFromLocalStorage(PROGRESS_KEY, {});
-    const current = progress[storageKey] || { attempts: 0 };
-    progress[storageKey] = {
-      attempts: current.attempts + 1,
-      correctAttempts: Number(current.correctAttempts || 0) + (evaluation.correct ? 1 : 0),
-      incorrectAttempts: Number(current.incorrectAttempts || 0) + (evaluation.correct ? 0 : 1),
+    const submittedAt = new Date();
+    recordPracticeAttempt({
+      storageKey,
       correct: evaluation.correct,
-      lastSubmittedAt: new Date().toISOString(),
       type: answerRecord.type,
-      lastInput: submission,
-    };
-    writeJsonToLocalStorage(PROGRESS_KEY, progress);
+      input: submission,
+      submittedAt: submittedAt.toISOString(),
+      durationMs: submittedAt.getTime() - questionOpenedAtRef.current,
+    });
+    questionOpenedAtRef.current = submittedAt.getTime();
   };
 
   const handleMcqSelect = (option) => {

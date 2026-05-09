@@ -216,6 +216,67 @@ describe("InsightsPage", () => {
     });
   });
 
+  test("renders review, time, difficulty, and streak insights", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 2,
+      subjects: [
+        { key: "algo", label: "Algorithms", accuracyRate: 0.4, attemptedCount: 3, correctAttempts: 1, incorrectAttempts: 2, coverageRate: 0.2, recentMistakeStreak: 1, availableQuestions: 12 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [
+        {
+          storageKey: "go:review",
+          subjectLabel: "Algorithms",
+          subjectSlug: "algorithms",
+          subtopics: [{ label: "Graphs" }],
+          attempts: 3,
+          correctAttempts: 1,
+          incorrectAttempts: 2,
+          difficultyLabel: "Hard",
+          difficultyScore: 82,
+          daysOverdue: 2,
+          reviewLevel: 0,
+          type: "MCQ",
+        },
+      ],
+      attemptTimeline: [
+        { date: "2026-05-06", attempts: 1, correct: 0, incorrect: 1, accuracyRate: 0, averageDurationMs: 90000 },
+        { date: "2026-05-07", attempts: 1, correct: 1, incorrect: 0, accuracyRate: 1, averageDurationMs: 60000 },
+      ],
+      studyActivity: {
+        activeDayCount: 2,
+        currentStreak: 2,
+        longestStreak: 2,
+        xp: 45,
+        badges: ["25 attempts"],
+      },
+      timeSummary: {
+        totalDurationMs: 150000,
+        timedAttemptCount: 2,
+        averageDurationMs: 75000,
+      },
+      difficultySummary: {
+        counts: { Light: 0, Medium: 0, Hard: 1, Unrated: 0 },
+        averageDifficultyScore: 82,
+        hardQuestions: [{ storageKey: "go:review" }],
+      },
+    });
+
+    renderInsightsPage();
+
+    expect(await screen.findByText(/due review/i)).toBeTruthy();
+    expect(screen.getByText("1m")).toBeTruthy();
+    expect(screen.getByText("45")).toBeTruthy();
+    expect(screen.getByText("25 attempts")).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: /review queue/i }));
+
+    expect(await screen.findByText("go:review")).toBeTruthy();
+    expect(screen.getByText(/2d overdue/i)).toBeTruthy();
+    expect(screen.getByText(/hard 82/i)).toBeTruthy();
+  });
+
   test("renders the Mock History tab and respect ?tab=mock-history query param", async () => {
     mocks.loadWeakTopicInsights.mockResolvedValueOnce({
       attemptedQuestionCount: 5,

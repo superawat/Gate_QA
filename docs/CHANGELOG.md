@@ -4,6 +4,12 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### PLAN-2026: Phase 4 Learner Analytics and Spaced Repetition (4.5 - 4.8) -> Status: Done
+- Implemented spaced-review scheduling in `src/utils/practiceProgress.js`.
+- Upgraded practice submissions to track session duration, history, review due dates, question difficulty, and XP/streak data.
+- Expanded the Insights dashboard to include Review Queue, Practice Trends, Average Time, Hard Questions, Streak, XP, and unlockable badges.
+- Wrong-answer rows in practice now display difficulty levels and average answer times.
+- Increased unit test coverage to 201 Vitest tests.
 ### PLAN-2026: Phase 4 UI Polish and WebP Optimizations -> Status: Done
 - Converted 453 question images from PNG/JPG to WebP format, saving 10.59 MB (72.9% reduction) in `public/question-images/`.
 - Regenerated all 58 question detail shards and the search index to point to the new `.webp` image references.
