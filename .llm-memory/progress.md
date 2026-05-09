@@ -16,6 +16,8 @@ Updated: 2026-05-09
 - `gateqa_master_plan.md` is now open-work only.
 
 ## Recent completed work
+- Phase 5 Gamification Refinements: Fixed the 'AVG TIME 0m' bug in InsightsPage, addressed month label drift in the Activity Heatmap (16px column alignment), eliminated the stray SVG cap dot on the Daily Goal ring, and built a custom Daily Goal target UI.
+- Home Page Cleanup: Removed legacy 'Mock Attempted' and 'Resume Session' shortcuts from HomePage for a cleaner gamified interface.
 - Phase 5 Gamification (5.1 & 5.2): Added a Duolingo-style Streak Banner with daily goal progress to the HomePage. Built a GitHub-style 52-week Activity Heatmap, added it to HomePage and Insights, and enhanced `loadStudyActivityFast` to read localStorage offline without network requests.
 - Phase 4 Learner Analytics (4.5 - 4.8): Implemented spaced-review scheduling, detailed practice tracking (duration, history, XP, streaks), and a massive Insights dashboard expansion (Review Queue, Practice Trend, Avg Time, Hard Questions, Badges).
 - Phase 4 UI Polish: WebP image conversion (453 images, 73% smaller), keyboard shortcuts added, Tailwind dark-mode token cleanup (including Insights Review Queue & Wrong Answers tabs, DataPolicy/Support modals), footer layout stabilization, and bundle budget CI gating.

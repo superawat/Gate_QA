@@ -5,6 +5,7 @@ Updated: 2026-05-08
 - BUG-C: past-paper/mock readiness gaps remain; visibility is verified and 27/50 papers are release-ready, with remaining blockers concentrated in 2009-and-earlier duplicate-slot / legacy-format cases.
 
 ## Recently fixed user bugs
+- Gamification UI: Fixed 'AVG TIME 0m' display bug in Insights, aligned Activity Heatmap month labels, fixed Daily Goal progress ring dot, and prevented crash on editing custom goal.
 - BUG-A: Insights tagline removed, internal Answer Coverage panel removed, Skill Radar animation disabled.
 - BUG-B1-B3: dark-mode logo contrast and landing resume CTA/subtitle readability fixed.
 - BUG-B4: non-mock dark-mode readability audit completed across Home, Practice, and Insights; Home cards, indigo overrides, legacy logo frame, and dark primary-button contrast fixed.
