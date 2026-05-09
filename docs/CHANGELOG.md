@@ -18,7 +18,9 @@ All notable changes to GateQA are documented in this file.
 - Added strict Axe accessibility snapshots asserting landmark, heading, and named-control structures.
 - Added an automated bundle budget reporting script (`scripts/qa/validate-bundle-budget.mjs`) to warn when chunk sizes exceed strict limits.
 - Fixed E2E Playwright tests that were broken by the Insights UI migration and search input label changes.
-
+- Fixed dark mode visibility issues in the Insights dashboard's Review Queue and Wrong Answers tabs by migrating hardcoded Tailwind color scales to theme-aware CSS variables.
+- Fixed layout shift causing footer to float up on sparse pages by making `PageShell` a flex container.
+- Updated `DataPolicyModal` and `SupportModal` hardcoded colors to use CSS variables for proper visibility in dark mode.
 ### PLAN-2026: May 2026 Plan Cleanup and Bug Follow-through -> Status: Done
 - Removed the Insights subtitle and internal Answer Coverage panel so the dashboard stays focused on learner-facing analytics.
 - Kept the Skill Radar stable by disabling radar animation after render.
