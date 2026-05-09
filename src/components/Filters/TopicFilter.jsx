@@ -47,7 +47,7 @@ const TopicFilter = () => {
                     subjects: optionalSubjects,
                     heading: 'Optional legacy topics',
                     description: 'Older or out-of-syllabus questions from past papers.',
-                    className: 'rounded-xl border border-amber-200 bg-amber-50/70 p-3',
+                    className: 'rounded-xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-3',
                 }
                 : null,
         ].filter(Boolean);
@@ -135,10 +135,10 @@ const TopicFilter = () => {
                 <section key={group.key} className={group.className}>
                     {group.heading && (
                         <div className="mb-2">
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-800">
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-warning-text)]">
                                 {group.heading}
                             </p>
-                            <p className="mt-1 text-xs text-amber-900/80">
+                            <p className="mt-1 text-xs opacity-80 text-[color:var(--color-warning-text)]">
                                 {group.description}
                             </p>
                         </div>
@@ -171,13 +171,13 @@ const TopicFilter = () => {
                                             />
                                             <span className="ml-3 flex min-w-0 items-center gap-2">
                                                 <span
-                                                    className={`truncate text-sm ${isSelected ? 'font-medium text-blue-700' : 'text-gray-700'}`}
+                                                    className={`truncate text-sm ${isSelected ? 'font-medium text-[color:var(--color-primary-text)]' : 'text-[color:var(--color-text-muted)]'}`}
                                                     title={subject.label}
                                                 >
                                                     {subject.label}
                                                 </span>
                                                 {subjectSlug === LEGACY_OPTIONAL_SUBJECT_SLUG && (
-                                                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                                                    <span className="rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[color:var(--color-warning-text)]">
                                                         Optional
                                                     </span>
                                                 )}
@@ -190,7 +190,7 @@ const TopicFilter = () => {
                                                     type="button"
                                                     onClick={() => setExpandedSubjectSlug(isExpanded ? null : subjectSlug)}
                                                     aria-label={isExpanded ? `Hide ${subject.label} subtopics` : `Show ${subject.label} subtopics`}
-                                                    className="rounded border border-gray-300 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                                    className="rounded border border-[color:var(--color-neutral-border)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[color:var(--color-neutral-text)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
                                                 >
                                                     {isExpanded ? 'Hide' : 'Show'}
                                                 </button>
@@ -200,7 +200,7 @@ const TopicFilter = () => {
                                                     type="button"
                                                     onClick={() => handleSubjectBulkToggle(subjectSlug)}
                                                     aria-label={allSubtopicsSelected ? `Clear all ${subject.label} subtopics` : `Select all ${subject.label} subtopics`}
-                                                    className="rounded border border-blue-300 px-2 py-0.5 text-xs font-semibold text-blue-700 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                                    className="rounded border border-[color:var(--color-primary-border)] px-2 py-0.5 text-xs font-semibold text-[color:var(--color-primary-text)] hover:bg-[color:var(--color-primary-soft)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
                                                 >
                                                     {allSubtopicsSelected ? 'Clear All' : 'Select All'}
                                                 </button>
@@ -209,7 +209,7 @@ const TopicFilter = () => {
                                     </div>
 
                                     {showSubtopics && (
-                                        <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-gray-200 pl-2 pr-1">
+                                        <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-[color:var(--color-border)] pl-2 pr-1">
                                             {subtopics.map((subtopic) => (
                                                 <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
                                                     <input
@@ -218,7 +218,7 @@ const TopicFilter = () => {
                                                         checked={selectedSubtopicSet.has(subtopic.slug)}
                                                         onChange={() => handleSubtopicChange(subtopic.slug)}
                                                     />
-                                                    <span className="ml-2 truncate text-xs text-gray-500 group-hover/sub:text-gray-800" title={subtopic.label}>
+                                                    <span className="ml-2 truncate text-xs text-[color:var(--color-text-muted)] group-hover/sub:text-[color:var(--color-text)]" title={subtopic.label}>
                                                         {subtopic.label}
                                                     </span>
                                                 </label>
