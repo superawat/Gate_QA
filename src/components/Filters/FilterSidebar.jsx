@@ -2,9 +2,7 @@ import React from 'react';
 import YearFilter from './YearFilter';
 import YearRangeFilter from './YearRangeFilter';
 import TopicFilter from './TopicFilter';
-import ProgressBar from './ProgressBar';
 import ProgressFilterToggles from './ProgressFilterToggles';
-import ProgressManager from '../ProgressManager/ProgressManager';
 import QuestionSearchInput from './QuestionSearchInput';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
@@ -96,31 +94,17 @@ const FilterSidebar = ({ className = "", onClose }) => {
             </div>
 
             <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3">
-                <div className="flex flex-col gap-3">
-                    <div className="min-w-0 flex flex-col">
-                        <ProgressBar
-                            solvedCount={solvedCount}
-                            totalQuestions={totalQuestions}
-                            progressPercentage={progressPercentage}
-                        >
-                            <ProgressManager />
-                        </ProgressBar>
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3">
-                            <ProgressFilterToggles
-                                hideSolved={filters.hideSolved}
-                                showOnlySolved={filters.showOnlySolved}
-                                showOnlyBookmarked={filters.showOnlyBookmarked}
-                                onToggleHideSolved={setHideSolved}
-                                onToggleShowOnlySolved={setShowOnlySolved}
-                                onToggleShowBookmarked={setShowOnlyBookmarked}
-                            />
-                        </div>
-                    </div>
+                <div className="flex-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3">
+                    <ProgressFilterToggles
+                        hideSolved={filters.hideSolved}
+                        showOnlySolved={filters.showOnlySolved}
+                        showOnlyBookmarked={filters.showOnlyBookmarked}
+                        onToggleHideSolved={setHideSolved}
+                        onToggleShowOnlySolved={setShowOnlySolved}
+                        onToggleShowBookmarked={setShowOnlyBookmarked}
+                    />
                 </div>
             </div>
-
             {/* Question Type Filter (Horizontal Toggles) */}
             <div className="relative z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
                 <div className="mb-2">

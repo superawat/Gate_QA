@@ -23,6 +23,20 @@ vi.mock("../utils/mockTestHistory", () => ({
   readMockTestHistory: mocks.readMockTestHistory,
 }));
 
+vi.mock("../contexts/FilterContext", () => ({
+  useFilterState: () => ({
+    solvedCount: 13,
+    totalQuestions: 3527,
+    progressPercentage: 0,
+    solvedQuestionIds: [],
+    bookmarkedQuestionIds: [],
+    allQuestions: [],
+  }),
+  useFilterActions: () => ({
+    refreshProgressState: vi.fn(),
+  }),
+}));
+
 import InsightsPage from "./InsightsPage";
 
 const deferred = () => {

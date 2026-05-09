@@ -41,13 +41,15 @@ import {
   Line,
 } from "recharts";
 
+import ProgressBar from "../components/Filters/ProgressBar";
+import ProgressManager from "../components/ProgressManager/ProgressManager";
+import { useFilterState } from "../contexts/FilterContext";
 import PageShell from "../components/Layout/PageShell";
 import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
 import useChartTheme from "../hooks/useChartTheme";
-import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -716,12 +718,7 @@ const OverviewTab = ({ insights, summary }) => {
         </section>
       ) : null}
 
-      {/* Activity Heatmap */}
-      {insights?.attemptTimeline?.length > 0 && (
-        <section className="mb-6">
-          <ActivityHeatmap attemptTimeline={insights.attemptTimeline} />
-        </section>
-      )}
+
 
       {/* Charts row */}
       <div className="grid gap-6 xl:grid-cols-2">
@@ -1298,6 +1295,7 @@ const InsightsPage = ({
   onResumePractice,
   onStartMockTest,
 }) => {
+  const { solvedCount, totalQuestions, progressPercentage } = useFilterState();
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -1389,14 +1387,23 @@ const InsightsPage = ({
         {/* Hero header */}
         <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.16),_transparent_42%),linear-gradient(135deg,#ffffff_0%,#f8fbff_100%)] p-6 shadow-[var(--shadow-card)] sm:p-7">
           <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+            <div className="flex flex-col gap-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 w-fit">
                 <FaChartLine />
                 Insights
               </div>
-              <h1 className="mt-4 text-3xl font-semibold text-slate-950">
-                Practice performance insights
-              </h1>
+              <div className="min-w-[320px] max-w-md">
+                <ProgressBar
+                  solvedCount={solvedCount}
+                  totalQuestions={totalQuestions}
+                  progressPercentage={progressPercentage}
+                  className="!border-none !bg-transparent !p-0 shadow-none"
+                >
+                  <div className="mt-1">
+                    <ProgressManager />
+                  </div>
+                </ProgressBar>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-3">

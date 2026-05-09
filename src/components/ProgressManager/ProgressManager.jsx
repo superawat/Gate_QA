@@ -99,8 +99,8 @@ export default function ProgressManager() {
 
     // ── EXPORT: JSON ───────────────────────────────────────────────────────
     const handleExportJson = useCallback(() => {
-        const solved = readStorageJson(USER_STATE_STORAGE_KEYS.solved, []);
-        const bookmarked = readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, []);
+        const metadata = readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {});
+        const progress = readStorageJson(USER_STATE_STORAGE_KEYS.progress, {});
 
         const payload = {
             schemaVersion: CURRENT_SCHEMA_VERSION,
@@ -108,6 +108,8 @@ export default function ProgressManager() {
             exportedAt: new Date().toISOString(),
             solvedQuestions: dedupeStringArray(solved),
             bookmarkedQuestions: dedupeStringArray(bookmarked),
+            metadata,
+            progress,
         };
 
         const json = JSON.stringify(payload, null, 2);
@@ -233,11 +235,13 @@ export default function ProgressManager() {
                 modalData.parsed.bookmarkedQuestions
             );
 
-            let finalSolved, finalBookmarked;
+            let finalSolved, finalBookmarked, finalMetadata, finalProgress;
 
             if (strategy === "replace") {
                 finalSolved = importedSolved;
                 finalBookmarked = importedBookmarked;
+                finalMetadata = modalData.parsed.metadata || {};
+                finalProgress = modalData.parsed.progress || {};
             } else {
                 // merge: union of current + imported
                 const currentSolved = dedupeStringArray(
@@ -246,12 +250,19 @@ export default function ProgressManager() {
                 const currentBookmarked = dedupeStringArray(
                     readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, [])
                 );
+                const currentMetadata = readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {});
+                const currentProgress = readStorageJson(USER_STATE_STORAGE_KEYS.progress, {});
+
                 finalSolved = [
                     ...new Set([...currentSolved, ...importedSolved]),
                 ];
                 finalBookmarked = [
                     ...new Set([...currentBookmarked, ...importedBookmarked]),
                 ];
+                // For metadata and progress objects, we merge them (shallow merge)
+                // In a real app, you might want deeper merging for specific fields
+                finalMetadata = { ...currentMetadata, ...(modalData.parsed.metadata || {}) };
+                finalProgress = { ...currentProgress, ...(modalData.parsed.progress || {}) };
             }
 
             // Write
@@ -260,9 +271,11 @@ export default function ProgressManager() {
                 USER_STATE_STORAGE_KEYS.bookmarked,
                 finalBookmarked
             );
+            const w3 = writeStorageJson(USER_STATE_STORAGE_KEYS.metadata, finalMetadata);
+            const w4 = writeStorageJson(USER_STATE_STORAGE_KEYS.progress, finalProgress);
 
-            if (!w1.ok || !w2.ok) {
-                const failed = !w1.ok ? w1 : w2;
+            if (!w1.ok || !w2.ok || !w3.ok || !w4.ok) {
+                const failed = [w1, w2, w3, w4].find(w => !w.ok);
                 if (failed.reason === "quota_exceeded") {
                     showToast("Error: Storage quota exceeded. Cannot import.");
                 } else {
