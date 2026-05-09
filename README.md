@@ -4,7 +4,7 @@ Extensive, searchable, and filterable GATE CSE previous-year question bank from 
 
 Published data count/status is generated into `docs/generated/DATA_STATUS.md` so docs do not have to hardcode question totals.
 
-## Live demo
+## Live link
 
 https://superawat.github.io/Gate_QA/
 
