@@ -141,50 +141,7 @@ const HomePage = ({
 
 
 
-      {/* ── Stats + Question Bank ─────────────────────────────────── */}
-      <section className="mb-8 grid gap-6 lg:grid-cols-12">
-        {/* Stats strip */}
-        <div className="grid gap-4 sm:grid-cols-3 lg:col-span-5">
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-text-muted)]">Solved</p>
-            <p className="mt-2 text-3xl font-bold text-[color:var(--color-text)]">{formatNumber(solvedCount)}</p>
-          </div>
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-text-muted)]">Saved</p>
-            <p className="mt-2 text-3xl font-bold text-[color:var(--color-text)]">{formatNumber(bookmarkedCount)}</p>
-          </div>
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-text-muted)]">Complete</p>
-            <p className="mt-2 text-3xl font-bold text-[color:var(--color-text)]">{formatPercent(progressPercentage)}</p>
-          </div>
-        </div>
 
-        {/* Question Bank card */}
-        <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm lg:col-span-7">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-text-muted)]">Question Bank</p>
-          {manifestLoading ? (
-            <div className="mt-4 flex items-center justify-center py-4">
-              <QuestionBankSummaryLoader />
-            </div>
-          ) : (
-            <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="text-4xl font-bold text-[color:var(--color-text)]">{questionCount}</p>
-                <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">questions across {formatNumber(yearSetCount)} sets</p>
-              </div>
-              <div className="flex items-baseline gap-1 text-right">
-                <span className="text-2xl font-bold text-[color:var(--color-text)]">{latestYear}</span>
-                <span className="text-xs font-semibold uppercase text-[color:var(--color-text-muted)]">latest</span>
-              </div>
-            </div>
-          )}
-          {manifestError && (
-            <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-              {manifestError}
-            </p>
-          )}
-        </div>
-      </section>
 
     </PageShell>
   );

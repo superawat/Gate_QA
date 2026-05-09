@@ -667,7 +667,7 @@ const OverviewTab = ({ insights, summary }) => {
         />
         <StatCard
           label="Avg Time"
-          value={formatDuration(summary.timeSummary?.averageDurationMs)}
+          value={formatDuration(summary.averageDurationMs)}
           icon={FaClock}
           accent="violet"
           sublabel="per timed attempt"

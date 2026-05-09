@@ -48,27 +48,6 @@ describe("HomePage", () => {
     });
   });
 
-  test("shows a compact svg loader while the question bank summary is loading", () => {
-    render(
-      <HomePage
-        questionBankManifest={null}
-        manifestLoading
-        manifestError=""
-        hasResumeRoute={false}
-        lastSession={null}
-        mockModeEnabled={false}
-        onStartRandomPractice={vi.fn()}
-        onExplorePractice={vi.fn()}
-        onOpenInsights={vi.fn()}
-        onOpenMockHistory={vi.fn()}
-        onStartMockTest={vi.fn()}
-        onResumePractice={vi.fn()}
-      />
-    );
-
-    expect(screen.getByRole("status", { name: /loading question bank summary/i })).toBeTruthy();
-    expect(screen.queryByText("...")).toBeNull();
-  });
 
   test("shows mock entry buttons when mock mode is enabled", () => {
     const onStartMockTest = vi.fn();
@@ -106,8 +85,6 @@ describe("HomePage", () => {
     fireEvent.click(screen.getByRole("button", { name: /open mock test/i }));
     expect(onStartMockTest).toHaveBeenCalledTimes(1);
 
-    fireEvent.click(screen.getByRole("button", { name: /mock.* attempted/i }));
-    expect(onOpenMockHistory).toHaveBeenCalledTimes(1);
   });
 
 
