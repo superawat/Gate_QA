@@ -4,6 +4,13 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### PLAN-2026: Phase 5 Gamification and Engagement (5.1 - 5.2) -> Status: Done
+- Added a Duolingo-style Streak Banner to the HomePage with daily goal tracking, current/longest streaks, XP, and dynamic motivational text.
+- Implemented a user-configurable Daily Goal system (persisted in `localStorage`).
+- Added a GitHub-style 52-week Activity Heatmap grid to both the HomePage and Insights dashboard to track study consistency.
+- Built a synchronous `loadStudyActivityFast` helper to aggregate offline timeline and duration data without blocking the landing page on network requests.
+- Maintained a clean 202-test passing unit suite by providing comprehensive mock coverage for the new gamification utilities.
+
 ### PLAN-2026: Phase 4 Learner Analytics and Spaced Repetition (4.5 - 4.8) -> Status: Done
 - Implemented spaced-review scheduling in `src/utils/practiceProgress.js`.
 - Upgraded practice submissions to track session duration, history, review due dates, question difficulty, and XP/streak data.

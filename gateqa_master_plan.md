@@ -49,9 +49,9 @@
 
 | Sub-item | Description | Status |
 |---|---|---|
-| 5.1.1 | **Streak Banner on HomePage** — Prominent 🔥 fire streak counter on landing page with motivational text ("Keep it going!"), current streak count, and daily goal progress ring | Future |
+| 5.1.1 | **Streak Banner on HomePage** — Prominent 🔥 fire streak counter on landing page with motivational text ("Keep it going!"), current streak count, and daily goal progress ring | Completed |
 | 5.1.2 | **Streak Freeze** — Bank 1 streak freeze per 7-day streak; auto-consumed on missed day; stored in localStorage alongside `gateqa_progress_v1` | Future |
-| 5.1.3 | **Daily Goal System** — User-configurable daily practice goal (5/10/20 questions); progress ring toward goal on home page; localStorage-persisted | Future |
+| 5.1.3 | **Daily Goal System** — User-configurable daily practice goal (5/10/20 questions); progress ring toward goal on home page; localStorage-persisted | Completed |
 | 5.1.4 | **Streak Milestones & Celebrations** — Animated celebration modal at 3, 7, 14, 30, 60, 100-day milestones with confetti/particle effect | Future |
 | 5.1.5 | **Streak Danger State** — Amber warning on home page after 6 PM if user hasn't practiced today ("Your streak is at risk!") | Future |
 | 5.1.6 | **Enhanced XP System** — 2x XP on 7+ day streaks; bonus XP for hard questions; XP leaderboard in Insights | Future |
@@ -61,13 +61,13 @@
 
 | Sub-item | Description | Status |
 |---|---|---|
-| 5.2.1 | **Full-Year Activity Heatmap** — GitHub-style green contribution grid (52×7 cells). Cell intensity by daily attempts: 0=gray, 1-3=light green, 4-7=medium green, 8+=dark green. Shown on HomePage and Insights Overview | Future |
-| 5.2.2 | **Hover Tooltip** — Cell hover shows date, attempt count, accuracy%, and time spent | Future |
-| 5.2.3 | **Month & Day Labels** — Month headers (Jan–Dec) along top, day labels (Mon/Wed/Fri) on y-axis | Future |
-| 5.2.4 | **Activity Legend** — "Less … More" color scale legend below the grid | Future |
+| 5.2.1 | **Full-Year Activity Heatmap** — GitHub-style green contribution grid (52×7 cells). Cell intensity by daily attempts: 0=gray, 1-3=light green, 4-7=medium green, 8+=dark green. Shown on HomePage and Insights Overview | Completed |
+| 5.2.2 | **Hover Tooltip** — Cell hover shows date, attempt count, accuracy%, and time spent | Completed |
+| 5.2.3 | **Month & Day Labels** — Month headers (Jan–Dec) along top, day labels (Mon/Wed/Fri) on y-axis | Completed |
+| 5.2.4 | **Activity Legend** — "Less … More" color scale legend below the grid | Completed |
 | 5.2.5 | **Streak Overlay** — Current streak days highlighted with a subtle glow/border on rightmost active cells | Future |
 | 5.2.6 | **Year Selector** — If data spans multiple years, allow switching the heatmap view | Future |
-| 5.2.7 | **Dark Mode Support** — Use dark-mode-aware green shades for heatmap cells | Future |
+| 5.2.7 | **Dark Mode Support** — Use dark-mode-aware green shades for heatmap cells | Completed |
 
 ## Phase 5 Bug Fixes
 

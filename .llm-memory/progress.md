@@ -11,11 +11,12 @@ Updated: 2026-05-09
 - PWA/offline shell, service worker, web manifest, and offline fallback are deployed.
 - Error boundaries wrap route content.
 - 455 GateOverflow images are mirrored locally; 453 were converted to WebP, with 2 legacy PNG/BMP files retained; 0 remote blob dependencies.
-- Unit suite: 201 passing Vitest tests. E2E suite: 15 Playwright tests.
+- Unit suite: 202 passing Vitest tests. E2E suite: 15 Playwright tests.
 - Confirmed dead code removed: LandingShell, PracticeShell, FilterSection, FilterTags, and `check_case.js`.
 - `gateqa_master_plan.md` is now open-work only.
 
 ## Recent completed work
+- Phase 5 Gamification (5.1 & 5.2): Added a Duolingo-style Streak Banner with daily goal progress to the HomePage. Built a GitHub-style 52-week Activity Heatmap, added it to HomePage and Insights, and enhanced `loadStudyActivityFast` to read localStorage offline without network requests.
 - Phase 4 Learner Analytics (4.5 - 4.8): Implemented spaced-review scheduling, detailed practice tracking (duration, history, XP, streaks), and a massive Insights dashboard expansion (Review Queue, Practice Trend, Avg Time, Hard Questions, Badges).
 - Phase 4 UI Polish: WebP image conversion (453 images, 73% smaller), keyboard shortcuts added, Tailwind dark-mode token cleanup (including Insights Review Queue & Wrong Answers tabs, DataPolicy/Support modals), footer layout stabilization, and bundle budget CI gating.
 - E2E Playwright tests updated to reflect the new Insights mock history CTA and practice search input labels.
@@ -35,4 +36,4 @@ Updated: 2026-05-09
 
 ## Open gaps
 - BUG-C / C4 / P2-15 / P3-13: remaining 2009-and-earlier blocked-paper mock readiness, especially duplicate-slot and legacy-format cases.
-- Future learner features: spaced repetition, analytics trends, difficulty scoring, streaks, custom timed practice, PDF export, keyboard shortcuts.
+- Future learner features: spaced repetition, analytics trends, difficulty scoring, streak milestones, streak freeze, custom timed practice, PDF export.
