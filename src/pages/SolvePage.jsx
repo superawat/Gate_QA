@@ -344,14 +344,11 @@ const SolvePage = ({
               <div className="flex items-start justify-end gap-2 lg:pt-0.5">
                 <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-right sm:min-w-[188px]">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Navigation</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{navigationContextLabel}</p>
                     <p className="text-sm font-semibold text-slate-900">
                       {navigationSummary}
                     </p>
                   </div>
-                  <p className="mt-1 text-[11px] text-slate-500">
-                    {navigationContextLabel}
-                  </p>
                 </div>
                 <CalculatorButton
                   ref={calculatorButtonRef}
