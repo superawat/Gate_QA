@@ -667,10 +667,17 @@ export const loadStudyActivityFast = ({
       } else {
         dayBucket.incorrect += 1;
       }
+      if (attempt.durationMs > 0) {
+        dayBucket.totalDurationMs += attempt.durationMs;
+        dayBucket.timedAttempts += 1;
+      }
     });
   });
 
   const attemptTimeline = finalizeAttemptTimeline(attemptDayMap);
-  return buildStudyActivity(attemptTimeline, now);
+  return {
+    ...buildStudyActivity(attemptTimeline, now),
+    attemptTimeline,
+  };
 };
 

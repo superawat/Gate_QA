@@ -6,6 +6,8 @@ import PageShell from "../components/Layout/PageShell";
 import QuestionBankSummaryLoader from "../components/Loaders/QuestionBankSummaryLoader";
 import { readMockTestHistory } from "../utils/mockTestHistory";
 import StreakBanner from "../components/Home/StreakBanner";
+import ActivityHeatmap from "../components/Home/ActivityHeatmap";
+import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 
 const formatNumber = (value) => {
   const numeric = Number(value);
@@ -50,6 +52,7 @@ const HomePage = ({
   const yearSetCount = Array.isArray(questionBankManifest?.yearSets) ? questionBankManifest.yearSets.length : 0;
   const mockHistory = useMemo(() => readMockTestHistory(), []);
   const attemptedMockCount = mockHistory.length;
+  const activity = useMemo(() => loadStudyActivityFast(), []);
 
   return (
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
@@ -128,6 +131,13 @@ const HomePage = ({
 
       {/* ── Streak banner ──────────────────────────────────────── */}
       <StreakBanner />
+
+      {/* ── Activity Heatmap ───────────────────────────────────── */}
+      {activity?.attemptTimeline?.length > 0 && (
+        <section className="mb-8">
+          <ActivityHeatmap attemptTimeline={activity.attemptTimeline} />
+        </section>
+      )}
 
       {/* ── Resume banner ─────────────────────────────────────────── */}
       {hasResumeRoute && lastSession && (

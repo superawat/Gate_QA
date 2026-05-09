@@ -47,6 +47,7 @@ import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
 import useChartTheme from "../hooks/useChartTheme";
+import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -714,6 +715,13 @@ const OverviewTab = ({ insights, summary }) => {
           </div>
         </section>
       ) : null}
+
+      {/* Activity Heatmap */}
+      {insights?.attemptTimeline?.length > 0 && (
+        <section className="mb-6">
+          <ActivityHeatmap attemptTimeline={insights.attemptTimeline} />
+        </section>
+      )}
 
       {/* Charts row */}
       <div className="grid gap-6 xl:grid-cols-2">
