@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 
 const getIntensityClass = (attempts) => {
-  if (attempts === 0) return "bg-[color:var(--color-surface-muted)]";
+  if (attempts === 0) return "bg-slate-100 dark:bg-slate-800/60";
   if (attempts < 4) return "bg-emerald-200 dark:bg-emerald-900/60";
   if (attempts < 8) return "bg-emerald-400 dark:bg-emerald-700/80";
   return "bg-emerald-600 dark:bg-emerald-500";
@@ -29,11 +29,6 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date() }) => {
       timelineMap.set(entry.date, entry);
     });
 
-    // We want the grid to end on "today" (or the end of the current week).
-    // GitHub heatmap columns are Sunday to Saturday.
-    // Let's build exactly 52 weeks (364 days) ending on "today".
-    // Wait, it's easier to just go back 364 days from today.
-    // That's 52 weeks of 7 days.
     const days = [];
     const today = new Date(now);
     today.setHours(0, 0, 0, 0);
@@ -51,10 +46,10 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date() }) => {
       const month = d.getMonth();
 
       // Track month boundaries for labels
-      // Only place a label if we're at the start of a week (i % 7 === 0) or it's the first time we see this month
       if (month !== currentMonth) {
-        if (i < 364 - 14) { // Don't add labels too close to the end
-           monthLabels.push({ label: getMonthShortName(month), weekIndex: Math.floor(i / 7) });
+        // Avoid rendering the start month label if the start day is late in the month
+        if (currentMonth !== -1 || d.getDate() <= 15) {
+          monthLabels.push({ label: getMonthShortName(month), weekIndex: Math.floor(i / 7) });
         }
         currentMonth = month;
       }
