@@ -31,6 +31,7 @@ vi.mock("../utils/mockTestHistory", () => ({
 
 vi.mock("../utils/weakTopicAnalyzer", () => ({
   loadWeakTopicInsights: () => loadWeakTopicInsightsMock(),
+  loadStudyActivityFast: () => ({ currentStreak: 0, longestStreak: 0, xp: 0, activeDayCount: 0, badges: [] }),
 }));
 
 import HomePage from "./HomePage";

@@ -625,3 +625,47 @@ export const loadWeakTopicInsights = async ({
     solvedQuestionIds,
   });
 };
+
+/**
+ * Lightweight, synchronous streak/activity loader.
+ * Reads only localStorage progress records to build the attempt timeline
+ * and derive streak data — no network fetch required.
+ * Suitable for use on the HomePage where fast initial render matters.
+ */
+export const loadStudyActivityFast = ({
+  storage = typeof window !== "undefined" ? window.localStorage : null,
+  now = new Date(),
+} = {}) => {
+  if (!storage) {
+    return buildStudyActivity([], now);
+  }
+
+  const progressRecords = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
+  if (!progressRecords || typeof progressRecords !== "object" || Object.keys(progressRecords).length === 0) {
+    return buildStudyActivity([], now);
+  }
+
+  const attemptDayMap = new Map();
+
+  Object.values(progressRecords).forEach((entry) => {
+    if (!entry) return;
+    const normalizedEntry = normalizeProgressEntry(entry, false, now);
+    if (!normalizedEntry.isAttempted) return;
+
+    normalizeAttemptHistory(entry, normalizedEntry).forEach((attempt) => {
+      const dateKey = toDateKey(attempt.submittedAt);
+      if (!dateKey) return;
+      const dayBucket = getOrCreateDayBucket(attemptDayMap, dateKey);
+      dayBucket.attempts += 1;
+      if (attempt.correct) {
+        dayBucket.correct += 1;
+      } else {
+        dayBucket.incorrect += 1;
+      }
+    });
+  });
+
+  const attemptTimeline = finalizeAttemptTimeline(attemptDayMap);
+  return buildStudyActivity(attemptTimeline, now);
+};
+

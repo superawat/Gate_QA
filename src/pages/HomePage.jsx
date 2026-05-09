@@ -5,6 +5,7 @@ import { useFilterState } from "../contexts/FilterContext";
 import PageShell from "../components/Layout/PageShell";
 import QuestionBankSummaryLoader from "../components/Loaders/QuestionBankSummaryLoader";
 import { readMockTestHistory } from "../utils/mockTestHistory";
+import StreakBanner from "../components/Home/StreakBanner";
 
 const formatNumber = (value) => {
   const numeric = Number(value);
@@ -124,6 +125,9 @@ const HomePage = ({
           </span>
         </button>
       </section>
+
+      {/* ── Streak banner ──────────────────────────────────────── */}
+      <StreakBanner />
 
       {/* ── Resume banner ─────────────────────────────────────────── */}
       {hasResumeRoute && lastSession && (
