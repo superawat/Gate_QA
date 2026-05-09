@@ -260,13 +260,13 @@ const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel }) => {
   };
 
   return (
-    <div className={`rounded-2xl border px-4 py-4 shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] ${colorMap[accent]}`}>
-      <div className="flex items-center gap-2">
-        {Icon && <Icon className={`text-sm ${iconColorMap[accent]}`} />}
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] opacity-75">{label}</p>
+    <div className={`rounded-xl border px-3 py-2.5 shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.01] ${colorMap[accent]}`}>
+      <div className="flex items-center gap-1.5">
+        {Icon && <Icon className={`text-[10px] ${iconColorMap[accent]}`} />}
+        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] opacity-75">{label}</p>
       </div>
-      <p className="mt-2 text-2xl font-bold">{value}</p>
-      {sublabel && <p className="mt-0.5 text-[11px] opacity-60">{sublabel}</p>}
+      <p className="mt-1 text-xl font-bold">{value}</p>
+      {sublabel && <p className="mt-0.5 text-[10px] opacity-60 leading-tight">{sublabel}</p>}
     </div>
   );
 };
@@ -636,7 +636,7 @@ const OverviewTab = ({ insights, summary }) => {
   return (
     <div className="space-y-6">
       {/* Stat cards row */}
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <StatCard
           label="Attempted"
           value={formatNumber(summary.attemptedQuestionCount)}
