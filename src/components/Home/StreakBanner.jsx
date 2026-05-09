@@ -18,6 +18,7 @@ const StreakBanner = () => {
   const activity = useMemo(() => loadStudyActivityFast(), []);
   const { goal, updateGoal } = useDailyGoal();
   const [isEditingGoal, setIsEditingGoal] = useState(false);
+  const [customGoal, setCustomGoal] = useState("");
 
   const { currentStreak, longestStreak, xp, activeDayCount, badges, todayAttempts = 0 } = activity;
 
@@ -61,12 +62,13 @@ const StreakBanner = () => {
             <div className="flex w-full max-w-sm flex-col items-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-xl">
               <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-[color:var(--color-text)]">Set Daily Goal</h3>
               <p className="mb-4 text-center text-xs text-[color:var(--color-text-muted)]">How many questions do you want to practice each day?</p>
-              <div className="flex gap-3">
+              
+              <div className="mb-4 flex w-full justify-center gap-3">
                 {[5, 10, 20].map((g) => (
                   <button
                     key={g}
                     onClick={() => { updateGoal(g); setIsEditingGoal(false); }}
-                    className={`rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)] ${
+                    className={`flex-1 rounded-xl px-2 py-2.5 text-sm font-bold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)] ${
                       goal === g
                         ? "bg-[color:var(--color-primary-text)] text-white"
                         : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] hover:bg-[color:var(--color-border)]"
@@ -76,9 +78,44 @@ const StreakBanner = () => {
                   </button>
                 ))}
               </div>
+              
+              <div className="flex w-full items-center gap-2">
+                <input
+                  type="number"
+                  min="1"
+                  max="500"
+                  placeholder="Custom target"
+                  value={customGoal}
+                  onChange={(e) => setCustomGoal(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      const val = parseInt(customGoal, 10);
+                      if (val > 0) {
+                        updateGoal(val);
+                        setIsEditingGoal(false);
+                      }
+                    }
+                  }}
+                  className="flex-1 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-sm font-semibold text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const val = parseInt(customGoal, 10);
+                    if (val > 0) {
+                      updateGoal(val);
+                      setIsEditingGoal(false);
+                    }
+                  }}
+                  className="rounded-xl bg-[color:var(--color-primary-text)] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[color:var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                >
+                  Set
+                </button>
+              </div>
+
               <button
                 type="button"
-                className="mt-5 text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                className="mt-5 text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] focus:outline-none"
                 onClick={() => setIsEditingGoal(false)}
               >
                 Cancel
@@ -161,37 +198,43 @@ const StreakBanner = () => {
             <div className="ml-2 flex items-center justify-center">
               <button
                 type="button"
-                className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[color:var(--color-surface-muted)] transition hover:ring-2 hover:ring-[color:var(--color-primary-border)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[color:var(--color-surface)] shadow-sm ring-1 ring-[color:var(--color-border)] transition hover:shadow-md hover:ring-2 hover:ring-[color:var(--color-primary-border)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
                 onClick={() => setIsEditingGoal(true)}
                 title="Edit Daily Goal"
                 aria-label={`Daily goal: ${todayAttempts} out of ${goal} questions`}
               >
-                <svg className="absolute inset-0 h-14 w-14 -rotate-90 transform" viewBox="0 0 36 36">
+                <svg className="absolute inset-0 h-14 w-14 -rotate-90 transform drop-shadow-sm" viewBox="0 0 36 36">
+                  {/* Background Track */}
                   <path
-                    className="text-[color:var(--color-border)]"
+                    className="text-[color:var(--color-surface-muted)]"
                     stroke="currentColor"
-                    strokeWidth="3"
+                    strokeWidth="3.5"
                     fill="none"
                     d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   />
-                  <path
-                    className={goalCompleted ? "text-[color:var(--color-success-text)]" : "text-[color:var(--color-primary-text)]"}
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeDasharray={`${goalProgress}, 100`}
-                    strokeLinecap="round"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
+                  {/* Progress Arc */}
+                  {goalProgress > 0 && (
+                    <path
+                      className={goalCompleted ? "text-[color:var(--color-success-text)]" : "text-[color:var(--color-primary-text)]"}
+                      stroke="currentColor"
+                      strokeWidth="3.5"
+                      strokeDasharray={`${goalProgress}, 100`}
+                      strokeLinecap="round"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                  )}
                 </svg>
                 <div className="absolute flex flex-col items-center justify-center text-center">
                   {goalCompleted ? (
-                    <FaCheck size={16} className="text-[color:var(--color-success-text)]" />
+                    <FaCheck size={16} className="text-[color:var(--color-success-text)] drop-shadow-sm" />
                   ) : (
-                    <span className="flex flex-col items-center justify-center pt-0.5 text-[11px] font-bold leading-none text-[color:var(--color-text)]">
-                      {todayAttempts}
-                      <span className="text-[9px] font-semibold text-[color:var(--color-text-muted)] group-hover:text-[color:var(--color-text)]">/{goal}</span>
-                    </span>
+                    <div className="flex flex-col items-center justify-center pt-0.5">
+                      <span className="text-base font-black leading-none text-[color:var(--color-text)]">{todayAttempts}</span>
+                      <span className="mt-0.5 text-[9px] font-bold tracking-wider text-[color:var(--color-text-muted)] group-hover:text-[color:var(--color-primary-text)] transition-colors">
+                        / {goal}
+                      </span>
+                    </div>
                   )}
                 </div>
               </button>

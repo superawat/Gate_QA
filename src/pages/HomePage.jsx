@@ -139,29 +139,7 @@ const HomePage = ({
         </section>
       )}
 
-      {/* ── Resume banner ─────────────────────────────────────────── */}
-      {hasResumeRoute && lastSession && (
-        <section className="mb-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-4 shadow-sm">
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-[color:var(--color-text)]">Continue your last session</p>
-              <p className="mt-0.5 truncate text-sm text-[color:var(--color-text-muted)]">
-                {lastSession.questionUid
-                  ? `Resume at ${lastSession.questionUid}`
-                  : "Return to your last page"}
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={onResumePractice}
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-sky-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500"
-            >
-              <FaRegClock size={14} />
-              Continue
-            </button>
-          </div>
-        </section>
-      )}
+
 
       {/* ── Stats + Question Bank ─────────────────────────────────── */}
       <section className="mb-8 grid gap-6 lg:grid-cols-12">
@@ -208,30 +186,6 @@ const HomePage = ({
         </div>
       </section>
 
-
-      {/* ── Mock history shortcut (only when they've attempted mocks) */}
-      {mockModeEnabled && attemptedMockCount > 0 && (
-        <section className="mb-8">
-          <button
-            type="button"
-            onClick={onOpenMockHistory}
-            className="group flex w-full items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-4 text-left shadow-sm transition hover:border-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]">
-                <FaHistory size={16} />
-              </span>
-              <span>
-                <span className="block text-sm font-semibold text-[color:var(--color-text)]">
-                  {attemptedMockCount} {attemptedMockCount === 1 ? "Mock" : "Mocks"} Attempted
-                </span>
-                <span className="block text-xs text-[color:var(--color-text-muted)]">View your mock test history</span>
-              </span>
-            </div>
-            <FaArrowRight className="text-slate-400 transition-transform group-hover:translate-x-1" />
-          </button>
-        </section>
-      )}
     </PageShell>
   );
 };

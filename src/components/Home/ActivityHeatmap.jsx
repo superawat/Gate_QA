@@ -93,7 +93,7 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date() }) => {
               <span
                 key={`${m.label}-${i}`}
                 className="absolute text-[10px] font-semibold text-[color:var(--color-text-muted)]"
-                style={{ left: `${m.weekIndex * 15}px` }}
+                style={{ left: `${m.weekIndex * 16}px` }}
               >
                 {m.label}
               </span>
