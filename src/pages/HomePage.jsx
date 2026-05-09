@@ -134,7 +134,7 @@ const HomePage = ({
 
       {/* ── Activity Heatmap ───────────────────────────────────── */}
       {activity?.attemptTimeline?.length > 0 && (
-        <section className="mb-8">
+        <section>
           <ActivityHeatmap attemptTimeline={activity.attemptTimeline} />
         </section>
       )}
