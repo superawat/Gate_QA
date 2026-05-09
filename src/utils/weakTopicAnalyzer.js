@@ -319,10 +319,15 @@ const buildStudyActivity = (attemptTimeline = [], now = new Date()) => {
     totalCorrect >= 50 ? "50 correct" : null,
   ].filter(Boolean);
 
+  const todayKey = toDateKey(now);
+  const todayEntry = attemptTimeline.find((entry) => entry.date === todayKey);
+  const todayAttempts = todayEntry ? (Number(todayEntry.attempts) || 0) : 0;
+
   return {
     activeDayCount: activeDates.length,
     currentStreak,
     longestStreak,
+    todayAttempts,
     xp,
     badges,
     lastActiveDate: activeDates[activeDates.length - 1] || "",

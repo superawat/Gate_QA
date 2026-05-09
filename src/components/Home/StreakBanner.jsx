@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
-import { FaFire, FaTrophy, FaStar, FaBolt } from "react-icons/fa";
+import React, { useMemo, useState } from "react";
+import { FaFire, FaTrophy, FaStar, FaBolt, FaCheck } from "react-icons/fa";
 import { loadStudyActivityFast } from "../../utils/weakTopicAnalyzer";
+import { useDailyGoal } from "../../hooks/useDailyGoal";
 
 /**
  * Duolingo-style streak banner for the HomePage.
@@ -15,8 +16,13 @@ import { loadStudyActivityFast } from "../../utils/weakTopicAnalyzer";
  */
 const StreakBanner = () => {
   const activity = useMemo(() => loadStudyActivityFast(), []);
+  const { goal, updateGoal } = useDailyGoal();
+  const [isEditingGoal, setIsEditingGoal] = useState(false);
 
-  const { currentStreak, longestStreak, xp, activeDayCount, badges } = activity;
+  const { currentStreak, longestStreak, xp, activeDayCount, badges, todayAttempts = 0 } = activity;
+
+  const goalProgress = Math.min(100, Math.round((todayAttempts / goal) * 100));
+  const goalCompleted = todayAttempts >= goal;
 
   // Don't show the banner if the user has never practiced
   if (activeDayCount === 0) return null;
@@ -47,6 +53,38 @@ const StreakBanner = () => {
               background: `linear-gradient(135deg, ${streakColor} 0%, transparent 60%)`,
             }}
           />
+        )}
+
+        {/* Goal Settings Overlay */}
+        {isEditingGoal && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-[color:var(--color-surface)]/90 p-4 backdrop-blur-sm">
+            <div className="flex w-full max-w-sm flex-col items-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-xl">
+              <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-[color:var(--color-text)]">Set Daily Goal</h3>
+              <p className="mb-4 text-center text-xs text-[color:var(--color-text-muted)]">How many questions do you want to practice each day?</p>
+              <div className="flex gap-3">
+                {[5, 10, 20].map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => { updateGoal(g); setIsEditingGoal(false); }}
+                    className={`rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)] ${
+                      goal === g
+                        ? "bg-[color:var(--color-primary-text)] text-white"
+                        : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] hover:bg-[color:var(--color-border)]"
+                    }`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                className="mt-5 text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                onClick={() => setIsEditingGoal(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         )}
 
         <div className="relative flex flex-wrap items-center gap-5 sm:gap-8">
@@ -118,6 +156,46 @@ const StreakBanner = () => {
               color="var(--color-success-text)"
               bgColor="var(--color-success-soft)"
             />
+
+            {/* Daily Goal Ring */}
+            <div className="ml-2 flex items-center justify-center">
+              <button
+                type="button"
+                className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[color:var(--color-surface-muted)] transition hover:ring-2 hover:ring-[color:var(--color-primary-border)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                onClick={() => setIsEditingGoal(true)}
+                title="Edit Daily Goal"
+                aria-label={`Daily goal: ${todayAttempts} out of ${goal} questions`}
+              >
+                <svg className="absolute inset-0 h-14 w-14 -rotate-90 transform" viewBox="0 0 36 36">
+                  <path
+                    className="text-[color:var(--color-border)]"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className={goalCompleted ? "text-[color:var(--color-success-text)]" : "text-[color:var(--color-primary-text)]"}
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeDasharray={`${goalProgress}, 100`}
+                    strokeLinecap="round"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <div className="absolute flex flex-col items-center justify-center text-center">
+                  {goalCompleted ? (
+                    <FaCheck size={16} className="text-[color:var(--color-success-text)]" />
+                  ) : (
+                    <span className="flex flex-col items-center justify-center pt-0.5 text-[11px] font-bold leading-none text-[color:var(--color-text)]">
+                      {todayAttempts}
+                      <span className="text-[9px] font-semibold text-[color:var(--color-text-muted)] group-hover:text-[color:var(--color-text)]">/{goal}</span>
+                    </span>
+                  )}
+                </div>
+              </button>
+            </div>
           </div>
         </div>
 
