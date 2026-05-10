@@ -4,7 +4,6 @@ import { FaCheckCircle, FaStar } from "react-icons/fa";
 import AnswerPanel from "../AnswerPanel/AnswerPanel";
 import { useFilterActions } from "../../contexts/FilterContext";
 import { MathContent } from "../Math/MathRuntime";
-import QuestionNotes from "./QuestionNotes";
 
 function Question({
   question = {},
@@ -91,8 +90,6 @@ function Question({
           canGoNext={canGoNext}
           solutionLink={question.link}
         />
-
-        <QuestionNotes storageKey={questionProgressId} />
       </div>
     </div>
   );
