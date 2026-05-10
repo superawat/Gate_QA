@@ -622,6 +622,72 @@ const FocusAreas = ({ subtopics = [] }) => {
   );
 };
 
+/* ── Smart Practice Banner ──────────────────────────────────────────────── */
+
+const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
+  const weakSubtopics = useMemo(() =>
+    subtopics.filter((st) => st.attemptedCount > 0 && st.accuracyRate < 0.6),
+    [subtopics]
+  );
+  
+  const hasReviewDue = reviewQueue.length > 0;
+  const hasWeakAreas = weakSubtopics.length > 0;
+  
+  if (!hasReviewDue && !hasWeakAreas) return null;
+
+  // Build the multi-subtopic URL for the weakest areas (max 3 to avoid giant URLs)
+  const topWeak = weakSubtopics.slice(0, 3);
+  const weakSubjects = Array.from(new Set(topWeak.map((st) => st.subjectSlug))).join(",");
+  const weakSubtopicSlugs = topWeak.map((st) => st.key.split(":")[1]).filter(Boolean).join(",");
+  const practiceWeakUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(weakSubjects)}&subtopics=${encodeURIComponent(weakSubtopicSlugs)}&hideSolved=1`;
+  
+  const reviewUrl = hasReviewDue ? buildSolvePath(reviewQueue[0].storageKey) : "#";
+
+  return (
+    <div className="grid gap-4 sm:grid-cols-2">
+      {hasReviewDue && (
+        <section className="flex flex-col justify-between rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-5 shadow-[var(--shadow-card)]">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <FaCalendarCheck className="text-[color:var(--color-warning-text)] text-lg" />
+              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Spaced Repetition</h2>
+            </div>
+            <p className="text-sm text-[color:var(--color-text-muted)] mb-4">
+              <strong className="text-[color:var(--color-warning-text)] font-bold">{reviewQueue.length}</strong> questions are due for review today to maintain your memory retention.
+            </p>
+          </div>
+          <Link
+            to={reviewUrl}
+            className="inline-flex w-full justify-center items-center gap-2 rounded-lg bg-[color:var(--color-warning-text)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-opacity-90"
+          >
+            Start Review <FaArrowRight />
+          </Link>
+        </section>
+      )}
+      
+      {hasWeakAreas && (
+        <section className="flex flex-col justify-between rounded-[var(--radius-card)] border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] p-5 shadow-[var(--shadow-card)]">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <FaBullseye className="text-[color:var(--color-primary)] text-lg" />
+              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Practice Weak Areas</h2>
+            </div>
+            <p className="text-sm text-[color:var(--color-text-muted)] mb-4">
+              You have <strong className="text-[color:var(--color-primary)] font-bold">{weakSubtopics.length}</strong> subtopics with accuracy below 60%. Focus on unsolved questions to improve.
+            </p>
+          </div>
+          <Link
+            to={practiceWeakUrl}
+            className="inline-flex w-full justify-center items-center gap-2 rounded-lg bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[color:var(--color-primary-hover)]"
+          >
+            Auto-filter Practice <FaArrowRight />
+          </Link>
+        </section>
+      )}
+    </div>
+  );
+};
+
 /* ── Overview tab ───────────────────────────────────────────────────────── */
 
 const OverviewTab = ({ insights, summary }) => {
@@ -683,7 +749,10 @@ const OverviewTab = ({ insights, summary }) => {
       <FocusAreas subtopics={insights.subtopics} />
 
       {/* Skill Radar */}
-        {/* Radar + Pie */}
+        {/* Smart Practice Banner */}
+      <SmartPracticeBanner subtopics={insights.subtopics} reviewQueue={insights.reviewQueue} />
+
+      {/* Radar + Pie */}
         <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
           <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Skill Radar</h2>
           <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
