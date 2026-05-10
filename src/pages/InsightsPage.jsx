@@ -688,6 +688,139 @@ const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
   );
 };
 
+/* ── Year Coverage Grid ─────────────────────────────────────────────────── */
+
+const YearCoverageGrid = ({ years = [] }) => {
+  if (years.length === 0) return null;
+  
+  // Create decade groups
+  const decades = {};
+  years.forEach(year => {
+    const decade = Math.floor(Number(year.key) / 10) * 10;
+    if (!decades[decade]) decades[decade] = [];
+    decades[decade].push(year);
+  });
+
+  return (
+    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+      <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Exam Year Coverage</h2>
+      <p className="mt-1 text-sm text-[color:var(--color-text-muted)] mb-4">
+        Ensure you have solved questions from all recent exam years.
+      </p>
+      
+      <div className="space-y-6">
+        {Object.entries(decades).sort(([a], [b]) => Number(b) - Number(a)).map(([decade, decadeYears]) => (
+          <div key={decade}>
+            <h3 className="text-sm font-semibold text-[color:var(--color-text-muted)] mb-3">{decade}s</h3>
+            <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {decadeYears.sort((a, b) => Number(b.key) - Number(a.key)).map(year => {
+                const coveragePercent = Math.round((year.coverageRate || 0) * 100);
+                const isZero = coveragePercent === 0;
+                const accuracyPercent = Math.round((year.accuracyRate || 0) * 100);
+                const practiceUrl = `${PRACTICE_ROUTE}?years=${year.key}&hideSolved=1`;
+                
+                return (
+                  <Link
+                    key={year.key}
+                    to={practiceUrl}
+                    className={`group block rounded-xl border p-3 transition ${
+                      isZero 
+                        ? "border-dashed border-[color:var(--color-border)] bg-transparent hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-surface-muted)]" 
+                        : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] hover:border-[color:var(--color-primary)] hover:shadow-md"
+                    }`}
+                  >
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-bold text-[color:var(--color-text)]">{year.key}</span>
+                      <span className="text-[10px] text-[color:var(--color-text-muted)]">{coveragePercent}% cov</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-[color:var(--color-border)] rounded-full mb-2 overflow-hidden">
+                      <div 
+                        className="h-full bg-[color:var(--color-primary)] rounded-full" 
+                        style={{ width: `${coveragePercent}%` }}
+                      />
+                    </div>
+                    {!isZero && (
+                      <div className="flex justify-between items-center text-[10px]">
+                        <span className="text-[color:var(--color-text-muted)]">{year.attemptedQuestions}/{year.availableQuestions} Qs</span>
+                        <span className="font-bold" style={{ color: getAccuracyTone(year.accuracyRate).color }}>{accuracyPercent}% acc</span>
+                      </div>
+                    )}
+                    {isZero && (
+                      <div className="text-[10px] text-[color:var(--color-text-muted)] text-center">
+                        {year.availableQuestions} Qs available
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+/* ── Year-wise Accuracy Trend ───────────────────────────────────────────── */
+
+const YearAccuracyTrend = ({ years = [] }) => {
+  const chartData = useMemo(() => {
+    return years
+      .filter(y => y.attemptedCount > 0)
+      .map(y => ({
+        year: y.key,
+        accuracy: Math.round((y.accuracyRate || 0) * 100)
+      }))
+      .sort((a, b) => Number(a.year) - Number(b.year));
+  }, [years]);
+  
+  const theme = useChartTheme();
+
+  if (chartData.length < 3) return null;
+
+  return (
+    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+      <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Year-wise Accuracy Trend</h2>
+      <p className="mt-1 text-sm text-[color:var(--color-text-muted)] mb-6">
+        Are you performing better on newer exam papers?
+      </p>
+      
+      <div className="h-64 w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={theme.grid} />
+            <XAxis 
+              dataKey="year" 
+              axisLine={false} 
+              tickLine={false} 
+              tick={{ fontSize: 12, fill: theme.text }} 
+              dy={10} 
+            />
+            <YAxis 
+              domain={[0, 100]} 
+              axisLine={false} 
+              tickLine={false} 
+              tick={{ fontSize: 12, fill: theme.text }} 
+              dx={-10} 
+              tickFormatter={(val) => `${val}%`} 
+            />
+            <RechartsTooltip content={<ChartTooltip />} />
+            <Line 
+              type="monotone" 
+              dataKey="accuracy" 
+              name="Accuracy" 
+              stroke="var(--chart-series-primary, #6366f1)" 
+              strokeWidth={3}
+              dot={{ r: 4, fill: "var(--chart-series-primary, #6366f1)", strokeWidth: 2, stroke: "var(--color-surface)" }}
+              activeDot={{ r: 6 }} 
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </section>
+  );
+};
+
 /* ── Overview tab ───────────────────────────────────────────────────────── */
 
 const OverviewTab = ({ insights, summary }) => {

@@ -8,6 +8,9 @@ import {
 
 const PROGRESS_STORAGE_KEY = "gateqa_progress_v1";
 const SOLVED_STORAGE_KEY = "gate_qa_solved_questions";
+const STREAK_FREEZE_STORAGE_KEY = "gateqa_streak_freeze_v1";
+const STREAK_FREEZE_INTERVAL_DAYS = 7;
+const HARD_QUESTION_XP_BONUS = 20;
 const NON_ATTEMPT_STATUSES = new Set([
   "watched",
   "watching",
@@ -268,15 +271,37 @@ const addDays = (date, days) => {
   return next;
 };
 
-const buildStudyActivity = (attemptTimeline = [], now = new Date()) => {
-  const activeDates = attemptTimeline
-    .map((entry) => entry.date)
-    .filter(Boolean)
-    .sort();
-  const activeDateSet = new Set(activeDates);
-  const totalAttempts = attemptTimeline.reduce((sum, entry) => sum + Number(entry.attempts || 0), 0);
-  const totalCorrect = attemptTimeline.reduce((sum, entry) => sum + Number(entry.correct || 0), 0);
+const normalizeDateKeyList = (dateKeys = []) => (
+  Array.from(
+    new Set(
+      dateKeys
+        .filter((dateKey) => typeof dateKey === "string" && /^\d{4}-\d{2}-\d{2}$/.test(dateKey))
+        .sort()
+    )
+  )
+);
 
+const normalizeStreakFreezeState = (value = {}) => ({
+  available: Math.max(0, Number(value.available) || 0),
+  earnedCount: Math.max(0, Number(value.earnedCount) || 0),
+  consumedDates: normalizeDateKeyList(Array.isArray(value.consumedDates) ? value.consumedDates : []),
+});
+
+const readStreakFreezeState = (storage) => (
+  normalizeStreakFreezeState(parseJson(storage?.getItem?.(STREAK_FREEZE_STORAGE_KEY), {}))
+);
+
+const writeStreakFreezeState = (storage, state) => {
+  try {
+    storage?.setItem?.(STREAK_FREEZE_STORAGE_KEY, JSON.stringify(normalizeStreakFreezeState(state)));
+  } catch {
+    // Best-effort persistence only; activity analytics should still render.
+  }
+};
+
+const buildStreakStats = (dateKeys = [], now = new Date()) => {
+  const activeDates = normalizeDateKeyList(dateKeys);
+  const activeDateSet = new Set(activeDates);
   let longestStreak = 0;
   let runningStreak = 0;
   let previousDate = null;
@@ -292,31 +317,116 @@ const buildStudyActivity = (attemptTimeline = [], now = new Date()) => {
     previousDate = currentDate;
   });
 
-  let currentStreak = 0;
-  if (activeDates.length > 0) {
-    const lastActiveDate = new Date(`${activeDates[activeDates.length - 1]}T00:00:00.000Z`);
+  const todayKey = toDateKey(now);
+  const yesterdayKey = toDateKey(addDays(new Date(`${todayKey}T00:00:00.000Z`), -1));
+  const lastActiveDate = activeDates[activeDates.length - 1] || "";
+  const currentDateKeys = [];
+
+  if (lastActiveDate === todayKey || lastActiveDate === yesterdayKey) {
+    let cursor = new Date(`${lastActiveDate}T00:00:00.000Z`);
+    let cursorKey = toDateKey(cursor);
+    while (activeDateSet.has(cursorKey)) {
+      currentDateKeys.unshift(cursorKey);
+      cursor = addDays(cursor, -1);
+      cursorKey = toDateKey(cursor);
+    }
+  }
+
+  return {
+    currentStreak: currentDateKeys.length,
+    currentDateKeys,
+    longestStreak,
+    lastActiveDate,
+  };
+};
+
+const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storage = null } = {}) => {
+  const state = readStreakFreezeState(storage);
+  const actualDates = normalizeDateKeyList(activeDates);
+  const effectiveDateSet = new Set([...actualDates, ...state.consumedDates]);
+  let changed = false;
+  const awardEarnedFreeze = () => {
+    const stats = buildStreakStats(Array.from(effectiveDateSet), now);
+    const earnedCount = Math.floor(stats.longestStreak / STREAK_FREEZE_INTERVAL_DAYS);
+
+    if (earnedCount > state.earnedCount) {
+      state.available += earnedCount - state.earnedCount;
+      state.earnedCount = earnedCount;
+      changed = true;
+    }
+
+    return stats;
+  };
+  let stats = buildStreakStats(Array.from(effectiveDateSet), now);
+
+  if (actualDates.length > 0) {
+    stats = awardEarnedFreeze();
     const todayKey = toDateKey(now);
     const yesterdayKey = toDateKey(addDays(new Date(`${todayKey}T00:00:00.000Z`), -1));
-    const lastKey = activeDates[activeDates.length - 1];
+    const latestBeforeToday = Array.from(effectiveDateSet)
+      .filter((dateKey) => dateKey < todayKey)
+      .sort()
+      .at(-1);
 
-    // Only count a current streak if the user was active today or yesterday
-    if (lastKey === todayKey || lastKey === yesterdayKey) {
-      currentStreak = 1;
-      let cursor = lastActiveDate;
-      while (activeDateSet.has(toDateKey(addDays(cursor, -1)))) {
-        currentStreak += 1;
-        cursor = addDays(cursor, -1);
+    if (latestBeforeToday && latestBeforeToday < yesterdayKey) {
+      let cursor = addDays(new Date(`${latestBeforeToday}T00:00:00.000Z`), 1);
+      let cursorKey = toDateKey(cursor);
+
+      while (cursorKey <= yesterdayKey) {
+        if (!effectiveDateSet.has(cursorKey)) {
+          if (state.available <= 0) {
+            break;
+          }
+          state.available -= 1;
+          state.consumedDates.push(cursorKey);
+          effectiveDateSet.add(cursorKey);
+          changed = true;
+        }
+
+        cursor = addDays(cursor, 1);
+        cursorKey = toDateKey(cursor);
       }
     }
   }
 
-  const xp = (totalAttempts * 5) + (totalCorrect * 10) + (longestStreak * 15);
+  stats = actualDates.length > 0 ? awardEarnedFreeze() : stats;
+
+  state.consumedDates = normalizeDateKeyList(state.consumedDates);
+  if (changed) {
+    writeStreakFreezeState(storage, state);
+  }
+
+  return {
+    state: normalizeStreakFreezeState(state),
+    stats,
+  };
+};
+
+const buildStudyActivity = (attemptTimeline = [], now = new Date(), options = {}) => {
+  const activeDates = normalizeDateKeyList(
+    attemptTimeline
+      .map((entry) => entry.date)
+      .filter(Boolean)
+  );
+  const totalAttempts = attemptTimeline.reduce((sum, entry) => sum + Number(entry.attempts || 0), 0);
+  const totalCorrect = attemptTimeline.reduce((sum, entry) => sum + Number(entry.correct || 0), 0);
+  const hardQuestionCount = Math.max(0, Number(options.hardQuestionCount) || 0);
+  const streakFreeze = normalizeStreakFreezeState(options.streakFreezeState);
+  const streakStats = options.streakStats || buildStreakStats([...activeDates, ...streakFreeze.consumedDates], now);
+  const { currentStreak, currentDateKeys, longestStreak, lastActiveDate } = streakStats;
+  const baseXp = (totalAttempts * 5) + (totalCorrect * 10) + (longestStreak * 15);
+  const hardBonusXp = hardQuestionCount * HARD_QUESTION_XP_BONUS;
+  const streakMultiplier = currentStreak >= 7 ? 2 : 1;
+  const xp = (baseXp + hardBonusXp) * streakMultiplier;
   const badges = [
     currentStreak >= 3 ? "3-day streak" : null,
     currentStreak >= 7 ? "7-day streak" : null,
+    streakMultiplier > 1 ? "2x XP" : null,
+    streakFreeze.available > 0 ? `${streakFreeze.available} freeze ready` : null,
     totalAttempts >= 25 ? "25 attempts" : null,
     totalAttempts >= 100 ? "100 attempts" : null,
     totalCorrect >= 50 ? "50 correct" : null,
+    hardQuestionCount > 0 ? "hard practice" : null,
   ].filter(Boolean);
 
   const todayKey = toDateKey(now);
@@ -329,8 +439,20 @@ const buildStudyActivity = (attemptTimeline = [], now = new Date()) => {
     longestStreak,
     todayAttempts,
     xp,
+    xpBreakdown: {
+      baseXp,
+      hardBonusXp,
+      streakMultiplier,
+      totalXp: xp,
+    },
     badges,
-    lastActiveDate: activeDates[activeDates.length - 1] || "",
+    lastActiveDate,
+    streakDateKeys: currentDateKeys,
+    streakFreeze: {
+      ...streakFreeze,
+      consumedCount: streakFreeze.consumedDates.length,
+      lastConsumedDate: streakFreeze.consumedDates[streakFreeze.consumedDates.length - 1] || "",
+    },
   };
 };
 
@@ -341,6 +463,7 @@ export const buildWeakTopicInsights = ({
   now = new Date(),
 } = {}) => {
   const subjectBuckets = new Map();
+  const yearBuckets = new Map();
   const subtopicBuckets = new Map();
   const questionMetaByStorageKey = new Map();
   const attemptDayMap = new Map();
@@ -362,11 +485,13 @@ export const buildWeakTopicInsights = ({
     const subjectSlug = String(question.subjectSlug || "").trim() || "unknown";
     const subjectLabel = String(question.subjectLabel || QuestionService.getSubjectLabelBySlug(subjectSlug)).trim() || "Unknown";
     const subtopics = Array.isArray(question.subtopics) ? question.subtopics : [];
+    const year = question.exam?.year || null;
 
     questionMetaByStorageKey.set(storageKey, {
       subjectSlug,
       subjectLabel,
       subtopics,
+      year,
     });
 
     getOrCreateBucket(subjectBuckets, {
@@ -375,6 +500,13 @@ export const buildWeakTopicInsights = ({
       subjectLabel,
       subjectSlug,
     }).availableQuestions += 1;
+
+    if (year) {
+      getOrCreateBucket(yearBuckets, {
+        key: String(year),
+        label: String(year),
+      }).availableQuestions += 1;
+    }
 
     subtopics.forEach((subtopic) => {
       const subtopicSlug = String(subtopic?.slug || "").trim();
@@ -524,6 +656,23 @@ export const buildWeakTopicInsights = ({
         correct: normalizedEntry.lastCorrect,
       });
     });
+
+    if (meta.year) {
+      const yearBucket = getOrCreateBucket(yearBuckets, {
+        key: String(meta.year),
+        label: String(meta.year),
+      });
+      yearBucket.attemptedQuestions += 1;
+      yearBucket.attemptedCount += normalizedEntry.attempts;
+      yearBucket.correctAttempts += normalizedEntry.correctAttempts;
+      yearBucket.incorrectAttempts += normalizedEntry.incorrectAttempts;
+      yearBucket.totalDurationMs += normalizedEntry.totalDurationMs || normalizedEntry.lastDurationMs || 0;
+      yearBucket.timedAttemptCount += normalizedEntry.timedAttemptCount;
+      yearBucket.recentEntries.push({
+        at: normalizedEntry.lastSubmittedAt,
+        correct: normalizedEntry.lastCorrect,
+      });
+    }
   });
 
   // Sort wrong questions: most recent first
@@ -555,6 +704,10 @@ export const buildWeakTopicInsights = ({
     .filter((bucket) => bucket.attemptedQuestions > 0)
     .map(finalizeBucket)
     .sort(sortTopicBuckets);
+
+  const years = Array.from(yearBuckets.values())
+    .map(finalizeBucket)
+    .sort((a, b) => Number(a.key) - Number(b.key));
   const attemptTimeline = finalizeAttemptTimeline(attemptDayMap);
   const timedAttemptCount = subjects.reduce((sum, bucket) => sum + Number(bucket.timedAttemptCount || 0), 0);
   const totalDurationMs = subjects.reduce((sum, bucket) => sum + Number(bucket.totalDurationMs || 0), 0);
@@ -567,10 +720,13 @@ export const buildWeakTopicInsights = ({
   return {
     subjects,
     subtopics,
+    years,
     wrongQuestions,
     reviewQueue,
     attemptTimeline,
-    studyActivity: buildStudyActivity(attemptTimeline, now),
+    studyActivity: buildStudyActivity(attemptTimeline, now, {
+      hardQuestionCount: difficultyCounts.Hard,
+    }),
     timeSummary: {
       totalDurationMs,
       timedAttemptCount,
@@ -598,9 +754,10 @@ export const loadWeakTopicInsights = async ({
   fetchImpl = typeof fetch === "function" ? fetch : null,
   storage = typeof window !== "undefined" ? window.localStorage : null,
   baseUrl = typeof import.meta !== "undefined" ? import.meta.env.BASE_URL : "/",
+  now = new Date(),
 } = {}) => {
   if (!fetchImpl || !storage) {
-    return buildWeakTopicInsights();
+    return buildWeakTopicInsights({ now });
   }
 
   const progressRecords = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
@@ -609,7 +766,7 @@ export const loadWeakTopicInsights = async ({
   const hasSolvedQuestions = Array.isArray(solvedQuestionIds) && solvedQuestionIds.length > 0;
 
   if (!hasProgressRecords && !hasSolvedQuestions) {
-    return buildWeakTopicInsights();
+    return buildWeakTopicInsights({ now });
   }
 
   const normalizedBase = String(baseUrl || "/").endsWith("/")
@@ -624,11 +781,26 @@ export const loadWeakTopicInsights = async ({
   }
 
   const questions = await response.json();
-  return buildWeakTopicInsights({
+  const insights = buildWeakTopicInsights({
     questions,
     progressRecords,
     solvedQuestionIds,
+    now,
   });
+  const { state: streakFreezeState, stats: streakStats } = reconcileStreakFreezeState({
+    activeDates: insights.attemptTimeline.map((entry) => entry.date),
+    now,
+    storage,
+  });
+
+  return {
+    ...insights,
+    studyActivity: buildStudyActivity(insights.attemptTimeline, now, {
+      hardQuestionCount: insights.difficultySummary.counts.Hard,
+      streakFreezeState,
+      streakStats,
+    }),
+  };
 };
 
 /**
@@ -651,11 +823,15 @@ export const loadStudyActivityFast = ({
   }
 
   const attemptDayMap = new Map();
+  let hardQuestionCount = 0;
 
   Object.values(progressRecords).forEach((entry) => {
     if (!entry) return;
     const normalizedEntry = normalizeProgressEntry(entry, false, now);
     if (!normalizedEntry.isAttempted) return;
+    if (normalizedEntry.difficultyLabel === "Hard") {
+      hardQuestionCount += 1;
+    }
 
     normalizeAttemptHistory(entry, normalizedEntry).forEach((attempt) => {
       const dateKey = toDateKey(attempt.submittedAt);
@@ -675,8 +851,18 @@ export const loadStudyActivityFast = ({
   });
 
   const attemptTimeline = finalizeAttemptTimeline(attemptDayMap);
+  const { state: streakFreezeState, stats: streakStats } = reconcileStreakFreezeState({
+    activeDates: attemptTimeline.map((entry) => entry.date),
+    now,
+    storage,
+  });
+
   return {
-    ...buildStudyActivity(attemptTimeline, now),
+    ...buildStudyActivity(attemptTimeline, now, {
+      hardQuestionCount,
+      streakFreezeState,
+      streakStats,
+    }),
     attemptTimeline,
   };
 };
