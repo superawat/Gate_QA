@@ -301,49 +301,52 @@ export default function ProgressManager() {
     return (
         <>
             <div ref={helpRef}>
-                <div className="flex flex-wrap items-center gap-2">
-                    <button
-                        onClick={handleExportJson}
-                        className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[color:var(--color-primary-hover)]"
-                        title="Export Progress (JSON)"
-                    >
-                        <FaDownload className="text-xs" />
-                        Export JSON
-                    </button>
+                <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <button
+                            onClick={handleExportJson}
+                            className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[color:var(--color-primary-hover)] shadow-sm"
+                            title="Export Progress (JSON)"
+                        >
+                            <FaDownload className="text-xs" />
+                            Export JSON
+                        </button>
 
-                    <button
-                        onClick={handleExportCsv}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2 text-sm font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface)]"
-                        title="Export as CSV (View Only)"
-                    >
-                        <FaFileCsv className="text-xs" />
-                        Export CSV
-                    </button>
+                        <button
+                            onClick={handleExportCsv}
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-white px-3 py-1.5 text-xs font-medium text-[color:var(--color-text)] transition-colors hover:bg-slate-50 shadow-sm"
+                            title="Export as CSV (View Only)"
+                        >
+                            <FaFileCsv className="text-xs" />
+                            Export CSV
+                        </button>
 
-                    <button
-                        onClick={handleImportClick}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2 text-sm font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface)]"
-                        title="Import Progress"
-                    >
-                        <FaUpload className="text-xs" />
-                        Import
-                    </button>
+                        <button
+                            onClick={handleImportClick}
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-white px-3 py-1.5 text-xs font-medium text-[color:var(--color-text)] transition-colors hover:bg-slate-50 shadow-sm"
+                            title="Import Progress"
+                        >
+                            <FaUpload className="text-xs" />
+                            Import
+                        </button>
 
-                    <button
-                        onClick={() => setHelpOpen((v) => !v)}
-                        className="progress-manager-help-button inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition-colors hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)]"
-                        title="What do these buttons do?"
-                        aria-expanded={helpOpen}
-                        aria-label="Help for export and import"
-                    >
-                        <FaInfoCircle aria-hidden="true" className="text-sm" />
-                        <span className="text-base leading-none">ⓘ</span>
-                    </button>
+                        <button
+                            onClick={() => setHelpOpen((v) => !v)}
+                            className="progress-manager-help-button inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition-colors hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)] bg-white border border-[color:var(--color-border)] shadow-sm"
+                            title="What do these buttons do?"
+                            aria-expanded={helpOpen}
+                            aria-label="Help for export and import"
+                        >
+                            <FaInfoCircle aria-hidden="true" className="text-xs" />
+                        </button>
+                    </div>
+
+                    <div className="flex items-center rounded-lg border border-[color:var(--color-border)] bg-white px-3 py-1.5 text-xs font-medium text-[color:var(--color-text-muted)] shadow-sm shrink-0">
+                        <span className="text-[color:var(--color-text)] font-bold mr-1">{solvedQuestionIds.length}</span> solved
+                        <span className="mx-2 text-[color:var(--color-border)]">|</span>
+                        <span className="text-[color:var(--color-text)] font-bold mr-1">{bookmarkedQuestionIds.length}</span> bookmarked
+                    </div>
                 </div>
-
-                <p className="mt-2 text-xs text-[color:var(--color-text-muted)]">
-                    {solvedQuestionIds.length} solved{" · "}{bookmarkedQuestionIds.length} bookmarked
-                </p>
 
                 {helpOpen && (
                     <div className="mt-2 space-y-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-2.5 text-[11px] text-[color:var(--color-text-muted)] shadow-sm">

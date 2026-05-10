@@ -1022,31 +1022,20 @@ const InsightsPage = ({
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
       <section className="space-y-5">
         {/* Hero header */}
-        <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.16),_transparent_42%),linear-gradient(135deg,#ffffff_0%,#f8fbff_100%)] p-6 shadow-[var(--shadow-card)] sm:p-7">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div className="flex flex-col gap-4">
-              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 w-fit">
+        <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.16),_transparent_42%),linear-gradient(135deg,#ffffff_0%,#f8fbff_100%)] p-4 shadow-[var(--shadow-card)] sm:p-5">
+          <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
+            <div className="flex flex-wrap xl:flex-nowrap items-center gap-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 shrink-0">
                 <FaChartLine />
                 Insights
               </div>
-              <div className="min-w-[320px] max-w-md">
-                <ProgressBar
-                  solvedCount={solvedCount}
-                  totalQuestions={totalQuestions}
-                  progressPercentage={progressPercentage}
-                  className="!border-none !bg-transparent !p-0 shadow-none"
-                >
-                  <div className="mt-1">
-                    <ProgressManager />
-                  </div>
-                </ProgressBar>
-              </div>
+              <ProgressManager />
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="shrink-0 ml-auto lg:ml-0">
               <Link
                 to={PRACTICE_ROUTE}
-                className="inline-flex min-h-[48px] items-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                className="inline-flex min-h-[40px] items-center rounded-xl bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
                 <FaCompass className="mr-2" />
                 Open Practice
