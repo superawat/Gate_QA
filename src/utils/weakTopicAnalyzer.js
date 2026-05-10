@@ -5,6 +5,7 @@ import {
   resolveReviewStatus,
   toDateKey,
 } from "./practiceProgress";
+import { GlobalDifficultyService } from "../services/GlobalDifficultyService";
 
 const PROGRESS_STORAGE_KEY = "gateqa_progress_v1";
 const SOLVED_STORAGE_KEY = "gate_qa_solved_questions";
@@ -146,6 +147,7 @@ const normalizeProgressEntry = (entry = {}, isSolved = false, now = new Date()) 
     correctAttempts,
     incorrectAttempts,
     lastCorrect: hasLegacyCorrectFlag || status === "correct" || status === "solved",
+    globalDifficultyScore: entry.globalDifficultyScore ?? null,
   });
   const review = resolveReviewStatus({
     ...entry,
@@ -460,6 +462,7 @@ export const buildWeakTopicInsights = ({
   questions = [],
   progressRecords = {},
   solvedQuestionIds = [],
+  globalDifficultyService = null,
   now = new Date(),
 } = {}) => {
   const subjectBuckets = new Map();
@@ -532,7 +535,14 @@ export const buildWeakTopicInsights = ({
       return;
     }
 
-    const normalizedEntry = normalizeProgressEntry(entry, solvedSet.has(storageKey), now);
+    const normalizedEntry = normalizeProgressEntry(
+      {
+        ...entry,
+        globalDifficultyScore: globalDifficultyService ? globalDifficultyService.getScore(storageKey) : null,
+      },
+      solvedSet.has(storageKey),
+      now
+    );
     if (!normalizedEntry.isAttempted) {
       return;
     }
@@ -780,11 +790,15 @@ export const loadWeakTopicInsights = async ({
     throw new Error("Unable to load practice analytics.");
   }
 
+  const gds = GlobalDifficultyService.getInstance(baseUrl);
+  await gds.load(fetchImpl);
+
   const questions = await response.json();
   const insights = buildWeakTopicInsights({
     questions,
     progressRecords,
     solvedQuestionIds,
+    globalDifficultyService: gds,
     now,
   });
   const { state: streakFreezeState, stats: streakStats } = reconcileStreakFreezeState({
@@ -825,7 +839,7 @@ export const loadStudyActivityFast = ({
   const attemptDayMap = new Map();
   let hardQuestionCount = 0;
 
-  Object.values(progressRecords).forEach((entry) => {
+  Object.entries(progressRecords).forEach(([storageKey, entry]) => {
     if (!entry) return;
     const normalizedEntry = normalizeProgressEntry(entry, false, now);
     if (!normalizedEntry.isAttempted) return;

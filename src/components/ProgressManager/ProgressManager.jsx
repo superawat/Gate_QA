@@ -99,8 +99,16 @@ export default function ProgressManager() {
 
     // ── EXPORT: JSON ───────────────────────────────────────────────────────
     const handleExportJson = useCallback(() => {
+        const solved = readStorageJson(USER_STATE_STORAGE_KEYS.solved, []);
+        const bookmarked = readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, []);
         const metadata = readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {});
         const progress = readStorageJson(USER_STATE_STORAGE_KEYS.progress, {});
+
+        // Include all user data for full portability
+        const userNotes = readStorageJson("gate_qa_user_notes", {});
+        const mockHistory = readStorageJson("gateqa_mock_history_v1", []);
+        const streakFreeze = readStorageJson("gateqa_streak_freeze_v1", {});
+        const dailyGoal = readStorageJson("gateqa_daily_goal_v1", {});
 
         const payload = {
             schemaVersion: CURRENT_SCHEMA_VERSION,
@@ -110,6 +118,10 @@ export default function ProgressManager() {
             bookmarkedQuestions: dedupeStringArray(bookmarked),
             metadata,
             progress,
+            userNotes,
+            mockHistory,
+            streakFreeze,
+            dailyGoal,
         };
 
         const json = JSON.stringify(payload, null, 2);
@@ -265,7 +277,7 @@ export default function ProgressManager() {
                 finalProgress = { ...currentProgress, ...(modalData.parsed.progress || {}) };
             }
 
-            // Write
+            // Write core progress data
             const w1 = writeStorageJson(USER_STATE_STORAGE_KEYS.solved, finalSolved);
             const w2 = writeStorageJson(
                 USER_STATE_STORAGE_KEYS.bookmarked,
@@ -273,6 +285,33 @@ export default function ProgressManager() {
             );
             const w3 = writeStorageJson(USER_STATE_STORAGE_KEYS.metadata, finalMetadata);
             const w4 = writeStorageJson(USER_STATE_STORAGE_KEYS.progress, finalProgress);
+
+            // Write extended data if present in the import file
+            const importedNotes = modalData.parsed.userNotes;
+            const importedMockHistory = modalData.parsed.mockHistory;
+            const importedStreakFreeze = modalData.parsed.streakFreeze;
+            const importedDailyGoal = modalData.parsed.dailyGoal;
+
+            if (importedNotes && typeof importedNotes === "object") {
+                const currentNotes = strategy === "replace" ? {} : readStorageJson("gate_qa_user_notes", {});
+                writeStorageJson("gate_qa_user_notes", { ...currentNotes, ...importedNotes });
+            }
+            if (Array.isArray(importedMockHistory) && importedMockHistory.length > 0) {
+                if (strategy === "replace") {
+                    writeStorageJson("gateqa_mock_history_v1", importedMockHistory);
+                } else {
+                    const currentHistory = readStorageJson("gateqa_mock_history_v1", []);
+                    const existingIds = new Set(currentHistory.map(e => e.id));
+                    const merged = [...currentHistory, ...importedMockHistory.filter(e => !existingIds.has(e.id))];
+                    writeStorageJson("gateqa_mock_history_v1", merged);
+                }
+            }
+            if (importedStreakFreeze && typeof importedStreakFreeze === "object") {
+                writeStorageJson("gateqa_streak_freeze_v1", strategy === "replace" ? importedStreakFreeze : { ...readStorageJson("gateqa_streak_freeze_v1", {}), ...importedStreakFreeze });
+            }
+            if (importedDailyGoal && typeof importedDailyGoal === "object") {
+                writeStorageJson("gateqa_daily_goal_v1", strategy === "replace" ? importedDailyGoal : { ...readStorageJson("gateqa_daily_goal_v1", {}), ...importedDailyGoal });
+            }
 
             if (!w1.ok || !w2.ok || !w3.ok || !w4.ok) {
                 const failed = [w1, w2, w3, w4].find(w => !w.ok);

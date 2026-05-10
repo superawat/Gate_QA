@@ -42,30 +42,58 @@ export const deriveDifficulty = ({
   correctAttempts = 0,
   incorrectAttempts = 0,
   lastCorrect = false,
+  globalDifficultyScore = null,
 } = {}) => {
   const totalAttempts = Math.max(0, Math.round(parseNumber(attempts, 0)));
   const correct = Math.max(0, Math.round(parseNumber(correctAttempts, 0)));
   const incorrect = Math.max(0, Math.round(parseNumber(incorrectAttempts, 0)));
   const evaluatedAttempts = Math.max(correct + incorrect, totalAttempts);
+  const hasGlobal = globalDifficultyScore !== null && Number.isFinite(globalDifficultyScore);
 
+  // No personal data at all
   if (evaluatedAttempts <= 0) {
+    // Use global score if available, otherwise unrated
+    if (hasGlobal) {
+      const gs = Math.max(0, Math.min(100, Math.round(globalDifficultyScore)));
+      let label = "Medium";
+      if (gs >= 70) label = "Hard";
+      else if (gs < 35) label = "Easy";
+      return {
+        difficultyScore: gs,
+        difficultyLabel: label,
+        incorrectRate: 0,
+        globalDifficultyScore: gs,
+      };
+    }
     return {
       difficultyScore: 0,
       difficultyLabel: "Unrated",
       incorrectRate: 0,
+      globalDifficultyScore: null,
     };
   }
 
+  // Personal score calculation (existing logic)
   const incorrectRate = evaluatedAttempts > 0
     ? incorrect / evaluatedAttempts
     : 0;
   const repeatPenalty = Math.min(evaluatedAttempts, 5) * 4;
   const recencyPenalty = lastCorrect ? 0 : 10;
   const recoveryCredit = lastCorrect && incorrect > 0 ? -8 : 0;
-  const difficultyScore = Math.max(
+  const personalScore = Math.max(
     0,
     Math.min(100, Math.round((incorrectRate * 72) + repeatPenalty + recencyPenalty + recoveryCredit))
   );
+
+  // Blend personal + global when both are available
+  // Weight: 60% personal (user's own performance) + 40% global (community signal)
+  let difficultyScore;
+  if (hasGlobal) {
+    const clampedGlobal = Math.max(0, Math.min(100, Math.round(globalDifficultyScore)));
+    difficultyScore = Math.round(personalScore * 0.6 + clampedGlobal * 0.4);
+  } else {
+    difficultyScore = personalScore;
+  }
 
   let difficultyLabel = "Light";
   if (difficultyScore >= 70) {
@@ -78,6 +106,7 @@ export const deriveDifficulty = ({
     difficultyScore,
     difficultyLabel,
     incorrectRate: Number(incorrectRate.toFixed(4)),
+    globalDifficultyScore: hasGlobal ? Math.round(globalDifficultyScore) : null,
   };
 };
 

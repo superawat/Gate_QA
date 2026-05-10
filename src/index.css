@@ -49,6 +49,13 @@
   --chart-tooltip-text: #0f172a;
   --chart-tooltip-muted: #475569;
   --chart-ring-track: #f1f5f9;
+  --chart-series-accuracy: #0ea5e9;
+  --chart-series-coverage: #8b5cf6;
+  --chart-series-correct: #059669;
+  --chart-series-incorrect: #e11d48;
+  --chart-accuracy-low: #e11d48;
+  --chart-accuracy-medium: #d97706;
+  --chart-accuracy-high: #059669;
 }
 
 :root[data-theme="dark"] {
@@ -96,6 +103,28 @@
   --chart-tooltip-text: #f1f5f9;
   --chart-tooltip-muted: #94a3b8;
   --chart-ring-track: #1e293b;
+  --chart-series-accuracy: #38bdf8;
+  --chart-series-coverage: #a78bfa;
+  --chart-series-correct: #34d399;
+  --chart-series-incorrect: #fb7185;
+  --chart-accuracy-low: #fb7185;
+  --chart-accuracy-medium: #fbbf24;
+  --chart-accuracy-high: #34d399;
+}
+
+@keyframes streak-celebrate {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

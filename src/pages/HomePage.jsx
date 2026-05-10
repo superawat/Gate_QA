@@ -1,57 +1,20 @@
 import React, { useMemo } from "react";
-import { FaArrowRight, FaBolt, FaChartLine, FaCompass, FaHistory, FaRegClock } from "react-icons/fa";
+import { FaBolt, FaChartLine, FaCompass, FaRegClock } from "react-icons/fa";
 
-import { useFilterState } from "../contexts/FilterContext";
 import PageShell from "../components/Layout/PageShell";
-import QuestionBankSummaryLoader from "../components/Loaders/QuestionBankSummaryLoader";
-import { readMockTestHistory } from "../utils/mockTestHistory";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 
-const formatNumber = (value) => {
-  const numeric = Number(value);
-  if (!Number.isFinite(numeric)) {
-    return "0";
-  }
-  return new Intl.NumberFormat("en-IN").format(numeric);
-};
-
-const formatPercent = (value, { digits = 0 } = {}) => {
-  const numeric = Number(value);
-  if (!Number.isFinite(numeric)) {
-    return "0%";
-  }
-  return `${numeric.toFixed(digits)}%`;
-};
-
 const HomePage = ({
-  questionBankManifest,
-  manifestLoading,
-  manifestError,
   hasResumeRoute,
-  lastSession,
   mockModeEnabled,
   onStartRandomPractice,
   onExplorePractice,
   onOpenInsights = () => {},
-  onOpenMockHistory,
   onStartMockTest,
   onResumePractice,
 }) => {
-  const {
-    solvedCount,
-    bookmarkedCount,
-    progressPercentage,
-    totalQuestions,
-  } = useFilterState();
-
-  const questionCountValue = Number(questionBankManifest?.questionCount || totalQuestions || 0);
-  const questionCount = formatNumber(questionCountValue);
-  const latestYear = questionBankManifest?.latestYear || "Latest";
-  const yearSetCount = Array.isArray(questionBankManifest?.yearSets) ? questionBankManifest.yearSets.length : 0;
-  const mockHistory = useMemo(() => readMockTestHistory(), []);
-  const attemptedMockCount = mockHistory.length;
   const activity = useMemo(() => loadStudyActivityFast(), []);
 
   return (
@@ -135,7 +98,10 @@ const HomePage = ({
       {/* ── Activity Heatmap ───────────────────────────────────── */}
       {activity?.attemptTimeline?.length > 0 && (
         <section>
-          <ActivityHeatmap attemptTimeline={activity.attemptTimeline} />
+          <ActivityHeatmap
+            attemptTimeline={activity.attemptTimeline}
+            streakDateKeys={activity.streakDateKeys || []}
+          />
         </section>
       )}
 

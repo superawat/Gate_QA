@@ -44,7 +44,9 @@ import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
+import ShareScoreCard from "../components/Insights/ShareScoreCard";
 import useChartTheme from "../hooks/useChartTheme";
+import CollapsibleSection from "../components/Layout/CollapsibleSection";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -533,41 +535,35 @@ const SubjectProgressRings = ({ subjects = [] }) => {
   if (subjects.length === 0) return null;
 
   return (
-    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-      <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Subject Progress</h2>
-      <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
-        Questions attempted out of total available per subject.
-      </p>
-      <div className="mt-4 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {subjects.map((item) => {
-          const coveragePercent = Math.round((item.coverageRate || 0) * 100);
-          const accuracyPercent = Math.round((item.accuracyRate || 0) * 100);
-          const tone = getAccuracyTone(item.accuracyRate);
-          return (
-            <div
-              key={item.key}
-              className="flex flex-col items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3 transition-transform hover:scale-[1.02]"
-            >
-              <ProgressRing
-                value={coveragePercent}
-                size={64}
-                strokeWidth={6}
-                color={tone.color}
-              />
-              <p className="text-xs font-semibold text-center text-[color:var(--color-text)] leading-tight truncate w-full" title={item.label}>
-                {item.label}
-              </p>
-              <div className="flex items-center gap-1 text-[10px] text-[color:var(--color-text-muted)]">
-                <span className="font-bold" style={{ color: tone.color }}>{accuracyPercent}%</span>
-                <span>acc</span>
-                <span className="mx-0.5">·</span>
-                <span>{formatNumber(item.attemptedQuestions)}/{formatNumber(item.availableQuestions)}</span>
-              </div>
+    <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      {subjects.map((item) => {
+        const coveragePercent = Math.round((item.coverageRate || 0) * 100);
+        const accuracyPercent = Math.round((item.accuracyRate || 0) * 100);
+        const tone = getAccuracyTone(item.accuracyRate);
+        return (
+          <div
+            key={item.key}
+            className="flex flex-col items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3 transition-transform hover:scale-[1.02]"
+          >
+            <ProgressRing
+              value={coveragePercent}
+              size={64}
+              strokeWidth={6}
+              color={tone.color}
+            />
+            <p className="text-xs font-semibold text-center text-[color:var(--color-text)] leading-tight truncate w-full" title={item.label}>
+              {item.label}
+            </p>
+            <div className="flex items-center gap-1 text-[10px] text-[color:var(--color-text-muted)]">
+              <span className="font-bold" style={{ color: tone.color }}>{accuracyPercent}%</span>
+              <span>acc</span>
+              <span className="mx-0.5">·</span>
+              <span>{formatNumber(item.attemptedQuestions)}/{formatNumber(item.availableQuestions)}</span>
             </div>
-          );
-        })}
-      </div>
-    </section>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
@@ -584,41 +580,32 @@ const FocusAreas = ({ subtopics = [] }) => {
   if (weakSubtopics.length === 0) return null;
 
   return (
-    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-      <div className="flex items-center gap-2 mb-3">
-        <FaExclamationTriangle className="text-[color:var(--color-warning-text)]" />
-        <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Focus Areas</h2>
-      </div>
-      <p className="text-sm text-[color:var(--color-text-muted)] mb-4">
-        These subtopics have accuracy below 60%. Focused practice can improve your score significantly.
-      </p>
-      <div className="space-y-2">
-        {weakSubtopics.map((st) => {
-          const accuracyPercent = Math.round(st.accuracyRate * 100);
-          const tone = getAccuracyTone(st.accuracyRate);
-          const practiceUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(st.subjectSlug)}&subtopics=${encodeURIComponent(st.key.split(":")[1] || "")}`;
-          return (
-            <div
-              key={st.key}
-              className="flex items-center justify-between gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 transition hover:shadow-md"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">{st.label}</p>
-                <p className="text-[11px] text-[color:var(--color-text-muted)]">
-                  {st.subjectLabel} · {formatNumber(st.attemptedCount)} attempts · <span className="font-semibold" style={{ color: tone.color }}>{accuracyPercent}%</span> accuracy
-                </p>
-              </div>
-              <Link
-                to={practiceUrl}
-                className="shrink-0 inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)]"
-              >
-                Practice <FaArrowRight className="text-[9px]" />
-              </Link>
+    <div className="space-y-2">
+      {weakSubtopics.map((st) => {
+        const accuracyPercent = Math.round(st.accuracyRate * 100);
+        const tone = getAccuracyTone(st.accuracyRate);
+        const practiceUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(st.subjectSlug)}&subtopics=${encodeURIComponent(st.key.split(":")[1] || "")}`;
+        return (
+          <div
+            key={st.key}
+            className="flex items-center justify-between gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 transition hover:shadow-md"
+          >
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">{st.label}</p>
+              <p className="text-[11px] text-[color:var(--color-text-muted)]">
+                {st.subjectLabel} · {formatNumber(st.attemptedCount)} attempts · <span className="font-semibold" style={{ color: tone.color }}>{accuracyPercent}%</span> accuracy
+              </p>
             </div>
-          );
-        })}
-      </div>
-    </section>
+            <Link
+              to={practiceUrl}
+              className="shrink-0 inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)]"
+            >
+              Practice <FaArrowRight className="text-[9px]" />
+            </Link>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
@@ -644,7 +631,7 @@ const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
   const reviewUrl = hasReviewDue ? buildSolvePath(reviewQueue[0].storageKey) : "#";
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className={`grid gap-4 ${hasReviewDue && hasWeakAreas ? "sm:grid-cols-2" : "sm:grid-cols-1"}`}>
       {hasReviewDue && (
         <section className="flex flex-col justify-between rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-5 shadow-[var(--shadow-card)]">
           <div>
@@ -872,67 +859,88 @@ const OverviewTab = ({ insights, summary }) => {
         />
       </div>
 
+      {/* Subject Progress — collapsible */}
+      {insights.subjects.length > 0 && (
+        <CollapsibleSection
+          title="Subject Progress"
+          description="Questions attempted out of total available per subject."
+          defaultOpen={true}
+        >
+          <SubjectProgressRings subjects={insights.subjects} />
+        </CollapsibleSection>
+      )}
 
+      {/* Focus Areas — collapsible, warning styling */}
+      <CollapsibleSection
+        title={
+          <div className="flex items-center gap-2">
+            <FaExclamationTriangle className="text-[color:var(--color-warning-text)]" />
+            <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Focus Areas</h2>
+          </div>
+        }
+        description="Subtopics with accuracy below 60%. Focused practice can improve your score significantly."
+        defaultOpen={true}
+        className="border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] shadow-[var(--shadow-card)]"
+      >
+        <FocusAreas subtopics={insights.subtopics} />
+      </CollapsibleSection>
 
-
-      {/* Subject Progress */}
-      <SubjectProgressRings subjects={insights.subjects} />
-
-      {/* Focus Areas */}
-      <FocusAreas subtopics={insights.subtopics} />
-
-      {/* Skill Radar */}
-        {/* Smart Practice Banner */}
+      {/* Smart Practice Banner — always visible */}
       <SmartPracticeBanner subtopics={insights.subtopics} reviewQueue={insights.reviewQueue} />
 
-      {/* Radar + Pie */}
-        <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-          <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Skill Radar</h2>
-          <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
-            Accuracy (blue) vs coverage (purple) across subjects.
-          </p>
-          <div className="mt-4">
-            {insights.subjects.length >= 3 ? (
-              <SubjectRadarChart data={insights.subjects} />
-            ) : (
-              <div className="flex flex-col items-center gap-3 py-8">
-                <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
-                <div className="flex items-center gap-4 text-sm text-[color:var(--color-text-muted)]">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-correct, #059669)" }} /> Correct
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-incorrect, #e11d48)" }} /> Incorrect
-                  </span>
-                </div>
-              </div>
-            )}
+      {/* Skill Radar — collapsible, closed by default */}
+      <CollapsibleSection
+        title="Skill Radar"
+        description="Accuracy (blue) vs coverage (purple) across subjects."
+        defaultOpen={false}
+      >
+        {insights.subjects.length >= 3 ? (
+          <SubjectRadarChart data={insights.subjects} />
+        ) : (
+          <div className="flex flex-col items-center gap-3 py-8">
+            <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
+            <div className="flex items-center gap-4 text-sm text-[color:var(--color-text-muted)]">
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-correct, #059669)" }} /> Correct
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-incorrect, #e11d48)" }} /> Incorrect
+              </span>
+            </div>
           </div>
-        </section>
+        )}
+      </CollapsibleSection>
 
-      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Practice Trend</h2>
-        <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
-          Daily attempt volume from your local submission history.
-        </p>
-        <div className="mt-4">
-          <TimeTrendChart data={insights.attemptTimeline || []} />
-        </div>
-      </section>
+      {/* Practice Trend — collapsible, closed by default */}
+      <CollapsibleSection
+        title="Practice Trend"
+        description="Daily attempt volume from your local submission history."
+        defaultOpen={false}
+      >
+        <TimeTrendChart data={insights.attemptTimeline || []} />
+      </CollapsibleSection>
 
+      {/* Shareable Score Card — collapsible, closed by default */}
+      <CollapsibleSection
+        title="Share Your Progress"
+        description="Generate a card image you can download or share on social media."
+        defaultOpen={false}
+      >
+        <ShareScoreCard summary={summary} insights={insights} />
+      </CollapsibleSection>
 
-      {/* Subject breakdown list */}
-      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
-        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">All Subjects</h2>
-        <p className="mt-1 mb-4 text-sm text-[color:var(--color-text-muted)]">
-          Tap any subject to see detailed metrics.
-        </p>
+      {/* All Subjects — collapsible, closed by default */}
+      <CollapsibleSection
+        title="All Subjects"
+        description="Tap any subject to see detailed metrics."
+        defaultOpen={false}
+      >
         <div className="space-y-2">
           {insights.subjects.map((item) => (
             <SubjectDetailCard key={item.key} item={item} />
           ))}
         </div>
-      </section>
+      </CollapsibleSection>
     </div>
   );
 };

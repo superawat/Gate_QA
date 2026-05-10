@@ -1,7 +1,36 @@
-import React, { useMemo, useState } from "react";
-import { FaFire, FaTrophy, FaStar, FaBolt, FaCheck } from "react-icons/fa";
+import React, { useEffect, useMemo, useState } from "react";
+import { FaFire, FaTrophy, FaStar, FaBolt, FaCheck, FaShieldAlt } from "react-icons/fa";
 import { loadStudyActivityFast } from "../../utils/weakTopicAnalyzer";
 import { useDailyGoal } from "../../hooks/useDailyGoal";
+
+const STREAK_MILESTONES = [3, 7, 14, 30, 60, 100];
+const STREAK_MILESTONE_STORAGE_KEY = "gateqa_seen_streak_milestones_v1";
+
+const readCelebratedMilestones = () => {
+  try {
+    if (typeof window === "undefined") {
+      return [];
+    }
+    const rawValue = window.localStorage.getItem(STREAK_MILESTONE_STORAGE_KEY);
+    const parsed = JSON.parse(rawValue || "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const markMilestoneCelebrated = (milestone) => {
+  try {
+    if (typeof window === "undefined") {
+      return;
+    }
+    const milestones = new Set(readCelebratedMilestones());
+    milestones.add(milestone);
+    window.localStorage.setItem(STREAK_MILESTONE_STORAGE_KEY, JSON.stringify(Array.from(milestones)));
+  } catch {
+    // Celebration memory is optional.
+  }
+};
 
 /**
  * Duolingo-style streak banner for the HomePage.
@@ -19,11 +48,39 @@ const StreakBanner = () => {
   const { goal, updateGoal } = useDailyGoal();
   const [isEditingGoal, setIsEditingGoal] = useState(false);
   const [customGoal, setCustomGoal] = useState("");
+  const [celebrationMilestone, setCelebrationMilestone] = useState(null);
 
-  const { currentStreak, longestStreak, xp, activeDayCount, badges, todayAttempts = 0 } = activity;
+  const {
+    currentStreak,
+    longestStreak,
+    xp,
+    activeDayCount,
+    badges,
+    todayAttempts = 0,
+    streakFreeze = {},
+    xpBreakdown = {},
+  } = activity;
 
   const goalProgress = Math.min(100, Math.round((todayAttempts / goal) * 100));
   const goalCompleted = todayAttempts >= goal;
+  const freezeAvailable = Number(streakFreeze.available || 0);
+
+  useEffect(() => {
+    if (!STREAK_MILESTONES.includes(currentStreak)) {
+      return;
+    }
+    const celebrated = readCelebratedMilestones();
+    if (!celebrated.includes(currentStreak)) {
+      setCelebrationMilestone(currentStreak);
+    }
+  }, [currentStreak]);
+
+  const handleDismissCelebration = () => {
+    if (celebrationMilestone) {
+      markMilestoneCelebrated(celebrationMilestone);
+    }
+    setCelebrationMilestone(null);
+  };
 
   // Don't show the banner if the user has never practiced
   if (activeDayCount === 0) return null;
@@ -124,6 +181,29 @@ const StreakBanner = () => {
           </div>
         )}
 
+        {celebrationMilestone && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-[color:var(--color-surface)]/95 p-4 backdrop-blur-sm">
+            <div className="flex w-full max-w-sm animate-[streak-celebrate_360ms_ease-out] flex-col items-center rounded-xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-surface)] p-5 text-center shadow-xl">
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] shadow-sm">
+                <FaTrophy size={26} />
+              </div>
+              <h3 className="text-base font-extrabold text-[color:var(--color-text)]">
+                {celebrationMilestone}-day streak
+              </h3>
+              <p className="mt-2 text-sm font-medium text-[color:var(--color-text-muted)]">
+                Milestone unlocked. Your consistency is turning into a real edge.
+              </p>
+              <button
+                type="button"
+                onClick={handleDismissCelebration}
+                className="mt-5 rounded-xl bg-[color:var(--color-primary-text)] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[color:var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+              >
+                Nice
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="relative flex flex-wrap items-center gap-5 sm:gap-8">
           {/* ── Fire + Streak Count ─────────────────────────── */}
           <div className="flex items-center gap-3">
@@ -180,9 +260,18 @@ const StreakBanner = () => {
             <StatPill
               icon={FaBolt}
               value={formatXP(xp)}
-              label="XP"
+              label={xpBreakdown.streakMultiplier > 1 ? "XP x2" : "XP"}
               color="var(--color-primary-text)"
               bgColor="var(--color-primary-soft)"
+            />
+
+            {/* Streak freeze */}
+            <StatPill
+              icon={FaShieldAlt}
+              value={freezeAvailable}
+              label="Freeze"
+              color="var(--color-info-text)"
+              bgColor="var(--color-info-soft)"
             />
 
             {/* Active days */}

@@ -83,6 +83,7 @@ describe("practiceProgress", () => {
       difficultyScore: 0,
       difficultyLabel: "Unrated",
       incorrectRate: 0,
+      globalDifficultyScore: null,
     });
   });
 });

@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-05-08T10:20:05.527Z",
+  "strategy": {
+    "chosen": "Keep local mirrored images in public/question-images/",
+    "rationale": [
+      "All current question-image references resolve to local /Gate_QA/question-images/* paths.",
+      "Remote GateOverflow blob URLs would reintroduce a runtime network dependency and CORS/offline risk.",
+      "A CDN/external-source switch is unnecessary while every local file is still referenced."
+    ],
+    "alternativesReviewed": [
+      "Option A: keep local images and remove orphaned files",
+      "Option B: revert to remote GateOverflow blob URLs",
+      "Option C: move images to an external CDN and cache them"
+    ]
+  },
+  "source": {
+    "questionBankPath": "public/questions-with-answers.json",
+    "imageDirectory": "public/question-images"
+  },
+  "summary": {
+    "questionsScanned": 3550,
+    "totalImageFiles": 455,
+    "uniqueReferencedImageFiles": 455,
+    "totalQuestionsWithLocalImages": 317,
+    "totalLocalImageRefs": 457,
+    "missingFileCount": 0,
+    "orphanedFileCount": 0,
+    "remoteBlobQuestionCount": 0
+  },
+  "missingFiles": [],
+  "orphanedFiles": [],
+  "remoteBlobQuestions": [],
+  "passed": true
+}
