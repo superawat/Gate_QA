@@ -7,7 +7,7 @@ const appPath = (route = "/") => `${APP_BASE}${route}`;
 
 async function waitForPracticeList(page) {
   await expect(
-    page.getByRole("heading", { name: /Choose a question directly/i })
+    page.getByRole("heading", { name: /Explore questions/i })
   ).toBeVisible({ timeout: 15000 });
 }
 
@@ -118,7 +118,7 @@ test("axe audit: explore route", async ({ page }) => {
   });
   await expectAccessibilityStructure(page, "Explore", {
     landmarks: ["header", "main", "aside", "footer"],
-    headings: ["Explore questions", "Choose a question directly"],
+    headings: ["Explore questions"],
     controls: [/Search keywords/i, /Open/i],
   });
   await expectNoA11yViolations(page, "Explore");

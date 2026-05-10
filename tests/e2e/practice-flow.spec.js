@@ -6,7 +6,7 @@ const appPath = (route = "/") => `${APP_BASE}${route}`;
 
 async function waitForPracticeList(page) {
   await expect(
-    page.getByRole("heading", { name: /Choose a question directly/i })
+    page.getByRole("heading", { name: /Explore questions/i })
   ).toBeVisible({ timeout: 15000 });
 }
 
