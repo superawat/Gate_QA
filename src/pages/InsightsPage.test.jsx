@@ -163,7 +163,7 @@ describe("InsightsPage", () => {
     expect(screen.getByText("60%")).toBeTruthy();
   });
 
-  test("renders tab navigation with overview, analysis, and wrong answers tabs", async () => {
+  test("renders tab navigation with overview, review, and wrong answers tabs", async () => {
     mocks.loadWeakTopicInsights.mockResolvedValueOnce({
       attemptedQuestionCount: 12,
       subjects: [
@@ -206,10 +206,10 @@ describe("InsightsPage", () => {
     await screen.findByText("Overview");
     expect(screen.getByText("Overview")).toBeTruthy();
 
-    // Switch to analysis tab
-    fireEvent.click(screen.getByRole("button", { name: /strengths/i }));
-    // Should show areas to improve
-    expect(await screen.findByText("Areas to Improve")).toBeTruthy();
+    // Switch to wrong answers tab
+    fireEvent.click(screen.getByRole("button", { name: /wrong answers/i }));
+    // Should show still wrong count and the question
+    expect(await screen.findByText(/total wrong/i)).toBeTruthy();
     expect(screen.getAllByText("Algorithms").length).toBeGreaterThan(0);
   });
 
@@ -281,8 +281,6 @@ describe("InsightsPage", () => {
 
     expect(await screen.findByText(/due review/i)).toBeTruthy();
     expect(screen.getByText("1m")).toBeTruthy();
-    expect(screen.getByText("45")).toBeTruthy();
-    expect(screen.getByText("25 attempts")).toBeTruthy();
 
     fireEvent.click(screen.getByRole("button", { name: /review queue/i }));
 

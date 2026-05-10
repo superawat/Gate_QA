@@ -7,23 +7,17 @@ import {
   FaChevronDown,
   FaCheckCircle,
   FaTimesCircle,
-  FaExclamationTriangle,
   FaBullseye,
   FaEye,
   FaArrowRight,
   FaFilter,
-  FaTrophy,
   FaFireAlt,
   FaHistory,
   FaCalendarCheck,
   FaClock,
-  FaLayerGroup,
-  FaMedal,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -79,40 +73,34 @@ const formatDuration = (durationMs) => {
   return remainingMinutes > 0 ? `${hours}h ${remainingMinutes}m` : `${hours}h`;
 };
 
-const getAccuracyTone = (accuracyRate) => {
+const getAccuracyTone = (accuracyRate, palette = {}) => {
   if (accuracyRate < 0.5) {
     return {
       label: "Needs focus",
-      className: "bg-rose-100 text-rose-700",
-      color: "#e11d48",
-      ringColor: "#fda4af",
-      bgGlow: "from-rose-500/10 to-transparent",
+      color: palette.accuracyLow || "var(--color-danger-text)",
+      soft: "var(--color-danger-soft)",
+      text: "var(--color-danger-text)",
+      border: "var(--color-danger-border)",
     };
   }
   if (accuracyRate < 0.7) {
     return {
       label: "Can improve",
-      className: "bg-amber-100 text-amber-800",
-      color: "#d97706",
-      ringColor: "#fcd34d",
-      bgGlow: "from-amber-500/10 to-transparent",
+      color: palette.accuracyMedium || "var(--color-warning-text)",
+      soft: "var(--color-warning-soft)",
+      text: "var(--color-warning-text)",
+      border: "var(--color-warning-border)",
     };
   }
   return {
     label: "Strong",
-    className: "bg-emerald-100 text-emerald-800",
-    color: "#059669",
-    ringColor: "#6ee7b7",
-    bgGlow: "from-emerald-500/10 to-transparent",
+    color: palette.accuracyHigh || "var(--color-success-text)",
+    soft: "var(--color-success-soft)",
+    text: "var(--color-success-text)",
+    border: "var(--color-success-border)",
   };
 };
 
-const getStreakEmoji = (streak) => {
-  if (streak >= 5) return "🔥";
-  if (streak >= 3) return "⚠️";
-  if (streak >= 1) return "📌";
-  return "✅";
-};
 
 const relativeTimeLabel = (isoString) => {
   if (!isoString) return "—";
@@ -137,7 +125,6 @@ const relativeTimeLabel = (isoString) => {
 
 const TABS = [
   { id: "overview", label: "Overview", icon: FaChartLine },
-  { id: "analysis", label: "Strengths & Weaknesses", icon: FaBullseye },
   { id: "review", label: "Review Queue", icon: FaCalendarCheck },
   { id: "wrong", label: "Wrong Answers", icon: FaTimesCircle },
   { id: "mock-history", label: "Mock History", icon: FaHistory },
@@ -246,25 +233,42 @@ const ProgressRing = ({ value, size = 80, strokeWidth = 7, color = "#059669", la
 /* ── Stat card ──────────────────────────────────────────────────────────── */
 
 const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel }) => {
-  const colorMap = {
-    sky: "border-sky-200 bg-gradient-to-br from-sky-50 to-white text-sky-900",
-    rose: "border-rose-200 bg-gradient-to-br from-rose-50 to-white text-rose-900",
-    amber: "border-amber-200 bg-gradient-to-br from-amber-50 to-white text-amber-900",
-    emerald: "border-emerald-200 bg-gradient-to-br from-emerald-50 to-white text-emerald-900",
-    violet: "border-violet-200 bg-gradient-to-br from-violet-50 to-white text-violet-900",
+  const accentMap = {
+    sky: {
+      borderColor: "var(--color-info-border)",
+      background: "linear-gradient(135deg, var(--color-info-soft), var(--color-surface))",
+      color: "var(--color-info-text)",
+    },
+    rose: {
+      borderColor: "var(--color-danger-border)",
+      background: "linear-gradient(135deg, var(--color-danger-soft), var(--color-surface))",
+      color: "var(--color-danger-text)",
+    },
+    amber: {
+      borderColor: "var(--color-warning-border)",
+      background: "linear-gradient(135deg, var(--color-warning-soft), var(--color-surface))",
+      color: "var(--color-warning-text)",
+    },
+    emerald: {
+      borderColor: "var(--color-success-border)",
+      background: "linear-gradient(135deg, var(--color-success-soft), var(--color-surface))",
+      color: "var(--color-success-text)",
+    },
+    violet: {
+      borderColor: "var(--color-purple-border)",
+      background: "linear-gradient(135deg, var(--color-purple-soft), var(--color-surface))",
+      color: "var(--color-purple-text)",
+    },
   };
-  const iconColorMap = {
-    sky: "text-sky-500",
-    rose: "text-rose-500",
-    amber: "text-amber-500",
-    emerald: "text-emerald-500",
-    violet: "text-violet-500",
-  };
+  const token = accentMap[accent] || accentMap.sky;
 
   return (
-    <div className={`rounded-xl border px-3 py-2.5 shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.01] ${colorMap[accent]}`}>
+    <div
+      className="rounded-xl border px-3 py-2.5 shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.01]"
+      style={token}
+    >
       <div className="flex items-center gap-1.5">
-        {Icon && <Icon className={`text-[10px] ${iconColorMap[accent]}`} />}
+        {Icon && <Icon className="text-[10px]" style={{ color: token.color }} />}
         <p className="text-[10px] font-semibold uppercase tracking-[0.14em] opacity-75">{label}</p>
       </div>
       <p className="mt-1 text-xl font-bold">{value}</p>
@@ -280,119 +284,13 @@ const AccuracyBar = ({ accuracyRate, className = "" }) => {
   const tone = getAccuracyTone(accuracyRate);
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <div className="flex-1 h-2.5 rounded-full bg-slate-100 overflow-hidden">
+      <div className="flex-1 h-2.5 rounded-full overflow-hidden" style={{ backgroundColor: "var(--chart-ring-track)" }}>
         <div
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{ width: `${percent}%`, backgroundColor: tone.color }}
         />
       </div>
-      <span className="text-sm font-semibold text-slate-800 w-12 text-right">{formatPercent(percent)}</span>
-    </div>
-  );
-};
-
-/* ── Subject Performance Chart ──────────────────────────────────────────── */
-
-const SubjectAccuracyChart = ({ data = [] }) => {
-  const chartTheme = useChartTheme();
-  const chartData = useMemo(() => {
-    return [...data]
-      .sort((a, b) => a.accuracyRate - b.accuracyRate)
-      .map((item) => ({
-        ...item,
-        displayAccuracy: item.accuracyRate * 100,
-        shortLabel:
-          item.label.length > 15 ? item.label.substring(0, 15) + "..." : item.label,
-      }));
-  }, [data]);
-
-  if (chartData.length === 0) return null;
-
-  return (
-    <div className="h-[350px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={chartData}
-          margin={{ top: 20, right: 30, left: -20, bottom: 65 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartTheme.grid} />
-          <XAxis
-            dataKey="shortLabel"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 12, fill: chartTheme.tick }}
-            angle={-45}
-            textAnchor="end"
-          />
-          <YAxis
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 12, fill: chartTheme.tick }}
-            domain={[0, 100]}
-            tickFormatter={(val) => `${val}%`}
-          />
-          <RechartsTooltip content={<ChartTooltip />} cursor={{ fill: chartTheme.cursor }} />
-          <Bar dataKey="displayAccuracy" radius={[6, 6, 0, 0]} maxBarSize={60}>
-            {chartData.map((entry, index) => {
-              const tone = getAccuracyTone(entry.accuracyRate);
-              return <Cell key={`cell-${index}`} fill={tone.color} />;
-            })}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
-  );
-};
-
-/* ── Weak Subtopics Chart ───────────────────────────────────────────────── */
-
-const WeakSubtopicsChart = ({ data = [] }) => {
-  const chartTheme = useChartTheme();
-  const chartData = useMemo(() => {
-    return [...data]
-      .filter((item) => item.accuracyRate < 0.7)
-      .sort((a, b) => a.accuracyRate - b.accuracyRate)
-      .slice(0, 7)
-      .map((item) => ({
-        ...item,
-        displayAccuracy: item.accuracyRate * 100,
-        shortLabel:
-          item.label.length > 25 ? item.label.substring(0, 23) + "..." : item.label,
-      }));
-  }, [data]);
-
-  if (chartData.length === 0) return null;
-
-  return (
-    <div className="h-[350px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={chartData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={chartTheme.grid} />
-          <XAxis
-            type="number"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 12, fill: chartTheme.tick }}
-            domain={[0, 100]}
-            tickFormatter={(val) => `${val}%`}
-          />
-          <YAxis
-            dataKey="shortLabel"
-            type="category"
-            axisLine={false}
-            tickLine={false}
-            width={160}
-            tick={{ fontSize: 11, fill: chartTheme.tick }}
-          />
-          <RechartsTooltip content={<ChartTooltip />} cursor={{ fill: chartTheme.cursor }} />
-          <Bar dataKey="displayAccuracy" radius={[0, 6, 6, 0]} maxBarSize={40}>
-            {chartData.map((entry, index) => {
-              const tone = getAccuracyTone(entry.accuracyRate);
-              return <Cell key={`cell-${index}`} fill={tone.color} />;
-            })}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+      <span className="text-sm font-semibold w-12 text-right" style={{ color: "var(--color-text)" }}>{formatPercent(percent)}</span>
     </div>
   );
 };
@@ -422,8 +320,8 @@ const SubjectRadarChart = ({ data = [] }) => {
           <Radar
             name="Accuracy"
             dataKey="accuracy"
-            stroke="#0ea5e9"
-            fill="#0ea5e9"
+            stroke={chartTheme.seriesAccuracy}
+            fill={chartTheme.seriesAccuracy}
             fillOpacity={0.15}
             strokeWidth={2}
             isAnimationActive={false}
@@ -431,8 +329,8 @@ const SubjectRadarChart = ({ data = [] }) => {
           <Radar
             name="Coverage"
             dataKey="coverage"
-            stroke="#8b5cf6"
-            fill="#8b5cf6"
+            stroke={chartTheme.seriesCoverage}
+            fill={chartTheme.seriesCoverage}
             fillOpacity={0.1}
             strokeWidth={2}
             strokeDasharray="4 4"
@@ -447,13 +345,13 @@ const SubjectRadarChart = ({ data = [] }) => {
 /* ── Correct/Incorrect Pie ──────────────────────────────────────────────── */
 
 const CorrectIncorrectPie = ({ correct, incorrect }) => {
+  const chartTheme = useChartTheme();
   const total = correct + incorrect;
-  if (total === 0) return null;
-
   const pieData = [
-    { name: "Correct", value: correct, fill: "#059669" },
-    { name: "Incorrect", value: incorrect, fill: "#e11d48" },
+    { name: "Correct", value: correct, fill: chartTheme.seriesCorrect },
+    { name: "Incorrect", value: incorrect, fill: chartTheme.seriesIncorrect },
   ];
+  if (total === 0) return null;
 
   return (
     <div className="h-[200px] w-full">
@@ -496,7 +394,7 @@ const TimeTrendChart = ({ data = [] }) => {
 
   if (chartData.length === 0) {
     return (
-      <div className="flex h-[260px] items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50 text-sm text-slate-500">
+      <div className="flex h-[260px] items-center justify-center rounded-2xl border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-sm text-[color:var(--color-text-muted)]">
         Timed attempt trends will appear after your next submission.
       </div>
     );
@@ -518,9 +416,9 @@ const TimeTrendChart = ({ data = [] }) => {
               return (
                 <div className="rounded-xl p-4 text-sm shadow-xl" style={{ backgroundColor: "var(--chart-tooltip-bg)", border: "1px solid var(--chart-tooltip-border)" }}>
                   <p className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.date}</p>
-                  <p className="mt-2 text-slate-600">Attempts: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.attempts}</span></p>
-                  <p className="text-slate-600">Accuracy: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatPercent(item.accuracyPercent)}</span></p>
-                  <p className="text-slate-600">Avg time: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatDuration(item.averageDurationMs)}</span></p>
+                  <p className="mt-2" style={{ color: "var(--chart-tooltip-muted)" }}>Attempts: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{item.attempts}</span></p>
+                  <p style={{ color: "var(--chart-tooltip-muted)" }}>Accuracy: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatPercent(item.accuracyPercent)}</span></p>
+                  <p style={{ color: "var(--chart-tooltip-muted)" }}>Avg time: <span className="font-semibold" style={{ color: "var(--chart-tooltip-text)" }}>{formatDuration(item.averageDurationMs)}</span></p>
                 </div>
               );
             }}
@@ -529,7 +427,7 @@ const TimeTrendChart = ({ data = [] }) => {
             type="monotone"
             dataKey="attempts"
             name="Attempts"
-            stroke="#0ea5e9"
+            stroke={chartTheme.seriesAccuracy}
             strokeWidth={3}
             dot={{ r: 4, strokeWidth: 2 }}
             activeDot={{ r: 6 }}
@@ -542,16 +440,16 @@ const TimeTrendChart = ({ data = [] }) => {
 
 const DifficultyBadge = ({ label = "Unrated", score = 0 }) => {
   const normalized = String(label || "Unrated");
-  const classes = normalized === "Hard"
-    ? "border-rose-200 bg-rose-50 text-rose-700"
+  const tone = normalized === "Hard"
+    ? { borderColor: "var(--color-danger-border)", backgroundColor: "var(--color-danger-soft)", color: "var(--color-danger-text)" }
     : normalized === "Medium"
-      ? "border-amber-200 bg-amber-50 text-amber-700"
+      ? { borderColor: "var(--color-warning-border)", backgroundColor: "var(--color-warning-soft)", color: "var(--color-warning-text)" }
       : normalized === "Light"
-        ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-        : "border-slate-200 bg-slate-50 text-slate-600";
+        ? { borderColor: "var(--color-success-border)", backgroundColor: "var(--color-success-soft)", color: "var(--color-success-text)" }
+        : { borderColor: "var(--color-neutral-border)", backgroundColor: "var(--color-neutral-soft)", color: "var(--color-neutral-text)" };
 
   return (
-    <span className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${classes}`}>
+    <span className="inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em]" style={tone}>
       {normalized}{Number(score) > 0 ? ` ${Math.round(score)}` : ""}
     </span>
   );
@@ -562,11 +460,12 @@ const SubjectDetailCard = ({ item, defaultOpen = false }) => {
   const tone = getAccuracyTone(item.accuracyRate);
 
   return (
-    <div className={`rounded-2xl border border-slate-200 overflow-hidden transition-all ${isOpen ? "shadow-md" : "shadow-[var(--shadow-soft)]"}`}>
+    <div className={`rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] overflow-hidden transition-all ${isOpen ? "shadow-md" : "shadow-[var(--shadow-soft)]"}`}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left bg-gradient-to-r ${tone.bgGlow} hover:bg-slate-50/50 transition-colors`}
+        className="w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left hover:bg-[color:var(--color-surface-muted)] transition-colors"
+        style={{ background: `linear-gradient(90deg, ${tone.soft}, transparent)` }}
       >
         <div className="flex items-center gap-3 min-w-0">
           <div
@@ -574,46 +473,49 @@ const SubjectDetailCard = ({ item, defaultOpen = false }) => {
             style={{ backgroundColor: tone.color }}
           />
           <div className="min-w-0">
-            <p className="text-base font-semibold text-slate-900 truncate">{item.label}</p>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-base font-semibold text-[color:var(--color-text)] truncate">{item.label}</p>
+            <p className="text-xs text-[color:var(--color-text-muted)] mt-0.5">
               {formatNumber(item.attemptedCount)} attempts · {formatPercent(item.coverageRate * 100)} covered
             </p>
           </div>
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${tone.className}`}>
+          <span
+            className="rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]"
+            style={{ backgroundColor: tone.soft, color: tone.text }}
+          >
             {tone.label}
           </span>
           <span className="text-lg font-bold" style={{ color: tone.color }}>
             {formatPercent(item.accuracyRate * 100)}
           </span>
-          {isOpen ? <FaChevronUp className="text-xs text-slate-400" /> : <FaChevronDown className="text-xs text-slate-400" />}
+          {isOpen ? <FaChevronUp className="text-xs text-[color:var(--color-text-muted)]" /> : <FaChevronDown className="text-xs text-[color:var(--color-text-muted)]" />}
         </div>
       </button>
 
       {isOpen && (
-        <div className="px-4 py-4 bg-white border-t border-slate-100">
+        <div className="px-4 py-4 bg-[color:var(--color-surface)] border-t border-[color:var(--color-border)]">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="rounded-xl bg-slate-50 px-3 py-2.5">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Accuracy</p>
-              <p className="text-lg font-bold text-slate-900">{formatPercent(item.accuracyRate * 100)}</p>
+            <div className="rounded-xl bg-[color:var(--color-surface-muted)] px-3 py-2.5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">Accuracy</p>
+              <p className="text-lg font-bold text-[color:var(--color-text)]">{formatPercent(item.accuracyRate * 100)}</p>
             </div>
-            <div className="rounded-xl bg-slate-50 px-3 py-2.5">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Coverage</p>
-              <p className="text-lg font-bold text-slate-900">{formatPercent(item.coverageRate * 100)}</p>
+            <div className="rounded-xl bg-[color:var(--color-surface-muted)] px-3 py-2.5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">Coverage</p>
+              <p className="text-lg font-bold text-[color:var(--color-text)]">{formatPercent(item.coverageRate * 100)}</p>
             </div>
-            <div className="rounded-xl bg-emerald-50 px-3 py-2.5">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-600">Correct</p>
-              <p className="text-lg font-bold text-emerald-800">{formatNumber(item.correctAttempts)}</p>
+            <div className="rounded-xl bg-[color:var(--color-success-soft)] px-3 py-2.5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-success-text)]">Correct</p>
+              <p className="text-lg font-bold text-[color:var(--color-success-text)]">{formatNumber(item.correctAttempts)}</p>
             </div>
-            <div className="rounded-xl bg-rose-50 px-3 py-2.5">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-rose-600">Incorrect</p>
-              <p className="text-lg font-bold text-rose-800">{formatNumber(item.incorrectAttempts)}</p>
+            <div className="rounded-xl bg-[color:var(--color-danger-soft)] px-3 py-2.5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Incorrect</p>
+              <p className="text-lg font-bold text-[color:var(--color-danger-text)]">{formatNumber(item.incorrectAttempts)}</p>
             </div>
           </div>
           <AccuracyBar accuracyRate={item.accuracyRate} className="mt-3" />
           {item.recentMistakeStreak > 0 && (
-            <p className="mt-2 text-xs text-rose-600 flex items-center gap-1">
+            <p className="mt-2 text-xs text-[color:var(--color-danger-text)] flex items-center gap-1">
               <FaFireAlt /> {item.recentMistakeStreak} consecutive mistake{item.recentMistakeStreak > 1 ? "s" : ""} recently
             </p>
           )}
@@ -632,8 +534,6 @@ const OverviewTab = ({ insights, summary }) => {
   const totalIncorrect = useMemo(() =>
     insights.subjects.reduce((sum, s) => sum + s.incorrectAttempts, 0)
   , [insights.subjects]);
-  const studyActivity = insights.studyActivity || {};
-  const difficultySummary = insights.difficultySummary || { counts: {} };
 
   return (
     <div className="space-y-6">
@@ -674,69 +574,16 @@ const OverviewTab = ({ insights, summary }) => {
           accent="violet"
           sublabel="per timed attempt"
         />
-        <StatCard
-          label="Streak"
-          value={`${formatNumber(studyActivity.currentStreak || 0)}d`}
-          icon={FaFireAlt}
-          accent={(studyActivity.currentStreak || 0) >= 3 ? "emerald" : "amber"}
-          sublabel={`best ${formatNumber(studyActivity.longestStreak || 0)}d`}
-        />
-        <StatCard
-          label="XP"
-          value={formatNumber(studyActivity.xp || 0)}
-          icon={FaMedal}
-          accent="sky"
-          sublabel={`${formatNumber(studyActivity.activeDayCount || 0)} active days`}
-        />
-        <StatCard
-          label="Hard Questions"
-          value={formatNumber(difficultySummary.counts?.Hard || 0)}
-          icon={FaLayerGroup}
-          accent={(difficultySummary.counts?.Hard || 0) > 0 ? "rose" : "emerald"}
-          sublabel={`avg score ${formatNumber(difficultySummary.averageDifficultyScore || 0)}`}
-        />
-        <StatCard
-          label="Weak Areas"
-          value={`${formatNumber(summary.weakSubjectCount)} / ${formatNumber(summary.weakSubtopicCount)}`}
-          icon={FaExclamationTriangle}
-          accent="amber"
-          sublabel="subjects / subtopics"
-        />
       </div>
 
-      {Array.isArray(studyActivity.badges) && studyActivity.badges.length > 0 ? (
-        <section className="rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-5 py-4 shadow-[var(--shadow-soft)]">
-          <div className="flex flex-wrap items-center gap-2">
-            <FaMedal className="text-sky-600" />
-            <span className="text-sm font-semibold text-slate-900">Badges</span>
-            {studyActivity.badges.map((badge) => (
-              <span key={badge} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-sky-700 shadow-sm">
-                {badge}
-              </span>
-            ))}
-          </div>
-        </section>
-      ) : null}
 
 
 
-      {/* Charts row */}
-      <div className="grid gap-6 xl:grid-cols-2">
-        {/* Subject Performance */}
-        <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-          <h2 className="text-xl font-semibold text-slate-950">Subject Performance</h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Accuracy across all attempted subjects. Lower bars need more revision.
-          </p>
-          <div className="mt-4">
-            <SubjectAccuracyChart data={insights.subjects} />
-          </div>
-        </section>
-
+      {/* Skill Radar */}
         {/* Radar + Pie */}
-        <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-          <h2 className="text-xl font-semibold text-slate-950">Skill Radar</h2>
-          <p className="mt-1 text-sm text-slate-600">
+        <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+          <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Skill Radar</h2>
+          <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
             Accuracy (blue) vs coverage (purple) across subjects.
           </p>
           <div className="mt-4">
@@ -745,7 +592,7 @@ const OverviewTab = ({ insights, summary }) => {
             ) : (
               <div className="flex flex-col items-center gap-3 py-8">
                 <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
-                <div className="flex items-center gap-4 text-sm text-slate-600">
+                <div className="flex items-center gap-4 text-sm text-[color:var(--color-text-muted)]">
                   <span className="flex items-center gap-1.5">
                     <span className="w-3 h-3 rounded-full bg-emerald-600" /> Correct
                   </span>
@@ -757,11 +604,10 @@ const OverviewTab = ({ insights, summary }) => {
             )}
           </div>
         </section>
-      </div>
 
-      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-        <h2 className="text-xl font-semibold text-slate-950">Practice Trend</h2>
-        <p className="mt-1 text-sm text-slate-600">
+      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Practice Trend</h2>
+        <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
           Daily attempt volume from your local submission history.
         </p>
         <div className="mt-4">
@@ -769,226 +615,17 @@ const OverviewTab = ({ insights, summary }) => {
         </div>
       </section>
 
-      {/* Target subtopics */}
-      {insights.subtopics.some((s) => s.accuracyRate < 0.7) && (
-        <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-          <h2 className="text-xl font-semibold text-slate-950">
-            <FaFireAlt className="inline mr-2 text-rose-500" />
-            Critical Subtopics
-          </h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Your weakest subtopics (below 70%). Prioritize these for rapid improvement.
-          </p>
-          <div className="mt-4">
-            <WeakSubtopicsChart data={insights.subtopics} />
-          </div>
-        </section>
-      )}
 
       {/* Subject breakdown list */}
-      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-        <h2 className="text-xl font-semibold text-slate-950">All Subjects</h2>
-        <p className="mt-1 mb-4 text-sm text-slate-600">
+      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">All Subjects</h2>
+        <p className="mt-1 mb-4 text-sm text-[color:var(--color-text-muted)]">
           Tap any subject to see detailed metrics.
         </p>
         <div className="space-y-2">
           {insights.subjects.map((item) => (
             <SubjectDetailCard key={item.key} item={item} />
           ))}
-        </div>
-      </section>
-    </div>
-  );
-};
-
-/* ── Strengths & Weaknesses tab ─────────────────────────────────────────── */
-
-const AnalysisTab = ({ insights }) => {
-  const strongSubjects = useMemo(() =>
-    insights.subjects.filter((s) => s.accuracyRate >= 0.7).sort((a, b) => b.accuracyRate - a.accuracyRate)
-  , [insights.subjects]);
-
-  const weakSubjects = useMemo(() =>
-    insights.subjects.filter((s) => s.accuracyRate < 0.7).sort((a, b) => a.accuracyRate - b.accuracyRate)
-  , [insights.subjects]);
-
-  const strongSubtopics = useMemo(() =>
-    insights.subtopics.filter((s) => s.accuracyRate >= 0.7).sort((a, b) => b.accuracyRate - a.accuracyRate).slice(0, 10)
-  , [insights.subtopics]);
-
-  const weakSubtopics = useMemo(() =>
-    insights.subtopics.filter((s) => s.accuracyRate < 0.7).sort((a, b) => a.accuracyRate - b.accuracyRate)
-  , [insights.subtopics]);
-
-  const renderStrengthCard = (item, isSubtopic = false) => (
-    <div
-      key={item.key}
-      className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50/50 to-white p-4 shadow-sm hover:shadow-md transition-shadow"
-    >
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <p className="text-base font-semibold text-slate-900 truncate">{item.label}</p>
-          {isSubtopic && item.subjectLabel && (
-            <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">{item.subjectLabel}</p>
-          )}
-        </div>
-        <div className="shrink-0 flex items-center gap-1.5">
-          <FaTrophy className="text-emerald-500 text-sm" />
-          <span className="text-lg font-bold text-emerald-700">{formatPercent(item.accuracyRate * 100)}</span>
-        </div>
-      </div>
-      <AccuracyBar accuracyRate={item.accuracyRate} className="mt-2.5" />
-      <div className="mt-2 flex gap-4 text-[11px] text-slate-500">
-        <span>{formatNumber(item.attemptedCount)} attempts</span>
-        <span>{formatPercent(item.coverageRate * 100)} covered</span>
-        <span>{getStreakEmoji(item.recentMistakeStreak)} streak: {item.recentMistakeStreak}</span>
-      </div>
-    </div>
-  );
-
-  const renderWeaknessCard = (item, isSubtopic = false) => {
-    const tone = getAccuracyTone(item.accuracyRate);
-    return (
-      <div
-        key={item.key}
-        className="rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50/50 to-white p-4 shadow-sm hover:shadow-md transition-shadow"
-      >
-        <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <p className="text-base font-semibold text-slate-900 truncate">{item.label}</p>
-            {isSubtopic && item.subjectLabel && (
-              <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">{item.subjectLabel}</p>
-            )}
-          </div>
-          <div className="shrink-0">
-            <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${tone.className}`}>
-              {tone.label}
-            </span>
-          </div>
-        </div>
-        <AccuracyBar accuracyRate={item.accuracyRate} className="mt-2.5" />
-        <div className="mt-2 flex gap-4 text-[11px] text-slate-500">
-          <span>{formatNumber(item.incorrectAttempts)} wrong</span>
-          <span>{formatNumber(item.correctAttempts)} correct</span>
-          <span>{getStreakEmoji(item.recentMistakeStreak)} streak: {item.recentMistakeStreak}</span>
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <div className="space-y-8">
-      {/* Strengths */}
-      <section>
-        <div className="flex items-center gap-2 mb-4">
-          <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-100">
-            <FaTrophy className="text-emerald-600 text-sm" />
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold text-slate-950">Your Strengths</h2>
-            <p className="text-sm text-slate-600">Subjects and subtopics where you perform above 70%</p>
-          </div>
-        </div>
-
-        {strongSubjects.length === 0 && strongSubtopics.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center">
-            <p className="text-sm text-slate-600">
-              No strong areas yet. Keep practicing to build your strengths!
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {strongSubjects.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-2">Strong Subjects ({strongSubjects.length})</p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {strongSubjects.map((item) => renderStrengthCard(item))}
-                </div>
-              </div>
-            )}
-            {strongSubtopics.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-2">Top Subtopics ({strongSubtopics.length})</p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {strongSubtopics.map((item) => renderStrengthCard(item, true))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </section>
-
-      {/* Weaknesses */}
-      <section>
-        <div className="flex items-center gap-2 mb-4">
-          <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100">
-            <FaExclamationTriangle className="text-rose-600 text-sm" />
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold text-slate-950">Areas to Improve</h2>
-            <p className="text-sm text-slate-600">Focus here to boost your score rapidly</p>
-          </div>
-        </div>
-
-        {weakSubjects.length === 0 && weakSubtopics.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-emerald-300 bg-emerald-50 p-6 text-center">
-            <FaTrophy className="mx-auto text-2xl text-emerald-500 mb-2" />
-            <p className="text-sm font-semibold text-emerald-900">
-              All areas above 70%! You're doing great.
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {weakSubjects.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-rose-700 mb-2">Weak Subjects ({weakSubjects.length})</p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {weakSubjects.map((item) => renderWeaknessCard(item))}
-                </div>
-              </div>
-            )}
-            {weakSubtopics.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-rose-700 mb-2">Weak Subtopics ({weakSubtopics.length})</p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {weakSubtopics.map((item) => renderWeaknessCard(item, true))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </section>
-
-      {/* Quick summary */}
-      <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-gradient-to-br from-slate-50 to-white p-5 shadow-[var(--shadow-card)] sm:p-6">
-        <h2 className="text-lg font-semibold text-slate-950 mb-3">Quick Diagnosis</h2>
-        <div className="space-y-2">
-          {weakSubjects.length > 0 && (
-            <div className="flex items-start gap-2">
-              <FaTimesCircle className="text-rose-500 mt-0.5 shrink-0" />
-              <p className="text-sm text-slate-700">
-                <span className="font-semibold">{weakSubjects.length} subject{weakSubjects.length > 1 ? "s" : ""}</span>{" "}
-                need focused revision: {weakSubjects.map((s) => s.label).join(", ")}
-              </p>
-            </div>
-          )}
-          {strongSubjects.length > 0 && (
-            <div className="flex items-start gap-2">
-              <FaCheckCircle className="text-emerald-500 mt-0.5 shrink-0" />
-              <p className="text-sm text-slate-700">
-                You're performing well in {strongSubjects.map((s) => s.label).join(", ")}
-              </p>
-            </div>
-          )}
-          {insights.subjects.some((s) => s.recentMistakeStreak >= 3) && (
-            <div className="flex items-start gap-2">
-              <FaFireAlt className="text-amber-500 mt-0.5 shrink-0" />
-              <p className="text-sm text-slate-700">
-                Active mistake streaks detected in:{" "}
-                {insights.subjects.filter((s) => s.recentMistakeStreak >= 3).map((s) => s.label).join(", ")}
-              </p>
-            </div>
-          )}
         </div>
       </section>
     </div>
@@ -1484,9 +1121,6 @@ const InsightsPage = ({
             <div className="min-h-[400px]">
               {activeTab === "overview" && (
                 <OverviewTab insights={insights} summary={summary} />
-              )}
-              {activeTab === "analysis" && (
-                <AnalysisTab insights={insights} />
               )}
               {activeTab === "review" && (
                 <ReviewQueueTab reviewQueue={insights.reviewQueue || []} />
