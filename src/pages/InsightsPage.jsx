@@ -594,10 +594,10 @@ const OverviewTab = ({ insights, summary }) => {
                 <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
                 <div className="flex items-center gap-4 text-sm text-[color:var(--color-text-muted)]">
                   <span className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-emerald-600" /> Correct
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-correct, #059669)" }} /> Correct
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-rose-600" /> Incorrect
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--chart-series-incorrect, #e11d48)" }} /> Incorrect
                   </span>
                 </div>
               </div>
@@ -643,10 +643,10 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
 
   if (!reviewQueue.length) {
     return (
-      <div className="rounded-[var(--radius-card)] border border-dashed border-emerald-300 bg-emerald-50 p-8 text-center shadow-[var(--shadow-soft)]">
-        <FaCalendarCheck className="mx-auto text-3xl text-emerald-500 mb-3" />
-        <h2 className="text-xl font-semibold text-emerald-900">No due reviews</h2>
-        <p className="mt-2 text-sm text-emerald-700">
+      <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] p-8 text-center shadow-[var(--shadow-soft)]">
+        <FaCalendarCheck className="mx-auto text-3xl text-[color:var(--color-success-text)] mb-3" />
+        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No due reviews</h2>
+        <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
           Your scheduled reviews are clear. New due cards appear automatically after practice submissions.
         </p>
       </div>
@@ -770,10 +770,10 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
 
   if (wrongQuestions.length === 0) {
     return (
-      <div className="rounded-[var(--radius-card)] border border-dashed border-emerald-300 bg-emerald-50 p-8 text-center shadow-[var(--shadow-soft)]">
-        <FaCheckCircle className="mx-auto text-3xl text-emerald-500 mb-3" />
-        <h2 className="text-xl font-semibold text-emerald-900">No Wrong Answers!</h2>
-        <p className="mt-2 text-sm text-emerald-700">
+      <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] p-8 text-center shadow-[var(--shadow-soft)]">
+        <FaCheckCircle className="mx-auto text-3xl text-[color:var(--color-success-text)] mb-3" />
+        <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No Wrong Answers!</h2>
+        <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
           You haven't gotten any questions wrong yet. Keep up the great work!
         </p>
       </div>
@@ -903,18 +903,18 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
             type="button"
             disabled={page <= 1}
             onClick={() => setCurrentPage(page - 1)}
-            className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             ← Prev
           </button>
-          <span className="text-sm text-slate-600 px-3">
+          <span className="text-sm text-[color:var(--color-text-muted)] px-3">
             Page {page} of {totalPages}
           </span>
           <button
             type="button"
             disabled={page >= totalPages}
             onClick={() => setCurrentPage(page + 1)}
-            className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Next →
           </button>
@@ -1045,23 +1045,23 @@ const InsightsPage = ({
         </header>
 
         {isLoading ? (
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-6 shadow-[var(--shadow-card)]">
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-card)]">
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
-              <p className="text-sm text-slate-600">Building insights from your local practice history...</p>
+              <p className="text-sm text-[color:var(--color-text-muted)]">Building insights from your local practice history...</p>
             </div>
           </div>
         ) : error ? (
-          <div className="rounded-[var(--radius-card)] border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-4 py-3 text-sm text-[color:var(--color-warning-text)]">
             {error}
           </div>
         ) : summary.attemptedQuestionCount <= 0 ? (
-          <div className="rounded-[var(--radius-card)] border border-dashed border-slate-300 bg-white p-8 text-center shadow-[var(--shadow-soft)]">
-            <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-500">
+          <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 text-center shadow-[var(--shadow-soft)]">
+            <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]">
               <FaLightbulb />
             </div>
-            <h2 className="mt-4 text-xl font-semibold text-slate-950">No insights yet</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
+            <h2 className="mt-4 text-xl font-semibold text-[color:var(--color-text)]">No insights yet</h2>
+            <p className="mt-2 text-sm leading-6 text-[color:var(--color-text-muted)]">
               Start solving a few questions and this page will highlight your weak subjects and subtopics.
             </p>
             <Link
@@ -1074,7 +1074,7 @@ const InsightsPage = ({
         ) : (
           <>
             {/* Tab navigation */}
-            <div className="flex gap-1 rounded-2xl bg-slate-100 p-1 shadow-inner">
+            <div className="flex gap-1 rounded-2xl bg-[color:var(--color-surface-muted)] p-1 shadow-inner">
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 const TabIcon = tab.icon;
@@ -1085,19 +1085,19 @@ const InsightsPage = ({
                     onClick={() => handleTabChange(tab.id)}
                     className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
                       isActive
-                        ? "bg-white text-slate-900 shadow-md"
-                        : "text-slate-500 hover:text-slate-700 hover:bg-white/50"
+                        ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-md"
+                        : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)]/50"
                     }`}
                   >
                     <TabIcon className={`text-xs ${isActive ? "text-sky-600" : ""}`} />
                     <span className="hidden sm:inline">{tab.label}</span>
                     {tab.id === "wrong" && wrongCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-rose-100 text-rose-700" : "bg-slate-200 text-slate-600"}`}>
+                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-rose-100 text-rose-700" : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"}`}>
                         {wrongCount}
                       </span>
                     )}
                     {tab.id === "review" && dueReviewCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-amber-100 text-amber-700" : "bg-slate-200 text-slate-600"}`}>
+                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-amber-100 text-amber-700" : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"}`}>
                         {dueReviewCount}
                       </span>
                     )}
