@@ -13,6 +13,14 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(absolutePath, "utf8"));
 }
 
+function readJsonSafe(relativePath) {
+  const absolutePath = path.resolve(ROOT, relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    return null;
+  }
+  return JSON.parse(fs.readFileSync(absolutePath, "utf8"));
+}
+
 function getLatestValidationReportPath() {
   const auditDir = path.resolve(ROOT, "audit");
   if (!fs.existsSync(auditDir)) {
@@ -32,11 +40,13 @@ function main() {
   const publicQuestionsFiltered = readJson("public/questions-filtered.json");
   const manifest = readJson("public/question-bank-manifest.json");
   const docsSnapshot = readJson("docs/generated/data-status.json");
-  const pipelineState = readJson("pipeline-state.json");
-  const dataIntegrityReport = readJson("artifacts/review/data-integrity-report.json");
+  
+  const pipelineState = readJsonSafe("pipeline-state.json");
+  const dataIntegrityReport = readJsonSafe("artifacts/review/data-integrity-report.json");
+  
   const latestValidationReportPath = getLatestValidationReportPath();
   const validationReport = latestValidationReportPath
-    ? readJson(latestValidationReportPath)
+    ? readJsonSafe(latestValidationReportPath)
     : null;
 
   if (!Array.isArray(publicQuestionsWithAnswers) || !Array.isArray(publicQuestionsFiltered)) {
@@ -48,11 +58,17 @@ function main() {
     publicQuestionsFiltered: publicQuestionsFiltered.length,
     manifestQuestionCount: Number(manifest.questionCount || 0),
     docsSnapshotQuestionCount: Number(docsSnapshot.publicQuestionCount || 0),
-    pipelineStatePublishedQuestionCount: Number(
-      pipelineState.publishedQuestionsTotal ?? pipelineState.questionsTotal ?? 0
-    ),
-    dataIntegrityQuestionCount: Number(dataIntegrityReport?.stats?.questions_total || 0),
   };
+
+  if (pipelineState) {
+    counts.pipelineStatePublishedQuestionCount = Number(
+      pipelineState.publishedQuestionsTotal ?? pipelineState.questionsTotal ?? 0
+    );
+  }
+
+  if (dataIntegrityReport) {
+    counts.dataIntegrityQuestionCount = Number(dataIntegrityReport?.stats?.questions_total || 0);
+  }
 
   if (validationReport) {
     counts.validationReportPublishedQuestionCount = Number(
