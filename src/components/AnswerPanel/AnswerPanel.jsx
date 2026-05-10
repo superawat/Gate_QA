@@ -416,7 +416,7 @@ export default function AnswerPanel({
       aria-keyshortcuts="S Enter"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!isInteractive || !hasValidInput
         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-        : "bg-blue-600 text-white hover:bg-blue-700"
+        : "bg-blue-700 text-white hover:bg-blue-800"
         } ${additionalClasses}`}
       onClick={evaluateSubmission}
     >
@@ -432,7 +432,7 @@ export default function AnswerPanel({
       aria-keyshortcuts="ArrowRight"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMoveNext || typeof onNextQuestion !== "function"
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
-        : "bg-teal-700 text-white hover:bg-teal-800"
+        : "bg-slate-800 text-white hover:bg-slate-900"
         } ${additionalClasses}`}
     >
       Next &rarr;
@@ -447,7 +447,7 @@ export default function AnswerPanel({
       aria-keyshortcuts="ArrowLeft"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMovePrevious
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
-        : "border border-teal-600 text-teal-700 bg-white hover:bg-teal-50"
+        : "border border-slate-600 text-slate-700 bg-white hover:bg-slate-50"
         } ${additionalClasses}`}
     >
       &larr; Previous
