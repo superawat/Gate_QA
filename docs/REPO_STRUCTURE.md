@@ -1,4 +1,4 @@
-﻿# Repository Structure
+# Repository Structure
 
 This file reflects the current tracked layout of `Gate_QA`.
 
@@ -6,16 +6,25 @@ This file reflects the current tracked layout of `Gate_QA`.
 
 ```text
 Gate_QA/
+|-- .gitignore
 |-- index.html
 |-- package.json
 |-- package-lock.json
 |-- playwright.config.cjs
-|-- pipeline-state.json          # Pipeline persistent state (nextTargetYear, source totals, published totals)
 |-- vite.config.js
 |-- lighthouserc.json
 |-- tailwind.config.js
 |-- postcss.config.js
 |-- README.md
+|
+|-- [IGNORED LOCAL FILES]
+|   |-- .llm-memory/             # Local LLM context docs
+|   |-- AGENTS.md                # Local LLM bootstrap guide
+|   |-- gateqa_master_plan.md    # Local task tracking
+|   |-- BRANCH_NOTES.md          # Local dev notes
+|   |-- pipeline-state.json      # Pipeline persistent state
+|   |-- test-results/            # Playwright outputs
+|   `-- artifacts/dev-server/    # Local server logs
 |
 |-- src/
 |   |-- index.jsx
