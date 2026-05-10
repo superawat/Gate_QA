@@ -44,7 +44,6 @@ import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
-import ShareScoreCard from "../components/Insights/ShareScoreCard";
 import useChartTheme from "../hooks/useChartTheme";
 import CollapsibleSection from "../components/Layout/CollapsibleSection";
 
@@ -918,15 +917,6 @@ const OverviewTab = ({ insights, summary }) => {
         defaultOpen={false}
       >
         <TimeTrendChart data={insights.attemptTimeline || []} />
-      </CollapsibleSection>
-
-      {/* Shareable Score Card — collapsible, closed by default */}
-      <CollapsibleSection
-        title="Share Your Progress"
-        description="Generate a card image you can download or share on social media."
-        defaultOpen={false}
-      >
-        <ShareScoreCard summary={summary} insights={insights} />
       </CollapsibleSection>
 
       {/* All Subjects — collapsible, closed by default */}
