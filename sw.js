@@ -38,6 +38,7 @@ const shouldRuntimeCache = (url) => {
     ".js",
     ".css",
     ".png",
+    ".webp",
     ".svg",
     ".woff",
     ".woff2",
