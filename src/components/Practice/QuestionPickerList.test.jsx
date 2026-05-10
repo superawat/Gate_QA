@@ -27,7 +27,7 @@ describe("QuestionPickerList", () => {
       />
     );
 
-    expect(screen.getByText("Choose a question directly")).toBeTruthy();
+
     fireEvent.click(screen.getByRole("button", { name: /gate cse 2026 \| question: 1/i }));
     expect(handleOpenQuestion).toHaveBeenCalledTimes(1);
     expect(handleOpenQuestion.mock.calls[0][0].question_uid).toBe("go:1");

@@ -43,13 +43,7 @@ const QuestionPickerList = ({
   onOpenQuestion,
 }) => (
   <section className="overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)]">
-    <div className="border-b border-[color:var(--color-border)] px-5 py-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-primary-text)]">Question Picker</p>
-      <h2 className="mt-1 text-xl font-semibold text-[color:var(--color-text)]">Choose a question directly</h2>
-      <p className="mt-1 text-sm leading-6 text-[color:var(--color-text-muted)]">
-        Apply your filters, scan the matching list, and open the exact question you want.
-      </p>
-    </div>
+
 
     <div className="hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
       <span>Index</span>
