@@ -9,6 +9,11 @@ import {
   FaHistory
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
+import {
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine
+} from "recharts";
+
 import { readMockTestHistory } from "../../utils/mockTestHistory";
 import { buildSolvePath } from "../../utils/routes";
 
@@ -114,6 +119,90 @@ const QuestionRecordGroup = ({ title, tone, questions = [], emptyLabel }) => {
   );
 };
 
+
+const MockAnalyticsCharts = ({ history = [] }) => {
+  if (history.length < 2) return null;
+
+  const chartData = [...history].reverse().map((attempt, index) => {
+    let gaScore = 0;
+    let csScore = 0;
+
+    const allQuestions = [
+      ...(attempt.correctQuestions || []),
+      ...(attempt.incorrectQuestions || []),
+      ...(attempt.bonusQuestions || []),
+    ];
+
+    allQuestions.forEach(q => {
+      if (q.section === "GA") gaScore += q.scoreDelta;
+      else if (q.section === "CS") csScore += q.scoreDelta;
+      // if section is null, it's not strictly GA or CS, we can ignore or add to CS
+    });
+
+    return {
+      name: `Mock ${index + 1}`,
+      date: new Date(attempt.submittedAt).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' }),
+      score: attempt.score,
+      gaScore: Number(gaScore.toFixed(2)),
+      csScore: Number(csScore.toFixed(2)),
+      fullLabel: attempt.selectedPaperLabel || attempt.kindTitle
+    };
+  });
+
+  return (
+    <div className="mb-8 grid gap-6 lg:grid-cols-2">
+      {/* Score Trend Chart */}
+      <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-soft)]">
+        <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.1em] text-slate-500">Score Trend</h3>
+        <div className="h-64">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} />
+              <Tooltip
+                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                labelStyle={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '4px' }}
+                formatter={(value) => [`${value} Marks`, 'Total Score']}
+              />
+              <Line
+                type="monotone"
+                dataKey="score"
+                stroke="#0ea5e9"
+                strokeWidth={3}
+                dot={{ r: 4, strokeWidth: 2 }}
+                activeDot={{ r: 6, stroke: '#0ea5e9', strokeWidth: 0 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Section-wise Breakdown Chart */}
+      <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-soft)]">
+        <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.1em] text-slate-500">Section-wise Breakdown</h3>
+        <div className="h-64">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} />
+              <Tooltip
+                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                cursor={{ fill: '#f1f5f9' }}
+              />
+              <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} iconType="circle" />
+              <ReferenceLine y={0} stroke="#cbd5e1" />
+              <Bar dataKey="csScore" name="CS Marks" stackId="a" fill="#8b5cf6" radius={[4, 4, 0, 0]} maxBarSize={40} />
+              <Bar dataKey="gaScore" name="GA Marks" stackId="a" fill="#f59e0b" radius={[4, 4, 0, 0]} maxBarSize={40} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const MockHistoryPanel = ({ onStartMockTest }) => {
   const mockAttemptHistory = React.useMemo(() => readMockTestHistory(), []);
   const [openAttemptId, setOpenAttemptId] = React.useState(null);
@@ -157,6 +246,8 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
           New Mock
         </button>
       </div>
+
+      <MockAnalyticsCharts history={mockAttemptHistory} />
 
       <div className="space-y-3">
         {mockAttemptHistory.map((attempt) => {
