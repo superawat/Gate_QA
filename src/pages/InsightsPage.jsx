@@ -15,6 +15,7 @@ import {
   FaHistory,
   FaCalendarCheck,
   FaClock,
+  FaExclamationTriangle,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -525,6 +526,102 @@ const SubjectDetailCard = ({ item, defaultOpen = false }) => {
   );
 };
 
+
+/* ── Subject progress rings ────────────────────────────────────────────── */
+
+const SubjectProgressRings = ({ subjects = [] }) => {
+  if (subjects.length === 0) return null;
+
+  return (
+    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+      <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Subject Progress</h2>
+      <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
+        Questions attempted out of total available per subject.
+      </p>
+      <div className="mt-4 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {subjects.map((item) => {
+          const coveragePercent = Math.round((item.coverageRate || 0) * 100);
+          const accuracyPercent = Math.round((item.accuracyRate || 0) * 100);
+          const tone = getAccuracyTone(item.accuracyRate);
+          return (
+            <div
+              key={item.key}
+              className="flex flex-col items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3 transition-transform hover:scale-[1.02]"
+            >
+              <ProgressRing
+                value={coveragePercent}
+                size={64}
+                strokeWidth={6}
+                color={tone.color}
+              />
+              <p className="text-xs font-semibold text-center text-[color:var(--color-text)] leading-tight truncate w-full" title={item.label}>
+                {item.label}
+              </p>
+              <div className="flex items-center gap-1 text-[10px] text-[color:var(--color-text-muted)]">
+                <span className="font-bold" style={{ color: tone.color }}>{accuracyPercent}%</span>
+                <span>acc</span>
+                <span className="mx-0.5">·</span>
+                <span>{formatNumber(item.attemptedQuestions)}/{formatNumber(item.availableQuestions)}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
+/* ── Focus areas (weak topic recommendations) ──────────────────────────── */
+
+const FocusAreas = ({ subtopics = [] }) => {
+  const weakSubtopics = useMemo(() =>
+    subtopics
+      .filter((st) => st.attemptedCount > 0 && st.accuracyRate < 0.6)
+      .slice(0, 3),
+    [subtopics]
+  );
+
+  if (weakSubtopics.length === 0) return null;
+
+  return (
+    <section className="rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+      <div className="flex items-center gap-2 mb-3">
+        <FaExclamationTriangle className="text-[color:var(--color-warning-text)]" />
+        <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Focus Areas</h2>
+      </div>
+      <p className="text-sm text-[color:var(--color-text-muted)] mb-4">
+        These subtopics have accuracy below 60%. Focused practice can improve your score significantly.
+      </p>
+      <div className="space-y-2">
+        {weakSubtopics.map((st) => {
+          const accuracyPercent = Math.round(st.accuracyRate * 100);
+          const tone = getAccuracyTone(st.accuracyRate);
+          const practiceUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(st.subjectSlug)}&subtopics=${encodeURIComponent(st.key.split(":")[1] || "")}`;
+          return (
+            <div
+              key={st.key}
+              className="flex items-center justify-between gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 transition hover:shadow-md"
+            >
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">{st.label}</p>
+                <p className="text-[11px] text-[color:var(--color-text-muted)]">
+                  {st.subjectLabel} · {formatNumber(st.attemptedCount)} attempts · <span className="font-semibold" style={{ color: tone.color }}>{accuracyPercent}%</span> accuracy
+                </p>
+              </div>
+              <Link
+                to={practiceUrl}
+                className="shrink-0 inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)]"
+              >
+                Practice <FaArrowRight className="text-[9px]" />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
 /* ── Overview tab ───────────────────────────────────────────────────────── */
 
 const OverviewTab = ({ insights, summary }) => {
@@ -578,6 +675,12 @@ const OverviewTab = ({ insights, summary }) => {
 
 
 
+
+      {/* Subject Progress */}
+      <SubjectProgressRings subjects={insights.subjects} />
+
+      {/* Focus Areas */}
+      <FocusAreas subtopics={insights.subtopics} />
 
       {/* Skill Radar */}
         {/* Radar + Pie */}
