@@ -70,6 +70,7 @@ function Question({
             </div>
           ) : (
             <MathContent
+              key={question.question_uid || sanitizedQuestionHtml}
               as="div"
               dynamic
               className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text-muted)]"

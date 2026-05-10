@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import { FaCheck, FaChevronDown, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
+import { FaCheck, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilterActions } from "../../contexts/FilterContext";
@@ -49,12 +49,7 @@ export default function AnswerPanel({
   const [msqSelection, setMsqSelection] = useState([]);
   const [natInput, setNatInput] = useState("");
   const [result, setResult] = useState(null);
-  const [isMobileWorkspaceOpen, setIsMobileWorkspaceOpen] = useState(false);
-  const [isDesktopViewport, setIsDesktopViewport] = useState(() => (
-    typeof window === "undefined"
-      || typeof window.matchMedia !== "function"
-      || window.matchMedia("(min-width: 768px)").matches
-  ));
+  
   const questionProgressId = useMemo(
     () => getQuestionProgressId(question),
     [question, getQuestionProgressId]
@@ -68,30 +63,8 @@ export default function AnswerPanel({
     setMsqSelection([]);
     setNatInput("");
     setResult(null);
-    setIsMobileWorkspaceOpen(false);
     questionOpenedAtRef.current = Date.now();
   }, [storageKey]);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
-      return undefined;
-    }
-
-    const mediaQuery = window.matchMedia("(min-width: 768px)");
-    const handleViewportChange = (event) => {
-      setIsDesktopViewport(event.matches);
-    };
-
-    setIsDesktopViewport(mediaQuery.matches);
-
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", handleViewportChange);
-      return () => mediaQuery.removeEventListener("change", handleViewportChange);
-    }
-
-    mediaQuery.addListener(handleViewportChange);
-    return () => mediaQuery.removeListener(handleViewportChange);
-  }, []);
 
   const handleToggleSolved = () => {
     if (!questionProgressId) {
@@ -118,7 +91,6 @@ export default function AnswerPanel({
     }
     const evaluation = evaluateAnswer(answerRecord, submission);
     setResult(evaluation);
-    setIsMobileWorkspaceOpen(true);
     trackEvent("answer_submit", {
       question_uid: question.question_uid || storageKey || "unknown",
       type: answerRecord.type,
@@ -145,7 +117,6 @@ export default function AnswerPanel({
   const handleMcqSelect = (option) => {
     setMcqSelection(option);
     setResult(null);
-    setIsMobileWorkspaceOpen(true);
   };
 
   const handleMsqToggle = (option, checked) => {
@@ -155,13 +126,11 @@ export default function AnswerPanel({
       setMsqSelection((prev) => prev.filter((item) => item !== option));
     }
     setResult(null);
-    setIsMobileWorkspaceOpen(true);
   };
 
   const handleNatChange = (e) => {
     setNatInput(e.target.value);
     setResult(null);
-    setIsMobileWorkspaceOpen(true);
   };
 
   const hasValidInput = useMemo(() => {
@@ -237,12 +206,6 @@ export default function AnswerPanel({
   };
 
   const isInteractive = answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type);
-  const mobileWorkspaceLabel = !answerRecord
-    ? "Answer unavailable"
-    : isInteractive
-      ? `${answerRecord.type} answer workspace`
-      : `${answerRecord.type} review state`;
-  const shouldRenderWorkspace = isDesktopViewport || isMobileWorkspaceOpen;
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -469,7 +432,7 @@ export default function AnswerPanel({
       aria-keyshortcuts="ArrowRight"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMoveNext || typeof onNextQuestion !== "function"
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
-        : "bg-teal-600 text-white hover:bg-teal-700"
+        : "bg-teal-700 text-white hover:bg-teal-800"
         } ${additionalClasses}`}
     >
       Next &rarr;
@@ -484,7 +447,7 @@ export default function AnswerPanel({
       aria-keyshortcuts="ArrowLeft"
       className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMovePrevious
         ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
-        : "border border-teal-500 text-teal-600 bg-white hover:bg-teal-50"
+        : "border border-teal-600 text-teal-700 bg-white hover:bg-teal-50"
         } ${additionalClasses}`}
     >
       &larr; Previous
@@ -583,65 +546,46 @@ export default function AnswerPanel({
 
   return (
     <div className="mt-6 border-t border-gray-200 pt-6">
-      {!isDesktopViewport ? (
-        <button
-          type="button"
-          onClick={() => setIsMobileWorkspaceOpen((previous) => !previous)}
-          aria-expanded={isMobileWorkspaceOpen}
-          className="mb-4 inline-flex min-h-[52px] w-full items-center justify-between rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-left shadow-sm transition hover:border-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
-        >
-          <span className="min-w-0">
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Answer workspace</span>
-            <span className="mt-1 block truncate text-sm font-semibold text-slate-900">{mobileWorkspaceLabel}</span>
-          </span>
-          <FaChevronDown className={`ml-3 shrink-0 text-slate-500 transition-transform ${isMobileWorkspaceOpen ? "rotate-180" : ""}`} />
-        </button>
-      ) : null}
+      <div className="mb-6">
+        {renderInputSection()}
 
-      {shouldRenderWorkspace ? (
-        <>
-          <div className="mb-6">
-            {renderInputSection()}
+        {result && (
+          <div className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+            }`}>
+            {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
+          </div>
+        )}
+      </div>
 
-            {result && (
-              <div className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-                }`}>
-                {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
-              </div>
-            )}
+      <div className="mt-8 border-t border-gray-100 px-2 pt-4">
+        <div className="hidden items-center justify-between md:flex">
+          <div className="flex items-center gap-2">
+            {renderSubmitButton()}
+            {renderIconTray()}
+          </div>
+          <div className="flex items-center gap-2">
+            {renderSolutionButton()}
+            {renderPreviousButton()}
+            {renderNextButton()}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 md:hidden">
+          <div className="grid grid-cols-4 gap-3 justify-items-center">
+            {renderIconTray("contents")}
           </div>
 
-          <div className="mt-8 border-t border-gray-100 px-2 pt-4">
-            <div className="hidden items-center justify-between md:flex">
-              <div className="flex items-center gap-2">
-                {renderSubmitButton()}
-                {renderIconTray()}
-              </div>
-              <div className="flex items-center gap-2">
-                {renderSolutionButton()}
-                {renderPreviousButton()}
-                {renderNextButton()}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-3 md:hidden">
-              <div className="grid grid-cols-4 gap-3 justify-items-center">
-                {renderIconTray("contents")}
-              </div>
-
-              <div>
-                {renderSubmitButton("w-full")}
-              </div>
-
-              <div className="grid w-full grid-cols-3 gap-2">
-                {renderSolutionButton("w-full")}
-                {renderPreviousButton("w-full")}
-                {renderNextButton("w-full")}
-              </div>
-            </div>
+          <div>
+            {renderSubmitButton("w-full")}
           </div>
-        </>
-      ) : null}
+
+          <div className="grid w-full grid-cols-3 gap-2">
+            {renderSolutionButton("w-full")}
+            {renderPreviousButton("w-full")}
+            {renderNextButton("w-full")}
+          </div>
+        </div>
+      </div>
 
       {isStatusActionDisabled && (
         <p className="mt-3 text-xs text-amber-700 text-center">

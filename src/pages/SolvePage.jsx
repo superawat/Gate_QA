@@ -77,6 +77,14 @@ const SolvePage = ({
       return;
     }
 
+    // When the question exists in the filtered pool but we lack explore context
+    // (e.g. hard refresh stripped URL params), use the full filtered set so the
+    // session queue has proper prev/next navigation instead of a dead-end.
+    if (questionExistsInFilteredPool && filteredQuestions.length > 1) {
+      startOrderedSession(filteredQuestions, questionUid);
+      return;
+    }
+
     startOrderedSession([indexedQuestion], questionUid);
   }, [
     filteredQuestions,
