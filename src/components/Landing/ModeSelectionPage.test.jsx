@@ -43,6 +43,18 @@ describe("ModeSelectionPage", () => {
         expect(onModeStart).toHaveBeenCalledWith("random");
     });
 
+    test("does not render a standalone aptitude practice card", () => {
+        render(
+            <ModeSelectionPage
+                onModeStart={vi.fn()}
+                onResumePractice={vi.fn()}
+                hasPriorProgress={false}
+            />
+        );
+
+        expect(screen.queryByRole("button", { name: /aptitude practice/i })).toBeNull();
+    });
+
     test("renders manifest summary badges without requiring question-bank init", () => {
         render(
             <ModeSelectionPage

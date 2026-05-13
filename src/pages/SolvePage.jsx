@@ -11,6 +11,7 @@ import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { QuestionService } from "../services/QuestionService";
+import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
@@ -36,7 +37,13 @@ const SolvePage = ({
   const [questionDetailRequestNonce, setQuestionDetailRequestNonce] = useState(0);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
-  const { filteredQuestions, isInitialized } = useFilterState();
+  const {
+    filteredQuestions,
+    isInitialized,
+    questionService = QuestionService,
+    aptitudeEnabled = false,
+    aptitudeLoading = false,
+  } = useFilterState();
   const { getQuestionById, isQuestionSolved, isQuestionBookmarked } = useFilterActions();
   const {
     sessionMode,
@@ -51,9 +58,17 @@ const SolvePage = ({
   } = useSession();
 
   const indexedQuestion = useMemo(() => getQuestionById(questionUid), [getQuestionById, questionUid]);
-  const hasExploreContext = Boolean(location.search);
+  const isAptitudeQuestion = questionUid.startsWith("APT-");
+  const activeSearch = location.search;
+  const hasExploreContext = Boolean(activeSearch);
   const questionExistsInFilteredPool = filteredQuestions.some((question) => question.question_uid === questionUid);
   const navigationState = getNavigationState(questionUid);
+
+  useEffect(() => {
+    if (isAptitudeQuestion && isInitialized && !aptitudeEnabled) {
+      navigate(PRACTICE_ROUTE, { replace: true });
+    }
+  }, [aptitudeEnabled, isAptitudeQuestion, isInitialized, navigate]);
 
   useEffect(() => {
     if (!isInitialized || !indexedQuestion) {
@@ -119,7 +134,8 @@ const SolvePage = ({
     setQuestionDetailError("");
     setIsQuestionDetailLoading(true);
 
-    QuestionService.ensureQuestionDetail(indexedQuestion)
+    const detailService = isAptitudeQuestion ? AptitudeQuestionService : questionService;
+    detailService.ensureQuestionDetail(indexedQuestion)
       .then((questionDetail) => {
         if (!active) {
           return;
@@ -141,7 +157,7 @@ const SolvePage = ({
     return () => {
       active = false;
     };
-  }, [indexedQuestion, questionDetailRequestNonce, questionUid]);
+  }, [indexedQuestion, isAptitudeQuestion, questionDetailRequestNonce, questionService, questionUid]);
 
   useEffect(() => {
     if (!questionUid) {
@@ -149,20 +165,20 @@ const SolvePage = ({
     }
 
     writeLastSession({
-      route: `${buildSolvePath(questionUid)}${location.search || ""}`,
-      exploreSearch: location.search || "",
-      resultPage: parsePageParam(location.search, 1),
+      route: `${buildSolvePath(questionUid)}${activeSearch || ""}`,
+      exploreSearch: activeSearch || "",
+      resultPage: parsePageParam(activeSearch, 1),
       questionUid,
       mode: sessionMode || (hasExploreContext ? "ordered" : "direct"),
     });
-  }, [hasExploreContext, location.search, questionUid, sessionMode]);
+  }, [activeSearch, hasExploreContext, questionUid, sessionMode]);
 
   const handleBackToResults = useCallback(() => {
     navigate({
       pathname: PRACTICE_ROUTE,
-      search: location.search,
+      search: activeSearch,
     });
-  }, [location.search, navigate]);
+  }, [activeSearch, navigate]);
 
   const handleGoPrevious = useCallback(() => {
     const previousQuestion = goToPreviousQuestion(questionUid);
@@ -172,9 +188,9 @@ const SolvePage = ({
 
     navigate({
       pathname: buildSolvePath(previousQuestion.question_uid),
-      search: location.search,
+      search: activeSearch,
     });
-  }, [goToPreviousQuestion, location.search, navigate, questionUid]);
+  }, [activeSearch, goToPreviousQuestion, navigate, questionUid]);
 
   const handleGoNext = useCallback(() => {
     const nextQuestion = goToNextQuestion(questionUid);
@@ -184,9 +200,9 @@ const SolvePage = ({
 
     navigate({
       pathname: buildSolvePath(nextQuestion.question_uid),
-      search: location.search,
+      search: activeSearch,
     });
-  }, [goToNextQuestion, location.search, navigate, questionUid]);
+  }, [activeSearch, goToNextQuestion, navigate, questionUid]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -278,7 +294,7 @@ const SolvePage = ({
   const questionYearLabel = resolvedQuestion?.exam?.label || indexedQuestion?.yearSetLabel || "Unknown";
   const questionSubjectLabel = resolvedQuestion?.subjectLabel
     || indexedQuestion?.subjectLabel
-    || QuestionService.getSubjectLabelBySlug(resolvedQuestion?.subjectSlug || indexedQuestion?.subjectSlug || "");
+    || questionService.getSubjectLabelBySlug(resolvedQuestion?.subjectSlug || indexedQuestion?.subjectSlug || "");
   const questionType = String(resolvedQuestion?.type || indexedQuestion?.type || "unknown").trim().toUpperCase() || "UNKNOWN";
   const isSolved = resolvedQuestion ? isQuestionSolved(resolvedQuestion) : indexedQuestion ? isQuestionSolved(indexedQuestion) : false;
   const isBookmarked = resolvedQuestion ? isQuestionBookmarked(resolvedQuestion) : indexedQuestion ? isQuestionBookmarked(indexedQuestion) : false;
@@ -403,7 +419,7 @@ const SolvePage = ({
                 Retry
               </button>
             </div>
-          ) : loading && !isInitialized ? (
+          ) : (loading && !isInitialized) || (isAptitudeQuestion && aptitudeEnabled && aptitudeLoading && !indexedQuestion) ? (
             <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading Solve page..."

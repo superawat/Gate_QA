@@ -46,9 +46,11 @@ Gate_QA/
 |   |   |-- AnswerService.js
 |   |   |-- QuestionBankManifestService.js
 |   |   |-- question-service/
-|   |   |   |-- QuestionLoader.js
+|   |   |-- QuestionLoader.js
 |   |   |   |-- QuestionNormalizer.js
 |   |   |   `-- SubjectTaxonomy.js
+|   |   |-- AptitudeQuestionService.js
+|   |   |-- AptitudeQuestionService.test.js
 |   |   `-- AnswerService.test.js
 |   |-- pages/
 |   |   |-- HomePage.jsx
@@ -65,6 +67,7 @@ Gate_QA/
 |   |   |-- evaluateAnswer.js
 |   |   |-- examUid.js
 |   |   |-- analytics.js
+|   |   |-- aptitudePreference.js
 |   |   |-- localStorageState.js
 |   |   `-- localStorageState.test.js
 |   `-- components/
@@ -106,7 +109,9 @@ Gate_QA/
 |   |-- question-bank-manifest.json
 |   |-- question-images/                 # Mirrored GateOverflow blob assets for published questions
 |   |-- question-search-index.json
+|   |-- aptitude-search-index.json       # Generated compact search index for aptitude
 |   |-- question-detail-shards/          # Generated detail payloads keyed by year/set
+|   |-- data/aptitude/                   # Generated detail payloads for aptitude sharded by subject/subtopic
 |   |-- mocktest/                        # Mock exam image assets used by the exam shell
 |   |-- questions-filtered.json
 |   |-- questions-filtered-with-ids.json
@@ -136,10 +141,20 @@ Gate_QA/
 |   |   |-- repair-historical-exam-uids.js    # Canonical exam_uid repair pass
 |   |   |-- repair-historical-paper-counts.js # Historical paper recovery + dedup + cleanup
 |   |   |-- validate-data.js                  # Full-bank answer/data integrity gate
-|   |   `-- validate-public-parity.js         # Public artifact/pipeline count parity gate
+|   |   |-- validate-public-parity.js         # Public artifact/pipeline count parity gate
+|   |   |-- load-aptitude-data.js             # Aptitude data loading helper
+|   |   |-- audit-aptitude-data.js            # Aptitude metadata audit
+|   |   |-- validate-aptitude-data.js         # Aptitude validation check
+|   |   `-- verify-aptitude-quality.js        # Aptitude quality check
 |   |-- deployment/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
+|   |-- aptitude-pipeline/
+|   |   |-- build_aptitude_db.py  # Shards and builds aptitude index
+|   |   |-- parse_questions.py    # Extracts and normalizes aptitude PDFs
+|   |   |-- extract_answers.py
+|   |   |-- config.py
+|   |   `-- requirements.txt
 |   `-- pipeline/
 |       |-- shared.mjs            # Shared retry/sleep/output helpers for pipeline stages
 |       |-- scrape.mjs            # Stage 1: Tag discovery, pagination, question extraction

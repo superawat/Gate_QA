@@ -33,7 +33,7 @@ const HomePage = ({
           </span>
           <span>
             <span className="block text-sm font-bold">Random Practice</span>
-            <span className="block text-xs text-slate-400">Jump right in</span>
+            <span className="block text-xs text-slate-200">Jump right in</span>
           </span>
         </button>
 

@@ -13,6 +13,24 @@ import { describe, test, expect, vi, beforeEach } from 'vitest';
 vi.useFakeTimers();
 vi.setSystemTime(new Date('2026-04-04T12:00:00Z'));
 
+const aptitudeMock = vi.hoisted(() => ({
+    init: vi.fn(async () => {}),
+    questions: [
+        {
+            question_uid: 'APT-ENG-0001',
+            title: 'English Practice',
+            searchText: 'english spot the error aptitude',
+            subjectSlug: 'english',
+            subject: 'English',
+            subjectLabel: 'English',
+            type: 'mcq',
+            subtopics: [{ slug: 'spot-the-error', label: 'Spot the Error' }],
+            answerMeta: { type: 'MCQ', answer: 'A' },
+            exam: { year: null, yearSetKey: null }
+        }
+    ],
+}));
+
 vi.mock('../services/QuestionService', () => ({
     QuestionService: {
         loaded: true,
@@ -75,6 +93,38 @@ vi.mock('../services/QuestionService', () => ({
     },
 }));
 
+vi.mock('../services/AptitudeQuestionService', () => ({
+    AptitudeQuestionService: {
+        get loaded() {
+            return true;
+        },
+        get questions() {
+            return aptitudeMock.questions;
+        },
+        init: aptitudeMock.init,
+        getStructuredTags: vi.fn(() => ({
+            minYear: 0,
+            maxYear: 0,
+            subjects: [
+                { slug: 'english', label: 'English', count: 1 }
+            ],
+            structuredSubtopics: {
+                english: [
+                    { slug: 'spot-the-error', label: 'Spot the Error' }
+                ]
+            },
+            structuredTopics: {
+                English: ['Spot the Error']
+            },
+            questionTypes: ['MCQ'],
+            yearSets: [],
+            years: [],
+            topics: ['english'],
+            hideYearFilters: true
+        })),
+    },
+}));
+
 vi.mock('../services/AnswerService', () => ({
     AnswerService: {
         getStorageKeyForQuestion: vi.fn((q) => q.question_uid),
@@ -85,6 +135,7 @@ vi.mock('../services/AnswerService', () => ({
 describe('FilterContext', () => {
     beforeEach(() => {
         vi.clearAllMocks();
+        window.localStorage.clear();
         window.history.replaceState({}, '', '/practice');
     });
 
@@ -95,17 +146,20 @@ describe('FilterContext', () => {
     );
 
     const TestComponent = () => {
-        const { filters, filteredQuestions } = useFilterState();
-        const { updateFilters } = useFilterActions();
+        const { allQuestions, filters, filteredQuestions, structuredTags } = useFilterState();
+        const { isQuestionSolved, toggleBookmark, toggleSolved, updateFilters } = useFilterActions();
 
         return (
             <div>
+                <div data-testid="all-question-uids">{allQuestions.map((question) => question.question_uid).join(',')}</div>
+                <div data-testid="subject-options">{(structuredTags.subjects || []).map((subject) => subject.slug).join(',')}</div>
                 <div data-testid="subjects">{filters.selectedSubjects.join(',')}</div>
                 <div data-testid="subtopics">{filters.selectedSubtopics.join(',')}</div>
                 <div data-testid="year-range">{filters.yearRange.join(',')}</div>
                 <div data-testid="search-query">{filters.searchQuery}</div>
                 <div data-testid="selected-types">{filters.selectedTypes.join(',')}</div>
                 <div data-testid="filtered-question-uids">{filteredQuestions.map((question) => question.question_uid).join(',')}</div>
+                <div data-testid="apt-solved">{isQuestionSolved('APT-ENG-0001') ? 'yes' : 'no'}</div>
                 <ActiveFilterChips />
                 <TopicFilter />
                 <button
@@ -136,6 +190,14 @@ describe('FilterContext', () => {
                         searchQuery: '  deadlock   prevention ',
                     })}
                 >Combined</button>
+                <button
+                    data-testid="solve-apt"
+                    onClick={() => toggleSolved('APT-ENG-0001')}
+                >Solve Apt</button>
+                <button
+                    data-testid="bookmark-apt"
+                    onClick={() => toggleBookmark('APT-ENG-0001')}
+                >Bookmark Apt</button>
             </div>
         );
     };
@@ -330,5 +392,34 @@ describe('FilterContext', () => {
         expect(getByTestId('selected-types').textContent).toBe('NAT');
         expect(getByTestId('search-query').textContent).toBe('deadlock prevention');
         expect(getByTestId('filtered-question-uids').textContent).toBe('go:2');
+    });
+
+    test('injects aptitude questions when enabled and keeps their progress keys isolated', async () => {
+        window.localStorage.setItem('gateqa-aptitude-enabled', 'true');
+
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('APT-ENG-0001');
+            expect(getByTestId('subject-options').textContent).toContain('english');
+        });
+
+        act(() => {
+            getByTestId('solve-apt').click();
+            getByTestId('bookmark-apt').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('apt-solved').textContent).toBe('yes');
+            expect(JSON.parse(window.localStorage.getItem('gateqa-apt-solved-questions'))).toEqual(['APT-ENG-0001']);
+            expect(JSON.parse(window.localStorage.getItem('gateqa-apt-bookmarked-questions'))).toEqual(['APT-ENG-0001']);
+        });
+
+        expect(JSON.parse(window.localStorage.getItem('gate_qa_solved_questions')) || []).not.toContain('APT-ENG-0001');
+        expect(JSON.parse(window.localStorage.getItem('gate_qa_bookmarked_questions')) || []).not.toContain('APT-ENG-0001');
     });
 });

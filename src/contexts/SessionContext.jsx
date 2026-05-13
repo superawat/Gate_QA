@@ -79,8 +79,9 @@ export const useSession = () => {
 };
 
 export const SessionProvider = ({ children }) => {
-    const { allQuestions, solvedQuestionIds } = useFilterState();
-    const solvedSet = useMemo(() => new Set(solvedQuestionIds), [solvedQuestionIds]);
+    const { allQuestions, solvedQuestionIds, activeSolvedQuestionIds } = useFilterState();
+    const solvedIds = activeSolvedQuestionIds || solvedQuestionIds;
+    const solvedSet = useMemo(() => new Set(solvedIds), [solvedIds]);
     const solvedSetRef = useRef(solvedSet);
     solvedSetRef.current = solvedSet;
     const activeQuestionMapRef = useRef(new Map());

@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const { getSampleQuestion } = require("./helpers");
+const { getSampleAptitudeQuestion, getSampleQuestion } = require("./helpers");
 
 const APP_BASE = "/Gate_QA";
 const appPath = (route = "/") => `${APP_BASE}${route}`;
@@ -61,6 +61,38 @@ test("deep-link question route opens the requested uid", async ({ page }) => {
 
   await page.goto(appPath(`/practice/question/${encodedUid}`));
   await expect(page).toHaveURL(new RegExp(`/Gate_QA/practice/question/${encodedUid}`));
+  await expect(page.getByText("Question not found.")).toHaveCount(0);
+});
+
+test("aptitude toggle injects standalone subjects into the unified practice filters", async ({ page }) => {
+  const aptitudeQuestion = getSampleAptitudeQuestion();
+  await page.goto(appPath("/practice"));
+  await waitForPracticeList(page);
+
+  const toggle = page.getByRole("switch", { name: /Enable Aptitude Section/i });
+  await expect(toggle).toBeVisible({ timeout: 15000 });
+  await toggle.click();
+
+  await expect(page.getByRole("checkbox", { name: "English", exact: true })).toBeVisible({ timeout: 15000 });
+
+  await page.getByLabel(/Search questions/i).fill(aptitudeQuestion.uid);
+  await expect(page.getByText(/No questions match these filters/i)).toHaveCount(0);
+  await expect(page.getByText(/SSC|CGL|CHSL|MTS|CPO|Tier|Staff Selection/i)).toHaveCount(0);
+});
+
+test("APT direct links require the unified aptitude toggle", async ({ page }) => {
+  const aptitudeQuestion = getSampleAptitudeQuestion();
+  const encodedUid = encodeURIComponent(aptitudeQuestion.uid);
+
+  await page.goto(appPath(`/practice/question/${encodedUid}`));
+  await expect(page).toHaveURL(/\/Gate_QA\/practice$/);
+
+  await page.evaluate(() => {
+    localStorage.setItem("gateqa-aptitude-enabled", "true");
+  });
+  await page.goto(appPath(`/practice/question/${encodedUid}`));
+  await expect(page).toHaveURL(new RegExp(`/Gate_QA/practice/question/${encodedUid}`));
+  await expect(page.getByRole("button", { name: /Back to Results/i })).toBeVisible({ timeout: 15000 });
   await expect(page.getByText("Question not found.")).toHaveCount(0);
 });
 

@@ -68,11 +68,13 @@ describe("MockTestShell", () => {
     mockMockTestContext = {
       attemptError: "",
       attemptMeta: null,
+      aptitudeMockLoading: false,
       catalogError: "",
       catalogLoading: false,
       clearAttemptError: vi.fn(),
       currentSection: "GA",
       endMockTest: vi.fn(),
+      mockQuestionPool: [question],
       questionMetaByUid: {
         "go:111": {
           questionUid: "go:111",
@@ -207,6 +209,44 @@ describe("MockTestShell", () => {
     expect(screen.queryByText("Year Sets (optional)")).toBeNull();
     expect(screen.queryByText("Subtopics")).toBeNull();
     expect(screen.queryByText("Year Range Start")).toBeNull();
+  });
+
+  test("includes standalone aptitude subjects in custom mock filters", () => {
+    const aptitudeQuestion = {
+      question_uid: "APT-ENG-0001",
+      title: "English Practice",
+      subject: "English",
+      subjectLabel: "English",
+      subjectSlug: "english",
+      question: "<p>Aptitude question</p>",
+      exam: { year: null, yearSetKey: null },
+      subtopics: [{ slug: "spot-the-error", label: "Spot the Error" }],
+    };
+    mockMockTestContext = {
+      ...mockMockTestContext,
+      mockQuestionPool: [...mockFilterContext.allQuestions, aptitudeQuestion],
+      questionMetaByUid: {
+        ...mockMockTestContext.questionMetaByUid,
+        "APT-ENG-0001": {
+          questionUid: "APT-ENG-0001",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          yearSetKey: null,
+          orderIndex: 100001,
+          scorable: true,
+          paperReady: true,
+        },
+      },
+    };
+
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    expect(screen.getByRole("button", { name: "English" })).toBeTruthy();
   });
 
   test("lets setup sub-pages return to the mock mode selection", () => {

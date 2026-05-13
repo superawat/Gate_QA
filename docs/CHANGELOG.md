@@ -4,6 +4,12 @@ All notable changes to GateQA are documented in this file.
 
 ## [Unreleased]
 
+### PLAN-2026: Phase 6 Aptitude Data Sharding & Optimization -> Status: Done
+- Sharded the massive Aptitude question bank (32,386 questions) into 62 detail shards (`public/data/aptitude/{subject}/{subtopic}.json`) to prevent large monolithic payloads.
+- Generated a compact `public/aptitude-search-index.json` and removed the legacy monolithic `public/aptitude-questions.json`.
+- Updated `AptitudeQuestionService` to load the search index first and lazily fetch question detail shards via `ensureQuestionDetail()`.
+- Updated `SolvePage` and QA loaders/helpers to read the sharded aptitude dataset properly.
+
 ### PLAN-2026: Phase 5 Gamification and Engagement (5.1 - 5.2) -> Status: Done
 - Added a Duolingo-style Streak Banner to the HomePage with daily goal tracking, current/longest streaks, XP, and dynamic motivational text.
 - Implemented a user-configurable Daily Goal system (persisted in `localStorage`).

@@ -1,4 +1,5 @@
 export const PRACTICE_PROGRESS_STORAGE_KEY = "gateqa_progress_v1";
+export const APTITUDE_PROGRESS_STORAGE_KEY = "gateqa_apt_progress_v1";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MAX_HISTORY_ENTRIES = 50;
@@ -223,12 +224,15 @@ export const buildUpdatedProgressEntry = (currentEntry = {}, {
   };
 };
 
-export const readPracticeProgress = (storage = typeof window !== "undefined" ? window.localStorage : null) => {
+export const readPracticeProgress = (
+  storage = typeof window !== "undefined" ? window.localStorage : null,
+  storageKey = PRACTICE_PROGRESS_STORAGE_KEY
+) => {
   if (!storage) {
     return {};
   }
   try {
-    const raw = storage.getItem(PRACTICE_PROGRESS_STORAGE_KEY);
+    const raw = storage.getItem(storageKey || PRACTICE_PROGRESS_STORAGE_KEY);
     const parsed = raw ? JSON.parse(raw) : {};
     return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
   } catch {
@@ -238,13 +242,14 @@ export const readPracticeProgress = (storage = typeof window !== "undefined" ? w
 
 export const writePracticeProgress = (
   progressRecords,
-  storage = typeof window !== "undefined" ? window.localStorage : null
+  storage = typeof window !== "undefined" ? window.localStorage : null,
+  storageKey = PRACTICE_PROGRESS_STORAGE_KEY
 ) => {
   if (!storage) {
     return false;
   }
   try {
-    storage.setItem(PRACTICE_PROGRESS_STORAGE_KEY, JSON.stringify(progressRecords || {}));
+    storage.setItem(storageKey || PRACTICE_PROGRESS_STORAGE_KEY, JSON.stringify(progressRecords || {}));
     return true;
   } catch {
     return false;
@@ -259,13 +264,14 @@ export const recordPracticeAttempt = ({
   submittedAt = new Date().toISOString(),
   durationMs = 0,
   storage = typeof window !== "undefined" ? window.localStorage : null,
+  progressStorageKey = PRACTICE_PROGRESS_STORAGE_KEY,
 } = {}) => {
   const key = String(storageKey || "").trim();
   if (!key) {
     return null;
   }
 
-  const progress = readPracticeProgress(storage);
+  const progress = readPracticeProgress(storage, progressStorageKey);
   const nextEntry = buildUpdatedProgressEntry(progress[key] || {}, {
     correct,
     type,
@@ -274,6 +280,6 @@ export const recordPracticeAttempt = ({
     durationMs,
   });
   progress[key] = nextEntry;
-  writePracticeProgress(progress, storage);
+  writePracticeProgress(progress, storage, progressStorageKey);
   return nextEntry;
 };

@@ -1,8 +1,11 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useDeferredValue, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { QuestionService } from '../services/QuestionService';
+import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
+import { useAptitudeEnabled } from '../utils/aptitudePreference';
+import { APTITUDE_USER_STATE_STORAGE_KEYS } from '../utils/localStorageState';
 
 const FilterStateContext = createContext();
 const FilterActionsContext = createContext();
@@ -11,7 +14,8 @@ const DEFAULT_SELECTED_TYPES = ['MCQ', 'MSQ', 'NAT'];
 const STORAGE_KEYS = {
     solved: 'gate_qa_solved_questions',
     bookmarked: 'gate_qa_bookmarked_questions',
-    metadata: 'gate_qa_progress_metadata'
+    metadata: 'gate_qa_progress_metadata',
+    progress: 'gateqa_progress_v1'
 };
 const DEFAULT_MIN_YEAR = 2000;
 const DEFAULT_MAX_YEAR = new Date().getFullYear();
@@ -19,8 +23,25 @@ const LEGACY_STORAGE_KEYS = {
     bookmarked: 'gateqa_bookmarks_v1'
 };
 const STORAGE_HEALTH_KEY = '__gate_qa_storage_health_check__';
+const APTITUDE_UID_PREFIX = 'APT-';
 
-const buildStructuredTagsFromManifest = (manifest = null) => {
+const isAptitudeQuestionId = (value = '') => String(value || '').startsWith(APTITUDE_UID_PREFIX);
+
+const normalizeQuestionPool = (questions = []) => {
+    const seen = new Set();
+    const ordered = [];
+    (Array.isArray(questions) ? questions : []).forEach((question) => {
+        const uid = String(question?.question_uid || '').trim();
+        if (!uid || seen.has(uid)) {
+            return;
+        }
+        seen.add(uid);
+        ordered.push(question);
+    });
+    return ordered;
+};
+
+const buildStructuredTagsFromManifest = (manifest = null, questionService = QuestionService) => {
     const yearSets = Array.isArray(manifest?.yearSets)
         ? manifest.yearSets
             .map((entry) => ({
@@ -38,8 +59,8 @@ const buildStructuredTagsFromManifest = (manifest = null) => {
     const subjects = Array.isArray(manifest?.subjects)
         ? manifest.subjects
             .map((subject) => ({
-                slug: QuestionService.normalizeSubjectSlug(subject?.slug || subject?.label || '') || 'unknown',
-                label: String(subject?.label || QuestionService.getSubjectLabelBySlug(subject?.slug || '') || 'Unknown').trim(),
+                slug: questionService.normalizeSubjectSlug(subject?.slug || subject?.label || '') || 'unknown',
+                label: String(subject?.label || questionService.getSubjectLabelBySlug(subject?.slug || '') || 'Unknown').trim(),
                 count: Number(subject?.count || 0),
             }))
             .filter((subject) => subject.slug && subject.label && subject.slug !== 'unknown')
@@ -70,6 +91,50 @@ const buildStructuredTagsFromManifest = (manifest = null) => {
     };
 };
 
+const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
+    const subjectsBySlug = new Map();
+    const addSubject = (subject = {}) => {
+        const slug = String(subject?.slug || '').trim();
+        const label = String(subject?.label || '').trim();
+        if (!slug || !label) {
+            return;
+        }
+        const current = subjectsBySlug.get(slug);
+        subjectsBySlug.set(slug, {
+            slug,
+            label: current?.label || label,
+            count: Number(current?.count || 0) + Number(subject?.count || 0),
+        });
+    };
+
+    (gateTags.subjects || []).forEach(addSubject);
+    (aptitudeTags.subjects || []).forEach(addSubject);
+
+    const subjects = Array.from(subjectsBySlug.values());
+    const questionTypes = Array.from(new Set([
+        ...(Array.isArray(gateTags.questionTypes) && gateTags.questionTypes.length > 0
+            ? gateTags.questionTypes
+            : DEFAULT_SELECTED_TYPES),
+        ...(Array.isArray(aptitudeTags.questionTypes) ? aptitudeTags.questionTypes : []),
+    ].map((type) => String(type || '').trim().toUpperCase()).filter(Boolean)));
+
+    return {
+        ...gateTags,
+        subjects,
+        topics: subjects.map((subject) => subject.slug),
+        structuredSubtopics: {
+            ...(gateTags.structuredSubtopics || {}),
+            ...(aptitudeTags.structuredSubtopics || {}),
+        },
+        structuredTopics: {
+            ...(gateTags.structuredTopics || {}),
+            ...(aptitudeTags.structuredTopics || {}),
+        },
+        questionTypes,
+        hideYearFilters: Boolean(gateTags.hideYearFilters),
+    };
+};
+
 const hasCustomYearRange = (yearRange, minYear, maxYear) => (
     Array.isArray(yearRange)
     && yearRange.length === 2
@@ -79,27 +144,34 @@ const hasCustomYearRange = (yearRange, minYear, maxYear) => (
     )
 );
 
-const normalizeSelectedTypes = (rawTypes, { fallbackToDefault = false } = {}) => {
+const normalizeSelectedTypes = (rawTypes, {
+    fallbackToDefault = false,
+    allowedTypes = DEFAULT_SELECTED_TYPES
+} = {}) => {
+    const typeList = Array.isArray(allowedTypes) && allowedTypes.length > 0
+        ? allowedTypes.map(type => String(type || '').trim().toUpperCase()).filter(Boolean)
+        : [...DEFAULT_SELECTED_TYPES];
+
     if (!Array.isArray(rawTypes)) {
-        return fallbackToDefault ? [...DEFAULT_SELECTED_TYPES] : [];
+        return fallbackToDefault ? [...typeList] : [];
     }
 
     const normalized = rawTypes
         .map(type => String(type || '').trim().toUpperCase())
-        .filter(type => DEFAULT_SELECTED_TYPES.includes(type));
+        .filter(type => typeList.includes(type));
 
-    const orderedUnique = DEFAULT_SELECTED_TYPES.filter(type => normalized.includes(type));
+    const orderedUnique = typeList.filter(type => normalized.includes(type));
 
     if (fallbackToDefault && orderedUnique.length === 0) {
-        return [...DEFAULT_SELECTED_TYPES];
+        return [...typeList];
     }
 
     return orderedUnique;
 };
 
-const yearSetComparator = (a, b) => {
-    const parsedA = QuestionService.parseYearSetKey(a);
-    const parsedB = QuestionService.parseYearSetKey(b);
+const yearSetComparator = (a, b, questionService = QuestionService) => {
+    const parsedA = questionService.parseYearSetKey(a);
+    const parsedB = questionService.parseYearSetKey(b);
     if (!parsedA || !parsedB) return String(a).localeCompare(String(b));
     if (parsedA.year !== parsedB.year) {
         return parsedB.year - parsedA.year;
@@ -107,7 +179,7 @@ const yearSetComparator = (a, b) => {
     return (parsedB.set || 0) - (parsedA.set || 0);
 };
 
-const normalizeYearSetTokens = (rawTokens) => {
+const normalizeYearSetTokens = (rawTokens, questionService = QuestionService) => {
     const values = Array.isArray(rawTokens) ? rawTokens : [];
     const unique = new Set();
 
@@ -115,42 +187,48 @@ const normalizeYearSetTokens = (rawTokens) => {
         const token = String(rawToken || '').trim();
         if (!token) return;
 
-        const parsedKey = QuestionService.parseYearSetKey(token);
+        const parsedKey = questionService.parseYearSetKey(token);
         if (parsedKey) {
             unique.add(parsedKey.key);
             return;
         }
 
-        const fromTag = QuestionService.extractYearSetFromTag(token);
+        const fromTag = questionService.extractYearSetFromTag(token);
         if (fromTag) {
-            const key = QuestionService.buildYearSetKey(fromTag.year, fromTag.set);
+            const key = questionService.buildYearSetKey(fromTag.year, fromTag.set);
             if (key) unique.add(key);
         }
     });
 
-    return Array.from(unique).sort(yearSetComparator);
+    return Array.from(unique).sort((a, b) => yearSetComparator(a, b, questionService));
 };
 
-const normalizeSubjectSlugs = (rawSubjects) => {
+const normalizeSubjectSlugs = (rawSubjects, questionService = QuestionService) => {
     const values = Array.isArray(rawSubjects) ? rawSubjects : [];
     const unique = new Set();
 
     values.forEach((rawSubject) => {
-        const subjectSlug = QuestionService.normalizeSubjectSlug(rawSubject);
+        const subjectSlug = questionService.normalizeSubjectSlug(rawSubject);
         if (subjectSlug && subjectSlug !== 'unknown') {
             unique.add(subjectSlug);
+            return;
+        }
+        // Fallback: try AptitudeQuestionService for aptitude-specific subjects
+        const aptitudeSlug = AptitudeQuestionService.normalizeSubjectSlug(rawSubject);
+        if (aptitudeSlug) {
+            unique.add(aptitudeSlug);
         }
     });
 
     return Array.from(unique).sort((a, b) => a.localeCompare(b));
 };
 
-const normalizeSubtopicSlugs = (rawSubtopics) => {
+const normalizeSubtopicSlugs = (rawSubtopics, questionService = QuestionService) => {
     const values = Array.isArray(rawSubtopics) ? rawSubtopics : [];
     const unique = new Set();
 
     values.forEach((rawSubtopic) => {
-        const slug = QuestionService.slugifyToken(rawSubtopic);
+        const slug = questionService.slugifyToken(rawSubtopic);
         if (slug) {
             unique.add(slug);
         }
@@ -159,12 +237,12 @@ const normalizeSubtopicSlugs = (rawSubtopics) => {
     return Array.from(unique).sort((a, b) => a.localeCompare(b));
 };
 
-const buildSubtopicToSubjectSlugMap = (structuredSubtopics = {}) => {
+const buildSubtopicToSubjectSlugMap = (structuredSubtopics = {}, questionService = QuestionService) => {
     const map = new Map();
 
     Object.entries(structuredSubtopics || {}).forEach(([subjectSlug, entries]) => {
         (entries || []).forEach((entry) => {
-            const slug = QuestionService.slugifyToken(entry?.slug || entry?.label || entry);
+            const slug = questionService.slugifyToken(entry?.slug || entry?.label || entry);
             if (slug) {
                 map.set(slug, subjectSlug);
             }
@@ -174,17 +252,22 @@ const buildSubtopicToSubjectSlugMap = (structuredSubtopics = {}) => {
     return map;
 };
 
-const reconcileSubjectAndSubtopicFilters = (baseFilters, incomingFilters, subtopicToSubjectSlug) => {
+const reconcileSubjectAndSubtopicFilters = (
+    baseFilters,
+    incomingFilters,
+    subtopicToSubjectSlug,
+    questionService = QuestionService
+) => {
     const merged = { ...baseFilters };
     const hasSelectedSubjects = Object.prototype.hasOwnProperty.call(incomingFilters, 'selectedSubjects');
     const hasSelectedSubtopics = Object.prototype.hasOwnProperty.call(incomingFilters, 'selectedSubtopics');
 
     if (hasSelectedSubjects) {
-        merged.selectedSubjects = normalizeSubjectSlugs(incomingFilters.selectedSubjects);
+        merged.selectedSubjects = normalizeSubjectSlugs(incomingFilters.selectedSubjects, questionService);
 
         if (merged.selectedSubtopics.length > 0) {
             const activeSubjectSet = new Set(merged.selectedSubjects);
-            merged.selectedSubtopics = normalizeSubtopicSlugs(merged.selectedSubtopics).filter((subtopicSlug) => {
+            merged.selectedSubtopics = normalizeSubtopicSlugs(merged.selectedSubtopics, questionService).filter((subtopicSlug) => {
                 const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
                 return !parentSlug || activeSubjectSet.has(parentSlug);
             });
@@ -192,7 +275,7 @@ const reconcileSubjectAndSubtopicFilters = (baseFilters, incomingFilters, subtop
     }
 
     if (hasSelectedSubtopics) {
-        merged.selectedSubtopics = normalizeSubtopicSlugs(incomingFilters.selectedSubtopics);
+        merged.selectedSubtopics = normalizeSubtopicSlugs(incomingFilters.selectedSubtopics, questionService);
 
         const selectedSubjects = new Set(merged.selectedSubjects);
         merged.selectedSubtopics.forEach((subtopicSlug) => {
@@ -201,7 +284,7 @@ const reconcileSubjectAndSubtopicFilters = (baseFilters, incomingFilters, subtop
                 selectedSubjects.add(parentSlug);
             }
         });
-        merged.selectedSubjects = normalizeSubjectSlugs(Array.from(selectedSubjects));
+        merged.selectedSubjects = normalizeSubjectSlugs(Array.from(selectedSubjects), questionService);
     }
 
     return merged;
@@ -227,13 +310,13 @@ const normalizeStoredIds = (rawIds) => {
     return normalized;
 };
 
-const normalizeProgressTargets = (rawTargets) => {
+const normalizeProgressTargets = (rawTargets, answerService = AnswerService) => {
     const values = Array.isArray(rawTargets) ? rawTargets : [rawTargets];
     return normalizeStoredIds(
         values
             .map((target) => (typeof target === 'string'
                 ? String(target || '').trim()
-                : getQuestionTrackingId(target)))
+                : getQuestionTrackingId(target, answerService)))
             .filter(Boolean)
     );
 };
@@ -283,12 +366,12 @@ const readJsonFromStorage = (key, fallback) => {
     }
 };
 
-const getQuestionTrackingId = (question = {}) => {
+const getQuestionTrackingId = (question = {}, answerService = AnswerService) => {
     if (!question || typeof question !== 'object') {
         return null;
     }
 
-    const candidate = AnswerService.getStorageKeyForQuestion(question);
+    const candidate = answerService.getStorageKeyForQuestion(question);
     if (!candidate) {
         return null;
     }
@@ -315,21 +398,32 @@ export const useFilterActions = () => {
 export const FilterProvider = ({
     children,
     initialManifest = null,
-    questionDataRevision = 0
+    questionDataRevision = 0,
+    questionService = QuestionService,
+    answerService = AnswerService,
+    storageKeys = STORAGE_KEYS,
+    legacyStorageKeys = LEGACY_STORAGE_KEYS,
+    defaultSelectedTypes = DEFAULT_SELECTED_TYPES,
+    progressScope = 'gate',
+    progressExportPrefix = 'gateqa-progress',
+    includeExtendedProgress = true,
 }) => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest));
+    const [aptitudeEnabled] = useAptitudeEnabled();
+    const canMergeAptitude = progressScope === 'gate' && questionService === QuestionService;
+    const shouldMergeAptitude = canMergeAptitude && aptitudeEnabled;
+    const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest, questionService));
     const lastHydratedSearchRef = useRef(null);
 
     const [filters, setFilters] = useState(() => {
-        const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest);
+        const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest, questionService);
         return {
         selectedYearSets: [],
         yearRange: [manifestStructuredTags.minYear, manifestStructuredTags.maxYear],
         selectedSubjects: [],
         selectedSubtopics: [],
-        selectedTypes: [...DEFAULT_SELECTED_TYPES],
+        selectedTypes: [...defaultSelectedTypes],
         hideSolved: false,
         showOnlySolved: false,
         showOnlyBookmarked: false,
@@ -343,21 +437,81 @@ export const FilterProvider = ({
 
     const [solvedQuestionIds, setSolvedQuestionIds] = useState([]);
     const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState([]);
+    const [aptitudeSolvedQuestionIds, setAptitudeSolvedQuestionIds] = useState([]);
+    const [aptitudeBookmarkedQuestionIds, setAptitudeBookmarkedQuestionIds] = useState([]);
+    const [aptitudeQuestions, setAptitudeQuestions] = useState(() => (
+        AptitudeQuestionService.loaded ? normalizeQuestionPool(AptitudeQuestionService.questions) : []
+    ));
+    const [aptitudeLoading, setAptitudeLoading] = useState(false);
+    const [aptitudeError, setAptitudeError] = useState('');
     const [isProgressStorageAvailable, setIsProgressStorageAvailable] = useState(true);
     const [hasLoadedProgressState, setHasLoadedProgressState] = useState(false);
     const urlHydrationSubtopicToSubjectSlug = useMemo(
-        () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics),
-        [structuredTags.structuredSubtopics]
+        () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics, questionService),
+        [structuredTags.structuredSubtopics, questionService]
     );
     const isPracticePath = location.pathname === PRACTICE_ROUTE
         || location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`);
 
     useEffect(() => {
-        if (!initialManifest || QuestionService.questions.length > 0) {
+        if (!shouldMergeAptitude) {
+            return undefined;
+        }
+
+        let cancelled = false;
+
+        const loadAptitudeQuestions = async () => {
+            if (AptitudeQuestionService.loaded) {
+                setAptitudeQuestions(normalizeQuestionPool(AptitudeQuestionService.questions));
+                setAptitudeError('');
+                setAptitudeLoading(false);
+                return;
+            }
+
+            setAptitudeLoading(true);
+            setAptitudeError('');
+            try {
+                await AptitudeQuestionService.init();
+                if (cancelled) {
+                    return;
+                }
+                setAptitudeQuestions(normalizeQuestionPool(AptitudeQuestionService.questions));
+                setAptitudeError('');
+            } catch (error) {
+                if (cancelled) {
+                    return;
+                }
+                setAptitudeQuestions([]);
+                setAptitudeError(error.message || 'Unable to load aptitude questions.');
+            } finally {
+                if (!cancelled) {
+                    setAptitudeLoading(false);
+                }
+            }
+        };
+
+        void loadAptitudeQuestions();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [shouldMergeAptitude]);
+
+    const baseQuestions = questionService.questions;
+    const activeAptitudeQuestions = shouldMergeAptitude ? aptitudeQuestions : [];
+    const allQuestions = useMemo(() => {
+        if (!baseQuestions.length) {
+            return [];
+        }
+        return normalizeQuestionPool([...baseQuestions, ...activeAptitudeQuestions]);
+    }, [activeAptitudeQuestions, baseQuestions, questionDataRevision]);
+
+    useEffect(() => {
+        if (!initialManifest || questionService.questions.length > 0) {
             return;
         }
 
-        const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest);
+        const manifestStructuredTags = buildStructuredTagsFromManifest(initialManifest, questionService);
         setStructuredTags(manifestStructuredTags);
         setTotalQuestions(Number(initialManifest.questionCount || 0));
 
@@ -368,13 +522,16 @@ export const FilterProvider = ({
                 ? prev.yearRange
                 : [minYear, maxYear]
         }));
-    }, [initialManifest]);
+    }, [initialManifest, questionService, structuredTags.minYear, structuredTags.maxYear]);
 
     useEffect(() => {
-        if (QuestionService.questions.length > 0) {
-            const tags = QuestionService.getStructuredTags();
+        if (questionService.questions.length > 0) {
+            const gateTags = questionService.getStructuredTags();
+            const tags = activeAptitudeQuestions.length > 0
+                ? mergeStructuredTags(gateTags, AptitudeQuestionService.getStructuredTags())
+                : gateTags;
             setStructuredTags(tags);
-            setTotalQuestions(QuestionService.questions.length);
+            setTotalQuestions(allQuestions.length);
 
             const { minYear, maxYear } = tags;
             setFilters(prev => {
@@ -388,7 +545,12 @@ export const FilterProvider = ({
 
             setIsInitialized(true);
         }
-    }, [questionDataRevision]);
+    }, [
+        activeAptitudeQuestions.length,
+        allQuestions.length,
+        questionDataRevision,
+        questionService,
+    ]);
 
     useEffect(() => {
         if (!isInitialized) {
@@ -414,13 +576,13 @@ export const FilterProvider = ({
         const rawSubtopicTokens = params.get('subtopics')?.split(',').filter(Boolean) || [];
 
         const urlFilters = {
-            selectedYearSets: normalizeYearSetTokens(rawYearTokens),
+            selectedYearSets: normalizeYearSetTokens(rawYearTokens, questionService),
             yearRange: params.get('range')?.split('-').map(Number) || null,
-            selectedSubjects: normalizeSubjectSlugs(rawSubjectTokens),
-            selectedSubtopics: normalizeSubtopicSlugs(rawSubtopicTokens),
+            selectedSubjects: normalizeSubjectSlugs(rawSubjectTokens, questionService),
+            selectedSubtopics: normalizeSubtopicSlugs(rawSubtopicTokens, questionService),
             selectedTypes: urlTypes === null
-                ? [...DEFAULT_SELECTED_TYPES]
-                : normalizeSelectedTypes(urlTypes.split(',').filter(Boolean)),
+                ? [...defaultSelectedTypes]
+                : normalizeSelectedTypes(urlTypes.split(',').filter(Boolean), { allowedTypes: defaultSelectedTypes }),
             hideSolved: parseBooleanParam(params.get('hideSolved')),
             showOnlySolved: parseBooleanParam(params.get('showOnlySolved')),
             showOnlyBookmarked: parseBooleanParam(params.get('showOnlyBookmarked')),
@@ -443,7 +605,8 @@ export const FilterProvider = ({
                     selectedSubjects: urlFilters.selectedSubjects,
                     selectedSubtopics: urlFilters.selectedSubtopics
                 },
-                urlHydrationSubtopicToSubjectSlug
+                urlHydrationSubtopicToSubjectSlug,
+                questionService
             );
 
             if (urlFilters.yearRange && urlFilters.yearRange.length === 2 && !isNaN(urlFilters.yearRange[0])) {
@@ -451,7 +614,7 @@ export const FilterProvider = ({
             }
             return merged;
         });
-    }, [isInitialized, isPracticePath, location.search, urlHydrationSubtopicToSubjectSlug]);
+    }, [defaultSelectedTypes, isInitialized, isPracticePath, location.search, questionService, urlHydrationSubtopicToSubjectSlug]);
 
     useEffect(() => {
         if (!isInitialized || !isPracticePath) return;
@@ -460,9 +623,9 @@ export const FilterProvider = ({
         FILTER_QUERY_KEYS.forEach((key) => {
             params.delete(key);
         });
-        const selectedYearSets = normalizeYearSetTokens(filters.selectedYearSets);
-        const selectedSubjects = normalizeSubjectSlugs(filters.selectedSubjects);
-        const selectedSubtopics = normalizeSubtopicSlugs(filters.selectedSubtopics);
+        const selectedYearSets = normalizeYearSetTokens(filters.selectedYearSets, questionService);
+        const selectedSubjects = normalizeSubjectSlugs(filters.selectedSubjects, questionService);
+        const selectedSubtopics = normalizeSubtopicSlugs(filters.selectedSubtopics, questionService);
         const normalizedYearRange = Array.isArray(filters.yearRange)
             ? filters.yearRange.map(Number)
             : [];
@@ -480,8 +643,8 @@ export const FilterProvider = ({
             params.set('range', normalizedYearRange.join('-'));
         }
 
-        const selectedTypes = normalizeSelectedTypes(filters.selectedTypes);
-        if (selectedTypes.length > 0 && selectedTypes.length < DEFAULT_SELECTED_TYPES.length) {
+        const selectedTypes = normalizeSelectedTypes(filters.selectedTypes, { allowedTypes: defaultSelectedTypes });
+        if (selectedTypes.length > 0 && selectedTypes.length < defaultSelectedTypes.length) {
             params.set('types', selectedTypes.map(type => type.toLowerCase()).join(','));
         }
 
@@ -520,6 +683,8 @@ export const FilterProvider = ({
         location.pathname,
         location.search,
         navigate,
+        defaultSelectedTypes,
+        questionService,
         structuredTags.minYear,
         structuredTags.maxYear
     ]);
@@ -539,25 +704,33 @@ export const FilterProvider = ({
             return;
         }
 
-        const storedSolved = normalizeStoredIds(readJsonFromStorage(STORAGE_KEYS.solved, []));
-        const storedBookmarkedRaw = readJsonFromStorage(STORAGE_KEYS.bookmarked, null);
+        const storedSolved = normalizeStoredIds(readJsonFromStorage(storageKeys.solved, []));
+        const storedBookmarkedRaw = readJsonFromStorage(storageKeys.bookmarked, null);
         const storedBookmarked = storedBookmarkedRaw === null
-            ? normalizeStoredIds(readJsonFromStorage(LEGACY_STORAGE_KEYS.bookmarked, []))
+            ? normalizeStoredIds(legacyStorageKeys.bookmarked ? readJsonFromStorage(legacyStorageKeys.bookmarked, []) : [])
             : normalizeStoredIds(storedBookmarkedRaw);
+        const storedAptitudeSolved = canMergeAptitude
+            ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, []))
+            : [];
+        const storedAptitudeBookmarked = canMergeAptitude
+            ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, []))
+            : [];
 
         setSolvedQuestionIds(storedSolved);
         setBookmarkedQuestionIds(storedBookmarked);
+        setAptitudeSolvedQuestionIds(storedAptitudeSolved);
+        setAptitudeBookmarkedQuestionIds(storedAptitudeBookmarked);
 
         if (storedBookmarkedRaw === null) {
             try {
-                window.localStorage.setItem(STORAGE_KEYS.bookmarked, JSON.stringify(storedBookmarked));
+                window.localStorage.setItem(storageKeys.bookmarked, JSON.stringify(storedBookmarked));
             } catch (error) {
                 setIsProgressStorageAvailable(false);
             }
         }
 
         setHasLoadedProgressState(true);
-    }, []);
+    }, [canMergeAptitude, legacyStorageKeys.bookmarked, storageKeys.bookmarked, storageKeys.solved]);
 
     useEffect(() => {
         if (!hasLoadedProgressState || !isProgressStorageAvailable || typeof window === 'undefined') {
@@ -565,54 +738,152 @@ export const FilterProvider = ({
         }
 
         try {
-            window.localStorage.setItem(STORAGE_KEYS.solved, JSON.stringify(solvedQuestionIds));
-            window.localStorage.setItem(STORAGE_KEYS.bookmarked, JSON.stringify(bookmarkedQuestionIds));
-            window.localStorage.setItem(STORAGE_KEYS.metadata, JSON.stringify({
+            window.localStorage.setItem(storageKeys.solved, JSON.stringify(solvedQuestionIds));
+            window.localStorage.setItem(storageKeys.bookmarked, JSON.stringify(bookmarkedQuestionIds));
+            window.localStorage.setItem(storageKeys.metadata, JSON.stringify({
                 lastUpdated: new Date().toISOString(),
                 solvedCount: solvedQuestionIds.length,
                 bookmarkedCount: bookmarkedQuestionIds.length
             }));
+            if (canMergeAptitude) {
+                window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.solved, JSON.stringify(aptitudeSolvedQuestionIds));
+                window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, JSON.stringify(aptitudeBookmarkedQuestionIds));
+                window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.metadata, JSON.stringify({
+                    lastUpdated: new Date().toISOString(),
+                    solvedCount: aptitudeSolvedQuestionIds.length,
+                    bookmarkedCount: aptitudeBookmarkedQuestionIds.length
+                }));
+            }
         } catch (error) {
             setIsProgressStorageAvailable(false);
         }
-    }, [solvedQuestionIds, bookmarkedQuestionIds, hasLoadedProgressState, isProgressStorageAvailable]);
+    }, [
+        aptitudeBookmarkedQuestionIds,
+        aptitudeSolvedQuestionIds,
+        bookmarkedQuestionIds,
+        canMergeAptitude,
+        hasLoadedProgressState,
+        isProgressStorageAvailable,
+        solvedQuestionIds,
+        storageKeys.bookmarked,
+        storageKeys.metadata,
+        storageKeys.solved
+    ]);
 
-    const validQuestionIdSet = useMemo(() => {
-        if (!isInitialized || !QuestionService.questions.length) {
+    const gateValidQuestionIdSet = useMemo(() => {
+        if (!isInitialized || !questionService.questions.length) {
             return new Set();
         }
 
         return new Set(
-            QuestionService.questions
-                .map(question => getQuestionTrackingId(question))
+            questionService.questions
+                .map(question => getQuestionTrackingId(question, answerService))
                 .filter(Boolean)
         );
-    }, [isInitialized, totalQuestions, questionDataRevision]);
+    }, [answerService, isInitialized, questionDataRevision, questionService, totalQuestions]);
+
+    const aptitudeValidQuestionIdSet = useMemo(() => {
+        if (!canMergeAptitude || aptitudeQuestions.length === 0) {
+            return new Set();
+        }
+
+        return new Set(
+            aptitudeQuestions
+                .map(question => getQuestionTrackingId(question, answerService))
+                .filter(Boolean)
+        );
+    }, [answerService, aptitudeQuestions, canMergeAptitude]);
+
+    const validQuestionIdSet = useMemo(() => {
+        if (!isInitialized || !allQuestions.length) {
+            return new Set();
+        }
+
+        return new Set(
+            allQuestions
+                .map(question => getQuestionTrackingId(question, answerService))
+                .filter(Boolean)
+        );
+    }, [allQuestions, answerService, isInitialized]);
 
     useEffect(() => {
-        if (!isInitialized || validQuestionIdSet.size === 0) {
+        if (!isInitialized || gateValidQuestionIdSet.size === 0) {
             return;
         }
 
         setSolvedQuestionIds((prev) => {
-            const next = prev.filter(id => validQuestionIdSet.has(id));
+            const next = prev.filter(id => gateValidQuestionIdSet.has(id));
             return next.length === prev.length ? prev : next;
         });
 
         setBookmarkedQuestionIds((prev) => {
-            const next = prev.filter(id => validQuestionIdSet.has(id));
+            const next = prev.filter(id => gateValidQuestionIdSet.has(id));
             return next.length === prev.length ? prev : next;
         });
-    }, [isInitialized, validQuestionIdSet]);
+    }, [gateValidQuestionIdSet, isInitialized]);
 
-    const solvedQuestionSet = useMemo(() => new Set(solvedQuestionIds), [solvedQuestionIds]);
-    const bookmarkedQuestionSet = useMemo(() => new Set(bookmarkedQuestionIds), [bookmarkedQuestionIds]);
+    useEffect(() => {
+        if (!canMergeAptitude || aptitudeValidQuestionIdSet.size === 0) {
+            return;
+        }
+
+        setAptitudeSolvedQuestionIds((prev) => {
+            const next = prev.filter(id => aptitudeValidQuestionIdSet.has(id));
+            return next.length === prev.length ? prev : next;
+        });
+
+        setAptitudeBookmarkedQuestionIds((prev) => {
+            const next = prev.filter(id => aptitudeValidQuestionIdSet.has(id));
+            return next.length === prev.length ? prev : next;
+        });
+    }, [aptitudeValidQuestionIdSet, canMergeAptitude]);
+
+    const solvedQuestionSet = useMemo(
+        () => new Set([...solvedQuestionIds, ...aptitudeSolvedQuestionIds]),
+        [aptitudeSolvedQuestionIds, solvedQuestionIds]
+    );
+    const bookmarkedQuestionSet = useMemo(
+        () => new Set([...bookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds]),
+        [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds]
+    );
 
     // ── Reverse map: subtopicSlug → parent subjectSlug (for scoped filtering) ──
     const subtopicToSubjectSlug = useMemo(
-        () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics),
-        [structuredTags.structuredSubtopics]
+        () => buildSubtopicToSubjectSlugMap(structuredTags.structuredSubtopics, questionService),
+        [questionService, structuredTags.structuredSubtopics]
     );
+    useEffect(() => {
+        if (!isInitialized) {
+            return;
+        }
+
+        const availableSubjects = new Set((structuredTags.subjects || []).map((subject) => subject.slug));
+        const availableSubtopics = new Set();
+        Object.values(structuredTags.structuredSubtopics || {}).forEach((entries) => {
+            (entries || []).forEach((entry) => {
+                const slug = questionService.slugifyToken(entry?.slug || entry?.label || entry);
+                if (slug) {
+                    availableSubtopics.add(slug);
+                }
+            });
+        });
+
+        setFilters((prev) => {
+            const selectedSubjects = prev.selectedSubjects.filter((slug) => availableSubjects.has(slug));
+            const selectedSubtopics = prev.selectedSubtopics.filter((slug) => availableSubtopics.has(slug));
+            if (
+                selectedSubjects.length === prev.selectedSubjects.length
+                && selectedSubtopics.length === prev.selectedSubtopics.length
+            ) {
+                return prev;
+            }
+            return {
+                ...prev,
+                selectedSubjects,
+                selectedSubtopics,
+            };
+        });
+    }, [isInitialized, questionService, structuredTags.structuredSubtopics, structuredTags.subjects]);
     const deferredSearchQuery = useDeferredValue(filters.searchQuery);
     const normalizedDeferredSearchQuery = useMemo(
         () => normalizeSearchQuery(deferredSearchQuery),
@@ -625,7 +896,7 @@ export const FilterProvider = ({
 
     // ── Layer 3: useMemo-based filtered questions ────────────────────────
     const filteredQuestions = useMemo(() => {
-        if (!QuestionService.questions.length) return [];
+        if (!allQuestions.length) return [];
 
         const {
             selectedYearSets,
@@ -637,7 +908,7 @@ export const FilterProvider = ({
             showOnlyBookmarked
         } = filters;
 
-        const selectedTypes = normalizeSelectedTypes(filters.selectedTypes);
+        const selectedTypes = normalizeSelectedTypes(filters.selectedTypes, { allowedTypes: defaultSelectedTypes });
         const selectedTypeSet = new Set(selectedTypes.map(type => type.toUpperCase()));
 
         // Group selected subtopics by their parent subject for scoped AND filtering.
@@ -652,14 +923,14 @@ export const FilterProvider = ({
             subtopicsByParentSubject.get(parentSlug).add(subtopicSlug);
         });
 
-        return QuestionService.questions.filter(q => {
-            const questionId = getQuestionTrackingId(q);
+        return allQuestions.filter(q => {
+            const questionId = getQuestionTrackingId(q, answerService);
             const isSolved = questionId ? solvedQuestionSet.has(questionId) : false;
             const isBookmarked = questionId ? bookmarkedQuestionSet.has(questionId) : false;
-            const answer = AnswerService.getAnswerForQuestion(q);
+            const answer = answerService.getAnswerForQuestion(q);
             const resolvedType = answer
-                ? QuestionService.normalizeTypeToken(answer.type)
-                : QuestionService.normalizeTypeToken(q.type);
+                ? questionService.normalizeTypeToken(answer.type)
+                : questionService.normalizeTypeToken(q.type);
 
             // Keep the canonical type attached to each question object.
             if (q.type !== resolvedType) {
@@ -714,7 +985,7 @@ export const FilterProvider = ({
                     // Question is in a subject that has subtopic filters active —
                     // it must match at least one of the required subtopics.
                     const questionSubtopicSlugs = Array.isArray(q.subtopics)
-                        ? q.subtopics.map(sub => QuestionService.slugifyToken(sub.slug || sub.label || sub))
+                        ? q.subtopics.map(sub => questionService.slugifyToken(sub.slug || sub.label || sub))
                         : [];
                     subtopicMatch = questionSubtopicSlugs.some(slug => requiredSubtopics.has(slug));
                 } else {
@@ -725,7 +996,7 @@ export const FilterProvider = ({
             }
 
             let typeMatch = true;
-            if (selectedTypes.length < DEFAULT_SELECTED_TYPES.length) {
+            if (selectedTypes.length < defaultSelectedTypes.length) {
                 typeMatch = selectedTypeSet.has(resolvedType.toUpperCase());
             }
 
@@ -754,6 +1025,10 @@ export const FilterProvider = ({
         structuredTags.minYear,
         structuredTags.maxYear,
         subtopicToSubjectSlug,
+        answerService,
+        allQuestions,
+        defaultSelectedTypes,
+        questionService,
         searchTokens
     ]);
 
@@ -761,93 +1036,131 @@ export const FilterProvider = ({
         setFilters(prev => {
             let merged = { ...prev, ...newFilters };
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedTypes')) {
-                merged.selectedTypes = normalizeSelectedTypes(newFilters.selectedTypes);
+                merged.selectedTypes = normalizeSelectedTypes(
+                    newFilters.selectedTypes,
+                    { allowedTypes: defaultSelectedTypes }
+                );
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'selectedYearSets')) {
-                merged.selectedYearSets = normalizeYearSetTokens(newFilters.selectedYearSets);
+                merged.selectedYearSets = normalizeYearSetTokens(newFilters.selectedYearSets, questionService);
             }
             if (Object.prototype.hasOwnProperty.call(newFilters, 'searchQuery')) {
                 merged.searchQuery = normalizeSearchQuery(newFilters.searchQuery);
             }
-            return reconcileSubjectAndSubtopicFilters(merged, newFilters, subtopicToSubjectSlug);
+            return reconcileSubjectAndSubtopicFilters(merged, newFilters, subtopicToSubjectSlug, questionService);
         });
-    }, [subtopicToSubjectSlug]);
+    }, [defaultSelectedTypes, questionService, subtopicToSubjectSlug]);
 
     const toggleSolved = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
             ? String(questionOrId || '').trim()
-            : getQuestionTrackingId(questionOrId);
+            : getQuestionTrackingId(questionOrId, answerService);
 
         if (!questionId) {
             return;
         }
 
-        setSolvedQuestionIds((prev) => (
+        const setTargetSolvedQuestionIds = canMergeAptitude && isAptitudeQuestionId(questionId)
+            ? setAptitudeSolvedQuestionIds
+            : setSolvedQuestionIds;
+
+        setTargetSolvedQuestionIds((prev) => (
             prev.includes(questionId)
                 ? prev.filter(id => id !== questionId)
                 : [...prev, questionId]
         ));
-    }, []);
+    }, [answerService, canMergeAptitude]);
 
     const toggleBookmark = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
             ? String(questionOrId || '').trim()
-            : getQuestionTrackingId(questionOrId);
+            : getQuestionTrackingId(questionOrId, answerService);
 
         if (!questionId) {
             return;
         }
 
-        setBookmarkedQuestionIds((prev) => (
+        const setTargetBookmarkedQuestionIds = canMergeAptitude && isAptitudeQuestionId(questionId)
+            ? setAptitudeBookmarkedQuestionIds
+            : setBookmarkedQuestionIds;
+
+        setTargetBookmarkedQuestionIds((prev) => (
             prev.includes(questionId)
                 ? prev.filter(id => id !== questionId)
                 : [...prev, questionId]
         ));
-    }, []);
+    }, [answerService, canMergeAptitude]);
 
     const markQuestionsSolved = useCallback((questionOrIds) => {
-        const questionIds = normalizeProgressTargets(questionOrIds);
+        const questionIds = normalizeProgressTargets(questionOrIds, answerService);
         if (questionIds.length === 0) {
             return;
         }
 
-        setSolvedQuestionIds((prev) => {
-            const nextSet = new Set(prev);
-            questionIds.forEach((questionId) => {
-                nextSet.add(questionId);
-            });
-            const next = Array.from(nextSet);
-            return next.length === prev.length ? prev : next;
+        const gateQuestionIds = [];
+        const aptitudeQuestionIds = [];
+        questionIds.forEach((questionId) => {
+            if (canMergeAptitude && isAptitudeQuestionId(questionId)) {
+                aptitudeQuestionIds.push(questionId);
+                return;
+            }
+            gateQuestionIds.push(questionId);
         });
-    }, []);
+
+        if (gateQuestionIds.length > 0) {
+            setSolvedQuestionIds((prev) => {
+                const nextSet = new Set(prev);
+                gateQuestionIds.forEach((questionId) => {
+                    nextSet.add(questionId);
+                });
+                const next = Array.from(nextSet);
+                return next.length === prev.length ? prev : next;
+            });
+        }
+
+        if (aptitudeQuestionIds.length > 0) {
+            setAptitudeSolvedQuestionIds((prev) => {
+                const nextSet = new Set(prev);
+                aptitudeQuestionIds.forEach((questionId) => {
+                    nextSet.add(questionId);
+                });
+                const next = Array.from(nextSet);
+                return next.length === prev.length ? prev : next;
+            });
+        }
+    }, [answerService, canMergeAptitude]);
 
     const refreshProgressState = useCallback(() => {
         if (typeof window === 'undefined' || !canUseBrowserStorage()) {
             return;
         }
-        const storedSolved = normalizeStoredIds(readJsonFromStorage(STORAGE_KEYS.solved, []));
-        const storedBookmarked = normalizeStoredIds(readJsonFromStorage(STORAGE_KEYS.bookmarked, []));
+        const storedSolved = normalizeStoredIds(readJsonFromStorage(storageKeys.solved, []));
+        const storedBookmarked = normalizeStoredIds(readJsonFromStorage(storageKeys.bookmarked, []));
         setSolvedQuestionIds(storedSolved);
         setBookmarkedQuestionIds(storedBookmarked);
-    }, []);
+        if (canMergeAptitude) {
+            setAptitudeSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, [])));
+            setAptitudeBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, [])));
+        }
+    }, [canMergeAptitude, storageKeys.bookmarked, storageKeys.solved]);
 
     const getQuestionProgressId = useCallback((question = {}) => {
-        return getQuestionTrackingId(question);
-    }, []);
+        return getQuestionTrackingId(question, answerService);
+    }, [answerService]);
 
     const isQuestionSolved = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
             ? String(questionOrId || '').trim()
-            : getQuestionTrackingId(questionOrId);
+            : getQuestionTrackingId(questionOrId, answerService);
         return questionId ? solvedQuestionSet.has(questionId) : false;
-    }, [solvedQuestionSet]);
+    }, [answerService, solvedQuestionSet]);
 
     const isQuestionBookmarked = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
             ? String(questionOrId || '').trim()
-            : getQuestionTrackingId(questionOrId);
+            : getQuestionTrackingId(questionOrId, answerService);
         return questionId ? bookmarkedQuestionSet.has(questionId) : false;
-    }, [bookmarkedQuestionSet]);
+    }, [answerService, bookmarkedQuestionSet]);
 
     const setHideSolved = useCallback((value) => {
         const isHiding = !!value;
@@ -872,18 +1185,20 @@ export const FilterProvider = ({
     }, [updateFilters]);
 
     const solvedCount = useMemo(() => {
+        const activeSolvedIds = [...solvedQuestionIds, ...aptitudeSolvedQuestionIds];
         if (validQuestionIdSet.size === 0) {
-            return solvedQuestionIds.length;
+            return activeSolvedIds.length;
         }
-        return solvedQuestionIds.filter(id => validQuestionIdSet.has(id)).length;
-    }, [solvedQuestionIds, validQuestionIdSet]);
+        return activeSolvedIds.filter(id => validQuestionIdSet.has(id)).length;
+    }, [aptitudeSolvedQuestionIds, solvedQuestionIds, validQuestionIdSet]);
 
     const bookmarkedCount = useMemo(() => {
+        const activeBookmarkedIds = [...bookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds];
         if (validQuestionIdSet.size === 0) {
-            return bookmarkedQuestionIds.length;
+            return activeBookmarkedIds.length;
         }
-        return bookmarkedQuestionIds.filter(id => validQuestionIdSet.has(id)).length;
-    }, [bookmarkedQuestionIds, validQuestionIdSet]);
+        return activeBookmarkedIds.filter(id => validQuestionIdSet.has(id)).length;
+    }, [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, validQuestionIdSet]);
 
     const progressPercentage = totalQuestions > 0
         ? Math.round((solvedCount / totalQuestions) * 100)
@@ -896,16 +1211,13 @@ export const FilterProvider = ({
             yearRange: [minYear, maxYear],
             selectedSubjects: [],
             selectedSubtopics: [],
-            selectedTypes: [...DEFAULT_SELECTED_TYPES],
+            selectedTypes: [...defaultSelectedTypes],
             hideSolved: false,
             showOnlySolved: false,
             showOnlyBookmarked: false,
             searchQuery: ''
         });
-    }, [structuredTags]);
-
-    // Expose all questions and a lookup helper for deep-linking
-    const allQuestions = QuestionService.questions;
+    }, [defaultSelectedTypes, structuredTags]);
 
     const getQuestionById = useCallback((id) => {
         if (!id || typeof id !== 'string') return null;
@@ -924,15 +1236,30 @@ export const FilterProvider = ({
         isInitialized,
         solvedQuestionIds,
         bookmarkedQuestionIds,
+        activeSolvedQuestionIds: [...solvedQuestionIds, ...aptitudeSolvedQuestionIds],
+        activeBookmarkedQuestionIds: [...bookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds],
         solvedCount,
         bookmarkedCount,
         progressPercentage,
-        isProgressStorageAvailable
+        isProgressStorageAvailable,
+        progressStorageKeys: storageKeys,
+        aptitudeProgressStorageKeys: APTITUDE_USER_STATE_STORAGE_KEYS,
+        aptitudeEnabled: shouldMergeAptitude,
+        aptitudeLoading,
+        aptitudeError,
+        progressScope,
+        progressExportPrefix,
+        includeExtendedProgress,
+        questionService
     }), [
         filters, filteredQuestions, allQuestions, structuredTags,
         totalQuestions, isInitialized, solvedQuestionIds,
-        bookmarkedQuestionIds, solvedCount, bookmarkedCount,
-        progressPercentage, isProgressStorageAvailable
+        aptitudeSolvedQuestionIds, bookmarkedQuestionIds,
+        aptitudeBookmarkedQuestionIds, solvedCount, bookmarkedCount,
+        progressPercentage, isProgressStorageAvailable,
+        storageKeys, shouldMergeAptitude, aptitudeLoading, aptitudeError,
+        progressScope, progressExportPrefix,
+        includeExtendedProgress, questionService
     ]);
 
     const actionsValue = useMemo(() => ({

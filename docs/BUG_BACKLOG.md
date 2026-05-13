@@ -36,6 +36,18 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-APT1: Aptitude question options repeating in UI
+
+- Status: Fixed
+- Severity: High
+- Source: User reported
+- Where:
+  `src/components/Question/Question.jsx`
+  `parse_questions.py`
+- Resolution:
+  The A/B/C/D option text embedded inside `questionHtml` was causing duplicate options rendering. Fixed at runtime by calling `stripEmbeddedOptions()` and at pipeline-level by stopping the embed behavior in `to_question_html()`.
+
+
 ### BUG-A: Insights page cleanup
 
 - Status: Fixed on 2026-05-08

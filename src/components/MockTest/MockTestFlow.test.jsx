@@ -30,6 +30,15 @@ vi.mock("../../contexts/FilterContext", () => ({
   }),
 }));
 
+vi.mock("../../services/AptitudeQuestionService", () => ({
+  AptitudeQuestionService: {
+    loaded: true,
+    questions: [],
+    loadError: "",
+    init: vi.fn(async () => {}),
+  },
+}));
+
 vi.mock("../Calculator/CalculatorWidget", () => ({
   default: () => null,
 }));

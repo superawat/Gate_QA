@@ -8,6 +8,12 @@ import { MockTestProvider, useMockTest } from "./MockTestContext";
 import { MockCatalogService } from "../services/MockCatalogService";
 import { AnswerService } from "../services/AnswerService";
 import { readMockTestHistory } from "../utils/mockTestHistory";
+import { APTITUDE_PROGRESS_STORAGE_KEY } from "../utils/practiceProgress";
+
+const aptitudeMock = vi.hoisted(() => ({
+  questions: [],
+  init: vi.fn(async () => {}),
+}));
 
 let mockAllQuestions = [];
 const mockMarkQuestionsSolved = vi.fn();
@@ -21,6 +27,21 @@ vi.mock("./FilterContext", () => ({
   }),
 }));
 
+vi.mock("../services/AptitudeQuestionService", () => ({
+  AptitudeQuestionService: {
+    get loaded() {
+      return true;
+    },
+    get questions() {
+      return aptitudeMock.questions;
+    },
+    get loadError() {
+      return "";
+    },
+    init: aptitudeMock.init,
+  },
+}));
+
 const buildQuestion = (question_uid, subject, yearSetKey, year) => ({
   question_uid,
   title: question_uid,
@@ -30,13 +51,36 @@ const buildQuestion = (question_uid, subject, yearSetKey, year) => ({
   exam: { yearSetKey, year },
 });
 
+const buildAptitudeQuestion = (question_uid, subject = "English", subtopic = "Spot the Error") => ({
+  question_uid,
+  uid: question_uid,
+  id: question_uid,
+  title: `${subject} Practice`,
+  subject,
+  subjectLabel: subject,
+  subjectSlug: subject.toLowerCase(),
+  question: `<p>${question_uid}</p>`,
+  normalizedOptions: [
+    { label: "A", text: "A", html: "A" },
+    { label: "B", text: "B", html: "B" },
+    { label: "C", text: "C", html: "C" },
+    { label: "D", text: "D", html: "D" },
+  ],
+  subtopics: [{ slug: subtopic.toLowerCase().replaceAll(" ", "-"), label: subtopic }],
+  type: "mcq",
+  answerMeta: { type: "MCQ", answer: "A", source: "aptitude_embedded" },
+  exam: { year: null, yearSetKey: null, paper: "Aptitude" },
+});
+
 describe("MockTestContext", () => {
   beforeEach(() => {
     vi.useFakeTimers();
     window.sessionStorage.clear();
     window.localStorage.clear();
     mockAllQuestions = [];
+    aptitudeMock.questions = [];
     mockMarkQuestionsSolved.mockReset();
+    aptitudeMock.init.mockClear();
     MockCatalogService.reset();
     AnswerService.answersByQuestionUid = {};
     AnswerService.answersByUid = {};
@@ -132,6 +176,68 @@ describe("MockTestContext", () => {
       expect(latest.currentSectionIndex).toBe(3);
       expect(latest.currentQuestion.question_uid).toBe("ga:4");
     });
+  });
+
+  test("adds standalone aptitude questions to the mock GA pool and keeps progress isolated", async () => {
+    const aptitudeQuestion = buildAptitudeQuestion("APT-ENG-0001", "English", "Spot the Error");
+    aptitudeMock.questions = [aptitudeQuestion];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {},
+      scorableQuestionUids: [],
+    });
+    MockCatalogService.loaded = true;
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+      expect(latest.aptitudeMockLoading).toBe(false);
+      expect(latest.mockQuestionPool).toEqual([
+        expect.objectContaining({ question_uid: "APT-ENG-0001" }),
+      ]);
+      expect(latest.questionMetaByUid["APT-ENG-0001"]).toMatchObject({
+        section: "GA",
+        type: "MCQ",
+        marks: 1,
+        scorable: true,
+        source: "aptitude",
+      });
+    });
+
+    act(() => {
+      const started = latest.startTest({
+        gaQuestions: [aptitudeQuestion],
+        meta: { kindId: "custom" },
+      });
+      expect(started).toBe(true);
+      latest.saveResponse("APT-ENG-0001", "A");
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.testSubmitted).toBe(true);
+      expect(latest.resultSummary).toMatchObject({
+        attempted: 1,
+        correct: 1,
+        score: 1,
+      });
+    });
+
+    expect(mockMarkQuestionsSolved).not.toHaveBeenCalled();
+    expect(JSON.parse(window.localStorage.getItem(APTITUDE_PROGRESS_STORAGE_KEY))).toHaveProperty("APT-ENG-0001");
+    expect(window.localStorage.getItem("gate_qa_solved_questions")).toBeNull();
   });
 
   test("empty NAT values stay unanswered and submitTest stores a result summary", async () => {

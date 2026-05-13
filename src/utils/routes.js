@@ -72,25 +72,25 @@ export const getLegacyRedirectTarget = ({
   const isHomePath = pathname === HOME_ROUTE;
   const params = new URLSearchParams(search);
   const questionUid = String(params.get("question") || "").trim();
+  const mode = String(params.get("mode") || "").trim().toLowerCase();
 
   if (questionUid) {
-    const practiceSearch = extractKnownPracticeSearch(search, { includePage: true });
     return {
       pathname: buildSolvePath(questionUid),
-      search: practiceSearch,
-      kind: "question",
-    };
-  }
-
-  if (pathname === PRACTICE_ROUTE && params.get("question")) {
-    return {
-      pathname: buildSolvePath(params.get("question")),
       search: extractKnownPracticeSearch(search, { includePage: true }),
       kind: "question",
     };
   }
 
-  const mode = String(params.get("mode") || "").trim().toLowerCase();
+  if (pathname === PRACTICE_ROUTE && params.get("question")) {
+    const uid = String(params.get("question") || "").trim();
+    return {
+      pathname: buildSolvePath(uid),
+      search: extractKnownPracticeSearch(search, { includePage: true }),
+      kind: "question",
+    };
+  }
+
   if (mode === "mock") {
     if (!isHomePath) {
       return null;

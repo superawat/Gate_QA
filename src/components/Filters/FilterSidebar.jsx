@@ -2,6 +2,7 @@ import React from 'react';
 import YearFilter from './YearFilter';
 import YearRangeFilter from './YearRangeFilter';
 import TopicFilter from './TopicFilter';
+import AptitudeTopicFilter from './AptitudeTopicFilter';
 import ProgressFilterToggles from './ProgressFilterToggles';
 import QuestionSearchInput from './QuestionSearchInput';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
@@ -39,7 +40,11 @@ const FilterSidebar = ({ className = "", onClose }) => {
         setShowOnlyBookmarked,
         setShowOnlySolved
     } = useFilterActions();
-    const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [...QUESTION_TYPES];
+    const questionTypes = Array.isArray(structuredTags.questionTypes) && structuredTags.questionTypes.length > 0
+        ? structuredTags.questionTypes
+        : QUESTION_TYPES;
+    const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [...questionTypes];
+    const hideYearFilters = structuredTags.hideYearFilters || questionTypes.length === 1 && questionTypes[0] === 'MCQ' && structuredTags.yearSets?.length === 0;
     const hasSearchQuery = String(filters.searchQuery || '').trim() !== '';
     const isRangeActive = Array.isArray(filters.yearRange)
         && filters.yearRange.length === 2
@@ -50,8 +55,8 @@ const FilterSidebar = ({ className = "", onClose }) => {
     const hasActiveFilters = filters.selectedYearSets.length > 0
         || filters.selectedSubjects.length > 0
         || filters.selectedSubtopics.length > 0
-        || selectedTypes.length < QUESTION_TYPES.length
-        || isRangeActive
+        || selectedTypes.length < questionTypes.length
+        || (!hideYearFilters && isRangeActive)
         || filters.hideSolved
         || filters.showOnlySolved
         || filters.showOnlyBookmarked
@@ -105,15 +110,16 @@ const FilterSidebar = ({ className = "", onClose }) => {
                     />
                 </div>
             </div>
+
             {/* Question Type Filter (Horizontal Toggles) */}
             <div className="relative z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
                 <div className="mb-2">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Question Type</h3>
                 </div>
                 <div className="flex gap-2">
-                    {QUESTION_TYPES.map((type) => {
+                    {questionTypes.map((type) => {
                         const isSelected = selectedTypes.includes(type);
-                        const typeStyle = TYPE_BUTTON_STYLES[type];
+                        const typeStyle = TYPE_BUTTON_STYLES[type] || TYPE_BUTTON_STYLES.MCQ;
 
                         return (
                             <button
@@ -144,6 +150,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
             <div className="p-3">
                 <div className="flex flex-col gap-4">
 
+                    {/* GATE Topics */}
                     <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
                         <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
                             <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Topics</h3>
@@ -153,25 +160,36 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         </div>
                     </div>
 
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-                        <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
-                            <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Years</h3>
-                        </div>
-                        <div className="custom-scrollbar max-h-64 overflow-y-auto px-3 pb-3">
-                            <YearFilter />
+                    {/* ── Aptitude Section (distinct card) ── */}
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-teal-300/40 bg-gradient-to-br from-teal-50/60 to-emerald-50/40 dark:border-teal-700/30 dark:from-teal-950/20 dark:to-emerald-950/10">
+                        <div className="px-3 py-3">
+                            <AptitudeTopicFilter />
                         </div>
                     </div>
+
+                    {!hideYearFilters && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+                            <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
+                                <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Years</h3>
+                            </div>
+                            <div className="custom-scrollbar max-h-64 overflow-y-auto px-3 pb-3">
+                                <YearFilter />
+                            </div>
+                        </div>
+                    )}
 
                 </div>
             </div>
 
             {/* Sticky Bottom: Year Range */}
-            <div className="z-10 flex-shrink-0 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4">
-                <div className="mb-2">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Year Range</h3>
+            {!hideYearFilters && (
+                <div className="z-10 flex-shrink-0 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4">
+                    <div className="mb-2">
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Year Range</h3>
+                    </div>
+                    <YearRangeFilter />
                 </div>
-                <YearRangeFilter />
-            </div>
+            )}
         </aside>
     );
 };

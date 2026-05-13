@@ -1,4 +1,4 @@
-﻿# Testing
+# Testing
 
 GateQA uses JavaScript unit tests, QA scripts, and manual QA.
 
@@ -37,10 +37,10 @@ Current suites:
 - `src/components/Landing/ModeSelectionPage.test.jsx`
 - `src/services/MockCatalogService.test.js`
 
-Latest verification snapshot on `2026-05-08`:
+Latest verification snapshot on `2026-05-12`:
 
-- `32` passing test files
-- `186` passing unit tests
+- `36` passing test files
+- `210` passing unit tests
 
 Treat that as a point-in-time check. Re-run the suite instead of relying on the doc for an exact count.
 
@@ -93,9 +93,9 @@ Coverage today:
 - mock card visibility, mock portal entry, exam-shell start flow, and mock history navigation
 - axe checks for landing, explore, and solve routes
 
-Latest verification snapshot on `2026-04-10`:
+Latest verification snapshot on `2026-05-12`:
 
-- `15` passing Playwright tests
+- `16` passing Playwright tests
 
 ## 3) Python pipeline tests (removed)
 

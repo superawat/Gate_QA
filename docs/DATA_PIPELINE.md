@@ -1,4 +1,4 @@
-﻿# Data Pipeline
+# Data Pipeline
 
 GateQA runtime is static-file only.
 All scraping, enrichment, parsing, and validation happen offline through scripts.
@@ -146,6 +146,19 @@ The current init cache version after the May 2026 mock-readiness backfills is `v
 All abort scenarios leave the live site on the last successful deploy. A GitHub Issue is
 auto-created with error details from `audit/scrape-error.json` or
 `audit/validation-failure.json`.
+
+## Aptitude Pipeline
+
+The Aptitude dataset is an offline, standalone collection curated from SSC-origin PDFs, decoupled entirely from the GATE pipeline.
+
+Scripts are located in `scripts/aptitude-pipeline/`:
+- `parse_questions.py`: Extracts and normalizes text from PDFs, saving `aptitude-parsed.json`.
+- `extract_answers.py`: Parses answers and merges them, producing `aptitude-with-answers.json`.
+- `build_aptitude_db.py`: Takes the parsed questions, deduplicates them, shards them into `public/data/aptitude/{subject}/{subtopic}.json` files, and generates the compact `public/aptitude-search-index.json`.
+
+Current state:
+- The pipeline yielded 32,386 questions with zero UID collisions or SSC branding.
+- Because the process relies on static PDFs, this pipeline is run manually upon adding new source files, not via cron.
 
 ## Manual catch-up runbook
 

@@ -91,6 +91,26 @@ describe("AnswerService", () => {
     expect(answer.type).toBe("MSQ");
   });
 
+  test("returns embedded answers for isolated aptitude questions", () => {
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "APT-ENG-0001",
+      type: "mcq",
+      answerMeta: {
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      },
+    });
+
+    expect(answer).toMatchObject({
+      answer_uid: "apt:APT-ENG-0001",
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+      source: { kind: "aptitude_embedded" },
+    });
+  });
+
   test("falls back to answer uid map when question_uid is missing", () => {
     AnswerService.answersByUid = {
       "v2:1.24.30": {

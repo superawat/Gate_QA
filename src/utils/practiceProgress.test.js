@@ -1,8 +1,10 @@
 import { describe, expect, test } from "vitest";
 
 import {
+  APTITUDE_PROGRESS_STORAGE_KEY,
   buildUpdatedProgressEntry,
   deriveDifficulty,
+  recordPracticeAttempt,
   resolveReviewStatus,
 } from "./practiceProgress";
 
@@ -85,5 +87,27 @@ describe("practiceProgress", () => {
       incorrectRate: 0,
       globalDifficultyScore: null,
     });
+  });
+
+  test("records aptitude attempts under the isolated progress key", () => {
+    const storage = new Map();
+    const storageAdapter = {
+      getItem: (key) => storage.get(key) ?? null,
+      setItem: (key, value) => storage.set(key, value),
+    };
+
+    recordPracticeAttempt({
+      storageKey: "APT-ENG-0001",
+      correct: true,
+      type: "MCQ",
+      input: "B",
+      submittedAt: "2026-05-01T10:00:00.000Z",
+      storage: storageAdapter,
+      progressStorageKey: APTITUDE_PROGRESS_STORAGE_KEY,
+    });
+
+    expect(storage.has(APTITUDE_PROGRESS_STORAGE_KEY)).toBe(true);
+    expect(storage.has("gateqa_progress_v1")).toBe(false);
+    expect(JSON.parse(storage.get(APTITUDE_PROGRESS_STORAGE_KEY))).toHaveProperty("APT-ENG-0001");
   });
 });

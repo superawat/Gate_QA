@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const LEGACY_OPTIONAL_SUBJECT_SLUG = 'legacy-other';
+const APTITUDE_SUBJECT_SLUGS = new Set(['english', 'mathematics', 'reasoning']);
 
 const TopicFilter = () => {
     const { structuredTags, filters } = useFilterState();
@@ -30,7 +31,7 @@ const TopicFilter = () => {
     }, [structuredSubtopics, subjects]);
 
     const subjectGroups = useMemo(() => {
-        const coreSubjects = subjects.filter((subject) => subject?.slug !== LEGACY_OPTIONAL_SUBJECT_SLUG);
+        const coreSubjects = subjects.filter((subject) => subject?.slug !== LEGACY_OPTIONAL_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(subject?.slug));
         const optionalSubjects = subjects.filter((subject) => subject?.slug === LEGACY_OPTIONAL_SUBJECT_SLUG);
 
         return [
@@ -135,10 +136,10 @@ const TopicFilter = () => {
                 <section key={group.key} className={group.className}>
                     {group.heading && (
                         <div className="mb-2">
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-warning-text)]">
+                            <p className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${group.headingClassName || 'text-[color:var(--color-warning-text)]'}`}>
                                 {group.heading}
                             </p>
-                            <p className="mt-1 text-xs opacity-80 text-[color:var(--color-warning-text)]">
+                            <p className={`mt-1 text-xs opacity-80 ${group.headingClassName || 'text-[color:var(--color-warning-text)]'}`}>
                                 {group.description}
                             </p>
                         </div>

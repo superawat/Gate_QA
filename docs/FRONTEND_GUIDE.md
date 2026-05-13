@@ -1,4 +1,4 @@
-﻿# Frontend Guide
+# Frontend Guide
 
 This guide covers frontend runtime behavior, state contract, and safe refactor rules.
 
@@ -65,7 +65,7 @@ All frontend filter components are expected to consume one or both of the split 
 ### Route map
 
 - `/` — `HomePage`
-- `/practice` — `ExplorePage`
+- `/practice` — `ExplorePage` (includes unified Aptitude Practice toggle)
 - `/practice/question/:questionUid` — `SolvePage`
 - `/insights` — `InsightsPage`
 - `/history/mock-tests` — legacy redirect to `/insights?tab=mock-history`
@@ -198,6 +198,9 @@ Rules:
 - `gate_qa_bookmarked_questions`
 - `gate_qa_progress_metadata`
 - `gateqa_progress_v1` (attempt metadata)
+- `gateqa-apt-solved-questions` (isolated aptitude progress)
+- `gateqa-apt-bookmarked-questions` (isolated aptitude progress)
+- `gateqa-aptitude-enabled` (unified toggle state)
 - `gate_qa_theme`
 - `gateqa_mock_attempt_v1`
 - `gateqa_mock_palette_collapsed`
@@ -239,6 +242,7 @@ Rules:
 
 - [ ] Use split context hooks only (`useFilterState`, `useFilterActions`).
 - [ ] Keep `/mock` isolated from the shared practice provider tree.
+- [ ] Keep Aptitude mode isolated utilizing its distinct `AptitudeQuestionService` and progress keys so it doesn't pollute GATE data.
 - [ ] Preserve deep-link precedence: `?question` must beat landing/mode resolution.
 - [ ] Preserve filter-share URL bypass to practice.
 - [ ] Keep `?mode=` writes on `replaceState`.

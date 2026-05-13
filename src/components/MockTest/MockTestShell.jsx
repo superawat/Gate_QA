@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useMockTest } from "../../contexts/MockTestContext";
 import { useFilterState } from "../../contexts/FilterContext";
 import { QuestionService } from "../../services/QuestionService";
+import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { MOCK_SECTION_COUNTS } from "../../utils/mockTest";
 import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
@@ -18,6 +19,7 @@ import "./MockTest.css";
 const PALETTE_COLLAPSE_STORAGE_KEY = "gateqa_mock_palette_collapsed";
 const TYPE_OPTIONS = ["MCQ", "MSQ", "NAT"];
 const DEFAULT_MOCK_KIND_ID = "full_length";
+const APTITUDE_UID_PREFIX = "APT-";
 
 const MOCK_KIND_OPTIONS = [
     {
@@ -62,6 +64,92 @@ const shuffle = (rows = []) => {
         [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
     }
     return next;
+};
+
+const slugifyToken = (value = "") => (
+    String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+);
+
+const getQuestionSubjectKey = (question = {}) => (
+    slugifyToken(question?.subjectSlug || question?.subject || "unknown") || "unknown"
+);
+
+const getQuestionSubjectLabel = (question = {}) => (
+    String(question?.subjectLabel || question?.subject || getQuestionSubjectKey(question)).trim()
+    || getQuestionSubjectKey(question)
+);
+
+const getQuestionSubtopicKey = (question = {}) => {
+    const firstSubtopic = Array.isArray(question?.subtopics) ? question.subtopics[0] : null;
+    return slugifyToken(
+        firstSubtopic?.slug
+        || firstSubtopic?.label
+        || question?.subtopic
+        || question?.topic
+        || "general"
+    ) || "general";
+};
+
+const takeFromBalancedSubject = (subjectBucket) => {
+    while (subjectBucket.subtopics.length > 0) {
+        const subtopicBucket = subjectBucket.subtopics.shift();
+        const question = subtopicBucket.queue.shift();
+        if (subtopicBucket.queue.length > 0) {
+            subjectBucket.subtopics.push(subtopicBucket);
+        }
+        if (question) {
+            return question;
+        }
+    }
+    return null;
+};
+
+const balancedSample = (rows = [], count = 0) => {
+    const targetCount = Math.max(0, Math.min(rows.length, Number.parseInt(String(count || 0), 10) || 0));
+    if (targetCount === 0) {
+        return [];
+    }
+
+    const groupedBySubject = new Map();
+    shuffle(rows).forEach((question) => {
+        const subjectKey = getQuestionSubjectKey(question);
+        const subtopicKey = getQuestionSubtopicKey(question);
+        if (!groupedBySubject.has(subjectKey)) {
+            groupedBySubject.set(subjectKey, new Map());
+        }
+        const subtopicMap = groupedBySubject.get(subjectKey);
+        if (!subtopicMap.has(subtopicKey)) {
+            subtopicMap.set(subtopicKey, []);
+        }
+        subtopicMap.get(subtopicKey).push(question);
+    });
+
+    const subjectBuckets = shuffle(Array.from(groupedBySubject.entries()).map(([subjectKey, subtopicMap]) => ({
+        subjectKey,
+        subtopics: shuffle(Array.from(subtopicMap.entries()).map(([subtopicKey, queue]) => ({
+            subtopicKey,
+            queue,
+        }))),
+    })));
+
+    const sampled = [];
+    while (sampled.length < targetCount && subjectBuckets.length > 0) {
+        const subjectBucket = subjectBuckets.shift();
+        const question = takeFromBalancedSubject(subjectBucket);
+        if (question) {
+            sampled.push(question);
+        }
+        if (subjectBucket.subtopics.length > 0) {
+            subjectBuckets.push(subjectBucket);
+        }
+    }
+
+    return sampled;
 };
 
 const clampYear = (value, fallback) => {
@@ -133,6 +221,59 @@ const splitByCatalogSection = (rows = [], questionMetaByUid = {}) => {
     return { gaQuestions, csQuestions };
 };
 
+const resolveCountBasedSectionTargets = (count = 0, gaAvailable = 0, csAvailable = 0) => {
+    const requestedCount = Math.max(0, Number.parseInt(String(count || 0), 10) || 0);
+    const targetCount = Math.min(requestedCount, gaAvailable + csAvailable);
+    if (targetCount <= 0) {
+        return { gaTarget: 0, csTarget: 0 };
+    }
+    if (gaAvailable <= 0) {
+        return { gaTarget: 0, csTarget: Math.min(targetCount, csAvailable) };
+    }
+    if (csAvailable <= 0) {
+        return { gaTarget: Math.min(targetCount, gaAvailable), csTarget: 0 };
+    }
+    if (targetCount === 1) {
+        return { gaTarget: 1, csTarget: 0 };
+    }
+
+    const totalPatternCount = MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
+    let gaTarget = Math.round((targetCount * MOCK_SECTION_COUNTS.GA) / totalPatternCount);
+    gaTarget = Math.max(1, Math.min(gaTarget, gaAvailable, targetCount - 1));
+    let csTarget = Math.min(csAvailable, targetCount - gaTarget);
+    let remaining = targetCount - gaTarget - csTarget;
+
+    if (remaining > 0) {
+        const extraGa = Math.min(remaining, gaAvailable - gaTarget);
+        gaTarget += extraGa;
+        remaining -= extraGa;
+    }
+    if (remaining > 0) {
+        const extraCs = Math.min(remaining, csAvailable - csTarget);
+        csTarget += extraCs;
+    }
+
+    return { gaTarget, csTarget };
+};
+
+const buildSubjectOptions = (rows = []) => {
+    const bySlug = new Map();
+    rows.forEach((question) => {
+        const slug = getQuestionSubjectKey(question);
+        if (!slug) {
+            return;
+        }
+        const label = getQuestionSubjectLabel(question);
+        const current = bySlug.get(slug);
+        bySlug.set(slug, {
+            slug,
+            label: current?.label || label,
+            count: (current?.count || 0) + 1,
+        });
+    });
+    return Array.from(bySlug.values()).sort((left, right) => left.label.localeCompare(right.label));
+};
+
 const sortByCatalogOrder = (rows = [], questionMetaByUid = {}) => (
     [...rows].sort((left, right) => {
         const leftMeta = questionMetaByUid[left?.question_uid] || {};
@@ -145,8 +286,16 @@ const sortByCatalogOrder = (rows = [], questionMetaByUid = {}) => (
 );
 
 const buildCountBasedSelection = (rows = [], count = 0, questionMetaByUid = {}) => {
-    const sampled = shuffle(rows).slice(0, Math.max(0, count));
-    return splitByCatalogSection(sampled, questionMetaByUid);
+    const sections = splitByCatalogSection(rows, questionMetaByUid);
+    const targets = resolveCountBasedSectionTargets(
+        count,
+        sections.gaQuestions.length,
+        sections.csQuestions.length
+    );
+    return {
+        gaQuestions: balancedSample(sections.gaQuestions, targets.gaTarget),
+        csQuestions: balancedSample(sections.csQuestions, targets.csTarget),
+    };
 };
 
 const buildStrictGeneratedSelection = (rows = [], questionMetaByUid = {}) => {
@@ -159,8 +308,8 @@ const buildStrictGeneratedSelection = (rows = [], questionMetaByUid = {}) => {
     }
 
     return {
-        gaQuestions: shuffle(sections.gaQuestions).slice(0, MOCK_SECTION_COUNTS.GA),
-        csQuestions: shuffle(sections.csQuestions).slice(0, MOCK_SECTION_COUNTS.CS),
+        gaQuestions: balancedSample(sections.gaQuestions, MOCK_SECTION_COUNTS.GA),
+        csQuestions: balancedSample(sections.csQuestions, MOCK_SECTION_COUNTS.CS),
     };
 };
 
@@ -168,10 +317,12 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const {
         attemptError,
         attemptMeta,
+        aptitudeMockLoading = false,
         catalogError,
         catalogLoading,
         clearAttemptError,
         endMockTest,
+        mockQuestionPool = null,
         paperCatalog,
         questionMetaByUid,
         questions,
@@ -307,8 +458,18 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     );
 
     const scorableQuestions = useMemo(
-        () => allQuestions.filter((question) => questionMetaByUid[question.question_uid]?.scorable),
-        [allQuestions, questionMetaByUid]
+        () => {
+            const pool = Array.isArray(mockQuestionPool) && mockQuestionPool.length > 0
+                ? mockQuestionPool
+                : allQuestions;
+            return pool.filter((question) => questionMetaByUid[question.question_uid]?.scorable);
+        },
+        [allQuestions, mockQuestionPool, questionMetaByUid]
+    );
+
+    const mockSubjects = useMemo(
+        () => buildSubjectOptions(scorableQuestions),
+        [scorableQuestions]
     );
 
     const selectedPaperYearSetKey = useMemo(() => {
@@ -630,7 +791,34 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         setStep("setup");
     }, [clearAttemptError, resetSetupState, selectedKindId]);
 
-    const handleStartExam = useCallback(() => {
+    const hydrateAptitudeQuestions = useCallback(async (questionList = []) => {
+        const rows = Array.isArray(questionList) ? questionList : [];
+        if (rows.length === 0) {
+            return [];
+        }
+
+        return Promise.all(rows.map(async (question) => {
+            const uid = String(question?.question_uid || "").trim();
+            if (!uid.startsWith(APTITUDE_UID_PREFIX)) {
+                return question;
+            }
+
+            const hasQuestionStem = String(question?.question || "").trim().length > 0;
+            const hasOptions = Array.isArray(question?.options) && question.options.length > 0;
+            const hasAnswer = String(question?.answerMeta?.answer ?? question?.answer ?? "").trim().length > 0;
+            if (hasQuestionStem && hasOptions && hasAnswer) {
+                return question;
+            }
+
+            try {
+                return await AptitudeQuestionService.ensureQuestionDetail(question);
+            } catch {
+                return question;
+            }
+        }));
+    }, []);
+
+    const handleStartExam = useCallback(async () => {
         if (!selectedKind || !availability.canStart) {
             return;
         }
@@ -669,11 +857,13 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             csQuestions = selection.csQuestions;
         }
 
+        const hydratedGaQuestions = await hydrateAptitudeQuestions(gaQuestions);
+        const hydratedCsQuestions = await hydrateAptitudeQuestions(csQuestions);
         const totalQuestions = gaQuestions.length + csQuestions.length;
-        const startSection = gaQuestions.length > 0 ? "GA" : "CS";
+        const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
         const started = startTest({
-            gaQuestions,
-            csQuestions,
+            gaQuestions: hydratedGaQuestions,
+            csQuestions: hydratedCsQuestions,
             timeSeconds: durationMinutes * 60,
             startSection,
             meta: {
@@ -704,6 +894,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         paperCsQuestions,
         paperGaQuestions,
         questionMetaByUid,
+        hydrateAptitudeQuestions,
         scorableQuestions,
         selectedKind,
         selectedPaper,
@@ -813,7 +1004,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         );
     }
 
-    if (catalogLoading || !isInitialized) {
+    if (catalogLoading || aptitudeMockLoading || !isInitialized) {
         return <MockCatalogLoaderCard />;
     }
 
@@ -850,7 +1041,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                     <MockTestSetup
                         kind={selectedKind}
                         setupState={setupState}
-                        subjects={structuredTags?.subjects || []}
+                        subjects={mockSubjects}
                         availability={availability}
                         livePreview={livePreview}
                         paperOptions={paperCatalog}

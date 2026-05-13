@@ -2,12 +2,13 @@ import React, { useEffect, useMemo, useRef, useState, useCallback } from "react"
 import { FaCheck, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
-import { useFilterActions } from "../../contexts/FilterContext";
+import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
 import Toast from "../Toast/Toast";
 import { trackEvent } from "../../utils/analytics";
 import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 import { recordPracticeAttempt } from "../../utils/practiceProgress";
+import { APTITUDE_USER_STATE_STORAGE_KEYS } from "../../utils/localStorageState";
 
 const OPTIONS = ["A", "B", "C", "D"];
 
@@ -26,6 +27,7 @@ export default function AnswerPanel({
     isQuestionBookmarked,
     getQuestionProgressId,
   } = useFilterActions();
+  const { progressStorageKeys, aptitudeProgressStorageKeys = APTITUDE_USER_STATE_STORAGE_KEYS } = useFilterState();
 
   const { goBack, canGoBack } = useSession();
   const canMovePrevious = typeof canGoPrevious === "boolean" ? canGoPrevious : canGoBack;
@@ -110,6 +112,9 @@ export default function AnswerPanel({
       input: submission,
       submittedAt: submittedAt.toISOString(),
       durationMs: submittedAt.getTime() - questionOpenedAtRef.current,
+      progressStorageKey: String(storageKey || "").startsWith("APT-")
+        ? aptitudeProgressStorageKeys?.progress
+        : progressStorageKeys?.progress,
     });
     questionOpenedAtRef.current = submittedAt.getTime();
   };

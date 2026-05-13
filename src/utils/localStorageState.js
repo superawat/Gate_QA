@@ -5,6 +5,13 @@ const USER_STATE_STORAGE_KEYS = Object.freeze({
   progress: "gateqa_progress_v1",
 });
 
+const APTITUDE_USER_STATE_STORAGE_KEYS = Object.freeze({
+  solved: "gateqa-apt-solved-questions",
+  bookmarked: "gateqa-apt-bookmarked-questions",
+  metadata: "gateqa-apt-progress-metadata",
+  progress: "gateqa_apt_progress_v1",
+});
+
 const IMPORT_SCHEMA_VERSION = 1;
 
 function getDefaultStorage() {
@@ -176,4 +183,4 @@ export function importUserState(input, storage = getDefaultStorage()) {
   };
 }
 
-export { USER_STATE_STORAGE_KEYS };
+export { USER_STATE_STORAGE_KEYS, APTITUDE_USER_STATE_STORAGE_KEYS };

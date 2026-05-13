@@ -173,6 +173,24 @@ export class AnswerService {
 
   static getAnswerForQuestion(question = {}) {
     const identity = this.getQuestionIdentity(question);
+    const embeddedAnswer = question?.answerMeta;
+    if (
+      identity.rawQuestionUid
+      && String(identity.rawQuestionUid).startsWith("APT-")
+      && embeddedAnswer
+      && embeddedAnswer.answer != null
+    ) {
+      return {
+        answer_uid: `apt:${identity.rawQuestionUid}`,
+        type: String(embeddedAnswer.type || question.type || "MCQ").trim().toUpperCase(),
+        answer: embeddedAnswer.answer,
+        tolerance: embeddedAnswer.tolerance ?? null,
+        source: {
+          kind: embeddedAnswer.source || "aptitude_embedded",
+        },
+      };
+    }
+
     const questionUid = identity.questionUid;
     if (questionUid && this.answersByQuestionUid[questionUid]) {
       return this.answersByQuestionUid[questionUid];

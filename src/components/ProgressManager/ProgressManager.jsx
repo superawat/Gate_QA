@@ -4,7 +4,6 @@ import { useFilterState, useFilterActions } from "../../contexts/FilterContext";
 import {
     readStorageJson,
     writeStorageJson,
-    isQuotaExceededError,
     USER_STATE_STORAGE_KEYS,
 } from "../../utils/localStorageState";
 import Toast from "../Toast/Toast";
@@ -57,8 +56,16 @@ function dedupeStringArray(arr) {
 }
 
 export default function ProgressManager() {
-    const { solvedQuestionIds, bookmarkedQuestionIds, allQuestions } = useFilterState();
+    const {
+        solvedQuestionIds,
+        bookmarkedQuestionIds,
+        allQuestions,
+        progressStorageKeys = USER_STATE_STORAGE_KEYS,
+        progressExportPrefix = "gateqa-progress",
+        includeExtendedProgress = true,
+    } = useFilterState();
     const { refreshProgressState } = useFilterActions();
+    const storageKeys = progressStorageKeys || USER_STATE_STORAGE_KEYS;
 
     const fileInputRef = useRef(null);
     const [toast, setToast] = useState({ message: "", visible: false });
@@ -99,10 +106,10 @@ export default function ProgressManager() {
 
     // ── EXPORT: JSON ───────────────────────────────────────────────────────
     const handleExportJson = useCallback(() => {
-        const solved = readStorageJson(USER_STATE_STORAGE_KEYS.solved, []);
-        const bookmarked = readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, []);
-        const metadata = readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {});
-        const progress = readStorageJson(USER_STATE_STORAGE_KEYS.progress, {});
+        const solved = readStorageJson(storageKeys.solved, []);
+        const bookmarked = readStorageJson(storageKeys.bookmarked, []);
+        const metadata = readStorageJson(storageKeys.metadata, {});
+        const progress = readStorageJson(storageKeys.progress, {});
 
         // Include all user data for full portability
         const userNotes = readStorageJson("gate_qa_user_notes", {});
@@ -118,26 +125,28 @@ export default function ProgressManager() {
             bookmarkedQuestions: dedupeStringArray(bookmarked),
             metadata,
             progress,
-            userNotes,
-            mockHistory,
-            streakFreeze,
-            dailyGoal,
         };
+        if (includeExtendedProgress) {
+            payload.userNotes = userNotes;
+            payload.mockHistory = mockHistory;
+            payload.streakFreeze = streakFreeze;
+            payload.dailyGoal = dailyGoal;
+        }
 
         const json = JSON.stringify(payload, null, 2);
         const blob = new Blob([json], { type: "application/json" });
-        downloadBlob(blob, `gateqa-progress-${todayStamp()}.json`);
+        downloadBlob(blob, `${progressExportPrefix}-${todayStamp()}.json`);
         showToast("Progress exported successfully.");
-    }, [showToast]);
+    }, [includeExtendedProgress, progressExportPrefix, showToast, storageKeys.bookmarked, storageKeys.metadata, storageKeys.progress, storageKeys.solved]);
 
     // ── EXPORT: CSV (view-only) ────────────────────────────────────────────
     const handleExportCsv = useCallback(() => {
         const solved = new Set(
-            dedupeStringArray(readStorageJson(USER_STATE_STORAGE_KEYS.solved, []))
+            dedupeStringArray(readStorageJson(storageKeys.solved, []))
         );
         const bookmarked = new Set(
             dedupeStringArray(
-                readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, [])
+                readStorageJson(storageKeys.bookmarked, [])
             )
         );
 
@@ -170,9 +179,9 @@ export default function ProgressManager() {
 
         const csv = rows.join("\n");
         const blob = new Blob([csv], { type: "text/csv" });
-        downloadBlob(blob, `gateqa-progress-${todayStamp()}.csv`);
+        downloadBlob(blob, `${progressExportPrefix}-${todayStamp()}.csv`);
         showToast("CSV exported (view-only, not importable).");
-    }, [showToast, allQuestions]);
+    }, [progressExportPrefix, showToast, allQuestions, storageKeys.bookmarked, storageKeys.solved]);
 
     // ── IMPORT: trigger file picker ────────────────────────────────────────
     const handleImportClick = useCallback(() => {
@@ -257,13 +266,13 @@ export default function ProgressManager() {
             } else {
                 // merge: union of current + imported
                 const currentSolved = dedupeStringArray(
-                    readStorageJson(USER_STATE_STORAGE_KEYS.solved, [])
+                    readStorageJson(storageKeys.solved, [])
                 );
                 const currentBookmarked = dedupeStringArray(
-                    readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, [])
+                    readStorageJson(storageKeys.bookmarked, [])
                 );
-                const currentMetadata = readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {});
-                const currentProgress = readStorageJson(USER_STATE_STORAGE_KEYS.progress, {});
+                const currentMetadata = readStorageJson(storageKeys.metadata, {});
+                const currentProgress = readStorageJson(storageKeys.progress, {});
 
                 finalSolved = [
                     ...new Set([...currentSolved, ...importedSolved]),
@@ -278,13 +287,13 @@ export default function ProgressManager() {
             }
 
             // Write core progress data
-            const w1 = writeStorageJson(USER_STATE_STORAGE_KEYS.solved, finalSolved);
+            const w1 = writeStorageJson(storageKeys.solved, finalSolved);
             const w2 = writeStorageJson(
-                USER_STATE_STORAGE_KEYS.bookmarked,
+                storageKeys.bookmarked,
                 finalBookmarked
             );
-            const w3 = writeStorageJson(USER_STATE_STORAGE_KEYS.metadata, finalMetadata);
-            const w4 = writeStorageJson(USER_STATE_STORAGE_KEYS.progress, finalProgress);
+            const w3 = writeStorageJson(storageKeys.metadata, finalMetadata);
+            const w4 = writeStorageJson(storageKeys.progress, finalProgress);
 
             // Write extended data if present in the import file
             const importedNotes = modalData.parsed.userNotes;
@@ -292,11 +301,11 @@ export default function ProgressManager() {
             const importedStreakFreeze = modalData.parsed.streakFreeze;
             const importedDailyGoal = modalData.parsed.dailyGoal;
 
-            if (importedNotes && typeof importedNotes === "object") {
+            if (includeExtendedProgress && importedNotes && typeof importedNotes === "object") {
                 const currentNotes = strategy === "replace" ? {} : readStorageJson("gate_qa_user_notes", {});
                 writeStorageJson("gate_qa_user_notes", { ...currentNotes, ...importedNotes });
             }
-            if (Array.isArray(importedMockHistory) && importedMockHistory.length > 0) {
+            if (includeExtendedProgress && Array.isArray(importedMockHistory) && importedMockHistory.length > 0) {
                 if (strategy === "replace") {
                     writeStorageJson("gateqa_mock_history_v1", importedMockHistory);
                 } else {
@@ -306,10 +315,10 @@ export default function ProgressManager() {
                     writeStorageJson("gateqa_mock_history_v1", merged);
                 }
             }
-            if (importedStreakFreeze && typeof importedStreakFreeze === "object") {
+            if (includeExtendedProgress && importedStreakFreeze && typeof importedStreakFreeze === "object") {
                 writeStorageJson("gateqa_streak_freeze_v1", strategy === "replace" ? importedStreakFreeze : { ...readStorageJson("gateqa_streak_freeze_v1", {}), ...importedStreakFreeze });
             }
-            if (importedDailyGoal && typeof importedDailyGoal === "object") {
+            if (includeExtendedProgress && importedDailyGoal && typeof importedDailyGoal === "object") {
                 writeStorageJson("gateqa_daily_goal_v1", strategy === "replace" ? importedDailyGoal : { ...readStorageJson("gateqa_daily_goal_v1", {}), ...importedDailyGoal });
             }
 
@@ -333,7 +342,7 @@ export default function ProgressManager() {
                 `Progress ${label} — ${finalSolved.length} solved, ${finalBookmarked.length} bookmarked.`
             );
         },
-        [modalData, refreshProgressState, showToast]
+        [includeExtendedProgress, modalData, refreshProgressState, showToast, storageKeys.bookmarked, storageKeys.metadata, storageKeys.progress, storageKeys.solved]
     );
 
     // ── Render ─────────────────────────────────────────────────────────────

@@ -247,6 +247,10 @@ const ExplorePage = ({
 
   const activeFilterCount = useMemo(() => {
     const selectedTypes = Array.isArray(filters.selectedTypes) ? filters.selectedTypes : [];
+    const availableTypes = Array.isArray(structuredTags?.questionTypes) && structuredTags.questionTypes.length > 0
+      ? structuredTags.questionTypes
+      : ["MCQ", "MSQ", "NAT"];
+    const hideYearFilters = Boolean(structuredTags?.hideYearFilters);
     const hasSearchQuery = String(filters.searchQuery || "").trim() !== "";
     const hasYearRange = Array.isArray(filters.yearRange)
       && filters.yearRange.length === 2
@@ -264,8 +268,8 @@ const ExplorePage = ({
       filters.selectedYearSets.length > 0,
       filters.selectedSubjects.length > 0,
       filters.selectedSubtopics.length > 0,
-      selectedTypes.length > 0 && selectedTypes.length < 3,
-      hasYearRange,
+      selectedTypes.length > 0 && selectedTypes.length < availableTypes.length,
+      !hideYearFilters && hasYearRange,
       hasProgressFilter,
       hasSearchQuery,
     ].filter(Boolean).length;
@@ -279,8 +283,10 @@ const ExplorePage = ({
     filters.showOnlyBookmarked,
     filters.showOnlySolved,
     filters.yearRange,
+    structuredTags?.hideYearFilters,
     structuredTags?.maxYear,
     structuredTags?.minYear,
+    structuredTags?.questionTypes,
   ]);
 
   return (
