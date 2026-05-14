@@ -502,6 +502,116 @@ describe("MockTestContext", () => {
     expect(readMockTestHistory()).toEqual([]);
   });
 
+  test("tracks per-question time spent and persists it into mock history", async () => {
+    const gaQuestion = buildQuestion("ga:timed", "General Aptitude", "2024-s1", 2024);
+    const csQuestion = buildQuestion("cs:timed", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [gaQuestion, csQuestion];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:timed": {
+          questionUid: "ga:timed",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+        "cs:timed": {
+          questionUid: "cs:timed",
+          section: "CS",
+          type: "NAT",
+          marks: 2,
+          negativeMarks: 0,
+          yearSetKey: "2024-s1",
+          orderIndex: 1,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: ["ga:timed", "cs:timed"],
+    });
+    MockCatalogService.loaded = true;
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        gaQuestions: [gaQuestion],
+        csQuestions: [csQuestion],
+        timeSeconds: 600,
+        meta: { kindId: "custom", kindTitle: "Custom Builder", durationMinutes: 10 },
+      });
+    });
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.currentQuestionUid).toBe("ga:timed");
+    });
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    act(() => {
+      latest.goToQuestion(0, "CS");
+    });
+
+    await waitFor(() => {
+      expect(latest.currentQuestionUid).toBe("cs:timed");
+    });
+
+    act(() => {
+      vi.advanceTimersByTime(181000);
+      latest.submitTest();
+    });
+
+    await waitFor(() => {
+      expect(latest.testSubmitted).toBe(true);
+      expect(latest.resultSummary.perQuestionResult["ga:timed"]).toMatchObject({
+        timeSpentSeconds: 2,
+        timeExceededThreshold: false,
+      });
+      expect(latest.resultSummary.perQuestionResult["cs:timed"]).toMatchObject({
+        timeSpentSeconds: 181,
+        timeExceededThreshold: true,
+      });
+      expect(latest.resultSummary.timeAnalysis).toMatchObject({
+        totalSeconds: 183,
+        averageSeconds: 92,
+        slowQuestionCount: 1,
+      });
+    });
+
+    expect(readMockTestHistory()[0]).toMatchObject({
+      timeAnalysis: expect.objectContaining({
+        totalSeconds: 183,
+        slowQuestionCount: 1,
+      }),
+      unansweredQuestions: expect.arrayContaining([
+        expect.objectContaining({ questionUid: "cs:timed", timeSpentSeconds: 181, timeExceededThreshold: true }),
+      ]),
+    });
+  });
+
   test("wrong 1-mark MCQ applies negative marks on submission", async () => {
     const question = buildQuestion("ga:mcq-1", "General Aptitude", "2024-s1", 2024);
     mockAllQuestions = [question];

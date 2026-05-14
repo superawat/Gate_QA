@@ -3,6 +3,7 @@
  * FEAT-003 Stage 4 — Merge
  * Merges new questions into existing bank. Dedup by UID. Updates state.
  * Usage: node scripts/pipeline/merge.mjs --year 2026
+ * Usage: node scripts/pipeline/merge.mjs --year 2027 --dry-run
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -21,15 +22,37 @@ function goId(link) { const m = String(link || "").match(/gateoverflow\.in\/(\d+
 function main() {
     const args = process.argv.slice(2);
     let year = null;
-    for (let i = 0; i < args.length; i++) { if (args[i] === "--year" && args[i + 1]) year = parseInt(args[i + 1], 10); }
+    let dryRun = false;
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === "--year" && args[i + 1]) year = parseInt(args[i + 1], 10);
+        if (args[i] === "--dry-run") dryRun = true;
+    }
     if (!year) { const s = readJson(STATE_PATH); year = s?.nextTargetYear; }
     if (!year) { console.error("No target year"); process.exit(1); }
 
-    console.log(`\n🔀 Stage 4 — Merge for ${year}\n`);
+    console.log(`\n🔀 Stage 4 — Merge for ${year}${dryRun ? " (dry-run)" : ""}\n`);
 
     let newQ = readJson(path.join(AUDIT_DIR, `backfilled-${year}.json`));
     if (!newQ) newQ = readJson(path.join(AUDIT_DIR, `normalised-${year}.json`));
-    if (!newQ?.length) { console.log("Nothing to merge."); process.exit(0); }
+    if (!newQ?.length) {
+        console.log("Nothing to merge.");
+        if (dryRun) {
+            const reportPath = path.join(AUDIT_DIR, `pipeline-readiness-merge-${year}.json`);
+            writeJson(reportPath, {
+                year,
+                dryRun: true,
+                timestamp: new Date().toISOString(),
+                inputAvailable: false,
+                status: "ready_waiting_for_normalise_or_backfill_output",
+            });
+            console.log(`Dry-run readiness report: ${reportPath}`);
+            writeGithubOutput("added_count", 0);
+            writeGithubOutput("total_count", (readJson(QF_PATH) || []).length);
+            writeGithubOutput("dry_run", true);
+            return;
+        }
+        process.exit(0);
+    }
 
     const existing = readJson(QF_PATH) || [];
     const uids = new Set();
@@ -41,12 +64,40 @@ function main() {
     for (const q of newQ) {
         const uid = q.uid || goId(q.link);
         if (uid && uids.has(uid)) { dupes.push({ uid, title: q.title }); continue; }
-        merged.push({ title: q.title || "", link: q.link || "", question: q.question || "", tags: q.tags || [], year: q.year || "" });
+        merged.push({
+            title: q.title || "",
+            link: q.link || "",
+            question: q.question || "",
+            tags: q.tags || [],
+            year: q.year || "",
+            upvote_meta: q.upvote_meta || null,
+        });
         added.push({ uid, title: q.title, subject: q.subject });
         if (uid) uids.add(uid);
     }
 
     console.log(`Added: ${added.length}, Dupes: ${dupes.length}, Total: ${merged.length}`);
+
+    if (dryRun) {
+        const reportPath = path.join(AUDIT_DIR, `pipeline-readiness-merge-${year}.json`);
+        writeJson(reportPath, {
+            year,
+            dryRun: true,
+            timestamp: new Date().toISOString(),
+            inputAvailable: true,
+            candidateCount: newQ.length,
+            wouldAddCount: added.length,
+            duplicateCount: dupes.length,
+            currentBankSize: existing.length,
+            projectedBankSize: merged.length,
+            status: "ready",
+        });
+        console.log(`Dry-run readiness report: ${reportPath}`);
+        writeGithubOutput("added_count", added.length);
+        writeGithubOutput("total_count", merged.length);
+        writeGithubOutput("dry_run", true);
+        return;
+    }
 
     fs.writeFileSync(QF_PATH, JSON.stringify(merged), "utf8");
 
@@ -55,7 +106,15 @@ function main() {
     for (const q of newQ) {
         const uid = q.uid || goId(q.link);
         if (uid && !wqaUids.has(uid)) {
-            wqa.push({ title: q.title || "", link: q.link || "", question: q.question || "", tags: q.tags || [], year: q.year || "", answer: q.answer || null });
+            wqa.push({
+                title: q.title || "",
+                link: q.link || "",
+                question: q.question || "",
+                tags: q.tags || [],
+                year: q.year || "",
+                upvote_meta: q.upvote_meta || null,
+                answer: q.answer || null,
+            });
         }
     }
     fs.writeFileSync(QWA_PATH, JSON.stringify(wqa), "utf8");

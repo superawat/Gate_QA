@@ -44,11 +44,17 @@ describe("mockTestHistory", () => {
         incorrect: 1,
         unanswered: 1,
         bonus: 1,
+        timeAnalysis: {
+          totalSeconds: 421,
+          averageSeconds: 105,
+          slowQuestionCount: 1,
+          slowThresholdSeconds: 180,
+        },
         perQuestionResult: {
-          "ga:1": { questionUid: "ga:1", section: "GA", orderIndex: 1, type: "MCQ", correct: true, answered: true, scoreDelta: 2 },
-          "cs:2": { questionUid: "cs:2", section: "CS", orderIndex: 2, type: "MSQ", correct: false, answered: true, scoreDelta: -0.3333 },
-          "cs:3": { questionUid: "cs:3", section: "CS", orderIndex: 3, type: "NAT", correct: false, answered: false, scoreDelta: 0 },
-          "cs:4": { questionUid: "cs:4", section: "CS", orderIndex: 4, type: "MARKS_TO_ALL", status: "bonus", correct: false, answered: false, scoreDelta: 2 },
+          "ga:1": { questionUid: "ga:1", section: "GA", orderIndex: 1, type: "MCQ", correct: true, answered: true, scoreDelta: 2, timeSpentSeconds: 75 },
+          "cs:2": { questionUid: "cs:2", section: "CS", orderIndex: 2, type: "MSQ", correct: false, answered: true, scoreDelta: -0.3333, timeSpentSeconds: 181 },
+          "cs:3": { questionUid: "cs:3", section: "CS", orderIndex: 3, type: "NAT", correct: false, answered: false, scoreDelta: 0, timeSpentSeconds: 120 },
+          "cs:4": { questionUid: "cs:4", section: "CS", orderIndex: 4, type: "MARKS_TO_ALL", status: "bonus", correct: false, answered: false, scoreDelta: 2, timeSpentSeconds: 45 },
         },
       },
       submittedAt: "2026-04-05T12:30:00.000Z",
@@ -62,10 +68,10 @@ describe("mockTestHistory", () => {
       bonus: 1,
     });
     expect(entry.correctQuestions).toEqual([
-      expect.objectContaining({ questionUid: "ga:1", label: "GA-1" }),
+      expect.objectContaining({ questionUid: "ga:1", label: "GA-1", timeSpentSeconds: 75, timeExceededThreshold: false }),
     ]);
     expect(entry.incorrectQuestions).toEqual([
-      expect.objectContaining({ questionUid: "cs:2", label: "CS-2" }),
+      expect.objectContaining({ questionUid: "cs:2", label: "CS-2", timeSpentSeconds: 181, timeExceededThreshold: true }),
     ]);
     expect(entry.unansweredQuestions).toEqual([
       expect.objectContaining({ questionUid: "cs:3", label: "CS-3" }),
@@ -73,6 +79,11 @@ describe("mockTestHistory", () => {
     expect(entry.bonusQuestions).toEqual([
       expect.objectContaining({ questionUid: "cs:4", label: "CS-4" }),
     ]);
+    expect(entry.timeAnalysis).toMatchObject({
+      totalSeconds: 421,
+      averageSeconds: 105,
+      slowQuestionCount: 1,
+    });
   });
 
   test("appendMockTestHistoryEntry persists newest attempts first", () => {

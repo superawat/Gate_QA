@@ -5,6 +5,7 @@ import { QuestionService } from "../../services/QuestionService";
 import {
     formatExpectedAnswer,
     formatMockResponse,
+    formatMockTimeSpent,
     isMockAutoAwardType,
 } from "../../utils/mockTest";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
@@ -137,6 +138,8 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const reviewResponseText = reviewResult?.status === "bonus"
         ? "Not required"
         : formatMockResponse(reviewResult?.response, rawType);
+    const reviewTimeText = formatMockTimeSpent(reviewResult?.timeSpentSeconds);
+    const reviewTimeExceeded = Boolean(reviewResult?.timeExceededThreshold);
     const reviewMessage = reviewResult?.status === "bonus"
         ? "This question was awarded automatically."
         : reviewResult?.status === "missing_answer"
@@ -254,6 +257,10 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                             <div className="mt-2 text-[#41576c]">Your answer: {reviewResponseText}</div>
                             <div className="mt-1 text-[#41576c]">Expected answer: {reviewExpectedAnswer}</div>
                             <div className="mt-1 text-[#41576c]">Score change: {reviewScoreText}</div>
+                            <div className={`mt-1 ${reviewTimeExceeded ? "font-semibold text-[#9a3412]" : "text-[#41576c]"}`}>
+                                Time spent: {reviewTimeText}
+                                {reviewTimeExceeded ? " (over 3 min)" : ""}
+                            </div>
                             {reviewMessage ? (
                                 <div className="mt-2 text-[#9b2a2a]">{reviewMessage}</div>
                             ) : null}

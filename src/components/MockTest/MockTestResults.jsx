@@ -1,5 +1,6 @@
 import React from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
+import { formatMockTimeSpent } from "../../utils/mockTest";
 
 const ResultCard = ({ label, value, accentClass }) => (
     <div className={`rounded-lg border p-4 text-center ${accentClass}`}>
@@ -23,6 +24,83 @@ const SectionSummaryCard = ({ title, summary }) => (
     </div>
 );
 
+const formatQuestionLabel = (result = {}, fallbackIndex = 0) => {
+    const section = String(result.section || "").trim().toUpperCase();
+    const orderIndex = Number.parseInt(String(result.orderIndex || ""), 10);
+    if ((section === "GA" || section === "CS") && Number.isFinite(orderIndex) && orderIndex > 0) {
+        return `${section}-${orderIndex}`;
+    }
+    return `Q${fallbackIndex + 1}`;
+};
+
+const TimeDistributionSummary = ({ questions = [], summary }) => {
+    const rows = questions
+        .map((question, index) => {
+            const result = summary?.perQuestionResult?.[question?.question_uid];
+            if (!result) return null;
+            return {
+                key: question.question_uid || `${index}`,
+                label: formatQuestionLabel(result, index),
+                timeSpentSeconds: Number(result.timeSpentSeconds || 0),
+                timeExceededThreshold: Boolean(result.timeExceededThreshold),
+            };
+        })
+        .filter(Boolean);
+
+    const hasTimingData = rows.some((row) => row.timeSpentSeconds > 0)
+        || Number(summary?.timeAnalysis?.totalSeconds || 0) > 0;
+    if (!rows.length || !hasTimingData) {
+        return null;
+    }
+
+    const maxSeconds = Math.max(1, ...rows.map((row) => row.timeSpentSeconds));
+    const slowCount = Number(summary?.timeAnalysis?.slowQuestionCount || 0);
+    const averageSeconds = Number(summary?.timeAnalysis?.averageSeconds || 0);
+
+    return (
+        <div className="mt-6 rounded-lg border border-[#d6e0ea] bg-[#f8fbff] p-4">
+            <div className="flex items-center justify-between gap-3">
+                <div>
+                    <div className="text-sm font-bold text-[#1f2f40]">Per-question time</div>
+                    <div className="mt-1 text-xs font-semibold text-[#61758a]">
+                        Avg {formatMockTimeSpent(averageSeconds)} | {slowCount} over 3 min
+                    </div>
+                </div>
+                <div className="rounded-full border border-[#f3c26f] bg-[#fff7e6] px-3 py-1 text-xs font-bold text-[#8a4b00]">
+                    {formatMockTimeSpent(summary?.timeAnalysis?.totalSeconds)}
+                </div>
+            </div>
+
+            <div className="mt-4 grid max-h-52 gap-2 overflow-y-auto pr-1">
+                {rows.map((row) => {
+                    const width = `${Math.max(4, Math.round((row.timeSpentSeconds / maxSeconds) * 100))}%`;
+                    return (
+                        <div
+                            key={row.key}
+                            className={`grid grid-cols-[4.5rem_minmax(0,1fr)_4.5rem] items-center gap-3 rounded border px-3 py-2 text-xs ${
+                                row.timeExceededThreshold
+                                    ? "border-[#efb84f] bg-[#fff8e6] text-[#6f4100]"
+                                    : "border-[#dbe5ef] bg-white text-[#41576c]"
+                            }`}
+                        >
+                            <span className="truncate font-bold">{row.label}</span>
+                            <div className="h-2 overflow-hidden rounded-full bg-[#dce5ef]">
+                                <div
+                                    className={`h-full rounded-full ${row.timeExceededThreshold ? "bg-[#f0a51b]" : "bg-[#1a8bc5]"}`}
+                                    style={{ width }}
+                                />
+                            </div>
+                            <span className="text-right font-bold tabular-nums">
+                                {formatMockTimeSpent(row.timeSpentSeconds)}
+                            </span>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
 const MockTestResults = ({ onExit, onReview }) => {
     const { questions, resultSummary } = useMockTest();
 
@@ -34,10 +112,17 @@ const MockTestResults = ({ onExit, onReview }) => {
         bonus: 0,
         score: 0,
         maxScore: 0,
+        timeAnalysis: {
+            totalSeconds: 0,
+            averageSeconds: 0,
+            slowQuestionCount: 0,
+            slowThresholdSeconds: 180,
+        },
         sectionSummary: {
             GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
             CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
         },
+        perQuestionResult: {},
     };
 
     return (
@@ -85,6 +170,8 @@ const MockTestResults = ({ onExit, onReview }) => {
                     <SectionSummaryCard title="General Aptitude" summary={summary.sectionSummary.GA} />
                     <SectionSummaryCard title="Computer Science and IT" summary={summary.sectionSummary.CS} />
                 </div>
+
+                <TimeDistributionSummary questions={questions} summary={summary} />
 
                 <div className="mt-10 flex justify-center gap-3">
                     <button

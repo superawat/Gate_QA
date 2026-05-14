@@ -312,11 +312,11 @@ const ExplorePage = ({
             </div>
           ) : null}
 
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-5 shadow-[var(--shadow-card)]">
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)]">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h1 className="text-2xl font-semibold text-slate-950 sm:text-3xl">Explore questions</h1>
-                <p className="mt-2 text-sm font-medium text-slate-600">{resultSummary}</p>
+                <h1 className="text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>
+                <p className="mt-2 text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
@@ -367,7 +367,7 @@ const ExplorePage = ({
               </button>
             </div>
           ) : loading && !isInitialized ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading filter page..."
                 size="lg"
@@ -376,14 +376,14 @@ const ExplorePage = ({
               />
             </div>
           ) : filteredQuestions.length === 0 ? (
-            <div className="rounded-[var(--radius-card)] border border-dashed border-slate-300 bg-white p-10 text-center shadow-[var(--shadow-soft)]">
-              <h2 className="text-xl font-semibold text-slate-900">No questions match these filters.</h2>
-              <p className="mt-2 text-sm text-slate-600">
+            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 text-center shadow-[var(--shadow-soft)]">
+              <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No questions match these filters.</h2>
+              <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
                 Try removing one or two filters, broadening the year range, or clearing the search text.
               </p>
             </div>
           ) : isPageTransitioning ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading page..."
                 size="md"

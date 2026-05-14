@@ -176,15 +176,27 @@ const MockTestSetup = ({
     const selectedSubjectSet = new Set(setupState.selectedSubjects || []);
     const selectedTypeSet = new Set(setupState.selectedTypes || []);
 
-    const durationLabel = isCustom ? `${customDurationMinutes} min` : (kind.durationLabel || "180 min");
-    const requestedCount = isCustom ? `${setupState.customCount} Questions` : "65 Questions";
+    const selectedPaperDuration = Number.parseInt(String(selectedPaper?.durationMinutes ?? ""), 10);
+    const selectedPaperRequiredCount = Number.parseInt(String(selectedPaper?.requiredQuestionCount ?? ""), 10);
+    const selectedPaperRequiredGa = Number.parseInt(String(selectedPaper?.requiredGaCount ?? selectedPaper?.gaCount ?? 0), 10);
+    const selectedPaperRequiredCs = Number.parseInt(String(selectedPaper?.requiredCsCount ?? selectedPaper?.csCount ?? 0), 10);
+    const durationLabel = isCustom
+        ? `${customDurationMinutes} min`
+        : (isPaperMode && Number.isFinite(selectedPaperDuration) && selectedPaperDuration > 0
+            ? `${selectedPaperDuration} min`
+            : (kind.durationLabel || "180 min"));
+    const requestedCount = isCustom
+        ? `${setupState.customCount} Questions`
+        : (isPaperMode
+            ? `${Number.isFinite(selectedPaperRequiredCount) && selectedPaperRequiredCount > 0 ? selectedPaperRequiredCount : 65} Questions`
+            : "65 Questions");
     const poolTotalLabel = livePreview?.total ? `${livePreview.total} Questions` : "0 Questions";
     const summaryNote = isPaperMode
         ? (
             selectedPaper
                 ? (
                     selectedPaper.paperReady
-                        ? `${selectedPaper.gaCount} GA and ${selectedPaper.csCount} CS questions in paper order.`
+                        ? `${Number.isFinite(selectedPaperRequiredGa) ? selectedPaperRequiredGa : selectedPaper.gaCount} GA and ${Number.isFinite(selectedPaperRequiredCs) ? selectedPaperRequiredCs : selectedPaper.csCount} CS questions in paper order.`
                         : (selectedPaper.statusReason || "This paper is not release-ready yet.")
                 )
                 : "Select a paper to continue."
@@ -268,7 +280,7 @@ const MockTestSetup = ({
                         const isSelected = paper.yearSetKey === selectedPaperYearSetKey;
                         const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
                         const statusLabel = paper.paperReady
-                            ? "Release-ready"
+                            ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
                             : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
                         return (
                             <button

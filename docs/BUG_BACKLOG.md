@@ -28,11 +28,14 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
   `src/components/MockTest/MockTestSetup.jsx`
   answer registry files
 - What happens:
-  2009-and-earlier papers remain blocked by legacy format drift, duplicate slots, or missing parsed slots. Paper-mode visibility itself is verified: the setup UI renders the full generated catalog, including blocked papers with status reasons.
+  11 pre-2010 papers remain blocked by sparse legacy coverage or unresolved answer gaps.
 - Recent progress:
-  2021 Set 1, 2017 Set 1, 2014 Set 2, 2013, and 2012 are release-ready. `AMBIGUOUS` and `MARKS_TO_ALL` records are now mock-only auto-awarded edge cases rather than fake normal answers.
+  39/50 papers are now release-ready. Legacy paper handling was updated so pre-2010 papers can use per-paper required counts instead of forcing `10 GA + 55 CS`.
+  Current 11 blockers are categorized as:
+  1. Sparse legacy coverage (<35 parsed questions): 1988, 1989, 1990, 1991, 1992
+  2. Unresolved answer gaps: 1993, 1994, 1995, 1996, 1997, 1999
 - Fix idea:
-  audit 2009-and-earlier blocked papers, repair duplicate/missing slots where the legacy format supports a faithful 65-question mock, regenerate public artifacts, and verify mock setup readiness.
+  audit remaining 11 blocked papers, repair duplicate/missing slots where the legacy format supports a faithful mock, regenerate public artifacts, and verify mock setup readiness.
 
 ## Recently Closed
 

@@ -755,6 +755,27 @@
   outline-offset: 2px;
 }
 
+.mocktest-root .gate-tile--slow-time::after {
+  content: "!";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  z-index: 4;
+  display: inline-flex;
+  width: 15px;
+  height: 15px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #92400e;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
 .mocktest-root .mocktest-action-bar {
   min-height: var(--mock-footer-height);
   flex-shrink: 0;

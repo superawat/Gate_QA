@@ -1,0 +1,36 @@
+{
+  "year": 2027,
+  "dryRun": true,
+  "generatedAt": "2026-05-13T14:07:56.190Z",
+  "stateNextTargetYear": 2027,
+  "passed": true,
+  "stages": [
+    {
+      "stage": "scrape",
+      "script": "scripts/pipeline/scrape.mjs",
+      "startedAt": "2026-05-13T14:07:55.179Z",
+      "finishedAt": "2026-05-13T14:07:56.036Z",
+      "durationMs": 857,
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "stage": "normalise",
+      "script": "scripts/pipeline/normalise.mjs",
+      "startedAt": "2026-05-13T14:07:56.037Z",
+      "finishedAt": "2026-05-13T14:07:56.100Z",
+      "durationMs": 63,
+      "exitCode": 0,
+      "ok": true
+    },
+    {
+      "stage": "merge",
+      "script": "scripts/pipeline/merge.mjs",
+      "startedAt": "2026-05-13T14:07:56.100Z",
+      "finishedAt": "2026-05-13T14:07:56.190Z",
+      "durationMs": 90,
+      "exitCode": 0,
+      "ok": true
+    }
+  ]
+}

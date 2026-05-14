@@ -11,6 +11,7 @@
  *
  * Usage:
  *   node scripts/pipeline/normalise.mjs --year 2026
+ *   node scripts/pipeline/normalise.mjs --year 2027 --dry-run
  */
 
 import fs from "node:fs";
@@ -301,9 +302,13 @@ function detectType(tags, title) {
 function main() {
     const args = process.argv.slice(2);
     let targetYear = null;
+    let dryRun = false;
     for (let i = 0; i < args.length; i++) {
         if (args[i] === "--year" && args[i + 1]) {
             targetYear = parseInt(args[i + 1], 10);
+        }
+        if (args[i] === "--dry-run") {
+            dryRun = true;
         }
     }
 
@@ -317,13 +322,29 @@ function main() {
         process.exit(1);
     }
 
-    console.log(`\n🔧 FEAT-003 Stage 2 — Normalise for year ${targetYear}\n`);
+    console.log(`\n🔧 FEAT-003 Stage 2 — Normalise for year ${targetYear}${dryRun ? " (dry-run)" : ""}\n`);
 
     // Load scraped data
     const scrapedPath = path.join(AUDIT_DIR, `scraped-${targetYear}.json`);
     const scraped = readJson(scrapedPath);
     if (!scraped || !Array.isArray(scraped) || !scraped.length) {
         console.log("  No scraped data found. Nothing to normalise.");
+        if (dryRun) {
+            const reportPath = path.join(AUDIT_DIR, `pipeline-readiness-normalise-${targetYear}.json`);
+            writeJson(reportPath, {
+                year: targetYear,
+                dryRun: true,
+                timestamp: new Date().toISOString(),
+                inputAvailable: false,
+                inputPath: scrapedPath,
+                status: "ready_waiting_for_scrape_output",
+            });
+            console.log(`  Dry-run readiness report: ${reportPath}`);
+            writeGithubOutput("normalised_count", 0);
+            writeGithubOutput("unknown_subject_count", 0);
+            writeGithubOutput("dry_run", true);
+            return;
+        }
         process.exit(0);
     }
 
@@ -369,6 +390,7 @@ function main() {
             question: q.question || "",
             tags: q.tags || [],
             year: q.year || "",
+            upvote_meta: q.upvote_meta || null,
             subject,
             subtopic: null, // Will be resolved by frontend's normalizeQuestion
             examYear,
@@ -388,6 +410,26 @@ function main() {
     console.log(`\n📊 Normalisation results:`);
     console.log(`  Normalised:       ${normalised.length}`);
     console.log(`  Unknown subjects: ${unknownSubjects.length}`);
+
+    if (dryRun) {
+        const reportPath = path.join(AUDIT_DIR, `pipeline-readiness-normalise-${targetYear}.json`);
+        writeJson(reportPath, {
+            year: targetYear,
+            dryRun: true,
+            timestamp: new Date().toISOString(),
+            inputAvailable: true,
+            inputPath: scrapedPath,
+            scrapedCount: scraped.length,
+            normalisedCount: normalised.length,
+            unknownSubjectCount: unknownSubjects.length,
+            status: "ready",
+        });
+        console.log(`  Dry-run readiness report: ${reportPath}`);
+        writeGithubOutput("normalised_count", normalised.length);
+        writeGithubOutput("unknown_subject_count", unknownSubjects.length);
+        writeGithubOutput("dry_run", true);
+        return;
+    }
 
     // Save normalised output
     const normalisedPath = path.join(AUDIT_DIR, `normalised-${targetYear}.json`);

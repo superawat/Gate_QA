@@ -146,7 +146,11 @@ const AppHeader = ({ onHomeNavigate = null }) => {
     setInstallPromptEvent(null);
   };
 
-  const showInstallButton = !isMockWindowRoute && !isStandaloneDisplay && Boolean(installPromptEvent);
+  const showInstallButton =
+    location.pathname !== HOME_ROUTE
+    && !isMockWindowRoute
+    && !isStandaloneDisplay
+    && Boolean(installPromptEvent);
 
   return (
     <header className="sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
@@ -166,7 +170,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
             />
           </span>
           <div className="min-w-0">
-            <p className="text-lg font-semibold uppercase tracking-[0.28em] text-sky-700 sm:text-2xl">GATE QA</p>
+            <p className="text-lg font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
           </div>
         </Link>
 

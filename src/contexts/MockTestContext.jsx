@@ -3,7 +3,7 @@ import { useFilterActions, useFilterState } from "./FilterContext";
 import { AnswerService } from "../services/AnswerService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { MockCatalogService } from "../services/MockCatalogService";
-import { buildMockResultSummary, hasMeaningfulResponse } from "../utils/mockTest";
+import { buildMockResultSummary, hasMeaningfulResponse, normalizeMockTimeSpentSeconds } from "../utils/mockTest";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
 import { APTITUDE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
 
@@ -198,6 +198,24 @@ const sanitizeResponses = (rawResponses = {}, uidSet = new Set()) => {
   return next;
 };
 
+const sanitizeQuestionTimeSpent = (rawTimeSpent = {}, uidSet = new Set()) => {
+  const next = {};
+  if (!rawTimeSpent || typeof rawTimeSpent !== "object") {
+    return next;
+  }
+
+  Object.entries(rawTimeSpent).forEach(([uid, value]) => {
+    if (!uidSet.has(uid)) {
+      return;
+    }
+    const seconds = normalizeMockTimeSpentSeconds(value);
+    if (seconds > 0) {
+      next[uid] = seconds;
+    }
+  });
+  return next;
+};
+
 const sanitizeQuestionStates = (rawStates = {}, orderedUids = [], activeUid = "") => {
   const fallback = buildInitialQuestionStates(orderedUids, activeUid);
   if (!rawStates || typeof rawStates !== "object") {
@@ -321,16 +339,19 @@ export const MockTestProvider = ({ children }) => {
 
   const [responses, setResponses] = useState({});
   const [questionStates, setQuestionStates] = useState({});
+  const [questionTimeSpent, setQuestionTimeSpent] = useState({});
   const [timeLeft, setTimeLeft] = useState(TOTAL_MOCK_TIME_SECONDS);
   const [attemptMeta, setAttemptMeta] = useState(null);
   const [attemptError, setAttemptError] = useState("");
   const [resultSummary, setResultSummary] = useState(null);
 
   const timerRef = useRef(null);
+  const activeTimingUidRef = useRef(null);
   const hasAttemptRestoreRun = useRef(false);
   const liveAttemptRef = useRef({
     questions: [],
     responses: {},
+    questionTimeSpent: {},
     questionMetaByUid: {},
     attemptMeta: null,
   });
@@ -415,10 +436,15 @@ export const MockTestProvider = ({ children }) => {
     liveAttemptRef.current = {
       questions,
       responses,
+      questionTimeSpent,
       questionMetaByUid,
       attemptMeta,
     };
-  }, [attemptMeta, questions, questionMetaByUid, responses]);
+  }, [attemptMeta, questions, questionMetaByUid, questionTimeSpent, responses]);
+
+  useEffect(() => {
+    activeTimingUidRef.current = testActive && currentQuestionUid ? currentQuestionUid : null;
+  }, [currentQuestionUid, testActive]);
 
   useEffect(() => {
     let cancelled = false;
@@ -513,13 +539,16 @@ export const MockTestProvider = ({ children }) => {
     setCurrentSectionState("GA");
     setResponses({});
     setQuestionStates({});
+    setQuestionTimeSpent({});
     setTimeLeft(TOTAL_MOCK_TIME_SECONDS);
     setAttemptMeta(null);
     setAttemptError("");
     setResultSummary(null);
+    activeTimingUidRef.current = null;
     liveAttemptRef.current = {
       questions: [],
       responses: {},
+      questionTimeSpent: {},
       questionMetaByUid,
       attemptMeta: null,
     };
@@ -589,6 +618,7 @@ export const MockTestProvider = ({ children }) => {
     const orderedUids = [...gaUids, ...csUids];
     const uidSet = new Set(orderedUids);
     const restoredResponses = sanitizeResponses(parsedAttempt?.responses, uidSet);
+    const restoredTimeSpent = sanitizeQuestionTimeSpent(parsedAttempt?.questionTimeSpent, uidSet);
     const restoredStates = reconcileQuestionStatesWithResponses(
       sanitizeQuestionStates(parsedAttempt?.questionStates, orderedUids, currentUid),
       restoredResponses,
@@ -604,6 +634,7 @@ export const MockTestProvider = ({ children }) => {
       activeSection,
       responses: restoredResponses,
       questionStates: restoredStates,
+      questionTimeSpent: restoredTimeSpent,
       timeLeft: parsePositiveTimeSeconds(parsedAttempt?.timeLeft, TOTAL_MOCK_TIME_SECONDS),
       meta: parsedAttempt?.meta || null,
     };
@@ -652,6 +683,7 @@ export const MockTestProvider = ({ children }) => {
     const orderedUids = [...gaUids, ...csUids];
     const uidSet = new Set(orderedUids);
     const restoredResponses = sanitizeResponses(parsedAttempt?.responses, uidSet);
+    const restoredTimeSpent = sanitizeQuestionTimeSpent(parsedAttempt?.questionTimeSpent, uidSet);
     const restoredStates = reconcileQuestionStatesWithResponses(
       sanitizeQuestionStates(parsedAttempt?.questionStates, orderedUids, currentUid),
       restoredResponses,
@@ -667,6 +699,7 @@ export const MockTestProvider = ({ children }) => {
       activeSection,
       responses: restoredResponses,
       questionStates: restoredStates,
+      questionTimeSpent: restoredTimeSpent,
       timeLeft: parsePositiveTimeSeconds(parsedAttempt?.timeLeft, TOTAL_MOCK_TIME_SECONDS),
       meta: parsedAttempt?.meta || null,
     };
@@ -714,11 +747,17 @@ export const MockTestProvider = ({ children }) => {
       setCurrentSectionState(restored.activeSection);
       setResponses(restored.responses);
       setQuestionStates(restored.questionStates);
+      setQuestionTimeSpent(restored.questionTimeSpent);
       setTimeLeft(restored.timeLeft);
       setAttemptMeta(restored.meta);
       setResultSummary(null);
       setTestSubmitted(false);
       setTestActive(true);
+      activeTimingUidRef.current = getCurrentUidFromSectionState(
+        restored.sectionQuestionUids,
+        restored.sectionIndexes,
+        restored.activeSection
+      );
       setAttemptError("");
     } catch (error) {
       clearAttemptStorage();
@@ -801,15 +840,18 @@ export const MockTestProvider = ({ children }) => {
     setCurrentSectionState(startSection);
     setQuestionStates(buildInitialQuestionStates([...gaUids, ...csUids], currentUid || ""));
     setResponses({});
+    setQuestionTimeSpent({});
     setTimeLeft(safeTime);
     setTestSubmitted(false);
     setAttemptMeta(config?.meta || null);
     setAttemptError("");
     setResultSummary(null);
     setTestActive(true);
+    activeTimingUidRef.current = currentUid || null;
     liveAttemptRef.current = {
       questions: orderedQuestions,
       responses: {},
+      questionTimeSpent: {},
       questionMetaByUid,
       attemptMeta: config?.meta || null,
     };
@@ -829,7 +871,7 @@ export const MockTestProvider = ({ children }) => {
     }
 
     const payload = {
-      v: 3,
+      v: 4,
       gaUids: sectionQuestionUids.GA,
       csUids: sectionQuestionUids.CS,
       activeSection: currentSection,
@@ -837,6 +879,7 @@ export const MockTestProvider = ({ children }) => {
       csIndex: sectionIndexes.CS,
       responses,
       questionStates,
+      questionTimeSpent,
       timeLeft,
       meta: attemptMeta || null,
     };
@@ -846,6 +889,7 @@ export const MockTestProvider = ({ children }) => {
     attemptMeta,
     currentSection,
     questionStates,
+    questionTimeSpent,
     questions.length,
     responses,
     sectionIndexes.CS,
@@ -899,15 +943,42 @@ export const MockTestProvider = ({ children }) => {
     testActive,
   ]);
 
+  const recordQuestionTimeSpent = useCallback((uid, seconds = 1) => {
+    const safeUid = normalizeUid(uid);
+    const safeSeconds = normalizeMockTimeSpentSeconds(seconds);
+    if (!safeUid || safeSeconds <= 0) {
+      return;
+    }
+
+    const currentLiveTimes = liveAttemptRef.current.questionTimeSpent || {};
+    const nextSeconds = normalizeMockTimeSpentSeconds(currentLiveTimes[safeUid]) + safeSeconds;
+    const nextLiveTimes = {
+      ...currentLiveTimes,
+      [safeUid]: nextSeconds,
+    };
+
+    liveAttemptRef.current = {
+      ...liveAttemptRef.current,
+      questionTimeSpent: nextLiveTimes,
+    };
+
+    setQuestionTimeSpent((prev) => ({
+      ...prev,
+      [safeUid]: Math.max(normalizeMockTimeSpentSeconds(prev[safeUid]), nextSeconds),
+    }));
+  }, []);
+
   const finalizeSubmission = useCallback(() => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
+    activeTimingUidRef.current = null;
 
     const {
       questions: activeQuestions,
       responses: liveResponses,
+      questionTimeSpent: liveQuestionTimeSpent,
       questionMetaByUid: liveMeta,
       attemptMeta: liveAttemptMeta,
     } = liveAttemptRef.current;
@@ -915,6 +986,7 @@ export const MockTestProvider = ({ children }) => {
       questions: activeQuestions,
       responses: liveResponses,
       questionMetaByUid: liveMeta,
+      questionTimeSpentByUid: liveQuestionTimeSpent,
       getAnswerRecord: (question) => AnswerService.getAnswerForQuestion(question),
     });
     const historyEntry = buildMockAttemptHistoryEntry({
@@ -966,6 +1038,11 @@ export const MockTestProvider = ({ children }) => {
     }
 
     timerRef.current = window.setInterval(() => {
+      const activeUid = activeTimingUidRef.current;
+      if (activeUid) {
+        recordQuestionTimeSpent(activeUid, 1);
+      }
+
       setTimeLeft((previous) => {
         if (previous <= 1) {
           finalizeSubmission();
@@ -981,7 +1058,7 @@ export const MockTestProvider = ({ children }) => {
         timerRef.current = null;
       }
     };
-  }, [finalizeSubmission, testActive, testSubmitted]);
+  }, [finalizeSubmission, recordQuestionTimeSpent, testActive, testSubmitted]);
 
   const goToQuestion = useCallback((index, section = currentSection) => {
     const targetSection = section === "CS" ? "CS" : "GA";
@@ -996,6 +1073,7 @@ export const MockTestProvider = ({ children }) => {
       [targetSection]: index,
     }));
 
+    activeTimingUidRef.current = targetUids[index] || null;
     markUidVisited(targetUids[index]);
   }, [currentSection, getSectionUids, markUidVisited]);
 
@@ -1008,6 +1086,7 @@ export const MockTestProvider = ({ children }) => {
 
     setCurrentSectionState(targetSection);
     const index = getSectionIndex(targetSection);
+    activeTimingUidRef.current = targetUids[index] || null;
     markUidVisited(targetUids[index]);
   }, [getSectionIndex, getSectionUids, markUidVisited]);
 
@@ -1160,6 +1239,7 @@ export const MockTestProvider = ({ children }) => {
     goToQuestion,
     questionMetaByUid,
     questionStates,
+    questionTimeSpent,
     questions,
     readyPapers,
     responses,

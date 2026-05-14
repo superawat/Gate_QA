@@ -14,6 +14,7 @@ import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine
 } from "recharts";
 
+import { formatMockTimeSpent } from "../../utils/mockTest";
 import { readMockTestHistory } from "../../utils/mockTestHistory";
 import { buildSolvePath } from "../../utils/routes";
 
@@ -82,34 +83,45 @@ const QuestionRecordGroup = ({ title, tone, questions = [], emptyLabel }) => {
       {questions.length ? (
         <div className="mt-3 max-h-52 overflow-y-auto pr-1">
           <div className="grid gap-2">
-            {questions.map((question) => (
-              question.questionUid ? (
+            {questions.map((question) => {
+              const timeExceeded = Boolean(question.timeExceededThreshold);
+              const hasRecordedTime = timeExceeded || Number(question.timeSpentSeconds || 0) > 0;
+              const timeClass = timeExceeded ? "font-bold text-amber-700" : "font-semibold";
+              const pillClass = `${styles.pill} ${timeExceeded ? "ring-1 ring-amber-300" : ""}`;
+
+              return question.questionUid ? (
                 <Link
                   key={`${title}-${question.questionUid}`}
                   to={buildSolvePath(question.questionUid)}
-                  className={`rounded-xl border px-3 py-2 ${styles.pill}`}
+                  className={`rounded-xl border px-3 py-2 ${pillClass}`}
                 >
                   <p className="text-sm font-semibold truncate">{question.label}</p>
                   <div className={`mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] ${styles.meta}`}>
                     <span className="font-mono">ID {question.questionUid}</span>
                     <span className="font-semibold uppercase tracking-[0.08em]">{question.type || "Question"}</span>
                     <span className="font-semibold">Score {formatScoreDelta(question.scoreDelta)}</span>
+                    {hasRecordedTime ? (
+                      <span className={timeClass}>Time {formatMockTimeSpent(question.timeSpentSeconds)}</span>
+                    ) : null}
                   </div>
                 </Link>
               ) : (
                 <article
                   key={`${title}-${question.label}-${question.type || "question"}`}
-                  className={`rounded-xl border px-3 py-2 ${styles.pill}`}
+                  className={`rounded-xl border px-3 py-2 ${pillClass}`}
                 >
                   <p className="text-sm font-semibold truncate">{question.label}</p>
                   <div className={`mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] ${styles.meta}`}>
                     <span className="font-mono">ID unavailable</span>
                     <span className="font-semibold uppercase tracking-[0.08em]">{question.type || "Question"}</span>
                     <span className="font-semibold">Score {formatScoreDelta(question.scoreDelta)}</span>
+                    {hasRecordedTime ? (
+                      <span className={timeClass}>Time {formatMockTimeSpent(question.timeSpentSeconds)}</span>
+                    ) : null}
                   </div>
                 </article>
-              )
-            ))}
+              );
+            })}
           </div>
         </div>
       ) : (
@@ -119,6 +131,88 @@ const QuestionRecordGroup = ({ title, tone, questions = [], emptyLabel }) => {
   );
 };
 
+const getAttemptQuestionTimeRows = (attempt = {}) => {
+  const groups = [
+    ["correct", attempt.correctQuestions || []],
+    ["incorrect", attempt.incorrectQuestions || []],
+    ["unanswered", attempt.unansweredQuestions || []],
+    ["bonus", attempt.bonusQuestions || []],
+  ];
+  const sectionRank = { GA: 0, CS: 1 };
+
+  return groups
+    .flatMap(([outcome, questions]) => questions.map((question) => ({ ...question, outcome })))
+    .sort((left, right) => {
+      const leftSection = sectionRank[left.section] ?? 2;
+      const rightSection = sectionRank[right.section] ?? 2;
+      if (leftSection !== rightSection) return leftSection - rightSection;
+
+      const leftOrder = Number.isFinite(Number(left.orderIndex)) ? Number(left.orderIndex) : Number.MAX_SAFE_INTEGER;
+      const rightOrder = Number.isFinite(Number(right.orderIndex)) ? Number(right.orderIndex) : Number.MAX_SAFE_INTEGER;
+      if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+
+      return String(left.label || left.questionUid || "").localeCompare(String(right.label || right.questionUid || ""));
+    });
+};
+
+const TimeDistributionPanel = ({ attempt }) => {
+  const rows = getAttemptQuestionTimeRows(attempt);
+  if (!rows.length) return null;
+  const hasTimingData = rows.some((question) => Number(question.timeSpentSeconds || 0) > 0)
+    || Number(attempt?.timeAnalysis?.totalSeconds || 0) > 0;
+  if (!hasTimingData) return null;
+
+  const maxSeconds = Math.max(1, ...rows.map((question) => Number(question.timeSpentSeconds || 0)));
+  const slowCount = Number(attempt?.timeAnalysis?.slowQuestionCount || 0);
+  const averageSeconds = Number(attempt?.timeAnalysis?.averageSeconds || 0);
+
+  return (
+    <section className="rounded-[var(--radius-card)] border border-slate-200 bg-slate-50/70 px-4 py-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h4 className="text-sm font-bold text-slate-900">Per-question time</h4>
+          <p className="mt-1 text-xs font-medium text-slate-500">
+            Avg {formatMockTimeSpent(averageSeconds)} | {slowCount} over 3 min
+          </p>
+        </div>
+        <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">
+          <FaRegClock className="text-[10px]" />
+          {formatMockTimeSpent(attempt?.timeAnalysis?.totalSeconds)}
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-2">
+        {rows.map((question) => {
+          const timeSpentSeconds = Number(question.timeSpentSeconds || 0);
+          const width = `${Math.max(4, Math.round((timeSpentSeconds / maxSeconds) * 100))}%`;
+          const timeExceeded = Boolean(question.timeExceededThreshold);
+
+          return (
+            <div
+              key={`${question.outcome}-${question.questionUid || question.label}`}
+              className={`grid grid-cols-[4.5rem_minmax(0,1fr)_4.5rem] items-center gap-3 rounded-lg border px-3 py-2 text-xs ${
+                timeExceeded
+                  ? "border-amber-200 bg-amber-50 text-amber-950"
+                  : "border-slate-200 bg-white text-slate-700"
+              }`}
+            >
+              <span className="truncate font-bold">{question.label}</span>
+              <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+                <div
+                  className={`h-full rounded-full ${timeExceeded ? "bg-amber-500" : "bg-sky-500"}`}
+                  style={{ width }}
+                />
+              </div>
+              <span className={`text-right font-bold tabular-nums ${timeExceeded ? "text-amber-800" : "text-slate-600"}`}>
+                {formatMockTimeSpent(timeSpentSeconds)}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 const MockAnalyticsCharts = ({ history = [] }) => {
   if (history.length < 2) return null;
@@ -337,6 +431,8 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
                       <p className="mt-1 text-xl font-bold text-sky-900">{attempt.bonus || 0}</p>
                     </div>
                   </div>
+
+                  <TimeDistributionPanel attempt={attempt} />
 
                   <div className="grid gap-4 xl:grid-cols-4">
                     <QuestionRecordGroup

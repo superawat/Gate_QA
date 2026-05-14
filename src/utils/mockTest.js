@@ -5,6 +5,7 @@ export const MOCK_SECTION_COUNTS = {
   CS: 55,
 };
 
+export const MOCK_SLOW_QUESTION_THRESHOLD_SECONDS = 3 * 60;
 export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT"];
 export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL"];
 
@@ -16,6 +17,30 @@ export const normalizeMockType = (value = "") => {
 export const normalizeMockAutoAwardType = (value = "") => {
   const normalized = String(value || "").trim().toUpperCase();
   return MOCK_AUTO_AWARD_TYPES.includes(normalized) ? normalized : "";
+};
+
+export const normalizeMockTimeSpentSeconds = (value = 0) => {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    return 0;
+  }
+  return Math.max(0, Math.round(parsed));
+};
+
+export const formatMockTimeSpent = (value = 0) => {
+  const totalSeconds = normalizeMockTimeSpentSeconds(value);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  if (minutes <= 0) {
+    return `${seconds}s`;
+  }
+
+  if (seconds === 0) {
+    return `${minutes}m`;
+  }
+
+  return `${minutes}m ${String(seconds).padStart(2, "0")}s`;
 };
 
 export const isMockAutoAwardType = (value = "") => (
@@ -116,6 +141,7 @@ export const buildMockQuestionResult = ({
   questionMeta = null,
   response,
   answerRecord = null,
+  timeSpentSeconds = 0,
 } = {}) => {
   const questionUid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
   const type = normalizeMockType(questionMeta?.type || answerRecord?.type || "")
@@ -130,6 +156,7 @@ export const buildMockQuestionResult = ({
     ? Number(questionMeta.negativeMarks)
     : getNegativeMarksForQuestion(type, marks);
   const answered = autoAwarded ? false : hasMeaningfulResponse(response, type);
+  const normalizedTimeSpentSeconds = normalizeMockTimeSpentSeconds(timeSpentSeconds);
 
   const baseResult = {
     questionUid,
@@ -145,6 +172,9 @@ export const buildMockQuestionResult = ({
     status: answered ? "incorrect" : "unanswered",
     correct: false,
     autoAwarded,
+    timeSpentSeconds: normalizedTimeSpentSeconds,
+    slowThresholdSeconds: MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
+    timeExceededThreshold: normalizedTimeSpentSeconds > MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
   };
 
   if (autoAwarded) {
@@ -194,6 +224,7 @@ export const buildMockResultSummary = ({
   questions = [],
   responses = {},
   questionMetaByUid = {},
+  questionTimeSpentByUid = {},
   getAnswerRecord = () => null,
 } = {}) => {
   const summary = {
@@ -207,6 +238,12 @@ export const buildMockResultSummary = ({
     sectionSummary: {
       GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
       CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
+    },
+    timeAnalysis: {
+      totalSeconds: 0,
+      averageSeconds: 0,
+      slowQuestionCount: 0,
+      slowThresholdSeconds: MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
     },
     perQuestionResult: {},
   };
@@ -224,10 +261,15 @@ export const buildMockResultSummary = ({
       questionMeta,
       response: responses[questionUid],
       answerRecord,
+      timeSpentSeconds: questionTimeSpentByUid[questionUid],
     });
 
     summary.perQuestionResult[questionUid] = result;
     summary.score += result.scoreDelta;
+    summary.timeAnalysis.totalSeconds += result.timeSpentSeconds;
+    if (result.timeExceededThreshold) {
+      summary.timeAnalysis.slowQuestionCount += 1;
+    }
 
     const sectionKey = result.section === "GA" ? "GA" : "CS";
     const sectionSummary = summary.sectionSummary[sectionKey];
@@ -267,6 +309,10 @@ export const buildMockResultSummary = ({
   summary.score = Number(summary.score.toFixed(4));
   summary.sectionSummary.GA.score = Number(summary.sectionSummary.GA.score.toFixed(4));
   summary.sectionSummary.CS.score = Number(summary.sectionSummary.CS.score.toFixed(4));
+  summary.timeAnalysis.totalSeconds = normalizeMockTimeSpentSeconds(summary.timeAnalysis.totalSeconds);
+  summary.timeAnalysis.averageSeconds = questions.length > 0
+    ? Math.round(summary.timeAnalysis.totalSeconds / questions.length)
+    : 0;
 
   return summary;
 };

@@ -451,8 +451,245 @@ const MOCK_SECTION_COUNTS = {
 
 const MOCK_OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
 const MOCK_AUTO_AWARD_TYPES = new Set(["AMBIGUOUS", "MARKS_TO_ALL"]);
+const MOCK_LEGACY_CONTINUOUS_MIN_YEAR = 1987;
+const MOCK_LEGACY_CONTINUOUS_SPLIT_MAX_YEAR = 2013;
+const MOCK_LEGACY_SLOT_DEDUP_MAX_YEAR = 2009;
+const MOCK_STANDARD_TOTAL_QUESTIONS = MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
+const MOCK_LEGACY_PARTIAL_MIN_QUESTIONS = 35;
 
-function parseMockSectionPosition(question = {}) {
+function parseRomanNumeralToken(value = "") {
+  const token = String(value || "").trim().toLowerCase();
+  if (!/^[ivxlcdm]+$/.test(token)) {
+    return null;
+  }
+
+  const values = {
+    i: 1,
+    v: 5,
+    x: 10,
+    l: 50,
+    c: 100,
+    d: 500,
+    m: 1000,
+  };
+
+  let total = 0;
+  let previous = 0;
+  for (let index = token.length - 1; index >= 0; index -= 1) {
+    const current = values[token[index]];
+    if (!current) {
+      return null;
+    }
+    if (current < previous) {
+      total -= current;
+    } else {
+      total += current;
+      previous = current;
+    }
+  }
+  return total > 0 ? total : null;
+}
+
+function normalizeLegacyQuestionToken(rawToken = "") {
+  const cleaned = String(rawToken || "")
+    .toLowerCase()
+    .replace(/\u200e|\u200f|\u202a|\u202b|\u202c|\u202d|\u202e|\u2066|\u2067|\u2068|\u2069/g, "")
+    .replace(/\bquestion\b/g, "")
+    .replace(/\s+/g, "")
+    .replace(/[_,|]/g, "-")
+    .replace(/[.]+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  if (!cleaned) {
+    return null;
+  }
+
+  const segments = cleaned
+    .split("-")
+    .filter(Boolean)
+    .map((segment, index) => {
+      if (index === 0 && /^\d+$/.test(segment)) {
+        return String(Number.parseInt(segment, 10));
+      }
+      return segment;
+    });
+
+  if (segments.length === 0) {
+    return null;
+  }
+
+  const [first, ...rest] = segments;
+  const firstMatch = first.match(/^(\d+)([a-z]+)$/i);
+  if (firstMatch) {
+    return [String(Number.parseInt(firstMatch[1], 10)), firstMatch[2], ...rest].join("-");
+  }
+
+  return segments.join("-");
+}
+
+function extractLegacyQuestionTokenFromTitle(title = "") {
+  const match = String(title || "").match(
+    /\|\s*Question\s*:\s*([A-Za-z0-9]+(?:[.,-][A-Za-z0-9]+)*)/i
+  );
+  return match ? normalizeLegacyQuestionToken(match[1]) : null;
+}
+
+function extractLegacyQuestionTokenFromExamUid(examUid = "") {
+  const match = String(examUid || "").trim().match(/^cse:\d{4}:set\d+:[^:]+:q(.+)$/i);
+  return match ? normalizeLegacyQuestionToken(match[1]) : null;
+}
+
+function extractLegacyQuestionTokenFromLink(link = "", yearSet = null) {
+  const resolvedYearSet = yearSet && Number.isFinite(yearSet.year) ? yearSet : null;
+  const yearToken = resolvedYearSet ? String(resolvedYearSet.year) : "\\d{4}";
+  const pattern = new RegExp(`gate-cse-${yearToken}-question-([a-z0-9-]+)`, "i");
+  const match = String(link || "").trim().match(pattern);
+  return match ? normalizeLegacyQuestionToken(match[1]) : null;
+}
+
+function extractLegacyQuestionToken(question = {}, yearSet = null) {
+  return (
+    extractLegacyQuestionTokenFromTitle(question.title || "")
+    || extractLegacyQuestionTokenFromExamUid(question.exam_uid || "")
+    || extractLegacyQuestionTokenFromLink(question.link || "", yearSet)
+  );
+}
+
+function parseLegacyQualifierToken(token = "") {
+  const value = String(token || "").trim().toLowerCase();
+  if (!value) {
+    return { typeRank: 0, valueRank: 0, raw: value };
+  }
+  if (/^\d+$/.test(value)) {
+    return {
+      typeRank: 1,
+      valueRank: Number.parseInt(value, 10),
+      raw: value,
+    };
+  }
+
+  const romanValue = parseRomanNumeralToken(value);
+  if (Number.isFinite(romanValue)) {
+    return {
+      typeRank: 2,
+      valueRank: romanValue,
+      raw: value,
+    };
+  }
+
+  if (/^[a-z]+$/.test(value)) {
+    return {
+      typeRank: 3,
+      valueRank: value,
+      raw: value,
+    };
+  }
+
+  return {
+    typeRank: 4,
+    valueRank: value,
+    raw: value,
+  };
+}
+
+function parseLegacySortKey(token = "") {
+  const normalized = normalizeLegacyQuestionToken(token);
+  if (!normalized) {
+    return null;
+  }
+
+  const segments = normalized.split("-").filter(Boolean);
+  if (segments.length === 0) {
+    return null;
+  }
+
+  const [first, ...rest] = segments;
+  const firstMatch = first.match(/^(\d+)([a-z]+)?$/i);
+
+  let major = Number.MAX_SAFE_INTEGER;
+  const qualifiers = [];
+
+  if (firstMatch) {
+    major = Number.parseInt(firstMatch[1], 10);
+    if (firstMatch[2]) {
+      qualifiers.push(firstMatch[2]);
+    }
+  } else if (/^\d+$/.test(first)) {
+    major = Number.parseInt(first, 10);
+  } else {
+    qualifiers.push(first);
+  }
+
+  qualifiers.push(...rest);
+
+  return {
+    normalized,
+    major: Number.isFinite(major) ? major : Number.MAX_SAFE_INTEGER,
+    qualifiers: qualifiers.map(parseLegacyQualifierToken),
+  };
+}
+
+function compareLegacyQuestionTokens(leftToken = "", rightToken = "") {
+  const left = parseLegacySortKey(leftToken);
+  const right = parseLegacySortKey(rightToken);
+
+  if (!left && !right) {
+    return 0;
+  }
+  if (!left) {
+    return 1;
+  }
+  if (!right) {
+    return -1;
+  }
+
+  if (left.major !== right.major) {
+    return left.major - right.major;
+  }
+
+  const length = Math.max(left.qualifiers.length, right.qualifiers.length);
+  for (let index = 0; index < length; index += 1) {
+    const leftQualifier = left.qualifiers[index];
+    const rightQualifier = right.qualifiers[index];
+
+    if (!leftQualifier && rightQualifier) {
+      return -1;
+    }
+    if (leftQualifier && !rightQualifier) {
+      return 1;
+    }
+    if (!leftQualifier && !rightQualifier) {
+      continue;
+    }
+
+    if (leftQualifier.typeRank !== rightQualifier.typeRank) {
+      return leftQualifier.typeRank - rightQualifier.typeRank;
+    }
+
+    if (leftQualifier.valueRank !== rightQualifier.valueRank) {
+      if (
+        typeof leftQualifier.valueRank === "number"
+        && typeof rightQualifier.valueRank === "number"
+      ) {
+        return leftQualifier.valueRank - rightQualifier.valueRank;
+      }
+      return String(leftQualifier.valueRank).localeCompare(
+        String(rightQualifier.valueRank),
+        undefined,
+        { numeric: true, sensitivity: "base" }
+      );
+    }
+  }
+
+  return left.normalized.localeCompare(right.normalized, undefined, {
+    numeric: true,
+    sensitivity: "base",
+  });
+}
+
+function parseMockSectionPosition(question = {}, yearSet = null) {
   const title = String(question.title || "").trim();
 
   const gaPatterns = [
@@ -480,8 +717,14 @@ function parseMockSectionPosition(question = {}) {
   if (csMatch) {
     const orderIndex = Number.parseInt(csMatch[1], 10);
     if (Number.isFinite(orderIndex) && orderIndex > 0) {
-      const yearSet = parseYearSet(question);
-      if (yearSet.set == null && yearSet.year >= 2010 && yearSet.year <= 2013) {
+      const resolvedYearSet = yearSet || parseYearSet(question);
+      const usesLegacyContinuousSplit =
+        resolvedYearSet.set == null
+        && Number.isFinite(resolvedYearSet.year)
+        && resolvedYearSet.year >= MOCK_LEGACY_CONTINUOUS_MIN_YEAR
+        && resolvedYearSet.year <= MOCK_LEGACY_CONTINUOUS_SPLIT_MAX_YEAR;
+
+      if (usesLegacyContinuousSplit) {
         if (orderIndex >= 56 && orderIndex <= 65) {
           return {
             section: "GA",
@@ -495,6 +738,8 @@ function parseMockSectionPosition(question = {}) {
             orderIndex,
           };
         }
+
+        return null;
       }
 
       return {
@@ -550,6 +795,87 @@ function sortMockMetaByOrder(left = {}, right = {}) {
   return Number(left.orderIndex || 0) - Number(right.orderIndex || 0);
 }
 
+function isLegacySlotDedupPaper(yearSet = null) {
+  return Boolean(
+    yearSet
+    && yearSet.set == null
+    && Number.isFinite(yearSet.year)
+    && yearSet.year >= MOCK_LEGACY_CONTINUOUS_MIN_YEAR
+    && yearSet.year <= MOCK_LEGACY_SLOT_DEDUP_MAX_YEAR
+  );
+}
+
+function buildLegacyMockCandidateScore(question = {}, answerRecord = null) {
+  let score = 0;
+  const answerType = String(answerRecord?.type || "").trim().toUpperCase();
+
+  if (MOCK_OBJECTIVE_TYPES.has(answerType) || MOCK_AUTO_AWARD_TYPES.has(answerType)) {
+    score += 30;
+  }
+
+  if (answerRecord?.answer_uid) {
+    score += 10;
+  }
+
+  if (Array.isArray(question.tags) && question.tags.length > 0) {
+    score += 5;
+  }
+
+  if (question.question_uid && !String(question.question_uid).startsWith("local:")) {
+    score += 8;
+  }
+
+  const title = String(question.title || "");
+  const link = String(question.link || "");
+  const stem = String(question.question || "");
+  const variantPenalty = /(?:modified|version|ugcnet|isro|pgee|blog|doubt|why option)/i.test(`${title} ${link}`)
+    ? 25
+    : 0;
+
+  score += Math.min(stem.length, 2000) / 1000;
+  score += Math.min(title.length, 200) / 1000;
+
+  return score - variantPenalty;
+}
+
+function compareLegacySlotCandidates(left = null, right = null) {
+  if (!left) return -1;
+  if (!right) return 1;
+
+  const scoreDelta = Number(left.score || 0) - Number(right.score || 0);
+  if (scoreDelta !== 0) {
+    return scoreDelta;
+  }
+
+  const leftGoId = Number(left.goId);
+  const rightGoId = Number(right.goId);
+  if (Number.isFinite(leftGoId) && Number.isFinite(rightGoId) && leftGoId !== rightGoId) {
+    return rightGoId - leftGoId;
+  }
+
+  return String(right.questionUid || "").localeCompare(String(left.questionUid || ""));
+}
+
+function registerMockMeta(group, meta, byQuestionUid) {
+  byQuestionUid[meta.questionUid] = meta;
+
+  const positionSet = meta.section === "GA" ? group.gaPositions : group.csPositions;
+  if (positionSet.has(meta.orderIndex)) {
+    group.hasDuplicatePosition = true;
+  }
+  positionSet.add(meta.orderIndex);
+  group.questionUids.push(meta.questionUid);
+
+  if (meta.scorable) {
+    group.scorableCandidateCount += 1;
+    if (meta.section === "GA") {
+      group.scorableGaCount += 1;
+    } else if (meta.section === "CS") {
+      group.scorableCsCount += 1;
+    }
+  }
+}
+
 function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
   const byQuestionUid = {};
   const paperGroups = new Map();
@@ -557,9 +883,12 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
   questions.forEach((question) => {
     const questionUid = buildQuestionUid(question);
     const yearSet = parseYearSet(question);
-    const paperPosition = parseMockSectionPosition(question);
+    const useLegacySlotDedup = isLegacySlotDedupPaper(yearSet);
+    const paperPosition = useLegacySlotDedup
+      ? null
+      : parseMockSectionPosition(question, yearSet);
 
-    if (!yearSet.key || !paperPosition) {
+    if (!yearSet.key || (!paperPosition && !useLegacySlotDedup)) {
       return;
     }
 
@@ -568,10 +897,53 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     const isObjectiveType = MOCK_OBJECTIVE_TYPES.has(answerType);
     const isAutoAwardType = MOCK_AUTO_AWARD_TYPES.has(answerType);
     const type = isObjectiveType || isAutoAwardType ? answerType : null;
+
+    if (!paperGroups.has(yearSet.key)) {
+      paperGroups.set(yearSet.key, {
+        yearSetKey: yearSet.key,
+        year: yearSet.year,
+        set: yearSet.set,
+        label: yearSet.label,
+        useLegacySlotDedup,
+        slotCandidates: new Map(),
+        gaPositions: new Set(),
+        csPositions: new Set(),
+        questionUids: [],
+        hasDuplicatePosition: false,
+        scorableCandidateCount: 0,
+        scorableGaCount: 0,
+        scorableCsCount: 0,
+      });
+    }
+
+    const group = paperGroups.get(yearSet.key);
+    if (group.useLegacySlotDedup) {
+      const legacyToken = extractLegacyQuestionToken(question, yearSet);
+      if (!legacyToken) {
+        return;
+      }
+
+      const slotKey = legacyToken;
+      const candidate = {
+        questionUid,
+        yearSetKey: yearSet.key,
+        title: String(question.title || "").trim(),
+        type,
+        autoAwarded: isAutoAwardType,
+        legacyToken,
+        score: buildLegacyMockCandidateScore(question, answerRecord),
+        goId: Number.parseInt(extractGateOverflowId(question.link || ""), 10),
+      };
+      const existing = group.slotCandidates.get(slotKey);
+      if (!existing || compareLegacySlotCandidates(candidate, existing) > 0) {
+        group.slotCandidates.set(slotKey, candidate);
+      }
+      return;
+    }
+
     const marks = resolveMockMarks(paperPosition.section, paperPosition.orderIndex);
     const negativeMarks = type && marks ? resolveNegativeMarks(type, marks) : null;
     const scorable = Boolean(type && marks !== null);
-
     const meta = {
       questionUid,
       yearSetKey: yearSet.key,
@@ -586,41 +958,53 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       autoAwarded: isAutoAwardType,
     };
 
-    byQuestionUid[questionUid] = meta;
-
-    if (!paperGroups.has(yearSet.key)) {
-      paperGroups.set(yearSet.key, {
-        yearSetKey: yearSet.key,
-        year: yearSet.year,
-        set: yearSet.set,
-        label: yearSet.label,
-        gaPositions: new Set(),
-        csPositions: new Set(),
-        questionUids: [],
-        hasDuplicatePosition: false,
-        scorableCandidateCount: 0,
-        scorableGaCount: 0,
-        scorableCsCount: 0,
-      });
-    }
-
-    const group = paperGroups.get(yearSet.key);
-    const positionSet = paperPosition.section === "GA" ? group.gaPositions : group.csPositions;
-    if (positionSet.has(paperPosition.orderIndex)) {
-      group.hasDuplicatePosition = true;
-    }
-    positionSet.add(paperPosition.orderIndex);
-    group.questionUids.push(questionUid);
-
-    if (scorable) {
-      group.scorableCandidateCount += 1;
-      if (paperPosition.section === "GA") {
-        group.scorableGaCount += 1;
-      } else if (paperPosition.section === "CS") {
-        group.scorableCsCount += 1;
-      }
-    }
+    registerMockMeta(group, meta, byQuestionUid);
   });
+
+  for (const group of paperGroups.values()) {
+    if (!group.useLegacySlotDedup) {
+      continue;
+    }
+
+    const selected = Array.from(group.slotCandidates.values())
+      .sort((left, right) => {
+        const tokenCompare = compareLegacyQuestionTokens(left.legacyToken, right.legacyToken);
+        if (tokenCompare !== 0) {
+          return tokenCompare;
+        }
+        return String(left.questionUid || "").localeCompare(
+          String(right.questionUid || ""),
+          undefined,
+          { numeric: true, sensitivity: "base" }
+        );
+      })
+      .slice(0, MOCK_STANDARD_TOTAL_QUESTIONS);
+
+    selected.forEach((entry, index) => {
+      const absolutePosition = index + 1;
+      const section = absolutePosition > MOCK_SECTION_COUNTS.CS ? "GA" : "CS";
+      const orderIndex = section === "GA"
+        ? absolutePosition - MOCK_SECTION_COUNTS.CS
+        : absolutePosition;
+      const marks = resolveMockMarks(section, orderIndex);
+      const negativeMarks = entry.type && marks ? resolveNegativeMarks(entry.type, marks) : null;
+      const scorable = Boolean(entry.type && marks !== null);
+
+      registerMockMeta(group, {
+        questionUid: entry.questionUid,
+        yearSetKey: entry.yearSetKey,
+        orderIndex,
+        section,
+        title: entry.title,
+        type: entry.type,
+        marks,
+        negativeMarks,
+        paperReady: false,
+        scorable,
+        autoAwarded: entry.autoAwarded,
+      }, byQuestionUid);
+    });
+  }
 
   const papers = Array.from(paperGroups.values())
     .map((group) => {
@@ -628,6 +1012,16 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       const csCount = group.csPositions.size;
       const hasCompleteGaSection = hasCompletePaperSection(group.gaPositions, MOCK_SECTION_COUNTS.GA);
       const hasCompleteCsSection = hasCompletePaperSection(group.csPositions, MOCK_SECTION_COUNTS.CS);
+      const isLegacyPartialCandidate =
+        group.useLegacySlotDedup
+        && group.questionUids.length < MOCK_STANDARD_TOTAL_QUESTIONS;
+      const requiredQuestionCount = isLegacyPartialCandidate
+        ? group.questionUids.length
+        : MOCK_STANDARD_TOTAL_QUESTIONS;
+      const requiredGaCount = isLegacyPartialCandidate ? gaCount : MOCK_SECTION_COUNTS.GA;
+      const requiredCsCount = isLegacyPartialCandidate ? csCount : MOCK_SECTION_COUNTS.CS;
+      const belowLegacyMinimum =
+        isLegacyPartialCandidate && requiredQuestionCount < MOCK_LEGACY_PARTIAL_MIN_QUESTIONS;
       const blockedQuestions = group.questionUids
         .map((questionUid) => byQuestionUid[questionUid])
         .filter((meta) => meta && !meta.scorable)
@@ -641,20 +1035,25 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         }));
       const paperReady =
         !group.hasDuplicatePosition
-        && group.questionUids.length === MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS
-        && hasCompleteGaSection
-        && hasCompleteCsSection
-        && group.scorableCandidateCount === MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
+        && requiredQuestionCount > 0
+        && !belowLegacyMinimum
+        && group.questionUids.length === requiredQuestionCount
+        && (isLegacyPartialCandidate || (hasCompleteGaSection && hasCompleteCsSection))
+        && group.scorableCandidateCount === requiredQuestionCount;
       let statusReason = "Release-ready.";
 
       if (group.hasDuplicatePosition) {
         statusReason = "Duplicate paper slots detected in the parsed question set.";
-      } else if (group.questionUids.length !== MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS) {
+      } else if (belowLegacyMinimum) {
+        statusReason = `Legacy paper has only ${requiredQuestionCount} parsed questions (minimum ${MOCK_LEGACY_PARTIAL_MIN_QUESTIONS} required).`;
+      } else if (!isLegacyPartialCandidate && group.questionUids.length !== MOCK_STANDARD_TOTAL_QUESTIONS) {
         statusReason = `Parsed ${group.questionUids.length}/65 total questions for this paper.`;
-      } else if (!hasCompleteGaSection || !hasCompleteCsSection) {
+      } else if (!isLegacyPartialCandidate && (!hasCompleteGaSection || !hasCompleteCsSection)) {
         statusReason = `Incomplete paper structure (${gaCount} GA / ${csCount} CS parsed).`;
       } else if (blockedQuestions.length > 0) {
         statusReason = `Missing verified answers for ${blockedQuestions.length} question${blockedQuestions.length === 1 ? "" : "s"}.`;
+      } else if (isLegacyPartialCandidate) {
+        statusReason = `Legacy partial paper ready (${requiredQuestionCount} parsed questions).`;
       }
 
       group.questionUids.forEach((questionUid) => {
@@ -671,11 +1070,18 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         paperReady,
         gaCount,
         csCount,
+        requiredQuestionCount,
+        requiredGaCount,
+        requiredCsCount,
+        legacyPartial: isLegacyPartialCandidate,
+        durationMinutes: isLegacyPartialCandidate
+          ? Math.max(20, Math.round((requiredQuestionCount / MOCK_STANDARD_TOTAL_QUESTIONS) * 180))
+          : 180,
         scorableCount: group.scorableCandidateCount,
         scorableGaCount: group.scorableGaCount,
         scorableCsCount: group.scorableCsCount,
         missingScorableCount: Math.max(
-          MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS - group.scorableCandidateCount,
+          requiredQuestionCount - group.scorableCandidateCount,
           0
         ),
         statusReason,

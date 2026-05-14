@@ -51,6 +51,7 @@ describe("QuestionPalette status icon parity", () => {
         "ga:4": status.MARKED_FOR_REVIEW,
         "ga:5": status.ANSWERED_AND_MARKED_FOR_REVIEW,
       },
+      resultSummary: { perQuestionResult: {} },
       STATUS: status,
     };
   });
@@ -198,6 +199,30 @@ describe("QuestionPalette status icon parity", () => {
       const valueNode = legendIcon.querySelector(".gate-status-icon__value");
       expect(valueNode.textContent.trim()).toBe("1");
     });
+  });
+
+  test("marks review tiles when question time exceeds three minutes", () => {
+    mockContextValue.resultSummary = {
+      perQuestionResult: {
+        "ga:2": {
+          timeSpentSeconds: 181,
+          timeExceededThreshold: true,
+        },
+      },
+    };
+
+    render(
+      <QuestionPalette
+        isCollapsed={false}
+        isReviewPhase
+        onToggleCollapsed={() => { }}
+      />
+    );
+
+    const slowTile = screen.getByTestId("tile-status-answered");
+    expect(slowTile.getAttribute("data-time-warning")).toBe("true");
+    expect(slowTile.getAttribute("title")).toBe("Time spent: 3m 01s");
+    expect(slowTile.className).toContain("gate-tile--slow-time");
   });
 });
 

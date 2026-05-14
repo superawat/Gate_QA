@@ -189,6 +189,15 @@ const computeDurationForCustomCount = (rawCount) => {
 };
 
 const formatSectionAvailability = (gaCount, csCount) => `${gaCount} GA / ${csCount} CS`;
+const formatSectionRequirement = (gaCount, csCount, questionCount = null) => {
+    const total = Number.isFinite(Number(questionCount))
+        ? Number(questionCount)
+        : Number(gaCount || 0) + Number(csCount || 0);
+    if (!Number.isFinite(total) || total <= 0) {
+        return `${gaCount} GA / ${csCount} CS`;
+    }
+    return `${gaCount} GA / ${csCount} CS (${total} Questions)`;
+};
 
 const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYearSetKey = "") => ({
     minYear,
@@ -627,17 +636,35 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             if (!selectedPaperYearSetKey) {
                 return {
                     canStart: false,
-                    requiredSummary: "10 GA + 55 CS",
+                    requiredSummary: "Paper dependent",
                     availableSummary: "0",
                     message: "Select a validated year/set paper to continue.",
                 };
             }
 
             const isReadyPaper = Boolean(selectedPaper?.paperReady);
+            const requiredGaCount = Number.parseInt(
+                String(selectedPaper?.requiredGaCount ?? MOCK_SECTION_COUNTS.GA),
+                10
+            );
+            const requiredCsCount = Number.parseInt(
+                String(selectedPaper?.requiredCsCount ?? MOCK_SECTION_COUNTS.CS),
+                10
+            );
+            const requiredQuestionCount = Number.parseInt(
+                String(selectedPaper?.requiredQuestionCount ?? (MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS)),
+                10
+            );
 
             return {
                 canStart: isReadyPaper,
-                requiredSummary: "10 GA + 55 CS",
+                requiredSummary: formatSectionRequirement(
+                    Number.isFinite(requiredGaCount) ? requiredGaCount : MOCK_SECTION_COUNTS.GA,
+                    Number.isFinite(requiredCsCount) ? requiredCsCount : MOCK_SECTION_COUNTS.CS,
+                    Number.isFinite(requiredQuestionCount)
+                        ? requiredQuestionCount
+                        : (MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS)
+                ),
                 availableSummary: paperSectionSummary,
                 message: isReadyPaper
                     ? ""
@@ -832,7 +859,25 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         if (selectedKind.id === "paper_mode") {
             gaQuestions = paperGaQuestions;
             csQuestions = paperCsQuestions;
-            strictSectionCounts = { ...MOCK_SECTION_COUNTS };
+            const requiredGaCount = Number.parseInt(
+                String(selectedPaper?.requiredGaCount ?? MOCK_SECTION_COUNTS.GA),
+                10
+            );
+            const requiredCsCount = Number.parseInt(
+                String(selectedPaper?.requiredCsCount ?? MOCK_SECTION_COUNTS.CS),
+                10
+            );
+            strictSectionCounts = {
+                GA: Number.isFinite(requiredGaCount) ? Math.max(0, requiredGaCount) : MOCK_SECTION_COUNTS.GA,
+                CS: Number.isFinite(requiredCsCount) ? Math.max(0, requiredCsCount) : MOCK_SECTION_COUNTS.CS,
+            };
+            const selectedPaperDurationMinutes = Number.parseInt(
+                String(selectedPaper?.durationMinutes ?? ""),
+                10
+            );
+            if (Number.isFinite(selectedPaperDurationMinutes) && selectedPaperDurationMinutes > 0) {
+                durationMinutes = selectedPaperDurationMinutes;
+            }
             selectedPaperLabel = selectedPaper?.label || QuestionService.formatYearSetLabel(selectedPaperYearSetKey || "");
         } else if (selectedKind.id === "full_length") {
             const selection = buildStrictGeneratedSelection(scorableQuestions, questionMetaByUid);

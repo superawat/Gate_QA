@@ -12,6 +12,7 @@
  *
  * Usage:
  *   node scripts/pipeline/scrape.mjs [--year 2026]
+ *   node scripts/pipeline/scrape.mjs [--year 2027] --dry-run
  */
 
 import fs from "node:fs";
@@ -62,6 +63,60 @@ function extractGateOverflowId(link = "") {
 function buildUid(link) {
     const goId = extractGateOverflowId(link);
     return goId ? `go:${goId}` : null;
+}
+
+function parseInteger(value, fallback = 0) {
+    const parsed = Number.parseInt(String(value ?? ""), 10);
+    return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function extractUpvoteMetadata(doc) {
+    if (!doc) {
+        return null;
+    }
+
+    const cleanText = (value = "") => String(value || "")
+        .replace(/\u00a0/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const questionVoteNode =
+        doc.querySelector(".qa-q-view .qa-netvote-count-data")
+        || doc.querySelector(".qa-q-view .qa-vote-count")
+        || doc.querySelector(".qa-voting .qa-netvote-count-data");
+    const questionUpvotes = parseInteger(cleanText(questionVoteNode?.textContent || "0"), 0);
+
+    const answerNodes = Array.from(doc.querySelectorAll("article.qa-a-list-item"));
+    let answerUpvotes = 0;
+    let maxAnswerUpvotes = 0;
+    let selectedAnswerUpvotes = 0;
+    for (const node of answerNodes) {
+        const voteNode = node.querySelector(".qa-netvote-count-data");
+        const votes = parseInteger(cleanText(voteNode?.textContent || "0"), 0);
+        answerUpvotes += votes;
+        maxAnswerUpvotes = Math.max(maxAnswerUpvotes, votes);
+        if (node.classList.contains("qa-a-list-item-selected")) {
+            selectedAnswerUpvotes = votes;
+        }
+    }
+
+    const viewsNode = doc.querySelector(".qa-view-count, .qa-q-view-stats");
+    let views = 0;
+    if (viewsNode) {
+        const match = String(viewsNode.textContent || "").match(/([\d,]+)\s*view/i);
+        if (match) {
+            views = parseInteger(match[1].replace(/,/g, ""), 0);
+        }
+    }
+
+    return {
+        questionUpvotes,
+        answerUpvotes,
+        maxAnswerUpvotes,
+        selectedAnswerUpvotes,
+        answerCount: answerNodes.length,
+        views,
+    };
 }
 
 async function fetchWithRetry(url) {
@@ -246,6 +301,7 @@ async function scrapeQuestion(url) {
 
     // Year tag
     const yearTag = tags.find((t) => /^gatecse/i.test(t)) || "";
+    const upvoteMeta = extractUpvoteMetadata(doc);
 
     return {
         title,
@@ -253,6 +309,7 @@ async function scrapeQuestion(url) {
         link: url,
         question: questionHtml,
         tags,
+        upvote_meta: upvoteMeta,
     };
 }
 
@@ -262,9 +319,13 @@ async function main() {
     // Parse args
     const args = process.argv.slice(2);
     let forceYear = null;
+    let dryRun = false;
     for (let i = 0; i < args.length; i++) {
         if (args[i] === "--year" && args[i + 1]) {
             forceYear = parseInt(args[i + 1], 10);
+        }
+        if (args[i] === "--dry-run") {
+            dryRun = true;
         }
     }
 
@@ -276,7 +337,7 @@ async function main() {
     }
 
     const targetYear = forceYear || state.nextTargetYear;
-    console.log(`\n🔍 FEAT-003 Stage 1 — Scrape for year ${targetYear}\n`);
+    console.log(`\n🔍 FEAT-003 Stage 1 — Scrape for year ${targetYear}${dryRun ? " (dry-run)" : ""}\n`);
 
     // Load existing UIDs for deduplication
     const existingUids = new Set();
@@ -290,6 +351,40 @@ async function main() {
         }
     }
     console.log(`  Loaded ${existingUids.size} existing UIDs for dedup\n`);
+
+    if (dryRun) {
+        const now = new Date();
+        const currentYearUtc = now.getUTCFullYear();
+        const currentMonthUtc = now.getUTCMonth() + 1;
+        const inReleaseWindow = currentMonthUtc === 4 || currentMonthUtc === 10;
+        const tagCandidates = buildTagCandidates(targetYear);
+        const reportPath = path.join(
+            AUDIT_DIR,
+            `pipeline-readiness-scrape-${targetYear}.json`
+        );
+
+        writeJson(reportPath, {
+            year: targetYear,
+            dryRun: true,
+            timestamp: now.toISOString(),
+            currentYearUtc,
+            currentMonthUtc,
+            inReleaseWindow,
+            stateNextTargetYear: state.nextTargetYear,
+            existingUidCount: existingUids.size,
+            tagCandidates,
+            status: targetYear > currentYearUtc ? "future_target_ready" : "ready_to_probe",
+            notes: [
+                "Dry-run mode skips network scraping and robots-delay waits.",
+                "Use this preflight to verify year targeting and tag-candidate generation.",
+            ],
+        });
+        console.log(`  Dry-run readiness report: ${reportPath}`);
+        writeGithubOutput("new_question_count", 0);
+        writeGithubOutput("target_year", targetYear);
+        writeGithubOutput("dry_run", true);
+        return;
+    }
 
     // Discover active tags for this year
     const activeTags = await discoverActiveTags(targetYear);

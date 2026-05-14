@@ -1,3 +1,8 @@
+import {
+  MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
+  normalizeMockTimeSpentSeconds,
+} from "./mockTest";
+
 export const MOCK_TEST_HISTORY_STORAGE_KEY = "gateqa_mock_history_v1";
 const MAX_MOCK_TEST_HISTORY_ENTRIES = 12;
 
@@ -25,6 +30,7 @@ const normalizeQuestionRecord = (question = {}) => {
 
   const section = String(question.section || "").trim().toUpperCase();
   const orderIndex = Number.parseInt(String(question.orderIndex ?? ""), 10);
+  const timeSpentSeconds = normalizeMockTimeSpentSeconds(question.timeSpentSeconds);
 
   return {
     questionUid,
@@ -33,6 +39,8 @@ const normalizeQuestionRecord = (question = {}) => {
     orderIndex: Number.isFinite(orderIndex) && orderIndex > 0 ? orderIndex : null,
     type: String(question.type || "").trim().toUpperCase(),
     scoreDelta: Number.isFinite(Number(question.scoreDelta)) ? Number(question.scoreDelta) : 0,
+    timeSpentSeconds,
+    timeExceededThreshold: timeSpentSeconds > MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
   };
 };
 
@@ -42,12 +50,47 @@ const normalizeQuestionRecordList = (questions = []) => (
     .filter(Boolean)
 );
 
+const normalizeTimeAnalysis = (entry = {}, questionRecords = []) => {
+  const thresholdSeconds = normalizeMockTimeSpentSeconds(entry?.slowThresholdSeconds)
+    || MOCK_SLOW_QUESTION_THRESHOLD_SECONDS;
+  const fallbackTotalSeconds = questionRecords.reduce(
+    (sum, question) => sum + normalizeMockTimeSpentSeconds(question.timeSpentSeconds),
+    0
+  );
+  const totalSeconds = normalizeMockTimeSpentSeconds(entry?.totalSeconds || fallbackTotalSeconds);
+  const slowQuestionCount = Number.isFinite(Number(entry?.slowQuestionCount))
+    ? Math.max(0, Math.round(Number(entry.slowQuestionCount)))
+    : questionRecords.filter((question) => (
+      normalizeMockTimeSpentSeconds(question.timeSpentSeconds) > thresholdSeconds
+    )).length;
+
+  return {
+    totalSeconds,
+    averageSeconds: Number.isFinite(Number(entry?.averageSeconds))
+      ? Math.max(0, Math.round(Number(entry.averageSeconds)))
+      : (questionRecords.length > 0 ? Math.round(totalSeconds / questionRecords.length) : 0),
+    slowQuestionCount,
+    slowThresholdSeconds: thresholdSeconds,
+  };
+};
+
 const normalizeAttemptEntry = (entry = {}) => {
   const submittedAt = String(entry.submittedAt || "").trim();
   const id = String(entry.id || submittedAt || "").trim();
   if (!id || !submittedAt) {
     return null;
   }
+
+  const correctQuestions = normalizeQuestionRecordList(entry.correctQuestions);
+  const incorrectQuestions = normalizeQuestionRecordList(entry.incorrectQuestions);
+  const unansweredQuestions = normalizeQuestionRecordList(entry.unansweredQuestions);
+  const bonusQuestions = normalizeQuestionRecordList(entry.bonusQuestions);
+  const questionRecords = [
+    ...correctQuestions,
+    ...incorrectQuestions,
+    ...unansweredQuestions,
+    ...bonusQuestions,
+  ];
 
   return {
     id,
@@ -64,10 +107,11 @@ const normalizeAttemptEntry = (entry = {}) => {
     incorrect: Number.isFinite(Number(entry.incorrect)) ? Number(entry.incorrect) : 0,
     unanswered: Number.isFinite(Number(entry.unanswered)) ? Number(entry.unanswered) : 0,
     bonus: Number.isFinite(Number(entry.bonus)) ? Number(entry.bonus) : 0,
-    correctQuestions: normalizeQuestionRecordList(entry.correctQuestions),
-    incorrectQuestions: normalizeQuestionRecordList(entry.incorrectQuestions),
-    unansweredQuestions: normalizeQuestionRecordList(entry.unansweredQuestions),
-    bonusQuestions: normalizeQuestionRecordList(entry.bonusQuestions),
+    timeAnalysis: normalizeTimeAnalysis(entry.timeAnalysis, questionRecords),
+    correctQuestions,
+    incorrectQuestions,
+    unansweredQuestions,
+    bonusQuestions,
   };
 };
 
@@ -165,6 +209,7 @@ export const buildMockAttemptHistoryEntry = ({
       orderIndex: meta.orderIndex || result.orderIndex,
       type: meta.type || result.type,
       scoreDelta: result.scoreDelta,
+      timeSpentSeconds: result.timeSpentSeconds,
     });
 
     if (!record) {
@@ -204,6 +249,7 @@ export const buildMockAttemptHistoryEntry = ({
     incorrect: resultSummary.incorrect,
     unanswered: resultSummary.unanswered,
     bonus: resultSummary.bonus || 0,
+    timeAnalysis: resultSummary.timeAnalysis,
     correctQuestions,
     incorrectQuestions,
     unansweredQuestions,

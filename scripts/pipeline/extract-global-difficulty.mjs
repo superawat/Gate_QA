@@ -1,23 +1,21 @@
 #!/usr/bin/env node
 
 /**
- * 6.8.1 — Extract Global Difficulty from existing question metadata.
+ * 6.8.1 - Global Difficulty extraction.
  *
- * Reads questions-with-answers.json and derives a global difficulty score
- * for every question based on community-tagged signals:
- *   - GateOverflow tags: "easy", "hard", "difficult"
- *   - Mark weight: "one-mark" → lighter, "two-marks" → harder
- *   - Subject complexity heuristic (optional, secondary signal)
- *
- * When upvote data is available (from scrape-upvotes.mjs), it can be
- * merged in to override/supplement the tag-based heuristic.
+ * Computes a global difficulty score for each GateOverflow question UID
+ * using:
+ *   1) Community tags (easy/hard)
+ *   2) Marks weight (one-mark/two-marks)
+ *   3) Subject complexity heuristic
+ *   4) Optional upvote metadata merge
  *
  * Output: public/data/global-difficulty.json
- *   { "go:<id>": { score, label, signals }, ... }
  *
  * Usage:
  *   node scripts/pipeline/extract-global-difficulty.mjs
- *   node scripts/pipeline/extract-global-difficulty.mjs --merge upvotes.json
+ *   node scripts/pipeline/extract-global-difficulty.mjs --merge audit/gateoverflow-upvotes.json
+ *   node scripts/pipeline/extract-global-difficulty.mjs --merge audit/gateoverflow-upvotes.json --pretty
  */
 
 import fs from "node:fs";
@@ -28,24 +26,8 @@ const ROOT = path.resolve(
   "../.."
 );
 const QUESTIONS_PATH = path.join(ROOT, "public", "questions-with-answers.json");
-const OUTPUT_DIR = path.join(ROOT, "public", "data");
-const OUTPUT_PATH = path.join(OUTPUT_DIR, "global-difficulty.json");
+const DEFAULT_OUTPUT_PATH = path.join(ROOT, "public", "data", "global-difficulty.json");
 
-// ── Helpers ─────────────────────────────────────────────────────────────
-
-function extractGateOverflowId(link = "") {
-  const match = String(link || "")
-    .trim()
-    .match(/(?:https?:\/\/)?(?:www\.)?gateoverflow\.in\/(\d+)(?:[/?#]|$)/i);
-  return match ? match[1] : null;
-}
-
-function buildUid(link) {
-  const goId = extractGateOverflowId(link);
-  return goId ? `go:${goId}` : null;
-}
-
-// Subjects that are inherently more conceptually challenging
 const HARD_SUBJECTS = new Set([
   "theory-of-computation",
   "compiler-design",
@@ -61,28 +43,187 @@ const MEDIUM_SUBJECTS = new Set([
   "co-and-architecture",
 ]);
 
-// ── Scoring Logic ───────────────────────────────────────────────────────
+const META_TAGS = new Set([
+  "easy",
+  "hard",
+  "difficult",
+  "one-mark",
+  "two-marks",
+  "2-marks",
+  "marks-to-all",
+]);
 
-/**
- * Compute a global difficulty score (0–100) for a question based on
- * available signals.
- *
- * Signal weights:
- *   - Community tag ("easy"/"hard"): strongest signal (±30)
- *   - Mark weight ("one-mark"/"two-marks"): moderate signal (±10)
- *   - Subject heuristic: weak signal (±5)
- *   - Upvote ratio (when available): strong signal (0–40)
- *
- * Base score starts at 50 (unknown).
- */
-function computeGlobalDifficulty(question, upvoteData = null) {
-  const tags = (question.tags || []).map((t) => t.toLowerCase().trim());
-  const uid = buildUid(question.link);
+const LABELS = {
+  EASY: "Easy",
+  MEDIUM: "Medium",
+  HARD: "Hard",
+};
+
+function readJson(filePath, fallback = null) {
+  if (!fs.existsSync(filePath)) {
+    return fallback;
+  }
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function extractGateOverflowId(link = "") {
+  const match = String(link || "")
+    .trim()
+    .match(/(?:https?:\/\/)?(?:www\.)?gateoverflow\.in\/(\d+)(?:[/?#]|$)/i);
+  return match ? match[1] : null;
+}
+
+function buildUidFromLink(link = "") {
+  const goId = extractGateOverflowId(link);
+  return goId ? `go:${goId}` : null;
+}
+
+function normalizeUid(rawUid = "") {
+  const value = String(rawUid || "").trim();
+  if (!value) return null;
+  if (/^go:\d+$/i.test(value)) {
+    return value.toLowerCase();
+  }
+  if (/^\d+$/.test(value)) {
+    return `go:${value}`;
+  }
+  const extracted = extractGateOverflowId(value);
+  return extracted ? `go:${extracted}` : null;
+}
+
+function parseArgs(argv = []) {
+  let mergePath = null;
+  let outputPath = DEFAULT_OUTPUT_PATH;
+  let pretty = false;
+
+  for (let i = 0; i < argv.length; i += 1) {
+    if (argv[i] === "--merge" && argv[i + 1]) {
+      mergePath = path.resolve(ROOT, argv[i + 1]);
+      i += 1;
+      continue;
+    }
+    if (argv[i] === "--out" && argv[i + 1]) {
+      outputPath = path.resolve(ROOT, argv[i + 1]);
+      i += 1;
+      continue;
+    }
+    if (argv[i] === "--pretty") {
+      pretty = true;
+    }
+  }
+
+  return { mergePath, outputPath, pretty };
+}
+
+function toNumber(value, fallback = 0) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function normalizeUpvoteRecord(raw = {}) {
+  const questionUpvotes = Math.max(0, Math.round(toNumber(
+    raw.questionUpvotes ?? raw.question_upvotes ?? raw.question_votes ?? raw.qVotes ?? raw.qUpvotes
+  )));
+  const answerUpvotes = Math.max(0, Math.round(toNumber(
+    raw.answerUpvotes ?? raw.answer_upvotes ?? raw.answer_votes ?? raw.totalAnswerUpvotes ?? raw.aVotes ?? raw.aUpvotes
+  )));
+  const maxAnswerUpvotes = Math.max(0, Math.round(toNumber(
+    raw.maxAnswerUpvotes ?? raw.max_answer_upvotes ?? raw.topAnswerUpvotes ?? raw.highestAnswerUpvotes
+  )));
+  const selectedAnswerUpvotes = Math.max(0, Math.round(toNumber(
+    raw.selectedAnswerUpvotes ?? raw.selected_answer_upvotes ?? raw.acceptedAnswerUpvotes
+  )));
+  const answerCount = Math.max(0, Math.round(toNumber(raw.answerCount ?? raw.answers)));
+  const views = Math.max(0, Math.round(toNumber(raw.views ?? raw.viewCount ?? raw.viewsCount)));
+
+  return {
+    questionUpvotes,
+    answerUpvotes,
+    maxAnswerUpvotes,
+    selectedAnswerUpvotes,
+    answerCount,
+    views,
+  };
+}
+
+function pickUpvoteContainer(payload) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    return {};
+  }
+  if (payload.records && typeof payload.records === "object") return payload.records;
+  if (payload.byUid && typeof payload.byUid === "object") return payload.byUid;
+  if (payload.by_uid && typeof payload.by_uid === "object") return payload.by_uid;
+  if (payload.byQuestionUid && typeof payload.byQuestionUid === "object") return payload.byQuestionUid;
+  if (payload.by_question_uid && typeof payload.by_question_uid === "object") return payload.by_question_uid;
+  if (payload.upvotes && typeof payload.upvotes === "object") return payload.upvotes;
+  return payload;
+}
+
+function loadUpvoteMap(mergePath) {
+  if (!mergePath) {
+    return { map: {}, loaded: false, records: 0 };
+  }
+  if (!fs.existsSync(mergePath)) {
+    console.warn(`  [warn] Upvote file not found: ${mergePath}`);
+    return { map: {}, loaded: false, records: 0 };
+  }
+
+  const payload = readJson(mergePath, {});
+  const container = pickUpvoteContainer(payload);
+  const map = {};
+
+  for (const [rawUid, rawValue] of Object.entries(container || {})) {
+    const uid = normalizeUid(rawUid);
+    if (!uid || !rawValue || typeof rawValue !== "object") {
+      continue;
+    }
+    map[uid] = normalizeUpvoteRecord(rawValue);
+  }
+
+  console.log(`  Loaded upvote records: ${Object.keys(map).length} (${mergePath})`);
+  return {
+    map,
+    loaded: true,
+    records: Object.keys(map).length,
+  };
+}
+
+function resolveQuestionUid(question = {}) {
+  const explicitUid = normalizeUid(question.question_uid || question.uid || "");
+  if (explicitUid) return explicitUid;
+  return buildUidFromLink(question.link);
+}
+
+function computeUpvoteSignal(upvote = null) {
+  if (!upvote) return 0;
+  const q = Math.max(0, toNumber(upvote.questionUpvotes, 0));
+  const a = Math.max(0, toNumber(upvote.answerUpvotes, 0));
+  const selected = Math.max(0, toNumber(upvote.selectedAnswerUpvotes, 0));
+  const answerCount = Math.max(0, toNumber(upvote.answerCount, 0));
+  const views = Math.max(0, toNumber(upvote.views, 0));
+
+  const questionComponent = Math.log2(q + 1) * 8;
+  const answerComponent = Math.log2(a + 1) * 4;
+  const selectedComponent = Math.log2(selected + 1) * 2;
+  const discussionComponent = answerCount >= 5 ? 10 : answerCount >= 3 ? 6 : answerCount >= 2 ? 3 : 0;
+  const viewsComponent = Math.min(4, Math.log2((views / 1000) + 1) * 2);
+
+  return Math.min(
+    40,
+    Math.max(0, Math.round(
+      questionComponent + answerComponent + selectedComponent + discussionComponent + viewsComponent
+    ))
+  );
+}
+
+function computeGlobalDifficulty(question, upvoteMap = {}) {
+  const tags = (Array.isArray(question.tags) ? question.tags : [])
+    .map((tag) => String(tag || "").trim().toLowerCase())
+    .filter(Boolean);
+  const uid = resolveQuestionUid(question);
   const signals = [];
+  let score = 50;
 
-  let score = 50; // neutral baseline
-
-  // ── Signal 1: Community difficulty tag (strongest tag-based signal)
   if (tags.includes("easy")) {
     score -= 30;
     signals.push("tag:easy");
@@ -91,7 +232,6 @@ function computeGlobalDifficulty(question, upvoteData = null) {
     signals.push("tag:hard");
   }
 
-  // ── Signal 2: Mark weight
   if (tags.includes("one-mark")) {
     score -= 10;
     signals.push("marks:1");
@@ -100,16 +240,9 @@ function computeGlobalDifficulty(question, upvoteData = null) {
     signals.push("marks:2");
   }
 
-  // ── Signal 3: Subject complexity heuristic
-  const subjectTags = tags.filter(
-    (t) =>
-      !t.startsWith("gatecse") &&
-      !t.startsWith("gate") &&
-      !["easy", "hard", "difficult", "one-mark", "two-marks", "2-marks", "marks-to-all"].includes(t)
-  );
-  const hasHardSubject = subjectTags.some((t) => HARD_SUBJECTS.has(t));
-  const hasMediumSubject = subjectTags.some((t) => MEDIUM_SUBJECTS.has(t));
-
+  const subjectTags = tags.filter((tag) => !tag.startsWith("gate") && !META_TAGS.has(tag));
+  const hasHardSubject = subjectTags.some((tag) => HARD_SUBJECTS.has(tag));
+  const hasMediumSubject = subjectTags.some((tag) => MEDIUM_SUBJECTS.has(tag));
   if (hasHardSubject) {
     score += 5;
     signals.push("subject:hard");
@@ -118,91 +251,68 @@ function computeGlobalDifficulty(question, upvoteData = null) {
     signals.push("subject:medium");
   }
 
-  // ── Signal 4: Upvote data (when available from scrape-upvotes.mjs)
-  if (upvoteData && uid && upvoteData[uid]) {
-    const upvotes = upvoteData[uid];
-    const qUpvotes = Number(upvotes.questionUpvotes) || 0;
-    const aUpvotes = Number(upvotes.answerUpvotes) || 0;
-    const views = Number(upvotes.views) || 0;
-    const answerCount = Number(upvotes.answerCount) || 0;
+  let usedUpvotes = false;
+  const mergedUpvote = uid ? upvoteMap[uid] : null;
+  const inlineUpvote = question?.upvote_meta && typeof question.upvote_meta === "object"
+    ? normalizeUpvoteRecord(question.upvote_meta)
+    : null;
+  const upvoteMeta = mergedUpvote || inlineUpvote;
 
-    // High question upvotes → more discussed → often harder/tricky
-    // High answer upvotes → clear explanation needed → often tricky
-    // Many answers → controversial → harder
-    const upvoteSignal = Math.min(40, Math.round(
-      (Math.log2(qUpvotes + 1) * 8) +
-      (Math.log2(aUpvotes + 1) * 4) +
-      (answerCount > 3 ? 10 : answerCount > 1 ? 5 : 0)
-    ));
-
+  if (upvoteMeta) {
+    usedUpvotes = true;
+    const upvoteSignal = computeUpvoteSignal(upvoteMeta);
     score += upvoteSignal;
-    signals.push(`upvotes:q${qUpvotes}:a${aUpvotes}:v${views}:ans${answerCount}`);
+    signals.push(
+      `upvotes:q${upvoteMeta.questionUpvotes}:a${upvoteMeta.answerUpvotes}:sel${upvoteMeta.selectedAnswerUpvotes}:ans${upvoteMeta.answerCount}:v${upvoteMeta.views}:s${upvoteSignal}`
+    );
   }
 
-  // Clamp to 0–100
   score = Math.max(0, Math.min(100, score));
+  let label = LABELS.MEDIUM;
+  if (score >= 70) label = LABELS.HARD;
+  else if (score < 35) label = LABELS.EASY;
 
-  // Derive label
-  let label = "Medium";
-  if (score >= 70) label = "Hard";
-  else if (score < 35) label = "Easy";
-
-  return { score, label, signals };
+  return { score, label, signals, usedUpvotes };
 }
 
-// ── Main ────────────────────────────────────────────────────────────────
-
 function main() {
-  // Parse args for optional upvote merge
-  const args = process.argv.slice(2);
-  let upvotePath = null;
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--merge" && args[i + 1]) {
-      upvotePath = path.resolve(ROOT, args[i + 1]);
-    }
+  const { mergePath, outputPath, pretty } = parseArgs(process.argv.slice(2));
+  const questions = readJson(QUESTIONS_PATH, []);
+  if (!Array.isArray(questions) || questions.length === 0) {
+    console.error("No questions found in questions-with-answers.json");
+    process.exit(1);
   }
 
-  let upvoteData = null;
-  if (upvotePath && fs.existsSync(upvotePath)) {
-    upvoteData = JSON.parse(fs.readFileSync(upvotePath, "utf8"));
-    console.log(`  📊 Loaded upvote data from ${upvotePath}`);
-  }
+  console.log("\n6.8.1 - Extract Global Difficulty\n");
+  console.log(`  Questions: ${questions.length}`);
 
-  // Read questions
-  const questions = JSON.parse(fs.readFileSync(QUESTIONS_PATH, "utf8"));
-  console.log(`\n🔍 6.8.1 — Extract Global Difficulty\n`);
-  console.log(`  Total questions: ${questions.length}`);
+  const upvoteSource = loadUpvoteMap(mergePath);
+  const upvoteMap = upvoteSource.map || {};
 
-  // Build difficulty map
   const difficultyMap = {};
-  const stats = { Easy: 0, Medium: 0, Hard: 0, skipped: 0 };
+  const stats = { Easy: 0, Medium: 0, Hard: 0, skipped: 0, upvoteMatched: 0 };
 
   for (const question of questions) {
-    const uid = buildUid(question.link);
+    const uid = resolveQuestionUid(question);
     if (!uid) {
-      stats.skipped++;
+      stats.skipped += 1;
       continue;
     }
 
-    const result = computeGlobalDifficulty(question, upvoteData);
+    const result = computeGlobalDifficulty(question, upvoteMap);
     difficultyMap[uid] = {
-      s: result.score,       // score (0–100)
-      l: result.label[0],    // label initial: "E", "M", "H"
-      g: result.signals,     // signals array for debugging
+      s: result.score,
+      l: result.label[0],
+      g: result.signals,
     };
-    stats[result.label]++;
+    stats[result.label] += 1;
+    if (result.usedUpvotes) {
+      stats.upvoteMatched += 1;
+    }
   }
 
-  console.log(`\n  📊 Distribution:`);
-  console.log(`     Easy:   ${stats.Easy}`);
-  console.log(`     Medium: ${stats.Medium}`);
-  console.log(`     Hard:   ${stats.Hard}`);
-  console.log(`     Skipped (no UID): ${stats.skipped}`);
-
-  // Write output
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   const output = {
-    version: 1,
+    version: 2,
     generatedAt: new Date().toISOString(),
     questionCount: Object.keys(difficultyMap).length,
     distribution: {
@@ -210,13 +320,26 @@ function main() {
       medium: stats.Medium,
       hard: stats.Hard,
     },
+    upvoteCoverage: {
+      mergedFileUsed: Boolean(upvoteSource.loaded),
+      mergedRecordCount: upvoteSource.records,
+      matchedQuestionCount: stats.upvoteMatched,
+    },
     questions: difficultyMap,
   };
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output), "utf8");
-  const sizeKb = (Buffer.byteLength(JSON.stringify(output)) / 1024).toFixed(1);
-  console.log(`\n  ✅ Written to ${OUTPUT_PATH} (${sizeKb} KB)`);
-  console.log(`     ${Object.keys(difficultyMap).length} questions scored\n`);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  const encoded = pretty ? JSON.stringify(output, null, 2) : JSON.stringify(output);
+  fs.writeFileSync(outputPath, encoded, "utf8");
+  const sizeKb = (Buffer.byteLength(encoded, "utf8") / 1024).toFixed(1);
+
+  console.log("\n  Distribution:");
+  console.log(`    Easy:   ${stats.Easy}`);
+  console.log(`    Medium: ${stats.Medium}`);
+  console.log(`    Hard:   ${stats.Hard}`);
+  console.log(`    Skipped (no UID): ${stats.skipped}`);
+  console.log(`    Upvote matches:   ${stats.upvoteMatched}`);
+  console.log(`\n  Wrote ${outputPath} (${sizeKb} KB)\n`);
 }
 
 main();

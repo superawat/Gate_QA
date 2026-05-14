@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 const DAILY_GOAL_STORAGE_KEY = "gateqa_daily_goal_v1";
-const DEFAULT_GOAL = 10;
+const DEFAULT_GOAL = 5;
 
 export const useDailyGoal = () => {
   const [goal, setGoal] = useState(() => {

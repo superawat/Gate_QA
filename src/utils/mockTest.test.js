@@ -6,7 +6,9 @@ import {
   buildMockQuestionResult,
   buildMockResultSummary,
   formatExpectedAnswer,
+  formatMockTimeSpent,
   hasMeaningfulResponse,
+  MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
 } from "./mockTest";
 
 describe("mockTest utilities", () => {
@@ -25,6 +27,12 @@ describe("mockTest utilities", () => {
       answer: "42",
       tolerance: { abs: 0.01 },
     })).toBe("42 (+/- 0.01)");
+  });
+
+  test("formatMockTimeSpent renders compact minute and second labels", () => {
+    expect(formatMockTimeSpent(0)).toBe("0s");
+    expect(formatMockTimeSpent(65)).toBe("1m 05s");
+    expect(formatMockTimeSpent(180)).toBe("3m");
   });
 
   test("buildMockQuestionResult scores MCQ and NAT correctly", () => {
@@ -119,6 +127,39 @@ describe("mockTest utilities", () => {
       correct: 1,
       unanswered: 1,
       score: 2,
+    });
+  });
+
+  test("buildMockResultSummary attaches per-question timing analysis", () => {
+    const summary = buildMockResultSummary({
+      questions: [
+        { question_uid: "ga:1" },
+        { question_uid: "cs:1" },
+      ],
+      questionMetaByUid: {
+        "ga:1": { questionUid: "ga:1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333 },
+        "cs:1": { questionUid: "cs:1", section: "CS", type: "NAT", marks: 2, negativeMarks: 0 },
+      },
+      questionTimeSpentByUid: {
+        "ga:1": 95,
+        "cs:1": MOCK_SLOW_QUESTION_THRESHOLD_SECONDS + 1,
+      },
+      getAnswerRecord: () => null,
+    });
+
+    expect(summary.perQuestionResult["ga:1"]).toMatchObject({
+      timeSpentSeconds: 95,
+      timeExceededThreshold: false,
+    });
+    expect(summary.perQuestionResult["cs:1"]).toMatchObject({
+      timeSpentSeconds: 181,
+      timeExceededThreshold: true,
+    });
+    expect(summary.timeAnalysis).toMatchObject({
+      totalSeconds: 276,
+      averageSeconds: 138,
+      slowQuestionCount: 1,
+      slowThresholdSeconds: MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
     });
   });
 

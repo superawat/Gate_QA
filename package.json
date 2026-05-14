@@ -20,6 +20,11 @@
   },
   "scripts": {
     "precompute": "node scripts/precompute-subtopics.mjs",
+    "pipeline:readiness": "node scripts/pipeline/readiness-dry-run.mjs",
+    "pipeline:readiness:2027": "node scripts/pipeline/readiness-dry-run.mjs --year 2027",
+    "pipeline:scrape-upvotes": "node scripts/pipeline/scrape-upvotes-browser.mjs --limit 100 --resume",
+    "pipeline:global-difficulty": "node scripts/pipeline/extract-global-difficulty.mjs",
+    "pipeline:global-difficulty:merge-upvotes": "node scripts/pipeline/extract-global-difficulty.mjs --merge audit/gateoverflow-upvotes.json",
     "mirror:question-images": "node scripts/mirror-gateoverflow-images.mjs",
     "build:public-artifacts": "node scripts/mirror-gateoverflow-images.mjs && node scripts/build-public-artifacts.mjs",
     "start": "node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs && node scripts/deployment/sync-calculator.mjs --public && vite",

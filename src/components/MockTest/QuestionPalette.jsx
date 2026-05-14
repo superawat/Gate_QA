@@ -1,5 +1,6 @@
 import React from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
+import { formatMockTimeSpent } from "../../utils/mockTest";
 import GateStatusIcon, {
     GATE_VISUAL_STATUS,
     getGateStatusModifier,
@@ -14,6 +15,7 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
         currentSectionIndex,
         goToQuestion,
         questionStates,
+        resultSummary,
         STATUS,
     } = useMockTest();
 
@@ -119,6 +121,11 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
                                     STATUS
                                 );
                                 const statusModifier = getGateStatusModifier(visualStatus);
+                                const questionResult = resultSummary?.perQuestionResult?.[question.question_uid] || null;
+                                const timeExceeded = isReviewPhase && Boolean(questionResult?.timeExceededThreshold);
+                                const timeLabel = isReviewPhase
+                                    ? `Time spent: ${formatMockTimeSpent(questionResult?.timeSpentSeconds)}`
+                                    : undefined;
 
                                 return (
                                     <button
@@ -126,9 +133,11 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
                                         type="button"
                                         onClick={() => goToQuestion(index, currentSection)}
                                         data-status={visualStatus}
+                                        data-time-warning={timeExceeded ? "true" : undefined}
                                         data-testid={`tile-status-${statusModifier}`}
                                         aria-current={isCurrent ? "true" : undefined}
-                                        className={`palette-btn gate-tile gate-tile--${statusModifier} ${isCurrent ? "gate-current-ring" : ""}`}
+                                        title={timeLabel}
+                                        className={`palette-btn gate-tile gate-tile--${statusModifier} ${timeExceeded ? "gate-tile--slow-time" : ""} ${isCurrent ? "gate-current-ring" : ""}`}
                                     >
                                         <GateStatusIcon
                                             variant="tile"

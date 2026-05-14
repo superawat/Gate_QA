@@ -144,6 +144,8 @@ describe("MockTestQuestion", () => {
       status: "correct",
       scoreDelta: 2,
       response: "42",
+      timeSpentSeconds: 181,
+      timeExceededThreshold: true,
       answerRecord: {
         type: "NAT",
         answer: "42",
@@ -159,6 +161,7 @@ describe("MockTestQuestion", () => {
     expect(screen.getByText("Correct")).toBeTruthy();
     expect(screen.getByText(/Expected answer: 42 \(\+\/- 0.01\)/)).toBeTruthy();
     expect(screen.getByText("Score change: +2")).toBeTruthy();
+    expect(screen.getByText("Time spent: 3m 01s (over 3 min)")).toBeTruthy();
   });
 
   test("review mode highlights correct and incorrect MCQ options from result data", () => {

@@ -308,13 +308,13 @@ const SolvePage = ({
       : "Direct question link";
   const heroMetaChips = (
     <>
-      <span className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+      <span className="rounded-full bg-[color:var(--color-neutral-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-neutral-text)]">
         {questionYearLabel}
       </span>
-      <span className="rounded-full bg-sky-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-700">
+      <span className="rounded-full bg-[color:var(--color-info-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-info-text)]">
         {questionSubjectLabel}
       </span>
-      <span className="rounded-full bg-violet-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-violet-700">
+      <span className="rounded-full bg-[color:var(--color-purple-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
         {questionType}
       </span>
       {isSolved ? (
@@ -336,14 +336,14 @@ const SolvePage = ({
     <MathRuntimeProvider>
       <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
         <section className="space-y-4">
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white px-4 py-3.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
             <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <button
                     type="button"
                     onClick={handleBackToResults}
-                    className="inline-flex min-h-[38px] items-center rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="inline-flex min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3.5 py-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
                   >
                     <FaArrowLeft className="mr-2" />
                     Back to Results
@@ -353,11 +353,11 @@ const SolvePage = ({
                 </div>
                 <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
-                    <h1 className="text-[clamp(1.9rem,2.7vw,2.85rem)] font-semibold leading-tight text-slate-950">
+                    <h1 className="text-[clamp(1.9rem,2.7vw,2.85rem)] font-semibold leading-tight text-[color:var(--color-text)]">
                       {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
                     </h1>
                     {(navigationState.canGoPrevious || navigationState.canGoNext) ? (
-                      <p className="mt-2 text-sm text-slate-500 md:hidden">
+                      <p className="mt-2 text-sm text-[color:var(--color-text-muted)] md:hidden">
                         Swipe left or right on the question card to move through this session.
                       </p>
                     ) : null}
@@ -366,10 +366,10 @@ const SolvePage = ({
               </div>
 
               <div className="flex items-start justify-end gap-2 lg:pt-0.5">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-right sm:min-w-[188px]">
+                <div className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2 text-right sm:min-w-[188px]">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{navigationContextLabel}</p>
-                    <p className="text-sm font-semibold text-slate-900">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
+                    <p className="text-sm font-semibold text-[color:var(--color-text)]">
                       {navigationSummary}
                     </p>
                   </div>
@@ -420,7 +420,7 @@ const SolvePage = ({
               </button>
             </div>
           ) : (loading && !isInitialized) || (isAptitudeQuestion && aptitudeEnabled && aptitudeLoading && !indexedQuestion) ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading Solve page..."
                 size="lg"
@@ -429,9 +429,9 @@ const SolvePage = ({
               />
             </div>
           ) : !indexedQuestion ? (
-            <div className="rounded-[var(--radius-card)] border border-dashed border-slate-300 bg-white p-10 text-center shadow-[var(--shadow-soft)]">
-              <h2 className="text-xl font-semibold text-slate-900">Question not found.</h2>
-              <p className="mt-2 text-sm text-slate-600">
+            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 text-center shadow-[var(--shadow-soft)]">
+              <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Question not found.</h2>
+              <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
                 This question UID is not available in the current index. Try going back to Explore and opening another result.
               </p>
             </div>
@@ -447,7 +447,7 @@ const SolvePage = ({
               </button>
             </div>
           ) : isQuestionDetailLoading || !resolvedQuestion ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading question detail..."
                 size="lg"
