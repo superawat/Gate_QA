@@ -1,4 +1,4 @@
-const ALLOWED_OPTIONS = new Set(["A", "B", "C", "D"]);
+const ALLOWED_OPTIONS = new Set(["A", "B", "C", "D", "E"]);
 
 function normalizeMsqInput(input) {
   if (!Array.isArray(input)) {
@@ -66,4 +66,3 @@ export function evaluateAnswer(record, userInput) {
 
   return { status: "unsupported_type", correct: false };
 }
-

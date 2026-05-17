@@ -11,7 +11,7 @@ import {
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 
-const OPTION_LABELS = ["A", "B", "C", "D"];
+const OPTION_LABELS = QuestionService.OPTION_LABELS;
 
 const formatNegativeMarks = (value) => {
     const numericValue = Number(value);
@@ -112,8 +112,6 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         .replace(/\n\n/g, "<br />")
         .replace(/\n<li>/g, "<br><li>");
 
-    const sanitizedQuestionHtml = DOMPurify.sanitize(rawQuestionHtml);
-
     const normalizedOptions = useMemo(
         () => QuestionService.getNormalizedOptions(currentQuestion),
         [currentQuestion]
@@ -125,6 +123,10 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         () => QuestionService.normalizeQuestionOptionsFromRaw(currentQuestion?.options || []),
         [currentQuestion]
     );
+    const questionHtmlForDisplay = normalizedOptions.length > 0 || explicitOptions.length > 0
+        ? stripEmbeddedOptions(rawQuestionHtml)
+        : rawQuestionHtml;
+    const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtmlForDisplay);
 
     const sectionTotal = currentSection === "CS"
         ? sectionQuestionUids.CS.length

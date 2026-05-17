@@ -178,7 +178,7 @@ describe("MockTestContext", () => {
     });
   });
 
-  test("adds standalone aptitude questions to the mock GA pool and keeps progress isolated", async () => {
+  test("excludes aptitude questions from mock pool during beta period", async () => {
     const aptitudeQuestion = buildAptitudeQuestion("APT-ENG-0001", "English", "Spot the Error");
     aptitudeMock.questions = [aptitudeQuestion];
 
@@ -204,40 +204,13 @@ describe("MockTestContext", () => {
     await waitFor(() => {
       expect(latest.catalogLoading).toBe(false);
       expect(latest.aptitudeMockLoading).toBe(false);
-      expect(latest.mockQuestionPool).toEqual([
-        expect.objectContaining({ question_uid: "APT-ENG-0001" }),
-      ]);
-      expect(latest.questionMetaByUid["APT-ENG-0001"]).toMatchObject({
-        section: "GA",
-        type: "MCQ",
-        marks: 1,
-        scorable: true,
-        source: "aptitude",
-      });
     });
 
-    act(() => {
-      const started = latest.startTest({
-        gaQuestions: [aptitudeQuestion],
-        meta: { kindId: "custom" },
-      });
-      expect(started).toBe(true);
-      latest.saveResponse("APT-ENG-0001", "A");
-      latest.submitTest();
-    });
-
-    await waitFor(() => {
-      expect(latest.testSubmitted).toBe(true);
-      expect(latest.resultSummary).toMatchObject({
-        attempted: 1,
-        correct: 1,
-        score: 1,
-      });
-    });
-
-    expect(mockMarkQuestionsSolved).not.toHaveBeenCalled();
-    expect(JSON.parse(window.localStorage.getItem(APTITUDE_PROGRESS_STORAGE_KEY))).toHaveProperty("APT-ENG-0001");
-    expect(window.localStorage.getItem("gate_qa_solved_questions")).toBeNull();
+    // During Beta, aptitude questions should NOT appear in the mock pool
+    expect(latest.mockQuestionPool.filter(
+      (q) => q.question_uid.startsWith("APT-")
+    )).toHaveLength(0);
+    expect(latest.questionMetaByUid["APT-ENG-0001"]).toBeUndefined();
   });
 
   test("empty NAT values stay unanswered and submitTest stores a result summary", async () => {

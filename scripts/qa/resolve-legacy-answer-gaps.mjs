@@ -239,6 +239,12 @@ const CURATED_RESOLUTIONS = {
     note: "This is Newton-Raphson for x^2 - 9/4 = 0, so the sequence converges to the positive root 1.5.",
     method: "manual_numerical_reasoning",
   },
+  "go:441": {
+    type: "MCQ",
+    answer: "E",
+    note: "The correct statement is forall x (fsa(x) implies exists y (pda(y) and equivalent(x,y))); none of the four parsed options matches it, so the missing legacy option is None of these.",
+    method: "manual_logic_semantics",
+  },
 };
 
 function parseArgs(argv = []) {

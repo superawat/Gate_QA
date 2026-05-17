@@ -161,7 +161,7 @@ const FilterSidebar = ({ className = "", onClose }) => {
                     </div>
 
                     {/* ── Aptitude Section (distinct card) ── */}
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-teal-300/40 bg-gradient-to-br from-teal-50/60 to-emerald-50/40 dark:border-teal-700/30 dark:from-teal-950/20 dark:to-emerald-950/10">
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-pink-300/40 bg-gradient-to-br from-pink-50/60 to-rose-50/40 dark:border-pink-700/30 dark:from-pink-950/20 dark:to-rose-950/10">
                         <div className="px-3 py-3">
                             <AptitudeTopicFilter />
                         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { FaCheck, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
+import { QuestionService } from "../../services/QuestionService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
@@ -10,7 +11,45 @@ import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../
 import { recordPracticeAttempt } from "../../utils/practiceProgress";
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from "../../utils/localStorageState";
 
-const OPTIONS = ["A", "B", "C", "D"];
+const DEFAULT_OPTIONS = ["A", "B", "C", "D"];
+
+const normalizeOptionLabel = (value) => String(value || "").trim().toUpperCase();
+
+const getAnswerRecordOptionLabels = (answerRecord = null) => {
+  const type = String(answerRecord?.type || "").trim().toUpperCase();
+  if (type === "MCQ") {
+    const label = normalizeOptionLabel(answerRecord?.answer);
+    return label ? [label] : [];
+  }
+  if (type === "MSQ" && Array.isArray(answerRecord?.answer)) {
+    return answerRecord.answer.map(normalizeOptionLabel).filter(Boolean);
+  }
+  return [];
+};
+
+const buildSelectableOptionLabels = (question = {}, answerRecord = null) => {
+  const labels = [];
+  const seen = new Set();
+  const addLabel = (rawLabel) => {
+    const label = normalizeOptionLabel(rawLabel);
+    if (!label || seen.has(label)) {
+      return;
+    }
+    seen.add(label);
+    labels.push(label);
+  };
+
+  QuestionService.getNormalizedOptions(question).forEach((option) => {
+    addLabel(option?.label);
+  });
+
+  if (labels.length === 0) {
+    DEFAULT_OPTIONS.forEach(addLabel);
+  }
+
+  getAnswerRecordOptionLabels(answerRecord).forEach(addLabel);
+  return labels;
+};
 
 export default function AnswerPanel({
   question = {},
@@ -40,6 +79,10 @@ export default function AnswerPanel({
   const answerRecord = useMemo(
     () => AnswerService.getAnswerForQuestion(question),
     [question]
+  );
+  const answerOptions = useMemo(
+    () => buildSelectableOptionLabels(question, answerRecord),
+    [question, answerRecord]
   );
   const storageKey = useMemo(
     () => AnswerService.getStorageKeyForQuestion(question),
@@ -227,8 +270,8 @@ export default function AnswerPanel({
         return;
       }
 
-      if (["1", "2", "3", "4"].includes(shortcutKey) && ["MCQ", "MSQ"].includes(answerRecord?.type)) {
-        const option = OPTIONS[Number(shortcutKey) - 1];
+      if (/^[1-9]$/.test(shortcutKey) && ["MCQ", "MSQ"].includes(answerRecord?.type)) {
+        const option = answerOptions[Number(shortcutKey) - 1];
         if (!option) {
           return;
         }
@@ -269,6 +312,7 @@ export default function AnswerPanel({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [
     answerRecord,
+    answerOptions,
     evaluateSubmission,
     handleMcqSelect,
     handleShare,
@@ -355,7 +399,7 @@ export default function AnswerPanel({
         <div>
           {answerRecord.type === "MCQ" && (
             <div className="flex gap-2">
-              {OPTIONS.map((option, index) => (
+              {answerOptions.map((option, index) => (
                 <button
                   key={option}
                   type="button"
@@ -374,7 +418,7 @@ export default function AnswerPanel({
 
           {answerRecord.type === "MSQ" && (
             <div className="flex flex-wrap gap-2">
-              {OPTIONS.map((option, index) => (
+              {answerOptions.map((option, index) => (
                 <label
                   key={option}
                   aria-keyshortcuts={String(index + 1)}

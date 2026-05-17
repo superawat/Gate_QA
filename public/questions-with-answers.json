@@ -24703,7 +24703,7 @@
     "title": "GATE CSE 2008 | Question: 30",
     "year": "gatecse-2008",
     "link": "https://gateoverflow.in/441/gate-cse-2008-question-30",
-    "question": "<p>Let $\\text{fsa}$ and $\\text{pda}$ be two predicates such that $\\text{fsa}(x)$ means $x$ is a finite state automaton and $\\text{pda}(y)$ means that $y$ is a pushdown automaton. Let $\\text{equivalent}$ be another predicate such that $\\text{equivalent} (a,b)$ means $a$ and $b$ are equivalent. Which of the following first order logic statements represent the following?<br/>\n<br/>\nEach finite state automaton has an equivalent pushdown automaton</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left(\\forall x \\text{ fsa}\\left(x\\right) \\right) \\implies \\left( \\exists y \\text{ pda}\\left(y\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>$\\neg \\forall y \\left(\\exists x \\text{ fsa}\\left(x\\right)  \\implies \\text{pda}\\left(y\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>$\\forall x \\exists y \\left(\\text{fsa}\\left(x\\right) \\wedge \\text{pda}\\left(y\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>$\\forall x \\exists y \\left(\\text{fsa}\\left(y\\right) \\wedge \\text{pda}\\left(x\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n</ol>",
+    "question": "<p>Let $\\text{fsa}$ and $\\text{pda}$ be two predicates such that $\\text{fsa}(x)$ means $x$ is a finite state automaton and $\\text{pda}(y)$ means that $y$ is a pushdown automaton. Let $\\text{equivalent}$ be another predicate such that $\\text{equivalent} (a,b)$ means $a$ and $b$ are equivalent. Which of the following first order logic statements represent the following?<br/>\n<br/>\nEach finite state automaton has an equivalent pushdown automaton</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\left(\\forall x \\text{ fsa}\\left(x\\right) \\right) \\implies \\left( \\exists y \\text{ pda}\\left(y\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>$\\neg \\forall y \\left(\\exists x \\text{ fsa}\\left(x\\right)  \\implies \\text{pda}\\left(y\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>$\\forall x \\exists y \\left(\\text{fsa}\\left(x\\right) \\wedge \\text{pda}\\left(y\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>$\\forall x \\exists y \\left(\\text{fsa}\\left(y\\right) \\wedge \\text{pda}\\left(x\\right) \\wedge \\text{equivalent}\\left(x,y\\right)\\right)$</li>\n<li>None of these</li>\n</ol>",
     "tags": [
       "gatecse-2008",
       "easy",
@@ -24711,7 +24711,14 @@
       "first-order-logic"
     ],
     "question_uid": "go:441",
-    "exam_uid": "cse:2008:set1:main:q30"
+    "exam_uid": "cse:2008:set1:main:q30",
+    "answer_uid": "manual_res:go:441",
+    "answer_meta": {
+      "type": "MCQ",
+      "answer": "E",
+      "tolerance": null,
+      "source": "manual_resolution"
+    }
   },
   {
     "title": "GATE CSE 2008 | Question: 31",

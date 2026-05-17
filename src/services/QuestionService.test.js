@@ -226,6 +226,24 @@ describe("QuestionService", () => {
     expect(options.map((entry) => entry.text)).toEqual(["Alpha", "Beta", "Gamma", "Delta"]);
   });
 
+  test("extracts legacy five-option MCQ entries from question html", () => {
+    const html = `
+      <p>Pick one.</p>
+      <ol style="list-style-type:upper-alpha">
+        <li>Alpha</li>
+        <li>Beta</li>
+        <li>Gamma</li>
+        <li>Delta</li>
+        <li>None of these</li>
+      </ol>
+    `;
+
+    const options = QuestionService.normalizeQuestionOptions(undefined, html);
+
+    expect(options.map((entry) => entry.label)).toEqual(["A", "B", "C", "D", "E"]);
+    expect(options[4].text).toBe("None of these");
+  });
+
   test("uses canonical exam_uid to preserve split-set papers when title metadata is weak", () => {
     const normalized = QuestionService.normalizeQuestion({
       title: "GATE CSE 2025 | Question: 1",

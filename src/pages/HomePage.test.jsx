@@ -82,7 +82,7 @@ describe("HomePage", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: /open mock test/i }));
+    fireEvent.click(screen.getByRole("button", { name: /mock test/i }));
     expect(onStartMockTest).toHaveBeenCalledTimes(1);
 
   });
@@ -112,7 +112,7 @@ describe("HomePage", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: /view performance insights/i }));
+    fireEvent.click(screen.getByRole("button", { name: /performance insights/i }));
 
     expect(onOpenInsights).toHaveBeenCalledTimes(1);
   });

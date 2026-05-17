@@ -18,7 +18,29 @@ function sourceEntries(value) {
   return [];
 }
 
+function isBossXCodeSource(source) {
+  return source?.sourceKind === "bossxcode-web"
+    || source?.examBody === "BossXCode"
+    || source?.examName === "BossXCode";
+}
+
 function validateSource(source, uid, errors) {
+  if (isBossXCodeSource(source)) {
+    if (source.sourceKind !== "bossxcode-web") {
+      errors.push(`${uid}: BossXCode source must set sourceKind=bossxcode-web`);
+    }
+    if (source.examBody !== "BossXCode" || source.examName !== "BossXCode") {
+      errors.push(`${uid}: BossXCode source must use examBody/examName BossXCode`);
+    }
+    if (!/^https:\/\/pt\.bossxcode\.unaux\.com\//i.test(String(source.pageUrl || ""))) {
+      errors.push(`${uid}: BossXCode source must include pageUrl on pt.bossxcode.unaux.com`);
+    }
+    if (!source.sourceId || typeof source.sourceId !== "string") {
+      errors.push(`${uid}: BossXCode source must include sourceId`);
+    }
+    return;
+  }
+
   if (source.examBody !== "SSC") {
     errors.push(`${uid}: _source.examBody must be SSC`);
   }

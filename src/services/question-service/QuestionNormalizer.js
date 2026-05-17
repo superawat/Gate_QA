@@ -8,7 +8,7 @@ export const YEAR_SET_TAG_PATTERN = /gate(?:cse|it)?-?(\d{4})(?:-set(\d+))?/i;
 export const TITLE_YEAR_SET_PATTERN =
   /GATE\s+(?:CSE|IT)\s+(\d{4})(?:\s*[| ]\s*Set\s*(\d+))?/i;
 export const LINK_YEAR_SET_PATTERN = /gate-(?:cse|it)-(\d{4})(?:-set-(\d+))?/i;
-export const OPTION_LABELS = ["A", "B", "C", "D"];
+export const OPTION_LABELS = ["A", "B", "C", "D", "E"];
 
 export function extractGateOverflowId(link = "") {
   const raw = String(link || "").trim();

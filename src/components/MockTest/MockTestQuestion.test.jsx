@@ -85,6 +85,28 @@ describe("MockTestQuestion", () => {
     expect(metaRow.textContent).toContain("Negative Marks: 1/3");
   });
 
+  test("strips embedded option lists from the mock question stem", () => {
+    mockContextValue.currentQuestion = {
+      ...baseMcqQuestion,
+      question: `
+        <p>Sample question stem</p>
+        <ol style="list-style-type: upper-alpha;">
+          <li>First option</li>
+          <li>Second option</li>
+          <li>Third option</li>
+          <li>Fourth option</li>
+        </ol>
+      `,
+    };
+
+    const { container } = render(<MockTestQuestion isReviewPhase={false} />);
+
+    const stem = container.querySelector(".mocktest-question-stem");
+    expect(stem.textContent).toContain("Sample question stem");
+    expect(stem.textContent).not.toContain("First option");
+    expect(screen.getByText("First option")).toBeTruthy();
+  });
+
   test("renders NAT input and clears through Clear All", () => {
     mockContextValue.currentQuestion = { ...baseNatQuestion };
     mockContextValue.currentQuestionMeta = {

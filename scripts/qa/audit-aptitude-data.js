@@ -187,6 +187,13 @@ function collectRowIssues(row) {
 }
 
 function sourceSignature(source) {
+  if (source?.sourceKind === "bossxcode-web") {
+    return [
+      source.pageUrl || "",
+      source.sourceId || "",
+      source.originalQNum || "",
+    ].join("|");
+  }
   return [
     source.pdfFile || "",
     source.set || "",
