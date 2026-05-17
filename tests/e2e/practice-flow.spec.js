@@ -23,10 +23,10 @@ test("landing page loads without runtime errors", async ({ page }) => {
 
 test("random practice opens a solve route", async ({ page }) => {
   await page.goto(appPath("/"));
-  await expect(page.getByRole("button", { name: /Random Practice/i })).toBeVisible({
+  await expect(page.getByRole("button", { name: /Practice.*fresh/i })).toBeVisible({
     timeout: 15000,
   });
-  await page.getByRole("button", { name: /Random Practice/i }).click();
+  await page.getByRole("button", { name: /Practice.*fresh/i }).click();
   await expect(page).toHaveURL(/\/Gate_QA\/practice\/question\/.+/);
   await expect(page.getByText(/Solve/i)).toBeVisible();
 });
@@ -69,7 +69,7 @@ test("aptitude toggle injects standalone subjects into the unified practice filt
   await page.goto(appPath("/practice"));
   await waitForPracticeList(page);
 
-  const toggle = page.getByRole("switch", { name: /Enable Aptitude Section/i });
+  const toggle = page.getByRole("switch", { name: /Enable Aptitude Practice/i });
   await expect(toggle).toBeVisible({ timeout: 15000 });
   await toggle.click();
 

@@ -96,7 +96,7 @@ test("axe audit: landing route", async ({ page }) => {
   await expectAccessibilityStructure(page, "Landing", {
     landmarks: ["header", "main", "footer"],
     headings: ["GateQA practice dashboard"],
-    controls: [/GATE QA home/i, /Random Practice/i, /Filter Questions/i],
+    controls: [/GATE QA home/i, /Practice/i, /Filter Questions/i],
   });
   await expectNoA11yViolations(page, "Landing");
 });
