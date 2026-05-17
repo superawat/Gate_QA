@@ -57,7 +57,8 @@
     "test:e2e:headed": "playwright test --headed",
     "test:watch": "vitest",
     "qa:a11y:axe": "playwright test tests/e2e/a11y.axe.spec.js",
-    "lighthouse:mobile": "lhci autorun --config=./lighthouserc.json"
+    "lighthouse:mobile": "lhci autorun --config=./lighthouserc.json",
+    "qa:all": "npm run test:unit && npm run qa:validate-data && npm run build && npm run test:e2e && npm run qa:validate-bundle-budget && npm run qa:validate-landing-network && npm run lighthouse:mobile && npm run qa:validate-public-parity"
   },
   "eslintConfig": {
     "extends": [
