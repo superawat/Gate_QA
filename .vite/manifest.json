@@ -1,11 +1,11 @@
 {
-  "_CalculatorWidget-CV9O_gmj.js": {
-    "file": "assets/CalculatorWidget-CV9O_gmj.js",
+  "_CalculatorWidget-CFcgCosN.js": {
+    "file": "assets/CalculatorWidget-CFcgCosN.js",
     "name": "CalculatorWidget",
     "imports": [
       "index.html",
       "_vendor-react-DJ2pkVjc.js",
-      "_vendor-icons-B6MFNSjV.js"
+      "_vendor-icons-CLqOhbNA.js"
     ],
     "dynamicImports": [
       "node_modules/better-react-mathjax/esm/index.js"
@@ -18,13 +18,20 @@
       "_vendor-react-DJ2pkVjc.js"
     ]
   },
+  "_evaluateAnswer-BfqIQJM9.js": {
+    "file": "assets/evaluateAnswer-BfqIQJM9.js",
+    "name": "evaluateAnswer"
+  },
   "_keyboardShortcuts-B2Sg3M3T.js": {
     "file": "assets/keyboardShortcuts-B2Sg3M3T.js",
     "name": "keyboardShortcuts"
   },
-  "_mockTestHistory-BPnWAHu0.js": {
-    "file": "assets/mockTestHistory-BPnWAHu0.js",
-    "name": "mockTestHistory"
+  "_mockTestHistory-DJ0nuIZL.js": {
+    "file": "assets/mockTestHistory-DJ0nuIZL.js",
+    "name": "mockTestHistory",
+    "imports": [
+      "_evaluateAnswer-BfqIQJM9.js"
+    ]
   },
   "_vendor-charts-qh9lU6FG.js": {
     "file": "assets/vendor-charts-qh9lU6FG.js",
@@ -49,8 +56,8 @@
     "file": "assets/vendor-form-controls-CwBLJBHs.css",
     "src": "_vendor-form-controls-CwBLJBHs.css"
   },
-  "_vendor-icons-B6MFNSjV.js": {
-    "file": "assets/vendor-icons-B6MFNSjV.js",
+  "_vendor-icons-CLqOhbNA.js": {
+    "file": "assets/vendor-icons-CLqOhbNA.js",
     "name": "vendor-icons",
     "imports": [
       "_vendor-react-DJ2pkVjc.js"
@@ -79,14 +86,14 @@
     "name": "vendor-sanitize"
   },
   "index.html": {
-    "file": "assets/index-DS5JQFMp.js",
+    "file": "assets/index-D-EGdfKJ.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "imports": [
       "_vendor-react-DJ2pkVjc.js",
       "_vendor-router-DmMaYHUO.js",
-      "_vendor-icons-B6MFNSjV.js"
+      "_vendor-icons-CLqOhbNA.js"
     ],
     "dynamicImports": [
       "src/pages/ExplorePage.jsx",
@@ -112,17 +119,17 @@
     "src": "src/components/Footer/assets/qrcode.png"
   },
   "src/index.css": {
-    "file": "assets/index-DtyfViHB.css",
+    "file": "assets/index-BuJtnzG4.css",
     "src": "src/index.css"
   },
   "src/pages/ExplorePage.jsx": {
-    "file": "assets/ExplorePage-NuNwBJIA.js",
+    "file": "assets/ExplorePage-DUWAK5ke.js",
     "name": "ExplorePage",
     "src": "src/pages/ExplorePage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-react-DJ2pkVjc.js",
-      "_vendor-icons-B6MFNSjV.js",
+      "_vendor-icons-CLqOhbNA.js",
       "index.html",
       "_vendor-form-controls-CCT9WlHZ.js",
       "_keyboardShortcuts-B2Sg3M3T.js",
@@ -131,53 +138,56 @@
     ]
   },
   "src/pages/InsightsPage.jsx": {
-    "file": "assets/InsightsPage-CGPcaPTo.js",
+    "file": "assets/InsightsPage-CC64eVpa.js",
     "name": "InsightsPage",
     "src": "src/pages/InsightsPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-react-DJ2pkVjc.js",
-      "_vendor-icons-B6MFNSjV.js",
+      "_vendor-icons-CLqOhbNA.js",
       "_vendor-router-DmMaYHUO.js",
       "index.html",
       "_Toast-BTGQMHJy.js",
-      "_mockTestHistory-BPnWAHu0.js",
+      "_mockTestHistory-DJ0nuIZL.js",
       "_vendor-charts-qh9lU6FG.js",
+      "_evaluateAnswer-BfqIQJM9.js",
       "_vendor-misc-CK78ISnE.js"
     ]
   },
   "src/pages/SolvePage.jsx": {
-    "file": "assets/SolvePage-BO0o4mpw.js",
+    "file": "assets/SolvePage-Cl2U6HKR.js",
     "name": "SolvePage",
     "src": "src/pages/SolvePage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-react-DJ2pkVjc.js",
-      "_vendor-icons-B6MFNSjV.js",
+      "_vendor-icons-CLqOhbNA.js",
       "index.html",
       "_vendor-sanitize-HRjpPm7y.js",
-      "_CalculatorWidget-CV9O_gmj.js",
+      "_evaluateAnswer-BfqIQJM9.js",
       "_Toast-BTGQMHJy.js",
       "_keyboardShortcuts-B2Sg3M3T.js",
+      "_CalculatorWidget-CFcgCosN.js",
       "_vendor-router-DmMaYHUO.js"
     ]
   },
   "src/shells/MockShell.jsx": {
-    "file": "assets/MockShell-qSupiLN4.js",
+    "file": "assets/MockShell-DFhIWHaX.js",
     "name": "MockShell",
     "src": "src/shells/MockShell.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-react-DJ2pkVjc.js",
       "index.html",
-      "_CalculatorWidget-CV9O_gmj.js",
-      "_mockTestHistory-BPnWAHu0.js",
+      "_mockTestHistory-DJ0nuIZL.js",
+      "_CalculatorWidget-CFcgCosN.js",
       "_vendor-sanitize-HRjpPm7y.js",
-      "_vendor-icons-B6MFNSjV.js",
-      "_vendor-router-DmMaYHUO.js"
+      "_vendor-icons-CLqOhbNA.js",
+      "_vendor-router-DmMaYHUO.js",
+      "_evaluateAnswer-BfqIQJM9.js"
     ],
     "css": [
-      "assets/MockShell-DrO-PPcA.css"
+      "assets/MockShell-1KWBO9wq.css"
     ]
   }
 }
