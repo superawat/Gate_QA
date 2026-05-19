@@ -15,6 +15,8 @@ https://superawat.github.io/Gate_QA/
 - Deep-link support (`?question=<uid>` plus filter query params)
 - Solved/bookmarked progress persistence in localStorage
 - Full-length Mock Test mode with timed exam environment and performance summary
+- Standalone Aptitude practice for English, Quant, and Reasoning with isolated progress
+- Public user manual at `/manual`
 - ProgressManager in sidebar:
   - Export JSON backup
   - Export enriched CSV (analysis only)
@@ -88,6 +90,14 @@ npm run qa:validate-data
 npm run qa:validate-public-parity
 ```
 
+For aptitude data changes, also run:
+
+```bash
+npm run qa:validate-aptitude
+npm run qa:verify-aptitude
+npm run qa:validate-aptitude-images
+```
+
 ## Automated Data Pipeline (FEAT-003)
 
 Starting with GATE 2026, new questions are scraped, normalised, answer-backfilled, merged, validated, and deployed through the FEAT-003 pipeline.
@@ -104,6 +114,18 @@ Current status:
 - public data status snapshot now lives in `docs/generated/DATA_STATUS.md`, and public parity is now CI-guarded
 
 Pipeline scripts live in `scripts/pipeline/` and are documented in `docs/DATA_PIPELINE.md`.
+
+## Aptitude Data Pipeline
+
+The aptitude bank is built from structured BossXCode intake only. The retired local PDF/OCR corpus is not part of the project anymore.
+
+Current public aptitude state:
+
+- `16,873` questions across English, Quant, and Reasoning
+- compact `public/aptitude-search-index.json`
+- detail shards under `public/data/aptitude/{subject}/{subtopic}.json`
+- local mirrored images under `public/images/aptitude/`
+- local-only review reports under ignored `artifacts/review/`
 
 ## Documentation
 

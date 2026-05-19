@@ -36,13 +36,17 @@ Current suites:
 - `src/pages/ExplorePage.test.jsx`
 - `src/pages/SolvePage.test.jsx`
 - `src/pages/InsightsPage.test.jsx`
+- `src/pages/UserManualPage.test.jsx`
+- `src/components/Footer/Footer.test.jsx`
 - `src/components/Landing/ModeSelectionPage.test.jsx`
 - `src/services/MockCatalogService.test.js`
+- `src/services/AptitudeQuestionService.test.js`
+- `scripts/aptitude-pipeline/scrape-bossxcode.test.mjs`
 
-Latest verification snapshot on `2026-05-12`:
+Latest verification snapshot on `2026-05-19`:
 
-- `36` passing test files
-- `210` passing unit tests
+- `40` passing test files
+- `233` passing unit tests
 
 Treat that as a point-in-time check. Re-run the suite instead of relying on the doc for an exact count.
 
@@ -117,13 +121,34 @@ Report output:
 
 - `artifacts/review/data-integrity-report.json`
 
+Reports under `artifacts/review/` are local QA artifacts and are intentionally git-ignored.
+
 Strict-mode behavior:
 
 - fails on missing question UID coverage
 - fails on idstrmissing-style orphan rows
 - actionable missing-answer coverage gaps are warning-level in current implementation
 
-## 5) Historical paper-count QA
+## 5) Aptitude data gates
+
+Run these after changing BossXCode intake, aptitude taxonomy/remaps, aptitude public JSON, or aptitude images:
+
+```bash
+npm run qa:validate-aptitude
+npm run qa:verify-aptitude
+npm run qa:validate-aptitude-images
+```
+
+Current verified aptitude state:
+
+- `16,873` public aptitude questions
+- `60` public aptitude subject/subtopic shards
+- `123` local aptitude image files referenced by public data
+- no remote or broken public aptitude images
+
+`qa:verify-aptitude` may emit non-blocking coverage/OCR warnings. Treat failures as blockers and warnings as review items unless a warning is confirmed learner-facing bad data.
+
+## 6) Historical paper-count QA
 
 Run:
 
@@ -155,7 +180,7 @@ What this flow checks:
 - pre-2010 year totals are checked separately against live GateOverflow year tags using deduped question labels, because those older papers do not follow the 65-question pattern
 - pre-2010 repair removes off-tag legacy discussion rows, collapses duplicate question-label variants, and backfills missing legacy questions directly from live GateOverflow pages
 
-## 6) Public parity gate
+## 7) Public parity gate
 
 Run:
 
@@ -172,7 +197,7 @@ What this checks:
 
 This gate now runs in CI before deploy.
 
-## 7) Build and artifact validation
+## 8) Build and artifact validation
 
 Run:
 
@@ -199,7 +224,7 @@ npm run qa:validate-landing-network
 
 These checks are active in CI and keep the landing route off the full-bank/runtime-heavy path.
 
-## 8) Lighthouse regression check
+## 9) Lighthouse regression check
 
 Run:
 
@@ -215,7 +240,7 @@ Assertions from `lighthouserc.json`:
 - LCP <= 3500 ms (warn)
 - CLS <= 0.1 (error)
 
-## 9) Manual QA checklist
+## 10) Manual QA checklist
 
 ### Core flow
 

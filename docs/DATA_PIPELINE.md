@@ -164,10 +164,14 @@ Scripts are located in `scripts/aptitude-pipeline/`:
 
 Current state:
 
+- Public aptitude count is 16,873 questions across 60 subject/subtopic shards.
 - Public aptitude output is limited to English, Quant, and Reasoning.
 - BossXCode source metadata is retained in `_source` while public display text remains sanitized.
 - Attempted and ignored intake counts are reported before public artifacts are written.
+- Ignored reasons include broad low-signal packs, duplicates, excluded GS/GK/General Awareness/Hindi/current-affairs sources, invalid options/answers, unsupported taxonomy, brittle remote images, inline base64 images, forbidden display tokens, and synthetic markers.
+- Public aptitude images are mirrored into `public/images/aptitude/`; current public data references 123 local aptitude image files and no remote image URLs.
 - The local PDF/OCR path was retired to avoid duplicate parsing work, large private PDFs, and low-signal generated artifacts.
+- Intake, mirror, quality, and audit reports are written under `artifacts/review/`, which is local-only and git-ignored.
 
 ## Manual catch-up runbook
 

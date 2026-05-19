@@ -24,7 +24,9 @@ Gate_QA/
 |   |-- BRANCH_NOTES.md          # Local dev notes
 |   |-- pipeline-state.json      # Pipeline persistent state
 |   |-- test-results/            # Playwright outputs
-|   `-- artifacts/dev-server/    # Local server logs
+|   |-- artifacts/dev-server/    # Local server logs
+|   |-- artifacts/aptitude-pipeline/ # Local BossXCode scrape/cache outputs
+|   `-- artifacts/review/        # Local QA/audit review outputs
 |
 |-- src/
 |   |-- index.jsx
@@ -108,6 +110,7 @@ Gate_QA/
 |   |-- offline.html
 |   |-- question-bank-manifest.json
 |   |-- question-images/                 # Mirrored GateOverflow blob assets for published questions
+|   |-- images/aptitude/                 # Mirrored aptitude images referenced by public aptitude data
 |   |-- question-search-index.json
 |   |-- aptitude-search-index.json       # Generated compact search index for aptitude
 |   |-- question-detail-shards/          # Generated detail payloads keyed by year/set
@@ -145,6 +148,7 @@ Gate_QA/
 |   |   |-- load-aptitude-data.js             # Aptitude data loading helper
 |   |   |-- audit-aptitude-data.js            # Aptitude metadata audit
 |   |   |-- validate-aptitude-data.js         # Aptitude validation check
+|   |   |-- validate-aptitude-images.mjs      # Aptitude image validation check
 |   |   `-- verify-aptitude-quality.js        # Aptitude quality check
 |   |-- deployment/
 |   |   |-- sync-calculator.mjs
@@ -204,9 +208,6 @@ Gate_QA/
 |       |-- mock-test-flow.spec.js
 |       `-- practice-flow.spec.js
 
-|-- artifacts/
-|   `-- review/                   # Generated QA/audit review outputs
-|
 |-- audit/                        # Pipeline-generated outputs, committed after every run,
 |   `-- .gitkeep                  # never read by frontend
 |
@@ -244,6 +245,8 @@ Removed directories: `scraper/`, `scripts/answers/`, and the legacy Python `test
 - `src/generated/subtopicLookup.json` is generated and ignored by git.
 - `public/question-bank-manifest.json`, `public/question-search-index.json`, `public/question-detail-shards/`, and `docs/generated/` are refreshed by `scripts/build-public-artifacts.mjs`.
 - `public/question-images/` is refreshed by `scripts/mirror-gateoverflow-images.mjs` before public artifact generation.
+- `public/aptitude-search-index.json`, `public/data/aptitude/`, and `public/images/aptitude/` are refreshed by the aptitude pipeline and are runtime assets.
+- `artifacts/review/` and `artifacts/aptitude-pipeline/` are local-only generated folders and should stay ignored.
 - `scripts/audit-canonical-filters.mjs` has been removed.
 - `public/calculator/` is generated from root `calculator/` by deployment sync script.
 - `dist/` should never be edited manually.

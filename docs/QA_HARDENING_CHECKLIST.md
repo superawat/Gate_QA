@@ -16,7 +16,22 @@ Verify:
 - [ ] no missing question UID records
 - [ ] no idstrmissing-style orphan answers
 
-### 1.2 MathJax and sanitizer
+### 1.2 Aptitude integrity and image locality
+
+```bash
+npm run qa:validate-aptitude
+npm run qa:verify-aptitude
+npm run qa:validate-aptitude-images
+```
+
+Verify:
+
+- [ ] public aptitude rows are English, Quant, or Reasoning only
+- [ ] no remote or broken aptitude images remain
+- [ ] hard-artifact failures are zero
+- [ ] warnings are reviewed and either fixed or accepted as non-blocking
+
+### 1.3 MathJax and sanitizer
 
 - [ ] inline and display math render correctly
 - [ ] no raw TeX remains after settle

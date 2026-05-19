@@ -14,6 +14,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Unit test suite is currently green; run `npm run test:unit` for the exact total.
 - Historical paper audit is currently clean: `paper_count: 27`, `questions_without_paper_meta: 0`
 - Mock catalog readiness is `50/50` release-ready papers after unlocking legacy subjective prompts and pre-2010 papers.
+- Aptitude verification is green for `16,873` public rows; `qa:verify-aptitude` may still emit non-blocking coverage/OCR warnings.
 - The bugs below come from repo inspection and audit artifacts, not from failing unit tests
 
 ## Open Bugs
@@ -21,6 +22,21 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 *None currently.*
 
 ## Recently Closed
+
+### BUG-APT2: Low-signal aptitude intake clutter reaching public output
+
+- Status: Fixed on 2026-05-19
+- Severity: High
+- Source: User reported
+- Where:
+  `scripts/aptitude-pipeline/bossxcode-intake-classifier.mjs`
+  `scripts/aptitude-pipeline/scrape-bossxcode.mjs`
+  `scripts/aptitude-pipeline/build_aptitude_db.py`
+  `scripts/aptitude-pipeline/remaps.py`
+- Resolution:
+  Added a shared BossXCode attempt/ignore gate across catalog filtering, scraping, and public artifact build. Ignored low-signal full-length packs, duplicate questions, unsupported GS/GK/General Awareness/Hindi/current-affairs sources, invalid rows, brittle remote images, inline base64 images, forbidden display tokens, and synthetic markers before public write. Retired the local PDF/OCR path and kept generated review reports local-only.
+- Verification:
+  `npm run qa:validate-aptitude`, `npm run qa:verify-aptitude`, and `npm run qa:validate-aptitude-images` pass.
 
 ### BUG-C: Past paper / mock answer readiness gaps
 

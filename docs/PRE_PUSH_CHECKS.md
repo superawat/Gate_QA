@@ -16,6 +16,14 @@ The following commands represent the complete CI pipeline that GitHub Actions wi
 8. **Lighthouse Mobile Performance:** `npm run lighthouse:mobile`
 9. **Public Artifact Parity:** `npm run qa:validate-public-parity`
 
+If the change touches aptitude intake, aptitude public data, or aptitude images, also run:
+
+```bash
+npm run qa:validate-aptitude
+npm run qa:verify-aptitude
+npm run qa:validate-aptitude-images
+```
+
 ---
 
 ## 🚀 Run Everything Automatically

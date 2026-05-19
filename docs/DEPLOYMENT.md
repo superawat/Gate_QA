@@ -83,6 +83,7 @@ For the exact data-ingestion sequence, use `docs/DATA_PIPELINE.md`.
 - [ ] `npm run build` succeeds.
 - [ ] generated public artifacts are refreshed (`question-bank-manifest.json`, `question-search-index.json`, `docs/generated/data-status.json`).
 - [ ] generated detail shards are refreshed under `public/question-detail-shards/`.
+- [ ] if aptitude data changed, `public/aptitude-search-index.json`, `public/data/aptitude/`, and referenced `public/images/aptitude/` are refreshed and aptitude QA gates pass.
 - [ ] if this deploy includes a manual data import, `audit/validation-report-{year}.json` shows `passed: true`.
 - [ ] Precompute output was generated (`src/generated/subtopicLookup.json` in build workspace).
 - [ ] `dist/.nojekyll` exists.
