@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const LEGACY_OPTIONAL_SUBJECT_SLUG = 'legacy-other';
-const APTITUDE_SUBJECT_SLUGS = new Set(['english', 'mathematics', 'reasoning']);
+const APTITUDE_SUBJECT_SLUGS = new Set(['english', 'quant', 'mathematics', 'reasoning']);
 
 const TopicFilter = () => {
     const { structuredTags, filters } = useFilterState();

@@ -5,18 +5,16 @@ This folder is the source of truth for engineering documentation in GateQA.
 ## Read first
 
 1. `ARCHITECTURE.md`
-2. `FREE_PLATFORM_IMPROVEMENT_PLAN.md`
-3. `FRONTEND_GUIDE.md`
-4. `KNOWN-LIMITATIONS.md`
-5. `DATA-POLICY.md`
-6. `TESTING.md`
+2. `FRONTEND_GUIDE.md`
+3. `DATA_PIPELINE.md`
+4. `TESTING.md`
+5. `KNOWN-LIMITATIONS.md`
+6. `DATA-POLICY.md`
 
 ## Full map
 
 - `ARCHITECTURE.md`
   - runtime architecture, 4-layer init model, context split
-- `FREE_PLATFORM_IMPROVEMENT_PLAN.md`
-  - current hosting decision, startup/trust status, and next free-platform priorities
 - `REPO_STRUCTURE.md`
   - filesystem layout and ownership map
 - `FRONTEND_GUIDE.md`
@@ -27,6 +25,8 @@ This folder is the source of truth for engineering documentation in GateQA.
   - build/deploy chain and workflow behavior
 - `TESTING.md`
   - automated + manual QA strategy
+- `PRE_PUSH_CHECKS.md`
+  - push-time validation checklist and command sequence
 - `CONTRIBUTING.md`
   - development guardrails and release bump rules
 - `CHANGELOG.md`
@@ -41,10 +41,10 @@ This folder is the source of truth for engineering documentation in GateQA.
   - future features, priorities, and product/technical decisions
 - `BUG_BACKLOG.md`
   - open bugs, likely regressions, and triage notes
+- `PYQ_GATEOVERFLOW_RECHECK_PLAN.md`
+  - runbook for full GateOverflow PYQ presence and answer-coverage rechecks
 - `generated/DATA_STATUS.md`
   - generated public-bank status snapshot and published-count summary
-- `PLATFORM_HARDENING_ALL_UPDATES.txt`
-  - hardening record log
 
 ## Maintenance rule
 

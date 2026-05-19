@@ -28,7 +28,7 @@ const TAXONOMY = {
     "Homonyms",
     "Miscellaneous",
   ],
-  Mathematics: [
+  Quant: [
     "Number System",
     "HCF and LCM",
     "Simplification",
@@ -87,7 +87,7 @@ const HARD_ARTIFACTS = [
   ["broken_marker", /\[\[|\]\]/],
   ["direction_range", /\bDirection\s*:-|\bQ\s*\.\s*\d+\s*(?:to|-)/i],
   ["section_bleed", /\b(?:General Awareness|Quantitative Aptitude)\b/i],
-  ["publisher_noise", /\b(?:Pinnacle|Download\s+Pinnacle|Search\s+on\s+TG|ssccglpinnacle)\b/i],
+  ["publisher_noise", /\b(?:Download\s+Pinnacle|Search\s+on\s+TG|ssccglpinnacle|Pinnacle\s+(?:PDF|Book|Publication|Exam|Coaching))\b/i],
   ["replacement_character", /\uFFFD/],
   ["mojibake", /\b(?:Ã|â)\w*/],
 ];
@@ -121,6 +121,7 @@ function stripHtml(value = "") {
 
 function normalizedQuestionKey(row) {
   return stripHtml(row.questionHtml || "")
+    .normalize("NFKC")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "");
 }
@@ -209,7 +210,7 @@ function findCoverageWarnings(coverage) {
 
 function findMathWarnings(rows) {
   return rows
-    .filter((row) => row.subject === "Mathematics")
+    .filter((row) => row.subject === "Quant")
     .map((row) => ({ row, text: `${stripHtml(row.questionHtml || "")} ${(row.options || []).join(" ")}` }))
     .filter(({ text }) => MATH_SUSPICIOUS_RE.test(text))
     .map(({ row }) => row.uid);
@@ -265,7 +266,7 @@ function main() {
     coverageWarnings.slice(0, 20).forEach((warning) => console.log(`- ${warning}`));
   }
   if (mathWarnings.length > 0) {
-    console.log(`[verify-aptitude-quality] Math OCR warnings: ${mathWarnings.length}`);
+    console.log(`[verify-aptitude-quality] Quant OCR warnings: ${mathWarnings.length}`);
     console.log(mathWarnings.slice(0, 20).join(", "));
   }
   console.log(`[verify-aptitude-quality] Report: ${path.relative(ROOT, REPORT_FILE)}`);

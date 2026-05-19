@@ -149,16 +149,25 @@ auto-created with error details from `audit/scrape-error.json` or
 
 ## Aptitude Pipeline
 
-The Aptitude dataset is an offline, standalone collection curated from SSC-origin PDFs, decoupled entirely from the GATE pipeline.
+The Aptitude dataset is an offline, standalone collection curated from structured
+BossXCode web payloads, decoupled entirely from the GATE pipeline. The retired
+PDF/OCR intake and local `aptitude-ssc/` source corpus are no longer supported
+inside the project.
 
 Scripts are located in `scripts/aptitude-pipeline/`:
-- `parse_questions.py`: Extracts and normalizes text from PDFs, saving `aptitude-parsed.json`.
-- `extract_answers.py`: Parses answers and merges them, producing `aptitude-with-answers.json`.
-- `build_aptitude_db.py`: Takes the parsed questions, deduplicates them, shards them into `public/data/aptitude/{subject}/{subtopic}.json` files, and generates the compact `public/aptitude-search-index.json`.
+
+- `scrape-bossxcode.mjs`: Discovers catalog papers, extracts structured rows, and writes `artifacts/aptitude-pipeline/parsed-questions.json`.
+- `bossxcode-intake-classifier.mjs`: Shared attempt/ignore policy for BossXCode catalog, paper, and row intake decisions.
+- `filter-bossxcode-catalog.mjs`: Creates focused catalog slices for targeted imports.
+- `build_aptitude_db.py`: Deduplicates parsed rows, applies taxonomy/remap rules, shards them into `public/data/aptitude/{subject}/{subtopic}.json`, and generates `public/aptitude-search-index.json`.
+- `mirror-aptitude-images.mjs`: Mirrors aptitude images used by public aptitude rows.
 
 Current state:
-- The pipeline yielded 32,386 questions with zero UID collisions or SSC branding.
-- Because the process relies on static PDFs, this pipeline is run manually upon adding new source files, not via cron.
+
+- Public aptitude output is limited to English, Quant, and Reasoning.
+- BossXCode source metadata is retained in `_source` while public display text remains sanitized.
+- Attempted and ignored intake counts are reported before public artifacts are written.
+- The local PDF/OCR path was retired to avoid duplicate parsing work, large private PDFs, and low-signal generated artifacts.
 
 ## Manual catch-up runbook
 

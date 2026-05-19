@@ -186,6 +186,32 @@ describe("MockTestQuestion", () => {
     expect(screen.getByText("Time spent: 3m 01s (over 3 min)")).toBeTruthy();
   });
 
+  test("renders legacy subjective prompts as auto-awarded in mock mode", () => {
+    mockContextValue.currentQuestion = {
+      question_uid: "go:legacy",
+      title: "Legacy subjective sample",
+      subject: "Computer Science",
+      question: "<p>Design the required circuit.</p>",
+      options: [],
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:legacy",
+      section: "CS",
+      type: "SUBJECTIVE",
+      marks: 2,
+      negativeMarks: 0,
+      autoAwarded: true,
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["go:legacy"] };
+    mockContextValue.responses = {};
+
+    render(<MockTestQuestion isReviewPhase={false} />);
+
+    expect(screen.getByText("SUBJECTIVE")).toBeTruthy();
+    expect(screen.getByText(/legacy subjective prompt is awarded automatically/i)).toBeTruthy();
+  });
+
   test("review mode highlights correct and incorrect MCQ options from result data", () => {
     mockContextValue.currentQuestionResult = {
       questionUid: "go:111",

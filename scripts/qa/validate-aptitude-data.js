@@ -2,6 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { pathToFileURL } = require("node:url");
 const { TAXONOMY_SETS: TAXONOMY } = require("./aptitude-taxonomy");
 const { loadAptitudeRows, readJson } = require("./load-aptitude-data");
 
@@ -9,8 +10,16 @@ const ROOT = process.cwd();
 const GATE_FILE = path.join(ROOT, "public", "questions-with-answers.json");
 
 const VALID_EXAM_NAMES = new Set(["CGL", "CHSL", "MTS", "CPO", "Stenographer", "Selection Post", "Chapterwise"]);
-const DISPLAY_FORBIDDEN_RE = /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]|Q\s*\.\s*\d+\.|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
-const UID_RE = /^APT-(ENG|MAT|RSN)-\d{4,}$/;
+const DISPLAY_FORBIDDEN_RE = /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]\b|Q\s*\.\s*\d+(?:\.|\s*(?:to|-))|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
+const UID_RE = /^APT-(ENG|QNT|RSN)-\d{4,}$/;
+const BOSSXCODE_CATALOG_NOISE_RE = /Description|Total\s*Tests|Total\s*papers|Open Test|Questions:|Marks:|Price:|Tests:\s*\d|Series:\s*\d/i;
+const SYNTHETIC_MARKER_RE = /<!--\s*mock\s+2025\b|mock_2025_data|synthetic/i;
+const FULL_LENGTH_MOCK_RE = /\bMock\s+Tests?\s*\(\s*Full\s+Length\s*\)|\bFull\s+Length\b/i;
+const ENGLISH_TASK_RE = /\b(?:active(?:\s*\/\s*|\s+)passive|passive voice|active voice|sentence improvement|substitute|spot.*error|grammatical error|segment.*contains.*error|cloze test|comprehension|according to the passage|idiom|synonym|antonym|spelling|misspelt|misspelled|one[- ]word|one which can be substituted|group of words given|para jumble|jumbled|narration|direct speech|indirect speech)\b/i;
+const QUANT_TASK_RE = /\b(?:simplify|evaluate|hcf|lcm|sin|cos|tan|cosec|sec|cot|trigonometry|height of|speed|train|km\/h|profit|loss|gain|cost price|selling price|marked price|discount|percentage|per cent|ratio|proportion|average|simple interest|compound interest|pipe|cistern|boat|stream|workman|complete.*days|circle|triangle|area|volume|radius|diameter|perimeter|equation|algebra|polynomial|bar[ -]?graph|pie[- ]chart|table)\b|%/i;
+const REASONING_TASK_RE = /\b(?:code language|coded as|coding|decoding|syllogism|blood relation|letter[- ]cluster|number series|comes next|odd one out|analogy|sitting arrangement|facing north|facing south|immediate left|immediate right|rank|ranking|statement.*conclusion|mathematical operations?)\b/i;
+const GENERAL_AWARENESS_STEM_RE = /^(?:who|which|what|when|where|in which|at which|as per|according to|with reference to)\b/i;
+const GENERAL_AWARENESS_TERMS_RE = /\b(?:article\s+\d+|constitution|directive principles|fundamental duties|parliament|supreme court|high court|governor|chief minister|prime minister|minister|president|election commission|census|gdp|revenue deficit|service tax|tax|brand finance|lic|rbi|sebi|insurance|bank|scheme|budget|state|union territory|district|festival|dance|temple|fort|museum|archaeological|civilisation|chola|khilji|satyagraha|gandhi|ibn battuta|book|novel|author|magazine|award|olympics?|cricketer|kho[- ]?kho|padma|unesco|w\.?h\.?o\.?|malaria|acid|element|electron|atom|cell|fatty acids?|ecosystem|soil|climate|mountains?|hills?|river|agriculture|crop|bawris?|pietra dura|marris college|one horned rhino)\b/i;
 
 function sourceEntries(value) {
   if (Array.isArray(value)) return value.filter((entry) => entry && typeof entry === "object");
@@ -19,9 +28,44 @@ function sourceEntries(value) {
 }
 
 function isBossXCodeSource(source) {
-  return source?.sourceKind === "bossxcode-web"
-    || source?.examBody === "BossXCode"
-    || source?.examName === "BossXCode";
+  return source?.sourceKind === "bossxcode-web";
+}
+
+function stripHtml(value = "") {
+  return String(value)
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;|&#160;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, "\"")
+    .replace(/&#x27;|&apos;/gi, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sourceText(row) {
+  return sourceEntries(row?._source)
+    .flatMap((source) => [source.examBody, source.examName, source.testSeries, source.paperTitle, source.product, source.tier, source.testType, source.topic])
+    .filter(Boolean)
+    .join(" ");
+}
+
+function rowTextWithOptions(row) {
+  return `${stripHtml(row?.questionHtml || "")} ${(row?.options || []).map(stripHtml).join(" ")}`.replace(/\s+/g, " ").trim();
+}
+
+function looksLikeGeneralAwareness(row) {
+  const text = rowTextWithOptions(row);
+  if (!text) return false;
+  if (ENGLISH_TASK_RE.test(text) || QUANT_TASK_RE.test(text) || REASONING_TASK_RE.test(text)) return false;
+  if (GENERAL_AWARENESS_STEM_RE.test(text) && GENERAL_AWARENESS_TERMS_RE.test(text)) return true;
+  return FULL_LENGTH_MOCK_RE.test(sourceText(row)) && GENERAL_AWARENESS_TERMS_RE.test(text);
+}
+
+async function loadSharedIntakePolicy() {
+  const classifierPath = path.join(ROOT, "scripts", "aptitude-pipeline", "bossxcode-intake-classifier.mjs");
+  return import(pathToFileURL(classifierPath).href);
 }
 
 function validateSource(source, uid, errors) {
@@ -29,14 +73,26 @@ function validateSource(source, uid, errors) {
     if (source.sourceKind !== "bossxcode-web") {
       errors.push(`${uid}: BossXCode source must set sourceKind=bossxcode-web`);
     }
-    if (source.examBody !== "BossXCode" || source.examName !== "BossXCode") {
-      errors.push(`${uid}: BossXCode source must use examBody/examName BossXCode`);
+    if (!source.examBody || /^(?:BossXCode|BoxCode|BoxCode Web)$/i.test(String(source.examBody))) {
+      errors.push(`${uid}: BossXCode source must store the actual exam body`);
+    }
+    if (!source.examName || /^(?:BossXCode|BoxCode|BoxCode Web)$/i.test(String(source.examName))) {
+      errors.push(`${uid}: BossXCode source must store the actual exam/test name`);
     }
     if (!/^https:\/\/pt\.bossxcode\.unaux\.com\//i.test(String(source.pageUrl || ""))) {
       errors.push(`${uid}: BossXCode source must include pageUrl on pt.bossxcode.unaux.com`);
     }
     if (!source.sourceId || typeof source.sourceId !== "string") {
       errors.push(`${uid}: BossXCode source must include sourceId`);
+    }
+    if (source.year !== null && source.year !== undefined && !Number.isInteger(Number(source.year))) {
+      errors.push(`${uid}: BossXCode source year must be numeric when present`);
+    }
+    const catalogFields = [source.examName, source.testSeries, source.product, source.tier, source.testType, source.paperTitle]
+      .filter(Boolean)
+      .join(" ");
+    if (BOSSXCODE_CATALOG_NOISE_RE.test(catalogFields)) {
+      errors.push(`${uid}: BossXCode source metadata contains catalog UI noise`);
     }
     return;
   }
@@ -55,7 +111,8 @@ function validateSource(source, uid, errors) {
   }
 }
 
-function main() {
+async function main() {
+  const { classifyParsedRow } = await loadSharedIntakePolicy();
   const rows = loadAptitudeRows();
   if (!Array.isArray(rows) || rows.length === 0) {
     throw new Error("Aptitude shard data must contain at least one question.");
@@ -78,7 +135,7 @@ function main() {
     }
 
     if (!UID_RE.test(String(row.uid || ""))) {
-      errors.push(`${label}: UID must match APT-(ENG|MAT|RSN)-0000`);
+      errors.push(`${label}: UID must match APT-(ENG|QNT|RSN)-0000`);
     }
     if (uidSet.has(row.uid)) {
       errors.push(`${label}: duplicate UID`);
@@ -102,8 +159,21 @@ function main() {
     if (row.type !== "MCQ") {
       errors.push(`${label}: type must be MCQ`);
     }
-    if (DISPLAY_FORBIDDEN_RE.test(String(row.questionHtml || ""))) {
+    if (row.year !== null && row.year !== undefined && !Number.isInteger(Number(row.year))) {
+      errors.push(`${label}: year must be numeric when present`);
+    }
+    if (DISPLAY_FORBIDDEN_RE.test(String(row.questionHtml || "")) || DISPLAY_FORBIDDEN_RE.test(stripHtml(row.questionHtml || ""))) {
       errors.push(`${label}: questionHtml contains forbidden SSC provenance token`);
+    }
+    if (SYNTHETIC_MARKER_RE.test(`${row.questionHtml || ""} ${sourceText(row)}`)) {
+      errors.push(`${label}: synthetic/mock staging marker leaked into public aptitude data`);
+    }
+    if (looksLikeGeneralAwareness(row)) {
+      errors.push(`${label}: likely General Awareness row leaked into aptitude data`);
+    }
+    const intakeDecision = classifyParsedRow(row);
+    if (intakeDecision.action !== "attempt") {
+      errors.push(`${label}: failed shared BossXCode intake policy (${intakeDecision.reason})`);
     }
     if (/^go[:\-]/i.test(String(row.uid || ""))) {
       errors.push(`${label}: aptitude UID collides with GATE prefix`);
@@ -139,9 +209,7 @@ function main() {
   console.log(`[validate-aptitude-data] OK: ${rows.length} aptitude questions validated.`);
 }
 
-try {
-  main();
-} catch (error) {
+main().catch((error) => {
   console.error(`[validate-aptitude-data] ${error.stack || error.message}`);
   process.exit(1);
-}
+});

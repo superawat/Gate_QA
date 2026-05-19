@@ -17,9 +17,9 @@ describe("routes", () => {
   test("routes legacy APT question links without standalone aptitude mode", () => {
     expect(getLegacyRedirectTarget({
       pathname: "/",
-      search: "?question=APT-MAT-0001",
+      search: "?question=APT-QNT-0001",
     })).toEqual({
-      pathname: "/practice/question/APT-MAT-0001",
+      pathname: "/practice/question/APT-QNT-0001",
       search: "",
       kind: "question",
     });

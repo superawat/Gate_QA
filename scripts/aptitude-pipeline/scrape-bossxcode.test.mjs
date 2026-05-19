@@ -5,14 +5,18 @@ import {
   extractRowsFromPayload,
   parseArgs,
 } from "./scrape-bossxcode.mjs";
+import {
+  classifyCatalogContext,
+  filterAttemptedRows,
+} from "./bossxcode-intake-classifier.mjs";
 
-describe.skip("scrape-bossxcode parser", () => {
+describe("scrape-bossxcode parser", () => {
   test("extracts structured JSON questions into the parsed aptitude contract", () => {
     const rows = extractRowsFromPayload(
       {
         questions: [
           {
-            subject: "Mathematics",
+            subject: "Quant",
             topic: "Algebra",
             questionHtml: "<p>If x<sup>2</sup> = 25, what is x?</p>",
             options: ["3", "4", "5", "6"],
@@ -27,14 +31,14 @@ describe.skip("scrape-bossxcode parser", () => {
     expect(rows[0]).toMatchObject({
       answer: "C",
       type: "MCQ",
-      subject: "Mathematics",
+      subject: "Quant",
       subtopic: "Algebra",
     });
     expect(rows[0].questionHtml).toContain("<sup>2</sup>");
     expect(rows[0].questionHtml.match(/<ol/g)).toHaveLength(1);
     expect(rows[0]._source).toMatchObject({
       sourceKind: "bossxcode-web",
-      examBody: "BossXCode",
+      sourceProvider: "BossXCode",
       pageUrl: "https://pt.bossxcode.unaux.com/math/algebra",
     });
   });
@@ -109,12 +113,50 @@ describe.skip("scrape-bossxcode parser", () => {
     const rows = extractRowsFromHtml(html, "https://pt.bossxcode.unaux.com/play?paper_pack=Number%20System%2001");
 
     expect(rows).toHaveLength(1);
-    expect(rows[0].subject).toBe("Mathematics");
+    expect(rows[0].subject).toBe("Quant");
     expect(rows[0].subtopic).toBe("Number System");
     expect(rows[0].answer).toBe("B");
     expect(rows[0].questionHtml).toContain("<math");
     expect(rows[0].questionHtml).not.toContain("1. Find");
     expect(rows[0].options[1]).toBe("<p>5</p>");
+  });
+
+  test("uses catalog context for exam metadata and year", () => {
+    const rows = extractRowsFromPayload(
+      {
+        questions: [
+          {
+            subject: "Quantitative Aptitude",
+            topic: "Percentage",
+            question: "Find 20% of 500.",
+            options: ["50", "80", "100", "120"],
+            answer: "C",
+          },
+        ],
+      },
+      "https://pt.bossxcode.unaux.com/play#paper-demo",
+      {
+        product: "SSC Eduquity Test Pass : 2026",
+        tier: "SSC CGL Tier 1 Mock: 110",
+        testType: "Sectional",
+        series: "SSC CGL Tier 1 Quant Sectional Tests 2026",
+        paper: "SSC CGL Tier 1 Quant Test 01",
+      }
+    );
+
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({
+      subject: "Quant",
+      subtopic: "Percentage",
+      year: 2026,
+      _source: {
+        sourceKind: "bossxcode-web",
+        sourceProvider: "BossXCode",
+        examBody: "SSC",
+        examName: "SSC CGL Tier 1",
+        year: 2026,
+      },
+    });
   });
 
   test("reads credentials from environment without requiring CLI flags", () => {
@@ -127,5 +169,88 @@ describe.skip("scrape-bossxcode parser", () => {
     expect(options.password).toBe("secret");
     expect(options.cookie).toBe("session=abc");
     expect(options.headless).toBe(true);
+    expect(options.products).toEqual(["*"]);
+    expect(options.testTypeIds).toEqual(["*"]);
+    expect(options.includeAllSeries).toBe(true);
+  });
+
+  test("classifies BossXCode catalog entries before scraping broad or non-aptitude packs", () => {
+    expect(
+      classifyCatalogContext({
+        product: "SSC Eduquity Test Pass : 2026",
+        tier: "SSC CGL Tier 1",
+        testType: "Chapter Test",
+        series: "Quant Percentage Chapter Tests",
+        paper: "Percentage 01",
+      })
+    ).toMatchObject({ action: "attempt" });
+
+    expect(
+      classifyCatalogContext({
+        product: "SSC Eduquity Test Pass : 2026",
+        tier: "SSC CGL Tier 1",
+        testType: "Mock Tests(Full Length)",
+        series: "SSC CGL Tier - 1 Mock Test",
+        paper: "Mock 01",
+      })
+    ).toMatchObject({ action: "ignore", reason: "broad_low_signal_pack" });
+
+    expect(
+      classifyCatalogContext({
+        testType: "Chapter Test",
+        series: "General Awareness Practice",
+        paper: "Current Affairs 01",
+      })
+    ).toMatchObject({ action: "ignore", reason: "excluded_source_section" });
+  });
+
+  test("filters parsed rows with the same attempt/ignore policy used by reports", () => {
+    const source = {
+      sourceKind: "bossxcode-web",
+      pageUrl: "https://pt.bossxcode.unaux.com/play#paper-demo",
+      sourceId: "demo",
+    };
+    const { attempted, report, ignoredSamples } = filterAttemptedRows([
+      {
+        questionHtml: "<p>Find 20% of 500.</p>",
+        options: ["50", "80", "100", "120"],
+        answer: "C",
+        subject: "Quant",
+        subtopic: "Percentage",
+        _source: source,
+      },
+      {
+        questionHtml: "<p>Choose the correct statement about force.</p>",
+        options: ["A", "B", "C", "D"],
+        answer: "A",
+        subject: "Physics",
+        subtopic: "Mechanics",
+        _source: source,
+      },
+      {
+        questionHtml: "<p>Which Article of the Constitution deals with fundamental duties?</p>",
+        options: ["Article 21", "Article 51A", "Article 370", "Article 14"],
+        answer: "B",
+        subject: "Reasoning",
+        subtopic: "Miscellaneous",
+        _source: source,
+      },
+      {
+        questionHtml: "<p><strong>Direction</strong> :- Study the statement and choose the conclusion.</p>",
+        options: ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+        answer: "A",
+        subject: "Reasoning",
+        subtopic: "Statement And Conclusion",
+        _source: source,
+      },
+    ]);
+
+    expect(attempted).toHaveLength(1);
+    expect(report.rows).toMatchObject({
+      attempted: 1,
+      ignored: 3,
+      ignoredByReason: { unsupported_subject: 1, general_awareness_leak: 1, forbidden_display_token: 1 },
+    });
+    expect(ignoredSamples[0].reason).toBe("unsupported_subject");
   });
 });

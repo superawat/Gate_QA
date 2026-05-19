@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { useFilterState, useFilterActions } from "../../contexts/FilterContext";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 
-const APTITUDE_SUBJECT_SLUGS = new Set(["english", "mathematics", "reasoning"]);
+const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning"]);
 
 type SubjectOption = {
   slug: string;
@@ -183,7 +183,7 @@ const AptitudeTopicFilter = () => {
           </div>
           <p className="mt-0.5 text-[11px] leading-tight text-[color:var(--color-text-muted)]">
             {aptitudeEnabled
-              ? (aptitudeLoading ? "Loading aptitude questions..." : "English, Mathematics & Reasoning")
+              ? (aptitudeLoading ? "Loading aptitude questions..." : "English, Quant & Reasoning")
               : "Toggle on to add competitive exam questions"}
           </p>
           {aptitudeError ? (

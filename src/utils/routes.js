@@ -3,6 +3,7 @@ export const PRACTICE_ROUTE = "/practice";
 export const INSIGHTS_ROUTE = "/insights";
 export const MOCK_ROUTE = "/mock";
 export const MOCK_HISTORY_ROUTE = "/history/mock-tests";
+export const USER_MANUAL_ROUTE = "/manual";
 export const PAGE_QUERY_KEY = "page";
 
 export const FILTER_QUERY_KEYS = [

@@ -23,12 +23,12 @@ const sampleRows = [
     },
   },
   {
-    uid: "APT-MAT-0001",
+    uid: "APT-QNT-0001",
     questionHtml: "<p>Find the ratio.</p><ol><li>1:2</li><li>2:3</li><li>3:4</li><li>4:5</li></ol>",
     options: ["1:2", "2:3", "3:4", "4:5"],
     answer: "D",
     type: "MCQ",
-    subject: "Mathematics",
+    subject: "Quant",
     subtopic: "Ratio and Proportion",
     year: null,
     ["_s" + "ource"]: {
@@ -56,14 +56,14 @@ const sampleIndex = {
       sh: "data/aptitude/english/synonyms.json",
     },
     {
-      u: "APT-MAT-0001",
+      u: "APT-QNT-0001",
       t: "MCQ",
-      s: "Mathematics",
-      ss: "mathematics",
+      s: "Quant",
+      ss: "quant",
       st: "Ratio and Proportion",
       sts: "ratio-and-proportion",
       x: "Find the ratio.",
-      sh: "data/aptitude/mathematics/ratio-and-proportion.json",
+      sh: "data/aptitude/quant/ratio-and-proportion.json",
     },
   ],
 };
@@ -125,7 +125,7 @@ describe("AptitudeQuestionService", () => {
     expect(tags.hideYearFilters).toBe(true);
     expect(tags.questionTypes).toEqual(["MCQ"]);
     expect(tags.yearSets).toEqual([]);
-    expect(tags.subjects.map((subject) => subject.slug)).toEqual(["english", "mathematics"]);
+    expect(tags.subjects.map((subject) => subject.slug)).toEqual(["english", "quant"]);
     expect(tags.structuredSubtopics.english).toEqual([{ slug: "synonyms", label: "Synonyms" }]);
   });
 

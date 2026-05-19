@@ -16,7 +16,7 @@ const DEFAULT_SEED = "gateqa-aptitude-phase5";
 const MISC_WARNING_RATIO = 0.2;
 
 const DISPLAY_FORBIDDEN_RE =
-  /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]|Q\s*\.\s*\d+\.|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
+  /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]\b|Q\s*\.\s*\d+(?:\.|\s*(?:to|-))|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
 
 const ARTIFACT_CHECKS = [
   {
@@ -27,7 +27,7 @@ const ARTIFACT_CHECKS = [
   {
     name: "publisherNoise",
     severity: "error",
-    pattern: /Pinnacle|ssccglpinnacle|Download\s+Pinnacle|Search\s+on\s+TG/i,
+    pattern: /Download\s+Pinnacle|Search\s+on\s+TG|ssccglpinnacle|Pinnacle\s+(?:PDF|Book|Publication|Exam|Coaching)/i,
   },
   {
     name: "pipelineMarkerLeak",
@@ -96,7 +96,7 @@ function rowText(row) {
 }
 
 function rowTextWithOptions(row) {
-  return compactSpaces(`${rowText(row)} ${(row.options || []).map(decodeEntities).join(" ")}`);
+  return compactSpaces(`${rowText(row)} ${(row.options || []).map(stripHtml).join(" ")}`);
 }
 
 function preview(row, length = 220) {
@@ -108,7 +108,7 @@ function dedupeKey(row) {
   const normalized = rowText(row)
     .normalize("NFKC")
     .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, "");
+    .replace(/[^a-z0-9]+/g, "");
   return crypto.createHash("sha256").update(normalized).digest("hex");
 }
 
@@ -362,7 +362,7 @@ function mathHint(text) {
   if (/\b(?:simplify|simplification|evaluate|value of|fraction|decimal|surds?)\b/.test(text)) {
     return "Simplification";
   }
-  if (/\b(?:sin|cos|tan|cot|sec|cosec|trigonometry)\b/.test(text)) {
+  if (/\b(?:sin|cos|tan|cot|cosec|trigonometry)\b|(?<!\/)\bsec\b|(?:sin|cos|tan|cot|sec|cosec)(?:a|b|c|x|y|θ)\b|(?:sin|cos|tan|cot|sec|cosec)\s*θ/.test(text)) {
     return "Trigonometry";
   }
   if (/\b(?:height|distance|elevation|depression|shadow)\b/.test(text)) {
@@ -374,13 +374,13 @@ function mathHint(text) {
   if (/\b(?:coordinate|abscissa|ordinate|slope)\b/.test(text)) {
     return "Coordinate Geometry";
   }
-  if (/\b(?:mean|median|mode)\b/.test(text)) {
+  if (/\b(?:mean|median|mode|quartile|skewness|coefficient of skewness|data set)\b/.test(text)) {
     return "Mean, Median & Mode";
   }
   if (/\baverage\b/.test(text)) {
     return "Average";
   }
-  if (/\b(?:data|table|chart|graph|pie chart|bar graph|line graph)\b/.test(text)) {
+  if (/\b(?:given table|following table|chart|graph|pie chart|bar graph|line graph|data interpretation)\b/.test(text)) {
     return "Data Interpretation";
   }
   if (/\b(?:ratio|proportion)\b/.test(text)) {
@@ -399,10 +399,10 @@ function reasoningHint(text) {
   if (/\b(?:sitting around|seated in|parallel rows|facing the center|facing north|facing south|immediate left|immediate right|opposite to|around a circle)\b/.test(text)) {
     return "Sitting Arrangement";
   }
-  if (/\baddresses?\b|house number|street|colony|pin code|flat no|sector\b/.test(text)) {
+  if (/\b(?:address(?:es)?|identical to the address|similar address)\b|house number|street|colony|pin code|flat no|sector\b/.test(text)) {
     return "Address";
   }
-  if (/\b(?:mathematical operation|interchange|operators?|symbols?|means ['"]?[+\-*/]|if \d+\s*[$@#%&]\s*\d+\s*=)\b/.test(text)) {
+  if (/\b(?:mathematical operation|interchange|interchanging|operators?|symbols?)\b|\bmeans ['"]?[+\-*/]|\bif\s*[+\-×÷*/#@]|\bif \d+\s*[$@#%&]\s*\d+\s*=/.test(text)) {
     return "Mathematical Operations";
   }
   if (/\b(?:statements?.*conclusions?|arguments?|course of action|assumptions? that must hold)\b/.test(text)) {
@@ -414,7 +414,7 @@ function reasoningHint(text) {
   if (/\b(?:syllogism|all\s+\w+\s+are|some\s+\w+\s+are|no\s+\w+\s+(?:is|are))\b/.test(text)) {
     return "Syllogism";
   }
-  if (/\b(?:inequality|greater than|less than|not greater|not less)\b|[<>]=?/.test(text)) {
+  if (/\b(?:inequality|greater than|less than|not greater|not less)\b|\b[A-Z]\s*[<>]=?\s*[A-Z]\b/.test(text)) {
     return "Inequality";
   }
   if (/\b(?:direction|north|south|east|west|clockwise|anti-clockwise)\b/.test(text)) {
@@ -422,6 +422,9 @@ function reasoningHint(text) {
   }
   if (/\b(?:father|mother|sister|brother|daughter|son|husband|wife|grand|blood relation)\b/.test(text)) {
     return "Blood Relation";
+  }
+  if (/\b(?:calendar|day of the week|leap year)\b/.test(text)) {
+    return "Calendar";
   }
   if (/\b(?:series|letter-cluster|number series|comes next|next term|complete the pattern)\b/.test(text)) {
     return "Series";
@@ -432,10 +435,13 @@ function reasoningHint(text) {
   if (/\b(?:word formation|formed from|letters.*word|meaningful word)\b/.test(text)) {
     return "Word Formation";
   }
-  if (/\b(?:arrange.*(?:word|letter)|dictionary order|alphabetical order)\b/.test(text)) {
+  if (/\b(?:arrange.*(?:words?|letters?)|arrangement of (?:the )?given words?|english dictionary|dictionary order|alphabetical order|order in which they appear)\b/.test(text)) {
     return "Word Arrangement";
   }
-  if (/\b(?:arithmetic reasoning|total number|how many|minimum number|maximum number|sum of \d+|find x\b)\b/.test(text)) {
+  if (/\b(?:related to the (?:third|fourth|fifth|following)|numbers are related|number-pairs|number pairs|same way as|following logic|certain logic|similar relationship|best classifies|classifies the following items)\b/.test(text)) {
+    return "Analogy";
+  }
+  if (/\b(?:arithmetic reasoning|total number|how many|minimum number|maximum number|sum of \d+|find x\b|number of triangles|number of quadrilaterals)\b/.test(text)) {
     return "Arithmetic Reasoning";
   }
   if (/\b(?:puzzle|floor|persons?|people|boxes|days)\b/.test(text)) {
@@ -456,15 +462,15 @@ function reasoningHint(text) {
 function remapHint(row) {
   const text = rowTextWithOptions(row).toLowerCase();
   if (row.subject === "English") return englishHint(text);
-  if (row.subject === "Mathematics") return mathHint(text);
+  if (row.subject === "Quant") return mathHint(text);
   if (row.subject === "Reasoning") return reasoningHint(text);
   return null;
 }
 
 function crossSubjectHint(row) {
-  if (row.subject === "Mathematics") return null;
+  if (row.subject === "Quant") return null;
   const hint = mathHint(rowTextWithOptions(row).toLowerCase());
-  return hint ? `Potential Mathematics / ${hint}` : null;
+  return hint ? `Potential Quant / ${hint}` : null;
 }
 
 function auditRemapCandidates(rows) {
@@ -519,7 +525,7 @@ function hasUnbalancedParentheses(text) {
 }
 
 function auditMath(rows) {
-  const mathLikeRows = rows.filter((row) => row.subject === "Mathematics" || MATH_SIGNAL_RE.test(rowTextWithOptions(row)));
+  const mathLikeRows = rows.filter((row) => row.subject === "Quant" || MATH_SIGNAL_RE.test(rowTextWithOptions(row)));
   const delimiterErrors = [];
   const htmlMathRows = [];
   const suspiciousOcrRows = [];

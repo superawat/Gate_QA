@@ -16,7 +16,7 @@ const TAXONOMY = Object.freeze({
     "Homonyms",
     "Miscellaneous",
   ]),
-  Mathematics: Object.freeze([
+  Quant: Object.freeze([
     "Number System",
     "HCF and LCM",
     "Simplification",

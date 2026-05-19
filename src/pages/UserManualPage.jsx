@@ -1,0 +1,345 @@
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  FaBookOpen,
+  FaChartLine,
+  FaCheckCircle,
+  FaCompass,
+  FaDatabase,
+  FaFilter,
+  FaHome,
+  FaLaptop,
+  FaQuestionCircle,
+  FaRegClock,
+  FaShieldAlt,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+import PageShell from "../components/Layout/PageShell";
+import {
+  INSIGHTS_ROUTE,
+  MOCK_ROUTE,
+  PRACTICE_ROUTE,
+} from "../utils/routes";
+
+const quickActions = [
+  {
+    label: "Open Practice",
+    description: "Browse by topic, year, type, or search.",
+    to: PRACTICE_ROUTE,
+    icon: FaCompass,
+  },
+  {
+    label: "View Insights",
+    description: "Review progress, mistakes, weak areas, and mock history.",
+    to: INSIGHTS_ROUTE,
+    icon: FaChartLine,
+  },
+  {
+    label: "Start Mock",
+    description: "Open the exam-style setup flow.",
+    to: `${MOCK_ROUTE}?stage=setup`,
+    icon: FaRegClock,
+  },
+];
+
+const manualSections = [
+  {
+    id: "start",
+    eyebrow: "Start",
+    title: "Home dashboard",
+    icon: FaHome,
+    toneClassName: "text-sky-700 bg-sky-50 border-sky-100",
+    summary: "The launch point for practice, filters, mocks, insights, streaks, and recent activity.",
+    details: [
+      { label: "Practice", text: "Start a fresh question immediately." },
+      { label: "Filter Questions", text: "Open the full browser for planned practice." },
+      { label: "Progress signals", text: "Streak and activity cues show recent study rhythm." },
+    ],
+  },
+  {
+    id: "practice",
+    eyebrow: "Browse",
+    title: "Practice and filters",
+    icon: FaFilter,
+    toneClassName: "text-emerald-700 bg-emerald-50 border-emerald-100",
+    summary: "Use search, subjects, years, types, and progress filters to shape a smaller question pool.",
+    details: [
+      { label: "Search", text: "Match words from the question, topic, year, or visible details." },
+      { label: "Filter stack", text: "Each selected filter narrows the list further." },
+      { label: "Aptitude", text: "Aptitude practice follows its own data and progress path." },
+    ],
+  },
+  {
+    id: "solve",
+    eyebrow: "Answer",
+    title: "Solving questions",
+    icon: FaQuestionCircle,
+    toneClassName: "text-violet-700 bg-violet-50 border-violet-100",
+    summary: "Solve one question at a time with answer checking, solutions, notes, bookmarks, and share support.",
+    details: [
+      { label: "Submit", text: "Choose an option or enter a numeric answer, then check it." },
+      { label: "Learn", text: "Open the solution, inspect images or math, and save notes." },
+      { label: "Move", text: "Use previous or next, or share the question link for later." },
+    ],
+  },
+  {
+    id: "mock",
+    eyebrow: "Exam",
+    title: "Mock tests",
+    icon: FaRegClock,
+    toneClassName: "text-amber-700 bg-amber-50 border-amber-100",
+    summary: "Timed exam-style practice with full mocks, past papers, and custom-built test sessions.",
+    details: [
+      { label: "Setup", text: "Pick Full Mock, Past Paper, or Custom Builder." },
+      { label: "Exam tools", text: "Use timer, palette, sections, and mark-for-review." },
+      { label: "Review", text: "See score, timing, section breakdown, and awarded cases." },
+    ],
+  },
+  {
+    id: "progress",
+    eyebrow: "Review",
+    title: "Insights and progress",
+    icon: FaChartLine,
+    toneClassName: "text-rose-700 bg-rose-50 border-rose-100",
+    summary: "Insights turns local practice history into review queues, weak-area signals, and recovery loops.",
+    details: [
+      { label: "Overview", text: "Track coverage, accuracy, weak topics, and activity." },
+      { label: "Review Queue", text: "Revisit questions that deserve another pass." },
+      { label: "Wrong Answers", text: "Spot repeated mistakes and recovered questions." },
+    ],
+  },
+  {
+    id: "data",
+    eyebrow: "Backup",
+    title: "Your data",
+    icon: FaShieldAlt,
+    toneClassName: "text-cyan-700 bg-cyan-50 border-cyan-100",
+    summary: "No account is required. Your progress is saved in this browser on this device.",
+    details: [
+      { label: "Saved locally", text: "Solved status, bookmarks, notes, mocks, streaks, and goals stay in browser storage." },
+      { label: "No auto-sync", text: "Phone, laptop, Chrome, and Safari do not share progress automatically." },
+      { label: "Use Export", text: "Export JSON regularly, then import it later to restore or transfer progress." },
+    ],
+  },
+  {
+    id: "tools",
+    eyebrow: "Tools",
+    title: "Theme, calculator, install",
+    icon: FaLaptop,
+    toneClassName: "text-slate-700 bg-slate-50 border-slate-100",
+    summary: "Small helpers keep practice comfortable across desktop and mobile.",
+    details: [
+      { label: "Theme", text: "Switch light or dark mode from the header; mocks stay light." },
+      { label: "Calculator", text: "Move it on desktop or open it full-screen on mobile." },
+      { label: "Install", text: "Supported browsers can open GateQA like an app." },
+    ],
+  },
+  {
+    id: "source",
+    eyebrow: "Source",
+    title: "Question bank",
+    icon: FaDatabase,
+    toneClassName: "text-indigo-700 bg-indigo-50 border-indigo-100",
+    summary: "GATE CS practice uses GATE Overflow data, mirrored local images, and separate aptitude data.",
+    details: [
+      { label: "Images", text: "Question images are mirrored locally for more reliable loading." },
+      { label: "Aptitude", text: "Aptitude questions use their own data and progress path." },
+      { label: "Final authority", text: "For official disputes, rely on official GATE notices and keys." },
+    ],
+  },
+];
+
+const cx = (...classes) => classes.filter(Boolean).join(" ");
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.07 },
+  },
+};
+
+const QuickActions = () => (
+  <motion.section
+    variants={fadeUp}
+    aria-label="Manual quick actions"
+    className="grid gap-3 sm:grid-cols-3"
+  >
+    {quickActions.map((action) => {
+      const Icon = action.icon;
+      return (
+        <Link
+          key={action.label}
+          to={action.to}
+          className="group flex min-h-[82px] items-center gap-3 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-[var(--shadow-soft)] transition hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-primary-soft)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+        >
+          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] text-[color:var(--color-primary-text)]">
+            <Icon aria-hidden="true" />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-sm font-semibold text-[color:var(--color-text)]">
+              {action.label}
+            </span>
+            <span className="mt-1 block text-xs leading-5 text-[color:var(--color-text-muted)]">
+              {action.description}
+            </span>
+          </span>
+        </Link>
+      );
+    })}
+  </motion.section>
+);
+
+const ManualSections = () => {
+  const [openSectionId, setOpenSectionId] = useState(manualSections[0].id);
+  const openSection = manualSections.find((section) => section.id === openSectionId) || manualSections[0];
+  const ActiveIcon = openSection.icon;
+
+  return (
+    <motion.section variants={fadeUp} className="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
+      <aside className="lg:sticky lg:top-28 lg:self-start">
+        <div className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 shadow-[var(--shadow-soft)]">
+          <p className="px-2 pb-3 text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+            Categories
+          </p>
+          <nav aria-label="Manual sections" className="flex flex-col gap-1">
+            {manualSections.map((section) => {
+              const Icon = section.icon;
+              const isActive = section.id === openSectionId;
+
+              return (
+                <button
+                  key={section.id}
+                  type="button"
+                  onClick={() => setOpenSectionId(section.id)}
+                  aria-pressed={isActive}
+                  className="relative flex min-h-[44px] items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-semibold outline-none transition hover:bg-[color:var(--color-surface-muted)] focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                >
+                  {isActive ? (
+                    <motion.span
+                      layoutId="manual-sidebar-active"
+                      className="absolute inset-0 rounded-lg border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)]"
+                    />
+                  ) : null}
+                  <span className={cx(
+                    "relative z-10",
+                    isActive ? "text-[color:var(--color-primary-text)]" : "text-[color:var(--color-text-muted)]"
+                  )}>
+                    <Icon aria-hidden="true" size={16} />
+                  </span>
+                  <span className="relative z-10 text-[color:var(--color-text)]">
+                    {section.title}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      </aside>
+
+      <div className="min-h-[360px]">
+        <AnimatePresence mode="wait">
+          <motion.article
+            key={openSection.id}
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -12 }}
+            transition={{ duration: 0.2 }}
+            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6"
+          >
+            <div className="mb-4 flex items-start gap-4">
+              <span className={cx(
+                "inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border text-lg",
+                openSection.toneClassName
+              )}>
+                <ActiveIcon aria-hidden="true" />
+              </span>
+              <div>
+                <span className="block text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+                  {openSection.eyebrow}
+                </span>
+                <h2 className="mt-1 text-2xl font-bold text-[color:var(--color-text)]">
+                  {openSection.title}
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-[color:var(--color-text-muted)]">
+                  {openSection.summary}
+                </p>
+              </div>
+            </div>
+
+            <div className="divide-y divide-[color:var(--color-border)]">
+              {openSection.details.map((detail, index) => (
+                <motion.div
+                  key={detail.label}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <FaCheckCircle className="mt-0.5 shrink-0 text-[color:var(--color-success-text)]" aria-hidden="true" />
+                  <div>
+                    <h3 className="text-sm font-bold text-[color:var(--color-text)]">
+                      {detail.label}
+                    </h3>
+                    <p className="mt-1 text-sm leading-6 text-[color:var(--color-text-muted)]">
+                      {detail.text}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.article>
+        </AnimatePresence>
+      </div>
+    </motion.section>
+  );
+};
+
+const ClosingNote = () => (
+  <motion.section
+    variants={fadeUp}
+    className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-5 text-sm leading-7 text-[color:var(--color-text-muted)]"
+  >
+    <p>
+      GateQA is local-first. Your practice state is stored in this browser, so export progress when you want a backup or a transfer path.
+    </p>
+  </motion.section>
+);
+
+export default function UserManualPage() {
+  return (
+    <PageShell contentClassName="space-y-8 py-8">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="space-y-8"
+      >
+        <motion.header variants={fadeUp} className="flex flex-col gap-3">
+          <span className="inline-flex w-fit items-center gap-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+            <FaBookOpen aria-hidden="true" />
+            Guide
+          </span>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-[color:var(--color-text)] sm:text-4xl">
+              User Manual
+            </h1>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-[color:var(--color-text-muted)]">
+              Understand the platform workflow, practice tools, mock tests, progress tracking, and local data behavior.
+            </p>
+          </div>
+        </motion.header>
+
+        <QuickActions />
+        <ManualSections />
+        <ClosingNote />
+      </motion.div>
+    </PageShell>
+  );
+}

@@ -100,6 +100,9 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const isNAT = rawType === "NAT";
     const isMSQ = rawType === "MSQ";
     const isAutoAwarded = isMockAutoAwardType(rawType);
+    const autoAwardMessage = rawType === "SUBJECTIVE"
+        ? "This legacy subjective prompt is awarded automatically. No response is required."
+        : "This question is awarded to all candidates. No response is required.";
     const currentResponse = responses[questionUid];
     const reviewResult = isReviewPhase ? currentQuestionResult : null;
     const verdictCopy = getVerdictCopy(reviewResult);
@@ -287,7 +290,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                         <div className="pl-1">
                             {isAutoAwarded ? (
                                 <div className="rounded border border-[#c8e6d1] bg-[#f1fbf4] px-3 py-3 text-sm font-semibold text-[#0f6f2f]">
-                                    This question is awarded to all candidates. No response is required.
+                                    {autoAwardMessage}
                                 </div>
                             ) : isNAT ? (
                                 <div className="relative z-10 mt-4 flex flex-col gap-2">

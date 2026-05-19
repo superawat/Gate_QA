@@ -2,6 +2,8 @@
 
 GateQA uses JavaScript unit tests, QA scripts, and manual QA.
 
+For the comprehensive CI/CD pipeline checks that must pass before pushing code, see [docs/PRE_PUSH_CHECKS.md](./PRE_PUSH_CHECKS.md).
+
 ## 1) JavaScript unit tests (Vitest)
 
 Current suites:
@@ -265,3 +267,4 @@ Assertions from `lighthouserc.json`:
 
 - no dedicated accessibility snapshot suite beyond Lighthouse + axe route audits
 - no visual-regression screenshot suite yet
+

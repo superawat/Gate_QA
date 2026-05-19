@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Structured web ingestion for the standalone Aptitude bank.
  *
@@ -15,6 +13,14 @@ import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { JSDOM } from "jsdom";
 import { chromium, request as playwrightRequest } from "playwright";
+import {
+  classifyCatalogContext,
+  classifyCatalogJob,
+  createDecisionReport,
+  filterAttemptedRows,
+  mergeDecisionReports,
+  recordDecision,
+} from "./bossxcode-intake-classifier.mjs";
 
 const require = createRequire(import.meta.url);
 const { TAXONOMY, SUBJECTS } = require("../qa/aptitude-taxonomy.js");
@@ -27,8 +33,19 @@ const DEFAULT_BASE_URL = "https://pt.bossxcode.unaux.com/";
 const DEFAULT_OUTPUT_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "parsed-questions.json");
 const DEFAULT_REPORT_PATH = path.join(ROOT, "artifacts", "review", "bossxcode-aptitude-import-report.json");
 const DEFAULT_PROFILE_DIR = path.join(ROOT, "artifacts", "aptitude-pipeline", ".bossxcode-browser-profile");
+const DEFAULT_CATALOG_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "bossxcode-catalog.json");
 const SOURCE_KIND = "bossxcode-web";
+const SOURCE_PROVIDER = "BossXCode";
 const OPTION_LABELS = ["A", "B", "C", "D"];
+const QUANT_SUBJECT = "Quant";
+const SUBJECT_ALIASES = new Map([
+  ["math", QUANT_SUBJECT],
+  ["maths", QUANT_SUBJECT],
+  ["mathematics", QUANT_SUBJECT],
+  ["quant", QUANT_SUBJECT],
+  ["quantitative", QUANT_SUBJECT],
+  ["quantitative-aptitude", QUANT_SUBJECT],
+]);
 
 const QUESTION_KEYS = [
   "questionHtml",
@@ -127,7 +144,7 @@ const MATHML_TAGS = new Set([
 
 const SKIP_LINK_RE = /\.(?:css|js|png|jpe?g|gif|webp|svg|ico|pdf|zip|rar|7z|mp4|mp3)(?:[?#]|$)/i;
 const DISPLAY_FORBIDDEN_RE =
-  /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]|Q\s*\.\s*\d+\.|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
+  /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]\b|Q\s*\.\s*\d+(?:\.|\s*(?:to|-))|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
 
 const SUBTOPIC_ALIASES = new Map([
   ["active-and-passive", "Active Passive"],
@@ -206,17 +223,25 @@ export function parseArgs(argv = process.argv.slice(2), env = process.env) {
     inputPath: resolveRepoPath(readOption(argv, "input", "")),
     outputPath: resolveRepoPath(readOption(argv, "output", DEFAULT_OUTPUT_PATH)),
     reportPath: resolveRepoPath(readOption(argv, "report", DEFAULT_REPORT_PATH)),
+    catalogPath: resolveRepoPath(readOption(argv, "catalog", DEFAULT_CATALOG_PATH)),
+    debugZeroDir: resolveRepoPath(readOption(argv, "debug-zero-dir", "")),
     userDataDir: resolveRepoPath(readOption(argv, "user-data-dir", DEFAULT_PROFILE_DIR)),
     maxPages: Math.max(1, readIntOption(argv, "max-pages", 500)),
     maxPapers: Math.max(0, readIntOption(argv, "max-papers", 0)),
+    maxNewPapers: Math.max(0, readIntOption(argv, "max-new-papers", 0)),
+    maxRuntimeMinutes: Math.max(0, readIntOption(argv, "max-runtime-minutes", 0)),
     concurrency: Math.max(1, readIntOption(argv, "concurrency", 1)),
     requestTimeoutMs: Math.max(5000, readIntOption(argv, "request-timeout", 60_000)),
+    checkpointEvery: Math.max(1, readIntOption(argv, "checkpoint-every", 10)),
     limit: Math.max(0, readIntOption(argv, "limit", 0)),
     delayMs: Math.max(0, readIntOption(argv, "delay", 250)),
     headless: !argv.includes("--headed"),
     channel: readOption(argv, "channel", env.PLAYWRIGHT_CHANNEL || ""),
-    products: readListOption(argv, "products", (env.BOSSXCODE_PRODUCTS || "chapter-test").split(",").filter(Boolean)),
-    testTypeIds: readListOption(argv, "test-type-ids", (env.BOSSXCODE_TEST_TYPE_IDS || "3").split(",").filter(Boolean)),
+    products: readListOption(argv, "products", (env.BOSSXCODE_PRODUCTS || "*").split(",").filter(Boolean)),
+    testTypeIds: readListOption(argv, "test-type-ids", (env.BOSSXCODE_TEST_TYPE_IDS || "*").split(",").filter(Boolean)),
+    includeAllSeries: !argv.includes("--relevant-series-only") && !/^(0|false|no)$/i.test(env.BOSSXCODE_INCLUDE_ALL_SERIES || ""),
+    refreshCatalog: argv.includes("--refresh-catalog"),
+    discoveryOnly: argv.includes("--discovery-only"),
     legacyCrawl: argv.includes("--legacy-crawl"),
     resume: argv.includes("--resume"),
   };
@@ -235,12 +260,37 @@ function compactText(value = "") {
     .trim();
 }
 
+function cleanCatalogTitle(value = "") {
+  let title = compactText(value);
+  title = title
+    .replace(/\bDescription\b.*$/i, "")
+    .replace(/\bOpen\s+Test\s*\(New\s+Tab\)\b.*$/i, "")
+    .replace(/\bOpen\b\s*$/i, "")
+    .replace(/\bTotal\s*papers\s*:\s*\d+.*$/i, "")
+    .replace(/\bTotal\s*Tests?\s*:\s*\d+.*$/i, "")
+    .replace(/\bQuestions?\s*:\s*\d+.*$/i, "")
+    .replace(/Tests?\s*:\s*\d+.*$/i, "")
+    .replace(/Series\s*:\s*\d+.*$/i, "")
+    .replace(/Price\s*:\s*\d+.*$/i, "")
+    .replace(/\bQ\s*:\s*\d+.*$/i, "")
+    .replace(/\b(?:Mock|Sectional|Chapter|PYP)\s*:\s*\d+.*$/i, "")
+    .replace(/\s+:$/, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+  return title || compactText(value);
+}
+
 function slugify(value = "") {
   return compactText(value)
     .toLowerCase()
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+function normalizeSubjectLabel(value = "") {
+  const slug = slugify(value);
+  return SUBJECT_ALIASES.get(slug) || SUBJECTS.find((subject) => slugify(subject) === slug) || "";
 }
 
 function escapeHtml(value = "") {
@@ -268,6 +318,25 @@ function stripHtml(value = "") {
   doc.body.innerHTML = value;
   doc.body.querySelectorAll("script,style,noscript").forEach((node) => node.remove());
   return compactText(doc.body.textContent || "");
+}
+
+function imageRefsFromHtml(value = "") {
+  const refs = [];
+  const imgRe = /<img\b[^>]*>/gi;
+  let match;
+  while ((match = imgRe.exec(String(value || "")))) {
+    const tag = match[0];
+    const alt = tag.match(/\balt\s*=\s*["']([^"']+)["']/i)?.[1] || "";
+    const src = tag.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1] || "";
+    if (alt || src) refs.push(compactText(alt || src));
+  }
+  return refs;
+}
+
+function textWithImageRefs(value = "") {
+  const text = stripHtml(value);
+  if (!looksLikeHtml(value)) return text;
+  return compactText([text, ...imageRefsFromHtml(value)].join(" "));
 }
 
 function looksLikeHtml(value = "") {
@@ -354,30 +423,34 @@ function stripEmbeddedOptionLists(rawHtml = "", options = []) {
   }
 
   const optionKeys = new Set(options.map((option) => optionTextKey(option.html || option.text || option)).filter(Boolean));
-  const doc = getDocument();
+  const dom = new JSDOM("<!doctype html><body></body>");
+  const { document: doc } = dom.window;
   doc.body.innerHTML = rawHtml;
+  try {
+    doc.querySelectorAll("ol, ul").forEach((list) => {
+      const items = Array.from(list.children).filter((child) => child.tagName?.toLowerCase() === "li");
+      if (items.length < 2 || items.length > 6) return;
 
-  doc.querySelectorAll("ol, ul").forEach((list) => {
-    const items = Array.from(list.children).filter((child) => child.tagName?.toLowerCase() === "li");
-    if (items.length < 2 || items.length > 6) return;
+      const itemKeys = items.map((item) => optionTextKey(item.innerHTML)).filter(Boolean);
+      const allItemsMatchOptions = itemKeys.length >= 2 && itemKeys.every((key) => optionKeys.has(key));
+      const alphaList = /upper-alpha|lower-alpha/i.test(list.getAttribute("style") || "") || /^[Aa]$/.test(list.getAttribute("type") || "");
+      const isTrailingList = !list.nextElementSibling;
+      if (allItemsMatchOptions || alphaList || isTrailingList) {
+        list.remove();
+      }
+    });
 
-    const itemKeys = items.map((item) => optionTextKey(item.innerHTML)).filter(Boolean);
-    const allItemsMatchOptions = itemKeys.length >= 2 && itemKeys.every((key) => optionKeys.has(key));
-    const alphaList = /upper-alpha|lower-alpha/i.test(list.getAttribute("style") || "") || /^[Aa]$/.test(list.getAttribute("type") || "");
-    const isTrailingList = !list.nextElementSibling;
-    if (allItemsMatchOptions || alphaList || isTrailingList) {
-      list.remove();
-    }
-  });
+    doc.querySelectorAll("p, div, li").forEach((block) => {
+      const text = compactText(block.textContent || "");
+      if (/^\(?\s*[A-Da-d]\s*\)?[\).:-]\s+/.test(text)) {
+        block.remove();
+      }
+    });
 
-  doc.querySelectorAll("p, div, li").forEach((block) => {
-    const text = compactText(block.textContent || "");
-    if (/^\(?\s*[A-Da-d]\s*\)?[\).:-]\s+/.test(text)) {
-      block.remove();
-    }
-  });
-
-  return doc.body.innerHTML.trim();
+    return doc.body.innerHTML.trim();
+  } finally {
+    dom.window.close();
+  }
 }
 
 function stripQuestionNumberPrefix(rawValue = "") {
@@ -444,7 +517,7 @@ function normalizeOptionEntry(entry, index = 0) {
     const raw = stripOptionPrefix(String(entry));
     const text = stripHtml(raw) || decodeHtml(raw);
     const html = looksLikeHtml(raw) ? sanitizeHtmlFragment(raw) : escapeHtml(text);
-    return text ? { label, text, html, correct: false } : null;
+    return text || /<img\b/i.test(html) ? { label, text: text || `[Image option ${label}]`, html, correct: false } : null;
   }
   if (!entry || typeof entry !== "object") return null;
 
@@ -452,11 +525,14 @@ function normalizeOptionEntry(entry, index = 0) {
   const rawValue = firstStringByKeys(entry, ["html", "text", "value", "title", "answer", "content"]) || firstStringByKeys(entry, QUESTION_KEYS);
   const text = stripOptionPrefix(rawValue);
   if (!text) return null;
+  const html = sanitizeHtmlFragment(text);
+  const visibleText = stripHtml(text) || decodeHtml(text);
+  if (!visibleText && !/<img\b/i.test(html)) return null;
 
   return {
     label: /^[A-D]$/i.test(rawLabel) ? rawLabel.toUpperCase() : label,
-    text: stripHtml(text) || decodeHtml(text),
-    html: sanitizeHtmlFragment(text),
+    text: visibleText || `[Image option ${label}]`,
+    html,
     correct: Boolean(entry.correct || entry.isCorrect || entry.is_answer || entry.isAnswer || entry.answer === true),
   };
 }
@@ -523,9 +599,13 @@ function optionLabelForValue(rawAnswer, options = []) {
     );
   }
 
-  const value = compactText(String(rawAnswer)).replace(/^Option\s+/i, "");
+  const rawValue = String(rawAnswer);
+  const value = compactText(looksLikeHtml(rawValue) ? stripHtml(rawValue) : rawValue).replace(/^Option\s+/i, "");
   const direct = value.match(/^\(?\s*([A-Da-d])\s*\)?(?:[).:-])?$/);
   if (direct) return direct[1].toUpperCase();
+
+  const leadingSolutionAnswer = value.match(/^(?:\d+\s*[\).:-]\s*)?\(?\s*([A-Da-d])\s*\)?\s*(?:[).:-]|\s|$)/);
+  if (leadingSolutionAnswer) return leadingSolutionAnswer[1].toUpperCase();
 
   if (/^[1-4]$/.test(value)) {
     return OPTION_LABELS[Number(value) - 1];
@@ -597,7 +677,7 @@ function inferMathSubtopic(text) {
   if (/\b(?:partnership|partner|share of profit)\b/i.test(text)) return "Partnership";
   if (/\b(?:mixture|alligation|milk|water|solution)\b/i.test(text)) return "Mixture and Alligation";
   if (/\b(?:pipe|cistern|tank|inlet|outlet)\b/i.test(text)) return "Pipe and Cistern";
-  if (/\b(?:boat|stream|upstream|downstream|current)\b/i.test(text)) return "Boat and Stream";
+  if (/\b(?:boat|stream|upstream|downstream)\b|\b(?:water|river)\s+current\b|\bcurrent\s+(?:of|in)\s+(?:water|river|stream)\b/i.test(text)) return "Boat and Stream";
   if (/\b(?:race|track|lap)\b/i.test(text)) return "Linear/Circular Race";
   if (/\b(?:speed|train|journey|km\/h|time taken)\b/i.test(text)) return "Time, Speed and Distance";
   if (/\b(?:work|task|complete.*days|efficiency)\b/i.test(text)) return "Work and Time";
@@ -642,7 +722,7 @@ function inferSubject(text) {
     return "English";
   }
   if (/\b(?:math|quant|algebra|geometry|percentage|profit|loss|interest|ratio|speed|distance|average|number system|mensuration|trigonometry)\b/i.test(text)) {
-    return "Mathematics";
+    return QUANT_SUBJECT;
   }
   if (/\b(?:reasoning|coding|decoding|analogy|syllogism|blood relation|ranking|directions|puzzle|series)\b/i.test(text)) {
     return "Reasoning";
@@ -652,19 +732,18 @@ function inferSubject(text) {
 
 function inferSubtopic(subject, text) {
   if (subject === "English") return inferEnglishSubtopic(text);
-  if (subject === "Mathematics") return inferMathSubtopic(text);
+  if (subject === QUANT_SUBJECT) return inferMathSubtopic(text);
   if (subject === "Reasoning") return inferReasoningSubtopic(text);
   return "";
 }
 
 function normalizeSubject(rawSubject, rawSubtopic, contextText) {
   const subjectText = compactText(rawSubject);
-  const subjectSlug = slugify(subjectText);
-  const direct = SUBJECTS.find((subject) => slugify(subject) === subjectSlug);
+  const direct = normalizeSubjectLabel(subjectText);
   if (direct) return direct;
 
   if (/english|verbal|grammar|vocab/i.test(subjectText)) return "English";
-  if (/math|quant|numerical/i.test(subjectText)) return "Mathematics";
+  if (/math|quant|numerical/i.test(subjectText)) return QUANT_SUBJECT;
   if (/reasoning|logical|mental/i.test(subjectText)) return "Reasoning";
 
   const subtopicSlug = slugify(rawSubtopic);
@@ -681,12 +760,99 @@ function normalizeSubtopic(subject, rawSubtopic, contextText) {
 
 function stableSourceId(sourceUrl, questionHtml, options) {
   return createHash("sha1")
-    .update(`${sourceUrl}\n${stripHtml(questionHtml)}\n${options.map((option) => stripHtml(option.html || option.text || option)).join("\n")}`)
+    .update(`${sourceUrl}\n${textWithImageRefs(questionHtml)}\n${options.map((option) => textWithImageRefs(option.html || option.text || option)).join("\n")}`)
     .digest("hex")
     .slice(0, 16);
 }
 
-function rowFromCandidate(candidate, sourceUrl, sequence) {
+function sourceContextText(context = {}, sourceUrl = "") {
+  return [
+    context.paper,
+    context.series,
+    context.testType,
+    context.tier,
+    context.product,
+    context.pageTitle,
+    context.subtopic,
+    sourceUrl,
+  ].map((value) => cleanCatalogTitle(value)).filter(Boolean).join(" ");
+}
+
+function extractYear(context = {}, sourceUrl = "") {
+  const text = sourceContextText(context, sourceUrl);
+  const matches = Array.from(text.matchAll(/\b(20\d{2}|19\d{2})\b/g))
+    .map((match) => Number.parseInt(match[1], 10))
+    .filter((year) => year >= 1990 && year <= 2100);
+  return matches[0] || null;
+}
+
+function inferExamBody(text = "") {
+  if (/\b(?:Railway|RRB|NTPC|ALP|Group\s*D|RPF|Technician)\b/i.test(text)) return "Railway";
+  if (/\bDelhi\s+Police\b/i.test(text)) return "Delhi Police";
+  if (/\bBank(?:ing)?\b/i.test(text)) return "Banking";
+  if (/\b(?:SSC|CGL|CHSL|CPO|MTS|Stenographer|Selection\s+Post|GD)\b/i.test(text)) return "SSC";
+  return "Unknown";
+}
+
+function inferExamName(text = "", fallback = "Unknown Test Series") {
+  const patterns = [
+    /\bSSC\s+CGL\s+Tier\s*2\b/i,
+    /\bSSC\s+CGL\s+Tier\s*1\b/i,
+    /\bSSC\s+CHSL\s+Tier\s*2\b/i,
+    /\bSSC\s+CHSL\s+Tier\s*1\b/i,
+    /\bSSC\s+CPO\s+Tier\s*2\b/i,
+    /\bSSC\s+CPO\s+Tier\s*1\b/i,
+    /\bSSC\s+MTS\s+Tier\s*1\b/i,
+    /\bSSC\s+Selection\s+Post\b/i,
+    /\bSSC\s+Stenographer\s+Tier\s*1\b/i,
+    /\bSSC\s+GD\s+Tier\s*1\b/i,
+    /\bNTPC\s+CBT\s*1\s*\([^)]+\)/i,
+    /\bNTPC\s+CBT\s*2\s*\([^)]+\)/i,
+    /\bNTPC\s+CBT\s*1\b/i,
+    /\bNTPC\s+CBT\s*2\b/i,
+    /\bRRB\s+Group\s*D\b/i,
+    /\bGroup\s*D\b/i,
+    /\bALP\s+Tier\s*1\b/i,
+    /\bRPF\s+SI\b/i,
+    /\bRRB\s+JE\b/i,
+    /\bTechnician\s+Grade\s*III\b/i,
+    /\bDelhi\s+Police\s+Constable\s+Executive\b/i,
+    /\bDelhi\s+Police\s+Head\s+Constable\s+Ministerial\b/i,
+    /\bDelhi\s+Police\s+MTS\b/i,
+  ];
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match) return compactText(match[0]).replace(/\s+/g, " ");
+  }
+
+  const cleaned = compactText(fallback)
+    .replace(/\b(?:Mock|Sectional|Chapter|PYP)\s*:\s*\d+.*$/i, "")
+    .replace(/\bTests?\s*:\s*\d+.*$/i, "")
+    .replace(/\bPrice\s*:\s*\d+.*$/i, "")
+    .replace(/\bDescription\b.*$/i, "")
+    .trim();
+  return cleaned || "Unknown Test Series";
+}
+
+function sourceMetadataFromContext(context = {}, sourceUrl = "") {
+  const text = sourceContextText(context, sourceUrl);
+  const fallbackTitle = context.paper || context.series || context.tier || context.product || "Unknown Test Series";
+  const year = extractYear(context, sourceUrl);
+  return {
+    sourceKind: SOURCE_KIND,
+    sourceProvider: SOURCE_PROVIDER,
+    examBody: inferExamBody(text),
+    examName: inferExamName(text, fallbackTitle),
+    year,
+    testSeries: cleanCatalogTitle(context.series || ""),
+    paperTitle: cleanCatalogTitle(context.paper || context.pageTitle || ""),
+    product: cleanCatalogTitle(context.product || ""),
+    tier: cleanCatalogTitle(context.tier || ""),
+    testType: cleanCatalogTitle(context.testType || ""),
+  };
+}
+
+function rowFromCandidate(candidate, sourceUrl, sequence, sourceContext = {}) {
   const options = (candidate.options || []).slice(0, 4);
   if (options.length !== 4) return null;
 
@@ -694,7 +860,7 @@ function rowFromCandidate(candidate, sourceUrl, sequence) {
   if (!OPTION_LABELS.includes(answer)) return null;
 
   const questionHtml = buildQuestionHtml(candidate.question, options, sourceUrl);
-  if (!questionHtml || DISPLAY_FORBIDDEN_RE.test(questionHtml)) return null;
+  if (!questionHtml || DISPLAY_FORBIDDEN_RE.test(questionHtml) || DISPLAY_FORBIDDEN_RE.test(stripHtml(questionHtml))) return null;
 
   const contextText = [
     sourceUrl,
@@ -708,6 +874,7 @@ function rowFromCandidate(candidate, sourceUrl, sequence) {
   if (!subtopic || !TAXONOMY[subject]?.includes(subtopic)) return null;
 
   const sourceId = stableSourceId(sourceUrl, questionHtml, options);
+  const sourceMetadata = sourceMetadataFromContext(sourceContext, sourceUrl);
   return {
     questionHtml,
     options: options.map((option) => sanitizeHtmlFragment(stripOptionPrefix(option.html || option.text), sourceUrl)),
@@ -715,11 +882,9 @@ function rowFromCandidate(candidate, sourceUrl, sequence) {
     type: "MCQ",
     subject,
     subtopic,
-    year: null,
+    year: sourceMetadata.year,
     _source: {
-      sourceKind: SOURCE_KIND,
-      examBody: "BossXCode",
-      examName: "BossXCode",
+      ...sourceMetadata,
       pageUrl: sourceUrl,
       sourceId,
       originalQNum: String(sequence),
@@ -776,10 +941,16 @@ function collectJsonCandidates(value, candidates = [], seenObjects = new WeakSet
   return candidates;
 }
 
+const ROW_HASH_CACHE = new WeakMap();
+
 function rowHash(row) {
-  return createHash("sha1")
-    .update(`${stripHtml(row.questionHtml).toLowerCase()}\n${row.answer}\n${row.options.map((o) => stripHtml(o.html || o.text || o)).join("\n").toLowerCase()}`)
+  const cached = row && typeof row === "object" ? ROW_HASH_CACHE.get(row) : "";
+  if (cached) return cached;
+  const hash = createHash("sha1")
+    .update(`${textWithImageRefs(row.questionHtml).toLowerCase()}\n${row.answer}\n${row.options.map((o) => textWithImageRefs(o.html || o.text || o)).join("\n").toLowerCase()}`)
     .digest("hex");
+  if (row && typeof row === "object") ROW_HASH_CACHE.set(row, hash);
+  return hash;
 }
 
 function dedupeRows(rows) {
@@ -798,7 +969,7 @@ export function extractRowsFromPayload(payload, sourceUrl = DEFAULT_BASE_URL, co
   const candidates = collectJsonCandidates(payload, [], new WeakSet(), context);
   return dedupeRows(
     candidates
-      .map((candidate, index) => rowFromCandidate(candidate, sourceUrl, index + 1))
+      .map((candidate, index) => rowFromCandidate(candidate, sourceUrl, index + 1, context))
       .filter(Boolean)
   );
 }
@@ -990,13 +1161,15 @@ function domContainers(document) {
   return containers;
 }
 
-export function extractRowsFromHtml(html, sourceUrl = DEFAULT_BASE_URL) {
+export function extractRowsFromHtml(html, sourceUrl = DEFAULT_BASE_URL, context = {}) {
   const dom = new JSDOM(html, { url: sourceUrl });
   try {
     const { document } = dom.window;
     const rows = [];
     const sourceContext = {
-      subtopic: compactText(document.querySelector("title")?.textContent || ""),
+      ...context,
+      pageTitle: compactText(document.querySelector("title")?.textContent || ""),
+      subtopic: context.subtopic || compactText(document.querySelector("title")?.textContent || ""),
     };
 
     document.querySelectorAll('script[type*="json"], script#__NEXT_DATA__').forEach((script) => {
@@ -1007,7 +1180,9 @@ export function extractRowsFromHtml(html, sourceUrl = DEFAULT_BASE_URL) {
 
     document.querySelectorAll("script:not([src])").forEach((script) => {
       const text = script.textContent || "";
-      if (!/(question|option|answer|correct)/i.test(text) || text.length > 2_000_000) return;
+      const isBossXCodeTestData = /window\.TEST_DATA/i.test(text);
+      if (!/(question|option|answer|correct)/i.test(text)) return;
+      if (text.length > 2_000_000 && !isBossXCodeTestData) return;
       for (const payload of parseJsonScript(text)) {
         rows.push(...extractRowsFromPayload(payload, sourceUrl, sourceContext));
       }
@@ -1015,7 +1190,7 @@ export function extractRowsFromHtml(html, sourceUrl = DEFAULT_BASE_URL) {
 
     domContainers(document).forEach((container, index) => {
       const candidate = candidateFromDomContainer(container, sourceUrl);
-      const row = candidate ? rowFromCandidate(candidate, sourceUrl, rows.length + index + 1) : null;
+      const row = candidate ? rowFromCandidate(candidate, sourceUrl, rows.length + index + 1, sourceContext) : null;
       if (row) rows.push(row);
     });
 
@@ -1184,7 +1359,7 @@ function formChoices(html, currentUrl, baseUrl, actionPath, fieldName) {
         form: fields,
         fieldName,
         value: String(fields[fieldName]),
-        title: compactText(form.textContent || form.getAttribute("aria-label") || fields[fieldName]),
+        title: cleanCatalogTitle(form.textContent || form.getAttribute("aria-label") || fields[fieldName]),
       });
     });
 
@@ -1204,6 +1379,70 @@ function htmlLooksLocked(html = "") {
   return /Access Restricted|Unlock App|Please enter the password/i.test(stripHtml(html));
 }
 
+function choicePath(choice) {
+  try {
+    return new URL(choice.url, DEFAULT_BASE_URL).pathname;
+  } catch {
+    return "";
+  }
+}
+
+function isStatefulPickChoice(choice) {
+  return choicePath(choice).startsWith("/pick/");
+}
+
+function isPlayChoice(choice) {
+  return choicePath(choice) === "/play";
+}
+
+async function cookieHeaderForRequestContext(requestContext) {
+  const state = await requestContext.storageState();
+  return (state.cookies || [])
+    .filter((cookie) => cookie.name && cookie.value)
+    .map((cookie) => `${cookie.name}=${cookie.value}`)
+    .join("; ");
+}
+
+async function refreshRequestAuth(requestContext, options) {
+  if (!options.password) return;
+  const loginUrl = new URL("/login", options.baseUrl).href;
+  const response = await requestContext.post(loginUrl, {
+    form: { password: options.password },
+    timeout: options.requestTimeoutMs,
+    maxRedirects: 0,
+  });
+  const status = response.status();
+  if (status >= 300 && status < 400) return;
+  const html = await response.text();
+  if (!response.ok() || htmlLooksLocked(html)) {
+    throw new Error("BossXCode request auth refresh failed.");
+  }
+}
+
+async function submitPlayWithFetch(requestContext, choice, options) {
+  const body = new URLSearchParams(choice.form || {}).toString();
+  const cookie = await cookieHeaderForRequestContext(requestContext);
+  const response = await fetch(choice.url, {
+    method: "POST",
+    redirect: "follow",
+    signal: AbortSignal.timeout(Math.max(options.requestTimeoutMs, 300_000)),
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36",
+      ...(cookie ? { cookie } : {}),
+    },
+    body,
+  });
+  const html = await response.text();
+  if (!response.ok) {
+    throw new Error(`BossXCode request failed: ${response.status} ${choice.url}`);
+  }
+  if (htmlLooksLocked(html)) {
+    throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+  }
+  return { html, url: response.url || choice.url };
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -1220,31 +1459,125 @@ function paperSourceUrl(baseUrl, paperPack) {
   return url.href;
 }
 
-function enrichRowsWithCatalogContext(rows, context) {
-  const catalogId = createHash("sha1")
+function catalogIdFromContext(context) {
+  return createHash("sha1")
     .update([context.product, context.tier, context.testType, context.series, context.paper].join("\n"))
     .digest("hex")
     .slice(0, 16);
+}
+
+function enrichRowsWithCatalogContext(rows, context) {
+  const catalogId = catalogIdFromContext(context);
+  const metadata = sourceMetadataFromContext(context);
   return rows.map((row) => ({
     ...row,
+    subject: normalizeSubjectLabel(row.subject) || row.subject,
+    year: row.year || metadata.year,
     _source: {
       ...row._source,
+      ...metadata,
+      pageUrl: row._source?.pageUrl,
+      sourceId: row._source?.sourceId,
+      originalQNum: row._source?.originalQNum,
+      topic: row._source?.topic || row.subtopic,
       catalogId,
     },
   }));
+}
+
+function applyCatalogContextToRows(rows, catalogId, context) {
+  const metadata = sourceMetadataFromContext(context);
+  let updated = 0;
+  rows.forEach((row) => {
+    if (row?._source?.catalogId !== catalogId) return;
+    row.subject = normalizeSubjectLabel(row.subject) || row.subject;
+    row.year = row.year || metadata.year;
+    row._source = {
+      ...row._source,
+      ...metadata,
+      pageUrl: row._source?.pageUrl,
+      sourceId: row._source?.sourceId,
+      originalQNum: row._source?.originalQNum,
+      topic: row._source?.topic || row.subtopic,
+      catalogId,
+    };
+    updated += 1;
+  });
+  return updated;
+}
+
+function serializableSeriesJob(job) {
+  return {
+    productChoice: job.productChoice,
+    tierChoice: job.tierChoice,
+    testTypeChoice: job.testTypeChoice,
+    seriesChoice: job.seriesChoice,
+    contextInfo: job.contextInfo,
+    paperChoices: job.paperChoices,
+  };
+}
+
+function writeCatalogCache(options, seriesJobs, meta = {}) {
+  const payload = {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    baseUrl: options.baseUrl,
+    products: options.products,
+    testTypeIds: options.testTypeIds,
+    includeAllSeries: options.includeAllSeries,
+    complete: !meta.stoppedEarly,
+    seriesJobCount: seriesJobs.length,
+    paperCount: seriesJobs.reduce((sum, job) => sum + (job.paperChoices?.length || 0), 0),
+    seriesJobs: seriesJobs.map(serializableSeriesJob),
+  };
+  writeJson(options.catalogPath, payload);
+  console.log(`[bossxcode] catalog cache saved ${payload.seriesJobCount} series / ${payload.paperCount} papers`);
+}
+
+function loadCatalogCache(options) {
+  if (options.refreshCatalog || !fs.existsSync(options.catalogPath)) return null;
+  const payload = JSON.parse(fs.readFileSync(options.catalogPath, "utf8"));
+  if (payload?.version !== 1 || !Array.isArray(payload.seriesJobs)) return null;
+  const sameProducts = JSON.stringify(payload.products || []) === JSON.stringify(options.products || []);
+  const sameTestTypes = JSON.stringify(payload.testTypeIds || []) === JSON.stringify(options.testTypeIds || []);
+  if (payload.baseUrl !== options.baseUrl || !sameProducts || !sameTestTypes || Boolean(payload.includeAllSeries) !== Boolean(options.includeAllSeries)) {
+    console.log("[bossxcode] catalog cache ignored because selection options changed");
+    return null;
+  }
+  console.log(
+    `[bossxcode] catalog cache loaded ${payload.seriesJobCount || payload.seriesJobs.length} series / ${payload.paperCount || "?"} papers`
+  );
+  return payload.seriesJobs;
 }
 
 function choiceMatchesAllowed(choice, allowedValues) {
   return allowedValues.includes("*") || allowedValues.includes(choice.value);
 }
 
-const RELEVANT_SERIES_RE = /\b(?:English|Reasoning|Quantitative|Quant|Math|Mathematics|Aptitude)\b/i;
-const EXCLUDED_SERIES_RE = /\b(?:General\s+Awareness|General\s+Studies|General\s+Science|Current\s+Affairs|GK|GS|Hindi)\b/i;
+function filterCatalogJobsByIntake(seriesJobInput, intakeReport) {
+  const acceptedJobs = [];
+  let skippedSeriesCount = 0;
+  for (const job of seriesJobInput || []) {
+    const seriesDecision = classifyCatalogJob(job);
+    recordDecision(intakeReport, "series", seriesDecision);
+    if (seriesDecision.action === "ignore") {
+      skippedSeriesCount += 1;
+      continue;
+    }
 
-function isRelevantSeries(choice) {
-  const title = choice.title || "";
-  if (EXCLUDED_SERIES_RE.test(title)) return false;
-  return RELEVANT_SERIES_RE.test(title);
+    const acceptedPapers = [];
+    for (const paperChoice of job.paperChoices || []) {
+      const paperDecision = classifyCatalogJob(job, paperChoice);
+      recordDecision(intakeReport, "papers", paperDecision);
+      if (paperDecision.action === "attempt") {
+        acceptedPapers.push(paperChoice);
+      }
+    }
+    if (acceptedPapers.length > 0) {
+      acceptedJobs.push({ ...job, paperChoices: acceptedPapers });
+    }
+  }
+  return { acceptedJobs, skippedSeriesCount };
 }
 
 async function crawlBossXCodeCatalog(options) {
@@ -1274,16 +1607,40 @@ async function crawlBossXCodeCatalog(options) {
   let failedPapers = 0;
   let failedSeries = 0;
   let skippedSeries = 0;
+  const intakeReport = createDecisionReport();
+  const startedAt = Date.now();
+  const maxRuntimeMs = options.maxRuntimeMinutes > 0 ? options.maxRuntimeMinutes * 60_000 : 0;
+  let workerStorageState = null;
 
   async function submitChoice(choice) {
     for (let attempt = 1; attempt <= 3; attempt += 1) {
       try {
+        const noFollow = isStatefulPickChoice(choice);
         const response = await context.request.post(choice.url, {
           form: choice.form || {},
           timeout: options.requestTimeoutMs,
+          ...(noFollow ? { maxRedirects: 0 } : {}),
         });
-        const html = await response.text();
         pagesVisited += 1;
+        if (noFollow && response.status() >= 300 && response.status() < 400) {
+          await refreshRequestAuth(context.request, options);
+          const redirectUrl = new URL(response.headers().location || "/", choice.url).href;
+          const redirected = await context.request.get(redirectUrl, {
+            timeout: options.requestTimeoutMs,
+          });
+          const html = await redirected.text();
+          if (!redirected.ok()) {
+            throw new Error(`BossXCode request failed: ${redirected.status()} ${redirectUrl}`);
+          }
+          if (htmlLooksLocked(html)) {
+            throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+          }
+          if (options.delayMs > 0) {
+            await page.waitForTimeout(options.delayMs);
+          }
+          return { html, url: redirected.url() || redirectUrl };
+        }
+        const html = await response.text();
         if (!response.ok()) {
           throw new Error(`BossXCode request failed: ${response.status()} ${choice.url}`);
         }
@@ -1305,7 +1662,9 @@ async function crawlBossXCodeCatalog(options) {
 
   function shouldStop() {
     if (options.limit > 0 && dedupeRows(rows).length >= options.limit) return true;
+    if (options.maxNewPapers > 0 && papersScheduled >= options.maxNewPapers) return true;
     if (options.maxPapers > 0 && papersScheduled >= options.maxPapers) return true;
+    if (maxRuntimeMs > 0 && Date.now() - startedAt >= maxRuntimeMs) return true;
     return false;
   }
 
@@ -1319,17 +1678,48 @@ async function crawlBossXCodeCatalog(options) {
   async function submitChoiceWithRequest(requestContext, choice) {
     for (let attempt = 1; attempt <= 3; attempt += 1) {
       try {
+        if (isPlayChoice(choice)) {
+          const result = await submitPlayWithFetch(requestContext, choice, options);
+          pagesVisited += 1;
+          if (options.delayMs > 0) {
+            await sleep(options.delayMs);
+          }
+          return result;
+        }
+        const noFollow = isStatefulPickChoice(choice);
         const response = await requestContext.post(choice.url, {
           form: choice.form || {},
           timeout: options.requestTimeoutMs,
+          ...(noFollow ? { maxRedirects: 0 } : {}),
         });
-        const html = await response.text();
         pagesVisited += 1;
+        if (noFollow && response.status() >= 300 && response.status() < 400) {
+          await refreshRequestAuth(requestContext, options);
+          const redirectUrl = new URL(response.headers().location || "/", choice.url).href;
+          const redirected = await requestContext.get(redirectUrl, {
+            timeout: options.requestTimeoutMs,
+          });
+          const html = await redirected.text();
+          if (!redirected.ok()) {
+            throw new Error(`BossXCode request failed: ${redirected.status()} ${redirectUrl}`);
+          }
+          if (htmlLooksLocked(html)) {
+            throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+          }
+          if (options.delayMs > 0) {
+            await sleep(options.delayMs);
+          }
+          return { html, url: redirected.url() || redirectUrl };
+        }
+        const html = await response.text();
         if (!response.ok()) {
           throw new Error(`BossXCode request failed: ${response.status()} ${choice.url}`);
         }
         if (htmlLooksLocked(html)) {
           throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+        }
+        if (options.delayMs > 0) {
+          await sleep(options.delayMs);
         }
         return { html, url: response.url() || choice.url };
       } catch (error) {
@@ -1342,9 +1732,14 @@ async function crawlBossXCodeCatalog(options) {
   }
 
   async function createWorkerRequestContext() {
-    const requestContext = await playwrightRequest.newContext({
-      extraHTTPHeaders: options.cookie ? { Cookie: options.cookie } : undefined,
-    });
+    const requestContextOptions = {};
+    if (workerStorageState) {
+      requestContextOptions.storageState = workerStorageState;
+    }
+    if (options.cookie) {
+      requestContextOptions.extraHTTPHeaders = { Cookie: options.cookie };
+    }
+    const requestContext = await playwrightRequest.newContext(requestContextOptions);
     if (options.password) {
       const loginUrl = new URL("/login", options.baseUrl).href;
       const response = await requestContext.post(loginUrl, {
@@ -1364,12 +1759,26 @@ async function crawlBossXCodeCatalog(options) {
     const playPage = await submitter(paperChoice);
     const paperTitle = titleFromPaperPack(paperChoice.value);
     const sourceUrl = paperSourceUrl(options.baseUrl, paperChoice.value);
-    const extracted = extractRowsFromHtml(playPage.html, sourceUrl);
+    const sourceContext = {
+      ...contextInfo,
+      paper: paperTitle,
+    };
+    const extracted = extractRowsFromHtml(playPage.html, sourceUrl, sourceContext);
+    if (extracted.length === 0 && options.debugZeroDir) {
+      fs.mkdirSync(options.debugZeroDir, { recursive: true });
+      const debugId = createHash("sha1").update(`${sourceUrl}\n${paperTitle}`).digest("hex").slice(0, 16);
+      writeJson(path.join(options.debugZeroDir, `${debugId}.json`), {
+        sourceUrl,
+        paperTitle,
+        context: sourceContext,
+        fetchedUrl: playPage.url,
+      });
+      fs.writeFileSync(path.join(options.debugZeroDir, `${debugId}.html`), playPage.html, "utf8");
+    }
     if (extracted.length > 0) {
       rows.push(
         ...enrichRowsWithCatalogContext(extracted, {
-          ...contextInfo,
-          paper: paperTitle,
+          ...sourceContext,
         })
       );
     }
@@ -1379,7 +1788,7 @@ async function crawlBossXCodeCatalog(options) {
     console.log(
       `[bossxcode] papers=${papersVisited}${options.maxPapers ? `/${options.maxPapers}` : ""} rows=${count} last="${paperTitle.slice(0, 80)}"`
     );
-    if (papersVisited % 10 === 0) {
+    if (papersVisited % options.checkpointEvery === 0) {
       checkpoint();
     }
   }
@@ -1404,7 +1813,7 @@ async function crawlBossXCodeCatalog(options) {
         try {
           await scrapePaperChoice(
             paperChoice,
-            {
+            job.contextInfo || {
               product: job.productChoice.title || job.productChoice.value,
               tier: job.tierChoice.title || job.tierChoice.value,
               testType: job.testTypeChoice.title || job.testTypeChoice.value,
@@ -1456,7 +1865,12 @@ async function crawlBossXCodeCatalog(options) {
   try {
     if (options.resume && fs.existsSync(options.outputPath)) {
       const existingRows = JSON.parse(fs.readFileSync(options.outputPath, "utf8"))
-        .filter((row) => row?._source?.sourceKind === SOURCE_KIND);
+        .filter((row) => row?._source?.sourceKind === SOURCE_KIND)
+        .map((row) => ({
+          ...row,
+          subject: normalizeSubjectLabel(row.subject) || row.subject,
+          year: row.year || row._source?.year || null,
+        }));
       rows.push(...existingRows);
       existingRows.forEach((row) => {
         if (row?._source?.pageUrl) seenPaperUrls.add(row._source.pageUrl);
@@ -1465,67 +1879,122 @@ async function crawlBossXCodeCatalog(options) {
     }
 
     await loginIfNeeded(page, options);
-    const homeHtml = await page.content();
-    const homeUrl = page.url();
-    pagesVisited += 1;
 
-    let productChoices = formChoices(homeHtml, homeUrl, options.baseUrl, "/pick/product", "product_id");
-    if (!options.products.includes("*")) {
-      productChoices = productChoices.filter((choice) => choiceMatchesAllowed(choice, options.products));
-    }
-    if (productChoices.length === 0) {
-      throw new Error(`No BossXCode products matched: ${options.products.join(", ")}`);
-    }
-
-    productLoop:
-    for (const productChoice of productChoices) {
-      const productPage = await submitChoice(productChoice);
-      const tierChoices = formChoices(productPage.html, productPage.url, options.baseUrl, "/pick/tier", "tier_pack");
-      console.log(`[bossxcode] product=${productChoice.value} tiers=${tierChoices.length}`);
-
-      for (const tierChoice of tierChoices) {
-        await submitChoice(productChoice);
-        const tierPage = await submitChoice(tierChoice);
-        let testTypeChoices = formChoices(tierPage.html, tierPage.url, options.baseUrl, "/pick/testtype", "exam_mode_id");
-        if (!options.testTypeIds.includes("*")) {
-          testTypeChoices = testTypeChoices.filter((choice) => choiceMatchesAllowed(choice, options.testTypeIds));
+    const cachedSeriesJobs = loadCatalogCache(options);
+    if (cachedSeriesJobs) {
+      const filteredCatalog = filterCatalogJobsByIntake(cachedSeriesJobs, intakeReport);
+      seriesJobs.push(...filteredCatalog.acceptedJobs);
+      skippedSeries += filteredCatalog.skippedSeriesCount;
+      discoveredPapers = seriesJobs.reduce((sum, job) => sum + (job.paperChoices?.length || 0), 0);
+      for (const job of seriesJobs) {
+        for (const paperChoice of job.paperChoices || []) {
+          const paperTitle = titleFromPaperPack(paperChoice.value);
+          const catalogContext = { ...(job.contextInfo || {}), paper: paperTitle };
+          applyCatalogContextToRows(rows, catalogIdFromContext(catalogContext), catalogContext);
         }
-        console.log(`[bossxcode] tier=${tierChoice.value} testTypes=${testTypeChoices.length}`);
+      }
+    } else {
+      const homeHtml = await page.content();
+      const homeUrl = page.url();
+      pagesVisited += 1;
 
-        for (const testTypeChoice of testTypeChoices) {
+      let productChoices = formChoices(homeHtml, homeUrl, options.baseUrl, "/pick/product", "product_id");
+      if (!options.products.includes("*")) {
+        productChoices = productChoices.filter((choice) => choiceMatchesAllowed(choice, options.products));
+      }
+      if (productChoices.length === 0) {
+        throw new Error(`No BossXCode products matched: ${options.products.join(", ")}`);
+      }
+
+      productLoop:
+      for (const productChoice of productChoices) {
+        const productPage = await submitChoice(productChoice);
+        const tierChoices = formChoices(productPage.html, productPage.url, options.baseUrl, "/pick/tier", "tier_pack");
+        console.log(`[bossxcode] product=${productChoice.value} tiers=${tierChoices.length}`);
+
+        for (const tierChoice of tierChoices) {
           await submitChoice(productChoice);
-          await submitChoice(tierChoice);
-          const testTypePage = await submitChoice(testTypeChoice);
-          const seriesChoices = formChoices(testTypePage.html, testTypePage.url, options.baseUrl, "/pick/series", "test_series_id");
-          const relevantSeries = seriesChoices.filter(isRelevantSeries);
-          skippedSeries += seriesChoices.length - relevantSeries.length;
-          console.log(`[bossxcode] testType=${testTypeChoice.value} series=${relevantSeries.length}/${seriesChoices.length}`);
+          const tierPage = await submitChoice(tierChoice);
+          let testTypeChoices = formChoices(tierPage.html, tierPage.url, options.baseUrl, "/pick/testtype", "exam_mode_id");
+          if (!options.testTypeIds.includes("*")) {
+            testTypeChoices = testTypeChoices.filter((choice) => choiceMatchesAllowed(choice, options.testTypeIds));
+          }
+          console.log(`[bossxcode] tier=${tierChoice.value} testTypes=${testTypeChoices.length}`);
 
-          for (const seriesChoice of relevantSeries) {
+          for (const testTypeChoice of testTypeChoices) {
             await submitChoice(productChoice);
             await submitChoice(tierChoice);
-            await submitChoice(testTypeChoice);
-            const seriesPage = await submitChoice(seriesChoice);
-            const paperChoices = formChoices(seriesPage.html, seriesPage.url, options.baseUrl, "/play", "paper_pack");
-            console.log(`[bossxcode] series=${seriesChoice.value} papers=${paperChoices.length} title="${seriesChoice.title.slice(0, 90)}"`);
-            const remaining = options.maxPapers > 0 ? options.maxPapers - discoveredPapers : paperChoices.length;
-            const selectedPaperChoices = paperChoices.slice(0, Math.max(0, remaining));
-            discoveredPapers += selectedPaperChoices.length;
-            if (selectedPaperChoices.length > 0) {
-              seriesJobs.push({ productChoice, tierChoice, testTypeChoice, seriesChoice, paperChoices: selectedPaperChoices });
+            const testTypePage = await submitChoice(testTypeChoice);
+            const seriesChoices = formChoices(testTypePage.html, testTypePage.url, options.baseUrl, "/pick/series", "test_series_id");
+            const relevantSeries = [];
+            for (const seriesChoice of seriesChoices) {
+              const contextInfo = {
+                product: productChoice.title || productChoice.value,
+                tier: tierChoice.title || tierChoice.value,
+                testType: testTypeChoice.title || testTypeChoice.value,
+                series: seriesChoice.title || seriesChoice.value,
+              };
+              const seriesDecision = classifyCatalogContext(contextInfo);
+              recordDecision(intakeReport, "series", seriesDecision);
+              if (seriesDecision.action === "attempt") {
+                relevantSeries.push({ seriesChoice, contextInfo });
+              } else {
+                skippedSeries += 1;
+              }
             }
-            if (options.maxPapers > 0 && discoveredPapers >= options.maxPapers) break productLoop;
+            console.log(`[bossxcode] testType=${testTypeChoice.value} series=${relevantSeries.length}/${seriesChoices.length}`);
+
+            for (const { seriesChoice, contextInfo } of relevantSeries) {
+              await submitChoice(productChoice);
+              await submitChoice(tierChoice);
+              await submitChoice(testTypeChoice);
+              const seriesPage = await submitChoice(seriesChoice);
+              const paperChoices = formChoices(seriesPage.html, seriesPage.url, options.baseUrl, "/play", "paper_pack");
+              console.log(`[bossxcode] series=${seriesChoice.value} papers=${paperChoices.length} title="${seriesChoice.title.slice(0, 90)}"`);
+              const selectedPaperChoices = [];
+              for (const paperChoice of paperChoices) {
+                const paperTitle = titleFromPaperPack(paperChoice.value);
+                const catalogContext = { ...contextInfo, paper: paperTitle };
+                const paperDecision = classifyCatalogContext(catalogContext, paperChoice);
+                recordDecision(intakeReport, "papers", paperDecision);
+                if (paperDecision.action === "ignore") continue;
+                selectedPaperChoices.push(paperChoice);
+                if (options.maxPapers > 0 && discoveredPapers + selectedPaperChoices.length >= options.maxPapers) break;
+              }
+              discoveredPapers += selectedPaperChoices.length;
+              for (const paperChoice of selectedPaperChoices) {
+                const paperTitle = titleFromPaperPack(paperChoice.value);
+                const catalogContext = { ...contextInfo, paper: paperTitle };
+                const catalogId = catalogIdFromContext(catalogContext);
+                applyCatalogContextToRows(rows, catalogId, catalogContext);
+              }
+              if (selectedPaperChoices.length > 0) {
+                seriesJobs.push({ productChoice, tierChoice, testTypeChoice, seriesChoice, contextInfo, paperChoices: selectedPaperChoices });
+              }
+              if ((options.maxPapers > 0 && discoveredPapers >= options.maxPapers) || shouldStop()) break productLoop;
+            }
           }
         }
       }
+      writeCatalogCache(options, seriesJobs, { stoppedEarly: shouldStop() });
     }
 
-    console.log(`[bossxcode] discovered seriesJobs=${seriesJobs.length} papers=${discoveredPapers || "all"}`);
+    workerStorageState = await context.storageState().catch(() => null);
+    if (!options.password && !options.cookie && (!workerStorageState?.cookies || workerStorageState.cookies.length === 0)) {
+      throw new Error("BossXCode browser profile did not expose reusable cookies for worker requests.");
+    }
+
+    console.log(
+      `[bossxcode] discovered seriesJobs=${seriesJobs.length} papers=${discoveredPapers || "all"} ignoredPapers=${intakeReport.papers.ignored}`
+    );
     await context.close();
+    if (options.discoveryOnly) {
+      return { rows: dedupeRows(rows), pagesVisited, responsePayloads: 0, skippedSeries, failedPapers, failedSeries, intakeReport };
+    }
     await scrapeSeriesJobs();
 
     const deduped = dedupeRows(rows).slice(0, options.limit > 0 ? options.limit : undefined);
-    return { rows: deduped, pagesVisited, responsePayloads: papersVisited, skippedSeries, failedPapers, failedSeries };
+    return { rows: deduped, pagesVisited, responsePayloads: papersVisited, skippedSeries, failedPapers, failedSeries, intakeReport };
   } finally {
     await context.close().catch(() => {});
   }
@@ -1588,6 +2057,9 @@ async function crawlBossXCode(options) {
         });
         finalUrl = response.url();
         html = await response.text();
+        if (options.delayMs > 0) {
+          await page.waitForTimeout(options.delayMs);
+        }
       } else {
         await page.goto(currentEntry.url, { waitUntil: "domcontentloaded", timeout: 60_000 }).catch(() => {});
         await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
@@ -1639,6 +2111,8 @@ function summarizeRows(rows, meta) {
     skippedSeries: meta.skippedSeries || 0,
     failedSeries: meta.failedSeries || 0,
     failedPapers: meta.failedPapers || 0,
+    intake: meta.intakeReport || createDecisionReport(),
+    ignoredRowSamples: meta.ignoredRowSamples || [],
     totalRows: rows.length,
     bySubject,
     bySubtopic,
@@ -1656,8 +2130,12 @@ async function main() {
   if (!options.legacyCrawl) {
     console.log(`[bossxcode] Products: ${options.products.join(", ")}`);
     console.log(`[bossxcode] Test type ids: ${options.testTypeIds.join(", ")}`);
+    console.log(`[bossxcode] Include all series: ${options.includeAllSeries ? "yes" : "no"}`);
     console.log(`[bossxcode] Concurrency: ${options.concurrency}`);
     console.log(`[bossxcode] Request timeout: ${options.requestTimeoutMs}ms`);
+    console.log(`[bossxcode] Delay: ${options.delayMs}ms`);
+    if (options.maxNewPapers > 0) console.log(`[bossxcode] Max new papers: ${options.maxNewPapers}`);
+    if (options.maxRuntimeMinutes > 0) console.log(`[bossxcode] Max runtime: ${options.maxRuntimeMinutes} minutes`);
   }
 
   const result = options.inputPath
@@ -1666,18 +2144,25 @@ async function main() {
       ? await crawlBossXCode(options)
       : await crawlBossXCodeCatalog(options);
 
-  if (result.rows.length === 0) {
+  const rowIntake = filterAttemptedRows(result.rows);
+  const intakeReport = mergeDecisionReports(result.intakeReport, rowIntake.report);
+
+  if (rowIntake.attempted.length === 0) {
     throw new Error("No structured aptitude questions were extracted.");
   }
 
-  writeJson(options.outputPath, result.rows);
-  const report = summarizeRows(result.rows, {
+  writeJson(options.outputPath, rowIntake.attempted);
+  const report = summarizeRows(rowIntake.attempted, {
     ...result,
+    intakeReport,
+    ignoredRowSamples: rowIntake.ignoredSamples,
     outputPath: options.outputPath,
   });
   writeJson(options.reportPath, report);
 
-  console.log(`[bossxcode] Wrote ${result.rows.length} parsed questions.`);
+  console.log(
+    `[bossxcode] Wrote ${rowIntake.attempted.length} parsed questions. ignoredRows=${intakeReport.rows.ignored}`
+  );
   console.log(`[bossxcode] ${path.relative(ROOT, options.outputPath)}`);
   console.log(`[bossxcode] ${path.relative(ROOT, options.reportPath)}`);
   console.log("[bossxcode] Next: python scripts/aptitude-pipeline/build_aptitude_db.py");

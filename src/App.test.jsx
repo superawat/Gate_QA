@@ -56,6 +56,10 @@ vi.mock("./pages/SolvePage", () => ({
   default: () => <div>Solve page</div>,
 }));
 
+vi.mock("./pages/UserManualPage", () => ({
+  default: () => <div>User manual page</div>,
+}));
+
 vi.mock("./shells/MockShell", () => ({
   default: () => <div>Mock shell</div>,
 }));
@@ -248,5 +252,16 @@ describe("App routes", () => {
     });
 
     expect(await screen.findByText("Insights page 3271")).toBeTruthy();
+  });
+
+  test("manual route renders without initializing question data", async () => {
+    window.history.replaceState({}, "", "/Gate_QA/manual");
+
+    render(<App />);
+
+    expect(await screen.findByText("User manual page")).toBeTruthy();
+
+    expect(mocks.questionInit).not.toHaveBeenCalled();
+    expect(mocks.answerInit).not.toHaveBeenCalled();
   });
 });

@@ -8,8 +8,11 @@ import html
 import json
 import re
 import shutil
+import subprocess
 import sys
+import unicodedata
 from collections import Counter, defaultdict
+from datetime import datetime, timezone
 
 from config import (
     APTITUDE_DATA_DIR,
@@ -19,11 +22,13 @@ from config import (
     LEGACY_PUBLIC_OUTPUT,
     PUBLIC_DIR,
     REVIEW_DIR,
+    ROOT_DIR,
     TAXONOMY,
     UID_PREFIX_BY_SUBJECT,
     ensure_dirs,
     slugify,
 )
+from remaps import apply_remap_rules
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -32,8 +37,12 @@ def strip_html(value: str) -> str:
     return html.unescape(re.sub(r"<[^>]*>", " ", value or ""))
 
 
+def compact_plain_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value or "").strip()
+
+
 def dedupe_key(question_html: str) -> str:
-    text = strip_html(question_html).lower()
+    text = unicodedata.normalize("NFKC", strip_html(question_html)).lower()
     text = re.sub(r"[^a-z0-9]+", "", text)
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
@@ -48,6 +57,26 @@ def source_list(value):
 
 def is_bossxcode_source(row: dict) -> bool:
     return any(source.get("sourceKind") == "bossxcode-web" for source in source_list(row.get("_source")))
+
+
+def has_useful_source_metadata(row: dict) -> bool:
+    return any(
+        source.get("sourceKind")
+        and (
+            source.get("pageUrl")
+            or source.get("sourceId")
+            or source.get("examName")
+            or source.get("paperTitle")
+        )
+        for source in source_list(row.get("_source"))
+    )
+
+
+def normalize_subject(value: str) -> str:
+    subject = (value or "").strip()
+    if subject in {"Mathematics", "Math", "Maths", "Quantitative", "Quantitative Aptitude"}:
+        return "Quant"
+    return subject
 
 
 def valid_options(value) -> bool:
@@ -70,6 +99,205 @@ def merge_source(existing, incoming):
     return merged[0] if len(merged) == 1 else merged
 
 
+def normalize_year(value):
+    try:
+        if value is None or value == "":
+            return None
+        year = int(value)
+    except (TypeError, ValueError):
+        return None
+    return year if 1900 <= year <= 2100 else None
+
+
+def clean_bossxcode_title(value: str) -> str:
+    title = compact_plain_text(str(value or ""))
+    replacements = [
+        r"\bDescription\b.*$",
+        r"\bOpen\s+Test\s*\(New\s+Tab\)\b.*$",
+        r"\bOpen\b\s*$",
+        r"\bTotal\s*papers\s*:\s*\d+.*$",
+        r"\bTotal\s*Tests?\s*:\s*\d+.*$",
+        r"\bQuestions?\s*:\s*\d+.*$",
+        r"Tests?\s*:\s*\d+.*$",
+        r"Series\s*:\s*\d+.*$",
+        r"Price\s*:\s*\d+.*$",
+        r"\bQ\s*:\s*\d+.*$",
+        r"\b(?:Mock|Sectional|Chapter|PYP)\s*:\s*\d+.*$",
+    ]
+    for pattern in replacements:
+        title = re.sub(pattern, " ", title, flags=re.IGNORECASE)
+    title = re.sub(r"\s+:$", "", title)
+    title = compact_plain_text(title)
+    return title or compact_plain_text(str(value or ""))
+
+
+def normalize_bossxcode_source(source: dict) -> dict:
+    if source.get("sourceKind") != "bossxcode-web":
+        return source
+    exam_body = clean_bossxcode_title(source.get("examBody") or "")
+    exam_name = clean_bossxcode_title(source.get("examName") or "")
+    if exam_body.lower() in {"bossxcode", "boxcode", "boxcode web", "bossxcode web", ""}:
+        exam_body = "Unknown"
+    if exam_name.lower() in {"bossxcode", "boxcode", "boxcode web", "bossxcode web", ""}:
+        exam_name = clean_bossxcode_title(source.get("paperTitle") or source.get("testSeries") or "Unknown Test Series")
+    normalized = {
+        **source,
+        "sourceKind": "bossxcode-web",
+        "sourceProvider": source.get("sourceProvider") or "BossXCode",
+        "examBody": exam_body,
+        "examName": exam_name,
+        "testSeries": clean_bossxcode_title(source.get("testSeries") or ""),
+        "paperTitle": clean_bossxcode_title(source.get("paperTitle") or ""),
+        "product": clean_bossxcode_title(source.get("product") or ""),
+        "tier": clean_bossxcode_title(source.get("tier") or ""),
+        "testType": clean_bossxcode_title(source.get("testType") or ""),
+    }
+    normalized_year = normalize_year(source.get("year"))
+    if normalized_year is not None:
+        normalized["year"] = normalized_year
+    return normalized
+
+
+def normalize_sources(value):
+    sources = [normalize_bossxcode_source(source) for source in source_list(value)]
+    if not sources:
+        return value
+    return sources[0] if len(sources) == 1 else sources
+
+
+def row_text_with_options(row: dict) -> str:
+    return compact_plain_text(
+        f"{strip_html(row.get('questionHtml') or '')} {' '.join(str(option) for option in row.get('options') or [])}"
+    )
+
+
+def source_text(row: dict) -> str:
+    values = []
+    for source in source_list(row.get("_source")):
+        values.extend(
+            str(source.get(key) or "")
+            for key in ["examBody", "examName", "testSeries", "paperTitle", "product", "tier", "testType", "topic"]
+        )
+    return compact_plain_text(" ".join(values))
+
+
+def run_shared_intake_classifier(parsed_path) -> tuple[list[dict], dict]:
+    classifier_script = ROOT_DIR / "scripts" / "aptitude-pipeline" / "bossxcode-intake-classifier.mjs"
+    temp_output = ARTIFACT_DIR / ".bossxcode-intake-classifier-output.json"
+    try:
+        completed = subprocess.run(
+            [
+                "node",
+                str(classifier_script),
+                "--input",
+                str(parsed_path),
+                "--output",
+                str(temp_output),
+            ],
+            cwd=ROOT_DIR,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if completed.returncode != 0:
+            details = (completed.stderr or completed.stdout or "").strip()
+            raise RuntimeError(f"Shared BossXCode intake classifier failed: {details}")
+        payload = json.loads(temp_output.read_text(encoding="utf-8"))
+    finally:
+        temp_output.unlink(missing_ok=True)
+
+    attempted_rows = payload.get("attempted")
+    if not isinstance(attempted_rows, list):
+        raise RuntimeError("Shared BossXCode intake classifier did not return attempted rows.")
+    return attempted_rows, payload
+
+
+SYNTHETIC_MARKER_RE = re.compile(
+    r"<!--\s*mock\s+2025\b|mock_2025_data|synthetic",
+    re.IGNORECASE,
+)
+EXCLUDED_SOURCE_RE = re.compile(
+    r"\b(?:G\.?\s*S\.?|General\s+Awareness|General\s+Studies|General\s+Science|Current\s+Affairs|Hindi)\b",
+    re.IGNORECASE,
+)
+FULL_LENGTH_MOCK_RE = re.compile(r"\bMock\s+Tests?\s*\(\s*Full\s+Length\s*\)|\bFull\s+Length\b", re.IGNORECASE)
+BROAD_LOW_SIGNAL_RE = re.compile(
+    r"\b(?:Mock\s+Tests?\s*\(\s*Full\s+Length\s*\)|Full\s+Mock|Full\s+Length|Full\s+Test|Complete\s+Mock|Mega\s+Mock)\b",
+    re.IGNORECASE,
+)
+INLINE_BASE64_IMAGE_RE = re.compile(r"<img\b[^>]+src=[\"']data:image/", re.IGNORECASE)
+BRITTLE_REMOTE_IMAGE_RE = re.compile(r"<img\b[^>]+src=[\"']https?://[^\"']*googleusercontent\.com/", re.IGNORECASE)
+ENGLISH_TASK_RE = re.compile(
+    r"\b(?:active(?:\s*/\s*|\s+)passive|passive voice|active voice|sentence improvement|substitute|"
+    r"spot.*error|grammatical error|segment.*contains.*error|cloze test|comprehension|according to the passage|"
+    r"idiom|synonym|antonym|spelling|misspelt|misspelled|one[- ]word|one which can be substituted|"
+    r"group of words given|para jumble|jumbled|narration|direct speech|indirect speech)\b",
+    re.IGNORECASE,
+)
+QUANT_TASK_RE = re.compile(
+    r"\b(?:simplify|evaluate|hcf|lcm|sin|cos|tan|cosec|sec|cot|trigonometry|height of|speed|train|"
+    r"km/h|profit|loss|gain|cost price|selling price|marked price|discount|percentage|per cent|ratio|proportion|"
+    r"average|simple interest|compound interest|pipe|cistern|boat|stream|workman|complete.*days|circle|triangle|"
+    r"area|volume|radius|diameter|perimeter|equation|algebra|polynomial|bar[ -]?graph|pie[- ]chart|table)\b|%",
+    re.IGNORECASE,
+)
+REASONING_TASK_RE = re.compile(
+    r"\b(?:code language|coded as|coding|decoding|syllogism|blood relation|letter[- ]cluster|number series|"
+    r"comes next|odd one out|analogy|sitting arrangement|facing north|facing south|immediate left|immediate right|"
+    r"rank|ranking|statement.*conclusion|mathematical operations?)\b",
+    re.IGNORECASE,
+)
+GENERAL_AWARENESS_STEM_RE = re.compile(
+    r"^(?:who|which|what|when|where|in which|at which|as per|according to|with reference to)\b",
+    re.IGNORECASE,
+)
+GENERAL_AWARENESS_TERMS_RE = re.compile(
+    r"\b(?:article\s+\d+|constitution|directive principles|fundamental duties|parliament|supreme court|high court|"
+    r"governor|chief minister|prime minister|minister|president|election commission|census|gdp|revenue deficit|"
+    r"service tax|tax|brand finance|lic|rbi|sebi|insurance|bank|scheme|budget|state|union territory|district|"
+    r"festival|dance|temple|fort|museum|archaeological|civilisation|chola|khilji|satyagraha|gandhi|ibn battuta|"
+    r"book|novel|author|magazine|award|olympics?|cricketer|kho[- ]?kho|padma|unesco|w\.?h\.?o\.?|malaria|acid|element|"
+    r"electron|atom|cell|fatty acids?|ecosystem|soil|climate|mountains?|hills?|river|agriculture|crop|bawris?|"
+    r"pietra dura|marris college|one horned rhino)\b",
+    re.IGNORECASE,
+)
+
+
+def is_full_length_mock_source(row: dict) -> bool:
+    return FULL_LENGTH_MOCK_RE.search(source_text(row)) is not None
+
+
+def looks_like_general_awareness(row: dict) -> bool:
+    text = row_text_with_options(row)
+    if not text:
+        return False
+    if ENGLISH_TASK_RE.search(text) or QUANT_TASK_RE.search(text) or REASONING_TASK_RE.search(text):
+        return False
+    if GENERAL_AWARENESS_STEM_RE.search(text) and GENERAL_AWARENESS_TERMS_RE.search(text):
+        return True
+    return GENERAL_AWARENESS_TERMS_RE.search(text) is not None and is_full_length_mock_source(row)
+
+
+def skip_reason(row: dict) -> str | None:
+    combined = f"{row.get('questionHtml') or ''} {source_text(row)}"
+    if SYNTHETIC_MARKER_RE.search(combined):
+        return "synthetic_mock_marker"
+    source = source_text(row)
+    if EXCLUDED_SOURCE_RE.search(source):
+        return "excluded_source_section"
+    if BROAD_LOW_SIGNAL_RE.search(source):
+        return "broad_low_signal_pack"
+    if INLINE_BASE64_IMAGE_RE.search(row.get("questionHtml") or ""):
+        return "inline_base64_image"
+    if BRITTLE_REMOTE_IMAGE_RE.search(row.get("questionHtml") or ""):
+        return "brittle_remote_image"
+    if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or "") or DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
+        return "forbidden_display_token"
+    if looks_like_general_awareness(row):
+        return "general_awareness_leak"
+    return None
+
+
 def find_suspicious(row: dict) -> list[str]:
     reasons = []
     if len(row.get("options") or []) != 4:
@@ -78,7 +306,7 @@ def find_suspicious(row: dict) -> list[str]:
         reasons.append("option_empty")
     if row.get("answer") not in {"A", "B", "C", "D"}:
         reasons.append("answer_missing")
-    if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or ""):
+    if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or "") or DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
         reasons.append("display_forbidden_token")
     if not source_list(row.get("_source")):
         reasons.append("source_missing")
@@ -86,6 +314,10 @@ def find_suspicious(row: dict) -> list[str]:
 
 
 OPTION_LIST_RE = re.compile(r"<ol\b[\s\S]*?</ol>", re.IGNORECASE)
+DIRECTION_PREFIX_HTML_RE = re.compile(
+    r"(<p[^>]*>\s*)(?:<(?:strong|b)[^>]*>\s*)?Direction\s*(?:</(?:strong|b)>)?\s*:-\s*",
+    re.IGNORECASE,
+)
 BROKEN_MATH_OPERATOR_RE = re.compile(
     r"(?:^|\s)[+×÷*/]\s*(?:=|<|>)\s*[+×÷*/]?\s*\d"
     r"|\b(?:I|II|III)\.\s*[+×÷*/]\s*(?:=|<|>)",
@@ -157,11 +389,6 @@ MATH_TEXT_REPAIRS = [
     (re.compile(r"\bRs\.\s*(\d)", re.IGNORECASE), r"Rs. \1"),
 ]
 
-
-def compact_plain_text(value: str) -> str:
-    return re.sub(r"\s+", " ", value or "").strip()
-
-
 def clean_display_text(value: str, *, repair_math: bool = False) -> str:
     text = compact_plain_text(value)
     for pattern in PROVENANCE_REPLACEMENTS:
@@ -191,11 +418,20 @@ def to_question_html(question_text: str, options: list[str]) -> str:
     return "\n".join(paragraphs)
 
 
+def clean_bossxcode_display_html(question_html: str) -> str:
+    cleaned = DIRECTION_PREFIX_HTML_RE.sub(r"\1", question_html or "", count=1)
+    cleaned = re.sub(r"^\s*Direction\s*:-\s*", "", cleaned, flags=re.IGNORECASE)
+    return cleaned
+
+
 def sanitize_final_row(row: dict) -> dict:
     if is_bossxcode_source(row):
-        return row
+        return {
+            **row,
+            "questionHtml": clean_bossxcode_display_html(row.get("questionHtml") or ""),
+        }
 
-    repair_math = row.get("subject") == "Mathematics"
+    repair_math = row.get("subject") in {"Quant", "Mathematics"}
     question_text = clean_display_text(extract_question_text(row.get("questionHtml") or ""), repair_math=repair_math)
     options = [
         clean_display_text(option, repair_math=repair_math)
@@ -209,7 +445,7 @@ def sanitize_final_row(row: dict) -> dict:
 
 
 def math_corruption_reasons(row: dict) -> list[str]:
-    if row.get("subject") != "Mathematics":
+    if row.get("subject") not in {"Quant", "Mathematics"}:
         return []
 
     text = compact_plain_text(
@@ -254,6 +490,7 @@ def build_index_row(row: dict) -> dict:
         "ss": slugify(row["subject"]),
         "st": row["subtopic"],
         "sts": slugify(row["subtopic"]),
+        "y": row.get("year"),
         "x": preview[:180],
         "sh": shard_relative_path(row),
     }
@@ -263,25 +500,94 @@ def main() -> None:
     ensure_dirs()
     parsed_path = ARTIFACT_DIR / "parsed-questions.json"
     if not parsed_path.exists():
-        raise SystemExit("Run parse_questions.py first.")
+        raise SystemExit("Run npm run aptitude:scrape-bossxcode first.")
 
-    parsed = json.loads(parsed_path.read_text(encoding="utf-8"))
+    parsed_input = json.loads(parsed_path.read_text(encoding="utf-8"))
+    if not isinstance(parsed_input, list):
+        raise RuntimeError("Parsed aptitude input must be a JSON array.")
+
+    parsed, shared_intake = run_shared_intake_classifier(parsed_path)
+    shared_row_report = (shared_intake.get("report") or {}).get("rows") or {}
+    shared_ignored_by_reason = shared_row_report.get("ignoredByReason") or {}
+    total_input_rows = len(parsed_input)
+    attempted_after_shared_policy_count = len(parsed)
     deduped = {}
     duplicate_count = 0
-    skipped_empty_option_count = 0
+    attempted_before_dedupe_count = 0
+    ignored_counts = Counter(shared_ignored_by_reason)
+    ignored_samples = []
+    skipped_content_counts = Counter()
 
-    for row in parsed:
+    for sample in shared_intake.get("ignoredSamples") or []:
+        if len(ignored_samples) >= 40:
+            break
+        ignored_samples.append(
+            {
+                "stage": "shared_intake",
+                "reason": sample.get("reason") or "",
+                "subject": sample.get("subject") or "",
+                "subtopic": sample.get("subtopic") or "",
+                "source": sample.get("source") or "",
+                "preview": sample.get("preview") or "",
+            }
+        )
+
+    def record_ignored(reason: str, row: dict, index: int) -> None:
+        ignored_counts[reason] += 1
+        if len(ignored_samples) >= 40:
+            return
+        ignored_samples.append(
+            {
+                "stage": "build",
+                "rowIndex": index,
+                "reason": reason,
+                "subject": row.get("subject") or "",
+                "subtopic": row.get("subtopic") or "",
+                "source": source_text(row)[:240],
+                "preview": strip_html(row.get("questionHtml") or "")[:240],
+            }
+        )
+
+    for row_index, row in enumerate(parsed, start=1):
+        subject = normalize_subject(row.get("subject"))
+        row = {**row, "subject": subject}
+        reason = skip_reason(row)
+        if reason:
+            skipped_content_counts[reason] += 1
+            record_ignored(reason, row, row_index)
+            continue
+        if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or "") or DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
+            record_ignored("forbidden_display_token", row, row_index)
+            continue
+        apply_remap_rules(row)
         subject = row.get("subject")
         subtopic = row.get("subtopic")
-        if subject not in TAXONOMY or subtopic not in TAXONOMY[subject]:
+        if subject not in TAXONOMY:
+            record_ignored("unsupported_subject", row, row_index)
+            continue
+        if subtopic not in TAXONOMY[subject]:
+            record_ignored("unsupported_taxonomy", row, row_index)
             continue
         if not valid_options(row.get("options")):
-            skipped_empty_option_count += 1
+            record_ignored("invalid_options", row, row_index)
             continue
+        if row.get("answer") not in {"A", "B", "C", "D"}:
+            record_ignored("invalid_answer", row, row_index)
+            continue
+        if not has_useful_source_metadata(row):
+            record_ignored("missing_source_metadata", row, row_index)
+            continue
+        attempted_before_dedupe_count += 1
         key = dedupe_key(row.get("questionHtml") or "")
         if key in deduped:
             duplicate_count += 1
+            record_ignored("duplicate_question", row, row_index)
+            if is_bossxcode_source(row) and not is_bossxcode_source(deduped[key]):
+                row["_source"] = merge_source(deduped[key].get("_source"), row.get("_source"))
+                deduped[key] = dict(row)
+                continue
             deduped[key]["_source"] = merge_source(deduped[key].get("_source"), row.get("_source"))
+            deduped[key]["year"] = deduped[key].get("year") or row.get("year")
             continue
         deduped[key] = dict(row)
 
@@ -290,7 +596,7 @@ def main() -> None:
         rows_by_subject[row["subject"]].append(row)
 
     final_rows = []
-    for subject in ["English", "Mathematics", "Reasoning"]:
+    for subject in ["English", "Quant", "Reasoning"]:
         subtopic_order = {label: index for index, label in enumerate(TAXONOMY[subject])}
         rows = sorted(
             rows_by_subject.get(subject, []),
@@ -303,6 +609,7 @@ def main() -> None:
         )
         prefix = UID_PREFIX_BY_SUBJECT[subject]
         for index, row in enumerate(rows, start=1):
+            first_source = source_list(row.get("_source"))[0] if source_list(row.get("_source")) else {}
             final_rows.append(
                 {
                     "uid": f"{prefix}-{index:04d}",
@@ -312,8 +619,8 @@ def main() -> None:
                     "type": "MCQ",
                     "subject": subject,
                     "subtopic": row["subtopic"],
-                    "year": None,
-                    "_source": row["_source"],
+                    "year": normalize_year(row.get("year") or first_source.get("year")),
+                    "_source": normalize_sources(row["_source"]),
                 }
             )
 
@@ -335,6 +642,8 @@ def main() -> None:
             continue
         sanitized_rows.append(sanitized_row)
     final_rows = sanitized_rows
+    if corrupt_math_rows:
+        ignored_counts["corrupt_math"] += len(corrupt_math_rows)
 
     suspicious_rows = []
     for row in final_rows:
@@ -350,7 +659,10 @@ def main() -> None:
                 }
             )
 
-    if any(DISPLAY_FORBIDDEN_RE.search(row["questionHtml"]) for row in final_rows):
+    if any(
+        DISPLAY_FORBIDDEN_RE.search(row["questionHtml"]) or DISPLAY_FORBIDDEN_RE.search(strip_html(row["questionHtml"]))
+        for row in final_rows
+    ):
         raise RuntimeError("Final display grep guard failed for questionHtml.")
 
     coverage = Counter((row["subject"], row["subtopic"]) for row in final_rows)
@@ -388,7 +700,7 @@ def main() -> None:
                 "label": subject,
                 "count": subject_counts.get(subject, 0),
             }
-            for subject in ["English", "Mathematics", "Reasoning"]
+            for subject in ["English", "Quant", "Reasoning"]
             if subject_counts.get(subject, 0) > 0
         ],
         "questions": [build_index_row(row) for row in final_rows],
@@ -413,25 +725,79 @@ def main() -> None:
     coverage_lines = [
         "# Aptitude Coverage",
         "",
+        f"- Input rows: {total_input_rows}",
+        f"- Attempted rows after shared policy: {attempted_after_shared_policy_count}",
+        f"- Attempted rows before dedupe: {attempted_before_dedupe_count}",
+        f"- Ignored rows: {sum(ignored_counts.values())}",
         f"- Total questions: {len(final_rows)}",
         f"- Deduped duplicates removed: {duplicate_count}",
-        f"- Empty-option rows skipped: {skipped_empty_option_count}",
+        f"- Empty-option rows skipped: {ignored_counts.get('invalid_options', 0)}",
         f"- Corrupt math rows filtered: {len(corrupt_math_rows)}",
+        f"- Content rows filtered: {sum(skipped_content_counts.values())}",
         f"- Suspicious rows: {len(suspicious_rows)}",
+        "",
+        "## Attempt / Ignore",
+        "",
+    ]
+    for reason, count in sorted(ignored_counts.items()):
+        coverage_lines.append(f"- {reason}: {count}")
+    coverage_lines.extend([
         "",
         "## By Subject",
         "",
-    ]
+    ])
     for subject, count in sorted(subject_counts.items()):
         coverage_lines.append(f"- {subject}: {count}")
     coverage_lines.extend(["", "## By Subtopic", ""])
-    for subject in ["English", "Mathematics", "Reasoning"]:
+    for subject in ["English", "Quant", "Reasoning"]:
         for subtopic in TAXONOMY[subject]:
             coverage_lines.append(f"- {subject} / {subtopic}: {coverage.get((subject, subtopic), 0)}")
 
     (REVIEW_DIR / "aptitude-coverage.md").write_text("\n".join(coverage_lines) + "\n", encoding="utf-8")
+    invalid_reasons = {
+        "forbidden_display_token",
+        "inline_base64_image",
+        "brittle_remote_image",
+        "unsupported_subject",
+        "unsupported_taxonomy",
+        "invalid_options",
+        "invalid_answer",
+        "missing_source_metadata",
+        "corrupt_math",
+    }
+    intake_report = {
+        "version": 1,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "policy": "GATE-like value",
+        "inputFile": str(parsed_path.relative_to(PUBLIC_DIR.parent)),
+        "publicIndexFile": str(APTITUDE_INDEX_OUTPUT.relative_to(PUBLIC_DIR.parent)),
+        "totalInputRows": total_input_rows,
+        "sharedPolicy": {
+            "attemptedRows": shared_intake.get("attemptedRows", attempted_after_shared_policy_count),
+            "ignoredRows": shared_intake.get("ignoredRows", 0),
+            "ignoredByReason": shared_ignored_by_reason,
+        },
+        "attemptedRowsAfterSharedPolicy": attempted_after_shared_policy_count,
+        "attemptedRowsBeforeDedupe": attempted_before_dedupe_count,
+        "ignoredRows": sum(ignored_counts.values()),
+        "ignoredByReason": dict(sorted(ignored_counts.items())),
+        "duplicateRows": duplicate_count,
+        "invalidRows": sum(ignored_counts.get(reason, 0) for reason in invalid_reasons),
+        "finalPublicRows": len(final_rows),
+        "publicShardCount": len(rows_by_shard),
+        "subjectCounts": dict(sorted(subject_counts.items())),
+        "ignoredSamples": ignored_samples,
+    }
+    (REVIEW_DIR / "aptitude-intake-decision-report.json").write_text(
+        json.dumps(intake_report, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
 
     print(f"[build_aptitude_db] wrote {APTITUDE_INDEX_OUTPUT} ({len(final_rows)} questions, {len(rows_by_shard)} shards)")
+    if ignored_counts:
+        print("[build_aptitude_db] ignored rows:")
+        for reason, count in sorted(ignored_counts.items()):
+            print(f"  {reason}: {count}")
     print("[build_aptitude_db] coverage by subject:")
     for subject, count in sorted(subject_counts.items()):
         print(f"  {subject}: {count}")

@@ -27,6 +27,7 @@ import {
   MOCK_HISTORY_ROUTE,
   MOCK_ROUTE,
   PRACTICE_ROUTE,
+  USER_MANUAL_ROUTE,
 } from "./utils/routes";
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
@@ -34,6 +35,7 @@ const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const InsightsPage = lazy(() => import("./pages/InsightsPage"));
 const SolvePage = lazy(() => import("./pages/SolvePage"));
 const MockShell = lazy(() => import("./shells/MockShell"));
+const UserManualPage = lazy(() => import("./pages/UserManualPage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
@@ -344,6 +346,16 @@ const PracticeRoutes = ({
             </ErrorBoundary>
           )}
         />
+        <Route
+          path={USER_MANUAL_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Manual..." />}>
+                <UserManualPage />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
 
         <Route
           path={MOCK_HISTORY_ROUTE}
@@ -491,6 +503,10 @@ const AppRuntime = () => {
     }
     if (location.pathname === INSIGHTS_ROUTE) {
       pageview("Insights");
+      return;
+    }
+    if (location.pathname === USER_MANUAL_ROUTE) {
+      pageview("UserManual");
       return;
     }
     if (location.pathname.startsWith(MOCK_HISTORY_ROUTE)) {

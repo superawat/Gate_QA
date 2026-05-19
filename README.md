@@ -110,7 +110,6 @@ Pipeline scripts live in `scripts/pipeline/` and are documented in `docs/DATA_PI
 See `docs/README.md` for full documentation map, including:
 
 - `docs/ARCHITECTURE.md` — system architecture and data flow
-- `docs/FREE_PLATFORM_IMPROVEMENT_PLAN.md` — current platform priorities and phased startup/trust plan
 - `docs/DATA_PIPELINE.md` — historical data context, forward pipeline, crawl policy
 - `docs/REPO_STRUCTURE.md` — complete repository layout
 - `docs/DEPLOYMENT.md` — CI/CD and manual deploy instructions

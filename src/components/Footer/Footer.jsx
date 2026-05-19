@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { FaExclamationTriangle, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaBookOpen, FaExclamationTriangle, FaHeart } from 'react-icons/fa';
 
 import DataPolicyModal from './DataPolicyModal';
 import SupportModal from './SupportModal';
+import { USER_MANUAL_ROUTE } from '../../utils/routes';
 
 const Footer = () => {
   const [isDataPolicyOpen, setIsDataPolicyOpen] = useState(false);
@@ -18,6 +20,14 @@ const Footer = () => {
               GATE Overflow
             </a>
           </span>
+          <span className="text-[color:var(--color-border)]">|</span>
+          <Link
+            to={USER_MANUAL_ROUTE}
+            aria-label="Open user manual"
+            className="hover:text-[color:var(--color-text)] transition-colors inline-flex items-center gap-1"
+          >
+            <FaBookOpen className="size-2 sm:size-2.5 text-sky-500" /> User Manual
+          </Link>
           <span className="text-[color:var(--color-border)]">|</span>
           <button
             type="button"

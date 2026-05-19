@@ -78,6 +78,24 @@ describe("mockTest utilities", () => {
       scoreDelta: 2,
     });
     expect(formatExpectedAnswer({ type: "MARKS_TO_ALL" })).toBe("Awarded to all");
+
+    expect(buildMockQuestionResult({
+      questionMeta: {
+        questionUid: "q-subjective",
+        section: "CS",
+        type: "SUBJECTIVE",
+        marks: 2,
+        negativeMarks: 0,
+        autoAwarded: true,
+      },
+      response: "",
+      answerRecord: { type: "SUBJECTIVE", answer: null },
+    })).toMatchObject({
+      status: "bonus",
+      answered: false,
+      autoAwarded: true,
+      scoreDelta: 2,
+    });
   });
 
   test("buildMockResultSummary aggregates per-section scoring and unanswered counts", () => {

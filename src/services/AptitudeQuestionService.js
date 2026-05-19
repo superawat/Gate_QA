@@ -6,7 +6,7 @@ const OPTION_LABELS = ["A", "B", "C", "D"];
 
 const SUBJECT_ENUM = [
   { slug: "english", label: "English" },
-  { slug: "mathematics", label: "Mathematics" },
+  { slug: "quant", label: "Quant", aliases: ["mathematics", "math", "maths", "quantitative-aptitude"] },
   { slug: "reasoning", label: "Reasoning" },
 ];
 
@@ -28,7 +28,7 @@ const TAXONOMY = {
     "Homonyms",
     "Miscellaneous",
   ],
-  Mathematics: [
+  Quant: [
     "Number System",
     "HCF and LCM",
     "Simplification",
@@ -125,7 +125,9 @@ export class AptitudeQuestionService {
     }
     const normalized = this.slugifyToken(raw);
     const match = SUBJECT_ENUM.find((subject) => (
-      subject.slug === normalized || this.slugifyToken(subject.label) === normalized
+      subject.slug === normalized
+      || this.slugifyToken(subject.label) === normalized
+      || (subject.aliases || []).includes(normalized)
     ));
     return match?.slug || null;
   }
@@ -196,6 +198,8 @@ export class AptitudeQuestionService {
     const type = this.normalizeTypeToken(row.type || row.t || "MCQ");
     const answer = String(row.answer || row.a || "").trim().toUpperCase();
     const questionHtml = String(row.questionHtml || row.question || row.q || "").trim();
+    const parsedYear = Number.parseInt(row.year ?? row.y ?? "", 10);
+    const year = Number.isInteger(parsedYear) ? parsedYear : null;
     const preview = String(row.preview || row.text || row.x || this.stripHtmlToText(questionHtml)).trim();
     const searchText = [
       row.searchText || row.search || this.stripHtmlToText(questionHtml) || preview,
@@ -239,13 +243,13 @@ export class AptitudeQuestionService {
       tags: [subjectSlug, subtopicSlug],
       exam: {
         paper: "Aptitude",
-        year: null,
+        year,
         set: null,
         yearSetKey: null,
-        label: "Aptitude",
+        label: year ? `Aptitude ${year}` : "Aptitude",
       },
-      year: null,
-      yearSetLabel: "Aptitude",
+      year,
+      yearSetLabel: year ? `Aptitude ${year}` : "Aptitude",
       link: "",
       searchText,
       canonical: {

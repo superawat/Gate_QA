@@ -150,11 +150,15 @@ Gate_QA/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
 |   |-- aptitude-pipeline/
-|   |   |-- build_aptitude_db.py  # Shards and builds aptitude index
-|   |   |-- parse_questions.py    # Extracts and normalizes aptitude PDFs
-|   |   |-- extract_answers.py
+|   |   |-- scrape-bossxcode.mjs          # Structured BossXCode aptitude intake
+|   |   |-- scrape-bossxcode.test.mjs     # Scraper/parser unit coverage
+|   |   |-- bossxcode-intake-classifier.mjs # Shared attempt/ignore policy
+|   |   |-- filter-bossxcode-catalog.mjs  # Focused catalog filtering helper
+|   |   |-- build_aptitude_db.py          # Shards and builds aptitude index
+|   |   |-- mirror-aptitude-images.mjs    # Mirrors public aptitude image assets
+|   |   |-- remaps.py                     # Aptitude taxonomy/remap rules
 |   |   |-- config.py
-|   |   `-- requirements.txt
+|   |   `-- README.md
 |   `-- pipeline/
 |       |-- shared.mjs            # Shared retry/sleep/output helpers for pipeline stages
 |       |-- scrape.mjs            # Stage 1: Tag discovery, pagination, question extraction
@@ -177,21 +181,21 @@ Gate_QA/
 |   |-- ARCHITECTURE.md
 |   |-- REPO_STRUCTURE.md
 |   |-- FRONTEND_GUIDE.md
-|   |-- FREE_PLATFORM_IMPROVEMENT_PLAN.md
 |   |-- DATA_PIPELINE.md          # Pipeline primary documentation
 |   |-- DEPLOYMENT.md
 |   |-- TESTING.md
+|   |-- PRE_PUSH_CHECKS.md
 |   |-- CONTRIBUTING.md
 |   |-- CHANGELOG.md
 |   |-- KNOWN-LIMITATIONS.md
 |   |-- DATA-POLICY.md
 |   |-- QA_HARDENING_CHECKLIST.md
 |   |-- ROADMAP_AND_DECISIONS.md
+|   |-- PYQ_GATEOVERFLOW_RECHECK_PLAN.md
 |   |-- BUG_BACKLOG.md
 |   |-- generated/
 |   |   |-- data-status.json
 |   |   `-- DATA_STATUS.md
-|   `-- FEAT-003_PHASE0_SIGNOFF.md
 
 |-- tests/
 |   `-- e2e/
