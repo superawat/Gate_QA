@@ -25,7 +25,7 @@ Gate_QA/
 |   |-- pipeline-state.json      # Pipeline persistent state
 |   |-- test-results/            # Playwright outputs
 |   |-- artifacts/dev-server/    # Local server logs
-|   |-- artifacts/aptitude-pipeline/ # Local BossXCode scrape/cache outputs
+|   |-- artifacts/aptitude-pipeline/ # Local AptitudeBank scrape/cache outputs
 |   `-- artifacts/review/        # Local QA/audit review outputs
 |
 |-- src/
@@ -154,10 +154,10 @@ Gate_QA/
 |   |   |-- sync-calculator.mjs
 |   |   `-- ensure-nojekyll.mjs
 |   |-- aptitude-pipeline/
-|   |   |-- scrape-bossxcode.mjs          # Structured BossXCode aptitude intake
-|   |   |-- scrape-bossxcode.test.mjs     # Scraper/parser unit coverage
-|   |   |-- bossxcode-intake-classifier.mjs # Shared attempt/ignore policy
-|   |   |-- filter-bossxcode-catalog.mjs  # Focused catalog filtering helper
+|   |   |-- scrape-aptitude.mjs          # Structured AptitudeBank aptitude intake
+|   |   |-- scrape-aptitude.test.mjs     # Scraper/parser unit coverage
+|   |   |-- aptitude-intake-classifier.mjs # Shared attempt/ignore policy
+|   |   |-- filter-aptitude-catalog.mjs  # Focused catalog filtering helper
 |   |   |-- build_aptitude_db.py          # Shards and builds aptitude index
 |   |   |-- mirror-aptitude-images.mjs    # Mirrors public aptitude image assets
 |   |   |-- remaps.py                     # Aptitude taxonomy/remap rules

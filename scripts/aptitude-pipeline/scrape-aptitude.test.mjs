@@ -4,13 +4,13 @@ import {
   extractRowsFromHtml,
   extractRowsFromPayload,
   parseArgs,
-} from "./scrape-bossxcode.mjs";
+} from "./scrape-aptitude.mjs";
 import {
   classifyCatalogContext,
   filterAttemptedRows,
-} from "./bossxcode-intake-classifier.mjs";
+} from "./aptitude-intake-classifier.mjs";
 
-describe("scrape-bossxcode parser", () => {
+describe("scrape-aptitude parser", () => {
   test("extracts structured JSON questions into the parsed aptitude contract", () => {
     const rows = extractRowsFromPayload(
       {
@@ -24,7 +24,7 @@ describe("scrape-bossxcode parser", () => {
           },
         ],
       },
-      "https://pt.bossxcode.unaux.com/math/algebra"
+      "https://aptitude-bank.internal/math/algebra"
     );
 
     expect(rows).toHaveLength(1);
@@ -37,9 +37,9 @@ describe("scrape-bossxcode parser", () => {
     expect(rows[0].questionHtml).toContain("<sup>2</sup>");
     expect(rows[0].questionHtml.match(/<ol/g)).toHaveLength(1);
     expect(rows[0]._source).toMatchObject({
-      sourceKind: "bossxcode-web",
-      sourceProvider: "BossXCode",
-      pageUrl: "https://pt.bossxcode.unaux.com/math/algebra",
+      sourceKind: "aptitude-web",
+      sourceProvider: "AptitudeBank",
+      pageUrl: "https://aptitude-bank.internal/math/algebra",
     });
   });
 
@@ -64,7 +64,7 @@ describe("scrape-bossxcode parser", () => {
       </article>
     `;
 
-    const rows = extractRowsFromHtml(html, "https://pt.bossxcode.unaux.com/english/synonyms");
+    const rows = extractRowsFromHtml(html, "https://aptitude-bank.internal/english/synonyms");
 
     expect(rows).toHaveLength(1);
     expect(rows[0].subject).toBe("English");
@@ -87,7 +87,7 @@ describe("scrape-bossxcode parser", () => {
       </section>
     `;
 
-    const rows = extractRowsFromHtml(html, "https://pt.bossxcode.unaux.com/reasoning/coding-decoding");
+    const rows = extractRowsFromHtml(html, "https://aptitude-bank.internal/reasoning/coding-decoding");
 
     expect(rows).toHaveLength(1);
     expect(rows[0].answer).toBe("B");
@@ -95,7 +95,7 @@ describe("scrape-bossxcode parser", () => {
     expect(rows[0].subtopic).toBe("Coding - Decoding");
   });
 
-  test("extracts BossXCode TEST_DATA payloads with MathML intact", () => {
+  test("extracts AptitudeBank TEST_DATA payloads with MathML intact", () => {
     const html = `
       <title>Number System 01</title>
       <script>
@@ -110,7 +110,7 @@ describe("scrape-bossxcode parser", () => {
       </script>
     `;
 
-    const rows = extractRowsFromHtml(html, "https://pt.bossxcode.unaux.com/play?paper_pack=Number%20System%2001");
+    const rows = extractRowsFromHtml(html, "https://aptitude-bank.internal/play?paper_pack=Number%20System%2001");
 
     expect(rows).toHaveLength(1);
     expect(rows[0].subject).toBe("Quant");
@@ -134,7 +134,7 @@ describe("scrape-bossxcode parser", () => {
           },
         ],
       },
-      "https://pt.bossxcode.unaux.com/play#paper-demo",
+      "https://aptitude-bank.internal/play#paper-demo",
       {
         product: "SSC Eduquity Test Pass : 2026",
         tier: "SSC CGL Tier 1 Mock: 110",
@@ -150,8 +150,8 @@ describe("scrape-bossxcode parser", () => {
       subtopic: "Percentage",
       year: 2026,
       _source: {
-        sourceKind: "bossxcode-web",
-        sourceProvider: "BossXCode",
+        sourceKind: "aptitude-web",
+        sourceProvider: "AptitudeBank",
         examBody: "SSC",
         examName: "SSC CGL Tier 1",
         year: 2026,
@@ -161,9 +161,9 @@ describe("scrape-bossxcode parser", () => {
 
   test("reads credentials from environment without requiring CLI flags", () => {
     const options = parseArgs([], {
-      BOSSXCODE_PASSWORD: "secret",
-      BOSSXCODE_COOKIE: "session=abc",
-      BOSSXCODE_BASE_URL: "https://pt.bossxcode.unaux.com/",
+      APTITUDE_PASSWORD: "secret",
+      APTITUDE_COOKIE: "session=abc",
+      APTITUDE_BASE_URL: "https://aptitude-bank.internal/",
     });
 
     expect(options.password).toBe("secret");
@@ -174,7 +174,7 @@ describe("scrape-bossxcode parser", () => {
     expect(options.includeAllSeries).toBe(true);
   });
 
-  test("classifies BossXCode catalog entries before scraping broad or non-aptitude packs", () => {
+  test("classifies AptitudeBank catalog entries before scraping broad or non-aptitude packs", () => {
     expect(
       classifyCatalogContext({
         product: "SSC Eduquity Test Pass : 2026",
@@ -206,8 +206,8 @@ describe("scrape-bossxcode parser", () => {
 
   test("filters parsed rows with the same attempt/ignore policy used by reports", () => {
     const source = {
-      sourceKind: "bossxcode-web",
-      pageUrl: "https://pt.bossxcode.unaux.com/play#paper-demo",
+      sourceKind: "aptitude-web",
+      pageUrl: "https://aptitude-bank.internal/play#paper-demo",
       sourceId: "demo",
     };
     const { attempted, report, ignoredSamples } = filterAttemptedRows([

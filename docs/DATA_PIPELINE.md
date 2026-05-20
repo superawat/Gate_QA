@@ -150,15 +150,15 @@ auto-created with error details from `audit/scrape-error.json` or
 ## Aptitude Pipeline
 
 The Aptitude dataset is an offline, standalone collection curated from structured
-BossXCode web payloads, decoupled entirely from the GATE pipeline. The retired
+AptitudeBank web payloads, decoupled entirely from the GATE pipeline. The retired
 PDF/OCR intake and local `aptitude-ssc/` source corpus are no longer supported
 inside the project.
 
 Scripts are located in `scripts/aptitude-pipeline/`:
 
-- `scrape-bossxcode.mjs`: Discovers catalog papers, extracts structured rows, and writes `artifacts/aptitude-pipeline/parsed-questions.json`.
-- `bossxcode-intake-classifier.mjs`: Shared attempt/ignore policy for BossXCode catalog, paper, and row intake decisions.
-- `filter-bossxcode-catalog.mjs`: Creates focused catalog slices for targeted imports.
+- `scrape-aptitude.mjs`: Discovers catalog papers, extracts structured rows, and writes `artifacts/aptitude-pipeline/parsed-questions.json`.
+- `aptitude-intake-classifier.mjs`: Shared attempt/ignore policy for AptitudeBank catalog, paper, and row intake decisions.
+- `filter-aptitude-catalog.mjs`: Creates focused catalog slices for targeted imports.
 - `build_aptitude_db.py`: Deduplicates parsed rows, applies taxonomy/remap rules, shards them into `public/data/aptitude/{subject}/{subtopic}.json`, and generates `public/aptitude-search-index.json`.
 - `mirror-aptitude-images.mjs`: Mirrors aptitude images used by public aptitude rows.
 
@@ -166,7 +166,7 @@ Current state:
 
 - Public aptitude count is 16,873 questions across 60 subject/subtopic shards.
 - Public aptitude output is limited to English, Quant, and Reasoning.
-- BossXCode source metadata is retained in `_source` while public display text remains sanitized.
+- AptitudeBank source metadata is retained in `_source` while public display text remains sanitized.
 - Attempted and ignored intake counts are reported before public artifacts are written.
 - Ignored reasons include broad low-signal packs, duplicates, excluded GS/GK/General Awareness/Hindi/current-affairs sources, invalid options/answers, unsupported taxonomy, brittle remote images, inline base64 images, forbidden display tokens, and synthetic markers.
 - Public aptitude images are mirrored into `public/images/aptitude/`; current public data references 123 local aptitude image files and no remote image URLs.

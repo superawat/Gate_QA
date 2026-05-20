@@ -55,8 +55,8 @@ def source_list(value):
     return []
 
 
-def is_bossxcode_source(row: dict) -> bool:
-    return any(source.get("sourceKind") == "bossxcode-web" for source in source_list(row.get("_source")))
+def is_aptitude_source(row: dict) -> bool:
+    return any(source.get("sourceKind") == "aptitude-web" for source in source_list(row.get("_source")))
 
 
 def has_useful_source_metadata(row: dict) -> bool:
@@ -109,7 +109,7 @@ def normalize_year(value):
     return year if 1900 <= year <= 2100 else None
 
 
-def clean_bossxcode_title(value: str) -> str:
+def clean_aptitude_title(value: str) -> str:
     title = compact_plain_text(str(value or ""))
     replacements = [
         r"\bDescription\b.*$",
@@ -131,26 +131,26 @@ def clean_bossxcode_title(value: str) -> str:
     return title or compact_plain_text(str(value or ""))
 
 
-def normalize_bossxcode_source(source: dict) -> dict:
-    if source.get("sourceKind") != "bossxcode-web":
+def normalize_aptitude_source(source: dict) -> dict:
+    if source.get("sourceKind") != "aptitude-web":
         return source
-    exam_body = clean_bossxcode_title(source.get("examBody") or "")
-    exam_name = clean_bossxcode_title(source.get("examName") or "")
-    if exam_body.lower() in {"bossxcode", "boxcode", "boxcode web", "bossxcode web", ""}:
+    exam_body = clean_aptitude_title(source.get("examBody") or "")
+    exam_name = clean_aptitude_title(source.get("examName") or "")
+    if exam_body.lower() in {"aptitude", "aptitude web", ""}:
         exam_body = "Unknown"
-    if exam_name.lower() in {"bossxcode", "boxcode", "boxcode web", "bossxcode web", ""}:
-        exam_name = clean_bossxcode_title(source.get("paperTitle") or source.get("testSeries") or "Unknown Test Series")
+    if exam_name.lower() in {"aptitude", "aptitude web", ""}:
+        exam_name = clean_aptitude_title(source.get("paperTitle") or source.get("testSeries") or "Unknown Test Series")
     normalized = {
         **source,
-        "sourceKind": "bossxcode-web",
-        "sourceProvider": source.get("sourceProvider") or "BossXCode",
+        "sourceKind": "aptitude-web",
+        "sourceProvider": source.get("sourceProvider") or "AptitudeBank",
         "examBody": exam_body,
         "examName": exam_name,
-        "testSeries": clean_bossxcode_title(source.get("testSeries") or ""),
-        "paperTitle": clean_bossxcode_title(source.get("paperTitle") or ""),
-        "product": clean_bossxcode_title(source.get("product") or ""),
-        "tier": clean_bossxcode_title(source.get("tier") or ""),
-        "testType": clean_bossxcode_title(source.get("testType") or ""),
+        "testSeries": clean_aptitude_title(source.get("testSeries") or ""),
+        "paperTitle": clean_aptitude_title(source.get("paperTitle") or ""),
+        "product": clean_aptitude_title(source.get("product") or ""),
+        "tier": clean_aptitude_title(source.get("tier") or ""),
+        "testType": clean_aptitude_title(source.get("testType") or ""),
     }
     normalized_year = normalize_year(source.get("year"))
     if normalized_year is not None:
@@ -159,7 +159,7 @@ def normalize_bossxcode_source(source: dict) -> dict:
 
 
 def normalize_sources(value):
-    sources = [normalize_bossxcode_source(source) for source in source_list(value)]
+    sources = [normalize_aptitude_source(source) for source in source_list(value)]
     if not sources:
         return value
     return sources[0] if len(sources) == 1 else sources
@@ -182,8 +182,8 @@ def source_text(row: dict) -> str:
 
 
 def run_shared_intake_classifier(parsed_path) -> tuple[list[dict], dict]:
-    classifier_script = ROOT_DIR / "scripts" / "aptitude-pipeline" / "bossxcode-intake-classifier.mjs"
-    temp_output = ARTIFACT_DIR / ".bossxcode-intake-classifier-output.json"
+    classifier_script = ROOT_DIR / "scripts" / "aptitude-pipeline" / "aptitude-intake-classifier.mjs"
+    temp_output = ARTIFACT_DIR / ".aptitude-intake-classifier-output.json"
     try:
         completed = subprocess.run(
             [
@@ -201,14 +201,14 @@ def run_shared_intake_classifier(parsed_path) -> tuple[list[dict], dict]:
         )
         if completed.returncode != 0:
             details = (completed.stderr or completed.stdout or "").strip()
-            raise RuntimeError(f"Shared BossXCode intake classifier failed: {details}")
+            raise RuntimeError(f"Shared AptitudeBank intake classifier failed: {details}")
         payload = json.loads(temp_output.read_text(encoding="utf-8"))
     finally:
         temp_output.unlink(missing_ok=True)
 
     attempted_rows = payload.get("attempted")
     if not isinstance(attempted_rows, list):
-        raise RuntimeError("Shared BossXCode intake classifier did not return attempted rows.")
+        raise RuntimeError("Shared AptitudeBank intake classifier did not return attempted rows.")
     return attempted_rows, payload
 
 
@@ -418,17 +418,17 @@ def to_question_html(question_text: str, options: list[str]) -> str:
     return "\n".join(paragraphs)
 
 
-def clean_bossxcode_display_html(question_html: str) -> str:
+def clean_aptitude_display_html(question_html: str) -> str:
     cleaned = DIRECTION_PREFIX_HTML_RE.sub(r"\1", question_html or "", count=1)
     cleaned = re.sub(r"^\s*Direction\s*:-\s*", "", cleaned, flags=re.IGNORECASE)
     return cleaned
 
 
 def sanitize_final_row(row: dict) -> dict:
-    if is_bossxcode_source(row):
+    if is_aptitude_source(row):
         return {
             **row,
-            "questionHtml": clean_bossxcode_display_html(row.get("questionHtml") or ""),
+            "questionHtml": clean_aptitude_display_html(row.get("questionHtml") or ""),
         }
 
     repair_math = row.get("subject") in {"Quant", "Mathematics"}
@@ -500,7 +500,7 @@ def main() -> None:
     ensure_dirs()
     parsed_path = ARTIFACT_DIR / "parsed-questions.json"
     if not parsed_path.exists():
-        raise SystemExit("Run npm run aptitude:scrape-bossxcode first.")
+        raise SystemExit("Run npm run aptitude:scrape-aptitude first.")
 
     parsed_input = json.loads(parsed_path.read_text(encoding="utf-8"))
     if not isinstance(parsed_input, list):
@@ -582,7 +582,7 @@ def main() -> None:
         if key in deduped:
             duplicate_count += 1
             record_ignored("duplicate_question", row, row_index)
-            if is_bossxcode_source(row) and not is_bossxcode_source(deduped[key]):
+            if is_aptitude_source(row) and not is_aptitude_source(deduped[key]):
                 row["_source"] = merge_source(deduped[key].get("_source"), row.get("_source"))
                 deduped[key] = dict(row)
                 continue
@@ -628,7 +628,7 @@ def main() -> None:
     sanitized_rows = []
     for row in final_rows:
         sanitized_row = sanitize_final_row(row)
-        corruption_reasons = [] if is_bossxcode_source(sanitized_row) else math_corruption_reasons(sanitized_row)
+        corruption_reasons = [] if is_aptitude_source(sanitized_row) else math_corruption_reasons(sanitized_row)
         if corruption_reasons:
             corrupt_math_rows.append(
                 {

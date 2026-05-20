@@ -41,7 +41,7 @@ Current suites:
 - `src/components/Landing/ModeSelectionPage.test.jsx`
 - `src/services/MockCatalogService.test.js`
 - `src/services/AptitudeQuestionService.test.js`
-- `scripts/aptitude-pipeline/scrape-bossxcode.test.mjs`
+- `scripts/aptitude-pipeline/scrape-aptitude.test.mjs`
 
 Latest verification snapshot on `2026-05-19`:
 
@@ -131,7 +131,7 @@ Strict-mode behavior:
 
 ## 5) Aptitude data gates
 
-Run these after changing BossXCode intake, aptitude taxonomy/remaps, aptitude public JSON, or aptitude images:
+Run these after changing AptitudeBank intake, aptitude taxonomy/remaps, aptitude public JSON, or aptitude images:
 
 ```bash
 npm run qa:validate-aptitude

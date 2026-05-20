@@ -4,7 +4,7 @@
 
 ### Changed
 
-- Rebuilt the public aptitude bank around the BossXCode-only intake path: `16,873` English, Quant, and Reasoning questions across `60` subject/subtopic shards.
+- Rebuilt the public aptitude bank around the AptitudeBank-only intake path: `16,873` English, Quant, and Reasoning questions across `60` subject/subtopic shards.
 - Added a shared aptitude attempt/ignore gate so low-signal, duplicate, unsupported, invalid, brittle-image, synthetic, and non-aptitude rows are filtered before public artifacts are written.
 - Mirrored public aptitude images into `public/images/aptitude/` and validated that public aptitude data has no remote or broken image references.
 - Added the public user manual route at `/manual` and linked it from the footer.

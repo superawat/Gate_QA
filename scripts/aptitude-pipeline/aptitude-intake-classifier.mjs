@@ -250,7 +250,7 @@ function readInputRows(inputPath) {
   const raw = inputPath && inputPath !== "-" ? fs.readFileSync(inputPath, "utf8") : fs.readFileSync(0, "utf8");
   const rows = JSON.parse(raw);
   if (!Array.isArray(rows)) {
-    throw new Error("BossXCode intake classifier input must be a JSON array.");
+    throw new Error("AptitudeBank intake classifier input must be a JSON array.");
   }
   return rows;
 }
@@ -287,7 +287,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   try {
     runCli();
   } catch (error) {
-    console.error(`[bossxcode-intake-classifier] ${error.stack || error.message}`);
+    console.error(`[aptitude-intake-classifier] ${error.stack || error.message}`);
     process.exit(1);
   }
 }

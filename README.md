@@ -117,7 +117,7 @@ Pipeline scripts live in `scripts/pipeline/` and are documented in `docs/DATA_PI
 
 ## Aptitude Data Pipeline
 
-The aptitude bank is built from structured BossXCode intake only. The retired local PDF/OCR corpus is not part of the project anymore.
+The aptitude bank is built from structured AptitudeBank intake only. The retired local PDF/OCR corpus is not part of the project anymore.
 
 Current public aptitude state:
 

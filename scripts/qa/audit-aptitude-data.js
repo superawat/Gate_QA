@@ -187,7 +187,7 @@ function collectRowIssues(row) {
 }
 
 function sourceSignature(source) {
-  if (source?.sourceKind === "bossxcode-web") {
+  if (source?.sourceKind === "aptitude-web") {
     return [
       source.pageUrl || "",
       source.sourceId || "",

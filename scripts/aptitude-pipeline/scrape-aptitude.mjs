@@ -2,7 +2,7 @@
  * Structured web ingestion for the standalone Aptitude bank.
  *
  * The source site is password-gated, so credentials are supplied only at run
- * time via BOSSXCODE_PASSWORD or BOSSXCODE_COOKIE. The script emits the same
+ * time via APTITUDE_PASSWORD or APTITUDE_COOKIE. The script emits the same
  * parsed-questions.json shape consumed by build_aptitude_db.py.
  */
 
@@ -20,7 +20,7 @@ import {
   filterAttemptedRows,
   mergeDecisionReports,
   recordDecision,
-} from "./bossxcode-intake-classifier.mjs";
+} from "./aptitude-intake-classifier.mjs";
 
 const require = createRequire(import.meta.url);
 const { TAXONOMY, SUBJECTS } = require("../qa/aptitude-taxonomy.js");
@@ -29,13 +29,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "../..");
 
-const DEFAULT_BASE_URL = "https://pt.bossxcode.unaux.com/";
+const DEFAULT_BASE_URL = "https://aptitude-bank.internal/";
 const DEFAULT_OUTPUT_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "parsed-questions.json");
-const DEFAULT_REPORT_PATH = path.join(ROOT, "artifacts", "review", "bossxcode-aptitude-import-report.json");
-const DEFAULT_PROFILE_DIR = path.join(ROOT, "artifacts", "aptitude-pipeline", ".bossxcode-browser-profile");
-const DEFAULT_CATALOG_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "bossxcode-catalog.json");
-const SOURCE_KIND = "bossxcode-web";
-const SOURCE_PROVIDER = "BossXCode";
+const DEFAULT_REPORT_PATH = path.join(ROOT, "artifacts", "review", "aptitude-aptitude-import-report.json");
+const DEFAULT_PROFILE_DIR = path.join(ROOT, "artifacts", "aptitude-pipeline", ".aptitude-browser-profile");
+const DEFAULT_CATALOG_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "aptitude-catalog.json");
+const SOURCE_KIND = "aptitude-web";
+const SOURCE_PROVIDER = "AptitudeBank";
 const OPTION_LABELS = ["A", "B", "C", "D"];
 const QUANT_SUBJECT = "Quant";
 const SUBJECT_ALIASES = new Map([
@@ -217,9 +217,9 @@ function readListOption(argv, name, fallback = []) {
 
 export function parseArgs(argv = process.argv.slice(2), env = process.env) {
   return {
-    baseUrl: readOption(argv, "base-url", env.BOSSXCODE_BASE_URL || DEFAULT_BASE_URL),
-    password: readOption(argv, "password", env.BOSSXCODE_PASSWORD || ""),
-    cookie: readOption(argv, "cookie", env.BOSSXCODE_COOKIE || ""),
+    baseUrl: readOption(argv, "base-url", env.APTITUDE_BASE_URL || DEFAULT_BASE_URL),
+    password: readOption(argv, "password", env.APTITUDE_PASSWORD || ""),
+    cookie: readOption(argv, "cookie", env.APTITUDE_COOKIE || ""),
     inputPath: resolveRepoPath(readOption(argv, "input", "")),
     outputPath: resolveRepoPath(readOption(argv, "output", DEFAULT_OUTPUT_PATH)),
     reportPath: resolveRepoPath(readOption(argv, "report", DEFAULT_REPORT_PATH)),
@@ -237,9 +237,9 @@ export function parseArgs(argv = process.argv.slice(2), env = process.env) {
     delayMs: Math.max(0, readIntOption(argv, "delay", 250)),
     headless: !argv.includes("--headed"),
     channel: readOption(argv, "channel", env.PLAYWRIGHT_CHANNEL || ""),
-    products: readListOption(argv, "products", (env.BOSSXCODE_PRODUCTS || "*").split(",").filter(Boolean)),
-    testTypeIds: readListOption(argv, "test-type-ids", (env.BOSSXCODE_TEST_TYPE_IDS || "*").split(",").filter(Boolean)),
-    includeAllSeries: !argv.includes("--relevant-series-only") && !/^(0|false|no)$/i.test(env.BOSSXCODE_INCLUDE_ALL_SERIES || ""),
+    products: readListOption(argv, "products", (env.APTITUDE_PRODUCTS || "*").split(",").filter(Boolean)),
+    testTypeIds: readListOption(argv, "test-type-ids", (env.APTITUDE_TEST_TYPE_IDS || "*").split(",").filter(Boolean)),
+    includeAllSeries: !argv.includes("--relevant-series-only") && !/^(0|false|no)$/i.test(env.APTITUDE_INCLUDE_ALL_SERIES || ""),
     refreshCatalog: argv.includes("--refresh-catalog"),
     discoveryOnly: argv.includes("--discovery-only"),
     legacyCrawl: argv.includes("--legacy-crawl"),
@@ -787,10 +787,11 @@ function extractYear(context = {}, sourceUrl = "") {
 }
 
 function inferExamBody(text = "") {
-  if (/\b(?:Railway|RRB|NTPC|ALP|Group\s*D|RPF|Technician)\b/i.test(text)) return "Railway";
-  if (/\bDelhi\s+Police\b/i.test(text)) return "Delhi Police";
-  if (/\bBank(?:ing)?\b/i.test(text)) return "Banking";
-  if (/\b(?:SSC|CGL|CHSL|CPO|MTS|Stenographer|Selection\s+Post|GD)\b/i.test(text)) return "SSC";
+  const cleanText = text.replace(/aptitude-bank\.internal|AptitudeBank/gi, "");
+  if (/\b(?:Railway|RRB|NTPC|ALP|Group\s*D|RPF|Technician)\b/i.test(cleanText)) return "Railway";
+  if (/\bDelhi\s+Police\b/i.test(cleanText)) return "Delhi Police";
+  if (/\bBank(?:ing)?\b/i.test(cleanText)) return "Banking";
+  if (/\b(?:SSC|CGL|CHSL|CPO|MTS|Stenographer|Selection\s+Post|GD)\b/i.test(cleanText)) return "SSC";
   return "Unknown";
 }
 
@@ -1180,9 +1181,9 @@ export function extractRowsFromHtml(html, sourceUrl = DEFAULT_BASE_URL, context 
 
     document.querySelectorAll("script:not([src])").forEach((script) => {
       const text = script.textContent || "";
-      const isBossXCodeTestData = /window\.TEST_DATA/i.test(text);
+      const isAptitudeBankTestData = /window\.TEST_DATA/i.test(text);
       if (!/(question|option|answer|correct)/i.test(text)) return;
-      if (text.length > 2_000_000 && !isBossXCodeTestData) return;
+      if (text.length > 2_000_000 && !isAptitudeBankTestData) return;
       for (const payload of parseJsonScript(text)) {
         rows.push(...extractRowsFromPayload(payload, sourceUrl, sourceContext));
       }
@@ -1244,7 +1245,7 @@ async function loginIfNeeded(page, options) {
 
   if (!options.password) {
     throw new Error(
-      "BossXCode is password-gated. Set BOSSXCODE_PASSWORD, pass --password, or provide BOSSXCODE_COOKIE/--cookie."
+      "AptitudeBank is password-gated. Set APTITUDE_PASSWORD, pass --password, or provide APTITUDE_COOKIE/--cookie."
     );
   }
 
@@ -1258,7 +1259,7 @@ async function loginIfNeeded(page, options) {
   await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
 
   if (await pageLooksLocked(page)) {
-    throw new Error("BossXCode login failed or the supplied session cookie has expired.");
+    throw new Error("AptitudeBank login failed or the supplied session cookie has expired.");
   }
 }
 
@@ -1415,7 +1416,7 @@ async function refreshRequestAuth(requestContext, options) {
   if (status >= 300 && status < 400) return;
   const html = await response.text();
   if (!response.ok() || htmlLooksLocked(html)) {
-    throw new Error("BossXCode request auth refresh failed.");
+    throw new Error("AptitudeBank request auth refresh failed.");
   }
 }
 
@@ -1435,10 +1436,10 @@ async function submitPlayWithFetch(requestContext, choice, options) {
   });
   const html = await response.text();
   if (!response.ok) {
-    throw new Error(`BossXCode request failed: ${response.status} ${choice.url}`);
+    throw new Error(`AptitudeBank request failed: ${response.status} ${choice.url}`);
   }
   if (htmlLooksLocked(html)) {
-    throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+    throw new Error(`AptitudeBank session became locked while submitting ${choice.url}`);
   }
   return { html, url: response.url || choice.url };
 }
@@ -1531,7 +1532,7 @@ function writeCatalogCache(options, seriesJobs, meta = {}) {
     seriesJobs: seriesJobs.map(serializableSeriesJob),
   };
   writeJson(options.catalogPath, payload);
-  console.log(`[bossxcode] catalog cache saved ${payload.seriesJobCount} series / ${payload.paperCount} papers`);
+  console.log(`[aptitude] catalog cache saved ${payload.seriesJobCount} series / ${payload.paperCount} papers`);
 }
 
 function loadCatalogCache(options) {
@@ -1541,11 +1542,11 @@ function loadCatalogCache(options) {
   const sameProducts = JSON.stringify(payload.products || []) === JSON.stringify(options.products || []);
   const sameTestTypes = JSON.stringify(payload.testTypeIds || []) === JSON.stringify(options.testTypeIds || []);
   if (payload.baseUrl !== options.baseUrl || !sameProducts || !sameTestTypes || Boolean(payload.includeAllSeries) !== Boolean(options.includeAllSeries)) {
-    console.log("[bossxcode] catalog cache ignored because selection options changed");
+    console.log("[aptitude] catalog cache ignored because selection options changed");
     return null;
   }
   console.log(
-    `[bossxcode] catalog cache loaded ${payload.seriesJobCount || payload.seriesJobs.length} series / ${payload.paperCount || "?"} papers`
+    `[aptitude] catalog cache loaded ${payload.seriesJobCount || payload.seriesJobs.length} series / ${payload.paperCount || "?"} papers`
   );
   return payload.seriesJobs;
 }
@@ -1580,7 +1581,7 @@ function filterCatalogJobsByIntake(seriesJobInput, intakeReport) {
   return { acceptedJobs, skippedSeriesCount };
 }
 
-async function crawlBossXCodeCatalog(options) {
+async function crawlAptitudeBankCatalog(options) {
   fs.mkdirSync(options.userDataDir, { recursive: true });
   const launchOptions = {
     headless: options.headless,
@@ -1630,10 +1631,10 @@ async function crawlBossXCodeCatalog(options) {
           });
           const html = await redirected.text();
           if (!redirected.ok()) {
-            throw new Error(`BossXCode request failed: ${redirected.status()} ${redirectUrl}`);
+            throw new Error(`AptitudeBank request failed: ${redirected.status()} ${redirectUrl}`);
           }
           if (htmlLooksLocked(html)) {
-            throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+            throw new Error(`AptitudeBank session became locked while submitting ${choice.url}`);
           }
           if (options.delayMs > 0) {
             await page.waitForTimeout(options.delayMs);
@@ -1642,10 +1643,10 @@ async function crawlBossXCodeCatalog(options) {
         }
         const html = await response.text();
         if (!response.ok()) {
-          throw new Error(`BossXCode request failed: ${response.status()} ${choice.url}`);
+          throw new Error(`AptitudeBank request failed: ${response.status()} ${choice.url}`);
         }
         if (htmlLooksLocked(html)) {
-          throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+          throw new Error(`AptitudeBank session became locked while submitting ${choice.url}`);
         }
         if (options.delayMs > 0) {
           await page.waitForTimeout(options.delayMs);
@@ -1653,11 +1654,11 @@ async function crawlBossXCodeCatalog(options) {
         return { html, url: response.url() || choice.url };
       } catch (error) {
         if (attempt >= 3) throw error;
-        console.warn(`[bossxcode] retry discovery ${attempt}/3 ${choice.url}: ${error.message}`);
+        console.warn(`[aptitude] retry discovery ${attempt}/3 ${choice.url}: ${error.message}`);
         await sleep(1000 * attempt);
       }
     }
-    throw new Error(`BossXCode request failed after retries: ${choice.url}`);
+    throw new Error(`AptitudeBank request failed after retries: ${choice.url}`);
   }
 
   function shouldStop() {
@@ -1672,7 +1673,7 @@ async function crawlBossXCodeCatalog(options) {
     const deduped = dedupeRows(rows);
     const limited = options.limit > 0 ? deduped.slice(0, options.limit) : deduped;
     writeJson(options.outputPath, limited);
-    console.log(`[bossxcode] checkpoint saved ${limited.length} total rows`);
+    console.log(`[aptitude] checkpoint saved ${limited.length} total rows`);
   }
 
   async function submitChoiceWithRequest(requestContext, choice) {
@@ -1701,10 +1702,10 @@ async function crawlBossXCodeCatalog(options) {
           });
           const html = await redirected.text();
           if (!redirected.ok()) {
-            throw new Error(`BossXCode request failed: ${redirected.status()} ${redirectUrl}`);
+            throw new Error(`AptitudeBank request failed: ${redirected.status()} ${redirectUrl}`);
           }
           if (htmlLooksLocked(html)) {
-            throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+            throw new Error(`AptitudeBank session became locked while submitting ${choice.url}`);
           }
           if (options.delayMs > 0) {
             await sleep(options.delayMs);
@@ -1713,10 +1714,10 @@ async function crawlBossXCodeCatalog(options) {
         }
         const html = await response.text();
         if (!response.ok()) {
-          throw new Error(`BossXCode request failed: ${response.status()} ${choice.url}`);
+          throw new Error(`AptitudeBank request failed: ${response.status()} ${choice.url}`);
         }
         if (htmlLooksLocked(html)) {
-          throw new Error(`BossXCode session became locked while submitting ${choice.url}`);
+          throw new Error(`AptitudeBank session became locked while submitting ${choice.url}`);
         }
         if (options.delayMs > 0) {
           await sleep(options.delayMs);
@@ -1724,11 +1725,11 @@ async function crawlBossXCodeCatalog(options) {
         return { html, url: response.url() || choice.url };
       } catch (error) {
         if (attempt >= 3) throw error;
-        console.warn(`[bossxcode] retry worker ${attempt}/3 ${choice.url}: ${error.message}`);
+        console.warn(`[aptitude] retry worker ${attempt}/3 ${choice.url}: ${error.message}`);
         await sleep(1000 * attempt);
       }
     }
-    throw new Error(`BossXCode worker request failed after retries: ${choice.url}`);
+    throw new Error(`AptitudeBank worker request failed after retries: ${choice.url}`);
   }
 
   async function createWorkerRequestContext() {
@@ -1749,7 +1750,7 @@ async function crawlBossXCodeCatalog(options) {
       const html = await response.text();
       if (!response.ok() || htmlLooksLocked(html)) {
         await requestContext.dispose();
-        throw new Error("BossXCode worker login failed.");
+        throw new Error("AptitudeBank worker login failed.");
       }
     }
     return requestContext;
@@ -1786,7 +1787,7 @@ async function crawlBossXCodeCatalog(options) {
     papersVisited += 1;
     const count = dedupeRows(rows).length;
     console.log(
-      `[bossxcode] papers=${papersVisited}${options.maxPapers ? `/${options.maxPapers}` : ""} rows=${count} last="${paperTitle.slice(0, 80)}"`
+      `[aptitude] papers=${papersVisited}${options.maxPapers ? `/${options.maxPapers}` : ""} rows=${count} last="${paperTitle.slice(0, 80)}"`
     );
     if (papersVisited % options.checkpointEvery === 0) {
       checkpoint();
@@ -1802,7 +1803,7 @@ async function crawlBossXCodeCatalog(options) {
       await submitter(job.testTypeChoice);
       await submitter(job.seriesChoice);
 
-      console.log(`[bossxcode] worker=${workerId} series=${job.seriesChoice.value} queuedPapers=${job.paperChoices.length}`);
+      console.log(`[aptitude] worker=${workerId} series=${job.seriesChoice.value} queuedPapers=${job.paperChoices.length}`);
       for (const paperChoice of job.paperChoices) {
         if (shouldStop()) break;
         const sourceUrl = paperSourceUrl(options.baseUrl, paperChoice.value);
@@ -1823,7 +1824,7 @@ async function crawlBossXCodeCatalog(options) {
           );
         } catch (error) {
           failedPapers += 1;
-          console.warn(`[bossxcode] paper failed source=${sourceUrl}: ${error.message}`);
+          console.warn(`[aptitude] paper failed source=${sourceUrl}: ${error.message}`);
         }
       }
     } finally {
@@ -1839,10 +1840,10 @@ async function crawlBossXCodeCatalog(options) {
       } catch (error) {
         if (attempt >= 3) {
           failedSeries += 1;
-          console.warn(`[bossxcode] series failed worker=${workerId} series=${job.seriesChoice.value}: ${error.message}`);
+          console.warn(`[aptitude] series failed worker=${workerId} series=${job.seriesChoice.value}: ${error.message}`);
           return;
         }
-        console.warn(`[bossxcode] retry series worker=${workerId} attempt=${attempt}/3 series=${job.seriesChoice.value}: ${error.message}`);
+        console.warn(`[aptitude] retry series worker=${workerId} attempt=${attempt}/3 series=${job.seriesChoice.value}: ${error.message}`);
         await sleep(1500 * attempt);
       }
     }
@@ -1875,7 +1876,7 @@ async function crawlBossXCodeCatalog(options) {
       existingRows.forEach((row) => {
         if (row?._source?.pageUrl) seenPaperUrls.add(row._source.pageUrl);
       });
-      console.log(`[bossxcode] resume loaded ${existingRows.length} existing BossXCode rows`);
+      console.log(`[aptitude] resume loaded ${existingRows.length} existing AptitudeBank rows`);
     }
 
     await loginIfNeeded(page, options);
@@ -1903,14 +1904,14 @@ async function crawlBossXCodeCatalog(options) {
         productChoices = productChoices.filter((choice) => choiceMatchesAllowed(choice, options.products));
       }
       if (productChoices.length === 0) {
-        throw new Error(`No BossXCode products matched: ${options.products.join(", ")}`);
+        throw new Error(`No AptitudeBank products matched: ${options.products.join(", ")}`);
       }
 
       productLoop:
       for (const productChoice of productChoices) {
         const productPage = await submitChoice(productChoice);
         const tierChoices = formChoices(productPage.html, productPage.url, options.baseUrl, "/pick/tier", "tier_pack");
-        console.log(`[bossxcode] product=${productChoice.value} tiers=${tierChoices.length}`);
+        console.log(`[aptitude] product=${productChoice.value} tiers=${tierChoices.length}`);
 
         for (const tierChoice of tierChoices) {
           await submitChoice(productChoice);
@@ -1919,7 +1920,7 @@ async function crawlBossXCodeCatalog(options) {
           if (!options.testTypeIds.includes("*")) {
             testTypeChoices = testTypeChoices.filter((choice) => choiceMatchesAllowed(choice, options.testTypeIds));
           }
-          console.log(`[bossxcode] tier=${tierChoice.value} testTypes=${testTypeChoices.length}`);
+          console.log(`[aptitude] tier=${tierChoice.value} testTypes=${testTypeChoices.length}`);
 
           for (const testTypeChoice of testTypeChoices) {
             await submitChoice(productChoice);
@@ -1942,7 +1943,7 @@ async function crawlBossXCodeCatalog(options) {
                 skippedSeries += 1;
               }
             }
-            console.log(`[bossxcode] testType=${testTypeChoice.value} series=${relevantSeries.length}/${seriesChoices.length}`);
+            console.log(`[aptitude] testType=${testTypeChoice.value} series=${relevantSeries.length}/${seriesChoices.length}`);
 
             for (const { seriesChoice, contextInfo } of relevantSeries) {
               await submitChoice(productChoice);
@@ -1950,7 +1951,7 @@ async function crawlBossXCodeCatalog(options) {
               await submitChoice(testTypeChoice);
               const seriesPage = await submitChoice(seriesChoice);
               const paperChoices = formChoices(seriesPage.html, seriesPage.url, options.baseUrl, "/play", "paper_pack");
-              console.log(`[bossxcode] series=${seriesChoice.value} papers=${paperChoices.length} title="${seriesChoice.title.slice(0, 90)}"`);
+              console.log(`[aptitude] series=${seriesChoice.value} papers=${paperChoices.length} title="${seriesChoice.title.slice(0, 90)}"`);
               const selectedPaperChoices = [];
               for (const paperChoice of paperChoices) {
                 const paperTitle = titleFromPaperPack(paperChoice.value);
@@ -1981,11 +1982,11 @@ async function crawlBossXCodeCatalog(options) {
 
     workerStorageState = await context.storageState().catch(() => null);
     if (!options.password && !options.cookie && (!workerStorageState?.cookies || workerStorageState.cookies.length === 0)) {
-      throw new Error("BossXCode browser profile did not expose reusable cookies for worker requests.");
+      throw new Error("AptitudeBank browser profile did not expose reusable cookies for worker requests.");
     }
 
     console.log(
-      `[bossxcode] discovered seriesJobs=${seriesJobs.length} papers=${discoveredPapers || "all"} ignoredPapers=${intakeReport.papers.ignored}`
+      `[aptitude] discovered seriesJobs=${seriesJobs.length} papers=${discoveredPapers || "all"} ignoredPapers=${intakeReport.papers.ignored}`
     );
     await context.close();
     if (options.discoveryOnly) {
@@ -2000,7 +2001,7 @@ async function crawlBossXCodeCatalog(options) {
   }
 }
 
-async function crawlBossXCode(options) {
+async function crawlAptitudeBank(options) {
   fs.mkdirSync(options.userDataDir, { recursive: true });
   const launchOptions = {
     headless: options.headless,
@@ -2083,7 +2084,7 @@ async function crawlBossXCode(options) {
       }
 
       const count = dedupeRows(rows).length;
-      console.log(`[bossxcode] ${visited.size}/${options.maxPages} pages, ${count} candidate rows`);
+      console.log(`[aptitude] ${visited.size}/${options.maxPages} pages, ${count} candidate rows`);
       if (options.limit > 0 && count >= options.limit) break;
     }
 
@@ -2122,27 +2123,27 @@ function summarizeRows(rows, meta) {
 
 async function main() {
   const options = parseArgs();
-  console.log("[bossxcode] Structured Aptitude Web Import");
-  console.log(`[bossxcode] Base:   ${options.baseUrl}`);
-  console.log(`[bossxcode] Output: ${path.relative(ROOT, options.outputPath)}`);
-  console.log(`[bossxcode] Report: ${path.relative(ROOT, options.reportPath)}`);
-  console.log(`[bossxcode] Flow:   ${options.legacyCrawl ? "legacy-crawl" : "catalog"}`);
+  console.log("[aptitude] Structured Aptitude Web Import");
+  console.log(`[aptitude] Base:   ${options.baseUrl}`);
+  console.log(`[aptitude] Output: ${path.relative(ROOT, options.outputPath)}`);
+  console.log(`[aptitude] Report: ${path.relative(ROOT, options.reportPath)}`);
+  console.log(`[aptitude] Flow:   ${options.legacyCrawl ? "legacy-crawl" : "catalog"}`);
   if (!options.legacyCrawl) {
-    console.log(`[bossxcode] Products: ${options.products.join(", ")}`);
-    console.log(`[bossxcode] Test type ids: ${options.testTypeIds.join(", ")}`);
-    console.log(`[bossxcode] Include all series: ${options.includeAllSeries ? "yes" : "no"}`);
-    console.log(`[bossxcode] Concurrency: ${options.concurrency}`);
-    console.log(`[bossxcode] Request timeout: ${options.requestTimeoutMs}ms`);
-    console.log(`[bossxcode] Delay: ${options.delayMs}ms`);
-    if (options.maxNewPapers > 0) console.log(`[bossxcode] Max new papers: ${options.maxNewPapers}`);
-    if (options.maxRuntimeMinutes > 0) console.log(`[bossxcode] Max runtime: ${options.maxRuntimeMinutes} minutes`);
+    console.log(`[aptitude] Products: ${options.products.join(", ")}`);
+    console.log(`[aptitude] Test type ids: ${options.testTypeIds.join(", ")}`);
+    console.log(`[aptitude] Include all series: ${options.includeAllSeries ? "yes" : "no"}`);
+    console.log(`[aptitude] Concurrency: ${options.concurrency}`);
+    console.log(`[aptitude] Request timeout: ${options.requestTimeoutMs}ms`);
+    console.log(`[aptitude] Delay: ${options.delayMs}ms`);
+    if (options.maxNewPapers > 0) console.log(`[aptitude] Max new papers: ${options.maxNewPapers}`);
+    if (options.maxRuntimeMinutes > 0) console.log(`[aptitude] Max runtime: ${options.maxRuntimeMinutes} minutes`);
   }
 
   const result = options.inputPath
     ? rowsFromInputPath(options.inputPath, options.baseUrl)
     : options.legacyCrawl
-      ? await crawlBossXCode(options)
-      : await crawlBossXCodeCatalog(options);
+      ? await crawlAptitudeBank(options)
+      : await crawlAptitudeBankCatalog(options);
 
   const rowIntake = filterAttemptedRows(result.rows);
   const intakeReport = mergeDecisionReports(result.intakeReport, rowIntake.report);
@@ -2161,16 +2162,16 @@ async function main() {
   writeJson(options.reportPath, report);
 
   console.log(
-    `[bossxcode] Wrote ${rowIntake.attempted.length} parsed questions. ignoredRows=${intakeReport.rows.ignored}`
+    `[aptitude] Wrote ${rowIntake.attempted.length} parsed questions. ignoredRows=${intakeReport.rows.ignored}`
   );
-  console.log(`[bossxcode] ${path.relative(ROOT, options.outputPath)}`);
-  console.log(`[bossxcode] ${path.relative(ROOT, options.reportPath)}`);
-  console.log("[bossxcode] Next: python scripts/aptitude-pipeline/build_aptitude_db.py");
+  console.log(`[aptitude] ${path.relative(ROOT, options.outputPath)}`);
+  console.log(`[aptitude] ${path.relative(ROOT, options.reportPath)}`);
+  console.log("[aptitude] Next: python scripts/aptitude-pipeline/build_aptitude_db.py");
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   main().catch((error) => {
-    console.error(`[bossxcode] ${error.stack || error.message}`);
+    console.error(`[aptitude] ${error.stack || error.message}`);
     process.exit(1);
   });
 }

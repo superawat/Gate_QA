@@ -5,7 +5,7 @@ import {
   classifyCatalogJob,
   createDecisionReport,
   recordDecision,
-} from './bossxcode-intake-classifier.mjs';
+} from './aptitude-intake-classifier.mjs';
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -66,7 +66,7 @@ function main() {
   const options = parseArgs();
   
   if (!options.input || !options.output) {
-    console.error('Usage: node filter-bossxcode-catalog.mjs --input <in.json> --output <out.json> [filters...]');
+    console.error('Usage: node filter-aptitude-catalog.mjs --input <in.json> --output <out.json> [filters...]');
     process.exit(1);
   }
 
@@ -78,7 +78,7 @@ function main() {
     process.exit(1);
   }
   const parsedPageUrls = loadParsedPageUrls(options.excludeParsed);
-  const baseUrl = catalog.baseUrl || 'https://pt.bossxcode.unaux.com/';
+  const baseUrl = catalog.baseUrl || 'https://aptitude-bank.internal/';
   
   let newSeriesJobs = [];
   let totalPapers = 0;

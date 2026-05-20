@@ -29,12 +29,12 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Severity: High
 - Source: User reported
 - Where:
-  `scripts/aptitude-pipeline/bossxcode-intake-classifier.mjs`
-  `scripts/aptitude-pipeline/scrape-bossxcode.mjs`
+  `scripts/aptitude-pipeline/aptitude-intake-classifier.mjs`
+  `scripts/aptitude-pipeline/scrape-aptitude.mjs`
   `scripts/aptitude-pipeline/build_aptitude_db.py`
   `scripts/aptitude-pipeline/remaps.py`
 - Resolution:
-  Added a shared BossXCode attempt/ignore gate across catalog filtering, scraping, and public artifact build. Ignored low-signal full-length packs, duplicate questions, unsupported GS/GK/General Awareness/Hindi/current-affairs sources, invalid rows, brittle remote images, inline base64 images, forbidden display tokens, and synthetic markers before public write. Retired the local PDF/OCR path and kept generated review reports local-only.
+  Added a shared AptitudeBank attempt/ignore gate across catalog filtering, scraping, and public artifact build. Ignored low-signal full-length packs, duplicate questions, unsupported GS/GK/General Awareness/Hindi/current-affairs sources, invalid rows, brittle remote images, inline base64 images, forbidden display tokens, and synthetic markers before public write. Retired the local PDF/OCR path and kept generated review reports local-only.
 - Verification:
   `npm run qa:validate-aptitude`, `npm run qa:verify-aptitude`, and `npm run qa:validate-aptitude-images` pass.
 

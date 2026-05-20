@@ -12,7 +12,7 @@ const GATE_FILE = path.join(ROOT, "public", "questions-with-answers.json");
 const VALID_EXAM_NAMES = new Set(["CGL", "CHSL", "MTS", "CPO", "Stenographer", "Selection Post", "Chapterwise"]);
 const DISPLAY_FORBIDDEN_RE = /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]\b|Q\s*\.\s*\d+(?:\.|\s*(?:to|-))|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
 const UID_RE = /^APT-(ENG|QNT|RSN)-\d{4,}$/;
-const BOSSXCODE_CATALOG_NOISE_RE = /Description|Total\s*Tests|Total\s*papers|Open Test|Questions:|Marks:|Price:|Tests:\s*\d|Series:\s*\d/i;
+const APTITUDE_CATALOG_NOISE_RE = /Description|Total\s*Tests|Total\s*papers|Open Test|Questions:|Marks:|Price:|Tests:\s*\d|Series:\s*\d/i;
 const SYNTHETIC_MARKER_RE = /<!--\s*mock\s+2025\b|mock_2025_data|synthetic/i;
 const FULL_LENGTH_MOCK_RE = /\bMock\s+Tests?\s*\(\s*Full\s+Length\s*\)|\bFull\s+Length\b/i;
 const ENGLISH_TASK_RE = /\b(?:active(?:\s*\/\s*|\s+)passive|passive voice|active voice|sentence improvement|substitute|spot.*error|grammatical error|segment.*contains.*error|cloze test|comprehension|according to the passage|idiom|synonym|antonym|spelling|misspelt|misspelled|one[- ]word|one which can be substituted|group of words given|para jumble|jumbled|narration|direct speech|indirect speech)\b/i;
@@ -27,8 +27,8 @@ function sourceEntries(value) {
   return [];
 }
 
-function isBossXCodeSource(source) {
-  return source?.sourceKind === "bossxcode-web";
+function isAptitudeBankSource(source) {
+  return source?.sourceKind === "aptitude-web";
 }
 
 function stripHtml(value = "") {
@@ -64,35 +64,35 @@ function looksLikeGeneralAwareness(row) {
 }
 
 async function loadSharedIntakePolicy() {
-  const classifierPath = path.join(ROOT, "scripts", "aptitude-pipeline", "bossxcode-intake-classifier.mjs");
+  const classifierPath = path.join(ROOT, "scripts", "aptitude-pipeline", "aptitude-intake-classifier.mjs");
   return import(pathToFileURL(classifierPath).href);
 }
 
 function validateSource(source, uid, errors) {
-  if (isBossXCodeSource(source)) {
-    if (source.sourceKind !== "bossxcode-web") {
-      errors.push(`${uid}: BossXCode source must set sourceKind=bossxcode-web`);
+  if (isAptitudeBankSource(source)) {
+    if (source.sourceKind !== "aptitude-web") {
+      errors.push(`${uid}: AptitudeBank source must set sourceKind=aptitude-web`);
     }
-    if (!source.examBody || /^(?:BossXCode|BoxCode|BoxCode Web)$/i.test(String(source.examBody))) {
-      errors.push(`${uid}: BossXCode source must store the actual exam body`);
+    if (!source.examBody || /^(?:AptitudeBank|Aptitude|Aptitude Web|AptitudeBank Web)$/i.test(String(source.examBody))) {
+      errors.push(`${uid}: AptitudeBank source must store the actual exam body`);
     }
-    if (!source.examName || /^(?:BossXCode|BoxCode|BoxCode Web)$/i.test(String(source.examName))) {
-      errors.push(`${uid}: BossXCode source must store the actual exam/test name`);
+    if (!source.examName || /^(?:AptitudeBank|Aptitude|Aptitude Web|AptitudeBank Web)$/i.test(String(source.examName))) {
+      errors.push(`${uid}: AptitudeBank source must store the actual exam/test name`);
     }
-    if (!/^https:\/\/pt\.bossxcode\.unaux\.com\//i.test(String(source.pageUrl || ""))) {
-      errors.push(`${uid}: BossXCode source must include pageUrl on pt.bossxcode.unaux.com`);
+    if (!/^https:\/\/aptitude-bank\.internal\//i.test(String(source.pageUrl || ""))) {
+      errors.push(`${uid}: AptitudeBank source must include pageUrl on aptitude-bank.internal`);
     }
     if (!source.sourceId || typeof source.sourceId !== "string") {
-      errors.push(`${uid}: BossXCode source must include sourceId`);
+      errors.push(`${uid}: AptitudeBank source must include sourceId`);
     }
     if (source.year !== null && source.year !== undefined && !Number.isInteger(Number(source.year))) {
-      errors.push(`${uid}: BossXCode source year must be numeric when present`);
+      errors.push(`${uid}: AptitudeBank source year must be numeric when present`);
     }
     const catalogFields = [source.examName, source.testSeries, source.product, source.tier, source.testType, source.paperTitle]
       .filter(Boolean)
       .join(" ");
-    if (BOSSXCODE_CATALOG_NOISE_RE.test(catalogFields)) {
-      errors.push(`${uid}: BossXCode source metadata contains catalog UI noise`);
+    if (APTITUDE_CATALOG_NOISE_RE.test(catalogFields)) {
+      errors.push(`${uid}: AptitudeBank source metadata contains catalog UI noise`);
     }
     return;
   }
@@ -173,7 +173,7 @@ async function main() {
     }
     const intakeDecision = classifyParsedRow(row);
     if (intakeDecision.action !== "attempt") {
-      errors.push(`${label}: failed shared BossXCode intake policy (${intakeDecision.reason})`);
+      errors.push(`${label}: failed shared AptitudeBank intake policy (${intakeDecision.reason})`);
     }
     if (/^go[:\-]/i.test(String(row.uid || ""))) {
       errors.push(`${label}: aptitude UID collides with GATE prefix`);
