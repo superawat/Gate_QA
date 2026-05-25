@@ -28,7 +28,7 @@ test("random practice opens a solve route", async ({ page }) => {
   });
   await page.getByRole("button", { name: /Practice.*fresh/i }).click();
   await expect(page).toHaveURL(/\/Gate_QA\/practice\/question\/.+/);
-  await expect(page.getByText(/Solve/i)).toBeVisible();
+  await expect(page.getByText("Solve", { exact: true }).first()).toBeVisible();
 });
 
 test("subject filter updates result context", async ({ page }) => {
