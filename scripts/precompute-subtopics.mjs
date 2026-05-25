@@ -82,6 +82,7 @@ const TOPIC_HIERARCHY = {
         'Algorithm Design', 'Algorithm Design Technique', 'Asymptotic Notation', 'Asymptotic Notations',
         'Bellman Ford', 'Binary Search', 'Bitonic Array', 'Depth First Search', 'Dijkstras Algorithm',
         'Directed Graph', 'Double Hashing', 'Dynamic Programming', 'Graph Algorithms', 'Graph Search',
+        'Graphs',
         'Greedy Algorithms', 'Hashing', 'Huffman Code', 'Identify Function', 'Insertion Sort',
         'Linear Probing', 'Matrix Chain Ordering', 'Merge Sort', 'Merging', 'Minimum Spanning Tree',
         'Prims Algorithm', 'Quick Sort', 'Recurrence Relation', 'Recursion', 'Searching', 'Shortest Path',

@@ -178,7 +178,7 @@ describe("MockTestContext", () => {
     });
   });
 
-  test("excludes aptitude questions from mock pool during beta period", async () => {
+  test("includes aptitude questions in mock pool", async () => {
     const aptitudeQuestion = buildAptitudeQuestion("APT-ENG-0001", "English", "Spot the Error");
     aptitudeMock.questions = [aptitudeQuestion];
 
@@ -206,11 +206,11 @@ describe("MockTestContext", () => {
       expect(latest.aptitudeMockLoading).toBe(false);
     });
 
-    // During Beta, aptitude questions should NOT appear in the mock pool
+    // Aptitude questions should appear in the mock pool
     expect(latest.mockQuestionPool.filter(
       (q) => q.question_uid.startsWith("APT-")
-    )).toHaveLength(0);
-    expect(latest.questionMetaByUid["APT-ENG-0001"]).toBeUndefined();
+    )).toHaveLength(1);
+    expect(latest.questionMetaByUid["APT-ENG-0001"]).toBeDefined();
   });
 
   test("empty NAT values stay unanswered and submitTest stores a result summary", async () => {

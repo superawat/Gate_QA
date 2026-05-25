@@ -3,6 +3,7 @@ import { useMockTest } from "../../contexts/MockTestContext";
 import { useFilterState } from "../../contexts/FilterContext";
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
+import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
 import { MOCK_SECTION_COUNTS } from "../../utils/mockTest";
 import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
@@ -371,17 +372,25 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     }, [isPaletteCollapsed]);
 
     useEffect(() => {
+        const handleToggleCalculator = () => {
+            setIsCalculatorOpen((prev) => !prev);
+        };
+
         const handleKeyDown = (event) => {
             if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
                 event.preventDefault();
-                setIsCalculatorOpen((prev) => !prev);
+                handleToggleCalculator();
             }
             if (event.key === "Escape") {
                 setIsCalculatorOpen(false);
             }
         };
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        window.addEventListener(TOGGLE_CALCULATOR_EVENT, handleToggleCalculator);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener(TOGGLE_CALCULATOR_EVENT, handleToggleCalculator);
+        };
     }, []);
 
     // Guard against accidental tab close / reload during an active exam

@@ -32,6 +32,9 @@ export default defineConfig(async ({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks(id) {
+            if (id.includes('vite/preload-helper')) {
+              return 'vendor-preload-helper';
+            }
             if (!id.includes('node_modules')) {
               return undefined;
             }
@@ -70,6 +73,16 @@ export default defineConfig(async ({ mode }) => {
             }
             if (id.includes('dompurify')) {
               return 'vendor-sanitize';
+            }
+            if (
+              id.includes('jspdf') ||
+              id.includes('html2canvas') ||
+              id.includes('canvg') ||
+              id.includes('fflate') ||
+              id.includes('rgbcolor') ||
+              id.includes('stackblur-canvas')
+            ) {
+              return 'vendor-pdf';
             }
             if (id.includes('react-icons')) {
               return 'vendor-icons';

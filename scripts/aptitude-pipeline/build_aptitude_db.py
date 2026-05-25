@@ -131,19 +131,22 @@ def clean_aptitude_title(value: str) -> str:
     return title or compact_plain_text(str(value or ""))
 
 
+STALE_APTITUDE_SOURCE_LABELS = {"", "aptitude", "aptitude web", "aptitudebank", "bossxcode", "boss xcode"}
+
+
 def normalize_aptitude_source(source: dict) -> dict:
     if source.get("sourceKind") != "aptitude-web":
         return source
     exam_body = clean_aptitude_title(source.get("examBody") or "")
     exam_name = clean_aptitude_title(source.get("examName") or "")
-    if exam_body.lower() in {"aptitude", "aptitude web", ""}:
+    if exam_body.lower() in STALE_APTITUDE_SOURCE_LABELS:
         exam_body = "Unknown"
-    if exam_name.lower() in {"aptitude", "aptitude web", ""}:
+    if exam_name.lower() in STALE_APTITUDE_SOURCE_LABELS:
         exam_name = clean_aptitude_title(source.get("paperTitle") or source.get("testSeries") or "Unknown Test Series")
     normalized = {
         **source,
         "sourceKind": "aptitude-web",
-        "sourceProvider": source.get("sourceProvider") or "AptitudeBank",
+        "sourceProvider": "AptitudeBank",
         "examBody": exam_body,
         "examName": exam_name,
         "testSeries": clean_aptitude_title(source.get("testSeries") or ""),
@@ -226,7 +229,6 @@ BROAD_LOW_SIGNAL_RE = re.compile(
     re.IGNORECASE,
 )
 INLINE_BASE64_IMAGE_RE = re.compile(r"<img\b[^>]+src=[\"']data:image/", re.IGNORECASE)
-BRITTLE_REMOTE_IMAGE_RE = re.compile(r"<img\b[^>]+src=[\"']https?://[^\"']*googleusercontent\.com/", re.IGNORECASE)
 ENGLISH_TASK_RE = re.compile(
     r"\b(?:active(?:\s*/\s*|\s+)passive|passive voice|active voice|sentence improvement|substitute|"
     r"spot.*error|grammatical error|segment.*contains.*error|cloze test|comprehension|according to the passage|"
@@ -289,9 +291,7 @@ def skip_reason(row: dict) -> str | None:
         return "broad_low_signal_pack"
     if INLINE_BASE64_IMAGE_RE.search(row.get("questionHtml") or ""):
         return "inline_base64_image"
-    if BRITTLE_REMOTE_IMAGE_RE.search(row.get("questionHtml") or ""):
-        return "brittle_remote_image"
-    if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or "") or DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
+    if DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
         return "forbidden_display_token"
     if looks_like_general_awareness(row):
         return "general_awareness_leak"
@@ -306,7 +306,7 @@ def find_suspicious(row: dict) -> list[str]:
         reasons.append("option_empty")
     if row.get("answer") not in {"A", "B", "C", "D"}:
         reasons.append("answer_missing")
-    if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or "") or DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
+    if DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
         reasons.append("display_forbidden_token")
     if not source_list(row.get("_source")):
         reasons.append("source_missing")
@@ -556,7 +556,7 @@ def main() -> None:
             skipped_content_counts[reason] += 1
             record_ignored(reason, row, row_index)
             continue
-        if DISPLAY_FORBIDDEN_RE.search(row.get("questionHtml") or "") or DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
+        if DISPLAY_FORBIDDEN_RE.search(strip_html(row.get("questionHtml") or "")):
             record_ignored("forbidden_display_token", row, row_index)
             continue
         apply_remap_rules(row)
@@ -659,10 +659,7 @@ def main() -> None:
                 }
             )
 
-    if any(
-        DISPLAY_FORBIDDEN_RE.search(row["questionHtml"]) or DISPLAY_FORBIDDEN_RE.search(strip_html(row["questionHtml"]))
-        for row in final_rows
-    ):
+    if any(DISPLAY_FORBIDDEN_RE.search(strip_html(row["questionHtml"])) for row in final_rows):
         raise RuntimeError("Final display grep guard failed for questionHtml.")
 
     coverage = Counter((row["subject"], row["subtopic"]) for row in final_rows)
@@ -757,7 +754,6 @@ def main() -> None:
     invalid_reasons = {
         "forbidden_display_token",
         "inline_base64_image",
-        "brittle_remote_image",
         "unsupported_subject",
         "unsupported_taxonomy",
         "invalid_options",

@@ -1,6 +1,7 @@
 import React from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
 import { formatMockTimeSpent } from "../../utils/mockTest";
+import { FaExclamationTriangle, FaCheckCircle, FaBook } from "react-icons/fa";
 
 const ResultCard = ({ label, value, accentClass }) => (
     <div className={`rounded-lg border p-4 text-center ${accentClass}`}>
@@ -101,6 +102,253 @@ const TimeDistributionSummary = ({ questions = [], summary }) => {
     );
 };
 
+/* ── Performance Analysis Generator ────────────────────────────────────────── */
+
+const generatePerformanceAnalysis = (questions = [], summary = {}) => {
+    const incorrectList = [];
+    const slowList = [];
+    const weakTopicsMap = new Map();
+
+    questions.forEach((q, idx) => {
+        const uid = q.question_uid;
+        const result = summary?.perQuestionResult?.[uid];
+        if (!result) return;
+
+        const label = formatQuestionLabel(result, idx);
+        const subtopicLabel = q.subtopics?.[0]?.label || "General Concept";
+
+        if (result.timeExceededThreshold || result.timeSpentSeconds > 180) {
+            slowList.push({ label, timeSpentSeconds: result.timeSpentSeconds });
+        }
+
+        if (!result.correct && result.answered) {
+            incorrectList.push({ label, uid, subtopic: subtopicLabel, subject: q.subjectLabel });
+            const topicKey = `${q.subjectLabel} - ${subtopicLabel}`;
+            weakTopicsMap.set(topicKey, (weakTopicsMap.get(topicKey) || 0) + 1);
+        }
+    });
+
+    const weakTopics = Array.from(weakTopicsMap.entries())
+        .map(([topic, count]) => ({ topic, count }))
+        .sort((a, b) => b.count - a.count);
+
+    const observations = [];
+    const accuracy = summary.attempted > 0 ? (summary.correct / summary.attempted) * 100 : 0;
+    const improvementAreas = [];
+
+    if (summary.incorrect > 4) {
+        observations.push({
+            type: "caution",
+            text: `High error count (${summary.incorrect} incorrect answers). Focus on reducing guessing to preserve marks (GATE deducts 1/3 for 1-mark and 2/3 for 2-mark MCQs).`
+        });
+    } else if (summary.attempted > 0 && accuracy >= 85) {
+        observations.push({
+            type: "success",
+            text: `Excellent accuracy! (${accuracy.toFixed(1)}% of attempted questions correct). You demonstrate strong subject mastery.`
+        });
+    } else if (summary.attempted > 0 && accuracy >= 60) {
+        observations.push({
+            type: "info",
+            text: `Moderate accuracy (${accuracy.toFixed(1)}%). Review fundamental concepts in your weak areas to clear cutoffs consistently.`
+        });
+    }
+
+    if (slowList.length > 1) {
+        observations.push({
+            type: "warning",
+            text: `Time management check: You spent over 3 minutes on ${slowList.length} questions (e.g. ${slowList.slice(0, 3).map(s => s.label).join(", ")}). Practice dynamic skipping to preserve exam buffer.`
+        });
+    }
+
+    if (weakTopics.length > 0) {
+        improvementAreas.push({
+            label: "Concept review",
+            detail: weakTopics.slice(0, 3).map((item) => item.topic).join(", "),
+        });
+    }
+
+    if (incorrectList.length > 0) {
+        improvementAreas.push({
+            label: "Mistake drill",
+            detail: incorrectList.slice(0, 5).map((item) => item.label).join(", "),
+        });
+    }
+
+    if (slowList.length > 0) {
+        improvementAreas.push({
+            label: "Timing control",
+            detail: slowList.slice(0, 5).map((item) => `${item.label} (${formatMockTimeSpent(item.timeSpentSeconds)})`).join(", "),
+        });
+    }
+
+    if (Number(summary.unanswered || 0) > 0) {
+        improvementAreas.push({
+            label: "Attempt planning",
+            detail: `${summary.unanswered} unanswered ${summary.unanswered === 1 ? "question" : "questions"} need a clearer skip-and-return rhythm.`,
+        });
+    }
+
+    if (improvementAreas.length === 0 && summary.attempted > 0) {
+        improvementAreas.push({
+            label: "Retention",
+            detail: "Repeat this paper later and compare whether accuracy stays stable under time pressure.",
+        });
+    }
+
+    const ga = summary.sectionSummary?.GA;
+    const cs = summary.sectionSummary?.CS;
+    if (ga && cs && ga.total > 0 && cs.total > 0) {
+        const gaAcc = ga.attempted > 0 ? (ga.correct / ga.attempted) : 0;
+        const csAcc = cs.attempted > 0 ? (cs.correct / cs.attempted) : 0;
+
+        if (gaAcc > csAcc + 0.25) {
+            observations.push({
+                type: "info",
+                text: "Strong performance in General Aptitude. Dedicate more practice to core CS syllabus topics to balance your scoring potential."
+            });
+        } else if (csAcc > gaAcc + 0.25) {
+            observations.push({
+                type: "info",
+                text: "Strong performance in Computer Science. Do not neglect General Aptitude (worth 15% of the total GATE score) during daily reviews."
+            });
+        }
+    }
+
+    return {
+        incorrectList,
+        weakTopics,
+        observations,
+        improvementAreas
+    };
+};
+
+const StructuredReviewSection = ({ questions = [], summary = {} }) => {
+    const { incorrectList, weakTopics, observations, improvementAreas } = generatePerformanceAnalysis(questions, summary);
+    const hasPerfectAttempt = Number(summary.attempted || 0) > 0
+        && Number(summary.incorrect || 0) === 0
+        && Number(summary.unanswered || 0) === 0
+        && incorrectList.length === 0;
+
+    if (hasPerfectAttempt && !observations.length) {
+        return (
+            <div className="mt-6 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
+                <div className="flex items-center gap-2">
+                    <FaCheckCircle className="h-5 w-5 shrink-0 text-emerald-600" />
+                    <span className="font-bold text-sm">Perfect Performance!</span>
+                </div>
+                <p className="mt-1 text-xs">Congratulations! You answered every question correctly on this mock test. Keep up the flawless work.</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="mt-6 border-t border-gray-100 pt-6">
+            <h3 className="text-base font-extrabold text-[#1f2f40] mb-4">Structured Performance Diagnostic</h3>
+
+            <div className="grid gap-4 md:grid-cols-2">
+                {/* Left Column: Weak Topics & Mistakes */}
+                <div className="space-y-4">
+                    <div className="rounded-lg border border-[#d6e0ea] bg-white p-4">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#61758a] mb-3 flex items-center gap-1.5">
+                            <FaBook className="text-[#125B9A]" />
+                            Mistakes & Weak Topics
+                        </h4>
+                        {weakTopics.length > 0 ? (
+                            <div className="flex flex-wrap gap-2">
+                                {weakTopics.slice(0, 6).map((wt, i) => (
+                                    <div
+                                        key={i}
+                                        className="inline-flex items-center gap-1.5 rounded-full border border-rose-100 bg-rose-50 px-2.5 py-1 text-xs font-bold text-rose-800"
+                                    >
+                                        <span className="truncate max-w-[150px]">{wt.topic}</span>
+                                        <span className="rounded-full bg-rose-200 px-1.5 py-0.5 text-[10px] text-rose-900 font-extrabold">
+                                            {wt.count} {wt.count === 1 ? "mistake" : "mistakes"}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-xs text-gray-500">No weak topics found. Good subject consistency!</p>
+                        )}
+                    </div>
+
+                    <div className="rounded-lg border border-[#d6e0ea] bg-white p-4">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#61758a] mb-3">
+                            Incorrect Questions Summary
+                        </h4>
+                        {incorrectList.length > 0 ? (
+                            <div className="max-h-48 overflow-y-auto space-y-2 pr-1">
+                                {incorrectList.map((iq, i) => (
+                                    <div key={i} className="flex items-center justify-between gap-3 rounded border border-gray-100 bg-gray-50 p-2.5 text-xs text-[#41576c]">
+                                        <span className="font-bold text-[#125B9A]">{iq.label}</span>
+                                        <span className="truncate text-gray-500 font-semibold max-w-[180px]">{iq.subtopic}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-xs text-gray-500">No incorrect questions to review.</p>
+                        )}
+                    </div>
+                </div>
+
+                {/* Right Column: Performance Observations & Improvements */}
+                <div className="rounded-lg border border-[#d6e0ea] bg-white p-4 flex flex-col justify-between">
+                    <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#61758a] mb-3">
+                            Performance Observations
+                        </h4>
+                        {observations.length > 0 ? (
+                            <div className="space-y-3">
+                                {observations.map((obs, i) => {
+                                    let bg = "bg-blue-50 border-blue-100 text-blue-800";
+                                    let iconColor = "text-blue-600";
+                                    if (obs.type === "caution") {
+                                        bg = "bg-rose-50 border-rose-100 text-rose-800";
+                                        iconColor = "text-rose-600";
+                                    } else if (obs.type === "warning") {
+                                        bg = "bg-amber-50 border-amber-100 text-amber-800";
+                                        iconColor = "text-amber-600";
+                                    } else if (obs.type === "success") {
+                                        bg = "bg-emerald-50 border-emerald-100 text-emerald-800";
+                                        iconColor = "text-emerald-600";
+                                    }
+
+                                    return (
+                                        <div key={i} className={`flex items-start gap-2.5 rounded-lg border p-3 text-xs leading-5 ${bg}`}>
+                                            <FaExclamationTriangle className={`h-4 w-4 shrink-0 mt-0.5 ${iconColor}`} />
+                                            <span>{obs.text}</span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <p className="text-xs text-gray-500">No specific observations. Review incorrect items to start improvement drills.</p>
+                        )}
+                    </div>
+
+                    <div className="mt-4 rounded-lg border border-[#d6e0ea] bg-[#f8fbff] p-3">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#61758a] mb-2">
+                            Areas Requiring Improvement
+                        </h4>
+                        <div className="space-y-2">
+                            {improvementAreas.map((area) => (
+                                <div key={area.label} className="rounded border border-[#e1e8f0] bg-white px-3 py-2">
+                                    <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#125B9A]">{area.label}</div>
+                                    <div className="mt-1 text-xs leading-5 text-[#41576c]">{area.detail}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="mt-4 border-t border-gray-100 pt-3 text-center text-xs font-bold text-[#125B9A]">
+                        Use Review Questions to inspect answer keys and score changes question by question.
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const MockTestResults = ({ onExit, onReview }) => {
     const { questions, resultSummary } = useMockTest();
 
@@ -172,6 +420,8 @@ const MockTestResults = ({ onExit, onReview }) => {
                 </div>
 
                 <TimeDistributionSummary questions={questions} summary={summary} />
+
+                <StructuredReviewSection questions={questions} summary={summary} />
 
                 <div className="mt-10 flex justify-center gap-3">
                     <button

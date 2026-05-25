@@ -29,7 +29,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "../..");
 
-const DEFAULT_BASE_URL = "https://aptitude-bank.internal/";
+const DEFAULT_BASE_URL = "https://pinnacle-quize-dee901102b83.herokuapp.com/";
 const DEFAULT_OUTPUT_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "parsed-questions.json");
 const DEFAULT_REPORT_PATH = path.join(ROOT, "artifacts", "review", "aptitude-aptitude-import-report.json");
 const DEFAULT_PROFILE_DIR = path.join(ROOT, "artifacts", "aptitude-pipeline", ".aptitude-browser-profile");
@@ -278,6 +278,20 @@ function cleanCatalogTitle(value = "") {
     .replace(/\s{2,}/g, " ")
     .trim();
   return title || compactText(value);
+}
+
+function normalizeUrlToInternal(urlStr) {
+  if (!urlStr) return "";
+  try {
+    const url = new URL(urlStr);
+    if (url.hostname !== "aptitude-bank.internal") {
+      url.protocol = "https:";
+      url.hostname = "aptitude-bank.internal";
+      url.port = "";
+      return url.href;
+    }
+  } catch {}
+  return urlStr;
 }
 
 function slugify(value = "") {
@@ -787,7 +801,7 @@ function extractYear(context = {}, sourceUrl = "") {
 }
 
 function inferExamBody(text = "") {
-  const cleanText = text.replace(/aptitude-bank\.internal|AptitudeBank/gi, "");
+  const cleanText = text.replace(/aptitude-bank\.internal|AptitudeBank|BossXCode|pinnacle-quize-dee901102b83\.herokuapp\.com/gi, "");
   if (/\b(?:Railway|RRB|NTPC|ALP|Group\s*D|RPF|Technician)\b/i.test(cleanText)) return "Railway";
   if (/\bDelhi\s+Police\b/i.test(cleanText)) return "Delhi Police";
   if (/\bBank(?:ing)?\b/i.test(cleanText)) return "Banking";
@@ -861,7 +875,7 @@ function rowFromCandidate(candidate, sourceUrl, sequence, sourceContext = {}) {
   if (!OPTION_LABELS.includes(answer)) return null;
 
   const questionHtml = buildQuestionHtml(candidate.question, options, sourceUrl);
-  if (!questionHtml || DISPLAY_FORBIDDEN_RE.test(questionHtml) || DISPLAY_FORBIDDEN_RE.test(stripHtml(questionHtml))) return null;
+  if (!questionHtml || DISPLAY_FORBIDDEN_RE.test(stripHtml(questionHtml))) return null;
 
   const contextText = [
     sourceUrl,
@@ -874,8 +888,9 @@ function rowFromCandidate(candidate, sourceUrl, sequence, sourceContext = {}) {
   const subtopic = normalizeSubtopic(subject, candidate.subtopic, contextText);
   if (!subtopic || !TAXONOMY[subject]?.includes(subtopic)) return null;
 
-  const sourceId = stableSourceId(sourceUrl, questionHtml, options);
-  const sourceMetadata = sourceMetadataFromContext(sourceContext, sourceUrl);
+  const internalPageUrl = normalizeUrlToInternal(sourceUrl);
+  const sourceId = stableSourceId(internalPageUrl, questionHtml, options);
+  const sourceMetadata = sourceMetadataFromContext(sourceContext, internalPageUrl);
   return {
     questionHtml,
     options: options.map((option) => sanitizeHtmlFragment(stripOptionPrefix(option.html || option.text), sourceUrl)),
@@ -886,7 +901,7 @@ function rowFromCandidate(candidate, sourceUrl, sequence, sourceContext = {}) {
     year: sourceMetadata.year,
     _source: {
       ...sourceMetadata,
-      pageUrl: sourceUrl,
+      pageUrl: internalPageUrl,
       sourceId,
       originalQNum: String(sequence),
       topic: subtopic,
@@ -1541,7 +1556,33 @@ function loadCatalogCache(options) {
   if (payload?.version !== 1 || !Array.isArray(payload.seriesJobs)) return null;
   const sameProducts = JSON.stringify(payload.products || []) === JSON.stringify(options.products || []);
   const sameTestTypes = JSON.stringify(payload.testTypeIds || []) === JSON.stringify(options.testTypeIds || []);
-  if (payload.baseUrl !== options.baseUrl || !sameProducts || !sameTestTypes || Boolean(payload.includeAllSeries) !== Boolean(options.includeAllSeries)) {
+  
+  if (payload.baseUrl !== options.baseUrl) {
+    console.log(`[aptitude] catalog cache baseUrl migrated from ${payload.baseUrl} to ${options.baseUrl}`);
+    const oldBase = payload.baseUrl;
+    const newBase = options.baseUrl;
+    const replaceUrl = (val) => {
+      if (typeof val === "string") {
+        return val.replaceAll(oldBase, newBase);
+      }
+      if (Array.isArray(val)) {
+        return val.map(replaceUrl);
+      }
+      if (val && typeof val === "object") {
+        const copy = {};
+        for (const [k, v] of Object.entries(val)) {
+          copy[k] = replaceUrl(v);
+        }
+        return copy;
+      }
+      return val;
+    };
+    payload.seriesJobs = replaceUrl(payload.seriesJobs);
+    payload.baseUrl = newBase;
+  }
+
+  const isDefaultCatalog = options.catalogPath.endsWith("aptitude-catalog.json") || options.catalogPath.endsWith("bossxcode-catalog.json");
+  if (isDefaultCatalog && (!sameProducts || !sameTestTypes || Boolean(payload.includeAllSeries) !== Boolean(options.includeAllSeries))) {
     console.log("[aptitude] catalog cache ignored because selection options changed");
     return null;
   }

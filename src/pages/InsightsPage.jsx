@@ -535,14 +535,15 @@ const SubjectProgressRings = ({ subjects = [] }) => {
 
   return (
     <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-      {subjects.map((item) => {
+      {subjects.map((item, index) => {
         const coveragePercent = Math.round((item.coverageRate || 0) * 100);
         const accuracyPercent = Math.round((item.accuracyRate || 0) * 100);
         const tone = getAccuracyTone(item.accuracyRate);
+        const staggerClass = `stagger-card-${Math.min(5, (index % 5) + 1)}`;
         return (
           <div
             key={item.key}
-            className="flex flex-col items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3 transition-transform hover:scale-[1.02]"
+            className={`${staggerClass} flex flex-col items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3 transition-transform hover:scale-[1.02]`}
           >
             <ProgressRing
               value={coveragePercent}
@@ -820,42 +821,63 @@ const OverviewTab = ({ insights, summary }) => {
   return (
     <div className="space-y-6">
       {/* Stat cards row */}
-      <div className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        <StatCard
-          label="Attempted"
-          value={formatNumber(summary.attemptedQuestionCount)}
-          icon={FaEye}
-          accent="sky"
-          sublabel="questions tried"
-        />
-        <StatCard
-          label="Avg Accuracy"
-          value={formatPercent(summary.averageSubjectAccuracy * 100)}
-          icon={FaBullseye}
-          accent={summary.averageSubjectAccuracy >= 0.7 ? "emerald" : summary.averageSubjectAccuracy >= 0.5 ? "amber" : "rose"}
-          sublabel="across subjects"
-        />
-        <StatCard
-          label="Correct"
-          value={formatNumber(totalCorrect)}
-          icon={FaCheckCircle}
-          accent="emerald"
-          sublabel={`of ${formatNumber(totalCorrect + totalIncorrect)} total`}
-        />
-        <StatCard
-          label="Due Review"
-          value={formatNumber(summary.dueReviewCount)}
-          icon={FaCalendarCheck}
-          accent={summary.dueReviewCount > 0 ? "amber" : "emerald"}
-          sublabel="questions ready"
-        />
-        <StatCard
-          label="Avg Time"
-          value={formatDuration(summary.averageDurationMs)}
-          icon={FaClock}
-          accent="violet"
-          sublabel="per timed attempt"
-        />
+      <div className={`grid gap-2 grid-cols-2 md:grid-cols-3 ${summary.mockAttemptedQuestionCount > 0 ? "lg:grid-cols-6" : "lg:grid-cols-5"}`}>
+        <div className="stagger-card-1">
+          <StatCard
+            label="Attempted"
+            value={formatNumber(summary.attemptedQuestionCount)}
+            icon={FaEye}
+            accent="sky"
+            sublabel="questions tried"
+          />
+        </div>
+        <div className="stagger-card-2">
+          <StatCard
+            label="Avg Accuracy"
+            value={formatPercent(summary.averageSubjectAccuracy * 100)}
+            icon={FaBullseye}
+            accent={summary.averageSubjectAccuracy >= 0.7 ? "emerald" : summary.averageSubjectAccuracy >= 0.5 ? "amber" : "rose"}
+            sublabel="across subjects"
+          />
+        </div>
+        <div className="stagger-card-3">
+          <StatCard
+            label="Correct"
+            value={formatNumber(totalCorrect)}
+            icon={FaCheckCircle}
+            accent="emerald"
+            sublabel={`of ${formatNumber(totalCorrect + totalIncorrect)} total`}
+          />
+        </div>
+        <div className="stagger-card-4">
+          <StatCard
+            label="Due Review"
+            value={formatNumber(summary.dueReviewCount)}
+            icon={FaCalendarCheck}
+            accent={summary.dueReviewCount > 0 ? "amber" : "emerald"}
+            sublabel="questions ready"
+          />
+        </div>
+        <div className="stagger-card-5">
+          <StatCard
+            label="Avg Time"
+            value={formatDuration(summary.averageDurationMs)}
+            icon={FaClock}
+            accent="violet"
+            sublabel="per timed attempt"
+          />
+        </div>
+        {summary.mockAttemptedQuestionCount > 0 ? (
+          <div>
+            <StatCard
+              label="Mock Attempts"
+              value={formatNumber(summary.mockAttemptedQuestionCount)}
+              icon={FaHistory}
+              accent="sky"
+              sublabel={`${formatPercent(summary.mockAccuracyRate * 100)} accuracy`}
+            />
+          </div>
+        ) : null}
       </div>
 
       {/* Subject Progress — collapsible */}
@@ -863,7 +885,7 @@ const OverviewTab = ({ insights, summary }) => {
         <CollapsibleSection
           title="Subject Progress"
           description="Questions attempted out of total available per subject."
-          defaultOpen={true}
+          defaultOpen={false}
         >
           <SubjectProgressRings subjects={insights.subjects} />
         </CollapsibleSection>
@@ -878,7 +900,7 @@ const OverviewTab = ({ insights, summary }) => {
           </div>
         }
         description="Subtopics with accuracy below 60%. Focused practice can improve your score significantly."
-        defaultOpen={true}
+        defaultOpen={false}
         className="border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] shadow-[var(--shadow-card)]"
       >
         <FocusAreas subtopics={insights.subtopics} />
@@ -913,7 +935,7 @@ const OverviewTab = ({ insights, summary }) => {
       {/* Practice Trend — collapsible, closed by default */}
       <CollapsibleSection
         title="Practice Trend"
-        description="Daily attempt volume from your local submission history."
+        description="Daily attempt volume from practice and mock submissions."
         defaultOpen={false}
       >
         <TimeTrendChart data={insights.attemptTimeline || []} />
@@ -959,21 +981,27 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
   return (
     <div className="space-y-4">
       <div className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-warning-text)]">Due Now</p>
-          <p className="text-2xl font-bold text-[color:var(--color-warning-text)]">{formatNumber(reviewQueue.length)}</p>
+        <div className="stagger-card-1">
+          <div className="rounded-2xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-warning-text)]">Due Now</p>
+            <p className="text-2xl font-bold text-[color:var(--color-warning-text)]">{formatNumber(reviewQueue.length)}</p>
+          </div>
         </div>
-        <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Hard Due</p>
-          <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">
-            {formatNumber(reviewQueue.filter((item) => item.difficultyLabel === "Hard").length)}
-          </p>
+        <div className="stagger-card-2">
+          <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Hard Due</p>
+            <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">
+              {formatNumber(reviewQueue.filter((item) => item.difficultyLabel === "Hard").length)}
+            </p>
+          </div>
         </div>
-        <div className="rounded-2xl border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">Oldest</p>
-          <p className="text-2xl font-bold text-[color:var(--color-info-text)]">
-            {formatNumber(Math.max(...reviewQueue.map((item) => Number(item.daysOverdue || 0)), 0))}d
-          </p>
+        <div className="stagger-card-3">
+          <div className="rounded-2xl border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">Oldest</p>
+            <p className="text-2xl font-bold text-[color:var(--color-info-text)]">
+              {formatNumber(Math.max(...reviewQueue.map((item) => Number(item.daysOverdue || 0)), 0))}d
+            </p>
+          </div>
         </div>
       </div>
 
@@ -987,41 +1015,43 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
             ? `${item.daysOverdue}d overdue`
             : "Due today";
 
+          const staggerClass = `stagger-card-${Math.min(5, (index % 5) + 1)}`;
           return (
-            <button
-              key={`${item.storageKey}-${index}`}
-              type="button"
-              onClick={() => handleNavigateToQuestion(item.storageKey)}
-              className="group block w-full rounded-2xl border border-[color:var(--color-warning-border)] bg-gradient-to-r from-[color:var(--color-warning-soft)] to-[color:var(--color-surface)] px-4 py-3.5 text-left transition hover:border-[color:var(--color-warning-text)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[color:var(--color-warning-border)]"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <FaCalendarCheck className="text-[color:var(--color-warning-text)]" />
-                    <p className="truncate text-sm font-semibold text-[color:var(--color-text)]">{item.storageKey}</p>
-                    <DifficultyBadge label={item.difficultyLabel} score={item.difficultyScore} />
-                    {item.type ? (
-                      <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
-                        {item.type}
-                      </span>
-                    ) : null}
+            <div key={`${item.storageKey}-${index}`} className={staggerClass}>
+              <button
+                type="button"
+                onClick={() => handleNavigateToQuestion(item.storageKey)}
+                className="group block w-full rounded-2xl border border-[color:var(--color-warning-border)] bg-gradient-to-r from-[color:var(--color-warning-soft)] to-[color:var(--color-surface)] px-4 py-3.5 text-left transition hover:border-[color:var(--color-warning-text)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[color:var(--color-warning-border)]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <FaCalendarCheck className="text-[color:var(--color-warning-text)]" />
+                      <p className="truncate text-sm font-semibold text-[color:var(--color-text)]">{item.storageKey}</p>
+                      <DifficultyBadge label={item.difficultyLabel} score={item.difficultyScore} />
+                      {item.type ? (
+                        <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+                          {item.type}
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)]">
+                      <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-info-text)]">{item.subjectLabel}</span>
+                      {subtopicLabels.map((label) => (
+                        <span key={label} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-primary-text)]">
+                          {label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)]">
-                    <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-info-text)]">{item.subjectLabel}</span>
-                    {subtopicLabels.map((label) => (
-                      <span key={label} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 font-semibold text-[color:var(--color-primary-text)]">
-                        {label}
-                      </span>
-                    ))}
+                  <div className="shrink-0 text-right">
+                    <p className="text-xs font-semibold text-[color:var(--color-warning-text)]">{dueLabel}</p>
+                    <p className="mt-0.5 text-[10px] text-[color:var(--color-text-muted)]">Level {item.reviewLevel || 0}</p>
+                    <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] transition-colors group-hover:text-[color:var(--color-warning-text)] ml-auto" />
                   </div>
                 </div>
-                <div className="shrink-0 text-right">
-                  <p className="text-xs font-semibold text-[color:var(--color-warning-text)]">{dueLabel}</p>
-                  <p className="mt-0.5 text-[10px] text-[color:var(--color-text-muted)]">Level {item.reviewLevel || 0}</p>
-                  <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] transition-colors group-hover:text-[color:var(--color-warning-text)] ml-auto" />
-                </div>
-              </div>
-            </button>
+              </button>
+            </div>
           );
         })}
       </div>
@@ -1052,7 +1082,14 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
     } else if (statusFilter === "recovered") {
       result = result.filter((q) => q.lastCorrect);
     }
-    return result;
+    // Sort so that active incorrect (still wrong) questions always come first,
+    // and recovered questions are placed at the bottom.
+    return result.sort((a, b) => {
+      if (a.lastCorrect !== b.lastCorrect) {
+        return a.lastCorrect ? 1 : -1;
+      }
+      return String(b.lastSubmittedAt || "").localeCompare(String(a.lastSubmittedAt || ""));
+    });
   }, [wrongQuestions, subjectFilter, statusFilter]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
@@ -1087,19 +1124,25 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
     <div className="space-y-5">
       {/* Summary strip */}
       <div className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">Total Wrong</p>
-          <p className="text-2xl font-bold text-[color:var(--color-text)]">{formatNumber(wrongQuestions.length)}</p>
+        <div className="stagger-card-1">
+          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 shadow-[var(--shadow-soft)]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">Total Wrong</p>
+            <p className="text-2xl font-bold text-[color:var(--color-text)]">{formatNumber(wrongQuestions.length)}</p>
+          </div>
         </div>
-        <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Still Wrong</p>
-          <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">{formatNumber(stillWrongCount)}</p>
-          <p className="text-[10px] text-[color:var(--color-danger-text)]">Last attempt was incorrect</p>
+        <div className="stagger-card-2">
+          <div className="rounded-2xl border border-[color:var(--color-danger-border)] bg-[color:var(--color-danger-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-danger-text)]">Still Wrong</p>
+            <p className="text-2xl font-bold text-[color:var(--color-danger-text)]">{formatNumber(stillWrongCount)}</p>
+            <p className="text-[10px] text-[color:var(--color-danger-text)]">Last attempt was incorrect</p>
+          </div>
         </div>
-        <div className="rounded-2xl border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-success-text)]">Recovered</p>
-          <p className="text-2xl font-bold text-[color:var(--color-success-text)]">{formatNumber(recoveredCount)}</p>
-          <p className="text-[10px] text-[color:var(--color-success-text)]">Now answered correctly</p>
+        <div className="stagger-card-3">
+          <div className="rounded-2xl border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-success-text)]">Recovered</p>
+            <p className="text-2xl font-bold text-[color:var(--color-success-text)]">{formatNumber(recoveredCount)}</p>
+            <p className="text-[10px] text-[color:var(--color-success-text)]">Now answered correctly</p>
+          </div>
         </div>
       </div>
 
@@ -1138,64 +1181,86 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
             .filter(Boolean)
             .slice(0, 3);
 
-          return (
-            <div
-              key={`${q.storageKey}-${index}`}
-              className={`group rounded-2xl border px-4 py-3.5 transition-all hover:shadow-md cursor-pointer ${
-                q.lastCorrect
-                  ? "border-[color:var(--color-success-border)] bg-gradient-to-r from-[color:var(--color-success-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-success-text)]"
-                  : "border-[color:var(--color-danger-border)] bg-gradient-to-r from-[color:var(--color-danger-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-danger-text)]"
-              }`}
-              onClick={() => handleNavigateToQuestion(q.storageKey)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && handleNavigateToQuestion(q.storageKey)}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {q.lastCorrect ? (
-                      <FaCheckCircle className="text-[color:var(--color-success-text)] shrink-0" />
-                    ) : (
-                      <FaTimesCircle className="text-[color:var(--color-danger-text)] shrink-0" />
-                    )}
-                    <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">
-                      {q.storageKey}
-                    </p>
-                    {q.type && (
-                      <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
-                        {q.type}
-                      </span>
-                    )}
-                    <DifficultyBadge label={q.difficultyLabel} score={q.difficultyScore} />
-                  </div>
-                  <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                    <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">
-                      {q.subjectLabel}
-                    </span>
-                    {subtopicLabels.map((st) => (
-                      <span key={st} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 text-[10px] font-semibold text-[color:var(--color-primary-text)]">
-                        {st}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+          const staggerClass = `stagger-card-${Math.min(5, (index % 5) + 1)}`;
+          const isFirstRecovered = q.lastCorrect && (index === 0 || !paginated[index - 1].lastCorrect);
 
-                <div className="shrink-0 text-right">
-                  <p className="text-xs text-[color:var(--color-text-muted)]">{relativeTimeLabel(q.lastSubmittedAt)}</p>
-                  <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
-                    {q.correctAttempts}✓ {q.incorrectAttempts}✗ of {q.attempts}
+          return (
+            <React.Fragment key={`${q.storageKey}-${index}`}>
+              {isFirstRecovered && (
+                <div className="pt-4 pb-2">
+                  <div className="flex items-center gap-2 border-b border-[color:var(--color-success-border)] pb-2">
+                    <FaCheckCircle className="text-[color:var(--color-success-text)] text-sm" />
+                    <h3 className="text-sm font-extrabold text-[color:var(--color-success-text)] uppercase tracking-wider">
+                      Recovered Questions
+                    </h3>
+                    <span className="rounded-full bg-[color:var(--color-success-soft)] px-2.5 py-0.5 text-[10px] font-bold text-[color:var(--color-success-text)]">
+                      {recoveredCount}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-xs text-[color:var(--color-text-muted)]">
+                    These are previously incorrect questions that you have successfully solved.
                   </p>
-                  {q.averageDurationMs > 0 ? (
+                </div>
+              )}
+              <div className={staggerClass}>
+                <div
+                  className={`group rounded-2xl border px-4 py-3.5 transition-all hover:shadow-md cursor-pointer ${
+                    q.lastCorrect
+                      ? "border-[color:var(--color-success-border)] bg-gradient-to-r from-[color:var(--color-success-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-success-text)]"
+                      : "border-[color:var(--color-danger-border)] bg-gradient-to-r from-[color:var(--color-danger-soft)] to-[color:var(--color-surface)] hover:border-[color:var(--color-danger-text)]"
+                  }`}
+                  onClick={() => handleNavigateToQuestion(q.storageKey)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && handleNavigateToQuestion(q.storageKey)}
+                >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {q.lastCorrect ? (
+                        <FaCheckCircle className="text-[color:var(--color-success-text)] shrink-0" />
+                      ) : (
+                        <FaTimesCircle className="text-[color:var(--color-danger-text)] shrink-0" />
+                      )}
+                      <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">
+                        {q.storageKey}
+                      </p>
+                      {q.type && (
+                        <span className="rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+                          {q.type}
+                        </span>
+                      )}
+                      <DifficultyBadge label={q.difficultyLabel} score={q.difficultyScore} />
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                      <span className="rounded-full bg-[color:var(--color-info-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">
+                        {q.subjectLabel}
+                      </span>
+                      {subtopicLabels.map((st) => (
+                        <span key={st} className="rounded-full bg-[color:var(--color-primary-soft)] px-2 py-0.5 text-[10px] font-semibold text-[color:var(--color-primary-text)]">
+                          {st}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 text-right">
+                    <p className="text-xs text-[color:var(--color-text-muted)]">{relativeTimeLabel(q.lastSubmittedAt)}</p>
                     <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
-                      Avg {formatDuration(q.averageDurationMs)}
+                      {q.correctAttempts}✓ {q.incorrectAttempts}✗ of {q.attempts}
                     </p>
-                  ) : null}
-                  <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] group-hover:text-[color:var(--color-primary)] transition-colors ml-auto" />
+                    {q.averageDurationMs > 0 ? (
+                      <p className="text-[10px] text-[color:var(--color-border)] mt-0.5">
+                        Avg {formatDuration(q.averageDurationMs)}
+                      </p>
+                    ) : null}
+                    <FaArrowRight className="mt-1.5 text-xs text-[color:var(--color-border)] group-hover:text-[color:var(--color-primary)] transition-colors ml-auto" />
+                  </div>
                 </div>
               </div>
             </div>
-          );
+          </React.Fragment>
+        );
         })}
       </div>
 
@@ -1250,6 +1315,7 @@ const InsightsPage = ({
     studyActivity: {},
     timeSummary: {},
     difficultySummary: { counts: {} },
+    mockSummary: {},
     attemptedQuestionCount: 0,
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -1303,6 +1369,12 @@ const InsightsPage = ({
     const difficultySummary = insights.difficultySummary && typeof insights.difficultySummary === "object"
       ? insights.difficultySummary
       : {};
+    const mockSummary = insights.mockSummary && typeof insights.mockSummary === "object"
+      ? insights.mockSummary
+      : {};
+    const mockCorrectAttempts = Number(mockSummary.correctAttempts || 0);
+    const mockIncorrectAttempts = Number(mockSummary.incorrectAttempts || 0);
+    const mockScoredAttempts = mockCorrectAttempts + mockIncorrectAttempts;
     const averageSubjectAccuracy = subjects.length
       ? subjects.reduce((total, item) => total + Number(item.accuracyRate || 0), 0) / subjects.length
       : 0;
@@ -1315,6 +1387,8 @@ const InsightsPage = ({
       dueReviewCount: reviewQueue.length,
       averageDurationMs: Number(timeSummary.averageDurationMs || 0),
       hardQuestionCount: Number(difficultySummary.counts?.Hard || 0),
+      mockAttemptedQuestionCount: Number(mockSummary.attemptedQuestionCount || 0),
+      mockAccuracyRate: mockScoredAttempts > 0 ? mockCorrectAttempts / mockScoredAttempts : 0,
     };
   }, [insights]);
 
@@ -1351,7 +1425,7 @@ const InsightsPage = ({
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-card)]">
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
-              <p className="text-sm text-[color:var(--color-text-muted)]">Building insights from your local practice history...</p>
+              <p className="text-sm text-[color:var(--color-text-muted)]">Building insights from your practice and mock history...</p>
             </div>
           </div>
         ) : error ? (
@@ -1381,19 +1455,29 @@ const InsightsPage = ({
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 const TabIcon = tab.icon;
+                const shortLabel = tab.id === "review"
+                  ? "Review"
+                  : tab.id === "wrong"
+                    ? "Wrong"
+                    : tab.id === "mock-history"
+                      ? "Mocks"
+                      : "Overview";
                 return (
                   <button
                     key={tab.id}
                     type="button"
                     onClick={() => handleTabChange(tab.id)}
-                    className={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                    className={`flex-1 inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl px-1 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold transition-all ${
                       isActive
                         ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-md"
                         : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)]/50"
                     }`}
                   >
                     <TabIcon className={`text-xs ${isActive ? "text-sky-600" : ""}`} />
-                    <span className="hidden sm:inline">{tab.label}</span>
+                    <span className="text-[11px] sm:text-sm">
+                      <span className="inline sm:hidden">{shortLabel}</span>
+                      <span className="hidden sm:inline">{tab.label}</span>
+                    </span>
                     {tab.id === "wrong" && wrongCount > 0 && (
                       <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-rose-100 text-rose-700" : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"}`}>
                         {wrongCount}
@@ -1410,7 +1494,7 @@ const InsightsPage = ({
             </div>
 
             {/* Tab content */}
-            <div className="min-h-[400px]">
+            <div key={activeTab} className="min-h-[400px] animate-card-fade">
               {activeTab === "overview" && (
                 <OverviewTab insights={insights} summary={summary} />
               )}

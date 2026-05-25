@@ -10,7 +10,7 @@ import {
 
 import HomePage from "./pages/HomePage";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
-import { FilterProvider, useFilterActions } from "./contexts/FilterContext";
+import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
 import { QuestionService } from "./services/QuestionService";
 import { AnswerService } from "./services/AnswerService";
@@ -24,6 +24,7 @@ import {
   getLegacyRedirectTarget,
   HOME_ROUTE,
   INSIGHTS_ROUTE,
+  HIGH_PRIORITY_TOPICS_ROUTE,
   MOCK_HISTORY_ROUTE,
   MOCK_ROUTE,
   PRACTICE_ROUTE,
@@ -36,6 +37,7 @@ const InsightsPage = lazy(() => import("./pages/InsightsPage"));
 const SolvePage = lazy(() => import("./pages/SolvePage"));
 const MockShell = lazy(() => import("./shells/MockShell"));
 const UserManualPage = lazy(() => import("./pages/UserManualPage"));
+const HighPriorityTopicsPage = lazy(() => import("./pages/HighPriorityTopicsPage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
@@ -117,6 +119,7 @@ const MockBranch = ({ loadQuestions, questionBankManifest, questionDataRevision 
 const LegacyNavigationHandler = ({ loadQuestions, resumeRoute = "" }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { allQuestions } = useFilterState();
   const { clearFilters } = useFilterActions();
   const { startRandomSession } = useSession();
   const lastHandledKeyRef = useRef("");
@@ -150,7 +153,7 @@ const LegacyNavigationHandler = ({ loadQuestions, resumeRoute = "" }) => {
         }
 
         clearFilters();
-        const firstQuestion = startRandomSession(QuestionService.questions);
+        const firstQuestion = startRandomSession(allQuestions);
         if (firstQuestion?.question_uid) {
           navigate(
             {
@@ -185,7 +188,7 @@ const LegacyNavigationHandler = ({ loadQuestions, resumeRoute = "" }) => {
     );
 
     return undefined;
-  }, [clearFilters, loadQuestions, location.pathname, location.search, navigate, resumeRoute, startRandomSession]);
+  }, [allQuestions, clearFilters, loadQuestions, location.pathname, location.search, navigate, resumeRoute, startRandomSession]);
 
   return null;
 };
@@ -202,6 +205,7 @@ const PracticeRoutes = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { allQuestions } = useFilterState();
   const { clearFilters } = useFilterActions();
   const { startRandomSession } = useSession();
   const lastSession = readLastSession();
@@ -232,7 +236,7 @@ const PracticeRoutes = ({
     trackEvent("home_cta", { target: "random", source: "home" });
     await loadQuestions();
     clearFilters();
-    const firstQuestion = startRandomSession(QuestionService.questions);
+    const firstQuestion = startRandomSession(allQuestions);
 
     if (firstQuestion?.question_uid) {
       navigate({
@@ -243,7 +247,7 @@ const PracticeRoutes = ({
     }
 
     navigate(PRACTICE_ROUTE);
-  }, [clearFilters, loadQuestions, navigate, startRandomSession]);
+  }, [allQuestions, clearFilters, loadQuestions, navigate, startRandomSession]);
 
   const handleExplorePractice = useCallback(() => {
     trackEvent("home_cta", { target: "explore", source: "home" });
@@ -352,6 +356,16 @@ const PracticeRoutes = ({
             <ErrorBoundary>
               <Suspense fallback={<RouteLoader label="Loading Manual..." />}>
                 <UserManualPage />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
+        <Route
+          path={HIGH_PRIORITY_TOPICS_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Topics..." />}>
+                <HighPriorityTopicsPage />
               </Suspense>
             </ErrorBoundary>
           )}

@@ -19,6 +19,10 @@ const mocks = vi.hoisted(() => ({
   mockTestModeEnabled: false,
 }));
 
+const stableFilterState = { allQuestions: [] };
+const stableFilterActions = { clearFilters: mocks.clearFilters };
+const stableSession = { startRandomSession: mocks.startRandomSession };
+
 vi.mock("./pages/HomePage", () => ({
   default: ({
     questionBankManifest,
@@ -52,6 +56,10 @@ vi.mock("./pages/InsightsPage", () => ({
   ),
 }));
 
+vi.mock("./pages/HighPriorityTopicsPage", () => ({
+  default: () => <div>High priority topics page</div>,
+}));
+
 vi.mock("./pages/SolvePage", () => ({
   default: () => <div>Solve page</div>,
 }));
@@ -66,16 +74,13 @@ vi.mock("./shells/MockShell", () => ({
 
 vi.mock("./contexts/FilterContext", () => ({
   FilterProvider: ({ children }) => children,
-  useFilterActions: () => ({
-    clearFilters: mocks.clearFilters,
-  }),
+  useFilterState: () => stableFilterState,
+  useFilterActions: () => stableFilterActions,
 }));
 
 vi.mock("./contexts/SessionContext", () => ({
   SessionProvider: ({ children }) => children,
-  useSession: () => ({
-    startRandomSession: mocks.startRandomSession,
-  }),
+  useSession: () => stableSession,
 }));
 
 vi.mock("./utils/analytics", () => ({
@@ -260,6 +265,17 @@ describe("App routes", () => {
     render(<App />);
 
     expect(await screen.findByText("User manual page")).toBeTruthy();
+
+    expect(mocks.questionInit).not.toHaveBeenCalled();
+    expect(mocks.answerInit).not.toHaveBeenCalled();
+  });
+
+  test("high-priority topics route renders without initializing question data", async () => {
+    window.history.replaceState({}, "", "/Gate_QA/insights/topics");
+
+    render(<App />);
+
+    expect(await screen.findByText("High priority topics page")).toBeTruthy();
 
     expect(mocks.questionInit).not.toHaveBeenCalled();
     expect(mocks.answerInit).not.toHaveBeenCalled();

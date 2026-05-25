@@ -68,7 +68,7 @@ describe("InsightsPage", () => {
 
     renderInsightsPage();
 
-    expect(screen.getByText(/building insights from your local practice history/i)).toBeTruthy();
+    expect(screen.getByText(/building insights from your practice and mock history/i)).toBeTruthy();
 
     pending.resolve({
       subjects: [],
@@ -203,8 +203,8 @@ describe("InsightsPage", () => {
     renderInsightsPage();
 
     // Wait for tabs to appear
-    await screen.findByText("Overview");
-    expect(screen.getByText("Overview")).toBeTruthy();
+    await screen.findAllByText("Overview");
+    expect(screen.getAllByText("Overview").length).toBeGreaterThan(0);
 
     // Switch to wrong answers tab
     fireEvent.click(screen.getByRole("button", { name: /wrong answers/i }));

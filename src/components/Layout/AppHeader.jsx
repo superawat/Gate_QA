@@ -1,11 +1,34 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
 
-import { HOME_ROUTE, MOCK_ROUTE } from "../../utils/routes";
+import GlobalNavigationDrawer from "./GlobalNavigationDrawer";
+import HamburgerButton from "./HamburgerButton";
+import { APTITUDE_ENABLED_STORAGE_KEY } from "../../utils/aptitudePreference";
 import { trackEvent } from "../../utils/analytics";
+import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
+import { HOME_ROUTE, MOCK_ROUTE, PRACTICE_ROUTE } from "../../utils/routes";
+import {
+  WORKSPACE_FILE_EXTENSION,
+  importWorkspaceSnapshot,
+  openWorkspaceFile,
+  readWorkspaceFile,
+  saveWorkspaceFile,
+  saveWorkspaceCsv,
+} from "../../utils/workspaceFile";
 
 const THEME_STORAGE_KEY = "gate_qa_theme";
+const PRACTICE_BADGE_QUERY_KEYS = [
+  "years",
+  "subjects",
+  "subtopics",
+  "types",
+  "search",
+  "hideSolved",
+  "showOnlySolved",
+  "showOnlyBookmarked",
+];
 
 const navButtonClassName = "inline-flex min-h-[44px] items-center rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2 text-sm font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)]";
 const navLinkClassName = ({ isActive }) => (
@@ -40,6 +63,44 @@ const applyDocumentTheme = (theme) => {
   document.documentElement.setAttribute("data-theme", theme);
 };
 
+const readAptitudeBadge = () => {
+  if (typeof window === "undefined") {
+    return "";
+  }
+
+  try {
+    const rawValue = window.localStorage.getItem(APTITUDE_ENABLED_STORAGE_KEY);
+    return rawValue === "true" || rawValue === "1" ? "Aptitude enabled" : "";
+  } catch {
+    return "";
+  }
+};
+
+const getPracticeBadgeLabel = (location) => {
+  if (!location.pathname.startsWith(PRACTICE_ROUTE)) {
+    return readAptitudeBadge();
+  }
+
+  const params = new URLSearchParams(location.search);
+  const activeFilterCount = PRACTICE_BADGE_QUERY_KEYS.reduce(
+    (count, key) => count + (params.get(key) ? 1 : 0),
+    0
+  );
+
+  if (activeFilterCount > 0) {
+    return `${activeFilterCount} ${activeFilterCount === 1 ? "filter" : "filters"} active`;
+  }
+
+  return readAptitudeBadge() || "Practice ready";
+};
+
+const summarizeWorkspaceImport = (summary = {}) => {
+  const solvedTotal = Number(summary.gateSolved || 0) + Number(summary.aptitudeSolved || 0);
+  const savedTotal = Number(summary.gateBookmarked || 0) + Number(summary.aptitudeBookmarked || 0);
+  const mockTotal = Number(summary.mockHistory || 0);
+  return `Workspace opened: ${solvedTotal} solved, ${savedTotal} saved, ${mockTotal} mock records.`;
+};
+
 const AppHeader = ({ onHomeNavigate = null }) => {
   const location = useLocation();
   const initialThemeRef = useRef(resolveInitialTheme());
@@ -47,6 +108,9 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   const [followsSystemTheme, setFollowsSystemTheme] = useState(initialThemeRef.current.followsSystem);
   const [installPromptEvent, setInstallPromptEvent] = useState(null);
   const [isStandaloneDisplay, setIsStandaloneDisplay] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerStatus, setDrawerStatus] = useState("");
+  const workspaceFileInputRef = useRef(null);
   const isMockWindowRoute =
     location.pathname === MOCK_ROUTE || location.pathname.startsWith(`${MOCK_ROUTE}/`);
   const appliedTheme = isMockWindowRoute ? "light" : theme;
@@ -122,14 +186,63 @@ const AppHeader = ({ onHomeNavigate = null }) => {
     [isDarkMode]
   );
 
-  const handleToggleTheme = () => {
+  const handleToggleTheme = (event) => {
     const nextTheme = isDarkMode ? "light" : "dark";
-    setTheme(nextTheme);
-    setFollowsSystemTheme(false);
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+
+    if (!document.startViewTransition) {
+      setTheme(nextTheme);
+      setFollowsSystemTheme(false);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      }
+      return;
     }
+
+    const x = event?.clientX ?? window.innerWidth / 2;
+    const y = event?.clientY ?? window.innerHeight / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => {
+        setTheme(nextTheme);
+        setFollowsSystemTheme(false);
+      });
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      }
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`
+      ];
+      document.documentElement.animate(
+        {
+          clipPath: isDarkMode ? clipPath.reverse() : clipPath,
+        },
+        {
+          duration: 450,
+          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+          pseudoElement: isDarkMode
+            ? "::view-transition-old(root)"
+            : "::view-transition-new(root)",
+        }
+      );
+    });
   };
+
+
+
+
+
+
+
+
+
 
   const handleInstallApp = async () => {
     if (!installPromptEvent || typeof installPromptEvent.prompt !== "function") {
@@ -146,16 +259,201 @@ const AppHeader = ({ onHomeNavigate = null }) => {
     setInstallPromptEvent(null);
   };
 
+  const handleCloseDrawer = useCallback(() => {
+    setIsDrawerOpen(false);
+  }, []);
+
+  const handleWorkspaceImportResult = useCallback((result) => {
+    if (!result?.ok) {
+      setDrawerStatus("Workspace could not be opened.");
+      trackEvent("workspace_open_failed", {
+        reason: result?.reason || "unknown",
+      });
+      return false;
+    }
+
+    setDrawerStatus(summarizeWorkspaceImport(result.summary));
+    trackEvent("workspace_open", {
+      gateSolved: result.summary?.gateSolved || 0,
+      aptitudeSolved: result.summary?.aptitudeSolved || 0,
+      mockHistory: result.summary?.mockHistory || 0,
+    });
+
+    if (typeof window !== "undefined" && typeof window.location?.reload === "function") {
+      const shouldReload = typeof window.confirm === "function"
+        ? window.confirm("Workspace opened. Reload GateQA to apply it now?")
+        : true;
+      if (shouldReload) {
+        window.location.reload();
+      }
+    }
+
+    return true;
+  }, []);
+
+  const handleSaveWorkspace = useCallback(async () => {
+    setDrawerStatus("Saving workspace...");
+    try {
+      const result = await saveWorkspaceFile();
+      setDrawerStatus(result.method === "native" ? "Workspace saved." : "Workspace downloaded.");
+      trackEvent("workspace_save", {
+        method: result.method || "unknown",
+        gateSolved: result.snapshot?.data?.gate?.solvedQuestions?.length || 0,
+        aptitudeSolved: result.snapshot?.data?.aptitude?.solvedQuestions?.length || 0,
+      });
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        setDrawerStatus("Save cancelled.");
+        return;
+      }
+      setDrawerStatus("Workspace could not be saved.");
+      trackEvent("workspace_save_failed", {
+        reason: error?.message || "unknown",
+      });
+    }
+  }, []);
+
+  const handleExportCsv = useCallback(() => {
+    setDrawerStatus("Exporting CSV...");
+    try {
+      saveWorkspaceCsv();
+      setDrawerStatus("CSV exported.");
+      trackEvent("workspace_csv_export", { source: "drawer" });
+    } catch (error) {
+      setDrawerStatus("CSV could not be exported.");
+      trackEvent("workspace_csv_export_failed", {
+        reason: error?.message || "unknown",
+      });
+    }
+  }, []);
+
+  const handleOpenWorkspace = useCallback(async () => {
+    if (typeof window !== "undefined" && typeof window.showOpenFilePicker === "function") {
+      setDrawerStatus("Opening workspace...");
+      try {
+        const result = await openWorkspaceFile();
+        handleWorkspaceImportResult(result);
+      } catch (error) {
+        setDrawerStatus(error?.name === "AbortError" ? "Open cancelled." : "Workspace could not be opened.");
+        if (error?.name !== "AbortError") {
+          trackEvent("workspace_open_failed", {
+            reason: error?.message || "unknown",
+          });
+        }
+      }
+      return;
+    }
+
+    workspaceFileInputRef.current?.click();
+  }, [handleWorkspaceImportResult]);
+
+  const handleWorkspaceFileChange = useCallback(async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) {
+      return;
+    }
+
+    setDrawerStatus("Opening workspace...");
+    try {
+      const workspace = await readWorkspaceFile(file);
+      handleWorkspaceImportResult(importWorkspaceSnapshot(workspace));
+    } catch (error) {
+      setDrawerStatus("Workspace could not be opened.");
+      trackEvent("workspace_open_failed", {
+        reason: error?.message || "unknown",
+      });
+    }
+  }, [handleWorkspaceImportResult]);
+
+  const handlePrintPage = useCallback(async () => {
+    setDrawerStatus("Preparing PDF...");
+    trackEvent("pdf_export", { source: "drawer" });
+
+    try {
+      const { exportCurrentPageToPdf } = await import("../../utils/pdfExport");
+      const result = await exportCurrentPageToPdf({
+        filename: "gateqa-progress-report.pdf",
+        title: "GateQA Progress Report",
+      });
+
+      if (result.ok) {
+        setDrawerStatus("PDF generated.");
+        setIsDrawerOpen(false);
+        trackEvent("pdf_export_complete", {
+          pageCount: result.pageCount || 0,
+        });
+        return;
+      }
+
+      setDrawerStatus(result.reason === "insights_failed"
+        ? "No practice data available for PDF."
+        : "PDF could not be generated.");
+      trackEvent("pdf_export_failed", {
+        reason: result.reason || "unknown",
+      });
+    } catch (error) {
+      setDrawerStatus("PDF could not be generated.");
+      trackEvent("pdf_export_failed", {
+        reason: error?.message || "unknown",
+      });
+    }
+  }, []);
+
+  const handleToggleCalculator = useCallback(() => {
+    setIsDrawerOpen(false);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent(TOGGLE_CALCULATOR_EVENT));
+    }
+    trackEvent("calculator_toggle", { source: "drawer" });
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const launchQueue = window.launchQueue;
+    if (!launchQueue || typeof launchQueue.setConsumer !== "function") {
+      return undefined;
+    }
+
+    launchQueue.setConsumer(async (launchParams) => {
+      const [fileHandle] = launchParams.files || [];
+      if (!fileHandle || typeof fileHandle.getFile !== "function") {
+        return;
+      }
+
+      setDrawerStatus("Opening workspace...");
+      try {
+        const file = await fileHandle.getFile();
+        const workspace = await readWorkspaceFile(file);
+        handleWorkspaceImportResult(importWorkspaceSnapshot(workspace));
+      } catch (error) {
+        setDrawerStatus("Workspace could not be opened.");
+        trackEvent("workspace_open_failed", {
+          reason: error?.message || "unknown",
+        });
+      }
+    });
+
+    return undefined;
+  }, [handleWorkspaceImportResult]);
+
   const showInstallButton =
     location.pathname !== HOME_ROUTE
     && !isMockWindowRoute
     && !isStandaloneDisplay
     && Boolean(installPromptEvent);
+  const practiceBadgeLabel = getPracticeBadgeLabel(location);
+  const canToggleCalculator = location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`);
 
   return (
+    <>
     <header className="sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
-        <Link
+        <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+          <Link
           to={HOME_ROUTE}
           className="flex min-w-0 items-center gap-4"
           aria-label="GATE QA home"
@@ -173,6 +471,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
             <p className="text-lg font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
           </div>
         </Link>
+        </div>
 
         <div className="flex items-center gap-2">
           {showInstallButton ? (
@@ -223,10 +522,31 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               </nav>
             )
           ) : null}
+          <HamburgerButton isOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(true)} className="no-print" />
         </div>
 
       </div>
     </header>
+    <input
+      ref={workspaceFileInputRef}
+      type="file"
+      accept={`${WORKSPACE_FILE_EXTENSION},application/json`}
+      className="sr-only"
+      tabIndex={-1}
+      aria-hidden="true"
+      onChange={handleWorkspaceFileChange}
+    />
+    <GlobalNavigationDrawer
+      isOpen={isDrawerOpen}
+      onClose={handleCloseDrawer}
+      practiceBadgeLabel={practiceBadgeLabel}
+      onSaveWorkspace={handleSaveWorkspace}
+      onOpenWorkspace={handleOpenWorkspace}
+      onExportCsv={handleExportCsv}
+      onPrint={handlePrintPage}
+      statusMessage={drawerStatus}
+    />
+    </>
   );
 };
 

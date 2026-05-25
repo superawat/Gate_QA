@@ -350,6 +350,7 @@ export const TOPIC_HIERARCHY = {
     "Dynamic Programming",
     "Graph Algorithms",
     "Graph Search",
+    "Graphs",
     "Greedy Algorithms",
     "Hashing",
     "Huffman Code",

@@ -350,7 +350,7 @@ export default function ProgressManager() {
         <>
             <div ref={helpRef}>
                 <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="hidden sm:flex flex-wrap items-center gap-2">
                         <button
                             onClick={handleExportJson}
                             className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[color:var(--color-primary-hover)] shadow-sm"

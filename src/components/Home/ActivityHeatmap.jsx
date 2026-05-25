@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
 const getIntensityClass = (attempts) => {
   if (attempts === 0) return "home-activity-intensity--0";
@@ -22,6 +22,16 @@ const getMonthShortName = (monthIndex) => (
 
 export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streakDateKeys = [] }) => {
   const streakDateSet = useMemo(() => new Set(streakDateKeys), [streakDateKeys]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const media = window.matchMedia("(max-width: 640px)");
+    setIsMobile(media.matches);
+    const listener = (e) => setIsMobile(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
 
   const { grid, monthLabels } = useMemo(() => {
     const timelineMap = new Map();
@@ -32,21 +42,40 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
     const todayKey = new Date(now).toISOString().split("T")[0];
     const today = new Date(`${todayKey}T00:00:00.000Z`);
     const startDay = new Date(today);
-    startDay.setUTCDate(today.getUTCDate() - 364);
+    
+    // Last 12 weeks = 83 days + today = 84 days. 364 days + today = 365 days.
+    const totalDays = isMobile ? 83 : 364;
+    startDay.setUTCDate(today.getUTCDate() - totalDays);
 
     const days = [];
     const labels = [];
     let currentMonth = -1;
 
-    for (let i = 0; i <= 364; i += 1) {
+    let firstMonthChangeIndex = 0;
+    const initialMonth = new Date(startDay).getUTCMonth();
+    for (let i = 0; i <= totalDays; i += 1) {
+      const d = new Date(startDay);
+      d.setUTCDate(startDay.getUTCDate() + i);
+      if (d.getUTCMonth() !== initialMonth) {
+        firstMonthChangeIndex = i;
+        break;
+      }
+    }
+
+    for (let i = 0; i <= totalDays; i += 1) {
       const d = new Date(startDay);
       d.setUTCDate(startDay.getUTCDate() + i);
       const dateKey = d.toISOString().split("T")[0];
       const month = d.getUTCMonth();
 
       if (month !== currentMonth) {
-        labels.push({ label: getMonthShortName(month), weekIndex: Math.floor(i / 7) });
-        currentMonth = month;
+        const weekIndex = Math.floor(i / 7);
+        if (currentMonth === -1 && firstMonthChangeIndex < 12) {
+          currentMonth = month;
+        } else {
+          labels.push({ label: getMonthShortName(month), weekIndex });
+          currentMonth = month;
+        }
       }
 
       const activity = timelineMap.get(dateKey);
@@ -66,7 +95,7 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
     }
 
     return { grid: cols, monthLabels: labels };
-  }, [attemptTimeline, now]);
+  }, [attemptTimeline, now, isMobile]);
 
   return (
     <div className="home-activity-heatmap">
@@ -74,7 +103,7 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
         <h3>Practice Activity</h3>
         <label htmlFor="activity-year" className="sr-only">Activity range</label>
         <select id="activity-year" value="rolling" onChange={() => {}} aria-label="Activity range">
-          <option value="rolling">Last 365 days</option>
+          <option value="rolling">{isMobile ? "Last 12 weeks" : "Last 365 days"}</option>
         </select>
       </div>
 

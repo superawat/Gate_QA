@@ -147,7 +147,7 @@ function sampleRows(rows, sampleSize, seed) {
 function findHardArtifacts(rows) {
   const hits = [];
   rows.forEach((row) => {
-    const displayText = `${stripHtml(row.questionHtml || "")} ${(row.options || []).join(" ")}`;
+    const displayText = `${stripHtml(row.questionHtml || "")} ${(row.options || []).map(stripHtml).join(" ")}`;
     HARD_ARTIFACTS.forEach(([id, pattern]) => {
       if (pattern.test(displayText)) {
         hits.push({ uid: row.uid, artifact: id });
@@ -211,7 +211,7 @@ function findCoverageWarnings(coverage) {
 function findMathWarnings(rows) {
   return rows
     .filter((row) => row.subject === "Quant")
-    .map((row) => ({ row, text: `${stripHtml(row.questionHtml || "")} ${(row.options || []).join(" ")}` }))
+    .map((row) => ({ row, text: `${stripHtml(row.questionHtml || "")} ${(row.options || []).map(stripHtml).join(" ")}` }))
     .filter(({ text }) => MATH_SUSPICIOUS_RE.test(text))
     .map(({ row }) => row.uid);
 }

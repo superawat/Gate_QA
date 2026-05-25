@@ -35,6 +35,21 @@ function paperSourceUrl(baseUrl, paperPack = '') {
   return url.href;
 }
 
+function normalizeUrlToInternal(urlStr) {
+  if (!urlStr) return '';
+  try {
+    const url = new URL(urlStr);
+    if (url.hostname !== 'aptitude-bank.internal') {
+      url.protocol = 'https:';
+      url.hostname = 'aptitude-bank.internal';
+      url.port = '';
+    }
+    return url.href;
+  } catch {
+    return urlStr;
+  }
+}
+
 function sourceEntries(value) {
   if (Array.isArray(value)) return value.filter((entry) => entry && typeof entry === 'object');
   if (value && typeof value === 'object') return [value];
@@ -44,12 +59,16 @@ function sourceEntries(value) {
 function loadParsedPageUrls(parsedPath) {
   if (!parsedPath) return new Set();
   const rows = JSON.parse(fs.readFileSync(path.resolve(parsedPath), 'utf8'));
-  return new Set(
-    rows
-      .flatMap((row) => sourceEntries(row?._source))
-      .map((source) => source.pageUrl)
-      .filter(Boolean)
-  );
+  const pageUrls = new Set();
+  rows
+    .flatMap((row) => sourceEntries(row?._source))
+    .map((source) => source.pageUrl)
+    .filter(Boolean)
+    .forEach((pageUrl) => {
+      pageUrls.add(pageUrl);
+      pageUrls.add(normalizeUrlToInternal(pageUrl));
+    });
+  return pageUrls;
 }
 
 function mergeReasonCounts(...groups) {
@@ -78,7 +97,7 @@ function main() {
     process.exit(1);
   }
   const parsedPageUrls = loadParsedPageUrls(options.excludeParsed);
-  const baseUrl = catalog.baseUrl || 'https://aptitude-bank.internal/';
+  const baseUrl = catalog.baseUrl || 'https://pinnacle-quize-dee901102b83.herokuapp.com/';
   
   let newSeriesJobs = [];
   let totalPapers = 0;
@@ -152,7 +171,8 @@ function main() {
       if (paperDecision.action === 'ignore') {
         continue;
       }
-      if (parsedPageUrls.has(paperSourceUrl(baseUrl, paper.value))) {
+      const pageUrl = paperSourceUrl(baseUrl, paper.value);
+      if (parsedPageUrls.has(pageUrl) || parsedPageUrls.has(normalizeUrlToInternal(pageUrl))) {
         parsedPapersSkipped += 1;
         countManual('duplicate_parsed_paper');
         continue;

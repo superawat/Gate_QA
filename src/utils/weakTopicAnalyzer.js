@@ -1,5 +1,6 @@
 import { AnswerService } from "../services/AnswerService";
 import { QuestionService } from "../services/QuestionService";
+import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import {
   deriveDifficulty,
   resolveReviewStatus,
@@ -60,6 +61,19 @@ const parseJson = (rawValue, fallback) => {
   }
 };
 
+const createEmptyMockSummary = () => ({
+  attemptCount: 0,
+  attemptedQuestionCount: 0,
+  uniqueQuestionCount: 0,
+  correctAttempts: 0,
+  incorrectAttempts: 0,
+  bonusAttempts: 0,
+  totalDurationMs: 0,
+  timedAttemptCount: 0,
+  averageDurationMs: 0,
+  latestSubmittedAt: "",
+});
+
 const normalizeProgressStatus = (value) => (
   String(value || "")
     .trim()
@@ -96,11 +110,17 @@ const createTopicBucket = ({ key, label, subjectLabel = "", subjectSlug = "" }) 
   recentEntries: [],
 });
 
-const toNormalizedQuestion = (question = {}) => (
-  question?.question
+const toNormalizedQuestion = (question = {}) => {
+  const uid = String(question?.uid || question?.question_uid || "").trim();
+  if (uid.startsWith("APT-")) {
+    return question?.question
+      ? question
+      : AptitudeQuestionService.normalizeQuestion(question);
+  }
+  return question?.question
     ? QuestionService.normalizeQuestion(question)
-    : QuestionService.hydrateIndexedQuestion(question)
-);
+    : QuestionService.hydrateIndexedQuestion(question);
+};
 
 const normalizeProgressEntry = (entry = {}, isSolved = false, now = new Date()) => {
   const rawAttempts = Math.max(0, Math.round(parseNumber(entry.attempts, 0)));
@@ -110,7 +130,18 @@ const normalizeProgressEntry = (entry = {}, isSolved = false, now = new Date()) 
   const hasMeaningfulInput = hasMeaningfulProgressInput(entry.lastInput);
   const statusBlocksAttempt = NON_ATTEMPT_STATUSES.has(status);
   const statusImpliesAttempt = ATTEMPT_STATUSES.has(status);
-  const hasLegacyCorrectFlag = entry.correct === true || isSolved;
+  const hasExplicitCorrectFlag = typeof entry.correct === "boolean";
+  const explicitLastCorrect = hasExplicitCorrectFlag ? entry.correct === true : null;
+  const statusIndicatesCorrect = status === "correct" || status === "solved";
+  const statusIndicatesIncorrect = status === "incorrect" || status === "wrong";
+  const inferredLastCorrect = explicitLastCorrect !== null
+    ? explicitLastCorrect
+    : statusIndicatesCorrect
+      ? true
+      : statusIndicatesIncorrect
+        ? false
+        : isSolved;
+  const hasLegacyCorrectFlag = inferredLastCorrect === true;
 
   const fallbackCorrectAttempts = hasLegacyCorrectFlag ? 1 : 0;
   const correctAttempts = Number.isFinite(explicitCorrectAttempts)
@@ -146,13 +177,13 @@ const normalizeProgressEntry = (entry = {}, isSolved = false, now = new Date()) 
     attempts,
     correctAttempts,
     incorrectAttempts,
-    lastCorrect: hasLegacyCorrectFlag || status === "correct" || status === "solved",
+    lastCorrect: inferredLastCorrect,
     globalDifficultyScore: entry.globalDifficultyScore ?? null,
   });
   const review = resolveReviewStatus({
     ...entry,
     attempts,
-    correct: hasLegacyCorrectFlag || status === "correct" || status === "solved",
+    correct: inferredLastCorrect,
   }, now);
 
   return {
@@ -160,7 +191,7 @@ const normalizeProgressEntry = (entry = {}, isSolved = false, now = new Date()) 
     correctAttempts,
     incorrectAttempts,
     lastSubmittedAt: String(entry.lastSubmittedAt || "").trim(),
-    lastCorrect: hasLegacyCorrectFlag || status === "correct" || status === "solved",
+    lastCorrect: inferredLastCorrect,
     isAttempted: attempts > 0,
     reviewLevel: Math.max(0, Math.round(parseNumber(entry.reviewLevel, 0))),
     reviewDueAt: review.reviewDueAt,
@@ -214,7 +245,7 @@ const finalizeBucket = (bucket) => {
 };
 
 const normalizeAttemptHistory = (entry = {}, normalizedEntry = {}) => {
-  const history = Array.isArray(entry.history)
+  const rawHistory = Array.isArray(entry.history)
     ? entry.history
       .map((item) => ({
         submittedAt: String(item?.submittedAt || "").trim(),
@@ -224,19 +255,54 @@ const normalizeAttemptHistory = (entry = {}, normalizedEntry = {}) => {
       .filter((item) => item.submittedAt)
     : [];
 
-  if (history.length > 0) {
-    return history;
+  let history = rawHistory;
+  if (history.length === 0 && normalizedEntry.lastSubmittedAt) {
+    history = [{
+      submittedAt: normalizedEntry.lastSubmittedAt,
+      correct: normalizedEntry.lastCorrect,
+      durationMs: normalizedEntry.lastDurationMs || 0,
+    }];
   }
 
-  if (!normalizedEntry.lastSubmittedAt) {
+  if (history.length === 0) {
     return [];
   }
 
-  return [{
-    submittedAt: normalizedEntry.lastSubmittedAt,
-    correct: normalizedEntry.lastCorrect,
-    durationMs: normalizedEntry.lastDurationMs,
-  }];
+  // Group and deduplicate by dateKey to count only one distinct question attempt per day
+  const dailyGroups = new Map();
+  history.forEach((attempt) => {
+    const dateKey = toDateKey(attempt.submittedAt);
+    if (!dateKey) return;
+
+    if (!dailyGroups.has(dateKey)) {
+      dailyGroups.set(dateKey, {
+        submittedAt: attempt.submittedAt,
+        correct: attempt.correct,
+        durationMs: attempt.durationMs,
+      });
+    } else {
+      const existing = dailyGroups.get(dateKey);
+      existing.correct = existing.correct || attempt.correct;
+      existing.durationMs += attempt.durationMs;
+      if (String(attempt.submittedAt).localeCompare(String(existing.submittedAt)) > 0) {
+        existing.submittedAt = attempt.submittedAt;
+      }
+    }
+  });
+
+  return Array.from(dailyGroups.values());
+};
+
+const getDistinctProgressDateKey = (entry = {}, normalizedEntry = {}) => {
+  const candidates = [
+    String(entry.firstSubmittedAt || "").trim(),
+    ...(Array.isArray(entry.history)
+      ? entry.history.map((item) => String(item?.submittedAt || "").trim())
+      : []),
+    String(normalizedEntry.lastSubmittedAt || "").trim(),
+  ].filter(Boolean).sort();
+
+  return candidates.length > 0 ? toDateKey(candidates[0]) : "";
 };
 
 const getOrCreateDayBucket = (dayMap, dateKey) => {
@@ -405,10 +471,15 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
 };
 
 const buildStudyActivity = (attemptTimeline = [], now = new Date(), options = {}) => {
-  const activeDates = normalizeDateKeyList(
+  const attemptDates = normalizeDateKeyList(
     attemptTimeline
       .map((entry) => entry.date)
       .filter(Boolean)
+  );
+  const activeDates = normalizeDateKeyList(
+    Array.isArray(options.streakDateKeys) && options.streakDateKeys.length > 0
+      ? options.streakDateKeys
+      : attemptDates
   );
   const totalAttempts = attemptTimeline.reduce((sum, entry) => sum + Number(entry.attempts || 0), 0);
   const totalCorrect = attemptTimeline.reduce((sum, entry) => sum + Number(entry.correct || 0), 0);
@@ -437,6 +508,7 @@ const buildStudyActivity = (attemptTimeline = [], now = new Date(), options = {}
 
   return {
     activeDayCount: activeDates.length,
+    progressDateKeys: activeDates,
     currentStreak,
     longestStreak,
     todayAttempts,
@@ -528,6 +600,7 @@ export const buildWeakTopicInsights = ({
   });
 
   const wrongQuestions = [];
+  const distinctProgressDateSet = new Set();
 
   Object.entries(progressRecords || {}).forEach(([storageKey, entry]) => {
     const meta = questionMetaByStorageKey.get(String(storageKey || "").trim());
@@ -545,6 +618,10 @@ export const buildWeakTopicInsights = ({
     );
     if (!normalizedEntry.isAttempted) {
       return;
+    }
+    const distinctProgressDateKey = getDistinctProgressDateKey(entry, normalizedEntry);
+    if (distinctProgressDateKey) {
+      distinctProgressDateSet.add(distinctProgressDateKey);
     }
     const difficultyMeta = {
       difficultyScore: normalizedEntry.difficultyScore,
@@ -719,6 +796,7 @@ export const buildWeakTopicInsights = ({
     .map(finalizeBucket)
     .sort((a, b) => Number(a.key) - Number(b.key));
   const attemptTimeline = finalizeAttemptTimeline(attemptDayMap);
+  const streakActivityDates = normalizeDateKeyList(Array.from(distinctProgressDateSet));
   const timedAttemptCount = subjects.reduce((sum, bucket) => sum + Number(bucket.timedAttemptCount || 0), 0);
   const totalDurationMs = subjects.reduce((sum, bucket) => sum + Number(bucket.totalDurationMs || 0), 0);
   const difficultyCounts = difficultyQuestions.reduce((counts, question) => {
@@ -734,7 +812,9 @@ export const buildWeakTopicInsights = ({
     wrongQuestions,
     reviewQueue,
     attemptTimeline,
+    streakActivityDates,
     studyActivity: buildStudyActivity(attemptTimeline, now, {
+      streakDateKeys: streakActivityDates,
       hardQuestionCount: difficultyCounts.Hard,
     }),
     timeSummary: {
@@ -760,6 +840,166 @@ export const buildWeakTopicInsights = ({
   };
 };
 
+/**
+ * Merges mock test history attempts into standard practice progress records and solved list.
+ */
+export const mergeMockHistoryIntoProgress = (progressRecords, solvedQuestionIds, storage) => {
+  const emptyMockSummary = createEmptyMockSummary();
+  if (!storage) {
+    return { progressRecords, solvedQuestionIds, mockSummary: emptyMockSummary };
+  }
+  const historyKey = "gateqa_mock_history_v1";
+  let mockHistory = [];
+  try {
+    const raw = storage.getItem(historyKey);
+    if (raw) {
+      mockHistory = JSON.parse(raw);
+    }
+  } catch (e) {
+    console.warn("Failed to parse mock history", e);
+  }
+
+  if (!Array.isArray(mockHistory) || mockHistory.length === 0) {
+    return { progressRecords, solvedQuestionIds, mockSummary: emptyMockSummary };
+  }
+
+  // Create deep copies to avoid mutating stored references
+  const mergedProgress = JSON.parse(JSON.stringify(progressRecords || {}));
+  const mergedSolved = new Set(
+    (Array.isArray(solvedQuestionIds) ? solvedQuestionIds : [])
+      .map((uid) => String(uid).trim())
+      .filter(Boolean)
+  );
+  const mockQuestionIds = new Set();
+  const mockSummary = createEmptyMockSummary();
+
+  // Process from oldest to newest mock test so that the timeline and lastSubmittedAt updates chronologically
+  const sortedMockHistory = [...mockHistory].sort((a, b) =>
+    String(a.submittedAt || "").localeCompare(String(b.submittedAt || ""))
+  );
+
+  sortedMockHistory.forEach((session) => {
+    const submittedAt = session.submittedAt;
+    if (!submittedAt) return;
+    mockSummary.attemptCount += 1;
+    if (!mockSummary.latestSubmittedAt || String(submittedAt).localeCompare(mockSummary.latestSubmittedAt) > 0) {
+      mockSummary.latestSubmittedAt = submittedAt;
+    }
+
+    const correctList = Array.isArray(session.correctQuestions) ? session.correctQuestions : [];
+    const incorrectList = Array.isArray(session.incorrectQuestions) ? session.incorrectQuestions : [];
+    const bonusList = Array.isArray(session.bonusQuestions) ? session.bonusQuestions : [];
+
+    const registerAttempt = (questionUid, isCorrect, timeSpentSeconds, isBonus = false) => {
+      const storageKey = String(questionUid).trim();
+      if (!storageKey) return;
+
+      const durationMs = Math.max(0, Math.round((Number(timeSpentSeconds) || 0) * 1000));
+      mockQuestionIds.add(storageKey);
+      mockSummary.attemptedQuestionCount += 1;
+      mockSummary.totalDurationMs += durationMs;
+      if (durationMs > 0) {
+        mockSummary.timedAttemptCount += 1;
+      }
+      if (isBonus) {
+        mockSummary.bonusAttempts += 1;
+      } else if (isCorrect) {
+        mockSummary.correctAttempts += 1;
+      } else {
+        mockSummary.incorrectAttempts += 1;
+      }
+
+      if (isCorrect) {
+        mergedSolved.add(storageKey);
+      }
+
+      if (!mergedProgress[storageKey]) {
+        mergedProgress[storageKey] = {
+          attempts: 0,
+          correctAttempts: 0,
+          incorrectAttempts: 0,
+          status: isCorrect ? "correct" : "incorrect",
+          correct: isCorrect,
+          lastSubmittedAt: submittedAt,
+          firstSubmittedAt: submittedAt,
+          lastDurationMs: 0,
+          totalDurationMs: 0,
+          timedAttemptCount: 0,
+          history: []
+        };
+      }
+
+      const entry = mergedProgress[storageKey];
+      const existingAttempts = Math.max(0, Math.round(parseNumber(entry.attempts, 0)));
+      const existingCorrectAttempts = Math.max(
+        0,
+        Math.round(parseNumber(entry.correctAttempts, entry.correct === true ? 1 : 0))
+      );
+      const existingIncorrectAttempts = Math.max(
+        0,
+        Math.round(parseNumber(entry.incorrectAttempts, Math.max(0, existingAttempts - existingCorrectAttempts)))
+      );
+      const existingTotalDurationMs = Math.max(0, Math.round(parseNumber(entry.totalDurationMs, 0)));
+      const existingTimedAttemptCount = Math.max(
+        0,
+        Math.round(parseNumber(
+          entry.timedAttemptCount,
+          existingTotalDurationMs > 0 || parseNumber(entry.lastDurationMs, 0) > 0 ? 1 : 0
+        ))
+      );
+
+      entry.attempts = existingAttempts + 1;
+      if (isCorrect) {
+        entry.correctAttempts = existingCorrectAttempts + 1;
+        entry.incorrectAttempts = existingIncorrectAttempts;
+      } else {
+        entry.correctAttempts = existingCorrectAttempts;
+        entry.incorrectAttempts = existingIncorrectAttempts + 1;
+      }
+      entry.totalDurationMs = existingTotalDurationMs + durationMs;
+      if (durationMs > 0) {
+        entry.timedAttemptCount = existingTimedAttemptCount + 1;
+      } else {
+        entry.timedAttemptCount = existingTimedAttemptCount;
+      }
+
+      if (!entry.lastSubmittedAt || String(submittedAt).localeCompare(String(entry.lastSubmittedAt)) >= 0) {
+        entry.lastSubmittedAt = submittedAt;
+        entry.status = isCorrect ? "correct" : "incorrect";
+        entry.correct = isCorrect;
+        entry.lastDurationMs = durationMs;
+      }
+      if (!entry.firstSubmittedAt || String(submittedAt).localeCompare(String(entry.firstSubmittedAt)) < 0) {
+        entry.firstSubmittedAt = submittedAt;
+      }
+
+      if (!Array.isArray(entry.history)) {
+        entry.history = [];
+      }
+      entry.history.push({
+        submittedAt,
+        correct: isCorrect,
+        durationMs,
+        source: "mock",
+      });
+    };
+
+    correctList.forEach((q) => registerAttempt(q.questionUid, true, q.timeSpentSeconds));
+    incorrectList.forEach((q) => registerAttempt(q.questionUid, false, q.timeSpentSeconds));
+    bonusList.forEach((q) => registerAttempt(q.questionUid, true, q.timeSpentSeconds, true));
+  });
+  mockSummary.uniqueQuestionCount = mockQuestionIds.size;
+  mockSummary.averageDurationMs = mockSummary.timedAttemptCount > 0
+    ? Math.round(mockSummary.totalDurationMs / mockSummary.timedAttemptCount)
+    : 0;
+
+  return {
+    progressRecords: mergedProgress,
+    solvedQuestionIds: Array.from(mergedSolved),
+    mockSummary,
+  };
+};
+
 export const loadWeakTopicInsights = async ({
   fetchImpl = typeof fetch === "function" ? fetch : null,
   storage = typeof window !== "undefined" ? window.localStorage : null,
@@ -770,8 +1010,16 @@ export const loadWeakTopicInsights = async ({
     return buildWeakTopicInsights({ now });
   }
 
-  const progressRecords = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
-  const solvedQuestionIds = parseJson(storage.getItem(SOLVED_STORAGE_KEY), []);
+  const gateProgress = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
+  const aptProgress = parseJson(storage.getItem("gateqa_apt_progress_v1"), {});
+  const rawProgressRecords = { ...gateProgress, ...aptProgress };
+
+  const gateSolved = parseJson(storage.getItem(SOLVED_STORAGE_KEY), []);
+  const aptSolved = parseJson(storage.getItem("gateqa-apt-solved-questions"), []);
+  const rawSolvedQuestionIds = [...gateSolved, ...aptSolved];
+
+  const { progressRecords, solvedQuestionIds, mockSummary } = mergeMockHistoryIntoProgress(rawProgressRecords, rawSolvedQuestionIds, storage);
+
   const hasProgressRecords = progressRecords && typeof progressRecords === "object" && Object.keys(progressRecords).length > 0;
   const hasSolvedQuestions = Array.isArray(solvedQuestionIds) && solvedQuestionIds.length > 0;
 
@@ -782,18 +1030,43 @@ export const loadWeakTopicInsights = async ({
   const normalizedBase = String(baseUrl || "/").endsWith("/")
     ? String(baseUrl || "/")
     : `${String(baseUrl || "/")}/`;
-  const response = await fetchImpl(`${normalizedBase}question-search-index.json`, {
-    cache: "force-cache",
-  });
 
-  if (!response?.ok) {
+  const fetchIndex = async (filename) => {
+    try {
+      const response = await fetchImpl(`${normalizedBase}${filename}`, {
+        cache: "force-cache",
+      });
+      if (response && response.ok) {
+        return await response.json();
+      }
+    } catch (e) {
+      console.warn(`Failed to fetch index: ${filename}`, e);
+    }
+    return null;
+  };
+
+  const [questionsPayload, aptitudePayload] = await Promise.all([
+    fetchIndex("question-search-index.json"),
+    fetchIndex("aptitude-search-index.json"),
+  ]);
+
+  if (!questionsPayload) {
     throw new Error("Unable to load practice analytics.");
   }
 
   const gds = GlobalDifficultyService.getInstance(baseUrl);
   await gds.load(fetchImpl);
 
-  const questions = await response.json();
+  const rawAptQuestions = Array.isArray(aptitudePayload)
+    ? aptitudePayload
+    : (aptitudePayload?.questions || []);
+  const normalizedAptQuestions = rawAptQuestions.map(row => AptitudeQuestionService.normalizeQuestion(row));
+
+  const questions = [
+    ...questionsPayload,
+    ...normalizedAptQuestions,
+  ];
+
   const insights = buildWeakTopicInsights({
     questions,
     progressRecords,
@@ -801,15 +1074,23 @@ export const loadWeakTopicInsights = async ({
     globalDifficultyService: gds,
     now,
   });
+  const streakActivityDates = Array.isArray(insights.streakActivityDates)
+    ? insights.streakActivityDates
+    : insights.attemptTimeline.map((entry) => entry.date);
+  const effectiveStreakActivityDates = streakActivityDates.length > 0
+    ? streakActivityDates
+    : insights.attemptTimeline.map((entry) => entry.date);
   const { state: streakFreezeState, stats: streakStats } = reconcileStreakFreezeState({
-    activeDates: insights.attemptTimeline.map((entry) => entry.date),
+    activeDates: effectiveStreakActivityDates,
     now,
     storage,
   });
 
   return {
     ...insights,
+    mockSummary,
     studyActivity: buildStudyActivity(insights.attemptTimeline, now, {
+      streakDateKeys: effectiveStreakActivityDates,
       hardQuestionCount: insights.difficultySummary.counts.Hard,
       streakFreezeState,
       streakStats,
@@ -831,18 +1112,28 @@ export const loadStudyActivityFast = ({
     return buildStudyActivity([], now);
   }
 
-  const progressRecords = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
+  const gateProgress = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
+  const aptProgress = parseJson(storage.getItem("gateqa_apt_progress_v1"), {});
+  const rawProgressRecords = { ...gateProgress, ...aptProgress };
+
+  const { progressRecords } = mergeMockHistoryIntoProgress(rawProgressRecords, [], storage);
+
   if (!progressRecords || typeof progressRecords !== "object" || Object.keys(progressRecords).length === 0) {
     return buildStudyActivity([], now);
   }
 
   const attemptDayMap = new Map();
+  const distinctProgressDateSet = new Set();
   let hardQuestionCount = 0;
 
   Object.entries(progressRecords).forEach(([storageKey, entry]) => {
     if (!entry) return;
     const normalizedEntry = normalizeProgressEntry(entry, false, now);
     if (!normalizedEntry.isAttempted) return;
+    const distinctProgressDateKey = getDistinctProgressDateKey(entry, normalizedEntry);
+    if (distinctProgressDateKey) {
+      distinctProgressDateSet.add(distinctProgressDateKey);
+    }
     if (normalizedEntry.difficultyLabel === "Hard") {
       hardQuestionCount += 1;
     }
@@ -865,14 +1156,19 @@ export const loadStudyActivityFast = ({
   });
 
   const attemptTimeline = finalizeAttemptTimeline(attemptDayMap);
+  const streakActivityDates = normalizeDateKeyList(Array.from(distinctProgressDateSet));
+  const effectiveStreakActivityDates = streakActivityDates.length > 0
+    ? streakActivityDates
+    : attemptTimeline.map((entry) => entry.date);
   const { state: streakFreezeState, stats: streakStats } = reconcileStreakFreezeState({
-    activeDates: attemptTimeline.map((entry) => entry.date),
+    activeDates: effectiveStreakActivityDates,
     now,
     storage,
   });
 
   return {
     ...buildStudyActivity(attemptTimeline, now, {
+      streakDateKeys: effectiveStreakActivityDates,
       hardQuestionCount,
       streakFreezeState,
       streakStats,
@@ -880,4 +1176,3 @@ export const loadStudyActivityFast = ({
     attemptTimeline,
   };
 };
-

@@ -12,6 +12,61 @@ function fisherYatesShuffle(arr) {
     return arr;
 }
 
+function diversifyBucket(uids, questionMap) {
+    if (uids.length <= 1) return uids;
+
+    // Group by compound concept: subjectSlug + subtopicSlug
+    const groups = new Map();
+    uids.forEach((uid) => {
+        const question = questionMap.get(uid);
+        const subject = question?.subjectSlug || 'unknown';
+        const subtopic = question?.subtopics?.[0]?.slug || 'general';
+        const conceptKey = `${subject}::${subtopic}`;
+
+        if (!groups.has(conceptKey)) {
+            groups.set(conceptKey, []);
+        }
+        groups.get(conceptKey).push(uid);
+    });
+
+    // Shuffle each group individually using Fisher-Yates
+    const shuffledGroups = [];
+    groups.forEach((groupUids) => {
+        shuffledGroups.push(fisherYatesShuffle([...groupUids]));
+    });
+
+    // Shuffle the groups themselves to randomize starting topics
+    fisherYatesShuffle(shuffledGroups);
+
+    // Interleave the groups round-robin
+    const result = [];
+    let activeGroups = shuffledGroups.filter((g) => g.length > 0);
+
+    while (activeGroups.length > 0) {
+        for (let i = 0; i < activeGroups.length; i += 1) {
+            result.push(activeGroups[i].shift());
+        }
+        activeGroups = activeGroups.filter((g) => g.length > 0);
+    }
+
+    // Lookahead swap to avoid consecutive questions of the exact same subject
+    for (let i = 0; i < result.length - 1; i += 1) {
+        const currentQ = questionMap.get(result[i]);
+        const nextQ = questionMap.get(result[i + 1]);
+        if (currentQ && nextQ && currentQ.subjectSlug === nextQ.subjectSlug) {
+            for (let j = i + 2; j < result.length; j += 1) {
+                const swapQ = questionMap.get(result[j]);
+                if (swapQ && swapQ.subjectSlug !== currentQ.subjectSlug) {
+                    [result[i + 1], result[j]] = [result[j], result[i + 1]];
+                    break;
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
 function getTrackingId(question) {
     if (!question || typeof question !== 'object') return null;
     const candidate = AnswerService.getStorageKeyForQuestion(question);
@@ -25,9 +80,11 @@ function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
     const bucket2 = [];
     const bucket3 = [];
 
+    const questionMap = new Map();
     for (const question of questionPool) {
         const uid = String(question?.question_uid || '').trim();
         if (!uid) continue;
+        questionMap.set(uid, question);
 
         const trackingId = getTrackingId(question);
         const isSeen = seenThisSession.has(uid);
@@ -42,11 +99,11 @@ function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
         }
     }
 
-    fisherYatesShuffle(bucket1);
-    fisherYatesShuffle(bucket2);
-    fisherYatesShuffle(bucket3);
+    const diversifiedBucket1 = diversifyBucket(bucket1, questionMap);
+    const diversifiedBucket2 = diversifyBucket(bucket2, questionMap);
+    const diversifiedBucket3 = diversifyBucket(bucket3, questionMap);
 
-    return [...bucket1, ...bucket2, ...bucket3];
+    return [...diversifiedBucket1, ...diversifiedBucket2, ...diversifiedBucket3];
 }
 
 function uniqueQuestionList(questionPool = []) {

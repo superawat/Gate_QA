@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { buildWeakTopicInsights } from "./weakTopicAnalyzer";
+import { buildWeakTopicInsights, mergeMockHistoryIntoProgress } from "./weakTopicAnalyzer";
 
 describe("buildWeakTopicInsights", () => {
   test("builds subject and subtopic accuracy summaries from local progress", () => {
@@ -186,20 +186,42 @@ describe("buildWeakTopicInsights", () => {
           tags: ["algorithms", "dynamic-programming"],
           type: "MCQ",
         },
+        {
+          question_uid: "go:22",
+          title: "GATE CSE 2025 | Question: 22",
+          year: 2025,
+          set: null,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "dynamic-programming"],
+          type: "MCQ",
+        },
       ],
       progressRecords: {
         "go:20": {
-          attempts: 3,
+          attempts: 1,
           correctAttempts: 0,
-          incorrectAttempts: 3,
+          incorrectAttempts: 1,
           correct: false,
-          lastSubmittedAt: "2026-05-06T10:00:00.000Z",
+          lastSubmittedAt: "2026-05-05T10:00:00.000Z",
           reviewDueAt: "2026-05-07T10:00:00.000Z",
-          totalDurationMs: 240000,
-          timedAttemptCount: 3,
+          totalDurationMs: 80000,
+          timedAttemptCount: 1,
           history: [
             { submittedAt: "2026-05-05T10:00:00.000Z", correct: false, durationMs: 80000 },
-            { submittedAt: "2026-05-06T10:00:00.000Z", correct: false, durationMs: 90000 },
+          ],
+        },
+        "go:22": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          lastSubmittedAt: "2026-05-06T10:00:00.000Z",
+          reviewDueAt: "2026-05-30T10:00:00.000Z",
+          totalDurationMs: 90000,
+          timedAttemptCount: 1,
+          history: [
+            { submittedAt: "2026-05-06T10:00:00.000Z", correct: true, durationMs: 90000 },
           ],
         },
         "go:21": {
@@ -225,9 +247,9 @@ describe("buildWeakTopicInsights", () => {
       daysOverdue: 1,
     });
     expect(insights.timeSummary).toMatchObject({
-      totalDurationMs: 300000,
-      timedAttemptCount: 4,
-      averageDurationMs: 75000,
+      totalDurationMs: 230000,
+      timedAttemptCount: 3,
+      averageDurationMs: 76667,
     });
     expect(insights.attemptTimeline.map((entry) => entry.date)).toEqual([
       "2026-05-05",
@@ -257,16 +279,35 @@ describe("buildWeakTopicInsights", () => {
           tags: ["algorithms", "sorting"],
           type: "MCQ",
         },
+        {
+          question_uid: "go:31",
+          title: "GATE CSE 2025 | Question: 31",
+          year: 2025,
+          set: null,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "sorting"],
+          type: "MCQ",
+        },
       ],
       progressRecords: {
         "go:30": {
-          attempts: 2,
-          correctAttempts: 1,
+          attempts: 1,
+          correctAttempts: 0,
           incorrectAttempts: 1,
+          correct: false,
+          lastSubmittedAt: "2026-05-07T10:00:00.000Z",
+          history: [
+            { submittedAt: "2026-05-07T10:00:00.000Z", correct: false, durationMs: 30000 },
+          ],
+        },
+        "go:31": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
           correct: true,
           lastSubmittedAt: "2026-05-08T10:00:00.000Z",
           history: [
-            { submittedAt: "2026-05-07T10:00:00.000Z", correct: false, durationMs: 30000 },
             { submittedAt: "2026-05-08T10:00:00.000Z", correct: true, durationMs: 40000 },
           ],
         },
@@ -278,5 +319,148 @@ describe("buildWeakTopicInsights", () => {
     // But the historical consecutive run (May 7-8) should still count as longestStreak
     expect(insights.studyActivity.longestStreak).toBe(2);
     expect(insights.studyActivity.activeDayCount).toBe(2);
+  });
+
+  test("counts streak days from distinct question progress instead of repeated submissions", () => {
+    const insights = buildWeakTopicInsights({
+      now: new Date("2026-05-02T12:00:00.000Z"),
+      questions: [
+        {
+          question_uid: "go:35",
+          title: "GATE CSE 2025 | Question: 35",
+          year: 2025,
+          set: null,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "graphs"],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: {
+        "go:35": {
+          attempts: 2,
+          correctAttempts: 2,
+          incorrectAttempts: 0,
+          correct: true,
+          firstSubmittedAt: "2026-05-01T10:00:00.000Z",
+          lastSubmittedAt: "2026-05-02T10:00:00.000Z",
+          history: [
+            { submittedAt: "2026-05-01T10:00:00.000Z", correct: true, durationMs: 30000 },
+            { submittedAt: "2026-05-02T10:00:00.000Z", correct: true, durationMs: 35000 },
+          ],
+        },
+      },
+      solvedQuestionIds: ["go:35"],
+    });
+
+    expect(insights.attemptTimeline.map((entry) => entry.date)).toEqual([
+      "2026-05-01",
+      "2026-05-02",
+    ]);
+    expect(insights.studyActivity.progressDateKeys).toEqual(["2026-05-01"]);
+    expect(insights.studyActivity.activeDayCount).toBe(1);
+    expect(insights.studyActivity.currentStreak).toBe(1);
+  });
+
+  test("merges mock history into subject accuracy, weak topics, and timing summaries", () => {
+    const storage = {
+      getItem: (key) => {
+        if (key !== "gateqa_mock_history_v1") {
+          return null;
+        }
+
+        return JSON.stringify([
+          {
+            id: "mock-1",
+            submittedAt: "2026-05-10T09:00:00.000Z",
+            correctQuestions: [
+              { questionUid: "go:41", timeSpentSeconds: 30 },
+            ],
+            incorrectQuestions: [
+              { questionUid: "go:40", timeSpentSeconds: 45 },
+            ],
+          },
+        ]);
+      },
+    };
+
+    const merged = mergeMockHistoryIntoProgress({
+      "go:40": {
+        attempts: 1,
+        correctAttempts: 1,
+        incorrectAttempts: 0,
+        correct: true,
+        status: "correct",
+        lastSubmittedAt: "2026-05-09T09:00:00.000Z",
+        totalDurationMs: 30000,
+        timedAttemptCount: 1,
+        history: [
+          { submittedAt: "2026-05-09T09:00:00.000Z", correct: true, durationMs: 30000 },
+        ],
+      },
+    }, ["go:40"], storage);
+
+    expect(merged.mockSummary).toMatchObject({
+      attemptCount: 1,
+      attemptedQuestionCount: 2,
+      uniqueQuestionCount: 2,
+      correctAttempts: 1,
+      incorrectAttempts: 1,
+      totalDurationMs: 75000,
+      timedAttemptCount: 2,
+      averageDurationMs: 37500,
+    });
+    expect(merged.progressRecords["go:40"]).toMatchObject({
+      attempts: 2,
+      correctAttempts: 1,
+      incorrectAttempts: 1,
+      correct: false,
+      status: "incorrect",
+      totalDurationMs: 75000,
+      timedAttemptCount: 2,
+      lastDurationMs: 45000,
+    });
+
+    const insights = buildWeakTopicInsights({
+      questions: [
+        {
+          question_uid: "go:40",
+          title: "GATE CSE 2025 | Question: 40",
+          year: 2025,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["algorithms", "graphs"],
+          type: "MCQ",
+        },
+        {
+          question_uid: "go:41",
+          title: "GATE CSE 2025 | Question: 41",
+          year: 2025,
+          yearSetKey: "2025-s0",
+          yearSetLabel: "2025",
+          tags: ["operating-system", "process-synchronization"],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: merged.progressRecords,
+      solvedQuestionIds: merged.solvedQuestionIds,
+      now: new Date("2026-05-10T12:00:00.000Z"),
+    });
+
+    expect(insights.wrongQuestions[0]).toMatchObject({
+      storageKey: "go:40",
+      lastCorrect: false,
+      incorrectAttempts: 1,
+    });
+    expect(insights.subjects.find((subject) => subject.key === "algorithms")).toMatchObject({
+      attemptedCount: 2,
+      correctAttempts: 1,
+      incorrectAttempts: 1,
+      averageDurationMs: 37500,
+    });
+    expect(insights.subtopics.find((subtopic) => subtopic.key === "algorithms:graphs")).toMatchObject({
+      attemptedCount: 2,
+      incorrectAttempts: 1,
+    });
   });
 });

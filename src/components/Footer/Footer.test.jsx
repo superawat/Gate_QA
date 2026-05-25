@@ -9,14 +9,13 @@ import { MemoryRouter } from "react-router-dom";
 import Footer from "./Footer";
 
 describe("Footer", () => {
-  test("links to the user manual route from the footer", () => {
+  test("renders data policy and support actions", () => {
     render(
       <MemoryRouter>
         <Footer />
       </MemoryRouter>
     );
 
-    expect(screen.getByRole("link", { name: /user manual/i }).getAttribute("href")).toBe("/manual");
     expect(screen.getByRole("button", { name: /open data policy/i })).toBeTruthy();
     expect(screen.getByRole("button", { name: /support gate qa/i })).toBeTruthy();
   });

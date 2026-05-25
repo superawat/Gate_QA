@@ -5,6 +5,7 @@ import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
+import { getQuoteForToday } from "../utils/motivationalQuotes";
 
 const HomePage = ({
   hasResumeRoute,
@@ -16,6 +17,32 @@ const HomePage = ({
   onResumePractice,
 }) => {
   const activity = useMemo(() => loadStudyActivityFast(), []);
+
+  const parsedQuote = useMemo(() => {
+    const raw = getQuoteForToday();
+    const parts = raw.split(" — ");
+    return {
+      text: parts[0] || raw,
+      author: parts[1] || "",
+    };
+  }, []);
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const box = card.getBoundingClientRect();
+    const x = e.clientX - box.left - box.width / 2;
+    const y = e.clientY - box.top - box.height / 2;
+    const rx = -(y / (box.height / 2)) * 6;
+    const ry = (x / (box.width / 2)) * 6;
+    card.style.setProperty("--rx", `${rx}deg`);
+    card.style.setProperty("--ry", `${ry}deg`);
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  };
 
   return (
     <PageShell
@@ -29,6 +56,8 @@ const HomePage = ({
         <button
           type="button"
           onClick={onStartRandomPractice}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
           className="home-action-card home-action-card--primary group text-left"
         >
           <span className="home-action-icon">
@@ -38,11 +67,20 @@ const HomePage = ({
             <span className="home-action-label">Practice</span>
             <span className="home-action-subtext">Start with a fresh question</span>
           </span>
+
+          <span className="home-action-quote-container">
+            <span className="home-action-quote">“{parsedQuote.text}”</span>
+            {parsedQuote.author && (
+              <span className="home-action-quote-author">— {parsedQuote.author}</span>
+            )}
+          </span>
         </button>
 
         <button
           type="button"
           onClick={onExplorePractice}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
           className="home-action-card home-action-card--secondary group text-left"
         >
           <span className="home-action-icon">
@@ -58,6 +96,8 @@ const HomePage = ({
           type="button"
           onClick={mockModeEnabled ? onStartMockTest : undefined}
           disabled={!mockModeEnabled}
+          onMouseMove={mockModeEnabled ? handleMouseMove : undefined}
+          onMouseLeave={mockModeEnabled ? handleMouseLeave : undefined}
           className={`home-action-card home-action-card--secondary group text-left ${mockModeEnabled ? "" : "home-action-card--disabled"}`}
         >
           <span className="home-action-icon">
@@ -72,6 +112,8 @@ const HomePage = ({
         <button
           type="button"
           onClick={onOpenInsights}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
           className="home-action-card home-action-card--secondary group text-left"
         >
           <span className="home-action-icon">
@@ -84,15 +126,15 @@ const HomePage = ({
         </button>
       </section>
 
-      <StreakBanner />
-
-      <section>
+      <section className="home-gamification-dashboard" aria-label="Gamification stats">
+        <StreakBanner />
         <ActivityHeatmap
           attemptTimeline={activity?.attemptTimeline || []}
           streakDateKeys={activity?.streakDateKeys || []}
         />
       </section>
     </PageShell>
+
   );
 };
 

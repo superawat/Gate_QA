@@ -67,7 +67,7 @@ const FilterModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[60] flex justify-end bg-slate-950/40 backdrop-blur-[1px]">
+        <div className="filter-sheet-modal fixed inset-0 z-[60] flex justify-end bg-slate-950/40 backdrop-blur-[1px]">
             <button
                 type="button"
                 aria-label="Close filters"
@@ -77,11 +77,12 @@ const FilterModal = ({ isOpen, onClose }) => {
 
             <div
                 ref={dialogRef}
-                className="flex h-full w-full max-w-md flex-col overflow-hidden border-l border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-2xl"
+                className="filter-sheet-panel flex h-full w-full max-w-md flex-col overflow-hidden border-l border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-2xl"
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="filter-modal-title"
             >
+                <div className="filter-sheet-drag-handle" aria-hidden="true" />
                 <div className="flex items-center justify-between border-b border-[color:var(--color-border)] px-4 py-4">
                     <h2 id="filter-modal-title" className="text-lg font-semibold text-[color:var(--color-text)]">Filters</h2>
                     <button

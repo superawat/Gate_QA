@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import React from "react";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 
@@ -73,5 +73,49 @@ describe("AppHeader", () => {
     expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
     expect(screen.getByRole("switch", { name: /switch to light mode/i })).toBeTruthy();
     expect(screen.getByAltText(/gate qa logo/i).closest(".app-header-logo-frame")).toBeTruthy();
+  });
+
+  test("opens a global drawer with tools and manual, and allows opening support modal", async () => {
+    render(
+      <MemoryRouter initialEntries={["/practice?subjects=dbms&types=nat"]}>
+        <AppHeader />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /open navigation/i }));
+
+    const drawer = screen.getByRole("dialog", { name: /global navigation/i });
+    const drawerScope = within(drawer);
+    expect(drawer).toBeTruthy();
+    expect(screen.getByText(/2 filters active/i)).toBeTruthy();
+
+    // Expand Tools
+    fireEvent.click(drawerScope.getByRole("button", { name: /export & import/i }));
+
+    expect(drawerScope.getByRole("button", { name: /export pdf/i })).toBeTruthy();
+    expect(drawerScope.getByRole("button", { name: /export csv/i })).toBeTruthy();
+    expect(drawerScope.getByRole("button", { name: /export json/i })).toBeTruthy();
+    expect(drawerScope.getByRole("button", { name: /import json/i })).toBeTruthy();
+    expect(drawerScope.getByRole("link", { name: /priority topics/i }).getAttribute("href")).toBe("/insights/topics");
+    expect(drawerScope.getByRole("link", { name: /full user manual/i })).toBeTruthy();
+
+    // Verify support button and opening SupportModal
+    const supportBtn = drawerScope.getByRole("button", { name: /support me/i });
+    expect(supportBtn).toBeTruthy();
+    fireEvent.click(supportBtn);
+
+    const supportModal = screen.getByRole("dialog", { name: /support me/i });
+    expect(supportModal).toBeTruthy();
+    expect(within(supportModal).getByText(/Scan with your preferred payment app/i)).toBeTruthy();
+
+    // Close the SupportModal
+    fireEvent.click(within(supportModal).getByRole("button", { name: /close modal/i }));
+    expect(screen.queryByRole("dialog", { name: /support me/i })).toBeNull();
+
+    fireEvent.keyDown(document, { key: "Escape" });
+
+    await waitFor(() => {
+      expect(screen.queryByRole("dialog", { name: /global navigation/i })).toBeNull();
+    });
   });
 });

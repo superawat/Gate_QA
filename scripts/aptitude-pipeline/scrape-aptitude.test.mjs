@@ -253,4 +253,59 @@ describe("scrape-aptitude parser", () => {
     });
     expect(ignoredSamples[0].reason).toBe("unsupported_subject");
   });
+
+  test("keeps AptitudeBank image rows when subject and taxonomy are valid", () => {
+    const source = {
+      sourceKind: "aptitude-web",
+      pageUrl: "https://aptitude-bank.internal/play#paper-image",
+      sourceId: "image-demo",
+    };
+
+    const { attempted, report } = filterAttemptedRows([
+      {
+        questionHtml: '<p>Select the figure.</p><img src="https://lh3.googleusercontent.com/demo.png" alt="figure">',
+        options: ["A", "B", "C", "D"],
+        answer: "A",
+        subject: "Reasoning",
+        subtopic: "Miscellaneous",
+        _source: source,
+      },
+    ]);
+
+    expect(attempted).toHaveLength(1);
+    expect(report.rows).toMatchObject({
+      attempted: 1,
+      ignored: 0,
+    });
+  });
+
+  test("keeps image-only answer options as valid options", () => {
+    const source = {
+      sourceKind: "aptitude-web",
+      pageUrl: "https://aptitude-bank.internal/play#paper-image-options",
+      sourceId: "image-option-demo",
+    };
+
+    const { attempted, report } = filterAttemptedRows([
+      {
+        questionHtml: '<p>Select the embedded figure.</p><img src="https://example.com/question.png">',
+        options: [
+          '<img src="https://example.com/a.png" alt="A">',
+          '<img src="https://example.com/b.png" alt="B">',
+          '<img src="https://example.com/c.png" alt="C">',
+          '<img src="https://example.com/d.png" alt="D">',
+        ],
+        answer: "B",
+        subject: "Reasoning",
+        subtopic: "Miscellaneous",
+        _source: source,
+      },
+    ]);
+
+    expect(attempted).toHaveLength(1);
+    expect(report.rows).toMatchObject({
+      attempted: 1,
+      ignored: 0,
+    });
+  });
 });

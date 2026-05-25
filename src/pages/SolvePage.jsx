@@ -308,23 +308,23 @@ const SolvePage = ({
       : "Direct question link";
   const heroMetaChips = (
     <>
-      <span className="rounded-full bg-[color:var(--color-neutral-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-neutral-text)]">
+      <span className="rounded-full bg-[color:var(--color-neutral-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-neutral-text)]">
         {questionYearLabel}
       </span>
-      <span className="rounded-full bg-[color:var(--color-info-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-info-text)]">
+      <span className="rounded-full bg-[color:var(--color-info-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-info-text)]">
         {questionSubjectLabel}
       </span>
-      <span className="rounded-full bg-[color:var(--color-purple-soft)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
+      <span className="rounded-full bg-[color:var(--color-purple-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
         {questionType}
       </span>
       {isSolved ? (
-        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700">
+        <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700">
           <FaCheckCircle className="text-emerald-600" />
           Solved
         </span>
       ) : null}
       {isBookmarked ? (
-        <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">
+        <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">
           <FaStar className="text-amber-500" />
           Saved
         </span>
@@ -336,40 +336,35 @@ const SolvePage = ({
     <MathRuntimeProvider>
       <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
         <section className="space-y-4">
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
             <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <button
                     type="button"
                     onClick={handleBackToResults}
-                    className="inline-flex min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3.5 py-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="inline-flex min-h-[32px] sm:min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
                   >
-                    <FaArrowLeft className="mr-2" />
-                    Back to Results
+                    <FaArrowLeft className="mr-1.5 sm:mr-2" />
+                    <span className="hidden sm:inline">Back to Results</span>
                   </button>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-700">Solve</p>
+                  <p className="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-700">Solve</p>
                   {heroMetaChips}
                 </div>
                 <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
-                    <h1 className="text-[clamp(1.9rem,2.7vw,2.85rem)] font-semibold leading-tight text-[color:var(--color-text)]">
+                    <h1 className="text-xl sm:text-[clamp(1.9rem,2.7vw,2.85rem)] font-bold sm:font-semibold leading-tight text-[color:var(--color-text)]">
                       {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
                     </h1>
-                    {(navigationState.canGoPrevious || navigationState.canGoNext) ? (
-                      <p className="mt-2 text-sm text-[color:var(--color-text-muted)] md:hidden">
-                        Swipe left or right on the question card to move through this session.
-                      </p>
-                    ) : null}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start justify-end gap-2 lg:pt-0.5">
-                <div className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2 text-right sm:min-w-[188px]">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
-                    <p className="text-sm font-semibold text-[color:var(--color-text)]">
+              <div className="flex items-center justify-between gap-2 lg:items-start lg:justify-end lg:pt-0.5">
+                <div className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2.5 py-1.5 sm:px-3 sm:py-2 text-right">
+                  <div className="flex items-center justify-between gap-2 sm:gap-3">
+                    <p className="hidden sm:block text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
+                    <p className="text-xs sm:text-sm font-semibold text-[color:var(--color-text)]">
                       {navigationSummary}
                     </p>
                   </div>
@@ -456,7 +451,12 @@ const SolvePage = ({
               />
             </div>
           ) : (
-            <div onTouchStart={handleQuestionTouchStart} onTouchEnd={handleQuestionTouchEnd}>
+            <div
+              onTouchStart={handleQuestionTouchStart}
+              onTouchEnd={handleQuestionTouchEnd}
+              key={resolvedQuestion.question_uid}
+              className="animate-question-transition"
+            >
               <Question
                 question={resolvedQuestion}
                 onNextQuestion={handleGoNext}

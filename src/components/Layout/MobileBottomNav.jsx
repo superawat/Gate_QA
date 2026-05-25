@@ -53,7 +53,7 @@ const MobileBottomNav = () => (
       {navItems.map((item) => {
         const Icon = item.icon;
         return (
-          <NavLink key={item.label} to={item.to} end={item.to === HOME_ROUTE} className={navLinkClassName}>
+          <NavLink key={item.label} to={item.to} end={item.to === HOME_ROUTE} className={navLinkClassName} unstable_viewTransition>
             <Icon className="text-base" aria-hidden="true" />
             <span className="mt-1">{item.label}</span>
           </NavLink>

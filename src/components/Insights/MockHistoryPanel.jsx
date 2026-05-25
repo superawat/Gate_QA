@@ -41,32 +41,32 @@ const formatScoreDelta = (value) => {
 
 const ATTEMPT_GROUP_STYLES = {
   correct: {
-    panel: "border-emerald-200 bg-emerald-50/80",
-    label: "text-emerald-700",
-    value: "text-emerald-900",
-    pill: "border-emerald-200 bg-white text-emerald-900 shadow-sm transition-shadow hover:shadow-md",
-    meta: "text-emerald-700/80",
+    panel: "border-emerald-200 bg-emerald-50/80 dark:border-emerald-900/40 dark:bg-emerald-950/20",
+    label: "text-emerald-700 dark:text-emerald-400 font-bold",
+    value: "text-emerald-900 dark:text-emerald-100 font-bold",
+    pill: "border-emerald-200 bg-white text-emerald-900 shadow-sm transition-shadow hover:shadow-md dark:border-emerald-900/40 dark:bg-slate-900 dark:text-emerald-300",
+    meta: "text-emerald-700/80 dark:text-emerald-400/80",
   },
   incorrect: {
-    panel: "border-rose-200 bg-rose-50/80",
-    label: "text-rose-700",
-    value: "text-rose-900",
-    pill: "border-rose-200 bg-white text-rose-900 shadow-sm transition-shadow hover:shadow-md",
-    meta: "text-rose-700/80",
+    panel: "border-rose-200 bg-rose-50/80 dark:border-rose-900/40 dark:bg-rose-950/20",
+    label: "text-rose-700 dark:text-rose-400 font-bold",
+    value: "text-rose-900 dark:text-rose-100 font-bold",
+    pill: "border-rose-200 bg-white text-rose-900 shadow-sm transition-shadow hover:shadow-md dark:border-rose-900/40 dark:bg-slate-900 dark:text-rose-300",
+    meta: "text-rose-700/80 dark:text-rose-400/80",
   },
   unanswered: {
-    panel: "border-amber-200 bg-amber-50/80",
-    label: "text-amber-700",
-    value: "text-amber-900",
-    pill: "border-amber-200 bg-white text-amber-900 shadow-sm transition-shadow hover:shadow-md",
-    meta: "text-amber-700/80",
+    panel: "border-amber-200 bg-amber-50/80 dark:border-amber-900/40 dark:bg-amber-950/20",
+    label: "text-amber-700 dark:text-amber-400 font-bold",
+    value: "text-amber-900 dark:text-amber-100 font-bold",
+    pill: "border-amber-200 bg-white text-amber-900 shadow-sm transition-shadow hover:shadow-md dark:border-amber-900/40 dark:bg-slate-900 dark:text-amber-300",
+    meta: "text-amber-700/80 dark:text-amber-400/80",
   },
   bonus: {
-    panel: "border-sky-200 bg-sky-50/80",
-    label: "text-sky-700",
-    value: "text-sky-900",
-    pill: "border-sky-200 bg-white text-sky-900 shadow-sm transition-shadow hover:shadow-md",
-    meta: "text-sky-700/80",
+    panel: "border-sky-200 bg-sky-50/80 dark:border-sky-900/40 dark:bg-sky-950/20",
+    label: "text-sky-700 dark:text-sky-400 font-bold",
+    value: "text-sky-900 dark:text-sky-100 font-bold",
+    pill: "border-sky-200 bg-white text-sky-900 shadow-sm transition-shadow hover:shadow-md dark:border-sky-900/40 dark:bg-slate-900 dark:text-sky-300",
+    meta: "text-sky-700/80 dark:text-sky-400/80",
   },
 };
 
@@ -74,29 +74,29 @@ const QuestionRecordGroup = ({ title, tone, questions = [], emptyLabel }) => {
   const styles = ATTEMPT_GROUP_STYLES[tone] || ATTEMPT_GROUP_STYLES.unanswered;
 
   return (
-    <section className={`rounded-2xl border px-3 py-3 ${styles.panel}`}>
-      <div className="flex items-center justify-between gap-3">
+    <section className={`rounded-lg border px-2.5 py-2 ${styles.panel}`}>
+      <div className="flex items-center justify-between gap-2">
         <p className={`text-[10px] font-bold uppercase tracking-[0.18em] ${styles.label}`}>{title}</p>
-        <p className={`text-lg font-bold ${styles.value}`}>{formatNumber(questions.length)}</p>
+        <p className={`text-sm font-bold tabular-nums ${styles.value}`}>{formatNumber(questions.length)}</p>
       </div>
 
       {questions.length ? (
-        <div className="mt-3 max-h-52 overflow-y-auto pr-1">
-          <div className="grid gap-2">
+        <div className="mt-1.5 max-h-44 overflow-y-auto pr-1">
+          <div className="grid gap-1.5">
             {questions.map((question) => {
               const timeExceeded = Boolean(question.timeExceededThreshold);
               const hasRecordedTime = timeExceeded || Number(question.timeSpentSeconds || 0) > 0;
-              const timeClass = timeExceeded ? "font-bold text-amber-700" : "font-semibold";
-              const pillClass = `${styles.pill} ${timeExceeded ? "ring-1 ring-amber-300" : ""}`;
+              const timeClass = timeExceeded ? "font-bold text-amber-700 dark:text-amber-400" : "font-semibold";
+              const pillClass = `${styles.pill} ${timeExceeded ? "ring-1 ring-amber-300 dark:ring-amber-700" : ""}`;
 
               return question.questionUid ? (
                 <Link
                   key={`${title}-${question.questionUid}`}
                   to={buildSolvePath(question.questionUid)}
-                  className={`rounded-xl border px-3 py-2 ${pillClass}`}
+                  className={`rounded-lg border px-2.5 py-1.5 ${pillClass}`}
                 >
-                  <p className="text-sm font-semibold truncate">{question.label}</p>
-                  <div className={`mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] ${styles.meta}`}>
+                  <p className="text-xs font-semibold truncate">{question.label}</p>
+                  <div className={`mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] ${styles.meta}`}>
                     <span className="font-mono">ID {question.questionUid}</span>
                     <span className="font-semibold uppercase tracking-[0.08em]">{question.type || "Question"}</span>
                     <span className="font-semibold">Score {formatScoreDelta(question.scoreDelta)}</span>
@@ -108,10 +108,10 @@ const QuestionRecordGroup = ({ title, tone, questions = [], emptyLabel }) => {
               ) : (
                 <article
                   key={`${title}-${question.label}-${question.type || "question"}`}
-                  className={`rounded-xl border px-3 py-2 ${pillClass}`}
+                  className={`rounded-lg border px-2.5 py-1.5 ${pillClass}`}
                 >
-                  <p className="text-sm font-semibold truncate">{question.label}</p>
-                  <div className={`mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] ${styles.meta}`}>
+                  <p className="text-xs font-semibold truncate">{question.label}</p>
+                  <div className={`mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] ${styles.meta}`}>
                     <span className="font-mono">ID unavailable</span>
                     <span className="font-semibold uppercase tracking-[0.08em]">{question.type || "Question"}</span>
                     <span className="font-semibold">Score {formatScoreDelta(question.scoreDelta)}</span>
@@ -125,7 +125,7 @@ const QuestionRecordGroup = ({ title, tone, questions = [], emptyLabel }) => {
           </div>
         </div>
       ) : (
-        <p className="mt-3 text-sm italic text-slate-500">{emptyLabel}</p>
+        <p className="mt-1 text-xs italic text-slate-500 dark:text-slate-400">{emptyLabel}</p>
       )}
     </section>
   );
@@ -136,7 +136,6 @@ const getAttemptQuestionTimeRows = (attempt = {}) => {
     ["correct", attempt.correctQuestions || []],
     ["incorrect", attempt.incorrectQuestions || []],
     ["unanswered", attempt.unansweredQuestions || []],
-    ["bonus", attempt.bonusQuestions || []],
   ];
   const sectionRank = { GA: 0, CS: 1 };
 
@@ -224,7 +223,6 @@ const MockAnalyticsCharts = ({ history = [] }) => {
     const allQuestions = [
       ...(attempt.correctQuestions || []),
       ...(attempt.incorrectQuestions || []),
-      ...(attempt.bonusQuestions || []),
     ];
 
     allQuestions.forEach(q => {
@@ -400,41 +398,32 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
               </summary>
 
               {isOpen && (
-                <div className="mt-5 space-y-6 border-t border-slate-100 pt-5">
-                  <div className="grid gap-3 grid-cols-2 md:grid-cols-5">
-                    <div className="rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-3">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Attempted</p>
-                      <p className="mt-1 text-xl font-bold text-slate-900">{attempt.attempted}</p>
+                <div className="mt-3 space-y-3 border-t border-slate-100 dark:border-slate-800 pt-3">
+                  <div className="flex flex-wrap gap-2">
+                    <div className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-slate-100 px-2.5 py-1.5 dark:border-slate-800 dark:bg-slate-900/50">
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-slate-700 dark:text-slate-400">Attempted</span>
+                      <span className="text-sm font-bold tabular-nums text-slate-950 dark:text-slate-100">{attempt.attempted}</span>
                     </div>
-                    <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-3">
-                      <p className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-700">
-                        <FaCheckCircle className="text-[8px]" /> Correct
-                      </p>
-                      <p className="mt-1 text-xl font-bold text-emerald-900">{attempt.correct}</p>
+                    <div className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-400 bg-emerald-100/90 px-2.5 py-1.5 dark:border-emerald-900/40 dark:bg-emerald-950/20">
+                      <FaCheckCircle className="text-[8px] text-emerald-800 dark:text-emerald-400" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-400">Correct</span>
+                      <span className="text-sm font-bold tabular-nums text-emerald-950 dark:text-emerald-100">{attempt.correct}</span>
                     </div>
-                    <div className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-3">
-                      <p className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-rose-700">
-                        <FaTimesCircle className="text-[8px]" /> Incorrect
-                      </p>
-                      <p className="mt-1 text-xl font-bold text-rose-900">{attempt.incorrect}</p>
+                    <div className="inline-flex items-center gap-1.5 rounded-lg border border-rose-400 bg-rose-100/90 px-2.5 py-1.5 dark:border-rose-900/40 dark:bg-rose-950/20">
+                      <FaTimesCircle className="text-[8px] text-rose-800 dark:text-rose-400" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-rose-800 dark:text-rose-400">Incorrect</span>
+                      <span className="text-sm font-bold tabular-nums text-rose-950 dark:text-rose-100">{attempt.incorrect}</span>
                     </div>
-                    <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-3">
-                      <p className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-amber-700">
-                        <FaQuestionCircle className="text-[8px]" /> Unanswered
-                      </p>
-                      <p className="mt-1 text-xl font-bold text-amber-900">{attempt.unanswered}</p>
-                    </div>
-                    <div className="rounded-xl border border-sky-200 bg-sky-50 px-3 py-3">
-                      <p className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-sky-700">
-                        <FaStar className="text-[8px]" /> Bonus
-                      </p>
-                      <p className="mt-1 text-xl font-bold text-sky-900">{attempt.bonus || 0}</p>
+                    <div className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400 bg-amber-100/90 px-2.5 py-1.5 dark:border-amber-900/40 dark:bg-amber-950/20">
+                      <FaQuestionCircle className="text-[8px] text-amber-800 dark:text-amber-400" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-amber-800 dark:text-amber-400">Unanswered</span>
+                      <span className="text-sm font-bold tabular-nums text-amber-950 dark:text-amber-100">{attempt.unanswered}</span>
                     </div>
                   </div>
-
+ 
                   <TimeDistributionPanel attempt={attempt} />
-
-                  <div className="grid gap-4 xl:grid-cols-4">
+ 
+                  <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-3">
                     <QuestionRecordGroup
                       title="Correct"
                       tone="correct"
@@ -452,12 +441,6 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
                       tone="unanswered"
                       questions={attempt.unansweredQuestions}
                       emptyLabel="None skipped."
-                    />
-                    <QuestionRecordGroup
-                      title="Bonus"
-                      tone="bonus"
-                      questions={attempt.bonusQuestions}
-                      emptyLabel="None auto-awarded."
                     />
                   </div>
                 </div>

@@ -483,15 +483,44 @@ export const MockTestProvider = ({ children }) => {
     };
   }, []);
 
-  // ── BETA: Aptitude questions excluded from mock tests ──
-  // While the Aptitude section is in Beta with question formatting still being
-  // normalized, aptitude questions should NOT participate in mock tests.
-  // Once all questions are confirmed normalized and properly formatted, restore
-  // the original loading effect from version control.
+  // Restore the loading effect for Aptitude questions so they participate in mock tests
   useEffect(() => {
-    setAptitudeQuestions([]);
-    setAptitudeMockError("");
-    setAptitudeMockLoading(false);
+    let cancelled = false;
+
+    const loadAptitude = async () => {
+      if (AptitudeQuestionService.loaded) {
+        setAptitudeQuestions(normalizeQuestionList(AptitudeQuestionService.questions));
+        setAptitudeMockError("");
+        setAptitudeMockLoading(false);
+        return;
+      }
+
+      setAptitudeMockLoading(true);
+      setAptitudeMockError("");
+      try {
+        await AptitudeQuestionService.init();
+        if (cancelled) {
+          return;
+        }
+        setAptitudeQuestions(normalizeQuestionList(AptitudeQuestionService.questions));
+        setAptitudeMockError("");
+      } catch (error) {
+        if (cancelled) {
+          return;
+        }
+        setAptitudeMockError(error.message || "Unable to load aptitude questions.");
+      } finally {
+        if (!cancelled) {
+          setAptitudeMockLoading(false);
+        }
+      }
+    };
+
+    void loadAptitude();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const clearAttemptStorage = useCallback(() => {

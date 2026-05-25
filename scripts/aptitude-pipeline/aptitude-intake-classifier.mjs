@@ -20,7 +20,6 @@ const EXCLUDED_SOURCE_RE =
   /\b(?:G\.?\s*S\.?|G\.?\s*K\.?|General\s+Awareness|General\s+Studies|General\s+Science|Current\s+Affairs|Hindi)\b/i;
 const DISPLAY_FORBIDDEN_RE =
   /SSC|CGL|CHSL|MTS|CPO|Tier|Staff\s+Selection|Set\s+[A-D]\b|Q\s*\.\s*\d+(?:\.|\s*(?:to|-))|\[\[PAGE:|Direction\s*:-|General\s+Awareness/i;
-const BRITTLE_REMOTE_IMAGE_RE = /<img\b[^>]+src=["']https?:\/\/[^"']*googleusercontent\.com\//i;
 const BROAD_LOW_SIGNAL_RE = /\b(?:Mock\s+Tests?\s*\(\s*Full\s+Length\s*\)|Full\s+Length|Full\s+Test|Complete\s+Mock|Mega\s+Mock)\b/i;
 const SUBJECT_SIGNAL_RE =
   /\b(?:English|Verbal|Grammar|Vocabulary|Reasoning|Logical|Mental\s+Ability|Quantitative|Quant|Maths?|Mathematics|Numerical|Arithmetic|Aptitude)\b/i;
@@ -91,7 +90,7 @@ function usefulSourceMetadata(row = {}) {
 }
 
 function hasForbiddenDisplayToken(value = "") {
-  return DISPLAY_FORBIDDEN_RE.test(String(value || "")) || DISPLAY_FORBIDDEN_RE.test(stripHtml(value));
+  return DISPLAY_FORBIDDEN_RE.test(stripHtml(value));
 }
 
 function rowTextWithOptions(row = {}) {
@@ -113,7 +112,9 @@ function looksLikeGeneralAwareness(row = {}) {
 }
 
 function validOptions(value) {
-  return Array.isArray(value) && value.length === 4 && value.every((option) => compactText(stripHtml(option)));
+  return Array.isArray(value)
+    && value.length === 4
+    && value.every((option) => compactText(stripHtml(option)) || /<img\b/i.test(String(option || "")));
 }
 
 function decision(action, reason, detail = "") {
@@ -164,7 +165,6 @@ export function classifyParsedRow(row = {}) {
   if (EXCLUDED_SOURCE_RE.test(sourceText(row))) return decision("ignore", "excluded_source_section");
   if (BROAD_LOW_SIGNAL_RE.test(sourceText(row))) return decision("ignore", "broad_low_signal_pack");
   if (/<img\b[^>]+src=["']data:image\//i.test(row.questionHtml || "")) return decision("ignore", "inline_base64_image");
-  if (BRITTLE_REMOTE_IMAGE_RE.test(row.questionHtml || "")) return decision("ignore", "brittle_remote_image");
   if (hasForbiddenDisplayToken(row.questionHtml || "")) return decision("ignore", "forbidden_display_token");
   if (looksLikeGeneralAwareness(row)) return decision("ignore", "general_awareness_leak");
 

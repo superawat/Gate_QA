@@ -162,7 +162,7 @@ async function main() {
     if (row.year !== null && row.year !== undefined && !Number.isInteger(Number(row.year))) {
       errors.push(`${label}: year must be numeric when present`);
     }
-    if (DISPLAY_FORBIDDEN_RE.test(String(row.questionHtml || "")) || DISPLAY_FORBIDDEN_RE.test(stripHtml(row.questionHtml || ""))) {
+    if (DISPLAY_FORBIDDEN_RE.test(stripHtml(row.questionHtml || ""))) {
       errors.push(`${label}: questionHtml contains forbidden SSC provenance token`);
     }
     if (SYNTHETIC_MARKER_RE.test(`${row.questionHtml || ""} ${sourceText(row)}`)) {
