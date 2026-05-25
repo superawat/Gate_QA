@@ -153,7 +153,9 @@ const LegacyNavigationHandler = ({ loadQuestions, resumeRoute = "" }) => {
         }
 
         clearFilters();
-        const firstQuestion = startRandomSession(allQuestions);
+        const firstQuestion = startRandomSession(
+          allQuestions.length > 0 ? allQuestions : QuestionService.questions
+        );
         if (firstQuestion?.question_uid) {
           navigate(
             {
@@ -236,7 +238,9 @@ const PracticeRoutes = ({
     trackEvent("home_cta", { target: "random", source: "home" });
     await loadQuestions();
     clearFilters();
-    const firstQuestion = startRandomSession(allQuestions);
+    const firstQuestion = startRandomSession(
+      allQuestions.length > 0 ? allQuestions : QuestionService.questions
+    );
 
     if (firstQuestion?.question_uid) {
       navigate({

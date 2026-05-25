@@ -129,6 +129,7 @@ test("axe audit: solve route", async ({ page }) => {
   await page.goto(appPath(`/practice/question/${encodeURIComponent(sampleQuestion.question_uid)}`));
   await expect(page.getByText(/^Solve$/).first()).toBeVisible();
   await expect(page.getByRole("heading", { name: sampleQuestion.title })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText("Loading question detail...")).toBeHidden({ timeout: 15000 });
   await expectAccessibilityStructure(page, "Solve", {
     landmarks: ["header", "main", "footer"],
     headings: [sampleQuestion.title],

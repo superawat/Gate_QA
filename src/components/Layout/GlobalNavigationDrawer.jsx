@@ -218,6 +218,7 @@ const GlobalNavigationDrawer = ({
       className={`gateqa-global-drawer fixed inset-0 z-[70] transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       role="presentation"
       aria-hidden={!isOpen}
+      style={{ visibility: isOpen ? "visible" : "hidden" }}
     >
       <div
         className="gateqa-drawer-overlay absolute inset-0 bg-slate-950/45 backdrop-blur-[2px] transition-opacity duration-300"
