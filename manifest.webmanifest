@@ -5,6 +5,17 @@
   "start_url": "/Gate_QA/",
   "scope": "/Gate_QA/",
   "display": "standalone",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "file_handlers": [
+    {
+      "action": "/Gate_QA/",
+      "accept": {
+        "application/json": [".gateqa"]
+      }
+    }
+  ],
   "background_color": "#eef4fb",
   "theme_color": "#0f172a",
   "icons": [
