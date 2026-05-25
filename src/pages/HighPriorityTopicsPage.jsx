@@ -33,10 +33,10 @@ import PageShell from "../components/Layout/PageShell";
 import useChartTheme from "../hooks/useChartTheme";
 import {
   HIGH_PRIORITY_TOPICS_SOURCE_URL,
+  SUBJECT_SUMMARIES,
   loadHighPriorityTopicsDataset,
 } from "../utils/highPriorityTopics";
 import { INSIGHTS_ROUTE } from "../utils/routes";
-import { SUBJECT_SUMMARIES } from "../generated/highPriorityStaticData";
 
 const SUBJECT_COLORS = [
   "#0ea5e9",

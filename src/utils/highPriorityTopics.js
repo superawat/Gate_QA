@@ -1,5 +1,17 @@
 import { QuestionService } from "../services/QuestionService";
-import { STATIC_TOPIC_FREQUENCIES } from "../generated/highPriorityStaticData";
+
+const highPriorityStaticModules = import.meta.glob("../generated/highPriorityStaticData.js", {
+  eager: true,
+});
+const highPriorityStaticData = highPriorityStaticModules["../generated/highPriorityStaticData.js"] || {};
+
+export const STATIC_TOPIC_FREQUENCIES = Array.isArray(highPriorityStaticData.STATIC_TOPIC_FREQUENCIES)
+  ? highPriorityStaticData.STATIC_TOPIC_FREQUENCIES
+  : [];
+
+export const SUBJECT_SUMMARIES = Array.isArray(highPriorityStaticData.SUBJECT_SUMMARIES)
+  ? highPriorityStaticData.SUBJECT_SUMMARIES
+  : [];
 
 export const HIGH_PRIORITY_TOPICS_SOURCE_URL =
   "https://gateoverflow.in/marks-distribution?type=subject-chart";
