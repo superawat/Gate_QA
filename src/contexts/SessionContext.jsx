@@ -15,50 +15,98 @@ function fisherYatesShuffle(arr) {
 function diversifyBucket(uids, questionMap) {
     if (uids.length <= 1) return uids;
 
-    // Group by compound concept: subjectSlug + subtopicSlug
-    const groups = new Map();
+    // 1. Group questions by Subject
+    const subjectGroups = new Map();
     uids.forEach((uid) => {
         const question = questionMap.get(uid);
         const subject = question?.subjectSlug || 'unknown';
-        const subtopic = question?.subtopics?.[0]?.slug || 'general';
-        const conceptKey = `${subject}::${subtopic}`;
-
-        if (!groups.has(conceptKey)) {
-            groups.set(conceptKey, []);
+        if (!subjectGroups.has(subject)) {
+            subjectGroups.set(subject, []);
         }
-        groups.get(conceptKey).push(uid);
+        subjectGroups.get(subject).push(uid);
     });
 
-    // Shuffle each group individually using Fisher-Yates
-    const shuffledGroups = [];
-    groups.forEach((groupUids) => {
-        shuffledGroups.push(fisherYatesShuffle([...groupUids]));
+    // 2. Within each subject, group by Subtopic and interleave
+    const randomizedSubjects = new Map();
+    subjectGroups.forEach((subjectUids, subject) => {
+        const subtopicGroups = new Map();
+        subjectUids.forEach((uid) => {
+            const question = questionMap.get(uid);
+            const subtopic = question?.subtopics?.[0]?.slug || 'general';
+            if (!subtopicGroups.has(subtopic)) {
+                subtopicGroups.set(subtopic, []);
+            }
+            subtopicGroups.get(subtopic).push(uid);
+        });
+
+        // Shuffle each subtopic group internally
+        const activeSubgroups = [];
+        subtopicGroups.forEach((groupUids) => {
+            activeSubgroups.push(fisherYatesShuffle([...groupUids]));
+        });
+
+        // Shuffle the subgroups themselves to randomize starting subtopics
+        fisherYatesShuffle(activeSubgroups);
+
+        // Interleave the subtopics for this subject
+        const interleavedSubjectUids = [];
+        let remainingSubgroups = activeSubgroups.filter((g) => g.length > 0);
+        while (remainingSubgroups.length > 0) {
+            for (let i = 0; i < remainingSubgroups.length; i += 1) {
+                interleavedSubjectUids.push(remainingSubgroups[i].shift());
+            }
+            remainingSubgroups = remainingSubgroups.filter((g) => g.length > 0);
+        }
+        randomizedSubjects.set(subject, interleavedSubjectUids);
     });
 
-    // Shuffle the groups themselves to randomize starting topics
-    fisherYatesShuffle(shuffledGroups);
-
-    // Interleave the groups round-robin
+    // 3. Interleave the Subjects themselves
     const result = [];
-    let activeGroups = shuffledGroups.filter((g) => g.length > 0);
+    let activeSubjectQueues = Array.from(randomizedSubjects.values());
+    fisherYatesShuffle(activeSubjectQueues); // Randomize starting subject
 
-    while (activeGroups.length > 0) {
-        for (let i = 0; i < activeGroups.length; i += 1) {
-            result.push(activeGroups[i].shift());
+    let remainingSubjectQueues = activeSubjectQueues.filter((q) => q.length > 0);
+    while (remainingSubjectQueues.length > 0) {
+        for (let i = 0; i < remainingSubjectQueues.length; i += 1) {
+            result.push(remainingSubjectQueues[i].shift());
         }
-        activeGroups = activeGroups.filter((g) => g.length > 0);
+        remainingSubjectQueues = remainingSubjectQueues.filter((q) => q.length > 0);
     }
 
-    // Lookahead swap to avoid consecutive questions of the exact same subject
+    // 4. Lookahead swap to avoid consecutive identical subjects/subtopics where possible
     for (let i = 0; i < result.length - 1; i += 1) {
         const currentQ = questionMap.get(result[i]);
         const nextQ = questionMap.get(result[i + 1]);
-        if (currentQ && nextQ && currentQ.subjectSlug === nextQ.subjectSlug) {
+        
+        if (!currentQ || !nextQ) continue;
+
+        const isSameSubject = currentQ.subjectSlug === nextQ.subjectSlug;
+        const currentSubtopic = currentQ.subtopics?.[0]?.slug || 'general';
+        const nextSubtopic = nextQ.subtopics?.[0]?.slug || 'general';
+        const isSameSubtopic = currentSubtopic === nextSubtopic;
+
+        if (isSameSubject) {
+            let swapped = false;
+            
+            // Priority 1: Find a completely different subject to swap in
             for (let j = i + 2; j < result.length; j += 1) {
                 const swapQ = questionMap.get(result[j]);
                 if (swapQ && swapQ.subjectSlug !== currentQ.subjectSlug) {
                     [result[i + 1], result[j]] = [result[j], result[i + 1]];
+                    swapped = true;
                     break;
+                }
+            }
+
+            // Priority 2: If we must show the same subject, ensure it's a different subtopic
+            if (!swapped && isSameSubtopic) {
+                for (let j = i + 2; j < result.length; j += 1) {
+                    const swapQ = questionMap.get(result[j]);
+                    const swapSubtopic = swapQ?.subtopics?.[0]?.slug || 'general';
+                    if (swapQ && swapSubtopic !== currentSubtopic) {
+                        [result[i + 1], result[j]] = [result[j], result[i + 1]];
+                        break;
+                    }
                 }
             }
         }
