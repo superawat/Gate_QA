@@ -13,6 +13,7 @@ import {
   buildWorkspaceSnapshot,
   importWorkspaceSnapshot,
   readWorkspaceFile,
+  saveWorkspaceCsv,
 } from "./workspaceFile";
 
 const USER_NOTES_STORAGE_KEY = "gate_qa_user_notes";
@@ -141,5 +142,46 @@ describe("workspaceFile", () => {
     });
 
     await expect(readWorkspaceFile(file)).resolves.toEqual(payload);
+  });
+
+  test("exports GATE, aptitude, and mock question history to CSV", () => {
+    const storage = createMemoryStorage();
+    writeJson(storage, USER_STATE_STORAGE_KEYS.progress, {
+      "GATE-1": {
+        status: "correct",
+        attempts: 2,
+        correctAttempts: 1,
+        incorrectAttempts: 1,
+        lastSubmittedAt: "2026-05-01T10:00:00.000Z",
+        totalDurationMs: 90000,
+      },
+    });
+    writeJson(storage, APTITUDE_USER_STATE_STORAGE_KEYS.progress, {
+      "APT-1": {
+        status: "incorrect",
+        attempts: 1,
+        lastSubmittedAt: "2026-05-02T10:00:00.000Z",
+        totalDurationMs: 30000,
+      },
+    });
+    writeJson(storage, MOCK_TEST_HISTORY_STORAGE_KEY, [{
+      id: "mock-1",
+      kindTitle: "Full Mock",
+      selectedPaperLabel: "2026 Set 1",
+      submittedAt: "2026-05-03T10:00:00.000Z",
+      correctQuestions: [{ questionUid: "go:1", timeSpentSeconds: 45, scoreDelta: 2 }],
+      incorrectQuestions: [{ questionUid: "go:2", timeSpentSeconds: 75, scoreDelta: -0.33 }],
+      unansweredQuestions: [{ questionUid: "go:3", timeSpentSeconds: 0, scoreDelta: 0 }],
+    }]);
+
+    const result = saveWorkspaceCsv({ storage, win: null });
+
+    expect(result.ok).toBe(true);
+    expect(result.rowCount).toBe(5);
+    expect(result.csvContent).toContain("GATE Practice,GATE-1,correct,2,1,1,2026-05-01T10:00:00.000Z,90");
+    expect(result.csvContent).toContain("Aptitude Practice,APT-1,incorrect,1,0,1,2026-05-02T10:00:00.000Z,30");
+    expect(result.csvContent).toContain("Mock Test,go:1,correct,1,1,0,2026-05-03T10:00:00.000Z,45,mock-1,Full Mock - 2026 Set 1,2");
+    expect(result.csvContent).toContain("Mock Test,go:2,incorrect,1,0,1,2026-05-03T10:00:00.000Z,75,mock-1,Full Mock - 2026 Set 1,-0.33");
+    expect(result.csvContent).toContain("Mock Test,go:3,unanswered,1,0,0,2026-05-03T10:00:00.000Z,0,mock-1,Full Mock - 2026 Set 1,0");
   });
 });

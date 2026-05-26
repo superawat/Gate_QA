@@ -4,16 +4,11 @@ import { FaBolt, FaFire, FaShieldAlt, FaStar, FaTrophy } from "react-icons/fa";
 import { loadStudyActivityFast } from "../../utils/weakTopicAnalyzer";
 import { useDailyGoal } from "../../hooks/useDailyGoal";
 
-const StatPill = ({ icon: Icon, value, label, tone = "neutral", tooltip }) => (
+const StatPill = ({ icon: Icon, value, label, tone = "neutral" }) => (
   <div className={`home-streak-pill home-streak-pill--${tone}`}>
     <Icon size={13} />
     <span className="home-streak-pill-value">{value}</span>
     <span className="home-streak-pill-label">{label}</span>
-    {tooltip && (
-      <span className="home-streak-tooltip" role="tooltip">
-        {tooltip}
-      </span>
-    )}
   </div>
 );
 
@@ -152,10 +147,10 @@ const StreakBanner = () => {
           </div>
 
           <div className="home-streak-stats" aria-label="Practice stats">
-            <StatPill icon={FaTrophy} value={longestStreak} label="Best" tone="gold" tooltip="Your longest consecutive daily practice streak all-time." />
-            <StatPill icon={FaBolt} value={formatAura(xp)} label="Aura" tone="blue" tooltip="Learning aura points earned by completing practice sessions and mock tests." />
-            <StatPill icon={FaShieldAlt} value={freezeAvailable} label="Freeze" tone="slate" tooltip="Saves your active daily streak even if you forget to practice on any day." />
-            <StatPill icon={FaStar} value={activeDayCount} label="Days" tone="green" tooltip="The total number of unique days you have practiced on the platform." />
+            <StatPill icon={FaTrophy} value={longestStreak} label="Best" tone="gold" />
+            <StatPill icon={FaBolt} value={formatAura(xp)} label="Aura" tone="blue" />
+            <StatPill icon={FaShieldAlt} value={freezeAvailable} label="Freeze" tone="slate" />
+            <StatPill icon={FaStar} value={activeDayCount} label="Days" tone="green" />
           </div>
 
           <button

@@ -10,7 +10,7 @@ const PaginationControls = ({
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white px-4 py-3 shadow-[var(--shadow-soft)]">
+    <div className="practice-pagination flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white px-4 py-3 shadow-[var(--shadow-soft)]">
       <p className="text-sm text-slate-600">
         Page <span className="font-semibold text-slate-900">{currentPage}</span> of{" "}
         <span className="font-semibold text-slate-900">{totalPages}</span>

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FaBolt, FaChartLine, FaCompass, FaRegClock } from "react-icons/fa";
 
 import PageShell from "../components/Layout/PageShell";
@@ -6,6 +6,20 @@ import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 import { getQuoteForToday } from "../utils/motivationalQuotes";
+
+const HOME_LOADER_EXIT_MS = 260;
+
+const HomePageLoadingOverlay = ({ exiting }) => (
+  <div
+    className={`home-page-loader${exiting ? " home-page-loader--exit" : ""}`}
+    role="status"
+    aria-live="polite"
+    aria-label="Preparing GateQA dashboard"
+  >
+    <div className="home-page-loader-mark" aria-hidden="true" />
+    <p>Preparing dashboard</p>
+  </div>
+);
 
 const HomePage = ({
   hasResumeRoute,
@@ -16,14 +30,88 @@ const HomePage = ({
   onStartMockTest,
   onResumePractice,
 }) => {
+  const [isHomeReady, setIsHomeReady] = useState(false);
+  const [showHomeLoader, setShowHomeLoader] = useState(true);
   const activity = useMemo(() => loadStudyActivityFast(), []);
 
   const parsedQuote = useMemo(() => {
     const raw = getQuoteForToday();
-    const parts = raw.split(" — ");
+    const [text, author = ""] = raw.split(/\s+(?:\u2014|-)\s+/);
     return {
-      text: parts[0] || raw,
-      author: parts[1] || "",
+      text: text || raw,
+      author,
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setIsHomeReady(true);
+      setShowHomeLoader(false);
+      return undefined;
+    }
+
+    let cancelled = false;
+    let firstFrame = null;
+    let secondFrame = null;
+    let exitTimer = null;
+    let removeLoadListener = () => {};
+
+    const requestFrame =
+      typeof window.requestAnimationFrame === "function"
+        ? window.requestAnimationFrame.bind(window)
+        : (callback) => window.setTimeout(callback, 16);
+    const cancelFrame =
+      typeof window.cancelAnimationFrame === "function"
+        ? window.cancelAnimationFrame.bind(window)
+        : window.clearTimeout.bind(window);
+
+    const waitForWindowLoad =
+      typeof document !== "undefined" && document.readyState === "complete"
+        ? Promise.resolve()
+        : new Promise((resolve) => {
+            const handleLoad = () => resolve();
+            removeLoadListener = () => window.removeEventListener("load", handleLoad);
+            window.addEventListener("load", handleLoad, { once: true });
+          });
+
+    const waitForFonts =
+      typeof document !== "undefined" && document.fonts?.ready
+        ? document.fonts.ready.catch(() => undefined)
+        : Promise.resolve();
+
+    Promise.all([waitForWindowLoad, waitForFonts]).then(() => {
+      if (cancelled) {
+        return;
+      }
+
+      firstFrame = requestFrame(() => {
+        secondFrame = requestFrame(() => {
+          if (cancelled) {
+            return;
+          }
+
+          setIsHomeReady(true);
+          exitTimer = window.setTimeout(() => {
+            if (!cancelled) {
+              setShowHomeLoader(false);
+            }
+          }, HOME_LOADER_EXIT_MS);
+        });
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      removeLoadListener();
+      if (firstFrame !== null) {
+        cancelFrame(firstFrame);
+      }
+      if (secondFrame !== null) {
+        cancelFrame(secondFrame);
+      }
+      if (exitTimer !== null) {
+        window.clearTimeout(exitTimer);
+      }
     };
   }, []);
 
@@ -44,97 +132,111 @@ const HomePage = ({
     card.style.setProperty("--ry", "0deg");
   };
 
+  const actionCards = [
+    {
+      key: "practice",
+      label: "Practice",
+      subtext: "Start with a fresh question",
+      icon: FaBolt,
+      variant: "primary",
+      onClick: onStartRandomPractice,
+      quote: parsedQuote,
+    },
+    {
+      key: "filter",
+      label: "Filter Questions",
+      subtext: "By subject and year",
+      icon: FaCompass,
+      variant: "secondary",
+      onClick: onExplorePractice,
+    },
+    {
+      key: "mock",
+      label: "Mock Test",
+      subtext: "Full-length practice",
+      icon: FaRegClock,
+      variant: "secondary",
+      disabled: !mockModeEnabled,
+      onClick: onStartMockTest,
+    },
+    {
+      key: "insights",
+      label: "Performance Insights",
+      subtext: "Track your progress",
+      icon: FaChartLine,
+      variant: "secondary",
+      onClick: onOpenInsights,
+    },
+  ];
+
   return (
-    <PageShell
-      contentClassName="home-dashboard-shell"
-      onResume={hasResumeRoute ? onResumePractice : null}
-      resumeLabel="Continue"
-    >
-      <h1 className="sr-only">GateQA practice dashboard</h1>
-
-      <section className="home-quick-actions" aria-label="Dashboard actions">
-        <button
-          type="button"
-          onClick={onStartRandomPractice}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="home-action-card home-action-card--primary group text-left"
+    <>
+      <PageShell
+        contentClassName="home-dashboard-shell"
+        onResume={hasResumeRoute ? onResumePractice : null}
+        resumeLabel="Continue"
+      >
+        <div
+          className={`home-dashboard-content${isHomeReady ? " home-dashboard-content--ready" : ""}`}
+          aria-busy={!isHomeReady}
         >
-          <span className="home-action-icon">
-            <FaBolt size={18} />
-          </span>
-          <span className="home-action-copy">
-            <span className="home-action-label">Practice</span>
-            <span className="home-action-subtext">Start with a fresh question</span>
-          </span>
+          <h1 className="sr-only">GateQA practice dashboard</h1>
 
-          <span className="home-action-quote-container">
-            <span className="home-action-quote">“{parsedQuote.text}”</span>
-            {parsedQuote.author && (
-              <span className="home-action-quote-author">— {parsedQuote.author}</span>
-            )}
-          </span>
-        </button>
+          <div className="home-actions-wrap">
+            <section className="home-quick-actions" aria-label="Dashboard actions">
+              {actionCards.map((card) => {
+                const Icon = card.icon;
+                const isDisabled = Boolean(card.disabled);
 
-        <button
-          type="button"
-          onClick={onExplorePractice}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="home-action-card home-action-card--secondary group text-left"
-        >
-          <span className="home-action-icon">
-            <FaCompass size={18} />
-          </span>
-          <span className="home-action-copy">
-            <span className="home-action-label">Filter Questions</span>
-            <span className="home-action-subtext">By subject and year</span>
-          </span>
-        </button>
+                return (
+                  <button
+                    key={card.key}
+                    type="button"
+                    onClick={isDisabled ? undefined : card.onClick}
+                    disabled={isDisabled}
+                    onMouseMove={isDisabled ? undefined : handleMouseMove}
+                    onMouseLeave={isDisabled ? undefined : handleMouseLeave}
+                    className={`home-action-card home-action-card--${card.variant} group text-left ${isDisabled ? "home-action-card--disabled" : ""}`}
+                  >
+                    <span className="home-action-icon">
+                      <Icon size={18} />
+                    </span>
+                    <span className="home-action-copy">
+                      <span className="home-action-label">{card.label}</span>
+                      <span className="home-action-subtext">{card.subtext}</span>
+                    </span>
 
-        <button
-          type="button"
-          onClick={mockModeEnabled ? onStartMockTest : undefined}
-          disabled={!mockModeEnabled}
-          onMouseMove={mockModeEnabled ? handleMouseMove : undefined}
-          onMouseLeave={mockModeEnabled ? handleMouseLeave : undefined}
-          className={`home-action-card home-action-card--secondary group text-left ${mockModeEnabled ? "" : "home-action-card--disabled"}`}
-        >
-          <span className="home-action-icon">
-            <FaRegClock size={18} />
-          </span>
-          <span className="home-action-copy">
-            <span className="home-action-label">Mock Test</span>
-            <span className="home-action-subtext">Full-length practice</span>
-          </span>
-        </button>
+                    {card.quote ? (
+                      <span className="home-action-quote-container">
+                        <span className="home-action-quote">"{card.quote.text}"</span>
+                        {card.quote.author ? (
+                          <span className="home-action-quote-author">- {card.quote.author}</span>
+                        ) : null}
+                      </span>
+                    ) : null}
+                  </button>
+                );
+              })}
+            </section>
+            <div className="home-action-carousel-dots" aria-hidden="true">
+              {actionCards.map((card) => (
+                <span key={card.key} />
+              ))}
+            </div>
+          </div>
 
-        <button
-          type="button"
-          onClick={onOpenInsights}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="home-action-card home-action-card--secondary group text-left"
-        >
-          <span className="home-action-icon">
-            <FaChartLine size={18} />
-          </span>
-          <span className="home-action-copy">
-            <span className="home-action-label">Performance Insights</span>
-            <span className="home-action-subtext">Track your progress</span>
-          </span>
-        </button>
-      </section>
+          <section className="home-gamification-dashboard" aria-label="Gamification stats">
+            <StreakBanner />
+            <ActivityHeatmap
+              attemptTimeline={activity?.attemptTimeline || []}
+              streakDateKeys={activity?.streakDateKeys || []}
+            />
+          </section>
+        </div>
+      </PageShell>
 
-      <section className="home-gamification-dashboard" aria-label="Gamification stats">
-        <StreakBanner />
-        <ActivityHeatmap
-          attemptTimeline={activity?.attemptTimeline || []}
-          streakDateKeys={activity?.streakDateKeys || []}
-        />
-      </section>
-    </PageShell>
-
+      {showHomeLoader ? <HomePageLoadingOverlay exiting={isHomeReady} /> : null}
+    </>
   );
 };
 

@@ -42,10 +42,10 @@ const QuestionPickerList = ({
   isQuestionBookmarked = () => false,
   onOpenQuestion,
 }) => (
-  <section className="overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)]">
+  <section className="practice-question-list overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)]">
 
 
-    <div className="hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
+    <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
       <span>Index</span>
       <span>Question</span>
       <span>Year</span>
@@ -53,7 +53,7 @@ const QuestionPickerList = ({
       <span className="text-right">Open</span>
     </div>
 
-    <div className="divide-y divide-[color:var(--color-border)]">
+    <div className="practice-question-items divide-y divide-[color:var(--color-border)]">
       {questions.map((question, index) => {
         const sequenceNumber = pageStartIndex + index + 1;
         const typeToken = String(question?.type || "unknown").trim().toLowerCase() || "unknown";
@@ -71,10 +71,10 @@ const QuestionPickerList = ({
             key={question.question_uid}
             type="button"
             onClick={() => onOpenQuestion(question)}
-            className="group block w-full px-5 py-4 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+            className="practice-question-row group block w-full px-5 py-4 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
           >
-            <div className="flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
-              <div className="flex items-center justify-between gap-3 md:block">
+            <div className="practice-question-row-grid flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
+              <div className="practice-question-kicker flex items-center justify-between gap-3 md:block">
                 <span className="text-sm font-semibold text-[color:var(--color-text)]">#{sequenceNumber}</span>
                 <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}>
                   {typeToken}
@@ -82,10 +82,10 @@ const QuestionPickerList = ({
               </div>
 
               <div className="min-w-0">
-                <p className="text-base font-semibold leading-6 text-[color:var(--color-text)]">
+                <p className="practice-question-title text-base font-semibold leading-6 text-[color:var(--color-text)]">
                   {question?.title || "Untitled question"}
                 </p>
-                <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)] md:hidden">
+                <div className="practice-question-meta mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)] md:hidden">
                   <span>{question?.yearSetLabel || "Unknown Year"}</span>
                   <span className="h-1 w-1 rounded-full bg-[color:var(--color-neutral-border)]" />
                   <span>{subjectLabel}</span>
@@ -96,7 +96,7 @@ const QuestionPickerList = ({
                     </>
                   ) : null}
                 </div>
-                <div className="mt-3 flex flex-wrap items-center gap-2 md:hidden">
+                <div className="practice-question-mobile-actions mt-3 flex flex-wrap items-center gap-2 md:hidden">
                   <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${status.className}`}>
                     <StatusIcon className={status.iconClassName} />
                     {status.label}

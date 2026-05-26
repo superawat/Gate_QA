@@ -290,20 +290,24 @@ const ExplorePage = ({
   ]);
 
   return (
-    <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
+    <PageShell
+      contentClassName="practice-explore-shell"
+      onResume={hasResumeRoute ? onResumePractice : null}
+      resumeLabel="Continue"
+    >
       <FilterModal
         isOpen={isMobileFilterOpen}
         onClose={() => setIsMobileFilterOpen(false)}
       />
 
-      <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)] 2xl:grid-cols-[380px_minmax(0,1fr)]">
+      <div className="practice-explore-layout grid min-w-0 gap-6 xl:grid-cols-[360px_minmax(0,1fr)] 2xl:grid-cols-[380px_minmax(0,1fr)]">
         <div className="hidden xl:block">
           <div className="sticky top-24 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)]">
             <FilterSidebar className="h-[calc(100vh-8rem)] border-r-0 bg-[color:var(--color-surface)]" />
           </div>
         </div>
 
-        <section className="space-y-5">
+        <section className="practice-explore-content min-w-0 space-y-5">
           {(pullDistance > 0 || isPullRefreshing) ? (
             <div className="sticky top-20 z-20 -mb-2 flex justify-center md:hidden">
               <div className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 shadow-[var(--shadow-soft)]">
@@ -312,21 +316,21 @@ const ExplorePage = ({
             </div>
           ) : null}
 
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)]">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <h1 className="text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>
-                <p className="mt-2 text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
+          <div className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)]">
+            <div className="practice-explore-heading flex flex-wrap items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h1 className="practice-explore-title text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>
+                <p className="practice-result-summary mt-2 text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="practice-filter-actions flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={handleOpenFilters}
                   aria-keyshortcuts="F"
-                  className="inline-flex min-h-[56px] items-center gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-left text-sm font-semibold text-slate-900 shadow-[var(--shadow-soft)] ring-1 ring-sky-100 transition hover:border-sky-400 hover:bg-sky-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
+                  className="practice-filter-trigger inline-flex min-h-[56px] items-center gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-left text-sm font-semibold text-slate-900 shadow-[var(--shadow-soft)] ring-1 ring-sky-100 transition hover:border-sky-400 hover:bg-sky-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
                 >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 text-white shadow-sm">
+                  <span className="practice-filter-trigger-icon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 text-white shadow-sm">
                     <FaFilter className="h-5 w-5" />
                   </span>
                   <span className="flex flex-col leading-tight">
@@ -339,7 +343,7 @@ const ExplorePage = ({
               </div>
             </div>
 
-            <div className="mt-4 border-t border-slate-100 pt-4">
+            <div className="practice-search-row mt-4 border-t border-slate-100 pt-4">
               <QuestionSearchInput
                 id="explore-search"
                 label="Search questions"
@@ -350,7 +354,7 @@ const ExplorePage = ({
               />
             </div>
 
-            <div className="mt-4">
+            <div className="practice-active-chips mt-4">
               <ActiveFilterChips />
             </div>
           </div>

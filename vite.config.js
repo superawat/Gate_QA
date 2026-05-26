@@ -76,7 +76,6 @@ export default defineConfig(async ({ mode }) => {
             }
             if (
               id.includes('jspdf') ||
-              id.includes('html2canvas') ||
               id.includes('canvg') ||
               id.includes('fflate') ||
               id.includes('rgbcolor') ||

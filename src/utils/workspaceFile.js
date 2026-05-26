@@ -216,6 +216,68 @@ const downloadTextFile = (text, filename, documentRef = typeof document !== "und
   URL.revokeObjectURL(url);
 };
 
+const csvEscape = (value) => {
+  const str = String(value ?? "").replace(/"/g, '""');
+  return str.includes(",") || str.includes("\n") || str.includes('"') ? `"${str}"` : str;
+};
+
+const buildProgressCsvRows = ({ source, progress = {} }) => (
+  Object.entries(progress || {}).flatMap(([key, entry]) => {
+    if (!entry || typeof entry !== "object") return [];
+    const durationSec = entry.totalDurationMs ? Math.round(entry.totalDurationMs / 1000) : 0;
+    return [[
+      source,
+      key,
+      entry.status || "attempted",
+      entry.attempts || 1,
+      entry.correctAttempts ?? (entry.status === "correct" ? 1 : 0),
+      entry.incorrectAttempts ?? (entry.status === "incorrect" ? 1 : 0),
+      entry.lastSubmittedAt || "",
+      durationSec,
+      "",
+      "",
+      "",
+    ]];
+  })
+);
+
+const buildMockQuestionCsvRows = (mockHistory = []) => (
+  (Array.isArray(mockHistory) ? mockHistory : []).flatMap((attempt) => {
+    if (!attempt || typeof attempt !== "object") return [];
+    const mockTitle = [
+      attempt.kindTitle || "Mock Test",
+      attempt.selectedPaperLabel || "",
+    ].filter(Boolean).join(" - ");
+    const groups = [
+      ["correct", attempt.correctQuestions || []],
+      ["incorrect", attempt.incorrectQuestions || []],
+      ["unanswered", attempt.unansweredQuestions || []],
+      ["bonus", attempt.bonusQuestions || []],
+    ];
+
+    return groups.flatMap(([status, questions]) => (
+      (Array.isArray(questions) ? questions : []).flatMap((question) => {
+        if (!question || typeof question !== "object") return [];
+        const questionUid = String(question.questionUid || "").trim();
+        if (!questionUid) return [];
+        return [[
+          "Mock Test",
+          questionUid,
+          status,
+          1,
+          status === "correct" || status === "bonus" ? 1 : 0,
+          status === "incorrect" ? 1 : 0,
+          attempt.submittedAt || "",
+          Number.isFinite(Number(question.timeSpentSeconds)) ? Math.round(Number(question.timeSpentSeconds)) : 0,
+          attempt.id || "",
+          mockTitle,
+          question.scoreDelta ?? "",
+        ]];
+      })
+    ));
+  })
+);
+
 export const saveWorkspaceFile = async ({
   storage = getDefaultStorage(),
   win = typeof window !== "undefined" ? window : null,
@@ -251,30 +313,30 @@ export const saveWorkspaceCsv = ({
   win = typeof window !== "undefined" ? window : null,
   suggestedName = `gateqa-progress-${todayStamp()}.csv`,
 } = {}) => {
-  const progress = readStorageJson("gateqa_progress_v1", {}, storage);
+  const gateProgress = readStorageJson(USER_STATE_STORAGE_KEYS.progress, {}, storage);
+  const aptitudeProgress = readStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.progress, {}, storage);
+  const mockHistory = readStorageJson(MOCK_TEST_HISTORY_STORAGE_KEY, [], storage);
   const rows = [
-    ["Question ID", "Status", "Attempts", "Correct Attempts", "Incorrect Attempts", "Last Submitted", "Time Spent (seconds)"]
+    [
+      "Source",
+      "Question ID",
+      "Status",
+      "Attempts",
+      "Correct Attempts",
+      "Incorrect Attempts",
+      "Last Submitted",
+      "Time Spent (seconds)",
+      "Mock ID",
+      "Mock Title",
+      "Score Delta",
+    ],
+    ...buildProgressCsvRows({ source: "GATE Practice", progress: gateProgress }),
+    ...buildProgressCsvRows({ source: "Aptitude Practice", progress: aptitudeProgress }),
+    ...buildMockQuestionCsvRows(mockHistory),
   ];
 
-  Object.entries(progress).forEach(([key, entry]) => {
-    if (!entry || typeof entry !== "object") return;
-    const durationSec = entry.totalDurationMs ? Math.round(entry.totalDurationMs / 1000) : 0;
-    rows.push([
-      key,
-      entry.status || "attempted",
-      entry.attempts || 1,
-      entry.correctAttempts ?? (entry.status === "correct" ? 1 : 0),
-      entry.incorrectAttempts ?? (entry.status === "incorrect" ? 1 : 0),
-      entry.lastSubmittedAt || "",
-      durationSec
-    ]);
-  });
-
   const csvContent = rows
-    .map(row => row.map(val => {
-      const str = String(val ?? "").replace(/"/g, '""');
-      return str.includes(",") || str.includes("\n") || str.includes('"') ? `"${str}"` : str;
-    }).join(","))
+    .map(row => row.map(csvEscape).join(","))
     .join("\n");
 
   if (win?.document) {
@@ -293,7 +355,7 @@ export const saveWorkspaceCsv = ({
     storage?.setItem?.("gateqa_last_backup_time", String(Date.now()));
   } catch (e) {}
 
-  return { ok: true };
+  return { ok: true, rowCount: rows.length - 1, csvContent };
 };
 
 export const readWorkspaceFile = async (file) => {
