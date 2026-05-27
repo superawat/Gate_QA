@@ -193,4 +193,34 @@ describe('SessionContext', () => {
         expect(latestSession.sessionQueue[0]).toBe('reasoning-coding-2');
         expect(latestSession.sessionQueue[1]).not.toMatch(/coding/);
     });
+
+    test('uses a stratified fair shuffle bag across reasoning subtopics', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        const pool = [
+            { question_uid: 'coding-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'coding-decoding' }] },
+            { question_uid: 'coding-2', subjectSlug: 'reasoning', subtopics: [{ slug: 'coding-decoding' }] },
+            { question_uid: 'direction-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'direction-sense' }] },
+            { question_uid: 'direction-2', subjectSlug: 'reasoning', subtopics: [{ slug: 'direction-sense' }] },
+            { question_uid: 'blood-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'blood-relations' }] },
+            { question_uid: 'blood-2', subjectSlug: 'reasoning', subtopics: [{ slug: 'blood-relations' }] },
+        ];
+
+        act(() => {
+            latestSession.startRandomSession(pool);
+        });
+
+        const topicOrder = latestSession.sessionQueue.map((uid) => uid.split('-')[0]);
+        expect(new Set(topicOrder.slice(0, 3))).toEqual(new Set(['coding', 'direction', 'blood']));
+        topicOrder.forEach((topic, index) => {
+            if (index === 0) {
+                return;
+            }
+            expect(topic).not.toBe(topicOrder[index - 1]);
+        });
+    });
 });

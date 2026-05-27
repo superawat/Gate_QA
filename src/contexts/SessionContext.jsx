@@ -37,123 +37,123 @@ function getQuestionTopicKey(question = {}) {
     return `${getQuestionSubjectKey(question)}::${getQuestionSubtopicKey(question)}`;
 }
 
-function countSubjectRemaining(subjectBucket) {
-    return subjectBucket.subtopics.reduce((total, subtopicBucket) => total + subtopicBucket.queue.length, 0);
+function getActiveTopicCount(strata = []) {
+    return strata.reduce((count, stratum) => count + (stratum.queue.length > 0 ? 1 : 0), 0);
 }
 
-function pickBalancedSubject(subjectBuckets, lastSubjectKey) {
-    const activeBuckets = subjectBuckets.filter((bucket) => countSubjectRemaining(bucket) > 0);
-    if (activeBuckets.length === 0) {
-        return null;
-    }
+function buildStrata(uids, questionMap) {
+    const groups = new Map();
 
-    const hasSubjectAlternative = activeBuckets.some((bucket) => bucket.subjectKey !== lastSubjectKey);
-    const candidates = hasSubjectAlternative
-        ? activeBuckets.filter((bucket) => bucket.subjectKey !== lastSubjectKey)
-        : activeBuckets;
-
-    return fisherYatesShuffle([...candidates])
-        .sort((left, right) => countSubjectRemaining(right) - countSubjectRemaining(left))[0];
-}
-
-function pickBalancedSubtopic(subjectBucket, recentTopicKeys) {
-    const activeSubtopics = subjectBucket.subtopics.filter((bucket) => bucket.queue.length > 0);
-    if (activeSubtopics.length === 0) {
-        return null;
-    }
-
-    const recentTopics = new Set(recentTopicKeys);
-    const lastTopicKey = recentTopicKeys[0] || '';
-    const hasFreshTopic = activeSubtopics.some((bucket) => !recentTopics.has(bucket.topicKey));
-    const hasNonConsecutiveTopic = activeSubtopics.some((bucket) => bucket.topicKey !== lastTopicKey);
-    let candidates = activeSubtopics;
-
-    if (hasFreshTopic) {
-        candidates = activeSubtopics.filter((bucket) => !recentTopics.has(bucket.topicKey));
-    } else if (hasNonConsecutiveTopic) {
-        candidates = activeSubtopics.filter((bucket) => bucket.topicKey !== lastTopicKey);
-    }
-
-    return fisherYatesShuffle([...candidates])
-        .sort((left, right) => right.queue.length - left.queue.length)[0];
-}
-
-function diversifyBucket(uids, questionMap) {
-    if (uids.length <= 1) return uids;
-
-    const subjectGroups = new Map();
     uids.forEach((uid) => {
         const question = questionMap.get(uid);
         const subjectKey = getQuestionSubjectKey(question);
         const topicKey = getQuestionTopicKey(question);
 
-        if (!subjectGroups.has(subjectKey)) {
-            subjectGroups.set(subjectKey, new Map());
+        if (!groups.has(topicKey)) {
+            groups.set(topicKey, {
+                subjectKey,
+                topicKey,
+                queue: [],
+                drawn: 0,
+                randomRank: Math.random(),
+            });
         }
 
-        const subtopicGroups = subjectGroups.get(subjectKey);
-        if (!subtopicGroups.has(topicKey)) {
-            subtopicGroups.set(topicKey, []);
-        }
-        subtopicGroups.get(topicKey).push(uid);
+        groups.get(topicKey).queue.push(uid);
     });
 
-    const subjectBuckets = fisherYatesShuffle(Array.from(subjectGroups.entries()).map(([subjectKey, subtopicMap]) => ({
-        subjectKey,
-        subtopics: fisherYatesShuffle(Array.from(subtopicMap.entries()).map(([topicKey, queue]) => ({
-            topicKey,
-            queue: fisherYatesShuffle([...queue]),
-        }))),
-    })));
+    return Array.from(groups.values()).map((stratum) => {
+        const queue = fisherYatesShuffle([...stratum.queue]);
+        return {
+            ...stratum,
+            queue,
+            originalSize: queue.length,
+        };
+    });
+}
 
+function compareStrataByFairness(left, right) {
+    const leftServedRatio = left.drawn / Math.max(1, left.originalSize);
+    const rightServedRatio = right.drawn / Math.max(1, right.originalSize);
+
+    if (leftServedRatio !== rightServedRatio) {
+        return leftServedRatio - rightServedRatio;
+    }
+
+    if (left.queue.length !== right.queue.length) {
+        return right.queue.length - left.queue.length;
+    }
+
+    return left.randomRank - right.randomRank;
+}
+
+function selectNextStratum(strata, recentTopicKeys, lastSubjectKey) {
+    const activeStrata = strata.filter((stratum) => stratum.queue.length > 0);
+    if (activeStrata.length === 0) {
+        return null;
+    }
+
+    const activeSubjectCount = new Set(activeStrata.map((stratum) => stratum.subjectKey)).size;
+    const activeTopicCount = getActiveTopicCount(activeStrata);
+    const topicCooldownSize = Math.min(2, Math.max(0, activeTopicCount - 1));
+    const topicCooldownSet = new Set(recentTopicKeys.slice(0, topicCooldownSize));
+
+    const withSubjectDiversity = activeSubjectCount > 1
+        ? activeStrata.filter((stratum) => stratum.subjectKey !== lastSubjectKey)
+        : activeStrata;
+
+    const withTopicCooldown = withSubjectDiversity.filter((stratum) => !topicCooldownSet.has(stratum.topicKey));
+    const withImmediateTopicBreak = withSubjectDiversity.filter((stratum) => stratum.topicKey !== recentTopicKeys[0]);
+    const candidates = withTopicCooldown.length > 0
+        ? withTopicCooldown
+        : withImmediateTopicBreak.length > 0
+            ? withImmediateTopicBreak
+            : withSubjectDiversity;
+
+    return [...candidates].sort(compareStrataByFairness)[0];
+}
+
+function buildStratifiedShuffleBag(uids, questionMap, seedState = {}) {
+    if (uids.length <= 1) {
+        const firstQuestion = questionMap.get(uids[0]);
+        return {
+            queue: uids,
+            recentTopicKeys: uids[0] ? [getQuestionTopicKey(firstQuestion)] : seedState.recentTopicKeys || [],
+            lastSubjectKey: uids[0] ? getQuestionSubjectKey(firstQuestion) : seedState.lastSubjectKey || '',
+        };
+    }
+
+    const strata = buildStrata(uids, questionMap);
     const result = [];
-    const recentTopicKeys = [];
-    let lastSubjectKey = '';
+    const recentTopicKeys = Array.isArray(seedState.recentTopicKeys)
+        ? [...seedState.recentTopicKeys]
+        : [];
+    let lastSubjectKey = seedState.lastSubjectKey || '';
 
     while (result.length < uids.length) {
-        const subjectBucket = pickBalancedSubject(subjectBuckets, lastSubjectKey);
-        if (!subjectBucket) {
+        const stratum = selectNextStratum(strata, recentTopicKeys, lastSubjectKey);
+        if (!stratum) {
             break;
         }
 
-        const subtopicBucket = pickBalancedSubtopic(subjectBucket, recentTopicKeys);
-        if (!subtopicBucket) {
-            break;
-        }
+        const nextUid = stratum.queue.shift();
+        stratum.drawn += 1;
 
-        const nextUid = subtopicBucket.queue.shift();
         result.push(nextUid);
-        lastSubjectKey = subjectBucket.subjectKey;
-        recentTopicKeys.unshift(subtopicBucket.topicKey);
+        lastSubjectKey = stratum.subjectKey;
+        recentTopicKeys.unshift(stratum.topicKey);
         recentTopicKeys.splice(3);
     }
 
-    return result;
+    return {
+        queue: result,
+        recentTopicKeys,
+        lastSubjectKey,
+    };
 }
 
-function appendDiversifiedBucket(queue, bucketQueue, questionMap) {
-    if (queue.length === 0 || bucketQueue.length <= 1) {
-        return [...queue, ...bucketQueue];
-    }
-
-    const lastQuestion = questionMap.get(queue[queue.length - 1]);
-    const lastTopicKey = getQuestionTopicKey(lastQuestion);
-    const firstTopicKey = getQuestionTopicKey(questionMap.get(bucketQueue[0]));
-    if (lastTopicKey !== firstTopicKey) {
-        return [...queue, ...bucketQueue];
-    }
-
-    const swapIndex = bucketQueue.findIndex((uid) => (
-        getQuestionTopicKey(questionMap.get(uid)) !== lastTopicKey
-    ));
-
-    if (swapIndex > 0) {
-        const adjustedBucket = [...bucketQueue];
-        [adjustedBucket[0], adjustedBucket[swapIndex]] = [adjustedBucket[swapIndex], adjustedBucket[0]];
-        return [...queue, ...adjustedBucket];
-    }
-
-    return [...queue, ...bucketQueue];
+function diversifyBucket(uids, questionMap, seedState = {}) {
+    return buildStratifiedShuffleBag(uids, questionMap, seedState);
 }
 
 function prioritizeInitialUid(queue, initialUid, questionMap) {
@@ -171,9 +171,13 @@ function prioritizeInitialUid(queue, initialUid, questionMap) {
     const prioritizedQueue = [requestedUid, ...remainingQueue];
     const requestedTopicKey = getQuestionTopicKey(questionMap.get(requestedUid));
 
-    const swapIndex = prioritizedQueue.findIndex((uid, index) => (
-        index > 0 && getQuestionTopicKey(questionMap.get(uid)) !== requestedTopicKey
-    ));
+    const swapIndex = prioritizedQueue.findIndex((uid, index) => {
+        if (index === 0) {
+            return false;
+        }
+
+        return getQuestionTopicKey(questionMap.get(uid)) !== requestedTopicKey;
+    });
 
     if (swapIndex > 1) {
         [prioritizedQueue[1], prioritizedQueue[swapIndex]] = [prioritizedQueue[swapIndex], prioritizedQueue[1]];
@@ -214,12 +218,22 @@ function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
         }
     }
 
-    const diversifiedBucket1 = diversifyBucket(bucket1, questionMap);
-    const diversifiedBucket2 = diversifyBucket(bucket2, questionMap);
-    const diversifiedBucket3 = diversifyBucket(bucket3, questionMap);
+    const queue = [];
+    let seedState = {
+        recentTopicKeys: [],
+        lastSubjectKey: '',
+    };
 
-    return [diversifiedBucket1, diversifiedBucket2, diversifiedBucket3]
-        .reduce((queue, bucketQueue) => appendDiversifiedBucket(queue, bucketQueue, questionMap), []);
+    [bucket1, bucket2, bucket3].forEach((bucket) => {
+        const diversifiedBucket = diversifyBucket(bucket, questionMap, seedState);
+        queue.push(...diversifiedBucket.queue);
+        seedState = {
+            recentTopicKeys: diversifiedBucket.recentTopicKeys,
+            lastSubjectKey: diversifiedBucket.lastSubjectKey,
+        };
+    });
+
+    return queue;
 }
 
 function uniqueQuestionList(questionPool = []) {

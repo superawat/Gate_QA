@@ -8,7 +8,7 @@
 
 ### Changed
 - Changed Explore question opening to start a balanced random practice session from the filtered pool while keeping the selected question first.
-- Improved random practice queue balancing across subjects and subtopics, with lookahead to reduce same-topic clustering and consecutive topic repeats.
+- Replaced practice randomization with a standard stratified shuffle-bag algorithm: Fisher-Yates within each topic, weighted-fair interleaving across subject/subtopic strata, and a short topic cooldown to reduce clustering.
 - Upgraded the mobile Home action area into a centered horizontal carousel with partially visible side cards, scroll snapping, active-card emphasis, and compact dots while leaving desktop layout unchanged.
 
 ### Verified
