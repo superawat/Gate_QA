@@ -79,6 +79,8 @@ describe("AptitudeQuestionService", () => {
     AptitudeQuestionService.detailShardCache = new Map();
     AptitudeQuestionService.detailShardPromises = new Map();
     AptitudeQuestionService.pendingLoad = null;
+    AptitudeQuestionService.structuredTagsCache = null;
+    AptitudeQuestionService.subtopicToSubjectSlug = new Map();
     window.localStorage.clear();
     vi.restoreAllMocks();
   });
@@ -127,6 +129,22 @@ describe("AptitudeQuestionService", () => {
     expect(tags.yearSets).toEqual([]);
     expect(tags.subjects.map((subject) => subject.slug)).toEqual(["english", "quant"]);
     expect(tags.structuredSubtopics.english).toEqual([{ slug: "synonyms", label: "Synonyms" }]);
+  });
+
+  test("precomputes aptitude tag maps during index load", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => sampleIndex,
+    }));
+
+    await AptitudeQuestionService.init();
+    const tags = AptitudeQuestionService.getStructuredTags();
+    const buildSpy = vi.spyOn(AptitudeQuestionService, "buildStructuredTagsCache");
+
+    expect(AptitudeQuestionService.getStructuredTags()).toBe(tags);
+    expect(buildSpy).not.toHaveBeenCalled();
+    expect(AptitudeQuestionService.subtopicToSubjectSlug.get("synonyms")).toBe("english");
+    expect(AptitudeQuestionService.subtopicToSubjectSlug.get("ratio-and-proportion")).toBe("quant");
   });
 
   test("lazily hydrates an aptitude question from its detail shard", async () => {

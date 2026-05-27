@@ -121,15 +121,23 @@ const finalizeBaseBucket = (bucket, { years }) => {
   const recentAverageMarks = Number((recentMarks / RECENT_TREND_YEARS).toFixed(2));
   const previousAverageMarks = Number((previousMarks / RECENT_TREND_YEARS).toFixed(2));
   const trendDeltaMarks = Number((recentAverageMarks - previousAverageMarks).toFixed(2));
-  const trendDirection = trendDeltaMarks > 0.25
-    ? "up"
-    : trendDeltaMarks < -0.25
-      ? "down"
-      : "flat";
+
+  // Balanced relative trend indicator to remove absolute scale bias
+  const percentChange = previousAverageMarks > 0
+    ? (recentAverageMarks - previousAverageMarks) / previousAverageMarks
+    : (recentAverageMarks > 0 ? 1.0 : 0.0);
+
+  // Unbiased, scale-free trend direction
+  let trendDirection = "flat";
+  if ((trendDeltaMarks >= 0.15 && percentChange >= 0.10) || (previousAverageMarks === 0 && recentAverageMarks >= 0.2)) {
+    trendDirection = "up";
+  } else if (trendDeltaMarks <= -0.15 && percentChange <= -0.10) {
+    trendDirection = "down";
+  }
 
   return {
     ...bucket,
-    baselineCount: bucket.baselineCount || bucket.questions || 0,
+    baselineCount: Math.max(bucket.baselineCount || 0, bucket.questions || 0),
     paperKeys: Array.from(bucket.paperKeys).sort(),
     paperCount: bucket.paperKeys.size,
     activeYears,
@@ -161,12 +169,12 @@ const getPriorityTier = (score, rank) => {
 };
 
 const scoreAndRankBuckets = (items = []) => {
-  const maxBaseline = Math.max(1, ...items.map((item) => item.baselineCount || 1));
+  const maxBaseline = Math.max(1, ...items.map((item) => Math.max(item.baselineCount || 0, item.questions || 0)));
   const maxRecentAverage = Math.max(1, ...items.map((item) => item.recentAverageMarks));
 
   return items
     .map((item) => {
-      const baselineCount = item.baselineCount || item.questions || 0;
+      const baselineCount = Math.max(item.baselineCount || 0, item.questions || 0);
       const baselineScore = (baselineCount / maxBaseline) * 55;
       const consistencyScore = item.consistencyRate * 25;
       const recentScore = (item.recentAverageMarks / maxRecentAverage) * 15;
@@ -184,8 +192,8 @@ const scoreAndRankBuckets = (items = []) => {
       if (right.importanceScore !== left.importanceScore) {
         return right.importanceScore - left.importanceScore;
       }
-      const leftBase = left.baselineCount || left.questions || 0;
-      const rightBase = right.baselineCount || right.questions || 0;
+      const leftBase = Math.max(left.baselineCount || 0, left.questions || 0);
+      const rightBase = Math.max(right.baselineCount || 0, right.questions || 0);
       if (rightBase !== leftBase) {
         return rightBase - leftBase;
       }

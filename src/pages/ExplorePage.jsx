@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaFilter } from "react-icons/fa";
+import { FaFilter, FaPlay } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
@@ -43,7 +43,10 @@ const ExplorePage = ({
   const requestedPage = parsePageParam(location.search, 1);
   const currentPage = Math.min(requestedPage, totalPages);
   const startIndex = (currentPage - 1) * PAGE_SIZE;
-  const pagedQuestions = filteredQuestions.slice(startIndex, startIndex + PAGE_SIZE);
+  const pagedQuestions = useMemo(
+    () => filteredQuestions.slice(startIndex, startIndex + PAGE_SIZE),
+    [filteredQuestions, startIndex]
+  );
 
   const [isPageTransitioning, setIsPageTransitioning] = useState(false);
   const prevPageRef = useRef(currentPage);
@@ -233,7 +236,7 @@ const ExplorePage = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleOpenFilters]);
 
-  const handleOpenQuestion = (question) => {
+  const handleOpenQuestion = useCallback((question) => {
     startRandomSession(filteredQuestions, question.question_uid);
     trackEvent("result_open", { question_uid: question.question_uid, source: "explore" });
     writeLastSession({
@@ -247,7 +250,7 @@ const ExplorePage = ({
       pathname: buildSolvePath(question.question_uid),
       search: location.search,
     });
-  };
+  }, [currentPage, filteredQuestions, location.search, navigate, startRandomSession]);
 
   const resultSummary = useMemo(() => {
     if (!isInitialized) {
@@ -305,6 +308,48 @@ const ExplorePage = ({
     structuredTags?.questionTypes,
   ]);
 
+  const quickStartLabel = useMemo(() => {
+    if (filters.selectedSubjects.includes("reasoning")) {
+      return "Start Reasoning Practice";
+    }
+    return activeFilterCount > 0 ? "Continue Filtered Practice" : "Start Practice";
+  }, [activeFilterCount, filters.selectedSubjects]);
+
+  const handleStartFilteredPractice = useCallback(() => {
+    if (!filteredQuestions.length) {
+      return;
+    }
+
+    const firstQuestion = startRandomSession(filteredQuestions) || filteredQuestions[0];
+    if (!firstQuestion?.question_uid) {
+      return;
+    }
+
+    trackEvent("filtered_practice_start", {
+      source: "explore",
+      activeFilterCount,
+      question_uid: firstQuestion.question_uid,
+    });
+    writeLastSession({
+      route: `${buildSolvePath(firstQuestion.question_uid)}${location.search || ""}`,
+      exploreSearch: location.search || "",
+      resultPage: currentPage,
+      questionUid: firstQuestion.question_uid,
+      mode: "random",
+    });
+    navigate({
+      pathname: buildSolvePath(firstQuestion.question_uid),
+      search: location.search,
+    });
+  }, [
+    activeFilterCount,
+    currentPage,
+    filteredQuestions,
+    location.search,
+    navigate,
+    startRandomSession,
+  ]);
+
   return (
     <PageShell
       contentClassName="practice-explore-shell"
@@ -340,6 +385,15 @@ const ExplorePage = ({
               </div>
 
               <div className="practice-filter-actions flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleStartFilteredPractice}
+                  disabled={!filteredQuestions.length}
+                  className="inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-2xl bg-[color:var(--color-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                >
+                  <FaPlay className="text-xs" aria-hidden="true" />
+                  {quickStartLabel}
+                </button>
                 <button
                   type="button"
                   onClick={handleOpenFilters}

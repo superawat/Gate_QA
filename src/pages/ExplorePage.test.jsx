@@ -389,6 +389,20 @@ describe("ExplorePage", () => {
     expect(mocks.startRandomSession.mock.calls[0][1]).toBe("go:algo-1");
   });
 
+  test("starts filtered practice directly from the quick-start action", async () => {
+    mocks.startRandomSession.mockReturnValueOnce({ question_uid: "go:algo-2" });
+    renderExplorePage({ route: "/practice?subjects=algorithms" });
+
+    fireEvent.click(await screen.findByRole("button", { name: /continue filtered practice/i }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3Aalgo-2?subjects=algorithms");
+    });
+
+    expect(mocks.startRandomSession).toHaveBeenCalledTimes(1);
+    expect(mocks.startRandomSession.mock.calls[0][0].map((question) => question.question_uid)).toEqual(["go:algo-1", "go:algo-2"]);
+  });
+
   test("shows the loading state while the question index is not initialized", async () => {
     renderExplorePage({ loading: true, hasQuestions: false });
 

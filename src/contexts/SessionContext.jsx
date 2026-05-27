@@ -1,8 +1,14 @@
-import React, { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useFilterState } from './FilterContext';
 import { AnswerService } from '../services/AnswerService';
+import { QuestionService } from '../services/QuestionService';
+import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 
 const SessionContext = createContext();
+const RANDOM_TOPIC_MEMORY_KEY = 'gateqa_random_recent_topics_v1';
+const RANDOM_TOPIC_MEMORY_LIMIT = 6;
+const PREFETCH_LOOKAHEAD_COUNT = 3;
+const APTITUDE_UID_PREFIX = 'APT-';
 
 function fisherYatesShuffle(arr) {
     for (let i = arr.length - 1; i > 0; i -= 1) {
@@ -156,6 +162,61 @@ function diversifyBucket(uids, questionMap, seedState = {}) {
     return buildStratifiedShuffleBag(uids, questionMap, seedState);
 }
 
+function normalizeTopicMemory(memory = {}) {
+    const recentTopicKeys = Array.isArray(memory?.recentTopicKeys)
+        ? memory.recentTopicKeys
+            .map((key) => String(key || '').trim())
+            .filter(Boolean)
+            .slice(0, RANDOM_TOPIC_MEMORY_LIMIT)
+        : [];
+
+    return {
+        recentTopicKeys,
+        lastSubjectKey: String(memory?.lastSubjectKey || '').trim(),
+    };
+}
+
+function readRandomTopicMemory() {
+    if (typeof window === 'undefined') {
+        return normalizeTopicMemory();
+    }
+
+    try {
+        return normalizeTopicMemory(JSON.parse(window.localStorage.getItem(RANDOM_TOPIC_MEMORY_KEY) || '{}'));
+    } catch {
+        return normalizeTopicMemory();
+    }
+}
+
+function writeRandomTopicMemory(memory = {}) {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    try {
+        window.localStorage.setItem(RANDOM_TOPIC_MEMORY_KEY, JSON.stringify(normalizeTopicMemory(memory)));
+    } catch {
+        // Best-effort only. Random queue quality should never depend on storage.
+    }
+}
+
+function rememberQuestionTopic(memory = {}, question = {}) {
+    if (!question?.question_uid) {
+        return normalizeTopicMemory(memory);
+    }
+
+    const topicKey = getQuestionTopicKey(question);
+    const recentTopicKeys = [
+        topicKey,
+        ...normalizeTopicMemory(memory).recentTopicKeys.filter((key) => key !== topicKey),
+    ].slice(0, RANDOM_TOPIC_MEMORY_LIMIT);
+
+    return {
+        recentTopicKeys,
+        lastSubjectKey: getQuestionSubjectKey(question),
+    };
+}
+
 function prioritizeInitialUid(queue, initialUid, questionMap) {
     const requestedUid = String(initialUid || '').trim();
     if (!requestedUid) {
@@ -194,7 +255,7 @@ function getTrackingId(question) {
     return normalized || null;
 }
 
-function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
+function buildSessionQueue(questionPool, seenThisSession, solvedSet, persistedTopicMemory = {}) {
     const bucket1 = [];
     const bucket2 = [];
     const bucket3 = [];
@@ -219,10 +280,7 @@ function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
     }
 
     const queue = [];
-    let seedState = {
-        recentTopicKeys: [],
-        lastSubjectKey: '',
-    };
+    let seedState = normalizeTopicMemory(persistedTopicMemory);
 
     [bucket1, bucket2, bucket3].forEach((bucket) => {
         const diversifiedBucket = diversifyBucket(bucket, questionMap, seedState);
@@ -234,6 +292,28 @@ function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
     });
 
     return queue;
+}
+
+function getDetailServiceForQuestion(question = {}) {
+    const uid = String(question?.question_uid || '').trim();
+    return uid.startsWith(APTITUDE_UID_PREFIX) ? AptitudeQuestionService : QuestionService;
+}
+
+function prefetchQuestionDetails(questions = []) {
+    questions.forEach((question) => {
+        if (!question?.question_uid) {
+            return;
+        }
+
+        const detailService = getDetailServiceForQuestion(question);
+        if (typeof detailService?.ensureQuestionDetail !== 'function') {
+            return;
+        }
+
+        Promise.resolve(detailService.ensureQuestionDetail(question)).catch(() => {
+            // Prefetch is opportunistic; the Solve page still owns user-visible retry state.
+        });
+    });
 }
 
 function uniqueQuestionList(questionPool = []) {
@@ -290,6 +370,7 @@ export const SessionProvider = ({ children }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showExhaustionBanner, setShowExhaustionBanner] = useState(false);
     const seenThisSession = useRef(new Set());
+    const randomTopicMemoryRef = useRef(readRandomTopicMemory());
 
     const resolveQuestionPool = useCallback((questionPool = []) => {
         const normalizedQuestions = uniqueQuestionList(questionPool);
@@ -305,6 +386,11 @@ export const SessionProvider = ({ children }) => {
         }
         return questionMap.get(normalizedUid) || activeQuestionMapRef.current.get(normalizedUid) || null;
     }, [questionMap]);
+
+    const rememberRandomQuestion = useCallback((question) => {
+        randomTopicMemoryRef.current = rememberQuestionTopic(randomTopicMemoryRef.current, question);
+        writeRandomTopicMemory(randomTopicMemoryRef.current);
+    }, []);
 
     const startRandomSession = useCallback((questionPool = [], initialUid = '') => {
         const normalizedQuestions = resolveQuestionPool(questionPool);
@@ -323,14 +409,21 @@ export const SessionProvider = ({ children }) => {
         );
         seenThisSession.current.clear();
         const activeQuestionMap = activeQuestionMapRef.current;
+        randomTopicMemoryRef.current = readRandomTopicMemory();
         const nextQueue = prioritizeInitialUid(
-            buildSessionQueue(normalizedQuestions, seenThisSession.current, solvedSetRef.current),
+            buildSessionQueue(
+                normalizedQuestions,
+                seenThisSession.current,
+                solvedSetRef.current,
+                randomTopicMemoryRef.current
+            ),
             initialUid,
             activeQuestionMap
         );
         const firstUid = nextQueue[0] || '';
         if (firstUid) {
             seenThisSession.current.add(firstUid);
+            rememberRandomQuestion(activeQuestionMap.get(firstUid));
         }
 
         setSessionMode('random');
@@ -340,7 +433,7 @@ export const SessionProvider = ({ children }) => {
         setShowExhaustionBanner(false);
 
         return firstUid ? getQuestionByUid(firstUid) : null;
-    }, [getQuestionByUid, resolveQuestionPool]);
+    }, [getQuestionByUid, rememberRandomQuestion, resolveQuestionPool]);
 
     const startOrderedSession = useCallback((questionPool = [], initialUid = '') => {
         const normalizedQuestions = resolveQuestionPool(questionPool);
@@ -376,8 +469,9 @@ export const SessionProvider = ({ children }) => {
         setCurrentIndex(nextIndex);
         if (sessionMode === 'random') {
             seenThisSession.current.add(normalizedUid);
+            rememberRandomQuestion(getQuestionByUid(normalizedUid));
         }
-    }, [sessionMode, sessionQueue]);
+    }, [getQuestionByUid, rememberRandomQuestion, sessionMode, sessionQueue]);
 
     const getCurrentQuestion = useCallback(() => {
         const currentUid = sessionQueue[currentIndex] || '';
@@ -413,17 +507,23 @@ export const SessionProvider = ({ children }) => {
             return null;
         }
 
-        const nextQueue = buildSessionQueue(sourcePool, seenThisSession.current, solvedSetRef.current);
+        const nextQueue = buildSessionQueue(
+            sourcePool,
+            seenThisSession.current,
+            solvedSetRef.current,
+            randomTopicMemoryRef.current
+        );
         const firstUid = nextQueue[0] || '';
         if (firstUid) {
             seenThisSession.current.add(firstUid);
+            rememberRandomQuestion(getQuestionByUid(firstUid));
         }
 
         setSessionQueue(nextQueue);
         setCurrentIndex(0);
         setShowExhaustionBanner(true);
         return firstUid ? getQuestionByUid(firstUid) : null;
-    }, [getQuestionByUid, sourceQuestionUids]);
+    }, [getQuestionByUid, rememberRandomQuestion, sourceQuestionUids]);
 
     const goToPreviousQuestion = useCallback((uid = '') => {
         const navigation = getNavigationState(uid);
@@ -444,6 +544,7 @@ export const SessionProvider = ({ children }) => {
             setCurrentIndex(nextIndex);
             if (sessionMode === 'random') {
                 seenThisSession.current.add(nextUid);
+                rememberRandomQuestion(getQuestionByUid(nextUid));
             }
             return getQuestionByUid(nextUid);
         }
@@ -453,7 +554,7 @@ export const SessionProvider = ({ children }) => {
         }
 
         return null;
-    }, [getNavigationState, getQuestionByUid, rebuildRandomQueue, sessionMode]);
+    }, [getNavigationState, getQuestionByUid, rebuildRandomQueue, rememberRandomQuestion, sessionMode]);
 
     const advanceQueue = useCallback(() => {
         const currentUid = sessionQueue[currentIndex] || '';
@@ -469,15 +570,36 @@ export const SessionProvider = ({ children }) => {
         const normalizedUid = String(uid || '').trim();
         if (normalizedUid) {
             seenThisSession.current.add(normalizedUid);
+            if (sessionMode === 'random') {
+                rememberRandomQuestion(getQuestionByUid(normalizedUid));
+            }
         }
-    }, []);
+    }, [getQuestionByUid, rememberRandomQuestion, sessionMode]);
 
     const markDeepLinkedQuestion = useCallback((uid) => {
         const normalizedUid = String(uid || '').trim();
         if (normalizedUid) {
             seenThisSession.current.add(normalizedUid);
+            if (sessionMode === 'random') {
+                rememberRandomQuestion(getQuestionByUid(normalizedUid));
+            }
         }
-    }, []);
+    }, [getQuestionByUid, rememberRandomQuestion, sessionMode]);
+
+    useEffect(() => {
+        if (sessionQueue.length === 0) {
+            return;
+        }
+
+        const lookaheadQuestions = sessionQueue
+            .slice(currentIndex + 1, currentIndex + 1 + PREFETCH_LOOKAHEAD_COUNT)
+            .map((uid) => getQuestionByUid(uid))
+            .filter(Boolean);
+
+        if (lookaheadQuestions.length > 0) {
+            prefetchQuestionDetails(lookaheadQuestions);
+        }
+    }, [currentIndex, getQuestionByUid, sessionQueue]);
 
     const value = useMemo(() => ({
         sessionMode,

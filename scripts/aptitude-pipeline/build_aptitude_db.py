@@ -131,7 +131,7 @@ def clean_aptitude_title(value: str) -> str:
     return title or compact_plain_text(str(value or ""))
 
 
-STALE_APTITUDE_SOURCE_LABELS = {"", "aptitude", "aptitude web", "aptitudebank", "bossxcode", "boss xcode"}
+STALE_APTITUDE_SOURCE_LABELS = {"", "aptitude", "aptitude web", "aptitudebank"}
 
 
 def normalize_aptitude_source(source: dict) -> dict:

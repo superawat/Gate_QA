@@ -7,6 +7,7 @@ import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider } from './FilterContext';
 import { SessionProvider, useSession } from './SessionContext';
+import { QuestionService } from '../services/QuestionService';
 
 vi.spyOn(Math, 'random').mockReturnValue(0);
 
@@ -67,6 +68,13 @@ vi.mock('../services/QuestionService', () => ({
         slugifyToken: vi.fn((value) => String(value || '').trim().toLowerCase()),
         normalizeTypeToken: vi.fn((value) => String(value || 'MCQ').trim().toUpperCase()),
         formatYearSetLabel: vi.fn((value) => String(value || '')),
+        ensureQuestionDetail: vi.fn(async (question) => question),
+    },
+}));
+
+vi.mock('../services/AptitudeQuestionService', () => ({
+    AptitudeQuestionService: {
+        ensureQuestionDetail: vi.fn(async (question) => question),
     },
 }));
 
@@ -133,6 +141,30 @@ describe('SessionContext', () => {
 
         expect(previousQuestion.question_uid).toBe('q1');
         expect(latestSession.getNavigationState('q1').canGoPrevious).toBe(false);
+    });
+
+    test('prefetches the next likely question details in active sessions', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        QuestionService.ensureQuestionDetail.mockClear();
+
+        act(() => {
+            latestSession.startOrderedSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+                { question_uid: 'q3' },
+            ], 'q1');
+        });
+
+        await waitFor(() => {
+            expect(QuestionService.ensureQuestionDetail).toHaveBeenCalledTimes(2);
+        });
+
+        expect(QuestionService.ensureQuestionDetail.mock.calls.map(([question]) => question.question_uid)).toEqual(['q2', 'q3']);
     });
 
     test('supports random sessions and reshuffles when the queue is exhausted', async () => {
@@ -222,5 +254,35 @@ describe('SessionContext', () => {
             }
             expect(topic).not.toBe(topicOrder[index - 1]);
         });
+    });
+
+    test('uses persisted recent topic memory to avoid reopening on the same random subtopic', async () => {
+        window.localStorage.setItem('gateqa_random_recent_topics_v1', JSON.stringify({
+            recentTopicKeys: ['reasoning::coding-decoding'],
+            lastSubjectKey: 'reasoning',
+        }));
+
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        const pool = [
+            { question_uid: 'coding-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'coding-decoding' }] },
+            { question_uid: 'coding-2', subjectSlug: 'reasoning', subtopics: [{ slug: 'coding-decoding' }] },
+            { question_uid: 'direction-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'direction-sense' }] },
+            { question_uid: 'blood-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'blood-relations' }] },
+        ];
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startRandomSession(pool);
+        });
+
+        expect(firstQuestion.question_uid).toBe('direction-1');
+
+        const memory = JSON.parse(window.localStorage.getItem('gateqa_random_recent_topics_v1'));
+        expect(memory.recentTopicKeys[0]).toBe('reasoning::direction-sense');
     });
 });

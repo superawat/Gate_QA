@@ -143,4 +143,4 @@ const QuestionPickerList = ({
   </section>
 );
 
-export default QuestionPickerList;
+export default React.memo(QuestionPickerList);

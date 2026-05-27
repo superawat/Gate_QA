@@ -97,7 +97,7 @@ function main() {
     process.exit(1);
   }
   const parsedPageUrls = loadParsedPageUrls(options.excludeParsed);
-  const baseUrl = catalog.baseUrl || 'https://pinnacle-quize-dee901102b83.herokuapp.com/';
+  const baseUrl = catalog.baseUrl || 'https://aptitude-bank.internal/';
   
   let newSeriesJobs = [];
   let totalPapers = 0;

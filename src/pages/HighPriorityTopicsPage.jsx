@@ -139,14 +139,14 @@ const FrequencyTooltip = ({ active, payload, label }) => {
   );
 };
 
-const TopicTrendChart = ({ topic }) => {
+const TopicTrendChart = ({ topic, height = "h-[280px]" }) => {
   const chartTheme = useChartTheme();
   if (!topic?.yearSeries?.length) {
     return null;
   }
 
   return (
-    <div className="h-[280px] w-full">
+    <div className={`${height} w-full`}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={topic.yearSeries} margin={{ top: 16, right: 20, left: -18, bottom: 6 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartTheme.grid} />
@@ -168,7 +168,7 @@ const TopicTrendChart = ({ topic }) => {
   );
 };
 
-const SubjectWeightChart = ({ subjects = [] }) => {
+const SubjectWeightChart = ({ subjects = [], height = "h-[320px]" }) => {
   const chartTheme = useChartTheme();
   const data = subjects.slice(0, 10).map((subject) => ({
     ...subject,
@@ -180,7 +180,7 @@ const SubjectWeightChart = ({ subjects = [] }) => {
   }
 
   return (
-    <div className="h-[320px] w-full">
+    <div className={`${height} w-full`}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} layout="vertical" margin={{ top: 8, right: 20, left: 20, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={chartTheme.grid} />
@@ -448,6 +448,43 @@ const HighPriorityTopicsPage = () => {
     || dataset?.topics?.[0]
     || null;
 
+  const keyInsights = useMemo(() => {
+    if (!dataset?.topics?.length) return null;
+
+    const topics = dataset.topics;
+
+    // 1. Rising Topics (direction = up, sorted by score)
+    const rising = [...topics]
+      .filter((t) => t.trendDirection === "up")
+      .sort((a, b) => b.importanceScore - a.importanceScore)
+      .slice(0, 3);
+
+    // 2. Declining Topics (direction = down, sorted by delta)
+    const declining = [...topics]
+      .filter((t) => t.trendDirection === "down")
+      .sort((a, b) => a.trendDeltaMarks - b.trendDeltaMarks)
+      .slice(0, 3);
+
+    // 3. Consistently Important (priorityTier = Core Priority, sorted by consistency)
+    const consistent = [...topics]
+      .filter((t) => t.priorityTier === "Core Priority")
+      .sort((a, b) => {
+        if (b.consistencyRate !== a.consistencyRate) {
+          return b.consistencyRate - a.consistencyRate;
+        }
+        return b.importanceScore - a.importanceScore;
+      })
+      .slice(0, 3);
+
+    // 4. High-Yield Practice Areas
+    const highYield = [...topics]
+      .filter((t) => t.priorityTier === "Core Priority" || t.priorityTier === "High Yield")
+      .sort((a, b) => b.importanceScore - a.importanceScore)
+      .slice(0, 3);
+
+    return { rising, declining, consistent, highYield };
+  }, [dataset]);
+
   return (
     <PageShell>
       <section className="space-y-5 pb-12">
@@ -492,6 +529,92 @@ const HighPriorityTopicsPage = () => {
           </div>
         ) : dataset ? (
           <>
+            {/* Quick Prep Insights Panel */}
+            {keyInsights && (
+              <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 animate-card-fade-enter" aria-label="Key Prep Insights">
+                {/* 1. Rising Topics */}
+                <div className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4 dark:border-emerald-500/20 dark:bg-emerald-950/10 shadow-sm transition-all hover:shadow-md">
+                  <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                    <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                    🔥 Rising / Hot Topics
+                  </h3>
+                  <p className="mt-1 text-[11px] text-emerald-700/80 dark:text-emerald-400/80 font-medium">Growing weight in recent exams</p>
+                  <ul className="mt-3 space-y-2">
+                    {keyInsights.rising.length > 0 ? (
+                      keyInsights.rising.map((t) => (
+                        <li key={t.key} className="flex items-center justify-between gap-2 border-b border-dashed border-[color:var(--color-border)]/40 pb-1.5 last:border-0 last:pb-0">
+                          <Link to={t.practiceUrl} className="truncate text-xs font-bold text-[color:var(--color-text)] hover:text-sky-600 hover:underline">
+                            {t.label}
+                          </Link>
+                          <span className="shrink-0 text-[10px] font-black text-emerald-600 dark:text-emerald-400">+{t.trendDeltaMarks} marks</span>
+                        </li>
+                      ))
+                    ) : (
+                      <li className="text-xs text-[color:var(--color-text-muted)] italic">No significant rising trends</li>
+                    )}
+                  </ul>
+                </div>
+
+                {/* 2. Declining Topics */}
+                <div className="rounded-2xl border border-rose-100 bg-rose-50/40 p-4 dark:border-rose-500/20 dark:bg-rose-950/10 shadow-sm transition-all hover:shadow-md">
+                  <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
+                    <span className="flex h-2 w-2 rounded-full bg-rose-400" />
+                    📉 Cooling Topics
+                  </h3>
+                  <p className="mt-1 text-[11px] text-rose-700/80 dark:text-rose-400/80 font-medium">Slightly lower weight recently</p>
+                  <ul className="mt-3 space-y-2">
+                    {keyInsights.declining.length > 0 ? (
+                      keyInsights.declining.map((t) => (
+                        <li key={t.key} className="flex items-center justify-between gap-2 border-b border-dashed border-[color:var(--color-border)]/40 pb-1.5 last:border-0 last:pb-0">
+                          <Link to={t.practiceUrl} className="truncate text-xs font-bold text-[color:var(--color-text)] hover:text-sky-600 hover:underline">
+                            {t.label}
+                          </Link>
+                          <span className="shrink-0 text-[10px] font-black text-rose-500 dark:text-rose-400">{t.trendDeltaMarks} marks</span>
+                        </li>
+                      ))
+                    ) : (
+                      <li className="text-xs text-[color:var(--color-text-muted)] italic">No significant cooling trends</li>
+                    )}
+                  </ul>
+                </div>
+
+                {/* 3. Consistently Important */}
+                <div className="rounded-2xl border border-violet-100 bg-violet-50/40 p-4 dark:border-violet-500/20 dark:bg-violet-950/10 shadow-sm transition-all hover:shadow-md">
+                  <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-violet-800 dark:text-violet-300">
+                    🏆 Consistently Core
+                  </h3>
+                  <p className="mt-1 text-[11px] text-violet-700/80 dark:text-violet-400/80 font-medium">Regularly tested every single year</p>
+                  <ul className="mt-3 space-y-2">
+                    {keyInsights.consistent.map((t) => (
+                      <li key={t.key} className="flex items-center justify-between gap-2 border-b border-dashed border-[color:var(--color-border)]/40 pb-1.5 last:border-0 last:pb-0">
+                        <Link to={t.practiceUrl} className="truncate text-xs font-bold text-[color:var(--color-text)] hover:text-sky-600 hover:underline">
+                          {t.label}
+                        </Link>
+                        <span className="shrink-0 text-[10px] font-black text-violet-600 dark:text-violet-400">{Math.round(t.consistencyRate * 100)}% active</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 4. High-Yield Practice Areas */}
+                <div className="rounded-2xl border border-amber-100 bg-amber-50/40 p-4 dark:border-amber-500/20 dark:bg-amber-950/10 shadow-sm transition-all hover:shadow-md">
+                  <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+                    ⭐ High-Yield Focus
+                  </h3>
+                  <p className="mt-1 text-[11px] text-amber-700/80 dark:text-amber-400/80 font-medium">Top value for core preparation</p>
+                  <ul className="mt-3 space-y-2">
+                    {keyInsights.highYield.map((t) => (
+                      <li key={t.key} className="flex items-center justify-between gap-2 border-b border-dashed border-[color:var(--color-border)]/40 pb-1.5 last:border-0 last:pb-0">
+                        <Link to={t.practiceUrl} className="truncate text-xs font-bold text-[color:var(--color-text)] hover:text-sky-600 hover:underline">
+                          {t.label}
+                        </Link>
+                        <span className="shrink-0 text-[10px] font-black text-amber-600 dark:text-amber-400">Score: {t.importanceScore}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            )}
             {/* View Switching Tab bar */}
             <div className="flex gap-1.5 rounded-2xl bg-[color:var(--color-surface-muted)] p-1 shadow-inner max-w-2xl mx-auto w-full border border-[color:var(--color-border)]/40">
               {[
@@ -526,7 +649,10 @@ const HighPriorityTopicsPage = () => {
             {activeTab === "ranking" && (
               <div className="grid gap-5 lg:grid-cols-[400px_1fr] animate-card-fade-enter">
                 {/* Left rank pane */}
-                <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-card)]">
+                <section
+                  aria-label="Priority ranking"
+                  className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-card)]"
+                >
                   <div className="mb-4 space-y-3">
                     <div>
                       <h2 className="text-base font-black text-[color:var(--color-text)]">Priority Ranking</h2>
@@ -575,7 +701,7 @@ const HighPriorityTopicsPage = () => {
                       </div>
                     ) : null}
                   </div>
-                </div>
+                </section>
 
                 {/* Right detail pane (desktop only) */}
                 <div className="hidden lg:block rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)]">
@@ -618,7 +744,7 @@ const HighPriorityTopicsPage = () => {
 
                       <div>
                         <h3 className="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--color-text-muted)] mb-3">20-Year Marks Weight Trend</h3>
-                        <TopicTrendChart topic={selectedTopic} />
+                        <TopicTrendChart topic={selectedTopic} height="h-[280px]" />
                       </div>
                     </div>
                   ) : (
@@ -631,7 +757,7 @@ const HighPriorityTopicsPage = () => {
                 {/* Mobile Detail Modal Overlay */}
                 {isMobileDetailOpen && selectedTopic && (
                   <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm lg:hidden">
-                    <div className="relative w-full max-w-lg rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-2xl animate-card-fade-enter">
+                    <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-2xl animate-card-fade-enter">
                       <button
                         type="button"
                         onClick={() => setIsMobileDetailOpen(false)}
@@ -668,7 +794,7 @@ const HighPriorityTopicsPage = () => {
 
                         <div className="border-t border-[color:var(--color-border)] pt-3">
                           <h3 className="text-[11px] font-bold uppercase text-[color:var(--color-text-muted)] mb-2">Yearly Weight Trend</h3>
-                          <TopicTrendChart topic={selectedTopic} />
+                          <TopicTrendChart topic={selectedTopic} height="h-[180px]" />
                         </div>
 
                         <div className="pt-2">
@@ -810,7 +936,7 @@ const HighPriorityTopicsPage = () => {
                     <h2 className="text-base font-black text-[color:var(--color-text)]">Subject Weight Snapshot</h2>
                     <p className="mt-1 text-xs text-[color:var(--color-text-muted)]">Estimated marks distribution across core GATE subjects (20-year window).</p>
                   </div>
-                  <SubjectWeightChart subjects={filteredSubjects.length ? filteredSubjects : dataset.subjects} />
+                  <SubjectWeightChart subjects={filteredSubjects.length ? filteredSubjects : dataset.subjects} height="h-[260px] sm:h-[320px]" />
                 </div>
 
                 {/* Right Column: Subject breakdown Cards */}

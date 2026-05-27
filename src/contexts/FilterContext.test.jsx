@@ -8,6 +8,7 @@ import { FilterProvider, useFilterState, useFilterActions } from './FilterContex
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
 import TopicFilter from '../components/Filters/TopicFilter';
 import { QuestionService } from '../services/QuestionService';
+import { AnswerService } from '../services/AnswerService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 
 vi.useFakeTimers();
@@ -392,6 +393,31 @@ describe('FilterContext', () => {
         expect(getByTestId('selected-types').textContent).toBe('NAT');
         expect(getByTestId('search-query').textContent).toBe('deadlock prevention');
         expect(getByTestId('filtered-question-uids').textContent).toBe('go:2');
+    });
+
+    test('keeps repeated filter updates on cached question metadata', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('filtered-question-uids').textContent).toContain('go:1');
+        });
+
+        AnswerService.getAnswerForQuestion.mockClear();
+
+        act(() => {
+            getByTestId('set-combined-filters').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('filtered-question-uids').textContent).toBe('go:2');
+        });
+
+        expect(AnswerService.getAnswerForQuestion).not.toHaveBeenCalled();
+        expect(QuestionService.questions.find((question) => question.question_uid === 'go:2').type).toBe('NAT');
     });
 
     test('injects aptitude questions when enabled and keeps their progress keys isolated', async () => {

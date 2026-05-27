@@ -29,7 +29,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "../..");
 
-const DEFAULT_BASE_URL = "https://pinnacle-quize-dee901102b83.herokuapp.com/";
+const DEFAULT_BASE_URL = "https://aptitude-bank.internal/";
 const DEFAULT_OUTPUT_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "parsed-questions.json");
 const DEFAULT_REPORT_PATH = path.join(ROOT, "artifacts", "review", "aptitude-aptitude-import-report.json");
 const DEFAULT_PROFILE_DIR = path.join(ROOT, "artifacts", "aptitude-pipeline", ".aptitude-browser-profile");
@@ -801,7 +801,7 @@ function extractYear(context = {}, sourceUrl = "") {
 }
 
 function inferExamBody(text = "") {
-  const cleanText = text.replace(/aptitude-bank\.internal|AptitudeBank|BossXCode|pinnacle-quize-dee901102b83\.herokuapp\.com/gi, "");
+  const cleanText = text.replace(/aptitude-bank\.internal|AptitudeBank/gi, "");
   if (/\b(?:Railway|RRB|NTPC|ALP|Group\s*D|RPF|Technician)\b/i.test(cleanText)) return "Railway";
   if (/\bDelhi\s+Police\b/i.test(cleanText)) return "Delhi Police";
   if (/\bBank(?:ing)?\b/i.test(cleanText)) return "Banking";
@@ -1581,7 +1581,7 @@ function loadCatalogCache(options) {
     payload.baseUrl = newBase;
   }
 
-  const isDefaultCatalog = options.catalogPath.endsWith("aptitude-catalog.json") || options.catalogPath.endsWith("bossxcode-catalog.json");
+  const isDefaultCatalog = options.catalogPath.endsWith("aptitude-catalog.json");
   if (isDefaultCatalog && (!sameProducts || !sameTestTypes || Boolean(payload.includeAllSeries) !== Boolean(options.includeAllSeries))) {
     console.log("[aptitude] catalog cache ignored because selection options changed");
     return null;

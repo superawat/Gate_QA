@@ -92,6 +92,8 @@ export class AptitudeQuestionService {
   static detailShardCache = new Map();
   static detailShardPromises = new Map();
   static pendingLoad = null;
+  static structuredTagsCache = null;
+  static subtopicToSubjectSlug = new Map();
 
   static SUBJECT_ENUM = SUBJECT_ENUM;
   static TAXONOMY = TAXONOMY;
@@ -270,6 +272,79 @@ export class AptitudeQuestionService {
         .filter((question) => question?.question_uid)
         .map((question) => [question.question_uid, question])
     );
+    this.buildStructuredTagsCache();
+  }
+
+  static buildStructuredTagsCache() {
+    const subjectCounts = new Map(SUBJECT_ENUM.map((subject) => [subject.slug, 0]));
+    const structuredSubtopics = {};
+    SUBJECT_ENUM.forEach((subject) => {
+      structuredSubtopics[subject.slug] = new Map();
+    });
+
+    this.questions.forEach((question) => {
+      const subjectSlug = this.normalizeSubjectSlug(question.subjectSlug) || "unknown";
+      if (subjectCounts.has(subjectSlug)) {
+        subjectCounts.set(subjectSlug, subjectCounts.get(subjectSlug) + 1);
+      }
+      const subtopic = Array.isArray(question.subtopics) ? question.subtopics[0] : null;
+      const subtopicSlug = this.slugifyToken(subtopic?.slug || subtopic?.label || "");
+      const subtopicLabel = String(subtopic?.label || "").trim();
+      if (structuredSubtopics[subjectSlug] && subtopicSlug && subtopicLabel) {
+        structuredSubtopics[subjectSlug].set(subtopicSlug, {
+          slug: subtopicSlug,
+          label: subtopicLabel,
+        });
+      }
+    });
+
+    const subjects = SUBJECT_ENUM.filter((subject) => (subjectCounts.get(subject.slug) || 0) > 0)
+      .map((subject) => ({
+        ...subject,
+        count: subjectCounts.get(subject.slug) || 0,
+      }));
+
+    const normalizedStructuredSubtopics = {};
+    const subtopicToSubjectSlug = new Map();
+    subjects.forEach((subject) => {
+      const knownOrder = TAXONOMY[subject.label] || [];
+      const orderIndex = new Map(knownOrder.map((label, index) => [this.slugifyToken(label), index]));
+      normalizedStructuredSubtopics[subject.slug] = Array.from(
+        structuredSubtopics[subject.slug]?.values() || []
+      ).sort((left, right) => {
+        const leftIndex = orderIndex.get(left.slug) ?? Number.MAX_SAFE_INTEGER;
+        const rightIndex = orderIndex.get(right.slug) ?? Number.MAX_SAFE_INTEGER;
+        if (leftIndex !== rightIndex) {
+          return leftIndex - rightIndex;
+        }
+        return left.label.localeCompare(right.label);
+      });
+      normalizedStructuredSubtopics[subject.slug].forEach((subtopic) => {
+        subtopicToSubjectSlug.set(subtopic.slug, subject.slug);
+      });
+    });
+
+    const structuredTopics = {};
+    subjects.forEach((subject) => {
+      structuredTopics[subject.label] = (normalizedStructuredSubtopics[subject.slug] || [])
+        .map((entry) => entry.label);
+    });
+
+    this.subtopicToSubjectSlug = subtopicToSubjectSlug;
+    this.structuredTagsCache = {
+      yearSets: [],
+      years: [],
+      subjects,
+      topics: subjects.map((subject) => subject.slug),
+      structuredSubtopics: normalizedStructuredSubtopics,
+      structuredTopics,
+      minYear: 0,
+      maxYear: 0,
+      questionTypes: ["MCQ"],
+      hideYearFilters: true,
+    };
+
+    return this.structuredTagsCache;
   }
 
   static getBaseUrl() {
@@ -358,68 +433,7 @@ export class AptitudeQuestionService {
   }
 
   static getStructuredTags() {
-    const subjectCounts = new Map(SUBJECT_ENUM.map((subject) => [subject.slug, 0]));
-    const structuredSubtopics = {};
-    SUBJECT_ENUM.forEach((subject) => {
-      structuredSubtopics[subject.slug] = new Map();
-    });
-
-    this.questions.forEach((question) => {
-      const subjectSlug = this.normalizeSubjectSlug(question.subjectSlug) || "unknown";
-      if (subjectCounts.has(subjectSlug)) {
-        subjectCounts.set(subjectSlug, subjectCounts.get(subjectSlug) + 1);
-      }
-      const subtopic = Array.isArray(question.subtopics) ? question.subtopics[0] : null;
-      const subtopicSlug = this.slugifyToken(subtopic?.slug || subtopic?.label || "");
-      const subtopicLabel = String(subtopic?.label || "").trim();
-      if (structuredSubtopics[subjectSlug] && subtopicSlug && subtopicLabel) {
-        structuredSubtopics[subjectSlug].set(subtopicSlug, {
-          slug: subtopicSlug,
-          label: subtopicLabel,
-        });
-      }
-    });
-
-    const subjects = SUBJECT_ENUM.filter((subject) => (subjectCounts.get(subject.slug) || 0) > 0)
-      .map((subject) => ({
-        ...subject,
-        count: subjectCounts.get(subject.slug) || 0,
-      }));
-
-    const normalizedStructuredSubtopics = {};
-    subjects.forEach((subject) => {
-      const knownOrder = TAXONOMY[subject.label] || [];
-      const orderIndex = new Map(knownOrder.map((label, index) => [this.slugifyToken(label), index]));
-      normalizedStructuredSubtopics[subject.slug] = Array.from(
-        structuredSubtopics[subject.slug]?.values() || []
-      ).sort((left, right) => {
-        const leftIndex = orderIndex.get(left.slug) ?? Number.MAX_SAFE_INTEGER;
-        const rightIndex = orderIndex.get(right.slug) ?? Number.MAX_SAFE_INTEGER;
-        if (leftIndex !== rightIndex) {
-          return leftIndex - rightIndex;
-        }
-        return left.label.localeCompare(right.label);
-      });
-    });
-
-    const structuredTopics = {};
-    subjects.forEach((subject) => {
-      structuredTopics[subject.label] = (normalizedStructuredSubtopics[subject.slug] || [])
-        .map((entry) => entry.label);
-    });
-
-    return {
-      yearSets: [],
-      years: [],
-      subjects,
-      topics: subjects.map((subject) => subject.slug),
-      structuredSubtopics: normalizedStructuredSubtopics,
-      structuredTopics,
-      minYear: 0,
-      maxYear: 0,
-      questionTypes: ["MCQ"],
-      hideYearFilters: true,
-    };
+    return this.structuredTagsCache || this.buildStructuredTagsCache();
   }
 
   static _readCache() {
@@ -482,6 +496,8 @@ export class AptitudeQuestionService {
       this.loadError = error.message || "Unable to load aptitude questions.";
       this.questions = [];
       this.questionsByUid = new Map();
+      this.structuredTagsCache = null;
+      this.subtopicToSubjectSlug = new Map();
       this.loaded = false;
       throw error;
     } finally {

@@ -24,6 +24,7 @@ const LEGACY_STORAGE_KEYS = {
 };
 const STORAGE_HEALTH_KEY = '__gate_qa_storage_health_check__';
 const APTITUDE_UID_PREFIX = 'APT-';
+const EMPTY_QUESTION_LIST = Object.freeze([]);
 
 const isAptitudeQuestionId = (value = '') => String(value || '').startsWith(APTITUDE_UID_PREFIX);
 
@@ -498,13 +499,58 @@ export const FilterProvider = ({
     }, [shouldMergeAptitude]);
 
     const baseQuestions = questionService.questions;
-    const activeAptitudeQuestions = shouldMergeAptitude ? aptitudeQuestions : [];
+    const activeAptitudeQuestions = shouldMergeAptitude ? aptitudeQuestions : EMPTY_QUESTION_LIST;
     const allQuestions = useMemo(() => {
         if (!baseQuestions.length) {
             return [];
         }
         return normalizeQuestionPool([...baseQuestions, ...activeAptitudeQuestions]);
     }, [activeAptitudeQuestions, baseQuestions, questionDataRevision]);
+
+    const questionByUidMap = useMemo(() => {
+        const map = new Map();
+        allQuestions.forEach((question) => {
+            const uid = String(question?.question_uid || '').trim();
+            if (uid) {
+                map.set(uid, question);
+            }
+        });
+        return map;
+    }, [allQuestions]);
+
+    const questionFilterMetaByUid = useMemo(() => {
+        const map = new Map();
+
+        allQuestions.forEach((question) => {
+            const uid = String(question?.question_uid || '').trim();
+            if (!uid) {
+                return;
+            }
+
+            const answer = answerService.getAnswerForQuestion(question);
+            const resolvedType = answer
+                ? questionService.normalizeTypeToken(answer.type)
+                : questionService.normalizeTypeToken(question.type);
+            const subtopicSlugs = Array.isArray(question.subtopics)
+                ? question.subtopics
+                    .map(subtopic => questionService.slugifyToken(subtopic?.slug || subtopic?.label || subtopic))
+                    .filter(Boolean)
+                : [];
+
+            map.set(uid, {
+                questionId: getQuestionTrackingId(question, answerService),
+                resolvedType,
+                resolvedTypeUpper: String(resolvedType || '').toUpperCase(),
+                subjectSlug: question.subjectSlug || 'unknown',
+                subtopicSlugs,
+                yearSetKey: question.exam?.yearSetKey || null,
+                year: Number.isFinite(question.exam?.year) ? question.exam.year : 0,
+                searchText: String(question.searchText || '').toLowerCase(),
+            });
+        });
+
+        return map;
+    }, [allQuestions, answerService, questionService]);
 
     useEffect(() => {
         if (!initialManifest || questionService.questions.length > 0) {
@@ -910,6 +956,12 @@ export const FilterProvider = ({
 
         const selectedTypes = normalizeSelectedTypes(filters.selectedTypes, { allowedTypes: defaultSelectedTypes });
         const selectedTypeSet = new Set(selectedTypes.map(type => type.toUpperCase()));
+        const selectedYearSet = new Set(selectedYearSets);
+        const selectedSubjectSet = new Set(selectedSubjects);
+        const isTypeConstrained = selectedTypes.length < defaultSelectedTypes.length;
+        const isRangeConstrained = yearRange
+            && yearRange.length === 2
+            && (yearRange[0] > structuredTags.minYear || yearRange[1] < structuredTags.maxYear);
 
         // Group selected subtopics by their parent subject for scoped AND filtering.
         // e.g. { "dbms": Set(["b-tree"]), "os": Set(["virtual-memory"]) }
@@ -924,21 +976,11 @@ export const FilterProvider = ({
         });
 
         return allQuestions.filter(q => {
-            const questionId = getQuestionTrackingId(q, answerService);
+            const meta = questionFilterMetaByUid.get(q.question_uid);
+            const questionId = meta?.questionId || getQuestionTrackingId(q, answerService);
             const isSolved = questionId ? solvedQuestionSet.has(questionId) : false;
             const isBookmarked = questionId ? bookmarkedQuestionSet.has(questionId) : false;
-            const answer = answerService.getAnswerForQuestion(q);
-            const resolvedType = answer
-                ? questionService.normalizeTypeToken(answer.type)
-                : questionService.normalizeTypeToken(q.type);
-
-            // Keep the canonical type attached to each question object.
-            if (q.type !== resolvedType) {
-                q.type = resolvedType;
-                if (q.canonical && typeof q.canonical === 'object') {
-                    q.canonical.type = resolvedType;
-                }
-            }
+            const resolvedTypeUpper = meta?.resolvedTypeUpper || questionService.normalizeTypeToken(q.type).toUpperCase();
 
             if (hideSolved && isSolved) {
                 return false;
@@ -953,26 +995,23 @@ export const FilterProvider = ({
             }
 
             let yearMatch = true;
-            const qYearSetKey = q.exam?.yearSetKey || null;
-            const qYearNum = Number.isFinite(q.exam?.year) ? q.exam.year : 0;
+            const qYearSetKey = meta?.yearSetKey || null;
+            const qYearNum = meta?.year || 0;
 
             if (selectedYearSets.length > 0) {
-                yearMatch = qYearSetKey ? selectedYearSets.includes(qYearSetKey) : false;
+                yearMatch = qYearSetKey ? selectedYearSet.has(qYearSetKey) : false;
             }
 
             let rangeMatch = true;
-            const isRangeConstrained = yearRange
-                && yearRange.length === 2
-                && (yearRange[0] > structuredTags.minYear || yearRange[1] < structuredTags.maxYear);
             if (isRangeConstrained) {
                 rangeMatch = qYearNum > 0 && qYearNum >= yearRange[0] && qYearNum <= yearRange[1];
             }
 
-            const qSubjectSlug = q.subjectSlug || 'unknown';
+            const qSubjectSlug = meta?.subjectSlug || q.subjectSlug || 'unknown';
 
             let topicMatch = true;
             if (selectedSubjects.length > 0) {
-                topicMatch = selectedSubjects.includes(qSubjectSlug);
+                topicMatch = selectedSubjectSet.has(qSubjectSlug);
             }
 
             // Subtopic match: scoped to parent subject (AND logic).
@@ -984,10 +1023,7 @@ export const FilterProvider = ({
                 if (requiredSubtopics) {
                     // Question is in a subject that has subtopic filters active —
                     // it must match at least one of the required subtopics.
-                    const questionSubtopicSlugs = Array.isArray(q.subtopics)
-                        ? q.subtopics.map(sub => questionService.slugifyToken(sub.slug || sub.label || sub))
-                        : [];
-                    subtopicMatch = questionSubtopicSlugs.some(slug => requiredSubtopics.has(slug));
+                    subtopicMatch = (meta?.subtopicSlugs || []).some(slug => requiredSubtopics.has(slug));
                 } else {
                     // Question belongs to a subject with no subtopic filter —
                     // let it pass (subtopic filter doesn't constrain this subject).
@@ -996,13 +1032,13 @@ export const FilterProvider = ({
             }
 
             let typeMatch = true;
-            if (selectedTypes.length < defaultSelectedTypes.length) {
-                typeMatch = selectedTypeSet.has(resolvedType.toUpperCase());
+            if (isTypeConstrained) {
+                typeMatch = selectedTypeSet.has(resolvedTypeUpper);
             }
 
             let searchMatch = true;
             if (searchTokens.length > 0) {
-                const searchText = String(q.searchText || '').toLowerCase();
+                const searchText = meta?.searchText || '';
                 searchMatch = searchText
                     ? searchTokens.every((token) => searchText.includes(token))
                     : false;
@@ -1025,6 +1061,7 @@ export const FilterProvider = ({
         structuredTags.minYear,
         structuredTags.maxYear,
         subtopicToSubjectSlug,
+        questionFilterMetaByUid,
         answerService,
         allQuestions,
         defaultSelectedTypes,
@@ -1223,8 +1260,8 @@ export const FilterProvider = ({
         if (!id || typeof id !== 'string') return null;
         const trimmed = id.trim();
         if (!trimmed) return null;
-        return allQuestions.find(q => q.question_uid === trimmed) || null;
-    }, [allQuestions]);
+        return questionByUidMap.get(trimmed) || null;
+    }, [questionByUidMap]);
 
     // ── Layer 3: split state and actions into separate contexts ──────────
     const stateValue = useMemo(() => ({

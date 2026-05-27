@@ -27,7 +27,7 @@ const ARTIFACT_CHECKS = [
   {
     name: "publisherNoise",
     severity: "error",
-    pattern: /Download\s+Pinnacle|Search\s+on\s+TG|ssccglpinnacle|Pinnacle\s+(?:PDF|Book|Publication|Exam|Coaching)/i,
+    pattern: /Download\s+[A-Z][A-Za-z0-9_-]*|Search\s+on\s+TG|ssc(?:cgl)?[a-z0-9_-]*|[A-Z][A-Za-z0-9_-]*\s+(?:PDF|Book|Publication|Exam|Coaching)/i,
   },
   {
     name: "pipelineMarkerLeak",

@@ -1,13 +1,12 @@
 import React from "react";
-import { FaChartLine, FaCompass, FaHome, FaRegClock } from "react-icons/fa";
+import { FaChartLine, FaCompass, FaHome, FaFire } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-import { MOCK_TEST_MODE_ENABLED } from "../../constants/featureFlags";
 import {
   HOME_ROUTE,
   INSIGHTS_ROUTE,
-  MOCK_ROUTE,
   PRACTICE_ROUTE,
+  HIGH_PRIORITY_TOPICS_ROUTE,
 } from "../../utils/routes";
 
 const navLinkClassName = ({ isActive }) => (
@@ -34,15 +33,13 @@ const navItems = [
     to: INSIGHTS_ROUTE,
     icon: FaChartLine,
   },
+  {
+    label: "Priority",
+    to: HIGH_PRIORITY_TOPICS_ROUTE,
+    icon: FaFire,
+  },
 ];
 
-if (MOCK_TEST_MODE_ENABLED) {
-  navItems.push({
-    label: "Mock",
-    to: MOCK_ROUTE,
-    icon: FaRegClock,
-  });
-}
 
 const MobileBottomNav = () => (
   <nav

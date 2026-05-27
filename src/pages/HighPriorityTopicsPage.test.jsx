@@ -143,7 +143,7 @@ describe("HighPriorityTopicsPage", () => {
       target: { value: "sorting" },
     });
 
-    const ranking = screen.getByText(/priority ranking/i).closest("section");
+    const ranking = screen.getByRole("region", { name: /priority ranking/i });
     expect(within(ranking).getAllByText("Sorting").length).toBeGreaterThan(0);
     expect(within(ranking).queryByText("Dynamic Programming")).toBeNull();
   });

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   FaBookOpen,
-  FaChartLine,
   FaFilePdf,
   FaFileCsv,
   FaFileImport,
@@ -9,6 +8,7 @@ import {
   FaSave,
   FaInfoCircle,
   FaHeart,
+  FaFire,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import HamburgerButton from "./HamburgerButton";
@@ -284,7 +284,7 @@ const GlobalNavigationDrawer = ({
               onClick={onClose}
               className={actionButtonClassName}
             >
-              <FaChartLine className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+              <FaFire className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
               <span className="truncate">Priority Topics</span>
             </Link>
           </section>
