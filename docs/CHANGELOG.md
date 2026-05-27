@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-05-27
+
+### Added
+- Added visible subtopic chips to the Solve question header, so aptitude questions now show the full context chain such as `Aptitude -> Reasoning -> Coding - Decoding -> MCQ`.
+- Added a direct hamburger drawer `Filters` shortcut that opens the existing Explore filter UI.
+
+### Changed
+- Changed Explore question opening to start a balanced random practice session from the filtered pool while keeping the selected question first.
+- Improved random practice queue balancing across subjects and subtopics, with lookahead to reduce same-topic clustering and consecutive topic repeats.
+- Upgraded the mobile Home action area into a centered horizontal carousel with partially visible side cards, scroll snapping, active-card emphasis, and compact dots while leaving desktop layout unchanged.
+
+### Verified
+- Not run: test suites were skipped per project instruction to avoid running them unless explicitly requested.
+
 ## 2026-05-26
 
 ### Added

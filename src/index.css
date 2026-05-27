@@ -1415,7 +1415,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .home-dashboard-content,
-  .home-page-loader {
+  .home-page-loader,
+  .home-action-card,
+  .home-action-carousel-dots span {
     transition: none;
   }
 
@@ -1589,7 +1591,7 @@
   font-weight: 550;
   font-style: italic;
   line-height: 1.45;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .home-action-quote-author {
@@ -2265,12 +2267,12 @@ canvas {
   .home-quick-actions {
     display: flex;
     grid-template-columns: none;
-    gap: 0.75rem;
+    gap: 0.8rem;
     margin-bottom: 0.25rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    padding: 0.1rem 0.875rem 0.7rem;
-    scroll-padding-inline: 0.875rem;
+    padding: 0.35rem max(1.25rem, calc((100vw - min(76vw, 20rem)) / 2)) 0.85rem;
+    scroll-padding-inline: max(1.25rem, calc((100vw - min(76vw, 20rem)) / 2));
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
@@ -2284,22 +2286,42 @@ canvas {
   .home-action-card,
   .home-action-card--primary,
   .home-action-card--secondary {
-    flex: 0 0 min(82vw, 20rem);
+    flex: 0 0 min(76vw, 20rem);
     grid-column: auto;
-    min-height: 116px;
+    min-height: 120px;
     padding: 1rem;
     border-radius: 20px;
+    opacity: 0.66;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    transform: scale(0.92);
+    transform-origin: center;
+    transition:
+      transform 220ms ease,
+      opacity 220ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+    will-change: transform;
   }
 
   .home-action-card--primary {
-    flex-basis: min(86vw, 21rem);
+    flex-basis: min(76vw, 20rem);
+  }
+
+  .home-action-card--active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.16);
+  }
+
+  .home-action-card--side {
+    box-shadow: 0 14px 42px rgba(15, 23, 42, 0.08);
   }
 
   .home-action-card:hover,
   .home-action-card:focus-within {
-    transform: none;
+    transform: scale(1);
   }
 
   .home-action-icon {
@@ -2337,6 +2359,15 @@ canvas {
     height: 0.42rem;
     border-radius: 999px;
     background: var(--color-neutral-border);
+    transition:
+      width 180ms ease,
+      background 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .home-action-carousel-dots .home-action-carousel-dot--active {
+    width: 1.1rem;
+    background: var(--color-primary);
   }
 
   .home-gamification-dashboard {

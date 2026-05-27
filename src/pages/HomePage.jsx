@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FaBolt, FaChartLine, FaCompass, FaRegClock } from "react-icons/fa";
 
 import PageShell from "../components/Layout/PageShell";
@@ -32,6 +32,9 @@ const HomePage = ({
 }) => {
   const [isHomeReady, setIsHomeReady] = useState(false);
   const [showHomeLoader, setShowHomeLoader] = useState(true);
+  const [activeActionIndex, setActiveActionIndex] = useState(0);
+  const activeActionIndexRef = useRef(0);
+  const actionsRailRef = useRef(null);
   const activity = useMemo(() => loadStudyActivityFast(), []);
 
   const parsedQuote = useMemo(() => {
@@ -115,6 +118,70 @@ const HomePage = ({
     };
   }, []);
 
+  useEffect(() => {
+    const rail = actionsRailRef.current;
+    if (!rail || typeof window === "undefined") {
+      return undefined;
+    }
+
+    let frameId = null;
+    const requestFrame =
+      typeof window.requestAnimationFrame === "function"
+        ? window.requestAnimationFrame.bind(window)
+        : (callback) => window.setTimeout(callback, 16);
+    const cancelFrame =
+      typeof window.cancelAnimationFrame === "function"
+        ? window.cancelAnimationFrame.bind(window)
+        : window.clearTimeout.bind(window);
+
+    const updateActiveCard = () => {
+      frameId = null;
+      const cards = Array.from(rail.querySelectorAll("[data-home-action-index]"));
+      if (cards.length === 0) {
+        return;
+      }
+
+      const railRect = rail.getBoundingClientRect();
+      const railCenter = railRect.left + railRect.width / 2;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(cardCenter - railCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      if (nearestIndex !== activeActionIndexRef.current) {
+        activeActionIndexRef.current = nearestIndex;
+        setActiveActionIndex(nearestIndex);
+      }
+    };
+
+    const scheduleUpdate = () => {
+      if (frameId !== null) {
+        return;
+      }
+      frameId = requestFrame(updateActiveCard);
+    };
+
+    scheduleUpdate();
+    rail.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      rail.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frameId !== null) {
+        cancelFrame(frameId);
+      }
+    };
+  }, []);
+
   const handleMouseMove = (e) => {
     const card = e.currentTarget;
     const box = card.getBoundingClientRect();
@@ -183,10 +250,16 @@ const HomePage = ({
           <h1 className="sr-only">GateQA practice dashboard</h1>
 
           <div className="home-actions-wrap">
-            <section className="home-quick-actions" aria-label="Dashboard actions">
-              {actionCards.map((card) => {
+            <section
+              ref={actionsRailRef}
+              className="home-quick-actions"
+              aria-label="Dashboard actions"
+              aria-roledescription="carousel"
+            >
+              {actionCards.map((card, index) => {
                 const Icon = card.icon;
                 const isDisabled = Boolean(card.disabled);
+                const isActive = index === activeActionIndex;
 
                 return (
                   <button
@@ -196,7 +269,9 @@ const HomePage = ({
                     disabled={isDisabled}
                     onMouseMove={isDisabled ? undefined : handleMouseMove}
                     onMouseLeave={isDisabled ? undefined : handleMouseLeave}
-                    className={`home-action-card home-action-card--${card.variant} group text-left ${isDisabled ? "home-action-card--disabled" : ""}`}
+                    data-home-action-index={index}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`home-action-card home-action-card--${card.variant} ${isActive ? "home-action-card--active" : "home-action-card--side"} group text-left ${isDisabled ? "home-action-card--disabled" : ""}`}
                   >
                     <span className="home-action-icon">
                       <Icon size={18} />
@@ -219,8 +294,11 @@ const HomePage = ({
               })}
             </section>
             <div className="home-action-carousel-dots" aria-hidden="true">
-              {actionCards.map((card) => (
-                <span key={card.key} />
+              {actionCards.map((card, index) => (
+                <span
+                  key={card.key}
+                  className={index === activeActionIndex ? "home-action-carousel-dot--active" : ""}
+                />
               ))}
             </div>
           </div>

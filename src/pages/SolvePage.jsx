@@ -48,6 +48,7 @@ const SolvePage = ({
   const {
     sessionMode,
     sessionQueue,
+    sourceQuestionUids = [],
     showExhaustionBanner,
     dismissExhaustionBanner,
     startOrderedSession,
@@ -63,6 +64,19 @@ const SolvePage = ({
   const hasExploreContext = Boolean(activeSearch);
   const questionExistsInFilteredPool = filteredQuestions.some((question) => question.question_uid === questionUid);
   const navigationState = getNavigationState(questionUid);
+  const sessionContainsQuestion = sessionQueue.includes(questionUid);
+  const sessionSourceMatchesFilteredPool = useMemo(() => {
+    if (!hasExploreContext || sourceQuestionUids.length === 0 || filteredQuestions.length === 0) {
+      return false;
+    }
+
+    if (sourceQuestionUids.length !== filteredQuestions.length) {
+      return false;
+    }
+
+    const filteredUidSet = new Set(filteredQuestions.map((question) => question.question_uid));
+    return sourceQuestionUids.every((uid) => filteredUidSet.has(uid));
+  }, [filteredQuestions, hasExploreContext, sourceQuestionUids]);
 
   useEffect(() => {
     if (isAptitudeQuestion && isInitialized && !aptitudeEnabled) {
@@ -72,6 +86,11 @@ const SolvePage = ({
 
   useEffect(() => {
     if (!isInitialized || !indexedQuestion) {
+      return;
+    }
+
+    if (sessionContainsQuestion && sessionMode === "random" && (!hasExploreContext || sessionSourceMatchesFilteredPool)) {
+      setCurrentQuestionUid(questionUid);
       return;
     }
 
@@ -87,7 +106,7 @@ const SolvePage = ({
       }
     }
 
-    if (sessionQueue.includes(questionUid)) {
+    if (sessionContainsQuestion) {
       setCurrentQuestionUid(questionUid);
       return;
     }
@@ -108,8 +127,10 @@ const SolvePage = ({
     isInitialized,
     questionExistsInFilteredPool,
     questionUid,
+    sessionContainsQuestion,
     sessionMode,
     sessionQueue,
+    sessionSourceMatchesFilteredPool,
     setCurrentQuestionUid,
     startOrderedSession,
   ]);
@@ -295,6 +316,13 @@ const SolvePage = ({
   const questionSubjectLabel = resolvedQuestion?.subjectLabel
     || indexedQuestion?.subjectLabel
     || questionService.getSubjectLabelBySlug(resolvedQuestion?.subjectSlug || indexedQuestion?.subjectSlug || "");
+  const questionSubtopicLabel = (
+    Array.isArray(resolvedQuestion?.subtopics) && resolvedQuestion.subtopics[0]?.label
+      ? resolvedQuestion.subtopics[0].label
+      : Array.isArray(indexedQuestion?.subtopics) && indexedQuestion.subtopics[0]?.label
+        ? indexedQuestion.subtopics[0].label
+        : ""
+  );
   const questionType = String(resolvedQuestion?.type || indexedQuestion?.type || "unknown").trim().toUpperCase() || "UNKNOWN";
   const isSolved = resolvedQuestion ? isQuestionSolved(resolvedQuestion) : indexedQuestion ? isQuestionSolved(indexedQuestion) : false;
   const isBookmarked = resolvedQuestion ? isQuestionBookmarked(resolvedQuestion) : indexedQuestion ? isQuestionBookmarked(indexedQuestion) : false;
@@ -314,6 +342,11 @@ const SolvePage = ({
       <span className="rounded-full bg-[color:var(--color-info-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-info-text)]">
         {questionSubjectLabel}
       </span>
+      {questionSubtopicLabel ? (
+        <span className="rounded-full bg-[color:var(--color-success-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold tracking-[0.04em] text-[color:var(--color-success-text)]">
+          {questionSubtopicLabel}
+        </span>
+      ) : null}
       <span className="rounded-full bg-[color:var(--color-purple-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
         {questionType}
       </span>

@@ -169,4 +169,28 @@ describe('SessionContext', () => {
         expect(latestSession.showExhaustionBanner).toBe(true);
         expect(latestSession.getNavigationState(reshuffledQuestion.question_uid).total).toBe(2);
     });
+
+    test('starts filtered random practice on the selected question without locking to its subtopic', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        const pool = [
+            { question_uid: 'reasoning-coding-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'coding-decoding' }] },
+            { question_uid: 'reasoning-coding-2', subjectSlug: 'reasoning', subtopics: [{ slug: 'coding-decoding' }] },
+            { question_uid: 'reasoning-direction-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'direction-sense' }] },
+            { question_uid: 'reasoning-blood-1', subjectSlug: 'reasoning', subtopics: [{ slug: 'blood-relations' }] },
+        ];
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startRandomSession(pool, 'reasoning-coding-2');
+        });
+
+        expect(firstQuestion.question_uid).toBe('reasoning-coding-2');
+        expect(latestSession.sessionQueue[0]).toBe('reasoning-coding-2');
+        expect(latestSession.sessionQueue[1]).not.toMatch(/coding/);
+    });
 });

@@ -37,7 +37,7 @@ const ExplorePage = ({
 
   const { filteredQuestions, filters, isInitialized, structuredTags, totalQuestions } = useFilterState();
   const { isQuestionSolved, isQuestionBookmarked } = useFilterActions();
-  const { startOrderedSession } = useSession();
+  const { startRandomSession } = useSession();
 
   const totalPages = Math.max(1, Math.ceil(filteredQuestions.length / PAGE_SIZE));
   const requestedPage = parsePageParam(location.search, 1);
@@ -191,6 +191,22 @@ const ExplorePage = ({
   }, []);
 
   useEffect(() => {
+    if (!location.state?.openFilters) {
+      return;
+    }
+
+    trackEvent("filter_open", { source: "drawer" });
+    setIsMobileFilterOpen(true);
+    navigate(
+      {
+        pathname: PRACTICE_ROUTE,
+        search: location.search,
+      },
+      { replace: true, state: null }
+    );
+  }, [location.search, location.state, navigate]);
+
+  useEffect(() => {
     if (typeof window === "undefined") {
       return undefined;
     }
@@ -218,14 +234,14 @@ const ExplorePage = ({
   }, [handleOpenFilters]);
 
   const handleOpenQuestion = (question) => {
-    startOrderedSession(filteredQuestions, question.question_uid);
+    startRandomSession(filteredQuestions, question.question_uid);
     trackEvent("result_open", { question_uid: question.question_uid, source: "explore" });
     writeLastSession({
       route: `${buildSolvePath(question.question_uid)}${location.search || ""}`,
       exploreSearch: location.search || "",
       resultPage: currentPage,
       questionUid: question.question_uid,
-      mode: "ordered",
+      mode: "random",
     });
     navigate({
       pathname: buildSolvePath(question.question_uid),

@@ -12,107 +12,174 @@ function fisherYatesShuffle(arr) {
     return arr;
 }
 
+function getQuestionSubjectKey(question = {}) {
+    return String(
+        question?.subjectSlug
+        || question?.canonical?.subjectSlug
+        || question?.subjectLabel
+        || question?.subject
+        || 'unknown'
+    ).trim().toLowerCase() || 'unknown';
+}
+
+function getQuestionSubtopicKey(question = {}) {
+    const firstSubtopic = Array.isArray(question?.subtopics) ? question.subtopics[0] : null;
+    return String(
+        firstSubtopic?.slug
+        || firstSubtopic?.label
+        || question?.subtopicSlug
+        || question?.subtopic
+        || 'general'
+    ).trim().toLowerCase() || 'general';
+}
+
+function getQuestionTopicKey(question = {}) {
+    return `${getQuestionSubjectKey(question)}::${getQuestionSubtopicKey(question)}`;
+}
+
+function countSubjectRemaining(subjectBucket) {
+    return subjectBucket.subtopics.reduce((total, subtopicBucket) => total + subtopicBucket.queue.length, 0);
+}
+
+function pickBalancedSubject(subjectBuckets, lastSubjectKey) {
+    const activeBuckets = subjectBuckets.filter((bucket) => countSubjectRemaining(bucket) > 0);
+    if (activeBuckets.length === 0) {
+        return null;
+    }
+
+    const hasSubjectAlternative = activeBuckets.some((bucket) => bucket.subjectKey !== lastSubjectKey);
+    const candidates = hasSubjectAlternative
+        ? activeBuckets.filter((bucket) => bucket.subjectKey !== lastSubjectKey)
+        : activeBuckets;
+
+    return fisherYatesShuffle([...candidates])
+        .sort((left, right) => countSubjectRemaining(right) - countSubjectRemaining(left))[0];
+}
+
+function pickBalancedSubtopic(subjectBucket, recentTopicKeys) {
+    const activeSubtopics = subjectBucket.subtopics.filter((bucket) => bucket.queue.length > 0);
+    if (activeSubtopics.length === 0) {
+        return null;
+    }
+
+    const recentTopics = new Set(recentTopicKeys);
+    const lastTopicKey = recentTopicKeys[0] || '';
+    const hasFreshTopic = activeSubtopics.some((bucket) => !recentTopics.has(bucket.topicKey));
+    const hasNonConsecutiveTopic = activeSubtopics.some((bucket) => bucket.topicKey !== lastTopicKey);
+    let candidates = activeSubtopics;
+
+    if (hasFreshTopic) {
+        candidates = activeSubtopics.filter((bucket) => !recentTopics.has(bucket.topicKey));
+    } else if (hasNonConsecutiveTopic) {
+        candidates = activeSubtopics.filter((bucket) => bucket.topicKey !== lastTopicKey);
+    }
+
+    return fisherYatesShuffle([...candidates])
+        .sort((left, right) => right.queue.length - left.queue.length)[0];
+}
+
 function diversifyBucket(uids, questionMap) {
     if (uids.length <= 1) return uids;
 
-    // 1. Group questions by Subject
     const subjectGroups = new Map();
     uids.forEach((uid) => {
         const question = questionMap.get(uid);
-        const subject = question?.subjectSlug || 'unknown';
-        if (!subjectGroups.has(subject)) {
-            subjectGroups.set(subject, []);
+        const subjectKey = getQuestionSubjectKey(question);
+        const topicKey = getQuestionTopicKey(question);
+
+        if (!subjectGroups.has(subjectKey)) {
+            subjectGroups.set(subjectKey, new Map());
         }
-        subjectGroups.get(subject).push(uid);
+
+        const subtopicGroups = subjectGroups.get(subjectKey);
+        if (!subtopicGroups.has(topicKey)) {
+            subtopicGroups.set(topicKey, []);
+        }
+        subtopicGroups.get(topicKey).push(uid);
     });
 
-    // 2. Within each subject, group by Subtopic and interleave
-    const randomizedSubjects = new Map();
-    subjectGroups.forEach((subjectUids, subject) => {
-        const subtopicGroups = new Map();
-        subjectUids.forEach((uid) => {
-            const question = questionMap.get(uid);
-            const subtopic = question?.subtopics?.[0]?.slug || 'general';
-            if (!subtopicGroups.has(subtopic)) {
-                subtopicGroups.set(subtopic, []);
-            }
-            subtopicGroups.get(subtopic).push(uid);
-        });
+    const subjectBuckets = fisherYatesShuffle(Array.from(subjectGroups.entries()).map(([subjectKey, subtopicMap]) => ({
+        subjectKey,
+        subtopics: fisherYatesShuffle(Array.from(subtopicMap.entries()).map(([topicKey, queue]) => ({
+            topicKey,
+            queue: fisherYatesShuffle([...queue]),
+        }))),
+    })));
 
-        // Shuffle each subtopic group internally
-        const activeSubgroups = [];
-        subtopicGroups.forEach((groupUids) => {
-            activeSubgroups.push(fisherYatesShuffle([...groupUids]));
-        });
-
-        // Shuffle the subgroups themselves to randomize starting subtopics
-        fisherYatesShuffle(activeSubgroups);
-
-        // Interleave the subtopics for this subject
-        const interleavedSubjectUids = [];
-        let remainingSubgroups = activeSubgroups.filter((g) => g.length > 0);
-        while (remainingSubgroups.length > 0) {
-            for (let i = 0; i < remainingSubgroups.length; i += 1) {
-                interleavedSubjectUids.push(remainingSubgroups[i].shift());
-            }
-            remainingSubgroups = remainingSubgroups.filter((g) => g.length > 0);
-        }
-        randomizedSubjects.set(subject, interleavedSubjectUids);
-    });
-
-    // 3. Interleave the Subjects themselves
     const result = [];
-    let activeSubjectQueues = Array.from(randomizedSubjects.values());
-    fisherYatesShuffle(activeSubjectQueues); // Randomize starting subject
+    const recentTopicKeys = [];
+    let lastSubjectKey = '';
 
-    let remainingSubjectQueues = activeSubjectQueues.filter((q) => q.length > 0);
-    while (remainingSubjectQueues.length > 0) {
-        for (let i = 0; i < remainingSubjectQueues.length; i += 1) {
-            result.push(remainingSubjectQueues[i].shift());
+    while (result.length < uids.length) {
+        const subjectBucket = pickBalancedSubject(subjectBuckets, lastSubjectKey);
+        if (!subjectBucket) {
+            break;
         }
-        remainingSubjectQueues = remainingSubjectQueues.filter((q) => q.length > 0);
-    }
 
-    // 4. Lookahead swap to avoid consecutive identical subjects/subtopics where possible
-    for (let i = 0; i < result.length - 1; i += 1) {
-        const currentQ = questionMap.get(result[i]);
-        const nextQ = questionMap.get(result[i + 1]);
-        
-        if (!currentQ || !nextQ) continue;
-
-        const isSameSubject = currentQ.subjectSlug === nextQ.subjectSlug;
-        const currentSubtopic = currentQ.subtopics?.[0]?.slug || 'general';
-        const nextSubtopic = nextQ.subtopics?.[0]?.slug || 'general';
-        const isSameSubtopic = currentSubtopic === nextSubtopic;
-
-        if (isSameSubject) {
-            let swapped = false;
-            
-            // Priority 1: Find a completely different subject to swap in
-            for (let j = i + 2; j < result.length; j += 1) {
-                const swapQ = questionMap.get(result[j]);
-                if (swapQ && swapQ.subjectSlug !== currentQ.subjectSlug) {
-                    [result[i + 1], result[j]] = [result[j], result[i + 1]];
-                    swapped = true;
-                    break;
-                }
-            }
-
-            // Priority 2: If we must show the same subject, ensure it's a different subtopic
-            if (!swapped && isSameSubtopic) {
-                for (let j = i + 2; j < result.length; j += 1) {
-                    const swapQ = questionMap.get(result[j]);
-                    const swapSubtopic = swapQ?.subtopics?.[0]?.slug || 'general';
-                    if (swapQ && swapSubtopic !== currentSubtopic) {
-                        [result[i + 1], result[j]] = [result[j], result[i + 1]];
-                        break;
-                    }
-                }
-            }
+        const subtopicBucket = pickBalancedSubtopic(subjectBucket, recentTopicKeys);
+        if (!subtopicBucket) {
+            break;
         }
+
+        const nextUid = subtopicBucket.queue.shift();
+        result.push(nextUid);
+        lastSubjectKey = subjectBucket.subjectKey;
+        recentTopicKeys.unshift(subtopicBucket.topicKey);
+        recentTopicKeys.splice(3);
     }
 
     return result;
+}
+
+function appendDiversifiedBucket(queue, bucketQueue, questionMap) {
+    if (queue.length === 0 || bucketQueue.length <= 1) {
+        return [...queue, ...bucketQueue];
+    }
+
+    const lastQuestion = questionMap.get(queue[queue.length - 1]);
+    const lastTopicKey = getQuestionTopicKey(lastQuestion);
+    const firstTopicKey = getQuestionTopicKey(questionMap.get(bucketQueue[0]));
+    if (lastTopicKey !== firstTopicKey) {
+        return [...queue, ...bucketQueue];
+    }
+
+    const swapIndex = bucketQueue.findIndex((uid) => (
+        getQuestionTopicKey(questionMap.get(uid)) !== lastTopicKey
+    ));
+
+    if (swapIndex > 0) {
+        const adjustedBucket = [...bucketQueue];
+        [adjustedBucket[0], adjustedBucket[swapIndex]] = [adjustedBucket[swapIndex], adjustedBucket[0]];
+        return [...queue, ...adjustedBucket];
+    }
+
+    return [...queue, ...bucketQueue];
+}
+
+function prioritizeInitialUid(queue, initialUid, questionMap) {
+    const requestedUid = String(initialUid || '').trim();
+    if (!requestedUid) {
+        return queue;
+    }
+
+    const requestedIndex = queue.indexOf(requestedUid);
+    if (requestedIndex === -1) {
+        return queue;
+    }
+
+    const remainingQueue = queue.filter((uid) => uid !== requestedUid);
+    const prioritizedQueue = [requestedUid, ...remainingQueue];
+    const requestedTopicKey = getQuestionTopicKey(questionMap.get(requestedUid));
+
+    const swapIndex = prioritizedQueue.findIndex((uid, index) => (
+        index > 0 && getQuestionTopicKey(questionMap.get(uid)) !== requestedTopicKey
+    ));
+
+    if (swapIndex > 1) {
+        [prioritizedQueue[1], prioritizedQueue[swapIndex]] = [prioritizedQueue[swapIndex], prioritizedQueue[1]];
+    }
+
+    return prioritizedQueue;
 }
 
 function getTrackingId(question) {
@@ -151,7 +218,8 @@ function buildSessionQueue(questionPool, seenThisSession, solvedSet) {
     const diversifiedBucket2 = diversifyBucket(bucket2, questionMap);
     const diversifiedBucket3 = diversifyBucket(bucket3, questionMap);
 
-    return [...diversifiedBucket1, ...diversifiedBucket2, ...diversifiedBucket3];
+    return [diversifiedBucket1, diversifiedBucket2, diversifiedBucket3]
+        .reduce((queue, bucketQueue) => appendDiversifiedBucket(queue, bucketQueue, questionMap), []);
 }
 
 function uniqueQuestionList(questionPool = []) {
@@ -224,7 +292,7 @@ export const SessionProvider = ({ children }) => {
         return questionMap.get(normalizedUid) || activeQuestionMapRef.current.get(normalizedUid) || null;
     }, [questionMap]);
 
-    const startRandomSession = useCallback((questionPool = []) => {
+    const startRandomSession = useCallback((questionPool = [], initialUid = '') => {
         const normalizedQuestions = resolveQuestionPool(questionPool);
         if (normalizedQuestions.length === 0) {
             setSessionMode('random');
@@ -240,7 +308,12 @@ export const SessionProvider = ({ children }) => {
             normalizedQuestions.map((question) => [question.question_uid, question])
         );
         seenThisSession.current.clear();
-        const nextQueue = buildSessionQueue(normalizedQuestions, seenThisSession.current, solvedSetRef.current);
+        const activeQuestionMap = activeQuestionMapRef.current;
+        const nextQueue = prioritizeInitialUid(
+            buildSessionQueue(normalizedQuestions, seenThisSession.current, solvedSetRef.current),
+            initialUid,
+            activeQuestionMap
+        );
         const firstUid = nextQueue[0] || '';
         if (firstUid) {
             seenThisSession.current.add(firstUid);

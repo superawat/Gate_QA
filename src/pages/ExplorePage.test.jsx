@@ -11,7 +11,7 @@ import { AnswerService } from "../services/AnswerService";
 import { QuestionService } from "../services/QuestionService";
 
 const mocks = vi.hoisted(() => ({
-  startOrderedSession: vi.fn(),
+  startRandomSession: vi.fn(),
   trackEvent: vi.fn(),
   writeLastSession: vi.fn(),
 }));
@@ -100,7 +100,7 @@ vi.mock("../components/Practice/PaginationControls", () => ({
 
 vi.mock("../contexts/SessionContext", () => ({
   useSession: () => ({
-    startOrderedSession: mocks.startOrderedSession,
+    startRandomSession: mocks.startRandomSession,
   }),
 }));
 
@@ -227,7 +227,7 @@ const renderExplorePage = ({
 describe("ExplorePage", () => {
   beforeEach(() => {
     vi.useRealTimers();
-    mocks.startOrderedSession.mockReset();
+    mocks.startRandomSession.mockReset();
     mocks.trackEvent.mockReset();
     mocks.writeLastSession.mockReset();
     window.localStorage.clear();
@@ -376,7 +376,7 @@ describe("ExplorePage", () => {
     });
   });
 
-  test("opening a question starts an ordered session and navigates to the solve route", async () => {
+  test("opening a question starts a balanced random session and navigates to the solve route", async () => {
     renderExplorePage({ route: "/practice?subjects=algorithms" });
 
     fireEvent.click(await screen.findByRole("button", { name: /open go:algo-1/i }));
@@ -385,8 +385,8 @@ describe("ExplorePage", () => {
       expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3Aalgo-1?subjects=algorithms");
     });
 
-    expect(mocks.startOrderedSession).toHaveBeenCalledTimes(1);
-    expect(mocks.startOrderedSession.mock.calls[0][1]).toBe("go:algo-1");
+    expect(mocks.startRandomSession).toHaveBeenCalledTimes(1);
+    expect(mocks.startRandomSession.mock.calls[0][1]).toBe("go:algo-1");
   });
 
   test("shows the loading state while the question index is not initialized", async () => {

@@ -5,15 +5,16 @@ import {
   FaFilePdf,
   FaFileCsv,
   FaFileImport,
+  FaFilter,
   FaSave,
   FaInfoCircle,
   FaHeart,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HamburgerButton from "./HamburgerButton";
 import SupportModal from "../Footer/SupportModal";
 
-import { HIGH_PRIORITY_TOPICS_ROUTE, USER_MANUAL_ROUTE } from "../../utils/routes";
+import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, USER_MANUAL_ROUTE } from "../../utils/routes";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 
 const LAST_EXPORT_KEYS = {
@@ -105,6 +106,7 @@ const GlobalNavigationDrawer = ({
   onPrint,
   statusMessage = "",
 }) => {
+  const location = useLocation();
   const panelRef = useRef(null);
   const [showInfo, setShowInfo] = useState(false);
   const [showManual, setShowManual] = useState(false);
@@ -212,6 +214,9 @@ const GlobalNavigationDrawer = ({
     { label: "Export JSON", icon: FaSave, onClick: handleSave, ts: jsonTs },
     { label: "Import JSON", icon: FaFileImport, onClick: handleOpen, ts: importTs },
   ];
+  const filterShortcutSearch = location.pathname.startsWith(PRACTICE_ROUTE)
+    ? location.search
+    : "";
 
   return (
     <div
@@ -287,6 +292,15 @@ const GlobalNavigationDrawer = ({
           {/* 2. Special Aptitude Section Toggle */}
           <section className="space-y-2" aria-labelledby="global-aptitude-heading">
             <h2 id="global-aptitude-heading" className={sectionHeadingClassName}>Options</h2>
+            <Link
+              to={{ pathname: PRACTICE_ROUTE, search: filterShortcutSearch }}
+              state={{ openFilters: true }}
+              onClick={onClose}
+              className={actionButtonClassName}
+            >
+              <FaFilter className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+              <span className="truncate">Filters</span>
+            </Link>
             <div className={`${actionButtonClassName} flex items-center justify-between gap-3`}>
               <span className="flex min-w-0 items-center gap-3">
                 <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />

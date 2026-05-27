@@ -88,6 +88,7 @@ describe("AppHeader", () => {
     const drawerScope = within(drawer);
     expect(drawer).toBeTruthy();
     expect(screen.getByText(/2 filters active/i)).toBeTruthy();
+    expect(drawerScope.getByRole("link", { name: /^filters$/i }).getAttribute("href")).toBe("/practice?subjects=dbms&types=nat");
 
     // Expand Tools
     fireEvent.click(drawerScope.getByRole("button", { name: /export & import/i }));
