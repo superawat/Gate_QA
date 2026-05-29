@@ -1,15 +1,11 @@
 {
-  "_CalculatorWidget-hFE3Lcga.js": {
-    "file": "assets/CalculatorWidget-hFE3Lcga.js",
+  "_CalculatorWidget-D8ohtR5C.js": {
+    "file": "assets/CalculatorWidget-D8ohtR5C.js",
     "name": "CalculatorWidget",
     "imports": [
-      "_vendor-preload-helper-LPHmglQw.js",
       "_vendor-react-CcRTwbcY.js",
       "_vendor-icons-DCvIog4e.js",
       "index.html"
-    ],
-    "dynamicImports": [
-      "node_modules/better-react-mathjax/esm/index.js"
     ]
   },
   "_Toast-B67H36q5.js": {
@@ -84,7 +80,7 @@
     ]
   },
   "index.html": {
-    "file": "assets/index-DY4fZCL5.js",
+    "file": "assets/index-jn5UroTE.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -95,13 +91,14 @@
       "_vendor-icons-DCvIog4e.js"
     ],
     "dynamicImports": [
-      "src/utils/pdfExport.js",
       "src/pages/ExplorePage.jsx",
       "src/pages/InsightsPage.jsx",
       "src/pages/SolvePage.jsx",
       "src/shells/MockShell.jsx",
       "src/pages/UserManualPage.jsx",
-      "src/pages/HighPriorityTopicsPage.jsx"
+      "src/pages/HighPriorityTopicsPage.jsx",
+      "src/components/Math/MathRuntime.jsx",
+      "src/utils/pdfExport.js"
     ],
     "assets": [
       "assets/qrcode-DgdMmsns.png"
@@ -141,12 +138,25 @@
     "file": "assets/qrcode-DgdMmsns.png",
     "src": "src/components/Footer/assets/qrcode.png"
   },
+  "src/components/Math/MathRuntime.jsx": {
+    "file": "assets/MathRuntime-OHoGetME.js",
+    "name": "MathRuntime",
+    "src": "src/components/Math/MathRuntime.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-preload-helper-LPHmglQw.js",
+      "_vendor-react-CcRTwbcY.js"
+    ],
+    "dynamicImports": [
+      "node_modules/better-react-mathjax/esm/index.js"
+    ]
+  },
   "src/index.css": {
-    "file": "assets/index-w692XIDt.css",
+    "file": "assets/index-CMVAW7FB.css",
     "src": "src/index.css"
   },
   "src/pages/ExplorePage.jsx": {
-    "file": "assets/ExplorePage-CyI2vjDR.js",
+    "file": "assets/ExplorePage-Dd_Jn3IH.js",
     "name": "ExplorePage",
     "src": "src/pages/ExplorePage.jsx",
     "isDynamicEntry": true,
@@ -162,7 +172,7 @@
     ]
   },
   "src/pages/HighPriorityTopicsPage.jsx": {
-    "file": "assets/HighPriorityTopicsPage-ms9K1M86.js",
+    "file": "assets/HighPriorityTopicsPage-Gwm5qD7m.js",
     "name": "HighPriorityTopicsPage",
     "src": "src/pages/HighPriorityTopicsPage.jsx",
     "isDynamicEntry": true,
@@ -178,7 +188,7 @@
     ]
   },
   "src/pages/InsightsPage.jsx": {
-    "file": "assets/InsightsPage-DQQOXr_4.js",
+    "file": "assets/InsightsPage-C2X-MY7b.js",
     "name": "InsightsPage",
     "src": "src/pages/InsightsPage.jsx",
     "isDynamicEntry": true,
@@ -195,7 +205,7 @@
     ]
   },
   "src/pages/SolvePage.jsx": {
-    "file": "assets/SolvePage-Bzu6Po87.js",
+    "file": "assets/SolvePage-CMNb8LrK.js",
     "name": "SolvePage",
     "src": "src/pages/SolvePage.jsx",
     "isDynamicEntry": true,
@@ -206,13 +216,14 @@
       "node_modules/dompurify/dist/purify.es.mjs",
       "_Toast-B67H36q5.js",
       "_keyboardShortcuts-B2Sg3M3T.js",
-      "_CalculatorWidget-hFE3Lcga.js",
+      "src/components/Math/MathRuntime.jsx",
+      "_CalculatorWidget-D8ohtR5C.js",
       "_vendor-router-CC361C8d.js",
       "_vendor-preload-helper-LPHmglQw.js"
     ]
   },
   "src/pages/UserManualPage.jsx": {
-    "file": "assets/UserManualPage-CRJiHTv9.js",
+    "file": "assets/UserManualPage-BW20MK3H.js",
     "name": "UserManualPage",
     "src": "src/pages/UserManualPage.jsx",
     "isDynamicEntry": true,
@@ -226,15 +237,16 @@
     ]
   },
   "src/shells/MockShell.jsx": {
-    "file": "assets/MockShell-ZS107qJy.js",
+    "file": "assets/MockShell-WcpEEFo_.js",
     "name": "MockShell",
     "src": "src/shells/MockShell.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-react-CcRTwbcY.js",
       "index.html",
-      "_CalculatorWidget-hFE3Lcga.js",
+      "_CalculatorWidget-D8ohtR5C.js",
       "node_modules/dompurify/dist/purify.es.mjs",
+      "src/components/Math/MathRuntime.jsx",
       "_vendor-icons-DCvIog4e.js",
       "_vendor-preload-helper-LPHmglQw.js",
       "_vendor-router-CC361C8d.js"
@@ -244,7 +256,7 @@
     ]
   },
   "src/utils/pdfExport.js": {
-    "file": "assets/pdfExport-CS-XgFVO.js",
+    "file": "assets/pdfExport-Du8EFJ-8.js",
     "name": "pdfExport",
     "src": "src/utils/pdfExport.js",
     "isDynamicEntry": true,
