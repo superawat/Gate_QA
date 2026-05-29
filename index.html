@@ -100,6 +100,101 @@
     pre {
       overflow: auto;
     }
+
+    /* ── Static splash screen (hides FOUC until React mounts) ─────── */
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.875rem;
+      background: #f9fafb;
+      transition: opacity 280ms ease, visibility 280ms ease;
+    }
+
+    :root[data-theme="dark"] #app-splash {
+      background: #0f172a;
+    }
+
+    #app-splash.app-splash--hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #app-splash-spinner {
+      position: relative;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: #1e293b;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #app-splash-spinner::before {
+      content: "";
+      position: absolute;
+      inset: 0.65rem;
+      border: 2px solid #e0f2fe;
+      border-top-color: #0ea5e9;
+      border-radius: 999px;
+      animation: app-splash-spin 720ms linear infinite;
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::before {
+      border-color: rgba(14, 165, 233, 0.2);
+      border-top-color: #38bdf8;
+    }
+
+    #app-splash-spinner::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      transform: translate(-50%, -50%);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::after {
+      background: #38bdf8;
+    }
+
+    #app-splash-text {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    :root[data-theme="dark"] #app-splash-text {
+      color: #94a3b8;
+    }
+
+    @keyframes app-splash-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #app-splash-spinner::before {
+        animation: none;
+      }
+    }
   </style>
 
   <script>
@@ -123,7 +218,7 @@
       );
     }(window.location));
   </script>
-  <script type="module" crossorigin src="/Gate_QA/assets/index-jn5UroTE.js"></script>
+  <script type="module" crossorigin src="/Gate_QA/assets/index-Denlhz2D.js"></script>
   <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-preload-helper-LPHmglQw.js">
   <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-react-CcRTwbcY.js">
   <link rel="modulepreload" crossorigin href="/Gate_QA/assets/vendor-router-CC361C8d.js">
@@ -132,7 +227,13 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static splash: visible instantly, removed by React after mount -->
+    <div id="app-splash" aria-live="polite" role="status">
+      <div id="app-splash-spinner" aria-hidden="true"></div>
+      <p id="app-splash-text">Loading GateQA</p>
+    </div>
+  </div>
 </body>
 
 </html>
