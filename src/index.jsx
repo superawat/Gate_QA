@@ -43,6 +43,29 @@ const registerServiceWorker = () => {
   window.addEventListener('load', register, { once: true });
 };
 
+const dismissStaticSplash = () => {
+  const splash = document.getElementById('app-splash');
+  if (!splash) {
+    return;
+  }
+
+  splash.classList.add('app-splash--hide');
+
+  const onDone = () => {
+    splash.removeEventListener('transitionend', onDone);
+    splash.remove();
+  };
+
+  splash.addEventListener('transitionend', onDone, { once: true });
+
+  // Safety fallback: remove after 400ms even if transitionend never fires
+  setTimeout(() => {
+    if (splash.parentNode) {
+      splash.remove();
+    }
+  }, 400);
+};
+
 loadAppStyles();
 registerServiceWorker();
 
@@ -52,4 +75,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+dismissStaticSplash();
 
