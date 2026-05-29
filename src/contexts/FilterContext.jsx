@@ -411,9 +411,16 @@ export const FilterProvider = ({
 }) => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [aptitudeEnabled] = useAptitudeEnabled();
+    const [aptitudeEnabled, setAptitudeEnabled] = useAptitudeEnabled();
     const canMergeAptitude = progressScope === 'gate' && questionService === QuestionService;
     const shouldMergeAptitude = canMergeAptitude && aptitudeEnabled;
+
+    useEffect(() => {
+        if (location.pathname.includes('/question/APT-') && !aptitudeEnabled) {
+            setAptitudeEnabled(true);
+        }
+    }, [location.pathname, aptitudeEnabled, setAptitudeEnabled]);
+
     const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest, questionService));
     const lastHydratedSearchRef = useRef(null);
 

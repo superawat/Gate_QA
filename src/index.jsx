@@ -1,19 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-
-const loadAppStyles = () => {
-  const startLoading = () => {
-    void import('./index.css');
-  };
-
-  if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
-    window.requestAnimationFrame(startLoading);
-    return;
-  }
-
-  setTimeout(startLoading, 0);
-};
+import './index.css';
 
 const registerServiceWorker = () => {
   if (
@@ -66,7 +54,8 @@ const dismissStaticSplash = () => {
   }, 400);
 };
 
-loadAppStyles();
+window.dismissStaticSplash = dismissStaticSplash;
+
 registerServiceWorker();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -76,5 +65,6 @@ root.render(
   </React.StrictMode>
 );
 
-dismissStaticSplash();
+// Safety fallback: dismiss after 2000ms in case React mounting hangs or fails
+setTimeout(dismissStaticSplash, 2000);
 

@@ -484,6 +484,16 @@ const AppRuntime = () => {
   }, []);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.dismissStaticSplash === "function") {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          window.dismissStaticSplash();
+        });
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     void loadQuestionBankManifest();
   }, [loadQuestionBankManifest]);
 

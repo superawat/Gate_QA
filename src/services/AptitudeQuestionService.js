@@ -197,10 +197,23 @@ export class AptitudeQuestionService {
     const subtopicLabel = String(row.subtopic || row.st || "General").trim();
     const subtopicSlug = this.slugifyToken(row.subtopicSlug || row.sts || subtopicLabel);
     const baseUrl = this.getBaseUrl();
-    const options = Array.isArray(row.options) ? row.options.slice(0, OPTION_LABELS.length).map(opt => String(opt || "").replace(/src=["'](images\/[^"']+)["']/g, `src="${baseUrl}$1"`)) : [];
+
+    const cleanEscapes = (str) => {
+      if (!str) return "";
+      return String(str)
+        .replace(/\\+r\\+n/gi, "\n")
+        .replace(/\\+n/gi, "\n")
+        .replace(/\\+r/gi, "\n")
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n");
+    };
+
+    const options = Array.isArray(row.options)
+      ? row.options.slice(0, OPTION_LABELS.length).map(opt => cleanEscapes(opt).replace(/src=["'](images\/[^"']+)["']/g, `src="${baseUrl}$1"`))
+      : [];
     const type = this.normalizeTypeToken(row.type || row.t || "MCQ");
     const answer = String(row.answer || row.a || "").trim().toUpperCase();
-    const questionHtml = String(row.questionHtml || row.question || row.q || "").trim().replace(/src=["'](images\/[^"']+)["']/g, `src="${baseUrl}$1"`);
+    const questionHtml = cleanEscapes(row.questionHtml || row.question || row.q || "").trim().replace(/src=["'](images\/[^"']+)["']/g, `src="${baseUrl}$1"`);
     const parsedYear = Number.parseInt(row.year ?? row.y ?? "", 10);
     const year = Number.isInteger(parsedYear) ? parsedYear : null;
     const preview = String(row.preview || row.text || row.x || this.stripHtmlToText(questionHtml)).trim();

@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-05-29
+
+### Added
+- Added automatic Aptitude index activation in `FilterContext.jsx` so that direct links to Aptitude questions (e.g., starting with `/question/APT-`) automatically enable Aptitude mode on load, ensuring detail shards hydrate and render correctly without index-missing errors.
+- Added comprehensive regex unescaping (`/\\+r\\+n/gi`, `/\\+n/gi`, `/\\+r/gi`) in `AptitudeQuestionService.js` to normalize multi-escaped JSON shards (like `\\\\r\\\\n` and `\\\\n`), resolving messy paragraph layouts and rendering clean typography for questions like `APT-RSN-8049` and `APT-RSN-7552`.
+
+### Changed
+- Replaced the asynchronous dynamic `import('./index.css')` inside `index.jsx` with a standard static `import './index.css';`, forcing the browser's native rendering pipeline to block layout paints until all CSS styles are fully loaded and active.
+- Refactored the static HTML loading splash screen (`#app-splash`) to be dismissed inside a top-level `useEffect` in `App.jsx` rather than immediately after scheduling `root.render`. Using a two-tier `requestAnimationFrame` delay ensures the React component tree is fully mounted and styled before the splash screen fades out, completely eliminating Flash of Unstyled Content (FOUC).
+- Restored base-agnostic Vite compilation paths in `index.html` for preloads and manifests (e.g. `/manifest.webmanifest` and `/question-bank-manifest.json`), eliminating double base-path warning errors on startup.
+- Implemented predictive route preloading in `routePreload.js` and `App.jsx` to prefetch chunk files on hover/focus over Home dashboard cards.
+- Integrated `content-visibility: auto` and `contain-intrinsic-size` in `index.css` to restrict layout-recalculation costs for repeated list cards.
+
+### Verified
+- Local development server start verified and clean checkouts confirmed.
+- Verified smooth transition from static HTML splash screen to fully-styled home page dashboard layout.
+- Verified that direct URLs to visual/inequality reasoning questions (`APT-RSN-8049`, `APT-RSN-7552`) load immediately with beautifully parsed, clean typography.
+
 ## 2026-05-28
 
 ### Added
