@@ -87,7 +87,7 @@ const HARD_ARTIFACTS = [
   ["broken_marker", /\[\[|\]\]/],
   ["direction_range", /\bDirection\s*:-|\bQ\s*\.\s*\d+\s*(?:to|-)/i],
   ["section_bleed", /\b(?:General Awareness|Quantitative Aptitude)\b/i],
-  ["publisher_noise", /\b(?:Download\s+[A-Z][A-Za-z0-9_-]*|Search\s+on\s+TG|ssc(?:cgl)?[a-z0-9_-]*|[A-Z][A-Za-z0-9_-]*\s+(?:PDF|Book|Publication|Exam|Coaching))\b/i],
+  ["publisher_noise", /\b(?:Download\s+[A-Z][A-Za-z0-9_-]*|Search\s+on\s+TG|ssc(?:cgl)?[a-z0-9_-]*)\b/i],
   ["replacement_character", /\uFFFD/],
   ["mojibake", /\b(?:Ã|â)\w*/],
 ];

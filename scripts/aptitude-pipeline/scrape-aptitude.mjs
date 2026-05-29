@@ -1848,9 +1848,17 @@ async function crawlAptitudeBankCatalog(options) {
       for (const paperChoice of job.paperChoices) {
         if (shouldStop()) break;
         const sourceUrl = paperSourceUrl(options.baseUrl, paperChoice.value);
-        if (seenPaperPacks.has(paperChoice.value) || seenPaperUrls.has(sourceUrl)) continue;
+        const internalSourceUrl = normalizeUrlToInternal(sourceUrl);
+        if (
+          seenPaperPacks.has(paperChoice.value)
+          || seenPaperUrls.has(sourceUrl)
+          || seenPaperUrls.has(internalSourceUrl)
+        ) {
+          continue;
+        }
         seenPaperPacks.add(paperChoice.value);
         seenPaperUrls.add(sourceUrl);
+        seenPaperUrls.add(internalSourceUrl);
         papersScheduled += 1;
         try {
           await scrapePaperChoice(

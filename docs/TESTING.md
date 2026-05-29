@@ -141,9 +141,9 @@ npm run qa:validate-aptitude-images
 
 Current verified aptitude state:
 
-- `16,873` public aptitude questions
-- `60` public aptitude subject/subtopic shards
-- `123` local aptitude image files referenced by public data
+- `36,836` public aptitude questions
+- `62` public aptitude subject/subtopic shards
+- `3,718` local aptitude image files referenced by public data
 - no remote or broken public aptitude images
 
 `qa:verify-aptitude` may emit non-blocking coverage/OCR warnings. Treat failures as blockers and warnings as review items unless a warning is confirmed learner-facing bad data.

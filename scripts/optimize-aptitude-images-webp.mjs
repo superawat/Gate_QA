@@ -8,6 +8,7 @@
  *   node scripts/optimize-aptitude-images-webp.mjs
  *   node scripts/optimize-aptitude-images-webp.mjs --dry-run
  *   node scripts/optimize-aptitude-images-webp.mjs --no-prune
+ *   node scripts/optimize-aptitude-images-webp.mjs --recompress-webp
  */
 
 import fs from "node:fs";
@@ -22,7 +23,9 @@ const REPORT_FILE = path.join(ROOT, "artifacts", "review", "aptitude-image-optim
 
 const DRY_RUN = process.argv.includes("--dry-run");
 const PRUNE = !process.argv.includes("--no-prune");
+const RECOMPRESS_WEBP = process.argv.includes("--recompress-webp");
 const WEBP_QUALITY = Number.parseInt(process.env.APTITUDE_IMAGE_WEBP_QUALITY || "78", 10);
+const MAX_IMAGE_SIDE = Number.parseInt(process.env.APTITUDE_IMAGE_MAX_SIDE || "0", 10);
 const CONVERTIBLE_EXTS = new Set([".png", ".jpg", ".jpeg"]);
 const IMAGE_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
 const IMAGE_REF_RE = /images\/aptitude\/[^"'<> )]+/g;
@@ -126,6 +129,38 @@ async function convertToWebp(fileName) {
   return { status: "converted", webpName, sourceBytes, outputBytes };
 }
 
+async function recompressWebp(fileName) {
+  const sourcePath = path.join(IMAGE_DIR, fileName);
+  const sourceBytes = fs.statSync(sourcePath).size;
+
+  let outputBuffer;
+  try {
+    const inputBuffer = fs.readFileSync(sourcePath);
+    const image = sharp(inputBuffer, { failOn: "warning" }).rotate();
+    if (MAX_IMAGE_SIDE > 0) {
+      image.resize({
+        width: MAX_IMAGE_SIDE,
+        height: MAX_IMAGE_SIDE,
+        fit: "inside",
+        withoutEnlargement: true,
+      });
+    }
+    outputBuffer = await image.webp({ quality: WEBP_QUALITY, effort: 5 }).toBuffer();
+  } catch {
+    return { status: "invalid", sourceBytes };
+  }
+
+  if (!DRY_RUN && outputBuffer.length < sourceBytes) {
+    fs.writeFileSync(sourcePath, outputBuffer);
+  }
+
+  return {
+    status: outputBuffer.length < sourceBytes ? "recompressed" : "kept",
+    sourceBytes,
+    outputBytes: Math.min(sourceBytes, outputBuffer.length),
+  };
+}
+
 function pruneUnreferencedImages(referencedNames) {
   if (!PRUNE || !fs.existsSync(IMAGE_DIR)) return { pruned: 0, prunedBytes: 0 };
   let pruned = 0;
@@ -158,9 +193,27 @@ async function main() {
   let sourceBytes = 0;
   let outputBytes = 0;
   let converted = 0;
+  let recompressed = 0;
 
   for (const name of Array.from(refsByName.keys())) {
     const ext = path.extname(name).toLowerCase();
+    if (RECOMPRESS_WEBP && ext === ".webp") {
+      const sourcePath = path.join(IMAGE_DIR, name);
+      if (!fs.existsSync(sourcePath)) {
+        missingNames.add(name);
+        continue;
+      }
+      const result = await recompressWebp(name);
+      sourceBytes += result.sourceBytes || 0;
+      if (result.status === "invalid") {
+        invalidNames.add(name);
+        missingNames.add(name);
+        continue;
+      }
+      if (result.status === "recompressed") recompressed += 1;
+      outputBytes += result.outputBytes || result.sourceBytes || 0;
+      continue;
+    }
     if (!CONVERTIBLE_EXTS.has(ext)) continue;
     const sourcePath = path.join(IMAGE_DIR, name);
     if (!fs.existsSync(sourcePath)) {
@@ -188,9 +241,11 @@ async function main() {
     generatedAt: new Date().toISOString(),
     dryRun: DRY_RUN,
     webpQuality: WEBP_QUALITY,
+    maxImageSide: MAX_IMAGE_SIDE,
     jsonFiles: jsonFiles.length,
     referencedImages: refsByName.size,
     converted,
+    recompressed,
     invalidImages: Array.from(invalidNames).sort(),
     missingImages: Array.from(missingNames).sort(),
     updatedFiles: rewrite.updatedFiles,
@@ -210,7 +265,7 @@ async function main() {
 
   console.log(
     `[optimize-aptitude-images] converted=${converted} updatedFiles=${rewrite.updatedFiles} ` +
-      `pruned=${prune.pruned} invalid=${invalidNames.size} saved=${report.savedMB}MB`
+      `recompressed=${recompressed} pruned=${prune.pruned} invalid=${invalidNames.size} saved=${report.savedMB}MB`
   );
   if (invalidNames.size > 0) {
     console.log(`[optimize-aptitude-images] Replaced invalid images with [Image Missing]: ${Array.from(invalidNames).join(", ")}`);

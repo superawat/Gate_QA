@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "../..");
 
 const DEFAULT_PARSED_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "parsed-questions.json");
+const DEFAULT_COVERAGE_ALIAS_PATH = path.join(ROOT, "artifacts", "aptitude-pipeline", "aptitude-paper-coverage-aliases.json");
 const DEFAULT_OUTPUT_DIR = path.join(ROOT, "artifacts", "aptitude-pipeline", "aptitude-pending-by-year");
 const DEFAULT_REPORT_PATH = path.join(ROOT, "artifacts", "review", "aptitude-yearwise-parse-coverage.json");
 const YEAR_RE = /\b(?:19|20)\d{2}\b/g;
@@ -22,6 +23,7 @@ function parseArgs(argv = process.argv.slice(2)) {
   const options = {
     inputs: [],
     parsed: DEFAULT_PARSED_PATH,
+    coverageAliases: DEFAULT_COVERAGE_ALIAS_PATH,
     outputDir: DEFAULT_OUTPUT_DIR,
     report: DEFAULT_REPORT_PATH,
     includeParsed: false,
@@ -35,6 +37,8 @@ function parseArgs(argv = process.argv.slice(2)) {
       options.inputs.push(arg.slice("--input=".length));
     } else if (arg === "--parsed" && argv[index + 1]) {
       options.parsed = argv[++index];
+    } else if (arg === "--coverage-aliases" && argv[index + 1]) {
+      options.coverageAliases = argv[++index];
     } else if (arg === "--output-dir" && argv[index + 1]) {
       options.outputDir = argv[++index];
     } else if (arg === "--report" && argv[index + 1]) {
@@ -48,6 +52,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     ...options,
     inputs: options.inputs.map(resolveRepoPath),
     parsed: resolveRepoPath(options.parsed),
+    coverageAliases: resolveRepoPath(options.coverageAliases),
     outputDir: resolveRepoPath(options.outputDir),
     report: resolveRepoPath(options.report),
   };
@@ -88,7 +93,7 @@ function sourceEntries(value) {
   return [];
 }
 
-function loadParsedPageUrls(parsedPath) {
+function loadParsedPageUrls(parsedPath, coverageAliasPath) {
   if (!parsedPath || !fs.existsSync(parsedPath)) return new Set();
   const rows = readJson(parsedPath);
   const pageUrls = new Set();
@@ -100,6 +105,19 @@ function loadParsedPageUrls(parsedPath) {
       pageUrls.add(pageUrl);
       pageUrls.add(normalizeUrlToInternal(pageUrl));
     });
+
+  if (coverageAliasPath && fs.existsSync(coverageAliasPath)) {
+    const payload = readJson(coverageAliasPath);
+    const aliases = Array.isArray(payload?.aliases) ? payload.aliases : [];
+    aliases
+      .flatMap((alias) => [alias?.pageUrl, alias?.normalizedPageUrl])
+      .filter(Boolean)
+      .forEach((pageUrl) => {
+        pageUrls.add(pageUrl);
+        pageUrls.add(normalizeUrlToInternal(pageUrl));
+      });
+  }
+
   return pageUrls;
 }
 
@@ -239,7 +257,10 @@ function main() {
     process.exit(1);
   }
 
-  const parsedPageUrls = loadParsedPageUrls(options.parsed);
+  const coverageAliasCount = options.coverageAliases && fs.existsSync(options.coverageAliases)
+    ? (readJson(options.coverageAliases).aliases || []).length
+    : 0;
+  const parsedPageUrls = loadParsedPageUrls(options.parsed, options.coverageAliases);
   const seenPaperUrls = new Set();
   const summariesByYear = new Map();
   const pendingRowsByYearAndCatalog = new Map();
@@ -314,6 +335,7 @@ function main() {
     generatedAt: new Date().toISOString(),
     sourceCatalogCount: options.inputs.length,
     parsedRowCount: fs.existsSync(options.parsed) ? readJson(options.parsed).length : 0,
+    coverageAliasCount,
     totals: addCoverageRatio(totals),
     years: Object.fromEntries(yearKeys.map((year) => [year, addCoverageRatio(summariesByYear.get(year))])),
     writtenCatalogs,

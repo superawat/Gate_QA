@@ -134,14 +134,27 @@ def clean_aptitude_title(value: str) -> str:
 STALE_APTITUDE_SOURCE_LABELS = {"", "aptitude", "aptitude web", "aptitudebank"}
 
 
+def is_stale_aptitude_source_label(value: str, source: dict) -> bool:
+    label = compact_plain_text(value or "").lower()
+    provider = compact_plain_text(source.get("sourceProvider") or "").lower()
+    return label in STALE_APTITUDE_SOURCE_LABELS or bool(provider and label == provider)
+
+
 def normalize_aptitude_source(source: dict) -> dict:
     if source.get("sourceKind") != "aptitude-web":
         return source
     exam_body = clean_aptitude_title(source.get("examBody") or "")
     exam_name = clean_aptitude_title(source.get("examName") or "")
-    if exam_body.lower() in STALE_APTITUDE_SOURCE_LABELS:
+    has_context_title = any(
+        clean_aptitude_title(source.get(key) or "")
+        for key in ["paperTitle", "testSeries", "product", "tier", "testType"]
+    )
+    if exam_body and exam_body.lower() == exam_name.lower() and not has_context_title:
         exam_body = "Unknown"
-    if exam_name.lower() in STALE_APTITUDE_SOURCE_LABELS:
+        exam_name = "Unknown Test Series"
+    if is_stale_aptitude_source_label(exam_body, source):
+        exam_body = "Unknown"
+    if is_stale_aptitude_source_label(exam_name, source):
         exam_name = clean_aptitude_title(source.get("paperTitle") or source.get("testSeries") or "Unknown Test Series")
     normalized = {
         **source,
