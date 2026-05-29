@@ -54,6 +54,10 @@ async function loadMathModule() {
   return mathModulePromise;
 }
 
+export function preloadMathRuntime() {
+  return loadMathModule().catch(() => null);
+}
+
 export function MathRuntimeProvider({ children }) {
   const [mathModule, setMathModule] = useState(() => cachedMathModule);
 

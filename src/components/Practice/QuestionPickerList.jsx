@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowRight, FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
+import { preloadSolveExperience } from "../../utils/routePreload";
 
 const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
@@ -71,6 +72,9 @@ const QuestionPickerList = ({
             key={question.question_uid}
             type="button"
             onClick={() => onOpenQuestion(question)}
+            onPointerEnter={preloadSolveExperience}
+            onFocus={preloadSolveExperience}
+            onTouchStart={preloadSolveExperience}
             className="practice-question-row group block w-full px-5 py-4 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
           >
             <div className="practice-question-row-grid flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">

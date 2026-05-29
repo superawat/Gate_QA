@@ -6,6 +6,12 @@ import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 import { getQuoteForToday } from "../utils/motivationalQuotes";
+import {
+  preloadExploreRoute,
+  preloadInsightsRoute,
+  preloadMockExperience,
+  preloadPracticeStartExperience,
+} from "../utils/routePreload";
 
 const HOME_LOADER_EXIT_MS = 260;
 
@@ -199,6 +205,12 @@ const HomePage = ({
     card.style.setProperty("--ry", "0deg");
   };
 
+  const handleActionPreload = (preload) => {
+    if (typeof preload === "function") {
+      void preload();
+    }
+  };
+
   const actionCards = [
     {
       key: "practice",
@@ -207,6 +219,7 @@ const HomePage = ({
       icon: FaBolt,
       variant: "primary",
       onClick: onStartRandomPractice,
+      preload: preloadPracticeStartExperience,
       quote: parsedQuote,
     },
     {
@@ -216,6 +229,7 @@ const HomePage = ({
       icon: FaCompass,
       variant: "secondary",
       onClick: onExplorePractice,
+      preload: preloadExploreRoute,
     },
     {
       key: "mock",
@@ -225,6 +239,7 @@ const HomePage = ({
       variant: "secondary",
       disabled: !mockModeEnabled,
       onClick: onStartMockTest,
+      preload: preloadMockExperience,
     },
     {
       key: "insights",
@@ -233,6 +248,7 @@ const HomePage = ({
       icon: FaChartLine,
       variant: "secondary",
       onClick: onOpenInsights,
+      preload: preloadInsightsRoute,
     },
   ];
 
@@ -267,6 +283,9 @@ const HomePage = ({
                     type="button"
                     onClick={isDisabled ? undefined : card.onClick}
                     disabled={isDisabled}
+                    onPointerEnter={isDisabled ? undefined : () => handleActionPreload(card.preload)}
+                    onFocus={isDisabled ? undefined : () => handleActionPreload(card.preload)}
+                    onTouchStart={isDisabled ? undefined : () => handleActionPreload(card.preload)}
                     onMouseMove={isDisabled ? undefined : handleMouseMove}
                     onMouseLeave={isDisabled ? undefined : handleMouseLeave}
                     data-home-action-index={index}

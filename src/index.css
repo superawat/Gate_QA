@@ -2249,6 +2249,20 @@ canvas {
   display: none;
 }
 
+.practice-question-row,
+.question-result-card {
+  contain: layout paint style;
+  content-visibility: auto;
+}
+
+.practice-question-row {
+  contain-intrinsic-size: auto 112px;
+}
+
+.question-result-card {
+  contain-intrinsic-size: auto 220px;
+}
+
 @media (max-width: 767px) {
   .home-dashboard-shell {
     padding-top: 0.875rem;
@@ -2573,8 +2587,13 @@ canvas {
     border: 1px solid var(--color-border);
     border-radius: 20px;
     background: var(--color-surface);
+    contain-intrinsic-size: auto 156px;
     padding: 0.95rem;
     box-shadow: var(--shadow-soft);
+  }
+
+  .question-result-card {
+    contain-intrinsic-size: auto 260px;
   }
 
   .practice-question-row:hover {

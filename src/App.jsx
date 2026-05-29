@@ -30,14 +30,22 @@ import {
   PRACTICE_ROUTE,
   USER_MANUAL_ROUTE,
 } from "./utils/routes";
+import {
+  loadExploreRoute,
+  loadHighPriorityTopicsRoute,
+  loadInsightsRoute,
+  loadMockRoute,
+  loadSolveRoute,
+  loadUserManualRoute,
+} from "./utils/routePreload";
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
-const ExplorePage = lazy(() => import("./pages/ExplorePage"));
-const InsightsPage = lazy(() => import("./pages/InsightsPage"));
-const SolvePage = lazy(() => import("./pages/SolvePage"));
-const MockShell = lazy(() => import("./shells/MockShell"));
-const UserManualPage = lazy(() => import("./pages/UserManualPage"));
-const HighPriorityTopicsPage = lazy(() => import("./pages/HighPriorityTopicsPage"));
+const ExplorePage = lazy(loadExploreRoute);
+const InsightsPage = lazy(loadInsightsRoute);
+const SolvePage = lazy(loadSolveRoute);
+const MockShell = lazy(loadMockRoute);
+const UserManualPage = lazy(loadUserManualRoute);
+const HighPriorityTopicsPage = lazy(loadHighPriorityTopicsRoute);
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">

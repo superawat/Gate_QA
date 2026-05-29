@@ -16,6 +16,11 @@ import SupportModal from "../Footer/SupportModal";
 
 import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, USER_MANUAL_ROUTE } from "../../utils/routes";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
+import {
+  preloadExploreRoute,
+  preloadHighPriorityTopicsRoute,
+  preloadUserManualRoute,
+} from "../../utils/routePreload";
 
 const LAST_EXPORT_KEYS = {
   pdf: "gateqa_last_pdf_export",
@@ -282,6 +287,9 @@ const GlobalNavigationDrawer = ({
             <Link
               to={HIGH_PRIORITY_TOPICS_ROUTE}
               onClick={onClose}
+              onPointerEnter={() => { void preloadHighPriorityTopicsRoute(); }}
+              onFocus={() => { void preloadHighPriorityTopicsRoute(); }}
+              onTouchStart={() => { void preloadHighPriorityTopicsRoute(); }}
               className={actionButtonClassName}
             >
               <FaFire className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
@@ -296,6 +304,9 @@ const GlobalNavigationDrawer = ({
               to={{ pathname: PRACTICE_ROUTE, search: filterShortcutSearch }}
               state={{ openFilters: true }}
               onClick={onClose}
+              onPointerEnter={() => { void preloadExploreRoute(); }}
+              onFocus={() => { void preloadExploreRoute(); }}
+              onTouchStart={() => { void preloadExploreRoute(); }}
               className={actionButtonClassName}
             >
               <FaFilter className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
@@ -416,6 +427,9 @@ const GlobalNavigationDrawer = ({
             <Link
               to={USER_MANUAL_ROUTE}
               onClick={onClose}
+              onPointerEnter={() => { void preloadUserManualRoute(); }}
+              onFocus={() => { void preloadUserManualRoute(); }}
+              onTouchStart={() => { void preloadUserManualRoute(); }}
               className={actionButtonClassName}
             >
               <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
