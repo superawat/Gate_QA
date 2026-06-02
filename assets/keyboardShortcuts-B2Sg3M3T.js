@@ -1,1 +1,0 @@
-const e=["input","textarea","select","[contenteditable='true']","[contenteditable='']","[role='textbox']"].join(",");function r(t){return t instanceof Element&&!!t.closest(e)}function o(t){return t?.key?t.key.length===1?t.key.toLowerCase():t.key:""}function n(t){return!t||t.defaultPrevented||t.altKey||t.ctrlKey||t.metaKey?!0:r(t.target)}export{o as g,r as i,n as s};
