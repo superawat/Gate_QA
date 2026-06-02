@@ -40,6 +40,7 @@
     "build:public-artifacts": "node scripts/mirror-gateoverflow-images.mjs && node scripts/build-public-artifacts.mjs",
     "start": "node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs && node scripts/deployment/sync-calculator.mjs --public && vite",
     "build": "node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs && node scripts/deployment/sync-calculator.mjs --public && vite build && node scripts/deployment/ensure-nojekyll.mjs && node scripts/deployment/sync-calculator.mjs --dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "analyze:bundle": "node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs && node scripts/deployment/sync-calculator.mjs --public && vite build --mode analyze",
     "serve": "vite preview",
     "qa:audit-historical-papers": "node scripts/qa/historical-paper-audit.js",
@@ -92,6 +93,8 @@
     "@axe-core/playwright": "^4.10.2",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.56.1",
+    "@types/react": "^18.3.30",
+    "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^5.1.4",
     "autoprefixer": "^10.4.14",
     "axe-core": "^4.10.3",
@@ -100,6 +103,7 @@
     "rollup-plugin-visualizer": "^7.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.3.2",
+    "typescript": "^6.0.3",
     "vite": "^7.3.1",
     "vitest": "^3.2.4"
   }

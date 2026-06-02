@@ -43,10 +43,10 @@ Current suites:
 - `src/services/AptitudeQuestionService.test.js`
 - `scripts/aptitude-pipeline/scrape-aptitude.test.mjs`
 
-Latest verification snapshot on `2026-05-19`:
+Latest verification snapshot on `2026-06-02`:
 
-- `40` passing test files
-- `233` passing unit tests
+- `43` passing test files
+- `272` passing unit tests
 
 Treat that as a point-in-time check. Re-run the suite instead of relying on the doc for an exact count.
 
@@ -77,7 +77,19 @@ Important precondition:
 - if `src/generated/subtopicLookup.json` is missing in a fresh workspace, run `npm run precompute` before unit tests
 - Vitest excludes `.codeboarding/**` so local analysis snapshots do not get collected as duplicate project tests.
 
-## 2) Browser E2E and axe coverage
+## 2) TypeScript typecheck
+
+TypeScript migration is phase-wise. The current Phase 0 scaffold checks only
+`src/**/*.ts`, `src/**/*.tsx`, and `src/vite-env.d.ts`; legacy JavaScript remains
+excluded from type errors through `allowJs: true` and `checkJs: false`.
+
+Run this after TypeScript scaffold, type contract, or converted TS/TSX file changes:
+
+```bash
+npm run typecheck
+```
+
+## 3) Browser E2E and axe coverage
 
 Current suites:
 
@@ -99,17 +111,17 @@ Coverage today:
 - mock card visibility, mock portal entry, exam-shell start flow, and mock history navigation
 - axe checks for landing, explore, and solve routes
 
-Latest verification snapshot on `2026-05-12`:
+Latest verification snapshot on `2026-06-02`:
 
-- `16` passing Playwright tests
+- `17` passing Playwright tests
 
-## 3) Python pipeline tests (removed)
+## 4) Python pipeline tests (removed)
 
 The Python answer pipeline scripts and their tests (`tests/answers/`) were removed in the
 CLEANUP-001 post-FEAT-003 cleanup. The Node.js pipeline (`scripts/pipeline/`) replaces them.
 See `docs/DATA_PIPELINE.md` for the current pipeline documentation.
 
-## 4) Data integrity gate
+## 5) Data integrity gate
 
 Run:
 
@@ -129,7 +141,7 @@ Strict-mode behavior:
 - fails on idstrmissing-style orphan rows
 - actionable missing-answer coverage gaps are warning-level in current implementation
 
-## 5) Aptitude data gates
+## 6) Aptitude data gates
 
 Run these after changing AptitudeBank intake, aptitude taxonomy/remaps, aptitude public JSON, or aptitude images:
 
@@ -148,7 +160,7 @@ Current verified aptitude state:
 
 `qa:verify-aptitude` may emit non-blocking coverage/OCR warnings. Treat failures as blockers and warnings as review items unless a warning is confirmed learner-facing bad data.
 
-## 6) Historical paper-count QA
+## 7) Historical paper-count QA
 
 Run:
 
@@ -180,7 +192,7 @@ What this flow checks:
 - pre-2010 year totals are checked separately against live GateOverflow year tags using deduped question labels, because those older papers do not follow the 65-question pattern
 - pre-2010 repair removes off-tag legacy discussion rows, collapses duplicate question-label variants, and backfills missing legacy questions directly from live GateOverflow pages
 
-## 7) Public parity gate
+## 8) Public parity gate
 
 Run:
 
@@ -197,7 +209,7 @@ What this checks:
 
 This gate now runs in CI before deploy.
 
-## 8) Build and artifact validation
+## 9) Build and artifact validation
 
 Run:
 
@@ -224,7 +236,7 @@ npm run qa:validate-landing-network
 
 These checks are active in CI and keep the landing route off the full-bank/runtime-heavy path.
 
-## 9) Lighthouse regression check
+## 10) Lighthouse regression check
 
 Run:
 

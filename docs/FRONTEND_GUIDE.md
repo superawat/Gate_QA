@@ -4,8 +4,9 @@ This guide covers frontend runtime behavior, state contract, and safe refactor r
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 20.19+ locally; GitHub Actions currently use Node 24
 - npm 9+
+- TypeScript is being adopted gradually. The current scaffold type-checks only the TS/TSX surface while legacy JS remains unchecked.
 
 ## Commands
 
@@ -17,6 +18,7 @@ npm start
 npm run build
 npm run serve
 npm run test:unit
+npm run typecheck
 ```
 
 ### Script behavior
@@ -40,6 +42,10 @@ npm run test:unit
   4. Vite build to `dist/`
   5. ensure `dist/.nojekyll`
   6. sync calculator into `dist/calculator/`
+- `npm run typecheck`
+  - runs `tsc -p tsconfig.json --noEmit`
+  - checks the current TS/TSX migration surface only
+  - keeps `allowJs` enabled and `checkJs` disabled while legacy JS migration is phased
 
 ## Context contract (mandatory)
 

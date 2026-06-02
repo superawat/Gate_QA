@@ -37,6 +37,7 @@ Run what applies:
 
 ```bash
 npm run test:unit
+npm run typecheck   # if TypeScript tooling/contracts/TSX changed
 npm run build
 npm run qa:validate-data
 npm run qa:validate-public-parity
@@ -136,6 +137,7 @@ Do not merge changes that break:
 
 ## Validation
 - [ ] npm run test:unit
+- [ ] npm run typecheck, if TypeScript tooling/contracts/TSX changed
 - [ ] npm run build
 - [ ] npm run qa:validate-data
 - [ ] manual checks for impacted flows

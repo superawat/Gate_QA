@@ -41,6 +41,7 @@ Current build chain:
 ### `.github/workflows/node.js.yml`
 
 - triggers: push/pull_request on `main`
+- uses the Node 24 baseline (`actions/checkout@v6`, `actions/setup-node@v6`, `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`)
 - runs `npm ci`, `npm run test:unit`, `npm run qa:validate-data`, `npm run build`, and `npm run qa:validate-public-parity`
 - verifies `.nojekyll`, calculator, and generated public artifacts
 - deploys to `gh-pages` on push to `main`
@@ -48,6 +49,8 @@ Current build chain:
 ### `.github/workflows/gate-question-pipeline.yml`
 
 - trigger: cron retry window (Apr 1-5, Oct 1-5) + manual with optional `force_year`
+- uses the Node 24 baseline (`actions/checkout@v6`, `actions/setup-node@v6`, `actions/github-script@v8`, `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`)
+- job timeout is `330` minutes to cover robots-compliant scrape/backfill runs
 - 6-stage pipeline: scrape → normalise → answer backfill → merge → validate → build/deploy
 - runs `npm run qa:validate-public-parity` before deploying updated artifacts
 - see `docs/DATA_PIPELINE.md` for full stage documentation

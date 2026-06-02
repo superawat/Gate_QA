@@ -82,8 +82,7 @@ questions discovered for the `nextTargetYear` tracked in `pipeline-state.json`.
 
 The first live use of this pipeline was the GATE 2026 catch-up import completed on
 2026-04-04. That run captured all 130 questions across both sets (65 in Set 1, 65 in
-Set 2). Answer backfill for 2026 has not been completed yet, so the 2026 rows currently
-exist in the bank with `answer: null`.
+Set 2). The current public bank has 100% direct answer coverage for the 2026 rows.
 
 ### Workflow
 
@@ -94,10 +93,12 @@ Trigger: cron (Apr 1-5, Oct 1-5) + `workflow_dispatch` with optional `force_year
 Operational note:
 
 - the scheduled workflow now retries daily during the first five days of April and October
-- the GitHub Actions job timeout is extended to cover the full robots-compliant scrape and answer-backfill path
+- the GitHub Actions job timeout is `330` minutes to cover the full robots-compliant scrape and answer-backfill path
+- the workflow uses the Node 24 action/runtime baseline (`actions/checkout@v6`, `actions/setup-node@v6`, `actions/github-script@v8`, `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`)
 - scheduled retries automatically no-op when `nextTargetYear` has already advanced into a future year
 - scheduled no-new-question runs do not commit off-cycle audit logs to `main`
 - use `workflow_dispatch` or the local manual runbook below for manual catch-up imports
+- a manual `force_year=2026` run should dedupe against the existing bank and stop after finding zero new questions; it will not rescrape all 130 question pages unless new links are found
 
 ### Stages
 
@@ -146,6 +147,14 @@ The current init cache version after the May 2026 mock-readiness backfills is `v
 All abort scenarios leave the live site on the last successful deploy. A GitHub Issue is
 auto-created with error details from `audit/scrape-error.json` or
 `audit/validation-failure.json`.
+
+### Timing note
+
+GateOverflow declares `Crawl-delay: 30`, so scrape and answer-backfill scripts wait
+31 seconds between requests. A full 130-question year can take more than two hours
+when scrape and answer backfill both need to visit every question. The old Apr 1,
+2026 cancellation happened because that older workflow revision still had
+`timeout-minutes: 30`; current workflow revisions use `330`.
 
 ## Aptitude Pipeline
 

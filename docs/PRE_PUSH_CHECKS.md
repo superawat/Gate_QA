@@ -24,6 +24,12 @@ npm run qa:verify-aptitude
 npm run qa:validate-aptitude-images
 ```
 
+If the change touches TypeScript tooling, shared type contracts, or converted TS/TSX files, also run:
+
+```bash
+npm run typecheck
+```
+
 ---
 
 ## 🚀 Run Everything Automatically

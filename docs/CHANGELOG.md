@@ -3,6 +3,7 @@
 ## 2026-06-02
 
 ### Added
+- Added TypeScript Phase 0 tooling: `typescript`, React 18 type packages, `tsconfig.json`, `src/vite-env.d.ts`, and `npm run typecheck`.
 - Added shared embedded-option normalization in `stripEmbeddedOptions.js` to correctly extract paragraph-labeled A-D/E options from questions, extracting 2,995 embedded rows safely.
 - Added `questionType.js` logic to dynamically resolve the `UNKNOWN` question type chip from question metadata, embedded answers, or verified answers, hiding the chip cleanly if unresolved.
 - Added build-time and runtime mock validation checks to reject scorable MCQs/MSQs without options or with mismatched answer/option labels, ensuring scoring integrity.
@@ -14,6 +15,9 @@
 - Added public aptitude index/detail consistency checks to the aptitude validation gate.
 
 ### Changed
+- Moved Node CI and the scheduled GATE question pipeline to a Node 24 action/runtime baseline using `actions/checkout@v6`, `actions/setup-node@v6`, `actions/github-script@v8`, and `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`.
+- Kept the scheduled GATE question pipeline timeout at `330` minutes and documented that old 30-minute cancellations came from earlier workflow revisions.
+- Simplified local `gateqa_master_plan.md` into two note-style sections: unresolved/active and completed/resolved.
 - Refactored `QuestionNormalizer.js`, `mockTest.js`, and build scripts to use the new unified embedded-option extractor.
 - Updated `MockTestShell.jsx` to validate mock pools and prioritize unsolved questions during test generation.
 - Updated `MockTestContext.jsx` so that correct answers chosen during mock test sessions mark those questions as solved globally in the user's unified practice history.
@@ -25,13 +29,14 @@
 - Fixed `MockTestQuestion.jsx` option rendering to prevent duplicates by deduplicating options extracted from the stem.
 - Fixed `MockTestContext.test.jsx` and `MockTestFlow.test.jsx` fixtures so mock questions include valid options and answer records, preventing timeouts under the new stricter pool validation.
 - Fixed the Aptitude Direct-Link cold-start race-condition in `aptitudePreference.js` and `FilterContext.jsx` by synchronously initializing the in-memory index preference from the URL path.
-- Aligned E2E tests in `practice-flow.spec.js` and upgraded workflow actions to `v4` in `node.js.yml` to permanently fix GitHub Actions runner warnings and E2E test failures.
+- Aligned E2E tests in `practice-flow.spec.js` and upgraded workflow actions to permanently fix GitHub Actions runner warnings and E2E test failures.
 - Resolved the GATE 2009 Question 15 content mismatch note after verifying that the regular expression corresponds to option `C`.
 
 ### Verified
 - `npm run build:public-artifacts`
 - `node scripts/qa/validate-question-images.mjs`
 - `node scripts/qa/validate-aptitude-data.js`
+- `npm run typecheck`
 - `npm run build`
 - Full verification sweep: `npm run test:unit` (272 passing tests) and `npm run test:e2e` (17 passing Playwright tests) completed cleanly.
 

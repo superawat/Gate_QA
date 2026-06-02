@@ -11,6 +11,7 @@ Gate_QA/
 |-- package.json
 |-- package-lock.json
 |-- playwright.config.cjs
+|-- tsconfig.json
 |-- vite.config.js
 |-- lighthouserc.json
 |-- tailwind.config.js
@@ -31,6 +32,7 @@ Gate_QA/
 |-- src/
 |   |-- index.jsx
 |   |-- index.css
+|   |-- vite-env.d.ts
 |   |-- App.jsx
 |   |-- constants/
 |   |   `-- featureFlags.js
