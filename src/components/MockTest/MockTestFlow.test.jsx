@@ -240,6 +240,11 @@ describe("MockTest smoke flow", () => {
       scorableQuestionUids: ["ga:1", "ga:2", "cs:1"],
     });
     MockCatalogService.loaded = true;
+    AnswerService.answersByQuestionUid = {
+      "ga:1": { type: "MCQ", answer: "A" },
+      "ga:2": { type: "MCQ", answer: "A" },
+      "cs:1": { type: "MCQ", answer: "A" },
+    };
 
     renderShell();
 

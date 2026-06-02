@@ -42,14 +42,35 @@ vi.mock("../services/AptitudeQuestionService", () => ({
   },
 }));
 
-const buildQuestion = (question_uid, subject, yearSetKey, year) => ({
-  question_uid,
-  title: question_uid,
-  subject,
-  subjectSlug: subject === "General Aptitude" ? "ga" : "os",
-  question: `<p>${question_uid}</p>`,
-  exam: { yearSetKey, year },
-});
+const DEFAULT_OPTIONS = [
+  { label: "A", text: "A", html: "A" },
+  { label: "B", text: "B", html: "B" },
+  { label: "C", text: "C", html: "C" },
+  { label: "D", text: "D", html: "D" },
+];
+
+const seedFixtureAnswer = (question_uid, type = "MCQ") => {
+  const normalizedType = String(type || "MCQ").trim().toUpperCase();
+  AnswerService.answersByQuestionUid[question_uid] = normalizedType === "NAT"
+    ? { type: "NAT", answer: "42", tolerance: { abs: 0.1 } }
+    : { type: normalizedType, answer: normalizedType === "MSQ" ? ["A", "C"] : "A" };
+};
+
+const buildQuestion = (question_uid, subject, yearSetKey, year, type = "MCQ") => {
+  const normalizedType = String(type || "MCQ").trim().toUpperCase();
+  seedFixtureAnswer(question_uid, normalizedType);
+
+  return {
+    question_uid,
+    title: question_uid,
+    subject,
+    subjectSlug: subject === "General Aptitude" ? "ga" : "os",
+    question: `<p>${question_uid}</p>`,
+    normalizedOptions: normalizedType === "NAT" ? [] : DEFAULT_OPTIONS,
+    type: normalizedType.toLowerCase(),
+    exam: { yearSetKey, year },
+  };
+};
 
 const buildAptitudeQuestion = (question_uid, subject = "English", subtopic = "Spot the Error") => ({
   question_uid,
@@ -477,7 +498,7 @@ describe("MockTestContext", () => {
 
   test("tracks per-question time spent and persists it into mock history", async () => {
     const gaQuestion = buildQuestion("ga:timed", "General Aptitude", "2024-s1", 2024);
-    const csQuestion = buildQuestion("cs:timed", "Operating System", "2024-s1", 2024);
+    const csQuestion = buildQuestion("cs:timed", "Operating System", "2024-s1", 2024, "NAT");
     mockAllQuestions = [gaQuestion, csQuestion];
 
     MockCatalogService.catalog = MockCatalogService.normalizeCatalog({

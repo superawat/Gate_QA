@@ -23,6 +23,7 @@
 
 ### Fixed
 - Fixed `MockTestQuestion.jsx` option rendering to prevent duplicates by deduplicating options extracted from the stem.
+- Fixed `MockTestContext.test.jsx` and `MockTestFlow.test.jsx` fixtures so mock questions include valid options and answer records, preventing timeouts under the new stricter pool validation.
 - Fixed the Aptitude Direct-Link cold-start race-condition in `aptitudePreference.js` and `FilterContext.jsx` by synchronously initializing the in-memory index preference from the URL path.
 - Aligned E2E tests in `practice-flow.spec.js` and upgraded workflow actions to `v4` in `node.js.yml` to permanently fix GitHub Actions runner warnings and E2E test failures.
 - Resolved the GATE 2009 Question 15 content mismatch note after verifying that the regular expression corresponds to option `C`.
@@ -32,7 +33,7 @@
 - `node scripts/qa/validate-question-images.mjs`
 - `node scripts/qa/validate-aptitude-data.js`
 - `npm run build`
-- Full verification sweep: `npm run test:unit` (262 passing tests) and `npm run test:e2e` (17 passing Playwright tests) completed cleanly.
+- Full verification sweep: `npm run test:unit` (272 passing tests) and `npm run test:e2e` (17 passing Playwright tests) completed cleanly.
 
 ## 2026-05-29
 
