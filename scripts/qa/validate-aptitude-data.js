@@ -4,9 +4,12 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { pathToFileURL } = require("node:url");
 const { TAXONOMY_SETS: TAXONOMY } = require("./aptitude-taxonomy");
-const { loadAptitudeRows, readJson } = require("./load-aptitude-data");
+const { readJson } = require("./load-aptitude-data");
 
 const ROOT = process.cwd();
+const PUBLIC_DIR = path.join(ROOT, "public");
+const APTITUDE_INDEX_FILE = path.join(PUBLIC_DIR, "aptitude-search-index.json");
+const APTITUDE_SHARD_ROOT = path.join(PUBLIC_DIR, "data", "aptitude");
 const GATE_FILE = path.join(ROOT, "public", "questions-with-answers.json");
 
 const VALID_EXAM_NAMES = new Set(["CGL", "CHSL", "MTS", "CPO", "Stenographer", "Selection Post", "Chapterwise"]);
@@ -53,6 +56,50 @@ function sourceText(row) {
 
 function rowTextWithOptions(row) {
   return `${stripHtml(row?.questionHtml || "")} ${(row?.options || []).map(stripHtml).join(" ")}`.replace(/\s+/g, " ").trim();
+}
+
+function listJsonFiles(directory) {
+  if (!fs.existsSync(directory)) {
+    return [];
+  }
+
+  return fs.readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        return listJsonFiles(entryPath);
+      }
+      return entry.isFile() && entry.name.endsWith(".json") ? [entryPath] : [];
+    });
+}
+
+function toPublicPath(filePath) {
+  return path.relative(PUBLIC_DIR, filePath).replace(/\\/g, "/");
+}
+
+function loadAptitudeRowsWithShardPaths() {
+  const shardFiles = listJsonFiles(APTITUDE_SHARD_ROOT).sort();
+  if (shardFiles.length === 0) {
+    throw new Error("Aptitude shard data must exist under public/data/aptitude.");
+  }
+
+  const uidToShard = new Map();
+  const rows = shardFiles.flatMap((filePath) => {
+    const shardRows = readJson(filePath);
+    if (!Array.isArray(shardRows)) {
+      throw new Error(`${path.relative(ROOT, filePath)} must be an array.`);
+    }
+
+    const publicShardPath = toPublicPath(filePath);
+    return shardRows.map((row) => {
+      if (row?.uid && !uidToShard.has(row.uid)) {
+        uidToShard.set(row.uid, publicShardPath);
+      }
+      return row;
+    });
+  });
+
+  return { rows, uidToShard };
 }
 
 function looksLikeGeneralAwareness(row) {
@@ -111,15 +158,81 @@ function validateSource(source, uid, errors) {
   }
 }
 
+function getIndexQuestions(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  if (Array.isArray(payload?.questions)) {
+    return payload.questions;
+  }
+  return [];
+}
+
+function validatePublicIndex({ rowByUid, uidToShard, errors }) {
+  if (!fs.existsSync(APTITUDE_INDEX_FILE)) {
+    errors.push("public aptitude index is missing");
+    return;
+  }
+
+  const indexPayload = readJson(APTITUDE_INDEX_FILE);
+  const indexQuestions = getIndexQuestions(indexPayload);
+  if (indexQuestions.length === 0) {
+    errors.push("public aptitude index must contain at least one question");
+    return;
+  }
+
+  const indexUidSet = new Set();
+  indexQuestions.forEach((entry, index) => {
+    const label = `aptitude-search-index[${index}]`;
+    const uid = String(entry?.u || entry?.uid || entry?.question_uid || "").trim();
+    const shard = String(entry?.sh || entry?.shard || entry?.detailShard || "").trim();
+
+    if (!uid) {
+      errors.push(`${label}: missing UID`);
+      return;
+    }
+    if (indexUidSet.has(uid)) {
+      errors.push(`${uid}: duplicate public index UID`);
+    }
+    indexUidSet.add(uid);
+
+    const detail = rowByUid.get(uid);
+    if (!detail) {
+      errors.push(`${uid}: public index points to a missing aptitude detail row`);
+      return;
+    }
+    if (!shard) {
+      errors.push(`${uid}: public index must include a detail shard path`);
+    } else if (uidToShard.has(uid) && uidToShard.get(uid) !== shard) {
+      errors.push(`${uid}: public index shard ${shard} does not match detail shard ${uidToShard.get(uid)}`);
+    }
+    if (!stripHtml(detail.questionHtml || "")) {
+      errors.push(`${uid}: detail row referenced by public index has empty questionHtml`);
+    }
+    if (!Array.isArray(detail.options) || detail.options.length !== 4 || detail.options.some((option) => String(option || "").trim() === "")) {
+      errors.push(`${uid}: detail row referenced by public index must have four non-empty options`);
+    }
+    if (!["A", "B", "C", "D"].includes(detail.answer)) {
+      errors.push(`${uid}: detail row referenced by public index has invalid answer`);
+    }
+  });
+
+  const rowsMissingFromIndex = Array.from(rowByUid.keys()).filter((uid) => !indexUidSet.has(uid));
+  if (rowsMissingFromIndex.length > 0) {
+    errors.push(`public aptitude index is missing ${rowsMissingFromIndex.length} detail rows, e.g. ${rowsMissingFromIndex.slice(0, 5).join(", ")}`);
+  }
+}
+
 async function main() {
   const { classifyParsedRow } = await loadSharedIntakePolicy();
-  const rows = loadAptitudeRows();
+  const { rows, uidToShard } = loadAptitudeRowsWithShardPaths();
   if (!Array.isArray(rows) || rows.length === 0) {
     throw new Error("Aptitude shard data must contain at least one question.");
   }
 
   const errors = [];
   const uidSet = new Set();
+  const rowByUid = new Map();
 
   rows.forEach((row, index) => {
     const label = row?.uid || `row[${index}]`;
@@ -139,6 +252,8 @@ async function main() {
     }
     if (uidSet.has(row.uid)) {
       errors.push(`${label}: duplicate UID`);
+    } else if (row.uid) {
+      rowByUid.set(row.uid, row);
     }
     uidSet.add(row.uid);
 
@@ -185,6 +300,8 @@ async function main() {
     }
     sources.forEach((source) => validateSource(source, label, errors));
   });
+
+  validatePublicIndex({ rowByUid, uidToShard, errors });
 
   const gateRows = fs.existsSync(GATE_FILE) ? readJson(GATE_FILE) : [];
   const gateUidSet = new Set(

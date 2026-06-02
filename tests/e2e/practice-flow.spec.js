@@ -80,20 +80,21 @@ test("aptitude toggle injects standalone subjects into the unified practice filt
   await expect(page.getByText(/SSC|CGL|CHSL|MTS|CPO|Tier|Staff Selection/i)).toHaveCount(0);
 });
 
-test("APT direct links require the unified aptitude toggle", async ({ page }) => {
+test("APT direct links automatically enable the unified aptitude toggle", async ({ page }) => {
   const aptitudeQuestion = getSampleAptitudeQuestion();
   const encodedUid = encodeURIComponent(aptitudeQuestion.uid);
 
-  await page.goto(appPath(`/practice/question/${encodedUid}`));
-  await expect(page).toHaveURL(/\/Gate_QA\/practice$/);
-
-  await page.evaluate(() => {
-    localStorage.setItem("gateqa-aptitude-enabled", "true");
-  });
+  // Navigating to an APT direct link should automatically enable Aptitude mode rather than redirecting
   await page.goto(appPath(`/practice/question/${encodedUid}`));
   await expect(page).toHaveURL(new RegExp(`/Gate_QA/practice/question/${encodedUid}`));
   await expect(page.getByRole("button", { name: /Back to Results/i })).toBeVisible({ timeout: 15000 });
   await expect(page.getByText("Question not found.")).toHaveCount(0);
+
+  // Verify that the preference is successfully persisted in localStorage
+  const localStorageEnabled = await page.evaluate(() => {
+    return localStorage.getItem("gateqa-aptitude-enabled");
+  });
+  expect(localStorageEnabled).toBe("true");
 });
 
 test("share button copies a deep-link URL", async ({ context, page }) => {

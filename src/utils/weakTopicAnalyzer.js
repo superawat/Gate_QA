@@ -355,6 +355,26 @@ const normalizeStreakFreezeState = (value = {}) => ({
   consumedDates: normalizeDateKeyList(Array.isArray(value.consumedDates) ? value.consumedDates : []),
 });
 
+const collectMissingDateKeys = ({ startExclusiveKey = "", endInclusiveKey = "", effectiveDateSet = new Set() } = {}) => {
+  if (!startExclusiveKey || !endInclusiveKey || startExclusiveKey >= endInclusiveKey) {
+    return [];
+  }
+
+  const missingDateKeys = [];
+  let cursor = addDays(new Date(`${startExclusiveKey}T00:00:00.000Z`), 1);
+  let cursorKey = toDateKey(cursor);
+
+  while (cursorKey <= endInclusiveKey) {
+    if (!effectiveDateSet.has(cursorKey)) {
+      missingDateKeys.push(cursorKey);
+    }
+    cursor = addDays(cursor, 1);
+    cursorKey = toDateKey(cursor);
+  }
+
+  return missingDateKeys;
+};
+
 const readStreakFreezeState = (storage) => (
   normalizeStreakFreezeState(parseJson(storage?.getItem?.(STREAK_FREEZE_STORAGE_KEY), {}))
 );
@@ -413,6 +433,25 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
   const actualDates = normalizeDateKeyList(activeDates);
   const effectiveDateSet = new Set([...actualDates, ...state.consumedDates]);
   let changed = false;
+  const consumeMissingDates = (dateKeys = []) => {
+    const missingDateKeys = normalizeDateKeyList(dateKeys)
+      .filter((dateKey) => !effectiveDateSet.has(dateKey));
+
+    if (missingDateKeys.length === 0) {
+      return true;
+    }
+    if (state.available < missingDateKeys.length) {
+      return false;
+    }
+
+    missingDateKeys.forEach((dateKey) => {
+      state.available -= 1;
+      state.consumedDates.push(dateKey);
+      effectiveDateSet.add(dateKey);
+    });
+    changed = true;
+    return true;
+  };
   const awardEarnedFreeze = () => {
     const stats = buildStreakStats(Array.from(effectiveDateSet), now);
     const earnedCount = Math.floor(stats.longestStreak / STREAK_FREEZE_INTERVAL_DAYS);
@@ -431,28 +470,43 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
     stats = awardEarnedFreeze();
     const todayKey = toDateKey(now);
     const yesterdayKey = toDateKey(addDays(new Date(`${todayKey}T00:00:00.000Z`), -1));
-    const latestBeforeToday = Array.from(effectiveDateSet)
-      .filter((dateKey) => dateKey < todayKey)
-      .sort()
-      .at(-1);
+    const actualDatesThroughToday = actualDates.filter((dateKey) => dateKey <= todayKey);
+    const latestActualDate = actualDatesThroughToday.at(-1);
 
-    if (latestBeforeToday && latestBeforeToday < yesterdayKey) {
-      let cursor = addDays(new Date(`${latestBeforeToday}T00:00:00.000Z`), 1);
-      let cursorKey = toDateKey(cursor);
+    if (latestActualDate) {
+      let bridgeable = latestActualDate === todayKey || latestActualDate === yesterdayKey;
+      let currentAnchorKey = latestActualDate;
 
-      while (cursorKey <= yesterdayKey) {
-        if (!effectiveDateSet.has(cursorKey)) {
-          if (state.available <= 0) {
+      if (!bridgeable && latestActualDate < yesterdayKey) {
+        const trailingGap = collectMissingDateKeys({
+          startExclusiveKey: latestActualDate,
+          endInclusiveKey: yesterdayKey,
+          effectiveDateSet,
+        });
+        bridgeable = consumeMissingDates(trailingGap);
+        currentAnchorKey = bridgeable ? yesterdayKey : latestActualDate;
+      }
+
+      if (bridgeable) {
+        for (let index = actualDatesThroughToday.length - 1; index >= 0; index -= 1) {
+          const actualDateKey = actualDatesThroughToday[index];
+          if (actualDateKey > currentAnchorKey) {
+            continue;
+          }
+
+          const segmentEndKey = toDateKey(addDays(new Date(`${currentAnchorKey}T00:00:00.000Z`), -1));
+          const segmentGap = collectMissingDateKeys({
+            startExclusiveKey: actualDateKey,
+            endInclusiveKey: segmentEndKey,
+            effectiveDateSet,
+          });
+
+          if (!consumeMissingDates(segmentGap)) {
             break;
           }
-          state.available -= 1;
-          state.consumedDates.push(cursorKey);
-          effectiveDateSet.add(cursorKey);
-          changed = true;
-        }
 
-        cursor = addDays(cursor, 1);
-        cursorKey = toDateKey(cursor);
+          currentAnchorKey = actualDateKey;
+        }
       }
     }
   }

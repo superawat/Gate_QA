@@ -15,7 +15,8 @@ const TARGET_FILES = [
   path.join(PUBLIC_DIR, "questions-filtered-with-ids.json"),
 ];
 
-const REMOTE_IMAGE_RE = /https:\/\/gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=([0-9]+)/g;
+const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
+const REMOTE_IMAGE_RE = /https:\/\/(?:[a-z0-9-]+\.)?gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=([0-9]+)/gi;
 
 const EXT_BY_CONTENT_TYPE = new Map([
   ["image/png", "png"],
@@ -44,19 +45,45 @@ function writeJson(filePath, payload) {
   writeText(filePath, `${JSON.stringify(payload, null, 2)}\n`);
 }
 
-function normalizeBlobUrl(blobId) {
+function listJsonFiles(directory) {
+  if (!fs.existsSync(directory)) {
+    return [];
+  }
+
+  return fs.readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        return listJsonFiles(entryPath);
+      }
+      return entry.isFile() && entry.name.endsWith(".json") ? [entryPath] : [];
+    });
+}
+
+function getTargetFiles() {
+  return [
+    ...TARGET_FILES,
+    ...listJsonFiles(DETAIL_SHARDS_DIR),
+  ];
+}
+
+function normalizeBlobUrl(blobId, sourceUrl = "") {
+  const normalizedSourceUrl = String(sourceUrl || "").trim().replace(/&amp;/gi, "&");
+  if (normalizedSourceUrl) {
+    return normalizedSourceUrl;
+  }
   return `https://gateoverflow.in/?qa=blob&qa_blobid=${blobId}`;
 }
 
-function extractBlobIds(text = "") {
-  const blobIds = new Set();
+function extractBlobSources(text = "") {
+  const blobSources = new Map();
   for (const match of String(text || "").matchAll(REMOTE_IMAGE_RE)) {
     const blobId = String(match[1] || "").trim();
-    if (blobId) {
-      blobIds.add(blobId);
+    if (blobId && !blobSources.has(blobId)) {
+      blobSources.set(blobId, normalizeBlobUrl(blobId, match[0]));
     }
   }
-  return blobIds;
+  return blobSources;
 }
 
 function resolveExtension({ contentType = "", contentDisposition = "" } = {}) {
@@ -76,8 +103,8 @@ function resolveExtension({ contentType = "", contentDisposition = "" } = {}) {
   return "bin";
 }
 
-async function downloadBlobImage(blobId) {
-  const url = normalizeBlobUrl(blobId);
+async function downloadBlobImage(blobId, sourceUrl = "") {
+  const url = normalizeBlobUrl(blobId, sourceUrl);
   const response = await fetch(url, {
     headers: {
       "user-agent": "GateQA-image-mirror/1.0 (+https://superawat.github.io/Gate_QA/)",
@@ -106,7 +133,7 @@ async function downloadBlobImage(blobId) {
   };
 }
 
-async function ensureLocalImage(blobId) {
+async function ensureLocalImage(blobId, sourceUrl = "") {
   const existing = fs
     .readdirSync(IMAGE_DIR, { withFileTypes: true })
     .find((entry) => entry.isFile() && entry.name.startsWith(`${blobId}.`));
@@ -119,7 +146,7 @@ async function ensureLocalImage(blobId) {
     };
   }
 
-  const downloaded = await downloadBlobImage(blobId);
+  const downloaded = await downloadBlobImage(blobId, sourceUrl);
   return {
     blobId,
     fileName: downloaded.fileName,
@@ -147,7 +174,7 @@ function rewriteRemoteUrls(text, fileNameByBlobId) {
 async function main() {
   ensureDir(IMAGE_DIR);
 
-  const existingTargetFiles = TARGET_FILES.filter((filePath) => fs.existsSync(filePath));
+  const existingTargetFiles = getTargetFiles().filter((filePath) => fs.existsSync(filePath));
   if (!existingTargetFiles.length) {
     throw new Error("No public question bank files found to localize.");
   }
@@ -157,12 +184,16 @@ async function main() {
     raw: readText(filePath),
   }));
 
-  const allBlobIds = new Set();
+  const blobUrlById = new Map();
   rawFiles.forEach(({ raw }) => {
-    extractBlobIds(raw).forEach((blobId) => allBlobIds.add(blobId));
+    extractBlobSources(raw).forEach((url, blobId) => {
+      if (!blobUrlById.has(blobId)) {
+        blobUrlById.set(blobId, url);
+      }
+    });
   });
 
-  const sortedBlobIds = Array.from(allBlobIds).sort((left, right) => left.localeCompare(right));
+  const sortedBlobIds = Array.from(blobUrlById.keys()).sort((left, right) => left.localeCompare(right));
   const fileNameByBlobId = new Map();
   const failures = [];
   let downloadedCount = 0;
@@ -170,7 +201,7 @@ async function main() {
 
   for (const blobId of sortedBlobIds) {
     try {
-      const result = await ensureLocalImage(blobId);
+      const result = await ensureLocalImage(blobId, blobUrlById.get(blobId));
       fileNameByBlobId.set(blobId, result.fileName);
       if (result.reused) {
         reusedCount += 1;
@@ -180,7 +211,7 @@ async function main() {
     } catch (error) {
       failures.push({
         blobId,
-        url: normalizeBlobUrl(blobId),
+        url: normalizeBlobUrl(blobId, blobUrlById.get(blobId)),
         error: error instanceof Error ? error.message : String(error),
       });
     }

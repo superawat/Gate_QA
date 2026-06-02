@@ -375,23 +375,39 @@ export class AptitudeQuestionService {
     return this.questionsByUid.get(normalizedUid) || null;
   }
 
+  static hasRenderableDetail(question = {}) {
+    return Boolean(String(question?.question || "").trim())
+      && this.getNormalizedOptions(question).length === OPTION_LABELS.length;
+  }
+
   static async ensureQuestionDetail(question = {}) {
     if (!question?.question_uid) {
       return question;
     }
     const uid = String(question.question_uid || "").trim();
     if (this.detailCache.has(uid)) {
-      return this.detailCache.get(uid);
+      const cached = this.detailCache.get(uid);
+      if (this.hasRenderableDetail(cached)) {
+        return cached;
+      }
     }
 
     const indexed = this.getQuestionByUid(uid) || question;
     const shard = indexed._detailShard || question._detailShard;
     if (!shard) {
-      return indexed;
+      if (this.hasRenderableDetail(indexed)) {
+        return indexed;
+      }
+      throw new Error(`Aptitude question detail missing for ${uid}.`);
     }
 
     await this.loadDetailShard(shard);
-    return this.detailCache.get(uid) || this.getQuestionByUid(uid) || indexed;
+    const detail = this.detailCache.get(uid);
+    if (this.hasRenderableDetail(detail)) {
+      return detail;
+    }
+
+    throw new Error(`Aptitude question detail missing for ${uid}.`);
   }
 
   static async loadDetailShard(shard = "") {
@@ -413,14 +429,15 @@ export class AptitudeQuestionService {
         throw new Error(`Failed to load aptitude shard (${response.status}).`);
       }
       const payload = await response.json();
-      if (!Array.isArray(payload)) {
+      const rows = Array.isArray(payload) ? payload : payload?.questions;
+      if (!Array.isArray(rows)) {
         throw new Error("Aptitude shard payload is invalid.");
       }
 
-      const detailedQuestions = payload
+      const detailedQuestions = rows
         .filter((row) => row && typeof row === "object")
         .map((row) => this.normalizeQuestion({ ...row, shard: normalizedShard }))
-        .filter((row) => row.question_uid && row.question);
+        .filter((row) => row.question_uid && this.hasRenderableDetail(row));
 
       detailedQuestions.forEach((detail) => {
         this.detailCache.set(detail.question_uid, detail);

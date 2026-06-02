@@ -66,8 +66,8 @@ const ACCENT_CLASSES = {
 };
 
 const SummaryStat = ({ label, value }) => (
-    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-2.5 shadow-[var(--shadow-soft)]">
-        <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</div>
+    <div className="mocktest-stat-tile border border-slate-200 bg-white px-4 py-2.5 shadow-[var(--shadow-soft)]">
+        <div className="text-[11px] font-semibold uppercase text-slate-500">{label}</div>
         <div className="mt-1 text-lg font-semibold text-slate-950">{value}</div>
     </div>
 );
@@ -93,7 +93,7 @@ const FilterChip = ({
             type="button"
             onClick={onClick}
             className={joinClasses(
-                "rounded-2xl border px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-sky-500/30",
+                "mocktest-filter-chip border px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-sky-500/30",
                 active
                     ? toneClass
                     : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
@@ -111,15 +111,15 @@ const PreviewCard = ({ livePreview }) => {
     }
 
     return (
-        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-slate-50/80 p-4">
+        <div className="mocktest-preview-card rounded-[var(--radius-card)] border border-slate-200 bg-slate-50/80 p-4">
             <div className="flex items-center justify-between gap-3">
                 <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Available pool</p>
+                    <p className="text-xs font-semibold uppercase text-slate-500">Available pool</p>
                     <p className="mt-1 text-sm text-slate-600">The questions currently eligible for this attempt.</p>
                 </div>
-                <div className="rounded-2xl bg-white px-3 py-2 text-right shadow-[var(--shadow-soft)]">
+                <div className="mocktest-mini-total bg-white px-3 py-2 text-right shadow-[var(--shadow-soft)]">
                     <div className="text-2xl font-semibold text-slate-950" data-testid="preview-total">{livePreview.total}</div>
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Total</div>
+                    <div className="text-[11px] font-semibold uppercase text-slate-500">Total</div>
                 </div>
             </div>
 
@@ -129,13 +129,13 @@ const PreviewCard = ({ livePreview }) => {
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
-                <span className="rounded-full bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
+                <span className="mocktest-inline-fact bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
                     <span data-testid="preview-mcq">{livePreview.mcqCount}</span> MCQ
                 </span>
-                <span className="rounded-full bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
+                <span className="mocktest-inline-fact bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
                     <span data-testid="preview-msq">{livePreview.msqCount}</span> MSQ
                 </span>
-                <span className="rounded-full bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
+                <span className="mocktest-inline-fact bg-white px-3 py-1.5 shadow-[var(--shadow-soft)]">
                     <span data-testid="preview-nat">{livePreview.natCount}</span> NAT
                 </span>
             </div>
@@ -216,11 +216,11 @@ const MockTestSetup = ({
         kindMeta.description || kindMeta.note ? (
         <div className={joinClasses("rounded-[var(--radius-card)] border p-5 shadow-[var(--shadow-soft)]", accent.panel)}>
             <div className="flex items-start gap-4">
-                <span className={joinClasses("inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl", accent.icon)}>
+                <span className={joinClasses("mocktest-icon-box inline-flex h-12 w-12 shrink-0 items-center justify-center", accent.icon)}>
                     <Icon />
                 </span>
                 <div>
-                    <span className={joinClasses("inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]", accent.badge)}>
+                    <span className={joinClasses("mocktest-pill inline-flex px-2.5 py-1 text-[11px] font-semibold uppercase", accent.badge)}>
                         {kindMeta.title}
                     </span>
                     {kindMeta.description ? (
@@ -251,7 +251,7 @@ const MockTestSetup = ({
 
                 <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
                     <div className="flex items-start gap-3">
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
+                        <span className="mocktest-icon-box inline-flex h-10 w-10 shrink-0 items-center justify-center bg-emerald-50 text-emerald-700">
                             <FaCheckCircle />
                         </span>
                         <div>
@@ -319,7 +319,7 @@ const MockTestSetup = ({
                                     </div>
                                     {isSelected || !paper.paperReady ? (
                                         <span className={joinClasses(
-                                            "inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]",
+                                            "mocktest-pill inline-flex px-2.5 py-1 text-[11px] font-semibold uppercase",
                                             isSelected
                                                 ? "bg-sky-50 text-sky-700"
                                                 : "bg-amber-50 text-amber-700"
@@ -353,7 +353,7 @@ const MockTestSetup = ({
                             max={65}
                             value={setupState.customCount}
                             onChange={(event) => onPatchState({ customCount: Number(event.target.value) })}
-                            className="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                            className="mocktest-input w-full border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
                         />
                     </div>
                 </div>
@@ -398,7 +398,7 @@ const MockTestSetup = ({
                                 max={setupState.maxYear}
                                 value={setupState.yearRangeStart}
                                 onChange={(event) => onPatchState({ yearRangeStart: Number(event.target.value) })}
-                                className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
                             />
                         </label>
                         <label className="text-sm font-semibold text-slate-700">
@@ -409,7 +409,7 @@ const MockTestSetup = ({
                                 max={setupState.maxYear}
                                 value={setupState.yearRangeEnd}
                                 onChange={(event) => onPatchState({ yearRangeEnd: Number(event.target.value) })}
-                                className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
                             />
                         </label>
                     </div>
@@ -466,12 +466,12 @@ const MockTestSetup = ({
     );
 
     return (
-        <div className="mocktest-setup-wrap flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-5">
-            <div className="w-full max-w-6xl rounded-[var(--radius-hero)] border border-[color:var(--color-border)] bg-white shadow-[var(--shadow-card)]">
+        <div className="mocktest-setup-wrap flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-4 sm:p-5">
+            <div className="mocktest-setup-card w-full max-w-6xl border border-[color:var(--color-border)] bg-white shadow-[var(--shadow-card)]">
                 <div className="border-b border-[color:var(--color-border)] px-6 py-5 lg:px-8">
                     <div className="flex flex-wrap items-start justify-between gap-4">
                         <div>
-                            <span className={joinClasses("inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]", accent.badge)}>
+                            <span className={joinClasses("mocktest-pill inline-flex px-2.5 py-1 text-[11px] font-semibold uppercase", accent.badge)}>
                                 {kindMeta.title}
                             </span>
                             <h2 className="mt-3 text-3xl font-semibold text-slate-950">Mock Test Setup</h2>
@@ -497,11 +497,11 @@ const MockTestSetup = ({
                     <aside className="space-y-4 self-start">
                         <div className="rounded-[var(--radius-card)] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] p-4 shadow-[var(--shadow-soft)]">
                             <div className="flex items-start gap-3">
-                                <span className={joinClasses("inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl", accent.icon)}>
+                                <span className={joinClasses("mocktest-icon-box inline-flex h-11 w-11 shrink-0 items-center justify-center", accent.icon)}>
                                     <Icon />
                                 </span>
                                 <div>
-                                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Attempt summary</p>
+                                    <p className="text-xs font-semibold uppercase text-slate-500">Attempt summary</p>
                                     <h3 className="mt-1 text-lg font-semibold text-slate-950">{kindMeta.title}</h3>
                                 </div>
                             </div>
@@ -519,7 +519,7 @@ const MockTestSetup = ({
                             </div>
 
                             {summaryNote ? (
-                                <div className="mt-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
+                                <div className="mocktest-summary-note mt-4 border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
                                     <p>{summaryNote}</p>
                                 </div>
                             ) : null}
@@ -543,7 +543,7 @@ const MockTestSetup = ({
                         <button
                             type="button"
                             onClick={onBack}
-                            className="rounded-2xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                            className="mocktest-secondary-btn border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
                         >
                             {backLabel}
                         </button>
@@ -554,7 +554,7 @@ const MockTestSetup = ({
                             <button
                                 type="button"
                                 onClick={onReset}
-                                className="rounded-2xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                                className="mocktest-secondary-btn border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
                             >
                                 Reset
                             </button>
@@ -565,7 +565,7 @@ const MockTestSetup = ({
                             onClick={onStart}
                             disabled={!canStart}
                             className={joinClasses(
-                                "rounded-2xl px-5 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:bg-slate-300",
+                                "mocktest-primary-btn px-5 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:bg-slate-300",
                                 accent.button
                             )}
                         >

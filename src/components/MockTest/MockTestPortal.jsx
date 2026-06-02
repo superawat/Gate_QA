@@ -23,9 +23,22 @@ const MockTestPortal = ({
     const selectedOption = options.find((option) => option.id === selectedKindId) || null;
 
     return (
-        <div className="mocktest-portal-wrap flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-6">
-            <div className="mocktest-portal-card w-full max-w-6xl rounded-[var(--radius-hero)] border border-[color:var(--color-border)] bg-white shadow-[var(--shadow-card)]">
-                <div className="p-6 lg:p-8">
+        <div className="mocktest-portal-wrap flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-4 sm:p-6">
+            <div className="mocktest-portal-card w-full max-w-6xl border border-[color:var(--color-border)] bg-white shadow-[var(--shadow-card)]">
+                <div className="mocktest-portal-head flex flex-wrap items-start justify-between gap-4 border-b border-[color:var(--color-border)] px-5 py-5 lg:px-7">
+                    <div>
+                        <p className="text-xs font-semibold uppercase text-slate-500">Mode</p>
+                        <h2 className="mt-1 text-2xl font-semibold text-slate-950">Choose Attempt Type</h2>
+                    </div>
+                    <div className="mocktest-portal-selection text-right">
+                        <p className="text-xs font-semibold uppercase text-slate-500">Selected</p>
+                        <p className="mt-1 text-sm font-semibold text-slate-950">
+                            {selectedOption ? selectedOption.title : "None"}
+                        </p>
+                    </div>
+                </div>
+
+                <div className="p-5 lg:p-7">
                     <div className="mocktest-portal-grid grid grid-cols-1 gap-4 lg:grid-cols-3">
                     {options.map((option) => {
                         const isSelected = selectedKindId === option.id;
@@ -36,20 +49,20 @@ const MockTestPortal = ({
                                 data-testid={`mock-portal-option-${option.id}`}
                                 type="button"
                                 onClick={() => onSelectKind(option.id)}
-                                className={`mocktest-portal-option w-full rounded-[var(--radius-card)] border p-5 text-left transition-all ${isSelected
-                                    ? "border-emerald-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfdf5_100%)] shadow-[var(--shadow-soft)] ring-2 ring-emerald-100"
+                                className={`mocktest-portal-option mocktest-portal-option--${option.id} w-full border p-5 text-left transition-all ${isSelected
+                                    ? "is-selected border-emerald-300 bg-white shadow-[var(--shadow-soft)] ring-2 ring-emerald-100"
                                     : "border-[color:var(--color-border)] bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
                                     }`}
                             >
                                 <div className="flex items-start justify-between gap-4">
-                                    <span className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${isSelected
+                                    <span className={`mocktest-portal-icon inline-flex h-12 w-12 shrink-0 items-center justify-center ${isSelected
                                         ? "bg-emerald-100 text-emerald-700"
-                                        : "bg-sky-50 text-sky-700"
+                                        : "bg-slate-100 text-slate-700"
                                         }`}>
                                         <Icon />
                                     </span>
                                     {option.badge ? (
-                                        <span className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${isSelected
+                                        <span className={`mocktest-portal-badge inline-flex px-2.5 py-1 text-[11px] font-semibold uppercase ${isSelected
                                             ? "bg-emerald-50 text-emerald-700"
                                             : "bg-slate-100 text-slate-600"
                                             }`}>
@@ -61,10 +74,10 @@ const MockTestPortal = ({
                                 <div className="mt-5 text-lg font-semibold text-slate-950">{option.title}</div>
                                 <div className="mt-2 text-sm leading-6 text-slate-600">{option.subtitle}</div>
                                 <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold text-slate-700">
-                                    <span className="rounded-full bg-slate-100 px-3 py-1.5">
+                                    <span className="mocktest-portal-fact bg-slate-100 px-3 py-1.5">
                                         {option.facts.count}
                                     </span>
-                                    <span className="rounded-full bg-slate-100 px-3 py-1.5">
+                                    <span className="mocktest-portal-fact bg-slate-100 px-3 py-1.5">
                                         {option.facts.duration}
                                     </span>
                                 </div>
@@ -82,7 +95,7 @@ const MockTestPortal = ({
                         <button
                             type="button"
                             onClick={onBack}
-                            className="rounded-2xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                            className="mocktest-secondary-btn border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
                         >
                             Back
                         </button>
@@ -92,7 +105,7 @@ const MockTestPortal = ({
                         type="button"
                         onClick={onContinue}
                         disabled={!selectedKindId}
-                        className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+                        className="mocktest-primary-btn inline-flex items-center gap-2 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
                     >
                         {selectedOption ? `Continue with ${selectedOption.title}` : "Continue"}
                         <FaArrowRight className="text-xs" />

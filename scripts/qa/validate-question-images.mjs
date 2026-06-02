@@ -19,8 +19,9 @@ const QUESTION_BANK_CANDIDATES = [
   path.join(PUBLIC_DIR, "questions-filtered.json"),
 ];
 
-const LOCAL_IMAGE_RE = /\/Gate_QA\/question-images\/([^"')\s>]+)/g;
-const REMOTE_BLOB_RE = /https:\/\/gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=\d+/gi;
+const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
+const LOCAL_IMAGE_RE = /\/(?:Gate_QA\/)?question-images\/([^"')\s>]+)/g;
+const REMOTE_BLOB_RE = /https:\/\/(?:[a-z0-9-]+\.)?gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=\d+/gi;
 
 function ensureDir(targetDir) {
   fs.mkdirSync(targetDir, { recursive: true });
@@ -47,6 +48,44 @@ function getQuestionBankPath() {
   return found;
 }
 
+function listJsonFiles(directory) {
+  if (!fs.existsSync(directory)) {
+    return [];
+  }
+
+  return fs.readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        return listJsonFiles(entryPath);
+      }
+      return entry.isFile() && entry.name.endsWith(".json") ? [entryPath] : [];
+    });
+}
+
+function getQuestionSourceFiles() {
+  return [
+    getQuestionBankPath(),
+    ...listJsonFiles(DETAIL_SHARDS_DIR),
+  ];
+}
+
+function getQuestionRecords(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  if (Array.isArray(payload?.questions)) {
+    return payload.questions;
+  }
+  if (payload?.recordsByQuestionUid && typeof payload.recordsByQuestionUid === "object") {
+    return Object.values(payload.recordsByQuestionUid);
+  }
+  if (Array.isArray(payload?.records)) {
+    return payload.records;
+  }
+  return [];
+}
+
 function extractLocalImageFileNames(html = "") {
   const matches = new Set();
   for (const match of String(html || "").matchAll(LOCAL_IMAGE_RE)) {
@@ -60,11 +99,14 @@ function extractLocalImageFileNames(html = "") {
 
 function main() {
   const generatedAt = new Date().toISOString();
-  const questionBankPath = getQuestionBankPath();
-  const questions = readJson(questionBankPath, []);
-  if (!Array.isArray(questions)) {
-    throw new Error(`${questionBankPath} must contain an array.`);
-  }
+  const questionSourceFiles = getQuestionSourceFiles();
+  const questionSources = questionSourceFiles.map((filePath) => ({
+    filePath,
+    questions: getQuestionRecords(readJson(filePath, [])),
+  }));
+  const questions = questionSources.flatMap((source) => (
+    source.questions.map((question) => ({ ...question, __sourceFile: source.filePath }))
+  ));
 
   const imageDirEntries = fs.existsSync(IMAGE_DIR)
     ? fs.readdirSync(IMAGE_DIR, { withFileTypes: true })
@@ -95,6 +137,7 @@ function main() {
           questionUid,
           title,
           fileName,
+          sourceFile: path.relative(ROOT, question.__sourceFile || "").replace(/\\/g, "/"),
         });
       }
     });
@@ -105,6 +148,7 @@ function main() {
         questionUid,
         title,
         remoteImageCount: remoteMatches.length,
+        sourceFile: path.relative(ROOT, question.__sourceFile || "").replace(/\\/g, "/"),
       });
     }
   });
@@ -126,7 +170,7 @@ function main() {
       ],
     },
     source: {
-      questionBankPath: path.relative(ROOT, questionBankPath).replace(/\\/g, "/"),
+      filesScanned: questionSourceFiles.map((filePath) => path.relative(ROOT, filePath).replace(/\\/g, "/")),
       imageDirectory: path.relative(ROOT, IMAGE_DIR).replace(/\\/g, "/"),
     },
     summary: {

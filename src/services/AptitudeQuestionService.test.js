@@ -170,6 +170,24 @@ describe("AptitudeQuestionService", () => {
     expect(hydrated.normalizedOptions.map((entry) => entry.label)).toEqual(["A", "B", "C", "D"]);
   });
 
+  test("throws when an indexed aptitude question is missing from its detail shard", async () => {
+    vi.stubGlobal("fetch", vi.fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => sampleIndex,
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => [sampleRows[1]],
+      }));
+
+    await AptitudeQuestionService.init();
+    const indexed = AptitudeQuestionService.getQuestionByUid("APT-ENG-0001");
+
+    await expect(AptitudeQuestionService.ensureQuestionDetail(indexed))
+      .rejects.toThrow("Aptitude question detail missing for APT-ENG-0001");
+  });
+
   test("uses an independent cache version key", () => {
     expect(AptitudeQuestionService.getCacheKey()).toContain(APTITUDE_INIT_CACHE_VERSION);
     expect(AptitudeQuestionService.getCacheKey()).toContain("aptitude");

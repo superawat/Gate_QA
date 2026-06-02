@@ -839,12 +839,28 @@
 
 .mocktest-root .mocktest-portal-wrap,
 .mocktest-root .mocktest-setup-wrap {
-  background: linear-gradient(180deg, #e6f1fb 0%, #dcebf9 100%);
+  background:
+    linear-gradient(180deg, #eef6fb 0%, #f8fbfd 52%, #eef2f7 100%);
 }
 
 .mocktest-root .mocktest-portal-card,
 .mocktest-root .mocktest-setup-card {
   min-height: 540px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+}
+
+.mocktest-root .mocktest-portal-head {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f7fbff 58%, #f4fbf2 100%);
+}
+
+.mocktest-root .mocktest-portal-selection,
+.mocktest-root .mocktest-stat-tile,
+.mocktest-root .mocktest-preview-card,
+.mocktest-root .mocktest-summary-note {
+  border-radius: 8px;
 }
 
 .mocktest-root .mocktest-portal-grid {
@@ -852,7 +868,87 @@
 }
 
 .mocktest-root .mocktest-portal-option {
-  min-height: 124px;
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.mocktest-root .mocktest-portal-option::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: #64748b;
+  opacity: 0.36;
+}
+
+.mocktest-root .mocktest-portal-option--full_length::before {
+  background: #059669;
+}
+
+.mocktest-root .mocktest-portal-option--paper_mode::before {
+  background: #0369a1;
+}
+
+.mocktest-root .mocktest-portal-option--custom::before {
+  background: #b45309;
+}
+
+.mocktest-root .mocktest-portal-option.is-selected::before {
+  opacity: 1;
+}
+
+.mocktest-root .mocktest-portal-icon,
+.mocktest-root .mocktest-icon-box,
+.mocktest-root .mocktest-mini-total,
+.mocktest-root .mocktest-filter-chip,
+.mocktest-root .mocktest-input,
+.mocktest-root .mocktest-primary-btn,
+.mocktest-root .mocktest-secondary-btn {
+  border-radius: 8px;
+}
+
+.mocktest-root .mocktest-portal-badge,
+.mocktest-root .mocktest-portal-fact,
+.mocktest-root .mocktest-pill,
+.mocktest-root .mocktest-inline-fact {
+  border-radius: 999px;
+}
+
+.mocktest-root .mocktest-primary-btn,
+.mocktest-root .mocktest-secondary-btn {
+  min-height: 40px;
+  white-space: nowrap;
+}
+
+.mocktest-root .mocktest-filter-chip {
+  min-height: 36px;
+}
+
+.mocktest-root .mocktest-input {
+  min-height: 40px;
+}
+
+.mocktest-root .mocktest-preview-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+@media (max-width: 640px) {
+  .mocktest-root .mocktest-portal-option {
+    min-height: auto;
+  }
+
+  .mocktest-root .mocktest-portal-selection {
+    width: 100%;
+    text-align: left;
+  }
+
+  .mocktest-root .mocktest-primary-btn,
+  .mocktest-root .mocktest-secondary-btn {
+    flex: 1 1 160px;
+    justify-content: center;
+  }
 }
 
 .mocktest-root .mocktest-setup-checkgrid input[type="checkbox"] {

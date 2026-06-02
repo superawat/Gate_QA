@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-06-02
+
+### Added
+- Added a stricter aptitude detail hydration guard so missing shard rows fail loudly instead of rendering an empty question shell.
+- Added public aptitude index/detail consistency checks to the aptitude validation gate.
+
+### Changed
+- Hardened the GateOverflow image mirror and validator to recognize subdomain blob hosts, localize the missing public question images, and scan question detail shards as well as the top-level question bank.
+- Tightened the streak freeze reconciliation logic so it can bridge whole skipped-day gaps and preserve an active streak when the user returns after a one-day pause.
+- Gave the Mock Test selection/setup screens a denser premium treatment with clearer selected states, cleaner controls, and better responsive spacing.
+
+### Fixed
+- Resolved the GATE 2009 Question 15 content mismatch note after verifying that the regular expression corresponds to option `C`.
+
+### Verified
+- `npm run build:public-artifacts`
+- `node scripts/qa/validate-question-images.mjs`
+- `node scripts/qa/validate-aptitude-data.js`
+- `npm run build`
+- Full verification sweep: `npm run test:unit`, `npm run test:e2e -- tests/e2e/mock-test-flow.spec.js`, `npm run qa:validate-data`, `npm run qa:validate-public-parity`, `npm run qa:validate-bundle-budget`, `npm run qa:validate-landing-network`, `npm run qa:validate-aptitude`, `npm run qa:verify-aptitude`, and `npm run qa:validate-aptitude-images`.
+
 ## 2026-05-29
 
 ### Added

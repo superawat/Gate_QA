@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { buildWeakTopicInsights, mergeMockHistoryIntoProgress } from "./weakTopicAnalyzer";
+import { buildWeakTopicInsights, loadStudyActivityFast, mergeMockHistoryIntoProgress } from "./weakTopicAnalyzer";
 
 describe("buildWeakTopicInsights", () => {
   test("builds subject and subtopic accuracy summaries from local progress", () => {
@@ -360,6 +360,59 @@ describe("buildWeakTopicInsights", () => {
     expect(insights.studyActivity.progressDateKeys).toEqual(["2026-05-01"]);
     expect(insights.studyActivity.activeDayCount).toBe(1);
     expect(insights.studyActivity.currentStreak).toBe(1);
+  });
+
+  test("uses a streak freeze to bridge a skipped day between practice days", () => {
+    const values = new Map([
+      ["gateqa_progress_v1", JSON.stringify({
+        "go:36": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          firstSubmittedAt: "2026-05-01T10:00:00.000Z",
+          lastSubmittedAt: "2026-05-01T10:00:00.000Z",
+          history: [
+            { submittedAt: "2026-05-01T10:00:00.000Z", correct: true, durationMs: 30000 },
+          ],
+        },
+        "go:37": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          firstSubmittedAt: "2026-05-03T10:00:00.000Z",
+          lastSubmittedAt: "2026-05-03T10:00:00.000Z",
+          history: [
+            { submittedAt: "2026-05-03T10:00:00.000Z", correct: true, durationMs: 30000 },
+          ],
+        },
+      })],
+      ["gateqa_streak_freeze_v1", JSON.stringify({
+        available: 1,
+        earnedCount: 0,
+        consumedDates: [],
+      })],
+    ]);
+    const storage = {
+      getItem: (key) => values.get(key) || null,
+      setItem: (key, value) => values.set(key, value),
+    };
+
+    const activity = loadStudyActivityFast({
+      storage,
+      now: new Date("2026-05-04T10:00:00.000Z"),
+    });
+
+    expect(activity.currentStreak).toBe(3);
+    expect(activity.longestStreak).toBe(3);
+    expect(activity.streakDateKeys).toEqual(["2026-05-01", "2026-05-02", "2026-05-03"]);
+    expect(activity.streakFreeze.available).toBe(0);
+    expect(activity.streakFreeze.consumedDates).toEqual(["2026-05-02"]);
+    expect(JSON.parse(values.get("gateqa_streak_freeze_v1"))).toMatchObject({
+      available: 0,
+      consumedDates: ["2026-05-02"],
+    });
   });
 
   test("merges mock history into subject accuracy, weak topics, and timing summaries", () => {

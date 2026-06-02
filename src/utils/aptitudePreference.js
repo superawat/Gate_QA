@@ -9,6 +9,12 @@ export const readAptitudeEnabled = () => {
     return DEFAULT_APTITUDE_ENABLED;
   }
 
+  // Force enable synchronously if directly landing on an Aptitude question route,
+  // preventing initial-tick race condition redirects before React useEffect hydrates.
+  if (window.location.pathname.includes('/question/APT-') || window.location.hash.includes('/question/APT-')) {
+    return true;
+  }
+
   try {
     const rawValue = window.localStorage.getItem(APTITUDE_ENABLED_STORAGE_KEY);
     if (rawValue === null) {

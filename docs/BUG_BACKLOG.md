@@ -14,7 +14,8 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Unit test suite is currently green; run `npm run test:unit` for the exact total.
 - Historical paper audit is currently clean: `paper_count: 27`, `questions_without_paper_meta: 0`
 - Mock catalog readiness is `50/50` release-ready papers after unlocking legacy subjective prompts and pre-2010 papers.
-- Aptitude verification is green for `16,873` public rows; `qa:verify-aptitude` may still emit non-blocking coverage/OCR warnings.
+- Aptitude verification is green for `36,836` public rows; `qa:verify-aptitude` may still emit non-blocking coverage/OCR warnings.
+- Recent end-to-end and packaging checks also passed: `npm run build`, `npm run test:e2e -- tests/e2e/mock-test-flow.spec.js`, `npm run qa:validate-bundle-budget`, and `npm run qa:validate-landing-network`.
 - The bugs below come from repo inspection and audit artifacts, not from failing unit tests
 
 ## Open Bugs
@@ -61,6 +62,57 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Resolution:
   The A/B/C/D option text embedded inside `questionHtml` was causing duplicate options rendering. Fixed at runtime by calling `stripEmbeddedOptions()` and at pipeline-level by stopping the embed behavior in `to_question_html()`.
 
+
+### BUG-STK1: Streak Freeze Not Retaining Progress
+
+- Status: Fixed on 2026-06-02
+- Severity: High
+- Source: Observed / User Report
+- Where:
+  Progress and streak state management logic (daily progress calculation and streak update routines)
+- Resolution:
+  Reconciled streak freeze consumption across whole missing-day gaps so a freeze now preserves the active streak when practice resumes after a one-day skip.
+- Verification:
+  `npm run build` and the targeted streak regression now pass with a 3-day streak preserved across a skipped day.
+
+### BUG-GATE1: GATE Question Images Not Loading
+
+- Status: Fixed on 2026-06-02
+- Severity: High
+- Source: Observed / User Report
+- Where:
+  `scripts/mirror-gateoverflow-images.mjs`
+  `scripts/qa/validate-question-images.mjs`
+- Resolution:
+  Localized remote GateOverflow blob images across question-bank and detail-shard data, including subdomain hosts, so public image references now resolve from `public/question-images/`.
+- Verification:
+  `npm run build:public-artifacts` mirrored 69 images and `node scripts/qa/validate-question-images.mjs` reported 0 remote blob questions and 0 missing files.
+
+### BUG-APT3: Aptitude Cloze Test / Question Content Unavailable
+
+- Status: Fixed on 2026-06-02
+- Severity: High
+- Source: Observed / User Screenshot
+- Where:
+  `src/services/AptitudeQuestionService.js`
+  `scripts/qa/validate-aptitude-data.js`
+- Resolution:
+  Tightened aptitude detail hydration so missing shard rows now fail loudly instead of rendering an empty shell, and added public index/detail consistency checks to the aptitude validation gate.
+- Verification:
+  `node scripts/qa/validate-aptitude-data.js` passed for 36,836 public aptitude rows.
+
+### CE-001: Content Mismatch
+
+- Status: Fixed on 2026-06-02
+- Severity: Medium
+- Source: Manual verification
+- Where:
+  `public/questions-with-answers.json`
+  `public/data/answers/answers_by_question_uid_v1.json`
+- Resolution:
+  Verified GATE CSE 2009 Question 15: the regular expression matches strings containing at least two `0`s, which corresponds to option `C`. The public answer data already matched that reading.
+- Verification:
+  The original question paper text and the public answer record for `go:1307` agree on `C`.
 
 ### BUG-A: Insights page cleanup
 

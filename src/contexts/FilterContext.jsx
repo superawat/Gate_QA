@@ -416,8 +416,16 @@ export const FilterProvider = ({
     const shouldMergeAptitude = canMergeAptitude && aptitudeEnabled;
 
     useEffect(() => {
-        if (location.pathname.includes('/question/APT-') && !aptitudeEnabled) {
-            setAptitudeEnabled(true);
+        if (location.pathname.includes('/question/APT-')) {
+            if (!aptitudeEnabled) {
+                setAptitudeEnabled(true);
+            } else {
+                try {
+                    if (window.localStorage.getItem('gateqa-aptitude-enabled') !== 'true') {
+                        window.localStorage.setItem('gateqa-aptitude-enabled', 'true');
+                    }
+                } catch (e) {}
+            }
         }
     }, [location.pathname, aptitudeEnabled, setAptitudeEnabled]);
 
