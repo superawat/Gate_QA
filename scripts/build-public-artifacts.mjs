@@ -2,6 +2,10 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import {
+  extractEmbeddedOptions as extractSharedEmbeddedOptions,
+  stripEmbeddedOptions as stripSharedEmbeddedOptions,
+} from "../src/utils/stripEmbeddedOptions.js";
 
 const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -371,14 +375,7 @@ const LABELED_OPTION_BLOCK_TEST_RE =
   /<(?:p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-D]\)?[\.\):])/i;
 
 function stripEmbeddedOptionsFromHtml(html = "") {
-  return String(html || "")
-    .replace(OPTION_LIST_RE, "")
-    .replace(ALPHA_OPTION_LIST_RE, "")
-    .replace(TRAILING_OPTION_LIST_RE, "")
-    .replace(OPTION_BLOCK_RE, "")
-    .replace(OPTION_LINE_RE, "")
-    .replace(/(<br\s*\/?>|\s)+$/i, "")
-    .trim();
+  return stripSharedEmbeddedOptions(html);
 }
 
 function buildPreviewSourceHtml(question = {}) {
@@ -516,20 +513,7 @@ function normalizeMockOptionsFromRaw(rawOptions = []) {
 }
 
 function extractMockOptionsFromQuestionHtml(questionHtml = "") {
-  const options = [];
-  for (const match of String(questionHtml || "").matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)) {
-    if (options.length >= MOCK_OPTION_LABELS.length) {
-      break;
-    }
-    const optionHtml = String(match[1] || "").trim();
-    const optionText = stripHtmlToText(optionHtml);
-    if (!optionHtml && !optionText) {
-      continue;
-    }
-    const label = MOCK_OPTION_LABELS[options.length];
-    options.push({ label, html: optionHtml || optionText, text: optionText || optionHtml });
-  }
-  return options;
+  return extractSharedEmbeddedOptions(questionHtml);
 }
 
 function getMockOptions(question = {}) {

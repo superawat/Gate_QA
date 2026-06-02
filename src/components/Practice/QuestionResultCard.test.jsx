@@ -55,4 +55,24 @@ describe("QuestionResultCard", () => {
 
     expect(screen.getByTestId("math-preview").textContent).toBe("Which one is correct?");
   });
+
+  test("does not render an unknown type chip", () => {
+    render(
+      <QuestionResultCard
+        question={{
+          question_uid: "go:unknown",
+          title: "Unknown type question",
+          preview: "Question preview.",
+          type: "unknown",
+          yearSetLabel: "2026 Set 1",
+          subjectLabel: "Algorithms",
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.queryByText("unknown")).toBeNull();
+  });
 });

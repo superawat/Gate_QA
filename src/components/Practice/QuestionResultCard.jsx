@@ -2,6 +2,7 @@ import React from "react";
 import { FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 import { MathContent } from "../Math/MathRuntime";
 import { formatExplorePreview } from "../../utils/questionPreview";
+import { getDisplayQuestionTypeToken } from "../../utils/questionType";
 
 const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
@@ -16,7 +17,7 @@ const QuestionResultCard = ({
   isBookmarked,
   onOpen,
 }) => {
-  const typeToken = String(question?.type || "unknown").trim().toLowerCase() || "unknown";
+  const typeToken = getDisplayQuestionTypeToken(question);
   const preview = formatExplorePreview(question);
   const subjectLabel = question?.subjectLabel || question?.subject || "Unknown Subject";
   const subtopicLabel = Array.isArray(question?.subtopics) && question.subtopics[0]?.label
@@ -54,9 +55,11 @@ const QuestionResultCard = ({
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
-            {typeToken}
-          </span>
+          {typeToken ? (
+            <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
+              {typeToken}
+            </span>
+          ) : null}
           {isSolved ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--color-success-soft)] px-3 py-1 text-xs font-semibold text-[color:var(--color-success-text)] ring-1 ring-inset ring-[color:var(--color-success-border)]">
               <FaCheckCircle className="text-[color:var(--color-success-text)]" />

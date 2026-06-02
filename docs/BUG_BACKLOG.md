@@ -21,8 +21,8 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 ## Current Status
 
 - Unit test suite is currently green; run `npm run test:unit` for the exact total.
-- Historical paper audit is currently clean: `paper_count: 27`, `questions_without_paper_meta: 0`
-- Mock catalog readiness is `27/50` release-ready papers after strict optionless scorable checks block affected papers.
+- Historical paper audit is currently clean: `paper_count: 28`, `questions_without_paper_meta: 0`
+- Mock catalog readiness is `28/50` release-ready papers after strict optionless scorable checks block affected papers.
 - Aptitude verification is green for `36,836` public rows; `qa:verify-aptitude` may still emit non-blocking coverage/OCR warnings.
 - Recent end-to-end and packaging checks also passed: `npm run build`, `npm run test:e2e`, `npm run qa:validate-bundle-budget`, and `npm run qa:validate-landing-network`.
 - The bugs below come from repo inspection and audit artifacts, not from failing unit tests
@@ -32,6 +32,22 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 *None currently.*
 
 ## Recently Closed
+
+### BUG-MCK2: Embedded Options and Metadata Resolvers
+
+- Status: Fixed on 2026-06-02
+- Severity: High
+- Source: User reported / Audit
+- Where:
+  `src/utils/stripEmbeddedOptions.js`
+  `src/utils/questionType.js`
+  `src/services/question-service/QuestionNormalizer.js`
+  `scripts/build-public-artifacts.mjs`
+  `src/components/MockTest/MockTestQuestion.jsx`
+- Resolution:
+  Implemented a robust shared normalizer to strip embedded paragraph-labeled A-D/E options from questions, extracting 2,995 embedded rows and fully resolving image-fragment option lists cleanly. Also mapped the `UNKNOWN` question type chip to resolve properly via question metadata, embedded answers, or verified answers (hiding it cleanly if unresolved). The mock catalog now parses successfully into 2,743 scorable questions with 28 ready papers.
+- Verification:
+  Build-time artifacts regenerated successfully; `npm run test:unit` passed.
 
 ### BUG-MCK1: Mock Catalog Optionless MCQs & Layout Rendering Issues
 
@@ -47,7 +63,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
   `src/components/MockTest/MockTestShell.jsx`
   `src/components/MockTest/MockTestSetup.jsx`
 - Resolution:
-  Added runtime and build-time validations to block optionless scorable questions and answer/option mismatches before mock generation (blocking 40 invalid rows and dropping active papers to 27). Developed `htmlAssets.js` to preserve embedded image and option HTML in mock questions, resolving relative asset paths cleanly. Updated UI components to prioritize unsolved questions, render visual layouts when explicit option arrays are missing, globally record correct mock attempts, and added a toggle (default OFF) to control previously solved questions in mock tests.
+  Added runtime and build-time validations to block optionless scorable questions and answer/option mismatches before mock generation (blocking 33 invalid rows and dropping active papers to 28). Developed `htmlAssets.js` to preserve embedded image and option HTML in mock questions, resolving relative asset paths cleanly. Updated UI components to prioritize unsolved questions, render visual layouts when explicit option arrays are missing, globally record correct mock attempts, and added a toggle (default OFF) to control previously solved questions in mock tests.
 - Verification:
   Build-time artifacts regenerated successfully; mock tests and optionless checks verified cleanly.
 

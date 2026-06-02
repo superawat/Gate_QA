@@ -245,6 +245,31 @@ describe("SolvePage", () => {
     expect(mocks.ensureQuestionDetail).not.toHaveBeenCalled();
   });
 
+  test("uses answer metadata for the question type chip when raw type is unknown", async () => {
+    renderSolvePage({
+      indexedQuestion: buildQuestion("go:1", {
+        type: "unknown",
+        answer_meta: { type: "MSQ", answer: ["A", "C"] },
+      }),
+    });
+
+    expect(await screen.findByText("Question view: Question go:1")).toBeTruthy();
+    expect(screen.getByText("MSQ")).toBeTruthy();
+    expect(screen.queryByText("UNKNOWN")).toBeNull();
+  });
+
+  test("hides the question type chip when the type cannot be resolved", async () => {
+    renderSolvePage({
+      indexedQuestion: buildQuestion("go:1", {
+        type: "unknown",
+        answer_meta: undefined,
+      }),
+    });
+
+    expect(await screen.findByText("Question view: Question go:1")).toBeTruthy();
+    expect(screen.queryByText("UNKNOWN")).toBeNull();
+  });
+
   test("hydrates question detail when the indexed question is missing HTML", async () => {
     mocks.ensureQuestionDetail.mockResolvedValueOnce(buildQuestion("go:1", {
       title: "Hydrated detail",

@@ -128,7 +128,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         [currentQuestion]
     );
     const displayOptions = explicitOptions.length > 0 ? explicitOptions : normalizedOptions;
-    const questionHtmlForDisplay = normalizedOptions.length > 0 || explicitOptions.length > 0
+    const questionHtmlForDisplay = displayOptions.length > 0
         ? stripEmbeddedOptions(rawQuestionHtml)
         : rawQuestionHtml;
     const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtmlForDisplay);
@@ -357,7 +357,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                 </div>
                             ) : (
                                 <div className="mt-2 flex flex-col gap-3">
-                                    {normalizedOptions.length === 0 ? (
+                                    {displayOptions.length === 0 ? (
                                         <div className="rounded border border-[#e1c3c3] bg-[#fff6f6] px-3 py-2 text-sm text-[#8b2a2a]">
                                             Options unavailable for this question data.
                                         </div>
@@ -389,7 +389,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
 
                                             <div className="font-semibold text-gray-700 mb-1">Select your answer:</div>
                                             <div className="flex flex-row flex-wrap gap-4">
-                                                {normalizedOptions.map((option, index) => {
+                                                {displayOptions.map((option, index) => {
                                                     const optionValue = option.label;
                                                     const isChecked = isMSQ
                                                         ? Array.isArray(currentResponse) && currentResponse.includes(optionValue)

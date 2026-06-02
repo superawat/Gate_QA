@@ -52,4 +52,24 @@ describe("QuestionPickerList", () => {
 
     expect(screen.getAllByText("Discrete Mathematics").length).toBeGreaterThan(0);
   });
+
+  test("hides the type chip when the type is unknown", () => {
+    render(
+      <QuestionPickerList
+        questions={[
+          {
+            question_uid: "go:3",
+            title: "GATE CSE 2026 | Question: 3",
+            yearSetLabel: "2026 Set 1",
+            subjectLabel: "Algorithms",
+            type: "unknown",
+          },
+        ]}
+        pageStartIndex={0}
+        onOpenQuestion={() => {}}
+      />
+    );
+
+    expect(screen.queryByText("unknown")).toBeNull();
+  });
 });

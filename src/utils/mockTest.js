@@ -1,4 +1,5 @@
 import { evaluateAnswer } from "./evaluateAnswer";
+import { extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions";
 
 export const MOCK_SECTION_COUNTS = {
   GA: 10,
@@ -72,27 +73,7 @@ const normalizeRawOptions = (rawOptions = []) => {
   return options;
 };
 
-const extractOptionsFromQuestionHtml = (questionHtml = "") => {
-  const options = [];
-  const html = String(questionHtml || "");
-  for (const match of html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)) {
-    if (options.length >= OPTION_LABELS.length) {
-      break;
-    }
-    const optionHtml = String(match[1] || "").trim();
-    const optionText = stripHtmlToText(optionHtml);
-    if (!optionHtml && !optionText) {
-      continue;
-    }
-    const label = OPTION_LABELS[options.length];
-    options.push({
-      label,
-      html: optionHtml || optionText,
-      text: optionText || optionHtml,
-    });
-  }
-  return options;
-};
+const extractOptionsFromQuestionHtml = (questionHtml = "") => extractEmbeddedOptions(questionHtml);
 
 export const getMockQuestionOptions = (question = {}) => {
   if (Array.isArray(question?.normalizedOptions) && question.normalizedOptions.length > 0) {
@@ -201,6 +182,12 @@ export const validateMockQuestionForPool = ({
   }
 
   const options = getMockQuestionOptions(question || {});
+  const structuredOptionCount = Math.max(
+    normalizeRawOptions(question?.options).length,
+    Array.isArray(question?.normalizedOptions) ? normalizeRawOptions(question.normalizedOptions).length : 0
+  );
+  const embeddedOptionCount = extractOptionsFromQuestionHtml(question?.question || "").length;
+  const hasMixedOptionSources = structuredOptionCount > 0 && hasEmbeddedOptions(question?.question || "");
   const optionLabels = new Set(options.map((option) => normalizeOptionLabel(option?.label)).filter(Boolean));
   const objectiveType = normalizeMockType(type);
 
@@ -234,6 +221,9 @@ export const validateMockQuestionForPool = ({
     questionUid,
     type,
     optionCount: options.length,
+    structuredOptionCount,
+    embeddedOptionCount,
+    hasMixedOptionSources,
     imageCount: imageSources.length,
   };
 };

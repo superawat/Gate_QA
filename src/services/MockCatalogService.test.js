@@ -57,32 +57,29 @@ describe("MockCatalogService", () => {
     const readyPaperKeys = papers
       .filter((paper) => paper.paperReady)
       .map((paper) => paper.yearSetKey);
-    const ready2017Paper = papers.find((paper) => paper.yearSetKey === "2017-s1");
-    const ready2013Paper = papers.find((paper) => paper.yearSetKey === "2013-s0");
-    const ready2012Paper = papers.find((paper) => paper.yearSetKey === "2012-s0");
+    const ready2024Paper = papers.find((paper) => paper.yearSetKey === "2024-s1");
+    const ready2023Paper = papers.find((paper) => paper.yearSetKey === "2023-s0");
+    const ready2019Paper = papers.find((paper) => paper.yearSetKey === "2019-s0");
 
     expect(readyPaperKeys).toEqual(expect.arrayContaining([
-      "2025-s1",
+      "2026-s2",
+      "2026-s1",
       "2024-s1",
       "2023-s0",
+      "2020-s0",
       "2019-s0",
-      "2016-s1",
-      "2015-s1",
       "2017-s2",
-      "2017-s1",
-      "2021-s1",
+      "2015-s1",
       "2014-s2",
       "2014-s1",
-      "2013-s0",
-      "2012-s0",
     ]));
     expect(readyPaperKeys.length).toBeGreaterThanOrEqual(27);
-    expect(ready2017Paper).toMatchObject({
+    expect(ready2024Paper).toMatchObject({
       paperReady: true,
       scorableCount: 65,
       missingScorableCount: 0,
     });
-    expect(ready2013Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
-    expect(ready2012Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
+    expect(ready2023Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
+    expect(ready2019Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
   });
 });

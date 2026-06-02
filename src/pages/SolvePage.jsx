@@ -16,6 +16,7 @@ import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShor
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
+import { getDisplayQuestionTypeLabel } from "../utils/questionType";
 
 const SolvePage = ({
   loading,
@@ -323,7 +324,7 @@ const SolvePage = ({
         ? indexedQuestion.subtopics[0].label
         : ""
   );
-  const questionType = String(resolvedQuestion?.type || indexedQuestion?.type || "unknown").trim().toUpperCase() || "UNKNOWN";
+  const questionType = getDisplayQuestionTypeLabel(resolvedQuestion || indexedQuestion);
   const isSolved = resolvedQuestion ? isQuestionSolved(resolvedQuestion) : indexedQuestion ? isQuestionSolved(indexedQuestion) : false;
   const isBookmarked = resolvedQuestion ? isQuestionBookmarked(resolvedQuestion) : indexedQuestion ? isQuestionBookmarked(indexedQuestion) : false;
   const navigationSummary = navigationState.total > 0
@@ -347,9 +348,11 @@ const SolvePage = ({
           {questionSubtopicLabel}
         </span>
       ) : null}
-      <span className="rounded-full bg-[color:var(--color-purple-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
-        {questionType}
-      </span>
+      {questionType ? (
+        <span className="rounded-full bg-[color:var(--color-purple-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
+          {questionType}
+        </span>
+      ) : null}
       {isSolved ? (
         <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700">
           <FaCheckCircle className="text-emerald-600" />

@@ -18,6 +18,12 @@ vi.mock("../../contexts/FilterContext", () => ({
   useFilterState: () => mockFilterContext,
 }));
 
+vi.mock("../../services/AnswerService", () => ({
+  AnswerService: {
+    getAnswerForQuestion: () => ({ type: "MCQ", answer: "A" }),
+  },
+}));
+
 vi.mock("./MockTestQuestion", () => ({
   default: () => (
     <div
@@ -219,6 +225,10 @@ describe("MockTestShell", () => {
       subjectLabel: "English",
       subjectSlug: "english",
       question: "<p>Aptitude question</p>",
+      options: [
+        { label: "A", html: "Option A" },
+        { label: "B", html: "Option B" }
+      ],
       exam: { year: null, yearSetKey: null },
       subtopics: [{ slug: "spot-the-error", label: "Spot the Error" }],
     };

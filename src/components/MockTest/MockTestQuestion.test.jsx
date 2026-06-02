@@ -139,6 +139,29 @@ describe("MockTestQuestion", () => {
     expect(optionImages[0].getAttribute("src")).toBe("/Gate_QA/question-images/a.webp");
   });
 
+  test("normalizes paragraph-labeled options without duplicating them in the stem", () => {
+    mockContextValue.currentQuestion = {
+      ...baseMcqQuestion,
+      options: [],
+      normalizedOptions: [],
+      question: `
+        <p>Choose the largest floating-point number among the following options.</p>
+        <p>A. Small value</p>
+        <p>B. Largest value</p>
+        <p>C. Not a number</p>
+        <p>D. Tiny value</p>
+      `,
+    };
+
+    const { container } = render(<MockTestQuestion isReviewPhase={false} />);
+
+    const stem = container.querySelector(".mocktest-question-stem");
+    expect(stem.textContent).toContain("Choose the largest floating-point number");
+    expect(stem.textContent).not.toContain("Largest value");
+    expect(screen.getByText("Largest value")).toBeTruthy();
+    expect(screen.getByTestId("mock-option-selector-B")).toBeTruthy();
+  });
+
   test("renders NAT input and clears through Clear All", () => {
     mockContextValue.currentQuestion = { ...baseNatQuestion };
     mockContextValue.currentQuestionMeta = {

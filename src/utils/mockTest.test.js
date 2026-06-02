@@ -283,4 +283,67 @@ describe("mockTest utilities", () => {
     expect(validation.optionCount).toBe(4);
     expect(validation.imageCount).toBe(4);
   });
+
+  test("validateMockQuestionForPool accepts paragraph-labeled embedded options", () => {
+    const validation = validateMockQuestionForPool({
+      question: {
+        question_uid: "go:paragraph-options",
+        question: `
+          <p>Choose the largest floating-point number among the following options.</p>
+          <p>A. Small value</p>
+          <p>B. Largest value</p>
+          <p>C. Not a number</p>
+          <p>D. Tiny value</p>
+        `,
+      },
+      questionMeta: {
+        questionUid: "go:paragraph-options",
+        section: "CS",
+        type: "MCQ",
+        marks: 1,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "MCQ",
+        answer: "B",
+      },
+    });
+
+    expect(validation.valid).toBe(true);
+    expect(validation.optionCount).toBe(4);
+    expect(validation.structuredOptionCount).toBe(0);
+    expect(validation.embeddedOptionCount).toBe(4);
+  });
+
+  test("validateMockQuestionForPool reports mixed structured and embedded options", () => {
+    const validation = validateMockQuestionForPool({
+      question: {
+        question_uid: "go:mixed-options",
+        question: `
+          <p>Choose the correct option.</p>
+          <ol style="list-style-type: upper-alpha;">
+            <li>First option</li>
+            <li>Second option</li>
+            <li>Third option</li>
+            <li>Fourth option</li>
+          </ol>
+        `,
+        options: ["First option", "Second option", "Third option", "Fourth option"],
+      },
+      questionMeta: {
+        questionUid: "go:mixed-options",
+        section: "CS",
+        type: "MCQ",
+        marks: 1,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "MCQ",
+        answer: "A",
+      },
+    });
+
+    expect(validation.valid).toBe(true);
+    expect(validation.hasMixedOptionSources).toBe(true);
+  });
 });

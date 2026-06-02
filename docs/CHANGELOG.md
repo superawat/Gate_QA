@@ -3,6 +3,8 @@
 ## 2026-06-02
 
 ### Added
+- Added shared embedded-option normalization in `stripEmbeddedOptions.js` to correctly extract paragraph-labeled A-D/E options from questions, extracting 2,995 embedded rows safely.
+- Added `questionType.js` logic to dynamically resolve the `UNKNOWN` question type chip from question metadata, embedded answers, or verified answers, hiding the chip cleanly if unresolved.
 - Added build-time and runtime mock validation checks to reject scorable MCQs/MSQs without options or with mismatched answer/option labels, ensuring scoring integrity.
 - Added an optionless visual rendering fallback inside `MockTestQuestion.jsx` to render embedded HTML mock options cleanly when a structured option array is missing.
 - Added a new `Include previously solved questions` toggle inside the Mock Test setup screen, defaulting to `false` (OFF).
@@ -12,6 +14,7 @@
 - Added public aptitude index/detail consistency checks to the aptitude validation gate.
 
 ### Changed
+- Refactored `QuestionNormalizer.js`, `mockTest.js`, and build scripts to use the new unified embedded-option extractor.
 - Updated `MockTestShell.jsx` to validate mock pools and prioritize unsolved questions during test generation.
 - Updated `MockTestContext.jsx` so that correct answers chosen during mock test sessions mark those questions as solved globally in the user's unified practice history.
 - Hardened the GateOverflow image mirror and validator to recognize subdomain blob hosts, localize the missing public question images, and scan question detail shards as well as the top-level question bank.
@@ -19,6 +22,7 @@
 - Gave the Mock Test selection/setup screens a denser premium treatment with clearer selected states, cleaner controls, and better responsive spacing.
 
 ### Fixed
+- Fixed `MockTestQuestion.jsx` option rendering to prevent duplicates by deduplicating options extracted from the stem.
 - Fixed the Aptitude Direct-Link cold-start race-condition in `aptitudePreference.js` and `FilterContext.jsx` by synchronously initializing the in-memory index preference from the URL path.
 - Aligned E2E tests in `practice-flow.spec.js` and upgraded workflow actions to `v4` in `node.js.yml` to permanently fix GitHub Actions runner warnings and E2E test failures.
 - Resolved the GATE 2009 Question 15 content mismatch note after verifying that the regular expression corresponds to option `C`.
@@ -28,7 +32,7 @@
 - `node scripts/qa/validate-question-images.mjs`
 - `node scripts/qa/validate-aptitude-data.js`
 - `npm run build`
-- Full verification sweep: `npm run test:unit` (259 passing tests) and `npm run test:e2e` (17 passing Playwright tests) completed cleanly.
+- Full verification sweep: `npm run test:unit` (262 passing tests) and `npm run test:e2e` (17 passing Playwright tests) completed cleanly.
 
 ## 2026-05-29
 

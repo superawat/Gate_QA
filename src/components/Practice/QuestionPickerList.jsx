@@ -1,6 +1,7 @@
 import React from "react";
 import { FaArrowRight, FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 import { preloadSolveExperience } from "../../utils/routePreload";
+import { getDisplayQuestionTypeToken } from "../../utils/questionType";
 
 const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
@@ -57,7 +58,7 @@ const QuestionPickerList = ({
     <div className="practice-question-items divide-y divide-[color:var(--color-border)]">
       {questions.map((question, index) => {
         const sequenceNumber = pageStartIndex + index + 1;
-        const typeToken = String(question?.type || "unknown").trim().toLowerCase() || "unknown";
+        const typeToken = getDisplayQuestionTypeToken(question);
         const subjectLabel = question?.subjectLabel || question?.subject || "Unknown Subject";
         const subtopicLabel = Array.isArray(question?.subtopics) && question.subtopics[0]?.label
           ? question.subtopics[0].label
@@ -80,9 +81,11 @@ const QuestionPickerList = ({
             <div className="practice-question-row-grid flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
               <div className="practice-question-kicker flex items-center justify-between gap-3 md:block">
                 <span className="text-sm font-semibold text-[color:var(--color-text)]">#{sequenceNumber}</span>
-                <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}>
-                  {typeToken}
-                </span>
+                {typeToken ? (
+                  <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}>
+                    {typeToken}
+                  </span>
+                ) : null}
               </div>
 
               <div className="min-w-0">
@@ -122,11 +125,11 @@ const QuestionPickerList = ({
                 </p>
                 {subtopicLabel ? (
                   <p className="mt-1 truncate text-xs text-[color:var(--color-text-muted)]">{subtopicLabel}</p>
-                ) : (
+                ) : typeToken ? (
                   <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
                     {typeToken}
                   </span>
-                )}
+                ) : null}
               </div>
 
               <div className="hidden items-center justify-end gap-2 md:flex">

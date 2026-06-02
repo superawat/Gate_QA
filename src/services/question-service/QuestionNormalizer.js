@@ -3,6 +3,7 @@ import {
   getCanonicalExamUidFromQuestion,
   parseExamUid,
 } from "../../utils/examUid.js";
+import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions.js";
 
 export const YEAR_SET_TAG_PATTERN = /gate(?:cse|it)?-?(\d{4})(?:-set(\d+))?/i;
 export const TITLE_YEAR_SET_PATTERN =
@@ -145,30 +146,7 @@ export function normalizeQuestionOptionsFromRaw(rawOptions) {
 }
 
 export function extractOptionsFromQuestionHtml(questionHtml = "") {
-  const html = String(questionHtml || "");
-  if (!html.trim()) {
-    return [];
-  }
-
-  const options = [];
-  const liMatches = html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi);
-  for (const match of liMatches) {
-    if (options.length >= this.OPTION_LABELS.length) {
-      break;
-    }
-    const optionHtml = String(match[1] || "").trim();
-    const optionText = this.stripHtmlToText(optionHtml);
-    if (!optionHtml && !optionText) {
-      continue;
-    }
-    const label = this.OPTION_LABELS[options.length];
-    options.push({
-      label,
-      text: optionText || optionHtml,
-      html: optionHtml || optionText,
-    });
-  }
-  return options;
+  return extractEmbeddedOptions(questionHtml);
 }
 
 export function normalizeQuestionOptions(rawOptions, questionHtml = "") {
@@ -184,7 +162,7 @@ export function getNormalizedOptions(question = {}) {
     return [];
   }
 
-  if (Array.isArray(question.normalizedOptions)) {
+  if (Array.isArray(question.normalizedOptions) && question.normalizedOptions.length > 0) {
     return question.normalizedOptions;
   }
 
