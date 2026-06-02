@@ -8,6 +8,7 @@ import {
     formatMockTimeSpent,
     isMockAutoAwardType,
 } from "../../utils/mockTest";
+import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 
@@ -111,7 +112,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         [reviewResult?.answerRecord]
     );
 
-    const rawQuestionHtml = String(currentQuestion?.question || "")
+    const rawQuestionHtml = normalizeHtmlAssetUrls(String(currentQuestion?.question || ""))
         .replace(/\n\n/g, "<br />")
         .replace(/\n<li>/g, "<br><li>");
 
@@ -126,6 +127,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         () => QuestionService.normalizeQuestionOptionsFromRaw(currentQuestion?.options || []),
         [currentQuestion]
     );
+    const displayOptions = explicitOptions.length > 0 ? explicitOptions : normalizedOptions;
     const questionHtmlForDisplay = normalizedOptions.length > 0 || explicitOptions.length > 0
         ? stripEmbeddedOptions(rawQuestionHtml)
         : rawQuestionHtml;
@@ -364,10 +366,10 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                             className="mt-1 flex flex-col gap-2"
                                             data-testid="mock-options-display"
                                         >
-                                            {explicitOptions.length > 0 ? (
+                                            {displayOptions.length > 0 ? (
                                                 <div className="mb-4 flex flex-col gap-2 border-b border-gray-200 pb-4">
-                                                    {explicitOptions.map((option, index) => {
-                                                        const optionHtml = option.html || option.text || "";
+                                                    {displayOptions.map((option, index) => {
+                                                        const optionHtml = normalizeHtmlAssetUrls(option.html || option.text || "");
                                                         if (!optionHtml) return null;
                                                         return (
                                                             <div key={index} className="flex items-start gap-2 text-[15px] text-gray-800">

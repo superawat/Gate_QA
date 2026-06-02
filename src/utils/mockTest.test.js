@@ -9,6 +9,7 @@ import {
   formatMockTimeSpent,
   hasMeaningfulResponse,
   MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
+  validateMockQuestionForPool,
 } from "./mockTest";
 
 describe("mockTest utilities", () => {
@@ -226,5 +227,60 @@ describe("mockTest utilities", () => {
 
     expect(summary.perQuestionResult.q1.status).toBe("missing_answer");
     expect(summary.incorrect).toBe(1);
+  });
+
+  test("validateMockQuestionForPool blocks MCQ/MSQ rows without options", () => {
+    const validation = validateMockQuestionForPool({
+      question: {
+        question_uid: "go:bad",
+        question: "<p>Choose the correct statement.</p>",
+      },
+      questionMeta: {
+        questionUid: "go:bad",
+        section: "CS",
+        type: "MCQ",
+        marks: 1,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "MCQ",
+        answer: "A",
+      },
+    });
+
+    expect(validation.valid).toBe(false);
+    expect(validation.issues).toContain("missing_options");
+  });
+
+  test("validateMockQuestionForPool accepts embedded visual options", () => {
+    const validation = validateMockQuestionForPool({
+      question: {
+        question_uid: "go:visual",
+        question: `
+          <p>Pick the matching graph.</p>
+          <ol style="list-style-type: upper-alpha;">
+            <li><img src="/Gate_QA/question-images/a.webp" alt="A"></li>
+            <li><img src="/Gate_QA/question-images/b.webp" alt="B"></li>
+            <li><img src="/Gate_QA/question-images/c.webp" alt="C"></li>
+            <li><img src="/Gate_QA/question-images/d.webp" alt="D"></li>
+          </ol>
+        `,
+      },
+      questionMeta: {
+        questionUid: "go:visual",
+        section: "CS",
+        type: "MCQ",
+        marks: 1,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "MCQ",
+        answer: "C",
+      },
+    });
+
+    expect(validation.valid).toBe(true);
+    expect(validation.optionCount).toBe(4);
+    expect(validation.imageCount).toBe(4);
   });
 });

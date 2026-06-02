@@ -107,6 +107,38 @@ describe("MockTestQuestion", () => {
     expect(screen.getByText("First option")).toBeTruthy();
   });
 
+  test("renders embedded visual option content when no separate options array exists", () => {
+    mockContextValue.currentQuestion = {
+      ...baseMcqQuestion,
+      options: [],
+      normalizedOptions: [
+        { label: "A", text: "Diagram A", html: '<img src="/Gate_QA/question-images/a.webp" alt="Diagram A">' },
+        { label: "B", text: "Diagram B", html: '<img src="/Gate_QA/question-images/b.webp" alt="Diagram B">' },
+        { label: "C", text: "Diagram C", html: '<img src="/Gate_QA/question-images/c.webp" alt="Diagram C">' },
+        { label: "D", text: "Diagram D", html: '<img src="/Gate_QA/question-images/d.webp" alt="Diagram D">' },
+      ],
+      question: `
+        <p>Choose the matching diagram.</p>
+        <ol style="list-style-type: upper-alpha;">
+          <li><img src="/Gate_QA/question-images/a.webp" alt="Diagram A"></li>
+          <li><img src="/Gate_QA/question-images/b.webp" alt="Diagram B"></li>
+          <li><img src="/Gate_QA/question-images/c.webp" alt="Diagram C"></li>
+          <li><img src="/Gate_QA/question-images/d.webp" alt="Diagram D"></li>
+        </ol>
+      `,
+    };
+
+    const { container } = render(<MockTestQuestion isReviewPhase={false} />);
+
+    const stem = container.querySelector(".mocktest-question-stem");
+    expect(stem.textContent).toContain("Choose the matching diagram.");
+    expect(stem.querySelector("img")).toBeFalsy();
+
+    const optionImages = container.querySelectorAll(".mock-option-text img");
+    expect(optionImages.length).toBe(4);
+    expect(optionImages[0].getAttribute("src")).toBe("/Gate_QA/question-images/a.webp");
+  });
+
   test("renders NAT input and clears through Clear All", () => {
     mockContextValue.currentQuestion = { ...baseNatQuestion };
     mockContextValue.currentQuestionMeta = {

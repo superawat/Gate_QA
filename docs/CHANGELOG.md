@@ -3,15 +3,24 @@
 ## 2026-06-02
 
 ### Added
+- Added build-time and runtime mock validation checks to reject scorable MCQs/MSQs without options or with mismatched answer/option labels, ensuring scoring integrity.
+- Added an optionless visual rendering fallback inside `MockTestQuestion.jsx` to render embedded HTML mock options cleanly when a structured option array is missing.
+- Added a new `Include previously solved questions` toggle inside the Mock Test setup screen, defaulting to `false` (OFF).
+- Added focused tests inside `mockTest.test.js` to assert optionless scorable question blocking and visual layout rendering.
+- Added the `htmlAssets.js` utility to safely parse and resolve embedded relative visual resource paths in questions and choices.
 - Added a stricter aptitude detail hydration guard so missing shard rows fail loudly instead of rendering an empty question shell.
 - Added public aptitude index/detail consistency checks to the aptitude validation gate.
 
 ### Changed
+- Updated `MockTestShell.jsx` to validate mock pools and prioritize unsolved questions during test generation.
+- Updated `MockTestContext.jsx` so that correct answers chosen during mock test sessions mark those questions as solved globally in the user's unified practice history.
 - Hardened the GateOverflow image mirror and validator to recognize subdomain blob hosts, localize the missing public question images, and scan question detail shards as well as the top-level question bank.
 - Tightened the streak freeze reconciliation logic so it can bridge whole skipped-day gaps and preserve an active streak when the user returns after a one-day pause.
 - Gave the Mock Test selection/setup screens a denser premium treatment with clearer selected states, cleaner controls, and better responsive spacing.
 
 ### Fixed
+- Fixed the Aptitude Direct-Link cold-start race-condition in `aptitudePreference.js` and `FilterContext.jsx` by synchronously initializing the in-memory index preference from the URL path.
+- Aligned E2E tests in `practice-flow.spec.js` and upgraded workflow actions to `v4` in `node.js.yml` to permanently fix GitHub Actions runner warnings and E2E test failures.
 - Resolved the GATE 2009 Question 15 content mismatch note after verifying that the regular expression corresponds to option `C`.
 
 ### Verified
@@ -19,7 +28,7 @@
 - `node scripts/qa/validate-question-images.mjs`
 - `node scripts/qa/validate-aptitude-data.js`
 - `npm run build`
-- Full verification sweep: `npm run test:unit`, `npm run test:e2e -- tests/e2e/mock-test-flow.spec.js`, `npm run qa:validate-data`, `npm run qa:validate-public-parity`, `npm run qa:validate-bundle-budget`, `npm run qa:validate-landing-network`, `npm run qa:validate-aptitude`, `npm run qa:verify-aptitude`, and `npm run qa:validate-aptitude-images`.
+- Full verification sweep: `npm run test:unit` (259 passing tests) and `npm run test:e2e` (17 passing Playwright tests) completed cleanly.
 
 ## 2026-05-29
 

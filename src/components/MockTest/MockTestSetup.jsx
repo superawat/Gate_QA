@@ -172,6 +172,7 @@ const MockTestSetup = ({
     const isFullMock = kind.id === "full_length";
     const isPaperMode = kind.id === "paper_mode";
     const isCustom = kind.id === "custom";
+    const showSolvedQuestionToggle = !isPaperMode;
     const selectedPaper = paperOptions.find((paper) => paper.yearSetKey === selectedPaperYearSetKey) || null;
     const selectedSubjectSet = new Set(setupState.selectedSubjects || []);
     const selectedTypeSet = new Set(setupState.selectedTypes || []);
@@ -524,6 +525,19 @@ const MockTestSetup = ({
                                 </div>
                             ) : null}
                         </div>
+
+                        {showSolvedQuestionToggle ? (
+                            <label className="flex cursor-pointer items-center gap-3 rounded-[var(--radius-card)] border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-800 shadow-[var(--shadow-soft)]">
+                                <input
+                                    type="checkbox"
+                                    data-testid="mock-setup-include-solved"
+                                    checked={setupState.includeSolvedQuestions === true}
+                                    onChange={(event) => onPatchState({ includeSolvedQuestions: event.target.checked })}
+                                    className="h-4 w-4 rounded border-slate-300 text-sky-700 focus:ring-sky-500"
+                                />
+                                <span>Include previously solved questions</span>
+                            </label>
+                        ) : null}
 
                         {showPreviewInAside ? <PreviewCard livePreview={livePreview} /> : null}
 

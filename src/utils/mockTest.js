@@ -9,6 +9,235 @@ export const MOCK_SLOW_QUESTION_THRESHOLD_SECONDS = 3 * 60;
 export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT"];
 export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL", "SUBJECTIVE"];
 
+const OPTION_LABELS = ["A", "B", "C", "D", "E"];
+const REMOTE_GATEOVERFLOW_BLOB_RE = /https:\/\/(?:[a-z0-9-]+\.)?gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=\d+/i;
+const IMAGE_SRC_RE = /<img\b[^>]*\bsrc=(["'])(.*?)\1/gi;
+
+const stripHtmlToText = (html = "") => (
+  String(html || "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+);
+
+const normalizeOptionLabel = (value = "") => String(value || "").trim().toUpperCase();
+
+const normalizeRawOptions = (rawOptions = []) => {
+  const options = [];
+  const seen = new Set();
+
+  const pushOption = (rawLabel, rawValue, index) => {
+    const label = normalizeOptionLabel(rawLabel || OPTION_LABELS[index]);
+    if (!label || seen.has(label)) {
+      return;
+    }
+
+    const html = String(rawValue ?? "").trim();
+    const text = stripHtmlToText(html);
+    if (!html && !text) {
+      return;
+    }
+
+    seen.add(label);
+    options.push({ label, html: html || text, text: text || html });
+  };
+
+  if (Array.isArray(rawOptions)) {
+    rawOptions.forEach((entry, index) => {
+      if (entry && typeof entry === "object" && !Array.isArray(entry)) {
+        pushOption(
+          entry.label || entry.option || entry.key,
+          entry.html || entry.text || entry.value || entry.optionText,
+          index
+        );
+        return;
+      }
+      pushOption(OPTION_LABELS[index], entry, index);
+    });
+    return options;
+  }
+
+  if (rawOptions && typeof rawOptions === "object") {
+    OPTION_LABELS.forEach((label, index) => {
+      pushOption(label, rawOptions[label], index);
+    });
+    if (options.length === 0) {
+      Object.entries(rawOptions).forEach(([key, value], index) => {
+        pushOption(key, value, index);
+      });
+    }
+  }
+
+  return options;
+};
+
+const extractOptionsFromQuestionHtml = (questionHtml = "") => {
+  const options = [];
+  const html = String(questionHtml || "");
+  for (const match of html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)) {
+    if (options.length >= OPTION_LABELS.length) {
+      break;
+    }
+    const optionHtml = String(match[1] || "").trim();
+    const optionText = stripHtmlToText(optionHtml);
+    if (!optionHtml && !optionText) {
+      continue;
+    }
+    const label = OPTION_LABELS[options.length];
+    options.push({
+      label,
+      html: optionHtml || optionText,
+      text: optionText || optionHtml,
+    });
+  }
+  return options;
+};
+
+export const getMockQuestionOptions = (question = {}) => {
+  if (Array.isArray(question?.normalizedOptions) && question.normalizedOptions.length > 0) {
+    return normalizeRawOptions(question.normalizedOptions);
+  }
+
+  const rawOptions = normalizeRawOptions(question?.options);
+  if (rawOptions.length > 0) {
+    return rawOptions;
+  }
+
+  return extractOptionsFromQuestionHtml(question?.question || "");
+};
+
+export const extractMockImageSources = (question = {}) => {
+  const htmlFragments = [question?.question || ""];
+  if (Array.isArray(question?.options)) {
+    question.options.forEach((option) => {
+      htmlFragments.push(
+        typeof option === "object" && option
+          ? (option.html || option.text || option.value || "")
+          : option
+      );
+    });
+  }
+  if (Array.isArray(question?.normalizedOptions)) {
+    question.normalizedOptions.forEach((option) => {
+      htmlFragments.push(option?.html || option?.text || "");
+    });
+  }
+
+  const sources = [];
+  htmlFragments.forEach((fragment) => {
+    for (const match of String(fragment || "").matchAll(IMAGE_SRC_RE)) {
+      const src = String(match[2] || "").trim();
+      if (src) {
+        sources.push(src);
+      }
+    }
+  });
+  return sources;
+};
+
+const hasValidAnswerForType = (answerRecord = null, type = "") => {
+  const normalizedType = normalizeMockType(type);
+  if (!normalizedType) {
+    return false;
+  }
+
+  if (!answerRecord || typeof answerRecord !== "object") {
+    return false;
+  }
+
+  if (normalizedType === "MCQ") {
+    return Boolean(normalizeOptionLabel(answerRecord.answer));
+  }
+
+  if (normalizedType === "MSQ") {
+    return Array.isArray(answerRecord.answer)
+      && answerRecord.answer.map(normalizeOptionLabel).some(Boolean);
+  }
+
+  if (normalizedType === "NAT") {
+    const values = Array.isArray(answerRecord.answer)
+      ? answerRecord.answer
+      : [answerRecord.answer];
+    return values.some((value) => String(value ?? "").trim() !== "");
+  }
+
+  return false;
+};
+
+export const validateMockQuestionForPool = ({
+  question = null,
+  questionMeta = null,
+  answerRecord = null,
+} = {}) => {
+  const issues = [];
+  const questionUid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
+  const type = normalizeMockType(questionMeta?.type || answerRecord?.type || question?.type || "")
+    || normalizeMockAutoAwardType(questionMeta?.type || answerRecord?.type || question?.type || "");
+
+  if (!question || typeof question !== "object") {
+    issues.push("missing_question");
+  }
+  if (!questionUid) {
+    issues.push("missing_question_uid");
+  }
+  if (!questionMeta || questionMeta.scorable !== true) {
+    issues.push("unscorable_meta");
+  }
+  if (!type) {
+    issues.push("missing_type");
+  }
+
+  const imageSources = extractMockImageSources(question || {});
+  const hasQuestionText = stripHtmlToText(question?.question || "") !== "";
+  const hasQuestionImage = imageSources.length > 0;
+  if (!hasQuestionText && !hasQuestionImage) {
+    issues.push("missing_question_content");
+  }
+
+  const remoteBlobSources = imageSources.filter((src) => REMOTE_GATEOVERFLOW_BLOB_RE.test(src));
+  if (remoteBlobSources.length > 0) {
+    issues.push("remote_gateoverflow_image");
+  }
+
+  const options = getMockQuestionOptions(question || {});
+  const optionLabels = new Set(options.map((option) => normalizeOptionLabel(option?.label)).filter(Boolean));
+  const objectiveType = normalizeMockType(type);
+
+  if (objectiveType && !hasValidAnswerForType(answerRecord, objectiveType)) {
+    issues.push("missing_answer");
+  }
+
+  if ((objectiveType === "MCQ" || objectiveType === "MSQ") && options.length === 0) {
+    issues.push("missing_options");
+  }
+
+  if (objectiveType === "MCQ") {
+    const answerLabel = normalizeOptionLabel(answerRecord?.answer);
+    if (answerLabel && optionLabels.size > 0 && !optionLabels.has(answerLabel)) {
+      issues.push("answer_option_mismatch");
+    }
+  }
+
+  if (objectiveType === "MSQ" && Array.isArray(answerRecord?.answer)) {
+    const missingAnswerLabels = answerRecord.answer
+      .map(normalizeOptionLabel)
+      .filter((label) => label && optionLabels.size > 0 && !optionLabels.has(label));
+    if (missingAnswerLabels.length > 0) {
+      issues.push("answer_option_mismatch");
+    }
+  }
+
+  return {
+    valid: issues.length === 0,
+    issues,
+    questionUid,
+    type,
+    optionCount: options.length,
+    imageCount: imageSources.length,
+  };
+};
+
 export const normalizeMockType = (value = "") => {
   const normalized = String(value || "").trim().toUpperCase();
   return MOCK_OBJECTIVE_TYPES.includes(normalized) ? normalized : "";

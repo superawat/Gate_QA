@@ -7,13 +7,22 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Add only bugs with a clear symptom or a strong code/data signal.
 - Mark each entry as `Observed` or `Inferred`.
 - Keep reproduction steps short and concrete.
+# Bug Backlog
+
+This file tracks open bugs, suspected regressions, and recently closed audit issues for GateQA.
+
+## How To Use
+
+- Add only bugs with a clear symptom or a strong code/data signal.
+- Mark each entry as `Observed` or `Inferred`.
+- Keep reproduction steps short and concrete.
 - When fixed, move the final user-facing note into `CHANGELOG.md`.
 
 ## Current Status
 
 - Unit test suite is currently green; run `npm run test:unit` for the exact total.
 - Historical paper audit is currently clean: `paper_count: 27`, `questions_without_paper_meta: 0`
-- Mock catalog readiness is `50/50` release-ready papers after unlocking legacy subjective prompts and pre-2010 papers.
+- Mock catalog readiness is `27/50` release-ready papers after strict optionless scorable checks block affected papers.
 - Aptitude verification is green for `36,836` public rows; `qa:verify-aptitude` may still emit non-blocking coverage/OCR warnings.
 - Recent end-to-end and packaging checks also passed: `npm run build`, `npm run test:e2e`, `npm run qa:validate-bundle-budget`, and `npm run qa:validate-landing-network`.
 - The bugs below come from repo inspection and audit artifacts, not from failing unit tests
@@ -23,6 +32,24 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 *None currently.*
 
 ## Recently Closed
+
+### BUG-MCK1: Mock Catalog Optionless MCQs & Layout Rendering Issues
+
+- Status: Fixed on 2026-06-02
+- Severity: High
+- Source: User reported / Audit
+- Where:
+  `src/utils/mockTest.js`
+  `scripts/build-public-artifacts.mjs`
+  `src/utils/htmlAssets.js`
+  `src/components/MockTest/MockTestQuestion.jsx`
+  `src/contexts/MockTestContext.jsx`
+  `src/components/MockTest/MockTestShell.jsx`
+  `src/components/MockTest/MockTestSetup.jsx`
+- Resolution:
+  Added runtime and build-time validations to block optionless scorable questions and answer/option mismatches before mock generation (blocking 40 invalid rows and dropping active papers to 27). Developed `htmlAssets.js` to preserve embedded image and option HTML in mock questions, resolving relative asset paths cleanly. Updated UI components to prioritize unsolved questions, render visual layouts when explicit option arrays are missing, globally record correct mock attempts, and added a toggle (default OFF) to control previously solved questions in mock tests.
+- Verification:
+  Build-time artifacts regenerated successfully; mock tests and optionless checks verified cleanly.
 
 ### BUG-APT4: Aptitude Direct-Link Cold-Start Race
 

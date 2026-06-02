@@ -3,7 +3,12 @@ import { useFilterActions, useFilterState } from "./FilterContext";
 import { AnswerService } from "../services/AnswerService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { MockCatalogService } from "../services/MockCatalogService";
-import { buildMockResultSummary, hasMeaningfulResponse, normalizeMockTimeSpentSeconds } from "../utils/mockTest";
+import {
+  buildMockResultSummary,
+  hasMeaningfulResponse,
+  normalizeMockTimeSpentSeconds,
+  validateMockQuestionForPool,
+} from "../utils/mockTest";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
 import { APTITUDE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
 
@@ -11,7 +16,6 @@ const MockTestContext = createContext();
 
 const TOTAL_MOCK_TIME_SECONDS = 3 * 60 * 60;
 const ATTEMPT_STORAGE_KEY = "gateqa_mock_attempt_v1";
-const EMPTY_UID_SET = new Set();
 const APTITUDE_UID_PREFIX = "APT-";
 const APTITUDE_MOCK_ORDER_OFFSET = 100000;
 const VALID_MOCK_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
@@ -263,15 +267,17 @@ const getClampedSectionIndex = (sectionUids, sectionIndexes, section) => {
   return clampToRange(sectionIndexes[section] || 0, 0, uids.length - 1);
 };
 
-const hasScorableQuestionMeta = (questionMetaByUid, uid) => {
-  const meta = questionMetaByUid[uid];
-  return !!(
-    meta
-    && meta.scorable
-    && String(meta.type || "").trim()
-    && Number.isFinite(Number(meta.marks))
-    && Number(meta.marks) > 0
-  );
+const hasValidMockQuestionForPool = (question = null, questionMetaByUid = {}) => {
+  const uid = normalizeUid(question?.question_uid);
+  if (!uid) {
+    return false;
+  }
+
+  return validateMockQuestionForPool({
+    question,
+    questionMeta: questionMetaByUid[uid] || null,
+    answerRecord: AnswerService.getAnswerForQuestion(question),
+  }).valid;
 };
 
 const reconcileQuestionStatesWithResponses = (
@@ -378,25 +384,6 @@ export const MockTestProvider = ({ children }) => {
     () => paperCatalog.filter((paper) => paper?.paperReady),
     [paperCatalog]
   );
-  const catalogScorableQuestionUidSet = useMemo(
-    () => catalog?.scorableQuestionUidSet || EMPTY_UID_SET,
-    [catalog]
-  );
-  const scorableQuestionUidSet = useMemo(() => {
-    if (!aptitudeQuestions.length) {
-      return catalogScorableQuestionUidSet;
-    }
-
-    const nextSet = new Set(catalogScorableQuestionUidSet);
-    aptitudeQuestions.forEach((question) => {
-      const uid = normalizeUid(question?.question_uid);
-      if (uid) {
-        nextSet.add(uid);
-      }
-    });
-    return nextSet;
-  }, [aptitudeQuestions, catalogScorableQuestionUidSet]);
-
   const mockQuestionPool = useMemo(
     () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions]),
     [allQuestions, aptitudeQuestions]
@@ -599,7 +586,8 @@ export const MockTestProvider = ({ children }) => {
         return { ok: false, reason: "duplicate_uid" };
       }
       seen.add(uid);
-      if (!byUid.has(uid) || !hasScorableQuestionMeta(questionMetaByUid, uid)) {
+      const question = byUid.get(uid);
+      if (!question || !hasValidMockQuestionForPool(question, questionMetaByUid)) {
         return { ok: false, reason: "invalid_uid" };
       }
     }
@@ -647,7 +635,10 @@ export const MockTestProvider = ({ children }) => {
     }
 
     const restoredQuestions = questionUids
-      .map((uid) => (hasScorableQuestionMeta(questionMetaByUid, uid) ? byUid.get(uid) : null))
+      .map((uid) => {
+        const question = byUid.get(uid);
+        return hasValidMockQuestionForPool(question, questionMetaByUid) ? question : null;
+      })
       .filter(Boolean);
     if (restoredQuestions.length !== questionUids.length) {
       return { ok: false, reason: "invalid_uid" };
@@ -798,7 +789,7 @@ export const MockTestProvider = ({ children }) => {
       gaQuestions = split.ga;
       csQuestions = split.cs;
     } else {
-      const scorableQuestions = mockQuestionPool.filter((question) => scorableQuestionUidSet.has(question.question_uid));
+      const scorableQuestions = mockQuestionPool.filter((question) => hasValidMockQuestionForPool(question, questionMetaByUid));
       const split = splitBySection(scorableQuestions);
       gaQuestions = split.ga.slice(0, 10);
       csQuestions = split.cs.slice(0, 55);
@@ -821,7 +812,7 @@ export const MockTestProvider = ({ children }) => {
     const orderedQuestions = [...gaQuestions, ...csQuestions];
     if (
       orderedQuestions.length === 0
-      || !orderedQuestions.every((question) => hasScorableQuestionMeta(questionMetaByUid, question?.question_uid))
+      || !orderedQuestions.every((question) => hasValidMockQuestionForPool(question, questionMetaByUid))
     ) {
       return false;
     }
@@ -862,7 +853,6 @@ export const MockTestProvider = ({ children }) => {
     catalogLoading,
     mockQuestionPool,
     questionMetaByUid,
-    scorableQuestionUidSet,
   ]);
 
   useEffect(() => {
@@ -999,12 +989,9 @@ export const MockTestProvider = ({ children }) => {
       const questionUid = String(question?.question_uid || "").trim();
       return !!nextSummary.perQuestionResult?.[questionUid]?.correct;
     });
-    const gateSolvedQuestions = solvedQuestions.filter((question) => (
-      !isAptitudeQuestionUid(question?.question_uid)
-    ));
 
-    if (gateSolvedQuestions.length > 0) {
-      markQuestionsSolved(gateSolvedQuestions);
+    if (solvedQuestions.length > 0) {
+      markQuestionsSolved(solvedQuestions);
     }
     activeQuestions.forEach((question) => {
       const questionUid = String(question?.question_uid || "").trim();

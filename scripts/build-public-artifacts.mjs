@@ -6,6 +6,7 @@ import path from "node:path";
 const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
 const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
+const QUESTION_IMAGE_DIR = path.join(PUBLIC_DIR, "question-images");
 const DOCS_GENERATED_DIR = path.join(ROOT, "docs", "generated");
 const REVIEW_DIR = path.join(ROOT, "artifacts", "review");
 const SITE_ORIGIN = "https://superawat.github.io/Gate_QA";
@@ -456,6 +457,178 @@ const MOCK_LEGACY_CONTINUOUS_SPLIT_MAX_YEAR = 2013;
 const MOCK_LEGACY_SLOT_DEDUP_MAX_YEAR = 2009;
 const MOCK_STANDARD_TOTAL_QUESTIONS = MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
 const MOCK_LEGACY_PARTIAL_MIN_QUESTIONS = 1;
+const MOCK_OPTION_LABELS = ["A", "B", "C", "D", "E"];
+const MOCK_IMAGE_SRC_RE = /<img\b[^>]*\bsrc=(["'])(.*?)\1/gi;
+const MOCK_REMOTE_GATEOVERFLOW_BLOB_RE = /https:\/\/(?:[a-z0-9-]+\.)?gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=\d+/i;
+const MOCK_LOCAL_QUESTION_IMAGE_RE = /\/(?:Gate_QA\/)?question-images\/([^"')\s>]+)/i;
+
+function normalizeMockOptionLabel(value = "") {
+  return String(value || "").trim().toUpperCase();
+}
+
+function normalizeMockOptionsFromRaw(rawOptions = []) {
+  const options = [];
+  const seen = new Set();
+
+  const pushOption = (rawLabel, rawValue, index) => {
+    const label = normalizeMockOptionLabel(rawLabel || MOCK_OPTION_LABELS[index]);
+    if (!label || seen.has(label)) {
+      return;
+    }
+
+    const html = String(rawValue ?? "").trim();
+    const text = stripHtmlToText(html);
+    if (!html && !text) {
+      return;
+    }
+
+    seen.add(label);
+    options.push({ label, html: html || text, text: text || html });
+  };
+
+  if (Array.isArray(rawOptions)) {
+    rawOptions.forEach((entry, index) => {
+      if (entry && typeof entry === "object" && !Array.isArray(entry)) {
+        pushOption(
+          entry.label || entry.option || entry.key,
+          entry.html || entry.text || entry.value || entry.optionText,
+          index
+        );
+        return;
+      }
+      pushOption(MOCK_OPTION_LABELS[index], entry, index);
+    });
+    return options;
+  }
+
+  if (rawOptions && typeof rawOptions === "object") {
+    MOCK_OPTION_LABELS.forEach((label, index) => {
+      pushOption(label, rawOptions[label], index);
+    });
+    if (options.length === 0) {
+      Object.entries(rawOptions).forEach(([key, value], index) => {
+        pushOption(key, value, index);
+      });
+    }
+  }
+
+  return options;
+}
+
+function extractMockOptionsFromQuestionHtml(questionHtml = "") {
+  const options = [];
+  for (const match of String(questionHtml || "").matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)) {
+    if (options.length >= MOCK_OPTION_LABELS.length) {
+      break;
+    }
+    const optionHtml = String(match[1] || "").trim();
+    const optionText = stripHtmlToText(optionHtml);
+    if (!optionHtml && !optionText) {
+      continue;
+    }
+    const label = MOCK_OPTION_LABELS[options.length];
+    options.push({ label, html: optionHtml || optionText, text: optionText || optionHtml });
+  }
+  return options;
+}
+
+function getMockOptions(question = {}) {
+  const rawOptions = normalizeMockOptionsFromRaw(question?.options);
+  if (rawOptions.length > 0) {
+    return rawOptions;
+  }
+  return extractMockOptionsFromQuestionHtml(question?.question || "");
+}
+
+function extractMockImageSources(question = {}) {
+  const fragments = [question?.question || ""];
+  if (Array.isArray(question?.options)) {
+    question.options.forEach((option) => {
+      fragments.push(
+        option && typeof option === "object"
+          ? (option.html || option.text || option.value || "")
+          : option
+      );
+    });
+  }
+
+  const sources = [];
+  fragments.forEach((fragment) => {
+    for (const match of String(fragment || "").matchAll(MOCK_IMAGE_SRC_RE)) {
+      const src = String(match[2] || "").trim();
+      if (src) {
+        sources.push(src);
+      }
+    }
+  });
+  return sources;
+}
+
+function hasValidMockAnswer(answerRecord = null, type = "") {
+  const normalizedType = String(type || "").trim().toUpperCase();
+  if (!answerRecord || !MOCK_OBJECTIVE_TYPES.has(normalizedType)) {
+    return false;
+  }
+  if (normalizedType === "MCQ") {
+    return Boolean(normalizeMockOptionLabel(answerRecord.answer));
+  }
+  if (normalizedType === "MSQ") {
+    return Array.isArray(answerRecord.answer)
+      && answerRecord.answer.map(normalizeMockOptionLabel).some(Boolean);
+  }
+  if (normalizedType === "NAT") {
+    const values = Array.isArray(answerRecord.answer)
+      ? answerRecord.answer
+      : [answerRecord.answer];
+    return values.some((value) => String(value ?? "").trim() !== "");
+  }
+  return false;
+}
+
+function getMockQuestionValidationIssues(question = {}, answerRecord = null, type = "") {
+  const issues = [];
+  const normalizedType = String(type || "").trim().toUpperCase();
+  const imageSources = extractMockImageSources(question);
+  const hasQuestionContent = stripHtmlToText(question?.question || "") !== "" || imageSources.length > 0;
+  if (!hasQuestionContent) {
+    issues.push("missing_question_content");
+  }
+
+  const missingImages = imageSources.filter((src) => {
+    if (MOCK_REMOTE_GATEOVERFLOW_BLOB_RE.test(src)) {
+      return true;
+    }
+    const localMatch = src.match(MOCK_LOCAL_QUESTION_IMAGE_RE);
+    if (!localMatch) {
+      return false;
+    }
+    return !fs.existsSync(path.join(QUESTION_IMAGE_DIR, localMatch[1]));
+  });
+  if (missingImages.length > 0) {
+    issues.push("missing_or_remote_image");
+  }
+
+  if (MOCK_OBJECTIVE_TYPES.has(normalizedType) && !hasValidMockAnswer(answerRecord, normalizedType)) {
+    issues.push("missing_answer");
+  }
+
+  if (normalizedType === "MCQ" || normalizedType === "MSQ") {
+    const options = getMockOptions(question);
+    if (options.length === 0) {
+      issues.push("missing_options");
+    } else {
+      const optionLabels = new Set(options.map((option) => normalizeMockOptionLabel(option.label)).filter(Boolean));
+      const answerLabels = normalizedType === "MCQ"
+        ? [normalizeMockOptionLabel(answerRecord?.answer)]
+        : (Array.isArray(answerRecord?.answer) ? answerRecord.answer.map(normalizeMockOptionLabel) : []);
+      if (optionLabels.size > 0 && answerLabels.some((label) => label && !optionLabels.has(label))) {
+        issues.push("answer_option_mismatch");
+      }
+    }
+  }
+
+  return issues;
+}
 
 function parseRomanNumeralToken(value = "") {
   const token = String(value || "").trim().toLowerCase();
@@ -897,6 +1070,10 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     const isObjectiveType = MOCK_OBJECTIVE_TYPES.has(answerType);
     const isAutoAwardType = MOCK_AUTO_AWARD_TYPES.has(answerType);
     const type = isObjectiveType || isAutoAwardType ? answerType : null;
+    const validationIssues = isObjectiveType
+      ? getMockQuestionValidationIssues(question, answerRecord, type)
+      : [];
+    const mockReady = isAutoAwardType || (isObjectiveType && validationIssues.length === 0);
 
     if (!paperGroups.has(yearSet.key)) {
       paperGroups.set(yearSet.key, {
@@ -930,6 +1107,8 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         title: String(question.title || "").trim(),
         type,
         autoAwarded: isAutoAwardType,
+        validationIssues,
+        mockReady,
         legacyToken,
         score: buildLegacyMockCandidateScore(question, answerRecord),
         goId: Number.parseInt(extractGateOverflowId(question.link || ""), 10),
@@ -943,7 +1122,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
 
     const marks = resolveMockMarks(paperPosition.section, paperPosition.orderIndex);
     const negativeMarks = type && marks ? resolveNegativeMarks(type, marks) : null;
-    const scorable = Boolean(type && marks !== null);
+    const scorable = Boolean(type && marks !== null && mockReady);
     const meta = {
       questionUid,
       yearSetKey: yearSet.key,
@@ -956,6 +1135,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       paperReady: false,
       scorable,
       autoAwarded: isAutoAwardType,
+      ...(validationIssues.length > 0 ? { validationIssues } : {}),
     };
 
     registerMockMeta(group, meta, byQuestionUid);
@@ -988,7 +1168,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         : absolutePosition;
       const marks = resolveMockMarks(section, orderIndex);
       const negativeMarks = entry.type && marks ? resolveNegativeMarks(entry.type, marks) : null;
-      const scorable = Boolean(entry.type && marks !== null);
+      const scorable = Boolean(entry.type && marks !== null && entry.mockReady);
 
       registerMockMeta(group, {
         questionUid: entry.questionUid,
@@ -1002,6 +1182,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
         paperReady: false,
         scorable,
         autoAwarded: entry.autoAwarded,
+        ...(entry.validationIssues?.length > 0 ? { validationIssues: entry.validationIssues } : {}),
       }, byQuestionUid);
     });
   }
@@ -1032,6 +1213,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
           section: meta.section,
           orderIndex: meta.orderIndex,
           marks: meta.marks,
+          validationIssues: meta.validationIssues || [],
         }));
       const paperReady =
         !group.hasDuplicatePosition
@@ -1051,7 +1233,12 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       } else if (!isLegacyPartialCandidate && (!hasCompleteGaSection || !hasCompleteCsSection)) {
         statusReason = `Incomplete paper structure (${gaCount} GA / ${csCount} CS parsed).`;
       } else if (blockedQuestions.length > 0) {
-        statusReason = `Missing verified answers for ${blockedQuestions.length} question${blockedQuestions.length === 1 ? "" : "s"}.`;
+        const validationBlockedCount = blockedQuestions.filter((question) => (
+          Array.isArray(question.validationIssues) && question.validationIssues.length > 0
+        )).length;
+        statusReason = validationBlockedCount > 0
+          ? `Invalid mock question data for ${validationBlockedCount} question${validationBlockedCount === 1 ? "" : "s"}.`
+          : `Missing verified answers for ${blockedQuestions.length} question${blockedQuestions.length === 1 ? "" : "s"}.`;
       } else if (isLegacyPartialCandidate) {
         statusReason = `Legacy partial paper ready (${requiredQuestionCount} parsed questions).`;
       }

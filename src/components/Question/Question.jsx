@@ -5,6 +5,7 @@ import AnswerPanel from "../AnswerPanel/AnswerPanel";
 import { useFilterActions } from "../../contexts/FilterContext";
 import { MathContent } from "../Math/MathRuntime";
 import QuestionNotes from "./QuestionNotes";
+import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 
 function Question({
   question = {},
@@ -15,7 +16,7 @@ function Question({
   canGoNext,
 }) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
-  const questionHtml = (question.question || "")
+  const questionHtml = normalizeHtmlAssetUrls(question.question || "")
     .replace(/\n\n/g, "<br />")
     .replace(/\n<li>/g, "<br><li>");
   const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtml);

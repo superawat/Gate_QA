@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
 import { useFilterState } from "../../contexts/FilterContext";
+import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
-import { MOCK_SECTION_COUNTS } from "../../utils/mockTest";
+import { MOCK_SECTION_COUNTS, validateMockQuestionForPool } from "../../utils/mockTest";
 import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
 import CalculatorWidget from "../Calculator/CalculatorWidget";
@@ -210,6 +211,7 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     selectedTypes: [...TYPE_OPTIONS],
     selectedPaperYearSetKey,
     customCount: kindId === "custom" ? 25 : 65,
+    includeSolvedQuestions: false,
 });
 
 const splitByCatalogSection = (rows = [], questionMetaByUid = {}) => {
@@ -323,6 +325,10 @@ const buildStrictGeneratedSelection = (rows = [], questionMetaByUid = {}) => {
     };
 };
 
+const isSolvedQuestion = (question = {}, solvedQuestionSet = new Set()) => (
+    solvedQuestionSet.has(String(question?.question_uid || "").trim())
+);
+
 const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const {
         attemptError,
@@ -343,7 +349,12 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         testSubmitted,
         timeLeft,
     } = useMockTest();
-    const { allQuestions, structuredTags, isInitialized } = useFilterState();
+    const {
+        allQuestions,
+        structuredTags,
+        isInitialized,
+        activeSolvedQuestionIds = [],
+    } = useFilterState();
 
     const [isDesktop, setIsDesktop] = useState(() => {
         if (typeof window === "undefined") return true;
@@ -474,15 +485,34 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         () => MOCK_KIND_OPTIONS.find((kind) => kind.id === selectedKindId) || null,
         [selectedKindId]
     );
+    const solvedQuestionSet = useMemo(
+        () => new Set((Array.isArray(activeSolvedQuestionIds) ? activeSolvedQuestionIds : []).map((uid) => String(uid || "").trim()).filter(Boolean)),
+        [activeSolvedQuestionIds]
+    );
+    const includeSolvedQuestions = Boolean(setupState.includeSolvedQuestions);
 
     const scorableQuestions = useMemo(
         () => {
             const pool = Array.isArray(mockQuestionPool) && mockQuestionPool.length > 0
                 ? mockQuestionPool
                 : allQuestions;
-            return pool.filter((question) => questionMetaByUid[question.question_uid]?.scorable);
+            return pool.filter((question) => {
+                const questionUid = String(question?.question_uid || "").trim();
+                const questionMeta = questionMetaByUid[questionUid];
+                return validateMockQuestionForPool({
+                    question,
+                    questionMeta,
+                    answerRecord: AnswerService.getAnswerForQuestion(question),
+                }).valid;
+            });
         },
         [allQuestions, mockQuestionPool, questionMetaByUid]
+    );
+    const generatedScorableQuestions = useMemo(
+        () => includeSolvedQuestions
+            ? scorableQuestions
+            : scorableQuestions.filter((question) => !isSolvedQuestion(question, solvedQuestionSet)),
+        [includeSolvedQuestions, scorableQuestions, solvedQuestionSet]
     );
 
     const mockSubjects = useMemo(
@@ -527,7 +557,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const selectedSubjectSet = new Set(setupState.selectedSubjects);
         const selectedTypeSet = new Set(selectedSetupTypes);
 
-        return scorableQuestions.filter((question) => {
+        return generatedScorableQuestions.filter((question) => {
             const questionUid = String(question?.question_uid || "").trim();
             const questionMeta = questionMetaByUid[questionUid];
             if (!questionMeta?.scorable) {
@@ -566,7 +596,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     }, [
         questionMetaByUid,
         recentYearStart,
-        scorableQuestions,
+        generatedScorableQuestions,
         selectedSetupTypes,
         setupState.maxYear,
         setupState.minYear,
@@ -588,8 +618,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     );
 
     const scorablePoolSections = useMemo(
-        () => splitByCatalogSection(scorableQuestions, questionMetaByUid),
-        [questionMetaByUid, scorableQuestions]
+        () => splitByCatalogSection(generatedScorableQuestions, questionMetaByUid),
+        [generatedScorableQuestions, questionMetaByUid]
     );
     const scorableGaCount = scorablePoolSections.gaQuestions.length;
     const scorableCsCount = scorablePoolSections.csQuestions.length;
@@ -664,20 +694,30 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 String(selectedPaper?.requiredQuestionCount ?? (MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS)),
                 10
             );
+            const safeRequiredGaCount = Number.isFinite(requiredGaCount) ? requiredGaCount : MOCK_SECTION_COUNTS.GA;
+            const safeRequiredCsCount = Number.isFinite(requiredCsCount) ? requiredCsCount : MOCK_SECTION_COUNTS.CS;
+            const hasRequiredValidatedRows =
+                paperGaQuestions.length === safeRequiredGaCount
+                && paperCsQuestions.length === safeRequiredCsCount;
+            const canStartPaper = isReadyPaper && hasRequiredValidatedRows;
 
             return {
-                canStart: isReadyPaper,
+                canStart: canStartPaper,
                 requiredSummary: formatSectionRequirement(
-                    Number.isFinite(requiredGaCount) ? requiredGaCount : MOCK_SECTION_COUNTS.GA,
-                    Number.isFinite(requiredCsCount) ? requiredCsCount : MOCK_SECTION_COUNTS.CS,
+                    safeRequiredGaCount,
+                    safeRequiredCsCount,
                     Number.isFinite(requiredQuestionCount)
                         ? requiredQuestionCount
                         : (MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS)
                 ),
                 availableSummary: paperSectionSummary,
-                message: isReadyPaper
+                message: canStartPaper
                     ? ""
-                    : (selectedPaper?.statusReason || "This paper is not release-ready yet."),
+                    : (
+                        isReadyPaper
+                            ? "This paper has invalid or missing questions in the current validated pool."
+                            : (selectedPaper?.statusReason || "This paper is not release-ready yet.")
+                    ),
             };
         }
 
@@ -745,7 +785,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const livePreview = useMemo(() => {
         const pool = selectedKind?.id === "paper_mode"
             ? paperQuestions
-            : (selectedKind?.id === "full_length" ? scorableQuestions : filteredPool);
+            : (selectedKind?.id === "full_length" ? generatedScorableQuestions : filteredPool);
         const sections = splitByCatalogSection(pool, questionMetaByUid);
         const typeCounts = { MCQ: 0, MSQ: 0, NAT: 0 };
 
@@ -764,7 +804,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             msqCount: typeCounts.MSQ,
             natCount: typeCounts.NAT,
         };
-    }, [filteredPool, paperQuestions, questionMetaByUid, scorableQuestions, selectedKind?.id]);
+    }, [filteredPool, generatedScorableQuestions, paperQuestions, questionMetaByUid, selectedKind?.id]);
 
     const patchSetupState = useCallback((patch) => {
         setSetupState((prev) => {
@@ -783,6 +823,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 : "all";
             next.customCount = clampQuestionCount(next.customCount);
             next.selectedTypes = normalizeSetupTypes(next.selectedTypes);
+            next.includeSolvedQuestions = next.includeSolvedQuestions === true;
             return next;
         });
     }, []);
@@ -889,7 +930,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             }
             selectedPaperLabel = selectedPaper?.label || QuestionService.formatYearSetLabel(selectedPaperYearSetKey || "");
         } else if (selectedKind.id === "full_length") {
-            const selection = buildStrictGeneratedSelection(scorableQuestions, questionMetaByUid);
+            const selection = buildStrictGeneratedSelection(generatedScorableQuestions, questionMetaByUid);
             if (!selection) {
                 return;
             }
@@ -949,7 +990,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         paperGaQuestions,
         questionMetaByUid,
         hydrateAptitudeQuestions,
-        scorableQuestions,
+        generatedScorableQuestions,
         selectedKind,
         selectedPaper,
         selectedPaperYearSetKey,
