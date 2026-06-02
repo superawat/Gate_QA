@@ -15,7 +15,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Historical paper audit is currently clean: `paper_count: 27`, `questions_without_paper_meta: 0`
 - Mock catalog readiness is `50/50` release-ready papers after unlocking legacy subjective prompts and pre-2010 papers.
 - Aptitude verification is green for `36,836` public rows; `qa:verify-aptitude` may still emit non-blocking coverage/OCR warnings.
-- Recent end-to-end and packaging checks also passed: `npm run build`, `npm run test:e2e -- tests/e2e/mock-test-flow.spec.js`, `npm run qa:validate-bundle-budget`, and `npm run qa:validate-landing-network`.
+- Recent end-to-end and packaging checks also passed: `npm run build`, `npm run test:e2e`, `npm run qa:validate-bundle-budget`, and `npm run qa:validate-landing-network`.
 - The bugs below come from repo inspection and audit artifacts, not from failing unit tests
 
 ## Open Bugs
@@ -23,6 +23,20 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 *None currently.*
 
 ## Recently Closed
+
+### BUG-APT4: Aptitude Direct-Link Cold-Start Race
+
+- Status: Fixed on 2026-06-02
+- Severity: High
+- Source: CI / E2E regression
+- Where:
+  `src/utils/aptitudePreference.js`
+  `src/contexts/FilterContext.jsx`
+  `tests/e2e/practice-flow.spec.js`
+- Resolution:
+  Initialized Aptitude preference synchronously from direct `/question/APT-*` landing URLs, then persisted `gateqa-aptitude-enabled` during context hydration. Updated the E2E expectation to assert automatic Aptitude activation and successful direct question loading instead of a redirect back to Practice.
+- Verification:
+  `npm run test:unit` passed 259 tests and `npm run test:e2e` passed 17 Playwright tests before push `ee57b91`.
 
 ### BUG-APT2: Low-signal aptitude intake clutter reaching public output
 
