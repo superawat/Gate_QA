@@ -69,7 +69,7 @@ test("aptitude toggle injects standalone subjects into the unified practice filt
   await page.goto(appPath("/practice"));
   await waitForPracticeList(page);
 
-  const toggle = page.getByRole("switch", { name: /Enable Aptitude Practice/i });
+  const toggle = page.getByRole("switch", { name: /Enable Special Aptitude Practice/i });
   await expect(toggle).toBeVisible({ timeout: 15000 });
   await toggle.click();
 
