@@ -1,14 +1,25 @@
 import { getExamUidFromQuestion } from "../utils/examUid";
+import type { QuestionUid, AnswerRecord, AnswerRecordMap } from "../types";
+
+export interface QuestionIdentity {
+  rawQuestionUid: string | null;
+  questionUid: string | null;
+  answerUid: string | null;
+  examUid: string | null;
+  storageUid: string | null;
+  hasIdentity: boolean;
+  reason: string;
+}
 
 export class AnswerService {
-  static answersByQuestionUid = {};
-  static answersByUid = {};
-  static answersByExamUid = {};
-  static unsupportedQuestionUids = new Set();
-  static loaded = false;
-  static loadError = "";
+  static answersByQuestionUid: AnswerRecordMap = {};
+  static answersByUid: Record<string, AnswerRecord> = {};
+  static answersByExamUid: Record<string, AnswerRecord> = {};
+  static unsupportedQuestionUids: Set<string> = new Set();
+  static loaded: boolean = false;
+  static loadError: string = "";
 
-  static extractGateOverflowId(link = "") {
+  static extractGateOverflowId(link: string = ""): string | null {
     const raw = String(link || "").trim();
     if (!raw) {
       return null;
@@ -23,7 +34,7 @@ export class AnswerService {
     return relativeMatch ? relativeMatch[1] : null;
   }
 
-  static getQuestionIdentity(question = {}) {
+  static getQuestionIdentity(question: any = {}): QuestionIdentity {
     if (!question || typeof question !== "object") {
       return {
         rawQuestionUid: null,
@@ -40,7 +51,7 @@ export class AnswerService {
       ? String(question.question_uid)
       : null;
 
-    let questionUid = null;
+    let questionUid: string | null = null;
     if (rawQuestionUid && !rawQuestionUid.startsWith("local:")) {
       questionUid = rawQuestionUid;
     } else {
@@ -66,27 +77,27 @@ export class AnswerService {
     };
   }
 
-  static getQuestionUid(question = {}) {
+  static getQuestionUid(question: any = {}): string | null {
     return this.getQuestionIdentity(question).questionUid;
   }
 
-  static getAnswerUid(question = {}) {
+  static getAnswerUid(question: any = {}): string | null {
     if (!question || question.id_str == null || question.volume == null) {
       return null;
     }
     return `v${Number(question.volume)}:${String(question.id_str)}`;
   }
 
-  static getExamUid(question = {}) {
+  static getExamUid(question: any = {}): string | null {
     return question?.canonicalExamUid || getExamUidFromQuestion(question);
   }
 
-  static getStorageKeyForQuestion(question = {}) {
+  static getStorageKeyForQuestion(question: any = {}): string | null {
     const identity = this.getQuestionIdentity(question);
     return identity.storageUid;
   }
 
-  static async init() {
+  static async init(): Promise<void> {
     if (this.loaded) {
       return;
     }
@@ -117,11 +128,15 @@ export class AnswerService {
         this.answersByUid = masterPayload.records_by_uid || {};
 
         for (const [uid, record] of Object.entries(this.answersByUid)) {
-          if (!record || !record.question_uid) {
+          if (!record) {
             continue;
           }
-          if (!this.answersByQuestionUid[record.question_uid]) {
-            this.answersByQuestionUid[record.question_uid] = {
+          const questionUid = record.question_uid;
+          if (!questionUid) {
+            continue;
+          }
+          if (!this.answersByQuestionUid[questionUid]) {
+            this.answersByQuestionUid[questionUid] = {
               answer_uid: uid,
               type: record.type,
               answer: record.answer,
@@ -152,7 +167,7 @@ export class AnswerService {
           : [];
         this.unsupportedQuestionUids = new Set(
           uidList
-            .map((value) => String(value || "").trim())
+            .map((value: unknown) => String(value || "").trim())
             .filter(Boolean)
         );
       } else {
@@ -161,7 +176,7 @@ export class AnswerService {
 
       this.loadError = "";
       this.loaded = true;
-    } catch (error) {
+    } catch (error: any) {
       this.loadError = error.message || "Failed to load answers";
       this.answersByQuestionUid = {};
       this.answersByUid = {};
@@ -171,7 +186,7 @@ export class AnswerService {
     }
   }
 
-  static getAnswerForQuestion(question = {}) {
+  static getAnswerForQuestion(question: any = {}): AnswerRecord | null {
     const identity = this.getQuestionIdentity(question);
     const embeddedAnswer = question?.answerMeta;
     if (
@@ -209,7 +224,7 @@ export class AnswerService {
     const unsupportedCandidates = [
       identity.questionUid,
       identity.rawQuestionUid,
-    ].filter(Boolean);
+    ].filter((val): val is string => Boolean(val));
     for (const candidate of unsupportedCandidates) {
       if (this.unsupportedQuestionUids.has(candidate)) {
         return {
@@ -227,7 +242,7 @@ export class AnswerService {
     return null;
   }
 
-  static hasAnswer(question = {}) {
+  static hasAnswer(question: any = {}): boolean {
     return !!this.getAnswerForQuestion(question);
   }
 }

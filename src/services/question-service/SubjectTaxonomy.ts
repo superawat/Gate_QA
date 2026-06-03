@@ -1,10 +1,17 @@
 import precomputedLookup from "../../generated/subtopicLookup.json";
+import { IQuestionService } from "./types";
+import { SubtopicOption, StructuredTags, SubjectOption, YearSetOption } from "../../types";
 
-const PRECOMPUTED_SUBTOPICS = precomputedLookup.subtopicsBySubject;
-const PRECOMPUTED_NORMALIZED = precomputedLookup.normalizedSubtopicsBySubject;
-const PRECOMPUTED_ALIASES = precomputedLookup.subjectAliases;
+const PRECOMPUTED_SUBTOPICS = (precomputedLookup as any).subtopicsBySubject;
+const PRECOMPUTED_NORMALIZED = (precomputedLookup as any).normalizedSubtopicsBySubject;
+const PRECOMPUTED_ALIASES = (precomputedLookup as any).subjectAliases;
 
-export const SUBJECT_ENUM = [
+export interface SubjectEnumItem {
+  slug: string;
+  label: string;
+}
+
+export const SUBJECT_ENUM: SubjectEnumItem[] = [
   { slug: "algorithms", label: "Algorithms" },
   { slug: "coa", label: "CO & Architecture" },
   { slug: "compiler", label: "Compiler Design" },
@@ -21,8 +28,7 @@ export const SUBJECT_ENUM = [
   { slug: "legacy-other", label: "Other / Optional" },
 ];
 
-// Priority order for conflict resolution when multiple subjects are inferred.
-export const SUBJECT_PRIORITY = [
+export const SUBJECT_PRIORITY: string[] = [
   "Digital Logic",
   "Computer Networks",
   "Operating System",
@@ -39,8 +45,7 @@ export const SUBJECT_PRIORITY = [
   "Other / Optional",
 ];
 
-// Tag aliases that should map to a canonical subject label.
-export const SUBJECT_ALIAS_OVERRIDES = {
+export const SUBJECT_ALIAS_OVERRIDES: Record<string, string[]> = {
   Algorithms: ["algorithms"],
   "CO & Architecture": [
     "co-and-architecture",
@@ -123,7 +128,7 @@ export const SUBJECT_ALIAS_OVERRIDES = {
 
 export const MAX_SUBTOPICS_PER_QUESTION = 1;
 
-export const TOPIC_HIERARCHY = {
+export const TOPIC_HIERARCHY: Record<string, string[]> = {
   "Discrete Mathematics": [
     "Combinatory",
     "Balls In Bins",
@@ -599,23 +604,23 @@ export const TOPIC_HIERARCHY = {
   ],
 };
 
-export function normalizeString(str) {
+export function normalizeString(str: string): string {
   return String(str || "")
     .toLowerCase()
     .replace(/[^a-z0-9]/g, "");
 }
 
-export function getNormalizedSubjectAliases(subject) {
+export function getNormalizedSubjectAliases(this: IQuestionService, subject: string): string[] {
   if (PRECOMPUTED_ALIASES[subject]) {
     return PRECOMPUTED_ALIASES[subject];
   }
 
   if (this.SUBJECT_ALIAS_CACHE.has(subject)) {
-    return this.SUBJECT_ALIAS_CACHE.get(subject);
+    return this.SUBJECT_ALIAS_CACHE.get(subject) || [];
   }
 
-  const aliases = new Set();
-  const addAlias = (value) => {
+  const aliases = new Set<string>();
+  const addAlias = (value: string) => {
     const raw = String(value || "").trim();
     if (!raw) {
       return;
@@ -642,12 +647,12 @@ export function getNormalizedSubjectAliases(subject) {
   return normalizedAliases;
 }
 
-export function getSubjectPriorityIndex(subject) {
+export function getSubjectPriorityIndex(this: IQuestionService, subject: string): number {
   const idx = this.SUBJECT_PRIORITY.indexOf(subject);
   return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
 }
 
-export function ensureSubjectMaps() {
+export function ensureSubjectMaps(this: IQuestionService): void {
   if (this.SUBJECT_LABEL_TO_SLUG.size === this.SUBJECT_ENUM.length) {
     return;
   }
@@ -659,7 +664,7 @@ export function ensureSubjectMaps() {
   );
 }
 
-export function slugifyToken(value = "") {
+export function slugifyToken(value: string = ""): string {
   return String(value || "")
     .trim()
     .toLowerCase()
@@ -668,17 +673,17 @@ export function slugifyToken(value = "") {
     .replace(/^-+|-+$/g, "");
 }
 
-export function getSubjectSlugByLabel(label = "") {
+export function getSubjectSlugByLabel(this: IQuestionService, label: string = ""): string {
   this.ensureSubjectMaps();
   return this.SUBJECT_LABEL_TO_SLUG.get(String(label || "").trim()) || "unknown";
 }
 
-export function getSubjectLabelBySlug(slug = "") {
+export function getSubjectLabelBySlug(this: IQuestionService, slug: string = ""): string {
   this.ensureSubjectMaps();
   return this.SUBJECT_SLUG_TO_LABEL.get(this.slugifyToken(slug)) || "Unknown";
 }
 
-export function normalizeSubjectSlug(value = "") {
+export function normalizeSubjectSlug(this: IQuestionService, value: string = ""): string | null {
   this.ensureSubjectMaps();
   const raw = String(value || "").trim();
   if (!raw) {
@@ -690,7 +695,7 @@ export function normalizeSubjectSlug(value = "") {
     return normalized;
   }
   if (this.SUBJECT_LABEL_TO_SLUG.has(raw)) {
-    return this.SUBJECT_LABEL_TO_SLUG.get(raw);
+    return this.SUBJECT_LABEL_TO_SLUG.get(raw) || null;
   }
 
   const normalizedRaw = this.normalizeString(raw);
@@ -709,14 +714,19 @@ export function normalizeSubjectSlug(value = "") {
   return null;
 }
 
-export function getSubtopicLookupForSubject(subjectLabel = "") {
+export function getSubtopicLookupForSubject(this: IQuestionService, subjectLabel: string = ""): Map<string, SubtopicOption> {
   if (this._subtopicLookupCache.has(subjectLabel)) {
-    return this._subtopicLookupCache.get(subjectLabel);
+    return this._subtopicLookupCache.get(subjectLabel) || new Map();
   }
 
-  let lookupMap;
+  let lookupMap: Map<string, SubtopicOption>;
   if (PRECOMPUTED_SUBTOPICS[subjectLabel]) {
-    lookupMap = new Map(Object.entries(PRECOMPUTED_SUBTOPICS[subjectLabel]));
+    lookupMap = new Map(
+      Object.entries(PRECOMPUTED_SUBTOPICS[subjectLabel]).map(([key, val]: [string, any]) => [
+        key,
+        { slug: val.slug, label: val.label },
+      ])
+    );
   } else {
     const subjectSubtopics = this.TOPIC_HIERARCHY[subjectLabel] || [];
     lookupMap = new Map(
@@ -734,13 +744,13 @@ export function getSubtopicLookupForSubject(subjectLabel = "") {
   return lookupMap;
 }
 
-export function extractCanonicalSubtopics(tags = [], subjectLabel = "") {
+export function extractCanonicalSubtopics(this: IQuestionService, tags: string[] = [], subjectLabel: string = ""): SubtopicOption[] {
   if (!Array.isArray(tags) || !subjectLabel || !this.TOPIC_HIERARCHY[subjectLabel]) {
     return [];
   }
 
   const lookup = this.getSubtopicLookupForSubject(subjectLabel);
-  const unique = new Map();
+  const unique = new Map<string, SubtopicOption>();
 
   for (const tag of tags) {
     if (unique.size >= this.MAX_SUBTOPICS_PER_QUESTION) {
@@ -777,13 +787,13 @@ export function extractCanonicalSubtopics(tags = [], subjectLabel = "") {
   return Array.from(unique.values()).sort((a, b) => a.label.localeCompare(b.label));
 }
 
-export function resolveCanonicalSubject(question) {
+export function resolveCanonicalSubject(this: IQuestionService, question: any): string {
   const tags = Array.isArray(question.tags) ? question.tags : [];
-  const normalizedTags = tags.map((tag) => this.normalizeString(tag));
+  const normalizedTags = tags.map((tag: string) => this.normalizeString(tag));
   const normalizedTagSet = new Set(normalizedTags);
-  const firstTagIndex = new Map();
+  const firstTagIndex = new Map<string, number>();
 
-  normalizedTags.forEach((tag, index) => {
+  normalizedTags.forEach((tag: string, index: number) => {
     if (!tag || firstTagIndex.has(tag)) {
       return;
     }
@@ -811,8 +821,8 @@ export function resolveCanonicalSubject(question) {
     return "Other / Optional";
   }
 
-  const explicitCandidates = new Set();
-  const subjectStats = new Map();
+  const explicitCandidates = new Set<string>();
+  const subjectStats = new Map<string, any>();
 
   Object.keys(this.TOPIC_HIERARCHY).forEach((subject) => {
     const aliases = this.getNormalizedSubjectAliases(subject);
@@ -831,7 +841,7 @@ export function resolveCanonicalSubject(question) {
 
     let subtopicCount = 0;
     let firstSubtopicIndex = Number.MAX_SAFE_INTEGER;
-    normalizedSubs.forEach((normSub) => {
+    normalizedSubs.forEach((normSub: string) => {
       if (!normalizedTagSet.has(normSub)) {
         return;
       }
@@ -899,35 +909,38 @@ export function resolveCanonicalSubject(question) {
   return "Unknown";
 }
 
-export function getStructuredTags() {
-  const yearSetMap = new Map();
-  const subjectCountMap = new Map();
-  const structuredSubtopics = {};
+export function getStructuredTags(this: IQuestionService): StructuredTags {
+  const yearSetMap = new Map<string, YearSetOption>();
+  const subjectCountMap = new Map<string, number>();
+  const structuredSubtopics: Record<string, Map<string, SubtopicOption>> = {};
 
   this.ensureSubjectMaps();
   this.SUBJECT_ENUM.forEach((subject) => {
-    structuredSubtopics[subject.slug] = new Map();
+    structuredSubtopics[subject.slug] = new Map<string, SubtopicOption>();
     subjectCountMap.set(subject.slug, 0);
   });
 
   this.questions.forEach((question) => {
     const exam = question.exam || this.extractExamMeta(question);
     if (exam && exam.yearSetKey) {
-      if (!yearSetMap.has(exam.yearSetKey)) {
+      const existing = yearSetMap.get(exam.yearSetKey);
+      if (!existing) {
         yearSetMap.set(exam.yearSetKey, {
           key: exam.yearSetKey,
-          year: exam.year,
-          set: exam.set,
+          year: exam.year!,
+          set: exam.set || null,
           label: exam.label || this.formatYearSetLabel(exam.yearSetKey),
-          count: 0,
+          count: 1,
         });
+      } else {
+        existing.count = (existing.count || 0) + 1;
       }
-      yearSetMap.get(exam.yearSetKey).count += 1;
     }
 
     const subjectSlug = this.normalizeSubjectSlug(question.subjectSlug) || "unknown";
-    if (subjectCountMap.has(subjectSlug)) {
-      subjectCountMap.set(subjectSlug, subjectCountMap.get(subjectSlug) + 1);
+    const currentCount = subjectCountMap.get(subjectSlug);
+    if (currentCount !== undefined) {
+      subjectCountMap.set(subjectSlug, currentCount + 1);
     }
 
     const canonicalSubtopics = Array.isArray(question.subtopics) ? question.subtopics : [];
@@ -965,7 +978,7 @@ export function getStructuredTags() {
     count: subjectCountMap.get(subject.slug) || 0,
   }));
 
-  const normalizedStructuredSubtopics = {};
+  const normalizedStructuredSubtopics: Record<string, SubtopicOption[]> = {};
   subjects.forEach((subject) => {
     const subtopicEntries = structuredSubtopics[subject.slug]
       ? Array.from(structuredSubtopics[subject.slug].values())
@@ -975,7 +988,7 @@ export function getStructuredTags() {
     );
   });
 
-  const structuredTopics = {};
+  const structuredTopics: Record<string, string[]> = {};
   subjects.forEach((subject) => {
     structuredTopics[subject.label] = (normalizedStructuredSubtopics[subject.slug] || []).map(
       (entry) => entry.label

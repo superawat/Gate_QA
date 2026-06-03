@@ -34,6 +34,7 @@ export type AnswerSource =
 
 export interface AnswerRecord {
   answer_uid?: string;
+  question_uid?: QuestionUid;
   type: QuestionType;
   answer: AnswerValue;
   tolerance?: AnswerTolerance;
@@ -91,6 +92,12 @@ export interface QuestionRow {
   subtopics?: QuestionSubtopic[];
   tags?: string[];
   link?: string;
+  canonicalExamUid?: string;
+  rawExamUid?: string;
+  malformed?: boolean;
+  canonical?: any;
+  detailShardKey?: string;
+  _detailShard?: string;
   [key: string]: unknown;
 }
 
@@ -161,7 +168,7 @@ export interface YearSetOption {
 }
 
 export type StructuredSubtopics = Record<string, SubtopicOption[]>;
-export type StructuredTopics = Record<string, SubtopicOption[]>;
+export type StructuredTopics = Record<string, string[]>;
 
 export type ProgressFilter = "all" | "solved" | "unsolved" | "bookmarked" | (string & {});
 export type DifficultyFilter = "all" | "easy" | "medium" | "hard" | (string & {});

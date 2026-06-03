@@ -1,24 +1,26 @@
 import { isQuotaExceededError } from "../../utils/localStorageState";
+import { IQuestionService } from "./types";
+import { QuestionRow } from "../../types";
 
 const INIT_CACHE_VERSION = "v11";
 const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
 const FULL_BANK_CACHE_KEY = `gateqa_full_bank_cache_${INIT_CACHE_VERSION}`;
 
-export function getCacheKey({ fullBank = false } = {}) {
-  return fullBank ? FULL_BANK_CACHE_KEY : INDEX_CACHE_KEY;
+export function getCacheKey(options: { fullBank?: boolean } = {}): string {
+  return options.fullBank ? FULL_BANK_CACHE_KEY : INDEX_CACHE_KEY;
 }
 
-export function hasLoadedDataset({ fullBank = false } = {}) {
+export function hasLoadedDataset(this: IQuestionService, options: { fullBank?: boolean } = {}): boolean {
   if (!this.loaded) {
     return false;
   }
-  if (fullBank) {
+  if (options.fullBank) {
     return this.loadMode === "full";
   }
   return this.loadMode === "index" || this.loadMode === "full";
 }
 
-export function getDetailShardKey(question = {}) {
+export function getDetailShardKey(question: any = {}): string {
   const explicitShardKey = String(question?.detailShardKey || "").trim();
   if (explicitShardKey) {
     return explicitShardKey;
@@ -34,9 +36,9 @@ export function getDetailShardKey(question = {}) {
   return "unknown";
 }
 
-export function _processIndexChunked(rows, chunkSize = 1000) {
+export function _processIndexChunked(this: IQuestionService, rows: any[], chunkSize: number = 1000): Promise<QuestionRow[]> {
   return new Promise((resolve) => {
-    const results = [];
+    const results: QuestionRow[] = [];
     let offset = 0;
 
     const processNext = () => {
@@ -59,9 +61,9 @@ export function _processIndexChunked(rows, chunkSize = 1000) {
   });
 }
 
-export function _processChunked(rows, chunkSize = 500) {
+export function _processChunked(this: IQuestionService, rows: any[], chunkSize: number = 500): Promise<QuestionRow[]> {
   return new Promise((resolve) => {
-    const results = [];
+    const results: QuestionRow[] = [];
     let offset = 0;
 
     const processNext = () => {
@@ -87,13 +89,13 @@ export function _processChunked(rows, chunkSize = 500) {
   });
 }
 
-export function _readCache({ fullBank = false } = {}) {
+export function _readCache(this: IQuestionService, options: { fullBank?: boolean } = {}): any {
   try {
     localStorage.removeItem("gateqa_init_cache_v1");
     localStorage.removeItem("gateqa_init_cache_v2");
     localStorage.removeItem("gateqa_init_cache_v3");
     localStorage.removeItem("gateqa_init_cache_v7");
-    const raw = localStorage.getItem(this.getCacheKey({ fullBank }));
+    const raw = localStorage.getItem(this.getCacheKey(options));
     if (!raw) {
       return null;
     }
@@ -107,40 +109,40 @@ export function _readCache({ fullBank = false } = {}) {
   }
 }
 
-export function _stripForCache(questions) {
+export function _stripForCache(questions: QuestionRow[]): QuestionRow[] {
   return questions.map((question) => {
     const slim = { ...question };
-    delete slim.tagsRaw;
+    delete (slim as any).tagsRaw;
     if (slim.canonical) {
       slim.canonical = { ...slim.canonical };
-      delete slim.canonical.tagsRaw;
+      delete (slim.canonical as any).tagsRaw;
     }
     return slim;
   });
 }
 
-export function _hydrateFromCache(questions, { fullBank = false } = {}) {
+export function _hydrateFromCache(this: IQuestionService, questions: QuestionRow[], options: { fullBank?: boolean } = {}): QuestionRow[] {
   const hydratedQuestions = questions.map((question) => {
-    question.tagsRaw = Array.isArray(question.tags) ? [...question.tags] : [];
+    (question as any).tagsRaw = Array.isArray(question.tags) ? [...question.tags] : [];
     if (question.canonical && typeof question.canonical === "object") {
-      question.canonical.tagsRaw = [...question.tagsRaw];
+      (question.canonical as any).tagsRaw = [...(question as any).tagsRaw];
     }
     return question;
   });
 
-  if (fullBank) {
+  if (options.fullBank) {
     return this.finalizeQuestions(hydratedQuestions);
   }
   return hydratedQuestions;
 }
 
-export function _writeCache({ fullBank = false } = {}) {
+export function _writeCache(this: IQuestionService, options: { fullBank?: boolean } = {}): void {
   try {
     const payload = {
       sourceUrl: this.sourceUrl,
       questions: this._stripForCache(this.questions),
     };
-    localStorage.setItem(this.getCacheKey({ fullBank }), JSON.stringify(payload));
+    localStorage.setItem(this.getCacheKey(options), JSON.stringify(payload));
   } catch (err) {
     if (isQuotaExceededError(err)) {
       console.warn("[QuestionService] Cache write failed (quota exceeded)");
@@ -150,7 +152,7 @@ export function _writeCache({ fullBank = false } = {}) {
   }
 }
 
-export function clearInitCache() {
+export function clearInitCache(): void {
   try {
     localStorage.removeItem(INDEX_CACHE_KEY);
     localStorage.removeItem(FULL_BANK_CACHE_KEY);
@@ -160,7 +162,7 @@ export function clearInitCache() {
   }
 }
 
-export async function _loadIndexedDataset(baseUrl) {
+export async function _loadIndexedDataset(this: IQuestionService, baseUrl: string): Promise<{ sourceUrl: string; questions: QuestionRow[] }> {
   const dataUrl = `${baseUrl}question-search-index.json`;
   const response = await fetch(dataUrl, { cache: "no-cache" });
   if (!response.ok) {
@@ -183,14 +185,14 @@ export async function _loadIndexedDataset(baseUrl) {
   };
 }
 
-export async function _loadFullBankDataset(baseUrl) {
+export async function _loadFullBankDataset(this: IQuestionService, baseUrl: string): Promise<any> {
   const dataCandidates = [
     `${baseUrl}questions-with-answers.json`,
     `${baseUrl}questions-filtered-with-ids.json`,
     `${baseUrl}questions-filtered.json`,
   ];
 
-  let bestCandidate = null;
+  let bestCandidate: any = null;
   let lastStatus = 0;
   for (const dataUrl of dataCandidates) {
     const response = await fetch(dataUrl, { cache: "no-cache" });
@@ -241,14 +243,15 @@ export async function _loadFullBankDataset(baseUrl) {
   };
 }
 
-export async function init({ fullBank = false } = {}) {
+export async function init(this: IQuestionService, options: { fullBank?: boolean } = {}): Promise<void> {
+  const fullBank = !!options.fullBank;
   if (this.hasLoadedDataset({ fullBank })) {
     return;
   }
 
   const mode = fullBank ? "full" : "index";
   if (this.pendingLoads[mode]) {
-    return this.pendingLoads[mode];
+    return this.pendingLoads[mode] as Promise<void>;
   }
 
   const timingLabel = fullBank ? "QuestionService.init:full" : "QuestionService.init:index";
@@ -265,7 +268,7 @@ export async function init({ fullBank = false } = {}) {
         this.detailCache = new Map(
           this.questions
             .filter((question) => question?.question_uid)
-            .map((question) => [question.question_uid, question])
+            .map((question) => [question.question_uid!, question])
         );
       }
       this.buildIndexes();
@@ -287,7 +290,7 @@ export async function init({ fullBank = false } = {}) {
       this.detailCache = new Map(
         this.questions
           .filter((question) => question?.question_uid)
-          .map((question) => [question.question_uid, question])
+          .map((question) => [question.question_uid!, question])
       );
     }
     this.buildIndexes();
@@ -304,12 +307,12 @@ export async function init({ fullBank = false } = {}) {
     console.timeEnd(timingLabel);
   });
 
-  return this.pendingLoads[mode];
+  return this.pendingLoads[mode] as Promise<void>;
 }
 
-export function buildIndexes() {
+export function buildIndexes(this: IQuestionService): void {
   this.count = new Map();
-  const tagSet = new Set();
+  const tagSet = new Set<string>();
   this.questionsByUid = new Map();
 
   for (const question of this.questions) {
@@ -325,7 +328,7 @@ export function buildIndexes() {
   this.tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
 }
 
-export async function loadDetailShard(shardKey = "unknown") {
+export async function loadDetailShard(this: IQuestionService, shardKey: string = "unknown"): Promise<any> {
   const normalizedShardKey = String(shardKey || "unknown").trim() || "unknown";
   if (this.detailShardCache.has(normalizedShardKey)) {
     return this.detailShardCache.get(normalizedShardKey);
@@ -360,7 +363,7 @@ export async function loadDetailShard(shardKey = "unknown") {
   return shardPromise;
 }
 
-export async function ensureQuestionDetail(questionOrUid = null) {
+export async function ensureQuestionDetail(this: IQuestionService, questionOrUid: any = null): Promise<QuestionRow | null> {
   const questionUid =
     typeof questionOrUid === "string"
       ? String(questionOrUid || "").trim()
@@ -370,7 +373,7 @@ export async function ensureQuestionDetail(questionOrUid = null) {
   }
 
   if (this.detailCache.has(questionUid)) {
-    return this.detailCache.get(questionUid);
+    return this.detailCache.get(questionUid) || null;
   }
 
   const indexedQuestion =
@@ -397,7 +400,7 @@ export async function ensureQuestionDetail(questionOrUid = null) {
   return detailedQuestion;
 }
 
-export function getErrorQuestion(title = "No matching question for this filter.") {
+export function getErrorQuestion(title: string = "No matching question for this filter."): any {
   return {
     title,
     question: "",
@@ -406,7 +409,7 @@ export function getErrorQuestion(title = "No matching question for this filter."
   };
 }
 
-export function getRandomQuestion(tags = []) {
+export function getRandomQuestion(this: IQuestionService, tags: string[] = []): any {
   if (!this.questions.length) {
     return this.getErrorQuestion("Questions are not loaded yet.");
   }
@@ -415,8 +418,8 @@ export function getRandomQuestion(tags = []) {
     return this.questions[Math.floor(Math.random() * this.questions.length)];
   }
 
-  const year = new Set();
-  const tag = new Set();
+  const year = new Set<string>();
+  const tag = new Set<string>();
 
   for (const selectedTag of tags) {
     if (selectedTag.startsWith("gate")) {
@@ -429,7 +432,7 @@ export function getRandomQuestion(tags = []) {
   const filtered = this.questions.filter((question) => {
     let valid = false;
     for (const yearTag of year) {
-      if (question.tags.includes(yearTag)) {
+      if (question.tags && question.tags.includes(yearTag)) {
         valid = true;
         break;
       }
@@ -440,7 +443,7 @@ export function getRandomQuestion(tags = []) {
     }
 
     for (const topicTag of tag) {
-      if (question.tags.includes(topicTag)) {
+      if (question.tags && question.tags.includes(topicTag)) {
         return true;
       }
     }
@@ -459,12 +462,12 @@ export function getRandomQuestion(tags = []) {
   return filtered[Math.floor(Math.random() * filtered.length)];
 }
 
-export function getTags() {
+export function getTags(this: IQuestionService): string[] {
   return this.tags;
 }
 
-export function getMinMaxYears() {
-  const years = [];
+export function getMinMaxYears(this: IQuestionService): { min: number; max: number } {
+  const years: number[] = [];
   for (const tag of this.tags) {
     if (tag.startsWith("gate")) {
       const match = tag.match(/\d{4}/);
@@ -479,6 +482,6 @@ export function getMinMaxYears() {
   return { min: Math.min(...years), max: Math.max(...years) };
 }
 
-export function getCount(tag) {
+export function getCount(this: IQuestionService, tag: string): number {
   return this.count.get(tag) || 0;
 }

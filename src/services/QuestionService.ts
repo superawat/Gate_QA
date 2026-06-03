@@ -1,34 +1,38 @@
-import * as taxonomy from "./question-service/SubjectTaxonomy.js";
-import * as normalizer from "./question-service/QuestionNormalizer.js";
-import * as loader from "./question-service/QuestionLoader.js";
+import * as taxonomy from "./question-service/SubjectTaxonomy";
+import * as normalizer from "./question-service/QuestionNormalizer";
+import * as loader from "./question-service/QuestionLoader";
+import { QuestionRow } from "../types";
 
 export class QuestionService {
-  static questions = [];
-  static loaded = false;
-  static loadMode = "none";
-  static count = new Map();
-  static tags = [];
-  static sourceUrl = "";
-  static questionsByUid = new Map();
-  static detailCache = new Map();
-  static detailShardCache = new Map();
-  static detailShardPromises = new Map();
-  static pendingLoads = {
+  static questions: QuestionRow[] = [];
+  static loaded: boolean = false;
+  static loadMode: "none" | "index" | "full" = "none";
+  static count: Map<string, number> = new Map();
+  static tags: string[] = [];
+  static sourceUrl: string = "";
+  static questionsByUid: Map<string, QuestionRow> = new Map();
+  static detailCache: Map<string, QuestionRow> = new Map();
+  static detailShardCache: Map<string, Record<string, any>> = new Map();
+  static detailShardPromises: Map<string, Promise<any>> = new Map();
+  static pendingLoads: {
+    index: Promise<void> | null;
+    full: Promise<void> | null;
+  } = {
     index: null,
     full: null,
   };
 
   static SUBJECT_ENUM = taxonomy.SUBJECT_ENUM;
-  static SUBJECT_LABEL_TO_SLUG = new Map();
-  static SUBJECT_SLUG_TO_LABEL = new Map();
+  static SUBJECT_LABEL_TO_SLUG: Map<string, string> = new Map();
+  static SUBJECT_SLUG_TO_LABEL: Map<string, string> = new Map();
   static YEAR_SET_TAG_PATTERN = normalizer.YEAR_SET_TAG_PATTERN;
   static TITLE_YEAR_SET_PATTERN = normalizer.TITLE_YEAR_SET_PATTERN;
   static LINK_YEAR_SET_PATTERN = normalizer.LINK_YEAR_SET_PATTERN;
   static SUBJECT_PRIORITY = taxonomy.SUBJECT_PRIORITY;
   static SUBJECT_ALIAS_OVERRIDES = taxonomy.SUBJECT_ALIAS_OVERRIDES;
-  static SUBJECT_ALIAS_CACHE = new Map();
+  static SUBJECT_ALIAS_CACHE: Map<string, string[]> = new Map();
   static OPTION_LABELS = normalizer.OPTION_LABELS;
-  static _subtopicLookupCache = new Map();
+  static _subtopicLookupCache: Map<string, any> = new Map();
   static MAX_SUBTOPICS_PER_QUESTION = taxonomy.MAX_SUBTOPICS_PER_QUESTION;
   static TOPIC_HIERARCHY = taxonomy.TOPIC_HIERARCHY;
 

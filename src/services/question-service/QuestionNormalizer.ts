@@ -3,7 +3,9 @@ import {
   getCanonicalExamUidFromQuestion,
   parseExamUid,
 } from "../../utils/examUid";
-import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions.js";
+import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
+import { IQuestionService } from "./types";
+import { QuestionRow, QuestionOption } from "../../types";
 
 export const YEAR_SET_TAG_PATTERN = /gate(?:cse|it)?-?(\d{4})(?:-set(\d+))?/i;
 export const TITLE_YEAR_SET_PATTERN =
@@ -11,7 +13,7 @@ export const TITLE_YEAR_SET_PATTERN =
 export const LINK_YEAR_SET_PATTERN = /gate-(?:cse|it)-(\d{4})(?:-set-(\d+))?/i;
 export const OPTION_LABELS = ["A", "B", "C", "D", "E"];
 
-export function extractGateOverflowId(link = "") {
+export function extractGateOverflowId(link: string = ""): string | null {
   const raw = String(link || "").trim();
   if (!raw) {
     return null;
@@ -26,7 +28,7 @@ export function extractGateOverflowId(link = "") {
   return relativeMatch ? relativeMatch[1] : null;
 }
 
-export function hashString(value = "") {
+export function hashString(value: string = ""): string {
   let hash = 2166136261;
   for (let i = 0; i < value.length; i += 1) {
     hash ^= value.charCodeAt(i);
@@ -35,7 +37,7 @@ export function hashString(value = "") {
   return (hash >>> 0).toString(16);
 }
 
-export function buildQuestionUid(question = {}) {
+export function buildQuestionUid(this: IQuestionService, question: any = {}): string {
   if (question.question_uid) {
     return String(question.question_uid);
   }
@@ -47,7 +49,7 @@ export function buildQuestionUid(question = {}) {
   return `local:${this.hashString(key)}`;
 }
 
-export function hasNativeJoinIdentity(question = {}) {
+export function hasNativeJoinIdentity(this: IQuestionService, question: any = {}): boolean {
   if (!question || typeof question !== "object") {
     return false;
   }
@@ -66,7 +68,7 @@ export function hasNativeJoinIdentity(question = {}) {
   return false;
 }
 
-export function normalizeTypeToken(rawType = "") {
+export function normalizeTypeToken(rawType: string = ""): string {
   const value = String(rawType || "").trim().toLowerCase();
   if (value === "mcq") {
     return "mcq";
@@ -80,7 +82,7 @@ export function normalizeTypeToken(rawType = "") {
   return "unknown";
 }
 
-export function stripHtmlToText(html = "") {
+export function stripHtmlToText(html: string = ""): string {
   return String(html || "")
     .replace(/<[^>]*>/g, " ")
     .replace(/&nbsp;/gi, " ")
@@ -88,11 +90,11 @@ export function stripHtmlToText(html = "") {
     .trim();
 }
 
-export function normalizeQuestionOptionsFromRaw(rawOptions) {
-  const options = [];
-  const seen = new Set();
-  const pushOption = (rawLabel, rawValue, index) => {
-    const fallbackLabel = this.OPTION_LABELS[index] || null;
+export function normalizeQuestionOptionsFromRaw(this: IQuestionService, rawOptions: any): QuestionOption[] {
+  const options: QuestionOption[] = [];
+  const seen = new Set<string>();
+  const pushOption = (rawLabel: any, rawValue: any, index: number) => {
+    const fallbackLabel = OPTION_LABELS[index] || null;
     const label = String(rawLabel || fallbackLabel || "")
       .trim()
       .toUpperCase();
@@ -124,13 +126,13 @@ export function normalizeQuestionOptionsFromRaw(rawOptions) {
         );
         return;
       }
-      pushOption(this.OPTION_LABELS[index], entry, index);
+      pushOption(OPTION_LABELS[index], entry, index);
     });
     return options;
   }
 
   if (rawOptions && typeof rawOptions === "object") {
-    this.OPTION_LABELS.forEach((label, index) => {
+    OPTION_LABELS.forEach((label: string, index: number) => {
       pushOption(label, rawOptions[label], index);
     });
 
@@ -145,11 +147,11 @@ export function normalizeQuestionOptionsFromRaw(rawOptions) {
   return options;
 }
 
-export function extractOptionsFromQuestionHtml(questionHtml = "") {
-  return extractEmbeddedOptions(questionHtml);
+export function extractOptionsFromQuestionHtml(questionHtml: string = ""): QuestionOption[] {
+  return extractEmbeddedOptions(questionHtml) as QuestionOption[];
 }
 
-export function normalizeQuestionOptions(rawOptions, questionHtml = "") {
+export function normalizeQuestionOptions(this: IQuestionService, rawOptions: any, questionHtml: string = ""): QuestionOption[] {
   const fromRaw = this.normalizeQuestionOptionsFromRaw(rawOptions);
   if (fromRaw.length > 0) {
     return fromRaw;
@@ -157,7 +159,7 @@ export function normalizeQuestionOptions(rawOptions, questionHtml = "") {
   return this.extractOptionsFromQuestionHtml(questionHtml);
 }
 
-export function getNormalizedOptions(question = {}) {
+export function getNormalizedOptions(this: IQuestionService, question: any = {}): QuestionOption[] {
   if (!question || typeof question !== "object") {
     return [];
   }
@@ -174,7 +176,7 @@ export function getNormalizedOptions(question = {}) {
   return normalizedOptions;
 }
 
-export function buildYearSetKey(year, setNo) {
+export function buildYearSetKey(year: any, setNo: any): string | null {
   const yearNum = Number.parseInt(String(year || ""), 10);
   if (!Number.isFinite(yearNum) || yearNum <= 0) {
     return null;
@@ -184,7 +186,7 @@ export function buildYearSetKey(year, setNo) {
   return `${yearNum}-s${normalizedSet}`;
 }
 
-export function parseYearSetKey(rawValue = "") {
+export function parseYearSetKey(rawValue: string = ""): { year: number; set: number | null; key: string } | null {
   const value = String(rawValue || "").trim().toLowerCase();
   const match = value.match(/^(\d{4})-s(\d+)$/);
   if (!match) {
@@ -202,7 +204,7 @@ export function parseYearSetKey(rawValue = "") {
   };
 }
 
-export function formatYearSetLabel(yearSetKey = "") {
+export function formatYearSetLabel(this: IQuestionService, yearSetKey: string = ""): string {
   const parsed = this.parseYearSetKey(yearSetKey);
   if (!parsed) {
     return String(yearSetKey || "");
@@ -213,9 +215,9 @@ export function formatYearSetLabel(yearSetKey = "") {
   return String(parsed.year);
 }
 
-export function extractYearSetFromTag(rawTag = "") {
+export function extractYearSetFromTag(this: IQuestionService, rawTag: string = ""): { year: number; set: number | null } | null {
   const tag = String(rawTag || "").trim().toLowerCase();
-  const match = tag.match(this.YEAR_SET_TAG_PATTERN);
+  const match = tag.match(YEAR_SET_TAG_PATTERN);
   if (!match) {
     return null;
   }
@@ -230,10 +232,10 @@ export function extractYearSetFromTag(rawTag = "") {
   };
 }
 
-export function extractExamMeta(question = {}) {
-  const candidates = [];
+export function extractExamMeta(this: IQuestionService, question: any = {}): any {
+  const candidates: any[] = [];
 
-  const pushCandidate = (yearRaw, setRaw, confidence = 0) => {
+  const pushCandidate = (yearRaw: any, setRaw: any, confidence: number = 0) => {
     const year = Number.parseInt(String(yearRaw || ""), 10);
     const set = Number.parseInt(String(setRaw ?? ""), 10);
     if (!Number.isFinite(year) || year < 1990 || year > 2100) {
@@ -265,7 +267,7 @@ export function extractExamMeta(question = {}) {
   }
 
   if (Array.isArray(question.tags)) {
-    question.tags.forEach((tag) => {
+    question.tags.forEach((tag: string) => {
       const parsed = this.extractYearSetFromTag(tag);
       if (parsed) {
         pushCandidate(parsed.year, parsed.set, parsed.set ? 85 : 80);
@@ -274,13 +276,13 @@ export function extractExamMeta(question = {}) {
   }
 
   const title = String(question.title || "");
-  const titleMatch = title.match(this.TITLE_YEAR_SET_PATTERN);
+  const titleMatch = title.match(TITLE_YEAR_SET_PATTERN);
   if (titleMatch) {
     pushCandidate(titleMatch[1], titleMatch[2], titleMatch[2] ? 70 : 65);
   }
 
   const link = String(question.link || "");
-  const linkMatch = link.match(this.LINK_YEAR_SET_PATTERN);
+  const linkMatch = link.match(LINK_YEAR_SET_PATTERN);
   if (linkMatch) {
     pushCandidate(linkMatch[1], linkMatch[2], linkMatch[2] ? 60 : 55);
   }
@@ -308,7 +310,7 @@ export function extractExamMeta(question = {}) {
   };
 }
 
-export function buildExamMetaFromParsedUid(parsedExamUid = null, multiSetYears = new Set()) {
+export function buildExamMetaFromParsedUid(this: IQuestionService, parsedExamUid: any = null, multiSetYears: Set<number> = new Set()): any {
   if (!parsedExamUid || !Number.isFinite(parsedExamUid.year)) {
     return {
       paper: "CSE",
@@ -334,7 +336,7 @@ export function buildExamMetaFromParsedUid(parsedExamUid = null, multiSetYears =
   };
 }
 
-export function buildExamMetaFromIndexQuestion(question = {}) {
+export function buildExamMetaFromIndexQuestion(this: IQuestionService, question: any = {}): any {
   const year = Number.parseInt(String(question?.year ?? ""), 10);
   const parsedSet = Number.parseInt(String(question?.set ?? ""), 10);
   const set = Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : null;
@@ -353,7 +355,7 @@ export function buildExamMetaFromIndexQuestion(question = {}) {
   };
 }
 
-export function normalizeQuestion(question = {}) {
+export function normalizeQuestion(this: IQuestionService, question: any = {}): QuestionRow {
   const normalized = question && typeof question === "object" ? { ...question } : {};
   normalized.title = normalized.title || "";
   normalized.question = normalized.question || "";
@@ -402,10 +404,10 @@ export function normalizeQuestion(question = {}) {
   normalized.normalizedOptions = normalizedOptions;
   normalized.malformed = isMalformedContent(normalized.question);
 
-  return normalized;
+  return normalized as QuestionRow;
 }
 
-export function hydrateIndexedQuestion(question = {}) {
+export function hydrateIndexedQuestion(this: IQuestionService, question: any = {}): QuestionRow {
   const indexed = question && typeof question === "object" ? { ...question } : {};
 
   indexed.title = indexed.title || "";
@@ -453,7 +455,7 @@ export function hydrateIndexedQuestion(question = {}) {
   indexed.normalizedOptions = [];
   indexed.malformed = false; // index entries have no full content; malformed is checked after detail hydration
 
-  return indexed;
+  return indexed as QuestionRow;
 }
 
 /**
@@ -461,7 +463,7 @@ export function hydrateIndexedQuestion(question = {}) {
  * redirect pages that were scraped by mistake.  Used as a normalization
  * guard so these rows are flagged before reaching the practice bank.
  */
-export function isMalformedContent(html = "") {
+export function isMalformedContent(html: string = ""): boolean {
   const raw = String(html || "").trim();
   if (!raw) return true;
 
@@ -480,7 +482,7 @@ export function isMalformedContent(html = "") {
   return false;
 }
 
-export function isPracticeExcludedQuestion(question = {}) {
+export function isPracticeExcludedQuestion(question: any = {}): boolean {
   if (!question || typeof question !== "object") {
     return false;
   }
@@ -499,13 +501,13 @@ export function isPracticeExcludedQuestion(question = {}) {
 
   const tags = Array.isArray(question.tags) ? question.tags : [];
   const hasDescriptiveTag = tags.some(
-    (tag) => String(tag || "").trim().toLowerCase() === "descriptive"
+    (tag: string) => String(tag || "").trim().toLowerCase() === "descriptive"
   );
   return hasDescriptiveTag && !question.answer_meta;
 }
 
-export function getCanonicalQuestionKey(question = {}) {
-  const parsedExamUid = parseExamUid(question.canonicalExamUid || question.exam_uid || "");
+export function getCanonicalQuestionKey(this: IQuestionService, question: any = {}): string {
+  const parsedExamUid = parseExamUid((question.canonicalExamUid || question.exam_uid || "") as string);
   if (parsedExamUid && parsedExamUid.year >= 2010) {
     return parsedExamUid.examUid;
   }
@@ -528,7 +530,7 @@ export function getCanonicalQuestionKey(question = {}) {
   return this.buildQuestionUid(question);
 }
 
-export function getCanonicalQuestionScore(question = {}) {
+export function getCanonicalQuestionScore(question: any = {}): number {
   const rawExamUid = String(question.rawExamUid || "").trim();
   const canonicalExamUid = String(question.canonicalExamUid || question.exam_uid || "").trim();
 
@@ -553,7 +555,7 @@ export function getCanonicalQuestionScore(question = {}) {
   return score;
 }
 
-export function pickPreferredQuestionForSlot(existingQuestion, candidateQuestion) {
+export function pickPreferredQuestionForSlot(this: IQuestionService, existingQuestion: any, candidateQuestion: any): any {
   if (!existingQuestion) {
     return candidateQuestion;
   }
@@ -586,14 +588,14 @@ export function pickPreferredQuestionForSlot(existingQuestion, candidateQuestion
   return existingQuestion;
 }
 
-export function finalizeQuestions(questions = []) {
+export function finalizeQuestions(this: IQuestionService, questions: QuestionRow[] = []): QuestionRow[] {
   const normalizedQuestions = Array.isArray(questions)
     ? questions.filter((question) => !this.isPracticeExcludedQuestion(question))
     : [];
-  const yearToSetMap = new Map();
+  const yearToSetMap = new Map<number, Set<number | null>>();
 
   normalizedQuestions.forEach((question) => {
-    const parsedExamUid = parseExamUid(question.canonicalExamUid || question.exam_uid || "");
+    const parsedExamUid = parseExamUid((question.canonicalExamUid || question.exam_uid || "") as string);
     if (!parsedExamUid || !Number.isFinite(parsedExamUid.year)) {
       return;
     }
@@ -601,21 +603,21 @@ export function finalizeQuestions(questions = []) {
     if (!yearToSetMap.has(parsedExamUid.year)) {
       yearToSetMap.set(parsedExamUid.year, new Set());
     }
-    yearToSetMap.get(parsedExamUid.year).add(parsedExamUid.set);
+    yearToSetMap.get(parsedExamUid.year)!.add(parsedExamUid.set);
   });
 
-  const multiSetYears = new Set(
+  const multiSetYears = new Set<number>(
     Array.from(yearToSetMap.entries())
       .filter(([, setNumbers]) => setNumbers.size > 1)
       .map(([year]) => year)
   );
 
-  const dedupedQuestions = new Map();
+  const dedupedQuestions = new Map<string, any>();
 
   normalizedQuestions.forEach((question) => {
     const finalizedQuestion = question && typeof question === "object" ? { ...question } : question;
     const parsedExamUid = parseExamUid(
-      finalizedQuestion.canonicalExamUid || finalizedQuestion.exam_uid || ""
+      (finalizedQuestion.canonicalExamUid || finalizedQuestion.exam_uid || "") as string
     );
 
     if (parsedExamUid) {
@@ -642,7 +644,7 @@ export function finalizeQuestions(questions = []) {
   return Array.from(dedupedQuestions.values());
 }
 
-export function buildDetailedQuestion(rawQuestion = {}, indexedQuestion = null) {
+export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any = {}, indexedQuestion: any = null): QuestionRow {
   const normalizedDetail = this.normalizeQuestion(rawQuestion);
   const mergedExam = indexedQuestion?.exam || normalizedDetail.exam;
   const mergedSubjectLabel = indexedQuestion?.subject || normalizedDetail.subject;
@@ -685,5 +687,5 @@ export function buildDetailedQuestion(rawQuestion = {}, indexedQuestion = null) 
       type: mergedType,
       tagsRaw: [...mergedTags],
     },
-  };
+  } as QuestionRow;
 }

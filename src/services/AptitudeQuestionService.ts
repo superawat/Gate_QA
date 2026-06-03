@@ -1,16 +1,24 @@
+import { QuestionRow, StructuredTags, SubjectOption, SubtopicOption, QuestionOption } from "../types";
+
 export const APTITUDE_INIT_CACHE_VERSION = "gateqa-apt-init-cache-v3";
 
 const APTITUDE_CACHE_KEY = `gateqa_aptitude_question_cache_${APTITUDE_INIT_CACHE_VERSION}`;
 const APTITUDE_INDEX_FILE = "aptitude-search-index.json";
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
-const SUBJECT_ENUM = [
+export interface SubjectEnumItem {
+  slug: string;
+  label: string;
+  aliases?: string[];
+}
+
+const SUBJECT_ENUM: SubjectEnumItem[] = [
   { slug: "english", label: "English" },
   { slug: "quant", label: "Quant", aliases: ["mathematics", "math", "maths", "quantitative-aptitude"] },
   { slug: "reasoning", label: "Reasoning" },
 ];
 
-const TAXONOMY = {
+const TAXONOMY: Record<string, string[]> = {
   English: [
     "Spot the Error",
     "Sentence Improvement",
@@ -83,27 +91,27 @@ const TAXONOMY = {
 };
 
 export class AptitudeQuestionService {
-  static questions = [];
-  static loaded = false;
-  static loadError = "";
-  static sourceUrl = "";
-  static questionsByUid = new Map();
-  static detailCache = new Map();
-  static detailShardCache = new Map();
-  static detailShardPromises = new Map();
-  static pendingLoad = null;
-  static structuredTagsCache = null;
-  static subtopicToSubjectSlug = new Map();
+  static questions: QuestionRow[] = [];
+  static loaded: boolean = false;
+  static loadError: string = "";
+  static sourceUrl: string = "";
+  static questionsByUid: Map<string, QuestionRow> = new Map();
+  static detailCache: Map<string, QuestionRow> = new Map();
+  static detailShardCache: Map<string, QuestionRow[]> = new Map();
+  static detailShardPromises: Map<string, Promise<QuestionRow[]>> = new Map();
+  static pendingLoad: Promise<void> | null = null;
+  static structuredTagsCache: StructuredTags | null = null;
+  static subtopicToSubjectSlug: Map<string, string> = new Map();
 
   static SUBJECT_ENUM = SUBJECT_ENUM;
   static TAXONOMY = TAXONOMY;
   static OPTION_LABELS = OPTION_LABELS;
 
-  static getCacheKey() {
+  static getCacheKey(): string {
     return APTITUDE_CACHE_KEY;
   }
 
-  static clearInitCache() {
+  static clearInitCache(): void {
     try {
       localStorage.removeItem(APTITUDE_CACHE_KEY);
     } catch {
@@ -111,7 +119,7 @@ export class AptitudeQuestionService {
     }
   }
 
-  static slugifyToken(value = "") {
+  static slugifyToken(value: string = ""): string {
     return String(value || "")
       .trim()
       .toLowerCase()
@@ -120,7 +128,7 @@ export class AptitudeQuestionService {
       .replace(/^-+|-+$/g, "");
   }
 
-  static normalizeSubjectSlug(value = "") {
+  static normalizeSubjectSlug(value: string = ""): string | null {
     const raw = String(value || "").trim();
     if (!raw) {
       return null;
@@ -134,20 +142,20 @@ export class AptitudeQuestionService {
     return match?.slug || null;
   }
 
-  static getSubjectLabelBySlug(slug = "") {
+  static getSubjectLabelBySlug(slug: string = ""): string {
     const normalized = this.slugifyToken(slug);
     return SUBJECT_ENUM.find((subject) => subject.slug === normalized)?.label || "Unknown";
   }
 
-  static getSubjectSlugByLabel(label = "") {
+  static getSubjectSlugByLabel(label: string = ""): string {
     return this.normalizeSubjectSlug(label) || "unknown";
   }
 
-  static normalizeTypeToken(rawType = "") {
+  static normalizeTypeToken(rawType: string = ""): string {
     return String(rawType || "").trim().toLowerCase() === "mcq" ? "mcq" : "unknown";
   }
 
-  static stripHtmlToText(html = "") {
+  static stripHtmlToText(html: string = ""): string {
     return String(html || "")
       .replace(/<[^>]*>/g, " ")
       .replace(/&nbsp;/gi, " ")
@@ -155,23 +163,23 @@ export class AptitudeQuestionService {
       .trim();
   }
 
-  static parseYearSetKey() {
+  static parseYearSetKey(): null {
     return null;
   }
 
-  static extractYearSetFromTag() {
+  static extractYearSetFromTag(): null {
     return null;
   }
 
-  static buildYearSetKey() {
+  static buildYearSetKey(): null {
     return null;
   }
 
-  static formatYearSetLabel(value = "") {
+  static formatYearSetLabel(value: string = ""): string {
     return String(value || "");
   }
 
-  static getNormalizedOptions(question = {}) {
+  static getNormalizedOptions(question: Partial<QuestionRow> = {}): QuestionOption[] {
     if (Array.isArray(question.normalizedOptions)) {
       return question.normalizedOptions;
     }
@@ -189,7 +197,7 @@ export class AptitudeQuestionService {
     return normalizedOptions;
   }
 
-  static normalizeQuestion(row = {}) {
+  static normalizeQuestion(row: any = {}): QuestionRow {
     const uid = String(row.uid || row.u || row.question_uid || "").trim();
     const subject = String(row.subject || row.s || "Unknown").trim();
     const subjectSlug = this.normalizeSubjectSlug(row.subjectSlug || row.ss || subject) || this.slugifyToken(subject);
@@ -198,7 +206,7 @@ export class AptitudeQuestionService {
     const subtopicSlug = this.slugifyToken(row.subtopicSlug || row.sts || subtopicLabel);
     const baseUrl = this.getBaseUrl();
 
-    const cleanEscapes = (str) => {
+    const cleanEscapes = (str: any) => {
       if (!str) return "";
       return String(str)
         .replace(/\\+r\\+n/gi, "\n")
@@ -209,7 +217,7 @@ export class AptitudeQuestionService {
     };
 
     const options = Array.isArray(row.options)
-      ? row.options.slice(0, OPTION_LABELS.length).map(opt => cleanEscapes(opt).replace(/src=["'](images\/[^"']+)["']/g, `src="${baseUrl}$1"`))
+      ? row.options.slice(0, OPTION_LABELS.length).map((opt: any) => cleanEscapes(opt).replace(/src=["'](images\/[^"']+)["']/g, `src="${baseUrl}$1"`))
       : [];
     const type = this.normalizeTypeToken(row.type || row.t || "MCQ");
     const answer = String(row.answer || row.a || "").trim().toUpperCase();
@@ -225,7 +233,7 @@ export class AptitudeQuestionService {
       uid,
     ].join(" ").toLowerCase();
 
-    const normalizedOptions = options.map((option, index) => {
+    const normalizedOptions = options.map((option: string, index: number) => {
       const html = String(option || "").trim();
       const text = this.stripHtmlToText(html);
       return {
@@ -279,7 +287,7 @@ export class AptitudeQuestionService {
     };
   }
 
-  static buildIndexes() {
+  static buildIndexes(): void {
     this.questionsByUid = new Map(
       this.questions
         .filter((question) => question?.question_uid)
@@ -288,17 +296,18 @@ export class AptitudeQuestionService {
     this.buildStructuredTagsCache();
   }
 
-  static buildStructuredTagsCache() {
-    const subjectCounts = new Map(SUBJECT_ENUM.map((subject) => [subject.slug, 0]));
-    const structuredSubtopics = {};
+  static buildStructuredTagsCache(): StructuredTags {
+    const subjectCounts = new Map<string, number>(SUBJECT_ENUM.map((subject) => [subject.slug, 0]));
+    const structuredSubtopics: Record<string, Map<string, SubtopicOption>> = {};
     SUBJECT_ENUM.forEach((subject) => {
-      structuredSubtopics[subject.slug] = new Map();
+      structuredSubtopics[subject.slug] = new Map<string, SubtopicOption>();
     });
 
     this.questions.forEach((question) => {
       const subjectSlug = this.normalizeSubjectSlug(question.subjectSlug) || "unknown";
-      if (subjectCounts.has(subjectSlug)) {
-        subjectCounts.set(subjectSlug, subjectCounts.get(subjectSlug) + 1);
+      const count = subjectCounts.get(subjectSlug);
+      if (count !== undefined) {
+        subjectCounts.set(subjectSlug, count + 1);
       }
       const subtopic = Array.isArray(question.subtopics) ? question.subtopics[0] : null;
       const subtopicSlug = this.slugifyToken(subtopic?.slug || subtopic?.label || "");
@@ -317,8 +326,8 @@ export class AptitudeQuestionService {
         count: subjectCounts.get(subject.slug) || 0,
       }));
 
-    const normalizedStructuredSubtopics = {};
-    const subtopicToSubjectSlug = new Map();
+    const normalizedStructuredSubtopics: Record<string, SubtopicOption[]> = {};
+    const subtopicToSubjectSlug = new Map<string, string>();
     subjects.forEach((subject) => {
       const knownOrder = TAXONOMY[subject.label] || [];
       const orderIndex = new Map(knownOrder.map((label, index) => [this.slugifyToken(label), index]));
@@ -337,7 +346,7 @@ export class AptitudeQuestionService {
       });
     });
 
-    const structuredTopics = {};
+    const structuredTopics: Record<string, string[]> = {};
     subjects.forEach((subject) => {
       structuredTopics[subject.label] = (normalizedStructuredSubtopics[subject.slug] || [])
         .map((entry) => entry.label);
@@ -360,40 +369,40 @@ export class AptitudeQuestionService {
     return this.structuredTagsCache;
   }
 
-  static getBaseUrl() {
+  static getBaseUrl(): string {
     return import.meta.env.BASE_URL.endsWith("/")
       ? import.meta.env.BASE_URL
       : `${import.meta.env.BASE_URL}/`;
   }
 
-  static getQuestions() {
+  static getQuestions(): QuestionRow[] {
     return this.questions;
   }
 
-  static getQuestionByUid(uid = "") {
+  static getQuestionByUid(uid: string = ""): QuestionRow | null {
     const normalizedUid = String(uid || "").trim();
     return this.questionsByUid.get(normalizedUid) || null;
   }
 
-  static hasRenderableDetail(question = {}) {
+  static hasRenderableDetail(question: Partial<QuestionRow> = {}): boolean {
     return Boolean(String(question?.question || "").trim())
       && this.getNormalizedOptions(question).length === OPTION_LABELS.length;
   }
 
-  static async ensureQuestionDetail(question = {}) {
+  static async ensureQuestionDetail(question: Partial<QuestionRow> = {}): Promise<QuestionRow> {
     if (!question?.question_uid) {
-      return question;
+      return question as QuestionRow;
     }
     const uid = String(question.question_uid || "").trim();
     if (this.detailCache.has(uid)) {
       const cached = this.detailCache.get(uid);
-      if (this.hasRenderableDetail(cached)) {
+      if (cached && this.hasRenderableDetail(cached)) {
         return cached;
       }
     }
 
-    const indexed = this.getQuestionByUid(uid) || question;
-    const shard = indexed._detailShard || question._detailShard;
+    const indexed = this.getQuestionByUid(uid) || (question as QuestionRow);
+    const shard = (indexed as any)._detailShard || (question as any)._detailShard;
     if (!shard) {
       if (this.hasRenderableDetail(indexed)) {
         return indexed;
@@ -403,26 +412,26 @@ export class AptitudeQuestionService {
 
     await this.loadDetailShard(shard);
     const detail = this.detailCache.get(uid);
-    if (this.hasRenderableDetail(detail)) {
+    if (detail && this.hasRenderableDetail(detail)) {
       return detail;
     }
 
     throw new Error(`Aptitude question detail missing for ${uid}.`);
   }
 
-  static async loadDetailShard(shard = "") {
+  static async loadDetailShard(shard: string = ""): Promise<QuestionRow[]> {
     const normalizedShard = String(shard || "").trim().replace(/^\/+/, "");
     if (!normalizedShard) {
       throw new Error("Missing aptitude detail shard.");
     }
     if (this.detailShardCache.has(normalizedShard)) {
-      return this.detailShardCache.get(normalizedShard);
+      return this.detailShardCache.get(normalizedShard) || [];
     }
     if (this.detailShardPromises.has(normalizedShard)) {
-      return this.detailShardPromises.get(normalizedShard);
+      return this.detailShardPromises.get(normalizedShard) as Promise<QuestionRow[]>;
     }
 
-    const promise = (async () => {
+    const promise = (async (): Promise<QuestionRow[]> => {
       const dataUrl = `${this.getBaseUrl()}${normalizedShard}`;
       const response = await fetch(dataUrl, { cache: "no-cache" });
       if (!response.ok) {
@@ -455,27 +464,30 @@ export class AptitudeQuestionService {
     }
   }
 
-  static getRandomQuestion() {
+  static getRandomQuestion(): QuestionRow | null {
     if (!this.questions.length) {
       return null;
     }
     return this.questions[Math.floor(Math.random() * this.questions.length)];
   }
 
-  static getStructuredTags() {
-    return this.structuredTagsCache || this.buildStructuredTagsCache();
+  static getStructuredTags(): StructuredTags {
+    if (this.structuredTagsCache) {
+      return this.structuredTagsCache;
+    }
+    return this.buildStructuredTagsCache();
   }
 
-  static _readCache() {
+  static _readCache(): null {
     return null;
   }
 
-  static _writeCache() {
+  static _writeCache(): void {
     // The aptitude index is small enough to refetch and detail shards are lazy-loaded.
     // Avoid localStorage writes because the full data set now exceeds browser quota.
   }
 
-  static async init() {
+  static async init(): Promise<void> {
     if (this.loaded) {
       return;
     }
@@ -486,8 +498,8 @@ export class AptitudeQuestionService {
     this.pendingLoad = (async () => {
       const cached = this._readCache();
       if (cached) {
-        this.sourceUrl = cached.sourceUrl || "";
-        this.questions = cached.questions;
+        this.sourceUrl = (cached as any).sourceUrl || "";
+        this.questions = (cached as any).questions;
         this.buildIndexes();
         this.loaded = true;
         this.loadError = "";
@@ -522,7 +534,7 @@ export class AptitudeQuestionService {
 
     try {
       await this.pendingLoad;
-    } catch (error) {
+    } catch (error: any) {
       this.loadError = error.message || "Unable to load aptitude questions.";
       this.questions = [];
       this.questionsByUid = new Map();

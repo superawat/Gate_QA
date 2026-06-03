@@ -13,13 +13,29 @@
  *   // → { score: 20, label: "Easy", signals: ["tag:easy", "marks:1"] }
  */
 
-const LABEL_MAP = { E: "Easy", M: "Medium", H: "Hard" };
+const LABEL_MAP: Record<string, string> = { E: "Easy", M: "Medium", H: "Hard" };
 
-let singletonInstance = null;
+let singletonInstance: GlobalDifficultyService | null = null;
+
+export interface GlobalDifficultyInfo {
+  score: number;
+  label: string;
+  signals: string[];
+}
+
+export interface DifficultyJsonEntry {
+  s: number; // score
+  l: string; // label (E/M/H)
+  g: string[]; // signals
+}
 
 export class GlobalDifficultyService {
+  private _baseUrl: string;
+  private _data: Record<string, DifficultyJsonEntry> | null;
+  private _loading: Promise<void> | null;
+
   /** @param {string} baseUrl — Vite base URL (e.g. "/Gate_QA/") */
-  constructor(baseUrl = "/") {
+  constructor(baseUrl: string = "/") {
     this._baseUrl = String(baseUrl || "/").endsWith("/")
       ? String(baseUrl || "/")
       : `${String(baseUrl || "/")}/`;
@@ -31,7 +47,7 @@ export class GlobalDifficultyService {
    * Get or create a singleton instance.
    * @param {string} [baseUrl]
    */
-  static getInstance(baseUrl) {
+  static getInstance(baseUrl?: string): GlobalDifficultyService {
     if (!singletonInstance) {
       singletonInstance = new GlobalDifficultyService(baseUrl);
     }
@@ -39,7 +55,7 @@ export class GlobalDifficultyService {
   }
 
   /** Reset singleton (for testing). */
-  static resetInstance() {
+  static resetInstance(): void {
     singletonInstance = null;
   }
 
@@ -50,11 +66,11 @@ export class GlobalDifficultyService {
    * @param {typeof fetch} fetchImpl
    * @returns {Promise<void>}
    */
-  async load(fetchImpl) {
+  async load(fetchImpl: typeof fetch): Promise<void> {
     if (this._data) return;
     if (this._loading) return this._loading;
 
-    this._loading = (async () => {
+    this._loading = (async (): Promise<void> => {
       try {
         const url = `${this._baseUrl}data/global-difficulty.json`;
         const response = await fetchImpl(url, { cache: "force-cache" });
@@ -65,7 +81,7 @@ export class GlobalDifficultyService {
         }
         const json = await response.json();
         this._data = json?.questions || {};
-      } catch (err) {
+      } catch (err: any) {
         console.warn("[GlobalDifficulty] Load error:", err?.message);
         this._data = {};
       } finally {
@@ -77,12 +93,12 @@ export class GlobalDifficultyService {
   }
 
   /** Whether data has been loaded. */
-  get isLoaded() {
+  get isLoaded(): boolean {
     return this._data !== null;
   }
 
   /** Number of scored questions. */
-  get size() {
+  get size(): number {
     return this._data ? Object.keys(this._data).length : 0;
   }
 
@@ -92,7 +108,7 @@ export class GlobalDifficultyService {
    * @param {string} uid — e.g. "go:523089"
    * @returns {{ score: number, label: string, signals: string[] } | null}
    */
-  get(uid) {
+  get(uid: string): GlobalDifficultyInfo | null {
     if (!this._data || !uid) return null;
     const entry = this._data[uid];
     if (!entry) return null;
@@ -109,7 +125,7 @@ export class GlobalDifficultyService {
    * @param {string} uid
    * @returns {number | null}
    */
-  getScore(uid) {
+  getScore(uid: string): number | null {
     const info = this.get(uid);
     return info ? info.score : null;
   }
