@@ -7,18 +7,27 @@ const EDITABLE_SELECTOR = [
   "[role='textbox']",
 ].join(",");
 
-export function isEditableTarget(target) {
+type ShortcutEventLike = {
+  key?: string;
+  defaultPrevented?: boolean;
+  altKey?: boolean;
+  ctrlKey?: boolean;
+  metaKey?: boolean;
+  target?: EventTarget | null;
+} | null | undefined;
+
+export function isEditableTarget(target: EventTarget | null | undefined): boolean {
   return target instanceof Element && Boolean(target.closest(EDITABLE_SELECTOR));
 }
 
-export function getShortcutKey(event) {
+export function getShortcutKey(event: ShortcutEventLike): string {
   if (!event?.key) {
     return "";
   }
   return event.key.length === 1 ? event.key.toLowerCase() : event.key;
 }
 
-export function shouldIgnorePlainShortcut(event) {
+export function shouldIgnorePlainShortcut(event: ShortcutEventLike): boolean {
   if (!event || event.defaultPrevented) {
     return true;
   }

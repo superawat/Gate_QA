@@ -1,42 +1,15 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useFilterState, useFilterActions } from "../../contexts/FilterContext";
+import type {
+  FilterActionsShape,
+  FilterStateShape,
+  StructuredSubtopics,
+  SubjectOption,
+  SubtopicOption,
+} from "../../types";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 
 const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning"]);
-
-type SubjectOption = {
-  slug: string;
-  label: string;
-  count?: number;
-};
-
-type SubtopicOption = {
-  slug: string;
-  label: string;
-  count?: number;
-};
-
-type StructuredSubtopics = Record<string, SubtopicOption[]>;
-
-type FilterStateShape = {
-  structuredTags?: {
-    subjects?: SubjectOption[];
-    structuredSubtopics?: StructuredSubtopics;
-  };
-  filters?: {
-    selectedSubjects?: string[];
-    selectedSubtopics?: string[];
-  };
-  aptitudeLoading?: boolean;
-  aptitudeError?: string;
-};
-
-type FilterActionsShape = {
-  updateFilters: (nextFilters: {
-    selectedSubjects?: string[];
-    selectedSubtopics?: string[];
-  }) => void;
-};
 
 /**
  * Dedicated Aptitude Practice section for the filter sidebar.

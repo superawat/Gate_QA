@@ -17,16 +17,40 @@ export const FILTER_QUERY_KEYS = [
   "hideSolved",
   "showOnlySolved",
   "showOnlyBookmarked",
-];
+] as const;
 
-export const PRACTICE_QUERY_KEYS = [...FILTER_QUERY_KEYS, PAGE_QUERY_KEY];
+export const PRACTICE_QUERY_KEYS = [...FILTER_QUERY_KEYS, PAGE_QUERY_KEY] as const;
 
-export const buildSolvePath = (questionUid = "") => {
+type LegacyRedirectKind =
+  | "question"
+  | "mock-disabled"
+  | "mock"
+  | "resume"
+  | "random"
+  | "practice";
+
+type LegacyRedirectInput = {
+  pathname?: string;
+  search?: string;
+  mockModeEnabled?: boolean;
+  resumeRoute?: string;
+};
+
+type LegacyRedirectTarget = {
+  pathname: string;
+  search: string;
+  kind: LegacyRedirectKind;
+};
+
+export const buildSolvePath = (questionUid = ""): string => {
   const normalizedUid = String(questionUid || "").trim();
   return `${PRACTICE_ROUTE}/question/${encodeURIComponent(normalizedUid)}`;
 };
 
-export const extractKnownPracticeSearch = (search = "", { includePage = true } = {}) => {
+export const extractKnownPracticeSearch = (
+  search = "",
+  { includePage = true }: { includePage?: boolean } = {}
+): string => {
   const source = new URLSearchParams(search);
   const next = new URLSearchParams();
 
@@ -45,7 +69,7 @@ export const extractKnownPracticeSearch = (search = "", { includePage = true } =
   return query ? `?${query}` : "";
 };
 
-export const parsePageParam = (search = "", fallback = 1) => {
+export const parsePageParam = (search = "", fallback = 1): number => {
   const params = new URLSearchParams(search);
   const rawPage = Number.parseInt(String(params.get(PAGE_QUERY_KEY) || ""), 10);
   if (!Number.isFinite(rawPage) || rawPage < 1) {
@@ -54,7 +78,7 @@ export const parsePageParam = (search = "", fallback = 1) => {
   return rawPage;
 };
 
-export const writePageParam = (search = "", page = 1) => {
+export const writePageParam = (search = "", page = 1): string => {
   const params = new URLSearchParams(search);
   if (page <= 1) {
     params.delete(PAGE_QUERY_KEY);
@@ -70,7 +94,7 @@ export const getLegacyRedirectTarget = ({
   search = "",
   mockModeEnabled = false,
   resumeRoute = "",
-} = {}) => {
+}: LegacyRedirectInput = {}): LegacyRedirectTarget | null => {
   const isHomePath = pathname === HOME_ROUTE;
   const params = new URLSearchParams(search);
   const questionUid = String(params.get("question") || "").trim();

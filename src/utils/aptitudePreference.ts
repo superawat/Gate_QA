@@ -1,10 +1,22 @@
 import { useCallback, useEffect, useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 export const APTITUDE_ENABLED_STORAGE_KEY = "gateqa-aptitude-enabled";
 export const APTITUDE_ENABLED_CHANGE_EVENT = "gateqa:aptitude-enabled-change";
 export const DEFAULT_APTITUDE_ENABLED = false;
 
-export const readAptitudeEnabled = () => {
+type AptitudeEnabledSetter = Dispatch<SetStateAction<boolean>>;
+type AptitudeEnabledState = [boolean, AptitudeEnabledSetter];
+type AptitudeEnabledChangeEvent = CustomEvent<{ enabled: boolean }>;
+
+const isAptitudeEnabledChangeEvent = (event: Event): event is AptitudeEnabledChangeEvent => {
+  return (
+    "detail" in event &&
+    typeof (event as CustomEvent<{ enabled?: unknown }>).detail?.enabled === "boolean"
+  );
+};
+
+export const readAptitudeEnabled = (): boolean => {
   if (typeof window === "undefined") {
     return DEFAULT_APTITUDE_ENABLED;
   }
@@ -26,7 +38,7 @@ export const readAptitudeEnabled = () => {
   }
 };
 
-export const writeAptitudeEnabled = (enabled) => {
+export const writeAptitudeEnabled = (enabled: unknown): boolean => {
   const nextEnabled = Boolean(enabled);
   if (typeof window === "undefined") {
     return nextEnabled;
@@ -44,7 +56,7 @@ export const writeAptitudeEnabled = (enabled) => {
   return nextEnabled;
 };
 
-export const useAptitudeEnabled = () => {
+export const useAptitudeEnabled = (): AptitudeEnabledState => {
   const [enabled, setEnabledState] = useState(readAptitudeEnabled);
 
   useEffect(() => {
@@ -55,8 +67,8 @@ export const useAptitudeEnabled = () => {
     const syncFromStorage = () => {
       setEnabledState(readAptitudeEnabled());
     };
-    const syncFromEvent = (event) => {
-      if (typeof event?.detail?.enabled === "boolean") {
+    const syncFromEvent = (event: Event) => {
+      if (isAptitudeEnabledChangeEvent(event)) {
         setEnabledState(event.detail.enabled);
         return;
       }
@@ -71,7 +83,7 @@ export const useAptitudeEnabled = () => {
     };
   }, []);
 
-  const setEnabled = useCallback((nextValue) => {
+  const setEnabled = useCallback<AptitudeEnabledSetter>((nextValue) => {
     setEnabledState((previousValue) => {
       const resolvedValue = typeof nextValue === "function"
         ? nextValue(previousValue)
