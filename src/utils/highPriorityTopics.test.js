@@ -49,25 +49,93 @@ describe("highPriorityTopics", () => {
           yearSetLabel: "2006",
           tags: ["algorithms", "sorting", "two-marks"],
         },
+        {
+          question_uid: "go:ga",
+          title: "GATE CSE 2026 | GA Question: 1",
+          year: 2026,
+          yearSetKey: "2026-s0",
+          yearSetLabel: "2026",
+          tags: ["gatecse-2026", "general-aptitude", "verbal-aptitude", "vocabulary", "one-mark"],
+        },
+        {
+          question_uid: "APT-ENG-0001",
+          title: "Special Aptitude Practice",
+          year: 2026,
+          yearSetKey: "aptitude",
+          yearSetLabel: "Special Aptitude",
+          tags: ["verbal-aptitude", "vocabulary", "one-mark"],
+        },
       ],
     });
 
     expect(dataset.startYear).toBe(2007);
     expect(dataset.latestYear).toBe(2026);
     expect(dataset.windowYears).toBe(20);
-    expect(dataset.questionCount).toBe(3);
-    expect(dataset.totalMarks).toBe(5);
+    expect(dataset.questionCount).toBe(4);
+    expect(dataset.technicalQuestionCount).toBe(3);
+    expect(dataset.aptitudeQuestionCount).toBe(1);
+    expect(dataset.totalMarks).toBe(6);
     expect(dataset.paperCount).toBe(3);
 
-    const algoSubject = dataset.subjects.find((sub) => sub.label === "Algorithms");
+    const algoSubject = dataset.technicalSubjects.find((sub) => sub.label === "Algorithms");
     expect(algoSubject).toMatchObject({
       label: "Algorithms",
-      questions: 2,
-      totalMarks: 3,
+      latestMarks: 12,
+    });
+    expect(dataset.officialPeriods.at(-1)).toMatchObject({
+      shortLabel: "2026-2",
+      year: 2026,
+      set: 2,
+    });
+    expect(dataset.officialMarksItems.find((item) => item.label === "Algorithms").paperSeries.at(-1)).toMatchObject({
+      shortLabel: "2026-2",
+      marks: 12,
+    });
+    expect(dataset.technicalSubjects.find((sub) => sub.shortLabel === "EM")).toMatchObject({
+      latestMarks: 14,
     });
     expect(dataset.topics.map((topic) => topic.label)).toContain("Dynamic Programming");
     expect(dataset.topics.map((topic) => topic.label)).toContain("Context Switch");
     expect(dataset.topics.find((topic) => topic.label === "Dynamic Programming").practiceUrl)
       .toBe("/practice?subjects=algorithms&subtopics=dynamic-programming&hideSolved=1");
+    expect(dataset.aptitudeTopics.find((topic) => topic.label === "Verbal Aptitude")).toMatchObject({
+      latestMarks: 1,
+    });
+    expect(dataset.topics.map((topic) => topic.label)).not.toContain("Vocabulary");
+
+    const dynamicProgramming = dataset.technicalTopics.find((topic) => topic.label === "Dynamic Programming");
+    expect(dynamicProgramming.yearSeries.find((entry) => entry.year === 2026)).toMatchObject({
+      questions: 1,
+      marks: 2,
+    });
+    expect(dataset.yearTotals.find((entry) => entry.year === 2026)).toMatchObject({
+      questions: 2,
+      marks: 3,
+    });
+  });
+
+  test("preserves trusted indexed subject metadata over noisy tags", () => {
+    const dataset = buildHighPriorityTopicsDataset({
+      latestYear: 2026,
+      questions: [
+        {
+          question_uid: "go:noisy",
+          title: "GATE CSE 2026 | Question: 42",
+          subjectSlug: "dbms",
+          subjectLabel: "Databases",
+          year: 2026,
+          yearSetKey: "2026-s0",
+          yearSetLabel: "2026",
+          tags: ["algorithms", "sql", "one-mark"],
+        },
+      ],
+    });
+
+    expect(dataset.technicalTopics.find((topic) => topic.label === "SQL")).toMatchObject({
+      subjectSlug: "dbms",
+      subjectLabel: "Database Systems",
+      questions: 1,
+    });
+    expect(dataset.technicalTopics.map((topic) => topic.subjectLabel)).not.toContain("Algorithms");
   });
 });

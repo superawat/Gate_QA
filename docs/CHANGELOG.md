@@ -15,6 +15,7 @@
 - Expanded TS types in `src/types/runtime.ts` (adding canonical, detail shards, and normalized properties on `QuestionRow`).
 
 ### Changed
+- Revamped the High Priority Topics page into a simpler preparation guide with the title `High Priority Topics`, official GateOverflow paper-wise marks data for subject trends, selectable `Subject Marks Over Years`, `Marks Distribution Between Subjects`, and `Min/Avg/Max Marks` graphs with subject-specific colors, CSE-only question-index filtering for practice links, separate Technical Topics and Aptitude Topics sections, short subject labels, and recent paper snapshots.
 - Refactored desktop scroll behavior inside `ExplorePage.jsx` and `QuestionPickerList.jsx` so that the question table is an internal scroll area on desktop, keeping pagination visible and matching the filter column height.
 - Updated `SmartPracticeBanner` and `CollapsibleSection` inside `InsightsPage.jsx` to use theme-safe border and background variables.
 - Refined accessibility label inside `AptitudeTopicFilter.tsx`.
