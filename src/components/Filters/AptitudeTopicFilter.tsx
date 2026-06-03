@@ -126,7 +126,7 @@ const AptitudeTopicFilter = () => {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-xs font-bold uppercase tracking-wider text-pink-600 dark:text-pink-400">
-              Aptitude Practice
+              Special Aptitude Practice
             </span>
             <span className="inline-flex items-center gap-1 rounded-md border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-1.5 py-px text-[9px] font-bold uppercase tracking-wider text-[color:var(--color-warning-text)]">
               <svg className="h-2.5 w-2.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -168,7 +168,7 @@ const AptitudeTopicFilter = () => {
             type="button"
             role="switch"
             id="aptitude-toggle"
-            aria-label="Enable Aptitude Practice"
+            aria-label="Enable Special Aptitude Practice"
             aria-checked={aptitudeEnabled}
             onClick={() => setAptitudeEnabled((value) => !value)}
             className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-1 ${aptitudeEnabled

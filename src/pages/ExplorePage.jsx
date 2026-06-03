@@ -368,7 +368,7 @@ const ExplorePage = ({
           </div>
         </div>
 
-        <section className="practice-explore-content min-w-0 space-y-5">
+        <section className="practice-explore-content min-w-0 space-y-5 xl:flex xl:h-[calc(100vh-8rem)] xl:flex-col xl:overflow-hidden">
           {(pullDistance > 0 || isPullRefreshing) ? (
             <div className="sticky top-20 z-20 -mb-2 flex justify-center md:hidden">
               <div className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 shadow-[var(--shadow-soft)]">
@@ -468,6 +468,7 @@ const ExplorePage = ({
           ) : (
             <>
               <QuestionPickerList
+                className="xl:flex-1"
                 questions={pagedQuestions}
                 pageStartIndex={startIndex}
                 isQuestionSolved={isQuestionSolved}

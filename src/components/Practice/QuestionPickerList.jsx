@@ -43,8 +43,9 @@ const QuestionPickerList = ({
   isQuestionSolved = () => false,
   isQuestionBookmarked = () => false,
   onOpenQuestion,
+  className = "",
 }) => (
-  <section className="practice-question-list overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)]">
+  <section className={`practice-question-list overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)] xl:flex xl:min-h-0 xl:flex-col ${className}`}>
 
 
     <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
@@ -55,7 +56,7 @@ const QuestionPickerList = ({
       <span className="text-right">Open</span>
     </div>
 
-    <div className="practice-question-items divide-y divide-[color:var(--color-border)]">
+    <div className="practice-question-items divide-y divide-[color:var(--color-border)] xl:min-h-0 xl:flex-1 xl:overflow-y-auto xl:overscroll-contain">
       {questions.map((question, index) => {
         const sequenceNumber = pageStartIndex + index + 1;
         const typeToken = getDisplayQuestionTypeToken(question);
