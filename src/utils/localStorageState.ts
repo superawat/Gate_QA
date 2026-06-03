@@ -1,3 +1,35 @@
+export interface UserStateData {
+  solved: string[];
+  bookmarked: string[];
+  metadata: Record<string, any>;
+  progress: Record<string, any>;
+}
+
+export interface ExportedUserState {
+  schemaVersion: number;
+  exportedAt: string;
+  data: UserStateData;
+}
+
+export interface WriteStorageResult {
+  ok: boolean;
+  reason?: string;
+  error?: any;
+}
+
+export interface ExportUserStateResult {
+  ok: boolean;
+  payload?: ExportedUserState;
+  json?: string;
+}
+
+export interface ImportUserStateResult {
+  ok: boolean;
+  reason?: string;
+  error?: any;
+  applied?: UserStateData;
+}
+
 const USER_STATE_STORAGE_KEYS = Object.freeze({
   solved: "gate_qa_solved_questions",
   bookmarked: "gate_qa_bookmarked_questions",
@@ -14,19 +46,19 @@ const APTITUDE_USER_STATE_STORAGE_KEYS = Object.freeze({
 
 const IMPORT_SCHEMA_VERSION = 1;
 
-function getDefaultStorage() {
+function getDefaultStorage(): Storage | null {
   if (typeof window === "undefined" || !window.localStorage) {
     return null;
   }
   return window.localStorage;
 }
 
-function normalizeStringArray(raw) {
+function normalizeStringArray(raw: unknown): string[] {
   if (!Array.isArray(raw)) {
     return [];
   }
-  const seen = new Set();
-  const normalized = [];
+  const seen = new Set<string>();
+  const normalized: string[] = [];
   for (const value of raw) {
     const token = String(value || "").trim();
     if (!token || seen.has(token)) {
@@ -38,12 +70,13 @@ function normalizeStringArray(raw) {
   return normalized;
 }
 
-export function isQuotaExceededError(error) {
+export function isQuotaExceededError(error: unknown): boolean {
   if (!error || typeof error !== "object") {
     return false;
   }
-  const name = String(error.name || "").toLowerCase();
-  const code = Number(error.code || 0);
+  const errObj = error as { name?: string; code?: number };
+  const name = String(errObj.name || "").toLowerCase();
+  const code = Number(errObj.code || 0);
   return (
     name === "quotaexceedederror" ||
     name === "ns_error_dom_quota_reached" ||
@@ -52,7 +85,11 @@ export function isQuotaExceededError(error) {
   );
 }
 
-export function readStorageJson(key, fallback, storage = getDefaultStorage()) {
+export function readStorageJson<T>(
+  key: string,
+  fallback: T,
+  storage: Storage | null = getDefaultStorage()
+): T {
   if (!storage) {
     return fallback;
   }
@@ -61,13 +98,17 @@ export function readStorageJson(key, fallback, storage = getDefaultStorage()) {
     if (raw == null) {
       return fallback;
     }
-    return JSON.parse(raw);
+    return JSON.parse(raw) as T;
   } catch (error) {
     return fallback;
   }
 }
 
-export function writeStorageJson(key, payload, storage = getDefaultStorage()) {
+export function writeStorageJson(
+  key: string,
+  payload: unknown,
+  storage: Storage | null = getDefaultStorage()
+): WriteStorageResult {
   if (!storage) {
     return {
       ok: false,
@@ -86,8 +127,10 @@ export function writeStorageJson(key, payload, storage = getDefaultStorage()) {
   }
 }
 
-export function exportUserState(storage = getDefaultStorage()) {
-  const payload = {
+export function exportUserState(
+  storage: Storage | null = getDefaultStorage()
+): ExportUserStateResult {
+  const payload: ExportedUserState = {
     schemaVersion: IMPORT_SCHEMA_VERSION,
     exportedAt: new Date().toISOString(),
     data: {
@@ -97,8 +140,8 @@ export function exportUserState(storage = getDefaultStorage()) {
       bookmarked: normalizeStringArray(
         readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, [], storage)
       ),
-      metadata: readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {}, storage),
-      progress: readStorageJson(USER_STATE_STORAGE_KEYS.progress, {}, storage),
+      metadata: readStorageJson<Record<string, any>>(USER_STATE_STORAGE_KEYS.metadata, {}, storage),
+      progress: readStorageJson<Record<string, any>>(USER_STATE_STORAGE_KEYS.progress, {}, storage),
     },
   };
 
@@ -109,7 +152,7 @@ export function exportUserState(storage = getDefaultStorage()) {
   };
 }
 
-function normalizeImportedPayload(input) {
+function normalizeImportedPayload(input: any): UserStateData {
   const root = input && typeof input === "object" ? input : {};
   const data =
     root.data && typeof root.data === "object" ? root.data : root;
@@ -131,12 +174,15 @@ function normalizeImportedPayload(input) {
  * Import state from JSON string or already parsed object.
  * Returns a typed result object and never throws.
  */
-export function importUserState(input, storage = getDefaultStorage()) {
+export function importUserState(
+  input: string | Record<string, any>,
+  storage: Storage | null = getDefaultStorage()
+): ImportUserStateResult {
   if (!storage) {
     return { ok: false, reason: "storage_unavailable" };
   }
 
-  let parsed;
+  let parsed: any;
   try {
     parsed =
       typeof input === "string"
