@@ -14,6 +14,11 @@
   - Created `src/utils/stripEmbeddedOptions.d.ts` declaration file
 - Expanded TS types in `src/types/runtime.ts` (adding canonical, detail shards, and normalized properties on `QuestionRow`).
 
+### Changed
+- Refactored desktop scroll behavior inside `ExplorePage.jsx` and `QuestionPickerList.jsx` so that the question table is an internal scroll area on desktop, keeping pagination visible and matching the filter column height.
+- Updated `SmartPracticeBanner` and `CollapsibleSection` inside `InsightsPage.jsx` to use theme-safe border and background variables.
+- Refined accessibility label inside `AptitudeTopicFilter.tsx`.
+
 ### Fixed
 - Fixed Node 24 runner CI hang: Playwright versions prior to 1.60.0 have a known zip extraction bug under Node 24. Upgraded `@playwright/test` to `^1.60.0` in `package.json` to resolve the compatibility issue.
 
