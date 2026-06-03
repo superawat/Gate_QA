@@ -16,7 +16,7 @@ const LINK_MAIN_QUESTION_PATTERN =
 const INVISIBLE_TEXT_RE = /[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g;
 const CANONICAL_EXAM_UID_FROM_YEAR = 2010;
 
-function normalizeSetNo(rawSet) {
+function normalizeSetNo(rawSet: unknown): string {
   const value = Number.parseInt(String(rawSet ?? "").trim(), 10);
   if (!Number.isFinite(value) || value <= 0) {
     return "1";
@@ -24,11 +24,11 @@ function normalizeSetNo(rawSet) {
   return String(value);
 }
 
-export function cleanInvisibleText(value = "") {
+export function cleanInvisibleText(value: string = ""): string {
   return String(value || "").replace(INVISIBLE_TEXT_RE, "");
 }
 
-function normalizeExamQuestionToken(rawToken = "") {
+function normalizeExamQuestionToken(rawToken: string = ""): string {
   const cleaned = String(rawToken || "")
     .trim()
     .toLowerCase()
@@ -58,7 +58,7 @@ function normalizeExamQuestionToken(rawToken = "") {
     .replace(/^[.-]+|[.-]+$/g, "");
 }
 
-function parseYearTag(yearTag = "") {
+function parseYearTag(yearTag: string = ""): { year: string | null; setNo: string } {
   const match = String(yearTag || "").match(YEAR_TAG_PATTERN);
   if (!match) {
     return { year: null, setNo: "1" };
@@ -66,11 +66,19 @@ function parseYearTag(yearTag = "") {
   return { year: match[1], setNo: normalizeSetNo(match[2]) };
 }
 
-function buildExamUid(year, setNo, section, questionToken) {
+function buildExamUid(year: string | number, setNo: string | number, section: string, questionToken: string): string {
   return `cse:${year}:set${normalizeSetNo(setNo)}:${section}:q${questionToken}`;
 }
 
-export function parseExamUid(rawExamUid = "") {
+export interface ParsedExamUid {
+  year: number;
+  set: number;
+  section: "ga" | "main";
+  questionToken: string;
+  examUid: string;
+}
+
+export function parseExamUid(rawExamUid: string = ""): ParsedExamUid | null {
   const match = String(rawExamUid || "").trim().match(EXAM_UID_PATTERN);
   if (!match) {
     return null;
@@ -90,7 +98,7 @@ export function parseExamUid(rawExamUid = "") {
   };
 }
 
-function extractPaperMetaFromQuestion(question = {}) {
+function extractPaperMetaFromQuestion(question: any = {}): { year: string; setNo: string } | null {
   const parsedExistingExamUid = parseExamUid(String(question.exam_uid || "").trim());
   if (parsedExistingExamUid) {
     return {
@@ -129,7 +137,7 @@ function extractPaperMetaFromQuestion(question = {}) {
   return null;
 }
 
-function extractCanonicalQuestionSlot(question = {}) {
+function extractCanonicalQuestionSlot(question: any = {}): { section: "ga" | "main"; questionToken: string } | null {
   const title = cleanInvisibleText(question.title || "");
   const link = String(question.link || "").trim();
 
@@ -167,12 +175,13 @@ function extractCanonicalQuestionSlot(question = {}) {
   return null;
 }
 
-export function examUidFromLink(link = "", yearTag = "") {
+export function examUidFromLink(link: string = "", yearTag: string = ""): string | null {
   const raw = String(link || "").trim().replace(/\/+$/, "");
   if (!raw) {
     return null;
   }
-  const slug = raw.split("/").at(-1) || "";
+  const parts = raw.split("/");
+  const slug = parts[parts.length - 1] || "";
   const match = slug.match(LINK_EXAM_PATTERN);
   if (!match) {
     return null;
@@ -189,7 +198,7 @@ export function examUidFromLink(link = "", yearTag = "") {
   return buildExamUid(year, setNo, section, questionToken);
 }
 
-export function examUidFromTitle(title = "", yearTag = "") {
+export function examUidFromTitle(title: string = "", yearTag: string = ""): string | null {
   const rawTitle = String(title || "").trim();
   if (!rawTitle) {
     return null;
@@ -221,7 +230,7 @@ export function examUidFromTitle(title = "", yearTag = "") {
   return buildExamUid(year, setNo, section, questionToken);
 }
 
-export function getExamUidFromQuestion(question = {}) {
+export function getExamUidFromQuestion(question: any = {}): string | null {
   if (!question || typeof question !== "object") {
     return null;
   }
@@ -238,9 +247,9 @@ export function getExamUidFromQuestion(question = {}) {
 }
 
 export function getCanonicalExamUidFromQuestion(
-  question = {},
+  question: any = {},
   { fromYear = CANONICAL_EXAM_UID_FROM_YEAR } = {}
-) {
+): string | null {
   if (!question || typeof question !== "object") {
     return null;
   }

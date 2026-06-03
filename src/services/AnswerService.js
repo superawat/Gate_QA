@@ -1,4 +1,4 @@
-import { getExamUidFromQuestion } from "../utils/examUid.js";
+import { getExamUidFromQuestion } from "../utils/examUid";
 
 export class AnswerService {
   static answersByQuestionUid = {};

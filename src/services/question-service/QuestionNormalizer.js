@@ -2,7 +2,7 @@ import {
   getExamUidFromQuestion,
   getCanonicalExamUidFromQuestion,
   parseExamUid,
-} from "../../utils/examUid.js";
+} from "../../utils/examUid";
 import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions.js";
 
 export const YEAR_SET_TAG_PATTERN = /gate(?:cse|it)?-?(\d{4})(?:-set(\d+))?/i;
