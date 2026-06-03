@@ -236,7 +236,7 @@ describe("HighPriorityTopicsPage", () => {
     renderPage();
 
     expect(await screen.findByRole("heading", { name: /^high priority topics$/i })).toBeTruthy();
-    expect(screen.getByRole("heading", { name: /recent trends/i })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: /recent trends/i })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /subject marks over years/i })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /marks distribution between subjects/i })).toBeTruthy();
     expect(screen.getByRole("heading", { name: /min\/avg\/max marks/i })).toBeTruthy();
@@ -247,8 +247,8 @@ describe("HighPriorityTopicsPage", () => {
     expect(screen.getAllByText("Algo").length).toBeGreaterThan(0);
     expect(screen.getByRole("heading", { name: "2026-2" })).toBeTruthy();
 
-    const practiceLinks = screen.getAllByRole("link", { name: /practice/i });
-    expect(practiceLinks.some((link) => (
+    const dynamicProgrammingLinks = screen.getAllByRole("link", { name: /dynamic programming/i });
+    expect(dynamicProgrammingLinks.some((link) => (
       link.getAttribute("href") === "/practice?subjects=algorithms&subtopics=dynamic-programming&hideSolved=1"
     ))).toBe(true);
   });

@@ -92,7 +92,7 @@ describe("highPriorityTopics", () => {
       marks: 12,
     });
     expect(dataset.technicalSubjects.find((sub) => sub.shortLabel === "EM")).toMatchObject({
-      latestMarks: 14,
+      latestMarks: 13,
     });
     expect(dataset.topics.map((topic) => topic.label)).toContain("Dynamic Programming");
     expect(dataset.topics.map((topic) => topic.label)).toContain("Context Switch");

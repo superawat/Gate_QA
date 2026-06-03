@@ -482,13 +482,20 @@ const getOfficialPeriods = () => (
 
 const getOfficialRowByLabel = () => new Map(OFFICIAL_MARKS_ROWS.map((row) => [row.label, row]));
 
+const getOfficialMarksForLabels = ({ rowLabels = [], rowsByLabel, sourceIndex }) => (
+  rowLabels
+    .map((rowLabel) => parseNumber(rowsByLabel.get(rowLabel)?.marks?.[sourceIndex], 0))
+    .reduce((sum, marks) => sum + marks, 0)
+);
+
 const getOfficialPaperSeriesForRows = ({ rowLabels = [], rowsByLabel, periods }) => (
   periods.map((period) => ({
     ...period,
-    marks: Number(rowLabels.reduce((sum, rowLabel) => {
-      const row = rowsByLabel.get(rowLabel);
-      return sum + parseNumber(row?.marks?.[period.sourceIndex], 0);
-    }, 0).toFixed(2)),
+    marks: Number(getOfficialMarksForLabels({
+      rowLabels,
+      rowsByLabel,
+      sourceIndex: period.sourceIndex,
+    }).toFixed(2)),
   }))
 );
 
@@ -496,14 +503,16 @@ const getOfficialPaperSeriesForGroup = ({ group, rowsByLabel, periods }) => {
   const primaryRows = group.primaryRows || group.rows || [];
   const fallbackRows = group.fallbackRows || [];
   return periods.map((period) => {
-    const primaryMarks = primaryRows.reduce((sum, rowLabel) => {
-      const row = rowsByLabel.get(rowLabel);
-      return sum + parseNumber(row?.marks?.[period.sourceIndex], 0);
-    }, 0);
-    const fallbackMarks = fallbackRows.reduce((sum, rowLabel) => {
-      const row = rowsByLabel.get(rowLabel);
-      return sum + parseNumber(row?.marks?.[period.sourceIndex], 0);
-    }, 0);
+    const primaryMarks = getOfficialMarksForLabels({
+      rowLabels: primaryRows,
+      rowsByLabel,
+      sourceIndex: period.sourceIndex,
+    });
+    const fallbackMarks = getOfficialMarksForLabels({
+      rowLabels: fallbackRows,
+      rowsByLabel,
+      sourceIndex: period.sourceIndex,
+    });
     return {
       ...period,
       marks: Number((primaryMarks > 0 || fallbackRows.length === 0 ? primaryMarks : fallbackMarks).toFixed(2)),
