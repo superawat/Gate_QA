@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-06-03
+
+### Added
+- Converted service boundaries to TypeScript (FEAT-020 Phase 3):
+  - Converted `QuestionBankManifestService.js` to `QuestionBankManifestService.ts`
+  - Converted `AnswerService.js` to `AnswerService.ts`
+  - Converted `GlobalDifficultyService.js` to `GlobalDifficultyService.ts`
+  - Converted `AptitudeQuestionService.js` to `AptitudeQuestionService.ts`
+  - Converted submodules of `src/services/question-service/`: `QuestionLoader.js`, `QuestionNormalizer.js`, `SubjectTaxonomy.js` to `.ts`
+  - Converted aggregator `QuestionService.js` to `QuestionService.ts`
+  - Created interface definitions `IQuestionService` in `src/services/question-service/types.ts`
+  - Created `src/utils/stripEmbeddedOptions.d.ts` declaration file
+- Expanded TS types in `src/types/runtime.ts` (adding canonical, detail shards, and normalized properties on `QuestionRow`).
+
+### Fixed
+- Fixed Node 24 runner CI hang: Playwright versions prior to 1.60.0 have a known zip extraction bug under Node 24. Upgraded `@playwright/test` to `^1.60.0` in `package.json` to resolve the compatibility issue.
+
+### Verified
+- `npm run typecheck` passed.
+
 ## 2026-06-02
 
 ### Added

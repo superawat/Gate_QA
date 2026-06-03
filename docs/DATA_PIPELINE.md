@@ -125,7 +125,7 @@ bank now agree on the same public-bank count, and `npm run qa:validate-public-pa
 is part of CI.
 
 When `public/questions-with-answers.json` changes materially, bump
-`INIT_CACHE_VERSION` in `src/services/question-service/QuestionLoader.js` so browsers do not keep serving a
+`INIT_CACHE_VERSION` in `src/services/question-service/QuestionLoader.ts` so browsers do not keep serving a
 stale localStorage snapshot of the old question bank.
 The current init cache version after the May 2026 mock-readiness backfills is `v11`.
 
@@ -346,7 +346,7 @@ From `public/`:
 
 ## Tech Debt (TECH-DEBT-001)
 
-`MAX_SUBTOPICS_PER_QUESTION = 1` cap is applied in both `src/services/QuestionService.js`
+`MAX_SUBTOPICS_PER_QUESTION = 1` cap is applied in both `src/services/QuestionService.ts`
 (line-level constant) and `scripts/pipeline/normalise.mjs` (subject resolution uses single
 best-match). Do not remove from either location until the GateOverflow scraper is confirmed
 to emit per-question tags instead of section-wide tags. Section-wide tags cause subtopic

@@ -41,7 +41,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Where:
   `src/utils/stripEmbeddedOptions.js`
   `src/utils/questionType.js`
-  `src/services/question-service/QuestionNormalizer.js`
+  `src/services/question-service/QuestionNormalizer.ts`
   `scripts/build-public-artifacts.mjs`
   `src/components/MockTest/MockTestQuestion.jsx`
 - Resolution:
@@ -151,7 +151,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Severity: High
 - Source: Observed / User Screenshot
 - Where:
-  `src/services/AptitudeQuestionService.js`
+  `src/services/AptitudeQuestionService.ts`
   `scripts/qa/validate-aptitude-data.js`
 - Resolution:
   Tightened aptitude detail hydration so missing shard rows now fail loudly instead of rendering an empty shell, and added public index/detail consistency checks to the aptitude validation gate.
@@ -257,7 +257,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Source: Observed from code path and network plan
 - Where:
   `scripts/build-public-artifacts.mjs`
-  `src/services/QuestionService.js`
+  `src/services/QuestionService.ts`
   `src/App.jsx`
   practice route loading surfaces
 - Resolution:

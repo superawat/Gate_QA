@@ -1,4 +1,4 @@
-﻿# Contributing
+# Contributing
 
 This document defines contribution rules for GateQA.
 
@@ -102,7 +102,7 @@ Do not merge changes that break:
 
 ### Version bump requirements
 
-- bump `INIT_CACHE_VERSION` in `src/services/question-service/QuestionLoader.js` when:
+- bump `INIT_CACHE_VERSION` in `src/services/question-service/QuestionLoader.ts` when:
   - question source shape changes, or
   - question-bank imports/repairs change available year/set inventory, or
   - subtopic extraction/normalization logic changes, or
@@ -112,8 +112,8 @@ Do not merge changes that break:
 ## High-risk files
 
 - `src/contexts/FilterContext.jsx`
-- `src/services/QuestionService.js`
-- `src/services/AnswerService.js`
+- `src/services/QuestionService.ts`
+- `src/services/AnswerService.ts`
 - `src/components/ProgressManager/ProgressManager.jsx`
 - `scripts/build-public-artifacts.mjs`
 - `scripts/precompute-subtopics.mjs`

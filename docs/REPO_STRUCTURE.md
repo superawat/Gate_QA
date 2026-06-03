@@ -38,6 +38,9 @@ Gate_QA/
 |   |   `-- featureFlags.js
 |   |-- generated/
 |   |   `-- subtopicLookup.json  (generated, ignored)
+|   |-- types/
+|   |   |-- index.ts
+|   |   `-- runtime.ts
 |   |-- contexts/
 |   |   |-- FilterContext.jsx
 |   |   |-- MockTestContext.jsx
@@ -45,15 +48,17 @@ Gate_QA/
 |   |   |-- FilterContext.test.jsx
 |   |   `-- MockTestContext.test.jsx
 |   |-- services/
-|   |   |-- QuestionService.js
+|   |   |-- QuestionService.ts
 |   |   |-- QuestionService.test.js
-|   |   |-- AnswerService.js
-|   |   |-- QuestionBankManifestService.js
+|   |   |-- AnswerService.ts
+|   |   |-- QuestionBankManifestService.ts
+|   |   |-- GlobalDifficultyService.ts
 |   |   |-- question-service/
-|   |   |-- QuestionLoader.js
-|   |   |   |-- QuestionNormalizer.js
-|   |   |   `-- SubjectTaxonomy.js
-|   |   |-- AptitudeQuestionService.js
+|   |   |   |-- QuestionLoader.ts
+|   |   |   |-- QuestionNormalizer.ts
+|   |   |   |-- SubjectTaxonomy.ts
+|   |   |   `-- types.ts
+|   |   |-- AptitudeQuestionService.ts
 |   |   |-- AptitudeQuestionService.test.js
 |   |   `-- AnswerService.test.js
 |   |-- pages/
@@ -71,7 +76,10 @@ Gate_QA/
 |   |   |-- evaluateAnswer.js
 |   |   |-- examUid.js
 |   |   |-- analytics.js
-|   |   |-- aptitudePreference.js
+|   |   |-- aptitudePreference.ts
+|   |   |-- keyboardShortcuts.ts
+|   |   |-- routes.ts
+|   |   |-- stripEmbeddedOptions.d.ts
 |   |   |-- localStorageState.js
 |   |   `-- localStorageState.test.js
 |   `-- components/
@@ -224,8 +232,8 @@ Gate_QA/
 ## Important ownership map
 
 - Filter state/actions split: `src/contexts/FilterContext.jsx`
-- Question normalization and init cache: `src/services/QuestionService.js`
-- Answer lookup order and identity: `src/services/AnswerService.js`
+- Question normalization and init cache: `src/services/QuestionService.ts`
+- Answer lookup order and identity: `src/services/AnswerService.ts`
 - Progress import/export UI: `src/components/ProgressManager/`
 - Build-time precompute generator: `scripts/precompute-subtopics.mjs`
 - Data integrity gate: `scripts/qa/validate-data.js`

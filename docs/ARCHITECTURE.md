@@ -123,11 +123,11 @@ These artifacts are generated before dev/build via the npm scripts in `package.j
 
 ## `QuestionService`
 
-`QuestionService.js` is now a thin static facade over three focused modules:
+`QuestionService.ts` is now a thin static facade over three focused modules:
 
-- `src/services/question-service/SubjectTaxonomy.js`
-- `src/services/question-service/QuestionNormalizer.js`
-- `src/services/question-service/QuestionLoader.js`
+- `src/services/question-service/SubjectTaxonomy.ts`
+- `src/services/question-service/QuestionNormalizer.ts`
+- `src/services/question-service/QuestionLoader.ts`
 
 Responsibilities:
 
@@ -158,7 +158,7 @@ Answer resolution order:
 
 ## `AptitudeQuestionService`
 
-`AptitudeQuestionService.js` manages the standalone Aptitude bank (currently 16,873 questions across English, Quant, and Reasoning).
+`AptitudeQuestionService.ts` manages the standalone Aptitude bank (currently 16,873 questions across English, Quant, and Reasoning).
 
 Responsibilities:
 - Handles loading of `public/aptitude-search-index.json`.
