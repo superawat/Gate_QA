@@ -401,6 +401,9 @@ async function main() {
             newQuestions: [],
             timestamp: new Date().toISOString(),
         });
+        // Overwrite the stage output so the workflow check_new step
+        // does not pick up a stale file from a prior import.
+        writeJson(path.join(AUDIT_DIR, `scraped-${targetYear}.json`), []);
         // Signal to workflow: zero new questions
         writeGithubOutput("new_question_count", 0);
         process.exit(0);
@@ -449,6 +452,9 @@ async function main() {
             newQuestions: [],
             timestamp: new Date().toISOString(),
         });
+        // Overwrite the stage output so the workflow check_new step
+        // does not pick up a stale file from a prior import.
+        writeJson(path.join(AUDIT_DIR, `scraped-${targetYear}.json`), []);
         writeGithubOutput("new_question_count", 0);
         process.exit(0);
     }
