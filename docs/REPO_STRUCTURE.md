@@ -42,9 +42,9 @@ Gate_QA/
 |   |   |-- index.ts
 |   |   `-- runtime.ts
 |   |-- contexts/
-|   |   |-- FilterContext.jsx
-|   |   |-- MockTestContext.jsx
-|   |   |-- SessionContext.jsx
+|   |   |-- FilterContext.tsx
+|   |   |-- MockTestContext.tsx
+|   |   |-- SessionContext.tsx
 |   |   |-- FilterContext.test.jsx
 |   |   `-- MockTestContext.test.jsx
 |   |-- services/
@@ -98,12 +98,12 @@ Gate_QA/
 |       |-- Calculator/CalculatorWidget.jsx
 |       |-- Filters/FilterModal.jsx
 |       |-- Filters/FilterSidebar.jsx
-|       |-- Filters/TopicFilter.jsx
-|       |-- Filters/YearFilter.jsx
-|       |-- Filters/YearRangeFilter.jsx
+|       |-- Filters/TopicFilter.tsx
+|       |-- Filters/YearFilter.tsx
+|       |-- Filters/YearRangeFilter.tsx
 |       |-- Filters/ProgressBar.jsx
-|       |-- Filters/ProgressFilterToggles.jsx
-|       |-- Filters/ActiveFilterChips.jsx
+|       |-- Filters/ProgressFilterToggles.tsx
+|       |-- Filters/ActiveFilterChips.tsx
 |       |-- ProgressManager/ProgressManager.jsx
 |       |-- ProgressManager/ImportConfirmationModal.jsx
 |       |-- Footer/Footer.jsx
@@ -231,7 +231,7 @@ Gate_QA/
 
 ## Important ownership map
 
-- Filter state/actions split: `src/contexts/FilterContext.jsx`
+- Filter state/actions split: `src/contexts/FilterContext.tsx`
 - Question normalization and init cache: `src/services/QuestionService.ts`
 - Answer lookup order and identity: `src/services/AnswerService.ts`
 - Progress import/export UI: `src/components/ProgressManager/`

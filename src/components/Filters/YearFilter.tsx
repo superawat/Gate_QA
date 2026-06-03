@@ -1,14 +1,15 @@
 import React from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
+import type { FilterActionsShape, FilterStateShape } from '../../types';
 
 const YearFilter = () => {
-    const { structuredTags, filters } = useFilterState();
-    const { updateFilters } = useFilterActions();
+    const { structuredTags = {}, filters = {} } = useFilterState() as FilterStateShape;
+    const { updateFilters } = useFilterActions() as FilterActionsShape;
     const { yearSets = [] } = structuredTags;
-    const { selectedYearSets } = filters;
+    const { selectedYearSets = [] } = filters;
 
-    const handleYearChange = (yearSetKey) => {
-        let nextYearSets;
+    const handleYearChange = (yearSetKey: string) => {
+        let nextYearSets: string[];
         if (selectedYearSets.includes(yearSetKey)) {
             nextYearSets = selectedYearSets.filter(y => y !== yearSetKey);
         } else {

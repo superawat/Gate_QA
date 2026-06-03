@@ -209,6 +209,18 @@ const sampleDataset = {
       ],
     },
   ],
+  officialDataValidation: {
+    status: "valid",
+    periodCount: 3,
+    rowCount: 2,
+    checkedCells: 6,
+    checkedItems: 4,
+    zeroOnlyRows: [],
+    errorCount: 0,
+    warningCount: 0,
+    errors: [],
+    warnings: [],
+  },
 };
 
 const renderPage = () => render(
@@ -276,5 +288,41 @@ describe("HighPriorityTopicsPage", () => {
     await waitFor(() => {
       expect(screen.getByText("Topic data failed")).toBeTruthy();
     });
+  });
+
+  test("supports interactive charts toggling subjects, periods, and metrics", async () => {
+    mocks.loadHighPriorityTopicsDataset.mockResolvedValueOnce(sampleDataset);
+
+    renderPage();
+
+    expect(await screen.findByRole("heading", { name: /^high priority topics$/i })).toBeTruthy();
+    
+    // Use custom text matcher function for elements containing split text content
+    expect(await screen.findByText((content, element) => (
+      element?.textContent === "1 selected: Algorithms"
+    ))).toBeTruthy();
+
+    const cnButton = screen.getByRole("button", { name: /computer networks/i });
+    fireEvent.click(cnButton);
+
+    expect(await screen.findByText((content, element) => (
+      element?.textContent === "2 selected: Algorithms, Computer Networks"
+    ))).toBeTruthy();
+
+    const algoButton = screen.getByRole("button", { name: /algorithms/i });
+    fireEvent.click(algoButton);
+
+    expect(await screen.findByText((content, element) => (
+      element?.textContent === "1 selected: Computer Networks"
+    ))).toBeTruthy();
+
+    const periodButton = screen.getByRole("button", { name: "2010" });
+    fireEvent.click(periodButton);
+
+    const maxButton = screen.getByRole("button", { name: "Max" });
+    fireEvent.click(maxButton);
+
+    const avgButton = screen.getByRole("button", { name: "Avg" });
+    fireEvent.click(avgButton);
   });
 });

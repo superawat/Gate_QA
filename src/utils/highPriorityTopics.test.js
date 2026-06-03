@@ -91,6 +91,15 @@ describe("highPriorityTopics", () => {
       shortLabel: "2026-2",
       marks: 12,
     });
+    expect(dataset.officialDataValidation).toMatchObject({
+      status: "valid",
+      periodCount: 27,
+      rowCount: 27,
+      errorCount: 0,
+      warningCount: 1,
+    });
+    expect(dataset.officialDataValidation.warnings.map((warning) => warning.code))
+      .toContain("SOURCE_SPLIT_PROGRAMMING_IN_C");
     expect(dataset.technicalSubjects.find((sub) => sub.shortLabel === "EM")).toMatchObject({
       latestMarks: 13,
     });

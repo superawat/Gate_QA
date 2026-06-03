@@ -2,41 +2,47 @@ import React from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 import { FaTimes } from 'react-icons/fa';
 import { QuestionService } from '../../services/QuestionService';
+import type {
+    FilterActionsShape,
+    FilterStateShape,
+    StructuredSubtopics,
+} from '../../types';
 
 const ActiveFilterChips = () => {
-    const { filters, structuredTags } = useFilterState();
-    const { updateFilters, clearFilters } = useFilterActions();
+    const { filters = {}, structuredTags = {} } = useFilterState() as FilterStateShape;
+    const { updateFilters, clearFilters } = useFilterActions() as FilterActionsShape;
     const {
-        selectedYearSets,
-        selectedSubjects,
-        selectedSubtopics,
+        selectedYearSets = [],
+        selectedSubjects = [],
+        selectedSubtopics = [],
         yearRange,
-        hideSolved,
-        showOnlySolved,
-        showOnlyBookmarked,
-        searchQuery
+        hideSolved = false,
+        showOnlySolved = false,
+        showOnlyBookmarked = false,
+        searchQuery = ''
     } = filters;
-    const { minYear, maxYear, subjects = [], structuredSubtopics = {} } = structuredTags;
+    const { minYear = 0, maxYear = 0, subjects = [], structuredSubtopics = {} } = structuredTags;
 
     const subjectLabelBySlug = new Map(subjects.map(subject => [subject.slug, subject.label]));
-    const subtopicLabelBySlug = new Map();
-    Object.keys(structuredSubtopics || {}).forEach((subjectSlug) => {
-        (structuredSubtopics[subjectSlug] || []).forEach((subtopic) => {
+    const subtopicLabelBySlug = new Map<string, string>();
+    const subtopicsBySubject = structuredSubtopics as StructuredSubtopics;
+    Object.keys(subtopicsBySubject || {}).forEach((subjectSlug) => {
+        (subtopicsBySubject[subjectSlug] || []).forEach((subtopic) => {
             if (!subtopicLabelBySlug.has(subtopic.slug)) {
                 subtopicLabelBySlug.set(subtopic.slug, subtopic.label);
             }
         });
     });
 
-    const removeYear = (yearSetKey) => {
+    const removeYear = (yearSetKey: string) => {
         updateFilters({ selectedYearSets: selectedYearSets.filter(y => y !== yearSetKey) });
     };
 
-    const removeSubject = (subjectSlug) => {
+    const removeSubject = (subjectSlug: string) => {
         updateFilters({ selectedSubjects: selectedSubjects.filter(subject => subject !== subjectSlug) });
     };
 
-    const removeSubtopic = (subtopicSlug) => {
+    const removeSubtopic = (subtopicSlug: string) => {
         updateFilters({ selectedSubtopics: selectedSubtopics.filter(s => s !== subtopicSlug) });
     };
 

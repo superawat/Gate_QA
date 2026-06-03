@@ -1,24 +1,41 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
+import type {
+    FilterActionsShape,
+    FilterStateShape,
+    StructuredSubtopics,
+    SubjectOption,
+    SubtopicOption,
+} from '../../types';
 
 const LEGACY_OPTIONAL_SUBJECT_SLUG = 'legacy-other';
 const APTITUDE_SUBJECT_SLUGS = new Set(['english', 'quant', 'mathematics', 'reasoning']);
 
+interface SubjectGroup {
+    key: string;
+    subjects: SubjectOption[];
+    heading: string | null;
+    description: string | null;
+    className: string;
+    headingClassName?: string;
+}
+
 const TopicFilter = () => {
-    const { structuredTags, filters } = useFilterState();
-    const { updateFilters } = useFilterActions();
+    const { structuredTags = {}, filters = {} } = useFilterState() as FilterStateShape;
+    const { updateFilters } = useFilterActions() as FilterActionsShape;
     const { subjects = [], structuredSubtopics = {} } = structuredTags;
     const { selectedSubjects = [], selectedSubtopics = [] } = filters;
-    const [expandedSubjectSlug, setExpandedSubjectSlug] = useState(null);
+    const [expandedSubjectSlug, setExpandedSubjectSlug] = useState<string | null>(null);
 
     const selectedSubjectSet = useMemo(() => new Set(selectedSubjects), [selectedSubjects]);
     const selectedSubtopicSet = useMemo(() => new Set(selectedSubtopics), [selectedSubtopics]);
     const sortedSubtopicsBySubject = useMemo(() => {
-        const nextMap = new Map();
+        const nextMap = new Map<string, SubtopicOption[]>();
+        const subtopicsBySubject = structuredSubtopics as StructuredSubtopics;
 
         subjects.forEach((subject) => {
             const subjectSlug = subject?.slug;
-            const subtopics = structuredSubtopics[subjectSlug] || [];
+            const subtopics = subtopicsBySubject[subjectSlug] || [];
             nextMap.set(
                 subjectSlug,
                 [...subtopics].sort((left, right) =>
@@ -30,7 +47,7 @@ const TopicFilter = () => {
         return nextMap;
     }, [structuredSubtopics, subjects]);
 
-    const subjectGroups = useMemo(() => {
+    const subjectGroups = useMemo<SubjectGroup[]>(() => {
         const coreSubjects = subjects.filter((subject) => subject?.slug !== LEGACY_OPTIONAL_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(subject?.slug));
         const optionalSubjects = subjects.filter((subject) => subject?.slug === LEGACY_OPTIONAL_SUBJECT_SLUG);
 
@@ -51,7 +68,7 @@ const TopicFilter = () => {
                     className: 'rounded-xl border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-3',
                 }
                 : null,
-        ].filter(Boolean);
+        ].filter(Boolean) as SubjectGroup[];
     }, [subjects]);
 
     useEffect(() => {
@@ -82,7 +99,7 @@ const TopicFilter = () => {
         sortedSubtopicsBySubject,
     ]);
 
-    const handleSubjectChange = (subjectSlug) => {
+    const handleSubjectChange = (subjectSlug: string) => {
         const isAlreadySelected = selectedSubjectSet.has(subjectSlug);
         const nextSubjects = isAlreadySelected
             ? selectedSubjects.filter((slug) => slug !== subjectSlug)
@@ -99,18 +116,18 @@ const TopicFilter = () => {
         updateFilters({ selectedSubjects: nextSubjects });
     };
 
-    const handleSubtopicChange = (subtopicSlug) => {
+    const handleSubtopicChange = (subtopicSlug: string) => {
         const nextSubtopics = selectedSubtopics.includes(subtopicSlug)
             ? selectedSubtopics.filter((slug) => slug !== subtopicSlug)
             : [...selectedSubtopics, subtopicSlug];
         updateFilters({ selectedSubtopics: nextSubtopics });
     };
 
-    const handleSubjectBulkToggle = (subjectSlug) => {
+    const handleSubjectBulkToggle = (subjectSlug: string) => {
         const subjectSubtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
         const subjectSubtopicSlugs = subjectSubtopics
             .map((subtopic) => subtopic?.slug)
-            .filter(Boolean);
+            .filter(Boolean) as string[];
 
         if (subjectSubtopicSlugs.length === 0) return;
 

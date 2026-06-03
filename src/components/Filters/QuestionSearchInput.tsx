@@ -2,8 +2,22 @@ import React, { useEffect, useId, useState } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
+import type { FilterActionsShape, FilterStateShape } from "../../types";
 
 const DEFAULT_DEBOUNCE_MS = 300;
+
+interface QuestionSearchInputProps {
+  label?: string;
+  placeholder?: string;
+  className?: string;
+  inputClassName?: string;
+  helperText?: string;
+  compact?: boolean;
+  debounceMs?: number;
+  hideLabel?: boolean;
+  id?: string;
+  ariaKeyShortcuts?: string;
+}
 
 const QuestionSearchInput = ({
   label = "Search questions",
@@ -16,12 +30,12 @@ const QuestionSearchInput = ({
   hideLabel = false,
   id: providedId,
   ariaKeyShortcuts,
-}) => {
+}: QuestionSearchInputProps) => {
   const generatedId = useId();
   const inputId = providedId || `question-search-${generatedId}`;
   const helperId = helperText ? `${inputId}-hint` : undefined;
-  const { filters } = useFilterState();
-  const { updateFilters } = useFilterActions();
+  const { filters = {} } = useFilterState() as FilterStateShape;
+  const { updateFilters } = useFilterActions() as FilterActionsShape;
   const [draftValue, setDraftValue] = useState(filters.searchQuery || "");
 
   useEffect(() => {

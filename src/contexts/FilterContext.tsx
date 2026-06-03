@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useDeferredValue, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { QuestionService } from '../services/QuestionService';

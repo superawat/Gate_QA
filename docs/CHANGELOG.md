@@ -12,7 +12,14 @@
   - Converted aggregator `QuestionService.js` to `QuestionService.ts`
   - Created interface definitions `IQuestionService` in `src/services/question-service/types.ts`
   - Created `src/utils/stripEmbeddedOptions.d.ts` declaration file
+- Converted filter UI leaf components to TypeScript (FEAT-020 Phase 4):
+  - Converted `TopicFilter.jsx`, `YearFilter.jsx`, `YearRangeFilter.jsx`, `QuestionSearchInput.jsx`, `ProgressFilterToggles.jsx`, and `ActiveFilterChips.jsx` to `.tsx`
+  - Added typed props, event handlers, filter context casts, and label lookup maps for the converted filter leaves
+- Converted context boundaries to TypeScript (FEAT-020 Phase 5):
+  - Converted `SessionContext.jsx` to `SessionContext.tsx` with typed session mode, navigation state, topic-memory, and queue contracts
+  - Converted `MockTestContext.jsx` to `MockTestContext.tsx` and `FilterContext.jsx` to `FilterContext.tsx` while preserving current runtime behavior and split filter contexts
 - Expanded TS types in `src/types/runtime.ts` (adding canonical, detail shards, and normalized properties on `QuestionRow`).
+- Expanded filter runtime contracts in `src/types/runtime.ts` with progress-toggle flags, result-count state, and optional filter actions.
 
 ### Changed
 - Revamped the High Priority Topics page into a simpler preparation guide with the title `High Priority Topics`, official GateOverflow paper-wise marks data for subject trends, selectable `Subject Marks Over Years`, `Marks Distribution Between Subjects`, and `Min/Avg/Max Marks` graphs with subject-specific colors, CSE-only question-index filtering for practice links, separate Technical Topics and Aptitude Topics sections, short subject labels, and recent paper snapshots.

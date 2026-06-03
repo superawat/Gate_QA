@@ -520,6 +520,106 @@ const getOfficialPaperSeriesForGroup = ({ group, rowsByLabel, periods }) => {
   });
 };
 
+const validateOfficialMarksData = ({ periods = [], technicalSubjects = [], aptitudeTopics = [], technicalTrendItems = [], allTrendItems = [] } = {}) => {
+  const errors = [];
+  const warnings = [];
+  const expectedPeriodCount = periods.length;
+  const seenLabels = new Set();
+
+  OFFICIAL_MARKS_ROWS.forEach((row) => {
+    if (seenLabels.has(row.label)) {
+      errors.push({ code: "DUPLICATE_ROW_LABEL", label: row.label });
+    }
+    seenLabels.add(row.label);
+
+    if (!Array.isArray(row.marks) || row.marks.length !== expectedPeriodCount) {
+      errors.push({
+        code: "ROW_PERIOD_MISMATCH",
+        label: row.label,
+        expected: expectedPeriodCount,
+        received: Array.isArray(row.marks) ? row.marks.length : 0,
+      });
+    }
+
+    row.marks?.forEach((marks, index) => {
+      if (!Number.isFinite(Number(marks)) || Number(marks) < 0) {
+        errors.push({
+          code: "INVALID_MARK_VALUE",
+          label: row.label,
+          period: OFFICIAL_MARKS_PERIODS[index],
+          value: marks,
+        });
+      }
+    });
+  });
+
+  const requiredMappedRows = new Set([
+    ...OFFICIAL_TECHNICAL_MARK_GROUPS.flatMap((group) => [
+      ...(group.rows || []),
+      ...(group.primaryRows || []),
+      ...(group.fallbackRows || []),
+    ]),
+    ...OFFICIAL_APTITUDE_MARK_GROUPS.flatMap((group) => group.rows || []),
+  ]);
+  requiredMappedRows.forEach((rowLabel) => {
+    if (!seenLabels.has(rowLabel)) {
+      errors.push({ code: "MISSING_MAPPED_ROW", label: rowLabel });
+    }
+  });
+
+  [...technicalSubjects, ...aptitudeTopics, ...technicalTrendItems, ...allTrendItems].forEach((item) => {
+    if (!Array.isArray(item.paperSeries) || item.paperSeries.length !== expectedPeriodCount) {
+      errors.push({
+        code: "ITEM_SERIES_PERIOD_MISMATCH",
+        label: item.label,
+        expected: expectedPeriodCount,
+        received: Array.isArray(item.paperSeries) ? item.paperSeries.length : 0,
+      });
+      return;
+    }
+
+    item.paperSeries.forEach((entry, index) => {
+      if (entry.key !== periods[index]?.key) {
+        errors.push({
+          code: "ITEM_SERIES_ORDER_MISMATCH",
+          label: item.label,
+          expected: periods[index]?.key,
+          received: entry.key,
+        });
+      }
+    });
+  });
+
+  const programmingRow = OFFICIAL_MARKS_ROWS.find((row) => row.label === "Programming");
+  const programmingInCRow = OFFICIAL_MARKS_ROWS.find((row) => row.label === "Programming in C");
+  const programmingInCActivePapers = programmingInCRow?.marks?.filter((marks) => marks > 0).length || 0;
+  if (programmingInCRow && programmingRow && programmingInCActivePapers > 0 && programmingInCActivePapers <= 2) {
+    warnings.push({
+      code: "SOURCE_SPLIT_PROGRAMMING_IN_C",
+      label: "Programming in C",
+      message: "Programming in C is a separate GateOverflow row with non-zero marks only in 2026; earlier programming/C content remains represented in the Programming and Data Structures rows.",
+      activePapers: programmingInCActivePapers,
+    });
+  }
+
+  const zeroOnlyRows = OFFICIAL_MARKS_ROWS
+    .filter((row) => row.marks.every((marks) => Number(marks) === 0))
+    .map((row) => row.label);
+
+  return {
+    status: errors.length ? "error" : "valid",
+    periodCount: expectedPeriodCount,
+    rowCount: OFFICIAL_MARKS_ROWS.length,
+    checkedCells: OFFICIAL_MARKS_ROWS.length * expectedPeriodCount,
+    checkedItems: technicalSubjects.length + aptitudeTopics.length + technicalTrendItems.length + allTrendItems.length,
+    zeroOnlyRows,
+    errorCount: errors.length,
+    warningCount: warnings.length,
+    errors,
+    warnings,
+  };
+};
+
 const finalizeOfficialMarkItem = ({
   key,
   label,
@@ -680,6 +780,13 @@ const buildOfficialMarksSummary = () => {
       }),
     });
   });
+  const validation = validateOfficialMarksData({
+    periods,
+    technicalSubjects,
+    aptitudeTopics,
+    technicalTrendItems,
+    allTrendItems,
+  });
 
   return {
     periods,
@@ -687,6 +794,7 @@ const buildOfficialMarksSummary = () => {
     aptitudeTopics,
     technicalTrendItems,
     allTrendItems,
+    validation,
   };
 };
 
@@ -734,6 +842,7 @@ export const buildHighPriorityTopicsDataset = ({
       officialAptitudeTopics: officialMarks.aptitudeTopics,
       officialTrendItems: officialMarks.technicalTrendItems,
       officialMarksItems: officialMarks.allTrendItems,
+      officialDataValidation: officialMarks.validation,
     };
   }
 
@@ -916,6 +1025,7 @@ export const buildHighPriorityTopicsDataset = ({
     officialAptitudeTopics: officialMarks.aptitudeTopics,
     officialTrendItems: officialMarks.technicalTrendItems,
     officialMarksItems: officialMarks.allTrendItems,
+    officialDataValidation: officialMarks.validation,
   };
 };
 

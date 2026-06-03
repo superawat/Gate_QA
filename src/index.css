@@ -2321,6 +2321,10 @@ canvas {
 
   .home-action-card--primary {
     flex-basis: min(76vw, 20rem);
+    min-height: 178px;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .home-action-card--active {
@@ -2346,6 +2350,32 @@ canvas {
 
   .home-action-copy {
     max-width: calc(100% - 3.25rem);
+  }
+
+  .home-action-card--primary .home-action-copy {
+    max-width: calc(100% - 3.25rem);
+  }
+
+  .home-action-card--primary .home-action-quote-container {
+    display: flex;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 0;
+    padding-top: 0.7rem;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-left: 0;
+  }
+
+  .home-action-card--primary .home-action-quote {
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
+  .home-action-card--primary .home-action-quote-author {
+    margin-top: 0.3rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
   }
 
   .home-action-label,

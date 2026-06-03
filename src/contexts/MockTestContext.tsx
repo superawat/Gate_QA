@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useFilterActions, useFilterState } from "./FilterContext";
 import { AnswerService } from "../services/AnswerService";

@@ -92,13 +92,31 @@ const formatCompactDecimal = (value) => {
   }).format(numeric);
 };
 
+const useIsMobileViewport = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return undefined;
+    }
+
+    const media = window.matchMedia("(max-width: 639px)");
+    const handleChange = () => setIsMobile(media.matches);
+    handleChange();
+    media.addEventListener?.("change", handleChange);
+    return () => media.removeEventListener?.("change", handleChange);
+  }, []);
+
+  return isMobile;
+};
+
 const Section = ({ title, description, children }) => (
-  <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-[var(--shadow-card)] sm:p-6">
+  <section className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-card)] sm:p-6">
     {title || description ? (
-      <div className="mb-5">
-        {title ? <h2 className="text-xl font-semibold text-[color:var(--color-text)]">{title}</h2> : null}
+      <div className="mb-4 sm:mb-5">
+        {title ? <h2 className="text-lg font-semibold text-[color:var(--color-text)] sm:text-xl">{title}</h2> : null}
         {description ? (
-          <p className="mt-1 max-w-3xl text-sm text-[color:var(--color-text-muted)]">{description}</p>
+          <p className="mt-1 max-w-3xl text-xs leading-5 text-[color:var(--color-text-muted)] sm:text-sm">{description}</p>
         ) : null}
       </div>
     ) : null}
@@ -107,13 +125,13 @@ const Section = ({ title, description, children }) => (
 );
 
 const OverviewCard = ({ icon: Icon, label, value, helper }) => (
-  <article className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4">
-    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
+  <article className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3.5 sm:p-4">
+    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[color:var(--color-text-muted)] sm:text-xs sm:tracking-[0.14em]">
       {Icon ? <Icon className="h-3.5 w-3.5" aria-hidden="true" /> : null}
       {label}
     </div>
-    <p className="mt-3 text-2xl font-black leading-tight text-[color:var(--color-text)]">{value}</p>
-    {helper ? <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">{helper}</p> : null}
+    <p className="mt-2 text-xl font-black leading-tight text-[color:var(--color-text)] sm:mt-3 sm:text-2xl">{value}</p>
+    {helper ? <p className="mt-1.5 text-xs leading-5 text-[color:var(--color-text-muted)] sm:mt-2 sm:text-sm">{helper}</p> : null}
   </article>
 );
 
@@ -133,13 +151,19 @@ const getTrendMarksForPeriod = (item = {}, period = {}) => {
 
 const OfficialMarksTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
-  const item = payload[0];
+  const visiblePayload = payload.filter((item) => Number.isFinite(Number(item.value)));
   return (
     <div className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-xl">
-      <p className="font-black">{item.name}</p>
-      <p className="mt-1">
-        {label}: <span className="font-black">{formatNumber(item.value)} marks</span>
-      </p>
+      <p className="font-black">{label}</p>
+      <div className="mt-1 space-y-1">
+        {visiblePayload.map((item) => (
+          <p key={item.dataKey} className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
+            <span className="font-semibold">{item.name}:</span>
+            <span className="font-black">{formatNumber(item.value)} marks</span>
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
@@ -159,14 +183,33 @@ const MarksPointLabel = ({ x, y, value }) => {
   );
 };
 
-const SubjectMarksOverYearsChart = ({ items = [] }) => {
+const SubjectMarksOverYearsChart = ({ items = [], validation }) => {
+  const isMobile = useIsMobileViewport();
   const defaultItem = items.find((item) => item.label === "Algorithms") || items[0];
-  const [selectedKey, setSelectedKey] = useState(defaultItem?.key || "");
-  const selectedItem = items.find((item) => item.key === selectedKey) || defaultItem;
-  const selectedIndex = Math.max(0, items.findIndex((item) => item.key === selectedItem?.key));
-  const selectedColor = getItemColor(selectedItem, selectedIndex);
+  const [selectedKeys, setSelectedKeys] = useState(() => (defaultItem?.key ? [defaultItem.key] : []));
+  const selectedItems = selectedKeys
+    .map((key, selectedIndex) => {
+      const itemIndex = items.findIndex((item) => item.key === key);
+      const item = itemIndex >= 0 ? items[itemIndex] : null;
+      return item ? {
+        item,
+        itemIndex,
+        selectedIndex,
+        seriesKey: `subjectSeries${selectedIndex}`,
+        color: getItemColor(item, itemIndex),
+      } : null;
+    })
+    .filter(Boolean);
 
-  if (!selectedItem?.paperSeries?.length) {
+  useEffect(() => {
+    if (!defaultItem?.key) return;
+    setSelectedKeys((currentKeys) => {
+      const validKeys = currentKeys.filter((key) => items.some((item) => item.key === key));
+      return validKeys.length ? validKeys : [defaultItem.key];
+    });
+  }, [defaultItem?.key, items]);
+
+  if (!selectedItems[0]?.item?.paperSeries?.length) {
     return (
       <div className="rounded-xl border border-dashed border-[color:var(--color-border)] p-6 text-center text-sm text-[color:var(--color-text-muted)]">
         Official paper-wise marks data is not available yet.
@@ -174,25 +217,59 @@ const SubjectMarksOverYearsChart = ({ items = [] }) => {
     );
   }
 
-  const data = selectedItem.paperSeries.map((entry) => ({
-    label: entry.shortLabel || entry.label,
-    marks: entry.marks,
-  }));
+  const data = selectedItems[0].item.paperSeries.map((entry) => {
+    const row = {
+      key: entry.key,
+      label: entry.shortLabel || entry.label,
+    };
+    selectedItems.forEach(({ item, seriesKey }) => {
+      row[seriesKey] = getTrendMarksForPeriod(item, entry);
+    });
+    return row;
+  });
+  const selectedLabels = selectedItems.map(({ item }) => item.label).join(", ");
+  const hasProgrammingInCSelected = selectedItems.some(({ item }) => item.label === "Programming in C");
+
+  const handleToggleSubject = (key) => {
+    setSelectedKeys((currentKeys) => {
+      if (currentKeys.includes(key)) {
+        return currentKeys.length > 1 ? currentKeys.filter((currentKey) => currentKey !== key) : currentKeys;
+      }
+      return [...currentKeys, key];
+    });
+  };
 
   return (
     <div className="rounded-xl border border-slate-300 bg-white p-3 text-slate-900 shadow-sm sm:p-5">
-      <h3 className="text-center text-3xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
+      <h3 className="text-center text-xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
         Subject Marks Over Years
       </h3>
-      <div className="mt-2 h-[440px] w-full sm:h-[500px]">
+      <div className="mt-2 flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between sm:text-sm">
+        <span>
+          <strong className="font-black">{selectedItems.length}</strong> selected:{" "}
+          <span className="font-semibold">{selectedLabels}</span>
+        </span>
+        <span className={validation?.errorCount ? "font-bold text-rose-700" : "font-bold text-emerald-700"}>
+          {validation?.errorCount ? `${validation.errorCount} data issue(s)` : `${formatNumber(validation?.checkedCells || 0)} cells validated`}
+        </span>
+      </div>
+      {hasProgrammingInCSelected ? (
+        <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold leading-5 text-amber-800">
+          Programming in C is a separate GateOverflow row with non-zero marks only in the 2026 papers. Older programming/C content remains represented in Programming and Data Structures.
+        </p>
+      ) : null}
+      <div className="mt-2 h-[330px] w-full sm:h-[500px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 34, right: 26, left: 10, bottom: 92 }}>
+          <LineChart
+            data={data}
+            margin={isMobile ? { top: 16, right: 8, left: -18, bottom: 54 } : { top: 34, right: 26, left: 10, bottom: 92 }}
+          >
             <CartesianGrid stroke="#6f6f6f" vertical={false} strokeWidth={1.1} />
             <XAxis
               dataKey="label"
-              interval={0}
-              height={86}
-              tick={{ fill: "#111827", fontSize: 12, fontWeight: 700 }}
+              interval={isMobile ? 1 : 0}
+              height={isMobile ? 58 : 86}
+              tick={{ fill: "#111827", fontSize: isMobile ? 9 : 12, fontWeight: 700 }}
               tickLine={{ stroke: "#555" }}
               axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
               angle={-90}
@@ -200,16 +277,16 @@ const SubjectMarksOverYearsChart = ({ items = [] }) => {
               label={{
                 value: "Years",
                 position: "insideBottom",
-                offset: -56,
+                offset: isMobile ? -36 : -56,
                 fill: "#2f2f2f",
-                fontSize: 24,
+                fontSize: isMobile ? 13 : 24,
                 fontWeight: 800,
               }}
             />
             <YAxis
               domain={[0, 20]}
               ticks={[0, 5, 10, 15, 20]}
-              tick={{ fill: "#111827", fontSize: 14, fontWeight: 700 }}
+              tick={{ fill: "#111827", fontSize: isMobile ? 10 : 14, fontWeight: 700 }}
               tickLine={{ stroke: "#555" }}
               axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
               label={{
@@ -217,43 +294,51 @@ const SubjectMarksOverYearsChart = ({ items = [] }) => {
                 angle: -90,
                 position: "insideLeft",
                 fill: "#2f2f2f",
-                fontSize: 24,
+                fontSize: isMobile ? 13 : 24,
                 fontWeight: 800,
               }}
             />
             <RechartsTooltip content={<OfficialMarksTooltip />} />
-            <Line
-              type="linear"
-              dataKey="marks"
-              name={selectedItem.label}
-              stroke={selectedColor}
-              strokeWidth={3}
-              dot={{ r: 5, fill: selectedColor, stroke: selectedColor }}
-              activeDot={{ r: 7, fill: selectedColor, stroke: "#111827", strokeWidth: 2 }}
-              isAnimationActive={false}
-            >
-              <LabelList dataKey="marks" content={<MarksPointLabel />} />
-            </Line>
+            {selectedItems.map(({ item, seriesKey, color }) => (
+              <Line
+                key={item.key}
+                type="linear"
+                dataKey={seriesKey}
+                name={item.label}
+                stroke={color}
+                strokeWidth={selectedItems.length === 1 ? 4 : 3.5}
+                dot={{ r: selectedItems.length === 1 ? 5 : 4, fill: color, stroke: color }}
+                activeDot={{ r: 7, fill: color, stroke: "#111827", strokeWidth: 2 }}
+                isAnimationActive={false}
+              >
+                {!isMobile && selectedItems.length === 1 ? <LabelList dataKey={seriesKey} content={<MarksPointLabel />} /> : null}
+              </Line>
+            ))}
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-black">
+      <div className="mt-2 flex max-h-36 flex-wrap items-center gap-x-3 gap-y-2 overflow-y-auto text-xs font-black sm:max-h-none sm:gap-x-4 sm:text-sm">
         {items.map((item, index) => {
-          const isSelected = item.key === selectedItem.key;
+          const isSelected = selectedKeys.includes(item.key);
           const color = getItemColor(item, index);
           return (
             <button
               key={item.key}
               type="button"
-              onClick={() => setSelectedKey(item.key)}
-              className={`inline-flex items-center gap-1.5 rounded-md px-1 py-0.5 transition ${
-                isSelected ? "text-slate-800" : "text-slate-400 hover:text-slate-700"
+              aria-pressed={isSelected}
+              onClick={() => handleToggleSubject(item.key)}
+              className={`inline-flex items-center gap-1.5 rounded-lg border px-2 py-1 transition ${
+                isSelected
+                  ? "bg-slate-950 text-white shadow-md ring-2"
+                  : "border-slate-200 bg-white text-slate-500 opacity-45 hover:text-slate-800 hover:opacity-100"
               }`}
+              style={isSelected ? { borderColor: color, "--tw-ring-color": `${color}55` } : undefined}
             >
+              {isSelected ? <FaCheckCircle className="h-3 w-3 shrink-0" aria-hidden="true" /> : null}
               <span
                 className="h-2.5 w-5 rounded-full"
-                style={{ backgroundColor: color, opacity: isSelected ? 1 : 0.55 }}
+                style={{ backgroundColor: color, opacity: isSelected ? 1 : 0.5 }}
               />
               {item.label}
             </button>
@@ -294,6 +379,7 @@ const BarValueLabel = ({ x, y, width, value }) => {
 };
 
 const MarksDistributionBetweenSubjectsChart = ({ items = [], periods = [] }) => {
+  const isMobile = useIsMobileViewport();
   const firstSeries = items[0]?.paperSeries || [];
   const availablePeriods = periods.length ? periods : firstSeries;
   const latestPeriod = availablePeriods[availablePeriods.length - 1];
@@ -318,52 +404,80 @@ const MarksDistributionBetweenSubjectsChart = ({ items = [], periods = [] }) => 
     marks: getTrendMarksForPeriod(item, selectedPeriod),
     color: getItemColor(item, index),
   }));
+  const mobileChartHeight = Math.max(560, data.length * 35);
 
   return (
     <div className="rounded-xl border border-slate-300 bg-white p-3 text-slate-900 shadow-sm sm:p-5">
-      <h3 className="text-center text-3xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
+      <h3 className="text-center text-xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
         Marks Distribution Between Subjects
       </h3>
-      <div className="mt-2 h-[500px] w-full sm:h-[560px]">
+      <div className="mt-2 h-[500px] w-full sm:h-[560px]" style={{ height: isMobile ? mobileChartHeight : undefined }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 34, right: 16, left: 8, bottom: 180 }}>
+          <BarChart
+            data={data}
+            layout={isMobile ? "vertical" : "horizontal"}
+            margin={isMobile ? { top: 18, right: 18, left: 8, bottom: 20 } : { top: 34, right: 16, left: 8, bottom: 180 }}
+          >
             <CartesianGrid stroke="#6f6f6f" vertical={false} strokeWidth={1.1} />
-            <XAxis
-              dataKey="label"
-              interval={0}
-              height={170}
-              tick={{ fill: "#111827", fontSize: 12, fontWeight: 700 }}
-              tickLine={{ stroke: "#555" }}
-              axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
-              angle={-90}
-              textAnchor="end"
-              label={{
-                value: "Subjects",
-                position: "insideBottom",
-                offset: -146,
-                fill: "#2f2f2f",
-                fontSize: 24,
-                fontWeight: 800,
-              }}
-            />
-            <YAxis
-              domain={[0, 15]}
-              ticks={[0, 5, 10, 15]}
-              tick={{ fill: "#111827", fontSize: 14, fontWeight: 700 }}
-              tickLine={{ stroke: "#555" }}
-              axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
-              label={{
-                value: "Marks",
-                angle: -90,
-                position: "insideLeft",
-                fill: "#2f2f2f",
-                fontSize: 24,
-                fontWeight: 800,
-              }}
-            />
+            {isMobile ? (
+              <>
+                <XAxis
+                  type="number"
+                  domain={[0, 15]}
+                  ticks={[0, 5, 10, 15]}
+                  tick={{ fill: "#111827", fontSize: 10, fontWeight: 700 }}
+                  tickLine={{ stroke: "#555" }}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                />
+                <YAxis
+                  dataKey="label"
+                  type="category"
+                  width={108}
+                  tick={{ fill: "#111827", fontSize: 10, fontWeight: 700 }}
+                  tickLine={false}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                />
+              </>
+            ) : (
+              <>
+                <XAxis
+                  dataKey="label"
+                  interval={0}
+                  height={170}
+                  tick={{ fill: "#111827", fontSize: 12, fontWeight: 700 }}
+                  tickLine={{ stroke: "#555" }}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                  angle={-90}
+                  textAnchor="end"
+                  label={{
+                    value: "Subjects",
+                    position: "insideBottom",
+                    offset: -146,
+                    fill: "#2f2f2f",
+                    fontSize: 24,
+                    fontWeight: 800,
+                  }}
+                />
+                <YAxis
+                  domain={[0, 15]}
+                  ticks={[0, 5, 10, 15]}
+                  tick={{ fill: "#111827", fontSize: 14, fontWeight: 700 }}
+                  tickLine={{ stroke: "#555" }}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                  label={{
+                    value: "Marks",
+                    angle: -90,
+                    position: "insideLeft",
+                    fill: "#2f2f2f",
+                    fontSize: 24,
+                    fontWeight: 800,
+                  }}
+                />
+              </>
+            )}
             <RechartsTooltip content={<OfficialDistributionTooltip />} />
             <Bar dataKey="marks" name={periodLabel} isAnimationActive={false}>
-              <LabelList dataKey="marks" content={<BarValueLabel />} />
+              {isMobile ? null : <LabelList dataKey="marks" content={<BarValueLabel />} />}
               {data.map((entry) => (
                 <Cell
                   key={entry.key}
@@ -376,7 +490,7 @@ const MarksDistributionBetweenSubjectsChart = ({ items = [], periods = [] }) => 
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-black">
+      <div className="mt-3 flex max-h-32 flex-wrap items-center gap-x-3 gap-y-2 overflow-y-auto text-xs font-black sm:mt-2 sm:max-h-none sm:gap-x-4 sm:text-sm">
         {availablePeriods.map((period, index) => {
           const key = period.key || period.period;
           const isSelected = key === (selectedPeriod.key || selectedPeriod.period);
@@ -422,6 +536,7 @@ const MetricValueLabel = ({ x, y, width, value }) => {
 };
 
 const MinAvgMaxMarksChart = ({ items = [] }) => {
+  const isMobile = useIsMobileViewport();
   const [activeMetric, setActiveMetric] = useState("avg");
   const metric = METRIC_CONFIG[activeMetric] || METRIC_CONFIG.avg;
 
@@ -449,49 +564,77 @@ const MinAvgMaxMarksChart = ({ items = [] }) => {
       color: getItemColor(item, index),
     };
   });
+  const mobileChartHeight = Math.max(560, data.length * 35);
 
   return (
     <div className="rounded-xl border border-slate-300 bg-white p-3 text-slate-900 shadow-sm sm:p-5">
-      <h3 className="text-center text-3xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
+      <h3 className="text-center text-xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
         Min/Avg/Max Marks
       </h3>
-      <div className="mt-2 h-[500px] w-full sm:h-[560px]">
+      <div className="mt-2 h-[500px] w-full sm:h-[560px]" style={{ height: isMobile ? mobileChartHeight : undefined }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 34, right: 16, left: 8, bottom: 180 }}>
+          <BarChart
+            data={data}
+            layout={isMobile ? "vertical" : "horizontal"}
+            margin={isMobile ? { top: 18, right: 18, left: 8, bottom: 20 } : { top: 34, right: 16, left: 8, bottom: 180 }}
+          >
             <CartesianGrid stroke="#6f6f6f" vertical={false} strokeWidth={1.1} />
-            <XAxis
-              dataKey="label"
-              interval={0}
-              height={170}
-              tick={{ fill: "#111827", fontSize: 12, fontWeight: 700 }}
-              tickLine={{ stroke: "#555" }}
-              axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
-              angle={-90}
-              textAnchor="end"
-              label={{
-                value: "Subjects",
-                position: "insideBottom",
-                offset: -146,
-                fill: "#2f2f2f",
-                fontSize: 24,
-                fontWeight: 800,
-              }}
-            />
-            <YAxis
-              domain={metric.domain}
-              ticks={metric.ticks}
-              tick={{ fill: "#111827", fontSize: 14, fontWeight: 700 }}
-              tickLine={{ stroke: "#555" }}
-              axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
-              label={{
-                value: "Marks",
-                angle: -90,
-                position: "insideLeft",
-                fill: "#2f2f2f",
-                fontSize: 24,
-                fontWeight: 800,
-              }}
-            />
+            {isMobile ? (
+              <>
+                <XAxis
+                  type="number"
+                  domain={metric.domain}
+                  ticks={metric.ticks}
+                  tick={{ fill: "#111827", fontSize: 10, fontWeight: 700 }}
+                  tickLine={{ stroke: "#555" }}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                />
+                <YAxis
+                  dataKey="label"
+                  type="category"
+                  width={108}
+                  tick={{ fill: "#111827", fontSize: 10, fontWeight: 700 }}
+                  tickLine={false}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                />
+              </>
+            ) : (
+              <>
+                <XAxis
+                  dataKey="label"
+                  interval={0}
+                  height={170}
+                  tick={{ fill: "#111827", fontSize: 12, fontWeight: 700 }}
+                  tickLine={{ stroke: "#555" }}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                  angle={-90}
+                  textAnchor="end"
+                  label={{
+                    value: "Subjects",
+                    position: "insideBottom",
+                    offset: -146,
+                    fill: "#2f2f2f",
+                    fontSize: 24,
+                    fontWeight: 800,
+                  }}
+                />
+                <YAxis
+                  domain={metric.domain}
+                  ticks={metric.ticks}
+                  tick={{ fill: "#111827", fontSize: 14, fontWeight: 700 }}
+                  tickLine={{ stroke: "#555" }}
+                  axisLine={{ stroke: "#555", strokeWidth: 1.2 }}
+                  label={{
+                    value: "Marks",
+                    angle: -90,
+                    position: "insideLeft",
+                    fill: "#2f2f2f",
+                    fontSize: 24,
+                    fontWeight: 800,
+                  }}
+                />
+              </>
+            )}
             <RechartsTooltip
               content={({ active, payload, label }) => {
                 if (!active || !payload?.length) return null;
@@ -506,7 +649,7 @@ const MinAvgMaxMarksChart = ({ items = [] }) => {
               }}
             />
             <Bar dataKey={activeMetric} name={metric.label} isAnimationActive={false}>
-              <LabelList dataKey={activeMetric} content={<MetricValueLabel />} />
+              {isMobile ? null : <LabelList dataKey={activeMetric} content={<MetricValueLabel />} />}
               {data.map((entry) => (
                 <Cell
                   key={entry.key}
@@ -544,9 +687,9 @@ const MinAvgMaxMarksChart = ({ items = [] }) => {
 const TopicLink = ({ topic }) => (
   <Link
     to={topic.practiceUrl}
-    className="flex items-center justify-between gap-3 rounded-lg bg-[color:var(--color-surface-muted)] px-3 py-2 text-sm transition hover:bg-[color:var(--color-primary-soft)]"
+    className="flex min-h-[44px] items-center justify-between gap-3 rounded-lg bg-[color:var(--color-surface-muted)] px-3 py-2 text-xs transition hover:bg-[color:var(--color-primary-soft)] sm:text-sm"
   >
-    <span className="min-w-0 truncate font-semibold text-[color:var(--color-text)]">{topic.label}</span>
+    <span className="min-w-0 break-words font-semibold leading-snug text-[color:var(--color-text)] sm:truncate">{topic.label}</span>
     <span className="shrink-0 text-xs font-bold text-[color:var(--color-text-muted)]">{formatNumber(topic.questions)} Q</span>
   </Link>
 );
@@ -555,16 +698,16 @@ const SubjectDirectoryCard = ({ subject, topics = [], useFallbackTopics = true }
   const displayTopics = topics.length ? topics : useFallbackTopics ? subject.topTopics || [] : [];
 
   return (
-    <article className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-soft)]">
-      <div className="flex items-start justify-between gap-3">
-        <div>
+    <article className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 shadow-[var(--shadow-soft)] sm:p-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
           <div className="flex items-center gap-2">
             <span className="rounded-lg bg-slate-900 px-2 py-1 text-xs font-black text-white dark:bg-sky-700">
               {subject.shortLabel || subject.label}
             </span>
-            <h3 className="text-base font-bold text-[color:var(--color-text)]">{subject.label}</h3>
+            <h3 className="min-w-0 text-sm font-bold leading-snug text-[color:var(--color-text)] sm:text-base">{subject.label}</h3>
           </div>
-          <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
+          <p className="mt-2 text-xs leading-5 text-[color:var(--color-text-muted)] sm:text-sm">
             {Number.isFinite(Number(subject.averageMarks))
               ? `${formatNumber(subject.averageMarks, 1)} average marks per paper`
               : `${formatNumber(subject.questions)} questions, ${formatNumber(subject.totalMarks, 1)} estimated marks`}
@@ -572,13 +715,13 @@ const SubjectDirectoryCard = ({ subject, topics = [], useFallbackTopics = true }
         </div>
         <Link
           to={subject.practiceUrl}
-          className="inline-flex min-h-[36px] shrink-0 items-center gap-2 rounded-lg bg-[color:var(--color-primary)] px-3 py-2 text-xs font-bold text-white transition hover:bg-[color:var(--color-primary-hover)]"
+          className="inline-flex min-h-[42px] w-full shrink-0 items-center justify-center gap-2 rounded-lg bg-[color:var(--color-primary)] px-3 py-2 text-xs font-bold text-white transition hover:bg-[color:var(--color-primary-hover)] sm:min-h-[36px] sm:w-auto"
         >
           Practice <FaArrowRight className="text-[10px]" aria-hidden="true" />
         </Link>
       </div>
 
-      <div className="mt-4 space-y-2">
+      <div className="mt-3 space-y-2 sm:mt-4">
         {displayTopics.slice(0, 4).map((topic) => (
           <TopicLink key={topic.key} topic={topic} />
         ))}
@@ -593,7 +736,7 @@ const SubjectDirectoryCard = ({ subject, topics = [], useFallbackTopics = true }
 };
 
 const YearSnapshotCard = ({ snapshot }) => (
-  <article className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4">
+  <article className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3.5 sm:p-4">
     <div className="flex items-start justify-between gap-3">
       <h3 className="text-lg font-black text-[color:var(--color-text)]">{snapshot.year}</h3>
       {snapshot.subject ? (
@@ -603,18 +746,18 @@ const YearSnapshotCard = ({ snapshot }) => (
       ) : null}
     </div>
     {snapshot.subject ? (
-      <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
+      <p className="mt-2 text-xs leading-5 text-[color:var(--color-text-muted)] sm:text-sm">
         Top subject: <strong className="text-[color:var(--color-text)]">{snapshot.subject.label}</strong>
       </p>
     ) : (
-      <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">No subject data available.</p>
+      <p className="mt-2 text-xs leading-5 text-[color:var(--color-text-muted)] sm:text-sm">No subject data available.</p>
     )}
     <div className="mt-3 space-y-2">
       {snapshot.topTopics.map((topic) => (
         <Link
           key={topic.key}
           to={topic.practiceUrl}
-          className="block truncate rounded-lg bg-[color:var(--color-surface)] px-3 py-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-primary-soft)]"
+          className="block min-h-[42px] rounded-lg bg-[color:var(--color-surface)] px-3 py-2 text-xs font-semibold leading-snug text-[color:var(--color-text)] transition hover:bg-[color:var(--color-primary-soft)] sm:truncate sm:text-sm"
         >
           {topic.label}
         </Link>
@@ -629,20 +772,20 @@ const YearSnapshotCard = ({ snapshot }) => (
 );
 
 const AptitudeCard = ({ topic }) => (
-  <article className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-soft)]">
+  <article className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 shadow-[var(--shadow-soft)] sm:p-4">
     <div className="flex items-start justify-between gap-3">
       <div>
         <span className="rounded-lg bg-[color:var(--color-surface-muted)] px-2 py-1 text-xs font-black text-[color:var(--color-text)]">
           {topic.shortLabel || topic.label}
         </span>
-        <h3 className="mt-3 text-base font-bold text-[color:var(--color-text)]">{topic.label}</h3>
+        <h3 className="mt-3 text-sm font-bold leading-snug text-[color:var(--color-text)] sm:text-base">{topic.label}</h3>
       </div>
       <FaCheckCircle className="mt-1 text-[color:var(--color-success-text)]" aria-hidden="true" />
     </div>
-    <p className="mt-3 text-sm text-[color:var(--color-text-muted)]">
+    <p className="mt-3 text-xs leading-5 text-[color:var(--color-text-muted)] sm:text-sm">
       Part of GATE CSE General Aptitude. Aptitude is fixed at 10 questions and 15 marks per paper.
     </p>
-    <div className="mt-4 flex items-center justify-between gap-3 text-sm">
+    <div className="mt-4 flex items-center justify-between gap-3 text-xs sm:text-sm">
       <span className="text-[color:var(--color-text-muted)]">
         {Number.isFinite(Number(topic.averageMarks)) ? "Avg marks" : "Seen in bank"}:{" "}
         <strong className="text-[color:var(--color-text)]">
@@ -696,6 +839,7 @@ const HighPriorityTopicsPage = () => {
   const aptitudeTopics = dataset?.aptitudeTopics || [];
   const officialTrendItems = dataset?.officialTrendItems || [];
   const officialMarksItems = dataset?.officialMarksItems || officialTrendItems;
+  const officialDataValidation = dataset?.officialDataValidation;
   const officialPeriods = useMemo(() => {
     if (Array.isArray(dataset?.officialPeriods) && dataset.officialPeriods.length > 0) {
       return dataset.officialPeriods;
@@ -777,9 +921,9 @@ const HighPriorityTopicsPage = () => {
   ), [recentPeriods, technicalSubjects, trendSourceItems]);
 
   return (
-    <PageShell contentClassName="space-y-6">
-      <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-5 py-6 shadow-[var(--shadow-card)] sm:px-6">
-        <h1 className="text-3xl font-black tracking-normal text-[color:var(--color-text)] sm:text-4xl">
+    <PageShell contentClassName="space-y-4 sm:space-y-6">
+      <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-5 shadow-[var(--shadow-card)] sm:px-6 sm:py-6">
+        <h1 className="text-2xl font-black tracking-normal text-[color:var(--color-text)] sm:text-4xl">
           High Priority Topics
         </h1>
       </header>
@@ -798,7 +942,7 @@ const HighPriorityTopicsPage = () => {
       ) : dataset ? (
         <>
           <Section>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
               <OverviewCard
                 icon={FaStar}
                 label="Most important subjects"
@@ -824,16 +968,16 @@ const HighPriorityTopicsPage = () => {
             title="Recent Trends"
             description="Paper-wise GATE CSE movement from the official marks table. This highlights areas that are receiving more marks recently."
           >
-            <SubjectMarksOverYearsChart items={officialMarksItems} />
-            <div className="mt-6">
+            <SubjectMarksOverYearsChart items={officialMarksItems} validation={officialDataValidation} />
+            <div className="mt-4 sm:mt-6">
               <MarksDistributionBetweenSubjectsChart items={officialMarksItems} periods={officialPeriods} />
             </div>
-            <div className="mt-6">
+            <div className="mt-4 sm:mt-6">
               <MinAvgMaxMarksChart items={officialMarksItems} />
             </div>
 
-            <div className="mt-6 space-y-3">
-              <h3 className="text-base font-bold text-[color:var(--color-text)]">Recent Paper Snapshots</h3>
+            <div className="mt-4 space-y-3 sm:mt-6">
+              <h3 className="text-sm font-bold text-[color:var(--color-text)] sm:text-base">Recent Paper Snapshots</h3>
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {paperSnapshots.map((snapshot) => (
                   <YearSnapshotCard key={snapshot.year} snapshot={snapshot} />
@@ -846,7 +990,7 @@ const HighPriorityTopicsPage = () => {
             title="Topic Directory"
             description="Pick a subject, then attack its most repeated topics first. Aptitude is listed separately because its paper weight is fixed."
           >
-            <div className="mb-5">
+            <div className="mb-4 sm:mb-5">
               <label className="relative block">
                 <span className="sr-only">Search technical topics</span>
                 <FaSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-text-muted)]" aria-hidden="true" />
@@ -859,13 +1003,13 @@ const HighPriorityTopicsPage = () => {
               </label>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               <div>
                 <div className="mb-3 flex items-center gap-2">
                   <FaLayerGroup className="text-[color:var(--color-text-muted)]" aria-hidden="true" />
-                  <h3 className="text-lg font-bold text-[color:var(--color-text)]">Technical Topics</h3>
+                  <h3 className="text-base font-bold text-[color:var(--color-text)] sm:text-lg">Technical Topics</h3>
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
                   {directorySubjects.map((subject) => (
                     <SubjectDirectoryCard
                       key={subject.key}
@@ -885,9 +1029,9 @@ const HighPriorityTopicsPage = () => {
               <div>
                 <div className="mb-3 flex items-center gap-2">
                   <FaCheckCircle className="text-[color:var(--color-text-muted)]" aria-hidden="true" />
-                  <h3 className="text-lg font-bold text-[color:var(--color-text)]">Aptitude Topics</h3>
+                  <h3 className="text-base font-bold text-[color:var(--color-text)] sm:text-lg">Aptitude Topics</h3>
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-4">
                   {aptitudeTopics.map((topic) => (
                     <AptitudeCard key={topic.key} topic={topic} />
                   ))}

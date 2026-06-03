@@ -2,18 +2,22 @@ import React from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
+import type { FilterActionsShape, FilterStateShape } from '../../types';
 
 const YearRangeFilter = () => {
-    const { structuredTags, filters } = useFilterState();
-    const { updateFilters } = useFilterActions();
-    const { minYear, maxYear } = structuredTags;
+    const { structuredTags = {}, filters = {} } = useFilterState() as FilterStateShape;
+    const { updateFilters } = useFilterActions() as FilterActionsShape;
+    const { minYear = 0, maxYear = 0 } = structuredTags;
     const { yearRange } = filters;
     const handleLabels = ['Minimum year', 'Maximum year'];
 
     if (minYear === 0 || maxYear === 0) return null;
 
-    const handleRangeChange = (newRange) => {
-        updateFilters({ yearRange: newRange });
+    const handleRangeChange = (newRange: number | number[]) => {
+        if (!Array.isArray(newRange) || newRange.length < 2) {
+            return;
+        }
+        updateFilters({ yearRange: [newRange[0], newRange[1]] });
     };
 
     return (

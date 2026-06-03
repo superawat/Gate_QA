@@ -111,7 +111,7 @@ Do not merge changes that break:
 
 ## High-risk files
 
-- `src/contexts/FilterContext.jsx`
+- `src/contexts/FilterContext.tsx`
 - `src/services/QuestionService.ts`
 - `src/services/AnswerService.ts`
 - `src/components/ProgressManager/ProgressManager.jsx`

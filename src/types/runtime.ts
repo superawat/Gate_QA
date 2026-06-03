@@ -184,6 +184,9 @@ export interface FilterSelectionState {
   progressFilter: ProgressFilter;
   difficultyFilter: DifficultyFilter;
   yearRange: [number, number];
+  hideSolved: boolean;
+  showOnlySolved: boolean;
+  showOnlyBookmarked: boolean;
 }
 
 export type FilterUpdate = Partial<FilterSelectionState>;
@@ -207,10 +210,18 @@ export interface FilterStateShape {
   filters?: Partial<FilterSelectionState>;
   aptitudeLoading?: boolean;
   aptitudeError?: string;
+  filteredQuestions?: QuestionRow[];
+  totalQuestions?: number;
+  solvedCount?: number;
+  progressPercentage?: number;
 }
 
 export interface FilterActionsShape {
   updateFilters: (nextFilters: FilterUpdate) => void;
+  clearFilters?: () => void;
+  setHideSolved?: (value: boolean) => void;
+  setShowOnlySolved?: (value: boolean) => void;
+  setShowOnlyBookmarked?: (value: boolean) => void;
 }
 
 export interface PracticeAttemptHistoryEntry {
