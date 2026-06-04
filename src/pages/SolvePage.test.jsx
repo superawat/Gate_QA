@@ -81,6 +81,12 @@ vi.mock("../services/QuestionService", () => ({
   },
 }));
 
+vi.mock("../services/AptitudeQuestionService", () => ({
+  AptitudeQuestionService: {
+    ensureQuestionDetail: mocks.ensureQuestionDetail,
+  },
+}));
+
 vi.mock("../utils/lastSession", () => ({
   writeLastSession: mocks.writeLastSession,
 }));

@@ -42,6 +42,50 @@ describe("stripEmbeddedOptions", () => {
     expect(cleaned).not.toContain("11111110");
   });
 
+  test("extracts and strips preformatted SQL options", () => {
+    const html = `
+      <p>Which SQL query retrieves the requested rows?</p>
+      <pre>A. SELECT S.name FROM Students S WHERE EXISTS (...);</pre>
+      <pre>B. SELECT S.name FROM Students S WHERE SIZEOF (...) > 0;</pre>
+      <pre>C. SELECT S.name FROM Students S WHERE 0 < (SELECT COUNT(*));</pre>
+      <pre>D. SELECT S.name FROM Students S NATURAL JOIN Enrolled E;</pre>
+    `;
+
+    const options = extractEmbeddedOptions(html);
+    const cleaned = stripEmbeddedOptions(html);
+
+    expect(options.map((option) => option.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options[0].text).toContain("SELECT S.name");
+    expect(cleaned).toContain("Which SQL query");
+    expect(cleaned).not.toContain("<pre");
+    expect(cleaned).not.toContain("SIZEOF");
+  });
+
+  test("extracts trailing ordered statement choices before closing wrappers", () => {
+    const html = `
+      <div class="qa-q-view-content">
+        <div itemprop="text">
+          <p>Which of the following statements is/are TRUE?</p>
+          <ol>
+            <li>There is a RAW dependency.</li>
+            <li>There is a WAR dependency.</li>
+            <li>There is a WAW dependency.</li>
+            <li>There is a structural dependency.</li>
+          </ol>
+        </div>
+      </div>
+    `;
+
+    const options = extractEmbeddedOptions(html);
+    const cleaned = stripEmbeddedOptions(html);
+
+    expect(options.map((option) => option.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options[2].text).toContain("WAW dependency");
+    expect(cleaned).toContain("Which of the following statements");
+    expect(cleaned).not.toContain("<ol");
+    expect(cleaned).not.toContain("RAW dependency");
+  });
+
   test("removes split alpha lists and option-adjacent media from the stem", () => {
     const html = `
       <p>Which statements are true?</p>

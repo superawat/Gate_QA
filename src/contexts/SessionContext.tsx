@@ -46,6 +46,7 @@ export interface SessionContextValue {
     goToNextQuestion: (uid?: string) => QuestionRow | null;
     advanceQueue: () => QuestionRow | null;
     goBack: () => QuestionRow | null;
+    removeQuestionFromSession: (uid?: string) => QuestionRow | null;
     canGoBack: boolean;
     markSeen: (uid?: string) => void;
     markDeepLinkedQuestion: (uid?: string) => void;
@@ -640,6 +641,32 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         return goToPreviousQuestion(currentUid);
     }, [currentIndex, goToPreviousQuestion, sessionQueue]);
 
+    const removeQuestionFromSession = useCallback((uid = ''): QuestionRow | null => {
+        const normalizedUid = String(uid || '').trim();
+        if (!normalizedUid || sessionQueue.length === 0) {
+            return null;
+        }
+
+        const removedIndex = findIndexForUid(sessionQueue, normalizedUid);
+        if (removedIndex === -1) {
+            return null;
+        }
+
+        const nextQueue = sessionQueue.filter((entryUid) => entryUid !== normalizedUid);
+        const nextSourceQuestionUids = sourceQuestionUids.filter((entryUid) => entryUid !== normalizedUid);
+        activeQuestionMapRef.current.delete(normalizedUid);
+        seenThisSession.current.delete(normalizedUid);
+
+        const fallbackIndex = Math.min(removedIndex, Math.max(0, nextQueue.length - 1));
+        const fallbackUid = nextQueue[fallbackIndex] || '';
+
+        setSessionQueue(nextQueue);
+        setSourceQuestionUids(nextSourceQuestionUids);
+        setCurrentIndex(fallbackIndex);
+
+        return fallbackUid ? getQuestionByUid(fallbackUid) : null;
+    }, [getQuestionByUid, sessionQueue, sourceQuestionUids]);
+
     const markSeen = useCallback((uid?: string) => {
         const normalizedUid = String(uid || '').trim();
         if (normalizedUid) {
@@ -690,6 +717,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         goToNextQuestion,
         advanceQueue,
         goBack,
+        removeQuestionFromSession,
         canGoBack: currentIndex > 0,
         markSeen,
         markDeepLinkedQuestion,
@@ -704,6 +732,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         goToPreviousQuestion,
         markDeepLinkedQuestion,
         markSeen,
+        removeQuestionFromSession,
         sessionMode,
         sessionQueue,
         showExhaustionBanner,

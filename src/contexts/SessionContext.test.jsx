@@ -143,6 +143,39 @@ describe('SessionContext', () => {
         expect(latestSession.getNavigationState('q1').canGoPrevious).toBe(false);
     });
 
+    test('removes unavailable questions from the active session queue', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        act(() => {
+            latestSession.startOrderedSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+                { question_uid: 'q3' },
+            ], 'q2');
+        });
+
+        let fallbackQuestion;
+        act(() => {
+            fallbackQuestion = latestSession.removeQuestionFromSession('q2');
+        });
+
+        expect(fallbackQuestion.question_uid).toBe('q3');
+        await waitFor(() => {
+            expect(latestSession.sessionQueue).toEqual(['q1', 'q3']);
+        });
+        expect(latestSession.getNavigationState('q3')).toMatchObject({
+            index: 1,
+            total: 2,
+            previousUid: 'q1',
+            canGoPrevious: true,
+            canGoNext: false,
+        });
+    });
+
     test('prefetches the next likely question details in active sessions', async () => {
         renderHarness();
 

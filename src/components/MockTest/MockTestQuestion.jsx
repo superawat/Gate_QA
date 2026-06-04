@@ -77,6 +77,38 @@ const formatQuestionTypeLabel = (type = "") => {
     return normalized || "MCQ";
 };
 
+const stripHtmlToText = (value = "") => (
+    String(value || "")
+        .replace(/<[^>]*>/g, " ")
+        .replace(/&nbsp;/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+);
+
+const TRUE_FALSE_PROMPT_RE = /\b(?:state|decide)\s+(?:whether\s+)?[\s\S]{0,220}\btrue\s+or\s+false\b|\btrue\s+or\s+false\s+with\b/i;
+
+const isTrueFalseMockQuestion = (question = {}, rawType = "") => {
+    if (String(rawType || "").trim().toUpperCase() !== "NAT") {
+        return false;
+    }
+
+    const tagValues = [
+        ...(Array.isArray(question?.tags) ? question.tags : []),
+        ...(Array.isArray(question?.tagsRaw) ? question.tagsRaw : []),
+        ...(Array.isArray(question?.canonical?.tagsRaw) ? question.canonical.tagsRaw : []),
+    ];
+    if (tagValues.some((tag) => String(tag || "").toLowerCase().trim() === "true-false")) {
+        return true;
+    }
+
+    const promptText = [
+        stripHtmlToText(question?.question || ""),
+        question?.preview || "",
+        question?.searchText || "",
+    ].join(" ");
+    return TRUE_FALSE_PROMPT_RE.test(promptText);
+};
+
 const MockTestQuestion = ({ isReviewPhase = false }) => {
     const {
         currentQuestion,
@@ -94,13 +126,18 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         return null;
     }
 
-    const typeLabel = formatQuestionTypeLabel(currentQuestionMeta?.type);
     const rawType = String(currentQuestionMeta?.type || "").trim().toUpperCase();
+    const isTrueFalse = useMemo(
+        () => isTrueFalseMockQuestion(currentQuestion, rawType),
+        [currentQuestion, rawType]
+    );
+    const typeLabel = formatQuestionTypeLabel(currentQuestionMeta?.type);
     const marks = Number(currentQuestionMeta?.marks || 0);
     const negativeMarks = formatNegativeMarks(currentQuestionMeta?.negativeMarks);
     const isNAT = rawType === "NAT";
     const isMSQ = rawType === "MSQ";
     const isAutoAwarded = isMockAutoAwardType(rawType);
+
     const autoAwardMessage = rawType === "SUBJECTIVE"
         ? "This legacy subjective prompt is awarded automatically. No response is required."
         : "This question is awarded to all candidates. No response is required.";
@@ -141,10 +178,25 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const reviewScoreText = reviewScoreDelta > 0
         ? `+${reviewScoreDelta}`
         : String(reviewScoreDelta);
-    const reviewExpectedAnswer = formatExpectedAnswer(reviewResult?.answerRecord);
-    const reviewResponseText = reviewResult?.status === "bonus"
+
+    let reviewExpectedAnswer = formatExpectedAnswer(reviewResult?.answerRecord);
+    if (isTrueFalse) {
+        if (String(reviewExpectedAnswer).trim() === "1") {
+            reviewExpectedAnswer = "TRUE";
+        } else if (String(reviewExpectedAnswer).trim() === "0") {
+            reviewExpectedAnswer = "FALSE";
+        }
+    }
+    let reviewResponseText = reviewResult?.status === "bonus"
         ? "Not required"
         : formatMockResponse(reviewResult?.response, rawType);
+    if (isTrueFalse) {
+        if (String(reviewResponseText).trim() === "1") {
+            reviewResponseText = "TRUE";
+        } else if (String(reviewResponseText).trim() === "0") {
+            reviewResponseText = "FALSE";
+        }
+    }
     const reviewTimeText = formatMockTimeSpent(reviewResult?.timeSpentSeconds);
     const reviewTimeExceeded = Boolean(reviewResult?.timeExceededThreshold);
     const reviewMessage = reviewResult?.status === "bonus"
@@ -296,64 +348,115 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                 </div>
                             ) : isNAT ? (
                                 <div className="relative z-10 mt-4 flex flex-col gap-2">
-                                    <div className="flex flex-col items-center p-3 bg-[#f3f4f6] rounded-md border border-gray-300 w-[180px]">
-                                        <input
-                                            ref={natInputRef}
-                                            type="text"
-                                            inputMode="text"
-                                            data-testid="mock-nat-input"
-                                            value={currentResponse || ""}
-                                            onChange={handleNatChange}
-                                            readOnly={isReviewPhase}
-                                            className="h-8 w-full mb-2 border-[2px] border-black bg-white px-2 text-[15px] font-bold focus:outline-none"
-                                        />
-                                        {!isReviewPhase ? (
-                                            <>
-                                                <button
-                                                    type="button"
-                                                    className="w-full h-8 mb-2 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
-                                                    onClick={handleNatBackspace}
-                                                >
-                                                    Backspace
-                                                </button>
-                                                <div className="grid grid-cols-3 gap-1.5 mb-2 w-full">
-                                                    {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.', '-'].map(key => (
-                                                        <button
-                                                            key={key}
-                                                            type="button"
-                                                            className="h-9 w-full rounded border border-gray-400 bg-[#f4f4f4] text-[16px] font-bold shadow-sm hover:bg-[#e8e8e8] active:bg-[#d8d8d8]"
-                                                            onClick={() => handleNatInsert(key)}
+                                    {isTrueFalse ? (
+                                        <div className="flex flex-col gap-2">
+                                            <div className="font-semibold text-gray-700 mb-1">Select your answer:</div>
+                                            <div className="flex flex-row flex-wrap gap-4">
+                                                {[
+                                                    { label: "TRUE", value: "1" },
+                                                    { label: "FALSE", value: "0" }
+                                                ].map((option) => {
+                                                    const isChecked = String(currentResponse ?? "") === option.value;
+                                                    const isCorrect = isReviewPhase && String(reviewExpectedAnswer).trim() === option.label;
+                                                    const isIncorrectSelection = isReviewPhase && isChecked && !isCorrect;
+
+                                                    const rowClass = isReviewPhase
+                                                        ? (isCorrect
+                                                            ? "border border-[#1e8f3f] bg-[#eef9f1] text-[#0f6f2f]"
+                                                            : isIncorrectSelection
+                                                                ? "border border-[#cc5d5d] bg-[#fff1f1] text-[#c4302b]"
+                                                                : "border border-gray-300 text-gray-500 opacity-70")
+                                                        : (isChecked
+                                                            ? "border-[#0e76a8] bg-[#f0f7fb] text-[#0e76a8] ring-1 ring-[#0e76a8]"
+                                                            : "border-gray-300 text-gray-700");
+
+                                                    return (
+                                                        <label
+                                                            key={option.value}
+                                                            className={`mock-option-selector flex items-center justify-center gap-2 rounded-md border px-4 py-3 min-w-[100px] ${isReviewPhase ? "cursor-default" : "cursor-pointer hover:bg-gray-50 transition-colors"} ${rowClass}`}
+                                                            data-testid={`mock-nat-tf-${option.label}`}
                                                         >
-                                                            {key}
+                                                            <input
+                                                                type="radio"
+                                                                name={`q-${questionUid}`}
+                                                                value={option.value}
+                                                                checked={isChecked}
+                                                                onChange={() => {
+                                                                    if (!isReviewPhase) {
+                                                                        saveResponse(questionUid, option.value);
+                                                                    }
+                                                                }}
+                                                                disabled={isReviewPhase}
+                                                                className="h-[18px] w-[18px] flex-shrink-0 cursor-pointer accent-[#0e76a8] focus:ring-0"
+                                                            />
+                                                            <span className="mock-option-label text-[16px] font-bold">
+                                                                {option.label}
+                                                            </span>
+                                                        </label>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="flex flex-col items-center p-3 bg-[#f3f4f6] rounded-md border border-gray-300 w-[180px]">
+                                            <input
+                                                ref={natInputRef}
+                                                type="text"
+                                                inputMode="text"
+                                                data-testid="mock-nat-input"
+                                                value={currentResponse || ""}
+                                                onChange={handleNatChange}
+                                                readOnly={isReviewPhase}
+                                                className="h-8 w-full mb-2 border-[2px] border-black bg-white px-2 text-[15px] font-bold focus:outline-none"
+                                            />
+                                            {!isReviewPhase ? (
+                                                <>
+                                                    <button
+                                                        type="button"
+                                                        className="w-full h-8 mb-2 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                        onClick={handleNatBackspace}
+                                                    >
+                                                        Backspace
+                                                    </button>
+                                                    <div className="grid grid-cols-3 gap-1.5 mb-2 w-full">
+                                                        {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.', '-'].map(key => (
+                                                            <button
+                                                                key={key}
+                                                                type="button"
+                                                                className="h-9 w-full rounded border border-gray-400 bg-[#f4f4f4] text-[16px] font-bold shadow-sm hover:bg-[#e8e8e8] active:bg-[#d8d8d8]"
+                                                                onClick={() => handleNatInsert(key)}
+                                                            >
+                                                                {key}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                    <div className="flex justify-center gap-1.5 mb-2 w-full">
+                                                        <button
+                                                            type="button"
+                                                            className="flex-1 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[16px] font-bold shadow-sm flex items-center justify-center hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                            onClick={() => handleNatArrow('left')}
+                                                        >
+                                                            &#8592;
                                                         </button>
-                                                    ))}
-                                                </div>
-                                                <div className="flex justify-center gap-1.5 mb-2 w-full">
+                                                        <button
+                                                            type="button"
+                                                            className="flex-1 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[16px] font-bold shadow-sm flex items-center justify-center hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                            onClick={() => handleNatArrow('right')}
+                                                        >
+                                                            &#8594;
+                                                        </button>
+                                                    </div>
                                                     <button
                                                         type="button"
-                                                        className="flex-1 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[16px] font-bold shadow-sm flex items-center justify-center hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
-                                                        onClick={() => handleNatArrow('left')}
+                                                        className="w-full h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                                        onClick={() => saveResponse(questionUid, "")}
                                                     >
-                                                        &#8592;
+                                                        Clear All
                                                     </button>
-                                                    <button
-                                                        type="button"
-                                                        className="flex-1 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[16px] font-bold shadow-sm flex items-center justify-center hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
-                                                        onClick={() => handleNatArrow('right')}
-                                                    >
-                                                        &#8594;
-                                                    </button>
-                                                </div>
-                                                <button
-                                                    type="button"
-                                                    className="w-full h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
-                                                    onClick={() => saveResponse(questionUid, "")}
-                                                >
-                                                    Clear All
-                                                </button>
-                                            </>
-                                        ) : null}
-                                    </div>
+                                                </>
+                                            ) : null}
+                                        </div>
+                                    )}
                                 </div>
                             ) : (
                                 <div className="mt-2 flex flex-col gap-3">

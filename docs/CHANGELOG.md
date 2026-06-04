@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-06-04
+
+### Fixed
+- Hardened Solve page handling for unavailable/stale question UIDs. If detail hydration reports a missing question, the question is removed from the active session queue and the user is moved to the next available question instead of seeing a broken detail card.
+- Added a session-level cleanup API to prune unavailable questions from ordered/random practice queues without disturbing the rest of the session.
+- Fixed legacy true/false mock questions that were typed as NAT by rendering TRUE/FALSE answer choices and mapping TRUE to `1` and FALSE to `0` for scoring while keeping the question type label as `NAT`.
+- Updated drawer labels for `Priority Topics` and `Special Aptitude Section` to use a single solid sky-blue accent without animation overhead.
+- Corrected recent mock paper readiness gaps by repairing five malformed answer/type records and expanding embedded option extraction for SQL `<pre>` choices and trailing statement-choice lists. `2025 Set 1`, `2025 Set 2`, and `2024 Set 2` now have 65/65 scorable mock questions.
+
+### Verified
+- Confirmed current aptitude artifacts are internally consistent: 36,836 index rows, 36,836 detail rows, 0 missing, 0 invalid.
+- `npm run build:public-artifacts`
+- `npm run typecheck`
+- `npm run qa:validate-aptitude`
+
 ## 2026-06-03
 
 ### Added

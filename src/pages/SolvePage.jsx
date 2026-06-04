@@ -18,6 +18,10 @@ import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes"
 import { writeLastSession } from "../utils/lastSession";
 import { getDisplayQuestionTypeLabel } from "../utils/questionType";
 
+const isUnavailableQuestionDetailError = (error) => (
+  /question detail missing|not available in the current index/i.test(String(error?.message || error || ""))
+);
+
 const SolvePage = ({
   loading,
   error,
@@ -57,6 +61,7 @@ const SolvePage = ({
     getNavigationState,
     goToNextQuestion,
     goToPreviousQuestion,
+    removeQuestionFromSession,
   } = useSession();
 
   const indexedQuestion = useMemo(() => getQuestionById(questionUid), [getQuestionById, questionUid]);
@@ -168,6 +173,18 @@ const SolvePage = ({
         if (!active) {
           return;
         }
+
+        if (isUnavailableQuestionDetailError(detailError)) {
+          const replacementQuestion = removeQuestionFromSession(questionUid);
+          if (replacementQuestion?.question_uid && replacementQuestion.question_uid !== questionUid) {
+            navigate({
+              pathname: buildSolvePath(replacementQuestion.question_uid),
+              search: activeSearch,
+            }, { replace: true });
+            return;
+          }
+        }
+
         setQuestionDetailError(detailError.message || "Unable to load question detail.");
       })
       .finally(() => {
@@ -179,7 +196,16 @@ const SolvePage = ({
     return () => {
       active = false;
     };
-  }, [indexedQuestion, isAptitudeQuestion, questionDetailRequestNonce, questionService, questionUid]);
+  }, [
+    activeSearch,
+    indexedQuestion,
+    isAptitudeQuestion,
+    navigate,
+    questionDetailRequestNonce,
+    questionService,
+    questionUid,
+    removeQuestionFromSession,
+  ]);
 
   useEffect(() => {
     if (!questionUid) {

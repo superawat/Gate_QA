@@ -292,8 +292,8 @@ const GlobalNavigationDrawer = ({
               onTouchStart={() => { void preloadHighPriorityTopicsRoute(); }}
               className={actionButtonClassName}
             >
-              <FaFire className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
-              <span className="truncate">Priority Topics</span>
+              <FaFire className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
+              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Priority Topics</span>
             </Link>
           </section>
 
@@ -314,8 +314,8 @@ const GlobalNavigationDrawer = ({
             </Link>
             <div className={`${actionButtonClassName} flex items-center justify-between gap-3`}>
               <span className="flex min-w-0 items-center gap-3">
-                <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
-                <span className="truncate">Special Aptitude Section</span>
+                <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
+                <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Special Aptitude Section</span>
               </span>
               <button
                 type="button"

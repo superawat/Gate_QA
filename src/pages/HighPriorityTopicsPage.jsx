@@ -4,6 +4,7 @@ import {
   FaBookOpen,
   FaBullseye,
   FaCheckCircle,
+  FaInfoCircle,
   FaLayerGroup,
   FaSearch,
   FaStar,
@@ -183,7 +184,7 @@ const MarksPointLabel = ({ x, y, value }) => {
   );
 };
 
-const SubjectMarksOverYearsChart = ({ items = [], validation }) => {
+const SubjectMarksOverYearsChart = ({ items = [] }) => {
   const isMobile = useIsMobileViewport();
   const defaultItem = items.find((item) => item.label === "Algorithms") || items[0];
   const [selectedKeys, setSelectedKeys] = useState(() => (defaultItem?.key ? [defaultItem.key] : []));
@@ -227,9 +228,6 @@ const SubjectMarksOverYearsChart = ({ items = [], validation }) => {
     });
     return row;
   });
-  const selectedLabels = selectedItems.map(({ item }) => item.label).join(", ");
-  const hasProgrammingInCSelected = selectedItems.some(({ item }) => item.label === "Programming in C");
-
   const handleToggleSubject = (key) => {
     setSelectedKeys((currentKeys) => {
       if (currentKeys.includes(key)) {
@@ -244,20 +242,12 @@ const SubjectMarksOverYearsChart = ({ items = [], validation }) => {
       <h3 className="text-center text-xl font-black leading-tight tracking-normal text-slate-800 sm:text-4xl">
         Subject Marks Over Years
       </h3>
-      <div className="mt-2 flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between sm:text-sm">
-        <span>
-          <strong className="font-black">{selectedItems.length}</strong> selected:{" "}
-          <span className="font-semibold">{selectedLabels}</span>
-        </span>
-        <span className={validation?.errorCount ? "font-bold text-rose-700" : "font-bold text-emerald-700"}>
-          {validation?.errorCount ? `${validation.errorCount} data issue(s)` : `${formatNumber(validation?.checkedCells || 0)} cells validated`}
-        </span>
+      <div className="mt-3 flex items-start gap-2.5 rounded-lg border border-amber-200 bg-amber-50 px-3.5 py-3 text-xs leading-5 text-amber-800 sm:text-sm font-semibold">
+        <FaInfoCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />
+        <div>
+          Programming in C appears as a separate category only in the 2026 data. Questions from earlier years related to C programming are primarily classified under Programming and Data Structures, so their weightage is reflected there instead.
+        </div>
       </div>
-      {hasProgrammingInCSelected ? (
-        <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold leading-5 text-amber-800">
-          Programming in C is a separate GateOverflow row with non-zero marks only in the 2026 papers. Older programming/C content remains represented in Programming and Data Structures.
-        </p>
-      ) : null}
       <div className="mt-2 h-[330px] w-full sm:h-[500px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
@@ -839,7 +829,6 @@ const HighPriorityTopicsPage = () => {
   const aptitudeTopics = dataset?.aptitudeTopics || [];
   const officialTrendItems = dataset?.officialTrendItems || [];
   const officialMarksItems = dataset?.officialMarksItems || officialTrendItems;
-  const officialDataValidation = dataset?.officialDataValidation;
   const officialPeriods = useMemo(() => {
     if (Array.isArray(dataset?.officialPeriods) && dataset.officialPeriods.length > 0) {
       return dataset.officialPeriods;
@@ -968,7 +957,7 @@ const HighPriorityTopicsPage = () => {
             title="Recent Trends"
             description="Paper-wise GATE CSE movement from the official marks table. This highlights areas that are receiving more marks recently."
           >
-            <SubjectMarksOverYearsChart items={officialMarksItems} validation={officialDataValidation} />
+            <SubjectMarksOverYearsChart items={officialMarksItems} />
             <div className="mt-4 sm:mt-6">
               <MarksDistributionBetweenSubjectsChart items={officialMarksItems} periods={officialPeriods} />
             </div>

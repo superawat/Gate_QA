@@ -286,4 +286,95 @@ describe("MockTestQuestion", () => {
     expect(screen.getByTestId("mock-option-selector-B").className).toContain("border-[#1e8f3f]");
     expect(screen.getByTestId("mock-option-selector-A").className).toContain("border-[#cc5d5d]");
   });
+
+  test("renders True/False options for NAT question tagged true-false", () => {
+    mockContextValue.currentQuestion = {
+      ...baseNatQuestion,
+      tags: ["true-false"],
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:333",
+      section: "CS",
+      type: "NAT",
+      marks: 1,
+      negativeMarks: 0,
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["go:333"] };
+    mockContextValue.responses = { "go:333": "1" };
+
+    render(<MockTestQuestion isReviewPhase={false} />);
+
+    expect(screen.getByText("NAT")).toBeTruthy();
+    expect(screen.queryByTestId("mock-nat-input")).toBeNull();
+    expect(screen.getByTestId("mock-nat-tf-TRUE")).toBeTruthy();
+    expect(screen.getByTestId("mock-nat-tf-FALSE")).toBeTruthy();
+
+    const trueSelector = screen.getByTestId("mock-nat-tf-TRUE");
+    const trueInput = trueSelector.querySelector('input[type="radio"]');
+    expect(trueInput.checked).toBe(true);
+
+    const falseSelector = screen.getByTestId("mock-nat-tf-FALSE");
+    fireEvent.click(falseSelector);
+    expect(mockContextValue.saveResponse).toHaveBeenCalledWith("go:333", "0");
+  });
+
+  test("detects legacy true-false NAT questions from the stem when tags are missing", () => {
+    mockContextValue.currentQuestion = {
+      ...baseNatQuestion,
+      question: "State whether the following statements are TRUE or FALSE:<br/><br/>Regularity is preserved under the operation of string reversal.",
+      tags: [],
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:80589",
+      section: "CS",
+      type: "NAT",
+      marks: 2,
+      negativeMarks: 0,
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["go:80589"] };
+    mockContextValue.responses = {};
+
+    render(<MockTestQuestion isReviewPhase={false} />);
+
+    expect(screen.getByText("NAT")).toBeTruthy();
+    expect(screen.queryByTestId("mock-nat-input")).toBeNull();
+    expect(screen.getByTestId("mock-nat-tf-TRUE")).toBeTruthy();
+    expect(screen.getByTestId("mock-nat-tf-FALSE")).toBeTruthy();
+  });
+
+  test("review mode shows TRUE/FALSE for expected and actual answers on true-false NAT question", () => {
+    mockContextValue.currentQuestion = {
+      ...baseNatQuestion,
+      tags: ["true-false"],
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:333",
+      section: "CS",
+      type: "NAT",
+      marks: 1,
+      negativeMarks: 0,
+    };
+    mockContextValue.currentQuestionResult = {
+      questionUid: "go:333",
+      status: "correct",
+      scoreDelta: 1,
+      response: "1",
+      timeSpentSeconds: 45,
+      answerRecord: {
+        type: "NAT",
+        answer: "1",
+      },
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["go:333"] };
+    mockContextValue.responses = { "go:333": "1" };
+
+    render(<MockTestQuestion isReviewPhase />);
+
+    expect(screen.getByText("Correct")).toBeTruthy();
+    expect(screen.getByText(/Your answer: TRUE/)).toBeTruthy();
+    expect(screen.getByText(/Expected answer: TRUE/)).toBeTruthy();
+  });
 });

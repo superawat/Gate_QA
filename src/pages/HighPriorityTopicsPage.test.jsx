@@ -297,24 +297,27 @@ describe("HighPriorityTopicsPage", () => {
 
     expect(await screen.findByRole("heading", { name: /^high priority topics$/i })).toBeTruthy();
     
-    // Use custom text matcher function for elements containing split text content
-    expect(await screen.findByText((content, element) => (
-      element?.textContent === "1 selected: Algorithms"
-    ))).toBeTruthy();
-
-    const cnButton = screen.getByRole("button", { name: /computer networks/i });
-    fireEvent.click(cnButton);
-
-    expect(await screen.findByText((content, element) => (
-      element?.textContent === "2 selected: Algorithms, Computer Networks"
-    ))).toBeTruthy();
+    // Verify C programming notice is displayed
+    expect(screen.getByText(/Programming in C appears as a separate category/i)).toBeTruthy();
 
     const algoButton = screen.getByRole("button", { name: /algorithms/i });
+    const cnButton = screen.getByRole("button", { name: /computer networks/i });
+
+    // Verify initial selection state using aria-pressed
+    expect(algoButton.getAttribute("aria-pressed")).toBe("true");
+    expect(cnButton.getAttribute("aria-pressed")).toBe("false");
+
+    // Click Computer Networks to toggle it on
+    fireEvent.click(cnButton);
+
+    expect(algoButton.getAttribute("aria-pressed")).toBe("true");
+    expect(cnButton.getAttribute("aria-pressed")).toBe("true");
+
+    // Click Algorithms to toggle it off
     fireEvent.click(algoButton);
 
-    expect(await screen.findByText((content, element) => (
-      element?.textContent === "1 selected: Computer Networks"
-    ))).toBeTruthy();
+    expect(algoButton.getAttribute("aria-pressed")).toBe("false");
+    expect(cnButton.getAttribute("aria-pressed")).toBe("true");
 
     const periodButton = screen.getByRole("button", { name: "2010" });
     fireEvent.click(periodButton);

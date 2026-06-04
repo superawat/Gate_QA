@@ -13,6 +13,10 @@ const OPTION_BLOCK_RE =
   /<(p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-E]\)?[\.\):])\s*[\s\S]*?<\/\1>/gi;
 const OPTION_BLOCK_CAPTURE_RE =
   /<(p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?\(?([A-E])\)?[\.\):]\s*([\s\S]*?)<\/\1>/gi;
+const OPTION_PRE_RE =
+  /<pre\b[^>]*>\s*\(?[A-E]\)?[\.\):]\s*[\s\S]*?<\/pre>/gi;
+const OPTION_PRE_CAPTURE_RE =
+  /<pre\b[^>]*>\s*\(?([A-E])\)?[\.\):]\s*([\s\S]*?)<\/pre>/gi;
 const OPTION_LINE_RE =
   /(?:^|\n|<br\s*\/?>)\s*(?:\(?[A-E]\)?[\.\):])\s+[^\n<]+(?=\s*(?:<br\s*\/?>|\n|$))/gi;
 const OPTION_LINE_CAPTURE_RE =
@@ -27,6 +31,10 @@ const TRAILING_OPTION_LIST_RE =
   /<(ol|ul)\b[^>]*>\s*(?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5}<\/\1>\s*(?:<br\s*\/?>|\s)*$/gi;
 const TRAILING_OPTION_LIST_CAPTURE_RE =
   /<(ol|ul)\b[^>]*>\s*((?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5})<\/\1>\s*(?:<br\s*\/?>|\s)*$/i;
+const GENERIC_TRAILING_OPTION_LIST_RE =
+  /<(ol|ul)\b[^>]*>\s*(?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5}<\/\1>(?=\s*(?:<\/(?:div|section|article)>|\s)*$)/gi;
+const GENERIC_TRAILING_OPTION_LIST_CAPTURE_RE =
+  /<(ol|ul)\b[^>]*>\s*((?:<li\b[^>]*>[\s\S]*?<\/li>\s*){2,5})<\/\1>(?=\s*(?:<\/(?:div|section|article)>|\s)*$)/i;
 const LI_CAPTURE_RE = /<li\b[^>]*>([\s\S]*?)<\/li>/gi;
 
 const normalizeOptionLabel = (value = "") => String(value || "").trim().toUpperCase();
@@ -129,7 +137,9 @@ export function hasEmbeddedOptions(html = "") {
     raw.match(ALPHA_OPTION_LIST_RE)
     || raw.match(OPTION_LIST_RE)
     || raw.match(OPTION_BLOCK_RE)
+    || raw.match(OPTION_PRE_RE)
     || raw.match(OPTION_LINE_RE)
+    || raw.match(GENERIC_TRAILING_OPTION_LIST_RE)
     || raw.match(TRAILING_OPTION_LIST_RE)
   );
 }
@@ -204,8 +214,27 @@ export function extractEmbeddedOptions(html = "") {
     return options;
   }
 
+  for (const match of raw.matchAll(OPTION_PRE_CAPTURE_RE)) {
+    pushOption(options, seen, match[1], match[2]);
+  }
+  if (options.length > 0) {
+    return options;
+  }
+
   for (const match of raw.matchAll(OPTION_LINE_CAPTURE_RE)) {
     pushOption(options, seen, match[1], match[2]);
+  }
+  if (options.length > 0) {
+    return options;
+  }
+
+  const genericTrailingListMatch = raw.match(GENERIC_TRAILING_OPTION_LIST_CAPTURE_RE);
+  if (genericTrailingListMatch) {
+    Array.from(String(genericTrailingListMatch[2] || "").matchAll(LI_CAPTURE_RE))
+      .slice(0, OPTION_LABELS.length)
+      .forEach((match, index) => {
+        pushOption(options, seen, OPTION_LABELS[index], match[1]);
+      });
   }
   if (options.length > 0) {
     return options;
@@ -247,6 +276,8 @@ export function stripEmbeddedOptions(html = "") {
   cleaned = removeRanges(cleaned, ranges);
   cleaned = cleaned.replace(OPTION_LIST_RE, "");
   cleaned = cleaned.replace(ALPHA_OPTION_LIST_RE, "");
+  cleaned = cleaned.replace(OPTION_PRE_RE, "");
+  cleaned = cleaned.replace(GENERIC_TRAILING_OPTION_LIST_RE, "");
   cleaned = cleaned.replace(TRAILING_OPTION_LIST_RE, "");
   cleaned = cleaned.replace(OPTION_BLOCK_RE, "");
   cleaned = cleaned.replace(OPTION_LINE_RE, "");

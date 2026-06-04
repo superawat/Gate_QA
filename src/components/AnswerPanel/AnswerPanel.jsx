@@ -84,6 +84,10 @@ export default function AnswerPanel({
     () => buildSelectableOptionLabels(question, answerRecord),
     [question, answerRecord]
   );
+  const isTrueFalse = useMemo(() => {
+    const tags = question?.tags || [];
+    return Array.isArray(tags) && tags.some(t => String(t || "").toLowerCase().trim() === "true-false");
+  }, [question]);
   const storageKey = useMemo(
     () => AnswerService.getStorageKeyForQuestion(question),
     [question]
@@ -270,18 +274,31 @@ export default function AnswerPanel({
         return;
       }
 
-      if (/^[1-9]$/.test(shortcutKey) && ["MCQ", "MSQ"].includes(answerRecord?.type)) {
-        const option = answerOptions[Number(shortcutKey) - 1];
-        if (!option) {
+      if (/^[1-9]$/.test(shortcutKey)) {
+        if (["MCQ", "MSQ"].includes(answerRecord?.type)) {
+          const option = answerOptions[Number(shortcutKey) - 1];
+          if (!option) {
+            return;
+          }
+          event.preventDefault();
+          if (answerRecord.type === "MCQ") {
+            handleMcqSelect(option);
+          } else {
+            handleMsqToggle(option, !msqSelection.includes(option));
+          }
+          return;
+        } else if (answerRecord?.type === "NAT" && isTrueFalse) {
+          if (shortcutKey === "1") {
+            event.preventDefault();
+            setNatInput("1");
+            setResult(null);
+          } else if (shortcutKey === "2") {
+            event.preventDefault();
+            setNatInput("0");
+            setResult(null);
+          }
           return;
         }
-        event.preventDefault();
-        if (answerRecord.type === "MCQ") {
-          handleMcqSelect(option);
-        } else {
-          handleMsqToggle(option, !msqSelection.includes(option));
-        }
-        return;
       }
 
       if (shortcutKey === "s" && isInteractive && hasValidInput) {
@@ -322,6 +339,7 @@ export default function AnswerPanel({
     hasValidInput,
     isInteractive,
     isStatusActionDisabled,
+    isTrueFalse,
     mcqSelection,
     msqSelection,
     natInput,
@@ -441,14 +459,38 @@ export default function AnswerPanel({
 
           {answerRecord.type === "NAT" && (
             <div>
-              <input
-                type="text"
-                value={natInput}
-                onChange={handleNatChange}
-                placeholder="Enter numeric answer"
-                aria-keyshortcuts="Enter"
-                className="w-full rounded border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
+              {isTrueFalse ? (
+                <div className="flex gap-2">
+                  {[
+                    { label: "TRUE", value: "1" },
+                    { label: "FALSE", value: "0" }
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => {
+                        setNatInput(option.value);
+                        setResult(null);
+                      }}
+                      className={`flex-1 rounded border px-3 py-2 text-center text-sm font-medium transition-colors ${natInput === option.value
+                        ? "border-blue-600 bg-blue-600 text-white"
+                        : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                        }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <input
+                  type="text"
+                  value={natInput}
+                  onChange={handleNatChange}
+                  placeholder="Enter numeric answer"
+                  aria-keyshortcuts="Enter"
+                  className="w-full rounded border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                />
+              )}
             </div>
           )}
         </div>
