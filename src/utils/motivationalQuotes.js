@@ -3,7 +3,7 @@
  * Featuring prominent sections of Indian wisdom and global pioneers of perseverance.
  * ONLY includes quotes by verified deceased figures, heavily emphasizing hard work and study.
  */
-export const STUDENT_QUOTES = [
+const RAW_STUDENT_QUOTES = [
   // --- DR. A.P.J. ABDUL KALAM ---
   "Dream is not that which you see while sleeping, it is something that does not let you sleep. — Dr. A.P.J. Abdul Kalam",
   "If you want to shine like a sun, first burn like a sun. — Dr. A.P.J. Abdul Kalam",
@@ -247,6 +247,75 @@ export const STUDENT_QUOTES = [
   "The secret of getting ahead is getting started. — Mark Twain",
   "Age is an issue of mind over matter. If you don't mind, it doesn't matter. — Mark Twain"
 ];
+
+const seededRandom = (seed) => {
+  let s = seed;
+  return () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+};
+
+const interleaveQuotes = (quotes) => {
+  const groups = {};
+  for (const quote of quotes) {
+    const parts = quote.split(/\s+(?:\u2014|-)\s+/);
+    const author = parts.length > 1 ? parts[parts.length - 1].trim() : "Unknown";
+    if (!groups[author]) groups[author] = [];
+    groups[author].push(quote);
+  }
+
+  // Seeded shuffle each group's quotes
+  const rand = seededRandom(42);
+  for (const author in groups) {
+    const arr = groups[author];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  const authorLists = Object.keys(groups).map(author => ({
+    author,
+    quotes: groups[author]
+  }));
+
+  const result = [];
+  let lastAuthor = null;
+
+  while (true) {
+    authorLists.sort((a, b) => b.quotes.length - a.quotes.length);
+
+    let selectedIndex = -1;
+    for (let i = 0; i < authorLists.length; i++) {
+      if (authorLists[i].quotes.length > 0 && authorLists[i].author !== lastAuthor) {
+        selectedIndex = i;
+        break;
+      }
+    }
+
+    if (selectedIndex === -1) {
+      const hasMore = authorLists.some(list => list.quotes.length > 0);
+      if (hasMore) {
+        const fallbackIndex = authorLists.findIndex(list => list.quotes.length > 0);
+        const quote = authorLists[fallbackIndex].quotes.pop();
+        result.push(quote);
+        lastAuthor = authorLists[fallbackIndex].author;
+        continue;
+      }
+      break;
+    }
+
+    const list = authorLists[selectedIndex];
+    const quote = list.quotes.pop();
+    result.push(quote);
+    lastAuthor = list.author;
+  }
+
+  return result;
+};
+
+export const STUDENT_QUOTES = interleaveQuotes(RAW_STUDENT_QUOTES);
 
 /**
  * Deterministically pick a quote for the student based on date and time

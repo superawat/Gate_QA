@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-07
+
+### Added
+- Created a custom domain shift guide (`DOMAIN_SHIFT.md`) in the repository root to document the upcoming migration from `superawat.github.io/Gate_QA/` to `gateqa.in`.
+
+### Changed
+- Reorganized the motivational quotes engine in `src/utils/motivationalQuotes.js` to randomize quote presentation. Implemented a deterministic seeded shuffle and a greedy interleaving algorithm (`interleaveQuotes`) to guarantee that quotes from the same author are never shown consecutively.
+- Corrected the new custom domain configuration from `GateQA.net` to `gateqa.in` across the codebase, updating the domain migration modal constants and headers.
+- Rephrased the domain shift notice popup to reassure users that only the URL is changing (keeping layouts and data exactly the same) and clearly instructing them to download and keep their JSON progress file saved on their local system.
+
 ## 2026-06-04
 
 ### Fixed

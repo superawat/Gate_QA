@@ -6,12 +6,15 @@ import {
     writeStorageJson,
     USER_STATE_STORAGE_KEYS,
 } from "../../utils/localStorageState";
+import {
+    importWorkspaceSnapshot,
+    saveWorkspaceFile,
+} from "../../utils/workspaceFile";
 import Toast from "../Toast/Toast";
 import ImportConfirmationModal from "./ImportConfirmationModal";
 
-const APP_VERSION = "1.0.0";
 const CURRENT_SCHEMA_VERSION = 1;
-const MAX_IMPORT_SIZE_BYTES = 2 * 1024 * 1024; // 2 MB
+const MAX_IMPORT_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB for full workspace backups
 
 /**
  * Build a YYYY-MM-DD date string for filenames.
@@ -53,6 +56,53 @@ function dedupeStringArray(arr) {
         }
     }
     return out;
+}
+
+function isWorkspaceBackupPayload(payload) {
+    return Boolean(
+        payload
+        && typeof payload === "object"
+        && payload.data
+        && typeof payload.data === "object"
+        && (
+            payload.data.gate
+            || payload.data.aptitude
+            || payload.data.sessions
+            || payload.data.preferences
+            || Array.isArray(payload.data.mockHistory)
+        )
+    );
+}
+
+function isLegacyProgressPayload(payload) {
+    return Boolean(
+        payload
+        && typeof payload === "object"
+        && Array.isArray(payload.solvedQuestions)
+        && Array.isArray(payload.bookmarkedQuestions)
+    );
+}
+
+function getImportedCounts(payload) {
+    if (isWorkspaceBackupPayload(payload)) {
+        const gate = payload.data?.gate || {};
+        const aptitude = payload.data?.aptitude || {};
+        return {
+            solved: dedupeStringArray([
+                ...(Array.isArray(gate.solvedQuestions) ? gate.solvedQuestions : []),
+                ...(Array.isArray(aptitude.solvedQuestions) ? aptitude.solvedQuestions : []),
+            ]).length,
+            bookmarked: dedupeStringArray([
+                ...(Array.isArray(gate.bookmarkedQuestions) ? gate.bookmarkedQuestions : []),
+                ...(Array.isArray(aptitude.bookmarkedQuestions) ? aptitude.bookmarkedQuestions : []),
+            ]).length,
+        };
+    }
+
+    return {
+        solved: dedupeStringArray(payload?.solvedQuestions).length,
+        bookmarked: dedupeStringArray(payload?.bookmarkedQuestions).length,
+    };
 }
 
 export default function ProgressManager() {
@@ -105,39 +155,16 @@ export default function ProgressManager() {
     }, []);
 
     // ── EXPORT: JSON ───────────────────────────────────────────────────────
-    const handleExportJson = useCallback(() => {
-        const solved = readStorageJson(storageKeys.solved, []);
-        const bookmarked = readStorageJson(storageKeys.bookmarked, []);
-        const metadata = readStorageJson(storageKeys.metadata, {});
-        const progress = readStorageJson(storageKeys.progress, {});
-
-        // Include all user data for full portability
-        const userNotes = readStorageJson("gate_qa_user_notes", {});
-        const mockHistory = readStorageJson("gateqa_mock_history_v1", []);
-        const streakFreeze = readStorageJson("gateqa_streak_freeze_v1", {});
-        const dailyGoal = readStorageJson("gateqa_daily_goal_v1", {});
-
-        const payload = {
-            schemaVersion: CURRENT_SCHEMA_VERSION,
-            appVersion: APP_VERSION,
-            exportedAt: new Date().toISOString(),
-            solvedQuestions: dedupeStringArray(solved),
-            bookmarkedQuestions: dedupeStringArray(bookmarked),
-            metadata,
-            progress,
-        };
-        if (includeExtendedProgress) {
-            payload.userNotes = userNotes;
-            payload.mockHistory = mockHistory;
-            payload.streakFreeze = streakFreeze;
-            payload.dailyGoal = dailyGoal;
+    const handleExportJson = useCallback(async () => {
+        try {
+            await saveWorkspaceFile({
+                suggestedName: `${progressExportPrefix}-${todayStamp()}.json`,
+            });
+            showToast("Workspace backup exported successfully.");
+        } catch (error) {
+            showToast(error?.name === "AbortError" ? "Export cancelled." : "Failed to export workspace backup.");
         }
-
-        const json = JSON.stringify(payload, null, 2);
-        const blob = new Blob([json], { type: "application/json" });
-        downloadBlob(blob, `${progressExportPrefix}-${todayStamp()}.json`);
-        showToast("Progress exported successfully.");
-    }, [includeExtendedProgress, progressExportPrefix, showToast, storageKeys.bookmarked, storageKeys.metadata, storageKeys.progress, storageKeys.solved]);
+    }, [progressExportPrefix, showToast]);
 
     // ── EXPORT: CSV (view-only) ────────────────────────────────────────────
     const handleExportCsv = useCallback(() => {
@@ -198,7 +225,7 @@ export default function ProgressManager() {
 
             // Size guard
             if (file.size > MAX_IMPORT_SIZE_BYTES) {
-                showToast("File too large — max 2 MB for a progress file.");
+                showToast("File too large - max 10 MB for a workspace backup.");
                 return;
             }
 
@@ -218,25 +245,32 @@ export default function ProgressManager() {
                     return;
                 }
 
-                // Validate required fields
-                if (
-                    !Array.isArray(parsed.solvedQuestions) ||
-                    !Array.isArray(parsed.bookmarkedQuestions)
-                ) {
+                const isWorkspaceBackup = isWorkspaceBackupPayload(parsed);
+                const isLegacyProgress = isLegacyProgressPayload(parsed);
+
+                if (!isWorkspaceBackup && !isLegacyProgress) {
                     showToast("Invalid file format: Missing required progress data.");
                     return;
                 }
 
                 // Schema version logic
                 let schemaWarning = null;
-                if (parsed.schemaVersion == null) {
+                if (isWorkspaceBackup) {
+                    schemaWarning =
+                        "This is a full workspace backup. Use Replace on the new domain to restore all progress, notes, mock history, goals, and streak data.";
+                } else if (parsed.schemaVersion == null) {
                     schemaWarning =
                         "This file has no schema version. It may be from a different app. Proceeding in best-effort mode.";
                 } else if (parsed.schemaVersion > CURRENT_SCHEMA_VERSION) {
                     schemaWarning = `This file uses schema v${parsed.schemaVersion} (app knows v${CURRENT_SCHEMA_VERSION}). Some data may not be fully understood.`;
                 }
 
-                setModalData({ parsed, schemaWarning });
+                setModalData({
+                    parsed,
+                    schemaWarning,
+                    isWorkspaceBackup,
+                    mergeDisabled: isWorkspaceBackup,
+                });
             };
 
             reader.readAsText(file);
@@ -248,6 +282,24 @@ export default function ProgressManager() {
     const performImport = useCallback(
         (strategy) => {
             if (!modalData?.parsed) return;
+
+            if (modalData.isWorkspaceBackup) {
+                const result = importWorkspaceSnapshot(modalData.parsed);
+                if (!result.ok) {
+                    showToast("Error: Failed to restore workspace backup.");
+                    setModalData(null);
+                    return;
+                }
+
+                refreshProgressState();
+                setModalData(null);
+                const solvedTotal = Number(result.summary?.gateSolved || 0) + Number(result.summary?.aptitudeSolved || 0);
+                const bookmarkedTotal = Number(result.summary?.gateBookmarked || 0) + Number(result.summary?.aptitudeBookmarked || 0);
+                showToast(
+                    `Workspace restored - ${solvedTotal} solved, ${bookmarkedTotal} bookmarked.`
+                );
+                return;
+            }
 
             const importedSolved = dedupeStringArray(
                 modalData.parsed.solvedQuestions
@@ -339,7 +391,7 @@ export default function ProgressManager() {
 
             const label = strategy === "replace" ? "replaced" : "merged";
             showToast(
-                `Progress ${label} — ${finalSolved.length} solved, ${finalBookmarked.length} bookmarked.`
+                `Progress ${label} - ${finalSolved.length} solved, ${finalBookmarked.length} bookmarked.`
             );
         },
         [includeExtendedProgress, modalData, refreshProgressState, showToast, storageKeys.bookmarked, storageKeys.metadata, storageKeys.progress, storageKeys.solved]
@@ -399,13 +451,13 @@ export default function ProgressManager() {
                 {helpOpen && (
                     <div className="mt-2 space-y-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-2.5 text-[11px] text-[color:var(--color-text-muted)] shadow-sm">
                         <div className="leading-snug">
-                            <span className="font-semibold text-gray-800">Export JSON</span> — Downloads a backup of your solved and bookmarked questions. Use it to transfer progress to another device.
+                            <span className="font-semibold text-gray-800">Export JSON</span> - Downloads a full workspace backup, including progress, notes, mocks, goals, and streak data.
                         </div>
                         <div className="leading-snug">
-                            <span className="font-semibold text-gray-800">Export CSV</span> — Downloads a read-only spreadsheet with year, subject, subtopic, and type for each question. Not importable.
+                            <span className="font-semibold text-gray-800">Export CSV</span> - Downloads a read-only spreadsheet with year, subject, subtopic, and type for each question. Not importable.
                         </div>
                         <div className="leading-snug">
-                            <span className="font-semibold text-gray-800">Import</span> — Upload a previously exported .json file. You can merge with or replace your current progress.
+                            <span className="font-semibold text-gray-800">Import</span> - Upload a previously exported .json file. Full workspace backups restore with Replace.
                         </div>
                     </div>
                 )}
@@ -427,16 +479,13 @@ export default function ProgressManager() {
                 currentSolvedCount={solvedQuestionIds.length}
                 currentBookmarkedCount={bookmarkedQuestionIds.length}
                 importedSolvedCount={
-                    modalData
-                        ? dedupeStringArray(modalData.parsed.solvedQuestions).length
-                        : 0
+                    modalData ? getImportedCounts(modalData.parsed).solved : 0
                 }
                 importedBookmarkedCount={
-                    modalData
-                        ? dedupeStringArray(modalData.parsed.bookmarkedQuestions).length
-                        : 0
+                    modalData ? getImportedCounts(modalData.parsed).bookmarked : 0
                 }
                 schemaWarning={modalData?.schemaWarning}
+                mergeDisabled={modalData?.mergeDisabled}
             />
 
             <Toast message={toast.message} visible={toast.visible} />

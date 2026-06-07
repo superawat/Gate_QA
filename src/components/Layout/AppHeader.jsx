@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { FaExclamationTriangle } from "react-icons/fa";
 import { FiMoon, FiSun } from "react-icons/fi";
 
+import DomainShiftNotice from "./DomainShiftNotice";
 import GlobalNavigationDrawer from "./GlobalNavigationDrawer";
 import HamburgerButton from "./HamburgerButton";
 import { APTITUDE_ENABLED_STORAGE_KEY } from "../../utils/aptitudePreference";
@@ -19,6 +21,9 @@ import {
 } from "../../utils/workspaceFile";
 
 const THEME_STORAGE_KEY = "gate_qa_theme";
+const DOMAIN_SHIFT_SEEN_KEY = "gateqa_domain_shift_notice_seen_v2";
+const DOMAIN_SHIFT_TARGET_DATE = "2026-06-14T00:00:00+05:30";
+const DOMAIN_SHIFT_IS_COMPLETE = false;
 const PRACTICE_BADGE_QUERY_KEYS = [
   "years",
   "subjects",
@@ -38,6 +43,25 @@ const navLinkClassName = ({ isActive }) => (
       : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
   }`
 );
+
+const getDomainShiftCountdown = () => {
+  if (DOMAIN_SHIFT_IS_COMPLETE) {
+    return null;
+  }
+
+  const targetTime = new Date(DOMAIN_SHIFT_TARGET_DATE).getTime();
+  if (!Number.isFinite(targetTime)) {
+    return null;
+  }
+
+  const remainingMs = targetTime - Date.now();
+  if (remainingMs <= 0) {
+    return "Migration day";
+  }
+
+  const days = Math.ceil(remainingMs / (1000 * 60 * 60 * 24));
+  return `${days} ${days === 1 ? "day" : "days"} remaining`;
+};
 
 const resolveInitialTheme = () => {
   if (typeof window === "undefined") {
@@ -109,6 +133,8 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   const [installPromptEvent, setInstallPromptEvent] = useState(null);
   const [isStandaloneDisplay, setIsStandaloneDisplay] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDomainShiftOpen, setIsDomainShiftOpen] = useState(false);
+  const [domainShiftCountdown, setDomainShiftCountdown] = useState(getDomainShiftCountdown);
   const [drawerStatus, setDrawerStatus] = useState("");
   const workspaceFileInputRef = useRef(null);
   const isMockWindowRoute =
@@ -118,6 +144,35 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   useEffect(() => {
     applyDocumentTheme(appliedTheme);
   }, [appliedTheme]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const updateCountdown = () => {
+      setDomainShiftCountdown(getDomainShiftCountdown());
+    };
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 60 * 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (!domainShiftCountdown || typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      if (window.localStorage.getItem(DOMAIN_SHIFT_SEEN_KEY) === "1") {
+        return;
+      }
+      window.localStorage.setItem(DOMAIN_SHIFT_SEEN_KEY, "1");
+    } catch {}
+
+    setIsDomainShiftOpen(true);
+    trackEvent("domain_shift_notice_auto_open", { source: "header" });
+  }, [domainShiftCountdown]);
 
   useEffect(() => {
     if (
@@ -261,6 +316,11 @@ const AppHeader = ({ onHomeNavigate = null }) => {
 
   const handleCloseDrawer = useCallback(() => {
     setIsDrawerOpen(false);
+  }, []);
+
+  const handleOpenDomainShiftNotice = useCallback(() => {
+    setIsDomainShiftOpen(true);
+    trackEvent("domain_shift_notice_open", { source: "header_countdown" });
   }, []);
 
   const handleWorkspaceImportResult = useCallback((result) => {
@@ -484,6 +544,18 @@ const AppHeader = ({ onHomeNavigate = null }) => {
             </button>
           ) : null}
 
+          {domainShiftCountdown ? (
+            <button
+              type="button"
+              onClick={handleOpenDomainShiftNotice}
+              className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2.5 py-1 text-[11px] font-semibold text-[color:var(--color-warning-text)] transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:hover:bg-amber-400/10 sm:min-h-[40px] sm:px-3 sm:text-xs"
+              aria-label={`Open gateqa.in migration notice, ${domainShiftCountdown}`}
+            >
+              <FaExclamationTriangle className="size-2.5 text-amber-500 sm:size-3" aria-hidden="true" />
+              <span className="whitespace-nowrap">{domainShiftCountdown}</span>
+            </button>
+          ) : null}
+
           {!isMockWindowRoute ? (
             <button
               type="button"
@@ -545,6 +617,10 @@ const AppHeader = ({ onHomeNavigate = null }) => {
       onExportCsv={handleExportCsv}
       onPrint={handlePrintPage}
       statusMessage={drawerStatus}
+    />
+    <DomainShiftNotice
+      isOpen={isDomainShiftOpen}
+      onClose={() => setIsDomainShiftOpen(false)}
     />
     </>
   );

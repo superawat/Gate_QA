@@ -33,6 +33,60 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-SOLVE-HARDEN: Solve Page Hydration Hardening
+
+- Status: Fixed on 2026-06-04
+- Severity: High
+- Source: Observed / User Report
+- Where:
+  `src/pages/SolvePage.jsx`
+  `src/contexts/SessionContext.tsx`
+  `src/contexts/SessionContext.test.jsx`
+  `src/pages/SolvePage.test.jsx`
+- Resolution:
+  Hardened the Solve page to handle missing or stale question UIDs gracefully. If detail hydration reports a missing question, the question is now pruned from the active session queue and the user is redirected to the next available question instead of rendering a broken detail card. Added a session-level cleanup API to prune random/ordered practice queues without disrupting the session.
+- Verification:
+  Verified with targeted unit/E2E test suite.
+
+### BUG-NAT-TF: Legacy True/False NAT Mock Question Scoring
+
+- Status: Fixed on 2026-06-04
+- Severity: High
+- Source: Observed / Mock Audit
+- Where:
+  `src/components/MockTest/MockTestQuestion.jsx`
+  `src/components/MockTest/MockTestQuestion.test.jsx`
+- Resolution:
+  Corrected mock scoring and choice rendering for legacy True/False mock questions that were typed as NAT. Enabled choice rendering for TRUE/FALSE buttons, mapping TRUE to `1` / FALSE to `0` for evaluation while keeping the NAT label.
+- Verification:
+  Mock validation tests pass cleanly.
+
+### BUG-DRW-ACC: Drawer Accent Layout Refinement
+
+- Status: Fixed on 2026-06-04
+- Severity: Low
+- Source: UI Polish
+- Where:
+  `src/components/Layout/GlobalNavigationDrawer.jsx`
+- Resolution:
+  Updated drawer labels for `Priority Topics` and `Special Aptitude Section` to use a single solid sky-blue accent, removing unnecessary rendering and animation overhead.
+- Verification:
+  Visual verification in dev build.
+
+### BUG-MCK-READINESS: Mock Paper Readiness Gaps
+
+- Status: Fixed on 2026-06-04
+- Severity: High
+- Source: Audit
+- Where:
+  `public/mock_catalog_v1.json`
+  `data/answers/answers_by_question_uid_v1.json`
+  `data/answers/manual-answers-patch-v1.json`
+- Resolution:
+  Corrected mock paper readiness gaps by repairing five malformed answer/type records and expanding option extraction to handle SQL `<pre>` choices and trailing list choices. `2025 Set 1`, `2025 Set 2`, and `2024 Set 2` now have 65/65 scorable mock questions, bringing ready papers to 31/50.
+- Verification:
+  `npm run build:public-artifacts` and `npm run qa:validate-public-parity` passed.
+
 ### BUG-MCK2: Embedded Options and Metadata Resolvers
 
 - Status: Fixed on 2026-06-02
