@@ -4,6 +4,12 @@ const { getSampleAptitudeQuestion, getSampleQuestion } = require("./helpers");
 const APP_BASE = "/Gate_QA";
 const appPath = (route = "/") => `${APP_BASE}${route}`;
 
+test.beforeEach(async ({ context }) => {
+  await context.addInitScript(() => {
+    window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
+  });
+});
+
 async function waitForPracticeList(page) {
   await expect(
     page.getByRole("heading", { name: /Explore questions/i })

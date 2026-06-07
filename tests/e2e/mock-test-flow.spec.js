@@ -3,6 +3,12 @@ const { test, expect } = require("@playwright/test");
 const APP_BASE = "/Gate_QA";
 const appPath = (route = "/") => `${APP_BASE}${route}`;
 
+test.beforeEach(async ({ context }) => {
+  await context.addInitScript(() => {
+    window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
+  });
+});
+
 async function openMockPortal(page) {
   await page.goto(appPath("/"));
   await expect(page.getByRole("button", { name: /Mock Test/i })).toBeVisible({
