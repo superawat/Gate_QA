@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="Practice all 130 GATE 2017 CS questions across 2 sets with subject-wise filters, solutions, and offline support." />
+  <meta name="robots" content="index,follow" />
+  <script>
+    (function () {
+      try {
+        var isMockWindow = /\/mock(?:\/|$)/.test(window.location.pathname);
+        var storedTheme = window.localStorage.getItem("gate_qa_theme");
+        var isStoredThemeValid = storedTheme === "light" || storedTheme === "dark";
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = isMockWindow
+          ? "light"
+          : (isStoredThemeValid ? storedTheme : (prefersDark ? "dark" : "light"));
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    }());
+  </script>
+  <title>GATE 2017 CS Questions - PYQ with Solutions | GateQA</title>
+  <link rel="canonical" href="https://gateqa.in/gate-2017-pyq" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    pre {
+      overflow: auto;
+    }
+
+    /* ── Static splash screen (hides FOUC until React mounts) ─────── */
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.875rem;
+      background: #f9fafb;
+      transition: opacity 280ms ease, visibility 280ms ease;
+    }
+
+    :root[data-theme="dark"] #app-splash {
+      background: #0f172a;
+    }
+
+    #app-splash.app-splash--hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #app-splash-spinner {
+      position: relative;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: #1e293b;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #app-splash-spinner::before {
+      content: "";
+      position: absolute;
+      inset: 0.65rem;
+      border: 2px solid #e0f2fe;
+      border-top-color: #0ea5e9;
+      border-radius: 999px;
+      animation: app-splash-spin 720ms linear infinite;
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::before {
+      border-color: rgba(14, 165, 233, 0.2);
+      border-top-color: #38bdf8;
+    }
+
+    #app-splash-spinner::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      transform: translate(-50%, -50%);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::after {
+      background: #38bdf8;
+    }
+
+    #app-splash-text {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    :root[data-theme="dark"] #app-splash-text {
+      color: #94a3b8;
+    }
+
+    @keyframes app-splash-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #app-splash-spinner::before {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function (location) {
+      if (location.search[1] !== "/") {
+        return;
+      }
+
+      var decoded = location.search
+        .slice(1)
+        .split("&")
+        .map(function (segment) {
+          return segment.replace(/~and~/g, "&");
+        })
+        .join("?");
+
+      window.history.replaceState(
+        null,
+        "",
+        location.pathname.slice(0, -1) + decoded + location.hash
+      );
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/index-DHt9gKRW.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-gsO-yNs2.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-misc-BRfbvqnD.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-seo-CWRlDXw5.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-router-Cbw40Bqt.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-icons-C_pnZN_O.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-preload-helper-CVfkMyKi.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-tuC18zNe.css">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GATE 2017 CS Questions - PYQ with Solutions | GateQA" />
+  <meta property="og:description" content="Practice all 130 GATE 2017 CS questions across 2 sets with subject-wise filters, solutions, and offline support." />
+  <meta property="og:image" content="https://gateqa.in/og-cover.png" />
+  <meta property="og:url" content="https://gateqa.in/gate-2017-pyq" />
+  <meta property="og:site_name" content="GateQA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GATE 2017 CS Questions - PYQ with Solutions | GateQA" />
+  <meta name="twitter:description" content="Practice all 130 GATE 2017 CS questions across 2 sets with subject-wise filters, solutions, and offline support." />
+  <meta name="twitter:image" content="https://gateqa.in/og-cover.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gateqa.in/"},{"@type":"ListItem","position":2,"name":"GATE PYQ","item":"https://gateqa.in/gate-pyq"},{"@type":"ListItem","position":3,"name":"GATE 2017","item":"https://gateqa.in/gate-2017-pyq"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"GATE 2017 CS Questions - PYQ with Solutions | GateQA","description":"Practice all 130 GATE 2017 CS questions across 2 sets with subject-wise filters, solutions, and offline support.","url":"https://gateqa.in/gate-2017-pyq","isPartOf":{"@type":"WebSite","name":"GateQA","url":"https://gateqa.in"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What was the structure of the GATE CS 2017 paper?","acceptedAnswer":{"@type":"Answer","text":"The GATE CS 2017 paper consisted of 65 questions worth a total of 100 marks. It contained technical computer science questions along with General Aptitude questions."}},{"@type":"Question","name":"Why should I practice GATE CS 2017 previous year questions?","acceptedAnswer":{"@type":"Answer","text":"Practicing the actual 2017 paper helps you understand the exam pattern, question style, topic distribution, and helps you practice time management under simulated conditions."}},{"@type":"Question","name":"Are detailed solutions available for GATE CS 2017 questions on GateQA?","acceptedAnswer":{"@type":"Answer","text":"Yes, GateQA provides full interactive practice, instant answer checks, and step-by-step solutions for all questions in the 2017 paper."}}]}</script>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+  <main class="seo-prerender" style="max-width: 860px; margin: 0 auto; padding: 32px 20px; font-family: Segoe UI, Inter, system-ui, sans-serif; line-height: 1.6; color: #0f172a;">
+    <p style="margin: 0 0 8px; color: #0369a1; font-size: 13px; font-weight: 700; text-transform: uppercase;">GATE CS Paper</p>
+    <h1 style="margin: 0; font-size: 36px; line-height: 1.15;">GATE 2017 CS Questions</h1>
+    <p style="margin: 16px 0 0; color: #475569; font-size: 17px;">Practice all 130 GATE 2017 CS questions across 2 sets with subject-wise filters, solutions, and offline support.</p>
+    <nav style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;"><a href="/practice?years=2017" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">Practice GATE 2017</a><a href="/mock?stage=setup" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">Take mock test</a></nav>
+    <ul style="margin-top: 24px; color: #334155;"><li>130 questions</li><li>2 paper sets</li><li>Total marks: 100</li></ul>
+<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Overview &amp; Analysis</h2>
+        <p style="color: #334155; margin-bottom: 16px;">The Graduate Aptitude Test in Engineering (GATE) Computer Science exam for the year 2017 is an essential benchmark paper for aspiring post-graduates and public-sector engineers. The questions in this paper cover the entire CSE syllabus, including core engineering subjects and math.</p><p style="color: #334155; margin-bottom: 16px;">Practicing the full 2017 paper as a mock test or through topic-wise questions allows you to evaluate your strengths and target weak areas before the actual exam.</p>
+       </div>
+<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Frequently Asked Questions (FAQ)</h2>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: What was the structure of the GATE CS 2017 paper?</h3>
+            <p style="color: #334155; margin: 0;">A: The GATE CS 2017 paper consisted of 65 questions worth a total of 100 marks. It contained technical computer science questions along with General Aptitude questions.</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Why should I practice GATE CS 2017 previous year questions?</h3>
+            <p style="color: #334155; margin: 0;">A: Practicing the actual 2017 paper helps you understand the exam pattern, question style, topic distribution, and helps you practice time management under simulated conditions.</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Are detailed solutions available for GATE CS 2017 questions on GateQA?</h3>
+            <p style="color: #334155; margin: 0;">A: Yes, GateQA provides full interactive practice, instant answer checks, and step-by-step solutions for all questions in the 2017 paper.</p>
+          </div>
+        
+       </div>
+    <p style="margin-top: 36px; border-top: 1px solid #e2e8f0; padding-top: 16px; color: #64748b; font-size: 14px;">This static SEO snapshot loads the full interactive GateQA app when JavaScript is available.</p>
+  </main>
+</div>
+</body>
+
+</html>

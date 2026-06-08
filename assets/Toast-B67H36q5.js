@@ -1,1 +1,0 @@
-import{j as o}from"./vendor-react-CcRTwbcY.js";function i({message:t,visible:e}){return o.jsx("div",{className:`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-800 text-white text-sm px-4 py-2 rounded-full shadow-lg transition-opacity duration-300 ${e?"opacity-100":"opacity-0 pointer-events-none"}`,role:"status","aria-live":"polite",children:t})}export{i as T};
