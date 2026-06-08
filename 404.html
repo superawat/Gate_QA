@@ -5,14 +5,15 @@
   <title>GateQA</title>
   <script>
     (function () {
-      var pathSegmentsToKeep = 1;
+      var pathSegmentsToKeep = 0;
       var locationPath = window.location.pathname.split("/").filter(Boolean);
       var basePath = locationPath.slice(0, pathSegmentsToKeep).join("/");
       var routePath = locationPath.slice(pathSegmentsToKeep).join("/");
       var query = window.location.search
         .slice(1)
         .replace(/&/g, "~and~");
-      var redirect = "/" + basePath + "/?/" + routePath;
+      var basePrefix = basePath ? "/" + basePath : "";
+      var redirect = basePrefix + "/?/" + routePath;
 
       if (query) {
         redirect += "&" + query;
