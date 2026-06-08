@@ -41,6 +41,9 @@ export default defineConfig(async ({ mode }) => {
             if (id.includes('better-react-mathjax') || id.includes('mathjax')) {
               return 'vendor-mathjax';
             }
+            if (id.includes('react-helmet-async') || id.includes('react-helmet')) {
+              return 'vendor-seo';
+            }
             if (
               id.includes('/react/') ||
               id.includes('/react-dom/') ||

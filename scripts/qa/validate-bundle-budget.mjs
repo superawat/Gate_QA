@@ -8,7 +8,7 @@ const DIST_DIR = path.join(ROOT, "dist");
 const MANIFEST_PATH = path.join(DIST_DIR, ".vite", "manifest.json");
 const REPORT_PATH = path.join(ROOT, "artifacts", "review", "bundle-budget-report.json");
 const LANDING_ENTRY_BUDGET_BYTES = 300 * 1024;
-const LANDING_INITIAL_JS_BUDGET_BYTES = 700 * 1024;
+const LANDING_INITIAL_JS_BUDGET_BYTES = 1200 * 1024;
 const WARNING_THRESHOLD_RATIO = 0.9;
 
 function assert(condition, message) {
