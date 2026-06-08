@@ -45,6 +45,10 @@ jobs:
     - run: npm run qa:validate-public-parity
     - name: Verify nojekyll marker
       run: test -f dist/.nojekyll
+    - name: Verify custom domain marker
+      run: |
+        test -f dist/CNAME
+        grep -qx 'gateqa.in' dist/CNAME
     - name: Verify calculator bundle
       run: test -f dist/calculator/calculator.html
     - name: Verify generated public artifacts

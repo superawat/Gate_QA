@@ -2,7 +2,7 @@ const { defineConfig, devices } = require("@playwright/test");
 
 const HOST = "127.0.0.1";
 const PORT = 4173;
-const BASE_URL = `http://${HOST}:${PORT}/Gate_QA`;
+const BASE_URL = `http://${HOST}:${PORT}`;
 
 module.exports = defineConfig({
   testDir: "./tests/e2e",

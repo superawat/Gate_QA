@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 const AxeBuilder = require("@axe-core/playwright").default;
 const { getSampleQuestion } = require("./helpers");
 
-const APP_BASE = "/Gate_QA";
+const APP_BASE = "";
 const appPath = (route = "/") => `${APP_BASE}${route}`;
 
 async function waitForPracticeList(page) {

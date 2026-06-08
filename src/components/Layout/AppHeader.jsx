@@ -23,7 +23,7 @@ import {
 const THEME_STORAGE_KEY = "gate_qa_theme";
 const DOMAIN_SHIFT_SEEN_KEY = "gateqa_domain_shift_notice_seen_v2";
 const DOMAIN_SHIFT_TARGET_DATE = "2026-06-14T00:00:00+05:30";
-const DOMAIN_SHIFT_IS_COMPLETE = false;
+const DOMAIN_SHIFT_IS_COMPLETE = true;
 const PRACTICE_BADGE_QUERY_KEYS = [
   "years",
   "subjects",

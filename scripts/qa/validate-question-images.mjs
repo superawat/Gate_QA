@@ -159,7 +159,7 @@ function main() {
     strategy: {
       chosen: "Keep local mirrored images in public/question-images/",
       rationale: [
-        "All current question-image references resolve to local /Gate_QA/question-images/* paths.",
+        "All current question-image references resolve to local /question-images/* paths.",
         "Remote GateOverflow blob URLs would reintroduce a runtime network dependency and CORS/offline risk.",
         "A CDN/external-source switch is unnecessary while every local file is still referenced.",
       ],

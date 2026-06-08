@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-const APP_BASE = "/Gate_QA";
+const APP_BASE = "";
 const appPath = (route = "/") => `${APP_BASE}${route}`;
 
 test.beforeEach(async ({ context }) => {
@@ -15,7 +15,7 @@ async function openMockPortal(page) {
     timeout: 15000,
   });
   await page.getByRole("button", { name: /Mock Test/i }).click();
-  await expect(page).toHaveURL(/\/Gate_QA\/mock\?stage=setup/, { timeout: 15000 });
+  await expect(page).toHaveURL(/\/mock\?stage=setup/, { timeout: 15000 });
 }
 
 async function continueToFullMockSetup(page) {
@@ -62,7 +62,7 @@ test("starting a full mock shows the exam shell", async ({ page }) => {
   await expect(startButton).toBeEnabled({ timeout: 15000 });
   await startButton.click();
 
-  await expect(page).toHaveURL(/\/Gate_QA\/mock\?stage=exam/, { timeout: 15000 });
+  await expect(page).toHaveURL(/\/mock\?stage=exam/, { timeout: 15000 });
   await expect(page.getByTestId("mock-timer-value")).toBeVisible({ timeout: 15000 });
   await expect(page.getByRole("button", { name: /instructions/i })).toBeVisible({
     timeout: 15000,
@@ -79,7 +79,7 @@ test("insights page loads from the landing CTA", async ({ page }) => {
   });
   await page.getByRole("button", { name: /Performance Insights/i }).click();
 
-  await expect(page).toHaveURL(/\/Gate_QA\/insights/, { timeout: 15000 });
+  await expect(page).toHaveURL(/\/insights/, { timeout: 15000 });
   await expect(page.locator("div.bg-sky-50:has-text('Insights')")).toBeVisible({
     timeout: 15000,
   });

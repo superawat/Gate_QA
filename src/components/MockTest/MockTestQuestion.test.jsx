@@ -136,7 +136,7 @@ describe("MockTestQuestion", () => {
 
     const optionImages = container.querySelectorAll(".mock-option-text img");
     expect(optionImages.length).toBe(4);
-    expect(optionImages[0].getAttribute("src")).toBe("/Gate_QA/question-images/a.webp");
+    expect(optionImages[0].getAttribute("src")).toBe("/question-images/a.webp");
   });
 
   test("normalizes paragraph-labeled options without duplicating them in the stem", () => {

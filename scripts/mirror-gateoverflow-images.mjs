@@ -7,7 +7,7 @@ const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
 const IMAGE_DIR = path.join(PUBLIC_DIR, "question-images");
 const REPORT_PATH = path.join(ROOT, "artifacts", "review", "local-image-mirror-report.json");
-const LOCAL_IMAGE_BASE = "/Gate_QA/question-images";
+const LOCAL_IMAGE_BASE = "/question-images";
 
 const TARGET_FILES = [
   path.join(PUBLIC_DIR, "questions-with-answers.json"),
@@ -107,7 +107,7 @@ async function downloadBlobImage(blobId, sourceUrl = "") {
   const url = normalizeBlobUrl(blobId, sourceUrl);
   const response = await fetch(url, {
     headers: {
-      "user-agent": "GateQA-image-mirror/1.0 (+https://superawat.github.io/Gate_QA/)",
+      "user-agent": "GateQA-image-mirror/1.0 (+https://gateqa.in/)",
     },
   });
 

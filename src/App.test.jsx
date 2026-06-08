@@ -133,7 +133,7 @@ describe("App routes", () => {
     mocks.mockTestModeEnabled = false;
     window.localStorage.clear();
     window.scrollTo = vi.fn();
-    window.history.replaceState({}, "", "/Gate_QA/");
+    window.history.replaceState({}, "", "/");
   });
 
   test("loads only the manifest on the Home route", async () => {
@@ -149,7 +149,7 @@ describe("App routes", () => {
   });
 
   test("initializes questions on the Explore route", async () => {
-    window.history.replaceState({}, "", "/Gate_QA/practice");
+    window.history.replaceState({}, "", "/practice");
 
     render(<App />);
 
@@ -162,13 +162,13 @@ describe("App routes", () => {
   });
 
   test("redirects legacy search URLs to /practice", async () => {
-    window.history.replaceState({}, "", "/Gate_QA/?search=deadlock");
+    window.history.replaceState({}, "", "/?search=deadlock");
 
     render(<App />);
 
     await waitFor(() => {
       expect(mocks.questionInit).toHaveBeenCalledTimes(1);
-      expect(window.location.pathname).toBe("/Gate_QA/practice");
+      expect(window.location.pathname).toBe("/practice");
     });
 
     expect(window.location.search).toContain("search=deadlock");
@@ -176,13 +176,13 @@ describe("App routes", () => {
   });
 
   test("redirects legacy question links to /practice/question/:uid", async () => {
-    window.history.replaceState({}, "", "/Gate_QA/?question=go%3A1");
+    window.history.replaceState({}, "", "/?question=go%3A1");
 
     render(<App />);
 
     await waitFor(() => {
       expect(mocks.questionInit).toHaveBeenCalledTimes(1);
-      expect(window.location.pathname).toBe("/Gate_QA/practice/question/go%3A1");
+      expect(window.location.pathname).toBe("/practice/question/go%3A1");
     });
 
     expect(await screen.findByText("Solve page")).toBeTruthy();
@@ -198,14 +198,14 @@ describe("App routes", () => {
     fireEvent.click(await screen.findByRole("button", { name: /resume/i }));
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/Gate_QA/practice/question/go:stored");
+      expect(window.location.pathname).toBe("/practice/question/go:stored");
     });
 
     expect(window.location.search).toContain("subjects=algorithms");
   });
 
   test("legacy random mode clears filters and opens the first random question", async () => {
-    window.history.replaceState({}, "", "/Gate_QA/?mode=random");
+    window.history.replaceState({}, "", "/?mode=random");
 
     render(<App />);
 
@@ -213,7 +213,7 @@ describe("App routes", () => {
       expect(mocks.questionInit).toHaveBeenCalled();
       expect(mocks.clearFilters).toHaveBeenCalledTimes(1);
       expect(mocks.startRandomSession).toHaveBeenCalledTimes(1);
-      expect(window.location.pathname).toBe("/Gate_QA/practice/question/go%3Arandom");
+      expect(window.location.pathname).toBe("/practice/question/go%3Arandom");
     });
   });
 
@@ -225,7 +225,7 @@ describe("App routes", () => {
     fireEvent.click(await screen.findByRole("button", { name: /mock/i }));
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/Gate_QA/mock");
+      expect(window.location.pathname).toBe("/mock");
       expect(window.location.search).toBe("?stage=setup");
     });
 
@@ -240,7 +240,7 @@ describe("App routes", () => {
     fireEvent.click(await screen.findByRole("button", { name: /history/i }));
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/Gate_QA/insights");
+      expect(window.location.pathname).toBe("/insights");
       expect(window.location.search).toBe("?tab=mock-history");
     });
 
@@ -253,14 +253,14 @@ describe("App routes", () => {
     fireEvent.click(await screen.findByRole("button", { name: /insights/i }));
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/Gate_QA/insights");
+      expect(window.location.pathname).toBe("/insights");
     });
 
     expect(await screen.findByText("Insights page 3271")).toBeTruthy();
   });
 
   test("manual route renders without initializing question data", async () => {
-    window.history.replaceState({}, "", "/Gate_QA/manual");
+    window.history.replaceState({}, "", "/manual");
 
     render(<App />);
 
@@ -271,7 +271,7 @@ describe("App routes", () => {
   });
 
   test("high-priority topics route renders without initializing question data", async () => {
-    window.history.replaceState({}, "", "/Gate_QA/insights/topics");
+    window.history.replaceState({}, "", "/insights/topics");
 
     render(<App />);
 

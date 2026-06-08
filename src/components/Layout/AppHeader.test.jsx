@@ -119,47 +119,4 @@ describe("AppHeader", () => {
       expect(screen.queryByRole("dialog", { name: /global navigation/i })).toBeNull();
     });
   });
-
-  test("renders domain shift countdown and opens migration notice modal", async () => {
-    const mockDate = new Date("2026-06-07T10:00:00Z");
-    const originalDate = global.Date;
-    
-    // Mock Date implementation
-    global.Date = class extends originalDate {
-      constructor(...args) {
-        if (args.length > 0) {
-          return new originalDate(...args);
-        }
-        return mockDate;
-      }
-      static now() {
-        return mockDate.getTime();
-      }
-    };
-
-    render(
-      <MemoryRouter initialEntries={["/practice"]}>
-        <AppHeader />
-      </MemoryRouter>
-    );
-
-    const countdownBtn = screen.getByRole("button", {
-      name: /open gateqa\.in migration notice/i,
-    });
-    expect(countdownBtn).toBeTruthy();
-
-    fireEvent.click(countdownBtn);
-
-    const modal = screen.getByRole("dialog", { name: /gateqa is moving to gateqa\.in/i });
-    expect(modal).toBeTruthy();
-    expect(within(modal).getByText(/Only our domain name is changing/i)).toBeTruthy();
-
-    fireEvent.click(within(modal).getByRole("button", { name: /close domain migration notice/i }));
-    
-    await waitFor(() => {
-      expect(screen.queryByRole("dialog", { name: /gateqa is moving to gateqa\.in/i })).toBeNull();
-    });
-
-    global.Date = originalDate;
-  });
 });

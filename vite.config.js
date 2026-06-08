@@ -108,6 +108,6 @@ export default defineConfig(async ({ mode }) => {
         '.codeboarding/**',
       ],
     },
-    base: '/Gate_QA/',
+    base: '/',
   };
 });

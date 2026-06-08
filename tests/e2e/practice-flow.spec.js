@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 const { getSampleAptitudeQuestion, getSampleQuestion } = require("./helpers");
 
-const APP_BASE = "/Gate_QA";
+const APP_BASE = "";
 const appPath = (route = "/") => `${APP_BASE}${route}`;
 
 test.beforeEach(async ({ context }) => {
@@ -33,7 +33,7 @@ test("random practice opens a solve route", async ({ page }) => {
     timeout: 15000,
   });
   await page.getByRole("button", { name: /Practice.*fresh/i }).click();
-  await expect(page).toHaveURL(/\/Gate_QA\/practice\/question\/.+/);
+  await expect(page).toHaveURL(/\/practice\/question\/.+/);
   await expect(page.getByText("Solve", { exact: true }).first()).toBeVisible();
 });
 
@@ -66,7 +66,7 @@ test("deep-link question route opens the requested uid", async ({ page }) => {
   const encodedUid = encodeURIComponent(sampleQuestion.question_uid);
 
   await page.goto(appPath(`/practice/question/${encodedUid}`));
-  await expect(page).toHaveURL(new RegExp(`/Gate_QA/practice/question/${encodedUid}`));
+  await expect(page).toHaveURL(new RegExp(`/practice/question/${encodedUid}`));
   await expect(page.getByText("Question not found.")).toHaveCount(0);
 });
 
@@ -92,7 +92,7 @@ test("APT direct links automatically enable the unified aptitude toggle", async 
 
   // Navigating to an APT direct link should automatically enable Aptitude mode rather than redirecting
   await page.goto(appPath(`/practice/question/${encodedUid}`));
-  await expect(page).toHaveURL(new RegExp(`/Gate_QA/practice/question/${encodedUid}`));
+  await expect(page).toHaveURL(new RegExp(`/practice/question/${encodedUid}`));
   await expect(page.getByRole("button", { name: /Back to Results/i })).toBeVisible({ timeout: 15000 });
   await expect(page.getByText("Question not found.")).toHaveCount(0);
 

@@ -132,6 +132,8 @@ jobs:
         if: steps.guard.outputs.should_run == 'true' && steps.check_new.outputs.has_new == 'true'
         run: |
           test -f dist/.nojekyll
+          test -f dist/CNAME
+          grep -qx 'gateqa.in' dist/CNAME
           test -f dist/calculator/calculator.html
           test -f dist/question-bank-manifest.json
           test -f dist/question-search-index.json

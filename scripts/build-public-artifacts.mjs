@@ -13,7 +13,7 @@ const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
 const QUESTION_IMAGE_DIR = path.join(PUBLIC_DIR, "question-images");
 const DOCS_GENERATED_DIR = path.join(ROOT, "docs", "generated");
 const REVIEW_DIR = path.join(ROOT, "artifacts", "review");
-const SITE_ORIGIN = "https://superawat.github.io/Gate_QA";
+const SITE_ORIGIN = "https://gateqa.in";
 const PRECOMPUTED_SUBTOPIC_LOOKUP_PATH = path.join(
   ROOT,
   "src",
