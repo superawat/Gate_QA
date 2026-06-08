@@ -1,8 +1,8 @@
-﻿# Deployment
+# Deployment
 
 GateQA deploys as a static site to GitHub Pages.
 
-Live URL: `https://superawat.github.io/Gate_QA/`
+Live URL: `https://gateqa.in/`
 
 ## Build artifact requirements
 
@@ -32,8 +32,8 @@ Current build chain:
 
 ## Hosting configuration
 
-- `vite.config.js` base must be `/Gate_QA/`.
-- `package.json` homepage is `https://superawat.github.io/Gate_QA/`.
+- `vite.config.js` base is `/`.
+- `package.json` homepage is `https://gateqa.in/`.
 - runtime static fetches use `import.meta.env.BASE_URL`.
 
 ## CI/CD workflows
@@ -124,7 +124,7 @@ Current assertions:
 
 ### JSON/asset 404s
 
-- verify `base: '/Gate_QA/'` in `vite.config.js`
+- verify `base: '/'` in `vite.config.js`
 
 ### Missing generated lookup
 

@@ -5,6 +5,8 @@ export const HIGH_PRIORITY_TOPICS_ROUTE = "/insights/topics";
 export const MOCK_ROUTE = "/mock";
 export const MOCK_HISTORY_ROUTE = "/history/mock-tests";
 export const USER_MANUAL_ROUTE = "/manual";
+export const SUBJECTS_ROUTE = "/subjects";
+export const GATE_YEAR_ROUTE = "/gate-:year-pyq";
 export const PAGE_QUERY_KEY = "page";
 
 export const FILTER_QUERY_KEYS = [

@@ -3,6 +3,7 @@ import { FaArrowLeft, FaCheckCircle, FaStar } from "react-icons/fa";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
+import SEOHead, { buildBreadcrumbSchema, buildQAPageSchema } from "../components/SEO/SEOHead";
 import Question from "../components/Question/Question";
 import LoadingState from "../components/Loaders/LoadingState";
 import CalculatorWidget from "../components/Calculator/CalculatorWidget";
@@ -396,6 +397,30 @@ const SolvePage = ({
 
   return (
     <MathRuntimeProvider>
+      <SEOHead
+        title={resolvedQuestion
+          ? `${questionYearLabel} ${questionSubjectLabel} — ${resolvedQuestion.title || questionUid} | GateQA`
+          : `GATE Question ${questionUid} | GateQA`}
+        description={resolvedQuestion
+          ? `Practice and solve this ${questionYearLabel} ${questionSubjectLabel} GATE CS question${questionSubtopicLabel ? ` on ${questionSubtopicLabel}` : ""}. Free offline practice on GateQA.`
+          : "Practice GATE CS previous year questions with detailed solutions on GateQA."}
+        path={`/practice/question/${encodeURIComponent(questionUid)}`}
+        schemaOrg={resolvedQuestion ? [
+          buildBreadcrumbSchema([
+            { name: "Home", url: "https://gateqa.in/" },
+            { name: questionSubjectLabel, url: `https://gateqa.in/practice?subjects=${encodeURIComponent(resolvedQuestion.subjectSlug)}` },
+            { name: resolvedQuestion.title || questionUid, url: `https://gateqa.in/practice/question/${encodeURIComponent(questionUid)}` },
+          ]),
+          buildQAPageSchema({
+            questionName: `${questionYearLabel} ${questionSubjectLabel} — ${resolvedQuestion.title || questionUid}`,
+            questionText: String(resolvedQuestion.question || "GATE CS Question").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 500),
+            answerText: resolvedQuestion.answer_meta?.answer
+              ? `Correct answer: Option ${resolvedQuestion.answer_meta.answer}`
+              : "",
+            url: `https://gateqa.in/practice/question/${encodeURIComponent(questionUid)}`,
+          })
+        ] : []}
+      />
       <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
         <section className="space-y-4">
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">

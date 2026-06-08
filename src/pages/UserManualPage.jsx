@@ -16,6 +16,7 @@ import {
 import { Link } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
+import SEOHead from "../components/SEO/SEOHead";
 import {
   INSIGHTS_ROUTE,
   MOCK_ROUTE,
@@ -314,6 +315,12 @@ const ClosingNote = () => (
 
 export default function UserManualPage() {
   return (
+    <>
+    <SEOHead
+      title="GateQA User Manual — How to Use the Platform"
+      description="Complete guide to using GateQA: practice modes, filters, mock tests, insights, progress export, keyboard shortcuts, and offline features."
+      path="/manual"
+    />
     <PageShell contentClassName="space-y-8 py-8">
       <motion.div
         initial="hidden"
@@ -341,5 +348,6 @@ export default function UserManualPage() {
         <ClosingNote />
       </motion.div>
     </PageShell>
+    </>
   );
 }

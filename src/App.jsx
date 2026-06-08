@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import {
   BrowserRouter,
   Navigate,
@@ -22,12 +23,14 @@ import { readLastSession } from "./utils/lastSession";
 import {
   buildSolvePath,
   getLegacyRedirectTarget,
+  GATE_YEAR_ROUTE,
   HOME_ROUTE,
   INSIGHTS_ROUTE,
   HIGH_PRIORITY_TOPICS_ROUTE,
   MOCK_HISTORY_ROUTE,
   MOCK_ROUTE,
   PRACTICE_ROUTE,
+  SUBJECTS_ROUTE,
   USER_MANUAL_ROUTE,
 } from "./utils/routes";
 import {
@@ -36,7 +39,9 @@ import {
   loadInsightsRoute,
   loadMockRoute,
   loadSolveRoute,
+  loadSubjectLandingRoute,
   loadUserManualRoute,
+  loadYearLandingRoute,
 } from "./utils/routePreload";
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
@@ -46,6 +51,8 @@ const SolvePage = lazy(loadSolveRoute);
 const MockShell = lazy(loadMockRoute);
 const UserManualPage = lazy(loadUserManualRoute);
 const HighPriorityTopicsPage = lazy(loadHighPriorityTopicsRoute);
+const SubjectLandingPage = lazy(loadSubjectLandingRoute);
+const YearLandingPage = lazy(loadYearLandingRoute);
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
@@ -387,6 +394,26 @@ const PracticeRoutes = ({
           path={MOCK_HISTORY_ROUTE}
           element={<Navigate to={`${INSIGHTS_ROUTE}?tab=mock-history`} replace />}
         />
+        <Route
+          path={`${SUBJECTS_ROUTE}/:slug`}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Subject..." />}>
+                <SubjectLandingPage questionBankManifest={questionBankManifest} />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
+        <Route
+          path={GATE_YEAR_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Year Paper..." />}>
+                <YearLandingPage questionBankManifest={questionBankManifest} />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
         <Route path="*" element={<Navigate to={HOME_ROUTE} replace />} />
       </Routes>
     </>
@@ -586,9 +613,11 @@ const AppRuntime = () => {
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <AppRuntime />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <AppRuntime />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

@@ -40,6 +40,7 @@ import ProgressBar from "../components/Filters/ProgressBar";
 import ProgressManager from "../components/ProgressManager/ProgressManager";
 import { useFilterState } from "../contexts/FilterContext";
 import PageShell from "../components/Layout/PageShell";
+import SEOHead from "../components/SEO/SEOHead";
 import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
@@ -1395,6 +1396,12 @@ const InsightsPage = ({
   const dueReviewCount = Array.isArray(insights.reviewQueue) ? insights.reviewQueue.length : 0;
 
   return (
+    <>
+    <SEOHead
+      title="Your GATE Practice Analytics & History | GateQA"
+      description="Track your GATE CS practice progress with subject-wise accuracy, coverage stats, weak topic analysis, mock test history, and spaced repetition review."
+      path="/insights"
+    />
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
       <section className="space-y-5">
         {/* Hero header */}
@@ -1511,6 +1518,7 @@ const InsightsPage = ({
         )}
       </section>
     </PageShell>
+    </>
   );
 };
 

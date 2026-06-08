@@ -100,6 +100,7 @@ export default defineConfig(async ({ mode }) => {
     test: {
       globals: true,
       environment: 'node',
+      setupFiles: ['./src/test-setup.js'],
       exclude: [
         'tests/e2e/**',
         'node_modules/**',

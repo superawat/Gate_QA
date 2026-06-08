@@ -222,30 +222,47 @@ function buildCanonicalUrl(pathname = "/", query = null) {
   return url.toString();
 }
 
-function buildSitemapXml(manifest = {}, generatedAt = new Date().toISOString()) {
+function buildSitemapXml(manifest = {}, questions = [], generatedAt = new Date().toISOString()) {
   const urls = new Set([
     buildCanonicalUrl("/"),
     buildCanonicalUrl("/practice"),
     buildCanonicalUrl("/mock"),
     buildCanonicalUrl("/history/mock-tests"),
+    buildCanonicalUrl("/subjects"),
+    buildCanonicalUrl("/gate-pyq"),
   ]);
 
   const yearSets = Array.isArray(manifest.yearSets) ? manifest.yearSets : [];
   yearSets.forEach((entry) => {
-    const yearSetKey = String(entry?.key || "").trim();
-    if (!yearSetKey) {
-      return;
+    if (Number.isFinite(entry?.year)) {
+      urls.add(buildCanonicalUrl(`/gate-${entry.year}-pyq`));
     }
-    urls.add(buildCanonicalUrl("/practice", { years: yearSetKey }));
   });
 
   const subjects = Array.isArray(manifest.subjects) ? manifest.subjects : [];
   subjects.forEach((entry) => {
     const slug = String(entry?.slug || "").trim();
-    if (!slug || slug === "unknown") {
-      return;
+    if (!slug || slug === "unknown" || slug === "legacy-other") return;
+    if (slug === "ga") {
+      urls.add(buildCanonicalUrl("/aptitude"));
+    } else {
+      urls.add(buildCanonicalUrl(`/subjects/${slug}`));
     }
-    urls.add(buildCanonicalUrl("/practice", { subjects: slug }));
+  });
+
+  const aptitudeTopics = subjects.find((s) => s.slug === "ga")?.topics || [];
+  aptitudeTopics.forEach((topic) => {
+    if (topic.slug) {
+      urls.add(buildCanonicalUrl(`/aptitude/${topic.slug}`));
+    }
+  });
+
+  const questionArray = Array.isArray(questions) ? questions : [];
+  questionArray.forEach((question) => {
+    const uid = question.question_uid;
+    if (uid) {
+      urls.add(buildCanonicalUrl(`/practice/question/${encodeURIComponent(uid)}`));
+    }
   });
 
   const lastModDate = String(generatedAt || "").split("T")[0];
@@ -1782,7 +1799,7 @@ function buildArtifacts() {
   writeJson(path.join(PUBLIC_DIR, "question-bank-manifest.json"), manifest);
   writeJson(MOCK_CATALOG_PATH, mockCatalog);
   writeJson(path.join(PUBLIC_DIR, "question-search-index.json"), searchIndex);
-  writeText(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(manifest, generatedAt));
+  writeText(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(manifest, questions, generatedAt));
   writeText(path.join(PUBLIC_DIR, "robots.txt"), buildRobotsTxt());
   for (const [detailShardKey, payload] of detailShards.entries()) {
     writeJson(path.join(DETAIL_SHARDS_DIR, `${detailShardKey}.json`), payload);

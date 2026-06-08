@@ -31,6 +31,8 @@ const solveRoute = createRouteModule(() => import("../pages/SolvePage"));
 const mockRoute = createRouteModule(() => import("../shells/MockShell"));
 const userManualRoute = createRouteModule(() => import("../pages/UserManualPage"));
 const highPriorityTopicsRoute = createRouteModule(() => import("../pages/HighPriorityTopicsPage"));
+const subjectLandingRoute = createRouteModule(() => import("../pages/SubjectLandingPage"));
+const yearLandingRoute = createRouteModule(() => import("../pages/YearLandingPage"));
 
 export const loadExploreRoute = exploreRoute.load;
 export const loadInsightsRoute = insightsRoute.load;
@@ -38,6 +40,8 @@ export const loadSolveRoute = solveRoute.load;
 export const loadMockRoute = mockRoute.load;
 export const loadUserManualRoute = userManualRoute.load;
 export const loadHighPriorityTopicsRoute = highPriorityTopicsRoute.load;
+export const loadSubjectLandingRoute = subjectLandingRoute.load;
+export const loadYearLandingRoute = yearLandingRoute.load;
 
 export const preloadExploreRoute = exploreRoute.preload;
 export const preloadInsightsRoute = insightsRoute.preload;
@@ -45,6 +49,8 @@ export const preloadSolveRoute = solveRoute.preload;
 export const preloadMockRoute = mockRoute.preload;
 export const preloadUserManualRoute = userManualRoute.preload;
 export const preloadHighPriorityTopicsRoute = highPriorityTopicsRoute.preload;
+export const preloadSubjectLandingRoute = subjectLandingRoute.preload;
+export const preloadYearLandingRoute = yearLandingRoute.preload;
 
 const preloadMathRuntime = () => (
   import("../components/Math/MathRuntime")

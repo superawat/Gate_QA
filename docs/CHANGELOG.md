@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.0.0] - 2026-06-09
+
+### Added
+- **SEO Phase 4 (Pre-rendering)**: Configured a post-build static pre-renderer (`scripts/prerender-seo-pages.mjs`) generating 523 crawler-ready HTML snapshots for Subject pages, Year pages, and high-value Question pages. Included static HTML body fallbacks and dynamic meta/canonical/OpenGraph tags without disturbing SPA React routing.
+- **SEO Phase 5 (Rich Snippets & Polish)**:
+  - Added JSON-LD `FAQPage` schemas and visible Q&A blocks to pre-rendered Subject and Year landing pages.
+  - Injected keyword-rich overview content into pre-rendered Subject and Year pages.
+  - Redesigned the GitHub Pages fallback redirect (`public/404.html`) into a beautifully themed, branded loading splash screen with auto light/dark mode.
+  - Generated and integrated a high-quality, modern, light-themed social preview card (`public/og-cover.png`).
+
+### Changed
+- Replaced basic app title and description metadata with advanced structured metadata injected during pre-rendering.
+- Established `1.0.0` versioning starting from the `gateqa.in` root domain release.
+
+### Verified
+- Passed 280/280 Vitest unit tests (`npm run test:unit`) post-SEO implementation.
+- Verified successful local static output structure (`npm run build`).## 2026-06-08
+
+### Added
+- Added custom CNAME configuration file (`public/CNAME`) specifying `gateqa.in` to point custom domain on GitHub Pages.
+- Added deploy safety check scripts in GitHub Actions workflows (`.github/workflows/node.js.yml` and `.github/workflows/gate-question-pipeline.yml`) to fail CI runs if the compiled CNAME artifact (`dist/CNAME`) is missing.
+
+### Changed
+- Migrated client application base path from `/Gate_QA` subpath to root `/` for root custom domain launch at `gateqa.in`. Updated configuration across `vite.config.js`, `package.json`, `index.html`, `public/manifest.webmanifest`, `public/offline.html`, and `public/404.html`.
+- Updated generated domain configuration within `scripts/build-public-artifacts.mjs`.
+- Disabled the migration countdown warning banner inside `AppHeader.jsx` post-launch.
+- Updated image-mirroring directory logic in `scripts/mirror-gateoverflow-images.mjs` and `scripts/qa/validate-question-images.mjs` to target root `/question-images` while maintaining compatibility for legacy embedded subpath routes.
+
+### Fixed
+- Fixed Playwright E2E and Vitest unit tests to align with the new root base path `/`:
+  - Adjusted `playwright.config.cjs` to target root URL.
+  - Stripped `/Gate_QA` router path stubs from `tests/e2e/a11y.axe.spec.js`, `tests/e2e/mock-test-flow.spec.js`, and `tests/e2e/practice-flow.spec.js`.
+  - Replaced legacy `/Gate_QA/` base route checks inside `src/App.test.jsx`.
+  - Updated visual question option `src` assertions in `src/components/MockTest/MockTestQuestion.test.jsx`.
+  - Removed deprecated countdown unit tests from `src/components/Layout/AppHeader.test.jsx`.
+
+### Verified
+- Built production assets (`npm run build`) successfully with root assets output and synced calculator.
+- Passed 280/280 Vitest unit tests (`npm run test:unit`).
+- Passed 17/17 Playwright E2E tests (`npm run test:e2e`).
+- Successfully validated DNS propagation and verified site live at `https://gateqa.in`.
+
 ## 2026-06-07
 
 ### Added

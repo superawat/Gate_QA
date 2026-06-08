@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FaBolt, FaChartLine, FaCompass, FaRegClock } from "react-icons/fa";
 
+import SEOHead from "../components/SEO/SEOHead";
+
 import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
@@ -254,6 +256,11 @@ const HomePage = ({
 
   return (
     <>
+      <SEOHead
+        title="GateQA — GATE CS PYQs, Mock Tests, Aptitude Practice & Calculator"
+        description="Practice 3500+ GATE CS PYQs from 1987–2026, 36000+ Aptitude questions, subject-wise mock tests, GATE calculator, insights, notes and bookmarks. Free and offline-first."
+        path="/"
+      />
       <PageShell
         contentClassName="home-dashboard-shell"
         onResume={hasResumeRoute ? onResumePractice : null}

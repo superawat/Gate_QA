@@ -3,6 +3,7 @@ import { FaFilter, FaPlay } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
+import SEOHead from "../components/SEO/SEOHead";
 import FilterModal from "../components/Filters/FilterModal";
 import FilterSidebar from "../components/Filters/FilterSidebar";
 import ActiveFilterChips from "../components/Filters/ActiveFilterChips";
@@ -356,6 +357,11 @@ const ExplorePage = ({
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
     >
+      <SEOHead
+        title="Practice GATE CS Questions — Filter by Subject & Year | GateQA"
+        description="Browse and filter 3500+ GATE CS previous year questions by subject, year, subtopic, and question type. Start solving instantly."
+        path="/practice"
+      />
       <FilterModal
         isOpen={isMobileFilterOpen}
         onClose={() => setIsMobileFilterOpen(false)}

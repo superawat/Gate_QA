@@ -361,7 +361,7 @@ Synchronized params:
 - `?mode=` writes must use `replaceState`.
 - Build must include `.nojekyll` and synced calculator assets.
 - Build should also include generated manifest, search index, and detail-shard artifacts.
-- `base` in `vite.config.js` must stay `/Gate_QA/` for current hosting path.
+- `base` in `vite.config.js` is `/` for custom domain hosting at `gateqa.in`.
 
 ## CSS Deferral Analysis
 
