@@ -265,7 +265,7 @@ export default function EditorialPage({ data }) {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-[color:var(--color-text)]">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[color:var(--color-primary-soft)] text-[color:var(--color-primary-text)] text-xs font-bold">3</span>
-                    <span>Detailed MathJax Solutions</span>
+                    <span>Detailed Solutions</span>
                   </div>
                 </div>
 
