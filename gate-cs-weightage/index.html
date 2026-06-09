@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="Detailed subject wise weightage analysis for GATE Computer Science based on 2020-2026 PYQs. Focus on high-yielding priority topics to maximize your GATE score." />
+  <meta name="robots" content="index,follow" />
+  <script>
+    (function () {
+      try {
+        var isMockWindow = /\/mock(?:\/|$)/.test(window.location.pathname);
+        var storedTheme = window.localStorage.getItem("gate_qa_theme");
+        var isStoredThemeValid = storedTheme === "light" || storedTheme === "dark";
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = isMockWindow
+          ? "light"
+          : (isStoredThemeValid ? storedTheme : (prefersDark ? "dark" : "light"));
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    }());
+  </script>
+  <title>GATE CS Weightage | GateQA</title>
+  <link rel="canonical" href="https://gateqa.in/gate-cs-weightage" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RQ2SSMN6E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1RQ2SSMN6E');
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    pre {
+      overflow: auto;
+    }
+
+    /* ── Static splash screen (hides FOUC until React mounts) ─────── */
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.875rem;
+      background: #f9fafb;
+      transition: opacity 280ms ease, visibility 280ms ease;
+    }
+
+    :root[data-theme="dark"] #app-splash {
+      background: #0f172a;
+    }
+
+    #app-splash.app-splash--hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #app-splash-spinner {
+      position: relative;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: #1e293b;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #app-splash-spinner::before {
+      content: "";
+      position: absolute;
+      inset: 0.65rem;
+      border: 2px solid #e0f2fe;
+      border-top-color: #0ea5e9;
+      border-radius: 999px;
+      animation: app-splash-spin 720ms linear infinite;
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::before {
+      border-color: rgba(14, 165, 233, 0.2);
+      border-top-color: #38bdf8;
+    }
+
+    #app-splash-spinner::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      transform: translate(-50%, -50%);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::after {
+      background: #38bdf8;
+    }
+
+    #app-splash-text {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    :root[data-theme="dark"] #app-splash-text {
+      color: #94a3b8;
+    }
+
+    @keyframes app-splash-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #app-splash-spinner::before {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function (location) {
+      if (location.search[1] !== "/") {
+        return;
+      }
+
+      var decoded = location.search
+        .slice(1)
+        .split("&")
+        .map(function (segment) {
+          return segment.replace(/~and~/g, "&");
+        })
+        .join("?");
+
+      window.history.replaceState(
+        null,
+        "",
+        location.pathname.slice(0, -1) + decoded + location.hash
+      );
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/index-C3Ple6Z1.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-gsO-yNs2.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-preload-helper-CVfkMyKi.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-misc-BRfbvqnD.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-seo-CWRlDXw5.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-router-Cbw40Bqt.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-icons-CNsZU4z2.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-CD-nVwvA.css">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GATE CS Weightage | GateQA" />
+  <meta property="og:description" content="Detailed subject wise weightage analysis for GATE Computer Science based on 2020-2026 PYQs. Focus on high-yielding priority topics to maximize your GATE score." />
+  <meta property="og:image" content="https://gateqa.in/og-cover.png" />
+  <meta property="og:url" content="https://gateqa.in/gate-cs-weightage" />
+  <meta property="og:site_name" content="GateQA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GATE CS Weightage | GateQA" />
+  <meta name="twitter:description" content="Detailed subject wise weightage analysis for GATE Computer Science based on 2020-2026 PYQs. Focus on high-yielding priority topics to maximize your GATE score." />
+  <meta name="twitter:image" content="https://gateqa.in/og-cover.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gateqa.in/"},{"@type":"ListItem","position":2,"name":"Subject Wise Weightage","item":"https://gateqa.in/gate-cs-weightage"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"GATE CS Subject Wise Weightage & Priority Topics for 2027","description":"Detailed subject wise weightage analysis for GATE Computer Science based on 2020-2026 PYQs. Focus on high-yielding priority topics to maximize your GATE score.","url":"https://gateqa.in/gate-cs-weightage","isPartOf":{"@type":"WebSite","name":"GateQA","url":"https://gateqa.in"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which subject has the highest weightage in GATE CS?","acceptedAnswer":{"@type":"Answer","text":"Historically, Programming and Data Structures, along with Discrete & Engineering Mathematics, carry the highest weightage (often exceeding 12-15 marks each)."}},{"@type":"Question","name":"Is it safe to skip any subject for GATE CS?","acceptedAnswer":{"@type":"Answer","text":"It is highly risky to skip subjects entirely. Even low-weightage subjects like Compiler Design (4-6 marks) feature straightforward, high-scoring questions. Skipping them can cost you crucial ranks."}},{"@type":"Question","name":"How many marks are allocated to General Aptitude?","acceptedAnswer":{"@type":"Answer","text":"General Aptitude carries a strict 15 marks (10 questions) in all GATE papers, making it effectively the single highest-weighted 'subject' area in the exam."}}]}</script>
+</head>
+
+<body>
+  <noscript>
+    <div style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif;">
+      <h1>GateQA — Free GATE CS Previous Year Questions &amp; Mock Tests</h1>
+      <p>GateQA is a free GATE CS preparation platform with 3,500+ previous-year questions
+      (1987&ndash;2026), 36,000+ aptitude questions, full-length year-wise mock tests, a built-in
+      GATE calculator, performance analytics, and full offline support.</p>
+      <p>Practice questions from Operating Systems, Algorithms, DBMS, Computer Networks,
+      Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic,
+      Computer Organization, Software Engineering, and Engineering Mathematics.</p>
+      <a href="https://gateqa.in/gate-cs-pyq">Browse GATE CS PYQs</a> |
+      <a href="https://gateqa.in/mock-tests">Take Mock Tests</a>
+    </div>
+  </noscript>
+  <div id="seo-brand-text" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">
+    <h1>GateQA — Free GATE CS Preparation Platform</h1>
+    <p>GateQA is a free GATE CS preparation platform featuring 3,500+ previous-year questions (1987&ndash;2026),
+    36,000+ aptitude questions, subject-wise and year-wise mock tests, performance analytics,
+    and full offline support. Practice Operating Systems, Algorithms, DBMS, Computer Networks,
+    Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic, and more.</p>
+  </div>
+  <div id="root">
+  <div id="app-splash" aria-live="polite" role="status">
+    <div id="app-splash-spinner" aria-hidden="true"></div>
+    <p id="app-splash-text">Loading GateQA</p>
+  </div>
+  <main class="seo-prerender" style="max-width: 860px; margin: 0 auto; padding: 32px 20px; font-family: Segoe UI, Inter, system-ui, sans-serif; line-height: 1.6; color: #0f172a;">
+    <p style="margin: 0 0 8px; color: #0369a1; font-size: 13px; font-weight: 700; text-transform: uppercase;">GATE CS Weightage</p>
+    <h1 style="margin: 0; font-size: 36px; line-height: 1.15;">GATE CS Subject Wise Weightage &amp; Priority Topics for 2027</h1>
+    <nav style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;"><a href="/practice" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">Practice Priority Topics</a></nav>
+<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Overview &amp; Analysis</h2>
+        <p style="color: #334155; margin-bottom: 16px;">To optimize your preparation for GATE 2027 Computer Science, it's essential to understand which subjects historically carry the most weight. Not all 14 subjects in the syllabus contribute equally to the final 100 marks.</p><p style="color: #334155; margin-bottom: 16px;">The following analysis breaks down the average subject-wise weightage based on official GATE CS papers from the last 5-7 years.</p><h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">The Big Four (Highest Weightage)</h2><p style="color: #334155; margin-bottom: 16px;">These four subjects collectively account for 45-50% of the core technical marks. Mastering these is non-negotiable for a top 500 rank.</p><p style="color: #334155; margin-bottom: 16px;">[object Object]</p><h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">Mathematics Foundation</h2><p style="color: #334155; margin-bottom: 16px;">Mathematics forms a crucial part of the exam, strictly carrying a massive weightage every single year. It consists of two distinct components:</p><ul style="color: #334155; margin-bottom: 16px; padding-left: 20px;">
+              <li style="margin-bottom: 8px;"><strong>Engineering Mathematics (4–6 Marks):</strong> Linear Algebra (Eigenvalues, Determinants), Calculus (Maxima/Minima), and Probability distributions.</li><li style="margin-bottom: 8px;"><strong>Discrete Mathematics (8–10 Marks):</strong> Propositional Logic, Graph Theory, Combinatorics, and Set Theory. This subject also builds the foundation for TOC and Algorithms.</li>
+            </ul><h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">Moderate Weightage Subjects</h2><p style="color: #334155; margin-bottom: 16px;">These subjects are highly scoring and relatively smaller in syllabus volume. They typically yield 5–8 marks each.</p>
+              <div style="overflow-x: auto; margin: 24px 0; border: 1px solid #e2e8f0; border-radius: 8px;">
+                <table style="width: 100%; min-width: max-content; border-collapse: collapse; font-size: 14px; text-align: left;">
+                  <thead>
+                    <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                      <th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">Subject</th><th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">Average Marks</th><th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">Key Topics to Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">Theory of Computation (TOC)</td><td style="padding: 10px 12px; color: #475569;">7–9</td><td style="padding: 10px 12px; color: #475569;">Regular Languages, Decidability, CFGs</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">Database Management Systems (DBMS)</td><td style="padding: 10px 12px; color: #475569;">6–8</td><td style="padding: 10px 12px; color: #475569;">SQL Queries, Normalization, Transactions</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">Digital Logic</td><td style="padding: 10px 12px; color: #475569;">5–7</td><td style="padding: 10px 12px; color: #475569;">K-Maps, Multiplexers, Counters</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">Computer Organization (COA)</td><td style="padding: 10px 12px; color: #475569;">6–8</td><td style="padding: 10px 12px; color: #475569;">Cache memory mapping, Pipeline speedup</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">Compiler Design</td><td style="padding: 10px 12px; color: #475569;">4–6</td><td style="padding: 10px 12px; color: #475569;">Parsers (LL, LR), Syntax-Directed Translation</td>
+                      </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            <h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">General Aptitude</h2><p style="color: #334155; margin-bottom: 16px;">General Aptitude is a fixed <strong>15 Marks</strong> section across all GATE papers. It comprises 5 questions of 1 mark each and 5 questions of 2 marks each. Ignoring aptitude is the biggest mistake candidates make. Strong quantitative and verbal skills here provide a massive competitive edge.</p><p style="color: #334155; margin-bottom: 16px;">[object Object]</p><p style="color: #334155; margin-bottom: 16px;">[object Object]</p>
+       </div>
+<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Frequently Asked Questions (FAQ)</h2>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Which subject has the highest weightage in GATE CS?</h3>
+            <p style="color: #334155; margin: 0;">A: Historically, Programming and Data Structures, along with Discrete &amp; Engineering Mathematics, carry the highest weightage (often exceeding 12-15 marks each).</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Is it safe to skip any subject for GATE CS?</h3>
+            <p style="color: #334155; margin: 0;">A: It is highly risky to skip subjects entirely. Even low-weightage subjects like Compiler Design (4-6 marks) feature straightforward, high-scoring questions. Skipping them can cost you crucial ranks.</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: How many marks are allocated to General Aptitude?</h3>
+            <p style="color: #334155; margin: 0;">A: General Aptitude carries a strict 15 marks (10 questions) in all GATE papers, making it effectively the single highest-weighted &#39;subject&#39; area in the exam.</p>
+          </div>
+        
+       </div>
+    <p style="margin-top: 36px; border-top: 1px solid #e2e8f0; padding-top: 16px; color: #64748b; font-size: 14px;">This static SEO snapshot loads the full interactive GateQA app when JavaScript is available.</p>
+  </main>
+</div>
+</body>
+
+</html>
