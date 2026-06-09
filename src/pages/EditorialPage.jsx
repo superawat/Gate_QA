@@ -202,7 +202,7 @@ function RichCopyRenderer({ items }) {
         if (item.type === "table") {
           return (
             <div key={idx} className="overflow-x-auto my-6 rounded-xl border border-[color:var(--color-border)]">
-              <table className="w-full text-left border-collapse text-sm sm:text-base">
+              <table className="w-full min-w-max text-left border-collapse text-sm sm:text-base">
                 <thead>
                   <tr className="bg-[color:var(--color-primary)] text-white">
                     {item.headers.map((h, i) => (
@@ -377,13 +377,13 @@ export default function EditorialPage({ data }) {
             {/* Main Content */}
             <motion.div variants={fadeUp} className="space-y-8">
               {data.richCopy && data.richCopy.length > 0 && (
-                <section className="prose max-w-none rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 shadow-[var(--shadow-soft)]">
+                <section className="prose max-w-none rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)]">
                   <RichCopyRenderer items={data.richCopy} />
                 </section>
               )}
 
               {/* Why GateQA callout */}
-              <section className="rounded-2xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] p-6 sm:p-8 space-y-4">
+              <section className="rounded-2xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] p-4 sm:p-6 md:p-8 space-y-4">
                 <h3 className="text-lg sm:text-xl font-bold text-[color:var(--color-primary-text)]">
                   Why Practice on GateQA?
                 </h3>
@@ -408,7 +408,7 @@ export default function EditorialPage({ data }) {
                   <h2 className="text-2xl font-bold text-[color:var(--color-text)] tracking-tight">
                     Frequently Asked Questions
                   </h2>
-                  <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-soft)] divide-y divide-[color:var(--color-border)]">
+                  <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] divide-y divide-[color:var(--color-border)]">
                     {data.faqs.map((faq, idx) => (
                       <FaqAccordionItem
                         key={idx}
@@ -424,7 +424,7 @@ export default function EditorialPage({ data }) {
 
             {/* Sidebar */}
             <motion.aside variants={fadeUp} className="lg:sticky lg:top-28 space-y-6">
-              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-card)] space-y-6 text-center lg:text-left">
+              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 shadow-[var(--shadow-card)] space-y-6 text-center lg:text-left">
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold text-[color:var(--color-text)]">Boost Your Score</h3>
                   <p className="text-sm text-[color:var(--color-text-muted)] leading-6">
@@ -456,7 +456,7 @@ export default function EditorialPage({ data }) {
 
               {/* Quick navigation to other articles in sidebar */}
               {data.relatedArticles && data.relatedArticles.length > 0 && (
-                <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-card)] space-y-4">
+                <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 shadow-[var(--shadow-card)] space-y-4">
                   <h3 className="text-base font-bold text-[color:var(--color-text)] flex items-center gap-2">
                     <FaBookOpen size={14} className="text-[color:var(--color-primary-text)]" />
                     More Articles

@@ -425,7 +425,7 @@ function buildStaticRoot(page) {
           if (typeof item === "object" && item.type === "table") {
             return `
               <div style="overflow-x: auto; margin: 24px 0; border: 1px solid #e2e8f0; border-radius: 8px;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
+                <table style="width: 100%; min-width: max-content; border-collapse: collapse; font-size: 14px; text-align: left;">
                   <thead>
                     <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                       ${item.headers.map(h => `<th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">${escapeHtml(h)}</th>`).join("")}
