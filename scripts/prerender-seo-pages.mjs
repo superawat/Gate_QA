@@ -9,7 +9,7 @@ const DIST_DIR = path.join(ROOT, "dist");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const SITE_ORIGIN = "https://gateqa.in";
 const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-cover.png`;
-const QUESTION_PRERENDER_LIMIT = 1500;
+const QUESTION_PRERENDER_LIMIT = 5000;
 
 const SUBJECT_SEO_MAP = [
   {
@@ -450,10 +450,10 @@ function buildStaticRoot(page) {
           }
           if (item.type === "ul") {
             return `<ul style="color: #334155; margin-bottom: 16px; padding-left: 20px;">
-              ${item.items.map(li => `<li style="margin-bottom: 8px;">${escapeHtml(li)}</li>`).join("")}
+              ${item.items.map(li => `<li style="margin-bottom: 8px;">${li}</li>`).join("")}
             </ul>`;
           }
-          return `<p style="color: #334155; margin-bottom: 16px;">${escapeHtml(item)}</p>`;
+          return `<p style="color: #334155; margin-bottom: 16px;">${item}</p>`;
         }).join("")}
        </div>`
     : "";
@@ -472,10 +472,13 @@ function buildStaticRoot(page) {
 
   return [
     '<div id="root">',
+    '  <div id="app-splash" aria-live="polite" role="status">',
+    '    <div id="app-splash-spinner" aria-hidden="true"></div>',
+    '    <p id="app-splash-text">Loading GateQA</p>',
+    '  </div>',
     '  <main class="seo-prerender" style="max-width: 860px; margin: 0 auto; padding: 32px 20px; font-family: Segoe UI, Inter, system-ui, sans-serif; line-height: 1.6; color: #0f172a;">',
     `    <p style="margin: 0 0 8px; color: #0369a1; font-size: 13px; font-weight: 700; text-transform: uppercase;">${escapeHtml(page.eyebrow || "GateQA")}</p>`,
     `    <h1 style="margin: 0; font-size: 36px; line-height: 1.15;">${escapeHtml(page.h1 || page.title)}</h1>`,
-    `    <p style="margin: 16px 0 0; color: #475569; font-size: 17px;">${escapeHtml(page.description)}</p>`,
     links ? `    <nav style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">${links}</nav>` : "",
     listItems ? `    <ul style="margin-top: 24px; color: #334155;">${listItems}</ul>` : "",
     richCopyHtml,

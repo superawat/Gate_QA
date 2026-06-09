@@ -143,13 +143,13 @@ const StatChip = ({ label, value }) => (
 
 /* ── Topic pill ────────────────────────────────────────────────────────── */
 const TopicPill = ({ label, pct, subjectSlug }) => {
-  // Colour the badge based on percentage weight
+  // Colour the badge based on percentage weight using theme-safe CSS variables
   const badgeClass =
     pct >= 25
-      ? "bg-sky-600 text-white"
+      ? "bg-[color:var(--color-primary)] text-white"
       : pct >= 15
-      ? "bg-sky-200 text-sky-800"
-      : "bg-slate-200 text-slate-600";
+      ? "bg-[color:var(--color-primary-soft)] text-[color:var(--color-primary-text)]"
+      : "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-text-muted)]";
 
   return (
     <Link
@@ -307,6 +307,42 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
                     subjectSlug={subject.subjectSlug}
                   />
                 ))}
+              </div>
+            </section>
+          )}
+
+          {/* Official Syllabus */}
+          {subject.syllabus?.length > 0 && (
+            <section
+              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+              aria-labelledby="syllabus-heading"
+            >
+              <h2 id="syllabus-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
+                Official GATE Syllabus for {subject.label}
+              </h2>
+              <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
+                Key syllabus topics defined in the official Graduate Aptitude Test in Engineering.
+              </p>
+              
+              <ul className="mt-4 space-y-2.5">
+                {subject.syllabus.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-sm text-[color:var(--color-text)]">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-5 rounded-xl border border-sky-100 bg-sky-50/50 p-4 dark:border-sky-950/30 dark:bg-sky-950/20">
+                <p className="text-xs text-[color:var(--color-text-muted)] leading-relaxed">
+                  Looking for the full syllabus structure, weightage analytics, and topic dependencies? Check out the{" "}
+                  <Link
+                    to="/gate-2027-syllabus"
+                    className="font-semibold text-sky-700 hover:underline dark:text-sky-400"
+                  >
+                    GATE CS Syllabus Blueprint
+                  </Link>.
+                </p>
               </div>
             </section>
           )}

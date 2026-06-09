@@ -3,7 +3,7 @@ export const EDITORIAL_PAGES = [
     path: "/gate-2027",
     keyword: "GATE 2027",
     showInBlog: true,
-    h1: "GATE 2027 Official Notification: Expected Dates, Organizing Institute & What to Watch For",
+    h1: "GATE 2027 Official Notification, Expected Dates, Organizing Institute, What to Watch For",
     description:
       "GATE 2027 complete guide: exam dates, eligibility criteria, syllabus, exam pattern, application form, admit card, answer key, result, and cutoff for Computer Science. Prepare with 3,500+ GATE CS PYQs on GateQA.",
     eyebrow: "GATE 2027",
@@ -13,36 +13,42 @@ export const EDITORIAL_PAGES = [
       { name: "Home", url: "https://gateqa.in/" },
       { name: "GATE 2027", url: "https://gateqa.in/gate-2027" },
     ],
+    relatedArticles: [
+      { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+      { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
+      { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
+      { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+    ],
     richCopy: [
-      "For engineering students and professionals eyeing lucrative Public Sector Undertaking (PSU) roles or a master's degree at premier Indian institutes, the release of the GATE notification is the official starting gun. While the Graduate Aptitude Test in Engineering (GATE) 2027 is still months away, the organizing bodies run on a strict, predictable schedule.",
-      "If you are planning your preparation strategy using resources from MADE EASY or discussing past papers on GateOverflow, here is the latest intel on the upcoming GATE 2027 official notification.",
-      { type: "h2", text: "Who is Conducting GATE 2027?" },
-      "The single biggest question before any notification drops is: Which IIT is setting the paper? GATE is managed by the National Coordination Board (NCB) and rotates among IISc Bangalore and seven top IITs in an 8-year cycle. Following IIT Roorkee in 2025 and IIT Guwahati in 2026, IIT Madras is highly anticipated to be the organizing institute for GATE 2027.",
-      "What does this mean for aspirants? Historically, papers set by IIT Madras are reputed to be deeply conceptual rather than calculation-heavy. Over on community platforms like GateOverflow, successful candidates often note that IIT Madras papers heavily penalize surface-level reading. When the notification drops, expect a paper structure that heavily features tricky Multiple Select Questions (MSQs) requiring absolute clarity on core principles.",
+      "For engineering students and professionals planning to secure roles in Public Sector Undertakings (PSUs) or a master's degree at premier Indian institutes, the release of the GATE notification marks the beginning of the application cycle. The organizing bodies follow a strict and predictable schedule for the Graduate Aptitude Test in Engineering (GATE) 2027.",
+      { type: "h2", text: "Organizing Institute for GATE 2027" },
+      "GATE is managed by the National Coordination Board (NCB) and rotates among IISc Bangalore and seven top IITs in an 8-year cycle. Following IIT Roorkee in 2025 and IIT Guwahati in 2026, IIT Madras is highly anticipated to be the organizing institute for GATE 2027.",
+      "Historically, papers set by IIT Madras are deeply conceptual rather than calculation-heavy. Expect a paper structure featuring tricky Multiple Select Questions (MSQs) requiring absolute clarity on core principles. Surface-level preparation is heavily penalized.",
       { type: "h2", text: "Expected Notification & Application Timeline" },
-      "The official information brochure and the GOAPS (GATE Online Application Processing System) portal are historically launched in the late summer. Here is the projected timeline for the 2027 cycle so you can mark your calendars:",
+      "The official information brochure and GOAPS (GATE Online Application Processing System) portal follow a predictable annual schedule. Key milestones for the 2027 cycle:",
       {
-        type: "ul",
+        type: "timeline",
         items: [
-          "Late July to Early August 2026: Official Information Brochure Released. IIT Madras is expected to launch the official GATE 2027 website and release the detailed, multi-page information brochure outlining eligibility, syllabus, and paper codes.",
-          "Late August 2026: GOAPS Application Portal Opens. Online registration begins. Candidates can create their profiles, fill out forms, and upload required documents (photos, signatures, and ID proofs).",
-          "Late September 2026: Regular Registration Deadline. Last date to submit the application form without incurring a late fee penalty.",
-          "Early October 2026: Extended Registration Deadline. Final deadline to submit the application with an additional late fee.",
-          "February 2027: GATE 2027 Examination. Exams will likely span over the first two weekends of February across multiple shifts."
+          { date: "Late July – Early August 2026", label: "Official Information Brochure Released. GATE 2027 website launches with full details on eligibility, syllabus, and paper codes." },
+          { date: "Late August 2026", label: "GOAPS Application Portal Opens. Candidates can register, fill forms, and upload required documents." },
+          { date: "Late September 2026", label: "Regular Registration Deadline. Last date to submit applications without a late fee." },
+          { date: "Early October 2026", label: "Extended Registration Deadline. Final deadline with an additional late fee applicable." },
+          { date: "January 2027", label: "Admit Cards available for download on the official GOAPS portal." },
+          { date: "February 2027", label: "GATE 2027 Examination conducted across the first two weekends in multiple shifts." },
+          { date: "March 2027", label: "Results declared and scorecards made available for download." }
         ]
       },
-      { type: "h2", text: "What to Look for When the Notification Drops" },
-      "When the official 100+ page PDF drops, don't just skim it. Experts advise checking these three crucial sections immediately:",
+      { type: "h2", text: "What to Check When the Notification Releases" },
       {
-        type: "ul",
+        type: "cards",
         items: [
-          "New Paper Combinations: GATE currently offers 30 distinct papers. The notification will contain a grid confirming the valid two-paper combinations. If you plan to write two papers (e.g., Computer Science and Data Science & AI), you must verify that the combination is still allowed.",
-          "Syllabus Tweaks: While major overhauls are incredibly rare, minor topic additions or removals happen almost every year. Verify your primary subject's syllabus line-by-line against the previous year.",
-          "Eligibility Criteria: Currently, anyone in their 3rd year or higher of an undergraduate degree is eligible. The notification will officially confirm if this relaxation remains in place for 2027."
+          { icon: "📄", accent: "blue",   title: "Paper Combinations",  subtitle: "Verify the updated list of valid two-paper combinations if you plan to attempt two subjects." },
+          { icon: "📘", accent: "purple", title: "Syllabus Revisions",   subtitle: "Minor topic-level changes can occur each cycle. Cross-check your subject's syllabus against the previous year's brochure." },
+          { icon: "🎓", accent: "green",  title: "Eligibility Criteria", subtitle: "Confirm that the relaxed eligibility (3rd-year UG students eligible) remains in force for 2027." },
+          { icon: "💰", accent: "amber",  title: "Application Fee",     subtitle: "Fees may be revised. Budget approximately ₹1,000 (reserved) or ₹2,000 (general) per paper attempted." }
         ]
       },
       { type: "h2", text: "Expected Application Fees" },
-      "While subject to minor changes by the organizing institute, based on the previous cycle's fee structure, you should budget for the following:",
       {
         type: "table",
         headers: ["Candidate Category", "Regular Registration", "With Late Fee"],
@@ -51,9 +57,16 @@ export const EDITORIAL_PAGES = [
           ["All Other Candidates", "₹2,000", "₹2,500"]
         ]
       },
-      "Note: Candidates opting to write two papers must pay twice the specified fee amount.",
-      { type: "h3", text: "The Bottom Line" },
-      "Do not wait for the official notification to start studying. The syllabus for core subjects is practically set in stone. Download the current syllabus, join active community discussions to analyze past IIT Madras questions, and start building your foundation today."
+      { type: "callout", variant: "info", text: "Candidates opting to write <strong>two papers</strong> must pay twice the applicable fee amount." },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint — Section-by-Section Guide" },
+          { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
+          { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks, 3 Hours" }
+        ]
+      }
     ],
     faqs: [
       {
@@ -82,7 +95,7 @@ export const EDITORIAL_PAGES = [
     path: "/gate-2027-syllabus",
     keyword: "GATE 2027 CS Syllabus",
     showInBlog: true,
-    h1: "The Ultimate GATE CS & IT Syllabus Blueprint: Section-by-Section Guide",
+    h1: "The Ultimate GATE CS & IT Syllabus Blueprint",
     description:
       "Complete GATE 2027 CS syllabus covering Engineering Mathematics, Digital Logic, Computer Organization, Programming & Data Structures, Algorithms, Theory of Computation, Compiler Design, Operating Systems, Databases, and Computer Networks with topic-wise weightage.",
     eyebrow: "GATE 2027 Syllabus",
@@ -92,18 +105,23 @@ export const EDITORIAL_PAGES = [
       { name: "Home", url: "https://gateqa.in/" },
       { name: "GATE 2027 Syllabus", url: "https://gateqa.in/gate-2027-syllabus" },
     ],
+    relatedArticles: [
+      { path: "/gate-2027", label: "GATE 2027 Notification & Dates" },
+      { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
+      { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
+      { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+    ],
     richCopy: [
-      "A dense, unformatted block of text is an absolute nightmare for an aspirant trying to plan a study schedule. To turn the official raw syllabus into a clean, highly scannable, and actionable preparation roadmap, we have structured it below.",
-      "While this layout preserves the definitive benchmark framework (as finalized during the GATE 2026 cycle by IIT Guwahati), it serves as your precise structural blueprint for GATE 2027, as core technical topics rarely change.",
+      "To help plan a structured study schedule, the official GATE Computer Science syllabus has been organized into a scannable, subject-wise roadmap below.",
       { type: "h2", text: "Part 1: Official Technical Syllabus" },
       { type: "h3", text: "Section 1: Engineering Mathematics" },
       {
         type: "ul",
         items: [
-          "Discrete Mathematics: Propositional and first-order logic; Sets, relations, functions, partial orders, and lattices; Monoids, Groups; Graphs: Connectivity, matching, coloring; Combinatorics: Counting, recurrence relations, generating functions.",
-          "Linear Algebra: Matrices, determinants, system of linear equations, eigenvalues and eigenvectors, LU decomposition.",
-          "Calculus: Limits, continuity, and differentiability; Maxima and minima; Mean value theorem; Integration.",
-          "Probability and Statistics: Random variables; Uniform, normal, exponential, Poisson, and binomial distributions; Mean, median, mode, and standard deviation; Conditional probability and Bayes theorem."
+          "<strong>Discrete Mathematics:</strong> Propositional and first-order logic; Sets, relations, functions, partial orders, and lattices; Monoids, Groups; Graphs: Connectivity, matching, coloring; Combinatorics: Counting, recurrence relations, generating functions.",
+          "<strong>Linear Algebra:</strong> Matrices, determinants, system of linear equations, eigenvalues and eigenvectors, LU decomposition.",
+          "<strong>Calculus:</strong> Limits, continuity, and differentiability; Maxima and minima; Mean value theorem; Integration.",
+          "<strong>Probability and Statistics:</strong> Random variables; Uniform, normal, exponential, Poisson, and binomial distributions; Mean, median, mode, and standard deviation; Conditional probability and Bayes theorem."
         ]
       },
       { type: "h3", text: "Section 2: Digital Logic" },
@@ -204,28 +222,36 @@ export const EDITORIAL_PAGES = [
         ]
       },
       { type: "h2", text: "Part 2: Strategic Analysis & Preparation Priority" },
-      "To tackle this massive syllabus efficiently, platforms like MADE EASY and top ranker forums like GateOverflow emphasize understanding subject dependencies. Do not study these sections isolated or in random numerical order.",
+      "Understanding subject dependencies allows you to sequence your preparation intelligently. Studying in dependency order reduces re-learning and reinforces concepts as they build on each other.",
       { type: "h3", text: "The Conceptual Dependency Chart" },
-      "Before jumping into complex topics, organize your study tracker into these logical tracks:",
       {
-        type: "ul",
+        type: "tracks",
         items: [
-          "[Track A: Software] Discrete Mathematics ──> Programming & Data Structures ──> Algorithms",
-          "[Track B: Systems] Digital Logic ─────────> Computer Organization (COA) ───> Operating Systems",
-          "[Track C: Automata] Discrete Mathematics ──> Theory of Computation (TOC) ───> Compiler Design"
+          { letter: "A", steps: ["Discrete Mathematics", "Programming & Data Structures", "Algorithms"] },
+          { letter: "B", steps: ["Digital Logic", "Computer Organization (COA)", "Operating Systems"] },
+          { letter: "C", steps: ["Discrete Mathematics", "Theory of Computation (TOC)", "Compiler Design"] }
         ]
       },
       { type: "h3", text: "High-Yield Core Focus Areas" },
-      "Based on data compiled from historical GATE papers, certain topics yield a disproportionately high return on investment (ROI). Prioritize these when building your revision notes:",
+      "Based on historical question distribution data, certain topics yield a disproportionately high return on preparation time. Prioritize these in your revision cycle:",
       {
         type: "table",
-        headers: ["Subject Cluster", "High-Weightage Focus Topics", "Common Pitfalls (Per GateOverflow)"],
+        headers: ["Subject Cluster", "High-Weightage Focus Topics", "Common Pitfalls"],
         rows: [
           ["Mathematics", "Combinatorics, Graph Theory, Linear Algebra (Eigenvalues)", "Overlooking conditional probability edge cases."],
           ["Data Structures & Algo", "Asymptotic analysis, Graph Algorithms (Dijkstra/MST), Trees", "Miscalculating pointer updates in recursive C functions."],
           ["Systems (COA & OS)", "Cache mapping, Pipelining hazards, Semaphores, Paging", "Confusing virtual addresses with physical address sizes."],
           ["Databases", "Normalization (3NF/BCNF), Serializability, SQL Queries", "Incorrectly identifying candidate keys."],
-          ["Computer Networks", "Subnetting (CIDR), TCP Congestion Control window mechanics", "Forgetting to account for header overheads in fragmentation."]
+          ["Computer Networks", "Subnetting (CIDR), TCP Congestion Control", "Forgetting to account for header overheads in fragmentation."]
+        ]
+      },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
+          { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
+          { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
         ]
       }
     ],
@@ -258,24 +284,45 @@ export const EDITORIAL_PAGES = [
       { name: "Home", url: "https://gateqa.in/" },
       { name: "GATE CS Eligibility", url: "https://gateqa.in/gate-cs-eligibility" },
     ],
+    relatedArticles: [
+      { path: "/gate-2027", label: "GATE 2027 Notification & Dates" },
+      { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+      { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
+      { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+    ],
     richCopy: [
-      "The GATE 2027 Computer Science eligibility criteria are set by the organizing institute (expected to be IIT Madras). The exam is open to candidates who meet the following requirements.",
+      "The GATE 2027 Computer Science eligibility criteria are determined by the organizing institute (expected to be IIT Madras). The exam is accessible to a broad base of candidates across engineering and science disciplines.",
       {
         type: "table",
-        headers: ["Qualifying Degree", "Minimum Status of Eligible Candidates", "Description / Stream"],
+        headers: ["Qualifying Degree", "Eligible From", "Stream"],
         rows: [
-          ["B.E. / B.Tech. / B.Pharm.", "3rd Year or Completed", "Bachelor's degree in Engineering / Technology (4 years after 10+2)"],
-          ["B.Arch.", "3rd Year or Completed", "Bachelor's degree in Architecture (5 years)"],
-          ["B.Sc. (Research) / B.S.", "3rd Year or Completed", "Bachelor's degree in Science (4 years)"],
-          ["M.Sc. / M.A. / MCA", "1st Year or Completed", "Master's degree in any branch of Science / Mathematics / IT / Computer Applications"],
-          ["Int. M.E. / M.Tech.", "3rd Year or Completed", "Integrated Master's degree in Engineering / Technology (5 years)"],
-          ["Professional Societies (AMIE etc.)", "Section A Completed", "Professional examinations equivalent to B.E./B.Tech. recognized by MoE/UPSC/AICTE"]
+          ["B.E. / B.Tech. / B.Pharm.", "3rd Year or Completed", "Engineering / Technology (4 years post 10+2)"],
+          ["B.Arch.", "3rd Year or Completed", "Architecture (5-year program)"],
+          ["B.Sc. (Research) / B.S.", "3rd Year or Completed", "Science (4-year program)"],
+          ["M.Sc. / M.A. / MCA", "1st Year or Completed", "Science / Mathematics / IT / Computer Applications"],
+          ["Int. M.E. / M.Tech.", "3rd Year or Completed", "Integrated Engineering / Technology (5 years)"],
+          ["AMIE / Professional Societies", "Section A Completed", "Equivalent to B.E./B.Tech., recognized by MoE/UPSC/AICTE"]
         ]
       },
-      "Age Limit: There is no age limit to appear for the GATE CS exam. Candidates of any age group can apply as long as they meet the educational qualification requirements.",
-      "Number of Attempts: There is no restriction on the number of attempts. Candidates can appear for the GATE exam multiple times in different years, provided they continue to meet the eligibility criteria each time.",
-      "Nationality: Indian citizens are eligible. Foreign nationals from Nepal, Bangladesh, Sri Lanka, Singapore, Ethiopia, and the United Arab Emirates (UAE) are also eligible to appear for GATE 2027.",
-      "Key Update for 2027: The eligibility rule remains relaxed, allowing 3rd-year B.Tech students (10+2+3 ongoing) to appear for GATE, which previously required 4th-year standing. This makes more candidates eligible earlier in their academic journey."
+      {
+        type: "cards",
+        items: [
+          { icon: "♾️", accent: "blue",   title: "No Age Limit",          subtitle: "Candidates of any age group may apply, provided they meet the educational qualification requirements." },
+          { icon: "♾️", accent: "green",  title: "Unlimited Attempts",     subtitle: "There is no cap on the number of times a candidate can appear for GATE." },
+          { icon: "🌍", accent: "purple", title: "International Eligible", subtitle: "Citizens of Nepal, Bangladesh, Sri Lanka, Singapore, Ethiopia, and UAE are also eligible." },
+          { icon: "🎓", accent: "amber",  title: "3rd Year UG Eligible",   subtitle: "Students currently in 3rd year or higher of an undergraduate program may appear — completion not required." }
+        ]
+      },
+      { type: "callout", variant: "info", text: "<strong>Important Note:</strong> You can appear for the GATE examination if you satisfy the eligibility criteria specified in the official notification. However, admission to M.Tech programs is determined by the individual institutes participating in counselling processes such as COAP and CCMT. Each institute may have its own admission requirements, eligibility conditions, and selection criteria. Therefore, qualifying or appearing for GATE does not automatically guarantee admission to an M.Tech program." },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
+          { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+          { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
+        ]
+      }
     ],
     faqs: [
       {
@@ -296,7 +343,7 @@ export const EDITORIAL_PAGES = [
     path: "/gate-cutoff",
     keyword: "GATE CS Cutoff IITs",
     showInBlog: true,
-    h1: "GATE CS Cutoff Marks: Category-Wise Qualifying Scores & IIT Admission Targets",
+    h1: "GATE CS Cutoff Marks, Category-Wise Qualifying Scores, IIT Admission Targets",
     description:
       "GATE CS cutoff marks for IITs, NITs, IISc, and PSUs. Category-wise qualifying scores for General, OBC-NCL/EWS, SC/ST/PwD candidates from 2020–2025 trends.",
     eyebrow: "GATE CS Cutoff",
@@ -306,27 +353,32 @@ export const EDITORIAL_PAGES = [
       { name: "Home", url: "https://gateqa.in/" },
       { name: "GATE CS Cutoff", url: "https://gateqa.in/gate-cutoff" },
     ],
+    relatedArticles: [
+      { path: "/gate-2027", label: "GATE 2027 Notification & Dates" },
+      { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+      { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
+      { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+    ],
     richCopy: [
-      "If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. The other half is understanding the numbers.",
-      "A common trap many first-time aspirants fall into is confusing the Qualifying Marks with the Admission Cutoff Score. If you browse through active engineering forums, you will frequently see seniors warning juniors: “Qualifying the exam does not guarantee you an IIT seat.” In this post, we will decode the GATE CS cutoff system, look at the category-wise qualifying marks based on recent trends, and break down the actual GATE Scores out of 1000 you need to secure an M.Tech seat at the premier IITs.",
-      { type: "h2", text: "1. The Bare Minimum: GATE CS Qualifying Marks (Out of 100)" },
-      "The qualifying mark is the absolute minimum score you need (out of 100) to get a GATE scorecard. If you score below this, you are considered \"Not Qualified,\" and you cannot apply for M.Tech programs or PSU jobs.",
-      "The organizing institutes determine this cutoff based on paper difficulty and the number of candidates. Based on the official GATE data, here is the official category-wise qualifying criteria for Computer Science (CS):",
+      "If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. Understanding the admission cutoff metrics is equally vital.",
+      "A common trap is confusing the Qualifying Marks with the Admission Cutoff Score. Qualifying the exam does not guarantee an M.Tech seat. Let's decode the GATE CS cutoff system, the category-wise qualifying marks, and the actual GATE Scores (out of 1000) needed to secure an admission.",
+      { type: "h2", text: "1. Qualifying Cutoff (Out of 100)" },
+      "The qualifying mark is the minimum score required out of 100 to earn a valid GATE scorecard. Candidates scoring below the cutoff receive a 'Not Qualified' status and are ineligible for M.Tech admissions or PSU recruitment.",
+      "The organizing institute determines this threshold based on exam difficulty and candidate volume. The official category-wise qualifying criteria for Computer Science (CS) are:",
       {
         type: "table",
         headers: ["Candidate Category", "Qualifying Marks (Out of 100)"],
         rows: [
-          ["General (Unreserved)", "27.6"],
-          ["OBC-NCL / EWS", "24.8"],
-          ["SC / ST / PwD", "18.4"]
+          ["General (GEN)", "30.0"],
+          ["OBC-NCL / EWS", "27.0"],
+          ["SC / ST / PwD", "20.0"]
         ]
       },
-      "Insight: Historically, the General category qualifying mark for CS hovers between 25 and 30 marks. However, scoring a 28 to just \"clear\" the exam will practically yield a GATE Score too low for premier admissions.",
-      { type: "h2", text: "2. The Real Game: GATE Score for IIT Admissions (Out of 1000)" },
-      "When you apply to IITs through the COAP (Common Offer Acceptance Portal), they do not look at your raw marks out of 100. Instead, they look at your GATE Score, which is normalized out of 1000.",
-      "Top IITs are incredibly competitive. According to historical admission data, here is what the actual playing field looks like for M.Tech CSE admissions across different IITs.",
-      { type: "h3", text: "Category-Wise Expected GATE Score Cutoffs for IITs" },
-      "(Note: These are safe target scores out of 1000 based on previous admission cycles. Exact cutoffs fluctuate annually based on seat matrix and applicant volume).",
+      "<strong>Insight:</strong> The General category qualifying mark historically hovers between 25 and 30 marks. However, merely clearing the exam yields a GATE Score too low for premier admissions.",
+      { type: "h2", text: "2. The Real Game: GATE Score for IIT Admissions" },
+      "Institutes utilizing the COAP (Common Offer Acceptance Portal) evaluate candidates using the normalized GATE Score (out of 1000), rather than raw marks out of 100.",
+      "Top institutes are highly competitive. The following table provides safe target scores out of 1000 for M.Tech CSE admissions across various IIT tiers.",
+      { type: "h3", text: "Category-Wise Expected GATE Score Cutoffs" },
       {
         type: "table",
         headers: ["Target Institutes", "General Score Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
@@ -337,18 +389,26 @@ export const EDITORIAL_PAGES = [
           ["IIT Patna, IIT Jodhpur, IIT Ropar, IIT Mandi", "550 – 600", "495 – 540", "360 – 400"]
         ]
       },
-      "Did you know? As a standard rule of thumb for IIT admission policies, the OBC/EWS cutoff score is generally set at 0.9x of the General category cutoff, while the SC/ST/PwD cutoff is set at 0.66x of the General cutoff.",
-      { type: "h2", text: "3. Strategic Takeaways for GATE 2027 Aspirants" },
-      "If you are aiming for the top bracket (IIT Bombay or IISc Bangalore), what does a 750+ GATE score look like in terms of raw marks?",
+      "<strong>Note:</strong> Standard admission policies generally set the OBC/EWS cutoff at approximately 0.9x of the General cutoff, while the SC/ST/PwD cutoff sits near 0.66x of the General cutoff.",
+      { type: "h2", text: "3. Strategic Takeaways for Aspirants" },
       {
-        type: "ul",
+        type: "cards",
         items: [
-          "To get a GATE Score of 750+, you generally need to score around 65 to 70 marks out of 100 on the actual exam.",
-          "To break into the 900+ score range (Top 100 AIR), you are looking at raw marks of 80+ out of 100."
+          { icon: "🎯", accent: "blue",   title: "Score 750+ (Target Tier 1)",     subtitle: "Requires approximately 65–70 raw marks out of 100 on the actual GATE paper." },
+          { icon: "🏆", accent: "purple", title: "Score 900+ (Top 100 AIR)",        subtitle: "Requires 80+ raw marks. Achievable through PYQ mastery and time-optimized exam strategy." },
+          { icon: "🏛️", accent: "green",  title: "NIT & State College Admissions", subtitle: "CCMT accepts GATE scores for NITs. A score of 400–600 is competitive for NIT M.Tech admissions." }
         ]
       },
-      { type: "h3", text: "The \"Spot Round\" Strategy" },
-      "A recurring piece of advice from veteran students is to never lose hope if your score falls in the 500–600 range. While Round 1 cutoffs at competitive campuses like IITs and top NITs (like NIT Trichy or Warangal) are sky-high, many seats open up during the Spot Rounds (NSR). Students often vacate M.Tech seats when they secure high-paying PSU jobs, causing cutoffs to drop significantly in the final rounds of counselling."
+      { type: "callout", variant: "tip", text: "The OBC/EWS cutoff is approximately <strong>0.9×</strong> the General cutoff, and SC/ST/PwD is approximately <strong>0.66×</strong> — use this to calibrate your personal target score." },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
+          { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+          { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
+        ]
+      }
     ],
     faqs: [
       {
@@ -379,29 +439,43 @@ export const EDITORIAL_PAGES = [
       { name: "Home", url: "https://gateqa.in/" },
       { name: "GATE Exam Pattern", url: "https://gateqa.in/gate-exam-pattern" },
     ],
+    relatedArticles: [
+      { path: "/gate-2027", label: "GATE 2027 Notification & Dates" },
+      { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+      { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
+      { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
+    ],
     richCopy: [
-      "The GATE CS exam is a 3-hour Computer Based Test (CBT) consisting of 65 questions worth a total of 100 marks. The paper is divided into three sections: General Aptitude (GA), Engineering Mathematics, and Core Computer Science subjects.",
+      "The GATE CS exam is a 3-hour Computer Based Test (CBT) consisting of 65 questions worth 100 marks. The paper is structured into three distinct sections, each targeting specific competency areas.",
       {
-        type: "table",
-        headers: ["Exam Component", "Number of Questions", "Total Marks", "Marks Distribution"],
-        rows: [
-          ["General Aptitude (GA)", "10 Questions", "15 Marks", "5 of 1-mark & 5 of 2-marks"],
-          ["Engineering Mathematics (EM)", "Approx. 10 Questions", "13-15 Marks", "Mix of 1-mark & 2-marks"],
-          ["Core Computer Science (CS)", "Approx. 45 Questions", "70-72 Marks", "Mix of 1-mark & 2-marks"],
-          ["Total Exam Paper", "65 Questions", "100 Marks", "3 Hours (180 Minutes) Duration"]
+        type: "cards",
+        items: [
+          { icon: "🧠", accent: "blue",   title: "General Aptitude (GA)",          subtitle: "10 questions | 15 marks. Covers verbal ability, quantitative aptitude, analytical and spatial reasoning." },
+          { icon: "∑",     accent: "purple", title: "Engineering Mathematics (EM)",   subtitle: "~10 questions | 13–15 marks. Covers Discrete Math, Linear Algebra, Calculus, and Probability." },
+          { icon: "💻",  accent: "green",  title: "Core Computer Science (CS)",     subtitle: "~45 questions | 70–72 marks. Covers all 9 core technical subjects." },
+          { icon: "⏱️", accent: "amber",  title: "Total Duration",                 subtitle: "3 hours (180 minutes). No sectional time limit. Virtual calculator is provided on-screen." }
         ]
       },
-      "Question Types & Marking Scheme Rules:",
+      { type: "h2", text: "Question Types & Marking Scheme" },
       {
         type: "table",
-        headers: ["Question Type", "1-Mark MCQ Negative", "2-Mark MCQ Negative", "MSQ / NAT Penalty"],
+        headers: ["Question Type", "1-Mark Wrong", "2-Mark Wrong", "MSQ / NAT Penalty"],
         rows: [
-          ["Multiple Choice Questions (MCQ)", "1/3 Mark Deducted", "2/3 Mark Deducted", "Not Applicable"],
-          ["Multiple Select Questions (MSQ)", "No Negative Marking", "No Negative Marking", "No Penalty / No Partial Marks"],
-          ["Numerical Answer Type (NAT)", "No Negative Marking", "No Negative Marking", "No Penalty / Numeric Input"]
+          ["MCQ (Multiple Choice)", "−1/3 Mark", "−2/3 Mark", "N/A"],
+          ["MSQ (Multiple Select)", "No Penalty", "No Penalty", "No Partial Credit"],
+          ["NAT (Numerical Answer)", "No Penalty", "No Penalty", "Numeric Input Required"]
         ]
       },
-      "The total exam duration is 3 hours (180 minutes) with no sectional time limit. Candidates can switch between sections freely. A virtual calculator is provided on the screen for calculations."
+      { type: "callout", variant: "warning", text: "<strong>Strategy Note:</strong> Avoid guessing on MCQ questions. A wrong answer to a 2-mark MCQ costs 2/3 of a mark, which can significantly impact your final score. Unanswered questions carry zero penalty." },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
+          { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+          { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
+          { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" }
+        ]
+      }
     ],
     faqs: [
       {

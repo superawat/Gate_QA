@@ -57,6 +57,10 @@ const SubjectLandingPage = lazy(loadSubjectLandingRoute);
 const YearLandingPage = lazy(loadYearLandingRoute);
 const EditorialPage = lazy(() => import("./pages/EditorialPage"));
 const BlogListPage = lazy(() => import("./pages/BlogListPage"));
+const AboutPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.AboutPage })));
+const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.ContactPage })));
+const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
+const TermsPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.TermsPage })));
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
@@ -441,6 +445,10 @@ const PracticeRoutes = ({
             </ErrorBoundary>
           )}
         />
+        <Route path="/about"   element={<Suspense fallback={<RouteLoader label="Loading..." />}><AboutPage /></Suspense>} />
+        <Route path="/contact" element={<Suspense fallback={<RouteLoader label="Loading..." />}><ContactPage /></Suspense>} />
+        <Route path="/privacy" element={<Suspense fallback={<RouteLoader label="Loading..." />}><PrivacyPage /></Suspense>} />
+        <Route path="/terms"   element={<Suspense fallback={<RouteLoader label="Loading..." />}><TermsPage /></Suspense>} />
         <Route path="*" element={<Navigate to={HOME_ROUTE} replace />} />
       </Routes>
     </>

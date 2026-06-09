@@ -237,7 +237,7 @@ const SEO_SUBJECT_SLUGS = {
   "engg-math": "engineering-mathematics",
 };
 
-const ALIAS_SITEMAP_URLS = ["/blog", ...EDITORIAL_PAGES.map((page) => page.path)];
+const ALIAS_SITEMAP_URLS = ["/blog", "/about", "/contact", "/privacy", "/terms", ...EDITORIAL_PAGES.map((page) => page.path)];
 
 
 

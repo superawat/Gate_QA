@@ -1,5 +1,5 @@
 // Subject landing page meta — maps SEO-friendly URL slugs to internal subject slugs
-// Format: { urlSlug, subjectSlug, label, description, relatedSlugs[], topics[] }
+// Format: { urlSlug, subjectSlug, label, description, relatedSlugs[], topics[], syllabus[] }
 // topics: each entry is { label: string, pct: number } — pct is the % of questions from that topic
 
 export const SUBJECT_SEO_MAP = [
@@ -18,6 +18,13 @@ export const SUBJECT_SEO_MAP = [
       { label: "Page Replacement", pct: 13 },
     ],
     relatedSlugs: ["computer-networks", "computer-organization"],
+    syllabus: [
+      "System calls, processes, threads, inter-process communication, concurrency, and synchronization.",
+      "Deadlock.",
+      "CPU and I/O scheduling.",
+      "Memory management and virtual memory.",
+      "File systems."
+    ],
   },
   {
     urlSlug: "computer-networks",
@@ -35,6 +42,16 @@ export const SUBJECT_SEO_MAP = [
       { label: "HTTP", pct: 5 },
     ],
     relatedSlugs: ["operating-systems", "dbms"],
+    syllabus: [
+      "Concept of Layering: OSI and TCP/IP Protocol Stacks.",
+      "Switching Basics: Packet, circuit, and virtual circuit-switching.",
+      "Data Link Layer: Framing, error detection, Medium Access Control, and Ethernet bridging.",
+      "Routing Protocols: Shortest path, flooding, distance vector, and link state routing.",
+      "Network Layer: Fragmentation and IP addressing, IPv4, CIDR notation.",
+      "IP Support Protocols: Basics of ARP, DHCP, ICMP, and Network Address Translation (NAT).",
+      "Transport Layer: Flow control and congestion control, UDP, TCP, and sockets.",
+      "Application Layer Protocols: DNS, SMTP, HTTP, FTP, and Email."
+    ],
   },
   {
     urlSlug: "dbms",
@@ -51,6 +68,13 @@ export const SUBJECT_SEO_MAP = [
       { label: "Indexing", pct: 9 },
     ],
     relatedSlugs: ["algorithms", "operating-systems"],
+    syllabus: [
+      "ER-model.",
+      "Relational model: Relational algebra, tuple calculus, and SQL.",
+      "Integrity constraints and normal forms.",
+      "File organization, indexing (e.g., B and B+ trees).",
+      "Transactions and concurrency control."
+    ],
   },
   {
     urlSlug: "algorithms",
@@ -67,6 +91,12 @@ export const SUBJECT_SEO_MAP = [
       { label: "Divide & Conquer", pct: 10 },
     ],
     relatedSlugs: ["discrete-mathematics", "data-structures"],
+    syllabus: [
+      "Searching, sorting, and hashing.",
+      "Asymptotic worst-case time and space complexity.",
+      "Algorithm design techniques: Greedy, dynamic programming, and divide-and-conquer.",
+      "Graph traversals, minimum spanning trees, and shortest paths."
+    ],
   },
   {
     urlSlug: "compiler-design",
@@ -82,6 +112,13 @@ export const SUBJECT_SEO_MAP = [
       { label: "Optimization", pct: 12 },
     ],
     relatedSlugs: ["theory-of-computation", "algorithms"],
+    syllabus: [
+      "Lexical analysis, parsing, and syntax-directed translation.",
+      "Runtime environments.",
+      "Intermediate code generation.",
+      "Local optimization.",
+      "Data flow analyses: Constant propagation, liveness analysis, and common subexpression elimination."
+    ],
   },
   {
     urlSlug: "discrete-mathematics",
@@ -98,6 +135,13 @@ export const SUBJECT_SEO_MAP = [
       { label: "Relations", pct: 12 },
     ],
     relatedSlugs: ["algorithms", "theory-of-computation"],
+    syllabus: [
+      "Propositional and first-order logic.",
+      "Sets, relations, functions, partial orders, and lattices.",
+      "Monoids, Groups.",
+      "Graphs: Connectivity, matching, coloring.",
+      "Combinatorics: Counting, recurrence relations, generating functions."
+    ],
   },
   {
     urlSlug: "digital-logic",
@@ -114,6 +158,12 @@ export const SUBJECT_SEO_MAP = [
       { label: "Sequential Circuits", pct: 12 },
     ],
     relatedSlugs: ["computer-organization", "discrete-mathematics"],
+    syllabus: [
+      "Boolean algebra.",
+      "Combinational and sequential circuits.",
+      "Minimization.",
+      "Number representations and computer arithmetic (fixed and floating point)."
+    ],
   },
   {
     urlSlug: "computer-organization",
@@ -130,6 +180,13 @@ export const SUBJECT_SEO_MAP = [
       { label: "I/O Systems", pct: 6 },
     ],
     relatedSlugs: ["digital-logic", "operating-systems"],
+    syllabus: [
+      "Machine instructions and addressing modes.",
+      "ALU, data-path, and control unit.",
+      "Instruction pipelining and pipeline hazards.",
+      "Memory hierarchy: Cache, main memory, and secondary storage.",
+      "I/O interface (interrupt and DMA mode)."
+    ],
   },
   {
     urlSlug: "theory-of-computation",
@@ -146,6 +203,12 @@ export const SUBJECT_SEO_MAP = [
       { label: "Decidability", pct: 10 },
     ],
     relatedSlugs: ["compiler-design", "discrete-mathematics"],
+    syllabus: [
+      "Regular expressions and finite automata.",
+      "Context-free grammars and push-down automata.",
+      "Regular and context-free languages, pumping lemma.",
+      "Turing machines and undecidability."
+    ],
   },
   {
     urlSlug: "data-structures",
@@ -163,6 +226,11 @@ export const SUBJECT_SEO_MAP = [
       { label: "Hashing", pct: 14 },
     ],
     relatedSlugs: ["algorithms", "compiler-design"],
+    syllabus: [
+      "Programming in C.",
+      "Recursion.",
+      "Arrays, stacks, queues, linked lists, trees, binary search trees, binary heaps, and graphs."
+    ],
   },
   {
     urlSlug: "engineering-mathematics",
@@ -178,6 +246,11 @@ export const SUBJECT_SEO_MAP = [
       { label: "Numerical Methods", pct: 12 },
     ],
     relatedSlugs: ["discrete-mathematics", "algorithms"],
+    syllabus: [
+      "Linear Algebra: Matrices, determinants, system of linear equations, eigenvalues and eigenvectors, LU decomposition.",
+      "Calculus: Limits, continuity, and differentiability; Maxima and minima; Mean value theorem; Integration.",
+      "Probability and Statistics: Random variables; Uniform, normal, exponential, Poisson, and binomial distributions; Mean, median, mode, and standard deviation; Conditional probability and Bayes theorem."
+    ],
   },
 ];
 

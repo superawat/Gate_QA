@@ -20,7 +20,11 @@
   - Integrated the Google Analytics (gtag.js) script into the document head for traffic monitoring, configured with the site's custom GA Measurement ID.
   - Updated the project `README.md` live link.
   - Configured custom domain tracking in GoatCounter settings.
-
+- **Static Pages**: Created `AboutPage`, `ContactPage`, `PrivacyPage`, and `TermsPage` components in `src/pages/StaticPages.jsx` with routes configured in `src/App.jsx`.
+- **Sitemap Registration**: Configured `scripts/build-public-artifacts.mjs` to automatically index the four new static pages in the `sitemap.xml`.
+- **Subject Syllabus Inclusion**: Appended the official GATE CS syllabus structure directly to each subject definition in `SUBJECT_SEO_MAP`.
+- **SEO Keyword Research**: Formatted and captured a master list of raw user queries, informational topics, and search volumes inside `docs/SEO_KEYWORDS.md` for editorial planning.
+- **SEO Phase 8 Master Plan**: Added the "Achieving #1 on Google" SEO master strategy to the end of `SEO_Plan.md`.
 ### Changed
 - **Blog Markdown Elements Support**: Upgraded `richCopy` rendering in `EditorialPage.jsx` and static pre-rendering in `scripts/prerender-seo-pages.mjs` to natively support parsed markdown objects including `<h2>`, `<h3>`, and `<ul>` lists.
 - **Detailed Editorial Content Injection**: Completely replaced the placeholder text in `/gate-2027`, `/gate-cutoff`, and `/gate-2027-syllabus` practice guides with comprehensive, highly-detailed structural content from Markdown files, utilizing the new subheadings and list structures.
@@ -33,6 +37,10 @@
 - Replaced basic app title and description metadata with advanced structured metadata injected during pre-rendering.
 - Established `1.0.0` versioning starting from the `gateqa.in` root domain release.
 - Audited and updated the entire student motivational quotes engine in `src/utils/motivationalQuotes.js` to align 100% with study focus, question practice, scientific logic, and exam stress management: removed societal sacrifice, heart-brain conflicts, purity, forgiveness, and socio-political quotes. Replaced them with study-centric quotes from Dr. B. R. Ambedkar, Swami Vivekananda, Confucius, Richard Feynman, Sir Isaac Newton, and Marie Curie.
+- **Terms & Privacy Polish**: Sanitized the Terms and Conditions and Privacy pages to remove automated scraper prohibition clauses and third-party AdSense service trackers. Changed contact address to rawathr01@gmail.com.
+- **Syllabus Landing Display**: Modified `src/pages/SubjectLandingPage.jsx` to render the newly added official syllabus content and cross-linked to the comprehensive Syllabus Blueprint.
+- **FOUC Prevention**: Re-added the `<div id="app-splash">` loading spinner into `scripts/prerender-seo-pages.mjs`'s `buildStaticRoot` to visually hide the raw unstyled SEO HTML structure before hydration.
+- **Pre-render Scaling**: Tripled the `QUESTION_PRERENDER_LIMIT` to 5000 inside the SEO prerender script to ensure all 3,500+ questions in the active exam database receive unique programmatic SEO pages.
 
 ### Verified
 - Passed 280/280 Vitest unit tests (`npm run test:unit`) post-SEO implementation.

@@ -262,7 +262,17 @@ const GlobalNavigationDrawer = ({
               />
             </span>
             <div className="min-w-0">
-              <p className="text-lg font-bold uppercase tracking-[0.08em] text-sky-700 dark:text-sky-400">GATE QA</p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-lg font-bold uppercase tracking-[0.08em] text-sky-700 dark:text-sky-400">GATE QA</p>
+                <button
+                  type="button"
+                  onClick={() => setIsSupportOpen(true)}
+                  aria-label="Support Gate QA"
+                  className="text-pink-600 dark:text-pink-400 hover:scale-110 active:scale-95 transition-transform flex items-center justify-center p-0.5"
+                >
+                  <FaHeart className="h-4 w-4 animate-pulse shrink-0" />
+                </button>
+              </div>
               {practiceBadgeLabel ? (
                 <p className="mt-0.5 text-[11px] font-medium text-[color:var(--color-text-muted)] truncate">{practiceBadgeLabel}</p>
               ) : null}

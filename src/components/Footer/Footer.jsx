@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaExclamationTriangle, FaHeart } from 'react-icons/fa';
 
 import DataPolicyModal from './DataPolicyModal';
@@ -10,14 +11,24 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="mt-auto w-full border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-1.5 px-4">
+      <footer className="mt-auto w-full border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-2 px-4">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 text-[10px] sm:text-xs text-[color:var(--color-text-muted)]">
+          <span>© 2026 GateQA. All rights reserved.</span>
+          <span className="text-[color:var(--color-border)]">|</span>
           <span>
             Powered by{' '}
             <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[color:var(--color-primary-text)] hover:underline">
               GATE Overflow
             </a>
           </span>
+          <span className="text-[color:var(--color-border)]">|</span>
+          <Link to="/about" className="hover:text-[color:var(--color-text)] transition-colors">About</Link>
+          <span className="text-[color:var(--color-border)]">|</span>
+          <Link to="/contact" className="hover:text-[color:var(--color-text)] transition-colors">Contact</Link>
+          <span className="text-[color:var(--color-border)]">|</span>
+          <Link to="/privacy" className="hover:text-[color:var(--color-text)] transition-colors">Privacy Policy</Link>
+          <span className="text-[color:var(--color-border)]">|</span>
+          <Link to="/terms" className="hover:text-[color:var(--color-text)] transition-colors">Terms</Link>
           <span className="text-[color:var(--color-border)]">|</span>
           <button
             type="button"
