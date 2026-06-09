@@ -442,6 +442,17 @@ function buildStaticRoot(page) {
               </div>
             `;
           }
+          if (item.type === "h2") {
+            return `<h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">${escapeHtml(item.text)}</h2>`;
+          }
+          if (item.type === "h3") {
+            return `<h3 style="font-size: 22px; color: #1e293b; margin: 24px 0 12px;">${escapeHtml(item.text)}</h3>`;
+          }
+          if (item.type === "ul") {
+            return `<ul style="color: #334155; margin-bottom: 16px; padding-left: 20px;">
+              ${item.items.map(li => `<li style="margin-bottom: 8px;">${escapeHtml(li)}</li>`).join("")}
+            </ul>`;
+          }
           return `<p style="color: #334155; margin-bottom: 16px;">${escapeHtml(item)}</p>`;
         }).join("")}
        </div>`

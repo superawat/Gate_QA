@@ -6,6 +6,8 @@
 - **Dedicated Blog Hub (`/blog`)**: Created a premium, search-filterable, responsive blog page (`src/pages/BlogListPage.jsx`) presenting active exam articles and subject practice guides with motion animations and themed styles.
 - **Subject Practice Guides on Blog**: Integrated all 11 core computer science subjects from `SUBJECT_SEO_MAP` as beautifully styled cards with specific topic tags in the blog list.
 - **Structured Data Tables**: Integrated custom table schema support into the `richCopy` array definition to render responsive, modern HTML data tables for complex blog metrics (dates, fees, cutoffs, syllabus weightages, marking schemes).
+- **Subject Key Topics Question Percentages**: Integrated historical question percentage metrics into all 11 core CS subjects in `SUBJECT_SEO_MAP` within `src/utils/landingPages.js`. Added percentage values (`pct`) to each topic object mapping historical question density.
+- **Visual Topic Priority Badges**: Enhanced the `TopicPill` component in `SubjectLandingPage.jsx` to render a pill percentage badge color-coded by question weight (e.g. high/medium/low-priority thresholds).
 - **SEO Phase 4 (Pre-rendering)**: Configured a post-build static pre-renderer (`scripts/prerender-seo-pages.mjs`) generating crawler-ready HTML snapshots for Subject pages, Year pages, and high-value Question pages. Included static HTML body fallbacks and dynamic meta/canonical/OpenGraph tags without disturbing SPA React routing.
 - **SEO Phase 5 (Rich Snippets & Polish)**:
   - Added JSON-LD `FAQPage` schemas and visible Q&A blocks to pre-rendered Subject and Year landing pages.
@@ -20,6 +22,9 @@
   - Configured custom domain tracking in GoatCounter settings.
 
 ### Changed
+- **Blog Markdown Elements Support**: Upgraded `richCopy` rendering in `EditorialPage.jsx` and static pre-rendering in `scripts/prerender-seo-pages.mjs` to natively support parsed markdown objects including `<h2>`, `<h3>`, and `<ul>` lists.
+- **Detailed Editorial Content Injection**: Completely replaced the placeholder text in `/gate-2027`, `/gate-cutoff`, and `/gate-2027-syllabus` practice guides with comprehensive, highly-detailed structural content from Markdown files, utilizing the new subheadings and list structures.
+- **Blog Cards Topic Compatibility**: Updated subject card rendering in `BlogListPage.jsx` to reference `topic.label` to support the new structured object format.
 - **Updated Blog Content (GATE 2027)**: Fully updated all editorial articles (`src/data/editorialPages.js`) to target the upcoming **GATE 2027** exam cycle, replacing flat lists with structured comparative tables.
 - **Pre-renderer Table Formatting**: Updated the static pre-rendering pipeline (`scripts/prerender-seo-pages.mjs`) to render table data as fully styled `<table />` elements rather than raw text, keeping pre-rendered snapshots readable and semantic for search engine crawlers.
 - **Global Drawer Navigation**: Replaced the collapsible blog section accordion in the navigation drawer with a direct action link leading directly to `/blog`.

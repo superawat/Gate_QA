@@ -192,8 +192,8 @@ export default function BlogListPage() {
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                           {subject.topics.slice(0, 3).map((topic) => (
-                            <span key={topic} className="rounded-md bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] font-medium text-[color:var(--color-text-muted)]">
-                              {topic}
+                            <span key={topic.label} className="rounded-md bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] font-medium text-[color:var(--color-text-muted)]">
+                              {topic.label}
                             </span>
                           ))}
                         </div>

@@ -142,15 +142,28 @@ const StatChip = ({ label, value }) => (
 );
 
 /* ── Topic pill ────────────────────────────────────────────────────────── */
-const TopicPill = ({ label, subjectSlug }) => (
-  <Link
-    to={`${PRACTICE_ROUTE}?subjects=${encodeURIComponent(subjectSlug)}&search=${encodeURIComponent(label)}`}
-    className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3.5 py-1.5 text-sm font-medium text-[color:var(--color-text)] transition hover:border-sky-400 hover:bg-sky-50 hover:text-sky-700"
-  >
-    {label}
-    <FaChevronRight className="text-[9px] opacity-60" />
-  </Link>
-);
+const TopicPill = ({ label, pct, subjectSlug }) => {
+  // Colour the badge based on percentage weight
+  const badgeClass =
+    pct >= 25
+      ? "bg-sky-600 text-white"
+      : pct >= 15
+      ? "bg-sky-200 text-sky-800"
+      : "bg-slate-200 text-slate-600";
+
+  return (
+    <Link
+      to={`${PRACTICE_ROUTE}?subjects=${encodeURIComponent(subjectSlug)}&search=${encodeURIComponent(label)}`}
+      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3.5 py-1.5 text-sm font-medium text-[color:var(--color-text)] transition hover:border-sky-400 hover:bg-sky-50 hover:text-sky-700"
+    >
+      {label}
+      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${badgeClass}`}>
+        {pct}%
+      </span>
+      <FaChevronRight className="text-[9px] opacity-60" />
+    </Link>
+  );
+};
 
 /* ── Related subject card ──────────────────────────────────────────────── */
 const RelatedCard = ({ subject }) => (
@@ -287,7 +300,12 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {subject.topics.map((topic) => (
-                  <TopicPill key={topic} label={topic} subjectSlug={subject.subjectSlug} />
+                  <TopicPill
+                    key={topic.label}
+                    label={topic.label}
+                    pct={topic.pct}
+                    subjectSlug={subject.subjectSlug}
+                  />
                 ))}
               </div>
             </section>

@@ -154,33 +154,58 @@ export default function EditorialPage({ data }) {
               {data.richCopy && data.richCopy.length > 0 && (
                 <section className="prose max-w-none rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 shadow-[var(--shadow-soft)] space-y-6">
                   {data.richCopy.map((item, idx) => {
-                    if (typeof item === "object" && item.type === "table") {
-                      return (
-                        <div key={idx} className="overflow-x-auto my-6 rounded-xl border border-[color:var(--color-border)]">
-                          <table className="w-full text-left border-collapse text-sm sm:text-base">
-                            <thead>
-                              <tr className="bg-[color:var(--color-surface-muted)] border-b border-[color:var(--color-border)]">
-                                {item.headers.map((h, i) => (
-                                  <th key={i} className="px-4 py-3 font-semibold text-[color:var(--color-text)]">
-                                    {h}
-                                  </th>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-[color:var(--color-border)]">
-                              {item.rows.map((row, rIdx) => (
-                                <tr key={rIdx} className="hover:bg-[color:var(--color-surface-muted)] transition-colors">
-                                  {row.map((cell, cIdx) => (
-                                    <td key={cIdx} className="px-4 py-3 text-[color:var(--color-text-muted)]">
-                                      {cell}
-                                    </td>
+                    if (typeof item === "object") {
+                      if (item.type === "table") {
+                        return (
+                          <div key={idx} className="overflow-x-auto my-6 rounded-xl border border-[color:var(--color-border)]">
+                            <table className="w-full text-left border-collapse text-sm sm:text-base">
+                              <thead>
+                                <tr className="bg-[color:var(--color-surface-muted)] border-b border-[color:var(--color-border)]">
+                                  {item.headers.map((h, i) => (
+                                    <th key={i} className="px-4 py-3 font-semibold text-[color:var(--color-text)]">
+                                      {h}
+                                    </th>
                                   ))}
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      );
+                              </thead>
+                              <tbody className="divide-y divide-[color:var(--color-border)]">
+                                {item.rows.map((row, rIdx) => (
+                                  <tr key={rIdx} className="hover:bg-[color:var(--color-surface-muted)] transition-colors">
+                                    {row.map((cell, cIdx) => (
+                                      <td key={cIdx} className="px-4 py-3 text-[color:var(--color-text-muted)]">
+                                        {cell}
+                                      </td>
+                                    ))}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        );
+                      }
+                      if (item.type === "h2") {
+                        return (
+                          <h2 key={idx} className="text-2xl sm:text-3xl font-bold text-[color:var(--color-text)] mt-10 mb-4">
+                            {item.text}
+                          </h2>
+                        );
+                      }
+                      if (item.type === "h3") {
+                        return (
+                          <h3 key={idx} className="text-xl sm:text-2xl font-bold text-[color:var(--color-text)] mt-8 mb-3">
+                            {item.text}
+                          </h3>
+                        );
+                      }
+                      if (item.type === "ul") {
+                        return (
+                          <ul key={idx} className="list-disc pl-5 space-y-2 text-base sm:text-lg text-[color:var(--color-text-muted)]">
+                            {item.items.map((li, i) => (
+                              <li key={i}>{li}</li>
+                            ))}
+                          </ul>
+                        );
+                      }
                     }
                     return (
                       <p 
