@@ -7,6 +7,7 @@ export const MOCK_HISTORY_ROUTE = "/history/mock-tests";
 export const USER_MANUAL_ROUTE = "/manual";
 export const SUBJECTS_ROUTE = "/subjects";
 export const GATE_YEAR_ROUTE = "/gate-:year-pyq";
+export const BLOG_ROUTE = "/blog";
 export const PAGE_QUERY_KEY = "page";
 
 export const FILTER_QUERY_KEYS = [

@@ -25,7 +25,6 @@ const RAW_STUDENT_QUOTES = [
   "Climbing to the top demands strength, whether it is to the top of Mount Everest or to the top of your career. — Dr. A.P.J. Abdul Kalam",
   "Thinking should become your capital asset, no matter whatever ups and downs you come across in your life. — Dr. A.P.J. Abdul Kalam",
   "Without your involvement you can't succeed. With your involvement you can't fail. — Dr. A.P.J. Abdul Kalam",
-  "Let us sacrifice our today so that our children can have a better tomorrow. — Dr. A.P.J. Abdul Kalam",
   "Small aim is a crime; have great glory. — Dr. A.P.J. Abdul Kalam",
   "To be successful, one must be courageous to accept the mistakes and ready to learn. — Dr. A.P.J. Abdul Kalam",
   "Knowledge without action is useless and irrelevant. — Dr. A.P.J. Abdul Kalam",
@@ -40,7 +39,7 @@ const RAW_STUDENT_QUOTES = [
   "Whatever you think, that you will be. If you think yourself weak, weak you will be; if you think yourself strong, strong you will be. — Swami Vivekananda",
   "Believe in yourself and the world will be at your feet. — Swami Vivekananda",
   "The world is the great gymnasium where we come to make ourselves strong. — Swami Vivekananda",
-  "In a conflict between the heart and the brain, follow your heart. — Swami Vivekananda",
+  "Everything is easy when you are busy. But nothing is easy when you are lazy. — Swami Vivekananda",
   "Comfort is no test of truth. Truth is often far from being comfortable. — Swami Vivekananda",
   "All power is within you; you can do anything and everything. — Swami Vivekananda",
   "Do one thing at a time, and while doing it put your whole soul into it to the exclusion of all else. — Swami Vivekananda",
@@ -59,7 +58,6 @@ const RAW_STUDENT_QUOTES = [
   "Every morning we are born again. What we do today is what matters most. — Gautama Buddha",
   "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. — Gautama Buddha",
   "No matter how hard the past, you can always begin again. — Gautama Buddha",
-  "Purity or impurity depends on oneself, no one can purify another. — Gautama Buddha",
   "The secret of health for both mind and body is to live in the present moment wisely and earnestly. — Gautama Buddha",
   "To keep the body in good health is a duty, otherwise we shall not be able to keep our mind strong and clear. — Gautama Buddha",
   "Your focus determines your reality. — Gautama Buddha",
@@ -81,7 +79,6 @@ const RAW_STUDENT_QUOTES = [
   "Satisfaction lies in the effort, not in the attainment. Full effort is full victory. — Mahatma Gandhi",
   "Strength does not come from physical capacity. It comes from an indomitable will. — Mahatma Gandhi",
   "An ounce of practice is worth more than tons of preaching. — Mahatma Gandhi",
-  "The weak can never forgive. Forgiveness is the attribute of the strong. — Mahatma Gandhi",
 
   // --- RABINDRANATH TAGORE ---
   "You cannot cross the sea merely by standing and staring at the water. — Rabindranath Tagore",
@@ -102,8 +99,7 @@ const RAW_STUDENT_QUOTES = [
   // --- DR. B. R. AMBEDKAR ---
   "Cultivation of mind should be the ultimate aim of human existence. — Dr. B. R. Ambedkar",
   "Life should be great rather than long. — Dr. B. R. Ambedkar",
-  "Be educated, be organized, and be agitated. — Dr. B. R. Ambedkar",
-  "I measure the progress of a community by the degree of progress which women have achieved. — Dr. B. R. Ambedkar",
+  "Education is the milk of a tigress; he who drinks it, cannot help but roar. — Dr. B. R. Ambedkar",
 
   // --- J. R. D. TATA ---
   "Uncommon effort is the key to uncommon success. Always aim for excellence. — J. R. D. Tata",
@@ -112,13 +108,9 @@ const RAW_STUDENT_QUOTES = [
 
   // --- LAL BAHADUR SHASTRI ---
   "Hard work is equal to prayer. — Lal Bahadur Shastri",
-  "Discipline and united action are the real source of strength for the nation. — Lal Bahadur Shastri",
-  "We must fight for peace bravely as we fought in war. — Lal Bahadur Shastri",
 
   // --- SARDAR VALLABHBHAI PATEL ---
-  "Manpower without unity is not a strength unless it is harmonized and united properly, then it becomes a spiritual power. — Sardar Vallabhbhai Patel",
   "Work is undoubtedly worship but laughter is life. — Sardar Vallabhbhai Patel",
-  "Take to path of dharma—the path of truth and justice. Don't misuse your valor. — Sardar Vallabhbhai Patel",
 
   // --- SRINIVASA RAMANUJAN ---
   "An equation for me has no meaning unless it expresses a thought of God. — Srinivasa Ramanujan",
@@ -135,9 +127,7 @@ const RAW_STUDENT_QUOTES = [
   "Ask the right questions, and nature will open the doors to her secrets. — C. V. Raman",
 
   // --- SUBHAS CHANDRA BOSE ---
-  "One individual may die for an idea, but that idea will, after his death, incarnate itself in a thousand lives. — Subhas Chandra Bose",
   "Reality is, after all, too big for our frail understanding to fully grasp. Nevertheless, we have to build our lives on the theory which contains the maximum truth. — Subhas Chandra Bose",
-  "No real change in history has ever been achieved by discussions. — Subhas Chandra Bose",
 
   // --- SRI AUROBINDO ---
   "True strength is not in the body, it is in the soul; and the soul grows by effort, by persistence, by hard work. — Sri Aurobindo",
@@ -156,7 +146,6 @@ const RAW_STUDENT_QUOTES = [
 
   // --- ALBERT EINSTEIN ---
   "It is not that I'm so smart, it's just that I stay with problems longer. — Albert Einstein",
-  "Genius is 1% talent and 99% hard work. — Albert Einstein",
   "A person who never made a mistake never tried anything new. — Albert Einstein",
   "Learn from yesterday, live for today, hope for tomorrow. — Albert Einstein",
   "In the middle of difficulty lies opportunity. — Albert Einstein",
@@ -175,17 +164,31 @@ const RAW_STUDENT_QUOTES = [
   "The first principle is that you must not fool yourself and you are the easiest person to fool. — Richard Feynman",
   "If you want to master a concept, teach it to someone else. — Richard Feynman",
   "Study hard what interests you the most in the most undisciplined, irreverent and original manner possible. — Richard Feynman",
+  "We are trying to prove ourselves wrong as quickly as possible, because only in that way can we find progress. — Richard Feynman",
+  "What one fool can understand, another can. — Richard Feynman",
+  "You have no responsibility to live up to what other people think you ought to accomplish. — Richard Feynman",
 
   // --- STEPHEN HAWKING ---
   "Intelligence is the ability to adapt to change. — Stephen Hawking",
   "Quiet people have the loudest minds. — Stephen Hawking",
   "Remember to look up at the stars and not down at your feet. Never give up work. — Stephen Hawking",
 
+  // --- SIR ISAAC NEWTON ---
+  "If I have seen further it is by standing on the shoulders of Giants. — Sir Isaac Newton",
+  "Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things. — Sir Isaac Newton",
+  "No great discovery was ever made without a bold guess. — Sir Isaac Newton",
+  "What we know is a drop, what we don't know is an ocean. — Sir Isaac Newton",
+  "I keep the subject constantly before me, and wait till the first dawnings open slowly, by little and little, into a full and clear light. — Sir Isaac Newton",
+  "If I have done the public any service, it is due to nothing but patient thought. — Sir Isaac Newton",
+
+  // --- MARIE CURIE ---
+  "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. — Marie Curie",
+  "Be less curious about people and more curious about ideas. — Marie Curie",
+
   // --- ALEXANDER GRAHAM BELL & NIKOLA TESLA ---
   "Concentrate all your thoughts upon the work at hand. The sun's rays do not burn until focused. — Alexander Graham Bell",
   "Preparation is the key to success. — Alexander Graham Bell",
-  "Our virtues and our failings are inseparable, like force and matter. When they separate, man is no more. — Nikola Tesla",
-  "I do not think you can name many great inventions that have been made by married men. — Nikola Tesla",
+  "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration. — Nikola Tesla",
 
   // --- STEVE JOBS ---
   "The only way to do great work is to love what you do. — Steve Jobs",
@@ -229,6 +232,7 @@ const RAW_STUDENT_QUOTES = [
   "Our greatest glory is not in never falling, but in rising every time we fall. — Confucius",
   "It does not matter how slowly you go as long as you do not stop. — Confucius",
   "He who learns but does not think is lost! He who thinks but does not learn is in great danger. — Confucius",
+  "I hear and I forget. I see and I remember. I do and I understand. — Confucius",
   "The journey of a thousand miles begins with one step. — Lao Tzu",
   "Mastering others is strength. Mastering yourself is true power. — Lao Tzu",
 
@@ -244,8 +248,7 @@ const RAW_STUDENT_QUOTES = [
   "Be curious. Read widely. Try new things. What people call intelligence just boils down to curiosity. — Aaron Swartz",
   "Action is the foundational key to all success. — Pablo Picasso",
   "The mind, once stretched by a new idea, never returns to its original dimensions. — Ralph Waldo Emerson",
-  "The secret of getting ahead is getting started. — Mark Twain",
-  "Age is an issue of mind over matter. If you don't mind, it doesn't matter. — Mark Twain"
+  "The secret of getting ahead is getting started. — Mark Twain"
 ];
 
 const seededRandom = (seed) => {

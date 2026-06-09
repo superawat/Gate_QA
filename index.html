@@ -65,6 +65,16 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RQ2SSMN6E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1RQ2SSMN6E');
+  </script>
+
   <style>
     html {
       scroll-behavior: smooth;
@@ -221,7 +231,26 @@
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <noscript>
+    <div style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif;">
+      <h1>GateQA — Free GATE CS Previous Year Questions &amp; Mock Tests</h1>
+      <p>GateQA is a free GATE CS preparation platform with 3,500+ previous-year questions
+      (1987&ndash;2026), 36,000+ aptitude questions, full-length year-wise mock tests, a built-in
+      GATE calculator, performance analytics, and full offline support.</p>
+      <p>Practice questions from Operating Systems, Algorithms, DBMS, Computer Networks,
+      Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic,
+      Computer Organization, Software Engineering, and Engineering Mathematics.</p>
+      <a href="https://gateqa.in/gate-cs-pyq">Browse GATE CS PYQs</a> |
+      <a href="https://gateqa.in/mock-tests">Take Mock Tests</a>
+    </div>
+  </noscript>
+  <div id="seo-brand-text" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">
+    <h1>GateQA — Free GATE CS Preparation Platform</h1>
+    <p>GateQA is a free GATE CS preparation platform featuring 3,500+ previous-year questions (1987&ndash;2026),
+    36,000+ aptitude questions, subject-wise and year-wise mock tests, performance analytics,
+    and full offline support. Practice Operating Systems, Algorithms, DBMS, Computer Networks,
+    Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic, and more.</p>
+  </div>
   <div id="root">
     <!-- Static splash: visible instantly, removed by React after mount -->
     <div id="app-splash" aria-live="polite" role="status">

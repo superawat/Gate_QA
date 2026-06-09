@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { EDITORIAL_PAGES } from "../src/data/editorialPages.js";
 import {
   extractEmbeddedOptions as extractSharedEmbeddedOptions,
   stripEmbeddedOptions as stripSharedEmbeddedOptions,
@@ -222,20 +223,49 @@ function buildCanonicalUrl(pathname = "/", query = null) {
   return url.toString();
 }
 
+const SEO_SUBJECT_SLUGS = {
+  "os": "operating-systems",
+  "cn": "computer-networks",
+  "dbms": "dbms",
+  "algorithms": "algorithms",
+  "compiler": "compiler-design",
+  "discrete-math": "discrete-mathematics",
+  "digital-logic": "digital-logic",
+  "coa": "computer-organization",
+  "toc": "theory-of-computation",
+  "prog-ds": "data-structures",
+  "engg-math": "engineering-mathematics",
+};
+
+const ALIAS_SITEMAP_URLS = ["/blog", ...EDITORIAL_PAGES.map((page) => page.path)];
+
+
+
 function buildSitemapXml(manifest = {}, questions = [], generatedAt = new Date().toISOString()) {
-  const urls = new Set([
-    buildCanonicalUrl("/"),
-    buildCanonicalUrl("/practice"),
-    buildCanonicalUrl("/mock"),
-    buildCanonicalUrl("/history/mock-tests"),
-    buildCanonicalUrl("/subjects"),
-    buildCanonicalUrl("/gate-pyq"),
-  ]);
+  const todayStr = String(generatedAt || "").split("T")[0];
+  const urls = [];
+
+  const addUrl = (loc, priority = "0.5", changefreq = "monthly", lastmod = todayStr) => {
+    urls.push({ loc, priority, changefreq, lastmod });
+  };
+
+  addUrl(buildCanonicalUrl("/"), "1.0", "weekly");
+  addUrl(buildCanonicalUrl("/practice"), "0.8", "weekly");
+  addUrl(buildCanonicalUrl("/mock"), "0.7", "weekly");
+  addUrl(buildCanonicalUrl("/subjects"), "0.6", "monthly");
+
+  ALIAS_SITEMAP_URLS.forEach((path) => {
+    addUrl(buildCanonicalUrl(path), "0.7", "monthly");
+  });
 
   const yearSets = Array.isArray(manifest.yearSets) ? manifest.yearSets : [];
+  const seenYears = new Set();
   yearSets.forEach((entry) => {
-    if (Number.isFinite(entry?.year)) {
-      urls.add(buildCanonicalUrl(`/gate-${entry.year}-pyq`));
+    const year = Number(entry?.year);
+    if (Number.isFinite(year) && year >= 2015 && !seenYears.has(year)) {
+      seenYears.add(year);
+      const yearDate = `${year}-02-01`;
+      addUrl(buildCanonicalUrl(`/gate-${year}-pyq`), "0.8", "monthly", yearDate);
     }
   });
 
@@ -243,39 +273,29 @@ function buildSitemapXml(manifest = {}, questions = [], generatedAt = new Date()
   subjects.forEach((entry) => {
     const slug = String(entry?.slug || "").trim();
     if (!slug || slug === "unknown" || slug === "legacy-other") return;
-    if (slug === "ga") {
-      urls.add(buildCanonicalUrl("/aptitude"));
-    } else {
-      urls.add(buildCanonicalUrl(`/subjects/${slug}`));
-    }
-  });
-
-  const aptitudeTopics = subjects.find((s) => s.slug === "ga")?.topics || [];
-  aptitudeTopics.forEach((topic) => {
-    if (topic.slug) {
-      urls.add(buildCanonicalUrl(`/aptitude/${topic.slug}`));
-    }
+    const seoSlug = SEO_SUBJECT_SLUGS[slug] || slug;
+    addUrl(buildCanonicalUrl(`/subjects/${seoSlug}`), "0.8", "monthly");
   });
 
   const questionArray = Array.isArray(questions) ? questions : [];
   questionArray.forEach((question) => {
     const uid = question.question_uid;
     if (uid) {
-      urls.add(buildCanonicalUrl(`/practice/question/${encodeURIComponent(uid)}`));
+      addUrl(buildCanonicalUrl(`/practice/question/${encodeURIComponent(uid)}`), "0.5", "yearly", "");
     }
   });
 
-  const lastModDate = String(generatedAt || "").split("T")[0];
-  const sortedUrls = Array.from(urls).sort((left, right) => left.localeCompare(right));
+  urls.sort((left, right) => left.loc.localeCompare(right.loc));
 
-  const rows = sortedUrls.map((url) => {
-    const escapedUrl = escapeXml(url);
-    return [
-      "  <url>",
-      `    <loc>${escapedUrl}</loc>`,
-      `    <lastmod>${lastModDate}</lastmod>`,
-      "  </url>",
-    ].join("\n");
+  const rows = urls.map((entry) => {
+    const escapedUrl = escapeXml(entry.loc);
+    const parts = [`    <loc>${escapedUrl}</loc>`];
+    if (entry.lastmod) {
+      parts.push(`    <lastmod>${entry.lastmod}</lastmod>`);
+    }
+    parts.push(`    <changefreq>${entry.changefreq}</changefreq>`);
+    parts.push(`    <priority>${entry.priority}</priority>`);
+    return `  <url>\n${parts.join("\n")}\n  </url>`;
   });
 
   return [
@@ -288,13 +308,35 @@ function buildSitemapXml(manifest = {}, questions = [], generatedAt = new Date()
 }
 
 function buildRobotsTxt() {
-  return [
+  const allowedPaths = [
+    ...ALIAS_SITEMAP_URLS,
+    "/subjects/",
+    "/gate-2015-pyq",
+    "/gate-2016-pyq",
+    "/gate-2017-pyq",
+    "/gate-2018-pyq",
+    "/gate-2019-pyq",
+    "/gate-2020-pyq",
+    "/gate-2021-pyq",
+    "/gate-2022-pyq",
+    "/gate-2023-pyq",
+    "/gate-2024-pyq",
+    "/gate-2025-pyq",
+    "/gate-2026-pyq",
+    "/practice/question/",
+  ];
+
+  const lines = [
     "User-agent: *",
-    "Allow: /",
+    "Disallow: /practice?",
+    "Disallow: /mock?",
+    "Disallow: /insights",
+    ...allowedPaths.map((p) => `Allow: ${p}`),
     "",
     `Sitemap: ${buildCanonicalUrl("/sitemap.xml")}`,
     "",
-  ].join("\n");
+  ];
+  return lines.join("\n");
 }
 
 function getQuestionBankPath() {

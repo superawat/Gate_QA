@@ -2,13 +2,14 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { EDITORIAL_PAGES } from "../src/data/editorialPages.js";
 
 const ROOT = process.cwd();
 const DIST_DIR = path.join(ROOT, "dist");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const SITE_ORIGIN = "https://gateqa.in";
 const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-cover.png`;
-const QUESTION_PRERENDER_LIMIT = 500;
+const QUESTION_PRERENDER_LIMIT = 1500;
 
 const SUBJECT_SEO_MAP = [
   {
@@ -420,7 +421,29 @@ function buildStaticRoot(page) {
   const richCopyHtml = page.richCopy && page.richCopy.length > 0
     ? `<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
         <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Overview &amp; Analysis</h2>
-        ${page.richCopy.map(para => `<p style="color: #334155; margin-bottom: 16px;">${escapeHtml(para)}</p>`).join("")}
+        ${page.richCopy.map(item => {
+          if (typeof item === "object" && item.type === "table") {
+            return `
+              <div style="overflow-x: auto; margin: 24px 0; border: 1px solid #e2e8f0; border-radius: 8px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
+                  <thead>
+                    <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                      ${item.headers.map(h => `<th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">${escapeHtml(h)}</th>`).join("")}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${item.rows.map(row => `
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        ${row.map(cell => `<td style="padding: 10px 12px; color: #475569;">${escapeHtml(cell)}</td>`).join("")}
+                      </tr>
+                    `).join("")}
+                  </tbody>
+                </table>
+              </div>
+            `;
+          }
+          return `<p style="color: #334155; margin-bottom: 16px;">${escapeHtml(item)}</p>`;
+        }).join("")}
        </div>`
     : "";
 
@@ -738,6 +761,123 @@ function buildQuestionPages(searchIndex, answersByQuestionUid) {
   });
 }
 
+function buildHomePage() {
+  const title = "GateQA — GATE CS PYQs, Mock Tests, Aptitude Practice & Calculator";
+  const description = "Practice 3,500+ GATE CS PYQs from 1987\u20132026. Subject-wise filters, year-wise mock tests, aptitude questions, offline support, and a built-in GATE calculator.";
+  const canonicalUrl = buildCanonicalUrl("/");
+  const homepageFaqs = [
+    {
+      question: "What is the GATE CS exam?",
+      answer: "GATE (Graduate Aptitude Test in Engineering) CS is a national-level exam testing Computer Science fundamentals for M.Tech admissions and PSU jobs."
+    },
+    {
+      question: "How many GATE CS previous year questions are available on GateQA?",
+      answer: "GateQA provides 3,500+ GATE CS previous-year questions from 1987 to 2026, spanning all 14 subjects in the official GATE CSE syllabus."
+    },
+    {
+      question: "Is GateQA free?",
+      answer: "Yes, GateQA is 100% free. No login, no payment, no subscription. All features including offline mode work without an account."
+    },
+    {
+      question: "Which subjects does GATE CS cover?",
+      answer: "GATE CS covers: Algorithms, Data Structures, Operating Systems, DBMS, Computer Networks, Theory of Computation, Compiler Design, Digital Logic, Computer Organization, Engineering Mathematics, Discrete Mathematics, and Software Engineering."
+    },
+    {
+      question: "How can I practice GATE 2027 questions?",
+      answer: "Start by practicing GATE CS previous year questions from 2024, 2025, and 2026 on GateQA to understand the current exam pattern."
+    },
+  ];
+
+  const siteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "GateQA",
+    url: SITE_ORIGIN,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_ORIGIN}/practice?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  return {
+    path: "/",
+    canonicalUrl,
+    title,
+    h1: "GATE CS Previous Year Questions \u2014 Free Practice Platform",
+    eyebrow: "GateQA",
+    description,
+    richCopy: [
+      "GateQA is India's most comprehensive free GATE CS preparation platform. Access over 3,500 previous-year questions from 1987 to 2026, with subject-wise filters across all 14 GATE CSE topics including Operating Systems, Algorithms, DBMS, Computer Networks, Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic, and Engineering Mathematics.",
+      "Practice smarter with year-wise mock tests using actual past GATE papers, track your performance with topic-level insights, bookmark difficult questions, and study offline \u2014 all for free, with no login required."
+    ],
+    faqs: homepageFaqs,
+    schemas: [
+      siteSchema,
+      breadcrumbSchema([{ name: "Home", url: canonicalUrl }]),
+      webPageSchema({ name: title, description, url: canonicalUrl }),
+      faqPageSchema(homepageFaqs),
+    ].filter(Boolean),
+    links: [
+      { href: "/gate-cs-pyq", label: "Browse GATE CS PYQs" },
+      { href: "/mock-tests", label: "Take a Mock Test" },
+      { href: "/gate-aptitude", label: "Practice Aptitude" },
+    ],
+  };
+}
+
+function buildAliasPages() {
+  return EDITORIAL_PAGES.map((alias) => {
+    const canonicalUrl = buildCanonicalUrl(alias.path);
+    const breadcrumbs = alias.breadcrumbs.map((bc) => ({
+      name: bc.name,
+      url: bc.url.replace("https://gateqa.in", SITE_ORIGIN),
+    }));
+
+    return {
+      path: alias.path,
+      canonicalUrl,
+      title: `${alias.keyword} | GateQA`,
+      h1: alias.h1,
+      description: alias.description,
+      eyebrow: alias.eyebrow,
+      richCopy: alias.richCopy || [],
+      faqs: alias.faqs || [],
+      schemas: [
+        breadcrumbSchema(breadcrumbs),
+        webPageSchema({ name: alias.h1, description: alias.description, url: canonicalUrl }),
+        alias.faqs && alias.faqs.length > 0 ? faqPageSchema(alias.faqs) : null,
+      ].filter(Boolean),
+      links: [{ href: alias.ctaHref, label: alias.ctaLabel }],
+    };
+  });
+}
+
+function buildBlogPage() {
+  const canonicalUrl = buildCanonicalUrl("/blog");
+  const breadcrumbs = [
+    { name: "Home", url: buildCanonicalUrl("/") },
+    { name: "Blog", url: canonicalUrl },
+  ];
+  return {
+    path: "/blog",
+    canonicalUrl,
+    title: "GateQA Blog — Exam Information, Syllabus & Study Guides",
+    h1: "Prep Guides & Exam Insights",
+    description: "Access deep-dive preparation resources, syllabus topics, patterns, cutoffs, subject weightage, and subject-wise guides for GATE CS & Aptitude.",
+    eyebrow: "Preparation Hub",
+    richCopy: [
+      "Access deep-dive preparation resources, syllabus topics, patterns, cutoffs, subject weightage, and subject-wise guides for GATE CS & Aptitude."
+    ],
+    faqs: [],
+    schemas: [
+      breadcrumbSchema(breadcrumbs),
+      webPageSchema({ name: "Prep Guides & Exam Insights", description: "Access deep-dive preparation resources, syllabus topics, patterns, cutoffs, subject weightage, and subject-wise guides for GATE CS & Aptitude.", url: canonicalUrl }),
+    ],
+    links: EDITORIAL_PAGES.filter((page) => page.showInBlog === true).map((page) => ({ href: page.path, label: page.keyword })),
+  };
+}
+
 function main() {
   const templatePath = path.join(DIST_DIR, "index.html");
   if (!fs.existsSync(templatePath)) {
@@ -755,6 +895,9 @@ function main() {
   }
 
   const pages = [
+    buildHomePage(),
+    buildBlogPage(),
+    ...buildAliasPages(),
     ...buildSubjectPages(manifest),
     ...buildYearPages(manifest),
     ...buildQuestionPages(searchIndex, answersByQuestionUid),

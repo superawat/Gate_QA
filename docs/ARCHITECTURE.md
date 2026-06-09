@@ -49,10 +49,16 @@ There is no backend, no database, and no server-side rendering.
 
 The landing route now stays on a lightweight startup path:
 
-- `index.html` no longer includes analytics, Google Fonts, or MathJax tags
+- `index.html` no longer includes Google Fonts or MathJax tags (Google Analytics gtag.js is included but loaded asynchronously)
 - `App.jsx` lazy-loads practice and mock shells only when the user enters them
 - `src/components/Math/MathRuntime.jsx` imports MathJax only inside practice/mock runtime
 - `src/utils/analytics.js` defers the single remaining analytics provider until first interaction or idle
+
+## Pre-rendering and SEO Alias Routes
+
+- Script: `scripts/prerender-seo-pages.mjs`
+- Outputs: 528 pre-rendered static HTML files in `dist/` (covering subjects, years, high-value questions, and 5 short-form alias routes: `/gate-cs-pyq`, `/gate-aptitude`, `/mock-tests`, `/operating-systems-pyq`, and `/dbms-pyq`).
+- Pre-rendering generates SEO-optimized HTML copies with JSON-LD schema markups and crawler-readable contents while seamlessly preserving client-side React SPA routing on execution.
 
 ## Four-layer initialization model (2026-02-25)
 

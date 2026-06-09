@@ -6,7 +6,7 @@ Published data count/status is generated into `docs/generated/DATA_STATUS.md` so
 
 ## Live link
 
-https://superawat.github.io/Gate_QA/
+https://gateqa.in/
 
 ## Key features
 

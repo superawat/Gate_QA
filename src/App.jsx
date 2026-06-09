@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
+import { EDITORIAL_PAGES } from "./data/editorialPages";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
@@ -32,6 +33,7 @@ import {
   PRACTICE_ROUTE,
   SUBJECTS_ROUTE,
   USER_MANUAL_ROUTE,
+  BLOG_ROUTE,
 } from "./utils/routes";
 import {
   loadExploreRoute,
@@ -53,6 +55,8 @@ const UserManualPage = lazy(loadUserManualRoute);
 const HighPriorityTopicsPage = lazy(loadHighPriorityTopicsRoute);
 const SubjectLandingPage = lazy(loadSubjectLandingRoute);
 const YearLandingPage = lazy(loadYearLandingRoute);
+const EditorialPage = lazy(() => import("./pages/EditorialPage"));
+const BlogListPage = lazy(() => import("./pages/BlogListPage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
@@ -410,6 +414,29 @@ const PracticeRoutes = ({
             <ErrorBoundary>
               <Suspense fallback={<RouteLoader label="Loading Year Paper..." />}>
                 <YearLandingPage questionBankManifest={questionBankManifest} />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
+        {EDITORIAL_PAGES.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={(
+              <ErrorBoundary>
+                <Suspense fallback={<RouteLoader label={`Loading ${page.keyword}...`} />}>
+                  <EditorialPage data={page} />
+                </Suspense>
+              </ErrorBoundary>
+            )}
+          />
+        ))}
+        <Route
+          path={BLOG_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Blog..." />}>
+                <BlogListPage />
               </Suspense>
             </ErrorBoundary>
           )}

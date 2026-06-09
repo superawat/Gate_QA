@@ -3,20 +3,38 @@
 ## [1.0.0] - 2026-06-09
 
 ### Added
-- **SEO Phase 4 (Pre-rendering)**: Configured a post-build static pre-renderer (`scripts/prerender-seo-pages.mjs`) generating 523 crawler-ready HTML snapshots for Subject pages, Year pages, and high-value Question pages. Included static HTML body fallbacks and dynamic meta/canonical/OpenGraph tags without disturbing SPA React routing.
+- **Dedicated Blog Hub (`/blog`)**: Created a premium, search-filterable, responsive blog page (`src/pages/BlogListPage.jsx`) presenting active exam articles and subject practice guides with motion animations and themed styles.
+- **Subject Practice Guides on Blog**: Integrated all 11 core computer science subjects from `SUBJECT_SEO_MAP` as beautifully styled cards with specific topic tags in the blog list.
+- **Structured Data Tables**: Integrated custom table schema support into the `richCopy` array definition to render responsive, modern HTML data tables for complex blog metrics (dates, fees, cutoffs, syllabus weightages, marking schemes).
+- **SEO Phase 4 (Pre-rendering)**: Configured a post-build static pre-renderer (`scripts/prerender-seo-pages.mjs`) generating crawler-ready HTML snapshots for Subject pages, Year pages, and high-value Question pages. Included static HTML body fallbacks and dynamic meta/canonical/OpenGraph tags without disturbing SPA React routing.
 - **SEO Phase 5 (Rich Snippets & Polish)**:
   - Added JSON-LD `FAQPage` schemas and visible Q&A blocks to pre-rendered Subject and Year landing pages.
   - Injected keyword-rich overview content into pre-rendered Subject and Year pages.
   - Redesigned the GitHub Pages fallback redirect (`public/404.html`) into a beautifully themed, branded loading splash screen with auto light/dark mode.
   - Generated and integrated a high-quality, modern, light-themed social preview card (`public/og-cover.png`).
+- **SEO Phase 6 (Brand Signals, Alias Pages & Analytics)**:
+  - Injected a visually hidden, keyword-rich brand description overview (`#seo-brand-text`) into the homepage layout to assist crawler indexing.
+  - Created 5 new pre-rendered short-form alias landing pages (`/gate-cs-pyq`, `/gate-aptitude`, `/mock-tests`, `/operating-systems-pyq`, and `/dbms-pyq`) featuring schema markups and targeted CTAs to match high-volume search queries.
+  - Integrated the Google Analytics (gtag.js) script into the document head for traffic monitoring, configured with the site's custom GA Measurement ID.
+  - Updated the project `README.md` live link.
+  - Configured custom domain tracking in GoatCounter settings.
 
 ### Changed
+- **Updated Blog Content (GATE 2027)**: Fully updated all editorial articles (`src/data/editorialPages.js`) to target the upcoming **GATE 2027** exam cycle, replacing flat lists with structured comparative tables.
+- **Pre-renderer Table Formatting**: Updated the static pre-rendering pipeline (`scripts/prerender-seo-pages.mjs`) to render table data as fully styled `<table />` elements rather than raw text, keeping pre-rendered snapshots readable and semantic for search engine crawlers.
+- **Global Drawer Navigation**: Replaced the collapsible blog section accordion in the navigation drawer with a direct action link leading directly to `/blog`.
+- **Blog Listing Filtering**: Added a `showInBlog` property to `EDITORIAL_PAGES` to hide empty stubs (like `/gate-cs-pyq`, `/gate-aptitude`, etc.) while keeping the 5 real-content articles (GATE 2027, Syllabus, Eligibility, Cutoffs, Pattern) visible.
+- **SEO & Pre-rendering Integration**: Updated `scripts/prerender-seo-pages.mjs` to statically build `/blog/index.html` with breadcrumbs and webpage metadata, and configured sitemap generation to output `https://gateqa.in/blog` in `public/sitemap.xml`.
 - Replaced basic app title and description metadata with advanced structured metadata injected during pre-rendering.
 - Established `1.0.0` versioning starting from the `gateqa.in` root domain release.
+- Audited and updated the entire student motivational quotes engine in `src/utils/motivationalQuotes.js` to align 100% with study focus, question practice, scientific logic, and exam stress management: removed societal sacrifice, heart-brain conflicts, purity, forgiveness, and socio-political quotes. Replaced them with study-centric quotes from Dr. B. R. Ambedkar, Swami Vivekananda, Confucius, Richard Feynman, Sir Isaac Newton, and Marie Curie.
 
 ### Verified
 - Passed 280/280 Vitest unit tests (`npm run test:unit`) post-SEO implementation.
-- Verified successful local static output structure (`npm run build`).## 2026-06-08
+- Verified successful local static output structure (`npm run build`), compiling a total of 1535 static pre-rendered HTML files including the `/blog/index.html` listing page.
+- Validated sitemap regeneration including custom `/blog` entry.
+
+## 2026-06-08
 
 ### Added
 - Added custom CNAME configuration file (`public/CNAME`) specifying `gateqa.in` to point custom domain on GitHub Pages.

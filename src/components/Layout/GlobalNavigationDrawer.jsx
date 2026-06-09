@@ -9,12 +9,14 @@ import {
   FaInfoCircle,
   FaHeart,
   FaFire,
+  FaNewspaper,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import HamburgerButton from "./HamburgerButton";
 import SupportModal from "../Footer/SupportModal";
 
-import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, USER_MANUAL_ROUTE } from "../../utils/routes";
+import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, USER_MANUAL_ROUTE, BLOG_ROUTE } from "../../utils/routes";
+import { EDITORIAL_PAGES } from "../../data/editorialPages";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 import {
   preloadExploreRoute,
@@ -398,7 +400,20 @@ const GlobalNavigationDrawer = ({
             )}
           </section>
 
-          {/* 4. Manual */}
+          {/* 4. Blog */}
+          <section className="space-y-2" aria-labelledby="global-blog-heading">
+            <h2 id="global-blog-heading" className={sectionHeadingClassName}>Blog</h2>
+            <Link
+              to={BLOG_ROUTE}
+              onClick={onClose}
+              className={actionButtonClassName}
+            >
+              <FaNewspaper className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Articles & Guides</span>
+            </Link>
+          </section>
+
+          {/* 5. Manual */}
           <section className="space-y-2" aria-labelledby="global-manual-heading">
             <h2 id="global-manual-heading" className={sectionHeadingClassName}>Manual</h2>
 
