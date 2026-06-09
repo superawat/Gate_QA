@@ -229,7 +229,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
         ]}
       />
       <PageShell>
-        <article className="mx-auto max-w-4xl space-y-8 py-2">
+        <article className="mx-auto max-w-4xl space-y-6 sm:space-y-8 py-2">
 
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[color:var(--color-text-muted)]">
@@ -239,7 +239,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
           </nav>
 
           {/* Hero */}
-          <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-8 shadow-[var(--shadow-card)] sm:px-8">
+          <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-6 sm:px-8 sm:py-8 shadow-[var(--shadow-card)]">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">GATE CS Subject</p>
             <h1 className="text-3xl font-bold text-[color:var(--color-text)] sm:text-4xl">
               {subject.label}
@@ -289,7 +289,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
           {/* Topics */}
           {subject.topics?.length > 0 && (
             <section
-              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 sm:px-6 py-6 shadow-[var(--shadow-card)]"
               aria-labelledby="topics-heading"
             >
               <h2 id="topics-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
@@ -314,7 +314,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
           {/* Official Syllabus */}
           {subject.syllabus?.length > 0 && (
             <section
-              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 sm:px-6 py-6 shadow-[var(--shadow-card)]"
               aria-labelledby="syllabus-heading"
             >
               <h2 id="syllabus-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
@@ -349,7 +349,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
 
           {/* Year-wise quick links */}
           <section
-            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 sm:px-6 py-6 shadow-[var(--shadow-card)]"
             aria-labelledby="years-heading"
           >
             <h2 id="years-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
@@ -373,7 +373,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
 
           {/* Why practice here */}
           <section
-            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 sm:px-6 py-6 shadow-[var(--shadow-card)]"
             aria-labelledby="features-heading"
           >
             <h2 id="features-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
@@ -411,7 +411,7 @@ const SubjectLandingPage = ({ questionBankManifest }) => {
           )}
 
           {/* Bottom CTA */}
-          <div className="rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-6 py-6 text-center shadow-[var(--shadow-soft)]">
+          <div className="rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-4 sm:px-6 py-6 text-center shadow-[var(--shadow-soft)]">
             <p className="text-base font-semibold text-sky-900">
               Ready to start practicing {subject.label}?
             </p>

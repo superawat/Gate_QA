@@ -1,7 +1,30 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FaBolt, FaChartLine, FaCompass, FaRegClock } from "react-icons/fa";
 
-import SEOHead from "../components/SEO/SEOHead";
+import SEOHead, { buildFAQPageSchema } from "../components/SEO/SEOHead";
+
+const HOMEPAGE_FAQS = [
+  {
+    question: "What is the GATE CS exam?",
+    answer: "GATE (Graduate Aptitude Test in Engineering) CS is a national-level exam testing Computer Science fundamentals for M.Tech admissions and PSU jobs."
+  },
+  {
+    question: "How many GATE CS previous year questions are available on GateQA?",
+    answer: "GateQA provides 3,500+ GATE CS previous-year questions from 1987 to 2026, spanning all 14 subjects in the official GATE CSE syllabus."
+  },
+  {
+    question: "Is GateQA free?",
+    answer: "Yes, GateQA is 100% free. No login, no payment, no subscription. All features including offline mode work without an account."
+  },
+  {
+    question: "Which subjects does GATE CS cover?",
+    answer: "GATE CS covers: Algorithms, Data Structures, Operating Systems, DBMS, Computer Networks, Theory of Computation, Compiler Design, Digital Logic, Computer Organization, Engineering Mathematics, Discrete Mathematics, and Software Engineering."
+  },
+  {
+    question: "How can I practice GATE 2027 questions?",
+    answer: "Start by practicing GATE CS previous year questions from 2024, 2025, and 2026 on GateQA to understand the current exam pattern."
+  }
+];
 
 import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
@@ -260,6 +283,7 @@ const HomePage = ({
         title="GateQA — GATE CS PYQs, Mock Tests, Aptitude Practice & Calculator"
         description="Practice 3500+ GATE CS PYQs from 1987–2026, 36000+ Aptitude questions, subject-wise mock tests, GATE calculator, insights, notes and bookmarks. Free and offline-first."
         path="/"
+        schemaOrg={buildFAQPageSchema(HOMEPAGE_FAQS)}
       />
       <PageShell
         contentClassName="home-dashboard-shell"

@@ -447,7 +447,7 @@ const ExplorePage = ({
               </button>
             </div>
           ) : loading && !isInitialized ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading filter page..."
                 size="lg"
@@ -456,14 +456,14 @@ const ExplorePage = ({
               />
             </div>
           ) : filteredQuestions.length === 0 ? (
-            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 text-center shadow-[var(--shadow-soft)]">
+            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 text-center shadow-[var(--shadow-soft)]">
               <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No questions match these filters.</h2>
               <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
                 Try removing one or two filters, broadening the year range, or clearing the search text.
               </p>
             </div>
           ) : isPageTransitioning ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading page..."
                 size="md"

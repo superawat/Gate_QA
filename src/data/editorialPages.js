@@ -493,6 +493,88 @@ export const EDITORIAL_PAGES = [
     ],
   },
   {
+    path: "/gate-cs-weightage",
+    keyword: "GATE CS Weightage",
+    showInBlog: true,
+    h1: "GATE CS Subject Wise Weightage & Priority Topics for 2027",
+    description:
+      "Detailed subject wise weightage analysis for GATE Computer Science based on 2020-2026 PYQs. Focus on high-yielding priority topics to maximize your GATE score.",
+    eyebrow: "GATE CS Weightage",
+    ctaLabel: "Practice Priority Topics",
+    ctaHref: "/practice",
+    breadcrumbs: [
+      { name: "Home", url: "https://gateqa.in/" },
+      { name: "Subject Wise Weightage", url: "https://gateqa.in/gate-cs-weightage" },
+    ],
+    relatedArticles: [
+      { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
+      { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
+      { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+    ],
+    richCopy: [
+      "To optimize your preparation for GATE 2027 Computer Science, it's essential to understand which subjects historically carry the most weight. Not all 14 subjects in the syllabus contribute equally to the final 100 marks.",
+      "The following analysis breaks down the average subject-wise weightage based on official GATE CS papers from the last 5-7 years.",
+      { type: "h2", text: "The Big Four (Highest Weightage)" },
+      "These four subjects collectively account for 45-50% of the core technical marks. Mastering these is non-negotiable for a top 500 rank.",
+      {
+        type: "cards",
+        items: [
+          { icon: "🧮", accent: "blue",   title: "Programming & Data Structures", subtitle: "10–14 Marks. Focus on C-pointers, Trees, BSTs, and Stack/Queue operations." },
+          { icon: "📈", accent: "purple", title: "Algorithms",                    subtitle: "8–12 Marks. Focus on Asymptotic notation, Graph algorithms (Dijkstra, MST), and Dynamic Programming." },
+          { icon: "⚙️", accent: "green",  title: "Operating Systems",             subtitle: "8–10 Marks. Focus on CPU Scheduling, Paging address translation, and Semaphores." },
+          { icon: "🌐", accent: "amber",  title: "Computer Networks",             subtitle: "8–10 Marks. Focus on IP Subnetting, TCP Congestion Control, and Routing Protocols." }
+        ]
+      },
+      { type: "h2", text: "Mathematics Foundation" },
+      "Mathematics forms a crucial part of the exam, strictly carrying a massive weightage every single year. It consists of two distinct components:",
+      {
+        type: "ul",
+        items: [
+          "<strong>Engineering Mathematics (4–6 Marks):</strong> Linear Algebra (Eigenvalues, Determinants), Calculus (Maxima/Minima), and Probability distributions.",
+          "<strong>Discrete Mathematics (8–10 Marks):</strong> Propositional Logic, Graph Theory, Combinatorics, and Set Theory. This subject also builds the foundation for TOC and Algorithms."
+        ]
+      },
+      { type: "h2", text: "Moderate Weightage Subjects" },
+      "These subjects are highly scoring and relatively smaller in syllabus volume. They typically yield 5–8 marks each.",
+      {
+        type: "table",
+        headers: ["Subject", "Average Marks", "Key Topics to Focus"],
+        rows: [
+          ["Theory of Computation (TOC)", "7–9", "Regular Languages, Decidability, CFGs"],
+          ["Database Management Systems (DBMS)", "6–8", "SQL Queries, Normalization, Transactions"],
+          ["Digital Logic", "5–7", "K-Maps, Multiplexers, Counters"],
+          ["Computer Organization (COA)", "6–8", "Cache memory mapping, Pipeline speedup"],
+          ["Compiler Design", "4–6", "Parsers (LL, LR), Syntax-Directed Translation"]
+        ]
+      },
+      { type: "h2", text: "General Aptitude" },
+      "General Aptitude is a fixed <strong>15 Marks</strong> section across all GATE papers. It comprises 5 questions of 1 mark each and 5 questions of 2 marks each. Ignoring aptitude is the biggest mistake candidates make. Strong quantitative and verbal skills here provide a massive competitive edge.",
+      { type: "callout", variant: "tip", text: "Create a study schedule that allocates 60% of your time to the 'Big Four' and Mathematics, and 40% to the moderate subjects and General Aptitude." },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint — Section-by-Section Guide" },
+          { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Which subject has the highest weightage in GATE CS?",
+        answer: "Historically, Programming and Data Structures, along with Discrete & Engineering Mathematics, carry the highest weightage (often exceeding 12-15 marks each).",
+      },
+      {
+        question: "Is it safe to skip any subject for GATE CS?",
+        answer: "It is highly risky to skip subjects entirely. Even low-weightage subjects like Compiler Design (4-6 marks) feature straightforward, high-scoring questions. Skipping them can cost you crucial ranks.",
+      },
+      {
+        question: "How many marks are allocated to General Aptitude?",
+        answer: "General Aptitude carries a strict 15 marks (10 questions) in all GATE papers, making it effectively the single highest-weighted 'subject' area in the exam.",
+      },
+    ],
+  },
+  {
     path: "/gate-cs-pyq",
     keyword: "GATE CS PYQ",
     showInBlog: false,

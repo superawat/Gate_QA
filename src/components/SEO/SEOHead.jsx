@@ -54,6 +54,23 @@ export const buildQAPageSchema = ({
 });
 
 /**
+ * Build an FAQPage Schema.org object from an array of Q&A pairs.
+ * @param {Array<{question: string, answer: string}>} faqs
+ */
+export const buildFAQPageSchema = (faqs = []) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+});
+
+/**
  * Build a WebPage / EducationalOrganization schema for subject & year landing pages.
  */
 export const buildWebPageSchema = ({ name = "", description = "", url = "" }) => ({

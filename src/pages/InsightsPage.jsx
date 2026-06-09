@@ -1439,7 +1439,7 @@ const InsightsPage = ({
             {error}
           </div>
         ) : summary.attemptedQuestionCount <= 0 ? (
-          <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-8 text-center shadow-[var(--shadow-soft)]">
+          <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 text-center shadow-[var(--shadow-soft)]">
             <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]">
               <FaLightbulb />
             </div>

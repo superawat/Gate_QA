@@ -321,7 +321,7 @@ export default function UserManualPage() {
       description="Complete guide to using GateQA: practice modes, filters, mock tests, insights, progress export, keyboard shortcuts, and offline features."
       path="/manual"
     />
-    <PageShell contentClassName="space-y-8 py-8">
+    <PageShell contentClassName="space-y-6 sm:space-y-8 py-4 sm:py-8">
       <motion.div
         initial="hidden"
         animate="visible"

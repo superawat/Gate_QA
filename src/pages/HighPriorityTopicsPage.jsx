@@ -925,7 +925,7 @@ const HighPriorityTopicsPage = () => {
       </header>
 
       {isLoading ? (
-        <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
+        <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
           <div className="flex min-h-[160px] flex-col items-center justify-center gap-3">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-sky-500 border-t-transparent" />
             <p className="text-sm font-semibold text-[color:var(--color-text-muted)]">Building GATE CSE topic guide...</p>

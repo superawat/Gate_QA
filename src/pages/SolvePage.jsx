@@ -502,7 +502,7 @@ const SolvePage = ({
               </button>
             </div>
           ) : (loading && !isInitialized) || (isAptitudeQuestion && aptitudeEnabled && aptitudeLoading && !indexedQuestion) ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading Solve page..."
                 size="lg"
@@ -511,7 +511,7 @@ const SolvePage = ({
               />
             </div>
           ) : !indexedQuestion ? (
-            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 text-center shadow-[var(--shadow-soft)]">
+            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 text-center shadow-[var(--shadow-soft)]">
               <h2 className="text-xl font-semibold text-[color:var(--color-text)]">Question not found.</h2>
               <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
                 This question UID is not available in the current index. Try going back to Explore and opening another result.
@@ -529,7 +529,7 @@ const SolvePage = ({
               </button>
             </div>
           ) : isQuestionDetailLoading || !resolvedQuestion ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
+            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
               <LoadingState
                 label="Loading question detail..."
                 size="lg"

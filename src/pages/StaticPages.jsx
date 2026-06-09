@@ -31,7 +31,7 @@ export function AboutPage() {
         description="GateQA is a free, no-login GATE CS practice platform offering 3,500+ previous year questions from 1987–2026 with subject-wise filters, solutions, and offline support."
         path="/about"
       />
-      <PageShell contentClassName="py-10">
+      <PageShell contentClassName="py-6 sm:py-10">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -48,7 +48,7 @@ export function AboutPage() {
             </h1>
           </header>
 
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 shadow-[var(--shadow-soft)] space-y-8">
+          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] space-y-8">
             <Section title="What is GateQA?">
               <p>
                 GateQA is a free, open-access practice platform built specifically for GATE Computer
@@ -118,7 +118,7 @@ export function ContactPage() {
         description="Contact the GateQA team for feedback, question corrections, content suggestions, or general inquiries about our GATE CS practice platform."
         path="/contact"
       />
-      <PageShell contentClassName="py-10">
+      <PageShell contentClassName="py-6 sm:py-10">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -135,7 +135,7 @@ export function ContactPage() {
             </h1>
           </header>
 
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 shadow-[var(--shadow-soft)] space-y-8">
+          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] space-y-8">
             <Section title="Get in Touch">
               <p>
                 We welcome feedback, bug reports, question corrections, and content suggestions.
@@ -205,7 +205,7 @@ export function PrivacyPage() {
         description="GateQA Privacy Policy — how we collect, use, and protect your data. GateQA does not require registration and stores progress data locally on your device."
         path="/privacy"
       />
-      <PageShell contentClassName="py-10">
+      <PageShell contentClassName="py-6 sm:py-10">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -219,7 +219,7 @@ export function PrivacyPage() {
             <p className="text-sm text-[color:var(--color-text-muted)]">Last updated: June 2026</p>
           </header>
 
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 shadow-[var(--shadow-soft)] space-y-8">
+          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] space-y-8">
             <Section title="Overview">
               <p>
                 GateQA (<strong>gateqa.in</strong>) is committed to protecting your privacy. This
@@ -290,7 +290,7 @@ export function TermsPage() {
         description="GateQA Terms and Conditions — rules and guidelines for using the GateQA GATE CS practice platform."
         path="/terms"
       />
-      <PageShell contentClassName="py-10">
+      <PageShell contentClassName="py-6 sm:py-10">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -304,7 +304,7 @@ export function TermsPage() {
             <p className="text-sm text-[color:var(--color-text-muted)]">Last updated: June 2026</p>
           </header>
 
-          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 shadow-[var(--shadow-soft)] space-y-8">
+          <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] space-y-8">
             <Section title="Acceptance of Terms">
               <p>
                 By accessing and using GateQA (<strong>gateqa.in</strong>), you agree to be bound

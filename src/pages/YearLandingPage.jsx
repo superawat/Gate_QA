@@ -103,7 +103,7 @@ const YearLandingPage = ({ questionBankManifest }) => {
         ]}
       />
       <PageShell>
-        <article className="mx-auto max-w-4xl space-y-8 py-2">
+        <article className="mx-auto max-w-4xl space-y-6 sm:space-y-8 py-2">
 
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[color:var(--color-text-muted)]">
@@ -115,7 +115,7 @@ const YearLandingPage = ({ questionBankManifest }) => {
           </nav>
 
           {/* Hero */}
-          <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-8 shadow-[var(--shadow-card)] sm:px-8">
+          <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-6 sm:px-8 sm:py-8 shadow-[var(--shadow-card)]">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600">GATE CS Paper</p>
             <h1 className="text-3xl font-bold text-[color:var(--color-text)] sm:text-4xl">
               GATE {yearNum} CS Questions
@@ -165,7 +165,7 @@ const YearLandingPage = ({ questionBankManifest }) => {
 
           {/* Subject-wise quick links */}
           <section
-            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 sm:px-6 py-6 shadow-[var(--shadow-card)]"
             aria-labelledby="subjects-heading"
           >
             <h2 id="subjects-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
@@ -185,7 +185,7 @@ const YearLandingPage = ({ questionBankManifest }) => {
 
           {/* Why practice here */}
           <section
-            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-6 shadow-[var(--shadow-card)]"
+            className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 sm:px-6 py-6 shadow-[var(--shadow-card)]"
             aria-labelledby="why-heading"
           >
             <h2 id="why-heading" className="text-lg font-semibold text-[color:var(--color-text)]">
@@ -230,7 +230,7 @@ const YearLandingPage = ({ questionBankManifest }) => {
           </section>
 
           {/* Bottom CTA */}
-          <div className="rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-6 py-6 text-center shadow-[var(--shadow-soft)]">
+          <div className="rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-4 sm:px-6 py-6 text-center shadow-[var(--shadow-soft)]">
             <p className="text-base font-semibold text-sky-900">
               Ready to practice GATE {yearNum} CS?
             </p>

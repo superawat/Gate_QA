@@ -64,12 +64,12 @@ export default function BlogListPage() {
         schemaOrg={[breadcrumbsSchema, webPageSchema]}
       />
 
-      <PageShell contentClassName="py-8">
+      <PageShell contentClassName="py-4 sm:py-8">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="space-y-8 max-w-6xl mx-auto"
+          className="space-y-6 sm:space-y-8 max-w-6xl mx-auto"
         >
           {/* Breadcrumbs */}
           <motion.nav variants={fadeUp} aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs sm:text-sm text-[color:var(--color-text-muted)]">
@@ -123,7 +123,7 @@ export default function BlogListPage() {
                       visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
                     }}
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                    className="flex flex-col justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] hover:border-[color:var(--color-primary-border)] transition-all duration-300 group"
+                    className="flex flex-col justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] hover:border-[color:var(--color-primary-border)] transition-all duration-300 group"
                   >
                     <div className="space-y-4">
                       <span className="inline-block rounded-lg bg-[color:var(--color-surface-muted)] border border-[color:var(--color-border)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider group-hover:bg-[color:var(--color-primary-soft)] group-hover:text-[color:var(--color-primary-text)] group-hover:border-[color:var(--color-primary-border)] transition-colors">
@@ -137,7 +137,7 @@ export default function BlogListPage() {
                       </p>
                     </div>
 
-                    <div className="pt-6">
+                    <div className="pt-4 sm:pt-6">
                       <Link
                         to={page.path}
                         className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-primary-text)] hover:opacity-80 transition-opacity"
@@ -178,7 +178,7 @@ export default function BlogListPage() {
                         visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
                       }}
                       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                      className="flex flex-col justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] hover:border-teal-400 dark:hover:border-teal-500 transition-all duration-300 group"
+                      className="flex flex-col justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] hover:border-teal-400 dark:hover:border-teal-500 transition-all duration-300 group"
                     >
                       <div className="space-y-4">
                         <span className="inline-block rounded-lg bg-[color:var(--color-surface-muted)] border border-[color:var(--color-border)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider group-hover:bg-teal-50 dark:group-hover:bg-teal-950 group-hover:text-teal-700 dark:group-hover:text-teal-300 group-hover:border-teal-300 transition-colors">
@@ -199,7 +199,7 @@ export default function BlogListPage() {
                         </div>
                       </div>
 
-                      <div className="pt-6">
+                      <div className="pt-4 sm:pt-6">
                         <Link
                           to={`/subjects/${subject.urlSlug}`}
                           className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-400 hover:opacity-80 transition-opacity"
@@ -227,7 +227,7 @@ export default function BlogListPage() {
             );
             if (hasArticles || hasSubjects) return null;
             return (
-              <motion.div variants={fadeUp} className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-12 text-center">
+              <motion.div variants={fadeUp} className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-6 sm:p-12 text-center">
                 <p className="text-base text-[color:var(--color-text-muted)]">
                   No results found for "{searchQuery}"
                 </p>
