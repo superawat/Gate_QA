@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="State whether the following statements are TRUE or FALSE: The intersection of two CFL&#39;s is also a CFL. Answer: B" />
+  <meta name="robots" content="index,follow" />
+  <script>
+    (function () {
+      try {
+        var isMockWindow = /\/mock(?:\/|$)/.test(window.location.pathname);
+        var storedTheme = window.localStorage.getItem("gate_qa_theme");
+        var isStoredThemeValid = storedTheme === "light" || storedTheme === "dark";
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = isMockWindow
+          ? "light"
+          : (isStoredThemeValid ? storedTheme : (prefersDark ? "dark" : "light"));
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    }());
+  </script>
+  <title>GATE CSE 1987 | Question: 2k - Theory of Computation | GateQA</title>
+  <link rel="canonical" href="https://gateqa.in/practice/question/go%3A80599" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RQ2SSMN6E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1RQ2SSMN6E');
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    pre {
+      overflow: auto;
+    }
+
+    /* ── Static splash screen (hides FOUC until React mounts) ─────── */
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.875rem;
+      background: #f9fafb;
+      transition: opacity 280ms ease, visibility 280ms ease;
+    }
+
+    :root[data-theme="dark"] #app-splash {
+      background: #0f172a;
+    }
+
+    #app-splash.app-splash--hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #app-splash-spinner {
+      position: relative;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: #1e293b;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #app-splash-spinner::before {
+      content: "";
+      position: absolute;
+      inset: 0.65rem;
+      border: 2px solid #e0f2fe;
+      border-top-color: #0ea5e9;
+      border-radius: 999px;
+      animation: app-splash-spin 720ms linear infinite;
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::before {
+      border-color: rgba(14, 165, 233, 0.2);
+      border-top-color: #38bdf8;
+    }
+
+    #app-splash-spinner::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      transform: translate(-50%, -50%);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::after {
+      background: #38bdf8;
+    }
+
+    #app-splash-text {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    :root[data-theme="dark"] #app-splash-text {
+      color: #94a3b8;
+    }
+
+    @keyframes app-splash-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #app-splash-spinner::before {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function (location) {
+      if (location.search[1] !== "/") {
+        return;
+      }
+
+      var decoded = location.search
+        .slice(1)
+        .split("&")
+        .map(function (segment) {
+          return segment.replace(/~and~/g, "&");
+        })
+        .join("?");
+
+      window.history.replaceState(
+        null,
+        "",
+        location.pathname.slice(0, -1) + decoded + location.hash
+      );
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/index-aI-uR838.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-gsO-yNs2.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-preload-helper-CVfkMyKi.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-misc-BRfbvqnD.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-seo-CWRlDXw5.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-router-Cbw40Bqt.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-icons-CNsZU4z2.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-CKynMDsG.css">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="GATE CSE 1987 | Question: 2k - Theory of Computation | GateQA" />
+  <meta property="og:description" content="State whether the following statements are TRUE or FALSE: The intersection of two CFL&#39;s is also a CFL. Answer: B" />
+  <meta property="og:image" content="https://gateqa.in/og-cover.png" />
+  <meta property="og:url" content="https://gateqa.in/practice/question/go%3A80599" />
+  <meta property="og:site_name" content="GateQA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GATE CSE 1987 | Question: 2k - Theory of Computation | GateQA" />
+  <meta name="twitter:description" content="State whether the following statements are TRUE or FALSE: The intersection of two CFL&#39;s is also a CFL. Answer: B" />
+  <meta name="twitter:image" content="https://gateqa.in/og-cover.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gateqa.in/"},{"@type":"ListItem","position":2,"name":"Theory of Computation","item":"https://gateqa.in/subjects/theory-of-computation"},{"@type":"ListItem","position":3,"name":"GATE 1987","item":"https://gateqa.in/gate-1987-pyq"},{"@type":"ListItem","position":4,"name":"GATE CSE 1987 | Question: 2k","item":"https://gateqa.in/practice/question/go%3A80599"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"QAPage","name":"GATE CSE 1987 | Question: 2k | GateQA","url":"https://gateqa.in/practice/question/go%3A80599","mainEntity":{"@type":"Question","name":"GATE CSE 1987 | Question: 2k | GateQA","text":"State whether the following statements are TRUE or FALSE: The intersection of two CFL's is also a CFL.","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Answer: B","upvoteCount":0}}}</script>
+</head>
+
+<body>
+  <noscript>
+    <div style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif;">
+      <h1>GateQA — Free GATE CS Previous Year Questions &amp; Mock Tests</h1>
+      <p>GateQA is a free GATE CS preparation platform with 3,500+ previous-year questions
+      (1987&ndash;2026), 36,000+ aptitude questions, full-length year-wise mock tests, a built-in
+      GATE calculator, performance analytics, and full offline support.</p>
+      <p>Practice questions from Operating Systems, Algorithms, DBMS, Computer Networks,
+      Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic,
+      Computer Organization, Software Engineering, and Engineering Mathematics.</p>
+      <a href="https://gateqa.in/gate-cs-pyq">Browse GATE CS PYQs</a> |
+      <a href="https://gateqa.in/mock-tests">Take Mock Tests</a>
+    </div>
+  </noscript>
+  <div id="seo-brand-text" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">
+    <h1>GateQA — Free GATE CS Preparation Platform</h1>
+    <p>GateQA is a free GATE CS preparation platform featuring 3,500+ previous-year questions (1987&ndash;2026),
+    36,000+ aptitude questions, subject-wise and year-wise mock tests, performance analytics,
+    and full offline support. Practice Operating Systems, Algorithms, DBMS, Computer Networks,
+    Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic, and more.</p>
+  </div>
+  <div id="root">
+  <div id="app-splash" aria-live="polite" role="status">
+    <div id="app-splash-spinner" aria-hidden="true"></div>
+    <p id="app-splash-text">Loading GateQA</p>
+  </div>
+  <main class="seo-prerender" style="max-width: 860px; margin: 0 auto; padding: 32px 20px; font-family: Segoe UI, Inter, system-ui, sans-serif; line-height: 1.6; color: #0f172a;">
+    <p style="margin: 0 0 8px; color: #0369a1; font-size: 13px; font-weight: 700; text-transform: uppercase;">Theory of Computation</p>
+    <h1 style="margin: 0; font-size: 36px; line-height: 1.15;">GATE CSE 1987 | Question: 2k</h1>
+    <nav style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;"><a href="/practice/question/go%3A80599" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">Open interactive question</a><a href="/practice?years=1987" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">More GATE 1987 questions</a><a href="/subjects/theory-of-computation" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">More Theory of Computation</a></nav>
+    <ul style="margin-top: 24px; color: #334155;"><li>Subject: Theory of Computation</li><li>Paper: 1987</li><li>Answer: B</li></ul>
+    <p style="margin-top: 36px; border-top: 1px solid #e2e8f0; padding-top: 16px; color: #64748b; font-size: 14px;">This static SEO snapshot loads the full interactive GateQA app when JavaScript is available.</p>
+  </main>
+</div>
+</body>
+
+</html>
