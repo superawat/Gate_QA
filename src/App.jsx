@@ -9,7 +9,6 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
 import { EDITORIAL_PAGES } from "./data/editorialPages";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
@@ -61,6 +60,7 @@ const AboutPage = lazy(() => import("./pages/StaticPages").then(m => ({ default:
 const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.ContactPage })));
 const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.TermsPage })));
+const HomePage = lazy(() => import("./pages/HomePage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
@@ -313,20 +313,22 @@ const PracticeRoutes = ({
           path={HOME_ROUTE}
           element={(
             <ErrorBoundary>
-              <HomePage
-                questionBankManifest={questionBankManifest}
-                manifestLoading={manifestLoading}
-                manifestError={manifestError}
-                hasResumeRoute={hasResumeRoute}
-                lastSession={lastSession}
-                mockModeEnabled={MOCK_TEST_MODE_ENABLED}
-                onStartRandomPractice={handleStartRandomPractice}
-                onExplorePractice={handleExplorePractice}
-                onOpenInsights={handleOpenInsights}
-                onOpenMockHistory={handleOpenMockHistory}
-                onStartMockTest={handleStartMockTest}
-                onResumePractice={handleResumePractice}
-              />
+              <Suspense fallback={<RouteLoader label="Loading Dashboard..." />}>
+                <HomePage
+                  questionBankManifest={questionBankManifest}
+                  manifestLoading={manifestLoading}
+                  manifestError={manifestError}
+                  hasResumeRoute={hasResumeRoute}
+                  lastSession={lastSession}
+                  mockModeEnabled={MOCK_TEST_MODE_ENABLED}
+                  onStartRandomPractice={handleStartRandomPractice}
+                  onExplorePractice={handleExplorePractice}
+                  onOpenInsights={handleOpenInsights}
+                  onOpenMockHistory={handleOpenMockHistory}
+                  onStartMockTest={handleStartMockTest}
+                  onResumePractice={handleResumePractice}
+                />
+              </Suspense>
             </ErrorBoundary>
           )}
         />
