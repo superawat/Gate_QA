@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0] - 2026-06-11
+
+### Added
+- **Collapsible Section Toggles**: Upgraded the `EditorialPage` component (`src/pages/EditorialPage.jsx`) to group rich content under expandable/collapsible `h2` headings dynamically, improving structure and readability.
+- **Scroll-Spy Sticky Table of Contents**: Added a desktop table of contents widget in the left column that tracks reading progress using `IntersectionObserver`. Added a mobile-optimized drawer widget (`MobileToCDrawer`) to browse page sections on small viewports.
+- **Structured Info Cards Grid**: Enhanced card rendering to display key information items inside a modern, hover-responsive grid with animated background highlights.
+- **Why Practice on GateQA Section**: Integrated a dedicated study resources promotion card beneath the main copy, highlighting database scale, pricing (free), and key platform features.
+- **Promotional Right Sidebar**: Created a desktop-only call-to-action sidebar directing students to practice sections, highlighting key preparation steps.
+- **Zebra-Striped Data Tables**: Modernized responsive tables with colored headers, alternating row styles, and hover highlights.
+
+### Changed
+- **Responsive 3-Column Layout Grid**: Reorganized the main structure of the informational/editorial pages into a 3-column layout on wide screens (`15rem 1fr 19rem` grid) while collapsing cleanly to single-column on mobile.
+- **Polished Visual Elements**: Unified padding, spacing, borders, and rounded corners for `ep-*` block components (timelines, track cards, callouts, and article lists) inside `src/index.css`.
+
 ## [1.0.0] - 2026-06-09
 
 ### Added

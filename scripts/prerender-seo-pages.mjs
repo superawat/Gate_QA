@@ -797,9 +797,17 @@ function buildHomePage() {
       answer: "GATE CS covers: Algorithms, Data Structures, Operating Systems, DBMS, Computer Networks, Theory of Computation, Compiler Design, Digital Logic, Computer Organization, Engineering Mathematics, Discrete Mathematics, and Software Engineering."
     },
     {
-      question: "How can I practice GATE 2027 questions?",
-      answer: "Start by practicing GATE CS previous year questions from 2024, 2025, and 2026 on GateQA to understand the current exam pattern."
+      question: "Who will conduct GATE 2027?",
+      answer: "IIT Madras is highly anticipated to be the organizing institute for GATE 2027, following the rotational cycle after IIT Roorkee (2025) and IIT Guwahati (2026)."
     },
+    {
+      question: "How to prepare for GATE CSE?",
+      answer: "The most effective preparation strategy is to thoroughly solve previous year questions (PYQs). Focus heavily on high-weightage subjects like Data Structures, Algorithms, Operating Systems, and Engineering Mathematics."
+    },
+    {
+      question: "What is a good score in GATE CSE?",
+      answer: "A GATE score above 750 (out of 1000) is generally considered excellent for securing M.Tech admissions in top-tier institutes like IIT Bombay, IIT Madras, IIT Delhi, and IISc Bangalore."
+    }
   ];
 
   const siteSchema = {
