@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="Find out which IIT will conduct the GATE 2027 exam. Get details on expected exam dates, application timelines, syllabus changes, and the organizing institute rotation cycle." />
+  <meta name="robots" content="index,follow" />
+  <script>
+    (function () {
+      try {
+        var isMockWindow = /\/mock(?:\/|$)/.test(window.location.pathname);
+        var storedTheme = window.localStorage.getItem("gate_qa_theme");
+        var isStoredThemeValid = storedTheme === "light" || storedTheme === "dark";
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = isMockWindow
+          ? "light"
+          : (isStoredThemeValid ? storedTheme : (prefersDark ? "dark" : "light"));
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    }());
+  </script>
+  <title>Who will conduct GATE 2027 | GateQA</title>
+  <link rel="canonical" href="https://gateqa.in/who-will-conduct-gate-2027" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RQ2SSMN6E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1RQ2SSMN6E');
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    pre {
+      overflow: auto;
+    }
+
+    /* ── Static splash screen (hides FOUC until React mounts) ─────── */
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.875rem;
+      background: #f9fafb;
+      transition: opacity 280ms ease, visibility 280ms ease;
+    }
+
+    :root[data-theme="dark"] #app-splash {
+      background: #0f172a;
+    }
+
+    #app-splash.app-splash--hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #app-splash-spinner {
+      position: relative;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 1rem;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: #1e293b;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #app-splash-spinner::before {
+      content: "";
+      position: absolute;
+      inset: 0.65rem;
+      border: 2px solid #e0f2fe;
+      border-top-color: #0ea5e9;
+      border-radius: 999px;
+      animation: app-splash-spin 720ms linear infinite;
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::before {
+      border-color: rgba(14, 165, 233, 0.2);
+      border-top-color: #38bdf8;
+    }
+
+    #app-splash-spinner::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      transform: translate(-50%, -50%);
+    }
+
+    :root[data-theme="dark"] #app-splash-spinner::after {
+      background: #38bdf8;
+    }
+
+    #app-splash-text {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    :root[data-theme="dark"] #app-splash-text {
+      color: #94a3b8;
+    }
+
+    @keyframes app-splash-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #app-splash-spinner::before {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function (location) {
+      if (location.search[1] !== "/") {
+        return;
+      }
+
+      var decoded = location.search
+        .slice(1)
+        .split("&")
+        .map(function (segment) {
+          return segment.replace(/~and~/g, "&");
+        })
+        .join("?");
+
+      window.history.replaceState(
+        null,
+        "",
+        location.pathname.slice(0, -1) + decoded + location.hash
+      );
+    }(window.location));
+  </script>
+  <script type="module" crossorigin src="/assets/index-C6TpztzX.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-gsO-yNs2.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-preload-helper-CVfkMyKi.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-misc-BRfbvqnD.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-seo-CQfAvKh3.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-router-CBp-thN9.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-Dq2uG4DY.css">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Who will conduct GATE 2027 | GateQA" />
+  <meta property="og:description" content="Find out which IIT will conduct the GATE 2027 exam. Get details on expected exam dates, application timelines, syllabus changes, and the organizing institute rotation cycle." />
+  <meta property="og:image" content="https://gateqa.in/og-cover.png" />
+  <meta property="og:url" content="https://gateqa.in/who-will-conduct-gate-2027" />
+  <meta property="og:site_name" content="GateQA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Who will conduct GATE 2027 | GateQA" />
+  <meta name="twitter:description" content="Find out which IIT will conduct the GATE 2027 exam. Get details on expected exam dates, application timelines, syllabus changes, and the organizing institute rotation cycle." />
+  <meta name="twitter:image" content="https://gateqa.in/og-cover.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gateqa.in/"},{"@type":"ListItem","position":2,"name":"Who will conduct GATE 2027","item":"https://gateqa.in/who-will-conduct-gate-2027"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Who Will Conduct GATE 2027? Expected Organizing Institute & Dates","description":"Find out which IIT will conduct the GATE 2027 exam. Get details on expected exam dates, application timelines, syllabus changes, and the organizing institute rotation cycle.","url":"https://gateqa.in/who-will-conduct-gate-2027","isPartOf":{"@type":"WebSite","name":"GateQA","url":"https://gateqa.in"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which IIT will conduct GATE 2027?","acceptedAnswer":{"@type":"Answer","text":"Based on the 8-year rotation cycle of the GATE organizing institutes, IIT Madras is highly expected to be the conducting body for the GATE 2027 exam."}},{"@type":"Question","name":"Who is conducting GATE 2026 and 2025?","acceptedAnswer":{"@type":"Answer","text":"IIT Roorkee is the organizing institute for GATE 2025, and IIT Guwahati is expected to organize GATE 2026."}},{"@type":"Question","name":"Does the organizing IIT change the GATE syllabus?","acceptedAnswer":{"@type":"Answer","text":"No, the organizing institute does not change the core GATE syllabus. The syllabus is standardized across all years. Any minor additions or deletions are decided by the joint GATE committee, not just the organizing IIT."}},{"@type":"Question","name":"Are papers set by IIT Madras harder?","acceptedAnswer":{"@type":"Answer","text":"Papers are set by a committee of professors from all IITs and IISc, not just the organizing institute. However, the organizing institute has the final say in paper assembly, often resulting in conceptually dense questions that avoid rote calculation."}}]}</script>
+</head>
+
+<body>
+  <noscript>
+    <div style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif;">
+      <h1>GateQA — Free GATE CS Previous Year Questions &amp; Mock Tests</h1>
+      <p>GateQA is a free GATE CS preparation platform with 3,500+ previous-year questions
+      (1987&ndash;2026), 36,000+ aptitude questions, full-length year-wise mock tests, a built-in
+      GATE calculator, performance analytics, and full offline support.</p>
+      <p>Practice questions from Operating Systems, Algorithms, DBMS, Computer Networks,
+      Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic,
+      Computer Organization, Software Engineering, and Engineering Mathematics.</p>
+      <a href="https://gateqa.in/gate-cs-pyq">Browse GATE CS PYQs</a> |
+      <a href="https://gateqa.in/mock-tests">Take Mock Tests</a> |
+      <a href="https://gateqa.in/who-will-conduct-gate-2027">GATE 2027 Organizer</a>
+    </div>
+  </noscript>
+  <div id="seo-brand-text" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">
+    <h1>GateQA — Free GATE CS Preparation Platform</h1>
+    <p>GateQA is a free GATE CS preparation platform featuring 3,500+ previous-year questions (1987&ndash;2026),
+    36,000+ aptitude questions, subject-wise and year-wise mock tests, performance analytics,
+    and full offline support. Practice Operating Systems, Algorithms, DBMS, Computer Networks,
+    Theory of Computation, Discrete Mathematics, Compiler Design, Digital Logic, and more.</p>
+    <a href="https://gateqa.in/who-will-conduct-gate-2027">Who will conduct GATE 2027?</a>
+  </div>
+  <div id="root">
+  <div id="app-splash" aria-live="polite" role="status">
+    <div id="app-splash-spinner" aria-hidden="true"></div>
+    <p id="app-splash-text">Loading GateQA</p>
+  </div>
+  <main class="seo-prerender" style="max-width: 860px; margin: 0 auto; padding: 32px 20px; font-family: Segoe UI, Inter, system-ui, sans-serif; line-height: 1.6; color: #0f172a;">
+    <p style="margin: 0 0 8px; color: #0369a1; font-size: 13px; font-weight: 700; text-transform: uppercase;">GATE 2027 Organizer</p>
+    <h1 style="margin: 0; font-size: 36px; line-height: 1.15;">Who Will Conduct GATE 2027? Expected Organizing Institute &amp; Dates</h1>
+    <nav style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;"><a href="/practice" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">Start GATE 2027 Preparation</a></nav>
+<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Overview &amp; Analysis</h2>
+        <p style="color: #334155; margin-bottom: 16px;">A common question among engineering students planning their higher education and PSU goals is: <strong>'Who will conduct GATE 2027?'</strong> Because the exam is organized by a different institute each year, the question paper style, difficulty, and focus areas can sometimes shift subtly depending on the conducting body.</p><h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">The Expected Organizing Institute for GATE 2027</h2><p style="color: #334155; margin-bottom: 16px;">GATE is jointly administered by the National Coordination Board (NCB) - GATE, Department of Higher Education, Ministry of Education, Government of India. The operations are rotated among the Indian Institute of Science (IISc) Bangalore and seven Indian Institutes of Technology (IITs).</p><p style="color: #334155; margin-bottom: 16px;">Based on the established historical rotation cycle (which typically repeats every 8 years), <strong>IIT Madras is highly expected to be the organizing institute for GATE 2027.</strong></p><p style="color: #334155; margin-bottom: 16px;">Let's look at the recent conducting institutes to understand the pattern:</p>
+              <div style="overflow-x: auto; margin: 24px 0; border: 1px solid #e2e8f0; border-radius: 8px;">
+                <table style="width: 100%; min-width: max-content; border-collapse: collapse; font-size: 14px; text-align: left;">
+                  <thead>
+                    <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                      <th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">Year</th><th style="padding: 10px 12px; font-weight: 600; color: #1e293b;">Organizing Institute</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">GATE 2024</td><td style="padding: 10px 12px; color: #475569;">IISc Bangalore</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">GATE 2025</td><td style="padding: 10px 12px; color: #475569;">IIT Roorkee</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">GATE 2026</td><td style="padding: 10px 12px; color: #475569;">IIT Guwahati</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">GATE 2027</td><td style="padding: 10px 12px; color: #475569;">IIT Madras (Expected)</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">GATE 2028</td><td style="padding: 10px 12px; color: #475569;">IIT Delhi (Expected)</td>
+                      </tr>
+                    
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 10px 12px; color: #475569;">GATE 2029</td><td style="padding: 10px 12px; color: #475569;">IIT Bombay (Expected)</td>
+                      </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            <h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">What Does an IIT Madras Paper Look Like?</h2><p style="color: #334155; margin-bottom: 16px;">While the syllabus is rigidly standardized by the GATE committee regardless of the organizing institute, the flavor of the questions often reflects the academic strengths of the host.</p><p style="color: #334155; margin-bottom: 16px;">If IIT Madras organizes GATE 2027, candidates can expect:</p><ul style="color: #334155; margin-bottom: 16px; padding-left: 20px;">
+              <li style="margin-bottom: 8px;"><strong>Highly Conceptual Questions:</strong> IIT Madras is known for papers that test deep fundamental clarity rather than just formula application.</li><li style="margin-bottom: 8px;"><strong>Tricky MSQs:</strong> Multiple Select Questions (MSQs) might be challenging, requiring absolute certainty on all options to avoid losing marks (as there is no partial credit).</li><li style="margin-bottom: 8px;"><strong>Balanced Coverage:</strong> Expect a very balanced distribution of marks across all subjects without an extreme skew toward just one or two topics.</li>
+            </ul><h2 style="font-size: 28px; color: #0f172a; margin: 32px 0 16px;">GATE 2027 Expected Timeline</h2><p style="color: #334155; margin-bottom: 16px;">The examination schedule rarely changes year-to-year. If you are targeting GATE 2027, here are the dates you should mark on your calendar:</p><p style="color: #334155; margin-bottom: 16px;">[object Object]</p><p style="color: #334155; margin-bottom: 16px;">[object Object]</p><p style="color: #334155; margin-bottom: 16px;">[object Object]</p>
+       </div>
+<div style="margin-top: 28px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+        <h2 style="font-size: 20px; color: #1e293b; margin-top: 0;">Frequently Asked Questions (FAQ)</h2>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Which IIT will conduct GATE 2027?</h3>
+            <p style="color: #334155; margin: 0;">A: Based on the 8-year rotation cycle of the GATE organizing institutes, IIT Madras is highly expected to be the conducting body for the GATE 2027 exam.</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Who is conducting GATE 2026 and 2025?</h3>
+            <p style="color: #334155; margin: 0;">A: IIT Roorkee is the organizing institute for GATE 2025, and IIT Guwahati is expected to organize GATE 2026.</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Does the organizing IIT change the GATE syllabus?</h3>
+            <p style="color: #334155; margin: 0;">A: No, the organizing institute does not change the core GATE syllabus. The syllabus is standardized across all years. Any minor additions or deletions are decided by the joint GATE committee, not just the organizing IIT.</p>
+          </div>
+        
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 6px 0;">Q: Are papers set by IIT Madras harder?</h3>
+            <p style="color: #334155; margin: 0;">A: Papers are set by a committee of professors from all IITs and IISc, not just the organizing institute. However, the organizing institute has the final say in paper assembly, often resulting in conceptually dense questions that avoid rote calculation.</p>
+          </div>
+        
+       </div>
+    <p style="margin-top: 36px; border-top: 1px solid #e2e8f0; padding-top: 16px; color: #64748b; font-size: 14px;">This static SEO snapshot loads the full interactive GateQA app when JavaScript is available.</p>
+  </main>
+</div>
+</body>
+
+</html>
