@@ -65,6 +65,12 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/question-bank-manifest.json" as="fetch" crossorigin="anonymous" />
 
+  <!-- Preconnect to Google Analytics origins to reduce DNS/TCP/TLS latency -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RQ2SSMN6E"></script>
   <script>

@@ -1201,7 +1201,7 @@ export const MockTestProvider = ({ children }) => {
     return questionMetaByUid[questionUid] || null;
   }, [questionMetaByUid]);
 
-  const value = {
+  const value = useMemo(() => ({
     STATUS,
     attemptError,
     attemptMeta,
@@ -1245,7 +1245,18 @@ export const MockTestProvider = ({ children }) => {
     timeLeft,
     clearResponse,
     markForReviewAndNext,
-  };
+  }), [
+    attemptError, attemptMeta, catalog, catalogError, catalogLoading,
+    aptitudeMockError, aptitudeMockLoading, clearAttemptError,
+    currentQuestion, currentQuestionIndex, currentQuestionMeta,
+    currentQuestionResult, currentQuestionUid, currentSection, currentSectionIndex,
+    endMockTest, getQuestionMeta, mockQuestionPool, paperCatalog,
+    goToNext, goToPrevious, goToQuestion, questionMetaByUid, questionStates,
+    questionTimeSpent, questions, readyPapers, responses, resultSummary,
+    saveAndNext, saveResponse, sectionIndexes, sectionQuestionUids, sectionQuestions,
+    setCurrentSection, startTest, submitTest, testActive, testSubmitted,
+    timeLeft, clearResponse, markForReviewAndNext,
+  ]);
 
   return <MockTestContext.Provider value={value}>{children}</MockTestContext.Provider>;
 };

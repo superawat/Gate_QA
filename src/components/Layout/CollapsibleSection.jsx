@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useId } from "react";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 const CollapsibleSection = ({
@@ -9,12 +9,18 @@ const CollapsibleSection = ({
   children,
 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const uid = useId();
+  const buttonId = `collapsible-btn-${uid}`;
+  const panelId = `collapsible-panel-${uid}`;
 
   return (
     <section className={`rounded-[var(--radius-card)] border overflow-hidden ${className}`}>
       <button
+        id={buttonId}
         type="button"
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-black/5 dark:hover:bg-white/5 transition-colors focus:outline-none"
       >
         <div>
@@ -34,7 +40,12 @@ const CollapsibleSection = ({
         </div>
       </button>
       {isOpen && (
-        <div className="p-5 pt-0 sm:p-6 sm:pt-0">
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={buttonId}
+          className="p-5 pt-0 sm:p-6 sm:pt-0"
+        >
           {children}
         </div>
       )}

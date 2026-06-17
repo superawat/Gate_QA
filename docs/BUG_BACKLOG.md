@@ -33,6 +33,18 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-TAG-CORRECTION: Subject Tagging Error on Question go:460060
+
+- Status: Fixed on 2026-06-17
+- Severity: Medium
+- Source: User Report
+- Where:
+  `public/questions-with-answers.json`
+- Resolution:
+  Corrected metadata tags for question `go:460060` (GATE CSE 2025 Set 1, Q20), removing incorrect subject tags (Operating Systems, Data Structures, Calculus, etc.) and properly classifying it under Discrete Mathematics (`discrete-mathematics`, `combinatory`). Rebuilt all public search indexes and detail shards to propagate.
+- Verification:
+  `npm run qa:validate-public-parity` and `npm run test:unit` pass successfully.
+
 ### BUG-SOLVE-HARDEN: Solve Page Hydration Hardening
 
 - Status: Fixed on 2026-06-04

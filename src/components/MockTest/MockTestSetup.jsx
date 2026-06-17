@@ -276,7 +276,8 @@ const MockTestSetup = ({
                     No release-ready papers are available yet.
                 </div>
             ) : (
-                <div className="grid gap-4 md:grid-cols-2">
+
+                    <div className="grid gap-3 md:grid-cols-2 auto-rows-fr">
                     {paperOptions.map((paper) => {
                         const isSelected = paper.yearSetKey === selectedPaperYearSetKey;
                         const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
@@ -290,7 +291,7 @@ const MockTestSetup = ({
                                 type="button"
                                 onClick={() => onSelectPaper?.(paper.yearSetKey)}
                                 className={joinClasses(
-                                    "rounded-[var(--radius-card)] border p-4 text-left transition",
+                                    "flex h-full w-full flex-col justify-between rounded-[var(--radius-card)] border p-4 text-left transition",
                                     isSelected
                                         ? "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100"
                                         : (paper.paperReady
@@ -298,19 +299,19 @@ const MockTestSetup = ({
                                             : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
                                 )}
                             >
-                                <div className="flex items-start justify-between gap-3">
+                                <div className="flex w-full items-start justify-between gap-3">
                                     <div>
-                                        <div className="text-lg font-semibold text-slate-950">{paper.label}</div>
-                                        <p className="mt-2 text-sm text-slate-600">
-                                            {paper.gaCount} GA questions and {paper.csCount} CS questions parsed.
+                                        <div className="text-base font-semibold text-slate-950">{paper.label}</div>
+                                        <p className="mt-1 text-[13px] text-slate-600">
+                                            {paper.gaCount} GA and {paper.csCount} CS parsed.
                                         </p>
                                         {!paper.paperReady && paper.statusReason ? (
-                                            <p className="mt-2 text-sm font-medium text-amber-700">
+                                            <p className="mt-1 text-[13px] font-medium text-amber-700">
                                                 {paper.statusReason}
                                             </p>
                                         ) : null}
                                         {!paper.paperReady && blockedQuestions.length > 0 ? (
-                                            <p className="mt-2 text-xs text-slate-500">
+                                            <p className="mt-1 text-[11px] text-slate-500">
                                                 Missing:
                                                 {" "}
                                                 {blockedQuestions.slice(0, 3).map((question) => `${question.section} Q${question.orderIndex}`).join(", ")}
@@ -320,7 +321,7 @@ const MockTestSetup = ({
                                     </div>
                                     {isSelected || !paper.paperReady ? (
                                         <span className={joinClasses(
-                                            "mocktest-pill inline-flex px-2.5 py-1 text-[11px] font-semibold uppercase",
+                                            "mocktest-pill inline-flex px-2 py-0.5 text-[10px] font-semibold uppercase shrink-0 mt-0.5",
                                             isSelected
                                                 ? "bg-sky-50 text-sky-700"
                                                 : "bg-amber-50 text-amber-700"
@@ -485,17 +486,19 @@ const MockTestSetup = ({
                     </div>
                 </div>
 
-                <div className={`grid items-start gap-4 p-5 lg:p-6 ${isFullMock
-                    ? "lg:grid-cols-[minmax(0,1.2fr)_320px]"
-                    : "lg:grid-cols-[minmax(0,1.35fr)_320px]"
-                    }`}>
-                    <section className="min-w-0 self-start">
-                        {isFullMock ? renderFullMockContent() : null}
-                        {isPaperMode ? renderPaperModeContent() : null}
-                        {isCustom ? renderCustomContent() : null}
+                <div className={`grid items-stretch gap-5 p-5 lg:gap-8 lg:p-8 ${isFullMock
+                    ? "lg:grid-cols-[minmax(0,1.2fr)_380px]"
+                    : "lg:grid-cols-[minmax(0,1.15fr)_380px]"
+                    }`} style={{minHeight: 0}}>
+                    <section className="min-w-0 min-h-0">
+                        <div className="h-full max-h-[calc(100vh-260px)] overflow-y-auto pr-1">
+                            {isFullMock ? renderFullMockContent() : null}
+                            {isPaperMode ? renderPaperModeContent() : null}
+                            {isCustom ? renderCustomContent() : null}
+                        </div>
                     </section>
 
-                    <aside className="space-y-4 self-start">
+                    <aside className="sticky top-6 space-y-4 self-start overflow-y-auto max-h-[calc(100vh-260px)]">
                         <div className="rounded-[var(--radius-card)] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] p-4 shadow-[var(--shadow-soft)]">
                             <div className="flex items-start gap-3">
                                 <span className={joinClasses("mocktest-icon-box inline-flex h-11 w-11 shrink-0 items-center justify-center", accent.icon)}>
@@ -524,6 +527,7 @@ const MockTestSetup = ({
                                     <p>{summaryNote}</p>
                                 </div>
                             ) : null}
+
                         </div>
 
                         {showSolvedQuestionToggle ? (
@@ -549,10 +553,7 @@ const MockTestSetup = ({
                     </aside>
                 </div>
 
-                <div className={joinClasses(
-                    "flex flex-wrap items-center gap-3 border-t border-[color:var(--color-border)] px-6 py-4 lg:px-8",
-                    showBackButton ? "justify-between" : "justify-end"
-                )}>
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[color:var(--color-border)] px-6 py-4 lg:px-8">
                     {showBackButton ? (
                         <button
                             type="button"
@@ -561,9 +562,8 @@ const MockTestSetup = ({
                         >
                             {backLabel}
                         </button>
-                    ) : null}
-
-                    <div className="flex flex-wrap items-center gap-3">
+                    ) : <span />}
+                    <div className="flex items-center gap-3">
                         {showReset ? (
                             <button
                                 type="button"
@@ -573,13 +573,12 @@ const MockTestSetup = ({
                                 Reset
                             </button>
                         ) : null}
-
                         <button
                             type="button"
                             onClick={onStart}
                             disabled={!canStart}
                             className={joinClasses(
-                                "mocktest-primary-btn px-5 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:bg-slate-300",
+                                "mocktest-primary-btn px-6 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:bg-slate-300",
                                 accent.button
                             )}
                         >

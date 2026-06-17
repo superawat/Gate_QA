@@ -311,7 +311,11 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                     </div>
 
                     {isReviewPhase ? (
-                        <div className="mb-4 rounded border border-[#d7e3ee] bg-[#f6f9fc] px-4 py-3 text-sm">
+                        <div 
+                            role="alert" 
+                            aria-live="assertive" 
+                            className="mb-4 rounded border border-[#d7e3ee] bg-[#f6f9fc] px-4 py-3 text-sm"
+                        >
                             <div className={`font-semibold ${verdictCopy.tone}`}>{verdictCopy.label}</div>
                             <div className="mt-2 text-[#41576c]">Your answer: {reviewResponseText}</div>
                             <div className="mt-1 text-[#41576c]">Expected answer: {reviewExpectedAnswer}</div>

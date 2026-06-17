@@ -16,6 +16,7 @@ import MockTestActionBar from "./MockTestActionBar";
 import MockTestResults from "./MockTestResults";
 import MockTestPortal from "./MockTestPortal";
 import MockTestSetup from "./MockTestSetup";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import "./MockTest.css";
 
 const PALETTE_COLLAPSE_STORAGE_KEY = "gateqa_mock_palette_collapsed";
@@ -1039,12 +1040,14 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
     const renderExamLayout = (isReviewPhase = false) => (
         <div className="mocktest-root flex min-h-screen h-[100dvh] w-full flex-col overflow-y-auto bg-[#dcebf9] text-sm selection:bg-blue-200">
-            <MockTestHeader
-                timeLeft={timeLeft}
-                onToggleCalculator={() => setIsCalculatorOpen((prev) => !prev)}
-                isCalculatorOpen={isCalculatorOpen}
-                calculatorButtonRef={calculatorButtonRef}
-            />
+            <ErrorBoundary>
+                <MockTestHeader
+                    timeLeft={timeLeft}
+                    onToggleCalculator={() => setIsCalculatorOpen((prev) => !prev)}
+                    isCalculatorOpen={isCalculatorOpen}
+                    calculatorButtonRef={calculatorButtonRef}
+                />
+            </ErrorBoundary>
             <CalculatorWidget
                 isOpen={isCalculatorOpen}
                 onClose={() => setIsCalculatorOpen(false)}
@@ -1053,7 +1056,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
             <div className="flex min-h-0 flex-1 overflow-hidden">
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-r border-[#b8c9d9] bg-white">
-                    <MockTestQuestion isReviewPhase={isReviewPhase} />
+                    <ErrorBoundary>
+                        <MockTestQuestion isReviewPhase={isReviewPhase} />
+                    </ErrorBoundary>
                 </div>
 
                 <aside
@@ -1062,20 +1067,24 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         : "w-[var(--mock-sidebar-expanded-w)] border-l border-[#b8c9d9] bg-[#d7e8f7]"
                         }`}
                 >
-                    <QuestionPalette
-                        isCollapsed={isPaletteCollapsed}
-                        isReviewPhase={isReviewPhase}
-                        onToggleCollapsed={() => setIsPaletteCollapsed((prev) => !prev)}
-                    />
+                    <ErrorBoundary>
+                        <QuestionPalette
+                            isCollapsed={isPaletteCollapsed}
+                            isReviewPhase={isReviewPhase}
+                            onToggleCollapsed={() => setIsPaletteCollapsed((prev) => !prev)}
+                        />
+                    </ErrorBoundary>
                 </aside>
             </div>
 
-            <MockTestActionBar
-                isReviewPhase={isReviewPhase}
-                onBackToResults={isReviewPhase ? () => setStep("result") : undefined}
-                isPaletteCollapsed={isPaletteCollapsed}
-                onExitAttempt={!isReviewPhase ? handleExitToLanding : undefined}
-            />
+            <ErrorBoundary>
+                <MockTestActionBar
+                    isReviewPhase={isReviewPhase}
+                    onBackToResults={isReviewPhase ? () => setStep("result") : undefined}
+                    isPaletteCollapsed={isPaletteCollapsed}
+                    onExitAttempt={!isReviewPhase ? handleExitToLanding : undefined}
+                />
+            </ErrorBoundary>
         </div>
     );
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { SITE_URL } from "../constants/siteConfig";
 import { FaArrowRight, FaBook, FaCheckCircle, FaChevronRight, FaInfoCircle } from "react-icons/fa";
 import {
   CartesianGrid,

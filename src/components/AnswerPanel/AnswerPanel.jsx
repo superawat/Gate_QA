@@ -641,8 +641,12 @@ export default function AnswerPanel({
         {renderInputSection()}
 
         {result && (
-          <div className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-            }`}>
+          <div
+            role="alert"
+            aria-live="assertive"
+            className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+            }`}
+          >
             {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
           </div>
         )}

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaArrowLeft, FaCheckCircle, FaStar } from "react-icons/fa";
+import { SITE_URL } from "../constants/siteConfig";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";

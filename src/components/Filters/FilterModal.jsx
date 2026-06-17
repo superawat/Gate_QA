@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useFilterState } from '../../contexts/FilterContext';
 import FilterSidebar from './FilterSidebar';
 import { FaTimes } from 'react-icons/fa';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 const FilterModal = ({ isOpen, onClose }) => {
     const { filteredQuestions } = useFilterState();

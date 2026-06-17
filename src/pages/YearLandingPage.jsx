@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { SITE_URL } from "../constants/siteConfig";
 import { FaArrowRight, FaBook, FaCheckCircle, FaChevronRight, FaClock } from "react-icons/fa";
 
 import PageShell from "../components/Layout/PageShell";

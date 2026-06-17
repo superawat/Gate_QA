@@ -89,8 +89,11 @@ export default defineConfig(async ({ mode }) => {
             if (id.includes('react-icons')) {
               return 'vendor-icons';
             }
-            if (id.includes('rc-slider') || id.includes('react-select')) {
+            if (id.includes('rc-slider')) {
               return 'vendor-form-controls';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-animation';
             }
             return 'vendor-misc';
           },
@@ -111,6 +114,21 @@ export default defineConfig(async ({ mode }) => {
         '.git/**',
         '.codeboarding/**',
       ],
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'lcov', 'html'],
+        include: ['src/**/*.{js,jsx,ts,tsx}'],
+        exclude: [
+          'src/**/*.test.{js,jsx,ts,tsx}',
+          'src/test-setup.js',
+        ],
+        thresholds: {
+          statements: 60,
+          branches: 50,
+          functions: 55,
+          lines: 60,
+        },
+      },
     },
     base: '/',
   };

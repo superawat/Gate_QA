@@ -16,6 +16,7 @@ import {
 
 import PageShell from "../components/Layout/PageShell";
 import SEOHead, { buildBreadcrumbSchema, buildWebPageSchema } from "../components/SEO/SEOHead";
+import { SITE_URL } from "../constants/siteConfig";
 
 /* ─── Motion variants ──────────────────────────────────────────────────────── */
 const fadeUp = {
@@ -450,8 +451,7 @@ export default function EditorialPage({ data }) {
 
   if (!data) return null;
 
-  const siteUrl = "https://gateqa.in";
-  const canonicalUrl = `${siteUrl}${data.path}`;
+  const canonicalUrl = `${SITE_URL}${data.path}`;
   const breadcrumbsSchema = buildBreadcrumbSchema(data.breadcrumbs);
   const webPageSchema = buildWebPageSchema({ name: data.h1, description: data.description, url: canonicalUrl });
   const faqSchema = data.faqs?.length

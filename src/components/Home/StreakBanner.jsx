@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { FaBolt, FaFire, FaShieldAlt, FaStar, FaTrophy } from "react-icons/fa";
-import { loadStudyActivityFast } from "../../utils/weakTopicAnalyzer";
+
 import { useDailyGoal } from "../../hooks/useDailyGoal";
 
 const StatPill = ({ icon: Icon, value, label, tone = "neutral" }) => (
@@ -38,8 +38,8 @@ const normalizeBadgeLabel = (badge = "") => {
   return "";
 };
 
-const StreakBanner = () => {
-  const activity = useMemo(() => loadStudyActivityFast(), []);
+const StreakBanner = ({ activity = null }) => {
+
   const { goal, updateGoal } = useDailyGoal();
   const [isEditingGoal, setIsEditingGoal] = useState(false);
   const [customGoal, setCustomGoal] = useState("");

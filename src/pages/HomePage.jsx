@@ -74,6 +74,7 @@ const HomePage = ({
   const [activeActionIndex, setActiveActionIndex] = useState(0);
   const activeActionIndexRef = useRef(0);
   const actionsRailRef = useRef(null);
+  const cardRectCache = useRef(null);
   const activity = useMemo(() => loadStudyActivityFast(), []);
 
   const parsedQuote = useMemo(() => {
@@ -223,7 +224,10 @@ const HomePage = ({
 
   const handleMouseMove = (e) => {
     const card = e.currentTarget;
-    const box = card.getBoundingClientRect();
+    if (!cardRectCache.current) {
+      cardRectCache.current = card.getBoundingClientRect();
+    }
+    const box = cardRectCache.current;
     const x = e.clientX - box.left - box.width / 2;
     const y = e.clientY - box.top - box.height / 2;
     const rx = -(y / (box.height / 2)) * 6;
@@ -236,6 +240,7 @@ const HomePage = ({
     const card = e.currentTarget;
     card.style.setProperty("--rx", "0deg");
     card.style.setProperty("--ry", "0deg");
+    cardRectCache.current = null;
   };
 
   const handleActionPreload = (preload) => {
@@ -362,7 +367,7 @@ const HomePage = ({
           </div>
 
           <section className="home-gamification-dashboard" aria-label="Gamification stats">
-            <StreakBanner />
+            <StreakBanner activity={activity} />
             <ActivityHeatmap
               attemptTimeline={activity?.attemptTimeline || []}
               streakDateKeys={activity?.streakDateKeys || []}

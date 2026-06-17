@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-06-17
+
+### Added
+- **Optimization Review Rewrite**: Refactored the core `optimization.md` framework into a compressed, table-first format. Split all proposed optimizations into Approved (fully implemented) and Rejected / Insufficient Confidence sections, with a detailed justification matrix for deferred items.
+
+### Fixed
+- **Question Subject Tagging**: Corrected a metadata tagging error on question `go:460060` (GATE CSE 2025 Set 1, Q20), removing incorrect subject tags (Operating Systems, Data Structures, Calculus) and properly classifying it under Discrete Mathematics (`discrete-mathematics`, `combinatory`). Rebuilt public question bank index and detail shards to propagate.
+
+## 2026-06-12
+
+### Changed
+- **Mock Test Setup UI**:
+  - Restructured layout using an `items-stretch` grid with viewport-height-relative constraints (`max-h-[calc(100vh-260px)]`) on both the left selection column and right summary sidebar to balance visual weight, prevent page stretching, and eliminate the large bottom whitespace.
+  - Consolidated primary actions: Removed duplicate "Start Mock" and "Reset" buttons from the scrollable panels and laid them out horizontally in the footer bar (`[Back to Modes] ... [Reset] [Start Mock]`).
+  - Improved year card layout consistency using CSS Grid `auto-rows-fr` and uniform card heights to balance visual weight.
+- **Motivational Quotes**: Expanded and refined the core motivational quotes database (`src/utils/motivationalQuotes.js`) with multiple new additions. Implemented strict case-insensitive, punctuation-ignoring deduplication and globally capped the list at a maximum of 3 carefully selected quotes per author.
+
+### Optimization & Hardening
+- **Performance**: Memoized the `MockTestContext` provider value to prevent unnecessary re-renders of the Mock Test UI during every 1-second timer tick.
+- **Architecture**: Centralized the site URL (`SITE_URL`) in `src/constants/siteConfig.js` and removed hardcoded `https://gateqa.in` string literals from all informational and SEO landing pages.
+- **Resilience**: Implemented granular React `<ErrorBoundary>` wrappers around internal Mock Test components (Header, Question, Palette, ActionBar) to prevent full application crashes from isolated component failures.
+- **Accessibility**: 
+  - Added a global `useFocusTrap` React hook and integrated it across all modal dialogues to retain keyboard focus within active modals.
+  - Injected WAI-ARIA `role="alert"` and `aria-live="assertive"` into `AnswerPanel` and `MockTestQuestion` review feedbacks, ensuring screen readers immediately announce evaluation validations.
+  - Added WAI-ARIA Accordion pattern attributes (`aria-expanded`, `aria-controls`) to the `CollapsibleSection` component.
+- **Testing**: Added a `coverage` block using the `v8` provider to the Vitest configuration to enforce test coverage thresholds and imported `@testing-library/jest-dom` globally.
+
+
 ## [1.1.0] - 2026-06-11
 
 ### Added

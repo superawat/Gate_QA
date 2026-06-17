@@ -8,6 +8,7 @@ import SEOHead, { buildBreadcrumbSchema, buildWebPageSchema } from "../component
 import { EDITORIAL_PAGES } from "../data/editorialPages";
 import { SUBJECT_SEO_MAP } from "../utils/landingPages";
 import { BLOG_ROUTE } from "../utils/routes";
+import { SITE_URL } from "../constants/siteConfig";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -39,12 +40,11 @@ export default function BlogListPage() {
     );
   });
 
-  const siteUrl = "https://gateqa.in";
-  const canonicalUrl = `${siteUrl}${BLOG_ROUTE}`;
+  const canonicalUrl = `${SITE_URL}${BLOG_ROUTE}`;
 
   // Schemas
   const breadcrumbs = [
-    { name: "Home", url: siteUrl },
+    { name: "Home", url: SITE_URL },
     { name: "Blog", url: canonicalUrl },
   ];
   

@@ -1,11 +1,10 @@
 import { Helmet } from "react-helmet-async";
+import { SITE_URL, DEFAULT_OG_IMAGE } from "../../constants/siteConfig";
 
 const SITE_NAME = "GateQA";
 const DEFAULT_TITLE = "GateQA — GATE CS PYQs, Mock Tests, Aptitude Practice & Calculator";
 const DEFAULT_DESCRIPTION =
   "Practice 3500+ GATE CS PYQs from 1987–2026, 36000+ Aptitude questions, subject-wise mock tests, GATE calculator, insights, notes and bookmarks. Free and offline-first.";
-const DEFAULT_OG_IMAGE = "https://gateqa.in/og-cover.png";
-const SITE_URL = "https://gateqa.in";
 
 /**
  * Build a BreadcrumbList Schema.org object from a simple breadcrumb array.

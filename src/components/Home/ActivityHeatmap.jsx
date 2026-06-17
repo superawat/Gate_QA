@@ -134,6 +134,8 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
                   return (
                     <div
                       key={day.dateKey}
+                      role="img"
+                      aria-label={`${day.date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}: ${day.attempts} attempt${day.attempts !== 1 ? "s" : ""}${day.attempts > 0 ? `, ${Math.round(day.accuracy * 100)}% accuracy` : ""}`}
                       className={`home-activity-cell ${getIntensityClass(day.attempts)} ${
                         isStreakDay ? "home-activity-cell--streak" : ""
                       }`}
@@ -149,10 +151,10 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
 
       <div className="home-activity-legend" aria-label="Less to more activity">
         <span>Less</span>
-        <i className="home-activity-cell home-activity-intensity--0" />
-        <i className="home-activity-cell home-activity-intensity--1" />
-        <i className="home-activity-cell home-activity-intensity--2" />
-        <i className="home-activity-cell home-activity-intensity--3" />
+        <i className="home-activity-cell home-activity-intensity--0" aria-hidden="true" />
+        <i className="home-activity-cell home-activity-intensity--1" aria-hidden="true" />
+        <i className="home-activity-cell home-activity-intensity--2" aria-hidden="true" />
+        <i className="home-activity-cell home-activity-intensity--3" aria-hidden="true" />
         <span>More</span>
       </div>
     </div>

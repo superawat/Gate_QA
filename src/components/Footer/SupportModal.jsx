@@ -1,9 +1,13 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
+//  from 'react';
 import { FaTimes, FaHeart, FaEnvelope } from 'react-icons/fa';
 import qrCodeImage from './assets/qrcode.png';
 
 const SupportModal = ({ isOpen, onClose }) => {
+    const dialogRef = useRef(null);
+    useFocusTrap(dialogRef, isOpen);
     if (!isOpen) return null;
 
     return (
@@ -16,6 +20,7 @@ const SupportModal = ({ isOpen, onClose }) => {
 
             <div
                 className="relative w-full max-w-sm overflow-hidden rounded-[28px] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-center text-[color:var(--color-text)] shadow-[0_22px_70px_rgba(15,23,42,0.16)] animate-fade-in"
+                ref={dialogRef}
                 role="dialog"
                 aria-labelledby="support-modal-title"
                 aria-modal="true"

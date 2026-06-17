@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
+//  from 'react';
 import {
   FaCheckCircle,
   FaCloudDownloadAlt,
@@ -61,7 +63,8 @@ const DataPolicyModal = ({ isOpen, onClose }) => {
 
       <div
         className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_32px_80px_rgba(15,23,42,0.18)]"
-        role="dialog"
+        ref={dialogRef}
+                role="dialog"
         aria-labelledby="data-policy-title"
         aria-modal="true"
       >

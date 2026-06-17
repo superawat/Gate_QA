@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 import ReactDOM from "react-dom";
 
 /**

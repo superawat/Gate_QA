@@ -392,7 +392,8 @@ Verified via `npm run build` (2026-05-08). Chunks sorted by size:
 | `MockShell` | 81.04 kB | 22.02 kB | **Lazy chunk** - mock test context + UI |
 | `ExplorePage` | 45.38 kB | 12.03 kB | **Lazy chunk** - explore/browse |
 | `InsightsPage` | 45.26 kB | 10.65 kB | **Lazy chunk** - practice analytics + mock history tab |
-| `vendor-ui` | 41.04 kB | 15.40 kB | react-icons, rc-slider, react-select |
+| `vendor-ui` | 41.04 kB | 15.40 kB | react-icons, rc-slider |
+| `vendor-animation` | - | - | isolated chunk for `framer-motion` |
 | `SolvePage` | 22.71 kB | 7.01 kB | **Lazy chunk** - solve/practice question |
 | `CalculatorWidget` | 8.05 kB | 3.14 kB | **Lazy chunk** - scientific calculator |
 | `vendor-mathjax` | 5.88 kB | 2.26 kB | MathJax loader shim (deferred) |

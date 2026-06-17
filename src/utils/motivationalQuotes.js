@@ -4,102 +4,40 @@
  * ONLY includes quotes by verified deceased figures, heavily emphasizing hard work and study.
  */
 const RAW_STUDENT_QUOTES = [
-  // --- DR. A.P.J. ABDUL KALAM ---
-  "Dream is not that which you see while sleeping, it is something that does not let you sleep. — Dr. A.P.J. Abdul Kalam",
-  "If you want to shine like a sun, first burn like a sun. — Dr. A.P.J. Abdul Kalam",
-  "All of us do not have equal talent. But, all of us have an equal opportunity to develop our talents. — Dr. A.P.J. Abdul Kalam",
-  "Failure will never overtake me if my determination to succeed is strong enough. — Dr. A.P.J. Abdul Kalam",
-  "To succeed in your mission, you must have single-minded devotion to your goal. — Dr. A.P.J. Abdul Kalam",
-  "Man needs his difficulties because they are necessary to enjoy success. — Dr. A.P.J. Abdul Kalam",
-  "Excellence is a continuous process and not an accident. — Dr. A.P.J. Abdul Kalam",
-  "Learning gives creativity, creativity leads to thinking, thinking provides knowledge, knowledge makes you great. — Dr. A.P.J. Abdul Kalam",
-  "You have to dream before your dreams can come true. — Dr. A.P.J. Abdul Kalam",
-  "If you fail, never give up because F.A.I.L. means 'First Attempt In Learning'. — Dr. A.P.J. Abdul Kalam",
-  "End is not the end, in fact E.N.D. means 'Effort Never Dies'. — Dr. A.P.J. Abdul Kalam",
-  "If you get 'No' as an answer, remember N.O. means 'Next Opportunity'. — Dr. A.P.J. Abdul Kalam",
-  "Look at the sky. We are not alone. The whole universe is friendly to us and conspires only to give the best to those who dream and work. — Dr. A.P.J. Abdul Kalam",
-  "Be active! Take on responsibility! Work for the things you believe in. — Dr. A.P.J. Abdul Kalam",
-  "Creativity is seeing the same thing but thinking differently. — Dr. A.P.J. Abdul Kalam",
-  "Your best teacher is your last mistake. — Dr. A.P.J. Abdul Kalam",
-  "It is very easy to defeat someone, but it is very difficult to win someone. — Dr. A.P.J. Abdul Kalam",
-  "Climbing to the top demands strength, whether it is to the top of Mount Everest or to the top of your career. — Dr. A.P.J. Abdul Kalam",
-  "Thinking should become your capital asset, no matter whatever ups and downs you come across in your life. — Dr. A.P.J. Abdul Kalam",
-  "Without your involvement you can't succeed. With your involvement you can't fail. — Dr. A.P.J. Abdul Kalam",
-  "Small aim is a crime; have great glory. — Dr. A.P.J. Abdul Kalam",
-  "To be successful, one must be courageous to accept the mistakes and ready to learn. — Dr. A.P.J. Abdul Kalam",
-  "Knowledge without action is useless and irrelevant. — Dr. A.P.J. Abdul Kalam",
+  // --- A. P. J. ABDUL KALAM ---
+  "Dream is not that which you see while sleeping, it is something that does not let you sleep. — A. P. J. Abdul Kalam",
+  "If you want to shine like a sun, first burn like a sun. — A. P. J. Abdul Kalam",
+  "All of us do not have equal talent. But, all of us have an equal opportunity to develop our talents. — A. P. J. Abdul Kalam",
 
   // --- SWAMI VIVEKANANDA ---
   "Arise, awake, and stop not till the goal is reached. — Swami Vivekananda",
   "Talk to yourself once a day, otherwise you may miss meeting an excellent person in this world. — Swami Vivekananda",
   "You cannot believe in God until you believe in yourself. — Swami Vivekananda",
-  "Take up one idea. Make that one idea your life; think of it, dream of it, live on that idea. — Swami Vivekananda",
-  "Strength is life, weakness is death. — Swami Vivekananda",
-  "The greatest sin is to think yourself weak. — Swami Vivekananda",
-  "Whatever you think, that you will be. If you think yourself weak, weak you will be; if you think yourself strong, strong you will be. — Swami Vivekananda",
-  "Believe in yourself and the world will be at your feet. — Swami Vivekananda",
-  "The world is the great gymnasium where we come to make ourselves strong. — Swami Vivekananda",
-  "Everything is easy when you are busy. But nothing is easy when you are lazy. — Swami Vivekananda",
-  "Comfort is no test of truth. Truth is often far from being comfortable. — Swami Vivekananda",
-  "All power is within you; you can do anything and everything. — Swami Vivekananda",
-  "Do one thing at a time, and while doing it put your whole soul into it to the exclusion of all else. — Swami Vivekananda",
-  "We are what our thoughts have made us; so take care about what you think. — Swami Vivekananda",
-  "Arise! Awake! And realize the power within your own soul. — Swami Vivekananda",
-  "Continuous learning is the secret to a sharp and resilient mind. — Swami Vivekananda",
-  "Education is the manifestation of the perfection already in man. — Swami Vivekananda",
-  "Be not afraid of anything. You will do marvelous work. — Swami Vivekananda",
-  "Dare to be free, dare to go as far as your thought leads. — Swami Vivekananda",
-  "The greatest religion is to be true to your own nature. Have faith in yourselves. — Swami Vivekananda",
-  "Fill the brain with high thoughts, highest ideals, place them day and night before you. — Swami Vivekananda",
-  "Stand up, be bold, be strong. Take the whole responsibility on your own shoulders. — Swami Vivekananda",
 
   // --- GAUTAMA BUDDHA ---
   "The mind is everything. What you think you become. — Gautama Buddha",
   "Every morning we are born again. What we do today is what matters most. — Gautama Buddha",
   "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. — Gautama Buddha",
-  "No matter how hard the past, you can always begin again. — Gautama Buddha",
-  "The secret of health for both mind and body is to live in the present moment wisely and earnestly. — Gautama Buddha",
-  "To keep the body in good health is a duty, otherwise we shall not be able to keep our mind strong and clear. — Gautama Buddha",
-  "Your focus determines your reality. — Gautama Buddha",
-  "A disciplined mind brings happiness. — Gautama Buddha",
-  "An undisciplined mind is a dangerous weapon, but a trained mind is your greatest ally. — Gautama Buddha",
-  "One moment can change a day, one day can change a life, one life can change the world. — Gautama Buddha",
-  "Patience is key. Remember, a jug fills drop by drop. — Gautama Buddha",
-  "Nothing can harm you as much as your own thoughts unguarded. — Gautama Buddha",
-  "Peace comes from within. Do not seek it without. — Gautama Buddha",
-  "Three things cannot be long hidden: the sun, the moon, and the truth. — Gautama Buddha",
-  "Conquer yourself rather than others. — Gautama Buddha",
-  "There is nothing more dreadful than the habit of doubt. — Gautama Buddha",
-  "We are shaped by our thoughts; we become what we think. — Gautama Buddha",
 
   // --- MAHATMA GANDHI ---
   "Be the change that you wish to see in the world. — Mahatma Gandhi",
   "Live as if you were to die tomorrow. Learn as if you were to live forever. — Mahatma Gandhi",
   "The future depends on what you do today. — Mahatma Gandhi",
-  "Satisfaction lies in the effort, not in the attainment. Full effort is full victory. — Mahatma Gandhi",
-  "Strength does not come from physical capacity. It comes from an indomitable will. — Mahatma Gandhi",
-  "An ounce of practice is worth more than tons of preaching. — Mahatma Gandhi",
 
   // --- RABINDRANATH TAGORE ---
   "You cannot cross the sea merely by standing and staring at the water. — Rabindranath Tagore",
   "Faith is the bird that feels the light when the dawn is still dark. — Rabindranath Tagore",
   "Let us not pray to be sheltered from dangers but to be fearless when facing them. — Rabindranath Tagore",
-  "Everything comes to us that belongs to us if we create the capacity to receive it. — Rabindranath Tagore",
-  "Facts are many, but the truth is one. — Rabindranath Tagore",
-  "The butterfly counts not months but moments, and has time enough. — Rabindranath Tagore",
-  "Education means enabling the mind to find out that ultimate truth which emancipates us from bondages. — Rabindranath Tagore",
 
   // --- CHANAKYA ---
   "Before you start some work, always ask yourself three questions: Why am I doing it, What the results might be, and Will I be successful. — Chanakya",
   "Once you start working on something, don't be afraid of failure and don't abandon it. — Chanakya",
   "Education is the best friend. An educated person is respected everywhere. — Chanakya",
-  "A man is great by deeds, not by birth. — Chanakya",
-  "Learn from the mistakes of others... you can't live long enough to make them all yourselves. — Chanakya",
 
-  // --- DR. B. R. AMBEDKAR ---
-  "Cultivation of mind should be the ultimate aim of human existence. — Dr. B. R. Ambedkar",
-  "Life should be great rather than long. — Dr. B. R. Ambedkar",
-  "Education is the milk of a tigress; he who drinks it, cannot help but roar. — Dr. B. R. Ambedkar",
+  // --- B. R. AMBEDKAR ---
+  "Cultivation of mind should be the ultimate aim of human existence. — B. R. Ambedkar",
+  "Life should be great rather than long. — B. R. Ambedkar",
+  "Education is the milk of a tigress; he who drinks it, cannot help but roar. — B. R. Ambedkar",
 
   // --- J. R. D. TATA ---
   "Uncommon effort is the key to uncommon success. Always aim for excellence. — J. R. D. Tata",
@@ -134,9 +72,13 @@ const RAW_STUDENT_QUOTES = [
   "The only way to be free from the limits of your past is to raise your consciousness and work with devotion in the present. — Sri Aurobindo",
   "To grow in knowledge, one must first learn to be silent and focus the mind. — Sri Aurobindo",
 
-  // --- KABIR & ADI SHANKARA ---
+  // --- KABIR ---
   "Slowly slowly O mind, everything in course happens; the gardener may water with a hundred pots, the fruit arrives only in its season. — Kabir",
+
+  // --- ADI SHANKARA ---
   "Do not look at others' virtues and vices, work hard on your own self-realization and progress. — Adi Shankara",
+
+  // --- MOTHER TERESA ---
   "Yesterday is gone. Tomorrow has not yet come. We have only today. Let us begin. — Mother Teresa",
 
   // --- JAWAHARLAL NEHRU ---
@@ -148,54 +90,43 @@ const RAW_STUDENT_QUOTES = [
   "It is not that I'm so smart, it's just that I stay with problems longer. — Albert Einstein",
   "A person who never made a mistake never tried anything new. — Albert Einstein",
   "Learn from yesterday, live for today, hope for tomorrow. — Albert Einstein",
-  "In the middle of difficulty lies opportunity. — Albert Einstein",
-  "Intellectual growth should commence at birth and cease only at death. — Albert Einstein",
-  "Any fool can know. The point is to understand. — Albert Einstein",
 
   // --- THOMAS EDISON ---
   "There is no substitute for hard work. — Thomas Edison",
   "I have not failed. I've just found 10,000 ways that won't work. — Thomas Edison",
   "Genius is one percent inspiration and ninety-nine percent perspiration. — Thomas Edison",
-  "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. — Thomas Edison",
-  "Opportunity is missed by most because it is dressed in overalls and looks like work. — Thomas Edison",
 
   // --- RICHARD FEYNMAN ---
   "What I cannot create, I do not understand. — Richard Feynman",
   "The first principle is that you must not fool yourself and you are the easiest person to fool. — Richard Feynman",
   "If you want to master a concept, teach it to someone else. — Richard Feynman",
-  "Study hard what interests you the most in the most undisciplined, irreverent and original manner possible. — Richard Feynman",
-  "We are trying to prove ourselves wrong as quickly as possible, because only in that way can we find progress. — Richard Feynman",
-  "What one fool can understand, another can. — Richard Feynman",
-  "You have no responsibility to live up to what other people think you ought to accomplish. — Richard Feynman",
 
   // --- STEPHEN HAWKING ---
   "Intelligence is the ability to adapt to change. — Stephen Hawking",
   "Quiet people have the loudest minds. — Stephen Hawking",
   "Remember to look up at the stars and not down at your feet. Never give up work. — Stephen Hawking",
 
-  // --- SIR ISAAC NEWTON ---
-  "If I have seen further it is by standing on the shoulders of Giants. — Sir Isaac Newton",
-  "Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things. — Sir Isaac Newton",
-  "No great discovery was ever made without a bold guess. — Sir Isaac Newton",
-  "What we know is a drop, what we don't know is an ocean. — Sir Isaac Newton",
-  "I keep the subject constantly before me, and wait till the first dawnings open slowly, by little and little, into a full and clear light. — Sir Isaac Newton",
-  "If I have done the public any service, it is due to nothing but patient thought. — Sir Isaac Newton",
+  // --- ISAAC NEWTON ---
+  "If I have seen further it is by standing on the shoulders of Giants. — Isaac Newton",
+  "Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things. — Isaac Newton",
+  "No great discovery was ever made without a bold guess. — Isaac Newton",
 
   // --- MARIE CURIE ---
   "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. — Marie Curie",
   "Be less curious about people and more curious about ideas. — Marie Curie",
+  "I was taught that the way of progress was neither swift nor easy. — Marie Curie",
 
-  // --- ALEXANDER GRAHAM BELL & NIKOLA TESLA ---
+  // --- ALEXANDER GRAHAM BELL ---
   "Concentrate all your thoughts upon the work at hand. The sun's rays do not burn until focused. — Alexander Graham Bell",
   "Preparation is the key to success. — Alexander Graham Bell",
+
+  // --- NIKOLA TESLA ---
   "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration. — Nikola Tesla",
 
   // --- STEVE JOBS ---
   "The only way to do great work is to love what you do. — Steve Jobs",
   "Your time is limited, so don't waste it living someone else's life. — Steve Jobs",
   "Stay hungry. Stay foolish. — Steve Jobs",
-  "Have the courage to follow your heart and intuition. They somehow already know what you truly want to become. — Steve Jobs",
-  "The people who are crazy enough to think they can change the world are the ones who do. — Steve Jobs",
 
   // --- BRUCE LEE ---
   "The successful warrior is the average man, with laser-like focus. — Bruce Lee",
@@ -212,43 +143,227 @@ const RAW_STUDENT_QUOTES = [
   "The greatest glory in living lies not in never falling, but in rising every time we fall. — Nelson Mandela",
   "Education is the most powerful weapon which you can use to change the world. — Nelson Mandela",
 
-  // --- ABRAHAM LINCOLN & THEODORE ROOSEVELT ---
+  // --- ABRAHAM LINCOLN ---
   "The best way to predict the future is to create it. — Abraham Lincoln",
   "Determine that the thing can and shall be done, and then we shall find the way. — Abraham Lincoln",
   "Leave nothing for tomorrow which can be done today. — Abraham Lincoln",
+
+  // --- THEODORE ROOSEVELT ---
   "Believe you can and you're halfway there. — Theodore Roosevelt",
   "Do what you can, with what you have, where you are. — Theodore Roosevelt",
   "It is hard to fail, but it is worse never to have tried to succeed. — Theodore Roosevelt",
 
-  // --- ARISTOTLE, PLATO, SOCRATES, SENECA, CONFUCIUS, LAO TZU ---
+  // --- ARISTOTLE ---
   "We are what we repeatedly do. Excellence, then, is not an act, but a habit. — Aristotle",
   "The roots of education are bitter, but the fruit is sweet. — Aristotle",
   "Pleasure in the job puts perfection in the work. — Aristotle",
+
+  // --- PLATO ---
   "The beginning is the most important part of the work. — Plato",
+  "Courage is knowing what not to fear. — Plato",
+  "Be kind, for everyone you meet is fighting a hard battle. — Plato",
+
+  // --- SOCRATES ---
   "Wisdom begins in wonder. — Socrates",
   "An unexamined life is not worth living. — Socrates",
+
+  // --- SENECA ---
   "Difficulties strengthen the mind, as labor does the body. — Seneca",
   "If you want to be free from fear, you must work to understand the nature of things. — Seneca",
+  "Luck is what happens when preparation meets opportunity. — Seneca",
+
+  // --- CONFUCIUS ---
   "Our greatest glory is not in never falling, but in rising every time we fall. — Confucius",
   "It does not matter how slowly you go as long as you do not stop. — Confucius",
   "He who learns but does not think is lost! He who thinks but does not learn is in great danger. — Confucius",
-  "I hear and I forget. I see and I remember. I do and I understand. — Confucius",
+
+  // --- LAO TZU ---
   "The journey of a thousand miles begins with one step. — Lao Tzu",
   "Mastering others is strength. Mastering yourself is true power. — Lao Tzu",
+  "The journey of a thousand miles begins with a single step. — Lao Tzu",
 
   // --- WINSTON CHURCHILL ---
   "Success is not final; failure is not fatal: It is the courage to continue that counts. — Winston Churchill",
   "Success is stumbling from failure to failure with no loss of enthusiasm. — Winston Churchill",
-  "Continuous effort - not strength or intelligence - is the key to unlocking our potential. — Winston Churchill",
+  "Continuous effort — Winston Churchill",
 
-  // --- HELEN KELLER, MAYA ANGELOU, SWARTZ, PICASSO, EMERSON, MARK TWAIN ---
+  // --- HELEN KELLER ---
   "Keep your face to the sunshine and you cannot see a shadow. — Helen Keller",
+  "Never bend your head. Hold it high. — Helen Keller",
+  "Optimism is the faith that leads to achievement. — Helen Keller",
+
+  // --- MAYA ANGELOU ---
   "Nothing will work unless you do. — Maya Angelou",
   "All great achievements require time. — Maya Angelou",
+
+  // --- AARON SWARTZ ---
   "Be curious. Read widely. Try new things. What people call intelligence just boils down to curiosity. — Aaron Swartz",
+
+  // --- PABLO PICASSO ---
   "Action is the foundational key to all success. — Pablo Picasso",
+
+  // --- RALPH WALDO EMERSON ---
   "The mind, once stretched by a new idea, never returns to its original dimensions. — Ralph Waldo Emerson",
-  "The secret of getting ahead is getting started. — Mark Twain"
+  "What lies behind us and what lies before us are tiny matters compared to what lies within us. — Ralph Waldo Emerson",
+  "Nothing great was ever achieved without enthusiasm. — Ralph Waldo Emerson",
+
+  // --- MARK TWAIN ---
+  "The secret of getting ahead is getting started. — Mark Twain",
+  "To succeed in life, you need two things: ignorance and confidence. — Mark Twain",
+
+  // --- ROBERT COLLIER ---
+  "Success is the sum of small efforts, repeated day in and day out. — Robert Collier",
+
+  // --- BENJAMIN FRANKLIN ---
+  "By failing to prepare, you are preparing to fail. — Benjamin Franklin",
+  "Energy and persistence conquer all things. — Benjamin Franklin",
+  "Well done is better than well said. — Benjamin Franklin",
+
+  // --- JOHANN WOLFGANG VON GOETHE ---
+  "Knowing is not enough; we must apply. — Johann Wolfgang von Goethe",
+  "Everything is hard before it is easy. — Johann Wolfgang von Goethe",
+  "Whatever you can do or dream you can, begin it. — Johann Wolfgang von Goethe",
+
+  // --- FRIEDRICH NIETZSCHE ---
+  "He who has a why to live can bear almost any how. — Friedrich Nietzsche",
+
+  // --- NAPOLEON HILL ---
+  "Do not wait; the time will never be just right. — Napoleon Hill",
+  "Think twice before you speak, because your words and influence will plant the seed of either success or failure. — Napoleon Hill",
+
+  // --- GEORGE WASHINGTON ---
+  "The harder the conflict, the greater the triumph. — George Washington",
+
+  // --- WALTER ELLIOT ---
+  "Perseverance is not a long race; it is many short races one after another. — Walter Elliot",
+
+  // --- ROBERT FROST ---
+  "The best way out is always through. — Robert Frost",
+
+  // --- WALT WHITMAN ---
+  "Keep your face always toward the sunshine. — Walt Whitman",
+
+  // --- DOROTHY PARKER ---
+  "The cure for boredom is curiosity. — Dorothy Parker",
+
+  // --- SAMUEL JOHNSON ---
+  "Great works are performed not by strength but by perseverance. — Samuel Johnson",
+
+  // --- BEVERLY SILLS ---
+  "There are no shortcuts to any place worth going. — Beverly Sills",
+
+  // --- HENRY WADSWORTH LONGFELLOW ---
+  "The heights by great men reached and kept were not attained by sudden flight. — Henry Wadsworth Longfellow",
+
+  // --- HELEN HAYES ---
+  "The expert in anything was once a beginner. — Helen Hayes",
+
+  // --- JAPANESE PROVERB ---
+  "Fall seven times, stand up eight. — Japanese Proverb",
+
+  // --- MOLIÈRE ---
+  "The greater the obstacle, the more glory in overcoming it. — Molière",
+
+  // --- PERSIUS ---
+  "He conquers who endures. — Persius",
+
+  // --- J.R.R. TOLKIEN ---
+  "Little by little, one travels far. — J.R.R. Tolkien",
+
+  // --- MIGUEL DE CERVANTES ---
+  "To be prepared is half the victory. — Miguel de Cervantes",
+
+  // --- WALT DISNEY ---
+  "The way to get started is to quit talking and begin doing. — Walt Disney",
+
+  // --- FRANKLIN D. ROOSEVELT ---
+  "The only limit to our realization of tomorrow is our doubts of today. — Franklin D. Roosevelt",
+
+  // --- SAMUEL GOLDWYN ---
+  "The harder I work, the luckier I get. — Samuel Goldwyn",
+
+  // --- H. JACKSON BROWN JR. ---
+  "The best preparation for tomorrow is doing your best today. — H. Jackson Brown Jr.",
+
+  // --- JONAS SALK ---
+  "The reward for work well done is the opportunity to do more. — Jonas Salk",
+
+  // --- ALFRED LORD TENNYSON ---
+  "Knowledge comes, but wisdom lingers. — Alfred Lord Tennyson",
+
+  // --- ALEXANDER POPE ---
+  "A little learning is a dangerous thing. — Alexander Pope",
+
+  // --- LEONARDO DA VINCI ---
+  "Learning never exhausts the mind. — Leonardo da Vinci",
+  "As every divided kingdom falls, so every mind divided between many studies confounds and saps itself. — Leonardo da Vinci",
+  "I have been impressed with the urgency of doing. — Leonardo da Vinci",
+
+  // --- TAOIST PROVERB ---
+  "The journey is the reward. — Taoist Proverb",
+
+  // --- JIM ROHN ---
+  "Discipline is the bridge between goals and accomplishment. — Jim Rohn",
+  "Motivation is what gets you started. Habit is what keeps you going. — Jim Rohn",
+  "Formal education will make you a living; self-education will make you a fortune. — Jim Rohn",
+
+  // --- JAMES ALLEN ---
+  "You are today where your thoughts have brought you. — James Allen",
+  "Men do not attract what they want, but what they are. — James Allen",
+  "Circumstances do not make the man, they reveal him. — James Allen",
+
+  // --- FRANCIS BACON ---
+  "Knowledge is power. — Francis Bacon",
+  "Reading maketh a full man. — Francis Bacon",
+  "A prudent question is one-half of wisdom. — Francis Bacon",
+
+  // --- PLUTARCH ---
+  "The mind is not a vessel to be filled but a fire to be kindled. — Plutarch",
+  "Know how to listen, and you will profit even from those who talk badly. — Plutarch",
+
+  // --- HERACLITUS ---
+  "No man ever steps in the same river twice. — Heraclitus",
+  "Character is destiny. — Heraclitus",
+
+  // --- VINCENT VAN GOGH ---
+  "Great things are done by a series of small things brought together. — Vincent van Gogh",
+  "If you hear a voice within you say 'you cannot paint,' then by all means paint. — Vincent van Gogh",
+  "I am always doing what I cannot do yet, in order to learn how to do it. — Vincent van Gogh",
+
+  // --- HENRY FORD ---
+  "Nothing is particularly hard if you divide it into small jobs. — Henry Ford",
+  "Whether you think you can, or you think you can't—you're right. — Henry Ford",
+  "Obstacles are those frightful things you see when you take your eyes off your goal. — Henry Ford",
+
+  // --- OVID ---
+  "What is harder than rock, or softer than water? Yet soft water hollows out hard rock. — Ovid",
+
+  // --- LUCRETIUS ---
+  "The drops of rain make a hole in the stone. — Lucretius",
+
+  // --- WILLIAM HAZLITT ---
+  "The more we do, the more we can do. — William Hazlitt",
+
+  // --- HORACE ---
+  "He who has begun has half done. — Horace",
+  "Adversity has the effect of eliciting talents. — Horace",
+
+  // --- BALTASAR GRACIÁN ---
+  "Work is the price which is paid for reputation. — Baltasar Gracián",
+
+  // --- ANTOINE DE SAINT-EXUPÉRY ---
+  "A goal without a plan is just a wish. — Antoine de Saint-Exupéry",
+  "Perfection is achieved when there is nothing left to take away. — Antoine de Saint-Exupéry",
+  "What saves a man is to take a step. Then another step. — Antoine de Saint-Exupéry",
+
+  // --- WILLIAM FEATHER ---
+  "The reward of energy, enterprise and thrift is taxes. — William Feather",
+
+  // --- PETER MARSHALL ---
+  "Small deeds done are better than great deeds planned. — Peter Marshall",
+
+  // --- JOHN MILTON ---
+  "Long is the way and hard, that out of Hell leads up to light. — John Milton"
 ];
 
 const seededRandom = (seed) => {
