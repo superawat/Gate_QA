@@ -11,6 +11,7 @@ import {
   FaFire,
   FaNewspaper,
 } from "react-icons/fa";
+import { FiMessageSquare } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import HamburgerButton from "./HamburgerButton";
 import SupportModal from "../Footer/SupportModal";
@@ -423,7 +424,22 @@ const GlobalNavigationDrawer = ({
             </Link>
           </section>
 
-          {/* 5. Manual */}
+          {/* 5. Feedback */}
+          <section className="space-y-2" aria-labelledby="global-feedback-heading">
+            <h2 id="global-feedback-heading" className={sectionHeadingClassName}>Feedback</h2>
+            <a
+              href="https://forms.gle/nAYEKBkMsfamhtPK7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={actionButtonClassName}
+              onClick={onClose}
+            >
+              <FiMessageSquare className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+              <span className="truncate">Give Feedback</span>
+            </a>
+          </section>
+
+          {/* 6. Manual */}
           <section className="space-y-2" aria-labelledby="global-manual-heading">
             <h2 id="global-manual-heading" className={sectionHeadingClassName}>Manual</h2>
 

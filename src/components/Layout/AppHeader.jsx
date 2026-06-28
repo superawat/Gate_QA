@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { flushSync } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FiMoon, FiSun } from "react-icons/fi";
+import { FiMessageSquare, FiMoon, FiSun } from "react-icons/fi";
 
 import DomainShiftNotice from "./DomainShiftNotice";
 import GlobalNavigationDrawer from "./GlobalNavigationDrawer";
@@ -554,6 +554,22 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               <FaExclamationTriangle className="size-2.5 text-amber-500 sm:size-3" aria-hidden="true" />
               <span className="whitespace-nowrap">{domainShiftCountdown}</span>
             </button>
+          ) : null}
+
+          {!isMockWindowRoute ? (
+            <a
+              href="https://forms.gle/nAYEKBkMsfamhtPK7"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Give feedback"
+              className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-violet-300 bg-violet-50 text-violet-600 transition hover:scale-110 hover:bg-violet-100 focus:outline-none focus:ring-2 focus:ring-violet-500 dark:border-violet-700 dark:bg-violet-950/50 dark:text-violet-400 dark:hover:bg-violet-900/40"
+            >
+              <FiMessageSquare className="h-4 w-4" aria-hidden="true" />
+              <span className="absolute -right-0.5 -top-0.5 flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-500" />
+              </span>
+            </a>
           ) : null}
 
           {!isMockWindowRoute ? (

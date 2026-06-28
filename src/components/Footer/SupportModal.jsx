@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 //  from 'react';
-import { FaTimes, FaHeart, FaEnvelope } from 'react-icons/fa';
+import { FaTimes, FaHeart } from 'react-icons/fa';
 import qrCodeImage from './assets/qrcode.png';
 
 const SupportModal = ({ isOpen, onClose }) => {
@@ -62,18 +62,6 @@ const SupportModal = ({ isOpen, onClose }) => {
                         </p>
                     </div>
 
-                    <div className="mt-5 border-t border-[color:var(--color-border)] pt-4">
-                        <p className="text-sm font-medium text-[color:var(--color-text)]">
-                            Feedback or suggestions
-                        </p>
-                        <a
-                            href="mailto:rawathr01@gmail.com"
-                            className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-text)] transition-colors hover:text-[color:var(--color-text)]"
-                        >
-                            <FaEnvelope className="text-[color:var(--color-text-muted)]" />
-                            rawathr01@gmail.com
-                        </a>
-                    </div>
 
                     <button
                         onClick={onClose}

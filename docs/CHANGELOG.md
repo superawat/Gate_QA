@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-06-28
+
+### Added
+- **Feedback Integration**: Added a Google Forms feedback link as an icon in the header (next to the theme toggle) and as a dedicated navigation section in the hamburger drawer.
+- **Test Coverage**: Added robust test assertions verifying the visibility and correctness of the new feedback links on both mock and non-mock routes.
+
+### Fixed
+- **Support Modal Refactor**: Removed the legacy feedback suggestions section and contact email from the Support Modal.
+
 ## 2026-06-17
 
 ### Added

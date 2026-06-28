@@ -54,6 +54,8 @@ describe("AppHeader", () => {
     });
 
     expect(screen.queryByRole("switch", { name: /switch to (dark|light) mode/i })).toBeNull();
+    // Feedback icon is also hidden on mock routes
+    expect(screen.queryByRole("link", { name: /give feedback/i })).toBeNull();
   });
 
   test("toggles theme preference on non-mock routes", async () => {
@@ -73,6 +75,10 @@ describe("AppHeader", () => {
     expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
     expect(screen.getByRole("switch", { name: /switch to light mode/i })).toBeTruthy();
     expect(screen.getByAltText(/gate qa logo/i).closest(".app-header-logo-frame")).toBeTruthy();
+    // Feedback icon link is visible on non-mock routes
+    const feedbackLink = screen.getByRole("link", { name: /give feedback/i });
+    expect(feedbackLink.getAttribute("href")).toBe("https://forms.gle/nAYEKBkMsfamhtPK7");
+    expect(feedbackLink.getAttribute("target")).toBe("_blank");
   });
 
   test("opens a global drawer with tools and manual, and allows opening support modal", async () => {
@@ -99,6 +105,10 @@ describe("AppHeader", () => {
     expect(drawerScope.getByRole("button", { name: /import json/i })).toBeTruthy();
     expect(drawerScope.getByRole("link", { name: /priority topics/i }).getAttribute("href")).toBe("/insights/topics");
     expect(drawerScope.getByRole("link", { name: /full user manual/i })).toBeTruthy();
+    // Feedback link is present in drawer
+    const drawerFeedbackLink = drawerScope.getByRole("link", { name: /give feedback/i });
+    expect(drawerFeedbackLink.getAttribute("href")).toBe("https://forms.gle/nAYEKBkMsfamhtPK7");
+    expect(drawerFeedbackLink.getAttribute("target")).toBe("_blank");
 
     // Verify support button and opening SupportModal
     const supportBtn = drawerScope.getByRole("button", { name: /support me/i });
