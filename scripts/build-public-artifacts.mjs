@@ -207,9 +207,14 @@ function escapeXml(value = "") {
 
 function buildCanonicalUrl(pathname = "/", query = null) {
   const normalizedBase = SITE_ORIGIN.replace(/\/+$/, "");
-  const normalizedPath = String(pathname || "/").startsWith("/")
+  let normalizedPath = String(pathname || "/").startsWith("/")
     ? String(pathname || "/")
     : `/${String(pathname || "/")}`;
+  
+  if (normalizedPath !== "/" && !normalizedPath.endsWith("/") && !normalizedPath.split("/").pop().includes(".")) {
+    normalizedPath += "/";
+  }
+
   const url = new URL(`${normalizedBase}${normalizedPath}`);
   if (query && typeof query === "object") {
     Object.entries(query).forEach(([key, value]) => {
@@ -237,7 +242,11 @@ const SEO_SUBJECT_SLUGS = {
   "engg-math": "engineering-mathematics",
 };
 
+// These pages all have pre-rendered index.html files (built by buildStaticInfoPages + buildBlogPage
+// + EDITORIAL_PAGES). /mock, /practice, /subjects are excluded — they are SPA-only routes with no
+// static index.html; listing them would cause GSC "Not found (404)" reports on GitHub Pages.
 const ALIAS_SITEMAP_URLS = ["/blog", "/about", "/contact", "/privacy", "/terms", ...EDITORIAL_PAGES.map((page) => page.path)];
+
 
 
 
@@ -250,9 +259,10 @@ function buildSitemapXml(manifest = {}, questions = [], generatedAt = new Date()
   };
 
   addUrl(buildCanonicalUrl("/"), "1.0", "weekly");
-  addUrl(buildCanonicalUrl("/practice"), "0.8", "weekly");
-  addUrl(buildCanonicalUrl("/mock"), "0.7", "weekly");
-  addUrl(buildCanonicalUrl("/subjects"), "0.6", "monthly");
+
+  // NOTE: /practice, /mock, /subjects are SPA-only routes with NO pre-rendered index.html.
+  // Listing them in the sitemap causes GSC 404s on GitHub Pages (bare dirs 404 without index.html).
+  // Only pre-rendered sub-pages (/subjects/<slug>, /practice/question/<uid>) are safe to include.
 
   ALIAS_SITEMAP_URLS.forEach((path) => {
     addUrl(buildCanonicalUrl(path), "0.7", "monthly");

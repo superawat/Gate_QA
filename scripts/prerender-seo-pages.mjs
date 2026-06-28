@@ -325,8 +325,31 @@ function truncate(value = "", maxLength = 160) {
   return `${normalized.slice(0, Math.max(0, maxLength - 1)).trimEnd()}...`;
 }
 
+function normalizePathTrailingSlash(routePath = "/") {
+  let cleanPath = routePath;
+  const hashIndex = cleanPath.indexOf("#");
+  let hash = "";
+  if (hashIndex !== -1) {
+    hash = cleanPath.slice(hashIndex);
+    cleanPath = cleanPath.slice(0, hashIndex);
+  }
+  const queryIndex = cleanPath.indexOf("?");
+  let query = "";
+  if (queryIndex !== -1) {
+    query = cleanPath.slice(queryIndex);
+    cleanPath = cleanPath.slice(0, queryIndex);
+  }
+  if (cleanPath !== "/" && !cleanPath.endsWith("/") && !cleanPath.split("/").pop().includes(".")) {
+    cleanPath += "/";
+  }
+  return `${cleanPath}${query}${hash}`;
+}
+
 function buildCanonicalUrl(routePath = "/") {
-  const normalizedPath = routePath.startsWith("/") ? routePath : `/${routePath}`;
+  let normalizedPath = routePath.startsWith("/") ? routePath : `/${routePath}`;
+  if (normalizedPath !== "/" && !normalizedPath.endsWith("/") && !normalizedPath.split("/").pop().includes(".")) {
+    normalizedPath += "/";
+  }
   return `${SITE_ORIGIN}${normalizedPath}`;
 }
 
@@ -411,7 +434,7 @@ function replaceHead(html, page) {
 
 function buildStaticRoot(page) {
   const links = (page.links || [])
-    .map((link) => `<a href="${escapeAttribute(link.href)}" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">${escapeHtml(link.label)}</a>`)
+    .map((link) => `<a href="${escapeAttribute(normalizePathTrailingSlash(link.href))}" style="color: #0284c7; text-decoration: none; font-weight: 600; margin-right: 12px;">${escapeHtml(link.label)}</a>`)
     .join("");
   const listItems = (page.items || [])
     .slice(0, 80)
@@ -900,6 +923,80 @@ function buildBlogPage() {
   };
 }
 
+function buildStaticInfoPages() {
+  const home = buildCanonicalUrl("/");
+  return [
+    {
+      path: "/about",
+      canonicalUrl: buildCanonicalUrl("/about"),
+      title: "About GateQA | GATE CS Practice Platform",
+      h1: "About GateQA",
+      eyebrow: "About",
+      description: "GateQA is a free, no-login GATE CS practice platform offering 3,500+ previous year questions from 1987\u20132026 with subject-wise filters, solutions, and offline support.",
+      richCopy: [
+        "GateQA is a free, open-access practice platform built specifically for GATE Computer Science aspirants. Access 3,500+ GATE CS previous year questions from 1987 to 2026, with subject-wise filters, full-length mock tests, and offline support \u2014 all without registration.",
+      ],
+      faqs: [],
+      schemas: [
+        breadcrumbSchema([{ name: "Home", url: home }, { name: "About", url: buildCanonicalUrl("/about") }]),
+        webPageSchema({ name: "About GateQA", description: "GateQA is a free GATE CS practice platform.", url: buildCanonicalUrl("/about") }),
+      ],
+      links: [{ href: "/", label: "Go to Dashboard" }, { href: "/blog", label: "Browse Prep Guides" }],
+    },
+    {
+      path: "/contact",
+      canonicalUrl: buildCanonicalUrl("/contact"),
+      title: "Contact GateQA | Get in Touch",
+      h1: "Contact Us",
+      eyebrow: "Contact",
+      description: "Contact the GateQA team for feedback, question corrections, content suggestions, or general inquiries about our GATE CS practice platform.",
+      richCopy: [
+        "We welcome feedback, bug reports, question corrections, and content suggestions. Contact us at rawathr01@gmail.com or open a GitHub issue.",
+      ],
+      faqs: [],
+      schemas: [
+        breadcrumbSchema([{ name: "Home", url: home }, { name: "Contact", url: buildCanonicalUrl("/contact") }]),
+        webPageSchema({ name: "Contact GateQA", description: "Get in touch with the GateQA team.", url: buildCanonicalUrl("/contact") }),
+      ],
+      links: [{ href: "/", label: "Go to Dashboard" }],
+    },
+    {
+      path: "/privacy",
+      canonicalUrl: buildCanonicalUrl("/privacy"),
+      title: "Privacy Policy | GateQA",
+      h1: "Privacy Policy",
+      eyebrow: "Legal",
+      description: "GateQA Privacy Policy — GateQA does not require registration and stores all progress data locally on your device.",
+      richCopy: [
+        "GateQA does not collect personal data. Your practice progress is stored locally in your browser and never transmitted to our servers. No login required.",
+      ],
+      faqs: [],
+      schemas: [
+        breadcrumbSchema([{ name: "Home", url: home }, { name: "Privacy Policy", url: buildCanonicalUrl("/privacy") }]),
+        webPageSchema({ name: "Privacy Policy", description: "GateQA Privacy Policy.", url: buildCanonicalUrl("/privacy") }),
+      ],
+      links: [{ href: "/", label: "Go to Dashboard" }],
+    },
+    {
+      path: "/terms",
+      canonicalUrl: buildCanonicalUrl("/terms"),
+      title: "Terms and Conditions | GateQA",
+      h1: "Terms and Conditions",
+      eyebrow: "Legal",
+      description: "GateQA Terms and Conditions — rules and guidelines for using the GateQA GATE CS practice platform.",
+      richCopy: [
+        "GateQA is provided for personal, non-commercial educational use. GATE examination questions are the intellectual property of the IIT system and the National Coordination Board \u2014 GATE.",
+      ],
+      faqs: [],
+      schemas: [
+        breadcrumbSchema([{ name: "Home", url: home }, { name: "Terms", url: buildCanonicalUrl("/terms") }]),
+        webPageSchema({ name: "Terms and Conditions", description: "GateQA Terms and Conditions.", url: buildCanonicalUrl("/terms") }),
+      ],
+      links: [{ href: "/", label: "Go to Dashboard" }],
+    },
+  ];
+}
+
 function main() {
   const templatePath = path.join(DIST_DIR, "index.html");
   if (!fs.existsSync(templatePath)) {
@@ -919,6 +1016,7 @@ function main() {
   const pages = [
     buildHomePage(),
     buildBlogPage(),
+    ...buildStaticInfoPages(),
     ...buildAliasPages(),
     ...buildSubjectPages(manifest),
     ...buildYearPages(manifest),

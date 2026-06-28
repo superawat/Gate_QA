@@ -4,7 +4,6 @@
 
 ### Added
 - **Optimization Review Rewrite**: Refactored the core `optimization.md` framework into a compressed, table-first format. Split all proposed optimizations into Approved (fully implemented) and Rejected / Insufficient Confidence sections, with a detailed justification matrix for deferred items.
-
 ### Fixed
 - **Question Subject Tagging**: Corrected a metadata tagging error on question `go:460060` (GATE CSE 2025 Set 1, Q20), removing incorrect subject tags (Operating Systems, Data Structures, Calculus) and properly classifying it under Discrete Mathematics (`discrete-mathematics`, `combinatory`). Rebuilt public question bank index and detail shards to propagate.
 

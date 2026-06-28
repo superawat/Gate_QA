@@ -7,6 +7,47 @@ const DEFAULT_DESCRIPTION =
   "Practice 3500+ GATE CS PYQs from 1987–2026, 36000+ Aptitude questions, subject-wise mock tests, GATE calculator, insights, notes and bookmarks. Free and offline-first.";
 
 /**
+ * Normalise any URL or path to ensure it has a trailing slash (unless it is the root or a file with an extension).
+ * @param {string} urlOrPath
+ * @returns {string}
+ */
+export const normalizeUrlTrailingSlash = (urlOrPath) => {
+  if (!urlOrPath) return "";
+  // Check if it's a full URL
+  if (urlOrPath.startsWith("http://") || urlOrPath.startsWith("https://")) {
+    try {
+      const url = new URL(urlOrPath);
+      let pathname = url.pathname;
+      if (pathname !== "/" && !pathname.endsWith("/") && !pathname.split("/").pop().includes(".")) {
+        pathname += "/";
+      }
+      url.pathname = pathname;
+      return url.toString();
+    } catch {
+      return urlOrPath;
+    }
+  }
+  // Check if it's a relative path
+  let cleanPath = urlOrPath;
+  const hashIndex = cleanPath.indexOf("#");
+  let hash = "";
+  if (hashIndex !== -1) {
+    hash = cleanPath.slice(hashIndex);
+    cleanPath = cleanPath.slice(0, hashIndex);
+  }
+  const queryIndex = cleanPath.indexOf("?");
+  let query = "";
+  if (queryIndex !== -1) {
+    query = cleanPath.slice(queryIndex);
+    cleanPath = cleanPath.slice(0, queryIndex);
+  }
+  if (cleanPath !== "/" && !cleanPath.endsWith("/") && !cleanPath.split("/").pop().includes(".")) {
+    cleanPath += "/";
+  }
+  return `${cleanPath}${query}${hash}`;
+};
+
+/**
  * Build a BreadcrumbList Schema.org object from a simple breadcrumb array.
  * @param {Array<{name: string, url: string}>} crumbs
  */
@@ -17,7 +58,7 @@ export const buildBreadcrumbSchema = (crumbs = []) => ({
     "@type": "ListItem",
     position: index + 1,
     name: crumb.name,
-    item: crumb.url,
+    item: normalizeUrlTrailingSlash(crumb.url),
   })),
 });
 
@@ -35,7 +76,7 @@ export const buildQAPageSchema = ({
   "@context": "https://schema.org",
   "@type": "QAPage",
   name: questionName,
-  url,
+  url: normalizeUrlTrailingSlash(url),
   mainEntity: {
     "@type": "Question",
     name: questionName,
@@ -77,11 +118,11 @@ export const buildWebPageSchema = ({ name = "", description = "", url = "" }) =>
   "@type": "WebPage",
   name,
   description,
-  url,
+  url: normalizeUrlTrailingSlash(url),
   isPartOf: {
     "@type": "WebSite",
     name: SITE_NAME,
-    url: SITE_URL,
+    url: normalizeUrlTrailingSlash(SITE_URL),
   },
 });
 
@@ -109,7 +150,11 @@ const SEOHead = ({
   noIndex = false,
   schemaOrg = null,
 }) => {
-  const canonicalUrl = `${SITE_URL}${path}`;
+  let cleanPath = normalizeUrlTrailingSlash(path);
+  if (cleanPath && !cleanPath.startsWith("/")) {
+    cleanPath = "/" + cleanPath;
+  }
+  const canonicalUrl = `${SITE_URL}${cleanPath}`;
 
   // Normalise to array so we can render multiple schemas
   const schemas = schemaOrg
