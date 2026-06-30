@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
-//  from 'react';
 import {
   FaCheckCircle,
   FaCloudDownloadAlt,
@@ -51,6 +50,9 @@ const safetySteps = [
 ];
 
 const DataPolicyModal = ({ isOpen, onClose }) => {
+  const dialogRef = useRef(null);
+  useFocusTrap(dialogRef, isOpen, onClose);
+
   if (!isOpen) return null;
 
   return (
