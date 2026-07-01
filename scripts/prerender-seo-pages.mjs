@@ -476,6 +476,37 @@ function buildStaticRoot(page) {
               ${item.items.map(li => `<li style="margin-bottom: 8px;">${li}</li>`).join("")}
             </ul>`;
           }
+          // ── Phase 9.1 fix: renderers for editorial content types ──────────
+          if (item.type === "timeline") {
+            return `<ol style="color:#334155;padding-left:20px;margin-bottom:16px;">
+              ${(item.items || []).map(e => `<li style="margin-bottom:12px;"><strong>${escapeHtml(String(e.date || ""))}</strong> — ${escapeHtml(String(e.label || ""))}</li>`).join("")}
+            </ol>`;
+          }
+          if (item.type === "cards") {
+            return `<ul style="list-style:none;padding:0;display:grid;gap:12px;margin-bottom:16px;">
+              ${(item.items || []).map(c => `<li style="border:1px solid #e2e8f0;border-radius:8px;padding:16px;">
+                <strong>${escapeHtml(String(c.icon || ""))} ${escapeHtml(String(c.title || ""))}</strong>
+                <p style="margin:4px 0 0;color:#475569;">${escapeHtml(String(c.subtitle || ""))}</p>
+              </li>`).join("")}
+            </ul>`;
+          }
+          if (item.type === "callout") {
+            return `<div style="background:#f0f9ff;border-left:4px solid #0284c7;padding:14px 16px;border-radius:4px;color:#0c4a6e;margin:16px 0;">${escapeHtml(String(item.text || ""))}</div>`;
+          }
+          if (item.type === "related-articles") {
+            return `<nav aria-label="Related articles" style="margin-top:16px;margin-bottom:16px;">
+              <p style="font-weight:600;margin-bottom:8px;">Related Articles:</p>
+              <ul style="list-style:none;padding:0;">
+                ${(item.articles || []).map(a => `<li style="margin-bottom:6px;"><a href="${escapeHtml(String(a.path || ""))}" style="color:#0284c7;">${escapeHtml(String(a.label || ""))}</a></li>`).join("")}
+              </ul>
+            </nav>`;
+          }
+          if (item.type === "tracks") {
+            return `<ol style="color:#334155;padding-left:20px;margin-bottom:16px;">
+              ${(item.items || []).map(t => `<li style="margin-bottom:8px;"><strong>Track ${escapeHtml(String(t.letter || ""))}:</strong> ${(t.steps || []).map(s => escapeHtml(String(s))).join(" → ")}</li>`).join("")}
+            </ol>`;
+          }
+          // ─────────────────────────────────────────────────────────────────
           return `<p style="color: #334155; margin-bottom: 16px;">${item}</p>`;
         }).join("")}
        </div>`
