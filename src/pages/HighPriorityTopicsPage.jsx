@@ -915,7 +915,7 @@ const HighPriorityTopicsPage = () => {
     <SEOHead
       title="High Priority GATE CS Topics — Subject Analysis | GateQA"
       description="Identify the most frequently asked GATE CS topics with year-wise distribution analysis, marks weightage, and difficulty trends."
-      path="/high-priority-topics"
+      path="/topics"
     />
     <PageShell contentClassName="space-y-4 sm:space-y-6">
       <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-5 shadow-[var(--shadow-card)] sm:px-6 sm:py-6">

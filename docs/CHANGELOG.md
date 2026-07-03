@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-07-03
+
+### Changed
+- **Information Architecture & Routing**: Relocated "High Priority Topics" from the Insights section to a standalone resource page.
+  - Updated route constant `HIGH_PRIORITY_TOPICS_ROUTE` from `/insights/topics` to `/topics`.
+  - Added a legacy redirect in `App.jsx` from `/insights/topics` to `/topics` to preserve existing bookmarks and SEO indexing.
+  - Adjusted canonical `path` in `HighPriorityTopicsPage.jsx` to `/topics`.
+- **Navigation Layout**:
+  - Restructured `GlobalNavigationDrawer.jsx` to group educational resources together: removed the isolated "Insights" section and placed "High Priority Topics" and "Articles & Guides" under a unified "Resources" section.
+  - Updated `MobileBottomNav.jsx` shortcut link to point to `/topics`.
+- **Resource Discoverability**:
+  - Added a featured "Study Guide" card for the High Priority Topics page on the Blog Hub (`BlogListPage.jsx`) to promote visibility.
+
+### Fixed
+- **Test Alignment**: Updated Vitest unit tests in `App.test.jsx`, `MobileBottomNav.test.jsx`, and `AppHeader.test.jsx` to assert the correct new path.
+
 ## 2026-06-28
 
 ### Added

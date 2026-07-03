@@ -271,7 +271,7 @@ describe("App routes", () => {
   });
 
   test("high-priority topics route renders without initializing question data", async () => {
-    window.history.replaceState({}, "", "/insights/topics");
+    window.history.replaceState({}, "", "/topics");
 
     render(<App />);
 

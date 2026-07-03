@@ -294,9 +294,9 @@ const GlobalNavigationDrawer = ({
             </div>
           )}
 
-          {/* 1. Insights */}
-          <section className="space-y-2" aria-labelledby="global-insights-heading">
-            <h2 id="global-insights-heading" className={sectionHeadingClassName}>Insights</h2>
+          {/* 1. Resources */}
+          <section className="space-y-2" aria-labelledby="global-resources-heading">
+            <h2 id="global-resources-heading" className={sectionHeadingClassName}>Resources</h2>
             <Link
               to={HIGH_PRIORITY_TOPICS_ROUTE}
               onClick={onClose}
@@ -306,7 +306,15 @@ const GlobalNavigationDrawer = ({
               className={actionButtonClassName}
             >
               <FaFire className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
-              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Priority Topics</span>
+              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">High Priority Topics</span>
+            </Link>
+            <Link
+              to={BLOG_ROUTE}
+              onClick={onClose}
+              className={actionButtonClassName}
+            >
+              <FaNewspaper className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Articles &amp; Guides</span>
             </Link>
           </section>
 
@@ -411,18 +419,7 @@ const GlobalNavigationDrawer = ({
             )}
           </section>
 
-          {/* 4. Blog */}
-          <section className="space-y-2" aria-labelledby="global-blog-heading">
-            <h2 id="global-blog-heading" className={sectionHeadingClassName}>Blog</h2>
-            <Link
-              to={BLOG_ROUTE}
-              onClick={onClose}
-              className={actionButtonClassName}
-            >
-              <FaNewspaper className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
-              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Articles & Guides</span>
-            </Link>
-          </section>
+
 
           {/* 5. Feedback */}
           <section className="space-y-2" aria-labelledby="global-feedback-heading">

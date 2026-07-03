@@ -24,6 +24,6 @@ describe("MobileBottomNav", () => {
     expect(screen.getByRole("link", { name: /home/i }).getAttribute("href")).toBe("/");
     expect(screen.getByRole("link", { name: /explore/i }).getAttribute("href")).toBe("/practice");
     expect(screen.getByRole("link", { name: /progress/i }).getAttribute("href")).toBe("/insights");
-    expect(screen.getByRole("link", { name: /priority/i }).getAttribute("href")).toBe("/insights/topics");
+    expect(screen.getByRole("link", { name: /priority/i }).getAttribute("href")).toBe("/topics");
   });
 });

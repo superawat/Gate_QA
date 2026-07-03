@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaChevronRight, FaBookOpen, FaSearch, FaArrowRight } from "react-icons/fa";
+import { FaChevronRight, FaBookOpen, FaSearch, FaArrowRight, FaFire } from "react-icons/fa";
 
 import PageShell from "../components/Layout/PageShell";
 import SEOHead, { buildBreadcrumbSchema, buildWebPageSchema } from "../components/SEO/SEOHead";
 import { EDITORIAL_PAGES } from "../data/editorialPages";
 import { SUBJECT_SEO_MAP } from "../utils/landingPages";
-import { BLOG_ROUTE } from "../utils/routes";
+import { BLOG_ROUTE, HIGH_PRIORITY_TOPICS_ROUTE } from "../utils/routes";
 import { SITE_URL } from "../constants/siteConfig";
 
 const fadeUp = {
@@ -107,6 +107,41 @@ export default function BlogListPage() {
               className="w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-3 pl-10 pr-4 text-sm font-medium text-[color:var(--color-text)] placeholder-[color:var(--color-text-muted)] transition-colors focus:border-[color:var(--color-primary-border)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-soft)] shadow-[var(--shadow-soft)]"
             />
           </motion.div>
+
+          {/* Featured Resource: High Priority Topics */}
+          <motion.section variants={fadeUp} className="space-y-4" aria-labelledby="featured-heading">
+            <h2 id="featured-heading" className="text-sm font-semibold uppercase tracking-[0.15em] text-[color:var(--color-text-muted)]">
+              Featured Resource
+            </h2>
+            <motion.article
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 rounded-2xl border border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 dark:border-orange-900/40 dark:from-orange-950/30 dark:to-amber-950/20 p-5 sm:p-6 shadow-[var(--shadow-card)] hover:shadow-lg transition-all duration-300 group"
+            >
+              <div className="flex items-start gap-4 min-w-0">
+                <span className="shrink-0 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400">
+                  <FaFire size={22} />
+                </span>
+                <div className="min-w-0">
+                  <span className="inline-block mb-1.5 rounded-full bg-orange-100 dark:bg-orange-900/40 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-orange-700 dark:text-orange-400">
+                    Study Guide
+                  </span>
+                  <h3 className="text-xl font-bold text-[color:var(--color-text)] group-hover:text-orange-700 dark:group-hover:text-orange-400 leading-snug transition-colors">
+                    <Link to={HIGH_PRIORITY_TOPICS_ROUTE}>High Priority Topics for GATE CS</Link>
+                  </h3>
+                  <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                    Subject-wise importance rankings, high-weightage topics, recent exam trends, and GATE exam structure — everything to focus your preparation.
+                  </p>
+                </div>
+              </div>
+              <Link
+                to={HIGH_PRIORITY_TOPICS_ROUTE}
+                className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-orange-600 hover:bg-orange-700 dark:bg-orange-700 dark:hover:bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all"
+              >
+                <span>View Guide</span>
+                <FaArrowRight size={12} className="transform group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.article>
+          </motion.section>
 
           {/* Articles Grid */}
           <motion.section variants={fadeUp} className="space-y-4" aria-labelledby="articles-heading">

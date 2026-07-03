@@ -399,6 +399,9 @@ const PracticeRoutes = ({
             </ErrorBoundary>
           )}
         />
+        {/* Legacy redirect: preserve old /insights/topics URLs */}
+        <Route path="/insights/topics" element={<Navigate to={HIGH_PRIORITY_TOPICS_ROUTE} replace />} />
+
 
         <Route
           path={MOCK_HISTORY_ROUTE}

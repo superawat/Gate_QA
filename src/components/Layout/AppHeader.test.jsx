@@ -103,7 +103,7 @@ describe("AppHeader", () => {
     expect(drawerScope.getByRole("button", { name: /export csv/i })).toBeTruthy();
     expect(drawerScope.getByRole("button", { name: /export json/i })).toBeTruthy();
     expect(drawerScope.getByRole("button", { name: /import json/i })).toBeTruthy();
-    expect(drawerScope.getByRole("link", { name: /priority topics/i }).getAttribute("href")).toBe("/insights/topics");
+    expect(drawerScope.getByRole("link", { name: /priority topics/i }).getAttribute("href")).toBe("/topics");
     expect(drawerScope.getByRole("link", { name: /full user manual/i })).toBeTruthy();
     // Feedback link is present in drawer
     const drawerFeedbackLink = drawerScope.getByRole("link", { name: /give feedback/i });
