@@ -101,6 +101,7 @@ vi.mock("../components/Practice/PaginationControls", () => ({
 vi.mock("../contexts/SessionContext", () => ({
   useSession: () => ({
     startRandomSession: mocks.startRandomSession,
+    startOrderedSession: vi.fn(),
   }),
 }));
 
@@ -280,14 +281,21 @@ describe("ExplorePage", () => {
   });
 
   test("shows the active filter count on the filters button", async () => {
-    renderExplorePage();
+    const { container } = renderExplorePage();
 
-    expect((await screen.findByRole("button", { name: /filters/i })).textContent).toContain("All questions");
+    // The mobile Filters trigger carries aria-keyshortcuts="F"; use that
+    // to target it precisely so we don't accidentally match the new
+    // "Filters applied (N)" practice-mode chip.
+    const getFiltersButton = () =>
+      container.querySelector("button[aria-keyshortcuts='F']");
+
+    expect((await screen.findByRole("heading", { name: /explore questions/i }))).toBeTruthy();
+    expect(getFiltersButton().textContent).toContain("All questions");
 
     fireEvent.click(screen.getByRole("button", { name: /choose algorithms/i }));
 
     await waitFor(() => {
-      expect(screen.getByRole("button", { name: /filters/i }).textContent).toContain("1 active");
+      expect(getFiltersButton().textContent).toContain("1 active");
     });
   });
 

@@ -89,6 +89,7 @@ This file is the working backlog for future product improvements and important d
 | FEAT-027 | P1 | Done | Ship Mock mode after Phase 1/2 are green | Mock mode is now enabled and available on the landing page |
 | FEAT-028 | P2 | Done | Add weak-topic analytics | Home now shows a snapshot and `/insights` exposes full local-only subject/subtopic analytics |
 | FEAT-029 | P2 | Done | Add offline/PWA support | Shell-first service worker, manifest, and offline fallback are now shipped |
+| FEAT-030 | P1 | Done | Implement Practice Preference Toggles | Added shuffle and filter toggles to Explore page, syncing filters/pool and branching sessions |
 
 ## What We Can Improve Right Now
 

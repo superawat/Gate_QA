@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaFilter, FaPlay } from "react-icons/fa";
+import { FaFilter, FaPlay, FaRandom, FaSortAmountDown } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
@@ -17,6 +17,10 @@ import { trackEvent } from "../utils/analytics";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { writeLastSession } from "../utils/lastSession";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE, writePageParam } from "../utils/routes";
+import {
+  usePracticeShuffleEnabled,
+  usePracticeApplyFiltersEnabled,
+} from "../utils/practicePreference";
 
 const PAGE_SIZE = 25;
 
@@ -36,9 +40,12 @@ const ExplorePage = ({
   const pullStartRef = useRef(null);
   const pullActiveRef = useRef(false);
 
-  const { filteredQuestions, filters, isInitialized, structuredTags, totalQuestions } = useFilterState();
-  const { isQuestionSolved, isQuestionBookmarked } = useFilterActions();
-  const { startRandomSession } = useSession();
+  const { filteredQuestions, filters, isInitialized, structuredTags, totalQuestions, allQuestions } = useFilterState();
+  const { isQuestionSolved, isQuestionBookmarked, clearFilters } = useFilterActions();
+  const { startRandomSession, startOrderedSession } = useSession();
+
+  const [shufflePractice, setShufflePractice] = usePracticeShuffleEnabled();
+  const [applyFiltersToPractice, setApplyFiltersToPractice] = usePracticeApplyFiltersEnabled();
 
   const totalPages = Math.max(1, Math.ceil(filteredQuestions.length / PAGE_SIZE));
   const requestedPage = parsePageParam(location.search, 1);
@@ -238,20 +245,36 @@ const ExplorePage = ({
   }, [handleOpenFilters]);
 
   const handleOpenQuestion = useCallback((question) => {
-    startRandomSession(filteredQuestions, question.question_uid);
-    trackEvent("result_open", { question_uid: question.question_uid, source: "explore" });
+    const pool = applyFiltersToPractice ? filteredQuestions : (allQuestions.length > 0 ? allQuestions : filteredQuestions);
+    const sessionMode = shufflePractice ? "random" : "ordered";
+    if (shufflePractice) {
+      startRandomSession(pool, question.question_uid);
+    } else {
+      startOrderedSession(pool, question.question_uid);
+    }
+    trackEvent("result_open", { question_uid: question.question_uid, source: "explore", mode: sessionMode });
     writeLastSession({
       route: `${buildSolvePath(question.question_uid)}${location.search || ""}`,
       exploreSearch: location.search || "",
       resultPage: currentPage,
       questionUid: question.question_uid,
-      mode: "random",
+      mode: sessionMode,
     });
     navigate({
       pathname: buildSolvePath(question.question_uid),
       search: location.search,
     });
-  }, [currentPage, filteredQuestions, location.search, navigate, startRandomSession]);
+  }, [
+    applyFiltersToPractice,
+    allQuestions,
+    currentPage,
+    filteredQuestions,
+    location.search,
+    navigate,
+    shufflePractice,
+    startOrderedSession,
+    startRandomSession,
+  ]);
 
   const resultSummary = useMemo(() => {
     if (!isInitialized) {
@@ -309,19 +332,49 @@ const ExplorePage = ({
     structuredTags?.questionTypes,
   ]);
 
+  // Synchronize: if filters become active while applyFiltersToPractice is OFF,
+  // re-enable it automatically so the user doesn't get a confusing empty session.
+  useEffect(() => {
+    if (activeFilterCount > 0 && !applyFiltersToPractice) {
+      setApplyFiltersToPractice(true);
+    }
+  }, [activeFilterCount, applyFiltersToPractice, setApplyFiltersToPractice]);
+
+  const handleToggleApplyFilters = useCallback(() => {
+    setApplyFiltersToPractice((prev) => {
+      const nextVal = !prev;
+      if (!nextVal) {
+        // Turning filters OFF ? clear all active filters so list + pool stay in sync
+        clearFilters();
+      }
+      return nextVal;
+    });
+  }, [clearFilters, setApplyFiltersToPractice]);
+
   const quickStartLabel = useMemo(() => {
     if (filters.selectedSubjects.includes("reasoning")) {
       return "Start Reasoning Practice";
     }
-    return activeFilterCount > 0 ? "Continue Filtered Practice" : "Start Practice";
-  }, [activeFilterCount, filters.selectedSubjects]);
+    if (activeFilterCount > 0) {
+      return shufflePractice ? "Continue Filtered Practice" : "Continue in Order";
+    }
+    return shufflePractice ? "Start Practice" : "Start in Order";
+  }, [activeFilterCount, filters.selectedSubjects, shufflePractice]);
 
   const handleStartFilteredPractice = useCallback(() => {
-    if (!filteredQuestions.length) {
+    const pool = applyFiltersToPractice
+      ? filteredQuestions
+      : (allQuestions.length > 0 ? allQuestions : filteredQuestions);
+
+    if (!pool.length) {
       return;
     }
 
-    const firstQuestion = startRandomSession(filteredQuestions) || filteredQuestions[0];
+    const sessionMode = shufflePractice ? "random" : "ordered";
+    const firstQuestion = shufflePractice
+      ? (startRandomSession(pool) || pool[0])
+      : (startOrderedSession(pool) || pool[0]);
+
     if (!firstQuestion?.question_uid) {
       return;
     }
@@ -330,13 +383,14 @@ const ExplorePage = ({
       source: "explore",
       activeFilterCount,
       question_uid: firstQuestion.question_uid,
+      mode: sessionMode,
     });
     writeLastSession({
       route: `${buildSolvePath(firstQuestion.question_uid)}${location.search || ""}`,
       exploreSearch: location.search || "",
       resultPage: currentPage,
       questionUid: firstQuestion.question_uid,
-      mode: "random",
+      mode: sessionMode,
     });
     navigate({
       pathname: buildSolvePath(firstQuestion.question_uid),
@@ -344,10 +398,14 @@ const ExplorePage = ({
     });
   }, [
     activeFilterCount,
+    allQuestions,
+    applyFiltersToPractice,
     currentPage,
     filteredQuestions,
     location.search,
     navigate,
+    shufflePractice,
+    startOrderedSession,
     startRandomSession,
   ]);
 
@@ -417,6 +475,49 @@ const ExplorePage = ({
                   </span>
                 </button>
               </div>
+            </div>
+
+            {/* ── Practice mode toggles ──────────────────────────────────── */}
+            <div className="practice-mode-toggles mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-slate-100 pt-3">
+              <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
+                Practice mode
+              </span>
+
+              {/* Shuffle toggle */}
+              <button
+                type="button"
+                id="practice-shuffle-toggle"
+                aria-pressed={shufflePractice}
+                onClick={() => setShufflePractice((v) => !v)}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[12px] font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
+                  shufflePractice
+                    ? "border-sky-300 bg-sky-50 text-sky-700"
+                    : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"
+                }`}
+                title={shufflePractice ? "Questions are shuffled — click to practice in order" : "Questions are in order — click to shuffle"}
+              >
+                {shufflePractice ? <FaRandom className="text-[10px]" aria-hidden="true" /> : <FaSortAmountDown className="text-[10px]" aria-hidden="true" />}
+                {shufflePractice ? "Shuffled" : "In Order"}
+              </button>
+
+                                          {/* Apply-filters toggle � only shown when filters are active */}
+              {activeFilterCount > 0 && (
+                <button
+                  type="button"
+                  id="practice-apply-filters-toggle"
+                  aria-pressed={applyFiltersToPractice}
+                  onClick={handleToggleApplyFilters}
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[12px] font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
+                    applyFiltersToPractice
+                      ? "border-amber-300 bg-amber-50 text-amber-700"
+                      : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"
+                  }`}
+                  title={applyFiltersToPractice ? `Practicing ${filteredQuestions.length} filtered questions � click to practice all` : `Practicing all ${allQuestions.length} questions � click to restrict to filters`}
+                >
+                  <FaFilter className="text-[10px]" aria-hidden="true" />
+                  {applyFiltersToPractice ? `Filters applied (${filteredQuestions.length})` : `All questions (${allQuestions.length})`}
+                </button>
+              )}
             </div>
 
             <div className="practice-search-row mt-4 border-t border-slate-100 pt-4">

@@ -2,6 +2,12 @@
 
 ## 2026-07-03
 
+### Added
+- **Practice Settings & Preference Toggles**:
+  - Implemented a persistent **Shuffle Questions** toggle (persisted via `localStorage` in `practicePreference.ts`) to let users swap between randomized and sequential practice sessions.
+  - Integrated a **Filters Applied** status/toggle chip on the Explore Page that displays when filters are active. Clicking the chip triggers `clearFilters()` to reset all active sidebar filters, ensuring the sidebar, search list, and practice session pool remain completely synchronized.
+  - Updated practice session initialization (`handleOpenQuestion` and `handleStartFilteredPractice`) to automatically branch between sequential (`startOrderedSession`) and shuffled (`startRandomSession`) session starts based on the user's preference.
+
 ### Changed
 - **Information Architecture & Routing**: Relocated "High Priority Topics" from the Insights section to a standalone resource page.
   - Updated route constant `HIGH_PRIORITY_TOPICS_ROUTE` from `/insights/topics` to `/topics`.
@@ -14,7 +20,8 @@
   - Added a featured "Study Guide" card for the High Priority Topics page on the Blog Hub (`BlogListPage.jsx`) to promote visibility.
 
 ### Fixed
-- **Test Alignment**: Updated Vitest unit tests in `App.test.jsx`, `MobileBottomNav.test.jsx`, and `AppHeader.test.jsx` to assert the correct new path.
+- **Practice Page Crashes**: Fixed a Temporal Dead Zone (TDZ) ReferenceError regarding `activeFilterCount` and restored the missing `usePracticeApplyFiltersEnabled` export in `practicePreference.ts`.
+- **Test Alignment**: Updated Vitest unit tests in `App.test.jsx`, `MobileBottomNav.test.jsx`, and `AppHeader.test.jsx` to assert the correct new path, and adjusted `ExplorePage.test.jsx` selectors for the new toggles.
 
 ## 2026-06-28
 
