@@ -202,6 +202,8 @@ const formatSectionRequirement = (gaCount, csCount, questionCount = null) => {
     return `${gaCount} GA / ${csCount} CS (${total} Questions)`;
 };
 
+const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning"]);
+
 const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYearSetKey = "") => ({
     minYear,
     maxYear,
@@ -209,6 +211,8 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     yearRangeStart: minYear,
     yearRangeEnd: maxYear,
     selectedSubjects: [],
+    selectedSubtopics: [],
+    expandedSubjectSlug: null,
     selectedTypes: [...TYPE_OPTIONS],
     selectedPaperYearSetKey,
     customCount: kindId === "custom" ? 25 : 65,
@@ -556,6 +560,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const customRangeStart = Math.max(minYear, Math.min(maxYear, clampYear(setupState.yearRangeStart, minYear)));
         const customRangeEnd = Math.max(customRangeStart, Math.min(maxYear, clampYear(setupState.yearRangeEnd, maxYear)));
         const selectedSubjectSet = new Set(setupState.selectedSubjects);
+        const selectedSubtopicSet = new Set(setupState.selectedSubtopics || []);
         const selectedTypeSet = new Set(selectedSetupTypes);
 
         return generatedScorableQuestions.filter((question) => {
@@ -592,6 +597,14 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 return false;
             }
 
+            // Subtopic filter — only applies when specific subtopics are selected
+            if (selectedSubtopicSet.size > 0) {
+                const subtopicKey = getQuestionSubtopicKey(question);
+                if (!subtopicKey || !selectedSubtopicSet.has(subtopicKey)) {
+                    return false;
+                }
+            }
+
             return true;
         });
     }, [
@@ -602,6 +615,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         setupState.maxYear,
         setupState.minYear,
         setupState.selectedSubjects,
+        setupState.selectedSubtopics,
         setupState.yearFilterMode,
         setupState.yearRangeEnd,
         setupState.yearRangeStart,
@@ -660,7 +674,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     );
 
     const customCount = clampQuestionCount(setupState.customCount);
-    const customDurationMinutes = computeDurationForCustomCount(customCount);
+    // Clamp the actual exam count to the available filtered pool so duration is realistic
+    const effectiveCustomCount = Math.min(customCount, filteredPool.length || customCount);
+    const customDurationMinutes = computeDurationForCustomCount(effectiveCustomCount);
 
     const availability = useMemo(() => {
         if (!selectedKind) {
@@ -825,6 +841,27 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             next.customCount = clampQuestionCount(next.customCount);
             next.selectedTypes = normalizeSetupTypes(next.selectedTypes);
             next.includeSolvedQuestions = next.includeSolvedQuestions === true;
+
+            // When selectedSubjects changes, purge orphaned subtopics whose parent was deselected
+            if (Object.prototype.hasOwnProperty.call(patch, "selectedSubjects")) {
+                const activeSubjectSet = new Set(next.selectedSubjects);
+                const allSubtopicsBySubject = next._structuredSubtopics || {};
+                if (Array.isArray(next.selectedSubtopics) && next.selectedSubtopics.length > 0) {
+                    const validSubtopicSet = new Set();
+                    activeSubjectSet.forEach((subjectSlug) => {
+                        const subtopics = allSubtopicsBySubject[subjectSlug] || [];
+                        subtopics.forEach((st) => {
+                            if (st?.slug) validSubtopicSet.add(st.slug);
+                        });
+                    });
+                    next.selectedSubtopics = next.selectedSubtopics.filter((slug) => validSubtopicSet.has(slug));
+                }
+                // Collapse expanded subject if it was deselected
+                if (next.expandedSubjectSlug && !activeSubjectSet.has(next.expandedSubjectSlug)) {
+                    next.expandedSubjectSlug = next.selectedSubjects[0] || null;
+                }
+            }
+
             return next;
         });
     }, []);
@@ -847,6 +884,45 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             }
 
             return next;
+        });
+    }, []);
+
+    // Toggle a single subtopic; auto-adds parent subject if not already selected
+    const toggleSubtopic = useCallback((subtopicSlug, parentSubjectSlug) => {
+        setSetupState((prev) => {
+            const currentSubtopics = Array.isArray(prev.selectedSubtopics) ? prev.selectedSubtopics : [];
+            const exists = currentSubtopics.includes(subtopicSlug);
+            const nextSubtopics = exists
+                ? currentSubtopics.filter((s) => s !== subtopicSlug)
+                : [...currentSubtopics, subtopicSlug];
+
+            const currentSubjects = Array.isArray(prev.selectedSubjects) ? prev.selectedSubjects : [];
+            const nextSubjects = (!exists && parentSubjectSlug && !currentSubjects.includes(parentSubjectSlug))
+                ? [...currentSubjects, parentSubjectSlug]
+                : currentSubjects;
+
+            return { ...prev, selectedSubtopics: nextSubtopics, selectedSubjects: nextSubjects };
+        });
+    }, []);
+
+    // Set which subject's subtopic panel is expanded
+    const setExpandedSubjectSlug = useCallback((slug) => {
+        setSetupState((prev) => ({ ...prev, expandedSubjectSlug: slug }));
+    }, []);
+
+    // Select All / Clear All subtopics for a given subject
+    const bulkToggleSubtopics = useCallback((subjectSlug, subtopicSlugs) => {
+        setSetupState((prev) => {
+            const currentSubtopics = Array.isArray(prev.selectedSubtopics) ? prev.selectedSubtopics : [];
+            const currentSet = new Set(currentSubtopics);
+            const allSelected = subtopicSlugs.every((s) => currentSet.has(s));
+            if (allSelected) {
+                const removeSet = new Set(subtopicSlugs);
+                return { ...prev, selectedSubtopics: currentSubtopics.filter((s) => !removeSet.has(s)) };
+            }
+            const next = new Set(currentSubtopics);
+            subtopicSlugs.forEach((s) => next.add(s));
+            return { ...prev, selectedSubtopics: Array.from(next) };
         });
     }, []);
 
@@ -1146,6 +1222,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         kind={selectedKind}
                         setupState={setupState}
                         subjects={mockSubjects}
+                        structuredSubtopics={structuredTags.structuredSubtopics || {}}
                         availability={availability}
                         livePreview={livePreview}
                         paperOptions={paperCatalog}
@@ -1155,6 +1232,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         onSelectPaper={(yearSetKey) => patchSetupState({ selectedPaperYearSetKey: yearSetKey })}
                         onPatchState={patchSetupState}
                         onToggleSelection={toggleSelection}
+                        onToggleSubtopic={toggleSubtopic}
+                        onSetExpandedSubject={setExpandedSubjectSlug}
+                        onBulkToggleSubtopics={bulkToggleSubtopics}
                         onBack={() => setStep("portal")}
                         backLabel="Back to Modes"
                         onReset={() => resetSetupState(selectedKind.id)}

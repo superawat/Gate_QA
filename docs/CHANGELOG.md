@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-07-05
+
+### Added
+- **Granular Subtopic Selection in Custom Mock Test Builder**:
+  - Replaced the flat subject chip selection interface with an interactive **Subjects & Subtopics accordion** structure matching the `TopicFilter` sidebar grouping (Core GATE subjects, General Aptitude in a custom pink-themed card, and Optional legacy topics in an amber warning card).
+  - Implemented subtopic drill-down checkboxes with parent-subject checkbox bindings.
+  - Added parent-subject "Select All" / "Clear All" convenience shortcuts for active subtopics.
+  - Implemented dynamic subtopic query parameter routing support by adding `selectedSubtopics` and `expandedSubjectSlug` to the custom mock setup state.
+- **Adaptive Mock Test Duration & Clamping**:
+  - Implemented smart question count clamping in `MockTestShell` that dynamically restricts the requested question counts to the actual size of the subtopic-filtered pool.
+  - Integrated adaptive duration calculations that dynamically scale based on the available questions in the filtered pool to prevent pool starvation or empty mock test generation.
+
+### Changed
+- **State Management & State Synchronization**:
+  - Added an automatic subtopic purging mechanism that clears all subtopic selections when their parent subject is deselected.
+  - Registered helpers for managing subtopic accordion expands/collapses and batch selections.
+  - Updated the mock portal preview card and summary panel to reflect the selected subtopics and estimated sampling behavior dynamically.
+
+### Fixed
+- **Test Alignment**: Updated Vitest unit tests in `MockTestShell.test.jsx` to match the new hierarchical subtopic accordion titles and input checkbox fields.
+
 ## 2026-07-03
 
 ### Added

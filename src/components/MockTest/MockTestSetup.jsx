@@ -8,6 +8,8 @@ import {
 
 const TYPE_OPTIONS = ["MCQ", "MSQ", "NAT"];
 const COUNT_PRESETS = [15, 25, 65];
+const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning"]);
+const LEGACY_SUBJECT_SLUG = "legacy-other";
 
 const YEAR_SCOPE_OPTIONS = [
     { id: "all", label: "All years" },
@@ -147,6 +149,7 @@ const MockTestSetup = ({
     kind,
     setupState,
     subjects = [],
+    structuredSubtopics = {},
     availability,
     livePreview,
     paperOptions = [],
@@ -159,6 +162,9 @@ const MockTestSetup = ({
     onStart,
     onPatchState,
     onToggleSelection,
+    onToggleSubtopic,
+    onSetExpandedSubject,
+    onBulkToggleSubtopics,
     backLabel = "Back",
     showBackButton = true,
 }) => {
@@ -175,7 +181,9 @@ const MockTestSetup = ({
     const showSolvedQuestionToggle = !isPaperMode;
     const selectedPaper = paperOptions.find((paper) => paper.yearSetKey === selectedPaperYearSetKey) || null;
     const selectedSubjectSet = new Set(setupState.selectedSubjects || []);
+    const selectedSubtopicSet = new Set(setupState.selectedSubtopics || []);
     const selectedTypeSet = new Set(setupState.selectedTypes || []);
+    const expandedSubjectSlug = setupState.expandedSubjectSlug || null;
 
     const selectedPaperDuration = Number.parseInt(String(selectedPaper?.durationMinutes ?? ""), 10);
     const selectedPaperRequiredCount = Number.parseInt(String(selectedPaper?.requiredQuestionCount ?? ""), 10);
@@ -192,6 +200,7 @@ const MockTestSetup = ({
             ? `${Number.isFinite(selectedPaperRequiredCount) && selectedPaperRequiredCount > 0 ? selectedPaperRequiredCount : 65} Questions`
             : "65 Questions");
     const poolTotalLabel = livePreview?.total ? `${livePreview.total} Questions` : "0 Questions";
+    const selectedSubtopicCount = (setupState.selectedSubtopics || []).length;
     const summaryNote = isPaperMode
         ? (
             selectedPaper
@@ -203,7 +212,9 @@ const MockTestSetup = ({
                 : "Select a paper to continue."
         )
         : isCustom
-            ? `Will sample ${setupState.customCount} question${Number(setupState.customCount) === 1 ? "" : "s"} from the filtered pool when you start.`
+            ? (selectedSubtopicCount > 0
+                ? `Will sample from ${selectedSubtopicCount} subtopic${selectedSubtopicCount === 1 ? "" : "s"} in the filtered pool when you start.`
+                : `Will sample ${setupState.customCount} question${Number(setupState.customCount) === 1 ? "" : "s"} from the filtered pool when you start.`)
             : "";
     const yearScopeLabel = setupState.yearFilterMode === "recent"
         ? `Recent years (${recentYearRangeLabel || "last 10 years"})`
@@ -425,27 +436,193 @@ const MockTestSetup = ({
             </div>
 
             <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                <h4 className="text-base font-semibold text-slate-950">Subjects</h4>
-                <p className="mt-1 text-sm text-slate-600">Leave this open for a broad mix, or narrow the mock to specific areas.</p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <h4 className="text-base font-semibold text-slate-950">Subjects &amp; subtopics</h4>
+                <p className="mt-1 text-sm text-slate-600">Leave open for a broad mix, or narrow to specific subjects and subtopics.</p>
+
+                {/* All-subjects shortcut */}
+                <div className="mt-3 mb-3">
                     <FilterChip
                         active={selectedSubjectSet.size === 0}
                         tone="sky"
-                        onClick={() => onPatchState({ selectedSubjects: [] })}
+                        onClick={() => onPatchState({ selectedSubjects: [], selectedSubtopics: [], expandedSubjectSlug: null })}
                     >
                         All subjects
                     </FilterChip>
-                    {subjects.map((subject) => (
-                        <FilterChip
-                            key={subject.slug}
-                            active={selectedSubjectSet.has(subject.slug)}
-                            tone="emerald"
-                            onClick={() => onToggleSelection("selectedSubjects", subject.slug)}
-                        >
-                            {subject.label}
-                        </FilterChip>
-                    ))}
                 </div>
+
+                {/* Core GATE subjects */}
+                {subjects.filter((s) => s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug)).length > 0 && (
+                    <div className="space-y-1">
+                        {subjects
+                            .filter((s) => s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug))
+                            .map((subject) => {
+                                const subjectSlug = subject.slug;
+                                const isSelected = selectedSubjectSet.has(subjectSlug);
+                                const subtopics = (structuredSubtopics[subjectSlug] || [])
+                                    .slice()
+                                    .sort((a, b) => String(a?.label || a?.slug || "").localeCompare(String(b?.label || b?.slug || "")));
+                                const hasSubtopics = subtopics.length > 0;
+                                const isExpanded = expandedSubjectSlug === subjectSlug;
+                                const showSubtopics = isSelected && hasSubtopics && isExpanded;
+                                const subjectSubtopicSlugs = subtopics.map((st) => st?.slug).filter(Boolean);
+                                const allSubtopicsSelected = showSubtopics && subjectSubtopicSlugs.length > 0
+                                    && subjectSubtopicSlugs.every((s) => selectedSubtopicSet.has(s));
+
+                                return (
+                                    <div key={subjectSlug} className="flex min-w-0 flex-col">
+                                        <div className="flex items-center justify-between gap-2 py-1">
+                                            <label className="flex min-w-0 cursor-pointer items-center gap-2">
+                                                <input
+                                                    type="checkbox"
+                                                    className="h-4 w-4 rounded border-gray-300 text-amber-600 focus:ring-amber-500"
+                                                    checked={isSelected}
+                                                    onChange={() => onToggleSelection("selectedSubjects", subjectSlug)}
+                                                />
+                                                <span className={`truncate text-sm ${isSelected ? "font-medium text-slate-900" : "text-slate-500"}`}>
+                                                    {subject.label}
+                                                </span>
+                                            </label>
+                                            <div className="flex shrink-0 items-center gap-1.5">
+                                                {isSelected && hasSubtopics && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => onSetExpandedSubject(isExpanded ? null : subjectSlug)}
+                                                        className="rounded border border-slate-300 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600 hover:bg-slate-50"
+                                                    >
+                                                        {isExpanded ? "Hide" : "Show"}
+                                                    </button>
+                                                )}
+                                                {showSubtopics && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => onBulkToggleSubtopics(subjectSlug, subjectSubtopicSlugs)}
+                                                        className="rounded border border-amber-300 px-2 py-0.5 text-xs font-semibold text-amber-800 hover:bg-amber-50"
+                                                    >
+                                                        {allSubtopicsSelected ? "Clear All" : "Select All"}
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                        {showSubtopics && (
+                                            <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-slate-200 pl-2 pr-1">
+                                                {subtopics.map((subtopic) => (
+                                                    <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
+                                                        <input
+                                                            type="checkbox"
+                                                            className="h-3 w-3 rounded border-gray-300 text-amber-500 focus:ring-amber-400"
+                                                            checked={selectedSubtopicSet.has(subtopic.slug)}
+                                                            onChange={() => onToggleSubtopic(subtopic.slug, subjectSlug)}
+                                                        />
+                                                        <span className="ml-2 truncate text-xs text-slate-500 group-hover/sub:text-slate-800" title={subtopic.label}>
+                                                            {subtopic.label}
+                                                        </span>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                    </div>
+                )}
+
+                {/* Aptitude subjects */}
+                {subjects.filter((s) => APTITUDE_SUBJECT_SLUGS.has(s.slug)).length > 0 && (
+                    <div className="mt-3 rounded-xl border border-pink-200/60 bg-gradient-to-br from-pink-50/60 to-rose-50/40 p-3">
+                        <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-pink-600">General Aptitude</p>
+                        <div className="space-y-1">
+                            {subjects
+                                .filter((s) => APTITUDE_SUBJECT_SLUGS.has(s.slug))
+                                .map((subject) => {
+                                    const subjectSlug = subject.slug;
+                                    const isSelected = selectedSubjectSet.has(subjectSlug);
+                                    const subtopics = (structuredSubtopics[subjectSlug] || [])
+                                        .slice()
+                                        .sort((a, b) => String(a?.label || a?.slug || "").localeCompare(String(b?.label || b?.slug || "")));
+                                    const hasSubtopics = subtopics.length > 0;
+                                    const isExpanded = expandedSubjectSlug === subjectSlug;
+                                    const showSubtopics = isSelected && hasSubtopics && isExpanded;
+                                    const subjectSubtopicSlugs = subtopics.map((st) => st?.slug).filter(Boolean);
+                                    const allSubtopicsSelected = showSubtopics && subjectSubtopicSlugs.length > 0
+                                        && subjectSubtopicSlugs.every((s) => selectedSubtopicSet.has(s));
+
+                                    return (
+                                        <div key={subjectSlug} className="flex min-w-0 flex-col">
+                                            <div className="flex items-center justify-between gap-2 py-1">
+                                                <label className="flex min-w-0 cursor-pointer items-center gap-2">
+                                                    <input
+                                                        type="checkbox"
+                                                        className="h-4 w-4 rounded border-pink-300 text-pink-500 focus:ring-pink-400"
+                                                        checked={isSelected}
+                                                        onChange={() => onToggleSelection("selectedSubjects", subjectSlug)}
+                                                    />
+                                                    <span className={`truncate text-sm ${isSelected ? "font-medium text-slate-900" : "text-slate-500"}`}>
+                                                        {subject.label}
+                                                    </span>
+                                                </label>
+                                                <div className="flex shrink-0 items-center gap-1.5">
+                                                    {isSelected && hasSubtopics && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => onSetExpandedSubject(isExpanded ? null : subjectSlug)}
+                                                            className="rounded border border-pink-200 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-pink-600 hover:bg-pink-50"
+                                                        >
+                                                            {isExpanded ? "Hide" : "Show"}
+                                                        </button>
+                                                    )}
+                                                    {showSubtopics && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => onBulkToggleSubtopics(subjectSlug, subjectSubtopicSlugs)}
+                                                            className="rounded border border-pink-300 px-2 py-0.5 text-xs font-semibold text-pink-800 hover:bg-pink-50"
+                                                        >
+                                                            {allSubtopicsSelected ? "Clear All" : "Select All"}
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            {showSubtopics && (
+                                                <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-pink-200 pl-2 pr-1">
+                                                    {subtopics.map((subtopic) => (
+                                                        <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="h-3 w-3 rounded border-pink-200 text-pink-400 focus:ring-pink-300"
+                                                                checked={selectedSubtopicSet.has(subtopic.slug)}
+                                                                onChange={() => onToggleSubtopic(subtopic.slug, subjectSlug)}
+                                                            />
+                                                            <span className="ml-2 truncate text-xs text-slate-500 group-hover/sub:text-slate-800" title={subtopic.label}>
+                                                                {subtopic.label}
+                                                            </span>
+                                                        </label>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                        </div>
+                    </div>
+                )}
+
+                {/* Legacy-optional subjects */}
+                {subjects.filter((s) => s.slug === LEGACY_SUBJECT_SLUG).map((subject) => (
+                    <div key={subject.slug} className="mt-3 rounded-xl border border-amber-200 bg-amber-50/60 p-3">
+                        <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-amber-700">Optional legacy topics</p>
+                        <p className="mb-2 text-xs text-amber-700/80">Older or out-of-syllabus questions from past papers.</p>
+                        <label className="flex min-w-0 cursor-pointer items-center gap-2">
+                            <input
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-amber-300 text-amber-600 focus:ring-amber-400"
+                                checked={selectedSubjectSet.has(subject.slug)}
+                                onChange={() => onToggleSelection("selectedSubjects", subject.slug)}
+                            />
+                            <span className={`truncate text-sm ${selectedSubjectSet.has(subject.slug) ? "font-medium text-slate-900" : "text-slate-500"}`}>
+                                {subject.label}
+                            </span>
+                        </label>
+                    </div>
+                ))}
             </div>
 
             <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
@@ -477,11 +654,6 @@ const MockTestSetup = ({
                                 {kindMeta.title}
                             </span>
                             <h2 className="mt-3 text-3xl font-semibold text-slate-950">Mock Test Setup</h2>
-                            {kindMeta.description ? (
-                                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-                                    {kindMeta.description}
-                                </p>
-                            ) : null}
                         </div>
                     </div>
                 </div>

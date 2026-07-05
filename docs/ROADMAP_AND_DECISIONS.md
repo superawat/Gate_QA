@@ -64,6 +64,15 @@ This file is the working backlog for future product improvements and important d
 - Why:
   Host migration would not fix image debt, Lighthouse regressions, or release-discipline gaps by itself.
 
+### DEC-005: Subject/Subtopic Division in Custom Mock Test Builder
+
+- Status: Approved
+- Priority: P1
+- Decision:
+  The subject and subtopic selection interface in the Custom Mock Test Builder must exactly mirror the division and grouping used in the Practice filters sidebar.
+- Why:
+  Aligning the Custom Builder with `TopicFilter` and `AptitudeTopicFilter` ensures visual consistency across the platform. Reusing the existing `FilterContext` structured tags simplifies state management and leverages the existing `balancedSample` round-robin sampling logic without requiring separate taxonomy trees.
+
 ## Priority Themes
 
 | Priority | Theme | Why it matters | Suggested next step |
@@ -90,6 +99,7 @@ This file is the working backlog for future product improvements and important d
 | FEAT-028 | P2 | Done | Add weak-topic analytics | Home now shows a snapshot and `/insights` exposes full local-only subject/subtopic analytics |
 | FEAT-029 | P2 | Done | Add offline/PWA support | Shell-first service worker, manifest, and offline fallback are now shipped |
 | FEAT-030 | P1 | Done | Implement Practice Preference Toggles | Added shuffle and filter toggles to Explore page, syncing filters/pool and branching sessions |
+| FEAT-031 | P1 | Done | Custom Mock Test Builder advanced options | Shipped subtopic selection accordion, dynamic custom duration clamping, and live summary details |
 
 ## What We Can Improve Right Now
 

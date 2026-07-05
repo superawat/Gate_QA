@@ -209,7 +209,7 @@ describe("MockTestShell", () => {
     fireEvent.click(screen.getByTestId("mock-portal-continue"));
 
     expect(screen.getByText("Question count")).toBeTruthy();
-    expect(screen.getByText("Subjects")).toBeTruthy();
+    expect(screen.getByText("Subjects & subtopics")).toBeTruthy();
     expect(screen.getByText("Question types")).toBeTruthy();
     expect(screen.getByTestId("mock-setup-year-scope-all")).toBeTruthy();
     expect(screen.queryByText("Year Sets (optional)")).toBeNull();
@@ -256,7 +256,7 @@ describe("MockTestShell", () => {
     fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
     fireEvent.click(screen.getByTestId("mock-portal-continue"));
 
-    expect(screen.getByRole("button", { name: "English" })).toBeTruthy();
+    expect(screen.getByRole("checkbox", { name: "English" })).toBeTruthy();
   });
 
   test("lets setup sub-pages return to the mock mode selection", () => {
