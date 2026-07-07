@@ -113,6 +113,7 @@ export default defineConfig(async ({ mode }) => {
         'dist/**',
         '.git/**',
         '.codeboarding/**',
+        '.kilo/**',
       ],
       coverage: {
         provider: 'v8',

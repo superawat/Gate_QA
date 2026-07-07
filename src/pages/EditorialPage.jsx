@@ -12,7 +12,14 @@ import {
   FaExclamationTriangle,
   FaList,
   FaTimes,
+  FaCalendarAlt,
+  FaEdit,
+  FaTicketAlt,
+  FaClock,
+  FaBullseye,
+  FaTrophy,
 } from "react-icons/fa";
+
 
 import PageShell from "../components/Layout/PageShell";
 import SEOHead, { buildBreadcrumbSchema, buildWebPageSchema } from "../components/SEO/SEOHead";
@@ -165,11 +172,25 @@ const accentMap = {
   slate:  { border: "border-slate-400/30",   bg: "bg-slate-400/8",   text: "text-slate-400",   iconBg: "bg-slate-400/15" },
 };
 
+const iconMap = {
+  calendar: <FaCalendarAlt size={14} />,
+  edit: <FaEdit size={14} />,
+  ticket: <FaTicketAlt size={14} />,
+  clock: <FaClock size={14} />,
+  book: <FaBookOpen size={14} />,
+  lightbulb: <FaLightbulb size={14} />,
+  check: <FaCheck size={14} />,
+  warning: <FaExclamationTriangle size={14} />,
+  trophy: <FaTrophy size={14} />,
+  bullseye: <FaBullseye size={14} />,
+};
+
 const InfoCard = ({ icon, title, subtitle, accent }) => {
   const a = accentMap[accent] || accentMap.blue;
+  const resolvedIcon = typeof icon === "string" && iconMap[icon] ? iconMap[icon] : icon;
   return (
     <div className={`ep-infocard ${a.border} ${a.bg}`}>
-      <span className={`ep-infocard__icon ${a.iconBg} ${a.text}`}>{icon}</span>
+      <span className={`ep-infocard__icon ${a.iconBg} ${a.text}`}>{resolvedIcon}</span>
       <div className="ep-infocard__body">
         <p className={`ep-infocard__title ${a.text}`}>{title}</p>
         <p className="ep-infocard__subtitle">{subtitle}</p>
@@ -177,6 +198,7 @@ const InfoCard = ({ icon, title, subtitle, accent }) => {
     </div>
   );
 };
+
 
 /* ─── Timeline ──────────────────────────────────────────────────────────────── */
 const TimelineItem = ({ label, date, isLast }) => (
@@ -232,11 +254,11 @@ const RelatedArticles = ({ articles }) => (
   </div>
 );
 
-/* ─── Callout ────────────────────────────────────────────────────────────────── */
 const calloutVariants = {
   info:    { icon: <FaLightbulb />,          bg: "bg-sky-500/10",     border: "border-sky-500/40",     text: "text-sky-500",     label: "Note" },
   warning: { icon: <FaExclamationTriangle />, bg: "bg-amber-500/10",   border: "border-amber-500/40",   text: "text-amber-500",   label: "Strategy" },
   tip:     { icon: <FaCheck />,              bg: "bg-emerald-500/10", border: "border-emerald-500/40", text: "text-emerald-500", label: "Tip" },
+  "quick-answer": { icon: <FaCheck />, bg: "bg-emerald-500/10", border: "border-emerald-500/40", text: "text-emerald-500", label: "Quick Answer" },
 };
 
 const Callout = ({ variant, text }) => {
@@ -454,6 +476,32 @@ export default function EditorialPage({ data }) {
   const canonicalUrl = `${SITE_URL}${data.path}`;
   const breadcrumbsSchema = buildBreadcrumbSchema(data.breadcrumbs);
   const webPageSchema = buildWebPageSchema({ name: data.h1, description: data.description, url: canonicalUrl });
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: data.h1,
+    description: data.description,
+    url: canonicalUrl,
+    datePublished: data.datePublished || "2026-07-07",
+    dateModified: data.dateModified || "2026-07-07",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "GateQA",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://gateqa.in/logo.png",
+      },
+    },
+    author: {
+      "@type": "Organization",
+      name: "GateQA Editorial Team",
+    },
+  };
+
   const faqSchema = data.faqs?.length
     ? {
         "@context": "https://schema.org",
@@ -466,7 +514,8 @@ export default function EditorialPage({ data }) {
       }
     : null;
 
-  const schemas = [breadcrumbsSchema, webPageSchema, faqSchema].filter(Boolean);
+  const schemas = [breadcrumbsSchema, webPageSchema, articleSchema, faqSchema].filter(Boolean);
+
 
   return (
     <>
@@ -538,29 +587,35 @@ export default function EditorialPage({ data }) {
               {/* Why GateQA */}
               <div className="ep-why-card">
                 <div className="ep-why-card__header">
-                  <span className="ep-why-card__icon">🎯</span>
-                  <h3 className="ep-why-card__title">Why Practice on GateQA?</h3>
+                  <span className="ep-why-card__icon"><FaBullseye /></span>
+                  <h3 className="ep-why-card__title">
+                    {data.ctaTitle || "Why Practice on GateQA?"}
+                  </h3>
                 </div>
                 <ul className="ep-why-card__features">
-                  {[
+                  {(data.ctaFeatures || [
                     ["3,500+ Official GATE CS PYQs", "1987–2026 — fully organized"],
                     ["100% Free", "No registration required"],
                     ["Virtual Calculator", "For numerical problems"],
                     ["Offline-First", "Progress stored locally"],
-                  ].map(([feat, sub]) => (
-                    <li key={feat} className="ep-why-card__feature">
-                      <span className="ep-why-card__check"><FaCheck size={10} /></span>
-                      <span>
-                        <strong className="ep-why-card__feat-title">{feat}</strong>
-                        <span className="ep-why-card__feat-sub"> — {sub}</span>
-                      </span>
-                    </li>
-                  ))}
+                  ]).map((item) => {
+                    const [feat, sub] = Array.isArray(item) ? item : [item, ""];
+                    return (
+                      <li key={feat} className="ep-why-card__feature">
+                        <span className="ep-why-card__check"><FaCheck size={10} /></span>
+                        <span>
+                          <strong className="ep-why-card__feat-title">{feat}</strong>
+                          {sub ? <span className="ep-why-card__feat-sub"> — {sub}</span> : null}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <Link to={data.ctaHref} className="ep-why-card__cta">
                   {data.ctaLabel} <FaArrowRight size={12} />
                 </Link>
               </div>
+
 
               {/* FAQs */}
               {data.faqs?.length > 0 && (
@@ -581,6 +636,17 @@ export default function EditorialPage({ data }) {
                   </div>
                 </section>
               )}
+
+              {/* Author Info */}
+              <div className="ep-author-card">
+                <div className="ep-author-card__avatar">G</div>
+                <div className="ep-author-card__content">
+                  <h4 className="ep-author-card__name">Written by GateQA Team</h4>
+                  <p className="ep-author-card__bio">
+                    The GateQA editorial team creates evidence-based resources for GATE aspirants using official notifications, historical exam data, and previous-year papers.
+                  </p>
+                </div>
+              </div>
             </motion.main>
 
             {/* Right Sidebar */}
@@ -588,7 +654,7 @@ export default function EditorialPage({ data }) {
               <div className="ep-sidebar__sticky">
                 {/* CTA Card */}
                 <div className="ep-sidebar__cta-card">
-                  <div className="ep-sidebar__cta-icon">📚</div>
+                  <div className="ep-sidebar__cta-icon"><FaBookOpen /></div>
                   <h3 className="ep-sidebar__cta-title">Boost Your Score</h3>
                   <p className="ep-sidebar__cta-desc">
                     Solve actual previous exam papers in a timed environment and track your progress.

@@ -18,11 +18,12 @@ export const EDITORIAL_PAGES = [
       { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
       { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
       { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+      { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
       "For engineering students and professionals planning to secure roles in Public Sector Undertakings (PSUs) or a master's degree at premier Indian institutes, the release of the GATE notification marks the beginning of the application cycle. The organizing bodies follow a strict and predictable schedule for the Graduate Aptitude Test in Engineering (GATE) 2027.",
       { type: "h2", text: "Organizing Institute for GATE 2027" },
-      "GATE is managed by the National Coordination Board (NCB) and rotates among IISc Bangalore and seven top IITs in an 8-year cycle. Following IIT Roorkee in 2025 and IIT Guwahati in 2026, IIT Madras is highly anticipated to be the organizing institute for GATE 2027.",
+      "GATE is managed by the National Coordination Board (NCB) and rotates among IISc Bangalore and seven top IITs. Following IIT Roorkee in 2025 and IIT Guwahati in 2026, IIT Madras is highly anticipated to be the organizing institute for GATE 2027. For a detailed analysis of previous patterns, visit our guide on <a href='/who-will-conduct-gate-2027'>Who will conduct GATE 2027?</a>",
       "Historically, papers set by IIT Madras are deeply conceptual rather than calculation-heavy. Expect a paper structure featuring tricky Multiple Select Questions (MSQs) requiring absolute clarity on core principles. Surface-level preparation is heavily penalized.",
       { type: "h2", text: "Expected Notification & Application Timeline" },
       "The official information brochure and GOAPS (GATE Online Application Processing System) portal follow a predictable annual schedule. Key milestones for the 2027 cycle:",
@@ -64,7 +65,8 @@ export const EDITORIAL_PAGES = [
           { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint — Section-by-Section Guide" },
           { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
           { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
-          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks, 3 Hours" }
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks, 3 Hours" },
+          { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" }
         ]
       }
     ],
@@ -110,6 +112,7 @@ export const EDITORIAL_PAGES = [
       { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
       { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
       { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+      { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
       "To help plan a structured study schedule, the official GATE Computer Science syllabus has been organized into a scannable, subject-wise roadmap below.",
@@ -251,7 +254,8 @@ export const EDITORIAL_PAGES = [
           { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
           { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
           { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
-          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" },
+          { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" }
         ]
       }
     ],
@@ -289,6 +293,7 @@ export const EDITORIAL_PAGES = [
       { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
       { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
       { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+      { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
       "The GATE 2027 Computer Science eligibility criteria are determined by the organizing institute (expected to be IIT Madras). The exam is accessible to a broad base of candidates across engineering and science disciplines.",
@@ -320,7 +325,8 @@ export const EDITORIAL_PAGES = [
           { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
           { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
           { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
-          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" },
+          { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" }
         ]
       }
     ],
@@ -358,6 +364,7 @@ export const EDITORIAL_PAGES = [
       { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
       { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
       { path: "/gate-exam-pattern", label: "Exam Pattern — 65Q, 100 Marks" },
+      { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
       "If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. Understanding the admission cutoff metrics is equally vital.",
@@ -406,7 +413,8 @@ export const EDITORIAL_PAGES = [
           { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
           { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
           { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
-          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" }
+          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65 Questions, 100 Marks" },
+          { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" }
         ]
       }
     ],
@@ -444,6 +452,7 @@ export const EDITORIAL_PAGES = [
       { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
       { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Admission Targets" },
       { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
+      { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
       "The GATE CS exam is a 3-hour Computer Based Test (CBT) consisting of 65 questions worth 100 marks. The paper is structured into three distinct sections, each targeting specific competency areas.",
@@ -473,7 +482,8 @@ export const EDITORIAL_PAGES = [
           { path: "/gate-2027", label: "GATE 2027 Notification — Dates & Organizing Institute" },
           { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
           { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
-          { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" }
+          { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria 2027" },
+          { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" }
         ]
       }
     ],
@@ -651,90 +661,204 @@ export const EDITORIAL_PAGES = [
   },
   {
     path: "/who-will-conduct-gate-2027",
-    keyword: "Who will conduct GATE 2027",
+    keyword: "Who Will Conduct GATE 2027? IIT Madras Expected",
     showInBlog: true,
     h1: "Who Will Conduct GATE 2027? Expected Organizing Institute & Dates",
     description:
-      "Find out which IIT will conduct the GATE 2027 exam. Get details on expected exam dates, application timelines, syllabus changes, and the organizing institute rotation cycle.",
+      "Wondering who will conduct GATE 2027? Learn the expected organizing institute, historical rotation, important dates, FAQs, and prepare with free GATE CSE PYQs.",
     eyebrow: "GATE 2027 Organizer",
-    ctaLabel: "Start GATE 2027 Preparation",
+    ctaLabel: "Start GATE 2027 Practice",
     ctaHref: "/practice",
+    datePublished: "2026-07-07",
+    dateModified: "2026-07-07",
+    ctaTitle: "Preparing for GATE 2027? Practice Previous Year Questions for Free",
+    ctaFeatures: [
+      "3,500+ Official GATE CSE PYQs (1987–2026)",
+      "Topic-wise & Subject-wise Practice",
+      "Mock Tests & Performance Analytics",
+      "Virtual GATE Calculator",
+      "No Login Required"
+    ],
     breadcrumbs: [
       { name: "Home", url: "https://gateqa.in/" },
-      { name: "Who will conduct GATE 2027", url: "https://gateqa.in/who-will-conduct-gate-2027" },
+      { name: "Articles", url: "https://gateqa.in/blog" },
+      { name: "GATE 2027", url: "https://gateqa.in/gate-2027" },
+      { name: "Who Will Conduct GATE 2027?", url: "https://gateqa.in/who-will-conduct-gate-2027" },
     ],
     relatedArticles: [
-      { path: "/gate-2027", label: "GATE 2027 Complete Guide" },
-      { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint" },
-      { path: "/gate-cs-eligibility", label: "GATE CS Eligibility Criteria" },
-      { path: "/gate-cutoff", label: "GATE CS Cutoff & Targets" },
+      { path: "/gate-2027-syllabus", label: "GATE 2027 Syllabus for CSE" },
+      { path: "/gate-cs-eligibility", label: "GATE 2027 Eligibility Criteria" },
+      { path: "/gate-exam-pattern", label: "GATE 2027 Exam Pattern" },
+      { path: "/gate-cutoff", label: "GATE 2027 Cutoff (Expected)" },
+      { path: "/gate-cs-pyq", label: "GATE CSE Previous Year Questions" },
     ],
     richCopy: [
-      "A common question among engineering students planning their higher education and PSU goals is: <strong>'Who will conduct GATE 2027?'</strong> Because the exam is organized by a different institute each year, the question paper style, difficulty, and focus areas can sometimes shift subtly depending on the conducting body.",
+      {
+        type: "callout",
+        variant: "info",
+        text: "<strong>Last Updated:</strong> July 7, 2026<br/><br/><strong>Official Status:</strong> The organizing institute for GATE 2027 has <strong>not yet been officially announced</strong>. Based on the historical rotation followed by the GATE committee, <strong>IIT Madras is the expected organizing institute</strong>. This page will be updated immediately after the official announcement."
+      },
+      {
+        type: "callout",
+        variant: "quick-answer",
+        text: "<ul style='margin-left: 1rem; list-style-type: disc;'><li><strong>Expected Organizing Institute:</strong> IIT Madras</li><li><strong>Official Status:</strong> Not yet announced</li><li><strong>Expected Notification:</strong> July–August 2026</li><li><strong>Expected Exam:</strong> February 2027</li></ul>"
+      },
+
+      "Every year, thousands of GATE aspirants search for the organizing institute because they believe it may slightly influence the style of questions. Although the syllabus, exam pattern, and evaluation remain standardized across all years, many candidates observe subtle differences in question style between organizing institutes.",
+
+      { type: "h2", text: "Why Do Students Search for the Conducting Institute?" },
+      "Although the GATE syllabus and marking scheme remain the same every year, candidates often look up the organizing institute because each IIT may bring a slightly different approach to question framing. This is why the expected conducting institute becomes a popular search even before the official notification is released.",
+
       { type: "h2", text: "The Expected Organizing Institute for GATE 2027" },
       "GATE is jointly administered by the National Coordination Board (NCB) - GATE, Department of Higher Education, Ministry of Education, Government of India. The operations are rotated among the Indian Institute of Science (IISc) Bangalore and seven Indian Institutes of Technology (IITs).",
-      "Based on the established historical rotation cycle (which typically repeats every 8 years), <strong>IIT Madras is highly expected to be the organizing institute for GATE 2027.</strong>",
+      "Based on the historical rotation followed over previous cycles, <strong>IIT Madras is highly expected to be the organizing institute for GATE 2027.</strong>",
       "Let's look at the recent conducting institutes to understand the pattern:",
       {
         type: "table",
-        headers: ["Year", "Organizing Institute"],
+        headers: ["Year", "Organizing Institute", "Status"],
         rows: [
-          ["GATE 2024", "IISc Bangalore"],
-          ["GATE 2025", "IIT Roorkee"],
-          ["GATE 2026", "IIT Guwahati"],
-          ["GATE 2027", "IIT Madras (Expected)"],
-          ["GATE 2028", "IIT Delhi (Expected)"],
-          ["GATE 2029", "IIT Bombay (Expected)"]
+          ["GATE 2019", "IIT Madras", "Confirmed (Completed)"],
+          ["GATE 2020", "IIT Delhi", "Confirmed (Completed)"],
+          ["GATE 2021", "IIT Bombay", "Confirmed (Completed)"],
+          ["GATE 2022", "IIT Kharagpur", "Confirmed (Completed)"],
+          ["GATE 2023", "IIT Kanpur", "Confirmed (Completed)"],
+          ["GATE 2024", "IISc Bangalore", "Confirmed (Completed)"],
+          ["GATE 2025", "IIT Roorkee", "Confirmed (Completed)"],
+          ["GATE 2026", "IIT Guwahati", "Confirmed (Completed)"],
+          ["GATE 2027", "IIT Madras (Expected)", "Awaiting Official Announcement"]
         ]
       },
+
+      "<div class='ep-image-wrap'><img src='/gate-rotation-timeline.png' alt='Historical rotation of GATE organizing institutes from 2019 to the expected IIT Madras in 2027.' class='ep-image' style='display:block; max-width:100%; height:auto; margin:1.5rem auto 0.5rem auto; border-radius:8px; border:1px solid var(--color-border);' /><p class='ep-image-caption' style='text-align:center; font-size:0.875rem; color:var(--color-secondary-text); margin-bottom:1.5rem;'><strong>Figure 1:</strong> Historical rotation of GATE organizing institutes from 2019 to the expected GATE 2027 organizing institute based on previous cycles.</p></div>",
+
       { type: "h2", text: "What Does an IIT Madras Paper Look Like?" },
-      "While the syllabus is rigidly standardized by the GATE committee regardless of the organizing institute, the flavor of the questions often reflects the academic strengths of the host.",
-      "If IIT Madras organizes GATE 2027, candidates can expect:",
+      "While the syllabus is rigidly standardized by the GATE committee regardless of the organizing institute, the flavor of the questions often reflects the academic strengths of the host. Based on feedback from GATE aspirants and discussions among aspirants on GateOverflow and coaching communities, IIT Madras papers are often perceived as having a distinct approach. If IIT Madras organizes GATE 2027, many aspirants describe expected characteristics as:",
       {
         type: "ul",
         items: [
-          "<strong>Highly Conceptual Questions:</strong> IIT Madras is known for papers that test deep fundamental clarity rather than just formula application.",
-          "<strong>Tricky MSQs:</strong> Multiple Select Questions (MSQs) might be challenging, requiring absolute certainty on all options to avoid losing marks (as there is no partial credit).",
-          "<strong>Balanced Coverage:</strong> Expect a very balanced distribution of marks across all subjects without an extreme skew toward just one or two topics."
+          "<strong>Highly Conceptual Questions:</strong> Many aspirants perceive papers organized by IIT Madras as testing deep fundamental clarity rather than just formula application.",
+          "<strong>Challenging MSQs:</strong> Multiple Select Questions (MSQs) may be conceptually demanding. While there is <strong>no negative marking</strong> for MSQs, you receive marks only if all correct options—and no incorrect options—are selected.",
+          "<strong>Balanced Coverage:</strong> Expect a very balanced distribution of marks across all subjects without an extreme skew toward just one or two topics.",
+          "<strong>Theory-Heavy Numericals:</strong> Even numerical problems (NATs) are likely to require first-principles thinking rather than plugging into formulas."
         ]
       },
+      { type: "h2", text: "Community Observations on Previous GATE Papers" },
+      "Candidates often discuss whether the organizing institute influences question style. While there is no official evidence that one IIT consistently produces harder papers than another, recurring themes appear in post-exam discussions among aspirants and educators. The observations below summarize those discussions and should be interpreted as opinions rather than established facts.",
+      {
+        type: "table",
+        headers: ["Organizing Institute", "Common Community Perception*"],
+        rows: [
+          ["IIT Madras", "Often described as concept-oriented and requiring strong fundamentals"],
+          ["IISc Bangalore", "Frequently perceived as theoretically rigorous"],
+          ["IIT Roorkee", "Generally viewed as balanced across topics"],
+          ["IIT Guwahati", "Often described as balanced with a mix of conceptual and application-based questions"],
+          ["IIT Kanpur", "Some aspirants report unconventional wording in certain questions"],
+          ["IIT Bombay", "Generally viewed as balanced across MCQs, MSQs and NATs"],
+          ["IIT Delhi", "Perceived by some candidates as time-consuming in certain years"]
+        ]
+      },
+      "<p style='font-size:0.875rem; color:var(--color-secondary-text); margin-top:-0.5rem; margin-bottom:1.5rem;'><em>*These are community observations collected from post-exam discussions and should not be interpreted as official characteristics.</em></p>",
+      { type: "callout", variant: "warning", text: "<strong>Preparation Strategy:</strong> If IIT Madras is confirmed as the organizing institute, prioritize conceptual understanding over memorization. Regardless of the organizing institute, candidates should prepare comprehensively for the entire GATE syllabus using previous-year papers and mock tests." },
       { type: "h2", text: "GATE 2027 Expected Timeline" },
       "The examination schedule rarely changes year-to-year. If you are targeting GATE 2027, here are the dates you should mark on your calendar:",
       {
         type: "cards",
         items: [
-          { icon: "📅", accent: "blue",   title: "Official Notification", subtitle: "August 2026. The official brochure and GOAPS website will launch." },
-          { icon: "📝", accent: "green",  title: "Registration Opens",    subtitle: "Late August to early October 2026. Fill out the application form." },
-          { icon: "🎫", accent: "amber",  title: "Admit Card Release",    subtitle: "First week of January 2027." },
-          { icon: "⏱️", accent: "purple", title: "GATE 2027 Exam Dates",   subtitle: "First two weekends (Saturday & Sunday) of February 2027." }
+          { icon: "calendar", accent: "blue",   title: "Official Notification", subtitle: "Late July – August 2026. The official brochure and GOAPS website will launch. Registration opens immediately after." },
+          { icon: "edit", accent: "green",  title: "Registration Opens",    subtitle: "Late August to late September 2026 (Regular). October 2026 (Extended with late fee)." },
+          { icon: "ticket", accent: "amber",  title: "Admit Card Release",    subtitle: "First week of January 2027. Download from GOAPS portal using your enrollment ID." },
+          { icon: "clock", accent: "purple", title: "GATE 2027 Exam Dates",   subtitle: "Expected to be held during the first two weekends of February 2027. The exact dates will be announced in the official notification." }
         ]
       },
-      { type: "callout", variant: "info", text: "You can apply for GATE 2027 if you are in the <strong>3rd year</strong> or higher of an undergraduate degree program. There is no age limit." },
+      { type: "h2", text: "How to Prepare if IIT Madras is the Conducting IIT" },
+      "Based on historical discussions among educators and top rankers, a few targeted adjustments to your preparation strategy can be helpful if IIT Madras is confirmed as the GATE 2027 conducting IIT:",
+      {
+        type: "ul",
+        items: [
+          "<strong>Prioritize understanding over memorization:</strong> For every formula you learn, understand its derivation. IIT Madras questions often test edge cases where the formula alone isn't sufficient.",
+          "<strong>Practice MSQ-style questions aggressively:</strong> MSQs have no negative marking but zero partial credit. Practice identifying all correct options confidently.",
+          "<strong>Solve GATE 2019 paper in detail:</strong> If IIT Madras is confirmed as the organizing institute, solving the GATE 2019 paper may provide useful insight into the question style many aspirants associate with IIT Madras. However, candidates should prepare comprehensively for the full syllabus regardless of the organizing institute.",
+          "<strong>Master proof-by-contradiction and logical elimination:</strong> IIT Madras questions often have very close options. Elimination skills matter more than recall.",
+          "<strong>Practice 3,500+ GATE CS PYQs on GateQA:</strong> Subject-wise filters let you isolate and drill specific topic areas for targeted revision."
+        ]
+      },
+      { type: "callout", variant: "info", text: "You can apply for GATE 2027 if you are in the <strong>3rd year</strong> or higher of an undergraduate degree program. There is no age limit and no limit on the number of attempts." },
+      "For the official notification, application dates, and announcements, candidates should refer to the official GATE website once the Information Brochure is released.",
+
+      { type: "h2", text: "Official Sources for GATE 2027" },
+      "To ensure you receive the most accurate and up-to-date information, always refer to official portals rather than unofficial rumors. The following are the official resources to monitor:",
+      {
+        type: "ul",
+        items: [
+          "<strong>GATE 2027 Organizing Institute Portal:</strong> The official website setup by the <strong>GATE 2027 conducting IIT</strong> once announced (historically launched around July/August).",
+          "<strong>GATE 2027 Information Brochure:</strong> The complete brochure detailing official syllabi, two-paper options, and candidate eligibility, published by the <strong>GATE 2027 organizing institute</strong>.",
+          "<strong>GATE 2027 GOAPS Portal:</strong> The official processing system where the <strong>GATE 2027 application form</strong> is submitted and where candidates can download the <strong>GATE 2027 admit card</strong> once the <strong>GATE 2027 official notification</strong> is live."
+        ]
+      },
+
       {
         type: "related-articles",
         articles: [
-          { path: "/gate-2027-syllabus", label: "GATE CS Syllabus Blueprint — What to Study" },
-          { path: "/gate-cutoff", label: "GATE CS Cutoff Marks — IIT Admission Targets" },
-          { path: "/gate-exam-pattern", label: "GATE Exam Pattern — Structure & Marks" }
+          { path: "/gate-2027-syllabus", label: "GATE 2027 Syllabus for CSE" },
+          { path: "/gate-cs-eligibility", label: "GATE 2027 Eligibility Criteria" },
+          { path: "/gate-exam-pattern", label: "GATE 2027 Exam Pattern" },
+          { path: "/gate-cutoff", label: "GATE 2027 Cutoff (Expected)" },
+          { path: "/gate-cs-pyq", label: "GATE CSE Previous Year Questions" }
         ]
       }
     ],
     faqs: [
       {
         question: "Which IIT will conduct GATE 2027?",
-        answer: "Based on the 8-year rotation cycle of the GATE organizing institutes, IIT Madras is highly expected to be the conducting body for the GATE 2027 exam."
+        answer: "Based on the historical rotation followed by the GATE committee over previous cycles, IIT Madras is highly expected to be the organizing institute for the GATE 2027 exam. The official confirmation will be released in late July or August 2026."
       },
       {
-        question: "Who is conducting GATE 2026 and 2025?",
-        answer: "IIT Roorkee is the organizing institute for GATE 2025, and IIT Guwahati is expected to organize GATE 2026."
+        question: "Will GATE 2027 be conducted by IIT Madras?",
+        answer: "While not yet officially announced, IIT Madras is highly expected to be the organizing institute for GATE 2027 based on the historical rotation followed by the GATE committee over previous cycles. The official notification confirming the organizing institute will be released around July or August 2026."
+      },
+      {
+        question: "When will the GATE 2027 official notification be released?",
+        answer: "The GATE 2027 official notification and information brochure are expected to be released in late July or early August 2026. The registration process typically opens immediately after on the GOAPS (GATE Online Application Processing System) portal."
+      },
+      {
+        question: "What is the expected GATE 2027 exam date?",
+        answer: "Based on historical patterns, GATE 2027 is expected to be conducted on the first two weekends of February 2027. The official exam schedule will be published in the GATE 2027 information brochure."
+      },
+      {
+        question: "Who conducted GATE 2026?",
+        answer: "IIT Guwahati was the organizing institute for GATE 2026. The exam was conducted in February 2026 across multiple sessions."
+      },
+      {
+        question: "Who conducted GATE 2025?",
+        answer: "IIT Roorkee was the organizing institute for GATE 2025. The exam was conducted in February 2025 across multiple sessions."
       },
       {
         question: "Does the organizing IIT change the GATE syllabus?",
-        answer: "No, the organizing institute does not change the core GATE syllabus. The syllabus is standardized across all years. Any minor additions or deletions are decided by the joint GATE committee, not just the organizing IIT."
+        answer: "No, the organizing institute does not change the core GATE syllabus. The syllabus is standardized across all years. Any minor additions or deletions are decided by the joint GATE committee, not just the organizing institute."
       },
       {
         question: "Are papers set by IIT Madras harder?",
-        answer: "Papers are set by a committee of professors from all IITs and IISc, not just the organizing institute. However, the organizing institute has the final say in paper assembly, often resulting in conceptually dense questions that avoid rote calculation."
+        answer: "Papers are compiled by a joint committee of professors from various IITs and IISc, not just the organizing institute alone. There is no official ranking of paper difficulty, and perceived toughness varies between years and candidates. However, in community discussions, previous papers from 2011 and 2019 are frequently described as conceptually dense."
+      },
+      {
+        question: "How should I prepare differently for an IIT Madras GATE paper?",
+        answer: "Regardless of the organizing institute, your preparation strategy should focus on deep conceptual clarity rather than rote formula memorization. If IIT Madras is confirmed as the host, candidates often suggest practicing first-principles problems and conceptual MSQs as a helpful focus, but a comprehensive study of the complete syllabus is essential."
+      },
+      {
+        question: "What is the GATE 2027 registration fee?",
+        answer: "The registration fee for GATE 2027 has not yet been announced. Based on previous years, the application fee is expected to be approximately ₹900–₹1,000 for Female/SC/ST/PwD candidates and ₹1,800–₹2,000 for General, OBC-NCL, and EWS candidates. The exact fee will be confirmed in the official notification. Candidates applying for two papers must pay the fee twice."
+      },
+      {
+        question: "Can the organizing institute change after being announced?",
+        answer: "No. Once the Ministry of Education and the GATE committee announce the organizing IIT for a specific year, it remains the organizing institute for the entire duration of that exam cycle, including registration, paper setting, exam delivery, and result declaration."
+      },
+      {
+        question: "Does every IIT conduct GATE?",
+        answer: "No, only IISc Bangalore and seven select older IITs (IIT Bombay, IIT Delhi, IIT Guwahati, IIT Kanpur, IIT Kharagpur, IIT Madras, and IIT Roorkee) serve as the organizing institutes for the GATE exam on a rotational basis. Newer IITs do not host or organize the national-level exam."
+      },
+      {
+        question: "Does the organizing institute affect cutoff marks?",
+        answer: "The qualifying cutoff marks are determined dynamically based on the performance of candidates and the difficulty of the paper set for that specific year, not directly by the organizing institute itself. However, if the organizing institute compiles a conceptually difficult paper, raw qualifying cutoffs may drop accordingly."
       }
     ]
   }
