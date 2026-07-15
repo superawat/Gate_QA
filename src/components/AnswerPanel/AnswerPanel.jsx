@@ -201,19 +201,15 @@ export default function AnswerPanel({
     const subjectLabel = String(question.subjectLabel || question.subject || "Unknown").trim();
     const pageUrl = typeof window !== "undefined" ? window.location.href : "";
     const issueBody = [
-      "Describe the problem:",
-      "",
-      "Question metadata",
-      `- question_uid: ${questionUid}`,
-      `- year/set: ${yearLabel}`,
-      `- subject: ${subjectLabel}`,
-      `- page: ${pageUrl}`,
+      `Question UID: ${questionUid}`,
+      `Year/Set: ${yearLabel}`,
+      `Subject: ${subjectLabel}`,
+      `Page: ${pageUrl}`,
     ].join("\n");
     const params = new URLSearchParams({
-      title: `[Question report] ${questionUid}`,
-      body: issueBody,
+      "entry.176806537": issueBody,
     });
-    return `https://github.com/superawat/Gate_QA/issues/new?${params.toString()}`;
+    return `https://docs.google.com/forms/d/e/1FAIpQLSdSuxChEW-ndNaochXNbSj6FZ02xcxTkjTAECc-Ggeqn6ddkg/viewform?usp=pp_url&${params.toString()}`;
   }, [question, storageKey]);
 
   const handleShare = useCallback(() => {
@@ -627,7 +623,7 @@ export default function AnswerPanel({
         target="_blank"
         rel="noopener noreferrer"
         title="Report a bad question"
-        aria-label="Report a bad question on GitHub"
+        aria-label="Report a bad question via Google Form"
         className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-rose-200 bg-rose-50 text-rose-400 hover:border-rose-300 hover:text-rose-600"
       >
         <FaFlag className="text-[18px]" />
