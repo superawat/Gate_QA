@@ -347,11 +347,11 @@ export const EDITORIAL_PAGES = [
   },
   {
     path: "/gate-cutoff",
-    keyword: "GATE CS Cutoff IITs",
+    keyword: "GATE CS Cutoff",
     showInBlog: true,
     h1: "GATE CS Cutoff Marks, Category-Wise Qualifying Scores, IIT Admission Targets",
     description:
-      "GATE CS cutoff marks for IITs, NITs, IISc, and PSUs. Category-wise qualifying scores for General, OBC-NCL/EWS, SC/ST/PwD candidates from 2020–2025 trends.",
+      "GATE CS cutoff marks for IITs, NITs, IISc, and PSUs. Category-wise qualifying scores for General, OBC-NCL/EWS, SC/ST/PwD candidates from 2020–2026 trends, marks vs score calculations, and COAP/CCMT counselling guides.",
     eyebrow: "GATE CS Cutoff",
     ctaLabel: "Practice GATE CS Questions",
     ctaHref: "/practice",
@@ -367,46 +367,143 @@ export const EDITORIAL_PAGES = [
       { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
-      "If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. Understanding the admission cutoff metrics is equally vital.",
-      "A common trap is confusing the Qualifying Marks with the Admission Cutoff Score. Qualifying the exam does not guarantee an M.Tech seat. Let's decode the GATE CS cutoff system, the category-wise qualifying marks, and the actual GATE Scores (out of 1000) needed to secure an admission.",
-      { type: "h2", text: "1. Qualifying Cutoff (Out of 100)" },
-      "The qualifying mark is the minimum score required out of 100 to earn a valid GATE scorecard. Candidates scoring below the cutoff receive a 'Not Qualified' status and are ineligible for M.Tech admissions or PSU recruitment.",
-      "The organizing institute determines this threshold based on exam difficulty and candidate volume. The official category-wise qualifying criteria for Computer Science (CS) are:",
+      "If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. Understanding the admission cutoff metrics, historical target marks, and counseling workflows is equally vital for securing a seat.",
+      "A common trap for aspirants is confusing the <strong>Qualifying Marks</strong> with the <strong>Admission Cutoff Score</strong>. Qualifying the exam only yields a valid scorecard but does not guarantee a seat. M.Tech admissions at IITs, NITs, and recruitment at PSUs require significantly higher targets. Let's decode the GATE CS cutoff system, marks-vs-score-vs-rank relationships, tier-wise target ranges, and centralized counseling procedures.",
+      
+      { type: "h2", text: "Qualifying Cutoff vs. Admission Cutoff" },
+      "It is critical to distinguish between these two thresholds as they serve entirely different purposes:",
       {
-        type: "table",
-        headers: ["Candidate Category", "Qualifying Marks (Out of 100)"],
-        rows: [
-          ["General (GEN)", "30.0"],
-          ["OBC-NCL / EWS", "27.0"],
-          ["SC / ST / PwD", "20.0"]
+        type: "ul",
+        items: [
+          "<strong>Qualifying Cutoff:</strong> The minimum raw marks (out of 100) required to 'pass' the exam. Clearing this threshold grants you a valid GATE scorecard (valid for 3 years) and makes you eligible for M.Tech/Ph.D. applications and financial assistantships (stipends). The qualifying cutoff is determined using a standard formula by the organizing IIT based on paper difficulty and candidate volume.",
+          "<strong>Admission Cutoff:</strong> The actual GATE Score (out of 1000) or All India Rank (AIR) required to secure admission in a specific specialization at a particular institute. This threshold is highly competitive, varies across counseling rounds, and is determined independently by each participating college based on seat availability and candidate preferences."
         ]
       },
-      "<strong>Insight:</strong> The General category qualifying mark historically hovers between 25 and 30 marks. However, merely clearing the exam yields a GATE Score too low for premier admissions.",
-      { type: "h2", text: "2. The Real Game: GATE Score for IIT Admissions" },
-      "Institutes utilizing the COAP (Common Offer Acceptance Portal) evaluate candidates using the normalized GATE Score (out of 1000), rather than raw marks out of 100.",
-      "Top institutes are highly competitive. The following table provides safe target scores out of 1000 for M.Tech CSE admissions across various IIT tiers.",
-      { type: "h3", text: "Category-Wise Expected GATE Score Cutoffs" },
+
+      { type: "h2", text: "GATE CS Historical Qualifying Cutoffs (2020–2026)" },
+      "The qualifying cutoff is dynamic and reflects paper difficulty. For instance, the 2022 paper was highly conceptual, resulting in a low General cutoff of 25.0, whereas the 2023 paper had a cutoff of 32.5 marks. The table below lists official category-wise qualifying marks for the Computer Science (CS) paper over the last 7 years:",
       {
         type: "table",
-        headers: ["Target Institutes", "General Score Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
+        headers: ["GATE Year", "Organizing Institute", "General (UR)", "OBC-NCL / EWS", "SC / ST / PwD"],
         rows: [
-          ["IISc Bangalore, IIT Bombay, IIT Madras", "750 – 900+", "675 – 810", "500 – 600"],
-          ["IIT Delhi, IIT Kanpur, IIT Kharagpur", "700 – 750", "630 – 675", "460 – 500"],
-          ["IIT Roorkee, IIT Guwahati, IIT Hyderabad", "650 – 700", "585 – 630", "430 – 460"],
-          ["IIT Patna, IIT Jodhpur, IIT Ropar, IIT Mandi", "550 – 600", "495 – 540", "360 – 400"]
+          ["GATE 2026", "IIT Guwahati", "30.0", "27.0", "20.0"],
+          ["GATE 2025", "IIT Roorkee", "29.2", "26.2", "19.4"],
+          ["GATE 2024", "IISc Bangalore", "27.6", "24.8", "18.4"],
+          ["GATE 2023", "IIT Kanpur", "32.5", "29.2", "21.6"],
+          ["GATE 2022", "IIT Kharagpur", "25.0", "22.5", "16.6"],
+          ["GATE 2021", "IIT Bombay", "26.1", "23.4", "17.4"],
+          ["GATE 2020", "IIT Delhi", "28.5", "25.6", "19.0"]
         ]
       },
-      "<strong>Note:</strong> Standard admission policies generally set the OBC/EWS cutoff at approximately 0.9x of the General cutoff, while the SC/ST/PwD cutoff sits near 0.66x of the General cutoff.",
-      { type: "h2", text: "3. Strategic Takeaways for Aspirants" },
+      { type: "callout", variant: "info", text: "<strong>Trend Analysis:</strong> Historically, the General qualifying cutoff for GATE CS hovers between 25 and 33 marks. However, simply qualifying the exam is rarely enough to secure a seat at premier institutes." },
+
+      { type: "h2", text: "Marks vs. Score vs. Rank: The Math Explained" },
+      "Students often get confused when they see raw marks, normalized scores, and All India Ranks on their scorecard. Here is how they are calculated and related:",
+      { type: "h3", text: "1. GATE Marks (Raw Marks)" },
+      "Your absolute score out of 100, calculated directly from your paper. You get +1 or +2 marks for correct answers and face a negative marking of -1/3 (for 1-mark MCQs) or -2/3 (for 2-mark MCQs) for wrong options. MSQs and NATs carry no negative marking but have no partial credit.",
+      { type: "h3", text: "2. GATE Score (Normalized)" },
+      "A normalized score calculated out of 1000 using a standardized multi-session formula. This allows comparison of candidate performance across different papers or shifts. The official formula is:",
+      "S = S<sub>q</sub> + (S<sub>t</sub> - S<sub>q</sub>) * (M - M<sub>q</sub>) / (M̄<sub>t</sub> - M<sub>q</sub>)",
+      "Where: <ul><li><strong>S:</strong> Your final GATE Score (normalized out of 1000).</li><li><strong>M:</strong> Raw marks obtained by you (or normalized marks if in a multi-session paper).</li><li><strong>M<sub>q</sub>:</strong> Qualifying marks for general category in that paper.</li><li><strong>M̄<sub>t</sub>:</strong> Average marks of the top 0.1% or top 10 candidates (whichever is larger).</li><li><strong>S<sub>q</sub>:</strong> Score assigned to qualifying marks (fixed at 350).</li><li><strong>S<sub>t</sub>:</strong> Score assigned to top-performing candidates (fixed at 900).</li></ul>",
+      { type: "h3", text: "3. All India Rank (AIR)" },
+      "Your absolute rank among all candidates who attempted the GATE CS paper. IITs and PSUs use the GATE Score to shortlist candidates, but final selections and round-by-round seat allocation are determined by your rank.",
+
+      { type: "h2", text: "Target Scores for IIT M.Tech CSE Admissions (COAP)" },
+      "Admissions to IITs and IISc Bangalore are conducted through the COAP portal. The table below represents safe, expected GATE Score ranges (out of 1000) for securing a seat in M.Tech CSE/IT specializations:",
+      {
+        type: "table",
+        headers: ["IIT Tier & Institutes", "General Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
+        rows: [
+          ["Tier 1 (IISc, IIT Bombay, IIT Madras, IIT Delhi, IIT Kanpur, IIT Kharagpur)", "780 – 950+", "700 – 850+", "520 – 620+"],
+          ["Tier 2 (IIT Roorkee, IIT Guwahati, IIT Hyderabad, IIT BHU)", "680 – 780", "610 – 700", "450 – 520"],
+          ["Tier 3 (IIT Patna, IIT Ropar, IIT Gandhinagar, IIT Mandi, IIT Indore, IIT Jodhpur)", "580 – 680", "520 – 610", "380 – 450"]
+        ]
+      },
+      { type: "callout", variant: "tip", text: "Standard admission policies set the OBC/EWS score cutoff at approximately <strong>0.9x</strong> of the General cutoff, while the SC/ST/PwD cutoff is around <strong>0.66x</strong>. Use these ratios to benchmark your personal targets." },
+
+      { type: "h2", text: "NIT M.Tech CSE Admission Score Targets (CCMT)" },
+      "For admission to NITs, IIITs, and Centralized Centrally Funded Technical Institutes (GFTIs), candidates must participate in CCMT counseling. A safe GATE Score range for M.Tech CSE admissions under CCMT is:",
+      {
+        type: "table",
+        headers: ["NIT Tier & Key Institutes", "General Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
+        rows: [
+          ["Top-Tier NITs (NIT Trichy, NIT Warangal, NIT Surathkal)", "700 – 820", "630 – 740", "460 – 540"],
+          ["Mid-Tier NITs (NIT Calicut, VNIT Nagpur, MNNIT Allahabad, MNIT Jaipur, NIT Delhi)", "550 – 700", "495 – 630", "360 – 460"],
+          ["Newer NITs & GFTIs (NIT Patna, NIT Srinagar, NIT Silchar, PEC Chandigarh, IIITs)", "400 – 550", "360 – 495", "260 – 360"]
+        ]
+      },
+
+      { type: "h2", text: "PSU Recruitment via GATE CS" },
+      "Public Sector Undertakings (PSUs) such as ONGC, IOCL, NTPC, PGCIL, BARC, and DRDO recruit Computer Science candidates directly based on their GATE performance. However, because vacancies for CS are lower compared to other core branches, cutoffs are exceptionally high:",
+      {
+        type: "ul",
+        items: [
+          "<strong>General Target:</strong> Candidates typically require a GATE Score of <strong>820+</strong> or a rank under <strong>AIR 150–200</strong>.",
+          "<strong>Selection Rounds:</strong> Shortlisted candidates based on GATE Scores must clear subsequent Group Discussions (GD) and Personal Interviews (PI) for final selection.",
+          "<strong>Note:</strong> While M.Tech scorecards are valid for 3 years, most PSUs recruit using <strong>only the current year's GATE score</strong>."
+        ]
+      },
+
+      { type: "h2", text: "Understanding the Counselling Portals: COAP vs. CCMT" },
+      "Once results are out, students must navigate the counseling portals to secure their seats. Understanding the rules is critical to avoid losing seats:",
+      { type: "h3", text: "1. COAP Counselling (For IITs & IISc)" },
+      "COAP is <strong>not</strong> an application portal. You must apply to individual IITs first, then use your COAP ID in those forms. Key round-wise choices on COAP include:",
+      {
+        type: "ul",
+        items: [
+          "<strong>Accept and Freeze:</strong> You accept the offer and lock your seat. You exit the counseling pool and cannot participate in subsequent rounds.",
+          "<strong>Retain and Wait:</strong> You accept the current offer but remain in the pool to be considered for higher preferences in future rounds. If a better offer is made, you can accept it (automatically releasing your current seat). You can choose Retain & Wait on a specific offer for a maximum of <strong>two rounds</strong>.",
+          "<strong>Reject and Wait:</strong> You reject the offer. You have no seat currently secured but remain in the pool to be considered for other offers in future rounds."
+        ]
+      },
+      { type: "h3", text: "2. CCMT Counselling (For NITs & IIITs)" },
+      "CCMT is a centralized single-window application portal. You fill and lock your college/specialization preferences. If allotted a seat, you must pay the Seat Acceptance Fee and select one of these willingness options:",
+      {
+        type: "ul",
+        items: [
+          "<strong>Freeze:</strong> You accept the current allotted seat and exit further rounds.",
+          "<strong>Float:</strong> You accept the seat but choose to participate in subsequent rounds to upgrade to a higher-preferred choice in <i>any</i> institute.",
+          "<strong>Slide:</strong> You accept the seat but choose to participate in further rounds to upgrade to a higher preference <i>within the same institute</i>."
+        ]
+      },
+
+      { type: "h2", text: "Expected GATE 2027 Cutoff & Safe Preparation Targets" },
+      "Based on historical trends, candidates planning for the GATE 2027 exam should plan their study targets using the raw marks benchmarks below. Aiming for raw marks helps calibrate your mock test targets directly:",
+      {
+        type: "table",
+        headers: ["Target Admission / Goal", "Target Raw Marks (Out of 100)", "Target GATE Score (Gen)"],
+        rows: [
+          ["Top 3 IITs / IISc M.Tech CSE", "72 – 82+ Marks", "850 – 1000"],
+          ["Top Tiers IITs / PSU Jobs", "65 – 72 Marks", "780 – 850"],
+          ["Tier-2 IITs / Top NITs (Trichy/Warangal)", "55 – 65 Marks", "700 – 780"],
+          ["Tier-3 IITs / Mid-Tier NITs", "45 – 55 Marks", "580 – 700"],
+          ["Newer NITs / State Colleges", "35 – 45 Marks", "450 – 580"]
+        ]
+      },
+      { type: "callout", variant: "warning", text: "<strong>Qualifying Target:</strong> The expected GATE 2027 qualifying cutoff is estimated to hover around <strong>26–31 marks</strong> for General candidates. Aim to score at least 15–20 marks above the qualifying line to ensure a seat at a recognized institute." },
+
+      { type: "h2", text: "Common Myths & Student Mistakes in GATE Counselling" },
       {
         type: "cards",
         items: [
-          { icon: "🎯", accent: "blue",   title: "Score 750+ (Target Tier 1)",     subtitle: "Requires approximately 65–70 raw marks out of 100 on the actual GATE paper." },
-          { icon: "🏆", accent: "purple", title: "Score 900+ (Top 100 AIR)",        subtitle: "Requires 80+ raw marks. Achievable through PYQ mastery and time-optimized exam strategy." },
-          { icon: "🏛️", accent: "green",  title: "NIT & State College Admissions", subtitle: "CCMT accepts GATE scores for NITs. A score of 400–600 is competitive for NIT M.Tech admissions." }
+          { icon: "warning", accent: "red", title: "Myth: Qualifying Guarantees M.Tech", subtitle: "Qualifying only gives a scorecard. Actual M.Tech admissions at IITs start at much higher scores (typically 580+ for General)." },
+          { icon: "warning", accent: "amber", title: "Mistake: Forgetting COAP Registration", subtitle: "Students apply to individual IIT portals but forget to register on COAP. Without a COAP ID, no admission offers can be generated." },
+          { icon: "warning", accent: "purple", title: "Mistake: Retain & Wait Violations", subtitle: "Choosing 'Retain and Wait' on a specific offer for a third time in COAP is not allowed; the system will automatically reject the offer." },
+          { icon: "lightbulb", accent: "blue", title: "Tip: Apply to Multiple Specializations", subtitle: "Apply to Interdisciplinary branches (like Data Science, AI, Cyber Security) alongside core CSE to maximize your chances with mid-range scores." }
         ]
       },
-      { type: "callout", variant: "tip", text: "The OBC/EWS cutoff is approximately <strong>0.9×</strong> the General cutoff, and SC/ST/PwD is approximately <strong>0.66×</strong> — use this to calibrate your personal target score." },
+
+      { type: "h2", text: "Official Portals & Resources" },
+      "For accurate schedule dates, seat matrices, and notifications, always refer to the official portals rather than third-party rumors:",
+      {
+        type: "ul",
+        items: [
+          "<strong>COAP Official Portal:</strong> <a href='https://coap.iitd.ac.in' target='_blank' rel='noopener noreferrer'>coap.iitd.ac.in</a> (updates annually based on the organizing IIT)",
+          "<strong>CCMT Official Portal:</strong> <a href='https://ccmt.admissions.nic.in' target='_blank' rel='noopener noreferrer'>ccmt.admissions.nic.in</a> (centralized platform for NITs/IIITs)",
+          "<strong>GATE Online Application Processing System (GOAPS):</strong> The official application portal hosted by the organizing institute (e.g., IIT Madras for GATE 2027) where scorecards are downloaded."
+        ]
+      },
+
       {
         type: "related-articles",
         articles: [
@@ -420,16 +517,24 @@ export const EDITORIAL_PAGES = [
     ],
     faqs: [
       {
-        question: "What is the GATE CS cutoff for General category in 2025?",
-        answer: "The GATE 2025 CS qualifying cutoff for General category was 29.2 marks out of 100. For OBC-NCL/EWS it was 26.2, and for SC/ST/PwD it was 19.4.",
+        question: "What is the GATE CS cutoff for the General category in 2025?",
+        answer: "The GATE 2025 CS qualifying cutoff for the General category was 29.2 marks out of 100. For OBC-NCL/EWS it was 26.2, and for SC/ST/PwD it was 19.4.",
       },
       {
-        question: "What is the difference between qualifying cutoff and admission cutoff?",
-        answer: "The qualifying cutoff is the minimum marks needed to pass GATE and obtain a score card. The admission cutoff (used by IITs, NITs, and IISc) is a higher threshold based on GATE score or rank, varying by institute and program.",
+        question: "What is the difference between the qualifying cutoff and the admission cutoff?",
+        answer: "The qualifying cutoff is the minimum marks (out of 100) needed to pass the GATE exam. The admission cutoff (used by IITs, NITs, and IISc) is the minimum GATE Score (out of 1000) or rank required to secure admission in a specific postgraduate program, which is significantly higher.",
       },
       {
-        question: "Which IITs have the highest GATE CS cutoff?",
-        answer: "IIT Bombay, IIT Delhi, IIT Kanpur, IIT Kharagpur, IIT Madras, and IISc Bangalore typically have the highest admission cutoffs for CS-related M.Tech programs, often requiring GATE ranks within the top 100–500.",
+        question: "How long is the GATE CS scorecard valid?",
+        answer: "The GATE CS scorecard is valid for 3 years from the date of the result declaration, which applies to postgraduate M.Tech/Ph.D. admissions at IITs and NITs. However, most PSUs only accept the current year's scorecard for direct recruitment.",
+      },
+      {
+        question: "Can I get admission to an IIT with a GATE CS score of 600?",
+        answer: "Yes, you can secure M.Tech CS admissions with a GATE score of 600, typically at newer or Tier-3 IITs (like IIT Patna, IIT Mandi, or IIT Jammu). For top-tier IITs, a score of 600 is usually competitive only for reserved category candidates (SC/ST/PwD) or interdisciplinary specializations.",
+      },
+      {
+        question: "What is a safe GATE rank for PSU recruitment in Computer Science?",
+        answer: "For General category candidates, a safe All India Rank (AIR) for PSU recruitment (like ONGC, IOCL, or NTPC) is typically under AIR 100 to 200, representing a GATE Score of 820+.",
       },
     ],
   },
