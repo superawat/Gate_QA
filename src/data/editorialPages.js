@@ -367,15 +367,21 @@ export const EDITORIAL_PAGES = [
       { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
-      "If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. Understanding the admission cutoff metrics, historical target marks, and counseling workflows is equally vital for securing a seat.",
+      "<span class='text-xs text-slate-400 block mb-2'>Last Updated: July 2026</span>If you are preparing for the GATE 2027 Computer Science paper, knowing the syllabus is only half the battle. Understanding the admission cutoff metrics, historical target marks, and counseling workflows is equally vital for securing a seat.",
       "A common trap for aspirants is confusing the <strong>Qualifying Marks</strong> with the <strong>Admission Cutoff Score</strong>. Qualifying the exam only yields a valid scorecard but does not guarantee a seat. M.Tech admissions at IITs, NITs, and recruitment at PSUs require significantly higher targets. Let's decode the GATE CS cutoff system, marks-vs-score-vs-rank relationships, tier-wise target ranges, and centralized counseling procedures.",
-      
+      {
+        type: "callout",
+        variant: "info",
+        text: "<strong>Key Takeaways:</strong><ul style='margin-top: 6px; padding-left: 18px; list-style-type: disc; font-size: 13px;'><li style='margin-bottom: 4px;'><strong>Qualifying Cutoff ≠ Admission Cutoff:</strong> Clearing the exam only grants a scorecard; M.Tech admissions require much higher scores.</li><li style='margin-bottom: 4px;'><strong>GATE Score ≠ Raw Marks:</strong> Marks are out of 100; scores are normalized out of 1000.</li><li style='margin-bottom: 4px;'><strong>COAP vs. CCMT:</strong> IITs use COAP (Offer Acceptance Portal); NITs use CCMT (Centralized Counselling).</li><li style='margin-bottom: 4px;'><strong>Scorecard Validity:</strong> Valid for 3 years for academic admissions, but usually only the current year score is accepted by PSUs.</li></ul>"
+      },
+
       { type: "h2", text: "Qualifying Cutoff vs. Admission Cutoff" },
+      "<div class='p-4 bg-slate-50 dark:bg-slate-800/40 border-l-4 border-sky-500 rounded-r-lg my-4 text-sm'><strong class='text-slate-800 dark:text-slate-200 block mb-1'>Featured Definition: What is the GATE Qualifying Cutoff?</strong>The GATE qualifying cutoff is the minimum raw mark (out of 100) needed to pass the CS paper. Declared by the organizing IIT, it determines scorecard eligibility. <strong class='text-slate-800 dark:text-slate-200 block mt-2 mb-1'>What is the GATE Admission Cutoff?</strong>The GATE admission cutoff is the minimum score (out of 1000) or rank required to secure a seat in a specific M.Tech specialization, determined independently by each IIT/NIT during counselling.</div>",
       "It is critical to distinguish between these two thresholds as they serve entirely different purposes:",
       {
         type: "ul",
         items: [
-          "<strong>Qualifying Cutoff:</strong> The minimum raw marks (out of 100) required to 'pass' the exam. Clearing this threshold grants you a valid GATE scorecard (valid for 3 years) and makes you eligible for M.Tech/Ph.D. applications and financial assistantships (stipends). The qualifying cutoff is determined using a standard formula by the organizing IIT based on paper difficulty and candidate volume.",
+          "<strong>Qualifying Cutoff:</strong> The minimum raw marks (out of 100) required to 'pass' the exam. Clearing this threshold grants you a valid GATE scorecard (valid for 3 years) and makes you eligible for M.Tech/Ph.D. applications and financial assistantships (stipends). The qualifying cutoff is determined using a standard formula by the organizing IIT based on official parameters outlined in the GATE brochure.",
           "<strong>Admission Cutoff:</strong> The actual GATE Score (out of 1000) or All India Rank (AIR) required to secure admission in a specific specialization at a particular institute. This threshold is highly competitive, varies across counseling rounds, and is determined independently by each participating college based on seat availability and candidate preferences."
         ]
       },
@@ -395,54 +401,47 @@ export const EDITORIAL_PAGES = [
           ["GATE 2020", "IIT Delhi", "28.5", "25.6", "19.0"]
         ]
       },
+      "<div class='my-6 p-4 bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/60 rounded-xl'><p class='text-xs font-semibold text-slate-500 dark:text-slate-400 mb-4 text-center'>GATE CS Qualifying Cutoff Trend (General Category, 2020–2026)</p><div class='w-full overflow-x-auto'><svg viewBox='0 0 700 240' class='w-full min-w-[500px] h-auto overflow-visible' xmlns='http://www.w3.org/2000/svg'><line x1='50' y1='40' x2='650' y2='40' stroke='#e2e8f0' stroke-dasharray='4' stroke-width='1' class='dark:stroke-slate-700' /><line x1='50' y1='90' x2='650' y2='90' stroke='#e2e8f0' stroke-dasharray='4' stroke-width='1' class='dark:stroke-slate-700' /><line x1='50' y1='140' x2='650' y2='140' stroke='#e2e8f0' stroke-dasharray='4' stroke-width='1' class='dark:stroke-slate-700' /><line x1='50' y1='190' x2='650' y2='190' stroke='#e2e8f0' stroke-dasharray='4' stroke-width='1' class='dark:stroke-slate-700' /><text x='35' y='44' font-size='10' fill='#64748b' text-anchor='end' class='dark:fill-slate-400'>35.0</text><text x='35' y='94' font-size='10' fill='#64748b' text-anchor='end' class='dark:fill-slate-400'>30.0</text><text x='35' y='144' font-size='10' fill='#64748b' text-anchor='end' class='dark:fill-slate-400'>25.0</text><text x='35' y='194' font-size='10' fill='#64748b' text-anchor='end' class='dark:fill-slate-400'>20.0</text><text x='50' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2020</text><text x='150' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2021</text><text x='250' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2022</text><text x='350' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2023</text><text x='450' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2024</text><text x='550' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2025</text><text x='650' y='215' font-size='11' font-weight='600' fill='#64748b' text-anchor='middle' class='dark:fill-slate-400'>2026</text><path d='M 50 105 L 150 129 L 250 140 L 350 65 L 450 114 L 550 98 L 650 90' fill='none' stroke='#0ea5e9' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' /><path d='M 50 105 L 150 129 L 250 140 L 350 65 L 450 114 L 550 98 L 650 90 L 650 190 L 50 190 Z' fill='url(#blue-gradient)' opacity='0.1' /><circle cx='50' cy='105' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='50' y='88' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>28.5</text><circle cx='150' cy='129' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='150' y='112' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>26.1</text><circle cx='250' cy='140' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='250' y='123' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>25.0</text><circle cx='350' cy='65' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='350' y='48' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>32.5</text><circle cx='450' cy='114' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='450' y='97' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>27.6</text><circle cx='550' cy='98' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='550' y='81' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>29.2</text><circle cx='650' cy='90' r='4' fill='#0ea5e9' stroke='#ffffff' stroke-width='1.5' /><text x='650' y='73' font-size='10' font-weight='bold' fill='#0ea5e9' text-anchor='middle'>30.0</text><defs><linearGradient id='blue-gradient' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#0ea5e9' /><stop offset='100%' stop-color='#0ea5e9' stop-opacity='0' /></linearGradient></defs></svg></div></div>",
       { type: "callout", variant: "info", text: "<strong>Trend Analysis:</strong> Historically, the General qualifying cutoff for GATE CS hovers between 25 and 33 marks. However, simply qualifying the exam is rarely enough to secure a seat at premier institutes." },
 
       { type: "h2", text: "Marks vs. Score vs. Rank: The Math Explained" },
+      "<div class='p-4 bg-slate-50 dark:bg-slate-800/40 border-l-4 border-sky-500 rounded-r-lg my-4 text-sm'><strong class='text-slate-800 dark:text-slate-200 block mb-1'>Featured Definition: What is a GATE Score?</strong>A GATE Score is a normalized value mapped out of 1000. While raw marks only reflect your direct performance on the paper, the score is normalized relative to the top 0.1% or top 10 candidates to account for shift variations.</div>",
       "Students often get confused when they see raw marks, normalized scores, and All India Ranks on their scorecard. Here is how they are calculated and related:",
       { type: "h3", text: "1. GATE Marks (Raw Marks)" },
       "Your absolute score out of 100, calculated directly from your paper. You get +1 or +2 marks for correct answers and face a negative marking of -1/3 (for 1-mark MCQs) or -2/3 (for 2-mark MCQs) for wrong options. MSQs and NATs carry no negative marking but have no partial credit.",
       { type: "h3", text: "2. GATE Score (Normalized)" },
-      "A normalized score calculated out of 1000 using a standardized multi-session formula. This allows comparison of candidate performance across different papers or shifts. The official formula is:",
-      "S = S<sub>q</sub> + (S<sub>t</sub> - S<sub>q</sub>) * (M - M<sub>q</sub>) / (M̄<sub>t</sub> - M<sub>q</sub>)",
-      "Where: <ul><li><strong>S:</strong> Your final GATE Score (normalized out of 1000).</li><li><strong>M:</strong> Raw marks obtained by you (or normalized marks if in a multi-session paper).</li><li><strong>M<sub>q</sub>:</strong> Qualifying marks for general category in that paper.</li><li><strong>M̄<sub>t</sub>:</strong> Average marks of the top 0.1% or top 10 candidates (whichever is larger).</li><li><strong>S<sub>q</sub>:</strong> Score assigned to qualifying marks (fixed at 350).</li><li><strong>S<sub>t</sub>:</strong> Score assigned to top-performing candidates (fixed at 900).</li></ul>",
+      "GATE uses a normalization formula to convert raw marks into a score out of 1000, ensuring fairness across multiple sessions. For a detailed walkthrough of the exact formula and conversion parameters, check our guide on <a href='/gate-score-calculation'>How GATE Score is Calculated</a>.",
       { type: "h3", text: "3. All India Rank (AIR)" },
       "Your absolute rank among all candidates who attempted the GATE CS paper. IITs and PSUs use the GATE Score to shortlist candidates, but final selections and round-by-round seat allocation are determined by your rank.",
+      "<div class='my-6 p-4 bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/60 rounded-xl overflow-x-auto'><p class='text-xs font-semibold text-slate-500 dark:text-slate-400 mb-4 text-center'>Visual Pathway: From Exam to Admission</p><div class='min-w-[650px] flex items-center justify-between text-center text-xs font-semibold py-2'><div class='flex-1 px-2 py-3 bg-blue-500/10 border border-blue-500/30 rounded-lg text-blue-600 dark:text-blue-400'><div class='text-[9px] uppercase text-slate-400'>Step 1</div><div class='text-xs font-bold mt-0.5'>Raw Marks (100)</div><div class='text-[9px] font-normal mt-0.5 text-slate-500'>Your raw test performance</div></div><div class='px-2 text-slate-400 text-base'>➔</div><div class='flex-1 px-2 py-3 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-600 dark:text-purple-400'><div class='text-[9px] uppercase text-slate-400'>Step 2</div><div class='text-xs font-bold mt-0.5'>Qualifying Cutoff</div><div class='text-[9px] font-normal mt-0.5 text-slate-500'>Passing threshold (IIT)</div></div><div class='px-2 text-slate-400 text-base'>➔</div><div class='flex-1 px-2 py-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-600 dark:text-emerald-400'><div class='text-[9px] uppercase text-slate-400'>Step 3</div><div class='text-xs font-bold mt-0.5'>GATE Score (1000)</div><div class='text-[9px] font-normal mt-0.5 text-slate-500'>Normalized metric</div></div><div class='px-2 text-slate-400 text-base'>➔</div><div class='flex-1 px-2 py-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-600 dark:text-amber-400'><div class='text-[9px] uppercase text-slate-400'>Step 4</div><div class='text-xs font-bold mt-0.5'>AIR (Rank)</div><div class='text-[9px] font-normal mt-0.5 text-slate-500'>Your rank relative to all</div></div><div class='px-2 text-slate-400 text-base'>➔</div><div class='flex-1 px-2 py-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-rose-600 dark:text-rose-400'><div class='text-[9px] uppercase text-slate-400'>Step 5</div><div class='text-xs font-bold mt-0.5'>COAP / CCMT</div><div class='text-[9px] font-normal mt-0.5 text-slate-500'>Counselling & selection</div></div></div></div>",
 
       { type: "h2", text: "Target Scores for IIT M.Tech CSE Admissions (COAP)" },
-      "Admissions to IITs and IISc Bangalore are conducted through the COAP portal. The table below represents safe, expected GATE Score ranges (out of 1000) for securing a seat in M.Tech CSE/IT specializations:",
+      "The score ranges below are indicative estimates based on admission trends from previous years. Actual closing scores vary depending on specialization, category, number of applicants, and seat availability.",
       {
         type: "table",
-        headers: ["IIT Tier & Institutes", "General Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
+        headers: ["IIT Target Group & Key Institutes", "General Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
         rows: [
-          ["Tier 1 (IISc, IIT Bombay, IIT Madras, IIT Delhi, IIT Kanpur, IIT Kharagpur)", "780 – 950+", "700 – 850+", "520 – 620+"],
-          ["Tier 2 (IIT Roorkee, IIT Guwahati, IIT Hyderabad, IIT BHU)", "680 – 780", "610 – 700", "450 – 520"],
-          ["Tier 3 (IIT Patna, IIT Ropar, IIT Gandhinagar, IIT Mandi, IIT Indore, IIT Jodhpur)", "580 – 680", "520 – 610", "380 – 450"]
+          ["Highly Competitive IITs (IISc Bangalore, IIT Bombay, IIT Madras, IIT Delhi, IIT Kanpur, IIT Kharagpur)", "780 – 950+", "700 – 850+", "520 – 620+"],
+          ["Medium Competitive IITs (IIT Roorkee, IIT Guwahati, IIT Hyderabad, IIT BHU)", "680 – 780", "610 – 700", "450 – 520"],
+          ["Developing & Newer IITs (IIT Patna, IIT Ropar, IIT Gandhinagar, IIT Mandi, IIT Indore, IIT Jodhpur)", "580 – 680", "520 – 610", "380 – 450"]
         ]
       },
       { type: "callout", variant: "tip", text: "Standard admission policies set the OBC/EWS score cutoff at approximately <strong>0.9x</strong> of the General cutoff, while the SC/ST/PwD cutoff is around <strong>0.66x</strong>. Use these ratios to benchmark your personal targets." },
 
       { type: "h2", text: "NIT M.Tech CSE Admission Score Targets (CCMT)" },
-      "For admission to NITs, IIITs, and Centralized Centrally Funded Technical Institutes (GFTIs), candidates must participate in CCMT counseling. A safe GATE Score range for M.Tech CSE admissions under CCMT is:",
+      "The score ranges below are indicative estimates based on admission trends from previous years. Actual closing scores vary depending on specialization, category, number of applicants, and seat availability.",
       {
         type: "table",
-        headers: ["NIT Tier & Key Institutes", "General Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
+        headers: ["NIT Target Group & Key Institutes", "General Target", "OBC-NCL / EWS Target", "SC / ST / PwD Target"],
         rows: [
-          ["Top-Tier NITs (NIT Trichy, NIT Warangal, NIT Surathkal)", "700 – 820", "630 – 740", "460 – 540"],
-          ["Mid-Tier NITs (NIT Calicut, VNIT Nagpur, MNNIT Allahabad, MNIT Jaipur, NIT Delhi)", "550 – 700", "495 – 630", "360 – 460"],
+          ["Highly Competitive NITs (NIT Trichy, NIT Warangal, NIT Surathkal)", "700 – 820", "630 – 740", "460 – 540"],
+          ["Medium Competitive NITs (NIT Calicut, VNIT Nagpur, MNNIT Allahabad, MNIT Jaipur, NIT Delhi)", "550 – 700", "495 – 630", "360 – 460"],
           ["Newer NITs & GFTIs (NIT Patna, NIT Srinagar, NIT Silchar, PEC Chandigarh, IIITs)", "400 – 550", "360 – 495", "260 – 360"]
         ]
       },
 
       { type: "h2", text: "PSU Recruitment via GATE CS" },
-      "Public Sector Undertakings (PSUs) such as ONGC, IOCL, NTPC, PGCIL, BARC, and DRDO recruit Computer Science candidates directly based on their GATE performance. However, because vacancies for CS are lower compared to other core branches, cutoffs are exceptionally high:",
-      {
-        type: "ul",
-        items: [
-          "<strong>General Target:</strong> Candidates typically require a GATE Score of <strong>820+</strong> or a rank under <strong>AIR 150–200</strong>.",
-          "<strong>Selection Rounds:</strong> Shortlisted candidates based on GATE Scores must clear subsequent Group Discussions (GD) and Personal Interviews (PI) for final selection.",
-          "<strong>Note:</strong> While M.Tech scorecards are valid for 3 years, most PSUs recruit using <strong>only the current year's GATE score</strong>."
-        ]
-      },
+      "Public Sector Undertakings (PSUs) like ONGC, IOCL, NTPC, and BARC recruit CS graduates directly using GATE. Because Computer Science vacancies in PSUs are limited compared to core engineering branches, competition is extremely high, requiring a GATE Score of <strong>820+</strong> (typically under <strong>AIR 150–200</strong>) for the General category. Shortlisted candidates must also clear GD/PI rounds, and most PSUs accept only the current year's scorecard. For a full list of participating companies and hiring timelines, refer to our guide on <a href='/psu-recruitment-gate'>PSU Recruitment through GATE CS</a>.",
 
       { type: "h2", text: "Understanding the Counselling Portals: COAP vs. CCMT" },
       "Once results are out, students must navigate the counseling portals to secure their seats. Understanding the rules is critical to avoid losing seats:",
@@ -480,7 +479,7 @@ export const EDITORIAL_PAGES = [
           ["Newer NITs / State Colleges", "35 – 45 Marks", "450 – 580"]
         ]
       },
-      { type: "callout", variant: "warning", text: "<strong>Qualifying Target:</strong> The expected GATE 2027 qualifying cutoff is estimated to hover around <strong>26–31 marks</strong> for General candidates. Aim to score at least 15–20 marks above the qualifying line to ensure a seat at a recognized institute." },
+      { type: "callout", variant: "warning", text: "<strong>Qualifying Target:</strong> Based on recent trends, the qualifying cutoff has generally remained within the mid-20s to low-30s for the General category, though the official cutoff depends on the difficulty of the paper and candidate performance. Aim to score at least 15–20 marks above the qualifying line to ensure a seat at a recognized institute." },
 
       { type: "h2", text: "Common Myths & Student Mistakes in GATE Counselling" },
       {
@@ -500,7 +499,7 @@ export const EDITORIAL_PAGES = [
         items: [
           "<strong>COAP Official Portal:</strong> <a href='https://coap.iitd.ac.in' target='_blank' rel='noopener noreferrer'>coap.iitd.ac.in</a> (updates annually based on the organizing IIT)",
           "<strong>CCMT Official Portal:</strong> <a href='https://ccmt.admissions.nic.in' target='_blank' rel='noopener noreferrer'>ccmt.admissions.nic.in</a> (centralized platform for NITs/IIITs)",
-          "<strong>GATE Online Application Processing System (GOAPS):</strong> The official application portal hosted by the organizing institute (e.g., IIT Madras for GATE 2027) where scorecards are downloaded."
+          "<strong>GATE Online Application Processing System (GOAPS):</strong> The official application portal hosted by the organizing institute (e.g., IIT Madras for GATE 2027). GOAPS handles candidate registration, admit card download, response sheet release, answer key objection submissions, and official scorecard downloads."
         ]
       },
 
