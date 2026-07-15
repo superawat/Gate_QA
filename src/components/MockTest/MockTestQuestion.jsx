@@ -11,6 +11,7 @@ import {
 import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
+import { cleanLatexHtml } from "../../utils/latexClean";
 
 const OPTION_LABELS = QuestionService.OPTION_LABELS;
 
@@ -149,7 +150,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         [reviewResult?.answerRecord]
     );
 
-    const rawQuestionHtml = normalizeHtmlAssetUrls(String(currentQuestion?.question || ""))
+    const rawQuestionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(String(currentQuestion?.question || "")))
         .replace(/\n\n/g, "<br />")
         .replace(/\n<li>/g, "<br><li>");
 
@@ -476,7 +477,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                             {displayOptions.length > 0 ? (
                                                 <div className="mb-4 flex flex-col gap-2 border-b border-gray-200 pb-4">
                                                     {displayOptions.map((option, index) => {
-                                                        const optionHtml = normalizeHtmlAssetUrls(option.html || option.text || "");
+                                                        const optionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(option.html || option.text || ""));
                                                         if (!optionHtml) return null;
                                                         return (
                                                             <div key={index} className="flex items-start gap-2 text-[15px] text-gray-800">

@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-16
+
+### Fixed
+- **LaTeX Math Rendering & Cloudflare Email Obfuscation**:
+  - Implemented `cleanLatexHtml` in `src/utils/latexClean.js` to automatically decode Cloudflare email protection tags (`<a class="__cf_email__" ...>`) inside LaTeX equations.
+  - Cleaned up nested HTML elements (such as `<br/>` and `<span>`) specifically within display and inline math delimiters (`$$`, `\[ \]`, `\( \)`, `$`) to ensure MathJax receives contiguous plain-text LaTeX nodes.
+  - Applied the utility across `Question.jsx` and `MockTestQuestion.jsx` for both question stems and custom option content, resolving display issues where raw LaTeX was rendered instead of formatted tables.
+  - Added comprehensive unit tests in `src/utils/latexClean.test.js`.
+- **Question Database Correction**:
+  - Corrected the answer for question `go:39696` (GATE CSE 2016 Set 1, Question 55) from `2900` to `2500` bytes per second across all database files (`answers_by_question_uid_v1.json`, `answers_master_v1.json`, `answers_by_exam_uid_v1.json`, and `questions-with-answers.json`).
+  - Regenerated all detail shards, search index, and manifest to reflect the update.
+
+
 ## 2026-07-05
 
 ### Added

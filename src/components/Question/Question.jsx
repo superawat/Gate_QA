@@ -6,6 +6,7 @@ import { useFilterActions } from "../../contexts/FilterContext";
 import { MathContent } from "../Math/MathRuntime";
 import QuestionNotes from "./QuestionNotes";
 import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
+import { cleanLatexHtml } from "../../utils/latexClean";
 
 function Question({
   question = {},
@@ -16,7 +17,7 @@ function Question({
   canGoNext,
 }) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
-  const questionHtml = normalizeHtmlAssetUrls(question.question || "")
+  const questionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(question.question || ""))
     .replace(/\n\n/g, "<br />")
     .replace(/\n<li>/g, "<br><li>");
   const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtml);
