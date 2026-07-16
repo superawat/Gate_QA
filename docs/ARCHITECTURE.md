@@ -308,6 +308,17 @@ This guarantees zero shared effects between mock and practice, eliminating navig
 - **Tab close protection**: Prevents accidental exam loss during active tests.
 - **Cleaner codebase**: Eradicated mock conditional logic intertwined with practice setups.
 
+### 5. Custom Builder Customization (2026-07-16)
+
+The Custom Mock Test Builder has been enhanced to support granular configuration parameters stored in `setupState`:
+- **Solved Questions Policy (`solvedFilter`)**: Enforces how solved questions are selected for a custom mock test pool:
+  - `"unsolved"` (default): Excludes questions the user has already solved.
+  - `"all"`: Includes both solved and unsolved questions.
+  - `"solved_only"`: Excludes unsolved questions, focusing the mock test pool entirely on revision of previously solved questions.
+- **Custom practice duration (`customDurationMode` & `customDurationMinutes`)**: Allows manual override of the default adaptive duration calculation:
+  - `"adaptive"` (default): The exam duration dynamically scales based on the available questions in the filtered pool.
+  - `"manual"`: Enforces a manual duration specified by `customDurationMinutes` (integer clamped between 5 and 180).
+
 ## URL contract
 
 Synchronized params:

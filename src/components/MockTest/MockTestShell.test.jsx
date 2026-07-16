@@ -379,4 +379,35 @@ describe("MockTestShell", () => {
     expect(container.querySelector(".mocktest-palette-root")).toBeTruthy();
     expect(container.querySelector(".mocktest-action-bar")).toBeTruthy();
   });
+
+  test("allows custom builder duration mode switching and custom minutes entry", async () => {
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    expect(screen.getByText("Duration mode")).toBeTruthy();
+    expect(screen.queryByText("Custom minutes")).toBeNull();
+
+    fireEvent.click(screen.getByTestId("duration-mode-manual"));
+
+    expect(screen.getByText("Custom minutes")).toBeTruthy();
+    const input = screen.getByTestId("mock-setup-custom-duration");
+    expect(input.value).toBe("180");
+
+    fireEvent.change(input, { target: { value: "95" } });
+    expect(input.value).toBe("95");
+  });
+
+  test("allows custom builder solved policy selection", async () => {
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    expect(screen.getByText("Solved Questions Policy")).toBeTruthy();
+    expect(screen.getByTestId("solved-filter-unsolved")).toBeTruthy();
+    expect(screen.getByTestId("solved-filter-all")).toBeTruthy();
+    expect(screen.getByTestId("solved-filter-solved-only")).toBeTruthy();
+  });
 });

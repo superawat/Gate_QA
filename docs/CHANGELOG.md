@@ -2,7 +2,19 @@
 
 ## 2026-07-16
 
+### Added
+- **Mock Test Custom Builder Enhancements**:
+  - Implemented a 3-way **Solved Questions Policy** filter ("Unsolved Only", "Include Solved", and "Solved Only") in the Custom Builder, providing revision flexibility.
+  - Added user-defined **Custom Practice Duration** controls, allowing manual override of the adaptive calculation with durations between 5 and 180 minutes.
+  - Updated the setup state structure, question pool filtering logic in `MockTestShell.jsx`, and sidebar layout/summary cards in `MockTestSetup.jsx`.
+  - Added comprehensive unit tests in `MockTestShell.test.jsx`.
+
 ### Fixed
+- **Background Timer Throttling & Precision**:
+  - Replaced the simple `setInterval`-based decrement loop in `MockTestContext.tsx` with a wall-clock (`Date.now()`) delta synchronization system.
+  - Corrected potential timing drifts and pauses when browser tabs are switched, backgrounded, or minimized, ensuring the countdown continues accurately.
+  - Implemented a standard `visibilitychange` event listener to immediately force-resync and update the timer and question time spent when returning to the tab.
+  - Ensured question time spent is fully tracked and recorded for background intervals.
 - **LaTeX Math Rendering & Cloudflare Email Obfuscation**:
   - Implemented `cleanLatexHtml` in `src/utils/latexClean.js` to automatically decode Cloudflare email protection tags (`<a class="__cf_email__" ...>`) inside LaTeX equations.
   - Cleaned up nested HTML elements (such as `<br/>` and `<span>`) specifically within display and inline math delimiters (`$$`, `\[ \]`, `\( \)`, `$`) to ensure MathJax receives contiguous plain-text LaTeX nodes.

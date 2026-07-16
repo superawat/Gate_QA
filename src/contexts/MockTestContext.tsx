@@ -352,6 +352,7 @@ export const MockTestProvider = ({ children }) => {
   const [resultSummary, setResultSummary] = useState(null);
 
   const timerRef = useRef(null);
+  const lastTickRef = useRef(Date.now());
   const activeTimingUidRef = useRef(null);
   const hasAttemptRestoreRun = useRef(false);
   const liveAttemptRef = useRef({
@@ -1020,24 +1021,39 @@ export const MockTestProvider = ({ children }) => {
     clearAttemptStorage();
   }, [clearAttemptStorage, markQuestionsSolved]);
 
+  const syncTimer = useCallback(() => {
+    const now = Date.now();
+    const elapsedMs = now - lastTickRef.current;
+    const elapsedSeconds = Math.floor(elapsedMs / 1000);
+
+    if (elapsedSeconds >= 1) {
+      lastTickRef.current = lastTickRef.current + (elapsedSeconds * 1000);
+
+      setTimeLeft((previous) => {
+        const next = Math.max(0, previous - elapsedSeconds);
+        if (next === 0) {
+          finalizeSubmission();
+          return 0;
+        }
+        return next;
+      });
+
+      const activeUid = activeTimingUidRef.current;
+      if (activeUid) {
+        recordQuestionTimeSpent(activeUid, elapsedSeconds);
+      }
+    }
+  }, [finalizeSubmission, recordQuestionTimeSpent]);
+
   useEffect(() => {
     if (!testActive || testSubmitted) {
       return undefined;
     }
 
-    timerRef.current = window.setInterval(() => {
-      const activeUid = activeTimingUidRef.current;
-      if (activeUid) {
-        recordQuestionTimeSpent(activeUid, 1);
-      }
+    lastTickRef.current = Date.now();
 
-      setTimeLeft((previous) => {
-        if (previous <= 1) {
-          finalizeSubmission();
-          return 0;
-        }
-        return previous - 1;
-      });
+    timerRef.current = window.setInterval(() => {
+      syncTimer();
     }, 1000);
 
     return () => {
@@ -1046,7 +1062,24 @@ export const MockTestProvider = ({ children }) => {
         timerRef.current = null;
       }
     };
-  }, [finalizeSubmission, recordQuestionTimeSpent, testActive, testSubmitted]);
+  }, [syncTimer, testActive, testSubmitted]);
+
+  useEffect(() => {
+    if (!testActive || testSubmitted) {
+      return undefined;
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        syncTimer();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [syncTimer, testActive, testSubmitted]);
 
   const goToQuestion = useCallback((index, section = currentSection) => {
     const targetSection = section === "CS" ? "CS" : "GA";

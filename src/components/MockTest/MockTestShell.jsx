@@ -216,7 +216,9 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     selectedTypes: [...TYPE_OPTIONS],
     selectedPaperYearSetKey,
     customCount: kindId === "custom" ? 25 : 65,
-    includeSolvedQuestions: false,
+    solvedFilter: "unsolved",
+    customDurationMode: "adaptive",
+    customDurationMinutes: 180,
 });
 
 const splitByCatalogSection = (rows = [], questionMetaByUid = {}) => {
@@ -494,7 +496,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         () => new Set((Array.isArray(activeSolvedQuestionIds) ? activeSolvedQuestionIds : []).map((uid) => String(uid || "").trim()).filter(Boolean)),
         [activeSolvedQuestionIds]
     );
-    const includeSolvedQuestions = Boolean(setupState.includeSolvedQuestions);
+    const solvedFilter = setupState.solvedFilter || "unsolved";
 
     const scorableQuestions = useMemo(
         () => {
@@ -514,10 +516,16 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         [allQuestions, mockQuestionPool, questionMetaByUid]
     );
     const generatedScorableQuestions = useMemo(
-        () => includeSolvedQuestions
-            ? scorableQuestions
-            : scorableQuestions.filter((question) => !isSolvedQuestion(question, solvedQuestionSet)),
-        [includeSolvedQuestions, scorableQuestions, solvedQuestionSet]
+        () => {
+            if (solvedFilter === "all") {
+                return scorableQuestions;
+            }
+            if (solvedFilter === "solved_only") {
+                return scorableQuestions.filter((question) => isSolvedQuestion(question, solvedQuestionSet));
+            }
+            return scorableQuestions.filter((question) => !isSolvedQuestion(question, solvedQuestionSet));
+        },
+        [solvedFilter, scorableQuestions, solvedQuestionSet]
     );
 
     const mockSubjects = useMemo(
@@ -676,7 +684,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const customCount = clampQuestionCount(setupState.customCount);
     // Clamp the actual exam count to the available filtered pool so duration is realistic
     const effectiveCustomCount = Math.min(customCount, filteredPool.length || customCount);
-    const customDurationMinutes = computeDurationForCustomCount(effectiveCustomCount);
+    const customDurationMinutes = setupState.customDurationMode === "manual"
+        ? (setupState.customDurationMinutes || 180)
+        : computeDurationForCustomCount(effectiveCustomCount);
 
     const availability = useMemo(() => {
         if (!selectedKind) {
@@ -840,7 +850,13 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 : "all";
             next.customCount = clampQuestionCount(next.customCount);
             next.selectedTypes = normalizeSetupTypes(next.selectedTypes);
-            next.includeSolvedQuestions = next.includeSolvedQuestions === true;
+            next.solvedFilter = ["unsolved", "all", "solved_only"].includes(next.solvedFilter)
+                ? next.solvedFilter
+                : "unsolved";
+            next.customDurationMode = ["adaptive", "manual"].includes(next.customDurationMode)
+                ? next.customDurationMode
+                : "adaptive";
+            next.customDurationMinutes = Math.max(5, Math.min(180, Number(next.customDurationMinutes) || 180));
 
             // When selectedSubjects changes, purge orphaned subtopics whose parent was deselected
             if (Object.prototype.hasOwnProperty.call(patch, "selectedSubjects")) {

@@ -190,7 +190,9 @@ const MockTestSetup = ({
     const selectedPaperRequiredGa = Number.parseInt(String(selectedPaper?.requiredGaCount ?? selectedPaper?.gaCount ?? 0), 10);
     const selectedPaperRequiredCs = Number.parseInt(String(selectedPaper?.requiredCsCount ?? selectedPaper?.csCount ?? 0), 10);
     const durationLabel = isCustom
-        ? `${customDurationMinutes} min`
+        ? (setupState.customDurationMode === "manual"
+            ? `${setupState.customDurationMinutes || 180} min`
+            : `${customDurationMinutes} min`)
         : (isPaperMode && Number.isFinite(selectedPaperDuration) && selectedPaperDuration > 0
             ? `${selectedPaperDuration} min`
             : (kind.durationLabel || "180 min"));
@@ -383,6 +385,52 @@ const MockTestSetup = ({
                         </FilterChip>
                     ))}
                 </div>
+            </div>
+
+            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
+                <div className="flex items-center justify-between gap-3">
+                    <div>
+                        <h4 className="text-base font-semibold text-slate-950">Duration mode</h4>
+                        <p className="mt-1 text-sm text-slate-600">Choose how the test duration is set.</p>
+                    </div>
+                    <div className="flex gap-2">
+                        <FilterChip
+                            active={setupState.customDurationMode === "adaptive"}
+                            tone="sky"
+                            data-testid="duration-mode-adaptive"
+                            onClick={() => onPatchState({ customDurationMode: "adaptive" })}
+                        >
+                            Adaptive
+                        </FilterChip>
+                        <FilterChip
+                            active={setupState.customDurationMode === "manual"}
+                            tone="sky"
+                            data-testid="duration-mode-manual"
+                            onClick={() => onPatchState({ customDurationMode: "manual" })}
+                        >
+                            Custom
+                        </FilterChip>
+                    </div>
+                </div>
+                {setupState.customDurationMode === "manual" && (
+                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
+                        <div>
+                            <h5 className="text-sm font-semibold text-slate-900">Custom minutes</h5>
+                            <p className="mt-1 text-xs text-slate-500">Enter a duration between 5 and 180 minutes.</p>
+                        </div>
+                        <div className="w-28">
+                            <input
+                                type="number"
+                                min={5}
+                                max={180}
+                                data-testid="mock-setup-custom-duration"
+                                value={setupState.customDurationMinutes || 180}
+                                onChange={(event) => onPatchState({ customDurationMinutes: Number(event.target.value) })}
+                                className="mocktest-input w-full border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
@@ -703,16 +751,36 @@ const MockTestSetup = ({
                         </div>
 
                         {showSolvedQuestionToggle ? (
-                            <label className="flex cursor-pointer items-center gap-3 rounded-[var(--radius-card)] border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-800 shadow-[var(--shadow-soft)]">
-                                <input
-                                    type="checkbox"
-                                    data-testid="mock-setup-include-solved"
-                                    checked={setupState.includeSolvedQuestions === true}
-                                    onChange={(event) => onPatchState({ includeSolvedQuestions: event.target.checked })}
-                                    className="h-4 w-4 rounded border-slate-300 text-sky-700 focus:ring-sky-500"
-                                />
-                                <span>Include previously solved questions</span>
-                            </label>
+                            <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4 shadow-[var(--shadow-soft)]">
+                                <h4 className="text-sm font-semibold text-slate-900">Solved Questions Policy</h4>
+                                <p className="mt-1 text-xs text-slate-500">Choose how to handle questions you have already solved.</p>
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                    <FilterChip
+                                        active={setupState.solvedFilter === "unsolved"}
+                                        tone="sky"
+                                        data-testid="solved-filter-unsolved"
+                                        onClick={() => onPatchState({ solvedFilter: "unsolved" })}
+                                    >
+                                        Unsolved Only
+                                    </FilterChip>
+                                    <FilterChip
+                                        active={setupState.solvedFilter === "all"}
+                                        tone="sky"
+                                        data-testid="solved-filter-all"
+                                        onClick={() => onPatchState({ solvedFilter: "all" })}
+                                    >
+                                        Include Solved
+                                    </FilterChip>
+                                    <FilterChip
+                                        active={setupState.solvedFilter === "solved_only"}
+                                        tone="sky"
+                                        data-testid="solved-filter-solved-only"
+                                        onClick={() => onPatchState({ solvedFilter: "solved_only" })}
+                                    >
+                                        Solved Only
+                                    </FilterChip>
+                                </div>
+                            </div>
                         ) : null}
 
                         {showPreviewInAside ? <PreviewCard livePreview={livePreview} /> : null}
