@@ -31,6 +31,7 @@ import {
   MOCK_ROUTE,
   PRACTICE_ROUTE,
   SUBJECTS_ROUTE,
+  SUPPORT_ROUTE,
   USER_MANUAL_ROUTE,
   BLOG_ROUTE,
 } from "./utils/routes";
@@ -60,6 +61,7 @@ const AboutPage = lazy(() => import("./pages/StaticPages").then(m => ({ default:
 const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.ContactPage })));
 const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.TermsPage })));
+const SupportPage = lazy(() => import("./pages/SupportPage"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
@@ -454,6 +456,7 @@ const PracticeRoutes = ({
         <Route path="/contact" element={<Suspense fallback={<RouteLoader label="Loading..." />}><ContactPage /></Suspense>} />
         <Route path="/privacy" element={<Suspense fallback={<RouteLoader label="Loading..." />}><PrivacyPage /></Suspense>} />
         <Route path="/terms"   element={<Suspense fallback={<RouteLoader label="Loading..." />}><TermsPage /></Suspense>} />
+        <Route path={SUPPORT_ROUTE} element={<Suspense fallback={<RouteLoader label="Loading Support..." />}><SupportPage /></Suspense>} />
         <Route path="*" element={<Navigate to={HOME_ROUTE} replace />} />
       </Routes>
     </>
