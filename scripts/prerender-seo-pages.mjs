@@ -1025,6 +1025,23 @@ function buildStaticInfoPages() {
       ],
       links: [{ href: "/", label: "Go to Dashboard" }],
     },
+    {
+      path: "/support",
+      canonicalUrl: buildCanonicalUrl("/support"),
+      title: "Support GATE QA",
+      h1: "Support GATE QA",
+      eyebrow: "Support",
+      description: "Support GATE QA and help keep free GATE preparation resources available to everyone.",
+      richCopy: [
+        "GATE QA is free for everyone. If you would like to support the project, open the support popup to view the contribution QR code.",
+      ],
+      faqs: [],
+      schemas: [
+        breadcrumbSchema([{ name: "Home", url: home }, { name: "Support", url: buildCanonicalUrl("/support") }]),
+        webPageSchema({ name: "Support GATE QA", description: "Support the free GATE QA preparation platform.", url: buildCanonicalUrl("/support") }),
+      ],
+      links: [{ href: "/", label: "Go to Dashboard" }],
+    },
   ];
 }
 
