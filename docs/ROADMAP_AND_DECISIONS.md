@@ -24,6 +24,22 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-005: IIT Madras GATE 2027 Syllabus Breakdown & Editorial Layout
+- Status: Delivered
+- Priority: P0
+- Decision:
+  Publish dedicated editorial analysis (`/gate-cse-2027-syllabus-changes`) using a Stripe/GitHub/Vercel-inspired documentation diff format ("Before → After → What's Changed"), replacing horizontal scrolling tables and heavy callout cards.
+- Why:
+  Avoid teaching generic CS concepts when users want to know "What changed?". Use high-intent decision matrices, compact left-border annotations, official link cards, and responsive mobile transformations.
+
+### DEC-006: Global Header Quick-Access Shortcuts
+- Status: Delivered
+- Priority: P1
+- Decision:
+  Add an emerald-themed newspaper icon (`FaNewspaper`) with an animated pulsing ping badge in `AppHeader.jsx` pointing directly to `/gate-cse-2027-syllabus-changes`.
+- Why:
+  Allows instant access to critical syllabus updates from anywhere in the app without requiring search or drawer navigation.
+
 ### DEC-001: Do We Need Figma For UI?
 
 - Status: Recommended for major UI work, optional for small changes

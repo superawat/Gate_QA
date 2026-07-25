@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-07-25
+
+### Added
+- **Blog Hub Multi-Page Pagination & Category Filter Tabs (`BlogListPage.jsx`)**:
+  - Implemented category filter tabs (`All`, `Exam Guides`, `Syllabus Updates`, `Subject Guides`) with memoized search and category filtering logic.
+  - Added 6-resource multi-page pagination controls (`[Previous] 1 2 3 [Next]`) with smooth scroll-to-top execution on page transition.
+  - Updated Vitest assertions in `BlogListPage.test.jsx` for standard Vitest DOM matching and article title verification.
+- **GATE CS 2027 Syllabus Revision Guide (`editorialPages.js`)**:
+  - Published comprehensive analysis of the official GATE CS 2027 syllabus released by IIT Madras (`/gate-cse-2027-syllabus-changes`).
+  - Added subject-by-subject breakdown for the 3 modified technical sections: Digital Logic (refined minimization techniques), Computer Organization & Architecture (refined hardwired/microprogrammed control unit & memory performance), and Computer Networks (significant scope reduction: removed UDP, ARP, DHCP, ICMP, SMTP, FTP, Email, Flooding, Shortest Path).
+  - Integrated Executive Summary change stats card, reassurance callout, omitted topics list, preparation checklist, and FAQ schema.
+  - Replaced raw emojis with proper SVG icons (`FaChartLine`, `FaSearch`, `FaCogs`, `FaCheckCircle`, `FaFileAlt`, `FaCoins`, `FaGraduationCap`, `FaBookOpen`, `FaExternalLinkAlt`, `FaMinusCircle`).
+  - Added verified official links & download cards for the IIT Madras GATE 2027 portal (`gate2027.iitm.ac.in`), GATE CS 2027 Syllabus PDF, and GA 2027 Syllabus PDF.
+  - Updated `/gate-2027-syllabus` article data with 2027 syllabus content and corrected outdated FAQs.
+- **Global Header Quick-Access Shortcut (`AppHeader.jsx`)**:
+  - Added a dedicated "GATE 2027 Syllabus Changes" quick-access button (`FaNewspaper`) in the right-side header cluster.
+  - Styled with emerald theme and an animated pulsing ping badge (`animate-ping`) for immediate discoverability across the application.
+- **Editorial Page Component & UI Redesign (`EditorialPage.jsx`, `index.css`)**:
+  - Modernized comparison layout to a documentation-style "Before → After → What's Changed" format (inspired by Stripe, GitHub, Vercel docs).
+  - Added responsive card transformation for comparison tables on mobile (`<640px`) to eliminate horizontal scrolling.
+  - Redesigned callouts into compact left-border annotations to minimize vertical space consumption.
+  - Added `split-callout` component for clean two-column decision matrix ("No Changes Needed" vs "Review & Update Required").
+  - Added `official-links` component for interactive link cards with icons and external link indicators.
+  - Added hero header metadata row displaying last updated date and estimated reading time with gradient accent bar.
+  - Added `ep-diff-block__badge--red` style for scope reduction status badges.
+
+### Fixed
+- **Syllabus Data Accuracy & FAQ Alignment**:
+  - Corrected COA status badge from "Expanded" to "Refined" (amber) and CN status badge from "Updated" to "Reduced" (red).
+  - Fixed outdated FAQs in `/gate-2027-syllabus` that previously claimed no changes were expected for 2027.
+- **Test Suite Integrity**:
+  - All 45 Vitest test files and 293 unit tests passing cleanly.
+  - TypeScript `npm run typecheck` passing with 0 errors.
+
 ## 2026-07-16
 
 ### Added

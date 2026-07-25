@@ -18,6 +18,14 @@ import {
   FaClock,
   FaBullseye,
   FaTrophy,
+  FaFileAlt,
+  FaChartLine,
+  FaSearch,
+  FaCogs,
+  FaCheckCircle,
+  FaCoins,
+  FaExternalLinkAlt,
+  FaMinusCircle,
 } from "react-icons/fa";
 
 
@@ -183,6 +191,15 @@ const iconMap = {
   warning: <FaExclamationTriangle size={14} />,
   trophy: <FaTrophy size={14} />,
   bullseye: <FaBullseye size={14} />,
+  file: <FaFileAlt size={14} />,
+  graduation: <FaGraduationCap size={14} />,
+  coins: <FaCoins size={14} />,
+  chart: <FaChartLine size={14} />,
+  search: <FaSearch size={14} />,
+  cogs: <FaCogs size={14} />,
+  "check-circle": <FaCheckCircle size={14} />,
+  "minus-circle": <FaMinusCircle size={14} />,
+  "external-link": <FaExternalLinkAlt size={14} />,
 };
 
 const InfoCard = ({ icon, title, subtitle, accent }) => {
@@ -256,8 +273,8 @@ const RelatedArticles = ({ articles }) => (
 
 const calloutVariants = {
   info:    { icon: <FaLightbulb />,          bg: "bg-sky-500/10",     border: "border-sky-500/40",     text: "text-sky-500",     label: "Note" },
-  warning: { icon: <FaExclamationTriangle />, bg: "bg-amber-500/10",   border: "border-amber-500/40",   text: "text-amber-500",   label: "Strategy" },
-  tip:     { icon: <FaCheck />,              bg: "bg-emerald-500/10", border: "border-emerald-500/40", text: "text-emerald-500", label: "Tip" },
+  warning: { icon: <FaExclamationTriangle />, bg: "bg-amber-500/10",   border: "border-amber-500/40",   text: "text-amber-500",   label: "Action Required" },
+  tip:     { icon: <FaCheck />,              bg: "bg-emerald-500/10", border: "border-emerald-500/40", text: "text-emerald-500", label: "No Changes Needed" },
   "quick-answer": { icon: <FaCheck />, bg: "bg-emerald-500/10", border: "border-emerald-500/40", text: "text-emerald-500", label: "Quick Answer" },
 };
 
@@ -392,14 +409,58 @@ function renderBodyItems(bodyItems) {
               {item.rows.map((row, rIdx) => (
                 <tr key={rIdx} className={rIdx % 2 === 0 ? "ep-table__row-even" : "ep-table__row-odd"}>
                   {row.map((cell, cIdx) => (
-                    <td key={cIdx} className={cIdx === 0 ? "ep-table__td ep-table__td--head" : "ep-table__td"}>
-                      {cell}
-                    </td>
+                    <td
+                      key={cIdx}
+                      data-label={item.headers[cIdx] || ""}
+                      className={cIdx === 0 ? "ep-table__td ep-table__td--head" : "ep-table__td"}
+                      dangerouslySetInnerHTML={{ __html: cell }}
+                    />
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+      );
+    }
+
+    if (item.type === "subject-comparison") {
+      return (
+        <div key={idx} className="ep-diff-block">
+          <div className="ep-diff-block__header">
+            <h3 className="ep-diff-block__title">{item.title}</h3>
+            <span className={`ep-diff-block__badge ep-diff-block__badge--${item.statusVariant || "blue"}`}>
+              <span className="ep-diff-block__status-dot" />
+              {item.statusText}
+            </span>
+          </div>
+
+          <div className="ep-diff-block__grid">
+            <div className="ep-diff-panel ep-diff-panel--prev">
+              <div className="ep-diff-panel__header">
+                <span className="ep-diff-panel__tag">GATE CS 2026</span>
+              </div>
+              <div className="ep-diff-panel__body" dangerouslySetInnerHTML={{ __html: item.prevSyllabus }} />
+            </div>
+
+            <div className="ep-diff-panel ep-diff-panel--next">
+              <div className="ep-diff-panel__header">
+                <span className="ep-diff-panel__tag ep-diff-panel__tag--active">GATE CS 2027</span>
+              </div>
+              <div className="ep-diff-panel__body" dangerouslySetInnerHTML={{ __html: item.nextSyllabus }} />
+            </div>
+          </div>
+
+          <div className="ep-diff-block__meta">
+            <div className="ep-diff-meta__col">
+              <span className="ep-diff-meta__label">Changes</span>
+              <p className="ep-diff-meta__text" dangerouslySetInnerHTML={{ __html: item.changes }} />
+            </div>
+            <div className="ep-diff-meta__col">
+              <span className="ep-diff-meta__label">Impact</span>
+              <p className="ep-diff-meta__text" dangerouslySetInnerHTML={{ __html: item.impact }} />
+            </div>
+          </div>
         </div>
       );
     }
@@ -440,6 +501,66 @@ function renderBodyItems(bodyItems) {
 
     if (item.type === "related-articles") {
       return <RelatedArticles key={idx} articles={item.articles} />;
+    }
+
+    if (item.type === "split-callout") {
+      return (
+        <div key={idx} className="ep-split-callout">
+          <div className="ep-split-callout__col ep-split-callout__col--ok">
+            <div className="ep-split-callout__header ep-split-callout__header--ok">
+              <FaCheck size={10} />
+              No Changes Needed
+            </div>
+            <ul className="ep-split-callout__items">
+              {item.okItems.map((li, i) => (
+                <li key={i} className="ep-split-callout__item">
+                  <span className="ep-split-callout__item-dot ep-split-callout__item-dot--ok" />
+                  <span dangerouslySetInnerHTML={{ __html: li }} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="ep-split-callout__col ep-split-callout__col--warn">
+            <div className="ep-split-callout__header ep-split-callout__header--warn">
+              <FaExclamationTriangle size={10} />
+              Review &amp; Update
+            </div>
+            <ul className="ep-split-callout__items">
+              {item.warnItems.map((li, i) => (
+                <li key={i} className="ep-split-callout__item">
+                  <span className="ep-split-callout__item-dot ep-split-callout__item-dot--warn" />
+                  <span dangerouslySetInnerHTML={{ __html: li }} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    if (item.type === "official-links") {
+      return (
+        <div key={idx} className="ep-official-links">
+          {item.links.map((link, i) => (
+            <a
+              key={i}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ep-official-link"
+            >
+              <span className="ep-official-link__icon">
+                {link.icon === "pdf" ? <FaFileAlt size={14} /> : <FaExternalLinkAlt size={14} />}
+              </span>
+              <div className="ep-official-link__body">
+                <div className="ep-official-link__label">{link.label}</div>
+                <div className="ep-official-link__url">{link.href.replace("https://", "")}</div>
+              </div>
+              <FaArrowRight size={11} className="ep-official-link__arrow" />
+            </a>
+          ))}
+        </div>
+      );
     }
 
     return null;
@@ -559,6 +680,24 @@ export default function EditorialPage({ data }) {
               {data.eyebrow}
             </span>
             <h1 className="ep-hero__h1">{data.h1}</h1>
+            {/* Metadata row */}
+            <div className="ep-hero__meta">
+              {data.dateModified && (
+                <span className="ep-hero__meta-item">
+                  <FaCalendarAlt size={11} />
+                  Updated {new Date(data.dateModified).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                </span>
+              )}
+              {data.dateModified && data.readingTime && (
+                <span className="ep-hero__meta-sep" aria-hidden="true" />
+              )}
+              {data.readingTime && (
+                <span className="ep-hero__meta-item">
+                  <FaClock size={11} />
+                  {data.readingTime} min read
+                </span>
+              )}
+            </div>
           </motion.header>
 
           {/* Mobile ToC */}

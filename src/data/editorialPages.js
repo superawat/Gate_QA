@@ -1,5 +1,179 @@
 export const EDITORIAL_PAGES = [
   {
+    path: "/gate-cse-2027-syllabus-changes",
+    keyword: "GATE 2027 Syllabus Changes",
+    category: "Syllabus Updates",
+    showInBlog: true,
+    dateModified: "2026-07-25",
+    readingTime: 7,
+    h1: "GATE CS 2027 Syllabus Revision: Key Changes, Removed Topics & Detailed Analysis",
+    description:
+      "Complete analysis of GATE CS 2027 syllabus changes by IIT Madras: removed topics in Computer Networks, refinements in Digital Logic and Computer Organization, unchanged subjects, and revised preparation strategy.",
+    eyebrow: "Syllabus Update 2027",
+    ctaLabel: "Practice GATE CSE PYQs for the Updated 2027 Syllabus →",
+    ctaHref: "/practice",
+    breadcrumbs: [
+      { name: "Home", url: "https://gateqa.in/" },
+      { name: "Syllabus Changes", url: "https://gateqa.in/gate-cse-2027-syllabus-changes" },
+    ],
+    relatedArticles: [
+      { path: "/gate-2027-syllabus", label: "GATE CS Full Syllabus Blueprint" },
+      { path: "/gate-2027", label: "GATE 2027 Notification & Expected Dates" },
+      { path: "/gate-cutoff", label: "GATE CS Cutoff & IIT Targets" },
+      { path: "/gate-exam-pattern", label: "GATE Exam Pattern — 65Q, 100 Marks" },
+    ],
+    richCopy: [
+      "The official GATE 2027 Computer Science & Information Technology (CS) syllabus released by IIT Madras introduces a few wording refinements and updates to the topics explicitly listed compared with GATE 2026. Understanding these revisions ensures you focus your preparation on active topics while skipping excluded material.",
+      { type: "h2", text: "Executive Summary & Change Stats" },
+      {
+        type: "cards",
+        items: [
+          { icon: "chart", accent: "blue", title: "Sections Changed", subtitle: "3 of 10 Technical Sections (Digital Logic, COA, Computer Networks)" },
+          { icon: "check-circle", accent: "green", title: "Sections Unchanged", subtitle: "7 Technical Sections + General Aptitude (100% Identical)" },
+          { icon: "search", accent: "purple", title: "Newly Explicit Topics", subtitle: "5 Topics (K-Maps, Tabular Method, Hardwired/Microprogrammed Control, etc.)" },
+          { icon: "warning", accent: "amber", title: "Topics No Longer Explicitly Mentioned", subtitle: "9 Topics (UDP, ARP, DHCP, ICMP, SMTP, FTP, Email, Flooding, Shortest Path)" }
+        ]
+      },
+      "<strong>Overall impact:</strong> The GATE CS 2027 syllabus remains largely unchanged. Existing preparation material continues to be useful, with only a few targeted updates required.",
+      { type: "callout", variant: "info", text: "<strong>Most GATE CSE 2026 study material remains relevant for GATE CSE 2027.</strong> The overall syllabus structure and the majority of technical subjects are unchanged." },
+      { type: "h2", text: "Why These Changes Matter" },
+      "Most revisions clarify or reorganize existing topics rather than introducing entirely new areas. The most noticeable changes appear in <strong>Computer Networks</strong>, while <strong>Computer Organization & Architecture</strong> now explicitly lists several implementation-level topics.",
+      { type: "h2", text: "Subject-by-Subject Syllabus Breakdown (2026 → 2027)" },
+      "Below is the exact side-by-side comparison for the 3 modified subjects in the GATE CS 2027 syllabus:",
+      {
+        type: "subject-comparison",
+        title: "Digital Logic",
+        statusText: "Clarified",
+        statusVariant: "green",
+        prevSyllabus: "Boolean algebra. Combinational and sequential circuits. Minimization. Number representations and computer arithmetic (fixed and floating point).",
+        nextSyllabus: "Boolean algebra and minimization —<br/>• Algebraic technique<br/>• Karnaugh map (K-Map)<br/>• Tabular method (Quine-McCluskey)<br/>Design of combinational and sequential circuits.<br/>Number representation and arithmetic (fixed and floating point).",
+        changes: "Explicitly lists algebraic, Karnaugh Map, and tabular minimization methods.",
+        impact: "No change in syllabus scope — these techniques were already expected."
+      },
+      {
+        type: "subject-comparison",
+        title: "Computer Organization & Architecture (COA)",
+        statusText: "Refined",
+        statusVariant: "amber",
+        prevSyllabus: "Machine instructions and addressing modes. ALU, data-path and control unit. Instruction pipelining, pipeline hazards. Memory hierarchy: cache, main memory and secondary storage; I/O interface (interrupt and DMA mode).",
+        nextSyllabus: "Instruction set and addressing modes. Design of arithmetic and logic unit (ALU). Design of control unit —<br/>• Hardwired control unit<br/>• Microprogrammed control unit<br/>Memory interfacing and hierarchy: performance, cache memory mapping.<br/>I/O interface (interrupt and DMA). Instruction pipelining, pipeline hazards.",
+        changes: "'Machine instructions' rephrased to 'Instruction set'. Explicitly highlights hardwired & microprogrammed control units.",
+        impact: "Memory hierarchy rephrased around performance and cache memory mapping."
+      },
+      {
+        type: "subject-comparison",
+        title: "Computer Networks (CN)",
+        statusText: "Reduced",
+        statusVariant: "red",
+        prevSyllabus: "Concept of layering: OSI and TCP/IP Protocol Stacks; Basics of packet, circuit and virtual circuit- switching; Data link layer: framing, error detection, Medium Access Control, Ethernet bridging; Routing protocols: shortest path, flooding, distance vector and link state routing; Fragmentation and IP addressing, IPv4, CIDR notation, Basics of IP support protocols (ARP, DHCP, ICMP), Network Address Translation (NAT); Transport layer: flow control and congestion control, UDP, TCP, sockets; Application layer protocols: DNS, SMTP, HTTP, FTP, Email.",
+        nextSyllabus: "Principles of Layering; Basics of switching (circuit, packet and virtual circuit) and performance metrics; Data link layer: error detection, Medium Access Control, Ethernet; Distance vector and link state routing; IPv4 - Fragmentation, CIDR Notation, Network Address Translation; TCP - flow control and congestion control, socket API; DNS and HTTP.",
+        changes: "Several topics (UDP, ARP, DHCP, ICMP, SMTP, FTP, Email, Flooding, Shortest Path) are no longer explicitly mentioned.",
+        impact: "Prioritize TCP flow/congestion control, socket API, IPv4 fragmentation, CIDR, NAT, DNS, and HTTP."
+      },
+      { type: "h2", text: "Topics No Longer Explicitly Mentioned" },
+      "Aspirants can streamline their revision list by reviewing the topics no longer explicitly mentioned under Computer Networks:",
+      {
+        type: "ul",
+        items: [
+          "<strong>Transport Layer:</strong> User Datagram Protocol (UDP) — no longer explicitly mentioned (only TCP and socket API remain).",
+          "<strong>IP Support Protocols:</strong> ARP, DHCP, and ICMP are no longer explicitly mentioned.",
+          "<strong>Application Layer Protocols:</strong> SMTP, FTP, and Email are no longer explicitly mentioned (only DNS and HTTP remain).",
+          "<strong>Routing Mechanisms:</strong> Standalone Shortest Path routing and Flooding are no longer explicitly mentioned (Distance Vector and Link State remain).",
+          "<strong>Data Link Layer:</strong> Explicit mention of 'Framing' and 'Ethernet bridging' simplified to 'Ethernet'."
+        ]
+      },
+      { type: "callout", variant: "warning", text: "<strong>Note:</strong> The GATE syllabus provides a high-level outline. Topics that are no longer explicitly listed should be interpreted based on the official syllabus published for GATE 2027." },
+      { type: "h2", text: "Should You Update Your Existing Notes?" },
+      {
+        type: "split-callout",
+        okItems: [
+          "Engineering Mathematics",
+          "Programming & Data Structures",
+          "Algorithms",
+          "Theory of Computation (TOC)",
+          "Compiler Design",
+          "Operating Systems",
+          "Databases (DBMS)"
+        ],
+        warnItems: [
+          "<strong>Digital Logic</strong> — add K-Maps and tabular minimization if not covered.",
+          "<strong>COA</strong> — update with hardwired & microprogrammed control unit design.",
+          "<strong>Computer Networks</strong> — focus on TCP, IP, DNS, HTTP; deprioritize UDP, ARP, SMTP."
+        ]
+      },
+      { type: "h2", text: "Preparation Checklist for GATE 2027 Aspirants" },
+      {
+        type: "ul",
+        items: [
+          "Compare your notes with the official GATE 2027 syllabus.",
+          "Update COA notes with the newly explicit implementation topics.",
+          "Practice algebraic, K-Map, and tabular minimization methods.",
+          "Review the revised Computer Networks syllabus.",
+          "Continue using existing material for the remaining 7 technical subjects."
+        ]
+      },
+      { type: "h2", text: "Practice Questions for Modified Subjects" },
+      "Start practicing targeted Previous Year Questions (PYQs) for the 3 updated subject areas:",
+      {
+        type: "ul",
+        items: [
+          "<strong>Digital Logic:</strong> <a href='/subjects/digital-logic'>Digital Logic Practice Questions →</a>",
+          "<strong>Computer Organization & Architecture:</strong> <a href='/subjects/coa'>COA Practice Questions →</a>",
+          "<strong>Computer Networks:</strong> <a href='/subjects/computer-networks'>Computer Networks Practice Questions →</a>"
+        ]
+      },
+      { type: "h2", text: "Official Resources" },
+      "Verified official documents released by IIT Madras for GATE 2027:",
+      {
+        type: "official-links",
+        links: [
+          {
+            icon: "globe",
+            label: "Official GATE 2027 Portal (IIT Madras)",
+            href: "https://gate2027.iitm.ac.in/"
+          },
+          {
+            icon: "pdf",
+            label: "GATE CS 2027 Official Syllabus PDF",
+            href: "https://gate2027.iitm.ac.in/static/doc/GATE2027_Syllabus/CS_GATE2027_Syllabus.pdf"
+          },
+          {
+            icon: "pdf",
+            label: "General Aptitude 2027 Official Syllabus PDF",
+            href: "https://gate2027.iitm.ac.in/static/doc/GATE2027_Syllabus/GA_GATE2027_Syllabus.pdf"
+          }
+        ]
+      },
+      {
+        type: "related-articles",
+        articles: [
+          { path: "/gate-2027-syllabus", label: "GATE CS Full Syllabus Blueprint — All 10 Sections" },
+          { path: "/gate-2027", label: "GATE 2027 Official Notification & Exam Dates" },
+          { path: "/gate-cutoff", label: "GATE CS Cutoff & Qualifying Target Marks" },
+          { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" }
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "What are the major changes in the GATE CS 2027 syllabus?",
+        answer: "The major changes are in Computer Networks, where several topics (UDP, ARP, DHCP, ICMP, SMTP, FTP, Email, and Flooding) have been removed. Digital Logic and COA have received minor wording refinements, while the remaining 7 technical subjects are unchanged."
+      },
+      {
+        question: "Is UDP removed from GATE CS 2027 Computer Networks?",
+        answer: "Yes, UDP has been removed from the Transport Layer syllabus in GATE CS 2027. The syllabus now specifies 'TCP - flow control and congestion control, socket API'."
+      },
+      {
+        question: "Did the General Aptitude syllabus change for GATE 2027?",
+        answer: "No, the General Aptitude (GA) section syllabus remains 100% unchanged for GATE 2027."
+      },
+      {
+        question: "Where can I download the official GATE CS 2027 syllabus PDF?",
+        answer: "You can download the official GATE CS 2027 syllabus PDF directly from the official IIT Madras GATE 2027 portal at gate2027.iitm.ac.in."
+      }
+    ]
+  },
+  {
     path: "/gate-2027",
     keyword: "GATE 2027",
     showInBlog: true,
@@ -43,10 +217,10 @@ export const EDITORIAL_PAGES = [
       {
         type: "cards",
         items: [
-          { icon: "📄", accent: "blue",   title: "Paper Combinations",  subtitle: "Verify the updated list of valid two-paper combinations if you plan to attempt two subjects." },
-          { icon: "📘", accent: "purple", title: "Syllabus Revisions",   subtitle: "Minor topic-level changes can occur each cycle. Cross-check your subject's syllabus against the previous year's brochure." },
-          { icon: "🎓", accent: "green",  title: "Eligibility Criteria", subtitle: "Confirm that the relaxed eligibility (3rd-year UG students eligible) remains in force for 2027." },
-          { icon: "💰", accent: "amber",  title: "Application Fee",     subtitle: "Fees may be revised. Budget approximately ₹1,000 (reserved) or ₹2,000 (general) per paper attempted." }
+          { icon: "file", accent: "blue",   title: "Paper Combinations",  subtitle: "Verify the updated list of valid two-paper combinations if you plan to attempt two subjects." },
+          { icon: "book", accent: "purple", title: "Syllabus Revisions",   subtitle: "Minor topic-level changes can occur each cycle. Cross-check your subject's syllabus against the previous year's brochure." },
+          { icon: "graduation", accent: "green",  title: "Eligibility Criteria", subtitle: "Confirm that the relaxed eligibility (3rd-year UG students eligible) remains in force for 2027." },
+          { icon: "coins", accent: "amber",  title: "Application Fee",     subtitle: "Fees may be revised. Budget approximately ₹1,000 (reserved) or ₹2,000 (general) per paper attempted." }
         ]
       },
       { type: "h2", text: "Expected Application Fees" },
@@ -97,6 +271,8 @@ export const EDITORIAL_PAGES = [
     path: "/gate-2027-syllabus",
     keyword: "GATE 2027 CS Syllabus",
     showInBlog: true,
+    dateModified: "2026-07-25",
+    readingTime: 10,
     h1: "The Ultimate GATE CS & IT Syllabus Blueprint",
     description:
       "Complete GATE 2027 CS syllabus covering Engineering Mathematics, Digital Logic, Computer Organization, Programming & Data Structures, Algorithms, Theory of Computation, Compiler Design, Operating Systems, Databases, and Computer Networks with topic-wise weightage.",
@@ -115,7 +291,8 @@ export const EDITORIAL_PAGES = [
       { path: "/who-will-conduct-gate-2027", label: "Who Will Conduct GATE 2027?" },
     ],
     richCopy: [
-      "To help plan a structured study schedule, the official GATE Computer Science syllabus has been organized into a scannable, subject-wise roadmap below.",
+      "To help plan a structured study schedule, the official GATE Computer Science syllabus has been organized into a scannable, subject-wise roadmap below. This reflects the <strong>GATE CS 2027 syllabus</strong> as officially published by IIT Madras.",
+      { type: "callout", variant: "info", text: "<strong>Syllabus changes vs 2026:</strong> 3 of 10 technical sections have been updated — Digital Logic (refined), COA (refined), and Computer Networks (scope reduced). The remaining 7 sections and General Aptitude are unchanged. See the <a href='/gate-cse-2027-syllabus-changes'>full changes analysis</a> for a section-by-section comparison." },
       { type: "h2", text: "Part 1: Official Technical Syllabus" },
       { type: "h3", text: "Section 1: Engineering Mathematics" },
       {
@@ -131,21 +308,21 @@ export const EDITORIAL_PAGES = [
       {
         type: "ul",
         items: [
-          "Boolean algebra.",
-          "Combinational and sequential circuits.",
-          "Minimization.",
-          "Number representations and computer arithmetic (fixed and floating point)."
+          "<strong>Boolean algebra and minimization</strong> — algebraic technique, Karnaugh map (K-Map), tabular method (Quine-McCluskey).",
+          "Design of combinational and sequential circuits.",
+          "Number representation and arithmetic (fixed and floating point)."
         ]
       },
       { type: "h3", text: "Section 3: Computer Organization and Architecture (COA)" },
       {
         type: "ul",
         items: [
-          "Machine instructions and addressing modes.",
-          "ALU, data-path, and control unit.",
-          "Instruction pipelining and pipeline hazards.",
-          "Memory hierarchy: Cache, main memory, and secondary storage.",
-          "I/O interface (interrupt and DMA mode)."
+          "Instruction set and addressing modes.",
+          "Design of arithmetic and logic unit (ALU).",
+          "<strong>Design of control unit</strong> — hardwired and microprogrammed.",
+          "Memory interfacing and hierarchy: performance, cache memory mapping.",
+          "I/O interface (interrupt and DMA).",
+          "Instruction pipelining, pipeline hazards."
         ]
       },
       { type: "h3", text: "Section 4: Programming and Data Structures" },
@@ -214,14 +391,13 @@ export const EDITORIAL_PAGES = [
       {
         type: "ul",
         items: [
-          "Concept of Layering: OSI and TCP/IP Protocol Stacks.",
-          "Switching Basics: Packet, circuit, and virtual circuit-switching.",
-          "Data Link Layer: Framing, error detection, Medium Access Control, and Ethernet bridging.",
-          "Routing Protocols: Shortest path, flooding, distance vector, and link state routing.",
-          "Network Layer: Fragmentation and IP addressing, IPv4, CIDR notation.",
-          "IP Support Protocols: Basics of ARP, DHCP, ICMP, and Network Address Translation (NAT).",
-          "Transport Layer: Flow control and congestion control, UDP, TCP, and sockets.",
-          "Application Layer Protocols: DNS, SMTP, HTTP, FTP, and Email."
+          "Principles of Layering.",
+          "Basics of switching (circuit, packet, and virtual circuit) and performance metrics.",
+          "Data Link Layer: error detection, Medium Access Control, Ethernet.",
+          "Distance vector and link state routing.",
+          "<strong>IPv4</strong> — Fragmentation, CIDR Notation, Network Address Translation (NAT).",
+          "<strong>TCP</strong> — flow control and congestion control, socket API.",
+          "Application Layer: DNS and HTTP."
         ]
       },
       { type: "h2", text: "Part 2: Strategic Analysis & Preparation Priority" },
@@ -248,6 +424,28 @@ export const EDITORIAL_PAGES = [
           ["Computer Networks", "Subnetting (CIDR), TCP Congestion Control", "Forgetting to account for header overheads in fragmentation."]
         ]
       },
+      { type: "h2", text: "Official Syllabus Links & Downloads" },
+      "Download official GATE 2027 PDF documents directly from the organizing institute portal:",
+      {
+        type: "official-links",
+        links: [
+          {
+            icon: "globe",
+            label: "Official GATE 2027 Portal (IIT Madras)",
+            href: "https://gate2027.iitm.ac.in/"
+          },
+          {
+            icon: "pdf",
+            label: "GATE CS 2027 Official Syllabus PDF",
+            href: "https://gate2027.iitm.ac.in/static/doc/GATE2027_Syllabus/CS_GATE2027_Syllabus.pdf"
+          },
+          {
+            icon: "pdf",
+            label: "General Aptitude 2027 Official Syllabus PDF",
+            href: "https://gate2027.iitm.ac.in/static/doc/GATE2027_Syllabus/GA_GATE2027_Syllabus.pdf"
+          }
+        ]
+      },
       {
         type: "related-articles",
         articles: [
@@ -262,7 +460,7 @@ export const EDITORIAL_PAGES = [
     faqs: [
       {
         question: "When will the official GATE 2027 syllabus be released?",
-        answer: "The official GATE 2027 syllabus be released in August 2026 by IIT Madras on the official GATE 2027 website. Until then, the GATE 2026 syllabus serves as an accurate reference since the syllabus has remained unchanged since 2022.",
+        answer: "The official GATE 2027 syllabus has been released by IIT Madras. It is available for download from the official GATE 2027 portal at gate2027.iitm.ac.in. This article reflects the officially published 2027 syllabus.",
       },
       {
         question: "Which subjects carry the highest weightage in the GATE CS exam?",
@@ -270,7 +468,7 @@ export const EDITORIAL_PAGES = [
       },
       {
         question: "Is the GATE CS 2027 syllabus different from 2026?",
-        answer: "No significant changes are expected. The syllabus has remained consistent since 2022. Candidates can follow the GATE 2026 official syllabus PDF as a complete reference for their GATE 2027 preparation.",
+        answer: "Yes, the GATE CS 2027 syllabus has changes in 3 sections. Digital Logic and Computer Organization & Architecture have minor wording refinements. Computer Networks has a significant reduction: UDP, ARP, DHCP, ICMP, SMTP, FTP, Email, Flooding, and Shortest Path routing are no longer explicitly listed. The remaining 7 technical subjects and General Aptitude are unchanged.",
       },
     ],
   },

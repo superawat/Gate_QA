@@ -239,6 +239,24 @@ Rules:
   - desktop: draggable floating panel
   - mobile: full-screen panel
 
+## Editorial Pages & Content Layout
+
+- Editorial pages (`/gate-cse-2027-syllabus-changes`, `/gate-2027-syllabus`, `/gate-2027`, `/gate-cs-eligibility`, `/gate-exam-pattern`, `/who-will-conduct-gate-2027`) render through `EditorialPage.jsx` using `EDITORIAL_PAGES` dataset from `src/data/editorialPages.js`.
+- Layout architecture:
+  - 3-column grid on desktop (Scroll-Spy Table of Contents, main article body, preparation sidebar).
+  - Mobile drawer for Table of Contents (`MobileToCDrawer`).
+- Dynamic `richCopy` block types supported:
+  - `h2`, `h3`, prose strings, `ul` with custom dots.
+  - `cards`: grid of icon-based `InfoCard` components.
+  - `subject-comparison`: Stripe/Vercel-style "Before → After → What's Changed" documentation diff block (`ep-diff-block`).
+  - `split-callout`: two-column decision matrix ("No Changes Needed" vs "Review & Update Required").
+  - `official-links`: interactive link cards with icons, target URLs, and external link indicators.
+  - `callout`: compact left-border annotations (variants: `info`, `warning`, `tip`, `quick-answer`).
+  - `timeline` and `tracks` for preparation roadmaps.
+  - Mobile table transformation (`ep-table` to stacked card format below `640px`).
+- Hero header includes metadata line (last updated date + reading time) and gradient accent line.
+- `BlogListPage.jsx` supports category filter pills (`All`, `Exam Guides`, `Syllabus Updates`, `Subject Guides`) and 6-item multi-page pagination with smooth scroll-to-top execution.
+
 ## Known caveats
 
 - Some legacy UI files still contain `dark:` classes; treat them as Tailwind-to-token cleanup work unless a concrete contrast regression is found.
