@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-07-26
+
+### Changed
+- **Mock Test Top Banner GATE 2027 Branding (`MockTestHeader.jsx`, `MockTest.css`)**:
+  - Updated mock test header title to `"Graduate Aptitude Test in Engineering 2027"`.
+  - Added official organizing institute subtitle: `"Organizing Institute: Indian Institute of Technology Madras"`.
+  - Increased GATE logo container dimensions from 48px to 68px (`h-[68px] w-[68px]`).
+  - Updated header text color, top border accent, and section dividers to official IIT Madras logo maroon (`#781f19`).
+  - Retained pure white background (`#ffffff`) for header contrast.
+
 ## 2026-07-25
 
 ### Added

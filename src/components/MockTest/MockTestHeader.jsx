@@ -160,10 +160,11 @@ const MockTestHeader = ({
                 <img
                     src={`${baseAssetUrl}mocktest/gate-logo-left-new.png`}
                     alt="GATE logo"
-                    className="mocktest-top-logo h-12 w-12 object-contain"
+                    className="mocktest-top-logo h-[68px] w-[68px] object-contain"
                 />
                 <div className="mocktest-top-center text-center">
-                    <div className="mocktest-top-title">Graduate Aptitude Test in Engineering Mock</div>
+                    <div className="mocktest-top-title">Graduate Aptitude Test in Engineering 2027</div>
+                    <div className="mocktest-top-subtitle">Organizing Institute: Indian Institute of Technology Madras</div>
                 </div>
                 <img
                     src={`${baseAssetUrl}iit-madras-logo.svg`}
