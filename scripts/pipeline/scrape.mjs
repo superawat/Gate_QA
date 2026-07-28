@@ -287,6 +287,26 @@ async function scrapeQuestion(url) {
         )) {
             bad.remove();
         }
+
+        // Clean mismatched thumbnail LIs in option lists
+        const lists = qContent.querySelectorAll("ol, ul");
+        for (const list of lists) {
+            const lis = Array.from(list.querySelectorAll("li"));
+            if (lis.length > 5 && lis.length % 2 === 0) {
+                for (const li of lis) {
+                    const img = li.querySelector("img");
+                    if (img) {
+                        const alt = img.getAttribute("alt") || "";
+                        const altMatch = alt.match(/GA-(\d+)/i);
+                        const titleMatch = title.match(/Question:?\s*(\d+)/i) || title.match(/GA-?(\d+)/i);
+                        if (altMatch && titleMatch && altMatch[1] !== titleMatch[1]) {
+                            li.remove();
+                        }
+                    }
+                }
+            }
+        }
+
         questionHtml = qContent.innerHTML;
     }
 
