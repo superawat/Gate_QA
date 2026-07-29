@@ -1163,5 +1163,157 @@ export const EDITORIAL_PAGES = [
         answer: "The qualifying cutoff marks are determined dynamically based on the performance of candidates and the difficulty of the paper set for that specific year, not directly by the organizing institute itself. However, if the organizing institute compiles a conceptually difficult paper, raw qualifying cutoffs may drop accordingly."
       }
     ]
+  },
+  {
+    path: "/gate-cs-vs-gate-da",
+    keyword: "GATE CS vs GATE DA",
+    category: "Exam Strategy",
+    showInBlog: true,
+    dateModified: "2026-07-29",
+    readingTime: 6,
+    h1: "GATE CS vs GATE DA (Data Science & AI): Comprehensive Comparison, Syllabus & Career Opportunities",
+    description: "Compare GATE CS (Computer Science) and GATE DA (Data Science & AI): syllabus overlap, difficulty, M.Tech admission chances at IITs, PSU recruitment eligibility, and dual-paper strategy.",
+    eyebrow: "Paper Comparison",
+    ctaLabel: "Practice GATE CS & Aptitude PYQs →",
+    ctaHref: "/practice",
+    breadcrumbs: [
+      { name: "Home", url: "https://gateqa.in/" },
+      { name: "GATE CS vs GATE DA", url: "https://gateqa.in/gate-cs-vs-gate-da" }
+    ],
+    relatedArticles: [
+      { path: "/gate-2027-syllabus", label: "GATE 2027 CS Syllabus Blueprint" },
+      { path: "/gate-cs-weightage", label: "GATE CS Subject-Wise Weightage" },
+      { path: "/gate-cutoff", label: "GATE CS Qualifying & Admission Cutoffs" }
+    ],
+    richCopy: [
+      "The introduction of GATE Data Science and Artificial Intelligence (DA) as a primary paper has created a major strategic option for engineering candidates. Students can appear for both GATE CS and GATE DA as a primary/secondary paper combination.",
+      { type: "h2", text: "Key Differences at a Glance" },
+      {
+        type: "cards",
+        items: [
+          { icon: "book", accent: "blue", title: "GATE CS Syllabus", subtitle: "Core CS fundamentals: OS, DBMS, CN, Algorithms, TOC, Compiler, COA, Digital Logic, Math, Aptitude." },
+          { icon: "cpu", accent: "purple", title: "GATE DA Syllabus", subtitle: "Data focus: Linear Algebra, Calculus, Probability, Python, Data Structures, Algorithms, DBMS, ML, AI." },
+          { icon: "target", accent: "green", title: "Syllabus Overlap", subtitle: "Approx 40–50% overlap in Mathematics, Algorithms, Data Structures, and Database Systems." },
+          { icon: "award", accent: "amber", title: "PSU Eligibility", subtitle: "GATE CS is accepted by almost all PSUs (IOCL, NTPC, ISRO, BARC); GATE DA acceptance is growing." }
+        ]
+      },
+      { type: "h2", text: "Syllabus Overlap Analysis" },
+      "If you prepare for GATE CS, you automatically cover linear algebra, calculus, probability, algorithms, data structures, and database fundamentals needed for GATE DA. The main additional topics required for GATE DA are Machine Learning (Supervised/Unsupervised), AI search algorithms, and Python programming constructs.",
+      { type: "callout", variant: "info", text: "<strong>Dual-Paper Combination:</strong> Candidates can select GATE CS as primary and GATE DA as secondary paper, maximizing admission opportunities across IIT M.Tech CS and AI programs." }
+    ],
+    faqs: [
+      {
+        question: "Can I write both GATE CS and GATE DA in the same year?",
+        answer: "Yes, GATE rules allow candidates to choose a second paper combination. GATE CS and GATE DA are an officially approved paper combination."
+      },
+      {
+        question: "Which paper is easier: GATE CS or GATE DA?",
+        answer: "GATE DA has a smaller core syllabus with less hardware emphasis (no COA, Digital Logic, Compiler, TOC), but tests deeper mathematical probability, linear algebra, and machine learning concepts."
+      },
+      {
+        question: "Do IITs accept GATE DA scores for M.Tech Computer Science?",
+        answer: "Top IITs accept GATE DA for M.Tech in Data Science, AI, and Interdisciplinary Data programs. M.Tech CSE core programs primarily require GATE CS scores."
+      }
+    ]
+  },
+  {
+    path: "/gate-cutoff-iit-bombay",
+    keyword: "GATE CS Cutoff IIT Bombay",
+    category: "Admission Cutoffs",
+    showInBlog: true,
+    dateModified: "2026-07-29",
+    readingTime: 5,
+    h1: "GATE CS Cutoff for IIT Bombay: M.Tech Admission Marks, Category-Wise GATE Score Requirements",
+    description: "Detailed GATE Computer Science cutoff analysis for IIT Bombay M.Tech admissions (TA, RA, and Software Engineering specializations), category-wise score trends (General, OBC, SC, ST, EWS), and qualifying vs admission cutoffs.",
+    eyebrow: "IIT Bombay Admission Cutoffs",
+    ctaLabel: "Solve GATE CS PYQs to Target Top 100 Rank →",
+    ctaHref: "/practice",
+    breadcrumbs: [
+      { name: "Home", url: "https://gateqa.in/" },
+      { name: "IIT Bombay Cutoff", url: "https://gateqa.in/gate-cutoff-iit-bombay" }
+    ],
+    relatedArticles: [
+      { path: "/gate-cutoff", label: "All IITs GATE CS Cutoff Overview" },
+      { path: "/who-will-conduct-gate-2027", label: "Organizing IIT Rotation & Exam Schedule" }
+    ],
+    richCopy: [
+      "IIT Bombay is the top destination for GATE Computer Science aspirants. Securing an M.Tech seat in CSE at IIT Bombay requires a top-tier GATE score (typically 750+ for General category).",
+      { type: "h2", text: "Expected GATE CS Score Cutoffs for IIT Bombay M.Tech" },
+      {
+        type: "table",
+        headers: ["Category", "M.Tech TA (Teaching Assistantship)", "M.Tech RA (Research Assistantship)", "Qualifying Rank Range"],
+        rows: [
+          ["General / Unreserved", "780 - 850+ score", "740 - 800+ score", "Air 1 - 250"],
+          ["EWS", "730 - 780+ score", "690 - 740+ score", "AIR 250 - 450"],
+          ["OBC-NCL", "700 - 750+ score", "660 - 710+ score", "AIR 350 - 600"],
+          ["SC", "520 - 580+ score", "480 - 540+ score", "AIR 1500 - 2500"],
+          ["ST", "450 - 500+ score", "420 - 470+ score", "AIR 2500 - 4000"],
+          ["PwD", "350 - 420+ score", "320 - 380+ score", "Varies"]
+        ]
+      },
+      { type: "callout", variant: "info", text: "<strong>Difference between Qualifying Cutoff and Admission Cutoff:</strong> The qualifying cutoff (around 25–28 marks) only makes you GATE qualified. Admission to IIT Bombay M.Tech CSE requires a GATE Score above 780 for General category." }
+    ],
+    faqs: [
+      {
+        question: "What GATE rank is needed for IIT Bombay M.Tech Computer Science?",
+        answer: "For General category candidates, an All India Rank (AIR) under 200–250 is typically required for direct M.Tech TA admission in CSE at IIT Bombay."
+      },
+      {
+        question: "Does IIT Bombay conduct a written test or interview for M.Tech CSE?",
+        answer: "Direct admission for M.Tech TA is based purely on GATE score for top rankers. For M.Tech RA (Research Assistantship) and sponsored seats, a written test and interview may be conducted."
+      }
+    ]
+  },
+  {
+    path: "/best-books-for-gate-cs",
+    keyword: "Best Books for GATE CS",
+    category: "Preparation Guide",
+    showInBlog: true,
+    dateModified: "2026-07-29",
+    readingTime: 6,
+    h1: "Best Books for GATE CS Preparation: Standard Textbooks & Reference Guide for Every Subject",
+    description: "Recommended standard textbooks for GATE Computer Science preparation: Operating Systems (Silberschatz), Algorithms (Cormen), DBMS (Korth), Computer Networks (Tanenbaum), TOC (Hopcroft), and Engineering Mathematics (Kreyszig).",
+    eyebrow: "Recommended Books",
+    ctaLabel: "Practice Standard GATE CS Questions Online →",
+    ctaHref: "/practice",
+    breadcrumbs: [
+      { name: "Home", url: "https://gateqa.in/" },
+      { name: "Best Books for GATE CS", url: "https://gateqa.in/best-books-for-gate-cs" }
+    ],
+    relatedArticles: [
+      { path: "/gate-cs-weightage", label: "Subject-Wise GATE CS Weightage" },
+      { path: "/gate-2027-syllabus", label: "Official GATE 2027 Syllabus Blueprint" }
+    ],
+    richCopy: [
+      "Standard textbooks are essential for establishing deep conceptual clarity for GATE CS, especially for Multiple Select Questions (MSQs). Below is the recommended reading list used by top rankers.",
+      { type: "h2", text: "Standard Textbooks by Subject" },
+      {
+        type: "table",
+        headers: ["Subject", "Recommended Standard Textbook", "Authors", "Key Study Focus"],
+        rows: [
+          ["Operating Systems", "Operating System Concepts", "Silberschatz, Galvin, Gagne", "Paging, Semaphores, CPU Scheduling, Deadlocks"],
+          ["Algorithms", "Introduction to Algorithms (CLRS)", "Cormen, Leiserson, Rivest, Stein", "Recurrences, Sorting, Graph Algorithms, Dynamic Programming"],
+          ["Database Systems (DBMS)", "Database System Concepts", "Silberschatz, Korth, Sudarshan", "Normalization, SQL, Relational Algebra, Serializability"],
+          ["Computer Networks", "Computer Networks", "Andrew S. Tanenbaum", "IP Addressing, TCP/UDP, Sliding Window, Routing Protocols"],
+          ["Theory of Computation", "Introduction to Automata Theory", "Hopcroft, Motwani, Ullman", "DFA/NFA, Context-Free Grammars, Turing Machines, Decidability"],
+          ["Compiler Design", "Compilers: Principles, Techniques, & Tools", "Aho, Lam, Sethi, Ullman (Dragon Book)", "Parsing (LL/LR), SDT, Intermediate Code, Optimization"],
+          ["Digital Logic", "Digital Design", "M. Morris Mano", "K-Maps, Combinational Circuits, Sequential Circuits, Multiplexers"],
+          ["Computer Organization", "Computer Organization and Embedded Systems", "Carl Hamacher, Zvonko Vranesic", "Pipelining, Cache Mapping, Addressing Modes, Microprogramming"],
+          ["Engineering Mathematics", "Advanced Engineering Mathematics", "Erwin Kreyszig", "Linear Algebra, Calculus, Probability & Statistics"]
+        ]
+      },
+      { type: "callout", variant: "info", text: "<strong>Pro Tip:</strong> After reading textbook concepts, solve previous year GATE questions (PYQs) immediately on GateQA to reinforce problem-solving speed and accuracy." }
+    ],
+    faqs: [
+      {
+        question: "Is reading standard textbooks necessary for GATE CS?",
+        answer: "Yes, standard textbooks build fundamental clarity required for conceptual MSQs and numerical answer type (NAT) questions. Combining textbook reading with PYQ solving is the most effective approach."
+      },
+      {
+        question: "Can I prepare for GATE CS solely using GATE PYQs?",
+        answer: "Solving PYQs is mandatory, but using standard books or curated notes ensures you understand the underlying theory before attempting new question variations."
+      }
+    ]
   }
 ];
+

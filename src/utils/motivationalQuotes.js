@@ -90,6 +90,8 @@ const RAW_STUDENT_QUOTES = [
   "It is not that I'm so smart, it's just that I stay with problems longer. — Albert Einstein",
   "A person who never made a mistake never tried anything new. — Albert Einstein",
   "Learn from yesterday, live for today, hope for tomorrow. — Albert Einstein",
+  "The more I learn, the more I realize how much I don't know. — Albert Einstein",
+  "The only source of knowledge is experience. — Albert Einstein",
 
   // --- THOMAS EDISON ---
   "There is no substitute for hard work. — Thomas Edison",
@@ -218,9 +220,10 @@ const RAW_STUDENT_QUOTES = [
   "By failing to prepare, you are preparing to fail. — Benjamin Franklin",
   "Energy and persistence conquer all things. — Benjamin Franklin",
   "Well done is better than well said. — Benjamin Franklin",
+  "An investment in knowledge pays the best interest. — Benjamin Franklin",
 
   // --- JOHANN WOLFGANG VON GOETHE ---
-  "Knowing is not enough; we must apply. — Johann Wolfgang von Goethe",
+  "Knowing is not enough; we must apply. Willing is not enough; we must do. — Johann Wolfgang von Goethe",
   "Everything is hard before it is easy. — Johann Wolfgang von Goethe",
   "Whatever you can do or dream you can, begin it. — Johann Wolfgang von Goethe",
 
@@ -253,7 +256,7 @@ const RAW_STUDENT_QUOTES = [
   "There are no shortcuts to any place worth going. — Beverly Sills",
 
   // --- HENRY WADSWORTH LONGFELLOW ---
-  "The heights by great men reached and kept were not attained by sudden flight. — Henry Wadsworth Longfellow",
+  "The heights by great men reached and kept were not attained by sudden flight, but they, while their companions slept, were toiling upward in the night. — Henry Wadsworth Longfellow",
 
   // --- HELEN HAYES ---
   "The expert in anything was once a beginner. — Helen Hayes",
@@ -363,7 +366,16 @@ const RAW_STUDENT_QUOTES = [
   "Small deeds done are better than great deeds planned. — Peter Marshall",
 
   // --- JOHN MILTON ---
-  "Long is the way and hard, that out of Hell leads up to light. — John Milton"
+  "Long is the way and hard, that out of Hell leads up to light. — John Milton",
+
+  // --- ABIGAIL ADAMS ---
+  "Learning is not attained by chance; it must be sought for with ardor and attended to with diligence. — Abigail Adams",
+
+  // --- ESTÉE LAUDER ---
+  "I never dreamed about success. I worked for it. — Estée Lauder",
+
+  // --- JIMMY JOHNSON ---
+  "The difference between ordinary and extraordinary is that little extra. — Jimmy Johnson"
 ];
 
 const seededRandom = (seed) => {

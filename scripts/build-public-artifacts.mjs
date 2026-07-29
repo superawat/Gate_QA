@@ -245,7 +245,17 @@ const SEO_SUBJECT_SLUGS = {
 // These pages all have pre-rendered index.html files (built by buildStaticInfoPages + buildBlogPage
 // + EDITORIAL_PAGES). /mock, /practice, /subjects are excluded — they are SPA-only routes with no
 // static index.html; listing them would cause GSC "Not found (404)" reports on GitHub Pages.
-const ALIAS_SITEMAP_URLS = ["/blog", "/about", "/contact", "/privacy", "/terms", ...EDITORIAL_PAGES.map((page) => page.path)];
+// NOTE: practice/question/ URLs are intentionally excluded from the public sitemap.
+// They are only added to sitemap-questions.xml by prerender-seo-pages.mjs after the build,
+// ensuring only verified static index.html pages are submitted to Googlebot.
+const ALIAS_STATIC_UTILITY_URLS = ["/blog", "/about", "/contact", "/privacy", "/terms"];
+// Priority map for utility pages — blog gets 0.8 (fresh editorial), rest 0.5
+const ALIAS_UTILITY_PRIORITY_MAP = { "/blog": "0.8", "/about": "0.5", "/contact": "0.5", "/privacy": "0.5", "/terms": "0.5" };
+const ALIAS_SITEMAP_URLS = [...ALIAS_STATIC_UTILITY_URLS, ...EDITORIAL_PAGES.map((page) => page.path)];
+// Map of editorial page path → dateModified for accurate sitemap lastmod.
+const EDITORIAL_DATE_MAP = Object.fromEntries(
+  EDITORIAL_PAGES.filter((page) => page.dateModified).map((page) => [page.path, page.dateModified])
+);
 
 
 
@@ -261,39 +271,44 @@ function buildSitemapXml(manifest = {}, questions = [], generatedAt = new Date()
   addUrl(buildCanonicalUrl("/"), "1.0", "weekly");
 
   // NOTE: /practice, /mock, /subjects are SPA-only routes with NO pre-rendered index.html.
-  // Listing them in the sitemap causes GSC 404s on GitHub Pages (bare dirs 404 without index.html).
-  // Only pre-rendered sub-pages (/subjects/<slug>, /practice/question/<uid>) are safe to include.
+  // Only pre-rendered sub-pages (/subjects/<slug>, /gate-YYYY-pyq) are safe to include here.
+  // practice/question/ URLs go to dist/sitemap-questions.xml (written by prerender-seo-pages.mjs).
 
-  ALIAS_SITEMAP_URLS.forEach((path) => {
-    addUrl(buildCanonicalUrl(path), "0.7", "monthly");
+  // Utility pages — blog gets higher priority (fresh content), rest low
+  ALIAS_STATIC_UTILITY_URLS.forEach((p) => {
+    const priority = ALIAS_UTILITY_PRIORITY_MAP[p] || "0.5";
+    const changefreq = p === "/blog" ? "weekly" : "monthly";
+    addUrl(buildCanonicalUrl(p), priority, changefreq);
   });
 
+  // Editorial/informational pages — high priority with real dateModified
+  EDITORIAL_PAGES.forEach((page) => {
+    const lastmod = EDITORIAL_DATE_MAP[page.path] || todayStr;
+    addUrl(buildCanonicalUrl(page.path), "0.9", "monthly", lastmod);
+  });
+
+  // Year PYQ pages — expanded to include all years (1987+) for zero-competition keyword coverage
   const yearSets = Array.isArray(manifest.yearSets) ? manifest.yearSets : [];
   const seenYears = new Set();
   yearSets.forEach((entry) => {
     const year = Number(entry?.year);
-    if (Number.isFinite(year) && year >= 2015 && !seenYears.has(year)) {
+    if (Number.isFinite(year) && year >= 1987 && !seenYears.has(year)) {
       seenYears.add(year);
       const yearDate = `${year}-02-01`;
-      addUrl(buildCanonicalUrl(`/gate-${year}-pyq`), "0.8", "monthly", yearDate);
+      addUrl(buildCanonicalUrl(`/gate-${year}-pyq`), "0.85", "monthly", yearDate);
     }
   });
 
+  // Subject pages
   const subjects = Array.isArray(manifest.subjects) ? manifest.subjects : [];
   subjects.forEach((entry) => {
     const slug = String(entry?.slug || "").trim();
     if (!slug || slug === "unknown" || slug === "legacy-other") return;
     const seoSlug = SEO_SUBJECT_SLUGS[slug] || slug;
-    addUrl(buildCanonicalUrl(`/subjects/${seoSlug}`), "0.8", "monthly");
+    addUrl(buildCanonicalUrl(`/subjects/${seoSlug}`), "0.85", "monthly");
   });
 
-  const questionArray = Array.isArray(questions) ? questions : [];
-  questionArray.forEach((question) => {
-    const uid = question.question_uid;
-    if (uid) {
-      addUrl(buildCanonicalUrl(`/practice/question/${encodeURIComponent(uid)}`), "0.5", "yearly", "");
-    }
-  });
+  // NOTE: practice/question/ URLs intentionally excluded — added to sitemap-questions.xml post-build.
 
   urls.sort((left, right) => left.loc.localeCompare(right.loc));
 
@@ -344,6 +359,8 @@ function buildRobotsTxt() {
     ...allowedPaths.map((p) => `Allow: ${p}`),
     "",
     `Sitemap: ${buildCanonicalUrl("/sitemap.xml")}`,
+    // sitemap-questions.xml is generated post-build by prerender-seo-pages.mjs
+    `Sitemap: ${buildCanonicalUrl("/sitemap-questions.xml")}`,
     "",
   ];
   return lines.join("\n");

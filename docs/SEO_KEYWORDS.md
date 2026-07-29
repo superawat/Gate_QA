@@ -75,6 +75,17 @@ These exact-match user questions are perfect for `FAQPage` schema on the homepag
 * **what is a good score in gate cse** (<100)
 * **what is gate cse exam** (<100)
 
+
+## 4. Pillar Content & High-Intent Target Keywords (Implemented July 2026)
+
+| Target Page | Primary Keyword | Secondary Keywords | Status |
+|---|---|---|---|
+| `/gate-cs-vs-gate-da` | `gate cs vs gate da` | `gate da syllabus overlap`, `gate cs or da which is easier`, `dual paper gate cs da` | ✅ Live |
+| `/gate-cutoff-iit-bombay` | `gate cs cutoff iit bombay` | `iit bombay mtech cse cutoff`, `gate score for iit bombay cse`, `iit bombay gate cutoff category wise` | ✅ Live |
+| `/best-books-for-gate-cs` | `best books for gate cs` | `standard books for gate cse`, `gate cs preparation books`, `best book for algorithms gate` | ✅ Live |
+| `/gate-cse-2027-syllabus-changes` | `gate 2027 syllabus changes` | `gate cs 2027 syllabus iit madras`, `topics removed from gate cs 2027` | ✅ Live |
+| `/who-will-conduct-gate-2027` | `who will conduct gate 2027` | `gate 2027 organizing iit`, `iit madras gate 2027` | ✅ Live |
+
 ---
 
 ## Strategic Recommendations Based on This Data

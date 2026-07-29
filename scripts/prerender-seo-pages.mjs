@@ -372,7 +372,7 @@ function removeExistingJsonLd(html) {
   return html.replace(/\s*<script\s+type=["']application\/ld\+json["'][\s\S]*?<\/script>/gi, "");
 }
 
-function buildMetaTags({ title, description, canonicalUrl, ogType = "website", schemas = [] }) {
+function buildMetaTags({ title, description, canonicalUrl, ogType = "website", schemas = [], keywords = "" }) {
   const safeTitle = escapeAttribute(title);
   const safeDescription = escapeAttribute(description);
   const safeCanonical = escapeAttribute(canonicalUrl);
@@ -385,6 +385,7 @@ function buildMetaTags({ title, description, canonicalUrl, ogType = "website", s
   return [
     `  <title>${escapeHtml(title)}</title>`,
     `  <meta name="description" content="${safeDescription}" />`,
+    keywords ? `  <meta name="keywords" content="${escapeAttribute(keywords)}" />` : "",
     `  <meta name="robots" content="index,follow" />`,
     `  <link rel="canonical" href="${safeCanonical}" />`,
     `  <meta property="og:type" content="${escapeAttribute(ogType)}" />`,
@@ -407,6 +408,8 @@ function replaceHead(html, page) {
   nextHtml = replaceOrInsertHeadTag(nextHtml, /<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeAttribute(page.description)}" />`);
   nextHtml = replaceOrInsertHeadTag(nextHtml, /<meta\s+name=["']robots["'][^>]*>/i, '<meta name="robots" content="index,follow" />');
   nextHtml = replaceOrInsertHeadTag(nextHtml, /<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${escapeAttribute(page.canonicalUrl)}" />`);
+  // Remove existing keywords meta if any before injecting fresh one
+  nextHtml = nextHtml.replace(/<meta\s+name=["']keywords["'][^>]*>\s*/gi, "");
 
   const removableMetaPatterns = [
     /<meta\s+property=["']og:type["'][^>]*>\s*/gi,
@@ -491,7 +494,8 @@ function buildStaticRoot(page) {
             </ul>`;
           }
           if (item.type === "callout") {
-            return `<div style="background:#f0f9ff;border-left:4px solid #0284c7;padding:14px 16px;border-radius:4px;color:#0c4a6e;margin:16px 0;">${escapeHtml(String(item.text || ""))}</div>`;
+            // Pass HTML through directly — callout text contains markup like <strong>, <a>
+            return `<div style="background:#f0f9ff;border-left:4px solid #0284c7;padding:14px 16px;border-radius:4px;color:#0c4a6e;margin:16px 0;">${String(item.text || "")}</div>`;
           }
           if (item.type === "related-articles") {
             return `<nav aria-label="Related articles" style="margin-top:16px;margin-bottom:16px;">
@@ -505,6 +509,30 @@ function buildStaticRoot(page) {
             return `<ol style="color:#334155;padding-left:20px;margin-bottom:16px;">
               ${(item.items || []).map(t => `<li style="margin-bottom:8px;"><strong>Track ${escapeHtml(String(t.letter || ""))}:</strong> ${(t.steps || []).map(s => escapeHtml(String(s))).join(" → ")}</li>`).join("")}
             </ol>`;
+          }
+          // ── subject-comparison: side-by-side syllabus diff renderer ─────
+          if (item.type === "subject-comparison") {
+            const statusColor = item.statusVariant === "green" ? "#16a34a" : item.statusVariant === "amber" ? "#d97706" : "#2563eb";
+            return `<div style="margin:24px 0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;">
+              <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:12px;">
+                <strong style="font-size:16px;color:#0f172a;">${escapeHtml(String(item.title || ''))}</strong>
+                <span style="background:${statusColor};color:#fff;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;">${escapeHtml(String(item.statusText || ''))}</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;">
+                <div style="padding:14px 16px;border-right:1px solid #e2e8f0;">
+                  <p style="font-size:11px;text-transform:uppercase;color:#64748b;font-weight:700;margin:0 0 8px;">GATE 2026 Syllabus</p>
+                  <p style="color:#334155;font-size:14px;margin:0;">${escapeHtml(String(item.prevSyllabus || ''))}</p>
+                </div>
+                <div style="padding:14px 16px;">
+                  <p style="font-size:11px;text-transform:uppercase;color:#64748b;font-weight:700;margin:0 0 8px;">GATE 2027 Syllabus</p>
+                  <p style="color:#0f172a;font-size:14px;margin:0;font-weight:500;">${String(item.nextSyllabus || '')}</p>
+                </div>
+              </div>
+              <div style="background:#fafafa;padding:10px 16px;border-top:1px solid #e2e8f0;font-size:13px;color:#475569;">
+                <strong>Change:</strong> ${escapeHtml(String(item.changes || ''))}
+                ${item.impact ? ` &nbsp;·&nbsp; <strong>Impact:</strong> ${escapeHtml(String(item.impact))}` : ''}
+              </div>
+            </div>`;
           }
           // ─────────────────────────────────────────────────────────────────
           return `<p style="color: #334155; margin-bottom: 16px;">${item}</p>`;
@@ -575,8 +603,8 @@ function breadcrumbSchema(crumbs) {
   };
 }
 
-function webPageSchema({ name, description, url }) {
-  return {
+function webPageSchema({ name, description, url, datePublished = null, dateModified = null }) {
+  const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name,
@@ -588,6 +616,9 @@ function webPageSchema({ name, description, url }) {
       url: SITE_ORIGIN,
     },
   };
+  if (datePublished) schema.datePublished = datePublished;
+  if (dateModified) schema.dateModified = dateModified;
+  return schema;
 }
 
 function qaPageSchema({ question, answerText, url }) {
@@ -614,6 +645,30 @@ function qaPageSchema({ question, answerText, url }) {
     },
   };
 }
+
+function quizSchema({ question, url }) {
+  const title = `${question.title || `GATE ${question.year || ""} Question`} | GateQA Practice Quiz`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    name: title,
+    url,
+    about: {
+      "@type": "Thing",
+      name: question.subjectLabel || "GATE Computer Science",
+    },
+    hasPart: [
+      {
+        "@type": "Question",
+        eduQuestionType: "Multiple choice",
+        learningResourceType: "Practice problem",
+        name: title,
+        text: question.preview || title,
+      },
+    ],
+  };
+}
+
 
 function faqPageSchema(faqs) {
   if (!faqs || faqs.length === 0) {
@@ -801,6 +856,13 @@ function buildQuestionPages(searchIndex, answersByQuestionUid) {
       { name: `GATE ${question.year}`, url: buildCanonicalUrl(`/gate-${question.year}-pyq`) },
       { name: question.title || question.question_uid, url: canonicalUrl },
     ];
+    // Keywords for question pages — subject + year for targeted indexing
+    const keywords = [
+      question.subjectLabel,
+      `GATE ${question.year}`,
+      `GATE CS PYQ`,
+      subject ? `${subject.label} GATE questions` : null,
+    ].filter(Boolean).join(", ");
 
     return {
       path: pathName,
@@ -809,10 +871,12 @@ function buildQuestionPages(searchIndex, answersByQuestionUid) {
       h1: question.title || `GATE ${question.year} Question`,
       eyebrow: question.subjectLabel || "GATE CS Question",
       description,
+      keywords,
       ogType: "article",
       schemas: [
         breadcrumbSchema(crumbs),
         qaPageSchema({ question, answerText, url: canonicalUrl }),
+        quizSchema({ question, url: canonicalUrl }),
       ],
       links: [
         { href: pathName, label: "Open interactive question" },
@@ -823,6 +887,8 @@ function buildQuestionPages(searchIndex, answersByQuestionUid) {
         question.subjectLabel ? `Subject: ${question.subjectLabel}` : "",
         question.yearSetLabel ? `Paper: ${question.yearSetLabel}` : "",
         question.type ? `Question type: ${question.type}` : "",
+        // Embed question preview text as crawlable content for Googlebot
+        question.preview ? question.preview : "",
         answerText,
       ].filter(Boolean),
     };
@@ -909,6 +975,13 @@ function buildAliasPages() {
       name: bc.name,
       url: bc.url.replace("https://gateqa.in", SITE_ORIGIN),
     }));
+    // Build targeted keyword string from page keyword + category
+    const keywords = [
+      alias.keyword,
+      alias.category,
+      "GATE CSE",
+      "GATE 2027",
+    ].filter(Boolean).join(", ");
 
     return {
       path: alias.path,
@@ -917,11 +990,18 @@ function buildAliasPages() {
       h1: alias.h1,
       description: alias.description,
       eyebrow: alias.eyebrow,
+      keywords,
       richCopy: alias.richCopy || [],
       faqs: alias.faqs || [],
       schemas: [
         breadcrumbSchema(breadcrumbs),
-        webPageSchema({ name: alias.h1, description: alias.description, url: canonicalUrl }),
+        webPageSchema({
+          name: alias.h1,
+          description: alias.description,
+          url: canonicalUrl,
+          datePublished: alias.dateModified || null,
+          dateModified: alias.dateModified || null,
+        }),
         alias.faqs && alias.faqs.length > 0 ? faqPageSchema(alias.faqs) : null,
       ].filter(Boolean),
       links: [{ href: alias.ctaHref, label: alias.ctaLabel }],
@@ -1073,10 +1153,36 @@ function main() {
 
   pages.forEach((page) => writePrerenderedPage(templateHtml, page));
 
+  // ── Option A: emit sitemap-questions.xml ────────────────────────────────
+  // Only include question pages that were actually pre-rendered (have a static index.html).
+  // This prevents Googlebot from receiving sitemap entries for SPA-only pages which it
+  // would mark as "crawled but not indexed", causing indexing inefficiency.
+  const questionPaths = pages
+    .filter((page) => page.path.startsWith("/practice/question/"))
+    .map((page) => page.path);
+
+  if (questionPaths.length > 0) {
+    const sitemapRows = questionPaths.map((p) => {
+      const url = `${SITE_ORIGIN}${p.endsWith("/") ? p : p + "/"}`;
+      return `  <url>\n    <loc>${url}</loc>\n    <changefreq>yearly</changefreq>\n    <priority>0.5</priority>\n  </url>`;
+    });
+    const sitemapQuestions = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      sitemapRows.join("\n"),
+      "</urlset>",
+      "",
+    ].join("\n");
+    fs.writeFileSync(path.join(DIST_DIR, "sitemap-questions.xml"), sitemapQuestions, "utf8");
+    console.log(`[prerender-seo-pages] Wrote sitemap-questions.xml (${questionPaths.length} question URLs).`);
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   const report = {
     generatedAt: new Date().toISOString(),
     questionPrerenderLimit: QUESTION_PRERENDER_LIMIT,
     pageCount: pages.length,
+    questionSitemapCount: questionPaths.length,
     pages: pages.map((page) => page.path),
   };
   fs.writeFileSync(path.join(DIST_DIR, "seo-prerender-manifest.json"), JSON.stringify(report, null, 2), "utf8");

@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-07-29
+
+### Added
+- **Pillar Editorial Landing Pages (`editorialPages.js`)**:
+  - Published `/gate-cs-vs-gate-da` ("GATE CS vs GATE DA: Comprehensive Comparison, Syllabus & Career Opportunities") with side-by-side syllabus overlap matrix, dual-paper strategy callout, and FAQ schema.
+  - Published `/gate-cutoff-iit-bombay` ("GATE CS Cutoff for IIT Bombay: M.Tech Admission Marks & Category-Wise Requirements") with category-wise GATE score table, M.Tech TA/RA breakdown, and qualifying vs admission cutoff guide.
+  - Published `/best-books-for-gate-cs` ("Best Books for GATE CS Preparation: Standard Textbooks & Reference Guide") with subject-by-subject textbook recommendations (Silberschatz, Cormen, Korth, Tanenbaum, Hopcroft, Aho, Mano, Hamacher, Kreyszig).
+- **Educational Rich Results Schema (`prerender-seo-pages.mjs`)**:
+  - Implemented `@type: "Quiz"` JSON-LD schema markup on all pre-rendered question pages alongside `@type: "QAPage"` schema for Google Educational Practice Problem Rich Results eligibility.
+  - Added `datePublished` and `dateModified` to `schema.org/WebPage` JSON-LD schema.
+  - Added targeted `<meta name="keywords">` for all editorial and pre-rendered question pages.
+- **Dual Sitemap Infrastructure (`build-public-artifacts.mjs`, `prerender-seo-pages.mjs`, `robots.txt`)**:
+  - Implemented post-build `sitemap-questions.xml` generation in `prerender-seo-pages.mjs` containing ONLY verified static HTML question pages (up to `QUESTION_PRERENDER_LIMIT = 5000`).
+  - Added `Sitemap: https://gateqa.in/sitemap-questions.xml` directive to `public/robots.txt`.
+- **Student Motivational Quotes (`motivationalQuotes.js`)**:
+  - Added quotes by Albert Einstein, Benjamin Franklin, Abigail Adams, Estée Lauder, Jimmy Johnson, Goethe, and Longfellow.
+
+### Fixed
+- **Google Search Console "153 Not Indexed Pages" Resolution**:
+  - Removed 3,419 unrenderable `/practice/question/` SPA URLs from `public/sitemap.xml`, paring `sitemap.xml` down to **75 clean, verified static URLs** (16 editorial pages, 40 year pages 1987–2026, 13 subject pages).
+  - Expanded sitemap year range filter from `year >= 2015` to **`year >= 1987`** to capture zero-competition historical PYQ long-tail keywords.
+  - Mapped real `dateModified` timestamps from `editorialPages.js` to sitemap entries.
+  - Set tiered sitemap priorities: Homepage (`1.0`), Editorial pages (`0.9`), Year/Subject pages (`0.85`), Blog (`0.8`), Utility pages (`0.5`).
+  - Embedded full `question.preview` text into static pre-rendered HTML DOM for Googlebot crawlability without JavaScript.
+  - Preserved raw HTML markup in Callout rich-copy blocks without `escapeHtml` stripping.
+  - Added missing `subject-comparison` side-by-side syllabus comparison table renderer to `buildStaticRoot()` in `prerender-seo-pages.mjs`.
+
 ## 2026-07-26
 
 ### Changed
