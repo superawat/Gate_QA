@@ -100,6 +100,22 @@ const SUBJECT_SEO_MAP = [
       "Practice GATE CS previous-year questions on Engineering Mathematics including linear algebra, calculus, probability, statistics, and numerical methods.",
     topics: ["Linear Algebra", "Calculus", "Probability", "Statistics", "Numerical Methods"],
   },
+  {
+    urlSlug: "ga",
+    subjectSlug: "ga",
+    label: "General Aptitude",
+    description:
+      "Practice GATE previous-year General Aptitude questions including verbal ability, numerical ability, analytical reasoning, and spatial aptitude.",
+    topics: ["Verbal Ability", "Numerical Ability", "Analytical Reasoning", "Spatial Aptitude"],
+  },
+  {
+    urlSlug: "prog-c",
+    subjectSlug: "prog-c",
+    label: "Programming in C",
+    description:
+      "Practice GATE CS previous-year questions on C Programming including pointers, recursion, memory allocation, structures, and control flow.",
+    topics: ["Pointers", "Recursion", "Memory Allocation", "Structures", "Control Flow"],
+  },
 ];
 
 const SUBJECT_BY_INTERNAL_SLUG = new Map(
@@ -284,6 +300,30 @@ const SUBJECT_DETAILS = {
       {
         question: "What probability distributions are important for GATE CS?",
         answer: "Ensure you master the Binomial distribution, Poisson distribution, Uniform distribution, and Normal/Gaussian distribution, along with Bayes' Theorem."
+      }
+    ]
+  },
+  "ga": {
+    richCopy: [
+      "General Aptitude (GA) accounts for 15 marks in every GATE paper. It tests core quantitative aptitude, analytical reasoning, spatial aptitude, and English language fluency.",
+      "Scoring high in GA is essential for maximizing your overall GATE score and rank."
+    ],
+    faqs: [
+      {
+        question: "What is the weightage of General Aptitude in GATE?",
+        answer: "General Aptitude carries 15 marks out of 100 in all GATE papers, comprising 5 one-mark questions and 5 two-mark questions."
+      }
+    ]
+  },
+  "prog-c": {
+    richCopy: [
+      "Programming in C is a fundamental topic tested heavily in GATE CS. It evaluates code execution tracing, memory addressing, pointer operations, and dynamic storage allocation.",
+      "Mastering parameter passing mechanisms, pointer arithmetic, and recursive function calls is vital for solving C programming questions."
+    ],
+    faqs: [
+      {
+        question: "How should I prepare for C Programming in GATE?",
+        answer: "Practice tracing code snippets step-by-step, focusing on pointer dereferencing, array indexing, call-by-value vs. call-by-reference, and stack frame behavior during recursion."
       }
     ]
   }
@@ -752,7 +792,7 @@ function buildSubjectPages(manifest) {
 function buildYearPages(manifest) {
   const years = Array.from(new Set((manifest.yearSets || [])
     .map((entry) => Number(entry.year))
-    .filter((year) => Number.isFinite(year) && year >= 2015)))
+    .filter((year) => Number.isFinite(year) && year >= 1987)))
     .sort((left, right) => right - left);
 
   return years.map((year) => {

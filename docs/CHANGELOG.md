@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-03
+
+### Fixed
+- **Google Search Console 404 & Redirect Indexing Resolution (`prerender-seo-pages.mjs`)**:
+  - Expanded `buildYearPages()` filter range from `year >= 2015` to **`year >= 1987`**, generating static HTML landing pages for all 40 historical years (1987–2026).
+  - Added General Aptitude (`ga` / `/subjects/ga`) and Programming in C (`prog-c` / `/subjects/prog-c`) to `SUBJECT_SEO_MAP` and `SUBJECT_DETAILS` in `prerender-seo-pages.mjs`.
+  - Resolved 30 missing static pages in `dist/` that previously caused HTTP 404 errors when crawled by Googlebot via `public/sitemap.xml`.
+  - Verified 100% parity across all 75 `public/sitemap.xml` URLs with generated static HTML files in `dist/`.
+
 ## 2026-07-29
 
 ### Added
