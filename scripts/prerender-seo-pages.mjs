@@ -628,6 +628,17 @@ function writePrerenderedPage(templateHtml, page) {
   const outputPath = getOutputPath(page.path);
   ensureDir(path.dirname(outputPath));
   fs.writeFileSync(outputPath, renderPage(templateHtml, page), "utf8");
+
+  const decodedPath = decodeURIComponent(page.path);
+  if (decodedPath !== page.path) {
+    try {
+      const decodedOutputPath = getOutputPath(decodedPath);
+      ensureDir(path.dirname(decodedOutputPath));
+      fs.writeFileSync(decodedOutputPath, renderPage(templateHtml, page), "utf8");
+    } catch {
+      // Silent catch for OS filesystem path character limits (e.g. colon on Windows)
+    }
+  }
 }
 
 function breadcrumbSchema(crumbs) {
