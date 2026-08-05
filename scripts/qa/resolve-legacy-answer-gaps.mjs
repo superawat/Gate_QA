@@ -23,6 +23,12 @@ const REPORT_PATH = path.join(
 );
 
 const CURATED_RESOLUTIONS = {
+  "go:80298": {
+    type: "MCQ",
+    answer: "B",
+    note: "In a circular linked list organization, inserting a node requires modifying two pointers (the new node's next pointer and the preceding node's next pointer). Therefore, the correct answer is Option B (Two pointers).",
+    method: "manual_data_structure_correction",
+  },
   "go:80029": {
     type: "MCQ",
     answer: "A",
@@ -366,6 +372,15 @@ function main() {
       continue;
     }
 
+    if (question) {
+      question.answer_meta = {
+        type: resolution.type,
+        answer: resolution.answer ?? null,
+        tolerance: resolution.tolerance ?? null,
+        source: "manual_resolution",
+      };
+    }
+
     manualPatchPayload.records_by_question_uid[questionUid] =
       buildManualPatchRecord(resolution, question.link || "");
     answersPayload.records_by_question_uid[questionUid] = buildAnswerJoinRecord(
@@ -383,6 +398,7 @@ function main() {
       writeJson(answersPath, normalizedAnswersPayload);
     }
     writeJson(MANUAL_PATCH_PATH, manualPatchPayload);
+    writeJson(QUESTIONS_PATH, questions);
   }
 
   writeJson(REPORT_PATH, report);

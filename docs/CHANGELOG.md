@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-08-05
+
+### Fixed
+- **Question Classification & Answer Fix (`go:80298` - GATE CSE 1987 Q1-xv)**:
+  - Reclassified question type from `NAT` to `MCQ`.
+  - Set official answer to Option **B** ("Two pointers.") and verified extracted options A, B, C, D.
+  - Added manual resolution explanation detailing circular linked list node insertion pointer modifications.
+- **Question Subtopics & Syllabus Tagging (`go:3347` - GATE IT 2008 Q37)**:
+  - Re-ordered subtopic tags to classify `go:3347` under **Sequential Circuit**, **Flip Flop**, **Finite State Machines**, and **Boolean Algebra**.
+  - Rebuilt precomputed subtopic lookup indices and public artifacts to ensure full search filter coverage across all matching subtopics.
+
 ## 2026-08-03
 
 ### Fixed
