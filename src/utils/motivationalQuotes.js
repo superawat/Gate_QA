@@ -8,11 +8,13 @@ const RAW_STUDENT_QUOTES = [
   "Dream is not that which you see while sleeping, it is something that does not let you sleep. — A. P. J. Abdul Kalam",
   "If you want to shine like a sun, first burn like a sun. — A. P. J. Abdul Kalam",
   "All of us do not have equal talent. But, all of us have an equal opportunity to develop our talents. — A. P. J. Abdul Kalam",
+  "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action. — A. P. J. Abdul Kalam",
 
   // --- SWAMI VIVEKANANDA ---
   "Arise, awake, and stop not till the goal is reached. — Swami Vivekananda",
   "Talk to yourself once a day, otherwise you may miss meeting an excellent person in this world. — Swami Vivekananda",
   "You cannot believe in God until you believe in yourself. — Swami Vivekananda",
+  "Take up one idea. Make that one idea your life — think of it, dream of it, live on that idea. — Swami Vivekananda",
 
   // --- GAUTAMA BUDDHA ---
   "The mind is everything. What you think you become. — Gautama Buddha",
@@ -28,6 +30,14 @@ const RAW_STUDENT_QUOTES = [
   "You cannot cross the sea merely by standing and staring at the water. — Rabindranath Tagore",
   "Faith is the bird that feels the light when the dawn is still dark. — Rabindranath Tagore",
   "Let us not pray to be sheltered from dangers but to be fearless when facing them. — Rabindranath Tagore",
+
+  // --- MUNSHI PREMCHAND ---
+  "The real measure of education is not what you know, but what you do. — Munshi Premchand",
+  "Knowledge without character is of no value. — Munshi Premchand",
+  "The greatest victory is the victory over oneself. — Munshi Premchand",
+  "Life is a struggle, and only those who struggle move forward. — Munshi Premchand",
+  "Experience is the greatest teacher. — Munshi Premchand",
+  "A person's true wealth lies in knowledge and character. — Munshi Premchand",
 
   // --- CHANAKYA ---
   "Before you start some work, always ask yourself three questions: Why am I doing it, What the results might be, and Will I be successful. — Chanakya",
@@ -72,6 +82,18 @@ const RAW_STUDENT_QUOTES = [
   "The only way to be free from the limits of your past is to raise your consciousness and work with devotion in the present. — Sri Aurobindo",
   "To grow in knowledge, one must first learn to be silent and focus the mind. — Sri Aurobindo",
 
+  // --- JIDDU KRISHNAMURTI ---
+  "The ability to observe without evaluating is the highest form of intelligence. — Jiddu Krishnamurti",
+  "There is no end to education. It is a lifelong process. — Jiddu Krishnamurti",
+  "Comparison is one of the most foolish things we can do. — Jiddu Krishnamurti",
+  "To understand is to observe greatly. — Jiddu Krishnamurti",
+
+  // --- OSHO ---
+  "The real question is not whether life exists after death. The real question is whether you are alive before death. — Osho",
+  "Awareness is the greatest alchemy. — Osho",
+  "Life begins where fear ends. — Osho",
+  "Be — don't try to become. — Osho",
+
   // --- KABIR ---
   "Slowly slowly O mind, everything in course happens; the gardener may water with a hundred pots, the fruit arrives only in its season. — Kabir",
 
@@ -97,6 +119,7 @@ const RAW_STUDENT_QUOTES = [
   "There is no substitute for hard work. — Thomas Edison",
   "I have not failed. I've just found 10,000 ways that won't work. — Thomas Edison",
   "Genius is one percent inspiration and ninety-nine percent perspiration. — Thomas Edison",
+  "Opportunity is missed by most people because it is dressed in overalls and looks like work. — Thomas Edison",
 
   // --- RICHARD FEYNMAN ---
   "What I cannot create, I do not understand. — Richard Feynman",
@@ -117,6 +140,9 @@ const RAW_STUDENT_QUOTES = [
   "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. — Marie Curie",
   "Be less curious about people and more curious about ideas. — Marie Curie",
   "I was taught that the way of progress was neither swift nor easy. — Marie Curie",
+
+  // --- LOUIS PASTEUR ---
+  "Chance favors the prepared mind. — Louis Pasteur",
 
   // --- ALEXANDER GRAHAM BELL ---
   "Concentrate all your thoughts upon the work at hand. The sun's rays do not burn until focused. — Alexander Graham Bell",
@@ -149,6 +175,7 @@ const RAW_STUDENT_QUOTES = [
   "The best way to predict the future is to create it. — Abraham Lincoln",
   "Determine that the thing can and shall be done, and then we shall find the way. — Abraham Lincoln",
   "Leave nothing for tomorrow which can be done today. — Abraham Lincoln",
+  "I will prepare and someday my chance will come. — Abraham Lincoln",
 
   // --- THEODORE ROOSEVELT ---
   "Believe you can and you're halfway there. — Theodore Roosevelt",
@@ -187,7 +214,7 @@ const RAW_STUDENT_QUOTES = [
   // --- WINSTON CHURCHILL ---
   "Success is not final; failure is not fatal: It is the courage to continue that counts. — Winston Churchill",
   "Success is stumbling from failure to failure with no loss of enthusiasm. — Winston Churchill",
-  "Continuous effort — Winston Churchill",
+  "Continuous effort — not strength or intelligence — is the key to unlocking our potential. — Winston Churchill",
 
   // --- HELEN KELLER ---
   "Keep your face to the sunshine and you cannot see a shadow. — Helen Keller",
@@ -208,6 +235,10 @@ const RAW_STUDENT_QUOTES = [
   "The mind, once stretched by a new idea, never returns to its original dimensions. — Ralph Waldo Emerson",
   "What lies behind us and what lies before us are tiny matters compared to what lies within us. — Ralph Waldo Emerson",
   "Nothing great was ever achieved without enthusiasm. — Ralph Waldo Emerson",
+  "The only person you are destined to become is the person you decide to be. — Ralph Waldo Emerson",
+
+  // --- THOMAS JEFFERSON ---
+  "I find that the harder I work, the more luck I seem to have. — Thomas Jefferson",
 
   // --- MARK TWAIN ---
   "The secret of getting ahead is getting started. — Mark Twain",

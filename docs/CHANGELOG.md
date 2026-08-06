@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-08-06
+
+### Fixed
+- **Question Classification & Subtopic Tagging (`go:118376` - GATE CSE 2017 Set 2 Q34)**:
+  - Updated subject classification from Digital Logic to Computer Networks.
+  - Tagged under Error Detection and Computer Networks to align with official GATE syllabus tags.
+- **NAT Answer Precision & Validation (`go:302826` - GATE CSE 2019 Q22)**:
+  - Corrected NAT answer key to `0.503` (exact probability $85/169 = 0.502958...$) with valid tolerance range `[0.50, 0.51]`.
+- **MCQ Question Type & Answer Key (`go:1297` - GATE CSE 2009 Q5)**:
+  - Reclassified question type from NAT to MCQ and set correct answer to Option **B** ($(028F)_{16}$).
+- **Practice Session Navigation with "Hide Solved" (`SessionContext.tsx`)**:
+  - Dynamically skip already-solved questions when advancing forward through an active ordered practice session with "Hide Solved" filter enabled.
+
+### Added
+- **Motivational Quotes Database (`motivationalQuotes.js`)**:
+  - Updated student motivational quotes pool.
+
 ## 2026-08-05
 
 ### Fixed
