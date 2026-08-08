@@ -1,7 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaPlus, FaSave, FaStickyNote, FaTrash } from "react-icons/fa";
+import { enqueueChange } from "../../utils/syncQueue";
 
 const STORAGE_KEY = "gate_qa_user_notes";
+
+const normalizeNote = (value) => {
+  if (typeof value === "string") {
+    return { text: value, updatedAt: "" };
+  }
+  if (value && typeof value === "object") {
+    return {
+      text: String(value.text || ""),
+      updatedAt: String(value.updatedAt || ""),
+    };
+  }
+  return { text: "", updatedAt: "" };
+};
 
 const readAllNotes = () => {
   try {
@@ -36,9 +50,9 @@ function QuestionNotes({ storageKey }) {
       return;
     }
 
-    const existingNote = String(readAllNotes()[storageKey] || "");
-    setNote(existingNote);
-    setHasNote(Boolean(existingNote));
+    const existingNote = normalizeNote(readAllNotes()[storageKey]);
+    setNote(existingNote.text);
+    setHasNote(Boolean(existingNote.text));
     setIsEditing(false);
   }, [storageKey]);
 
@@ -47,7 +61,10 @@ function QuestionNotes({ storageKey }) {
     const trimmedNote = note.trim();
 
     if (trimmedNote) {
-      notes[storageKey] = trimmedNote;
+      notes[storageKey] = {
+        text: trimmedNote,
+        updatedAt: new Date().toISOString(),
+      };
       setHasNote(true);
     } else {
       delete notes[storageKey];
@@ -55,6 +72,7 @@ function QuestionNotes({ storageKey }) {
     }
 
     writeAllNotes(notes);
+    enqueueChange("NOTE", { questionUid: storageKey, text: trimmedNote, updatedAt: new Date().toISOString() });
     setNote(trimmedNote);
     setIsEditing(false);
   };
@@ -67,6 +85,7 @@ function QuestionNotes({ storageKey }) {
     const notes = readAllNotes();
     delete notes[storageKey];
     writeAllNotes(notes);
+    enqueueChange("NOTE", { questionUid: storageKey, text: "", deleted: true, updatedAt: new Date().toISOString() });
     setNote("");
     setHasNote(false);
     setIsEditing(false);

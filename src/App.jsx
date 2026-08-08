@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
+import { AuthProvider } from "./contexts/AuthContext";
 import { HelmetProvider } from "react-helmet-async";
 import {
   BrowserRouter,
@@ -658,7 +659,9 @@ function App() {
   return (
     <HelmetProvider>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <AppRuntime />
+        <AuthProvider>
+          <AppRuntime />
+        </AuthProvider>
       </BrowserRouter>
     </HelmetProvider>
   );

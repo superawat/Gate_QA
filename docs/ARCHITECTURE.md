@@ -55,6 +55,7 @@ There is no backend, no database, and no server-side rendering.
 - **Auth Provider**: Google OAuth (optional, guest mode remains default).
 - **Synced Entities**: Bookmarks, Personal Notes, Solved Questions progress, and Mock Test history.
 - **Data Safety**: Uses an additive-only **union-merge algorithm** upon sign-in. Local pre-merge snapshots and pending change queues prevent data loss during network outages or first-time migration. See [`plan/after august/user_auth_and_cloud_sync_plan.md`](file:///c:/Users/himanshu/Desktop/GATE_QA/plan/after%20august/user_auth_and_cloud_sync_plan.md).
+- **Database Reference**: See [`docs/DATABASE.md`](DATABASE.md) for the table relationships, RLS policies, OAuth-to-sync sequence, merge rules, and troubleshooting guide.
 
 The landing route now stays on a lightweight startup path:
 

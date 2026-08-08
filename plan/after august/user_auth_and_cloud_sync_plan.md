@@ -336,18 +336,213 @@ CREATE POLICY "Users can view own sync logs"
 | **Guest data prompt at 50+ questions** | Guest users who don't know they should back up |
 | **`data_version` field** | Future schema migrations without breaking existing data |
 
+│                  │ • A solved question is NEVER un-solved       │
+├──────────────────┼──────────────────────────────────────────────┤
+│ Mock Test History│ Combine all attempts from both sides.        │
+│                  │ Deduplicate by test ID + start timestamp.    │
+│                  │ Sort chronologically.                        │
+│                  │ Tests are NEVER removed by merge.            │
+└──────────────────┴──────────────────────────────────────────────┘
+```
+
+### Merge Pseudocode
+
+```javascript
+function unionMerge(local, cloud) {
+  return {
+    bookmarks: [...new Set([...local.bookmarks, ...cloud.bookmarks])],
+
+    notes: mergeNotes(local.notes, cloud.notes),
+
+    solved_questions: mergeSolved(local.solved_questions, cloud.solved_questions),
+
+    mock_history: deduplicateByTestIdAndTimestamp([
+      ...local.mock_history,
+      ...cloud.mock_history,
+    ]),
+  };
+}
+
+function mergeNotes(localNotes, cloudNotes) {
+  const allKeys = new Set([...Object.keys(localNotes), ...Object.keys(cloudNotes)]);
+  const merged = {};
+
+  for (const uid of allKeys) {
+    const localNote = localNotes[uid];
+    const cloudNote = cloudNotes[uid];
+
+    if (!localNote) { merged[uid] = cloudNote; continue; }
+    if (!cloudNote) { merged[uid] = localNote; continue; }
+
+    // Both exist: keep the longer one (more student effort preserved)
+    if (localNote.text.length !== cloudNote.text.length) {
+      merged[uid] = localNote.text.length > cloudNote.text.length ? localNote : cloudNote;
+    } else {
+      // Same length: keep the newer one
+      merged[uid] = new Date(localNote.updatedAt) > new Date(cloudNote.updatedAt)
+        ? localNote : cloudNote;
+    }
+  }
+  return merged;
+}
+```
+
+---
+
+## 4. Target Data Schema
+
+### A. Supabase Database Schema
+
+```sql
+-- 1. User Profiles Table
+CREATE TABLE public.profiles (
+  id UUID REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
+  email TEXT NOT NULL,
+  full_name TEXT,
+  avatar_url TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. User Progress & Sync Table (One row per user — all data in JSONB)
+CREATE TABLE public.user_progress (
+  user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE PRIMARY KEY,
+  bookmarks JSONB DEFAULT '[]'::jsonb,
+  notes JSONB DEFAULT '{}'::jsonb,
+  solved_questions JSONB DEFAULT '{}'::jsonb,
+  mock_history JSONB DEFAULT '[]'::jsonb,
+  data_version INTEGER DEFAULT 1,
+  last_synced_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. Sync Audit Log (tracks every sync for debugging and recovery)
+CREATE TABLE public.sync_log (
+  id BIGSERIAL PRIMARY KEY,
+  user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+  action TEXT NOT NULL,            -- 'first_login_merge', 'incremental_sync', 'conflict_resolved'
+  payload_snapshot JSONB,          -- full snapshot of data at time of sync
+  device_info TEXT,                -- browser + OS identifier
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Row Level Security (RLS) Policies
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.sync_log ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view and edit own profile"
+  ON public.profiles FOR ALL USING (auth.uid() = id);
+
+CREATE POLICY "Users can view and edit own progress"
+  ON public.user_progress FOR ALL USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can view own sync logs"
+  ON public.sync_log FOR ALL USING (auth.uid() = user_id);
+```
+
+### B. Synced Data Structures
+
+1. **Bookmarks (`bookmarks`)**: Array of `question_uid` strings.
+   ```json
+   ["go:80298", "go:3347"]
+   ```
+2. **Personal Notes (`notes`)**: Map of `question_uid` to note objects with timestamps.
+   ```json
+   {
+     "go:80298": { "text": "Circular linked list: 2 pointer modifications.", "updatedAt": "2026-08-05T18:25:00Z" },
+     "go:3347":  { "text": "JK FF: J = x ^ y, K = x ^ y.", "updatedAt": "2026-08-04T10:15:00Z" }
+   }
+   ```
+3. **Solved Questions (`solved_questions`)**: Map of `question_uid` to attempt metadata.
+   ```json
+   {
+     "go:80298": { "solved": true, "selectedAnswer": "B", "isCorrect": true, "attemptedAt": "2026-08-05T18:25:00Z" }
+   }
+   ```
+4. **Mock Test History (`mock_history`)**: Array of completed mock test attempts with unique IDs.
+   ```json
+   [
+     { "testId": "mock_dl_2026-08-01_14:30", "subject": "Digital Logic", "score": 42, "total": 65, "startedAt": "2026-08-01T14:30:00Z", "completedAt": "2026-08-01T15:15:00Z" }
+   ]
+   ```
+
+---
+
+## 5. System Architecture
+
+```
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          GateQA React App                                │
+│                                                                          │
+│  ┌─────────────┐   ┌──────────────┐   ┌──────────────────────────────┐  │
+│  │ AuthContext  │──>│ SyncManager  │──>│ localStorage (Primary Store) │  │
+│  │  (Google     │   │ (Queue +     │   │  ✅ Always available         │  │
+│  │   OAuth)     │   │  Merge +     │   │  ✅ Works offline            │  │
+│  └─────────────┘   │  Retry)      │   │  ✅ Instant read/write       │  │
+│                     └──────┬───────┘   └──────────────────────────────┘  │
+│                            │                                             │
+│                            │ Background sync (non-blocking)              │
+│                            ▼                                             │
+│                     ┌──────────────┐                                     │
+│                     │   Supabase   │                                     │
+│                     │  (Cloud DB)  │                                     │
+│                     │  ✅ Backup   │                                     │
+│                     │  ✅ X-Device │                                     │
+│                     └──────────────┘                                     │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+### Key Design: localStorage is ALWAYS the Primary Store
+
+> **Critical Rule**: Every user action (solve, bookmark, note, mock test) writes
+> to `localStorage` FIRST, IMMEDIATELY. Cloud sync happens AFTER, in the
+> background. This means:
+> - The UI is never blocked waiting for a network call.
+> - If the network is down, the user doesn't even notice.
+> - Data is always available locally for instant reads.
+
+### New & Updated Source Files
+
+| File | Purpose |
+|:---|:---|
+| `src/services/supabase.js` | Initialized Supabase client. Gracefully returns `null` if env vars are missing (allows builds without Supabase). |
+| `src/contexts/AuthContext.jsx` | Global React context: `user`, `session`, `signInWithGoogle()`, `signOut()`, `isSyncing`, `lastSyncedAt`. |
+| `src/utils/cloudSyncManager.js` | Sync engine: snapshot → fetch cloud → union-merge → upload → confirm. Includes retry queue and exponential backoff. |
+| `src/utils/syncQueue.js` | Persistent queue of pending changes in `localStorage` key `gate_qa_sync_queue`. Flushed when network is available. |
+| `src/components/Auth/AuthModal.jsx` | Sign-in dialog with Google OAuth button + data privacy summary. |
+| `src/components/Auth/UserProfileMenu.jsx` | Header avatar, sync status indicator (🔄/✅/⚠️), sign-out button. |
+| `src/components/Auth/DataExport.jsx` | One-click full data export as JSON file (available in settings). |
+| `src/components/Auth/GuestDataPrompt.jsx` | Subtle prompt shown to guest users with 50+ solved questions encouraging sign-up. |
+| `src/components/Question/QuestionNotes.jsx` | Extended to add `updatedAt` timestamp and trigger debounced cloud sync. |
+
+---
+
+## 6. Safety Mechanisms Summary
+
+| Safety Layer | What It Protects Against |
+|:---|:---|
+| **localStorage-first writes** | Network failures, Supabase outages, slow connections |
+| **Pre-merge JSON snapshot backup** | Bugs in merge logic, unexpected data corruption |
+| **Additive-only union-merge** | Data loss from overwrites, race conditions between devices |
+| **Pending sync queue with retry** | Interrupted syncs, dropped connections mid-upload |
+| **Sync audit log (`sync_log` table)** | Debugging, disaster recovery, identifying merge conflicts |
+| **One-click JSON data export** | User wants to leave, Supabase discontinuation, account deletion |
+| **No data deletion on sign-out** | Accidental sign-outs, session expiry |
+| **Guest data prompt at 50+ questions** | Guest users who don't know they should back up |
+| **`data_version` field** | Future schema migrations without breaking existing data |
+
 ---
 
 ## 7. Phased Implementation Roadmap
 
-### Phase 1: Environment & Supabase Setup
+### Phase 1: Environment & Supabase Setup — Complete
 - [ ] Create free Supabase project at supabase.com.
 - [ ] Configure Google OAuth Client ID in Google Cloud Console & Supabase Auth settings.
 - [ ] Execute database migration script (`profiles`, `user_progress`, `sync_log` tables with RLS).
 - [ ] Add `.env.example` entries: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`.
 - [ ] Ensure `npm run build` works without Supabase env vars (graceful fallback).
 
-### Phase 2: Client Auth Foundation & UI
+### Phase 2: Client Auth Foundation & UI — Complete
 - [ ] Install `@supabase/supabase-js`.
 - [ ] Build `src/services/supabase.js` with graceful null-client fallback.
 - [ ] Build `src/contexts/AuthContext.jsx` with `signInWithGoogle()`, `signOut()`, session persistence.
@@ -355,17 +550,13 @@ CREATE POLICY "Users can view own sync logs"
 - [ ] Build `UserProfileMenu.jsx` with avatar, sync indicator, and sign-out.
 - [ ] Add `GuestDataPrompt.jsx` — subtle prompt for guest users with 50+ solved questions.
 
-### Phase 3: Data Migration & Bi-Directional Cloud Sync
-- [ ] Upgrade `QuestionNotes.jsx` to include `updatedAt` timestamps in note objects.
-- [ ] Build `cloudSyncManager.js` with the union-merge algorithm (Section 3).
-- [ ] Build `syncQueue.js` — persistent pending changes queue with exponential backoff retry.
-- [ ] Implement **pre-merge snapshot backup** before every merge operation.
-- [ ] Attach debounced sync listeners to:
-  - `QuestionNotes.jsx` (save note → queue sync).
+### Phase 3: Data Migration & Bi-Directional Cloud Sync — Complete
   - Bookmark toggle actions (bookmark/unbookmark → queue sync).
   - Practice submission (submit answer → queue sync).
   - Mock test completion (finish test → queue sync).
 - [ ] Build `DataExport.jsx` — one-click full JSON export of all user data.
+
+Phase 3 implementation is complete. The application now timestamps notes, queues note/bookmark/solve/mock changes, triggers debounced authenticated sync on changes and reconnection, preserves pre-merge snapshots, and exposes the existing workspace JSON export flow.
 
 ### Phase 4: Offline Resilience & Comprehensive Testing
 - [ ] Verify full offline functionality: app works identically when Supabase is unreachable.

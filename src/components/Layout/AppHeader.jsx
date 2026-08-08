@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaExclamationTriangle, FaNewspaper } from "react-icons/fa";
@@ -19,6 +19,10 @@ import {
   saveWorkspaceFile,
   saveWorkspaceCsv,
 } from "../../utils/workspaceFile";
+import { useAuth } from "../../contexts/AuthContext";
+
+const AuthModal = lazy(() => import("../Auth/AuthModal"));
+const UserProfileMenu = lazy(() => import("../Auth/UserProfileMenu"));
 
 const THEME_STORAGE_KEY = "gate_qa_theme";
 const DOMAIN_SHIFT_SEEN_KEY = "gateqa_domain_shift_notice_seen_v2";
@@ -136,6 +140,8 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   const [isDomainShiftOpen, setIsDomainShiftOpen] = useState(false);
   const [domainShiftCountdown, setDomainShiftCountdown] = useState(getDomainShiftCountdown);
   const [drawerStatus, setDrawerStatus] = useState("");
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const { user, loading: authLoading } = useAuth();
   const workspaceFileInputRef = useRef(null);
   const isMockWindowRoute =
     location.pathname === MOCK_ROUTE || location.pathname.startsWith(`${MOCK_ROUTE}/`);
@@ -608,24 +614,50 @@ const AppHeader = ({ onHomeNavigate = null }) => {
             </button>
           ) : null}
 
-          {showHomeNav ? (
-            onHomeNavigate ? (
-              <button
-                type="button"
-                onClick={onHomeNavigate}
-                className={navButtonClassName}
-              >
+          {/* ── Sign In / User Avatar ── */}
+          {!isMockWindowRoute && !authLoading && (
+            <Suspense fallback={null}>
+              {user ? (
+                <UserProfileMenu />
+              ) : (
+                <button
+                  id="header-signin-btn"
+                  type="button"
+                  onClick={() => setShowAuthModal(true)}
+                  aria-label="Sign in with Google to back up your progress"
+                  title="Sign in"
+                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" className="h-3.5 w-3.5 shrink-0">
+                    <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.6 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.9z"/>
+                    <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.6 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                    <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.4 35.4 26.8 36 24 36c-5.2 0-9.7-3.3-11.3-8H6.3C9.6 35.7 16.3 44 24 44z"/>
+                    <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.3 4.1-4.3 5.4l6.2 5.2C36.9 40.5 44 35 44 24c0-1.3-.1-2.7-.4-3.9z"/>
+                  </svg>
+                  <span>Sign in</span>
+                </button>
+              )}
+            </Suspense>
+          )}
+
+          {showHomeNav && onHomeNavigate && (
+            <button
+              type="button"
+              onClick={onHomeNavigate}
+              className={navButtonClassName}
+            >
+              Back Home
+            </button>
+          )}
+          {showHomeNav && !onHomeNavigate && (
+            <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
+              <NavLink to={HOME_ROUTE} end className={navLinkClassName}>
                 Back Home
-              </button>
-            ) : (
-              <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
-                <NavLink to={HOME_ROUTE} end className={navLinkClassName}>
-                  Back Home
-                </NavLink>
-              </nav>
-            )
-          ) : null}
+              </NavLink>
+            </nav>
+          )}
           <HamburgerButton isOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(true)} className="no-print" />
+
         </div>
 
       </div>
@@ -653,6 +685,11 @@ const AppHeader = ({ onHomeNavigate = null }) => {
       isOpen={isDomainShiftOpen}
       onClose={() => setIsDomainShiftOpen(false)}
     />
+    {showAuthModal && (
+      <Suspense fallback={null}>
+        <AuthModal onClose={() => setShowAuthModal(false)} />
+      </Suspense>
+    )}
     </>
   );
 };

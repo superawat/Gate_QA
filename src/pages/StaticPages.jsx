@@ -202,7 +202,7 @@ export function PrivacyPage() {
     <>
       <SEOHead
         title="Privacy Policy | GateQA"
-        description="GateQA Privacy Policy — how we collect, use, and protect your data. GateQA does not require registration and stores progress data locally on your device."
+        description="GateQA Privacy Policy — learn how we protect your data. Guest mode remains default with optional Google Authentication for multi-device cloud backup."
         path="/privacy"
       />
       <PageShell contentClassName="py-6 sm:py-10">
@@ -216,26 +216,30 @@ export function PrivacyPage() {
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[color:var(--color-text)] leading-tight">
               Privacy Policy
             </h1>
-            <p className="text-sm text-[color:var(--color-text-muted)]">Last updated: June 2026</p>
+            <p className="text-sm text-[color:var(--color-text-muted)]">Last updated: August 2026</p>
           </header>
 
           <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] space-y-8">
-            <Section title="Overview">
+            <Section title="Overview & Philosophy">
               <p>
-                GateQA (<strong>gateqa.in</strong>) is committed to protecting your privacy. This
-                policy explains what information we collect, how it is used, and your rights with
-                respect to that information.
+                GateQA (<strong>gateqa.in</strong>) is committed to protecting your privacy and student data.
+                Our core philosophy is **Zero Friction & Zero Data Loss**: Guest Mode is the default for everyone, no login is required, and your study data is always preserved locally on your device.
               </p>
             </Section>
 
-            <Section title="Information We Collect">
-              <p><strong>No account or registration is required</strong> to use GateQA. We do not collect your name, email, or any personally identifiable information through the platform itself.</p>
-              <p>The following data may be collected or processed:</p>
+            <Section title="Information We Process & Store">
+              <p>
+                <strong>Guest Mode (Default):</strong> No account, name, or email is required to practice questions, take mock exams, or save personal notes. All progress is saved exclusively to your browser's local storage (`localStorage`).
+              </p>
+              <p>
+                <strong>Optional Account & Cloud Backup:</strong> If you choose to sign in with Google Authentication (powered by Supabase), we process:
+              </p>
               <ul className="space-y-2">
                 {[
-                  "Local Storage Data: Your practice progress, solved questions, and settings are stored locally in your browser (localStorage/IndexedDB). This data never leaves your device.",
-                  "Analytics (if enabled): We may use privacy-respecting analytics tools to collect aggregate, anonymous usage statistics such as page visits and session duration. No personal identifiers are stored.",
-                  "Server Logs: Standard web server logs may record IP addresses, browser type, and page requests for security and performance monitoring. These are not shared with third parties.",
+                  "Account Profile: Your Google email address, display name, and avatar picture URL to identify your account and render your profile badge.",
+                  "Synced Progress Data: An encrypted cloud backup of your bookmarks, personal question notes, solved question IDs, and mock test scores.",
+                  "Local Pre-Merge Snapshots: Automatic local backups created prior to any cloud sync to guarantee zero data loss.",
+                  "Server Logs: Standard secure access logs (IP address, user-agent, timestamp) for rate limiting, security monitoring, and fraud prevention.",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-2 h-2 w-2 rounded-full bg-[color:var(--color-primary)] shrink-0" />
@@ -245,32 +249,60 @@ export function PrivacyPage() {
               </ul>
             </Section>
 
-            <Section title="Cookies">
+            <Section title="How We Use Your Information">
               <p>
-                GateQA uses minimal cookies necessary for basic site functionality (e.g., theme preference). We do not use tracking cookies or sell any data to advertisers.
+                We use your profile and study data strictly to:
               </p>
-              <p>
-                Third-party services (such as Google AdSense, if enabled) may place cookies on your device. Please review the respective privacy policies of those services for more information.
+              <ul className="space-y-2">
+                {[
+                  "Synchronize your bookmarks, notes, and solved questions seamlessly across your devices.",
+                  "Restore your progress if you switch devices or clear your browser cache.",
+                  "Maintain service reliability, performance monitoring, and security.",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-[color:var(--color-primary)] shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 font-medium text-[color:var(--color-text)]">
+                We never sell, rent, trade, or share your personal information or study notes with third-party advertisers.
               </p>
             </Section>
 
-
-            <Section title="Data Retention">
+            <Section title="Cookies & Local Storage">
               <p>
-                Since GateQA does not collect personal data on its servers, there is no server-side data to delete. Your local progress data can be cleared at any time from your browser settings or via the GateQA settings panel.
+                GateQA uses `localStorage` for instant performance and offline study support. Minimal essential cookies or session tokens are used exclusively to maintain your signed-in session state. We do not use intrusive cross-site tracking cookies.
               </p>
             </Section>
 
+            <Section title="Data Control, Export & Deletion Rights">
+              <p>
+                Your study data belongs entirely to you. You have the right to:
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "One-Click Data Export: Download a complete JSON file containing all your bookmarks, notes, and mock attempts at any time.",
+                  "Sign Out Anytime: Signing out leaves your local progress intact on your device so you can continue in Guest Mode.",
+                  "Account Deletion: Request account deletion to permanently purge all cloud backups from our database.",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-[color:var(--color-primary)] shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
 
             <Section title="Changes to This Policy">
               <p>
-                We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. Continued use of GateQA after changes constitutes acceptance of the updated policy.
+                We may update this Privacy Policy to reflect platform enhancements or security updates. Any changes will be published here with an updated revision date.
               </p>
             </Section>
 
-            <Section title="Contact">
+            <Section title="Contact Us">
               <p>
-                For privacy-related questions or concerns, contact us at{" "}
+                For questions regarding your privacy, data export, or account management, email us at{" "}
                 <a href="mailto:rawathr01@gmail.com" className="text-[color:var(--color-primary-text)] underline">rawathr01@gmail.com</a>.
               </p>
             </Section>

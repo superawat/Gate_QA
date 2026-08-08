@@ -9,6 +9,7 @@ import Toast from "../Toast/Toast";
 import { trackEvent } from "../../utils/analytics";
 import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 import { recordPracticeAttempt } from "../../utils/practiceProgress";
+import { enqueueChange } from "../../utils/syncQueue";
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from "../../utils/localStorageState";
 
 const DEFAULT_OPTIONS = ["A", "B", "C", "D"];
@@ -162,6 +163,11 @@ export default function AnswerPanel({
       progressStorageKey: String(storageKey || "").startsWith("APT-")
         ? aptitudeProgressStorageKeys?.progress
         : progressStorageKeys?.progress,
+    });
+    enqueueChange("SOLVE", {
+      questionUid: storageKey,
+      correct: evaluation.correct,
+      submittedAt: submittedAt.toISOString(),
     });
     questionOpenedAtRef.current = submittedAt.getTime();
   };
