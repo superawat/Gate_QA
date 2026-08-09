@@ -139,9 +139,9 @@ export function AuthProvider({ children }) {
   const signInWithGoogle = async () => {
     if (!supabase) {
       console.warn("[GateQA Auth] Supabase not configured. Cannot sign in.");
-      return;
+      return { error: new Error("Supabase authentication is not configured.") };
     }
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
         redirectTo: window.location.origin,
@@ -150,6 +150,7 @@ export function AuthProvider({ children }) {
     if (error) {
       console.error("[GateQA Auth] Google sign-in error:", error.message);
     }
+    return { data, error };
   };
 
   /**

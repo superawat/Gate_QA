@@ -3722,6 +3722,13 @@ canvas {
 .auth-google-icon {
   flex-shrink: 0;
 }
+.auth-modal-error {
+  margin: -0.5rem 0 0.9rem;
+  color: #dc2626;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-align: center;
+}
 
 /* ── Privacy Note ───────────────────────────────────────────── */
 .auth-modal-privacy {
@@ -3980,6 +3987,7 @@ canvas {
 :root[data-theme="dark"] .auth-google-btn:hover:not(:disabled) {
   background: #374151;
 }
+:root[data-theme="dark"] .auth-modal-error { color: #fca5a5; }
 :root[data-theme="dark"] .user-profile-dropdown {
   background: var(--color-surface, #1e293b);
   border-color: var(--color-border, #334155);
@@ -4091,6 +4099,24 @@ canvas {
   border: 1px solid var(--color-border, #e2e8f0);
 }
 .auth-announcement-secondary:hover { background: var(--color-surface-muted, #f1f5f9); }
+
+@media (max-width: 639px) {
+  .app-header-inner > :last-child { gap: 0.35rem; }
+  .app-header-inner .user-avatar-btn,
+  .app-header-inner .user-avatar-img,
+  .app-header-inner .user-avatar-initials {
+    width: 34px;
+    height: 34px;
+  }
+  .app-header-inner .hamburger-btn {
+    width: 42px;
+    height: 42px;
+  }
+  .user-profile-dropdown {
+    right: -0.25rem;
+    min-width: min(220px, calc(100vw - 1.5rem));
+  }
+}
 :root[data-theme="dark"] .auth-announcement-card {
   background: var(--color-surface, #1e293b);
   border-color: var(--color-border, #334155);

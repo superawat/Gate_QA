@@ -9,13 +9,15 @@
  *  - Dismissible via backdrop click or Escape key
  *  - Accessible: focus trap + aria attributes
  */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiCloud, FiLock, FiRefreshCw, FiShield, FiX } from "react-icons/fi";
 import { useAuth } from "../../contexts/AuthContext";
 
 function AuthModal({ onClose }) {
-  const { signInWithGoogle, loading } = useAuth();
+  const { signInWithGoogle } = useAuth();
   const modalRef = useRef(null);
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [signInError, setSignInError] = useState("");
 
   // Close on Escape key press
   useEffect(() => {
@@ -32,8 +34,20 @@ function AuthModal({ onClose }) {
   }, []);
 
   const handleSignIn = async () => {
-    await signInWithGoogle();
-    // No need to close modal manually — the page will redirect to Google
+    if (isSigningIn) return;
+    setSignInError("");
+    setIsSigningIn(true);
+    try {
+      const result = await signInWithGoogle();
+      if (result?.error) {
+        setSignInError("Google sign-in could not start. Please try again.");
+        setIsSigningIn(false);
+      }
+    } catch (error) {
+      console.error("[GateQA Auth] Google sign-in failed:", error);
+      setSignInError("Google sign-in could not start. Please try again.");
+      setIsSigningIn(false);
+    }
   };
 
   return (
@@ -93,14 +107,16 @@ function AuthModal({ onClose }) {
         {/* Google Sign-In Button */}
         <button
           id="auth-google-signin-btn"
+          type="button"
           className="auth-google-btn"
           onClick={handleSignIn}
-          disabled={loading}
-          aria-busy={loading}
+          disabled={isSigningIn}
+          aria-busy={isSigningIn}
         >
           <GoogleIcon />
-          <span>{loading ? "Signing in…" : "Continue with Google"}</span>
+          <span>{isSigningIn ? "Opening Google…" : "Continue with Google"}</span>
         </button>
+        {signInError ? <p className="auth-modal-error" role="alert">{signInError}</p> : null}
 
         {/* Privacy note */}
         <p className="auth-modal-privacy">

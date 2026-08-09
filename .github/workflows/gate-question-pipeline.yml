@@ -31,6 +31,9 @@ jobs:
     timeout-minutes: 330
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+      VITE_SITE_URL: https://gateqa.in
 
     steps:
       # ── Setup ────────────────────────────────────────────────────────
@@ -44,6 +47,11 @@ jobs:
         with:
           node-version: "24"
           cache: "npm"
+
+      - name: Verify production auth configuration
+        run: |
+          test -n "$VITE_SUPABASE_URL"
+          test -n "$VITE_SUPABASE_ANON_KEY"
 
       - name: Determine target year
         id: target

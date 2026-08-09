@@ -517,11 +517,11 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   return (
     <>
     <header className="sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
-        <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+      <div className="app-header-inner mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-6 sm:py-5 lg:px-8">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-4">
           <Link
           to={HOME_ROUTE}
-          className="flex min-w-0 items-center gap-4"
+          className="flex min-w-0 items-center gap-2 sm:gap-4"
           aria-label="GATE QA home"
         >
           <span className="app-header-logo-frame shrink-0">
@@ -530,11 +530,11 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               alt="GATE QA logo"
               width="64"
               height="64"
-              className="logo-icon app-header-logo h-14 w-14 object-contain sm:h-16 sm:w-16"
+              className="logo-icon app-header-logo h-10 w-10 object-contain sm:h-16 sm:w-16"
             />
           </span>
           <div className="min-w-0">
-            <p className="text-lg font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
+            <p className="text-base font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
           </div>
         </Link>
         </div>
@@ -567,7 +567,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               to="/gate-cse-2027-syllabus-changes"
               aria-label="GATE 2027 Syllabus Changes — read what changed"
               title="GATE 2027 Syllabus Changes"
-              className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-emerald-300 bg-emerald-50 text-emerald-600 transition hover:scale-110 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:border-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 dark:hover:bg-emerald-900/40"
+              className="header-secondary-action relative hidden h-8 w-8 items-center justify-center rounded-full border border-emerald-300 bg-emerald-50 text-emerald-600 transition hover:scale-110 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:border-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 dark:hover:bg-emerald-900/40 sm:inline-flex"
             >
               <FaNewspaper className="h-4 w-4" aria-hidden="true" />
               <span className="absolute -right-0.5 -top-0.5 flex h-2 w-2" aria-hidden="true">
@@ -583,7 +583,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Give feedback"
-              className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-violet-300 bg-violet-50 text-violet-600 transition hover:scale-110 hover:bg-violet-100 focus:outline-none focus:ring-2 focus:ring-violet-500 dark:border-violet-700 dark:bg-violet-950/50 dark:text-violet-400 dark:hover:bg-violet-900/40"
+              className="header-secondary-action relative hidden h-8 w-8 items-center justify-center rounded-full border border-violet-300 bg-violet-50 text-violet-600 transition hover:scale-110 hover:bg-violet-100 focus:outline-none focus:ring-2 focus:ring-violet-500 dark:border-violet-700 dark:bg-violet-950/50 dark:text-violet-400 dark:hover:bg-violet-900/40 sm:inline-flex"
             >
               <FiMessageSquare className="h-4 w-4" aria-hidden="true" />
               <span className="absolute -right-0.5 -top-0.5 flex h-2 w-2" aria-hidden="true">
