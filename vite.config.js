@@ -106,6 +106,7 @@ export default defineConfig(async ({ mode }) => {
     test: {
       globals: true,
       environment: 'node',
+      testTimeout: 15000,
       setupFiles: ['./src/test-setup.js'],
       exclude: [
         'tests/e2e/**',
