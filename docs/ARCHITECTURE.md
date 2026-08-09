@@ -24,6 +24,12 @@ GateQA is a static, local-first React SPA hosted on GitHub Pages with an optiona
 
 ## User Authentication & Cloud Sync Architecture (FEAT-032)
 
+The auth announcement manager provides a non-blocking first-visit sign-in
+experiment. Guests see the optional backup message once per browser, while the
+post-sign-in confirmation appears only after the authenticated cloud sync
+completes successfully. Guest mode remains fully available when Supabase is
+unconfigured.
+
 GateQA follows a **Local-First Hybrid Architecture**:
 
 ```text

@@ -118,6 +118,9 @@ export function AuthProvider({ children }) {
       setLoading(false);
 
       if (event === "SIGNED_IN" && newUser) {
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("gateqa:auth-signed-in", { detail: newUser }));
+        }
         triggerSync(newUser.id);
       }
     });

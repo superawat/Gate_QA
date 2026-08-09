@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
+import AuthAnnouncementManager from "./components/Auth/AuthAnnouncementManager";
 import { HelmetProvider } from "react-helmet-async";
 import {
   BrowserRouter,
@@ -660,6 +661,7 @@ function App() {
     <HelmetProvider>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <AuthProvider>
+          <AuthAnnouncementManager />
           <AppRuntime />
         </AuthProvider>
       </BrowserRouter>
