@@ -1,5 +1,41 @@
 # Changelog
 
+## 2026-08-09
+
+### Added
+- **User Authentication & Google OAuth (`feat/user-auth-supabase` / PR #12)**:
+  - Added optional Google OAuth sign-in via Supabase (`@supabase/supabase-js`) with permanent Guest Mode fallback if credentials are absent.
+  - Implemented `AuthContext.jsx` for centralized session lifecycle management, real-time auth state synchronization, and reactive token refresh.
+  - Built `AuthModal.jsx` featuring clean vector icon styling (`react-icons/fi`), accessible focus trapping, keyboard navigation, and explicit privacy guarantees.
+  - Built `UserProfileMenu.jsx` header dropdown displaying Google avatar / user initials, email address, sync status indicator, and secure sign-out (preserves local data).
+  - Built `GuestDataPrompt.jsx` non-intrusive banner prompting guest users with 50+ solved questions to back up their data for free.
+  - Integrated auth UI directly into `AppHeader.jsx` with full dark/light theme fidelity.
+  - Updated Privacy Policy (`/privacy` in `StaticPages.jsx`) detailing optional Google Auth, Supabase cloud sync, zero data loss guarantees, and one-click data export rights.
+
+- **Bi-Directional Cloud Sync & Offline Resilience Engine (`cloudSyncManager.js`, `syncQueue.js`)**:
+  - Implemented **Zero-Data-Loss Additive Union-Merge Algorithm**:
+    - *Bookmarks:* Deduplicated set union (`Set.union(local, cloud)`).
+    - *Personal Notes:* Longest Note Wins policy (preserves student effort; falls back to newer timestamp).
+    - *Solved Questions:* Union of attempt records, keeping earliest `attemptedAt` timestamp.
+    - *Mock Test History:* Deduplicated chronologically by `testId`.
+    - *Streak & Heatmap:* Namespaced `progress_records` sync across devices.
+  - Implemented pre-merge local snapshot backups in `localStorage` (`gate_qa_backup_<timestamp>`) retaining the 5 most recent snapshots to prevent quota inflation.
+  - Added persistent offline sync queue in `localStorage` (`gate_qa_sync_queue`) with exponential retry and reconnect flushing.
+  - Added real-time event-driven dashboard refresh in `HomePage.jsx` updating streak count and daily practice heatmap immediately upon `gateqa:sync-complete`.
+
+- **Database Security Hardening & PostgreSQL Schema (`docs/DATABASE.md`, `docs/supabase/`)**:
+  - Created and verified 3 core relational tables: `public.profiles`, `public.user_progress`, and `public.sync_log`.
+  - Added automated PostgreSQL `handle_new_auth_user()` trigger on `auth.users` for automatic profile provisioning and existing-user backfill.
+  - Hardened Row Level Security (RLS) on all user tables restricting access strictly to authenticated owners (`auth.uid() = user_id`).
+  - Revoked excessive public and anonymous grants to enforce least-privilege security.
+
+### Fixed
+- **Google OAuth Client Secret & Redirect Configuration**:
+  - Resolved `Error 400: redirect_uri_mismatch` and `Unable to exchange external code` by configuring Supabase callback URL in Google Cloud Console Authorized redirect URIs (`https://<project-ref>.supabase.co/auth/v1/callback`) and adding localhost port wildcards (`http://localhost:5173/**`, `http://localhost:5174/**`).
+- **Merge Conflicts Resolution & Build Verification**:
+  - Resolved generated-file merge conflicts across 58 question detail shards, `question-bank-manifest.json`, and `mock_catalog_v1.json` with `main`.
+  - Verified 100% test pass rate across 49 test suites (317 tests passing), 0 TypeScript errors, and successful static production build with 3,493 pre-rendered SEO pages.
+
 ## 2026-08-06
 
 ### Fixed

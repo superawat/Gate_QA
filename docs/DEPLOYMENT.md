@@ -36,6 +36,17 @@ Current build chain:
 - `package.json` homepage is `https://gateqa.in/`.
 - runtime static fetches use `import.meta.env.BASE_URL`.
 
+## Environment variables & secrets (Authentication & Cloud Sync)
+
+For production deployments on GitHub Pages (`https://gateqa.in/`), configure the following variables under **GitHub Repository Settings → Secrets and variables → Actions**:
+
+| Variable | Scope | Description |
+| :--- | :--- | :--- |
+| `VITE_SUPABASE_URL` | Variables / Secrets | Public Supabase project URL (`https://<project-ref>.supabase.co`) |
+| `VITE_SUPABASE_ANON_KEY` | Variables / Secrets | Browser-safe Supabase Anonymous/Public API Key |
+
+> 💡 **Graceful Fallback:** If these variables are not configured, Vite builds still succeed completely and GateQA operates in 100% functional Guest Mode. Adding them enables optional Google Sign-In and cloud sync on production.
+
 ## CI/CD workflows
 
 ### `.github/workflows/node.js.yml`

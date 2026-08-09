@@ -13,16 +13,24 @@ This file is the working backlog for future product improvements and important d
 
 - Keep GitHub Pages.
   The repo's current problems are still product/runtime issues, not hosting limits.
-- Treat startup split and public parity as landed foundations.
+- Treat startup split, public parity, and local-first cloud sync as landed foundations.
   The next work should build on them instead of reopening host-migration debates.
-- Use the now-shipped search, insights, and mock foundations as the default baseline.
+- Use the now-shipped search, insights, mock, and Google Auth/cloud sync foundations as the default baseline.
   New product work should build on those shipped surfaces instead of reopening them.
 - Use Figma selectively, not by default.
   It is worth it for a landing-page redesign, filter UX redesign, mock-test polish, or any work involving multiple contributors.
-- Keep the app static-first for now.
-  There is no urgent need to add a backend until sync, reporting, or user accounts become real product requirements.
+- Keep the app local-first with optional Supabase background sync.
+  LocalStorage remains the primary zero-latency store, while Supabase backs up bookmarks, notes, solved attempts, and practice streaks with zero local data loss.
 
 ## Decision Log
+
+### DEC-007: Local-First Additive-Only Cloud Sync Architecture (FEAT-032)
+- Status: Delivered
+- Priority: P0
+- Decision:
+  Use a hybrid local-first architecture for User Authentication and Cloud Sync powered by Supabase. `localStorage` is primary and authoritative on device; Supabase functions as an optional, secondary backup and cross-device sync layer. All merge operations use an additive union-merge algorithm (longest note wins, earliest solve wins, bookmarks union, chronological mock deduplication) with automatic pre-merge local snapshot backups.
+- Why:
+  Students study on unreliable connections and frequently switch devices. Pure cloud-first architectures add blocking latency and risk student progress loss on connection drops. Local-first guarantees 100% offline functionality, instantaneous page loads, zero paywall/login friction, and mathematically eliminates data deletion during sync.
 
 ### DEC-005: IIT Madras GATE 2027 Syllabus Breakdown & Editorial Layout
 - Status: Delivered
@@ -124,7 +132,11 @@ This file is the working backlog for future product improvements and important d
 | FEAT-029 | P2 | Done | Add offline/PWA support | Shell-first service worker, manifest, and offline fallback are now shipped |
 | FEAT-030 | P1 | Done | Implement Practice Preference Toggles | Added shuffle and filter toggles to Explore page, syncing filters/pool and branching sessions |
 | FEAT-031 | P1 | Done | Custom Mock Test Builder advanced options | Shipped subtopic selection accordion, dynamic custom duration clamping, and live summary details |
+<<<<<<< Updated upstream
 | FEAT-032 | P1 | Planned | Optional Google Sign-In & Multi-Device Cloud Sync | Supabase auth integration with zero-data-loss union-merge algorithm (`feat/user-auth-supabase`) |
+=======
+| FEAT-032 | P0 | Done | User Auth & Bi-directional Cloud Sync | Shipped optional Google OAuth, additive union-merge sync engine, offline queue, hardened RLS, and streak tracking |
+>>>>>>> Stashed changes
 
 ## What We Can Improve Right Now
 

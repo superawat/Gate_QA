@@ -1,25 +1,58 @@
 # Architecture
 
-GateQA is a static React SPA hosted on GitHub Pages.
-There is no backend, no database, and no server-side rendering.
+GateQA is a static, local-first React SPA hosted on GitHub Pages with an optional, decentralized Supabase backend for user authentication and cross-device cloud sync.
 
 ## Runtime Topology
 
 1. Static host serves `dist/`.
 2. `src/index.jsx` mounts `App`, defers non-critical stylesheet loading until after first frame, and registers the production service worker.
-3. `App` initializes the lightweight landing manifest on mount:
+3. `AuthProvider` initializes the Supabase client (`src/services/supabase.js`) and listens for OAuth state changes (`onAuthStateChange`).
+   - If Supabase environment variables are missing, the app operates seamlessly in permanent Guest Mode.
+4. `App` initializes the lightweight landing manifest on mount:
    - `QuestionBankManifestService.init()`
-4. `FilterProvider` seeds summary state from the manifest and owns filter/progress state.
-5. `App` resolves `appView` (`landing | practice | mockSetup | mockExam`) directly from URL params.
-6. `QuestionService.init()` and `AnswerService.init()` run only when practice or mock entry needs question data:
+5. `FilterProvider` seeds summary state from the manifest and owns filter/progress state.
+6. `App` resolves `appView` (`landing | practice | mockSetup | mockExam`) directly from URL params.
+7. `QuestionService.init()` and `AnswerService.init()` run only when practice or mock entry needs question data:
    - practice loads the lightweight search index plus answer lookups
    - mock still loads the full question bank
-7. UI renders one of:
-   - Landing mode selector dashboard
+8. UI renders one of:
+   - Landing mode selector dashboard (with dynamic sync-refreshed streak and activity heatmap)
    - Practice view (filter modal, chips, question card, answer panel)
    - Mock setup shell
    - Mock exam shell
-8. Header, calculator, and footer remain shared shell components.
+9. Header, calculator, and footer remain shared shell components.
+
+## User Authentication & Cloud Sync Architecture (FEAT-032)
+
+GateQA follows a **Local-First Hybrid Architecture**:
+
+```text
+[ Browser LocalStorage ] (Primary, zero-latency source of truth)
+        │ ▲
+        │ │ Pre-Merge Snapshot (gate_qa_backup_<timestamp>)
+        ▼ │
+[ CloudSyncManager (Union-Merge) ] ◄──► [ Offline Sync Queue (syncQueue.js) ]
+        │ ▲
+        │ │ HTTPS (Additive Upsert)
+        ▼ │
+[ Supabase PostgreSQL + RLS ] (Secondary backup & cross-device sync)
+```
+
+1. **Zero Data Loss Invariant:**
+   - Local device data is never deleted or overwritten during sync.
+   - An automatic pre-merge JSON snapshot is stored in `localStorage` before any cloud sync starts.
+2. **Additive-Only Union-Merge Algorithm:**
+   - **Bookmarks:** Deduplicated set union (`Set.union(local, cloud)`).
+   - **Personal Notes:** Longest Note Wins policy (preserves student effort; falls back to newer timestamp).
+   - **Solved Questions:** Union of attempt records, keeping earliest `attemptedAt` timestamp.
+   - **Mock Test History:** Deduplicated chronologically by `testId`.
+   - **Streak & Daily Heatmap:** Synced via `progress_records` JSON array.
+3. **Offline Resilience:**
+   - All mutations while offline are queued in `localStorage` (`gate_qa_sync_queue`) with exponential backoff retry and automatic reconnect flushing.
+4. **Database Security (Least Privilege):**
+   - RLS enabled on `profiles`, `user_progress`, and `sync_log`.
+   - All access restricted to authenticated owners (`auth.uid() = user_id`).
+   - Automated PostgreSQL trigger `handle_new_auth_user()` provisions `public.profiles` automatically upon Google OAuth sign-up.
 
 ## Error Boundaries
 
