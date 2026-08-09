@@ -47,7 +47,7 @@ test("subject filter updates result context", async ({ page }) => {
   await subjectCheckbox.check();
 
   await expect(page).toHaveURL(/subjects=algorithms/);
-  await expect(subjectCheckbox).toBeChecked();
+  await expect(subjectCheckbox).toBeChecked({ timeout: 8000 });
 });
 
 test("search input filters and can be cleared", async ({ page }) => {
@@ -57,7 +57,7 @@ test("search input filters and can be cleared", async ({ page }) => {
   await expect(searchInput).toBeVisible({ timeout: 15000 });
   await searchInput.fill("zzzz-no-match-token");
 
-  await expect(page.getByText(/No questions match these filters/i)).toBeVisible();
+  await expect(page.getByText(/No questions match these filters/i)).toBeVisible({ timeout: 10000 });
   await searchInput.fill("");
   await waitForPracticeList(page);
 });

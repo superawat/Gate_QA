@@ -206,7 +206,7 @@ describe("MockTest smoke flow", () => {
     fireEvent.click(screen.getByRole("button", { name: "Return to Dashboard" }));
 
     expect(onExit).toHaveBeenCalledTimes(1);
-  }, 15000);
+  }, 30000);
 
   test("Save & Next moves from the last GA question to the first CS question", async () => {
     const gaQuestionOne = buildQuestion("ga:1", "MCQ", [

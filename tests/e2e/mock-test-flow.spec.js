@@ -44,7 +44,8 @@ test("insights entry is visible on the landing page", async ({ page }) => {
 
 test("mock portal route loads from the landing CTA", async ({ page }) => {
   await openMockPortal(page);
-  await expect(page.getByText("Past Paper")).toBeVisible({ timeout: 15000 });
+  // "Past Paper" card is one of the 3 mode options rendered in MockTestPortal
+  await expect(page.getByText("Past Paper").first()).toBeVisible({ timeout: 15000 });
   await expect(page.getByTestId("mock-portal-continue")).toBeVisible({ timeout: 15000 });
 });
 

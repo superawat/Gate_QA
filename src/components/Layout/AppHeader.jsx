@@ -522,7 +522,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
           <Link
           to={HOME_ROUTE}
           className="flex min-w-0 items-center gap-2 sm:gap-4"
-          aria-label="GATE QA"
+          aria-label="GATE QA home"
         >
           <span className="app-header-logo-frame shrink-0">
             <img

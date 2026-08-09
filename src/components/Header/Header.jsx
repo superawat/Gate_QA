@@ -30,7 +30,7 @@ const Header = ({
             <a
               href={import.meta.env.BASE_URL}
               className="app-header-logo-frame shrink-0 transition-opacity hover:opacity-80"
-              aria-label="Go to home page"
+              aria-label="GATE QA home"
             >
               <img
                 src="logo.png"
