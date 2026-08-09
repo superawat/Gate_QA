@@ -42,7 +42,7 @@ const Footer = () => {
           <button
             type="button"
             onClick={() => setIsSupportOpen(true)}
-            aria-label="Support Gate QA"
+            aria-label="Support Me"
             className="hover:text-[color:var(--color-text)] transition-colors inline-flex items-center gap-1"
           >
             Support Me <FaHeart className="size-2 sm:size-2.5 text-pink-500 transition-transform hover:scale-110" />

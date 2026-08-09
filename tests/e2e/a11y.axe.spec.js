@@ -99,11 +99,11 @@ async function expectAccessibilityStructure(page, routeLabel, expected) {
 
 test("axe audit: landing route", async ({ page }) => {
   await page.goto(appPath("/"));
-  await expect(page.getByRole("link", { name: /GATE QA home/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /^GATE QA$/i })).toBeVisible();
   await expectAccessibilityStructure(page, "Landing", {
     landmarks: ["header", "main", "footer"],
     headings: ["GateQA practice dashboard"],
-    controls: [/GATE QA home/i, /Practice/i, /Filter Questions/i],
+    controls: [/^GATE QA$/i, /Practice/i, /Filter Questions/i],
   });
   await expectNoA11yViolations(page, "Landing");
 });

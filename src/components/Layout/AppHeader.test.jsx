@@ -111,7 +111,8 @@ describe("AppHeader", () => {
     expect(drawerFeedbackLink.getAttribute("target")).toBe("_blank");
 
     // Verify support button and opening SupportModal
-    const supportBtn = drawerScope.getByRole("button", { name: /support me/i });
+    const supportButtons = drawerScope.getAllByRole("button", { name: /support me/i });
+    const supportBtn = supportButtons[supportButtons.length - 1];
     expect(supportBtn).toBeTruthy();
     fireEvent.click(supportBtn);
 

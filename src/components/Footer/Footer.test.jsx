@@ -17,6 +17,6 @@ describe("Footer", () => {
     );
 
     expect(screen.getByRole("button", { name: /open data policy/i })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /support gate qa/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /support me/i })).toBeTruthy();
   });
 });

@@ -268,7 +268,7 @@ const GlobalNavigationDrawer = ({
                 <button
                   type="button"
                   onClick={() => setIsSupportOpen(true)}
-                  aria-label="Support Gate QA"
+                  aria-label="Support Me"
                   className="text-pink-600 dark:text-pink-400 hover:scale-110 active:scale-95 transition-transform flex items-center justify-center p-0.5"
                 >
                   <FaHeart className="h-4 w-4 animate-pulse shrink-0" />

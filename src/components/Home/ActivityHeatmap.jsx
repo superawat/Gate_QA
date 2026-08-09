@@ -100,7 +100,7 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
   return (
     <div className="home-activity-heatmap">
       <div className="home-activity-header">
-        <h3>Practice Activity</h3>
+        <h2>Practice Activity</h2>
         <label htmlFor="activity-year" className="sr-only">Activity range</label>
         <select id="activity-year" value="rolling" onChange={() => {}} aria-label="Activity range">
           <option value="rolling">{isMobile ? "Last 12 weeks" : "Last 365 days"}</option>

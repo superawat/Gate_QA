@@ -159,7 +159,7 @@ const StreakBanner = ({ activity = null }) => {
             type="button"
             onClick={() => setIsEditingGoal(true)}
             className="home-goal-ring cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-full"
-            aria-label={`Edit Daily goal: ${safeTodayAttempts} out of ${safeGoal}`}
+            aria-label={`${safeTodayAttempts} / ${safeGoal} — Edit daily goal`}
             style={{ "--home-goal-dash": goalDash }}
           >
             <svg viewBox="0 0 44 44" aria-hidden="true">
