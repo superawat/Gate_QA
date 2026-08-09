@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
-import { FaBolt, FaFire, FaShieldAlt, FaStar, FaTrophy } from "react-icons/fa";
+import { FaBolt, FaShieldAlt, FaStar, FaTrophy } from "react-icons/fa";
 
 import { useDailyGoal } from "../../hooks/useDailyGoal";
+
+const STREAK_ICON = "/homepage_icon/optimized/streak.webp";
 
 const StatPill = ({ icon: Icon, value, label, tone = "neutral" }) => (
   <div className={`home-streak-pill home-streak-pill--${tone}`}>
@@ -136,7 +138,7 @@ const StreakBanner = ({ activity = null }) => {
         <div className="home-streak-main">
           <div className="home-streak-lede">
             <span className="home-streak-fire" aria-hidden="true">
-              <FaFire size={24} />
+              <img src={STREAK_ICON} alt="" width="128" height="128" loading="eager" decoding="async" />
             </span>
             <div className="min-w-0">
               <p className="home-streak-title">

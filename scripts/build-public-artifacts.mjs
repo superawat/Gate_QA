@@ -196,6 +196,24 @@ function writeText(filePath, contents) {
   fs.writeFileSync(filePath, contents, "utf8");
 }
 
+function stripBuildMetadata(value) {
+  if (Array.isArray(value)) {
+    return value.map(stripBuildMetadata);
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([key]) => key !== "generatedAt" && key !== "dataRevision")
+        .map(([key, entry]) => [key, stripBuildMetadata(entry)])
+    );
+  }
+  return value;
+}
+
+function hasSameGeneratedContent(left, right) {
+  return JSON.stringify(stripBuildMetadata(left)) === JSON.stringify(stripBuildMetadata(right));
+}
+
 function escapeXml(value = "") {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -1544,7 +1562,7 @@ function getLatestValidationReportPath() {
 }
 
 function buildArtifacts() {
-  const generatedAt = new Date().toISOString();
+  let generatedAt = new Date().toISOString();
   const questionBankPath = getQuestionBankPath();
   const questions = readJson(questionBankPath, []);
   if (!Array.isArray(questions)) {
@@ -1775,6 +1793,34 @@ function buildArtifacts() {
       String(pipelineState?.lastRunAt || "").trim() ||
       generatedAt,
   };
+
+  const existingManifest = readJson(path.join(PUBLIC_DIR, "question-bank-manifest.json"), null);
+  const existingShardKeys = new Set(
+    fs.existsSync(DETAIL_SHARDS_DIR)
+      ? fs.readdirSync(DETAIL_SHARDS_DIR)
+        .filter((fileName) => fileName.endsWith(".json"))
+        .map((fileName) => fileName.slice(0, -5))
+      : []
+  );
+  const detailShardsUnchanged =
+    existingShardKeys.size === detailShards.size &&
+    Array.from(detailShards.entries()).every(([shardKey, payload]) => {
+      const existingPayload = readJson(path.join(DETAIL_SHARDS_DIR, `${shardKey}.json`), null);
+      return existingPayload && hasSameGeneratedContent(existingPayload, payload);
+    });
+
+  if (
+    existingManifest?.generatedAt &&
+    hasSameGeneratedContent(existingManifest, manifest) &&
+    detailShardsUnchanged
+  ) {
+    generatedAt = existingManifest.generatedAt;
+    manifest.generatedAt = generatedAt;
+    manifest.dataRevision = existingManifest.dataRevision || manifest.dataRevision;
+    for (const payload of detailShards.values()) {
+      payload.generatedAt = generatedAt;
+    }
+  }
   const latestYearCoverageEntries = manifest.answerCoverage.yearSets.filter(
     (entry) => Number(entry.year) === Number(manifest.latestYear)
   );

@@ -1,6 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { FaBolt, FaChartLine, FaCompass, FaRegClock } from "react-icons/fa";
-
 import SEOHead, { buildFAQPageSchema } from "../components/SEO/SEOHead";
 
 const HOMEPAGE_FAQS = [
@@ -47,6 +45,8 @@ import {
 } from "../utils/routePreload";
 
 const HOME_LOADER_EXIT_MS = 260;
+
+const HOMEPAGE_ICON_BASE = "/homepage_icon/optimized";
 
 const HomePageLoadingOverlay = ({ exiting }) => (
   <div
@@ -254,7 +254,7 @@ const HomePage = ({
       key: "practice",
       label: "Practice",
       subtext: "Start with a fresh question",
-      icon: FaBolt,
+      icon: `${HOMEPAGE_ICON_BASE}/practice_no_bg.webp`,
       variant: "primary",
       onClick: onStartRandomPractice,
       preload: preloadPracticeStartExperience,
@@ -264,7 +264,7 @@ const HomePage = ({
       key: "filter",
       label: "Filter Questions",
       subtext: "By subject and year",
-      icon: FaCompass,
+      icon: `${HOMEPAGE_ICON_BASE}/filter_no_bg.webp`,
       variant: "secondary",
       onClick: onExplorePractice,
       preload: preloadExploreRoute,
@@ -273,7 +273,7 @@ const HomePage = ({
       key: "mock",
       label: "Mock Test",
       subtext: "Full-length practice",
-      icon: FaRegClock,
+      icon: `${HOMEPAGE_ICON_BASE}/mocktest1_no_bg.webp`,
       variant: "secondary",
       disabled: !mockModeEnabled,
       onClick: onStartMockTest,
@@ -283,7 +283,7 @@ const HomePage = ({
       key: "insights",
       label: "Performance Insights",
       subtext: "Track your progress",
-      icon: FaChartLine,
+      icon: `${HOMEPAGE_ICON_BASE}/insights_no_bg.webp`,
       variant: "secondary",
       onClick: onOpenInsights,
       preload: preloadInsightsRoute,
@@ -317,7 +317,6 @@ const HomePage = ({
               aria-roledescription="carousel"
             >
               {actionCards.map((card, index) => {
-                const Icon = card.icon;
                 const isDisabled = Boolean(card.disabled);
                 const isActive = index === activeActionIndex;
 
@@ -337,7 +336,15 @@ const HomePage = ({
                     className={`home-action-card home-action-card--${card.variant} ${isActive ? "home-action-card--active" : "home-action-card--side"} group text-left ${isDisabled ? "home-action-card--disabled" : ""}`}
                   >
                     <span className="home-action-icon">
-                      <Icon size={18} />
+                      <img
+                        src={card.icon}
+                        alt=""
+                        width="128"
+                        height="128"
+                        loading="eager"
+                        decoding="async"
+                        aria-hidden="true"
+                      />
                     </span>
                     <span className="home-action-copy">
                       <span className="home-action-label">{card.label}</span>
