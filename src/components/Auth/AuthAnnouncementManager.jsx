@@ -5,6 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import AuthModal from "./AuthModal";
 
 const FIRST_VISIT_KEY = "gateqa_auth_announcement_seen_v1";
+const SUCCESS_ANNOUNCEMENT_KEY = "gateqa_auth_success_announcement_seen_v1";
 
 const assetUrl = (filename) => {
   const base = String(import.meta.env.BASE_URL || "/");
@@ -38,6 +39,18 @@ function AuthAnnouncementManager() {
     };
     const handleSyncComplete = () => {
       if (!pendingBackupRef.current || !user) return;
+
+      try {
+        if (window.localStorage.getItem(SUCCESS_ANNOUNCEMENT_KEY) === "1") {
+          pendingBackupRef.current = false;
+          return;
+        }
+        // Mark it before rendering so closing the popup prevents repeat displays.
+        window.localStorage.setItem(SUCCESS_ANNOUNCEMENT_KEY, "1");
+      } catch {
+        // Storage failures must not hide a successful sign-in confirmation.
+      }
+
       pendingBackupRef.current = false;
       setAnnouncement("success");
     };
