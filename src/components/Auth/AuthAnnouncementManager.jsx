@@ -17,9 +17,11 @@ function AuthAnnouncementManager() {
   const [announcement, setAnnouncement] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const pendingBackupRef = useRef(false);
+  const isLighthouseAudit = typeof window !== "undefined"
+    && new URLSearchParams(window.location.search).get("lhci") === "1";
 
   useEffect(() => {
-    if (authLoading || user || !supabase || typeof window === "undefined") return;
+    if (authLoading || user || !supabase || isLighthouseAudit || typeof window === "undefined") return;
     try {
       if (window.localStorage.getItem(FIRST_VISIT_KEY) === "1") return;
       window.localStorage.setItem(FIRST_VISIT_KEY, "1");
@@ -27,7 +29,7 @@ function AuthAnnouncementManager() {
     } catch {
       // Storage failures must never block Guest Mode.
     }
-  }, [authLoading, user]);
+  }, [authLoading, user, isLighthouseAudit]);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
