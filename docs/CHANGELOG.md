@@ -1,30 +1,21 @@
 # Changelog
 
-## 2026-08-08
-
-### Added
-- **User Authentication & Bi-Directional Cloud Sync (`feat/user-auth-supabase`)**:
-  - Implemented optional Google OAuth authentication and PostgreSQL cloud backup via Supabase (`@supabase/supabase-js`).
-  - Local-first architecture: `localStorage` is primary read/write store for 100% offline resilience; Supabase Free Tier is background sync.
-  - Additive-only **union-merge algorithm** in `src/utils/cloudSyncManager.js`: bookmarks deduplication, personal notes longest-note-wins with timestamp tie-breaker, solved questions earliest-attempt timestamp preservation, mock test chronological deduplication, and practice-attempt/streak sync via namespaced `progress_records` (`standard` and `aptitude`).
-  - Pre-merge snapshot engine retaining up to 5 recent local backups (`gate_qa_backup_<timestamp>`).
-  - Persistent offline sync queue (`gate_qa_sync_queue` in `src/utils/syncQueue.js`) with exponential retry and reconnect event dispatching (`gateqa:sync-request`).
-  - UI components: `AuthModal.jsx`, `UserProfileMenu.jsx` with real-time Cloud Sync status badge (`Data Synced to Cloud` / `Syncing to cloud...`), and `GuestDataPrompt.jsx`.
-  - Added automatic dashboard refresh listener (`gateqa:sync-complete` and `storage`) in `HomePage.jsx` to dynamically update streak count and activity heatmap immediately after background sync completes.
-  - Authored comprehensive documentation in `docs/DATABASE.md`, `docs/PHASE4_TESTING_REPORT.md`, `docs/supabase/supabase_add_progress_records.sql`, and `docs/supabase/supabase_security_audit_and_cleanup.sql`.
-  - Added template [`.env.example`](.env.example) and Agent instructions in [`.agents/AGENTS.md`](.agents/AGENTS.md).
+## 2026-08-06
 
 ### Fixed
-- **Missing Profiles Row & Foreign Key Constraint**:
-  - Added PostgreSQL trigger function `handle_new_auth_user()` on `auth.users` (`on_auth_user_created`) to automatically generate and maintain matching `public.profiles` rows for new and existing Google OAuth sign-ins.
-  - Provided idempotent backfill SQL for existing users whose profile row was missing.
-- **Supabase Security & RLS Policy Hardening**:
-  - Corrected and enforced granular RLS policies for `profiles`, `user_progress`, and `sync_log` using cached `((select auth.uid()) = user_id)` checks.
-  - Removed broad `public` / `ALL` role policies and revoked excessive public/anon Data API permissions, ensuring unauthenticated clients are fully blocked at the database engine level.
-- **Comprehensive Phase 4 Test Suite**:
-  - Added unit test suites for `cloudSyncManager.test.js`, `syncQueue.test.js`, `AuthContext.test.jsx`, and `UserProfileMenu.test.jsx`.
-  - Verified 100% test pass rate across 49 test suites (316 tests).
-  - Verified TypeScript typechecking (`tsc`) with 0 errors and production build pre-rendering 3,493 SEO pages.
+- **Question Classification & Subtopic Tagging (`go:118376` - GATE CSE 2017 Set 2 Q34)**:
+  - Updated subject classification from Digital Logic to Computer Networks.
+  - Tagged under Error Detection and Computer Networks to align with official GATE syllabus tags.
+- **NAT Answer Precision & Validation (`go:302826` - GATE CSE 2019 Q22)**:
+  - Corrected NAT answer key to `0.503` (exact probability $85/169 = 0.502958...$) with valid tolerance range `[0.50, 0.51]`.
+- **MCQ Question Type & Answer Key (`go:1297` - GATE CSE 2009 Q5)**:
+  - Reclassified question type from NAT to MCQ and set correct answer to Option **B** ($(028F)_{16}$).
+- **Practice Session Navigation with "Hide Solved" (`SessionContext.tsx`)**:
+  - Dynamically skip already-solved questions when advancing forward through an active ordered practice session with "Hide Solved" filter enabled.
+
+### Added
+- **Motivational Quotes Database (`motivationalQuotes.js`)**:
+  - Updated student motivational quotes pool.
 
 ## 2026-08-05
 

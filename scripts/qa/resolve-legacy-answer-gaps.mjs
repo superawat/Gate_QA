@@ -23,6 +23,19 @@ const REPORT_PATH = path.join(
 );
 
 const CURATED_RESOLUTIONS = {
+  "go:302826": {
+    type: "NAT",
+    answer: 0.503,
+    tolerance: { min: 0.50, max: 0.51 },
+    note: "Two numbers chosen from {1..13}: 7 numbers have MSB 0 (1 to 7) and 6 numbers have MSB 1 (8 to 13). Total independent pairs = 13 * 13 = 169. Favorable pairs = 7*7 + 6*6 = 85. Probability = 85/169 = 0.502958..., which rounded to 3 decimal places is 0.503.",
+    method: "manual_probability_derivation",
+  },
+  "go:1297": {
+    type: "MCQ",
+    answer: "B",
+    note: "(1217)_8 in binary is (001 010 001 111)_2. Grouping 4 bits gives (0010 1000 1111)_2 = (028F)_16. Therefore, the correct answer is Option B.",
+    method: "manual_base_conversion_verification",
+  },
   "go:80298": {
     type: "MCQ",
     answer: "B",

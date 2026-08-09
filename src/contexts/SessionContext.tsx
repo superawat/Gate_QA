@@ -57,6 +57,7 @@ interface SessionFilterStateShape extends FilterStateShape {
     allQuestions?: QuestionRow[];
     solvedQuestionIds?: string[];
     activeSolvedQuestionIds?: string[];
+    filters?: { hideSolved?: boolean };
 }
 
 const SessionContext = createContext<SessionContextValue | null>(null);
@@ -421,11 +422,14 @@ export const useSession = () => {
 };
 
 export const SessionProvider = ({ children }: { children: React.ReactNode }) => {
-    const { allQuestions = [], solvedQuestionIds = [], activeSolvedQuestionIds = [] } = useFilterState() as SessionFilterStateShape;
+    const { allQuestions = [], solvedQuestionIds = [], activeSolvedQuestionIds = [], filters } = useFilterState() as SessionFilterStateShape;
     const solvedIds = activeSolvedQuestionIds || solvedQuestionIds;
     const solvedSet = useMemo(() => new Set<string>(solvedIds), [solvedIds]);
     const solvedSetRef = useRef(solvedSet);
     solvedSetRef.current = solvedSet;
+    // Keep a ref to hideSolved so goToNextQuestion can read the current value without stale closure.
+    const hideSolvedRef = useRef(false);
+    hideSolvedRef.current = Boolean(filters?.hideSolved);
     const activeQuestionMapRef = useRef<Map<string, QuestionRow>>(new Map());
 
     const questionMap = useMemo(() => {
@@ -614,8 +618,29 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     const goToNextQuestion = useCallback((uid = '') => {
         const navigation = getNavigationState(uid);
         if (navigation.nextUid) {
-            const nextIndex = navigation.index + 1;
-            const nextUid = navigation.nextUid;
+            let nextIndex = navigation.index + 1;
+            let nextUid = navigation.nextUid;
+
+            // When "Hide Solved" is active in an ordered session, skip over any
+            // questions that became solved after the session queue was built.
+            // This prevents already-solved questions from reappearing mid-session.
+            if (hideSolvedRef.current && sessionMode === 'ordered') {
+                while (nextIndex < sessionQueue.length) {
+                    const candidateUid = sessionQueue[nextIndex];
+                    const candidateQuestion = getQuestionByUid(candidateUid) || { question_uid: candidateUid } as QuestionRow;
+                    const candidateTrackingId = getTrackingId(candidateQuestion);
+                    if (!candidateTrackingId || !solvedSetRef.current.has(candidateTrackingId)) {
+                        nextUid = candidateUid;
+                        break;
+                    }
+                    nextIndex++;
+                }
+                // All remaining questions in the queue are solved — end of session.
+                if (nextIndex >= sessionQueue.length) {
+                    return null;
+                }
+            }
+
             setCurrentIndex(nextIndex);
             if (sessionMode === 'random') {
                 seenThisSession.current.add(nextUid);
@@ -629,7 +654,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         }
 
         return null;
-    }, [getNavigationState, getQuestionByUid, rebuildRandomQueue, rememberRandomQuestion, sessionMode]);
+    }, [getNavigationState, getQuestionByUid, rebuildRandomQueue, rememberRandomQuestion, sessionMode, sessionQueue]);
 
     const advanceQueue = useCallback(() => {
         const currentUid = sessionQueue[currentIndex] || '';
