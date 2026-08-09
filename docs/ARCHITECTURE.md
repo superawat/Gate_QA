@@ -47,6 +47,16 @@ There is no backend, no database, and no server-side rendering.
 - `public/sw.js` precaches the shell and runtime-caches the manifest, search index, detail shards, answer payloads, and static assets.
 - `public/offline.html` is used as the navigation fallback when shell content is unavailable offline.
 
+## Authentication & Cloud Data Sync Layer (Branch: `feat/user-auth-supabase`)
+
+- **Architecture**: Local-First Hybrid Model.
+- **Primary Store**: `localStorage` (All user actions read/write locally first for instant UI response and 100% offline resilience).
+- **Secondary Store (Cloud Backup)**: Supabase PostgreSQL ($0/mo Free Tier via `@supabase/supabase-js`).
+- **Auth Provider**: Google OAuth (optional, guest mode remains default).
+- **Synced Entities**: Bookmarks, Personal Notes, Solved Questions progress, and Mock Test history.
+- **Data Safety**: Uses an additive-only **union-merge algorithm** upon sign-in. Local pre-merge snapshots and pending change queues prevent data loss during network outages or first-time migration. See [`plan/after august/user_auth_and_cloud_sync_plan.md`](file:///c:/Users/himanshu/Desktop/GATE_QA/plan/after%20august/user_auth_and_cloud_sync_plan.md).
+- **Database Reference**: See [`docs/DATABASE.md`](DATABASE.md) for the table relationships, RLS policies, OAuth-to-sync sequence, merge rules, and troubleshooting guide.
+
 The landing route now stays on a lightweight startup path:
 
 - `index.html` no longer includes Google Fonts or MathJax tags (Google Analytics gtag.js is included but loaded asynchronously)

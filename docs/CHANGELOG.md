@@ -19,6 +19,13 @@
 
 ## 2026-08-05
 
+### Added
+- **User Authentication & Cloud Data Sync Master Plan (`feat/user-auth-supabase`)**:
+  - Published comprehensive architectural master plan for optional Google OAuth & Supabase Cloud Sync (`plan/after august/user_auth_and_cloud_sync_plan.md`).
+  - Designed zero-data-loss **additive-only union-merge algorithm** ensuring pre-existing guest data (`localStorage`) is safely preserved and merged upon first sign-in.
+  - Formulated 7 failure scenario safety guarantees covering multi-device sync, network drops, offline fallback, and pre-merge snapshot backups.
+  - Documented decision record `DEC-007` in `docs/ROADMAP_AND_DECISIONS.md` and updated runtime topology in `docs/ARCHITECTURE.md`.
+
 ### Fixed
 - **Question Classification & Answer Fix (`go:80298` - GATE CSE 1987 Q1-xv)**:
   - Reclassified question type from `NAT` to `MCQ`.

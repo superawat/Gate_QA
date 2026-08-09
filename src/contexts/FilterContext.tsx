@@ -7,6 +7,7 @@ import { AnswerService } from '../services/AnswerService';
 import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
 import { useAptitudeEnabled } from '../utils/aptitudePreference';
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from '../utils/localStorageState';
+import { enqueueChange } from '../utils/syncQueue';
 
 const FilterStateContext = createContext();
 const FilterActionsContext = createContext();
@@ -1142,6 +1143,7 @@ export const FilterProvider = ({
                 ? prev.filter(id => id !== questionId)
                 : [...prev, questionId]
         ));
+        enqueueChange('BOOKMARK', { questionUid: questionId });
     }, [answerService, canMergeAptitude]);
 
     const markQuestionsSolved = useCallback((questionOrIds) => {
@@ -1170,6 +1172,8 @@ export const FilterProvider = ({
                 return next.length === prev.length ? prev : next;
             });
         }
+
+        enqueueChange('SOLVE', { questionUids: questionIds });
 
         if (aptitudeQuestionIds.length > 0) {
             setAptitudeSolvedQuestionIds((prev) => {

@@ -12,6 +12,7 @@ import {
 } from "../utils/mockTest";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
 import { APTITUDE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
+import { enqueueChange } from "../utils/syncQueue";
 
 const MockTestContext = createContext();
 
@@ -1015,6 +1016,7 @@ export const MockTestProvider = ({ children }) => {
       });
     });
     appendMockTestHistoryEntry(historyEntry);
+    enqueueChange("MOCK", historyEntry);
     setResultSummary(nextSummary);
     setTestSubmitted(true);
     setTestActive(false);

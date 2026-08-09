@@ -64,12 +64,20 @@ This file is the working backlog for future product improvements and important d
 
 ### DEC-003: Backend Or No Backend?
 
-- Status: Hold current architecture
-- Priority: P2
+- Status: Approved Hybrid Strategy (Planned for post-August)
+- Priority: P1
 - Decision:
-  Keep GateQA static and local-first until cross-device sync, authentication, or user-submitted reports become mandatory.
+  Keep GateQA static and local-first for all question/answer data, while introducing an optional Supabase cloud-sync layer for user authentication, bookmarks, notes, and progress backup.
 - Why:
-  The current GitHub Pages architecture is simple, cheap, and reliable.
+  Static pre-rendered question delivery keeps hosting at $0 and page speed instant, while optional Supabase auth satisfies user requests for cross-device sync and progress safety.
+
+### DEC-007: Zero-Data-Loss User Authentication & Supabase Cloud Sync Strategy
+- Status: Approved Plan (Branch `feat/user-auth-supabase`)
+- Priority: P1
+- Decision:
+  Adopt an additive-only union-merge algorithm and localStorage-first write strategy with optional Google OAuth via Supabase Free Tier ($0/mo up to 50k MAUs).
+- Why:
+  Guarantees zero data loss for students signing in after months of guest practice, protects personal notes and bookmarks across devices, and preserves 100% offline functionality. See `plan/after august/user_auth_and_cloud_sync_plan.md`.
 
 ### DEC-004: Migrate Hosts Or Fix Startup First?
 
@@ -116,6 +124,7 @@ This file is the working backlog for future product improvements and important d
 | FEAT-029 | P2 | Done | Add offline/PWA support | Shell-first service worker, manifest, and offline fallback are now shipped |
 | FEAT-030 | P1 | Done | Implement Practice Preference Toggles | Added shuffle and filter toggles to Explore page, syncing filters/pool and branching sessions |
 | FEAT-031 | P1 | Done | Custom Mock Test Builder advanced options | Shipped subtopic selection accordion, dynamic custom duration clamping, and live summary details |
+| FEAT-032 | P1 | Planned | Optional Google Sign-In & Multi-Device Cloud Sync | Supabase auth integration with zero-data-loss union-merge algorithm (`feat/user-auth-supabase`) |
 
 ## What We Can Improve Right Now
 

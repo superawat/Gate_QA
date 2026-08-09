@@ -75,7 +75,7 @@ const HomePage = ({
   const activeActionIndexRef = useRef(0);
   const actionsRailRef = useRef(null);
   const cardRectCache = useRef(null);
-  const activity = useMemo(() => loadStudyActivityFast(), []);
+  const [activity, setActivity] = useState(() => loadStudyActivityFast());
 
   const parsedQuote = useMemo(() => {
     const raw = getQuoteForToday();
@@ -83,6 +83,25 @@ const HomePage = ({
     return {
       text: text || raw,
       author,
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const refreshActivity = () => {
+      setActivity(loadStudyActivityFast());
+    };
+
+    // Auth sync writes merged progress after the home page may already be
+    // mounted. Refresh the derived streak/heatmap state immediately.
+    window.addEventListener("gateqa:sync-complete", refreshActivity);
+    window.addEventListener("storage", refreshActivity);
+    return () => {
+      window.removeEventListener("gateqa:sync-complete", refreshActivity);
+      window.removeEventListener("storage", refreshActivity);
     };
   }, []);
 
