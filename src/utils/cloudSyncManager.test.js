@@ -279,13 +279,27 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
       })
     );
 
-    // Verify sync_log was inserted
+    // Verify sync_log was inserted with a lightweight summary (not full blob)
     expect(mockInsert).toHaveBeenCalledWith(
       expect.objectContaining({
         user_id: "user-uuid-123",
         action: "incremental_sync",
+        payload_snapshot: expect.objectContaining({
+          summaryVersion:        1,
+          solvedCount:           expect.any(Number),
+          bookmarkCount:         expect.any(Number),
+          notesCount:            expect.any(Number),
+          mockCount:             expect.any(Number),
+          standardProgressCount: expect.any(Number),
+          aptitudeProgressCount: expect.any(Number),
+        }),
       })
     );
+    // Verify payload_snapshot does NOT contain raw student data
+    const insertCall = mockInsert.mock.calls[0][0];
+    expect(insertCall.payload_snapshot).not.toHaveProperty("bookmarks");
+    expect(insertCall.payload_snapshot).not.toHaveProperty("solved_questions");
+    expect(insertCall.payload_snapshot).not.toHaveProperty("notes");
   });
 
   test("handles new users (PGRST116 row not found) seamlessly", async () => {

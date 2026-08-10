@@ -21,6 +21,9 @@ import React, { createContext, useCallback, useContext, useEffect, useRef, useSt
 import { supabase } from "../services/supabase";
 import { syncUserData } from "../utils/cloudSyncManager";
 
+const SYNC_DEBOUNCE_MS = 750;
+const MIN_SYNC_INTERVAL_MS = 30_000;
+
 const DEFAULT_AUTH_CONTEXT = {
   user: null,
   session: null,
@@ -45,11 +48,18 @@ export function AuthProvider({ children }) {
   const syncTimerRef = useRef(null);
   const retryAttemptRef = useRef(0);
   const triggerSyncRef = useRef(null);
+  const lastSuccessfulSyncRef = useRef({ userId: null, timestamp: 0 });
 
   const triggerSync = useCallback(async (activeUserId) => {
     const targetId = activeUserId;
     if (!targetId) return;
     if (syncInFlightRef.current === targetId) return;
+
+    const lastSync = lastSuccessfulSyncRef.current;
+    const elapsed = Date.now() - lastSync.timestamp;
+    if (lastSync.userId === targetId && elapsed < MIN_SYNC_INTERVAL_MS) {
+      return;
+    }
 
     syncInFlightRef.current = targetId;
     setIsSyncing(true);
@@ -57,6 +67,10 @@ export function AuthProvider({ children }) {
       const res = await syncUserData(targetId);
       if (res.success) {
         retryAttemptRef.current = 0;
+        lastSuccessfulSyncRef.current = {
+          userId: targetId,
+          timestamp: Date.now(),
+        };
         setLastSyncedAt(new Date());
       } else if (typeof window !== "undefined" && window.navigator.onLine) {
         const attempt = retryAttemptRef.current;
@@ -88,9 +102,16 @@ export function AuthProvider({ children }) {
     const scheduleSync = () => {
       if (!user?.id) return;
       if (syncTimerRef.current) clearTimeout(syncTimerRef.current);
+
+      const lastSync = lastSuccessfulSyncRef.current;
+      const elapsed = Date.now() - lastSync.timestamp;
+      const cooldownRemaining = lastSync.userId === user.id
+        ? Math.max(0, MIN_SYNC_INTERVAL_MS - elapsed)
+        : 0;
+
       syncTimerRef.current = setTimeout(() => {
         triggerSync(user.id);
-      }, 750);
+      }, Math.max(SYNC_DEBOUNCE_MS, cooldownRemaining));
     };
 
     window.addEventListener("gateqa:sync-request", scheduleSync);

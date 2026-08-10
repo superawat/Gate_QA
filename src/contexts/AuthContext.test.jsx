@@ -88,6 +88,46 @@ describe("AuthContext", () => {
     expect(mockSyncUserData).toHaveBeenCalledWith("user-123");
   });
 
+  test("does not schedule repeated syncs during the cooldown window", async () => {
+    vi.useFakeTimers();
+    const mockUser = { id: "user-123", email: "student@gateqa.in" };
+    const mockSession = { user: mockUser, access_token: "fake-jwt" };
+    const mockSyncUserData = vi.spyOn(cloudSyncManager, "syncUserData")
+      .mockResolvedValue({ success: true });
+    const mockGetSession = vi.fn().mockResolvedValue({
+      data: { session: mockSession },
+    });
+    const mockOnAuthStateChange = vi.fn().mockReturnValue({
+      data: { subscription: { unsubscribe: vi.fn() } },
+    });
+
+    vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({
+      auth: {
+        getSession: mockGetSession,
+        onAuthStateChange: mockOnAuthStateChange,
+      },
+    });
+
+    render(
+      <AuthProvider>
+        <TestConsumer />
+      </AuthProvider>
+    );
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0);
+    });
+    await waitFor(() => expect(mockSyncUserData).toHaveBeenCalledTimes(1));
+
+    window.dispatchEvent(new CustomEvent("gateqa:sync-request"));
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(750);
+    });
+
+    expect(mockSyncUserData).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
+  });
+
   test("calls signInWithOAuth on signInWithGoogle", async () => {
     const mockSignInWithOAuth = vi.fn().mockResolvedValue({ error: null });
     const mockGetSession = vi.fn().mockResolvedValue({ data: { session: null } });

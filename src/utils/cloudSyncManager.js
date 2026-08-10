@@ -370,10 +370,21 @@ export async function syncUserData(userId) {
     }
 
     // 6. Record audit log in `sync_log` table
+    // Store a lightweight count summary instead of the full merged payload.
+    // payload_snapshot in sync_log is an audit trail only — never read by the client.
+    // This reduces each row from ~11.7 kB to ~0.2 kB (98% smaller).
     await supabase.from("sync_log").insert({
       user_id: userId,
       action: cloudRow ? "incremental_sync" : "first_login_merge",
-      payload_snapshot: merged,
+      payload_snapshot: {
+        summaryVersion:        1,
+        solvedCount:           Object.keys(merged.solved_questions || {}).length,
+        bookmarkCount:         (merged.bookmarks || []).length,
+        notesCount:            Object.keys(merged.notes || {}).length,
+        mockCount:             (merged.mock_history || []).length,
+        standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
+        aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
+      },
       device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
     });
 

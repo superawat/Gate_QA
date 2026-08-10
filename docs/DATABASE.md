@@ -69,7 +69,7 @@ Append-only audit records for synchronization events.
 | `id` | Log identity |
 | `user_id` | Owning user |
 | `action` | For example `first_login_merge` or `incremental_sync` |
-| `payload_snapshot` | Merged state at sync time |
+| `payload_snapshot` | Lightweight count summary of the merged state at sync time: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount }`. Rows written before this change (`summaryVersion` absent) contain the full merged JSONB blob. |
 | `device_info` | Browser/device metadata |
 | `created_at` | Log timestamp |
 
@@ -161,7 +161,9 @@ where schemaname = 'public'
 9. A `sync_log` record is appended.
 10. The merged state is written back to localStorage so the UI is immediately consistent.
 
-The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running.
+The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running. Sync requests are debounced by 750 ms and successful syncs are throttled to one per 30 seconds per user. Changes remain in the local offline queue until the next permitted sync, so throttling does not discard local work. Authentication/session initialization still performs the first sync immediately.
+
+`sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
 
 ## Merge rules
 
