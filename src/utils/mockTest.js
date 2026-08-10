@@ -10,6 +10,58 @@ export const MOCK_SLOW_QUESTION_THRESHOLD_SECONDS = 3 * 60;
 export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT"];
 export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL", "SUBJECTIVE"];
 
+const slugifyMockFilterToken = (value = "") => (
+  String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+);
+
+const getMockQuestionSubjectSlug = (question = {}) => (
+  slugifyMockFilterToken(question?.subjectSlug || question?.subject || "unknown") || "unknown"
+);
+
+const getMockQuestionSubtopicSlugs = (question = {}) => {
+  const values = [];
+  const subtopics = Array.isArray(question?.subtopics) ? question.subtopics : [];
+  subtopics.forEach((subtopic) => {
+    values.push(subtopic?.slug, subtopic?.label);
+  });
+  values.push(question?.subtopic, question?.topic);
+  return new Set(values.map(slugifyMockFilterToken).filter(Boolean));
+};
+
+export const filterMockQuestionsByScope = (
+  questions = [],
+  { selectedSubjects = [], selectedSubtopics = [] } = {}
+) => {
+  const subjectSet = new Set(
+    (Array.isArray(selectedSubjects) ? selectedSubjects : [])
+      .map(slugifyMockFilterToken)
+      .filter(Boolean)
+  );
+  const subtopicSet = new Set(
+    (Array.isArray(selectedSubtopics) ? selectedSubtopics : [])
+      .map(slugifyMockFilterToken)
+      .filter(Boolean)
+  );
+
+  return (Array.isArray(questions) ? questions : []).filter((question) => {
+    if (subjectSet.size > 0 && !subjectSet.has(getMockQuestionSubjectSlug(question))) {
+      return false;
+    }
+    if (subtopicSet.size > 0) {
+      const questionSubtopics = getMockQuestionSubtopicSlugs(question);
+      if (![...subtopicSet].some((slug) => questionSubtopics.has(slug))) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+
 const OPTION_LABELS = ["A", "B", "C", "D", "E"];
 const REMOTE_GATEOVERFLOW_BLOB_RE = /https:\/\/(?:[a-z0-9-]+\.)?gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=\d+/i;
 const IMAGE_SRC_RE = /<img\b[^>]*\bsrc=(["'])(.*?)\1/gi;

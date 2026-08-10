@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-08-10
+
+### Fixed
+- **Custom Mock Builder Scope (AUG-003)**:
+  - Centralized strict subject/topic filtering in `src/utils/mockTest.js` before custom-pool validation and sampling.
+  - Normalized subject labels/slugs and matched every question subtopic, preventing unselected subjects such as Operating Systems from entering a Data Structures + General Aptitude mock.
+  - Added regression coverage for mixed subjects and multi-tag questions.
+- **Calculator Parenthesized Expressions (AUG-002)**:
+  - Fixed grouped expressions such as `(2+3)*4` entering the numeric `parseFloat` path and displaying `Math Error`.
+  - Added a safe arithmetic parser for nested parentheses, unary signs, exponentiation, division, and modulus.
+  - Synced the calculator source bundle into `public/calculator/` and verified grouped-expression evaluation with a DOM smoke test.
+- **E2E Test Selectors & CI Pipeline Stabilization**:
+  - Aligned the primary logo link in `src/components/Layout/AppHeader.jsx` to `aria-label="GATE QA home"`, resolving the locator failure in `practice-flow.spec.js`.
+  - Relaxed regex selector in `tests/e2e/a11y.axe.spec.js` from anchored `/^GATE QA$/i` to `/GATE QA/i` (non-anchored) and extended the landing axe audit timeout to 60s to prevent false timeout flakes on heavy DOM scans under load.
+  - Disambiguated `getByText("Past Paper")` with `.first()` in `tests/e2e/mock-test-flow.spec.js` to avoid Playwright strict-mode exceptions when text appears in multiple badge/title nodes.
+  - Added explicit timeouts for filter state re-hydration (`toBeChecked({ timeout: 8000 })`) and debounced search empty state (`{ timeout: 10000 }`) in `tests/e2e/practice-flow.spec.js`.
+  - Increased `MockTestFlow.test.jsx` unit smoke test timeout to 30s to allow the complete 6-step flow (portal → setup → exam → submit → review → exit) to finish reliably in jsdom.
+  - Rebuilt production bundle (`dist/`) and verified 100% CI pipeline passing (317/317 unit tests, 17/17 E2E tests, 3/3 Axe audits, Lighthouse mobile, bundle budget, and public parity).
+
 ## 2026-08-09
 
 ### Added

@@ -5,6 +5,7 @@ import { describe, expect, test } from "vitest";
 import {
   buildMockQuestionResult,
   buildMockResultSummary,
+  filterMockQuestionsByScope,
   formatExpectedAnswer,
   formatMockTimeSpent,
   hasMeaningfulResponse,
@@ -13,6 +14,23 @@ import {
 } from "./mockTest";
 
 describe("mockTest utilities", () => {
+  test("strictly scopes a custom pool to selected subjects and any selected subtopic", () => {
+    const questions = [
+      { question_uid: "ds:1", subject: "Data Structures", subtopics: [{ slug: "trees" }, { slug: "graphs" }] },
+      { question_uid: "os:1", subjectSlug: "operating-system", subtopics: [{ slug: "processes" }] },
+      { question_uid: "ga:1", subjectSlug: "ga", subtopics: [{ slug: "probability" }] },
+    ];
+
+    expect(filterMockQuestionsByScope(questions, {
+      selectedSubjects: ["Data Structures", "ga"],
+      selectedSubtopics: ["graphs"],
+    }).map((question) => question.question_uid)).toEqual(["ds:1"]);
+
+    expect(filterMockQuestionsByScope(questions, {
+      selectedSubjects: ["ga"],
+    }).map((question) => question.question_uid)).toEqual(["ga:1"]);
+  });
+
   test("hasMeaningfulResponse treats empty NAT and MSQ as unanswered", () => {
     expect(hasMeaningfulResponse("", "NAT")).toBe(false);
     expect(hasMeaningfulResponse("   ", "NAT")).toBe(false);

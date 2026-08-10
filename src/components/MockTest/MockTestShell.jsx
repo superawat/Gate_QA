@@ -5,7 +5,11 @@ import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
-import { MOCK_SECTION_COUNTS, validateMockQuestionForPool } from "../../utils/mockTest";
+import {
+    MOCK_SECTION_COUNTS,
+    filterMockQuestionsByScope,
+    validateMockQuestionForPool,
+} from "../../utils/mockTest";
 import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
 import CalculatorWidget from "../Calculator/CalculatorWidget";
@@ -567,11 +571,14 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const yearFilterMode = String(setupState.yearFilterMode || "all").trim().toLowerCase();
         const customRangeStart = Math.max(minYear, Math.min(maxYear, clampYear(setupState.yearRangeStart, minYear)));
         const customRangeEnd = Math.max(customRangeStart, Math.min(maxYear, clampYear(setupState.yearRangeEnd, maxYear)));
-        const selectedSubjectSet = new Set(setupState.selectedSubjects);
-        const selectedSubtopicSet = new Set(setupState.selectedSubtopics || []);
         const selectedTypeSet = new Set(selectedSetupTypes);
 
-        return generatedScorableQuestions.filter((question) => {
+        const scopedQuestions = filterMockQuestionsByScope(generatedScorableQuestions, {
+            selectedSubjects: setupState.selectedSubjects,
+            selectedSubtopics: setupState.selectedSubtopics,
+        });
+
+        return scopedQuestions.filter((question) => {
             const questionUid = String(question?.question_uid || "").trim();
             const questionMeta = questionMetaByUid[questionUid];
             if (!questionMeta?.scorable) {
@@ -596,19 +603,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 }
             } else if (yearFilterMode === "custom") {
                 if (!(examYear > 0 && examYear >= customRangeStart && examYear <= customRangeEnd)) {
-                    return false;
-                }
-            }
-
-            const questionSubject = question?.subjectSlug || "unknown";
-            if (selectedSubjectSet.size > 0 && !selectedSubjectSet.has(questionSubject)) {
-                return false;
-            }
-
-            // Subtopic filter — only applies when specific subtopics are selected
-            if (selectedSubtopicSet.size > 0) {
-                const subtopicKey = getQuestionSubtopicKey(question);
-                if (!subtopicKey || !selectedSubtopicSet.has(subtopicKey)) {
                     return false;
                 }
             }

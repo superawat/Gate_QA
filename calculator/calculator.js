@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let currentInput = '0', previousInput = '', operator = '';
     let resetNext = false, memory = 0, angleMode = 'deg';
+    let expressionMode = false;
     let waitingForSecondOperand = false;
     let pendingPow = false, pendingLogYX = false, pendingYRootX = false;
 
@@ -72,6 +73,72 @@ document.addEventListener('DOMContentLoaded', () => {
         return retVal;
     }
 
+    // Parenthesized expressions need to be evaluated as a complete expression;
+    // parseFloat('(2+3)') only reads the leading character and returns NaN.
+    // This small recursive-descent parser keeps evaluation limited to the
+    // calculator's arithmetic operators and avoids executing arbitrary code.
+    function evaluateExpression(input) {
+        const tokens = input.match(/(?:\d*\.\d+|\d+\.?\d*|[()+\-*/^]|mod)/g);
+        if (!tokens || tokens.join('') !== input.replace(/\s+/g, '')) throw new Error('Invalid expression');
+        let position = 0;
+        const peek = () => tokens[position];
+        const consume = () => tokens[position++];
+
+        function parseExpression() {
+            let value = parseTerm();
+            while (peek() === '+' || peek() === '-') {
+                const operatorToken = consume();
+                const right = parseTerm();
+                value = operatorToken === '+' ? value + right : value - right;
+            }
+            return value;
+        }
+
+        function parseTerm() {
+            let value = parsePower();
+            while (peek() === '*' || peek() === '/' || peek() === 'mod') {
+                const operatorToken = consume();
+                const right = parsePower();
+                if ((operatorToken === '/' || operatorToken === 'mod') && right === 0) throw new Error('Math error');
+                if (operatorToken === '*') value *= right;
+                if (operatorToken === '/') value /= right;
+                if (operatorToken === 'mod') value %= right;
+            }
+            return value;
+        }
+
+        function parsePower() {
+            const value = parseUnary();
+            if (peek() === '^') {
+                consume();
+                return Math.pow(value, parsePower());
+            }
+            return value;
+        }
+
+        function parseUnary() {
+            if (peek() === '+') { consume(); return parseUnary(); }
+            if (peek() === '-') { consume(); return -parseUnary(); }
+            return parsePrimary();
+        }
+
+        function parsePrimary() {
+            if (peek() === '(') {
+                consume();
+                const value = parseExpression();
+                if (consume() !== ')') throw new Error('Unbalanced parentheses');
+                return value;
+            }
+            const value = Number(consume());
+            if (!Number.isFinite(value)) throw new Error('Invalid number');
+            return value;
+        }
+
+        const result = parseExpression();
+        if (position !== tokens.length || !Number.isFinite(result)) throw new Error('Invalid expression');
+        return result;
+    }
+
     // --- Helper: trig with exact-zero handling (matches real.js) ---
     function sinCalc(mode, inputVal) {
         var ipVal = (mode === 'deg') ? inputVal * Math.PI / 180 : inputVal;
@@ -132,6 +199,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function inputChar(ch) {
+        if (ch === '(' || ch === ')' || expressionMode) {
+            if (!expressionMode) {
+                expressionMode = true;
+                currentInput = '';
+            }
+            if (resetNext && ch !== '(') resetNext = false;
+            currentInput += ch;
+            updateDisplay();
+            return;
+        }
         if (resetNext) { currentInput = ''; resetNext = false; }
         if (ch === '.' && currentInput.includes('.')) return;
         if (currentInput === '0' && ch !== '.') currentInput = ch;
@@ -140,6 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function inputOp(op) {
+        if (expressionMode) {
+            currentInput += op === 'mod' ? 'mod' : op;
+            updateDisplay();
+            return;
+        }
         if (waitingForSecondOperand && operator) calculate();
         previousInput = currentInput;
         operator = op;
@@ -148,6 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculate() {
+        if (expressionMode) {
+            expression.value = currentInput + ' =';
+            try {
+                currentInput = String(formatResult(evaluateExpression(currentInput)));
+            } catch (error) {
+                currentInput = 'Math Error';
+            }
+            expressionMode = false;
+            operator = '';
+            waitingForSecondOperand = false;
+            updateDisplay();
+            resetNext = true;
+            return;
+        }
         if (pendingPow) {
             const b = parseFloat(previousInput), e = parseFloat(currentInput);
             expression.value = previousInput + ' ^ ' + currentInput + ' =';
@@ -194,6 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         expression.value = '';
         resetNext = false;
         waitingForSecondOperand = false;
+        expressionMode = false;
         pendingPow = false; pendingLogYX = false; pendingYRootX = false;
         updateDisplay();
     }
