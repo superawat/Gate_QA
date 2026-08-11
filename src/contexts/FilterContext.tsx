@@ -8,6 +8,7 @@ import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
 import { useAptitudeEnabled } from '../utils/aptitudePreference';
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from '../utils/localStorageState';
 import { enqueueChange } from '../utils/syncQueue';
+import { extractQuestionIdArray } from '../utils/cloudSyncManager';
 
 const FilterStateContext = createContext();
 const FilterActionsContext = createContext();
@@ -293,25 +294,7 @@ const reconcileSubjectAndSubtopicFilters = (
     return merged;
 };
 
-const normalizeStoredIds = (rawIds) => {
-    if (!Array.isArray(rawIds)) {
-        return [];
-    }
-
-    const seen = new Set();
-    const normalized = [];
-
-    rawIds.forEach((rawId) => {
-        const id = String(rawId || '').trim();
-        if (!id || seen.has(id)) {
-            return;
-        }
-        seen.add(id);
-        normalized.push(id);
-    });
-
-    return normalized;
-};
+export const normalizeStoredIds = (rawIds) => extractQuestionIdArray(rawIds);
 
 const normalizeProgressTargets = (rawTargets, answerService = AnswerService) => {
     const values = Array.isArray(rawTargets) ? rawTargets : [rawTargets];
@@ -1200,6 +1183,19 @@ export const FilterProvider = ({
             setAptitudeBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, [])));
         }
     }, [canMergeAptitude, storageKeys.bookmarked, storageKeys.solved]);
+
+    useEffect(() => {
+        const handleSyncComplete = () => refreshProgressState();
+        const handleAuthSignedIn = () => refreshProgressState();
+
+        window.addEventListener('gateqa:sync-complete', handleSyncComplete);
+        window.addEventListener('gateqa:auth-signed-in', handleAuthSignedIn);
+
+        return () => {
+            window.removeEventListener('gateqa:sync-complete', handleSyncComplete);
+            window.removeEventListener('gateqa:auth-signed-in', handleAuthSignedIn);
+        };
+    }, [refreshProgressState]);
 
     const getQuestionProgressId = useCallback((question = {}) => {
         return getQuestionTrackingId(question, answerService);

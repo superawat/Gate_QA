@@ -5,7 +5,7 @@ import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
-import MockTestShell from "./MockTestShell";
+import MockTestShell, { isSolvedQuestion } from "./MockTestShell";
 
 let mockMockTestContext = null;
 let mockFilterContext = null;
@@ -21,6 +21,7 @@ vi.mock("../../contexts/FilterContext", () => ({
 vi.mock("../../services/AnswerService", () => ({
   AnswerService: {
     getAnswerForQuestion: () => ({ type: "MCQ", answer: "A" }),
+    getStorageKeyForQuestion: (question) => question.link ? "go:456" : question.question_uid,
   },
 }));
 
@@ -137,6 +138,13 @@ describe("MockTestShell", () => {
       },
       isInitialized: true,
     };
+  });
+
+  test("recognizes the canonical AnswerService storage key before question_uid", () => {
+    const question = { question_uid: "local:legacy", link: "https://gateoverflow.in/456" };
+    const solvedIds = new Set(["go:456"]);
+
+    expect(isSolvedQuestion(question, solvedIds)).toBe(true);
   });
 
   test("shows loading state while the mock catalog is loading", () => {

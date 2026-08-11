@@ -4,7 +4,7 @@
 import React from 'react';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { FilterProvider, useFilterState, useFilterActions } from './FilterContext';
+import { FilterProvider, normalizeStoredIds, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
 import TopicFilter from '../components/Filters/TopicFilter';
 import { QuestionService } from '../services/QuestionService';
@@ -160,6 +160,7 @@ describe('FilterContext', () => {
                 <div data-testid="search-query">{filters.searchQuery}</div>
                 <div data-testid="selected-types">{filters.selectedTypes.join(',')}</div>
                 <div data-testid="filtered-question-uids">{filteredQuestions.map((question) => question.question_uid).join(',')}</div>
+                <div data-testid="go1-solved">{isQuestionSolved('go:1') ? 'yes' : 'no'}</div>
                 <div data-testid="apt-solved">{isQuestionSolved('APT-ENG-0001') ? 'yes' : 'no'}</div>
                 <ActiveFilterChips />
                 <TopicFilter />
@@ -223,6 +224,31 @@ describe('FilterContext', () => {
 
         expect(getByTestId('subjects').textContent).toBe('');
         expect(getByTestId('subtopics').textContent).toBe('');
+    });
+
+    test('recovers corrupted stored ID maps during normalization', () => {
+        expect(normalizeStoredIds({ '0': 'go:1', '1': 'go:2' })).toEqual(['go:1', 'go:2']);
+    });
+
+    test.each(['gateqa:sync-complete', 'gateqa:auth-signed-in'])('refreshes progress after %s', async (eventName) => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('go1-solved').textContent).toBe('no');
+        });
+
+        window.localStorage.setItem('gate_qa_solved_questions', JSON.stringify(['go:1']));
+        act(() => {
+            window.dispatchEvent(new CustomEvent(eventName));
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('go1-solved').textContent).toBe('yes');
+        });
     });
 
     test('hydrates subtopic-only URLs through parent subject normalization', async () => {

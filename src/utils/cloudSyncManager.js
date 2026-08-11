@@ -11,7 +11,7 @@
  *      - Bookmarks: Deduplicated union set (Set.union(local, cloud)).
  *      - Personal Notes: If a note exists on both sides, the LONGER note wins
  *        (preserves more student effort). If length is equal, NEWER timestamp wins.
- *      - Solved Questions: Union of attempt records; keeps earliest attemptedAt timestamp.
+ *      - Solved Questions: Deduplicated union of canonical question IDs.
  *      - Mock Test History: Deduplicated chronologically by testId + start timestamp.
  *  4. Cloud Update: Saves merged result back to Supabase `user_progress` table
  *     and logs action in `sync_log` table.
@@ -24,6 +24,8 @@ import { clearSyncQueue } from "./syncQueue";
 const LOCAL_STORAGE_KEYS = {
   solved: "gate_qa_solved_questions",
   bookmarks: "gate_qa_bookmarked_questions",
+  aptitudeSolved: "gateqa-apt-solved-questions",
+  aptitudeBookmarks: "gateqa-apt-bookmarked-questions",
   notes: "gate_qa_user_notes",
   mockHistory: "gateqa_mock_history_v1",
   progress: "gateqa_progress_v1",
@@ -39,6 +41,8 @@ function createPreMergeSnapshot() {
       timestamp: new Date().toISOString(),
       solved: localStorage.getItem(LOCAL_STORAGE_KEYS.solved),
       bookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarks),
+      aptitudeSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolved),
+      aptitudeBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarks),
       notes: localStorage.getItem(LOCAL_STORAGE_KEYS.notes),
       mockHistory: localStorage.getItem(LOCAL_STORAGE_KEYS.mockHistory),
       progress: localStorage.getItem(LOCAL_STORAGE_KEYS.progress),
@@ -70,8 +74,10 @@ function cleanOldSnapshots() {
  * Reads local user study data from localStorage.
  */
 function readLocalData() {
-  let solved = {};
+  let solved = [];
   let bookmarks = [];
+  let aptitudeSolved = [];
+  let aptitudeBookmarks = [];
   let notes = {};
   let mockHistory = [];
   let progress = {};
@@ -79,7 +85,17 @@ function readLocalData() {
 
   try {
     const rawSolved = localStorage.getItem(LOCAL_STORAGE_KEYS.solved);
-    solved = rawSolved ? JSON.parse(rawSolved) : {};
+    solved = rawSolved ? JSON.parse(rawSolved) : [];
+  } catch {}
+
+  try {
+    const rawAptitudeSolved = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolved);
+    aptitudeSolved = rawAptitudeSolved ? JSON.parse(rawAptitudeSolved) : [];
+  } catch {}
+
+  try {
+    const rawAptitudeBookmarks = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarks);
+    aptitudeBookmarks = rawAptitudeBookmarks ? JSON.parse(rawAptitudeBookmarks) : [];
   } catch {}
 
   try {
@@ -107,7 +123,51 @@ function readLocalData() {
     aptitudeProgress = rawAptitudeProgress ? JSON.parse(rawAptitudeProgress) : {};
   } catch {}
 
-  return { solved, bookmarks, notes, mockHistory, progress, aptitudeProgress };
+  return {
+    solved,
+    bookmarks,
+    aptitudeSolved,
+    aptitudeBookmarks,
+    notes,
+    mockHistory,
+    progress,
+    aptitudeProgress,
+  };
+}
+
+/**
+ * Normalizes solved/bookmarked question data from all supported historical
+ * shapes. Older cloud rows may contain attempt maps, while the login bug
+ * persisted arrays as numeric-keyed objects.
+ */
+export function extractQuestionIdArray(rawInput) {
+  if (!rawInput) {
+    return [];
+  }
+
+  const toId = (value) => {
+    if (typeof value !== "string" && typeof value !== "number") {
+      return "";
+    }
+    return String(value).trim();
+  };
+
+  if (Array.isArray(rawInput)) {
+    return Array.from(new Set(rawInput.map(toId).filter(Boolean)));
+  }
+
+  if (typeof rawInput === "object") {
+    const keys = Object.keys(rawInput);
+    if (keys.length === 0) {
+      return [];
+    }
+
+    const isNumericIndexed = keys.every((key) => /^\d+$/.test(key));
+    const candidates = isNumericIndexed ? Object.values(rawInput) : keys;
+    return Array.from(new Set(candidates.map(toId).filter(Boolean)));
+  }
+
+  return [];
 }
 
 /**
@@ -149,36 +209,13 @@ function mergeNotes(localNotes = {}, cloudNotes = {}) {
 }
 
 /**
- * Merges solved question progress (preserves earliest successful attempt).
+ * Merges solved/bookmarked IDs additively and always returns the canonical
+ * string-array storage format.
  */
-function mergeSolvedQuestions(localSolved = {}, cloudSolved = {}) {
-  const allKeys = new Set([
-    ...Object.keys(localSolved || {}),
-    ...Object.keys(cloudSolved || {}),
-  ]);
-  const merged = {};
-
-  for (const uid of allKeys) {
-    const localAttempt = localSolved[uid];
-    const cloudAttempt = cloudSolved[uid];
-
-    if (!localAttempt) {
-      merged[uid] = cloudAttempt;
-      continue;
-    }
-    if (!cloudAttempt) {
-      merged[uid] = localAttempt;
-      continue;
-    }
-
-    // Keep earliest attemptedAt timestamp
-    const localTime = new Date(localAttempt.attemptedAt || 0).getTime();
-    const cloudTime = new Date(cloudAttempt.attemptedAt || 0).getTime();
-
-    merged[uid] = localTime <= cloudTime ? localAttempt : cloudAttempt;
-  }
-
-  return merged;
+export function mergeSolvedQuestionIds(localSolvedRaw, cloudSolvedRaw) {
+  const localIds = extractQuestionIdArray(localSolvedRaw);
+  const cloudIds = extractQuestionIdArray(cloudSolvedRaw);
+  return Array.from(new Set([...localIds, ...cloudIds])).sort();
 }
 
 /**
@@ -271,21 +308,23 @@ function normalizeCloudProgress(cloudProgress) {
  * The Additive-Only Union Merge Engine.
  */
 export function unionMergeData(localData, cloudData) {
-  const cloudBookmarks = Array.isArray(cloudData.bookmarks)
-    ? cloudData.bookmarks
-    : [];
-  const localBookmarks = Array.isArray(localData.bookmarks)
-    ? localData.bookmarks
-    : [];
-
-  const mergedBookmarks = Array.from(
-    new Set([...localBookmarks, ...cloudBookmarks])
-  );
+  const mergedBookmarks = Array.from(new Set([
+    ...extractQuestionIdArray(localData.bookmarks),
+    ...extractQuestionIdArray(cloudData.bookmarks),
+  ]));
 
   const mergedNotes = mergeNotes(localData.notes, cloudData.notes);
-  const mergedSolved = mergeSolvedQuestions(
+  const mergedSolved = mergeSolvedQuestionIds(
     localData.solved,
     cloudData.solved_questions
+  );
+  const mergedAptitudeSolved = mergeSolvedQuestionIds(
+    localData.aptitudeSolved,
+    cloudData.aptitude_solved
+  );
+  const mergedAptitudeBookmarks = mergeSolvedQuestionIds(
+    localData.aptitudeBookmarks,
+    cloudData.aptitude_bookmarks
   );
   const mergedMockHistory = mergeMockHistory(
     localData.mockHistory,
@@ -302,6 +341,8 @@ export function unionMergeData(localData, cloudData) {
     bookmarks: mergedBookmarks,
     notes: mergedNotes,
     solved_questions: mergedSolved,
+    aptitude_solved: mergedAptitudeSolved,
+    aptitude_bookmarks: mergedAptitudeBookmarks,
     mock_history: mergedMockHistory,
     progress_records: {
       standard: mergedProgress,
@@ -344,7 +385,9 @@ export async function syncUserData(userId) {
     const cloudData = cloudRow || {
       bookmarks: [],
       notes: {},
-      solved_questions: {},
+      solved_questions: [],
+      aptitude_solved: [],
+      aptitude_bookmarks: [],
       mock_history: [],
       progress_records: { standard: {}, aptitude: {} },
     };
@@ -358,6 +401,8 @@ export async function syncUserData(userId) {
       bookmarks: merged.bookmarks,
       notes: merged.notes,
       solved_questions: merged.solved_questions,
+      aptitude_solved: merged.aptitude_solved,
+      aptitude_bookmarks: merged.aptitude_bookmarks,
       mock_history: merged.mock_history,
       progress_records: merged.progress_records,
       data_version: 1,
@@ -378,7 +423,7 @@ export async function syncUserData(userId) {
       action: cloudRow ? "incremental_sync" : "first_login_merge",
       payload_snapshot: {
         summaryVersion:        1,
-        solvedCount:           Object.keys(merged.solved_questions || {}).length,
+        solvedCount:           (merged.solved_questions || []).length,
         bookmarkCount:         (merged.bookmarks || []).length,
         notesCount:            Object.keys(merged.notes || {}).length,
         mockCount:             (merged.mock_history || []).length,
@@ -392,6 +437,14 @@ export async function syncUserData(userId) {
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.solved,
       JSON.stringify(merged.solved_questions)
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.aptitudeSolved,
+      JSON.stringify(merged.aptitude_solved)
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.aptitudeBookmarks,
+      JSON.stringify(merged.aptitude_bookmarks)
     );
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.bookmarks,

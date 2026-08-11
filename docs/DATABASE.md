@@ -52,7 +52,9 @@ One row per user containing the cloud backup. `user_id` is both the primary key 
 | `user_id` | UUID | References the owning profile |
 | `bookmarks` | JSONB array | Saved question IDs |
 | `notes` | JSONB object | Notes keyed by question ID |
-| `solved_questions` | JSONB object | Solved/attempt records keyed by question ID |
+| `solved_questions` | JSONB array | Canonical solved question IDs |
+| `aptitude_solved` | JSONB array | Canonical Aptitude solved question IDs |
+| `aptitude_bookmarks` | JSONB array | Canonical Aptitude bookmarked question IDs |
 | `mock_history` | JSONB array | Mock-test attempts |
 | `progress_records` | JSONB object | Namespaced practice-attempt timelines used for streaks and activity (`standard`, `aptitude`) |
 | `data_version` | integer | Payload format version |
@@ -171,7 +173,8 @@ The sync is single-flight: a user must not generate overlapping sync requests wh
 | --- | --- |
 | Bookmarks | Set union with duplicates removed |
 | Notes | Keep the longer note; equal-length notes use the newer timestamp |
-| Solved questions | Union attempt records and preserve the earliest attempt timestamp |
+| Solved questions | Additive union of canonical string IDs; legacy object rows are recovered during sync |
+| Aptitude solved/bookmarked IDs | Additive union of canonical string IDs in dedicated columns |
 | Mock history | Combine records, deduplicate by test identity, and sort chronologically |
 | Practice progress | Merge attempt histories by timestamp and preserve the union of activity dates used by streaks |
 

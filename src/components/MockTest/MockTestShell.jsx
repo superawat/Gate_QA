@@ -336,9 +336,15 @@ const buildStrictGeneratedSelection = (rows = [], questionMetaByUid = {}) => {
     };
 };
 
-const isSolvedQuestion = (question = {}, solvedQuestionSet = new Set()) => (
-    solvedQuestionSet.has(String(question?.question_uid || "").trim())
-);
+export const isSolvedQuestion = (question = {}, solvedQuestionSet = new Set()) => {
+    const storageKey = AnswerService.getStorageKeyForQuestion(question);
+    if (storageKey && solvedQuestionSet.has(String(storageKey).trim())) {
+        return true;
+    }
+
+    const uid = String(question?.question_uid || "").trim();
+    return uid ? solvedQuestionSet.has(uid) : false;
+};
 
 const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const {

@@ -5,7 +5,7 @@ GateQA is a static, local-first React SPA hosted on GitHub Pages with an optiona
 ## Runtime Topology
 
 1. Static host serves `dist/`.
-2. `src/index.jsx` mounts `App`, defers non-critical stylesheet loading until after first frame, and registers the production service worker.
+2. `src/index.jsx` repairs legacy progress ID storage before mounting `App`, then registers the production service worker.
 3. `AuthProvider` initializes the Supabase client (`src/services/supabase.js`) and listens for OAuth state changes (`onAuthStateChange`).
    - If Supabase environment variables are missing, the app operates seamlessly in permanent Guest Mode.
 4. `App` initializes the lightweight landing manifest on mount:
@@ -50,7 +50,8 @@ GateQA follows a **Local-First Hybrid Architecture**:
 2. **Additive-Only Union-Merge Algorithm:**
    - **Bookmarks:** Deduplicated set union (`Set.union(local, cloud)`).
    - **Personal Notes:** Longest Note Wins policy (preserves student effort; falls back to newer timestamp).
-   - **Solved Questions:** Union of attempt records, keeping earliest `attemptedAt` timestamp.
+   - **Solved Questions:** Deduplicated union of canonical string IDs; legacy attempt maps and numeric-index corruption are recovered.
+   - **Aptitude Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`aptitude_solved`, `aptitude_bookmarks`).
    - **Mock Test History:** Deduplicated chronologically by `testId`.
    - **Streak & Daily Heatmap:** Synced via `progress_records` JSON array.
 3. **Offline Resilience:**
@@ -85,16 +86,6 @@ GateQA follows a **Local-First Hybrid Architecture**:
 - `src/index.jsx` registers `public/sw.js` only in production builds.
 - `public/sw.js` precaches the shell and runtime-caches the manifest, search index, detail shards, answer payloads, and static assets.
 - `public/offline.html` is used as the navigation fallback when shell content is unavailable offline.
-
-## Authentication & Cloud Data Sync Layer (Branch: `feat/user-auth-supabase`)
-
-- **Architecture**: Local-First Hybrid Model.
-- **Primary Store**: `localStorage` (All user actions read/write locally first for instant UI response and 100% offline resilience).
-- **Secondary Store (Cloud Backup)**: Supabase PostgreSQL ($0/mo Free Tier via `@supabase/supabase-js`).
-- **Auth Provider**: Google OAuth (optional, guest mode remains default).
-- **Synced Entities**: Bookmarks, Personal Notes, Solved Questions progress, and Mock Test history.
-- **Data Safety**: Uses an additive-only **union-merge algorithm** upon sign-in. Local pre-merge snapshots and pending change queues prevent data loss during network outages or first-time migration. See [`plan/after august/user_auth_and_cloud_sync_plan.md`](file:///c:/Users/himanshu/Desktop/GATE_QA/plan/after%20august/user_auth_and_cloud_sync_plan.md).
-- **Database Reference**: See [`docs/DATABASE.md`](DATABASE.md) for the table relationships, RLS policies, OAuth-to-sync sequence, merge rules, and troubleshooting guide.
 
 The landing route now stays on a lightweight startup path:
 
@@ -411,6 +402,8 @@ Synchronized params:
 
 - `gate_qa_solved_questions`
 - `gate_qa_bookmarked_questions`
+- `gateqa-apt-solved-questions`
+- `gateqa-apt-bookmarked-questions`
 - `gate_qa_progress_metadata`
 - `gateqa_progress_v1` (attempt metadata, used by AnswerPanel)
 

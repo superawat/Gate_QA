@@ -1,6 +1,25 @@
 # Changelog
 
+## 2026-08-11
+
+### Fixed & Optimized
+- **Solved-Only Filtering & Progress Sync Repair (AUG-005)**:
+  - Standardized solved and bookmarked question collections as deduplicated canonical `string[]` arrays across local storage (`gate_qa_solved_questions`, `gateqa-apt-solved-questions`), Supabase union merges (`user_progress.solved_questions`, `user_progress.aptitude_solved`), and sync audit counts in `sync_log`.
+  - Added resilient shape extractor `extractQuestionIdArray()` in `src/utils/cloudSyncManager.js` recovering modern string arrays, legacy attempt-record maps, and numeric-index objects produced by previous buggy cloud syncs.
+  - Implemented boot-time `sanitizeProgressStorage()` in `src/utils/storageSanitizer.js` invoked in `src/index.jsx` before React mount to repair any corrupted localStorage entries prior to state hydration.
+  - Added reactive event listeners in `src/contexts/FilterContext.tsx` for `gateqa:sync-complete` and `gateqa:auth-signed-in` to automatically trigger `refreshProgressState()` upon cloud sync without requiring a page refresh.
+  - Aligned Custom Mock Builder `isSolvedQuestion` predicate in `src/components/MockTest/MockTestShell.jsx` to resolve questions via `AnswerService.getStorageKeyForQuestion(question)` as primary lookup before falling back to `question_uid`.
+  - Added PostgreSQL migration `supabase/migrations/20260811000000_add_aptitude_progress_ids.sql` adding `aptitude_solved` and `aptitude_bookmarks` JSONB array columns to `public.user_progress`.
+  - Updated and expanded test suites across `cloudSyncManager.test.js`, `storageSanitizer.test.js`, `FilterContext`, and `MockTestShell` (329/329 unit tests passing, 17/17 Playwright E2E tests passing).
+
 ## 2026-08-10
+
+### Added & Optimized
+- **Cloud Sync Audit Log Slimming & Rate-Limiting (AUG-004)**:
+  - Replaced full merged JSONB payload snapshots in `public.sync_log` with a versioned, lightweight count summary (`summaryVersion: 1`, `solvedCount`, `bookmarkCount`, `notesCount`, `mockCount`, `standardProgressCount`, `aptitudeProgressCount`), reducing per-row TOAST storage footprint by ~98% (~11.7 kB → ~0.2 kB).
+  - Added request debouncing (750 ms) and a 30-second per-user cooldown in `src/contexts/AuthContext.jsx` to coalesce rapid practice activity and eliminate redundant cloud round-trips.
+  - Ensured offline queue changes in `src/utils/syncQueue.js` are preserved until a successful cloud upsert and local refresh complete.
+  - Added automated maintenance SQL scripts (`docs/supabase/sync_log_cleanup.sql` and `supabase/sync_log_cleanup_sql_editor.sql`) for PostgreSQL TOAST storage reclamation via `VACUUM FULL`.
 
 ### Fixed
 - **Custom Mock Builder Scope (AUG-003)**:

@@ -8,7 +8,12 @@
  */
 
 import { describe, test, expect, beforeEach, vi } from "vitest";
-import { unionMergeData, syncUserData } from "./cloudSyncManager";
+import {
+  extractQuestionIdArray,
+  mergeSolvedQuestionIds,
+  unionMergeData,
+  syncUserData,
+} from "./cloudSyncManager";
 import * as supabaseService from "../services/supabase";
 
 describe("cloudSyncManager - Union Merge Algorithm", () => {
@@ -91,55 +96,49 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     expect(result.notes["go:1"]).toBe("Plain string local note");
   });
 
-  test("merges solved questions and preserves the earliest attemptedAt timestamp", () => {
+  test("normalizes solved question arrays and legacy cloud maps into a union", () => {
     const local = {
-      solved: {
-        "go:1": {
-          solved: true,
-          selectedAnswer: "B",
-          isCorrect: true,
-          attemptedAt: "2026-07-01T10:00:00Z",
-        },
-        "go:2": {
-          solved: true,
-          selectedAnswer: "A",
-          isCorrect: false,
-          attemptedAt: "2026-08-01T12:00:00Z",
-        },
-      },
+      solved: ["go:2", "go:1", "go:2"],
     };
 
     const cloud = {
       solved_questions: {
-        "go:1": {
-          solved: true,
-          selectedAnswer: "B",
-          isCorrect: true,
-          attemptedAt: "2026-07-15T10:00:00Z",
-        },
-        "go:2": {
-          solved: true,
-          selectedAnswer: "A",
-          isCorrect: true,
-          attemptedAt: "2026-06-01T08:00:00Z",
-        },
-        "go:3": {
-          solved: true,
-          selectedAnswer: "C",
-          isCorrect: true,
-          attemptedAt: "2026-08-05T09:00:00Z",
-        },
+        "go:1": { solved: true },
+        "go:3": { solved: true },
       },
     };
 
     const result = unionMergeData(local, cloud);
 
-    // go:1: local was earlier (July 1 vs July 15)
-    expect(result.solved_questions["go:1"].attemptedAt).toBe("2026-07-01T10:00:00Z");
-    // go:2: cloud was earlier (June 1 vs Aug 1)
-    expect(result.solved_questions["go:2"].attemptedAt).toBe("2026-06-01T08:00:00Z");
-    // go:3: only in cloud
-    expect(result.solved_questions["go:3"].selectedAnswer).toBe("C");
+    expect(result.solved_questions).toEqual(["go:1", "go:2", "go:3"]);
+  });
+
+  test("recovers all supported corrupted ID shapes", () => {
+    expect(extractQuestionIdArray(["go:1", "go:1", "go:2"])).toEqual(["go:1", "go:2"]);
+    expect(extractQuestionIdArray({ "0": "go:1", "1": "go:2" })).toEqual(["go:1", "go:2"]);
+    expect(extractQuestionIdArray({ "go:1": { solved: true }, "go:2": true })).toEqual(["go:1", "go:2"]);
+    expect(extractQuestionIdArray(null)).toEqual([]);
+    expect(extractQuestionIdArray(undefined)).toEqual([]);
+  });
+
+  test("merges local arrays with numeric-index cloud corruption", () => {
+    expect(mergeSolvedQuestionIds(["go:3"], { "0": "go:1", "1": "go:3" })).toEqual(["go:1", "go:3"]);
+  });
+
+  test("syncs aptitude solved and bookmarked IDs separately", () => {
+    const result = unionMergeData(
+      {
+        aptitudeSolved: ["APT-1"],
+        aptitudeBookmarks: ["APT-2"],
+      },
+      {
+        aptitude_solved: ["APT-3"],
+        aptitude_bookmarks: ["APT-4"],
+      }
+    );
+
+    expect(result.aptitude_solved).toEqual(["APT-1", "APT-3"]);
+    expect(result.aptitude_bookmarks).toEqual(["APT-2", "APT-4"]);
   });
 
   test("merges mock test history with chronological deduplication", () => {
@@ -269,6 +268,8 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     // Verify localStorage was updated with merged result
     const mergedBookmarks = JSON.parse(localStorage.getItem("gate_qa_bookmarked_questions"));
     expect(mergedBookmarks).toEqual(["go:1", "go:2"]);
+    expect(JSON.parse(localStorage.getItem("gate_qa_solved_questions"))).toEqual(["go:1"]);
+    expect(Array.isArray(JSON.parse(localStorage.getItem("gate_qa_solved_questions")))).toBe(true);
 
     // Verify Supabase upsert was called with merged data
     expect(mockUpsert).toHaveBeenCalledWith(
@@ -332,6 +333,9 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
       expect.objectContaining({
         user_id: "new-user-456",
         bookmarks: ["go:999"],
+        solved_questions: [],
+        aptitude_solved: [],
+        aptitude_bookmarks: [],
       })
     );
   });

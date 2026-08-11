@@ -9,14 +9,20 @@ In localStorage:
 
 - `gate_qa_solved_questions`
 - `gate_qa_bookmarked_questions`
+- `gateqa-apt-solved-questions`
+- `gateqa-apt-bookmarked-questions`
 - `gate_qa_progress_metadata`
 - `gateqa_progress_v1` (attempt metadata)
+
+Progress ID collections are stored as deduplicated JSON string arrays. Signed-in
+users may also have an additive cloud backup in Supabase; localStorage remains
+the primary source of truth and the app remains fully usable offline.
 
 ## What is not stored
 
 - no user login data
-- no server-side progress copy
-- no cloud sync
+- no required server-side progress copy
+- no mandatory login or cloud dependency
 
 ## When progress can be lost
 
