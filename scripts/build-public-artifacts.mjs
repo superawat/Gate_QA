@@ -7,6 +7,8 @@ import {
   extractEmbeddedOptions as extractSharedEmbeddedOptions,
   stripEmbeddedOptions as stripSharedEmbeddedOptions,
 } from "../src/utils/stripEmbeddedOptions.js";
+import { buildDaPublicArtifacts } from "./da-pipeline/build-da-artifacts.mjs";
+import { buildTrackYearSetKey, getQuestionTrack } from "../src/utils/examTrack.js";
 
 const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -534,6 +536,7 @@ function parseYearSet(question = {}) {
       year,
       set,
       key: `${year}-s${set || 0}`,
+      yearSetIdentity: buildTrackYearSetKey("cse", year, set),
       label: set ? `${year} Set ${set}` : String(year),
     };
   }
@@ -1166,6 +1169,8 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     if (!paperGroups.has(yearSet.key)) {
       paperGroups.set(yearSet.key, {
         yearSetKey: yearSet.key,
+        track: "cse",
+        yearSetIdentity: yearSet.yearSetIdentity,
         year: yearSet.year,
         set: yearSet.set,
         label: yearSet.label,
@@ -1214,6 +1219,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     const meta = {
       questionUid,
       yearSetKey: yearSet.key,
+      yearSetIdentity: yearSet.yearSetIdentity,
       orderIndex: paperPosition.orderIndex,
       section: paperPosition.section,
       title: String(question.title || "").trim(),
@@ -1261,6 +1267,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       registerMockMeta(group, {
         questionUid: entry.questionUid,
         yearSetKey: entry.yearSetKey,
+        yearSetIdentity: group.yearSetIdentity,
         orderIndex,
         section,
         title: entry.title,
@@ -1339,6 +1346,8 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
 
       return {
         yearSetKey: group.yearSetKey,
+        track: group.track,
+        yearSetIdentity: group.yearSetIdentity,
         year: group.year,
         set: group.set,
         label: group.label,
@@ -1561,7 +1570,7 @@ function getLatestValidationReportPath() {
   return path.join(VALIDATION_REPORT_DIR, candidates[0]);
 }
 
-function buildArtifacts() {
+async function buildArtifacts() {
   let generatedAt = new Date().toISOString();
   const questionBankPath = getQuestionBankPath();
   const questions = readJson(questionBankPath, []);
@@ -1600,9 +1609,13 @@ function buildArtifacts() {
     const previewSourceHtml = buildPreviewSourceHtml(question);
     const plainText = stripHtmlToText(previewSourceHtml);
     const preview = buildPreview(plainText);
+    const track = getQuestionTrack(question);
     const normalizedTags = Array.isArray(question.tags)
       ? question.tags.map((tag) => String(tag || "").trim()).filter(Boolean)
       : [];
+    const sanitizedTags = track === "cse"
+      ? normalizedTags.filter((tag) => !/^gateda-\d{4}(?:-set\d+)?$/i.test(tag))
+      : normalizedTags;
     const remoteImages = findRemoteGateOverflowImages(question.question || "");
     const detailShardKey = getDetailShardKey(yearSet);
 
@@ -1610,6 +1623,8 @@ function buildArtifacts() {
       if (!yearSetMap.has(yearSet.key)) {
         yearSetMap.set(yearSet.key, {
           key: yearSet.key,
+          track,
+          yearSetIdentity: yearSet.yearSetIdentity,
           year: yearSet.year,
           set: yearSet.set,
           label: yearSet.label,
@@ -1621,6 +1636,8 @@ function buildArtifacts() {
       if (!yearSetAnswerCoverageMap.has(yearSet.key)) {
         yearSetAnswerCoverageMap.set(yearSet.key, {
           key: yearSet.key,
+          track,
+          yearSetIdentity: yearSet.yearSetIdentity,
           year: yearSet.year,
           set: yearSet.set,
           label: yearSet.label,
@@ -1664,7 +1681,7 @@ function buildArtifacts() {
       title,
       subjectLabel,
       yearSet.label,
-      normalizedTags.join(" "),
+      sanitizedTags.join(" "),
       plainText,
     ]
       .filter(Boolean)
@@ -1676,6 +1693,8 @@ function buildArtifacts() {
         generatedAt,
         shardKey: detailShardKey,
         yearSetKey: yearSet.key || null,
+        yearSetIdentity: yearSet.yearSetIdentity || null,
+        track,
         year: yearSet.year,
         set: yearSet.set,
         label: yearSet.label,
@@ -1689,6 +1708,10 @@ function buildArtifacts() {
     shard.recordsByQuestionUid[questionUid] = {
       ...question,
       question_uid: questionUid,
+      track,
+      yearSetKey: yearSet.key || null,
+      yearSetIdentity: yearSet.yearSetIdentity || null,
+      tags: sanitizedTags,
     };
 
     return {
@@ -1699,7 +1722,9 @@ function buildArtifacts() {
       year: yearSet.year,
       set: yearSet.set,
       yearSetKey: yearSet.key,
+      yearSetIdentity: yearSet.yearSetIdentity,
       yearSetLabel: yearSet.label,
+      track,
       detailShardKey,
       exam_uid: String(question.exam_uid || "").trim(),
       id_str: question.id_str ?? null,
@@ -1708,7 +1733,7 @@ function buildArtifacts() {
       link: question.link || "",
       preview,
       searchText,
-      tags: normalizedTags,
+      tags: sanitizedTags,
     };
   });
 
@@ -1923,9 +1948,14 @@ function buildArtifacts() {
   writeText(path.join(DOCS_GENERATED_DIR, "DATA_STATUS.md"), `${dataStatusMarkdown}\n`);
   writeJson(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
 
+  await buildDaPublicArtifacts();
+
   console.log(
     `[build-public-artifacts] Generated manifest, mock catalog, search index, and ${detailShards.size} detail shards for ${publicQuestionCount} questions`
   );
 }
 
-buildArtifacts();
+buildArtifacts().catch((error) => {
+  console.error(`[build-public-artifacts] ${error.stack || error.message}`);
+  process.exitCode = 1;
+});
