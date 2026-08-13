@@ -2,6 +2,7 @@ import React from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 import { FaTimes } from 'react-icons/fa';
 import { QuestionService } from '../../services/QuestionService';
+import { formatTrackYearSetLabel, parseTrackYearSetKey } from '../../utils/examTrack';
 import type {
     FilterActionsShape,
     FilterStateShape,
@@ -21,9 +22,10 @@ const ActiveFilterChips = () => {
         showOnlyBookmarked = false,
         searchQuery = ''
     } = filters;
-    const { minYear = 0, maxYear = 0, subjects = [], structuredSubtopics = {} } = structuredTags;
+    const { minYear = 0, maxYear = 0, subjects = [], yearSets = [], structuredSubtopics = {} } = structuredTags;
 
     const subjectLabelBySlug = new Map(subjects.map(subject => [subject.slug, subject.label]));
+    const yearSetByKey = new Map(yearSets.map(yearSet => [yearSet.key, yearSet]));
     const subtopicLabelBySlug = new Map<string, string>();
     const subtopicsBySubject = structuredSubtopics as StructuredSubtopics;
     Object.keys(subtopicsBySubject || {}).forEach((subjectSlug) => {
@@ -97,7 +99,12 @@ const ActiveFilterChips = () => {
 
             {selectedYearSets.map((yearSetKey) => (
                 <span key={yearSetKey} className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-blue-100 px-3 py-1.5 text-sm font-medium text-blue-800">
-                    {QuestionService.formatYearSetLabel(yearSetKey)}
+                    {formatTrackYearSetLabel(yearSetKey) || QuestionService.formatYearSetLabel(yearSetKey)}
+                    {(yearSetByKey.get(yearSetKey)?.track === 'da' || parseTrackYearSetKey(yearSetKey)?.track === 'da') && (
+                        <span className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]">
+                            DA
+                        </span>
+                    )}
                     <button type="button" onClick={() => removeYear(yearSetKey)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-blue-500 transition hover:bg-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
                         <FaTimes />
                     </button>

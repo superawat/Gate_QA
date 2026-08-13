@@ -13,16 +13,19 @@ import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { QuestionService } from "../services/QuestionService";
+import { DaQuestionService } from "../services/DaQuestionService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
 import { getDisplayQuestionTypeLabel } from "../utils/questionType";
+import { isDaQuestion as isDaQuestionByMetadata } from "../utils/examTrack";
 
 const isUnavailableQuestionDetailError = (error) => (
   /question detail missing|not available in the current index/i.test(String(error?.message || error || ""))
 );
+const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
 
 const SolvePage = ({
   loading,
@@ -163,7 +166,11 @@ const SolvePage = ({
     setQuestionDetailError("");
     setIsQuestionDetailLoading(true);
 
-    const detailService = isAptitudeQuestion ? AptitudeQuestionService : questionService;
+    const detailService = isDaQuestion(indexedQuestion)
+      ? DaQuestionService
+      : isAptitudeQuestion
+        ? AptitudeQuestionService
+        : questionService;
     detailService.ensureQuestionDetail(indexedQuestion)
       .then((questionDetail) => {
         if (!active) {
@@ -371,6 +378,9 @@ const SolvePage = ({
       <span className="rounded-full bg-[color:var(--color-info-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-info-text)]">
         {questionSubjectLabel}
       </span>
+      {isDaQuestion(resolvedQuestion || indexedQuestion) ? (
+        <span className="rounded-full bg-violet-100 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-violet-800">GATE DA</span>
+      ) : null}
       {questionSubtopicLabel ? (
         <span className="rounded-full bg-[color:var(--color-success-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold tracking-[0.04em] text-[color:var(--color-success-text)]">
           {questionSubtopicLabel}

@@ -128,6 +128,7 @@ const MockBranch = ({ loadQuestions, questionBankManifest, questionDataRevision 
       <FilterProvider
         initialManifest={questionBankManifest}
         questionDataRevision={questionDataRevision}
+        initialIncludeDa
       >
         <ErrorBoundary>
           <Suspense fallback={<MockCatalogLoaderCard />}>

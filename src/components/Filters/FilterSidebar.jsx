@@ -5,6 +5,7 @@ import TopicFilter from './TopicFilter';
 import AptitudeTopicFilter from './AptitudeTopicFilter';
 import ProgressFilterToggles from './ProgressFilterToggles';
 import QuestionSearchInput from './QuestionSearchInput';
+import DaToggle from './DaToggle';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
@@ -144,6 +145,10 @@ const FilterSidebar = ({ className = "", onClose }) => {
                         );
                     })}
                 </div>
+            </div>
+
+            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
+                <DaToggle />
             </div>
 
             {/* Scrollable Filter Content */}

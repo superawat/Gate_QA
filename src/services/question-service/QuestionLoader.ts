@@ -1,6 +1,7 @@
 import { isQuotaExceededError } from "../../utils/localStorageState";
 import { IQuestionService } from "./types";
 import { QuestionRow } from "../../types";
+import { parseTrackYearSetKey } from "../../utils/examTrack";
 
 const INIT_CACHE_VERSION = "v11";
 const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
@@ -23,7 +24,19 @@ export function hasLoadedDataset(this: IQuestionService, options: { fullBank?: b
 export function getDetailShardKey(question: any = {}): string {
   const explicitShardKey = String(question?.detailShardKey || "").trim();
   if (explicitShardKey) {
+    const parsedShardKey = parseTrackYearSetKey(explicitShardKey);
+    if (parsedShardKey?.track === "cse") {
+      return parsedShardKey.legacyKey;
+    }
     return explicitShardKey;
+  }
+
+  const explicitIdentity = String(
+    question?.yearSetIdentity || question?.exam?.yearSetIdentity || ""
+  ).trim();
+  const parsedIdentity = parseTrackYearSetKey(explicitIdentity);
+  if (parsedIdentity?.track === "cse") {
+    return parsedIdentity.legacyKey;
   }
 
   const explicitYearSetKey = String(

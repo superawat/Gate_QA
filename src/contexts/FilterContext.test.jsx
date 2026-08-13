@@ -2,11 +2,12 @@
  * @vitest-environment jsdom
  */
 import React from 'react';
-import { render, act, screen, waitFor } from '@testing-library/react';
+import { render, act, fireEvent, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider, normalizeStoredIds, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
 import TopicFilter from '../components/Filters/TopicFilter';
+import YearFilter from '../components/Filters/YearFilter';
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
@@ -32,18 +33,42 @@ const aptitudeMock = vi.hoisted(() => ({
     ],
 }));
 
+const daMock = vi.hoisted(() => ({
+    questions: [
+        ['probability-and-statistics', 'da:2024:q-probability'],
+        ['linear-algebra', 'da:2024:q-linear'],
+        ['calculus-and-optimization', 'da:2024:q-calculus'],
+        ['general-aptitude', 'da:2024:q-ga'],
+        ['programming-data-structures-and-algorithms', 'da:2024:q-dsa'],
+        ['database-management-and-warehousing', 'da:2024:q-dbms'],
+    ].map(([subjectSlug, question_uid]) => ({
+        question_uid,
+        title: `DA ${subjectSlug}`,
+        searchText: subjectSlug,
+        subjectSlug,
+        subject: subjectSlug,
+        subjectLabel: subjectSlug,
+        type: 'MCQ',
+        tags: ['gateda-2024', subjectSlug],
+        subtopics: [],
+        exam: { year: 2024, set: 1, yearSetKey: '2024-s1', yearSetIdentity: 'da:2024:set-1' },
+        track: 'da',
+    })),
+}));
+
 vi.mock('../services/QuestionService', () => ({
     QuestionService: {
         loaded: true,
         questions: [
             {
                 question_uid: 'go:1',
-                title: 'Q1',
+                title: 'GATE CSE 2024 | Set 1 | GA | Question: 1',
                 searchText: 'database schema normalization functional dependency',
                 subjectSlug: 'databases',
                 type: 'MCQ',
+                tags: ['gateda-2024', 'gatecse-2024-set1'],
                 subtopics: [{ slug: 'schema-normalization' }],
-                exam: { year: 2024 }
+                exam: { year: 2024, set: 1, yearSetKey: '2024-s1' }
             },
             {
                 question_uid: 'go:2',
@@ -82,7 +107,9 @@ vi.mock('../services/QuestionService', () => ({
                 'legacy-other': [
                     { slug: 'pascal', label: 'Pascal' }
                 ]
-            }
+            },
+            yearSets: [{ key: 'cse:2024:set-1', legacyKey: '2024-s1', year: 2024, set: 1, label: '2024 Set 1', track: 'cse' }],
+            years: ['cse:2024:set-1']
         })),
         parseYearSetKey: vi.fn(() => null),
         extractYearSetFromTag: vi.fn(() => null),
@@ -126,6 +153,46 @@ vi.mock('../services/AptitudeQuestionService', () => ({
     },
 }));
 
+vi.mock('../services/DaQuestionService', () => ({
+    DaQuestionService: {
+        loaded: true,
+        questions: daMock.questions,
+        normalizeSubjectSlug: vi.fn((value) => String(value || '').trim().toLowerCase()),
+        getStructuredTags: vi.fn(() => ({
+            minYear: 2024,
+            maxYear: 2024,
+            subjects: [
+                { slug: 'da:probability-and-statistics', label: 'Probability & Statistics', count: 1 },
+                { slug: 'da:linear-algebra', label: 'Linear Algebra', count: 1 },
+                { slug: 'da:calculus-and-optimization', label: 'Calculus & Optimization', count: 1 },
+                { slug: 'da:general-aptitude', label: 'General Aptitude', count: 1 },
+                { slug: 'da:programming-data-structures-and-algorithms', label: 'Programming & DSA', count: 1 },
+                { slug: 'da:database-management-and-warehousing', label: 'DBMS & Warehousing', count: 1 },
+            ],
+            structuredSubtopics: {
+                'da:probability-and-statistics': [],
+                'da:linear-algebra': [],
+                'da:calculus-and-optimization': [],
+                'da:general-aptitude': [],
+                'da:programming-data-structures-and-algorithms': [],
+                'da:database-management-and-warehousing': [],
+            },
+            structuredTopics: {},
+            questionTypes: ['MCQ'],
+            yearSets: [{ key: 'da:2024:set-1', year: 2024, set: 1, label: '2024 Set 1', count: 6, track: 'da', legacyKey: '2024-s1' }],
+            years: ['da:2024:set-1'],
+            topics: [
+                'da:probability-and-statistics',
+                'da:linear-algebra',
+                'da:calculus-and-optimization',
+                'da:general-aptitude',
+                'da:programming-data-structures-and-algorithms',
+                'da:database-management-and-warehousing',
+            ],
+        })),
+    },
+}));
+
 vi.mock('../services/AnswerService', () => ({
     AnswerService: {
         getStorageKeyForQuestion: vi.fn((q) => q.question_uid),
@@ -160,10 +227,12 @@ describe('FilterContext', () => {
                 <div data-testid="search-query">{filters.searchQuery}</div>
                 <div data-testid="selected-types">{filters.selectedTypes.join(',')}</div>
                 <div data-testid="filtered-question-uids">{filteredQuestions.map((question) => question.question_uid).join(',')}</div>
+                <div data-testid="selected-year-sets">{filters.selectedYearSets.join(',')}</div>
                 <div data-testid="go1-solved">{isQuestionSolved('go:1') ? 'yes' : 'no'}</div>
                 <div data-testid="apt-solved">{isQuestionSolved('APT-ENG-0001') ? 'yes' : 'no'}</div>
                 <ActiveFilterChips />
                 <TopicFilter />
+                <YearFilter />
                 <button
                     data-testid="add-both"
                     onClick={() => updateFilters({ selectedSubjects: ['databases'], selectedSubtopics: ['schema-normalization'] })}
@@ -172,6 +241,14 @@ describe('FilterContext', () => {
                     data-testid="remove-subject"
                     onClick={() => updateFilters({ selectedSubjects: [] })}
                 >Remove</button>
+                <button
+                    data-testid="select-cse-year"
+                    onClick={() => updateFilters({ selectedYearSets: ['cse:2024:set-1'] })}
+                >Select CSE year</button>
+                <button
+                    data-testid="select-da-year"
+                    onClick={() => updateFilters({ selectedYearSets: ['da:2024:set-1'] })}
+                >Select DA year</button>
                 <button
                     data-testid="set-search"
                     onClick={() => updateFilters({ searchQuery: 'deadlock' })}
@@ -224,6 +301,101 @@ describe('FilterContext', () => {
 
         expect(getByTestId('subjects').textContent).toBe('');
         expect(getByTestId('subtopics').textContent).toBe('');
+    });
+
+    test('keeps DA subject filters distinct from CSE subject identities', async () => {
+        const daSubjects = [
+            ['Linear Algebra', 'da:linear-algebra', 'da:2024:q-linear'],
+            ['Calculus & Optimization', 'da:calculus-and-optimization', 'da:2024:q-calculus'],
+            ['Probability & Statistics', 'da:probability-and-statistics', 'da:2024:q-probability'],
+            ['General Aptitude', 'da:general-aptitude', 'da:2024:q-ga'],
+            ['Programming & DSA', 'da:programming-data-structures-and-algorithms', 'da:2024:q-dsa'],
+            ['DBMS & Warehousing', 'da:database-management-and-warehousing', 'da:2024:q-dbms'],
+        ];
+
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeDa>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('subject-options').textContent).toContain('da:linear-algebra');
+        });
+
+        for (const [label, subjectKey, questionUid] of daSubjects) {
+            act(() => {
+                screen.getByLabelText(label).click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('subjects').textContent).toBe(subjectKey);
+                expect(getByTestId('filtered-question-uids').textContent).toBe(questionUid);
+            });
+
+            act(() => {
+                screen.getByLabelText(label).click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('subjects').textContent).toBe('');
+            });
+        }
+    });
+
+    test('keeps paired CSE and DA year-set filters independent', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeDa>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('year-filter-cse:2024:set-1')).toBeTruthy();
+            expect(getByTestId('year-filter-da:2024:set-1')).toBeTruthy();
+        });
+
+        act(() => {
+            getByTestId('select-cse-year').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('selected-year-sets').textContent).toBe('cse:2024:set-1');
+            expect(getByTestId('filtered-question-uids').textContent).toBe('go:1');
+            expect(getByTestId('year-filter-cse:2024:set-1').checked).toBe(true);
+            expect(getByTestId('year-filter-da:2024:set-1').checked).toBe(false);
+        });
+        expect(new URLSearchParams(window.location.search).get('years')).toBe('2024-s1');
+
+        act(() => {
+            getByTestId('select-da-year').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('selected-year-sets').textContent).toBe('da:2024:set-1');
+            expect(getByTestId('filtered-question-uids').textContent).toContain('da:2024:q-probability');
+            expect(getByTestId('filtered-question-uids').textContent).not.toContain('go:1');
+            expect(getByTestId('year-filter-cse:2024:set-1').checked).toBe(false);
+            expect(getByTestId('year-filter-da:2024:set-1').checked).toBe(true);
+        });
+        expect(new URLSearchParams(window.location.search).get('years')).toBe('da:2024:set-1');
+    });
+
+    test('hydrates and serializes DA-qualified subject URLs', async () => {
+        window.history.replaceState({}, '', '/practice?subjects=da%3Ageneral-aptitude');
+
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeDa>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('da:general-aptitude');
+            expect(getByTestId('filtered-question-uids').textContent).toBe('da:2024:q-ga');
+        });
+
+        expect(new URLSearchParams(window.location.search).get('subjects')).toBe('da:general-aptitude');
     });
 
     test('recovers corrupted stored ID maps during normalization', () => {

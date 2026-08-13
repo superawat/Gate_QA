@@ -75,4 +75,43 @@ describe("QuestionResultCard", () => {
 
     expect(screen.queryByText("unknown")).toBeNull();
   });
+
+  test("renders the GATE DA badge only for DA questions", () => {
+    const { rerender } = render(
+      <QuestionResultCard
+        question={{
+          question_uid: "da:2026:set1:main:q1",
+          title: "DA question",
+          preview: "DA preview.",
+          type: "mcq",
+          yearSetLabel: "2026 Set 1",
+          subjectLabel: "Machine Learning",
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.getByText("GATE DA")).toBeTruthy();
+
+    rerender(
+      <QuestionResultCard
+        question={{
+          question_uid: "go:cse-preview",
+          title: "GATE CSE 2026 | Set 1 | GA | Question: 1",
+          tags: ["gatecse-2026-set1", "gateda-2026"],
+          preview: "CSE preview.",
+          type: "mcq",
+          yearSetLabel: "2026 Set 1",
+          subjectLabel: "Algorithms",
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.queryByText("GATE DA")).toBeNull();
+  });
 });

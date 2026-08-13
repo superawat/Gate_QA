@@ -4,6 +4,7 @@ import {
   parseExamUid,
 } from "../../utils/examUid";
 import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
+import { buildTrackYearSetKey } from "../../utils/examTrack";
 import { IQuestionService } from "./types";
 import { QuestionRow, QuestionOption } from "../../types";
 
@@ -290,9 +291,11 @@ export function extractExamMeta(this: IQuestionService, question: any = {}): any
   if (!candidates.length) {
     return {
       paper: "CSE",
+      track: "cse",
       year: null,
       set: null,
       yearSetKey: null,
+      yearSetIdentity: null,
       label: "Unknown",
     };
   }
@@ -300,12 +303,15 @@ export function extractExamMeta(this: IQuestionService, question: any = {}): any
   candidates.sort((a, b) => b.confidence - a.confidence);
   const best = candidates[0];
   const yearSetKey = this.buildYearSetKey(best.year, best.set);
+  const yearSetIdentity = buildTrackYearSetKey("cse", best.year, best.set);
 
   return {
     paper: "CSE",
+    track: "cse",
     year: best.year,
     set: best.set,
     yearSetKey,
+    yearSetIdentity,
     label: yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown",
   };
 }
@@ -314,9 +320,11 @@ export function buildExamMetaFromParsedUid(this: IQuestionService, parsedExamUid
   if (!parsedExamUid || !Number.isFinite(parsedExamUid.year)) {
     return {
       paper: "CSE",
+      track: "cse",
       year: null,
       set: null,
       yearSetKey: null,
+      yearSetIdentity: null,
       label: "Unknown",
     };
   }
@@ -324,12 +332,15 @@ export function buildExamMetaFromParsedUid(this: IQuestionService, parsedExamUid
   const hasMultipleSets = multiSetYears.has(parsedExamUid.year);
   const set = hasMultipleSets ? parsedExamUid.set : null;
   const yearSetKey = this.buildYearSetKey(parsedExamUid.year, set);
+  const yearSetIdentity = buildTrackYearSetKey("cse", parsedExamUid.year, set);
 
   return {
     paper: "CSE",
+    track: "cse",
     year: parsedExamUid.year,
     set,
     yearSetKey,
+    yearSetIdentity,
     label: hasMultipleSets
       ? `${parsedExamUid.year} Set ${parsedExamUid.set}`
       : String(parsedExamUid.year),
@@ -342,15 +353,23 @@ export function buildExamMetaFromIndexQuestion(this: IQuestionService, question:
   const set = Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : null;
   const yearSetKey =
     String(question?.yearSetKey || this.buildYearSetKey(year, set) || "").trim() || null;
+  const yearSetIdentity =
+    String(
+      question?.yearSetIdentity
+      || buildTrackYearSetKey("cse", year, set)
+      || ""
+    ).trim() || null;
   const label =
     String(question?.yearSetLabel || "").trim() ||
     (yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown");
 
   return {
     paper: "CSE",
+    track: "cse",
     year: Number.isFinite(year) ? year : null,
     set,
     yearSetKey,
+    yearSetIdentity,
     label,
   };
 }
@@ -360,7 +379,16 @@ export function normalizeQuestion(this: IQuestionService, question: any = {}): Q
   normalized.title = normalized.title || "";
   normalized.question = normalized.question || "";
   normalized.link = normalized.link || "";
+  // This normalizer belongs to the CSE service. The DA service has its own
+  // loader/normalizer, so a contaminated legacy tag must not re-route a CSE row.
+  const track = "cse";
+  normalized.track = track;
   normalized.tags = Array.isArray(normalized.tags) ? normalized.tags : [];
+  if (track === "cse") {
+    normalized.tags = normalized.tags.filter(
+      (tag: string) => !/^gateda-\d{4}(?:-set\d+)?$/i.test(String(tag || ""))
+    );
+  }
   normalized.tagsRaw = Array.isArray(normalized.tags) ? [...normalized.tags] : [];
   normalized.question_uid = this.buildQuestionUid(normalized);
   normalized.rawExamUid = getExamUidFromQuestion(normalized) || "";
@@ -398,6 +426,7 @@ export function normalizeQuestion(this: IQuestionService, question: any = {}): Q
   normalized.subjectSlug = subjectSlug;
   normalized.exam = exam;
   normalized.yearSetKey = exam.yearSetKey;
+  normalized.yearSetIdentity = exam.yearSetIdentity;
   normalized.yearSetLabel = exam.label;
   normalized.subtopics = canonicalSubtopics;
   normalized.type = canonicalType;
@@ -415,7 +444,13 @@ export function hydrateIndexedQuestion(this: IQuestionService, question: any = {
   indexed.link = indexed.link || "";
   indexed.preview = String(indexed.preview || "").trim();
   indexed.searchText = String(indexed.searchText || "").trim();
+  indexed.track = "cse";
   indexed.tags = Array.isArray(indexed.tags) ? indexed.tags : [];
+  if (indexed.track === "cse") {
+    indexed.tags = indexed.tags.filter(
+      (tag: string) => !/^gateda-\d{4}(?:-set\d+)?$/i.test(String(tag || ""))
+    );
+  }
   indexed.tagsRaw = [...indexed.tags];
   indexed.question_uid = this.buildQuestionUid(indexed);
   indexed.detailShardKey = this.getDetailShardKey(indexed);
@@ -449,6 +484,7 @@ export function hydrateIndexedQuestion(this: IQuestionService, question: any = {
   indexed.year = exam.year;
   indexed.set = exam.set;
   indexed.yearSetKey = exam.yearSetKey;
+  indexed.yearSetIdentity = exam.yearSetIdentity;
   indexed.yearSetLabel = exam.label;
   indexed.subtopics = canonicalSubtopics;
   indexed.type = canonicalType;
@@ -624,6 +660,7 @@ export function finalizeQuestions(this: IQuestionService, questions: QuestionRow
       const exam = this.buildExamMetaFromParsedUid(parsedExamUid, multiSetYears);
       finalizedQuestion.exam = exam;
       finalizedQuestion.yearSetKey = exam.yearSetKey;
+      finalizedQuestion.yearSetIdentity = exam.yearSetIdentity;
       finalizedQuestion.yearSetLabel = exam.label;
       if (finalizedQuestion.canonical && typeof finalizedQuestion.canonical === "object") {
         finalizedQuestion.canonical = {
@@ -660,18 +697,24 @@ export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any =
       : Array.isArray(indexedQuestion?.tags)
         ? indexedQuestion.tags
         : [];
+  const sanitizedMergedTags = mergedTags.filter(
+    (tag: string) => !/^gateda-\d{4}(?:-set\d+)?$/i.test(String(tag || ""))
+  );
+  const mergedTrack = "cse";
 
   return {
     ...normalizedDetail,
     preview: indexedQuestion?.preview || "",
     searchText: indexedQuestion?.searchText || "",
     detailShardKey: this.getDetailShardKey(indexedQuestion || normalizedDetail),
-    tags: mergedTags,
-    tagsRaw: [...mergedTags],
+    track: mergedTrack,
+    tags: sanitizedMergedTags,
+    tagsRaw: [...sanitizedMergedTags],
     exam: mergedExam,
     year: mergedExam?.year ?? normalizedDetail.year,
     set: mergedExam?.set ?? normalizedDetail.set,
     yearSetKey: mergedExam?.yearSetKey || normalizedDetail.yearSetKey,
+    yearSetIdentity: mergedExam?.yearSetIdentity || normalizedDetail.yearSetIdentity,
     yearSetLabel: mergedExam?.label || normalizedDetail.yearSetLabel,
     subject: mergedSubjectLabel,
     subjectLabel: mergedSubjectLabel,
@@ -685,7 +728,7 @@ export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any =
       subjectLabel: mergedSubjectLabel,
       subtopics: mergedSubtopics,
       type: mergedType,
-      tagsRaw: [...mergedTags],
+      tagsRaw: [...sanitizedMergedTags],
     },
   } as QuestionRow;
 }

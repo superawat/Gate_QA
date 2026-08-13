@@ -3,6 +3,7 @@ import { FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 import { MathContent } from "../Math/MathRuntime";
 import { formatExplorePreview } from "../../utils/questionPreview";
 import { getDisplayQuestionTypeToken } from "../../utils/questionType";
+import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
 
 const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
@@ -10,6 +11,7 @@ const typeStyles = {
   nat: "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]",
   unknown: "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-neutral-text)] ring-[color:var(--color-neutral-border)]",
 };
+const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
 
 const QuestionResultCard = ({
   question,
@@ -29,6 +31,7 @@ const QuestionResultCard = ({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)]">
+            {isDaQuestion(question) ? <span className="rounded-full bg-violet-100 px-2 py-1 text-[10px] tracking-[0.12em] text-violet-800">GATE DA</span> : null}
             <span>{question?.yearSetLabel || "Unknown Year"}</span>
             <span className="h-1 w-1 rounded-full bg-[color:var(--color-neutral-border)]" />
             <span>{subjectLabel}</span>

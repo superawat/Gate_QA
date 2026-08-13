@@ -1,4 +1,6 @@
 import { getExamUidFromQuestion } from "../utils/examUid";
+import { DaQuestionService } from "./DaQuestionService";
+import { isDaQuestion as isDaQuestionByMetadata } from "../utils/examTrack";
 import type { QuestionUid, AnswerRecord, AnswerRecordMap } from "../types";
 
 export interface QuestionIdentity {
@@ -204,6 +206,11 @@ export class AnswerService {
           kind: embeddedAnswer.source || "aptitude_embedded",
         },
       };
+    }
+
+    const isDaQuestion = isDaQuestionByMetadata(question);
+    if (isDaQuestion) {
+      return DaQuestionService.getAnswerForQuestion(question) as AnswerRecord | null;
     }
 
     const questionUid = identity.questionUid;

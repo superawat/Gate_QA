@@ -8,6 +8,7 @@ import { MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
 
 const mocks = vi.hoisted(() => ({
   ensureQuestionDetail: vi.fn(),
+  ensureDaQuestionDetail: vi.fn(),
   writeLastSession: vi.fn(),
   startOrderedSession: vi.fn(),
   setCurrentQuestionUid: vi.fn(),
@@ -84,6 +85,16 @@ vi.mock("../services/QuestionService", () => ({
 vi.mock("../services/AptitudeQuestionService", () => ({
   AptitudeQuestionService: {
     ensureQuestionDetail: mocks.ensureQuestionDetail,
+  },
+}));
+
+vi.mock("../services/DaQuestionService", () => ({
+  DaQuestionService: {
+    ensureQuestionDetail: mocks.ensureDaQuestionDetail,
+    getAnswerForQuestion: vi.fn((question) => ({
+      type: question?.type || "MCQ",
+      answer: "A",
+    })),
   },
 }));
 
@@ -178,6 +189,7 @@ const renderSolvePage = ({
 describe("SolvePage", () => {
   beforeEach(() => {
     mocks.ensureQuestionDetail.mockReset();
+    mocks.ensureDaQuestionDetail.mockReset();
     mocks.writeLastSession.mockReset();
     mocks.startOrderedSession.mockReset();
     mocks.setCurrentQuestionUid.mockReset();
@@ -291,6 +303,48 @@ describe("SolvePage", () => {
 
     expect(await screen.findByText("Question view: Hydrated detail")).toBeTruthy();
     expect(mocks.ensureQuestionDetail).toHaveBeenCalledTimes(1);
+  });
+
+  test("hydrates DA detail through DaQuestionService", async () => {
+    mocks.ensureDaQuestionDetail.mockResolvedValueOnce(buildQuestion("da:2026:set1:main:q1", {
+      title: "Hydrated DA detail",
+      question: "<p>Loaded DA detail</p>",
+      tags: ["gateda-2026", "general-aptitude", "mcq"],
+    }));
+
+    renderSolvePage({
+      route: "/practice/question/da%3A2026%3Aset1%3Amain%3Aq1",
+      filteredQuestions: [buildQuestion("da:2026:set1:main:q1", { question: "", tags: ["gateda-2026"] })],
+      indexedQuestion: buildQuestion("da:2026:set1:main:q1", { question: "", tags: ["gateda-2026"] }),
+    });
+
+    expect(await screen.findByText("Question view: Hydrated DA detail")).toBeTruthy();
+    expect(mocks.ensureDaQuestionDetail).toHaveBeenCalledTimes(1);
+    expect(mocks.ensureQuestionDetail).not.toHaveBeenCalled();
+  });
+
+  test("keeps a CSE question on the CSE loader and hides the DA badge despite a stale DA tag", async () => {
+    const cseQuestion = buildQuestion("go:523089", {
+      title: "GATE CSE 2026 | Set 1 | GA | Question: 1",
+      question: "",
+      tags: ["gatecse-2026-set1", "gateda-2026"],
+      exam: { paper: "CSE", year: 2026, set: 1, yearSetKey: "2026-s1" },
+    });
+    mocks.ensureQuestionDetail.mockResolvedValueOnce({
+      ...cseQuestion,
+      question: "<p>Loaded CSE detail</p>",
+    });
+
+    renderSolvePage({
+      route: "/practice/question/go%3A523089",
+      filteredQuestions: [cseQuestion],
+      indexedQuestion: cseQuestion,
+    });
+
+    expect(await screen.findByText(/Question view: GATE CSE 2026/)).toBeTruthy();
+    expect(mocks.ensureQuestionDetail).toHaveBeenCalledTimes(1);
+    expect(mocks.ensureDaQuestionDetail).not.toHaveBeenCalled();
+    expect(screen.queryByText("GATE DA")).toBeNull();
   });
 
   test("shows a retry state when detail hydration fails and retries successfully", async () => {

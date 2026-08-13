@@ -54,9 +54,11 @@ export interface QuestionOption {
 }
 
 export interface QuestionExamMeta {
+  track?: 'cse' | 'da' | null;
   year?: number | null;
   set?: number | null;
   yearSetKey?: string | null;
+  yearSetIdentity?: string | null;
   yearSetLabel?: string | null;
   exam_uid?: string | null;
   paper?: string | null;
@@ -89,6 +91,10 @@ export interface QuestionRow {
   normalizedOptions?: QuestionOption[];
   answerMeta?: AnswerRecord;
   exam?: QuestionExamMeta;
+  track?: 'cse' | 'da' | null;
+  yearSetKey?: string | null;
+  yearSetIdentity?: string | null;
+  yearSetLabel?: string | null;
   subtopics?: QuestionSubtopic[];
   tags?: string[];
   link?: string;
@@ -106,9 +112,11 @@ export interface QuestionSearchIndexRow {
   title: string;
   subjectSlug?: string;
   subjectLabel?: string;
+  track?: 'cse' | 'da' | null;
   year?: number | null;
   set?: number | null;
   yearSetKey?: string;
+  yearSetIdentity?: string;
   yearSetLabel?: string;
   detailShardKey?: string;
   exam_uid?: string;
@@ -164,6 +172,9 @@ export interface YearSetOption {
   set?: number | null;
   label: string;
   count?: number;
+  track?: 'cse' | 'da';
+  legacyKey?: string;
+  yearSetIdentity?: string;
   [key: string]: unknown;
 }
 

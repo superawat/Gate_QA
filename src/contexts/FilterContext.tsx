@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useDeferredValue, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { QuestionService } from '../services/QuestionService';
+import { DaQuestionService } from '../services/DaQuestionService';
 import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
@@ -9,6 +10,14 @@ import { useAptitudeEnabled } from '../utils/aptitudePreference';
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from '../utils/localStorageState';
 import { enqueueChange } from '../utils/syncQueue';
 import { extractQuestionIdArray } from '../utils/cloudSyncManager';
+import {
+    buildTrackYearSetKey,
+    getQuestionTrack,
+    getQuestionYearSetIdentity,
+    isDaQuestion as isDaQuestionByMetadata,
+    parseTrackYearSetKey,
+    toLegacyYearSetKey,
+} from '../utils/examTrack';
 
 const FilterStateContext = createContext();
 const FilterActionsContext = createContext();
@@ -20,6 +29,11 @@ const STORAGE_KEYS = {
     metadata: 'gate_qa_progress_metadata',
     progress: 'gateqa_progress_v1'
 };
+const DA_STORAGE_KEYS = {
+    solved: 'gate_qa_da_solved_questions',
+    bookmarked: 'gate_qa_da_bookmarked_questions',
+    progress: 'gateqa_da_progress_v1',
+};
 const DEFAULT_MIN_YEAR = 2000;
 const DEFAULT_MAX_YEAR = new Date().getFullYear();
 const LEGACY_STORAGE_KEYS = {
@@ -30,6 +44,13 @@ const APTITUDE_UID_PREFIX = 'APT-';
 const EMPTY_QUESTION_LIST = Object.freeze([]);
 
 const isAptitudeQuestionId = (value = '') => String(value || '').startsWith(APTITUDE_UID_PREFIX);
+const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
+
+const getDaFilterSubjectKey = (question = {}) => {
+    const rawSlug = question?.subjectSlug || question?.subject || question?.tags?.[1] || '';
+    const normalizedSlug = DaQuestionService.normalizeSubjectSlug(rawSlug);
+    return normalizedSlug ? `da:${normalizedSlug}` : 'da:unknown';
+};
 
 const normalizeQuestionPool = (questions = []) => {
     const seen = new Set();
@@ -48,15 +69,21 @@ const normalizeQuestionPool = (questions = []) => {
 const buildStructuredTagsFromManifest = (manifest = null, questionService = QuestionService) => {
     const yearSets = Array.isArray(manifest?.yearSets)
         ? manifest.yearSets
-            .map((entry) => ({
-                key: String(entry?.key || '').trim(),
+            .map((entry) => {
+                const legacyKey = String(entry?.key || '').trim();
+                const identity = buildTrackYearSetKey('cse', entry?.year, entry?.set);
+                return {
+                key: identity || legacyKey,
+                legacyKey,
+                yearSetIdentity: identity || legacyKey,
                 year: Number(entry?.year),
                 set: Number.isFinite(Number(entry?.set)) && Number(entry?.set) > 0
                     ? Number(entry?.set)
                     : null,
                 label: String(entry?.label || '').trim(),
                 count: Number(entry?.count || 0),
-            }))
+                track: 'cse',
+            }; })
             .filter((entry) => entry.key && Number.isFinite(entry.year) && entry.label)
         : [];
 
@@ -122,8 +149,34 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
         ...(Array.isArray(aptitudeTags.questionTypes) ? aptitudeTags.questionTypes : []),
     ].map((type) => String(type || '').trim().toUpperCase()).filter(Boolean)));
 
+    const yearSets = [
+        ...(Array.isArray(gateTags.yearSets) ? gateTags.yearSets : []),
+        ...(Array.isArray(aptitudeTags.yearSets) ? aptitudeTags.yearSets : []),
+    ].map((entry) => {
+        const track = String(entry?.track || '').toLowerCase() === 'da' ? 'da' : 'cse';
+        const identity = buildTrackYearSetKey(track, entry?.year, entry?.set) || String(entry?.key || '').trim();
+        return {
+            ...entry,
+            key: identity,
+            yearSetIdentity: identity,
+            track,
+        };
+    }).filter((entry) => entry.key).sort((left, right) => {
+        const parsedLeft = parseTrackYearSetKey(left.key);
+        const parsedRight = parseTrackYearSetKey(right.key);
+        const yearDifference = Number(parsedRight?.year || 0) - Number(parsedLeft?.year || 0);
+        if (yearDifference !== 0) return yearDifference;
+
+        const setDifference = Number(parsedRight?.set || 0) - Number(parsedLeft?.set || 0);
+        if (setDifference !== 0) return setDifference;
+
+        return Number(parsedLeft?.track === 'da') - Number(parsedRight?.track === 'da');
+    });
+
     return {
         ...gateTags,
+        yearSets,
+        years: Array.from(new Set(yearSets.map((entry) => entry.key).filter(Boolean))),
         subjects,
         topics: subjects.map((subject) => subject.slug),
         structuredSubtopics: {
@@ -174,13 +227,15 @@ const normalizeSelectedTypes = (rawTypes, {
 };
 
 const yearSetComparator = (a, b, questionService = QuestionService) => {
-    const parsedA = questionService.parseYearSetKey(a);
-    const parsedB = questionService.parseYearSetKey(b);
+    const parsedA = parseTrackYearSetKey(a);
+    const parsedB = parseTrackYearSetKey(b);
     if (!parsedA || !parsedB) return String(a).localeCompare(String(b));
     if (parsedA.year !== parsedB.year) {
         return parsedB.year - parsedA.year;
     }
-    return (parsedB.set || 0) - (parsedA.set || 0);
+    const setDifference = (parsedB.set || 0) - (parsedA.set || 0);
+    if (setDifference !== 0) return setDifference;
+    return Number(parsedA.track === 'da') - Number(parsedB.track === 'da');
 };
 
 const normalizeYearSetTokens = (rawTokens, questionService = QuestionService) => {
@@ -191,7 +246,7 @@ const normalizeYearSetTokens = (rawTokens, questionService = QuestionService) =>
         const token = String(rawToken || '').trim();
         if (!token) return;
 
-        const parsedKey = questionService.parseYearSetKey(token);
+        const parsedKey = parseTrackYearSetKey(token);
         if (parsedKey) {
             unique.add(parsedKey.key);
             return;
@@ -199,7 +254,8 @@ const normalizeYearSetTokens = (rawTokens, questionService = QuestionService) =>
 
         const fromTag = questionService.extractYearSetFromTag(token);
         if (fromTag) {
-            const key = questionService.buildYearSetKey(fromTag.year, fromTag.set);
+            const track = /^gateda-/i.test(token) ? 'da' : 'cse';
+            const key = buildTrackYearSetKey(track, fromTag.year, fromTag.set);
             if (key) unique.add(key);
         }
     });
@@ -212,7 +268,16 @@ const normalizeSubjectSlugs = (rawSubjects, questionService = QuestionService) =
     const unique = new Set();
 
     values.forEach((rawSubject) => {
-        const subjectSlug = questionService.normalizeSubjectSlug(rawSubject);
+        const token = String(rawSubject || '').trim();
+        if (token.toLowerCase().startsWith('da:')) {
+            const daSlug = DaQuestionService.normalizeSubjectSlug(token.slice(3));
+            if (daSlug) {
+                unique.add(`da:${daSlug}`);
+            }
+            return;
+        }
+
+        const subjectSlug = questionService.normalizeSubjectSlug(token);
         if (subjectSlug && subjectSlug !== 'unknown') {
             unique.add(subjectSlug);
             return;
@@ -221,6 +286,11 @@ const normalizeSubjectSlugs = (rawSubjects, questionService = QuestionService) =
         const aptitudeSlug = AptitudeQuestionService.normalizeSubjectSlug(rawSubject);
         if (aptitudeSlug) {
             unique.add(aptitudeSlug);
+            return;
+        }
+        const daSlug = DaQuestionService.normalizeSubjectSlug(rawSubject);
+        if (daSlug) {
+            unique.add(`da:${daSlug}`);
         }
     });
 
@@ -393,6 +463,7 @@ export const FilterProvider = ({
     progressScope = 'gate',
     progressExportPrefix = 'gateqa-progress',
     includeExtendedProgress = true,
+    initialIncludeDa = false,
 }) => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -440,6 +511,16 @@ export const FilterProvider = ({
     const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState([]);
     const [aptitudeSolvedQuestionIds, setAptitudeSolvedQuestionIds] = useState([]);
     const [aptitudeBookmarkedQuestionIds, setAptitudeBookmarkedQuestionIds] = useState([]);
+    const [daSolvedQuestionIds, setDaSolvedQuestionIds] = useState([]);
+    const [daBookmarkedQuestionIds, setDaBookmarkedQuestionIds] = useState([]);
+    const [includeDa, setIncludeDaState] = useState(() => (
+        initialIncludeDa || (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') === 'true')
+    ));
+    const [daQuestions, setDaQuestions] = useState(() => (
+        DaQuestionService.loaded ? normalizeQuestionPool(DaQuestionService.questions) : []
+    ));
+    const [daLoading, setDaLoading] = useState(false);
+    const [daError, setDaError] = useState('');
     const [aptitudeQuestions, setAptitudeQuestions] = useState(() => (
         AptitudeQuestionService.loaded ? normalizeQuestionPool(AptitudeQuestionService.questions) : []
     ));
@@ -498,14 +579,45 @@ export const FilterProvider = ({
         };
     }, [shouldMergeAptitude]);
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            try { window.localStorage.setItem('gateqa_include_da', includeDa ? 'true' : 'false'); } catch (e) {}
+        }
+        if (!includeDa) return undefined;
+
+        let cancelled = false;
+        const loadDaQuestions = async () => {
+            if (DaQuestionService.loaded) {
+                setDaQuestions(normalizeQuestionPool(DaQuestionService.questions));
+                return;
+            }
+            setDaLoading(true);
+            setDaError('');
+            try {
+                await DaQuestionService.init();
+                if (!cancelled) setDaQuestions(normalizeQuestionPool(DaQuestionService.questions));
+            } catch (error) {
+                if (!cancelled) {
+                    setDaQuestions([]);
+                    setDaError(error.message || 'Unable to load GATE DA questions.');
+                }
+            } finally {
+                if (!cancelled) setDaLoading(false);
+            }
+        };
+        void loadDaQuestions();
+        return () => { cancelled = true; };
+    }, [includeDa]);
+
     const baseQuestions = questionService.questions;
     const activeAptitudeQuestions = shouldMergeAptitude ? aptitudeQuestions : EMPTY_QUESTION_LIST;
+    const activeDaQuestions = includeDa ? daQuestions : EMPTY_QUESTION_LIST;
     const allQuestions = useMemo(() => {
-        if (!baseQuestions.length) {
+        if (!baseQuestions.length && !activeDaQuestions.length) {
             return [];
         }
-        return normalizeQuestionPool([...baseQuestions, ...activeAptitudeQuestions]);
-    }, [activeAptitudeQuestions, baseQuestions, questionDataRevision]);
+        return normalizeQuestionPool([...baseQuestions, ...activeDaQuestions, ...activeAptitudeQuestions]);
+    }, [activeAptitudeQuestions, activeDaQuestions, baseQuestions, questionDataRevision]);
 
     const questionByUidMap = useMemo(() => {
         const map = new Map();
@@ -539,11 +651,15 @@ export const FilterProvider = ({
 
             map.set(uid, {
                 questionId: getQuestionTrackingId(question, answerService),
+                track: getQuestionTrack(question),
                 resolvedType,
                 resolvedTypeUpper: String(resolvedType || '').toUpperCase(),
-                subjectSlug: question.subjectSlug || 'unknown',
+                subjectSlug: isDaQuestion(question)
+                    ? getDaFilterSubjectKey(question)
+                    : question.subjectSlug || 'unknown',
                 subtopicSlugs,
                 yearSetKey: question.exam?.yearSetKey || null,
+                yearSetIdentity: getQuestionYearSetIdentity(question),
                 year: Number.isFinite(question.exam?.year) ? question.exam.year : 0,
                 searchText: String(question.searchText || '').toLowerCase(),
             });
@@ -571,11 +687,11 @@ export const FilterProvider = ({
     }, [initialManifest, questionService, structuredTags.minYear, structuredTags.maxYear]);
 
     useEffect(() => {
-        if (questionService.questions.length > 0) {
+        if (questionService.questions.length > 0 || activeDaQuestions.length > 0) {
             const gateTags = questionService.getStructuredTags();
-            const tags = activeAptitudeQuestions.length > 0
-                ? mergeStructuredTags(gateTags, AptitudeQuestionService.getStructuredTags())
-                : gateTags;
+            const daTags = activeDaQuestions.length > 0 ? DaQuestionService.getStructuredTags() : {};
+            const aptitudeTags = activeAptitudeQuestions.length > 0 ? AptitudeQuestionService.getStructuredTags() : {};
+            const tags = mergeStructuredTags(mergeStructuredTags(gateTags, daTags), aptitudeTags);
             setStructuredTags(tags);
             setTotalQuestions(allQuestions.length);
 
@@ -593,6 +709,7 @@ export const FilterProvider = ({
         }
     }, [
         activeAptitudeQuestions.length,
+        activeDaQuestions.length,
         allQuestions.length,
         questionDataRevision,
         questionService,
@@ -682,7 +799,14 @@ export const FilterProvider = ({
             && normalizedYearRange[0] === Number(structuredTags.minYear)
             && normalizedYearRange[1] === Number(structuredTags.maxYear);
 
-        if (selectedYearSets.length) params.set('years', selectedYearSets.join(','));
+        if (selectedYearSets.length) {
+            params.set(
+                'years',
+                selectedYearSets
+                    .map((yearSetKey) => toLegacyYearSetKey(yearSetKey) || yearSetKey)
+                    .join(',')
+            );
+        }
         if (selectedSubjects.length) params.set('subjects', selectedSubjects.join(','));
         if (selectedSubtopics.length) params.set('subtopics', selectedSubtopics.join(','));
         if (hasValidYearRange && !isDefaultYearRange) {
@@ -761,11 +885,15 @@ export const FilterProvider = ({
         const storedAptitudeBookmarked = canMergeAptitude
             ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, []))
             : [];
+        const storedDaSolved = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.solved, []));
+        const storedDaBookmarked = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, []));
 
         setSolvedQuestionIds(storedSolved);
         setBookmarkedQuestionIds(storedBookmarked);
         setAptitudeSolvedQuestionIds(storedAptitudeSolved);
         setAptitudeBookmarkedQuestionIds(storedAptitudeBookmarked);
+        setDaSolvedQuestionIds(storedDaSolved);
+        setDaBookmarkedQuestionIds(storedDaBookmarked);
 
         if (storedBookmarkedRaw === null) {
             try {
@@ -800,11 +928,15 @@ export const FilterProvider = ({
                     bookmarkedCount: aptitudeBookmarkedQuestionIds.length
                 }));
             }
+            window.localStorage.setItem(DA_STORAGE_KEYS.solved, JSON.stringify(daSolvedQuestionIds));
+            window.localStorage.setItem(DA_STORAGE_KEYS.bookmarked, JSON.stringify(daBookmarkedQuestionIds));
         } catch (error) {
             setIsProgressStorageAvailable(false);
         }
     }, [
         aptitudeBookmarkedQuestionIds,
+        daBookmarkedQuestionIds,
+        daSolvedQuestionIds,
         aptitudeSolvedQuestionIds,
         bookmarkedQuestionIds,
         canMergeAptitude,
@@ -817,16 +949,16 @@ export const FilterProvider = ({
     ]);
 
     const gateValidQuestionIdSet = useMemo(() => {
-        if (!isInitialized || !questionService.questions.length) {
+        if (!isInitialized || (!questionService.questions.length && !daQuestions.length)) {
             return new Set();
         }
 
         return new Set(
-            questionService.questions
+            [...questionService.questions, ...daQuestions]
                 .map(question => getQuestionTrackingId(question, answerService))
                 .filter(Boolean)
         );
-    }, [answerService, isInitialized, questionDataRevision, questionService, totalQuestions]);
+    }, [answerService, daQuestions, isInitialized, questionDataRevision, questionService, totalQuestions]);
 
     const aptitudeValidQuestionIdSet = useMemo(() => {
         if (!canMergeAptitude || aptitudeQuestions.length === 0) {
@@ -885,12 +1017,12 @@ export const FilterProvider = ({
     }, [aptitudeValidQuestionIdSet, canMergeAptitude]);
 
     const solvedQuestionSet = useMemo(
-        () => new Set([...solvedQuestionIds, ...aptitudeSolvedQuestionIds]),
-        [aptitudeSolvedQuestionIds, solvedQuestionIds]
+        () => new Set([...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds]),
+        [aptitudeSolvedQuestionIds, daSolvedQuestionIds, solvedQuestionIds]
     );
     const bookmarkedQuestionSet = useMemo(
-        () => new Set([...bookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds]),
-        [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds]
+        () => new Set([...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds]),
+        [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds]
     );
 
     // ── Reverse map: subtopicSlug → parent subjectSlug (for scoped filtering) ──
@@ -995,7 +1127,7 @@ export const FilterProvider = ({
             }
 
             let yearMatch = true;
-            const qYearSetKey = meta?.yearSetKey || null;
+            const qYearSetKey = meta?.yearSetIdentity || null;
             const qYearNum = meta?.year || 0;
 
             if (selectedYearSets.length > 0) {
@@ -1097,9 +1229,11 @@ export const FilterProvider = ({
             return;
         }
 
-        const setTargetSolvedQuestionIds = canMergeAptitude && isAptitudeQuestionId(questionId)
-            ? setAptitudeSolvedQuestionIds
-            : setSolvedQuestionIds;
+        const setTargetSolvedQuestionIds = typeof questionOrId === 'object' && isDaQuestion(questionOrId)
+            ? setDaSolvedQuestionIds
+            : canMergeAptitude && isAptitudeQuestionId(questionId)
+                ? setAptitudeSolvedQuestionIds
+                : setSolvedQuestionIds;
 
         setTargetSolvedQuestionIds((prev) => (
             prev.includes(questionId)
@@ -1117,9 +1251,11 @@ export const FilterProvider = ({
             return;
         }
 
-        const setTargetBookmarkedQuestionIds = canMergeAptitude && isAptitudeQuestionId(questionId)
-            ? setAptitudeBookmarkedQuestionIds
-            : setBookmarkedQuestionIds;
+        const setTargetBookmarkedQuestionIds = typeof questionOrId === 'object' && isDaQuestion(questionOrId)
+            ? setDaBookmarkedQuestionIds
+            : canMergeAptitude && isAptitudeQuestionId(questionId)
+                ? setAptitudeBookmarkedQuestionIds
+                : setBookmarkedQuestionIds;
 
         setTargetBookmarkedQuestionIds((prev) => (
             prev.includes(questionId)
@@ -1135,9 +1271,20 @@ export const FilterProvider = ({
             return;
         }
 
+        const daObjectIds = new Set(
+            (Array.isArray(questionOrIds) ? questionOrIds : [questionOrIds])
+                .filter((question) => typeof question === 'object' && isDaQuestion(question))
+                .map((question) => getQuestionTrackingId(question, answerService))
+                .filter(Boolean)
+        );
         const gateQuestionIds = [];
+        const daQuestionIds = [];
         const aptitudeQuestionIds = [];
         questionIds.forEach((questionId) => {
+            if (daObjectIds.has(questionId)) {
+                daQuestionIds.push(questionId);
+                return;
+            }
             if (canMergeAptitude && isAptitudeQuestionId(questionId)) {
                 aptitudeQuestionIds.push(questionId);
                 return;
@@ -1237,21 +1384,25 @@ export const FilterProvider = ({
         updateFilters({ showOnlyBookmarked: !!value });
     }, [updateFilters]);
 
+    const setIncludeDa = useCallback((value) => {
+        setIncludeDaState(Boolean(value));
+    }, []);
+
     const solvedCount = useMemo(() => {
-        const activeSolvedIds = [...solvedQuestionIds, ...aptitudeSolvedQuestionIds];
+        const activeSolvedIds = [...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds];
         if (validQuestionIdSet.size === 0) {
             return activeSolvedIds.length;
         }
         return activeSolvedIds.filter(id => validQuestionIdSet.has(id)).length;
-    }, [aptitudeSolvedQuestionIds, solvedQuestionIds, validQuestionIdSet]);
+    }, [aptitudeSolvedQuestionIds, daSolvedQuestionIds, solvedQuestionIds, validQuestionIdSet]);
 
     const bookmarkedCount = useMemo(() => {
-        const activeBookmarkedIds = [...bookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds];
+        const activeBookmarkedIds = [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds];
         if (validQuestionIdSet.size === 0) {
             return activeBookmarkedIds.length;
         }
         return activeBookmarkedIds.filter(id => validQuestionIdSet.has(id)).length;
-    }, [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, validQuestionIdSet]);
+    }, [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds, validQuestionIdSet]);
 
     const progressPercentage = totalQuestions > 0
         ? Math.round((solvedCount / totalQuestions) * 100)
@@ -1289,8 +1440,8 @@ export const FilterProvider = ({
         isInitialized,
         solvedQuestionIds,
         bookmarkedQuestionIds,
-        activeSolvedQuestionIds: [...solvedQuestionIds, ...aptitudeSolvedQuestionIds],
-        activeBookmarkedQuestionIds: [...bookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds],
+        activeBookmarkedQuestionIds: [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds],
+        activeSolvedQuestionIds: [...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds],
         solvedCount,
         bookmarkedCount,
         progressPercentage,
@@ -1298,6 +1449,10 @@ export const FilterProvider = ({
         progressStorageKeys: storageKeys,
         aptitudeProgressStorageKeys: APTITUDE_USER_STATE_STORAGE_KEYS,
         aptitudeEnabled: shouldMergeAptitude,
+        includeDa,
+        daLoading,
+        daError,
+        daProgressStorageKeys: DA_STORAGE_KEYS,
         aptitudeLoading,
         aptitudeError,
         progressScope,
@@ -1308,11 +1463,12 @@ export const FilterProvider = ({
         filters, filteredQuestions, allQuestions, structuredTags,
         totalQuestions, isInitialized, solvedQuestionIds,
         aptitudeSolvedQuestionIds, bookmarkedQuestionIds,
-        aptitudeBookmarkedQuestionIds, solvedCount, bookmarkedCount,
+        aptitudeBookmarkedQuestionIds, daBookmarkedQuestionIds, daSolvedQuestionIds,
+        solvedCount, bookmarkedCount,
         progressPercentage, isProgressStorageAvailable,
         storageKeys, shouldMergeAptitude, aptitudeLoading, aptitudeError,
         progressScope, progressExportPrefix,
-        includeExtendedProgress, questionService
+        includeExtendedProgress, questionService, includeDa, daLoading, daError
     ]);
 
     const actionsValue = useMemo(() => ({
@@ -1328,13 +1484,14 @@ export const FilterProvider = ({
         refreshProgressState,
         setHideSolved,
         setShowOnlySolved,
-        setShowOnlyBookmarked
+        setShowOnlyBookmarked,
+        setIncludeDa
     }), [
         updateFilters, clearFilters, getQuestionById,
         toggleSolved, markQuestionsSolved, toggleBookmark, isQuestionSolved,
         isQuestionBookmarked, getQuestionProgressId,
         refreshProgressState,
-        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked
+        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setIncludeDa
     ]);
 
     return (

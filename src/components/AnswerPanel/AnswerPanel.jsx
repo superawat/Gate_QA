@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState, useCallback } from "react"
 import { FaCheck, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
 import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
+import { DaQuestionService } from "../../services/DaQuestionService";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
@@ -11,8 +12,10 @@ import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../
 import { recordPracticeAttempt } from "../../utils/practiceProgress";
 import { enqueueChange } from "../../utils/syncQueue";
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from "../../utils/localStorageState";
+import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
 
 const DEFAULT_OPTIONS = ["A", "B", "C", "D"];
+const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
 
 const normalizeOptionLabel = (value) => String(value || "").trim().toUpperCase();
 
@@ -40,7 +43,7 @@ const buildSelectableOptionLabels = (question = {}, answerRecord = null) => {
     labels.push(label);
   };
 
-  QuestionService.getNormalizedOptions(question).forEach((option) => {
+  (isDaQuestion(question) ? DaQuestionService.getNormalizedOptions(question) : QuestionService.getNormalizedOptions(question)).forEach((option) => {
     addLabel(option?.label);
   });
 
@@ -67,7 +70,7 @@ export default function AnswerPanel({
     isQuestionBookmarked,
     getQuestionProgressId,
   } = useFilterActions();
-  const { progressStorageKeys, aptitudeProgressStorageKeys = APTITUDE_USER_STATE_STORAGE_KEYS } = useFilterState();
+  const { progressStorageKeys, aptitudeProgressStorageKeys = APTITUDE_USER_STATE_STORAGE_KEYS, daProgressStorageKeys } = useFilterState();
 
   const { goBack, canGoBack } = useSession();
   const canMovePrevious = typeof canGoPrevious === "boolean" ? canGoPrevious : canGoBack;
@@ -78,7 +81,7 @@ export default function AnswerPanel({
     [question]
   );
   const answerRecord = useMemo(
-    () => AnswerService.getAnswerForQuestion(question),
+    () => isDaQuestion(question) ? DaQuestionService.getAnswerForQuestion(question) : AnswerService.getAnswerForQuestion(question),
     [question]
   );
   const answerOptions = useMemo(
@@ -120,14 +123,14 @@ export default function AnswerPanel({
     if (!questionProgressId) {
       return;
     }
-    toggleSolved(questionProgressId);
+    toggleSolved(question);
   };
 
   const handleToggleBookmark = () => {
     if (!questionProgressId) {
       return;
     }
-    toggleBookmark(questionProgressId);
+    toggleBookmark(question);
   };
 
   const evaluateSubmission = () => {
@@ -149,7 +152,7 @@ export default function AnswerPanel({
 
     // FEAT-011: Auto-mark solved on correct answer submit
     if (evaluation.correct && questionProgressId && !isSolved) {
-      toggleSolved(questionProgressId);
+      toggleSolved(question);
     }
 
     const submittedAt = new Date();
@@ -160,9 +163,11 @@ export default function AnswerPanel({
       input: submission,
       submittedAt: submittedAt.toISOString(),
       durationMs: submittedAt.getTime() - questionOpenedAtRef.current,
-      progressStorageKey: String(storageKey || "").startsWith("APT-")
-        ? aptitudeProgressStorageKeys?.progress
-        : progressStorageKeys?.progress,
+      progressStorageKey: isDaQuestion(question)
+        ? daProgressStorageKeys?.progress
+        : String(storageKey || "").startsWith("APT-")
+          ? aptitudeProgressStorageKeys?.progress
+          : progressStorageKeys?.progress,
     });
     enqueueChange("SOLVE", {
       questionUid: storageKey,
@@ -565,6 +570,8 @@ export default function AnswerPanel({
       <button
         type="button"
         disabled
+        aria-label="Solution unavailable"
+        title="Solution unavailable"
         className={`px-6 h-12 rounded bg-slate-600 text-white font-bold text-sm shadow-sm flex items-center justify-center cursor-not-allowed opacity-50 ${additionalClasses}`}
       >
         Solution
