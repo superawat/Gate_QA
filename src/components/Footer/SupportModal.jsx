@@ -44,7 +44,7 @@ const SupportModal = ({ isOpen, onClose }) => {
                         GATE QA has been free for everyone and has helped many along the way. If you’d like to support the journey, any contribution means a lot.
                     </p>
                     <p className="mx-auto mt-2 text-sm font-semibold text-pink-600 dark:text-pink-400">
-                        ❤️ 7 people supported.
+                        ❤️ 8 people supported.
                     </p>
 
                     <div className="mt-5 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3.5 sm:p-4">
