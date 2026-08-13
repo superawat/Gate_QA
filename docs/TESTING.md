@@ -43,10 +43,10 @@ Current suites:
 - `src/services/AptitudeQuestionService.test.js`
 - `scripts/aptitude-pipeline/scrape-aptitude.test.mjs`
 
-Latest verification snapshot on `2026-06-02`:
+Latest verification snapshot on `2026-08-13`:
 
-- `43` passing test files
-- `272` passing unit tests
+- `55` passing test files
+- `355` passing unit tests
 
 Treat that as a point-in-time check. Re-run the suite instead of relying on the doc for an exact count.
 

@@ -1,5 +1,73 @@
 # Changelog
 
+## 2026-08-13
+
+### Added
+- **GATE DA 2026 Quality & MathJax Formatting Overhaul**:
+  - Overhauled all 65 questions of GATE DA 2026, replacing multi-line OCR line-broken fractions with crisp LaTeX MathJax equations (`$T(n) = T\left(\frac{n}{4}\right) + ...$`, matrices `\begin{bmatrix}`, summations `\sum`, limits `\lim`, and combinatorics).
+  - Assigned precise canonical syllabus subjects (Linear Algebra, Calculus & Optimization, Probability & Statistics, Programming & DSA, DBMS & Warehousing, ML, AI, GA) across all 65 questions, replacing generic fallbacks.
+  - Formatted Python snippets in Q16, Q39, Q50, Q58 with `<pre><code class="language-python">` and relational schemas with `<table class="da-latex-table">`.
+  - Authored comprehensive documentation in [QUESTION_FORMAT_AND_LATEX_RENDERING.md](file:///c:/Users/himanshu/Desktop/GATE_QA/docs/QUESTION_FORMAT_AND_LATEX_RENDERING.md) detailing the hybrid HTML+LaTeX JSON data contract, MathJax 3 rendering pipeline, and authoring guidelines.
+- **GATE DA 2026 structured LaTeX intake repair:** Reworked the local `main.tex`
+  importer to preserve the source’s 65 question boundaries, GA/technical sections,
+  mark ranges, paragraphs, A-D options, Unicode mathematical symbols, tables, and
+  figures. Added structural validation for MCQ/MSQ/NAT records and safe reuse of
+  extracted answer keys after the source PDF is removed.
+- **GATE DA filter identity isolation:** DA subject options now use stable
+  `da:<canonical-slug>` identities while existing CSE subject slugs remain
+  backward-compatible. Practice URLs, selected-filter chips, question matching,
+  and custom mock scope filtering now keep DA Linear Algebra, Calculus,
+  Probability, General Aptitude, Programming & DSA, and DBMS & Warehousing
+  separate from their CSE counterparts.
+- **GATE DA Toggle UI refinement:** Renamed the filter control to `GATE DA`, moved
+  it below Question Type, converted the checkbox into the shared sliding-toggle
+  pattern, and switched its panel, text, focus, and error colors to theme variables
+  for consistent light and dark mode contrast. The special Aptitude section remains
+  available in the Topics area.
+- **GATE DA 2024/2025 Paper Intake (AUG-004)**:
+  - Added a repeatable PracticePaper scraper and normalization pipeline for both
+    complete DA papers (130 questions total).
+  - Added editable DA answer keys, merged question/answer records, and strict data
+    validation requiring 65 complete questions per year.
+  - Added DA manifest, search index, answer registry, and separate public detail
+    shards to the standard artifact build.
+  - Aligned published DA rows with the CSE six-field storage contract
+    (`title`, `link`, `question`, `tags`, `year`, `answer`) and changed DA answer
+    joins to the same `records_by_question_uid` registry shape. DA question links
+    now use GateOverflow references; missing references remain blank.
+  - Mirrored all 17 unique DA question images locally as optimized WebP assets and
+    rewrote their HTML references so DA questions work offline like CSE questions.
+  - Added the local GATE DA 2026 LaTeX/PDF importer: 65 structured questions,
+    12 optimized local figures, MCQ/MSQ/NAT answer-key parsing, stable DA answer IDs,
+    and merged 2026 artifacts. The DA bank now contains 195 questions across 2024-2026.
+  - Consolidated all published DA JSON under `public/data/da/`, with year-named
+    detail shards and no duplicate root-level DA copies.
+  - Integrated DA into practice behind the persisted `gateqa_include_da` toggle,
+    with lazy shard loading, canonical eight-subject filters, DA-only badges, and
+    dedicated local-first solved/bookmark/progress namespaces.
+  - Added GateOverflow-only solution routing for DA; questions without a redirect
+    publish an empty link and keep the Solution action disabled.
+  - Added official 65-question DA mock metadata for 2024-2026 and additive cloud
+    merge support for `da_solved`, `da_bookmarks`, and `progress_records.da`.
+  - Added regression coverage for DA service loading, NAT tolerance ranges, DA card
+    badges, DA cloud union merging, and DA SolvePage hydration; full unit suite
+    passes with 355 tests.
+
+### Fixed
+- **DA/CSE Classification & Filter Collision Resolution**:
+  - **Root Causes**:
+    - CSE question rows (e.g. `go:523089`) contained stale `gateda-*` tags, and track detection improperly trusted those tags to classify questions as DA.
+    - Both CSE and DA tracks shared un-namespaced `2026-s1` filter tokens, causing cross-track selection collisions.
+    - Misclassified CSE questions attempted to load non-existent DA shards at runtime, triggering `<!DOCTYPE ...>` HTML fallback JSON parsing errors.
+  - **Resolution**:
+    - Implemented metadata-first track detection in `src/utils/examTrack.js` with CSE-safe defaults and strict validation precedence.
+    - Introduced independent, track-aware year/set identities: `cse:2026:set-1` and `da:2026:set-1`.
+    - Maintained 100% backward compatibility for legacy CSE URLs (e.g. `2026-s1`).
+    - Aligned filtering, URL hydration, active filter chips, direct detail loading, and Custom Mock paper matching to use canonical track identities.
+    - Regenerated public artifacts with stale `gateda-*` tags stripped from all CSE rows (0 CSE rows now have DA tags).
+    - Expanded test coverage across `examTrack.test.js`, `YearFilter.test.jsx`, `DaQuestionService.test.js`, and `FilterContext.test.jsx`.
+  - **Validation**: Full unit suite (355 tests across 55 test files), 17 Playwright E2E tests, TypeScript typecheck, DA validation (195 questions, 100% answer coverage), static production build & prerender (3,493 pages), 0 CSE rows with DA tags, and 53 unique mock paper identities.
+
 ## 2026-08-11
 
 ### Fixed & Optimized

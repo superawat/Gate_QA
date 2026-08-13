@@ -19,6 +19,99 @@ The resulting data files are the permanent outputs of that work:
 The original Python scripts were removed in CLEANUP-001 and are preserved on the
 `archive/pre-cleanup-2026-02-26` branch.
 
+## GATE DA paper intake (AUG-004)
+
+GATE Data Science & Artificial Intelligence papers are maintained as a separate DA
+intake so the existing GATE CSE bank and its CSE-only paper grouping remain unchanged.
+The published DA question rows use the same compact
+record contract as CSE; only the DA bank and DA artifact namespace are separate.
+The 2024/2025 source is 26 paginated PracticePaper pages (13 per year), and the local
+`da_2026/` folder supplies the 2026 LaTeX paper and, when retained, the answer-key PDF.
+The published 2026 data and optimized figures do not depend on that source folder;
+`da_2026/` may be removed after the one-time import.
+
+1. `npm run qa:scrape-da` snapshots all source pages under ignored `audit/da/`.
+2. `npm run qa:normalise-da` converts `[latex]...[/latex]`, preserves option HTML,
+   normalizes subjects, and assigns stable DA question/exam IDs.
+3. `npm run qa:extract-da-answer-keys` writes the editable answer-key source of truth.
+4. `npm run qa:merge-da` writes CSE-shaped DA rows to
+   `public/data/da/questions-with-answers.json` and writes question-UID answers to
+   `public/data/da/answers-by-question-uid-v1.json`, matching the CSE
+   registry shape. The canonical DA `link` is the GateOverflow reference; a
+   missing reference becomes an empty link.
+5. `npm run qa:validate-da-data` requires exactly 65 complete questions per year,
+   contiguous numbering, unique IDs, valid MCQ/MSQ/NAT types, no missing answers,
+   and only local DA image references with existing WebP files.
+6. `npm run qa:mirror-da-images` downloads PracticePaper question images,
+   converts them to optimized WebP files under `public/question-images/da/`, and
+   rewrites the published DA HTML to local paths. This step is also run automatically
+   by `npm run qa:build-da-artifacts` and the public artifact build.
+7. `npm run qa:build-da-artifacts` (also invoked by the public artifact build) emits
+   the DA manifest, search index, separate year detail shards, and
+   `public/mock_catalog_da_v1.json`.
+
+The DA normalizer maps all source labels into eight canonical runtime subjects. The
+validator rejects any unmapped subject label, so source taxonomy drift cannot silently
+reach the practice filter.
+
+### GATE DA 2026 local LaTeX import
+
+1. While `da_2026/` is available, `npm run qa:import-da-2026` uses the updated
+   `da_2026/questions.json` structure when it contains the question array,
+   `question_latex`, and option-level `latex`. `da_2026/main.tex` remains the
+   authoritative fallback for exact boundaries, figures, and source-only layout;
+   a generated `recordsByQuestionUid` shard-shaped JSON file is accepted for
+   metadata only and never replaces the structured LaTeX content. The importer
+   preserves all 65 question boundaries, Q1-Q10 General Aptitude and Q11-Q65
+   technical sections, marks, paragraph breaks, option boundaries, MathJax-ready
+   expressions (including the Q9 digit equation), and structured tables. The 2026
+   HTML follows the 2024/2025 contract: `<br>` spacing, `$`/`$$` MathJax
+   delimiters, and `<ol style="list-style-type: upper-alpha;">` option lists
+   without extra paragraph wrappers. Figures retain their source layout and are
+   converted to WebP under the shared `public/question-images/da/` directory. If `DA_Keys.pdf`
+   has already been removed, the importer reuses the extracted official
+   answer-key audit under `audit/da/`.
+2. The rich merged output is written to `audit/da/normalised-da-2026.json`; compact
+   CSE-shaped rows are merged into `public/data/da/questions-with-answers.json`.
+3. The 65 answer records are merged into
+   `public/data/da/answers-by-question-uid-v1.json` using stable IDs such as
+   `da:2026:set1:main:q29`. NAT ranges are retained as tolerance objects.
+4. The 2026 rows are enriched with the current GateOverflow question links from
+   `scripts/da-pipeline/da-2026-links.mjs`. The DA 2026 runtime UIDs remain
+   synthetic (`da:2026:set1:main:qN`) even though a GateOverflow link is present,
+   so answer lookup and DA/CSE separation do not depend on the external post ID.
+5. Run `npm run qa:validate-da-data` and `npm run qa:build-da-artifacts` after import.
+   Validation additionally requires every 2026 MCQ/MSQ to contain four distinct
+   structured A-D list items, NAT questions to remain optionless, all 2026 records
+   to contain canonical HTML structure, and no mojibake Unicode corruption.
+
+### Published DA directory layout and cleanup
+
+All published DA JSON now lives under `public/data/da/`:
+
+- `questions-with-answers.json` - compact 195-question bank
+- `answers-by-question-uid-v1.json` - MCQ/MSQ/NAT answer registry
+- `manifest.json` and `search-index.json` - generated navigation artifacts
+- `shards/2024.json`, `shards/2025.json`, and `shards/2026.json` - year detail shards
+
+Keep `public/question-images/da/`, `scripts/da-pipeline/`, and the
+2024/2025 audit inputs. The `da_2026/` source folder is optional after import and may
+be deleted. The 2026 audit JSON files can be regenerated with
+`npm run qa:import-da-2026`; `dist/` and `artifacts/review/` are build/report output
+and can be removed when not needed for deployment or review. No old root-level DA
+JSON copies remain.
+
+The ignored audit files retain intake metadata such as source page, subject labels,
+marks, and raw answer extraction. Published rows store only
+`title`, `link`, `question`, `tags`, `year`, and `answer`, exactly like CSE.
+Detailed explanations are intentionally not imported.
+
+At runtime, `src/services/DaQuestionService.ts` lazily consumes these artifacts. The
+practice UI enables them with the persisted `gateqa_include_da` toggle, while `/mock`
+loads the DA catalog alongside CSE. DA progress remains local-first and syncs through
+the additive `user_progress` merge under `da_solved`, `da_bookmarks`, and
+`progress_records.da`.
+
 ### Historical paper-count maintenance
 
 Historical data is mostly static, but paper-count drift can still happen when:

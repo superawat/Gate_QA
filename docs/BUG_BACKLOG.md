@@ -33,6 +33,26 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-DA-CSE-COLLISION: DA/CSE Classification & Year Filter Collision Resolution
+
+- Status: Fixed on 2026-08-13
+- Severity: High
+- Source: Observed / User Report
+- Where:
+  `src/utils/examTrack.js`
+  `src/contexts/FilterContext.tsx`
+  `src/components/Filters/YearFilter.tsx`
+  `src/components/Filters/ActiveFilterChips.tsx`
+  `src/services/question-service/QuestionLoader.ts`
+  `src/services/question-service/QuestionNormalizer.ts`
+  `src/components/MockTest/MockTestShell.jsx`
+- Root Cause:
+  Stale `gateda-*` tags on CSE rows caused metadata track detection to erroneously classify CSE questions as DA questions, which then attempted to load DA shards and threw `<!DOCTYPE...>` JSON parse errors. Furthermore, shared `2026-s1` filter tokens caused cross-track collisions between CSE and DA papers.
+- Resolution:
+  Implemented metadata-first track detection in `src/utils/examTrack.js` with CSE-safe defaults and strict validation precedence. Established independent, track-aware year/set identities (`cse:2026:set-1` and `da:2026:set-1`) across filtering, URL hydration, active chips, and Custom Mock matching while retaining legacy `2026-s1` URL compatibility. Re-generated artifacts and sanitized stale DA tags from all CSE rows (`go:523089` now cleanly classified as CSE).
+- Verification:
+  55 Vitest test files (355 tests) passing, 17 Playwright E2E tests passing, TypeScript typecheck passing, 0 CSE rows with DA tags, 195 DA questions validated with 100% answer coverage, 53 unique mock paper identities, and production build & prerender (3,493 static pages).
+
 ### BUG-TAG-CORRECTION: Subject Tagging Error on Question go:460060
 
 - Status: Fixed on 2026-06-17

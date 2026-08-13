@@ -77,6 +77,24 @@ All frontend filter components are expected to consume one or both of the split 
 - `/history/mock-tests` — legacy redirect to `/insights?tab=mock-history`
 - `/mock?stage=setup|exam` — isolated `MockShell`
 
+### GATE DA integration (AUG-004)
+
+- `DaQuestionService` lazily loads `public/data/da/manifest.json`, the DA search index,
+  the answer registry, and year detail shards.
+- The practice filter sidebar exposes `Include GATE DA`; it persists as
+  `gateqa_include_da` and merges DA rows into the existing CSE result pool only when enabled.
+- DA solved IDs, bookmarks, and attempt progress use `gate_qa_da_solved_questions`,
+  `gate_qa_da_bookmarked_questions`, and `gateqa_da_progress_v1`. Cloud sync merges these
+  additively under the existing `user_progress` JSON payload.
+- DA cards and solve headers show `GATE DA`; CSE cards remain unbadged. DA solution links
+  resolve only to GateOverflow and are disabled when no redirect exists.
+- The shared announcement manager shows the GATE DA launch notice once per browser using
+  `gateqa_da_questions_announcement_seen_v1`; the notice is dismissed permanently after
+  it is shown, and its optimized banner is served from `public/images/announcements/gate_da.png`.
+- `/mock` enables the DA pool and merges `mock_catalog_da_v1.json` with the CSE catalog;
+  official DA papers retain 65-question order, GA/technical sections, 180 minutes, marks,
+  and MCQ negative marking.
+
 ### Landing startup contract
 
 - `QuestionBankManifestService` hydrates the landing page from `public/question-bank-manifest.json`.
@@ -161,7 +179,7 @@ Features:
 
 - Progress card now hosts import/export controls directly.
 - Previous bottom "bookmarked count" text in sidebar footer is no longer shown.
-- `AnswerPanel` desktop/mobile action layout now includes explicit `Solution` button (separate from icon tray).
+- `AnswerPanel` desktop/mobile action layout now includes explicit `Solution` button (separate from icon tray). Solution redirects are GateOverflow-only via `getGateOverflowSolutionLink`; PracticePaper/source URLs are rejected, and missing GateOverflow references render a disabled button.
 - Icon tray is now solved/bookmark/share only.
 
 ## Deep-link and URL behavior
