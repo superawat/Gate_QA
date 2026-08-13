@@ -264,11 +264,12 @@ const PracticeRoutes = ({
 
   const handleStartRandomPractice = useCallback(async () => {
     trackEvent("home_cta", { target: "random", source: "home" });
-    await loadQuestions();
+    const loadedQuestions = await loadQuestions();
     clearFilters();
-    const firstQuestion = startRandomSession(
-      allQuestions.length > 0 ? allQuestions : QuestionService.questions
-    );
+    const questionPool = (Array.isArray(loadedQuestions) && loadedQuestions.length > 0)
+      ? loadedQuestions
+      : (allQuestions.length > 0 ? allQuestions : QuestionService.questions);
+    const firstQuestion = startRandomSession(questionPool);
 
     if (firstQuestion?.question_uid) {
       navigate({

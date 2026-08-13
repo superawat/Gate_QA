@@ -5,6 +5,8 @@ const ARRAY_KEYS_TO_SANITIZE = [
   'gate_qa_bookmarked_questions',
   'gateqa-apt-solved-questions',
   'gateqa-apt-bookmarked-questions',
+  'gate_qa_da_solved_questions',
+  'gate_qa_da_bookmarked_questions',
 ];
 
 /**

@@ -20,6 +20,27 @@ public.profiles + public.user_progress + public.sync_log
 
 Cloud synchronization is a backup and cross-device layer. A network or Supabase failure must not prevent normal local practice.
 
+## Live schema verification
+
+The live Supabase project was inspected using schema-only metadata queries on
+2026-08-14. The captured metadata is retained locally under the ignored
+`artifacts/db-schema/` directory.
+
+Verified public tables:
+
+- `public.profiles`
+- `public.user_progress`
+- `public.sync_log`
+
+Verified relationships use `ON DELETE CASCADE`, and RLS is enabled on all three
+tables (`relforcerowsecurity` is false). The live project has the expected
+owner policies for authenticated users and no public/anonymous table grants.
+
+The hosted project does not contain
+`supabase_migrations.schema_migrations`; therefore its historical migration
+status cannot be verified from that table. The database should not be modified
+to create it retroactively.
+
 ## Supabase tables
 
 ### `auth.users`
@@ -55,12 +76,27 @@ One row per user containing the cloud backup. `user_id` is both the primary key 
 | `solved_questions` | JSONB array | Canonical solved question IDs |
 | `aptitude_solved` | JSONB array | Canonical Aptitude solved question IDs |
 | `aptitude_bookmarks` | JSONB array | Canonical Aptitude bookmarked question IDs |
+| `da_solved` | JSONB array | Canonical GATE DA solved question IDs |
+| `da_bookmarks` | JSONB array | Canonical GATE DA bookmarked question IDs |
 | `mock_history` | JSONB array | Mock-test attempts |
-| `progress_records` | JSONB object | Namespaced practice-attempt timelines used for streaks and activity (`standard`, `aptitude`) |
+| `progress_records` | JSONB object | Namespaced practice-attempt timelines used for streaks and activity (`standard`, `aptitude`, `da`, `da_solved`, `da_bookmarks`) |
 | `data_version` | integer | Payload format version |
 | `last_synced_at` | timestamptz | Last successful cloud write |
 
-The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns.
+The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns. The client includes resilient schema fallback that safely embeds DA progress inside `progress_records` if the remote table schema lacks optional top-level columns.
+
+Live defaults and nullability should be treated as implementation details that
+are not fully represented by the JSONB contract: `solved_questions` is
+currently nullable and has a legacy `'{}'::jsonb` default, while the runtime
+normalizes it to a canonical string array. `progress_records` is non-null with
+an initial `standard`/`aptitude` object default; the runtime adds the `da`
+namespace when needed.
+
+The live database contains dedicated `da_solved` and `da_bookmarks` columns.
+The current client upsert path instead places these values in
+`progress_records.da_solved` and `progress_records.da_bookmarks`; this is a
+known schema/runtime alignment gap to resolve before treating the dedicated DA
+columns as the sole source of truth.
 
 ### `public.sync_log`
 
@@ -71,7 +107,7 @@ Append-only audit records for synchronization events.
 | `id` | Log identity |
 | `user_id` | Owning user |
 | `action` | For example `first_login_merge` or `incremental_sync` |
-| `payload_snapshot` | Lightweight count summary of the merged state at sync time: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount }`. Rows written before this change (`summaryVersion` absent) contain the full merged JSONB blob. |
+| `payload_snapshot` | Lightweight count summary of the merged state at sync time: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount, daProgressCount }`. Rows written before this change (`summaryVersion` absent) contain the full merged JSONB blob. |
 | `device_info` | Browser/device metadata |
 | `created_at` | Log timestamp |
 
@@ -165,7 +201,7 @@ where schemaname = 'public'
 
 The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running. Sync requests are debounced by 750 ms and successful syncs are throttled to one per 30 seconds per user. Changes remain in the local offline queue until the next permitted sync, so throttling does not discard local work. Authentication/session initialization still performs the first sync immediately.
 
-`sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
+`sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude/da progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
 
 ## Merge rules
 
@@ -175,6 +211,7 @@ The sync is single-flight: a user must not generate overlapping sync requests wh
 | Notes | Keep the longer note; equal-length notes use the newer timestamp |
 | Solved questions | Additive union of canonical string IDs; legacy object rows are recovered during sync |
 | Aptitude solved/bookmarked IDs | Additive union of canonical string IDs in dedicated columns |
+| GATE DA solved/bookmarked IDs | Additive union of canonical string IDs in dedicated columns and namespaced progress records |
 | Mock history | Combine records, deduplicate by test identity, and sort chronologically |
 | Practice progress | Merge attempt histories by timestamp and preserve the union of activity dates used by streaks |
 

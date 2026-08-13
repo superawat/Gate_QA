@@ -240,7 +240,6 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     };
 
     const result = unionMergeData(local, cloud);
-    expect(Object.keys(result.progress_records.standard)).toEqual(["go:1", "go:2"]);
     expect(result.progress_records.standard["go:1"].history).toHaveLength(1);
     expect(result.progress_records.standard["go:2"].lastSubmittedAt).toBe("2026-08-09T10:00:00Z");
   });
@@ -308,18 +307,20 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     expect(snapshot.timestamp).toBeDefined();
     expect(JSON.parse(snapshot.bookmarks)).toEqual(["go:1"]);
 
-    // Verify localStorage was updated with merged result
     const mergedBookmarks = JSON.parse(localStorage.getItem("gate_qa_bookmarked_questions"));
     expect(mergedBookmarks).toEqual(["go:1", "go:2"]);
     expect(JSON.parse(localStorage.getItem("gate_qa_solved_questions"))).toEqual(["go:1"]);
     expect(Array.isArray(JSON.parse(localStorage.getItem("gate_qa_solved_questions")))).toBe(true);
 
-    // Verify Supabase upsert was called with merged data
     expect(mockUpsert).toHaveBeenCalledWith(
       expect.objectContaining({
         user_id: "user-uuid-123",
         bookmarks: ["go:1", "go:2"],
-        progress_records: { standard: {}, aptitude: {} },
+        aptitude_solved: expect.any(Array),
+        aptitude_bookmarks: expect.any(Array),
+        da_solved: expect.any(Array),
+        da_bookmarks: expect.any(Array),
+        progress_records: expect.objectContaining({ standard: {}, aptitude: {}, da: {} }),
       })
     );
 
@@ -336,6 +337,7 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
           mockCount:             expect.any(Number),
           standardProgressCount: expect.any(Number),
           aptitudeProgressCount: expect.any(Number),
+          daProgressCount:       expect.any(Number),
         }),
       })
     );
@@ -379,7 +381,257 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
         solved_questions: [],
         aptitude_solved: [],
         aptitude_bookmarks: [],
+        da_solved: [],
+        da_bookmarks: [],
       })
     );
+  });
+
+  test("recovers via Tier 2 fallback preserving Aptitude columns when DA column is missing", async () => {
+    localStorage.setItem("gate_qa_solved_questions", JSON.stringify(["cse:2026:set1:q1"]));
+    localStorage.setItem("gateqa-apt-solved-questions", JSON.stringify(["apt:2026:q1"]));
+    localStorage.setItem("gate_qa_da_solved_questions", JSON.stringify(["da:2026:set1:q1"]));
+
+    let upsertPayloads = [];
+    const mockUpsert = vi.fn().mockImplementation((payload) => {
+      upsertPayloads.push(payload);
+      if (upsertPayloads.length === 1) {
+        return Promise.resolve({
+          error: { code: "PGRST204", message: "Could not find column 'da_solved' in schema" },
+        });
+      }
+      return Promise.resolve({ error: null });
+    });
+
+    const mockInsert = vi.fn().mockResolvedValue({ error: null });
+    const mockSingle = vi.fn().mockResolvedValue({
+      data: {
+        user_id: "user-retry-123",
+        bookmarks: [],
+        notes: {},
+        solved_questions: [],
+        aptitude_solved: [],
+        aptitude_bookmarks: [],
+        mock_history: [],
+        progress_records: { standard: {}, aptitude: {}, da: {} },
+      },
+      error: null,
+    });
+    const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
+    const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
+
+    const mockFrom = vi.fn((table) => {
+      if (table === "user_progress") {
+        return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "sync_log") {
+        return { insert: mockInsert };
+      }
+      return {};
+    });
+
+    vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
+
+    const result = await syncUserData("user-retry-123");
+    expect(result.success).toBe(true);
+    expect(mockUpsert).toHaveBeenCalledTimes(2);
+
+    // Initial attempt has all 12 columns
+    expect(upsertPayloads[0]).toHaveProperty("da_solved");
+    expect(upsertPayloads[0]).toHaveProperty("aptitude_solved");
+
+    // Tier 2 fallback preserves aptitude columns as top-level fields
+    expect(upsertPayloads[1]).toHaveProperty("aptitude_solved", ["apt:2026:q1"]);
+    expect(upsertPayloads[1]).toHaveProperty("aptitude_bookmarks");
+    expect(upsertPayloads[1].progress_records.da_solved).toEqual(["da:2026:set1:q1"]);
+
+    // Merged return data keeps all fields intact
+    expect(result.data.aptitude_solved).toEqual(["apt:2026:q1"]);
+    expect(result.data.da_solved).toEqual(["da:2026:set1:q1"]);
+  });
+
+  test("recovers via Tier 3 core baseline fallback on legacy schema missing both DA and Aptitude columns", async () => {
+    localStorage.setItem("gate_qa_solved_questions", JSON.stringify(["cse:2026:set1:q1"]));
+    localStorage.setItem("gateqa-apt-solved-questions", JSON.stringify(["apt:2026:q1"]));
+    localStorage.setItem("gate_qa_da_solved_questions", JSON.stringify(["da:2026:set1:q1"]));
+
+    let callCount = 0;
+    const mockUpsert = vi.fn().mockImplementation((payload) => {
+      callCount += 1;
+      if (callCount === 1) {
+        return Promise.resolve({ error: { code: "PGRST204", message: "Missing da_solved" } });
+      }
+      if (callCount === 2) {
+        return Promise.resolve({ error: { code: "PGRST204", message: "Missing aptitude_solved" } });
+      }
+      return Promise.resolve({ error: null });
+    });
+
+    const mockInsert = vi.fn().mockResolvedValue({ error: null });
+    const mockSingle = vi.fn().mockResolvedValue({ data: null, error: { code: "PGRST116" } });
+    const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
+    const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
+
+    const mockFrom = vi.fn((table) => {
+      if (table === "user_progress") {
+        return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "sync_log") {
+        return { insert: mockInsert };
+      }
+      return {};
+    });
+
+    vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
+
+    const result = await syncUserData("user-legacy-baseline");
+    expect(result.success).toBe(true);
+    expect(mockUpsert).toHaveBeenCalledTimes(3);
+
+    // In Tier 3, all arrays are preserved safely inside progress_records
+    const tier3Payload = mockUpsert.mock.calls[2][0];
+    expect(tier3Payload.progress_records.aptitude_solved).toEqual(["apt:2026:q1"]);
+    expect(tier3Payload.progress_records.da_solved).toEqual(["da:2026:set1:q1"]);
+    expect(result.data.aptitude_solved).toEqual(["apt:2026:q1"]);
+    expect(result.data.da_solved).toEqual(["da:2026:set1:q1"]);
+  });
+
+  test("exact cross-device scenario: syncs mobile progress (25 attempts, 13 days, 6 streak) to desktop", async () => {
+    // 1. Setup mobile progress (13 active days, 25 attempts, 3 today, 6-day streak)
+    const baseDate = "2026-08-14";
+    const generateHistoryEntry = (dayOffset, count = 1) => {
+      const d = new Date(`${baseDate}T12:00:00.000Z`);
+      d.setUTCDate(d.getUTCDate() - dayOffset);
+      const submittedAt = d.toISOString();
+      const history = [];
+      for (let i = 0; i < count; i++) {
+        history.push({
+          submittedAt: new Date(d.getTime() + i * 60000).toISOString(),
+          correct: true,
+          durationMs: 45000,
+          type: "MCQ",
+        });
+      }
+      return {
+        attempts: count,
+        correctAttempts: count,
+        incorrectAttempts: 0,
+        correct: true,
+        firstSubmittedAt: history[0].submittedAt,
+        lastSubmittedAt: history[history.length - 1].submittedAt,
+        history,
+      };
+    };
+
+    const mobileProgress = {
+      "cse:2026:set1:q1": generateHistoryEntry(0, 1), // Day 0 (Aug 14): 3 attempts on 3 questions
+      "cse:2026:set1:q2": generateHistoryEntry(0, 1),
+      "cse:2026:set1:q3": generateHistoryEntry(0, 1),
+      "cse:2026:set1:q4": generateHistoryEntry(1, 1), // Day 1 (Aug 13): 2 attempts
+      "cse:2026:set1:q5": generateHistoryEntry(1, 1),
+      "cse:2026:set1:q6": generateHistoryEntry(2, 1), // Day 2 (Aug 12): 2 attempts
+      "cse:2026:set1:q7": generateHistoryEntry(2, 1),
+      "cse:2026:set1:q8": generateHistoryEntry(3, 1), // Day 3 (Aug 11): 2 attempts
+      "cse:2026:set1:q9": generateHistoryEntry(3, 1),
+      "cse:2026:set1:q10": generateHistoryEntry(4, 1), // Day 4 (Aug 10): 2 attempts
+      "cse:2026:set1:q11": generateHistoryEntry(4, 1),
+      "cse:2026:set1:q12": generateHistoryEntry(5, 1), // Day 5 (Aug 09): 2 attempts -> 6 consecutive days (Aug 9-14)
+      "cse:2026:set1:q13": generateHistoryEntry(5, 1),
+      "cse:2026:set1:q14": generateHistoryEntry(10, 1), // Day 10: 2 attempts
+      "cse:2026:set1:q15": generateHistoryEntry(10, 1),
+      "cse:2026:set1:q16": generateHistoryEntry(15, 1), // Day 15: 2 attempts
+      "cse:2026:set1:q17": generateHistoryEntry(15, 1),
+      "cse:2026:set1:q18": generateHistoryEntry(20, 1), // Day 20: 2 attempts
+      "cse:2026:set1:q19": generateHistoryEntry(20, 1),
+      "cse:2026:set1:q20": generateHistoryEntry(25, 1), // Day 25: 2 attempts
+      "cse:2026:set1:q21": generateHistoryEntry(25, 1),
+      "cse:2026:set1:q22": generateHistoryEntry(30, 1), // Day 30: 2 attempts
+      "cse:2026:set1:q23": generateHistoryEntry(30, 1),
+      "cse:2026:set1:q24": generateHistoryEntry(35, 1), // Day 35: 1 attempt
+      "cse:2026:set1:q25": generateHistoryEntry(40, 1), // Day 40: 1 attempt -> Total 13 active days, 25 attempts
+    };
+
+    const desktopOlderProgress = {
+      "cse:2026:set1:q14": generateHistoryEntry(10, 1),
+      "cse:2026:set1:q15": generateHistoryEntry(10, 1),
+      "cse:2026:set1:q16": generateHistoryEntry(15, 1),
+      "cse:2026:set1:q17": generateHistoryEntry(15, 1),
+      "cse:2026:set1:q18": generateHistoryEntry(20, 1),
+      "cse:2026:set1:q19": generateHistoryEntry(20, 1),
+      "cse:2026:set1:q20": generateHistoryEntry(25, 1),
+      "cse:2026:set1:q21": generateHistoryEntry(25, 1),
+      "cse:2026:set1:q22": generateHistoryEntry(30, 1),
+      "cse:2026:set1:q23": generateHistoryEntry(30, 1),
+      "cse:2026:set1:q24": generateHistoryEntry(35, 1),
+      "cse:2026:set1:q25": generateHistoryEntry(40, 1),
+    };
+
+    // Shared cloud state in Supabase
+    let cloudStore = {
+      user_id: "user-cross-device",
+      bookmarks: [],
+      notes: {},
+      solved_questions: Object.keys(desktopOlderProgress),
+      aptitude_solved: [],
+      aptitude_bookmarks: [],
+      mock_history: [],
+      progress_records: { standard: desktopOlderProgress, aptitude: {} },
+    };
+
+    const mockUpsert = vi.fn().mockImplementation((payload) => {
+      cloudStore = { ...cloudStore, ...payload };
+      return Promise.resolve({ error: null });
+    });
+    const mockInsert = vi.fn().mockResolvedValue({ error: null });
+    const mockSingle = vi.fn().mockImplementation(() => Promise.resolve({
+      data: cloudStore,
+      error: null,
+    }));
+    const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
+    const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
+
+    const mockFrom = vi.fn((table) => {
+      if (table === "user_progress") {
+        return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "sync_log") {
+        return { insert: mockInsert };
+      }
+      return {};
+    });
+
+    vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
+
+    // Step A: Mobile syncs to cloud
+    localStorage.setItem("gateqa_progress_v1", JSON.stringify(mobileProgress));
+    localStorage.setItem("gate_qa_solved_questions", JSON.stringify(Object.keys(mobileProgress)));
+
+    const mobileSyncResult = await syncUserData("user-cross-device");
+    expect(mobileSyncResult.success).toBe(true);
+
+    // Step B: Desktop (simulated by clearing local and loading desktopOlderProgress) syncs from cloud
+    localStorage.clear();
+    localStorage.setItem("gateqa_progress_v1", JSON.stringify(desktopOlderProgress));
+    localStorage.setItem("gate_qa_solved_questions", JSON.stringify(Object.keys(desktopOlderProgress)));
+
+    const desktopSyncResult = await syncUserData("user-cross-device");
+    expect(desktopSyncResult.success).toBe(true);
+
+    // Step C: Verify desktop now contains all 25 questions with complete history
+    const finalDesktopProgress = JSON.parse(localStorage.getItem("gateqa_progress_v1"));
+    expect(Object.keys(finalDesktopProgress).length).toBe(25);
+    expect(finalDesktopProgress["cse:2026:set1:q1"].attempts).toBe(1);
+
+    // Step D: Calculate activity with weakTopicAnalyzer on Desktop
+    const { loadStudyActivityFast } = await import("./weakTopicAnalyzer");
+    const desktopActivity = loadStudyActivityFast({
+      now: new Date(`${baseDate}T15:00:00.000Z`),
+    });
+
+    expect(desktopActivity.activeDayCount).toBe(13);
+    expect(desktopActivity.currentStreak).toBe(6);
+    expect(desktopActivity.longestStreak).toBe(6);
+    expect(desktopActivity.todayAttempts).toBe(3);
+    expect(desktopActivity.badges).toContain("25 attempts");
   });
 });

@@ -315,10 +315,22 @@ function normalizeCloudProgress(cloudProgress) {
       standard: cloudProgress.standard || {},
       aptitude: cloudProgress.aptitude || {},
       da: cloudProgress.da || {},
+      aptitude_solved: extractQuestionIdArray(cloudProgress.aptitude_solved || cloudProgress.aptitude?.solved),
+      aptitude_bookmarks: extractQuestionIdArray(cloudProgress.aptitude_bookmarks || cloudProgress.aptitude?.bookmarks),
+      da_solved: extractQuestionIdArray(cloudProgress.da_solved || cloudProgress.da?.solved),
+      da_bookmarks: extractQuestionIdArray(cloudProgress.da_bookmarks || cloudProgress.da?.bookmarks),
     };
   }
   // Older rows have no namespace; treat a flat object as standard progress.
-  return { standard: cloudProgress || {}, aptitude: {}, da: {} };
+  return {
+    standard: cloudProgress || {},
+    aptitude: {},
+    da: {},
+    aptitude_solved: [],
+    aptitude_bookmarks: [],
+    da_solved: [],
+    da_bookmarks: [],
+  };
 }
 
 /**
@@ -335,35 +347,49 @@ export function unionMergeData(localData, cloudData) {
     localData.solved,
     cloudData.solved_questions
   );
+  const cloudProgress = normalizeCloudProgress(cloudData.progress_records);
+  const cloudAptitudeSolvedIds = [
+    ...extractQuestionIdArray(cloudData.aptitude_solved),
+    ...extractQuestionIdArray(cloudProgress.aptitude_solved),
+  ];
+  const cloudAptitudeBookmarkIds = [
+    ...extractQuestionIdArray(cloudData.aptitude_bookmarks),
+    ...extractQuestionIdArray(cloudProgress.aptitude_bookmarks),
+  ];
   const mergedAptitudeSolved = mergeSolvedQuestionIds(
     localData.aptitudeSolved,
-    cloudData.aptitude_solved
+    cloudAptitudeSolvedIds
   );
   const mergedAptitudeBookmarks = mergeSolvedQuestionIds(
     localData.aptitudeBookmarks,
-    cloudData.aptitude_bookmarks
+    cloudAptitudeBookmarkIds
   );
   const mergedMockHistory = mergeMockHistory(
     localData.mockHistory,
     cloudData.mock_history
   );
-  const cloudProgress = normalizeCloudProgress(cloudData.progress_records);
   const mergedProgress = mergeProgressRecords(localData.progress, cloudProgress.standard);
   const mergedAptitudeProgress = mergeProgressRecords(
     localData.aptitudeProgress,
     cloudProgress.aptitude
   );
-  const mergedDaSolved = mergeSolvedQuestionIds(localData.daSolved, cloudData.da_solved);
-  const mergedDaBookmarks = mergeSolvedQuestionIds(localData.daBookmarks, cloudData.da_bookmarks);
-  const cloudDaProgress = cloudData.progress_records?.da || {};
+  const cloudDaSolvedIds = [
+    ...extractQuestionIdArray(cloudData.da_solved),
+    ...extractQuestionIdArray(cloudProgress.da_solved),
+  ];
+  const cloudDaBookmarkIds = [
+    ...extractQuestionIdArray(cloudData.da_bookmarks),
+    ...extractQuestionIdArray(cloudProgress.da_bookmarks),
+  ];
+  const mergedDaSolved = mergeSolvedQuestionIds(localData.daSolved, cloudDaSolvedIds);
+  const mergedDaBookmarks = mergeSolvedQuestionIds(localData.daBookmarks, cloudDaBookmarkIds);
+  const cloudDaProgress = cloudData.progress_records?.da || cloudProgress.da || {};
   const mergedDaProgress = mergeProgressRecords(localData.daProgress, cloudDaProgress);
   const progressRecords = {
     standard: mergedProgress,
     aptitude: mergedAptitudeProgress,
+    da: mergedDaProgress,
   };
-  if (Object.keys(mergedDaProgress).length > 0) {
-    progressRecords.da = mergedDaProgress;
-  }
 
   return {
     bookmarks: mergedBookmarks,
@@ -418,14 +444,15 @@ export async function syncUserData(userId) {
       da_solved: [],
       da_bookmarks: [],
       mock_history: [],
-      progress_records: { standard: {}, aptitude: {} },
+      progress_records: { standard: {}, aptitude: {}, da: {} },
     };
 
     // 4. Run the Additive Union-Merge Algorithm
     const merged = unionMergeData(localData, cloudData);
 
     // 5. Save the merged data back to Supabase
-    const { error: upsertErr } = await supabase.from("user_progress").upsert({
+    // Tier 1: Full 12-column payload matching live artifacts/db-schema contract
+    const upsertPayload = {
       user_id: userId,
       bookmarks: merged.bookmarks,
       notes: merged.notes,
@@ -438,7 +465,55 @@ export async function syncUserData(userId) {
       progress_records: merged.progress_records,
       data_version: 1,
       last_synced_at: new Date().toISOString(),
-    });
+    };
+
+    let { error: upsertErr } = await supabase.from("user_progress").upsert(upsertPayload);
+
+    // Resilient fallback: Tier 2 (if DA columns are missing on older schema, preserve aptitude columns and embed DA in progress_records)
+    if (upsertErr) {
+      console.warn("[CloudSync] Initial upsert error, attempting Tier 2 fallback (preserving Aptitude columns):", upsertErr);
+      const fallbackPayload = {
+        user_id: userId,
+        bookmarks: merged.bookmarks,
+        notes: merged.notes,
+        solved_questions: merged.solved_questions,
+        aptitude_solved: merged.aptitude_solved,
+        aptitude_bookmarks: merged.aptitude_bookmarks,
+        mock_history: merged.mock_history,
+        progress_records: {
+          ...merged.progress_records,
+          da_solved: merged.da_solved,
+          da_bookmarks: merged.da_bookmarks,
+        },
+        data_version: 1,
+        last_synced_at: new Date().toISOString(),
+      };
+      const fallbackResult = await supabase.from("user_progress").upsert(fallbackPayload);
+      upsertErr = fallbackResult.error;
+
+      // Resilient fallback: Tier 3 (if even aptitude columns are missing on a minimal legacy schema, embed all non-standard arrays in progress_records)
+      if (upsertErr) {
+        console.warn("[CloudSync] Tier 2 upsert error, attempting Tier 3 core baseline fallback:", upsertErr);
+        const coreBaselinePayload = {
+          user_id: userId,
+          bookmarks: merged.bookmarks,
+          notes: merged.notes,
+          solved_questions: merged.solved_questions,
+          mock_history: merged.mock_history,
+          progress_records: {
+            ...merged.progress_records,
+            aptitude_solved: merged.aptitude_solved,
+            aptitude_bookmarks: merged.aptitude_bookmarks,
+            da_solved: merged.da_solved,
+            da_bookmarks: merged.da_bookmarks,
+          },
+          data_version: 1,
+          last_synced_at: new Date().toISOString(),
+        };
+        const coreResult = await supabase.from("user_progress").upsert(coreBaselinePayload);
+        upsertErr = coreResult.error;
+      }
+    }
 
     if (upsertErr) {
       console.error("[CloudSync] Upsert error:", upsertErr);
@@ -448,22 +523,25 @@ export async function syncUserData(userId) {
     // 6. Record audit log in `sync_log` table
     // Store a lightweight count summary instead of the full merged payload.
     // payload_snapshot in sync_log is an audit trail only — never read by the client.
-    // This reduces each row from ~11.7 kB to ~0.2 kB (98% smaller).
-    await supabase.from("sync_log").insert({
-      user_id: userId,
-      action: cloudRow ? "incremental_sync" : "first_login_merge",
-      payload_snapshot: {
-        summaryVersion:        1,
-        solvedCount:           (merged.solved_questions || []).length,
-        bookmarkCount:         (merged.bookmarks || []).length,
-        notesCount:            Object.keys(merged.notes || {}).length,
-        mockCount:             (merged.mock_history || []).length,
-        standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
-        aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
-        daProgressCount: Object.keys(merged.progress_records?.da || {}).length,
-      },
-      device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
-    });
+    try {
+      await supabase.from("sync_log").insert({
+        user_id: userId,
+        action: cloudRow ? "incremental_sync" : "first_login_merge",
+        payload_snapshot: {
+          summaryVersion:        1,
+          solvedCount:           (merged.solved_questions || []).length,
+          bookmarkCount:         (merged.bookmarks || []).length,
+          notesCount:            Object.keys(merged.notes || {}).length,
+          mockCount:             (merged.mock_history || []).length,
+          standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
+          aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
+          daProgressCount:       Object.keys(merged.progress_records?.da || {}).length,
+        },
+        device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
+      });
+    } catch (logErr) {
+      console.warn("[CloudSync] Audit log insert warning:", logErr);
+    }
 
     // 7. Update local localStorage with merged data
     localStorage.setItem(

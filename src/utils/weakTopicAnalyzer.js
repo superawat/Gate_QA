@@ -1066,11 +1066,13 @@ export const loadWeakTopicInsights = async ({
 
   const gateProgress = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
   const aptProgress = parseJson(storage.getItem("gateqa_apt_progress_v1"), {});
-  const rawProgressRecords = { ...gateProgress, ...aptProgress };
+  const daProgress = parseJson(storage.getItem("gateqa_da_progress_v1"), {});
+  const rawProgressRecords = { ...gateProgress, ...aptProgress, ...daProgress };
 
   const gateSolved = parseJson(storage.getItem(SOLVED_STORAGE_KEY), []);
   const aptSolved = parseJson(storage.getItem("gateqa-apt-solved-questions"), []);
-  const rawSolvedQuestionIds = [...gateSolved, ...aptSolved];
+  const daSolved = parseJson(storage.getItem("gate_qa_da_solved_questions"), []);
+  const rawSolvedQuestionIds = [...gateSolved, ...aptSolved, ...daSolved];
 
   const { progressRecords, solvedQuestionIds, mockSummary } = mergeMockHistoryIntoProgress(rawProgressRecords, rawSolvedQuestionIds, storage);
 
@@ -1168,7 +1170,8 @@ export const loadStudyActivityFast = ({
 
   const gateProgress = parseJson(storage.getItem(PROGRESS_STORAGE_KEY), {});
   const aptProgress = parseJson(storage.getItem("gateqa_apt_progress_v1"), {});
-  const rawProgressRecords = { ...gateProgress, ...aptProgress };
+  const daProgress = parseJson(storage.getItem("gateqa_da_progress_v1"), {});
+  const rawProgressRecords = { ...gateProgress, ...aptProgress, ...daProgress };
 
   const { progressRecords } = mergeMockHistoryIntoProgress(rawProgressRecords, [], storage);
 

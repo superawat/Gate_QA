@@ -1303,6 +1303,17 @@ export const FilterProvider = ({
             });
         }
 
+        if (daQuestionIds.length > 0) {
+            setDaSolvedQuestionIds((prev) => {
+                const nextSet = new Set(prev);
+                daQuestionIds.forEach((questionId) => {
+                    nextSet.add(questionId);
+                });
+                const next = Array.from(nextSet);
+                return next.length === prev.length ? prev : next;
+            });
+        }
+
         enqueueChange('SOLVE', { questionUids: questionIds });
 
         if (aptitudeQuestionIds.length > 0) {
@@ -1329,6 +1340,8 @@ export const FilterProvider = ({
             setAptitudeSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, [])));
             setAptitudeBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, [])));
         }
+        setDaSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.solved, [])));
+        setDaBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, [])));
     }, [canMergeAptitude, storageKeys.bookmarked, storageKeys.solved]);
 
     useEffect(() => {
