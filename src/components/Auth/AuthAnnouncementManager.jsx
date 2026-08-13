@@ -6,6 +6,7 @@ import AuthModal from "./AuthModal";
 
 const FIRST_VISIT_KEY = "gateqa_auth_announcement_seen_v1";
 const SUCCESS_ANNOUNCEMENT_KEY = "gateqa_auth_success_announcement_seen_v1";
+const DA_ANNOUNCEMENT_KEY = "gateqa_da_questions_announcement_seen_v1";
 
 const assetUrl = (filename) => {
   const base = String(import.meta.env.BASE_URL || "/");
@@ -14,16 +15,37 @@ const assetUrl = (filename) => {
 
 function AuthAnnouncementManager() {
   const { user, loading: authLoading } = useAuth();
+  // Keep all product and auth notices in one state slot so two overlays can
+  // never render on top of each other.
   const [announcement, setAnnouncement] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const pendingBackupRef = useRef(false);
+  const daShownThisMountRef = useRef(false);
   const isLighthouseAudit = typeof window !== "undefined"
     && new URLSearchParams(window.location.search).get("lhci") === "1";
 
   useEffect(() => {
+    if (isLighthouseAudit || typeof window === "undefined") return;
+
+    try {
+      if (window.localStorage.getItem(DA_ANNOUNCEMENT_KEY) === "1") return;
+      // Mark before rendering so a refresh or StrictMode re-run cannot show it twice.
+      window.localStorage.setItem(DA_ANNOUNCEMENT_KEY, "1");
+      daShownThisMountRef.current = true;
+      setAnnouncement("da");
+    } catch {
+      // Storage failures must never block the app from loading.
+      daShownThisMountRef.current = true;
+      setAnnouncement("da");
+    }
+  }, [isLighthouseAudit]);
+
+  useEffect(() => {
     if (authLoading || user || !supabase || isLighthouseAudit || typeof window === "undefined") return;
     try {
-      if (window.localStorage.getItem(FIRST_VISIT_KEY) === "1") return;
+      // If DA was shown during this mount, defer sign-in until a later visit.
+      // A previously seen DA notice may still allow the existing sign-in notice.
+      if (daShownThisMountRef.current || window.localStorage.getItem(FIRST_VISIT_KEY) === "1") return;
       window.localStorage.setItem(FIRST_VISIT_KEY, "1");
       setAnnouncement("welcome");
     } catch {
@@ -84,12 +106,34 @@ function AuthAnnouncementManager() {
             <button type="button" className="auth-announcement-close" onClick={closeAnnouncement} aria-label="Close announcement">
               <FiX aria-hidden="true" />
             </button>
-            <img
-              className="auth-announcement-image"
-              src={assetUrl(announcement === "welcome" ? "cat1.webp" : "cat2.webp")}
-              alt={announcement === "welcome" ? "Cat holding a note" : "Cat pointing at a watch"}
-            />
-            {announcement === "welcome" ? (
+            {announcement === "da" ? (
+              <>
+                <img
+                  className="auth-announcement-da-image"
+                  src={assetUrl("gate_da.png")}
+                  alt="GATE DA filter announcement"
+                  width="625"
+                  height="155"
+                  decoding="async"
+                />
+                <p className="auth-announcement-eyebrow">New question bank</p>
+                <h2 id="auth-announcement-title" className="auth-announcement-title">GATE DA questions are here</h2>
+                <p className="auth-announcement-copy">
+                  We&apos;ve added GATE Data Science &amp; AI questions from 2024–2026.
+                  Turn on the GATE DA filter to include them in your practice list.
+                </p>
+                <button type="button" className="auth-announcement-primary" onClick={closeAnnouncement}>
+                  Got it
+                </button>
+              </>
+            ) : (
+              <img
+                className="auth-announcement-image"
+                src={assetUrl(announcement === "welcome" ? "cat1.webp" : "cat2.webp")}
+                alt={announcement === "welcome" ? "Cat holding a note" : "Cat pointing at a watch"}
+              />
+            )}
+            {announcement === "da" ? null : announcement === "welcome" ? (
               <>
                 <p className="auth-announcement-eyebrow">A little backup for your hard work</p>
                 <h2 id="auth-announcement-title" className="auth-announcement-title">Sign in is now available</h2>

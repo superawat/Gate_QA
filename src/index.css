@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Structured GATE DA 2026 source content. These selectors are DA-only and do
+   not alter the existing CSE question markup. */
+.da-question-options {
+  list-style-type: upper-alpha;
+  margin: 0.75rem 0 0;
+  padding-left: 1.75rem;
+}
+
+.da-question-options > li {
+  margin: 0.4rem 0;
+  padding-left: 0.35rem;
+}
+
+.da-latex-table {
+  border-collapse: collapse;
+  margin: 0.75rem auto;
+  max-width: 100%;
+}
+
+.da-latex-table td {
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
 :root {
   color-scheme: light;
   --color-bg: #f9fafb;
@@ -4049,6 +4074,15 @@ canvas {
   height: 130px;
   object-fit: contain;
   margin: 0.15rem auto 0.5rem;
+}
+.auth-announcement-da-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0.15rem auto 1rem;
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  border-radius: 14px;
+  object-fit: contain;
 }
 .auth-announcement-eyebrow {
   display: inline-flex;
