@@ -2,8 +2,10 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { useFilterState } from './FilterContext';
 import { AnswerService } from '../services/AnswerService';
 import { QuestionService } from '../services/QuestionService';
+import { DaQuestionService } from '../services/DaQuestionService';
 import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 import type { FilterStateShape, QuestionRow } from '../types';
+import { isDaQuestion as isDaQuestionByMetadata } from '../utils/examTrack';
 
 type SessionMode = 'random' | 'ordered' | null;
 
@@ -372,6 +374,10 @@ function buildSessionQueue(
 
 function getDetailServiceForQuestion(question: Partial<QuestionRow> = {}) {
     const uid = String(question?.question_uid || '').trim();
+    const isDaQuestion = isDaQuestionByMetadata(question);
+    if (isDaQuestion) {
+        return DaQuestionService;
+    }
     return uid.startsWith(APTITUDE_UID_PREFIX) ? AptitudeQuestionService : QuestionService;
 }
 

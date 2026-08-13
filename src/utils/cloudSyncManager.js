@@ -30,6 +30,9 @@ const LOCAL_STORAGE_KEYS = {
   mockHistory: "gateqa_mock_history_v1",
   progress: "gateqa_progress_v1",
   aptitudeProgress: "gateqa_apt_progress_v1",
+  daSolved: "gate_qa_da_solved_questions",
+  daBookmarks: "gate_qa_da_bookmarked_questions",
+  daProgress: "gateqa_da_progress_v1",
 };
 
 /**
@@ -47,6 +50,9 @@ function createPreMergeSnapshot() {
       mockHistory: localStorage.getItem(LOCAL_STORAGE_KEYS.mockHistory),
       progress: localStorage.getItem(LOCAL_STORAGE_KEYS.progress),
       aptitudeProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeProgress),
+      daSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved),
+      daBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks),
+      daProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress),
     };
     const backupKey = `gate_qa_backup_${Date.now()}`;
     localStorage.setItem(backupKey, JSON.stringify(snapshot));
@@ -82,6 +88,9 @@ function readLocalData() {
   let mockHistory = [];
   let progress = {};
   let aptitudeProgress = {};
+  let daSolved = [];
+  let daBookmarks = [];
+  let daProgress = {};
 
   try {
     const rawSolved = localStorage.getItem(LOCAL_STORAGE_KEYS.solved);
@@ -92,6 +101,10 @@ function readLocalData() {
     const rawAptitudeSolved = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolved);
     aptitudeSolved = rawAptitudeSolved ? JSON.parse(rawAptitudeSolved) : [];
   } catch {}
+
+  try { daSolved = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved) || "[]"); } catch {}
+  try { daBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks) || "[]"); } catch {}
+  try { daProgress = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress) || "{}"); } catch {}
 
   try {
     const rawAptitudeBookmarks = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarks);
@@ -132,6 +145,9 @@ function readLocalData() {
     mockHistory,
     progress,
     aptitudeProgress,
+    daSolved,
+    daBookmarks,
+    daProgress,
   };
 }
 
@@ -294,14 +310,15 @@ function mergeProgressRecords(localProgress = {}, cloudProgress = {}) {
 }
 
 function normalizeCloudProgress(cloudProgress) {
-  if (cloudProgress && (cloudProgress.standard || cloudProgress.aptitude)) {
+  if (cloudProgress && (cloudProgress.standard || cloudProgress.aptitude || cloudProgress.da)) {
     return {
       standard: cloudProgress.standard || {},
       aptitude: cloudProgress.aptitude || {},
+      da: cloudProgress.da || {},
     };
   }
   // Older rows have no namespace; treat a flat object as standard progress.
-  return { standard: cloudProgress || {}, aptitude: {} };
+  return { standard: cloudProgress || {}, aptitude: {}, da: {} };
 }
 
 /**
@@ -336,6 +353,17 @@ export function unionMergeData(localData, cloudData) {
     localData.aptitudeProgress,
     cloudProgress.aptitude
   );
+  const mergedDaSolved = mergeSolvedQuestionIds(localData.daSolved, cloudData.da_solved);
+  const mergedDaBookmarks = mergeSolvedQuestionIds(localData.daBookmarks, cloudData.da_bookmarks);
+  const cloudDaProgress = cloudData.progress_records?.da || {};
+  const mergedDaProgress = mergeProgressRecords(localData.daProgress, cloudDaProgress);
+  const progressRecords = {
+    standard: mergedProgress,
+    aptitude: mergedAptitudeProgress,
+  };
+  if (Object.keys(mergedDaProgress).length > 0) {
+    progressRecords.da = mergedDaProgress;
+  }
 
   return {
     bookmarks: mergedBookmarks,
@@ -343,11 +371,10 @@ export function unionMergeData(localData, cloudData) {
     solved_questions: mergedSolved,
     aptitude_solved: mergedAptitudeSolved,
     aptitude_bookmarks: mergedAptitudeBookmarks,
+    da_solved: mergedDaSolved,
+    da_bookmarks: mergedDaBookmarks,
     mock_history: mergedMockHistory,
-    progress_records: {
-      standard: mergedProgress,
-      aptitude: mergedAptitudeProgress,
-    },
+    progress_records: progressRecords,
   };
 }
 
@@ -388,6 +415,8 @@ export async function syncUserData(userId) {
       solved_questions: [],
       aptitude_solved: [],
       aptitude_bookmarks: [],
+      da_solved: [],
+      da_bookmarks: [],
       mock_history: [],
       progress_records: { standard: {}, aptitude: {} },
     };
@@ -403,6 +432,8 @@ export async function syncUserData(userId) {
       solved_questions: merged.solved_questions,
       aptitude_solved: merged.aptitude_solved,
       aptitude_bookmarks: merged.aptitude_bookmarks,
+      da_solved: merged.da_solved,
+      da_bookmarks: merged.da_bookmarks,
       mock_history: merged.mock_history,
       progress_records: merged.progress_records,
       data_version: 1,
@@ -429,6 +460,7 @@ export async function syncUserData(userId) {
         mockCount:             (merged.mock_history || []).length,
         standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
         aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
+        daProgressCount: Object.keys(merged.progress_records?.da || {}).length,
       },
       device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
     });
@@ -466,6 +498,9 @@ export async function syncUserData(userId) {
       LOCAL_STORAGE_KEYS.aptitudeProgress,
       JSON.stringify(merged.progress_records.aptitude)
     );
+    localStorage.setItem(LOCAL_STORAGE_KEYS.daSolved, JSON.stringify(merged.da_solved));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarks, JSON.stringify(merged.da_bookmarks));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.daProgress, JSON.stringify(merged.progress_records.da || {}));
 
     if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
       window.dispatchEvent(new CustomEvent("gateqa:sync-complete", { detail: merged }));

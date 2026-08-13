@@ -1,3 +1,9 @@
+import { getQuestionTrack, getQuestionYearSetIdentity } from "../utils/examTrack";
+
+export const getMockPaperYearSetIdentity = (paper = {}) => (
+  String(paper?.yearSetIdentity || getQuestionYearSetIdentity(paper, paper?.track) || paper?.yearSetKey || "").trim()
+);
+
 export class MockCatalogService {
   static catalog = null;
   static loaded = false;
@@ -10,14 +16,26 @@ export class MockCatalogService {
     }
 
     const papers = Array.isArray(payload.papers)
-      ? payload.papers.map((paper) => ({
-        ...paper,
-        blockedQuestions: Array.isArray(paper?.blockedQuestions) ? paper.blockedQuestions : [],
-        statusReason: String(paper?.statusReason || ""),
-      }))
+      ? payload.papers.map((paper) => {
+        const track = getQuestionTrack(paper);
+        return {
+          ...paper,
+          track,
+          yearSetIdentity: getQuestionYearSetIdentity(paper, track),
+          blockedQuestions: Array.isArray(paper?.blockedQuestions) ? paper.blockedQuestions : [],
+          statusReason: String(paper?.statusReason || ""),
+        };
+      })
       : [];
     const byQuestionUid = payload.byQuestionUid && typeof payload.byQuestionUid === "object"
-      ? payload.byQuestionUid
+      ? Object.fromEntries(Object.entries(payload.byQuestionUid).map(([uid, meta]) => {
+        const track = getQuestionTrack({ ...meta, question_uid: uid });
+        return [uid, {
+          ...meta,
+          track,
+          yearSetIdentity: getQuestionYearSetIdentity({ ...meta, question_uid: uid }, track),
+        }];
+      }))
       : {};
     const scorableQuestionUids = Array.isArray(payload.scorableQuestionUids)
       ? payload.scorableQuestionUids.map((value) => String(value || "").trim()).filter(Boolean)
@@ -45,6 +63,7 @@ export class MockCatalogService {
       ? import.meta.env.BASE_URL
       : `${import.meta.env.BASE_URL}/`;
     const catalogUrl = `${baseUrl}mock_catalog_v1.json`;
+    const daCatalogUrl = `${baseUrl}mock_catalog_da_v1.json`;
 
     this.pending = (async () => {
       const response = await fetch(catalogUrl, { cache: "no-cache" });
@@ -53,7 +72,22 @@ export class MockCatalogService {
       }
 
       const payload = await response.json();
-      const catalog = this.normalizeCatalog(payload);
+      let daPayload = null;
+      try {
+        const daResponse = await fetch(daCatalogUrl, { cache: "no-cache" });
+        if (daResponse.ok) daPayload = await daResponse.json();
+      } catch (error) {
+        // DA catalog is additive; an older deployment may not have it yet.
+      }
+      const mergedPayload = daPayload
+        ? {
+          ...payload,
+          papers: [...(Array.isArray(payload.papers) ? payload.papers : []), ...(Array.isArray(daPayload.papers) ? daPayload.papers : [])],
+          byQuestionUid: { ...(payload.byQuestionUid || {}), ...(daPayload.byQuestionUid || {}) },
+          scorableQuestionUids: [...(payload.scorableQuestionUids || []), ...(daPayload.scorableQuestionUids || [])],
+        }
+        : payload;
+      const catalog = this.normalizeCatalog(mergedPayload);
       if (!catalog) {
         throw new Error("Mock catalog payload is invalid.");
       }

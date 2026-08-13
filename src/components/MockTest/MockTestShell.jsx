@@ -8,8 +8,11 @@ import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
 import {
     MOCK_SECTION_COUNTS,
     filterMockQuestionsByScope,
+    getMockQuestionSubjectKey,
+    getMockQuestionYearSetIdentity,
     validateMockQuestionForPool,
 } from "../../utils/mockTest";
+import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
 import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
 import CalculatorWidget from "../Calculator/CalculatorWidget";
@@ -82,9 +85,7 @@ const slugifyToken = (value = "") => (
         .replace(/^-+|-+$/g, "")
 );
 
-const getQuestionSubjectKey = (question = {}) => (
-    slugifyToken(question?.subjectSlug || question?.subject || "unknown") || "unknown"
-);
+const getQuestionSubjectKey = (question = {}) => getMockQuestionSubjectKey(question);
 
 const getQuestionSubjectLabel = (question = {}) => (
     String(question?.subjectLabel || question?.subject || getQuestionSubjectKey(question)).trim()
@@ -549,15 +550,15 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         }
 
         const requestedKey = String(setupState.selectedPaperYearSetKey || "").trim();
-        if (requestedKey && paperCatalog.some((paper) => paper.yearSetKey === requestedKey)) {
+        if (requestedKey && paperCatalog.some((paper) => getMockPaperYearSetIdentity(paper) === requestedKey)) {
             return requestedKey;
         }
 
-        return readyPapers[0]?.yearSetKey || paperCatalog[0]?.yearSetKey || null;
+        return getMockPaperYearSetIdentity(readyPapers[0] || paperCatalog[0]) || null;
     }, [paperCatalog, readyPapers, selectedKind?.id, setupState.selectedPaperYearSetKey]);
 
     const selectedPaper = useMemo(
-        () => paperCatalog.find((paper) => paper.yearSetKey === selectedPaperYearSetKey) || null,
+        () => paperCatalog.find((paper) => getMockPaperYearSetIdentity(paper) === selectedPaperYearSetKey) || null,
         [paperCatalog, selectedPaperYearSetKey]
     );
 
@@ -658,7 +659,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
         const rows = scorableQuestions.filter((question) => {
             const questionMeta = questionMetaByUid[question.question_uid];
-            return questionMeta?.scorable && questionMeta.yearSetKey === selectedPaperYearSetKey;
+            return questionMeta?.scorable
+                && (questionMeta.yearSetIdentity || getMockQuestionYearSetIdentity(questionMeta)) === selectedPaperYearSetKey;
         });
 
         return sortByCatalogOrder(rows, questionMetaByUid);
@@ -946,7 +948,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const minYear = structuredTags?.minYear || 2000;
         const maxYear = structuredTags?.maxYear || 2025;
         const defaultPaperKey = kindId === "paper_mode"
-            ? (readyPapers[0]?.yearSetKey || paperCatalog[0]?.yearSetKey || "")
+            ? (getMockPaperYearSetIdentity(readyPapers[0] || paperCatalog[0]) || "")
             : "";
         setSetupState(buildDefaultSetupState(minYear, maxYear, kindId, defaultPaperKey));
     }, [paperCatalog, readyPapers, selectedKindId, structuredTags?.maxYear, structuredTags?.minYear]);

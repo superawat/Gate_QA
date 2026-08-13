@@ -47,6 +47,15 @@ export function evaluateAnswer(record, userInput) {
     if (!Number.isFinite(submitted)) {
       return { status: "invalid_input", correct: false };
     }
+    const lower = Number(record.tolerance?.lower);
+    const upper = Number(record.tolerance?.upper);
+    if (Number.isFinite(lower) && Number.isFinite(upper)) {
+      return {
+        status: "evaluated",
+        correct: submitted >= Math.min(lower, upper) && submitted <= Math.max(lower, upper),
+      };
+    }
+
     const tolerance = Number(record.tolerance?.abs ?? 0);
 
     if (Array.isArray(record.answer)) {

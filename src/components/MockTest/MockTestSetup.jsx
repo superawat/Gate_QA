@@ -1,4 +1,5 @@
 import React from "react";
+import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
 import {
     FaBolt,
     FaCheckCircle,
@@ -179,7 +180,7 @@ const MockTestSetup = ({
     const isPaperMode = kind.id === "paper_mode";
     const isCustom = kind.id === "custom";
     const showSolvedQuestionToggle = !isPaperMode;
-    const selectedPaper = paperOptions.find((paper) => paper.yearSetKey === selectedPaperYearSetKey) || null;
+    const selectedPaper = paperOptions.find((paper) => getMockPaperYearSetIdentity(paper) === selectedPaperYearSetKey) || null;
     const selectedSubjectSet = new Set(setupState.selectedSubjects || []);
     const selectedSubtopicSet = new Set(setupState.selectedSubtopics || []);
     const selectedTypeSet = new Set(setupState.selectedTypes || []);
@@ -292,17 +293,21 @@ const MockTestSetup = ({
 
                     <div className="grid gap-3 md:grid-cols-2 auto-rows-fr">
                     {paperOptions.map((paper) => {
-                        const isSelected = paper.yearSetKey === selectedPaperYearSetKey;
+                        const paperIdentity = getMockPaperYearSetIdentity(paper);
+                        const paperTestToken = paper.track === "da"
+                            ? paperIdentity
+                            : (paper.yearSetKey || paperIdentity);
+                        const isSelected = paperIdentity === selectedPaperYearSetKey;
                         const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
                         const statusLabel = paper.paperReady
                             ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
                             : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
                         return (
                             <button
-                                key={paper.yearSetKey}
-                                data-testid={`mock-paper-option-${paper.yearSetKey}`}
+                                key={paperIdentity}
+                                data-testid={`mock-paper-option-${paperTestToken}`}
                                 type="button"
-                                onClick={() => onSelectPaper?.(paper.yearSetKey)}
+                                onClick={() => onSelectPaper?.(paperIdentity)}
                                 className={joinClasses(
                                     "flex h-full w-full flex-col justify-between rounded-[var(--radius-card)] border p-4 text-left transition",
                                     isSelected

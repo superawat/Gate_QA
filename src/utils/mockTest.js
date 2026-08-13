@@ -1,5 +1,6 @@
 import { evaluateAnswer } from "./evaluateAnswer";
 import { extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions";
+import { getQuestionTrack, getQuestionYearSetIdentity, isDaQuestion } from "./examTrack";
 
 export const MOCK_SECTION_COUNTS = {
   GA: 10,
@@ -19,8 +20,24 @@ const slugifyMockFilterToken = (value = "") => (
     .replace(/^-+|-+$/g, "")
 );
 
-const getMockQuestionSubjectSlug = (question = {}) => (
-  slugifyMockFilterToken(question?.subjectSlug || question?.subject || "unknown") || "unknown"
+const isDaMockQuestion = (question = {}) => isDaQuestion(question);
+
+const normalizeMockSubjectKey = (value = "") => {
+  const rawValue = String(value || "").trim();
+  if (rawValue.toLowerCase().startsWith("da:")) {
+    const daSlug = slugifyMockFilterToken(rawValue.slice(3));
+    return daSlug ? `da:${daSlug}` : "";
+  }
+  return slugifyMockFilterToken(rawValue);
+};
+
+export const getMockQuestionSubjectKey = (question = {}) => {
+  const subjectSlug = slugifyMockFilterToken(question?.subjectSlug || question?.subject || "unknown") || "unknown";
+  return isDaMockQuestion(question) ? `da:${subjectSlug}` : subjectSlug;
+};
+
+export const getMockQuestionYearSetIdentity = (question = {}) => (
+  getQuestionYearSetIdentity(question, getQuestionTrack(question))
 );
 
 const getMockQuestionSubtopicSlugs = (question = {}) => {
@@ -39,7 +56,7 @@ export const filterMockQuestionsByScope = (
 ) => {
   const subjectSet = new Set(
     (Array.isArray(selectedSubjects) ? selectedSubjects : [])
-      .map(slugifyMockFilterToken)
+      .map(normalizeMockSubjectKey)
       .filter(Boolean)
   );
   const subtopicSet = new Set(
@@ -49,7 +66,7 @@ export const filterMockQuestionsByScope = (
   );
 
   return (Array.isArray(questions) ? questions : []).filter((question) => {
-    if (subjectSet.size > 0 && !subjectSet.has(getMockQuestionSubjectSlug(question))) {
+    if (subjectSet.size > 0 && !subjectSet.has(getMockQuestionSubjectKey(question))) {
       return false;
     }
     if (subtopicSet.size > 0) {

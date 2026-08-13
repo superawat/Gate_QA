@@ -141,6 +141,49 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     expect(result.aptitude_bookmarks).toEqual(["APT-2", "APT-4"]);
   });
 
+  test("syncs DA solved, bookmarks, and namespaced progress separately", () => {
+    const result = unionMergeData(
+      {
+        daSolved: ["da:2026:set1:main:q2"],
+        daBookmarks: ["da:2025:set1:main:q4"],
+        daProgress: {
+          "da:2026:set1:main:q2": {
+            attempts: 1,
+            firstSubmittedAt: "2026-08-12T10:00:00Z",
+            lastSubmittedAt: "2026-08-12T10:00:00Z",
+            history: [{ submittedAt: "2026-08-12T10:00:00Z", correct: true }],
+          },
+        },
+      },
+      {
+        da_solved: ["da:2026:set1:main:q3"],
+        da_bookmarks: ["da:2025:set1:main:q5"],
+        progress_records: {
+          standard: {},
+          aptitude: {},
+          da: {
+            "da:2026:set1:main:q2": {
+              attempts: 2,
+              lastSubmittedAt: "2026-08-13T10:00:00Z",
+              history: [{ submittedAt: "2026-08-13T10:00:00Z", correct: false }],
+            },
+          },
+        },
+      }
+    );
+
+    expect(result.da_solved).toEqual([
+      "da:2026:set1:main:q2",
+      "da:2026:set1:main:q3",
+    ]);
+    expect(result.da_bookmarks).toEqual([
+      "da:2025:set1:main:q4",
+      "da:2025:set1:main:q5",
+    ]);
+    expect(result.progress_records.da["da:2026:set1:main:q2"].attempts).toBe(2);
+    expect(result.progress_records.da["da:2026:set1:main:q2"].history).toHaveLength(2);
+  });
+
   test("merges mock test history with chronological deduplication", () => {
     const local = {
       mockHistory: [

@@ -15,4 +15,9 @@ describe("evaluateAnswer", () => {
       correct: true,
     });
   });
+
+  test("evaluates official NAT lower and upper ranges", () => {
+    expect(evaluateAnswer({ type: "NAT", answer: 66.6, tolerance: { lower: 66.6, upper: 66.7 } }, "66.65").correct).toBe(true);
+    expect(evaluateAnswer({ type: "NAT", answer: 66.6, tolerance: { lower: 66.6, upper: 66.7 } }, "66.8").correct).toBe(false);
+  });
 });

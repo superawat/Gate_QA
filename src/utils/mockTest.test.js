@@ -6,6 +6,8 @@ import {
   buildMockQuestionResult,
   buildMockResultSummary,
   filterMockQuestionsByScope,
+  getMockQuestionSubjectKey,
+  getMockQuestionYearSetIdentity,
   formatExpectedAnswer,
   formatMockTimeSpent,
   hasMeaningfulResponse,
@@ -29,6 +31,21 @@ describe("mockTest utilities", () => {
     expect(filterMockQuestionsByScope(questions, {
       selectedSubjects: ["ga"],
     }).map((question) => question.question_uid)).toEqual(["ga:1"]);
+  });
+
+  test("keeps DA subjects distinct from same-named CSE subjects", () => {
+    const questions = [
+      { question_uid: "go:cse-ga:1", title: "GATE CSE 2024 | Set 1", subjectSlug: "ga", yearSetKey: "2024-s1", tags: ["gatecse-2024", "gateda-2024"] },
+      { question_uid: "da:ga:1", title: "GATE DA 2024", subjectSlug: "general-aptitude", yearSetKey: "2024-s1", tags: ["gateda-2024"] },
+    ];
+
+    expect(getMockQuestionSubjectKey(questions[0])).toBe("ga");
+    expect(getMockQuestionSubjectKey(questions[1])).toBe("da:general-aptitude");
+    expect(filterMockQuestionsByScope(questions, {
+      selectedSubjects: ["da:general-aptitude"],
+    }).map((question) => question.question_uid)).toEqual(["da:ga:1"]);
+    expect(getMockQuestionYearSetIdentity(questions[0])).toBe("cse:2024:set-1");
+    expect(getMockQuestionYearSetIdentity(questions[1])).toBe("da:2024:set-1");
   });
 
   test("hasMeaningfulResponse treats empty NAT and MSQ as unanswered", () => {
