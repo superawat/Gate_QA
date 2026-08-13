@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-08-14
+
+### Fixed
+- **Question `go:1767` (GATE CSE 2014 Set 1 Q9) NAT True/False Rendering Bug**:
+  - Removed spurious tags (`gatecse-2016-set2`, `gate1992`, `gate1994`, `true-false`) from `go:1767` across source question datasets and regenerated public artifacts (detail shard `2014-s1.json`, search index, etc.).
+  - Hardened `AnswerPanel.jsx` and `MockTestQuestion.jsx` with defense-in-depth checks:
+    - Questions from exams after 1994 are strictly prevented from rendering True/False options (as boolean format only existed in legacy 1987–1994 papers).
+    - NAT questions with non-binary answers (not 0 or 1, e.g. `16383`) always render the numeric answer input field and keypad.
+  - Added unit test suite in `AnswerPanel.test.jsx` and expanded `MockTestQuestion.test.jsx` verifying standard NAT input, `16383` validation, and legacy true-false handling.
+
 ## 2026-08-13
 
 ### Added

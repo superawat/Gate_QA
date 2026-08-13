@@ -89,9 +89,23 @@ export default function AnswerPanel({
     [question, answerRecord]
   );
   const isTrueFalse = useMemo(() => {
+    if (answerRecord?.type !== "NAT") {
+      return false;
+    }
+    // True/False format only ever existed in early legacy exams (1987-1994)
+    const yearMatch = String(question?.year || question?.yearSetKey || question?.title || "").match(/\b(19\d\d|20\d\d)\b/);
+    const examYear = yearMatch ? parseInt(yearMatch[1], 10) : null;
+    if (examYear && examYear > 1994) {
+      return false;
+    }
+    const ansStr = String(answerRecord?.answer ?? "").trim();
+    const isBinaryAnswer = ansStr === "0" || ansStr === "1";
+    if (answerRecord && !isBinaryAnswer) {
+      return false;
+    }
     const tags = question?.tags || [];
     return Array.isArray(tags) && tags.some(t => String(t || "").toLowerCase().trim() === "true-false");
-  }, [question]);
+  }, [question, answerRecord]);
   const storageKey = useMemo(
     () => AnswerService.getStorageKeyForQuestion(question),
     [question]

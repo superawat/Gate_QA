@@ -377,4 +377,38 @@ describe("MockTestQuestion", () => {
     expect(screen.getByText(/Your answer: TRUE/)).toBeTruthy();
     expect(screen.getByText(/Expected answer: TRUE/)).toBeTruthy();
   });
+
+  test("renders standard NAT input and numeric keypad for numeric NAT question like go:1767", () => {
+    mockContextValue.currentQuestion = {
+      question_uid: "go:1767",
+      title: "GATE CSE 2014 Set 1 | Question: 9",
+      tags: ["numerical-answers", "machine-instruction"],
+      answerMeta: {
+        type: "NAT",
+        answer: 16383,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:1767",
+      section: "CS",
+      type: "NAT",
+      marks: 2,
+      negativeMarks: 0,
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["go:1767"] };
+    mockContextValue.responses = {};
+
+    render(<MockTestQuestion isReviewPhase={false} />);
+
+    expect(screen.getByText("NAT")).toBeTruthy();
+    expect(screen.getByTestId("mock-nat-input")).toBeTruthy();
+    expect(screen.queryByTestId("mock-nat-tf-TRUE")).toBeNull();
+    expect(screen.queryByTestId("mock-nat-tf-FALSE")).toBeNull();
+
+    // Verify keypad keys
+    expect(screen.getByRole("button", { name: "Backspace" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Clear All" })).toBeTruthy();
+  });
 });

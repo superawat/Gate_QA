@@ -88,9 +88,23 @@ const stripHtmlToText = (value = "") => (
 
 const TRUE_FALSE_PROMPT_RE = /\b(?:state|decide)\s+(?:whether\s+)?[\s\S]{0,220}\btrue\s+or\s+false\b|\btrue\s+or\s+false\s+with\b/i;
 
-const isTrueFalseMockQuestion = (question = {}, rawType = "") => {
+const isTrueFalseMockQuestion = (question = {}, rawType = "", answerRecord = null) => {
     if (String(rawType || "").trim().toUpperCase() !== "NAT") {
         return false;
+    }
+
+    // True/False format only ever existed in early legacy exams (1987-1994)
+    const yearMatch = String(question?.year || question?.yearSetKey || question?.title || "").match(/\b(19\d\d|20\d\d)\b/);
+    const examYear = yearMatch ? parseInt(yearMatch[1], 10) : null;
+    if (examYear && examYear > 1994) {
+        return false;
+    }
+
+    if (answerRecord?.answer != null) {
+        const ansStr = String(answerRecord.answer).trim();
+        if (ansStr !== "0" && ansStr !== "1") {
+            return false;
+        }
     }
 
     const tagValues = [
@@ -128,9 +142,14 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     }
 
     const rawType = String(currentQuestionMeta?.type || "").trim().toUpperCase();
+    const reviewResult = isReviewPhase ? currentQuestionResult : null;
     const isTrueFalse = useMemo(
-        () => isTrueFalseMockQuestion(currentQuestion, rawType),
-        [currentQuestion, rawType]
+        () => isTrueFalseMockQuestion(
+            currentQuestion,
+            rawType,
+            reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta
+        ),
+        [currentQuestion, rawType, reviewResult?.answerRecord]
     );
     const typeLabel = formatQuestionTypeLabel(currentQuestionMeta?.type);
     const marks = Number(currentQuestionMeta?.marks || 0);
@@ -143,7 +162,6 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         ? "This legacy subjective prompt is awarded automatically. No response is required."
         : "This question is awarded to all candidates. No response is required.";
     const currentResponse = responses[questionUid];
-    const reviewResult = isReviewPhase ? currentQuestionResult : null;
     const verdictCopy = getVerdictCopy(reviewResult);
     const correctOptionSet = useMemo(
         () => buildCorrectOptionSet(reviewResult?.answerRecord),
