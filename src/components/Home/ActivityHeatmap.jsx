@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 
 const getIntensityClass = (attempts) => {
   if (attempts === 0) return "home-activity-intensity--0";
@@ -23,6 +23,8 @@ const getMonthShortName = (monthIndex) => (
 export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streakDateKeys = [] }) => {
   const streakDateSet = useMemo(() => new Set(streakDateKeys), [streakDateKeys]);
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedRange, setSelectedRange] = useState("auto");
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
@@ -32,6 +34,8 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
     media.addEventListener("change", listener);
     return () => media.removeEventListener("change", listener);
   }, []);
+
+  const activeRange = selectedRange === "auto" ? (isMobile ? "12w" : "52w") : selectedRange;
 
   const { grid, monthLabels } = useMemo(() => {
     const timelineMap = new Map();
@@ -43,8 +47,12 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
     const today = new Date(`${todayKey}T00:00:00.000Z`);
     const startDay = new Date(today);
     
-    // Last 12 weeks = 83 days + today = 84 days. 364 days + today = 365 days.
-    const totalDays = isMobile ? 83 : 364;
+    let totalDays = 83; // 12 weeks
+    if (activeRange === "26w") {
+      totalDays = 181; // ~6 months (26 weeks)
+    } else if (activeRange === "52w") {
+      totalDays = 364; // 1 year (52 weeks)
+    }
     startDay.setUTCDate(today.getUTCDate() - totalDays);
 
     const days = [];
@@ -95,19 +103,32 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
     }
 
     return { grid: cols, monthLabels: labels };
-  }, [attemptTimeline, now, isMobile]);
+  }, [attemptTimeline, now, activeRange]);
+
+  useEffect(() => {
+    if (scrollRef.current && isMobile && (activeRange === "26w" || activeRange === "52w")) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+    }
+  }, [grid, isMobile, activeRange]);
 
   return (
     <div className="home-activity-heatmap">
       <div className="home-activity-header">
         <h2>Practice Activity</h2>
         <label htmlFor="activity-year" className="sr-only">Activity range</label>
-        <select id="activity-year" value="rolling" onChange={() => {}} aria-label="Activity range">
-          <option value="rolling">{isMobile ? "Last 12 weeks" : "Last 365 days"}</option>
+        <select
+          id="activity-year"
+          value={activeRange}
+          onChange={(e) => setSelectedRange(e.target.value)}
+          aria-label="Activity range"
+        >
+          <option value="12w">Last 12 weeks</option>
+          <option value="26w">Last 6 months</option>
+          <option value="52w">Last 1 year</option>
         </select>
       </div>
 
-      <div className="home-activity-scroll" aria-label="Practice activity heatmap">
+      <div ref={scrollRef} className="home-activity-scroll" aria-label="Practice activity heatmap">
         <div className="home-activity-y-axis" aria-hidden="true">
           <span>Mon</span>
           <span>Wed</span>

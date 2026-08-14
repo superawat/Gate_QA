@@ -37,6 +37,7 @@ import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 import { getQuoteForToday } from "../utils/motivationalQuotes";
+import { FaQuoteLeft } from "react-icons/fa";
 import {
   preloadExploreRoute,
   preloadInsightsRoute,
@@ -283,6 +284,7 @@ const HomePage = ({
       key: "filter",
       label: "Filter Questions",
       subtext: "By subject and year",
+      badge: "3,500+ PYQs",
       icon: `${HOMEPAGE_ICON_BASE}/filter_no_bg.webp`,
       variant: "secondary",
       onClick: onExplorePractice,
@@ -292,6 +294,7 @@ const HomePage = ({
       key: "mock",
       label: "Mock Test",
       subtext: "Full-length practice",
+      badge: "1:1 CBT Simulator",
       icon: `${HOMEPAGE_ICON_BASE}/mocktest1_no_bg.webp`,
       variant: "secondary",
       disabled: !mockModeEnabled,
@@ -302,6 +305,7 @@ const HomePage = ({
       key: "insights",
       label: "Performance Insights",
       subtext: "Track your progress",
+      badge: "Analytics & Streak",
       icon: `${HOMEPAGE_ICON_BASE}/insights_no_bg.webp`,
       variant: "secondary",
       onClick: onOpenInsights,
@@ -352,7 +356,7 @@ const HomePage = ({
                     onMouseLeave={isDisabled ? undefined : handleMouseLeave}
                     data-home-action-index={index}
                     aria-current={isActive ? "true" : undefined}
-                    className={`home-action-card home-action-card--${card.variant} ${isActive ? "home-action-card--active" : "home-action-card--side"} group text-left ${isDisabled ? "home-action-card--disabled" : ""}`}
+                    className={`home-action-card home-action-card--${card.variant} ${isActive ? "home-action-card--active" : "home-action-card--side"} group text-center sm:text-left ${isDisabled ? "home-action-card--disabled" : ""}`}
                   >
                     <span className="home-action-icon">
                       <img
@@ -378,6 +382,13 @@ const HomePage = ({
                         ) : null}
                       </span>
                     ) : null}
+
+                    {card.badge ? (
+                      <span className="home-action-footer-badge">
+                        <span className="home-action-badge-text">{card.badge}</span>
+                        <span className="home-action-badge-arrow" aria-hidden="true">→</span>
+                      </span>
+                    ) : null}
                   </button>
                 );
               })}
@@ -391,6 +402,18 @@ const HomePage = ({
               ))}
             </div>
           </div>
+
+          {parsedQuote?.text ? (
+            <aside className="home-quote-banner md:hidden" aria-label="Daily inspiration">
+              <FaQuoteLeft className="home-quote-icon" aria-hidden="true" />
+              <p className="home-quote-body">
+                <span className="home-quote-text">"{parsedQuote.text}"</span>
+                {parsedQuote.author ? (
+                  <span className="home-quote-author"> — {parsedQuote.author}</span>
+                ) : null}
+              </p>
+            </aside>
+          ) : null}
 
           <section className="home-gamification-dashboard" aria-label="Gamification stats">
             <StreakBanner activity={activity} />

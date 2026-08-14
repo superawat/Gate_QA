@@ -22,12 +22,16 @@ const PageShell = ({
     <AppHeader onResume={onResume} resumeLabel={resumeLabel} />
     <main
       id="main-content"
-      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 pt-6 ${showMobileBottomNav ? "pb-24" : "pb-24 md:pb-6"} sm:px-6 md:pb-6 lg:px-8 ${contentClassName}`}
+      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 pt-4 sm:pt-6 sm:px-6 md:pb-6 lg:px-8 ${contentClassName}`}
     >
       {children}
     </main>
     {showMobileBottomNav ? <MobileBottomNav /> : null}
-    {showFooter ? <Footer /> : null}
+    {showFooter ? (
+      <div className={showMobileBottomNav ? "hidden md:block" : ""}>
+        <Footer />
+      </div>
+    ) : null}
   </div>
 );
 

@@ -2,6 +2,13 @@
 
 ## 2026-08-15
 
+- **Homepage Mobile UX, Action Cards & Activity Heatmap Polish**:
+  - **Activity Heatmap Interactive Range Selector (`ActivityHeatmap.jsx`)**: Added functional timeframe options (`Last 12 weeks`, `Last 6 months`, `Last 1 year`), auto-scrolling to the current date on multi-month mobile selections, and eliminated phantom blank scroll void with dynamic `min-width: max-content`.
+  - **Dedicated Mobile Daily Motivation Banner (`.home-quote-banner`)**: Extracted daily quote on mobile (`<768px`) into a dedicated glassmorphism pill banner with `FaQuoteLeft` and theme-adaptive backdrop blur, keeping the original desktop quote layout inside the Practice card untouched.
+  - **Mobile Action Cards Contrast & Typography**:
+    - Expanded mobile action card height to `216px` with vertically centered hero 3D notebook icon (`6.5rem` / `scale(1.2)`).
+    - Hardened secondary action card dark mode contrast with dark glass gradient (`linear-gradient(160deg, #1e293b, #0f172a 90%)`), crisp `1.5px` border (`rgba(255, 255, 255, 0.2)`), and cyan active focus glow.
+    - Symmetrically framed capsule action badges (`3,500+ PYQs →`, `1:1 CBT Simulator →`, `Analytics & Streak →`) preventing any text clipping or corner overflow.
 - **Mobile UI & Responsive Subsystem Optimization (AUG-012)**:
   - **Dynamic Viewport Height (`100dvh`)**: Standardized `100vh` to `100dvh` across `CalculatorWidget.jsx`, `MockTestShell.jsx`, `PageShell.jsx`, `App.jsx`, `MockTestResults.jsx`, and modal components to eliminate dynamic browser address bar jitter on mobile devices.
   - **Scroll-Reactive Header & Safe-Areas**: Added auto-collapsing header on mobile scroll-down (`md:translate-y-0` pinned on desktop) and dynamic `<meta name="theme-color">` synchronizer. Added `viewport-fit=cover` in `index.html` and safe-area padding (`env(safe-area-inset-bottom)`) to `FilterModal.jsx` and `MobileSolveActionBar.jsx`.
