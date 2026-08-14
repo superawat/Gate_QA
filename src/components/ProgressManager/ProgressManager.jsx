@@ -58,44 +58,44 @@ function dedupeStringArray(arr) {
     return out;
 }
 
-function isWorkspaceBackupPayload(payload) {
-    return Boolean(
-        payload
-        && typeof payload === "object"
-        && payload.data
-        && typeof payload.data === "object"
-        && (
-            payload.data.gate
-            || payload.data.aptitude
-            || payload.data.sessions
-            || payload.data.preferences
-            || Array.isArray(payload.data.mockHistory)
-        )
-    );
-}
-
-function isLegacyProgressPayload(payload) {
-    return Boolean(
-        payload
-        && typeof payload === "object"
-        && Array.isArray(payload.solvedQuestions)
-        && Array.isArray(payload.bookmarkedQuestions)
-    );
-}
-
+/**
+ * Helper to count items in imported payload for UI display.
+ */
 function getImportedCounts(payload) {
-    if (isWorkspaceBackupPayload(payload)) {
-        const gate = payload.data?.gate || {};
-        const aptitude = payload.data?.aptitude || {};
+    if (!payload) return { solved: 0, bookmarked: 0 };
+
+    if (payload.entities?.userState?.records) {
+        const recs = payload.entities.userState.records;
+        const solved = recs.filter((r) => r.isSolved).length;
+        const bookmarked = recs.filter((r) => r.isBookmarked).length;
+        return { solved, bookmarked };
+    }
+
+    if (payload.userState?.questions) {
+        const qMap = payload.userState.questions;
+        let solved = 0;
+        let bookmarked = 0;
+        for (const k of Object.keys(qMap)) {
+            if (qMap[k].isSolved) solved++;
+            if (qMap[k].isBookmarked) bookmarked++;
+        }
+        return { solved, bookmarked };
+    }
+
+    if (payload.questions && typeof payload.questions === "object") {
+        let solved = 0;
+        let bookmarked = 0;
+        for (const k of Object.keys(payload.questions)) {
+            if (payload.questions[k].isSolved) solved++;
+            if (payload.questions[k].isBookmarked) bookmarked++;
+        }
+        return { solved, bookmarked };
+    }
+
+    if (payload.gate_qa_solved_questions || payload.gate_qa_bookmarked_questions) {
         return {
-            solved: dedupeStringArray([
-                ...(Array.isArray(gate.solvedQuestions) ? gate.solvedQuestions : []),
-                ...(Array.isArray(aptitude.solvedQuestions) ? aptitude.solvedQuestions : []),
-            ]).length,
-            bookmarked: dedupeStringArray([
-                ...(Array.isArray(gate.bookmarkedQuestions) ? gate.bookmarkedQuestions : []),
-                ...(Array.isArray(aptitude.bookmarkedQuestions) ? aptitude.bookmarkedQuestions : []),
-            ]).length,
+            solved: dedupeStringArray(payload.gate_qa_solved_questions).length,
+            bookmarked: dedupeStringArray(payload.gate_qa_bookmarked_questions).length,
         };
     }
 
@@ -122,19 +122,27 @@ export default function ProgressManager() {
     const [modalData, setModalData] = useState(null); // parsed import payload
     const toastTimer = useRef(null);
 
-    // ── Help popover ────────────────────────────────────────────────────────
+    // ── Help & Mobile Menu popover ─────────────────────────────────────────
     const [helpOpen, setHelpOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const helpRef = useRef(null);
+    const mobileMenuRef = useRef(null);
 
     useEffect(() => {
-        if (!helpOpen) return;
+        if (!helpOpen && !mobileMenuOpen) return;
         const handleClickOutside = (e) => {
             if (helpRef.current && !helpRef.current.contains(e.target)) {
                 setHelpOpen(false);
             }
+            if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
+                setMobileMenuOpen(false);
+            }
         };
         const handleEscape = (e) => {
-            if (e.key === "Escape") setHelpOpen(false);
+            if (e.key === "Escape") {
+                setHelpOpen(false);
+                setMobileMenuOpen(false);
+            }
         };
         document.addEventListener("mousedown", handleClickOutside);
         document.addEventListener("keydown", handleEscape);
@@ -142,7 +150,7 @@ export default function ProgressManager() {
             document.removeEventListener("mousedown", handleClickOutside);
             document.removeEventListener("keydown", handleEscape);
         };
-    }, [helpOpen]);
+    }, [helpOpen, mobileMenuOpen]);
 
     // ── Toast helpers ──────────────────────────────────────────────────────
     const showToast = useCallback((message, durationMs = 3500) => {
@@ -241,142 +249,152 @@ export default function ProgressManager() {
                 }
 
                 if (!parsed || typeof parsed !== "object") {
-                    showToast("Invalid file format: Missing required progress data.");
+                    showToast("Invalid file: Expected a JSON object.");
                     return;
                 }
 
-                const isWorkspaceBackup = isWorkspaceBackupPayload(parsed);
-                const isLegacyProgress = isLegacyProgressPayload(parsed);
+                const counts = getImportedCounts(parsed);
+                const isLegacy =
+                    Array.isArray(parsed.solvedQuestions) ||
+                    Array.isArray(parsed.bookmarkedQuestions) ||
+                    Array.isArray(parsed.gate_qa_solved_questions) ||
+                    Array.isArray(parsed.gate_qa_bookmarked_questions);
 
-                if (!isWorkspaceBackup && !isLegacyProgress) {
-                    showToast("Invalid file format: Missing required progress data.");
+                const isV1Workspace =
+                    parsed.schemaVersion === 1 ||
+                    parsed.app === "gateqa" ||
+                    (parsed.entities && typeof parsed.entities === "object");
+
+                if (!isLegacy && !isV1Workspace && counts.solved === 0 && counts.bookmarked === 0) {
+                    showToast(
+                        "Unrecognised format: Expected a GATE QA workspace backup or progress JSON."
+                    );
                     return;
                 }
 
-                // Schema version logic
                 let schemaWarning = null;
-                if (isWorkspaceBackup) {
-                    schemaWarning =
-                        "This is a full workspace backup. Use Replace on the new domain to restore all progress, notes, mock history, goals, and streak data.";
-                } else if (parsed.schemaVersion == null) {
-                    schemaWarning =
-                        "This file has no schema version. It may be from a different app. Proceeding in best-effort mode.";
-                } else if (parsed.schemaVersion > CURRENT_SCHEMA_VERSION) {
-                    schemaWarning = `This file uses schema v${parsed.schemaVersion} (app knows v${CURRENT_SCHEMA_VERSION}). Some data may not be fully understood.`;
+                if (typeof parsed.schemaVersion === "number" && parsed.schemaVersion > CURRENT_SCHEMA_VERSION) {
+                    schemaWarning = `This file was created by a newer version of GATE QA (schema v${parsed.schemaVersion}). Some fields may not be supported.`;
                 }
+
+                const mergeDisabled = Boolean(isV1Workspace && parsed.entities);
 
                 setModalData({
                     parsed,
+                    isV1Workspace,
+                    isLegacy,
                     schemaWarning,
-                    isWorkspaceBackup,
-                    mergeDisabled: isWorkspaceBackup,
+                    mergeDisabled,
                 });
             };
-
             reader.readAsText(file);
         },
         [showToast]
     );
 
-    // ── IMPORT: write to storage ───────────────────────────────────────────
+    // ── IMPORT: perform Replace or Merge ───────────────────────────────────
     const performImport = useCallback(
         (strategy) => {
             if (!modalData?.parsed) return;
 
-            if (modalData.isWorkspaceBackup) {
-                const result = importWorkspaceSnapshot(modalData.parsed);
-                if (!result.ok) {
-                    showToast("Error: Failed to restore workspace backup.");
+            const { parsed, isV1Workspace } = modalData;
+
+            if (isV1Workspace && parsed.entities) {
+                const result = importWorkspaceSnapshot(parsed);
+                if (!result.success) {
+                    showToast(result.error || "Failed to restore workspace backup.");
                     setModalData(null);
                     return;
                 }
 
                 refreshProgressState();
                 setModalData(null);
-                const solvedTotal = Number(result.summary?.gateSolved || 0) + Number(result.summary?.aptitudeSolved || 0);
-                const bookmarkedTotal = Number(result.summary?.gateBookmarked || 0) + Number(result.summary?.aptitudeBookmarked || 0);
-                showToast(
-                    `Workspace restored - ${solvedTotal} solved, ${bookmarkedTotal} bookmarked.`
-                );
+                showToast("Full workspace restored successfully.");
                 return;
             }
 
-            const importedSolved = dedupeStringArray(
-                modalData.parsed.solvedQuestions
-            );
-            const importedBookmarked = dedupeStringArray(
-                modalData.parsed.bookmarkedQuestions
-            );
+            let incomingSolved = [];
+            let incomingBookmarked = [];
+            let incomingProgress = {};
 
-            let finalSolved, finalBookmarked, finalMetadata, finalProgress;
+            if (parsed.entities?.userState?.records) {
+                for (const r of parsed.entities.userState.records) {
+                    if (r.isSolved && r.questionUid) incomingSolved.push(r.questionUid);
+                    if (r.isBookmarked && r.questionUid) incomingBookmarked.push(r.questionUid);
+                }
+            } else if (parsed.userState?.questions) {
+                for (const [k, v] of Object.entries(parsed.userState.questions)) {
+                    if (v.isSolved) incomingSolved.push(k);
+                    if (v.isBookmarked) incomingBookmarked.push(k);
+                }
+            } else if (parsed.questions && typeof parsed.questions === "object") {
+                for (const [k, v] of Object.entries(parsed.questions)) {
+                    if (v.isSolved) incomingSolved.push(k);
+                    if (v.isBookmarked) incomingBookmarked.push(k);
+                }
+            } else {
+                incomingSolved = dedupeStringArray(
+                    parsed.solvedQuestions || parsed.gate_qa_solved_questions
+                );
+                incomingBookmarked = dedupeStringArray(
+                    parsed.bookmarkedQuestions || parsed.gate_qa_bookmarked_questions
+                );
+            }
+
+            if (includeExtendedProgress && parsed.progress && typeof parsed.progress === "object") {
+                incomingProgress = parsed.progress;
+            }
+
+            let finalSolved;
+            let finalBookmarked;
+            let finalProgress;
 
             if (strategy === "replace") {
-                finalSolved = importedSolved;
-                finalBookmarked = importedBookmarked;
-                finalMetadata = modalData.parsed.metadata || {};
-                finalProgress = modalData.parsed.progress || {};
+                finalSolved = dedupeStringArray(incomingSolved);
+                finalBookmarked = dedupeStringArray(incomingBookmarked);
+                finalProgress = incomingProgress;
             } else {
-                // merge: union of current + imported
                 const currentSolved = dedupeStringArray(
                     readStorageJson(storageKeys.solved, [])
                 );
                 const currentBookmarked = dedupeStringArray(
                     readStorageJson(storageKeys.bookmarked, [])
                 );
-                const currentMetadata = readStorageJson(storageKeys.metadata, {});
                 const currentProgress = readStorageJson(storageKeys.progress, {});
 
-                finalSolved = [
-                    ...new Set([...currentSolved, ...importedSolved]),
-                ];
-                finalBookmarked = [
-                    ...new Set([...currentBookmarked, ...importedBookmarked]),
-                ];
-                // For metadata and progress objects, we merge them (shallow merge)
-                // In a real app, you might want deeper merging for specific fields
-                finalMetadata = { ...currentMetadata, ...(modalData.parsed.metadata || {}) };
-                finalProgress = { ...currentProgress, ...(modalData.parsed.progress || {}) };
+                finalSolved = dedupeStringArray([...currentSolved, ...incomingSolved]);
+                finalBookmarked = dedupeStringArray([
+                    ...currentBookmarked,
+                    ...incomingBookmarked,
+                ]);
+                finalProgress = {
+                    ...currentProgress,
+                    ...incomingProgress,
+                    history: [
+                        ...(currentProgress.history || []),
+                        ...(incomingProgress.history || []),
+                    ],
+                };
             }
 
-            // Write core progress data
-            const w1 = writeStorageJson(storageKeys.solved, finalSolved);
-            const w2 = writeStorageJson(
+            const okSolved = writeStorageJson(storageKeys.solved, finalSolved);
+            const okBookmarked = writeStorageJson(
                 storageKeys.bookmarked,
                 finalBookmarked
             );
-            const w3 = writeStorageJson(storageKeys.metadata, finalMetadata);
-            const w4 = writeStorageJson(storageKeys.progress, finalProgress);
+            const okProgress = includeExtendedProgress
+                ? writeStorageJson(storageKeys.progress, finalProgress)
+                : true;
 
-            // Write extended data if present in the import file
-            const importedNotes = modalData.parsed.userNotes;
-            const importedMockHistory = modalData.parsed.mockHistory;
-            const importedStreakFreeze = modalData.parsed.streakFreeze;
-            const importedDailyGoal = modalData.parsed.dailyGoal;
+            const meta = {
+                version: CURRENT_SCHEMA_VERSION,
+                lastExported: new Date().toISOString(),
+                exportType: "progress-only",
+            };
+            writeStorageJson(storageKeys.metadata, meta);
 
-            if (includeExtendedProgress && importedNotes && typeof importedNotes === "object") {
-                const currentNotes = strategy === "replace" ? {} : readStorageJson("gate_qa_user_notes", {});
-                writeStorageJson("gate_qa_user_notes", { ...currentNotes, ...importedNotes });
-            }
-            if (includeExtendedProgress && Array.isArray(importedMockHistory) && importedMockHistory.length > 0) {
-                if (strategy === "replace") {
-                    writeStorageJson("gateqa_mock_history_v1", importedMockHistory);
-                } else {
-                    const currentHistory = readStorageJson("gateqa_mock_history_v1", []);
-                    const existingIds = new Set(currentHistory.map(e => e.id));
-                    const merged = [...currentHistory, ...importedMockHistory.filter(e => !existingIds.has(e.id))];
-                    writeStorageJson("gateqa_mock_history_v1", merged);
-                }
-            }
-            if (includeExtendedProgress && importedStreakFreeze && typeof importedStreakFreeze === "object") {
-                writeStorageJson("gateqa_streak_freeze_v1", strategy === "replace" ? importedStreakFreeze : { ...readStorageJson("gateqa_streak_freeze_v1", {}), ...importedStreakFreeze });
-            }
-            if (includeExtendedProgress && importedDailyGoal && typeof importedDailyGoal === "object") {
-                writeStorageJson("gateqa_daily_goal_v1", strategy === "replace" ? importedDailyGoal : { ...readStorageJson("gateqa_daily_goal_v1", {}), ...importedDailyGoal });
-            }
-
-            if (!w1.ok || !w2.ok || !w3.ok || !w4.ok) {
-                const failed = [w1, w2, w3, w4].find(w => !w.ok);
-                if (failed.reason === "quota_exceeded") {
+            if (!okSolved || !okBookmarked || !okProgress) {
+                if (!okSolved && !okBookmarked) {
                     showToast("Error: Storage quota exceeded. Cannot import.");
                 } else {
                     showToast("Error: Failed to save imported progress.");
@@ -402,6 +420,7 @@ export default function ProgressManager() {
         <>
             <div ref={helpRef}>
                 <div className="flex flex-wrap items-center gap-3">
+                    {/* Desktop Toolbar */}
                     <div className="hidden sm:flex flex-wrap items-center gap-2">
                         <button
                             onClick={handleExportJson}
@@ -414,7 +433,7 @@ export default function ProgressManager() {
 
                         <button
                             onClick={handleExportCsv}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-white px-3 py-1.5 text-xs font-medium text-[color:var(--color-text)] transition-colors hover:bg-slate-50 shadow-sm"
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface-muted)] shadow-sm"
                             title="Export as CSV (View Only)"
                         >
                             <FaFileCsv className="text-xs" />
@@ -423,7 +442,7 @@ export default function ProgressManager() {
 
                         <button
                             onClick={handleImportClick}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-white px-3 py-1.5 text-xs font-medium text-[color:var(--color-text)] transition-colors hover:bg-slate-50 shadow-sm"
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs font-medium text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface-muted)] shadow-sm"
                             title="Import Progress"
                         >
                             <FaUpload className="text-xs" />
@@ -432,7 +451,7 @@ export default function ProgressManager() {
 
                         <button
                             onClick={() => setHelpOpen((v) => !v)}
-                            className="progress-manager-help-button inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition-colors hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)] bg-white border border-[color:var(--color-border)] shadow-sm"
+                            className="progress-manager-help-button inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition-colors hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)] bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-sm"
                             title="What do these buttons do?"
                             aria-expanded={helpOpen}
                             aria-label="Help for export and import"
@@ -441,7 +460,72 @@ export default function ProgressManager() {
                         </button>
                     </div>
 
-                    <div className="flex items-center rounded-lg border border-[color:var(--color-border)] bg-white px-3 py-1.5 text-xs font-medium text-[color:var(--color-text-muted)] shadow-sm shrink-0">
+                    {/* Mobile Backup & Sync Dropdown */}
+                    <div ref={mobileMenuRef} className="relative sm:hidden">
+                        <button
+                            type="button"
+                            onClick={() => setMobileMenuOpen((prev) => !prev)}
+                            className="inline-flex min-h-[32px] items-center gap-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                            aria-expanded={mobileMenuOpen}
+                            aria-label="Backup and sync options"
+                        >
+                            <FaDownload className="text-xs text-sky-600 dark:text-sky-400" />
+                            <span>Backup &amp; Sync</span>
+                            <span className="text-[9px] text-[color:var(--color-text-muted)]">{mobileMenuOpen ? "▲" : "▼"}</span>
+                        </button>
+
+                        {mobileMenuOpen && (
+                            <div className="absolute left-0 top-full z-50 mt-1.5 w-48 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-1.5 shadow-xl">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        handleExportJson();
+                                    }}
+                                    className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)]"
+                                >
+                                    <FaDownload className="text-xs text-sky-600 dark:text-sky-400" />
+                                    Export JSON (Backup)
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        handleExportCsv();
+                                    }}
+                                    className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)]"
+                                >
+                                    <FaFileCsv className="text-xs text-emerald-600 dark:text-emerald-400" />
+                                    Export CSV
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        handleImportClick();
+                                    }}
+                                    className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)]"
+                                >
+                                    <FaUpload className="text-xs text-violet-600 dark:text-violet-400" />
+                                    Import Backup
+                                </button>
+                                <div className="my-1 border-t border-[color:var(--color-border)]" />
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        setHelpOpen((prev) => !prev);
+                                    }}
+                                    className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-medium text-[color:var(--color-text-muted)] transition hover:bg-[color:var(--color-surface-muted)]"
+                                >
+                                    <FaInfoCircle className="text-xs" />
+                                    What do these do?
+                                </button>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="flex items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-xs font-medium text-[color:var(--color-text-muted)] shadow-sm shrink-0">
                         <span className="text-[color:var(--color-text)] font-bold mr-1">{solvedQuestionIds.length}</span> solved
                         <span className="mx-2 text-[color:var(--color-border)]">|</span>
                         <span className="text-[color:var(--color-text)] font-bold mr-1">{bookmarkedQuestionIds.length}</span> bookmarked
@@ -451,13 +535,13 @@ export default function ProgressManager() {
                 {helpOpen && (
                     <div className="mt-2 space-y-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)]/80 p-2.5 text-[11px] text-[color:var(--color-text-muted)] shadow-sm">
                         <div className="leading-snug">
-                            <span className="font-semibold text-gray-800">Export JSON</span> - Downloads a full workspace backup, including progress, notes, mocks, goals, and streak data.
+                            <span className="font-semibold text-[color:var(--color-text)]">Export JSON</span> - Downloads a full workspace backup, including progress, notes, mocks, goals, and streak data.
                         </div>
                         <div className="leading-snug">
-                            <span className="font-semibold text-gray-800">Export CSV</span> - Downloads a read-only spreadsheet with year, subject, subtopic, and type for each question. Not importable.
+                            <span className="font-semibold text-[color:var(--color-text)]">Export CSV</span> - Downloads a read-only spreadsheet with year, subject, subtopic, and type for each question. Not importable.
                         </div>
                         <div className="leading-snug">
-                            <span className="font-semibold text-gray-800">Import</span> - Upload a previously exported .json file. Full workspace backups restore with Replace.
+                            <span className="font-semibold text-[color:var(--color-text)]">Import</span> - Upload a previously exported .json file. Full workspace backups restore with Replace.
                         </div>
                     </div>
                 )}

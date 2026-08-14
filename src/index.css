@@ -4163,3 +4163,33 @@ canvas {
   border-color: var(--color-border, #475569);
 }
 
+/* Mobile MathJax & LaTeX touch overflow hardening */
+.MathJax,
+mjx-container,
+mjx-container[jax="CHTML"][display="true"],
+mjx-container[jax="SVG"][display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin;
+}
+
+/* Mobile pre/code block horizontal scroll */
+.math-content pre,
+.math-content code,
+article pre,
+article code {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Sticky Solve Action Bar safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .gateqa-mobile-solve-bar {
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+

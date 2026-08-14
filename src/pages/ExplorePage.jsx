@@ -444,28 +444,28 @@ const ExplorePage = ({
                 <p className="practice-result-summary mt-2 text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
               </div>
 
-              <div className="practice-filter-actions flex flex-wrap items-center gap-2">
+              <div className="practice-filter-actions grid grid-cols-2 gap-2 w-full sm:flex sm:w-auto sm:items-center">
                 <button
                   type="button"
                   onClick={handleStartFilteredPractice}
                   disabled={!filteredQuestions.length}
-                  className="inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-2xl bg-[color:var(--color-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                  className="inline-flex min-h-[52px] sm:min-h-[56px] w-full items-center justify-center gap-2 rounded-2xl bg-[color:var(--color-primary)] px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
                 >
                   <FaPlay className="text-xs" aria-hidden="true" />
-                  {quickStartLabel}
+                  <span className="truncate">{quickStartLabel}</span>
                 </button>
                 <button
                   type="button"
                   onClick={handleOpenFilters}
                   aria-keyshortcuts="F"
-                  className="practice-filter-trigger inline-flex min-h-[56px] items-center gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-left text-sm font-semibold text-slate-900 shadow-[var(--shadow-soft)] ring-1 ring-sky-100 transition hover:border-sky-400 hover:bg-sky-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
+                  className="practice-filter-trigger inline-flex min-h-[52px] sm:min-h-[56px] w-full items-center gap-2 sm:gap-3 rounded-2xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 sm:px-4 py-2.5 sm:py-3 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden sm:w-auto"
                 >
-                  <span className="practice-filter-trigger-icon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 text-white shadow-sm">
-                    <FaFilter className="h-5 w-5" />
+                  <span className="practice-filter-trigger-icon inline-flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-white shadow-sm">
+                    <FaFilter className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
                   </span>
-                  <span className="flex flex-col leading-tight">
-                    <span>Filters</span>
-                    <span className="text-xs font-medium text-slate-600">
+                  <span className="flex flex-col min-w-0 leading-tight">
+                    <span className="truncate">Filters</span>
+                    <span className="text-[10px] sm:text-xs font-medium text-[color:var(--color-text-muted)] truncate">
                       {activeFilterCount > 0 ? `${activeFilterCount} active` : "All questions"}
                     </span>
                   </span>
@@ -474,7 +474,7 @@ const ExplorePage = ({
             </div>
 
             {/* ── Practice mode toggles ────────────────────────────────────────────────────────── */}
-            <div className="practice-mode-toggles mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-slate-100 pt-3">
+            <div className="practice-mode-toggles mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[color:var(--color-border)] pt-3">
               <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
                 Practice mode
               </span>
@@ -487,7 +487,7 @@ const ExplorePage = ({
                 onClick={() => setShufflePractice((v) => !v)}
                 className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[12px] font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                   shufflePractice
-                    ? "border-sky-300 bg-sky-50 text-sky-700"
+                    ? "border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] text-[color:var(--color-primary-text)]"
                     : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"
                 }`}
                 title={shufflePractice ? "Questions are shuffled — click to practice in order" : "Questions are in order — click to shuffle"}
@@ -496,7 +496,7 @@ const ExplorePage = ({
                 {shufflePractice ? "Shuffled" : "In Order"}
               </button>
 
-                                          {/* Apply-filters toggle — only shown when filters are active */}
+              {/* Apply-filters toggle — only shown when filters are active */}
               {activeFilterCount > 0 && (
                 <button
                   type="button"
@@ -505,7 +505,7 @@ const ExplorePage = ({
                   onClick={handleToggleApplyFilters}
                   className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[12px] font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                     applyFiltersToPractice
-                      ? "border-amber-300 bg-amber-50 text-amber-700"
+                      ? "border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)]"
                       : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"
                   }`}
                   title={applyFiltersToPractice ? `Practicing ${filteredQuestions.length} filtered questions — click to practice all` : `Practicing all ${allQuestions.length} questions — click to restrict to filters`}
@@ -516,7 +516,7 @@ const ExplorePage = ({
               )}
             </div>
 
-            <div className="practice-search-row mt-4 border-t border-slate-100 pt-4">
+            <div className="practice-search-row mt-4 border-t border-[color:var(--color-border)] pt-4">
               <QuestionSearchInput
                 id="explore-search"
                 label="Search questions"

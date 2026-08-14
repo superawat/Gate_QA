@@ -37,7 +37,7 @@ export default function ImportConfirmationModal({
             onClick={onClose}
         >
             <div
-                className="relative z-[10000] max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 text-[color:var(--color-text)] shadow-2xl"
+                className="relative z-[10000] max-h-[90dvh] w-full max-w-md overflow-y-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 text-[color:var(--color-text)] shadow-2xl"
                 onClick={(event) => event.stopPropagation()}
             >
                 <h2 className="mb-4 text-lg font-semibold text-[color:var(--color-text)]">

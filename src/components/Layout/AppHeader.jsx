@@ -89,6 +89,10 @@ const applyDocumentTheme = (theme) => {
     return;
   }
   document.documentElement.setAttribute("data-theme", theme);
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute("content", theme === "dark" ? "#0f172a" : "#f9fafb");
+  }
 };
 
 const readAptitudeBadge = () => {
@@ -514,29 +518,64 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   const practiceBadgeLabel = getPracticeBadgeLabel(location);
   const canToggleCalculator = location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`);
 
+  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+  const lastScrollYRef = useRef(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const delta = currentScrollY - lastScrollYRef.current;
+
+          if (window.innerWidth < 768) {
+            if (currentScrollY > 80 && delta > 8) {
+              setIsHeaderHidden(true);
+            } else if (delta < -8 || currentScrollY <= 80) {
+              setIsHeaderHidden(false);
+            }
+          } else {
+            setIsHeaderHidden(false);
+          }
+
+          lastScrollYRef.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-    <header className="sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+    <header className={`sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition-transform duration-200 ease-in-out ${isHeaderHidden ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}>
       <div className="app-header-inner mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-6 sm:py-5 lg:px-8">
         <div className="flex min-w-0 items-center gap-2 sm:gap-4">
           <Link
-          to={HOME_ROUTE}
-          className="flex min-w-0 items-center gap-2 sm:gap-4"
-          aria-label="GATE QA home"
-        >
-          <span className="app-header-logo-frame shrink-0">
-            <img
-              src={logoSrc}
-              alt="GATE QA logo"
-              width="64"
-              height="64"
-              className="logo-icon app-header-logo h-10 w-10 object-contain sm:h-16 sm:w-16"
-            />
-          </span>
-          <div className="min-w-0">
-            <p className="text-base font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
-          </div>
-        </Link>
+            to={HOME_ROUTE}
+            className="flex min-w-0 items-center gap-2 sm:gap-4"
+            aria-label="GATE QA home"
+          >
+            <span className="app-header-logo-frame shrink-0">
+              <img
+                src={logoSrc}
+                alt="GATE QA logo"
+                width="64"
+                height="64"
+                className="logo-icon app-header-logo h-10 w-10 object-contain sm:h-16 sm:w-16"
+              />
+            </span>
+            <div className="min-w-0">
+              <p className="text-base font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
+            </div>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2">
@@ -626,7 +665,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
                   onClick={() => setShowAuthModal(true)}
                   aria-label="Sign in with Google to back up your progress"
                   title="Sign in"
-                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 min-[380px]:px-3 py-1 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" className="h-3.5 w-3.5 shrink-0">
                     <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.6 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.9z"/>
@@ -634,7 +673,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
                     <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.4 35.4 26.8 36 24 36c-5.2 0-9.7-3.3-11.3-8H6.3C9.6 35.7 16.3 44 24 44z"/>
                     <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.3 4.1-4.3 5.4l6.2 5.2C36.9 40.5 44 35 44 24c0-1.3-.1-2.7-.4-3.9z"/>
                   </svg>
-                  <span>Sign in</span>
+                  <span className="hidden min-[380px]:inline">Sign in</span>
                 </button>
               )}
             </Suspense>

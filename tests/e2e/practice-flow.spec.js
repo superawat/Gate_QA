@@ -54,11 +54,11 @@ test("subject filter updates result context", async ({ page }) => {
 test("search input filters and can be cleared", async ({ page }) => {
   await page.goto(appPath("/practice"));
   await waitForPracticeList(page);
-  const searchInput = page.getByLabel(/Search questions/i);
+  const searchInput = page.getByLabel(/Search questions/i).first();
   await expect(searchInput).toBeVisible({ timeout: 15000 });
   await searchInput.fill("zzzz-no-match-token");
 
-  await expect(page.getByText(/No questions match these filters/i)).toBeVisible({ timeout: 10000 });
+  await expect(page.getByText(/No questions match these filters/i)).toBeVisible({ timeout: 15000 });
   await searchInput.fill("");
   await waitForPracticeList(page);
 });

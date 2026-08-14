@@ -78,7 +78,7 @@ const QuestionSearchInput = ({
           aria-describedby={helperId}
           aria-keyshortcuts={ariaKeyShortcuts}
           className={`w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-10 pr-12 text-[color:var(--color-text)] shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 ${
-            compact ? "min-h-[44px] py-2.5 text-sm" : "min-h-[48px] py-3 text-sm"
+            compact ? "min-h-[44px] py-2.5 text-base sm:text-sm" : "min-h-[48px] py-3 text-base sm:text-sm"
           } ${inputClassName}`}
         />
 

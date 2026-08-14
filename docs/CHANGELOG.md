@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-08-15
+
+- **Mobile UI & Responsive Subsystem Optimization (AUG-012)**:
+  - **Dynamic Viewport Height (`100dvh`)**: Standardized `100vh` to `100dvh` across `CalculatorWidget.jsx`, `MockTestShell.jsx`, `PageShell.jsx`, `App.jsx`, `MockTestResults.jsx`, and modal components to eliminate dynamic browser address bar jitter on mobile devices.
+  - **Scroll-Reactive Header & Safe-Areas**: Added auto-collapsing header on mobile scroll-down (`md:translate-y-0` pinned on desktop) and dynamic `<meta name="theme-color">` synchronizer. Added `viewport-fit=cover` in `index.html` and safe-area padding (`env(safe-area-inset-bottom)`) to `FilterModal.jsx` and `MobileSolveActionBar.jsx`.
+  - **Sticky Mobile Solve Action Bar (`MobileSolveActionBar.jsx`)**: Added sticky one-thumb toolbar for the Solve route (`/practice/question/:id`) with Previous, Bookmark, Calculator toggle, Native Share (`navigator.share`), and Next controls.
+  - **Selective Bottom Navigation Isolation**: Passed `showMobileBottomNav={false}` on `SolvePage.jsx` so generic app tabs are suppressed while solving.
+  - **Drawer Swipe-to-Dismiss**: Implemented horizontal swipe-to-close gesture on `GlobalNavigationDrawer.jsx` with vertical scroll disambiguation.
+  - **Mobile Backup & Sync Tools**: Added mobile `[ Backup & Sync ▼ ]` dropdown menu in `ProgressManager.jsx` providing mobile users full access to Export JSON, Export CSV, and Import Workspace.
+  - **Mobile Mock Catalog Access**: Scoped 1024px desktop requirement strictly to active timed exams, allowing mobile users to browse test modes, paper catalogs, year cards, setup parameters, and review results on small screens.
+  - **Mobile Web Share API & Tactile Haptic Feedback**:
+    - Integrated `navigator.share()` native Web Share API in `AnswerPanel.jsx` for iOS and Android native share sheets, with clipboard copy fallback.
+    - Added `triggerHaptic(15)` touch feedback via `navigator.vibrate(15)` on option selection, mark as solved, and bookmark toggle.
+    - Added `<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />` in `index.html` for safe-area notch and home indicator displays.
+    - Responsive Explore header action layout (`grid grid-cols-2 gap-2 w-full sm:flex sm:w-auto`) for side-by-side button placement on mobile screens.
+- **Deterministic Public Artifact Build & Content-Aware Write Skipping**:
+  - Added `sameGeneratedContent()` check for `public/mock_catalog_da_v1.json` in `build-da-artifacts.mjs`, preserving `generatedAt` timestamp when catalog content is unchanged.
+  - Updated `writeJson()` in `da-utils.mjs` to compare disk content against incoming payload (with CRLF/LF normalization) before writing, eliminating unnecessary git diffs on test runs or builds.
+- **Practice Subsystem Optimization, Data Integrity & UX Overhaul (AUG-011)**:
+  - **Instant (0ms) Question Shard Pre-fetching**: Added proactive detail JSON shard pre-fetching on `onPointerEnter`, `onFocus`, and `onTouchStart` in `QuestionPickerList.jsx`. Question data is fetched into memory cache in parallel as soon as the user hovers over or touches a question card, achieving 0ms transitions.
+  - **Windowed Page Number Pills & Jump-to-Page**: Upgraded `PaginationControls.jsx` from simple Next/Prev buttons to smart windowed pagination pills (`1 ... 14 15 16 ... 140`), First/Last quick buttons (`«` / `»`), and an instant jump-to-page input.
+  - **LaTeX MathJax Formula Rendering in Personal Notes**: Integrated `<MathContent as="div" dynamic>` in `QuestionNotes.jsx` so student notes with formulas (e.g. `$O(n \log n), `$\sum_{i=1}^n i) render dynamically with full MathJax typesetting.
+  - **Fallback GateOverflow Solution Searching**: Added automatic GateOverflow title search fallback in `AnswerPanel.jsx` when direct solution links are missing on legacy questions.
+  - **$O(1)$ Subtopic Set Lookups & Question Map Reuse**: Added `subtopicSlugSet` to `questionFilterMetaByUid` in `FilterContext.tsx` and reused `questionByUidMap` in `SessionContext.tsx` to eliminate redundant heap allocations.
+
+### Fixed
+- **Practice Subsystem Bugs & Character Encoding (AUG-011)**:
+  - **Latin-1 Mojibake & Encoding Artifacts**: Cleaned corrupted Latin-1 character sequences across `ExplorePage.jsx` (`Showing ... · ... total questions`), `SolvePage.jsx` (SEO title & Schema.org `QAPage` em-dashes), `Question.jsx` (warning banner emoji/text), and `questionPreview.js` (ellipsis comparison).
+  - **Canonical Share URLs**: Updated `AnswerPanel.jsx` to construct share URLs via `buildSolvePath()` (`https://gateqa.in/practice/question/UID`), eliminating redundant `?question=` query parameters.
+  - **Single-Question Direct Link Dead-End Fix**: Fixed direct route entry (`/practice/question/:questionUid`) in `SolvePage.jsx` by seeding the session queue with the question's natural exam set cohort or `allQuestions`.
+  - **Symmetrical "Hide Solved" Navigation**: Added backward lookback skip loop in `SessionContext.tsx` (`goToPreviousQuestion` & `getNavigationState`) matching `goToNextQuestion`.
+  - **Smooth In-Memory Pull-to-Refresh**: Replaced hard `window.location.reload()` in `ExplorePage.jsx` with in-memory `loadQuestions()` data reload.
+  - **Auto-Dismiss Exhaustion Banner**: Automatically dismissed `showExhaustionBanner` upon question selection or navigation in `SessionContext.tsx`.
+  - **`DOMPurify` & LaTeX Memoization**: Wrapped `cleanLatexHtml()` and `DOMPurify.sanitize()` inside `useMemo` in `Question.jsx` to save 3–8ms per render cycle.
+  - **Elimination of `React.memo` Busting**: Memoized `navigationState` in `SolvePage.jsx` to prevent unnecessary re-renders and MathJax DOM rescanning during calculator or state updates.
+  - **Dark Mode Design System Tokens**: Standardized hardcoded Tailwind gray/white palette classes in `AnswerPanel.jsx` and `PaginationControls.jsx` using semantic CSS tokens (`--color-surface`, `--color-surface-muted`, `--color-border`, `--color-text`).
+  - **Horizontal Scroll Gesture Disambiguation**: Updated touch detection in `SolvePage.jsx` to ignore horizontally scrollable containers (`table`, `pre`, `code`, `mjx-container`, `.overflow-x-auto`), preventing accidental page swiping while scrolling wide tables or equations.
+
 ## 2026-08-14
 
 ### Added
@@ -26,7 +64,6 @@
   - **NAT Virtual Keypad & Keyboard Input Sanitization (P1)**: Enforced strict numeric regex validation (`/^-?\d*\.?\d*$/`) across physical keystrokes and virtual keypad clicks.
   - **In-Progress Mock Attempt Backup (P1)**: Included active in-progress exams from `sessionStorage` in `workspaceFile.js` JSON exports/imports for zero data loss during workspace backups.
 
-### Fixed
 - **Performance Insights Mathematical Integrity & Logical Audit**:
   - **Metric Semantic Collision (Bug 2.1)**: Disambiguated unique questions attempted (`questions tried`) from total submission attempts (`of N submissions`) on top overview cards.
   - **Unweighted Subject Accuracy (Bug 2.2)**: Replaced unweighted arithmetic mean with true weighted overall accuracy (`totalCorrectAttempts / totalAttemptedCount`).

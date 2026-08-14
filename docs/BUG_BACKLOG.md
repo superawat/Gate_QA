@@ -33,6 +33,58 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-MOCK-OPT-01: Mock Test Subsystem Full Optimization & Data-Integrity Hardening (AUG-008 & AUG-010)
+
+- Status: Fixed on 2026-08-14
+- Severity: High
+- Source: Inferred / Engine Audit
+- Where:
+  `src/contexts/MockTestContext.tsx`
+  `src/components/MockTest/MockTestHeader.jsx`
+  `src/components/MockTest/MockTestQuestion.jsx`
+  `src/components/MockTest/MockTestShell.jsx`
+  `src/components/MockTest/MockTestSetup.jsx`
+  `src/components/MockTest/MockTestResults.jsx`
+  `src/utils/mockTestHistory.js`
+  `src/utils/workspaceFile.js`
+- Root Cause:
+  (1) Active 1-second countdown ticks lived in `MockTestContext`, causing every consuming component (MathJax equations, question stems, option selectors, and palette tiles) to re-render each second; (2) `patchSetupState` in `MockTestShell` checked `next._structuredSubtopics` (undefined), wiping all selected subtopics when toggling subjects; (3) `splitByCatalogSection` only recognized `section === "CS"`, dropping DA questions from generated mock pools; (4) Timer accumulated single-question time during browser sleep/tab switch; (5) Mock submissions did not log attempts to `gateqa_progress_v1`; (6) NAT allowed invalid non-numeric inputs; (7) In-progress exams in `sessionStorage` were missing from workspace JSON backup exports.
+- Resolution:
+  Decoupled countdown timer into `MockTimerContext` + `useMockTimer()`, isolating updates strictly to `MockTimerDisplay`. Wrapped HTML/LaTeX sanitization in `useMemo` in `MockTestQuestion.jsx`. Connected `patchSetupState` directly to `structuredTags?.structuredSubtopics`. Grouped DA core questions in `splitByCatalogSection`. Capped question timer delta to visible seconds (max 5s). Unified practice progress writes on mock submit. Enforced strict `/^-?\d*\.?\d*$/` NAT regex. Captured `sessionStorage` active mock attempts in `workspaceFile.js`. Added async start exam loading state, `"Practice Missed Questions"` action button, and expanded mock history limit to 50 attempts.
+- Verification:
+  57 Vitest test files (365 tests) passing; TypeScript typecheck passing with 0 errors.
+
+### BUG-INSIGHTS-OPT-01: Performance Insights Mathematical Integrity & Option C Multi-Branch Architecture (AUG-006 & AUG-009)
+
+- Status: Fixed on 2026-08-14
+- Severity: High
+- Source: Observed / Mathematical Audit
+- Where:
+  `src/pages/InsightsPage.jsx`
+  `src/utils/weakTopicAnalyzer.js`
+  `src/components/Insights/MockHistoryPanel.jsx`
+- Root Cause:
+  (1) Unique attempted questions (`bucket.attemptedQuestions`) vs total historical attempts (`bucket.correctAttempts`) caused top summary card metric collision; (2) Unweighted arithmetic mean distorted overall user accuracy; (3) Multi-colon DA subtopic slugs (`da:linear-algebra:matrices`) broke practice filter URL navigation; (4) Multi-subject tagged questions risked overcounting in unique attempt totals; (5) Unbounded `Math.max(...array)` spreads risked call stack overflow; (6) Broad keyword matching falsely classified CSE Math as DA; (7) Mock history chart only recorded marks if `q.section === "CS"`, zeroing DA mock core subject marks.
+- Resolution:
+  Standardized top card metrics (`questions tried` vs `of N submissions`); computed weighted `overallAccuracyRate`; preserved explicit `subtopicSlug` across all buckets; deduplicated unique attempt count via `Set`; replaced `Math.max` spreads with `.reduce()`; enforced strict `da:` / `da-` prefix validation in `isSubjectInTrack`; generalized `MockHistoryPanel` to `coreScore` across all non-GA sections; implemented 0ms memoized caching and shallow object copying in `weakTopicAnalyzer.js`. Added Track Selector pills (`cs`, `da`, `all`) and activated `YearCoverageGrid` and `YearAccuracyTrend`.
+- Verification:
+  All Insights unit tests passing (`InsightsPage.test.jsx`, `weakTopicAnalyzer.test.js`). 0ms cached re-computations.
+
+### BUG-NAT-TF-1767: Question go:1767 NAT True/False Rendering Bug (AUG-007)
+
+- Status: Fixed on 2026-08-14
+- Severity: Medium
+- Source: User Report
+- Where:
+  `src/components/Practice/AnswerPanel.jsx`
+  `src/components/MockTest/MockTestQuestion.jsx`
+- Root Cause:
+  Question `go:1767` (GATE CSE 2014 Set 1 Q9, NAT with answer `16383`) had corrupted tags (`gatecse-2016-set2`, `gate1992`, `gate1994`, `true-false`) from GateOverflow cross-references, causing the UI to render boolean True/False buttons instead of a numeric keypad.
+- Resolution:
+  Sanitized corrupted tags from `go:1767` in source data and regenerated detail shards/search indexes. Hardened `AnswerPanel.jsx` and `MockTestQuestion.jsx` with defense-in-depth checks: True/False rendering is restricted strictly to legacy papers (<= 1994) with binary answers (`0` or `1`); non-binary NAT questions always render standard numeric input and keypad.
+- Verification:
+  Unit tests in `AnswerPanel.test.jsx` and `MockTestQuestion.test.jsx` passing.
+
 ### BUG-DA-CSE-COLLISION: DA/CSE Classification & Year Filter Collision Resolution
 
 - Status: Fixed on 2026-08-13

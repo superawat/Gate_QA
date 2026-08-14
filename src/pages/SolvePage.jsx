@@ -9,6 +9,7 @@ import Question from "../components/Question/Question";
 import LoadingState from "../components/Loaders/LoadingState";
 import CalculatorWidget from "../components/Calculator/CalculatorWidget";
 import CalculatorButton from "../components/Calculator/CalculatorButton";
+import MobileSolveActionBar from "../components/Practice/MobileSolveActionBar";
 import { MathRuntimeProvider } from "../components/Math/MathRuntime";
 import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
@@ -54,7 +55,7 @@ const SolvePage = ({
     aptitudeEnabled = false,
     aptitudeLoading = false,
   } = useFilterState();
-  const { getQuestionById, isQuestionSolved, isQuestionBookmarked } = useFilterActions();
+  const { getQuestionById, isQuestionSolved, isQuestionBookmarked, toggleBookmark, getQuestionProgressId } = useFilterActions();
   const {
     sessionMode,
     sessionQueue,
@@ -132,24 +133,33 @@ const SolvePage = ({
 
     // When opening a question directly without active explore filters, seed the session
     // with all questions from the same exam paper/set cohort or allQuestions so the student
-    // has continuous previous/next navigation instead of a 1-question dead-end.
-    if (Array.isArray(allQuestions) && allQuestions.length > 1) {
-      const targetYearSet = indexedQuestion?.exam?.yearSetKey || indexedQuestion?.yearSetKey;
-      const sameCohort = targetYearSet
-        ? allQuestions.filter((q) => (q.exam?.yearSetKey || q.yearSetKey) === targetYearSet)
-        : [];
-      const cohortPool = sameCohort.length > 1 ? sameCohort : allQuestions;
-      startOrderedSession(cohortPool, questionUid);
-      return;
-    }
+    // has a multi-question solve queue rather than a single-item dead-end.
+    const activeService = isDaQuestion(indexedQuestion)
+      ? DaQuestionService
+      : isAptitudeQuestion
+        ? AptitudeQuestionService
+        : questionService;
 
-    startOrderedSession([indexedQuestion], questionUid);
+    const paperQuestions = typeof activeService?.getQuestionsByYearSet === "function"
+      && (indexedQuestion.yearSetKey || indexedQuestion.exam?.year)
+      ? activeService.getQuestionsByYearSet(indexedQuestion.yearSetKey || indexedQuestion.exam?.year)
+      : [];
+
+    const seedQuestions = paperQuestions.length > 1
+      ? paperQuestions
+      : filteredQuestions.length > 1
+        ? filteredQuestions
+        : [indexedQuestion];
+
+    startOrderedSession(seedQuestions, questionUid);
   }, [
     filteredQuestions,
     hasExploreContext,
     indexedQuestion,
+    isAptitudeQuestion,
     isInitialized,
     questionExistsInFilteredPool,
+    questionService,
     questionUid,
     sessionContainsQuestion,
     sessionMode,
@@ -184,30 +194,27 @@ const SolvePage = ({
       : isAptitudeQuestion
         ? AptitudeQuestionService
         : questionService;
-    detailService.ensureQuestionDetail(indexedQuestion)
+
+    detailService
+      .ensureQuestionDetail(indexedQuestion)
       .then((questionDetail) => {
         if (!active) {
           return;
         }
-        setResolvedQuestion(questionDetail);
+        setResolvedQuestion(questionDetail || indexedQuestion);
+        setQuestionDetailError("");
       })
-      .catch((detailError) => {
+      .catch((err) => {
         if (!active) {
           return;
         }
-
-        if (isUnavailableQuestionDetailError(detailError)) {
-          const replacementQuestion = removeQuestionFromSession(questionUid);
-          if (replacementQuestion?.question_uid && replacementQuestion.question_uid !== questionUid) {
-            navigate({
-              pathname: buildSolvePath(replacementQuestion.question_uid),
-              search: activeSearch,
-            }, { replace: true });
-            return;
-          }
+        if (isUnavailableQuestionDetailError(err)) {
+          setResolvedQuestion(indexedQuestion);
+          setQuestionDetailError("");
+        } else {
+          setResolvedQuestion(null);
+          setQuestionDetailError(err?.message || "Failed to load question detail");
         }
-
-        setQuestionDetailError(detailError.message || "Unable to load question detail.");
       })
       .finally(() => {
         if (active) {
@@ -218,215 +225,333 @@ const SolvePage = ({
     return () => {
       active = false;
     };
-  }, [
-    activeSearch,
-    indexedQuestion,
-    isAptitudeQuestion,
-    navigate,
-    questionDetailRequestNonce,
-    questionService,
-    questionUid,
-    removeQuestionFromSession,
-  ]);
+  }, [indexedQuestion, isAptitudeQuestion, questionDetailRequestNonce, questionService, questionUid]);
+
+  const navigateToQuestion = useCallback((targetQuestionUid) => {
+    if (!targetQuestionUid) {
+      return;
+    }
+
+    const nextPath = buildSolvePath(targetQuestionUid);
+    navigate(
+      {
+        pathname: nextPath,
+        search: activeSearch,
+      },
+      {
+        state: location.state,
+      }
+    );
+  }, [activeSearch, location.state, navigate]);
+
+  const handleGoPrevious = useCallback(() => {
+    const previous = goToPreviousQuestion(questionUid);
+    const targetUid = typeof previous === "string" ? previous : previous?.question_uid;
+    if (targetUid) {
+      navigateToQuestion(targetUid);
+    }
+  }, [goToPreviousQuestion, navigateToQuestion, questionUid]);
+
+  const handleGoNext = useCallback(() => {
+    const next = goToNextQuestion(questionUid);
+    const targetUid = typeof next === "string" ? next : next?.question_uid;
+    if (targetUid) {
+      navigateToQuestion(targetUid);
+    }
+  }, [goToNextQuestion, navigateToQuestion, questionUid]);
+
+  const handleBackToResults = useCallback(() => {
+    const parsedPage = parsePageParam(activeSearch);
+    navigate(
+      {
+        pathname: PRACTICE_ROUTE,
+        search: activeSearch,
+      },
+      {
+        state: {
+          fromQuestionUid: questionUid,
+          fromPage: parsedPage,
+          preservePage: true,
+        },
+      }
+    );
+  }, [activeSearch, navigate, questionUid]);
+
+  const retryCurrentQuestionDetail = useCallback(() => {
+    setQuestionDetailRequestNonce((previous) => previous + 1);
+  }, []);
+
+  const activeQuestion = resolvedQuestion || indexedQuestion;
+  const activeProgressId = activeQuestion ? (typeof getQuestionProgressId === "function" ? getQuestionProgressId(activeQuestion) : activeQuestion.question_uid) : null;
+  const isTargetBookmarked = activeProgressId ? isQuestionBookmarked(activeProgressId) : false;
+
+  const handleMobileToggleBookmark = useCallback(() => {
+    if (activeQuestion && toggleBookmark) {
+      toggleBookmark(activeQuestion);
+      if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+        try { navigator.vibrate(15); } catch (_) {}
+      }
+    }
+  }, [activeQuestion, toggleBookmark]);
+
+  const handleMobileShare = useCallback(async () => {
+    const targetUid = activeQuestion?.question_uid || questionUid;
+    if (!targetUid) return;
+
+    const solvePath = buildSolvePath(targetUid);
+    const url = `${window.location.origin}${solvePath}`;
+    const shareTitle = activeQuestion?.title || `GATE Question ${targetUid}`;
+
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: "Practice this GATE question on GateQA:",
+          url,
+        });
+        return;
+      } catch (err) {
+        if (err.name === "AbortError") return;
+      }
+    }
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      void navigator.clipboard.writeText(url);
+    }
+  }, [activeQuestion?.question_uid, activeQuestion?.title, questionUid]);
 
   useEffect(() => {
-    if (!questionUid) {
+    if (typeof window === "undefined" || !questionUid) {
       return;
     }
 
     writeLastSession({
-      route: `${buildSolvePath(questionUid)}${activeSearch || ""}`,
-      exploreSearch: activeSearch || "",
-      resultPage: parsePageParam(activeSearch, 1),
-      questionUid,
-      mode: sessionMode || (hasExploreContext ? "ordered" : "direct"),
+      route: `${buildSolvePath(questionUid)}${activeSearch}`,
+      label: `Question ${questionUid}`,
+      timestamp: Date.now(),
     });
-  }, [activeSearch, hasExploreContext, questionUid, sessionMode]);
-
-  const handleBackToResults = useCallback(() => {
-    navigate({
-      pathname: PRACTICE_ROUTE,
-      search: activeSearch,
-    });
-  }, [activeSearch, navigate]);
-
-  const handleGoPrevious = useCallback(() => {
-    const previousQuestion = goToPreviousQuestion(questionUid);
-    if (!previousQuestion?.question_uid) {
-      return;
-    }
-
-    navigate({
-      pathname: buildSolvePath(previousQuestion.question_uid),
-      search: activeSearch,
-    });
-  }, [activeSearch, goToPreviousQuestion, navigate, questionUid]);
-
-  const handleGoNext = useCallback(() => {
-    const nextQuestion = goToNextQuestion(questionUid);
-    if (!nextQuestion?.question_uid) {
-      return;
-    }
-
-    navigate({
-      pathname: buildSolvePath(nextQuestion.question_uid),
-      search: activeSearch,
-    });
-  }, [activeSearch, goToNextQuestion, navigate, questionUid]);
+  }, [activeSearch, questionUid]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
+      if (shouldIgnorePlainShortcut(event)) {
+        return;
+      }
+
       const shortcutKey = getShortcutKey(event);
 
-      if ((event.ctrlKey || event.metaKey) && shortcutKey === "k") {
+      if (shortcutKey === "j" || shortcutKey === "ArrowDown") {
+        event.preventDefault();
+        window.scrollBy({ top: 120, behavior: "smooth" });
+        return;
+      }
+
+      if (shortcutKey === "k" || shortcutKey === "ArrowUp") {
+        event.preventDefault();
+        window.scrollBy({ top: -120, behavior: "smooth" });
+        return;
+      }
+
+      if (shortcutKey === "c") {
         event.preventDefault();
         setIsCalculatorOpen((previous) => !previous);
         return;
       }
 
-      if (event.key === "Escape") {
+      if (shortcutKey === "n" || shortcutKey === "ArrowRight") {
+        event.preventDefault();
+        if (navigationState.canGoNext) {
+          handleGoNext();
+        }
+        return;
+      }
+
+      if (shortcutKey === "p" || shortcutKey === "ArrowLeft") {
+        event.preventDefault();
+        if (navigationState.canGoPrevious) {
+          handleGoPrevious();
+        }
+        return;
+      }
+
+      if (shortcutKey === "Escape" && isCalculatorOpen) {
+        event.preventDefault();
         setIsCalculatorOpen(false);
-        return;
-      }
-
-      if (shouldIgnorePlainShortcut(event)) {
-        return;
-      }
-
-      if (event.key === "ArrowLeft" && navigationState.canGoPrevious) {
-        event.preventDefault();
-        handleGoPrevious();
-        return;
-      }
-
-      if (event.key === "ArrowRight" && navigationState.canGoNext) {
-        event.preventDefault();
-        handleGoNext();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleGoNext, handleGoPrevious, navigationState.canGoNext, navigationState.canGoPrevious]);
+  }, [
+    handleGoNext,
+    handleGoPrevious,
+    isCalculatorOpen,
+    navigationState.canGoNext,
+    navigationState.canGoPrevious,
+  ]);
 
-  const retryCurrentQuestionDetail = () => {
-    setQuestionDetailRequestNonce((value) => value + 1);
+  const handleQuestionTouchStart = (e) => {
+    if (e.touches && e.touches.length === 1) {
+      touchStartRef.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+      };
+    }
   };
 
-  const handleQuestionTouchStart = useCallback((event) => {
-    const touch = event.touches?.[0];
-    if (!touch) {
-      touchStartRef.current = null;
+  const handleQuestionTouchEnd = (e) => {
+    if (!touchStartRef.current || !e.changedTouches || e.changedTouches.length === 0) {
       return;
     }
 
-    const interactiveTarget = event.target instanceof Element
-      ? event.target.closest("button, a, input, textarea, select, label")
-      : null;
-
-    if (interactiveTarget) {
-      touchStartRef.current = null;
-      return;
-    }
-
-    touchStartRef.current = {
-      x: touch.clientX,
-      y: touch.clientY,
+    const touchEnd = {
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY,
     };
-  }, []);
 
-  const handleQuestionTouchEnd = useCallback((event) => {
-    const startPoint = touchStartRef.current;
-    touchStartRef.current = null;
-
-    const touch = event.changedTouches?.[0];
-    if (!startPoint || !touch) {
-      return;
-    }
-
-    const navigationIntent = resolveHorizontalSwipeNavigation({
-      startX: startPoint.x,
-      startY: startPoint.y,
-      endX: touch.clientX,
-      endY: touch.clientY,
+    const action = resolveHorizontalSwipeNavigation({
+      startX: touchStartRef.current.x,
+      startY: touchStartRef.current.y,
+      endX: touchEnd.x,
+      endY: touchEnd.y,
+      canGoNext: navigationState.canGoNext,
+      canGoPrevious: navigationState.canGoPrevious,
     });
 
-    if (navigationIntent === "next") {
-      handleGoNext();
-      return;
-    }
+    touchStartRef.current = null;
 
-    if (navigationIntent === "previous") {
+    if (action === "NEXT") {
+      handleGoNext();
+    } else if (action === "PREVIOUS") {
       handleGoPrevious();
     }
-  }, [handleGoNext, handleGoPrevious]);
+  };
 
-  const questionYearLabel = resolvedQuestion?.exam?.label || indexedQuestion?.yearSetLabel || "Unknown";
-  const questionSubjectLabel = resolvedQuestion?.subjectLabel
-    || indexedQuestion?.subjectLabel
-    || questionService.getSubjectLabelBySlug(resolvedQuestion?.subjectSlug || indexedQuestion?.subjectSlug || "");
-  const questionSubtopicLabel = (
-    Array.isArray(resolvedQuestion?.subtopics) && resolvedQuestion.subtopics[0]?.label
-      ? resolvedQuestion.subtopics[0].label
-      : Array.isArray(indexedQuestion?.subtopics) && indexedQuestion.subtopics[0]?.label
-        ? indexedQuestion.subtopics[0].label
-        : ""
-  );
-  const questionType = getDisplayQuestionTypeLabel(resolvedQuestion || indexedQuestion);
-  const isSolved = resolvedQuestion ? isQuestionSolved(resolvedQuestion) : indexedQuestion ? isQuestionSolved(indexedQuestion) : false;
-  const isBookmarked = resolvedQuestion ? isQuestionBookmarked(resolvedQuestion) : indexedQuestion ? isQuestionBookmarked(indexedQuestion) : false;
-  const navigationSummary = navigationState.total > 0
-    ? `${navigationState.index + 1} of ${navigationState.total}`
-    : "Standalone";
-  const navigationContextLabel = sessionMode === "random"
-    ? "Random practice session"
-    : hasExploreContext
-      ? "Ordered result flow"
-      : "Direct question link";
-  const heroMetaChips = (
-    <>
-      <span className="rounded-full bg-[color:var(--color-neutral-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-neutral-text)]">
-        {questionYearLabel}
-      </span>
-      <span className="rounded-full bg-[color:var(--color-info-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-info-text)]">
-        {questionSubjectLabel}
-      </span>
-      {isDaQuestion(resolvedQuestion || indexedQuestion) ? (
-        <span className="rounded-full bg-violet-100 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-violet-800">GATE DA</span>
-      ) : null}
-      {questionSubtopicLabel ? (
-        <span className="rounded-full bg-[color:var(--color-success-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold tracking-[0.04em] text-[color:var(--color-success-text)]">
-          {questionSubtopicLabel}
+  const navigationSummary = useMemo(() => {
+    if (navigationState.totalInQueue <= 0 || navigationState.currentIndex < 0) {
+      return "Question details";
+    }
+
+    return `Question ${navigationState.currentIndex + 1} of ${navigationState.totalInQueue}`;
+  }, [navigationState.currentIndex, navigationState.totalInQueue]);
+
+  const navigationContextLabel = useMemo(() => {
+    if (navigationState.mode === "ordered") {
+      return "Current filtered queue";
+    }
+
+    return "Random session";
+  }, [navigationState.mode]);
+
+  const heroMetaChips = useMemo(() => {
+    const targetQuestion = resolvedQuestion || indexedQuestion;
+    if (!targetQuestion) {
+      return null;
+    }
+
+    const chips = [];
+    const questionProgressId = typeof getQuestionProgressId === "function" ? getQuestionProgressId(targetQuestion) : targetQuestion.question_uid;
+    const isSolved = isQuestionSolved(questionProgressId);
+    const isBookmarked = isQuestionBookmarked(questionProgressId);
+
+    const yearSetText = targetQuestion.yearSetLabel
+      || (targetQuestion.exam?.year
+        ? `GATE ${targetQuestion.exam.year}${targetQuestion.exam.set ? ` Set ${targetQuestion.exam.set}` : ""}`
+        : targetQuestion.year
+          ? `GATE ${targetQuestion.year}`
+          : "");
+
+    if (yearSetText) {
+      chips.push(
+        <span
+          key="year-set"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+        >
+          {yearSetText}
         </span>
-      ) : null}
-      {questionType ? (
-        <span className="rounded-full bg-[color:var(--color-purple-soft)] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-purple-text)]">
-          {questionType}
+      );
+    }
+
+    const typeLabel = getDisplayQuestionTypeLabel(targetQuestion);
+    if (typeLabel) {
+      chips.push(
+        <span
+          key="type"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+        >
+          {typeLabel}
         </span>
-      ) : null}
-      {isSolved ? (
-        <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700">
-          <FaCheckCircle className="text-emerald-600" />
+      );
+    }
+
+    const marksValue = targetQuestion.marks
+      || targetQuestion.mark
+      || targetQuestion.answer_meta?.marks
+      || targetQuestion.answer_meta?.mark;
+
+    if (marksValue) {
+      chips.push(
+        <span
+          key="marks"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+        >
+          {marksValue} {Number(marksValue) === 1 ? "Mark" : "Marks"}
+        </span>
+      );
+    }
+
+    const subjectLabel = targetQuestion.subjectLabel || targetQuestion.subject;
+    if (subjectLabel) {
+      chips.push(
+        <span
+          key="subject"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+        >
+          {subjectLabel}
+        </span>
+      );
+    }
+
+    if (isSolved) {
+      chips.push(
+        <span
+          key="solved"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center gap-1 rounded-lg border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-success-text)]"
+        >
+          <FaCheckCircle className="text-[color:var(--color-success-text)]" />
           Solved
         </span>
-      ) : null}
-      {isBookmarked ? (
-        <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">
-          <FaStar className="text-amber-500" />
-          Saved
+      );
+    }
+
+    if (isBookmarked) {
+      chips.push(
+        <span
+          key="bookmarked"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center gap-1 rounded-lg border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-warning-text)]"
+        >
+          <FaStar className="text-[color:var(--color-warning-text)]" />
+          Bookmarked
         </span>
-      ) : null}
-    </>
-  );
+      );
+    }
+
+    return chips;
+  }, [getQuestionProgressId, indexedQuestion, isQuestionBookmarked, isQuestionSolved, resolvedQuestion]);
+
+  const questionSubjectLabel = resolvedQuestion?.subjectLabel || resolvedQuestion?.subject || indexedQuestion?.subjectLabel || indexedQuestion?.subject || "Computer Science";
+  const questionYearLabel = resolvedQuestion?.yearSetLabel || (resolvedQuestion?.year ? `GATE ${resolvedQuestion.year}` : "") || indexedQuestion?.yearSetLabel || (indexedQuestion?.year ? `GATE ${indexedQuestion.year}` : "") || "GATE CSE";
 
   return (
     <MathRuntimeProvider>
       <SEOHead
-        title={resolvedQuestion
-          ? `${questionYearLabel} ${questionSubjectLabel} — ${resolvedQuestion.title || questionUid} | GateQA`
-          : `GATE Question ${questionUid} | GateQA`}
-        description={resolvedQuestion
-          ? `Practice and solve this ${questionYearLabel} ${questionSubjectLabel} GATE CS question${questionSubtopicLabel ? ` on ${questionSubtopicLabel}` : ""}. Free offline practice on GateQA.`
+        title={resolvedQuestion?.title
+          ? `${resolvedQuestion.title} — ${questionSubjectLabel} — GATE Practice | GateQA`
+          : indexedQuestion?.title
+          ? `${indexedQuestion.title} — GATE Practice | GateQA`
+          : `Question ${questionUid} — GATE Practice | GateQA`}
+        description={resolvedQuestion?.question
+          ? String(resolvedQuestion.question).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160)
           : "Practice GATE CS previous year questions with detailed solutions on GateQA."}
         path={`/practice/question/${encodeURIComponent(questionUid)}`}
         schemaOrg={resolvedQuestion ? [
@@ -445,7 +570,11 @@ const SolvePage = ({
           })
         ] : []}
       />
-      <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
+      <PageShell
+        showMobileBottomNav={false}
+        onResume={hasResumeRoute ? onResumePractice : null}
+        resumeLabel="Continue"
+      >
         <section className="space-y-4">
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
             <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
@@ -578,6 +707,21 @@ const SolvePage = ({
             </div>
           )}
         </section>
+
+        {resolvedQuestion ? (
+          <MobileSolveActionBar
+            canGoPrevious={navigationState.canGoPrevious}
+            canGoNext={navigationState.canGoNext}
+            onPrevious={handleGoPrevious}
+            onNext={handleGoNext}
+            isBookmarked={isTargetBookmarked}
+            onToggleBookmark={handleMobileToggleBookmark}
+            onToggleCalculator={() => setIsCalculatorOpen((prev) => !prev)}
+            isCalculatorOpen={isCalculatorOpen}
+            onShare={handleMobileShare}
+            navigationSummary={navigationSummary}
+          />
+        ) : null}
       </PageShell>
     </MathRuntimeProvider>
   );

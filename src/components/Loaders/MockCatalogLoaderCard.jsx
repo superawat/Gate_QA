@@ -5,7 +5,7 @@ import CsTopicLoader from "./CsTopicLoader";
 const MockCatalogLoaderCard = ({
   label = "",
 }) => (
-  <div className="mocktest-root flex h-screen w-full items-center justify-center bg-[#dcebf9] p-6">
+  <div className="mocktest-root flex h-[100dvh] w-full items-center justify-center bg-[#dcebf9] p-6">
     <div className="w-full max-w-md rounded-lg border border-[#c5d4e2] bg-white p-6 shadow-sm sm:p-7">
       <CsTopicLoader
         label={label}

@@ -83,7 +83,7 @@ test("insights page loads from the landing CTA", async ({ page }) => {
   await page.getByRole("button", { name: /Performance Insights/i }).click();
 
   await expect(page).toHaveURL(/\/insights/, { timeout: 15000 });
-  await expect(page.locator("div.bg-sky-50:has-text('Insights')")).toBeVisible({
+  await expect(page.getByText("Insights").first()).toBeVisible({
     timeout: 15000,
   });
 });

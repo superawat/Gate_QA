@@ -8,10 +8,11 @@ const PageShell = ({
   children,
   contentClassName = "",
   showFooter = true,
+  showMobileBottomNav = true,
   onResume = null,
   resumeLabel = "",
 }) => (
-  <div className="flex min-h-screen min-w-0 flex-col overflow-x-hidden bg-[color:var(--color-bg)] text-[color:var(--color-text)]">
+  <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-hidden bg-[color:var(--color-bg)] text-[color:var(--color-text)]">
     <a
       href="#main-content"
       className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-xl focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
@@ -21,11 +22,11 @@ const PageShell = ({
     <AppHeader onResume={onResume} resumeLabel={resumeLabel} />
     <main
       id="main-content"
-      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 pt-6 pb-24 sm:px-6 md:pb-6 lg:px-8 ${contentClassName}`}
+      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 pt-6 ${showMobileBottomNav ? "pb-24" : "pb-24 md:pb-6"} sm:px-6 md:pb-6 lg:px-8 ${contentClassName}`}
     >
       {children}
     </main>
-    <MobileBottomNav />
+    {showMobileBottomNav ? <MobileBottomNav /> : null}
     {showFooter ? <Footer /> : null}
   </div>
 );

@@ -226,6 +226,28 @@ const GlobalNavigationDrawer = ({
     ? location.search
     : "";
 
+  const touchStartXRef = useRef(null);
+  const touchStartYRef = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartXRef.current = e.touches[0]?.clientX ?? null;
+    touchStartYRef.current = e.touches[0]?.clientY ?? null;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartXRef.current === null) return;
+    const endX = e.changedTouches[0]?.clientX ?? touchStartXRef.current;
+    const endY = e.changedTouches[0]?.clientY ?? touchStartYRef.current;
+    const diffX = endX - touchStartXRef.current;
+    const diffY = Math.abs(endY - (touchStartYRef.current || endY));
+
+    if (diffX < -50 && Math.abs(diffX) > diffY) {
+      onClose();
+    }
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+  };
+
   return (
     <div
       className={`gateqa-global-drawer fixed inset-0 z-[70] transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
@@ -246,6 +268,8 @@ const GlobalNavigationDrawer = ({
         aria-modal="true"
         aria-label="Global navigation"
         tabIndex={-1}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         className={`gateqa-drawer-panel nav-drawer absolute left-0 top-0 flex h-[100dvh] w-[min(92vw,380px)] flex-col bg-[color:var(--color-surface)] border-r border-[color:var(--color-border)] shadow-2xl transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
@@ -419,7 +443,23 @@ const GlobalNavigationDrawer = ({
             )}
           </section>
 
-
+          {/* 4. Editorial Pages */}
+          {EDITORIAL_PAGES?.length > 0 && (
+            <section className="space-y-2" aria-labelledby="global-editorial-heading">
+              <h2 id="global-editorial-heading" className={sectionHeadingClassName}>Study Guides</h2>
+              {EDITORIAL_PAGES.map((page) => (
+                <Link
+                  key={page.slug}
+                  to={`/study-guide/${page.slug}`}
+                  onClick={onClose}
+                  className={actionButtonClassName}
+                >
+                  <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+                  <span className="truncate">{page.title}</span>
+                </Link>
+              ))}
+            </section>
+          )}
 
           {/* 5. Feedback */}
           <section className="space-y-2" aria-labelledby="global-feedback-heading">

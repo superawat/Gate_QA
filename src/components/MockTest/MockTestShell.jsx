@@ -1197,18 +1197,18 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         </div>
     );
 
-    if (!isDesktop) {
+    if (!isDesktop && (step === "exam" || step === "review")) {
         return (
-            <div className="mocktest-root flex h-screen w-full items-center justify-center bg-[#dcebf9] p-6 text-center">
-                <div className="w-full max-w-md rounded-lg border border-[#c5d4e2] bg-white p-6 shadow-sm">
-                    <h2 className="text-xl font-bold text-[#223549]">Try on desktop</h2>
-                    <p className="mt-2 text-sm text-[#5f7285]">
-                        Mock Test currently requires a minimum width of 1024px.
+            <div className="mocktest-root flex h-[100dvh] w-full items-center justify-center bg-[color:var(--color-surface-muted)] p-6 text-center">
+                <div className="w-full max-w-md rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-xl">
+                    <h2 className="text-xl font-bold text-[color:var(--color-text)]">Try on desktop</h2>
+                    <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
+                        Mock Test timed exam interface currently requires a minimum width of 1024px to accurately simulate the official GATE TCS iON layout.
                     </p>
                     <button
                         type="button"
                         onClick={handleExitToLanding}
-                        className="mt-4 rounded border border-[#aebccc] bg-white px-4 py-2 text-sm font-semibold text-[#223549] hover:bg-[#f0f5f9]"
+                        className="mt-5 inline-flex min-h-[44px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2 text-sm font-semibold text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] shadow-sm transition"
                     >
                         Back to Modes
                     </button>

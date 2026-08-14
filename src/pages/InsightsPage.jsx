@@ -426,13 +426,13 @@ const SubjectRadarChart = ({ data = [] }) => {
         </div>
       )}
 
-      <div className="h-[320px] w-full">
+      <div className="h-[320px] w-full overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="72%">
+          <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="65%">
             <PolarGrid stroke={chartTheme.grid} strokeWidth={1} strokeDasharray="3 3" />
             <PolarAngleAxis
               dataKey="subject"
-              tick={{ fontSize: 11, fill: chartTheme.tick, fontWeight: 500 }}
+              tick={{ fontSize: 10, fill: chartTheme.tick, fontWeight: 500 }}
             />
             <PolarRadiusAxis
               domain={[0, 100]}
@@ -1913,10 +1913,10 @@ const InsightsPage = ({
     <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
       <section className="space-y-5">
         {/* Hero header */}
-        <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.16),_transparent_42%),linear-gradient(135deg,#ffffff_0%,#f8fbff_100%)] p-4 shadow-[var(--shadow-card)] sm:p-5">
+        <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-card)] sm:p-5">
           <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
             <div className="flex flex-wrap xl:flex-nowrap items-center gap-4">
-              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 shrink-0">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary-soft)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-primary-text)] shrink-0">
                 <FaChartLine />
                 Insights
               </div>
@@ -1926,7 +1926,7 @@ const InsightsPage = ({
             <div className="shrink-0 ml-auto lg:ml-0">
               <Link
                 to={PRACTICE_ROUTE}
-                className="inline-flex min-h-[40px] items-center rounded-xl bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+                className="inline-flex min-h-[40px] items-center rounded-xl bg-[color:var(--color-primary)] px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm"
               >
                 <FaCompass className="mr-2" />
                 Open Practice
@@ -1966,11 +1966,11 @@ const InsightsPage = ({
           <>
             {/* Multi-Branch Option C Track Switcher */}
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-              <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-sm">
+              <div className="inline-flex w-full sm:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-sm">
                 <button
                   type="button"
                   onClick={() => handleTrackChange("cs")}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
                     selectedTrack === "cs"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -1982,7 +1982,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("da")}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
                     selectedTrack === "da"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -1994,7 +1994,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("all")}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
                     selectedTrack === "all"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"

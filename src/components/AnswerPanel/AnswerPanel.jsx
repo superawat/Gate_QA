@@ -176,22 +176,34 @@ export default function AnswerPanel({
     progressStorageKeys?.progress,
   ]);
 
+  const triggerHaptic = (duration = 15) => {
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+      try {
+        navigator.vibrate(duration);
+      } catch (_) {}
+    }
+  };
+
   const handleToggleSolved = useCallback(() => {
     if (isStatusActionDisabled) return;
+    triggerHaptic();
     toggleSolved(question);
   }, [isStatusActionDisabled, question, toggleSolved]);
 
   const handleToggleBookmark = useCallback(() => {
     if (isStatusActionDisabled) return;
+    triggerHaptic();
     toggleBookmark(question);
   }, [isStatusActionDisabled, question, toggleBookmark]);
 
   const handleMcqSelect = (option) => {
+    triggerHaptic();
     setMcqSelection(option);
     setResult(null);
   };
 
   const handleMsqToggle = (option, checked) => {
+    triggerHaptic();
     if (checked) {
       setMsqSelection((prev) => [...prev, option]);
     } else {
@@ -249,12 +261,27 @@ export default function AnswerPanel({
     document.body.removeChild(textarea);
   };
 
-  const handleShare = useCallback(() => {
+  const handleShare = useCallback(async () => {
     const questionId = question.question_uid || "";
     if (!questionId) return;
 
     const solvePath = buildSolvePath(questionId);
     const url = `${window.location.origin}${solvePath}`;
+    const shareTitle = question.title || `GATE Question ${questionId}`;
+
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: "Practice this GATE question on GateQA:",
+          url,
+        });
+        trackEvent("share_question_native", { question_uid: questionId });
+        return;
+      } catch (err) {
+        if (err.name === "AbortError") return;
+      }
+    }
 
     const showToast = () => {
       setToastVisible(true);
@@ -513,7 +540,7 @@ export default function AnswerPanel({
                   onChange={handleNatChange}
                   placeholder="Enter numeric answer"
                   aria-keyshortcuts="Enter"
-                  className="w-full min-h-[44px] rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full min-h-[44px] rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-base sm:text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               )}
             </div>

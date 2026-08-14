@@ -287,8 +287,8 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
     <div className="fixed inset-0 z-[120] pointer-events-none">
       <section
         ref={panelRef}
-        className={`absolute pointer-events-auto overflow-hidden border border-gray-200 bg-white shadow-2xl ${panelTransitionClass} ${panelAnimationClass} ${isMobile
-          ? "inset-0 h-screen w-screen rounded-none"
+        className={`absolute pointer-events-auto overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-2xl ${panelTransitionClass} ${panelAnimationClass} ${isMobile
+          ? "inset-0 h-[100dvh] w-full rounded-none"
           : "h-[340px] w-[470px] rounded-xl"
           }`}
         style={panelPositionStyle}
@@ -297,15 +297,15 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
         aria-label="Scientific calculator"
       >
         <header
-          className={`flex items-center justify-between border-b border-gray-200 px-4 py-2.5 ${isMobile ? "cursor-default" : "cursor-move"
+          className={`flex items-center justify-between border-b border-[color:var(--color-border)] px-4 py-2.5 ${isMobile ? "cursor-default pt-[calc(0.625rem+env(safe-area-inset-top,0px))]" : "cursor-move"
             }`}
           onMouseDown={beginDrag}
         >
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">
+            <h3 className="text-sm font-semibold text-[color:var(--color-text)]">
               GATE Scientific Calculator
             </h3>
-            <p className="text-[11px] text-gray-600">
+            <p className="text-[11px] text-[color:var(--color-text-muted)]">
               {isMobile ? "Mobile mode" : "Drag by header on desktop"}
             </p>
           </div>
@@ -315,7 +315,7 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
               ref={closeButtonRef}
               type="button"
               onClick={onClose}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-800"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition-colors hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)]"
               aria-label="Close calculator"
             >
               <FaTimes />
@@ -323,22 +323,22 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
           </div>
         </header>
 
-        <div className="relative h-[calc(100%-41px)] w-full bg-gray-50">
+        <div className="relative h-[calc(100%-41px)] w-full bg-[color:var(--color-surface-muted)]">
           {isLoading && (
             <LoadingState
               label="Loading calculator..."
               size="md"
-              className="absolute inset-0 z-10 bg-white/80"
-              textClassName="text-sm font-medium text-gray-700"
+              className="absolute inset-0 z-10 bg-[color:var(--color-surface)]/80"
+              textClassName="text-sm font-medium text-[color:var(--color-text)]"
             />
           )}
 
           {hasFrameError && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-white px-4 text-center">
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-[color:var(--color-surface)] px-4 text-center">
               <p className="text-sm font-semibold text-amber-700">
                 Unable to render the calculator in this view.
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-[color:var(--color-text-muted)]">
                 Try closing and reopening it.
               </p>
             </div>

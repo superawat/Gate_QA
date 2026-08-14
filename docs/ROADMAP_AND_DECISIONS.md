@@ -24,6 +24,30 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-019: Mobile UI Subsystem & Responsive Touch Ergonomics Overhaul (FEAT-035)
+- Status: Delivered (2026-08-15)
+- Priority: P1
+- Decision:
+  Harden mobile viewport ergonomics and responsiveness across all core views while strictly isolating desktop/web layouts (`≥768px`). Standardize `100vh` to `100dvh` to eliminate mobile browser dynamic address bar jumping. Configure `viewport-fit=cover` and dynamic `<meta name="theme-color">` synchronizer. Implement scroll-reactive auto-collapsing app header on mobile (`-translate-y-full md:translate-y-0`) and horizontal touch swipe-to-dismiss gesture on the navigation drawer. Hide generic bottom navigation tabs on the active Solve route (`/practice/question/:id`) and introduce a dedicated sticky mobile solve action bar (`MobileSolveActionBar.jsx`) with Previous, Bookmark, Calculator toggle, Native Share (`navigator.share`), and Next controls with safe-area padding. Provide a mobile Backup & Sync dropdown in `ProgressManager.jsx` and enable mobile users to browse `MockTestPortal.jsx` catalogs, year cards, setup parameters, and review results on small viewports.
+- Why:
+  Mobile GATE aspirants frequently practice on smartphones during commutes or quick study sessions. Addressing dynamic viewport clipping, cramped tap targets, double bottom navigation bars, and lack of mobile backup tools dramatically improves mobile UX without introducing any regressions to the desktop 1:1 exam and practice experiences.
+
+### DEC-018: Mock Test Subsystem Full Optimization & Data-Integrity Hardening (FEAT-034)
+- Status: Delivered (2026-08-14)
+- Priority: P0
+- Decision:
+  Decouple the 1-second exam countdown timer into a dedicated `MockTimerContext` and `useMockTimer()` hook, isolating tick updates strictly to `MockTimerDisplay`. Memoize HTML sanitization and LaTeX parsing with `useMemo` in `MockTestQuestion.jsx`. Preserve the frozen 1:1 TCS iON CBT exam UI replica invariant (min 1024px desktop constraint). Connect Custom Builder subtopic filtering to live filter state, enable GATE DA core question pool grouping, unify practice progress writes on mock submit, enforce strict NAT input regex, back up active in-progress exams to workspace JSON exports, and expand test series history retention to 50 attempts.
+- Why:
+  Active timer ticks were triggering 60 FPS re-render storms across MathJax equations, question stems, and palette tiles. Decoupling the timer eliminates this overhead without altering any visual layout. Subtopic and DA pool fixes ensure accurate custom test creation and multi-branch parity.
+
+### DEC-017: Performance Insights Multi-Branch Option C Architecture & 0ms Memoization (FEAT-033)
+- Status: Delivered (2026-08-14)
+- Priority: P0
+- Decision:
+  Adopt Option C (Unified Effort + Track-Scoped Analytics): maintain global continuous streak, XP, active days, and streak freezes across the platform while dynamically scoping subject mastery, focus areas, mistakes, and review queues via a track selector (`cs`, `da`, `all`). Re-use in-memory `FilterContext.allQuestions` to power 0ms memoized caching in `weakTopicAnalyzer.js` and eliminate duplicate search index fetches. Activate previously orphaned `YearCoverageGrid` and `YearAccuracyTrend` components.
+- Why:
+  Blending CSE and DA progress distorted syllabus completion metrics, while siloed user profiles broke daily study habit continuity. Option C unifies student effort while providing pinpoint accuracy for syllabus mastery.
+
 ### DEC-007: Local-First Additive-Only Cloud Sync Architecture (FEAT-032)
 - Status: Delivered
 - Priority: P0
@@ -132,11 +156,9 @@ This file is the working backlog for future product improvements and important d
 | FEAT-029 | P2 | Done | Add offline/PWA support | Shell-first service worker, manifest, and offline fallback are now shipped |
 | FEAT-030 | P1 | Done | Implement Practice Preference Toggles | Added shuffle and filter toggles to Explore page, syncing filters/pool and branching sessions |
 | FEAT-031 | P1 | Done | Custom Mock Test Builder advanced options | Shipped subtopic selection accordion, dynamic custom duration clamping, and live summary details |
-<<<<<<< Updated upstream
-| FEAT-032 | P1 | Planned | Optional Google Sign-In & Multi-Device Cloud Sync | Supabase auth integration with zero-data-loss union-merge algorithm (`feat/user-auth-supabase`) |
-=======
 | FEAT-032 | P0 | Done | User Auth & Bi-directional Cloud Sync | Shipped optional Google OAuth, additive union-merge sync engine, offline queue, hardened RLS, and streak tracking |
->>>>>>> Stashed changes
+| FEAT-033 | P0 | Done | Performance Insights Multi-Branch Engine & Caching | Track selector pills (`cs`/`da`/`all`), weighted accuracy, 0ms memoized caching, and activated Year analytics |
+| FEAT-034 | P0 | Done | Mock Test Subsystem Optimization & Data-Integrity | Timer Context Decoupling, LaTeX memoization, subtopic wipe fix, DA pool splitting, in-progress backup, and practice missed drill |
 
 ## What We Can Improve Right Now
 

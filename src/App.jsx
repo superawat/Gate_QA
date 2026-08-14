@@ -67,8 +67,8 @@ const SupportPage = lazy(() => import("./pages/SupportPage"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
-  <div className="min-h-screen bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
-    <div className="mx-auto flex max-w-7xl justify-center rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-white p-10 shadow-[var(--shadow-card)]">
+  <div className="min-h-[100dvh] bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto flex max-w-7xl justify-center rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
       <LoadingState
         label={label}
         size="lg"
@@ -626,7 +626,7 @@ const AppRuntime = () => {
 
   if (isIsolatedMockRoute) {
     return (
-      <div className="min-h-screen bg-[color:var(--color-bg)]">
+      <div className="min-h-[100dvh] bg-[color:var(--color-bg)]">
         <MockBranch
           loadQuestions={loadQuestions}
           questionBankManifest={questionBankManifest}
@@ -637,7 +637,7 @@ const AppRuntime = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[color:var(--color-bg)]">
+    <div className="min-h-[100dvh] bg-[color:var(--color-bg)]">
       <FilterProvider
         initialManifest={questionBankManifest}
         questionDataRevision={questionDataRevision}

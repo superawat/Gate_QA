@@ -49,24 +49,29 @@ npm run typecheck
 
 ## Context contract (mandatory)
 
-`FilterContext` is split:
-
+### FilterContext (split)
 - `useFilterState()` for reactive state reads
 - `useFilterActions()` for callbacks
+- `useFilters()` no longer exists and must not be reintroduced.
+- All frontend filter components are expected to consume one or both of the split hooks.
 
-`useFilters()` no longer exists and must not be reintroduced.
+### MockTestContext & Timer Context (split for 60 FPS performance)
+- `useMockTest()`: Primary hook providing global exam state, question navigation, response submission, and section switching.
+- `useMockTimer()`: Dedicated hook subscribing to `MockTimerContext` (`{ timeLeft }`). Used exclusively by `MockTimerDisplay` in `MockTestHeader.jsx` to isolate 1-second interval countdown ticks and prevent re-render cascades across question stems, MathJax LaTeX equations, option choices, and the question palette during active exams.
 
-All frontend filter components are expected to consume one or both of the split hooks.
+### Performance Insights & In-Memory Questions Contract
+- `InsightsPage` passes in-memory `allQuestions` from `useFilterState()` directly into `loadWeakTopicInsights(options)`.
+- `weakTopicAnalyzer.js` uses an in-memory hash cache returning memoized analytics within 0ms when practice attempts and question banks have not changed.
+- Track scoping (`cs`, `da`, `all`) uses strict `da:` / `da-` prefix validation via `isSubjectInTrack()`.
 
-`App` route shell contract:
-
+## App route shell contract
 - `BrowserRouter` uses `import.meta.env.BASE_URL` as the basename.
 - `/mock` renders through an isolated top-level branch with its own `FilterProvider`.
-- all non-mock routes render through the shared practice tree:
+- All non-mock routes render through the shared practice tree:
   - `FilterProvider`
   - `SessionProvider`
   - `PracticeRoutes`
-- mock setup/exam must never share session effects with practice mode.
+- Mock setup/exam must never share session effects with practice mode.
 
 ### Route map
 
@@ -240,6 +245,77 @@ Rules:
 - Mock setup sub-pages expose a `Back to Modes` control that returns to the mock mode selection screen without leaving `/mock`.
 - In mock review/results, `AMBIGUOUS` and `MARKS_TO_ALL` records are shown as auto-awarded bonus questions; they require no response and should not be styled as ordinary correct MCQ/MSQ/NAT answers.
 
+## Responsive and Mobile Ergonomics (AUG-012)
+
+- **Dynamic Viewport Height (`100dvh`)**: Standardized across `PageShell`, `CalculatorWidget`, `MockTestShell`, `MockTestResults`, and modals to prevent dynamic address bar jumps on mobile browsers.
+- **Safe-Area Insets**: Uses `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)` with `viewport-fit=cover` in `index.html` for notch and home-indicator protection.
+- **Scroll-Reactive Header (`AppHeader.jsx`)**: Auto-collapses on scroll down on mobile viewports while remaining firmly pinned on desktop (`-translate-y-full md:translate-y-0`).
+- **Drawer Swipe-to-Dismiss (`GlobalNavigationDrawer.jsx`)**: Supports horizontal swipe-to-dismiss gesture (`diffX < -50`) with vertical scroll disambiguation.
+- **Selective Bottom Navigation (`PageShell.jsx`)**: Provides `showMobileBottomNav` prop (defaults `true`). Disabled (`false`) on the active `/practice/question/:id` route to eliminate double navigation bars.
+- **Sticky Solve Action Bar (`MobileSolveActionBar.jsx`)**: Dedicated bottom toolbar for active problem solving with Previous, Bookmark, Calculator toggle, Native Share (`navigator.share`), and Next controls with safe-area padding.
+- **Haptic Feedback**: Integrates `triggerHaptic(15)` on option selection, solve toggling, bookmarking, and answer evaluation.
+- **MathJax & Code Touch Scrolling**: Touch horizontal scrolling (`-webkit-overflow-scrolling: touch`) configured for `mjx-container`, `MathJax`, and code blocks.
+- **Mobile Mock Catalog Access**: Mobile users can browse `MockTestPortal` catalogs, year cards, setup configuration, and review results on small screens, while active 3-hour timed exams remain restricted to desktop viewports (`≥1024px`).
+- **Icon Tray**: Standardized across viewports for solved/bookmark/share actions.
+
+## Deep-link and URL behavior
+
+Supported params:
+
+- `mode`
+- `question`
+- `years`
+- `subjects`
+- `subtopics`
+- `range`
+- `types`
+- `search`
+- `hideSolved`
+- `showOnlySolved`
+- `showOnlyBookmarked`
+
+Rules:
+
+- URL is managed without React Router (History API only).
+- Filter changes are auto-applied and synced via `replaceState`.
+- `question` param is preserved during filter writes.
+- Share action in `AnswerPanel` writes deep-link URL with `question=<uid>`.
+- Landing resolver priority (one-shot on mount):
+  1. `?question=<uid>` -> practice (always wins)
+  2. `?mode=` (`random`, `targeted`, `resume`, `mock`)
+  3. any filter param (`years`, `subjects`, `subtopics`, `range`, `types`, `search`) -> practice
+  4. fallback -> landing
+- Landing start actions write `?mode=` using `replaceState` only (never `pushState`).
+- `mode=random` must call `clearFilters()` before entering practice.
+- `mode=targeted` sets one-shot auto-open `FilterModal` on first practice render.
+- `mode=resume` must preserve the current practice/question/filter context and must not clear filters.
+- Search writes must preserve `question` while updating `search` and must remove `search` when cleared.
+- Legacy unknown non-mock `mode=` values still route to practice for backward compatibility, but they should not be used for new links.
+
+## Persistence keys
+
+- `gate_qa_solved_questions`
+- `gate_qa_bookmarked_questions`
+- `gate_qa_progress_metadata`
+- `gateqa_progress_v1` (attempt metadata)
+- `gateqa-apt-solved-questions` (isolated aptitude progress)
+- `gateqa-apt-bookmarked-questions` (isolated aptitude progress)
+- `gateqa-aptitude-enabled` (unified toggle state)
+- `gate_qa_theme`
+- `gate_qa_mock_attempt_v1`
+- `gateqa_mock_palette_collapsed`
+
+## Theme contract
+
+- Theme preference is controlled from `AppHeader`.
+- The selected theme is written to `gate_qa_theme`.
+- `document.documentElement[data-theme]` is the single source of truth for CSS theme application.
+- If no preference is stored, the app falls back to `prefers-color-scheme`.
+- `/mock` is always forced to light mode and does not expose the dark-mode toggle.
+- Home, Practice, and Insights have a completed dark-mode readability pass; keep primary dark-mode blue buttons at WCAG-readable contrast with white text.
+- Mock setup sub-pages expose a `Back to Modes` control that returns to the mock mode selection screen without leaving `/mock`.
+- In mock review/results, `AMBIGUOUS` and `MARKS_TO_ALL` records are shown as auto-awarded bonus questions; they require no response and should not be styled as ordinary correct MCQ/MSQ/NAT answers.
+
 ## Responsive notes
 
 - `PageShell` now reserves space for the mobile bottom navigation bar.
@@ -250,9 +326,10 @@ Rules:
   - type toggles
   - topic/year columns
   - year range footer
-- Explore page supports pull-to-refresh on touch devices.
+- Explore page supports pull-to-refresh on touch devices, with side-by-side grid action buttons (`grid grid-cols-2`) on small mobile screens.
 - Solve page supports horizontal swipe navigation between questions in an ordered/random session.
-- `AnswerPanel` collapses into a more compact mobile workspace instead of forcing the full desktop layout.
+- `AnswerPanel` collapses into a compact mobile layout with native Web Share API (`navigator.share()`) support, tactile `triggerHaptic(15)` vibration feedback on interactions, and clipboard copy fallback.
+- Viewport uses `viewport-fit=cover` in `index.html` for safe-area notch displays.
 - Calculator behavior:
   - desktop: draggable floating panel
   - mobile: full-screen panel

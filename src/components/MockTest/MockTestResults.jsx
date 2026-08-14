@@ -386,7 +386,7 @@ const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
     }, [questions, summary?.perQuestionResult]);
 
     return (
-        <div className="mocktest-root flex h-screen w-full flex-col items-center bg-gray-50 px-4 py-6 text-gray-800">
+        <div className="mocktest-root flex min-h-[100dvh] w-full flex-col items-center bg-gray-50 px-4 py-6 text-gray-800">
             <div className="w-full max-w-5xl rounded-xl border border-gray-200 bg-white p-5 shadow-lg">
                 <h2 className="mb-1 text-center text-2xl font-bold text-[#125B9A]">Exam Submitted Successfully</h2>
                 <p className="mb-5 border-b pb-4 text-center text-sm text-gray-500">
