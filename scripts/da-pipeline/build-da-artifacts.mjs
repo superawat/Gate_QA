@@ -255,13 +255,13 @@ export async function buildDaPublicArtifacts() {
       source: "gateda",
     });
   }
-  writeJson(DA_MOCK_CATALOG_PATH, {
+  const mockCatalog = {
     generatedAt,
     version: "da-mock-v1",
     papers: mockPapers.sort((left, right) => right.year - left.year),
     byQuestionUid: mockByQuestionUid,
     scorableQuestionUids: Object.entries(mockByQuestionUid).filter(([, meta]) => meta.scorable).map(([uid]) => uid),
-  });
+  };
 
   const existingManifest = readJson(DA_MANIFEST_PATH, null);
   if (existingManifest && sameGeneratedContent(existingManifest, manifest)) {
@@ -269,6 +269,13 @@ export async function buildDaPublicArtifacts() {
     for (const shard of shards.values()) shard.generatedAt = existingManifest.generatedAt;
     searchIndex.generatedAt = existingManifest.generatedAt;
   }
+
+  const existingCatalog = readJson(DA_MOCK_CATALOG_PATH, null);
+  if (existingCatalog && sameGeneratedContent(existingCatalog, mockCatalog)) {
+    mockCatalog.generatedAt = existingCatalog.generatedAt;
+  }
+
+  writeJson(DA_MOCK_CATALOG_PATH, mockCatalog);
 
   ensureDir(DA_SHARDS_DIR);
   for (const fileName of fs.readdirSync(DA_SHARDS_DIR, { withFileTypes: true })) {

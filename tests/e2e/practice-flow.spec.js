@@ -122,6 +122,7 @@ test("share button copies a deep-link URL", async ({ context, page }) => {
     return navigator.clipboard.readText();
   });
 
-  expect(copiedText).toContain("?question=");
   expect(copiedText).toContain("/practice/question/");
+  expect(copiedText).toContain(encodeURIComponent(sampleQuestion.question_uid));
+  expect(copiedText).not.toContain("?question=");
 });

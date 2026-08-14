@@ -30,7 +30,14 @@ export function readJson(filePath, fallback = null) {
 
 export function writeJson(filePath, payload) {
   ensureDir(path.dirname(filePath));
-  fs.writeFileSync(filePath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  const content = `${JSON.stringify(payload, null, 2)}\n`;
+  if (fs.existsSync(filePath)) {
+    const existing = fs.readFileSync(filePath, "utf8");
+    if (existing.replace(/\r\n/g, "\n") === content.replace(/\r\n/g, "\n")) {
+      return;
+    }
+  }
+  fs.writeFileSync(filePath, content, "utf8");
 }
 
 export function decodeHtmlEntities(value = "") {
