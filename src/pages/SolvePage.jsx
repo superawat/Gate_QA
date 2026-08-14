@@ -74,7 +74,7 @@ const SolvePage = ({
   const activeSearch = location.search;
   const hasExploreContext = Boolean(activeSearch);
   const questionExistsInFilteredPool = filteredQuestions.some((question) => question.question_uid === questionUid);
-  const navigationState = getNavigationState(questionUid);
+  const navigationState = useMemo(() => getNavigationState(questionUid), [getNavigationState, questionUid]);
   const sessionContainsQuestion = sessionQueue.includes(questionUid);
   const sessionSourceMatchesFilteredPool = useMemo(() => {
     if (!hasExploreContext || sourceQuestionUids.length === 0 || filteredQuestions.length === 0) {
@@ -127,6 +127,19 @@ const SolvePage = ({
     // session queue has proper prev/next navigation instead of a dead-end.
     if (questionExistsInFilteredPool && filteredQuestions.length > 1) {
       startOrderedSession(filteredQuestions, questionUid);
+      return;
+    }
+
+    // When opening a question directly without active explore filters, seed the session
+    // with all questions from the same exam paper/set cohort or allQuestions so the student
+    // has continuous previous/next navigation instead of a 1-question dead-end.
+    if (Array.isArray(allQuestions) && allQuestions.length > 1) {
+      const targetYearSet = indexedQuestion?.exam?.yearSetKey || indexedQuestion?.yearSetKey;
+      const sameCohort = targetYearSet
+        ? allQuestions.filter((q) => (q.exam?.yearSetKey || q.yearSetKey) === targetYearSet)
+        : [];
+      const cohortPool = sameCohort.length > 1 ? sameCohort : allQuestions;
+      startOrderedSession(cohortPool, questionUid);
       return;
     }
 

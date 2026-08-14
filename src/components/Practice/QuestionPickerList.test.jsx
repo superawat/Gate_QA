@@ -6,6 +6,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 
 import QuestionPickerList from "./QuestionPickerList";
+import { QuestionService } from "../../services/QuestionService";
 
 describe("QuestionPickerList", () => {
   test("renders filtered questions as a direct picker list", () => {
@@ -31,6 +32,36 @@ describe("QuestionPickerList", () => {
     fireEvent.click(screen.getByRole("button", { name: /gate cse 2026 \| question: 1/i }));
     expect(handleOpenQuestion).toHaveBeenCalledTimes(1);
     expect(handleOpenQuestion.mock.calls[0][0].question_uid).toBe("go:1");
+  });
+
+  test("prefetches question details on pointer enter and touch start", () => {
+    const ensureSpy = vi.spyOn(QuestionService, "ensureQuestionDetail").mockResolvedValue({});
+
+    render(
+      <QuestionPickerList
+        questions={[
+          {
+            question_uid: "go:1",
+            title: "GATE CSE 2026 | Question: 1",
+            yearSetLabel: "2026 Set 1",
+            subjectLabel: "Algorithms",
+            type: "mcq",
+          },
+        ]}
+        pageStartIndex={0}
+        onOpenQuestion={() => {}}
+      />
+    );
+
+    const row = screen.getByRole("button", { name: /gate cse 2026 \| question: 1/i });
+    fireEvent.pointerEnter(row);
+    expect(ensureSpy).toHaveBeenCalledWith(expect.objectContaining({ question_uid: "go:1" }));
+
+    ensureSpy.mockClear();
+    fireEvent.touchStart(row);
+    expect(ensureSpy).toHaveBeenCalledWith(expect.objectContaining({ question_uid: "go:1" }));
+
+    ensureSpy.mockRestore();
   });
 
   test("falls back to canonical subject when subjectLabel is stale or missing", () => {

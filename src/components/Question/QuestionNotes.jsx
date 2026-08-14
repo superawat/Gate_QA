@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaPlus, FaSave, FaStickyNote, FaTrash } from "react-icons/fa";
 import { enqueueChange } from "../../utils/syncQueue";
+import { MathContent } from "../Math/MathRuntime";
 
 const STORAGE_KEY = "gate_qa_user_notes";
 
@@ -145,7 +146,7 @@ function QuestionNotes({ storageKey }) {
             <textarea
               className="w-full resize-y rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] transition focus:border-[color:var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary)]"
               rows={4}
-              placeholder="Add your personal notes, mnemonics, or explanations here..."
+              placeholder="Add your personal notes, formulas, or explanations here (supports LaTeX e.g. $O(n \log n)$)..."
               value={note}
               onChange={(event) => setNote(event.target.value)}
               autoFocus
@@ -173,9 +174,9 @@ function QuestionNotes({ storageKey }) {
             </div>
           </div>
         ) : (
-          <div className="prose prose-sm prose-slate max-w-none dark:prose-invert">
-            <p className="whitespace-pre-wrap text-[color:var(--color-text)]">{note}</p>
-          </div>
+          <MathContent as="div" dynamic className="prose prose-sm max-w-none dark:prose-invert text-[color:var(--color-text)]">
+            <p className="whitespace-pre-wrap">{note}</p>
+          </MathContent>
         )}
       </div>
     </div>

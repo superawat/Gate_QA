@@ -56,22 +56,6 @@ const ExplorePage = ({
     [filteredQuestions, startIndex]
   );
 
-  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
-  const prevPageRef = useRef(currentPage);
-  const transitionTimerRef = useRef(null);
-
-  useEffect(() => {
-    if (prevPageRef.current !== currentPage && isInitialized && filteredQuestions.length > 0) {
-      setIsPageTransitioning(true);
-      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-      transitionTimerRef.current = setTimeout(() => setIsPageTransitioning(false), 350);
-    }
-    prevPageRef.current = currentPage;
-    return () => {
-      if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-    };
-  }, [currentPage, filteredQuestions.length, isInitialized]);
-
   useEffect(() => {
     if (requestedPage !== currentPage) {
       navigate(
@@ -83,6 +67,12 @@ const ExplorePage = ({
       );
     }
   }, [currentPage, location.search, navigate, requestedPage]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [currentPage]);
 
   useEffect(() => {
     if (!isInitialized) {
@@ -180,9 +170,15 @@ const ExplorePage = ({
 
       setIsPullRefreshing(true);
       trackEvent("pull_to_refresh", { source: "explore" });
-      window.setTimeout(() => {
-        window.location.reload();
-      }, 240);
+      if (typeof loadQuestions === "function") {
+        Promise.resolve(loadQuestions())
+          .catch(() => {})
+          .finally(() => {
+            setIsPullRefreshing(false);
+          });
+      } else {
+        setIsPullRefreshing(false);
+      }
     };
 
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
@@ -194,7 +190,7 @@ const ExplorePage = ({
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [isMobileFilterOpen, isPullRefreshing, pullDistance]);
+  }, [isMobileFilterOpen, isPullRefreshing, loadQuestions, pullDistance]);
 
   const handleOpenFilters = useCallback(() => {
     trackEvent("filter_open", { source: "explore" });
@@ -477,7 +473,7 @@ const ExplorePage = ({
               </div>
             </div>
 
-            {/* ── Practice mode toggles ──────────────────────────────────── */}
+            {/* ── Practice mode toggles ────────────────────────────────────────────────────────── */}
             <div className="practice-mode-toggles mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-slate-100 pt-3">
               <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
                 Practice mode
@@ -500,7 +496,7 @@ const ExplorePage = ({
                 {shufflePractice ? "Shuffled" : "In Order"}
               </button>
 
-                                          {/* Apply-filters toggle � only shown when filters are active */}
+                                          {/* Apply-filters toggle — only shown when filters are active */}
               {activeFilterCount > 0 && (
                 <button
                   type="button"
@@ -512,7 +508,7 @@ const ExplorePage = ({
                       ? "border-amber-300 bg-amber-50 text-amber-700"
                       : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"
                   }`}
-                  title={applyFiltersToPractice ? `Practicing ${filteredQuestions.length} filtered questions � click to practice all` : `Practicing all ${allQuestions.length} questions � click to restrict to filters`}
+                  title={applyFiltersToPractice ? `Practicing ${filteredQuestions.length} filtered questions — click to practice all` : `Practicing all ${allQuestions.length} questions — click to restrict to filters`}
                 >
                   <FaFilter className="text-[10px]" aria-hidden="true" />
                   {applyFiltersToPractice ? `Filters applied (${filteredQuestions.length})` : `All questions (${allQuestions.length})`}
@@ -557,20 +553,22 @@ const ExplorePage = ({
               />
             </div>
           ) : filteredQuestions.length === 0 ? (
-            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 text-center shadow-[var(--shadow-soft)]">
-              <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No questions match these filters.</h2>
-              <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
-                Try removing one or two filters, broadening the year range, or clearing the search text.
-              </p>
-            </div>
-          ) : isPageTransitioning ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
-              <LoadingState
-                label="Loading page..."
-                size="md"
-                className="min-h-[200px]"
-                textClassName="text-sm text-slate-500"
-              />
+            <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 text-center shadow-[var(--shadow-soft)] space-y-4">
+              <div>
+                <h2 className="text-xl font-semibold text-[color:var(--color-text)]">No questions match these filters.</h2>
+                <p className="mt-2 text-sm text-[color:var(--color-text-muted)]">
+                  Try removing one or two filters, broadening the year range, or clearing the search text.
+                </p>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-95"
+                >
+                  Reset All Filters
+                </button>
+              </div>
             </div>
           ) : (
             <>

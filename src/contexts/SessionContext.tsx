@@ -60,6 +60,7 @@ interface SessionFilterStateShape extends FilterStateShape {
     solvedQuestionIds?: string[];
     activeSolvedQuestionIds?: string[];
     filters?: { hideSolved?: boolean };
+    questionByUidMap?: Map<string, QuestionRow>;
 }
 
 const SessionContext = createContext<SessionContextValue | null>(null);
@@ -428,7 +429,7 @@ export const useSession = () => {
 };
 
 export const SessionProvider = ({ children }: { children: React.ReactNode }) => {
-    const { allQuestions = [], solvedQuestionIds = [], activeSolvedQuestionIds = [], filters } = useFilterState() as SessionFilterStateShape;
+    const { allQuestions = [], solvedQuestionIds = [], activeSolvedQuestionIds = [], filters, questionByUidMap: filterQuestionMap } = useFilterState() as SessionFilterStateShape;
     const solvedIds = activeSolvedQuestionIds || solvedQuestionIds;
     const solvedSet = useMemo(() => new Set<string>(solvedIds), [solvedIds]);
     const solvedSetRef = useRef(solvedSet);
@@ -439,6 +440,9 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     const activeQuestionMapRef = useRef<Map<string, QuestionRow>>(new Map());
 
     const questionMap = useMemo(() => {
+        if (filterQuestionMap && filterQuestionMap instanceof Map && filterQuestionMap.size > 0) {
+            return filterQuestionMap;
+        }
         const map = new Map<string, QuestionRow>();
         allQuestions.forEach((question: QuestionRow) => {
             const uid = String(question?.question_uid || '').trim();
@@ -447,7 +451,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
             }
         });
         return map;
-    }, [allQuestions]);
+    }, [allQuestions, filterQuestionMap]);
 
     const [sessionMode, setSessionMode] = useState<SessionMode>(null);
     const [sessionQueue, setSessionQueue] = useState<string[]>([]);
@@ -552,6 +556,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         }
 
         setCurrentIndex(nextIndex);
+        setShowExhaustionBanner(false);
         if (sessionMode === 'random') {
             seenThisSession.current.add(normalizedUid);
             rememberRandomQuestion(getQuestionByUid(normalizedUid));
@@ -567,8 +572,38 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         const normalizedUid = String(uid || '').trim();
         const resolvedIndex = findIndexForUid(sessionQueue, normalizedUid);
         const index = resolvedIndex >= 0 ? resolvedIndex : currentIndex;
-        const previousUid = index > 0 ? sessionQueue[index - 1] : null;
-        const nextUid = index < sessionQueue.length - 1 ? sessionQueue[index + 1] : null;
+        let previousUid = index > 0 ? sessionQueue[index - 1] : null;
+        let nextUid = index < sessionQueue.length - 1 ? sessionQueue[index + 1] : null;
+
+        if (hideSolvedRef.current && sessionMode === 'ordered') {
+            // Find previous unsolved question in queue
+            let pIdx = index - 1;
+            previousUid = null;
+            while (pIdx >= 0) {
+                const candidateUid = sessionQueue[pIdx];
+                const candidateQuestion = getQuestionByUid(candidateUid) || { question_uid: candidateUid } as QuestionRow;
+                const candidateTrackingId = getTrackingId(candidateQuestion);
+                if (!candidateTrackingId || !solvedSetRef.current.has(candidateTrackingId)) {
+                    previousUid = candidateUid;
+                    break;
+                }
+                pIdx--;
+            }
+
+            // Find next unsolved question in queue
+            let nIdx = index + 1;
+            nextUid = null;
+            while (nIdx < sessionQueue.length) {
+                const candidateUid = sessionQueue[nIdx];
+                const candidateQuestion = getQuestionByUid(candidateUid) || { question_uid: candidateUid } as QuestionRow;
+                const candidateTrackingId = getTrackingId(candidateQuestion);
+                if (!candidateTrackingId || !solvedSetRef.current.has(candidateTrackingId)) {
+                    nextUid = candidateUid;
+                    break;
+                }
+                nIdx++;
+            }
+        }
 
         return {
             mode: sessionMode,
@@ -579,7 +614,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
             canGoPrevious: !!previousUid,
             canGoNext: !!nextUid || (sessionMode === 'random' && sourceQuestionUids.length > 0),
         };
-    }, [currentIndex, sessionMode, sessionQueue, sourceQuestionUids.length]);
+    }, [currentIndex, getQuestionByUid, sessionMode, sessionQueue, sourceQuestionUids.length]);
 
     const rebuildRandomQueue = useCallback(() => {
         const sourcePool = sourceQuestionUids
@@ -617,9 +652,29 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
             return null;
         }
 
-        setCurrentIndex(Math.max(0, navigation.index - 1));
-        return getQuestionByUid(previousUid);
-    }, [getNavigationState, getQuestionByUid]);
+        let prevIndex = navigation.index - 1;
+        let prevUid = previousUid;
+
+        if (hideSolvedRef.current && sessionMode === 'ordered') {
+            while (prevIndex >= 0) {
+                const candidateUid = sessionQueue[prevIndex];
+                const candidateQuestion = getQuestionByUid(candidateUid) || { question_uid: candidateUid } as QuestionRow;
+                const candidateTrackingId = getTrackingId(candidateQuestion);
+                if (!candidateTrackingId || !solvedSetRef.current.has(candidateTrackingId)) {
+                    prevUid = candidateUid;
+                    break;
+                }
+                prevIndex--;
+            }
+            if (prevIndex < 0) {
+                return null;
+            }
+        }
+
+        setShowExhaustionBanner(false);
+        setCurrentIndex(Math.max(0, prevIndex));
+        return getQuestionByUid(prevUid);
+    }, [getNavigationState, getQuestionByUid, sessionMode, sessionQueue]);
 
     const goToNextQuestion = useCallback((uid = '') => {
         const navigation = getNavigationState(uid);
@@ -647,6 +702,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
                 }
             }
 
+            setShowExhaustionBanner(false);
             setCurrentIndex(nextIndex);
             if (sessionMode === 'random') {
                 seenThisSession.current.add(nextUid);

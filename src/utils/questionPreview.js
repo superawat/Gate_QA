@@ -18,7 +18,7 @@ export function formatExplorePreview(question = {}) {
 
   preview = collapseDisplayMath(preview);
 
-  if ((typeToken === "mcq" || typeToken === "msq") && !preview.endsWith("…")) {
+  if ((typeToken === "mcq" || typeToken === "msq") && !preview.endsWith("...") && !preview.endsWith("…")) {
     const questionMarkIndex = preview.lastIndexOf("?");
     if (questionMarkIndex >= 0 && questionMarkIndex < preview.length - 1) {
       preview = preview.slice(0, questionMarkIndex + 1).trim();

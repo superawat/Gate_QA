@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import DOMPurify from "dompurify";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import AnswerPanel from "../AnswerPanel/AnswerPanel";
@@ -18,12 +18,17 @@ function Question({
   canGoNext,
 }) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
-  const questionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(question.question || ""))
-    .replace(/\n\n/g, "<br />")
-    .replace(/\n<li>/g, "<br><li>");
-  const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtml);
-  const isMalformed = question.malformed || !sanitizedQuestionHtml.trim();
 
+  const sanitizedQuestionHtml = useMemo(() => {
+    const rawContent = question.question || "";
+    if (!rawContent) return "";
+    const questionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawContent))
+      .replace(/\n\n/g, "<br />")
+      .replace(/\n<li>/g, "<br><li>");
+    return DOMPurify.sanitize(questionHtml);
+  }, [question.question_uid, question.question]);
+
+  const isMalformed = question.malformed || !sanitizedQuestionHtml.trim();
   const questionProgressId = getQuestionProgressId(question);
   const isSolved = isQuestionSolved(questionProgressId);
   const isBookmarked = isQuestionBookmarked(questionProgressId);
@@ -54,7 +59,7 @@ function Question({
 
           {isMalformed ? (
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
-              <p className="text-sm font-semibold">⚠️ Question content unavailable</p>
+              <p className="text-sm font-semibold flex items-center gap-1.5"><span role="img" aria-label="warning">⚠️</span> Question content unavailable</p>
               <p className="mt-2 text-sm leading-6 text-amber-900">
                 This question could not be loaded — the source data may be missing or malformed.
                 {question.link ? (

@@ -1,67 +1,30 @@
-import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import { FaCheck, FaFlag, FaLink, FaRegStar, FaStar } from "react-icons/fa";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag } from "react-icons/fa";
+import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
+import { useSession } from "../../contexts/SessionContext";
+import { evaluateAnswer } from "../../utils/evaluateAnswer";
+import { trackEvent } from "../../utils/analytics";
+import Toast from "../Toast/Toast";
+import { getGateOverflowSolutionLink } from "../../utils/solutionLink";
+import { buildSolvePath } from "../../utils/routes";
+import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
-import { evaluateAnswer } from "../../utils/evaluateAnswer";
-import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
-import { useSession } from "../../contexts/SessionContext";
-import Toast from "../Toast/Toast";
-import { trackEvent } from "../../utils/analytics";
-import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 import { recordPracticeAttempt } from "../../utils/practiceProgress";
 import { enqueueChange } from "../../utils/syncQueue";
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from "../../utils/localStorageState";
 import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
 
-const DEFAULT_OPTIONS = ["A", "B", "C", "D"];
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
-
-const normalizeOptionLabel = (value) => String(value || "").trim().toUpperCase();
-
-const getAnswerRecordOptionLabels = (answerRecord = null) => {
-  const type = String(answerRecord?.type || "").trim().toUpperCase();
-  if (type === "MCQ") {
-    const label = normalizeOptionLabel(answerRecord?.answer);
-    return label ? [label] : [];
-  }
-  if (type === "MSQ" && Array.isArray(answerRecord?.answer)) {
-    return answerRecord.answer.map(normalizeOptionLabel).filter(Boolean);
-  }
-  return [];
-};
-
-const buildSelectableOptionLabels = (question = {}, answerRecord = null) => {
-  const labels = [];
-  const seen = new Set();
-  const addLabel = (rawLabel) => {
-    const label = normalizeOptionLabel(rawLabel);
-    if (!label || seen.has(label)) {
-      return;
-    }
-    seen.add(label);
-    labels.push(label);
-  };
-
-  (isDaQuestion(question) ? DaQuestionService.getNormalizedOptions(question) : QuestionService.getNormalizedOptions(question)).forEach((option) => {
-    addLabel(option?.label);
-  });
-
-  if (labels.length === 0) {
-    DEFAULT_OPTIONS.forEach(addLabel);
-  }
-
-  getAnswerRecordOptionLabels(answerRecord).forEach(addLabel);
-  return labels;
-};
 
 export default function AnswerPanel({
   question = {},
   onNextQuestion,
   onPreviousQuestion,
-  canGoPrevious,
-  canGoNext,
-  solutionLink,
+  canGoPrevious = false,
+  canGoNext = false,
+  solutionLink: passedSolutionLink,
 }) {
   const {
     toggleSolved,
@@ -70,29 +33,78 @@ export default function AnswerPanel({
     isQuestionBookmarked,
     getQuestionProgressId,
   } = useFilterActions();
-  const { progressStorageKeys, aptitudeProgressStorageKeys = APTITUDE_USER_STATE_STORAGE_KEYS, daProgressStorageKeys } = useFilterState();
+  const {
+    progressStorageKeys,
+    aptitudeProgressStorageKeys = APTITUDE_USER_STATE_STORAGE_KEYS,
+    daProgressStorageKeys,
+  } = useFilterState();
 
   const { goBack, canGoBack } = useSession();
   const canMovePrevious = typeof canGoPrevious === "boolean" ? canGoPrevious : canGoBack;
-  const canMoveNext = typeof canGoNext === "boolean" ? canGoNext : typeof onNextQuestion === "function";
+  const canMoveNext = typeof canGoNext === "boolean" ? canGoNext : false;
 
-  const questionIdentity = useMemo(
-    () => AnswerService.getQuestionIdentity(question),
+  const [mcqSelection, setMcqSelection] = useState("");
+  const [msqSelection, setMsqSelection] = useState([]);
+  const [natInput, setNatInput] = useState("");
+  const [result, setResult] = useState(null);
+
+  const questionOpenedAtRef = useRef(Date.now());
+
+  const storageKey = useMemo(
+    () => AnswerService.getStorageKeyForQuestion(question),
     [question]
   );
+  const questionProgressId = useMemo(
+    () => (typeof getQuestionProgressId === "function" ? getQuestionProgressId(question) : null) || storageKey,
+    [getQuestionProgressId, question, storageKey]
+  );
+
+  const isStatusActionDisabled = !questionProgressId;
+  const isSolved = isQuestionSolved(questionProgressId);
+  const isBookmarked = isQuestionBookmarked(questionProgressId);
+
   const answerRecord = useMemo(
-    () => isDaQuestion(question) ? DaQuestionService.getAnswerForQuestion(question) : AnswerService.getAnswerForQuestion(question),
+    () => (isDaQuestion(question) ? DaQuestionService.getAnswerForQuestion(question) : AnswerService.getAnswerForQuestion(question)),
     [question]
   );
-  const answerOptions = useMemo(
-    () => buildSelectableOptionLabels(question, answerRecord),
-    [question, answerRecord]
+
+  const questionIdentity = useMemo(() => {
+    const trackingId = questionProgressId || question.question_uid || question.id || "";
+    const parsedYear = Number(question.year || question.exam?.year);
+    const parsedQuestionNumber = Number(question.question_number || question.questionNumber);
+    const hasLegacyIdentity = Number.isFinite(parsedYear) && Number.isFinite(parsedQuestionNumber);
+    return {
+      hasIdentity: Boolean(trackingId || hasLegacyIdentity),
+      trackingId,
+    };
+  }, [question, questionProgressId]);
+
+  const solutionLink = useMemo(() => {
+    if (passedSolutionLink) {
+      return passedSolutionLink;
+    }
+    return getGateOverflowSolutionLink(question);
+  }, [passedSolutionLink, question]);
+
+  const isInteractive = Boolean(
+    answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type)
   );
+
+  const answerOptions = useMemo(() => {
+    if (!answerRecord) return [];
+    if (Array.isArray(answerRecord.options) && answerRecord.options.length > 0) {
+      return answerRecord.options;
+    }
+    if (["MCQ", "MSQ"].includes(answerRecord.type)) {
+      return ["A", "B", "C", "D"];
+    }
+    return [];
+  }, [answerRecord]);
+
   const isTrueFalse = useMemo(() => {
     if (answerRecord?.type !== "NAT") {
       return false;
     }
-    // True/False format only ever existed in early legacy exams (1987-1994)
     const yearMatch = String(question?.year || question?.yearSetKey || question?.title || "").match(/\b(19\d\d|20\d\d)\b/);
     const examYear = yearMatch ? parseInt(yearMatch[1], 10) : null;
     if (examYear && examYear > 1994) {
@@ -104,26 +116,8 @@ export default function AnswerPanel({
       return false;
     }
     const tags = question?.tags || [];
-    return Array.isArray(tags) && tags.some(t => String(t || "").toLowerCase().trim() === "true-false");
+    return Array.isArray(tags) && tags.some((t) => String(t || "").toLowerCase().trim() === "true-false");
   }, [question, answerRecord]);
-  const storageKey = useMemo(
-    () => AnswerService.getStorageKeyForQuestion(question),
-    [question]
-  );
-  const questionOpenedAtRef = useRef(Date.now());
-
-  const [mcqSelection, setMcqSelection] = useState("");
-  const [msqSelection, setMsqSelection] = useState([]);
-  const [natInput, setNatInput] = useState("");
-  const [result, setResult] = useState(null);
-  
-  const questionProgressId = useMemo(
-    () => getQuestionProgressId(question),
-    [question, getQuestionProgressId]
-  );
-  const isSolved = isQuestionSolved(questionProgressId);
-  const isBookmarked = isQuestionBookmarked(questionProgressId);
-  const isStatusActionDisabled = !questionProgressId;
 
   useEffect(() => {
     setMcqSelection("");
@@ -131,50 +125,28 @@ export default function AnswerPanel({
     setNatInput("");
     setResult(null);
     questionOpenedAtRef.current = Date.now();
-  }, [storageKey]);
+  }, [questionProgressId, question.question_uid]);
 
-  const handleToggleSolved = () => {
-    if (!questionProgressId) {
-      return;
-    }
-    toggleSolved(question);
-  };
+  const evaluateSubmission = useCallback(() => {
+    if (!isInteractive || !answerRecord) return;
 
-  const handleToggleBookmark = () => {
-    if (!questionProgressId) {
-      return;
-    }
-    toggleBookmark(question);
-  };
+    let payload = null;
+    if (answerRecord.type === "MCQ") payload = mcqSelection;
+    if (answerRecord.type === "MSQ") payload = msqSelection;
+    if (answerRecord.type === "NAT") payload = natInput;
 
-  const evaluateSubmission = () => {
-    let submission;
-    if (answerRecord.type === "MCQ") {
-      submission = mcqSelection;
-    } else if (answerRecord.type === "MSQ") {
-      submission = msqSelection;
-    } else {
-      submission = natInput;
-    }
-    const evaluation = evaluateAnswer(answerRecord, submission);
+    const evaluation = evaluateAnswer(answerRecord, payload);
     setResult(evaluation);
-    trackEvent("answer_submit", {
-      question_uid: question.question_uid || storageKey || "unknown",
-      type: answerRecord.type,
-      correct: evaluation.correct ? "yes" : "no",
-    });
 
-    // FEAT-011: Auto-mark solved on correct answer submit
-    if (evaluation.correct && questionProgressId && !isSolved) {
+    if (evaluation.correct && !isSolved && questionProgressId) {
       toggleSolved(question);
     }
 
     const submittedAt = new Date();
     recordPracticeAttempt({
-      storageKey,
-      correct: evaluation.correct,
-      type: answerRecord.type,
-      input: submission,
+      question,
+      evaluation,
+      input: payload,
       submittedAt: submittedAt.toISOString(),
       durationMs: submittedAt.getTime() - questionOpenedAtRef.current,
       progressStorageKey: isDaQuestion(question)
@@ -185,11 +157,34 @@ export default function AnswerPanel({
     });
     enqueueChange("SOLVE", {
       questionUid: storageKey,
-      correct: evaluation.correct,
+      evaluation,
       submittedAt: submittedAt.toISOString(),
     });
-    questionOpenedAtRef.current = submittedAt.getTime();
-  };
+  }, [
+    isInteractive,
+    answerRecord,
+    mcqSelection,
+    msqSelection,
+    natInput,
+    isSolved,
+    questionProgressId,
+    toggleSolved,
+    question,
+    daProgressStorageKeys?.progress,
+    storageKey,
+    aptitudeProgressStorageKeys?.progress,
+    progressStorageKeys?.progress,
+  ]);
+
+  const handleToggleSolved = useCallback(() => {
+    if (isStatusActionDisabled) return;
+    toggleSolved(question);
+  }, [isStatusActionDisabled, question, toggleSolved]);
+
+  const handleToggleBookmark = useCallback(() => {
+    if (isStatusActionDisabled) return;
+    toggleBookmark(question);
+  }, [isStatusActionDisabled, question, toggleBookmark]);
 
   const handleMcqSelect = (option) => {
     setMcqSelection(option);
@@ -221,7 +216,7 @@ export default function AnswerPanel({
   // --- Share Question ---
   const [toastVisible, setToastVisible] = useState(false);
   const reportIssueUrl = useMemo(() => {
-    const questionUid = String(question.question_uid || storageKey || "").trim() || "unknown-question";
+    const questionUid = String(question.question_uid || questionProgressId || "").trim() || "unknown-question";
     const yearLabel = String(question.exam?.label || question.yearSetLabel || question.year || "Unknown").trim();
     const subjectLabel = String(question.subjectLabel || question.subject || "Unknown").trim();
     const pageUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -235,13 +230,31 @@ export default function AnswerPanel({
       "entry.176806537": issueBody,
     });
     return `https://docs.google.com/forms/d/e/1FAIpQLSdSuxChEW-ndNaochXNbSj6FZ02xcxTkjTAECc-Ggeqn6ddkg/viewform?usp=pp_url&${params.toString()}`;
-  }, [question, storageKey]);
+  }, [question, questionProgressId]);
+
+  const fallbackCopyToClipboard = (text) => {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    textarea.style.top = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      document.execCommand("copy");
+    } catch (_) {
+      // Silently fail
+    }
+    document.body.removeChild(textarea);
+  };
 
   const handleShare = useCallback(() => {
-    const questionId = question.question_uid || '';
+    const questionId = question.question_uid || "";
     if (!questionId) return;
 
-    const url = `${window.location.origin}${window.location.pathname}?question=${encodeURIComponent(questionId)}`;
+    const solvePath = buildSolvePath(questionId);
+    const url = `${window.location.origin}${solvePath}`;
 
     const showToast = () => {
       setToastVisible(true);
@@ -249,9 +262,8 @@ export default function AnswerPanel({
       trackEvent("share_question", { question_uid: questionId });
     };
 
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
       navigator.clipboard.writeText(url).then(showToast).catch(() => {
-        // Fallback if clipboard API rejects
         fallbackCopyToClipboard(url);
         showToast();
       });
@@ -261,33 +273,14 @@ export default function AnswerPanel({
     }
   }, [question]);
 
-  const fallbackCopyToClipboard = (text) => {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.left = '-9999px';
-    textarea.style.top = '-9999px';
-    document.body.appendChild(textarea);
-    textarea.focus();
-    textarea.select();
-    try {
-      document.execCommand('copy');
-    } catch (_) {
-      // Silently fail
-    }
-    document.body.removeChild(textarea);
-  };
-
-  const isInteractive = answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type);
-
+  // --- Keyboard Shortcuts ---
   useEffect(() => {
     const handleKeyDown = (event) => {
-      const shortcutKey = getShortcutKey(event);
-      const isTypingTarget = isEditableTarget(event.target);
-
-      if (shortcutKey === "Enter" && isTypingTarget && isInteractive && hasValidInput) {
-        event.preventDefault();
-        evaluateSubmission();
+      if (isEditableTarget(event.target)) {
+        if (event.key === "Enter" && event.target.tagName === "INPUT" && isInteractive && hasValidInput) {
+          event.preventDefault();
+          evaluateSubmission();
+        }
         return;
       }
 
@@ -295,54 +288,65 @@ export default function AnswerPanel({
         return;
       }
 
-      if (/^[1-9]$/.test(shortcutKey)) {
-        if (["MCQ", "MSQ"].includes(answerRecord?.type)) {
-          const option = answerOptions[Number(shortcutKey) - 1];
-          if (!option) {
-            return;
-          }
-          event.preventDefault();
-          if (answerRecord.type === "MCQ") {
-            handleMcqSelect(option);
-          } else {
-            handleMsqToggle(option, !msqSelection.includes(option));
-          }
-          return;
-        } else if (answerRecord?.type === "NAT" && isTrueFalse) {
-          if (shortcutKey === "1") {
-            event.preventDefault();
-            setNatInput("1");
-            setResult(null);
-          } else if (shortcutKey === "2") {
-            event.preventDefault();
-            setNatInput("0");
-            setResult(null);
-          }
-          return;
+      const shortcutKey = getShortcutKey(event);
+
+      if (shortcutKey === "s") {
+        event.preventDefault();
+        if (isInteractive && hasValidInput) {
+          evaluateSubmission();
         }
-      }
-
-      if (shortcutKey === "s" && isInteractive && hasValidInput) {
-        event.preventDefault();
-        evaluateSubmission();
         return;
       }
 
-      if (shortcutKey === "b" && !isStatusActionDisabled) {
+      if (shortcutKey === "m") {
         event.preventDefault();
-        handleToggleBookmark();
+        if (!isStatusActionDisabled) {
+          handleToggleSolved();
+        }
         return;
       }
 
-      if (shortcutKey === "m" && !isStatusActionDisabled) {
+      if (shortcutKey === "b") {
         event.preventDefault();
-        handleToggleSolved();
+        if (!isStatusActionDisabled) {
+          handleToggleBookmark();
+        }
         return;
       }
 
       if (shortcutKey === "l") {
         event.preventDefault();
         handleShare();
+        return;
+      }
+
+      if (answerRecord && answerRecord.type === "MCQ") {
+        const keyIndex = ["1", "2", "3", "4"].indexOf(shortcutKey);
+        if (keyIndex !== -1 && keyIndex < answerOptions.length) {
+          event.preventDefault();
+          handleMcqSelect(answerOptions[keyIndex]);
+        }
+      }
+
+      if (answerRecord && answerRecord.type === "MSQ") {
+        const keyIndex = ["1", "2", "3", "4"].indexOf(shortcutKey);
+        if (keyIndex !== -1 && keyIndex < answerOptions.length) {
+          event.preventDefault();
+          const opt = answerOptions[keyIndex];
+          handleMsqToggle(opt, !msqSelection.includes(opt));
+        }
+      }
+
+      if (isTrueFalse) {
+        if (shortcutKey === "1" || shortcutKey === "t") {
+          event.preventDefault();
+          setNatInput("1");
+          setResult(null);
+        } else if (shortcutKey === "0" || shortcutKey === "f") {
+          event.preventDefault();
+          setNatInput("0");
+          setResult(null);
+        }
       }
     };
 
@@ -352,25 +356,21 @@ export default function AnswerPanel({
     answerRecord,
     answerOptions,
     evaluateSubmission,
-    handleMcqSelect,
     handleShare,
-    handleMsqToggle,
     handleToggleBookmark,
     handleToggleSolved,
     hasValidInput,
     isInteractive,
     isStatusActionDisabled,
     isTrueFalse,
-    mcqSelection,
     msqSelection,
-    natInput,
   ]);
 
   // --- Render Logic for Input Section ---
   const renderInputSection = () => {
     if (!questionIdentity.hasIdentity) {
       return (
-        <div className="rounded border border-yellow-300 bg-yellow-50 p-3 text-sm text-yellow-900">
+        <div className="rounded-xl border border-amber-300 bg-amber-50 dark:bg-amber-950/30 p-3 text-sm text-amber-900 dark:text-amber-200">
           Missing question identity.
         </div>
       );
@@ -378,9 +378,9 @@ export default function AnswerPanel({
 
     if (!answerRecord) {
       return (
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-amber-950">
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 dark:bg-amber-950/30 p-4 text-amber-950 dark:text-amber-100">
           <p className="text-sm font-semibold">Answer unavailable</p>
-          <p className="mt-2 text-sm leading-6 text-amber-900">
+          <p className="mt-2 text-sm leading-6 text-amber-900 dark:text-amber-200">
             This question does not have a verified answer in the current bank yet. You can still bookmark it, share it, or report the gap for review.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -388,7 +388,7 @@ export default function AnswerPanel({
               href={reportIssueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[40px] items-center rounded-xl border border-amber-300 bg-white px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="inline-flex min-h-[40px] items-center rounded-xl border border-amber-300 bg-[color:var(--color-surface)] px-4 py-2 text-sm font-semibold text-amber-900 dark:text-amber-200 transition hover:bg-amber-100 dark:hover:bg-amber-950/50 focus:outline-none focus:ring-2 focus:ring-amber-500"
             >
               Report this question
             </a>
@@ -398,23 +398,23 @@ export default function AnswerPanel({
     }
 
     if (["UNSUPPORTED", "SUBJECTIVE", "AMBIGUOUS"].includes(answerRecord.type)) {
-      let colorClass = "border-gray-200 bg-gray-50 text-gray-700";
+      let colorClass = "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)]";
       let message = "Refer to standard solution.";
 
       if (answerRecord.type === "UNSUPPORTED") {
-        colorClass = "border-amber-300 bg-amber-50 text-amber-900";
+        colorClass = "border-amber-300 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200";
         message = "Non-standard format.";
       } else if (answerRecord.type === "SUBJECTIVE") {
-        colorClass = "border-purple-300 bg-purple-50 text-purple-900";
+        colorClass = "border-purple-300 bg-purple-50 dark:bg-purple-950/30 text-purple-900 dark:text-purple-200";
         message = "Subjective answer.";
       } else if (answerRecord.type === "AMBIGUOUS") {
-        colorClass = "border-orange-300 bg-orange-50 text-orange-900";
+        colorClass = "border-orange-300 bg-orange-50 dark:bg-orange-950/30 text-orange-900 dark:text-orange-200";
         message = "Ambiguous question.";
       }
 
       return (
-        <div className={`rounded border p-3 ${colorClass}`}>
-          <div className="text-sm">{message}</div>
+        <div className={`rounded-xl border p-3 ${colorClass}`}>
+          <div className="text-sm font-medium">{message}</div>
         </div>
       );
     }
@@ -424,30 +424,33 @@ export default function AnswerPanel({
       <div className="flex flex-col gap-3">
         {/* Question Type Badge */}
         <div className="flex">
-          <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${answerRecord.type === "NAT"
-            ? "bg-purple-50 text-purple-700 ring-purple-600/20"
-            : answerRecord.type === "MSQ"
-              ? "bg-orange-50 text-orange-700 ring-orange-600/20"
-              : "bg-blue-50 text-blue-700 ring-blue-600/20"
-            }`}>
+          <span
+            className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset ${
+              answerRecord.type === "NAT"
+                ? "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]"
+                : answerRecord.type === "MSQ"
+                ? "bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] ring-[color:var(--color-warning-border)]"
+                : "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]"
+            }`}
+          >
             {answerRecord.type}
           </span>
         </div>
 
-        {/* Options / Input Row */}
-        <div>
+        {/* Input Interface */}
+        <div className="w-full">
           {answerRecord.type === "MCQ" && (
-            <div className="flex gap-2">
-              {answerOptions.map((option, index) => (
+            <div className="flex flex-wrap gap-2">
+              {answerOptions.map((option) => (
                 <button
                   key={option}
                   type="button"
                   onClick={() => handleMcqSelect(option)}
-                  aria-keyshortcuts={String(index + 1)}
-                  className={`flex-1 rounded border px-3 py-2 text-center text-sm font-medium transition-colors ${mcqSelection === option
-                    ? "border-blue-600 bg-blue-600 text-white"
-                    : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
-                    }`}
+                  className={`flex-1 min-h-[44px] rounded-xl border px-3 py-2 text-center text-sm font-medium transition ${
+                    mcqSelection === option
+                      ? "border-sky-600 bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 font-semibold ring-2 ring-sky-500/20"
+                      : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
+                  }`}
                 >
                   {option}
                 </button>
@@ -457,14 +460,14 @@ export default function AnswerPanel({
 
           {answerRecord.type === "MSQ" && (
             <div className="flex flex-wrap gap-2">
-              {answerOptions.map((option, index) => (
+              {answerOptions.map((option) => (
                 <label
                   key={option}
-                  aria-keyshortcuts={String(index + 1)}
-                  className={`flex-1 flex items-center justify-center gap-2 rounded border px-3 py-2 cursor-pointer transition-colors ${msqSelection.includes(option)
-                    ? "border-blue-600 bg-blue-50 text-blue-700 font-medium"
-                    : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
-                    }`}
+                  className={`flex-1 min-h-[44px] flex items-center justify-center gap-2 rounded-xl border px-3 py-2 cursor-pointer transition ${
+                    msqSelection.includes(option)
+                      ? "border-sky-600 bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 font-semibold ring-2 ring-sky-500/20"
+                      : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
+                  }`}
                 >
                   <input
                     type="checkbox"
@@ -484,7 +487,7 @@ export default function AnswerPanel({
                 <div className="flex gap-2">
                   {[
                     { label: "TRUE", value: "1" },
-                    { label: "FALSE", value: "0" }
+                    { label: "FALSE", value: "0" },
                   ].map((option) => (
                     <button
                       key={option.value}
@@ -493,10 +496,11 @@ export default function AnswerPanel({
                         setNatInput(option.value);
                         setResult(null);
                       }}
-                      className={`flex-1 rounded border px-3 py-2 text-center text-sm font-medium transition-colors ${natInput === option.value
-                        ? "border-blue-600 bg-blue-600 text-white"
-                        : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
-                        }`}
+                      className={`flex-1 min-h-[44px] rounded-xl border px-3 py-2 text-center text-sm font-medium transition ${
+                        natInput === option.value
+                          ? "border-sky-600 bg-sky-600 text-white font-semibold"
+                          : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
+                      }`}
                     >
                       {option.label}
                     </button>
@@ -509,7 +513,7 @@ export default function AnswerPanel({
                   onChange={handleNatChange}
                   placeholder="Enter numeric answer"
                   aria-keyshortcuts="Enter"
-                  className="w-full rounded border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  className="w-full min-h-[44px] rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               )}
             </div>
@@ -526,10 +530,11 @@ export default function AnswerPanel({
       type="button"
       disabled={!isInteractive || !hasValidInput}
       aria-keyshortcuts="S Enter"
-      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!isInteractive || !hasValidInput
-        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-        : "bg-blue-700 text-white hover:bg-blue-800"
-        } ${additionalClasses}`}
+      className={`min-h-[44px] px-6 rounded-xl font-bold text-sm shadow-sm transition flex items-center justify-center ${
+        !isInteractive || !hasValidInput
+          ? "border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] cursor-not-allowed opacity-60"
+          : "bg-[color:var(--color-primary)] text-white hover:bg-[color:var(--color-primary-hover)]"
+      } ${additionalClasses}`}
       onClick={evaluateSubmission}
     >
       {result ? "Submit Again" : "Submit Answer"}
@@ -542,10 +547,11 @@ export default function AnswerPanel({
       disabled={!canMoveNext || typeof onNextQuestion !== "function"}
       onClick={onNextQuestion}
       aria-keyshortcuts="ArrowRight"
-      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMoveNext || typeof onNextQuestion !== "function"
-        ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
-        : "bg-slate-800 text-white hover:bg-slate-900"
-        } ${additionalClasses}`}
+      className={`min-h-[44px] px-6 rounded-xl font-bold text-sm shadow-sm transition flex items-center justify-center ${
+        !canMoveNext || typeof onNextQuestion !== "function"
+          ? "border border-[color:var(--color-border)] text-[color:var(--color-text-muted)] bg-[color:var(--color-surface-muted)] opacity-50 cursor-not-allowed"
+          : "bg-[color:var(--color-primary)] text-white hover:bg-[color:var(--color-primary-hover)]"
+      } ${additionalClasses}`}
     >
       Next &rarr;
     </button>
@@ -557,24 +563,29 @@ export default function AnswerPanel({
       disabled={!canMovePrevious}
       onClick={onPreviousQuestion || goBack}
       aria-keyshortcuts="ArrowLeft"
-      className={`px-6 h-12 rounded font-bold text-sm shadow-sm transition-colors flex items-center justify-center ${!canMovePrevious
-        ? "border border-gray-200 text-gray-300 bg-white opacity-50 cursor-not-allowed"
-        : "border border-slate-600 text-slate-700 bg-white hover:bg-slate-50"
-        } ${additionalClasses}`}
+      className={`min-h-[44px] px-6 rounded-xl font-bold text-sm shadow-sm transition flex items-center justify-center ${
+        !canMovePrevious
+          ? "border border-[color:var(--color-border)] text-[color:var(--color-text-muted)] bg-[color:var(--color-surface-muted)] opacity-50 cursor-not-allowed"
+          : "border border-[color:var(--color-border)] text-[color:var(--color-text)] bg-[color:var(--color-surface)] hover:bg-[color:var(--color-surface-muted)]"
+      } ${additionalClasses}`}
     >
       &larr; Previous
     </button>
   );
 
   const renderSolutionButton = (additionalClasses = "") => {
-    const baseClasses = `px-6 h-12 rounded bg-slate-600 text-white font-bold text-sm shadow-sm hover:bg-slate-700 transition-colors flex items-center justify-center ${additionalClasses}`;
-    if (solutionLink) {
+    const fallbackSearchLink = !solutionLink && question?.title
+      ? `https://gateoverflow.in/?qa=search&q=${encodeURIComponent(question.title)}`
+      : null;
+    const targetLink = solutionLink || fallbackSearchLink;
+
+    if (targetLink) {
       return (
         <a
-          href={solutionLink}
+          href={targetLink}
           target="_blank"
           rel="noopener noreferrer"
-          className={baseClasses}
+          className={`min-h-[44px] px-6 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] font-bold text-sm shadow-sm hover:bg-[color:var(--color-surface)] transition flex items-center justify-center ${additionalClasses}`}
         >
           Solution
         </a>
@@ -586,7 +597,7 @@ export default function AnswerPanel({
         disabled
         aria-label="Solution unavailable"
         title="Solution unavailable"
-        className={`px-6 h-12 rounded bg-slate-600 text-white font-bold text-sm shadow-sm flex items-center justify-center cursor-not-allowed opacity-50 ${additionalClasses}`}
+        className={`min-h-[44px] px-6 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] font-bold text-sm shadow-sm flex items-center justify-center cursor-not-allowed opacity-50 ${additionalClasses}`}
       >
         Solution
       </button>
@@ -604,14 +615,15 @@ export default function AnswerPanel({
         title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
         aria-label={isSolved ? "Mark question as unsolved" : "Mark question as solved"}
         aria-pressed={isSolved}
-        className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
-          ? 'border-gray-200 bg-gray-100 text-gray-300 cursor-not-allowed'
-          : isSolved
-            ? 'border-green-500 bg-green-100 text-green-600'
-            : 'border-green-200 bg-green-50 text-green-300 hover:border-green-300 hover:text-green-500'
-          }`}
+        className={`w-11 h-11 rounded-full border-2 transition duration-150 flex items-center justify-center hover:scale-105 ${
+          isStatusActionDisabled
+            ? "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] cursor-not-allowed opacity-50"
+            : isSolved
+            ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 shadow-sm"
+            : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] hover:border-emerald-300 hover:text-emerald-500"
+        }`}
       >
-        <FaCheck className="text-[20px]" />
+        <FaCheck className="text-[18px]" />
       </button>
 
       {/* 2. Bookmark */}
@@ -623,14 +635,15 @@ export default function AnswerPanel({
         title={isBookmarked ? "Remove Bookmark" : "Bookmark Question"}
         aria-label={isBookmarked ? "Remove question bookmark" : "Bookmark question"}
         aria-pressed={isBookmarked}
-        className={`w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md ${isStatusActionDisabled
-          ? 'border-gray-200 bg-gray-100 text-gray-300 cursor-not-allowed'
-          : isBookmarked
-            ? 'border-yellow-500 bg-yellow-100 text-yellow-600'
-            : 'border-yellow-200 bg-yellow-50 text-yellow-300 hover:border-yellow-300 hover:text-yellow-500'
-          }`}
+        className={`w-11 h-11 rounded-full border-2 transition duration-150 flex items-center justify-center hover:scale-105 ${
+          isStatusActionDisabled
+            ? "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] cursor-not-allowed opacity-50"
+            : isBookmarked
+            ? "border-amber-500 bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 shadow-sm"
+            : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] hover:border-amber-300 hover:text-amber-500"
+        }`}
       >
-        {isBookmarked ? <FaStar className="text-[20px]" /> : <FaRegStar className="text-[20px]" />}
+        {isBookmarked ? <FaStar className="text-[18px]" /> : <FaRegStar className="text-[18px]" />}
       </button>
 
       {/* 4. Share */}
@@ -640,9 +653,9 @@ export default function AnswerPanel({
         title="Share Question Link"
         aria-label="Copy question link"
         aria-keyshortcuts="L"
-        className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-gray-200 bg-gray-50 text-gray-400 hover:border-gray-300 hover:text-gray-500"
+        className="w-11 h-11 rounded-full border-2 border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] transition duration-150 flex items-center justify-center hover:scale-105 hover:border-sky-300 hover:text-sky-600 dark:hover:text-sky-400"
       >
-        <FaLink className="text-[20px]" />
+        <FaLink className="text-[18px]" />
       </button>
 
       <a
@@ -651,15 +664,15 @@ export default function AnswerPanel({
         rel="noopener noreferrer"
         title="Report a bad question"
         aria-label="Report a bad question via Google Form"
-        className="w-11 h-11 rounded-full border-2 transition-all duration-150 flex items-center justify-center hover:scale-110 hover:shadow-md border-rose-200 bg-rose-50 text-rose-400 hover:border-rose-300 hover:text-rose-600"
+        className="w-11 h-11 rounded-full border-2 border-rose-200 dark:border-rose-900/40 bg-rose-50 dark:bg-rose-950/30 text-rose-400 hover:border-rose-300 hover:text-rose-600 transition duration-150 flex items-center justify-center hover:scale-105"
       >
-        <FaFlag className="text-[18px]" />
+        <FaFlag className="text-[16px]" />
       </a>
     </div>
   );
 
   return (
-    <div className="mt-6 border-t border-gray-200 pt-6">
+    <div className="mt-6 border-t border-[color:var(--color-border)] pt-6">
       <div className="mb-6">
         {renderInputSection()}
 
@@ -667,7 +680,10 @@ export default function AnswerPanel({
           <div
             role="alert"
             aria-live="assertive"
-            className={`mt-3 rounded p-2 text-center text-sm font-medium ${result.correct ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+            className={`mt-3 rounded-xl p-3 text-center text-sm font-semibold border ${
+              result.correct
+                ? "border-emerald-200 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300"
+                : "border-rose-200 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300"
             }`}
           >
             {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
@@ -675,7 +691,7 @@ export default function AnswerPanel({
         )}
       </div>
 
-      <div className="mt-8 border-t border-gray-100 px-2 pt-4">
+      <div className="mt-8 border-t border-[color:var(--color-border)] px-2 pt-4">
         <div className="hidden items-center justify-between md:flex">
           <div className="flex items-center gap-2">
             {renderSubmitButton()}
@@ -706,7 +722,7 @@ export default function AnswerPanel({
       </div>
 
       {isStatusActionDisabled && (
-        <p className="mt-3 text-xs text-amber-700 text-center">
+        <p className="mt-3 text-xs text-amber-700 dark:text-amber-400 text-center">
           Progress status is unavailable for this question identifier.
         </p>
       )}

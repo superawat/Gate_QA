@@ -5,7 +5,7 @@ import React from 'react';
 import { act, render, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
-import { FilterProvider } from './FilterContext';
+import { FilterProvider, useFilterActions } from './FilterContext';
 import { SessionProvider, useSession } from './SessionContext';
 import { QuestionService } from '../services/QuestionService';
 
@@ -86,15 +86,18 @@ vi.mock('../services/AnswerService', () => ({
 }));
 
 let latestSession = null;
+let latestFilterActions = null;
 
 const SessionHarness = () => {
     latestSession = useSession();
+    latestFilterActions = useFilterActions();
     return null;
 };
 
 describe('SessionContext', () => {
     beforeEach(() => {
         latestSession = null;
+        latestFilterActions = null;
         vi.clearAllMocks();
         window.localStorage.clear();
         window.history.replaceState({}, '', '/practice');
@@ -317,5 +320,80 @@ describe('SessionContext', () => {
 
         const memory = JSON.parse(window.localStorage.getItem('gateqa_random_recent_topics_v1'));
         expect(memory.recentTopicKeys[0]).toBe('reasoning::direction-sense');
+    });
+    test('symmetrically skips solved questions backwards when hideSolved is active', async () => {
+        window.localStorage.setItem('gate_qa_solved_questions', JSON.stringify(['q2']));
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+            expect(latestFilterActions).toBeTruthy();
+        });
+
+        act(() => {
+            latestFilterActions.updateFilters({ hideSolved: true });
+        });
+
+        act(() => {
+            latestSession.startOrderedSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+                { question_uid: 'q3' },
+            ], 'q3');
+        });
+
+        expect(latestSession.getNavigationState('q3')).toMatchObject({
+            previousUid: 'q1',
+            canGoPrevious: true,
+            canGoNext: false,
+        });
+
+        let prevQuestion;
+        act(() => {
+            prevQuestion = latestSession.goToPreviousQuestion('q3');
+        });
+
+        expect(prevQuestion.question_uid).toBe('q1');
+        expect(latestSession.getNavigationState('q1')).toMatchObject({
+            previousUid: null,
+            nextUid: 'q3',
+            canGoPrevious: false,
+            canGoNext: true,
+        });
+    });
+
+    test('auto-dismisses exhaustion banner when setting question or navigating', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startRandomSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+            ]);
+        });
+
+        let secondQuestion;
+        act(() => {
+            secondQuestion = latestSession.goToNextQuestion(firstQuestion.question_uid);
+        });
+
+        act(() => {
+            latestSession.goToNextQuestion(secondQuestion.question_uid);
+        });
+
+        expect(latestSession.showExhaustionBanner).toBe(true);
+
+        act(() => {
+            latestSession.setCurrentQuestionUid('q1');
+        });
+
+        await waitFor(() => {
+            expect(latestSession.showExhaustionBanner).toBe(false);
+        });
     });
 });

@@ -2,6 +2,23 @@ import React from "react";
 import { FaArrowRight, FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 import { preloadSolveExperience } from "../../utils/routePreload";
 import { getDisplayQuestionTypeToken } from "../../utils/questionType";
+import { QuestionService } from "../../services/QuestionService";
+import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
+import { DaQuestionService } from "../../services/DaQuestionService";
+import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
+
+const prefetchQuestionShard = (question) => {
+  if (!question) return;
+  preloadSolveExperience();
+  const uid = String(question.question_uid || "").trim();
+  if (isDaQuestionByMetadata(question)) {
+    DaQuestionService.ensureQuestionDetail(question).catch(() => {});
+  } else if (uid.startsWith("APT-")) {
+    AptitudeQuestionService.ensureQuestionDetail(question).catch(() => {});
+  } else {
+    QuestionService.ensureQuestionDetail(question).catch(() => {});
+  }
+};
 
 const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
@@ -46,8 +63,6 @@ const QuestionPickerList = ({
   className = "",
 }) => (
   <section className={`practice-question-list overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)] xl:flex xl:min-h-0 xl:flex-col ${className}`}>
-
-
     <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
       <span>Index</span>
       <span>Question</span>
@@ -74,9 +89,9 @@ const QuestionPickerList = ({
             key={question.question_uid}
             type="button"
             onClick={() => onOpenQuestion(question)}
-            onPointerEnter={preloadSolveExperience}
-            onFocus={preloadSolveExperience}
-            onTouchStart={preloadSolveExperience}
+            onPointerEnter={() => prefetchQuestionShard(question)}
+            onFocus={() => prefetchQuestionShard(question)}
+            onTouchStart={() => prefetchQuestionShard(question)}
             className="practice-question-row group block w-full px-5 py-4 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
           >
             <div className="practice-question-row-grid flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
@@ -109,7 +124,7 @@ const QuestionPickerList = ({
                     <StatusIcon className={status.iconClassName} />
                     {status.label}
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
+                  <span className="inline-flex min-h-[36px] items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
                     Open
                     <FaArrowRight className="text-[0.7rem]" />
                   </span>
