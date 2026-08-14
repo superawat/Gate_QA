@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 import { FaTimes } from 'react-icons/fa';
 import { QuestionService } from '../../services/QuestionService';
@@ -16,40 +16,70 @@ const ActiveFilterChips = () => {
         selectedYearSets = [],
         selectedSubjects = [],
         selectedSubtopics = [],
+        selectedTypes = [],
         yearRange,
         hideSolved = false,
         showOnlySolved = false,
         showOnlyBookmarked = false,
         searchQuery = ''
     } = filters;
-    const { minYear = 0, maxYear = 0, subjects = [], yearSets = [], structuredSubtopics = {} } = structuredTags;
+    const {
+        minYear = 0,
+        maxYear = 0,
+        subjects = [],
+        yearSets = [],
+        structuredSubtopics = {},
+        questionTypes = ['MCQ', 'MSQ', 'NAT'],
+    } = structuredTags;
 
-    const subjectLabelBySlug = new Map(subjects.map(subject => [subject.slug, subject.label]));
-    const yearSetByKey = new Map(yearSets.map(yearSet => [yearSet.key, yearSet]));
-    const subtopicLabelBySlug = new Map<string, string>();
-    const subtopicsBySubject = structuredSubtopics as StructuredSubtopics;
-    Object.keys(subtopicsBySubject || {}).forEach((subjectSlug) => {
-        (subtopicsBySubject[subjectSlug] || []).forEach((subtopic) => {
-            if (!subtopicLabelBySlug.has(subtopic.slug)) {
-                subtopicLabelBySlug.set(subtopic.slug, subtopic.label);
-            }
+    const subjectLabelBySlug = useMemo(
+        () => new Map(subjects.map((subject) => [subject.slug, subject.label])),
+        [subjects]
+    );
+
+    const yearSetByKey = useMemo(
+        () => new Map(yearSets.map((yearSet) => [yearSet.key, yearSet])),
+        [yearSets]
+    );
+
+    const subtopicLabelBySlug = useMemo(() => {
+        const map = new Map<string, string>();
+        const subtopicsBySubject = structuredSubtopics as StructuredSubtopics;
+        Object.keys(subtopicsBySubject || {}).forEach((subjectSlug) => {
+            (subtopicsBySubject[subjectSlug] || []).forEach((subtopic) => {
+                if (!map.has(subtopic.slug)) {
+                    map.set(subtopic.slug, subtopic.label);
+                }
+            });
         });
-    });
+        return map;
+    }, [structuredSubtopics]);
+
+    const availableTypes = Array.isArray(questionTypes) && questionTypes.length > 0
+        ? questionTypes
+        : ['MCQ', 'MSQ', 'NAT'];
+    const isTypeConstrained = Array.isArray(selectedTypes)
+        && selectedTypes.length > 0
+        && selectedTypes.length < availableTypes.length;
 
     const removeYear = (yearSetKey: string) => {
-        updateFilters({ selectedYearSets: selectedYearSets.filter(y => y !== yearSetKey) });
+        updateFilters({ selectedYearSets: selectedYearSets.filter((y) => y !== yearSetKey) });
     };
 
     const removeSubject = (subjectSlug: string) => {
-        updateFilters({ selectedSubjects: selectedSubjects.filter(subject => subject !== subjectSlug) });
+        updateFilters({ selectedSubjects: selectedSubjects.filter((subject) => subject !== subjectSlug) });
     };
 
     const removeSubtopic = (subtopicSlug: string) => {
-        updateFilters({ selectedSubtopics: selectedSubtopics.filter(s => s !== subtopicSlug) });
+        updateFilters({ selectedSubtopics: selectedSubtopics.filter((s) => s !== subtopicSlug) });
     };
 
     const resetRange = () => {
         updateFilters({ yearRange: [minYear, maxYear] });
+    };
+
+    const resetTypes = () => {
+        updateFilters({ selectedTypes: [...availableTypes] });
     };
 
     const resetHideSolved = () => {
@@ -73,6 +103,7 @@ const ActiveFilterChips = () => {
     const hasActiveFilters = selectedYearSets.length > 0
         || selectedSubjects.length > 0
         || selectedSubtopics.length > 0
+        || isTypeConstrained
         || isRangeActive
         || hideSolved
         || showOnlySolved
@@ -115,6 +146,20 @@ const ActiveFilterChips = () => {
                 <span className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-purple-100 px-3 py-1.5 text-sm font-medium text-purple-800">
                     {yearRange[0]} - {yearRange[1]}
                     <button type="button" onClick={resetRange} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-purple-500 transition hover:bg-purple-200 hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <FaTimes />
+                    </button>
+                </span>
+            )}
+
+            {isTypeConstrained && (
+                <span className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-cyan-100 px-3 py-1.5 text-sm font-medium text-cyan-800">
+                    Types: {selectedTypes.join(', ')}
+                    <button
+                        type="button"
+                        aria-label="Reset question type filter"
+                        onClick={resetTypes}
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-cyan-500 transition hover:bg-cyan-200 hover:text-cyan-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    >
                         <FaTimes />
                     </button>
                 </span>

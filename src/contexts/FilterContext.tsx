@@ -41,6 +41,7 @@ const LEGACY_STORAGE_KEYS = {
 };
 const STORAGE_HEALTH_KEY = '__gate_qa_storage_health_check__';
 const APTITUDE_UID_PREFIX = 'APT-';
+const APTITUDE_SUBJECT_SLUGS = new Set(['english', 'quant', 'mathematics', 'reasoning']);
 const EMPTY_QUESTION_LIST = Object.freeze([]);
 
 const isAptitudeQuestionId = (value = '') => String(value || '').startsWith(APTITUDE_UID_PREFIX);
@@ -173,8 +174,21 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
         return Number(parsedLeft?.track === 'da') - Number(parsedRight?.track === 'da');
     });
 
+    const candidateMinYears = [gateTags.minYear, aptitudeTags.minYear].filter((y) => Number.isFinite(y) && Number(y) > 0);
+    const candidateMaxYears = [gateTags.maxYear, aptitudeTags.maxYear].filter((y) => Number.isFinite(y) && Number(y) > 0);
+    const minYear = candidateMinYears.length > 0 ? Math.min(...candidateMinYears) : 0;
+    const maxYear = candidateMaxYears.length > 0 ? Math.max(...candidateMaxYears) : 0;
+    const hideYearFilters = yearSets.length === 0 || (
+        gateTags.hideYearFilters !== undefined && aptitudeTags.hideYearFilters !== undefined
+            ? Boolean(gateTags.hideYearFilters && aptitudeTags.hideYearFilters)
+            : Boolean(gateTags.hideYearFilters || aptitudeTags.hideYearFilters)
+    );
+
     return {
         ...gateTags,
+        ...aptitudeTags,
+        minYear,
+        maxYear,
         yearSets,
         years: Array.from(new Set(yearSets.map((entry) => entry.key).filter(Boolean))),
         subjects,
@@ -188,7 +202,7 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
             ...(aptitudeTags.structuredTopics || {}),
         },
         questionTypes,
-        hideYearFilters: Boolean(gateTags.hideYearFilters),
+        hideYearFilters,
     };
 };
 
@@ -311,6 +325,7 @@ const normalizeSubtopicSlugs = (rawSubtopics, questionService = QuestionService)
     return Array.from(unique).sort((a, b) => a.localeCompare(b));
 };
 
+
 const buildSubtopicToSubjectSlugMap = (structuredSubtopics = {}, questionService = QuestionService) => {
     const map = new Map();
 
@@ -341,10 +356,14 @@ const reconcileSubjectAndSubtopicFilters = (
 
         if (merged.selectedSubtopics.length > 0) {
             const activeSubjectSet = new Set(merged.selectedSubjects);
-            merged.selectedSubtopics = normalizeSubtopicSlugs(merged.selectedSubtopics, questionService).filter((subtopicSlug) => {
-                const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
-                return !parentSlug || activeSubjectSet.has(parentSlug);
-            });
+            if (activeSubjectSet.size === 0) {
+                merged.selectedSubtopics = [];
+            } else {
+                merged.selectedSubtopics = normalizeSubtopicSlugs(merged.selectedSubtopics, questionService).filter((subtopicSlug) => {
+                    const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+                    return Boolean(parentSlug && activeSubjectSet.has(parentSlug));
+                });
+            }
         }
     }
 
@@ -463,6 +482,7 @@ export const FilterProvider = ({
     progressScope = 'gate',
     progressExportPrefix = 'gateqa-progress',
     includeExtendedProgress = true,
+    initialIncludeCse = true,
     initialIncludeDa = false,
 }) => {
     const location = useLocation();
@@ -486,6 +506,7 @@ export const FilterProvider = ({
     }, [location.pathname, aptitudeEnabled, setAptitudeEnabled]);
 
     const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest, questionService));
+    const previousStructuredTagsRef = useRef(structuredTags);
     const lastHydratedSearchRef = useRef(null);
 
     const [filters, setFilters] = useState(() => {
@@ -513,6 +534,13 @@ export const FilterProvider = ({
     const [aptitudeBookmarkedQuestionIds, setAptitudeBookmarkedQuestionIds] = useState([]);
     const [daSolvedQuestionIds, setDaSolvedQuestionIds] = useState([]);
     const [daBookmarkedQuestionIds, setDaBookmarkedQuestionIds] = useState([]);
+    const [includeCse, setIncludeCseState] = useState(() => (
+        initialIncludeCse !== undefined
+            ? Boolean(initialIncludeCse)
+            : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_cse') !== null
+                ? window.localStorage.getItem('gateqa_include_cse') === 'true'
+                : true)
+    ));
     const [includeDa, setIncludeDaState] = useState(() => (
         initialIncludeDa || (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') === 'true')
     ));
@@ -581,6 +609,12 @@ export const FilterProvider = ({
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            try { window.localStorage.setItem('gateqa_include_cse', includeCse ? 'true' : 'false'); } catch (e) {}
+        }
+    }, [includeCse]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
             try { window.localStorage.setItem('gateqa_include_da', includeDa ? 'true' : 'false'); } catch (e) {}
         }
         if (!includeDa) return undefined;
@@ -610,14 +644,15 @@ export const FilterProvider = ({
     }, [includeDa]);
 
     const baseQuestions = questionService.questions;
+    const activeCseQuestions = includeCse ? baseQuestions : EMPTY_QUESTION_LIST;
     const activeAptitudeQuestions = shouldMergeAptitude ? aptitudeQuestions : EMPTY_QUESTION_LIST;
     const activeDaQuestions = includeDa ? daQuestions : EMPTY_QUESTION_LIST;
     const allQuestions = useMemo(() => {
-        if (!baseQuestions.length && !activeDaQuestions.length) {
+        if (!activeCseQuestions.length && !activeDaQuestions.length && !activeAptitudeQuestions.length) {
             return [];
         }
-        return normalizeQuestionPool([...baseQuestions, ...activeDaQuestions, ...activeAptitudeQuestions]);
-    }, [activeAptitudeQuestions, activeDaQuestions, baseQuestions, questionDataRevision]);
+        return normalizeQuestionPool([...activeCseQuestions, ...activeDaQuestions, ...activeAptitudeQuestions]);
+    }, [activeAptitudeQuestions, activeCseQuestions, activeDaQuestions, questionDataRevision]);
 
     const questionByUidMap = useMemo(() => {
         const map = new Map();
@@ -658,6 +693,7 @@ export const FilterProvider = ({
                     ? getDaFilterSubjectKey(question)
                     : question.subjectSlug || 'unknown',
                 subtopicSlugs,
+                subtopicSlugSet: new Set(subtopicSlugs),
                 yearSetKey: question.exam?.yearSetKey || null,
                 yearSetIdentity: getQuestionYearSetIdentity(question),
                 year: Number.isFinite(question.exam?.year) ? question.exam.year : 0,
@@ -687,8 +723,8 @@ export const FilterProvider = ({
     }, [initialManifest, questionService, structuredTags.minYear, structuredTags.maxYear]);
 
     useEffect(() => {
-        if (questionService.questions.length > 0 || activeDaQuestions.length > 0) {
-            const gateTags = questionService.getStructuredTags();
+        if (activeCseQuestions.length > 0 || activeDaQuestions.length > 0 || activeAptitudeQuestions.length > 0) {
+            const gateTags = activeCseQuestions.length > 0 ? questionService.getStructuredTags() : {};
             const daTags = activeDaQuestions.length > 0 ? DaQuestionService.getStructuredTags() : {};
             const aptitudeTags = activeAptitudeQuestions.length > 0 ? AptitudeQuestionService.getStructuredTags() : {};
             const tags = mergeStructuredTags(mergeStructuredTags(gateTags, daTags), aptitudeTags);
@@ -696,21 +732,61 @@ export const FilterProvider = ({
             setTotalQuestions(allQuestions.length);
 
             const { minYear, maxYear } = tags;
+            const prevTags = previousStructuredTagsRef.current;
             setFilters(prev => {
+                const prevMin = Number(prevTags?.minYear || 0);
+                const prevMax = Number(prevTags?.maxYear || 0);
+                const wasAtFullSpan = (
+                    Array.isArray(prev.yearRange)
+                    && prev.yearRange.length === 2
+                    && prevMin > 0
+                    && prevMax > 0
+                    && Number(prev.yearRange[0]) === prevMin
+                    && Number(prev.yearRange[1]) === prevMax
+                );
+
+                const isOutOfRange = (
+                    !Array.isArray(prev.yearRange)
+                    || prev.yearRange.length !== 2
+                    || (minYear > 0 && prev.yearRange[0] < minYear)
+                    || (maxYear > 0 && prev.yearRange[1] > maxYear)
+                    || prev.yearRange[0] > prev.yearRange[1]
+                );
+
                 return {
                     ...prev,
-                    yearRange: hasCustomYearRange(prev.yearRange, DEFAULT_MIN_YEAR, DEFAULT_MAX_YEAR)
-                        ? prev.yearRange
-                        : [minYear, maxYear]
+                    yearRange: (wasAtFullSpan || isOutOfRange || !hasCustomYearRange(prev.yearRange, DEFAULT_MIN_YEAR, DEFAULT_MAX_YEAR))
+                        ? [minYear, maxYear]
+                        : prev.yearRange
                 };
             });
 
+            previousStructuredTagsRef.current = tags;
             setIsInitialized(true);
+        } else if (isInitialized) {
+            setStructuredTags({
+                minYear: DEFAULT_MIN_YEAR,
+                maxYear: DEFAULT_MAX_YEAR,
+                yearSets: [],
+                years: [],
+                subjects: [],
+                topics: [],
+                structuredSubtopics: {},
+                structuredTopics: {},
+                questionTypes: ['MCQ', 'MSQ', 'NAT'],
+                hideYearFilters: true
+            });
+            setTotalQuestions(0);
         }
     }, [
+        includeCse,
+        includeDa,
+        shouldMergeAptitude,
         activeAptitudeQuestions.length,
+        activeCseQuestions.length,
         activeDaQuestions.length,
         allQuestions.length,
+        isInitialized,
         questionDataRevision,
         questionService,
     ]);
@@ -1126,57 +1202,59 @@ export const FilterProvider = ({
                 return false;
             }
 
-            let yearMatch = true;
-            const qYearSetKey = meta?.yearSetIdentity || null;
-            const qYearNum = meta?.year || 0;
-
             if (selectedYearSets.length > 0) {
-                yearMatch = qYearSetKey ? selectedYearSet.has(qYearSetKey) : false;
+                const qYearSetKey = meta?.yearSetIdentity || null;
+                if (!qYearSetKey || !selectedYearSet.has(qYearSetKey)) {
+                    return false;
+                }
             }
 
-            let rangeMatch = true;
             if (isRangeConstrained) {
-                rangeMatch = qYearNum > 0 && qYearNum >= yearRange[0] && qYearNum <= yearRange[1];
+                const qYearNum = meta?.year || 0;
+                if (qYearNum <= 0 || qYearNum < yearRange[0] || qYearNum > yearRange[1]) {
+                    return false;
+                }
             }
 
             const qSubjectSlug = meta?.subjectSlug || q.subjectSlug || 'unknown';
 
-            let topicMatch = true;
             if (selectedSubjects.length > 0) {
-                topicMatch = selectedSubjectSet.has(qSubjectSlug);
-            }
-
-            // Subtopic match: scoped to parent subject (AND logic).
-            // A question must belong to the parent subject of the selected subtopic
-            // AND have that subtopic in its canonical subtopics list.
-            let subtopicMatch = true;
-            if (subtopicsByParentSubject.size > 0) {
-                const requiredSubtopics = subtopicsByParentSubject.get(qSubjectSlug);
-                if (requiredSubtopics) {
-                    // Question is in a subject that has subtopic filters active —
-                    // it must match at least one of the required subtopics.
-                    subtopicMatch = (meta?.subtopicSlugs || []).some(slug => requiredSubtopics.has(slug));
-                } else {
-                    // Question belongs to a subject with no subtopic filter —
-                    // let it pass (subtopic filter doesn't constrain this subject).
-                    subtopicMatch = true;
+                if (!selectedSubjectSet.has(qSubjectSlug)) {
+                    return false;
                 }
             }
 
-            let typeMatch = true;
-            if (isTypeConstrained) {
-                typeMatch = selectedTypeSet.has(resolvedTypeUpper);
+            // Subtopic match: scoped to parent subject (AND logic).
+            if (subtopicsByParentSubject.size > 0) {
+                const requiredSubtopics = subtopicsByParentSubject.get(qSubjectSlug);
+                if (requiredSubtopics) {
+                    const subtopicSlugs = meta?.subtopicSlugs || [];
+                    const hasMatchingSubtopic = subtopicSlugs.some(slug => requiredSubtopics.has(slug));
+                    if (!hasMatchingSubtopic) {
+                        return false;
+                    }
+                }
             }
 
-            let searchMatch = true;
+            if (isTypeConstrained) {
+                if (!selectedTypeSet.has(resolvedTypeUpper)) {
+                    return false;
+                }
+            }
+
             if (searchTokens.length > 0) {
                 const searchText = meta?.searchText || '';
-                searchMatch = searchText
-                    ? searchTokens.every((token) => searchText.includes(token))
-                    : false;
+                if (!searchText) {
+                    return false;
+                }
+                for (let i = 0; i < searchTokens.length; i++) {
+                    if (!searchText.includes(searchTokens[i])) {
+                        return false;
+                    }
+                }
             }
 
-            return yearMatch && rangeMatch && topicMatch && subtopicMatch && typeMatch && searchMatch;
+            return true;
         });
     }, [
         filters.selectedTypes,
@@ -1219,6 +1297,15 @@ export const FilterProvider = ({
             return reconcileSubjectAndSubtopicFilters(merged, newFilters, subtopicToSubjectSlug, questionService);
         });
     }, [defaultSelectedTypes, questionService, subtopicToSubjectSlug]);
+    const isDaTarget = useCallback((target) => {
+        if (!target) return false;
+        if (typeof target === 'object') return isDaQuestion(target);
+        const stringId = String(target).trim();
+        if (stringId.startsWith('da:') || stringId.startsWith('go_da:') || stringId.toLowerCase().startsWith('gateda-')) return true;
+        const candidate = questionByUidMap.get(stringId);
+        if (candidate) return isDaQuestion(candidate);
+        return false;
+    }, [questionByUidMap]);
 
     const toggleSolved = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
@@ -1229,7 +1316,8 @@ export const FilterProvider = ({
             return;
         }
 
-        const setTargetSolvedQuestionIds = typeof questionOrId === 'object' && isDaQuestion(questionOrId)
+        const isDa = isDaTarget(questionOrId);
+        const setTargetSolvedQuestionIds = isDa
             ? setDaSolvedQuestionIds
             : canMergeAptitude && isAptitudeQuestionId(questionId)
                 ? setAptitudeSolvedQuestionIds
@@ -1240,7 +1328,7 @@ export const FilterProvider = ({
                 ? prev.filter(id => id !== questionId)
                 : [...prev, questionId]
         ));
-    }, [answerService, canMergeAptitude]);
+    }, [answerService, canMergeAptitude, isDaTarget]);
 
     const toggleBookmark = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
@@ -1251,7 +1339,8 @@ export const FilterProvider = ({
             return;
         }
 
-        const setTargetBookmarkedQuestionIds = typeof questionOrId === 'object' && isDaQuestion(questionOrId)
+        const isDa = isDaTarget(questionOrId);
+        const setTargetBookmarkedQuestionIds = isDa
             ? setDaBookmarkedQuestionIds
             : canMergeAptitude && isAptitudeQuestionId(questionId)
                 ? setAptitudeBookmarkedQuestionIds
@@ -1263,7 +1352,7 @@ export const FilterProvider = ({
                 : [...prev, questionId]
         ));
         enqueueChange('BOOKMARK', { questionUid: questionId });
-    }, [answerService, canMergeAptitude]);
+    }, [answerService, canMergeAptitude, isDaTarget]);
 
     const markQuestionsSolved = useCallback((questionOrIds) => {
         const questionIds = normalizeProgressTargets(questionOrIds, answerService);
@@ -1271,17 +1360,20 @@ export const FilterProvider = ({
             return;
         }
 
-        const daObjectIds = new Set(
-            (Array.isArray(questionOrIds) ? questionOrIds : [questionOrIds])
-                .filter((question) => typeof question === 'object' && isDaQuestion(question))
-                .map((question) => getQuestionTrackingId(question, answerService))
-                .filter(Boolean)
-        );
+        const daIdSet = new Set();
+        const rawList = Array.isArray(questionOrIds) ? questionOrIds : [questionOrIds];
+        rawList.forEach((item) => {
+            if (isDaTarget(item)) {
+                const id = typeof item === 'string' ? item.trim() : getQuestionTrackingId(item, answerService);
+                if (id) daIdSet.add(id);
+            }
+        });
+
         const gateQuestionIds = [];
         const daQuestionIds = [];
         const aptitudeQuestionIds = [];
         questionIds.forEach((questionId) => {
-            if (daObjectIds.has(questionId)) {
+            if (daIdSet.has(questionId) || isDaTarget(questionId)) {
                 daQuestionIds.push(questionId);
                 return;
             }
@@ -1326,7 +1418,7 @@ export const FilterProvider = ({
                 return next.length === prev.length ? prev : next;
             });
         }
-    }, [answerService, canMergeAptitude]);
+    }, [answerService, canMergeAptitude, isDaTarget]);
 
     const refreshProgressState = useCallback(() => {
         if (typeof window === 'undefined' || !canUseBrowserStorage()) {
@@ -1397,9 +1489,61 @@ export const FilterProvider = ({
         updateFilters({ showOnlyBookmarked: !!value });
     }, [updateFilters]);
 
+    const setIncludeCse = useCallback((value) => {
+        const isEnabled = typeof value === 'function' ? value(includeCse) : Boolean(value);
+        setIncludeCseState(isEnabled);
+        if (!isEnabled) {
+            setFilters((prev) => {
+                const nextSubjects = prev.selectedSubjects.filter((s) => String(s || '').startsWith('da:') || APTITUDE_SUBJECT_SLUGS.has(String(s || '')));
+                const nextSubtopics = prev.selectedSubtopics.filter((st) => {
+                    const parentSlug = urlHydrationSubtopicToSubjectSlug.get(st) || subtopicToSubjectSlug.get(st);
+                    return parentSlug && (parentSlug.startsWith('da:') || APTITUDE_SUBJECT_SLUGS.has(parentSlug));
+                });
+                const nextYearSets = prev.selectedYearSets.filter((ys) => {
+                    const parsed = parseTrackYearSetKey(ys);
+                    return parsed?.track === 'da';
+                });
+                if (
+                    nextSubjects.length === prev.selectedSubjects.length
+                    && nextSubtopics.length === prev.selectedSubtopics.length
+                    && nextYearSets.length === prev.selectedYearSets.length
+                ) {
+                    return prev;
+                }
+                return {
+                    ...prev,
+                    selectedSubjects: nextSubjects,
+                    selectedSubtopics: nextSubtopics,
+                    selectedYearSets: nextYearSets,
+                };
+            });
+        }
+    }, [includeCse, subtopicToSubjectSlug, urlHydrationSubtopicToSubjectSlug]);
+
     const setIncludeDa = useCallback((value) => {
-        setIncludeDaState(Boolean(value));
-    }, []);
+        const isEnabled = typeof value === 'function' ? value(includeDa) : Boolean(value);
+        setIncludeDaState(isEnabled);
+        if (!isEnabled) {
+            setFilters((prev) => {
+                const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('da:'));
+                const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('da:'));
+                const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('da:'));
+                if (
+                    nextSubjects.length === prev.selectedSubjects.length
+                    && nextSubtopics.length === prev.selectedSubtopics.length
+                    && nextYearSets.length === prev.selectedYearSets.length
+                ) {
+                    return prev;
+                }
+                return {
+                    ...prev,
+                    selectedSubjects: nextSubjects,
+                    selectedSubtopics: nextSubtopics,
+                    selectedYearSets: nextYearSets,
+                };
+            });
+        }
+    }, [includeDa]);
 
     const solvedCount = useMemo(() => {
         const activeSolvedIds = [...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds];
@@ -1411,9 +1555,6 @@ export const FilterProvider = ({
 
     const bookmarkedCount = useMemo(() => {
         const activeBookmarkedIds = [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds];
-        if (validQuestionIdSet.size === 0) {
-            return activeBookmarkedIds.length;
-        }
         return activeBookmarkedIds.filter(id => validQuestionIdSet.has(id)).length;
     }, [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds, validQuestionIdSet]);
 
@@ -1462,6 +1603,7 @@ export const FilterProvider = ({
         progressStorageKeys: storageKeys,
         aptitudeProgressStorageKeys: APTITUDE_USER_STATE_STORAGE_KEYS,
         aptitudeEnabled: shouldMergeAptitude,
+        includeCse,
         includeDa,
         daLoading,
         daError,
@@ -1481,7 +1623,7 @@ export const FilterProvider = ({
         progressPercentage, isProgressStorageAvailable,
         storageKeys, shouldMergeAptitude, aptitudeLoading, aptitudeError,
         progressScope, progressExportPrefix,
-        includeExtendedProgress, questionService, includeDa, daLoading, daError
+        includeExtendedProgress, questionService, includeCse, includeDa, daLoading, daError
     ]);
 
     const actionsValue = useMemo(() => ({
@@ -1498,13 +1640,14 @@ export const FilterProvider = ({
         setHideSolved,
         setShowOnlySolved,
         setShowOnlyBookmarked,
+        setIncludeCse,
         setIncludeDa
     }), [
         updateFilters, clearFilters, getQuestionById,
         toggleSolved, markQuestionsSolved, toggleBookmark, isQuestionSolved,
         isQuestionBookmarked, getQuestionProgressId,
         refreshProgressState,
-        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setIncludeDa
+        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setIncludeCse, setIncludeDa
     ]);
 
     return (

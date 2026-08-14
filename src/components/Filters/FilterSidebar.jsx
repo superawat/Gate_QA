@@ -30,8 +30,6 @@ const FilterSidebar = ({ className = "", onClose }) => {
         totalQuestions,
         filters,
         structuredTags,
-        solvedCount,
-        progressPercentage,
     } = useFilterState();
 
     const {
@@ -147,54 +145,51 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 </div>
             </div>
 
-            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
-                <DaToggle />
-            </div>
-
             {/* Scrollable Filter Content */}
             <div className="p-3">
                 <div className="flex flex-col gap-4">
 
-                    {/* GATE Topics */}
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-                        <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
-                            <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Topics</h3>
-                        </div>
-                        <div className="custom-scrollbar max-h-72 overflow-y-auto px-3 pb-3">
-                            <TopicFilter />
-                        </div>
+                    {/* ── GATE CSE Section (distinct card with toggle + subjects) ── */}
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
+                        <TopicFilter />
+                    </div>
+
+                    {/* ── GATE DA Section (distinct card with toggle + subjects) ── */}
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)]/50 p-3">
+                        <DaToggle />
                     </div>
 
                     {/* ── Aptitude Section (distinct card) ── */}
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-pink-300/40 bg-gradient-to-br from-pink-50/60 to-rose-50/40 dark:border-pink-700/30 dark:from-pink-950/20 dark:to-rose-950/10">
-                        <div className="px-3 py-3">
-                            <AptitudeTopicFilter />
-                        </div>
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-pink-300/40 bg-gradient-to-br from-pink-50/60 to-rose-50/40 dark:border-pink-700/30 dark:from-pink-950/20 dark:to-rose-950/10 p-3">
+                        <AptitudeTopicFilter />
                     </div>
 
                     {!hideYearFilters && (
-                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-                            <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
-                                <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Years</h3>
+                        <>
+                            {/* ── Year Range Section (above Years) ── */}
+                            <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+                                <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Year Range</h3>
+                                </div>
+                                <div className="px-3 pb-3">
+                                    <YearRangeFilter />
+                                </div>
                             </div>
-                            <div className="custom-scrollbar max-h-64 overflow-y-auto px-3 pb-3">
-                                <YearFilter />
+
+                            {/* ── Years Section ── */}
+                            <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+                                <div className="mb-2 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-3 py-2">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Years</h3>
+                                </div>
+                                <div className="px-3 pb-3">
+                                    <YearFilter />
+                                </div>
                             </div>
-                        </div>
+                        </>
                     )}
 
                 </div>
             </div>
-
-            {/* Sticky Bottom: Year Range */}
-            {!hideYearFilters && (
-                <div className="z-10 flex-shrink-0 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4">
-                    <div className="mb-2">
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">Year Range</h3>
-                    </div>
-                    <YearRangeFilter />
-                </div>
-            )}
         </aside>
     );
 };

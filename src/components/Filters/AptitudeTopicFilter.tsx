@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useFilterState, useFilterActions } from "../../contexts/FilterContext";
 import type {
   FilterActionsShape,
@@ -32,7 +32,7 @@ const AptitudeTopicFilter = () => {
   const { subjects = [], structuredSubtopics = {} } = structuredTags || {};
   const { selectedSubjects = [], selectedSubtopics = [] } = filters || {};
 
-  const [expandedSubjectSlug, setExpandedSubjectSlug] = useState<string | null>(null);
+  const [expandedSubjectSlugs, setExpandedSubjectSlugs] = useState<Set<string>>(() => new Set());
   const [showBetaInfo, setShowBetaInfo] = useState(false);
 
   const toggleBetaInfo = useCallback(() => {
@@ -67,21 +67,80 @@ const AptitudeTopicFilter = () => {
     return map;
   }, [aptitudeSubjects, structuredSubtopics]);
 
+  useEffect(() => {
+    const activeAptitudeSelected = selectedSubjects.filter((slug) => APTITUDE_SUBJECT_SLUGS.has(slug));
+    if (activeAptitudeSelected.length === 0) {
+      if (expandedSubjectSlugs.size > 0) {
+        setExpandedSubjectSlugs(new Set());
+      }
+      return;
+    }
+
+    setExpandedSubjectSlugs((prev) => {
+      let changed = false;
+      const next = new Set<string>();
+
+      prev.forEach((slug) => {
+        if (selectedSubjectSet.has(slug)) {
+          next.add(slug);
+        } else {
+          changed = true;
+        }
+      });
+
+      activeAptitudeSelected.forEach((subjectSlug) => {
+        const hasActiveSubtopic = (sortedSubtopicsBySubject.get(subjectSlug) || []).some(
+          (subtopic) => selectedSubtopicSet.has(subtopic.slug)
+        );
+        if (hasActiveSubtopic && !next.has(subjectSlug)) {
+          next.add(subjectSlug);
+          changed = true;
+        }
+      });
+
+      if (next.size === 0 && activeAptitudeSelected.length > 0) {
+        next.add(activeAptitudeSelected[0]);
+        changed = true;
+      }
+
+      return changed ? next : prev;
+    });
+  }, [
+    selectedSubjectSet,
+    selectedSubjects,
+    selectedSubtopicSet,
+    sortedSubtopicsBySubject,
+  ]);
+
   const handleSubjectChange = (subjectSlug: string) => {
     const isSelected = selectedSubjectSet.has(subjectSlug);
     const nextSubjects = isSelected
       ? selectedSubjects.filter((subject) => subject !== subjectSlug)
       : [...selectedSubjects, subjectSlug];
 
-    if (isSelected) {
-      if (expandedSubjectSlug === subjectSlug) {
-        setExpandedSubjectSlug(nextSubjects.find((subject) => APTITUDE_SUBJECT_SLUGS.has(subject)) || null);
-      }
+    if (!isSelected) {
+      setExpandedSubjectSlugs((prev) => new Set([...prev, subjectSlug]));
     } else {
-      setExpandedSubjectSlug(subjectSlug);
+      setExpandedSubjectSlugs((prev) => {
+        const next = new Set(prev);
+        next.delete(subjectSlug);
+        return next;
+      });
     }
 
     updateFilters({ selectedSubjects: nextSubjects });
+  };
+
+  const toggleSubjectExpansion = (subjectSlug: string) => {
+    setExpandedSubjectSlugs((prev) => {
+      const next = new Set(prev);
+      if (next.has(subjectSlug)) {
+        next.delete(subjectSlug);
+      } else {
+        next.add(subjectSlug);
+      }
+      return next;
+    });
   };
 
   const handleSubtopicChange = (subtopicSlug: string) => {
@@ -164,18 +223,18 @@ const AptitudeTopicFilter = () => {
           ) : null}
         </div>
 
-          <button
-            type="button"
-            role="switch"
-            id="aptitude-toggle"
-            aria-label="Enable Special Aptitude Practice"
-            aria-checked={aptitudeEnabled}
-            onClick={() => setAptitudeEnabled((value) => !value)}
-            className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-1 ${aptitudeEnabled
-              ? "bg-pink-500"
-              : "bg-gray-300 dark:bg-gray-600"
-            }`}
-          >
+        <button
+          type="button"
+          role="switch"
+          id="aptitude-toggle"
+          aria-label="Enable Special Aptitude Practice"
+          aria-checked={aptitudeEnabled}
+          onClick={() => setAptitudeEnabled((value) => !value)}
+          className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-1 ${aptitudeEnabled
+            ? "bg-pink-500"
+            : "bg-gray-300 dark:bg-gray-600"
+          }`}
+        >
           <span
             className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${aptitudeEnabled ? "translate-x-5" : "translate-x-0"
             }`}
@@ -228,7 +287,7 @@ const AptitudeTopicFilter = () => {
             const isSelected = selectedSubjectSet.has(slug);
             const subtopics = sortedSubtopicsBySubject.get(slug) || [];
             const hasSubtopics = subtopics.length > 0;
-            const isExpanded = expandedSubjectSlug === slug;
+            const isExpanded = expandedSubjectSlugs.has(slug);
             const showSubtopics = isSelected && hasSubtopics && isExpanded;
             const subjectSubtopicSlugs = subtopics
               .map((subtopic) => subtopic?.slug)
@@ -260,7 +319,7 @@ const AptitudeTopicFilter = () => {
                     {isSelected && hasSubtopics ? (
                       <button
                         type="button"
-                        onClick={() => setExpandedSubjectSlug(isExpanded ? null : slug)}
+                        onClick={() => toggleSubjectExpansion(slug)}
                         aria-label={isExpanded ? `Hide ${subject.label} subtopics` : `Show ${subject.label} subtopics`}
                         className="rounded border border-pink-300/50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-pink-600 hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:border-pink-600/40 dark:text-pink-400 dark:hover:bg-pink-900/30"
                       >
@@ -283,7 +342,7 @@ const AptitudeTopicFilter = () => {
                 </div>
 
                 {showSubtopics ? (
-                  <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-pink-200/60 pl-2 pr-1 dark:border-pink-700/40">
+                  <div className="ml-6 mt-1 space-y-1 border-l-2 border-pink-200/60 pl-2 pr-1 dark:border-pink-700/40">
                     {subtopics.map((subtopic) => (
                       <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
                         <input

@@ -6,8 +6,10 @@ import { render, act, fireEvent, screen, waitFor } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider, normalizeStoredIds, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
+import DaToggle from '../components/Filters/DaToggle';
 import TopicFilter from '../components/Filters/TopicFilter';
 import YearFilter from '../components/Filters/YearFilter';
+import YearRangeFilter from '../components/Filters/YearRangeFilter';
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
@@ -214,8 +216,8 @@ describe('FilterContext', () => {
     );
 
     const TestComponent = () => {
-        const { allQuestions, filters, filteredQuestions, structuredTags } = useFilterState();
-        const { isQuestionSolved, toggleBookmark, toggleSolved, updateFilters } = useFilterActions();
+        const { allQuestions, filters, filteredQuestions, structuredTags, includeCse } = useFilterState();
+        const { isQuestionSolved, toggleBookmark, toggleSolved, markQuestionsSolved, updateFilters, setIncludeDa, setIncludeCse } = useFilterActions();
 
         return (
             <div>
@@ -230,8 +232,11 @@ describe('FilterContext', () => {
                 <div data-testid="selected-year-sets">{filters.selectedYearSets.join(',')}</div>
                 <div data-testid="go1-solved">{isQuestionSolved('go:1') ? 'yes' : 'no'}</div>
                 <div data-testid="apt-solved">{isQuestionSolved('APT-ENG-0001') ? 'yes' : 'no'}</div>
+                <div data-testid="da-prob-solved">{isQuestionSolved('da:2024:q-probability') ? 'yes' : 'no'}</div>
                 <ActiveFilterChips />
+                <DaToggle />
                 <TopicFilter />
+                <YearRangeFilter />
                 <YearFilter />
                 <button
                     data-testid="add-both"
@@ -277,6 +282,42 @@ describe('FilterContext', () => {
                     data-testid="bookmark-apt"
                     onClick={() => toggleBookmark('APT-ENG-0001')}
                 >Bookmark Apt</button>
+                <button
+                    data-testid="solve-da-string"
+                    onClick={() => toggleSolved('da:2024:q-probability')}
+                >Solve DA String</button>
+                <button
+                    data-testid="bookmark-da-string"
+                    onClick={() => toggleBookmark('da:2024:q-probability')}
+                >Bookmark DA String</button>
+                <button
+                    data-testid="mark-da-batch-string"
+                    onClick={() => markQuestionsSolved(['da:2024:q-probability', 'da:2024:q-linear'])}
+                >Mark DA Batch</button>
+                <button
+                    data-testid="set-da-filters"
+                    onClick={() => updateFilters({
+                        selectedSubjects: ['da:probability-and-statistics'],
+                        selectedSubtopics: ['da:some-subtopic'],
+                        selectedYearSets: ['da:2024:set-1']
+                    })}
+                >Set DA Filters</button>
+                <button
+                    data-testid="disable-da"
+                    onClick={() => setIncludeDa(false)}
+                >Disable DA</button>
+                <button
+                    data-testid="filter-types"
+                    onClick={() => updateFilters({ selectedTypes: ['MCQ'] })}
+                >Filter Types</button>
+                <button
+                    data-testid="disable-cse"
+                    onClick={() => setIncludeCse(false)}
+                >Disable CSE</button>
+                <button
+                    data-testid="enable-cse"
+                    onClick={() => setIncludeCse(true)}
+                >Enable CSE</button>
             </div>
         );
     };
@@ -325,7 +366,7 @@ describe('FilterContext', () => {
 
         for (const [label, subjectKey, questionUid] of daSubjects) {
             act(() => {
-                screen.getByLabelText(label).click();
+                screen.getByLabelText(new RegExp(label, 'i')).click();
             });
 
             await waitFor(() => {
@@ -334,7 +375,7 @@ describe('FilterContext', () => {
             });
 
             act(() => {
-                screen.getByLabelText(label).click();
+                screen.getByLabelText(new RegExp(label, 'i')).click();
             });
 
             await waitFor(() => {
@@ -645,5 +686,290 @@ describe('FilterContext', () => {
 
         expect(JSON.parse(window.localStorage.getItem('gate_qa_solved_questions')) || []).not.toContain('APT-ENG-0001');
         expect(JSON.parse(window.localStorage.getItem('gate_qa_bookmarked_questions')) || []).not.toContain('APT-ENG-0001');
+    });
+
+    test('routes string DA question IDs correctly to DA storage keys for single and batch progress actions', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeDa={true}>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+        });
+
+        act(() => {
+            getByTestId('solve-da-string').click();
+            getByTestId('bookmark-da-string').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('da-prob-solved').textContent).toBe('yes');
+            expect(JSON.parse(window.localStorage.getItem('gate_qa_da_solved_questions'))).toEqual(['da:2024:q-probability']);
+            expect(JSON.parse(window.localStorage.getItem('gate_qa_da_bookmarked_questions'))).toEqual(['da:2024:q-probability']);
+        });
+
+        expect(JSON.parse(window.localStorage.getItem('gate_qa_solved_questions')) || []).not.toContain('da:2024:q-probability');
+        expect(JSON.parse(window.localStorage.getItem('gate_qa_bookmarked_questions')) || []).not.toContain('da:2024:q-probability');
+
+        // Batch mark solved test with string UIDs
+        act(() => {
+            getByTestId('mark-da-batch-string').click();
+        });
+
+        await waitFor(() => {
+            const daSolved = JSON.parse(window.localStorage.getItem('gate_qa_da_solved_questions')) || [];
+            expect(daSolved).toContain('da:2024:q-probability');
+            expect(daSolved).toContain('da:2024:q-linear');
+        });
+
+        expect(JSON.parse(window.localStorage.getItem('gate_qa_solved_questions')) || []).not.toContain('da:2024:q-linear');
+    });
+
+    test('prunes DA filters when includeDa is toggled to false', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeDa={true}>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+        });
+
+        act(() => {
+            getByTestId('set-da-filters').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('da:probability-and-statistics');
+            expect(getByTestId('subtopics').textContent).toBe('da:some-subtopic');
+            expect(getByTestId('selected-year-sets').textContent).toBe('da:2024:set-1');
+        });
+
+        act(() => {
+            getByTestId('disable-da').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('');
+            expect(getByTestId('subtopics').textContent).toBe('');
+            expect(getByTestId('selected-year-sets').textContent).toBe('');
+        });
+    });
+
+    test('renders active Question Type chip and allows resetting it from chips', async () => {
+        const { getByTestId, queryByText } = renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('go:1');
+        });
+
+        expect(queryByText(/Types:/)).toBeNull();
+
+        act(() => {
+            getByTestId('filter-types').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('selected-types').textContent).toBe('MCQ');
+        });
+
+        const typeChipButton = screen.getByRole('button', { name: /Reset question type filter/i });
+        expect(typeChipButton).toBeTruthy();
+
+        act(() => {
+            typeChipButton.click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('selected-types').textContent).toBe('MCQ,MSQ,NAT');
+        });
+    });
+
+    test('supports concurrent expansion of multiple subjects and subtopic selection across both', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('go:1');
+        });
+
+        act(() => {
+            screen.getByLabelText('Databases').click();
+            screen.getByLabelText('Operating System').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('databases,os');
+        });
+
+        expect(screen.getByRole('button', { name: /hide databases subtopics/i })).toBeTruthy();
+        expect(screen.getByRole('button', { name: /hide operating system subtopics/i })).toBeTruthy();
+
+        expect(screen.getByLabelText('Schema Normalization')).toBeTruthy();
+        expect(screen.getByLabelText('Deadlock')).toBeTruthy();
+    });
+
+    test('renders DA subjects section below DaToggle only when includeDa is true', async () => {
+        const { getByTestId, queryByText } = renderWithRouter(
+            <FilterProvider initialIncludeDa={true}>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+        });
+
+        // When includeDa is true, DA subjects appear
+        expect(screen.getByLabelText(/Probability & Statistics/i)).toBeTruthy();
+
+        // Clicking a DA subject selects it
+        act(() => {
+            screen.getByLabelText(/Probability & Statistics/i).click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('da:probability-and-statistics');
+        });
+
+        // Toggle DA off
+        act(() => {
+            getByTestId('disable-da').click();
+        });
+
+        await waitFor(() => {
+            expect(screen.queryByLabelText(/Probability & Statistics/i)).toBeNull();
+        });
+    });
+
+    test('toggling includeCse off excludes CSE questions, prunes active CSE filters, and collapses topics checklist', async () => {
+        const { getByTestId, queryByText } = renderWithRouter(
+            <FilterProvider initialIncludeCse={true} initialIncludeDa={true}>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('go:1');
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+        });
+
+        // Initially CSE topics are visible
+        expect(screen.getByLabelText('Databases')).toBeTruthy();
+
+        // Select CSE subject
+        act(() => {
+            screen.getByLabelText('Databases').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('databases');
+        });
+
+        // Disable CSE
+        act(() => {
+            getByTestId('disable-cse').click();
+        });
+
+        await waitFor(() => {
+            // CSE questions excluded, only DA questions remain in allQuestions and filteredQuestions
+            expect(getByTestId('all-question-uids').textContent).not.toContain('go:1');
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+            // Active CSE subject filter was pruned
+            expect(getByTestId('subjects').textContent).toBe('');
+            // CSE topics list is collapsed/hidden
+            expect(screen.queryByLabelText('Databases')).toBeNull();
+            // DA topics are still visible and selectable
+            expect(screen.getByLabelText(/Probability & Statistics/i)).toBeTruthy();
+        });
+
+        // Select DA subject while CSE is off
+        act(() => {
+            screen.getByLabelText(/Probability & Statistics/i).click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('subjects').textContent).toBe('da:probability-and-statistics');
+            expect(getByTestId('filtered-question-uids').textContent).toBe('da:2024:q-probability');
+        });
+
+        // Re-enable CSE
+        act(() => {
+            getByTestId('enable-cse').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('go:1');
+            expect(screen.getByLabelText('Databases')).toBeTruthy();
+        });
+    });
+
+    test('adapts YearRange and YearFilter when only GATE DA is enabled', async () => {
+        const { getByTestId, queryByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeCse={false} initialIncludeDa={true}>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+            expect(getByTestId('all-question-uids').textContent).not.toContain('go:1');
+        });
+
+        // Year range should reflect DA years (2024 to 2024 in mock)
+        expect(getByTestId('year-range').textContent).toBe('2024,2024');
+
+        // DA year filter should be visible
+        expect(getByTestId('year-filter-da:2024:set-1')).toBeTruthy();
+
+        // CSE year filter should not be present
+        expect(queryByTestId('year-filter-cse:2024:set-1')).toBeNull();
+
+        // Selecting DA year set filters DA questions
+        act(() => {
+            getByTestId('year-filter-da:2024:set-1').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('selected-year-sets').textContent).toBe('da:2024:set-1');
+            expect(getByTestId('filtered-question-uids').textContent).toContain('da:2024:q-probability');
+        });
+    });
+
+    test('auto-expands yearRange from DA full span when turning CSE back on', async () => {
+        const { getByTestId } = renderWithRouter(
+            <FilterProvider initialIncludeCse={false} initialIncludeDa={true}>
+                <TestComponent />
+            </FilterProvider>
+        );
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('da:2024:q-probability');
+        });
+
+        // Initially in DA only, full span is 2024,2024
+        expect(getByTestId('year-range').textContent).toBe('2024,2024');
+
+        // Turn CSE back on and DA off
+        act(() => {
+            getByTestId('enable-cse').click();
+            getByTestId('disable-da').click();
+        });
+
+        await waitFor(() => {
+            expect(getByTestId('all-question-uids').textContent).toContain('go:1');
+            // Year range auto-expands to full CSE span (1987 to 2026)
+            expect(getByTestId('year-range').textContent).toBe('1987,2026');
+        });
     });
 });

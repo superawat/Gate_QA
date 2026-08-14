@@ -219,12 +219,19 @@ export interface StructuredTags {
 export interface FilterStateShape {
   structuredTags?: StructuredTags;
   filters?: Partial<FilterSelectionState>;
+  includeCse?: boolean;
+  includeDa?: boolean;
+  daLoading?: boolean;
+  daError?: string;
   aptitudeLoading?: boolean;
   aptitudeError?: string;
+  aptitudeEnabled?: boolean;
   filteredQuestions?: QuestionRow[];
   totalQuestions?: number;
   solvedCount?: number;
   progressPercentage?: number;
+  allQuestions?: QuestionRow[];
+  [key: string]: unknown;
 }
 
 export interface FilterActionsShape {
@@ -233,6 +240,9 @@ export interface FilterActionsShape {
   setHideSolved?: (value: boolean) => void;
   setShowOnlySolved?: (value: boolean) => void;
   setShowOnlyBookmarked?: (value: boolean) => void;
+  setIncludeCse?: (value: boolean | ((prev: boolean) => boolean)) => void;
+  setIncludeDa?: (value: boolean | ((prev: boolean) => boolean)) => void;
+  [key: string]: unknown;
 }
 
 export interface PracticeAttemptHistoryEntry {
