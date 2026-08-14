@@ -11,10 +11,11 @@ import {
   validateMockQuestionForPool,
 } from "../utils/mockTest";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
-import { APTITUDE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
+import { APTITUDE_PROGRESS_STORAGE_KEY, PRACTICE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
 import { enqueueChange } from "../utils/syncQueue";
 
-const MockTestContext = createContext();
+export const MockTestContext = createContext();
+export const MockTimerContext = createContext({ timeLeft: 0 });
 
 const TOTAL_MOCK_TIME_SECONDS = 3 * 60 * 60;
 const ATTEMPT_STORAGE_KEY = "gateqa_mock_attempt_v1";
@@ -38,7 +39,7 @@ const isGaQuestion = (question = {}) => {
   if (isAptitudeQuestionUid(question?.question_uid)) {
     return true;
   }
-  return question.subject === "General Aptitude";
+  return question.section === "GA" || question.subject === "General Aptitude";
 };
 
 const clampToRange = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -998,7 +999,7 @@ export const MockTestProvider = ({ children }) => {
     }
     activeQuestions.forEach((question) => {
       const questionUid = String(question?.question_uid || "").trim();
-      if (!isAptitudeQuestionUid(questionUid)) {
+      if (!questionUid) {
         return;
       }
 
@@ -1007,12 +1008,21 @@ export const MockTestProvider = ({ children }) => {
         return;
       }
 
+      const isApt = isAptitudeQuestionUid(questionUid);
+      const storageKey = isApt
+        ? questionUid
+        : (AnswerService.getStorageKeyForQuestion(question) || questionUid);
+
+      if (!storageKey) {
+        return;
+      }
+
       recordPracticeAttempt({
-        storageKey: questionUid,
+        storageKey,
         correct: questionResult.correct === true,
         type: liveMeta[questionUid]?.type || question?.answerMeta?.type || question?.type || "",
         input: liveResponses[questionUid] ?? null,
-        progressStorageKey: APTITUDE_PROGRESS_STORAGE_KEY,
+        progressStorageKey: isApt ? APTITUDE_PROGRESS_STORAGE_KEY : PRACTICE_PROGRESS_STORAGE_KEY,
       });
     });
     appendMockTestHistoryEntry(historyEntry);
@@ -1042,7 +1052,11 @@ export const MockTestProvider = ({ children }) => {
 
       const activeUid = activeTimingUidRef.current;
       if (activeUid) {
-        recordQuestionTimeSpent(activeUid, elapsedSeconds);
+        const isVisible = typeof document === "undefined" || document.visibilityState === "visible";
+        const attributedSeconds = isVisible ? Math.min(elapsedSeconds, 5) : 0;
+        if (attributedSeconds > 0) {
+          recordQuestionTimeSpent(activeUid, attributedSeconds);
+        }
       }
     }
   }, [finalizeSubmission, recordQuestionTimeSpent]);
@@ -1293,7 +1307,15 @@ export const MockTestProvider = ({ children }) => {
     timeLeft, clearResponse, markForReviewAndNext,
   ]);
 
-  return <MockTestContext.Provider value={value}>{children}</MockTestContext.Provider>;
+  const timerValue = useMemo(() => ({ timeLeft }), [timeLeft]);
+
+  return (
+    <MockTestContext.Provider value={value}>
+      <MockTimerContext.Provider value={timerValue}>
+        {children}
+      </MockTimerContext.Provider>
+    </MockTestContext.Provider>
+  );
 };
 
 export const useMockTest = () => {
@@ -1302,4 +1324,9 @@ export const useMockTest = () => {
     throw new Error("useMockTest must be used within a MockTestProvider");
   }
   return context;
+};
+
+export const useMockTimer = () => {
+  const context = useContext(MockTimerContext);
+  return context || { timeLeft: 0 };
 };

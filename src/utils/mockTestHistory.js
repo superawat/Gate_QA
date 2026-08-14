@@ -4,7 +4,7 @@ import {
 } from "./mockTest";
 
 export const MOCK_TEST_HISTORY_STORAGE_KEY = "gateqa_mock_history_v1";
-const MAX_MOCK_TEST_HISTORY_ENTRIES = 12;
+const MAX_MOCK_TEST_HISTORY_ENTRIES = 50;
 
 const getDefaultStorage = () => {
   if (typeof window === "undefined") {

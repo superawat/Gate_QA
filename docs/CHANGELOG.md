@@ -2,7 +2,42 @@
 
 ## 2026-08-14
 
+### Added
+- **Mock Test Subsystem Runtime & Performance Optimization (AUG-008 & AUG-010)**:
+  - **Timer Context Decoupling**: Separated countdown timer ticks into `MockTimerContext` and `useMockTimer()`, isolating 1-second interval renders strictly to `MockTimerDisplay`. This eliminates 60 FPS re-render storms across MathJax equations, question stems, and the palette during active exams.
+  - **DOM & LaTeX Sanitization Memoization**: Wrapped question and option HTML sanitization in `useMemo` in `MockTestQuestion.jsx` to prevent continuous regex and `DOMPurify` passes during typing or answer selection.
+  - **Async Exam Hydration Loading State**: Added loading spinner and disabled state on the "Start Mock" button in `MockTestSetup.jsx` and `MockTestShell.jsx` during async question hydration.
+  - **"Practice Missed Questions" One-Click Action**: Added dedicated action button in `MockTestResults.jsx` allowing users to directly drill incorrect and unanswered questions from any completed mock test in Practice Mode.
+  - **Expanded History Retention**: Increased `MAX_MOCK_TEST_HISTORY_ENTRIES` in `mockTestHistory.js` from 12 to 50 attempts to preserve full exam series preparation records.
+
+- **Performance Insights Multi-Branch Architecture (Option C)**:
+  - Added interactive track switcher (`GATE CS`, `GATE DA`, `Combined`) with clean `react-icons` (`FaGraduationCap`, `FaRobot`, `FaLayerGroup`).
+  - Scoped subject mastery, weak subtopics, mistakes, and review queues dynamically to the selected syllabus while maintaining unified daily streak and XP continuity.
+  - Activated previously orphaned `YearCoverageGrid` and `YearAccuracyTrend` components within a collapsible "Exam Year Coverage" analytics section.
+  - Added status-based filtering (`All`, `Still Wrong`, `Recovered`) in the Wrong Answers tab.
+  - Attached stateful `returnTo` back navigation to question links across review queues and mistake lists.
+
 ### Fixed
+- **Mock Test Subsystem Data-Integrity & Engine Hardening (AUG-008)**:
+  - **Subtopic Auto-Wipe Bug (P0)**: Connected `patchSetupState` in `MockTestShell.jsx` to `structuredTags?.structuredSubtopics`, preventing selected subtopics from being cleared when toggling subjects in the Custom Builder.
+  - **GATE DA Question Drop (P0)**: Grouped non-GA track questions (`section === "CS"`, `section === "DA"`, or track-scoped questions) into the technical section in `splitByCatalogSection` and `isGaQuestion`, allowing GATE DA questions to populate Section 2 seamlessly.
+  - **Timer Leak on Tab Switch / Device Sleep (P0)**: Capped single-question active time accumulation to visible seconds (max 5s per tick when `document.visibilityState === 'visible'`) while preserving overall exam countdown decrements.
+  - **Mock Exam Submission Progress Sync (P1)**: Unified mock test submissions to log standard practice attempts into `gateqa_progress_v1` and `gateqa_aptitude_progress_v1`.
+  - **NAT Virtual Keypad & Keyboard Input Sanitization (P1)**: Enforced strict numeric regex validation (`/^-?\d*\.?\d*$/`) across physical keystrokes and virtual keypad clicks.
+  - **In-Progress Mock Attempt Backup (P1)**: Included active in-progress exams from `sessionStorage` in `workspaceFile.js` JSON exports/imports for zero data loss during workspace backups.
+
+### Fixed
+- **Performance Insights Mathematical Integrity & Logical Audit**:
+  - **Metric Semantic Collision (Bug 2.1)**: Disambiguated unique questions attempted (`questions tried`) from total submission attempts (`of N submissions`) on top overview cards.
+  - **Unweighted Subject Accuracy (Bug 2.2)**: Replaced unweighted arithmetic mean with true weighted overall accuracy (`totalCorrectAttempts / totalAttemptedCount`).
+  - **DA Subtopic Practice URL Resolution (Bug 2.3)**: Preserved explicit `subtopicSlug` across all subtopic buckets to resolve multi-colon DA identifiers (`da:linear-algebra:matrices`).
+  - **Multi-Subject Question Overcounting (Bug 2.4)**: Deduplicated `attemptedQuestionCount` using unique question storage keys.
+  - **Array Spread Call Stack Overflow (Bug 2.5)**: Replaced unbounded `Math.max(...array)` spreads with safe `.reduce()`.
+  - **False-Positive DA Track Scoping (Bug 2.6)**: Replaced broad keyword matching with strict `da:` / `da-` prefix checks in `isSubjectInTrack`, preventing CSE Engineering Mathematics subtopics from being falsely hidden.
+  - **DA Mock Test Section Breakdown Omission (Bug 2.7)**: Generalized `MockHistoryPanel` scoring to `coreScore` across all non-GA sections (`CS` and `DA`), updated stacked bar charts to display `Core Subject Marks`, and added `DA` to `sectionRank`.
+  - **Performance Optimization**: Implemented 0ms in-memory memoized caching and replaced deep JSON serialization (`JSON.parse(JSON.stringify())`) with shallow object copying in `mergeMockHistoryIntoProgress`.
+  - **Skill Radar Dark Mode & Spoke Disambiguation**: Restored high-contrast web grid lines in dark mode and separated programming topic spokes.
+
 - **Question `go:1767` (GATE CSE 2014 Set 1 Q9) NAT True/False Rendering Bug**:
   - Removed spurious tags (`gatecse-2016-set2`, `gate1992`, `gate1994`, `true-false`) from `go:1767` across source question datasets and regenerated public artifacts (detail shard `2014-s1.json`, search index, etc.).
   - Hardened `AnswerPanel.jsx` and `MockTestQuestion.jsx` with defense-in-depth checks:

@@ -78,6 +78,22 @@ const compactStringArray = (value) => (
     : []
 );
 
+const readMockAttemptState = (storage) => {
+  const fromStorage = readStorageJson(MOCK_ATTEMPT_STORAGE_KEY, null, storage);
+  if (fromStorage) {
+    return fromStorage;
+  }
+  if (typeof window !== "undefined" && window.sessionStorage) {
+    try {
+      const raw = window.sessionStorage.getItem(MOCK_ATTEMPT_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+  return null;
+};
+
 export const buildWorkspaceSnapshot = (storage = getDefaultStorage()) => ({
   $schema: "https://gateqa.app/schemas/workspace-v1.json",
   version: WORKSPACE_SCHEMA_VERSION,
@@ -101,7 +117,7 @@ export const buildWorkspaceSnapshot = (storage = getDefaultStorage()) => ({
     },
     sessions: {
       lastSession: readStorageJson(LAST_SESSION_STORAGE_KEY, null, storage),
-      mockAttempt: readStorageJson(MOCK_ATTEMPT_STORAGE_KEY, null, storage),
+      mockAttempt: readMockAttemptState(storage),
       scratchpadNotes: readStorageJson(USER_NOTES_STORAGE_KEY, {}, storage),
     },
     mockHistory: readStorageJson(MOCK_TEST_HISTORY_STORAGE_KEY, [], storage),
@@ -159,6 +175,12 @@ export const importWorkspaceSnapshot = (payload, storage = getDefaultStorage()) 
     writeWorkspaceJson(storage, MOCK_ATTEMPT_STORAGE_KEY, sessions.mockAttempt),
     writeWorkspaceJson(storage, STREAK_FREEZE_STORAGE_KEY, preferences.streakFreeze || {}),
   ];
+
+  if (typeof window !== "undefined" && window.sessionStorage && sessions.mockAttempt) {
+    try {
+      window.sessionStorage.setItem(MOCK_ATTEMPT_STORAGE_KEY, JSON.stringify(sessions.mockAttempt));
+    } catch {}
+  }
 
   if (preferences.theme === "light" || preferences.theme === "dark") {
     writes.push(writeRaw(storage, THEME_STORAGE_KEY, preferences.theme));

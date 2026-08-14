@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMockTest } from "../../contexts/MockTestContext";
 import { useFilterState } from "../../contexts/FilterContext";
 import { AnswerService } from "../../services/AnswerService";
@@ -237,7 +238,7 @@ const splitByCatalogSection = (rows = [], questionMetaByUid = {}) => {
             gaQuestions.push(question);
             return;
         }
-        if (section === "CS") {
+        if (section === "CS" || section === "DA" || (!section && question?.subject !== "General Aptitude")) {
             csQuestions.push(question);
         }
     });
@@ -385,8 +386,10 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         if (typeof window === "undefined") return false;
         return window.localStorage.getItem(PALETTE_COLLAPSE_STORAGE_KEY) === "1";
     });
+    const navigate = useNavigate();
     const calculatorButtonRef = useRef(null);
     const exitInProgressRef = useRef(false);
+    const [isStartingExam, setIsStartingExam] = useState(false);
     const [setupState, setSetupState] = useState(() => buildDefaultSetupState(2000, 2025));
 
     useEffect(() => {
@@ -863,7 +866,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             // When selectedSubjects changes, purge orphaned subtopics whose parent was deselected
             if (Object.prototype.hasOwnProperty.call(patch, "selectedSubjects")) {
                 const activeSubjectSet = new Set(next.selectedSubjects);
-                const allSubtopicsBySubject = next._structuredSubtopics || {};
+                const allSubtopicsBySubject = structuredTags?.structuredSubtopics || {};
                 if (Array.isArray(next.selectedSubtopics) && next.selectedSubtopics.length > 0) {
                     const validSubtopicSet = new Set();
                     activeSubjectSet.forEach((subjectSlug) => {
@@ -882,7 +885,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
             return next;
         });
-    }, []);
+    }, [structuredTags?.structuredSubtopics]);
 
     const toggleSelection = useCallback((field, value) => {
         setSetupState((prev) => {
@@ -991,108 +994,120 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     }, []);
 
     const handleStartExam = useCallback(async () => {
-        if (!selectedKind || !availability.canStart) {
+        if (!selectedKind || !availability.canStart || isStartingExam) {
             return;
         }
 
-        let gaQuestions = [];
-        let csQuestions = [];
-        let durationMinutes = selectedKind.durationMinutes || 180;
-        let strictSectionCounts = null;
-        let selectedPaperLabel = "";
+        setIsStartingExam(true);
+        try {
+            let gaQuestions = [];
+            let csQuestions = [];
+            let durationMinutes = selectedKind.durationMinutes || 180;
+            let strictSectionCounts = null;
+            let selectedPaperLabel = "";
 
-        if (selectedKind.id === "paper_mode") {
-            gaQuestions = paperGaQuestions;
-            csQuestions = paperCsQuestions;
-            const requiredGaCount = Number.parseInt(
-                String(selectedPaper?.requiredGaCount ?? MOCK_SECTION_COUNTS.GA),
-                10
-            );
-            const requiredCsCount = Number.parseInt(
-                String(selectedPaper?.requiredCsCount ?? MOCK_SECTION_COUNTS.CS),
-                10
-            );
-            strictSectionCounts = {
-                GA: Number.isFinite(requiredGaCount) ? Math.max(0, requiredGaCount) : MOCK_SECTION_COUNTS.GA,
-                CS: Number.isFinite(requiredCsCount) ? Math.max(0, requiredCsCount) : MOCK_SECTION_COUNTS.CS,
-            };
-            const selectedPaperDurationMinutes = Number.parseInt(
-                String(selectedPaper?.durationMinutes ?? ""),
-                10
-            );
-            if (Number.isFinite(selectedPaperDurationMinutes) && selectedPaperDurationMinutes > 0) {
-                durationMinutes = selectedPaperDurationMinutes;
+            if (selectedKind.id === "paper_mode") {
+                gaQuestions = paperGaQuestions;
+                csQuestions = paperCsQuestions;
+                const requiredGaCount = Number.parseInt(
+                    String(selectedPaper?.requiredGaCount ?? MOCK_SECTION_COUNTS.GA),
+                    10
+                );
+                const requiredCsCount = Number.parseInt(
+                    String(selectedPaper?.requiredCsCount ?? MOCK_SECTION_COUNTS.CS),
+                    10
+                );
+                strictSectionCounts = {
+                    GA: Number.isFinite(requiredGaCount) ? Math.max(0, requiredGaCount) : MOCK_SECTION_COUNTS.GA,
+                    CS: Number.isFinite(requiredCsCount) ? Math.max(0, requiredCsCount) : MOCK_SECTION_COUNTS.CS,
+                };
+                const selectedPaperDurationMinutes = Number.parseInt(
+                    String(selectedPaper?.durationMinutes ?? ""),
+                    10
+                );
+                if (Number.isFinite(selectedPaperDurationMinutes) && selectedPaperDurationMinutes > 0) {
+                    durationMinutes = selectedPaperDurationMinutes;
+                }
+                selectedPaperLabel = selectedPaper?.label || QuestionService.formatYearSetLabel(selectedPaperYearSetKey || "");
+            } else if (selectedKind.id === "full_length") {
+                const selection = buildStrictGeneratedSelection(generatedScorableQuestions, questionMetaByUid);
+                if (!selection) {
+                    return;
+                }
+                gaQuestions = selection.gaQuestions;
+                csQuestions = selection.csQuestions;
+                strictSectionCounts = { ...MOCK_SECTION_COUNTS };
+            } else if (selectedKind.id === "custom") {
+                const selection = buildCountBasedSelection(filteredPool, customCount, questionMetaByUid);
+                gaQuestions = selection.gaQuestions;
+                csQuestions = selection.csQuestions;
+                durationMinutes = customDurationMinutes;
+            } else {
+                const selection = buildCountBasedSelection(
+                    filteredPool,
+                    selectedKind.fixedCount || 0,
+                    questionMetaByUid
+                );
+                gaQuestions = selection.gaQuestions;
+                csQuestions = selection.csQuestions;
             }
-            selectedPaperLabel = selectedPaper?.label || QuestionService.formatYearSetLabel(selectedPaperYearSetKey || "");
-        } else if (selectedKind.id === "full_length") {
-            const selection = buildStrictGeneratedSelection(generatedScorableQuestions, questionMetaByUid);
-            if (!selection) {
-                return;
-            }
-            gaQuestions = selection.gaQuestions;
-            csQuestions = selection.csQuestions;
-            strictSectionCounts = { ...MOCK_SECTION_COUNTS };
-        } else if (selectedKind.id === "custom") {
-            const selection = buildCountBasedSelection(filteredPool, customCount, questionMetaByUid);
-            gaQuestions = selection.gaQuestions;
-            csQuestions = selection.csQuestions;
-            durationMinutes = customDurationMinutes;
-        } else {
-            const selection = buildCountBasedSelection(
-                filteredPool,
-                selectedKind.fixedCount || 0,
-                questionMetaByUid
-            );
-            gaQuestions = selection.gaQuestions;
-            csQuestions = selection.csQuestions;
-        }
 
-        const hydratedGaQuestions = await hydrateAptitudeQuestions(gaQuestions);
-        const hydratedCsQuestions = await hydrateAptitudeQuestions(csQuestions);
-        const totalQuestions = gaQuestions.length + csQuestions.length;
-        const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
-        const started = startTest({
-            gaQuestions: hydratedGaQuestions,
-            csQuestions: hydratedCsQuestions,
-            timeSeconds: durationMinutes * 60,
-            startSection,
-            meta: {
-                kindId: selectedKind.id,
-                kindTitle: selectedKind.title,
-                strictSectionCounts,
-                durationMinutes,
-                questionCount: totalQuestions,
-                selectedPaperYearSetKey,
-                selectedPaperLabel,
-                setup: {
-                    ...setupState,
+            const hydratedGaQuestions = await hydrateAptitudeQuestions(gaQuestions);
+            const hydratedCsQuestions = await hydrateAptitudeQuestions(csQuestions);
+            const totalQuestions = gaQuestions.length + csQuestions.length;
+            const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
+            const started = startTest({
+                gaQuestions: hydratedGaQuestions,
+                csQuestions: hydratedCsQuestions,
+                timeSeconds: durationMinutes * 60,
+                startSection,
+                meta: {
+                    kindId: selectedKind.id,
+                    kindTitle: selectedKind.title,
+                    strictSectionCounts,
+                    durationMinutes,
+                    questionCount: totalQuestions,
                     selectedPaperYearSetKey,
-                    requiredSummary: availability.requiredSummary,
+                    selectedPaperLabel,
+                    setup: {
+                        ...setupState,
+                        selectedPaperYearSetKey,
+                        requiredSummary: availability.requiredSummary,
+                    },
                 },
-            },
-        });
+            });
 
-        if (started) {
-            clearAttemptError();
-            setStep("exam");
+            if (started) {
+                clearAttemptError();
+                setStep("exam");
+            }
+        } finally {
+            setIsStartingExam(false);
         }
     }, [
         availability.canStart,
         availability.requiredSummary,
+        clearAttemptError,
         customCount,
         customDurationMinutes,
+        filteredPool,
+        generatedScorableQuestions,
+        hydrateAptitudeQuestions,
+        isStartingExam,
         paperCsQuestions,
         paperGaQuestions,
         questionMetaByUid,
-        hydrateAptitudeQuestions,
-        generatedScorableQuestions,
         selectedKind,
         selectedPaper,
         selectedPaperYearSetKey,
         setupState,
         startTest,
-        clearAttemptError,
     ]);
+
+    const handlePracticeMistakes = useCallback((missedUids = []) => {
+        if (!Array.isArray(missedUids) || missedUids.length === 0) return;
+        navigate(`/solve?q=${encodeURIComponent(missedUids[0])}`);
+    }, [navigate]);
 
     const handleFastExitToLanding = useCallback(() => {
         exitInProgressRef.current = true;
@@ -1202,20 +1217,21 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         );
     }
 
-    if (catalogLoading || aptitudeMockLoading || !isInitialized) {
-        return <MockCatalogLoaderCard />;
+    if (catalogLoading && step !== "exam" && step !== "review" && step !== "result") {
+        return renderPreExamShell(
+            <MockCatalogLoaderCard />
+        );
     }
 
-    if (catalogError) {
-        return (
-            <div className="mocktest-root flex h-screen w-full items-center justify-center bg-[#dcebf9] p-6 text-center">
-                <div className="w-full max-w-lg rounded-lg border border-[#d9b7b7] bg-white p-8 shadow-sm">
-                    <h2 className="text-xl font-bold text-[#223549]">Mock catalog unavailable</h2>
-                    <p className="mt-3 text-sm text-[#6a7f94]">{catalogError}</p>
+    if (catalogError && step !== "exam" && step !== "review" && step !== "result") {
+        return renderPreExamShell(
+            <div className="mocktest-error-panel rounded-[var(--radius-card)] border border-rose-200 bg-white p-6 shadow-sm">
+                <p className="text-sm font-semibold text-rose-700">{catalogError}</p>
+                <div className="mt-4 flex gap-3">
                     <button
                         type="button"
                         onClick={handleExitToLanding}
-                        className="mt-5 rounded border border-[#aebccc] bg-white px-4 py-2 text-sm font-semibold text-[#223549] hover:bg-[#f0f5f9]"
+                        className="mocktest-secondary-btn border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50"
                     >
                         Back to Modes
                     </button>
@@ -1258,6 +1274,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         onReset={() => resetSetupState(selectedKind.id)}
                         onStart={handleStartExam}
                         showBackButton={true}
+                        isStarting={isStartingExam}
                     />
                 )
         );
@@ -1268,6 +1285,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             <MockTestResults
                 onExit={handleExitToLanding}
                 onReview={() => setStep("review")}
+                onPracticeMistakes={handlePracticeMistakes}
             />
         );
     }

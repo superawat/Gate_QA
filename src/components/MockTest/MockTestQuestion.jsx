@@ -168,10 +168,6 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         [reviewResult?.answerRecord]
     );
 
-    const rawQuestionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(String(currentQuestion?.question || "")))
-        .replace(/\n\n/g, "<br />")
-        .replace(/\n<li>/g, "<br><li>");
-
     const normalizedOptions = useMemo(
         () => QuestionService.getNormalizedOptions(currentQuestion),
         [currentQuestion]
@@ -184,10 +180,29 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         [currentQuestion]
     );
     const displayOptions = explicitOptions.length > 0 ? explicitOptions : normalizedOptions;
-    const questionHtmlForDisplay = displayOptions.length > 0
-        ? stripEmbeddedOptions(rawQuestionHtml)
-        : rawQuestionHtml;
-    const sanitizedQuestionHtml = DOMPurify.sanitize(questionHtmlForDisplay);
+
+    const sanitizedQuestionHtml = useMemo(() => {
+        const rawQuestionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(String(currentQuestion?.question || "")))
+            .replace(/\n\n/g, "<br />")
+            .replace(/\n<li>/g, "<br><li>");
+        const questionHtmlForDisplay = displayOptions.length > 0
+            ? stripEmbeddedOptions(rawQuestionHtml)
+            : rawQuestionHtml;
+        return DOMPurify.sanitize(questionHtmlForDisplay);
+    }, [currentQuestion?.question_uid, currentQuestion?.question, displayOptions.length]);
+
+    const sanitizedDisplayOptions = useMemo(() => {
+        return displayOptions.map((option, index) => {
+            const rawOpt = option?.html || option?.text || "";
+            const optionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawOpt));
+            const sanitizedHtml = optionHtml ? DOMPurify.sanitize(optionHtml) : "";
+            return {
+                ...option,
+                sanitizedHtml,
+                index,
+            };
+        });
+    }, [displayOptions]);
 
     const sectionTotal = currentSection === "CS"
         ? sectionQuestionUids.CS.length
@@ -243,11 +258,16 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         saveResponse(questionUid, optionValue);
     };
 
+    const NAT_REGEX = /^-?\d*\.?\d*$/;
+
     const handleNatChange = (event) => {
         if (isReviewPhase) {
             return;
         }
-        saveResponse(questionUid, event.target.value);
+        const val = event.target.value;
+        if (val === "" || NAT_REGEX.test(val)) {
+            saveResponse(questionUid, val);
+        }
     };
 
     const natInputRef = useRef(null);
@@ -256,20 +276,25 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         if (isReviewPhase) return;
         const input = natInputRef.current;
         if (!input) {
-            saveResponse(questionUid, (currentResponse || "") + char);
+            const nextCandidate = (currentResponse || "") + char;
+            if (nextCandidate === "" || NAT_REGEX.test(nextCandidate)) {
+                saveResponse(questionUid, nextCandidate);
+            }
             return;
         }
         const start = input.selectionStart || 0;
         const end = input.selectionEnd || 0;
         const val = currentResponse || "";
         const newVal = val.slice(0, start) + char + val.slice(end);
-        saveResponse(questionUid, newVal);
-        setTimeout(() => {
-            if (natInputRef.current) {
-                natInputRef.current.setSelectionRange(start + char.length, start + char.length);
-                natInputRef.current.focus();
-            }
-        }, 0);
+        if (newVal === "" || NAT_REGEX.test(newVal)) {
+            saveResponse(questionUid, newVal);
+            setTimeout(() => {
+                if (natInputRef.current) {
+                    natInputRef.current.setSelectionRange(start + char.length, start + char.length);
+                    natInputRef.current.focus();
+                }
+            }, 0);
+        }
     };
 
     const handleNatBackspace = () => {
@@ -494,9 +519,8 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                         >
                                             {displayOptions.length > 0 ? (
                                                 <div className="mb-4 flex flex-col gap-2 border-b border-gray-200 pb-4">
-                                                    {displayOptions.map((option, index) => {
-                                                        const optionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(option.html || option.text || ""));
-                                                        if (!optionHtml) return null;
+                                                    {sanitizedDisplayOptions.map((option, index) => {
+                                                        if (!option.sanitizedHtml) return null;
                                                         return (
                                                             <div key={index} className="flex items-start gap-2 text-[15px] text-gray-800">
                                                                 <span className="font-bold flex-shrink-0">{OPTION_LABELS[index] ?? option.label}.</span>
@@ -505,7 +529,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                                                     dynamic
                                                                     className="mock-option-text flex-1 overflow-auto"
                                                                 >
-                                                                    <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(optionHtml) }} />
+                                                                    <span dangerouslySetInnerHTML={{ __html: option.sanitizedHtml }} />
                                                                 </MathContent>
                                                             </div>
                                                         );

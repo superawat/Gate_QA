@@ -488,6 +488,64 @@ The startup split is now live end to end:
 - Bundle budget CI gate (`qa:validate-bundle-budget`) enforces chunk limits on every build.
 - Landing network CI gate (`qa:validate-landing-network`) ensures the landing path stays lean.
 
+## Performance Insights & Multi-Branch Analytics Engine (FEAT-033)
+
+The Performance Insights engine (`/insights`) analyzes practice attempts, mock exam sessions, review queues (spaced repetition), weak subtopics, and exam history.
+
+```text
+[ Global Progress Store (gateqa_progress_v1, gateqa_da_progress_v1) ]
+                        │
+                        ▼
+      [ weakTopicAnalyzer.js (0ms Memoized Cache) ]
+                        │
+       ┌────────────────┴────────────────┐
+       ▼                                 ▼
+[ Track Scoping Engine (Option C) ]  [ Unified Study Momentum ]
+  • GATE CS: 10 Core CSE + GA          • Daily Streak & Heatmap
+  • GATE DA: 7 Core DA + GA            • Earned XP & Level
+  • Combined: Full Practice Pool       • Active Practice Days
+```
+
+1. **Multi-Branch Architecture (Option C — Unified Effort + Track-Scoped Analytics):**
+   - **Unified Momentum:** Daily learning streak, XP, active days, and streak freezes remain global and uninterrupted across both CSE and DA practice.
+   - **Track-Scoped Metrics:** Subject completion %, skill radar axes, focus areas (weak subtopics), mistakes, and review queues dynamically partition based on the active branch selector (`cs`, `da`, `all`).
+   - **Strict Prefix Disambiguation:** DA questions and subjects are isolated via `da:` / `da-` prefixes, preserving CSE Engineering Mathematics subtopics (`engg-math:linear-algebra`, `engg-math:calculus`) without keyword collision.
+2. **0ms In-Memory Memoization:**
+   - `weakTopicAnalyzer.js` reuses in-memory questions passed from `FilterContext.allQuestions`, eliminating redundant network requests for search indexes.
+   - Insights results are memoized in memory keyed by progress state and solved counts.
+3. **Mathematical Precision:**
+   - **Semantic Disambiguation:** Top overview cards cleanly separate unique questions attempted (`questions tried`) from total submission attempts (`of N submissions`).
+   - **Weighted Overall Accuracy:** Computed as `totalCorrectAttempts / totalAttemptedCount` rather than unweighted arithmetic means across subjects.
+4. **Mock History Integration:**
+   - Section-wise score charts dynamically support both CSE (`CS` + `GA`) and DA (`DA` + `GA`) section scoring under generalized `coreScore` tracking.
+
+## Mock Test Subsystem & Exam Runtime Engine (FEAT-034)
+
+The Mock Test subsystem (`/mock`) provides authentic simulation of the GATE computer-based test portal while maintaining local-first data integrity.
+
+```text
+[ MockTestProvider (Global Exam State) ]
+            │
+            ├─► [ MockTimerContext ] ──► [ MockTimerDisplay (1s isolated ticks) ]
+            │
+            ├─► [ MockTestQuestion ] ──► [ useMemo sanitized HTML & LaTeX ]
+            │
+            ├─► [ QuestionPalette ] ──► [ 5-State Status Indicators ]
+            │
+            └─► [ MockTestResults ] ──► [ Diagnostic + "Practice Missed" Action ]
+```
+
+1. **1:1 TCS iON GATE Portal Replica Invariant:**
+   - The visual layout, color palette, 5-state question tiles (Not Visited, Not Answered, Answered, Marked, Answered & Marked), candidate panel, action buttons, and **minimum 1024px desktop resolution requirement** are strictly preserved and frozen.
+2. **Timer Context Decoupling:**
+   - `MockTimerContext` isolates 1-second interval countdown ticks to the `MockTimerDisplay` component, preventing 60 FPS re-render cascades across MathJax equations, question stems, and the palette during active exams.
+3. **Local-First Attempt State & Zero Data Loss:**
+   - In-progress active exam attempts are backed up in `sessionStorage` and exported/imported via `workspaceFile.js` JSON backups.
+   - Upon exam submission, all attempted questions automatically log practice records into `gateqa_progress_v1` and `gateqa_aptitude_progress_v1`.
+4. **History Retention & Post-Exam Drills:**
+   - Retains up to 50 attempts in `gateqa_mock_history_v1` (FIFO).
+   - Direct `"Practice Missed Questions"` integration links incorrect/unanswered questions straight to Practice Mode.
+
 ## Known limitation reference
 
 See `docs/KNOWN-LIMITATIONS.md` for the subtopic cap tradeoff and expected false negatives on genuine multi-subtopic questions.

@@ -12,6 +12,7 @@ let mockFilterContext = null;
 
 vi.mock("../../contexts/MockTestContext", () => ({
   useMockTest: () => mockMockTestContext,
+  useMockTimer: () => ({ timeLeft: mockMockTestContext?.timeLeft ?? 10800 }),
 }));
 
 vi.mock("../../contexts/FilterContext", () => ({

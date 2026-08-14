@@ -168,6 +168,7 @@ const MockTestSetup = ({
     onBulkToggleSubtopics,
     backLabel = "Back",
     showBackButton = true,
+    isStarting = false,
 }) => {
     const canStart = Boolean(availability?.canStart);
     const availableSummary = availability?.availableSummary || "0";

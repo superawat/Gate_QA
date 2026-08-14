@@ -1,11 +1,27 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useMockTest } from "../../contexts/MockTestContext";
+import { useMockTest, useMockTimer } from "../../contexts/MockTestContext";
 
 const formatTime = (seconds) => {
     const safeSeconds = Math.max(0, Number(seconds) || 0);
     const totalMinutes = Math.floor(safeSeconds / 60);
     const remainingSeconds = Math.floor(safeSeconds % 60).toString().padStart(2, "0");
     return `${totalMinutes}:${remainingSeconds}`;
+};
+
+const MockTimerDisplay = ({ fallbackTimeLeft = 0 }) => {
+    const { timeLeft } = useMockTimer();
+    const activeTime = Number.isFinite(Number(timeLeft)) && Number(timeLeft) >= 0
+        ? timeLeft
+        : fallbackTimeLeft;
+
+    return (
+        <div className="flex items-center gap-1 font-bold text-[13px]">
+            <span className="text-[#1f2b38]">Time Left :</span>
+            <span className="w-[6.5ch] text-right font-bold tabular-nums text-[#1f2b38]" data-testid="mock-timer-value">
+                {formatTime(activeTime)}
+            </span>
+        </div>
+    );
 };
 
 const MOCK_KIND_LABELS = {
@@ -276,12 +292,7 @@ const MockTestHeader = ({
                                 </svg>
                             </button>
 
-                            <div className="flex items-center gap-1 font-bold text-[13px]">
-                                <span className="text-[#1f2b38]">Time Left :</span>
-                                <span className="w-[6.5ch] text-right font-bold tabular-nums text-[#1f2b38]" data-testid="mock-timer-value">
-                                    {formatTime(timeLeft)}
-                                </span>
-                            </div>
+                            <MockTimerDisplay fallbackTimeLeft={timeLeft} />
                         </div>
                     </div>
                 </div>

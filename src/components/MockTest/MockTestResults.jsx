@@ -349,7 +349,7 @@ const StructuredReviewSection = ({ questions = [], summary = {} }) => {
     );
 };
 
-const MockTestResults = ({ onExit, onReview }) => {
+const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
     const { questions, resultSummary } = useMockTest();
 
     const summary = resultSummary || {
@@ -372,6 +372,18 @@ const MockTestResults = ({ onExit, onReview }) => {
         },
         perQuestionResult: {},
     };
+
+    const missedQuestions = React.useMemo(() => {
+        const list = [];
+        (questions || []).forEach((q) => {
+            const uid = q?.question_uid;
+            const res = summary?.perQuestionResult?.[uid];
+            if (res && (res.status === "incorrect" || res.status === "unanswered")) {
+                list.push(uid);
+            }
+        });
+        return list;
+    }, [questions, summary?.perQuestionResult]);
 
     return (
         <div className="mocktest-root flex h-screen w-full flex-col items-center bg-gray-50 px-4 py-6 text-gray-800">
@@ -423,7 +435,7 @@ const MockTestResults = ({ onExit, onReview }) => {
 
                 <StructuredReviewSection questions={questions} summary={summary} />
 
-                <div className="mt-6 flex justify-center gap-3">
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
                     <button
                         type="button"
                         onClick={onReview}
@@ -431,6 +443,15 @@ const MockTestResults = ({ onExit, onReview }) => {
                     >
                         Review Questions
                     </button>
+                    {missedQuestions.length > 0 && typeof onPracticeMistakes === "function" && (
+                        <button
+                            type="button"
+                            onClick={() => onPracticeMistakes(missedQuestions)}
+                            className="rounded-lg border border-[#d97706] bg-[#f59e0b] px-8 py-3 font-bold text-white shadow-md transition-all hover:bg-[#d97706]"
+                        >
+                            Practice Missed ({missedQuestions.length})
+                        </button>
+                    )}
                     <button
                         type="button"
                         onClick={onExit}
