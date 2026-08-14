@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0f172a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -20,6 +20,10 @@
           ? "light"
           : (isStoredThemeValid ? storedTheme : (prefersDark ? "dark" : "light"));
         document.documentElement.setAttribute("data-theme", theme);
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute("content", theme === "dark" ? "#0f172a" : "#f9fafb");
+        }
       } catch (error) {
         document.documentElement.setAttribute("data-theme", "light");
       }
@@ -204,14 +208,14 @@
       );
     }(window.location));
   </script>
-  <script type="module" crossorigin src="/assets/index-B-B7plSF.js"></script>
+  <script type="module" crossorigin src="/assets/index-BDxvcoEn.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/vendor-react-gsO-yNs2.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-preload-helper-CVfkMyKi.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-misc-DZ2BPTSd.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-icons-qAcewV-D.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-icons-lSTQGNJK.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-seo-DHKhgoF1.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-router-CBp-thN9.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-C-QBZF1u.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-ztOsKmem.css">
   <meta name="keywords" content="Databases, GATE 2008, GATE CS PYQ, Database Management Systems GATE questions" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="GATE IT 2008 | Question: 74 - Databases | GateQA" />
