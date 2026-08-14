@@ -137,7 +137,7 @@ const getAttemptQuestionTimeRows = (attempt = {}) => {
     ["incorrect", attempt.incorrectQuestions || []],
     ["unanswered", attempt.unansweredQuestions || []],
   ];
-  const sectionRank = { GA: 0, CS: 1 };
+  const sectionRank = { GA: 0, CS: 1, DA: 1 };
 
   return groups
     .flatMap(([outcome, questions]) => questions.map((question) => ({ ...question, outcome })))
@@ -161,7 +161,7 @@ const TimeDistributionPanel = ({ attempt }) => {
     || Number(attempt?.timeAnalysis?.totalSeconds || 0) > 0;
   if (!hasTimingData) return null;
 
-  const maxSeconds = Math.max(1, ...rows.map((question) => Number(question.timeSpentSeconds || 0)));
+  const maxSeconds = rows.reduce((max, q) => Math.max(max, Number(q.timeSpentSeconds || 0)), 1);
   const slowCount = Number(attempt?.timeAnalysis?.slowQuestionCount || 0);
   const averageSeconds = Number(attempt?.timeAnalysis?.averageSeconds || 0);
 
@@ -218,26 +218,29 @@ const MockAnalyticsCharts = ({ history = [] }) => {
 
   const chartData = [...history].reverse().map((attempt, index) => {
     let gaScore = 0;
-    let csScore = 0;
+    let coreScore = 0;
 
     const allQuestions = [
       ...(attempt.correctQuestions || []),
       ...(attempt.incorrectQuestions || []),
     ];
 
-    allQuestions.forEach(q => {
-      if (q.section === "GA") gaScore += q.scoreDelta;
-      else if (q.section === "CS") csScore += q.scoreDelta;
-      // if section is null, it's not strictly GA or CS, we can ignore or add to CS
+    allQuestions.forEach((q) => {
+      const delta = Number(q.scoreDelta || 0);
+      if (q.section === "GA") {
+        gaScore += delta;
+      } else {
+        coreScore += delta;
+      }
     });
 
     return {
       name: `Mock ${index + 1}`,
-      date: new Date(attempt.submittedAt).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' }),
+      date: new Date(attempt.submittedAt).toLocaleDateString("en-IN", { month: "short", day: "numeric" }),
       score: attempt.score,
       gaScore: Number(gaScore.toFixed(2)),
-      csScore: Number(csScore.toFixed(2)),
-      fullLabel: attempt.selectedPaperLabel || attempt.kindTitle
+      coreScore: Number(coreScore.toFixed(2)),
+      fullLabel: attempt.selectedPaperLabel || attempt.kindTitle,
     };
   });
 
@@ -250,12 +253,12 @@ const MockAnalyticsCharts = ({ history = [] }) => {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-border)" />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--color-text-muted)' }} dy={10} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--color-text-muted)' }} />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "var(--color-text-muted)" }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "var(--color-text-muted)" }} />
               <Tooltip
-                contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-border)', background: 'var(--color-surface)', color: 'var(--color-text)', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                labelStyle={{ fontWeight: 'bold', color: 'var(--color-text)', marginBottom: '4px' }}
-                formatter={(value) => [`${value} Marks`, 'Total Score']}
+                contentStyle={{ borderRadius: "8px", border: "1px solid var(--color-border)", background: "var(--color-surface)", color: "var(--color-text)", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}
+                labelStyle={{ fontWeight: "bold", color: "var(--color-text)", marginBottom: "4px" }}
+                formatter={(value) => [`${value} Marks`, "Total Score"]}
               />
               <Line
                 type="monotone"
@@ -263,7 +266,7 @@ const MockAnalyticsCharts = ({ history = [] }) => {
                 stroke="#0ea5e9"
                 strokeWidth={3}
                 dot={{ r: 4, strokeWidth: 2 }}
-                activeDot={{ r: 6, stroke: '#0ea5e9', strokeWidth: 0 }}
+                activeDot={{ r: 6, stroke: "#0ea5e9", strokeWidth: 0 }}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -277,16 +280,16 @@ const MockAnalyticsCharts = ({ history = [] }) => {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-border)" />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--color-text-muted)' }} dy={10} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--color-text-muted)' }} />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "var(--color-text-muted)" }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "var(--color-text-muted)" }} />
               <Tooltip
-                contentStyle={{ borderRadius: '8px', border: '1px solid var(--color-border)', background: 'var(--color-surface)', color: 'var(--color-text)', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                cursor={{ fill: 'var(--color-primary-soft)' }}
+                contentStyle={{ borderRadius: "8px", border: "1px solid var(--color-border)", background: "var(--color-surface)", color: "var(--color-text)", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}
+                cursor={{ fill: "var(--color-primary-soft)" }}
               />
-              <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} iconType="circle" />
+              <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "10px" }} iconType="circle" />
               <ReferenceLine y={0} stroke="var(--color-border)" />
-              <Bar dataKey="csScore" name="CS Marks" stackId="a" fill="#8b5cf6" radius={[4, 4, 0, 0]} maxBarSize={40} />
-              <Bar dataKey="gaScore" name="GA Marks" stackId="a" fill="#f59e0b" radius={[4, 4, 0, 0]} maxBarSize={40} />
+              <Bar dataKey="coreScore" name="Core Subject Marks" stackId="a" fill="#8b5cf6" radius={[4, 4, 0, 0]} maxBarSize={40} />
+              <Bar dataKey="gaScore" name="General Aptitude (GA)" stackId="a" fill="#f59e0b" radius={[4, 4, 0, 0]} maxBarSize={40} />
             </BarChart>
           </ResponsiveContainer>
         </div>

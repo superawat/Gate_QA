@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback } from "react";
+import React, { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import {
   FaChartLine,
   FaCompass,
@@ -16,6 +16,9 @@ import {
   FaCalendarCheck,
   FaClock,
   FaExclamationTriangle,
+  FaGraduationCap,
+  FaRobot,
+  FaLayerGroup,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -300,47 +303,245 @@ const AccuracyBar = ({ accuracyRate, className = "" }) => {
 
 /* ── Radar chart for subject overview ───────────────────────────────────── */
 
+const formatRadarSubject = (label = "") => {
+  const map = {
+    // CSE Subjects
+    "Computer Organization and Architecture": "COA",
+    "Computer Organization & Architecture": "COA",
+    "CO & Architecture": "COA",
+    "Programming and DS": "Prog & DS",
+    "Programming and Data Structures": "Prog & DS",
+    "Programming & Data Structures": "Prog & DS",
+    "Programming in C": "C Prog",
+    "Algorithms": "Algorithms",
+    "Theory of Computation": "TOC",
+    "Compiler Design": "Compilers",
+    "Operating System": "Operating Sys",
+    "Operating Systems": "Operating Sys",
+    "Database Management Systems": "DBMS",
+    "Databases": "DBMS",
+    "Computer Networks": "Networks",
+    "Digital Logic": "Digital Logic",
+    "Discrete Mathematics": "Discrete Math",
+    "Engineering Mathematics": "Engg Math",
+    "General Aptitude": "Aptitude",
+
+    // Aptitude Modules
+    "Verbal Aptitude": "Verbal",
+    "English": "English",
+    "Quantitative Aptitude": "Quant",
+    "Analytical Aptitude": "Reasoning",
+    "Spatial Aptitude": "Spatial",
+
+    // DA Subjects
+    "Linear Algebra": "Linear Algebra",
+    "Probability and Statistics": "Probability",
+    "Probability & Statistics": "Probability",
+    "Calculus and Optimization": "Calculus",
+    "Calculus & Optimization": "Calculus",
+    "Programming & DSA": "Prog & DSA",
+    "Programming in Python": "Python",
+    "Machine Learning": "Machine Learning",
+    "Artificial Intelligence": "AI",
+    "Database Management and Warehousing": "DBMS & Warehousing",
+    "Data Warehousing and Mining": "Data Mining",
+  };
+  return map[label] || (label.length > 13 ? `${label.slice(0, 11)}…` : label);
+};
+
 const SubjectRadarChart = ({ data = [] }) => {
   const chartTheme = useChartTheme();
+  const attemptedSubjects = useMemo(
+    () => data.filter((item) => Number(item.attemptedCount || 0) > 0),
+    [data]
+  );
+
+  const canToggle = attemptedSubjects.length >= 3 && attemptedSubjects.length < data.length;
+  const [showAll, setShowAll] = useState(false);
+
+  const activeSubjects = useMemo(() => {
+    if (showAll || attemptedSubjects.length < 3) {
+      return data;
+    }
+    return attemptedSubjects;
+  }, [data, attemptedSubjects, showAll]);
+
   const radarData = useMemo(() => {
-    return data.map((item) => ({
-      subject: item.label.length > 12 ? item.label.substring(0, 10) + "..." : item.label,
-      accuracy: Math.round(item.accuracyRate * 100),
-      coverage: Math.round(item.coverageRate * 100),
-      fullName: item.label,
-    }));
-  }, [data]);
+    const seen = new Map();
+    return activeSubjects.map((item) => {
+      let subject = formatRadarSubject(item.label);
+      if (seen.has(subject)) {
+        const count = seen.get(subject) + 1;
+        seen.set(subject, count);
+        subject = `${subject} (${count})`;
+      } else {
+        seen.set(subject, 1);
+      }
+      return {
+        subject,
+        accuracy: Math.round(Number(item.accuracyRate || 0) * 100),
+        coverage: Math.round(Number(item.coverageRate || 0) * 100),
+        fullName: item.label,
+        attemptedCount: Number(item.attemptedCount || 0),
+        correctAttempts: Number(item.correctAttempts || 0),
+        attemptedQuestions: Number(item.attemptedQuestions || 0),
+        availableQuestions: Number(item.availableQuestions || 0),
+      };
+    });
+  }, [activeSubjects]);
 
   if (radarData.length < 3) return null;
 
   return (
-    <div className="h-[300px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
-          <PolarGrid stroke={chartTheme.grid} />
-          <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11, fill: chartTheme.tick }} />
-          <PolarRadiusAxis domain={[0, 100]} tick={{ fontSize: 10, fill: chartTheme.tickSecondary }} />
-          <Radar
-            name="Accuracy"
-            dataKey="accuracy"
-            stroke={chartTheme.seriesAccuracy}
-            fill={chartTheme.seriesAccuracy}
-            fillOpacity={0.15}
-            strokeWidth={2}
-            isAnimationActive={false}
-          />
-          <Radar
-            name="Coverage"
-            dataKey="coverage"
-            stroke={chartTheme.seriesCoverage}
-            fill={chartTheme.seriesCoverage}
-            fillOpacity={0.1}
-            strokeWidth={2}
-            strokeDasharray="4 4"
-            isAnimationActive={false}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
+    <div className="space-y-3">
+      {canToggle && (
+        <div className="flex items-center justify-between text-xs px-1">
+          <span className="text-[color:var(--color-text-muted)] font-medium">
+            Showing {activeSubjects.length} of {data.length} subjects
+          </span>
+          <div className="inline-flex rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-0.5 text-xs">
+            <button
+              type="button"
+              onClick={() => setShowAll(false)}
+              className={`px-2.5 py-1 rounded-md font-medium transition ${
+                !showAll
+                  ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-semibold"
+                  : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+              }`}
+            >
+              Attempted ({attemptedSubjects.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className={`px-2.5 py-1 rounded-md font-medium transition ${
+                showAll
+                  ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-semibold"
+                  : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+              }`}
+            >
+              All ({data.length})
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="h-[320px] w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="72%">
+            <PolarGrid stroke={chartTheme.grid} strokeWidth={1} strokeDasharray="3 3" />
+            <PolarAngleAxis
+              dataKey="subject"
+              tick={{ fontSize: 11, fill: chartTheme.tick, fontWeight: 500 }}
+            />
+            <PolarRadiusAxis
+              domain={[0, 100]}
+              axisLine={false}
+              tick={{ fontSize: 10, fill: chartTheme.tickSecondary }}
+            />
+            <RechartsTooltip
+              content={({ active, payload }) => {
+                if (!active || !payload?.length) return null;
+                const item = payload[0].payload;
+                return (
+                  <div
+                    className="rounded-xl p-3.5 text-xs shadow-xl backdrop-blur"
+                    style={{
+                      backgroundColor: "var(--chart-tooltip-bg)",
+                      border: "1px solid var(--chart-tooltip-border)",
+                    }}
+                  >
+                    <p
+                      className="font-semibold text-sm mb-2"
+                      style={{ color: "var(--chart-tooltip-text)" }}
+                    >
+                      {item.fullName}
+                    </p>
+                    <div className="space-y-1.5">
+                      <div
+                        className="flex items-center justify-between gap-4"
+                        style={{ color: "var(--chart-tooltip-muted)" }}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span
+                            className="w-2 h-2 rounded-full"
+                            style={{ backgroundColor: chartTheme.seriesAccuracy }}
+                          />
+                          Accuracy:
+                        </span>
+                        <span
+                          className="font-semibold"
+                          style={{ color: "var(--chart-tooltip-text)" }}
+                        >
+                          {item.accuracy}% ({item.correctAttempts}/{item.attemptedCount} attempts)
+                        </span>
+                      </div>
+                      <div
+                        className="flex items-center justify-between gap-4"
+                        style={{ color: "var(--chart-tooltip-muted)" }}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span
+                            className="w-2 h-2 rounded-full"
+                            style={{ backgroundColor: chartTheme.seriesCoverage }}
+                          />
+                          Coverage:
+                        </span>
+                        <span
+                          className="font-semibold"
+                          style={{ color: "var(--chart-tooltip-text)" }}
+                        >
+                          {item.coverage}% ({item.attemptedQuestions}/{item.availableQuestions} questions)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }}
+            />
+            <Radar
+              name="Accuracy"
+              dataKey="accuracy"
+              stroke={chartTheme.seriesAccuracy}
+              fill={chartTheme.seriesAccuracy}
+              fillOpacity={0.25}
+              strokeWidth={2.5}
+              dot={{
+                r: 3.5,
+                fill: chartTheme.seriesAccuracy,
+                stroke: chartTheme.tooltipBg,
+                strokeWidth: 1.5,
+              }}
+              isAnimationActive={false}
+            />
+            <Radar
+              name="Coverage"
+              dataKey="coverage"
+              stroke={chartTheme.seriesCoverage}
+              fill={chartTheme.seriesCoverage}
+              fillOpacity={0.12}
+              strokeWidth={2}
+              strokeDasharray="4 4"
+              dot={{
+                r: 2.5,
+                fill: chartTheme.seriesCoverage,
+              }}
+              isAnimationActive={false}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-6 pt-1 text-xs">
+        <span className="inline-flex items-center gap-1.5 font-medium" style={{ color: chartTheme.seriesAccuracy }}>
+          <span className="w-3 h-3 rounded-full" style={{ backgroundColor: chartTheme.seriesAccuracy }} />
+          Accuracy (Solid)
+        </span>
+        <span className="inline-flex items-center gap-1.5 font-medium" style={{ color: chartTheme.seriesCoverage }}>
+          <span className="w-3.5 h-0.5 border-t-2 border-dashed" style={{ borderColor: chartTheme.seriesCoverage }} />
+          Coverage (Dashed)
+        </span>
+      </div>
     </div>
   );
 };
@@ -571,41 +772,150 @@ const SubjectProgressRings = ({ subjects = [] }) => {
 /* ── Focus areas (weak topic recommendations) ──────────────────────────── */
 
 const FocusAreas = ({ subtopics = [] }) => {
-  const weakSubtopics = useMemo(() =>
+  const [showAll, setShowAll] = useState(false);
+
+  const allWeakSubtopics = useMemo(() =>
     subtopics
-      .filter((st) => st.attemptedCount > 0 && st.accuracyRate < 0.6)
-      .slice(0, 3),
+      .filter((st) => Number(st.attemptedCount || 0) > 0 && Number(st.accuracyRate || 0) < 0.6)
+      .sort((a, b) => {
+        if (a.accuracyRate !== b.accuracyRate) return a.accuracyRate - b.accuracyRate;
+        return Number(b.attemptedCount || 0) - Number(a.attemptedCount || 0);
+      }),
     [subtopics]
   );
 
-  if (weakSubtopics.length === 0) return null;
+  const displayedSubtopics = useMemo(() =>
+    showAll ? allWeakSubtopics : allWeakSubtopics.slice(0, 4),
+    [allWeakSubtopics, showAll]
+  );
+
+  if (allWeakSubtopics.length === 0) {
+    return (
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.04] dark:bg-emerald-950/20 p-4 sm:p-5">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0">
+            <FaCheckCircle className="text-lg" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-[color:var(--color-text)]">
+              All Practiced Subtopics Above 60% Accuracy
+            </p>
+            <p className="text-xs text-[color:var(--color-text-muted)] mt-0.5">
+              No weak areas detected. Continue practicing new topics to maintain broad syllabus coverage.
+            </p>
+          </div>
+        </div>
+        <Link
+          to={PRACTICE_ROUTE}
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm shrink-0 self-stretch sm:self-auto justify-center"
+        >
+          Explore Topics <FaArrowRight className="text-[10px]" />
+        </Link>
+      </div>
+    );
+  }
+
+  // Multi-subtopic practice URL for top weak areas
+  const topWeak = allWeakSubtopics.slice(0, 3);
+  const weakSubjects = Array.from(new Set(topWeak.map((st) => st.subjectSlug))).join(",");
+  const weakSubtopicSlugs = topWeak
+    .map((st) => st.subtopicSlug || (st.subjectSlug ? st.key.slice(st.subjectSlug.length + 1) : st.key.split(":")[1] || ""))
+    .filter(Boolean)
+    .join(",");
+  const practiceAllWeakUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(weakSubjects)}&subtopics=${encodeURIComponent(weakSubtopicSlugs)}&hideSolved=1`;
 
   return (
-    <div className="space-y-2">
-      {weakSubtopics.map((st) => {
-        const accuracyPercent = Math.round(st.accuracyRate * 100);
-        const tone = getAccuracyTone(st.accuracyRate);
-        const practiceUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(st.subjectSlug)}&subtopics=${encodeURIComponent(st.key.split(":")[1] || "")}`;
-        return (
-          <div
-            key={st.key}
-            className="flex items-center justify-between gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 transition hover:shadow-md"
-          >
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-[color:var(--color-text)] truncate">{st.label}</p>
-              <p className="text-[11px] text-[color:var(--color-text-muted)]">
-                {st.subjectLabel} · {formatNumber(st.attemptedCount)} attempts · <span className="font-semibold" style={{ color: tone.color }}>{accuracyPercent}%</span> accuracy
-              </p>
-            </div>
-            <Link
-              to={practiceUrl}
-              className="shrink-0 inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)]"
-            >
-              Practice <FaArrowRight className="text-[9px]" />
-            </Link>
+    <div className="space-y-3">
+      {allWeakSubtopics.length > 1 && (
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 p-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]">
+          <div className="text-xs text-[color:var(--color-text-muted)]">
+            <span className="font-semibold text-[color:var(--color-text)]">{allWeakSubtopics.length} subtopics</span> below 60% proficiency threshold.
           </div>
-        );
-      })}
+          <Link
+            to={practiceAllWeakUrl}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm shrink-0"
+          >
+            Practice Top Weak Areas <FaArrowRight className="text-[10px]" />
+          </Link>
+        </div>
+      )}
+
+      <div className="grid gap-2.5 sm:grid-cols-2">
+        {displayedSubtopics.map((st) => {
+          const accuracyPercent = Math.round(Number(st.accuracyRate || 0) * 100);
+          const tone = getAccuracyTone(st.accuracyRate);
+          const subtopicSlug = st.subtopicSlug || (st.subjectSlug ? st.key.slice(st.subjectSlug.length + 1) : st.key.split(":")[1] || "");
+          const practiceUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(st.subjectSlug)}&subtopics=${encodeURIComponent(subtopicSlug)}&hideSolved=1`;
+          const mistakeCount = Math.max(0, Number(st.attemptedCount || 0) - Number(st.correctAttempts || 0));
+          const unattemptedQuestions = Math.max(0, Number(st.availableQuestions || 0) - Number(st.attemptedQuestions || 0));
+
+          return (
+            <div
+              key={st.key}
+              className="flex flex-col justify-between rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 transition-all hover:border-[color:var(--color-primary-border)] hover:shadow-md group"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] border border-[color:var(--color-border)] truncate max-w-[65%]">
+                    {st.subjectLabel}
+                  </span>
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold"
+                    style={{ backgroundColor: `${tone.color}18`, color: tone.color }}
+                  >
+                    {accuracyPercent}%
+                  </span>
+                </div>
+
+                <h3 className="text-sm font-semibold text-[color:var(--color-text)] group-hover:text-[color:var(--color-primary)] transition-colors truncate" title={st.label}>
+                  {st.label}
+                </h3>
+
+                {/* Accuracy mini bar */}
+                <div className="mt-2.5 mb-2">
+                  <div className="h-1.5 w-full rounded-full bg-[color:var(--color-surface-muted)] overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-500"
+                      style={{ width: `${Math.max(4, accuracyPercent)}%`, backgroundColor: tone.color }}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-[11px] text-[color:var(--color-text-muted)]">
+                  <span>
+                    {Number(st.correctAttempts || 0)}/{Number(st.attemptedCount || 0)} correct
+                    {mistakeCount > 0 && <span className="text-rose-500 dark:text-rose-400 font-medium ml-1">({mistakeCount} {mistakeCount === 1 ? "miss" : "misses"})</span>}
+                  </span>
+                  {unattemptedQuestions > 0 && (
+                    <span>{unattemptedQuestions} new left</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-3.5 pt-2.5 border-t border-[color:var(--color-border)] flex items-center justify-end">
+                <Link
+                  to={practiceUrl}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[color:var(--color-primary)] hover:text-[color:var(--color-primary-hover)] transition-colors"
+                >
+                  Practice <FaArrowRight className="text-[9px] group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {allWeakSubtopics.length > 4 && (
+        <div className="text-center pt-1">
+          <button
+            type="button"
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-xs font-medium text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors"
+          >
+            {showAll ? "Show Top 4 Priority" : `View all ${allWeakSubtopics.length} weak topics`}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -626,7 +936,10 @@ const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
   // Build the multi-subtopic URL for the weakest areas (max 3 to avoid giant URLs)
   const topWeak = weakSubtopics.slice(0, 3);
   const weakSubjects = Array.from(new Set(topWeak.map((st) => st.subjectSlug))).join(",");
-  const weakSubtopicSlugs = topWeak.map((st) => st.key.split(":")[1]).filter(Boolean).join(",");
+  const weakSubtopicSlugs = topWeak
+    .map((st) => st.subtopicSlug || (st.subjectSlug ? st.key.slice(st.subjectSlug.length + 1) : st.key.split(":")[1] || ""))
+    .filter(Boolean)
+    .join(",");
   const practiceWeakUrl = `${PRACTICE_ROUTE}?subjects=${encodeURIComponent(weakSubjects)}&subtopics=${encodeURIComponent(weakSubtopicSlugs)}&hideSolved=1`;
   
   const reviewUrl = hasReviewDue ? buildSolvePath(reviewQueue[0].storageKey) : "#";
@@ -811,13 +1124,14 @@ const YearAccuracyTrend = ({ years = [] }) => {
 
 /* ── Overview tab ───────────────────────────────────────────────────────── */
 
-const OverviewTab = ({ insights, summary }) => {
+const OverviewTab = ({ insights = {}, summary = {} }) => {
+  const subjectsList = Array.isArray(insights?.subjects) ? insights.subjects : [];
   const totalCorrect = useMemo(() =>
-    insights.subjects.reduce((sum, s) => sum + s.correctAttempts, 0)
-  , [insights.subjects]);
+    subjectsList.reduce((sum, s) => sum + (Number(s?.correctAttempts) || 0), 0)
+  , [subjectsList]);
   const totalIncorrect = useMemo(() =>
-    insights.subjects.reduce((sum, s) => sum + s.incorrectAttempts, 0)
-  , [insights.subjects]);
+    subjectsList.reduce((sum, s) => sum + (Number(s?.incorrectAttempts) || 0), 0)
+  , [subjectsList]);
 
   return (
     <div className="space-y-6">
@@ -835,10 +1149,10 @@ const OverviewTab = ({ insights, summary }) => {
         <div className="stagger-card-2">
           <StatCard
             label="Avg Accuracy"
-            value={formatPercent(summary.averageSubjectAccuracy * 100)}
+            value={formatPercent(summary.overallAccuracyRate * 100)}
             icon={FaBullseye}
-            accent={summary.averageSubjectAccuracy >= 0.7 ? "emerald" : summary.averageSubjectAccuracy >= 0.5 ? "amber" : "rose"}
-            sublabel="across subjects"
+            accent={summary.overallAccuracyRate >= 0.7 ? "emerald" : summary.overallAccuracyRate >= 0.5 ? "amber" : "rose"}
+            sublabel="across submissions"
           />
         </div>
         <div className="stagger-card-3">
@@ -847,7 +1161,7 @@ const OverviewTab = ({ insights, summary }) => {
             value={formatNumber(totalCorrect)}
             icon={FaCheckCircle}
             accent="emerald"
-            sublabel={`of ${formatNumber(totalCorrect + totalIncorrect)} total`}
+            sublabel={`of ${formatNumber(totalCorrect + totalIncorrect)} submissions`}
           />
         </div>
         <div className="stagger-card-4">
@@ -881,39 +1195,103 @@ const OverviewTab = ({ insights, summary }) => {
         ) : null}
       </div>
 
-      {/* Subject Progress — collapsible */}
+      {/* Subject Progress — collapsible, open by default */}
       {insights.subjects.length > 0 && (
         <CollapsibleSection
-          title="Subject Progress"
-          description="Questions attempted out of total available per subject."
-          defaultOpen={false}
+          title={
+            <div className="flex items-start gap-3.5">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-sky-500/10 text-sky-500 border border-sky-500/20">
+                <FaChartLine className="text-base" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Subject Progress</h2>
+                <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                  Questions attempted out of total available per subject.
+                </p>
+              </div>
+            </div>
+          }
+          defaultOpen={true}
         >
           <SubjectProgressRings subjects={insights.subjects} />
         </CollapsibleSection>
       )}
 
-      {/* Focus Areas — collapsible */}
-      <CollapsibleSection
-        title={
-          <div className="flex items-center gap-2">
-            <FaExclamationTriangle className="text-[color:var(--color-text-muted)]" />
-            <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Focus Areas</h2>
-          </div>
-        }
-        description="Subtopics with accuracy below 60%. Focused practice can improve your score significantly."
-        defaultOpen={false}
-      >
-        <FocusAreas subtopics={insights.subtopics} />
-      </CollapsibleSection>
+      {/* Focus Areas — collapsible, open by default when weak areas exist */}
+      {(() => {
+        const weakCount = (insights.subtopics || []).filter(
+          (st) => Number(st.attemptedCount || 0) > 0 && Number(st.accuracyRate || 0) < 0.6
+        ).length;
+        const hasAttempts = (insights.subtopics || []).some(
+          (st) => Number(st.attemptedCount || 0) > 0
+        );
+
+        if (!hasAttempts) return null;
+
+        return (
+          <CollapsibleSection
+            title={
+              <div className="flex items-start gap-3.5">
+                <div
+                  className={`flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 ${
+                    weakCount > 0
+                      ? "bg-amber-500/10 text-amber-500 border border-amber-500/20"
+                      : "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
+                  }`}
+                >
+                  {weakCount > 0 ? (
+                    <FaBullseye className="text-base" />
+                  ) : (
+                    <FaCheckCircle className="text-base" />
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Focus Areas</h2>
+                    {weakCount > 0 ? (
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                        {weakCount} {weakCount === 1 ? "topic needs" : "topics need"} work
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                        All strong (≥ 60%)
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                    {weakCount > 0
+                      ? "Subtopics with accuracy below 60%. Targeted practice here yields maximum score gains."
+                      : "Great job! All your practiced subtopics currently have 60%+ accuracy."}
+                  </p>
+                </div>
+              </div>
+            }
+            defaultOpen={weakCount > 0}
+          >
+            <FocusAreas subtopics={insights.subtopics} />
+          </CollapsibleSection>
+        );
+      })()}
 
       {/* Smart Practice Banner — always visible */}
       <SmartPracticeBanner subtopics={insights.subtopics} reviewQueue={insights.reviewQueue} />
 
-      {/* Skill Radar — collapsible, closed by default */}
+      {/* Skill Radar — collapsible */}
       <CollapsibleSection
-        title="Skill Radar"
-        description="Accuracy (blue) vs coverage (purple) across subjects."
-        defaultOpen={false}
+        title={
+          <div className="flex items-start gap-3.5">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-violet-500/10 text-violet-500 border border-violet-500/20">
+              <FaCompass className="text-base" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Skill Radar</h2>
+              <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                360° overview of accuracy (solid blue) and syllabus coverage (dashed purple) across subjects.
+              </p>
+            </div>
+          </div>
+        }
+        defaultOpen={insights.subjects.length >= 3}
       >
         {insights.subjects.length >= 3 ? (
           <SubjectRadarChart data={insights.subjects} />
@@ -932,10 +1310,46 @@ const OverviewTab = ({ insights, summary }) => {
         )}
       </CollapsibleSection>
 
+      {/* Exam Year Coverage — collapsible */}
+      {Array.isArray(insights.years) && insights.years.length > 0 && (
+        <CollapsibleSection
+          title={
+            <div className="flex items-start gap-3.5">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-sky-500/10 text-sky-500 border border-sky-500/20">
+                <FaHistory className="text-base" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Exam Year Coverage</h2>
+                <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                  Breakdown of attempted vs total available questions across GATE exam years.
+                </p>
+              </div>
+            </div>
+          }
+          defaultOpen={false}
+        >
+          <div className="space-y-6">
+            <YearCoverageGrid years={insights.years} />
+            <YearAccuracyTrend years={insights.years} />
+          </div>
+        </CollapsibleSection>
+      )}
+
       {/* Practice Trend — collapsible, closed by default */}
       <CollapsibleSection
-        title="Practice Trend"
-        description="Daily attempt volume from practice and mock submissions."
+        title={
+          <div className="flex items-start gap-3.5">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+              <FaClock className="text-base" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">Practice Trend</h2>
+              <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                Daily attempt volume and accuracy over time from practice and mock submissions.
+              </p>
+            </div>
+          </div>
+        }
         defaultOpen={false}
       >
         <TimeTrendChart data={insights.attemptTimeline || []} />
@@ -943,8 +1357,19 @@ const OverviewTab = ({ insights, summary }) => {
 
       {/* All Subjects — collapsible, closed by default */}
       <CollapsibleSection
-        title="All Subjects"
-        description="Tap any subject to see detailed metrics."
+        title={
+          <div className="flex items-start gap-3.5">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-slate-500/10 text-slate-500 border border-slate-500/20">
+              <FaFilter className="text-base" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg font-semibold text-[color:var(--color-text)]">All Subjects Breakdown</h2>
+              <p className="mt-1 text-sm text-[color:var(--color-text-muted)] leading-relaxed">
+                Tap any subject to inspect granular topic accuracy and error distributions.
+              </p>
+            </div>
+          </div>
+        }
         defaultOpen={false}
       >
         <div className="space-y-2">
@@ -961,10 +1386,13 @@ const OverviewTab = ({ insights, summary }) => {
 
 const ReviewQueueTab = ({ reviewQueue = [] }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigateToQuestion = useCallback((storageKey) => {
-    navigate(buildSolvePath(storageKey));
-  }, [navigate]);
+    navigate(buildSolvePath(storageKey), {
+      state: { returnTo: `${location.pathname}${location.search}` },
+    });
+  }, [navigate, location.pathname, location.search]);
 
   if (!reviewQueue.length) {
     return (
@@ -999,7 +1427,7 @@ const ReviewQueueTab = ({ reviewQueue = [] }) => {
           <div className="rounded-2xl border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-4 py-3 shadow-[var(--shadow-soft)]">
             <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-info-text)]">Oldest</p>
             <p className="text-2xl font-bold text-[color:var(--color-info-text)]">
-              {formatNumber(Math.max(...reviewQueue.map((item) => Number(item.daysOverdue || 0)), 0))}d
+              {formatNumber(reviewQueue.reduce((max, item) => Math.max(max, Number(item.daysOverdue || 0)), 0))}d
             </p>
           </div>
         </div>
@@ -1063,6 +1491,7 @@ const ITEMS_PER_PAGE = 15;
 
 const WrongAnswersTab = ({ wrongQuestions = [] }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [subjectFilter, setSubjectFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -1082,8 +1511,6 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
     } else if (statusFilter === "recovered") {
       result = result.filter((q) => q.lastCorrect);
     }
-    // Sort so that active incorrect (still wrong) questions always come first,
-    // and recovered questions are placed at the bottom.
     return result.sort((a, b) => {
       if (a.lastCorrect !== b.lastCorrect) {
         return a.lastCorrect ? 1 : -1;
@@ -1097,8 +1524,10 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
   const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   const handleNavigateToQuestion = useCallback((storageKey) => {
-    navigate(buildSolvePath(storageKey));
-  }, [navigate]);
+    navigate(buildSolvePath(storageKey), {
+      state: { returnTo: `${location.pathname}${location.search}` },
+    });
+  }, [navigate, location.pathname, location.search]);
 
   // Reset page when filters change
   useEffect(() => {
@@ -1292,6 +1721,28 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
   );
 };
 
+/* ── Track scoping helper ────────────────────────────────────────────────── */
+
+const isSubjectInTrack = (subjectSlugOrKey = "", track = "all") => {
+  if (track === "all") return true;
+  const key = String(subjectSlugOrKey || "").toLowerCase();
+  const isDa = key.startsWith("da:") || key.startsWith("da-");
+  const isGa =
+    key === "ga" ||
+    key.startsWith("apt-") ||
+    key.includes("aptitude") ||
+    key === "english" ||
+    key === "reasoning";
+
+  if (track === "da") {
+    return isDa || isGa;
+  }
+  if (track === "cs") {
+    return !isDa || isGa;
+  }
+  return true;
+};
+
 /* ── Main InsightsPage ──────────────────────────────────────────────────── */
 
 const InsightsPage = ({
@@ -1300,7 +1751,7 @@ const InsightsPage = ({
   onResumePractice,
   onStartMockTest,
 }) => {
-  const { solvedCount, totalQuestions, progressPercentage } = useFilterState();
+  const { allQuestions, solvedCount, totalQuestions, progressPercentage } = useFilterState();
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -1322,12 +1773,31 @@ const InsightsPage = ({
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState(initialTab);
 
+  const [selectedTrack, setSelectedTrack] = useState(() => {
+    const params = new URLSearchParams(location.search);
+    const trackParam = params.get("track");
+    if (trackParam === "da" || trackParam === "cs" || trackParam === "all") {
+      return trackParam;
+    }
+    return "all";
+  });
+
   const handleTabChange = useCallback((tabId) => {
     setActiveTab(tabId);
     const params = new URLSearchParams(location.search);
     params.set("tab", tabId);
     navigate({ search: `?${params.toString()}` }, { replace: true });
   }, [location.search, navigate]);
+
+  const handleTrackChange = useCallback((trackId) => {
+    setSelectedTrack(trackId);
+    const params = new URLSearchParams(location.search);
+    params.set("track", trackId);
+    navigate({ search: `?${params.toString()}` }, { replace: true });
+  }, [location.search, navigate]);
+
+  const allQuestionsRef = useRef(allQuestions);
+  allQuestionsRef.current = allQuestions;
 
   useEffect(() => {
     let active = true;
@@ -1336,9 +1806,23 @@ const InsightsPage = ({
       setIsLoading(true);
       setError("");
       try {
-        const result = await loadWeakTopicInsights();
+        const questionsList = allQuestionsRef.current;
+        const result = await loadWeakTopicInsights({
+          questions: Array.isArray(questionsList) && questionsList.length > 0 ? questionsList : null,
+        });
         if (active) {
-          setInsights(result);
+          setInsights(result || {
+            subjects: [],
+            subtopics: [],
+            wrongQuestions: [],
+            reviewQueue: [],
+            attemptTimeline: [],
+            studyActivity: {},
+            timeSummary: {},
+            difficultySummary: { counts: {} },
+            mockSummary: {},
+            attemptedQuestionCount: 0,
+          });
         }
       } catch (loadError) {
         if (active) {
@@ -1358,31 +1842,55 @@ const InsightsPage = ({
     };
   }, []);
 
+  const scopedInsights = useMemo(() => {
+    const safeInsights = insights || {};
+    if (selectedTrack === "all") {
+      return safeInsights;
+    }
+    return {
+      ...safeInsights,
+      subjects: (safeInsights.subjects || []).filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug, selectedTrack)),
+      subtopics: (safeInsights.subtopics || []).filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key, selectedTrack)),
+      wrongQuestions: (safeInsights.wrongQuestions || []).filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
+      reviewQueue: (safeInsights.reviewQueue || []).filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
+    };
+  }, [insights, selectedTrack]);
+
   const summary = useMemo(() => {
-    const subjects = Array.isArray(insights.subjects) ? insights.subjects : [];
-    const subtopics = Array.isArray(insights.subtopics) ? insights.subtopics : [];
-    const wrongQuestions = Array.isArray(insights.wrongQuestions) ? insights.wrongQuestions : [];
-    const reviewQueue = Array.isArray(insights.reviewQueue) ? insights.reviewQueue : [];
-    const timeSummary = insights.timeSummary && typeof insights.timeSummary === "object"
-      ? insights.timeSummary
+    const subjects = Array.isArray(scopedInsights.subjects) ? scopedInsights.subjects : [];
+    const subtopics = Array.isArray(scopedInsights.subtopics) ? scopedInsights.subtopics : [];
+    const wrongQuestions = Array.isArray(scopedInsights.wrongQuestions) ? scopedInsights.wrongQuestions : [];
+    const reviewQueue = Array.isArray(scopedInsights.reviewQueue) ? scopedInsights.reviewQueue : [];
+    const timeSummary = scopedInsights.timeSummary && typeof scopedInsights.timeSummary === "object"
+      ? scopedInsights.timeSummary
       : {};
-    const difficultySummary = insights.difficultySummary && typeof insights.difficultySummary === "object"
-      ? insights.difficultySummary
+    const difficultySummary = scopedInsights.difficultySummary && typeof scopedInsights.difficultySummary === "object"
+      ? scopedInsights.difficultySummary
       : {};
-    const mockSummary = insights.mockSummary && typeof insights.mockSummary === "object"
-      ? insights.mockSummary
+    const mockSummary = scopedInsights.mockSummary && typeof scopedInsights.mockSummary === "object"
+      ? scopedInsights.mockSummary
       : {};
     const mockCorrectAttempts = Number(mockSummary.correctAttempts || 0);
     const mockIncorrectAttempts = Number(mockSummary.incorrectAttempts || 0);
     const mockScoredAttempts = mockCorrectAttempts + mockIncorrectAttempts;
+    const totalCorrectAttempts = subjects.reduce((sum, s) => sum + Number(s.correctAttempts || 0), 0);
+    const totalIncorrectAttempts = subjects.reduce((sum, s) => sum + Number(s.incorrectAttempts || 0), 0);
+    const totalAttemptedCount = totalCorrectAttempts + totalIncorrectAttempts;
+    const overallAccuracyRate = totalAttemptedCount > 0
+      ? totalCorrectAttempts / totalAttemptedCount
+      : 0;
     const averageSubjectAccuracy = subjects.length
       ? subjects.reduce((total, item) => total + Number(item.accuracyRate || 0), 0) / subjects.length
       : 0;
     return {
-      attemptedQuestionCount: Number(insights.attemptedQuestionCount || 0),
+      attemptedQuestionCount: Number(scopedInsights.attemptedQuestionCount || 0),
       weakSubjectCount: subjects.filter((item) => Number(item.accuracyRate || 0) < 0.7).length,
       weakSubtopicCount: subtopics.filter((item) => Number(item.accuracyRate || 0) < 0.7).length,
       averageSubjectAccuracy,
+      overallAccuracyRate,
+      totalCorrectAttempts,
+      totalIncorrectAttempts,
+      totalAttemptedCount,
       wrongQuestionCount: wrongQuestions.length,
       dueReviewCount: reviewQueue.length,
       averageDurationMs: Number(timeSummary.averageDurationMs || 0),
@@ -1390,10 +1898,10 @@ const InsightsPage = ({
       mockAttemptedQuestionCount: Number(mockSummary.attemptedQuestionCount || 0),
       mockAccuracyRate: mockScoredAttempts > 0 ? mockCorrectAttempts / mockScoredAttempts : 0,
     };
-  }, [insights]);
+  }, [scopedInsights]);
 
-  const wrongCount = Array.isArray(insights.wrongQuestions) ? insights.wrongQuestions.length : 0;
-  const dueReviewCount = Array.isArray(insights.reviewQueue) ? insights.reviewQueue.length : 0;
+  const wrongCount = Array.isArray(scopedInsights.wrongQuestions) ? scopedInsights.wrongQuestions.length : 0;
+  const dueReviewCount = Array.isArray(scopedInsights.reviewQueue) ? scopedInsights.reviewQueue.length : 0;
 
   return (
     <>
@@ -1456,6 +1964,55 @@ const InsightsPage = ({
           </div>
         ) : (
           <>
+            {/* Multi-Branch Option C Track Switcher */}
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+              <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-sm">
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("cs")}
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                    selectedTrack === "cs"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaGraduationCap className="text-xs shrink-0" />
+                  <span>GATE CS</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("da")}
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                    selectedTrack === "da"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaRobot className="text-xs shrink-0" />
+                  <span>GATE DA</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("all")}
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                    selectedTrack === "all"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaLayerGroup className="text-xs shrink-0" />
+                  <span>Combined</span>
+                </button>
+              </div>
+              <span className="text-xs text-[color:var(--color-text-muted)] font-medium">
+                {selectedTrack === "cs"
+                  ? "Showing GATE CS syllabus readiness"
+                  : selectedTrack === "da"
+                    ? "Showing GATE DA & AI syllabus readiness"
+                    : "Showing combined practice syllabus"}
+              </span>
+            </div>
+
             {/* Tab navigation */}
             <div className="flex gap-1 rounded-2xl bg-[color:var(--color-surface-muted)] p-1 shadow-inner">
               {TABS.map((tab) => {
@@ -1502,13 +2059,13 @@ const InsightsPage = ({
             {/* Tab content */}
             <div key={activeTab} className="min-h-[400px] animate-card-fade">
               {activeTab === "overview" && (
-                <OverviewTab insights={insights} summary={summary} />
+                <OverviewTab insights={scopedInsights} summary={summary} />
               )}
               {activeTab === "review" && (
-                <ReviewQueueTab reviewQueue={insights.reviewQueue || []} />
+                <ReviewQueueTab reviewQueue={scopedInsights.reviewQueue || []} />
               )}
               {activeTab === "wrong" && (
-                <WrongAnswersTab wrongQuestions={insights.wrongQuestions || []} />
+                <WrongAnswersTab wrongQuestions={scopedInsights.wrongQuestions || []} />
               )}
               {activeTab === "mock-history" && (
                 <MockHistoryPanel onStartMockTest={onStartMockTest} />

@@ -159,8 +159,8 @@ describe("InsightsPage", () => {
 
     // Wait for the overview tab to show attempted count
     expect(await screen.findByText("18")).toBeTruthy();
-    // Check for weak subject count - displayed as card value
-    expect(screen.getByText("60%")).toBeTruthy();
+    // Check for weighted overall accuracy: (3+5)/(7+6) = 8/13 = 62%
+    expect(screen.getByText("62%")).toBeTruthy();
   });
 
   test("renders tab navigation with overview, review, and wrong answers tabs", async () => {
@@ -332,5 +332,41 @@ describe("InsightsPage", () => {
 
     expect(screen.getByText("Logic Question")).toBeTruthy();
     expect(screen.getByText(/id q1/i)).toBeTruthy();
+  });
+
+  test("generates correct practice filter URLs for DA subtopics with multi-colon keys", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 4,
+      subjects: [
+        { key: "da:linear-algebra", label: "Linear Algebra", accuracyRate: 0.3, attemptedCount: 4, correctAttempts: 1, incorrectAttempts: 3, coverageRate: 0.2, recentMistakeStreak: 2, availableQuestions: 20 },
+      ],
+      subtopics: [
+        {
+          key: "da:linear-algebra:matrices",
+          subjectSlug: "da:linear-algebra",
+          subtopicSlug: "matrices",
+          label: "Matrices",
+          subjectLabel: "Linear Algebra",
+          accuracyRate: 0.25,
+          attemptedCount: 4,
+          correctAttempts: 1,
+          incorrectAttempts: 3,
+          coverageRate: 0.2,
+          recentMistakeStreak: 2,
+        },
+      ],
+      wrongQuestions: [],
+      reviewQueue: [],
+    });
+
+    renderInsightsPage();
+
+    // Wait for the Smart Practice banner to render
+    expect(await screen.findByText("Practice Weak Areas")).toBeTruthy();
+
+    const autoFilterLink = screen.getByRole("link", { name: /auto-filter practice/i });
+    expect(autoFilterLink).toBeTruthy();
+    expect(autoFilterLink.getAttribute("href")).toContain("subjects=da%3Alinear-algebra");
+    expect(autoFilterLink.getAttribute("href")).toContain("subtopics=matrices");
   });
 });

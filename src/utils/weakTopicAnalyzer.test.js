@@ -516,4 +516,37 @@ describe("buildWeakTopicInsights", () => {
       incorrectAttempts: 1,
     });
   });
+
+  test("preserves subtopicSlug for DA topics with multi-colon keys", () => {
+    const insights = buildWeakTopicInsights({
+      questions: [
+        {
+          question_uid: "GATE-DA-2024-Q1",
+          subjectSlug: "da:linear-algebra",
+          subjectLabel: "Linear Algebra (DA)",
+          subtopics: [{ slug: "matrices", label: "Matrices" }],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: {
+        "GATE-DA-2024-Q1": {
+          attempts: 2,
+          correctAttempts: 1,
+          incorrectAttempts: 1,
+          correct: true,
+          lastSubmittedAt: "2026-05-10T10:00:00.000Z",
+        },
+      },
+      solvedQuestionIds: ["GATE-DA-2024-Q1"],
+    });
+
+    expect(insights.attemptedQuestionCount).toBe(1);
+    expect(insights.subtopics).toHaveLength(1);
+    expect(insights.subtopics[0]).toMatchObject({
+      key: "da:linear-algebra:matrices",
+      subjectSlug: "da:linear-algebra",
+      subtopicSlug: "matrices",
+      label: "Matrices",
+    });
+  });
 });

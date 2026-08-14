@@ -91,11 +91,12 @@ const hasMeaningfulProgressInput = (value) => {
   return String(value || "").trim().length > 0;
 };
 
-const createTopicBucket = ({ key, label, subjectLabel = "", subjectSlug = "" }) => ({
+const createTopicBucket = ({ key, label, subjectLabel = "", subjectSlug = "", subtopicSlug = "" }) => ({
   key,
   label,
   subjectLabel,
   subjectSlug,
+  subtopicSlug,
   availableQuestions: 0,
   attemptedQuestions: 0,
   attemptedCount: 0,
@@ -117,9 +118,13 @@ const toNormalizedQuestion = (question = {}) => {
       ? question
       : AptitudeQuestionService.normalizeQuestion(question);
   }
-  return question?.question
-    ? QuestionService.normalizeQuestion(question)
-    : QuestionService.hydrateIndexedQuestion(question);
+  if (question?.question) {
+    return QuestionService.normalizeQuestion(question);
+  }
+  if (question?.subjectSlug && (Array.isArray(question?.subtopics) || Array.isArray(question?.tags))) {
+    return question;
+  }
+  return QuestionService.hydrateIndexedQuestion(question);
 };
 
 const normalizeProgressEntry = (entry = {}, isSolved = false, now = new Date()) => {
@@ -606,7 +611,8 @@ export const buildWeakTopicInsights = ({
 
   (Array.isArray(questions) ? questions : []).forEach((rawQuestion) => {
     const question = toNormalizedQuestion(rawQuestion);
-    const storageKey = AnswerService.getStorageKeyForQuestion(question);
+    const storageKey = AnswerService.getStorageKeyForQuestion(question)
+      || String(question?.question_uid || question?.uid || rawQuestion?.question_uid || rawQuestion?.uid || "").trim();
     if (!storageKey) {
       return;
     }
@@ -649,6 +655,7 @@ export const buildWeakTopicInsights = ({
         label: subtopicLabel,
         subjectLabel,
         subjectSlug,
+        subtopicSlug,
       }).availableQuestions += 1;
     });
   });
@@ -785,6 +792,7 @@ export const buildWeakTopicInsights = ({
         label: subtopicLabel,
         subjectLabel: meta.subjectLabel,
         subjectSlug: meta.subjectSlug,
+        subtopicSlug,
       });
       subtopicBucket.attemptedQuestions += 1;
       subtopicBucket.attemptedCount += normalizedEntry.attempts;
@@ -890,7 +898,7 @@ export const buildWeakTopicInsights = ({
         .filter((question) => question.difficultyLabel === "Hard")
         .slice(0, 10),
     },
-    attemptedQuestionCount: subjects.reduce((sum, bucket) => sum + bucket.attemptedQuestions, 0),
+    attemptedQuestionCount: new Set(difficultyQuestions.map((question) => question.storageKey)).size,
   };
 };
 
@@ -917,8 +925,8 @@ export const mergeMockHistoryIntoProgress = (progressRecords, solvedQuestionIds,
     return { progressRecords, solvedQuestionIds, mockSummary: emptyMockSummary };
   }
 
-  // Create deep copies to avoid mutating stored references
-  const mergedProgress = JSON.parse(JSON.stringify(progressRecords || {}));
+  // Create shallow copies to avoid mutating stored references
+  const mergedProgress = { ...(progressRecords || {}) };
   const mergedSolved = new Set(
     (Array.isArray(solvedQuestionIds) ? solvedQuestionIds : [])
       .map((uid) => String(uid).trim())
@@ -981,6 +989,8 @@ export const mergeMockHistoryIntoProgress = (progressRecords, solvedQuestionIds,
           timedAttemptCount: 0,
           history: []
         };
+      } else {
+        mergedProgress[storageKey] = { ...mergedProgress[storageKey] };
       }
 
       const entry = mergedProgress[storageKey];
@@ -1054,11 +1064,21 @@ export const mergeMockHistoryIntoProgress = (progressRecords, solvedQuestionIds,
   };
 };
 
+let cachedInsights = null;
+let cachedInsightsKey = "";
+
+export const clearInsightsCache = () => {
+  cachedInsights = null;
+  cachedInsightsKey = "";
+};
+
 export const loadWeakTopicInsights = async ({
   fetchImpl = typeof fetch === "function" ? fetch : null,
   storage = typeof window !== "undefined" ? window.localStorage : null,
   baseUrl = typeof import.meta !== "undefined" ? import.meta.env.BASE_URL : "/",
   now = new Date(),
+  questions: passedQuestions = null,
+  providedQuestions = null,
 } = {}) => {
   if (!fetchImpl || !storage) {
     return buildWeakTopicInsights({ now });
@@ -1074,6 +1094,12 @@ export const loadWeakTopicInsights = async ({
   const daSolved = parseJson(storage.getItem("gate_qa_da_solved_questions"), []);
   const rawSolvedQuestionIds = [...gateSolved, ...aptSolved, ...daSolved];
 
+  const todayKey = toDateKey(now);
+  const cacheKey = `${Object.keys(rawProgressRecords).length}_${rawSolvedQuestionIds.length}_${todayKey}`;
+  if (cachedInsights && cachedInsightsKey === cacheKey) {
+    return cachedInsights;
+  }
+
   const { progressRecords, solvedQuestionIds, mockSummary } = mergeMockHistoryIntoProgress(rawProgressRecords, rawSolvedQuestionIds, storage);
 
   const hasProgressRecords = progressRecords && typeof progressRecords === "object" && Object.keys(progressRecords).length > 0;
@@ -1087,41 +1113,44 @@ export const loadWeakTopicInsights = async ({
     ? String(baseUrl || "/")
     : `${String(baseUrl || "/")}/`;
 
-  const fetchIndex = async (filename) => {
-    try {
-      const response = await fetchImpl(`${normalizedBase}${filename}`, {
-        cache: "force-cache",
-      });
-      if (response && response.ok) {
-        return await response.json();
+  let questions = passedQuestions || providedQuestions;
+  if (!Array.isArray(questions) || questions.length === 0) {
+    const fetchIndex = async (filename) => {
+      try {
+        const response = await fetchImpl(`${normalizedBase}${filename}`, {
+          cache: "force-cache",
+        });
+        if (response && response.ok) {
+          return await response.json();
+        }
+      } catch (e) {
+        console.warn(`Failed to fetch index: ${filename}`, e);
       }
-    } catch (e) {
-      console.warn(`Failed to fetch index: ${filename}`, e);
+      return null;
+    };
+
+    const [questionsPayload, aptitudePayload] = await Promise.all([
+      fetchIndex("question-search-index.json"),
+      fetchIndex("aptitude-search-index.json"),
+    ]);
+
+    if (!questionsPayload) {
+      throw new Error("Unable to load practice analytics.");
     }
-    return null;
-  };
 
-  const [questionsPayload, aptitudePayload] = await Promise.all([
-    fetchIndex("question-search-index.json"),
-    fetchIndex("aptitude-search-index.json"),
-  ]);
+    const rawAptQuestions = Array.isArray(aptitudePayload)
+      ? aptitudePayload
+      : (aptitudePayload?.questions || []);
+    const normalizedAptQuestions = rawAptQuestions.map(row => AptitudeQuestionService.normalizeQuestion(row));
 
-  if (!questionsPayload) {
-    throw new Error("Unable to load practice analytics.");
+    questions = [
+      ...questionsPayload,
+      ...normalizedAptQuestions,
+    ];
   }
 
   const gds = GlobalDifficultyService.getInstance(baseUrl);
   await gds.load(fetchImpl);
-
-  const rawAptQuestions = Array.isArray(aptitudePayload)
-    ? aptitudePayload
-    : (aptitudePayload?.questions || []);
-  const normalizedAptQuestions = rawAptQuestions.map(row => AptitudeQuestionService.normalizeQuestion(row));
-
-  const questions = [
-    ...questionsPayload,
-    ...normalizedAptQuestions,
-  ];
 
   const insights = buildWeakTopicInsights({
     questions,
@@ -1142,16 +1171,21 @@ export const loadWeakTopicInsights = async ({
     storage,
   });
 
-  return {
+  const result = {
     ...insights,
     mockSummary,
     studyActivity: buildStudyActivity(insights.attemptTimeline, now, {
       streakDateKeys: effectiveStreakActivityDates,
-      hardQuestionCount: insights.difficultySummary.counts.Hard,
+      hardQuestionCount: insights.difficultySummary?.counts?.Hard || 0,
       streakFreezeState,
       streakStats,
     }),
   };
+
+  cachedInsights = result;
+  cachedInsightsKey = cacheKey;
+
+  return result;
 };
 
 /**
