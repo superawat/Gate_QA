@@ -2,6 +2,19 @@
 
 ## 2026-08-15
 
+- **Mobile Practice Mode UI & Button De-Duplication Optimization**:
+  - **Eliminated Redundant In-Page Buttons**: Removed duplicate inline `Previous`, `Next`, `Bookmark`, and `Share` buttons from `AnswerPanel.jsx` on mobile viewports (`md:hidden`), since these controls are permanently accessible via the sticky thumb toolbar (`MobileSolveActionBar.jsx`).
+  - **Streamlined Mobile Action Flow**: Restructured the mobile answer panel to focus directly on `Submit Answer` (full-width), `Solution` + `Ask AI` (2-column assistance grid), and a compact secondary status row with `[ ✓ Solved ]` toggle and `[ ⚑ Report ]` link.
+  - **Clean Header Card**: Hid redundant top-card `CalculatorButton` on mobile viewports in `SolvePage.jsx`, giving maximum vertical screen space to the Question statement and MathJax formulas.
+  - **Dark Mode Support in Scientific Calculator**: Added deep slate dark theme styling to `calculator/calculator.html` with real-time `postMessage` synchronization, maintaining light mode during Mock Test exams for 1:1 TCS iON parity.
+
+- **LLM-Assisted Question Explanation & External Redirect (AUG-014)**:
+  - **TypeScript Infrastructure & Multi-Provider Registry (`src/config/llmProviders.ts`)**: Implemented central configuration for external LLM destinations including ChatGPT (prefilled `?q=`), Gemini (clipboard fallback + web app), Claude (clipboard fallback + web app), DeepSeek (clipboard fallback + web app), and Perplexity (prefilled search `?q=`).
+  - **Standardized GATE Prompt Builder (`src/utils/llmPromptBuilder.ts`)**: Added automated pedagogical prompt generator producing step-by-step conceptual deconstruction, option analysis for MCQ/MSQ, and calculation guidance for NAT questions with clean HTML-to-text conversion and LaTeX math preservation.
+  - **Local-First Preferences & Reactivity (`src/utils/llmPreferences.ts`)**: Built `localStorage` preference management (`gateqa_llm_preference`) with reactive custom events (`gateqa:llm-preference-changed`) and `useLLMPreference` hook.
+  - **Redirect & Clipboard Service (`src/services/llmRedirectService.ts`)**: Added client-side prompt synthesis, clipboard write, URL building, and new tab redirect orchestration with toast feedback.
+  - **UI Integration in Practice Mode (`src/components/AskAI/`, `src/components/AnswerPanel/AnswerPanel.jsx`)**: Added `AskAIButton` and `LLMProviderMenu` with 1-click execution for the default AI, a provider picker with "Set as default" toggle, and a "Copy Prompt Only" button for local models, seamlessly integrated in both desktop and mobile action bars.
+
 - **Question Key & Answer Corrections**:
   - **Question `go:975` (GATE CSE 2006, Question 14 / ISRO 2011-14)**: Corrected answer from `A` (Quick sort) to `C` (Selection sort) across all database files (`data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, and detail shard `2006-s0.json`). Selection sort takes at most $n - 1$ ($O(n)$) swaps in the worst/average case, which is the minimum among standard in-place sorting algorithms.
 

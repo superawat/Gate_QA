@@ -63,7 +63,7 @@ flowchart TB
 
 ## 2. High-Level Subsystem Topology & Connections
 
-GateQA is decomposed into 7 tightly integrated subsystems:
+GateQA is decomposed into 8 tightly integrated subsystems:
 
 ```mermaid
 graph TD
@@ -75,6 +75,7 @@ graph TD
         S5["5. Cloud Sync & Auth Subsystem"]
         S6["6. Storage Engine & Sanitizers"]
         S7["7. Ingestion & Build Pipelines"]
+        S8["8. External LLM Assistance (AUG-014)"]
     end
 
     S7 -->|Build-time Artifacts| S2
@@ -87,6 +88,10 @@ graph TD
     S1 -->|Record Attempts & Status| S6
     S1 -->|Dispatch Progress Event| S4
     S1 -->|Enqueue Mutations| S5
+    S1 -->|Synthesize Structured Prompt| S8
+
+    S8 -->|Read/Write Preference| S6
+    S8 -->|Clipboard & Web App Redirect| ExternalLLMs["External LLMs (ChatGPT, Gemini, Claude, DeepSeek, Perplexity)"]
 
     S3 -->|Completed Exam Attempts| S6
     S3 -->|Mock Scores & Timeline| S4
@@ -342,6 +347,49 @@ sequenceDiagram
 
 ---
 
+### 4.6 External LLM Assistance Subsystem (AUG-014)
+
+GateQA provides a lightweight, zero-cost, privacy-first external AI assistance layer in standard Practice mode (`/practice/question/:id`). It constructs a pedagogical, step-by-step reasoning prompt and orchestrates a 1-click redirect / clipboard buffer to the student's chosen AI platform:
+
+```mermaid
+flowchart TD
+    Q["Current Question (SolvePage / AnswerPanel)"] --> Builder["llmPromptBuilder.ts (Sanitize HTML, Preserve LaTeX, Extract Options)"]
+    
+    subgraph PromptStructure["Synthesized Educational Prompt"]
+        Role["Role & Pedagogical Instructions"]
+        Meta["Context: Exam, Subject, Type, Marks"]
+        Stem["Question Stem (Clean Text + LaTeX)"]
+        Opts["Options (A, B, C, D) - if MCQ/MSQ"]
+    end
+    
+    Builder --> PromptStructure
+    
+    PromptStructure --> Service["llmRedirectService.ts"]
+    
+    subgraph Execution["Execution Strategy"]
+        Clip["Always Copy Prompt to Clipboard"]
+        Check{"Provider Supports Prefill & URL ≤ 2000 chars?"}
+        Prefill["Open Query URL (ChatGPT ?q=..., Perplexity ?q=...)"]
+        Fallback["Open Web App (Gemini, Claude, DeepSeek) + Toast Notice"]
+    end
+    
+    Service --> Clip --> Check
+    Check -->|Yes| Prefill
+    Check -->|No / Too Long| Fallback
+    
+    subgraph PreferenceEngine["Local Preference Management"]
+        LS[("localStorage: gateqa_llm_preference")]
+        Hook["useLLMPreference() Hook"]
+        Event["Event: 'gateqa:llm-preference-changed'"]
+    end
+    
+    Hook <--> LS
+    Hook -.-> Event
+    Hook --> Service
+```
+
+---
+
 ## 5. Storage Schema & Storage Key Registry
 
 All data stored by GateQA across `localStorage` and `sessionStorage` follows a strict schema versioning contract:
@@ -363,6 +411,7 @@ All data stored by GateQA across `localStorage` and `sessionStorage` follows a s
 | `gateqa_mock_history_v1` | `localStorage` | `v1` | Completed mock test history list, scores, and accuracy breakdowns. | `MockTestHistoryEntry[]` |
 | `gateqa_streak_freeze_v1` | `localStorage` | `v1` | Streak freeze inventory and consumption timeline. | `{ available: number, usedDates: string[] }` |
 | `gateqa_daily_goal` | `localStorage` | `v1` | Daily question practice goal target (default: 5). | `number` |
+| `gateqa_llm_preference` | `localStorage` | `v1` | User's preferred external AI provider (`chatgpt`, `gemini`, `claude`, `deepseek`, `perplexity`). | `string` (default: `"chatgpt"`) |
 | `gate_qa_sync_queue` | `localStorage` | `v1` | Offline mutation queue pending cloud synchronization. | `QueuedChange[]` |
 | `gate_qa_theme` | `localStorage` | `v1` | Active user theme (`dark`, `light`, `system`). | `string` |
 

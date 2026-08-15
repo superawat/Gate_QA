@@ -5,6 +5,7 @@ import { useSession } from "../../contexts/SessionContext";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { trackEvent } from "../../utils/analytics";
 import Toast from "../Toast/Toast";
+import AskAIButton from "../AskAI/AskAIButton";
 import { getGateOverflowSolutionLink } from "../../utils/solutionLink";
 import { buildSolvePath } from "../../utils/routes";
 import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
@@ -227,8 +228,20 @@ export default function AnswerPanel({
     return false;
   }, [answerRecord, mcqSelection, msqSelection, natInput]);
 
-  // --- Share Question ---
+  // --- Toast State ---
+  const [toastMessage, setToastMessage] = useState("Link copied!");
   const [toastVisible, setToastVisible] = useState(false);
+  const toastTimeoutRef = useRef(null);
+
+  const showToast = useCallback((msg = "Link copied!") => {
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+    setToastMessage(msg);
+    setToastVisible(true);
+    toastTimeoutRef.current = setTimeout(() => setToastVisible(false), 2500);
+  }, []);
+
   const reportIssueUrl = useMemo(() => {
     const questionUid = String(question.question_uid || questionProgressId || "").trim() || "unknown-question";
     const yearLabel = String(question.exam?.label || question.yearSetLabel || question.year || "Unknown").trim();
@@ -285,22 +298,21 @@ export default function AnswerPanel({
       }
     }
 
-    const showToast = () => {
-      setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 2000);
+    const triggerShareToast = () => {
+      showToast("Link copied!");
       trackEvent("share_question", { question_uid: questionId });
     };
 
     if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-      navigator.clipboard.writeText(url).then(showToast).catch(() => {
+      navigator.clipboard.writeText(url).then(triggerShareToast).catch(() => {
         fallbackCopyToClipboard(url);
-        showToast();
+        triggerShareToast();
       });
     } else {
       fallbackCopyToClipboard(url);
-      showToast();
+      triggerShareToast();
     }
-  }, [question]);
+  }, [question, showToast]);
 
   // --- Keyboard Shortcuts ---
   useEffect(() => {
@@ -728,24 +740,53 @@ export default function AnswerPanel({
           </div>
           <div className="flex items-center gap-2">
             {renderSolutionButton()}
+            <AskAIButton question={question} onNotification={showToast} />
             {renderPreviousButton()}
             {renderNextButton()}
           </div>
         </div>
 
         <div className="flex flex-col gap-3 md:hidden">
-          <div className="grid grid-cols-4 gap-3 justify-items-center">
-            {renderIconTray("contents")}
-          </div>
-
           <div>
             {renderSubmitButton("w-full")}
           </div>
 
-          <div className="grid w-full grid-cols-3 gap-2">
+          <div className="grid w-full grid-cols-2 gap-2">
             {renderSolutionButton("w-full")}
-            {renderPreviousButton("w-full")}
-            {renderNextButton("w-full")}
+            <AskAIButton question={question} onNotification={showToast} isMobile />
+          </div>
+
+          <div className="flex items-center justify-between gap-2 pt-2 border-t border-[color:var(--color-border)]">
+            <button
+              type="button"
+              disabled={isStatusActionDisabled}
+              onClick={handleToggleSolved}
+              title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+              aria-label={isSolved ? "Mark question as unsolved" : "Mark question as solved"}
+              aria-pressed={isSolved}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition ${
+                isStatusActionDisabled
+                  ? "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] cursor-not-allowed opacity-50"
+                  : isSolved
+                  ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
+                  : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+              }`}
+            >
+              <FaCheck className="text-xs" />
+              <span>{isSolved ? "Solved" : "Mark Solved"}</span>
+            </button>
+
+            <a
+              href={reportIssueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Report an issue with this question"
+              aria-label="Report an issue via Google Form"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-rose-200 dark:border-rose-900/40 bg-rose-50 dark:bg-rose-950/30 text-rose-500 hover:text-rose-700 text-xs font-semibold transition"
+            >
+              <FaFlag className="text-xs" />
+              <span>Report</span>
+            </a>
           </div>
         </div>
       </div>
@@ -756,7 +797,7 @@ export default function AnswerPanel({
         </p>
       )}
 
-      <Toast message="Link copied!" visible={toastVisible} />
+      <Toast message={toastMessage} visible={toastVisible} />
     </div>
   );
 }

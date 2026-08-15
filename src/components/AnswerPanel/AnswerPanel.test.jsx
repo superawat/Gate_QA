@@ -280,4 +280,18 @@ describe("AnswerPanel", () => {
 
     expect(screen.getByRole("alert").textContent).toBe("Correct!");
   });
+
+  test("renders Ask AI button in AnswerPanel controls", () => {
+    const sampleQuestion = {
+      question_uid: "go:100",
+      exam_uid: "cse:2020:main:q1",
+      title: "GATE CSE 2020 | Question: 1",
+      question: "Sample problem",
+      answer_meta: { type: "MCQ", answer: "A" },
+    };
+
+    render(<AnswerPanel question={sampleQuestion} />);
+
+    expect(screen.getAllByRole("button", { name: /Ask AI/i }).length).toBeGreaterThan(0);
+  });
 });

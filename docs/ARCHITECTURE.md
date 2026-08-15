@@ -102,6 +102,31 @@ The landing route now stays on a lightweight startup path:
 - Outputs: 528 pre-rendered static HTML files in `dist/` (covering subjects, years, high-value questions, and 5 short-form alias routes: `/gate-cs-pyq`, `/gate-aptitude`, `/mock-tests`, `/operating-systems-pyq`, and `/dbms-pyq`).
 - Pre-rendering generates SEO-optimized HTML copies with JSON-LD schema markups and crawler-readable contents while seamlessly preserving client-side React SPA routing on execution.
 
+## LLM-Assisted Question Explanation Subsystem (AUG-014)
+
+GateQA provides an external assistance layer allowing students in Practice mode (`/practice/question/:id`) to send questions to their preferred external LLM (ChatGPT, Gemini, Claude, DeepSeek, Perplexity) for conceptual, step-by-step deconstruction with zero backend/API cost.
+
+```text
+[ Current Question ]
+        │
+        ▼
+[ Prompt Builder (llmPromptBuilder.ts) ] ──► Pedagogical Template + Clean LaTeX/HTML + Options
+        │
+        ▼
+[ LLM Redirect Service (llmRedirectService.ts) ]
+   ├── Prefill URL (ChatGPT ?q=..., Perplexity ?q=...)
+   └── Clipboard Fallback (Gemini, Claude, DeepSeek) + Web App Launch
+        │
+        ▼
+[ User's Preferred External LLM ]
+```
+
+1. **Strict Privacy Invariant**: Only sanitized question text, options, and structured instructions are sent. No user IDs, emails, progress, bookmarks, notes, or auth tokens are ever transmitted.
+2. **Local-First & Multi-Provider Preference**: Preferred provider is stored in `localStorage` (`gateqa_llm_preference`, defaults to `chatgpt`). Managed via `useLLMPreference()` hook with reactive custom event dispatching (`gateqa:llm-preference-changed`).
+3. **Universal Clipboard Fallback**: Automatically copies the prompt to the clipboard before opening external providers, preventing data loss on long URLs or web apps without query injection.
+4. **Practice Mode Exclusivity**: Available in `AnswerPanel.jsx` (desktop toolbar and mobile 2x2 touch grid); excluded from Mock Test mode to preserve CBT exam integrity.
+
+
 ## Four-layer initialization model (2026-02-25)
 
 ### Layer 1: Build-time precompute
