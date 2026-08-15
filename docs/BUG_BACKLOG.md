@@ -29,9 +29,38 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Open Bugs
 
-*None currently.*
+*(No critical open bugs)*
 
 ## Recently Closed
+
+### BUG-MOCK-CRASH-01: Website Crashes During Mock Tests / Custom Tests & Complete Test Reset (AUG-013)
+
+- **Status**: Resolved & Zero-Data-Loss Hardened on 2026-08-15
+- **Severity**: High (P1)
+- **Area**: Mock Tests / Custom Tests / Test State Persistence / Error Recovery
+- **Where**:
+  - `src/contexts/MockTestContext.tsx`
+  - `src/components/MockTest/MockTestShell.jsx`
+  - `src/components/MockTest/MockTestQuestion.jsx`
+  - `src/components/ErrorBoundary/ErrorBoundary.jsx`
+- **Root Causes**:
+  - 1. Ephemeral `sessionStorage`-only persistence wiped exam progress on browser crashes, closures, or mobile memory cleans.
+  - 2. Self-destructive restore executed `clearAttemptStorage()` on transient question bank index delays.
+  - 3. Race condition in `MockTestShell.jsx` immediately forced `"portal"` and synced `"setup"` stage on reload before hydration.
+  - 4. NAT input string coercion treated numeric `0` as falsy `""` causing answer corruption.
+  - 5. Single-point storage failures could cause stale snapshots to overwrite newer ones if tab storage desynchronized.
+- **Resolution**:
+  - Implemented dual-tier synchronized storage (`localStorage` + `sessionStorage`) writing versioned snapshot payloads (`v: 5`) with embedded question blueprints for instant, offline restore.
+  - Implemented timestamp-based candidate resolution (`savedAt`) comparing primary and backup stores to strictly prefer the latest state.
+  - Implemented automatic attempt backup archiving (`gateqa_mock_attempt_backup_v1`) to safeguard previous exam sessions.
+  - Implemented strict embedded question validation (`isValidEmbeddedQuestion`) falling back to canonical question bank if embedded data is corrupted.
+  - Implemented storage quota error handling (`QuotaExceededError`) with lightweight stripped-question payload fallbacks.
+  - Removed self-destructive storage clearing on parse/restore failures; storage is only cleared upon explicit submission or confirmed test exit.
+  - Synchronized `beforeunload` and `pagehide` event flushes to capture sub-second state on browser closes.
+  - Hardened `MockTestShell.jsx` step initialization with `hasActiveAttemptInStorage()`, preventing flash-resets to setup.
+  - Added rich ErrorBoundary fallbacks around question display with "Retry Question", "Previous Question", and "Skip to Next Question" actions.
+  - Corrected NAT response coercion to `String(currentResponse ?? "")`.
+  - Added comprehensive automated unit tests covering timestamp resolution, corrupted embedded fallback, quota handling, backup rotation, and question error skipping.
 
 ### BUG-MOCK-OPT-01: Mock Test Subsystem Full Optimization & Data-Integrity Hardening (AUG-008 & AUG-010)
 

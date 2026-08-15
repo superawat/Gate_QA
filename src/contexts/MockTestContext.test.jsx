@@ -1026,4 +1026,310 @@ describe("MockTestContext", () => {
       expect(latest.currentQuestion.question_uid).toBe("cs:1");
     });
   });
+
+  test("restores active attempt from localStorage when sessionStorage is empty (AUG-013 crash recovery)", async () => {
+    const ga1 = buildQuestion("ga:crash-1", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:crash-1", "Operating System", "2024-s1", 2024, "NAT");
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:crash-1": { questionUid: "ga:crash-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:crash-1": { questionUid: "cs:crash-1", section: "CS", type: "NAT", marks: 2, negativeMarks: 0, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:crash-1", "cs:crash-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    // Simulate saved state in localStorage, but empty sessionStorage (e.g. browser crash / tab reopen)
+    const savedAttempt = {
+      v: 5,
+      gaUids: ["ga:crash-1"],
+      csUids: ["cs:crash-1"],
+      activeSection: "CS",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: { "ga:crash-1": "A", "cs:crash-1": "0" },
+      questionStates: { "ga:crash-1": "answered", "cs:crash-1": "answered" },
+      questionTimeSpent: { "ga:crash-1": 45, "cs:crash-1": 30 },
+      timeLeft: 5400,
+      meta: { kindId: "custom", durationMinutes: 90 },
+      questions: [ga1, cs1],
+    };
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(savedAttempt));
+    window.sessionStorage.clear();
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.timeLeft).toBe(5400);
+      expect(latest.currentSection).toBe("CS");
+      expect(latest.currentQuestion.question_uid).toBe("cs:crash-1");
+      expect(latest.responses["ga:crash-1"]).toBe("A");
+      expect(latest.responses["cs:crash-1"]).toBe("0");
+      expect(latest.questionStates["ga:crash-1"]).toBe("answered");
+      expect(latest.questionStates["cs:crash-1"]).toBe("answered");
+      expect(latest.questionTimeSpent["ga:crash-1"]).toBe(45);
+      expect(latest.questionTimeSpent["cs:crash-1"]).toBe(30);
+    });
+  });
+
+  test("persists active attempt to both localStorage and sessionStorage simultaneously (AUG-013)", async () => {
+    const ga1 = buildQuestion("ga:sync-1", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:sync-1", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:sync-1": { questionUid: "ga:sync-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:sync-1": { questionUid: "cs:sync-1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:sync-1", "cs:sync-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        gaQuestions: [ga1],
+        csQuestions: [cs1],
+        timeSeconds: 7200,
+        meta: { kindId: "custom" },
+      });
+      latest.saveResponse("ga:sync-1", "B");
+    });
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+    });
+
+    const localRaw = window.localStorage.getItem("gateqa_mock_attempt_v1");
+    const sessionRaw = window.sessionStorage.getItem("gateqa_mock_attempt_v1");
+    expect(localRaw).toBeTruthy();
+    expect(sessionRaw).toBeTruthy();
+
+    const localParsed = JSON.parse(localRaw);
+    const sessionParsed = JSON.parse(sessionRaw);
+    expect(localParsed.responses["ga:sync-1"]).toBe("B");
+    expect(sessionParsed.responses["ga:sync-1"]).toBe("B");
+    expect(localParsed.v).toBe(5);
+  });
+
+  test("resolves newest snapshot between localStorage and sessionStorage based on savedAt timestamp", async () => {
+    const ga1 = buildQuestion("ga:time-1", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:time-1", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:time-1": { questionUid: "ga:time-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:time-1": { questionUid: "cs:time-1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:time-1", "cs:time-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    // Older local storage snapshot
+    const olderLocal = {
+      v: 5,
+      gaUids: ["ga:time-1"],
+      csUids: ["cs:time-1"],
+      activeSection: "GA",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: { "ga:time-1": "A" },
+      questionStates: { "ga:time-1": "answered" },
+      timeLeft: 10000,
+      meta: { kindId: "custom" },
+      questions: [ga1, cs1],
+      savedAt: 1000,
+    };
+
+    // Newer session storage snapshot with updated answers and timer
+    const newerSession = {
+      v: 5,
+      gaUids: ["ga:time-1"],
+      csUids: ["cs:time-1"],
+      activeSection: "CS",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: { "ga:time-1": "A", "cs:time-1": "D" },
+      questionStates: { "ga:time-1": "answered", "cs:time-1": "answered" },
+      timeLeft: 8500,
+      meta: { kindId: "custom" },
+      questions: [ga1, cs1],
+      savedAt: 2000,
+    };
+
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(olderLocal));
+    window.sessionStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(newerSession));
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.timeLeft).toBe(8500);
+      expect(latest.currentSection).toBe("CS");
+      expect(latest.responses["cs:time-1"]).toBe("D");
+    });
+  });
+
+  test("rejects corrupted embedded questions and falls back to canonical question bank", async () => {
+    const ga1 = buildQuestion("ga:corrupt-1", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:corrupt-1", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:corrupt-1": { questionUid: "ga:corrupt-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:corrupt-1": { questionUid: "cs:corrupt-1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:corrupt-1", "cs:corrupt-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    // Corrupted embedded question missing question content and type
+    const corruptedEmbedded = {
+      question_uid: "cs:corrupt-1",
+      question: "", // empty question stem!
+      type: "INVALID_TYPE",
+    };
+
+    const savedAttempt = {
+      v: 5,
+      gaUids: ["ga:corrupt-1"],
+      csUids: ["cs:corrupt-1"],
+      activeSection: "GA",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: {},
+      questionStates: {},
+      timeLeft: 9000,
+      meta: { kindId: "custom" },
+      questions: [ga1, corruptedEmbedded],
+      savedAt: 1500,
+    };
+
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(savedAttempt));
+    window.sessionStorage.clear();
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.questions.length).toBe(2);
+      // Valid question from question bank used instead of corrupted embedded item
+      expect(latest.questions[1].question_uid).toBe("cs:corrupt-1");
+      expect(latest.questions[1].type.toUpperCase()).toBe("MCQ");
+    });
+  });
+
+  test("maintains previous attempt backup key during storage rotation", async () => {
+    const ga1 = buildQuestion("ga:rot-1", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:rot-1", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:rot-1": { questionUid: "ga:rot-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:rot-1": { questionUid: "cs:rot-1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:rot-1", "cs:rot-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    // Seed existing attempt from a previous exam
+    const existing = {
+      v: 5,
+      gaUids: ["ga:old-1"],
+      csUids: ["cs:old-1"],
+      responses: { "ga:old-1": "A" },
+      savedAt: 100,
+    };
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(existing));
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        gaQuestions: [ga1],
+        csQuestions: [cs1],
+        meta: { kindId: "custom" },
+      });
+    });
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+    });
+
+    const backupRaw = window.localStorage.getItem("gateqa_mock_attempt_backup_v1");
+    expect(backupRaw).toBeTruthy();
+    const backupParsed = JSON.parse(backupRaw);
+    expect(backupParsed.savedAt).toBe(100);
+  });
 });

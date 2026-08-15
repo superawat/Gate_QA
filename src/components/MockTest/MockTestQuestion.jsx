@@ -182,26 +182,39 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const displayOptions = explicitOptions.length > 0 ? explicitOptions : normalizedOptions;
 
     const sanitizedQuestionHtml = useMemo(() => {
-        const rawQuestionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(String(currentQuestion?.question || "")))
-            .replace(/\n\n/g, "<br />")
-            .replace(/\n<li>/g, "<br><li>");
-        const questionHtmlForDisplay = displayOptions.length > 0
-            ? stripEmbeddedOptions(rawQuestionHtml)
-            : rawQuestionHtml;
-        return DOMPurify.sanitize(questionHtmlForDisplay);
+        try {
+            const rawHtml = String(currentQuestion?.question || "");
+            const rawQuestionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawHtml))
+                .replace(/\n\n/g, "<br />")
+                .replace(/\n<li>/g, "<br><li>");
+            const questionHtmlForDisplay = displayOptions.length > 0
+                ? stripEmbeddedOptions(rawQuestionHtml)
+                : rawQuestionHtml;
+            return DOMPurify.sanitize(questionHtmlForDisplay || "");
+        } catch {
+            return DOMPurify.sanitize(String(currentQuestion?.question || ""));
+        }
     }, [currentQuestion?.question_uid, currentQuestion?.question, displayOptions.length]);
 
     const sanitizedDisplayOptions = useMemo(() => {
-        return displayOptions.map((option, index) => {
-            const rawOpt = option?.html || option?.text || "";
-            const optionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawOpt));
-            const sanitizedHtml = optionHtml ? DOMPurify.sanitize(optionHtml) : "";
-            return {
+        try {
+            return displayOptions.map((option, index) => {
+                const rawOpt = String(option?.html || option?.text || "");
+                const optionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawOpt));
+                const sanitizedHtml = optionHtml ? DOMPurify.sanitize(optionHtml) : "";
+                return {
+                    ...option,
+                    sanitizedHtml,
+                    index,
+                };
+            });
+        } catch {
+            return displayOptions.map((option, index) => ({
                 ...option,
-                sanitizedHtml,
+                sanitizedHtml: DOMPurify.sanitize(String(option?.html || option?.text || "")),
                 index,
-            };
-        });
+            }));
+        }
     }, [displayOptions]);
 
     const sectionTotal = currentSection === "CS"
@@ -275,8 +288,9 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const handleNatInsert = (char) => {
         if (isReviewPhase) return;
         const input = natInputRef.current;
+        const currentStr = currentResponse !== null && currentResponse !== undefined ? String(currentResponse) : "";
         if (!input) {
-            const nextCandidate = (currentResponse || "") + char;
+            const nextCandidate = currentStr + char;
             if (nextCandidate === "" || NAT_REGEX.test(nextCandidate)) {
                 saveResponse(questionUid, nextCandidate);
             }
@@ -284,7 +298,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         }
         const start = input.selectionStart || 0;
         const end = input.selectionEnd || 0;
-        const val = currentResponse || "";
+        const val = currentStr;
         const newVal = val.slice(0, start) + char + val.slice(end);
         if (newVal === "" || NAT_REGEX.test(newVal)) {
             saveResponse(questionUid, newVal);
@@ -303,7 +317,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         if (!input) return;
         const start = input.selectionStart || 0;
         const end = input.selectionEnd || 0;
-        const val = currentResponse || "";
+        const val = currentResponse !== null && currentResponse !== undefined ? String(currentResponse) : "";
         if (start === end && start > 0) {
             const newVal = val.slice(0, start - 1) + val.slice(end);
             saveResponse(questionUid, newVal);
@@ -329,8 +343,9 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         if (isReviewPhase) return;
         const input = natInputRef.current;
         if (!input) return;
+        const val = currentResponse !== null && currentResponse !== undefined ? String(currentResponse) : "";
         const start = input.selectionStart || 0;
-        const newPos = dir === 'left' ? Math.max(0, start - 1) : Math.min((currentResponse || "").length, start + 1);
+        const newPos = dir === 'left' ? Math.max(0, start - 1) : Math.min(val.length, start + 1);
         input.setSelectionRange(newPos, newPos);
         input.focus();
     };
@@ -452,7 +467,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                                 type="text"
                                                 inputMode="text"
                                                 data-testid="mock-nat-input"
-                                                value={currentResponse || ""}
+                                                value={currentResponse !== null && currentResponse !== undefined ? String(currentResponse) : ""}
                                                 onChange={handleNatChange}
                                                 readOnly={isReviewPhase}
                                                 className="h-8 w-full mb-2 border-[2px] border-black bg-white px-2 text-[15px] font-bold focus:outline-none"

@@ -2,6 +2,14 @@
 
 ## 2026-08-15
 
+- **Mock Test Crash-Proof Persistence & Zero-Data-Loss Recovery (AUG-013)**:
+  - **Dual-Tier Synchronized Storage (`localStorage` + `sessionStorage`)**: Updated `MockTestContext.tsx` with unified read/write storage helpers persisting active test state (`v: 5`) to both `localStorage` and `sessionStorage`. Browser crashes, accidental tab closures, or memory pressure reboots now seamlessly resume the in-progress test.
+  - **Embedded Question Snapshots**: Embedded question blueprints into the stored test payload, allowing immediate question rendering even if question bank shards or background indexers are still loading.
+  - **Resilient Non-Destructive Restore**: Removed self-destructive `clearAttemptStorage()` calls on parse/hydration mismatches; storage is only cleared when the test is explicitly submitted or intentionally exited via the confirmation dialog.
+  - **Stage Desynchronization Fix**: Hardened `MockTestShell.jsx` `step` state initialization with `hasActiveAttemptInStorage()` and guarded stage routing effects, preventing URL flash-resets from `stage=exam` to `stage=setup` on page refresh.
+  - **Graceful ErrorBoundary Fallbacks**: Added isolated ErrorBoundary fallback around `MockTestQuestion.jsx` allowing users to retry rendering without crashing the outer exam shell or losing timer/response state.
+  - **NAT Numeric `0` Coercion Fix**: Updated NAT input handling to `String(currentResponse ?? "")`, ensuring numeric `0` is never treated as falsy empty strings.
+
 - **Homepage Mobile UX, Action Cards & Activity Heatmap Polish**:
   - **Activity Heatmap Interactive Range Selector (`ActivityHeatmap.jsx`)**: Added functional timeframe options (`Last 12 weeks`, `Last 6 months`, `Last 1 year`), auto-scrolling to the current date on multi-month mobile selections, and eliminated phantom blank scroll void with dynamic `min-width: max-content`.
   - **Dedicated Mobile Daily Motivation Banner (`.home-quote-banner`)**: Extracted daily quote on mobile (`<768px`) into a dedicated glassmorphism pill banner with `FaQuoteLeft` and theme-adaptive backdrop blur, keeping the original desktop quote layout inside the Practice card untouched.

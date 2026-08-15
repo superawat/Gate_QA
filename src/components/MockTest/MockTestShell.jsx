@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMockTest } from "../../contexts/MockTestContext";
+import { useMockTest, hasActiveAttemptInStorage } from "../../contexts/MockTestContext";
 import { useFilterState } from "../../contexts/FilterContext";
 import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
@@ -357,6 +357,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         catalogLoading,
         clearAttemptError,
         endMockTest,
+        goToNext,
+        goToPrevious,
         mockQuestionPool = null,
         paperCatalog,
         questionMetaByUid,
@@ -379,7 +381,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         if (typeof window === "undefined") return true;
         return window.innerWidth >= 1024;
     });
-    const [step, setStep] = useState("portal");
+    const [step, setStep] = useState(() => (hasActiveAttemptInStorage() || (initialStage === "exam" && testActive) ? "exam" : "portal"));
     const [selectedKindId, setSelectedKindId] = useState(DEFAULT_MOCK_KIND_ID);
     const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
     const [isPaletteCollapsed, setIsPaletteCollapsed] = useState(() => {
@@ -479,7 +481,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             && questions.length === 0
             && (step === "exam" || step === "review" || step === "result")
         ) {
-            setStep("portal");
+            if (!hasActiveAttemptInStorage()) {
+                setStep("portal");
+            }
         }
     }, [questions.length, step, testActive, testSubmitted]);
 
@@ -490,6 +494,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         if (exitInProgressRef.current) {
             return;
         }
+        if (step === "portal" && hasActiveAttemptInStorage()) {
+            return;
+        }
         onStageChange(step === "exam" || step === "review" ? "exam" : "setup");
     }, [onStageChange, step]);
 
@@ -497,7 +504,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         if (exitInProgressRef.current) {
             return;
         }
-        if (initialStage === "setup" && !testActive && !testSubmitted) {
+        if (initialStage === "setup" && !testActive && !testSubmitted && !hasActiveAttemptInStorage()) {
             setStep((prev) => (prev === "exam" || prev === "review" ? "portal" : prev));
         }
     }, [initialStage, testActive, testSubmitted]);
@@ -1165,7 +1172,56 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
             <div className="flex min-h-0 flex-1 overflow-hidden">
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-r border-[#b8c9d9] bg-white">
-                    <ErrorBoundary>
+                    <ErrorBoundary
+                        fallback={({ reset }) => (
+                            <div className="flex flex-col items-center justify-center p-8 text-center bg-white h-full">
+                                <div className="rounded-full bg-rose-50 p-3 mb-3">
+                                    <svg className="w-6 h-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-base font-bold text-rose-800">Question Render Issue</h3>
+                                <p className="mt-1 text-sm text-slate-600 max-w-md">
+                                    This question could not be displayed due to a formatting error. Your active exam timer, responses, and test state are completely safe.
+                                </p>
+                                <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+                                    <button
+                                        type="button"
+                                        onClick={reset}
+                                        className="rounded-md border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition-colors"
+                                        data-testid="mock-error-retry"
+                                    >
+                                        Retry Question
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            reset();
+                                            if (typeof goToPrevious === "function") goToPrevious();
+                                        }}
+                                        className="rounded-md border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition-colors"
+                                        data-testid="mock-error-prev"
+                                    >
+                                        Previous Question
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            reset();
+                                            if (typeof goToNext === "function") goToNext();
+                                        }}
+                                        className="rounded-md bg-[#0e76a8] px-3.5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#0b5e86] transition-colors"
+                                        data-testid="mock-error-skip"
+                                    >
+                                        Skip to Next Question &rarr;
+                                    </button>
+                                </div>
+                                <p className="mt-4 text-xs text-slate-400">
+                                    You can also use the question palette on the right to navigate directly to any question.
+                                </p>
+                            </div>
+                        )}
+                    >
                         <MockTestQuestion isReviewPhase={isReviewPhase} />
                     </ErrorBoundary>
                 </div>

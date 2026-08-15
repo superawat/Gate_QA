@@ -17,11 +17,203 @@ import { enqueueChange } from "../utils/syncQueue";
 export const MockTestContext = createContext();
 export const MockTimerContext = createContext({ timeLeft: 0 });
 
-const TOTAL_MOCK_TIME_SECONDS = 3 * 60 * 60;
-const ATTEMPT_STORAGE_KEY = "gateqa_mock_attempt_v1";
+export const TOTAL_MOCK_TIME_SECONDS = 3 * 60 * 60;
+export const ATTEMPT_STORAGE_KEY = "gateqa_mock_attempt_v1";
+export const ATTEMPT_BACKUP_KEY = "gateqa_mock_attempt_backup_v1";
 const APTITUDE_UID_PREFIX = "APT-";
 const APTITUDE_MOCK_ORDER_OFFSET = 100000;
 const VALID_MOCK_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
+
+export const isValidStoredAttempt = (payload) => {
+  if (!payload || typeof payload !== "object") {
+    return false;
+  }
+  const hasGa = Array.isArray(payload.gaUids) && payload.gaUids.length > 0;
+  const hasCs = Array.isArray(payload.csUids) && payload.csUids.length > 0;
+  const hasLegacy = Array.isArray(payload.questionUids) && payload.questionUids.length > 0;
+  return hasGa || hasCs || hasLegacy;
+};
+
+export const isValidEmbeddedQuestion = (q) => {
+  if (!q || typeof q !== "object") {
+    return false;
+  }
+  const uid = String(q.question_uid || "").trim();
+  if (!uid) {
+    return false;
+  }
+  const rawType = String(q.type || "").toUpperCase().trim();
+  if (!VALID_MOCK_TYPES.has(rawType)) {
+    return false;
+  }
+  const questionContent = String(q.question || "").trim();
+  return questionContent.length > 0;
+};
+
+export const readAttemptStorage = () => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const parseCandidate = (raw) => {
+    if (!raw) return null;
+    try {
+      const parsed = JSON.parse(raw);
+      return isValidStoredAttempt(parsed) ? parsed : null;
+    } catch {
+      return null;
+    }
+  };
+
+  let localAttempt = null;
+  let sessionAttempt = null;
+  let backupAttempt = null;
+
+  try {
+    localAttempt = parseCandidate(window.localStorage?.getItem(ATTEMPT_STORAGE_KEY));
+  } catch {}
+  try {
+    sessionAttempt = parseCandidate(window.sessionStorage?.getItem(ATTEMPT_STORAGE_KEY));
+  } catch {}
+  try {
+    backupAttempt = parseCandidate(window.localStorage?.getItem(ATTEMPT_BACKUP_KEY));
+  } catch {}
+
+  const candidates = [sessionAttempt, localAttempt, backupAttempt].filter(Boolean);
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  // Sort candidates: highest savedAt timestamp first, then richest response count
+  candidates.sort((a, b) => {
+    const timeA = Number(a?.savedAt) || 0;
+    const timeB = Number(b?.savedAt) || 0;
+    if (timeA !== timeB) {
+      return timeB - timeA;
+    }
+    const respCountA = Object.keys(a?.responses || {}).length;
+    const respCountB = Object.keys(b?.responses || {}).length;
+    return respCountB - respCountA;
+  });
+
+  return candidates[0] || null;
+};
+
+export const writeAttemptStorage = (payload) => {
+  if (typeof window === "undefined" || !payload || typeof payload !== "object") {
+    return;
+  }
+
+  const safePayload = {
+    ...payload,
+    savedAt: payload.savedAt || Date.now(),
+  };
+
+  const serialize = (data) => {
+    try {
+      return JSON.stringify(data);
+    } catch {
+      return null;
+    }
+  };
+
+  const serialized = serialize(safePayload);
+  if (!serialized) {
+    return;
+  }
+
+  // Strip verbose HTML if oversized or if storage quota errors occur
+  const createLightweightPayload = () => ({
+    ...safePayload,
+    questions: Array.isArray(safePayload.questions)
+      ? safePayload.questions.map((q) => ({
+          question_uid: q.question_uid,
+          title: q.title,
+          subject: q.subject,
+          subjectSlug: q.subjectSlug,
+          question: (q.question || "").slice(0, 1500),
+          normalizedOptions: q.normalizedOptions,
+          options: q.options,
+          type: q.type,
+          exam: q.exam,
+          answerMeta: q.answerMeta,
+          marks: q.marks,
+          negativeMarks: q.negativeMarks,
+        }))
+      : [],
+  });
+
+  // Attempt backup rotation to localStorage before overwriting a different attempt
+  try {
+    const existingRaw = window.localStorage?.getItem(ATTEMPT_STORAGE_KEY);
+    if (existingRaw) {
+      const existingParsed = JSON.parse(existingRaw);
+      if (existingParsed && typeof existingParsed === "object" && existingParsed.savedAt !== safePayload.savedAt) {
+        const isSameSession = Array.isArray(existingParsed.gaUids)
+          && Array.isArray(safePayload.gaUids)
+          && existingParsed.gaUids.join(",") === safePayload.gaUids.join(",")
+          && (existingParsed.csUids || []).join(",") === (safePayload.csUids || []).join(",");
+        if (!isSameSession) {
+          window.localStorage?.setItem(ATTEMPT_BACKUP_KEY, existingRaw);
+        }
+      }
+    }
+  } catch {}
+
+  // Write to localStorage with fallback
+  try {
+    window.localStorage?.setItem(ATTEMPT_STORAGE_KEY, serialized);
+  } catch {
+    try {
+      const lightweight = createLightweightPayload();
+      const lightSerialized = serialize(lightweight);
+      if (lightSerialized) {
+        window.localStorage?.setItem(ATTEMPT_STORAGE_KEY, lightSerialized);
+      }
+    } catch {}
+  }
+
+  // Write to sessionStorage with fallback
+  try {
+    window.sessionStorage?.setItem(ATTEMPT_STORAGE_KEY, serialized);
+  } catch {
+    try {
+      const lightweight = createLightweightPayload();
+      const lightSerialized = serialize(lightweight);
+      if (lightSerialized) {
+        window.sessionStorage?.setItem(ATTEMPT_STORAGE_KEY, lightSerialized);
+      }
+    } catch {}
+  }
+};
+
+export const clearAttemptStorage = () => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  try {
+    window.localStorage?.removeItem(ATTEMPT_STORAGE_KEY);
+    window.localStorage?.removeItem(ATTEMPT_BACKUP_KEY);
+  } catch {}
+  try {
+    window.sessionStorage?.removeItem(ATTEMPT_STORAGE_KEY);
+  } catch {}
+};
+
+export const clearMockAttemptStorage = clearAttemptStorage;
+export const readMockAttemptStorage = readAttemptStorage;
+export const writeMockAttemptStorage = writeAttemptStorage;
+
+export const hasActiveAttemptInStorage = () => {
+  const attempt = readAttemptStorage();
+  if (!attempt || typeof attempt !== "object") {
+    return false;
+  }
+  const hasGa = Array.isArray(attempt.gaUids) && attempt.gaUids.length > 0;
+  const hasCs = Array.isArray(attempt.csUids) && attempt.csUids.length > 0;
+  const hasLegacy = Array.isArray(attempt.questionUids) && attempt.questionUids.length > 0;
+  return hasGa || hasCs || hasLegacy;
+};
 
 const STATUS = {
   NOT_VISITED: "not_visited",
@@ -515,10 +707,7 @@ export const MockTestProvider = ({ children }) => {
   }, []);
 
   const clearAttemptStorage = useCallback(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    window.sessionStorage.removeItem(ATTEMPT_STORAGE_KEY);
+    clearMockAttemptStorage();
   }, []);
 
   const resetAttemptState = useCallback(() => {
@@ -584,19 +773,30 @@ export const MockTestProvider = ({ children }) => {
       return { ok: false, reason: "empty_attempt" };
     }
 
+    const embeddedQuestions = Array.isArray(parsedAttempt?.questions) ? parsedAttempt.questions : [];
+    const embeddedMap = new Map(
+      embeddedQuestions
+        .filter((q) => isValidEmbeddedQuestion(q))
+        .map((q) => [q.question_uid, q])
+    );
+
     const seen = new Set();
+    const restoredQuestions = [];
     for (const uid of [...gaUids, ...csUids]) {
       if (seen.has(uid)) {
         return { ok: false, reason: "duplicate_uid" };
       }
       seen.add(uid);
-      const question = byUid.get(uid);
-      if (!question || !hasValidMockQuestionForPool(question, questionMetaByUid)) {
+      const question = byUid.get(uid) || embeddedMap.get(uid);
+      if (!question) {
+        return { ok: false, reason: "invalid_uid", retry: true };
+      }
+      if (!hasValidMockQuestionForPool(question, questionMetaByUid) && !embeddedMap.has(uid)) {
         return { ok: false, reason: "invalid_uid" };
       }
+      restoredQuestions.push(question);
     }
 
-    const restoredQuestions = [...gaUids, ...csUids].map((uid) => byUid.get(uid));
     const activeSection = getValidStartSection(parsedAttempt?.activeSection, { GA: gaUids, CS: csUids });
     const gaIndex = clampToRange(parseInteger(parsedAttempt?.gaIndex, 0), 0, Math.max(gaUids.length - 1, 0));
     const csIndex = clampToRange(parseInteger(parsedAttempt?.csIndex, 0), 0, Math.max(csUids.length - 1, 0));
@@ -638,10 +838,21 @@ export const MockTestProvider = ({ children }) => {
       return { ok: false, reason: "empty_attempt" };
     }
 
+    const embeddedQuestions = Array.isArray(parsedAttempt?.questions) ? parsedAttempt.questions : [];
+    const embeddedMap = new Map(
+      embeddedQuestions
+        .filter((q) => isValidEmbeddedQuestion(q))
+        .map((q) => [q.question_uid, q])
+    );
+
     const restoredQuestions = questionUids
       .map((uid) => {
-        const question = byUid.get(uid);
-        return hasValidMockQuestionForPool(question, questionMetaByUid) ? question : null;
+        const question = byUid.get(uid) || embeddedMap.get(uid);
+        if (!question) return null;
+        if (!hasValidMockQuestionForPool(question, questionMetaByUid) && !embeddedMap.has(uid)) {
+          return null;
+        }
+        return question;
       })
       .filter(Boolean);
     if (restoredQuestions.length !== questionUids.length) {
@@ -701,41 +912,51 @@ export const MockTestProvider = ({ children }) => {
   }, [questionMetaByUid]);
 
   useEffect(() => {
-    if (
-      catalogLoading
-      || aptitudeMockLoading
-      || allQuestions.length === 0
-      || mockQuestionPool.length === 0
-      || hasAttemptRestoreRun.current
-    ) {
+    if (typeof window === "undefined" || testActive || hasAttemptRestoreRun.current) {
       return;
     }
 
-    hasAttemptRestoreRun.current = true;
-
-    if (catalogError || typeof window === "undefined") {
-      return;
-    }
-
-    const rawAttempt = window.sessionStorage.getItem(ATTEMPT_STORAGE_KEY);
+    const rawAttempt = readAttemptStorage();
     if (!rawAttempt) {
+      hasAttemptRestoreRun.current = true;
       return;
     }
 
-    const byUid = new Map(mockQuestionPool.map((question) => [question.question_uid, question]));
+    const allEmbeddedValid = Array.isArray(rawAttempt?.questions)
+      && rawAttempt.questions.length > 0
+      && rawAttempt.questions.every((q) => isValidEmbeddedQuestion(q));
+
+    const isCatalogPending = catalogLoading || aptitudeMockLoading || allQuestions.length === 0 || mockQuestionPool.length === 0;
+
+    if (!allEmbeddedValid && isCatalogPending) {
+      return;
+    }
 
     try {
-      const parsedAttempt = JSON.parse(rawAttempt);
-      const restored = Array.isArray(parsedAttempt?.gaUids) || Array.isArray(parsedAttempt?.csUids)
-        ? restoreFromSectionedPayload(parsedAttempt, byUid)
-        : restoreFromLegacyPayload(parsedAttempt, byUid);
+      const byUid = new Map(mockQuestionPool.map((question) => [question.question_uid, question]));
+      if (Array.isArray(rawAttempt?.questions)) {
+        rawAttempt.questions.forEach((q) => {
+          if (q?.question_uid && isValidEmbeddedQuestion(q) && !byUid.has(q.question_uid)) {
+            byUid.set(q.question_uid, q);
+          }
+        });
+      }
+
+      const restored = Array.isArray(rawAttempt?.gaUids) || Array.isArray(rawAttempt?.csUids)
+        ? restoreFromSectionedPayload(rawAttempt, byUid)
+        : restoreFromLegacyPayload(rawAttempt, byUid);
 
       if (!restored.ok) {
-        clearAttemptStorage();
+        if (restored.retry && isCatalogPending) {
+          hasAttemptRestoreRun.current = false;
+          return;
+        }
+        hasAttemptRestoreRun.current = true;
         setAttemptError("Attempt invalid, restart mock.");
         return;
       }
 
+      hasAttemptRestoreRun.current = true;
       setQuestions(restored.questions);
       setSectionQuestionUids(restored.sectionQuestionUids);
       setSectionIndexes(restored.sectionIndexes);
@@ -755,18 +976,18 @@ export const MockTestProvider = ({ children }) => {
       );
       setAttemptError("");
     } catch (error) {
-      clearAttemptStorage();
+      hasAttemptRestoreRun.current = true;
       setAttemptError("Attempt invalid, restart mock.");
     }
   }, [
-    allQuestions,
+    allQuestions.length,
     aptitudeMockLoading,
     catalogError,
     catalogLoading,
-    clearAttemptStorage,
     mockQuestionPool,
     restoreFromLegacyPayload,
     restoreFromSectionedPayload,
+    testActive,
   ]);
 
   const startTest = useCallback((config = {}) => {
@@ -828,12 +1049,13 @@ export const MockTestProvider = ({ children }) => {
     const startSection = getValidStartSection(config?.startSection, sectionUids);
     const startIndexes = { GA: 0, CS: 0 };
     const currentUid = getCurrentUidFromSectionState(sectionUids, startIndexes, startSection);
+    const initialQuestionStates = buildInitialQuestionStates([...gaUids, ...csUids], currentUid || "");
 
     setQuestions(orderedQuestions);
     setSectionQuestionUids(sectionUids);
     setSectionIndexes(startIndexes);
     setCurrentSectionState(startSection);
-    setQuestionStates(buildInitialQuestionStates([...gaUids, ...csUids], currentUid || ""));
+    setQuestionStates(initialQuestionStates);
     setResponses({});
     setQuestionTimeSpent({});
     setTimeLeft(safeTime);
@@ -850,6 +1072,45 @@ export const MockTestProvider = ({ children }) => {
       questionMetaByUid,
       attemptMeta: config?.meta || null,
     };
+
+    // Archive prior attempt to backup key before starting new exam
+    try {
+      const existingRaw = window.localStorage?.getItem(ATTEMPT_STORAGE_KEY);
+      if (existingRaw) {
+        window.localStorage?.setItem(ATTEMPT_BACKUP_KEY, existingRaw);
+      }
+    } catch {}
+
+    // Immediate initial write to storage
+    writeAttemptStorage({
+      v: 5,
+      gaUids: sectionUids.GA,
+      csUids: sectionUids.CS,
+      questions: orderedQuestions.map((q) => ({
+        question_uid: q.question_uid,
+        title: q.title,
+        subject: q.subject,
+        subjectSlug: q.subjectSlug,
+        question: q.question,
+        normalizedOptions: q.normalizedOptions,
+        options: q.options,
+        type: q.type,
+        exam: q.exam,
+        answerMeta: q.answerMeta,
+        marks: q.marks,
+        negativeMarks: q.negativeMarks,
+      })),
+      activeSection: startSection,
+      gaIndex: 0,
+      csIndex: 0,
+      responses: {},
+      questionStates: initialQuestionStates,
+      questionTimeSpent: {},
+      timeLeft: safeTime,
+      meta: config?.meta || null,
+      savedAt: Date.now(),
+    });
+
     return true;
   }, [
     aptitudeMockLoading,
@@ -859,15 +1120,29 @@ export const MockTestProvider = ({ children }) => {
     questionMetaByUid,
   ]);
 
-  useEffect(() => {
+  const persistAttempt = useCallback(() => {
     if (!testActive || testSubmitted || questions.length === 0 || typeof window === "undefined") {
       return;
     }
 
     const payload = {
-      v: 4,
+      v: 5,
       gaUids: sectionQuestionUids.GA,
       csUids: sectionQuestionUids.CS,
+      questions: questions.map((q) => ({
+        question_uid: q.question_uid,
+        title: q.title,
+        subject: q.subject,
+        subjectSlug: q.subjectSlug,
+        question: q.question,
+        normalizedOptions: q.normalizedOptions,
+        options: q.options,
+        type: q.type,
+        exam: q.exam,
+        answerMeta: q.answerMeta,
+        marks: q.marks,
+        negativeMarks: q.negativeMarks,
+      })),
       activeSection: currentSection,
       gaIndex: sectionIndexes.GA,
       csIndex: sectionIndexes.CS,
@@ -876,15 +1151,16 @@ export const MockTestProvider = ({ children }) => {
       questionTimeSpent,
       timeLeft,
       meta: attemptMeta || null,
+      savedAt: Date.now(),
     };
 
-    window.sessionStorage.setItem(ATTEMPT_STORAGE_KEY, JSON.stringify(payload));
+    writeAttemptStorage(payload);
   }, [
     attemptMeta,
     currentSection,
     questionStates,
     questionTimeSpent,
-    questions.length,
+    questions,
     responses,
     sectionIndexes.CS,
     sectionIndexes.GA,
@@ -894,6 +1170,27 @@ export const MockTestProvider = ({ children }) => {
     testSubmitted,
     timeLeft,
   ]);
+
+  useEffect(() => {
+    persistAttempt();
+  }, [persistAttempt]);
+
+  useEffect(() => {
+    if (!testActive || testSubmitted) {
+      return undefined;
+    }
+
+    const handleFlush = () => {
+      persistAttempt();
+    };
+
+    window.addEventListener("beforeunload", handleFlush);
+    window.addEventListener("pagehide", handleFlush);
+    return () => {
+      window.removeEventListener("beforeunload", handleFlush);
+      window.removeEventListener("pagehide", handleFlush);
+    };
+  }, [persistAttempt, testActive, testSubmitted]);
 
   useEffect(() => {
     if (!testActive || questions.length === 0) {

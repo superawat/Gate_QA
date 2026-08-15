@@ -13,6 +13,7 @@ let mockFilterContext = null;
 vi.mock("../../contexts/MockTestContext", () => ({
   useMockTest: () => mockMockTestContext,
   useMockTimer: () => ({ timeLeft: mockMockTestContext?.timeLeft ?? 10800 }),
+  hasActiveAttemptInStorage: () => false,
 }));
 
 vi.mock("../../contexts/FilterContext", () => ({
@@ -26,15 +27,22 @@ vi.mock("../../services/AnswerService", () => ({
   },
 }));
 
+let shouldQuestionThrow = false;
+
 vi.mock("./MockTestQuestion", () => ({
-  default: () => (
-    <div
-      className="mock-question-content font-sans"
-      data-testid="mock-question-content"
-    >
-      Question Content
-    </div>
-  ),
+  default: () => {
+    if (shouldQuestionThrow) {
+      throw new Error("Simulated render crash");
+    }
+    return (
+      <div
+        className="mock-question-content font-sans"
+        data-testid="mock-question-content"
+      >
+        Question Content
+      </div>
+    );
+  },
 }));
 
 vi.mock("../Calculator/CalculatorWidget", () => ({
@@ -418,5 +426,33 @@ describe("MockTestShell", () => {
     expect(screen.getByTestId("solved-filter-unsolved")).toBeTruthy();
     expect(screen.getByTestId("solved-filter-all")).toBeTruthy();
     expect(screen.getByTestId("solved-filter-solved-only")).toBeTruthy();
+  });
+
+  test("renders ErrorBoundary fallback with retry, previous, and skip actions when question crashes", async () => {
+    shouldQuestionThrow = true;
+    const goToNext = vi.fn();
+    const goToPrevious = vi.fn();
+    mockMockTestContext.testActive = true;
+    mockMockTestContext.goToNext = goToNext;
+    mockMockTestContext.goToPrevious = goToPrevious;
+    mockMockTestContext.questions = [{ question_uid: "go:111", section: "GA" }];
+
+    renderInMockRoute(
+      <MockTestShell onExit={vi.fn()} initialStage="exam" />,
+      "/mock?stage=exam"
+    );
+
+    expect(screen.getByText("Question Render Issue")).toBeTruthy();
+    expect(screen.getByTestId("mock-error-retry")).toBeTruthy();
+    expect(screen.getByTestId("mock-error-prev")).toBeTruthy();
+    expect(screen.getByTestId("mock-error-skip")).toBeTruthy();
+
+    fireEvent.click(screen.getByTestId("mock-error-skip"));
+    expect(goToNext).toHaveBeenCalledTimes(1);
+
+    fireEvent.click(screen.getByTestId("mock-error-prev"));
+    expect(goToPrevious).toHaveBeenCalledTimes(1);
+
+    shouldQuestionThrow = false;
   });
 });
