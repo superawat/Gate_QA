@@ -2,6 +2,9 @@
 
 ## 2026-08-15
 
+- **Question Key & Answer Corrections**:
+  - **Question `go:975` (GATE CSE 2006, Question 14 / ISRO 2011-14)**: Corrected answer from `A` (Quick sort) to `C` (Selection sort) across all database files (`data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, and detail shard `2006-s0.json`). Selection sort takes at most $n - 1$ ($O(n)$) swaps in the worst/average case, which is the minimum among standard in-place sorting algorithms.
+
 - **Practice Progress, Streak, and Activity Heatmap Real-Time Reflection**:
   - **Storage Key & Evaluation Resolution in `AnswerPanel.jsx`**: Fixed issue where `recordPracticeAttempt` was called without a `storageKey`, `correct`, or `type` payload, ensuring all practice attempts from the Solve page properly write to `gateqa_progress_v1`, `gateqa_apt_progress_v1`, and `gateqa_da_progress_v1`.
   - **Canonical Storage Keys**: Replaced undefined context references with canonical constants (`PRACTICE_PROGRESS_STORAGE_KEY`, `APTITUDE_PROGRESS_STORAGE_KEY`, `DA_PROGRESS_STORAGE_KEY`).
