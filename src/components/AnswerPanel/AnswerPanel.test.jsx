@@ -6,6 +6,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import AnswerPanel from "./AnswerPanel";
 import { AnswerService } from "../../services/AnswerService";
+import { recordPracticeAttempt } from "../../utils/practiceProgress";
 
 const mockFilterActions = {
   toggleSolved: vi.fn(),
@@ -41,6 +42,9 @@ vi.mock("../../utils/analytics", () => ({
 
 vi.mock("../../utils/practiceProgress", () => ({
   recordPracticeAttempt: vi.fn(),
+  PRACTICE_PROGRESS_STORAGE_KEY: "gateqa_progress_v1",
+  APTITUDE_PROGRESS_STORAGE_KEY: "gateqa_apt_progress_v1",
+  DA_PROGRESS_STORAGE_KEY: "gateqa_da_progress_v1",
 }));
 
 vi.mock("../../utils/syncQueue", () => ({
@@ -104,6 +108,13 @@ describe("AnswerPanel", () => {
     // Should evaluate as Correct!
     expect(screen.getByRole("alert").textContent).toBe("Correct!");
     expect(mockFilterActions.toggleSolved).toHaveBeenCalled();
+    expect(recordPracticeAttempt).toHaveBeenCalledWith(
+      expect.objectContaining({
+        storageKey: "go:1767",
+        correct: true,
+        progressStorageKey: "gateqa_progress_v1",
+      })
+    );
   });
 
   test("evaluates incorrect answer for NAT question 1767", () => {

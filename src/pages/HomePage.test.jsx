@@ -11,6 +11,16 @@ const loadWeakTopicInsightsMock = vi.fn(async () => ({
   subtopics: [],
   attemptedQuestionCount: 0,
 }));
+const loadStudyActivityFastMock = vi.fn(() => ({
+  currentStreak: 0,
+  longestStreak: 0,
+  xp: 0,
+  activeDayCount: 0,
+  badges: [],
+  todayAttempts: 0,
+  attemptTimeline: [],
+  streakDateKeys: [],
+}));
 
 vi.mock("../contexts/FilterContext", () => ({
   useFilterState: () => ({
@@ -31,7 +41,7 @@ vi.mock("../utils/mockTestHistory", () => ({
 
 vi.mock("../utils/weakTopicAnalyzer", () => ({
   loadWeakTopicInsights: () => loadWeakTopicInsightsMock(),
-  loadStudyActivityFast: () => ({ currentStreak: 0, longestStreak: 0, xp: 0, activeDayCount: 0, badges: [] }),
+  loadStudyActivityFast: () => loadStudyActivityFastMock(),
 }));
 
 import HomePage from "./HomePage";
@@ -145,5 +155,50 @@ describe("HomePage", () => {
 
     expect(screen.queryByText(/verified answers/i)).toBeNull();
     expect(screen.queryByText(/still pending/i)).toBeNull();
+  });
+
+  test("refreshes activity data when gateqa:progress-updated event is dispatched", () => {
+    loadStudyActivityFastMock.mockReturnValueOnce({
+      currentStreak: 0,
+      longestStreak: 0,
+      todayAttempts: 0,
+      xp: 0,
+      activeDayCount: 0,
+      badges: [],
+      attemptTimeline: [],
+      streakDateKeys: [],
+    });
+
+    render(
+      <HomePage
+        hasResumeRoute={false}
+        lastSession={null}
+        mockModeEnabled={false}
+        onStartRandomPractice={vi.fn()}
+        onExplorePractice={vi.fn()}
+        onOpenInsights={vi.fn()}
+        onOpenMockHistory={vi.fn()}
+        onStartMockTest={vi.fn()}
+        onResumePractice={vi.fn()}
+      />
+    );
+
+    expect(screen.getByText("Start a new streak today! 💪")).toBeTruthy();
+
+    loadStudyActivityFastMock.mockReturnValue({
+      currentStreak: 5,
+      longestStreak: 5,
+      todayAttempts: 1,
+      xp: 50,
+      activeDayCount: 5,
+      badges: ["3-day streak"],
+      attemptTimeline: [{ date: "2026-08-15", attempts: 1, correct: 1, totalDurationMs: 30000 }],
+      streakDateKeys: ["2026-08-15"],
+    });
+
+    fireEvent(window, new CustomEvent("gateqa:progress-updated", { detail: { storageKey: "go:1767" } }));
+
+    expect(screen.getAllByText("5").length).toBeGreaterThan(0);
+    expect(screen.getByText("Keep your streak moving today.")).toBeTruthy();
   });
 });

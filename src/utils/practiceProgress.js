@@ -1,5 +1,6 @@
 export const PRACTICE_PROGRESS_STORAGE_KEY = "gateqa_progress_v1";
 export const APTITUDE_PROGRESS_STORAGE_KEY = "gateqa_apt_progress_v1";
+export const DA_PROGRESS_STORAGE_KEY = "gateqa_da_progress_v1";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MAX_HISTORY_ENTRIES = 50;
@@ -258,6 +259,8 @@ export const writePracticeProgress = (
 
 export const recordPracticeAttempt = ({
   storageKey,
+  question = null,
+  evaluation = null,
   correct = false,
   type = "",
   input = null,
@@ -266,20 +269,49 @@ export const recordPracticeAttempt = ({
   storage = typeof window !== "undefined" ? window.localStorage : null,
   progressStorageKey = PRACTICE_PROGRESS_STORAGE_KEY,
 } = {}) => {
-  const key = String(storageKey || "").trim();
+  const key = String(
+    storageKey
+    || question?.question_uid
+    || question?.uid
+    || question?.id
+    || ""
+  ).trim();
+
   if (!key) {
     return null;
   }
 
+  const isCorrect = evaluation && typeof evaluation.correct === "boolean"
+    ? evaluation.correct
+    : Boolean(correct);
+
+  const resolvedType = String(
+    type
+    || evaluation?.type
+    || question?.type
+    || ""
+  ).trim();
+
   const progress = readPracticeProgress(storage, progressStorageKey);
   const nextEntry = buildUpdatedProgressEntry(progress[key] || {}, {
-    correct,
-    type,
+    correct: isCorrect,
+    type: resolvedType,
     input,
     submittedAt,
     durationMs,
   });
   progress[key] = nextEntry;
   writePracticeProgress(progress, storage, progressStorageKey);
+
+  if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("gateqa:progress-updated", {
+          detail: { storageKey: key, entry: nextEntry, progressStorageKey },
+        })
+      );
+    } catch {}
+  }
+
   return nextEntry;
 };

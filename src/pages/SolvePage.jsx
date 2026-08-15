@@ -428,11 +428,13 @@ const SolvePage = ({
   };
 
   const navigationSummary = useMemo(() => {
-    if (navigationState.totalInQueue <= 0 || navigationState.currentIndex < 0) {
+    const total = Number(navigationState.totalInQueue);
+    const index = Number(navigationState.currentIndex);
+    if (!Number.isFinite(total) || !Number.isFinite(index) || total <= 0 || index < 0) {
       return "Question details";
     }
 
-    return `Question ${navigationState.currentIndex + 1} of ${navigationState.totalInQueue}`;
+    return `Question ${index + 1} of ${total}`;
   }, [navigationState.currentIndex, navigationState.totalInQueue]);
 
   const navigationContextLabel = useMemo(() => {

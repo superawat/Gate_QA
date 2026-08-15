@@ -1,3 +1,6 @@
+/**
+ * @vitest-environment jsdom
+ */
 import { describe, expect, test } from "vitest";
 
 import {
@@ -109,5 +112,37 @@ describe("practiceProgress", () => {
     expect(storage.has(APTITUDE_PROGRESS_STORAGE_KEY)).toBe(true);
     expect(storage.has("gateqa_progress_v1")).toBe(false);
     expect(JSON.parse(storage.get(APTITUDE_PROGRESS_STORAGE_KEY))).toHaveProperty("APT-ENG-0001");
+  });
+
+  test("resolves storageKey and correct from question and evaluation objects and dispatches event", () => {
+    let dispatchedEvent = null;
+    const listener = (e) => {
+      dispatchedEvent = e;
+    };
+    window.addEventListener("gateqa:progress-updated", listener);
+
+    const question = { question_uid: "go:2014-ga-9", type: "MCQ" };
+    const evaluation = { correct: true, type: "MCQ" };
+
+    const entry = recordPracticeAttempt({
+      question,
+      evaluation,
+      input: "C",
+      submittedAt: "2026-08-15T12:00:00.000Z",
+      durationMs: 45000,
+    });
+
+    expect(entry).toBeTruthy();
+    expect(entry.attempts).toBe(1);
+    expect(entry.correct).toBe(true);
+
+    const stored = JSON.parse(window.localStorage.getItem("gateqa_progress_v1"));
+    expect(stored).toHaveProperty("go:2014-ga-9");
+    expect(stored["go:2014-ga-9"].correct).toBe(true);
+
+    expect(dispatchedEvent).toBeTruthy();
+    expect(dispatchedEvent.detail.storageKey).toBe("go:2014-ga-9");
+
+    window.removeEventListener("gateqa:progress-updated", listener);
   });
 });

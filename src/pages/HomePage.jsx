@@ -96,11 +96,13 @@ const HomePage = ({
       setActivity(loadStudyActivityFast());
     };
 
-    // Auth sync writes merged progress after the home page may already be
+    // Auth sync and local question attempts write progress after the home page may already be
     // mounted. Refresh the derived streak/heatmap state immediately.
+    window.addEventListener("gateqa:progress-updated", refreshActivity);
     window.addEventListener("gateqa:sync-complete", refreshActivity);
     window.addEventListener("storage", refreshActivity);
     return () => {
+      window.removeEventListener("gateqa:progress-updated", refreshActivity);
       window.removeEventListener("gateqa:sync-complete", refreshActivity);
       window.removeEventListener("storage", refreshActivity);
     };

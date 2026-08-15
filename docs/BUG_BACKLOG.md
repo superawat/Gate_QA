@@ -33,6 +33,27 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-PRACTICE-STREAK-01: Practice Question Attempts Not Updating Streak, Daily Goal, or Activity Heatmap
+
+- **Status**: Resolved on 2026-08-15
+- **Severity**: High (P1)
+- **Area**: Practice / Solve Mode / Gamification / Activity Heatmap / Streak Tracking
+- **Where**:
+  - `src/components/AnswerPanel/AnswerPanel.jsx`
+  - `src/utils/practiceProgress.js`
+  - `src/pages/HomePage.jsx`
+  - `src/pages/SolvePage.jsx`
+- **Root Causes**:
+  - 1. `AnswerPanel.jsx` invoked `recordPracticeAttempt` without passing `storageKey`, `correct`, or `type`, causing `recordPracticeAttempt` to return `null` immediately and fail to persist attempt history.
+  - 2. Non-existent filter state properties (`progressStorageKeys`, `aptitudeProgressStorageKeys`, `daProgressStorageKeys`) were referenced instead of canonical constant keys.
+  - 3. Same-window practice attempts lacked reactive broadcast, causing `HomePage` to only update on cross-tab storage events or cloud sync.
+  - 4. `SolvePage.jsx` navigation summary evaluated `undefined + 1` to `"Question NaN of undefined"` when session indices were not yet populated.
+- **Resolution**:
+  - Wired canonical `storageKey`, evaluation results, and storage constants (`PRACTICE_PROGRESS_STORAGE_KEY`, `APTITUDE_PROGRESS_STORAGE_KEY`, `DA_PROGRESS_STORAGE_KEY`) into `recordPracticeAttempt` within `AnswerPanel.jsx`.
+  - Added robust fallback resolution (`question.question_uid`, `question.id`, `evaluation.correct`) and same-tab `"gateqa:progress-updated"` event dispatching in `src/utils/practiceProgress.js`.
+  - Added `"gateqa:progress-updated"` listener on `HomePage.jsx` to dynamically update streak counts, goal progress, and the activity heatmap.
+  - Added finite-number guards in `SolvePage.jsx` `navigationSummary` to safely fallback to `"Question details"`.
+
 ### BUG-MOCK-CRASH-01: Website Crashes During Mock Tests / Custom Tests & Complete Test Reset (AUG-013)
 
 - **Status**: Resolved & Zero-Data-Loss Hardened on 2026-08-15

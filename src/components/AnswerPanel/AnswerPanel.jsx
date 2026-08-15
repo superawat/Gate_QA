@@ -11,9 +11,13 @@ import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../
 import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
-import { recordPracticeAttempt } from "../../utils/practiceProgress";
+import {
+  recordPracticeAttempt,
+  PRACTICE_PROGRESS_STORAGE_KEY,
+  APTITUDE_PROGRESS_STORAGE_KEY,
+  DA_PROGRESS_STORAGE_KEY,
+} from "../../utils/practiceProgress";
 import { enqueueChange } from "../../utils/syncQueue";
-import { APTITUDE_USER_STATE_STORAGE_KEYS } from "../../utils/localStorageState";
 import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
 
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
@@ -33,11 +37,6 @@ export default function AnswerPanel({
     isQuestionBookmarked,
     getQuestionProgressId,
   } = useFilterActions();
-  const {
-    progressStorageKeys,
-    aptitudeProgressStorageKeys = APTITUDE_USER_STATE_STORAGE_KEYS,
-    daProgressStorageKeys,
-  } = useFilterState();
 
   const { goBack, canGoBack } = useSession();
   const canMovePrevious = typeof canGoPrevious === "boolean" ? canGoPrevious : canGoBack;
@@ -143,20 +142,26 @@ export default function AnswerPanel({
     }
 
     const submittedAt = new Date();
+    const targetStorageKey = questionProgressId || storageKey || question?.question_uid || question?.id || "";
+    const progressStorageKey = isDaQuestion(question)
+      ? DA_PROGRESS_STORAGE_KEY
+      : String(targetStorageKey || "").startsWith("APT-")
+        ? APTITUDE_PROGRESS_STORAGE_KEY
+        : PRACTICE_PROGRESS_STORAGE_KEY;
+
     recordPracticeAttempt({
+      storageKey: targetStorageKey,
       question,
       evaluation,
+      correct: evaluation?.correct === true,
+      type: answerRecord?.type || question?.type || "",
       input: payload,
       submittedAt: submittedAt.toISOString(),
       durationMs: submittedAt.getTime() - questionOpenedAtRef.current,
-      progressStorageKey: isDaQuestion(question)
-        ? daProgressStorageKeys?.progress
-        : String(storageKey || "").startsWith("APT-")
-          ? aptitudeProgressStorageKeys?.progress
-          : progressStorageKeys?.progress,
+      progressStorageKey,
     });
     enqueueChange("SOLVE", {
-      questionUid: storageKey,
+      questionUid: targetStorageKey,
       evaluation,
       submittedAt: submittedAt.toISOString(),
     });
@@ -170,10 +175,7 @@ export default function AnswerPanel({
     questionProgressId,
     toggleSolved,
     question,
-    daProgressStorageKeys?.progress,
     storageKey,
-    aptitudeProgressStorageKeys?.progress,
-    progressStorageKeys?.progress,
   ]);
 
   const triggerHaptic = (duration = 15) => {

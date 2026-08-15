@@ -2,6 +2,12 @@
 
 ## 2026-08-15
 
+- **Practice Progress, Streak, and Activity Heatmap Real-Time Reflection**:
+  - **Storage Key & Evaluation Resolution in `AnswerPanel.jsx`**: Fixed issue where `recordPracticeAttempt` was called without a `storageKey`, `correct`, or `type` payload, ensuring all practice attempts from the Solve page properly write to `gateqa_progress_v1`, `gateqa_apt_progress_v1`, and `gateqa_da_progress_v1`.
+  - **Canonical Storage Keys**: Replaced undefined context references with canonical constants (`PRACTICE_PROGRESS_STORAGE_KEY`, `APTITUDE_PROGRESS_STORAGE_KEY`, `DA_PROGRESS_STORAGE_KEY`).
+  - **Same-Window Reactive Event Dispatching**: Enhanced `recordPracticeAttempt` in `practiceProgress.js` to dispatch a `"gateqa:progress-updated"` custom event, and added listener on `HomePage.jsx` to immediately refresh streak counters, daily goal ring (`0/5` -> `1/5`), and the activity heatmap without requiring cross-tab storage triggers or page reloads.
+  - **Header Random Session Number Coercion Fix**: Guarded `navigationSummary` calculation in `SolvePage.jsx` against uninitialized/non-finite session indices, resolving `"Question NaN of undefined"` and falling back cleanly to `"Question details"`.
+
 - **Mock Test Crash-Proof Persistence & Zero-Data-Loss Recovery (AUG-013)**:
   - **Dual-Tier Synchronized Storage (`localStorage` + `sessionStorage`)**: Updated `MockTestContext.tsx` with unified read/write storage helpers persisting active test state (`v: 5`) to both `localStorage` and `sessionStorage`. Browser crashes, accidental tab closures, or memory pressure reboots now seamlessly resume the in-progress test.
   - **Embedded Question Snapshots**: Embedded question blueprints into the stored test payload, allowing immediate question rendering even if question bank shards or background indexers are still loading.
