@@ -18,14 +18,15 @@ function clampPosition(x, y, width, height) {
   };
 }
 
-function getCalculatorUrl() {
+function getCalculatorUrl(isDark = false) {
   const base = import.meta.env.BASE_URL || "/";
   const normalizedBase = base.endsWith("/") ? base : `${base}/`;
-  return `${normalizedBase}calculator/calculator.html`;
+  return `${normalizedBase}calculator/calculator.html?theme=${isDark ? "dark" : "light"}`;
 }
 
 export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
   const panelRef = useRef(null);
+  const iframeRef = useRef(null);
   const closeButtonRef = useRef(null);
   const frameTimeoutRef = useRef(null);
   const closeTimeoutRef = useRef(null);
@@ -35,6 +36,9 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
   const livePositionRef = useRef({ x: VIEWPORT_MARGIN, y: 80 });
   const isDraggingRef = useRef(false);
 
+  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+    return typeof document !== "undefined" && document.documentElement.getAttribute("data-theme") === "dark";
+  });
   const [isRendered, setIsRendered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(
@@ -46,7 +50,32 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: VIEWPORT_MARGIN, y: 80 });
 
-  const calculatorUrl = getCalculatorUrl();
+  const calculatorUrl = getCalculatorUrl(isDarkTheme);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const checkTheme = () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      setIsDarkTheme(isDark);
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        try {
+          iframeRef.current.contentWindow.postMessage(
+            { type: "GATEQA_SET_THEME", theme: isDark ? "dark" : "light" },
+            "*"
+          );
+        } catch (e) {}
+      }
+    };
+
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     livePositionRef.current = position;
@@ -258,6 +287,14 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
     setIsLoading(false);
     setHasFrameError(false);
     if (frameTimeoutRef.current) clearTimeout(frameTimeoutRef.current);
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      try {
+        iframeRef.current.contentWindow.postMessage(
+          { type: "GATEQA_SET_THEME", theme: isDarkTheme ? "dark" : "light" },
+          "*"
+        );
+      } catch (e) {}
+    }
   };
 
   const handleFrameError = () => {
@@ -354,6 +391,7 @@ export default function CalculatorWidget({ isOpen, onClose, anchorRef }) {
           )}
 
           <iframe
+            ref={iframeRef}
             src={calculatorUrl}
             title="GATE Scientific Calculator"
             className="h-full w-full border-0"

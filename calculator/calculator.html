@@ -313,6 +313,123 @@
         #help-section li {
             margin-bottom: 3px;
         }
+
+        /* ── Dark Mode Theme ── */
+        [data-theme="dark"] body,
+        body.dark-theme {
+            background: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] input.display-box,
+        body.dark-theme input.display-box {
+            background: #090d16;
+            border: 1px solid #334155;
+            border-bottom: 3px solid #475569;
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] #expression,
+        body.dark-theme #expression {
+            color: #94a3b8;
+        }
+
+        [data-theme="dark"] #display,
+        body.dark-theme #display {
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] #memory-indicator,
+        body.dark-theme #memory-indicator {
+            background: #090d16;
+            border: 1px solid #475569;
+            border-left: none;
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] button,
+        body.dark-theme button {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #334155;
+            border-bottom: 3px solid #475569;
+        }
+
+        [data-theme="dark"] button:hover,
+        body.dark-theme button:hover {
+            background: #334155;
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] button:active,
+        body.dark-theme button:active {
+            background: #0f172a;
+            border-bottom: 1px solid #334155;
+        }
+
+        [data-theme="dark"] .num,
+        body.dark-theme .num {
+            background: #253349;
+            color: #ffffff;
+            border: 1px solid #3b4d66;
+            border-bottom: 3px solid #475d7e;
+        }
+
+        [data-theme="dark"] .num:hover,
+        body.dark-theme .num:hover {
+            background: #334665;
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] #angle-mode label,
+        body.dark-theme #angle-mode label {
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .red,
+        body.dark-theme .red {
+            background: #dc2626;
+            color: #ffffff;
+            border: 1px solid #b91c1c;
+            border-bottom: 3px solid #991b1b;
+        }
+
+        [data-theme="dark"] .red:hover,
+        body.dark-theme .red:hover {
+            background: #ef4444;
+        }
+
+        [data-theme="dark"] .red:active,
+        body.dark-theme .red:active {
+            background: #b91c1c;
+            border-bottom: 1px solid #b91c1c;
+        }
+
+        [data-theme="dark"] .eq,
+        body.dark-theme .eq {
+            background: #10b981;
+            color: #ffffff;
+            border: 1px solid #059669;
+            border-bottom: 3px solid #047857;
+        }
+
+        [data-theme="dark"] .eq:hover,
+        body.dark-theme .eq:hover {
+            background: #34d399;
+        }
+
+        [data-theme="dark"] .eq:active,
+        body.dark-theme .eq:active {
+            background: #059669;
+            border-bottom: 2px solid #059669;
+        }
+
+        [data-theme="dark"] #help-section,
+        body.dark-theme #help-section {
+            background: #0f172a;
+            border-color: #334155;
+            color: #cbd5e1;
+        }
     </style>
 </head>
 
@@ -459,6 +576,31 @@
                 helpBtn.textContent = 'Back';
             }
         }
+
+        // Theme synchronization
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.body.classList.add('dark-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.body.classList.remove('dark-theme');
+            }
+        }
+
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialTheme = urlParams.get('theme');
+            if (initialTheme) {
+                applyTheme(initialTheme);
+            }
+        } catch (e) {}
+
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'GATEQA_SET_THEME') {
+                applyTheme(event.data.theme);
+            }
+        });
     </script>
     <script src="calculator.js"></script>
 </body>

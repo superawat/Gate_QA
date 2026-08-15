@@ -611,11 +611,13 @@ const SolvePage = ({
                     </p>
                   </div>
                 </div>
-                <CalculatorButton
-                  ref={calculatorButtonRef}
-                  onClick={() => setIsCalculatorOpen((previous) => !previous)}
-                  isOpen={isCalculatorOpen}
-                />
+                <div className="hidden md:inline-flex">
+                  <CalculatorButton
+                    ref={calculatorButtonRef}
+                    onClick={() => setIsCalculatorOpen((previous) => !previous)}
+                    isOpen={isCalculatorOpen}
+                  />
+                </div>
               </div>
             </div>
           </div>
