@@ -21,8 +21,14 @@ const getMonthShortName = (monthIndex) => (
   ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][monthIndex]
 );
 
-export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streakDateKeys = [] }) => {
+export const ActivityHeatmap = ({
+  attemptTimeline = [],
+  now = new Date(),
+  streakDateKeys = [],
+  streakFreezeDates = [],
+}) => {
   const streakDateSet = useMemo(() => new Set(streakDateKeys), [streakDateKeys]);
+  const streakFreezeSet = useMemo(() => new Set(streakFreezeDates), [streakFreezeDates]);
   const [isMobile, setIsMobile] = useState(false);
   const [selectedRange, setSelectedRange] = useState("auto");
   const scrollRef = useRef(null);
@@ -150,16 +156,35 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
             {grid.map((week, weekIndex) => (
               <div key={weekIndex} className="home-activity-week">
                 {week.map((day) => {
+                  const isFrozenDay = streakFreezeSet.has(day.dateKey);
                   const isStreakDay = day.attempts > 0 && streakDateSet.has(day.dateKey);
+
+                  let cellClass = `home-activity-cell ${getIntensityClass(day.attempts)}`;
+                  if (isFrozenDay) {
+                    cellClass += " home-activity-cell--frozen";
+                  } else if (isStreakDay) {
+                    cellClass += " home-activity-cell--streak";
+                  }
+
+                  let cellTitle = `${day.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}\n${day.attempts} attempts (${Math.round(day.accuracy * 100)}%)\nTime spent: ${formatDuration(day.durationMs)}`;
+                  if (isFrozenDay) {
+                    cellTitle = `${day.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}\nStreak Protected (Freeze Used 🛡️)`;
+                  } else if (isStreakDay) {
+                    cellTitle += "\nCurrent streak day 🔥";
+                  }
+
+                  let cellAria = `${day.date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}: ${day.attempts} attempt${day.attempts !== 1 ? "s" : ""}${day.attempts > 0 ? `, ${Math.round(day.accuracy * 100)}% accuracy` : ""}`;
+                  if (isFrozenDay) {
+                    cellAria = `${day.date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}: Streak protected by freeze`;
+                  }
+
                   return (
                     <div
                       key={day.dateKey}
                       role="img"
-                      aria-label={`${day.date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}: ${day.attempts} attempt${day.attempts !== 1 ? "s" : ""}${day.attempts > 0 ? `, ${Math.round(day.accuracy * 100)}% accuracy` : ""}`}
-                      className={`home-activity-cell ${getIntensityClass(day.attempts)} ${
-                        isStreakDay ? "home-activity-cell--streak" : ""
-                      }`}
-                      title={`${day.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}\n${day.attempts} attempts (${Math.round(day.accuracy * 100)}%)\nTime spent: ${formatDuration(day.durationMs)}${isStreakDay ? "\nCurrent streak day" : ""}`}
+                      aria-label={cellAria}
+                      className={cellClass}
+                      title={cellTitle}
                     />
                   );
                 })}
@@ -169,13 +194,25 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
         </div>
       </div>
 
-      <div className="home-activity-legend" aria-label="Less to more activity">
-        <span>Less</span>
-        <i className="home-activity-cell home-activity-intensity--0" aria-hidden="true" />
-        <i className="home-activity-cell home-activity-intensity--1" aria-hidden="true" />
-        <i className="home-activity-cell home-activity-intensity--2" aria-hidden="true" />
-        <i className="home-activity-cell home-activity-intensity--3" aria-hidden="true" />
-        <span>More</span>
+      <div className="home-activity-legend" aria-label="Activity legend">
+        <div className="home-activity-legend-hints">
+          <span className="home-activity-legend-item">
+            <i className="home-activity-cell home-activity-intensity--2 home-activity-cell--streak" aria-hidden="true" />
+            <span>Streak</span>
+          </span>
+          <span className="home-activity-legend-item">
+            <i className="home-activity-cell home-activity-cell--frozen" aria-hidden="true" />
+            <span>Frozen</span>
+          </span>
+        </div>
+        <div className="home-activity-legend-scale" aria-label="Less to more activity">
+          <span>Less</span>
+          <i className="home-activity-cell home-activity-intensity--0" aria-hidden="true" />
+          <i className="home-activity-cell home-activity-intensity--1" aria-hidden="true" />
+          <i className="home-activity-cell home-activity-intensity--2" aria-hidden="true" />
+          <i className="home-activity-cell home-activity-intensity--3" aria-hidden="true" />
+          <span>More</span>
+        </div>
       </div>
     </div>
   );

@@ -451,6 +451,7 @@ const HomePage = ({
             <ActivityHeatmap
               attemptTimeline={activity?.attemptTimeline || []}
               streakDateKeys={activity?.streakDateKeys || []}
+              streakFreezeDates={activity?.streakFreeze?.consumedDates || []}
             />
           </section>
         </div>

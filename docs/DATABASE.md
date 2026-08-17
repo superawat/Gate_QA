@@ -22,9 +22,14 @@ Cloud synchronization is a backup and cross-device layer. A network or Supabase 
 
 ## Live schema verification
 
-The live Supabase project was inspected using schema-only metadata queries on
-2026-08-14. The captured metadata is retained locally under the ignored
-`artifacts/db-schema/` directory.
+The live Supabase project was inspected using comprehensive schema metadata queries on **2026-08-17**. The captured metadata is retained locally under the [`artifacts/db-schema/`](../artifacts/db-schema/) directory:
+
+- [**`applied-migrations.md`**](../artifacts/db-schema/applied-migrations.md) — Relation check for migration history.
+- [**`schema.md`**](../artifacts/db-schema/schema.md) — Table columns, ordinal positions, defaults, constraints (`ON DELETE CASCADE`), indexes, and RLS flags.
+- [**`policies-and-grants.md`**](../artifacts/db-schema/policies-and-grants.md) — Active RLS policies (`USING` and `WITH CHECK`) and role-level table grants.
+- [**`jsonb-contracts.md`**](../artifacts/db-schema/jsonb-contracts.md) — JSONB column definitions and data structures.
+- [**`extensions-and-views.md`**](../artifacts/db-schema/extensions-and-views.md) — Installed PostgreSQL extensions and database views.
+- [**`functions-and-triggers.md`**](../artifacts/db-schema/functions-and-triggers.md) — Database functions, security definitions (`SECURITY DEFINER`), and active triggers.
 
 Verified public tables:
 
@@ -32,14 +37,11 @@ Verified public tables:
 - `public.user_progress`
 - `public.sync_log`
 
-Verified relationships use `ON DELETE CASCADE`, and RLS is enabled on all three
-tables (`relforcerowsecurity` is false). The live project has the expected
-owner policies for authenticated users and no public/anonymous table grants.
+Verified relationships use `ON DELETE CASCADE`, and RLS is enabled on all three tables (`relrowsecurity = true`, `relforcerowsecurity = false`). The live project has strict owner policies for `authenticated` users and zero public/anonymous table grants.
 
-The hosted project does not contain
-`supabase_migrations.schema_migrations`; therefore its historical migration
-status cannot be verified from that table. The database should not be modified
-to create it retroactively.
+The hosted project does not contain `supabase_migrations.schema_migrations`; therefore its historical migration status cannot be verified from that table. The database should not be modified to create it retroactively.
+
+---
 
 ## Supabase tables
 
@@ -51,65 +53,71 @@ Managed by Supabase Auth. Google OAuth creates the authenticated user and suppli
 
 One profile row per authenticated user.
 
-| Column | Purpose |
-| --- | --- |
-| `id` | UUID matching `auth.users.id` |
-| `email` | Account email |
-| `full_name` | Google display name or edited name |
-| `avatar_url` | Google profile image URL |
-| `created_at`, `updated_at` | Audit timestamps |
+| Column | Type | Nullable | Default | Purpose |
+| :--- | :--- | :---: | :--- | :--- |
+| `id` | `uuid` | **No** | null | UUID matching `auth.users.id` (Primary Key, Foreign Key) |
+| `email` | `text` | **No** | null | Account email address |
+| `full_name` | `text` | Yes | null | Google display name or edited name |
+| `avatar_url` | `text` | Yes | null | Google profile image URL |
+| `created_at` | `timestamptz` | Yes | `now()` | Audit creation timestamp |
+| `updated_at` | `timestamptz` | Yes | `now()` | Audit update timestamp |
 
-Every Auth user must have a matching profile row because `user_progress.user_id`
-references `profiles.id`. The database trigger `on_auth_user_created` creates
-or updates that profile from Auth metadata. Existing users are backfilled by
-the security cleanup script before cloud sync is retried.
+Every Auth user must have a matching profile row because `user_progress.user_id` references `profiles.id`. The database trigger `on_auth_user_created` (executing `public.handle_new_auth_user()`) creates or updates that profile from Auth metadata.
 
 ### `public.user_progress`
 
 One row per user containing the cloud backup. `user_id` is both the primary key and the owner reference.
 
-| Column | Shape | Purpose |
-| --- | --- | --- |
-| `user_id` | UUID | References the owning profile |
-| `bookmarks` | JSONB array | Saved question IDs |
-| `notes` | JSONB object | Notes keyed by question ID |
-| `solved_questions` | JSONB array | Canonical solved question IDs |
-| `aptitude_solved` | JSONB array | Canonical Aptitude solved question IDs |
-| `aptitude_bookmarks` | JSONB array | Canonical Aptitude bookmarked question IDs |
-| `da_solved` | JSONB array | Canonical GATE DA solved question IDs |
-| `da_bookmarks` | JSONB array | Canonical GATE DA bookmarked question IDs |
-| `mock_history` | JSONB array | Mock-test attempts |
-| `progress_records` | JSONB object | Namespaced practice-attempt timelines used for streaks and activity (`standard`, `aptitude`, `da`, `da_solved`, `da_bookmarks`) |
-| `data_version` | integer | Payload format version |
-| `last_synced_at` | timestamptz | Last successful cloud write |
+| Column | Type | Nullable | Default | Purpose |
+| :--- | :--- | :---: | :--- | :--- |
+| `user_id` | `uuid` | **No** | null | Primary Key; references `public.profiles(id)` |
+| `bookmarks` | `jsonb` | Yes | `'[]'::jsonb` | Saved GATE CSE question IDs array |
+| `notes` | `jsonb` | Yes | `'{}'::jsonb` | User study notes keyed by question ID |
+| `solved_questions` | `jsonb` | Yes | `'[]'::jsonb` | Canonical GATE CSE solved question IDs array |
+| `mock_history` | `jsonb` | Yes | `'[]'::jsonb` | Completed mock test attempts history |
+| `data_version` | `integer` | Yes | `1` | Payload format version for schema migrations |
+| `last_synced_at` | `timestamptz` | Yes | `now()` | Timestamp of last successful cloud write |
+| `progress_records` | `jsonb` | **No** | `'{"aptitude": {}, "standard": {}}'::jsonb` | Namespaced practice-attempt timelines used for streaks and activity heatmaps (`standard`, `aptitude`, `da`) |
+| `aptitude_solved` | `jsonb` | **No** | `'[]'::jsonb` | Canonical Aptitude solved question IDs array |
+| `aptitude_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical Aptitude bookmarked question IDs array |
+| `da_solved` | `jsonb` | **No** | `'[]'::jsonb` | Canonical GATE DA question IDs solved by the user |
+| `da_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical GATE DA question IDs bookmarked by the user |
 
 The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns. The client includes resilient schema fallback that safely embeds DA progress inside `progress_records` if the remote table schema lacks optional top-level columns.
-
-Live defaults and nullability should be treated as implementation details that
-are not fully represented by the JSONB contract: `solved_questions` is
-currently nullable and has a legacy `'{}'::jsonb` default, while the runtime
-normalizes it to a canonical string array. `progress_records` is non-null with
-an initial `standard`/`aptitude` object default; the runtime adds the `da`
-namespace when needed.
-
-The live database contains dedicated `da_solved` and `da_bookmarks` columns.
-The current client upsert path instead places these values in
-`progress_records.da_solved` and `progress_records.da_bookmarks`; this is a
-known schema/runtime alignment gap to resolve before treating the dedicated DA
-columns as the sole source of truth.
 
 ### `public.sync_log`
 
 Append-only audit records for synchronization events.
 
-| Column | Purpose |
-| --- | --- |
-| `id` | Log identity |
-| `user_id` | Owning user |
-| `action` | For example `first_login_merge` or `incremental_sync` |
-| `payload_snapshot` | Lightweight count summary of the merged state at sync time: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount, daProgressCount }`. Rows written before this change (`summaryVersion` absent) contain the full merged JSONB blob. |
-| `device_info` | Browser/device metadata |
-| `created_at` | Log timestamp |
+| Column | Type | Nullable | Default | Purpose |
+| :--- | :--- | :---: | :--- | :--- |
+| `id` | `bigint` | **No** | `nextval('sync_log_id_seq')` | Log identity (Primary Key) |
+| `user_id` | `uuid` | Yes | null | Owning user (`ON DELETE CASCADE`) |
+| `action` | `text` | **No** | null | For example `first_login_merge` or `incremental_sync` |
+| `payload_snapshot` | `jsonb` | Yes | null | Lightweight count summary of the merged state: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount, daProgressCount }` |
+| `device_info` | `text` | Yes | null | Browser user-agent and platform metadata |
+| `created_at` | `timestamptz` | Yes | `now()` | Timestamp of audit entry |
+
+---
+
+## Installed Extensions & Views
+
+### Extensions
+Verified active extensions in the hosted Supabase PostgreSQL cluster:
+- `hypopg` (1.4.1) — Hypothetical indexes for PostgreSQL
+- `index_advisor` (0.2.0) — Query index advisor
+- `pg_stat_statements` (1.11) — Planning and execution statistics tracking
+- `pgcrypto` (1.3) — Cryptographic functions
+- `plpgsql` (1.0) — PL/pgSQL procedural language
+- `supabase_vault` (0.3.1) — Supabase Vault secrets management
+- `uuid-ossp` (1.1) — Universally unique identifier generators
+
+### Views
+- `extensions.hypopg_hidden_indexes`, `extensions.hypopg_list_indexes`
+- `extensions.pg_stat_statements`, `extensions.pg_stat_statements_info`
+- `vault.decrypted_secrets`
+
+---
 
 ## Relationships
 
@@ -123,9 +131,11 @@ auth.users.id
     +--> sync_log.user_id
 ```
 
-Foreign keys should use `ON DELETE CASCADE` so deleting an Auth user removes the associated profile, progress, and audit rows.
+Foreign keys enforce `ON DELETE CASCADE` so deleting an Auth user removes the associated profile, progress, and audit rows.
 
-## Row Level Security
+---
+
+## Row Level Security & Policies
 
 RLS is enabled on every public user-data table. Ownership is checked with the authenticated JWT subject:
 
@@ -133,57 +143,22 @@ RLS is enabled on every public user-data table. Ownership is checked with the au
 (select auth.uid()) = user_id
 ```
 
-The recommended policies for `user_progress` are:
+### Verified Active Policies
 
-```sql
-alter table public.user_progress enable row level security;
+| Table | Policy Name | Command | Role | Expression |
+| :--- | :--- | :---: | :--- | :--- |
+| `public.profiles` | Users can read their own profile | `SELECT` | `authenticated` | `USING ((SELECT auth.uid()) = id)` |
+| `public.sync_log` | Users can insert their own sync logs | `INSERT` | `authenticated` | `WITH CHECK ((SELECT auth.uid()) = user_id)` |
+| `public.user_progress` | Users can insert their own progress | `INSERT` | `authenticated` | `WITH CHECK ((SELECT auth.uid()) = user_id)` |
+| `public.user_progress` | Users can read their own progress | `SELECT` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)` |
+| `public.user_progress` | Users can update their own progress | `UPDATE` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)`<br>`WITH CHECK ((SELECT auth.uid()) = user_id)` |
 
-create policy "Users can read their own progress"
-on public.user_progress
-for select to authenticated
-using ((select auth.uid()) = user_id);
+### Role Grants
+- `anon`: **Zero** grants on `public.profiles`, `public.user_progress`, or `public.sync_log`.
+- `authenticated`: Granted `SELECT` on `profiles`; `SELECT, INSERT, UPDATE` on `user_progress`; `INSERT` on `sync_log`.
+- `postgres` & `service_role`: Full administrative table privileges.
 
-create policy "Users can insert their own progress"
-on public.user_progress
-for insert to authenticated
-with check ((select auth.uid()) = user_id);
-
-create policy "Users can update their own progress"
-on public.user_progress
-for update to authenticated
-using ((select auth.uid()) = user_id)
-with check ((select auth.uid()) = user_id);
-```
-
-The audit table needs an insert policy:
-
-```sql
-alter table public.sync_log enable row level security;
-
-create policy "Users can insert their own sync logs"
-on public.sync_log
-for insert to authenticated
-with check ((select auth.uid()) = user_id);
-```
-
-### Security cleanup and verification
-
-Run [`supabase_security_audit_and_cleanup.sql`](./supabase/supabase_security_audit_and_cleanup.sql)
-in the Supabase SQL Editor as the `postgres` role. It enables RLS on all three
-tables, recreates least-privilege `authenticated` policies, removes broad
-`public` policies only from these tables, revokes all existing `anon` and
-`authenticated` table grants before adding only the required privileges, and
-prints verification queries. Do not use the browser `anon` key to run this
-script; it cannot inspect or alter RLS metadata.
-
-Avoid a broad `public` `ALL` policy when the granular `authenticated` policies above are present. If an older policy such as `Users can access own progress` exists, inspect it before removing it:
-
-```sql
-select policyname, roles, cmd, qual, with_check
-from pg_policies
-where schemaname = 'public'
-  and tablename = 'user_progress';
-```
+---
 
 ## Authentication and sync sequence
 
@@ -192,16 +167,18 @@ where schemaname = 'public'
    `https://<project-ref>.supabase.co/auth/v1/callback`.
 3. Supabase creates or restores the Auth session and redirects to the configured application origin.
 4. `AuthContext` receives the session and user UUID.
-5. `cloudSyncManager` creates a local backup snapshot before touching cloud data.
+5. `cloudSyncManager` creates a local backup snapshot before touching cloud data (`gate_qa_backup_<timestamp>`).
 6. Existing `user_progress` is read, if present.
 7. Local and cloud data are merged additively.
 8. The merged payload is upserted into `user_progress`.
-9. A `sync_log` record is appended.
+9. A `sync_log` record is appended with a lightweight summary.
 10. The merged state is written back to localStorage so the UI is immediately consistent.
 
 The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running. Sync requests are debounced by 750 ms and successful syncs are throttled to one per 30 seconds per user. Changes remain in the local offline queue until the next permitted sync, so throttling does not discard local work. Authentication/session initialization still performs the first sync immediately.
 
 `sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude/da progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
+
+---
 
 ## Merge rules
 
@@ -217,6 +194,8 @@ The sync is single-flight: a user must not generate overlapping sync requests wh
 
 Before a merge, the client stores a timestamped local snapshot using keys like `gate_qa_backup_<timestamp>`. A failed cloud operation must leave the original local data available.
 
+---
+
 ## Frontend locations
 
 - Supabase client: [`src/services/supabase.js`](../src/services/supabase.js)
@@ -225,6 +204,8 @@ Before a merge, the client stores a timestamped local snapshot using keys like `
 - Offline queue: [`src/utils/syncQueue.js`](../src/utils/syncQueue.js)
 - Auth UI: [`src/components/Auth/`](../src/components/Auth/)
 
+---
+
 ## Troubleshooting
 
 ### `42501` or `new row violates row-level security policy`
@@ -232,10 +213,10 @@ Before a merge, the client stores a timestamped local snapshot using keys like `
 Usually means the insert policy is missing, the policy checks the wrong column, or the request has no valid authenticated session. Verify:
 
 ```sql
-select policyname, roles, cmd, qual, with_check
-from pg_policies
-where schemaname = 'public'
-  and tablename = 'user_progress';
+SELECT policyname, roles, cmd, qual, with_check
+FROM pg_policies
+WHERE schemaname = 'public'
+  AND tablename = 'user_progress';
 ```
 
 The inserted `user_id` must equal the Google-authenticated user's UUID, not the email address or Google numeric project ID.

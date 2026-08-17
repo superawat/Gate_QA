@@ -2,6 +2,12 @@
 
 ## 2026-08-17
 
+- **Activity Heatmap Streak & Freeze Visual Elevation & Mobile UI Balance (AUG-021)**:
+  - **Refined Active Streak Cells (`.home-activity-cell--streak`)**: Replaced jagged, overlapping `outline-offset: 2px` orange frames with a crisp, radiant amber inner ring and soft ambient aura (`box-shadow: 0 0 0 1.5px #f59e0b, 0 1px 4px rgba(245, 158, 11, 0.35)` in light mode, and `box-shadow: 0 0 0 1.5px #fbbf24, 0 0 6px rgba(245, 158, 11, 0.45)` in dark mode). Active streak days now stay cleanly inside grid cell boundaries without clipping or bleeding into adjacent columns.
+  - **Frosted Ice-Cyan Visuals for Freeze-Protected Days (`.home-activity-cell--frozen`)**: Converted blank dark squares on missed days protected by a streak freeze into an icy cyan frosted gradient badge (`linear-gradient(135deg, rgba(14, 165, 233, 0.35), rgba(2, 132, 199, 0.55))`), cyan frost ring (`#38bdf8`), and informative tooltip (`"Streak Protected (Freeze Used 🛡️)"`).
+  - **Balanced Responsive Legend & Mobile Scaling**: Upgraded the heatmap footer with distinct `Streak` (amber ring) and `Frozen` (ice blue) indicator keys alongside the `Less ... More` intensity scale. Added mobile responsive sizing (`--home-activity-cell: 0.62rem` and flex-wrap alignment on `max-width: 640px`).
+  - **Reactivity & Prop Integration**: Passed `streakFreezeDates={activity?.streakFreeze?.consumedDates || []}` from `HomePage.jsx` to `ActivityHeatmap.jsx` to reflect streak freeze state in real-time.
+
 - **Hamburger Navigation Drawer (GlobalNavigationDrawer) Study Guides Property & Route Mapping Bug (AUG-020)**:
   - **Data Contract & Route Target Alignment**: Fixed property mismatches in `GlobalNavigationDrawer.jsx` where iterating over `EDITORIAL_PAGES` attempted to read non-existent `page.slug` and `page.title` properties, rendering 16 empty rectangular button boxes with blank text that linked to invalid routes (`/study-guide/undefined`). Standardized route targets to `page.path` and label rendering to `page.keyword || page.title || page.h1`.
   - **Collapsible Guides & Articles Accordion Hierarchy**: Transformed the flat 16-item list into a clean, collapsible `Guides & Articles (16) ▼` accordion matching the UX pattern of `Tools` (`Export & Import`) and `Manual` (`Quick Reference`). Added max-height scroll confinement (`max-h-64 overflow-y-auto`) and a direct `"View All Articles & Guides →"` CTA linking to `BLOG_ROUTE` (`/blog`), preserving vertical screen space on mobile devices and keeping Feedback and Manual sections cleanly visible.
