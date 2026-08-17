@@ -5,6 +5,8 @@ import {
   deriveDifficulty,
   resolveReviewStatus,
   toDateKey,
+  parseDateKey,
+  addDaysToDateKey,
 } from "./practiceProgress";
 import { GlobalDifficultyService } from "../services/GlobalDifficultyService";
 
@@ -338,12 +340,6 @@ const finalizeAttemptTimeline = (dayMap) => (
     }))
 );
 
-const addDays = (date, days) => {
-  const next = new Date(date);
-  next.setUTCDate(next.getUTCDate() + days);
-  return next;
-};
-
 const normalizeDateKeyList = (dateKeys = []) => (
   Array.from(
     new Set(
@@ -366,15 +362,13 @@ const collectMissingDateKeys = ({ startExclusiveKey = "", endInclusiveKey = "", 
   }
 
   const missingDateKeys = [];
-  let cursor = addDays(new Date(`${startExclusiveKey}T00:00:00.000Z`), 1);
-  let cursorKey = toDateKey(cursor);
+  let cursorKey = addDaysToDateKey(startExclusiveKey, 1);
 
-  while (cursorKey <= endInclusiveKey) {
+  while (cursorKey && cursorKey <= endInclusiveKey) {
     if (!effectiveDateSet.has(cursorKey)) {
       missingDateKeys.push(cursorKey);
     }
-    cursor = addDays(cursor, 1);
-    cursorKey = toDateKey(cursor);
+    cursorKey = addDaysToDateKey(cursorKey, 1);
   }
 
   return missingDateKeys;
@@ -397,31 +391,28 @@ const buildStreakStats = (dateKeys = [], now = new Date()) => {
   const activeDateSet = new Set(activeDates);
   let longestStreak = 0;
   let runningStreak = 0;
-  let previousDate = null;
+  let previousDateKey = null;
 
   activeDates.forEach((dateKey) => {
-    const currentDate = new Date(`${dateKey}T00:00:00.000Z`);
-    if (previousDate && toDateKey(addDays(previousDate, 1)) === dateKey) {
+    if (previousDateKey && addDaysToDateKey(previousDateKey, 1) === dateKey) {
       runningStreak += 1;
     } else {
       runningStreak = 1;
     }
     longestStreak = Math.max(longestStreak, runningStreak);
-    previousDate = currentDate;
+    previousDateKey = dateKey;
   });
 
   const todayKey = toDateKey(now);
-  const yesterdayKey = toDateKey(addDays(new Date(`${todayKey}T00:00:00.000Z`), -1));
+  const yesterdayKey = addDaysToDateKey(todayKey, -1);
   const lastActiveDate = activeDates[activeDates.length - 1] || "";
   const currentDateKeys = [];
 
   if (lastActiveDate === todayKey || lastActiveDate === yesterdayKey) {
-    let cursor = new Date(`${lastActiveDate}T00:00:00.000Z`);
-    let cursorKey = toDateKey(cursor);
-    while (activeDateSet.has(cursorKey)) {
+    let cursorKey = lastActiveDate;
+    while (cursorKey && activeDateSet.has(cursorKey)) {
       currentDateKeys.unshift(cursorKey);
-      cursor = addDays(cursor, -1);
-      cursorKey = toDateKey(cursor);
+      cursorKey = addDaysToDateKey(cursorKey, -1);
     }
   }
 
@@ -474,7 +465,7 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
   if (actualDates.length > 0) {
     stats = awardEarnedFreeze();
     const todayKey = toDateKey(now);
-    const yesterdayKey = toDateKey(addDays(new Date(`${todayKey}T00:00:00.000Z`), -1));
+    const yesterdayKey = addDaysToDateKey(todayKey, -1);
     const actualDatesThroughToday = actualDates.filter((dateKey) => dateKey <= todayKey);
     const latestActualDate = actualDatesThroughToday.at(-1);
 
@@ -499,7 +490,7 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
             continue;
           }
 
-          const segmentEndKey = toDateKey(addDays(new Date(`${currentAnchorKey}T00:00:00.000Z`), -1));
+          const segmentEndKey = addDaysToDateKey(currentAnchorKey, -1);
           const segmentGap = collectMissingDateKeys({
             startExclusiveKey: actualDateKey,
             endInclusiveKey: segmentEndKey,
@@ -564,6 +555,7 @@ const buildStudyActivity = (attemptTimeline = [], now = new Date(), options = {}
   const todayKey = toDateKey(now);
   const todayEntry = attemptTimeline.find((entry) => entry.date === todayKey);
   const todayAttempts = todayEntry ? (Number(todayEntry.attempts) || 0) : 0;
+  const activeStreakDateKeys = currentDateKeys.filter((dateKey) => activeDates.includes(dateKey));
 
   return {
     activeDayCount: activeDates.length,
@@ -680,10 +672,6 @@ export const buildWeakTopicInsights = ({
     if (!normalizedEntry.isAttempted) {
       return;
     }
-    const distinctProgressDateKey = getDistinctProgressDateKey(entry, normalizedEntry);
-    if (distinctProgressDateKey) {
-      distinctProgressDateSet.add(distinctProgressDateKey);
-    }
     const difficultyMeta = {
       difficultyScore: normalizedEntry.difficultyScore,
       difficultyLabel: normalizedEntry.difficultyLabel,
@@ -728,6 +716,7 @@ export const buildWeakTopicInsights = ({
       if (!dateKey) {
         return;
       }
+      distinctProgressDateSet.add(dateKey);
       const dayBucket = getOrCreateDayBucket(attemptDayMap, dateKey);
       dayBucket.attempts += 1;
       if (attempt.correct) {
@@ -1221,10 +1210,6 @@ export const loadStudyActivityFast = ({
     if (!entry) return;
     const normalizedEntry = normalizeProgressEntry(entry, false, now);
     if (!normalizedEntry.isAttempted) return;
-    const distinctProgressDateKey = getDistinctProgressDateKey(entry, normalizedEntry);
-    if (distinctProgressDateKey) {
-      distinctProgressDateSet.add(distinctProgressDateKey);
-    }
     if (normalizedEntry.difficultyLabel === "Hard") {
       hardQuestionCount += 1;
     }
@@ -1232,6 +1217,7 @@ export const loadStudyActivityFast = ({
     normalizeAttemptHistory(entry, normalizedEntry).forEach((attempt) => {
       const dateKey = toDateKey(attempt.submittedAt);
       if (!dateKey) return;
+      distinctProgressDateSet.add(dateKey);
       const dayBucket = getOrCreateDayBucket(attemptDayMap, dateKey);
       dayBucket.attempts += 1;
       if (attempt.correct) {

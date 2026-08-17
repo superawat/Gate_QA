@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
+import { toDateKey, parseDateKey, addDaysToDateKey } from "../../utils/practiceProgress";
 
 const getIntensityClass = (attempts) => {
   if (attempts === 0) return "home-activity-intensity--0";
@@ -43,9 +44,7 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
       timelineMap.set(entry.date, entry);
     });
 
-    const todayKey = new Date(now).toISOString().split("T")[0];
-    const today = new Date(`${todayKey}T00:00:00.000Z`);
-    const startDay = new Date(today);
+    const todayKey = toDateKey(now);
     
     let totalDays = 83; // 12 weeks
     if (activeRange === "26w") {
@@ -53,28 +52,28 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
     } else if (activeRange === "52w") {
       totalDays = 364; // 1 year (52 weeks)
     }
-    startDay.setUTCDate(today.getUTCDate() - totalDays);
+    const startDayKey = addDaysToDateKey(todayKey, -totalDays);
 
     const days = [];
     const labels = [];
     let currentMonth = -1;
 
     let firstMonthChangeIndex = 0;
-    const initialMonth = new Date(startDay).getUTCMonth();
+    const startDayDate = parseDateKey(startDayKey) || new Date(startDayKey);
+    const initialMonth = startDayDate.getMonth();
     for (let i = 0; i <= totalDays; i += 1) {
-      const d = new Date(startDay);
-      d.setUTCDate(startDay.getUTCDate() + i);
-      if (d.getUTCMonth() !== initialMonth) {
+      const dateKey = addDaysToDateKey(startDayKey, i);
+      const d = parseDateKey(dateKey) || new Date(dateKey);
+      if (d.getMonth() !== initialMonth) {
         firstMonthChangeIndex = i;
         break;
       }
     }
 
     for (let i = 0; i <= totalDays; i += 1) {
-      const d = new Date(startDay);
-      d.setUTCDate(startDay.getUTCDate() + i);
-      const dateKey = d.toISOString().split("T")[0];
-      const month = d.getUTCMonth();
+      const dateKey = addDaysToDateKey(startDayKey, i);
+      const d = parseDateKey(dateKey) || new Date(dateKey);
+      const month = d.getMonth();
 
       if (month !== currentMonth) {
         const weekIndex = Math.floor(i / 7);
@@ -151,7 +150,7 @@ export const ActivityHeatmap = ({ attemptTimeline = [], now = new Date(), streak
             {grid.map((week, weekIndex) => (
               <div key={weekIndex} className="home-activity-week">
                 {week.map((day) => {
-                  const isStreakDay = streakDateSet.has(day.dateKey);
+                  const isStreakDay = day.attempts > 0 && streakDateSet.has(day.dateKey);
                   return (
                     <div
                       key={day.dateKey}

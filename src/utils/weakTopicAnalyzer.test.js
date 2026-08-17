@@ -321,7 +321,7 @@ describe("buildWeakTopicInsights", () => {
     expect(insights.studyActivity.activeDayCount).toBe(2);
   });
 
-  test("counts streak days from distinct question progress instead of repeated submissions", () => {
+  test("counts streak days from practice activity across multiple days including reviews", () => {
     const insights = buildWeakTopicInsights({
       now: new Date("2026-05-02T12:00:00.000Z"),
       questions: [
@@ -357,9 +357,42 @@ describe("buildWeakTopicInsights", () => {
       "2026-05-01",
       "2026-05-02",
     ]);
-    expect(insights.studyActivity.progressDateKeys).toEqual(["2026-05-01"]);
-    expect(insights.studyActivity.activeDayCount).toBe(1);
-    expect(insights.studyActivity.currentStreak).toBe(1);
+    expect(insights.studyActivity.progressDateKeys).toEqual(["2026-05-01", "2026-05-02"]);
+    expect(insights.studyActivity.activeDayCount).toBe(2);
+    expect(insights.studyActivity.currentStreak).toBe(2);
+  });
+
+  test("maintains alive streak from yesterday while today attempts remain 0", () => {
+    const values = new Map([
+      ["gateqa_progress_v1", JSON.stringify({
+        "go:50": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          firstSubmittedAt: "2026-08-16T10:00:00",
+          lastSubmittedAt: "2026-08-16T10:00:00",
+          history: [
+            { submittedAt: "2026-08-16T10:00:00", correct: true, durationMs: 30000 },
+          ],
+        },
+      })],
+    ]);
+    const storage = {
+      getItem: (key) => values.get(key) || null,
+      setItem: (key, value) => values.set(key, value),
+    };
+
+    // Current time is morning of Aug 17 (0 attempts on Aug 17)
+    const activity = loadStudyActivityFast({
+      storage,
+      now: new Date(2026, 7, 17, 9, 0, 0),
+    });
+
+    expect(activity.currentStreak).toBe(1); // Alive from Aug 16
+    expect(activity.todayAttempts).toBe(0);  // 0 attempts on Aug 17!
+    expect(activity.streakDateKeys).toEqual(["2026-08-16"]); // Aug 17 is NOT included
+    expect(activity.lastActiveDate).toBe("2026-08-16");
   });
 
   test("uses a streak freeze to bridge a skipped day between practice days", () => {

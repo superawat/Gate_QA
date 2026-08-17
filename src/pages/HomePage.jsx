@@ -96,15 +96,44 @@ const HomePage = ({
       setActivity(loadStudyActivityFast());
     };
 
-    // Auth sync and local question attempts write progress after the home page may already be
-    // mounted. Refresh the derived streak/heatmap state immediately.
+    // Auth sync, local question attempts, and backup imports write progress after
+    // the home page is mounted. Refresh the derived streak/heatmap state immediately.
     window.addEventListener("gateqa:progress-updated", refreshActivity);
     window.addEventListener("gateqa:sync-complete", refreshActivity);
+    window.addEventListener("gateqa:workspace-imported", refreshActivity);
     window.addEventListener("storage", refreshActivity);
+    window.addEventListener("focus", refreshActivity);
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        refreshActivity();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Schedule midnight timer so date rollovers reset today's attempts seamlessly
+    let midnightTimer = null;
+    const scheduleMidnightRefresh = () => {
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 1);
+      const msUntilMidnight = Math.max(1000, nextMidnight.getTime() - now.getTime());
+      midnightTimer = setTimeout(() => {
+        refreshActivity();
+        scheduleMidnightRefresh();
+      }, msUntilMidnight);
+    };
+    scheduleMidnightRefresh();
+
     return () => {
       window.removeEventListener("gateqa:progress-updated", refreshActivity);
       window.removeEventListener("gateqa:sync-complete", refreshActivity);
+      window.removeEventListener("gateqa:workspace-imported", refreshActivity);
       window.removeEventListener("storage", refreshActivity);
+      window.removeEventListener("focus", refreshActivity);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (midnightTimer) {
+        clearTimeout(midnightTimer);
+      }
     };
   }, []);
 

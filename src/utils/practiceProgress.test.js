@@ -9,9 +9,28 @@ import {
   deriveDifficulty,
   recordPracticeAttempt,
   resolveReviewStatus,
+  toDateKey,
+  parseDateKey,
+  addDaysToDateKey,
 } from "./practiceProgress";
 
 describe("practiceProgress", () => {
+  test("extracts local date keys and performs date arithmetic without UTC shifting", () => {
+    expect(toDateKey("2026-08-17")).toBe("2026-08-17");
+    expect(toDateKey(new Date(2026, 7, 17, 1, 30))).toBe("2026-08-17");
+    expect(toDateKey(new Date(2026, 7, 17, 23, 45))).toBe("2026-08-17");
+
+    const parsed = parseDateKey("2026-08-17");
+    expect(parsed).toBeTruthy();
+    expect(parsed.getFullYear()).toBe(2026);
+    expect(parsed.getMonth()).toBe(7); // August (0-indexed)
+    expect(parsed.getDate()).toBe(17);
+
+    expect(addDaysToDateKey("2026-08-17", 1)).toBe("2026-08-18");
+    expect(addDaysToDateKey("2026-08-17", -1)).toBe("2026-08-16");
+    expect(addDaysToDateKey("2026-08-31", 1)).toBe("2026-09-01");
+    expect(addDaysToDateKey("2026-03-01", -1)).toBe("2026-02-28");
+  });
   test("schedules review and tracks timed attempts after a correct answer", () => {
     const entry = buildUpdatedProgressEntry({}, {
       correct: true,

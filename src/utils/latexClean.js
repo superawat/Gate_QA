@@ -22,32 +22,57 @@ export const decodeAllEmails = (text) => {
 
 export const cleanHtmlTagsInMath = (text) => {
   if (typeof text !== "string") return text;
-  
+
+  // Protect <pre> and <code> blocks so code and pseudocode containing $, \, etc. are never corrupted
+  const codeBlocks = [];
+  let tokenized = text.replace(/<(pre|code)\b[^>]*>[\s\S]*?<\/\1>/gi, (match) => {
+    codeBlocks.push(match);
+    return `<!--__CODE_BLOCK_${codeBlocks.length - 1}__-->`;
+  });
+
+  // Helper to check if a matched math snippet improperly spans across block-level HTML tags
+  const hasBlockHtml = (str) =>
+    /<\/?(?:p|div|li|ol|ul|table|thead|tbody|tfoot|tr|td|th|pre|code|h[1-6]|blockquote|section|article|header|footer|nav|aside)\b[^>]*>/i.test(
+      str
+    );
+
   // Clean display math: $$ ... $$
-  let cleaned = text.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => {
-    const stripped = math.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+>/g, '');
+  tokenized = tokenized.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => {
+    if (hasBlockHtml(math)) return match;
+    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+>/g, "");
     return `$$${stripped}$$`;
   });
-  
+
   // Clean display math: \[ ... \]
-  cleaned = cleaned.replace(/\\\[([\s\S]*?)\\\]/g, (match, math) => {
-    const stripped = math.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+>/g, '');
+  tokenized = tokenized.replace(/\\\[([\s\S]*?)\\\]/g, (match, math) => {
+    if (hasBlockHtml(math)) return match;
+    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+>/g, "");
     return `\\[${stripped}\\]`;
   });
-  
+
   // Clean inline math: \( ... \)
-  cleaned = cleaned.replace(/\\\(([\s\S]*?)\\\)/g, (match, math) => {
-    const stripped = math.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+>/g, '');
+  tokenized = tokenized.replace(/\\\(([\s\S]*?)\\\)/g, (match, math) => {
+    if (hasBlockHtml(math)) return match;
+    const stripped = math.replace(/<br\s*\/?>/gi, "\n").replace(/<\/?[^>]+>/g, "");
     return `\\(${stripped}\\)`;
   });
-  
+
   // Clean inline math: $ ... $ (non-greedy, single line for $)
-  cleaned = cleaned.replace(/\$([^\$\n]+?)\$/g, (match, math) => {
-    const stripped = math.replace(/<br\s*\/?>/gi, ' ').replace(/<\/?[^>]+>/g, '');
+  tokenized = tokenized.replace(/\$([^\$\n]+?)\$/g, (match, math) => {
+    if (hasBlockHtml(math)) return match;
+    const stripped = math.replace(/<br\s*\/?>/gi, " ").replace(/<\/?[^>]+>/g, "");
     return `$${stripped}$`;
   });
-  
-  return cleaned;
+
+  // Restore protected <pre> and <code> blocks
+  if (codeBlocks.length > 0) {
+    tokenized = tokenized.replace(/<!--__CODE_BLOCK_(\d+)__-->/g, (match, index) => {
+      const idx = Number(index);
+      return idx >= 0 && idx < codeBlocks.length ? codeBlocks[idx] : match;
+    });
+  }
+
+  return tokenized;
 };
 
 export const cleanLatexHtml = (text) => {

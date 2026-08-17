@@ -43,4 +43,36 @@ describe("latexClean utility", () => {
     const expected = "$$\\text{shankar@math}$$";
     expect(cleanLatexHtml(raw)).toBe(expected);
   });
+
+  it("should preserve pre and code blocks containing dollar signs without stripping list items (e.g. go:523105)", () => {
+    const raw = `<a name="523105"></a><div itemprop="text"><p>Consider three processes $\\text{P1, P2}$, and $\\text{P3}$ running identical code...</p><pre class="prettyprint linenums lang-c_cpp">Pseudocode of P1, P2, and P3
+            Wait(A);
+            Print(*);
+            X = X+1;
+            If (X == 2)
+                {
+                    Print($);
+                    Signal(B);
+                }
+            Signal(A);
+            Wait(B);
+            Print(#);
+            Signal(B);</pre><p>Which of the following patterns is/are possible to be generated?</p><ol start="1" style="list-style-type: upper-alpha;"><li><pre class="prettyprint linenums lang-c_cpp">**$*###</pre></li><li><pre class="prettyprint linenums lang-c_cpp">**$#*##</pre></li><li><pre class="prettyprint linenums lang-c_cpp">**$##*#</pre></li><li><pre class="prettyprint linenums lang-c_cpp">***$###</pre></li></ol></div>`;
+
+    const cleaned = cleanLatexHtml(raw);
+
+    // Ensure all 4 options are preserved
+    expect(cleaned).toContain("<li><pre class=\"prettyprint linenums lang-c_cpp\">**$*###</pre></li>");
+    expect(cleaned).toContain("<li><pre class=\"prettyprint linenums lang-c_cpp\">**$#*##</pre></li>");
+    expect(cleaned).toContain("<li><pre class=\"prettyprint linenums lang-c_cpp\">**$##*#</pre></li>");
+    expect(cleaned).toContain("<li><pre class=\"prettyprint linenums lang-c_cpp\">***$###</pre></li>");
+    // Ensure math in text is still processed
+    expect(cleaned).toContain("$\\text{P1, P2}$");
+  });
+
+  it("should not match inline math across block-level HTML boundaries", () => {
+    const raw = "<ol><li>Cost is $100</li><li>Cost is $200</li></ol>";
+    const cleaned = cleanLatexHtml(raw);
+    expect(cleaned).toBe("<ol><li>Cost is $100</li><li>Cost is $200</li></ol>");
+  });
 });

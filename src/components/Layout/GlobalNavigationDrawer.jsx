@@ -120,6 +120,7 @@ const GlobalNavigationDrawer = ({
   const [showManual, setShowManual] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [showTools, setShowTools] = useState(false);
+  const [showStudyGuides, setShowStudyGuides] = useState(false);
   const [aptitudeEnabled, setAptitudeEnabled] = useAptitudeEnabled();
 
   const baseUrl = import.meta.env.BASE_URL.endsWith("/")
@@ -443,21 +444,51 @@ const GlobalNavigationDrawer = ({
             )}
           </section>
 
-          {/* 4. Editorial Pages */}
+          {/* 4. Editorial Pages / Study Guides */}
           {EDITORIAL_PAGES?.length > 0 && (
             <section className="space-y-2" aria-labelledby="global-editorial-heading">
               <h2 id="global-editorial-heading" className={sectionHeadingClassName}>Study Guides</h2>
-              {EDITORIAL_PAGES.map((page) => (
-                <Link
-                  key={page.slug}
-                  to={`/study-guide/${page.slug}`}
-                  onClick={onClose}
-                  className={actionButtonClassName}
-                >
-                  <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
-                  <span className="truncate">{page.title}</span>
-                </Link>
-              ))}
+
+              <button
+                type="button"
+                onClick={() => setShowStudyGuides(!showStudyGuides)}
+                className={actionButtonClassName}
+                aria-expanded={showStudyGuides}
+              >
+                <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+                <span className="truncate">Guides &amp; Articles ({EDITORIAL_PAGES.length})</span>
+                <span className="ml-auto text-[10px] text-[color:var(--color-text-muted)]">{showStudyGuides ? "▲" : "▼"}</span>
+              </button>
+
+              {showStudyGuides && (
+                <div className="space-y-1.5 pl-2 border-l border-[color:var(--color-border)] mt-1 transition-all duration-300">
+                  <div className="grid gap-1 max-h-64 overflow-y-auto pr-1">
+                    {EDITORIAL_PAGES.map((page) => {
+                      const label = page.keyword || page.title || page.h1 || page.path;
+                      return (
+                        <Link
+                          key={page.path}
+                          to={page.path}
+                          onClick={onClose}
+                          title={label}
+                          className="flex min-h-[38px] w-full items-center gap-2.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 text-left text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        >
+                          <FaBookOpen className="h-3.5 w-3.5 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
+                          <span className="truncate">{label}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                  <Link
+                    to={BLOG_ROUTE}
+                    onClick={onClose}
+                    className="flex min-h-[36px] w-full items-center justify-between rounded-lg border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 py-1.5 text-left text-xs font-bold text-[color:var(--color-primary-text)] hover:opacity-90 transition mt-2"
+                  >
+                    <span>View All Articles &amp; Guides</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              )}
             </section>
           )}
 

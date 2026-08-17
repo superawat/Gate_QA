@@ -18,16 +18,37 @@ const parseDate = (value) => {
 };
 
 export const toDateKey = (value) => {
+  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value.trim())) {
+    return value.trim();
+  }
   const date = value instanceof Date ? value : parseDate(value);
   if (!date) {
     return "";
   }
-  return date.toISOString().slice(0, 10);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+export const parseDateKey = (dateKey) => {
+  if (typeof dateKey !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(dateKey.trim())) {
+    return null;
+  }
+  const [year, month, day] = dateKey.trim().split("-").map(Number);
+  return new Date(year, month - 1, day, 12, 0, 0);
+};
+
+export const addDaysToDateKey = (dateKey, days) => {
+  const d = parseDateKey(dateKey);
+  if (!d) return "";
+  d.setDate(d.getDate() + Number(days || 0));
+  return toDateKey(d);
 };
 
 export const addDaysIso = (isoString, days) => {
   const date = parseDate(isoString) || new Date();
-  date.setUTCDate(date.getUTCDate() + Number(days || 0));
+  date.setDate(date.getDate() + Number(days || 0));
   return date.toISOString();
 };
 

@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-08-17
+
+- **Hamburger Navigation Drawer (GlobalNavigationDrawer) Study Guides Property & Route Mapping Bug (AUG-020)**:
+  - **Data Contract & Route Target Alignment**: Fixed property mismatches in `GlobalNavigationDrawer.jsx` where iterating over `EDITORIAL_PAGES` attempted to read non-existent `page.slug` and `page.title` properties, rendering 16 empty rectangular button boxes with blank text that linked to invalid routes (`/study-guide/undefined`). Standardized route targets to `page.path` and label rendering to `page.keyword || page.title || page.h1`.
+  - **Collapsible Guides & Articles Accordion Hierarchy**: Transformed the flat 16-item list into a clean, collapsible `Guides & Articles (16) ▼` accordion matching the UX pattern of `Tools` (`Export & Import`) and `Manual` (`Quick Reference`). Added max-height scroll confinement (`max-h-64 overflow-y-auto`) and a direct `"View All Articles & Guides →"` CTA linking to `BLOG_ROUTE` (`/blog`), preserving vertical screen space on mobile devices and keeping Feedback and Manual sections cleanly visible.
+  - **Automated Unit Tests**: Added `GlobalNavigationDrawer.test.jsx` covering accordion toggle states, exact route targets, label text rendering, and drawer dismissal triggers.
+
+- **Streak & Practice Activity Local Date/Timezone Integrity & Day Reset Fix (AUG-016)**:
+  - **Local Wall-Clock Date Keys (`toDateKey`, `parseDateKey`, `addDaysToDateKey` in `src/utils/practiceProgress.js`)**: Converted date key generation from UTC `toISOString().slice(0, 10)` to user local calendar dates (`date.getFullYear()`, `date.getMonth() + 1`, `date.getDate()`). Resolves timezone desynchronization where evening attempts in the Americas (UTC-4 to UTC-8) leaked into the next UTC day, making the dashboard register false today-activity upon waking up with zero attempts.
+  - **Unified Streak & Activity Timeline Date Stream (`src/utils/weakTopicAnalyzer.js`)**: Updated `distinctProgressDateSet` to capture all unique dates with qualifying submissions in `normalizeAttemptHistory()`, ensuring re-attempting or reviewing previously solved questions on a new day extends the streak and appears on the heatmap.
+  - **Streak Freeze Isolation & Empty Cell Invariant (`src/components/Home/ActivityHeatmap.jsx`)**: Enforced that `isStreakDay` requires both `day.attempts > 0` and membership in `streakDateSet`, guaranteeing that zero-activity days and streak freeze placeholder days never receive an active green glow or streak ring.
+  - **Midnight Rollover & Lifecycle Event Reactivity (`src/pages/HomePage.jsx`)**: Added event listeners for `"gateqa:workspace-imported"`, `document.visibilityState === "visible"`, window `"focus"`, and an automatic local midnight `setTimeout` rollover timer to seamlessly reset `todayAttempts` and daily goal counters to `0` at midnight without requiring manual browser reloads.
+
+- **LaTeX / HTML Math Cleaning & Code Block Protection (AUG-015)**:
+  - **Protected `<pre>` and `<code>` blocks during math cleaning**: Fixed an issue in `cleanHtmlTagsInMath` (`src/utils/latexClean.js`) where dollar signs (`$`) inside code blocks (e.g. `Print($);` or option strings like `**$*###`) triggered inline math regex replacements across `<li>` and `<pre>` boundaries, stripping list tags and merging adjacent options (e.g. merging Option A with B, and C with D in GATE CSE 2026 Set 2 Q41 `go:523105`).
+  - **Hardened Block-Level HTML Delimiter Boundaries**: Prevented math regexes (`$ ... $`, `$$ ... $$`, `\[ ... \]`, `\( ... \)`) from matching or stripping content across block-level HTML tags (`<div>`, `<p>`, `<li>`, `<ol>`, `<ul>`, `<table>`, `<tr>`, `<td>`, `<th>`, `<pre>`, `<blockquote>`, `<h1-h6>`, `<section>`, `<article>`).
+  - **Verified Data Parity & Answer Keys**: Verified `go:523105` (GATE CSE 2026 Set 2 Q41) has all four options preserved in shards and correct `type: "MSQ"` with answer `["A", "B", "C"]` matching official answer key.
+
 ## 2026-08-15
 
 - **Mobile Practice Mode UI & Button De-Duplication Optimization**:
