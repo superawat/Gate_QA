@@ -88,7 +88,11 @@ export const LLMProviderMenu: React.FC<LLMProviderMenuProps> = ({
               >
                 <div
                   className="gateqa-llm-icon-frame"
-                  style={{ color: provider.accentColor }}
+                  style={{
+                    color: provider.accentColor,
+                    backgroundColor: `${provider.accentColor}18`,
+                    border: `1px solid ${provider.accentColor}33`,
+                  }}
                 >
                   <ProviderIcon providerId={provider.id} size={16} />
                 </div>
