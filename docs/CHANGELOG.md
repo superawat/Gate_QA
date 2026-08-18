@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-18
+
+- **Mock Test Custom Builder "Bookmarked Only" Policy & Flexible Custom Duration (AUG-022)**:
+  - **Bookmarked Only Solved Policy Option**: Added an emerald `"Bookmarked Only"` (`bookmarked_only`) filter chip to the Custom Builder's *Solved Questions Policy* section in `MockTestSetup.jsx`. Pulls the unified bookmark ID collection from `FilterContext` and resolves canonical IDs through `isBookmarkedQuestion()` in `MockTestShell.jsx`, supporting GATE CSE (`gate_qa_bookmarked_questions`), DA (`gate_qa_da_bookmarked_questions`), and Aptitude (`gateqa-apt-bookmarked-questions`) banks.
+  - **Dynamic Contextual Pool Feedback**: Shows live inline count feedback (`"Pool restricted to your N bookmarked questions — other filters still apply."` or a prompt to start bookmarking during practice when 0 bookmarks exist).
+  - **Flexible Custom Duration (1 to 180 Minutes)**: Removed the previous 5-minute minimum constraint. Learners can now configure test durations flexibly anywhere from **1 minute up to 180 minutes** (e.g. `1 min`, `2 min`, `15 min`, `45 min`, `180 min`).
+  - **Validation & Inline Warning on 0 or Empty Duration**: Entering `0`, negative numbers, or leaving the duration input empty displays an inline amber warning banner (`"⚠️ Please set duration to at least 1 minute (up to 180 minutes)."`), highlights the input with a rose border, updates the summary stat to `"Invalid (< 1 min)"`, and disables the "Start Mock" button until a valid positive duration is provided.
+  - **Automated Verification**: Added comprehensive unit tests in `MockTestShell.test.jsx` covering canonical bookmark key resolution, `bookmarked_only` policy filtering, flexible 1-minute entry, 0-input warnings, and start button gating.
+
 ## 2026-08-17
 
 - **Activity Heatmap Streak & Freeze Visual Elevation & Mobile UI Balance (AUG-021)**:

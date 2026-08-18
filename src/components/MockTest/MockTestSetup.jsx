@@ -157,6 +157,7 @@ const MockTestSetup = ({
     selectedPaperYearSetKey = "",
     customDurationMinutes = 180,
     recentYearRangeLabel = "",
+    bookmarkedCount = 0,
     onSelectPaper,
     onBack,
     onReset,
@@ -191,9 +192,12 @@ const MockTestSetup = ({
     const selectedPaperRequiredCount = Number.parseInt(String(selectedPaper?.requiredQuestionCount ?? ""), 10);
     const selectedPaperRequiredGa = Number.parseInt(String(selectedPaper?.requiredGaCount ?? selectedPaper?.gaCount ?? 0), 10);
     const selectedPaperRequiredCs = Number.parseInt(String(selectedPaper?.requiredCsCount ?? selectedPaper?.csCount ?? 0), 10);
+    const isManualDuration = isCustom && setupState.customDurationMode === "manual";
+    const customMinutesValue = Number(setupState.customDurationMinutes);
+    const hasValidManualDuration = Number.isFinite(customMinutesValue) && customMinutesValue >= 1;
     const durationLabel = isCustom
-        ? (setupState.customDurationMode === "manual"
-            ? `${setupState.customDurationMinutes || 180} min`
+        ? (isManualDuration
+            ? (hasValidManualDuration ? `${customMinutesValue} min` : "Invalid (< 1 min)")
             : `${customDurationMinutes} min`)
         : (isPaperMode && Number.isFinite(selectedPaperDuration) && selectedPaperDuration > 0
             ? `${selectedPaperDuration} min`
@@ -419,22 +423,44 @@ const MockTestSetup = ({
                     </div>
                 </div>
                 {setupState.customDurationMode === "manual" && (
-                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
-                        <div>
-                            <h5 className="text-sm font-semibold text-slate-900">Custom minutes</h5>
-                            <p className="mt-1 text-xs text-slate-500">Enter a duration between 5 and 180 minutes.</p>
+                    <div className="mt-4 flex flex-col gap-2 border-t border-slate-100 pt-4">
+                        <div className="flex items-center justify-between gap-3">
+                            <div>
+                                <h5 className="text-sm font-semibold text-slate-900">Custom minutes</h5>
+                                <p className="mt-1 text-xs text-slate-500">Enter a duration between 1 and 180 minutes.</p>
+                            </div>
+                            <div className="w-28">
+                                <input
+                                    type="number"
+                                    min={1}
+                                    max={180}
+                                    data-testid="mock-setup-custom-duration"
+                                    value={setupState.customDurationMinutes === "" || setupState.customDurationMinutes === null || setupState.customDurationMinutes === undefined ? "" : setupState.customDurationMinutes}
+                                    onChange={(event) => {
+                                        const rawVal = event.target.value;
+                                        if (rawVal === "") {
+                                            onPatchState({ customDurationMinutes: "" });
+                                            return;
+                                        }
+                                        const parsed = Number(rawVal);
+                                        if (Number.isFinite(parsed)) {
+                                            onPatchState({ customDurationMinutes: parsed > 180 ? 180 : parsed });
+                                        }
+                                    }}
+                                    className={`mocktest-input w-full border bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:outline-none ${
+                                        (!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "")
+                                            ? "border-rose-400 focus:border-rose-500 ring-2 ring-rose-100"
+                                            : "border-slate-300 focus:border-sky-400"
+                                    }`}
+                                />
+                            </div>
                         </div>
-                        <div className="w-28">
-                            <input
-                                type="number"
-                                min={5}
-                                max={180}
-                                data-testid="mock-setup-custom-duration"
-                                value={setupState.customDurationMinutes || 180}
-                                onChange={(event) => onPatchState({ customDurationMinutes: Number(event.target.value) })}
-                                className="mocktest-input w-full border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
-                            />
-                        </div>
+                        {(!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "") && (
+                            <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900" data-testid="custom-duration-warning">
+                                <span className="text-sm">⚠️</span>
+                                <span>Please set duration to at least 1 minute (up to 180 minutes).</span>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
@@ -785,7 +811,22 @@ const MockTestSetup = ({
                                     >
                                         Solved Only
                                     </FilterChip>
+                                    <FilterChip
+                                        active={setupState.solvedFilter === "bookmarked_only"}
+                                        tone="emerald"
+                                        data-testid="solved-filter-bookmarked-only"
+                                        onClick={() => onPatchState({ solvedFilter: "bookmarked_only" })}
+                                    >
+                                        Bookmarked Only
+                                    </FilterChip>
                                 </div>
+                                {setupState.solvedFilter === "bookmarked_only" && (
+                                    <p className="mt-2 text-xs text-emerald-700">
+                                        {bookmarkedCount > 0
+                                            ? `Pool restricted to your ${bookmarkedCount} bookmarked question${bookmarkedCount === 1 ? "" : "s"} — other filters still apply.`
+                                            : "You have no bookmarked questions yet. Bookmark questions during practice to use this mode."}
+                                    </p>
+                                )}
                             </div>
                         ) : null}
 

@@ -5,7 +5,7 @@ import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
-import MockTestShell, { isSolvedQuestion } from "./MockTestShell";
+import MockTestShell, { isSolvedQuestion, isBookmarkedQuestion } from "./MockTestShell";
 
 let mockMockTestContext = null;
 let mockFilterContext = null;
@@ -154,6 +154,16 @@ describe("MockTestShell", () => {
     const solvedIds = new Set(["go:456"]);
 
     expect(isSolvedQuestion(question, solvedIds)).toBe(true);
+  });
+
+  test("recognizes bookmarked question by canonical AnswerService storage key and question_uid", () => {
+    const questionWithLink = { question_uid: "local:legacy", link: "https://gateoverflow.in/456" };
+    const questionWithUid = { question_uid: "go:789" };
+    const bookmarkedIds = new Set(["go:456", "go:789"]);
+
+    expect(isBookmarkedQuestion(questionWithLink, bookmarkedIds)).toBe(true);
+    expect(isBookmarkedQuestion(questionWithUid, bookmarkedIds)).toBe(true);
+    expect(isBookmarkedQuestion({ question_uid: "go:999" }, bookmarkedIds)).toBe(false);
   });
 
   test("shows loading state while the mock catalog is loading", () => {
@@ -411,12 +421,28 @@ describe("MockTestShell", () => {
     expect(screen.getByText("Custom minutes")).toBeTruthy();
     const input = screen.getByTestId("mock-setup-custom-duration");
     expect(input.value).toBe("180");
+    expect(screen.queryByTestId("custom-duration-warning")).toBeNull();
 
+    // Flexible down to 1 minute
+    fireEvent.change(input, { target: { value: "1" } });
+    expect(input.value).toBe("1");
+    expect(screen.queryByTestId("custom-duration-warning")).toBeNull();
+
+    // Flexible mid-range minutes
     fireEvent.change(input, { target: { value: "95" } });
     expect(input.value).toBe("95");
+    expect(screen.queryByTestId("custom-duration-warning")).toBeNull();
+
+    // If 0 is entered, flag warning and disable starting
+    fireEvent.change(input, { target: { value: "0" } });
+    expect(input.value).toBe("0");
+    expect(screen.getByTestId("custom-duration-warning")).toBeTruthy();
+    expect(screen.getByText(/Please set duration to at least 1 minute/i)).toBeTruthy();
+    expect(screen.getByRole("button", { name: /start mock/i }).disabled).toBe(true);
   });
 
-  test("allows custom builder solved policy selection", async () => {
+  test("allows custom builder solved policy selection including bookmarked only", async () => {
+    mockFilterContext.activeBookmarkedQuestionIds = ["go:111"];
     renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
 
     fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
@@ -426,6 +452,10 @@ describe("MockTestShell", () => {
     expect(screen.getByTestId("solved-filter-unsolved")).toBeTruthy();
     expect(screen.getByTestId("solved-filter-all")).toBeTruthy();
     expect(screen.getByTestId("solved-filter-solved-only")).toBeTruthy();
+    expect(screen.getByTestId("solved-filter-bookmarked-only")).toBeTruthy();
+
+    fireEvent.click(screen.getByTestId("solved-filter-bookmarked-only"));
+    expect(screen.getByText(/Pool restricted to your 1 bookmarked question/i)).toBeTruthy();
   });
 
   test("renders ErrorBoundary fallback with retry, previous, and skip actions when question crashes", async () => {

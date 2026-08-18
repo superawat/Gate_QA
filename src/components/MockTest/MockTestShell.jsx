@@ -348,6 +348,16 @@ export const isSolvedQuestion = (question = {}, solvedQuestionSet = new Set()) =
     return uid ? solvedQuestionSet.has(uid) : false;
 };
 
+export const isBookmarkedQuestion = (question = {}, bookmarkedQuestionSet = new Set()) => {
+    const storageKey = AnswerService.getStorageKeyForQuestion(question);
+    if (storageKey && bookmarkedQuestionSet.has(String(storageKey).trim())) {
+        return true;
+    }
+
+    const uid = String(question?.question_uid || "").trim();
+    return uid ? bookmarkedQuestionSet.has(uid) : false;
+};
+
 const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const {
         attemptError,
@@ -375,6 +385,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         structuredTags,
         isInitialized,
         activeSolvedQuestionIds = [],
+        activeBookmarkedQuestionIds = [],
     } = useFilterState();
 
     const [isDesktop, setIsDesktop] = useState(() => {
@@ -517,6 +528,10 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         () => new Set((Array.isArray(activeSolvedQuestionIds) ? activeSolvedQuestionIds : []).map((uid) => String(uid || "").trim()).filter(Boolean)),
         [activeSolvedQuestionIds]
     );
+    const bookmarkedQuestionSet = useMemo(
+        () => new Set((Array.isArray(activeBookmarkedQuestionIds) ? activeBookmarkedQuestionIds : []).map((uid) => String(uid || "").trim()).filter(Boolean)),
+        [activeBookmarkedQuestionIds]
+    );
     const solvedFilter = setupState.solvedFilter || "unsolved";
 
     const scorableQuestions = useMemo(
@@ -544,9 +559,13 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             if (solvedFilter === "solved_only") {
                 return scorableQuestions.filter((question) => isSolvedQuestion(question, solvedQuestionSet));
             }
+            if (solvedFilter === "bookmarked_only") {
+                return scorableQuestions.filter((question) => isBookmarkedQuestion(question, bookmarkedQuestionSet));
+            }
+            // default: "unsolved"
             return scorableQuestions.filter((question) => !isSolvedQuestion(question, solvedQuestionSet));
         },
-        [solvedFilter, scorableQuestions, solvedQuestionSet]
+        [solvedFilter, scorableQuestions, solvedQuestionSet, bookmarkedQuestionSet]
     );
 
     const mockSubjects = useMemo(
@@ -696,8 +715,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const customCount = clampQuestionCount(setupState.customCount);
     // Clamp the actual exam count to the available filtered pool so duration is realistic
     const effectiveCustomCount = Math.min(customCount, filteredPool.length || customCount);
+    const manualMinutesVal = Number(setupState.customDurationMinutes);
     const customDurationMinutes = setupState.customDurationMode === "manual"
-        ? (setupState.customDurationMinutes || 180)
+        ? (Number.isFinite(manualMinutesVal) && manualMinutesVal >= 1 ? manualMinutesVal : 180)
         : computeDurationForCustomCount(effectiveCustomCount);
 
     const availability = useMemo(() => {
@@ -791,6 +811,18 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             ? customCount
             : (selectedKind.fixedCount || 0);
 
+        if (selectedKind.id === "custom" && setupState.customDurationMode === "manual") {
+            const manualDuration = Number(setupState.customDurationMinutes);
+            if (!Number.isFinite(manualDuration) || manualDuration < 1) {
+                return {
+                    canStart: false,
+                    requiredSummary: String(requiredCount),
+                    availableSummary: String(filteredPool.length),
+                    message: "Please set custom duration to at least 1 minute (up to 180 minutes).",
+                };
+            }
+        }
+
         if (filteredPool.length < requiredCount) {
             return {
                 canStart: false,
@@ -819,6 +851,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         selectedPaper,
         selectedPaperYearSetKey,
         selectedSetupTypes.length,
+        setupState.customDurationMode,
+        setupState.customDurationMinutes,
     ]);
 
     const livePreview = useMemo(() => {
@@ -862,13 +896,18 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 : "all";
             next.customCount = clampQuestionCount(next.customCount);
             next.selectedTypes = normalizeSetupTypes(next.selectedTypes);
-            next.solvedFilter = ["unsolved", "all", "solved_only"].includes(next.solvedFilter)
+            next.solvedFilter = ["unsolved", "all", "solved_only", "bookmarked_only"].includes(next.solvedFilter)
                 ? next.solvedFilter
                 : "unsolved";
             next.customDurationMode = ["adaptive", "manual"].includes(next.customDurationMode)
                 ? next.customDurationMode
                 : "adaptive";
-            next.customDurationMinutes = Math.max(5, Math.min(180, Number(next.customDurationMinutes) || 180));
+            if (next.customDurationMinutes !== "" && next.customDurationMinutes !== null && next.customDurationMinutes !== undefined) {
+                const parsedDuration = Number(next.customDurationMinutes);
+                if (Number.isFinite(parsedDuration)) {
+                    next.customDurationMinutes = Math.min(180, Math.max(0, parsedDuration));
+                }
+            }
 
             // When selectedSubjects changes, purge orphaned subtopics whose parent was deselected
             if (Object.prototype.hasOwnProperty.call(patch, "selectedSubjects")) {
@@ -1048,7 +1087,10 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 const selection = buildCountBasedSelection(filteredPool, customCount, questionMetaByUid);
                 gaQuestions = selection.gaQuestions;
                 csQuestions = selection.csQuestions;
-                durationMinutes = customDurationMinutes;
+                const manualMins = Number(setupState.customDurationMinutes);
+                durationMinutes = setupState.customDurationMode === "manual"
+                    ? (Number.isFinite(manualMins) && manualMins >= 1 ? Math.min(180, manualMins) : 180)
+                    : customDurationMinutes;
             } else {
                 const selection = buildCountBasedSelection(
                     filteredPool,
@@ -1319,6 +1361,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         selectedPaperYearSetKey={selectedPaperYearSetKey || ""}
                         customDurationMinutes={customDurationMinutes}
                         recentYearRangeLabel={`${recentYearStart} - ${setupState.maxYear}`}
+                        bookmarkedCount={bookmarkedQuestionSet.size}
                         onSelectPaper={(yearSetKey) => patchSetupState({ selectedPaperYearSetKey: yearSetKey })}
                         onPatchState={patchSetupState}
                         onToggleSelection={toggleSelection}
