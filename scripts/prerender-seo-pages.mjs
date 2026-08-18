@@ -1113,7 +1113,7 @@ function buildStaticInfoPages() {
       eyebrow: "Contact",
       description: "Contact the GateQA team for feedback, question corrections, content suggestions, or general inquiries about our GATE CS practice platform.",
       richCopy: [
-        "We welcome feedback, bug reports, question corrections, and content suggestions. Contact us at rawathr01@gmail.com or open a GitHub issue.",
+        "We welcome feedback, bug reports, question corrections, and content suggestions. Contact us at support.gateqa@gmail.com.",
       ],
       faqs: [],
       schemas: [

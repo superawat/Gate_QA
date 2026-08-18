@@ -2,6 +2,18 @@
 
 ## 2026-08-18
 
+- **Question Data Integrity & Answer Correction — GATE CSE 2014 Set 1 Q39 (`go:1917` / `cse:2014:set1:main:q39`)**:
+  - **Problem**: Submitting the mathematically and officially correct NAT answer `148` for finding the minimum and maximum of 100 numbers ($3n/2 - 2 = 148$) was marked as incorrect due to a legacy corrupted floating-point answer value `147.6` in the answer registry and shards.
+  - **Answer Registry Correction**: Updated `go:1917` in `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, and rebuilt all detail shards (`public/question-detail-shards/2014-s1.json`) to store the exact correct NAT answer `148` with `{ "abs": 0.01 }` tolerance.
+  - **Evaluator Robustness (`src/utils/evaluateAnswer.js`)**: Enhanced `evaluateAnswer()` to gracefully accept direct numeric tolerance values (`record.tolerance` as a finite number) alongside object formats (`record.tolerance.abs` / `record.tolerance.lower` & `record.tolerance.upper`).
+  - **Unit Tests**: Added dedicated unit tests in `src/utils/evaluateAnswer.test.js` validating exact NAT integer answers and numeric tolerance evaluation. All 437 unit tests across 67 test files pass (`100% green`).
+
+- **Global Navigation Drawer GATE DA Section Toggle & Reactive Preference Subsystem (AUG-023)**:
+  - **Hamburger Menu Toggle (`GlobalNavigationDrawer.jsx`)**: Added a dedicated `"GATE DA Section"` switch with a purple theme accent (`text-purple-700 dark:text-purple-300`, `bg-purple-600`, `focus:ring-purple-500`, and `FaDatabase` icon) in the drawer's *Options* section, positioned directly alongside the *Special Aptitude Section* toggle.
+  - **Reactive DA Preference Utility (`src/utils/daPreference.ts`)**: Implemented standalone preference helper (`useDaEnabled()`, `readDaEnabled()`, `writeDaEnabled()`) persisting to `localStorage` (`gateqa_include_da`) and emitting synchronized `gateqa:da-enabled-change` custom events across browser windows and components.
+  - **Bidirectional Filter Synchronization (`src/contexts/FilterContext.tsx`)**: Connected `FilterContext` to `useDaEnabled` and `gateqa:da-enabled-change`, enabling immediate question bank loading when toggled ON and instant filter pruning of DA subjects/year sets when toggled OFF from the drawer.
+  - **Unit Test Coverage**: Added unit tests in `GlobalNavigationDrawer.test.jsx` covering switch rendering and accessibility toggles, with 100% test pass rate across all 67 test files (435 unit tests).
+
 - **Mock Test Custom Builder "Bookmarked Only" Policy & Flexible Custom Duration (AUG-022)**:
   - **Bookmarked Only Solved Policy Option**: Added an emerald `"Bookmarked Only"` (`bookmarked_only`) filter chip to the Custom Builder's *Solved Questions Policy* section in `MockTestSetup.jsx`. Pulls the unified bookmark ID collection from `FilterContext` and resolves canonical IDs through `isBookmarkedQuestion()` in `MockTestShell.jsx`, supporting GATE CSE (`gate_qa_bookmarked_questions`), DA (`gate_qa_da_bookmarked_questions`), and Aptitude (`gateqa-apt-bookmarked-questions`) banks.
   - **Dynamic Contextual Pool Feedback**: Shows live inline count feedback (`"Pool restricted to your N bookmarked questions — other filters still apply."` or a prompt to start bookmarking during practice when 0 bookmarks exist).

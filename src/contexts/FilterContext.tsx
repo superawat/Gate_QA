@@ -7,6 +7,7 @@ import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
 import { useAptitudeEnabled } from '../utils/aptitudePreference';
+import { useDaEnabled, writeDaEnabled } from '../utils/daPreference';
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from '../utils/localStorageState';
 import { enqueueChange } from '../utils/syncQueue';
 import { extractQuestionIdArray } from '../utils/cloudSyncManager';
@@ -542,8 +543,25 @@ export const FilterProvider = ({
                 : true)
     ));
     const [includeDa, setIncludeDaState] = useState(() => (
-        initialIncludeDa || (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') === 'true')
+        initialIncludeDa !== undefined
+            ? Boolean(initialIncludeDa)
+            : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') !== null
+                ? window.localStorage.getItem('gateqa_include_da') === 'true'
+                : false)
     ));
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return undefined;
+        const handleDaChange = (event) => {
+            if (event?.detail && typeof event.detail.enabled === 'boolean') {
+                setIncludeDaState(event.detail.enabled);
+            }
+        };
+        window.addEventListener('gateqa:da-enabled-change', handleDaChange);
+        return () => {
+            window.removeEventListener('gateqa:da-enabled-change', handleDaChange);
+        };
+    }, []);
     const [daQuestions, setDaQuestions] = useState(() => (
         DaQuestionService.loaded ? normalizeQuestionPool(DaQuestionService.questions) : []
     ));
@@ -614,10 +632,27 @@ export const FilterProvider = ({
     }, [includeCse]);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            try { window.localStorage.setItem('gateqa_include_da', includeDa ? 'true' : 'false'); } catch (e) {}
+        if (!includeDa) {
+            setFilters((prev) => {
+                const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('da:'));
+                const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('da:'));
+                const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('da:'));
+                if (
+                    nextSubjects.length === prev.selectedSubjects.length
+                    && nextSubtopics.length === prev.selectedSubtopics.length
+                    && nextYearSets.length === prev.selectedYearSets.length
+                ) {
+                    return prev;
+                }
+                return {
+                    ...prev,
+                    selectedSubjects: nextSubjects,
+                    selectedSubtopics: nextSubtopics,
+                    selectedYearSets: nextYearSets,
+                };
+            });
+            return undefined;
         }
-        if (!includeDa) return undefined;
 
         let cancelled = false;
         const loadDaQuestions = async () => {
@@ -1523,6 +1558,7 @@ export const FilterProvider = ({
     const setIncludeDa = useCallback((value) => {
         const isEnabled = typeof value === 'function' ? value(includeDa) : Boolean(value);
         setIncludeDaState(isEnabled);
+        writeDaEnabled(isEnabled);
         if (!isEnabled) {
             setFilters((prev) => {
                 const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('da:'));

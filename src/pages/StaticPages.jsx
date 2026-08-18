@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaEnvelope, FaGithub, FaArrowRight } from "react-icons/fa";
+import { FaGraduationCap, FaEnvelope, FaArrowRight } from "react-icons/fa";
 import PageShell from "../components/Layout/PageShell";
 import SEOHead from "../components/SEO/SEOHead";
 
@@ -145,27 +145,15 @@ export function ContactPage() {
             </Section>
 
             <Section title="How to Reach Us">
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-1 max-w-md">
                 <a
-                  href="mailto:rawathr01@gmail.com"
+                  href="mailto:support.gateqa@gmail.com"
                   className="flex items-center gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4 hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-primary-soft)] transition-all group"
                 >
                   <FaEnvelope size={20} className="text-[color:var(--color-primary-text)] shrink-0" />
                   <div>
                     <p className="text-sm font-bold text-[color:var(--color-text)]">Email</p>
-                    <p className="text-sm text-[color:var(--color-text-muted)]">rawathr01@gmail.com</p>
-                  </div>
-                </a>
-                <a
-                  href="https://github.com/superawat/Gate_QA/issues"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-4 hover:border-[color:var(--color-primary-border)] hover:bg-[color:var(--color-primary-soft)] transition-all group"
-                >
-                  <FaGithub size={20} className="text-[color:var(--color-primary-text)] shrink-0" />
-                  <div>
-                    <p className="text-sm font-bold text-[color:var(--color-text)]">GitHub Issues</p>
-                    <p className="text-sm text-[color:var(--color-text-muted)]">Report bugs or request features</p>
+                    <p className="text-sm text-[color:var(--color-text-muted)]">support.gateqa@gmail.com</p>
                   </div>
                 </a>
               </div>
@@ -303,7 +291,7 @@ export function PrivacyPage() {
             <Section title="Contact Us">
               <p>
                 For questions regarding your privacy, data export, or account management, email us at{" "}
-                <a href="mailto:rawathr01@gmail.com" className="text-[color:var(--color-primary-text)] underline">rawathr01@gmail.com</a>.
+                <a href="mailto:support.gateqa@gmail.com" className="text-[color:var(--color-primary-text)] underline">support.gateqa@gmail.com</a>.
               </p>
             </Section>
           </div>
@@ -403,7 +391,7 @@ export function TermsPage() {
             <Section title="Contact">
               <p>
                 For questions about these Terms, contact us at{" "}
-                <a href="mailto:rawathr01@gmail.com" className="text-[color:var(--color-primary-text)] underline">rawathr01@gmail.com</a>.
+                <a href="mailto:support.gateqa@gmail.com" className="text-[color:var(--color-primary-text)] underline">support.gateqa@gmail.com</a>.
               </p>
             </Section>
           </div>

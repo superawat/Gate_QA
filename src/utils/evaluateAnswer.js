@@ -56,7 +56,9 @@ export function evaluateAnswer(record, userInput) {
       };
     }
 
-    const tolerance = Number(record.tolerance?.abs ?? 0);
+    const tolerance = typeof record.tolerance === "number" && Number.isFinite(record.tolerance)
+      ? Math.abs(record.tolerance)
+      : Number(record.tolerance?.abs ?? 0);
 
     if (Array.isArray(record.answer)) {
       const correct = record.answer.some((ans) => {

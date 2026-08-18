@@ -124,4 +124,40 @@ describe("GlobalNavigationDrawer", () => {
 
     expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
+
+  test("renders and toggles Special Aptitude Section switch", () => {
+    render(
+      <MemoryRouter>
+        <GlobalNavigationDrawer {...defaultProps} />
+      </MemoryRouter>
+    );
+
+    const aptitudeToggle = screen.getByRole("switch", { name: /toggle special aptitude section/i });
+    expect(aptitudeToggle).toBeTruthy();
+    expect(aptitudeToggle.getAttribute("aria-checked")).toBe("false");
+
+    fireEvent.click(aptitudeToggle);
+    expect(aptitudeToggle.getAttribute("aria-checked")).toBe("true");
+
+    fireEvent.click(aptitudeToggle);
+    expect(aptitudeToggle.getAttribute("aria-checked")).toBe("false");
+  });
+
+  test("renders and toggles GATE DA Section switch", () => {
+    render(
+      <MemoryRouter>
+        <GlobalNavigationDrawer {...defaultProps} />
+      </MemoryRouter>
+    );
+
+    const daToggle = screen.getByRole("switch", { name: /toggle gate da section/i });
+    expect(daToggle).toBeTruthy();
+    expect(daToggle.getAttribute("aria-checked")).toBe("false");
+
+    fireEvent.click(daToggle);
+    expect(daToggle.getAttribute("aria-checked")).toBe("true");
+
+    fireEvent.click(daToggle);
+    expect(daToggle.getAttribute("aria-checked")).toBe("false");
+  });
 });
