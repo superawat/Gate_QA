@@ -1,6 +1,14 @@
 # Changelog
 
-## 2026-08-18
+## 2026-08-20
+
+- **Filtered Practice Queue Context Preservation & Header Badge Synchronization (`ExplorePage.jsx` & `SolvePage.jsx`)**:
+  - **Problem**: When a user applied filters on the Explore Questions page and clicked `Continue Filtered Practice` (or clicked a question card in the filtered list), the Solve page incorrectly initialized as `RANDOM SESSION` and showed `Question details` instead of maintaining the filtered queue (`CURRENT FILTERED QUEUE` and `Question X of Y`), with queue navigation falling back to random/global modes.
+  - **Explore Page Navigation Handoff (`src/pages/ExplorePage.jsx`)**: Updated `handleStartFilteredPractice` and `handleOpenQuestion` to initiate an ordered practice session (`startOrderedSession(pool, question.question_uid)`) whenever active filters are present, ensuring the exact filtered question array and order are handed off to the Solve session.
+  - **Solve Page Header Badges & Session Sync (`src/pages/SolvePage.jsx`)**: Corrected `navigationSummary` to safely evaluate `total`/`totalInQueue` and `index`/`currentIndex`, formatting as `Question ${index + 1} of ${total}` when in an ordered filtered queue and returning `"Question details"` for standalone/random sessions. Updated `navigationContextLabel` and session initialization `useEffect` to strictly bind to `hasExploreContext`, while maintaining genuine standalone random session behavior (`RANDOM SESSION → Question details`) for direct question URLs without search parameters.
+  - **Session Context Type Alignment (`src/contexts/SessionContext.tsx`)**: Extended `NavigationState` interface and `getNavigationState` return payload to provide `currentIndex` and `totalInQueue` alongside `index` and `total` for bulletproof cross-component compatibility.
+  - **Unit Test Coverage**: Added comprehensive test cases in `SolvePage.test.jsx` and `ExplorePage.test.jsx` asserting badge states, session mode preservation, search query retention, and queue navigation.
+
 
 - **Question Data Integrity & Answer Correction — GATE CSE 2014 Set 1 Q39 (`go:1917` / `cse:2014:set1:main:q39`)**:
   - **Problem**: Submitting the mathematically and officially correct NAT answer `148` for finding the minimum and maximum of 100 numbers ($3n/2 - 2 = 148$) was marked as incorrect due to a legacy corrupted floating-point answer value `147.6` in the answer registry and shards.

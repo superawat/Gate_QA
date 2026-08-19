@@ -290,39 +290,65 @@ year/set label.
 - Search uses `useDeferredValue` so live typing does not block the rest of the filter work.
 - Search stays index-only in practice mode and does not require `ensureQuestionDetail()` or shard fetches.
 
-## Session Queue (FEAT-012, 2026-02-27)
+## Session Queue & Practice Modes (FEAT-012, Updated 2026-08-20)
 
-Smart randomisation replaces pure `Math.random()` question picking with a session queue.
+Practice sessions operate in one of two distinct modes:
+
+1. **Ordered Filtered Queue (`mode: "ordered"`)**:
+   - Initiated when navigating from Explore Questions with active filters (`handleStartFilteredPractice`, `handleOpenQuestion`) or opening a question with explore search parameters (`hasExploreContext`).
+   - The queue contains exactly the filtered subset of questions in fixed order.
+   - Header badge displays `CURRENT FILTERED QUEUE` and `Question X of Y` (e.g. `Question 1 of 58`).
+   - Previous and Next buttons navigate strictly within the filtered queue without falling back to the global question bank.
+   - Preserves explore query parameters (`?subjects=...`) across all question transitions.
+
+2. **Random / Standalone Session (`mode: "random"`)**:
+   - Initiated when starting random practice from the Home page CTA (`handleStartRandomPractice`) or opening a standalone direct question URL without search parameters.
+   - Header badge displays `RANDOM SESSION` and `Question details`.
+   - Uses stratified multi-bucket shuffle with topic memory to guarantee subject and subtopic diversity.
 
 ### State (`SessionContext`)
 
-- `sessionQueue: uid[]` — ordered walk array, rebuilt on every filter change.
-- `currentIndex: number` — pointer into queue, advances on Next Question.
+- `sessionMode: "ordered" | "random" | null` — active session mode.
+- `sessionQueue: uid[]` — active question walk array.
+- `sourceQuestionUids: uid[]` — canonical pool of UIDs backing the current session.
+- `currentIndex: number` — zero-indexed pointer into `sessionQueue`.
 - `seenThisSession: Set<uid>` — ephemeral in-memory set (React ref), cleared on page reload and filter change. Never persisted to localStorage.
-- `showExhaustionBanner: boolean` — true when the user exhausts the current queue.
+- `showExhaustionBanner: boolean` — true when the user exhausts the random shuffle queue.
 
-### Bucket priority order
+### Navigation State Contract (`getNavigationState`)
 
-Queue is built from `filteredQuestions` using a priority-weighted Fisher-Yates shuffle:
+```typescript
+interface NavigationState {
+  mode: "ordered" | "random" | null;
+  index: number;
+  total: number;
+  currentIndex?: number;
+  totalInQueue?: number;
+  previousUid: string | null;
+  nextUid: string | null;
+  canGoPrevious: boolean;
+  canGoNext: boolean;
+}
+```
+
+### Bucket Priority Order (Random Sessions)
+
+In random sessions, the queue is built using stratified topic memory and priority-weighted buckets:
 
 1. **Bucket 1 (front):** UIDs not in `seenThisSession` AND not in `solvedQuestionIds` — never seen, unsolved.
 2. **Bucket 2 (middle):** UIDs not in `seenThisSession` AND in `solvedQuestionIds` — never seen this session, already solved.
 3. **Bucket 3 (back):** UIDs in `seenThisSession` — already seen this session.
 
-Each bucket is independently Fisher-Yates shuffled. Final queue = Bucket 1 + Bucket 2 + Bucket 3.
+Each bucket is stratified and diversified across subjects and subtopics. Final random queue = Bucket 1 + Bucket 2 + Bucket 3.
 
-### Queue lifecycle
+### Queue Lifecycle
 
-- **Filter change:** `useEffect` watching `filteredQuestions` triggers full rebuild, resets `currentIndex` to 0, clears `seenThisSession`.
-- **Next Question:** increments `currentIndex` by 1, marks new UID as seen.
-- **Deep link:** loads the specified question directly, marks its UID as seen so it doesn't reappear at front.
-
-### Exhaustion behaviour
-
-- When `currentIndex` reaches end of queue on Next Question click:
-  - Banner shown: "You've seen all X questions in this filter. Starting over with a fresh shuffle."
-  - Queue reshuffled from full filtered pool, `currentIndex` reset to 0.
-  - Banner auto-dismisses after 4 seconds or on manual dismiss.
+- **Filter Change in Explore:** resets filtered question pool; starting practice passes `filteredQuestions` to `startOrderedSession`.
+- **Explore to Solve Navigation:** `SolvePage.jsx` inspects `hasExploreContext` (`location.search`). If search parameters exist, it synchronizes with the filtered question set in ordered mode.
+- **Direct Link (No Search Params):** `SolvePage.jsx` boots a standalone random session displaying `RANDOM SESSION → Question details`.
+- **Next / Previous Navigation:** increments/decrements `currentIndex`, preserves search parameters in the URL, and updates queue position badges.
+- **End of Filtered Queue:** `canGoNext` is false on the last question; queue boundaries are strictly respected.
+- **End of Random Queue:** triggers exhaustion banner and reshuffles fresh randomized pool with topic rotation.
 
 ## Landing / Mode Selection (FEAT-017, 2026-02-28)
 

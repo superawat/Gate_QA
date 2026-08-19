@@ -242,19 +242,14 @@ const ExplorePage = ({
 
   const handleOpenQuestion = useCallback((question) => {
     const pool = applyFiltersToPractice ? filteredQuestions : (allQuestions.length > 0 ? allQuestions : filteredQuestions);
-    const sessionMode = shufflePractice ? "random" : "ordered";
-    if (shufflePractice) {
-      startRandomSession(pool, question.question_uid);
-    } else {
-      startOrderedSession(pool, question.question_uid);
-    }
-    trackEvent("result_open", { question_uid: question.question_uid, source: "explore", mode: sessionMode });
+    startOrderedSession(pool, question.question_uid);
+    trackEvent("result_open", { question_uid: question.question_uid, source: "explore", mode: "ordered" });
     writeLastSession({
       route: `${buildSolvePath(question.question_uid)}${location.search || ""}`,
       exploreSearch: location.search || "",
       resultPage: currentPage,
       questionUid: question.question_uid,
-      mode: sessionMode,
+      mode: "ordered",
     });
     navigate({
       pathname: buildSolvePath(question.question_uid),
@@ -267,9 +262,7 @@ const ExplorePage = ({
     filteredQuestions,
     location.search,
     navigate,
-    shufflePractice,
     startOrderedSession,
-    startRandomSession,
   ]);
 
   const resultSummary = useMemo(() => {
@@ -366,8 +359,9 @@ const ExplorePage = ({
       return;
     }
 
-    const sessionMode = shufflePractice ? "random" : "ordered";
-    const firstQuestion = shufflePractice
+    const isFiltered = activeFilterCount > 0 || applyFiltersToPractice;
+    const sessionMode = isFiltered ? "ordered" : (shufflePractice ? "random" : "ordered");
+    const firstQuestion = sessionMode === "random"
       ? (startRandomSession(pool) || pool[0])
       : (startOrderedSession(pool) || pool[0]);
 

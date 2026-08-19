@@ -10,6 +10,7 @@ const mocks = vi.hoisted(() => ({
   ensureQuestionDetail: vi.fn(),
   ensureDaQuestionDetail: vi.fn(),
   writeLastSession: vi.fn(),
+  startRandomSession: vi.fn(),
   startOrderedSession: vi.fn(),
   setCurrentQuestionUid: vi.fn(),
   dismissExhaustionBanner: vi.fn(),
@@ -153,6 +154,7 @@ const renderSolvePage = ({
     sessionQueue: filteredQuestions.map((question) => question.question_uid),
     showExhaustionBanner: false,
     dismissExhaustionBanner: mocks.dismissExhaustionBanner,
+    startRandomSession: mocks.startRandomSession,
     startOrderedSession: mocks.startOrderedSession,
     setCurrentQuestionUid: mocks.setCurrentQuestionUid,
     getNavigationState: mocks.getNavigationState,
@@ -191,6 +193,7 @@ describe("SolvePage", () => {
     mocks.ensureQuestionDetail.mockReset();
     mocks.ensureDaQuestionDetail.mockReset();
     mocks.writeLastSession.mockReset();
+    mocks.startRandomSession.mockReset();
     mocks.startOrderedSession.mockReset();
     mocks.setCurrentQuestionUid.mockReset();
     mocks.dismissExhaustionBanner.mockReset();
@@ -198,6 +201,7 @@ describe("SolvePage", () => {
     mocks.goToPreviousQuestion.mockReset();
     mocks.getNavigationState.mockReset();
     mocks.getNavigationState.mockReturnValue({
+      mode: "ordered",
       index: 0,
       total: 2,
       canGoPrevious: false,
@@ -474,5 +478,42 @@ describe("SolvePage", () => {
     fireEvent.click(await screen.findByRole("button", { name: /dismiss/i }));
 
     expect(mocks.dismissExhaustionBanner).toHaveBeenCalledTimes(1);
+  });
+
+  test("displays CURRENT FILTERED QUEUE and Question X of Y when entering through filtered explore context", async () => {
+    mocks.getNavigationState.mockReturnValue({
+      mode: "ordered",
+      index: 0,
+      total: 58,
+      canGoPrevious: false,
+      canGoNext: true,
+    });
+
+    renderSolvePage({
+      route: "/practice/question/go%3A1?subjects=algorithms",
+    });
+
+    expect(await screen.findByText("Current filtered queue")).toBeTruthy();
+    expect(screen.getByText("Question 1 of 58")).toBeTruthy();
+  });
+
+  test("displays RANDOM SESSION and Question details when opening a direct question link without explore context", async () => {
+    mocks.getNavigationState.mockReturnValue({
+      mode: "random",
+      index: 0,
+      total: 1,
+      canGoPrevious: false,
+      canGoNext: false,
+    });
+
+    renderSolvePage({
+      route: "/practice/question/go%3A1",
+      sessionOverrides: {
+        sessionMode: "random",
+      },
+    });
+
+    expect(await screen.findByText("Random session")).toBeTruthy();
+    expect(screen.getByText("Question details")).toBeTruthy();
   });
 });

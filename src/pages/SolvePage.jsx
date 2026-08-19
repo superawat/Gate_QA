@@ -62,6 +62,7 @@ const SolvePage = ({
     sourceQuestionUids = [],
     showExhaustionBanner,
     dismissExhaustionBanner,
+    startRandomSession,
     startOrderedSession,
     setCurrentQuestionUid,
     getNavigationState,
@@ -77,18 +78,6 @@ const SolvePage = ({
   const questionExistsInFilteredPool = filteredQuestions.some((question) => question.question_uid === questionUid);
   const navigationState = useMemo(() => getNavigationState(questionUid), [getNavigationState, questionUid]);
   const sessionContainsQuestion = sessionQueue.includes(questionUid);
-  const sessionSourceMatchesFilteredPool = useMemo(() => {
-    if (!hasExploreContext || sourceQuestionUids.length === 0 || filteredQuestions.length === 0) {
-      return false;
-    }
-
-    if (sourceQuestionUids.length !== filteredQuestions.length) {
-      return false;
-    }
-
-    const filteredUidSet = new Set(filteredQuestions.map((question) => question.question_uid));
-    return sourceQuestionUids.every((uid) => filteredUidSet.has(uid));
-  }, [filteredQuestions, hasExploreContext, sourceQuestionUids]);
 
   useEffect(() => {
     if (isAptitudeQuestion && isInitialized && !aptitudeEnabled) {
@@ -101,11 +90,7 @@ const SolvePage = ({
       return;
     }
 
-    if (sessionContainsQuestion && sessionMode === "random" && (!hasExploreContext || sessionSourceMatchesFilteredPool)) {
-      setCurrentQuestionUid(questionUid);
-      return;
-    }
-
+    // 1. Filtered context from Explore page (e.g. ?subjects=algorithms)
     if (hasExploreContext && questionExistsInFilteredPool) {
       const shouldRefreshOrderedSession = sessionMode !== "ordered"
         || sessionQueue.length !== filteredQuestions.length
@@ -116,24 +101,27 @@ const SolvePage = ({
         startOrderedSession(filteredQuestions, questionUid);
         return;
       }
+
+      if (sessionContainsQuestion) {
+        setCurrentQuestionUid(questionUid);
+        return;
+      }
     }
 
-    if (sessionContainsQuestion) {
+    // 2. Active random session (e.g. started from Home page "Start Practice" CTA)
+    if (sessionContainsQuestion && sessionMode === "random") {
       setCurrentQuestionUid(questionUid);
       return;
     }
 
-    // When the question exists in the filtered pool but we lack explore context
-    // (e.g. hard refresh stripped URL params), use the full filtered set so the
-    // session queue has proper prev/next navigation instead of a dead-end.
-    if (questionExistsInFilteredPool && filteredQuestions.length > 1) {
-      startOrderedSession(filteredQuestions, questionUid);
+    // 3. Already in matching ordered session without explore context
+    if (sessionContainsQuestion && sessionMode === "ordered") {
+      setCurrentQuestionUid(questionUid);
       return;
     }
 
-    // When opening a question directly without active explore filters, seed the session
-    // with all questions from the same exam paper/set cohort or allQuestions so the student
-    // has a multi-question solve queue rather than a single-item dead-end.
+    // 4. Standalone direct question URL (no explore search parameters)
+    // Direct question URLs initialize as a standalone random session
     const activeService = isDaQuestion(indexedQuestion)
       ? DaQuestionService
       : isAptitudeQuestion
@@ -151,7 +139,11 @@ const SolvePage = ({
         ? filteredQuestions
         : [indexedQuestion];
 
-    startOrderedSession(seedQuestions, questionUid);
+    if (typeof startRandomSession === "function") {
+      startRandomSession(seedQuestions, questionUid);
+    } else {
+      startOrderedSession(seedQuestions, questionUid);
+    }
   }, [
     filteredQuestions,
     hasExploreContext,
@@ -164,9 +156,9 @@ const SolvePage = ({
     sessionContainsQuestion,
     sessionMode,
     sessionQueue,
-    sessionSourceMatchesFilteredPool,
     setCurrentQuestionUid,
     startOrderedSession,
+    startRandomSession,
   ]);
 
   useEffect(() => {
@@ -428,14 +420,18 @@ const SolvePage = ({
   };
 
   const navigationSummary = useMemo(() => {
-    const total = Number(navigationState.totalInQueue);
-    const index = Number(navigationState.currentIndex);
+    if (navigationState.mode !== "ordered") {
+      return "Question details";
+    }
+
+    const total = Number(navigationState.total ?? navigationState.totalInQueue);
+    const index = Number(navigationState.index ?? navigationState.currentIndex);
     if (!Number.isFinite(total) || !Number.isFinite(index) || total <= 0 || index < 0) {
       return "Question details";
     }
 
     return `Question ${index + 1} of ${total}`;
-  }, [navigationState.currentIndex, navigationState.totalInQueue]);
+  }, [navigationState]);
 
   const navigationContextLabel = useMemo(() => {
     if (navigationState.mode === "ordered") {

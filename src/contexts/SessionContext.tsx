@@ -27,6 +27,8 @@ interface NavigationState {
     mode: SessionMode;
     index: number;
     total: number;
+    currentIndex?: number;
+    totalInQueue?: number;
     previousUid: string | null;
     nextUid: string | null;
     canGoPrevious: boolean;
@@ -609,6 +611,8 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
             mode: sessionMode,
             index,
             total: sessionQueue.length,
+            currentIndex: index,
+            totalInQueue: sessionQueue.length,
             previousUid,
             nextUid,
             canGoPrevious: !!previousUid,

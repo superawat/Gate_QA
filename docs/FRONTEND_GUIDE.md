@@ -120,26 +120,30 @@ npm run typecheck
 - Mock test history is rendered inside the Insights mock-history tab; the old `/history/mock-tests` route redirects there.
 - The Home insights card CTA navigates to `/insights`.
 
-### Session Queue (`SessionContext`, FEAT-012)
+### Session Queue & Practice Modes (`SessionContext.tsx`, FEAT-012)
 
-`SessionContext` provides smart randomisation state:
+`SessionContext` manages the active practice queue, navigation mode, and position pointers:
 
-- `useSession()` — single hook for all session queue state and actions.
+- `useSession()` — single hook for session state and queue operations.
 
 State items:
+- `sessionMode: "ordered" | "random" | null` — active session mode (`"ordered"` for filtered practice, `"random"` for random shuffle / standalone).
+- `sessionQueue: string[]` — active question walk array.
+- `sourceQuestionUids: string[]` — source pool UIDs.
+- `currentIndex: number` — zero-indexed pointer in `sessionQueue`.
+- `showExhaustionBanner: boolean` — true when a random queue cycle is completed.
 
-- `sessionQueue: uid[]` — ordered question walk array, rebuilt on filter change.
-- `currentIndex: number` — pointer into the queue, advanced by `advanceQueue()`.
-- `showExhaustionBanner: boolean` — true when queue is exhausted.
+Key Actions:
+- `startOrderedSession(pool, initialUid)` — begins an ordered filtered queue session (preserves list order).
+- `startRandomSession(pool, initialUid)` — begins a stratified random session with topic rotation.
+- `getNavigationState(uid)` — returns `{ mode, index, total, currentIndex, totalInQueue, previousUid, nextUid, canGoPrevious, canGoNext }`.
+- `goToNextQuestion(uid)` / `goToPreviousQuestion(uid)` — step through the active queue.
+- `setCurrentQuestionUid(uid)` — synchronizes the queue pointer.
+- `dismissExhaustionBanner()` — dismisses the random reshuffle banner.
 
-Actions:
-
-- `advanceQueue()` — advances index, returns next question object.
-- `markSeen(uid)` — marks a UID as seen this session.
-- `markDeepLinkedQuestion(uid)` — marks deep-linked question as seen.
-- `dismissExhaustionBanner()` — manually dismiss the exhaustion banner.
-
-`seenThisSession` lives as an internal `useRef(Set)` — ephemeral, never persisted.
+UI Header Badges on Solve Page:
+- Filtered Queue: `CURRENT FILTERED QUEUE` and `Question X of Y`.
+- Standalone / Random Session: `RANDOM SESSION` and `Question details`.
 
 ## Filter behavior updates (2026-02-25)
 
