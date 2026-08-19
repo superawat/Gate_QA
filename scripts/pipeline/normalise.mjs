@@ -147,24 +147,6 @@ const SUBJECT_ALIASES = {
     "General Aptitude": [
         "general-aptitude",
         "ga",
-        "quantitative-aptitude",
-        "verbal-aptitude",
-        "analytical-aptitude",
-        "verbal-ability",
-        "numerical-ability",
-        "logical-reasoning",
-        "spatial-aptitude",
-        "assembling-pieces",
-        "paper-folding",
-        "patterns-in-2d",
-        "patterns-in-two-dimensions",
-        "patterns-in-3d",
-        "patterns-in-three-dimensions",
-        "3d-structure",
-        "image-rotation",
-        "mirror-image",
-        "grouping",
-        "counting-figure",
     ],
     "Operating System": [
         "operating-system",
@@ -250,9 +232,10 @@ function normalizeTag(tag) {
 
 function resolveSubject(tags, title = "") {
     const normalizedTags = new Set(tags.map(normalizeTag));
-    const isGeneralAptitudeTitle = /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s+\d+)\b/i.test(
-        String(title || "")
-    );
+    const isGeneralAptitudeTitle =
+        /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s*\d+)\b/i.test(String(title || "")) ||
+        /\|\s*GA\b/i.test(String(title || "")) ||
+        /general aptitude/i.test(String(title || ""));
 
     // Check GA first (per QuestionService logic)
     const gaAliases = SUBJECT_ALIASES["General Aptitude"].map(normalizeTag);

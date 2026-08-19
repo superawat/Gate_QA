@@ -801,14 +801,15 @@ export function resolveCanonicalSubject(this: IQuestionService, question: any): 
   });
 
   const title = String(question.title || "");
-  const isGeneralAptitudeTitle = /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s+\d+)\b/i.test(title);
+  const isGeneralAptitudeTitle =
+    /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s*\d+)\b/i.test(title) ||
+    /\|\s*GA\b/i.test(title) ||
+    /general aptitude/i.test(title);
 
   if (
     isGeneralAptitudeTitle ||
     normalizedTagSet.has("generalaptitude") ||
-    normalizedTagSet.has("quantitativeaptitude") ||
-    normalizedTagSet.has("verbalaptitude") ||
-    normalizedTagSet.has("analyticalaptitude")
+    normalizedTagSet.has("ga")
   ) {
     return "General Aptitude";
   }

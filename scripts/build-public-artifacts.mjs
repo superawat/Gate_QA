@@ -104,9 +104,6 @@ const SUBJECTS = [
     aliases: [
       "general-aptitude",
       "ga",
-      "verbal-aptitude",
-      "quantitative-aptitude",
-      "spatial-aptitude",
     ],
   },
   {
@@ -1423,15 +1420,16 @@ function inferSubject(question = {}, yearSet = null) {
     }
   });
 
-  if (yearSet?.year && /general aptitude/i.test(title)) {
-    return SUBJECT_BY_LABEL.get("General Aptitude");
-  }
+  const isGeneralAptitudeTitle =
+    (yearSet?.year && /general aptitude/i.test(title)) ||
+    /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s*\d+)\b/i.test(title) ||
+    /\|\s*GA\b/i.test(title) ||
+    /general aptitude/i.test(title);
 
   if (
-    normalizedTagSet.has("generalaptitude")
-    || normalizedTagSet.has("quantitativeaptitude")
-    || normalizedTagSet.has("verbalaptitude")
-    || normalizedTagSet.has("analyticalaptitude")
+    isGeneralAptitudeTitle ||
+    normalizedTagSet.has("generalaptitude") ||
+    normalizedTagSet.has("ga")
   ) {
     return SUBJECT_BY_LABEL.get("General Aptitude");
   }

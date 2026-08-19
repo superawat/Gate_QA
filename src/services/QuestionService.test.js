@@ -126,6 +126,26 @@ describe("QuestionService", () => {
     expect(subject).toBe("CO & Architecture");
   });
 
+  test("resolves technical questions with noisy aptitude tags to their explicit technical subject", () => {
+    const subject = QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2026 | Set 2 | Question: 9",
+      tags: [
+        "gatecse-2026-set2",
+        "programming-in-c",
+        "one-mark",
+        "runtime-environment",
+        "pointers",
+        "output",
+        "numerical-answers",
+        "two-marks",
+        "recursion",
+        "analytical-aptitude",
+      ],
+    });
+
+    expect(subject).toBe("Programming in C");
+  });
+
   test("infers Engineering Mathematics from canonical math subtopic tags", () => {
     const subject = QuestionService.resolveCanonicalSubject({
       title: "GATE CSE 2026 | Set 1 | Question: 22",
