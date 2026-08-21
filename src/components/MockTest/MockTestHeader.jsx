@@ -116,12 +116,22 @@ const MockTestHeader = ({
     }, [computeSectionStats, openPopoverSection]);
 
     const totalQuestions = sectionQuestionUids.GA.length + sectionQuestionUids.CS.length;
+    const isDaAttempt = Boolean(
+        attemptMeta?.isDa
+        || attemptMeta?.track === "da"
+        || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
+    );
+    const trackName = isDaAttempt ? "GATE DA" : "GATE CSE";
+    const coreSectionFullName = isDaAttempt ? "Data Science and AI" : "Computer Science and Information Technology";
+    const coreSectionShortName = isDaAttempt ? "DA & AI" : "CS & IT";
+    const coreSectionStatusName = isDaAttempt ? "Data Science & AI" : "Computer Science";
+
     const attemptKindLabel = attemptMeta?.kindTitle
         || MOCK_KIND_LABELS[attemptMeta?.kindId]
         || "Mock Test";
     const attemptPaperLabel = String(attemptMeta?.selectedPaperLabel || "").trim();
     const attemptTitle = attemptPaperLabel
-        ? `GATE CSE ${attemptPaperLabel} Mock`
+        ? (attemptPaperLabel.toLowerCase().includes("gate") ? `${attemptPaperLabel} Mock` : `${trackName} ${attemptPaperLabel} Mock`)
         : attemptKindLabel;
     const attemptSubtitle = attemptPaperLabel
         ? `Validated paper order | ${attemptKindLabel}`
@@ -131,7 +141,7 @@ const MockTestHeader = ({
         : "180 min";
     const currentSectionLabel = currentSection === "GA"
         ? "General Aptitude"
-        : "Computer Science and Information Technology";
+        : coreSectionFullName;
 
     const renderInfoPopover = (section) => {
         if (openPopoverSection !== section || !popoverStats) return null;
@@ -139,7 +149,7 @@ const MockTestHeader = ({
         return (
             <div ref={popoverRef} className="mocktest-section-info-popover">
                 <div className="mocktest-popover-title">
-                    {section === "GA" ? "General Aptitude" : "Computer Science"} Status
+                    {section === "GA" ? "General Aptitude" : coreSectionStatusName} Status
                 </div>
                 <div className="mocktest-popover-grid">
                     <div className="mocktest-popover-row">
@@ -251,12 +261,12 @@ const MockTestHeader = ({
                                                 onClick={() => setCurrentSection("CS")}
                                                 className="truncate text-left text-[12px]"
                                             >
-                                                <span className="hidden md:inline">Computer Science and IT</span>
-                                                <span className="md:hidden">CS & IT</span>
+                                                <span className="hidden md:inline">{coreSectionFullName}</span>
+                                                <span className="md:hidden">{coreSectionShortName}</span>
                                             </button>
                                             <button
                                                 type="button"
-                                                aria-label="CS status"
+                                                aria-label={isDaAttempt ? "DA status" : "CS status"}
                                                 className="mocktest-info-icon flex h-3 w-3 items-center justify-center rounded-full border border-[#98a6b5] text-[9px]"
                                                 onClick={(event) => handleInfoClick("CS", event)}
                                             >

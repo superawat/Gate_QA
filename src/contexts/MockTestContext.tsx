@@ -3,6 +3,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { useFilterActions, useFilterState } from "./FilterContext";
 import { AnswerService } from "../services/AnswerService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
+import { DaQuestionService } from "../services/DaQuestionService";
 import { MockCatalogService } from "../services/MockCatalogService";
 import {
   buildMockResultSummary,
@@ -10,8 +11,9 @@ import {
   normalizeMockTimeSpentSeconds,
   validateMockQuestionForPool,
 } from "../utils/mockTest";
+import { isDaQuestion } from "../utils/examTrack";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
-import { APTITUDE_PROGRESS_STORAGE_KEY, PRACTICE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
+import { APTITUDE_PROGRESS_STORAGE_KEY, DA_PROGRESS_STORAGE_KEY, PRACTICE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
 import { enqueueChange } from "../utils/syncQueue";
 
 export const MockTestContext = createContext();
@@ -528,6 +530,11 @@ export const MockTestProvider = ({ children }) => {
   ));
   const [aptitudeMockLoading, setAptitudeMockLoading] = useState(() => !AptitudeQuestionService.loaded);
   const [aptitudeMockError, setAptitudeMockError] = useState(() => AptitudeQuestionService.loadError || "");
+  const [daQuestions, setDaQuestions] = useState(() => (
+    DaQuestionService.loaded ? normalizeQuestionList(DaQuestionService.questions) : []
+  ));
+  const [daMockLoading, setDaMockLoading] = useState(() => !DaQuestionService.loaded);
+  const [daMockError, setDaMockError] = useState(() => DaQuestionService.loadError || "");
 
   const [testActive, setTestActive] = useState(false);
   const [testSubmitted, setTestSubmitted] = useState(false);
@@ -581,8 +588,8 @@ export const MockTestProvider = ({ children }) => {
     [paperCatalog]
   );
   const mockQuestionPool = useMemo(
-    () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions]),
-    [allQuestions, aptitudeQuestions]
+    () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions, ...daQuestions]),
+    [allQuestions, aptitudeQuestions, daQuestions]
   );
 
   const questionsByUid = useMemo(
@@ -700,6 +707,45 @@ export const MockTestProvider = ({ children }) => {
     };
 
     void loadAptitude();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadDa = async () => {
+      if (DaQuestionService.loaded) {
+        setDaQuestions(normalizeQuestionList(DaQuestionService.questions));
+        setDaMockError("");
+        setDaMockLoading(false);
+        return;
+      }
+
+      setDaMockLoading(true);
+      setDaMockError("");
+      try {
+        await DaQuestionService.init();
+        if (cancelled) {
+          return;
+        }
+        setDaQuestions(normalizeQuestionList(DaQuestionService.questions));
+        setDaMockError("");
+      } catch (error) {
+        if (cancelled) {
+          return;
+        }
+        setDaMockError(error.message || "Unable to load DA questions.");
+      } finally {
+        if (!cancelled) {
+          setDaMockLoading(false);
+        }
+      }
+    };
+
+    void loadDa();
 
     return () => {
       cancelled = true;
@@ -1306,6 +1352,7 @@ export const MockTestProvider = ({ children }) => {
       }
 
       const isApt = isAptitudeQuestionUid(questionUid);
+      const isDa = isDaQuestion(question) || String(questionUid).startsWith("da:") || String(questionUid).startsWith("go:");
       const storageKey = isApt
         ? questionUid
         : (AnswerService.getStorageKeyForQuestion(question) || questionUid);
@@ -1319,7 +1366,7 @@ export const MockTestProvider = ({ children }) => {
         correct: questionResult.correct === true,
         type: liveMeta[questionUid]?.type || question?.answerMeta?.type || question?.type || "",
         input: liveResponses[questionUid] ?? null,
-        progressStorageKey: isApt ? APTITUDE_PROGRESS_STORAGE_KEY : PRACTICE_PROGRESS_STORAGE_KEY,
+        progressStorageKey: isApt ? APTITUDE_PROGRESS_STORAGE_KEY : (isDa ? DA_PROGRESS_STORAGE_KEY : PRACTICE_PROGRESS_STORAGE_KEY),
       });
     });
     appendMockTestHistoryEntry(historyEntry);
@@ -1556,6 +1603,8 @@ export const MockTestProvider = ({ children }) => {
     catalogLoading,
     aptitudeMockError,
     aptitudeMockLoading,
+    daMockError,
+    daMockLoading,
     clearAttemptError,
     currentQuestion,
     currentQuestionIndex,
@@ -1593,7 +1642,7 @@ export const MockTestProvider = ({ children }) => {
     markForReviewAndNext,
   }), [
     attemptError, attemptMeta, catalog, catalogError, catalogLoading,
-    aptitudeMockError, aptitudeMockLoading, clearAttemptError,
+    aptitudeMockError, aptitudeMockLoading, daMockError, daMockLoading, clearAttemptError,
     currentQuestion, currentQuestionIndex, currentQuestionMeta,
     currentQuestionResult, currentQuestionUid, currentSection, currentSectionIndex,
     endMockTest, getQuestionMeta, mockQuestionPool, paperCatalog,

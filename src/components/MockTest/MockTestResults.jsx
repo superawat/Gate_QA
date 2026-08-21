@@ -1,6 +1,7 @@
 import React from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
 import { formatMockTimeSpent } from "../../utils/mockTest";
+import { isDaQuestion } from "../../utils/examTrack";
 import { FaExclamationTriangle, FaCheckCircle, FaBook } from "react-icons/fa";
 
 const ResultCard = ({ label, value, accentClass }) => (
@@ -201,15 +202,18 @@ const generatePerformanceAnalysis = (questions = [], summary = {}) => {
         const gaAcc = ga.attempted > 0 ? (ga.correct / ga.attempted) : 0;
         const csAcc = cs.attempted > 0 ? (cs.correct / cs.attempted) : 0;
 
+        const isDaAttempt = questions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:") || String(q?.question_uid || "").startsWith("go:"));
+        const coreName = isDaAttempt ? "Data Science & AI" : "Computer Science";
+
         if (gaAcc > csAcc + 0.25) {
             observations.push({
                 type: "info",
-                text: "Strong performance in General Aptitude. Dedicate more practice to core CS syllabus topics to balance your scoring potential."
+                text: `Strong performance in General Aptitude. Dedicate more practice to core ${coreName} syllabus topics to balance your scoring potential.`
             });
         } else if (csAcc > gaAcc + 0.25) {
             observations.push({
                 type: "info",
-                text: "Strong performance in Computer Science. Do not neglect General Aptitude (worth 15% of the total GATE score) during daily reviews."
+                text: `Strong performance in ${coreName}. Do not neglect General Aptitude (worth 15% of the total GATE score) during daily reviews.`
             });
         }
     }
@@ -350,7 +354,15 @@ const StructuredReviewSection = ({ questions = [], summary = {} }) => {
 };
 
 const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
-    const { questions, resultSummary } = useMockTest();
+    const { questions, resultSummary, attemptMeta } = useMockTest();
+
+    const isDaAttempt = Boolean(
+        attemptMeta?.isDa
+        || attemptMeta?.track === "da"
+        || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
+        || (questions || []).some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:") || String(q?.question_uid || "").startsWith("go:"))
+    );
+    const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
 
     const summary = resultSummary || {
         attempted: 0,
@@ -428,7 +440,7 @@ const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
 
                 <div className="grid gap-3 md:grid-cols-2">
                     <SectionSummaryCard title="General Aptitude" summary={summary.sectionSummary.GA} />
-                    <SectionSummaryCard title="Computer Science and IT" summary={summary.sectionSummary.CS} />
+                    <SectionSummaryCard title={coreSectionTitle} summary={summary.sectionSummary.CS} />
                 </div>
 
                 <TimeDistributionSummary questions={questions} summary={summary} />

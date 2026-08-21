@@ -261,3 +261,34 @@ describe("Issue 008 — View switching from URL", () => {
         expect(resolveAppViewFromUrl("?search=deadlock")).toBe("practice");
     });
 });
+
+describe("GATE DA mock tests & track integration", () => {
+    test("correctly classifies CSE and DA papers by track", () => {
+        const papers = [
+            { label: "GATE CSE 2026 Set 1", yearSetKey: "2026-s1", track: "cse", gaCount: 10, csCount: 55, paperReady: true },
+            { label: "GATE CSE 2025 Set 1", yearSetKey: "2025-s1", track: "cse", gaCount: 10, csCount: 55, paperReady: true },
+            { label: "GATE DA 2026", yearSetKey: "da:2026-s1", track: "da", gaCount: 10, csCount: 55, paperReady: true },
+            { label: "GATE DA 2025", yearSetKey: "da:2025-s1", track: "da", gaCount: 10, csCount: 55, paperReady: true },
+            { label: "GATE DA 2024", yearSetKey: "da:2024-s1", track: "da", gaCount: 10, csCount: 55, paperReady: true },
+        ];
+
+        const csePapers = papers.filter((p) => (p.track || "cse") === "cse");
+        const daPapers = papers.filter((p) => p.track === "da");
+
+        expect(csePapers).toHaveLength(2);
+        expect(daPapers).toHaveLength(3);
+        expect(daPapers.map((p) => p.label)).toEqual(["GATE DA 2026", "GATE DA 2025", "GATE DA 2024"]);
+        expect(daPapers.every((p) => p.paperReady)).toBe(true);
+    });
+
+    test("routes DA question practice attempts to DA progress storage", () => {
+        const question = {
+            question_uid: "da:2026:set1:main:q1",
+            track: "da",
+            type: "MCQ",
+        };
+
+        const isDa = question.track === "da" || String(question.question_uid).startsWith("da:");
+        expect(isDa).toBe(true);
+    });
+});

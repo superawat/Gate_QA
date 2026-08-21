@@ -238,8 +238,15 @@ export const validateMockQuestionForPool = ({
     issues.push("missing_type");
   }
 
+  const isDeferredHydration = Boolean(
+    question?.detailShardKey
+    || question?.track === "da"
+    || questionUid.startsWith("da:")
+    || (question?.preview && !question?.question)
+  );
+
   const imageSources = extractMockImageSources(question || {});
-  const hasQuestionText = stripHtmlToText(question?.question || "") !== "";
+  const hasQuestionText = stripHtmlToText(question?.question || question?.preview || question?.searchText || "") !== "";
   const hasQuestionImage = imageSources.length > 0;
   if (!hasQuestionText && !hasQuestionImage) {
     issues.push("missing_question_content");
@@ -264,7 +271,7 @@ export const validateMockQuestionForPool = ({
     issues.push("missing_answer");
   }
 
-  if ((objectiveType === "MCQ" || objectiveType === "MSQ") && options.length === 0) {
+  if ((objectiveType === "MCQ" || objectiveType === "MSQ") && options.length === 0 && !isDeferredHydration) {
     issues.push("missing_options");
   }
 
@@ -279,7 +286,7 @@ export const validateMockQuestionForPool = ({
     const missingAnswerLabels = answerRecord.answer
       .map(normalizeOptionLabel)
       .filter((label) => label && optionLabels.size > 0 && !optionLabels.has(label));
-    if (missingAnswerLabels.length > 0) {
+    if (missingAnswerLabels.length > 0 && optionLabels.size > 0) {
       issues.push("answer_option_mismatch");
     }
   }

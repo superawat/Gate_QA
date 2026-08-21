@@ -17,7 +17,15 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
         questionStates,
         resultSummary,
         STATUS,
+        attemptMeta,
     } = useMockTest();
+
+    const isDaAttempt = Boolean(
+        attemptMeta?.isDa
+        || attemptMeta?.track === "da"
+        || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
+    );
+    const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
 
     const stats = {
         [GATE_VISUAL_STATUS.ANSWERED]: 0,
@@ -62,9 +70,9 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
         },
         {
             status: GATE_VISUAL_STATUS.ANSWERED_MARKED,
-            label: "Answered & Marked for Review (will also be evaluated)",
-            testId: "legend-status-answered-marked",
+            label: "Answered & Marked for Review",
             wide: true,
+            testId: "legend-status-answered-marked",
         },
     ];
 
@@ -106,7 +114,7 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
 
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
                     <div className="mocktest-palette-section-header">
-                        {currentSection === "GA" ? "General Aptitude" : "Computer Science and IT"}
+                        {currentSection === "GA" ? "General Aptitude" : coreSectionTitle}
                     </div>
                     <div className="mocktest-palette-choose-header">
                         Choose a Question
@@ -149,7 +157,6 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
                             })}
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

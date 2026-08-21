@@ -181,6 +181,7 @@ const MockTestSetup = ({
     const isFullMock = kind.id === "full_length";
     const isPaperMode = kind.id === "paper_mode";
     const isCustom = kind.id === "custom";
+    const [paperTrackFilter, setPaperTrackFilter] = React.useState("all");
     const showSolvedQuestionToggle = !isPaperMode;
     const selectedPaper = paperOptions.find((paper) => getMockPaperYearSetIdentity(paper) === selectedPaperYearSetKey) || null;
     const selectedSubjectSet = new Set(setupState.selectedSubjects || []);
@@ -214,7 +215,7 @@ const MockTestSetup = ({
             selectedPaper
                 ? (
                     selectedPaper.paperReady
-                        ? `${Number.isFinite(selectedPaperRequiredGa) ? selectedPaperRequiredGa : selectedPaper.gaCount} GA and ${Number.isFinite(selectedPaperRequiredCs) ? selectedPaperRequiredCs : selectedPaper.csCount} CS questions in paper order.`
+                        ? `${Number.isFinite(selectedPaperRequiredGa) ? selectedPaperRequiredGa : selectedPaper.gaCount} GA and ${Number.isFinite(selectedPaperRequiredCs) ? selectedPaperRequiredCs : selectedPaper.csCount} ${selectedPaper.track === "da" ? "DA" : "CS"} questions in paper order.`
                         : (selectedPaper.statusReason || "This paper is not release-ready yet.")
                 )
                 : "Select a paper to continue."
@@ -286,80 +287,147 @@ const MockTestSetup = ({
         </div>
     );
 
-    const renderPaperModeContent = () => (
-        <div className="space-y-4">
-            {renderOverviewPanel()}
+    const renderPaperModeContent = () => {
+        const csePaperCount = paperOptions.filter((p) => (p.track || "cse") === "cse").length;
+        const daPaperCount = paperOptions.filter((p) => p.track === "da").length;
+        const displayedPapers = paperOptions.filter((paper) => {
+            if (paperTrackFilter === "cse") return (paper.track || "cse") === "cse";
+            if (paperTrackFilter === "da") return paper.track === "da";
+            return true;
+        });
 
-            {paperOptions.length === 0 ? (
-                <div className="rounded-[var(--radius-card)] border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800">
-                    No release-ready papers are available yet.
-                </div>
-            ) : (
+        return (
+            <div className="space-y-4">
+                {renderOverviewPanel()}
 
-                    <div className="grid gap-3 md:grid-cols-2 auto-rows-fr">
-                    {paperOptions.map((paper) => {
-                        const paperIdentity = getMockPaperYearSetIdentity(paper);
-                        const paperTestToken = paper.track === "da"
-                            ? paperIdentity
-                            : (paper.yearSetKey || paperIdentity);
-                        const isSelected = paperIdentity === selectedPaperYearSetKey;
-                        const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
-                        const statusLabel = paper.paperReady
-                            ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
-                            : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
-                        return (
+                {paperOptions.length === 0 ? (
+                    <div className="rounded-[var(--radius-card)] border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800">
+                        No release-ready papers are available yet.
+                    </div>
+                ) : (
+                    <>
+                        <div className="flex flex-wrap items-center gap-2 pb-1">
+                            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mr-1">Track:</span>
                             <button
-                                key={paperIdentity}
-                                data-testid={`mock-paper-option-${paperTestToken}`}
                                 type="button"
-                                onClick={() => onSelectPaper?.(paperIdentity)}
+                                data-testid="mock-paper-filter-all"
+                                onClick={() => setPaperTrackFilter("all")}
                                 className={joinClasses(
-                                    "flex h-full w-full flex-col justify-between rounded-[var(--radius-card)] border p-4 text-left transition",
-                                    isSelected
-                                        ? "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100"
-                                        : (paper.paperReady
-                                            ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
-                                            : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
+                                    "rounded-full px-3 py-1 text-xs font-semibold transition",
+                                    paperTrackFilter === "all"
+                                        ? "bg-slate-900 text-white shadow-sm"
+                                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                                 )}
                             >
-                                <div className="flex w-full items-start justify-between gap-3">
-                                    <div>
-                                        <div className="text-base font-semibold text-slate-950">{paper.label}</div>
-                                        <p className="mt-1 text-[13px] text-slate-600">
-                                            {paper.gaCount} GA and {paper.csCount} CS parsed.
-                                        </p>
-                                        {!paper.paperReady && paper.statusReason ? (
-                                            <p className="mt-1 text-[13px] font-medium text-amber-700">
-                                                {paper.statusReason}
-                                            </p>
-                                        ) : null}
-                                        {!paper.paperReady && blockedQuestions.length > 0 ? (
-                                            <p className="mt-1 text-[11px] text-slate-500">
-                                                Missing:
-                                                {" "}
-                                                {blockedQuestions.slice(0, 3).map((question) => `${question.section} Q${question.orderIndex}`).join(", ")}
-                                                {blockedQuestions.length > 3 ? "..." : ""}
-                                            </p>
-                                        ) : null}
-                                    </div>
-                                    {isSelected || !paper.paperReady ? (
-                                        <span className={joinClasses(
-                                            "mocktest-pill inline-flex px-2 py-0.5 text-[10px] font-semibold uppercase shrink-0 mt-0.5",
-                                            isSelected
-                                                ? "bg-sky-50 text-sky-700"
-                                                : "bg-amber-50 text-amber-700"
-                                        )}>
-                                            {isSelected ? "Selected" : statusLabel}
-                                        </span>
-                                    ) : null}
-                                </div>
+                                All Papers ({paperOptions.length})
                             </button>
-                        );
-                    })}
-                </div>
-            )}
-        </div>
-    );
+                            <button
+                                type="button"
+                                data-testid="mock-paper-filter-cse"
+                                onClick={() => setPaperTrackFilter("cse")}
+                                className={joinClasses(
+                                    "rounded-full px-3 py-1 text-xs font-semibold transition",
+                                    paperTrackFilter === "cse"
+                                        ? "bg-sky-700 text-white shadow-sm"
+                                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                                )}
+                            >
+                                GATE CSE ({csePaperCount})
+                            </button>
+                            <button
+                                type="button"
+                                data-testid="mock-paper-filter-da"
+                                onClick={() => setPaperTrackFilter("da")}
+                                className={joinClasses(
+                                    "rounded-full px-3 py-1 text-xs font-semibold transition",
+                                    paperTrackFilter === "da"
+                                        ? "bg-indigo-700 text-white shadow-sm"
+                                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                                )}
+                            >
+                                GATE DA ({daPaperCount})
+                            </button>
+                        </div>
+
+                        <div className="grid gap-3 md:grid-cols-2 auto-rows-fr">
+                            {displayedPapers.map((paper) => {
+                                const paperIdentity = getMockPaperYearSetIdentity(paper);
+                                const isDaPaper = paper.track === "da";
+                                const paperTestToken = isDaPaper
+                                    ? paperIdentity
+                                    : (paper.yearSetKey || paperIdentity);
+                                const isSelected = paperIdentity === selectedPaperYearSetKey;
+                                const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
+                                const statusLabel = paper.paperReady
+                                    ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
+                                    : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
+                                return (
+                                    <button
+                                        key={paperIdentity}
+                                        data-testid={`mock-paper-option-${paperTestToken}`}
+                                        type="button"
+                                        onClick={() => onSelectPaper?.(paperIdentity)}
+                                        className={joinClasses(
+                                            "flex h-full w-full flex-col justify-between rounded-[var(--radius-card)] border p-4 text-left transition",
+                                            isSelected
+                                                ? (isDaPaper
+                                                    ? "border-indigo-400 bg-[linear-gradient(180deg,#ffffff_0%,#eef2ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-indigo-100"
+                                                    : "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100")
+                                                : (paper.paperReady
+                                                    ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
+                                                    : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
+                                        )}
+                                    >
+                                        <div className="flex w-full items-start justify-between gap-3">
+                                            <div>
+                                                <div className="flex items-center gap-2 flex-wrap">
+                                                    <span className={joinClasses(
+                                                        "inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide border",
+                                                        isDaPaper
+                                                            ? "bg-indigo-50 text-indigo-700 border-indigo-200"
+                                                            : "bg-sky-50 text-sky-700 border-sky-200"
+                                                    )}>
+                                                        {isDaPaper ? "GATE DA" : "GATE CSE"}
+                                                    </span>
+                                                    <span className="text-base font-semibold text-slate-950">{paper.label}</span>
+                                                </div>
+                                                <p className="mt-1.5 text-[13px] text-slate-600">
+                                                    {paper.gaCount} GA and {paper.csCount || paper.daCount || 55} {isDaPaper ? "DA" : "CS"} questions in paper order.
+                                                </p>
+                                                {!paper.paperReady && paper.statusReason ? (
+                                                    <p className="mt-1 text-[13px] font-medium text-amber-700">
+                                                        {paper.statusReason}
+                                                    </p>
+                                                ) : null}
+                                                {!paper.paperReady && blockedQuestions.length > 0 ? (
+                                                    <p className="mt-1 text-[11px] text-slate-500">
+                                                        Missing:
+                                                        {" "}
+                                                        {blockedQuestions.slice(0, 3).map((question) => `${question.section} Q${question.orderIndex}`).join(", ")}
+                                                        {blockedQuestions.length > 3 ? "..." : ""}
+                                                    </p>
+                                                ) : null}
+                                            </div>
+                                            {isSelected || !paper.paperReady ? (
+                                                <span className={joinClasses(
+                                                    "mocktest-pill inline-flex px-2 py-0.5 text-[10px] font-semibold uppercase shrink-0 mt-0.5",
+                                                    isSelected
+                                                        ? (isDaPaper ? "bg-indigo-50 text-indigo-700" : "bg-sky-50 text-sky-700")
+                                                        : "bg-amber-50 text-amber-700"
+                                                )}>
+                                                    {isSelected ? "Selected" : statusLabel}
+                                                </span>
+                                            ) : null}
+                                        </div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </>
+                )}
+            </div>
+        );
+    };
 
     const renderCustomContent = () => (
         <div className="space-y-4">
@@ -530,11 +598,11 @@ const MockTestSetup = ({
                     </FilterChip>
                 </div>
 
-                {/* Core GATE subjects */}
-                {subjects.filter((s) => s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug)).length > 0 && (
+                {/* Core GATE CSE subjects */}
+                {subjects.filter((s) => !s.slug.startsWith("da:") && s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug)).length > 0 && (
                     <div className="space-y-1">
                         {subjects
-                            .filter((s) => s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug))
+                            .filter((s) => !s.slug.startsWith("da:") && s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug))
                             .map((subject) => {
                                 const subjectSlug = subject.slug;
                                 const isSelected = selectedSubjectSet.has(subjectSlug);
@@ -603,6 +671,85 @@ const MockTestSetup = ({
                                     </div>
                                 );
                             })}
+                    </div>
+                )}
+
+                {/* Data Science & AI subjects */}
+                {subjects.filter((s) => s.slug.startsWith("da:")).length > 0 && (
+                    <div className="mt-3 rounded-xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50/60 to-purple-50/40 p-3">
+                        <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-indigo-600">Data Science &amp; AI</p>
+                        <div className="space-y-1">
+                            {subjects
+                                .filter((s) => s.slug.startsWith("da:"))
+                                .map((subject) => {
+                                    const subjectSlug = subject.slug;
+                                    const isSelected = selectedSubjectSet.has(subjectSlug);
+                                    const subtopics = (structuredSubtopics[subjectSlug] || [])
+                                        .slice()
+                                        .sort((a, b) => String(a?.label || a?.slug || "").localeCompare(String(b?.label || b?.slug || "")));
+                                    const hasSubtopics = subtopics.length > 0;
+                                    const isExpanded = expandedSubjectSlug === subjectSlug;
+                                    const showSubtopics = isSelected && hasSubtopics && isExpanded;
+                                    const subjectSubtopicSlugs = subtopics.map((st) => st?.slug).filter(Boolean);
+                                    const allSubtopicsSelected = showSubtopics && subjectSubtopicSlugs.length > 0
+                                        && subjectSubtopicSlugs.every((s) => selectedSubtopicSet.has(s));
+
+                                    return (
+                                        <div key={subjectSlug} className="flex min-w-0 flex-col">
+                                            <div className="flex items-center justify-between gap-2 py-1">
+                                                <label className="flex min-w-0 cursor-pointer items-center gap-2">
+                                                    <input
+                                                        type="checkbox"
+                                                        className="h-4 w-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500"
+                                                        checked={isSelected}
+                                                        onChange={() => onToggleSelection("selectedSubjects", subjectSlug)}
+                                                    />
+                                                    <span className={`truncate text-sm ${isSelected ? "font-medium text-slate-900" : "text-slate-500"}`}>
+                                                        {subject.label}
+                                                    </span>
+                                                </label>
+                                                <div className="flex shrink-0 items-center gap-1.5">
+                                                    {isSelected && hasSubtopics && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => onSetExpandedSubject(isExpanded ? null : subjectSlug)}
+                                                            className="rounded border border-indigo-200 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-indigo-600 hover:bg-indigo-50"
+                                                        >
+                                                            {isExpanded ? "Hide" : "Show"}
+                                                        </button>
+                                                    )}
+                                                    {showSubtopics && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => onBulkToggleSubtopics(subjectSlug, subjectSubtopicSlugs)}
+                                                            className="rounded border border-indigo-300 px-2 py-0.5 text-xs font-semibold text-indigo-800 hover:bg-indigo-50"
+                                                        >
+                                                            {allSubtopicsSelected ? "Clear All" : "Select All"}
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            {showSubtopics && (
+                                                <div className="ml-6 mt-1 max-h-36 space-y-1 overflow-y-auto border-l-2 border-indigo-200 pl-2 pr-1">
+                                                    {subtopics.map((subtopic) => (
+                                                        <label key={subtopic.slug} className="group/sub flex min-w-0 cursor-pointer items-center py-0.5">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="h-3 w-3 rounded border-indigo-200 text-indigo-500 focus:ring-indigo-400"
+                                                                checked={selectedSubtopicSet.has(subtopic.slug)}
+                                                                onChange={() => onToggleSubtopic(subtopic.slug, subjectSlug)}
+                                                            />
+                                                            <span className="ml-2 truncate text-xs text-slate-500 group-hover/sub:text-slate-800" title={subtopic.label}>
+                                                                {subtopic.label}
+                                                            </span>
+                                                        </label>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                        </div>
                     </div>
                 )}
 

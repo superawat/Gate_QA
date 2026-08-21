@@ -5,7 +5,9 @@ import { useFilterState } from "../../contexts/FilterContext";
 import { AnswerService } from "../../services/AnswerService";
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
+import { DaQuestionService } from "../../services/DaQuestionService";
 import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
+import { isDaQuestion } from "../../utils/examTrack";
 import {
     MOCK_SECTION_COUNTS,
     filterMockQuestionsByScope,
@@ -38,7 +40,7 @@ const MOCK_KIND_OPTIONS = [
         title: "Full Mock",
         badge: "Recommended",
         subtitle: "Best default if you want a serious exam-style run before the real test.",
-        helper: "Builds a 65-question attempt from the cross-year scorable GA and CSE pool.",
+        helper: "Builds a 65-question attempt from the cross-year scorable GA and core pool.",
         facts: { count: "65 Questions", duration: "180 min" },
         fixedCount: 65,
         durationMinutes: 180,
@@ -48,8 +50,8 @@ const MOCK_KIND_OPTIONS = [
         id: "paper_mode",
         title: "Past Paper",
         badge: "Closest to Exam",
-        subtitle: "Attempt a release-ready paper in deterministic order with paper-backed structure.",
-        helper: "Use this when you want the closest available match to a real GATE paper.",
+        subtitle: "Attempt release-ready GATE CSE and GATE DA papers in official order.",
+        helper: "Practice exact official papers with 10 GA + 55 Core (CSE or DA).",
         facts: { count: "10 GA + 55 Core", duration: "180 min" },
         fixedCount: 65,
         durationMinutes: 180,
@@ -60,7 +62,7 @@ const MOCK_KIND_OPTIONS = [
         title: "Custom Builder",
         badge: "Flexible",
         subtitle: "Create a short mock, subject-focused run, or 15Q/25Q practice set from one builder.",
-        helper: "Quick mocks now start here instead of appearing as separate portal cards.",
+        helper: "Build custom practice attempts across GATE CSE, GATE DA, and General Aptitude.",
         facts: { count: "1 to 65 Questions", duration: "Adaptive" },
         fixedCount: null,
         durationMinutes: null,
@@ -1012,7 +1014,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         setStep("setup");
     }, [clearAttemptError, resetSetupState, selectedKindId]);
 
-    const hydrateAptitudeQuestions = useCallback(async (questionList = []) => {
+    const hydrateQuestions = useCallback(async (questionList = []) => {
         const rows = Array.isArray(questionList) ? questionList : [];
         if (rows.length === 0) {
             return [];
@@ -1020,10 +1022,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
         return Promise.all(rows.map(async (question) => {
             const uid = String(question?.question_uid || "").trim();
-            if (!uid.startsWith(APTITUDE_UID_PREFIX)) {
-                return question;
-            }
-
             const hasQuestionStem = String(question?.question || "").trim().length > 0;
             const hasOptions = Array.isArray(question?.options) && question.options.length > 0;
             const hasAnswer = String(question?.answerMeta?.answer ?? question?.answer ?? "").trim().length > 0;
@@ -1031,11 +1029,31 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 return question;
             }
 
-            try {
-                return await AptitudeQuestionService.ensureQuestionDetail(question);
-            } catch {
-                return question;
+            if (uid.startsWith(APTITUDE_UID_PREFIX)) {
+                try {
+                    return await AptitudeQuestionService.ensureQuestionDetail(question);
+                } catch {
+                    return question;
+                }
             }
+
+            if (isDaQuestion(question) || uid.startsWith("da:") || uid.startsWith("go:") || question?.track === "da") {
+                try {
+                    return await DaQuestionService.ensureQuestionDetail(question) || question;
+                } catch {
+                    return question;
+                }
+            }
+
+            if (typeof QuestionService.ensureQuestionDetail === "function") {
+                try {
+                    return await QuestionService.ensureQuestionDetail(question) || question;
+                } catch {
+                    return question;
+                }
+            }
+
+            return question;
         }));
     }, []);
 
@@ -1101,10 +1119,14 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 csQuestions = selection.csQuestions;
             }
 
-            const hydratedGaQuestions = await hydrateAptitudeQuestions(gaQuestions);
-            const hydratedCsQuestions = await hydrateAptitudeQuestions(csQuestions);
+            const hydratedGaQuestions = await hydrateQuestions(gaQuestions);
+            const hydratedCsQuestions = await hydrateQuestions(csQuestions);
             const totalQuestions = gaQuestions.length + csQuestions.length;
             const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
+            const isDa = selectedPaper?.track === "da"
+                || (selectedKind.id === "paper_mode" && String(selectedPaperYearSetKey || "").toLowerCase().startsWith("da:"))
+                || csQuestions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:") || String(q?.question_uid || "").startsWith("go:"));
+
             const started = startTest({
                 gaQuestions: hydratedGaQuestions,
                 csQuestions: hydratedCsQuestions,
@@ -1113,6 +1135,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 meta: {
                     kindId: selectedKind.id,
                     kindTitle: selectedKind.title,
+                    track: isDa ? "da" : "cse",
+                    isDa,
                     strictSectionCounts,
                     durationMinutes,
                     questionCount: totalQuestions,
@@ -1141,7 +1165,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         customDurationMinutes,
         filteredPool,
         generatedScorableQuestions,
-        hydrateAptitudeQuestions,
+        hydrateQuestions,
         isStartingExam,
         paperCsQuestions,
         paperGaQuestions,
