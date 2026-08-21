@@ -1352,7 +1352,7 @@ export const MockTestProvider = ({ children }) => {
       }
 
       const isApt = isAptitudeQuestionUid(questionUid);
-      const isDa = isDaQuestion(question) || String(questionUid).startsWith("da:") || String(questionUid).startsWith("go:");
+      const isDa = isDaQuestion(question) || String(questionUid).startsWith("da:");
       const storageKey = isApt
         ? questionUid
         : (AnswerService.getStorageKeyForQuestion(question) || questionUid);

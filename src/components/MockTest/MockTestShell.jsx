@@ -1037,7 +1037,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 }
             }
 
-            if (isDaQuestion(question) || uid.startsWith("da:") || uid.startsWith("go:") || question?.track === "da") {
+            if (isDaQuestion(question) || uid.startsWith("da:") || question?.track === "da") {
                 try {
                     return await DaQuestionService.ensureQuestionDetail(question) || question;
                 } catch {
@@ -1125,7 +1125,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
             const isDa = selectedPaper?.track === "da"
                 || (selectedKind.id === "paper_mode" && String(selectedPaperYearSetKey || "").toLowerCase().startsWith("da:"))
-                || csQuestions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:") || String(q?.question_uid || "").startsWith("go:"));
+                || csQuestions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:"));
 
             const started = startTest({
                 gaQuestions: hydratedGaQuestions,

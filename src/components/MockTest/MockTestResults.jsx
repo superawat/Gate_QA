@@ -202,7 +202,7 @@ const generatePerformanceAnalysis = (questions = [], summary = {}) => {
         const gaAcc = ga.attempted > 0 ? (ga.correct / ga.attempted) : 0;
         const csAcc = cs.attempted > 0 ? (cs.correct / cs.attempted) : 0;
 
-        const isDaAttempt = questions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:") || String(q?.question_uid || "").startsWith("go:"));
+        const isDaAttempt = questions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:"));
         const coreName = isDaAttempt ? "Data Science & AI" : "Computer Science";
 
         if (gaAcc > csAcc + 0.25) {
@@ -360,7 +360,7 @@ const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
         attemptMeta?.isDa
         || attemptMeta?.track === "da"
         || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
-        || (questions || []).some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:") || String(q?.question_uid || "").startsWith("go:"))
+        || (questions || []).some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:"))
     );
     const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
 
