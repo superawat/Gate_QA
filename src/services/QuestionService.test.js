@@ -202,28 +202,39 @@ describe("QuestionService", () => {
     })).toBe("Other / Optional");
   });
 
-  test("correctly differentiates General Aptitude Probability vs Technical Engineering Mathematics Probability", () => {
-    // GA Probability question (GATE CSE 2026 Set 1 Q1)
-    const gaQuestion = {
+  test("correctly classifies technical Probability questions into Engineering Mathematics", () => {
+    // Technical Probability question (GATE CSE 2026 Set 1 Q1)
+    const q523079 = {
       title: "GATE CSE 2026 | Set 1 | Question: 1",
-      tags: ["gatecse-2026-set1", "general-aptitude", "probability", "quantitative-aptitude", "expectation", "one-mark", "easy"],
+      tags: ["gatecse-2026-set1", "engineering-mathematics", "probability", "expectation", "one-mark", "easy"],
     };
-    const gaSubject = QuestionService.resolveCanonicalSubject(gaQuestion);
-    expect(gaSubject).toBe("General Aptitude");
-    expect(QuestionService.getSubjectSlugByLabel(gaSubject)).toBe("ga");
-    const gaSubtopics = QuestionService.extractCanonicalSubtopics(gaQuestion.tags, gaSubject);
-    expect(gaSubtopics).toEqual([{ slug: "probability", label: "Probability" }]);
+    const subj523079 = QuestionService.resolveCanonicalSubject(q523079);
+    expect(subj523079).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj523079)).toBe("engg-math");
+    const subtopics523079 = QuestionService.extractCanonicalSubtopics(q523079.tags, subj523079);
+    expect(subtopics523079).toEqual([{ slug: "probability", label: "Probability" }]);
+
+    // Technical Probability question (GATE CSE 2024 Set 2 Q8)
+    const q422889 = {
+      title: "GATE CSE 2024 | Set 2 | Question: 8",
+      tags: ["gatecse-2024-set2", "engineering-mathematics", "probability", "permutation-and-combination", "one-mark"],
+    };
+    const subj422889 = QuestionService.resolveCanonicalSubject(q422889);
+    expect(subj422889).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj422889)).toBe("engg-math");
+    const subtopics422889 = QuestionService.extractCanonicalSubtopics(q422889.tags, subj422889);
+    expect(subtopics422889).toEqual([{ slug: "probability", label: "Probability" }]);
 
     // Technical Probability question (GATE CSE 2024 Set 2 Q34)
-    const techQuestion = {
+    const q422863 = {
       title: "GATE CSE 2024 | Set 2 | Question: 34",
       tags: ["gatecse-2024-set2", "engineering-mathematics", "probability", "random-variable", "statistics", "two-marks"],
     };
-    const techSubject = QuestionService.resolveCanonicalSubject(techQuestion);
-    expect(techSubject).toBe("Engineering Mathematics");
-    expect(QuestionService.getSubjectSlugByLabel(techSubject)).toBe("engg-math");
-    const techSubtopics = QuestionService.extractCanonicalSubtopics(techQuestion.tags, techSubject);
-    expect(techSubtopics).toEqual([{ slug: "probability", label: "Probability" }]);
+    const subj422863 = QuestionService.resolveCanonicalSubject(q422863);
+    expect(subj422863).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj422863)).toBe("engg-math");
+    const subtopics422863 = QuestionService.extractCanonicalSubtopics(q422863.tags, subj422863);
+    expect(subtopics422863).toEqual([{ slug: "probability", label: "Probability" }]);
   });
 
   test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {

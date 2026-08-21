@@ -10,15 +10,15 @@
   - **2. GATE CSE 2022 Question 39 (`go:371897`) — Optional Legacy Topic Classification**:
     - *Problem*: Question required optional status classification per verified report.
     - *Resolution*: Applied the canonical GateQA mechanism by adding `"out-of-syllabus-now"` to the question's tag set. Reclassified the question under `Other / Optional` (`legacy-other`), properly displaying it in the TopicFilter under *"Optional legacy topics"* with the dedicated *"Optional"* badge while preserving question content and metadata.
-  - **3. GATE CSE 2026 Set 1 Question 1 (`go:523079`) — General Aptitude Section Probability**:
-    - *Problem*: Question is a Probability problem that appeared in the GATE General Aptitude section (Q1). Reclassifying it into Engineering Mathematics would incorrectly misrepresent its official GATE section.
-    - *Resolution*: Retained `General Aptitude` (`ga`) as the primary subject. Cleaned noisy scraper tags and mapped the canonical subtopic to `Probability` (`probability`), ensuring the question remains discoverable under General Aptitude practice, Probability filtering, and search.
-  - **4. GATE CSE 2024 Set 2 Question 8 (`go:422889`) — General Aptitude Section Probability**:
-    - *Problem*: 6-dice probability question from GATE 2024 Set 2 GA section (Q8) needed cross-topic association without breaking section classification.
-    - *Resolution*: Preserved `General Aptitude` (`ga`) as primary subject and mapped canonical subtopic to `Probability` (`probability`) with clean tag ordering.
-  - **5. GATE CSE 2024 Set 2 Question 34 (`go:422863`) — Technical Probability Misclassification Fix**:
+  - **3. GATE CSE 2026 Set 1 Question 1 (`go:523079`) — Technical Probability in Engineering Mathematics**:
+    - *Problem*: Question is a technical Probability problem on expectation and urn draws ($X = 1$ if drawn ball is red).
+    - *Resolution*: Classified under **`Engineering Mathematics`** (`engg-math`) with subtopic **`Probability`** (`probability`) and answer key **Option B** ($1/3$).
+  - **4. GATE CSE 2024 Set 2 Question 8 (`go:422889`) — Technical Probability in Engineering Mathematics**:
+    - *Problem*: Question is a technical Probability problem on rolling six unbiased dice simultaneously.
+    - *Resolution*: Classified under **`Engineering Mathematics`** (`engg-math`) with subtopic **`Probability`** (`probability`) and answer key **Option B** ($5/324$).
+  - **5. GATE CSE 2024 Set 2 Question 34 (`go:422863`) — Technical Probability in Engineering Mathematics**:
     - *Problem*: Technical CS question (Q34) on random variables ($x, y, z=xy$) was incorrectly tagged with scraper verbal tokens (`verbal-aptitude`, `sentence-ordering`), causing it to misclassify as General Aptitude.
-    - *Resolution*: Removed misleading verbal tags, added `engineering-mathematics`, and classified the question under `Engineering Mathematics` (`engg-math`) with subtopic `Probability` (`probability`). Now correctly appears under technical Probability practice and is excluded from General Aptitude.
+    - *Resolution*: Removed misleading verbal tags, added `engineering-mathematics`, and classified the question under **`Engineering Mathematics`** (`engg-math`) with subtopic **`Probability`** (`probability`) and answer key **Option D** ($\bar{z} \leq \bar{x}$).
   - **6. GATE CSE 2025 Set 1 Question 8 (`go:460072`) — Official Answer Key Correction**:
     - *Problem*: Answer key was incorrectly marked as Option `C`, whereas the mathematically proven and official GATE 2025 answer is Option **B** ($d_1(u, v) \leq d_2(u, v)$ for shortest paths in $G$ vs MST $T$).
     - *Resolution*: Added manual patch in `data/answers/manual-answers-patch-v1.json`, updated `answers_by_question_uid_v1.json`, rebuilt shard `2025-s1`, and validated correct evaluation.
