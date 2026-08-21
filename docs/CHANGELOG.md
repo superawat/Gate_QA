@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-08-22
+
+- **Verified Question Reports Resolution & Multi-Subject Subtopic Taxonomy Rectification (DEC-028 / AUG-028)**:
+  - **Overview**: Resolved 6 verified question reports addressing question types, official answer keys, optional syllabus categorization, and a critical taxonomy distinction separating actual GATE exam section placement from conceptual topics.
+  - **1. GATE CSE 2020 Question 31 (`go:333200`) — Question Type & Answer Key Fix**:
+    - *Problem*: Displayed as `NAT` with placeholder answer `99` due to legacy OCR assignment (`v2:1.24.27`), whereas the original GATE question is an MCQ.
+    - *Resolution*: Corrected type to `MCQ`, set verified official answer key to **Option D** ($\Theta(|V|)$) for worst-case MST cycle verification time complexity, and preserved all 4 options (A-D) in question HTML, answer registries, and shard `2020-s0`.
+  - **2. GATE CSE 2022 Question 39 (`go:371897`) — Optional Legacy Topic Classification**:
+    - *Problem*: Question required optional status classification per verified report.
+    - *Resolution*: Applied the canonical GateQA mechanism by adding `"out-of-syllabus-now"` to the question's tag set. Reclassified the question under `Other / Optional` (`legacy-other`), properly displaying it in the TopicFilter under *"Optional legacy topics"* with the dedicated *"Optional"* badge while preserving question content and metadata.
+  - **3. GATE CSE 2026 Set 1 Question 1 (`go:523079`) — General Aptitude Section Probability**:
+    - *Problem*: Question is a Probability problem that appeared in the GATE General Aptitude section (Q1). Reclassifying it into Engineering Mathematics would incorrectly misrepresent its official GATE section.
+    - *Resolution*: Retained `General Aptitude` (`ga`) as the primary subject. Cleaned noisy scraper tags and mapped the canonical subtopic to `Probability` (`probability`), ensuring the question remains discoverable under General Aptitude practice, Probability filtering, and search.
+  - **4. GATE CSE 2024 Set 2 Question 8 (`go:422889`) — General Aptitude Section Probability**:
+    - *Problem*: 6-dice probability question from GATE 2024 Set 2 GA section (Q8) needed cross-topic association without breaking section classification.
+    - *Resolution*: Preserved `General Aptitude` (`ga`) as primary subject and mapped canonical subtopic to `Probability` (`probability`) with clean tag ordering.
+  - **5. GATE CSE 2024 Set 2 Question 34 (`go:422863`) — Technical Probability Misclassification Fix**:
+    - *Problem*: Technical CS question (Q34) on random variables ($x, y, z=xy$) was incorrectly tagged with scraper verbal tokens (`verbal-aptitude`, `sentence-ordering`), causing it to misclassify as General Aptitude.
+    - *Resolution*: Removed misleading verbal tags, added `engineering-mathematics`, and classified the question under `Engineering Mathematics` (`engg-math`) with subtopic `Probability` (`probability`). Now correctly appears under technical Probability practice and is excluded from General Aptitude.
+  - **6. GATE CSE 2025 Set 1 Question 8 (`go:460072`) — Official Answer Key Correction**:
+    - *Problem*: Answer key was incorrectly marked as Option `C`, whereas the mathematically proven and official GATE 2025 answer is Option **B** ($d_1(u, v) \leq d_2(u, v)$ for shortest paths in $G$ vs MST $T$).
+    - *Resolution*: Added manual patch in `data/answers/manual-answers-patch-v1.json`, updated `answers_by_question_uid_v1.json`, rebuilt shard `2025-s1`, and validated correct evaluation.
+  - **Multi-Subject Subtopic Filter Engine (`src/contexts/FilterContext.tsx`)**:
+    - *Architectural Enhancement*: Extended `buildSubtopicToSubjectSlugMap` and `subtopicsByParentSubject` to support subtopics shared across multiple subjects (such as `Probability` in `General Aptitude`, `Engineering Mathematics`, and `Computer Networks`).
+    - *Result*: Selecting `Probability` under any active parent subject dynamically scopes and discovers matching questions without collision or parent subject overwrite.
+  - **Validation & Test Coverage**:
+    - Added unit test cases in `src/services/QuestionService.test.js` validating optional tagging and GA vs Engineering Math Probability classification.
+    - All 443 unit tests across 67 test files pass (`100% green`).
+    - TypeScript typecheck passed with 0 errors.
+    - Public parity verified at 3549 questions across all generated public payloads.
+
 ## 2026-08-20
 
 - **Filtered Practice Queue Context Preservation & Header Badge Synchronization (`ExplorePage.jsx` & `SolvePage.jsx`)**:

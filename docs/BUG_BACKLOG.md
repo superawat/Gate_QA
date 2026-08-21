@@ -33,6 +33,22 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-REPORTS-028: 6 Verified Question Reports & Taxonomy Rectification
+
+- **Status**: Resolved on 2026-08-22
+- **Severity**: Medium (P2)
+- **Area**: Question Bank / Answer Registry / Taxonomy / Filter Engine
+- **Symptom**:
+  1. `go:333200` (2020 Q31) rendered as NAT instead of MCQ.
+  2. `go:371897` (2022 Q39) required optional classification.
+  3. `go:523079` (2026 Set 1 Q1) and `go:422889` (2024 Set 2 Q8) GA Probability questions needed cross-topic discoverability under Probability while preserving GA section classification.
+  4. `go:422863` (2024 Set 2 Q34) was misclassified as GA due to contaminated scraper tags instead of Engineering Mathematics.
+  5. `go:460072` (2025 Set 1 Q8) had incorrect answer key C instead of official answer B.
+- **Root Cause & Fix**:
+  - Corrected question types, answer registries, manual patches, and tags across JSON banks and shards.
+  - Upgraded `FilterContext.tsx` reverse mapping to support multi-parent subtopics like `Probability` across `General Aptitude` and `Engineering Mathematics`.
+- **Verification**: `npm run test:unit`, `npm run typecheck`, `npm run qa:validate-data`, `node scripts/qa/validate-public-parity.js`.
+
 ### BUG-PRACTICE-STREAK-01: Practice Question Attempts Not Updating Streak, Daily Goal, or Activity Heatmap
 
 - **Status**: Resolved on 2026-08-15

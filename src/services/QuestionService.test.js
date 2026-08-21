@@ -195,6 +195,35 @@ describe("QuestionService", () => {
       title: "GATE CSE 1996 | Question: 1.22",
       tags: ["gate1996", "co-and-architecture", "8085-microprocessor", "out-of-syllabus-now"],
     })).toBe("Other / Optional");
+
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE CSE 2022 | Question: 39",
+      tags: ["gatecse-2022", "algorithms", "spanning-tree", "minimum-spanning-tree", "multiple-selects", "2-marks", "out-of-syllabus-now"],
+    })).toBe("Other / Optional");
+  });
+
+  test("correctly differentiates General Aptitude Probability vs Technical Engineering Mathematics Probability", () => {
+    // GA Probability question (GATE CSE 2026 Set 1 Q1)
+    const gaQuestion = {
+      title: "GATE CSE 2026 | Set 1 | Question: 1",
+      tags: ["gatecse-2026-set1", "general-aptitude", "probability", "quantitative-aptitude", "expectation", "one-mark", "easy"],
+    };
+    const gaSubject = QuestionService.resolveCanonicalSubject(gaQuestion);
+    expect(gaSubject).toBe("General Aptitude");
+    expect(QuestionService.getSubjectSlugByLabel(gaSubject)).toBe("ga");
+    const gaSubtopics = QuestionService.extractCanonicalSubtopics(gaQuestion.tags, gaSubject);
+    expect(gaSubtopics).toEqual([{ slug: "probability", label: "Probability" }]);
+
+    // Technical Probability question (GATE CSE 2024 Set 2 Q34)
+    const techQuestion = {
+      title: "GATE CSE 2024 | Set 2 | Question: 34",
+      tags: ["gatecse-2024-set2", "engineering-mathematics", "probability", "random-variable", "statistics", "two-marks"],
+    };
+    const techSubject = QuestionService.resolveCanonicalSubject(techQuestion);
+    expect(techSubject).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(techSubject)).toBe("engg-math");
+    const techSubtopics = QuestionService.extractCanonicalSubtopics(techQuestion.tags, techSubject);
+    expect(techSubtopics).toEqual([{ slug: "probability", label: "Probability" }]);
   });
 
   test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {

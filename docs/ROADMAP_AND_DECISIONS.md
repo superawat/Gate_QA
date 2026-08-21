@@ -24,6 +24,21 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-028: Verified Question Reports Resolution & Multi-Subject Subtopic Taxonomy Rectification
+- Status: Delivered (2026-08-22)
+- Priority: P1
+- Decision:
+  1. Resolve 6 verified question reports across question type, answer key, and taxonomy dimensions:
+     - `go:333200` (2020 Q31): Convert NAT to MCQ with answer D ($\Theta(|V|)$) and preserve all 4 options.
+     - `go:371897` (2022 Q39): Make optional via `out-of-syllabus-now` tag under `Other / Optional` (`legacy-other`).
+     - `go:523079` (2026 Set 1 Q1): Retain `General Aptitude` (`ga`) as primary subject while mapping subtopic to `Probability` (`probability`).
+     - `go:422889` (2024 Set 2 Q8): Retain `General Aptitude` (`ga`) as primary subject while mapping subtopic to `Probability` (`probability`).
+     - `go:422863` (2024 Set 2 Q34): Reclassify from GA to `Engineering Mathematics` (`engg-math`) with subtopic `Probability` (`probability`).
+     - `go:460072` (2025 Set 1 Q8): Correct answer key from C to B ($d_1(u, v) \leq d_2(u, v)$).
+  2. Upgrade `FilterContext.tsx` reverse mapping (`buildSubtopicToSubjectSlugMap` and `subtopicsByParentSubject`) to support subtopics shared across multiple parent subjects (e.g. `Probability` in `General Aptitude` and `Engineering Mathematics`), ensuring scoped AND filtering accurately discovers matching questions without parent subject collisions.
+- Why:
+  Actual GATE exam section placement (where the question appeared in the exam paper) and conceptual topic (what concept it tests) are two distinct dimensions that must not be conflated. General Aptitude probability questions must remain under GA while being discoverable under Probability practice, and technical probability questions must remain under Engineering Mathematics.
+
 ### DEC-019: Mobile UI Subsystem & Responsive Touch Ergonomics Overhaul (FEAT-035)
 - Status: Delivered (2026-08-15)
 - Priority: P1

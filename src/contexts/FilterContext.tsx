@@ -329,16 +329,24 @@ const normalizeSubtopicSlugs = (rawSubtopics, questionService = QuestionService)
 
 const buildSubtopicToSubjectSlugMap = (structuredSubtopics = {}, questionService = QuestionService) => {
     const map = new Map();
+    const multiMap = new Map();
 
     Object.entries(structuredSubtopics || {}).forEach(([subjectSlug, entries]) => {
         (entries || []).forEach((entry) => {
             const slug = questionService.slugifyToken(entry?.slug || entry?.label || entry);
             if (slug) {
-                map.set(slug, subjectSlug);
+                if (!map.has(slug)) {
+                    map.set(slug, subjectSlug);
+                }
+                if (!multiMap.has(slug)) {
+                    multiMap.set(slug, new Set());
+                }
+                multiMap.get(slug).add(subjectSlug);
             }
         });
     });
 
+    (map as any).allParents = multiMap;
     return map;
 };
 
@@ -351,6 +359,7 @@ const reconcileSubjectAndSubtopicFilters = (
     const merged = { ...baseFilters };
     const hasSelectedSubjects = Object.prototype.hasOwnProperty.call(incomingFilters, 'selectedSubjects');
     const hasSelectedSubtopics = Object.prototype.hasOwnProperty.call(incomingFilters, 'selectedSubtopics');
+    const multiMap: Map<string, Set<string>> | undefined = (subtopicToSubjectSlug as any)?.allParents;
 
     if (hasSelectedSubjects) {
         merged.selectedSubjects = normalizeSubjectSlugs(incomingFilters.selectedSubjects, questionService);
@@ -361,6 +370,13 @@ const reconcileSubjectAndSubtopicFilters = (
                 merged.selectedSubtopics = [];
             } else {
                 merged.selectedSubtopics = normalizeSubtopicSlugs(merged.selectedSubtopics, questionService).filter((subtopicSlug) => {
+                    const parentSlugs = multiMap?.get(subtopicSlug);
+                    if (parentSlugs && parentSlugs.size > 0) {
+                        for (const parentSlug of parentSlugs) {
+                            if (activeSubjectSet.has(parentSlug)) return true;
+                        }
+                        return false;
+                    }
                     const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
                     return Boolean(parentSlug && activeSubjectSet.has(parentSlug));
                 });
@@ -373,9 +389,26 @@ const reconcileSubjectAndSubtopicFilters = (
 
         const selectedSubjects = new Set(merged.selectedSubjects);
         merged.selectedSubtopics.forEach((subtopicSlug) => {
-            const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
-            if (parentSlug) {
-                selectedSubjects.add(parentSlug);
+            const parentSlugs = multiMap?.get(subtopicSlug);
+            if (parentSlugs && parentSlugs.size > 0) {
+                let hasAnySelected = false;
+                for (const parentSlug of parentSlugs) {
+                    if (selectedSubjects.has(parentSlug)) {
+                        hasAnySelected = true;
+                        break;
+                    }
+                }
+                if (!hasAnySelected) {
+                    const primaryParent = subtopicToSubjectSlug.get(subtopicSlug);
+                    if (primaryParent) {
+                        selectedSubjects.add(primaryParent);
+                    }
+                }
+            } else {
+                const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+                if (parentSlug) {
+                    selectedSubjects.add(parentSlug);
+                }
             }
         });
         merged.selectedSubjects = normalizeSubjectSlugs(Array.from(selectedSubjects), questionService);
@@ -1208,14 +1241,26 @@ export const FilterProvider = ({
 
         // Group selected subtopics by their parent subject for scoped AND filtering.
         // e.g. { "dbms": Set(["b-tree"]), "os": Set(["virtual-memory"]) }
-        const subtopicsByParentSubject = new Map();
+        const subtopicsByParentSubject = new Map<string, Set<string>>();
+        const multiMap: Map<string, Set<string>> | undefined = (subtopicToSubjectSlug as any)?.allParents;
+
         selectedSubtopics.forEach(subtopicSlug => {
-            const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
-            if (!parentSlug) return;
-            if (!subtopicsByParentSubject.has(parentSlug)) {
-                subtopicsByParentSubject.set(parentSlug, new Set());
+            const parentSlugs = multiMap?.get(subtopicSlug);
+            if (parentSlugs && parentSlugs.size > 0) {
+                parentSlugs.forEach((parentSlug: string) => {
+                    if (!subtopicsByParentSubject.has(parentSlug)) {
+                        subtopicsByParentSubject.set(parentSlug, new Set());
+                    }
+                    subtopicsByParentSubject.get(parentSlug)!.add(subtopicSlug);
+                });
+            } else {
+                const parentSlug = subtopicToSubjectSlug.get(subtopicSlug);
+                if (!parentSlug) return;
+                if (!subtopicsByParentSubject.has(parentSlug)) {
+                    subtopicsByParentSubject.set(parentSlug, new Set());
+                }
+                subtopicsByParentSubject.get(parentSlug)!.add(subtopicSlug);
             }
-            subtopicsByParentSubject.get(parentSlug).add(subtopicSlug);
         });
 
         return allQuestions.filter(q => {
