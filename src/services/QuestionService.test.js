@@ -237,6 +237,18 @@ describe("QuestionService", () => {
     expect(subtopics422863).toEqual([{ slug: "probability", label: "Probability" }]);
   });
 
+  test("correctly classifies GATE 2026 Set 1 Q2 into Discrete Mathematics Combinatorics", () => {
+    const q523078 = {
+      title: "GATE CSE 2026 | Set 1 | Question: 2",
+      tags: ["gatecse-2026-set1", "discrete-mathematics", "combinatory", "one-mark", "easy"],
+    };
+    const subj523078 = QuestionService.resolveCanonicalSubject(q523078);
+    expect(subj523078).toBe("Discrete Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj523078)).toBe("discrete-math");
+    const subtopics523078 = QuestionService.extractCanonicalSubtopics(q523078.tags, subj523078);
+    expect(subtopics523078).toEqual([{ slug: "combinatory", label: "Combinatory" }]);
+  });
+
   test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {
     // We mock the lookup map just for this test
     const mockLookupObj = {

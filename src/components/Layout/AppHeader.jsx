@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaExclamationTriangle, FaNewspaper } from "react-icons/fa";
+import { FaExclamationTriangle } from "react-icons/fa";
 import { FiMessageSquare, FiMoon, FiSun } from "react-icons/fi";
 
 import DomainShiftNotice from "./DomainShiftNotice";
@@ -599,21 +599,6 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               <FaExclamationTriangle className="size-2.5 text-amber-500 sm:size-3" aria-hidden="true" />
               <span className="whitespace-nowrap">{domainShiftCountdown}</span>
             </button>
-          ) : null}
-
-          {!isMockWindowRoute ? (
-            <Link
-              to="/gate-cse-2027-syllabus-changes"
-              aria-label="GATE 2027 Syllabus Changes — read what changed"
-              title="GATE 2027 Syllabus Changes"
-              className="header-secondary-action relative hidden h-8 w-8 items-center justify-center rounded-full border border-emerald-300 bg-emerald-50 text-emerald-600 transition hover:scale-110 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:border-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 dark:hover:bg-emerald-900/40 sm:inline-flex"
-            >
-              <FaNewspaper className="h-4 w-4" aria-hidden="true" />
-              <span className="absolute -right-0.5 -top-0.5 flex h-2 w-2" aria-hidden="true">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-            </Link>
           ) : null}
 
           {!isMockWindowRoute ? (

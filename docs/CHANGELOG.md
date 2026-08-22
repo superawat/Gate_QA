@@ -22,12 +22,17 @@
   - **6. GATE CSE 2025 Set 1 Question 8 (`go:460072`) — Official Answer Key Correction**:
     - *Problem*: Answer key was incorrectly marked as Option `C`, whereas the mathematically proven and official GATE 2025 answer is Option **B** ($d_1(u, v) \leq d_2(u, v)$ for shortest paths in $G$ vs MST $T$).
     - *Resolution*: Added manual patch in `data/answers/manual-answers-patch-v1.json`, updated `answers_by_question_uid_v1.json`, rebuilt shard `2025-s1`, and validated correct evaluation.
+  - **7. GATE CSE 2026 Set 1 Question 2 (`go:523078`) — Discrete Mathematics Combinatorics Classification**:
+    - *Problem*: Counting binary $4 \times 4$ matrices with even row/column sums ($2^{(4-1)^2} = 512$, Option A) was incorrectly classified under `Engineering Mathematics` due to scraper tokens (`linear-algebra`, `matrix`, `analytical-aptitude`).
+    - *Resolution*: Removed noisy scraper tags, added canonical `discrete-mathematics` and `combinatory`, reclassifying under **`Discrete Mathematics`** (`discrete-math`) with subtopic **`Combinatory`** (`combinatory`). Updated question bank files, rebuilt public detail shards (`2026-s1.json`) and search index, and added unit regression tests.
   - **Multi-Subject Subtopic Filter Engine (`src/contexts/FilterContext.tsx`)**:
     - *Architectural Enhancement*: Extended `buildSubtopicToSubjectSlugMap` and `subtopicsByParentSubject` to support subtopics shared across multiple subjects (such as `Probability` in `General Aptitude`, `Engineering Mathematics`, and `Computer Networks`).
     - *Result*: Selecting `Probability` under any active parent subject dynamically scopes and discovers matching questions without collision or parent subject overwrite.
+  - **Header Cleanup (`src/components/Layout/AppHeader.jsx`)**:
+    - Removed the green newspaper icon button (`FaNewspaper`) linking to the GATE 2027 syllabus changes guide from the top header bar to streamline global header actions.
   - **Validation & Test Coverage**:
     - Added unit test cases in `src/services/QuestionService.test.js` validating optional tagging and GA vs Engineering Math Probability classification.
-    - All 443 unit tests across 67 test files pass (`100% green`).
+    - All 444 unit tests across 67 test files pass (`100% green`).
     - TypeScript typecheck passed with 0 errors.
     - Public parity verified at 3549 questions across all generated public payloads.
 
