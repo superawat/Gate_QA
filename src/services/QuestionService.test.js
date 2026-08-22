@@ -197,9 +197,21 @@ describe("QuestionService", () => {
     })).toBe("Other / Optional");
 
     expect(QuestionService.resolveCanonicalSubject({
-      title: "GATE CSE 2022 | Question: 39",
-      tags: ["gatecse-2022", "algorithms", "spanning-tree", "minimum-spanning-tree", "multiple-selects", "2-marks", "out-of-syllabus-now"],
+      title: "GATE CSE 2005 | Question: 85",
+      tags: ["gate2005", "web-technologies", "html", "out-of-syllabus-now"],
     })).toBe("Other / Optional");
+  });
+
+  test("correctly classifies GATE 2022 Q39 into Algorithms Minimum Spanning Tree", () => {
+    const q371897 = {
+      title: "GATE CSE 2022 | Question: 39",
+      tags: ["gatecse-2022", "algorithms", "spanning-tree", "minimum-spanning-tree", "multiple-selects", "2-marks"],
+    };
+    const subj371897 = QuestionService.resolveCanonicalSubject(q371897);
+    expect(subj371897).toBe("Algorithms");
+    expect(QuestionService.getSubjectSlugByLabel(subj371897)).toBe("algorithms");
+    const subtopics371897 = QuestionService.extractCanonicalSubtopics(q371897.tags, subj371897);
+    expect(subtopics371897).toEqual([{ slug: "minimum-spanning-tree", label: "Minimum Spanning Tree" }]);
   });
 
   test("correctly classifies technical Probability questions into Engineering Mathematics", () => {

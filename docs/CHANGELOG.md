@@ -7,9 +7,9 @@
   - **1. GATE CSE 2020 Question 31 (`go:333200`) — Question Type & Answer Key Fix**:
     - *Problem*: Displayed as `NAT` with placeholder answer `99` due to legacy OCR assignment (`v2:1.24.27`), whereas the original GATE question is an MCQ.
     - *Resolution*: Corrected type to `MCQ`, set verified official answer key to **Option D** ($\Theta(|V|)$) for worst-case MST cycle verification time complexity, and preserved all 4 options (A-D) in question HTML, answer registries, and shard `2020-s0`.
-  - **2. GATE CSE 2022 Question 39 (`go:371897`) — Optional Legacy Topic Classification**:
-    - *Problem*: Question required optional status classification per verified report.
-    - *Resolution*: Applied the canonical GateQA mechanism by adding `"out-of-syllabus-now"` to the question's tag set. Reclassified the question under `Other / Optional` (`legacy-other`), properly displaying it in the TopicFilter under *"Optional legacy topics"* with the dedicated *"Optional"* badge while preserving question content and metadata.
+  - **2. GATE CSE 2022 Question 39 (`go:371897`) — Algorithms Minimum Spanning Tree MSQ & Active Syllabus Fix**:
+    - *Problem*: Question on distinct edge weight MST properties was incorrectly assigned corrupted OCR answer (`NAT 24`) and erroneous optional tag `out-of-syllabus-now`, making it disappear from Algorithms → Minimum Spanning Tree practice.
+    - *Resolution*: Removed `out-of-syllabus-now` tag, classified question under **`Algorithms`** (`algorithms`) with subtopic **`Minimum Spanning Tree`** (`minimum-spanning-tree`), and set question type to **`MSQ`** with official verified answer key **`A, B, C`** (`["A", "B", "C"]`) across answer registries, shard `2022-s0`, and question banks.
   - **3. GATE CSE 2026 Set 1 Question 1 (`go:523079`) — Technical Probability in Engineering Mathematics**:
     - *Problem*: Question is a technical Probability problem on expectation and urn draws ($X = 1$ if drawn ball is red).
     - *Resolution*: Classified under **`Engineering Mathematics`** (`engg-math`) with subtopic **`Probability`** (`probability`) and answer key **Option B** ($1/3$).

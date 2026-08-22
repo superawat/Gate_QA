@@ -40,7 +40,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - **Area**: Question Bank / Answer Registry / Taxonomy / Filter Engine
 - **Symptom**:
   1. `go:333200` (2020 Q31) rendered as NAT instead of MCQ.
-  2. `go:371897` (2022 Q39) required optional classification.
+  2. `go:371897` (2022 Q39) corrected to MSQ (options A, B, C) under Algorithms → Minimum Spanning Tree (removed erroneous optional tag).
   3. `go:523079` (2026 Set 1 Q1) technical Probability question classified under Engineering Mathematics.
   4. `go:422889` (2024 Set 2 Q8) technical Probability question classified under Engineering Mathematics.
   5. `go:422863` (2024 Set 2 Q34) was misclassified as GA due to contaminated scraper tags instead of Engineering Mathematics.
