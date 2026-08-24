@@ -7,7 +7,7 @@ import { MathContent } from "../Math/MathRuntime";
 import QuestionNotes from "./QuestionNotes";
 import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { cleanLatexHtml } from "../../utils/latexClean";
-import { getGateOverflowSolutionLink } from "../../utils/solutionLink";
+import { getQuestionSolutionLink } from "../../utils/solutionLink";
 
 function Question({
   question = {},
@@ -32,7 +32,7 @@ function Question({
   const questionProgressId = getQuestionProgressId(question);
   const isSolved = isQuestionSolved(questionProgressId);
   const isBookmarked = isQuestionBookmarked(questionProgressId);
-  const solutionLink = getGateOverflowSolutionLink(question);
+  const solutionLink = getQuestionSolutionLink(question);
   const nextHandler = onNextQuestion || changeQuestion;
   const showStatusChips = isSolved || isBookmarked;
 

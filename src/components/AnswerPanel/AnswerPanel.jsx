@@ -6,7 +6,7 @@ import { evaluateAnswer } from "../../utils/evaluateAnswer";
 import { trackEvent } from "../../utils/analytics";
 import Toast from "../Toast/Toast";
 import AskAIButton from "../AskAI/AskAIButton";
-import { getGateOverflowSolutionLink } from "../../utils/solutionLink";
+import { getQuestionSolutionLink, isSpecialAptitudeQuestion } from "../../utils/solutionLink";
 import { buildSolvePath } from "../../utils/routes";
 import { getShortcutKey, isEditableTarget, shouldIgnorePlainShortcut } from "../../utils/keyboardShortcuts";
 import { AnswerService } from "../../services/AnswerService";
@@ -83,7 +83,7 @@ export default function AnswerPanel({
     if (passedSolutionLink) {
       return passedSolutionLink;
     }
-    return getGateOverflowSolutionLink(question);
+    return getQuestionSolutionLink(question);
   }, [passedSolutionLink, question]);
 
   const isInteractive = Boolean(
@@ -615,7 +615,8 @@ export default function AnswerPanel({
   );
 
   const renderSolutionButton = (additionalClasses = "") => {
-    const fallbackSearchLink = !solutionLink && question?.title
+    const isSpecialAptitude = isSpecialAptitudeQuestion(question);
+    const fallbackSearchLink = !isSpecialAptitude && !solutionLink && question?.title
       ? `https://gateoverflow.in/?qa=search&q=${encodeURIComponent(question.title)}`
       : null;
     const targetLink = solutionLink || fallbackSearchLink;

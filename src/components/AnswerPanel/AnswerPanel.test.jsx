@@ -294,4 +294,101 @@ describe("AnswerPanel", () => {
 
     expect(screen.getAllByRole("button", { name: /Ask AI/i }).length).toBeGreaterThan(0);
   });
+
+  describe("Solution button behavior", () => {
+    test("Special Aptitude question without solution renders disabled button without GateOverflow link", () => {
+      const specialAptQuestion = {
+        question_uid: "APT-ENG-5840",
+        title: "English Practice",
+        subject: "English",
+        subtopic: "Cloze Test",
+        exam: { paper: "Aptitude" },
+        _source: {
+          sourceKind: "aptitude-web",
+          sourceProvider: "AptitudeBank",
+          pageUrl: "https://aptitude-bank.internal/play#paper-f2d72e1ee0a6815c",
+        },
+        answer_meta: { type: "MCQ", answer: "B", source: "aptitude_embedded" },
+      };
+
+      render(<AnswerPanel question={specialAptQuestion} />);
+
+      // Must NOT render any active link to GateOverflow
+      expect(screen.queryAllByRole("link", { name: /Solution/i })).toHaveLength(0);
+
+      // Must render disabled Solution buttons (desktop + mobile) with 'Solution unavailable' label
+      const disabledButtons = screen.getAllByRole("button", { name: /Solution unavailable/i });
+      expect(disabledButtons.length).toBeGreaterThan(0);
+      disabledButtons.forEach((btn) => {
+        expect(btn.getAttribute("disabled")).toBeDefined();
+      });
+    });
+
+    test("Special Aptitude question with valid external solution link renders active link", () => {
+      const specialAptWithSolution = {
+        question_uid: "APT-QNT-3498",
+        title: "Quant Practice",
+        subject: "Quant",
+        solution_link: "https://example.com/solutions/qnt-3498",
+        exam: { paper: "Aptitude" },
+        _source: {
+          sourceKind: "aptitude-web",
+          sourceProvider: "AptitudeBank",
+        },
+        answer_meta: { type: "MCQ", answer: "A", source: "aptitude_embedded" },
+      };
+
+      render(<AnswerPanel question={specialAptWithSolution} />);
+
+      const solutionLinks = screen.getAllByRole("link", { name: /Solution/i });
+      expect(solutionLinks.length).toBeGreaterThan(0);
+      solutionLinks.forEach((link) => {
+        expect(link.getAttribute("href")).toBe("https://example.com/solutions/qnt-3498");
+        expect(link.getAttribute("target")).toBe("_blank");
+      });
+    });
+
+    test("regular GATE General Aptitude question with GateOverflow link renders active GateOverflow link", () => {
+      const regularGateGaQuestion = {
+        question_uid: "go:523089",
+        title: "GATE CSE 2026 | Set 1 | GA | Question: 1",
+        subjectLabel: "General Aptitude",
+        subjectSlug: "ga",
+        track: "cse",
+        exam: { paper: "CSE", year: 2026 },
+        link: "https://gateoverflow.in/523089/gate-cse-2026-set-1-ga-question-1",
+        answer_meta: { type: "MCQ", answer: "C" },
+      };
+
+      render(<AnswerPanel question={regularGateGaQuestion} />);
+
+      const solutionLinks = screen.getAllByRole("link", { name: /Solution/i });
+      expect(solutionLinks.length).toBeGreaterThan(0);
+      solutionLinks.forEach((link) => {
+        expect(link.getAttribute("href")).toBe(
+          "https://gateoverflow.in/523089/gate-cse-2026-set-1-ga-question-1"
+        );
+      });
+    });
+
+    test("regular GATE question without direct link falls back to GateOverflow search", () => {
+      const regularGateNoLink = {
+        question_uid: "go:99999",
+        title: "GATE CSE 2023 | Question: 45",
+        exam: { paper: "CSE", year: 2023 },
+        answer_meta: { type: "MCQ", answer: "D" },
+      };
+
+      render(<AnswerPanel question={regularGateNoLink} />);
+
+      const solutionLinks = screen.getAllByRole("link", { name: /Solution/i });
+      expect(solutionLinks.length).toBeGreaterThan(0);
+      solutionLinks.forEach((link) => {
+        expect(link.getAttribute("href")).toBe(
+          "https://gateoverflow.in/?qa=search&q=" + encodeURIComponent("GATE CSE 2023 | Question: 45")
+        );
+      });
+    });
+  });
 });
+
