@@ -20,6 +20,7 @@ import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShor
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
+import { readPracticeShuffleEnabled } from "../utils/practicePreference";
 import { getDisplayQuestionTypeLabel } from "../utils/questionType";
 import { isDaQuestion as isDaQuestionByMetadata } from "../utils/examTrack";
 
@@ -90,38 +91,35 @@ const SolvePage = ({
       return;
     }
 
-    // 1. Filtered context from Explore page (e.g. ?subjects=algorithms)
-    if (hasExploreContext && questionExistsInFilteredPool) {
-      const shouldRefreshOrderedSession = sessionMode !== "ordered"
-        || sessionQueue.length !== filteredQuestions.length
-        || sessionQueue[0] !== filteredQuestions[0]?.question_uid
-        || sessionQueue[sessionQueue.length - 1] !== filteredQuestions[filteredQuestions.length - 1]?.question_uid;
-
-      if (shouldRefreshOrderedSession) {
-        startOrderedSession(filteredQuestions, questionUid);
-        return;
-      }
-
-      if (sessionContainsQuestion) {
+    // 1. If we already have an active session in memory containing this question
+    if (sessionContainsQuestion) {
+      // If we have an explore context and this question exists in the filtered pool,
+      // verify the session pool size matches the filtered pool before keeping it.
+      if (hasExploreContext && questionExistsInFilteredPool) {
+        const poolMatchesSession = sourceQuestionUids.length === filteredQuestions.length;
+        if (poolMatchesSession) {
+          setCurrentQuestionUid(questionUid);
+          return;
+        }
+      } else {
         setCurrentQuestionUid(questionUid);
         return;
       }
     }
 
-    // 2. Active random session (e.g. started from Home page "Start Practice" CTA)
-    if (sessionContainsQuestion && sessionMode === "random") {
-      setCurrentQuestionUid(questionUid);
+    const isShuffle = readPracticeShuffleEnabled();
+
+    // 2. Filtered context from Explore page (e.g. ?subjects=algorithms)
+    if (hasExploreContext && questionExistsInFilteredPool) {
+      if (isShuffle) {
+        startRandomSession(filteredQuestions, questionUid);
+      } else {
+        startOrderedSession(filteredQuestions, questionUid);
+      }
       return;
     }
 
-    // 3. Already in matching ordered session without explore context
-    if (sessionContainsQuestion && sessionMode === "ordered") {
-      setCurrentQuestionUid(questionUid);
-      return;
-    }
-
-    // 4. Standalone direct question URL (no explore search parameters)
-    // Direct question URLs initialize as a standalone random session
+    // 3. Standalone direct question URL (no explore search parameters)
     const activeService = isDaQuestion(indexedQuestion)
       ? DaQuestionService
       : isAptitudeQuestion
@@ -139,7 +137,7 @@ const SolvePage = ({
         ? filteredQuestions
         : [indexedQuestion];
 
-    if (typeof startRandomSession === "function") {
+    if (isShuffle && typeof startRandomSession === "function") {
       startRandomSession(seedQuestions, questionUid);
     } else {
       startOrderedSession(seedQuestions, questionUid);
@@ -157,6 +155,7 @@ const SolvePage = ({
     sessionMode,
     sessionQueue,
     setCurrentQuestionUid,
+    sourceQuestionUids.length,
     startOrderedSession,
     startRandomSession,
   ]);

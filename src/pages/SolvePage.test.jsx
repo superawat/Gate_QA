@@ -516,4 +516,53 @@ describe("SolvePage", () => {
     expect(await screen.findByText("Random session")).toBeTruthy();
     expect(screen.getByText("Question details")).toBeTruthy();
   });
+
+  test("initializes random session on explore route cold-load when shuffle is enabled", async () => {
+    window.localStorage.setItem("gateqa_practice_shuffle_v1", "true");
+    renderSolvePage({
+      route: "/practice/question/go%3A1?subjects=algorithms",
+      sessionOverrides: {
+        sessionMode: null,
+        sessionQueue: [],
+        sourceQuestionUids: [],
+      },
+    });
+
+    expect(mocks.startRandomSession).toHaveBeenCalledWith(
+      [expect.objectContaining({ question_uid: "go:1" }), expect.objectContaining({ question_uid: "go:2" })],
+      "go:1"
+    );
+  });
+
+  test("initializes ordered session on explore route cold-load when shuffle is disabled", async () => {
+    window.localStorage.setItem("gateqa_practice_shuffle_v1", "false");
+    renderSolvePage({
+      route: "/practice/question/go%3A1?subjects=algorithms",
+      sessionOverrides: {
+        sessionMode: null,
+        sessionQueue: [],
+        sourceQuestionUids: [],
+      },
+    });
+
+    expect(mocks.startOrderedSession).toHaveBeenCalledWith(
+      [expect.objectContaining({ question_uid: "go:1" }), expect.objectContaining({ question_uid: "go:2" })],
+      "go:1"
+    );
+  });
+
+  test("preserves active random session when arriving from Explore with matching pool", async () => {
+    renderSolvePage({
+      route: "/practice/question/go%3A1?subjects=algorithms",
+      sessionOverrides: {
+        sessionMode: "random",
+        sessionQueue: ["go:2", "go:1"],
+        sourceQuestionUids: ["go:1", "go:2"],
+      },
+    });
+
+    expect(mocks.setCurrentQuestionUid).toHaveBeenCalledWith("go:1");
+    expect(mocks.startOrderedSession).not.toHaveBeenCalled();
+    expect(mocks.startRandomSession).not.toHaveBeenCalled();
+  });
 });

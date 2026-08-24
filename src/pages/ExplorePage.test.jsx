@@ -386,7 +386,23 @@ describe("ExplorePage", () => {
     });
   });
 
-  test("opening a question starts an ordered session on the filtered pool and navigates to the solve route", async () => {
+  test("opening a question starts a random session when shuffle is enabled and navigates to the solve route", async () => {
+    mocks.startRandomSession.mockReturnValueOnce({ question_uid: "go:algo-1" });
+    renderExplorePage({ route: "/practice?subjects=algorithms" });
+
+    fireEvent.click(await screen.findByRole("button", { name: /open go:algo-1/i }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3Aalgo-1?subjects=algorithms");
+    });
+
+    expect(mocks.startRandomSession).toHaveBeenCalledTimes(1);
+    expect(mocks.startRandomSession.mock.calls[0][1]).toBe("go:algo-1");
+  });
+
+  test("opening a question starts an ordered session when shuffle is disabled", async () => {
+    window.localStorage.setItem("gateqa_practice_shuffle_v1", "false");
+    mocks.startOrderedSession.mockReturnValueOnce({ question_uid: "go:algo-1" });
     renderExplorePage({ route: "/practice?subjects=algorithms" });
 
     fireEvent.click(await screen.findByRole("button", { name: /open go:algo-1/i }));
@@ -399,14 +415,29 @@ describe("ExplorePage", () => {
     expect(mocks.startOrderedSession.mock.calls[0][1]).toBe("go:algo-1");
   });
 
-  test("starts filtered practice directly from the quick-start action", async () => {
-    mocks.startOrderedSession.mockReturnValueOnce({ question_uid: "go:algo-2" });
+  test("starts filtered practice directly from the quick-start action respecting shuffle mode", async () => {
+    mocks.startRandomSession.mockReturnValueOnce({ question_uid: "go:algo-2" });
     renderExplorePage({ route: "/practice?subjects=algorithms" });
 
     fireEvent.click(await screen.findByRole("button", { name: /continue filtered practice/i }));
 
     await waitFor(() => {
       expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3Aalgo-2?subjects=algorithms");
+    });
+
+    expect(mocks.startRandomSession).toHaveBeenCalledTimes(1);
+    expect(mocks.startRandomSession.mock.calls[0][0].map((question) => question.question_uid)).toEqual(["go:algo-1", "go:algo-2"]);
+  });
+
+  test("starts ordered practice directly from the quick-start action when shuffle is disabled", async () => {
+    window.localStorage.setItem("gateqa_practice_shuffle_v1", "false");
+    mocks.startOrderedSession.mockReturnValueOnce({ question_uid: "go:algo-1" });
+    renderExplorePage({ route: "/practice?subjects=algorithms" });
+
+    fireEvent.click(await screen.findByRole("button", { name: /continue in order/i }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location-probe").textContent).toBe("/practice/question/go%3Aalgo-1?subjects=algorithms");
     });
 
     expect(mocks.startOrderedSession).toHaveBeenCalledTimes(1);
