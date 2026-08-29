@@ -38,7 +38,7 @@ const CsTopicLoader = ({
         </linearGradient>
         <linearGradient id="mock-loader-flow" x1="28" y1="64" x2="196" y2="64" gradientUnits="userSpaceOnUse">
           <stop stopColor="#38bdf8" />
-          <stop offset="0.5" stopColor="#0f172a" />
+          <stop offset="0.5" stopColor="#0d1117" />
           <stop offset="1" stopColor="#14b8a6" />
         </linearGradient>
         <filter id="mock-loader-glow" x="-40%" y="-40%" width="180%" height="180%">
@@ -116,13 +116,13 @@ const CsTopicLoader = ({
               fontSize="11"
               fontWeight="700"
               letterSpacing="0.14em"
-              fill="#1e3a5f"
+              fill="#0284c7"
               style={{ fontFamily: "inherit" }}
             >
               {node.label}
               <animate
                 attributeName="fill"
-                values="#1e3a5f;#0f172a;#1e3a5f"
+                values="#0284c7;#0d1117;#0284c7"
                 dur="2.1s"
                 begin={node.begin}
                 repeatCount="indefinite"
@@ -148,7 +148,7 @@ const CsTopicLoader = ({
         );
       })}
 
-      <circle cx="28" cy="64" r="6" fill="#0f172a" filter="url(#mock-loader-glow)">
+      <circle cx="28" cy="64" r="6" fill="#0d1117" filter="url(#mock-loader-glow)">
         <animateMotion
           dur="2.1s"
           repeatCount="indefinite"

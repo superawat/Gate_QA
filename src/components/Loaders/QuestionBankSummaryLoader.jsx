@@ -114,7 +114,7 @@ const QuestionBankSummaryLoader = ({
         </g>
       ))}
 
-      <circle cx="15" cy="38" r="4" fill="#0f172a">
+      <circle cx="15" cy="38" r="4" fill="#0d1117">
         <animateMotion
           dur="1.6s"
           repeatCount="indefinite"

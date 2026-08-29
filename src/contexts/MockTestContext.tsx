@@ -264,11 +264,6 @@ const parsePositiveTimeSeconds = (value, fallback = TOTAL_MOCK_TIME_SECONDS) => 
 
 const normalizeUid = (value) => String(value || "").trim();
 
-const normalizeMockType = (value = "") => {
-  const normalized = String(value || "").trim().toUpperCase();
-  return VALID_MOCK_TYPES.has(normalized) ? normalized : "MCQ";
-};
-
 const resolveAptitudeMarks = (question = {}) => {
   const directMarks = Number(question?.marks);
   const metaMarks = Number(question?.answerMeta?.marks);
