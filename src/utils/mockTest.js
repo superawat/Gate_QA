@@ -1,6 +1,6 @@
-import { evaluateAnswer } from "./evaluateAnswer";
-import { extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions";
-import { getQuestionTrack, getQuestionYearSetIdentity, isDaQuestion } from "./examTrack";
+import { evaluateAnswer } from "./evaluateAnswer.js";
+import { extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions.js";
+import { getQuestionTrack, getQuestionYearSetIdentity, isDaQuestion } from "./examTrack.js";
 
 export const MOCK_SECTION_COUNTS = {
   GA: 10,

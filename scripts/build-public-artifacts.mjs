@@ -661,8 +661,10 @@ function hasValidMockAnswer(answerRecord = null, type = "") {
     return Boolean(normalizeMockOptionLabel(answerRecord.answer));
   }
   if (normalizedType === "MSQ") {
-    return Array.isArray(answerRecord.answer)
-      && answerRecord.answer.map(normalizeMockOptionLabel).some(Boolean);
+    const rawAnswers = Array.isArray(answerRecord.answer)
+      ? answerRecord.answer
+      : [answerRecord.answer];
+    return rawAnswers.map(normalizeMockOptionLabel).some(Boolean);
   }
   if (normalizedType === "NAT") {
     const values = Array.isArray(answerRecord.answer)
@@ -708,7 +710,9 @@ function getMockQuestionValidationIssues(question = {}, answerRecord = null, typ
       const optionLabels = new Set(options.map((option) => normalizeMockOptionLabel(option.label)).filter(Boolean));
       const answerLabels = normalizedType === "MCQ"
         ? [normalizeMockOptionLabel(answerRecord?.answer)]
-        : (Array.isArray(answerRecord?.answer) ? answerRecord.answer.map(normalizeMockOptionLabel) : []);
+        : (Array.isArray(answerRecord?.answer)
+          ? answerRecord.answer.map(normalizeMockOptionLabel)
+          : [normalizeMockOptionLabel(answerRecord?.answer)]);
       if (optionLabels.size > 0 && answerLabels.some((label) => label && !optionLabels.has(label))) {
         issues.push("answer_option_mismatch");
       }
@@ -1137,6 +1141,37 @@ function registerMockMeta(group, meta, byQuestionUid) {
   }
 }
 
+function resolveMockQuestionType(question = {}, answerRecord = null) {
+  const tags = Array.isArray(question.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
+  const answerType = String(answerRecord?.type || question.type || "").trim().toUpperCase();
+
+  if (MOCK_AUTO_AWARD_TYPES.has(answerType)) {
+    return answerType;
+  }
+
+  const isExplicitNatTag = tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat");
+  const isExplicitMsqTag = tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq");
+  const isExplicitMcqTag = tags.includes("multiple-choice") || tags.includes("mcq");
+
+  if (answerType === "NAT" || isExplicitNatTag) {
+    return "NAT";
+  }
+
+  if (answerType === "MSQ" || (isExplicitMsqTag && Array.isArray(answerRecord?.answer))) {
+    return "MSQ";
+  }
+
+  if (answerType === "MCQ" || isExplicitMcqTag) {
+    return "MCQ";
+  }
+
+  if (MOCK_OBJECTIVE_TYPES.has(answerType)) {
+    return answerType;
+  }
+
+  return null;
+}
+
 function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
   const byQuestionUid = {};
   const paperGroups = new Map();
@@ -1154,10 +1189,9 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     }
 
     const answerRecord = answersByQuestionUid[questionUid] || null;
-    const answerType = String(answerRecord?.type || "").trim().toUpperCase();
-    const isObjectiveType = MOCK_OBJECTIVE_TYPES.has(answerType);
-    const isAutoAwardType = MOCK_AUTO_AWARD_TYPES.has(answerType);
-    const type = isObjectiveType || isAutoAwardType ? answerType : null;
+    const type = resolveMockQuestionType(question, answerRecord);
+    const isObjectiveType = Boolean(type && MOCK_OBJECTIVE_TYPES.has(type));
+    const isAutoAwardType = Boolean(type && MOCK_AUTO_AWARD_TYPES.has(type));
     const validationIssues = isObjectiveType
       ? getMockQuestionValidationIssues(question, answerRecord, type)
       : [];
@@ -1376,6 +1410,50 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       return (right.set || 0) - (left.set || 0);
     });
 
+  questions.forEach((question) => {
+    const questionUid = buildQuestionUid(question);
+    if (byQuestionUid[questionUid]) {
+      return;
+    }
+
+    const yearSet = parseYearSet(question);
+    const answerRecord = answersByQuestionUid[questionUid] || null;
+    const type = resolveMockQuestionType(question, answerRecord);
+    const isObjectiveType = Boolean(type && MOCK_OBJECTIVE_TYPES.has(type));
+    const isAutoAwardType = Boolean(type && MOCK_AUTO_AWARD_TYPES.has(type));
+    const validationIssues = isObjectiveType
+      ? getMockQuestionValidationIssues(question, answerRecord, type)
+      : [];
+    const mockReady = isAutoAwardType || (isObjectiveType && validationIssues.length === 0);
+
+    const isGa = question.subjectSlug === "ga"
+      || question.subject === "General Aptitude"
+      || (Array.isArray(question.tags) && question.tags.includes("general-aptitude"))
+      || String(questionUid).startsWith("APT-");
+    const section = isGa ? "GA" : "CS";
+    const tags = Array.isArray(question.tags) ? question.tags : [];
+    const marks = tags.includes("two-marks") || tags.includes("2-marks") || question.marks === 2 ? 2 : 1;
+    const negativeMarks = type && marks ? resolveNegativeMarks(type, marks) : null;
+    const scorable = Boolean(type && marks !== null && mockReady);
+
+    byQuestionUid[questionUid] = {
+      questionUid,
+      yearSetKey: yearSet.key || null,
+      yearSetIdentity: yearSet.yearSetIdentity || null,
+      orderIndex: null,
+      section,
+      title: String(question.title || "").trim(),
+      type: type || "MCQ",
+      marks,
+      negativeMarks,
+      paperReady: false,
+      scorable,
+      autoAwarded: isAutoAwardType,
+      ...(validationIssues.length > 0 ? { validationIssues } : {}),
+      source: "bank_pool",
+    };
+  });
+
   const scorableQuestionUids = Object.values(byQuestionUid)
     .filter((meta) => meta.scorable)
     .sort((left, right) => {
@@ -1390,7 +1468,15 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       if (left.section !== right.section) {
         return left.section === "GA" ? -1 : 1;
       }
-      return left.orderIndex - right.orderIndex;
+      const orderDelta = Number(left.orderIndex || 9999) - Number(right.orderIndex || 9999);
+      if (orderDelta !== 0) {
+        return orderDelta;
+      }
+      return String(left.questionUid || "").localeCompare(
+        String(right.questionUid || ""),
+        undefined,
+        { numeric: true, sensitivity: "base" }
+      );
     })
     .map((meta) => meta.questionUid);
 

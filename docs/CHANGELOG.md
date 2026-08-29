@@ -1,6 +1,18 @@
 # Changelog
 
+## 2026-08-29
+
+- **Question Data Integrity & Answer Corrections — GATE CSE 2015 Set 1 Q43 (`go:8313`) & GATE CSE 2006 Q51 (`go:1829`)**:
+  - **1. GATE CSE 2015 Set 1 Question 43 (`go:8313` / `cse:2015:set1:main:q43`) — NAT Answer Key Correction**:
+    - *Problem*: Finding the minimum possible sum of weights of all 8 edges in a graph with MST weight 36 and 5 given MST edges ($\{(A, C)=9, (B, C)=8, (B, E)=2, (E, F)=15, (D, F)=2\}$) was previously marked incorrect when submitting the true answer `69` due to a legacy corrupted OCR value `995` in the answer registry.
+    - *Resolution*: Minimum additional weights for the 3 non-MST edges to maintain distinct integer weights without violating MST cycle constraints are $10 + 7 + 16 = 33$. Total minimum sum = $36 + 33 = 69$. Corrected stored NAT answer to `69` with `{ "abs": 0.01 }` tolerance across `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `data/answers/manual-answers-patch-v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, detail shard `2015-s1.json`, and search index.
+  - **2. GATE CSE 2006 Question 51 (`go:1829` / `cse:2006:set1:main:q51-isro2016-34`) — MCQ Answer Key Correction**:
+    - *Problem*: Recurrence relation $T(n) = 2T(\sqrt{n}) + 1, T(1) = 1$ was erroneously storing Option D ($\Theta(n)$) instead of Option B ($\Theta(\log n)$).
+    - *Resolution*: Substituting $n = 2^m$ yields $S(m) = 2S(m/2) + 1 \implies S(m) = \Theta(m) = \Theta(\log n)$. Updated stored answer key to Option **B** across all answer registries, master answer file, exam UID file, question bank, detail shard `2006-s0.json`, and search index.
+  - **Regression Tests**: Added unit tests in `src/utils/evaluateAnswer.test.js` verifying exact evaluations for both `go:8313` and `go:1829`.
+
 ## 2026-08-22
+
 
 - **Verified Question Reports Resolution & Multi-Subject Subtopic Taxonomy Rectification (DEC-028 / AUG-028)**:
   - **Overview**: Resolved 6 verified question reports addressing question types, official answer keys, optional syllabus categorization, and a critical taxonomy distinction separating actual GATE exam section placement from conceptual topics.

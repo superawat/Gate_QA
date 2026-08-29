@@ -7,8 +7,11 @@ import { DaQuestionService } from "../services/DaQuestionService";
 import { MockCatalogService } from "../services/MockCatalogService";
 import {
   buildMockResultSummary,
+  getNegativeMarksForQuestion,
   hasMeaningfulResponse,
+  normalizeMockAutoAwardType,
   normalizeMockTimeSpentSeconds,
+  normalizeMockType,
   validateMockQuestionForPool,
 } from "../utils/mockTest";
 import { isDaQuestion } from "../utils/examTrack";
@@ -340,6 +343,54 @@ const buildAptitudeMockMetaByUid = (questions = []) => (
   )
 );
 
+const buildFallbackMockMetaByUid = (questions = []) => {
+  const metaMap = {};
+  normalizeQuestionList(questions).forEach((question) => {
+    const uid = normalizeUid(question?.question_uid);
+    if (!uid) return;
+
+    const answerRecord = AnswerService.getAnswerForQuestion(question);
+    const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
+    let rawType = String(answerRecord?.type || question?.type || "").trim().toUpperCase();
+
+    if (tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat")) {
+      rawType = "NAT";
+    } else if (tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq")) {
+      rawType = "MSQ";
+    } else if (tags.includes("multiple-choice") || tags.includes("mcq")) {
+      rawType = "MCQ";
+    }
+
+    const type = normalizeMockType(rawType) || normalizeMockAutoAwardType(rawType) || "MCQ";
+    const isGa = question?.subjectSlug === "ga"
+      || question?.subject === "General Aptitude"
+      || tags.includes("general-aptitude")
+      || uid.startsWith("APT-");
+    const section = isGa ? "GA" : "CS";
+    const marks = tags.includes("two-marks") || tags.includes("2-marks") || question?.marks === 2 ? 2 : 1;
+    const negativeMarks = getNegativeMarksForQuestion(type, marks);
+    const isAuto = Boolean(normalizeMockAutoAwardType(type));
+    const scorable = Boolean(isAuto || (normalizeMockType(type) && answerRecord));
+
+    metaMap[uid] = {
+      questionUid: uid,
+      yearSetKey: question?.yearSetKey || null,
+      yearSetIdentity: question?.yearSetIdentity || null,
+      orderIndex: null,
+      section,
+      title: String(question?.title || "").trim(),
+      type,
+      marks,
+      negativeMarks,
+      paperReady: false,
+      scorable,
+      autoAwarded: isAuto,
+      source: "runtime_fallback",
+    };
+  });
+  return metaMap;
+};
+
 const normalizeSectionQuestions = (gaQuestions = [], csQuestions = []) => {
   const seen = new Set();
 
@@ -572,6 +623,10 @@ export const MockTestProvider = ({ children }) => {
     () => buildAptitudeMockMetaByUid(aptitudeQuestions),
     [aptitudeQuestions]
   );
+  const mockQuestionPool = useMemo(
+    () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions, ...daQuestions]),
+    [allQuestions, aptitudeQuestions, daQuestions]
+  );
   const questionMetaByUid = useMemo(
     () => ({
       ...catalogQuestionMetaByUid,
@@ -586,10 +641,6 @@ export const MockTestProvider = ({ children }) => {
   const readyPapers = useMemo(
     () => paperCatalog.filter((paper) => paper?.paperReady),
     [paperCatalog]
-  );
-  const mockQuestionPool = useMemo(
-    () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions, ...daQuestions]),
-    [allQuestions, aptitudeQuestions, daQuestions]
   );
 
   const questionsByUid = useMemo(
@@ -972,7 +1023,7 @@ export const MockTestProvider = ({ children }) => {
       && rawAttempt.questions.length > 0
       && rawAttempt.questions.every((q) => isValidEmbeddedQuestion(q));
 
-    const isCatalogPending = catalogLoading || aptitudeMockLoading || allQuestions.length === 0 || mockQuestionPool.length === 0;
+    const isCatalogPending = catalogLoading;
 
     if (!allEmbeddedValid && isCatalogPending) {
       return;
