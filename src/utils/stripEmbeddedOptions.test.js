@@ -133,4 +133,19 @@ describe("stripEmbeddedOptions", () => {
     expect(options[0].html).toContain("a-figure.webp");
     expect(options[3].html).toContain("d-figure.webp");
   });
+
+  test("extracts and strips single-line inline options separated by nbsp", () => {
+    const html = `
+      <div itemprop="text">A RAM chip has a capacity of 1024 words of 8 bits each (1K × 8). The number of 2 × 4 decoders needed is<br><br>(A) 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(B) 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C) 6 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(D) 7</div>
+    `;
+
+    const options = extractEmbeddedOptions(html);
+    const cleaned = stripEmbeddedOptions(html);
+
+    expect(options.map((option) => option.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options.map((option) => option.text)).toEqual(["4", "5", "6", "7"]);
+    expect(cleaned).toContain("A RAM chip has a capacity");
+    expect(cleaned).not.toContain("(A) 4");
+    expect(cleaned).not.toContain("(B) 5");
+  });
 });

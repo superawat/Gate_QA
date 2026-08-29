@@ -23,6 +23,19 @@ const REPORT_PATH = path.join(
 );
 
 const CURATED_RESOLUTIONS = {
+  "go:8313": {
+    type: "NAT",
+    answer: 69,
+    tolerance: { abs: 0.01 },
+    note: "Minimum Spanning Tree (MST) weight = 36. Adding remaining 3 non-MST edges with distinct integer weights requires minimum additional weights = 10 + 7 + 16 = 33. Total sum of all 8 edge weights = 36 + 33 = 69.",
+    method: "manual_mst_sum_derivation",
+  },
+  "go:1829": {
+    type: "MCQ",
+    answer: "B",
+    note: "T(n) = 2T(sqrt(n)) + 1. Substituting n = 2^m gives S(m) = 2S(m/2) + 1 => S(m) = Theta(m) = Theta(log n). Therefore, Option B is the correct answer.",
+    method: "manual_recurrence_master_theorem",
+  },
   "go:302826": {
     type: "NAT",
     answer: 0.503,

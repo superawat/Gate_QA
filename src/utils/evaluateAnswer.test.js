@@ -44,4 +44,45 @@ describe("evaluateAnswer", () => {
     expect(evaluateAnswer(record, "30").correct).toBe(true);
     expect(evaluateAnswer(record, "31").correct).toBe(false);
   });
+
+  test("evaluates GATE CSE 2015 Set 1 Q43 (go:8313) NAT answer 69 correctly", () => {
+    const record = { type: "NAT", answer: 69, tolerance: { abs: 0.01 } };
+    expect(evaluateAnswer(record, "69")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, 69)).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "69.0")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "995")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
+
+  test("evaluates GATE CSE 2006 Q51 (go:1829) MCQ answer B correctly", () => {
+    const record = { type: "MCQ", answer: "B", tolerance: null };
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "b")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
 });
+

@@ -13,6 +13,10 @@ const OPTION_BLOCK_RE =
   /<(p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?(?:\(?[A-E]\)?[\.\):])\s*[\s\S]*?<\/\1>/gi;
 const OPTION_BLOCK_CAPTURE_RE =
   /<(p|div|li)\b[^>]*>\s*(?:<(?:strong|b|em|span)\b[^>]*>\s*)?\(?([A-E])\)?[\.\):]\s*([\s\S]*?)<\/\1>/gi;
+const OPTION_INLINE_RE =
+  /(?:^|\n|<br\s*\/?>|<\/?p[^>]*>|<\/?div[^>]*>)\s*\(?A\)?[\.\):]\s*[\s\S]*?(?:&nbsp;|\s{2,})\(?B\)?[\.\):]\s*[\s\S]*?(?:&nbsp;|\s{2,})\(?C\)?[\.\):]\s*[\s\S]*?(?:&nbsp;|\s{2,})\(?D\)?[\.\):]\s*[\s\S]*?(?=(?:<\/(?:p|div|li)>|<br\s*\/?>|\n|$))/gi;
+const OPTION_INLINE_CAPTURE_RE =
+  /(?:^|\n|<br\s*\/?>|<\/?p[^>]*>|<\/?div[^>]*>)\s*\(?([A])\)?[\.\):]\s*([\s\S]*?)(?:&nbsp;|\s{2,})\(?([B])\)?[\.\):]\s*([\s\S]*?)(?:&nbsp;|\s{2,})\(?([C])\)?[\.\):]\s*([\s\S]*?)(?:&nbsp;|\s{2,})\(?([D])\)?[\.\):]\s*([\s\S]*?)(?=(?:<\/(?:p|div|li)>|<br\s*\/?>|\n|$))/i;
 const OPTION_PRE_RE =
   /<pre\b[^>]*>\s*\(?[A-E]\)?[\.\):]\s*[\s\S]*?<\/pre>/gi;
 const OPTION_PRE_CAPTURE_RE =
@@ -139,6 +143,7 @@ export function hasEmbeddedOptions(html = "") {
     || raw.match(OPTION_BLOCK_RE)
     || raw.match(OPTION_PRE_RE)
     || raw.match(OPTION_LINE_RE)
+    || raw.match(OPTION_INLINE_RE)
     || raw.match(GENERIC_TRAILING_OPTION_LIST_RE)
     || raw.match(TRAILING_OPTION_LIST_RE)
   );
@@ -228,6 +233,17 @@ export function extractEmbeddedOptions(html = "") {
     return options;
   }
 
+  const inlineMatch = raw.match(OPTION_INLINE_CAPTURE_RE);
+  if (inlineMatch) {
+    pushOption(options, seen, "A", inlineMatch[2].replace(/&nbsp;/gi, " ").trim());
+    pushOption(options, seen, "B", inlineMatch[4].replace(/&nbsp;/gi, " ").trim());
+    pushOption(options, seen, "C", inlineMatch[6].replace(/&nbsp;/gi, " ").trim());
+    pushOption(options, seen, "D", inlineMatch[8].replace(/&nbsp;/gi, " ").trim());
+  }
+  if (options.length > 0) {
+    return options;
+  }
+
   const genericTrailingListMatch = raw.match(GENERIC_TRAILING_OPTION_LIST_CAPTURE_RE);
   if (genericTrailingListMatch) {
     Array.from(String(genericTrailingListMatch[2] || "").matchAll(LI_CAPTURE_RE))
@@ -281,6 +297,7 @@ export function stripEmbeddedOptions(html = "") {
   cleaned = cleaned.replace(TRAILING_OPTION_LIST_RE, "");
   cleaned = cleaned.replace(OPTION_BLOCK_RE, "");
   cleaned = cleaned.replace(OPTION_LINE_RE, "");
+  cleaned = cleaned.replace(OPTION_INLINE_RE, "");
   cleaned = cleaned.replace(/(<br\s*\/?>|\s)+$/i, "");
 
   return cleaned.trim();
