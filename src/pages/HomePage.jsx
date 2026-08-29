@@ -20,7 +20,7 @@ const HOMEPAGE_FAQS = [
   },
   {
     question: "Who will conduct GATE 2027?",
-    answer: "IIT Madras is highly anticipated to be the organizing institute for GATE 2027, following the rotational cycle after IIT Roorkee (2025) and IIT Guwahati (2026)."
+    answer: "IIT Madras is the official organizing institute for GATE 2027, conducting the examination across three weekends on February 6–7, 13–14, and 20–21, 2027 (gate2027.iitm.ac.in)."
   },
   {
     question: "How to prepare for GATE CSE?",
