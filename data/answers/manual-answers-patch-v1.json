@@ -5294,6 +5294,17 @@
       "type": "MCQ",
       "answer": "B",
       "note": "T(n) = 2T(sqrt(n)) + 1. Substituting n = 2^m gives S(m) = 2S(m/2) + 1 => S(m) = Theta(m) = Theta(log n). Therefore, Option B is the correct answer."
+    },
+    "go:3812": {
+      "type": "MCQ",
+      "answer": "C",
+      "note": "T(n) = 2T(n/2) + sqrt(n), T(1) = 1. By Master Theorem Case 1, a=2, b=2, n^(log_2 2) = n^1 = n, f(n) = n^0.5 = O(n^(1-0.5)). Therefore, T(n) = Theta(n), corresponding to Option C."
+    },
+    "go:2621": {
+      "type": "MCQ",
+      "answer": "C",
+      "note": "String s = 'acbc'. head(s) = 'a', tail(s) = 'cbc', tail(tail(s)) = 'bc', head(tail(tail(s))) = 'b'. concat(head(s), head(tail(tail(s)))) = concat('a', 'b') = 'ab', corresponding to Option C."
     }
   }
 }
+

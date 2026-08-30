@@ -84,5 +84,46 @@ describe("evaluateAnswer", () => {
       correct: false,
     });
   });
+
+  test("evaluates GATE IT 2005 Q51 (go:3812) MCQ answer C correctly", () => {
+    const record = { type: "MCQ", answer: "C", tolerance: null };
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "c")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
+
+  test("evaluates GATE CSE 1995 Q2.9 (go:2621) MCQ answer C correctly", () => {
+    const record = { type: "MCQ", answer: "C", tolerance: null };
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "c")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
 });
+
 

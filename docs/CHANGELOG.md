@@ -1,6 +1,18 @@
 # Changelog
 
+## 2026-08-30
+
+- **Question Data Integrity & Answer Key Corrections — GATE CSE 2005 Q51 (`go:3812`) & GATE CSE 1995 Q2.9 (`go:2621`) (DEC-035)**:
+  - **1. GATE CSE/IT 2005 Question 51 (`go:3812`) — MCQ Answer Key Correction to Option C**:
+    - *Problem*: Recurrence relation $T(n) = 2T(n/2) + \sqrt{n}$ for $n \geq 2$ and $T(1) = 1$ was incorrectly storing Option A ($\Theta(\log n)$).
+    - *Resolution*: Solving using Master's theorem ($a=2, b=2 \implies n^{\log_b a} = n^1 = n$; $f(n) = n^{0.5} = O(n^{1 - 0.5})$) falls under Case 1, confirming $T(n) = \Theta(n)$, which is Option **C**. Corrected stored answer key to Option **C** across `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `data/answers/manual-answers-patch-v1.json`, `public/data/answers/answers_master_v1.json`, `public/questions-with-answers.json`, detail shard `2005-s0.json`, and search index.
+  - **2. GATE CSE 1995 Question 2.9 (`go:2621`) — MCQ Answer Key Correction to Option C**:
+    - *Problem*: String operation question evaluating $\text{concat}(\text{head}(s), \text{head}(\text{tail}(\text{tail}(s))))$ for string $s = \text{"acbc"}$ was incorrectly storing Option A ($ac$).
+    - *Resolution*: Step-by-step reduction: $\text{head}(s) = \text{'a'}$; $\text{tail}(s) = \text{"cbc"}$; $\text{tail}(\text{tail}(s)) = \text{"bc"}$; $\text{head}(\text{tail}(\text{tail}(s))) = \text{'b'}$; $\text{concat}(\text{'a'}, \text{'b'}) = \text{"ab"}$, which is Option **C**. Corrected stored answer key to Option **C** across `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `data/answers/manual-answers-patch-v1.json`, `public/data/answers/answers_master_v1.json`, `public/questions-with-answers.json`, detail shard `1995-s0.json`, and search index.
+  - **Regression Tests**: Added unit tests in `src/utils/evaluateAnswer.test.js` verifying exact evaluation for both `go:3812` and `go:2621`.
+
 ## 2026-08-29
+
 
 - **Question Data Integrity & Answer Corrections — GATE CSE 2015 Set 1 Q43 (`go:8313`) & GATE CSE 2006 Q51 (`go:1829`)**:
   - **1. GATE CSE 2015 Set 1 Question 43 (`go:8313` / `cse:2015:set1:main:q43`) — NAT Answer Key Correction**:
