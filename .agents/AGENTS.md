@@ -47,5 +47,17 @@ Before doing research or writing code:
 * `src/contexts/`: Global state (`AuthContext`, `FilterContext`, `MockTestContext`, `SessionContext`).
 * `src/utils/`: Core utilities (`cloudSyncManager.js`, `syncQueue.js`, `practiceProgress.js`, `mockTest.js`).
 * `src/components/Auth/`: Authentication UI (`AuthModal.jsx`, `UserProfileMenu.jsx`, `GuestDataPrompt.jsx`).
-* `docs/`: Master architectural documents (`ARCHITECTURE.md`, `DATABASE.md`, `PHASE4_TESTING_REPORT.md`, `CHANGELOG.md`).
+* `docs/`: Master architectural documents (`ARCHITECTURE.md`, `DATABASE.md`, `QUESTION_DATA_CORRECTION_RUNBOOK.md`, `CHANGELOG.md`).
 * `.llm-memory/`: Distilled summaries for fast LLM retrieval.
+
+---
+
+## 5. Question & Answer Maintenance Protocol
+
+Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), or repairing formulas/options:
+1. **Follow the Runbook**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) for the 6-phase protocol.
+2. **Patch Authoritative Store**: Always update `data/answers/manual-answers-patch-v1.json` and `public/questions-with-answers.json`.
+3. **Rebuild Static Shards**: Run `node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs`.
+4. **Add Regression Tests**: Add test cases in `src/utils/evaluateAnswer.test.js` and verify with `npm run test:unit`.
+5. **Sync Memory & Changelog**: Log changes in `docs/CHANGELOG.md`, `.llm-memory/decisions.md` (DEC-XXX), `.llm-memory/progress.md`, and `.llm-memory/bugs.md`.
+

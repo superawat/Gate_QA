@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-08-31
+
+- **Question & Answer Maintenance Roadmap & Agent Runbook Protocol (DEC-037)**:
+  - Created [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) documenting the 6-phase execution protocol for all future answer key corrections, question type changes (MCQ/MSQ/NAT/MTA), LaTeX formula repairs, artifact generation pipelines, and regression unit tests.
+  - Linked the maintenance runbook into `AGENTS.md`, `.agents/AGENTS.md`, and `.llm-memory/INDEX.md` as standard procedure for AI agent sessions.
+
+- **Question Data Integrity & Type/Answer Key Correction — GATE CSE 2024 Set 1 Q31 (`go:422811`) (DEC-036)**:
+  - **GATE CSE 2024 Set 1 Question 31 (`go:422811` / `cse:2024:set1:main:q31`) — Type Fix to MCQ & Answer Key to Option D**:
+    - *Problem*: Question asking for the first three elements in the max-heapified array of $[82, 101, 90, 11, 111, 75, 33, 131, 44, 93]$ with four explicit choices (A: $82, 90, 101$, B: $82, 11, 93$, C: $131, 11, 93$, D: $131, 111, 90$) was erroneously typed as `NAT` with placeholder answer `3` due to a legacy OCR registry issue.
+    - *Resolution*: Performing standard in-place max-heap building on the array produces $[131, 111, 90, 101, 93, 75, 33, 11, 44, 82]$. The first three elements are $131, 111, 90$, which definitively matches Option **D**. Corrected question type to **`MCQ`** with answer key **Option D** and `tolerance: null` across `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `data/answers/manual-answers-patch-v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, detail shard `2024-s1.json`, mock catalog `mock_catalog_v1.json`, and search index `question-search-index.json`.
+    - *Regression Tests*: Added unit regression tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+
 ## 2026-08-30
 
 - **Question Data Integrity & Answer Key Corrections — GATE CSE 2005 Q51 (`go:3812`) & GATE CSE 1995 Q2.9 (`go:2621`) (DEC-035)**:

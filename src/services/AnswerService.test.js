@@ -157,4 +157,27 @@ describe("AnswerService", () => {
     expect(answer.type).toBe("UNSUPPORTED");
     expect(answer.answer_uid).toBe("unsupported:go:401");
   });
+
+  test("resolves GATE CSE 2024 Set 1 Q31 (go:422811) as MCQ with Option D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422811": {
+        answer_uid: "v2:1.31.24",
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422811",
+      link: "https://gateoverflow.in/422811/gate-cse-2024-set-1-question-31",
+      title: "GATE CSE 2024 | Set 1 | Question: 31",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:1.31.24",
+      type: "MCQ",
+      answer: "D",
+      tolerance: null,
+    });
+  });
 });
+

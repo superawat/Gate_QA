@@ -124,6 +124,34 @@ describe("evaluateAnswer", () => {
       correct: false,
     });
   });
+
+  test("evaluates GATE CSE 2024 Set 1 Q31 (go:422811) MCQ answer D correctly", () => {
+    const record = { type: "MCQ", answer: "D", tolerance: null };
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "d")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "3")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
 });
 
 
