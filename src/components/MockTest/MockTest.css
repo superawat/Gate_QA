@@ -22,7 +22,10 @@
   --gate-icon-size-tile: var(--mock-question-tile-size);
   --gate-icon-border: 1px;
   --gate-color-answered: #34a853;
+  --gate-color-correct: #34a853;
   --gate-color-not-answered: #ee4f2e;
+  --gate-color-incorrect: #dc2626;
+  --gate-color-bonus: #059669;
   --gate-color-not-visited: #d6d6d6;
   --gate-color-marked: #7d4cb6;
   --gate-color-current-ring: #1a63c6;
@@ -632,6 +635,34 @@
   clip-path: none;
 }
 
+/* Review: Correct — same green pentagon as ANSWERED */
+.mocktest-root .gate-status--correct,
+.mocktest-root .status-badge.correct {
+  background: linear-gradient(180deg, #53c96a 0%, var(--gate-color-correct) 86%);
+  border-color: #2d8e45;
+  color: #ffffff;
+  clip-path: polygon(0 36%, 32% 0, 68% 0, 100% 36%, 100% 100%, 0 100%);
+}
+
+/* Review: Incorrect — red inverted pentagon (mirrors NOT_ANSWERED shape) */
+.mocktest-root .gate-status--incorrect,
+.mocktest-root .status-badge.incorrect {
+  background: linear-gradient(180deg, #f87171 0%, var(--gate-color-incorrect) 88%);
+  border-color: #b91c1c;
+  color: #ffffff;
+  clip-path: polygon(0 0, 100% 0, 100% 66%, 68% 100%, 32% 100%, 0 66%);
+}
+
+/* Review: Bonus — circular emerald */
+.mocktest-root .gate-status--bonus,
+.mocktest-root .status-badge.bonus {
+  background: linear-gradient(180deg, #34d399 0%, var(--gate-color-bonus) 86%);
+  border-color: #047857;
+  color: #ffffff;
+  border-radius: 50%;
+  clip-path: none;
+}
+
 .mocktest-root .gate-status-check,
 .mocktest-root .review-check {
   position: absolute;
@@ -746,7 +777,10 @@
 .mocktest-root .gate-tile--answered,
 .mocktest-root .gate-tile--marked,
 .mocktest-root .gate-tile--answered-marked,
-.mocktest-root .gate-tile--not-visited {
+.mocktest-root .gate-tile--not-visited,
+.mocktest-root .gate-tile--correct,
+.mocktest-root .gate-tile--incorrect,
+.mocktest-root .gate-tile--bonus {
   transform: none;
 }
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-01
+
+- **Highlight Incorrectly Answered Questions in Custom Builder & Mock Test Review (DEC-038)**:
+  - *Feature & UX Enhancement*: Enabled students reviewing Custom Builder, Full Mock, and Past Paper attempts to immediately identify incorrectly answered questions on the question navigation palette without opening each question individually.
+  - *Architecture & Logic*: Extended `GateStatusIcon.jsx` with `CORRECT`, `INCORRECT`, and `BONUS` visual states and exported `getReviewVisualStatus(questionResult)` which inspects the canonical `resultSummary.perQuestionResult` from `evaluateAnswer.js`.
+  - *Design & Accessibility*: Added high-contrast red styling (`gate-tile--incorrect`, `gate-status--incorrect`, `#dc2626`) for incorrect questions, green (`gate-tile--correct`) for correct questions, neutral unattempted (`gate-tile--not-visited`) for unattempted questions, and dynamic review legend rows with matching counts. Added screen reader `aria-label` and `title` tooltips. Preserved standard official GATE CBT statuses during active exam mode (`isReviewPhase === false`).
+  - *Tests*: Added unit tests in `src/components/MockTest/QuestionPalette.test.jsx` covering MCQ, MSQ, NAT, active ring coexistence, aria labels, legend counts, and active exam status guards. All 476 tests pass.
+
 ## 2026-08-31
 
 - **Question & Answer Maintenance Roadmap & Agent Runbook Protocol (DEC-037)**:

@@ -6,6 +6,9 @@ export const GATE_VISUAL_STATUS = {
     ANSWERED: "ANSWERED",
     MARKED: "MARKED",
     ANSWERED_MARKED: "ANSWERED_MARKED",
+    CORRECT: "CORRECT",
+    INCORRECT: "INCORRECT",
+    BONUS: "BONUS",
 };
 
 const STATUS_MODIFIER = {
@@ -14,6 +17,9 @@ const STATUS_MODIFIER = {
     [GATE_VISUAL_STATUS.ANSWERED]: "answered",
     [GATE_VISUAL_STATUS.MARKED]: "marked",
     [GATE_VISUAL_STATUS.ANSWERED_MARKED]: "answered-marked",
+    [GATE_VISUAL_STATUS.CORRECT]: "correct",
+    [GATE_VISUAL_STATUS.INCORRECT]: "incorrect",
+    [GATE_VISUAL_STATUS.BONUS]: "bonus",
 };
 
 const VALID_STATUSES = new Set(Object.values(GATE_VISUAL_STATUS));
@@ -39,6 +45,25 @@ export const getGateVisualStatus = (state, STATUS) => {
         default:
             return GATE_VISUAL_STATUS.NOT_VISITED;
     }
+};
+
+export const getReviewVisualStatus = (questionResult) => {
+    if (!questionResult) {
+        return GATE_VISUAL_STATUS.NOT_VISITED;
+    }
+    if (questionResult.status === "bonus" || questionResult.autoAwarded) {
+        return GATE_VISUAL_STATUS.BONUS;
+    }
+    if (!questionResult.answered) {
+        return GATE_VISUAL_STATUS.NOT_VISITED;
+    }
+    if (questionResult.correct === true || questionResult.status === "correct") {
+        return GATE_VISUAL_STATUS.CORRECT;
+    }
+    if (questionResult.status === "missing_answer") {
+        return GATE_VISUAL_STATUS.NOT_ANSWERED;
+    }
+    return GATE_VISUAL_STATUS.INCORRECT;
 };
 
 export const getGateStatusModifier = (status) => {

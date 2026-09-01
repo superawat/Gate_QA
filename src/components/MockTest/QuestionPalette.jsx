@@ -5,6 +5,7 @@ import GateStatusIcon, {
     GATE_VISUAL_STATUS,
     getGateStatusModifier,
     getGateVisualStatus,
+    getReviewVisualStatus,
 } from "./GateStatusIcon";
 
 const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleCollapsed }) => {
@@ -27,54 +28,92 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
     );
     const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
 
-    const stats = {
-        [GATE_VISUAL_STATUS.ANSWERED]: 0,
-        [GATE_VISUAL_STATUS.NOT_ANSWERED]: 0,
-        [GATE_VISUAL_STATUS.NOT_VISITED]: 0,
-        [GATE_VISUAL_STATUS.MARKED]: 0,
-        [GATE_VISUAL_STATUS.ANSWERED_MARKED]: 0,
-    };
+    const stats = isReviewPhase
+        ? {
+            [GATE_VISUAL_STATUS.CORRECT]: 0,
+            [GATE_VISUAL_STATUS.INCORRECT]: 0,
+            [GATE_VISUAL_STATUS.NOT_VISITED]: 0,
+            [GATE_VISUAL_STATUS.BONUS]: 0,
+        }
+        : {
+            [GATE_VISUAL_STATUS.ANSWERED]: 0,
+            [GATE_VISUAL_STATUS.NOT_ANSWERED]: 0,
+            [GATE_VISUAL_STATUS.NOT_VISITED]: 0,
+            [GATE_VISUAL_STATUS.MARKED]: 0,
+            [GATE_VISUAL_STATUS.ANSWERED_MARKED]: 0,
+        };
 
     questions.forEach((question) => {
-        const visualStatus = getGateVisualStatus(
-            questionStates[question.question_uid] || STATUS.NOT_VISITED,
-            STATUS
-        );
-        stats[visualStatus] += 1;
+        if (isReviewPhase) {
+            const result = resultSummary?.perQuestionResult?.[question.question_uid] || null;
+            const vs = getReviewVisualStatus(result);
+            if (vs in stats) {
+                stats[vs] += 1;
+            }
+        } else {
+            const visualStatus = getGateVisualStatus(
+                questionStates[question.question_uid] || STATUS.NOT_VISITED,
+                STATUS
+            );
+            stats[visualStatus] = (stats[visualStatus] || 0) + 1;
+        }
     });
 
     const activeSectionQuestions = currentSection === "CS"
         ? sectionQuestions.CS
         : sectionQuestions.GA;
 
-    const legendRows = [
-        {
-            status: GATE_VISUAL_STATUS.ANSWERED,
-            label: "Answered",
-            testId: "legend-status-answered",
-        },
-        {
-            status: GATE_VISUAL_STATUS.NOT_ANSWERED,
-            label: "Not Answered",
-            testId: "legend-status-not-answered",
-        },
-        {
-            status: GATE_VISUAL_STATUS.NOT_VISITED,
-            label: "Not Visited",
-            testId: "legend-status-not-visited",
-        },
-        {
-            status: GATE_VISUAL_STATUS.MARKED,
-            label: "Marked for Review",
-            testId: "legend-status-marked",
-        },
-        {
-            status: GATE_VISUAL_STATUS.ANSWERED_MARKED,
-            label: "Answered & Marked for Review",
-            wide: true,
-            testId: "legend-status-answered-marked",
-        },
-    ];
+    const legendRows = isReviewPhase
+        ? [
+            {
+                status: GATE_VISUAL_STATUS.CORRECT,
+                label: "Correct",
+                testId: "legend-status-correct",
+            },
+            {
+                status: GATE_VISUAL_STATUS.INCORRECT,
+                label: "Incorrect",
+                testId: "legend-status-incorrect",
+            },
+            {
+                status: GATE_VISUAL_STATUS.NOT_VISITED,
+                label: "Unanswered",
+                testId: "legend-status-unanswered",
+            },
+            ...(stats[GATE_VISUAL_STATUS.BONUS] > 0 ? [{
+                status: GATE_VISUAL_STATUS.BONUS,
+                label: "Bonus",
+                testId: "legend-status-bonus",
+            }] : []),
+        ]
+        : [
+            {
+                status: GATE_VISUAL_STATUS.ANSWERED,
+                label: "Answered",
+                testId: "legend-status-answered",
+            },
+            {
+                status: GATE_VISUAL_STATUS.NOT_ANSWERED,
+                label: "Not Answered",
+                testId: "legend-status-not-answered",
+            },
+            {
+                status: GATE_VISUAL_STATUS.NOT_VISITED,
+                label: "Not Visited",
+                testId: "legend-status-not-visited",
+            },
+            {
+                status: GATE_VISUAL_STATUS.MARKED,
+                label: "Marked for Review",
+                testId: "legend-status-marked",
+            },
+            {
+                status: GATE_VISUAL_STATUS.ANSWERED_MARKED,
+                label: "Answered & Marked for Review",
+                wide: true,
+                testId: "legend-status-answered-marked",
+            },
+        ];
 
     return (
         <div className="mocktest-palette-root relative flex h-full w-full flex-col overflow-visible">
@@ -103,7 +142,7 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
                                 <GateStatusIcon
                                     variant="legend"
                                     status={row.status}
-                                    value={stats[row.status]}
+                                    value={stats[row.status] || 0}
                                     data-testid={row.testId}
                                 />
                                 <span>{row.label}</span>
@@ -124,15 +163,35 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
                         <div className="mocktest-palette-grid pb-3">
                             {activeSectionQuestions.map((question, index) => {
                                 const isCurrent = index === currentSectionIndex;
-                                const visualStatus = getGateVisualStatus(
-                                    questionStates[question.question_uid] || STATUS.NOT_VISITED,
-                                    STATUS
-                                );
-                                const statusModifier = getGateStatusModifier(visualStatus);
                                 const questionResult = resultSummary?.perQuestionResult?.[question.question_uid] || null;
+                                const visualStatus = isReviewPhase
+                                    ? getReviewVisualStatus(questionResult)
+                                    : getGateVisualStatus(
+                                        questionStates[question.question_uid] || STATUS.NOT_VISITED,
+                                        STATUS
+                                    );
+                                const statusModifier = getGateStatusModifier(visualStatus);
                                 const timeExceeded = isReviewPhase && Boolean(questionResult?.timeExceededThreshold);
                                 const timeLabel = isReviewPhase
                                     ? `Time spent: ${formatMockTimeSpent(questionResult?.timeSpentSeconds)}`
+                                    : undefined;
+
+                                const statusLabel = isReviewPhase
+                                    ? ({
+                                        [GATE_VISUAL_STATUS.CORRECT]: "Correct",
+                                        [GATE_VISUAL_STATUS.INCORRECT]: "Incorrect",
+                                        [GATE_VISUAL_STATUS.NOT_VISITED]: "Unanswered",
+                                        [GATE_VISUAL_STATUS.NOT_ANSWERED]: "No answer record",
+                                        [GATE_VISUAL_STATUS.BONUS]: "Bonus",
+                                    }[visualStatus] ?? "Unknown")
+                                    : undefined;
+
+                                const tileAriaLabel = isReviewPhase
+                                    ? `Question ${index + 1} — ${statusLabel}${timeExceeded ? ` (slow: ${formatMockTimeSpent(questionResult?.timeSpentSeconds)})` : ""}`
+                                    : `Question ${index + 1}`;
+
+                                const tileTitle = isReviewPhase
+                                    ? `Question ${index + 1}: ${statusLabel}${timeLabel ? `. ${timeLabel}` : ""}`
                                     : undefined;
 
                                 return (
@@ -144,7 +203,8 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
                                         data-time-warning={timeExceeded ? "true" : undefined}
                                         data-testid={`tile-status-${statusModifier}`}
                                         aria-current={isCurrent ? "true" : undefined}
-                                        title={timeLabel}
+                                        aria-label={tileAriaLabel}
+                                        title={tileTitle}
                                         className={`palette-btn gate-tile gate-tile--${statusModifier} ${timeExceeded ? "gate-tile--slow-time" : ""} ${isCurrent ? "gate-current-ring" : ""}`}
                                     >
                                         <GateStatusIcon

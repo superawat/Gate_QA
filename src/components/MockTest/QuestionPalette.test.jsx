@@ -205,6 +205,9 @@ describe("QuestionPalette status icon parity", () => {
     mockContextValue.resultSummary = {
       perQuestionResult: {
         "ga:2": {
+          answered: true,
+          correct: true,
+          status: "correct",
           timeSpentSeconds: 181,
           timeExceededThreshold: true,
         },
@@ -219,10 +222,224 @@ describe("QuestionPalette status icon parity", () => {
       />
     );
 
-    const slowTile = screen.getByTestId("tile-status-answered");
+    const slowTile = screen.getByTestId("tile-status-correct");
     expect(slowTile.getAttribute("data-time-warning")).toBe("true");
-    expect(slowTile.getAttribute("title")).toBe("Time spent: 3m 01s");
+    expect(slowTile.getAttribute("title")).toBe("Question 2: Correct. Time spent: 3m 01s");
+    expect(slowTile.getAttribute("aria-label")).toContain("(slow: 3m 01s)");
     expect(slowTile.className).toContain("gate-tile--slow-time");
+  });
+
+  describe("Review Phase status and incorrect highlighting", () => {
+    beforeEach(() => {
+      mockContextValue.questions = [
+        { question_uid: "ga:mcq-correct", type: "MCQ" },
+        { question_uid: "ga:mcq-wrong", type: "MCQ" },
+        { question_uid: "ga:msq-correct", type: "MSQ" },
+        { question_uid: "ga:msq-wrong", type: "MSQ" },
+        { question_uid: "ga:nat-correct", type: "NAT" },
+        { question_uid: "ga:nat-wrong", type: "NAT" },
+        { question_uid: "ga:unattempted", type: "MCQ" },
+        { question_uid: "ga:bonus", type: "MARKS_TO_ALL" },
+        { question_uid: "ga:missing", type: "MCQ" },
+      ];
+      mockContextValue.sectionQuestions = {
+        GA: [...mockContextValue.questions],
+        CS: [],
+      };
+      mockContextValue.currentSection = "GA";
+      mockContextValue.currentSectionIndex = 1; // ga:mcq-wrong is current
+
+      mockContextValue.resultSummary = {
+        correct: 3,
+        incorrect: 3,
+        unanswered: 1,
+        bonus: 1,
+        perQuestionResult: {
+          "ga:mcq-correct": {
+            questionUid: "ga:mcq-correct",
+            answered: true,
+            correct: true,
+            status: "correct",
+            type: "MCQ",
+            timeSpentSeconds: 45,
+          },
+          "ga:mcq-wrong": {
+            questionUid: "ga:mcq-wrong",
+            answered: true,
+            correct: false,
+            status: "incorrect",
+            type: "MCQ",
+            timeSpentSeconds: 90,
+          },
+          "ga:msq-correct": {
+            questionUid: "ga:msq-correct",
+            answered: true,
+            correct: true,
+            status: "correct",
+            type: "MSQ",
+            timeSpentSeconds: 60,
+          },
+          "ga:msq-wrong": {
+            questionUid: "ga:msq-wrong",
+            answered: true,
+            correct: false,
+            status: "incorrect",
+            type: "MSQ",
+            timeSpentSeconds: 120,
+          },
+          "ga:nat-correct": {
+            questionUid: "ga:nat-correct",
+            answered: true,
+            correct: true,
+            status: "correct",
+            type: "NAT",
+            timeSpentSeconds: 80,
+          },
+          "ga:nat-wrong": {
+            questionUid: "ga:nat-wrong",
+            answered: true,
+            correct: false,
+            status: "incorrect",
+            type: "NAT",
+            timeSpentSeconds: 150,
+          },
+          "ga:unattempted": {
+            questionUid: "ga:unattempted",
+            answered: false,
+            correct: false,
+            status: "unanswered",
+            type: "MCQ",
+            timeSpentSeconds: 0,
+          },
+          "ga:bonus": {
+            questionUid: "ga:bonus",
+            answered: false,
+            correct: false,
+            autoAwarded: true,
+            status: "bonus",
+            type: "MARKS_TO_ALL",
+            timeSpentSeconds: 10,
+          },
+          "ga:missing": {
+            questionUid: "ga:missing",
+            answered: true,
+            correct: false,
+            status: "missing_answer",
+            type: "MCQ",
+            timeSpentSeconds: 30,
+          },
+        },
+      };
+    });
+
+    test("renders distinguishable red incorrect tiles and green correct tiles for MCQ, MSQ, and NAT", () => {
+      render(
+        <QuestionPalette
+          isCollapsed={false}
+          isReviewPhase={true}
+          onToggleCollapsed={() => { }}
+        />
+      );
+
+      const allTiles = screen.getAllByRole("button").filter((btn) => btn.className.includes("gate-tile"));
+      expect(allTiles).toHaveLength(9);
+
+      // 1. MCQ Correct (Index 0)
+      const mcqCorrectTile = allTiles[0];
+      expect(mcqCorrectTile.getAttribute("data-status")).toBe("CORRECT");
+      expect(mcqCorrectTile.className).toContain("gate-tile--correct");
+      expect(mcqCorrectTile.getAttribute("aria-label")).toContain("Question 1 — Correct");
+
+      // 2. MCQ Incorrect (Index 1 - Current active question)
+      const mcqWrongTile = allTiles[1];
+      expect(mcqWrongTile.getAttribute("data-status")).toBe("INCORRECT");
+      expect(mcqWrongTile.className).toContain("gate-tile--incorrect");
+      expect(mcqWrongTile.className).toContain("gate-current-ring"); // Active outline sits on top of incorrect tile
+      expect(mcqWrongTile.getAttribute("aria-label")).toContain("Question 2 — Incorrect");
+
+      // 3. MSQ Correct (Index 2)
+      const msqCorrectTile = allTiles[2];
+      expect(msqCorrectTile.getAttribute("data-status")).toBe("CORRECT");
+      expect(msqCorrectTile.className).toContain("gate-tile--correct");
+
+      // 4. MSQ Incorrect (Index 3)
+      const msqWrongTile = allTiles[3];
+      expect(msqWrongTile.getAttribute("data-status")).toBe("INCORRECT");
+      expect(msqWrongTile.className).toContain("gate-tile--incorrect");
+
+      // 5. NAT Correct (Index 4)
+      const natCorrectTile = allTiles[4];
+      expect(natCorrectTile.getAttribute("data-status")).toBe("CORRECT");
+      expect(natCorrectTile.className).toContain("gate-tile--correct");
+
+      // 6. NAT Incorrect (Index 5)
+      const natWrongTile = allTiles[5];
+      expect(natWrongTile.getAttribute("data-status")).toBe("INCORRECT");
+      expect(natWrongTile.className).toContain("gate-tile--incorrect");
+
+      // 7. Unattempted (Index 6)
+      const unattemptedTile = allTiles[6];
+      expect(unattemptedTile.getAttribute("data-status")).toBe("NOT_VISITED");
+      expect(unattemptedTile.className).toContain("gate-tile--not-visited");
+      expect(unattemptedTile.className).not.toContain("gate-tile--incorrect");
+      expect(unattemptedTile.getAttribute("aria-label")).toContain("Question 7 — Unanswered");
+
+      // 8. Bonus (Index 7)
+      const bonusTile = allTiles[7];
+      expect(bonusTile.getAttribute("data-status")).toBe("BONUS");
+      expect(bonusTile.className).toContain("gate-tile--bonus");
+
+      // 9. Missing answer record (Index 8)
+      const missingTile = allTiles[8];
+      expect(missingTile.getAttribute("data-status")).toBe("NOT_ANSWERED");
+      expect(missingTile.className).toContain("gate-tile--not-answered");
+    });
+
+    test("renders review legend with Correct, Incorrect, Unanswered, and Bonus counts", () => {
+      render(
+        <QuestionPalette
+          isCollapsed={false}
+          isReviewPhase={true}
+          onToggleCollapsed={() => { }}
+        />
+      );
+
+      const correctLegend = screen.getByTestId("legend-status-correct");
+      expect(correctLegend.className).toContain("gate-status--correct");
+      expect(correctLegend.textContent.trim()).toBe("3");
+
+      const incorrectLegend = screen.getByTestId("legend-status-incorrect");
+      expect(incorrectLegend.className).toContain("gate-status--incorrect");
+      expect(incorrectLegend.textContent.trim()).toBe("3");
+
+      const unansweredLegend = screen.getByTestId("legend-status-unanswered");
+      expect(unansweredLegend.className).toContain("gate-status--not-visited");
+      expect(unansweredLegend.textContent.trim()).toBe("1");
+
+      const bonusLegend = screen.getByTestId("legend-status-bonus");
+      expect(bonusLegend.className).toContain("gate-status--bonus");
+      expect(bonusLegend.textContent.trim()).toBe("1");
+    });
+
+    test("retains standard official GATE CBT statuses when in active exam mode (isReviewPhase=false)", () => {
+      render(
+        <QuestionPalette
+          isCollapsed={false}
+          isReviewPhase={false}
+          onToggleCollapsed={() => { }}
+        />
+      );
+
+      // Active exam mode should not contain any review-phase status test-ids
+      expect(screen.queryByTestId("tile-status-correct")).toBeNull();
+      expect(screen.queryByTestId("tile-status-incorrect")).toBeNull();
+      expect(screen.queryByTestId("legend-status-correct")).toBeNull();
+      expect(screen.queryByTestId("legend-status-incorrect")).toBeNull();
+
+      // Exam legend should be present
+      expect(screen.getByTestId("legend-status-answered")).toBeTruthy();
+      expect(screen.getByTestId("legend-status-not-answered")).toBeTruthy();
+    });
   });
 });
 
