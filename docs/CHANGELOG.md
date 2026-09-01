@@ -2,6 +2,21 @@
 
 ## 2026-09-01
 
+- **Data Persistence & Privacy Policy Modernization for Google Login & Cloud Backup (DEC-040)**:
+  - *Context & Need*: The footer Data Policy modal and documentation reflected legacy client-only constraints that claimed no server storage or cross-device sync was possible, conflicting with the newly introduced Google Authentication, Supabase Cloud Sync, and Zero Data Loss union-merge capabilities.
+  - *UI & UX Redesign*: Redesigned [`src/components/Footer/DataPolicyModal.jsx`](file:///src/components/Footer/DataPolicyModal.jsx) with high-clarity sections: (1) Local-First Default (Guest Mode) vs. Google Cloud Sync (Optional), (2) Protection Mechanisms (Google Cloud Sync, JSON Workspace Export/Import, Pre-Merge Snapshots), (3) When Guest Progress Is At Risk (Incognito, cleared cache, unlinked devices), (4) Zero Data Loss Guarantees (additive union-merge, safe sign-out with no local data wiped), and (5) Privacy Commitments (no selling of student data).
+  - *Documentation & Static Pages*: Updated master policy [`docs/DATA-POLICY.md`](file:///docs/DATA-POLICY.md) and [`src/pages/StaticPages.jsx`](file:///src/pages/StaticPages.jsx) with comprehensive explanations of Supabase table structures, pre-merge snapshot mechanics, and offline portability contracts.
+  - *Tests*: Added unit tests in `src/components/Footer/DataPolicyModal.test.jsx`. All 482 unit tests pass.
+
+- **Defective Question Representation & Scoring Repair — GATE CSE 2005 Q53 (`go:1376`) (DEC-039)**:
+  - *Problem*: GATE CSE 2005 Question 53 (`go:1376` / `cse:2005:set1:main:q53`), asking for the language recognized by a finite automaton with four choices (A, B, C, D), was previously rendered as `Non-standard format` due to being listed in `unsupported_question_uids_v1.json`. Analysis confirmed that none of the four options correctly describes the automaton's language.
+  - *Resolution*:
+    - Converted question type from `Non-standard format` to interactive **`MCQ`** while preserving all 4 options, stem text, and automaton diagram verbatim.
+    - Set `answer: null` and `is_defective: true` in authoritative answer registries (`data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/questions-with-answers.json`, and detail shard `2005-s0.json`). Removed `go:1376` from `unsupported_question_uids_v1.json`.
+    - Enhanced `evaluateAnswer.js` to return `{ status: "excluded", correct: false, reason: "defective_question" }` for defective/excluded questions.
+    - Updated mock test and practice evaluation (`mockTest.js`, `AnswerPanel.jsx`, `MockTestQuestion.jsx`, `GateStatusIcon.jsx`, `MockTestResults.jsx`, `mockTestHistory.js`) so that selecting any option (A/B/C/D) never marks any option as correct, never awards marks, and never penalizes the student with negative marks, cleanly excluding the defective question from test score calculations with clear explanatory review notices.
+  - *Tests*: Added unit regression tests in `src/utils/evaluateAnswer.test.js`, `src/utils/mockTest.test.js`, and `src/services/AnswerService.test.js`. All 479 unit tests pass.
+
 - **Highlight Incorrectly Answered Questions in Custom Builder & Mock Test Review (DEC-038)**:
   - *Feature & UX Enhancement*: Enabled students reviewing Custom Builder, Full Mock, and Past Paper attempts to immediately identify incorrectly answered questions on the question navigation palette without opening each question individually.
   - *Architecture & Logic*: Extended `GateStatusIcon.jsx` with `CORRECT`, `INCORRECT`, and `BONUS` visual states and exported `getReviewVisualStatus(questionResult)` which inspects the canonical `resultSummary.perQuestionResult` from `evaluateAnswer.js`.

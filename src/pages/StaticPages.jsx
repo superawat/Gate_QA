@@ -204,7 +204,7 @@ export function PrivacyPage() {
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[color:var(--color-text)] leading-tight">
               Privacy Policy
             </h1>
-            <p className="text-sm text-[color:var(--color-text-muted)]">Last updated: August 2026</p>
+            <p className="text-sm text-[color:var(--color-text-muted)]">Last updated: September 2026</p>
           </header>
 
           <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 md:p-8 shadow-[var(--shadow-soft)] space-y-8">
