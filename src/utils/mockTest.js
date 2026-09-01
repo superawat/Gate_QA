@@ -394,6 +394,10 @@ export const formatExpectedAnswer = (answerRecord = null) => {
     return "Unavailable";
   }
 
+  if (answerRecord.is_defective || (answerRecord.type === "MCQ" && answerRecord.answer == null)) {
+    return "None (Defective Question - Excluded from scoring)";
+  }
+
   if (isMockAutoAwardType(answerRecord.type)) {
     return "Awarded to all";
   }
@@ -492,6 +496,18 @@ export const buildMockQuestionResult = ({
   }
 
   const evaluation = evaluateAnswer(answerRecord, response);
+  if (evaluation.status === "excluded" || answerRecord?.is_defective) {
+    return {
+      ...baseResult,
+      status: "excluded",
+      correct: false,
+      scoreDelta: 0,
+      marks: 0,
+      negativeMarks: 0,
+      excluded: true,
+    };
+  }
+
   if (evaluation.status === "evaluated" && evaluation.correct) {
     return {
       ...baseResult,
@@ -528,11 +544,12 @@ export const buildMockResultSummary = ({
     incorrect: 0,
     unanswered: 0,
     bonus: 0,
+    excluded: 0,
     score: 0,
     maxScore: 0,
     sectionSummary: {
-      GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
-      CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, score: 0, maxScore: 0 },
+      GA: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, excluded: 0, score: 0, maxScore: 0 },
+      CS: { total: 0, attempted: 0, correct: 0, incorrect: 0, unanswered: 0, bonus: 0, excluded: 0, score: 0, maxScore: 0 },
     },
     timeAnalysis: {
       totalSeconds: 0,
@@ -571,9 +588,15 @@ export const buildMockResultSummary = ({
     sectionSummary.total += 1;
     sectionSummary.score += result.scoreDelta;
 
-    if (Number.isFinite(Number(result.marks)) && Number(result.marks) > 0) {
+    if (Number.isFinite(Number(result.marks)) && Number(result.marks) > 0 && result.status !== "excluded") {
       summary.maxScore += Number(result.marks);
       sectionSummary.maxScore += Number(result.marks);
+    }
+
+    if (result.status === "excluded" || result.excluded) {
+      summary.excluded += 1;
+      sectionSummary.excluded += 1;
+      return;
     }
 
     if (result.status === "bonus") {

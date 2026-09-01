@@ -122,7 +122,7 @@ const generatePerformanceAnalysis = (questions = [], summary = {}) => {
             slowList.push({ label, timeSpentSeconds: result.timeSpentSeconds });
         }
 
-        if (!result.correct && result.answered) {
+        if (!result.correct && result.answered && result.status !== "excluded" && !result.excluded) {
             incorrectList.push({ label, uid, subtopic: subtopicLabel, subject: q.subjectLabel });
             const topicKey = `${q.subjectLabel} - ${subtopicLabel}`;
             weakTopicsMap.set(topicKey, (weakTopicsMap.get(topicKey) || 0) + 1);

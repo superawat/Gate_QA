@@ -23,6 +23,13 @@ const REPORT_PATH = path.join(
 );
 
 const CURATED_RESOLUTIONS = {
+  "go:1376": {
+    type: "MCQ",
+    answer: null,
+    is_defective: true,
+    note: "Defective question: None of the four options (A, B, C, D) correctly describes the language recognized by the automaton. Excluded from scoring.",
+    method: "curated_defective_question",
+  },
   "go:8313": {
     type: "NAT",
     answer: 69,

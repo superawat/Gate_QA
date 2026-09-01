@@ -216,6 +216,10 @@ export const buildMockAttemptHistoryEntry = ({
       return;
     }
 
+    if (result.status === "excluded" || result.excluded) {
+      return;
+    }
+
     if (result.status === "bonus") {
       bonusQuestions.push(record);
       return;

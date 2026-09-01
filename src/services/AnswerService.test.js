@@ -179,5 +179,29 @@ describe("AnswerService", () => {
       tolerance: null,
     });
   });
+
+  test("resolves GATE CSE 2005 Q53 (go:1376) as defective MCQ with null answer", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:1376": {
+        answer_uid: "manual_res:go:1376",
+        type: "MCQ",
+        answer: null,
+        tolerance: null,
+        is_defective: true,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:1376",
+      link: "https://gateoverflow.in/1376/gate-cse-2005-question-53",
+      title: "GATE CSE 2005 | Question: 53",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual_res:go:1376",
+      type: "MCQ",
+      answer: null,
+      tolerance: null,
+      is_defective: true,
+    });
+  });
 });
 

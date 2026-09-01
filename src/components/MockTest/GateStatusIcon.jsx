@@ -60,6 +60,9 @@ export const getReviewVisualStatus = (questionResult) => {
     if (questionResult.correct === true || questionResult.status === "correct") {
         return GATE_VISUAL_STATUS.CORRECT;
     }
+    if (questionResult.status === "excluded" || questionResult.excluded) {
+        return GATE_VISUAL_STATUS.NOT_ANSWERED;
+    }
     if (questionResult.status === "missing_answer") {
         return GATE_VISUAL_STATUS.NOT_ANSWERED;
     }

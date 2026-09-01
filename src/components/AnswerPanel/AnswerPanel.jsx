@@ -718,17 +718,31 @@ export default function AnswerPanel({
       <div className="mb-6">
         {renderInputSection()}
 
+        {answerRecord?.is_defective && (
+          <div className="rounded-xl border border-amber-200 bg-amber-50/70 dark:bg-amber-950/30 p-2.5 text-xs text-amber-900 dark:text-amber-200 font-medium">
+            Defective Question Notice: None of the four options correctly represents the language recognized by the automaton. This question is excluded from scoring.
+          </div>
+        )}
+
         {result && (
           <div
             role="alert"
             aria-live="assertive"
             className={`mt-3 rounded-xl p-3 text-center text-sm font-semibold border ${
-              result.correct
+              result.status === "excluded"
+                ? "border-amber-300 bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200"
+                : result.correct
                 ? "border-emerald-200 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300"
                 : "border-rose-200 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300"
             }`}
           >
-            {result.status === "invalid_input" ? "Invalid Input" : result.correct ? "Correct!" : "Incorrect"}
+            {result.status === "excluded"
+              ? "Defective question: No option is correct (Excluded from scoring)"
+              : result.status === "invalid_input"
+              ? "Invalid Input"
+              : result.correct
+              ? "Correct!"
+              : "Incorrect"}
           </div>
         )}
       </div>

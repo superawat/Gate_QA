@@ -54,6 +54,8 @@ const buildCorrectOptionSet = (answerRecord = null) => {
 
 const getVerdictCopy = (result = null) => {
     switch (result?.status) {
+        case "excluded":
+            return { label: "Excluded from scoring", tone: "text-[#d97706]" };
         case "bonus":
             return { label: "Awarded to all", tone: "text-[#0f6f2f]" };
         case "correct":
@@ -246,7 +248,9 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     }
     const reviewTimeText = formatMockTimeSpent(reviewResult?.timeSpentSeconds);
     const reviewTimeExceeded = Boolean(reviewResult?.timeExceededThreshold);
-    const reviewMessage = reviewResult?.status === "bonus"
+    const reviewMessage = reviewResult?.status === "excluded"
+        ? "This question has defective options (no option is correct) and is excluded from scoring."
+        : reviewResult?.status === "bonus"
         ? "This question was awarded automatically."
         : reviewResult?.status === "missing_answer"
         ? "No mapped answer record."
@@ -560,13 +564,15 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                                         ? Array.isArray(currentResponse) && currentResponse.includes(optionValue)
                                                         : currentResponse === optionValue;
                                                     const isCorrect = isReviewPhase && correctOptionSet.has(optionValue);
-                                                    const isIncorrectSelection = isReviewPhase && isChecked && !isCorrect;
+                                                    const isIncorrectSelection = isReviewPhase && isChecked && !isCorrect && reviewResult?.status !== "excluded";
                                                     const rowClass = isReviewPhase
                                                         ? (isCorrect
                                                             ? "border border-[#1e8f3f] bg-[#eef9f1] text-[#0f6f2f]"
-                                                            : isIncorrectSelection
-                                                                ? "border border-[#cc5d5d] bg-[#fff1f1] text-[#c4302b]"
-                                                                : "border border-gray-300 text-gray-500 opacity-70")
+                                                            : reviewResult?.status === "excluded" && isChecked
+                                                                ? "border border-amber-400 bg-amber-50 text-amber-800"
+                                                                : isIncorrectSelection
+                                                                    ? "border border-[#cc5d5d] bg-[#fff1f1] text-[#c4302b]"
+                                                                    : "border border-gray-300 text-gray-500 opacity-70")
                                                         : (isChecked ? "border-[#0e76a8] bg-[#f0f7fb] text-[#0e76a8] ring-1 ring-[#0e76a8]" : "border-gray-300 text-gray-700");
 
                                                     return (

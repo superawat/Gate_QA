@@ -152,6 +152,36 @@ describe("evaluateAnswer", () => {
       correct: false,
     });
   });
+
+  test("evaluates GATE CSE 2005 Q53 (go:1376) as defective MCQ excluded from scoring", () => {
+    const record = {
+      type: "MCQ",
+      answer: null,
+      is_defective: true,
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "excluded",
+      correct: false,
+      reason: "defective_question",
+    });
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "excluded",
+      correct: false,
+      reason: "defective_question",
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "excluded",
+      correct: false,
+      reason: "defective_question",
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "excluded",
+      correct: false,
+      reason: "defective_question",
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
 });
 
 

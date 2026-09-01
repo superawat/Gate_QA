@@ -381,4 +381,95 @@ describe("mockTest utilities", () => {
     expect(validation.valid).toBe(true);
     expect(validation.hasMixedOptionSources).toBe(true);
   });
+
+  test("defective questions are excluded from scoring without penalty in mock results", () => {
+    const questionMeta = {
+      questionUid: "go:1376",
+      section: "CS",
+      type: "MCQ",
+      marks: 2,
+      negativeMarks: 0.6666666667,
+    };
+    const answerRecord = {
+      type: "MCQ",
+      answer: null,
+      is_defective: true,
+    };
+
+    // Selecting option A
+    const resultA = buildMockQuestionResult({
+      questionMeta,
+      response: "A",
+      answerRecord,
+    });
+    expect(resultA).toMatchObject({
+      status: "excluded",
+      correct: false,
+      scoreDelta: 0,
+      marks: 0,
+      negativeMarks: 0,
+      excluded: true,
+    });
+
+    // Selecting option C
+    const resultC = buildMockQuestionResult({
+      questionMeta,
+      response: "C",
+      answerRecord,
+    });
+    expect(resultC).toMatchObject({
+      status: "excluded",
+      correct: false,
+      scoreDelta: 0,
+      marks: 0,
+      negativeMarks: 0,
+      excluded: true,
+    });
+
+    expect(formatExpectedAnswer(answerRecord)).toBe("None (Defective Question - Excluded from scoring)");
+  });
+
+  test("buildMockResultSummary excludes defective questions from scoring summary without penalizing student", () => {
+    const questions = [
+      { question_uid: "ga:1" },
+      { question_uid: "go:1376" },
+    ];
+    const questionMetaByUid = {
+      "ga:1": { questionUid: "ga:1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333 },
+      "go:1376": { questionUid: "go:1376", section: "CS", type: "MCQ", marks: 2, negativeMarks: 0.6666666667 },
+    };
+    const responses = {
+      "ga:1": "B",
+      "go:1376": "A", // Student selected option A on defective question
+    };
+    const answers = {
+      "ga:1": { type: "MCQ", answer: "B" },
+      "go:1376": { type: "MCQ", answer: null, is_defective: true },
+    };
+
+    const summary = buildMockResultSummary({
+      questions,
+      responses,
+      questionMetaByUid,
+      getAnswerRecord: (question) => answers[question.question_uid] || null,
+    });
+
+    expect(summary).toMatchObject({
+      attempted: 1, // Only ga:1 is considered a standard scored attempt
+      correct: 1,
+      incorrect: 0, // Defective question was NOT marked incorrect
+      unanswered: 0,
+      excluded: 1,
+      score: 1, // Full 1 mark from GA, 0 deducted for go:1376
+      maxScore: 1, // Excluded question marks omitted from scorable maxScore
+    });
+    expect(summary.sectionSummary.CS).toMatchObject({
+      total: 1,
+      correct: 0,
+      incorrect: 0,
+      excluded: 1,
+      score: 0,
+      maxScore: 0,
+    });
+  });
 });

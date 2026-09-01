@@ -22,6 +22,14 @@ export function evaluateAnswer(record, userInput) {
     return { status: "missing_answer", correct: false };
   }
 
+  if (record.is_defective || record.status === "excluded" || record.answer == null) {
+    return {
+      status: "excluded",
+      correct: false,
+      reason: record.defective_reason || "defective_question",
+    };
+  }
+
   if (record.type === "MCQ") {
     const submitted = String(userInput || "").toUpperCase().trim();
     return {
