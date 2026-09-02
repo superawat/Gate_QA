@@ -1,5 +1,16 @@
 # Changelog
 
+- **Question Data Integrity & Format Correction (`go:80599` & `go:84830`) (DEC-049)**:
+  - *`go:80599` (GATE CSE 1987 Q2k - Theory of Computation)*:
+    - *Problem*: Stored as MCQ but lacked an options list in the question body, causing the UI to render four empty fallback option placeholders (A–D).
+    - *Resolution*: Appended `<ol style="list-style-type:upper-alpha"><li>TRUE</li><li>FALSE</li></ol>` to the question stem in `public/questions-with-answers.json` and `public/questions-filtered-with-ids.json`. Configured as a 2-choice MCQ with correct answer **Option B** (FALSE) because Context-Free Languages (CFLs) are not closed under intersection (e.g. $L_1 = \{a^n b^n c^m\}$ and $L_2 = \{a^m b^n c^n\}$ are CFLs, but $L_1 \cap L_2 = \{a^n b^n c^n\}$ is not a CFL).
+    - *UI & Shards*: Regenerated `public/question-detail-shards/1987-s0.json` and updated `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/mock_catalog_v1.json`, and search indices.
+  - *`go:84830` (GATE CSE 1990 Q3-v - Algorithms)*:
+    - *Problem*: Incorrectly classified as NAT with dummy value 7 despite having four explicit choices (A: $\Theta(n \log n)$, B: $\Theta(n)$, C: $\Theta(n^2)$, D: $\Theta(n\sqrt{n})$).
+    - *Resolution*: Converted question type from NAT to **MCQ** with correct answer **Option A** ($\Theta(n \log n)$), based on the fundamental lower bound of comparison-based sorting algorithms ($\Omega(n \log n)$ comparisons in decision tree). Preserved existing question stem and choices (A–D) verbatim.
+    - *UI & Shards*: Synchronized across `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, detail shard `1990-s0.json`, and `public/mock_catalog_v1.json`.
+  - *Tests & Verification*: Added automated regression tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`. All 536 unit tests passing (100% green), `npm run qa:validate-data` passing, and `npm run typecheck` clean.
+
 - **Preparation Tracker PageShell & Back to Home Navigation Integration (DEC-048)**:
   - *Context & Goal*: The Preparation Tracker page (`/tracker`, `TrackerPage.jsx`) was missing a direct navigation link back to the Home Dashboard and lacked the global `PageShell` container present on all other pages.
   - *Changes*:

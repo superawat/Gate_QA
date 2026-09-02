@@ -245,7 +245,68 @@ describe("evaluateAnswer", () => {
       correct: false,
     });
   });
+
+  test("evaluates GATE CSE 1987 Q2k (go:80599) as 2-choice MCQ with Option B (FALSE) correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    };
+
+    // Selecting B (FALSE - CFL not closed under intersection) is correct
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "b")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting A (TRUE) is incorrect
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "a")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
+
+  test("evaluates GATE CSE 1990 Q3-v (go:84830) as MCQ with Option A (Theta(n log n)) correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    };
+
+    // Selecting A (Theta(n log n)) is correct
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "a")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Options B, C, D are incorrect
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "7")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
 });
-
-
-

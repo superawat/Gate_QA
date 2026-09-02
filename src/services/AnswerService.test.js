@@ -249,6 +249,48 @@ describe("AnswerService", () => {
       tolerance: null,
     });
   });
+
+  test("resolves GATE CSE 1987 Q2k (go:80599) as MCQ Option B", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:80599": {
+        answer_uid: "v2:10.3.1",
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:80599",
+      link: "https://gateoverflow.in/80599/gate-cse-1987-question-2k",
+      title: "GATE CSE 1987 | Question: 2k",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:10.3.1",
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 1990 Q3-v (go:84830) as MCQ Option A", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:84830": {
+        answer_uid: "v2:1.31.3",
+        type: "MCQ",
+        answer: "A",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:84830",
+      link: "https://gateoverflow.in/84830/gate-cse-1990-question-3-v",
+      title: "GATE CSE 1990 | Question: 3-v",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:1.31.3",
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    });
+  });
 });
-
-
