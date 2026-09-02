@@ -20,7 +20,7 @@ import {
   saveWorkspaceCsv,
 } from "../../utils/workspaceFile";
 import { useAuth } from "../../contexts/AuthContext";
-import { TRACKER_ANNOUNCEMENT_SEEN_KEY } from "../Tracker/TrackerAnnouncementModal";
+import { TRACKER_ANNOUNCEMENT_SEEN_KEY } from "../../utils/trackerState";
 
 const AuthModal = lazy(() => import("../Auth/AuthModal"));
 const UserProfileMenu = lazy(() => import("../Auth/UserProfileMenu"));

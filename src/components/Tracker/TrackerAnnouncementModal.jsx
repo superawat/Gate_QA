@@ -15,8 +15,9 @@ import {
 } from "react-icons/fi";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
 import { TRACKER_ROUTE } from "../../utils/routes";
+import { TRACKER_ANNOUNCEMENT_SEEN_KEY } from "../../utils/trackerState";
 
-export const TRACKER_ANNOUNCEMENT_SEEN_KEY = "gateqa_tracker_announcement_seen_v1";
+export { TRACKER_ANNOUNCEMENT_SEEN_KEY };
 
 const TRACKER_FEATURES = [
   {
@@ -91,7 +92,7 @@ export default function TrackerAnnouncementModal({ isOpen, onClose }) {
         {/* Header Ribbon */}
         <div className="flex items-center justify-between border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]/40 px-5 py-4 sm:px-6">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/30 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-800 dark:text-emerald-300">
               <FiZap className="h-3.5 w-3.5" />
               NEW FEATURE
             </span>
@@ -183,7 +184,7 @@ export default function TrackerAnnouncementModal({ isOpen, onClose }) {
           <button
             type="button"
             onClick={handleOpenTracker}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-2 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-emerald-700/20 transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
           >
             <span>Open Preparation Tracker</span>
             <FiArrowRight className="h-3.5 w-3.5" />

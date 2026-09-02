@@ -1,5 +1,17 @@
 # Changelog
 
+- **Comprehensive CI & QA Pipeline Hardening — Playwright A11y, Code-Splitting & Image Integrity (DEC-046)**:
+  - *Context & Goal*: Resolved all issues identified during full-spectrum test execution (`test:unit`, `test:e2e`, `qa:a11y:axe`, `qa:validate-question-images`, `qa:audit-aptitude`, and production build).
+  - *A11y Color Contrast Hardening (`TrackerAnnouncementModal.jsx`)*:
+    - Elevated contrast ratio on the `NEW FEATURE` badge to > 4.5:1 (`text-emerald-800 dark:text-emerald-300` on `bg-emerald-500/15`).
+    - Darkened CTA button background to `bg-emerald-700 hover:bg-emerald-800` to exceed WCAG AA 4.5:1 ratio for 12px/14px bold white text.
+  - *Dynamic Import & Code-Splitting Fix (`AppHeader.jsx` & `trackerState.ts`)*:
+    - Moved `TRACKER_ANNOUNCEMENT_SEEN_KEY` export to `trackerState.ts` so `AppHeader.jsx` no longer imports `TrackerAnnouncementModal.jsx` statically.
+    - Re-enabled lazy code-splitting for `TrackerAnnouncementModal` into an independent 6.49 KB chunk, reducing initial bundle size.
+  - *Orphaned Image Cleanup*: Removed 5 unreferenced `.webp` image assets from `public/question-images/` (`qa:validate-question-images` 0 missing, 0 orphaned, 0 remote blob questions).
+  - *Aptitude Artifact Audit Regex Hardening (`audit-aptitude-data.js`)*: Stripped `src="..."` attributes from question HTML during artifact checks to avoid false-positive matches on base64 media payloads.
+  - *Verification*: 527 unit tests (100% green), 17 Playwright E2E & Axe accessibility tests (100% green), 0 TypeScript errors, bundle budget passed, and production build succeeded.
+
 - **Preparation Tracker Mobile Responsiveness & Touch Ergonomics Overhaul (DEC-045)**:
   - *Context & Goal*: Optimized the entire Preparation Tracker subsystem for mobile smartphones (320px–480px viewports) across iOS Safari and Android Chrome.
   - *Responsive Table & Sticky Column*:

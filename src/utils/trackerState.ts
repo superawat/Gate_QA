@@ -25,6 +25,7 @@ export const TRACKER_STORAGE_KEY_PREFIX = "gate_qa_tracker_";
 export const TRACKER_STORAGE_KEY_CSE = `${TRACKER_STORAGE_KEY_PREFIX}cse_v1`;
 export const TRACKER_STORAGE_KEY_DA = `${TRACKER_STORAGE_KEY_PREFIX}da_v1`;
 export const TRACKER_PREFS_STORAGE_KEY = `${TRACKER_STORAGE_KEY_PREFIX}prefs_v1`;
+export const TRACKER_ANNOUNCEMENT_SEEN_KEY = "gateqa_tracker_announcement_seen_v1";
 
 export type TrackerStatus =
   | "NOT_STARTED"

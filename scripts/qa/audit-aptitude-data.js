@@ -164,8 +164,9 @@ function collectRowIssues(row) {
     pushIssue(issues, "error", "invalidAnswer", `${label} answer is not A/B/C/D`);
   }
 
+  const htmlWithoutMedia = html.replace(/\s+src=["'][^"']*["']/gi, "");
   ARTIFACT_CHECKS.forEach((check) => {
-    if (check.pattern.test(html) || check.pattern.test(text)) {
+    if (check.pattern.test(htmlWithoutMedia) || check.pattern.test(text)) {
       pushIssue(issues, check.severity, check.name, `${label} matched ${check.name}`);
     }
   });
