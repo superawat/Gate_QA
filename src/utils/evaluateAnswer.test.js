@@ -182,6 +182,70 @@ describe("evaluateAnswer", () => {
     });
     expect(evaluateAnswer(record, "").correct).toBe(false);
   });
+
+  test("evaluates GATE CSE 2008 Q79 (go:43485) as defective MCQ (correct answer 13 absent from options)", () => {
+    // Mathematical recurrence: T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3
+    // T(3) = 5, T(4) = 8, T(5) = 13
+    const correctMathematicalAnswer = 13;
+    const providedOptions = { A: 5, B: 7, C: 8, D: 16 };
+    expect(Object.values(providedOptions)).not.toContain(correctMathematicalAnswer);
+
+    const record = {
+      type: "MCQ",
+      answer: null,
+      is_defective: true,
+      defective_reason: "The correct answer is 13 (T(5) = 13 for recurrence T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3), but 13 is not present among the options (A: 5, B: 7, C: 8, D: 16). Excluded from scoring.",
+      tolerance: null,
+    };
+
+    // Selecting any of the provided options must NOT be marked correct
+    ["A", "B", "C", "D"].forEach((option) => {
+      const evaluation = evaluateAnswer(record, option);
+      expect(evaluation.status).toBe("excluded");
+      expect(evaluation.correct).toBe(false);
+      expect(evaluation.reason).toContain("The correct answer is 13");
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 1987 Q2j (go:80594) as 2-choice MCQ with Option B (FALSE) correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    };
+
+    // Selecting B (FALSE) is correct
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "b")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting A (TRUE) is incorrect
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "a")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+
+    // Unrelated inputs
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "9")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
 });
+
 
 

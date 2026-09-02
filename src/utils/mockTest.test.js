@@ -433,18 +433,22 @@ describe("mockTest utilities", () => {
     const questions = [
       { question_uid: "ga:1" },
       { question_uid: "go:1376" },
+      { question_uid: "go:43485" },
     ];
     const questionMetaByUid = {
       "ga:1": { questionUid: "ga:1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333 },
       "go:1376": { questionUid: "go:1376", section: "CS", type: "MCQ", marks: 2, negativeMarks: 0.6666666667 },
+      "go:43485": { questionUid: "go:43485", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333 },
     };
     const responses = {
       "ga:1": "B",
       "go:1376": "A", // Student selected option A on defective question
+      "go:43485": "C", // Student selected option C on defective question
     };
     const answers = {
       "ga:1": { type: "MCQ", answer: "B" },
       "go:1376": { type: "MCQ", answer: null, is_defective: true },
+      "go:43485": { type: "MCQ", answer: null, is_defective: true },
     };
 
     const summary = buildMockResultSummary({
@@ -457,19 +461,20 @@ describe("mockTest utilities", () => {
     expect(summary).toMatchObject({
       attempted: 1, // Only ga:1 is considered a standard scored attempt
       correct: 1,
-      incorrect: 0, // Defective question was NOT marked incorrect
+      incorrect: 0, // Defective questions were NOT marked incorrect
       unanswered: 0,
-      excluded: 1,
-      score: 1, // Full 1 mark from GA, 0 deducted for go:1376
+      excluded: 2,
+      score: 1, // Full 1 mark from GA, 0 deducted for defective questions
       maxScore: 1, // Excluded question marks omitted from scorable maxScore
     });
     expect(summary.sectionSummary.CS).toMatchObject({
-      total: 1,
+      total: 2,
       correct: 0,
       incorrect: 0,
-      excluded: 1,
+      excluded: 2,
       score: 0,
       maxScore: 0,
     });
   });
 });
+

@@ -30,6 +30,20 @@ const CURATED_RESOLUTIONS = {
     note: "Defective question: None of the four options (A, B, C, D) correctly describes the language recognized by the automaton. Excluded from scoring.",
     method: "curated_defective_question",
   },
+  "go:43485": {
+    type: "MCQ",
+    answer: null,
+    is_defective: true,
+    defective_reason: "The correct answer is 13 (T(5) = 13 for recurrence T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3), but 13 is not present among the options (A: 5, B: 7, C: 8, D: 16). Excluded from scoring.",
+    note: "Defective question: Recurrence for binary strings with no consecutive 0s is T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3 => T(3)=5, T(4)=8, T(5)=13. Correct answer 13 is absent from options (A: 5, B: 7, C: 8, D: 16). Excluded from scoring.",
+    method: "curated_defective_question",
+  },
+  "go:80594": {
+    type: "MCQ",
+    answer: "B",
+    note: "State whether the statement is TRUE or FALSE: A minimal DFA that is equivalent to an NDFA with n nodes has always 2^n states. The correct answer is Option B (FALSE) because 2^n is an upper bound arising from subset construction, and DFA state minimization frequently produces strictly fewer than 2^n states.",
+    method: "manual_toc_dfa_subset_construction_verification",
+  },
   "go:8313": {
     type: "NAT",
     answer: 69,

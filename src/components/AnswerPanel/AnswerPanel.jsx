@@ -95,11 +95,15 @@ export default function AnswerPanel({
     if (Array.isArray(answerRecord.options) && answerRecord.options.length > 0) {
       return answerRecord.options;
     }
+    const extracted = QuestionService.getNormalizedOptions(question);
+    if (Array.isArray(extracted) && extracted.length > 0) {
+      return extracted.map((opt) => opt.label);
+    }
     if (["MCQ", "MSQ"].includes(answerRecord.type)) {
       return ["A", "B", "C", "D"];
     }
     return [];
-  }, [answerRecord]);
+  }, [answerRecord, question]);
 
   const isTrueFalse = useMemo(() => {
     if (answerRecord?.type !== "NAT") {
@@ -720,7 +724,7 @@ export default function AnswerPanel({
 
         {answerRecord?.is_defective && (
           <div className="rounded-xl border border-amber-200 bg-amber-50/70 dark:bg-amber-950/30 p-2.5 text-xs text-amber-900 dark:text-amber-200 font-medium">
-            Defective Question Notice: None of the four options correctly represents the language recognized by the automaton. This question is excluded from scoring.
+            Defective Question Notice: {answerRecord?.defective_reason || "None of the provided options is correct. This question is excluded from scoring."}
           </div>
         )}
 
@@ -737,7 +741,7 @@ export default function AnswerPanel({
             }`}
           >
             {result.status === "excluded"
-              ? "Defective question: No option is correct (Excluded from scoring)"
+              ? (result.reason && result.reason !== "defective_question" ? result.reason : "Defective question: No option is correct (Excluded from scoring)")
               : result.status === "invalid_input"
               ? "Invalid Input"
               : result.correct

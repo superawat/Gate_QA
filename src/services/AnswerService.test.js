@@ -203,5 +203,52 @@ describe("AnswerService", () => {
       is_defective: true,
     });
   });
+
+  test("resolves GATE CSE 2008 Q79 (go:43485) as defective MCQ with null answer", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:43485": {
+        answer_uid: "manual_res:go:43485",
+        type: "MCQ",
+        answer: null,
+        tolerance: null,
+        is_defective: true,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:43485",
+      link: "https://gateoverflow.in/43485/gate-cse-2008-question-79",
+      title: "GATE CSE 2008 | Question: 79",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual_res:go:43485",
+      type: "MCQ",
+      answer: null,
+      tolerance: null,
+      is_defective: true,
+    });
+  });
+
+  test("resolves GATE CSE 1987 Q2j (go:80594) as MCQ Option B", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:80594": {
+        answer_uid: "v2:10.10.1",
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:80594",
+      link: "https://gateoverflow.in/80594/gate-cse-1987-question-2j",
+      title: "GATE CSE 1987 | Question: 2j",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:10.10.1",
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    });
+  });
 });
+
 

@@ -3268,7 +3268,7 @@
     "title": "GATE CSE 1987 | Question: 2j",
     "year": "gate1987",
     "link": "https://gateoverflow.in/80594/gate-cse-1987-question-2j",
-    "question": "State whether the following statements are TRUE or FALSE:<br/>\n<br/>\nA minimal DFA that is equivalent to an NDFA with $n$ nodes has always $2^{n}$ states.",
+    "question": "State whether the following statements are TRUE or FALSE:<br/>\n<br/>\nA minimal DFA that is equivalent to an NDFA with $n$ nodes has always $2^{n}$ states.\n<ol style=\"list-style-type:upper-alpha\">\n<li>TRUE</li>\n<li>FALSE</li>\n</ol>",
     "tags": [
       "gate1987",
       "theory-of-computation",
@@ -3279,12 +3279,10 @@
     "exam_uid": "cse:1987:set1:main:q2j",
     "answer_uid": "v2:10.10.1",
     "answer_meta": {
-      "type": "NAT",
-      "answer": 9,
-      "tolerance": {
-        "abs": 0.01
-      },
-      "source": "question_uid"
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_resolution"
     }
   },
   {
@@ -25966,9 +25964,11 @@
     "answer_uid": "v2:1.27.21",
     "answer_meta": {
       "type": "MCQ",
-      "answer": "A",
+      "answer": null,
       "tolerance": null,
-      "source": "question_uid"
+      "source": "curated_defective_question",
+      "is_defective": true,
+      "defective_reason": "The correct answer is 13 (T(5) = 13 for recurrence T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3), but 13 is not present among the options (A: 5, B: 7, C: 8, D: 16). Excluded from scoring."
     }
   },
   {

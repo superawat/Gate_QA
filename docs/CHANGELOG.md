@@ -1,5 +1,16 @@
 # Changelog
 
+- **Question Data Integrity & Defective Repair (`go:43485` & `go:80594`) (DEC-047)**:
+  - *`go:43485` (GATE CSE 2008 Q79 - Algorithms)*:
+    - *Problem*: Question asks for the number of binary strings of length 5 that contain no consecutive 0s. The mathematical recurrence $T(n) = T(n-1) + T(n-2)$ with $T(1)=2, T(2)=3$ gives $T(3)=5, T(4)=8, T(5)=13$. The correct mathematical value is 13, but 13 is absent from all options (A: 5, B: 7, C: 8, D: 16).
+    - *Resolution*: Preserved original statement and options unchanged; marked question as defective (`is_defective: true`, `answer: null`, `type: "MCQ"`) across `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `scripts/qa/resolve-legacy-answer-gaps.mjs`, `public/questions-with-answers.json`, detail shard `2008-s0.json`, and mock catalog `mock_catalog_v1.json`.
+    - *Scoring*: Excluded from scoring without penalizing the candidate (0 score delta, 0 penalty marks). Updated `AnswerPanel.jsx` to dynamically render the mathematical explanation in solution and review modes.
+  - *`go:80594` (GATE CSE 1987 Q2j - Theory of Computation)*:
+    - *Problem*: Stored and rendered as NAT with numeric key 9 for a True/False statement ("A minimal DFA that is equivalent to an NDFA with n nodes has always 2^n states").
+    - *Resolution*: Converted question type from NAT to standard 2-choice MCQ with `<ol style="list-style-type:upper-alpha"><li>TRUE</li><li>FALSE</li></ol>` appended to stem. Correct answer set to **Option B** (FALSE) because $2^n$ states is an upper bound arising from subset construction, and DFA minimization often yields strictly fewer than $2^n$ states.
+    - *UI & Scoring*: Replaced NAT numeric input with 2-choice MCQ buttons (A: TRUE, B: FALSE) evaluated via the standard MCQ evaluation path without introducing an unnecessary custom question type. Synchronized across all question banks, answer registries, and detail shards (`1987-s0.json`).
+  - *Tests & Verification*: Added regression tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, and `src/utils/mockTest.test.js`. All 531 workspace unit tests passing, `npm run qa:validate-data` passing, and `npm run typecheck` clean.
+
 - **Comprehensive CI & QA Pipeline Hardening — Playwright A11y, Code-Splitting & Image Integrity (DEC-046)**:
   - *Context & Goal*: Resolved all issues identified during full-spectrum test execution (`test:unit`, `test:e2e`, `qa:a11y:axe`, `qa:validate-question-images`, `qa:audit-aptitude`, and production build).
   - *A11y Color Contrast Hardening (`TrackerAnnouncementModal.jsx`)*:
