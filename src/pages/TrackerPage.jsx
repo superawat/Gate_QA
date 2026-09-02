@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback, useTransition, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
+  FiArrowLeft,
   FiCpu,
   FiTrendingUp,
   FiLayers,
@@ -37,6 +39,8 @@ import {
   isQuestionInTrack,
   buildQuestionIndexForTrack,
 } from "../utils/trackerState";
+import { HOME_ROUTE } from "../utils/routes";
+import PageShell from "../components/Layout/PageShell";
 import TrackerCountdownHero from "../components/Tracker/TrackerCountdownHero";
 import TrackerContinueCard from "../components/Tracker/TrackerContinueCard";
 import TrackerFocusBanner from "../components/Tracker/TrackerFocusBanner";
@@ -320,7 +324,7 @@ export default function TrackerPage() {
   }, [taxonomy.subjects, selectedSubjectFilter, onlyHighYield, searchQuery, statusFilter, topicMetricsMap]);
 
   return (
-    <div className="min-h-screen bg-[color:var(--color-bg)] text-[color:var(--color-text)] pb-24">
+    <>
       <Helmet>
         <title>{activeTrack === "cse" ? "GATE CSE Preparation Tracker" : "GATE DA Preparation Tracker"} | GateQA</title>
         <meta
@@ -329,26 +333,34 @@ export default function TrackerPage() {
         />
       </Helmet>
 
-      {/* Main Content Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <PageShell contentClassName="pb-16 sm:pb-24 pt-3 sm:pt-5">
         {/* Top Header */}
         <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[color:var(--color-border)] pb-5 sm:pb-6 mb-5 sm:mb-6">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5 mb-2">
+              <Link
+                to={HOME_ROUTE}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] bg-[color:var(--color-surface)] border border-[color:var(--color-border)] hover:bg-[color:var(--color-surface-muted)] shadow-xs transition-all group"
+                aria-label="Back to Home Dashboard"
+                title="Back to Home Dashboard"
+              >
+                <FiArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
+                <span>Back to Home</span>
+              </Link>
               <span className={`text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full border uppercase tracking-wider ${activeTrack === "cse" ? "bg-blue-500/10 border-blue-500/30 text-blue-400" : "bg-purple-500/10 border-purple-500/30 text-purple-400"}`}>
                 {activeTrack === "cse" ? "Paper: CS" : "Paper: DA"}
               </span>
-              <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[color:var(--color-text)]">
-                {activeTrack === "cse" ? "GATE CSE Preparation Tracker" : "GATE DA Preparation Tracker"}
-              </h1>
             </div>
+            <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[color:var(--color-text)]">
+              {activeTrack === "cse" ? "GATE CSE Preparation Tracker" : "GATE DA Preparation Tracker"}
+            </h1>
             <p className="text-xs sm:text-sm text-[color:var(--color-text-muted)] mt-1">
               Automated syllabus coverage, honest PYQ analytics &amp; intelligent revision queue
             </p>
           </div>
 
           {/* Track Switcher */}
-          <div className="flex items-center gap-1.5 sm:gap-2 bg-[color:var(--color-surface)] border border-[color:var(--color-border)] p-1 rounded-xl shadow-sm w-full sm:w-auto">
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-[color:var(--color-surface)] border border-[color:var(--color-border)] p-1 rounded-xl shadow-sm w-full sm:w-auto self-start sm:self-center">
             <button
               type="button"
               onClick={() => handleTrackChange("cse")}
@@ -597,15 +609,15 @@ export default function TrackerPage() {
           topicMetricsList={topicMetricsList}
           allTopics={allTopics}
         />
-      </main>
-
-      {/* Reset Confirmation Modal */}
-      <TrackerResetModal
-        topic={resetModalTopic}
-        isOpen={Boolean(resetModalTopic)}
-        onClose={() => setResetModalTopic(null)}
-        onConfirmReset={handleConfirmReset}
-      />
-    </div>
+        {/* Reset Confirmation Modal */}
+        <TrackerResetModal
+          topic={resetModalTopic}
+          isOpen={Boolean(resetModalTopic)}
+          onClose={() => setResetModalTopic(null)}
+          onConfirmReset={handleConfirmReset}
+        />
+      </PageShell>
+    </>
   );
 }
+

@@ -13,6 +13,12 @@ vi.mock("../components/Math/MathRuntime", () => ({
   MathContent: ({ content }) => <div data-testid="math-content">{content}</div>,
 }));
 
+// Mock PageShell
+vi.mock("../components/Layout/PageShell", () => ({
+  default: ({ children }) => <div data-testid="page-shell">{children}</div>,
+}));
+
+
 // Mock FilterContext for instant test execution
 vi.mock("../contexts/FilterContext", () => ({
   useFilterState: () => ({
@@ -255,4 +261,12 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     // The page rendered without error and loaded canonical practice
     expect(screen.getByRole("heading", { name: /gate cse preparation tracker/i })).toBeTruthy();
   });
+
+  it("renders a back to home button linking to home dashboard", () => {
+    renderTrackerPage();
+    const backBtn = screen.getByRole("link", { name: /back to home/i });
+    expect(backBtn).toBeTruthy();
+    expect(backBtn.getAttribute("href")).toBe("/");
+  });
 });
+

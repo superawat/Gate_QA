@@ -1,5 +1,13 @@
 # Changelog
 
+- **Preparation Tracker PageShell & Back to Home Navigation Integration (DEC-048)**:
+  - *Context & Goal*: The Preparation Tracker page (`/tracker`, `TrackerPage.jsx`) was missing a direct navigation link back to the Home Dashboard and lacked the global `PageShell` container present on all other pages.
+  - *Changes*:
+    - Wrapped `TrackerPage.jsx` with `<PageShell contentClassName="pb-16 sm:pb-24 pt-3 sm:pt-5">`, providing the standard global `AppHeader` (GateQA logo home link, nav links, theme toggle, profile menu), `MobileBottomNav`, and `Footer`.
+    - Added an explicit, prominent "← Back to Home" button at the top-left of the tracker header using `Link` to `HOME_ROUTE` (`/`) with `FiArrowLeft` and interactive hover micro-animation.
+    - Updated `src/pages/TrackerPage.test.jsx` with a unit test asserting the Back to Home navigation link.
+  - *Verification*: 532 unit tests passing (100% green), TypeScript typecheck clean (0 errors).
+
 - **Question Data Integrity & Defective Repair (`go:43485` & `go:80594`) (DEC-047)**:
   - *`go:43485` (GATE CSE 2008 Q79 - Algorithms)*:
     - *Problem*: Question asks for the number of binary strings of length 5 that contain no consecutive 0s. The mathematical recurrence $T(n) = T(n-1) + T(n-2)$ with $T(1)=2, T(2)=3$ gives $T(3)=5, T(4)=8, T(5)=13$. The correct mathematical value is 13, but 13 is absent from all options (A: 5, B: 7, C: 8, D: 16).
