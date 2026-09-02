@@ -1,6 +1,50 @@
 # Changelog
 
-## 2026-09-01
+- **Preparation Tracker Mobile Responsiveness & Touch Ergonomics Overhaul (DEC-045)**:
+  - *Context & Goal*: Optimized the entire Preparation Tracker subsystem for mobile smartphones (320px–480px viewports) across iOS Safari and Android Chrome.
+  - *Responsive Table & Sticky Column*:
+    - Dynamically scaled sticky syllabus column width (`min-w-[190px] sm:min-w-[260px] md:min-w-[320px]`) so 180px–220px of interactive columns remain visible and scrollable on narrow mobile screens.
+    - Streamlined indentation on Topic rows (`pl-5 sm:pl-8`) and Subtopic rows (`pl-9 sm:pl-14`) to prevent text clipping and preserve readability.
+    - Added `overscroll-x-contain scrollbar-thin` for smooth touch momentum scrolling without rubber-band page shifts.
+  - *Touch-Friendly Controls & Full-Width CTAs*:
+    - Enlarged tap targets on checkboxes, steppers, and practice buttons (`touch-manipulation`) to eliminate mobile double-tap zoom delays.
+    - Upgraded Track Switcher (`GATE CSE` / `GATE DA`) to full-width equal-share buttons on mobile (`w-full sm:w-auto`).
+    - Made "Continue Where You Left Off" CTA button full-width on mobile for effortless one-thumb tapping.
+    - Updated `TrackerNotesDrawer.jsx` to expand full-width on mobile with tap-outside backdrop dismiss and responsive editor sizing.
+  - *Tests*: All 15 Tracker unit tests and 527 overall workspace unit tests passing with 0 TypeScript errors.
+
+- **Tracker Header Quick Access Target Icon (Pink Breathing Glow) & Announcement Popup (DEC-044)**:
+  - *Context & Goal*: Provided effortless global discoverability for the Preparation Tracker (`/tracker`).
+  - *Header Quick Access Target Icon*: Replaced grid icon with `FiTarget` bullseye icon in `AppHeader.jsx` directly to the left of the feedback button, styled in vibrant pink with a GPU-accelerated CSS breathing halo (`tracker-glow-breathe`) and hover micro-sway with 0ms JavaScript runtime load.
+  - *Interactive Announcement Popup (`TrackerAnnouncementModal.jsx`)*: Created a 1-time announcement modal showcasing the 4 core pillars with 1-click CTA to `/tracker` and immediate `localStorage` persistence.
+  - *Tests*: Unit tests in `src/components/Tracker/TrackerAnnouncementModal.test.jsx` and updated `src/components/Layout/AppHeader.test.jsx`. All tests pass.
+
+- **Preparation Tracker Revamp — Insights Integration & Hierarchical Syllabus Table (DEC-042)**:
+  - *Context & Goal*: Made a major architectural and UI revision to the Preparation Tracker at `/tracker` (`TrackerPage.jsx`) to make it an independent syllabus management layer that automatically consumes practice and attempt data from GateQA's single source of truth without manual attempt counters.
+  - *Canonical Practice Ingestion & Mapping Repair*:
+    - Fixed taxonomy and question mapping discrepancies (e.g., `Engineering Mathematics -> Mathematical Logic` and Discrete Math topics mapped accurately to canonical question bank tags and subject slugs).
+    - Subject-level PYQs are authoritative and exact (e.g. `Engineering Mathematics: 42 / 86 PYQs`) directly derived from `practiceProgress` and `solvedQuestions`.
+  - *Hierarchical Syllabus Table UI*:
+    - Replaced card/accordion UI with `TrackerHierarchicalTable.jsx` (`Subject -> Topic -> Subtopic`).
+    - Expand/Collapse support for subjects and topics with global "Expand All" / "Collapse All" toggle.
+    - Explicit Theory toggle (`✓ Completed` / `○ Not Done`) and bulk subject theory marking.
+    - Interactive Revision Tracking (`Revised` checkbox + `+`/`-` revision counters).
+    - User-controlled optional custom columns (`Marks`, `Target`, `Priority`, `Remarks`) with inline inputs and persistence.
+    - Deep-linked "Start Practice" buttons navigating to `/practice?subjects=...&subtopics=...&hideSolved=1`.
+    - Horizontal scroll container with sticky topic name column for responsive tablet/mobile usability.
+    - Strict track isolation ensuring CSE and DA datasets remain 100% separate.
+  - *Tests*: Added unit test suites `src/utils/trackerState.test.ts` (23 tests) and `src/pages/TrackerPage.test.jsx` (7 tests). All 516 unit tests pass, 0 typecheck errors, and production build succeeded.
+
+- **GATE CSE & DA Preparation Tracker v3.4.0 (DEC-041)**:
+  - *Context & Goal*: Built a dedicated, action-first preparation and syllabus tracking experience at `/tracker` (`TrackerPage.jsx`) tailored specifically for GATE CSE (52 canonical topics across 10 subjects + General Aptitude) and GATE DA (28 canonical topics across 8 subjects + General Aptitude).
+  - *Core Invariants & Zero Friction*:
+    - **Local-First & Automation First**: Strictly read-only to raw practice progress; automatically derives PYQ attempt counts, solved counts, coverage, and accuracy in-memory from `localStorage` without requiring double manual entry.
+    - **3-Pillar Progress Framework**: Replaced misleading single percentage numbers with three independent, actionable metrics: Theory Coverage (X/Y Topics), PYQ Practice Coverage (X/Y Attempted), and Practice Accuracy (X% Solved).
+    - **Intelligent Evidence Guards**: "Today's Focus" requires $\ge 5$ attempts to diagnose weakness and $\ge 1$ prior session with $> 21$ days inactivity for spaced revision.
+    - **Dismissible Countdown Hero**: Live exam countdown with Months:Weeks:Days:H:M:S breakdown, target date settings, and 1-click permanent dismiss ("Zero Anxiety Mode").
+    - **Lazy Notes Drawer & KaTeX**: Topic notes drawer with LaTeX ($...$, $$...$$) KaTeX rendering and Markdown preview; KaTeX bundle is 0 KB on initial tracker load.
+    - **Supabase Cloud Sync (Free-Tier Safe)**: Full revision event history kept locally; strictly bounded `SyncedRevisionSummary` (`{ lastRevisedAt, lastSessionAccuracy, totalRevisionCount }`) and LWW topic notes with deletion tombstones (`isDeleted: true`) synced to `user_tracker` table.
+  - *Tests*: Added unit test suites `src/utils/trackerState.test.ts` (19 tests), `src/pages/TrackerPage.test.jsx` (6 tests), and extended `src/utils/cloudSyncManager.test.js` (22 tests). All 511 workspace unit tests pass with zero regressions.
 
 - **Data Persistence & Privacy Policy Modernization for Google Login & Cloud Backup (DEC-040)**:
   - *Context & Need*: The footer Data Policy modal and documentation reflected legacy client-only constraints that claimed no server storage or cross-device sync was possible, conflicting with the newly introduced Google Authentication, Supabase Cloud Sync, and Zero Data Loss union-merge capabilities.

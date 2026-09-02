@@ -27,6 +27,7 @@ import {
   getLegacyRedirectTarget,
   GATE_YEAR_ROUTE,
   HOME_ROUTE,
+  TRACKER_ROUTE,
   INSIGHTS_ROUTE,
   HIGH_PRIORITY_TOPICS_ROUTE,
   MOCK_HISTORY_ROUTE,
@@ -39,6 +40,7 @@ import {
 } from "./utils/routes";
 import {
   loadExploreRoute,
+  loadTrackerRoute,
   loadHighPriorityTopicsRoute,
   loadInsightsRoute,
   loadMockRoute,
@@ -50,6 +52,7 @@ import {
 import { MOCK_TEST_MODE_ENABLED } from "./constants/featureFlags";
 
 const ExplorePage = lazy(loadExploreRoute);
+const TrackerPage = lazy(loadTrackerRoute);
 const InsightsPage = lazy(loadInsightsRoute);
 const SolvePage = lazy(loadSolveRoute);
 const MockShell = lazy(loadMockRoute);
@@ -371,6 +374,16 @@ const PracticeRoutes = ({
           )}
         />
         <Route
+          path={TRACKER_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Tracker..." />}>
+                <TrackerPage />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
+        <Route
           path={INSIGHTS_ROUTE}
           element={(
             <ErrorBoundary>
@@ -584,7 +597,9 @@ const AppRuntime = () => {
       return;
     }
 
-    const needsQuestionData = location.pathname.startsWith(PRACTICE_ROUTE);
+    const needsQuestionData = location.pathname.startsWith(PRACTICE_ROUTE)
+      || location.pathname.startsWith(TRACKER_ROUTE)
+      || location.pathname.startsWith(INSIGHTS_ROUTE);
     if (!needsQuestionData) {
       setLoading(false);
       return;
@@ -609,6 +624,10 @@ const AppRuntime = () => {
     }
     if (location.pathname.startsWith(`${PRACTICE_ROUTE}/question/`)) {
       pageview("Solve");
+      return;
+    }
+    if (location.pathname === TRACKER_ROUTE) {
+      pageview("Tracker");
       return;
     }
     if (location.pathname === INSIGHTS_ROUTE) {

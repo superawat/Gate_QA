@@ -3,6 +3,7 @@ import {
   INSIGHTS_ROUTE,
   MOCK_ROUTE,
   PRACTICE_ROUTE,
+  TRACKER_ROUTE,
   USER_MANUAL_ROUTE,
 } from "./routes";
 
@@ -26,6 +27,7 @@ const createRouteModule = (loader) => {
 };
 
 const exploreRoute = createRouteModule(() => import("../pages/ExplorePage"));
+const trackerRoute = createRouteModule(() => import("../pages/TrackerPage"));
 const insightsRoute = createRouteModule(() => import("../pages/InsightsPage"));
 const solveRoute = createRouteModule(() => import("../pages/SolvePage"));
 const mockRoute = createRouteModule(() => import("../shells/MockShell"));
@@ -35,6 +37,7 @@ const subjectLandingRoute = createRouteModule(() => import("../pages/SubjectLand
 const yearLandingRoute = createRouteModule(() => import("../pages/YearLandingPage"));
 
 export const loadExploreRoute = exploreRoute.load;
+export const loadTrackerRoute = trackerRoute.load;
 export const loadInsightsRoute = insightsRoute.load;
 export const loadSolveRoute = solveRoute.load;
 export const loadMockRoute = mockRoute.load;
@@ -44,6 +47,7 @@ export const loadSubjectLandingRoute = subjectLandingRoute.load;
 export const loadYearLandingRoute = yearLandingRoute.load;
 
 export const preloadExploreRoute = exploreRoute.preload;
+export const preloadTrackerRoute = trackerRoute.preload;
 export const preloadInsightsRoute = insightsRoute.preload;
 export const preloadSolveRoute = solveRoute.preload;
 export const preloadMockRoute = mockRoute.preload;
@@ -94,6 +98,10 @@ export const preloadRouteByPath = (path = "") => {
 
   if (pathname === PRACTICE_ROUTE || pathname.startsWith(`${PRACTICE_ROUTE}/`)) {
     return preloadExploreRoute();
+  }
+
+  if (pathname === TRACKER_ROUTE || pathname.startsWith(`${TRACKER_ROUTE}/`)) {
+    return preloadTrackerRoute();
   }
 
   if (pathname === INSIGHTS_ROUTE || pathname.startsWith(`${INSIGHTS_ROUTE}/`)) {

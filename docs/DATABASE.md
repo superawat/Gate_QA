@@ -43,6 +43,27 @@ The hosted project does not contain `supabase_migrations.schema_migrations`; the
 
 ---
 
+## Free-Tier Resource Usage & Quota Audit
+
+> **Last Inspected**: `2026-09-02` (Current Billing Cycle Audit)  
+> **Plan**: Supabase Free Tier ($0/mo)  
+> **Status**: 🟢 **Healthy & Well Within Limits (< 11% utilization across all metrics)**
+
+| Resource Metric | Current Usage | Free Tier Limit | Utilization | Headroom / Remaining | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Egress (Network)** | `516 MB` | `5.00 GB` | **10.3%** | `4.48 GB` remaining | 🟢 Safe |
+| **Database Size** | `40 MB` | `500 MB` | **8.0%** | `460 MB` remaining | 🟢 Safe |
+| **Monthly Active Users (MAU)** | `295` | `50,000` | **0.59%** | `49,705` MAUs remaining | 🟢 Safe |
+| **File Storage** | `0 GB` | `1.00 GB` | **0.0%** | `1.00 GB` remaining | 🟢 Safe |
+
+### Architectural Guardrails Maintaining Free-Tier Health:
+1. **Local-First Architecture**: App reads/writes to `localStorage` (0ms); Supabase is only contacted for optional cross-device backup.
+2. **Debounced & Throttled Sync**: Writes are debounced by 750ms and throttled to maximum 1 sync per 30s per user.
+3. **Bounded Payloads (< 10 KB per user)**: Only user annotations and bounded summary maps are uploaded; raw question shards remain static assets on GitHub Pages / CDN.
+4. **Zero Live Database Queries on Normal Navigation**: Navigating questions, filter tables, and tracker pages consumes 0 database queries and 0 live database bandwidth.
+
+---
+
 ## Supabase tables
 
 ### `auth.users`
@@ -97,6 +118,34 @@ Append-only audit records for synchronization events.
 | `payload_snapshot` | `jsonb` | Yes | null | Lightweight count summary of the merged state: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount, daProgressCount }` |
 | `device_info` | `text` | Yes | null | Browser user-agent and platform metadata |
 | `created_at` | `timestamptz` | Yes | `now()` | Timestamp of audit entry |
+
+### `public.user_tracker`
+
+One row per user containing preparation tracker state (theory checkboxes, bounded revision summaries, custom columns like Mock/Priority/Marks, topic notes, and timer preferences).
+
+> **Important**: Practice PYQ history, attempt timelines, and solved question IDs are **NOT** stored here (they live in `user_progress`). The Tracker derives all PYQ attempt counts, coverage percentages, and accuracy metrics in-memory at runtime.
+
+| Column | Type | Nullable | Default | Purpose |
+| :--- | :--- | :---: | :--- | :--- |
+| `user_id` | `uuid` | **No** | null | Primary Key; references `public.profiles(id)` (`ON DELETE CASCADE`) |
+| `active_track` | `text` | **No** | `'cse'` | Active syllabus track (`'cse'` or `'da'`) |
+| `exam_date_cse` | `text` | **No** | `'2027-02-06'` | Configured target GATE CSE date string |
+| `exam_date_da` | `text` | **No** | `'2027-02-07'` | Configured target GATE DA date string |
+| `countdown_display_mode` | `text` | **No** | `'hero'` | Display mode (`'hero'`, `'compact'`, `'hidden'`) |
+| `show_countdown_widget` | `boolean` | **No** | `true` | Whether the countdown widget is enabled |
+| `visible_columns` | `jsonb` | **No** | `'[]'::jsonb` | Enabled custom columns in hierarchical table |
+| `cse_theory` | `jsonb` | **No** | `'{}'::jsonb` | CSE Theory completion map `{ [nodeId]: { isCompleted, completedAt } }` |
+| `cse_revisions` | `jsonb` | **No** | `'{}'::jsonb` | Bounded CSE revision summary map `{ [nodeId]: { lastRevisedAt, lastSessionAccuracy, totalRevisionCount } }` |
+| `cse_custom_fields` | `jsonb` | **No** | `'{}'::jsonb` | Custom column values per node `{ [nodeId]: { mock, mockCount, priority, marks, target, remarks } }` |
+| `cse_notes` | `jsonb` | **No** | `'{}'::jsonb` | Topic notes with LWW timestamp & `isDeleted` tombstone |
+| `da_theory` | `jsonb` | **No** | `'{}'::jsonb` | DA Theory completion map `{ [nodeId]: { isCompleted, completedAt } }` |
+| `da_revisions` | `jsonb` | **No** | `'{}'::jsonb` | Bounded DA revision summary map `{ [nodeId]: { lastRevisedAt, lastSessionAccuracy, totalRevisionCount } }` |
+| `da_custom_fields` | `jsonb` | **No** | `'{}'::jsonb` | Custom column values per node `{ [nodeId]: { mock, mockCount, priority, marks, target, remarks } }` |
+| `da_notes` | `jsonb` | **No** | `'{}'::jsonb` | Topic notes with LWW timestamp & `isDeleted` tombstone |
+| `data_version` | `integer` | **No** | `1` | Schema payload format version |
+| `created_at` | `timestamptz` | **No** | `now()` | Creation timestamp |
+| `updated_at` | `timestamptz` | **No** | `now()` | Auto-updated via `set_user_tracker_timestamp` trigger |
+| `last_synced_at` | `timestamptz` | **No** | `now()` | Timestamp of last successful cloud write |
 
 ---
 

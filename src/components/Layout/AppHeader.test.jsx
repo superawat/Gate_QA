@@ -130,4 +130,26 @@ describe("AppHeader", () => {
       expect(screen.queryByRole("dialog", { name: /global navigation/i })).toBeNull();
     });
   });
+
+  test("renders tracker icon link in header on non-mock routes and hides on mock routes", () => {
+    const { unmount } = render(
+      <MemoryRouter initialEntries={["/practice"]}>
+        <AppHeader />
+      </MemoryRouter>
+    );
+
+    const trackerLink = screen.getByRole("link", { name: /open gate preparation & syllabus tracker/i });
+    expect(trackerLink).toBeTruthy();
+    expect(trackerLink.getAttribute("href")).toBe("/tracker");
+
+    unmount();
+
+    render(
+      <MemoryRouter initialEntries={["/mock"]}>
+        <AppHeader />
+      </MemoryRouter>
+    );
+
+    expect(screen.queryByRole("link", { name: /open gate preparation & syllabus tracker/i })).toBeNull();
+  });
 });

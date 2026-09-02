@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useStat
 import { flushSync } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { FiMessageSquare, FiMoon, FiSun } from "react-icons/fi";
+import { FiMessageSquare, FiMoon, FiSun, FiTarget } from "react-icons/fi";
 
 import DomainShiftNotice from "./DomainShiftNotice";
 import GlobalNavigationDrawer from "./GlobalNavigationDrawer";
@@ -10,7 +10,7 @@ import HamburgerButton from "./HamburgerButton";
 import { APTITUDE_ENABLED_STORAGE_KEY } from "../../utils/aptitudePreference";
 import { trackEvent } from "../../utils/analytics";
 import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
-import { HOME_ROUTE, MOCK_ROUTE, PRACTICE_ROUTE } from "../../utils/routes";
+import { HOME_ROUTE, MOCK_ROUTE, PRACTICE_ROUTE, TRACKER_ROUTE } from "../../utils/routes";
 import {
   WORKSPACE_FILE_EXTENSION,
   importWorkspaceSnapshot,
@@ -20,9 +20,11 @@ import {
   saveWorkspaceCsv,
 } from "../../utils/workspaceFile";
 import { useAuth } from "../../contexts/AuthContext";
+import { TRACKER_ANNOUNCEMENT_SEEN_KEY } from "../Tracker/TrackerAnnouncementModal";
 
 const AuthModal = lazy(() => import("../Auth/AuthModal"));
 const UserProfileMenu = lazy(() => import("../Auth/UserProfileMenu"));
+const TrackerAnnouncementModal = lazy(() => import("../Tracker/TrackerAnnouncementModal"));
 
 const THEME_STORAGE_KEY = "gate_qa_theme";
 const DOMAIN_SHIFT_SEEN_KEY = "gateqa_domain_shift_notice_seen_v2";
@@ -145,11 +147,36 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   const [domainShiftCountdown, setDomainShiftCountdown] = useState(getDomainShiftCountdown);
   const [drawerStatus, setDrawerStatus] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showTrackerAnnouncement, setShowTrackerAnnouncement] = useState(false);
+  const [showTrackerBadge, setShowTrackerBadge] = useState(() => {
+    try {
+      return !localStorage.getItem(TRACKER_ANNOUNCEMENT_SEEN_KEY);
+    } catch {
+      return false;
+    }
+  });
   const { user, loading: authLoading } = useAuth();
   const workspaceFileInputRef = useRef(null);
   const isMockWindowRoute =
     location.pathname === MOCK_ROUTE || location.pathname.startsWith(`${MOCK_ROUTE}/`);
   const appliedTheme = isMockWindowRoute ? "light" : theme;
+
+  useEffect(() => {
+    try {
+      const seen = localStorage.getItem(TRACKER_ANNOUNCEMENT_SEEN_KEY);
+      if (seen || location.pathname === TRACKER_ROUTE || isMockWindowRoute) {
+        if (seen) setShowTrackerBadge(false);
+        return;
+      }
+      // Set seen immediately so the popup is strictly one-time per user
+      localStorage.setItem(TRACKER_ANNOUNCEMENT_SEEN_KEY, "true");
+      setShowTrackerBadge(false);
+      const timer = setTimeout(() => {
+        setShowTrackerAnnouncement(true);
+      }, 1200);
+      return () => clearTimeout(timer);
+    } catch {}
+  }, [location.pathname, isMockWindowRoute]);
 
   useEffect(() => {
     applyDocumentTheme(appliedTheme);
@@ -602,6 +629,29 @@ const AppHeader = ({ onHomeNavigate = null }) => {
           ) : null}
 
           {!isMockWindowRoute ? (
+            <Link
+              to={TRACKER_ROUTE}
+              aria-label="Open GATE Preparation &amp; Syllabus Tracker"
+              title="Preparation Tracker"
+              onClick={() => {
+                try {
+                  localStorage.setItem(TRACKER_ANNOUNCEMENT_SEEN_KEY, "true");
+                  setShowTrackerBadge(false);
+                } catch {}
+              }}
+              className="header-secondary-action header-tracker-pulse relative hidden h-8 w-8 items-center justify-center rounded-full border border-pink-400/80 bg-pink-50 text-pink-600 shadow-sm transition hover:scale-110 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:border-pink-500/70 dark:bg-pink-950/50 dark:text-pink-300 dark:hover:bg-pink-900/50 sm:inline-flex"
+            >
+              <FiTarget className="header-tracker-icon h-4 w-4" aria-hidden="true" />
+              {showTrackerBadge ? (
+                <span className="absolute -right-0.5 -top-0.5 flex h-2 w-2" aria-hidden="true">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-pink-500" />
+                </span>
+              ) : null}
+            </Link>
+          ) : null}
+
+          {!isMockWindowRoute ? (
             <a
               href="https://forms.gle/nAYEKBkMsfamhtPK7"
               target="_blank"
@@ -709,6 +759,17 @@ const AppHeader = ({ onHomeNavigate = null }) => {
       isOpen={isDomainShiftOpen}
       onClose={() => setIsDomainShiftOpen(false)}
     />
+    {showTrackerAnnouncement && (
+      <Suspense fallback={null}>
+        <TrackerAnnouncementModal
+          isOpen={showTrackerAnnouncement}
+          onClose={() => {
+            setShowTrackerAnnouncement(false);
+            setShowTrackerBadge(false);
+          }}
+        />
+      </Suspense>
+    )}
     {showAuthModal && (
       <Suspense fallback={null}>
         <AuthModal onClose={() => setShowAuthModal(false)} />

@@ -20,6 +20,7 @@
 
 import { supabase } from "../services/supabase";
 import { clearSyncQueue } from "./syncQueue";
+import { mergeSyncedRevisionSummary, summarizeRevisionEvents } from "./trackerState";
 
 const LOCAL_STORAGE_KEYS = {
   solved: "gate_qa_solved_questions",
@@ -33,6 +34,9 @@ const LOCAL_STORAGE_KEYS = {
   daSolved: "gate_qa_da_solved_questions",
   daBookmarks: "gate_qa_da_bookmarked_questions",
   daProgress: "gateqa_da_progress_v1",
+  trackerCse: "gate_qa_tracker_cse_v1",
+  trackerDa: "gate_qa_tracker_da_v1",
+  trackerPrefs: "gate_qa_tracker_prefs_v1",
 };
 
 /**
@@ -53,6 +57,9 @@ function createPreMergeSnapshot() {
       daSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved),
       daBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks),
       daProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress),
+      trackerCse: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerCse),
+      trackerDa: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerDa),
+      trackerPrefs: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerPrefs),
     };
     const backupKey = `gate_qa_backup_${Date.now()}`;
     localStorage.setItem(backupKey, JSON.stringify(snapshot));
@@ -587,9 +594,238 @@ export async function syncUserData(userId) {
     // 8. Flush offline queue
     clearSyncQueue();
 
+    // 9. Sync Preparation Tracker Data (best-effort, non-blocking)
+    try {
+      await syncTrackerData(userId);
+    } catch (trackerSyncErr) {
+      console.warn("[CloudSync] Tracker sync non-fatal error:", trackerSyncErr);
+    }
+
     return { success: true, data: merged };
   } catch (err) {
     console.error("[CloudSync] Unexpected error during sync:", err);
     return { success: false, error: err };
+  }
+}
+
+/**
+ * Merges theory status records with union completion rule.
+ */
+export function mergeTrackerTheory(localTheory = {}, cloudTheory = {}) {
+  const local = localTheory && typeof localTheory === "object" ? localTheory : {};
+  const cloud = cloudTheory && typeof cloudTheory === "object" ? cloudTheory : {};
+  const allTopicIds = new Set([...Object.keys(local), ...Object.keys(cloud)]);
+  const merged = {};
+
+  for (const topicId of allTopicIds) {
+    const l = local[topicId];
+    const c = cloud[topicId];
+
+    if (l?.isCompleted && c?.isCompleted) {
+      const lTime = new Date(l.completedAt || 0).getTime();
+      const cTime = new Date(c.completedAt || 0).getTime();
+      merged[topicId] = lTime >= cTime ? l : c;
+    } else if (l?.isCompleted) {
+      merged[topicId] = l;
+    } else if (c?.isCompleted) {
+      merged[topicId] = c;
+    } else {
+      merged[topicId] = l || c;
+    }
+  }
+
+  return merged;
+}
+
+/**
+ * Merges topic notes using Last-Write-Wins (LWW) with tombstones.
+ */
+export function mergeTrackerNotes(localNotes = {}, cloudNotes = {}) {
+  const local = localNotes && typeof localNotes === "object" ? localNotes : {};
+  const cloud = cloudNotes && typeof cloudNotes === "object" ? cloudNotes : {};
+  const allTopicIds = new Set([...Object.keys(local), ...Object.keys(cloud)]);
+  const merged = {};
+
+  for (const topicId of allTopicIds) {
+    const l = local[topicId];
+    const c = cloud[topicId];
+
+    if (l && c) {
+      const lTime = new Date(l.updatedAt || 0).getTime();
+      const cTime = new Date(c.updatedAt || 0).getTime();
+      merged[topicId] = lTime >= cTime ? l : c;
+    } else {
+      merged[topicId] = l || c;
+    }
+  }
+
+  return merged;
+}
+
+/**
+ * Merges bounded revision summaries with local revision history.
+ */
+export function mergeTrackerRevisionsSummary(localRevisions = {}, cloudRevisionsSummary = {}) {
+  const local = localRevisions && typeof localRevisions === "object" ? localRevisions : {};
+  const cloud = cloudRevisionsSummary && typeof cloudRevisionsSummary === "object" ? cloudRevisionsSummary : {};
+  const allTopicIds = new Set([...Object.keys(local), ...Object.keys(cloud)]);
+  const mergedCloudSummaries = {};
+
+  for (const topicId of allTopicIds) {
+    const localEvents = Array.isArray(local[topicId]) ? local[topicId] : [];
+    const cloudSummary = cloud[topicId] || null;
+    mergedCloudSummaries[topicId] = mergeSyncedRevisionSummary(localEvents, cloudSummary);
+  }
+
+  return mergedCloudSummaries;
+}
+
+/**
+ * Merges tracker preferences using Last-Write-Wins.
+ */
+export function mergeTrackerPreferences(localPrefs = {}, cloudPrefs = {}) {
+  const lTime = new Date(localPrefs?.updatedAt || 0).getTime();
+  const cTime = new Date(cloudPrefs?.updated_at || cloudPrefs?.updatedAt || 0).getTime();
+
+  if (cTime > lTime) {
+    return {
+      activeTrack: cloudPrefs.active_track || localPrefs.activeTrack || "cse",
+      examDateCse: cloudPrefs.exam_date_cse || localPrefs.examDateCse || "2027-02-06",
+      examDateDa: cloudPrefs.exam_date_da || localPrefs.examDateDa || "2027-02-07",
+      countdownDisplayMode: cloudPrefs.countdown_display_mode || localPrefs.countdownDisplayMode || "hero",
+      showCountdownWidget: cloudPrefs.show_countdown_widget !== undefined ? cloudPrefs.show_countdown_widget : (localPrefs.showCountdownWidget !== undefined ? localPrefs.showCountdownWidget : true),
+      updatedAt: cloudPrefs.updated_at || new Date().toISOString(),
+    };
+  }
+
+  return localPrefs;
+}
+
+/**
+ * Synchronizes local Preparation Tracker data (CSE + DA) with Supabase user_tracker table.
+ *
+ * @param {string} userId - The Supabase user UUID.
+ * @returns {Promise<{ success: boolean, data?: any, error?: any }>}
+ */
+export async function syncTrackerData(userId) {
+  if (!supabase || !userId) {
+    return { success: false, reason: "Supabase or User ID missing" };
+  }
+
+  try {
+    let localCse = { theory: {}, revisions: {}, notes: {}, dataVersion: 1, updatedAt: new Date().toISOString() };
+    let localDa = { theory: {}, revisions: {}, notes: {}, dataVersion: 1, updatedAt: new Date().toISOString() };
+    let localPrefs = {
+      activeTrack: "cse",
+      examDateCse: "2027-02-06",
+      examDateDa: "2027-02-07",
+      countdownDisplayMode: "hero",
+      showCountdownWidget: true,
+      updatedAt: new Date().toISOString(),
+    };
+
+    try {
+      const rawCse = localStorage.getItem(LOCAL_STORAGE_KEYS.trackerCse);
+      if (rawCse) localCse = JSON.parse(rawCse);
+    } catch {}
+
+    try {
+      const rawDa = localStorage.getItem(LOCAL_STORAGE_KEYS.trackerDa);
+      if (rawDa) localDa = JSON.parse(rawDa);
+    } catch {}
+
+    try {
+      const rawPrefs = localStorage.getItem(LOCAL_STORAGE_KEYS.trackerPrefs);
+      if (rawPrefs) localPrefs = JSON.parse(rawPrefs);
+    } catch {}
+
+    // Fetch remote user_tracker row
+    const { data: cloudRow, error: fetchErr } = await supabase
+      .from("user_tracker")
+      .select("*")
+      .eq("user_id", userId)
+      .single();
+
+    if (fetchErr && fetchErr.code !== "PGRST116") {
+      // If table doesn't exist yet or connection fails, log warning and exit gracefully
+      console.warn("[CloudSync] user_tracker fetch error:", fetchErr);
+      return { success: false, error: fetchErr };
+    }
+
+    const cloudData = cloudRow || {
+      active_track: localPrefs.activeTrack,
+      exam_date_cse: localPrefs.examDateCse,
+      exam_date_da: localPrefs.examDateDa,
+      countdown_display_mode: localPrefs.countdownDisplayMode,
+      show_countdown_widget: localPrefs.showCountdownWidget,
+      cse_theory: {},
+      cse_revisions: {},
+      cse_notes: {},
+      da_theory: {},
+      da_revisions: {},
+      da_notes: {},
+      updated_at: new Date(0).toISOString(),
+    };
+
+    // 1. Merge Theory
+    const mergedCseTheory = mergeTrackerTheory(localCse.theory, cloudData.cse_theory);
+    const mergedDaTheory = mergeTrackerTheory(localDa.theory, cloudData.da_theory);
+
+    // 2. Merge Notes (LWW + tombstones)
+    const mergedCseNotes = mergeTrackerNotes(localCse.notes, cloudData.cse_notes);
+    const mergedDaNotes = mergeTrackerNotes(localDa.notes, cloudData.da_notes);
+
+    // 3. Merge Bounded Revision Summaries
+    const mergedCseRevisionsSummary = mergeTrackerRevisionsSummary(localCse.revisions, cloudData.cse_revisions);
+    const mergedDaRevisionsSummary = mergeTrackerRevisionsSummary(localDa.revisions, cloudData.da_revisions);
+
+    // 4. Merge Preferences
+    const mergedPrefs = mergeTrackerPreferences(localPrefs, cloudData);
+
+    // Write merged state to localStorage
+    const nextLocalCse = {
+      ...localCse,
+      theory: mergedCseTheory,
+      notes: mergedCseNotes,
+      updatedAt: new Date().toISOString(),
+    };
+    const nextLocalDa = {
+      ...localDa,
+      theory: mergedDaTheory,
+      notes: mergedDaNotes,
+      updatedAt: new Date().toISOString(),
+    };
+
+    localStorage.setItem(LOCAL_STORAGE_KEYS.trackerCse, JSON.stringify(nextLocalCse));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.trackerDa, JSON.stringify(nextLocalDa));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.trackerPrefs, JSON.stringify(mergedPrefs));
+
+    // Upsert merged summary back to Supabase
+    const trackerUpsertPayload = {
+      user_id: userId,
+      active_track: mergedPrefs.activeTrack,
+      exam_date_cse: mergedPrefs.examDateCse,
+      exam_date_da: mergedPrefs.examDateDa,
+      countdown_display_mode: mergedPrefs.countdownDisplayMode,
+      show_countdown_widget: mergedPrefs.showCountdownWidget,
+      cse_theory: mergedCseTheory,
+      cse_revisions: mergedCseRevisionsSummary,
+      cse_notes: mergedCseNotes,
+      da_theory: mergedDaTheory,
+      da_revisions: mergedDaRevisionsSummary,
+      da_notes: mergedDaNotes,
+      data_version: 1,
+      last_synced_at: new Date().toISOString(),
+    };
+
+    const { error: upsertErr } = await supabase.from("user_tracker").upsert(trackerUpsertPayload);
+    if (upsertErr) {
+      console.warn("[CloudSync] user_tracker upsert warning:", upsertErr);
+    }
+
+    return { success: !upsertErr, data: trackerUpsertPayload };
+  } catch (trackerErr) {
+    console.error("[CloudSync] Unexpected error during tracker sync:", trackerErr);
+    return { success: false, error: trackerErr };
   }
 }

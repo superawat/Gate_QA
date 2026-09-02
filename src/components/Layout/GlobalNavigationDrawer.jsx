@@ -12,17 +12,18 @@ import {
   FaFire,
   FaNewspaper,
 } from "react-icons/fa";
-import { FiMessageSquare } from "react-icons/fi";
+import { FiGrid, FiMessageSquare } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import HamburgerButton from "./HamburgerButton";
 import SupportModal from "../Footer/SupportModal";
 
-import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, USER_MANUAL_ROUTE, BLOG_ROUTE } from "../../utils/routes";
+import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, TRACKER_ROUTE, USER_MANUAL_ROUTE, BLOG_ROUTE } from "../../utils/routes";
 import { EDITORIAL_PAGES } from "../../data/editorialPages";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 import { useDaEnabled } from "../../utils/daPreference";
 import {
   preloadExploreRoute,
+  preloadTrackerRoute,
   preloadHighPriorityTopicsRoute,
   preloadUserManualRoute,
 } from "../../utils/routePreload";
@@ -325,6 +326,17 @@ const GlobalNavigationDrawer = ({
           {/* 1. Resources */}
           <section className="space-y-2" aria-labelledby="global-resources-heading">
             <h2 id="global-resources-heading" className={sectionHeadingClassName}>Resources</h2>
+            <Link
+              to={TRACKER_ROUTE}
+              onClick={onClose}
+              onPointerEnter={() => { void preloadTrackerRoute(); }}
+              onFocus={() => { void preloadTrackerRoute(); }}
+              onTouchStart={() => { void preloadTrackerRoute(); }}
+              className={actionButtonClassName}
+            >
+              <FiGrid className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
+              <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Preparation Tracker</span>
+            </Link>
             <Link
               to={HIGH_PRIORITY_TOPICS_ROUTE}
               onClick={onClose}

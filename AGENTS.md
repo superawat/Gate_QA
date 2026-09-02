@@ -39,6 +39,8 @@ Before doing research or writing code:
 * **Testing:** Vitest for unit tests (`npm run test:unit`), Playwright for E2E (`npm run test:e2e`), TypeScript for type checking (`npm run typecheck`).
 * **Git Integrity:** Only commit or merge git branches when explicitly requested by the user.
 
+* **Master Architectural Documents:** [`docs/ARCHITECTURE.md`](file:///docs/ARCHITECTURE.md), [`docs/DATABASE.md`](file:///docs/DATABASE.md), [`docs/TRACKER.md`](file:///docs/TRACKER.md), [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md), [`docs/CHANGELOG.md`](file:///docs/CHANGELOG.md).
+
 ---
 
 ## 4. Question & Answer Maintenance Protocol

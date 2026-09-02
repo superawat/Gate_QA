@@ -13,6 +13,11 @@ import {
   mergeSolvedQuestionIds,
   unionMergeData,
   syncUserData,
+  mergeTrackerTheory,
+  mergeTrackerNotes,
+  mergeTrackerRevisionsSummary,
+  mergeTrackerPreferences,
+  syncTrackerData,
 } from "./cloudSyncManager";
 import * as supabaseService from "../services/supabase";
 
@@ -283,9 +288,17 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
     const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
 
+    const mockTrackerHandler = {
+      select: vi.fn().mockReturnValue({ eq: vi.fn().mockReturnValue({ single: vi.fn().mockResolvedValue({ data: null, error: null }) }) }),
+      upsert: vi.fn().mockResolvedValue({ error: null }),
+    };
+
     const mockFrom = vi.fn((table) => {
       if (table === "user_progress") {
         return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "user_tracker") {
+        return mockTrackerHandler;
       }
       if (table === "sync_log") {
         return { insert: mockInsert };
@@ -360,9 +373,17 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
     const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
 
+    const mockTrackerHandler = {
+      select: vi.fn().mockReturnValue({ eq: vi.fn().mockReturnValue({ single: vi.fn().mockResolvedValue({ data: null, error: null }) }) }),
+      upsert: vi.fn().mockResolvedValue({ error: null }),
+    };
+
     const mockFrom = vi.fn((table) => {
       if (table === "user_progress") {
         return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "user_tracker") {
+        return mockTrackerHandler;
       }
       if (table === "sync_log") {
         return { insert: mockInsert };
@@ -420,9 +441,17 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
     const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
 
+    const mockTrackerHandler = {
+      select: vi.fn().mockReturnValue({ eq: vi.fn().mockReturnValue({ single: vi.fn().mockResolvedValue({ data: null, error: null }) }) }),
+      upsert: vi.fn().mockResolvedValue({ error: null }),
+    };
+
     const mockFrom = vi.fn((table) => {
       if (table === "user_progress") {
         return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "user_tracker") {
+        return mockTrackerHandler;
       }
       if (table === "sync_log") {
         return { insert: mockInsert };
@@ -472,9 +501,17 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
     const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
 
+    const mockTrackerHandler = {
+      select: vi.fn().mockReturnValue({ eq: vi.fn().mockReturnValue({ single: vi.fn().mockResolvedValue({ data: null, error: null }) }) }),
+      upsert: vi.fn().mockResolvedValue({ error: null }),
+    };
+
     const mockFrom = vi.fn((table) => {
       if (table === "user_progress") {
         return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "user_tracker") {
+        return mockTrackerHandler;
       }
       if (table === "sync_log") {
         return { insert: mockInsert };
@@ -590,9 +627,17 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     const mockEq = vi.fn().mockReturnValue({ single: mockSingle });
     const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
 
+    const mockTrackerHandler = {
+      select: vi.fn().mockReturnValue({ eq: vi.fn().mockReturnValue({ single: vi.fn().mockResolvedValue({ data: null, error: null }) }) }),
+      upsert: vi.fn().mockResolvedValue({ error: null }),
+    };
+
     const mockFrom = vi.fn((table) => {
       if (table === "user_progress") {
         return { select: mockSelect, upsert: mockUpsert };
+      }
+      if (table === "user_tracker") {
+        return mockTrackerHandler;
       }
       if (table === "sync_log") {
         return { insert: mockInsert };
@@ -633,5 +678,109 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     expect(desktopActivity.longestStreak).toBe(6);
     expect(desktopActivity.todayAttempts).toBe(3);
     expect(desktopActivity.badges).toContain("25 attempts");
+  });
+
+  describe("Preparation Tracker Union Merge & Sync Engine", () => {
+    test("merges theory completions with union rule", () => {
+      const localTheory = {
+        "cse-os-deadlocks": { isCompleted: true, completedAt: "2026-08-01T10:00:00Z" },
+        "cse-os-scheduling": { isCompleted: false, completedAt: null },
+      };
+      const cloudTheory = {
+        "cse-os-scheduling": { isCompleted: true, completedAt: "2026-08-02T10:00:00Z" },
+        "cse-os-memory": { isCompleted: true, completedAt: "2026-08-03T10:00:00Z" },
+      };
+
+      const merged = mergeTrackerTheory(localTheory, cloudTheory);
+      expect(merged["cse-os-deadlocks"].isCompleted).toBe(true);
+      expect(merged["cse-os-scheduling"].isCompleted).toBe(true);
+      expect(merged["cse-os-memory"].isCompleted).toBe(true);
+    });
+
+    test("merges topic notes using Last-Write-Wins (LWW) and respects deletion tombstones", () => {
+      const localNotes = {
+        "cse-os-deadlocks": {
+          content: "Banker's Algorithm: Need <= Available",
+          updatedAt: "2026-08-05T12:00:00Z",
+          isDeleted: false,
+        },
+        "cse-os-paging": {
+          content: "Old local note",
+          updatedAt: "2026-08-01T10:00:00Z",
+          isDeleted: false,
+        },
+        "cse-os-threads": {
+          content: "Deleted locally",
+          updatedAt: "2026-08-10T15:00:00Z",
+          isDeleted: true, // Tombstone
+        },
+      };
+
+      const cloudNotes = {
+        "cse-os-deadlocks": {
+          content: "Slightly older cloud note",
+          updatedAt: "2026-08-04T12:00:00Z",
+          isDeleted: false,
+        },
+        "cse-os-paging": {
+          content: "Newer cloud formula: EMAT = h(tlb+m)+(1-h)(tlb+2m)",
+          updatedAt: "2026-08-08T10:00:00Z",
+          isDeleted: false,
+        },
+        "cse-os-threads": {
+          content: "Very long thread summary that was deleted later",
+          updatedAt: "2026-08-02T10:00:00Z",
+          isDeleted: false,
+        },
+      };
+
+      const merged = mergeTrackerNotes(localNotes, cloudNotes);
+
+      // Local newer note wins
+      expect(merged["cse-os-deadlocks"].content).toBe("Banker's Algorithm: Need <= Available");
+
+      // Cloud newer note wins
+      expect(merged["cse-os-paging"].content).toBe("Newer cloud formula: EMAT = h(tlb+m)+(1-h)(tlb+2m)");
+
+      // Deletion tombstone wins because it has newer timestamp
+      expect(merged["cse-os-threads"].isDeleted).toBe(true);
+    });
+
+    test("merges bounded revision summaries without unbounded event growth", () => {
+      const localRevisions = {
+        "cse-os-deadlocks": [
+          { id: "rev_1", timestamp: "2026-08-01T10:00:00Z", source: "practice", accuracyRate: 0.8 },
+        ],
+      };
+      const cloudSummary = {
+        "cse-os-deadlocks": {
+          lastRevisedAt: "2026-08-10T10:00:00Z",
+          lastSessionAccuracy: 0.9,
+          totalRevisionCount: 3,
+        },
+      };
+
+      const merged = mergeTrackerRevisionsSummary(localRevisions, cloudSummary);
+      expect(merged["cse-os-deadlocks"].totalRevisionCount).toBe(3);
+      expect(merged["cse-os-deadlocks"].lastRevisedAt).toBe("2026-08-10T10:00:00Z");
+      expect(merged["cse-os-deadlocks"].lastSessionAccuracy).toBe(0.9);
+    });
+
+    test("merges preferences using Last-Write-Wins", () => {
+      const localPrefs = {
+        activeTrack: "cse",
+        countdownDisplayMode: "compact",
+        updatedAt: "2026-08-01T10:00:00Z",
+      };
+      const cloudPrefs = {
+        active_track: "da",
+        countdown_display_mode: "hero",
+        updated_at: "2026-08-05T10:00:00Z", // Newer
+      };
+
+      const merged = mergeTrackerPreferences(localPrefs, cloudPrefs);
+      expect(merged.activeTrack).toBe("da");
+      expect(merged.countdownDisplayMode).toBe("hero");
+    });
   });
 });

@@ -1,5 +1,6 @@
 export const HOME_ROUTE = "/";
 export const PRACTICE_ROUTE = "/practice";
+export const TRACKER_ROUTE = "/tracker";
 export const INSIGHTS_ROUTE = "/insights";
 export const HIGH_PRIORITY_TOPICS_ROUTE = "/topics";
 export const MOCK_ROUTE = "/mock";

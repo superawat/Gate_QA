@@ -4583,4 +4583,41 @@ article code {
   }
 }
 
+/* ── Header Tracker Pulse & Attention Glow (0ms JS Load, Pure CSS GPU Accelerated) ── */
+@keyframes tracker-glow-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.45);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 6px rgba(236, 72, 153, 0);
+  }
+}
+
+@keyframes tracker-target-sway {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.08);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.08);
+  }
+}
+
+.header-tracker-pulse {
+  animation: tracker-glow-breathe 2.6s ease-in-out infinite;
+}
+
+.header-tracker-pulse .header-tracker-icon {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-tracker-pulse:hover .header-tracker-icon {
+  animation: tracker-target-sway 0.8s ease-in-out infinite;
+}
+
+
 
