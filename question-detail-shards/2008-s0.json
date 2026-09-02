@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T11:22:12.639Z",
+  "generatedAt": "2026-09-02T11:36:52.789Z",
   "shardKey": "2008-s0",
   "yearSetKey": "2008-s0",
   "yearSetIdentity": "cse:2008:set-0",
@@ -1876,9 +1876,11 @@
       "answer_uid": "v2:1.27.21",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "A",
+        "answer": null,
         "tolerance": null,
-        "source": "question_uid"
+        "source": "curated_defective_question",
+        "is_defective": true,
+        "defective_reason": "The correct answer is 13 (T(5) = 13 for recurrence T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3), but 13 is not present among the options (A: 5, B: 7, C: 8, D: 16). Excluded from scoring."
       },
       "track": "cse",
       "yearSetKey": "2008-s0",

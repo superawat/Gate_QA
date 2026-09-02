@@ -7473,10 +7473,12 @@
       }
     },
     "cse:2008:set1:main:q79": {
-      "answer_uid": "v2:1.27.21",
+      "answer_uid": "manual_res:go:43485",
       "type": "MCQ",
-      "answer": "A",
+      "answer": null,
       "tolerance": null,
+      "is_defective": true,
+      "defective_reason": "The correct answer is 13 (T(5) = 13 for recurrence T(n) = T(n-1) + T(n-2) with T(1)=2, T(2)=3), but 13 is not present among the options (A: 5, B: 7, C: 8, D: 16). Excluded from scoring.",
       "source": {
         "kind": "question_uid",
         "question_uids": [
@@ -23835,11 +23837,9 @@
     },
     "cse:1987:set1:main:q2j": {
       "answer_uid": "v2:10.10.1",
-      "type": "NAT",
-      "answer": 9,
-      "tolerance": {
-        "abs": 0.01
-      },
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
       "source": {
         "kind": "question_uid",
         "question_uids": [
