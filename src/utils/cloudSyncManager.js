@@ -430,14 +430,17 @@ export async function syncUserData(userId) {
     const localData = readLocalData();
 
     // 3. Fetch user's existing progress record from Supabase
-    const { data: cloudRow, error: fetchErr } = await supabase
+    // Using maybeSingle() returns { data: null, error: null } if row does not exist, avoiding HTTP 406 (PGRST116)
+    const progressQuery = supabase
       .from("user_progress")
       .select("*")
-      .eq("user_id", userId)
-      .single();
+      .eq("user_id", userId);
+    const { data: cloudRow, error: fetchErr } = typeof progressQuery.maybeSingle === "function"
+      ? await progressQuery.maybeSingle()
+      : await progressQuery.single();
 
     if (fetchErr && fetchErr.code !== "PGRST116") {
-      // PGRST116 is "Row not found" — expected for new users
+      // PGRST116 is "Row not found" — expected for new users (preserved for fallback compatibility)
       console.error("[CloudSync] Fetch cloud error:", fetchErr);
       return { success: false, error: fetchErr };
     }
@@ -740,11 +743,14 @@ export async function syncTrackerData(userId) {
     } catch {}
 
     // Fetch remote user_tracker row
-    const { data: cloudRow, error: fetchErr } = await supabase
+    // Using maybeSingle() returns { data: null, error: null } if row does not exist, avoiding HTTP 406 (PGRST116)
+    const trackerQuery = supabase
       .from("user_tracker")
       .select("*")
-      .eq("user_id", userId)
-      .single();
+      .eq("user_id", userId);
+    const { data: cloudRow, error: fetchErr } = typeof trackerQuery.maybeSingle === "function"
+      ? await trackerQuery.maybeSingle()
+      : await trackerQuery.single();
 
     if (fetchErr && fetchErr.code !== "PGRST116") {
       // If table doesn't exist yet or connection fails, log warning and exit gracefully

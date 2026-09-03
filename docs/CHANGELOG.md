@@ -1,5 +1,15 @@
 # Changelog
 
+- **Supabase API Gateway 406 Warning Elimination via `maybeSingle()` (DEC-050)**:
+  - *Context*: Supabase API Gateway logged HTTP 406 responses as amber warnings when new users or new tracker records were fetched via `.single()` on `user_progress` and `user_tracker`.
+  - *Resolution*: Upgraded queries in [`src/utils/cloudSyncManager.js`](../src/utils/cloudSyncManager.js) to dynamically execute `.maybeSingle()` with fallback. When no record exists, PostgREST returns HTTP `200 OK` with `data: null` instead of HTTP `406 Not Acceptable` (`PGRST116`).
+  - *Verification*: All 536 unit tests passing (100% green), `npm run typecheck` clean (0 errors).
+
+- **Supabase Free-Tier Resource Usage & Quota Audit (2026-09-03)**:
+  - *Billing Cycle Telemetry*: Updated live resource consumption audit in `docs/DATABASE.md`.
+  - *Metrics*: Egress at `0.56 GB / 5 GB` (11.2%), Database size at `41 MB / 500 MB` (8.2%), Monthly Active Users at `332 / 50,000` (0.66%), and File Storage at `0 GB / 1 GB` (0.0%).
+  - *Status*: 🟢 Safe & Healthy (< 12% across all limits).
+
 - **Question Data Integrity & Format Correction (`go:80599` & `go:84830`) (DEC-049)**:
   - *`go:80599` (GATE CSE 1987 Q2k - Theory of Computation)*:
     - *Problem*: Stored as MCQ but lacked an options list in the question body, causing the UI to render four empty fallback option placeholders (A–D).

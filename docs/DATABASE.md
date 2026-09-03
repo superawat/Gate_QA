@@ -45,15 +45,15 @@ The hosted project does not contain `supabase_migrations.schema_migrations`; the
 
 ## Free-Tier Resource Usage & Quota Audit
 
-> **Last Inspected**: `2026-09-02` (Current Billing Cycle Audit)  
+> **Last Inspected**: `2026-09-03` (Current Billing Cycle Audit)  
 > **Plan**: Supabase Free Tier ($0/mo)  
-> **Status**: 🟢 **Healthy & Well Within Limits (< 11% utilization across all metrics)**
+> **Status**: 🟢 **Healthy & Well Within Limits (< 12% utilization across all metrics)**
 
 | Resource Metric | Current Usage | Free Tier Limit | Utilization | Headroom / Remaining | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Egress (Network)** | `516 MB` | `5.00 GB` | **10.3%** | `4.48 GB` remaining | 🟢 Safe |
-| **Database Size** | `40 MB` | `500 MB` | **8.0%** | `460 MB` remaining | 🟢 Safe |
-| **Monthly Active Users (MAU)** | `295` | `50,000` | **0.59%** | `49,705` MAUs remaining | 🟢 Safe |
+| **Egress (Network)** | `0.56 GB (560 MB)` | `5.00 GB` | **11.2%** | `4.44 GB` remaining | 🟢 Safe |
+| **Database Size** | `41 MB` | `500 MB` | **8.2%** | `459 MB` remaining | 🟢 Safe |
+| **Monthly Active Users (MAU)** | `332` | `50,000` | **0.66%** | `49,668` MAUs remaining | 🟢 Safe |
 | **File Storage** | `0 GB` | `1.00 GB` | **0.0%** | `1.00 GB` remaining | 🟢 Safe |
 
 ### Architectural Guardrails Maintaining Free-Tier Health:
