@@ -2,12 +2,13 @@
  * @vitest-environment jsdom
  */
 import React from "react";
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 
 const mocks = vi.hoisted(() => ({
   loadWeakTopicInsights: vi.fn(),
+  clearInsightsCache: vi.fn(),
   readMockTestHistory: vi.fn().mockReturnValue([]),
 }));
 
@@ -17,6 +18,7 @@ vi.mock("../components/Layout/PageShell", () => ({
 
 vi.mock("../utils/weakTopicAnalyzer", () => ({
   loadWeakTopicInsights: mocks.loadWeakTopicInsights,
+  clearInsightsCache: mocks.clearInsightsCache,
 }));
 
 vi.mock("../utils/mockTestHistory", () => ({
@@ -58,6 +60,7 @@ const renderInsightsPage = (props = {}) => render(
 describe("InsightsPage", () => {
   beforeEach(() => {
     mocks.loadWeakTopicInsights.mockReset();
+    mocks.clearInsightsCache.mockReset();
     mocks.readMockTestHistory.mockReset();
     mocks.readMockTestHistory.mockReturnValue([]);
   });
@@ -368,5 +371,70 @@ describe("InsightsPage", () => {
     expect(autoFilterLink).toBeTruthy();
     expect(autoFilterLink.getAttribute("href")).toContain("subjects=da%3Alinear-algebra");
     expect(autoFilterLink.getAttribute("href")).toContain("subtopics=matrices");
+  });
+
+  test("shows retry button on error and recovers when clicked", async () => {
+    mocks.loadWeakTopicInsights.mockRejectedValueOnce(new Error("Network timeout loading insights"));
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [
+        { key: "algo", label: "Algorithms", accuracyRate: 0.8, attemptedCount: 5, correctAttempts: 4, incorrectAttempts: 1, coverageRate: 0.3, recentMistakeStreak: 0, availableQuestions: 16 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+
+    expect(await screen.findByText("Network timeout loading insights")).toBeTruthy();
+    const retryBtn = screen.getByRole("button", { name: /try again/i });
+    expect(retryBtn).toBeTruthy();
+
+    fireEvent.click(retryBtn);
+
+    expect(mocks.clearInsightsCache).toHaveBeenCalled();
+    expect(await screen.findByText("5")).toBeTruthy();
+  });
+
+  test("renders safely without crashing when insights object has undefined fields", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 2,
+      subjects: undefined,
+      subtopics: undefined,
+      wrongQuestions: undefined,
+      reviewQueue: undefined,
+      attemptTimeline: undefined,
+      studyActivity: undefined,
+      timeSummary: undefined,
+      difficultySummary: undefined,
+      mockSummary: undefined,
+    });
+
+    renderInsightsPage();
+
+    expect(await screen.findByText("2")).toBeTruthy();
+  });
+
+  test("re-triggers load when gateqa:progress-updated event is dispatched", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValue({
+      attemptedQuestionCount: 3,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+
+    expect(await screen.findByText("3")).toBeTruthy();
+    expect(mocks.loadWeakTopicInsights).toHaveBeenCalledTimes(1);
+
+    act(() => {
+      window.dispatchEvent(new CustomEvent("gateqa:progress-updated"));
+    });
+
+    await waitFor(() => {
+      expect(mocks.loadWeakTopicInsights).toHaveBeenCalledTimes(2);
+    });
+    expect(mocks.clearInsightsCache).toHaveBeenCalled();
   });
 });

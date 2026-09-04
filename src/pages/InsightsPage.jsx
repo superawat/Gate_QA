@@ -46,7 +46,7 @@ import PageShell from "../components/Layout/PageShell";
 import SEOHead from "../components/SEO/SEOHead";
 import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
-import { loadWeakTopicInsights } from "../utils/weakTopicAnalyzer";
+import { loadWeakTopicInsights, clearInsightsCache } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
 import useChartTheme from "../hooks/useChartTheme";
 import CollapsibleSection from "../components/Layout/CollapsibleSection";
@@ -1126,6 +1126,8 @@ const YearAccuracyTrend = ({ years = [] }) => {
 
 const OverviewTab = ({ insights = {}, summary = {} }) => {
   const subjectsList = Array.isArray(insights?.subjects) ? insights.subjects : [];
+  const subtopicsList = Array.isArray(insights?.subtopics) ? insights.subtopics : [];
+  const reviewQueueList = Array.isArray(insights?.reviewQueue) ? insights.reviewQueue : [];
   const totalCorrect = useMemo(() =>
     subjectsList.reduce((sum, s) => sum + (Number(s?.correctAttempts) || 0), 0)
   , [subjectsList]);
@@ -1196,7 +1198,7 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
       </div>
 
       {/* Subject Progress — collapsible, open by default */}
-      {insights.subjects.length > 0 && (
+      {subjectsList.length > 0 && (
         <CollapsibleSection
           title={
             <div className="flex items-start gap-3.5">
@@ -1213,16 +1215,16 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
           }
           defaultOpen={true}
         >
-          <SubjectProgressRings subjects={insights.subjects} />
+          <SubjectProgressRings subjects={subjectsList} />
         </CollapsibleSection>
       )}
 
       {/* Focus Areas — collapsible, open by default when weak areas exist */}
       {(() => {
-        const weakCount = (insights.subtopics || []).filter(
+        const weakCount = subtopicsList.filter(
           (st) => Number(st.attemptedCount || 0) > 0 && Number(st.accuracyRate || 0) < 0.6
         ).length;
-        const hasAttempts = (insights.subtopics || []).some(
+        const hasAttempts = subtopicsList.some(
           (st) => Number(st.attemptedCount || 0) > 0
         );
 
@@ -1268,13 +1270,13 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
             }
             defaultOpen={weakCount > 0}
           >
-            <FocusAreas subtopics={insights.subtopics} />
+            <FocusAreas subtopics={subtopicsList} />
           </CollapsibleSection>
         );
       })()}
 
       {/* Smart Practice Banner — always visible */}
-      <SmartPracticeBanner subtopics={insights.subtopics} reviewQueue={insights.reviewQueue} />
+      <SmartPracticeBanner subtopics={subtopicsList} reviewQueue={reviewQueueList} />
 
       {/* Skill Radar — collapsible */}
       <CollapsibleSection
@@ -1291,10 +1293,10 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
             </div>
           </div>
         }
-        defaultOpen={insights.subjects.length >= 3}
+        defaultOpen={subjectsList.length >= 3}
       >
-        {insights.subjects.length >= 3 ? (
-          <SubjectRadarChart data={insights.subjects} />
+        {subjectsList.length >= 3 ? (
+          <SubjectRadarChart data={subjectsList} />
         ) : (
           <div className="flex flex-col items-center gap-3 py-8">
             <CorrectIncorrectPie correct={totalCorrect} incorrect={totalIncorrect} />
@@ -1373,7 +1375,7 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
         defaultOpen={false}
       >
         <div className="space-y-2">
-          {insights.subjects.map((item) => (
+          {subjectsList.map((item) => (
             <SubjectDetailCard key={item.key} item={item} />
           ))}
         </div>
@@ -1796,8 +1798,18 @@ const InsightsPage = ({
     navigate({ search: `?${params.toString()}` }, { replace: true });
   }, [location.search, navigate]);
 
+  const [retryKey, setRetryKey] = useState(0);
+
+  const handleRetry = useCallback(() => {
+    clearInsightsCache();
+    setError("");
+    setRetryKey((k) => k + 1);
+  }, []);
+
   const allQuestionsRef = useRef(allQuestions);
   allQuestionsRef.current = allQuestions;
+
+  const allQuestionsCount = Array.isArray(allQuestions) ? allQuestions.length : 0;
 
   useEffect(() => {
     let active = true;
@@ -1806,7 +1818,9 @@ const InsightsPage = ({
       setIsLoading(true);
       setError("");
       try {
-        const questionsList = allQuestionsRef.current;
+        const questionsList = Array.isArray(allQuestions) && allQuestions.length > 0
+          ? allQuestions
+          : allQuestionsRef.current;
         const result = await loadWeakTopicInsights({
           questions: Array.isArray(questionsList) && questionsList.length > 0 ? questionsList : null,
         });
@@ -1840,19 +1854,47 @@ const InsightsPage = ({
     return () => {
       active = false;
     };
+  }, [allQuestionsCount, retryKey]);
+
+  useEffect(() => {
+    const handleDataUpdate = () => {
+      clearInsightsCache();
+      setRetryKey((k) => k + 1);
+    };
+
+    window.addEventListener("gateqa:progress-updated", handleDataUpdate);
+    window.addEventListener("gateqa:sync-complete", handleDataUpdate);
+    window.addEventListener("gateqa:workspace-imported", handleDataUpdate);
+
+    return () => {
+      window.removeEventListener("gateqa:progress-updated", handleDataUpdate);
+      window.removeEventListener("gateqa:sync-complete", handleDataUpdate);
+      window.removeEventListener("gateqa:workspace-imported", handleDataUpdate);
+    };
   }, []);
 
   const scopedInsights = useMemo(() => {
     const safeInsights = insights || {};
+    const subjects = Array.isArray(safeInsights.subjects) ? safeInsights.subjects : [];
+    const subtopics = Array.isArray(safeInsights.subtopics) ? safeInsights.subtopics : [];
+    const wrongQuestions = Array.isArray(safeInsights.wrongQuestions) ? safeInsights.wrongQuestions : [];
+    const reviewQueue = Array.isArray(safeInsights.reviewQueue) ? safeInsights.reviewQueue : [];
+
     if (selectedTrack === "all") {
-      return safeInsights;
+      return {
+        ...safeInsights,
+        subjects,
+        subtopics,
+        wrongQuestions,
+        reviewQueue,
+      };
     }
     return {
       ...safeInsights,
-      subjects: (safeInsights.subjects || []).filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug, selectedTrack)),
-      subtopics: (safeInsights.subtopics || []).filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key, selectedTrack)),
-      wrongQuestions: (safeInsights.wrongQuestions || []).filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
-      reviewQueue: (safeInsights.reviewQueue || []).filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
+      subjects: subjects.filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug, selectedTrack)),
+      subtopics: subtopics.filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key, selectedTrack)),
+      wrongQuestions: wrongQuestions.filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
+      reviewQueue: reviewQueue.filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
     };
   }, [insights, selectedTrack]);
 
@@ -1943,8 +1985,28 @@ const InsightsPage = ({
             </div>
           </div>
         ) : error ? (
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-4 py-3 text-sm text-[color:var(--color-warning-text)]">
-            {error}
+          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-4 sm:p-5 text-sm text-[color:var(--color-warning-text)] shadow-[var(--shadow-card)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <FaExclamationTriangle className="text-base shrink-0" />
+                <p>{error}</p>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={handleRetry}
+                  className="inline-flex items-center justify-center rounded-xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] px-4 py-2 text-xs font-semibold text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] transition shadow-sm"
+                >
+                  Try Again
+                </button>
+                <Link
+                  to={PRACTICE_ROUTE}
+                  className="inline-flex items-center justify-center rounded-xl bg-[color:var(--color-primary)] px-4 py-2 text-xs font-semibold text-white hover:bg-[color:var(--color-primary-hover)] transition shadow-sm"
+                >
+                  Open Practice
+                </Link>
+              </div>
+            </div>
           </div>
         ) : summary.attemptedQuestionCount <= 0 ? (
           <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 text-center shadow-[var(--shadow-soft)]">

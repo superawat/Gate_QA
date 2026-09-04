@@ -1,5 +1,23 @@
 # Changelog
 
+- **Insights Subsystem Loading Reliability & Resilience Fixes (DEC-051)**:
+  - *Context*: Production user feedback reported: *"The insights section isn't loading bro 💔"*. Thorough investigation uncovered intermittent failure paths under race conditions, cold start, direct URL access, and unindexed/offline states.
+  - *Root causes*:
+    1. **Initial Mount Race Condition & Stale Dependency Array**: `InsightsPage.jsx` executed `useEffect` with an empty dependency array `[]`. When users navigated directly to `/insights` or refreshed the page before `FilterContext` finished loading `allQuestions`, `allQuestions` was `[]`. `InsightsPage` never re-executed when `allQuestions` finished hydrating (0 -> 3527 questions).
+    2. **Uncached Heavy Network Waterfall & Offline Failure**: When `questions` was null, `weakTopicAnalyzer.js` bypassed `QuestionService`'s existing in-memory/localStorage cache (`gateqa_index_cache_v11`) and attempted to fetch `question-search-index.json` (4.7 MB) and `aptitude-search-index.json` (11.8 MB) concurrently. On slow networks/mobile, this caused 15–30s hangs, and offline it threw uncaught `Error("Unable to load practice analytics.")`.
+    3. **Under-keyed Cache Collision**: The insights cache key did not include `questions.length`. When insights were initially built with empty questions, the zero-question result was cached for the rest of the day, blocking updated questions from rendering.
+    4. **Unindexed Attempted Questions Zeroed**: In `buildWeakTopicInsights`, `attemptedQuestionCount` was computed exclusively from questions with metadata. Unindexed questions (or questions attempted before search index hydration) resulted in `attemptedQuestionCount: 0`, erroneously triggering the "No insights yet" empty state for users who had attempted questions.
+    5. **Unsafe Array Property Access in `OverviewTab`**: Several sections read `insights.subjects.length` and `.map()` instead of guarded safe arrays, risking unhandled `TypeError` exceptions.
+    6. **Missing Retry & Event Synchronization**: An error state had no retry mechanism, and changes from background syncs or practice attempts did not trigger a refresh.
+  - *Fixes*:
+    - Reactively trigger insight generation on `allQuestionsCount` transition and storage/sync events (`gateqa:progress-updated`, `gateqa:sync-complete`, `gateqa:workspace-imported`).
+    - Reuse in-memory `QuestionService.questions` and offline `QuestionService.init()` cache; only load Aptitude/DA datasets if user actually has Aptitude/DA progress records; never throw unhandled errors on non-critical fetch failures.
+    - Updated cache key to include questions count and mock history stamp; do not cache empty results when progress records exist.
+    - Unconditionally track all attempted questions in `attemptedQuestionKeySet`, ensuring accurate `attemptedQuestionCount`, streaks, and study activity even for unindexed questions.
+    - Guarded `OverviewTab` and `scopedInsights` against undefined fields with fallback empty arrays.
+    - Added an interactive "Try Again" recovery button and "Open Practice" link on the error banner.
+  - *Verification*: Added 3 new unit tests in `src/pages/InsightsPage.test.jsx` and 3 unit tests in `src/utils/weakTopicAnalyzer.reliability.test.js`. Full test suite passed (542 tests across 73 test suites), TypeScript typecheck clean (0 errors), production build passed.
+
 - **Supabase API Gateway 406 Warning Elimination via `maybeSingle()` (DEC-050)**:
   - *Context*: Supabase API Gateway logged HTTP 406 responses as amber warnings when new users or new tracker records were fetched via `.single()` on `user_progress` and `user_tracker`.
   - *Resolution*: Upgraded queries in [`src/utils/cloudSyncManager.js`](../src/utils/cloudSyncManager.js) to dynamically execute `.maybeSingle()` with fallback. When no record exists, PostgREST returns HTTP `200 OK` with `data: null` instead of HTTP `406 Not Acceptable` (`PGRST116`).
