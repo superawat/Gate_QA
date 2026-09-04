@@ -37537,7 +37537,7 @@
     "title": "GATE CSE 2024 | Set 1 | Question: 9",
     "year": "gatecse-2024-set1",
     "link": "https://gateoverflow.in/422833/gate-cse-2024-set-1-question-9",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422833\"></a><div itemprop=\"text\"><p> </p>\n<p>​​​Consider the following $\\mathrm{C}$ program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\n#include &lt;stdio.h&gt;\nvoid fX ; \nint main{\nfX;\nreturn 0 }; </pre>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\nvoid fX  {  \nchar a; \nif ((a=g e t c h a r)  ! = '\\n')\nfX; \nif (a ! = '\\n')\nputchar (a); }\n</pre>\n<p>Assume that the input to the program from the command line is $1234$ followed by a newline character. Which one of the following statements is CORRECT?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>The program will not terminate</li>\n<li>The program will terminate with no output</li>\n<li>The program will terminate with $4321$ as output</li>\n<li>The program will terminate with $1234$ as output </li>\n</ol></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422833\"></a><div itemprop=\"text\"><p> </p>\n<p>​​​Consider the following $\\mathrm{C}$ program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\n#include &lt;stdio.h&gt;\nvoid fX();\n\nint main() {\n    fX();\n    return 0;\n}\n\nvoid fX() {\n    char a;\n    if ((a = getchar()) != '\\n')\n        fX();\n    if (a != '\\n')\n        putchar(a);\n}\n</pre>\n<p>Assume that the input to the program from the command line is $1234$ followed by a newline character. Which one of the following statements is CORRECT?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>The program will not terminate</li>\n<li>The program will terminate with no output</li>\n<li>The program will terminate with $4321$ as output</li>\n<li>The program will terminate with $1234$ as output </li>\n</ol></div>\n</div>",
     "tags": [
       "gatecse-2024-set1",
       "programming",
@@ -39272,7 +39272,7 @@
       "finite-automata",
       "two-marks",
       "one-mark",
-      "numerical-answers",
+      "multiple-choice",
       "regular-expression",
       "verbal-aptitude",
       "sentence-ordering",

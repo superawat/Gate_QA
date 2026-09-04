@@ -30068,31 +30068,27 @@
       }
     },
     "go:422866": {
-      "answer_uid": "v2:10.7.30",
-      "type": "NAT",
-      "answer": 3,
-      "tolerance": {
-        "abs": 0.01
-      },
+      "answer_uid": "manual:go:422866",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
       "source": {
-        "pdf": "volume2",
-        "page": 695,
-        "line_index": [
-          16
-        ]
+        "pdf": "manual_patch",
+        "page": 0,
+        "line_index": []
       }
     },
     "go:460040": {
-      "answer_uid": "v2:10.7.31",
-      "type": "MCQ",
-      "answer": "C",
+      "answer_uid": "manual:go:460040",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
       "tolerance": null,
       "source": {
-        "pdf": "volume2",
-        "page": 695,
-        "line_index": [
-          16
-        ]
+        "pdf": "manual_patch",
+        "page": 0,
+        "line_index": []
       }
     },
     "go:3684": {
@@ -32141,14 +32137,16 @@
       }
     },
     "go:3319": {
-      "answer_uid": "manual:go:3319",
+      "answer_uid": "manual_res:go:3319",
       "type": "MCQ",
-      "answer": "D",
+      "answer": null,
       "tolerance": null,
+      "is_defective": true,
+      "defective_reason": "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
       "source": {
-        "pdf": "manual_patch",
-        "page": 0,
-        "line_index": []
+        "kind": "curated_defective_question",
+        "notes": "Defective question: For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
+        "updated_at": "2026-09-04T12:00:00.000Z"
       }
     },
     "go:3348": {
@@ -37117,8 +37115,10 @@
     },
     "go:460062": {
       "answer_uid": "manual:go:460062",
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": {
         "pdf": "manual_patch",

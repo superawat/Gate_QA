@@ -1,5 +1,29 @@
 # Changelog
 
+- **Question Data Integrity, Type Conversion & Defective Question Repair (DEC-052)**:
+  - *Context*: Batch verification and repair across five GATE questions (`go:460062`, `go:460040`, `go:422866`, `go:3319`, `go:422833`):
+  - *`go:460062` (GATE CSE 2025 Set 1 Q18 - Theory of Computation)*:
+    - *Problem*: Tagged as MCQ, but is an authentic Multiple Select Question (MSQ) ("Which of the following statement(s) is/are FALSE?").
+    - *Resolution*: Converted type from `MCQ` to `MSQ`. Preserved question text and options verbatim. Kept correct answer as Option D, formatted as array `["D"]`.
+    - *Affected files*: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, detail shard `2025-s1.json`, and `public/mock_catalog_v1.json` (1 mark, 0 negative marks).
+  - *`go:460040` (GATE CSE 2025 Set 1 Q40 - Theory of Computation)*:
+    - *Problem*: Tagged as MCQ, but is an MSQ ("Identify which of the following language(s) is/are accepted by the given DFA").
+    - *Resolution*: Converted type from `MCQ` to `MSQ`. Preserved question text, DFA image, and options verbatim. Kept correct answer as Option C, formatted as array `["C"]`.
+    - *Affected files*: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, detail shard `2025-s1.json`, and `public/mock_catalog_v1.json` (2 marks, 0 negative marks).
+  - *`go:422866` (GATE CSE 2024 Set 2 Q31 - Theory of Computation)*:
+    - *Problem*: Tagged as NAT with placeholder answer 3, but is an authentic MCQ with 4 options (A-D) asking which regular expression represents the language accepted by the 5-state NFA with epsilon-transitions.
+    - *Resolution*: Converted type from `NAT` to `MCQ`. Preserved question text, NFA diagram, and 4 choices verbatim. Correct answer set to Option B ($0^{*}+\left(1+0(00)^{*}\right)(11)^{*}$), tolerance cleared to `null`.
+    - *Affected files*: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, `public/questions-filtered-with-ids.json`, detail shard `2024-s2.json`, and `public/mock_catalog_v1.json` (2 marks, 0.667 negative marks).
+  - *`go:3319` (GATE IT 2008 Q29 / CSE Pool - Engineering Mathematics -> Linear Algebra)*:
+    - *Problem*: Question asks which assertions are correct for a square matrix M with det(M)=0: S1 and S2 are not necessarily true, S3 (MX=0 has a nontrivial solution) is TRUE because nullity >= 1, and S4 (M has an inverse) is FALSE. Only S3 is correct, but none of the options A-D represents "S3 only".
+    - *Resolution*: Marked as defective (`is_defective: true`, `answer: null`, `type: "MCQ"`), with detailed explanatory notice. Selecting any option does not penalize candidate and question is excluded from scoring (`scorable: false` in mock catalog). Original text and choices preserved.
+    - *Affected files*: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/questions-with-answers.json`, detail shard `2008-s0.json`, and `public/mock_catalog_v1.json`.
+  - *`go:422833` (GATE CSE 2024 Set 1 Q9 - Programming in C)*:
+    - *Problem*: C code snippet was corrupted in question text (missing parentheses/syntax around `fX()` declarations, definitions, `getchar()`, and `putchar()`).
+    - *Resolution*: Restored clean, valid C syntax conforming to the official GATE paper while preserving question text, choices, and answer Option C (4321).
+    - *Affected files*: `public/questions-with-answers.json`, `public/questions-filtered-with-ids.json`, `public/questions-filtered.json`, and detail shard `2024-s1.json`.
+  - *Tests & Verification*: Added automated regression unit tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`. Rebuilt all static shards, catalogs, and indexes via `build-public-artifacts.mjs`. All 550 unit tests passing, `npm run qa:validate-data` passing, and `npm run typecheck` clean (0 errors).
+
 - **Insights Subsystem Loading Reliability & Resilience Fixes (DEC-051)**:
   - *Context*: Production user feedback reported: *"The insights section isn't loading bro 💔"*. Thorough investigation uncovered intermittent failure paths under race conditions, cold start, direct URL access, and unindexed/offline states.
   - *Root causes*:

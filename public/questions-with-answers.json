@@ -58407,7 +58407,7 @@
     "title": "GATE CSE 2024 | Set 1 | Question: 9",
     "year": "gatecse-2024-set1",
     "link": "https://gateoverflow.in/422833/gate-cse-2024-set-1-question-9",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422833\"></a><div itemprop=\"text\"><p> </p>\n<p>​​​Consider the following $\\mathrm{C}$ program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\n#include &lt;stdio.h&gt;\nvoid fX ; \nint main{\nfX;\nreturn 0 }; </pre>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\nvoid fX  {  \nchar a; \nif ((a=g e t c h a r)  ! = '\\n')\nfX; \nif (a ! = '\\n')\nputchar (a); }\n</pre>\n<p>Assume that the input to the program from the command line is $1234$ followed by a newline character. Which one of the following statements is CORRECT?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>The program will not terminate</li>\n<li>The program will terminate with no output</li>\n<li>The program will terminate with $4321$ as output</li>\n<li>The program will terminate with $1234$ as output </li>\n</ol></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422833\"></a><div itemprop=\"text\"><p> </p>\n<p>​​​Consider the following $\\mathrm{C}$ program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\n#include &lt;stdio.h&gt;\nvoid fX();\n\nint main() {\n    fX();\n    return 0;\n}\n\nvoid fX() {\n    char a;\n    if ((a = getchar()) != '\\n')\n        fX();\n    if (a != '\\n')\n        putchar(a);\n}\n</pre>\n<p>Assume that the input to the program from the command line is $1234$ followed by a newline character. Which one of the following statements is CORRECT?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>The program will not terminate</li>\n<li>The program will terminate with no output</li>\n<li>The program will terminate with $4321$ as output</li>\n<li>The program will terminate with $1234$ as output </li>\n</ol></div>\n</div>",
     "tags": [
       "gatecse-2024-set1",
       "programming",
@@ -60940,7 +60940,7 @@
       "finite-automata",
       "two-marks",
       "one-mark",
-      "numerical-answers",
+      "multiple-choice",
       "regular-expression",
       "verbal-aptitude",
       "sentence-ordering",
@@ -60949,13 +60949,11 @@
     ],
     "question_uid": "go:422866",
     "exam_uid": "cse:2024:set2:main:q31",
-    "answer_uid": "v2:10.7.30",
+    "answer_uid": "manual:go:422866",
     "answer_meta": {
-      "type": "NAT",
-      "answer": 3,
-      "tolerance": {
-        "abs": 0.01
-      },
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
       "source": "question_uid"
     }
   },
@@ -62546,8 +62544,10 @@
     "exam_uid": "cse:2025:set1:main:q18",
     "answer_uid": "manual:go:460062",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": "question_uid"
     }
@@ -63195,10 +63195,12 @@
     ],
     "question_uid": "go:460040",
     "exam_uid": "cse:2025:set1:main:q40",
-    "answer_uid": "v2:10.7.31",
+    "answer_uid": "manual:go:460040",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "C",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
       "tolerance": null,
       "source": "question_uid"
     }
@@ -66099,12 +66101,14 @@
       "matrix"
     ],
     "question_uid": "go:3319",
-    "answer_uid": "manual:go:3319",
+    "answer_uid": "manual_res:go:3319",
     "answer_meta": {
       "type": "MCQ",
-      "answer": "D",
+      "answer": null,
       "tolerance": null,
-      "source": "question_uid"
+      "source": "curated_defective_question",
+      "is_defective": true,
+      "defective_reason": "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring."
     }
   },
   {

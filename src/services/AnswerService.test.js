@@ -293,4 +293,96 @@ describe("AnswerService", () => {
       tolerance: null,
     });
   });
+
+  test("resolves GATE CSE 2025 Set 1 Q18 (go:460062) as MSQ with Option D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:460062": {
+        answer_uid: "manual:go:460062",
+        type: "MSQ",
+        answer: ["D"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:460062",
+      link: "https://gateoverflow.in/460062/gate-cse-2025-set-1-question-18",
+      title: "GATE CSE 2025 | Set 1 | Question: 18",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:460062",
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2025 Set 1 Q40 (go:460040) as MSQ with Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:460040": {
+        answer_uid: "manual:go:460040",
+        type: "MSQ",
+        answer: ["C"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:460040",
+      link: "https://gateoverflow.in/460040/gate-cse-2025-set-1-question-40",
+      title: "GATE CSE 2025 | Set 1 | Question: 40",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:460040",
+      type: "MSQ",
+      answer: ["C"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 2 Q31 (go:422866) as MCQ Option B", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422866": {
+        answer_uid: "manual:go:422866",
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422866",
+      link: "https://gateoverflow.in/422866/gate-cse-2024-set-2-question-31",
+      title: "GATE CSE 2024 | Set 2 | Question: 31",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:422866",
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE IT 2008 Q29 (go:3319) as defective MCQ with null answer", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:3319": {
+        answer_uid: "manual_res:go:3319",
+        type: "MCQ",
+        answer: null,
+        tolerance: null,
+        is_defective: true,
+        defective_reason: "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:3319",
+      link: "https://gateoverflow.in/3319/gate-it-2008-question-29",
+      title: "GATE IT 2008 | Question: 29",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual_res:go:3319",
+      type: "MCQ",
+      answer: null,
+      tolerance: null,
+      is_defective: true,
+      defective_reason: "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
+    });
+  });
 });

@@ -309,4 +309,123 @@ describe("evaluateAnswer", () => {
       correct: false,
     });
   });
+
+  test("evaluates GATE CSE 2025 Set 1 Q18 (go:460062) as MSQ with Option D correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    };
+
+    // Selecting D is correct
+    expect(evaluateAnswer(record, ["D"])).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, ["d"])).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting other options or combinations is incorrect
+    expect(evaluateAnswer(record, ["A"])).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, ["D", "A"])).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, [])).toEqual({
+      status: "invalid_input",
+      correct: false,
+    });
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 Q40 (go:460040) as MSQ with Option C correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["C"],
+      tolerance: null,
+    };
+
+    // Selecting C is correct
+    expect(evaluateAnswer(record, ["C"])).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, ["c"])).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting wrong options
+    expect(evaluateAnswer(record, ["B"])).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, ["B", "C"])).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, [])).toEqual({
+      status: "invalid_input",
+      correct: false,
+    });
+  });
+
+  test("evaluates GATE CSE 2024 Set 2 Q31 (go:422866) as MCQ with Option B correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    };
+
+    // Selecting B is correct
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "b")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Other options are incorrect
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "3")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+  });
+
+  test("evaluates GATE IT 2008 Q29 (go:3319) as defective MCQ with null answer excluded from scoring", () => {
+    const record = {
+      type: "MCQ",
+      answer: null,
+      is_defective: true,
+      defective_reason: "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
+      tolerance: null,
+    };
+
+    // Selecting any option must be excluded from scoring without penalty
+    ["A", "B", "C", "D"].forEach((option) => {
+      const evaluation = evaluateAnswer(record, option);
+      expect(evaluation.status).toBe("excluded");
+      expect(evaluation.correct).toBe(false);
+      expect(evaluation.reason).toContain("only S3 (MX=0 has a nontrivial solution) is correct");
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
 });
