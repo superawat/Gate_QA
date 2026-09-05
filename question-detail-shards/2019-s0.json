@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T15:23:51.696Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2019-s0",
   "yearSetKey": "2019-s0",
   "yearSetIdentity": "cse:2019:set-0",
@@ -848,7 +848,7 @@
       "title": "GATE CSE 2019 | Question: 24",
       "year": "gatecse-2019",
       "link": "https://gateoverflow.in/302824/gate-cse-2019-question-24",
-      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main {\n        int arr={1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 5}, *ip=arr+4;\n        printf(“%d\\n”, ip[1]);\n        return 0;\n}</pre>\n<p>The number that will be displayed on execution of the program is _______</p>",
+      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main() {\n        int arr={1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 5}, *ip=arr+4;\n        printf(“%d\\n”, ip[1]);\n        return 0;\n}</pre>\n<p>The number that will be displayed on execution of the program is _______</p>",
       "tags": [
         "gatecse-2019",
         "numerical-answers",
@@ -927,7 +927,7 @@
       "title": "GATE CSE 2019 | Question: 27",
       "year": "gatecse-2019",
       "link": "https://gateoverflow.in/302821/gate-cse-2019-question-27",
-      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint r {\n       static int num=7;\n       return num--;\n}\nint main {\n       for (r;r;r)\n              printf(“%d”,r);\n       return 0;\n}</pre>\n<p>Which one of the following values will be displayed on execution of the programs?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$41$</li>\n<li>$52$</li>\n<li>$63$</li>\n<li>$630$</li>\n</ol>",
+      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint r {\n       static int num=7;\n       return num--;\n}\nint main() {\n       for (r;r;r)\n              printf(“%d”,r);\n       return 0;\n}</pre>\n<p>Which one of the following values will be displayed on execution of the programs?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$41$</li>\n<li>$52$</li>\n<li>$63$</li>\n<li>$630$</li>\n</ol>",
       "tags": [
         "gatecse-2019",
         "programming-in-c",
@@ -1569,7 +1569,7 @@
       "title": "GATE CSE 2019 | Question: 52",
       "year": "gatecse-2019",
       "link": "https://gateoverflow.in/302796/gate-cse-2019-question-52",
-      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main {\n    float sum = 0.0, j=1.0, i=2.0;\n    while (i/j &gt; 0.0625) {\n        j=j+j;\n        sum=sum+i/j;\n        printf(\"%f\\n\", sum);\n    }\n    return 0;\n}</pre>\n<p>The number of times the variable sum will be printed, when the above program is executed, is _________</p>",
+      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main() {\n    float sum = 0.0, j=1.0, i=2.0;\n    while (i/j &gt; 0.0625) {\n        j=j+j;\n        sum=sum+i/j;\n        printf(\"%f\\n\", sum);\n    }\n    return 0;\n}</pre>\n<p>The number of times the variable sum will be printed, when the above program is executed, is _________</p>",
       "tags": [
         "gatecse-2019",
         "numerical-answers",

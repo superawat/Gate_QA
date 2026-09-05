@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T15:23:51.696Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2018-s0",
   "yearSetKey": "2018-s0",
   "yearSetIdentity": "cse:2018:set-0",
@@ -288,7 +288,7 @@
       "title": "GATE CSE 2018 | Question: 2",
       "year": "gatecse-2018",
       "link": "https://gateoverflow.in/204076/gate-cse-2018-question-2",
-      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\nstruct Ournode{\n    char x, y, z;\n};\nint main {\n    struct Ournode p={'1', '0', 'a'+2};\n    struct Ournode *q=&amp;p;\n    printf(\"%c, %c\", *((char*)q+1), *((char*)q+2));\n    return 0;\n}</pre>\n<p>The output of this program is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>0, c</li>\n<li>0, a+2</li>\n<li>'0', 'a+2'</li>\n<li>'0', 'c'</li>\n</ol>",
+      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\nstruct Ournode{\n    char x, y, z;\n};\nint main() {\n    struct Ournode p={'1', '0', 'a'+2};\n    struct Ournode *q=&amp;p;\n    printf(\"%c, %c\", *((char*)q+1), *((char*)q+2));\n    return 0;\n}</pre>\n<p>The output of this program is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>0, c</li>\n<li>0, a+2</li>\n<li>'0', 'a+2'</li>\n<li>'0', 'c'</li>\n</ol>",
       "tags": [
         "gatecse-2018",
         "programming-in-c",
@@ -782,7 +782,7 @@
       "title": "GATE CSE 2018 | Question: 21",
       "year": "gatecse-2018",
       "link": "https://gateoverflow.in/204095/gate-cse-2018-question-21",
-      "question": "<p>Consider the following $\\text{C}$ program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nint counter=0;\n\nint calc (int a, int b) {\n        int c;\n        counter++;\n        if(b==3) return (a*a*a);\n        else {\n                c = calc(a, b/3);\n                return (c*c*c);\n        }\n}\n\nint main {\n        calc(4, 81);\n        printf(\"%d\", counter);\n}</pre>\n<p>The output of this program is ______.</p>",
+      "question": "<p>Consider the following $\\text{C}$ program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nint counter=0;\n\nint calc (int a, int b) {\n        int c;\n        counter++;\n        if(b==3) return (a*a*a);\n        else {\n                c = calc(a, b/3);\n                return (c*c*c);\n        }\n}\n\nint main() {\n        calc(4, 81);\n        printf(\"%d\", counter);\n}</pre>\n<p>The output of this program is ______.</p>",
       "tags": [
         "gatecse-2018",
         "programming-in-c",

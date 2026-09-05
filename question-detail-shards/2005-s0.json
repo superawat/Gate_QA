@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T15:23:51.696Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2005-s0",
   "yearSetKey": "2005-s0",
   "yearSetIdentity": "cse:2005:set-0",
@@ -749,7 +749,7 @@
       "title": "GATE CSE 2005 | Question: 31",
       "year": "gatecse-2005",
       "link": "https://gateoverflow.in/1367/gate-cse-2005-question-31",
-      "question": "<p>Consider the following C-program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">void foo (int n, int sum) {\n    int k = 0, j = 0;\n    if (n == 0) return;\n    k = n % 10; j = n/10;\n    sum = sum + k;\n    foo (j, sum);\n    printf (\"%d,\",k);\n}\n\nint main {\n    int a = 2048, sum = 0;\n    foo(a, sum);\n    printf(\"%d\\n\", sum);\n}</pre>\n<p>What does the above program print?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{8, 4, 0, 2, 14}$</p>\n</li>\n<li>\n<p>$\\text{8, 4, 0, 2, 0}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 14}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 0}$</p>\n</li>\n</ol>",
+      "question": "<p>Consider the following C-program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">void foo (int n, int sum) {\n    int k = 0, j = 0;\n    if (n == 0) return;\n    k = n % 10; j = n/10;\n    sum = sum + k;\n    foo (j, sum);\n    printf (\"%d,\",k);\n}\n\nint main() {\n    int a = 2048, sum = 0;\n    foo(a, sum);\n    printf(\"%d\\n\", sum);\n}</pre>\n<p>What does the above program print?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{8, 4, 0, 2, 14}$</p>\n</li>\n<li>\n<p>$\\text{8, 4, 0, 2, 0}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 14}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 0}$</p>\n</li>\n</ol>",
       "tags": [
         "gatecse-2005",
         "algorithms",
@@ -774,7 +774,7 @@
       "title": "GATE CSE 2005 | Question: 32",
       "year": "gatecse-2005",
       "link": "https://gateoverflow.in/1368/gate-cse-2005-question-32",
-      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">double foo (double);\t\t/* Line 1 */\nint main {\n    double da, db;\n    //input da\n    db = foo(da);\n}\ndouble foo (double a) {\n    return a;\n}</pre>\n<p>The above code compiled without any error or warning. If Line $1$ is deleted, the above code will show:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>no compile warning or error</p>\n</li>\n<li>\n<p>some compiler-warnings not leading to unintended results</p>\n</li>\n<li>\n<p>some compiler-warnings due to type-mismatch eventually leading to unintended results</p>\n</li>\n<li>\n<p>compiler errors</p>\n</li>\n</ol>",
+      "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">double foo (double);\t\t/* Line 1 */\nint main() {\n    double da, db;\n    //input da\n    db = foo(da);\n}\ndouble foo (double a) {\n    return a;\n}</pre>\n<p>The above code compiled without any error or warning. If Line $1$ is deleted, the above code will show:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>no compile warning or error</p>\n</li>\n<li>\n<p>some compiler-warnings not leading to unintended results</p>\n</li>\n<li>\n<p>some compiler-warnings due to type-mismatch eventually leading to unintended results</p>\n</li>\n<li>\n<p>compiler errors</p>\n</li>\n</ol>",
       "tags": [
         "gatecse-2005",
         "programming",
@@ -1475,7 +1475,7 @@
       "title": "GATE CSE 2005 | Question: 61",
       "year": "gatecse-2005",
       "link": "https://gateoverflow.in/4066/gate-cse-2005-question-61",
-      "question": "<p>Consider line number $3$ of the following C-program.</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int main {                /*Line 1 */\n    int I, N;               /*Line 2 */\n    fro (I=0, I&lt;N, I++);\t/*Line 3 */\n}</pre>\n<p>Identify the compiler’s response about this line while creating the object-module:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>No compilation error</li>\n<li>Only a lexical error</li>\n<li>Only syntactic errors</li>\n<li>Both lexical and syntactic errors</li>\n</ol>",
+      "question": "<p>Consider line number $3$ of the following C-program.</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int main() {                /*Line 1 */\n    int I, N;               /*Line 2 */\n    fro (I=0, I&lt;N, I++);\t/*Line 3 */\n}</pre>\n<p>Identify the compiler’s response about this line while creating the object-module:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>No compilation error</li>\n<li>Only a lexical error</li>\n<li>Only syntactic errors</li>\n<li>Both lexical and syntactic errors</li>\n</ol>",
       "tags": [
         "gatecse-2005",
         "compiler-design",
