@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T11:27:34.993Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2010-s0",
   "yearSetKey": "2010-s0",
   "yearSetIdentity": "cse:2010:set-0",
@@ -254,7 +254,7 @@
       "title": "GATE CSE 2010 | Question: 11",
       "year": "gatecse-2010",
       "link": "https://gateoverflow.in/2184/gate-cse-2010-question-11",
-      "question": "<p>What does the following program print?</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nvoid f(int *p, int *q) {\n    p=q;\n    *p=2;\n}\n\nint i=0, j=1;\n\nint main {\n    f(&amp;i, &amp;j);\n    printf(\"%d %d\\n\", i,j);\n    return 0;\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2 \\ 2$</li>\n<li>$2 \\ 1$</li>\n<li>$0 \\ 1$</li>\n<li>$0 \\ 2$</li>\n</ol>",
+      "question": "<p>What does the following program print?</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nvoid f(int *p, int *q) {\n    p=q;\n    *p=2;\n}\n\nint i=0, j=1;\n\nint main() {\n    f(&amp;i, &amp;j);\n    printf(\"%d %d\\n\", i,j);\n    return 0;\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2 \\ 2$</li>\n<li>$2 \\ 1$</li>\n<li>$0 \\ 1$</li>\n<li>$0 \\ 2$</li>\n</ol>",
       "tags": [
         "gatecse-2010",
         "programming",

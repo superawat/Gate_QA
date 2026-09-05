@@ -33,7 +33,7 @@
   --color-surface: #ffffff;
   --color-surface-muted: #f8fafc;
   --color-border: #e5e7eb;
-  --color-text: #0f172a;
+  --color-text: #1e293b;
   --color-text-muted: #475569;
   --color-accent: #0f766e;
   --color-accent-soft: #ccfbf1;
@@ -4619,5 +4619,88 @@ article code {
   animation: tracker-target-sway 0.8s ease-in-out infinite;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   GATEOVERFLOW-STYLE CODE BLOCK (Authentic GATE Exam Code Syntax)
+   Clean container with preserved whitespace, indentation, rounded borders,
+   and UNIFORM text color that matches the surrounding question text.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
+.gateqa-code-block,
+pre.prettyprint,
+.math-content pre {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1rem;
+  line-height: 1.65;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  tab-size: 4;
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  color: inherit !important;
+}
 
+/* Ensure code element and inner text strictly inherit the question text color */
+.gateqa-code-block code,
+.gateqa-code-block .gateqa-code-content,
+pre.prettyprint code,
+.math-content pre code {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Any nested elements inside the code block also inherit normal text color */
+.gateqa-code-block *,
+pre.prettyprint *,
+.math-content pre * {
+  color: inherit !important;
+}
+
+/* Preserve bold font-weight for intentional strong/b tags inside code blocks */
+.gateqa-code-block strong,
+.gateqa-code-block b,
+pre.prettyprint strong,
+pre.prettyprint b,
+.math-content pre strong,
+.math-content pre b {
+  font-weight: 700 !important;
+  color: inherit !important;
+}
+
+/* Dark Mode Theme */
+:root[data-theme="dark"] .gateqa-code-block,
+:root[data-theme="dark"] pre.prettyprint,
+:root[data-theme="dark"] .math-content pre,
+.dark .gateqa-code-block,
+.dark pre.prettyprint,
+.dark .math-content pre {
+  background-color: #161b22;
+  border-color: #30363d;
+  color: inherit !important;
+}
+
+:root[data-theme="dark"] .gateqa-code-block code,
+:root[data-theme="dark"] .gateqa-code-block .gateqa-code-content,
+:root[data-theme="dark"] pre.prettyprint code,
+:root[data-theme="dark"] .math-content pre code,
+:root[data-theme="dark"] .gateqa-code-block *,
+:root[data-theme="dark"] pre.prettyprint *,
+:root[data-theme="dark"] .math-content pre *,
+.dark .gateqa-code-block code,
+.dark .gateqa-code-block .gateqa-code-content,
+.dark pre.prettyprint code,
+.dark .math-content pre code,
+.dark .gateqa-code-block *,
+.dark pre.prettyprint *,
+.dark .math-content pre * {
+  color: inherit !important;
+}

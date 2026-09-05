@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T11:27:34.993Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2025-s2",
   "yearSetKey": "2025-s2",
   "yearSetIdentity": "cse:2025:set-2",
@@ -570,7 +570,7 @@
       "title": "GATE CSE 2025 | Set 2 | Question: 9",
       "year": "",
       "link": "https://gateoverflow.in/460826/gate-cse-2025-set-2-question-9",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460826\"></a><div itemprop=\"text\"><p>​​​​​Consider the following C program:</p><div><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nvoid stringcopy (char *, char *);\nint main {\n    char a[30] = \"@#Hello World!\";\n    stringcopy(a, a+2);\n    printf(\"%s\\n\",a);\n    return 0;\n}\nvoid stringcopy(char *s, char *t) {\nwhile (*t)\n    *s++=*t++;\n}</pre><p>Which one of the following will be the output of the program?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>@#Hello World!</li><li>Hello World!</li><li>ello World!</li><li>Hello World!d!</li></ol></div></div>\n</div>",
+      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460826\"></a><div itemprop=\"text\"><p>​​​​​Consider the following C program:</p><div><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nvoid stringcopy (char *, char *);\nint main() {\n    char a[30] = \"@#Hello World!\";\n    stringcopy(a, a+2);\n    printf(\"%s\\n\",a);\n    return 0;\n}\nvoid stringcopy(char *s, char *t) {\nwhile (*t)\n    *s++=*t++;\n}</pre><p>Which one of the following will be the output of the program?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>@#Hello World!</li><li>Hello World!</li><li>ello World!</li><li>Hello World!d!</li></ol></div></div>\n</div>",
       "tags": [
         "gatecse-2025-set2",
         "programming-in-c",
@@ -2061,7 +2061,7 @@
       "title": "GATE CSE 2025 | Set 2 | Question: 53",
       "year": "",
       "link": "https://gateoverflow.in/460840/gate-cse-2025-set-2-question-53",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460840\"></a><div itemprop=\"text\"><p>Consider the following C program:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int n) {\n    return (n+10);\n}\n\nint f(int n) {\n    return g(n*2);\n}\n\nint main {\n    int sum, n;\n    sum=0;\n    for (n=1; n&lt;3; n++)\n         sum += g(f(n));\n    printf (\"%d\", sum);\n    return 0;\n}</pre><p>The output of the given C program is ___________. (Answer in integer)</p></div>\n</div>",
+      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460840\"></a><div itemprop=\"text\"><p>Consider the following C program:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int n) {\n    return (n+10);\n}\n\nint f(int n) {\n    return g(n*2);\n}\n\nint main() {\n    int sum, n;\n    sum=0;\n    for (n=1; n&lt;3; n++)\n         sum += g(f(n));\n    printf (\"%d\", sum);\n    return 0;\n}</pre><p>The output of the given C program is ___________. (Answer in integer)</p></div>\n</div>",
       "tags": [
         "gatecse-2025-set2",
         "programming-in-c",

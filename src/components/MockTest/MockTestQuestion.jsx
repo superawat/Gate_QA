@@ -12,6 +12,7 @@ import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 import { cleanLatexHtml } from "../../utils/latexClean";
+import { formatCodeSnippets } from "../../utils/codeSnippet";
 
 const OPTION_LABELS = QuestionService.OPTION_LABELS;
 
@@ -186,13 +187,17 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const sanitizedQuestionHtml = useMemo(() => {
         try {
             const rawHtml = String(currentQuestion?.question || "");
-            const rawQuestionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawHtml))
-                .replace(/\n\n/g, "<br />")
-                .replace(/\n<li>/g, "<br><li>");
+            const rawQuestionHtml = formatCodeSnippets(
+                normalizeHtmlAssetUrls(cleanLatexHtml(rawHtml))
+                    .replace(/\n\n/g, "<br />")
+                    .replace(/\n<li>/g, "<br><li>")
+            );
             const questionHtmlForDisplay = displayOptions.length > 0
                 ? stripEmbeddedOptions(rawQuestionHtml)
                 : rawQuestionHtml;
-            return DOMPurify.sanitize(questionHtmlForDisplay || "");
+            return DOMPurify.sanitize(questionHtmlForDisplay || "", {
+                ADD_ATTR: ["data-lang", "style"],
+            });
         } catch {
             return DOMPurify.sanitize(String(currentQuestion?.question || ""));
         }
@@ -402,9 +407,11 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                 as="div"
                                 key={questionUid}
                                 dynamic
-                                className="mt-1 max-w-full overflow-auto whitespace-normal text-xl leading-6 text-gray-500"
+                                className="mt-1 max-w-full overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
                             >
-                                <div dangerouslySetInnerHTML={{ __html: sanitizedQuestionHtml }}></div>
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: sanitizedQuestionHtml }}
+                                ></div>
                             </MathContent>
                         </div>
 

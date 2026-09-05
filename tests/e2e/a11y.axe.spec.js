@@ -10,6 +10,7 @@ test.beforeEach(async ({ context }) => {
     window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
     window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
+    window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
   });
 });
 

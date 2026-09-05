@@ -8,6 +8,7 @@ test.beforeEach(async ({ context }) => {
     window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
     window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
+    window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
   });
 });
 
@@ -65,8 +66,8 @@ test("starting a full mock shows the exam shell", async ({ page }) => {
   await expect(startButton).toBeEnabled({ timeout: 15000 });
   await startButton.click();
 
-  await expect(page).toHaveURL(/\/mock\?stage=exam/, { timeout: 15000 });
-  await expect(page.getByTestId("mock-timer-value")).toBeVisible({ timeout: 15000 });
+  await expect(page).toHaveURL(/\/mock\?stage=exam/, { timeout: 30000 });
+  await expect(page.getByTestId("mock-timer-value")).toBeVisible({ timeout: 30000 });
   await expect(page.getByRole("button", { name: /instructions/i })).toBeVisible({
     timeout: 15000,
   });

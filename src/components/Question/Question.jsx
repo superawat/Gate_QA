@@ -8,6 +8,7 @@ import QuestionNotes from "./QuestionNotes";
 import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { cleanLatexHtml } from "../../utils/latexClean";
 import { getQuestionSolutionLink } from "../../utils/solutionLink";
+import { formatCodeSnippets } from "../../utils/codeSnippet";
 
 function Question({
   question = {},
@@ -22,10 +23,14 @@ function Question({
   const sanitizedQuestionHtml = useMemo(() => {
     const rawContent = question.question || "";
     if (!rawContent) return "";
-    const questionHtml = normalizeHtmlAssetUrls(cleanLatexHtml(rawContent))
-      .replace(/\n\n/g, "<br />")
-      .replace(/\n<li>/g, "<br><li>");
-    return DOMPurify.sanitize(questionHtml);
+    const questionHtml = formatCodeSnippets(
+      normalizeHtmlAssetUrls(cleanLatexHtml(rawContent))
+        .replace(/\n\n/g, "<br />")
+        .replace(/\n<li>/g, "<br><li>")
+    );
+    return DOMPurify.sanitize(questionHtml, {
+      ADD_ATTR: ["data-lang", "style"],
+    });
   }, [question.question_uid, question.question]);
 
   const isMalformed = question.malformed || !sanitizedQuestionHtml.trim();
@@ -82,7 +87,7 @@ function Question({
               key={question.question_uid || sanitizedQuestionHtml}
               as="div"
               dynamic
-              className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text-muted)]"
+              className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
             >
               <div
                 dangerouslySetInnerHTML={{

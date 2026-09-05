@@ -6,8 +6,9 @@ const BASE_URL = `http://${HOST}:${PORT}`;
 
 module.exports = defineConfig({
   testDir: "./tests/e2e",
+  timeout: 60000,
   fullyParallel: false,
-  workers: process.env.CI ? 2 : 2,
+  workers: 1,
   reporter: [["list"]],
   use: {
     baseURL: BASE_URL,

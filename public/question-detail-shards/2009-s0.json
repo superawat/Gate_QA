@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T11:27:34.993Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2009-s0",
   "yearSetKey": "2009-s0",
   "yearSetIdentity": "cse:2009:set-0",
@@ -427,7 +427,7 @@
       "title": "GATE CSE 2009 | Question: 18",
       "year": "gatecse-2009",
       "link": "https://gateoverflow.in/1310/gate-cse-2009-question-18",
-      "question": "<p>Consider the program below:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint fun(int n, int *f_p) {\n    int t, f;\n    if (n &lt;= 1) {\n        *f_p = 1;\n        return 1;\n    }\n    t = fun(n-1, f_p);\n    f = t + *f_p;\n    *f_p = t;\n    return f;\n}\n\nint main {\n    int x = 15;\n    printf(\"%d/n\", fun(5, &amp;x));\n    return 0;\n}\n</pre>\n<p>The value printed is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$6$</li>\n<li>$8$</li>\n<li>$14$</li>\n<li>$15$</li>\n</ol>",
+      "question": "<p>Consider the program below:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint fun(int n, int *f_p) {\n    int t, f;\n    if (n &lt;= 1) {\n        *f_p = 1;\n        return 1;\n    }\n    t = fun(n-1, f_p);\n    f = t + *f_p;\n    *f_p = t;\n    return f;\n}\n\nint main() {\n    int x = 15;\n    printf(\"%d/n\", fun(5, &amp;x));\n    return 0;\n}\n</pre>\n<p>The value printed is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$6$</li>\n<li>$8$</li>\n<li>$14$</li>\n<li>$15$</li>\n</ol>",
       "tags": [
         "gatecse-2009",
         "algorithms",

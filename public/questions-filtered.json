@@ -12391,7 +12391,7 @@
     "title": "GATE CSE 2005 | Question: 31",
     "year": "gatecse-2005",
     "link": "https://gateoverflow.in/1367/gate-cse-2005-question-31",
-    "question": "<p>Consider the following C-program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">void foo (int n, int sum) {\n    int k = 0, j = 0;\n    if (n == 0) return;\n    k = n % 10; j = n/10;\n    sum = sum + k;\n    foo (j, sum);\n    printf (\"%d,\",k);\n}\n\nint main {\n    int a = 2048, sum = 0;\n    foo(a, sum);\n    printf(\"%d\\n\", sum);\n}</pre>\n<p>What does the above program print?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{8, 4, 0, 2, 14}$</p>\n</li>\n<li>\n<p>$\\text{8, 4, 0, 2, 0}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 14}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 0}$</p>\n</li>\n</ol>",
+    "question": "<p>Consider the following C-program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">void foo (int n, int sum) {\n    int k = 0, j = 0;\n    if (n == 0) return;\n    k = n % 10; j = n/10;\n    sum = sum + k;\n    foo (j, sum);\n    printf (\"%d,\",k);\n}\n\nint main() {\n    int a = 2048, sum = 0;\n    foo(a, sum);\n    printf(\"%d\\n\", sum);\n}</pre>\n<p>What does the above program print?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>$\\text{8, 4, 0, 2, 14}$</p>\n</li>\n<li>\n<p>$\\text{8, 4, 0, 2, 0}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 14}$</p>\n</li>\n<li>\n<p>$\\text{2, 0, 4, 8, 0}$</p>\n</li>\n</ol>",
     "tags": [
       "gatecse-2005",
       "algorithms",
@@ -12404,7 +12404,7 @@
     "title": "GATE CSE 2005 | Question: 32",
     "year": "gatecse-2005",
     "link": "https://gateoverflow.in/1368/gate-cse-2005-question-32",
-    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">double foo (double);\t\t/* Line 1 */\nint main {\n    double da, db;\n    //input da\n    db = foo(da);\n}\ndouble foo (double a) {\n    return a;\n}</pre>\n<p>The above code compiled without any error or warning. If Line $1$ is deleted, the above code will show:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>no compile warning or error</p>\n</li>\n<li>\n<p>some compiler-warnings not leading to unintended results</p>\n</li>\n<li>\n<p>some compiler-warnings due to type-mismatch eventually leading to unintended results</p>\n</li>\n<li>\n<p>compiler errors</p>\n</li>\n</ol>",
+    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">double foo (double);\t\t/* Line 1 */\nint main() {\n    double da, db;\n    //input da\n    db = foo(da);\n}\ndouble foo (double a) {\n    return a;\n}</pre>\n<p>The above code compiled without any error or warning. If Line $1$ is deleted, the above code will show:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>\n<p>no compile warning or error</p>\n</li>\n<li>\n<p>some compiler-warnings not leading to unintended results</p>\n</li>\n<li>\n<p>some compiler-warnings due to type-mismatch eventually leading to unintended results</p>\n</li>\n<li>\n<p>compiler errors</p>\n</li>\n</ol>",
     "tags": [
       "gatecse-2005",
       "programming",
@@ -12754,7 +12754,7 @@
     "title": "GATE CSE 2005 | Question: 61",
     "year": "gatecse-2005",
     "link": "https://gateoverflow.in/4066/gate-cse-2005-question-61",
-    "question": "<p>Consider line number $3$ of the following C-program.</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int main {                /*Line 1 */\n    int I, N;               /*Line 2 */\n    fro (I=0, I&lt;N, I++);\t/*Line 3 */\n}</pre>\n<p>Identify the compiler’s response about this line while creating the object-module:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>No compilation error</li>\n<li>Only a lexical error</li>\n<li>Only syntactic errors</li>\n<li>Both lexical and syntactic errors</li>\n</ol>",
+    "question": "<p>Consider line number $3$ of the following C-program.</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int main() {                /*Line 1 */\n    int I, N;               /*Line 2 */\n    fro (I=0, I&lt;N, I++);\t/*Line 3 */\n}</pre>\n<p>Identify the compiler’s response about this line while creating the object-module:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>No compilation error</li>\n<li>Only a lexical error</li>\n<li>Only syntactic errors</li>\n<li>Both lexical and syntactic errors</li>\n</ol>",
     "tags": [
       "gatecse-2005",
       "compiler-design",
@@ -16482,7 +16482,7 @@
     "title": "GATE CSE 2009 | Question: 18",
     "year": "gatecse-2009",
     "link": "https://gateoverflow.in/1310/gate-cse-2009-question-18",
-    "question": "<p>Consider the program below:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint fun(int n, int *f_p) {\n    int t, f;\n    if (n &lt;= 1) {\n        *f_p = 1;\n        return 1;\n    }\n    t = fun(n-1, f_p);\n    f = t + *f_p;\n    *f_p = t;\n    return f;\n}\n\nint main {\n    int x = 15;\n    printf(\"%d/n\", fun(5, &amp;x));\n    return 0;\n}\n</pre>\n<p>The value printed is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$6$</li>\n<li>$8$</li>\n<li>$14$</li>\n<li>$15$</li>\n</ol>",
+    "question": "<p>Consider the program below:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint fun(int n, int *f_p) {\n    int t, f;\n    if (n &lt;= 1) {\n        *f_p = 1;\n        return 1;\n    }\n    t = fun(n-1, f_p);\n    f = t + *f_p;\n    *f_p = t;\n    return f;\n}\n\nint main() {\n    int x = 15;\n    printf(\"%d/n\", fun(5, &amp;x));\n    return 0;\n}\n</pre>\n<p>The value printed is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$6$</li>\n<li>$8$</li>\n<li>$14$</li>\n<li>$15$</li>\n</ol>",
     "tags": [
       "gatecse-2009",
       "algorithms",
@@ -17160,7 +17160,7 @@
     "title": "GATE CSE 2010 | Question: 11",
     "year": "gatecse-2010",
     "link": "https://gateoverflow.in/2184/gate-cse-2010-question-11",
-    "question": "<p>What does the following program print?</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nvoid f(int *p, int *q) {\n    p=q;\n    *p=2;\n}\n\nint i=0, j=1;\n\nint main {\n    f(&amp;i, &amp;j);\n    printf(\"%d %d\\n\", i,j);\n    return 0;\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2 \\ 2$</li>\n<li>$2 \\ 1$</li>\n<li>$0 \\ 1$</li>\n<li>$0 \\ 2$</li>\n</ol>",
+    "question": "<p>What does the following program print?</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nvoid f(int *p, int *q) {\n    p=q;\n    *p=2;\n}\n\nint i=0, j=1;\n\nint main() {\n    f(&amp;i, &amp;j);\n    printf(\"%d %d\\n\", i,j);\n    return 0;\n}</pre>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$2 \\ 2$</li>\n<li>$2 \\ 1$</li>\n<li>$0 \\ 1$</li>\n<li>$0 \\ 2$</li>\n</ol>",
     "tags": [
       "gatecse-2010",
       "programming",
@@ -28828,7 +28828,7 @@
     "title": "GATE CSE 2017 Set 2 | Question: 55",
     "year": "gatecse-2017-set2",
     "link": "https://gateoverflow.in/118335/gate-cse-2017-set-2-question-55",
-    "question": "<p>Consider the following C program.</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n#include&lt;string.h&gt;\nint main {\n    char* c=\"GATECSIT2017\";\n    char* p=c;\n    printf(\"%d\", (int)strlen(c+2[p]-6[p]-1));\n    return 0;\n}</pre>\n<p>The output of the program is _______</p>",
+    "question": "<p>Consider the following C program.</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n#include&lt;string.h&gt;\nint main() {\n    char* c=\"GATECSIT2017\";\n    char* p=c;\n    printf(\"%d\", (int)strlen(c+2[p]-6[p]-1));\n    return 0;\n}</pre>\n<p>The output of the program is _______</p>",
     "tags": [
       "gatecse-2017-set2",
       "programming-in-c",
@@ -28984,7 +28984,7 @@
     "title": "GATE CSE 2018 | Question: 2",
     "year": "gatecse-2018",
     "link": "https://gateoverflow.in/204076/gate-cse-2018-question-2",
-    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\nstruct Ournode{\n    char x, y, z;\n};\nint main {\n    struct Ournode p={'1', '0', 'a'+2};\n    struct Ournode *q=&amp;p;\n    printf(\"%c, %c\", *((char*)q+1), *((char*)q+2));\n    return 0;\n}</pre>\n<p>The output of this program is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>0, c</li>\n<li>0, a+2</li>\n<li>'0', 'a+2'</li>\n<li>'0', 'c'</li>\n</ol>",
+    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\nstruct Ournode{\n    char x, y, z;\n};\nint main() {\n    struct Ournode p={'1', '0', 'a'+2};\n    struct Ournode *q=&amp;p;\n    printf(\"%c, %c\", *((char*)q+1), *((char*)q+2));\n    return 0;\n}</pre>\n<p>The output of this program is:</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>0, c</li>\n<li>0, a+2</li>\n<li>'0', 'a+2'</li>\n<li>'0', 'c'</li>\n</ol>",
     "tags": [
       "gatecse-2018",
       "programming-in-c",
@@ -29238,7 +29238,7 @@
     "title": "GATE CSE 2018 | Question: 21",
     "year": "gatecse-2018",
     "link": "https://gateoverflow.in/204095/gate-cse-2018-question-21",
-    "question": "<p>Consider the following $\\text{C}$ program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nint counter=0;\n\nint calc (int a, int b) {\n        int c;\n        counter++;\n        if(b==3) return (a*a*a);\n        else {\n                c = calc(a, b/3);\n                return (c*c*c);\n        }\n}\n\nint main {\n        calc(4, 81);\n        printf(\"%d\", counter);\n}</pre>\n<p>The output of this program is ______.</p>",
+    "question": "<p>Consider the following $\\text{C}$ program:</p>\n<pre class=\"prettyprint lang-c_cpp\">#include&lt;stdio.h&gt;\n\nint counter=0;\n\nint calc (int a, int b) {\n        int c;\n        counter++;\n        if(b==3) return (a*a*a);\n        else {\n                c = calc(a, b/3);\n                return (c*c*c);\n        }\n}\n\nint main() {\n        calc(4, 81);\n        printf(\"%d\", counter);\n}</pre>\n<p>The output of this program is ______.</p>",
     "tags": [
       "gatecse-2018",
       "programming-in-c",
@@ -30126,7 +30126,7 @@
     "title": "GATE CSE 2019 | Question: 24",
     "year": "gatecse-2019",
     "link": "https://gateoverflow.in/302824/gate-cse-2019-question-24",
-    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main {\n        int arr={1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 5}, *ip=arr+4;\n        printf(“%d\\n”, ip[1]);\n        return 0;\n}</pre>\n<p>The number that will be displayed on execution of the program is _______</p>",
+    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main() {\n        int arr={1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 5}, *ip=arr+4;\n        printf(“%d\\n”, ip[1]);\n        return 0;\n}</pre>\n<p>The number that will be displayed on execution of the program is _______</p>",
     "tags": [
       "gatecse-2019",
       "numerical-answers",
@@ -30165,7 +30165,7 @@
     "title": "GATE CSE 2019 | Question: 27",
     "year": "gatecse-2019",
     "link": "https://gateoverflow.in/302821/gate-cse-2019-question-27",
-    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint r {\n       static int num=7;\n       return num--;\n}\nint main {\n       for (r;r;r)\n              printf(“%d”,r);\n       return 0;\n}</pre>\n<p>Which one of the following values will be displayed on execution of the programs?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$41$</li>\n<li>$52$</li>\n<li>$63$</li>\n<li>$630$</li>\n</ol>",
+    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint r {\n       static int num=7;\n       return num--;\n}\nint main() {\n       for (r;r;r)\n              printf(“%d”,r);\n       return 0;\n}</pre>\n<p>Which one of the following values will be displayed on execution of the programs?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$41$</li>\n<li>$52$</li>\n<li>$63$</li>\n<li>$630$</li>\n</ol>",
     "tags": [
       "gatecse-2019",
       "programming-in-c",
@@ -30485,7 +30485,7 @@
     "title": "GATE CSE 2019 | Question: 52",
     "year": "gatecse-2019",
     "link": "https://gateoverflow.in/302796/gate-cse-2019-question-52",
-    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main {\n    float sum = 0.0, j=1.0, i=2.0;\n    while (i/j &gt; 0.0625) {\n        j=j+j;\n        sum=sum+i/j;\n        printf(\"%f\\n\", sum);\n    }\n    return 0;\n}</pre>\n<p>The number of times the variable sum will be printed, when the above program is executed, is _________</p>",
+    "question": "<p>Consider the following C program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint main() {\n    float sum = 0.0, j=1.0, i=2.0;\n    while (i/j &gt; 0.0625) {\n        j=j+j;\n        sum=sum+i/j;\n        printf(\"%f\\n\", sum);\n    }\n    return 0;\n}</pre>\n<p>The number of times the variable sum will be printed, when the above program is executed, is _________</p>",
     "tags": [
       "gatecse-2019",
       "numerical-answers",
@@ -34963,7 +34963,7 @@
     "title": "GATE CSE 2024 | Set 1 | Question: 8",
     "year": "gatecse-2024-set1",
     "link": "https://gateoverflow.in/422834/gate-cse-2024-set-1-question-8",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422834\"></a><div itemprop=\"text\"><p>Consider the following $\\mathrm{C}$ program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\n#include &lt;stdio.h&gt;\n\nint main {\n\nint a=6;\n\nint b = 0;\n\nwhile (a&lt;10)   {\n\na = a / 12+1 ;\n\na += b ;}\n\nprintf (\"%d\", a);\n\nreturn 0 ; }</pre>\n<p>Which one of the following statements is CORRECT?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>The program prints $9$ as output</li>\n<li>The program prints $10$ as output</li>\n<li>The program gets stuck in an infinite loop</li>\n<li>The program prints $6$ as output</li>\n</ol></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422834\"></a><div itemprop=\"text\"><p>Consider the following $\\mathrm{C}$ program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">\n#include &lt;stdio.h&gt;\n\nint main() {\n\nint a=6;\n\nint b = 0;\n\nwhile (a&lt;10)   {\n\na = a / 12+1 ;\n\na += b ;}\n\nprintf (\"%d\", a);\n\nreturn 0 ; }</pre>\n<p>Which one of the following statements is CORRECT?</p>\n<ol start=\"1\" style=\"list-style-type:upper-alpha\">\n<li>The program prints $9$ as output</li>\n<li>The program prints $10$ as output</li>\n<li>The program gets stuck in an infinite loop</li>\n<li>The program prints $6$ as output</li>\n</ol></div>\n</div>",
     "tags": [
       "gatecse-2024-set1",
       "programming",
@@ -36077,7 +36077,7 @@
     "title": "GATE CSE 2024 | Set 2 | Question: 3",
     "year": "gatecse-2024-set2",
     "link": "https://gateoverflow.in/422894/gate-cse-2024-set-2-question-3",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422894\"></a><div itemprop=\"text\"><p>Consider the following $\\text{C}$ program. Assume parameters to a function are evaluated from<em> right to left.</em></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int p) { printf(\"%d\", p); return p; }\n\nint h(int q) { printf(\"%d\", q); return q; }\n\nvoid f(int x, int y) {\n\ng(x);\n\nh(y);\n\n}\n\nint main {\n\nf(g(10), h(20));\n\n}</pre><p>Which one of the following options is the CORRECT output of the above $\\text{C}$ program?</p><ol start=\"1\" style=\"list-style-type:upper-alpha\"><li>$20101020$</li><li>$10202010$</li><li>$20102010$</li><li>$10201020$</li></ol></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"422894\"></a><div itemprop=\"text\"><p>Consider the following $\\text{C}$ program. Assume parameters to a function are evaluated from<em> right to left.</em></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int p) { printf(\"%d\", p); return p; }\n\nint h(int q) { printf(\"%d\", q); return q; }\n\nvoid f(int x, int y) {\n\ng(x);\n\nh(y);\n\n}\n\nint main() {\n\nf(g(10), h(20));\n\n}</pre><p>Which one of the following options is the CORRECT output of the above $\\text{C}$ program?</p><ol start=\"1\" style=\"list-style-type:upper-alpha\"><li>$20101020$</li><li>$10202010$</li><li>$20102010$</li><li>$10201020$</li></ol></div>\n</div>",
     "tags": [
       "gatecse-2024-set2",
       "programming",
@@ -38324,7 +38324,7 @@
     "title": "GATE CSE 2025 | Set 1 | Question: 51",
     "year": "",
     "link": "https://gateoverflow.in/460029/gate-cse-2025-set-1-question-51",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460029\"></a><div itemprop=\"text\"><p> </p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint foo(int S,int size) {\n    if(size == 0) return 0;\n    if(size == 1) return 1;\n    if(S[0] != S[1]) return 1+foo(S+1,size-1);\n    return foo(S+1,size-1);\n}\nint main {\n    int A={0,1,2,2,2,0,0,1,1};\n    printf(\"%d\",foo(A,9));\n    return 0;\n}</pre><p>The value printed by the given $C$ program is ___________. (Answer in integer)</p></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460029\"></a><div itemprop=\"text\"><p> </p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint foo(int S,int size) {\n    if(size == 0) return 0;\n    if(size == 1) return 1;\n    if(S[0] != S[1]) return 1+foo(S+1,size-1);\n    return foo(S+1,size-1);\n}\nint main() {\n    int A={0,1,2,2,2,0,0,1,1};\n    printf(\"%d\",foo(A,9));\n    return 0;\n}</pre><p>The value printed by the given $C$ program is ___________. (Answer in integer)</p></div>\n</div>",
     "tags": [
       "gatecse-2025-set1",
       "programming-in-c",
@@ -38341,7 +38341,7 @@
     "title": "GATE CSE 2025 | Set 1 | Question: 52",
     "year": "",
     "link": "https://gateoverflow.in/460028/gate-cse-2025-set-1-question-52",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460028\"></a><div itemprop=\"text\"><p>Let $\\mathrm{LIST}$ be a datatype for an implementation of linked list defined as follows:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">typedef struct list {\nint data;\nstruct list *next;\n} LIST;</pre><p>Suppose a program has created two linked lists, $L1$ and $L2$, whose contents are given in the figure below (code for creating $L1$ and $L2$ is not provided here). $L1$ contains $9$ nodes, and $L2$ contains $7$ nodes.<br/><br/>Consider the following C program segment that modifies the list $L1$. The number of nodes that will be there in $L1$ after the execution of the code segment is __________. (Answer in integer)</p><p><img alt=\"\" height=\"129\" src=\"/Gate_QA/question-images/2598317740025000235.webp\" width=\"700\"/></p><p><img alt=\"\" height=\"109\" src=\"/Gate_QA/question-images/2779324448088887370.webp\" width=\"700\"/></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int find (int query, LIST *list) {\nwhile (list != NULL) {\nif(list-&gt;data == query) return 1 ;\nlist = list-&gt;next;\n}\nreturn 0 ;\n}\nint main {\n... ... ...\nptr1=L1; ptr2=L2;\nwhile (ptr1-&gt;next != NULL){\nquery = ptr1-&gt;next-&gt;data;\nif (find (query, L2))\nptr1-&gt;next = ptr1-&gt;next-&gt;next;\nelse ptr1 = ptr1-&gt;next;\n}\n... .... ...\nreturn 0;\n}\n</pre></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460028\"></a><div itemprop=\"text\"><p>Let $\\mathrm{LIST}$ be a datatype for an implementation of linked list defined as follows:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">typedef struct list {\nint data;\nstruct list *next;\n} LIST;</pre><p>Suppose a program has created two linked lists, $L1$ and $L2$, whose contents are given in the figure below (code for creating $L1$ and $L2$ is not provided here). $L1$ contains $9$ nodes, and $L2$ contains $7$ nodes.<br/><br/>Consider the following C program segment that modifies the list $L1$. The number of nodes that will be there in $L1$ after the execution of the code segment is __________. (Answer in integer)</p><p><img alt=\"\" height=\"129\" src=\"/Gate_QA/question-images/2598317740025000235.webp\" width=\"700\"/></p><p><img alt=\"\" height=\"109\" src=\"/Gate_QA/question-images/2779324448088887370.webp\" width=\"700\"/></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int find (int query, LIST *list) {\nwhile (list != NULL) {\nif(list-&gt;data == query) return 1 ;\nlist = list-&gt;next;\n}\nreturn 0 ;\n}\nint main() {\n... ... ...\nptr1=L1; ptr2=L2;\nwhile (ptr1-&gt;next != NULL){\nquery = ptr1-&gt;next-&gt;data;\nif (find (query, L2))\nptr1-&gt;next = ptr1-&gt;next-&gt;next;\nelse ptr1 = ptr1-&gt;next;\n}\n... .... ...\nreturn 0;\n}\n</pre></div>\n</div>",
     "tags": [
       "gatecse-2025-set1",
       "data-structures",
@@ -38770,7 +38770,7 @@
     "title": "GATE CSE 2025 | Set 2 | Question: 9",
     "year": "",
     "link": "https://gateoverflow.in/460826/gate-cse-2025-set-2-question-9",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460826\"></a><div itemprop=\"text\"><p>​​​​​Consider the following C program:</p><div><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nvoid stringcopy (char *, char *);\nint main {\n    char a[30] = \"@#Hello World!\";\n    stringcopy(a, a+2);\n    printf(\"%s\\n\",a);\n    return 0;\n}\nvoid stringcopy(char *s, char *t) {\nwhile (*t)\n    *s++=*t++;\n}</pre><p>Which one of the following will be the output of the program?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>@#Hello World!</li><li>Hello World!</li><li>ello World!</li><li>Hello World!d!</li></ol></div></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460826\"></a><div itemprop=\"text\"><p>​​​​​Consider the following C program:</p><div><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nvoid stringcopy (char *, char *);\nint main() {\n    char a[30] = \"@#Hello World!\";\n    stringcopy(a, a+2);\n    printf(\"%s\\n\",a);\n    return 0;\n}\nvoid stringcopy(char *s, char *t) {\nwhile (*t)\n    *s++=*t++;\n}</pre><p>Which one of the following will be the output of the program?</p><ol start=\"1\" style=\"list-style-type: upper-alpha;\"><li>@#Hello World!</li><li>Hello World!</li><li>ello World!</li><li>Hello World!d!</li></ol></div></div>\n</div>",
     "tags": [
       "gatecse-2025-set2",
       "programming-in-c",
@@ -39657,7 +39657,7 @@
     "title": "GATE CSE 2025 | Set 2 | Question: 53",
     "year": "",
     "link": "https://gateoverflow.in/460840/gate-cse-2025-set-2-question-53",
-    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460840\"></a><div itemprop=\"text\"><p>Consider the following C program:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int n) {\n    return (n+10);\n}\n\nint f(int n) {\n    return g(n*2);\n}\n\nint main {\n    int sum, n;\n    sum=0;\n    for (n=1; n&lt;3; n++)\n         sum += g(f(n));\n    printf (\"%d\", sum);\n    return 0;\n}</pre><p>The output of the given C program is ___________. (Answer in integer)</p></div>\n</div>",
+    "question": "<div class=\"qa-q-view-content\">\n<a name=\"460840\"></a><div itemprop=\"text\"><p>Consider the following C program:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int n) {\n    return (n+10);\n}\n\nint f(int n) {\n    return g(n*2);\n}\n\nint main() {\n    int sum, n;\n    sum=0;\n    for (n=1; n&lt;3; n++)\n         sum += g(f(n));\n    printf (\"%d\", sum);\n    return 0;\n}</pre><p>The output of the given C program is ___________. (Answer in integer)</p></div>\n</div>",
     "tags": [
       "gatecse-2025-set2",
       "programming-in-c",

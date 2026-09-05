@@ -1,5 +1,33 @@
 # Changelog
 
+- **GateOverflow-Style Code Block, C Syntax Auto-Repair & Typography Alignment (DEC-053)**:
+  - *Context*: User reported for question `go:422833` (GATE CSE 2024 Set 1 Q9, Programming in C): *"Ques can not be interpreted what the code is exactly missing parenthesis... in this code snippet FX IS FUNCTION BUT ITS PARANTHESIS IS NOT VISIBLE FX() . IMAGE OF GATEQA AND ORIGINAL QUESTION ATTACHED"*. The user also noted that an earlier data fix attempted on 2026-09-04 did not appear on `https://gateqa.in`. Subsequently requested aligning code block styling with GateOverflow, removing artificial IDE decorations, preserving uniform text colors, increasing code font size to equal text (`16px`), refining text contrast (`#1e293b`), and properly rendering `<strong>` tags as bold rather than raw HTML.
+  - *Root Cause Analysis*:
+    1. **Deployment Pipeline Failure**: Commit `7540f23b74` (2026-09-04) updated question data, but GitHub Actions CI run `33873287323` failed during `npm run test:e2e` because the `TrackerAnnouncementModal` overlay intercepted clicks and preview server worker contention caused 15s assertion timeouts. Because CI failed, GitHub Pages deployment was skipped, leaving the live site serving outdated shards from 2026-09-02.
+    2. **Unstyled Code & Literal HTML Tags**: `<pre>` blocks lacked GateOverflow styling. When code was escaped, HTML tags inside questions (such as `<strong>z = **ppz</strong>` in `go:483`) were converted into literal `&lt;strong&gt;` text rather than rendering as bold.
+    3. **Syntax Loss in Question Bank**: In `go:422833`, `go:422834`, and `go:483`, scraper and OCR artifacts stripped parentheses from function signatures (`void fX ;`, `int main {`, `void main\n{`, `getchar`).
+  - *Resolution*:
+    1. **Code Snippet Engine (`src/utils/codeSnippet.js`)**:
+       - Built `formatCodeSnippets(html)`: wraps code into `<pre class="gateqa-code-block prettyprint" data-lang="${lang}"><code>`. Protects intentional inline markup (`<strong>`, `<b>`, `<em>`, `<span style="...">`) so corrections and fill-in-the-blank blanks render as bold/underlined instead of literal text.
+       - Built `normalizeCodeText(code)`: restores missing parentheses for `void fX();`, `int main() {`, `void main()`, `getchar()`, and `!=`.
+    2. **GateOverflow-Style Styling & Typography (`src/index.css`)**:
+       - Replaced artificial IDE traffic lights with clean, authentic GateOverflow code container with rounded borders (`0.5rem`) and natural multi-line indentation.
+       - Code font size set to `1rem` (`16px`), matching the question body font size with `line-height: 1.65`.
+       - Enforced `color: inherit !important;` so code snippet text matches the exact color of surrounding question text.
+       - Refined `:root` text token to `--color-text: #1e293b` (balanced dark slate-800 between grey and black) and updated `Question.jsx` and `MockTestQuestion.jsx` to use `text-[color:var(--color-text)]`.
+       - In Dark Mode, container uses `#161b22` with `#30363d` border and `#f0f6fc` text.
+    3. **DOMPurify Sanitization**:
+       - Configured `ADD_ATTR: ["data-lang", "style"]` in `Question.jsx` and `MockTestQuestion.jsx`.
+    4. **CI/E2E Hardening**:
+       - Suppressed `TrackerAnnouncementModal` backdrop in `beforeEach` in `mock-test-flow.spec.js`, `practice-flow.spec.js`, and `a11y.axe.spec.js`.
+       - Raised navigation timeouts to 30s/60s and configured `workers: 1` in `playwright.config.cjs`.
+  - *Verification*:
+    - Unit tests: 12/12 passing in `codeSnippet.test.js`; 565/565 unit tests passing across 74 suites.
+    - Typecheck: 0 errors via `tsc --noEmit`.
+    - Production build: 1561 modules bundled, 3491 static SEO pages prerendered.
+    - Verified on `go:422833` and `go:483` in both Light and Dark modes.
+
+
 - **Question Data Integrity, Type Conversion & Defective Question Repair (DEC-052)**:
   - *Context*: Batch verification and repair across five GATE questions (`go:460062`, `go:460040`, `go:422866`, `go:3319`, `go:422833`):
   - *`go:460062` (GATE CSE 2025 Set 1 Q18 - Theory of Computation)*:

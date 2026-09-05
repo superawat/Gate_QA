@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T11:27:34.993Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2025-s1",
   "yearSetKey": "2025-s1",
   "yearSetIdentity": "cse:2025:set-1",
@@ -2022,7 +2022,7 @@
       "title": "GATE CSE 2025 | Set 1 | Question: 51",
       "year": "",
       "link": "https://gateoverflow.in/460029/gate-cse-2025-set-1-question-51",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460029\"></a><div itemprop=\"text\"><p> </p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint foo(int S,int size) {\n    if(size == 0) return 0;\n    if(size == 1) return 1;\n    if(S[0] != S[1]) return 1+foo(S+1,size-1);\n    return foo(S+1,size-1);\n}\nint main {\n    int A={0,1,2,2,2,0,0,1,1};\n    printf(\"%d\",foo(A,9));\n    return 0;\n}</pre><p>The value printed by the given $C$ program is ___________. (Answer in integer)</p></div>\n</div>",
+      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460029\"></a><div itemprop=\"text\"><p> </p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\nint foo(int S,int size) {\n    if(size == 0) return 0;\n    if(size == 1) return 1;\n    if(S[0] != S[1]) return 1+foo(S+1,size-1);\n    return foo(S+1,size-1);\n}\nint main() {\n    int A={0,1,2,2,2,0,0,1,1};\n    printf(\"%d\",foo(A,9));\n    return 0;\n}</pre><p>The value printed by the given $C$ program is ___________. (Answer in integer)</p></div>\n</div>",
       "tags": [
         "gatecse-2025-set1",
         "programming-in-c",
@@ -2053,7 +2053,7 @@
       "title": "GATE CSE 2025 | Set 1 | Question: 52",
       "year": "",
       "link": "https://gateoverflow.in/460028/gate-cse-2025-set-1-question-52",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460028\"></a><div itemprop=\"text\"><p>Let $\\mathrm{LIST}$ be a datatype for an implementation of linked list defined as follows:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">typedef struct list {\nint data;\nstruct list *next;\n} LIST;</pre><p>Suppose a program has created two linked lists, $L1$ and $L2$, whose contents are given in the figure below (code for creating $L1$ and $L2$ is not provided here). $L1$ contains $9$ nodes, and $L2$ contains $7$ nodes.<br/><br/>Consider the following C program segment that modifies the list $L1$. The number of nodes that will be there in $L1$ after the execution of the code segment is __________. (Answer in integer)</p><p><img alt=\"\" height=\"129\" src=\"/Gate_QA/question-images/2598317740025000235.webp\" width=\"700\"/></p><p><img alt=\"\" height=\"109\" src=\"/Gate_QA/question-images/2779324448088887370.webp\" width=\"700\"/></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int find (int query, LIST *list) {\nwhile (list != NULL) {\nif(list-&gt;data == query) return 1 ;\nlist = list-&gt;next;\n}\nreturn 0 ;\n}\nint main {\n... ... ...\nptr1=L1; ptr2=L2;\nwhile (ptr1-&gt;next != NULL){\nquery = ptr1-&gt;next-&gt;data;\nif (find (query, L2))\nptr1-&gt;next = ptr1-&gt;next-&gt;next;\nelse ptr1 = ptr1-&gt;next;\n}\n... .... ...\nreturn 0;\n}\n</pre></div>\n</div>",
+      "question": "<div class=\"qa-q-view-content\">\n<a name=\"460028\"></a><div itemprop=\"text\"><p>Let $\\mathrm{LIST}$ be a datatype for an implementation of linked list defined as follows:</p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">typedef struct list {\nint data;\nstruct list *next;\n} LIST;</pre><p>Suppose a program has created two linked lists, $L1$ and $L2$, whose contents are given in the figure below (code for creating $L1$ and $L2$ is not provided here). $L1$ contains $9$ nodes, and $L2$ contains $7$ nodes.<br/><br/>Consider the following C program segment that modifies the list $L1$. The number of nodes that will be there in $L1$ after the execution of the code segment is __________. (Answer in integer)</p><p><img alt=\"\" height=\"129\" src=\"/Gate_QA/question-images/2598317740025000235.webp\" width=\"700\"/></p><p><img alt=\"\" height=\"109\" src=\"/Gate_QA/question-images/2779324448088887370.webp\" width=\"700\"/></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int find (int query, LIST *list) {\nwhile (list != NULL) {\nif(list-&gt;data == query) return 1 ;\nlist = list-&gt;next;\n}\nreturn 0 ;\n}\nint main() {\n... ... ...\nptr1=L1; ptr2=L2;\nwhile (ptr1-&gt;next != NULL){\nquery = ptr1-&gt;next-&gt;data;\nif (find (query, L2))\nptr1-&gt;next = ptr1-&gt;next-&gt;next;\nelse ptr1 = ptr1-&gt;next;\n}\n... .... ...\nreturn 0;\n}\n</pre></div>\n</div>",
       "tags": [
         "gatecse-2025-set1",
         "data-structures",

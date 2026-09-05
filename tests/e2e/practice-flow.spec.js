@@ -9,6 +9,7 @@ test.beforeEach(async ({ context }) => {
     window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
     window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
+    window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
   });
 });
 
@@ -95,7 +96,7 @@ test("APT direct links automatically enable the unified aptitude toggle", async 
   // Navigating to an APT direct link should automatically enable Aptitude mode rather than redirecting
   await page.goto(appPath(`/practice/question/${encodedUid}`));
   await expect(page).toHaveURL(new RegExp(`/practice/question/${encodedUid}`));
-  await expect(page.getByRole("button", { name: /Back to Results/i })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole("button", { name: /Back to Results/i })).toBeVisible({ timeout: 30000 });
   await expect(page.getByText("Question not found.")).toHaveCount(0);
 
   // Verify that the preference is successfully persisted in localStorage

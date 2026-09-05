@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T11:27:34.993Z",
+  "generatedAt": "2026-09-05T08:49:13.062Z",
   "shardKey": "2024-s2",
   "yearSetKey": "2024-s2",
   "yearSetIdentity": "cse:2024:set-2",
@@ -352,7 +352,7 @@
       "title": "GATE CSE 2024 | Set 2 | Question: 3",
       "year": "gatecse-2024-set2",
       "link": "https://gateoverflow.in/422894/gate-cse-2024-set-2-question-3",
-      "question": "<div class=\"qa-q-view-content\">\n<a name=\"422894\"></a><div itemprop=\"text\"><p>Consider the following $\\text{C}$ program. Assume parameters to a function are evaluated from<em> right to left.</em></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int p) { printf(\"%d\", p); return p; }\n\nint h(int q) { printf(\"%d\", q); return q; }\n\nvoid f(int x, int y) {\n\ng(x);\n\nh(y);\n\n}\n\nint main {\n\nf(g(10), h(20));\n\n}</pre><p>Which one of the following options is the CORRECT output of the above $\\text{C}$ program?</p><ol start=\"1\" style=\"list-style-type:upper-alpha\"><li>$20101020$</li><li>$10202010$</li><li>$20102010$</li><li>$10201020$</li></ol></div>\n</div>",
+      "question": "<div class=\"qa-q-view-content\">\n<a name=\"422894\"></a><div itemprop=\"text\"><p>Consider the following $\\text{C}$ program. Assume parameters to a function are evaluated from<em> right to left.</em></p><pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">#include &lt;stdio.h&gt;\n\nint g(int p) { printf(\"%d\", p); return p; }\n\nint h(int q) { printf(\"%d\", q); return q; }\n\nvoid f(int x, int y) {\n\ng(x);\n\nh(y);\n\n}\n\nint main() {\n\nf(g(10), h(20));\n\n}</pre><p>Which one of the following options is the CORRECT output of the above $\\text{C}$ program?</p><ol start=\"1\" style=\"list-style-type:upper-alpha\"><li>$20101020$</li><li>$10202010$</li><li>$20102010$</li><li>$10201020$</li></ol></div>\n</div>",
       "tags": [
         "gatecse-2024-set2",
         "programming",
