@@ -360,7 +360,7 @@ const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
         attemptMeta?.isDa
         || attemptMeta?.track === "da"
         || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
-        || (questions || []).some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:"))
+        || (attemptMeta?.track !== "cse" && (questions || []).filter((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:")).length > (questions || []).length / 2)
     );
     const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
 

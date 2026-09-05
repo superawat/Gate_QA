@@ -1,5 +1,83 @@
 # Changelog
 
+- **Mock Test Custom Builder 3-Level Taxonomy Hierarchy & Crash Resolution (DEC-056)**:
+  - *Context*: User reported: (1) Clicking on any subject checkbox in Custom Mock Builder led to the Error Boundary crash ("Something went wrong"); (2) Subjects lacked topic grouping and DA subjects displayed 0 subtopics; (3) Requested strict 3-level hierarchy: `Subject: Topics: Subtopics` mirroring the syllabus and filters section.
+  - *Root Cause Analysis*:
+    1. **Setup Crash on Subject Click**: `MockTestShell.jsx` (line 769) referenced `LEGACY_SUBJECT_SLUG` during candidate question pool filtering when a subject was selected. However, `LEGACY_SUBJECT_SLUG` was only defined in `MockTestSetup.jsx`, throwing `ReferenceError: LEGACY_SUBJECT_SLUG is not defined` on any subject checkbox toggle.
+    2. **Missing Level 2 Topics**: Custom Builder rendered an unorganized flat list of subtopics directly under the subject rather than following the official GATE syllabus taxonomy (`Subject` -> `Topics` -> `Subtopics`).
+    3. **Missing DA Subtopics**: `DaQuestionService.ts` initialized `structuredSubtopics` as an empty object `{}`, causing all Data Science & AI subjects to report 0 subtopics.
+  - *Resolution*:
+    1. **Crash Resolution (`src/components/MockTest/MockTestShell.jsx`)**:
+       - Defined `const LEGACY_SUBJECT_SLUG = "legacy-other";` in `MockTestShell.jsx`.
+       - Enhanced candidate question filtering to match questions across subject, topic, and subtopic tags via `getSubjectAllSubtopicSlugs`.
+    2. **Taxonomy Hierarchy Engine (`src/utils/mockTaxonomyHierarchy.js`)**:
+       - Created bridge connecting canonical syllabus nodes from `src/data/trackerTaxonomy.ts` (`CSE_SUBJECTS` and `DA_SUBJECTS`) with live `FilterContext` subtopics.
+       - Implemented `getSubjectHierarchy(subject, rawStructuredSubtopics)` returning structured `TopicNode[]` with nested `SubtopicNode[]` for CSE, DA, Discrete Mathematics, and legacy topics.
+       - Added comprehensive test suite in `src/utils/mockTaxonomyHierarchy.test.js` (7 unit tests).
+    3. **DA Subtopic Population (`src/services/DaQuestionService.ts`)**:
+       - Populated `structuredSubtopics` from `TAXONOMY_DA_SUBJECTS`, ensuring Machine Learning, AI, Probability & Statistics, etc. provide their complete canonical subtopic lists.
+    4. **3-Level Hierarchy UI Component (`src/components/MockTest/MockTestSetup.jsx`)**:
+       - Built `SubjectHierarchyCard` with 3 distinct levels:
+         - **Level 1 (Subject)**: Checkbox, status badge, "Topics (N)" expand button, "Select All" / "Clear All" bulk toggle.
+         - **Level 2 (Topics)**: Indeterminate/checked topic checkbox (bulk-toggles all subtopics in topic), topic title with subtopic count, "Subtopics (N)" expand button, "Expand/Collapse all" shortcut.
+         - **Level 3 (Subtopics)**: Individual subtopic checkboxes with auto-selection of parent subject.
+       - Styled with track-specific tones: Sky (`sky`) for CSE, Indigo (`indigo`) for DA, and Emerald (`emerald`) for Aptitude.
+  - *Verification*:
+    - Unit tests: All 79 tests in `src/components/MockTest/` and 7 tests in `src/utils/mockTaxonomyHierarchy.test.js` pass.
+    - TypeScript: 0 errors via `npm run typecheck`.
+    - Browser Subagent: Verified on `http://localhost:5173/mock?stage=setup` that clicking subject checkboxes operates without errors, Level 2 Topics and Level 3 Subtopics expand smoothly, and DA topics/subtopics render accurately.
+
+
+- **Custom Mock Builder Subject Subtopics & Canonical Taxonomy Resolution (DEC-055)**:
+  - *Context*: User reported that in the Custom Builder setup under "Computer Science / CSE", the 12 subjects (Algorithms, Compiler Design, Databases, Discrete Mathematics, Operating System, Programming in C, CO & Architecture, Computer Networks, Digital Logic, Engineering Mathematics, Programming and DS, Theory of Computation) showed only checkboxes with no subtopics or topics lists.
+  - *Root Cause Analysis*:
+    1. **Subject Slug Mismatch**: `MockTestShell.jsx` generated mock subject options using ad-hoc slugification `slugifyMockFilterToken(question.subjectSlug || question.subject)`, producing non-canonical slugs like `operating-system`, `databases`, `computer-networks`, `co-and-architecture`, `compiler-design`, `discrete-mathematics`, `engineering-mathematics`, `programming-and-ds`, `programming-in-c`, `theory-of-computation`. Meanwhile, `QuestionService.getStructuredTags()` and `FilterContext` keyed subtopics by canonical taxonomy slugs (`os`, `dbms`, `cn`, `coa`, `compiler`, `discrete-math`, `engg-math`, `prog-ds`, `prog-c`, `toc`). Thus, `structuredSubtopics[subject.slug]` returned `undefined` for 10 out of 12 CSE subjects.
+    2. **Orphaned Subtopics Purge**: In `MockTestShell.jsx`, `patchSetupState` purged subtopics against `allSubtopicsBySubject[subjectSlug]`. Because non-canonical slugs had no entries, any selected subtopics were instantly cleared.
+    3. **Missing Auto-Expansion**: Subtopics were gated behind a single string `expandedSubjectSlug` that was not set when toggling subject checkboxes, unlike the Filters section (`TopicFilter.tsx`).
+  - *Resolution*:
+    1. **Canonical Taxonomy Normalization (`src/utils/mockTest.js`)**: Added `CANONICAL_CSE_SUBJECT_SLUG_MAP` to map all aliases to canonical taxonomy slugs (`os`, `dbms`, `cn`, `coa`, etc.), and updated `normalizeMockSubjectKey` and `getMockQuestionSubjectKey`.
+    2. **Shell Synchronization (`src/components/MockTest/MockTestShell.jsx`)**: Added `CANONICAL_CSE_SUBJECT_LABELS`, updated `buildSubjectOptions` to pre-populate from `structuredTags.subjects`, and normalized subject keys in pool filtering, subtopic narrowing, and orphaned subtopic validation.
+    3. **Custom Builder UI & Interaction (`src/components/MockTest/MockTestSetup.jsx`)**:
+       - Added resilient `getSubtopicsForSubject` with canonical resolution and fallback to `TOPIC_HIERARCHY` from `SubjectTaxonomy.ts`.
+       - Maintained `expandedSubjectSlugs` state (`Set<string>`) allowing independent multi-subject expansion.
+       - Checking a subject auto-expands its subtopics matching `TopicFilter.tsx`.
+       - Provided dedicated `Subtopics (N)` / `Hide` buttons for all subjects with subtopics, allowing users to inspect and select subtopics before or after selecting the subject.
+       - Provided `Select All` / `Clear All` bulk toggle buttons for subtopics.
+       - Checking a subtopic auto-selects the parent subject.
+  - *Verification*:
+    - Unit tests: Added tests in `MockTestTwoSection.test.jsx`; all 571 unit tests across 75 test files passed.
+    - TypeScript: 0 errors via `npm run typecheck`.
+    - Browser Subagent: Visual verification confirmed all 12 CSE subjects display `Subtopics (N)` buttons, expand properly with subtopic checkboxes, and display `Hide` and `Select All` buttons.
+
+- **Custom Mock Builder Discipline Toggles & Two-Section Invariant Architecture (DEC-054)**:
+  - *Context*: User requested: (1) Modernized Custom Mock Builder UI with dedicated ON/OFF toggles for GATE Computer Science (CSE) and GATE Data Science & AI (DA), including quick "Select All" / "Clear All" shortcuts; (2) In Mock Test UI, strictly two sections: Section 1 General Aptitude (GA), Section 2 Core Discipline (CS - labeled "Computer Science and Information Technology" for CSE, or "Data Science and AI" for DA); (3) Do not put technical subject questions into General Aptitude; (4) If 0 General Aptitude questions after custom selection (e.g. GA toggle turned off or pure subject test selected), make the GA section tab disabled and unpressable.
+  - *Root Cause Analysis*:
+    1. **Mislabeled Core Section Tab**: `MockTestHeader` and `MockTestResults` relied on `csQuestions.some(isDaQuestion)`. When Custom Builder ran on "All subjects" or mixed pools, a single DA question in the overall pool or candidate list flipped `isDa` to `true`, causing pure CSE tests (e.g. Binary Tree traversals) to be labeled as "Data Science and AI".
+    2. **Missing Granular Track Controls**: Custom Builder lacked dedicated ON/OFF toggles for CSE and DA tracks and an explicit toggle for General Aptitude, making it difficult to generate pure single-subject tests or pure CSE/DA tests without General Aptitude.
+    3. **GA Section Leakage & Active Empty Tab**: When no GA questions were selected, the GA tab remained active in the mock header despite having 0 questions, causing disorientation.
+  - *Resolution*:
+    1. **Track Toggles & Custom Builder UI (`MockTestSetup.jsx`)**:
+       - Built accessible `ToggleSwitch` component with distinct color accents (`sky-600` for CSE, `indigo-600` for DA, `emerald-600` for GA).
+       - Added **GATE Computer Science (CSE & IT)** card (Sky theme) with ON/OFF toggle, status badges, "Select All" / "Clear All" buttons, and subject accordions.
+       - Added **GATE Data Science & AI (DA)** card (Indigo theme) with ON/OFF toggle, status badges, "Select All" / "Clear All" buttons, and subject accordions.
+       - Added **General Aptitude (GA)** card (Emerald theme) with ON/OFF toggle and optional aptitude category narrowing.
+    2. **Pool Filtering & Strict Section Classification (`MockTestShell.jsx`)**:
+       - Implemented `isTrueGaQuestion(question, questionMeta)` to strictly prevent technical subject questions (Algorithms, OS, DBMS, Engineering Math, Machine Learning, AI, etc.) from ever being classified into GA.
+       - Enhanced `splitByCatalogSection` to cleanly separate true GA questions from core discipline questions.
+       - Enforced `enabledTracks` and `includeGeneralAptitude` across custom pool scoping.
+       - Refined `isDa` determination in `handleStartExam` based on active track and question majority (`daCount >= cseCount`).
+       - Set initial exam section `startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS"`.
+    3. **Two-Section Invariant & Unpressable GA Tab (`MockTestHeader.jsx`)**:
+       - Strictly renders two section tabs: Section 1 (GA) and Section 2 (CS & IT / DA & AI).
+       - When `sectionQuestionUids.GA.length === 0`, GA tab button is `disabled={true}`, styled with `opacity-40 cursor-not-allowed pointer-events-none select-none`, and has tooltip `"No General Aptitude questions in this mock test"`.
+       - Title reflects `coreSectionFullName` ("Computer Science and Information Technology" or "Data Science and AI").
+    4. **Results Alignment (`MockTestResults.jsx`)**:
+       - Cleaned up DA detection in results to align with `attemptMeta.isDa` and `attemptMeta.track`.
+  - *Verification*:
+    - Unit tests: Added `MockTestTwoSection.test.jsx` (5/5 tests passing); all 567 unit tests across 75 test files passing.
+    - Typecheck: 0 errors via `tsc -p tsconfig.json --noEmit`.
+    - Browser Subagent: Verified Custom Builder track toggles, turning GA OFF, starting 15-question exam, and confirming that the GA tab is disabled/unpressable and Section 2 displays "Computer Science and Information Technology".
+
 - **GateOverflow-Style Code Block, C Syntax Auto-Repair & Typography Alignment (DEC-053)**:
   - *Context*: User reported for question `go:422833` (GATE CSE 2024 Set 1 Q9, Programming in C): *"Ques can not be interpreted what the code is exactly missing parenthesis... in this code snippet FX IS FUNCTION BUT ITS PARANTHESIS IS NOT VISIBLE FX() . IMAGE OF GATEQA AND ORIGINAL QUESTION ATTACHED"*. The user also noted that an earlier data fix attempted on 2026-09-04 did not appear on `https://gateqa.in`. Subsequently requested aligning code block styling with GateOverflow, removing artificial IDE decorations, preserving uniform text colors, increasing code font size to equal text (`16px`), refining text contrast (`#1e293b`), and properly rendering `<strong>` tags as bold rather than raw HTML.
   - *Root Cause Analysis*:

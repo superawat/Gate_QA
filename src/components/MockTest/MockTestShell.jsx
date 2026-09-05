@@ -13,9 +13,11 @@ import {
     filterMockQuestionsByScope,
     getMockQuestionSubjectKey,
     getMockQuestionYearSetIdentity,
+    normalizeMockSubjectKey,
     validateMockQuestionForPool,
 } from "../../utils/mockTest";
 import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
+import { getSubjectAllSubtopicSlugs } from "../../utils/mockTaxonomyHierarchy";
 import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
 import CalculatorWidget from "../Calculator/CalculatorWidget";
@@ -88,12 +90,32 @@ const slugifyToken = (value = "") => (
         .replace(/^-+|-+$/g, "")
 );
 
+const CANONICAL_CSE_SUBJECT_LABELS = {
+    algorithms: "Algorithms",
+    coa: "CO & Architecture",
+    compiler: "Compiler Design",
+    cn: "Computer Networks",
+    dbms: "Databases",
+    "digital-logic": "Digital Logic",
+    "discrete-math": "Discrete Mathematics",
+    "engg-math": "Engineering Mathematics",
+    ga: "General Aptitude",
+    os: "Operating System",
+    "prog-ds": "Programming and DS",
+    "prog-c": "Programming in C",
+    toc: "Theory of Computation",
+    "legacy-other": "Other / Optional",
+};
+
 const getQuestionSubjectKey = (question = {}) => getMockQuestionSubjectKey(question);
 
-const getQuestionSubjectLabel = (question = {}) => (
-    String(question?.subjectLabel || question?.subject || getQuestionSubjectKey(question)).trim()
-    || getQuestionSubjectKey(question)
-);
+const getQuestionSubjectLabel = (question = {}) => {
+    const key = getQuestionSubjectKey(question);
+    if (CANONICAL_CSE_SUBJECT_LABELS[key]) {
+        return CANONICAL_CSE_SUBJECT_LABELS[key];
+    }
+    return String(question?.subjectLabel || question?.subject || key).trim() || key;
+};
 
 const getQuestionSubtopicKey = (question = {}) => {
     const firstSubtopic = Array.isArray(question?.subtopics) ? question.subtopics[0] : null;
@@ -210,7 +232,8 @@ const formatSectionRequirement = (gaCount, csCount, questionCount = null) => {
     return `${gaCount} GA / ${csCount} CS (${total} Questions)`;
 };
 
-const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning"]);
+const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning", "general-aptitude", "ga"]);
+const LEGACY_SUBJECT_SLUG = "legacy-other";
 
 const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYearSetKey = "") => ({
     minYear,
@@ -218,6 +241,8 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     yearFilterMode: "all",
     yearRangeStart: minYear,
     yearRangeEnd: maxYear,
+    enabledTracks: ["cse"],
+    includeGeneralAptitude: true,
     selectedSubjects: [],
     selectedSubtopics: [],
     expandedSubjectSlug: null,
@@ -229,18 +254,57 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     customDurationMinutes: 180,
 });
 
+const isTrueGaQuestion = (question, questionMeta = null) => {
+    const uid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
+    if (uid.startsWith(APTITUDE_UID_PREFIX) || uid.startsWith("ga:")) {
+        return true;
+    }
+    const subject = String(question?.subject || questionMeta?.subject || "").trim().toLowerCase();
+    const subjectSlug = String(question?.subjectSlug || questionMeta?.subjectSlug || "").trim().toLowerCase();
+
+    // Known technical subjects must NEVER be classified as General Aptitude
+    const isTechnicalSubject = [
+        "algorithms", "co & architecture", "compiler design", "computer networks",
+        "databases", "digital logic", "discrete mathematics", "engineering mathematics",
+        "operating system", "programming and ds", "programming in c", "theory of computation",
+        "artificial intelligence", "calculus & optimization", "dbms & warehousing",
+        "linear algebra", "machine learning", "probability & statistics"
+    ].includes(subject) || [
+        "algorithms", "co-and-architecture", "compiler-design", "computer-networks",
+        "databases", "digital-logic", "discrete-mathematics", "engineering-mathematics",
+        "operating-system", "programming-and-ds", "programming-in-c", "theory-of-computation",
+        "artificial-intelligence", "calculus-and-optimization", "dbms-and-warehousing",
+        "linear-algebra", "machine-learning", "probability-and-statistics"
+    ].includes(subjectSlug);
+
+    if (isTechnicalSubject) {
+        return false;
+    }
+
+    if (
+        subject === "general aptitude"
+        || subjectSlug === "general-aptitude"
+        || subjectSlug === "ga"
+        || subjectSlug === "da:general-aptitude"
+        || APTITUDE_SUBJECT_SLUGS.has(subjectSlug)
+    ) {
+        return true;
+    }
+
+    const section = questionMeta?.section || question?.section;
+    return section === "GA";
+};
+
 const splitByCatalogSection = (rows = [], questionMetaByUid = {}) => {
     const gaQuestions = [];
     const csQuestions = [];
 
     rows.forEach((question) => {
         const questionUid = String(question?.question_uid || "").trim();
-        const section = questionMetaByUid[questionUid]?.section;
-        if (section === "GA") {
+        const questionMeta = questionMetaByUid[questionUid];
+        if (isTrueGaQuestion(question, questionMeta)) {
             gaQuestions.push(question);
-            return;
-        }
-        if (section === "CS" || section === "DA" || (!section && question?.subject !== "General Aptitude")) {
+        } else {
             csQuestions.push(question);
         }
     });
@@ -283,8 +347,19 @@ const resolveCountBasedSectionTargets = (count = 0, gaAvailable = 0, csAvailable
     return { gaTarget, csTarget };
 };
 
-const buildSubjectOptions = (rows = []) => {
+const buildSubjectOptions = (rows = [], structuredTags = {}) => {
     const bySlug = new Map();
+    const baseSubjects = Array.isArray(structuredTags?.subjects) ? structuredTags.subjects : [];
+    baseSubjects.forEach((sub) => {
+        if (!sub?.slug) return;
+        const normSlug = normalizeMockSubjectKey(sub.slug);
+        bySlug.set(normSlug, {
+            slug: normSlug,
+            label: CANONICAL_CSE_SUBJECT_LABELS[normSlug] || sub.label || normSlug,
+            count: 0,
+        });
+    });
+
     rows.forEach((question) => {
         const slug = getQuestionSubjectKey(question);
         if (!slug) {
@@ -571,8 +646,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     );
 
     const mockSubjects = useMemo(
-        () => buildSubjectOptions(scorableQuestions),
-        [scorableQuestions]
+        () => buildSubjectOptions(scorableQuestions, structuredTags),
+        [scorableQuestions, structuredTags]
     );
 
     const selectedPaperYearSetKey = useMemo(() => {
@@ -611,10 +686,14 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const customRangeEnd = Math.max(customRangeStart, Math.min(maxYear, clampYear(setupState.yearRangeEnd, maxYear)));
         const selectedTypeSet = new Set(selectedSetupTypes);
 
-        const scopedQuestions = filterMockQuestionsByScope(generatedScorableQuestions, {
-            selectedSubjects: setupState.selectedSubjects,
-            selectedSubtopics: setupState.selectedSubtopics,
-        });
+        const isCustom = selectedKind?.id === "custom";
+
+        const scopedQuestions = !isCustom
+            ? filterMockQuestionsByScope(generatedScorableQuestions, {
+                selectedSubjects: setupState.selectedSubjects,
+                selectedSubtopics: setupState.selectedSubtopics,
+            })
+            : generatedScorableQuestions;
 
         return scopedQuestions.filter((question) => {
             const questionUid = String(question?.question_uid || "").trim();
@@ -645,13 +724,86 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 }
             }
 
+            if (isCustom) {
+                const enabledTracks = Array.isArray(setupState.enabledTracks)
+                    ? setupState.enabledTracks
+                    : ["cse"];
+                const isCseTrackEnabled = enabledTracks.includes("cse");
+                const isDaTrackEnabled = enabledTracks.includes("da");
+                const isAptitudeTrackEnabled = setupState.includeGeneralAptitude !== false;
+
+                const isGa = isTrueGaQuestion(question, questionMeta);
+                const isDa = !isGa && (isDaQuestion(question) || String(questionUid).startsWith("da:"));
+                const isCse = !isGa && !isDa;
+
+                // 1. Discipline Track Gating: If track is OFF, question is strictly excluded
+                if (isGa && !isAptitudeTrackEnabled) {
+                    return false;
+                }
+                if (isDa && !isDaTrackEnabled) {
+                    return false;
+                }
+                if (isCse && !isCseTrackEnabled) {
+                    return false;
+                }
+
+                // 2. Subject-level narrowing within enabled tracks
+                const selectedSubjects = Array.isArray(setupState.selectedSubjects) ? setupState.selectedSubjects : [];
+                const questionSubjectKey = getQuestionSubjectKey(question);
+
+                if (selectedSubjects.length > 0) {
+                    if (isGa) {
+                        const gaSelected = selectedSubjects.filter(
+                            (s) => s === "general-aptitude" || s === "ga" || s === "da:general-aptitude" || APTITUDE_SUBJECT_SLUGS.has(s)
+                        ).map(normalizeMockSubjectKey);
+                        if (gaSelected.length > 0 && !gaSelected.includes(questionSubjectKey)) {
+                            return false;
+                        }
+                    } else if (isDa) {
+                        const daSelected = selectedSubjects.filter((s) => s.startsWith("da:"));
+                        if (daSelected.length > 0 && !daSelected.includes(questionSubjectKey)) {
+                            return false;
+                        }
+                    } else if (isCse) {
+                        const cseSelected = selectedSubjects.filter(
+                            (s) => !s.startsWith("da:") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG
+                        ).map(normalizeMockSubjectKey);
+                        if (cseSelected.length > 0 && !cseSelected.includes(questionSubjectKey)) {
+                            return false;
+                        }
+                    }
+                }
+
+                // 3. Subtopic-level narrowing (if any subtopics are selected for this subject)
+                const selectedSubtopics = Array.isArray(setupState.selectedSubtopics) ? setupState.selectedSubtopics : [];
+                if (selectedSubtopics.length > 0) {
+                    const subjectSubtopics = (structuredTags?.structuredSubtopics?.[questionSubjectKey] || []).map((st) => st?.slug).filter(Boolean);
+                    const taxSubtopics = Array.from(getSubjectAllSubtopicSlugs({ slug: questionSubjectKey }, structuredTags?.structuredSubtopics));
+                    const allSubjectSubtopicSlugs = new Set([...subjectSubtopics, ...taxSubtopics]);
+                    const hasSelectedSubtopicsForThisSubject = selectedSubtopics.some((s) => allSubjectSubtopicSlugs.has(s));
+                    if (hasSelectedSubtopicsForThisSubject) {
+                        const questionSubtopics = Array.isArray(question?.subtopics) ? question.subtopics.map((st) => st?.slug).filter(Boolean) : [];
+                        if (question?.subtopic) questionSubtopics.push(question.subtopic);
+                        const tagSlugs = Array.isArray(question?.tags) ? question.tags.map((t) => slugifyToken(t)) : [];
+                        const allCandidateSubtopicSlugs = new Set([...questionSubtopics, ...tagSlugs]);
+                        const matchesAny = selectedSubtopics.some((qs) => allCandidateSubtopicSlugs.has(qs));
+                        if (!matchesAny) {
+                            return false;
+                        }
+                    }
+                }
+            }
+
             return true;
         });
     }, [
+        generatedScorableQuestions,
         questionMetaByUid,
         recentYearStart,
-        generatedScorableQuestions,
+        selectedKind?.id,
         selectedSetupTypes,
+        setupState.enabledTracks,
+        setupState.includeGeneralAptitude,
         setupState.maxYear,
         setupState.minYear,
         setupState.selectedSubjects,
@@ -913,7 +1065,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
             // When selectedSubjects changes, purge orphaned subtopics whose parent was deselected
             if (Object.prototype.hasOwnProperty.call(patch, "selectedSubjects")) {
-                const activeSubjectSet = new Set(next.selectedSubjects);
+                const activeSubjectSet = new Set((next.selectedSubjects || []).map(normalizeMockSubjectKey));
                 const allSubtopicsBySubject = structuredTags?.structuredSubtopics || {};
                 if (Array.isArray(next.selectedSubtopics) && next.selectedSubtopics.length > 0) {
                     const validSubtopicSet = new Set();
@@ -926,7 +1078,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                     next.selectedSubtopics = next.selectedSubtopics.filter((slug) => validSubtopicSet.has(slug));
                 }
                 // Collapse expanded subject if it was deselected
-                if (next.expandedSubjectSlug && !activeSubjectSet.has(next.expandedSubjectSlug)) {
+                if (next.expandedSubjectSlug && !activeSubjectSet.has(normalizeMockSubjectKey(next.expandedSubjectSlug))) {
                     next.expandedSubjectSlug = next.selectedSubjects[0] || null;
                 }
             }
@@ -991,7 +1143,54 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             }
             const next = new Set(currentSubtopics);
             subtopicSlugs.forEach((s) => next.add(s));
-            return { ...prev, selectedSubtopics: Array.from(next) };
+            const currentSubjects = Array.isArray(prev.selectedSubjects) ? prev.selectedSubjects : [];
+            const nextSubjects = (subjectSlug && !currentSubjects.includes(subjectSlug))
+                ? [...currentSubjects, subjectSlug]
+                : currentSubjects;
+            return { ...prev, selectedSubtopics: Array.from(next), selectedSubjects: nextSubjects };
+        });
+    }, []);
+
+    const toggleTrack = useCallback((track, forceVal) => {
+        setSetupState((prev) => {
+            const current = Array.isArray(prev.enabledTracks) ? prev.enabledTracks : ["cse"];
+            const exists = current.includes(track);
+            const shouldEnable = typeof forceVal === "boolean" ? forceVal : !exists;
+            let nextTracks;
+            if (!shouldEnable) {
+                nextTracks = current.filter((t) => t !== track);
+            } else {
+                nextTracks = exists ? current : [...current, track];
+            }
+            // If turning off a track, also purge any selected subjects belonging to it
+            let nextSubjects = Array.isArray(prev.selectedSubjects) ? prev.selectedSubjects : [];
+            if (!shouldEnable) {
+                if (track === "da") {
+                    nextSubjects = nextSubjects.filter((s) => !s.startsWith("da:"));
+                } else if (track === "cse") {
+                    nextSubjects = nextSubjects.filter((s) => s.startsWith("da:") || s === "general-aptitude" || s === "ga" || APTITUDE_SUBJECT_SLUGS.has(s));
+                }
+            }
+            return { ...prev, enabledTracks: nextTracks, selectedSubjects: nextSubjects };
+        });
+    }, []);
+
+    const toggleGeneralAptitude = useCallback((forceVal) => {
+        setSetupState((prev) => ({
+            ...prev,
+            includeGeneralAptitude: typeof forceVal === "boolean" ? forceVal : prev.includeGeneralAptitude === false,
+        }));
+    }, []);
+
+    const bulkToggleTrackSubjects = useCallback((track, subjectSlugs, selectAll) => {
+        setSetupState((prev) => {
+            const current = new Set(Array.isArray(prev.selectedSubjects) ? prev.selectedSubjects : []);
+            if (selectAll) {
+                subjectSlugs.forEach((s) => current.add(s));
+            } else {
+                subjectSlugs.forEach((s) => current.delete(s));
+            }
+            return { ...prev, selectedSubjects: Array.from(current) };
         });
     }, []);
 
@@ -1123,9 +1322,14 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             const hydratedCsQuestions = await hydrateQuestions(csQuestions);
             const totalQuestions = gaQuestions.length + csQuestions.length;
             const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
+            const daCount = csQuestions.filter((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:")).length;
+            const cseCount = csQuestions.length - daCount;
             const isDa = selectedPaper?.track === "da"
                 || (selectedKind.id === "paper_mode" && String(selectedPaperYearSetKey || "").toLowerCase().startsWith("da:"))
-                || csQuestions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:"));
+                || (selectedKind.id === "custom" && (
+                    (!setupState.enabledTracks?.includes("cse") && setupState.enabledTracks?.includes("da"))
+                    || (daCount > 0 && daCount >= cseCount)
+                ));
 
             const started = startTest({
                 gaQuestions: hydratedGaQuestions,
@@ -1389,6 +1593,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         onSelectPaper={(yearSetKey) => patchSetupState({ selectedPaperYearSetKey: yearSetKey })}
                         onPatchState={patchSetupState}
                         onToggleSelection={toggleSelection}
+                        onToggleTrack={toggleTrack}
+                        onToggleGeneralAptitude={toggleGeneralAptitude}
+                        onBulkToggleTrackSubjects={bulkToggleTrackSubjects}
                         onToggleSubtopic={toggleSubtopic}
                         onSetExpandedSubject={setExpandedSubjectSlug}
                         onBulkToggleSubtopics={bulkToggleSubtopics}

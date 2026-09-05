@@ -458,6 +458,72 @@ describe("MockTestShell", () => {
     expect(screen.getByText(/Pool restricted to your 1 bookmarked question/i)).toBeTruthy();
   });
 
+  test("enables only General Aptitude when CSE toggle is turned off, keeping 0 CS questions", async () => {
+    const gaQuestion = {
+      question_uid: "APT-ENG-0001",
+      title: "Sample GA",
+      subject: "English",
+      subjectSlug: "english",
+      question: "<p>GA Question</p>",
+      options: [{ label: "A", html: "A" }, { label: "B", html: "B" }],
+      exam: { year: 2024, yearSetKey: "2024-s1" },
+    };
+    const csQuestion = {
+      question_uid: "go:222",
+      title: "Sample CS",
+      subject: "Algorithms",
+      subjectSlug: "algorithms",
+      question: "<p>CS Question</p>",
+      options: [{ label: "A", html: "A" }, { label: "B", html: "B" }],
+      exam: { year: 2024, yearSetKey: "2024-s1" },
+    };
+
+    mockFilterContext.allQuestions = [gaQuestion, csQuestion];
+    mockMockTestContext.mockQuestionPool = [gaQuestion, csQuestion];
+    mockMockTestContext.questionMetaByUid = {
+      "APT-ENG-0001": {
+        questionUid: "APT-ENG-0001",
+        section: "GA",
+        type: "MCQ",
+        marks: 1,
+        negativeMarks: 0.3333333333,
+        yearSetKey: "2024-s1",
+        orderIndex: 1,
+        scorable: true,
+      },
+      "go:222": {
+        questionUid: "go:222",
+        section: "CS",
+        type: "MCQ",
+        marks: 1,
+        negativeMarks: 0.3333333333,
+        yearSetKey: "2024-s1",
+        orderIndex: 2,
+        scorable: true,
+      },
+    };
+
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    // Initially both CSE and GA are enabled: GA: 1, CS: 1, Total: 2
+    expect(screen.getByTestId("preview-ga").textContent).toBe("1");
+    expect(screen.getByTestId("preview-cs").textContent).toBe("1");
+    expect(screen.getByTestId("preview-total").textContent).toBe("2");
+
+    // Turn off CSE track toggle
+    const cseToggle = screen.getByLabelText("Toggle Computer Science / CSE");
+    fireEvent.click(cseToggle);
+
+    // Now only General Aptitude is enabled (and checkbox is NOT selected):
+    // CS must be 0, GA must be 1, Total must be 1
+    expect(screen.getByTestId("preview-ga").textContent).toBe("1");
+    expect(screen.getByTestId("preview-cs").textContent).toBe("0");
+    expect(screen.getByTestId("preview-total").textContent).toBe("1");
+  });
+
   test("renders ErrorBoundary fallback with retry, previous, and skip actions when question crashes", async () => {
     shouldQuestionThrow = true;
     const goToNext = vi.fn();

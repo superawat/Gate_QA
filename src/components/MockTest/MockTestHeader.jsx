@@ -115,7 +115,9 @@ const MockTestHeader = ({
         return computeSectionStats(openPopoverSection);
     }, [computeSectionStats, openPopoverSection]);
 
-    const totalQuestions = sectionQuestionUids.GA.length + sectionQuestionUids.CS.length;
+    const hasGaQuestions = Array.isArray(sectionQuestionUids?.GA) && sectionQuestionUids.GA.length > 0;
+    const hasCsQuestions = Array.isArray(sectionQuestionUids?.CS) && sectionQuestionUids.CS.length > 0;
+    const totalQuestions = (sectionQuestionUids?.GA?.length || 0) + (sectionQuestionUids?.CS?.length || 0);
     const isDaAttempt = Boolean(
         attemptMeta?.isDa
         || attemptMeta?.track === "da"
@@ -139,7 +141,7 @@ const MockTestHeader = ({
     const durationLabel = attemptMeta?.durationMinutes
         ? `${attemptMeta.durationMinutes} min`
         : "180 min";
-    const currentSectionLabel = currentSection === "GA"
+    const currentSectionLabel = currentSection === "GA" && hasGaQuestions
         ? "General Aptitude"
         : coreSectionFullName;
 
@@ -234,46 +236,70 @@ const MockTestHeader = ({
                                 </span>
                                 <div className="flex items-center gap-1 min-w-0">
                                     <div className="mocktest-section-tab-wrap min-w-0 shrink">
-                                        <div className={`mocktest-section-tab !min-w-0 !px-2 !py-0.5 ${currentSection === "GA" ? "is-active" : ""}`}>
+                                        <div
+                                            className={`mocktest-section-tab !min-w-0 !px-2 !py-0.5 ${
+                                                hasGaQuestions
+                                                    ? (currentSection === "GA" ? "is-active" : "")
+                                                    : "opacity-40 cursor-not-allowed select-none bg-gray-200 text-gray-400"
+                                            }`}
+                                            title={hasGaQuestions ? "General Aptitude" : "No General Aptitude questions in this mock test"}
+                                        >
                                             <button
                                                 type="button"
-                                                onClick={() => setCurrentSection("GA")}
-                                                className="truncate text-left text-[12px]"
+                                                disabled={!hasGaQuestions}
+                                                onClick={() => hasGaQuestions && setCurrentSection("GA")}
+                                                className={`truncate text-left text-[12px] ${!hasGaQuestions ? "cursor-not-allowed pointer-events-none text-gray-400" : ""}`}
+                                                title={hasGaQuestions ? "General Aptitude" : "No General Aptitude questions in this mock test"}
+                                                data-testid="mock-section-tab-ga"
                                             >
                                                 <span className="hidden md:inline">General Aptitude</span>
                                                 <span className="md:hidden">GA</span>
                                             </button>
-                                            <button
-                                                type="button"
-                                                aria-label="General Aptitude status"
-                                                className="mocktest-info-icon flex h-3 w-3 items-center justify-center rounded-full border border-[#98a6b5] text-[9px]"
-                                                onClick={(event) => handleInfoClick("GA", event)}
-                                            >
-                                                i
-                                            </button>
+                                            {hasGaQuestions && (
+                                                <button
+                                                    type="button"
+                                                    aria-label="General Aptitude status"
+                                                    className="mocktest-info-icon flex h-3 w-3 items-center justify-center rounded-full border border-[#98a6b5] text-[9px]"
+                                                    onClick={(event) => handleInfoClick("GA", event)}
+                                                >
+                                                    i
+                                                </button>
+                                            )}
                                         </div>
-                                        {renderInfoPopover("GA")}
+                                        {hasGaQuestions && renderInfoPopover("GA")}
                                     </div>
                                     <div className="mocktest-section-tab-wrap min-w-0 shrink">
-                                        <div className={`mocktest-section-tab !min-w-0 !px-2 !py-0.5 ${currentSection === "CS" ? "is-active" : ""}`}>
+                                        <div
+                                            className={`mocktest-section-tab !min-w-0 !px-2 !py-0.5 ${
+                                                hasCsQuestions
+                                                    ? (currentSection === "CS" ? "is-active" : "")
+                                                    : "opacity-40 cursor-not-allowed select-none bg-gray-200 text-gray-400"
+                                            }`}
+                                            title={hasCsQuestions ? coreSectionFullName : `No ${coreSectionFullName} questions in this mock test`}
+                                        >
                                             <button
                                                 type="button"
-                                                onClick={() => setCurrentSection("CS")}
-                                                className="truncate text-left text-[12px]"
+                                                disabled={!hasCsQuestions}
+                                                onClick={() => hasCsQuestions && setCurrentSection("CS")}
+                                                className={`truncate text-left text-[12px] ${!hasCsQuestions ? "cursor-not-allowed pointer-events-none text-gray-400" : ""}`}
+                                                title={hasCsQuestions ? coreSectionFullName : `No ${coreSectionFullName} questions in this mock test`}
+                                                data-testid="mock-section-tab-cs"
                                             >
                                                 <span className="hidden md:inline">{coreSectionFullName}</span>
                                                 <span className="md:hidden">{coreSectionShortName}</span>
                                             </button>
-                                            <button
-                                                type="button"
-                                                aria-label={isDaAttempt ? "DA status" : "CS status"}
-                                                className="mocktest-info-icon flex h-3 w-3 items-center justify-center rounded-full border border-[#98a6b5] text-[9px]"
-                                                onClick={(event) => handleInfoClick("CS", event)}
-                                            >
-                                                i
-                                            </button>
+                                            {hasCsQuestions && (
+                                                <button
+                                                    type="button"
+                                                    aria-label={isDaAttempt ? "DA status" : "CS status"}
+                                                    className="mocktest-info-icon flex h-3 w-3 items-center justify-center rounded-full border border-[#98a6b5] text-[9px]"
+                                                    onClick={(event) => handleInfoClick("CS", event)}
+                                                >
+                                                    i
+                                                </button>
+                                            )}
                                         </div>
-                                        {renderInfoPopover("CS")}
+                                        {hasCsQuestions && renderInfoPopover("CS")}
                                     </div>
                                 </div>
                             </div>

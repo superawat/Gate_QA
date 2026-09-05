@@ -1,5 +1,6 @@
 import { extractEmbeddedOptions } from "../utils/stripEmbeddedOptions";
 import { buildTrackYearSetKey } from "../utils/examTrack";
+import { DA_SUBJECTS as TAXONOMY_DA_SUBJECTS } from "../data/trackerTaxonomy";
 import type {
   AnswerRecord,
   QuestionRow,
@@ -298,7 +299,18 @@ export class DaQuestionService {
       count: Number(entry.count || 0),
       track: "da",
     }));
-    const structuredSubtopics: Record<string, SubtopicOption[]> = Object.fromEntries(subjects.map((subject) => [subject.slug, []]));
+    const structuredSubtopics: Record<string, SubtopicOption[]> = {};
+    subjects.forEach((subject) => {
+      const cleanSlug = subject.slug.replace(/^da:/, "");
+      const taxSubject = TAXONOMY_DA_SUBJECTS.find((s) => s.slug === cleanSlug);
+      const subtopics: SubtopicOption[] = taxSubject
+        ? taxSubject.topics.flatMap((tp) => (tp.subtopics || []).map((st) => ({
+            slug: st.subtopicSlug,
+            label: st.label,
+          })))
+        : [];
+      structuredSubtopics[subject.slug] = subtopics;
+    });
     this.structuredTagsCache = {
       yearSets,
       years: yearSets.map((entry) => entry.key),

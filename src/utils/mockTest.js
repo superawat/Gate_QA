@@ -22,18 +22,60 @@ const slugifyMockFilterToken = (value = "") => (
 
 const isDaMockQuestion = (question = {}) => isDaQuestion(question);
 
-const normalizeMockSubjectKey = (value = "") => {
+const CANONICAL_CSE_SUBJECT_SLUG_MAP = {
+  "algorithms": "algorithms",
+  "co-and-architecture": "coa",
+  "computer-organization-and-architecture": "coa",
+  "computer-architecture": "coa",
+  "coa": "coa",
+  "compiler-design": "compiler",
+  "compiler": "compiler",
+  "computer-networks": "cn",
+  "cn": "cn",
+  "databases": "dbms",
+  "database-management-systems": "dbms",
+  "dbms": "dbms",
+  "digital-logic": "digital-logic",
+  "integrated-circuits": "digital-logic",
+  "discrete-mathematics": "discrete-math",
+  "discrete-math": "discrete-math",
+  "engineering-mathematics": "engg-math",
+  "engg-math": "engg-math",
+  "general-aptitude": "ga",
+  "ga": "ga",
+  "operating-system": "os",
+  "os": "os",
+  "programming-and-ds": "prog-ds",
+  "programming-ds": "prog-ds",
+  "prog-ds": "prog-ds",
+  "programming-in-c": "prog-c",
+  "c-programming": "prog-c",
+  "prog-c": "prog-c",
+  "theory-of-computation": "toc",
+  "toc": "toc",
+  "legacy-other": "legacy-other",
+  "other-optional": "legacy-other",
+  "legacy-out-of-syllabus": "legacy-other",
+};
+
+export const normalizeMockSubjectKey = (value = "") => {
   const rawValue = String(value || "").trim();
   if (rawValue.toLowerCase().startsWith("da:")) {
     const daSlug = slugifyMockFilterToken(rawValue.slice(3));
     return daSlug ? `da:${daSlug}` : "";
   }
-  return slugifyMockFilterToken(rawValue);
+  const slug = slugifyMockFilterToken(rawValue);
+  return CANONICAL_CSE_SUBJECT_SLUG_MAP[slug] || slug;
 };
 
 export const getMockQuestionSubjectKey = (question = {}) => {
-  const subjectSlug = slugifyMockFilterToken(question?.subjectSlug || question?.subject || "unknown") || "unknown";
-  return isDaMockQuestion(question) ? `da:${subjectSlug}` : subjectSlug;
+  if (isDaMockQuestion(question)) {
+    const raw = question?.subjectSlug || question?.subject || "unknown";
+    const daSlug = slugifyMockFilterToken(String(raw).replace(/^da:/i, ""));
+    return `da:${daSlug || "unknown"}`;
+  }
+  const rawSubject = question?.subjectSlug || question?.subject || "unknown";
+  return normalizeMockSubjectKey(rawSubject) || "unknown";
 };
 
 export const getMockQuestionYearSetIdentity = (question = {}) => (
