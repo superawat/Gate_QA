@@ -86,14 +86,17 @@ CREATE POLICY "Users can delete own tracker data"
 -- Role Privileges
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.user_tracker TO authenticated;
 
--- Automatic updated_at trigger
+-- Automatic updated_at trigger (hardened with immutable search_path)
 CREATE OR REPLACE FUNCTION public.handle_user_tracker_updated_at()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
 BEGIN
-    NEW.updated_at = timezone('utc'::text, now());
+    NEW.updated_at = pg_catalog.timezone('utc'::text, pg_catalog.now());
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$;
 
 DROP TRIGGER IF EXISTS set_user_tracker_timestamp ON public.user_tracker;
 CREATE TRIGGER set_user_tracker_timestamp

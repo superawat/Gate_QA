@@ -428,4 +428,37 @@ describe("evaluateAnswer", () => {
     });
     expect(evaluateAnswer(record, "").correct).toBe(false);
   });
+
+  test("evaluates GATE CSE 2025 Set 1 Q33 (go:460047) as MCQ with Option C correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    };
+
+    // Selecting C ("The height of T is at least 15") is correct
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "c")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting A, B, or D is incorrect
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
 });

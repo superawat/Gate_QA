@@ -385,4 +385,26 @@ describe("AnswerService", () => {
       defective_reason: "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
     });
   });
+
+  test("resolves GATE CSE 2025 Set 1 Q33 (go:460047) as MCQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:460047": {
+        answer_uid: "v2:1.30.6",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:460047",
+      link: "https://gateoverflow.in/460047/gate-cse-2025-set-1-question-33",
+      title: "GATE CSE 2025 | Set 1 | Question: 33",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:1.30.6",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
 });

@@ -1,5 +1,32 @@
 # Changelog
 
+- **Question Data Integrity & Answer Key Correction for `go:460047` (DEC-058)**:
+  - *Context*: Question `go:460047` (GATE CSE 2025 Set 1 Question 33, Algorithms - Breadth First Search & Graph Diameter) was incorrectly evaluating valid Option C ("The height of T is at least 15.") as incorrect because legacy answer data stored Option B ("The height of T is exactly 30.").
+  - *Mathematical & Official Derivation*:
+    - The graph $G(V, E)$ is undirected and unweighted with 100 vertices, and $\max_{u \neq v} d(u, v) = 30$ (diameter = 30).
+    - For any vertex $r \in V$, the height of a BFS tree $T$ rooted at $r$ equals the eccentricity of $r$: $h(T) = \max_{v \in V} d(r, v) = \text{eccentricity}(r)$.
+    - For any connected graph, $\text{eccentricity}(r) \ge \text{radius}(G) \ge \lceil \text{diameter}(G) / 2 \rceil = \lceil 30 / 2 \rceil = 15$.
+    - Therefore, every BFS tree $T$ has height at least 15 ($h(T) \ge 15$) for every choice of root vertex $r$ in every such graph $G$.
+    - A BFS tree rooted at the graph's center may have height 15 (disproving Option B "exactly 30" and Option D "at least 30"), and a BFS tree rooted at an extreme vertex has height 30 (disproving Option A "exactly 15").
+    - Hence, **Option C** ("The height of $T$ is at least 15.") is the uniquely correct statement for every such graph $G$.
+  - *Resolution*:
+    - Updated answer key from Option B to Option C in authoritative patch registry `data/answers/manual-answers-patch-v1.json` and base question answer map `data/answers/answers_by_question_uid_v1.json`.
+    - Synchronized across runtime answer indices `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json` (`cse:2025:set1:main:q33`), and `public/data/answers/answers_master_v1.json` (`v2:1.30.6`).
+    - Updated question bank `public/questions-with-answers.json` (`answer_meta.answer: "C"`).
+    - Regenerated static question detail shard `public/question-detail-shards/2025-s1.json`.
+    - Added shard timestamp preservation in `scripts/build-public-artifacts.mjs` to eliminate git churn on unchanged shards.
+    - Added automated unit regression tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+  - *Verification*: All 580 unit tests passing (76 suites), `npm run qa:validate-data` clean, `npm run typecheck` clean (0 errors), end-to-end evaluation confirmed Option C as correct and Options A/B/D as incorrect.
+
+- **Supabase Database Linter Resolution & Trigger Function Search Path Pinned (DEC-057)**:
+  - *Context*: Supabase Database Advisor flagged security advisory `function_search_path_mutable` (Rule `0011_function_search_path_mutable`) on trigger function `public.handle_user_tracker_updated_at`.
+  - *Root Cause Analysis*: PostgreSQL trigger functions that do not explicitly define `SET search_path` default to the session-level `search_path` of whoever triggers the operation. If a malicious session alters `search_path`, unqualified functions or operators could be hijacked. In `supabase/migrations/20260901_user_tracker.sql`, `handle_user_tracker_updated_at` was created without `SET search_path = ''`.
+  - *Resolution*:
+    1. **Function Hardening (`supabase/migrations/20260901_user_tracker.sql`)**: Updated `public.handle_user_tracker_updated_at()` to declare `SET search_path = ''` and fully qualify calls using `pg_catalog.timezone('utc'::text, pg_catalog.now())`.
+    2. **Database Application**: Executed hardened DDL in live Supabase SQL Editor and verified parameter attachment (`proconfig = ["search_path=\"\""]` in `pg_proc`).
+    3. **Documentation Alignment**: Documented policies, grants, and database function security hardening in `docs/DATABASE.md`.
+  - *Verification*: Verified `proconfig` contains `search_path=""` in `pg_proc`, Supabase Database Advisor warning is eliminated, and all 578 unit tests pass across 76 test suites.
+
 - **Mock Test Custom Builder 3-Level Taxonomy Hierarchy & Crash Resolution (DEC-056)**:
   - *Context*: User reported: (1) Clicking on any subject checkbox in Custom Mock Builder led to the Error Boundary crash ("Something went wrong"); (2) Subjects lacked topic grouping and DA subjects displayed 0 subtopics; (3) Requested strict 3-level hierarchy: `Subject: Topics: Subtopics` mirroring the syllabus and filters section.
   - *Root Cause Analysis*:

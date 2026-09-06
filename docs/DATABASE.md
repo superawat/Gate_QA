@@ -201,11 +201,32 @@ RLS is enabled on every public user-data table. Ownership is checked with the au
 | `public.user_progress` | Users can insert their own progress | `INSERT` | `authenticated` | `WITH CHECK ((SELECT auth.uid()) = user_id)` |
 | `public.user_progress` | Users can read their own progress | `SELECT` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)` |
 | `public.user_progress` | Users can update their own progress | `UPDATE` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)`<br>`WITH CHECK ((SELECT auth.uid()) = user_id)` |
+| `public.user_tracker` | Users can read own tracker data | `SELECT` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)` |
+| `public.user_tracker` | Users can insert own tracker data | `INSERT` | `authenticated` | `WITH CHECK ((SELECT auth.uid()) = user_id)` |
+| `public.user_tracker` | Users can update own tracker data | `UPDATE` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)`<br>`WITH CHECK ((SELECT auth.uid()) = user_id)` |
+| `public.user_tracker` | Users can delete own tracker data | `DELETE` | `authenticated` | `USING ((SELECT auth.uid()) = user_id)` |
 
 ### Role Grants
-- `anon`: **Zero** grants on `public.profiles`, `public.user_progress`, or `public.sync_log`.
-- `authenticated`: Granted `SELECT` on `profiles`; `SELECT, INSERT, UPDATE` on `user_progress`; `INSERT` on `sync_log`.
+- `anon`: **Zero** grants on any user table (`public.profiles`, `public.user_progress`, `public.sync_log`, `public.user_tracker`).
+- `authenticated`: Granted `SELECT` on `profiles`; `SELECT, INSERT, UPDATE` on `user_progress`; `INSERT` on `sync_log`; `SELECT, INSERT, UPDATE, DELETE` on `user_tracker`.
 - `postgres` & `service_role`: Full administrative table privileges.
+
+---
+
+## Database Functions, Triggers & Security Hardening
+
+All database functions in the cluster adhere to the Supabase Database Advisor & Security Linter guidelines:
+
+### 1. `public.handle_new_auth_user()`
+- **Trigger**: `on_auth_user_created` on `auth.users` (`AFTER INSERT OR UPDATE`).
+- **Security**: `SECURITY DEFINER` (executes with creator privileges to sync profile rows).
+- **Search Path**: Explicitly pinned via `SET search_path = public` to prevent search path mutation attacks.
+- **Grants**: Executable privileges revoked from `public`, `anon`, and `authenticated`.
+
+### 2. `public.handle_user_tracker_updated_at()`
+- **Trigger**: `set_user_tracker_timestamp` on `public.user_tracker` (`BEFORE UPDATE`).
+- **Security**: `SECURITY INVOKER` (default).
+- **Search Path Hardening (DEC-057)**: Explicitly pinned via `SET search_path = ''` with fully qualified `pg_catalog.timezone()` and `pg_catalog.now()` calls. This completely eliminates the `function_search_path_mutable` warning (Supabase Linter rule `0011_function_search_path_mutable`) and defends against malicious search path hijacking.
 
 ---
 

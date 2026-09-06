@@ -1929,6 +1929,13 @@ async function buildArtifacts() {
     for (const payload of detailShards.values()) {
       payload.generatedAt = generatedAt;
     }
+  } else {
+    for (const [shardKey, payload] of detailShards.entries()) {
+      const existingPayload = readJson(path.join(DETAIL_SHARDS_DIR, `${shardKey}.json`), null);
+      if (existingPayload?.generatedAt && hasSameGeneratedContent(existingPayload, payload)) {
+        payload.generatedAt = existingPayload.generatedAt;
+      }
+    }
   }
   const latestYearCoverageEntries = manifest.answerCoverage.yearSets.filter(
     (entry) => Number(entry.year) === Number(manifest.latestYear)
