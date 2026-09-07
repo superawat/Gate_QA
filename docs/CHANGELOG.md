@@ -1,5 +1,24 @@
 # Changelog
 
+- **Dead Code Elimination, Orphaned Component Pruning & CSS Monolith Cleanup (DEC-064)**:
+  - *Context*: Implemented the verified Dead Code Removal Plan (`plan/DEAD_CODE_REMOVAL_PLAN.md`) across the codebase to safely remove orphaned UI components, dead utility CSS overrides, and obsolete one-off scripts.
+  - *Changes Executed*:
+    1. **Orphaned Component Deletions**: Safely deleted 6 unreferenced React component files: `src/components/Tracker/TrackerSubjectAccordion.jsx`, `src/components/Tracker/TrackerTopicCard.jsx`, `src/components/Tracker/TrackerNotesDrawer.jsx`, `src/components/Auth/GuestDataPrompt.jsx`, `src/components/Loaders/QuestionBankSummaryLoader.jsx`, and `src/components/Header/Header.jsx` (along with removing the empty `src/components/Header/` directory).
+    2. **Obsolete Root Scripts Removal**: Deleted 3 obsolete ad-hoc utility scripts from root `scripts/`: `scripts/fix-865.js`, `scripts/apply-edits.cjs`, and `scripts/refactor-ui.cjs`.
+    3. **CSS Monolith Cleanup (`src/index.css`)**:
+       - Removed light and dark styles for `.guest-data-prompt` (lines 4340–4392 and 4414–4419) and cleaned section header comment at line 4003.
+       - Selectively pruned verified-dead dark mode utility class override selectors (including `.bg-pink-800`, `.bg-pink-900`, `.bg-teal-600`, `.bg-teal-700`, `.bg-green-100`, `.bg-red-100`, `.bg-yellow-50`, `.text-teal-600`, `.text-pink-800`, `.text-pink-900`, `.border-blue-300`, `.border-blue-600`, `.border-green-200/300/500`, `.border-yellow-200/300`, `.border-pink-800/900`, `.border-red-200`, `.ring-amber-200`, etc.) while strictly preserving all active classes (`.text-violet-900`, `.border-emerald-200`, `.hover:bg-blue-200`, form input styles, gradients, scrollbars, etc.).
+       - CSS bundle size in `dist/assets/` decreased from `207.11 kB` to `203.31 kB` (3.8 kB pure dead CSS removed).
+    4. **Documentation & Memory Integrity**: Updated `.agents/AGENTS.md` Key Directory Map to remove `GuestDataPrompt.jsx`.
+  - *Verification*:
+    - `npm run test:unit`: 76 test suites passed | 1 skipped (77 total), 607 unit tests passed | 6 skipped (613 total) — 100% green.
+    - `npm run typecheck`: 0 TypeScript errors.
+    - `npm run build`: Production build and 3,491 static SEO pages prerendered successfully with zero errors.
+    - `npm run qa:validate-public-parity`: OK (all 3,549 counts agree).
+    - `npm run qa:validate-data`: Dataset integrity and coverage clean.
+    - `npm run qa:validate-bundle-budget`: Passes within budget limits.
+    - `npm run test:e2e`: All 17 Playwright E2E tests pass (100% green).
+
 - **Bundle Budget Optimization, Code-Splitting & CI Validation Fix (DEC-063)**:
   - *Context*: CI pipeline build failed at the `validate-bundle-budget` step (`npm run qa:validate-bundle-budget`) due to the landing entry chunk reaching 391.6 KB (exceeding the 300.0 KB budget limit by 91.6 KB) and landing initial JS reaching 1248.1 KB (exceeding the 1200.0 KB limit).
   - *Root Cause Analysis*:

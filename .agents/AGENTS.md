@@ -46,7 +46,7 @@ Before doing research or writing code:
 
 * `src/contexts/`: Global state (`AuthContext`, `FilterContext`, `MockTestContext`, `SessionContext`).
 * `src/utils/`: Core utilities (`cloudSyncManager.js`, `syncQueue.js`, `practiceProgress.js`, `mockTest.js`).
-* `src/components/Auth/`: Authentication UI (`AuthModal.jsx`, `UserProfileMenu.jsx`, `GuestDataPrompt.jsx`).
+* `src/components/Auth/`: Authentication UI (`AuthModal.jsx`, `UserProfileMenu.jsx`).
 * `docs/`: Master architectural documents (`ARCHITECTURE.md`, `DATABASE.md`, `TRACKER.md`, `QUESTION_DATA_CORRECTION_RUNBOOK.md`, `CHANGELOG.md`).
 * `.llm-memory/`: Distilled summaries for fast LLM retrieval.
 
