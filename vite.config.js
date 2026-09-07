@@ -79,12 +79,20 @@ export default defineConfig(async ({ mode }) => {
             }
             if (
               id.includes('jspdf') ||
+              id.includes('html2canvas') ||
+              id.includes('pako') ||
+              id.includes('fast-png') ||
+              id.includes('css-line-break') ||
+              id.includes('text-segmentation') ||
               id.includes('canvg') ||
               id.includes('fflate') ||
               id.includes('rgbcolor') ||
               id.includes('stackblur-canvas')
             ) {
               return 'vendor-pdf';
+            }
+            if (id.includes('@supabase')) {
+              return 'vendor-supabase';
             }
             if (id.includes('react-icons')) {
               return 'vendor-icons';

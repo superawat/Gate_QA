@@ -1,5 +1,23 @@
 # Changelog
 
+- **Bundle Budget Optimization, Code-Splitting & CI Validation Fix (DEC-063)**:
+  - *Context*: CI pipeline build failed at the `validate-bundle-budget` step (`npm run qa:validate-bundle-budget`) due to the landing entry chunk reaching 391.6 KB (exceeding the 300.0 KB budget limit by 91.6 KB) and landing initial JS reaching 1248.1 KB (exceeding the 1200.0 KB limit).
+  - *Root Cause Analysis*:
+    1. `editorialPages.js` (95.3 KB): Statically imported in `src/App.jsx` simply to iterate over route definitions. Because `App.jsx` is the root component of the entry point, all 95 KB of rich blog text and FAQs were bundled into `index.js`.
+    2. `trackerTaxonomy.ts` (136.4 KB): Imported by `src/services/DaQuestionService.ts`, which is imported by `FilterContext.tsx` on the landing page, dragging in the entire 2,100-line CSE+DA taxonomy.
+    3. `trackerState.ts` (35.9 KB): Imported by `src/utils/cloudSyncManager.js` (for revision summary helpers) and `src/components/Layout/AppHeader.jsx` (for `TRACKER_ANNOUNCEMENT_SEEN_KEY`).
+    4. `html2canvas` (400.8 KB) & `pako` (104.3 KB): Omitted from `vendor-pdf` manual chunks in `vite.config.js`, causing Rollup to bundle them into `vendor-misc` alongside `@supabase/supabase-js`, which bloated initial JS.
+  - *Architecture & Code-Splitting Fixes*:
+    1. **Editorial Route Isolation**: Created `src/data/editorialRoutes.js` (1 KB) containing only `{ path, keyword }` route records for `src/App.jsx` and `GlobalNavigationDrawer.jsx`. Updated `EditorialPage.jsx` to dynamically lookup article content from `src/data/editorialPages.js` using `location.pathname`, isolating the 95 KB data file completely within the on-demand lazy chunk.
+    2. **DA Taxonomy Modularization**: Extracted DA syllabus definitions into `src/data/daTaxonomy.ts` and re-exported `DA_SUBJECTS` from `src/data/trackerTaxonomy.ts` for 100% backward compatibility. Pointed `DaQuestionService.ts` to `daTaxonomy.ts`, removing `trackerTaxonomy.ts` from the landing chunk.
+    3. **Revision Summary Helper Decoupling**: Extracted `summarizeRevisionEvents`, `mergeSyncedRevisionSummary`, and `TRACKER_ANNOUNCEMENT_SEEN_KEY` into `src/utils/trackerRevisionSummary.ts`. Re-exported them from `trackerState.ts` and updated `cloudSyncManager.js` and `AppHeader.jsx`.
+    4. **Vite Manual Chunks Hardening**: Updated `manualChunks` in `vite.config.js` to group all PDF dependencies (`jspdf`, `html2canvas`, `pako`, `fast-png`, `css-line-break`, `text-segmentation`, `canvg`, `fflate`, `rgbcolor`, `stackblur-canvas`) into `vendor-pdf` and isolated `@supabase` into `vendor-supabase`.
+  - *Results & Metrics*:
+    - Landing entry chunk reduced from 391.6 KB to **220.0 KB** (80.0 KB / 26.7% headroom under 300.0 KB limit).
+    - Landing initial JS reduced from 1248.1 KB to **845.5 KB** (354.5 KB / 29.5% headroom under 1200.0 KB limit).
+    - `npm run qa:validate-bundle-budget` and `npm run qa:validate-landing-network` pass cleanly with zero warnings.
+    - All 607 unit tests (76 test files) and all 17 Playwright E2E tests pass cleanly. `npm run typecheck` passes with 0 errors.
+
 - **GATE CSE 2025 Set 2 Comprehensive Answer Key Audit & Data Corrections (DEC-062)**:
   - *Context*: Complete audit of all 65 questions of GATE CSE 2025 Set 2 (General Aptitude Q1–Q10 and Computer Science Q1–Q55 / Official Q11–Q65) against the official GATE 2025 Set 2 answer key as the authoritative source of truth.
   - *Audit Results*:

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { EDITORIAL_PAGES } from "../data/editorialPages";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FaChevronRight,
@@ -568,7 +569,9 @@ function renderBodyItems(bodyItems) {
 }
 
 /* ─── Main Export ────────────────────────────────────────────────────────────── */
-export default function EditorialPage({ data }) {
+export default function EditorialPage({ data: propData }) {
+  const location = useLocation();
+  const data = propData || EDITORIAL_PAGES.find((p) => p.path === location.pathname) || EDITORIAL_PAGES[0];
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [activeId, setActiveId] = useState("");
   const mainRef = useRef(null);

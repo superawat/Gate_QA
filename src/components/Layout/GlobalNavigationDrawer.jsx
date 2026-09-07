@@ -18,7 +18,7 @@ import HamburgerButton from "./HamburgerButton";
 import SupportModal from "../Footer/SupportModal";
 
 import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, TRACKER_ROUTE, USER_MANUAL_ROUTE, BLOG_ROUTE } from "../../utils/routes";
-import { EDITORIAL_PAGES } from "../../data/editorialPages";
+import { EDITORIAL_PAGE_ROUTES as EDITORIAL_PAGES } from "../../data/editorialRoutes";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 import { useDaEnabled } from "../../utils/daPreference";
 import {

@@ -20,7 +20,7 @@
 
 import { supabase } from "../services/supabase";
 import { clearSyncQueue } from "./syncQueue";
-import { mergeSyncedRevisionSummary, summarizeRevisionEvents } from "./trackerState";
+import { mergeSyncedRevisionSummary, summarizeRevisionEvents } from "./trackerRevisionSummary";
 
 const LOCAL_STORAGE_KEYS = {
   solved: "gate_qa_solved_questions",

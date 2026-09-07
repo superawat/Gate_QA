@@ -11,7 +11,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import { EDITORIAL_PAGES } from "./data/editorialPages";
+import { EDITORIAL_PAGE_ROUTES } from "./data/editorialRoutes";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { FilterProvider, useFilterState, useFilterActions } from "./contexts/FilterContext";
 import { SessionProvider, useSession } from "./contexts/SessionContext";
@@ -446,14 +446,14 @@ const PracticeRoutes = ({
             </ErrorBoundary>
           )}
         />
-        {EDITORIAL_PAGES.map((page) => (
+        {EDITORIAL_PAGE_ROUTES.map((route) => (
           <Route
-            key={page.path}
-            path={page.path}
+            key={route.path}
+            path={route.path}
             element={(
               <ErrorBoundary>
-                <Suspense fallback={<RouteLoader label={`Loading ${page.keyword}...`} />}>
-                  <EditorialPage data={page} />
+                <Suspense fallback={<RouteLoader label={`Loading ${route.keyword}...`} />}>
+                  <EditorialPage />
                 </Suspense>
               </ErrorBoundary>
             )}

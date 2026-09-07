@@ -1,6 +1,6 @@
 import { extractEmbeddedOptions } from "../utils/stripEmbeddedOptions";
 import { buildTrackYearSetKey } from "../utils/examTrack";
-import { DA_SUBJECTS as TAXONOMY_DA_SUBJECTS } from "../data/trackerTaxonomy";
+import { DA_SUBJECTS as TAXONOMY_DA_SUBJECTS } from "../data/daTaxonomy";
 import type {
   AnswerRecord,
   QuestionRow,
