@@ -461,4 +461,260 @@ describe("evaluateAnswer", () => {
     });
     expect(evaluateAnswer(record, "").correct).toBe(false);
   });
+
+  test("evaluates GATE CSE 2017 Set 2 Q30 (go:118623) as MCQ with Option B correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    };
+
+    // Selecting B ("Theta(log n)") is correct
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "b")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting A, C, or D is incorrect
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2004 / IT 2004 Q57 (go:3700) as MCQ with Option B correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    };
+
+    // Selecting B (P-IV, Q-III, R-I, S-II) is correct
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "b")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting A, C, or D is incorrect
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 Q10 (go:460070) as MCQ with Option A correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    };
+
+    // Selecting A ("Theta(n^2 2^n)") is correct
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "a")).toEqual({
+      status: "evaluated",
+      correct: true,
+    });
+
+    // Selecting B, C, or D is incorrect
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "C")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "D")).toEqual({
+      status: "evaluated",
+      correct: false,
+    });
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 GA Q9 (go:460092) as MCQ with Option A correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, "A").correct).toBe(true);
+    expect(evaluateAnswer(record, "a").correct).toBe(true);
+    expect(evaluateAnswer(record, "B").correct).toBe(false);
+    expect(evaluateAnswer(record, "C").correct).toBe(false);
+    expect(evaluateAnswer(record, "D").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 CS Q39 (go:460041) as MSQ with Option B correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["B"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["B"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["b"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["B", "C"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 CS Q55 (go:460025) NAT range [10, 11]", () => {
+    const record = {
+      type: "NAT",
+      answer: 10.5,
+      tolerance: { lower: 10, upper: 11, abs: 0.5 },
+    };
+    expect(evaluateAnswer(record, 10).correct).toBe(true);
+    expect(evaluateAnswer(record, 10.5).correct).toBe(true);
+    expect(evaluateAnswer(record, 11).correct).toBe(true);
+    expect(evaluateAnswer(record, 9.9).correct).toBe(false);
+    expect(evaluateAnswer(record, 11.1).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 CS Q48 (go:460032) NAT range [0.300, 0.302]", () => {
+    const record = {
+      type: "NAT",
+      answer: 0.301,
+      tolerance: { lower: 0.3, upper: 0.302, abs: 0.001 },
+    };
+    expect(evaluateAnswer(record, 0.300).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.301).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.302).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.299).correct).toBe(false);
+    expect(evaluateAnswer(record, 0.303).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 CS Q22 (go:460058) NAT range [0.49, 0.51]", () => {
+    const record = {
+      type: "NAT",
+      answer: 0.5,
+      tolerance: { lower: 0.49, upper: 0.51, abs: 0.01 },
+    };
+    expect(evaluateAnswer(record, 0.49).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.50).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.51).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.48).correct).toBe(false);
+    expect(evaluateAnswer(record, 0.52).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 1 CS Q46 (go:460034) NAT range [0.949, 0.952]", () => {
+    const record = {
+      type: "NAT",
+      answer: 0.9505,
+      tolerance: { lower: 0.949, upper: 0.952, abs: 0.0015 },
+    };
+    expect(evaluateAnswer(record, 0.949).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.9505).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.952).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.948).correct).toBe(false);
+    expect(evaluateAnswer(record, 0.953).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 2 CS Q10 (go:460825) as MCQ with Option A correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, "A").correct).toBe(true);
+    expect(evaluateAnswer(record, "a").correct).toBe(true);
+    expect(evaluateAnswer(record, "B").correct).toBe(false);
+    expect(evaluateAnswer(record, "C").correct).toBe(false);
+    expect(evaluateAnswer(record, "D").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 2 CS Q18 (go:460817) as MSQ with Option D correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["D"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["d"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "D"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["D", "C"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 2 CS Q27 (go:460808) as MCQ with Option C correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, "C").correct).toBe(true);
+    expect(evaluateAnswer(record, "c").correct).toBe(true);
+    expect(evaluateAnswer(record, "A").correct).toBe(false);
+    expect(evaluateAnswer(record, "B").correct).toBe(false);
+    expect(evaluateAnswer(record, "D").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 2 CS Q35 (go:460800) as MSQ with Option A correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["A"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["a"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 2 CS Q37 (go:460798) as MSQ with Option D correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["D"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["d"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["C", "D"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2025 Set 2 CS Q43 (go:460850) as MSQ with Option B correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["B"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["B"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["b"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["C"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
 });
+

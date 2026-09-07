@@ -56,7 +56,7 @@ Before doing research or writing code:
 
 Whenever fixing question answers, converting question types (MCQ/MSQ/NAT/MTA), or repairing formulas/options:
 1. **Follow the Runbook**: Refer to [`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`](file:///docs/QUESTION_DATA_CORRECTION_RUNBOOK.md) for the 6-phase protocol.
-2. **Patch Authoritative Store**: Always update `data/answers/manual-answers-patch-v1.json` and `public/questions-with-answers.json`.
+2. **Patch Authoritative Store**: Always update `data/answers/manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (both `data/` and `public/data/`), runtime answer indices (`public/data/answers/`), and `public/questions-with-answers.json`.
 3. **Rebuild Static Shards**: Run `node scripts/precompute-subtopics.mjs && node scripts/build-public-artifacts.mjs`.
 4. **Add Regression Tests**: Add test cases in `src/utils/evaluateAnswer.test.js` and verify with `npm run test:unit`.
 5. **Sync Memory & Changelog**: Log changes in `docs/CHANGELOG.md`, `.llm-memory/decisions.md` (DEC-XXX), `.llm-memory/progress.md`, and `.llm-memory/bugs.md`.

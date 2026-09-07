@@ -1,5 +1,77 @@
 # Changelog
 
+- **GATE CSE 2025 Set 2 Comprehensive Answer Key Audit & Data Corrections (DEC-062)**:
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2025 Set 2 (General Aptitude Q1–Q10 and Computer Science Q1–Q55 / Official Q11–Q65) against the official GATE 2025 Set 2 answer key as the authoritative source of truth.
+  - *Audit Results*:
+    - 65 / 65 questions mapped 100% confidently to existing `go:<id>` question UIDs and canonical `exam_uid` keys (`cse:2025:set2:ga:q1`–`q10` and `cse:2025:set2:main:q1`–`q55`).
+    - 59 questions were already correct and preserved completely unchanged (zero churn).
+    - 6 questions required correction to achieve 100% parity with the official GATE 2025 Set 2 answer key.
+  - *Questions Corrected*:
+    1. **CS Q10 (`go:460825`, `cse:2025:set2:main:q10` / official Q20)**: Minimum number of comparisons needed to find maximum and minimum of an unordered list of $N$ integers is $\lceil 3N/2 \rceil - 2$. Stored answer was incorrectly Option B. Corrected to **MCQ Option A** (`tolerance: null`).
+    2. **CS Q18 (`go:460817`, `cse:2025:set2:main:q18` / official Q28)**: ISA components ("Which of the following is/are part of an Instruction Set Architecture (ISA)..."). Stored answer was classified as MCQ Option D. Corrected to **MSQ `["D"]`** (`tolerance: null`).
+    3. **CS Q27 (`go:460808`, `cse:2025:set2:main:q27` / official Q37)**: Edge weight positive constant $\alpha$ addition (Shortest path / MST). Stored answer was incorrectly MSQ `["A", "C", "D"]`. Corrected to **MCQ Option C** (`tolerance: null`) per official answer key.
+    4. **CS Q35 (`go:460800`, `cse:2025:set2:main:q35` / official Q45)**: Stack PUSH/POP record structure assertions. Stored answer was classified as MCQ Option A. Corrected to **MSQ `["A"]`** (`tolerance: null`).
+    5. **CS Q37 (`go:460798`, `cse:2025:set2:main:q37` / official Q47)**: Demand paging 3 frames page reference string. Stored answer was classified as MCQ Option D. Corrected to **MSQ `["D"]`** (`tolerance: null`).
+    6. **CS Q43 (`go:460850`, `cse:2025:set2:main:q43` / official Q53)**: Database transactions conflict serializability ("Which of the schedule(s) is/are conflict serializable"). Stored answer was classified as MCQ Option B. Corrected to **MSQ `["B"]`** (`tolerance: null`).
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shard `public/question-detail-shards/2025-s2.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+  - *Verification*: All 607 unit tests passing (76 test files), `npm run qa:validate-data` clean (parity intact), `npm run typecheck` clean (0 errors), 65/65 Set 2 questions verified against official key.
+
+- **Question Data Integrity & Answer Key Corrections for `go:118623`, `go:3700`, and `go:460070` (DEC-061)**:
+  - *Context*: Three verified answer-key errors were identified where correct official options were evaluated as incorrect:
+    1. `go:118623` (GATE CSE 2017 Set 2 Question 30, Algorithms - Recurrence Relations): Stored answer was Option A ($\Theta(\log \log n)$).
+    2. `go:3700` (GATE IT 2004 Question 57 / CSE 2004, Algorithms - Recurrence Matching): Stored answer was Option C (P-III, Q-II, R-IV, S-I).
+    3. `go:460070` (GATE CSE 2025 Set 1 Question 10, Algorithms - Divide & Conquer Recurrence): Stored answer was Option B ($\Theta(n 2^n)$).
+  - *Mathematical & Official Derivations*:
+    1. **`go:118623` (GATE CSE 2017 Set 2 Q30)**:
+       - Recurrence: $T(n) = 2T(\sqrt{n}) + 1$ for $n > 2$ with $T(n) = 2$ for $0 < n \le 2$.
+       - Let $n = 2^m \implies m = \log_2 n$.
+       - Then $S(m) = T(2^m) = 2T(2^{m/2}) + 1 = 2S(m/2) + 1$.
+       - By Master's Theorem ($a=2, b=2, m^{\log_2 2} = m^1$ vs $f(m)=1=O(m^0)$), $S(m) = \Theta(m)$.
+       - Substituting back $m = \log_2 n$ yields $T(n) = \Theta(\log n)$, which uniquely matches **Option B** ($\Theta(\log n)$).
+    2. **`go:3700` (GATE IT 2004 Q57)**:
+       - P. Binary Search: $T(n) = T(n/2) + 1 \implies \text{IV}$.
+       - Q. Merge Sort: $T(n) = 2T(n/2) + cn \implies \text{III}$.
+       - R. Quick Sort (partition at index $k$): $T(n) = T(n-k) + T(k) + cn \implies \text{I}$.
+       - S. Tower of Hanoi: $T(n) = 2T(n-1) + 1 \implies \text{II}$.
+       - The unique matching is $\text{P-IV, Q-III, R-I, S-II}$, which matches **Option B**.
+    3. **`go:460070` (GATE CSE 2025 Set 1 Q10)**:
+       - Recurrence: $T(n) = 2T(n-1) + n 2^n$ for $n > 0$, with $T(0) = 1$.
+       - Divide by $2^n$: $\frac{T(n)}{2^n} = \frac{T(n-1)}{2^{n-1}} + n$.
+       - Defining $S(n) = \frac{T(n)}{2^n}$ gives $S(n) = S(n-1) + n$, with $S(0) = 1$.
+       - Telescoping yields $S(n) = 1 + \sum_{i=1}^n i = 1 + \frac{n(n+1)}{2} = \Theta(n^2)$.
+       - Thus, $T(n) = 2^n \cdot S(n) = \Theta(n^2 2^n)$, which uniquely matches **Option A**.
+  - *Resolution*:
+    - Corrected answers across authoritative source patch `data/answers/manual-answers-patch-v1.json` and `data/answers/answers_by_question_uid_v1.json`.
+    - Synchronized across runtime answer indices `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json` (`cse:2017:set2:main:q30` $\rightarrow$ B, `cse:2025:set1:main:q10` $\rightarrow$ A), and `public/data/answers/answers_master_v1.json` (`v2:1.27.28` $\rightarrow$ B, `v2:1.27.34` $\rightarrow$ B, `v2:1.27.33` $\rightarrow$ A).
+    - Synchronized master question bank `public/questions-with-answers.json`.
+    - Regenerated detail shards `public/question-detail-shards/2017-s2.json`, `2004-s0.json`, and `2025-s1.json`, as well as `public/mock_catalog_v1.json`.
+    - Added comprehensive regression tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+  - *Verification*: All 586 unit tests passing (76 test files), `npm run qa:validate-data` clean, `npm run typecheck` clean (0 errors), confirmed no stale keys remain.
+
+- **GATE CSE 2025 Set 1 Comprehensive Answer Key Audit & Data Corrections (DEC-060)**:
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2025 Set 1 (General Aptitude Q1–Q10 and Computer Science Q1–Q55 / Official Q11–Q65) against the official GATE 2025 Set 1 answer key as the authoritative source of truth.
+  - *Audit Results*:
+    - 65 / 65 questions mapped 100% confidently to existing `go:<id>` question UIDs and canonical `exam_uid` keys.
+    - 59 questions were already correct and preserved completely unchanged (zero churn).
+    - 6 questions required correction to achieve 100% parity with the official GATE 2025 Set 1 answer key.
+  - *Questions Corrected*:
+    1. **GA Q9 (`go:460092`, `cse:2025:set1:ga:q9`)**: Paper folding pattern question with 4 options (A, B, C, D) was incorrectly stored as NAT `1065`. Corrected to **MCQ Option A** (`tolerance: null`).
+    2. **CS Q39 (`go:460041`, `cse:2025:set1:main:q39` / official Q49)**: Functions on set $A=\{0, 1, 2, 3, \ldots\}$ composition question was classified as single-choice MCQ. Corrected to **MSQ `["B"]`** per official key.
+    3. **CS Q55 (`go:460025`, `cse:2025:set1:main:q55` / official Q65)**: Double hashing scheme question official accepted range is `10 to 11`. Stored answer had collapsed this to single integer `10`, rejecting valid candidate entries like `11` or `10.5`. Corrected to NAT range `[10, 11]` (`answer: 10.5, tolerance: { lower: 10, upper: 11, abs: 0.5 }`).
+    4. **CS Q48 (`go:460032`, `cse:2025:set1:main:q48` / official Q58)**: Probability question official accepted range is `0.300 to 0.302`. Stored answer `0.302 +/- 0.001` accepted `[0.301, 0.303]`, rejecting valid lower boundary `0.300`. Corrected to NAT range `[0.300, 0.302]` (`answer: 0.301, tolerance: { lower: 0.300, upper: 0.302, abs: 0.001 }`).
+    5. **CS Q22 (`go:460058`, `cse:2025:set1:main:q22` / official Q32)**: Probability of symmetric matrix official accepted range is `0.49 to 0.51`. Due to IEEE 754 float subtraction (`0.5 - 0.49 = 0.010000000000000009 > 0.01`), boundary values 0.49 and 0.51 failed evaluation. Corrected to explicit NAT range `tolerance: { lower: 0.49, upper: 0.51, abs: 0.01 }`.
+    6. **CS Q46 (`go:460034`, `cse:2025:set1:main:q46` / official Q56)**: Memory latency probability official accepted range is `0.949 to 0.952`. Boundary value `0.952` failed evaluation due to floating point subtraction. Corrected to explicit NAT range `tolerance: { lower: 0.949, upper: 0.952, abs: 0.0015 }`.
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shard `2025-s1.json`, mock catalog `mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+  - *Verification*: All 595 unit tests passing (76 test files), `npm run qa:validate-data` clean (parity intact), `npm run typecheck` clean (0 errors), 65/65 questions verified against official key.
+
 - **Question Data Integrity & Answer Key Correction for `go:460047` (DEC-058)**:
   - *Context*: Question `go:460047` (GATE CSE 2025 Set 1 Question 33, Algorithms - Breadth First Search & Graph Diameter) was incorrectly evaluating valid Option C ("The height of T is at least 15.") as incorrect because legacy answer data stored Option B ("The height of T is exactly 30.").
   - *Mathematical & Official Derivation*:
