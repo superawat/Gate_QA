@@ -1640,7 +1640,7 @@
     "cse:2020:set1:main:q2": {
       "answer_uid": "v2:1.27.29",
       "type": "MCQ",
-      "answer": "C",
+      "answer": "A",
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -1699,8 +1699,8 @@
     },
     "cse:2020:set1:main:q7": {
       "answer_uid": "manual:go:333224",
-      "type": "MCQ",
-      "answer": "B",
+      "type": "MTA",
+      "answer": "MTA",
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -1820,9 +1820,11 @@
     "cse:2020:set1:main:q17": {
       "answer_uid": "manual:go:333214",
       "type": "NAT",
-      "answer": 0.1254,
+      "answer": 0.125,
       "tolerance": {
-        "abs": 0.0005000000000000074
+        "lower": 0.125,
+        "upper": 0.125,
+        "abs": 0.005
       },
       "source": {
         "kind": "question_uid",
@@ -2127,11 +2129,8 @@
     },
     "cse:2019:set1:main:q12": {
       "answer_uid": "v1:2.4.25",
-      "type": "MSQ",
-      "answer": [
-        "C",
-        "D"
-      ],
+      "type": "MCQ",
+      "answer": "D",
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -2233,9 +2232,11 @@
     "cse:2019:set1:main:q22": {
       "answer_uid": "v2:6.24.42",
       "type": "NAT",
-      "answer": 6.2446,
+      "answer": 0.503,
       "tolerance": {
-        "abs": 0.01
+        "lower": 0.502,
+        "upper": 0.504,
+        "abs": 0.001
       },
       "source": {
         "kind": "question_uid",
@@ -2358,9 +2359,11 @@
     },
     "cse:2018:set1:main:q47": {
       "answer_uid": "v2:1.24.26",
-      "type": "MCQ",
-      "answer": "D",
-      "tolerance": null,
+      "type": "NAT",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.01
+      },
       "source": {
         "kind": "question_uid",
         "question_uids": [
@@ -2385,7 +2388,7 @@
     "cse:2018:set1:main:q45": {
       "answer_uid": "v2:1.28.4",
       "type": "NAT",
-      "answer": 60,
+      "answer": 10230,
       "tolerance": {
         "abs": 0.01
       },
@@ -2399,9 +2402,11 @@
     "cse:2018:set1:main:q44": {
       "answer_uid": "manual:go:204119",
       "type": "NAT",
-      "answer": 0.605,
+      "answer": 0.61,
       "tolerance": {
-        "abs": 0.0050000000000000044
+        "lower": 0.6,
+        "upper": 0.62,
+        "abs": 0.01
       },
       "source": {
         "kind": "question_uid",
@@ -12019,9 +12024,22 @@
     "cse:2020:set1:main:q21": {
       "answer_uid": "v2:2.4.53",
       "type": "NAT",
-      "answer": 2454,
+      "answer": 13.3,
       "tolerance": {
-        "abs": 0.01
+        "ranges": [
+          {
+            "min": 13.3,
+            "max": 13.3,
+            "lower": 13.3,
+            "upper": 13.3
+          },
+          {
+            "min": 13.5,
+            "max": 13.5,
+            "lower": 13.5,
+            "upper": 13.5
+          }
+        ]
       },
       "source": {
         "kind": "question_uid",
@@ -12255,7 +12273,7 @@
     "cse:2020:set1:main:q40": {
       "answer_uid": "v2:1.30.5",
       "type": "MCQ",
-      "answer": "C",
+      "answer": "A",
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -12377,7 +12395,7 @@
     "cse:2020:set1:main:q49": {
       "answer_uid": "v2:1.24.28",
       "type": "NAT",
-      "answer": 3,
+      "answer": 99,
       "tolerance": {
         "abs": 0.01
       },
@@ -12391,9 +12409,9 @@
     "cse:2020:set1:main:q50": {
       "answer_uid": "manual:go:333181",
       "type": "NAT",
-      "answer": 5.255,
+      "answer": 5.25,
       "tolerance": {
-        "abs": 0.004999999999999893
+        "abs": 0.01
       },
       "source": {
         "kind": "question_uid",
@@ -12405,9 +12423,11 @@
     "cse:2019:set1:main:q20": {
       "answer_uid": "v2:1.26.14",
       "type": "NAT",
-      "answer": 0,
+      "answer": 0.08,
       "tolerance": {
-        "abs": 0.01
+        "lower": 0.08,
+        "upper": 0.08,
+        "abs": 0.005
       },
       "source": {
         "kind": "question_uid",
@@ -12671,7 +12691,9 @@
       "type": "NAT",
       "answer": 4.05,
       "tolerance": {
-        "abs": 0.04999999999999982
+        "lower": 4,
+        "upper": 4.1,
+        "abs": 0.05
       },
       "source": {
         "kind": "question_uid",
@@ -12781,7 +12803,7 @@
     "cse:2019:set1:main:q50": {
       "answer_uid": "v2:6.5.7",
       "type": "NAT",
-      "answer": 3,
+      "answer": 4,
       "tolerance": {
         "abs": 0.01
       },
@@ -12843,7 +12865,7 @@
     "cse:2018:set1:main:q31": {
       "answer_uid": "v2:1.22.1",
       "type": "MCQ",
-      "answer": "B",
+      "answer": "C",
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -12917,6 +12939,8 @@
       "type": "NAT",
       "answer": 34.5,
       "tolerance": {
+        "lower": 34,
+        "upper": 35,
         "abs": 0.5
       },
       "source": {
@@ -12945,6 +12969,8 @@
       "type": "NAT",
       "answer": 59.5,
       "tolerance": {
+        "lower": 59,
+        "upper": 60,
         "abs": 0.5
       },
       "source": {
@@ -13041,9 +13067,11 @@
     "cse:2018:set1:main:q16": {
       "answer_uid": "manual:go:204090",
       "type": "NAT",
-      "answer": 0.2885,
+      "answer": 0.285,
       "tolerance": {
-        "abs": 0.0005000000000000004
+        "lower": 0.27,
+        "upper": 0.3,
+        "abs": 0.015
       },
       "source": {
         "kind": "question_uid",
@@ -13055,9 +13083,11 @@
     "cse:2018:set1:main:q15": {
       "answer_uid": "manual:go:204089",
       "type": "NAT",
-      "answer": 0.0231,
+      "answer": 0.0225,
       "tolerance": {
-        "abs": 0.0000999999999999994
+        "lower": 0.021,
+        "upper": 0.024,
+        "abs": 0.0015
       },
       "source": {
         "kind": "question_uid",
@@ -24443,8 +24473,10 @@
     "cse:2020:set1:main:q53": {
       "answer_uid": "manual:go:333178",
       "type": "NAT",
-      "answer": 155.5,
+      "answer": 155,
       "tolerance": {
+        "lower": 154.5,
+        "upper": 155.5,
         "abs": 0.5
       },
       "source": {
@@ -33331,6 +33363,46 @@
         "kind": "question_uid",
         "question_uids": [
           "go:473"
+        ]
+      }
+    },
+    "cse:2019:set1:main:q54": {
+      "answer_uid": "manual:go:302794",
+      "type": "NAT",
+      "answer": 97,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "kind": "question_uid",
+        "question_uids": [
+          "go:302794"
+        ]
+      }
+    },
+    "cse:2019:set1:main:q55": {
+      "answer_uid": "manual:go:302793",
+      "type": "NAT",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "kind": "question_uid",
+        "question_uids": [
+          "go:302793"
+        ]
+      }
+    },
+    "cse:2018:set1:main:q41": {
+      "answer_uid": "manual:go:204115",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "question_uid",
+        "question_uids": [
+          "go:204115"
         ]
       }
     }

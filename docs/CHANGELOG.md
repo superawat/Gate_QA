@@ -1,5 +1,74 @@
 # Changelog
 
+- **GATE CSE 2018 Comprehensive Answer Key Audit & Data Corrections (DEC-071)**:
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2018 (General Aptitude Q1–Q10 and Computer Science Q1–Q55) against the official GATE 2018 answer key (IIT Guwahati) as the authoritative source of truth.
+  - *Audit Results*:
+    - 65 / 65 questions mapped 100% confidently to persistent `go:<id>` question UIDs (`go:204062`–`go:204071` for GA Q1–Q10, `go:204075`–`go:204130` for CS Q1–Q55) and canonical `exam_uid` keys (`cse:2018:set1:main:qga-1`–`qga-10` and `cse:2018:set1:main:q1`–`q55`).
+    - 61 questions were already matching and preserved completely unchanged (zero churn).
+    - 4 questions had discrepancies and were corrected; 5 NAT ranges were hardened.
+    - Normalized `year: "gatecse-2018"` (string) to integer `year: 2018` across all 65 questions in `public/questions-with-answers.json`.
+  - *Questions Corrected (4 items + 5 range hardenings)*:
+    1. **CS Q31 (`go:204105`, `cse:2018:set1:main:q31`)**: Matrix Chain Multiplication explicitly computed pair for $F_1(2\times 25), F_2(25\times 3), F_3(3\times 16), F_4(16\times 1), F_5(1\times 1000)$. Corrected from legacy Option B to **MCQ Option C** ($F_3F_4$ only).
+    2. **CS Q41 (`go:204115`, `cse:2018:set1:main:q41`)**: Relational algebra non-equivalence with $Q: r \bowtie (\sigma_{B<5}(s))$. Corrected from legacy Option D to **MCQ Option C** ($r \text{ LOJ } (\sigma_{B<5}(s))$).
+    3. **CS Q45 (`go:204120`, `cse:2018:set1:main:q45`)**: Pseudo-code recursive `Count(1024, 1024)` asterisks printed count ($\log_2(1024) \times 1023 = 10 \times 1023 = 10230$). Corrected from legacy 60 to **NAT `10230`** (`tolerance: { abs: 0.01 }`).
+    4. **CS Q47 (`go:204122`, `cse:2018:set1:main:q47`)**: Value for $x$ maximizing number of MWSTs (number of MWSTs of graph $G$). Converted from legacy misclassified MCQ "D" to **NAT `4`** (`tolerance: { abs: 0.01 }`).
+    5. **CS Q15 (`go:204089`, `cse:2018:set1:main:q15`)**: Probability NAT range hardened to official accepted interval `[0.021, 0.024]` (**NAT `0.0225` with `tolerance: { lower: 0.021, upper: 0.024, abs: 0.0015 }`**).
+    6. **CS Q16 (`go:204090`, `cse:2018:set1:main:q16`)**: Calculus integration NAT range hardened to official accepted interval `[0.27, 0.30]` (**NAT `0.285` with `tolerance: { lower: 0.27, upper: 0.30, abs: 0.015 }`**).
+    7. **CS Q23 (`go:204097`, `cse:2018:set1:main:q23`)**: Memory interfacing NAT range hardened to official accepted interval `[59.0, 60.0]` (**NAT `59.5` with `tolerance: { lower: 59.0, upper: 60.0, abs: 0.5 }`**).
+    8. **CS Q25 (`go:204099`, `cse:2018:set1:main:q25`)**: TCP congestion window NAT range hardened to official accepted interval `[34, 35]` (**NAT `34.5` with `tolerance: { lower: 34, upper: 35, abs: 0.5 }`**).
+    9. **CS Q44 (`go:204119`, `cse:2018:set1:main:q44`)**: Conditional probability NAT range hardened to official accepted interval `[0.60, 0.62]` (**NAT `0.61` with `tolerance: { lower: 0.60, upper: 0.62, abs: 0.01 }`**).
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shard `public/question-detail-shards/2018-s0.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`.
+  - *Verification*: All 670 unit tests passing (76 test files), `npm run typecheck` clean (0 errors), 65/65 questions verified against official key with 0 discrepancies.
+
+
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2019 (General Aptitude Q1–Q10 and Computer Science Q1–Q55) against the official GATE 2019 answer key (IIT Madras) as the authoritative source of truth.
+  - *Audit Results*:
+    - 65 / 65 questions mapped 100% confidently to persistent `go:<id>` question UIDs (`go:302872`–`go:302863` for GA Q1–Q10, `go:302847`–`go:302793` for CS Q1–Q55) and canonical `exam_uid` keys (`cse:2019:set1:main:qga-1`–`qga-10` and `cse:2019:set1:main:q1`–`q55`).
+    - 60 questions were already matching and preserved completely unchanged (zero churn).
+    - 5 questions had discrepancies and were corrected; 2 additional NAT ranges were hardened.
+    - Normalized `year: "gatecse-2019"` (string) to integer `year: 2019` across all 65 questions in `public/questions-with-answers.json`.
+  - *Questions Corrected (5 items + 2 range hardenings)*:
+    1. **CS Q12 (`go:302836`, `cse:2019:set1:main:q12`)**: Number of Hamiltonian cycles in undirected complete graph $K_n$ ($\frac{(n-1)!}{2}$). Converted from legacy `MSQ ["C", "D"]` to **MCQ Option D**.
+    2. **CS Q20 (`go:302828`, `cse:2019:set1:main:q20`)**: Probability pivot placed in worst possible location in 25-element Quicksort ($2/25 = 0.08$). Corrected from legacy 0 to **NAT `0.08`** (`tolerance: { lower: 0.08, upper: 0.08, abs: 0.005 }`).
+    3. **CS Q22 (`go:302826`, `cse:2019:set1:main:q22`)**: Probability two numbers from $\{1..13\}$ have same 4-bit MSB ($85/169 \approx 0.503$). Hardened from wide range `[0.5, 0.51]` to official accepted range **NAT `0.503` with `tolerance: { lower: 0.502, upper: 0.504, abs: 0.001 }`**.
+    4. **CS Q42 (`go:302806`, `cse:2019:set1:main:q42`)**: Official accepted range `[4.0, 4.1]`. Centered and hardened to **NAT `4.05` with `tolerance: { lower: 4.0, upper: 4.1, abs: 0.05 }`**.
+    5. **CS Q50 (`go:302798`, `cse:2019:set1:main:q50`)**: Minimum 2-input NOR gates to implement 4-variable XOR/XNOR function $\Sigma(0,2,5,7,8,10,13,15)$ with complements available ($B \odot D$). Corrected from legacy 3 to **NAT `4`** (`tolerance: { abs: 0.01 }`).
+    6. **CS Q54 (`go:302794`, `cse:2019:set1:main:q54`)**: RSA public modulus $n=3007, \phi(n)=2880$, prime factor greater than 50 ($97 \times 31 = 3007$). Restored missing answer key to **NAT `97`** (`tolerance: { abs: 0.01 }`).
+    7. **CS Q55 (`go:302793`, `cse:2019:set1:main:q55`)**: Relational algebra query tuples count. Hardened to **NAT `1` with `tolerance: { abs: 0.01 }`**.
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shard `public/question-detail-shards/2019-s0.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`.
+  - *Verification*: All 660 unit tests passing (76 test files), `npm run typecheck` clean (0 errors), 65/65 questions verified against official key with 0 discrepancies.
+
+- **GATE CSE 2020 Comprehensive Answer Key Audit & Data Corrections (DEC-069)**:
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2020 (General Aptitude Q1–Q10 and Computer Science Q1–Q55) against the official GATE 2020 answer key (IIT Delhi) as the authoritative source of truth.
+  - *Audit Results*:
+    - 65 / 65 questions mapped 100% confidently to persistent `go:<id>` question UIDs (`go:333240`–`go:333231` for GA Q1–Q10, `go:333230`–`go:333176` for CS Q1–Q55) and canonical `exam_uid` keys (`cse:2020:set1:main:qga-1`–`qga-10` and `cse:2020:set1:main:q1`–`q55`).
+    - 57 questions were already matching and preserved completely unchanged (zero churn).
+    - 8 questions had discrepancies and were corrected; 2 special cases (CS Q7 MTA and CS Q21 dual NAT values) were implemented.
+    - Normalized `year: "gatecse-2020"` (string) to integer `year: 2020` across all 65 questions in `public/questions-with-answers.json`.
+  - *Questions Corrected (8 items)*:
+    1. **CS Q2 (`go:333229`, `cse:2020:set1:main:q2`)**: Recurrence $T(n) = T(n^{1/a}) + 1, T(b) = 1$. Corrected from legacy Option C to **MCQ Option A** ($\Theta(\log_a \log_b n)$).
+    2. **CS Q7 (`go:333224`, `cse:2020:set1:main:q7`)**: Regular expression for odd number of 1s. Converted from Option B to **Marks to All (`type: "MTA"`, `answer: "MTA"` / Special Case)**.
+    3. **CS Q17 (`go:333214`, `cse:2020:set1:main:q17`)**: Probability that binary relation on 3-element set is reflexive ($2^6 / 2^9 = 1/8 = 0.125$). Corrected from legacy scraping artifact `0.1254` to **NAT `0.125`** with explicit bounds `tolerance: { lower: 0.125, upper: 0.125, abs: 0.005 }`.
+    4. **CS Q21 (`go:333210`, `cse:2020:set1:main:q21`)**: Cache memory access time AMAT. Corrected from corrupt legacy value `2454` to official dual accepted values **`13.3 and 13.5`** with multi-range schema `tolerance: { ranges: [{ min: 13.3, max: 13.3, lower: 13.3, upper: 13.3 }, { min: 13.5, max: 13.5, lower: 13.5, upper: 13.5 }] }` (Special Case).
+    5. **CS Q40 (`go:333191`, `cse:2020:set1:main:q40`)**: Graph shortest path invariance under potential function reweighting $w'(u,v) = w(u,v) + f(u) - f(v)$. Corrected from legacy Option C to **MCQ Option A** ("for every $f: V \to \mathbb{R}$").
+    6. **CS Q49 (`go:333182`, `cse:2020:set1:main:q49`)**: Minimum spanning tree weight of complete graph on 100 vertices with $w(v_i, v_j) = |i-j|$ ($99 \times 1 = 99$). Corrected from legacy 3 to **NAT `99`** (`tolerance: { abs: 0.01 }`).
+    7. **CS Q50 (`go:333181`, `cse:2020:set1:main:q50`)**: Absolute difference between average turnaround times of SJF and RR CPU scheduling ($|10.5 - 15.75| = 5.25$). Corrected from legacy `5.255` to **NAT `5.25`** (`tolerance: { abs: 0.01 }`).
+    8. **CS Q53 (`go:333178`, `cse:2020:set1:main:q53`)**: Paging system AMAT with TLB and page faults. Official accepted range is `[154.5, 155.5]`. Centered and hardened from shifted legacy range `[155.0, 156.0]` to **NAT `155.0` with `tolerance: { lower: 154.5, upper: 155.5, abs: 0.5 }`**.
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shard `public/question-detail-shards/2020-s0.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`.
+  - *Verification*: All 653 unit tests passing (76 test files), `npm run typecheck` clean (0 errors), 65/65 questions verified against official key with 0 discrepancies.
+
 - **GATE CSE 2021 Session 1 & Session 2 Comprehensive Answer Key Audit, Evaluator Schema Enhancement & Data Corrections (DEC-068)**:
   - *Context*: Complete audit of all 130 questions across both sessions of GATE CSE 2021 (Session 1 Q1–Q65 and Session 2 Q1–Q65) against the official GATE 2021 CSE final answer keys (IIT Bombay) as the authoritative source of truth.
   - *Audit Results*:

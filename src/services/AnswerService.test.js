@@ -869,5 +869,172 @@ describe("AnswerService", () => {
       tolerance: { abs: 0.01 },
     });
   });
+
+  test("resolves GATE CSE 2020 CS Q7 (go:333224) as MTA", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:333224": {
+        answer_uid: "manual:go:333224",
+        type: "MTA",
+        answer: "MTA",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:333224",
+      link: "https://gateoverflow.in/333224/gate-cse-2020-question-7",
+      title: "GATE CSE 2020 | Question: 7",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:333224",
+      type: "MTA",
+      answer: "MTA",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2020 CS Q21 (go:333210) as dual accepted NAT ranges", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:333210": {
+        answer_uid: "manual:go:333210",
+        type: "NAT",
+        answer: 13.3,
+        tolerance: {
+          ranges: [
+            { min: 13.3, max: 13.3, lower: 13.3, upper: 13.3 },
+            { min: 13.5, max: 13.5, lower: 13.5, upper: 13.5 },
+          ],
+        },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:333210",
+      link: "https://gateoverflow.in/333210/gate-cse-2020-question-21",
+      title: "GATE CSE 2020 | Question: 21",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:333210",
+      type: "NAT",
+      answer: 13.3,
+      tolerance: {
+        ranges: [
+          { min: 13.3, max: 13.3, lower: 13.3, upper: 13.3 },
+          { min: 13.5, max: 13.5, lower: 13.5, upper: 13.5 },
+        ],
+      },
+    });
+  });
+
+  test("resolves GATE CSE 2019 CS Q12 (go:302836) as MCQ Option D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:302836": {
+        answer_uid: "manual:go:302836",
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:302836",
+      link: "https://gateoverflow.in/302836/gate-cse-2019-question-12",
+      title: "GATE CSE 2019 | Question: 12",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:302836",
+      type: "MCQ",
+      answer: "D",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2019 CS Q54 (go:302794) as NAT 97", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:302794": {
+        answer_uid: "manual:go:302794",
+        type: "NAT",
+        answer: 97,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:302794",
+      link: "https://gateoverflow.in/302794/gate-cse-2019-question-54",
+      title: "GATE CSE 2019 | Question: 54",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:302794",
+      type: "NAT",
+      answer: 97,
+      tolerance: { abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2018 CS Q31 (go:204105) as MCQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:204105": {
+        answer_uid: "manual:go:204105",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:204105",
+      link: "https://gateoverflow.in/204105/gate-cse-2018-question-31",
+      title: "GATE CSE 2018 | Question: 31",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:204105",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2018 CS Q45 (go:204120) as NAT 10230", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:204120": {
+        answer_uid: "manual:go:204120",
+        type: "NAT",
+        answer: 10230,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:204120",
+      link: "https://gateoverflow.in/204120/gate-cse-2018-question-45",
+      title: "GATE CSE 2018 | Question: 45",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:204120",
+      type: "NAT",
+      answer: 10230,
+      tolerance: { abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2018 CS Q47 (go:204122) as NAT 4", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:204122": {
+        answer_uid: "manual:go:204122",
+        type: "NAT",
+        answer: 4,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:204122",
+      link: "https://gateoverflow.in/204122/gate-cse-2018-question-47",
+      title: "GATE CSE 2018 | Question: 47",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:204122",
+      type: "NAT",
+      answer: 4,
+      tolerance: { abs: 0.01 },
+    });
+  });
 });
+
+
+
 

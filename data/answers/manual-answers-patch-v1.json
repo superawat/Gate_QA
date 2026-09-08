@@ -2388,9 +2388,10 @@
       "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/333238/gate-cse-2020-question-ga-3"
     },
     "go:333224": {
-      "type": "MCQ",
-      "answer": "B",
-      "note": "auto_backfill:selected_answer_tail_option:https://gateoverflow.in/333224/gate-cse-2020-question-7"
+      "type": "MTA",
+      "answer": "MTA",
+      "tolerance": null,
+      "note": "gate_cse_2020_q7:marks_to_all:official_gate_key_mta"
     },
     "go:333197": {
       "type": "MCQ",
@@ -3373,19 +3374,23 @@
     },
     "go:204090": {
       "type": "NAT",
-      "answer": 0.2885,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/204090/gate-cse-2018-question-16",
+      "answer": 0.285,
       "tolerance": {
-        "abs": 0.0005000000000000004
-      }
+        "lower": 0.27,
+        "upper": 0.3,
+        "abs": 0.015
+      },
+      "note": "gate_cse_2018_q16:nat_range_hardening:official_gate_key_0.27_to_0.30"
     },
     "go:204089": {
       "type": "NAT",
-      "answer": 0.0231,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/204089/gate-cse-2018-question-15",
+      "answer": 0.0225,
       "tolerance": {
-        "abs": 0.0000999999999999994
-      }
+        "lower": 0.021,
+        "upper": 0.024,
+        "abs": 0.0015
+      },
+      "note": "gate_cse_2018_q15:nat_range_hardening:official_gate_key_0.021_to_0.024"
     },
     "go:118328": {
       "type": "NAT",
@@ -3406,50 +3411,60 @@
     "go:204099": {
       "type": "NAT",
       "answer": 34.5,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/204099/gate-cse-2018-question-25",
       "tolerance": {
+        "lower": 34,
+        "upper": 35,
         "abs": 0.5
-      }
+      },
+      "note": "gate_cse_2018_q25:nat_range_hardening:official_gate_key_34_to_35"
     },
     "go:204097": {
       "type": "NAT",
       "answer": 59.5,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/204097/gate-cse-2018-question-23",
       "tolerance": {
+        "lower": 59,
+        "upper": 60,
         "abs": 0.5
-      }
+      },
+      "note": "gate_cse_2018_q23:nat_range_hardening:official_gate_key_59_to_60"
     },
     "go:204119": {
       "type": "NAT",
-      "answer": 0.605,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/204119/gate-cse-2018-question-44",
+      "answer": 0.61,
       "tolerance": {
-        "abs": 0.0050000000000000044
-      }
+        "lower": 0.6,
+        "upper": 0.62,
+        "abs": 0.01
+      },
+      "note": "gate_cse_2018_q44:nat_range_hardening:official_gate_key_0.60_to_0.62"
     },
     "go:302806": {
       "type": "NAT",
       "answer": 4.05,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/302806/gate-cse-2019-question-42",
       "tolerance": {
-        "abs": 0.04999999999999982
-      }
+        "lower": 4,
+        "upper": 4.1,
+        "abs": 0.05
+      },
+      "note": "gate_cse_2019_q42:nat_range_hardening:official_gate_key_4.0_to_4.1"
     },
     "go:333178": {
       "type": "NAT",
-      "answer": 155.5,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/333178/gate-cse-2020-question-53",
+      "answer": 155,
       "tolerance": {
+        "lower": 154.5,
+        "upper": 155.5,
         "abs": 0.5
-      }
+      },
+      "note": "gate_cse_2020_q53:nat_range_centering:official_gate_key_154.5_to_155.5"
     },
     "go:333181": {
       "type": "NAT",
-      "answer": 5.255,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/333181/gate-cse-2020-question-50",
+      "answer": 5.25,
       "tolerance": {
-        "abs": 0.004999999999999893
-      }
+        "abs": 0.01
+      },
+      "note": "gate_cse_2020_q50:nat_answer_precision_fix:official_gate_key_5.25"
     },
     "go:333188": {
       "type": "NAT",
@@ -3461,11 +3476,13 @@
     },
     "go:333214": {
       "type": "NAT",
-      "answer": 0.1254,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/333214/gate-cse-2020-question-17",
+      "answer": 0.125,
       "tolerance": {
-        "abs": 0.0005000000000000074
-      }
+        "lower": 0.125,
+        "upper": 0.125,
+        "abs": 0.005
+      },
+      "note": "gate_cse_2020_q17:nat_answer_correction:official_gate_key_0.125"
     },
     "go:357396": {
       "type": "NAT",
@@ -5000,10 +5017,10 @@
     "go:302794": {
       "type": "NAT",
       "answer": 97,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/302794/gate-cse-2019-question-54",
       "tolerance": {
         "abs": 0.01
-      }
+      },
+      "note": "gate_cse_2019_q54:nat_answer_restoral:official_gate_key_97"
     },
     "go:80029": {
       "type": "MCQ",
@@ -5297,10 +5314,11 @@
       "type": "NAT",
       "answer": 0.503,
       "tolerance": {
-        "min": 0.5,
-        "max": 0.51
+        "lower": 0.502,
+        "upper": 0.504,
+        "abs": 0.001
       },
-      "note": "curated_resolution:manual_probability_derivation:https://gateoverflow.in/302826/gate-cse-2019-question-22 :: Two numbers chosen from {1..13}: 7 numbers have MSB 0 (1 to 7) and 6 numbers have MSB 1 (8 to 13). Total independent pairs = 13 * 13 = 169. Favorable pairs = 7*7 + 6*6 = 85. Probability = 85/169 = 0.502958..., which rounded to 3 decimal places is 0.503."
+      "note": "gate_cse_2019_q22:nat_range_hardening:official_gate_key_0.502_to_0.504"
     },
     "go:1297": {
       "type": "MCQ",
@@ -5469,6 +5487,107 @@
         "abs": 0.01
       },
       "note": "gate_cse_2022_q48:nat:24:directed_spanning_trees_rooted_at_vertex_5"
+    },
+    "go:333229": {
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "note": "gate_cse_2020_q2:answer_correction_c_to_a:official_gate_key_a"
+    },
+    "go:333210": {
+      "type": "NAT",
+      "answer": 13.3,
+      "tolerance": {
+        "ranges": [
+          {
+            "min": 13.3,
+            "max": 13.3,
+            "lower": 13.3,
+            "upper": 13.3
+          },
+          {
+            "min": 13.5,
+            "max": 13.5,
+            "lower": 13.5,
+            "upper": 13.5
+          }
+        ]
+      },
+      "note": "gate_cse_2020_q21:nat_dual_accepted_values:official_gate_key_13.3_and_13.5"
+    },
+    "go:333191": {
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "note": "gate_cse_2020_q40:answer_correction_c_to_a:official_gate_key_a"
+    },
+    "go:333182": {
+      "type": "NAT",
+      "answer": 99,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "note": "gate_cse_2020_q49:nat_answer_correction:official_gate_key_99"
+    },
+    "go:302836": {
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "note": "gate_cse_2019_q12:type_correction_msq_to_mcq:official_gate_key_d"
+    },
+    "go:302828": {
+      "type": "NAT",
+      "answer": 0.08,
+      "tolerance": {
+        "lower": 0.08,
+        "upper": 0.08,
+        "abs": 0.005
+      },
+      "note": "gate_cse_2019_q20:nat_answer_correction:official_gate_key_0.08"
+    },
+    "go:302798": {
+      "type": "NAT",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "note": "gate_cse_2019_q50:nat_answer_correction:official_gate_key_4"
+    },
+    "go:302793": {
+      "type": "NAT",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "note": "gate_cse_2019_q55:nat_tolerance_hardening:official_gate_key_1"
+    },
+    "go:204105": {
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "note": "gate_cse_2018_q31:mcq_answer_correction:official_gate_key_c"
+    },
+    "go:204115": {
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "note": "gate_cse_2018_q41:mcq_answer_correction:official_gate_key_c"
+    },
+    "go:204120": {
+      "type": "NAT",
+      "answer": 10230,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "note": "gate_cse_2018_q45:nat_answer_correction:official_gate_key_10230"
+    },
+    "go:204122": {
+      "type": "NAT",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "note": "gate_cse_2018_q47:type_correction_mcq_to_nat:official_gate_key_4"
     }
   },
   "patches": {
