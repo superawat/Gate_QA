@@ -13,6 +13,7 @@ let filterState = {
             { key: 'cse:2026:set-2', label: '2026 Set 2', year: 2026, set: 2, track: 'cse' },
             { key: 'cse:2026:set-1', label: '2026 Set 1', year: 2026, set: 1, track: 'cse' },
             { key: 'da:2026:set-1', label: '2026 Set 1', year: 2026, set: 1, track: 'da' },
+            { key: 'cse:2024:additional', label: '2024 Additional Questions', year: 2024, isAdditional: true, track: 'cse' },
         ],
     },
     filters: { selectedYearSets: [] },
@@ -42,5 +43,16 @@ describe('YearFilter', () => {
         fireEvent.click(screen.getAllByText('2026 Set 1')[0]);
 
         expect(updateFilters).toHaveBeenLastCalledWith({ selectedYearSets: ['cse:2026:set-1'] });
+    });
+
+    test('strips redundant Additional Questions text and renders GA • Additional badge', () => {
+        render(<YearFilter />);
+
+        expect(screen.getByText('2024')).toBeTruthy();
+        expect(screen.queryByText('2024 Additional Questions')).toBeNull();
+        expect(screen.getByText('GA • Additional')).toBeTruthy();
+
+        fireEvent.click(screen.getByText('2024'));
+        expect(updateFilters).toHaveBeenLastCalledWith({ selectedYearSets: ['cse:2024:additional'] });
     });
 });
