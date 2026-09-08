@@ -870,5 +870,169 @@ describe("evaluateAnswer", () => {
     expect(evaluateAnswer(record, 2.3739).correct).toBe(false);
     expect(evaluateAnswer(record, 2.3761).correct).toBe(false);
   });
+
+  test("evaluates GATE CSE 2022 GA Q5 (go:371501) as MCQ with Option B correct", () => {
+    const record = {
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, "B").correct).toBe(true);
+    expect(evaluateAnswer(record, "b").correct).toBe(true);
+    expect(evaluateAnswer(record, "A").correct).toBe(false);
+    expect(evaluateAnswer(record, "C").correct).toBe(false);
+    expect(evaluateAnswer(record, "D").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2022 CS Q42 (go:371894) as MSQ with Option A correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["A"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["a"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2022 CS Q48 (go:371888) NAT value 24 (directed spanning trees)", () => {
+    const record = {
+      type: "NAT",
+      answer: 24,
+      tolerance: { abs: 0.01 },
+    };
+    expect(evaluateAnswer(record, 24).correct).toBe(true);
+    expect(evaluateAnswer(record, "24").correct).toBe(true);
+    expect(evaluateAnswer(record, 9).correct).toBe(false);
+    expect(evaluateAnswer(record, 23.9).correct).toBe(false);
+    expect(evaluateAnswer(record, 24.1).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2022 CS Q51 (go:371885) NAT range [1.42, 1.45]", () => {
+    const record = {
+      type: "NAT",
+      answer: 1.435,
+      tolerance: { lower: 1.42, upper: 1.45, abs: 0.015 },
+    };
+    expect(evaluateAnswer(record, 1.42).correct).toBe(true);
+    expect(evaluateAnswer(record, "1.42").correct).toBe(true);
+    expect(evaluateAnswer(record, 1.435).correct).toBe(true);
+    expect(evaluateAnswer(record, 1.45).correct).toBe(true);
+    expect(evaluateAnswer(record, 1.419).correct).toBe(false);
+    expect(evaluateAnswer(record, 1.451).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2022 CS Q49 (go:371887) NAT range [7.07, 7.09]", () => {
+    const record = {
+      type: "NAT",
+      answer: 7.08,
+      tolerance: { lower: 7.07, upper: 7.09, abs: 0.01 },
+    };
+    expect(evaluateAnswer(record, 7.07).correct).toBe(true);
+    expect(evaluateAnswer(record, "7.07").correct).toBe(true);
+    expect(evaluateAnswer(record, 7.08).correct).toBe(true);
+    expect(evaluateAnswer(record, 7.069).correct).toBe(false);
+    expect(evaluateAnswer(record, 7.091).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 1 GA Q9 (go:357468) multi-accepted MCQ C OR D", () => {
+    const record = {
+      type: "MCQ",
+      answer: ["C", "D"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, "C").correct).toBe(true);
+    expect(evaluateAnswer(record, "c").correct).toBe(true);
+    expect(evaluateAnswer(record, "D").correct).toBe(true);
+    expect(evaluateAnswer(record, "d").correct).toBe(true);
+    expect(evaluateAnswer(record, "A").correct).toBe(false);
+    expect(evaluateAnswer(record, "B").correct).toBe(false);
+    expect(evaluateAnswer(record, "").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 1 CS Q23 (go:357428) multi-range NAT [819, 820] OR [205, 205]", () => {
+    const record = {
+      type: "NAT",
+      answer: 819.5,
+      tolerance: {
+        ranges: [
+          { min: 819, max: 820 },
+          { min: 205, max: 205 },
+        ],
+      },
+    };
+    expect(evaluateAnswer(record, 819).correct).toBe(true);
+    expect(evaluateAnswer(record, 819.5).correct).toBe(true);
+    expect(evaluateAnswer(record, 820).correct).toBe(true);
+    expect(evaluateAnswer(record, 205).correct).toBe(true);
+    expect(evaluateAnswer(record, "205").correct).toBe(true);
+    expect(evaluateAnswer(record, 204.9).correct).toBe(false);
+    expect(evaluateAnswer(record, 205.1).correct).toBe(false);
+    expect(evaluateAnswer(record, 818.9).correct).toBe(false);
+    expect(evaluateAnswer(record, 820.1).correct).toBe(false);
+    expect(evaluateAnswer(record, 0).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 1 CS Q9 (go:357443) MCQ C (Insertion sort on sorted array)", () => {
+    const record = { type: "MCQ", answer: "C", tolerance: null };
+    expect(evaluateAnswer(record, "C").correct).toBe(true);
+    expect(evaluateAnswer(record, "D").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 1 CS Q12 (go:357440) MSQ [\"D\"]", () => {
+    const record = { type: "MSQ", answer: ["D"], tolerance: null };
+    expect(evaluateAnswer(record, ["D"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "D"]).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 1 CS Q17 (go:357434) NAT 3", () => {
+    const record = { type: "NAT", answer: 3, tolerance: { abs: 0.01 } };
+    expect(evaluateAnswer(record, 3).correct).toBe(true);
+    expect(evaluateAnswer(record, "3").correct).toBe(true);
+    expect(evaluateAnswer(record, 2).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 1 CS Q41, Q43, Q47 MSQs", () => {
+    expect(evaluateAnswer({ type: "MSQ", answer: ["B"] }, ["B"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["C"] }, ["C"]).correct).toBe(true);
+  });
+
+  test("evaluates GATE CSE 2021 Session 2 CS Q1 (go:357539) MCQ C", () => {
+    const record = { type: "MCQ", answer: "C", tolerance: null };
+    expect(evaluateAnswer(record, "C").correct).toBe(true);
+    expect(evaluateAnswer(record, "A").correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 2 CS Q23 (go:357517) NAT 15", () => {
+    const record = { type: "NAT", answer: 15, tolerance: { abs: 0.01 } };
+    expect(evaluateAnswer(record, 15).correct).toBe(true);
+    expect(evaluateAnswer(record, 14).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2021 Session 2 CS Q36-Q42 MSQs", () => {
+    expect(evaluateAnswer({ type: "MSQ", answer: ["A", "C", "D"] }, ["A", "C", "D"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["B", "C", "D"] }, ["B", "C", "D"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["A", "D"] }, ["A", "D"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["A", "B", "C"] }, ["A", "B", "C"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["A", "D"] }, ["A", "D"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["B", "C"] }, ["B", "C"]).correct).toBe(true);
+    expect(evaluateAnswer({ type: "MSQ", answer: ["A", "B"] }, ["A", "B"]).correct).toBe(true);
+  });
+
+  test("evaluates GATE CSE 2021 Session 2 CS Q53 (go:357484) NAT range [1.87, 1.88]", () => {
+    const record = {
+      type: "NAT",
+      answer: 1.875,
+      tolerance: { lower: 1.87, upper: 1.88, abs: 0.005 },
+    };
+    expect(evaluateAnswer(record, 1.87).correct).toBe(true);
+    expect(evaluateAnswer(record, 1.875).correct).toBe(true);
+    expect(evaluateAnswer(record, 1.88).correct).toBe(true);
+    expect(evaluateAnswer(record, 1.869).correct).toBe(false);
+    expect(evaluateAnswer(record, 1.881).correct).toBe(false);
+  });
 });
+
 

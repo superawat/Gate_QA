@@ -1,5 +1,60 @@
 # Changelog
 
+- **GATE CSE 2021 Session 1 & Session 2 Comprehensive Answer Key Audit, Evaluator Schema Enhancement & Data Corrections (DEC-068)**:
+  - *Context*: Complete audit of all 130 questions across both sessions of GATE CSE 2021 (Session 1 Q1–Q65 and Session 2 Q1–Q65) against the official GATE 2021 CSE final answer keys (IIT Bombay) as the authoritative source of truth.
+  - *Audit Results*:
+    - 130 / 130 questions mapped 100% confidently to persistent `go:<id>` question UIDs and canonical `exam_uid` keys (`cse:2021:set1:ga:q1`–`q10`, `cse:2021:set1:main:q1`–`q55`, `cse:2021:set2:ga:q1`–`q10`, `cse:2021:set2:main:q1`–`q55`).
+    - 111 questions were already matching and preserved completely unchanged (zero churn).
+    - 19 questions had discrepancies and were corrected; 2 official key exceptions (multi-accepted MCQ options and multi-range NATs) were implemented.
+  - *Evaluator & Schema Enhancements*:
+    - Enhanced `src/utils/evaluateAnswer.js` and `src/utils/mockTest.js` to support multi-accepted MCQ alternatives (`Array.isArray(record.answer)` with type `MCQ`) and multi-range NATs (`record.tolerance.ranges`).
+  - *Session 1 (CS-1) Corrections (8 items)*:
+    1. **GA Q9 (`go:357468`, `cse:2021:set1:ga:q9`)**: Official alternative MCQ **C OR D**. Evaluator enhanced and updated to `type: "MCQ"`, `answer: ["C", "D"]`.
+    2. **CS Q9 (`go:357443`, `cse:2021:set1:main:q9` / Off. Q19)**: Sorting algorithm behavior. Corrected from Option D to **MCQ Option C** (Insertion Sort on sorted array).
+    3. **CS Q12 (`go:357440`, `cse:2021:set1:main:q12` / Off. Q22)**: Relational algebra question. Converted from MCQ "D" to **MSQ `["D"]`**.
+    4. **CS Q17 (`go:357434`, `cse:2021:set1:main:q17` / Off. Q27)**: Max-flow / graph problem. Converted from MCQ "C" to **NAT `3`** (`tolerance: { abs: 0.01 }`).
+    5. **CS Q23 (`go:357428`, `cse:2021:set1:main:q23` / Off. Q33)**: Official dual accepted range **`819 to 820 OR 205 to 205`**. Updated to **NAT** with explicit `tolerance: { ranges: [{ min: 819, max: 820 }, { min: 205, max: 205 }] }`.
+    6. **CS Q41 (`go:357410`, `cse:2021:set1:main:q41` / Off. Q51)**: Regular expressions/automata. Converted from MCQ "B" to **MSQ `["B"]`**.
+    7. **CS Q43 (`go:357408`, `cse:2021:set1:main:q43` / Off. Q53)**: Database transaction scheduling. Converted from MCQ "C" to **MSQ `["C"]`**.
+    8. **CS Q47 (`go:357404`, `cse:2021:set1:main:q47` / Off. Q57)**: Cache memory mapping. Converted from MCQ "C" to **MSQ `["C"]`**.
+  - *Session 2 (CS-2) Corrections (11 items)*:
+    9. **CS Q1 (`go:357539`, `cse:2021:set2:main:q1` / Off. Q11)**: Grammar/parsing question. Converted from MSQ `["A", "B", "C"]` to **MCQ Option C**.
+    10. **CS Q13 (`go:357527`, `cse:2021:set2:main:q13` / Off. Q23)**: IP addressing / subnets. Converted from MCQ "D" to **MSQ `["D"]`**.
+    11. **CS Q23 (`go:357517`, `cse:2021:set2:main:q23` / Off. Q33)**: Pipeline execution cycles. Converted from MCQ "D" to **NAT `15`** (`tolerance: { abs: 0.01 }`).
+    12. **CS Q36 (`go:357504`, `cse:2021:set2:main:q36` / Off. Q46)**: Set theory / relations. Converted from MCQ "C" to **MSQ `["A", "C", "D"]`**.
+    13. **CS Q37 (`go:357503`, `cse:2021:set2:main:q37` / Off. Q47)**: Graph theory / Hamiltonian paths. Converted from MCQ "B" to **MSQ `["B", "C", "D"]`**.
+    14. **CS Q38 (`go:357502`, `cse:2021:set2:main:q38` / Off. Q48)**: CPU scheduling algorithms. Converted from MCQ "A" to **MSQ `["A", "D"]`**.
+    15. **CS Q39 (`go:357501`, `cse:2021:set2:main:q39` / Off. Q49)**: Compiler syntax analysis. Converted from MCQ "A" to **MSQ `["A", "B", "C"]`**.
+    16. **CS Q40 (`go:357500`, `cse:2021:set2:main:q40` / Off. Q50)**: Functional dependencies / normal forms. Corrected from MSQ `["A", "C", "D"]` to **MSQ `["A", "D"]`**.
+    17. **CS Q41 (`go:357499`, `cse:2021:set2:main:q41` / Off. Q51)**: Operating systems paging/segmentation. Corrected from MSQ `["B", "C", "D"]` to **MSQ `["B", "C"]`**.
+    18. **CS Q42 (`go:357498`, `cse:2021:set2:main:q42` / Off. Q52)**: Graph connectivity / trees. Corrected from MSQ `["A", "D"]` to **MSQ `["A", "B"]`**.
+    19. **CS Q53 (`go:357484`, `cse:2021:set2:main:q53` / Off. Q63)**: Official accepted range `[1.87, 1.88]`. Corrected from `1.875 +/- 0.01` (`[1.865, 1.885]`) to **NAT `1.875` with `tolerance: { lower: 1.87, upper: 1.88, abs: 0.005 }`**.
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shards `public/question-detail-shards/2021-s1.json`, `public/question-detail-shards/2021-s2.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests & evaluator: `src/utils/evaluateAnswer.js`, `src/utils/mockTest.js`, `src/utils/evaluateAnswer.test.js`.
+  - *Verification*: All 644 unit tests passing (76 test files), `npm run qa:validate-public-parity` clean (all 3,549 counts agree), `npm run typecheck` clean (0 errors), 130/130 questions verified against official key with 0 discrepancies.
+
+- **GATE CSE 2022 Comprehensive Answer Key Audit & Data Corrections (DEC-067)**:
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2022 (General Aptitude Q1–Q10 and Computer Science Q1–Q55 / Official Q11–Q65) against the official GATE 2022 answer key (IIT Kharagpur) as the authoritative source of truth.
+  - *Audit Results*:
+    - 65 / 65 questions mapped 100% confidently to persistent `go:<id>` question UIDs and canonical `exam_uid` keys (`cse:2022:set1:ga:q1`–`q10` and `cse:2022:set1:main:q1`–`q55`).
+    - 61 questions were already matching and preserved completely unchanged (zero churn).
+    - 4 questions had discrepancies and were corrected; 1 additional NAT question was hardened with explicit range tolerances.
+  - *Questions Corrected*:
+    1. **GA Q5 (`go:371501`, `cse:2022:set1:ga:q5` / official Q5)**: Palindrome tile combinations visual options (A, B, C, D). Incorrectly classified as NAT with value `3`. Converted to **MCQ Option B** (`tolerance: null`).
+    2. **CS Q42 (`go:371894`, `cse:2022:set1:main:q42` / official Q52)**: Properties of adjacency matrix $A$ of simple undirected graph. Stored as single-choice MCQ. Converted to **MSQ `["A"]`** (`tolerance: null`).
+    3. **CS Q48 (`go:371888`, `cse:2022:set1:main:q48` / official Q58)**: Directed spanning trees rooted at vertex 5 in lower-triangular directed graph ($1 \times 2 \times 3 \times 4 = 24$). Stored value was legacy 9. Corrected to **NAT `24`** (`tolerance: { abs: 0.01 }`).
+    4. **CS Q51 (`go:371885`, `cse:2022:set1:main:q51` / official Q61)**: Numerical question with official accepted range `[1.42, 1.45]`. Stored `1.435 +/- 0.015` failed lower boundary `1.42` due to floating point subtraction. Hardened to explicit NAT range **`tolerance: { lower: 1.42, upper: 1.45, abs: 0.015 }`**.
+    5. **CS Q49 (`go:371887`, `cse:2022:set1:main:q49` / official Q59)**: Numerical question with official accepted range `[7.07, 7.09]`. Hardened to explicit NAT range **`tolerance: { lower: 7.07, upper: 7.09, abs: 0.01 }`**.
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shard `public/question-detail-shards/2022-s0.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js`.
+  - *Verification*: All 634 unit tests passing (76 test files), `npm run qa:validate-public-parity` clean (all 3,549 counts agree), `npm run typecheck` clean (0 errors), 65/65 questions verified against official key with 0 discrepancies.
+
 - **GATE CSE Canonical Paper Reconstruction & Dataset-Wide Additional GA Pool Architecture (DEC-066)**:
   - *Context*: Comprehensive audit and structural migration of all 3,549 questions across the GateQA question bank to eliminate fake CSE Set 1 / Set 2 classifications, restore the canonical single-paper GATE CSE 2023 dataset (65 questions), and isolate 275 General Aptitude questions borrowed from other GATE branches into dedicated year-level "Additional Questions" pools with preserved provenance.
   - *Root Cause Analysis*:

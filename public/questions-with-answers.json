@@ -61723,7 +61723,7 @@
     "exam_uid": "cse:2021:set1:ga:q9",
     "answer_uid": "v1:8.16.5",
     "answer_meta": {
-      "type": "MSQ",
+      "type": "MCQ",
       "answer": [
         "C",
         "D"
@@ -61734,7 +61734,8 @@
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "MCQ"
   },
   {
     "title": "GATE CSE 2021 Set 1 | GA Question: 10",
@@ -61979,14 +61980,15 @@
     "answer_uid": "v2:1.31.23",
     "answer_meta": {
       "type": "MCQ",
-      "answer": "D",
+      "answer": "C",
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "MCQ"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 10",
@@ -62059,15 +62061,18 @@
     "exam_uid": "cse:2021:set1:main:q12",
     "answer_uid": "v2:10.15.15",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 13",
@@ -62201,15 +62206,18 @@
     "exam_uid": "cse:2021:set1:main:q17",
     "answer_uid": "v2:1.24.29",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "C",
-      "tolerance": null,
+      "type": "NAT",
+      "answer": 3,
+      "tolerance": {
+        "abs": 0.01
+      },
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "NAT"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 18",
@@ -62368,19 +62376,26 @@
     "answer_uid": "manual:go:357428",
     "answer_meta": {
       "type": "NAT",
-      "answer": [
-        205,
-        820
-      ],
+      "answer": 819.5,
       "tolerance": {
-        "abs": 0
+        "ranges": [
+          {
+            "min": 819,
+            "max": 820
+          },
+          {
+            "min": 205,
+            "max": 205
+          }
+        ]
       },
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "NAT"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 24",
@@ -62839,15 +62854,18 @@
     "exam_uid": "cse:2021:set1:main:q41",
     "answer_uid": "v2:8.15.13",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "B",
+      "type": "MSQ",
+      "answer": [
+        "B"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 42",
@@ -62895,15 +62913,18 @@
     "exam_uid": "cse:2021:set1:main:q43",
     "answer_uid": "manual:go:357408",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "C",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 44",
@@ -63011,15 +63032,18 @@
     "exam_uid": "cse:2021:set1:main:q47",
     "answer_uid": "v2:1.16.4",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "C",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 1,
-    "source_session": "Set 1"
+    "source_session": "Set 1",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 1 | Question: 48",
@@ -63517,19 +63541,16 @@
     "exam_uid": "cse:2021:set2:main:q1",
     "answer_uid": "v2:1.24.30",
     "answer_meta": {
-      "type": "MSQ",
-      "answer": [
-        "A",
-        "B",
-        "C"
-      ],
+      "type": "MCQ",
+      "answer": "C",
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MCQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 2",
@@ -63838,15 +63859,18 @@
     "exam_uid": "cse:2021:set2:main:q13",
     "answer_uid": "v2:3.9.9",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 14",
@@ -64120,15 +64144,18 @@
     "exam_uid": "cse:2021:set2:main:q23",
     "answer_uid": "v2:1.18.34",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "D",
-      "tolerance": null,
+      "type": "NAT",
+      "answer": 15,
+      "tolerance": {
+        "abs": 0.01
+      },
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "NAT"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 24",
@@ -64457,15 +64484,20 @@
     "exam_uid": "cse:2021:set2:main:q36",
     "answer_uid": "v2:10.5.28",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "C",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C",
+        "D"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 37",
@@ -64482,15 +64514,20 @@
     "exam_uid": "cse:2021:set2:main:q37",
     "answer_uid": "manual:go:357503",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "B",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C",
+        "D"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 38",
@@ -64507,15 +64544,19 @@
     "exam_uid": "cse:2021:set2:main:q38",
     "answer_uid": "v2:3.13.2",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "A",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "D"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 39",
@@ -64532,15 +64573,20 @@
     "exam_uid": "cse:2021:set2:main:q39",
     "answer_uid": "v2:1.27.31",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "A",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
       "tolerance": null,
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 40",
@@ -64561,7 +64607,6 @@
       "type": "MSQ",
       "answer": [
         "A",
-        "C",
         "D"
       ],
       "tolerance": null,
@@ -64570,7 +64615,8 @@
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 41",
@@ -64591,8 +64637,7 @@
       "type": "MSQ",
       "answer": [
         "B",
-        "C",
-        "D"
+        "C"
       ],
       "tolerance": null,
       "source": "question_uid"
@@ -64600,7 +64645,8 @@
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 42",
@@ -64621,7 +64667,7 @@
       "type": "MSQ",
       "answer": [
         "A",
-        "D"
+        "B"
       ],
       "tolerance": null,
       "source": "question_uid"
@@ -64629,7 +64675,8 @@
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "MSQ"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 43",
@@ -64942,14 +64989,17 @@
       "type": "NAT",
       "answer": 1.875,
       "tolerance": {
-        "abs": 0.01
+        "lower": 1.87,
+        "upper": 1.88,
+        "abs": 0.005
       },
       "source": "question_uid"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
     "cse_set": 2,
-    "source_session": "Set 2"
+    "source_session": "Set 2",
+    "type": "NAT"
   },
   {
     "title": "GATE CSE 2021 Set 2 | Question: 54",
@@ -65126,12 +65176,10 @@
     "exam_uid": "cse:2022:set1:ga:q5",
     "answer_uid": "v1:10.4.2",
     "answer_meta": {
-      "type": "NAT",
-      "answer": 3,
-      "tolerance": {
-        "abs": 0.01
-      },
-      "source": "question_uid"
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_patch"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
@@ -66402,10 +66450,12 @@
     "exam_uid": "cse:2022:set1:main:q42",
     "answer_uid": "v1:2.4.30",
     "answer_meta": {
-      "type": "MCQ",
-      "answer": "A",
+      "type": "MSQ",
+      "answer": [
+        "A"
+      ],
       "tolerance": null,
-      "source": "question_uid"
+      "source": "manual_patch"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
@@ -66575,11 +66625,11 @@
     "answer_uid": "v2:1.24.32",
     "answer_meta": {
       "type": "NAT",
-      "answer": 9,
+      "answer": 24,
       "tolerance": {
         "abs": 0.01
       },
-      "source": "question_uid"
+      "source": "manual_patch"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
@@ -66604,9 +66654,11 @@
       "type": "NAT",
       "answer": 7.08,
       "tolerance": {
-        "abs": 0.009999999999999787
+        "lower": 7.07,
+        "upper": 7.09,
+        "abs": 0.01
       },
-      "source": "question_uid"
+      "source": "manual_patch"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",
@@ -66661,9 +66713,11 @@
       "type": "NAT",
       "answer": 1.435,
       "tolerance": {
-        "abs": 0.015000000000000013
+        "lower": 1.42,
+        "upper": 1.45,
+        "abs": 0.015
       },
-      "source": "question_uid"
+      "source": "manual_patch"
     },
     "paper_scope": "official_cse",
     "source_branch": "CSE",

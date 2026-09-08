@@ -239,6 +239,9 @@ const hasValidAnswerForType = (answerRecord = null, type = "") => {
   }
 
   if (normalizedType === "MCQ") {
+    if (Array.isArray(answerRecord.answer)) {
+      return answerRecord.answer.map(normalizeOptionLabel).some(Boolean);
+    }
     return Boolean(normalizeOptionLabel(answerRecord.answer));
   }
 
@@ -318,9 +321,18 @@ export const validateMockQuestionForPool = ({
   }
 
   if (objectiveType === "MCQ") {
-    const answerLabel = normalizeOptionLabel(answerRecord?.answer);
-    if (answerLabel && optionLabels.size > 0 && !optionLabels.has(answerLabel)) {
-      issues.push("answer_option_mismatch");
+    if (Array.isArray(answerRecord?.answer)) {
+      const missingAnswerLabels = answerRecord.answer
+        .map(normalizeOptionLabel)
+        .filter((label) => label && optionLabels.size > 0 && !optionLabels.has(label));
+      if (missingAnswerLabels.length > 0 && optionLabels.size > 0) {
+        issues.push("answer_option_mismatch");
+      }
+    } else {
+      const answerLabel = normalizeOptionLabel(answerRecord?.answer);
+      if (answerLabel && optionLabels.size > 0 && !optionLabels.has(answerLabel)) {
+        issues.push("answer_option_mismatch");
+      }
     }
   }
 
@@ -449,6 +461,9 @@ export const formatExpectedAnswer = (answerRecord = null) => {
 
   const type = normalizeMockType(answerRecord.type);
   if (type === "MCQ") {
+    if (Array.isArray(answerRecord.answer)) {
+      return answerRecord.answer.map((v) => String(v || "").trim().toUpperCase()).filter(Boolean).join(" or ") || "Unavailable";
+    }
     return String(answerRecord.answer || "").trim().toUpperCase() || "Unavailable";
   }
 
@@ -459,6 +474,16 @@ export const formatExpectedAnswer = (answerRecord = null) => {
   }
 
   if (type === "NAT") {
+    if (Array.isArray(answerRecord.tolerance?.ranges) && answerRecord.tolerance.ranges.length > 0) {
+      return answerRecord.tolerance.ranges
+        .map((r) => {
+          const min = r.min ?? r.lower;
+          const max = r.max ?? r.upper;
+          return min === max ? `${min}` : `${min} to ${max}`;
+        })
+        .join(" or ");
+    }
+
     const values = Array.isArray(answerRecord.answer)
       ? answerRecord.answer
       : [answerRecord.answer];

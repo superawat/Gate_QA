@@ -41,9 +41,19 @@ export function evaluateAnswer(record, userInput) {
 
   if (record.type === "MCQ") {
     const submitted = String(userInput || "").toUpperCase().trim();
+    if (!submitted) {
+      return { status: "invalid_input", correct: false };
+    }
+    if (Array.isArray(record.answer)) {
+      const allowed = record.answer.map((ans) => String(ans || "").toUpperCase().trim());
+      return {
+        status: "evaluated",
+        correct: allowed.includes(submitted),
+      };
+    }
     return {
       status: "evaluated",
-      correct: submitted === record.answer,
+      correct: submitted === String(record.answer || "").toUpperCase().trim(),
     };
   }
 
@@ -64,6 +74,19 @@ export function evaluateAnswer(record, userInput) {
     if (!Number.isFinite(submitted)) {
       return { status: "invalid_input", correct: false };
     }
+
+    if (Array.isArray(record.tolerance?.ranges) && record.tolerance.ranges.length > 0) {
+      const correct = record.tolerance.ranges.some((range) => {
+        const rMin = Number(range.min ?? range.lower);
+        const rMax = Number(range.max ?? range.upper);
+        if (Number.isFinite(rMin) && Number.isFinite(rMax)) {
+          return submitted >= Math.min(rMin, rMax) && submitted <= Math.max(rMin, rMax);
+        }
+        return false;
+      });
+      return { status: "evaluated", correct };
+    }
+
     const lower = Number(record.tolerance?.lower);
     const upper = Number(record.tolerance?.upper);
     if (Number.isFinite(lower) && Number.isFinite(upper)) {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T18:56:18.657Z",
+  "generatedAt": "2026-09-08T20:22:20.856Z",
   "shardKey": "2021-s1",
   "yearSetKey": "2021-s1",
   "yearSetIdentity": "cse:2021:set-1",
@@ -250,7 +250,7 @@
       "exam_uid": "cse:2021:set1:ga:q9",
       "answer_uid": "v1:8.16.5",
       "answer_meta": {
-        "type": "MSQ",
+        "type": "MCQ",
         "answer": [
           "C",
           "D"
@@ -262,6 +262,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "MCQ",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -536,7 +537,7 @@
       "answer_uid": "v2:1.31.23",
       "answer_meta": {
         "type": "MCQ",
-        "answer": "D",
+        "answer": "C",
         "tolerance": null,
         "source": "question_uid"
       },
@@ -544,6 +545,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "MCQ",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -625,8 +627,10 @@
       "exam_uid": "cse:2021:set1:main:q12",
       "answer_uid": "v2:10.15.15",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "D",
+        "type": "MSQ",
+        "answer": [
+          "D"
+        ],
         "tolerance": null,
         "source": "question_uid"
       },
@@ -634,6 +638,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "MSQ",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -782,15 +787,18 @@
       "exam_uid": "cse:2021:set1:main:q17",
       "answer_uid": "v2:1.24.29",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "C",
-        "tolerance": null,
+        "type": "NAT",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.01
+        },
         "source": "question_uid"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "NAT",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -967,12 +975,18 @@
       "answer_uid": "manual:go:357428",
       "answer_meta": {
         "type": "NAT",
-        "answer": [
-          205,
-          820
-        ],
+        "answer": 819.5,
         "tolerance": {
-          "abs": 0
+          "ranges": [
+            {
+              "min": 819,
+              "max": 820
+            },
+            {
+              "min": 205,
+              "max": 205
+            }
+          ]
         },
         "source": "question_uid"
       },
@@ -980,6 +994,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "NAT",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -1492,8 +1507,10 @@
       "exam_uid": "cse:2021:set1:main:q41",
       "answer_uid": "v2:8.15.13",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "B",
+        "type": "MSQ",
+        "answer": [
+          "B"
+        ],
         "tolerance": null,
         "source": "question_uid"
       },
@@ -1501,6 +1518,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "MSQ",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -1554,8 +1572,10 @@
       "exam_uid": "cse:2021:set1:main:q43",
       "answer_uid": "manual:go:357408",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "C",
+        "type": "MSQ",
+        "answer": [
+          "C"
+        ],
         "tolerance": null,
         "source": "question_uid"
       },
@@ -1563,6 +1583,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "MSQ",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -1682,8 +1703,10 @@
       "exam_uid": "cse:2021:set1:main:q47",
       "answer_uid": "v2:1.16.4",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "C",
+        "type": "MSQ",
+        "answer": [
+          "C"
+        ],
         "tolerance": null,
         "source": "question_uid"
       },
@@ -1691,6 +1714,7 @@
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
+      "type": "MSQ",
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"

@@ -3582,18 +3582,22 @@
     "go:371885": {
       "type": "NAT",
       "answer": 1.435,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/371885/gate-cse-2022-question-51",
       "tolerance": {
-        "abs": 0.015000000000000013
-      }
+        "lower": 1.42,
+        "upper": 1.45,
+        "abs": 0.015
+      },
+      "note": "gate_cse_2022_q51:nat:accepted_range_1.42_to_1.45"
     },
     "go:371887": {
       "type": "NAT",
       "answer": 7.08,
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/371887/gate-cse-2022-question-49",
       "tolerance": {
-        "abs": 0.009999999999999787
-      }
+        "lower": 7.07,
+        "upper": 7.09,
+        "abs": 0.01
+      },
+      "note": "gate_cse_2022_q49:nat:accepted_range_7.07_to_7.09"
     },
     "go:460844": {
       "type": "NAT",
@@ -5443,6 +5447,28 @@
       ],
       "tolerance": null,
       "note": "gate_cse_2025_set_2_q43:type_correction_mcq_to_msq:official_gate_key_b"
+    },
+    "go:371501": {
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "note": "gate_cse_2022_ga_q5:mcq:option_b:five_letter_palindrome_tile_combinations"
+    },
+    "go:371894": {
+      "type": "MSQ",
+      "answer": [
+        "A"
+      ],
+      "tolerance": null,
+      "note": "gate_cse_2022_q42:msq:option_a:properties_of_adjacency_matrix_a"
+    },
+    "go:371888": {
+      "type": "NAT",
+      "answer": 24,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "note": "gate_cse_2022_q48:nat:24:directed_spanning_trees_rooted_at_vertex_5"
     }
   },
   "patches": {
@@ -5604,6 +5630,178 @@
     "source": {
       "kind": "manual_patch",
       "note": "gatecse2023:main:q50:official_range"
+    }
+  },
+  "records": {
+    "go:357468": {
+      "answer_uid": "manual:go:357468",
+      "type": "MCQ",
+      "answer": [
+        "C",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357443": {
+      "answer_uid": "manual:go:357443",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "go:357440": {
+      "answer_uid": "manual:go:357440",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357434": {
+      "answer_uid": "manual:go:357434",
+      "type": "NAT",
+      "answer": 3,
+      "tolerance": {
+        "abs": 0.01
+      }
+    },
+    "go:357428": {
+      "answer_uid": "manual:go:357428",
+      "type": "NAT",
+      "answer": 819.5,
+      "tolerance": {
+        "ranges": [
+          {
+            "min": 819,
+            "max": 820
+          },
+          {
+            "min": 205,
+            "max": 205
+          }
+        ]
+      }
+    },
+    "go:357410": {
+      "answer_uid": "manual:go:357410",
+      "type": "MSQ",
+      "answer": [
+        "B"
+      ],
+      "tolerance": null
+    },
+    "go:357408": {
+      "answer_uid": "manual:go:357408",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
+      "tolerance": null
+    },
+    "go:357404": {
+      "answer_uid": "manual:go:357404",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
+      "tolerance": null
+    },
+    "go:357539": {
+      "answer_uid": "manual:go:357539",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "go:357527": {
+      "answer_uid": "manual:go:357527",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357517": {
+      "answer_uid": "manual:go:357517",
+      "type": "NAT",
+      "answer": 15,
+      "tolerance": {
+        "abs": 0.01
+      }
+    },
+    "go:357504": {
+      "answer_uid": "manual:go:357504",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357503": {
+      "answer_uid": "manual:go:357503",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357502": {
+      "answer_uid": "manual:go:357502",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357501": {
+      "answer_uid": "manual:go:357501",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "tolerance": null
+    },
+    "go:357500": {
+      "answer_uid": "manual:go:357500",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "go:357499": {
+      "answer_uid": "manual:go:357499",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C"
+      ],
+      "tolerance": null
+    },
+    "go:357498": {
+      "answer_uid": "manual:go:357498",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "B"
+      ],
+      "tolerance": null
+    },
+    "go:357484": {
+      "answer_uid": "manual:go:357484",
+      "type": "NAT",
+      "answer": 1.875,
+      "tolerance": {
+        "lower": 1.87,
+        "upper": 1.88,
+        "abs": 0.005
+      }
     }
   }
 }
