@@ -5444,5 +5444,166 @@
       "tolerance": null,
       "note": "gate_cse_2025_set_2_q43:type_correction_mcq_to_msq:official_gate_key_b"
     }
+  },
+  "patches": {
+    "go:422828": {
+      "answer_uid": "manual:go:422828",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set1:q14:threads_msq"
+      }
+    },
+    "go:422807": {
+      "answer_uid": "v2:1.14.16",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set1:q35:dfs_bfs_trees_msq"
+      }
+    },
+    "go:422803": {
+      "answer_uid": "manual:go:422803",
+      "type": "MSQ",
+      "answer": [
+        "A"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set1:q39:linear_equations_msq"
+      }
+    },
+    "go:422789": {
+      "answer_uid": "v1:7.5.13",
+      "type": "NAT",
+      "answer": 0.375,
+      "tolerance": {
+        "lower": 0.37,
+        "upper": 0.38,
+        "abs": 0.005
+      },
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set1:q53:probability_range"
+      }
+    },
+    "go:422884": {
+      "answer_uid": "v2:4.12.5",
+      "type": "MSQ",
+      "answer": [
+        "B"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set2:q13:ip_mac_addresses_msq"
+      }
+    },
+    "go:422856": {
+      "answer_uid": "v1:2.4.32",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set2:q41:even_weight_trees_msq"
+      }
+    },
+    "go:422854": {
+      "answer_uid": "v2:7.3.27",
+      "type": "NAT",
+      "answer": 30,
+      "tolerance": {
+        "lower": 29.5,
+        "upper": 30.5,
+        "abs": 0.5
+      },
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set2:q43:disk_access_time_range"
+      }
+    },
+    "go:422849": {
+      "answer_uid": "manual:go:422849",
+      "type": "NAT",
+      "answer": 3,
+      "tolerance": {
+        "lower": 2.9,
+        "upper": 3.1,
+        "abs": 0.1
+      },
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set2:q48:pipeline_speedup_range"
+      }
+    },
+    "go:422848": {
+      "answer_uid": "v2:1.24.33",
+      "type": "NAT",
+      "answer": 9,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2024:set2:q49:distinct_mst_count"
+      }
+    },
+    "go:399254": {
+      "answer_uid": "manual:go:399254",
+      "type": "MTA",
+      "answer": "MTA",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2023:ga:q2:marks_to_all"
+      }
+    },
+    "go:399261": {
+      "answer_uid": "manual:go:399261",
+      "type": "NAT",
+      "answer": 2.375,
+      "tolerance": {
+        "lower": 2.374,
+        "upper": 2.376,
+        "abs": 0.001
+      },
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2023:main:q50:official_range"
+      }
+    }
+  },
+  "go:399254": {
+    "type": "MTA",
+    "answer": "MTA",
+    "source": {
+      "kind": "manual_patch",
+      "note": "gatecse2023:ga:q2:marks_to_all"
+    }
+  },
+  "go:399261": {
+    "type": "NAT",
+    "answer": 2.375,
+    "tolerance": {
+      "lower": 2.374,
+      "upper": 2.376,
+      "abs": 0.001
+    },
+    "source": {
+      "kind": "manual_patch",
+      "note": "gatecse2023:main:q50:official_range"
+    }
   }
 }

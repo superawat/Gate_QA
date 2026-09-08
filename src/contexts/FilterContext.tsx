@@ -73,7 +73,8 @@ const buildStructuredTagsFromManifest = (manifest = null, questionService = Ques
         ? manifest.yearSets
             .map((entry) => {
                 const legacyKey = String(entry?.key || '').trim();
-                const identity = buildTrackYearSetKey('cse', entry?.year, entry?.set);
+                const isAdditional = Boolean(entry?.isAdditional || entry?.paperScope === 'additional_ga' || legacyKey.includes('additional'));
+                const identity = buildTrackYearSetKey('cse', entry?.year, entry?.set, isAdditional);
                 return {
                 key: identity || legacyKey,
                 legacyKey,
@@ -82,6 +83,8 @@ const buildStructuredTagsFromManifest = (manifest = null, questionService = Ques
                 set: Number.isFinite(Number(entry?.set)) && Number(entry?.set) > 0
                     ? Number(entry?.set)
                     : null,
+                isAdditional,
+                paperScope: isAdditional ? 'additional_ga' : 'official_cse',
                 label: String(entry?.label || '').trim(),
                 count: Number(entry?.count || 0),
                 track: 'cse',
@@ -156,11 +159,13 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
         ...(Array.isArray(aptitudeTags.yearSets) ? aptitudeTags.yearSets : []),
     ].map((entry) => {
         const track = String(entry?.track || '').toLowerCase() === 'da' ? 'da' : 'cse';
-        const identity = buildTrackYearSetKey(track, entry?.year, entry?.set) || String(entry?.key || '').trim();
+        const isAdditional = Boolean(entry?.isAdditional || entry?.paperScope === 'additional_ga' || String(entry?.key || '').includes('additional'));
+        const identity = buildTrackYearSetKey(track, entry?.year, entry?.set, isAdditional) || String(entry?.key || '').trim();
         return {
             ...entry,
             key: identity,
             yearSetIdentity: identity,
+            isAdditional,
             track,
         };
     }).filter((entry) => entry.key).sort((left, right) => {
@@ -168,6 +173,10 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
         const parsedRight = parseTrackYearSetKey(right.key);
         const yearDifference = Number(parsedRight?.year || 0) - Number(parsedLeft?.year || 0);
         if (yearDifference !== 0) return yearDifference;
+
+        if (Boolean(parsedLeft?.isAdditional) !== Boolean(parsedRight?.isAdditional)) {
+            return parsedLeft?.isAdditional ? 1 : -1;
+        }
 
         const setDifference = Number(parsedRight?.set || 0) - Number(parsedLeft?.set || 0);
         if (setDifference !== 0) return setDifference;

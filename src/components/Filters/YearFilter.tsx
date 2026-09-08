@@ -26,9 +26,15 @@ const YearFilter = () => {
             {yearSets.map((yearSet) => {
                 const yearSetKey = yearSet.key;
                 const displayYear = yearSet.label;
-                const isDaYearSet = parseTrackYearSetKey(yearSetKey)?.track === 'da'
+                const parsedKey = parseTrackYearSetKey(yearSetKey);
+                const isDaYearSet = parsedKey?.track === 'da'
                     || String(yearSet.track || yearSet.source || yearSet.paper || '').toLowerCase() === 'da'
                     || /^gate\s+da\b/i.test(String(displayYear || ''));
+                const isAdditional = Boolean(yearSet.isAdditional
+                    || yearSet.paperScope === 'additional_ga'
+                    || parsedKey?.isAdditional
+                    || /additional/i.test(yearSetKey)
+                    || /additional/i.test(String(displayYear || '')));
                 const isSelected = selectedYearSets.includes(yearSetKey);
 
                 return (
@@ -41,13 +47,22 @@ const YearFilter = () => {
                             onChange={() => handleYearChange(yearSetKey)}
                         />
                         <span className={`ml-3 flex min-w-0 items-center gap-2 text-sm transition-colors ${isSelected ? 'font-medium text-blue-600' : 'text-gray-600 group-hover:text-gray-900'}`}>
-                            {displayYear}
+                            <span>{displayYear}</span>
                             {isDaYearSet && (
                                 <span
                                     aria-label="GATE DA"
                                     className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]"
                                 >
                                     DA
+                                </span>
+                            )}
+                            {isAdditional && (
+                                <span
+                                    title="GA questions from other GATE papers"
+                                    aria-label="Additional Questions"
+                                    className="rounded-full border border-amber-300 bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-amber-700"
+                                >
+                                    GA • Additional
                                 </span>
                             )}
                         </span>

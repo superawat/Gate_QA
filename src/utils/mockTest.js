@@ -9,7 +9,7 @@ export const MOCK_SECTION_COUNTS = {
 
 export const MOCK_SLOW_QUESTION_THRESHOLD_SECONDS = 3 * 60;
 export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT"];
-export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL", "SUBJECTIVE"];
+export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL", "MTA", "SUBJECTIVE"];
 
 const slugifyMockFilterToken = (value = "") => (
   String(value || "")
@@ -353,6 +353,9 @@ export const normalizeMockType = (value = "") => {
 
 export const normalizeMockAutoAwardType = (value = "") => {
   const normalized = String(value || "").trim().toUpperCase();
+  if (normalized === "MTA") {
+    return "MARKS_TO_ALL";
+  }
   return MOCK_AUTO_AWARD_TYPES.includes(normalized) ? normalized : "";
 };
 

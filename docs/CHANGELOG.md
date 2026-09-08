@@ -1,5 +1,58 @@
 # Changelog
 
+- **GATE CSE Canonical Paper Reconstruction & Dataset-Wide Additional GA Pool Architecture (DEC-066)**:
+  - *Context*: Comprehensive audit and structural migration of all 3,549 questions across the GateQA question bank to eliminate fake CSE Set 1 / Set 2 classifications, restore the canonical single-paper GATE CSE 2023 dataset (65 questions), and isolate 275 General Aptitude questions borrowed from other GATE branches into dedicated year-level "Additional Questions" pools with preserved provenance.
+  - *Root Cause Analysis*:
+    - In 2020–2024, 275 non-CSE GA questions (from Civil, Mechanical, Electrical, Chemical, ECE, IN, DS&AI) were tagged with branch set tokens (e.g. `gate-2023-set1` from Civil Set 1).
+    - `parseYearSet` in `scripts/build-public-artifacts.mjs` matched these branch sets as CSE sets, producing fake CSE Set 1 / Set 2 entries in single-paper years (2020, 2022, 2023) and contaminating official sets in multi-set years (2021, 2024).
+    - In addition, 130 questions belonging to 2025 had inherited stale year strings (such as `gatecse-2023` and `gatecse-2022`), artificially inflating older years.
+  - *Canonical GATE CSE 2023 Paper Restored*:
+    - Single paper / single session: represented as `2023`, `yearSetKey: "2023-s0"`, `yearSetIdentity: "cse:2023:set-0"`.
+    - Exactly 65 official questions: Q1–Q10 GA (`official_question_number: 1..10`, title `GATE CSE 2023 | GA Question: 1..10`) and Q11–Q65 CS (`official_question_number: 11..65`, title `GATE CSE 2023 | Question: 11..65`).
+    - Section-relative CS numbers (1..55) converted to official paper numbering (11..65) in UI titles and metadata, while preserving 1-mark and 2-mark scoring in `parseMockSectionPosition`.
+    - Answer key corrections:
+      - GA Q2 (`go:399254`): Updated to `type: "MTA"`, `answer: "MTA"` (IIT Kanpur final key Marks to All).
+      - CS Q50 (`go:399261`): Tolerance updated to explicit range `[2.374, 2.376]` (`answer: 2.375, tolerance: { lower: 2.374, upper: 2.376, abs: 0.001 }`).
+      - CS Q17 (`go:399294`): Verified correct as `["C", "D"]` (Priority Scheduling and Shortest Job First).
+  - *Dataset-Wide Additional GA Pool Architecture*:
+    - All 275 non-CSE GA questions separated from official papers and merged into year-level pools: `2020 Additional Questions` (62), `2021 Additional Questions` (46), `2022 Additional Questions` (55), `2023 Additional Questions` (64), `2024 Additional Questions` (48).
+    - Question metadata schema enriched with `paper_scope` (`"official_cse"` vs `"additional_ga"`), `source_branch` (Civil, Mechanical, etc.), `source_session` (`"Set 1"`, `"Set 2"`, or `null`), `cse_set` (strictly `null` for additional questions and single-paper years).
+    - Eliminated obsolete detail shards: `2020-s1.json`, `2020-s2.json`, `2021-s0.json`, `2022-s1.json`, `2022-s2.json`, `2023-s1.json`, `2023-s2.json`, `2024-s0.json`.
+    - Created dedicated additional detail shards: `2020-additional.json`, `2021-additional.json`, `2022-additional.json`, `2023-additional.json`, `2024-additional.json`.
+  - *UI & Filter Experience*:
+    - `YearFilter.tsx`: Displays distinct amber badge `GA • Additional` with tooltip `"GA questions from other GATE papers"`.
+    - `ActiveFilterChips.tsx`: Displays `Additional` badge on active filter chip.
+    - `FilterContext.tsx`: Manifest yearSets sorted with official papers first followed by additional questions. Selecting an official set never returns additional questions, and selecting additional questions never returns official CSE questions.
+  - *Verification & Parity*:
+    - 76 test files passed, 628 unit tests passed (100% green).
+    - `npm run qa:validate-data` clean (parity intact, zero orphans).
+    - `npm run typecheck` clean (0 TypeScript errors).
+    - `npm run build` and `npm run qa:validate-bundle-budget` clean.
+    - Zero question UIDs lost; all user progress/bookmarks/notes preserved.
+
+- **GATE CSE 2024 Session 1 & Session 2 Comprehensive Answer Key Audit & Data Corrections (DEC-065)**:
+  - *Context*: Complete audit of all 130 questions across both sessions of GATE CSE 2024 (Session 1 Q1–Q65 and Session 2 Q1–Q65) against the official GATE 2024 CSE Final Answer Keys as the authoritative source of truth.
+  - *Audit Results*:
+    - 130 / 130 questions mapped 100% confidently to existing persistent `go:<id>` question UIDs and canonical `exam_uid` keys (`cse:2024:set1:ga:q1`–`q10`, `cse:2024:set1:main:q1`–`q55`, `cse:2024:set2:ga:q1`–`q10`, `cse:2024:set2:main:q1`–`q55`).
+    - 121 questions were already correct and preserved completely unchanged (zero churn).
+    - 9 questions required correction to achieve 100% parity with official GATE 2024 CSE answer keys.
+  - *Questions Corrected*:
+    1. **Session 1 CS Q14 (`go:422828`, `cse:2024:set1:main:q14` / official Q24)**: Threads assertions question ("Which of the following statements about threads is/are TRUE?"). Stored as single-choice MCQ Option D. Corrected to **MSQ `["D"]`** (`tolerance: null`).
+    2. **Session 1 CS Q35 (`go:422807`, `cse:2024:set1:main:q35` / official Q45)**: DFS & BFS spanning tree assertions ("Which of the following statements is/are TRUE for every such graph G and tree T?"). Stored as single-choice MCQ Option C. Corrected to **MSQ `["C"]`** (`tolerance: null`).
+    3. **Session 1 CS Q39 (`go:422803`, `cse:2024:set1:main:q39` / official Q49)**: System of linear equations $Ax=0$ assertions ("Which of the following statements is/are TRUE about the system of linear equations Ax=0?"). Stored as single-choice MCQ Option A. Corrected to **MSQ `["A"]`** (`tolerance: null`).
+    4. **Session 1 CS Q53 (`go:422789`, `cse:2024:set1:main:q53` / official Q63)**: Computer Networks / Probability NAT. Official accepted range is `0.370 to 0.380`. Stored answer `0.375 +/- 0.01` had range `[0.365, 0.385]`, accepting invalid answers outside `[0.370, 0.380]`. Corrected to NAT range `[0.370, 0.380]` (`answer: 0.375, tolerance: { lower: 0.37, upper: 0.38, abs: 0.005 }`).
+    5. **Session 2 CS Q13 (`go:422884`, `cse:2024:set2:main:q13` / official Q23)**: Destination IP and MAC addresses over TCP connection ("Which of the following statements is/are TRUE...?"). Stored as single-choice MCQ Option B. Corrected to **MSQ `["B"]`** (`tolerance: null`).
+    6. **Session 2 CS Q41 (`go:422856`, `cse:2024:set2:main:q41` / official Q51)**: Spanning tree even weight graph assertions ("Which of the following statements is/are TRUE for every such graph G?"). Stored as single-choice MCQ Option D. Corrected to **MSQ `["D"]`** (`tolerance: null`).
+    7. **Session 2 CS Q43 (`go:422854`, `cse:2024:set2:main:q43` / official Q53)**: Disk random access time NAT. Official accepted range is `29.50 to 30.50`. Stored answer `30.06 +/- 0.01` rejected valid candidate answers like `30.00`. Corrected to NAT range `[29.50, 30.50]` (`answer: 30.0, tolerance: { lower: 29.5, upper: 30.5, abs: 0.5 }`).
+    8. **Session 2 CS Q48 (`go:422849`, `cse:2024:set2:main:q48` / official Q58)**: Pipelined execution unit speedup NAT. Official accepted range is `2.9 to 3.1`. Stored answer `3 +/- 0.01` rejected valid boundary entries `2.9` and `3.1`. Corrected to NAT range `[2.9, 3.1]` (`answer: 3.0, tolerance: { lower: 2.9, upper: 3.1, abs: 0.1 }`).
+    9. **Session 2 CS Q49 (`go:422848`, `cse:2024:set2:main:q49` / official Q59)**: Number of distinct minimum-weight spanning trees. Official key is `9` (`min: 9, max: 9`). Stored answer was legacy typo `5`. Corrected to **`9`** (`tolerance: { abs: 0.01 }`).
+  - *Affected Files*:
+    - Authoritative source patch: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`.
+    - Public answer indices: `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`.
+    - Question bank & shards: `public/questions-with-answers.json`, detail shards `public/question-detail-shards/2024-s1.json`, `2024-s2.json`, mock catalog `public/mock_catalog_v1.json`.
+    - Automated tests: `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+  - *Verification*: All 625 unit tests passing (76 test files), `npm run qa:validate-data` clean (parity intact), `npm run typecheck` clean (0 errors), 130/130 questions verified against official keys with 0 discrepancies.
+
 - **Dead Code Elimination, Orphaned Component Pruning & CSS Monolith Cleanup (DEC-064)**:
   - *Context*: Implemented the verified Dead Code Removal Plan (`plan/DEAD_CODE_REMOVAL_PLAN.md`) across the codebase to safely remove orphaned UI components, dead utility CSS overrides, and obsolete one-off scripts.
   - *Changes Executed*:

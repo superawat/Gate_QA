@@ -510,7 +510,49 @@ function getDetailShardKey(yearSet = null) {
   return key || "unknown";
 }
 
+const OFFICIAL_MULTI_SET_YEARS = new Set([2014, 2015, 2016, 2017, 2021, 2024, 2025, 2026]);
+
 function parseYearSet(question = {}) {
+  // 1. Explicit Additional GA Questions
+  if (
+    question.paper_scope === "additional_ga" ||
+    question.paperScope === "additional_ga" ||
+    String(question.yearSetKey || "").includes("additional") ||
+    String(question.yearSetIdentity || "").includes("additional")
+  ) {
+    const ym = String(question.year || question.title || "").match(/\b(202\d)\b/);
+    const year = ym ? Number.parseInt(ym[1], 10) : 2020;
+    return {
+      year,
+      set: null,
+      isAdditional: true,
+      paperScope: "additional_ga",
+      key: `${year}-additional`,
+      yearSetIdentity: buildTrackYearSetKey("cse", year, null, true),
+      label: `${year} Additional Questions`,
+    };
+  }
+
+  // Also check if non-CSE branch in title with GA
+  const branchMatch = String(question.title || "").match(/GATE\s+(?:(\d{4})\s+)?([A-Za-z&]+)(?:\s+(\d{4}))?(?:\s+Set\s*(\d+))?/i);
+  const rawBranch = branchMatch ? branchMatch[2].trim().toUpperCase() : null;
+  const isNonCseBranch = rawBranch && !["CSE", "CS", "IT", "DA"].includes(rawBranch);
+  const isGa = /general aptitude/i.test(question.title || "") || /:ga:/i.test(question.exam_uid || "");
+
+  if (isNonCseBranch && isGa) {
+    const ym = String(question.year || question.title || "").match(/\b(202\d)\b/);
+    const year = ym ? Number.parseInt(ym[1], 10) : 2020;
+    return {
+      year,
+      set: null,
+      isAdditional: true,
+      paperScope: "additional_ga",
+      key: `${year}-additional`,
+      yearSetIdentity: buildTrackYearSetKey("cse", year, null, true),
+      label: `${year} Additional Questions`,
+    };
+  }
+
   const candidates = [
     String(question.title || ""),
     String(question.year || ""),
@@ -527,11 +569,13 @@ function parseYearSet(question = {}) {
 
     const year = Number.parseInt(match[1], 10);
     const parsedSet = Number.parseInt(match[2], 10);
-    const set = Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : null;
+    const set = OFFICIAL_MULTI_SET_YEARS.has(year) && Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : null;
 
     return {
       year,
       set,
+      isAdditional: false,
+      paperScope: "official_cse",
       key: `${year}-s${set || 0}`,
       yearSetIdentity: buildTrackYearSetKey("cse", year, set),
       label: set ? `${year} Set ${set}` : String(year),
@@ -542,6 +586,8 @@ function parseYearSet(question = {}) {
     year: null,
     set: null,
     key: null,
+    isAdditional: false,
+    paperScope: "official_cse",
     label: "Unknown",
   };
 }
@@ -552,7 +598,7 @@ const MOCK_SECTION_COUNTS = {
 };
 
 const MOCK_OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
-const MOCK_AUTO_AWARD_TYPES = new Set(["AMBIGUOUS", "MARKS_TO_ALL", "SUBJECTIVE"]);
+const MOCK_AUTO_AWARD_TYPES = new Set(["AMBIGUOUS", "MARKS_TO_ALL", "MTA", "SUBJECTIVE"]);
 const MOCK_LEGACY_CONTINUOUS_MIN_YEAR = 1987;
 const MOCK_LEGACY_CONTINUOUS_SPLIT_MAX_YEAR = 2013;
 const MOCK_LEGACY_SLOT_DEDUP_MAX_YEAR = 2009;
@@ -1007,6 +1053,13 @@ function parseMockSectionPosition(question = {}, yearSet = null) {
         return null;
       }
 
+      if (resolvedYearSet.year === 2023 && orderIndex >= 11 && orderIndex <= 65) {
+        return {
+          section: "CS",
+          orderIndex: orderIndex - 10,
+        };
+      }
+
       return {
         section: "CS",
         orderIndex,
@@ -1184,7 +1237,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       ? null
       : parseMockSectionPosition(question, yearSet);
 
-    if (!yearSet.key || (!paperPosition && !useLegacySlotDedup)) {
+    if (!yearSet.key || yearSet.isAdditional || (!paperPosition && !useLegacySlotDedup)) {
       return;
     }
 
@@ -1712,6 +1765,8 @@ async function buildArtifacts() {
           year: yearSet.year,
           set: yearSet.set,
           label: yearSet.label,
+          isAdditional: Boolean(yearSet.isAdditional),
+          paperScope: yearSet.paperScope || (yearSet.isAdditional ? "additional_ga" : "official_cse"),
           count: 0,
         });
       }
@@ -1725,6 +1780,8 @@ async function buildArtifacts() {
           year: yearSet.year,
           set: yearSet.set,
           label: yearSet.label,
+          isAdditional: Boolean(yearSet.isAdditional),
+          paperScope: yearSet.paperScope || (yearSet.isAdditional ? "additional_ga" : "official_cse"),
           total: 0,
           covered: 0,
           unsupported: 0,
@@ -1858,6 +1915,9 @@ async function buildArtifacts() {
       if (left.year !== right.year) {
         return (right.year || 0) - (left.year || 0);
       }
+      if (Boolean(left.isAdditional) !== Boolean(right.isAdditional)) {
+        return left.isAdditional ? 1 : -1;
+      }
       return (right.set || 0) - (left.set || 0);
     }),
     subjects: Array.from(subjectCountMap.values()).sort((left, right) => {
@@ -1877,6 +1937,9 @@ async function buildArtifacts() {
         .sort((left, right) => {
           if (left.year !== right.year) {
             return (right.year || 0) - (left.year || 0);
+          }
+          if (Boolean(left.isAdditional) !== Boolean(right.isAdditional)) {
+            return left.isAdditional ? 1 : -1;
           }
           return (right.set || 0) - (left.set || 0);
         })

@@ -136,6 +136,11 @@ const ActiveFilterChips = () => {
                             DA
                         </span>
                     )}
+                    {(yearSetByKey.get(yearSetKey)?.paperScope === 'additional_ga' || parseTrackYearSetKey(yearSetKey)?.isAdditional) && (
+                        <span className="rounded-full border border-amber-300 bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-amber-700">
+                            Additional
+                        </span>
+                    )}
                     <button type="button" onClick={() => removeYear(yearSetKey)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-blue-500 transition hover:bg-blue-200 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
                         <FaTimes />
                     </button>

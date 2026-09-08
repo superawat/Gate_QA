@@ -10723,7 +10723,9 @@
       "type": "NAT",
       "answer": 2.375,
       "tolerance": {
-        "abs": 0.01
+        "lower": 2.374,
+        "upper": 2.376,
+        "abs": 0.001
       },
       "source": {
         "kind": "question_uid",
@@ -24103,11 +24105,8 @@
     },
     "cse:2023:set1:ga:q2": {
       "answer_uid": "manual:go:399254",
-      "type": "MSQ",
-      "answer": [
-        "B",
-        "D"
-      ],
+      "type": "MTA",
+      "answer": "MTA",
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -29156,8 +29155,10 @@
     },
     "cse:2024:set1:main:q14": {
       "answer_uid": "manual:go:422828",
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -29428,8 +29429,10 @@
     },
     "cse:2024:set1:main:q35": {
       "answer_uid": "v2:1.14.16",
-      "type": "MCQ",
-      "answer": "C",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -29486,8 +29489,10 @@
     },
     "cse:2024:set1:main:q39": {
       "answer_uid": "manual:go:422803",
-      "type": "MCQ",
-      "answer": "A",
+      "type": "MSQ",
+      "answer": [
+        "A"
+      ],
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -29687,7 +29692,9 @@
       "type": "NAT",
       "answer": 0.375,
       "tolerance": {
-        "abs": 0.01
+        "lower": 0.37,
+        "upper": 0.38,
+        "abs": 0.005
       },
       "source": {
         "kind": "question_uid",
@@ -30110,8 +30117,10 @@
     },
     "cse:2024:set2:main:q13": {
       "answer_uid": "v2:4.12.5",
-      "type": "MCQ",
-      "answer": "B",
+      "type": "MSQ",
+      "answer": [
+        "B"
+      ],
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -30503,8 +30512,10 @@
     },
     "cse:2024:set2:main:q41": {
       "answer_uid": "v1:2.4.32",
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": {
         "kind": "question_uid",
@@ -30531,9 +30542,11 @@
     "cse:2024:set2:main:q43": {
       "answer_uid": "v2:7.3.27",
       "type": "NAT",
-      "answer": 30.06,
+      "answer": 30,
       "tolerance": {
-        "abs": 0.01
+        "lower": 29.5,
+        "upper": 30.5,
+        "abs": 0.5
       },
       "source": {
         "kind": "question_uid",
@@ -30589,7 +30602,9 @@
       "type": "NAT",
       "answer": 3,
       "tolerance": {
-        "abs": 0.01
+        "lower": 2.9,
+        "upper": 3.1,
+        "abs": 0.1
       },
       "source": {
         "kind": "question_uid",
@@ -30601,7 +30616,7 @@
     "cse:2024:set2:main:q49": {
       "answer_uid": "v2:1.24.33",
       "type": "NAT",
-      "answer": 5,
+      "answer": 9,
       "tolerance": {
         "abs": 0.01
       },

@@ -7,6 +7,7 @@ export type KnownQuestionType =
   | "SUBJECTIVE"
   | "AMBIGUOUS"
   | "MARKS_TO_ALL"
+  | "MTA"
   | "UNSUPPORTED";
 
 export type QuestionType = KnownQuestionType | (string & {});

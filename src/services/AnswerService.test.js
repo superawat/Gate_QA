@@ -671,5 +671,203 @@ describe("AnswerService", () => {
       tolerance: null,
     });
   });
+
+  test("resolves GATE CSE 2024 Set 1 CS Q14 (go:422828) as MSQ Option D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422828": {
+        answer_uid: "manual:go:422828",
+        type: "MSQ",
+        answer: ["D"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422828",
+      link: "https://gateoverflow.in/422828/gate-cse-2024-set-1-question-14",
+      title: "GATE CSE 2024 | Set 1 | Question: 14",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:422828",
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 1 CS Q35 (go:422807) as MSQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422807": {
+        answer_uid: "v2:1.14.16",
+        type: "MSQ",
+        answer: ["C"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422807",
+      link: "https://gateoverflow.in/422807/gate-cse-2024-set-1-question-35",
+      title: "GATE CSE 2024 | Set 1 | Question: 35",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:1.14.16",
+      type: "MSQ",
+      answer: ["C"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 1 CS Q39 (go:422803) as MSQ Option A", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422803": {
+        answer_uid: "manual:go:422803",
+        type: "MSQ",
+        answer: ["A"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422803",
+      link: "https://gateoverflow.in/422803/gate-cse-2024-set-1-question-39",
+      title: "GATE CSE 2024 | Set 1 | Question: 39",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:422803",
+      type: "MSQ",
+      answer: ["A"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 1 CS Q53 (go:422789) as NAT range 0.370 to 0.380", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422789": {
+        answer_uid: "v1:7.5.13",
+        type: "NAT",
+        answer: 0.375,
+        tolerance: { lower: 0.37, upper: 0.38, abs: 0.005 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422789",
+      link: "https://gateoverflow.in/422789/gate-cse-2024-set-1-question-53",
+      title: "GATE CSE 2024 | Set 1 | Question: 53",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v1:7.5.13",
+      type: "NAT",
+      answer: 0.375,
+      tolerance: { lower: 0.37, upper: 0.38, abs: 0.005 },
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 2 CS Q13 (go:422884) as MSQ Option B", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422884": {
+        answer_uid: "v2:4.12.5",
+        type: "MSQ",
+        answer: ["B"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422884",
+      link: "https://gateoverflow.in/422884/gate-cse-2024-set-2-question-13",
+      title: "GATE CSE 2024 | Set 2 | Question: 13",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:4.12.5",
+      type: "MSQ",
+      answer: ["B"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 2 CS Q41 (go:422856) as MSQ Option D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422856": {
+        answer_uid: "v1:2.4.32",
+        type: "MSQ",
+        answer: ["D"],
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422856",
+      link: "https://gateoverflow.in/422856/gate-cse-2024-set-2-question-41",
+      title: "GATE CSE 2024 | Set 2 | Question: 41",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v1:2.4.32",
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 2 CS Q43 (go:422854) as NAT range 29.50 to 30.50", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422854": {
+        answer_uid: "v2:7.3.27",
+        type: "NAT",
+        answer: 30.0,
+        tolerance: { lower: 29.5, upper: 30.5, abs: 0.5 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422854",
+      link: "https://gateoverflow.in/422854/gate-cse-2024-set-2-question-43",
+      title: "GATE CSE 2024 | Set 2 | Question: 43",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:7.3.27",
+      type: "NAT",
+      answer: 30.0,
+      tolerance: { lower: 29.5, upper: 30.5, abs: 0.5 },
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 2 CS Q48 (go:422849) as NAT range 2.9 to 3.1", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422849": {
+        answer_uid: "manual:go:422849",
+        type: "NAT",
+        answer: 3.0,
+        tolerance: { lower: 2.9, upper: 3.1, abs: 0.1 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422849",
+      link: "https://gateoverflow.in/422849/gate-cse-2024-set-2-question-48",
+      title: "GATE CSE 2024 | Set 2 | Question: 48",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:422849",
+      type: "NAT",
+      answer: 3.0,
+      tolerance: { lower: 2.9, upper: 3.1, abs: 0.1 },
+    });
+  });
+
+  test("resolves GATE CSE 2024 Set 2 CS Q49 (go:422848) as NAT value 9", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:422848": {
+        answer_uid: "v2:1.24.33",
+        type: "NAT",
+        answer: 9,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:422848",
+      link: "https://gateoverflow.in/422848/gate-cse-2024-set-2-question-49",
+      title: "GATE CSE 2024 | Set 2 | Question: 49",
+    });
+    expect(answer).toEqual({
+      answer_uid: "v2:1.24.33",
+      type: "NAT",
+      answer: 9,
+      tolerance: { abs: 0.01 },
+    });
+  });
 });
 

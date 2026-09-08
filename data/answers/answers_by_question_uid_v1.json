@@ -1159,8 +1159,10 @@
     },
     "go:422856": {
       "answer_uid": "v1:2.4.32",
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": {
         "pdf": "volume1",
@@ -3716,7 +3718,9 @@
       "type": "NAT",
       "answer": 0.375,
       "tolerance": {
-        "abs": 0.01
+        "lower": 0.37,
+        "upper": 0.38,
+        "abs": 0.005
       },
       "source": {
         "pdf": "volume1",
@@ -8070,8 +8074,10 @@
     },
     "go:422807": {
       "answer_uid": "v2:1.14.16",
-      "type": "MCQ",
-      "answer": "C",
+      "type": "MSQ",
+      "answer": [
+        "C"
+      ],
       "tolerance": null,
       "source": {
         "pdf": "volume2",
@@ -9301,7 +9307,7 @@
     "go:422848": {
       "answer_uid": "v2:1.24.33",
       "type": "NAT",
-      "answer": 5,
+      "answer": 9,
       "tolerance": {
         "abs": 0.01
       },
@@ -14280,8 +14286,10 @@
     },
     "go:422884": {
       "answer_uid": "v2:4.12.5",
-      "type": "MCQ",
-      "answer": "B",
+      "type": "MSQ",
+      "answer": [
+        "B"
+      ],
       "tolerance": null,
       "source": {
         "pdf": "volume2",
@@ -22334,9 +22342,11 @@
     "go:422854": {
       "answer_uid": "v2:7.3.27",
       "type": "NAT",
-      "answer": 30.06,
+      "answer": 30,
       "tolerance": {
-        "abs": 0.01
+        "lower": 29.5,
+        "upper": 30.5,
+        "abs": 0.5
       },
       "source": {
         "pdf": "volume2",
@@ -36757,7 +36767,9 @@
       "type": "NAT",
       "answer": 2.375,
       "tolerance": {
-        "abs": 0.01
+        "lower": 2.374,
+        "upper": 2.376,
+        "abs": 0.001
       },
       "source": {
         "pdf": "manual_patch",
@@ -37604,11 +37616,8 @@
     },
     "go:399254": {
       "answer_uid": "manual:go:399254",
-      "type": "MSQ",
-      "answer": [
-        "B",
-        "D"
-      ],
+      "type": "MTA",
+      "answer": "MTA",
       "tolerance": null,
       "source": {
         "pdf": "manual_patch",
@@ -37631,8 +37640,10 @@
     },
     "go:422803": {
       "answer_uid": "manual:go:422803",
-      "type": "MCQ",
-      "answer": "A",
+      "type": "MSQ",
+      "answer": [
+        "A"
+      ],
       "tolerance": null,
       "source": {
         "pdf": "manual_patch",
@@ -37653,8 +37664,10 @@
     },
     "go:422828": {
       "answer_uid": "manual:go:422828",
-      "type": "MCQ",
-      "answer": "D",
+      "type": "MSQ",
+      "answer": [
+        "D"
+      ],
       "tolerance": null,
       "source": {
         "pdf": "manual_patch",
@@ -37773,7 +37786,9 @@
       "type": "NAT",
       "answer": 3,
       "tolerance": {
-        "abs": 0.01
+        "lower": 2.9,
+        "upper": 3.1,
+        "abs": 0.1
       },
       "source": {
         "pdf": "manual_patch",

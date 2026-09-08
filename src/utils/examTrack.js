@@ -3,9 +3,10 @@ export const EXAM_TRACKS = Object.freeze({
   DA: "da",
 });
 
-const YEAR_SET_KEY_RE = /^(cse|da):(\d{4}):set-(\d+)$/i;
+const YEAR_SET_KEY_RE = /^(cse|da):(\d{4}):(?:set-(\d+)|(additional))$/i;
 const LEGACY_YEAR_SET_KEY_RE = /^(\d{4})-s(\d+)$/i;
-const YEAR_SET_LABEL_RE = /^(\d{4})(?:\s+set\s*(\d+))?$/i;
+const LEGACY_ADDITIONAL_KEY_RE = /^(\d{4})-additional$/i;
+const YEAR_SET_LABEL_RE = /^(\d{4})(?:\s+set\s*(\d+)|\s+additional(?:\s+questions)?)?$/i;
 
 const TRACK_FIELDS = [
   "track",
@@ -115,11 +116,15 @@ export function buildTrackYearSetKey(
   track,
   year,
   set,
+  isAdditional = false,
 ) {
   const normalizedTrack = normalizeExamTrack(track) || EXAM_TRACKS.CSE;
   const yearNumber = Number.parseInt(String(year ?? ""), 10);
   if (!Number.isFinite(yearNumber) || yearNumber <= 0) {
     return null;
+  }
+  if (isAdditional || String(set || "").toLowerCase() === "additional") {
+    return `${normalizedTrack}:${yearNumber}:additional`;
   }
   const setNumber = Number.parseInt(String(set ?? ""), 10);
   const normalizedSet = Number.isFinite(setNumber) && setNumber > 0 ? setNumber : 0;
@@ -132,14 +137,38 @@ export function parseTrackYearSetKey(rawValue) {
   if (canonicalMatch) {
     const track = canonicalMatch[1].toLowerCase();
     const year = Number.parseInt(canonicalMatch[2], 10);
+    if (canonicalMatch[4]) {
+      return {
+        track,
+        year,
+        set: null,
+        isAdditional: true,
+        key: `${track}:${year}:additional`,
+        legacyKey: `${year}-additional`,
+      };
+    }
     const setNumber = Number.parseInt(canonicalMatch[3], 10);
     const set = Number.isFinite(setNumber) && setNumber > 0 ? setNumber : null;
     return {
       track,
       year,
       set,
+      isAdditional: false,
       key: buildTrackYearSetKey(track, year, set),
       legacyKey: `${year}-s${set || 0}`,
+    };
+  }
+
+  const legacyAdditionalMatch = value.match(LEGACY_ADDITIONAL_KEY_RE);
+  if (legacyAdditionalMatch) {
+    const year = Number.parseInt(legacyAdditionalMatch[1], 10);
+    return {
+      track: EXAM_TRACKS.CSE,
+      year,
+      set: null,
+      isAdditional: true,
+      key: buildTrackYearSetKey(EXAM_TRACKS.CSE, year, null, true),
+      legacyKey: `${year}-additional`,
     };
   }
 
@@ -154,6 +183,7 @@ export function parseTrackYearSetKey(rawValue) {
     track: EXAM_TRACKS.CSE,
     year,
     set,
+    isAdditional: false,
     key: buildTrackYearSetKey(EXAM_TRACKS.CSE, year, set),
     legacyKey: `${year}-s${set || 0}`,
   };
@@ -168,12 +198,13 @@ export function normalizeTrackYearSetKey(
     if (String(rawValue ?? "").trim().toLowerCase().match(YEAR_SET_KEY_RE)) {
       return parsed.key;
     }
-    return buildTrackYearSetKey(fallbackTrack, parsed.year, parsed.set);
+    return buildTrackYearSetKey(fallbackTrack, parsed.year, parsed.set, parsed.isAdditional);
   }
 
   const labelMatch = String(rawValue ?? "").trim().match(YEAR_SET_LABEL_RE);
   if (labelMatch) {
-    return buildTrackYearSetKey(fallbackTrack, labelMatch[1], labelMatch[2]);
+    const isAdd = Boolean(labelMatch[0].toLowerCase().includes("additional"));
+    return buildTrackYearSetKey(fallbackTrack, labelMatch[1], labelMatch[2], isAdd);
   }
   return null;
 }
@@ -182,6 +213,9 @@ export function formatTrackYearSetLabel(rawValue) {
   const parsed = parseTrackYearSetKey(rawValue);
   if (!parsed) {
     return String(rawValue ?? "");
+  }
+  if (parsed.isAdditional) {
+    return `${parsed.year} Additional Questions`;
   }
   return parsed.set ? `${parsed.year} Set ${parsed.set}` : String(parsed.year);
 }
@@ -208,9 +242,15 @@ export function getQuestionYearSetIdentity(question = {}, fallbackTrack) {
     return normalizedKey;
   }
 
+  const isAdditional =
+    question?.paper_scope === "additional_ga" ||
+    question?.paperScope === "additional_ga" ||
+    question?.isAdditional ||
+    String(question?.detailShardKey || "").includes("additional");
+
   const year = question?.year ?? question?.exam?.year;
   const set = question?.set ?? question?.exam?.set;
-  return buildTrackYearSetKey(track, year, set);
+  return buildTrackYearSetKey(track, year, set, isAdditional);
 }
 
 export function getTrackFromYearSetKey(rawValue) {

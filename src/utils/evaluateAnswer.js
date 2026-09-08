@@ -22,6 +22,15 @@ export function evaluateAnswer(record, userInput) {
     return { status: "missing_answer", correct: false };
   }
 
+  const typeUpper = String(record.type || "").toUpperCase().trim();
+  const answerUpper = String(record.answer || "").toUpperCase().trim();
+  if (typeUpper === "MTA" || typeUpper === "MARKS_TO_ALL" || answerUpper === "MTA") {
+    return {
+      status: "marks_to_all",
+      correct: true,
+    };
+  }
+
   if (record.is_defective || record.status === "excluded" || record.answer == null) {
     return {
       status: "excluded",

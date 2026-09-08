@@ -716,5 +716,159 @@ describe("evaluateAnswer", () => {
     expect(evaluateAnswer(record, ["C"]).correct).toBe(false);
     expect(evaluateAnswer(record, []).correct).toBe(false);
   });
+
+  test("evaluates GATE CSE 2024 Set 1 CS Q14 (go:422828) as MSQ with Option D correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["D"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["d"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "D"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["C"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 1 CS Q35 (go:422807) as MSQ with Option C correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["C"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["C"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["c"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["B", "C"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 1 CS Q39 (go:422803) as MSQ with Option A correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["A"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["a"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["A", "B"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["D"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 1 CS Q53 (go:422789) NAT range [0.370, 0.380]", () => {
+    const record = {
+      type: "NAT",
+      answer: 0.375,
+      tolerance: { lower: 0.37, upper: 0.38, abs: 0.005 },
+    };
+    expect(evaluateAnswer(record, 0.370).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.375).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.380).correct).toBe(true);
+    expect(evaluateAnswer(record, 0.369).correct).toBe(false);
+    expect(evaluateAnswer(record, 0.381).correct).toBe(false);
+    expect(evaluateAnswer(record, 0.365).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 2 CS Q13 (go:422884) as MSQ with Option B correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["B"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["B"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["b"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["B", "C"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 2 CS Q41 (go:422856) as MSQ with Option D correct", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["D"],
+      tolerance: null,
+    };
+    expect(evaluateAnswer(record, ["D"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["d"]).correct).toBe(true);
+    expect(evaluateAnswer(record, ["C", "D"]).correct).toBe(false);
+    expect(evaluateAnswer(record, ["A"]).correct).toBe(false);
+    expect(evaluateAnswer(record, []).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 2 CS Q43 (go:422854) NAT range [29.50, 30.50]", () => {
+    const record = {
+      type: "NAT",
+      answer: 30.0,
+      tolerance: { lower: 29.5, upper: 30.5, abs: 0.5 },
+    };
+    expect(evaluateAnswer(record, 29.50).correct).toBe(true);
+    expect(evaluateAnswer(record, 30.00).correct).toBe(true);
+    expect(evaluateAnswer(record, 30.06).correct).toBe(true);
+    expect(evaluateAnswer(record, 30.50).correct).toBe(true);
+    expect(evaluateAnswer(record, 29.49).correct).toBe(false);
+    expect(evaluateAnswer(record, 30.51).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 2 CS Q48 (go:422849) NAT range [2.9, 3.1]", () => {
+    const record = {
+      type: "NAT",
+      answer: 3.0,
+      tolerance: { lower: 2.9, upper: 3.1, abs: 0.1 },
+    };
+    expect(evaluateAnswer(record, 2.9).correct).toBe(true);
+    expect(evaluateAnswer(record, 3.0).correct).toBe(true);
+    expect(evaluateAnswer(record, 3.1).correct).toBe(true);
+    expect(evaluateAnswer(record, 2.89).correct).toBe(false);
+    expect(evaluateAnswer(record, 3.11).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2024 Set 2 CS Q49 (go:422848) NAT value 9", () => {
+    const record = {
+      type: "NAT",
+      answer: 9,
+      tolerance: { abs: 0.01 },
+    };
+    expect(evaluateAnswer(record, 9).correct).toBe(true);
+    expect(evaluateAnswer(record, 5).correct).toBe(false);
+    expect(evaluateAnswer(record, 8.9).correct).toBe(false);
+    expect(evaluateAnswer(record, 9.1).correct).toBe(false);
+  });
+
+  test("evaluates GATE CSE 2023 GA Q2 (go:399254) MTA (Marks To All) automatically", () => {
+    const record = {
+      type: "MTA",
+      answer: "MTA",
+    };
+    expect(evaluateAnswer(record, "A")).toEqual({
+      status: "marks_to_all",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "B")).toEqual({
+      status: "marks_to_all",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, null)).toEqual({
+      status: "marks_to_all",
+      correct: true,
+    });
+    expect(evaluateAnswer(record, "")).toEqual({
+      status: "marks_to_all",
+      correct: true,
+    });
+  });
+
+  test("evaluates GATE CSE 2023 CS Q50 (go:399261) NAT range [2.374, 2.376]", () => {
+    const record = {
+      type: "NAT",
+      answer: 2.375,
+      tolerance: { lower: 2.374, upper: 2.376, abs: 0.001 },
+    };
+    expect(evaluateAnswer(record, 2.374).correct).toBe(true);
+    expect(evaluateAnswer(record, 2.375).correct).toBe(true);
+    expect(evaluateAnswer(record, 2.376).correct).toBe(true);
+    expect(evaluateAnswer(record, 2.3739).correct).toBe(false);
+    expect(evaluateAnswer(record, 2.3761).correct).toBe(false);
+  });
 });
 

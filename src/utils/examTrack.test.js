@@ -44,4 +44,39 @@ describe("exam track identity", () => {
     expect(toLegacyYearSetKey(cseKey)).toBe("2026-s1");
     expect(toLegacyYearSetKey(daKey)).toBe(daKey);
   });
+
+  test("parses and formats additional questions year-set identities cleanly", () => {
+    const canonicalKey = buildTrackYearSetKey("cse", 2023, null, true);
+    expect(canonicalKey).toBe("cse:2023:additional");
+
+    const parsedCanonical = parseTrackYearSetKey(canonicalKey);
+    expect(parsedCanonical).toMatchObject({
+      track: "cse",
+      year: 2023,
+      set: null,
+      isAdditional: true,
+      key: "cse:2023:additional",
+      legacyKey: "2023-additional",
+    });
+
+    const parsedLegacy = parseTrackYearSetKey("2023-additional");
+    expect(parsedLegacy).toMatchObject({
+      track: "cse",
+      year: 2023,
+      set: null,
+      isAdditional: true,
+      key: "cse:2023:additional",
+      legacyKey: "2023-additional",
+    });
+
+    expect(toLegacyYearSetKey(canonicalKey)).toBe("2023-additional");
+
+    const question = {
+      question_uid: "go:411907",
+      title: "GATE Civil 2023 Set 1 | General Aptitude Question: 1",
+      paper_scope: "additional_ga",
+      year: 2023,
+    };
+    expect(getQuestionYearSetIdentity(question)).toBe("cse:2023:additional");
+  });
 });

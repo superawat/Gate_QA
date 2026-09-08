@@ -187,8 +187,19 @@ export function buildYearSetKey(year: any, setNo: any): string | null {
   return `${yearNum}-s${normalizedSet}`;
 }
 
-export function parseYearSetKey(rawValue: string = ""): { year: number; set: number | null; key: string } | null {
+export function parseYearSetKey(rawValue: string = ""): { year: number; set: number | null; key: string; isAdditional?: boolean } | null {
   const value = String(rawValue || "").trim().toLowerCase();
+  const additionalMatch = value.match(/^(\d{4})-additional$/);
+  if (additionalMatch) {
+    const year = Number.parseInt(additionalMatch[1], 10);
+    return {
+      year,
+      set: null,
+      isAdditional: true,
+      key: `${year}-additional`,
+    };
+  }
+
   const match = value.match(/^(\d{4})-s(\d+)$/);
   if (!match) {
     return null;
@@ -209,6 +220,9 @@ export function formatYearSetLabel(this: IQuestionService, yearSetKey: string = 
   const parsed = this.parseYearSetKey(yearSetKey);
   if (!parsed) {
     return String(yearSetKey || "");
+  }
+  if (parsed.isAdditional) {
+    return `${parsed.year} Additional Questions`;
   }
   if (parsed.set) {
     return `${parsed.year} Set ${parsed.set}`;
