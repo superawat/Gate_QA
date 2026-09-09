@@ -1033,8 +1033,704 @@ describe("AnswerService", () => {
       tolerance: { abs: 0.01 },
     });
   });
+
+  test("resolves GATE CSE 2017 Set 1 CS Q15 (go:118295) as MCQ Option B", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:118295": {
+        answer_uid: "manual:go:118295",
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:118295",
+      link: "https://gateoverflow.in/118295/gate-cse-2017-set-1-question-15",
+      title: "GATE CSE 2017 Set 1 | Question: 15",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:118295",
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2017 Set 1 CS Q23 (go:118303) as NAT 2.6", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:118303": {
+        answer_uid: "manual:go:118303",
+        type: "NAT",
+        answer: 2.6,
+        tolerance: { lower: 2.6, upper: 2.6, abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:118303",
+      link: "https://gateoverflow.in/118303/gate-cse-2017-set-1-question-23",
+      title: "GATE CSE 2017 Set 1 | Question: 23",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:118303",
+      type: "NAT",
+      answer: 2.6,
+      tolerance: { lower: 2.6, upper: 2.6, abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2017 Set 1 CS Q44 (go:118327) as NAT 11", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:118327": {
+        answer_uid: "manual:go:118327",
+        type: "NAT",
+        answer: 11,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:118327",
+      link: "https://gateoverflow.in/118327/gate-cse-2017-set-1-question-44",
+      title: "GATE CSE 2017 Set 1 | Question: 44",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:118327",
+      type: "NAT",
+      answer: 11,
+      tolerance: { abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2017 Set 1 CS Q48 (go:118331) as NAT 5", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:118331": {
+        answer_uid: "manual:go:118331",
+        type: "NAT",
+        answer: 5,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:118331",
+      link: "https://gateoverflow.in/118331/gate-cse-2017-set-1-question-48",
+      title: "GATE CSE 2017 Set 1 | Question: 48",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:118331",
+      type: "NAT",
+      answer: 5,
+      tolerance: { abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2017 Set 2 CS Q45 (go:118597) as NAT 4.72", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:118597": {
+        answer_uid: "manual:go:118597",
+        type: "NAT",
+        answer: 4.72,
+        tolerance: { lower: 4.70, upper: 4.74, abs: 0.02 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:118597",
+      link: "https://gateoverflow.in/118597/gate-cse-2017-set-2-question-45",
+      title: "GATE CSE 2017 Set 2 | Question: 45",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:118597",
+      type: "NAT",
+      answer: 4.72,
+      tolerance: { lower: 4.70, upper: 4.74, abs: 0.02 },
+    });
+  });
+
+  test("resolves GATE CSE 2016 Set 1 CS Q14 (go:39673) as MCQ Option A", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:39673": {
+        answer_uid: "manual:go:39673",
+        type: "MCQ",
+        answer: "A",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:39673",
+      link: "https://gateoverflow.in/39673/gate-cse-2016-set-1-question-14",
+      title: "GATE CSE 2016 Set 1 | Question: 14",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:39673",
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2016 Set 1 CS Q39 (go:39725) as NAT 7", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:39725": {
+        answer_uid: "manual:go:39725",
+        type: "NAT",
+        answer: 7,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:39725",
+      link: "https://gateoverflow.in/39725/gate-cse-2016-set-1-question-39",
+      title: "GATE CSE 2016 Set 1 | Question: 39",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:39725",
+      type: "NAT",
+      answer: 7,
+      tolerance: { abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2016 Set 2 CS Q13 (go:39561) as MCQ Option D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:39561": {
+        answer_uid: "manual:go:39561",
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:39561",
+      link: "https://gateoverflow.in/39561/gate-cse-2016-set-2-question-13",
+      title: "GATE CSE 2016 Set 2 | Question: 13",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:39561",
+      type: "MCQ",
+      answer: "D",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2016 Set 2 CS Q38 (go:39587) as NAT 1500", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:39587": {
+        answer_uid: "manual:go:39587",
+        type: "NAT",
+        answer: 1500,
+        tolerance: { abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:39587",
+      link: "https://gateoverflow.in/39587/gate-cse-2016-set-2-question-38",
+      title: "GATE CSE 2016 Set 2 | Question: 38",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:39587",
+      type: "NAT",
+      answer: 1500,
+      tolerance: { abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 1 CS Q1 (go:8015) as MCQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8015": {
+        answer_uid: "manual:go:8015",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8015",
+      link: "https://gateoverflow.in/8015/gate-cse-2015-set-1-question-1",
+      title: "GATE CSE 2015 Set 1 | Question: 1",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8015",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 1 CS Q21 (go:8244) as MCQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8244": {
+        answer_uid: "manual:go:8244",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8244",
+      link: "https://gateoverflow.in/8244/gate-cse-2015-set-1-question-21",
+      title: "GATE CSE 2015 Set 1 | Question: 21",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8244",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 1 CS Q42 (go:8312) as NAT 5", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8312": {
+        answer_uid: "manual:go:8312",
+        type: "NAT",
+        answer: 5,
+        tolerance: { lower: 5, upper: 5, abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8312",
+      link: "https://gateoverflow.in/8312/gate-cse-2015-set-1-question-42",
+      title: "GATE CSE 2015 Set 1 | Question: 42",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8312",
+      type: "NAT",
+      answer: 5,
+      tolerance: { lower: 5, upper: 5, abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 2 CS Q2 (go:8048) as MCQ Option A", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8048": {
+        answer_uid: "manual:go:8048",
+        type: "MCQ",
+        answer: "A",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8048",
+      link: "https://gateoverflow.in/8048/gate-cse-2015-set-2-question-2",
+      title: "GATE CSE 2015 Set 2 | Question: 2",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8048",
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 2 CS Q4 (go:8050) as MCQ Option C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8050": {
+        answer_uid: "manual:go:8050",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8050",
+      link: "https://gateoverflow.in/8050/gate-cse-2015-set-2-question-4",
+      title: "GATE CSE 2015 Set 2 | Question: 4",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8050",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 2 CS Q45 (go:8243) as MCQ Option A", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8243": {
+        answer_uid: "manual:go:8243",
+        type: "MCQ",
+        answer: "A",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8243",
+      link: "https://gateoverflow.in/8243/gate-cse-2015-set-2-question-45",
+      title: "GATE CSE 2015 Set 2 | Question: 45",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8243",
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 3 GA Q10 (go:8389) as NAT 2006", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8389": {
+        answer_uid: "manual:go:8389",
+        type: "NAT",
+        answer: 2006,
+        tolerance: { lower: 2006, upper: 2006, abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8389",
+      link: "https://gateoverflow.in/8389/gate-cse-2015-set-3-question-ga-10",
+      title: "GATE CSE 2015 Set 3 | Question: GA-10",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8389",
+      type: "NAT",
+      answer: 2006,
+      tolerance: { lower: 2006, upper: 2006, abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 3 CS Q21 (go:8423) as NAT 612.5", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8423": {
+        answer_uid: "manual:go:8423",
+        type: "NAT",
+        answer: 612.5,
+        tolerance: { lower: 612, upper: 613, abs: 0.5 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8423",
+      link: "https://gateoverflow.in/8423/gate-cse-2015-set-3-question-21",
+      title: "GATE CSE 2015 Set 3 | Question: 21",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8423",
+      type: "NAT",
+      answer: 612.5,
+      tolerance: { lower: 612, upper: 613, abs: 0.5 },
+    });
+  });
+
+  test("resolves GATE CSE 2015 Set 3 CS Q55 (go:8564) as MCQ Option A", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:8564": {
+        answer_uid: "manual:go:8564",
+        type: "MCQ",
+        answer: "A",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:8564",
+      link: "https://gateoverflow.in/8564/gate-cse-2015-set-3-question-55",
+      title: "GATE CSE 2015 Set 3 | Question: 55",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:8564",
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2014 Set 1 CS Q2 (go:1717) as NAT range [0.24, 0.27]", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:1717": {
+        answer_uid: "manual:go:1717",
+        type: "NAT",
+        answer: 0.255,
+        tolerance: { lower: 0.24, upper: 0.27, abs: 0.015 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:1717",
+      link: "https://gateoverflow.in/1717/gate-cse-2014-set-1-question-2",
+      title: "GATE CSE 2014 Set 1 | Question: 2",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:1717",
+      type: "NAT",
+      answer: 0.255,
+      tolerance: { lower: 0.24, upper: 0.27, abs: 0.015 },
+    });
+  });
+
+  test("resolves GATE CSE 2014 Set 2 CS Q1 (go:1953) as NAT range [11.85, 11.95]", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:1953": {
+        answer_uid: "manual:go:1953",
+        type: "NAT",
+        answer: 11.9,
+        tolerance: { lower: 11.85, upper: 11.95, abs: 0.05 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:1953",
+      link: "https://gateoverflow.in/1953/gate-cse-2014-set-2-question-1",
+      title: "GATE CSE 2014 Set 2 | Question: 1",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:1953",
+      type: "NAT",
+      answer: 11.9,
+      tolerance: { lower: 11.85, upper: 11.95, abs: 0.05 },
+    });
+  });
+
+  test("resolves GATE CSE 2014 Set 3 CS Q26 (go:2060) as NAT 1", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:2060": {
+        answer_uid: "manual:go:2060",
+        type: "NAT",
+        answer: 1,
+        tolerance: { lower: 1, upper: 1, abs: 0.01 },
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2060",
+      link: "https://gateoverflow.in/2060/gate-cse-2014-set-3-question-26",
+      title: "GATE CSE 2014 Set 3 | Question: 26",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2060",
+      type: "NAT",
+      answer: 1,
+      tolerance: { lower: 1, upper: 1, abs: 0.01 },
+    });
+  });
+
+  test("resolves GATE CSE 2013 CS Q30 (go:1541) as MCQ C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:1541": {
+        answer_uid: "manual:go:1541",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:1541",
+      link: "https://gateoverflow.in/1541/gate-cse-2013-question-30",
+      title: "GATE CSE 2013 | Question: 30",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:1541",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2013 CS Q42 (go:60) as MTA", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:60": {
+        answer_uid: "manual:go:60",
+        type: "MTA",
+        answer: "MTA",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:60",
+      link: "https://gateoverflow.in/60/gate-cse-2013-question-42",
+      title: "GATE CSE 2013 | Question: 42",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:60",
+      type: "MTA",
+      answer: "MTA",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2013 CS Q47 (go:80) as MTA", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:80": {
+        answer_uid: "manual:go:80",
+        type: "MTA",
+        answer: "MTA",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:80",
+      link: "https://gateoverflow.in/80/gate-cse-2013-question-47",
+      title: "GATE CSE 2013 | Question: 47",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:80",
+      type: "MTA",
+      answer: "MTA",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2012 CS Q3 (go:35) as MTA", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:35": {
+        answer_uid: "manual:go:35",
+        type: "MTA",
+        answer: "MTA",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:35",
+      link: "https://gateoverflow.in/35/gate-cse-2012-question-3",
+      title: "GATE CSE 2012 | Question: 3",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:35",
+      type: "MTA",
+      answer: "MTA",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2012 CS Q16 (go:48) as MCQ D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:48": {
+        answer_uid: "manual:go:48",
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:48",
+      link: "https://gateoverflow.in/48/gate-cse-2012-question-16",
+      title: "GATE CSE 2012 | Question: 16",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:48",
+      type: "MCQ",
+      answer: "D",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2011 CS Q33 (go:2135) as MCQ D", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:2135": {
+        answer_uid: "manual:go:2135",
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2135",
+      link: "https://gateoverflow.in/2135/gate-cse-2011-question-33",
+      title: "GATE CSE 2011 | Question: 33",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2135",
+      type: "MCQ",
+      answer: "D",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2011 CS Q38 (go:2140) as MCQ C", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:2140": {
+        answer_uid: "manual:go:2140",
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2140",
+      link: "https://gateoverflow.in/2140/gate-cse-2011-question-38",
+      title: "GATE CSE 2011 | Question: 38",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2140",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
+
+  test("resolves GATE CSE 2011 CS Q54 (go:2162) as MCQ B", () => {
+    AnswerService.answersByQuestionUid = {
+      "go:2162": {
+        answer_uid: "manual:go:2162",
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      },
+    };
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2162",
+      link: "https://gateoverflow.in/2162/gate-cse-2011-question-54",
+      title: "GATE CSE 2011 | Question: 54",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2162",
+      type: "MCQ",
+      answer: "B",
+      tolerance: null,
+    });
+  });
 });
 
+describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)", () => {
+  beforeEach(() => {
+    AnswerService.answersByQuestionUid = {
+      "go:2103": { answer_uid: "manual:go:2103", type: "MCQ", answer: "C", tolerance: null },
+      "go:2132": { answer_uid: "manual:go:2132", type: "MCQ", answer: "A", tolerance: null },
+      "go:2175": { answer_uid: "manual:go:2175", type: "MCQ", answer: "D", tolerance: null },
+    };
+    AnswerService.answersByUid = {};
+    AnswerService.answersByExamUid = {
+      "cse:2011:set1:main:q1": { answer_uid: "manual:go:2103", type: "MCQ", answer: "C", tolerance: null },
+      "cse:2011:set1:main:q30": { answer_uid: "manual:go:2132", type: "MCQ", answer: "A", tolerance: null },
+      "cse:2011:set1:main:q65": { answer_uid: "manual:go:2175", type: "MCQ", answer: "D", tolerance: null },
+    };
+    AnswerService.unsupportedQuestionUids = new Set();
+    AnswerService.loaded = true;
+    AnswerService.loadError = "";
+  });
 
+  test("go:2103 GATE CSE 2011 Q1 resolves MCQ C via question UID", () => {
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2103",
+      link: "https://gateoverflow.in/2103/gate-cse-2011-question-1",
+      title: "GATE CSE 2011 | Question: 1",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2103",
+      type: "MCQ",
+      answer: "C",
+      tolerance: null,
+    });
+  });
 
+  test("go:2132 GATE CSE 2011 Q30 resolves MCQ A via question UID", () => {
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2132",
+      link: "https://gateoverflow.in/2132/gate-cse-2011-question-30",
+      title: "GATE CSE 2011 | Question: 30",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2132",
+      type: "MCQ",
+      answer: "A",
+      tolerance: null,
+    });
+  });
+
+  test("go:2175 GATE CSE 2011 Q65 resolves MCQ D via question UID", () => {
+    const answer = AnswerService.getAnswerForQuestion({
+      question_uid: "go:2175",
+      link: "https://gateoverflow.in/2175/gate-cse-2011-question-65",
+      title: "GATE CSE 2011 | Question: 65",
+    });
+    expect(answer).toEqual({
+      answer_uid: "manual:go:2175",
+      type: "MCQ",
+      answer: "D",
+      tolerance: null,
+    });
+  });
+});
 
