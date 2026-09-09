@@ -1603,20 +1603,13 @@
     "v1:2.4.30": {
       "uid": "v1:2.4.30",
       "id_str": "2.4.30",
-      "volume": 1,
-      "chapter_no": 2,
-      "subject_code": 4,
-      "question_no": 30,
-      "type": "MCQ",
-      "answer": "A",
-      "source": {
-        "pdf": "volume1",
-        "page": 30,
-        "line_index": [
-          20
-        ]
-      },
-      "question_uid": "go:371894"
+      "question_uid": "go:371894",
+      "type": "MSQ",
+      "answer": [
+        "A"
+      ],
+      "tolerance": null,
+      "source": "manual_patch"
     },
     "v1:2.4.31": {
       "uid": "v1:2.4.31",
@@ -6399,7 +6392,7 @@
       "subject_code": 15,
       "question_no": 3,
       "type": "MCQ",
-      "answer": "C",
+      "answer": "D",
       "source": {
         "pdf": "volume1",
         "page": 136,
@@ -17217,23 +17210,11 @@
     "v1:10.4.2": {
       "uid": "v1:10.4.2",
       "id_str": "10.4.2",
-      "volume": 1,
-      "chapter_no": 10,
-      "subject_code": 4,
-      "question_no": 2,
-      "type": "NAT",
-      "answer": 3,
-      "source": {
-        "pdf": "volume1",
-        "page": 300,
-        "line_index": [
-          20
-        ]
-      },
       "question_uid": "go:371501",
-      "tolerance": {
-        "abs": 0.01
-      }
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_patch"
     },
     "v1:10.4.3": {
       "uid": "v1:10.4.3",
@@ -25986,8 +25967,8 @@
       "chapter_no": 1,
       "subject_code": 21,
       "question_no": 2,
-      "type": "NAT",
-      "answer": 1500,
+      "type": "MCQ",
+      "answer": "C",
       "source": {
         "pdf": "volume2",
         "page": 91,
@@ -25996,9 +25977,7 @@
         ]
       },
       "question_uid": "go:2140",
-      "tolerance": {
-        "abs": 0.01
-      }
+      "tolerance": null
     },
     "v2:1.21.3": {
       "uid": "v2:1.21.3",
@@ -26320,7 +26299,7 @@
       "subject_code": 24,
       "question_no": 17,
       "type": "MCQ",
-      "answer": "C",
+      "answer": "B",
       "source": {
         "pdf": "volume2",
         "page": 91,
@@ -26595,23 +26574,13 @@
     "v2:1.24.32": {
       "uid": "v2:1.24.32",
       "id_str": "1.24.32",
-      "volume": 2,
-      "chapter_no": 1,
-      "subject_code": 24,
-      "question_no": 32,
-      "type": "NAT",
-      "answer": 9,
-      "source": {
-        "pdf": "volume2",
-        "page": 91,
-        "line_index": [
-          18
-        ]
-      },
       "question_uid": "go:371888",
+      "type": "NAT",
+      "answer": 24,
       "tolerance": {
         "abs": 0.01
-      }
+      },
+      "source": "manual_patch"
     },
     "v2:1.24.33": {
       "uid": "v2:1.24.33",
@@ -27852,7 +27821,7 @@
       "subject_code": 31,
       "question_no": 18,
       "type": "MCQ",
-      "answer": "B",
+      "answer": "C",
       "source": {
         "pdf": "volume2",
         "page": 91,
@@ -53876,8 +53845,8 @@
       "chapter_no": 9,
       "subject_code": 8,
       "question_no": 7,
-      "type": "NAT",
-      "answer": 6561,
+      "type": "MTA",
+      "answer": "MTA",
       "source": {
         "pdf": "volume2",
         "page": 624,
@@ -58858,13 +58827,11 @@
       "question_uid": "go:2260"
     },
     "manual:go:80": {
-      "type": "MSQ",
-      "answer": [
-        "A",
-        "D"
-      ],
-      "questionuid": "go:80",
-      "id_str": "gate-cse-2013-question-47"
+      "uid": "manual:go:80",
+      "type": "MTA",
+      "answer": "MTA",
+      "tolerance": null,
+      "question_uid": "go:80"
     },
     "manual:go:460058": {
       "uid": "manual:go:460058",
@@ -58992,6 +58959,41 @@
       },
       "question_uid": "go:399261",
       "id_str": "go:399261"
+    },
+    "manual:go:1541": {
+      "uid": "manual:go:1541",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "question_uid": "go:1541"
+    },
+    "manual:go:60": {
+      "uid": "manual:go:60",
+      "type": "MTA",
+      "answer": "MTA",
+      "tolerance": null,
+      "question_uid": "go:60"
+    },
+    "manual:go:2135": {
+      "uid": "manual:go:2135",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "question_uid": "go:2135"
+    },
+    "manual:go:2140": {
+      "uid": "manual:go:2140",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "question_uid": "go:2140"
+    },
+    "manual:go:2162": {
+      "uid": "manual:go:2162",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "question_uid": "go:2162"
     }
   }
 }

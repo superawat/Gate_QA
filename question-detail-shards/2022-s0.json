@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T18:56:18.657Z",
+  "generatedAt": "2026-09-08T23:51:44.932Z",
   "shardKey": "2022-s0",
   "yearSetKey": "2022-s0",
   "yearSetIdentity": "cse:2022:set-0",
@@ -138,12 +138,10 @@
       "exam_uid": "cse:2022:set1:ga:q5",
       "answer_uid": "v1:10.4.2",
       "answer_meta": {
-        "type": "NAT",
-        "answer": 3,
-        "tolerance": {
-          "abs": 0.01
-        },
-        "source": "question_uid"
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
@@ -1555,10 +1553,12 @@
       "exam_uid": "cse:2022:set1:main:q42",
       "answer_uid": "v1:2.4.30",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "A",
+        "type": "MSQ",
+        "answer": [
+          "A"
+        ],
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
@@ -1746,11 +1746,11 @@
       "answer_uid": "v2:1.24.32",
       "answer_meta": {
         "type": "NAT",
-        "answer": 9,
+        "answer": 24,
         "tolerance": {
           "abs": 0.01
         },
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
@@ -1778,9 +1778,11 @@
         "type": "NAT",
         "answer": 7.08,
         "tolerance": {
-          "abs": 0.009999999999999787
+          "lower": 7.07,
+          "upper": 7.09,
+          "abs": 0.01
         },
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
@@ -1841,9 +1843,11 @@
         "type": "NAT",
         "answer": 1.435,
         "tolerance": {
-          "abs": 0.015000000000000013
+          "lower": 1.42,
+          "upper": 1.45,
+          "abs": 0.015
         },
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
