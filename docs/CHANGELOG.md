@@ -1,5 +1,131 @@
 # Changelog
 
+- **GATE CSE 2005 Comprehensive Answer Key Audit, Missing Answers Population & Corrections (DEC-087)**:
+  - *Context*: Complete audit of all 90 questions of GATE CSE 2005 (80 standalone + 10 linked-pair questions 81a–85b) verified against the reference answer key and GateOverflow authoritative data.
+  - *Audit Results*:
+    - Audited all 90 genuine questions of GATE CSE 2005.
+    - Populated/corrected 7 answer discrepancies and missing keys:
+      - **Q3** (`go:1345`, Distinct permutations of sorted integer sequence): Backfilled unpopulated key to **MCQ Option C** ($14$).
+      - **Q4** (`go:1346`, Graph properties / vertices): Backfilled unpopulated key to **MCQ Option B**.
+      - **Q6** (`go:1348`, Graph with 100 vertices and $|i-j|=8$ or $12$): Corrected from legacy Option B to **MCQ Option C** ($4$ connected components).
+      - **Q12** (`go:1162`, C function `float f(float x, int y)`): Corrected from legacy Option D to **MCQ Option C** ($256.0$).
+      - **Q39** (`go:784`, Algorithms / Data structures): Corrected from legacy Option C to **MCQ Option A**.
+      - **Q53** (`go:1376`, Computer Networks / OS): Converted from unpopulated to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q81** (`go:1403`, Linked question 81a): Corrected from legacy Option C to **MCQ Option B**.
+    - Normalized `year` from `"gatecse-2005"` to integer `2005` across all 90 questions in `public/questions-with-answers.json`.
+    - All 90 questions in GATE CSE 2005 are now 100% complete and scorable (90/90). Total dataset questions maintained at 3,551.
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 90 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — updated `answer_meta` and normalized year to integer `2005`.
+    - `public/question-detail-shards/2005-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json`, `public/question-bank-manifest.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-087).
+  - *Verification*: 193 evaluateAnswer tests pass, static shards regenerated cleanly, 90/90 verified against the reference answer key.
+
+- **GATE CSE 2006 Comprehensive Answer Key Audit, Missing Answers Population & Corrections (DEC-086)**:
+  - *Context*: Complete audit of all 85 questions of GATE CSE 2006 verified against the reference answer key and GateOverflow authoritative data.
+  - *Audit Results*:
+    - Audited all 85 genuine questions of GATE CSE 2006.
+    - Populated/corrected 6 answer discrepancies and missing keys:
+      - **Q11** (`go:890`, Weighted complete graph $G$ on $n$ vertices with $w(v_i, v_j) = 2|i-j|$): Corrected from legacy Option D to **MCQ Option B** ($2n-2$).
+      - **Q16** (`go:977`, NP-complete problem $S$ reduction to $Q$): Backfilled unpopulated key to **MCQ Option B** (If $S \le_p Q$, then $Q$ is NP-hard).
+      - **Q41** (`go:1817`, CPU cache with 64-byte block size and 32-bit address): Backfilled unpopulated key to **MCQ Option D** ($2048$ words, $10$-bit tag).
+      - **Q56** (`go:1834`, Pass-by-reference parameter passing code): Backfilled unpopulated key to **MCQ Option B** ($3, 3$).
+      - **Q63** (`go:1841`, Virtual addresses and inverted page table size): Corrected from legacy Option C to **MCQ Option A** (Inverted page table with $2^{20}$ entries).
+      - **Q68** (`go:1846`, SQL relational query on enrolled and paid): Corrected from legacy Option A to **MCQ Option B** (Students enrolled in all courses).
+    - Normalized `year` from `"gatecse-2006"` to integer `2006` across all 85 questions in `public/questions-with-answers.json`.
+    - All 85 questions in GATE CSE 2006 are now 100% complete and scorable (85/85). Total dataset questions maintained at 3,551.
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 85 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — updated `answer_meta` and normalized year to integer `2006`.
+    - `public/question-detail-shards/2006-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json`, `public/question-bank-manifest.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-086).
+  - *Verification*: 187 evaluateAnswer tests pass, static shards regenerated cleanly, 85/85 verified against the reference answer key.
+
+- **GATE CSE 2007 Comprehensive Answer Key Audit, Missing Question Q26 Restoral & Corrections (DEC-085)**:
+  - *Context*: Complete audit of all 85 questions of GATE CSE 2007 verified against the reference answer key and GateOverflow authoritative data.
+  - *Audit Results*:
+    - Restored omitted question **Q26** (`go:1224`, Set partition refinement poset on $\Pi = \{\pi_1, \pi_2, \pi_3, \pi_4\}$ $\rightarrow$ **MCQ Option C**).
+    - Corrected 3 answer discrepancies and types:
+      - **Q28** (`go:1226`, Newton-Raphson iteration $x_{n+1} = \frac{x_n}{2} + \frac{9}{8x_n}$): Converted from legacy Option A to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q41** (`go:1239`, Shortest path in unweighted undirected graph): Corrected from legacy Option A to **MCQ Option D** (BFS algorithm).
+      - **Q44** (`go:1242`, Euclidean gcd recursive calls): Corrected from misclassified NAT 10230 to **MCQ Option A** ($\Theta(\log_2 n)$).
+    - Normalized `year` from `"gatecse-2007"` to integer `2007` across all 85 questions in `public/questions-with-answers.json`.
+    - All 85 questions in GATE CSE 2007 are now 100% complete and scorable (85/85). Total dataset questions increased to 3,551.
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 85 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — inserted `go:1224`, updated `answer_meta`, and normalized year to integer `2007`.
+    - `public/question-detail-shards/2007-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json`, `public/question-bank-manifest.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-085).
+  - *Verification*: 181 evaluateAnswer tests pass, static shards regenerated cleanly, 85/85 verified against the reference answer key.
+
+- **GATE CSE 2008 Comprehensive Answer Key Audit, Missing Question Q21 Restoral & Corrections (DEC-084)**:
+  - *Context*: Complete audit of all 85 questions of GATE CSE 2008 verified against the reference answer key and GateOverflow authoritative data.
+  - *Audit Results*:
+    - Restored omitted question **Q21** (`go:419`, Trapezoidal rule error bound on $\int_1^2 x e^x dx$ $\rightarrow$ **MCQ Option A** $1000e$).
+    - Corrected 5 answer discrepancies and types:
+      - **Q3** (`go:401`, Linear system unique solution $\alpha \neq 5$): Converted from unpopulated to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q7** (`go:405`, Connected components time complexity $\Theta(m+n)$): Corrected from misclassified NAT 109 to **MCQ Option C**.
+      - **Q30** (`go:441`, First order logic FSA/PDA): Converted from legacy Option E to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q79** (`go:43485`, Binary strings without consecutive 0s $T(5)=13$): Converted from defective null to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q84** (`go:394`, Erroneous binary search loop): Corrected from legacy Option A to **MCQ Option C** ($Y=[2,2,\dots,2], x>2$).
+      - **Q85** (`go:43508`, Binary search line 6 correction): Corrected from misclassified NAT 5 to **MCQ Option A** (`if (Y[k] < x) i = k+1; else j = k-1;`).
+    - Normalized `year` from `"gatecse-2008"` to integer `2008` across all 85 questions in `public/questions-with-answers.json`.
+    - All 85 questions in GATE CSE 2008 are now 100% complete and scorable (85/85). Total dataset questions increased to 3,550.
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 85 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — inserted `go:419`, updated `answer_meta`, and normalized year to integer `2008`.
+    - `public/question-detail-shards/2008-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json`, `public/question-bank-manifest.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-084).
+  - *Verification*: 177 evaluateAnswer tests pass, 779 unit tests pass, static shards regenerated cleanly, 85/85 verified against the reference answer key.
+
+- **GATE CSE 2009 Comprehensive Answer Key Audit, Year Normalization & Corrections (DEC-083)**:
+  - *Context*: Complete audit of all 60 questions of GATE CSE 2009 verified against the reference answer key and GateOverflow authoritative data (prior to the introduction of the 10-question General Aptitude section in 2010).
+  - *Audit Results*:
+    - Verified all 60 questions against the reference answer key.
+    - Corrected 4 answer discrepancies:
+      - **Q11** (`go:1303`, Selection sort worst-case swaps): Corrected from legacy Option C to **MCQ Option A** ($\Theta(n)$).
+      - **Q35** (`go:1321`, Recurrence $T(n) = T(n/3) + cn$): Corrected from legacy Option D to **MCQ Option A** ($\Theta(n)$).
+      - **Q39** (`go:1325`, Quick-sort $(n/4)^{\text{th}}$ pivot element): Corrected from legacy Option C to **MCQ Option B** ($\Theta(n \log n)$).
+      - **Q55** (`go:1339`, Relational query double negation): Converted from legacy Option A to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+    - Populated runtime answer indices for 5 questions (Q7 `go:1299` MCQ C, Q19 `go:1311` MCQ A, Q46 `go:1332` MCQ B, Q49 `go:1335` MCQ C, Q50 `go:1336` MCQ B).
+    - Normalized `year` from string `"gatecse-2009"` to integer `2009` across all 60 questions in `public/questions-with-answers.json`.
+    - All 60 questions in GATE CSE 2009 are now 100% complete and scorable (60/60).
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 60 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — updated `answer_meta` and normalized year to integer `2009`.
+    - `public/question-detail-shards/2009-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-083).
+  - *Verification*: 170 evaluateAnswer tests pass, 779 unit tests pass, static shards regenerated cleanly, 60/60 verified against the reference answer key.
+
+- **GATE CSE 2010 Comprehensive Answer Key Audit & Missing Answers Backfill (DEC-082)**:
+  - *Context*: Complete audit of all 65 questions of GATE CSE 2010 verified against the reference answer key and GateOverflow authoritative data (as no officially released GATE 2010 answer key is available in the public archive).
+  - *Audit Results*:
+    - Verified all 65 questions against the reference answer key and aligned option orders.
+    - Populated 4 previously missing answers in the codebase:
+      - **Q2** (`go:1148`, Newton-Raphson approximation for $x^2 - 13 = 0$): Backfilled **MCQ Option B** ($3.607$).
+      - **Q21** (`go:2199`, Cyclomatic complexity of sequential integration): Backfilled **MCQ Option D** ($19$).
+      - **Q22** (`go:2201`, Software lifecycle activity pairing): Backfilled **MCQ Option B** (P-2, Q-3, R-1, S-4).
+      - **Q44** (`go:2345`, Statement coverage test suite): Backfilled **MCQ Option D** (T1, T2, T4).
+    - All 65 questions in GATE CSE 2010 are now 100% complete and scorable (65/65).
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — synchronized entries for all 65 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — updated `answer_meta` and aligned option order.
+    - `public/question-detail-shards/2010-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-082).
+  - *Verification*: 165 evaluateAnswer tests pass, 779 unit tests pass, static shards regenerated cleanly, 65/65 verified against the reference answer key.
+
 - **GATE CSE 2011 Comprehensive Answer Key Audit & Year Tag Normalization (DEC-081)**:
   - *Context*: Complete audit of all 65 questions of GATE CSE 2011 against the official GATE 2011 final answer key (IIT Madras) as the authoritative source of truth.
   - *Audit Results*:

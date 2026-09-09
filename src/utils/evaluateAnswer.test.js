@@ -1912,5 +1912,235 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, "B").correct).toBe(false);
     });
   });
-});
 
+  describe("GATE CSE 2010 Answer Key Repair & Audit Regression (DEC-082)", () => {
+    test("go:1148 - GATE CSE 2010 Q2 (CS) MCQ B (Newton-Raphson approximation 3.607)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:1149 - GATE CSE 2010 Q3 (CS) MCQ D (Reflexive relations 2^20)", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1150 - GATE CSE 2010 Q4 (CS) MCQ D (Group)", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1151 - GATE CSE 2010 Q5 (CS) MCQ A (Limit e^-2)", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+
+    test("go:2199 - GATE CSE 2010 Q21 (CS) MCQ D (Cyclomatic complexity 19)", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:2201 - GATE CSE 2010 Q22 (CS) MCQ B (Software lifecycle activity pairing P-2 Q-3 R-1 S-4)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:2345 - GATE CSE 2010 Q44 (CS) MCQ D (Statement coverage test suite T1, T2, T4)", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+
+    test("go:2364 - GATE CSE 2010 Q56 (GA) MCQ A (His remarks betrayed his lack of seriousness)", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+  });
+
+  describe("GATE CSE 2009 Answer Key Repair & Audit Regression (DEC-083)", () => {
+    test("go:1303 - GATE CSE 2009 Q11 (CS) MCQ A (Selection sort worst-case swaps Theta(n))", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1321 - GATE CSE 2009 Q35 (CS) MCQ A (Master theorem T(n)=T(n/3)+cn is Theta(n))", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:1325 - GATE CSE 2009 Q39 (CS) MCQ B (Quicksort with n/4 pivot is Theta(n log n))", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1339 - GATE CSE 2009 Q55 (CS) MTA (Relational query double-negation Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+      expect(evaluateAnswer(rec, "").correct).toBe(true);
+    });
+
+    test("go:1299 - GATE CSE 2009 Q7 (CS) MCQ C (32Kx1 RAM chips needed)", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+  });
+
+  describe("GATE CSE 2008 Answer Key Repair & Audit Regression (DEC-084)", () => {
+    test("go:401 - GATE CSE 2008 Q3 (CS) MTA (System of equations unique solution alpha!=5)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+    });
+
+    test("go:405 - GATE CSE 2008 Q7 (CS) MCQ C (Connected components Theta(m+n))", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:419 - GATE CSE 2008 Q21 (CS) MCQ A (Trapezoidal rule error 1000e)", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+
+    test("go:441 - GATE CSE 2008 Q30 (CS) MTA (First order logic FSA/PDA Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+    });
+
+    test("go:43485 - GATE CSE 2008 Q79 (CS) MTA (Binary strings without consecutive 0s T(5)=13)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+    });
+
+    test("go:394 - GATE CSE 2008 Q84 (CS) MCQ C (Erroneous binary search infinite loop)", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:43508 - GATE CSE 2008 Q85 (CS) MCQ A (Binary search line 6 correction)", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+  });
+
+  describe("GATE CSE 2007 Answer Key Repair & Audit Regression (DEC-085)", () => {
+    test("go:1224 - GATE CSE 2007 Q26 (CS) MCQ C (Set partition refinement poset)", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1226 - GATE CSE 2007 Q28 (CS) MTA (Newton-Raphson iteration x_{n+1} Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+      expect(evaluateAnswer(rec, "").correct).toBe(true);
+    });
+
+    test("go:1239 - GATE CSE 2007 Q41 (CS) MCQ D (Shortest path in unweighted undirected graph BFS)", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1242 - GATE CSE 2007 Q44 (CS) MCQ A (Euclidean gcd recursive calls Theta(log_2 n))", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "10230").correct).toBe(false);
+    });
+  });
+
+  describe("GATE CSE 2006 Answer Key Repair & Audit Regression (DEC-086)", () => {
+    test("go:890 - GATE CSE 2006 Q11 (CS) MCQ B (Weighted complete graph MST cost 2n-2)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:977 - GATE CSE 2006 Q16 (CS) MCQ B (NP-complete problem reduction to Q)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1817 - GATE CSE 2006 Q41 (CS) MCQ D (Cache block size 64 bytes)", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+
+    test("go:1834 - GATE CSE 2006 Q56 (CS) MCQ B (Pass-by-reference parameter passing)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1841 - GATE CSE 2006 Q63 (CS) MCQ A (Virtual addresses 32-bit inverted page table)", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1846 - GATE CSE 2006 Q68 (CS) MCQ B (SQL relation enrolled and paid)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+  });
+
+  describe("GATE CSE 2005 Answer Key Repair & Audit Regression (DEC-087)", () => {
+    test("go:1345 - GATE CSE 2005 Q3 (CS) MCQ C (Permutations of distinct sorted integers)", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1348 - GATE CSE 2005 Q6 (CS) MCQ C (Graph 100 vertices connected components)", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+
+    test("go:1162 - GATE CSE 2005 Q12 (CS) MCQ C (C function float f(float x, int y))", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:784 - GATE CSE 2005 Q39 (CS) MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1376 - GATE CSE 2005 Q53 (CS) MTA (Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+      expect(evaluateAnswer(rec, "").correct).toBe(true);
+    });
+
+    test("go:1403 - GATE CSE 2005 Q81a (CS Q81) MCQ B (Linked question 81a)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+  });
+});
