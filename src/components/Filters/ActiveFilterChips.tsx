@@ -113,15 +113,15 @@ const ActiveFilterChips = () => {
     if (!hasActiveFilters) return null;
 
     return (
-        <div className="flex flex-wrap gap-2 mb-4 animate-fadeIn">
+        <div className="flex flex-wrap gap-1.5 mt-2 mb-1 animate-fadeIn">
             {hasSearchQuery && (
-                <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-text)] shadow-sm">
+                <span className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-text)] shadow-sm">
                     Search: {searchQuery}
                     <button
                         type="button"
                         aria-label="Remove search filter"
                         onClick={resetSearchQuery}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-text-muted)] transition hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]"
                     >
                         <FaTimes />
                     </button>
@@ -144,24 +144,24 @@ const ActiveFilterChips = () => {
                     : rawLabel;
 
                 return (
-                    <span key={yearSetKey} className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-primary-text)] shadow-sm">
+                    <span key={yearSetKey} className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-primary-text)] shadow-sm">
                         {label}
                         {isDa && (
-                            <span className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]">
+                            <span className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]">
                                 DA
                             </span>
                         )}
                         {isIt && (
-                            <span className="rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-cyan-800 dark:text-cyan-300">
+                            <span className="rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-cyan-800 dark:text-cyan-300">
                                 IT
                             </span>
                         )}
                         {isAdditional && (
-                            <span className="rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-[color:var(--color-warning-text)]">
+                            <span className="rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-[color:var(--color-warning-text)]">
                                 Additional
                             </span>
                         )}
-                        <button type="button" onClick={() => removeYear(yearSetKey)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-primary-text)] transition hover:bg-[color:var(--color-primary-soft-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <button type="button" onClick={() => removeYear(yearSetKey)} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-primary-text)] transition hover:bg-[color:var(--color-primary-soft-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                             <FaTimes />
                         </button>
                     </span>
@@ -169,22 +169,22 @@ const ActiveFilterChips = () => {
             })}
 
             {isRangeActive && (
-                <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-purple-text)] shadow-sm">
+                <span className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-purple-text)] shadow-sm">
                     {yearRange[0]} - {yearRange[1]}
-                    <button type="button" onClick={resetRange} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-purple-text)] transition hover:bg-[color:var(--color-purple-soft)] focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <button type="button" onClick={resetRange} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-purple-text)] transition hover:bg-[color:var(--color-purple-soft)] focus:outline-none focus:ring-2 focus:ring-purple-500 text-[10px]">
                         <FaTimes />
                     </button>
                 </span>
             )}
 
             {isTypeConstrained && (
-                <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-info-text)] shadow-sm">
+                <span className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-info-border)] bg-[color:var(--color-info-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-info-text)] shadow-sm">
                     Types: {selectedTypes.join(', ')}
                     <button
                         type="button"
                         aria-label="Reset question type filter"
                         onClick={resetTypes}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-info-text)] transition hover:bg-[color:var(--color-info-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-info-text)] transition hover:bg-[color:var(--color-info-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]"
                     >
                         <FaTimes />
                     </button>
@@ -192,45 +192,45 @@ const ActiveFilterChips = () => {
             )}
 
             {selectedSubjects.map((subjectSlug) => (
-                <span key={subjectSlug} className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-3 py-1.5 text-sm font-medium capitalize text-[color:var(--color-success-text)] shadow-sm">
+                <span key={subjectSlug} className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2.5 py-0.5 text-xs font-medium capitalize text-[color:var(--color-success-text)] shadow-sm">
                     {subjectLabelBySlug.get(subjectSlug) || subjectSlug}
-                    <button type="button" onClick={() => removeSubject(subjectSlug)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-success-text)] transition hover:bg-[color:var(--color-success-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button type="button" onClick={() => removeSubject(subjectSlug)} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-success-text)] transition hover:bg-[color:var(--color-success-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                         <FaTimes />
                     </button>
                 </span>
             ))}
 
             {selectedSubtopics.map((subtopicSlug) => (
-                <span key={subtopicSlug} className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-warning-text)] shadow-sm">
+                <span key={subtopicSlug} className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-warning-text)] shadow-sm">
                     {subtopicLabelBySlug.get(subtopicSlug) || subtopicSlug}
-                    <button type="button" onClick={() => removeSubtopic(subtopicSlug)} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-warning-text)] transition hover:bg-[color:var(--color-warning-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button type="button" onClick={() => removeSubtopic(subtopicSlug)} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-warning-text)] transition hover:bg-[color:var(--color-warning-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                         <FaTimes />
                     </button>
                 </span>
             ))}
 
             {hideSolved && (
-                <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-success-text)] shadow-sm">
+                <span className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-success-text)] shadow-sm">
                     Hide solved
-                    <button type="button" onClick={resetHideSolved} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-success-text)] transition hover:bg-[color:var(--color-success-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button type="button" onClick={resetHideSolved} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-success-text)] transition hover:bg-[color:var(--color-success-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                         <FaTimes />
                     </button>
                 </span>
             )}
 
             {showOnlySolved && (
-                <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-primary-text)] shadow-sm">
+                <span className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-primary-text)] shadow-sm">
                     Solved only
-                    <button type="button" onClick={resetShowOnlySolved} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-primary-text)] transition hover:bg-[color:var(--color-primary-soft-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button type="button" onClick={resetShowOnlySolved} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-primary-text)] transition hover:bg-[color:var(--color-primary-soft-hover)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                         <FaTimes />
                     </button>
                 </span>
             )}
 
             {showOnlyBookmarked && (
-                <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-3 py-1.5 text-sm font-medium text-[color:var(--color-warning-text)] shadow-sm">
+                <span className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-warning-text)] shadow-sm">
                     Bookmarked only
-                    <button type="button" onClick={resetShowBookmarkedOnly} className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[color:var(--color-warning-text)] transition hover:bg-[color:var(--color-warning-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button type="button" onClick={resetShowBookmarkedOnly} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-warning-text)] transition hover:bg-[color:var(--color-warning-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                         <FaTimes />
                     </button>
                 </span>
@@ -239,7 +239,7 @@ const ActiveFilterChips = () => {
             <button
                 type="button"
                 onClick={clearFilters}
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2 text-sm font-semibold text-[color:var(--color-text)] shadow-sm transition hover:border-[color:var(--color-neutral-border)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:border-[color:var(--color-neutral-border)] hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
             >
                 <FaTimes className="text-[10px]" />
                 Clear all

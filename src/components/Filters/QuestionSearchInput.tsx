@@ -55,7 +55,7 @@ const QuestionSearchInput = ({
   const hasValue = String(draftValue || "").trim() !== "";
 
   return (
-    <div className={`space-y-2 ${className}`}>
+    <div className={`${hideLabel ? "" : "space-y-1.5"} ${className}`}>
       <label
         htmlFor={inputId}
         className={hideLabel ? "sr-only" : "block text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)]"}
@@ -77,8 +77,8 @@ const QuestionSearchInput = ({
           autoComplete="off"
           aria-describedby={helperId}
           aria-keyshortcuts={ariaKeyShortcuts}
-          className={`w-full rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-10 pr-12 text-[color:var(--color-text)] shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 ${
-            compact ? "min-h-[44px] py-2.5 text-base sm:text-sm" : "min-h-[48px] py-3 text-base sm:text-sm"
+          className={`w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-9 sm:pl-10 pr-10 text-[color:var(--color-text)] shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 ${
+            compact ? "min-h-[36px] sm:min-h-[38px] py-1.5 text-xs sm:text-sm" : "min-h-[48px] py-3 text-base sm:text-sm"
           } ${inputClassName}`}
         />
 
@@ -89,7 +89,7 @@ const QuestionSearchInput = ({
               setDraftValue("");
               updateFilters({ searchQuery: "" });
             }}
-            className="absolute inset-y-0 right-0 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-r-2xl text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className={`absolute inset-y-0 right-0 flex ${compact ? "min-h-[36px] min-w-[36px] rounded-r-xl" : "min-h-[44px] min-w-[44px] rounded-r-2xl"} items-center justify-center text-[color:var(--color-text-muted)] transition hover:text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-sky-500`}
             aria-label="Clear search text"
           >
             <FaTimes className="h-3.5 w-3.5" />

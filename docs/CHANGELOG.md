@@ -1,5 +1,25 @@
 # Changelog
 
+- **Explore Questions Page Vertical Space Utilization & Layout Density Optimization (DEC-093)**:
+  - *Context*: On `/practice`, excessive vertical height was allocated to the header panel, practice mode toggles, search input row, active filter chips container, and pagination card. At 100% zoom on 1366×768 and 1080p screens, only 1–2 question rows were visible above the fold.
+  - *Inline Search & Control Deck Integration*:
+    - Merged the standalone search row directly into the same horizontal line as `PRACTICE MODE` toggles (`practice-mode-and-search`), separated by a subtle vertical divider (`hidden sm:block h-5 w-px bg-[color:var(--color-border)]/80`).
+    - Eliminated the redundant full-width search container, its top border separator, and margin spacing, directly saving ~50px of vertical height.
+    - Updated `compact` search input in `QuestionSearchInput.tsx` to `min-h-[36px] sm:min-h-[38px] py-1.5` with refined icon and clear-button sizing.
+  - *Header & Row Density Tuning ("Compact, Not Compressed")*:
+    - Reduced `practice-explore-panel` padding from `p-5` to `px-4 py-3 sm:px-5 sm:py-3.5`.
+    - Compacted CTAs: `Start Practice` and mobile `Filters` button to `min-h-[40px] sm:min-h-[42px] rounded-xl`.
+    - Reclaimed ghost spacing from empty active filter chips with `.practice-active-chips:empty { display: none; margin: 0; }`.
+    - Set table row padding in `QuestionPickerList.jsx` to `px-4 sm:px-5 py-3` (saving 8px per row while maintaining comfortable legibility for multi-line titles).
+  - *Compact Pagination Section*:
+    - Reduced vertical padding from `p-4` to `px-3.5 py-1.5 sm:px-4 sm:py-1.5` and container radius to `rounded-xl`.
+    - Slimmed pagination buttons and page pills from `min-h-[38px]` to `h-7.5 min-h-[30px] min-w-[30px] rounded-lg text-xs`.
+    - Compacted jump-to-page input and button to `h-7`.
+  - *Impact & Verification*:
+    - Reclaimed **~90px to 106px** of vertical space overall.
+    - **6 complete question rows** (#1 through #6) are now immediately visible above the fold on 1366×768 (100% zoom).
+    - All 844 unit tests (77 test suites) and TypeScript checks (`npm run typecheck`) pass 100% green.
+
 - **Historical Pre-Merge GATE Papers (2004–2008) CSE/IT Separation & Two Separate Selectable Filter Options (DEC-092)**:
   - *Context*: During 2004–2008, Computer Science and Information Technology were separate branches with separate GATE question papers. Displaying `[CSE + IT]` combined or attaching an `[IT]` badge to the CSE row was misleading. The papers must be strictly separated at the data, shard, and query levels, and rendered as **two separate selectable filter options** in chronological order.
   - *Two Independent Selectable Rows*:

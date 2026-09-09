@@ -42,10 +42,10 @@ const PaginationControls = ({
   return (
     <nav
       aria-label="Question list pagination"
-      className="practice-pagination flex flex-col gap-4 rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-soft)] sm:flex-row sm:items-center sm:justify-between"
+      className="practice-pagination flex flex-col gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3.5 py-1.5 sm:px-4 sm:py-1.5 shadow-[var(--shadow-soft)] sm:flex-row sm:items-center sm:justify-between"
     >
       <div className="flex items-center gap-3">
-        <p className="text-sm font-medium text-[color:var(--color-text-muted)]">
+        <p className="text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">
           Page <span className="font-semibold text-[color:var(--color-text)]">{currentPage}</span> of{" "}
           <span className="font-semibold text-[color:var(--color-text)]">{totalPages}</span>
         </p>
@@ -61,20 +61,20 @@ const PaginationControls = ({
             max={totalPages}
             value={jumpPage}
             onChange={(e) => setJumpPage(e.target.value)}
-            className="w-14 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 py-1 text-center text-xs font-medium text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+            className="h-7 w-12 sm:w-14 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1.5 py-0.5 text-center text-xs font-medium text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
             placeholder="No."
           />
           <button
             type="submit"
             disabled={!jumpPage}
-            className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] disabled:opacity-40 disabled:cursor-not-allowed"
+            className="h-7 rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Go
           </button>
         </form>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-1.5 sm:justify-end">
+      <div className="flex flex-wrap items-center justify-between gap-1 sm:gap-1.5 sm:justify-end">
         {/* First Page button */}
         <button
           type="button"
@@ -82,9 +82,9 @@ const PaginationControls = ({
           onClick={() => onPageChange(1)}
           aria-label="First page"
           title="First page"
-          className="hidden sm:inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
+          className="hidden sm:inline-flex h-7.5 w-7.5 min-h-[30px] min-w-[30px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-1 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
         >
-          <FaAngleDoubleLeft className="text-xs" />
+          <FaAngleDoubleLeft className="text-[11px]" />
         </button>
 
         {/* Previous button */}
@@ -93,9 +93,9 @@ const PaginationControls = ({
           disabled={currentPage <= 1}
           onClick={() => onPageChange(currentPage - 1)}
           aria-label="Previous page"
-          className="inline-flex min-h-[38px] items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-7.5 min-h-[30px] items-center gap-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
         >
-          <FaChevronLeft className="text-xs" />
+          <FaChevronLeft className="text-[10px]" />
           <span className="hidden xs:inline">Prev</span>
         </button>
 
@@ -106,7 +106,7 @@ const PaginationControls = ({
               return (
                 <span
                   key={`ellipsis-${idx}`}
-                  className="inline-flex min-h-[38px] min-w-[28px] items-center justify-center text-xs font-bold text-[color:var(--color-text-muted)]"
+                  className="inline-flex h-7.5 min-h-[30px] min-w-[20px] sm:min-w-[24px] items-center justify-center text-xs font-bold text-[color:var(--color-text-muted)]"
                 >
                   …
                 </span>
@@ -121,7 +121,7 @@ const PaginationControls = ({
                 aria-current={isActive ? "page" : undefined}
                 aria-label={`Page ${page}`}
                 onClick={() => onPageChange(page)}
-                className={`inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-xl text-sm font-semibold transition ${
+                className={`inline-flex h-7.5 min-h-[30px] min-w-[30px] items-center justify-center rounded-lg px-2 text-xs font-semibold transition ${
                   isActive
                     ? "bg-[color:var(--color-primary)] text-white shadow-sm"
                     : "border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
@@ -139,10 +139,10 @@ const PaginationControls = ({
           disabled={currentPage >= totalPages}
           onClick={() => onPageChange(currentPage + 1)}
           aria-label="Next page"
-          className="inline-flex min-h-[38px] items-center gap-1.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1.5 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-7.5 min-h-[30px] items-center gap-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
         >
           <span className="hidden xs:inline">Next</span>
-          <FaChevronRight className="text-xs" />
+          <FaChevronRight className="text-[10px]" />
         </button>
 
         {/* Last Page button */}
@@ -152,9 +152,9 @@ const PaginationControls = ({
           onClick={() => onPageChange(totalPages)}
           aria-label="Last page"
           title="Last page"
-          className="hidden sm:inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
+          className="hidden sm:inline-flex h-7.5 w-7.5 min-h-[30px] min-w-[30px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-1 text-xs font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] disabled:cursor-not-allowed disabled:opacity-40"
         >
-          <FaAngleDoubleRight className="text-xs" />
+          <FaAngleDoubleRight className="text-[11px]" />
         </button>
       </div>
     </nav>

@@ -14,7 +14,7 @@ During September 2026, GateQA is undergoing a structured product and data-qualit
 3. **Freeze Rules Overhaul**: Redesigning the streak Freeze mechanic into an intuitive, deterministic, and abuse-resistant system across timezone boundaries and cloud sync.
 4. **Historical IT Paper Provenance & Expansion (2004–2008)**: Isolating historical GATE IT questions from CSE shards, completing missing questions, and exposing IT branch practice.
 5. **Additional Competitive Exam Question Banks**: Ingesting cleanly isolated external exam banks (ISRO, CIL, BARC, UGC NET).
-6. **Explore Questions Page — Vertical Space Utilization Optimization**: Streamlining the Explore page header, search row, practice mode controls, and active filter chips to maximize visible question content above the fold across mobile and desktop viewports.
+6. **Explore Questions Page — Vertical Space Utilization Optimization**: Streamlining the Explore page header, search row, practice mode controls, and active filter chips to maximize visible question content above the fold across mobile and desktop viewports. **(✅ Complete · DEC-093)**
 
 ---
 
@@ -346,7 +346,7 @@ flowchart TD
 3. **Phase 2: Filter Section UI + Data-Classification Overhaul**
    - Implement `Official Papers` vs `Additional Questions` visual grouping.
    - Polish filter chips, URL query param serialization, and solved/unsolved toggles.
-   - **Vertical Space Utilization Optimization**: Streamline Explore Questions page controls, inline search with practice mode toggles, and maximize visible question content above the fold.
+   - **Vertical Space Utilization Optimization**: Streamline Explore Questions page controls, inline search with practice mode toggles, and maximize visible question content above the fold. **(✅ Complete · DEC-093: 6 full question rows visible above the fold on 1366×768 at 100% zoom)**.
 4. **Phase 3: Freeze Rules Overhaul**
    - Refactor `practiceProgress.js` freeze state machine, timezone calendar day logic, and Supabase sync.
    - Build UI freeze indicator and notification banner.

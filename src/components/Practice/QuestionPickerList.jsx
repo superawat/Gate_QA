@@ -63,7 +63,7 @@ const QuestionPickerList = ({
   className = "",
 }) => (
   <section className={`practice-question-list overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[var(--shadow-card)] xl:flex xl:min-h-0 xl:flex-col ${className}`}>
-    <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
+    <div className="practice-question-table-head hidden grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] gap-4 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 sm:px-5 py-2 sm:py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)] md:grid">
       <span>Index</span>
       <span>Question</span>
       <span>Year</span>
@@ -92,7 +92,7 @@ const QuestionPickerList = ({
             onPointerEnter={() => prefetchQuestionShard(question)}
             onFocus={() => prefetchQuestionShard(question)}
             onTouchStart={() => prefetchQuestionShard(question)}
-            className="practice-question-row group block w-full px-5 py-4 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+            className="practice-question-row group block w-full px-4 sm:px-5 py-3 text-left transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
           >
             <div className="practice-question-row-grid flex flex-col gap-3 md:grid md:grid-cols-[88px_minmax(0,1.8fr)_140px_180px_150px] md:items-center md:gap-4">
               <div className="practice-question-kicker flex items-center justify-between gap-3 md:block">
