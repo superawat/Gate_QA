@@ -8,7 +8,7 @@ import {
   stripEmbeddedOptions as stripSharedEmbeddedOptions,
 } from "../src/utils/stripEmbeddedOptions.js";
 import { buildDaPublicArtifacts } from "./da-pipeline/build-da-artifacts.mjs";
-import { buildTrackYearSetKey, getQuestionTrack } from "../src/utils/examTrack.js";
+import { buildTrackYearSetKey, getQuestionTrack, isItQuestion } from "../src/utils/examTrack.js";
 
 const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -553,6 +553,22 @@ function parseYearSet(question = {}) {
     };
   }
 
+  // 2. Authentic GATE IT Questions (2004–2008)
+  if (isItQuestion(question)) {
+    const ym = String(question.year || question.title || "").match(/\b(200[4-8])\b/);
+    const year = ym ? Number.parseInt(ym[1], 10) : 2004;
+    return {
+      year,
+      set: null,
+      isAdditional: false,
+      paperScope: "official_it",
+      key: `it-${year}-s0`,
+      yearSetIdentity: buildTrackYearSetKey("it", year, null),
+      label: `${year} IT`,
+      track: "it",
+    };
+  }
+
   const candidates = [
     String(question.title || ""),
     String(question.year || ""),
@@ -579,6 +595,7 @@ function parseYearSet(question = {}) {
       key: `${year}-s${set || 0}`,
       yearSetIdentity: buildTrackYearSetKey("cse", year, set),
       label: set ? `${year} Set ${set}` : String(year),
+      track: "cse",
     };
   }
 
@@ -1237,7 +1254,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       ? null
       : parseMockSectionPosition(question, yearSet);
 
-    if (!yearSet.key || yearSet.isAdditional || (!paperPosition && !useLegacySlotDedup)) {
+    if (!yearSet.key || yearSet.isAdditional || yearSet.paperScope === "official_it" || (!paperPosition && !useLegacySlotDedup)) {
       return;
     }
 
@@ -1760,7 +1777,7 @@ async function buildArtifacts() {
       if (!yearSetMap.has(yearSet.key)) {
         yearSetMap.set(yearSet.key, {
           key: yearSet.key,
-          track,
+          track: yearSet.paperScope === "official_it" ? "it" : track,
           yearSetIdentity: yearSet.yearSetIdentity,
           year: yearSet.year,
           set: yearSet.set,
@@ -1906,6 +1923,14 @@ async function buildArtifacts() {
     return Math.max(maxYear, question.year);
   }, 0);
 
+  for (const year of [2004, 2005, 2006, 2007, 2008]) {
+    const cseKey = `${year}-s0`;
+    const itKey = `it-${year}-s0`;
+    if (yearSetMap.has(cseKey) && yearSetMap.has(itKey)) {
+      yearSetMap.get(cseKey).hasItPaper = true;
+    }
+  }
+
   const manifest = {
     bankVersion: "v1",
     generatedAt,
@@ -1917,6 +1942,12 @@ async function buildArtifacts() {
       }
       if (Boolean(left.isAdditional) !== Boolean(right.isAdditional)) {
         return left.isAdditional ? 1 : -1;
+      }
+      const trackOrder = { cse: 0, it: 1, da: 2 };
+      const leftTrack = trackOrder[left.track] ?? 3;
+      const rightTrack = trackOrder[right.track] ?? 3;
+      if (leftTrack !== rightTrack) {
+        return leftTrack - rightTrack;
       }
       return (right.set || 0) - (left.set || 0);
     }),

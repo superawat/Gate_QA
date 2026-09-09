@@ -114,4 +114,43 @@ describe("QuestionResultCard", () => {
 
     expect(screen.queryByText("GATE DA")).toBeNull();
   });
+
+  test("renders the GATE IT badge for authentic GATE IT questions", () => {
+    const { rerender } = render(
+      <QuestionResultCard
+        question={{
+          question_uid: "go:790",
+          title: "GATE IT 2004 | Question: 50",
+          branch: "IT",
+          paper_scope: "official_it",
+          year: 2004,
+          yearSetLabel: "2004",
+          subjectLabel: "Computer Organization",
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.getByTestId("gate-it-badge")).toBeTruthy();
+    expect(screen.getByText("GATE IT")).toBeTruthy();
+
+    rerender(
+      <QuestionResultCard
+        question={{
+          question_uid: "go:1019",
+          title: "GATE CSE 2004 | Question: 22",
+          year: 2004,
+          yearSetLabel: "2004",
+          subjectLabel: "Computer Networks",
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.queryByTestId("gate-it-badge")).toBeNull();
+  });
 });

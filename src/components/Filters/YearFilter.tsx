@@ -30,6 +30,14 @@ const YearFilter = () => {
                 const isDaYearSet = parsedKey?.track === 'da'
                     || String(yearSet.track || yearSet.source || yearSet.paper || '').toLowerCase() === 'da'
                     || /^gate\s+da\b/i.test(String(yearSet.label || ''));
+                const isItYearSet = parsedKey?.track === 'it'
+                    || yearSet.paperScope === 'official_it'
+                    || String(yearSet.track || yearSet.source || yearSet.paper || '').toLowerCase() === 'it'
+                    || /^it-\d{4}/i.test(yearSetKey)
+                    || /^it:/i.test(yearSetKey)
+                    || /:it:/i.test(yearSetKey)
+                    || /\bIT\b/i.test(rawDisplay);
+
                 const isAdditional = Boolean(yearSet.isAdditional
                     || yearSet.paperScope === 'additional_ga'
                     || parsedKey?.isAdditional
@@ -37,11 +45,13 @@ const YearFilter = () => {
                     || /additional/i.test(rawDisplay));
                 const displayYear = isAdditional
                     ? (rawDisplay.replace(/\s*additional(?:\s+questions?)?/i, '').trim() || (yearSet.year ? String(yearSet.year) : rawDisplay))
-                    : rawDisplay;
+                    : isItYearSet
+                        ? (rawDisplay.replace(/\s*IT\b/i, '').trim() || (yearSet.year ? String(yearSet.year) : rawDisplay))
+                        : rawDisplay;
                 const isSelected = selectedYearSets.includes(yearSetKey);
 
                 return (
-                    <label key={`${yearSetKey}-${isDaYearSet ? 'da' : 'cse'}`} className="flex items-center cursor-pointer group">
+                    <label key={`${yearSetKey}-${isDaYearSet ? 'da' : isItYearSet ? 'it' : 'cse'}`} className="flex items-center cursor-pointer group">
                         <input
                             data-testid={`year-filter-${yearSetKey}`}
                             type="checkbox"
@@ -66,6 +76,15 @@ const YearFilter = () => {
                                     className="rounded-full border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-[color:var(--color-warning-text)]"
                                 >
                                     GA • Additional
+                                </span>
+                            )}
+                            {isItYearSet && (
+                                <span
+                                    title="GATE Information Technology"
+                                    aria-label="GATE IT"
+                                    className="rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-cyan-800 dark:text-cyan-300"
+                                >
+                                    IT
                                 </span>
                             )}
                         </span>

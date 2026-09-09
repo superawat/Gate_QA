@@ -132,6 +132,7 @@ const ActiveFilterChips = () => {
                 const yearMeta = yearSetByKey.get(yearSetKey);
                 const parsedKey = parseTrackYearSetKey(yearSetKey);
                 const isDa = yearMeta?.track === 'da' || parsedKey?.track === 'da';
+                const isIt = yearMeta?.track === 'it' || parsedKey?.track === 'it';
                 const isAdditional = Boolean(
                     yearMeta?.paperScope === 'additional_ga' ||
                     parsedKey?.isAdditional ||
@@ -148,6 +149,11 @@ const ActiveFilterChips = () => {
                         {isDa && (
                             <span className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]">
                                 DA
+                            </span>
+                        )}
+                        {isIt && (
+                            <span className="rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-cyan-800 dark:text-cyan-300">
+                                IT
                             </span>
                         )}
                         {isAdditional && (

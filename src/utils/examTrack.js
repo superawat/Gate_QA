@@ -3,10 +3,10 @@ export const EXAM_TRACKS = Object.freeze({
   DA: "da",
 });
 
-const YEAR_SET_KEY_RE = /^(cse|da):(\d{4}):(?:set-(\d+)|(additional))$/i;
-const LEGACY_YEAR_SET_KEY_RE = /^(\d{4})-s(\d+)$/i;
+const YEAR_SET_KEY_RE = /^(cse|da|it):(\d{4}):(?:set-(\d+)|(additional))$/i;
+const LEGACY_YEAR_SET_KEY_RE = /^(?:(it)-)?(\d{4})-s(\d+)$/i;
 const LEGACY_ADDITIONAL_KEY_RE = /^(\d{4})-additional$/i;
-const YEAR_SET_LABEL_RE = /^(\d{4})(?:\s+set\s*(\d+)|\s+additional(?:\s+questions)?)?$/i;
+const YEAR_SET_LABEL_RE = /^(?:(it)\s+)?(\d{4})(?:\s+set\s*(\d+)|\s+additional(?:\s+questions)?)?$/i;
 
 const TRACK_FIELDS = [
   "track",
@@ -112,13 +112,34 @@ export const isDaQuestion = (question = {}) => (
   getQuestionTrack(question) === EXAM_TRACKS.DA
 );
 
+export function isItQuestion(question = {}) {
+  if (
+    question?.branch === "IT" ||
+    question?.paper === "IT" ||
+    question?.source_branch === "IT" ||
+    question?.paper_scope === "official_it"
+  ) {
+    return true;
+  }
+  const title = String(question?.title || "");
+  if (/\bgate\s+it\b/i.test(title)) {
+    return true;
+  }
+  const year = String(question?.year || "");
+  if (/^gateit-\d{4}/i.test(year)) {
+    return true;
+  }
+  return false;
+}
+
 export function buildTrackYearSetKey(
   track,
   year,
   set,
   isAdditional = false,
 ) {
-  const normalizedTrack = normalizeExamTrack(track) || EXAM_TRACKS.CSE;
+  const isIt = String(track ?? "").trim().toLowerCase() === "it";
+  const normalizedTrack = isIt ? "it" : (normalizeExamTrack(track) || EXAM_TRACKS.CSE);
   const yearNumber = Number.parseInt(String(year ?? ""), 10);
   if (!Number.isFinite(yearNumber) || yearNumber <= 0) {
     return null;
@@ -144,7 +165,7 @@ export function parseTrackYearSetKey(rawValue) {
         set: null,
         isAdditional: true,
         key: `${track}:${year}:additional`,
-        legacyKey: `${year}-additional`,
+        legacyKey: track === "it" ? `it-${year}-additional` : `${year}-additional`,
       };
     }
     const setNumber = Number.parseInt(canonicalMatch[3], 10);
@@ -155,7 +176,7 @@ export function parseTrackYearSetKey(rawValue) {
       set,
       isAdditional: false,
       key: buildTrackYearSetKey(track, year, set),
-      legacyKey: `${year}-s${set || 0}`,
+      legacyKey: track === "it" ? `it-${year}-s${set || 0}` : `${year}-s${set || 0}`,
     };
   }
 
@@ -176,16 +197,18 @@ export function parseTrackYearSetKey(rawValue) {
   if (!legacyMatch) {
     return null;
   }
-  const year = Number.parseInt(legacyMatch[1], 10);
-  const setNumber = Number.parseInt(legacyMatch[2], 10);
+  const isItLegacy = Boolean(legacyMatch[1] && legacyMatch[1].toLowerCase() === "it");
+  const track = isItLegacy ? "it" : EXAM_TRACKS.CSE;
+  const year = Number.parseInt(legacyMatch[2], 10);
+  const setNumber = Number.parseInt(legacyMatch[3], 10);
   const set = Number.isFinite(setNumber) && setNumber > 0 ? setNumber : null;
   return {
-    track: EXAM_TRACKS.CSE,
+    track,
     year,
     set,
     isAdditional: false,
-    key: buildTrackYearSetKey(EXAM_TRACKS.CSE, year, set),
-    legacyKey: `${year}-s${set || 0}`,
+    key: buildTrackYearSetKey(track, year, set),
+    legacyKey: isItLegacy ? `it-${year}-s${set || 0}` : `${year}-s${set || 0}`,
   };
 }
 
@@ -204,7 +227,9 @@ export function normalizeTrackYearSetKey(
   const labelMatch = String(rawValue ?? "").trim().match(YEAR_SET_LABEL_RE);
   if (labelMatch) {
     const isAdd = Boolean(labelMatch[0].toLowerCase().includes("additional"));
-    return buildTrackYearSetKey(fallbackTrack, labelMatch[1], labelMatch[2], isAdd);
+    const isItLabel = Boolean(labelMatch[1] && labelMatch[1].toLowerCase() === "it");
+    const targetTrack = isItLabel ? "it" : fallbackTrack;
+    return buildTrackYearSetKey(targetTrack, labelMatch[2], labelMatch[3], isAdd);
   }
   return null;
 }
@@ -213,6 +238,9 @@ export function formatTrackYearSetLabel(rawValue) {
   const parsed = parseTrackYearSetKey(rawValue);
   if (!parsed) {
     return String(rawValue ?? "");
+  }
+  if (parsed.track === "it") {
+    return `${parsed.year} IT`;
   }
   if (parsed.isAdditional) {
     return `${parsed.year} Additional Questions`;
@@ -225,11 +253,14 @@ export function toLegacyYearSetKey(rawValue) {
   if (!parsed) {
     return null;
   }
-  return parsed.track === EXAM_TRACKS.CSE ? parsed.legacyKey : parsed.key;
+  return parsed.track === EXAM_TRACKS.CSE || parsed.track === "it" ? parsed.legacyKey : parsed.key;
 }
 
 export function getQuestionYearSetIdentity(question = {}, fallbackTrack) {
-  const track = normalizeExamTrack(fallbackTrack) || getQuestionTrack(question);
+  const isIt = isItQuestion(question);
+  const track = isIt
+    ? "it"
+    : (normalizeExamTrack(fallbackTrack) || getQuestionTrack(question));
   const explicitIdentity = question?.yearSetIdentity || question?.exam?.yearSetIdentity;
   const normalizedIdentity = normalizeTrackYearSetKey(explicitIdentity, track);
   if (normalizedIdentity) {

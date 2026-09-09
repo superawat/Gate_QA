@@ -68,7 +68,7 @@ const YearLandingPage = ({ questionBankManifest }) => {
 
   // Get year sets for this year (may be multiple sets e.g. 2024-s1, 2024-s2)
   const yearSets = useMemo(
-    () => (questionBankManifest?.yearSets ?? []).filter((ys) => ys.year === yearNum),
+    () => (questionBankManifest?.yearSets ?? []).filter((ys) => ys.year === yearNum && ys.paperScope !== 'official_it' && ys.track !== 'it'),
     [questionBankManifest, yearNum]
   );
 

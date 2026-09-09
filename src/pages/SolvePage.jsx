@@ -22,7 +22,7 @@ import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes"
 import { writeLastSession } from "../utils/lastSession";
 import { readPracticeShuffleEnabled } from "../utils/practicePreference";
 import { getDisplayQuestionTypeLabel } from "../utils/questionType";
-import { isDaQuestion as isDaQuestionByMetadata } from "../utils/examTrack";
+import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../utils/examTrack";
 
 const isUnavailableQuestionDetailError = (error) => (
   /question detail missing|not available in the current index/i.test(String(error?.message || error || ""))
@@ -457,6 +457,18 @@ const SolvePage = ({
         : targetQuestion.year
           ? `GATE ${targetQuestion.year}`
           : "");
+
+    if (isItQuestion(targetQuestion)) {
+      chips.push(
+        <span
+          key="gate-it"
+          data-testid="gate-it-badge"
+          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-2 sm:px-2.5 py-1 text-xs font-semibold text-cyan-800 dark:text-cyan-300"
+        >
+          GATE IT
+        </span>
+      );
+    }
 
     if (yearSetText) {
       chips.push(

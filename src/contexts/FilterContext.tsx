@@ -74,21 +74,25 @@ const buildStructuredTagsFromManifest = (manifest = null, questionService = Ques
             .map((entry) => {
                 const legacyKey = String(entry?.key || '').trim();
                 const isAdditional = Boolean(entry?.isAdditional || entry?.paperScope === 'additional_ga' || legacyKey.includes('additional'));
-                const identity = buildTrackYearSetKey('cse', entry?.year, entry?.set, isAdditional);
+                const isIt = Boolean(entry?.paperScope === 'official_it' || legacyKey.startsWith('it-') || entry?.track === 'it');
+                const track = isIt ? 'it' : 'cse';
+                const identity = buildTrackYearSetKey(track, entry?.year, entry?.set, isAdditional);
                 return {
-                key: identity || legacyKey,
-                legacyKey,
-                yearSetIdentity: identity || legacyKey,
-                year: Number(entry?.year),
-                set: Number.isFinite(Number(entry?.set)) && Number(entry?.set) > 0
-                    ? Number(entry?.set)
-                    : null,
-                isAdditional,
-                paperScope: isAdditional ? 'additional_ga' : 'official_cse',
-                label: String(entry?.label || '').trim(),
-                count: Number(entry?.count || 0),
-                track: 'cse',
-            }; })
+                    key: identity || legacyKey,
+                    legacyKey,
+                    yearSetIdentity: identity || legacyKey,
+                    year: Number(entry?.year),
+                    set: Number.isFinite(Number(entry?.set)) && Number(entry?.set) > 0
+                        ? Number(entry?.set)
+                        : null,
+                    isAdditional,
+                    paperScope: isIt ? 'official_it' : (isAdditional ? 'additional_ga' : 'official_cse'),
+                    hasItPaper: Boolean(entry?.hasItPaper),
+                    label: String(entry?.label || '').trim(),
+                    count: Number(entry?.count || 0),
+                    track,
+                };
+            })
             .filter((entry) => entry.key && Number.isFinite(entry.year) && entry.label)
         : [];
 
@@ -158,9 +162,20 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
         ...(Array.isArray(gateTags.yearSets) ? gateTags.yearSets : []),
         ...(Array.isArray(aptitudeTags.yearSets) ? aptitudeTags.yearSets : []),
     ].map((entry) => {
-        const track = String(entry?.track || '').toLowerCase() === 'da' ? 'da' : 'cse';
-        const isAdditional = Boolean(entry?.isAdditional || entry?.paperScope === 'additional_ga' || String(entry?.key || '').includes('additional'));
-        const identity = buildTrackYearSetKey(track, entry?.year, entry?.set, isAdditional) || String(entry?.key || '').trim();
+        const rawKey = String(entry?.key || '').trim();
+        const parsedKey = parseTrackYearSetKey(rawKey) || parseTrackYearSetKey(entry?.yearSetIdentity);
+        const entryTrack = String(entry?.track || parsedKey?.track || '').toLowerCase();
+        const isIt = entryTrack === 'it'
+            || entry?.paperScope === 'official_it'
+            || rawKey.startsWith('it-')
+            || rawKey.startsWith('it:')
+            || rawKey.includes(':it:')
+            || parsedKey?.track === 'it'
+            || /\bIT\b/i.test(String(entry?.label || ''));
+        const isDa = entryTrack === 'da' || parsedKey?.track === 'da';
+        const track = isDa ? 'da' : (isIt ? 'it' : 'cse');
+        const isAdditional = Boolean(entry?.isAdditional || entry?.paperScope === 'additional_ga' || rawKey.includes('additional'));
+        const identity = buildTrackYearSetKey(track, entry?.year, entry?.set, isAdditional) || rawKey;
         return {
             ...entry,
             key: identity,
@@ -180,6 +195,11 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
 
         const setDifference = Number(parsedRight?.set || 0) - Number(parsedLeft?.set || 0);
         if (setDifference !== 0) return setDifference;
+
+        const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2 };
+        const trackLeft = trackOrder[parsedLeft?.track || ''] ?? 3;
+        const trackRight = trackOrder[parsedRight?.track || ''] ?? 3;
+        if (trackLeft !== trackRight) return trackLeft - trackRight;
 
         return Number(parsedLeft?.track === 'da') - Number(parsedRight?.track === 'da');
     });
@@ -259,6 +279,10 @@ const yearSetComparator = (a, b, questionService = QuestionService) => {
     }
     const setDifference = (parsedB.set || 0) - (parsedA.set || 0);
     if (setDifference !== 0) return setDifference;
+    const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2 };
+    const trackA = trackOrder[parsedA.track || ''] ?? 3;
+    const trackB = trackOrder[parsedB.track || ''] ?? 3;
+    if (trackA !== trackB) return trackA - trackB;
     return Number(parsedA.track === 'da') - Number(parsedB.track === 'da');
 };
 

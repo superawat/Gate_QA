@@ -4,7 +4,7 @@ import {
   parseExamUid,
 } from "../../utils/examUid";
 import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
-import { buildTrackYearSetKey } from "../../utils/examTrack";
+import { buildTrackYearSetKey, isItQuestion } from "../../utils/examTrack";
 import { IQuestionService } from "./types";
 import { QuestionRow, QuestionOption } from "../../types";
 
@@ -187,7 +187,7 @@ export function buildYearSetKey(year: any, setNo: any): string | null {
   return `${yearNum}-s${normalizedSet}`;
 }
 
-export function parseYearSetKey(rawValue: string = ""): { year: number; set: number | null; key: string; isAdditional?: boolean } | null {
+export function parseYearSetKey(rawValue: string = ""): { year: number; set: number | null; key: string; isAdditional?: boolean; track?: string } | null {
   const value = String(rawValue || "").trim().toLowerCase();
   const additionalMatch = value.match(/^(\d{4})-additional$/);
   if (additionalMatch) {
@@ -197,6 +197,19 @@ export function parseYearSetKey(rawValue: string = ""): { year: number; set: num
       set: null,
       isAdditional: true,
       key: `${year}-additional`,
+      track: "cse",
+    };
+  }
+
+  const itMatch = value.match(/^it-(\d{4})-s(\d+)$/);
+  if (itMatch) {
+    const year = Number.parseInt(itMatch[1], 10);
+    const setNum = Number.parseInt(itMatch[2], 10);
+    return {
+      year,
+      set: Number.isFinite(setNum) && setNum > 0 ? setNum : null,
+      key: `it-${year}-s${Number.isFinite(setNum) && setNum > 0 ? setNum : 0}`,
+      track: "it",
     };
   }
 
@@ -213,6 +226,7 @@ export function parseYearSetKey(rawValue: string = ""): { year: number; set: num
     year,
     set: Number.isFinite(setNum) && setNum > 0 ? setNum : null,
     key: `${year}-s${Number.isFinite(setNum) && setNum > 0 ? setNum : 0}`,
+    track: "cse",
   };
 }
 
@@ -220,6 +234,9 @@ export function formatYearSetLabel(this: IQuestionService, yearSetKey: string = 
   const parsed = this.parseYearSetKey(yearSetKey);
   if (!parsed) {
     return String(yearSetKey || "");
+  }
+  if (parsed.track === "it") {
+    return `${parsed.year} IT`;
   }
   if (parsed.isAdditional) {
     return `${parsed.year} Additional Questions`;
@@ -316,17 +333,28 @@ export function extractExamMeta(this: IQuestionService, question: any = {}): any
 
   candidates.sort((a, b) => b.confidence - a.confidence);
   const best = candidates[0];
-  const yearSetKey = this.buildYearSetKey(best.year, best.set);
-  const yearSetIdentity = buildTrackYearSetKey("cse", best.year, best.set);
+  const isIt = isItQuestion(question)
+    || String(question?.paper_scope || "").toLowerCase() === "official_it"
+    || String(question?.track || "").toLowerCase() === "it"
+    || String(question?.yearSetIdentity || "").startsWith("it:")
+    || String(question?.yearSetKey || "").startsWith("it-");
+  const track = isIt ? "it" : "cse";
+  const paper = isIt ? "IT" : "CSE";
+  const paperScope = isIt ? "official_it" : "official_cse";
+  const yearSetKey = isIt
+    ? (Number.isFinite(best.year) ? `it-${best.year}-s${best.set || 0}` : null)
+    : this.buildYearSetKey(best.year, best.set);
+  const yearSetIdentity = buildTrackYearSetKey(track, best.year, best.set);
 
   return {
-    paper: "CSE",
-    track: "cse",
+    paper,
+    track,
+    paperScope,
     year: best.year,
     set: best.set,
     yearSetKey,
     yearSetIdentity,
-    label: yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown",
+    label: isIt && Number.isFinite(best.year) ? `${best.year} IT` : (yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown"),
   };
 }
 
@@ -365,21 +393,30 @@ export function buildExamMetaFromIndexQuestion(this: IQuestionService, question:
   const year = Number.parseInt(String(question?.year ?? ""), 10);
   const parsedSet = Number.parseInt(String(question?.set ?? ""), 10);
   const set = Number.isFinite(parsedSet) && parsedSet > 0 ? parsedSet : null;
+  const isIt = isItQuestion(question)
+    || String(question?.paper_scope || "").toLowerCase() === "official_it"
+    || String(question?.track || "").toLowerCase() === "it"
+    || String(question?.yearSetIdentity || "").startsWith("it:")
+    || String(question?.yearSetKey || "").startsWith("it-");
+  const track = isIt ? "it" : "cse";
+  const defaultYearSetKey = isIt
+    ? (Number.isFinite(year) ? `it-${year}-s${set || 0}` : null)
+    : this.buildYearSetKey(year, set);
   const yearSetKey =
-    String(question?.yearSetKey || this.buildYearSetKey(year, set) || "").trim() || null;
+    String(question?.yearSetKey || defaultYearSetKey || "").trim() || null;
   const yearSetIdentity =
     String(
       question?.yearSetIdentity
-      || buildTrackYearSetKey("cse", year, set)
+      || buildTrackYearSetKey(track, year, set)
       || ""
     ).trim() || null;
   const label =
     String(question?.yearSetLabel || "").trim() ||
-    (yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown");
+    (isIt && Number.isFinite(year) ? `${year} IT` : (yearSetKey ? this.formatYearSetLabel(yearSetKey) : "Unknown"));
 
   return {
-    paper: "CSE",
-    track: "cse",
+    paper: isIt ? "IT" : "CSE",
+    track,
     year: Number.isFinite(year) ? year : null,
     set,
     yearSetKey,

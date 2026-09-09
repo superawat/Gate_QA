@@ -52,7 +52,7 @@ export interface IQuestionService {
   normalizeQuestionOptions(rawOptions: any, questionHtml?: string): QuestionOption[];
   getNormalizedOptions(question?: any): QuestionOption[];
   buildYearSetKey(year: any, setNo: any): string | null;
-  parseYearSetKey(rawValue?: string): { year: number; set: number | null; key: string; isAdditional?: boolean } | null;
+  parseYearSetKey(rawValue?: string): { year: number; set: number | null; key: string; isAdditional?: boolean; track?: string } | null;
   formatYearSetLabel(yearSetKey?: string): string;
   extractYearSetFromTag(rawTag?: string): { year: number; set: number | null } | null;
   extractExamMeta(question?: any): any;

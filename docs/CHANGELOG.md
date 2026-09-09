@@ -1,5 +1,41 @@
 # Changelog
 
+- **Historical Pre-Merge GATE Papers (2004–2008) CSE/IT Separation & Two Separate Selectable Filter Options (DEC-092)**:
+  - *Context*: During 2004–2008, Computer Science and Information Technology were separate branches with separate GATE question papers. Displaying `[CSE + IT]` combined or attaching an `[IT]` badge to the CSE row was misleading. The papers must be strictly separated at the data, shard, and query levels, and rendered as **two separate selectable filter options** in chronological order.
+  - *Two Independent Selectable Rows*:
+    - The filter UI displays two separate selectable options for each pre-merge year:
+      - `2008` (CSE paper only)
+      - `2008  [IT]` (IT paper only, with small cyan pill badge)
+      - `2007` & `2007  [IT]`
+      - `2006` & `2006  [IT]`
+      - `2005` & `2005  [IT]`
+      - `2004` & `2004  [IT]`
+    - Absence of "CSE" beside the normal year is intentional as the user is already inside the CSE context.
+  - *Independent Semantics & Zero Implicit Merging*:
+    - Selecting `2008` queries and returns **CSE 2008 questions only** (85 questions).
+    - Selecting `2008 IT` queries and returns **IT 2008 questions only** (74 questions).
+    - Explicitly selecting both returns both papers (159 questions).
+  - *Data & Shard Decoupling*:
+    - Completely decoupled `2004-s0.json` through `2008-s0.json` to contain **only** official CSE questions (90, 90, 85, 85, 85 questions).
+    - Created dedicated question detail shards for all 366 IT questions: `it-2004-s0.json` (73 Qs), `it-2005-s0.json` (81 Qs), `it-2006-s0.json` (70 Qs), `it-2007-s0.json` (68 Qs), `it-2008-s0.json` (74 Qs). Total detail shards increased from 55 to 60.
+    - Updated `scripts/build-public-artifacts.mjs` and `FilterContext.tsx` so `yearSets` sorts CSE (`track: "cse"`, priority 0) immediately before IT (`track: "it"`, priority 1) for the same year.
+  - *Regression & Quality Assurance*:
+    - Comprehensive regression suite in `src/tests/historicalCseItSeparation.test.js` and `src/components/Filters/YearFilter.test.jsx`.
+    - All 843 unit tests passing 100% green across 77 test suites.
+    - `npm run qa:validate-public-parity` (3,552 questions), `npm run qa:validate-data`, `npm run typecheck`, and `npm run build` all pass 100% green.
+
+
+- **Historical GATE IT Integration under GATE CSE with Year & IT Badges (DEC-091)**:
+  - *Context*: Rather than isolating GATE IT into a separate track toggle, historical GATE IT questions (2004–2008) are integrated directly under GATE CSE questions and all CSE setups (Practice, Filters, Search, Solve Page, and Mock Test Custom Builder) because IT and CSE syllabi are closely aligned for GATE preparation.
+  - *Data Normalization*:
+    - Normalized year from string `"gateit-2004"` through `"gateit-2008"` to integer numbers `2004` through `2008` across all 366 IT questions in `public/questions-with-answers.json` and detail shards `2004-s0.json` to `2008-s0.json`.
+    - Standardized `branch: "IT"`, `paper: "IT"`, `source_branch: "IT"`, `paper_scope: "official_it"`, and `tags: ["it", ...]`.
+  - *UI & Tag Visibility*:
+    - Added `isItQuestion` helper in `src/utils/examTrack.js`.
+    - Rendered dedicated `GATE IT` badges in `QuestionResultCard.jsx`, `QuestionPickerList.jsx`, and `SolvePage.jsx` hero meta chips.
+    - Added `CSE + IT` indicator badge in `YearFilter.tsx` for years 2004–2008.
+  - *Verification*: Full test suite (829 unit tests), data validation, parity checks, and production build pass 100% green.
+
 - **QA Data Integrity & Public Parity Harmonization (DEC-090)**:
   - *Context*: GitHub Actions CI failed at `npm run qa:validate-data` (`idstrmissing orphans: 650`) and `npm run qa:validate-public-parity` (count mismatch between 3549 and 3552).
   - *Resolution*:

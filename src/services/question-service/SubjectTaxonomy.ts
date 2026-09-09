@@ -1,6 +1,7 @@
 import precomputedLookup from "../../generated/subtopicLookup.json";
 import { IQuestionService } from "./types";
 import { SubtopicOption, StructuredTags, SubjectOption, YearSetOption } from "../../types";
+import { buildTrackYearSetKey } from "../../utils/examTrack";
 
 const PRECOMPUTED_SUBTOPICS = (precomputedLookup as any).subtopicsBySubject;
 const PRECOMPUTED_NORMALIZED = (precomputedLookup as any).normalizedSubtopicsBySubject;
@@ -926,8 +927,19 @@ export function getStructuredTags(this: IQuestionService): StructuredTags {
     if (exam && exam.yearSetKey) {
       const existing = yearSetMap.get(exam.yearSetKey);
       if (!existing) {
+        const isIt = Boolean(
+          exam.paper === "IT" ||
+          exam.track === "it" ||
+          exam.paperScope === "official_it" ||
+          String(exam.yearSetKey).startsWith("it-")
+        );
+        const track = isIt ? "it" : (exam.track || "cse");
+        const identity = exam.yearSetIdentity || buildTrackYearSetKey(track, exam.year, exam.set);
         yearSetMap.set(exam.yearSetKey, {
           key: exam.yearSetKey,
+          track,
+          yearSetIdentity: identity,
+          paperScope: isIt ? "official_it" : (exam.paperScope || "official_cse"),
           year: exam.year!,
           set: exam.set || null,
           label: exam.label || this.formatYearSetLabel(exam.yearSetKey),
@@ -969,6 +981,10 @@ export function getStructuredTags(this: IQuestionService): StructuredTags {
     if (a.year !== b.year) {
       return b.year - a.year;
     }
+    const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2 };
+    const trackA = trackOrder[a.track || ""] ?? 3;
+    const trackB = trackOrder[b.track || ""] ?? 3;
+    if (trackA !== trackB) return trackA - trackB;
     return (b.set || 0) - (a.set || 0);
   });
 

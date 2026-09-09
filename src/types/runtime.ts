@@ -173,9 +173,11 @@ export interface YearSetOption {
   set?: number | null;
   label: string;
   count?: number;
-  track?: 'cse' | 'da';
+  track?: 'cse' | 'da' | 'it';
   legacyKey?: string;
   yearSetIdentity?: string;
+  hasItPaper?: boolean;
+  paperScope?: string;
   [key: string]: unknown;
 }
 

@@ -807,7 +807,7 @@ function buildYearPages(manifest) {
     .sort((left, right) => right - left);
 
   return years.map((year) => {
-    const yearSets = (manifest.yearSets || []).filter((entry) => Number(entry.year) === year);
+    const yearSets = (manifest.yearSets || []).filter((entry) => Number(entry.year) === year && entry.paperScope !== "official_it" && entry.track !== "it");
     const totalQuestions = yearSets.reduce((sum, entry) => sum + Number(entry.count || 0), 0);
     const setCount = yearSets.length;
     const pathName = `/gate-${year}-pyq`;

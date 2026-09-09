@@ -5,7 +5,7 @@ import { getDisplayQuestionTypeToken } from "../../utils/questionType";
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
-import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
+import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../../utils/examTrack";
 
 const prefetchQuestionShard = (question) => {
   if (!question) return;
@@ -109,6 +109,14 @@ const QuestionPickerList = ({
                   {question?.title || "Untitled question"}
                 </p>
                 <div className="practice-question-meta mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)] md:hidden">
+                  {isItQuestion(question) ? (
+                    <span
+                      data-testid="gate-it-badge-mobile"
+                      className="inline-flex rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-cyan-800 dark:text-cyan-300"
+                    >
+                      GATE IT
+                    </span>
+                  ) : null}
                   <span>{question?.yearSetLabel || "Unknown Year"}</span>
                   <span className="h-1 w-1 rounded-full bg-[color:var(--color-neutral-border)]" />
                   <span>{subjectLabel}</span>
@@ -131,8 +139,16 @@ const QuestionPickerList = ({
                 </div>
               </div>
 
-              <div className="hidden text-sm font-medium text-[color:var(--color-text)] md:block">
-                {question?.yearSetLabel || "Unknown Year"}
+              <div className="hidden text-sm font-medium text-[color:var(--color-text)] md:flex md:flex-col md:items-start md:gap-1">
+                <span>{question?.yearSetLabel || "Unknown Year"}</span>
+                {isItQuestion(question) ? (
+                  <span
+                    data-testid="gate-it-badge"
+                    className="inline-flex rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-cyan-800 dark:text-cyan-300"
+                  >
+                    GATE IT
+                  </span>
+                ) : null}
               </div>
 
               <div className="hidden min-w-0 md:block">

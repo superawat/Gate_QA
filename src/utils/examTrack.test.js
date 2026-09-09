@@ -4,6 +4,7 @@ import {
   getQuestionTrack,
   getQuestionYearSetIdentity,
   isDaQuestion,
+  isItQuestion,
   parseTrackYearSetKey,
   toLegacyYearSetKey,
 } from "./examTrack";
@@ -78,5 +79,60 @@ describe("exam track identity", () => {
       year: 2023,
     };
     expect(getQuestionYearSetIdentity(question)).toBe("cse:2023:additional");
+  });
+
+  test("accurately identifies authentic historical GATE IT questions and rejects non-IT questions", () => {
+    expect(isItQuestion({ branch: "IT" })).toBe(true);
+    expect(isItQuestion({ paper_scope: "official_it" })).toBe(true);
+    expect(isItQuestion({ title: "GATE IT 2004 | Question: 50" })).toBe(true);
+    expect(isItQuestion({ year: "gateit-2004" })).toBe(true);
+
+    expect(isItQuestion({ title: "GATE CSE 2004 | Question: 50", year: 2004 })).toBe(false);
+    expect(isItQuestion({ title: "GATE DA 2024 | Question: 1" })).toBe(false);
+    expect(isItQuestion({ title: "GATE Civil 2023 Set 1 | General Aptitude Question: 1" })).toBe(false);
+  });
+
+  test("maintains isolated year-set identities and legacy keys for IT papers", () => {
+    const itKey = buildTrackYearSetKey("it", 2005, null);
+    const cseKey = buildTrackYearSetKey("cse", 2005, null);
+
+    expect(itKey).toBe("it:2005:set-0");
+    expect(cseKey).toBe("cse:2005:set-0");
+    expect(itKey).not.toBe(cseKey);
+
+    expect(parseTrackYearSetKey(itKey)).toMatchObject({
+      track: "it",
+      year: 2005,
+      set: null,
+      key: "it:2005:set-0",
+      legacyKey: "it-2005-s0",
+    });
+
+    expect(parseTrackYearSetKey("it-2005-s0")).toMatchObject({
+      track: "it",
+      year: 2005,
+      set: null,
+      key: "it:2005:set-0",
+      legacyKey: "it-2005-s0",
+    });
+
+    expect(toLegacyYearSetKey(itKey)).toBe("it-2005-s0");
+
+    const itQuestion = {
+      question_uid: "go:790",
+      title: "GATE IT 2004 | Question: 50",
+      branch: "IT",
+      paper: "IT",
+      year: 2004,
+    };
+    const cseQuestion = {
+      question_uid: "go:998",
+      title: "GATE CSE 2004 | Question: 1",
+      branch: "CSE",
+      year: 2004,
+    };
+
+    expect(getQuestionYearSetIdentity(itQuestion)).toBe("it:2004:set-0");
+    expect(getQuestionYearSetIdentity(cseQuestion)).toBe("cse:2004:set-0");
   });
 });

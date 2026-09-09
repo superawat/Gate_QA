@@ -3,7 +3,7 @@ import { IQuestionService } from "./types";
 import { QuestionRow } from "../../types";
 import { parseTrackYearSetKey } from "../../utils/examTrack";
 
-const INIT_CACHE_VERSION = "v11";
+const INIT_CACHE_VERSION = "v12";
 const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
 const FULL_BANK_CACHE_KEY = `gateqa_full_bank_cache_${INIT_CACHE_VERSION}`;
 
@@ -25,7 +25,7 @@ export function getDetailShardKey(question: any = {}): string {
   const explicitShardKey = String(question?.detailShardKey || "").trim();
   if (explicitShardKey) {
     const parsedShardKey = parseTrackYearSetKey(explicitShardKey);
-    if (parsedShardKey?.track === "cse") {
+    if (parsedShardKey?.track === "cse" || parsedShardKey?.track === "it") {
       return parsedShardKey.legacyKey;
     }
     return explicitShardKey;
@@ -35,7 +35,7 @@ export function getDetailShardKey(question: any = {}): string {
     question?.yearSetIdentity || question?.exam?.yearSetIdentity || ""
   ).trim();
   const parsedIdentity = parseTrackYearSetKey(explicitIdentity);
-  if (parsedIdentity?.track === "cse") {
+  if (parsedIdentity?.track === "cse" || parsedIdentity?.track === "it") {
     return parsedIdentity.legacyKey;
   }
 
