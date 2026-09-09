@@ -226,7 +226,13 @@ function main() {
         ? String(record.questionuid).trim()
         : record.question_uid != null
           ? String(record.question_uid).trim()
-          : "";
+          : String(uid || "").startsWith("go:")
+            ? String(uid).trim()
+            : String(uid || "").startsWith("manual:go:")
+              ? String(uid).replace(/^manual:/, "").trim()
+              : String(record?.uid || "").startsWith("go:")
+                ? String(record.uid).trim()
+                : "";
 
     if (questionUid) {
       if (!answersByQuestionUid.has(questionUid)) {

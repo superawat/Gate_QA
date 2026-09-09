@@ -21,8 +21,8 @@ During September 2026, GateQA is undergoing a structured product and data-qualit
 ### 1.1 Problem Statement & Scope
 - Multiple user reports have surfaced incorrect answers across various years and subjects.
 - Individual piecemeal fixes are insufficient; the historical question bank requires a systematic, question-by-question audit.
-- **Current Progress:** Audit completed up to **GATE 2010**.
-- **Plan:** Continue sequentially from **2009 backward through all remaining historical years**, maintaining existing verified progress.
+- **Current Progress:** Audit completed from **GATE 2025 backward through GATE 2003** (2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003).
+- **Plan:** Continue sequentially from **2002 backward through all remaining historical years (1987–2002)**, maintaining existing verified progress.
 
 ### 1.2 Verification Hierarchy & Methodology
 Every question's answer must be audited against authoritative sources in strict priority order:

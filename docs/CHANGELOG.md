@@ -1,5 +1,70 @@
 # Changelog
 
+- **QA Data Integrity & Public Parity Harmonization (DEC-090)**:
+  - *Context*: GitHub Actions CI failed at `npm run qa:validate-data` (`idstrmissing orphans: 650`) and `npm run qa:validate-public-parity` (count mismatch between 3549 and 3552).
+  - *Resolution*:
+    - Populated `question_uid` and `uid` across 650 question records in `public/data/answers/answers_master_v1.json` so they are correctly associated with their canonical question UIDs and consumed by `AnswerService`.
+    - Synced restored questions (`go:419`, `go:1224`, `go:1019`) into `public/questions-filtered.json`, bringing total to 3,552.
+    - Updated `pipeline-state.json` and `audit/validation-report-2026.json` to 3,552.
+    - Hardened `scripts/qa/validate-data.js` with defensive UID deduction from `uid` and `record.uid`.
+  - *Affected Files*: `public/data/answers/answers_master_v1.json`, `public/questions-filtered.json`, `pipeline-state.json`, `audit/validation-report-2026.json`, `scripts/qa/validate-data.js`.
+  - *Verification*: `npm run qa:validate-data` passed with 0 orphans; `npm run qa:validate-public-parity` confirmed all 7 stores agree on 3,552; full production build (`npm run build`) succeeded.
+
+- **Historical GATE IT Paper Extraction, Separation & Provenance Isolation (2004–2008)**:
+  - *Context*: Historical audit identified 366 GATE IT questions from 2004–2008 that required dedicated isolation from CSE papers to preserve authentic exam provenance.
+  - *Extracted Standalone Datasets*:
+    - Created discrete datasets in `data/it/` and `public/data/it/`: `gateit-2004.json` (73 Qs), `gateit-2005.json` (81 Qs), `gateit-2006.json` (70 Qs), `gateit-2007.json` (68 Qs), `gateit-2008.json` (74 Qs), `gateit-all.json` (366 Qs), and `answers-gateit.json` (366 answers).
+    - Pipeline utility: `scripts/pipeline/extract-it-papers.mjs`.
+    - Data schema standardized with `exam: "GATE"`, `branch: "IT"`, `paper: "IT"`, and `paper_scope: "official_it"`.
+
+
+- **GATE CSE 2003 Comprehensive Answer Key Audit & Data Corrections (DEC-089)**:
+  - *Context*: Complete audit of all 90 questions of GATE CSE 2003 verified against the reference answer key and GateOverflow authoritative data.
+  - *Audit Results*:
+    - Audited all 90 genuine questions of GATE CSE 2003.
+    - Corrected 12 answer discrepancies, unpopulated keys, and types:
+      - **Q12** (`go:903`): Backfilled unpopulated key to **MCQ Option C**.
+      - **Q22** (`go:912`): Corrected from legacy Option D to **MCQ Option A**.
+      - **Q35** (`go:925`): Corrected from legacy Option D to **MCQ Option B**.
+      - **Q42** (`go:933`): Converted from legacy Option D to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q49** (`go:43577`): Corrected from legacy Option A to **MCQ Option C**.
+      - **Q61** (`go:949`): Corrected from legacy Option A to **MCQ Option B**.
+      - **Q62** (`go:43576`): Converted from legacy MSQ `["A", "C"]` to **MCQ Option D**.
+      - **Q67** (`go:954`): Corrected from legacy Option D to **MCQ Option B**.
+      - **Q68** (`go:955`): Corrected from legacy Option C to **MCQ Option B**.
+      - **Q71** (`go:958`): Converted from legacy Option A to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q74** (`go:43575`): Converted from unpopulated to **Marks to All (MTA)** (`type: "MTA"`, `answer: "MTA"`).
+      - **Q75** (`go:961`): Backfilled unpopulated key to **MCQ Option D**.
+    - Normalized `year` to integer `2003` across all 90 questions in `public/questions-with-answers.json`.
+    - All 90 questions in GATE CSE 2003 are now 100% complete and scorable (90/90). Total dataset questions maintained at 3,552.
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 90 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — updated `answer_meta` and normalized year to integer `2003`.
+    - `public/question-detail-shards/2003-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json`, `public/question-bank-manifest.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-089).
+  - *Verification*: 205 evaluateAnswer tests pass, static shards regenerated cleanly, 90/90 verified against the reference answer key.
+
+- **GATE CSE 2004 Comprehensive Answer Key Audit, Missing Question Q22 Restoral & Corrections (DEC-088)**:
+  - *Context*: Complete audit of all 90 questions of GATE CSE 2004 verified against the reference answer key and GateOverflow authoritative data.
+  - *Audit Results*:
+    - Restored omitted question **Q22** (`go:1019`, 9600 baud serial communication link 800 characters/s $\rightarrow$ **MCQ Option B**).
+    - Corrected 3 answer discrepancies and unpopulated keys:
+      - **Q30** (`go:1027`, DCFL and CFL complementation/intersection): Backfilled unpopulated key to **MCQ Option C**.
+      - **Q83** (`go:1077`): Corrected from legacy Option A to **MCQ Option D**.
+      - **Q84** (`go:1078`): Corrected from legacy Option B to **MCQ Option A**.
+    - Normalized `year` to integer `2004` across all 90 questions in `public/questions-with-answers.json`.
+    - All 90 questions in GATE CSE 2004 are now 100% complete and scorable (90/90). Total dataset questions increased to 3,552.
+  - *Affected Files*:
+    - `data/answers/manual-answers-patch-v1.json` — updated entries for all 90 questions.
+    - `data/answers/answers_by_question_uid_v1.json` — synchronized patch entries.
+    - `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json` — updated runtime indices.
+    - `public/questions-with-answers.json` — inserted `go:1019`, updated `answer_meta`, and normalized year to integer `2004`.
+    - `public/question-detail-shards/2004-s0.json`, `public/mock_catalog_v1.json`, `public/question-search-index.json`, `public/question-bank-manifest.json` — rebuilt static artifacts.
+    - `src/utils/evaluateAnswer.test.js` — added regression tests for repaired questions (DEC-088).
+  - *Verification*: 205 evaluateAnswer tests pass, static shards regenerated cleanly, 90/90 verified against the reference answer key.
+
 - **GATE CSE 2005 Comprehensive Answer Key Audit, Missing Answers Population & Corrections (DEC-087)**:
   - *Context*: Complete audit of all 90 questions of GATE CSE 2005 (80 standalone + 10 linked-pair questions 81a–85b) verified against the reference answer key and GateOverflow authoritative data.
   - *Audit Results*:

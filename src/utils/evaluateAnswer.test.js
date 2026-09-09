@@ -2143,4 +2143,80 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, "C").correct).toBe(false);
     });
   });
+
+  describe("GATE CSE 2004 Answer Key Repair & Audit Regression (DEC-088)", () => {
+    test("go:1019 - GATE CSE 2004 Q22 (CS) MCQ B (9600 baud serial communication link 800 char/s)", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1027 - GATE CSE 2004 Q30 (CS) MCQ C (DCFL and CFL complementation/intersection)", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1077 - GATE CSE 2004 Q83 (CS) MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:1078 - GATE CSE 2004 Q84 (CS) MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+  });
+
+  describe("GATE CSE 2003 Answer Key Repair & Audit Regression (DEC-089)", () => {
+    test("go:903 - GATE CSE 2003 Q12 (CS) MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:912 - GATE CSE 2003 Q22 (CS) MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:925 - GATE CSE 2003 Q35 (CS) MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:933 - GATE CSE 2003 Q42 (CS) MTA (Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+    });
+
+    test("go:949 - GATE CSE 2003 Q61 (CS) MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:43576 - GATE CSE 2003 Q62 (CS) MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+
+    test("go:958 - GATE CSE 2003 Q71 (CS) MTA (Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+    });
+
+    test("go:43575 - GATE CSE 2003 Q74 (CS) MTA (Marks to All)", () => {
+      const rec = { type: "MTA", answer: "MTA", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
+    });
+  });
 });
