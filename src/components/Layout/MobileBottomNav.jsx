@@ -1,12 +1,12 @@
 import React from "react";
-import { FaChartLine, FaCompass, FaHome, FaFire } from "react-icons/fa";
+import { FaBullseye, FaChartLine, FaCompass, FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 import {
   HOME_ROUTE,
   INSIGHTS_ROUTE,
   PRACTICE_ROUTE,
-  HIGH_PRIORITY_TOPICS_ROUTE,
+  TRACKER_ROUTE,
 } from "../../utils/routes";
 import { preloadRouteByPath } from "../../utils/routePreload";
 
@@ -35,9 +35,9 @@ const navItems = [
     icon: FaChartLine,
   },
   {
-    label: "Priority",
-    to: HIGH_PRIORITY_TOPICS_ROUTE,
-    icon: FaFire,
+    label: "Tracker",
+    to: TRACKER_ROUTE,
+    icon: FaBullseye,
   },
 ];
 

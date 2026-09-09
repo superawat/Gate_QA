@@ -475,7 +475,7 @@ const ExplorePage = ({
 
             {/* ── Practice mode toggles & Search ───────────────────────────────────────────── */}
             <div className="practice-mode-and-search mt-2.5 flex flex-col gap-2.5 border-t border-[color:var(--color-border)]/60 pt-2.5 sm:flex-row sm:items-center sm:gap-3">
-              <div className="practice-mode-toggles flex shrink-0 items-center gap-2 sm:gap-2.5">
+              <div className="practice-mode-toggles flex flex-wrap shrink-0 items-center gap-2 sm:gap-2.5">
                 <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">
                   Practice mode
                 </span>

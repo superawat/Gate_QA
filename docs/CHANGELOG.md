@@ -1,5 +1,35 @@
 # Changelog
 
+- **Homepage Progress/Status Metrics Clarity, Explanation Modals & UI Declutter (DEC-094)**:
+  - *Context*: On the homepage (`/`), the progress banner displayed four key metrics: Best, Aura, Freeze, and Days, alongside two static tags ("25 attempts", "Hard Practice") above an empty top border line. Users were unsure what each metric represented, how it was earned, or how it behaved.
+  - *Lightweight Explanation Pop-ups*:
+    - Converted the four stat pills (`Best`, `Aura`, `Freeze`, `Days`) into accessible, interactive buttons with subtle hover lift and keyboard focus rings.
+    - Implemented a lightweight, accessible `MetricInfoModal` via React `createPortal` matching the compact visual styling of the "Set Daily Goal" modal (`max-w-sm`).
+    - Handled outside backdrop clicks, `Escape` key dismissals, and an explicit `Got it` button.
+    - Accurately articulated underlying calculations from `src/utils/weakTopicAnalyzer.js`:
+      - **Best**: All-time longest streak in continuous calendar days (preserved by Freeze, never decreases).
+      - **Aura**: Practice XP calculated from attempts (+5), correct answers (+10), best streak bonus (+15), and hard question bonus (+25), augmented by a 2x multiplier for 7+ day active streaks.
+      - **Freeze**: Streak shield rules: 1 freeze earned every 3 consecutive days, capped at 1 in reserve, rate-limited to once per 7-day window.
+      - **Days**: Total cumulative distinct calendar days practiced on GateQA (never resets).
+  - *Days Calendar Icon*:
+    - Replaced the star icon on the Days pill with `FaCalendarAlt` to make its date/calendar representation immediately obvious.
+  - *UI Declutter & Space Reclamation*:
+    - Eliminated static and non-functional badges (`"25 attempts"`, `"Hard Practice"`) and their wrapper container (`.home-streak-tags`).
+    - Removed the superfluous horizontal divider line (`border-top: 1px solid #eef2f7`) and cleaned up legacy styles in `src/index.css`.
+    - Reclaimed card height and balanced the progress banner visually.
+  - *Mobile Responsiveness & Touch Optimization*:
+    - Enhanced `MetricInfoModal` with `max-h-[88vh] overflow-y-auto overscroll-contain` to ensure zero vertical clipping on short mobile devices and in landscape mode.
+    - Sized modal action buttons to `min-h-[44px]` (WCAG standard) with `touch-manipulation` and active tap feedback.
+    - Enhanced `.home-streak-pill` with `min-height: 2.85rem`, `touch-action: manipulation`, and `-webkit-tap-highlight-color: transparent`.
+    - Added `flex-wrap` to `practice-mode-toggles` on `/practice` to prevent cramped or overflowing controls on 320px–375px screens.
+    - Updated compact search input font size to `text-base sm:text-sm` to prevent iOS Safari auto-zoom on input focus.
+    - Refined `PaginationControls` with `min-h-[34px]` touch targets, smooth horizontal overflow on narrow mobile screens, and responsive status alignment.
+    - Updated `MobileBottomNav.jsx` to replace the old `Priority` link with `Tracker` (`FaBullseye` icon) linking directly to `/tracker` (`TRACKER_ROUTE`), enabling 1-tap mobile access to the Preparation Tracker. Updated `MobileBottomNav.test.jsx`.
+  - *Verification & Testing*:
+    - Added comprehensive unit tests in `src/components/Home/StreakBanner.test.jsx` (6 tests).
+    - Passed all 850 unit tests across 78 test suites (`npm run test:unit`) and TypeScript check (`npm run typecheck`).
+    - Verified desktop and mobile interactivity, modal opening/closing, and visual balance with `browser_subagent`.
+
 - **Explore Questions Page Vertical Space Utilization & Layout Density Optimization (DEC-093)**:
   - *Context*: On `/practice`, excessive vertical height was allocated to the header panel, practice mode toggles, search input row, active filter chips container, and pagination card. At 100% zoom on 1366×768 and 1080p screens, only 1–2 question rows were visible above the fold.
   - *Inline Search & Control Deck Integration*:
