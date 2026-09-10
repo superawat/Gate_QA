@@ -58,7 +58,7 @@
     "qa:import-da-2026": "node scripts/da-pipeline/import-da-2026.mjs",
     "qa:repair-historical-exam-uids": "node scripts/qa/repair-historical-exam-uids.js",
     "qa:repair-historical-paper-counts": "node scripts/qa/repair-historical-paper-counts.js",
-    "qa:validate-data": "node scripts/qa/validate-data.js",
+    "qa:validate-data": "node scripts/qa/validate-data.js && node scripts/qa/validate-data-integrity.js",
     "qa:validate-aptitude": "node scripts/qa/validate-aptitude-data.js",
     "qa:audit-aptitude": "node scripts/qa/audit-aptitude-data.js",
     "qa:audit-aptitude-eduquity-2025": "node scripts/qa/audit-aptitude-eduquity-2025.js",

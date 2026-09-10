@@ -2219,4 +2219,58 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, "MTA").correct).toBe(true);
     });
   });
+
+  describe("DEC-095: Re-Audit Verified Question Corrections", () => {
+    test("go:357501 - GATE CSE 2021 Set 2 Q39 (CS) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+      expect(evaluateAnswer(rec, ["A", "B", "C"]).correct).toBe(false);
+    });
+
+    test("go:8480 - GATE CSE 2015 Set 3 Q27 (CS) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:8017 - GATE CSE 2015 Set 1 Q2 (CS) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:357499 - GATE CSE 2021 Set 2 Q41 (CS) evaluates as strict MSQ ['B', 'C', 'D']", () => {
+      const rec = { type: "MSQ", answer: ["B", "C", "D"], tolerance: null };
+      expect(evaluateAnswer(rec, ["B", "C", "D"]).correct).toBe(true);
+      expect(evaluateAnswer(rec, ["D", "C", "B"]).correct).toBe(true);
+      expect(evaluateAnswer(rec, ["b", "c", "d"]).correct).toBe(true);
+      // Incomplete should be strictly false
+      expect(evaluateAnswer(rec, ["B", "C"]).correct).toBe(false);
+      expect(evaluateAnswer(rec, ["B", "D"]).correct).toBe(false);
+      expect(evaluateAnswer(rec, ["C", "D"]).correct).toBe(false);
+      // Incorrect option should be false
+      expect(evaluateAnswer(rec, ["A", "B", "C", "D"]).correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+    });
+
+    test("go:39587 - GATE CSE 2016 Set 2 Q38 (CS) evaluates as NAT 1500", () => {
+      const rec = { type: "NAT", answer: 1500, tolerance: { abs: 0.01 } };
+      expect(evaluateAnswer(rec, 1500).correct).toBe(true);
+      expect(evaluateAnswer(rec, "1500").correct).toBe(true);
+      expect(evaluateAnswer(rec, "1500.0").correct).toBe(true);
+      expect(evaluateAnswer(rec, 1499.99).correct).toBe(true);
+      expect(evaluateAnswer(rec, 1500.01).correct).toBe(true);
+      expect(evaluateAnswer(rec, 1490).correct).toBe(false);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+    });
+  });
 });

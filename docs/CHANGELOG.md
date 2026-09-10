@@ -1,5 +1,25 @@
 # Changelog
 
+- **Re-Audit Verified Question Corrections, Pipeline Root-Cause Repair & Automated Data-Integrity Validation (DEC-095)**:
+  - *Context*: Following the September 2026 audit, users reported incorrect answers and question type mismatches that survived previous passes. An exhaustive investigation was launched to fix verified issues, uncover systemic pipeline flaws, remove duplicate JSON keys, and install permanent CI/QA semantic validators.
+  - *Verified Question Corrections*:
+    - **`go:357501`** (GATE CSE 2021 Set 2 Q39): Reverted from incorrect MSQ `["A", "B", "C"]` to official **MCQ Option C** (Master Theorem Case 1, CLRS).
+    - **`go:8480`** (GATE CSE 2015 Set 3 Q27): Corrected from C to official **MCQ Option B** (Mergesort input size 512 for 6 minutes).
+    - **`go:8017`** (GATE CSE 2015 Set 1 Q2): Corrected from A to official **MCQ Option B** ($T(n)=T(n-1)+T(1)+cn$, worst-case Quicksort recurrence).
+    - **`go:357499`** (GATE CSE 2021 Set 2 Q41): Restored missing Option D to official strict **MSQ `['B', 'C', 'D']`** (CFL languages).
+    - **`go:39587`** (GATE CSE 2016 Set 2 Q38): Converted question type from MCQ to official **NAT 1500** (`tolerance: { abs: 0.01 }`).
+    - Protected UIDs (`go:1321`, `go:1325`, `go:1077`, `go:1968`, `go:925`) verified and preserved strictly unchanged.
+  - *Root Cause Diagnostics & Registry Cleanse*:
+    - Uncovered **940 duplicate question keys** in `answers_by_question_uid_v1.json` and **63 duplicate keys** in `manual-answers-patch-v1.json` caused by legacy string appending. These duplicate keys created shadow overrides where edits to one section were eclipsed.
+    - Fully cleansed and de-duplicated all answer registries into unified, valid JSON objects with zero duplicate keys.
+    - Resolved 5 single-correct MSQs from 2024 (`go:422828`, `go:422807`, `go:422803`, `go:422884`, `go:422856`) and synchronized `public/questions-with-answers.json`.
+  - *Permanent CI/QA Semantic Data-Integrity Validator*:
+    - Added `scripts/qa/validate-data-integrity.js` enforcing zero duplicate keys, strict MCQ (A-E choices, no numbers), MSQ (non-empty arrays of distinct A-E choices), NAT (numeric tolerances), defective question contracts, and cross-layer parity between pipeline and public shards.
+    - Chained validator into `npm run qa:validate-data`.
+  - *Verification & Testing*:
+    - Added comprehensive regression tests in `src/utils/evaluateAnswer.test.js` (5 tests).
+    - Passed all 855 unit tests (`npm run test:unit`), TypeScript checking (`npm run typecheck`), and public parity validation (`npm run qa:validate-public-parity` across 3,552 questions).
+
 - **Homepage Progress/Status Metrics Clarity, Explanation Modals & UI Declutter (DEC-094)**:
   - *Context*: On the homepage (`/`), the progress banner displayed four key metrics: Best, Aura, Freeze, and Days, alongside two static tags ("25 attempts", "Hard Practice") above an empty top border line. Users were unsure what each metric represented, how it was earned, or how it behaved.
   - *Lightweight Explanation Pop-ups*:
