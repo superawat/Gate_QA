@@ -66,8 +66,8 @@ describe("Question Pool Consistency: Filter Questions vs Custom Builder", () => 
       (q) => q.subjectSlug === "digital-logic" && mockCatalog.byQuestionUid[q.question_uid]?.scorable
     ).length;
 
-    expect(filterTotal).toBe(260);
-    expect(scorableTotal).toBe(260);
+    expect(filterTotal).toBe(261);
+    expect(scorableTotal).toBe(261);
   });
 
   test("Digital Logic breakdown across MCQ, NAT, MSQ matches exactly", () => {
@@ -75,7 +75,7 @@ describe("Question Pool Consistency: Filter Questions vs Custom Builder", () => 
     const mockCatalog = require("../../../public/mock_catalog_v1.json");
 
     const dlQuestions = searchIndex.filter((q) => q.subjectSlug === "digital-logic");
-    expect(dlQuestions.length).toBe(260);
+    expect(dlQuestions.length).toBe(261);
 
     const mcqQuestions = dlQuestions.filter((q) => {
       const meta = mockCatalog.byQuestionUid[q.question_uid];
@@ -90,10 +90,10 @@ describe("Question Pool Consistency: Filter Questions vs Custom Builder", () => 
       return meta?.type === "MSQ" && meta?.scorable;
     });
 
-    expect(mcqQuestions.length).toBe(198);
+    expect(mcqQuestions.length).toBe(199);
     expect(natQuestions.length).toBe(46);
     expect(msqQuestions.length).toBe(16);
-    expect(mcqQuestions.length + natQuestions.length + msqQuestions.length).toBe(260);
+    expect(mcqQuestions.length + natQuestions.length + msqQuestions.length).toBe(261);
   });
 
   test("Paper Mode preserves standardized 65-question papers without leaking unscoped bank questions", () => {

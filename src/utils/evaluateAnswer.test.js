@@ -2273,4 +2273,369 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, "A").correct).toBe(false);
     });
   });
+
+  describe("DEC-097: GATE CSE 2002 Comprehensive Answer Key Audit & Data Corrections", () => {
+    test("go:807 - GATE CSE 2002 Q1.3 (Algorithms Recurrence) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:840 - GATE CSE 2002 Q2.10 (Randomized Search Expected Comparisons) evaluates as MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "a").correct).toBe(true);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:806 - GATE CSE 2002 Q1.2 (Trapezoidal Rule Exactness) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:845 - GATE CSE 2002 Q2.15 (Newton-Raphson Iteration) evaluates as MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "a").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:814 - GATE CSE 2002 Q1.10 (8085 Program Counter Modification) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:815 - GATE CSE 2002 Q1.11 (Serial Data Transmission Start/Stop Bits) evaluates as MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "a").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:823 - GATE CSE 2002 Q1.18 (Parameter Passing Call-by-Reference vs Value-Result) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:865 - GATE CSE 2002 Q12 (Section B Subjective Question) evaluates as excluded", () => {
+      const rec = { type: "SUBJECTIVE", answer: null, tolerance: null };
+      const res = evaluateAnswer(rec, "anything");
+      expect(res.status).toBe("excluded");
+      expect(res.correct).toBe(false);
+    });
+  });
+
+  describe("DEC-098: GATE CSE 2001 Comprehensive Answer Key Audit & Ingestion", () => {
+    test("go:707 - GATE CSE 2001 Q1.14 (Randomized Quicksort Worst Case) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:702 - GATE CSE 2001 Q1.9 (8085 Slow Memory READY Pin) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:737 - GATE CSE 2001 Q2.19 (Dynamic Scoping Call-by-Reference) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:716 - GATE CSE 2001 Q1.23 (Schema Decomposition) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:717 - GATE CSE 2001 Q1.24 (Relational Algebra Reachability) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:718 - GATE CSE 2001 Q1.25 (Selection Pushdown) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:742 - GATE CSE 2001 Q2.24 (Tuple Calculus Safety) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+  });
+
+  describe("DEC-099: GATE CSE 2000–1997 Batch Audit & Ingestion", () => {
+    // 2000 Ingested
+    test("go:647 - GATE CSE 2000 Q1.23 (Relational Algebra Sum of Salaries) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:655 - GATE CSE 2000 Q2.8 (2-State DFA Regular Language) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:673 - GATE CSE 2000 Q2.26 (SQL Null Comparisons) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    // 1999 Ingested & Populated
+    test("go:1484 - GATE CSE 1999 Q2.6 (Transaction Schedule Serializability) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1498 - GATE CSE 1999 Q2.21 (Asymptotic Recurrence Matching) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1491 - GATE CSE 1999 Q2.13 (Static Scoping Variable Lookup) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    // 1998 Ingested & Corrected
+    test("go:1661 - GATE CSE 1998 Q1.24 (Preorder/Postorder Binary Tree Construction) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:1670 - GATE CSE 1998 Q1.33 (Natural Join Over All Attributes Is Intersection) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:1653 - GATE CSE 1998 Q1.16 (Serial Communication Baud Rate) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    // 1997 Ingested & Populated
+    test("go:2229 - GATE CSE 1997 Q2.3 (RS-232 Start Bit Receiver Sync) evaluates as MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "a").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2251 - GATE CSE 1997 Q4.10 (Trapezoidal Method Error Bound) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+  });
+
+  describe("DEC-100: GATE CSE 1996–1993 Batch Audit & Ingestion", () => {
+    // 1996 Corrections
+    test("go:2742 - GATE CSE 1996 Q2.13 (Average Sequential Search Comparisons (n+1)/2) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2744 - GATE CSE 1996 Q2.15 (Quicksort Sorted vs Reverse-Sorted Comparisons C1=C2) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    // 1995 Ingested & Corrected
+    test("go:2597 - GATE CSE 1995 Q1.10 (Context-Sensitive Grammar) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2609 - GATE CSE 1995 Q1.22 (Tangent Slope -2x/y Curve Ellipse) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:2610 - GATE CSE 1995 Q1.23 (Pair of Lines k=9) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2630 - GATE CSE 1995 Q2.18 (Differential Equation Solution) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2603 - GATE CSE 1995 Q1.16 (Merging Two Sorted Lists O(m+n)) evaluates as MCQ C", () => {
+      const rec = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(rec, "C").correct).toBe(true);
+      expect(evaluateAnswer(rec, "c").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    // 1994 Ingested & Corrected
+    test("go:2437 - GATE CSE 1994 Q1.1 (FORTRAN Static Memory Allocation) evaluates as MCQ A", () => {
+      const rec = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(rec, "A").correct).toBe(true);
+      expect(evaluateAnswer(rec, "a").correct).toBe(true);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2444 - GATE CSE 1994 Q1.7 (Binary Search Recurrence T(n/2)+k) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    test("go:2460 - GATE CSE 1994 Q1.17 (Linked Lists Unsuitable for Binary Search) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
+    // 1993 Ingested & Populated
+    test("go:2297 - GATE CSE 1993 Q7.9 (Deadlock Free Resources m=13) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:2303 - GATE CSE 1993 Q8.5 (Less-Than Relation Not Partial Ordering) evaluates as MCQ D", () => {
+      const rec = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(rec, "D").correct).toBe(true);
+      expect(evaluateAnswer(rec, "d").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "B").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+    });
+
+    test("go:2305 - GATE CSE 1993 Q8.7 (Sum of O(n) is O(n^2)) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+  });
 });

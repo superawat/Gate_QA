@@ -1,5 +1,140 @@
 # Changelog
 
+- **GATE CSE 1988 & 1987 (Final Historical Batch) Comprehensive Answer Key Audit, Missing Questions Ingestion & Syllabus Classification (DEC-102)**:
+  - *Context*: Audited and reconciled all questions for the final historical batch (GATE CSE 1988 and 1987) following GateOverflow community consensus & historical archive verification, completing the historical GATE CSE archive back to the very first exam (1987). Prior to this pass, GateQA held only 3 questions in 1988 (with `go:91338` erroneously typed as MCQ "A") and 41 questions in 1987 (with 3 missing Section A objective questions, 2 unpopulated answer keys, and legacy string years `"gate1988"`, `"gate1987"`).
+  - *3 Missing Questions Ingested (1987)*:
+    - **`go:82656`** (GATE CSE 1987 Q15): Wien bridge oscillator op-amp frequency oscillation condition $\to$ **MCQ Option D** (1M, `tags: ["gate1987", "digital-logic", "analog-circuits", "out-of-syllabus-now"]`, local circuit diagram mirrored to `public/question-images/82656.jpg`).
+    - **`go:80278`** (GATE CSE 1987 Q1-ix): Refreshing rate of dynamic RAMs (2 ms) $\to$ **MCQ Option B** (1M, `tags: ["gate1987", "co-and-architecture", "memory-organization", "normal"]`).
+    - **`go:80281`** (GATE CSE 1987 Q1-x): Data transfer rate of double-density floppy disk system (500 Kbits/sec) $\to$ **MCQ Option C** (1M, `tags: ["gate1987", "co-and-architecture", "secondary-storage", "out-of-syllabus-now"]`).
+  - *Answer Key Corrections & Adjustments*:
+    - **`go:91338`** (GATE CSE 1988 Q1iii): Quicksort vs heapsort worst case text fill-in-the-blank ("less") without multiple choice options corrected from legacy erratum MCQ `A` to **`type: "SUBJECTIVE", answer: null`**.
+    - **`go:80377`** (GATE CSE 1987 Q1-xxi): Linear inequality identification populated from null to **MCQ Option C** ($abx+a^2y \ge 15$).
+    - **`go:80559`** (GATE CSE 1987 Q1-xxiv): Simplex method naming origin populated from null to **MCQ Option B** (theory of algebraic complexes).
+  - *Year Normalization*:
+    - Normalized all legacy year strings across 1988 and 1987 to numeric integers (`1988`, `1987`) across all questions.
+  - *Audit Cache Archive & Bundle Clean-up*:
+    - Relocated 16 raw historical audit dump files from `public/data/` to `data/audit/historical-keys/`, eliminating ~450 KB of dead scraping cache from the client static build.
+  - *Data & Parity Harmonization*:
+    - Synchronized `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (pipeline & public), `answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, and `public/questions-filtered.json`.
+    - Total master question bank increased from 3,610 to **3,613 questions** with 100% agreement across all 7 parity counts.
+    - Rebuilt detail shards: `1988-s0.json` (3 Qs), `1987-s0.json` (44 Qs), mock catalog, search index, and manifest.
+
+- **GATE CSE 1992–1989 (4-Year Batch) Comprehensive Answer Key Audit, Missing Questions Ingestion & Syllabus Classification (DEC-101)**:
+  - *Context*: Audited all questions across the 4-year historical batch (GATE CSE 1992, 1991, 1990, 1989) against GateOverflow archive (primary programmatic extractor) and GateOverflow (secondary reference). Prior to this pass, the 4-year question bank had only 45 questions with 29 missing Section A objective questions (17 in 1992, 11 in 1991, 1 in 1989), 5 errata / subjective question misclassifications, and legacy un-normalized year strings (`"gate1992"`, `"gate1991"`, `"gate1990"`, `"gate1989"`).
+  - *29 Missing Questions Ingested*:
+    - **GATE CSE 1992 (17 Questions)**: `go:557` (Q02.iii, Bit-slice processor cascading $\to$ MCQ Option A, `out-of-syllabus-now`); `go:558` (Q02.iv, 8085 PCHL instruction $\to$ MCQ Option D, `out-of-syllabus-now`); `go:559` (Q02.ix, Radix sort comparison lower bound $\to$ MCQ Option D); `go:560` (Q02.v, Framing synchronization $\to$ MCQ Option C); `go:561` (Q02.vi, Biconnected components polynomial algorithm $\to$ MCQ Option C); `go:562` (Q02.vii, B-tree order 4 max keys $\to$ MSQ `["A", "D"]`); `go:563` (Q02.viii, Kuratowski non-planar $K_5$ $\to$ MCQ Option C); `go:564` (Q02.x, Semaphore value after ops $\to$ MCQ Option B); `go:571` (Q02.xiv, LALR(1) vs LR(1) parser tables $\to$ MSQ `["B", "C", "D"]`); `go:572` (Q02.xix, CFL closure under union/Kleene $\to$ MSQ `["A", "D"]`); `go:574` (Q02.xvi, Tautology $a \wedge b \to b \vee c \to$ MCQ Option B); `go:575` (Q02.xvii, Regular expression identity $r^{**}=r^* \to$ MCQ Option A); `go:576` (Q02.xviii, Strict binary tree internal/total nodes $\to$ MCQ Option C); `go:577` (Q02.xx, DFA and TM deterministic equivalence $\to$ MSQ `["A", "C"]`); `go:579` (Q03.ii, Two-pass assembler activities $\to$ MCQ Option A); `go:589` (Q10, Call-by-value-result mechanism $\to$ MCQ Option D); `go:582` (Q03.v, Serial communication synchronization $\to$ MCQ Option C).
+    - **GATE CSE 1991 (11 Questions)**: `go:515` (Q03.i, Bipolar vs MOS memory speed $\to$ MCQ Option B, `out-of-syllabus-now`); `go:517` (Q03.iii, Virtual memory max address space $\to$ MSQ `["A", "B"]`); `go:518` (Q03.iv, 8085 TRAP interrupt hardware RST $\to$ MCQ Option A, `out-of-syllabus-now`); `go:519` (Q03.ix, Linker external names matching $\to$ MCQ Option B); `go:520` (Q03.v, 8085 ALE signal address latching $\to$ MCQ Option C, `out-of-syllabus-now`); `go:521` (Q03.vi, Kruskal algorithm complexity $\to$ MSQ `["B", "D"]`); `go:522` (Q03.vii, Stack operations sequence $\to$ MCQ Option B); `go:528` (Q03.xiv, Language accepted by FA classification $\to$ MSQ `["B", "C", "D"]`); `go:525` (Q03.xi, Critical section / monitors properties $\to$ MSQ `["B", "C"]`); `go:526` (Q03.xii, Propositional logic formulas conjunction unsatisfiable $\to$ MCQ Option B); `go:527` (Q03.xiii, Regular expressions containment $\to$ MSQ `["A", "C"]`).
+    - **GATE CSE 1989 (1 Question)**: `go:87141` (Q3-vii, Poisson mean equals variance statement FALSE $\to$ MSQ `["A", "C"]`).
+  - *Answer Key Corrections & Subjective Adjustments (5 Questions)*:
+    - **`go:84051`** (GATE CSE 1990 Q3-i): Wired-AND of open-collector NAND gates output $Y = \overline{ABC + DE}$ corrected from legacy erratum `C` to **MCQ Option B**.
+    - **`go:84054`** (GATE CSE 1990 Q3-ii): Redundancy in 3NF relations corrected from legacy `["A", "B", "D"]` to **MSQ `["B", "D"]`**.
+    - **`go:540`** (GATE CSE 1991 Q13): Descriptive sorting pseudo-code question from Section B corrected from legacy MCQ `D` to **`type: "SUBJECTIVE", answer: null`**.
+    - **`go:595`** (GATE CSE 1992 Q16): Descriptive proof question from Section B corrected from legacy MSQ `["A", "B"]` to **`type: "SUBJECTIVE", answer: null`**.
+    - **`go:546`** (GATE CSE 1992 Q01-ii): 2-blank fill-in question corrected from unnatural legacy NAT `3.5` to **`type: "SUBJECTIVE", answer: null`**.
+  - *Year Normalization*:
+    - Normalized all legacy year strings across 1992, 1991, 1990, 1989 to numeric integers (`1992`, `1991`, `1990`, `1989`) across all questions.
+  - *Data & Parity Harmonization*:
+    - Synchronized `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (pipeline & public), `answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, and `public/questions-filtered.json`.
+    - Total master question bank increased from 3,581 to **3,610 questions** with 100% agreement across all 7 parity counts.
+    - Rebuilt detail shards: `1992-s0.json` (29 Qs), `1991-s0.json` (19 Qs), `1990-s0.json` (17 Qs), `1989-s0.json` (9 Qs), mock catalog, search index, and manifest.
+
+- **GATE CSE 1996–1993 (4-Year Batch) Comprehensive Answer Key Audit, Missing Questions Ingestion & Syllabus Classification (DEC-100)**:
+  - *Context*: Audited all questions across the 4-year historical batch (GATE CSE 1996, 1995, 1994, 1993) against GateOverflow archive (primary programmatic extractor) and GateOverflow (secondary reference). Prior to this pass, the 4-year question bank had 179 questions with 8 missing Section A objective questions (4 in 1995, 1 in 1994, 3 in 1993), 5 errata / question type mismatches, 12 unpopulated answer keys, and legacy un-normalized year strings (`"gate1996"`, `"gate1995"`, `"gate1994"`, `"gate1993"`).
+  - *8 Missing Questions Ingested*:
+    - **GATE CSE 1995 (4 Questions)**: `go:2597` (Q1.10, Context-Sensitive Grammar classification $\to$ MCQ Option C); `go:2609` (Q1.22, Tangent slope $dy/dx = -2x/y$ curve is ellipse $\to$ MCQ Option D); `go:2610` (Q1.23, Pair of straight lines $k=9$ $\to$ MCQ Option C); `go:2630` (Q2.18, ODE $y''+3y'+2y=0$ general solution $\to$ MCQ Option C).
+    - **GATE CSE 1994 (1 Question)**: `go:2437` (Q1.1, FORTRAN static memory allocation prevents recursion $\to$ MCQ Option A, `out-of-syllabus-now`).
+    - **GATE CSE 1993 (3 Questions)**: `go:2297` (Q7.9, Deadlock-free resource allocation $m=13$ $\to$ MCQ Option D); `go:2303` (Q8.5, Less-than relation on reals is irreflexive $\to$ MCQ Option D); `go:2305` (Q8.7, Asymptotic summation $\sum O(n) = O(n^2)$ $\to$ MCQ Option B).
+  - *Answer Key Corrections (5 Questions)*:
+    - **`go:2742`** (GATE CSE 1996 Q2.13): Average key comparisons for successful sequential search on $n$ items corrected from legacy `A` ($n/2$) to **MCQ Option C** ($(n+1)/2$).
+    - **`go:2744`** (GATE CSE 1996 Q2.15): Quicksort comparisons on sorted vs reverse-sorted inputs corrected from legacy `C` ($C_1 > C_2$) to **MCQ Option B** ($C_1 = C_2$).
+    - **`go:2603`** (GATE CSE 1995 Q1.16): Merging two sorted lists comparisons corrected from erroneous `NAT 358` to standard **MCQ Option C** ($O(m+n)$).
+    - **`go:2444`** (GATE CSE 1994 Q1.7): Binary search recurrence corrected from legacy `A` ($2T(n/2)+k$) to **MCQ Option B** ($T(n/2)+k$).
+    - **`go:2460`** (GATE CSE 1994 Q1.17): Linked lists unsuitable for binary search corrected from erroneous `NAT 3` to standard **MCQ Option B**.
+  - *Backfilled Unpopulated Answer Keys (12 Questions)*:
+    - Populated: `go:2726` (1996 Q1.22 $\to$ C [OOS]), `go:2734` (1996 Q2.5 $\to$ C [OOS]), `go:2588` (1995 Q1.1 $\to$ B [OOS]), `go:2613` (1995 Q2.1 $\to$ D [OOS]), `go:2627` (1995 Q2.15 $\to$ B [OOS]), `go:597` (1993 Q01.2 $\to$ B), `go:598` (1993 Q01.3 $\to$ MSQ ["A", "B", "C"] [OOS]), `go:262` (1993 Q01.5 $\to$ C [OOS]), `go:601` (1993 Q01.6 $\to$ A [OOS]), `go:602` (1993 Q01.7 $\to$ A), `go:2287` (1993 Q6.4 $\to$ C), `go:2291` (1993 Q7.1 $\to$ B [OOS]).
+  - *Year Normalization*:
+    - Normalized all legacy year strings across 1996, 1995, 1994, 1993 to numeric integers (`1996`, `1995`, `1994`, `1993`) across all questions.
+  - *Data & Parity Harmonization*:
+    - Synchronized `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (pipeline & public), `answers_by_exam_uid_v1.json`, `public/questions-with-answers.json`, and `public/questions-filtered.json`.
+    - Total master question bank increased from 3,573 to **3,581 questions** with 100% agreement across all 7 parity counts.
+    - Rebuilt detail shards: `1996-s0.json` (56 Qs), `1995-s0.json` (55 Qs), `1994-s0.json` (37 Qs), `1993-s0.json` (39 Qs), mock catalog, search index, and manifest.
+
+- **GATE CSE 2000–1997 (4-Year Batch) Comprehensive Answer Key Audit, Missing Questions Ingestion & Syllabus Classification (DEC-099)**:
+  - *Context*: Audited all questions across the 4-year historical batch (GATE CSE 2000, 1999, 1998, 1997) against GateOverflow archive (first preference) and GateOverflow (secondary reference). Prior to this pass, the 4-year question bank had 206 questions with 14 missing Section A objective questions, 1 erratum in a binary tree traversal question, 6 unpopulated answer keys, and legacy un-normalized year strings (`"gatecse-2000"`, `"gate1999"`, `"gate1998"`, `"gate1997"`).
+  - *14 Missing Questions Ingested*:
+    - **GATE CSE 2000 (6 Questions)**: `go:630` (Q1.7, 8085 wait state $\to$ MCQ Option B, `out-of-syllabus-now`); `go:632` (Q1.9, 8085 interrupt response $\to$ MCQ Option C, `out-of-syllabus-now`); `go:647` (Q1.23, Relational algebra sum of salaries $\to$ MCQ Option C); `go:655` (Q2.8, 2-state DFA over $\{a\}$ $\to$ MCQ Option D); `go:660` (Q2.13, Graphics card 1 MB mode support $\to$ MCQ Option B); `go:673` (Q2.26, SQL null comparisons $\to$ MCQ Option C).
+    - **GATE CSE 1999 (2 Questions)**: `go:1484` (Q2.6, Transaction schedule non-serializability $\to$ MCQ Option D); `go:1498` (Q2.21, Asymptotic recurrence matching $\to$ MCQ Option D).
+    - **GATE CSE 1998 (4 Questions)**: `go:1652` (Q1.15, TTL logic 1 threshold $\to$ MCQ Option D); `go:1653` (Q1.16, Serial communication baud rate $\to$ MCQ Option C); `go:1670` (Q1.33, Natural join intersection $\to$ MCQ Option D); `go:1682` (Q2.10, 8086 CPU 1 MB address space $\to$ MCQ Option A, `out-of-syllabus-now`).
+    - **GATE CSE 1997 (2 Questions)**: `go:2229` (Q2.3, RS-232 start bit receiver sync $\to$ MCQ Option A); `go:2251` (Q4.10, Trapezoidal method error bound $\to$ MCQ Option C, `out-of-syllabus-now`).
+  - *Answer Key Corrections & Population (7 Questions)*:
+    - **`go:1661`** (GATE CSE 1998 Q1.24): Binary tree reconstruction from preorder and postorder traversals corrected from legacy MSQ `["B", "C"]` to single **MCQ Option B** (preorder + postorder cannot uniquely construct a general binary tree).
+    - **`go:1476`** (GATE CSE 1999 Q1.23): Newton-Raphson quadratic convergence order populated as **MCQ Option D** (`out-of-syllabus-now`).
+    - **`go:1491`** (GATE CSE 1999 Q2.13): Static vs dynamic scoping parameter binding populated as **MCQ Option C**.
+    - **`go:1492`** (GATE CSE 1999 Q2.14): Fortran call-by-reference parameter passing populated as **MCQ Option A** (`out-of-syllabus-now`).
+    - **`go:1640`** (GATE CSE 1998 Q1.3): Bisection method iteration bound populated as **MCQ Option B** (`out-of-syllabus-now`).
+    - **`go:2228`** (GATE CSE 1997 Q2.2): 8085 microprocessor instruction execution populated as **MCQ Option C** (`out-of-syllabus-now`).
+    - **`go:2253`** (GATE CSE 1997 Q5.2): 8085 microprocessor register pair populated as **MCQ Option B** (`out-of-syllabus-now`).
+  - *Year Normalization*:
+    - Normalized all legacy year strings across 2000, 1999, 1998, 1997 to integer years (`2000`, `1999`, `1998`, `1997`) across all questions.
+  - *Data & Parity Harmonization*:
+    - Synchronized `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (pipeline & public), `answers_by_exam_uid_v1.json`, `answers_master_v1.json`, `questions-with-answers.json`, and `questions-filtered.json`.
+    - Total master question bank increased from 3,559 to 3,573 questions with 100% agreement across all 7 parity counts.
+    - Rebuilt detail shards: `2000-s0.json` (50 Qs), `1999-s0.json` (53 Qs), `1998-s0.json` (58 Qs), `1997-s0.json` (59 Qs), mock catalog, search index, and manifest.
+  - *Testing & Verification*:
+    - Added unit tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js` under `DEC-099`.
+    - Updated mock test pool consistency test in `QuestionPoolConsistency.test.jsx` (Digital Logic scorable count 260 $\to$ 261 due to TTL question `go:1652`).
+    - 911 unit tests passing (`npm run test:unit`), TypeScript check clean (`npm run typecheck`), `npm run qa:validate-data` green, and production build clean (`npm run build`).
+
+- **GATE CSE 2001 Comprehensive Answer Key Audit, Missing Questions Ingestion & Syllabus Classification (DEC-098)**:
+  - *Context*: Audited all questions of GATE CSE 2001 against GateOverflow archive (first preference) and GateOverflow (secondary reference). Prior to this pass, the 2001 question bank had 49 questions (missing 4 Section A DBMS questions), 1 erratum in legacy quicksort answer, 2 unpopulated answer keys, and legacy un-normalized year strings (`"gatecse-2001"`).
+  - *Missing Questions Ingested (4 Questions)*:
+    - **`go:716`** (GATE CSE 2001 Q1.23): Relational schema decomposition $R_1(AB), R_2(CD)$ ingested as **MCQ Option C** (Dependency preserving but not lossless join, 1 Mark).
+    - **`go:717`** (GATE CSE 2001 Q1.24): Relational algebra query expressibility (graph reachability / transitive closure) ingested as **MCQ Option D** (Cannot be expressed by constant-length relational algebra, 1 Mark).
+    - **`go:718`** (GATE CSE 2001 Q1.25): Selection pushdown $\sigma_{A=a}(r \bowtie s)$ ingested as **MCQ Option C** ($\sigma_{A=a}(r) \bowtie s$, 1 Mark).
+    - **`go:742`** (GATE CSE 2001 Q2.24): Tuple relational calculus safety expression $\{t \mid \neg(t \in R_1)\}$ ingested as **MCQ Option C** (Unsafe, 2 Marks).
+  - *Answer Key Corrections & Population*:
+    - **`go:707`** (GATE CSE 2001 Q1.14): Randomized quicksort worst-case time complexity corrected from legacy B ($O(n \log n)$) to **MCQ Option C** ($O(n^2)$).
+    - **`go:702`** (GATE CSE 2001 Q1.9): 8085 microprocessor slow memory connection via READY pin populated missing key to **MCQ Option D** (tagged `out-of-syllabus-now`).
+    - **`go:737`** (GATE CSE 2001 Q2.19): Dynamic scoping program P2 parameter passing populated missing key to **MCQ Option D** ("None of the above", tagged `out-of-syllabus-now`).
+  - *Question UID Mapping & Provenance*:
+    - Registered **`go:712`** (MCQ Option B) as the GateOverflow question ID alias for Q1.19 (`go:49481`, ISRO 2007-11 cross-post) in answer registries.
+  - *Syllabus Classification & Reclassification*:
+    - Out of 50 official Section A objective questions, 48 are relevant to the modern core syllabus.
+    - 2 questions reclassified as out-of-syllabus (`out-of-syllabus-now`): `go:702` (8085 Microprocessor) and `go:737` (Dynamic scoping in Pascal/Algol-like language).
+    - 3 historical Section B subjective questions (`go:749` Q8 NAT 800, `go:756` Q15 MCQ B, `go:761` Q20 MCQ A) preserved for historical completeness.
+  - *Data & Parity Harmonization*:
+    - Normalized `year` from string `"gatecse-2001"` to integer `2001` across all 2001 records.
+    - Synchronized `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (pipeline & public), `answers_by_exam_uid_v1.json`, `answers_master_v1.json`, `questions-with-answers.json`, and `questions-filtered.json`.
+    - Total master question bank increased from 3,555 to 3,559 questions with 100% agreement across all 7 parity counts.
+    - Rebuilt `2001-s0.json` (53 questions: 50 Section A objective + 3 Section B subjective), mock catalog, search index, and manifest.
+  - *Testing & Verification*:
+    - Added unit tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js` under `DEC-098`.
+    - 890 unit tests passing (`npm run test:unit`), TypeScript check clean (`npm run typecheck`), `npm run qa:validate-data` green, and production build clean (`npm run build`).
+
+- **GATE CSE 2002 Comprehensive Answer Key Audit, Missing Questions Ingestion & Syllabus Classification (DEC-097)**:
+  - *Context*: Audited all questions of GATE CSE 2002 against GateOverflow archive (first preference) and GateOverflow (secondary reference). Prior to this pass, the 2002 question bank had 48 questions, 4 answer/type discrepancies, 3 missing questions, and legacy un-normalized year tags.
+  - *Answer Key & Type Corrections*:
+    - **`go:807`** (GATE CSE 2002 Q1.3): Recurrence $T(2^k) = 3T(2^{k-1}) + 1, T(1)=1$ corrected from C ($3^{\log_2 k}$) to **MCQ Option B** ($\frac{3^{k+1}-1}{2}$).
+    - **`go:840`** (GATE CSE 2002 Q2.10): Randomized search in unsorted array of size $n$ with replacement corrected from C ($2n$) to **MCQ Option A** ($n$, Geometric expectation $E[X]=1/p=n$).
+    - **`go:806`** (GATE CSE 2002 Q1.2): Trapezoidal rule exactness populated missing key to **MCQ Option C** (polynomial of degree 0 or 1).
+    - **`go:845`** (GATE CSE 2002 Q2.15): Newton-Raphson iteration populated missing key to **MCQ Option A** ($X^2 = 3$).
+  - *Missing Questions Ingested (3 Questions)*:
+    - **`go:814`** (GATE CSE 2002 Q1.10): 8085 instructions modifying program counter ingested as **MCQ Option D** (All instructions). Classified as out of current syllabus (`out-of-syllabus-now`, `8085-microprocessor`).
+    - **`go:815`** (GATE CSE 2002 Q1.11): Asynchronous serial data transmission start/stop bits ingested as **MCQ Option A** (Receiver synchronization).
+    - **`go:823`** (GATE CSE 2002 Q1.18): Parameter passing call-by-reference vs value-result ingested as **MCQ Option D** (May differ in presence of exception).
+  - *Syllabus Classification & Reclassification*:
+    - Out of 50 official objective questions, 46 are relevant to the modern core syllabus.
+    - 4 questions reclassified as out-of-syllabus (`out-of-syllabus-now`): `go:806` (Trapezoidal rule), `go:845` (Newton-Raphson), `go:814` (8085 Microprocessor), and `go:834` (8085 Microprocessor).
+    - 1 historical Section B question (`go:865` Q12, Floyd-Warshall template) preserved as `type: "SUBJECTIVE", answer: null`, excluded from objective mock test scoring.
+  - *Data & Parity Harmonization*:
+    - Normalized `year` from string `"gatecse-2002"` to integer `2002` across all 2002 records.
+    - Synchronized `manual-answers-patch-v1.json`, `answers_by_question_uid_v1.json` (pipeline & public), `answers_by_exam_uid_v1.json`, `answers_master_v1.json`, `questions-with-answers.json`, and `questions-filtered.json`.
+    - Total master question bank increased from 3,552 to 3,555 questions with 100% agreement across all 7 parity counts.
+    - Rebuilt `2002-s0.json` (51 questions: 50 objective + 1 subjective), mock catalog, search index, and manifest.
+  - *Testing & Verification*:
+    - Added unit tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js` under `DEC-097`.
+    - 876 unit tests passing (`npm run test:unit`), TypeScript check clean (`npm run typecheck`), `npm run qa:validate-data` green, and production build clean (`npm run build`).
+
 - **Streak Freeze Rules Engine Mechanics & Cloud Sync Architecture (DEC-096)**:
   - *Context*: While the Freeze badge UI, icons, and metric explanation modals were shipped in DEC-094, the underlying calculation engine in `src/utils/weakTopicAnalyzer.js` and cloud sync engine in `src/utils/cloudSyncManager.js` required completion to enforce deterministic, abuse-resistant streak freeze rules.
   - *Engine Upgrades*:
@@ -370,12 +505,12 @@
   - *Verification*: `npm run test:unit` passing (763 tests across 76 suites), all 65/65 questions evaluated and verified against official key with 0 discrepancies.
 
 - **GATE CSE 2014 Sessions 1, 2, 3 Comprehensive Answer Key Audit & Data Population (DEC-078)**:
-  - *Context*: Complete audit and data population for all 195 questions across GATE CSE 2014 Session 1, Session 2, and Session 3 (65 questions each: 10 GA + 55 CS) against the official GATE 2014 answer keys (IIT Kharagpur), PracticePaper.in, and GateOverflow accepted solutions.
+  - *Context*: Complete audit and data population for all 195 questions across GATE CSE 2014 Session 1, Session 2, and Session 3 (65 questions each: 10 GA + 55 CS) against the official GATE 2014 answer keys (IIT Kharagpur), GateOverflow archive, and GateOverflow accepted solutions.
   - *Audit Results*:
     - 195 / 195 questions mapped 100% confidently between persistent `go:<id>` question UIDs, canonical `exam_uid` keys (`cse:2014:set1/2/3:ga:q1`–`q10` and `cse:2014:set1/2/3:main:q1`–`q55`), and the Official Question Papers.
     - Populated authoritative answers for all 195 previously unpopulated/undefined questions across all three sessions (Session 1: 40 MCQs, 25 NATs; Session 2: 42 MCQs, 23 NATs; Session 3: 47 MCQs, 18 NATs).
-    - Session 1: Verified CS Q52 (`go:1932`, graphic degree sequence) as **MCQ Option C** ($(3, 3, 3, 1, 0, 0)$), overriding PracticePaper's data corruption (NAT 0).
-    - Session 2: Verified all 65 questions matching official IIT Kharagpur keys and PracticePaper (100% agreement).
+    - Session 1: Verified CS Q52 (`go:1932`, graphic degree sequence) as **MCQ Option C** ($(3, 3, 3, 1, 0, 0)$), overriding GateOverflow archive's data corruption (NAT 0).
+    - Session 2: Verified all 65 questions matching official IIT Kharagpur keys and GateOverflow archive (100% agreement).
     - Session 3: Identified and restored 4 omitted CS questions between Q22 and Q27: CS Q23 (`go:2057`, OSI layers) $\to$ **MCQ Option B**; CS Q24 (`go:2058`, Bit stuffing) $\to$ **MCQ Option B**; CS Q25 (`go:2059`, IP datagram forwarding) $\to$ **MCQ Option D**; CS Q26 (`go:2060`, CIDR router interface) $\to$ **NAT 1** (`{ abs: 0.01 }`).
     - Normalized 130 questions with legacy string tags (`year: "gatecse-2014-set2"` and `"gatecse-2014-set3"`) to integer `year: 2014` across all 195 questions.
     - Updated `public/mock_catalog_v1.json` with all 3 papers marked `paperReady: true`, `scorableCount: 65`, and `statusReason: 'Release-ready.'`.
@@ -387,7 +522,7 @@
   - *Verification*: `npm run test:unit` passing (754 tests), `npm run typecheck` clean (0 errors), 195/195 questions populated with 0 undefined answers.
 
 - **GATE CSE 2015 Set 3 Comprehensive Answer Key Audit & Data Population (DEC-077)**:
-  - *Context*: Complete audit and data population for all 65 questions of GATE CSE 2015 Set 3 (General Aptitude Q1–Q10 and Computer Science Q1–Q55) against the official GATE 2015 Set 3 answer key (IIT Kanpur CS03), PracticePaper.in, and GateOverflow accepted solutions.
+  - *Context*: Complete audit and data population for all 65 questions of GATE CSE 2015 Set 3 (General Aptitude Q1–Q10 and Computer Science Q1–Q55) against the official GATE 2015 Set 3 answer key (IIT Kanpur CS03), GateOverflow archive, and GateOverflow accepted solutions.
   - *Audit Results*:
     - 65 / 65 questions mapped 100% confidently between persistent `go:<id>` question UIDs, canonical `exam_uid` keys (`cse:2015:set3:ga:q1`–`q10` and `cse:2015:set3:main:q1`–`q55`), and the Official Master Question Paper (CS Q11–Q65).
     - Populated authoritative answers for all 65 previously unpopulated/undefined questions (10 GA + 55 CS).
@@ -1380,7 +1515,7 @@
   for consistent light and dark mode contrast. The special Aptitude section remains
   available in the Topics area.
 - **GATE DA 2024/2025 Paper Intake (AUG-004)**:
-  - Added a repeatable PracticePaper scraper and normalization pipeline for both
+  - Added a repeatable GateOverflow archive scraper and normalization pipeline for both
     complete DA papers (130 questions total).
   - Added editable DA answer keys, merged question/answer records, and strict data
     validation requiring 65 complete questions per year.
