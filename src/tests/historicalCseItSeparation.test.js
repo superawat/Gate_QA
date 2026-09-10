@@ -28,7 +28,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
     const itQuestions = Object.values(itShard.recordsByQuestionUid);
 
     expect(cseQuestions).toHaveLength(90);
-    expect(itQuestions).toHaveLength(73);
+    expect(itQuestions).toHaveLength(90);
 
     // CSE questions must NOT be IT
     expect(cseQuestions.every((q) => !isItQuestion(q))).toBe(true);
@@ -47,7 +47,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
     const itQuestions = Object.values(itShard.recordsByQuestionUid);
 
     expect(cseQuestions).toHaveLength(90);
-    expect(itQuestions).toHaveLength(81);
+    expect(itQuestions).toHaveLength(90);
 
     expect(cseQuestions.every((q) => !isItQuestion(q))).toBe(true);
     expect(itQuestions.every((q) => isItQuestion(q))).toBe(true);
@@ -61,7 +61,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
     const itQuestions = Object.values(itShard.recordsByQuestionUid);
 
     expect(cseQuestions).toHaveLength(85);
-    expect(itQuestions).toHaveLength(70);
+    expect(itQuestions).toHaveLength(85);
 
     expect(cseQuestions.every((q) => !isItQuestion(q))).toBe(true);
     expect(itQuestions.every((q) => isItQuestion(q))).toBe(true);
@@ -75,7 +75,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
     const itQuestions = Object.values(itShard.recordsByQuestionUid);
 
     expect(cseQuestions).toHaveLength(85);
-    expect(itQuestions).toHaveLength(68);
+    expect(itQuestions).toHaveLength(85);
 
     expect(cseQuestions.every((q) => !isItQuestion(q))).toBe(true);
     expect(itQuestions.every((q) => isItQuestion(q))).toBe(true);
@@ -89,7 +89,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
     const itQuestions = Object.values(itShard.recordsByQuestionUid);
 
     expect(cseQuestions).toHaveLength(85);
-    expect(itQuestions).toHaveLength(74);
+    expect(itQuestions).toHaveLength(85);
 
     expect(cseQuestions.every((q) => !isItQuestion(q))).toBe(true);
     expect(itQuestions.every((q) => isItQuestion(q))).toBe(true);
@@ -122,7 +122,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
   });
 
   test("Requirement 12: Existing question UIDs and user progress remain intact", () => {
-    // Total historical questions across CSE (435) and IT (366) = 801
+    // Total historical questions across CSE (435) and IT (435) = 870
     let totalHistorical = 0;
     const allUids = new Set();
 
@@ -142,8 +142,8 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
       });
     }
 
-    expect(totalHistorical).toBe(801);
-    expect(allUids.size).toBe(801);
+    expect(totalHistorical).toBe(870);
+    expect(allUids.size).toBe(870);
 
     // Well-known UIDs preserved
     expect(allUids.has("go:790")).toBe(true); // IT 2004 Q50
@@ -225,7 +225,7 @@ describe("Historical CSE/IT Separation Regression Suite (2004-2008)", () => {
       // 3. Selecting IT only
       const selectedItOnly = new Set([itIdentity]);
       const itResults = searchIndex.filter((q) => selectedItOnly.has(q.yearSetIdentity));
-      const expectedItCount = { 2004: 73, 2005: 81, 2006: 70, 2007: 68, 2008: 74 }[year];
+      const expectedItCount = { 2004: 90, 2005: 90, 2006: 85, 2007: 85, 2008: 85 }[year];
       expect(itResults.length).toBe(expectedItCount);
       expect(itResults.every((q) => isItQuestion(q))).toBe(true);
 
