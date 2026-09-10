@@ -10,7 +10,8 @@
     "conflicts": 0,
     "manual_patch_applied": 0,
     "manual_patch_invalid": 0,
-    "missing_exam_uid_answers": 455
+    "missing_exam_uid_answers": 455,
+    "records_count": 2767
   },
   "records_by_exam_uid": {
     "cse:2023:set1:main:q1": {
@@ -20030,16 +20031,12 @@
       }
     },
     "cse:1996:set1:main:q2-15": {
-      "answer_uid": "v2:1.26.5",
+      "answer_uid": "manual:go:2744",
       "type": "MCQ",
-      "answer": "C",
+      "answer": "B",
       "tolerance": null,
-      "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:2744"
-        ]
-      }
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2744"
     },
     "cse:1996:set1:main:q2-14": {
       "answer_uid": "v2:8.4.1",
@@ -20056,14 +20053,9 @@
     "cse:1996:set1:main:q2-13-isro2016-28": {
       "answer_uid": "v2:1.29.3",
       "type": "MCQ",
-      "answer": "A",
+      "answer": "C",
       "tolerance": null,
-      "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:2742"
-        ]
-      }
+      "source": "manual_answers_patch_v1"
     },
     "cse:1996:set1:main:q2-12": {
       "answer_uid": "manual:go:2741",
@@ -20756,17 +20748,10 @@
     },
     "cse:1994:set1:main:q1-17-ugcnet-sep2013-ii-32": {
       "answer_uid": "v2:8.9.4",
-      "type": "NAT",
-      "answer": 3,
-      "tolerance": {
-        "abs": 0.01
-      },
-      "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:2460"
-        ]
-      }
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1"
     },
     "cse:1994:set1:main:q1-16": {
       "answer_uid": "v2:10.11.2",
@@ -25011,19 +24996,12 @@
       }
     },
     "cse:1998:set1:main:q1-24": {
-      "answer_uid": "v2:8.15.4",
-      "type": "MSQ",
-      "answer": [
-        "B",
-        "C"
-      ],
+      "answer_uid": "manual:go:1661",
+      "type": "MCQ",
+      "answer": "B",
       "tolerance": null,
-      "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:1661"
-        ]
-      }
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1661"
     },
     "cse:1998:set1:main:q1-23": {
       "answer_uid": "v1:1.2.6",
@@ -25701,18 +25679,12 @@
       }
     },
     "cse:1995:set1:main:q1-16": {
-      "answer_uid": "v2:1.23.2",
-      "type": "NAT",
-      "answer": 358,
-      "tolerance": {
-        "abs": 0.01
-      },
-      "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:2603"
-        ]
-      }
+      "answer_uid": "manual:go:2603",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2603"
     },
     "cse:1995:set1:main:q1-15": {
       "answer_uid": "v2:7.19.5",
@@ -25957,14 +25929,9 @@
     "cse:1994:set1:main:q1-7-isro2017-14": {
       "answer_uid": "v2:1.27.9",
       "type": "MCQ",
-      "answer": "A",
+      "answer": "B",
       "tolerance": null,
-      "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:2444"
-        ]
-      }
+      "source": "manual_answers_patch_v1"
     },
     "cse:1994:set1:main:q1-6-isro2008-29": {
       "answer_uid": "v1:2.4.7",
@@ -26027,16 +25994,15 @@
       }
     },
     "cse:1988:set1:main:q1iii": {
-      "answer_uid": "v2:1.31.2",
-      "type": "MCQ",
-      "answer": "A",
+      "answer_uid": "manual_res:go:91338",
+      "type": "SUBJECTIVE",
+      "answer": null,
       "tolerance": null,
       "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:91338"
-        ]
-      }
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1988"
+      },
+      "is_manual_resolution": true
     },
     "cse:1987:set1:main:q1-viii": {
       "answer_uid": "manual:go:80274",
@@ -26063,16 +26029,15 @@
       }
     },
     "cse:1987:set1:main:q1-vi": {
-      "answer_uid": "v2:2.16.1",
+      "answer_uid": "manual_res:go:166",
       "type": "MCQ",
       "answer": "B",
       "tolerance": null,
       "source": {
-        "kind": "question_uid",
-        "question_uids": [
-          "go:80199"
-        ]
-      }
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
     },
     "cse:1987:set1:main:q1-v": {
       "answer_uid": "v2:2.1.1",
@@ -31098,6 +31063,702 @@
       "source": "verified_reference_key",
       "note": "gate_cse_2003_q75:verified_reference_key_d",
       "question_uid": "go:961"
+    },
+    "cse:1995:set1:main:q1-10": {
+      "answer_uid": "manual:go:2597",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2597"
+    },
+    "cse:1995:set1:main:q1-22": {
+      "answer_uid": "manual:go:2609",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2609"
+    },
+    "cse:1995:set1:main:q1-23": {
+      "answer_uid": "manual:go:2610",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2610"
+    },
+    "cse:1995:set1:main:q2-18": {
+      "answer_uid": "manual:go:2630",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2630"
+    },
+    "cse:1994:set1:main:q1-1": {
+      "answer_uid": "manual:go:2437",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2437"
+    },
+    "cse:1993:set1:main:q7-9": {
+      "answer_uid": "manual:go:2297",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2297"
+    },
+    "cse:1993:set1:main:q8-5": {
+      "answer_uid": "manual:go:2303",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2303"
+    },
+    "cse:1993:set1:main:q8-7": {
+      "answer_uid": "manual:go:2305",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2305"
+    },
+    "cse:1996:set1:main:q1-22": {
+      "answer_uid": "manual:go:2726",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2726"
+    },
+    "cse:1996:set1:main:q2-5": {
+      "answer_uid": "manual:go:2734",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2734"
+    },
+    "cse:1995:set1:main:q1-1": {
+      "answer_uid": "manual:go:2588",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2588"
+    },
+    "cse:1995:set1:main:q2-1": {
+      "answer_uid": "manual:go:2613",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2613"
+    },
+    "cse:1995:set1:main:q2-15": {
+      "answer_uid": "manual:go:2627",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2627"
+    },
+    "cse:1993:set1:main:q1-2": {
+      "answer_uid": "go:597:ans",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1"
+    },
+    "cse:1993:set1:main:q1-3": {
+      "answer_uid": "go:598:ans",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "tolerance": null,
+      "source": "manual_answers_patch_v1"
+    },
+    "cse:1993:set1:main:q1-5": {
+      "answer_uid": "go:262:ans",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1"
+    },
+    "cse:1993:set1:main:q1-6": {
+      "answer_uid": "go:601:ans",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1"
+    },
+    "cse:1993:set1:main:q1-7": {
+      "answer_uid": "go:602:ans",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1"
+    },
+    "cse:1993:set1:main:q6-4": {
+      "answer_uid": "manual:go:2287",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2287"
+    },
+    "cse:1993:set1:main:q7-1": {
+      "answer_uid": "manual:go:2291",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2291"
+    },
+    "cse:1999:set1:main:q1-23": {
+      "answer_uid": "manual:go:1476",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1476"
+    },
+    "cse:1999:set1:main:q2-13": {
+      "answer_uid": "manual:go:1491",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1491"
+    },
+    "cse:1999:set1:main:q2-14": {
+      "answer_uid": "manual:go:1492",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1492"
+    },
+    "cse:1998:set1:main:q1-3": {
+      "answer_uid": "manual:go:1640",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1640"
+    },
+    "cse:1997:set1:main:q2-2": {
+      "answer_uid": "manual:go:2228",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2228"
+    },
+    "cse:1997:set1:main:q5-2": {
+      "answer_uid": "manual:go:2253",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2253"
+    },
+    "cse:1997:set1:main:q2-3": {
+      "answer_uid": "manual:go:2229",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2229"
+    },
+    "cse:1997:set1:main:q4-10": {
+      "answer_uid": "manual:go:2251",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2251"
+    },
+    "cse:1998:set1:main:q1-15": {
+      "answer_uid": "manual:go:1652",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1652"
+    },
+    "cse:1998:set1:main:q1-16": {
+      "answer_uid": "manual:go:1653",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1653"
+    },
+    "cse:1998:set1:main:q1-33": {
+      "answer_uid": "manual:go:1670",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1670"
+    },
+    "cse:1998:set1:main:q2-10": {
+      "answer_uid": "manual:go:1682",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1682"
+    },
+    "cse:1999:set1:main:q2-6": {
+      "answer_uid": "manual:go:1484",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1484"
+    },
+    "cse:1999:set1:main:q2-21": {
+      "answer_uid": "manual:go:1498",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:1498"
+    },
+    "cse:2000:set1:main:q1-7": {
+      "answer_uid": "manual:go:630",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:630"
+    },
+    "cse:2000:set1:main:q1-9": {
+      "answer_uid": "manual:go:632",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:632"
+    },
+    "cse:2000:set1:main:q1-23": {
+      "answer_uid": "manual:go:647",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:647"
+    },
+    "cse:2000:set1:main:q2-8": {
+      "answer_uid": "manual:go:655",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:655"
+    },
+    "cse:2000:set1:main:q2-13": {
+      "answer_uid": "manual:go:660",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:660"
+    },
+    "cse:2000:set1:main:q2-26": {
+      "answer_uid": "manual:go:673",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:673"
+    },
+    "cse:1996:set1:main:q2-13": {
+      "answer_uid": "manual:go:2742",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2742"
+    },
+    "cse:1994:set1:main:q1-7": {
+      "answer_uid": "manual:go:2444",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2444"
+    },
+    "cse:1994:set1:main:q1-17": {
+      "answer_uid": "manual:go:2460",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:2460"
+    },
+    "cse:1993:set1:main:q01-2": {
+      "answer_uid": "manual:go:597",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:597"
+    },
+    "cse:1993:set1:main:q01-3": {
+      "answer_uid": "manual:go:598",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:598"
+    },
+    "cse:1993:set1:main:q01-5": {
+      "answer_uid": "manual:go:262",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:262"
+    },
+    "cse:1993:set1:main:q01-6": {
+      "answer_uid": "manual:go:601",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:601"
+    },
+    "cse:1993:set1:main:q01-7": {
+      "answer_uid": "manual:go:602",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": "manual_answers_patch_v1",
+      "question_uid": "go:602"
+    },
+    "cse:1992:set1:main:q02-iii": {
+      "answer_uid": "manual:go:557",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-iv": {
+      "answer_uid": "manual:go:558",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-ix": {
+      "answer_uid": "manual:go:559",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-v": {
+      "answer_uid": "manual:go:560",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-vi": {
+      "answer_uid": "manual:go:561",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-vii": {
+      "answer_uid": "manual:go:562",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-viii": {
+      "answer_uid": "manual:go:563",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-x": {
+      "answer_uid": "manual:go:564",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-xiv": {
+      "answer_uid": "manual:go:571",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-xix": {
+      "answer_uid": "manual:go:572",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-xvi": {
+      "answer_uid": "manual:go:574",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-xvii": {
+      "answer_uid": "manual:go:575",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-xviii": {
+      "answer_uid": "manual:go:576",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q02-xx": {
+      "answer_uid": "manual:go:577",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C"
+      ],
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q03-ii": {
+      "answer_uid": "manual:go:579",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q10": {
+      "answer_uid": "manual:go:589",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null
+    },
+    "cse:1992:set1:main:q03-v": {
+      "answer_uid": "manual:go:582",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-i": {
+      "answer_uid": "manual:go:515",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-iii": {
+      "answer_uid": "manual:go:517",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "B"
+      ],
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-iv": {
+      "answer_uid": "manual:go:518",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-ix": {
+      "answer_uid": "manual:go:519",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-v": {
+      "answer_uid": "manual:go:520",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-vi": {
+      "answer_uid": "manual:go:521",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-vii": {
+      "answer_uid": "manual:go:522",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-xiv": {
+      "answer_uid": "manual:go:528",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-xi": {
+      "answer_uid": "manual:go:525",
+      "type": "MSQ",
+      "answer": [
+        "B",
+        "C"
+      ],
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-xii": {
+      "answer_uid": "manual:go:526",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null
+    },
+    "cse:1991:set1:main:q03-xiii": {
+      "answer_uid": "manual:go:527",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C"
+      ],
+      "tolerance": null
+    },
+    "cse:1989:set1:main:q3-vii": {
+      "answer_uid": "manual:go:87141",
+      "type": "MSQ",
+      "answer": [
+        "A",
+        "C"
+      ],
+      "tolerance": null
+    },
+    "cse:1987:set1:main:q15": {
+      "answer_uid": "manual_res:go:82656",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q1-ix": {
+      "answer_uid": "manual_res:go:80278",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q1-x": {
+      "answer_uid": "manual_res:go:80281",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q1-i": {
+      "answer_uid": "manual_res:go:80029",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q1-xxi": {
+      "answer_uid": "manual_res:go:80377",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q1-xxiv": {
+      "answer_uid": "manual_res:go:80559",
+      "type": "MCQ",
+      "answer": "B",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q1-xxv": {
+      "answer_uid": "manual_res:go:80562",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q11a": {
+      "answer_uid": "manual_res:go:82548",
+      "type": "NAT",
+      "answer": 2.4785971428571423,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
+    },
+    "cse:1987:set1:main:q11b": {
+      "answer_uid": "manual_res:go:82550",
+      "type": "NAT",
+      "answer": 0.693,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "source": {
+        "kind": "manual_verified",
+        "note": "dec_102:batch_1988_1987_audit:1987"
+      },
+      "is_manual_resolution": true
     }
   },
   "cse:2013:set1:main:q47": {
