@@ -13,8 +13,10 @@ import { GlobalDifficultyService } from "../services/GlobalDifficultyService";
 
 const PROGRESS_STORAGE_KEY = "gateqa_progress_v1";
 const SOLVED_STORAGE_KEY = "gate_qa_solved_questions";
-const STREAK_FREEZE_STORAGE_KEY = "gateqa_streak_freeze_v1";
-const STREAK_FREEZE_INTERVAL_DAYS = 7;
+export const STREAK_FREEZE_STORAGE_KEY = "gateqa_streak_freeze_v1";
+export const STREAK_FREEZE_INTERVAL_DAYS = 3;
+export const MAX_STREAK_FREEZE_RESERVE = 1;
+export const STREAK_FREEZE_COOLDOWN_DAYS = 7;
 const HARD_QUESTION_XP_BONUS = 20;
 const NON_ATTEMPT_STATUSES = new Set([
   "watched",
@@ -359,11 +361,33 @@ const normalizeDateKeyList = (dateKeys = []) => (
   )
 );
 
-const normalizeStreakFreezeState = (value = {}) => ({
-  available: Math.max(0, Number(value.available) || 0),
-  earnedCount: Math.max(0, Number(value.earnedCount) || 0),
-  consumedDates: normalizeDateKeyList(Array.isArray(value.consumedDates) ? value.consumedDates : []),
+export const normalizeStreakFreezeState = (value = {}) => ({
+  available: Math.min(MAX_STREAK_FREEZE_RESERVE, Math.max(0, Number(value?.available) || 0)),
+  earnedCount: Math.max(0, Number(value?.earnedCount) || 0),
+  consumedDates: normalizeDateKeyList(Array.isArray(value?.consumedDates) ? value.consumedDates : []),
 });
+
+const getCalendarDaysDifference = (dateKeyA, dateKeyB) => {
+  const dA = parseDateKey(dateKeyA);
+  const dB = parseDateKey(dateKeyB);
+  if (!dA || !dB) return 0;
+  return Math.round((dB.getTime() - dA.getTime()) / (24 * 60 * 60 * 1000));
+};
+
+const getMaxConsecutiveActiveDays = (dates = []) => {
+  if (dates.length === 0) return 0;
+  let maxRun = 1;
+  let currentRun = 1;
+  for (let i = 1; i < dates.length; i += 1) {
+    if (addDaysToDateKey(dates[i - 1], 1) === dates[i]) {
+      currentRun += 1;
+    } else {
+      currentRun = 1;
+    }
+    maxRun = Math.max(maxRun, currentRun);
+  }
+  return maxRun;
+};
 
 const collectMissingDateKeys = ({ startExclusiveKey = "", endInclusiveKey = "", effectiveDateSet = new Set() } = {}) => {
   if (!startExclusiveKey || !endInclusiveKey || startExclusiveKey >= endInclusiveKey) {
@@ -438,6 +462,7 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
   const actualDates = normalizeDateKeyList(activeDates);
   const effectiveDateSet = new Set([...actualDates, ...state.consumedDates]);
   let changed = false;
+
   const consumeMissingDates = (dateKeys = []) => {
     const missingDateKeys = normalizeDateKeyList(dateKeys)
       .filter((dateKey) => !effectiveDateSet.has(dateKey));
@@ -445,30 +470,55 @@ const reconcileStreakFreezeState = ({ activeDates = [], now = new Date(), storag
     if (missingDateKeys.length === 0) {
       return true;
     }
-    if (state.available < missingDateKeys.length) {
+
+    // A gap of 2 or more consecutive missed days cannot be bridged by a single shield
+    if (missingDateKeys.length !== 1) {
       return false;
     }
 
-    missingDateKeys.forEach((dateKey) => {
-      state.available -= 1;
-      state.consumedDates.push(dateKey);
-      effectiveDateSet.add(dateKey);
+    // Must have an available shield in reserve
+    if (state.available < 1) {
+      return false;
+    }
+
+    const candidateDateKey = missingDateKeys[0];
+
+    // Rate-limit check: Usable at most once within any 7-day rolling window
+    const violatesCooldown = state.consumedDates.some((consumedKey) => {
+      const dayDiff = Math.abs(getCalendarDaysDifference(consumedKey, candidateDateKey));
+      return dayDiff < STREAK_FREEZE_COOLDOWN_DAYS;
     });
+
+    if (violatesCooldown) {
+      return false;
+    }
+
+    // Consume the freeze shield
+    state.available -= 1;
+    state.consumedDates.push(candidateDateKey);
+    effectiveDateSet.add(candidateDateKey);
     changed = true;
     return true;
   };
-  const awardEarnedFreeze = () => {
-    const stats = buildStreakStats(Array.from(effectiveDateSet), now);
-    const earnedCount = Math.floor(stats.longestStreak / STREAK_FREEZE_INTERVAL_DAYS);
 
-    if (earnedCount > state.earnedCount) {
-      state.available += earnedCount - state.earnedCount;
-      state.earnedCount = earnedCount;
+  const awardEarnedFreeze = () => {
+    const lastConsumedDate = state.consumedDates.length > 0
+      ? state.consumedDates[state.consumedDates.length - 1]
+      : "";
+    const candidateActualDates = lastConsumedDate
+      ? actualDates.filter((dateKey) => dateKey > lastConsumedDate)
+      : actualDates;
+    const maxConsecutive = getMaxConsecutiveActiveDays(candidateActualDates);
+
+    if (maxConsecutive >= STREAK_FREEZE_INTERVAL_DAYS && state.available < MAX_STREAK_FREEZE_RESERVE) {
+      state.available = MAX_STREAK_FREEZE_RESERVE;
+      state.earnedCount = Math.max(state.earnedCount, state.consumedDates.length + 1);
       changed = true;
     }
 
-    return stats;
+    return buildStreakStats(Array.from(effectiveDateSet), now);
   };
+
   let stats = buildStreakStats(Array.from(effectiveDateSet), now);
 
   if (actualDates.length > 0) {

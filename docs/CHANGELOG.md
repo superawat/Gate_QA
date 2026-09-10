@@ -1,5 +1,24 @@
 # Changelog
 
+- **Streak Freeze Rules Engine Mechanics & Cloud Sync Architecture (DEC-096)**:
+  - *Context*: While the Freeze badge UI, icons, and metric explanation modals were shipped in DEC-094, the underlying calculation engine in `src/utils/weakTopicAnalyzer.js` and cloud sync engine in `src/utils/cloudSyncManager.js` required completion to enforce deterministic, abuse-resistant streak freeze rules.
+  - *Engine Upgrades*:
+    - **3-Day Earning Interval**: Reduced earning threshold from legacy 7 days to 3 consecutive active practice days (`STREAK_FREEZE_INTERVAL_DAYS = 3`).
+    - **1-Shield Reserve Cap**: Strictly capped reserve capacity to at most 1 active Freeze shield (`MAX_STREAK_FREEZE_RESERVE = 1`). Excess days do not accumulate unbounded freezes.
+    - **7-Day Rolling Cooldown Rate Limit**: Enforced `STREAK_FREEZE_COOLDOWN_DAYS = 7`. A freeze can be consumed at most once in any 7-day rolling window, preventing continuous unattended streaks.
+    - **Consecutive Missed Days Break Streak**: Multi-day gaps ($\ge 2$ consecutive missed days) cannot be bridged by a single shield and immediately break the streak.
+    - **Re-Arming Shield**: Completing 3 consecutive active days of practice after using a freeze shield re-arms the shield back to 1.
+  - *Additive Cloud Sync Architecture*:
+    - Registered `gateqa_streak_freeze_v1` in `cloudSyncManager.js` (`LOCAL_STORAGE_KEYS`).
+    - Added pre-merge snapshot backup for `streakFreeze`.
+    - Implemented `mergeStreakFreeze(local, cloud)` taking the union of consumed dates, maximum earned count, and capped available reserve.
+    - Embedded `streak_freeze` inside `progress_records` JSONB payload for seamless backward-compatible sync with zero SQL schema migrations.
+  - *Verification & Testing*:
+    - Added 4 new unit tests in `src/utils/weakTopicAnalyzer.test.js` (3-day earning, 1-shield cap, 7-day cooldown, multi-day gap streak break, and re-arming).
+    - Added 2 new unit tests in `src/utils/cloudSyncManager.test.js` (union merge and fallback handling).
+    - All 861 unit tests pass (`npm run test:unit`), TypeScript check clean (`npm run typecheck`), and public parity validated.
+
+
 - **Re-Audit Verified Question Corrections, Pipeline Root-Cause Repair & Automated Data-Integrity Validation (DEC-095)**:
   - *Context*: Following the September 2026 audit, users reported incorrect answers and question type mismatches that survived previous passes. An exhaustive investigation was launched to fix verified issues, uncover systemic pipeline flaws, remove duplicate JSON keys, and install permanent CI/QA semantic validators.
   - *Verified Question Corrections*:

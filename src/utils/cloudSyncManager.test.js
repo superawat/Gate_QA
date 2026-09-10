@@ -11,6 +11,7 @@ import { describe, test, expect, beforeEach, vi } from "vitest";
 import {
   extractQuestionIdArray,
   mergeSolvedQuestionIds,
+  mergeStreakFreeze,
   unionMergeData,
   syncUserData,
   mergeTrackerTheory,
@@ -247,6 +248,50 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     const result = unionMergeData(local, cloud);
     expect(result.progress_records.standard["go:1"].history).toHaveLength(1);
     expect(result.progress_records.standard["go:2"].lastSubmittedAt).toBe("2026-08-09T10:00:00Z");
+  });
+
+  test("merges streak freeze state additively with deduplicated consumed dates and capped reserve", () => {
+    const local = {
+      streakFreeze: {
+        available: 1,
+        earnedCount: 2,
+        consumedDates: ["2026-05-02"],
+      },
+    };
+    const cloud = {
+      progress_records: {
+        streak_freeze: {
+          available: 1,
+          earnedCount: 3,
+          consumedDates: ["2026-05-02", "2026-05-15"],
+        },
+      },
+    };
+
+    const result = unionMergeData(local, cloud);
+    expect(result.streakFreeze).toEqual({
+      available: 1,
+      earnedCount: 3,
+      consumedDates: ["2026-05-02", "2026-05-15"],
+    });
+    expect(result.progress_records.streak_freeze).toEqual(result.streakFreeze);
+  });
+
+  test("mergeStreakFreeze helper handles missing or null fields and caps available at 1", () => {
+    const merged = mergeStreakFreeze(
+      { available: 5, earnedCount: 1, consumedDates: ["2026-05-01"] },
+      { available: 2, earnedCount: 4, consumedDates: ["2026-05-08"] }
+    );
+    expect(merged.available).toBe(1);
+    expect(merged.earnedCount).toBe(4);
+    expect(merged.consumedDates).toEqual(["2026-05-01", "2026-05-08"]);
+
+    const emptyMerge = mergeStreakFreeze(null, undefined);
+    expect(emptyMerge).toEqual({
+      available: 0,
+      earnedCount: 0,
+      consumedDates: [],
+    });
   });
 });
 

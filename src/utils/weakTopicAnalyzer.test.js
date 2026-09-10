@@ -448,6 +448,154 @@ describe("buildWeakTopicInsights", () => {
     });
   });
 
+  test("earns 1 freeze shield after 3 consecutive active days, strictly capped at 1 reserve", () => {
+    const makeProgress = (dates) => {
+      const records = {};
+      dates.forEach((d, idx) => {
+        records[`go:${idx + 100}`] = {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          firstSubmittedAt: `${d}T10:00:00.000Z`,
+          lastSubmittedAt: `${d}T10:00:00.000Z`,
+          history: [{ submittedAt: `${d}T10:00:00.000Z`, correct: true, durationMs: 30000 }],
+        };
+      });
+      return records;
+    };
+
+    // 2 days: not earned yet
+    const values2Days = new Map([
+      ["gateqa_progress_v1", JSON.stringify(makeProgress(["2026-05-01", "2026-05-02"]))],
+    ]);
+    const storage2 = {
+      getItem: (k) => values2Days.get(k) || null,
+      setItem: (k, v) => values2Days.set(k, v),
+    };
+    const act2 = loadStudyActivityFast({ storage: storage2, now: new Date("2026-05-02T12:00:00.000Z") });
+    expect(act2.currentStreak).toBe(2);
+    expect(act2.streakFreeze.available).toBe(0);
+
+    // 3 days: earns 1 freeze!
+    const values3Days = new Map([
+      ["gateqa_progress_v1", JSON.stringify(makeProgress(["2026-05-01", "2026-05-02", "2026-05-03"]))],
+    ]);
+    const storage3 = {
+      getItem: (k) => values3Days.get(k) || null,
+      setItem: (k, v) => values3Days.set(k, v),
+    };
+    const act3 = loadStudyActivityFast({ storage: storage3, now: new Date("2026-05-03T12:00:00.000Z") });
+    expect(act3.currentStreak).toBe(3);
+    expect(act3.streakFreeze.available).toBe(1);
+    expect(act3.badges).toContain("1 freeze ready");
+
+    // 6 days: capped at 1 reserve!
+    const values6Days = new Map([
+      ["gateqa_progress_v1", JSON.stringify(makeProgress(["2026-05-01", "2026-05-02", "2026-05-03", "2026-05-04", "2026-05-05", "2026-05-06"]))],
+    ]);
+    const storage6 = {
+      getItem: (k) => values6Days.get(k) || null,
+      setItem: (k, v) => values6Days.set(k, v),
+    };
+    const act6 = loadStudyActivityFast({ storage: storage6, now: new Date("2026-05-06T12:00:00.000Z") });
+    expect(act6.currentStreak).toBe(6);
+    expect(act6.streakFreeze.available).toBe(1);
+  });
+
+  test("enforces 7-day rolling cooldown rate limit: cannot consume freeze within 6 days of last consumed freeze", () => {
+    // Student consumed a freeze on 2026-05-02.
+    // They practice on 2026-05-03, 2026-05-04, 2026-05-05 (earning a freeze back).
+    // Then miss 2026-05-06 (only 4 days after 2026-05-02, cooldown is 7 days!).
+    // And practice on 2026-05-07.
+    // Because 2026-05-06 violates the 7-day cooldown, it cannot be bridged, breaking the streak.
+    const values = new Map([
+      ["gateqa_progress_v1", JSON.stringify({
+        "go:1": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-01T10:00:00.000Z", lastSubmittedAt: "2026-05-01T10:00:00.000Z", history: [{ submittedAt: "2026-05-01T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:2": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-03T10:00:00.000Z", lastSubmittedAt: "2026-05-03T10:00:00.000Z", history: [{ submittedAt: "2026-05-03T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:3": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-04T10:00:00.000Z", lastSubmittedAt: "2026-05-04T10:00:00.000Z", history: [{ submittedAt: "2026-05-04T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:4": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-05T10:00:00.000Z", lastSubmittedAt: "2026-05-05T10:00:00.000Z", history: [{ submittedAt: "2026-05-05T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:5": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-07T10:00:00.000Z", lastSubmittedAt: "2026-05-07T10:00:00.000Z", history: [{ submittedAt: "2026-05-07T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+      })],
+      ["gateqa_streak_freeze_v1", JSON.stringify({
+        available: 0,
+        earnedCount: 1,
+        consumedDates: ["2026-05-02"],
+      })],
+    ]);
+    const storage = {
+      getItem: (k) => values.get(k) || null,
+      setItem: (k, v) => values.set(k, v),
+    };
+    const activity = loadStudyActivityFast({
+      storage,
+      now: new Date("2026-05-07T12:00:00.000Z"),
+    });
+
+    // 2026-05-06 was not bridged because cooldown between 2026-05-02 and 2026-05-06 is 4 days (< 7).
+    // Current streak is only 1 (starting on 2026-05-07).
+    expect(activity.currentStreak).toBe(1);
+    expect(activity.streakFreeze.consumedDates).toEqual(["2026-05-02"]);
+  });
+
+  test("breaks streak when 2 or more consecutive days are missed", () => {
+    // Practiced on May 1st and May 4th (May 2nd and 3rd missed = 2 consecutive missed days)
+    const values = new Map([
+      ["gateqa_progress_v1", JSON.stringify({
+        "go:1": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-01T10:00:00.000Z", lastSubmittedAt: "2026-05-01T10:00:00.000Z", history: [{ submittedAt: "2026-05-01T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:2": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-04T10:00:00.000Z", lastSubmittedAt: "2026-05-04T10:00:00.000Z", history: [{ submittedAt: "2026-05-04T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+      })],
+      ["gateqa_streak_freeze_v1", JSON.stringify({
+        available: 1,
+        earnedCount: 1,
+        consumedDates: [],
+      })],
+    ]);
+    const storage = {
+      getItem: (k) => values.get(k) || null,
+      setItem: (k, v) => values.set(k, v),
+    };
+    const activity = loadStudyActivityFast({
+      storage,
+      now: new Date("2026-05-04T12:00:00.000Z"),
+    });
+
+    // A multi-day gap cannot be bridged, streak resets to 1 (just May 4th)
+    expect(activity.currentStreak).toBe(1);
+    expect(activity.streakFreeze.consumedDates).toEqual([]);
+    expect(activity.streakFreeze.available).toBe(1);
+  });
+
+  test("re-arms shield to 1 after practicing for 3 consecutive days post-freeze", () => {
+    const values = new Map([
+      ["gateqa_progress_v1", JSON.stringify({
+        "go:1": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-01T10:00:00.000Z", lastSubmittedAt: "2026-05-01T10:00:00.000Z", history: [{ submittedAt: "2026-05-01T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:2": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-03T10:00:00.000Z", lastSubmittedAt: "2026-05-03T10:00:00.000Z", history: [{ submittedAt: "2026-05-03T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:3": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-04T10:00:00.000Z", lastSubmittedAt: "2026-05-04T10:00:00.000Z", history: [{ submittedAt: "2026-05-04T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+        "go:4": { attempts: 1, correct: true, firstSubmittedAt: "2026-05-05T10:00:00.000Z", lastSubmittedAt: "2026-05-05T10:00:00.000Z", history: [{ submittedAt: "2026-05-05T10:00:00.000Z", correct: true, durationMs: 1000 }] },
+      })],
+      ["gateqa_streak_freeze_v1", JSON.stringify({
+        available: 1,
+        earnedCount: 1,
+        consumedDates: [],
+      })],
+    ]);
+    const storage = {
+      getItem: (k) => values.get(k) || null,
+      setItem: (k, v) => values.set(k, v),
+    };
+    const activity = loadStudyActivityFast({
+      storage,
+      now: new Date("2026-05-05T12:00:00.000Z"),
+    });
+
+    // 2026-05-02 was bridged (consumed 1 freeze).
+    // Then on 2026-05-03, 2026-05-04, 2026-05-05 (3 consecutive days!), shield is re-armed!
+    expect(activity.currentStreak).toBe(5);
+    expect(activity.streakFreeze.consumedDates).toEqual(["2026-05-02"]);
+    expect(activity.streakFreeze.available).toBe(1);
+  });
+
   test("merges mock history into subject accuracy, weak topics, and timing summaries", () => {
     const storage = {
       getItem: (key) => {

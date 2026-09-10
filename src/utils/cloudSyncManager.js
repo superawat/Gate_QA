@@ -37,6 +37,7 @@ const LOCAL_STORAGE_KEYS = {
   trackerCse: "gate_qa_tracker_cse_v1",
   trackerDa: "gate_qa_tracker_da_v1",
   trackerPrefs: "gate_qa_tracker_prefs_v1",
+  streakFreeze: "gateqa_streak_freeze_v1",
 };
 
 /**
@@ -60,6 +61,7 @@ function createPreMergeSnapshot() {
       trackerCse: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerCse),
       trackerDa: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerDa),
       trackerPrefs: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerPrefs),
+      streakFreeze: localStorage.getItem(LOCAL_STORAGE_KEYS.streakFreeze),
     };
     const backupKey = `gate_qa_backup_${Date.now()}`;
     localStorage.setItem(backupKey, JSON.stringify(snapshot));
@@ -98,6 +100,7 @@ function readLocalData() {
   let daSolved = [];
   let daBookmarks = [];
   let daProgress = {};
+  let streakFreeze = {};
 
   try {
     const rawSolved = localStorage.getItem(LOCAL_STORAGE_KEYS.solved);
@@ -143,6 +146,11 @@ function readLocalData() {
     aptitudeProgress = rawAptitudeProgress ? JSON.parse(rawAptitudeProgress) : {};
   } catch {}
 
+  try {
+    const rawStreakFreeze = localStorage.getItem(LOCAL_STORAGE_KEYS.streakFreeze);
+    streakFreeze = rawStreakFreeze ? JSON.parse(rawStreakFreeze) : {};
+  } catch {}
+
   return {
     solved,
     bookmarks,
@@ -155,6 +163,7 @@ function readLocalData() {
     daSolved,
     daBookmarks,
     daProgress,
+    streakFreeze,
   };
 }
 
@@ -242,6 +251,37 @@ export function mergeSolvedQuestionIds(localSolvedRaw, cloudSolvedRaw) {
 }
 
 /**
+ * Merges streak freeze state additively (union of consumed dates, max earned, capped available reserve).
+ */
+export function mergeStreakFreeze(localFreeze = {}, cloudFreeze = {}) {
+  const local = localFreeze && typeof localFreeze === "object" ? localFreeze : {};
+  const cloud = cloudFreeze && typeof cloudFreeze === "object" ? cloudFreeze : {};
+
+  const localConsumed = Array.isArray(local.consumedDates) ? local.consumedDates : [];
+  const cloudConsumed = Array.isArray(cloud.consumedDates) ? cloud.consumedDates : [];
+  const consumedDates = Array.from(new Set([...localConsumed, ...cloudConsumed]))
+    .filter((d) => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d))
+    .sort();
+
+  const earnedCount = Math.max(
+    Number(local.earnedCount) || 0,
+    Number(cloud.earnedCount) || 0,
+    consumedDates.length
+  );
+
+  const available = Math.min(
+    1,
+    Math.max(0, Math.max(Number(local.available) || 0, Number(cloud.available) || 0))
+  );
+
+  return {
+    available,
+    earnedCount,
+    consumedDates,
+  };
+}
+
+/**
  * Merges mock test history (deduplicates by testId and sorts chronologically).
  */
 function mergeMockHistory(localHistory = [], cloudHistory = []) {
@@ -317,11 +357,12 @@ function mergeProgressRecords(localProgress = {}, cloudProgress = {}) {
 }
 
 function normalizeCloudProgress(cloudProgress) {
-  if (cloudProgress && (cloudProgress.standard || cloudProgress.aptitude || cloudProgress.da)) {
+  if (cloudProgress && (cloudProgress.standard || cloudProgress.aptitude || cloudProgress.da || cloudProgress.streak_freeze)) {
     return {
       standard: cloudProgress.standard || {},
       aptitude: cloudProgress.aptitude || {},
       da: cloudProgress.da || {},
+      streak_freeze: cloudProgress.streak_freeze || {},
       aptitude_solved: extractQuestionIdArray(cloudProgress.aptitude_solved || cloudProgress.aptitude?.solved),
       aptitude_bookmarks: extractQuestionIdArray(cloudProgress.aptitude_bookmarks || cloudProgress.aptitude?.bookmarks),
       da_solved: extractQuestionIdArray(cloudProgress.da_solved || cloudProgress.da?.solved),
@@ -333,6 +374,7 @@ function normalizeCloudProgress(cloudProgress) {
     standard: cloudProgress || {},
     aptitude: {},
     da: {},
+    streak_freeze: {},
     aptitude_solved: [],
     aptitude_bookmarks: [],
     da_solved: [],
@@ -392,10 +434,17 @@ export function unionMergeData(localData, cloudData) {
   const mergedDaBookmarks = mergeSolvedQuestionIds(localData.daBookmarks, cloudDaBookmarkIds);
   const cloudDaProgress = cloudData.progress_records?.da || cloudProgress.da || {};
   const mergedDaProgress = mergeProgressRecords(localData.daProgress, cloudDaProgress);
+
+  const mergedStreakFreeze = mergeStreakFreeze(
+    localData.streakFreeze,
+    cloudProgress.streak_freeze || cloudData.streak_freeze
+  );
+
   const progressRecords = {
     standard: mergedProgress,
     aptitude: mergedAptitudeProgress,
     da: mergedDaProgress,
+    streak_freeze: mergedStreakFreeze,
   };
 
   return {
@@ -408,6 +457,7 @@ export function unionMergeData(localData, cloudData) {
     da_bookmarks: mergedDaBookmarks,
     mock_history: mergedMockHistory,
     progress_records: progressRecords,
+    streakFreeze: mergedStreakFreeze,
   };
 }
 
@@ -589,6 +639,9 @@ export async function syncUserData(userId) {
     localStorage.setItem(LOCAL_STORAGE_KEYS.daSolved, JSON.stringify(merged.da_solved));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarks, JSON.stringify(merged.da_bookmarks));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daProgress, JSON.stringify(merged.progress_records.da || {}));
+    if (merged.streakFreeze) {
+      localStorage.setItem(LOCAL_STORAGE_KEYS.streakFreeze, JSON.stringify(merged.streakFreeze));
+    }
 
     if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
       window.dispatchEvent(new CustomEvent("gateqa:sync-complete", { detail: merged }));
