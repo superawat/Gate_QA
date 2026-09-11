@@ -67,7 +67,10 @@ const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ defaul
 const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.TermsPage })));
 const SupportPage = lazy(() => import("./pages/SupportPage"));
-import HomePage from "./pages/HomePage";
+// HomePage is lazy-loaded to keep the landing entry chunk under the 300 KB budget.
+// The HTML splash screen (#app-splash) covers the brief chunk-download gap, so
+// the Suspense fallback is intentionally null — no second loader is shown.
+const HomePage = lazy(() => import("./pages/HomePage"));
 
 const RouteLoader = ({ label = "Loading..." }) => (
   <div className="flex min-h-[100dvh] w-full items-center justify-center bg-[color:var(--color-bg)] px-4 pb-[env(safe-area-inset-bottom,0)]">
@@ -319,20 +322,23 @@ const PracticeRoutes = ({
           path={HOME_ROUTE}
           element={(
             <ErrorBoundary>
-              <HomePage
-                questionBankManifest={questionBankManifest}
-                manifestLoading={manifestLoading}
-                manifestError={manifestError}
-                hasResumeRoute={hasResumeRoute}
-                lastSession={lastSession}
-                mockModeEnabled={MOCK_TEST_MODE_ENABLED}
-                onStartRandomPractice={handleStartRandomPractice}
-                onExplorePractice={handleExplorePractice}
-                onOpenInsights={handleOpenInsights}
-                onOpenMockHistory={handleOpenMockHistory}
-                onStartMockTest={handleStartMockTest}
-                onResumePractice={handleResumePractice}
-              />
+              {/* null fallback: HTML splash (#app-splash) already visible during chunk load */}
+              <Suspense fallback={null}>
+                <HomePage
+                  questionBankManifest={questionBankManifest}
+                  manifestLoading={manifestLoading}
+                  manifestError={manifestError}
+                  hasResumeRoute={hasResumeRoute}
+                  lastSession={lastSession}
+                  mockModeEnabled={MOCK_TEST_MODE_ENABLED}
+                  onStartRandomPractice={handleStartRandomPractice}
+                  onExplorePractice={handleExplorePractice}
+                  onOpenInsights={handleOpenInsights}
+                  onOpenMockHistory={handleOpenMockHistory}
+                  onStartMockTest={handleStartMockTest}
+                  onResumePractice={handleResumePractice}
+                />
+              </Suspense>
             </ErrorBoundary>
           )}
         />
