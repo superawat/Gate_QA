@@ -683,4 +683,86 @@ describe("trackerState", () => {
       expect(store.customFields["sub-1"]?.mockCount).toBe("1"); // sub-1 independent
     });
   });
+
+  describe("Canonical GATE CSE Taxonomy Out-of-Syllabus Subtopic Exclusions", () => {
+    it("excludes File I/O from CSE Programming in C topic (exactly 8 subtopics)", () => {
+      const progCSubject = CSE_SUBJECTS.find((s) => s.id === "cse-prog-c");
+      expect(progCSubject).toBeDefined();
+
+      const progCTopic = progCSubject?.topics.find((t) => t.id === "cse-prog-c-programming");
+      expect(progCTopic).toBeDefined();
+
+      // Subtopics must be exactly 8
+      expect(progCTopic?.subtopics).toHaveLength(8);
+
+      // Must not contain File I/O
+      const subtopicIds = progCTopic?.subtopics?.map((st) => st.id) || [];
+      const subtopicLabels = progCTopic?.subtopics?.map((st) => st.label) || [];
+      const subtopicSlugs = progCTopic?.subtopics?.map((st) => st.subtopicSlug) || [];
+
+      expect(subtopicIds).not.toContain("cse-pds-c-file-io");
+      expect(subtopicLabels).not.toContain("File I/O");
+      expect(subtopicSlugs).not.toContain("file-io");
+      expect(progCTopic?.secondaryTopicTags).not.toContain("file-io");
+      expect(progCTopic?.keyConcepts?.[0]).not.toContain("file I/O");
+
+      // Verify all 8 core syllabus subtopics are intact
+      expect(subtopicLabels).toEqual([
+        "Data Types",
+        "Operators",
+        "Control Flow",
+        "Functions",
+        "Pointers",
+        "Arrays",
+        "Strings",
+        "Structures",
+      ]);
+    });
+
+    it("excludes Red-Black Trees from CSE Trees & Binary Search Trees topic (exactly 4 subtopics)", () => {
+      const dsSubject = CSE_SUBJECTS.find((s) => s.id === "cse-ds");
+      expect(dsSubject).toBeDefined();
+
+      const treesTopic = dsSubject?.topics.find((t) => t.id === "cse-ds-trees");
+      expect(treesTopic).toBeDefined();
+
+      // Subtopics must be exactly 4 (Binary Trees, BST, AVL Trees, Binary Heaps)
+      expect(treesTopic?.subtopics).toHaveLength(4);
+
+      // Must not contain Red-Black Trees
+      const subtopicIds = treesTopic?.subtopics?.map((st) => st.id) || [];
+      const subtopicLabels = treesTopic?.subtopics?.map((st) => st.label) || [];
+      const subtopicSlugs = treesTopic?.subtopics?.map((st) => st.subtopicSlug) || [];
+
+      expect(subtopicIds).not.toContain("cse-pds-tree-red-black");
+      expect(subtopicLabels).not.toContain("Red-Black Trees");
+      expect(subtopicSlugs).not.toContain("red-black-trees");
+      expect(treesTopic?.secondaryTopicTags).not.toContain("red-black-tree");
+      expect(treesTopic?.secondaryTopicTags).not.toContain("red-black-trees");
+      expect(treesTopic?.keyConcepts?.[0]).not.toContain("red-black");
+
+      // Verify all 4 core syllabus subtopics are intact
+      expect(subtopicLabels).toEqual([
+        "Binary Trees",
+        "Binary Search Trees",
+        "AVL Trees",
+        "Binary Heaps",
+      ]);
+    });
+
+    it("strictly isolates GATE CSE from GATE DA and preserves DA Python File I/O", () => {
+      const daProgrammingSubject = DA_SUBJECTS.find(
+        (s) => s.id === "da-pdsa"
+      );
+      expect(daProgrammingSubject).toBeDefined();
+
+      const pythonTopic = daProgrammingSubject?.topics.find((t) => t.id === "da-pdsa-python-programming");
+      expect(pythonTopic).toBeDefined();
+
+      const daSubtopic = pythonTopic?.subtopics?.find((st) => st.id === "da-py-file-io");
+      expect(daSubtopic).toBeDefined();
+      expect(daSubtopic?.label).toBe("File I/O & Exception Handling");
+    });
+  });
 });
+

@@ -437,12 +437,12 @@ export const CSE_SUBJECTS: SubjectNode[] = [
         secondaryTopicTags: [
           "programming", "c-programming", "pointers", "pointer", "array", "arrays",
           "string", "strings", "functions", "parameter-passing", "structures",
-          "operators", "control-flow", "data-types", "output", "file-io"
+          "operators", "control-flow", "data-types", "output"
         ],
         estimatedHours: 10,
         weightageTier: "tier-1-high",
         marksRange: "3–5 Marks",
-        keyConcepts: ["Data types, operators, control flow, functions, pointers, arrays, strings, structures, file I/O"],
+        keyConcepts: ["Data types, operators, control flow, functions, pointers, arrays, strings, structures"],
         recommendedTextbook: "The C Programming Language — Kernighan & Ritchie",
         subtopics: [
           { id: "cse-pds-c-data-types", label: "Data Types", subtopicSlug: "data-types", tags: ["data-types", "type-casting", "qualifiers", "storage-classes"] },
@@ -453,7 +453,6 @@ export const CSE_SUBJECTS: SubjectNode[] = [
           { id: "cse-pds-c-arrays", label: "Arrays", subtopicSlug: "arrays", tags: ["arrays", "1d-2d-arrays", "row-major-column-major"] },
           { id: "cse-pds-c-strings", label: "Strings", subtopicSlug: "strings", tags: ["strings", "null-terminator", "string-functions"] },
           { id: "cse-pds-c-structures", label: "Structures", subtopicSlug: "structures", tags: ["structures", "unions", "structure-padding-alignment"] },
-          { id: "cse-pds-c-file-io", label: "File I/O", subtopicSlug: "file-io", tags: ["file-io", "file-pointers", "fopen-fclose-fread-fwrite"] },
         ],
       },
       {
@@ -520,18 +519,17 @@ export const CSE_SUBJECTS: SubjectNode[] = [
         primaryTopicTag: "binary-tree",
         secondaryTopicTags: [
           "tree", "trees", "binary-tree", "binary-trees", "binary-search-tree", "binary-search-trees",
-          "avl-tree", "avl-trees", "red-black-tree", "red-black-trees", "binary-heap", "heap", "heaps"
+          "avl-tree", "avl-trees", "binary-heap", "heap", "heaps"
         ],
         estimatedHours: 8,
         weightageTier: "tier-1-high",
         marksRange: "3–4 Marks",
-        keyConcepts: ["Binary trees, binary search trees, AVL trees, red-black trees, binary heaps"],
+        keyConcepts: ["Binary trees, binary search trees, AVL trees, binary heaps"],
         recommendedTextbook: "Data Structures and Algorithm Analysis in C — Mark Allen Weiss",
         subtopics: [
           { id: "cse-pds-tree-binary", label: "Binary Trees", subtopicSlug: "binary-tree", tags: ["binary-tree", "binary-trees", "tree", "tree-traversal", "inorder-preorder-postorder", "tree-properties-height"] },
           { id: "cse-pds-tree-bst", label: "Binary Search Trees", subtopicSlug: "binary-search-tree", tags: ["binary-search-tree", "binary-search-trees", "bst", "bst-insert-delete-search", "lca"] },
           { id: "cse-pds-tree-avl", label: "AVL Trees", subtopicSlug: "avl-trees", tags: ["avl-tree", "avl-trees", "avl", "balance-factor", "avl-rotations-ll-rr-lr-rl"] },
-          { id: "cse-pds-tree-red-black", label: "Red-Black Trees", subtopicSlug: "red-black-trees", tags: ["red-black-tree", "red-black-trees", "rb-tree-properties", "black-height"] },
           { id: "cse-pds-tree-heaps", label: "Binary Heaps", subtopicSlug: "binary-heap", tags: ["heap", "heaps", "binary-heap", "binary-heaps", "min-heap-max-heap", "heapify-build-heap"] },
         ],
       },

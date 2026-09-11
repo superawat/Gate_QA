@@ -1,5 +1,18 @@
 # Changelog
 
+- **Preparation Tracker — Out-of-Syllabus Subtopic Exclusions (DEC-104)**:
+  - *Context*: Removed two non-core subtopics from the canonical GATE CSE Preparation Tracker taxonomy:
+    1. **Programming in C**: Removed subtopic #9: `File I/O` (`id: "cse-pds-c-file-io"`, `subtopicSlug: "file-io"`), cleaned up `secondaryTopicTags` (`"file-io"`) and `keyConcepts`. Subtopic count updated from 9 to 8.
+    2. **Data Structures → Trees / Binary Search Trees**: Removed `Red-Black Trees` (`id: "cse-pds-tree-red-black"`, `subtopicSlug: "red-black-trees"`), cleaned up `secondaryTopicTags` (`"red-black-tree"`, `"red-black-trees"`) and `keyConcepts`. Subtopic count updated from 5 to 4.
+  - *Question Bank Verification*:
+    - Audited all 3,682 questions in the master question bank; 0 PYQs reference or map to `file-io` or `red-black-tree`. No question records needed remapping or archival, maintaining 100% question data preservation.
+  - *GATE DA Strict Isolation*:
+    - GATE DA syllabus remains completely isolated and unchanged (`da-py-file-io` under Python Programming preserved for GATE DA).
+  - *Validation & Parity*:
+    - Re-verified tracker state derivation, topic counts, completion synchronization, and deep link generation.
+    - Added unit regression tests in `src/utils/trackerState.test.ts`.
+    - All 78 unit test suites pass (941 tests), data integrity passes with 0 errors, all 7 public parity counts align at 3,682, TypeScript passes, and production bundle builds cleanly.
+
 - **Historical GATE IT (2004–2008) 100% Question Bank Completion & Backfill (DEC-103)**:
   - *Context*: While the 366 historical GATE IT questions were cleanly isolated from CSE shards in DEC-088/DEC-091/DEC-092, official GATE IT examination papers (2004–2008) originally contained 435 total questions, leaving 69 questions missing. Extracted, parsed, and ingested all 69 missing questions using PracticePaper.in as the primary programmatic reference and GateOverflow as the authoritative UID reference, bringing all 5 historical IT papers to 100% completeness.
   - *69 Missing Questions Ingested Across 5 Exam Years*:
