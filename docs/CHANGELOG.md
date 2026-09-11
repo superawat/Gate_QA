@@ -1,5 +1,12 @@
 # Changelog
 
+- **Unified Brand Animated Logo Loader & Splash Optimization (DEC-105)**:
+  - *Context*: Replaced legacy generic spinners, horizontal progress bars, and bordered card boxes across the application with the custom brand animated logo loader (`gateqa_loader_dark.webp` and `gateqa_loader_light.webp`).
+  - *Eliminated Double Consecutive Loader*: Removed `HomePageLoadingOverlay` ("PREPARING DASHBOARD") from `src/pages/HomePage.jsx` which was running concurrently after the initial route/splash loader, ensuring a single unified transition into the dashboard.
+  - *Clean Centering & Surface Cleanup*: Removed rectangular card boxes, drop shadows, and bordered containers from `RouteLoader` and all page loading states (`SolvePage`, `ExplorePage`, `HighPriorityTopicsPage`, `InsightsPage`, `MockCatalogLoaderCard`), centering the animated brand loader cleanly in the viewport.
+  - *Theme Awareness*: Automatic switching between solid white loader mark on dark backgrounds and dark loader mark on light mode.
+  - *Verification*: Vitest unit tests (80 test files, 951 tests passing), TypeScript compiler check (`npm run typecheck`), and browser visual confirmation.
+
 - **Preparation Tracker — Out-of-Syllabus Subtopic Exclusions (DEC-104)**:
   - *Context*: Removed two non-core subtopics from the canonical GATE CSE Preparation Tracker taxonomy:
     1. **Programming in C**: Removed subtopic #9: `File I/O` (`id: "cse-pds-c-file-io"`, `subtopicSlug: "file-io"`), cleaned up `secondaryTopicTags` (`"file-io"`) and `keyConcepts`. Subtopic count updated from 9 to 8.

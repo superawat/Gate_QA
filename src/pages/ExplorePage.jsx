@@ -550,12 +550,11 @@ const ExplorePage = ({
               </button>
             </div>
           ) : loading && !isInitialized ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
+            <div className="flex min-h-[320px] items-center justify-center py-10">
               <LoadingState
                 label="Loading filter page..."
                 size="lg"
-                className="min-h-[320px]"
-                textClassName="text-sm text-slate-500"
+                textClassName="text-sm font-medium text-[color:var(--color-text-muted)]"
               />
             </div>
           ) : filteredQuestions.length === 0 ? (

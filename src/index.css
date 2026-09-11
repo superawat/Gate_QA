@@ -1290,102 +1290,11 @@
   transform: translateY(0);
 }
 
-.home-page-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 120;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.875rem;
-  background: var(--color-bg);
-  color: var(--color-text);
-  opacity: 1;
-  transition:
-    opacity 260ms ease,
-    visibility 260ms ease;
-}
-
-.home-page-loader--exit {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.home-page-loader-mark {
-  position: relative;
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
-  animation: home-loader-content-in 180ms ease both;
-}
-
-.home-page-loader-mark::before {
-  content: "";
-  position: absolute;
-  inset: 0.65rem;
-  border: 2px solid var(--color-primary-soft-hover);
-  border-top-color: var(--color-primary);
-  border-radius: 999px;
-  animation: home-loader-spin 720ms linear infinite;
-}
-
-.home-page-loader-mark::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 999px;
-  background: var(--color-primary);
-  transform: translate(-50%, -50%);
-}
-
-.home-page-loader p {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-  animation: home-loader-content-in 180ms ease 40ms both;
-}
-
-@keyframes home-loader-content-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.25rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes home-loader-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .home-dashboard-content,
-  .home-page-loader,
   .home-action-card,
   .home-action-carousel-dots span {
     transition: none;
-  }
-
-  .home-page-loader-mark,
-  .home-page-loader p,
-  .home-page-loader-mark::before {
-    animation: none;
   }
 }
 

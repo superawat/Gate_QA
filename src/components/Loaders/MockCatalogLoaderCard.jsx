@@ -1,19 +1,17 @@
 import React from "react";
-
-import CsTopicLoader from "./CsTopicLoader";
+import LoadingState from "./LoadingState";
 
 const MockCatalogLoaderCard = ({
-  label = "",
+  label = "Loading Mock Test...",
 }) => (
-  <div className="mocktest-root flex h-[100dvh] w-full items-center justify-center bg-[#dcebf9] p-6">
-    <div className="w-full max-w-md rounded-lg border border-[#c5d4e2] bg-white p-6 shadow-sm sm:p-7">
-      <CsTopicLoader
-        label={label}
-        ariaLabel="Preparing validated mock catalog..."
-        className="min-h-[180px]"
-        textClassName="text-sm text-[#4f6276]"
-      />
-    </div>
+  <div className="flex min-h-[60vh] w-full flex-1 items-center justify-center p-6">
+    <LoadingState
+      label={label}
+      ariaLabel="Preparing validated mock catalog..."
+      size="lg"
+      theme="light"
+      textClassName="text-sm font-semibold text-[#4f6276] dark:text-slate-400"
+    />
   </div>
 );
 

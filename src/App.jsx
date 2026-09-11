@@ -67,18 +67,15 @@ const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ defaul
 const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.TermsPage })));
 const SupportPage = lazy(() => import("./pages/SupportPage"));
-const HomePage = lazy(() => import("./pages/HomePage"));
+import HomePage from "./pages/HomePage";
 
 const RouteLoader = ({ label = "Loading..." }) => (
-  <div className="min-h-[100dvh] bg-[color:var(--color-bg)] px-4 py-10 sm:px-6 lg:px-8">
-    <div className="mx-auto flex max-w-7xl justify-center rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-10 shadow-[var(--shadow-card)]">
-      <LoadingState
-        label={label}
-        size="lg"
-        className="min-h-[320px]"
-        textClassName="text-sm text-slate-500"
-      />
-    </div>
+  <div className="flex min-h-[100dvh] w-full items-center justify-center bg-[color:var(--color-bg)] px-4 pb-[env(safe-area-inset-bottom,0)]">
+    <LoadingState
+      label={label}
+      size="lg"
+      textClassName="text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]"
+    />
   </div>
 );
 
@@ -322,22 +319,20 @@ const PracticeRoutes = ({
           path={HOME_ROUTE}
           element={(
             <ErrorBoundary>
-              <Suspense fallback={<RouteLoader label="Loading Dashboard..." />}>
-                <HomePage
-                  questionBankManifest={questionBankManifest}
-                  manifestLoading={manifestLoading}
-                  manifestError={manifestError}
-                  hasResumeRoute={hasResumeRoute}
-                  lastSession={lastSession}
-                  mockModeEnabled={MOCK_TEST_MODE_ENABLED}
-                  onStartRandomPractice={handleStartRandomPractice}
-                  onExplorePractice={handleExplorePractice}
-                  onOpenInsights={handleOpenInsights}
-                  onOpenMockHistory={handleOpenMockHistory}
-                  onStartMockTest={handleStartMockTest}
-                  onResumePractice={handleResumePractice}
-                />
-              </Suspense>
+              <HomePage
+                questionBankManifest={questionBankManifest}
+                manifestLoading={manifestLoading}
+                manifestError={manifestError}
+                hasResumeRoute={hasResumeRoute}
+                lastSession={lastSession}
+                mockModeEnabled={MOCK_TEST_MODE_ENABLED}
+                onStartRandomPractice={handleStartRandomPractice}
+                onExplorePractice={handleExplorePractice}
+                onOpenInsights={handleOpenInsights}
+                onOpenMockHistory={handleOpenMockHistory}
+                onStartMockTest={handleStartMockTest}
+                onResumePractice={handleResumePractice}
+              />
             </ErrorBoundary>
           )}
         />

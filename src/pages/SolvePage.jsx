@@ -666,12 +666,11 @@ const SolvePage = ({
               </button>
             </div>
           ) : (loading && !isInitialized) || (isAptitudeQuestion && aptitudeEnabled && aptitudeLoading && !indexedQuestion) ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
+            <div className="flex min-h-[240px] sm:min-h-[320px] items-center justify-center py-6 sm:py-10">
               <LoadingState
                 label="Loading Solve page..."
                 size="lg"
-                className="min-h-[320px]"
-                textClassName="text-sm text-slate-500"
+                textClassName="text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]"
               />
             </div>
           ) : !indexedQuestion ? (
@@ -693,12 +692,11 @@ const SolvePage = ({
               </button>
             </div>
           ) : isQuestionDetailLoading || !resolvedQuestion ? (
-            <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-10 shadow-[var(--shadow-card)]">
+            <div className="flex min-h-[240px] sm:min-h-[320px] items-center justify-center py-6 sm:py-10">
               <LoadingState
                 label="Loading question detail..."
                 size="lg"
-                className="min-h-[320px]"
-                textClassName="text-sm text-slate-500"
+                textClassName="text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]"
               />
             </div>
           ) : (

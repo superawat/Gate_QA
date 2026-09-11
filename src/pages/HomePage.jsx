@@ -45,21 +45,7 @@ import {
   preloadPracticeStartExperience,
 } from "../utils/routePreload";
 
-const HOME_LOADER_EXIT_MS = 260;
-
 const HOMEPAGE_ICON_BASE = "/homepage_icon/optimized";
-
-const HomePageLoadingOverlay = ({ exiting }) => (
-  <div
-    className={`home-page-loader${exiting ? " home-page-loader--exit" : ""}`}
-    role="status"
-    aria-live="polite"
-    aria-label="Preparing GateQA dashboard"
-  >
-    <div className="home-page-loader-mark" aria-hidden="true" />
-    <p>Preparing dashboard</p>
-  </div>
-);
 
 const HomePage = ({
   hasResumeRoute,
@@ -70,8 +56,6 @@ const HomePage = ({
   onStartMockTest,
   onResumePractice,
 }) => {
-  const [isHomeReady, setIsHomeReady] = useState(false);
-  const [showHomeLoader, setShowHomeLoader] = useState(true);
   const [activeActionIndex, setActiveActionIndex] = useState(0);
   const activeActionIndexRef = useRef(0);
   const actionsRailRef = useRef(null);
@@ -137,77 +121,6 @@ const HomePage = ({
     };
   }, []);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      setIsHomeReady(true);
-      setShowHomeLoader(false);
-      return undefined;
-    }
-
-    let cancelled = false;
-    let firstFrame = null;
-    let secondFrame = null;
-    let exitTimer = null;
-    let removeLoadListener = () => {};
-
-    const requestFrame =
-      typeof window.requestAnimationFrame === "function"
-        ? window.requestAnimationFrame.bind(window)
-        : (callback) => window.setTimeout(callback, 16);
-    const cancelFrame =
-      typeof window.cancelAnimationFrame === "function"
-        ? window.cancelAnimationFrame.bind(window)
-        : window.clearTimeout.bind(window);
-
-    const waitForWindowLoad =
-      typeof document !== "undefined" && document.readyState === "complete"
-        ? Promise.resolve()
-        : new Promise((resolve) => {
-            const handleLoad = () => resolve();
-            removeLoadListener = () => window.removeEventListener("load", handleLoad);
-            window.addEventListener("load", handleLoad, { once: true });
-          });
-
-    const waitForFonts =
-      typeof document !== "undefined" && document.fonts?.ready
-        ? document.fonts.ready.catch(() => undefined)
-        : Promise.resolve();
-
-    Promise.all([waitForWindowLoad, waitForFonts]).then(() => {
-      if (cancelled) {
-        return;
-      }
-
-      firstFrame = requestFrame(() => {
-        secondFrame = requestFrame(() => {
-          if (cancelled) {
-            return;
-          }
-
-          setIsHomeReady(true);
-          exitTimer = window.setTimeout(() => {
-            if (!cancelled) {
-              setShowHomeLoader(false);
-            }
-          }, HOME_LOADER_EXIT_MS);
-        });
-      });
-    });
-
-    return () => {
-      cancelled = true;
-      removeLoadListener();
-      if (firstFrame !== null) {
-        cancelFrame(firstFrame);
-      }
-      if (secondFrame !== null) {
-        cancelFrame(secondFrame);
-      }
-      if (exitTimer !== null) {
-        window.clearTimeout(exitTimer);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const rail = actionsRailRef.current;
@@ -358,8 +271,8 @@ const HomePage = ({
         resumeLabel="Continue"
       >
         <div
-          className={`home-dashboard-content${isHomeReady ? " home-dashboard-content--ready" : ""}`}
-          aria-busy={!isHomeReady}
+          className="home-dashboard-content home-dashboard-content--ready"
+          aria-busy={false}
         >
           <h1 className="sr-only">GateQA practice dashboard</h1>
 
@@ -456,8 +369,6 @@ const HomePage = ({
           </section>
         </div>
       </PageShell>
-
-      {showHomeLoader ? <HomePageLoadingOverlay exiting={isHomeReady} /> : null}
     </>
   );
 };

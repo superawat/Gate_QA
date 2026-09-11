@@ -44,6 +44,7 @@ import ProgressManager from "../components/ProgressManager/ProgressManager";
 import { useFilterState } from "../contexts/FilterContext";
 import PageShell from "../components/Layout/PageShell";
 import SEOHead from "../components/SEO/SEOHead";
+import LoadingState from "../components/Loaders/LoadingState";
 import { PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights, clearInsightsCache } from "../utils/weakTopicAnalyzer";
@@ -1978,11 +1979,13 @@ const InsightsPage = ({
         </header>
 
         {isLoading ? (
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-card)]">
-            <div className="flex items-center gap-3">
-              <div className="w-5 h-5 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
-              <p className="text-sm text-[color:var(--color-text-muted)]">Building insights from your practice and mock history...</p>
-            </div>
+          <div className="flex items-center justify-center py-8">
+            <LoadingState
+              label="Building insights from your practice and mock history..."
+              layout="inline"
+              size="xs"
+              textClassName="text-sm text-[color:var(--color-text-muted)] font-medium"
+            />
           </div>
         ) : error ? (
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] p-4 sm:p-5 text-sm text-[color:var(--color-warning-text)] shadow-[var(--shadow-card)]">
