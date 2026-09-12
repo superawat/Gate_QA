@@ -1,5 +1,26 @@
 # Changelog
 
+- **Verified Question Fix for go:357500 (GATE CSE 2021 Set 2 Q40 MSQ Answer Key) (DEC-107)**:
+  - *Context*: User identified and verified an answer-key defect in `go:357500` (GATE CSE 2021 Set 2 Q40, Databases / Functional Dependencies). The previous key contained only Options A and D, omitting valid Option C.
+  - *Mathematical & Relational Verification*: Given relation $R(P, Q, R, S, T)$ with functional dependencies $F = \{P \rightarrow QR, RS \rightarrow T\}$:
+    - *Option A ($PS \rightarrow T$)*: $P \rightarrow QR \implies P \rightarrow R$. Augmenting with $S$ gives $PS \rightarrow RS$. Transitivity with $RS \rightarrow T$ yields $PS \rightarrow T$. **Valid**.
+    - *Option B ($R \rightarrow T$)*: Attribute closure $R^+ = \{R\}$. Does not derive $T$. **Invalid**.
+    - *Option C ($P \rightarrow R$)*: Decomposition rule on $P \rightarrow QR$ directly gives $P \rightarrow R$. **Valid**.
+    - *Option D ($PS \rightarrow Q$)*: $P \rightarrow QR \implies P \rightarrow Q$. Augmenting with $S$ gives $PS \rightarrow QS \implies PS \rightarrow Q$. **Valid**.
+    - Official GATE CSE 2021 Set 2 Final Answer Key strictly lists **A, C, D** (MSQ).
+  - *Data & Parity Harmonization*:
+    - Updated `data/answers/manual-answers-patch-v1.json` with entry `go:357500`: `{ type: "MSQ", answer: ["A", "C", "D"], tolerance: null, note: "gate_cse_2021_set_2_q40:official_key_a_c_d_msq" }`.
+    - Synchronized `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json` (`cse:2021:set2:main:q40`), and master question bank `public/questions-with-answers.json`.
+    - Regenerated public static detail shard `public/question-detail-shards/2021-s2.json` and reverted timestamp churn across unaffected shards.
+    - Preserved question text and all options completely unmodified.
+    - Confirmed unrelated questions remain 100% untouched.
+  - *Testing & Validation*:
+    - Added unit regression tests in `src/utils/evaluateAnswer.test.js` asserting strict MSQ evaluation for `["A", "C", "D"]` (true for permutations of A, C, D; false for previous partial key `["A", "D"]`, subsets, or supersets).
+    - Added unit regression test in `src/services/AnswerService.test.js` asserting MSQ resolution for `go:357500`.
+    - All 375 targeted unit tests in `evaluateAnswer.test.js` and `AnswerService.test.js` pass (100% green).
+    - `npm run qa:validate-data` passed with 0 errors (0 duplicate keys, 100% cross-layer parity).
+    - `npm run typecheck` passed with 0 errors.
+
 - **Verified Question Fixes for go:399285 (C Code Syntax), go:43485 (MTA Clarification UI), and go:807 (Answer Key Correction) (DEC-106)**:
   - *Context*: Addressed three verified issues across GATE CSE question records:
     1. **`go:399285` (GATE CSE 2023 Q36, Programming in C - Activation Tree)**: Fixed malformed/missing parentheses in function definitions and invocations (`int main()`, `int f1()`, `int f3()`, `f1();`, `f3();`, `return f1();`) while preserving exact column alignment and logic as valid, readable C code.

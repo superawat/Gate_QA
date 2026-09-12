@@ -2396,6 +2396,34 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
       });
     });
   });
+
+  describe("DEC-107: Verified Question Fixes (go:357500)", () => {
+    beforeEach(() => {
+      AnswerService.answersByQuestionUid = {
+        "go:357500": { answer_uid: "manual:go:357500", type: "MSQ", answer: ["A", "C", "D"], tolerance: null },
+      };
+      AnswerService.answersByUid = {};
+      AnswerService.answersByExamUid = {
+        "cse:2021:set2:main:q40": { answer_uid: "manual:go:357500", type: "MSQ", answer: ["A", "C", "D"], tolerance: null },
+      };
+      AnswerService.unsupportedQuestionUids = new Set();
+      AnswerService.loaded = true;
+      AnswerService.loadError = "";
+    });
+
+    test("go:357500 (GATE CSE 2021 Set 2 Q40) resolves MSQ Options [A, C, D]", () => {
+      const answer = AnswerService.getAnswerForQuestion({
+        question_uid: "go:357500",
+        exam_uid: "cse:2021:set2:main:q40",
+        title: "GATE CSE 2021 Set 2 | Question: 40",
+      });
+      expect(answer).toMatchObject({
+        type: "MSQ",
+        answer: ["A", "C", "D"],
+      });
+    });
+  });
 });
+
 
 

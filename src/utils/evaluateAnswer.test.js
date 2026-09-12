@@ -2646,5 +2646,22 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, "C").correct).toBe(false);
       expect(evaluateAnswer(rec, "D").correct).toBe(false);
     });
+
+    // DEC-107: GATE CSE 2021 Set 2 Q40 (go:357500)
+    test("go:357500 - GATE CSE 2021 Set 2 Q40 (Functional Dependencies) evaluates strictly as MSQ [A, C, D]", () => {
+      const rec = { type: "MSQ", answer: ["A", "C", "D"], tolerance: null };
+      expect(evaluateAnswer(rec, ["A", "C", "D"]).correct).toBe(true);
+      expect(evaluateAnswer(rec, ["C", "A", "D"]).correct).toBe(true);
+      expect(evaluateAnswer(rec, ["D", "C", "A"]).correct).toBe(true);
+      expect(evaluateAnswer(rec, ["a", "c", "d"]).correct).toBe(true);
+      // Old incorrect key must evaluate to false
+      expect(evaluateAnswer(rec, ["A", "D"]).correct).toBe(false);
+      // Other subsets or supersets
+      expect(evaluateAnswer(rec, ["A", "C"]).correct).toBe(false);
+      expect(evaluateAnswer(rec, ["C", "D"]).correct).toBe(false);
+      expect(evaluateAnswer(rec, ["A", "B", "C", "D"]).correct).toBe(false);
+      expect(evaluateAnswer(rec, ["A"]).correct).toBe(false);
+    });
   });
 });
+
