@@ -13,6 +13,7 @@ import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 import { cleanLatexHtml } from "../../utils/latexClean";
 import { formatCodeSnippets } from "../../utils/codeSnippet";
+import { MTA_EXPLANATION_TEXT } from "../../utils/questionType";
 
 const OPTION_LABELS = QuestionService.OPTION_LABELS;
 
@@ -75,8 +76,8 @@ const getVerdictCopy = (result = null) => {
 
 const formatQuestionTypeLabel = (type = "") => {
     const normalized = String(type || "").trim().toUpperCase();
-    if (normalized === "MARKS_TO_ALL") {
-        return "MARKS TO ALL";
+    if (normalized === "MARKS_TO_ALL" || normalized === "MTA") {
+        return "MTA (Marks To All)";
     }
     return normalized || "MCQ";
 };
@@ -163,7 +164,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
 
     const autoAwardMessage = rawType === "SUBJECTIVE"
         ? "This legacy subjective prompt is awarded automatically. No response is required."
-        : "This question is awarded to all candidates. No response is required.";
+        : `${MTA_EXPLANATION_TEXT} No response is required.`;
     const currentResponse = responses[questionUid];
     const verdictCopy = getVerdictCopy(reviewResult);
     const correctOptionSet = useMemo(
@@ -256,7 +257,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const reviewMessage = reviewResult?.status === "excluded"
         ? "This question has defective options (no option is correct) and is excluded from scoring."
         : reviewResult?.status === "bonus"
-        ? "This question was awarded automatically."
+        ? MTA_EXPLANATION_TEXT
         : reviewResult?.status === "missing_answer"
         ? "No mapped answer record."
         : reviewResult?.status === "unsupported_type"

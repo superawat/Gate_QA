@@ -2302,6 +2302,15 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, "D").correct).toBe(false);
     });
 
+    test("go:807 - GATE CSE 2002 Q1.3 (Recurrence Equation T(2^k)=3T(2^(k-1))+1) evaluates as MCQ B", () => {
+      const rec = { type: "MCQ", answer: "B", tolerance: null };
+      expect(evaluateAnswer(rec, "B").correct).toBe(true);
+      expect(evaluateAnswer(rec, "b").correct).toBe(true);
+      expect(evaluateAnswer(rec, "A").correct).toBe(false);
+      expect(evaluateAnswer(rec, "C").correct).toBe(false);
+      expect(evaluateAnswer(rec, "D").correct).toBe(false);
+    });
+
     test("go:845 - GATE CSE 2002 Q2.15 (Newton-Raphson Iteration) evaluates as MCQ A", () => {
       const rec = { type: "MCQ", answer: "A", tolerance: null };
       expect(evaluateAnswer(rec, "A").correct).toBe(true);

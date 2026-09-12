@@ -389,6 +389,37 @@ describe("AnswerPanel", () => {
         );
       });
     });
+
+    test("renders MTA explanation notice and badge for MTA question go:43485", () => {
+      const mtaQuestion = {
+        question_uid: "go:43485",
+        exam_uid: "cse:2008:set1:main:q79",
+        title: "GATE CSE 2008 | Question: 79",
+        answer_meta: { type: "MTA", answer: "MTA" },
+      };
+
+      AnswerService.answersByQuestionUid["go:43485"] = {
+        answer_uid: "v2:1.27.21",
+        type: "MTA",
+        answer: "MTA",
+        tolerance: null,
+      };
+
+      render(<AnswerPanel question={mtaQuestion} />);
+
+      expect(screen.getByText("MTA")).toBeTruthy();
+      expect(
+        screen.getByText(
+          "MTA (Marks To All): Full marks are awarded to everyone for this question."
+        )
+      ).toBeTruthy();
+
+      // Submit buttons should be disabled for non-interactive MTA
+      const submitButtons = screen.getAllByRole("button", { name: /Submit/i });
+      submitButtons.forEach((btn) => {
+        expect(btn.hasAttribute("disabled")).toBe(true);
+      });
+    });
   });
 });
 

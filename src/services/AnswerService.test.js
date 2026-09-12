@@ -2369,6 +2369,33 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
       });
     });
   });
+
+  describe("DEC-105: Verified Question Fixes (go:807)", () => {
+    beforeEach(() => {
+      AnswerService.answersByQuestionUid = {
+        "go:807": { answer_uid: "manual:go:807", type: "MCQ", answer: "B", tolerance: null },
+      };
+      AnswerService.answersByUid = {};
+      AnswerService.answersByExamUid = {
+        "cse:2002:set1:main:q1-3": { answer_uid: "manual:go:807", type: "MCQ", answer: "B", tolerance: null },
+      };
+      AnswerService.unsupportedQuestionUids = new Set();
+      AnswerService.loaded = true;
+      AnswerService.loadError = "";
+    });
+
+    test("go:807 (GATE CSE 2002 Q1.3) resolves MCQ Option B", () => {
+      const answer = AnswerService.getAnswerForQuestion({
+        question_uid: "go:807",
+        exam_uid: "cse:2002:set1:main:q1-3",
+        title: "GATE CSE 2002 | Question: 1.3",
+      });
+      expect(answer).toMatchObject({
+        type: "MCQ",
+        answer: "B",
+      });
+    });
+  });
 });
 
 

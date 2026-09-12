@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight, FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 import { preloadSolveExperience } from "../../utils/routePreload";
-import { getDisplayQuestionTypeToken } from "../../utils/questionType";
+import { getDisplayQuestionTypeToken, MTA_EXPLANATION_TEXT } from "../../utils/questionType";
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
@@ -24,6 +24,7 @@ const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
   msq: "bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] ring-[color:var(--color-warning-border)]",
   nat: "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]",
+  mta: "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-emerald-600/20",
   unknown: "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-neutral-text)] ring-[color:var(--color-neutral-border)]",
 };
 
@@ -98,7 +99,10 @@ const QuestionPickerList = ({
               <div className="practice-question-kicker flex items-center justify-between gap-3 md:block">
                 <span className="text-sm font-semibold text-[color:var(--color-text)]">#{sequenceNumber}</span>
                 {typeToken ? (
-                  <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}>
+                  <span
+                    title={typeToken === "mta" ? MTA_EXPLANATION_TEXT : undefined}
+                    className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}
+                  >
                     {typeToken}
                   </span>
                 ) : null}

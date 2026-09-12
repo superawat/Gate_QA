@@ -21,7 +21,7 @@ import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
 import { readPracticeShuffleEnabled } from "../utils/practicePreference";
-import { getDisplayQuestionTypeLabel } from "../utils/questionType";
+import { getDisplayQuestionTypeLabel, MTA_EXPLANATION_TEXT } from "../utils/questionType";
 import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../utils/examTrack";
 
 const isUnavailableQuestionDetailError = (error) => (
@@ -483,12 +483,18 @@ const SolvePage = ({
 
     const typeLabel = getDisplayQuestionTypeLabel(targetQuestion);
     if (typeLabel) {
+      const isMta = typeLabel === "MTA";
       chips.push(
         <span
           key="type"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+          title={isMta ? MTA_EXPLANATION_TEXT : undefined}
+          className={`inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border px-2 sm:px-2.5 py-1 text-xs font-semibold ${
+            isMta
+              ? "border-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300"
+              : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)]"
+          }`}
         >
-          {typeLabel}
+          {isMta ? "MTA (Marks To All)" : typeLabel}
         </span>
       );
     }

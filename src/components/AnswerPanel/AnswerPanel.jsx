@@ -20,6 +20,7 @@ import {
 } from "../../utils/practiceProgress";
 import { enqueueChange } from "../../utils/syncQueue";
 import { isDaQuestion as isDaQuestionByMetadata } from "../../utils/examTrack";
+import { MTA_EXPLANATION_TEXT } from "../../utils/questionType";
 
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
 
@@ -442,11 +443,15 @@ export default function AnswerPanel({
       );
     }
 
-    if (["UNSUPPORTED", "SUBJECTIVE", "AMBIGUOUS"].includes(answerRecord.type)) {
+    if (["UNSUPPORTED", "SUBJECTIVE", "AMBIGUOUS", "MTA", "MARKS_TO_ALL"].includes(answerRecord.type)) {
+      const isMta = answerRecord.type === "MTA" || answerRecord.type === "MARKS_TO_ALL";
       let colorClass = "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)]";
       let message = "Refer to standard solution.";
 
-      if (answerRecord.type === "UNSUPPORTED") {
+      if (isMta) {
+        colorClass = "border-emerald-300 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200";
+        message = MTA_EXPLANATION_TEXT;
+      } else if (answerRecord.type === "UNSUPPORTED") {
         colorClass = "border-amber-300 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200";
         message = "Non-standard format.";
       } else if (answerRecord.type === "SUBJECTIVE") {
@@ -458,8 +463,20 @@ export default function AnswerPanel({
       }
 
       return (
-        <div className={`rounded-xl border p-3 ${colorClass}`}>
-          <div className="text-sm font-medium">{message}</div>
+        <div className="flex flex-col gap-3">
+          {isMta && (
+            <div className="flex">
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-emerald-600/20"
+                title={MTA_EXPLANATION_TEXT}
+              >
+                MTA
+              </span>
+            </div>
+          )}
+          <div className={`rounded-xl border p-3.5 ${colorClass}`}>
+            <div className="text-sm font-medium leading-relaxed">{message}</div>
+          </div>
         </div>
       );
     }

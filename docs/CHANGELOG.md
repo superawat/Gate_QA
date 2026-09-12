@@ -1,5 +1,19 @@
 # Changelog
 
+- **Verified Question Fixes for go:399285 (C Code Syntax), go:43485 (MTA Clarification UI), and go:807 (Answer Key Correction) (DEC-106)**:
+  - *Context*: Addressed three verified issues across GATE CSE question records:
+    1. **`go:399285` (GATE CSE 2023 Q36, Programming in C - Activation Tree)**: Fixed malformed/missing parentheses in function definitions and invocations (`int main()`, `int f1()`, `int f3()`, `f1();`, `f3();`, `return f1();`) while preserving exact column alignment and logic as valid, readable C code.
+    2. **`go:43485` (GATE CSE 2008 Q79, Algorithms - Binary Strings Recurrence)**: Question was already correctly configured as `MTA` (Marks To All, as correct answer $T(5)=13$ was omitted from choices), but UI lacked clear explanation. Added explicit text across `AnswerPanel`, `SolvePage`, `MockTestQuestion`, and practice list cards: `"MTA (Marks To All): Full marks are awarded to everyone for this question."` with emerald status badges and informative tooltips without altering scoring behavior.
+    3. **`go:807` (GATE CSE 2002 Q1.3, Algorithms - Recurrence Relation)**: Corrected answer key from Option C to **Option B** ($\frac{3^{k+1}-1}{2}$). Mathematical derivation: for $T(2^k) = 3T(2^{k-1}) + 1$ with $T(1) = 1$, expansion gives $T(2^k) = 3^k(1) + \sum_{i=0}^{k-1} 3^i = 3^k + \frac{3^k-1}{2} = \frac{3^{k+1}-1}{2}$ (Option B).
+  - *Data & Parity Harmonization*:
+    - Synchronized `manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and master question bank `public/questions-with-answers.json`.
+    - Regenerated public shards `2002-s0.json` and `2023-s0.json`, search indexes, and mock catalogs via `scripts/build-public-artifacts.mjs`.
+    - Confirmed `go:84830` and `go:2184` were manually verified and preserved 100% unchanged.
+  - *Testing & Validation*:
+    - Added unit regression tests in `src/utils/evaluateAnswer.test.js` (Option B for `go:807`), `src/services/AnswerService.test.js` (Option B resolution), and `src/components/AnswerPanel/AnswerPanel.test.jsx` (MTA badge and explanation notice).
+    - `npm run qa:validate-data` passed with 0 errors (clean zero duplicate keys and 100% parity).
+    - `npm run typecheck` passed with 0 errors.
+
 - **Unified Brand Animated Logo Loader & Splash Optimization (DEC-105)**:
   - *Context*: Replaced legacy generic spinners, horizontal progress bars, and bordered card boxes across the application with the custom brand animated logo loader (`gateqa_loader_dark.webp` and `gateqa_loader_light.webp`).
   - *Eliminated Double Consecutive Loader*: Removed `HomePageLoadingOverlay` ("PREPARING DASHBOARD") from `src/pages/HomePage.jsx` which was running concurrently after the initial route/splash loader, ensuring a single unified transition into the dashboard.

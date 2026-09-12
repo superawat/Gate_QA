@@ -1,9 +1,15 @@
 import { AnswerService } from "../services/AnswerService";
 
-const DISPLAY_TYPE_TOKENS = new Set(["mcq", "msq", "nat"]);
+const DISPLAY_TYPE_TOKENS = new Set(["mcq", "msq", "nat", "mta"]);
+
+export const MTA_EXPLANATION_TEXT =
+  "MTA (Marks To All): Full marks are awarded to everyone for this question.";
 
 const normalizeTypeToken = (value = "") => {
   const token = String(value || "").trim().toLowerCase();
+  if (token === "marks_to_all") {
+    return "mta";
+  }
   return DISPLAY_TYPE_TOKENS.has(token) ? token : "";
 };
 
