@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T20:27:48.189Z",
+  "generatedAt": "2026-09-12T16:37:13.809Z",
   "shardKey": "2023-s0",
   "yearSetKey": "2023-s0",
   "yearSetIdentity": "cse:2023:set-0",
@@ -1214,7 +1214,7 @@
       "title": "GATE CSE 2023 | Question: 36",
       "year": 2023,
       "link": "https://gateoverflow.in/399285/gate-cse-2023-question-26",
-      "question": "<p>Consider the following program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int main      int f1        int f2(int X)               int f3\n{               {               {                           {\n    f1;           return(1);      f3;                       return(5);\n    f2(2);      }                   if(X==1)                }\n    f3;                               return f1;    \n    return(0);                      else    \n}                                       return (X*f2(X-1));\n                                }    \n</pre>\n<p>Which one of the following options represents the activation tree corresponding to the main function?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li><img alt=\"\" height=\"151\" src=\"/Gate_QA/question-images/8937085960013317279.webp\" width=\"96\"/></li>\n<li><img alt=\"\" src=\"/Gate_QA/question-images/5583269571573106772.webp\" width=\"96\"/></li>\n<li><img alt=\"\" src=\"/Gate_QA/question-images/14679605052061261204.webp\" width=\"96\"/></li>\n<li>\n<p><img alt=\"\" src=\"/Gate_QA/question-images/2143243641754369651.webp\" width=\"96\"/></p>\n</li>\n</ol>",
+      "question": "<p>Consider the following program:</p>\n<pre class=\"prettyprint linenums lang-c_cpp\" data-pbcklang=\"c_cpp\" data-pbcktabsize=\"4\">int main()      int f1()        int f2(int X)               int f3()\n{               {               {                           {\n    f1();           return(1);      f3();                       return(5);\n    f2(2);      }                   if(X==1)                }\n    f3();                               return f1();    \n    return(0);                      else    \n}                                       return (X*f2(X-1));\n                                }    \n</pre>\n<p>Which one of the following options represents the activation tree corresponding to the main function?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li><img alt=\"\" height=\"151\" src=\"/Gate_QA/question-images/8937085960013317279.webp\" width=\"96\"/></li>\n<li><img alt=\"\" src=\"/Gate_QA/question-images/5583269571573106772.webp\" width=\"96\"/></li>\n<li><img alt=\"\" src=\"/Gate_QA/question-images/14679605052061261204.webp\" width=\"96\"/></li>\n<li>\n<p><img alt=\"\" src=\"/Gate_QA/question-images/2143243641754369651.webp\" width=\"96\"/></p>\n</li>\n</ol>",
       "tags": [
         "programming",
         "programming-in-c",
