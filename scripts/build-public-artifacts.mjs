@@ -614,7 +614,7 @@ const MOCK_SECTION_COUNTS = {
   CS: 55,
 };
 
-const MOCK_OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
+const MOCK_OBJECTIVE_TYPES = new Set(["MCQ", "MSQ", "NAT", "MULTI_NAT", "MULTI_BLANK_NAT"]);
 const MOCK_AUTO_AWARD_TYPES = new Set(["AMBIGUOUS", "MARKS_TO_ALL", "MTA", "SUBJECTIVE"]);
 const MOCK_LEGACY_CONTINUOUS_MIN_YEAR = 1987;
 const MOCK_LEGACY_CONTINUOUS_SPLIT_MAX_YEAR = 2013;
@@ -734,6 +734,11 @@ function hasValidMockAnswer(answerRecord = null, type = "") {
       ? answerRecord.answer
       : [answerRecord.answer];
     return values.some((value) => String(value ?? "").trim() !== "");
+  }
+  if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
+    return Array.isArray(answerRecord.answer)
+      && answerRecord.answer.length > 0
+      && answerRecord.answer.every((value) => String(value ?? "").trim() !== "");
   }
   return false;
 }
@@ -1222,6 +1227,10 @@ function resolveMockQuestionType(question = {}, answerRecord = null) {
   const isExplicitNatTag = tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat");
   const isExplicitMsqTag = tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq");
   const isExplicitMcqTag = tags.includes("multiple-choice") || tags.includes("mcq");
+
+  if (answerType === "MULTI_NAT" || answerType === "MULTI_BLANK_NAT") {
+    return "MULTI_NAT";
+  }
 
   if (answerType === "NAT" || isExplicitNatTag) {
     return "NAT";

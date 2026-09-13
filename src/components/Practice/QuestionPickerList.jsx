@@ -24,6 +24,7 @@ const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
   msq: "bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] ring-[color:var(--color-warning-border)]",
   nat: "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]",
+  multi_nat: "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]",
   mta: "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-emerald-600/20",
   unknown: "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-neutral-text)] ring-[color:var(--color-neutral-border)]",
 };
@@ -103,7 +104,7 @@ const QuestionPickerList = ({
                     title={typeToken === "mta" ? MTA_EXPLANATION_TEXT : undefined}
                     className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase ring-1 ring-inset md:hidden ${typeStyles[typeToken] || typeStyles.unknown}`}
                   >
-                    {typeToken}
+                    {typeToken === "multi_nat" ? "Multi-NAT" : typeToken}
                   </span>
                 ) : null}
               </div>
@@ -163,7 +164,7 @@ const QuestionPickerList = ({
                   <p className="mt-1 truncate text-xs text-[color:var(--color-text-muted)]">{subtopicLabel}</p>
                 ) : typeToken ? (
                   <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
-                    {typeToken}
+                    {typeToken === "multi_nat" ? "Multi-NAT" : typeToken}
                   </span>
                 ) : null}
               </div>

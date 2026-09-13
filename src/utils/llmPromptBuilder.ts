@@ -180,7 +180,7 @@ export function buildQuestionLLMPrompt(question: QuestionLike): string {
   const questionText = htmlToCleanText(stemHtml);
 
   const questionType = getDisplayQuestionTypeLabel(question as any);
-  const isNat = questionType === "NAT";
+  const isNat = questionType === "NAT" || questionType === "MULTI_NAT" || questionType === "MULTI_BLANK_NAT" || questionType === "Multi-NAT";
 
   const options = !isNat ? extractFormattedOptions(question) : [];
 

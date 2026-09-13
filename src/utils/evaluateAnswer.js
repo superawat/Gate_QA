@@ -17,6 +17,43 @@ function normalizeMsqInput(input) {
   return values.sort();
 }
 
+function evaluateNatNumericValue(submitted, expectedAnswer, tolerance) {
+  if (!Number.isFinite(submitted)) {
+    return false;
+  }
+
+  if (Array.isArray(tolerance?.ranges) && tolerance.ranges.length > 0) {
+    return tolerance.ranges.some((range) => {
+      const rMin = Number(range.min ?? range.lower);
+      const rMax = Number(range.max ?? range.upper);
+      if (Number.isFinite(rMin) && Number.isFinite(rMax)) {
+        return submitted >= Math.min(rMin, rMax) && submitted <= Math.max(rMin, rMax);
+      }
+      return false;
+    });
+  }
+
+  const lower = Number(tolerance?.lower);
+  const upper = Number(tolerance?.upper);
+  if (Number.isFinite(lower) && Number.isFinite(upper)) {
+    return submitted >= Math.min(lower, upper) && submitted <= Math.max(lower, upper);
+  }
+
+  const absTol = typeof tolerance === "number" && Number.isFinite(tolerance)
+    ? Math.abs(tolerance)
+    : Number(tolerance?.abs ?? 0);
+
+  if (Array.isArray(expectedAnswer)) {
+    return expectedAnswer.some((ans) => {
+      const expected = Number(ans);
+      return Math.abs(submitted - expected) <= absTol;
+    });
+  }
+
+  const expected = Number(expectedAnswer);
+  return Math.abs(submitted - expected) <= absTol;
+}
+
 export function evaluateAnswer(record, userInput) {
   if (!record || !record.type) {
     return { status: "missing_answer", correct: false };
@@ -70,48 +107,49 @@ export function evaluateAnswer(record, userInput) {
   }
 
   if (record.type === "NAT") {
+    if (userInput === null || userInput === undefined || String(userInput).trim() === "") {
+      return { status: "invalid_input", correct: false };
+    }
     const submitted = Number(userInput);
     if (!Number.isFinite(submitted)) {
       return { status: "invalid_input", correct: false };
     }
 
-    if (Array.isArray(record.tolerance?.ranges) && record.tolerance.ranges.length > 0) {
-      const correct = record.tolerance.ranges.some((range) => {
-        const rMin = Number(range.min ?? range.lower);
-        const rMax = Number(range.max ?? range.upper);
-        if (Number.isFinite(rMin) && Number.isFinite(rMax)) {
-          return submitted >= Math.min(rMin, rMax) && submitted <= Math.max(rMin, rMax);
-        }
-        return false;
-      });
-      return { status: "evaluated", correct };
+    const correct = evaluateNatNumericValue(submitted, record.answer, record.tolerance);
+    return { status: "evaluated", correct };
+  }
+
+  if (record.type === "MULTI_NAT" || record.type === "MULTI_BLANK_NAT") {
+    if (!Array.isArray(record.answer) || record.answer.length === 0) {
+      return { status: "missing_answer", correct: false };
     }
 
-    const lower = Number(record.tolerance?.lower);
-    const upper = Number(record.tolerance?.upper);
-    if (Number.isFinite(lower) && Number.isFinite(upper)) {
-      return {
-        status: "evaluated",
-        correct: submitted >= Math.min(lower, upper) && submitted <= Math.max(lower, upper),
-      };
+    if (!Array.isArray(userInput) || userInput.length !== record.answer.length) {
+      return { status: "invalid_input", correct: false };
     }
 
-    const tolerance = typeof record.tolerance === "number" && Number.isFinite(record.tolerance)
-      ? Math.abs(record.tolerance)
-      : Number(record.tolerance?.abs ?? 0);
-
-    if (Array.isArray(record.answer)) {
-      const correct = record.answer.some((ans) => {
-        const expected = Number(ans);
-        return Math.abs(submitted - expected) <= tolerance;
-      });
-      return { status: "evaluated", correct };
+    for (let i = 0; i < userInput.length; i++) {
+      const val = userInput[i];
+      if (val === null || val === undefined || String(val).trim() === "") {
+        return { status: "invalid_input", correct: false };
+      }
+      const num = Number(val);
+      if (!Number.isFinite(num)) {
+        return { status: "invalid_input", correct: false };
+      }
     }
 
-    const expected = Number(record.answer);
+    const isAllCorrect = record.answer.every((expectedVal, index) => {
+      const submitted = Number(userInput[index]);
+      const tolerance = Array.isArray(record.tolerance)
+        ? record.tolerance[index]
+        : record.tolerance;
+      return evaluateNatNumericValue(submitted, expectedVal, tolerance);
+    });
+
     return {
       status: "evaluated",
-      correct: Math.abs(submitted - expected) <= tolerance,
+      correct: isAllCorrect,
     };
   }
 

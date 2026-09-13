@@ -1350,7 +1350,9 @@ export const FilterProvider = ({
             }
 
             if (isTypeConstrained) {
-                if (!selectedTypeSet.has(resolvedTypeUpper)) {
+                const matches = selectedTypeSet.has(resolvedTypeUpper) ||
+                    ((resolvedTypeUpper === 'MULTI_NAT' || resolvedTypeUpper === 'MULTI_BLANK_NAT') && selectedTypeSet.has('NAT'));
+                if (!matches) {
                     return false;
                 }
             }

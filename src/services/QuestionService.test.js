@@ -557,4 +557,16 @@ describe("QuestionService", () => {
 
     expect(finalized.map((question) => question.question_uid)).toEqual(["go:94333"]);
   });
+
+  test("normalizes MULTI_NAT and MULTI_BLANK_NAT type tokens correctly", () => {
+    expect(QuestionService.normalizeTypeToken("MULTI_NAT")).toBe("multi_nat");
+    expect(QuestionService.normalizeTypeToken("multi_nat")).toBe("multi_nat");
+    expect(QuestionService.normalizeTypeToken("MULTI_BLANK_NAT")).toBe("multi_nat");
+    expect(QuestionService.normalizeTypeToken("multi-blank-nat")).toBe("multi_nat");
+    expect(QuestionService.normalizeTypeToken("MCQ")).toBe("mcq");
+    expect(QuestionService.normalizeTypeToken("MSQ")).toBe("msq");
+    expect(QuestionService.normalizeTypeToken("NAT")).toBe("nat");
+    expect(QuestionService.normalizeTypeToken("unknown_type")).toBe("unknown");
+  });
 });
+

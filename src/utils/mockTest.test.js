@@ -55,6 +55,18 @@ describe("mockTest utilities", () => {
     expect(hasMeaningfulResponse([], "MSQ")).toBe(false);
     expect(hasMeaningfulResponse([""], "MSQ")).toBe(false);
     expect(hasMeaningfulResponse(["A"], "MSQ")).toBe(true);
+    expect(hasMeaningfulResponse([], "MULTI_NAT")).toBe(false);
+    expect(hasMeaningfulResponse(["3", ""], "MULTI_NAT")).toBe(false);
+    expect(hasMeaningfulResponse(["3", "abc"], "MULTI_NAT")).toBe(false);
+    expect(hasMeaningfulResponse(["3", "4"], "MULTI_NAT")).toBe(true);
+    expect(hasMeaningfulResponse([3, 4], "MULTI_NAT")).toBe(true);
+  });
+
+  test("formatExpectedAnswer formats MULTI_NAT answers cleanly", () => {
+    expect(formatExpectedAnswer({
+      type: "MULTI_NAT",
+      answer: [3, 4],
+    })).toBe("3, 4");
   });
 
   test("formatExpectedAnswer includes NAT tolerance details", () => {

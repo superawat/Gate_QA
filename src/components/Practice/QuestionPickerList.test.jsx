@@ -103,4 +103,25 @@ describe("QuestionPickerList", () => {
 
     expect(screen.queryByText("unknown")).toBeNull();
   });
+
+  test("renders the Multi-NAT type chip for MULTI_NAT questions", () => {
+    render(
+      <QuestionPickerList
+        questions={[
+          {
+            question_uid: "go:546",
+            title: "GATE CSE 1992 | Question: 01,ii",
+            yearSetLabel: "1992",
+            subjectLabel: "Computer Networks",
+            type: "multi_nat",
+          },
+        ]}
+        pageStartIndex={0}
+        onOpenQuestion={() => {}}
+      />
+    );
+
+    expect(screen.getAllByText("Multi-NAT").length).toBeGreaterThan(0);
+  });
 });
+

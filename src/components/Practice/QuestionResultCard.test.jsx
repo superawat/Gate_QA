@@ -153,4 +153,25 @@ describe("QuestionResultCard", () => {
 
     expect(screen.queryByTestId("gate-it-badge")).toBeNull();
   });
+
+  test("renders the Multi-NAT badge for MULTI_NAT questions", () => {
+    render(
+      <QuestionResultCard
+        question={{
+          question_uid: "go:546",
+          title: "GATE CSE 1992 | Question: 01,ii",
+          preview: "Consider a 3-bit error detection...",
+          type: "MULTI_NAT",
+          yearSetLabel: "1992",
+          subjectLabel: "Computer Networks",
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.getByText("Multi-NAT")).toBeTruthy();
+  });
 });
+

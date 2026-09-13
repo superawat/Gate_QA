@@ -4,6 +4,8 @@ export type KnownQuestionType =
   | "MCQ"
   | "MSQ"
   | "NAT"
+  | "MULTI_NAT"
+  | "MULTI_BLANK_NAT"
   | "SUBJECTIVE"
   | "AMBIGUOUS"
   | "MARKS_TO_ALL"
@@ -14,7 +16,7 @@ export type QuestionType = KnownQuestionType | (string & {});
 
 export type OptionLabel = "A" | "B" | "C" | "D" | "E" | (string & {});
 
-export type AnswerValue = OptionLabel | OptionLabel[] | number | string | null;
+export type AnswerValue = OptionLabel | OptionLabel[] | number | number[] | (number | string)[] | string | null;
 
 export type AnswerTolerance =
   | {

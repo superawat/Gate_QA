@@ -47,6 +47,7 @@ export default function AnswerPanel({
   const [mcqSelection, setMcqSelection] = useState("");
   const [msqSelection, setMsqSelection] = useState([]);
   const [natInput, setNatInput] = useState("");
+  const [multiNatInputs, setMultiNatInputs] = useState([]);
   const [result, setResult] = useState(null);
 
   const questionOpenedAtRef = useRef(Date.now());
@@ -69,6 +70,20 @@ export default function AnswerPanel({
     [question]
   );
 
+  const isMultiNat = Boolean(
+    answerRecord && (answerRecord.type === "MULTI_NAT" || answerRecord.type === "MULTI_BLANK_NAT")
+  );
+
+  const blankCount = useMemo(() => {
+    if (isMultiNat) {
+      if (Array.isArray(answerRecord?.answer)) return answerRecord.answer.length;
+      if (Array.isArray(question?.answer_meta?.answer)) return question.answer_meta.answer.length;
+      if (Number.isFinite(question?.blankCount)) return question.blankCount;
+      return 2;
+    }
+    return 0;
+  }, [isMultiNat, answerRecord, question]);
+
   const questionIdentity = useMemo(() => {
     const trackingId = questionProgressId || question.question_uid || question.id || "";
     const parsedYear = Number(question.year || question.exam?.year);
@@ -88,7 +103,7 @@ export default function AnswerPanel({
   }, [passedSolutionLink, question]);
 
   const isInteractive = Boolean(
-    answerRecord && ["MCQ", "MSQ", "NAT"].includes(answerRecord.type)
+    answerRecord && ["MCQ", "MSQ", "NAT", "MULTI_NAT", "MULTI_BLANK_NAT"].includes(answerRecord.type)
   );
 
   const answerOptions = useMemo(() => {
@@ -128,9 +143,10 @@ export default function AnswerPanel({
     setMcqSelection("");
     setMsqSelection([]);
     setNatInput("");
+    setMultiNatInputs(Array(blankCount).fill(""));
     setResult(null);
     questionOpenedAtRef.current = Date.now();
-  }, [questionProgressId, question.question_uid]);
+  }, [questionProgressId, question.question_uid, blankCount]);
 
   const evaluateSubmission = useCallback(() => {
     if (!isInteractive || !answerRecord) return;
@@ -139,6 +155,12 @@ export default function AnswerPanel({
     if (answerRecord.type === "MCQ") payload = mcqSelection;
     if (answerRecord.type === "MSQ") payload = msqSelection;
     if (answerRecord.type === "NAT") payload = natInput;
+    if (isMultiNat) {
+      payload = multiNatInputs.map((val) => {
+        const trimmed = String(val ?? "").trim();
+        return trimmed === "" ? "" : Number(trimmed);
+      });
+    }
 
     const evaluation = evaluateAnswer(answerRecord, payload);
     setResult(evaluation);
@@ -177,6 +199,8 @@ export default function AnswerPanel({
     mcqSelection,
     msqSelection,
     natInput,
+    isMultiNat,
+    multiNatInputs,
     isSolved,
     questionProgressId,
     toggleSolved,
@@ -225,13 +249,33 @@ export default function AnswerPanel({
     setResult(null);
   };
 
+  const handleMultiNatChange = (index, value) => {
+    setMultiNatInputs((prev) => {
+      const next = [...prev];
+      while (next.length <= index) next.push("");
+      next[index] = value;
+      return next;
+    });
+    setResult(null);
+  };
+
   const hasValidInput = useMemo(() => {
     if (!answerRecord) return false;
     if (answerRecord.type === "MCQ") return !!mcqSelection;
     if (answerRecord.type === "MSQ") return msqSelection.length > 0;
     if (answerRecord.type === "NAT") return !!natInput.trim();
+    if (isMultiNat) {
+      return (
+        blankCount > 0 &&
+        multiNatInputs.length === blankCount &&
+        multiNatInputs.every((val) => {
+          const trimmed = String(val ?? "").trim();
+          return trimmed !== "" && Number.isFinite(Number(trimmed));
+        })
+      );
+    }
     return false;
-  }, [answerRecord, mcqSelection, msqSelection, natInput]);
+  }, [answerRecord, mcqSelection, msqSelection, natInput, isMultiNat, blankCount, multiNatInputs]);
 
   // --- Toast State ---
   const [toastMessage, setToastMessage] = useState("Link copied!");
@@ -488,14 +532,14 @@ export default function AnswerPanel({
         <div className="flex">
           <span
             className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset ${
-              answerRecord.type === "NAT"
+              answerRecord.type === "NAT" || isMultiNat
                 ? "bg-[color:var(--color-purple-soft)] text-[color:var(--color-purple-text)] ring-[color:var(--color-purple-border)]"
                 : answerRecord.type === "MSQ"
                 ? "bg-[color:var(--color-warning-soft)] text-[color:var(--color-warning-text)] ring-[color:var(--color-warning-border)]"
                 : "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]"
             }`}
           >
-            {answerRecord.type}
+            {isMultiNat ? "Multi-NAT" : answerRecord.type}
           </span>
         </div>
 
@@ -578,6 +622,35 @@ export default function AnswerPanel({
                   className="w-full min-h-[44px] rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-base sm:text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               )}
+            </div>
+          )}
+
+          {isMultiNat && (
+            <div className="flex flex-col gap-3">
+              <div className="text-xs font-medium text-[color:var(--color-text-muted)]">
+                Enter numeric answers for each blank in order (all {blankCount} blanks required):
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {Array.from({ length: blankCount }).map((_, idx) => (
+                  <div key={idx} className="flex flex-col gap-1.5">
+                    <label
+                      htmlFor={`multi-nat-input-${idx}`}
+                      className="text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]"
+                    >
+                      {`Blank ${idx + 1}`}
+                    </label>
+                    <input
+                      id={`multi-nat-input-${idx}`}
+                      type="text"
+                      inputMode="numeric"
+                      value={multiNatInputs[idx] ?? ""}
+                      onChange={(e) => handleMultiNatChange(idx, e.target.value)}
+                      placeholder={`Enter numeric answer for Blank ${idx + 1}`}
+                      className="w-full min-h-[44px] rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-base sm:text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

@@ -70,7 +70,7 @@ export function hasNativeJoinIdentity(this: IQuestionService, question: any = {}
 }
 
 export function normalizeTypeToken(rawType: string = ""): string {
-  const value = String(rawType || "").trim().toLowerCase();
+  const value = String(rawType || "").trim().toLowerCase().replace(/-/g, "_");
   if (value === "mcq") {
     return "mcq";
   }
@@ -79,6 +79,9 @@ export function normalizeTypeToken(rawType: string = ""): string {
   }
   if (value === "nat") {
     return "nat";
+  }
+  if (value === "multi_nat" || value === "multi_blank_nat") {
+    return "multi_nat";
   }
   return "unknown";
 }

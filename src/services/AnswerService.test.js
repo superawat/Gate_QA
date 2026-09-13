@@ -2423,6 +2423,44 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
       });
     });
   });
+
+  describe("DEC-108: Verified Question Fixes (go:546 MULTI_NAT)", () => {
+    beforeEach(() => {
+      AnswerService.answersByQuestionUid = {
+        "go:546": {
+          answer_uid: "manual:go:546",
+          type: "MULTI_NAT",
+          answer: [3, 4],
+          tolerance: { abs: 0 },
+        },
+      };
+      AnswerService.answersByUid = {};
+      AnswerService.answersByExamUid = {
+        "cse:1992:set1:main:q1-ii": {
+          answer_uid: "manual:go:546",
+          type: "MULTI_NAT",
+          answer: [3, 4],
+          tolerance: { abs: 0 },
+        },
+      };
+      AnswerService.unsupportedQuestionUids = new Set();
+      AnswerService.loaded = true;
+      AnswerService.loadError = "";
+    });
+
+    test("go:546 (GATE CSE 1992 Q01,ii) resolves MULTI_NAT [3, 4]", () => {
+      const answer = AnswerService.getAnswerForQuestion({
+        question_uid: "go:546",
+        exam_uid: "cse:1992:set1:main:q1-ii",
+        title: "GATE CSE 1992 | Question: 01,ii",
+      });
+      expect(answer).toMatchObject({
+        type: "MULTI_NAT",
+        answer: [3, 4],
+        tolerance: { abs: 0 },
+      });
+    });
+  });
 });
 
 

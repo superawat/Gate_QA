@@ -8,7 +8,7 @@ export const MOCK_SECTION_COUNTS = {
 };
 
 export const MOCK_SLOW_QUESTION_THRESHOLD_SECONDS = 3 * 60;
-export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT"];
+export const MOCK_OBJECTIVE_TYPES = ["MCQ", "MSQ", "NAT", "MULTI_NAT", "MULTI_BLANK_NAT"];
 export const MOCK_AUTO_AWARD_TYPES = ["AMBIGUOUS", "MARKS_TO_ALL", "MTA", "SUBJECTIVE"];
 
 const slugifyMockFilterToken = (value = "") => (
@@ -257,6 +257,12 @@ const hasValidAnswerForType = (answerRecord = null, type = "") => {
     return values.some((value) => String(value ?? "").trim() !== "");
   }
 
+  if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
+    return Array.isArray(answerRecord.answer)
+      && answerRecord.answer.length > 0
+      && answerRecord.answer.every((value) => String(value ?? "").trim() !== "");
+  }
+
   return false;
 };
 
@@ -425,6 +431,15 @@ export const hasMeaningfulResponse = (response, type = "") => {
     return raw !== "" && Number.isFinite(Number(raw));
   }
 
+  if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
+    return Array.isArray(response)
+      && response.length > 0
+      && response.every((value) => {
+        const raw = String(value ?? "").trim();
+        return raw !== "" && Number.isFinite(Number(raw));
+      });
+  }
+
   if (normalizedType === "MCQ") {
     return String(response ?? "").trim() !== "";
   }
@@ -440,7 +455,15 @@ export const formatMockResponse = (response, type = "") => {
   }
 
   if (normalizedType === "MSQ") {
-    return Array.isArray(response) ? response.join(", ") : String(response || "");
+    return Array.isArray(response)
+      ? response.join(", ")
+      : String(response);
+  }
+
+  if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
+    return Array.isArray(response)
+      ? response.join(", ")
+      : String(response);
   }
 
   return String(response ?? "").trim();
@@ -500,6 +523,12 @@ export const formatExpectedAnswer = (answerRecord = null) => {
     }
 
     return formattedValues.join(" / ");
+  }
+
+  if (type === "MULTI_NAT" || type === "MULTI_BLANK_NAT") {
+    return Array.isArray(answerRecord.answer)
+      ? answerRecord.answer.join(", ")
+      : String(answerRecord.answer ?? "Unavailable");
   }
 
   return "Unavailable";

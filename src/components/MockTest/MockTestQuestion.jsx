@@ -79,6 +79,9 @@ const formatQuestionTypeLabel = (type = "") => {
     if (normalized === "MARKS_TO_ALL" || normalized === "MTA") {
         return "MTA (Marks To All)";
     }
+    if (normalized === "MULTI_NAT" || normalized === "MULTI_BLANK_NAT") {
+        return "Multi-NAT";
+    }
     return normalized || "MCQ";
 };
 
@@ -159,6 +162,13 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     const marks = Number(currentQuestionMeta?.marks || 0);
     const negativeMarks = formatNegativeMarks(currentQuestionMeta?.negativeMarks);
     const isNAT = rawType === "NAT";
+    const isMultiNAT = rawType === "MULTI_NAT" || rawType === "MULTI_BLANK_NAT";
+    const blankCount = useMemo(() => {
+        if (!isMultiNAT) return 0;
+        const ansRecord = reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta;
+        if (Array.isArray(ansRecord?.answer)) return ansRecord.answer.length;
+        return 2;
+    }, [isMultiNAT, reviewResult?.answerRecord, currentQuestion]);
     const isMSQ = rawType === "MSQ";
     const isAutoAwarded = isMockAutoAwardType(rawType);
 
@@ -532,6 +542,46 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                             ) : null}
                                         </div>
                                     )}
+                                </div>
+                            ) : isMultiNAT ? (
+                                <div className="relative z-10 mt-4 flex flex-col gap-3">
+                                    <div className="font-semibold text-gray-700">Enter numeric answer for each blank:</div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md">
+                                        {Array.from({ length: blankCount }).map((_, idx) => {
+                                            const responseArr = Array.isArray(currentResponse) ? currentResponse : [];
+                                            const val = responseArr[idx] ?? "";
+                                            return (
+                                                <div key={idx} className="flex flex-col gap-1">
+                                                    <label htmlFor={`mock-multi-nat-${idx}`} className="text-xs font-bold text-gray-600">
+                                                        Blank {idx + 1}
+                                                    </label>
+                                                    <input
+                                                        id={`mock-multi-nat-${idx}`}
+                                                        type="text"
+                                                        inputMode="text"
+                                                        value={String(val)}
+                                                        onChange={(e) => {
+                                                            const next = [...responseArr];
+                                                            while (next.length <= idx) next.push("");
+                                                            next[idx] = e.target.value;
+                                                            saveResponse(questionUid, next);
+                                                        }}
+                                                        readOnly={isReviewPhase}
+                                                        className="h-9 w-full border-[2px] border-black bg-white px-2 text-[15px] font-bold focus:outline-none"
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    {!isReviewPhase ? (
+                                        <button
+                                            type="button"
+                                            className="w-32 h-8 rounded border border-gray-400 bg-[#e0dfe5] text-[14px] font-bold shadow-sm hover:bg-[#d0cfd5] active:bg-[#c0bfc5]"
+                                            onClick={() => saveResponse(questionUid, [])}
+                                        >
+                                            Clear All
+                                        </button>
+                                    ) : null}
                                 </div>
                             ) : (
                                 <div className="mt-2 flex flex-col gap-3">

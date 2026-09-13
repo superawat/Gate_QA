@@ -2662,6 +2662,81 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(rec, ["A", "B", "C", "D"]).correct).toBe(false);
       expect(evaluateAnswer(rec, ["A"]).correct).toBe(false);
     });
+
+    // DEC-108: GATE CSE 1992 Q1.ii (go:546) MULTI_NAT question type
+    test("go:546 - GATE CSE 1992 Q1.ii evaluates strictly as MULTI_NAT [3, 4]", () => {
+      const rec = {
+        type: "MULTI_NAT",
+        answer: [3, 4],
+        tolerance: { abs: 0 },
+      };
+
+      // Correct order evaluates to true (numbers or numeric strings)
+      expect(evaluateAnswer(rec, [3, 4])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, ["3", "4"])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, [" 3 ", "4.0 "])).toEqual({ status: "evaluated", correct: true });
+
+      // Reversed order is incorrect
+      expect(evaluateAnswer(rec, [4, 3])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, ["4", "3"])).toEqual({ status: "evaluated", correct: false });
+
+      // Partially correct answers
+      expect(evaluateAnswer(rec, [3, 5])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [2, 4])).toEqual({ status: "evaluated", correct: false });
+
+      // Missing or incomplete blanks
+      expect(evaluateAnswer(rec, [3])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [3, ""])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, ["", 4])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [3, null])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [undefined, 4])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, null)).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, "3, 4")).toEqual({ status: "invalid_input", correct: false });
+
+      // Non-numeric/invalid input
+      expect(evaluateAnswer(rec, [3, "abc"])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, ["xyz", 4])).toEqual({ status: "invalid_input", correct: false });
+    });
+
+    test("MULTI_NAT supports arbitrary number of blanks and tolerances", () => {
+      // 3 blanks
+      const threeBlankRec = {
+        type: "MULTI_NAT",
+        answer: [10, 20, 30],
+        tolerance: { abs: 0 },
+      };
+      expect(evaluateAnswer(threeBlankRec, [10, 20, 30]).correct).toBe(true);
+      expect(evaluateAnswer(threeBlankRec, [10, 20, 29]).correct).toBe(false);
+      expect(evaluateAnswer(threeBlankRec, [10, 20])).toEqual({ status: "invalid_input", correct: false });
+
+      // Uniform tolerance
+      const tolRec = {
+        type: "MULTI_NAT",
+        answer: [3.5, 7.5],
+        tolerance: { abs: 0.1 },
+      };
+      expect(evaluateAnswer(tolRec, [3.55, 7.45]).correct).toBe(true);
+      expect(evaluateAnswer(tolRec, [3.7, 7.5]).correct).toBe(false);
+
+      // Per-blank array tolerance
+      const perBlankTol = {
+        type: "MULTI_NAT",
+        answer: [10, 100],
+        tolerance: [{ abs: 1 }, { abs: 10 }],
+      };
+      expect(evaluateAnswer(perBlankTol, [11, 105]).correct).toBe(true);
+      expect(evaluateAnswer(perBlankTol, [12, 105]).correct).toBe(false);
+      expect(evaluateAnswer(perBlankTol, [11, 115]).correct).toBe(false);
+
+      // Alias MULTI_BLANK_NAT works identically
+      const aliasRec = {
+        type: "MULTI_BLANK_NAT",
+        answer: [5, 6],
+      };
+      expect(evaluateAnswer(aliasRec, [5, 6]).correct).toBe(true);
+      expect(evaluateAnswer(aliasRec, [6, 5]).correct).toBe(false);
+    });
   });
 });
 

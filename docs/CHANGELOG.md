@@ -1,5 +1,33 @@
 # Changelog
 
+- **Multi-Blank NAT Question Type (`MULTI_NAT`) & Verified Fix for go:546 (GATE CSE 1992 Q1.ii) (DEC-108)**:
+  - *Context*: Introduced a first-class, reusable question type `MULTI_NAT` (with canonical alias `MULTI_BLANK_NAT`) for questions containing multiple independent blanks requiring separate numeric answers in strict positional order.
+  - *Question Verification (`go:546` - GATE CSE 1992 Q01,ii, Computer Networks)*:
+    - Problem: "Consider a $3$-bit error detection and $1$-bit error correction hamming code for $4$-bit data. The extra parity bits required would be _____ and the $3$-bit error detection is possible because the code has a minimum distance of _______."
+    - Verification: Blank 1 requires 3 parity bits (for $m=4$, $2^p \ge m + p + 1 \implies p=3$ bits: $2^3 \ge 4+3+1 = 8$). Blank 2 requires minimum Hamming distance of 4 (to detect $d$ errors, $d_{min} \ge d + 1 = 3 + 1 = 4$; to correct $t=1$ error and detect $d=3$ errors, $d_{min} \ge 1 + 3 + 1 = 5$ if simultaneous, or for 3-bit detection $d_{min} = 4$). Official verified answer representation: `[3, 4]`.
+    - Converted from legacy `SUBJECTIVE` with null answer to `MULTI_NAT` with answer `[3, 4]`.
+  - *Engine & Evaluation (`src/utils/evaluateAnswer.js`)*:
+    - Added evaluation for `type === "MULTI_NAT" || type === "MULTI_BLANK_NAT"`.
+    - Position-sensitive evaluation: `[3, 4]` evaluates to Correct (`true`), while `[4, 3]` evaluates to Incorrect (`false`).
+    - Input completeness: Requires an array of valid finite numeric entries matching expected length. Incomplete blanks or non-numeric inputs return `{ status: "invalid_input", correct: false }`.
+    - Fully reusable: dynamically handles 2, 3, or $N$ blanks, uniform tolerances (`{ abs: 0.1 }`), and per-blank tolerance arrays (`[{ abs: 1 }, { abs: 10 }]`).
+  - *UI Experience (`src/components/AnswerPanel/` & `src/components/Practice/`)*:
+    - Renders separate, clearly labelled numeric input boxes ("Blank 1", "Blank 2", ..., "Blank N") with helper text indicating all blanks are required.
+    - Submit button remains disabled until all blanks contain valid numbers.
+    - Badges across `AnswerPanel`, `SolvePage`, `QuestionResultCard`, and `QuestionPickerList` display distinct purple `Multi-NAT` badge.
+    - `llmPromptBuilder` treats `MULTI_NAT` like NAT without extraneous option extraction.
+    - `FilterContext` includes `MULTI_NAT` when the NAT filter is active.
+    - Mock test engine (`mockTest.js` and `MockTestQuestion.jsx`) supports `MULTI_NAT` as an objective question type with 0 negative marking.
+  - *Data & Parity Harmonization*:
+    - Updated `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, and `public/questions-with-answers.json`.
+    - Regenerated public static detail shard `public/question-detail-shards/1992-s0.json`, `public/mock_catalog_v1.json`, and `public/question-search-index.json`.
+    - Preserved question stem and metadata completely intact.
+  - *Testing & Validation*:
+    - Added unit regression tests in `src/utils/evaluateAnswer.test.js` covering correct evaluation `[3, 4]`, numeric string input `["3", "4"]`, reversed order `[4, 3]`, incomplete blanks, non-numeric inputs, 3-blank questions, and tolerances.
+    - Added unit regression tests in `src/components/AnswerPanel/AnswerPanel.test.jsx` for rendering, validation, and submission.
+    - Added tests in `src/services/AnswerService.test.js` and `src/utils/mockTest.test.js`.
+    - All 80 test files passed (962 tests passed, 0 failures), TypeScript typecheck passed with 0 errors.
+
 - **Verified Question Fix for go:357500 (GATE CSE 2021 Set 2 Q40 MSQ Answer Key) (DEC-107)**:
   - *Context*: User identified and verified an answer-key defect in `go:357500` (GATE CSE 2021 Set 2 Q40, Databases / Functional Dependencies). The previous key contained only Options A and D, omitting valid Option C.
   - *Mathematical & Relational Verification*: Given relation $R(P, Q, R, S, T)$ with functional dependencies $F = \{P \rightarrow QR, RS \rightarrow T\}$:

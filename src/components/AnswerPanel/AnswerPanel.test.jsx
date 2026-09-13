@@ -420,6 +420,91 @@ describe("AnswerPanel", () => {
         expect(btn.hasAttribute("disabled")).toBe(true);
       });
     });
+
+    test("renders MULTI_NAT input fields, validates completeness, and evaluates submission for go:546", () => {
+      const multiNatQuestion = {
+        question_uid: "go:546",
+        exam_uid: "cse:1992:set1:main:q1-ii",
+        title: "GATE CSE 1992 | Question: 01,ii",
+        answer_meta: {
+          type: "MULTI_NAT",
+          answer: [3, 4],
+          tolerance: { abs: 0 },
+        },
+      };
+
+      AnswerService.answersByQuestionUid["go:546"] = {
+        answer_uid: "manual:go:546",
+        type: "MULTI_NAT",
+        answer: [3, 4],
+        tolerance: { abs: 0 },
+      };
+
+      const { unmount } = render(<AnswerPanel question={multiNatQuestion} />);
+
+      // Badge check
+      expect(screen.getByText("Multi-NAT")).toBeTruthy();
+
+      // Separate numeric inputs for Blank 1 and Blank 2
+      const blank1Input = screen.getByLabelText("Blank 1");
+      const blank2Input = screen.getByLabelText("Blank 2");
+      expect(blank1Input).toBeTruthy();
+      expect(blank2Input).toBeTruthy();
+
+      // Notice helper text indicating all blanks required
+      expect(screen.getByText(/all 2 blanks required/i)).toBeTruthy();
+
+      // Submit button is disabled when inputs are empty
+      const submitButtons = screen.getAllByRole("button", { name: /Submit Answer/i });
+      expect(submitButtons[0].hasAttribute("disabled")).toBe(true);
+
+      // Fill only Blank 1 -> submit should remain disabled
+      fireEvent.change(blank1Input, { target: { value: "3" } });
+      expect(screen.getAllByRole("button", { name: /Submit Answer/i })[0].hasAttribute("disabled")).toBe(true);
+
+      // Fill Blank 2 with non-numeric -> submit should remain disabled
+      fireEvent.change(blank2Input, { target: { value: "abc" } });
+      expect(screen.getAllByRole("button", { name: /Submit Answer/i })[0].hasAttribute("disabled")).toBe(true);
+
+      // Fill Blank 2 with valid number "4" -> submit enabled
+      fireEvent.change(blank2Input, { target: { value: "4" } });
+      const submitBtn = screen.getAllByRole("button", { name: /Submit Answer/i })[0];
+      expect(submitBtn.hasAttribute("disabled")).toBe(false);
+
+      // Submit [3, 4] -> marked Correct!
+      fireEvent.click(submitBtn);
+      expect(screen.getByText("Correct!")).toBeTruthy();
+
+      unmount();
+
+      // Re-render and test incorrect order [4, 3]
+      render(<AnswerPanel question={multiNatQuestion} />);
+      const b1 = screen.getByLabelText("Blank 1");
+      const b2 = screen.getByLabelText("Blank 2");
+      fireEvent.change(b1, { target: { value: "4" } });
+      fireEvent.change(b2, { target: { value: "3" } });
+      const btn = screen.getAllByRole("button", { name: /Submit Answer/i })[0];
+      fireEvent.click(btn);
+      expect(screen.getByText("Incorrect")).toBeTruthy();
+    });
+
+    test("renders 3 numeric inputs dynamically for MULTI_NAT with 3 blanks", () => {
+      const threeBlankQ = {
+        question_uid: "test:3blanks",
+        title: "Test Question with 3 blanks",
+      };
+
+      AnswerService.answersByQuestionUid["test:3blanks"] = {
+        type: "MULTI_NAT",
+        answer: [10, 20, 30],
+      };
+
+      render(<AnswerPanel question={threeBlankQ} />);
+      expect(screen.getByLabelText("Blank 1")).toBeTruthy();
+      expect(screen.getByLabelText("Blank 2")).toBeTruthy();
+      expect(screen.getByLabelText("Blank 3")).toBeTruthy();
+      expect(screen.getByText(/all 3 blanks required/i)).toBeTruthy();
+    });
   });
 });
 
