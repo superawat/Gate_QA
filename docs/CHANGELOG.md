@@ -1,5 +1,29 @@
 # Changelog
 
+- **Verified MSQ Answer Key Correction & Evaluator Hardening for go:357498 (GATE CSE 2021 Set 2 Q42) (DEC-109)**:
+  - *Context*: Identified and resolved a verified MSQ evaluation issue for `go:357498` (`cse:2021:set2:main:q42`, Operating System - Threads & Process Memory Isolation). Previously, selecting both valid options {A, D} was evaluated as incorrect because runtime answer registries stored stale `["A", "B"]`.
+  - *Mathematical & Computer Science Derivation*:
+    - The program segment is executed by two separate processes $P_1$ and $P_2$. Because distinct processes execute in separate virtual address spaces, global variables (`int x = 0; Lock L1;`) are private to each process.
+    - Inside each process, two threads $T_1$ and $T_2$ invoke `foo()`. The global variable `x` is incremented twice under lock $L_1$ per process, resulting in `x = 2`. Both $P_1$ and $P_2$ print `x = 2`. Thus **Statement A is TRUE** and **Statement B is FALSE** (neither process prints 4).
+    - In `foo()`, `int y = 0;` is a thread-local stack variable. Each thread gets its own instance, increments it to 1, and prints 1. Thus **Statement C is FALSE** (no thread prints 2) and **Statement D is TRUE** (all threads print 1).
+    - Official GATE CSE 2021 Set 2 Final Answer Key strictly lists **A, D** (MSQ).
+  - *Root Cause Analysis (Why the Issue Survived Post-Audit)*:
+    - *Human Audit Mislabeling*: In commit `bfcafd6659` (DEC-067), Question 42 was misidentified as a graph connectivity question and manually assigned `["A", "B"]`.
+    - *Unapplied Patch*: A later widget backfill placed the correct `["A", "D"]` in `data/answers/manual-answers-patch-v1.json`, but static shards and runtime files were never regenerated with this override because `scripts/build-public-artifacts.mjs` reads from `public/data/answers/answers_by_question_uid_v1.json`, which still had `["A", "B"]`.
+    - *Validator Blind Spot*: `scripts/qa/validate-data-integrity.js` validates syntactic conformity (MSQ is an array of options A–E) and parity between `questions-with-answers.json` and `answers_by_question_uid_v1.json`. Since both files agreed on `["A", "B"]`, the schema validator passed without comparing against `manual-answers-patch-v1.json`.
+  - *Evaluator Hardening (`src/utils/evaluateAnswer.js`)*:
+    - Hardened `normalizeMsqInput` to canonicalize Arrays, Sets (`new Set(["A", "D"])`), and delimited strings (`"A, D"`).
+    - Standardized alphabetical sorting ensures strict order-independence: `["A", "D"]` and `["D", "A"]` produce identical canonical representations and evaluate identically to correct.
+    - Subsets (e.g. `["A"]` or `["D"]`), supersets (`["A", "B", "D"]`), or wrong combinations (`["A", "B"]`) evaluate to incorrect. Empty/null selections evaluate to `invalid_input`.
+  - *Data & Parity Harmonization*:
+    - Synchronized `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, and master question bank `public/questions-with-answers.json` to `["A", "D"]`.
+    - Regenerated public detail shard `public/question-detail-shards/2021-s2.json`, `public/mock_catalog_v1.json`, and `public/question-search-index.json`.
+    - Preserved question HTML, options, and metadata completely unmodified.
+  - *Testing & Validation*:
+    - Added comprehensive regression tests in `src/utils/evaluateAnswer.test.js` covering exact match `["A", "D"]`, reversed order `["D", "A"]`, lowercase `["a", "d"]`, Sets, duplicate selections `["A", "D", "A"]`, partial selections, incorrect supersets, and invalid inputs.
+    - Added service resolution test in `src/services/AnswerService.test.js` validating resolution via `question_uid` and `exam_uid`.
+    - 975 unit tests passing across 80 test files (100% green), `npm run qa:validate-data` clean, `npm run typecheck` clean.
+
 - **Multi-Blank NAT Question Type (`MULTI_NAT`) & Verified Fix for go:546 (GATE CSE 1992 Q1.ii) (DEC-108)**:
   - *Context*: Introduced a first-class, reusable question type `MULTI_NAT` (with canonical alias `MULTI_BLANK_NAT`) for questions containing multiple independent blanks requiring separate numeric answers in strict positional order.
   - *Question Verification (`go:546` - GATE CSE 1992 Q01,ii, Computer Networks)*:

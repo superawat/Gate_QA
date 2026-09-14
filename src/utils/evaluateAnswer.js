@@ -1,12 +1,19 @@
 const ALLOWED_OPTIONS = new Set(["A", "B", "C", "D", "E"]);
 
 function normalizeMsqInput(input) {
-  if (!Array.isArray(input)) {
+  let list = [];
+  if (Array.isArray(input)) {
+    list = input;
+  } else if (input instanceof Set) {
+    list = Array.from(input);
+  } else if (typeof input === "string") {
+    list = input.split(/[,\s]+/);
+  } else {
     return [];
   }
   const seen = new Set();
   const values = [];
-  for (const value of input) {
+  for (const value of list) {
     const upper = String(value || "").toUpperCase().trim();
     if (!ALLOWED_OPTIONS.has(upper) || seen.has(upper)) {
       continue;

@@ -2460,6 +2460,58 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         tolerance: { abs: 0 },
       });
     });
+
+    describe("DEC-109: go:357498 (GATE CSE 2021 Set 2 Q42)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:357498": {
+            answer_uid: "manual:go:357498",
+            type: "MSQ",
+            answer: ["A", "D"],
+            tolerance: null,
+          },
+        };
+        AnswerService.answersByExamUid = {
+          "cse:2021:set2:main:q42": {
+            answer_uid: "manual:go:357498",
+            type: "MSQ",
+            answer: ["A", "D"],
+            tolerance: null,
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:357498 via question_uid as MSQ [A, D]", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:357498",
+          exam_uid: "cse:2021:set2:main:q42",
+          title: "GATE CSE 2021 Set 2 | Question: 42",
+        });
+        expect(answer).toEqual({
+          answer_uid: "manual:go:357498",
+          type: "MSQ",
+          answer: ["A", "D"],
+          tolerance: null,
+        });
+      });
+
+      test("resolves go:357498 via exam_uid fallback as MSQ [A, D]", () => {
+        AnswerService.answersByQuestionUid = {};
+        const answer = AnswerService.getAnswerForQuestion({
+          exam_uid: "cse:2021:set2:main:q42",
+          title: "GATE CSE 2021 Set 2 | Question: 42",
+        });
+        expect(answer).toEqual({
+          answer_uid: "manual:go:357498",
+          type: "MSQ",
+          answer: ["A", "D"],
+          tolerance: null,
+        });
+      });
+    });
   });
 });
 

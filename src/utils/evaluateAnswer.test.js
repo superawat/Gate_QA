@@ -2738,5 +2738,113 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(aliasRec, [6, 5]).correct).toBe(false);
     });
   });
+
+  describe("DEC-109: go:357498 (GATE CSE 2021 Set 2 Q42) MSQ evaluation", () => {
+    const record = {
+      type: "MSQ",
+      answer: ["A", "D"],
+      tolerance: null,
+    };
+
+    test("evaluates exact selection [A, D] as correct", () => {
+      expect(evaluateAnswer(record, ["A", "D"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+    });
+
+    test("order of selected options does not matter: [D, A] is evaluated as correct", () => {
+      expect(evaluateAnswer(record, ["D", "A"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+    });
+
+    test("case-insensitive evaluation: [a, d] and [d, a] are evaluated as correct", () => {
+      expect(evaluateAnswer(record, ["a", "d"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, ["d", "a"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+    });
+
+    test("Set-based input and delimited string representation are evaluated correctly", () => {
+      expect(evaluateAnswer(record, new Set(["A", "D"]))).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, new Set(["D", "A"]))).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "A, D")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "D, A")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+    });
+
+    test("duplicate option submissions in input are deduplicated: [A, D, A] is evaluated as correct", () => {
+      expect(evaluateAnswer(record, ["A", "D", "A"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+    });
+
+    test("partial selections ([A] or [D]) are marked incorrect", () => {
+      expect(evaluateAnswer(record, ["A"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["D"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("incorrect or superset option combinations are marked incorrect", () => {
+      expect(evaluateAnswer(record, ["A", "B"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["A", "B", "D"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["A", "C", "D"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["B", "C"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["A", "B", "C", "D"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("empty or invalid submissions return invalid_input", () => {
+      expect(evaluateAnswer(record, [])).toEqual({
+        status: "invalid_input",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, "")).toEqual({
+        status: "invalid_input",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, null)).toEqual({
+        status: "invalid_input",
+        correct: false,
+      });
+    });
+  });
 });
 
