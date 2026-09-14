@@ -1,5 +1,45 @@
 # Changelog
 
+- **Comprehensive GATE CSE 2026–2001 Answer Key Audit & Verified Discrepancies Resolution across Master Datasets (DEC-110)**:
+  - *Context*: Conducted a comprehensive answer audit of all 2,440 questions across 36 examination papers from GATE CSE 2026 down to 2001, comparing GateQA JSON datasets against PracticePaper.in and GateOverflow authoritative references.
+  - *Audit Resolution*:
+    - Evaluated 45 potential discrepancies; confirmed all 45 verified questions with user manual confirmation.
+    - Resolved 21 actual discrepancies across question types:
+      - 2026 Set 2 Q29 (`go:523117`): MCQ Option A ("Both algorithms B1 and B2 are correct").
+      - 2026 Set 2 Q50 (`go:523096`): NAT exact 9 (`tolerance: null`).
+      - 2021 Set 1 Q23 (`go:357428`): NAT dual-answer `[205, 820]` with ranges `[{min: 205, max: 205}, {min: 819, max: 820}]`.
+      - 2021 Set 2 Q36 (`go:357504`): MCQ Option C.
+      - 2021 Set 2 Q37 (`go:357503`): MCQ Option B.
+      - 2021 Set 2 Q38 (`go:357502`): MCQ Option A.
+      - 2020 Q21 (`go:333210`): NAT exact 13.5 (`tolerance: null`).
+      - 2019 Q50 (`go:302798`): NAT exact 3 (`tolerance: null`).
+      - 2015 Set 3 Q57 (`go:8300`): MCQ Option C.
+      - 2015 Set 3 Q58 (`go:8301`): MCQ Option B.
+      - 2012 Q29 (`go:786`): MCQ Option D.
+      - 2012 Q39 (`go:1762`): MCQ Option B.
+      - 2012 Q45 (`go:2156`): MCQ Option C.
+      - 2012 Q60 (`go:2200`): MCQ Option A.
+      - 2010 Q19 (`go:2194`): MCQ Option C.
+      - 2003 Q49 (`go:43577`): MCQ Option A.
+      - 2001 Q13 (`go:706`): MCQ Option D.
+      - 2001 Q14 (`go:707`): MCQ Option C.
+      - 2001 Q24 (`go:717`): Converted from legacy SUBJECTIVE null to MCQ Option D.
+      - 2001 Q25 (`go:718`): Converted from legacy SUBJECTIVE null to MCQ Option C.
+      - 2001 Q49 (`go:742`): Converted from legacy SUBJECTIVE null to MCQ Option C.
+    - Verified and preserved 24 MTA/Option-aligned questions intact (`2023 Q57 MTA`, `2020 Q7 MTA`, `2013 Q42/Q47 MTA`, `2012 Q3/Q38 MTA`, `2008 Q3/Q30/Q79 MTA`, `2007 Q28 MTA`, `2005 Q53 MTA`, `2003 Q42/Q71/Q74 MTA`, etc.).
+  - *Data & Parity Harmonization*:
+    - Synchronized all 43 verified questions across:
+      1. `data/answers/manual-answers-patch-v1.json`
+      2. `data/answers/answers_by_question_uid_v1.json`
+      3. `public/data/answers/answers_by_question_uid_v1.json`
+      4. `public/data/answers/answers_by_exam_uid_v1.json`
+      5. `public/data/answers/answers_master_v1.json`
+      6. `public/questions-with-answers.json`
+    - Removed supported questions (`go:401`, `go:43575`) from `public/data/answers/unsupported_question_uids_v1.json`.
+    - Regenerated public artifacts via `scripts/precompute-subtopics.mjs` and `scripts/build-public-artifacts.mjs`.
+  - *Testing & Validation*:
+    - Added unit regression tests in `src/utils/evaluateAnswer.test.js`.
+
 - **Verified MSQ Answer Key Correction & Evaluator Hardening for go:357498 (GATE CSE 2021 Set 2 Q42) (DEC-109)**:
   - *Context*: Identified and resolved a verified MSQ evaluation issue for `go:357498` (`cse:2021:set2:main:q42`, Operating System - Threads & Process Memory Isolation). Previously, selecting both valid options {A, D} was evaluated as incorrect because runtime answer registries stored stale `["A", "B"]`.
   - *Mathematical & Computer Science Derivation*:

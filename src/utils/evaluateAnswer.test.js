@@ -2846,5 +2846,120 @@ describe("evaluateAnswer", () => {
       });
     });
   });
+
+  describe("GATE CSE 2026-2001 Audit Answer Updates", () => {
+    test("evaluates GATE CSE 2019 Q50 (go:302798) NAT exact 3", () => {
+      const record = { type: "NAT", answer: 3, tolerance: null };
+      expect(evaluateAnswer(record, "3")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, 3)).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "4")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2020 Q21 (go:333210) NAT exact 13.5", () => {
+      const record = { type: "NAT", answer: 13.5, tolerance: null };
+      expect(evaluateAnswer(record, "13.5")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, 13.5)).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "13.3")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2021 Set 1 Q23 (go:357428) NAT accepting 205 or 820", () => {
+      const record = {
+        type: "NAT",
+        answer: [205, 820],
+        tolerance: {
+          ranges: [
+            { min: 205, max: 205 },
+            { min: 819, max: 820 }
+          ]
+        }
+      };
+      expect(evaluateAnswer(record, "205")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "820")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "819.5")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "100")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2021 Set 2 Q36 (go:357504) MCQ C", () => {
+      const record = { type: "MCQ", answer: "C", tolerance: null };
+      expect(evaluateAnswer(record, "C")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2001 Q24 (go:717) converted from SUBJECTIVE to MCQ D", () => {
+      const record = { type: "MCQ", answer: "D", tolerance: null };
+      expect(evaluateAnswer(record, "D")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2026 Set 2 Q29 (go:523117) MCQ A", () => {
+      const record = { type: "MCQ", answer: "A", tolerance: null };
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "B")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2026 Set 2 Q50 (go:523096) NAT exact 9", () => {
+      const record = { type: "NAT", answer: 9, tolerance: null };
+      expect(evaluateAnswer(record, "9")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, 9)).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "8")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+  });
 });
 

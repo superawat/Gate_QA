@@ -110,11 +110,13 @@
       }
     },
     "go:399254": {
+      "answer_uid": "manual:go:399254",
       "type": "MTA",
       "answer": "MTA",
+      "tolerance": null,
       "source": {
         "kind": "manual_patch",
-        "note": "gatecse2023:ga:q2:marks_to_all"
+        "note": "gate_cse_answer_audit_2026_2001:2023_Q57"
       }
     },
     "go:399261": {
@@ -210,14 +212,22 @@
     "go:8300": {
       "answer_uid": "manual:go:8300",
       "type": "MCQ",
-      "answer": "B",
-      "tolerance": null
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2015_Set_3_Q57"
+      }
     },
     "go:8301": {
       "answer_uid": "manual:go:8301",
       "type": "MCQ",
-      "answer": "C",
-      "tolerance": null
+      "answer": "B",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2015_Set_3_Q58"
+      }
     },
     "go:8302": {
       "type": "MCQ",
@@ -348,9 +358,14 @@
       "tolerance": null
     },
     "go:8410": {
+      "answer_uid": "manual:go:8410",
       "type": "MCQ",
       "answer": "A",
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/8410/gate-cse-2015-set-3-question-14"
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2015_Set_3_Q24"
+      }
     },
     "go:8411": {
       "type": "MCQ",
@@ -1118,10 +1133,14 @@
       "reason": "Official IIT Kharagpur GATE 2014 Answer Key (CS) and PracticePaper validation"
     },
     "go:1932": {
+      "answer_uid": "manual:go:1932",
       "type": "MCQ",
       "answer": "C",
       "tolerance": null,
-      "reason": "Official IIT Kharagpur GATE 2014 Answer Key (CS) and PracticePaper validation"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2014_Set_1_Q52"
+      }
     },
     "go:1933": {
       "type": "MCQ",
@@ -2185,7 +2204,11 @@
         "C",
         "D"
       ],
-      "tolerance": null
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2021_Set_1_Q64"
+      }
     },
     "go:357443": {
       "answer_uid": "manual:go:357443",
@@ -2210,15 +2233,28 @@
       }
     },
     "go:357428": {
+      "answer_uid": "manual:go:357428",
       "type": "NAT",
       "answer": [
         205,
         820
       ],
       "tolerance": {
-        "abs": 0
+        "ranges": [
+          {
+            "min": 205,
+            "max": 205
+          },
+          {
+            "min": 819,
+            "max": 820
+          }
+        ]
       },
-      "note": "manual_verified:gateoverflow_widget:https://gateoverflow.in/357428/gate-cse-2021-set-1-question-23 :: official answer accepts 205 or 820"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2021_Set_1_Q23"
+      }
     },
     "go:357410": {
       "answer_uid": "manual:go:357410",
@@ -2265,27 +2301,33 @@
     },
     "go:357504": {
       "answer_uid": "manual:go:357504",
-      "type": "MSQ",
-      "answer": [
-        "A",
-        "C",
-        "D"
-      ],
-      "tolerance": null
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2021_Set_2_Q36"
+      }
     },
     "go:357503": {
+      "answer_uid": "manual:go:357503",
       "type": "MCQ",
       "answer": "B",
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/357503/gate-cse-2021-set-2-question-37"
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2021_Set_2_Q37"
+      }
     },
     "go:357502": {
       "answer_uid": "manual:go:357502",
-      "type": "MSQ",
-      "answer": [
-        "A",
-        "D"
-      ],
-      "tolerance": null
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2021_Set_2_Q38"
+      }
     },
     "go:357501": {
       "type": "MCQ",
@@ -2330,18 +2372,24 @@
       }
     },
     "go:1376": {
+      "answer_uid": "manual:go:1376",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2005_q53:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2005_Q53"
+      }
     },
     "go:43485": {
+      "answer_uid": "manual:go:43485",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2008_q79:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2008_Q79"
+      }
     },
     "go:80594": {
       "type": "MCQ",
@@ -3295,11 +3343,14 @@
       "note": "gate_cse_2003_q66:verified_reference_key_c"
     },
     "go:43577": {
+      "answer_uid": "manual:go:43577",
       "type": "MCQ",
-      "answer": "C",
+      "answer": "A",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2003_q49:verified_reference_key_c"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2003_Q49"
+      }
     },
     "go:43578": {
       "type": "MCQ",
@@ -3533,11 +3584,14 @@
       "note": "gate_cse_2005_q42:verified_reference_key_c"
     },
     "go:1381": {
+      "answer_uid": "manual:go:1381",
       "type": "MCQ",
       "answer": "D",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2005_q58:verified_reference_key_d"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2005_Q58"
+      }
     },
     "go:1380": {
       "type": "MCQ",
@@ -3827,11 +3881,14 @@
       "note": "gate_cse_2008_q75:verified_reference_key_c"
     },
     "go:254": {
+      "answer_uid": "manual:go:254",
       "type": "MCQ",
       "answer": "C",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2007_q25:verified_reference_key_c"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2007_Q25"
+      }
     },
     "go:43490": {
       "type": "MCQ",
@@ -4056,11 +4113,14 @@
       "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/2105/gate-cse-2011-question-3"
     },
     "go:1339": {
+      "answer_uid": "manual:go:1339",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2009_q55:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2009_Q55"
+      }
     },
     "go:2110": {
       "type": "MCQ",
@@ -4075,9 +4135,14 @@
       "note": "gate_cse_2010_q48:official_gate_key_c"
     },
     "go:2120": {
+      "answer_uid": "manual:go:2120",
       "type": "MCQ",
       "answer": "C",
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/2120/gate-cse-2011-question-18"
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2011_Q18"
+      }
     },
     "go:2122": {
       "type": "MCQ",
@@ -4202,10 +4267,14 @@
       "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/1560/gate-cse-2013-question-57"
     },
     "go:35": {
+      "answer_uid": "manual:go:35",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2012_q3_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2012_Q3"
+      }
     },
     "go:379": {
       "type": "MCQ",
@@ -4456,9 +4525,14 @@
       "note": "gate_cse_2016_set2_q33:nat_range_hardening:official_gate_key_3.9_to_4.1"
     },
     "go:39545": {
+      "answer_uid": "manual:go:39545",
       "type": "MCQ",
       "answer": "C",
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/39545/gate-cse-2016-set-2-question-04"
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2016_Set_2_Q4"
+      }
     },
     "go:39601": {
       "type": "NAT",
@@ -4801,10 +4875,14 @@
       "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/333238/gate-cse-2020-question-ga-3"
     },
     "go:333224": {
+      "answer_uid": "manual:go:333224",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "note": "gate_cse_2020_q7:marks_to_all:official_gate_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2020_Q7"
+      }
     },
     "go:333197": {
       "type": "MCQ",
@@ -6700,10 +6778,14 @@
       "note": "pdf_answer_key:keys2026/CS2_Keys.pdf:q38"
     },
     "go:523117": {
+      "answer_uid": "manual:go:523117",
       "type": "MCQ",
       "answer": "A",
       "tolerance": null,
-      "note": "pdf_answer_key:keys2026/CS2_Keys.pdf:q39"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_2026_set_2_q29:manual_verified_option_a"
+      }
     },
     "go:523116": {
       "type": "MCQ",
@@ -6860,12 +6942,14 @@
       "note": "pdf_answer_key:keys2026/CS2_Keys.pdf:q59"
     },
     "go:523096": {
+      "answer_uid": "manual:go:523096",
       "type": "NAT",
       "answer": 9,
-      "tolerance": {
-        "abs": 0.01
-      },
-      "note": "pdf_answer_key:keys2026/CS2_Keys.pdf:q60"
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_2026_set_2_q50:manual_verified_nat_9"
+      }
     },
     "go:523095": {
       "type": "NAT",
@@ -7513,37 +7597,54 @@
       "note": "curated_resolution:manual_hardware_reasoning:https://gateoverflow.in/834/gate-cse-2002-question-2-4 :: 5DH + 6BH = C8H, so AC=1 and CY=0."
     },
     "go:933": {
+      "answer_uid": "manual:go:933",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2003_q42:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2003_Q42"
+      }
     },
     "go:958": {
+      "answer_uid": "manual:go:958",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2003_q71:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2003_Q71"
+      }
     },
     "go:1226": {
+      "answer_uid": "manual:go:1226",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2007_q28:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2007_Q28"
+      }
     },
     "go:80": {
+      "answer_uid": "manual:go:80",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2013_q47_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2013_Q47"
+      }
     },
     "go:473": {
+      "answer_uid": "manual:go:473",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2012_q38_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2012_Q38"
+      }
     },
     "go:1611": {
       "type": "MCQ",
@@ -7552,11 +7653,14 @@
       "note": "official_gate_key:gate_cse_2012_q26"
     },
     "go:441": {
+      "answer_uid": "manual:go:441",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2008_q30:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2008_Q30"
+      }
     },
     "go:460058": {
       "type": "NAT",
@@ -7796,25 +7900,14 @@
       "note": "gate_cse_2020_q2:answer_correction_c_to_a:official_gate_key_a"
     },
     "go:333210": {
+      "answer_uid": "manual:go:333210",
       "type": "NAT",
-      "answer": 13.3,
-      "tolerance": {
-        "ranges": [
-          {
-            "min": 13.3,
-            "max": 13.3,
-            "lower": 13.3,
-            "upper": 13.3
-          },
-          {
-            "min": 13.5,
-            "max": 13.5,
-            "lower": 13.5,
-            "upper": 13.5
-          }
-        ]
-      },
-      "note": "gate_cse_2020_q21:nat_dual_accepted_values:official_gate_key_13.3_and_13.5"
+      "answer": 13.5,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2020_Q21"
+      }
     },
     "go:333191": {
       "type": "MCQ",
@@ -7847,12 +7940,14 @@
       "note": "gate_cse_2019_q20:nat_answer_correction:official_gate_key_0.08"
     },
     "go:302798": {
+      "answer_uid": "manual:go:302798",
       "type": "NAT",
-      "answer": 4,
-      "tolerance": {
-        "abs": 0.01
-      },
-      "note": "gate_cse_2019_q50:nat_answer_correction:official_gate_key_4"
+      "answer": 3,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2019_Q50"
+      }
     },
     "go:302793": {
       "type": "NAT",
@@ -7977,10 +8072,14 @@
       "note": "official_gate_key:gate_cse_2013_q30"
     },
     "go:60": {
+      "answer_uid": "manual:go:60",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2013_q42_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2013_Q42"
+      }
     },
     "go:33": {
       "type": "MCQ",
@@ -8109,10 +8208,14 @@
       "note": "official_gate_key:gate_cse_2012_q27"
     },
     "go:786": {
-      "type": "MTA",
-      "answer": "MTA",
+      "answer_uid": "manual:go:786",
+      "type": "MCQ",
+      "answer": "D",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2012_q29_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2012_Q29"
+      }
     },
     "go:1615": {
       "type": "MCQ",
@@ -8163,10 +8266,14 @@
       "note": "official_gate_key:gate_cse_2012_q37"
     },
     "go:1762": {
-      "type": "MTA",
-      "answer": "MTA",
+      "answer_uid": "manual:go:1762",
+      "type": "MCQ",
+      "answer": "B",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2012_q39_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2012_Q39"
+      }
     },
     "go:1765": {
       "type": "MCQ",
@@ -8199,10 +8306,14 @@
       "note": "official_gate_key:gate_cse_2012_q44"
     },
     "go:2156": {
-      "type": "MTA",
-      "answer": "MTA",
+      "answer_uid": "manual:go:2156",
+      "type": "MCQ",
+      "answer": "C",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2012_q45_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2012_Q45"
+      }
     },
     "go:2159": {
       "type": "MCQ",
@@ -8289,10 +8400,14 @@
       "note": "official_gate_key:gate_cse_2012_q59"
     },
     "go:2200": {
-      "type": "MTA",
-      "answer": "MTA",
+      "answer_uid": "manual:go:2200",
+      "type": "MCQ",
+      "answer": "A",
       "tolerance": null,
-      "note": "official_gate_key:gate_cse_2012_q60_marks_to_all"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2012_Q60"
+      }
     },
     "go:2209": {
       "type": "MCQ",
@@ -8441,11 +8556,14 @@
       "note": "gate_cse_2010_q18:official_gate_key_a"
     },
     "go:2194": {
+      "answer_uid": "manual:go:2194",
       "type": "MCQ",
-      "answer": "B",
+      "answer": "C",
       "tolerance": null,
-      "source": "official_key",
-      "note": "gate_cse_2010_q19:official_gate_key_b"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2010_Q19"
+      }
     },
     "go:2196": {
       "type": "MCQ",
@@ -9036,11 +9154,14 @@
       "note": "gate_cse_2008_q1:verified_reference_key_a"
     },
     "go:401": {
+      "answer_uid": "manual:go:401",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2008_q3:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2008_Q3"
+      }
     },
     "go:402": {
       "type": "MCQ",
@@ -10338,11 +10459,14 @@
       "note": "gate_cse_2006_q82:verified_reference_key_a"
     },
     "go:79790": {
+      "answer_uid": "manual:go:79790",
       "type": "MCQ",
       "answer": "A",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2006_q83:verified_reference_key_a"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2006_Q83"
+      }
     },
     "go:1856": {
       "type": "MCQ",
@@ -11801,18 +11925,24 @@
       "note": "gate_cse_2003_q73:verified_reference_key_d"
     },
     "go:43575": {
+      "answer_uid": "manual:go:43575",
       "type": "MTA",
       "answer": "MTA",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2003_q74:verified_reference_key_mta"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2003_Q74"
+      }
     },
     "go:962": {
+      "answer_uid": "manual:go:962",
       "type": "MCQ",
       "answer": "C",
       "tolerance": null,
-      "source": "verified_reference_key",
-      "note": "gate_cse_2003_q76:verified_reference_key_c"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2003_Q76"
+      }
     },
     "go:963": {
       "type": "MCQ",
@@ -12851,6 +12981,79 @@
       "answer": "B",
       "tolerance": null,
       "note": "gate_cse_2002_q1_3:official_key_option_b_recurrence"
+    },
+    "go:706": {
+      "answer_uid": "manual:go:706",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2001_Q13"
+      }
+    },
+    "go:707": {
+      "answer_uid": "manual:go:707",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2001_Q14"
+      }
+    },
+    "go:717": {
+      "answer_uid": "manual:go:717",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2001_Q24"
+      }
+    },
+    "go:718": {
+      "answer_uid": "manual:go:718",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2001_Q25"
+      }
+    },
+    "go:742": {
+      "answer_uid": "manual:go:742",
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_answer_audit_2026_2001:2001_Q49"
+      }
+    },
+    "go:522917": {
+      "answer_uid": "manual:go:522917",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_2026_set_2_q29:manual_verified_option_a"
+      }
+    },
+    "go:503096": {
+      "answer_uid": "manual:go:503096",
+      "type": "NAT",
+      "answer": 9,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_2026_set_2_q50:manual_verified_nat_9"
+      }
     }
+  },
+  "stats": {
+    "records": 1885
   }
 }
