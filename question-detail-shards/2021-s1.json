@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T17:29:28.689Z",
+  "generatedAt": "2026-09-14T22:00:12.347Z",
   "shardKey": "2021-s1",
   "yearSetKey": "2021-s1",
   "yearSetIdentity": "cse:2021:set-1",
@@ -248,7 +248,7 @@
       ],
       "question_uid": "go:357468",
       "exam_uid": "cse:2021:set1:ga:q9",
-      "answer_uid": "v1:8.16.5",
+      "answer_uid": "manual:go:357468",
       "answer_meta": {
         "type": "MCQ",
         "answer": [
@@ -256,13 +256,17 @@
           "D"
         ],
         "tolerance": null,
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
       "type": "MCQ",
+      "answer": [
+        "C",
+        "D"
+      ],
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
@@ -975,26 +979,33 @@
       "answer_uid": "manual:go:357428",
       "answer_meta": {
         "type": "NAT",
-        "answer": 819.5,
+        "answer": [
+          205,
+          820
+        ],
         "tolerance": {
           "ranges": [
             {
-              "min": 819,
-              "max": 820
-            },
-            {
               "min": 205,
               "max": 205
+            },
+            {
+              "min": 819,
+              "max": 820
             }
           ]
         },
-        "source": "question_uid"
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
       "cse_set": 1,
       "source_session": "Set 1",
       "type": "NAT",
+      "answer": [
+        205,
+        820
+      ],
       "track": "cse",
       "yearSetKey": "2021-s1",
       "yearSetIdentity": "cse:2021:set-1"
