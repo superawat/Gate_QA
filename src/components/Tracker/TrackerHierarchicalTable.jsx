@@ -16,14 +16,15 @@ import {
   FiCheck,
   FiLayers,
   FiAward,
+  FiX,
 } from "react-icons/fi";
 import { PRACTICE_ROUTE } from "../../utils/routes";
 
 const AVAILABLE_CUSTOM_COLUMNS = [
-  { id: "marks", label: "Marks Range", defaultVisible: false },
-  { id: "priority", label: "Priority", defaultVisible: false },
-  { id: "mock", label: "Mock", defaultVisible: false },
-  { id: "mockCount", label: "Mock Count", defaultVisible: false },
+  { id: "marks", label: "Marks Range", description: "Display GATE exam marks range for each topic", defaultVisible: false },
+  { id: "priority", label: "Priority", description: "High / Medium / Low preparation priority badge", defaultVisible: false },
+  { id: "mock", label: "Mock", description: "Mock test target status indicator", defaultVisible: false },
+  { id: "mockCount", label: "Mock Count", description: "Number of mock tests practiced for each topic", defaultVisible: false },
 ];
 
 const formatMarksRange = (val) => {
@@ -129,6 +130,34 @@ export default function TrackerHierarchicalTable({
   const [expandedTopics, setExpandedTopics] = useState({});
 
   const [showColumnMenu, setShowColumnMenu] = useState(false);
+  const columnMenuRef = useRef(null);
+
+  // Close column menu on outside click or Escape key
+  useEffect(() => {
+    if (!showColumnMenu) return;
+
+    const handleClickOutside = (e) => {
+      if (columnMenuRef.current && !columnMenuRef.current.contains(e.target)) {
+        setShowColumnMenu(false);
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setShowColumnMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, { passive: true });
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showColumnMenu]);
 
   // Reset expand state when the active track changes (so new track starts collapsed = fast first paint)
   const prevTrackRef = useRef(activeTrack);
@@ -395,44 +424,143 @@ export default function TrackerHierarchicalTable({
             )}
           </button>
 
-          {/* Custom Columns Selector Dropdown */}
-          <div className="relative">
+          {/* Custom Columns Selector Dropdown & Mobile Bottom Sheet */}
+          <div className="relative" ref={columnMenuRef}>
             <button
               type="button"
               onClick={() => setShowColumnMenu((prev) => !prev)}
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)] transition-colors"
               title="Add or remove optional tracking columns"
+              aria-expanded={showColumnMenu}
+              aria-label="Customize table columns"
             >
               <FiColumns className="w-3.5 h-3.5" />
               <span>+ Columns</span>
             </button>
 
             {showColumnMenu && (
-              <div
-                className="absolute right-0 top-full mt-1.5 z-40 w-52 rounded-xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-xl p-2 text-xs"
-                onMouseLeave={() => setShowColumnMenu(false)}
-              >
-                <p className="font-bold text-[color:var(--color-text)] px-2 py-1 border-b border-[color:var(--color-border)] mb-1">
-                  Custom Columns
-                </p>
-                {AVAILABLE_CUSTOM_COLUMNS.map((col) => {
-                  const checked = isColVisible(col.id);
-                  return (
-                    <label
-                      key={col.id}
-                      className="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-[color:var(--color-surface-muted)] cursor-pointer select-none text-[color:var(--color-text)]"
+              <>
+                {/* Mobile Bottom Sheet Modal (<sm) */}
+                <div
+                  className="sm:hidden fixed inset-0 z-[70] flex items-end justify-center bg-black/60 backdrop-blur-xs transition-opacity"
+                  onClick={() => setShowColumnMenu(false)}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="optional-columns-title"
+                >
+                  <div
+                    className="w-full max-w-md rounded-t-3xl bg-[color:var(--color-surface)] border-t border-[color:var(--color-border)] shadow-2xl px-5 pt-3 pb-[calc(1.25rem+env(safe-area-inset-bottom,16px))] text-xs animate-in slide-in-from-bottom duration-200"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Pull Drag Indicator Handle */}
+                    <div className="w-10 h-1 bg-[color:var(--color-border)] rounded-full mx-auto mb-3 shrink-0" />
+
+                    {/* Header */}
+                    <div className="flex items-center justify-between pb-3 border-b border-[color:var(--color-border)] mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400">
+                          <FiColumns className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <h4 id="optional-columns-title" className="font-bold text-sm text-[color:var(--color-text)]">
+                            Optional Columns
+                          </h4>
+                          <p className="text-[11px] text-[color:var(--color-text-muted)]">
+                            Select columns to display in the table
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setShowColumnMenu(false)}
+                        className="p-1.5 rounded-lg text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] transition-colors"
+                        aria-label="Close menu"
+                      >
+                        <FiX className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Options list */}
+                    <div className="space-y-2">
+                      {AVAILABLE_CUSTOM_COLUMNS.map((col) => {
+                        const checked = isColVisible(col.id);
+                        return (
+                          <label
+                            key={col.id}
+                            className={`flex items-center justify-between p-3 rounded-xl border transition-colors cursor-pointer select-none ${
+                              checked
+                                ? "bg-blue-500/10 border-blue-500/30 text-[color:var(--color-text)]"
+                                : "bg-[color:var(--color-surface-muted)] border-[color:var(--color-border)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                            }`}
+                          >
+                            <div className="flex flex-col gap-0.5 pr-2">
+                              <span className="font-semibold text-xs text-[color:var(--color-text)]">
+                                {col.label}
+                              </span>
+                              <span className="text-[10px] text-[color:var(--color-text-muted)] leading-tight">
+                                {col.description}
+                              </span>
+                            </div>
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => handleToggleColumn(col.id)}
+                              className="rounded text-blue-600 focus:ring-blue-500 bg-[color:var(--color-surface)] border-[color:var(--color-border)] w-4 h-4 shrink-0"
+                            />
+                          </label>
+                        );
+                      })}
+                    </div>
+
+                    {/* Done Button */}
+                    <button
+                      type="button"
+                      onClick={() => setShowColumnMenu(false)}
+                      className="w-full mt-3.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-500 active:scale-[0.99] text-white transition-all shadow-sm"
                     >
-                      <span>{col.label}</span>
-                      <input
-                        type="checkbox"
-                        checked={checked}
-                        onChange={() => handleToggleColumn(col.id)}
-                        className="rounded text-blue-600 focus:ring-blue-500 bg-[color:var(--color-surface)] border-[color:var(--color-border)] w-3.5 h-3.5"
-                      />
-                    </label>
-                  );
-                })}
-              </div>
+                      Done
+                    </button>
+                  </div>
+                </div>
+
+                {/* Desktop Dropdown (>=sm) */}
+                <div
+                  className="hidden sm:block absolute right-0 top-full mt-1.5 z-40 w-64 rounded-xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-xl p-2.5 text-xs"
+                >
+                  <div className="flex items-center justify-between px-2 py-1.5 border-b border-[color:var(--color-border)] mb-1.5">
+                    <span className="font-bold text-[color:var(--color-text)]">
+                      Optional Columns
+                    </span>
+                    <span className="text-[10px] font-semibold text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded-full border border-blue-500/20">
+                      {AVAILABLE_CUSTOM_COLUMNS.filter((c) => isColVisible(c.id)).length} / {AVAILABLE_CUSTOM_COLUMNS.length} active
+                    </span>
+                  </div>
+                  <div className="space-y-1">
+                    {AVAILABLE_CUSTOM_COLUMNS.map((col) => {
+                      const checked = isColVisible(col.id);
+                      return (
+                        <label
+                          key={col.id}
+                          className="flex items-center justify-between px-2.5 py-2 rounded-lg hover:bg-[color:var(--color-surface-muted)] cursor-pointer select-none text-[color:var(--color-text)] transition-colors"
+                        >
+                          <div className="flex flex-col pr-2">
+                            <span className="font-medium text-xs text-[color:var(--color-text)]">{col.label}</span>
+                            <span className="text-[10px] text-[color:var(--color-text-muted)] leading-tight">
+                              {col.description}
+                            </span>
+                          </div>
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() => handleToggleColumn(col.id)}
+                            className="rounded text-blue-600 focus:ring-blue-500 bg-[color:var(--color-surface)] border-[color:var(--color-border)] w-4 h-4 shrink-0 ml-3"
+                          />
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -443,7 +571,7 @@ export default function TrackerHierarchicalTable({
         <table className="w-full text-left border-collapse min-w-[700px] sm:min-w-[760px]">
           <thead>
             <tr className="border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[11px] font-bold text-[color:var(--color-text-muted)] uppercase tracking-wider">
-              <th scope="col" className="py-3 px-3 sm:px-4 sticky left-0 z-20 bg-[color:var(--color-surface-muted)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[190px] sm:min-w-[260px] md:min-w-[320px]">
+              <th scope="col" className="py-3 px-3 sm:px-4 sticky left-0 z-20 bg-[color:var(--color-surface-muted)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
                 Syllabus (Subject / Topic)
               </th>
               <th scope="col" className="py-3 px-3 text-center w-24">
@@ -537,12 +665,12 @@ export default function TrackerHierarchicalTable({
                   {/* LEVEL 1: Subject Header Row */}
                   <tr className="bg-[color:var(--color-surface)] border-b border-[color:var(--color-border)] hover:bg-[color:var(--color-bg)] transition-colors group/subject">
                     {/* Sticky Subject Title */}
-                    <td className="py-3 px-3 sm:px-4 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/subject:bg-[color:var(--color-bg)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[190px] sm:min-w-[260px] md:min-w-[320px]">
-                      <div className="flex items-center gap-2.5">
+                    <td className="py-3 px-3 sm:px-4 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/subject:bg-[color:var(--color-bg)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
+                      <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                         <button
                           type="button"
                           onClick={() => toggleSubjectExpand(subject.id)}
-                          className="p-1 rounded-lg text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-border)]/50 transition-colors"
+                          className="w-6 h-6 flex items-center justify-center -ml-0.5 rounded-lg shrink-0 text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-border)]/50 transition-colors"
                           aria-label={isSubjectExpanded ? `Collapse ${subject.label}` : `Expand ${subject.label}`}
                         >
                           {isSubjectExpanded ? (
@@ -552,17 +680,15 @@ export default function TrackerHierarchicalTable({
                           )}
                         </button>
                         <div
-                          className="cursor-pointer select-none"
+                          className="cursor-pointer select-none flex-1 min-w-0 flex items-center justify-between gap-2"
                           onClick={() => toggleSubjectExpand(subject.id)}
                         >
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-sm text-[color:var(--color-text)]">
-                              {subject.label}
-                            </span>
-                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                              {subject.topics.length} Topics
-                            </span>
-                          </div>
+                          <span className="font-bold text-xs sm:text-sm text-[color:var(--color-text)] leading-snug break-words">
+                            {subject.label}
+                          </span>
+                          <span className="shrink-0 whitespace-nowrap text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 tabular-nums inline-flex items-center justify-center">
+                            {subject.topics.length} Topics
+                          </span>
                         </div>
                       </div>
                     </td>
@@ -818,13 +944,13 @@ export default function TrackerHierarchicalTable({
                         <React.Fragment key={topic.id}>
                           <tr className="hover:bg-[color:var(--color-bg)] transition-colors group/topic">
                             {/* Sticky Topic Title with Indent */}
-                            <td className="py-2.5 px-3 sm:px-4 pl-5 sm:pl-8 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-bg)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[190px] sm:min-w-[260px] md:min-w-[320px]">
-                              <div className="flex items-center gap-2">
+                            <td className="py-2.5 px-3 sm:px-4 pl-6 sm:pl-8 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-bg)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
+                              <div className="flex items-center gap-2 min-w-0">
                                 {hasSubtopics ? (
                                   <button
                                     type="button"
                                     onClick={() => toggleTopicExpand(topic.id)}
-                                    className="p-1 rounded text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors"
+                                    className="w-5 h-5 flex items-center justify-center rounded text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors shrink-0"
                                     aria-label={isTopicExpanded ? `Collapse ${topic.label}` : `Expand ${topic.label}`}
                                   >
                                     {isTopicExpanded ? (
@@ -834,23 +960,23 @@ export default function TrackerHierarchicalTable({
                                     )}
                                   </button>
                                 ) : (
-                                  <span className="w-5 text-center text-[color:var(--color-border)]">•</span>
+                                  <span className="w-5 h-5 flex items-center justify-center text-center text-[color:var(--color-border)] shrink-0">•</span>
                                 )}
                                 <div
-                                  className={hasSubtopics ? "cursor-pointer select-none" : ""}
+                                  className={hasSubtopics ? "cursor-pointer select-none flex-1 min-w-0" : "flex-1 min-w-0"}
                                   onClick={hasSubtopics ? () => toggleTopicExpand(topic.id) : undefined}
                                 >
                                   <div className="flex items-center gap-1.5 flex-wrap">
-                                    <span className="font-semibold text-xs text-[color:var(--color-text)]">
+                                    <span className="font-semibold text-xs text-[color:var(--color-text)] leading-snug break-words">
                                       {topic.label}
                                     </span>
                                     {metrics.isRevisionDue && (
-                                      <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                      <span className="shrink-0 whitespace-nowrap text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
                                         Revision Due
                                       </span>
                                     )}
                                     {metrics.needsAttention && (
-                                      <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                                      <span className="shrink-0 whitespace-nowrap text-[9px] font-bold px-1.5 py-0.2 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">
                                         Weak
                                       </span>
                                     )}
@@ -1066,12 +1192,12 @@ export default function TrackerHierarchicalTable({
                                   className="bg-[color:var(--color-surface-muted)]/30 hover:bg-[color:var(--color-surface-muted)] transition-colors text-[11px]"
                                 >
                                   {/* Deeply Indented Subtopic Title with Enumeration */}
-                                  <td className="py-2 px-3 sm:px-4 pl-9 sm:pl-14 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-surface-muted)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[190px] sm:min-w-[260px] md:min-w-[320px]">
-                                    <div className="flex items-center gap-2">
+                                  <td className="py-2 px-3 sm:px-4 pl-10 sm:pl-14 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-surface-muted)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
+                                    <div className="flex items-center gap-2 min-w-0">
                                       <span className="text-[11px] font-mono font-bold text-[color:var(--color-text-muted)] w-4 text-right shrink-0">
                                         {sIdx + 1}.
                                       </span>
-                                      <span className="text-[color:var(--color-text)] font-medium text-xs">
+                                      <span className="text-[color:var(--color-text)] font-medium text-xs leading-snug break-words">
                                         {subtopic.label}
                                       </span>
                                     </div>
