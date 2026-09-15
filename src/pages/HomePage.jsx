@@ -228,7 +228,6 @@ const HomePage = ({
       onClick: onStartRandomPractice,
       preload: preloadPracticeStartExperience,
       quote: parsedQuote,
-      onQuoteClick: handleCycleQuote,
     },
     {
       key: "filter",
@@ -325,28 +324,11 @@ const HomePage = ({
                     </span>
 
                     {card.quote ? (
-                      <span
-                        className="home-action-quote-container"
-                        onClick={card.onQuoteClick}
-                        title="Click to see another quote"
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            card.onQuoteClick?.(e);
-                          }
-                        }}
-                      >
+                      <span className="home-action-quote-container">
                         <span className="home-action-quote">"{card.quote.text}"</span>
-                        <span className="home-action-quote-meta">
-                          {card.quote.author ? (
-                            <span className="home-action-quote-author">- {card.quote.author}</span>
-                          ) : <span />}
-                          <span className="home-action-quote-refresh" aria-label="Cycle quote">
-                            <FiRefreshCw className="home-action-quote-refresh-icon" aria-hidden="true" />
-                          </span>
-                        </span>
+                        {card.quote.author ? (
+                          <span className="home-action-quote-author">- {card.quote.author}</span>
+                        ) : null}
                       </span>
                     ) : null}
 
@@ -372,18 +354,8 @@ const HomePage = ({
 
           {parsedQuote?.text ? (
             <aside
-              className="home-quote-banner md:hidden cursor-pointer"
+              className="home-quote-banner md:hidden"
               aria-label="Daily inspiration"
-              onClick={handleCycleQuote}
-              title="Tap for another quote"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  handleCycleQuote(e);
-                }
-              }}
             >
               <FaQuoteLeft className="home-quote-icon" aria-hidden="true" />
               <p className="home-quote-body">
@@ -392,9 +364,15 @@ const HomePage = ({
                   <span className="home-quote-author"> — {parsedQuote.author}</span>
                 ) : null}
               </p>
-              <span className="home-quote-mobile-refresh" aria-hidden="true" title="Next quote">
-                <FiRefreshCw className="home-quote-refresh-icon" />
-              </span>
+              <button
+                type="button"
+                className="home-quote-mobile-refresh"
+                onClick={handleCycleQuote}
+                aria-label="Show another quote"
+                title="Next quote"
+              >
+                <FiRefreshCw className="home-quote-refresh-icon" aria-hidden="true" />
+              </button>
             </aside>
           ) : null}
 

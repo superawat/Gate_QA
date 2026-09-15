@@ -1468,9 +1468,6 @@
   max-width: 58%;
   text-align: left;
   display: none;
-  cursor: pointer;
-  user-select: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 @media (min-width: 768px) {
@@ -1479,15 +1476,6 @@
     flex-direction: column;
     justify-content: center;
   }
-}
-
-.home-action-quote-container:hover {
-  opacity: 0.95;
-}
-
-.home-action-quote-container:hover .home-action-quote-refresh-icon {
-  transform: rotate(180deg);
-  opacity: 1;
 }
 
 .home-action-quote {
@@ -1499,36 +1487,15 @@
   letter-spacing: 0;
 }
 
-.home-action-quote-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-top: 0.35rem;
-}
-
 .home-action-quote-author {
   display: block;
+  margin-top: 0.35rem;
   color: #0284c7;
   font-size: clamp(0.72rem, 0.8vw, 0.82rem);
   font-weight: 800;
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.home-action-quote-refresh {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #0284c7;
-  opacity: 0.45;
-  transition: opacity 0.2s ease;
-}
-
-.home-action-quote-refresh-icon {
-  font-size: 0.78rem;
-  transition: transform 0.35s ease;
 }
 
 .home-quote-banner {
@@ -2519,13 +2486,6 @@ canvas {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     gap: 0.65rem;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-
-  .home-quote-banner:active {
-    transform: scale(0.985);
   }
 
   :root[data-theme="dark"] .home-quote-banner {
@@ -2577,18 +2537,29 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: none;
+    border: none;
+    padding: 0.25rem;
     color: var(--color-primary);
     opacity: 0.65;
     flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .home-quote-mobile-refresh:hover,
+  .home-quote-mobile-refresh:focus-visible {
+    opacity: 1;
+  }
+
+  .home-quote-mobile-refresh:active .home-quote-refresh-icon {
+    transform: rotate(180deg);
   }
 
   .home-quote-mobile-refresh .home-quote-refresh-icon {
     font-size: 0.75rem;
     transition: transform 0.35s ease;
-  }
-
-  .home-quote-banner:active .home-quote-mobile-refresh .home-quote-refresh-icon {
-    transform: rotate(180deg);
   }
 
   .home-gamification-dashboard {
