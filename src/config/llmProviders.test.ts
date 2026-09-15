@@ -12,10 +12,10 @@ describe("llmProviders config", () => {
     expect(DEFAULT_LLM_PROVIDER_ID).toBe("chatgpt");
   });
 
-  it("contains all 5 supported providers with valid properties", () => {
-    expect(LLM_PROVIDER_LIST.length).toBe(5);
+  it("contains all 6 supported providers with valid properties", () => {
+    expect(LLM_PROVIDER_LIST.length).toBe(6);
 
-    const expectedIds = ["chatgpt", "gemini", "claude", "deepseek", "perplexity"];
+    const expectedIds = ["chatgpt", "gemini", "claude", "deepseek", "perplexity", "qwen"];
     for (const id of expectedIds) {
       expect(isSupportedLLMProviderId(id)).toBe(true);
       const provider = LLM_PROVIDERS[id as keyof typeof LLM_PROVIDERS];

@@ -29,6 +29,7 @@ describe("LLMProviderMenu", () => {
     expect(screen.getByText("Claude")).toBeTruthy();
     expect(screen.getByText("DeepSeek")).toBeTruthy();
     expect(screen.getByText("Perplexity")).toBeTruthy();
+    expect(screen.getByText("Qwen")).toBeTruthy();
 
     const geminiBtn = screen.getByTitle("Ask Google Gemini");
     fireEvent.click(geminiBtn);

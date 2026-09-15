@@ -1,4 +1,4 @@
-export type LLMProviderId = "chatgpt" | "gemini" | "claude" | "deepseek" | "perplexity";
+export type LLMProviderId = "chatgpt" | "gemini" | "claude" | "deepseek" | "perplexity" | "qwen";
 
 export interface LLMProvider {
   id: LLMProviderId;
@@ -27,7 +27,7 @@ export const LLM_PROVIDERS: Record<LLMProviderId, LLMProvider> = {
     supportsPrefill: true,
     maxPrefillLength: 2000,
     buildUrl: (prompt: string) => `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
-    accentColor: "#10a37f",
+    accentColor: "#74aa9c",
     badge: "Popular",
   },
   gemini: {
@@ -38,7 +38,7 @@ export const LLM_PROVIDERS: Record<LLMProviderId, LLMProvider> = {
     baseUrl: "https://gemini.google.com/app",
     supportsPrefill: false,
     buildUrl: () => "https://gemini.google.com/app",
-    accentColor: "#1a73e8",
+    accentColor: "#3186ff",
   },
   claude: {
     id: "claude",
@@ -48,7 +48,7 @@ export const LLM_PROVIDERS: Record<LLMProviderId, LLMProvider> = {
     baseUrl: "https://claude.ai/new",
     supportsPrefill: false,
     buildUrl: () => "https://claude.ai/new",
-    accentColor: "#d97706",
+    accentColor: "#d97757",
   },
   deepseek: {
     id: "deepseek",
@@ -69,7 +69,17 @@ export const LLM_PROVIDERS: Record<LLMProviderId, LLMProvider> = {
     supportsPrefill: true,
     maxPrefillLength: 2000,
     buildUrl: (prompt: string) => `https://www.perplexity.ai/search?q=${encodeURIComponent(prompt)}`,
-    accentColor: "#20b2aa",
+    accentColor: "#22b8cd",
+  },
+  qwen: {
+    id: "qwen",
+    name: "Qwen AI",
+    shortName: "Qwen",
+    tagline: "Alibaba Qwen Studio",
+    baseUrl: "https://chat.qwen.ai/",
+    supportsPrefill: false,
+    buildUrl: () => "https://chat.qwen.ai/",
+    accentColor: "#665cee",
   },
 };
 
@@ -79,6 +89,7 @@ export const LLM_PROVIDER_LIST: LLMProvider[] = [
   LLM_PROVIDERS.claude,
   LLM_PROVIDERS.deepseek,
   LLM_PROVIDERS.perplexity,
+  LLM_PROVIDERS.qwen,
 ];
 
 export function isSupportedLLMProviderId(id: unknown): id is LLMProviderId {

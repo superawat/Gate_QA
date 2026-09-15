@@ -411,7 +411,7 @@ All data stored by GateQA across `localStorage` and `sessionStorage` follows a s
 | `gateqa_mock_history_v1` | `localStorage` | `v1` | Completed mock test history list, scores, and accuracy breakdowns. | `MockTestHistoryEntry[]` |
 | `gateqa_streak_freeze_v1` | `localStorage` | `v1` | Streak freeze inventory and consumption timeline. | `{ available: number, usedDates: string[] }` |
 | `gateqa_daily_goal` | `localStorage` | `v1` | Daily question practice goal target (default: 5). | `number` |
-| `gateqa_llm_preference` | `localStorage` | `v1` | User's preferred external AI provider (`chatgpt`, `gemini`, `claude`, `deepseek`, `perplexity`). | `string` (default: `"chatgpt"`) |
+| `gateqa_llm_preference` | `localStorage` | `v1` | User's preferred external AI provider (`chatgpt`, `gemini`, `claude`, `deepseek`, `perplexity`, `qwen`). | `string` (default: `"chatgpt"`) |
 | `gate_qa_sync_queue` | `localStorage` | `v1` | Offline mutation queue pending cloud synchronization. | `QueuedChange[]` |
 | `gate_qa_theme` | `localStorage` | `v1` | Active user theme (`dark`, `light`, `system`). | `string` |
 

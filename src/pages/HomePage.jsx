@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SEOHead, { buildFAQPageSchema } from "../components/SEO/SEOHead";
 
 const HOMEPAGE_FAQS = [
@@ -36,8 +36,9 @@ import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
-import { getQuoteForToday } from "../utils/motivationalQuotes";
+import { getQuoteForToday, getNextQuote, parseQuote } from "../utils/motivationalQuotes";
 import { FaQuoteLeft } from "react-icons/fa";
+import { FiRefreshCw } from "react-icons/fi";
 import {
   preloadExploreRoute,
   preloadInsightsRoute,
@@ -62,13 +63,17 @@ const HomePage = ({
   const cardRectCache = useRef(null);
   const [activity, setActivity] = useState(() => loadStudyActivityFast());
 
-  const parsedQuote = useMemo(() => {
-    const raw = getQuoteForToday();
-    const [text, author = ""] = raw.split(/\s+(?:\u2014|-)\s+/);
-    return {
-      text: text || raw,
-      author,
-    };
+  const [parsedQuote, setParsedQuote] = useState(() => {
+    return parseQuote(getQuoteForToday());
+  });
+
+  const handleCycleQuote = useCallback((e) => {
+    if (e) {
+      e.stopPropagation?.();
+      e.preventDefault?.();
+    }
+    const nextRaw = getNextQuote();
+    setParsedQuote(parseQuote(nextRaw));
   }, []);
 
   useEffect(() => {
@@ -223,6 +228,7 @@ const HomePage = ({
       onClick: onStartRandomPractice,
       preload: preloadPracticeStartExperience,
       quote: parsedQuote,
+      onQuoteClick: handleCycleQuote,
     },
     {
       key: "filter",
@@ -319,11 +325,28 @@ const HomePage = ({
                     </span>
 
                     {card.quote ? (
-                      <span className="home-action-quote-container">
+                      <span
+                        className="home-action-quote-container"
+                        onClick={card.onQuoteClick}
+                        title="Click to see another quote"
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            card.onQuoteClick?.(e);
+                          }
+                        }}
+                      >
                         <span className="home-action-quote">"{card.quote.text}"</span>
-                        {card.quote.author ? (
-                          <span className="home-action-quote-author">- {card.quote.author}</span>
-                        ) : null}
+                        <span className="home-action-quote-meta">
+                          {card.quote.author ? (
+                            <span className="home-action-quote-author">- {card.quote.author}</span>
+                          ) : <span />}
+                          <span className="home-action-quote-refresh" aria-label="Cycle quote">
+                            <FiRefreshCw className="home-action-quote-refresh-icon" aria-hidden="true" />
+                          </span>
+                        </span>
                       </span>
                     ) : null}
 
@@ -348,7 +371,20 @@ const HomePage = ({
           </div>
 
           {parsedQuote?.text ? (
-            <aside className="home-quote-banner md:hidden" aria-label="Daily inspiration">
+            <aside
+              className="home-quote-banner md:hidden cursor-pointer"
+              aria-label="Daily inspiration"
+              onClick={handleCycleQuote}
+              title="Tap for another quote"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleCycleQuote(e);
+                }
+              }}
+            >
               <FaQuoteLeft className="home-quote-icon" aria-hidden="true" />
               <p className="home-quote-body">
                 <span className="home-quote-text">"{parsedQuote.text}"</span>
@@ -356,6 +392,9 @@ const HomePage = ({
                   <span className="home-quote-author"> — {parsedQuote.author}</span>
                 ) : null}
               </p>
+              <span className="home-quote-mobile-refresh" aria-hidden="true" title="Next quote">
+                <FiRefreshCw className="home-quote-refresh-icon" />
+              </span>
             </aside>
           ) : null}
 

@@ -1,6 +1,22 @@
 # Changelog
 
-- **Custom Builder Test Attempt Invalidation Prevention & Storage Throttling Architecture (DEC-112)**:
+- **Expanded Depthful Motivational Quotes Pool & Zero-Repeat Shuffled Permutation Deck Engine (DEC-113)**:
+  - *Context & User Request*: The user requested expanding the pool of motivational quotes with deeper quotes that drive hard work, align with competitive exam preparation, and provide life awareness strictly from deceased figures, while improving the rotation algorithm to eliminate repetitive quotes.
+  - *Root Cause of Quote Repetition*:
+    - **Static Modulo Formula**: The legacy formula `(day * 19 + month * 37 + hour * 7) % N` had low entropy and small step deltas. Anyone studying in the same evening hours saw the identical quote on every page load or practice return within that hour, and adjacent days cycled through a narrow band.
+    - **Stateless Selection**: The app had zero memory of which quotes had already been shown to the student.
+  - *Architectural Resolution*:
+    - **Zero-Repeat Shuffled Permutation Deck**: Implemented a stateful Fisher-Yates shuffled deck stored in `localStorage` (`gateqa_quote_deck_v2`). Every quote in the collection is served sequentially, mathematically guaranteeing 0% duplicates until all 360+ quotes have been shown.
+    - **Clean Cycle Rollover**: Upon exhausting the deck, a fresh shuffle is generated with author de-duplication at cycle boundaries so the first quote of the new cycle never shares an author with the previous cycle's final quote.
+    - **Session Dwell Window**: Implemented a 10-minute session dwell time (`QUOTE_DWELL_TIME_MS`) to keep the quote stable during fast page transitions while automatically advancing on return after a study block.
+    - **Deep Intellectual Quotes Pool Expansion**: Expanded the curated quotes pool to 361 deep quotes from verified deceased icons (Alan Turing, Claude Shannon, John von Neumann, Ada Lovelace, Edsger W. Dijkstra, Carl Friedrich Gauss, Henri Poincaré, Leonhard Euler, Blaise Pascal, René Descartes, David Hilbert, Galileo Galilei, Michael Faraday, James Clerk Maxwell, Marcus Aurelius, Seneca, Epictetus, Thiruvalluvar, Swami Vivekananda, Dr. B. R. Ambedkar, A. P. J. Abdul Kalam, Santiago Ramón y Cajal, M. Visvesvaraya, and more).
+    - **Greedy Interleaving**: Enforced author balancing (<= 4 quotes per author) and greedy interleaving, ensuring 0 consecutive same-author collisions across all 361 quotes.
+    - **Interactive Cycling**: Added interactive click-to-cycle triggers with `FiRefreshCw` icons and accessible keyboard support on both the desktop Practice card and the mobile banner.
+  - *Verification & Testing*:
+    - Created unit tests in `src/utils/motivationalQuotes.test.js` (12/12 passing).
+    - Verified full test suite (1,010 unit tests passing across 81 files).
+    - Clean TypeScript typecheck (`npm run typecheck`).
+
   - *Context & User Bug Report*: User bhairabmahato7384@gmail.com reported that active tests generated through the Custom Builder automatically invalidated after 20–25 minutes: *"There is a problem: whenever I give test using custom builder after 20-25 min, test automatically goes off and a popup came ‘Attempt invalid, restart mock.’"*
   - *Root Cause Analysis*:
     - **Question Type Rejection in Embedded Attempts**: In `src/contexts/MockTestContext.tsx`, `VALID_MOCK_TYPES` strictly included only `MCQ`, `MSQ`, and `NAT`. When custom builder tests included modern or official types like `MULTI_NAT` (multi-blank NAT) or auto-awarded types like `MARKS_TO_ALL` (`MTA`), `isValidEmbeddedQuestion()` failed, marking questions un-scorable and causing attempt restoration/validation to declare the attempt invalid upon re-render.
