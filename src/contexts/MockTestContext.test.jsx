@@ -51,22 +51,31 @@ const DEFAULT_OPTIONS = [
 
 const seedFixtureAnswer = (question_uid, type = "MCQ") => {
   const normalizedType = String(type || "MCQ").trim().toUpperCase();
-  AnswerService.answersByQuestionUid[question_uid] = normalizedType === "NAT"
-    ? { type: "NAT", answer: "42", tolerance: { abs: 0.1 } }
-    : { type: normalizedType, answer: normalizedType === "MSQ" ? ["A", "C"] : "A" };
+  if (normalizedType === "NAT") {
+    AnswerService.answersByQuestionUid[question_uid] = { type: "NAT", answer: "42", tolerance: { abs: 0.1 } };
+  } else if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
+    AnswerService.answersByQuestionUid[question_uid] = { type: "MULTI_NAT", answer: ["10", "20"] };
+  } else if (normalizedType === "MTA" || normalizedType === "MARKS_TO_ALL") {
+    AnswerService.answersByQuestionUid[question_uid] = { type: "MTA", answer: "MTA" };
+  } else if (normalizedType === "MSQ") {
+    AnswerService.answersByQuestionUid[question_uid] = { type: "MSQ", answer: ["A", "C"] };
+  } else {
+    AnswerService.answersByQuestionUid[question_uid] = { type: "MCQ", answer: "A" };
+  }
 };
 
 const buildQuestion = (question_uid, subject, yearSetKey, year, type = "MCQ") => {
   const normalizedType = String(type || "MCQ").trim().toUpperCase();
   seedFixtureAnswer(question_uid, normalizedType);
 
+  const isNat = normalizedType === "NAT" || normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT";
   return {
     question_uid,
     title: question_uid,
     subject,
     subjectSlug: subject === "General Aptitude" ? "ga" : "os",
     question: `<p>${question_uid}</p>`,
-    normalizedOptions: normalizedType === "NAT" ? [] : DEFAULT_OPTIONS,
+    normalizedOptions: isNat ? [] : DEFAULT_OPTIONS,
     type: normalizedType.toLowerCase(),
     exam: { yearSetKey, year },
   };
@@ -1331,5 +1340,244 @@ describe("MockTestContext", () => {
     expect(backupRaw).toBeTruthy();
     const backupParsed = JSON.parse(backupRaw);
     expect(backupParsed.savedAt).toBe(100);
+  });
+
+  test("custom builder test with non-catalog questions restores cleanly and remains scorable (DEC-110)", async () => {
+    const ga1 = buildQuestion("ga:custom-1", "General Aptitude", "1995", 1995);
+    const cs1 = buildQuestion("cs:custom-1", "Operating System", "1995", 1995);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {}, // empty catalog - questions not in official catalog!
+      scorableQuestionUids: [],
+    });
+    MockCatalogService.loaded = true;
+
+    const savedAttempt = {
+      v: 5,
+      gaUids: ["ga:custom-1"],
+      csUids: ["cs:custom-1"],
+      activeSection: "GA",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: { "ga:custom-1": "A" },
+      questionStates: { "ga:custom-1": "answered" },
+      timeLeft: 3600,
+      meta: { kindId: "custom", durationMinutes: 60 },
+      questions: [ga1, cs1],
+      savedAt: 2000,
+    };
+
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(savedAttempt));
+    window.sessionStorage.clear();
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+      expect(latest.testActive).toBe(true);
+      expect(latest.attemptError).toBe("");
+      expect(latest.questions.length).toBe(2);
+      expect(latest.questionMetaByUid["cs:custom-1"]).toBeDefined();
+      expect(latest.questionMetaByUid["cs:custom-1"].scorable).toBe(true);
+    });
+  });
+
+  test("custom builder test with MULTI_NAT and MTA questions restores cleanly without invalidation (DEC-110)", async () => {
+    const ga1 = buildQuestion("ga:custom-mn-1", "General Aptitude", "2021-s1", 2021);
+    const csMultiNat = buildQuestion("cs:multi-nat-1", "Algorithms", "2021-s1", 2021, "MULTI_NAT");
+    const csMta = buildQuestion("cs:mta-1", "Computer Networks", "2021-s1", 2021, "MTA");
+    mockAllQuestions = [ga1, csMultiNat, csMta];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {},
+      scorableQuestionUids: [],
+    });
+    MockCatalogService.loaded = true;
+
+    const savedAttempt = {
+      v: 5,
+      gaUids: ["ga:custom-mn-1"],
+      csUids: ["cs:multi-nat-1", "cs:mta-1"],
+      activeSection: "CS",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: {},
+      questionStates: {},
+      timeLeft: 1800,
+      meta: { kindId: "custom", durationMinutes: 30 },
+      questions: [ga1, csMultiNat, csMta],
+      savedAt: 3000,
+    };
+
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(savedAttempt));
+    window.sessionStorage.clear();
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.attemptError).toBe("");
+      expect(latest.questions.length).toBe(3);
+      expect(latest.questionMetaByUid["cs:multi-nat-1"].type).toBe("MULTI_NAT");
+      expect(latest.questionMetaByUid["cs:mta-1"].scorable).toBe(true);
+    });
+  });
+
+  test("custom builder test respects 30m configured duration and remains active beyond 25 minutes without invalidation (DEC-110)", async () => {
+    const ga1 = buildQuestion("ga:dur-1", "General Aptitude", "2023", 2023);
+    const cs1 = buildQuestion("cs:dur-1", "Operating System", "2023", 2023);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {},
+      scorableQuestionUids: [],
+    });
+    MockCatalogService.loaded = true;
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    // Start 30-minute exam (1800 seconds)
+    act(() => {
+      latest.startTest({
+        gaQuestions: [ga1],
+        csQuestions: [cs1],
+        timeSeconds: 1800,
+        meta: { kindId: "custom", durationMinutes: 30 },
+      });
+    });
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.timeLeft).toBe(1800);
+    });
+
+    // Advance by 1500 seconds (25 minutes)
+    act(() => {
+      vi.advanceTimersByTime(1500 * 1000);
+    });
+
+    // Test MUST remain active and valid, with exactly 300s (5 minutes) left
+    expect(latest.testActive).toBe(true);
+    expect(latest.attemptError).toBe("");
+    expect(latest.timeLeft).toBe(300);
+
+    // Advance another 100 seconds (26m40s total)
+    act(() => {
+      vi.advanceTimersByTime(100 * 1000);
+    });
+
+    expect(latest.testActive).toBe(true);
+    expect(latest.attemptError).toBe("");
+    expect(latest.timeLeft).toBe(200);
+  });
+
+  test("throttles periodic storage writes while flushing immediately on response changes and window unload (DEC-110)", async () => {
+    const ga1 = buildQuestion("ga:throt-1", "General Aptitude", "2023", 2023);
+    const cs1 = buildQuestion("cs:throt-1", "Operating System", "2023", 2023);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {},
+      scorableQuestionUids: [],
+    });
+    MockCatalogService.loaded = true;
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latest.startTest({
+        gaQuestions: [ga1],
+        csQuestions: [cs1],
+        timeSeconds: 3600,
+        meta: { kindId: "custom" },
+      });
+    });
+
+    const initialRaw = window.localStorage.getItem("gateqa_mock_attempt_v1");
+    expect(initialRaw).toBeTruthy();
+    const initialSavedAt = JSON.parse(initialRaw).savedAt;
+
+    // Advance by 1 second — storage write is throttled (savedAt unchanged)
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
+
+    const after1sRaw = window.localStorage.getItem("gateqa_mock_attempt_v1");
+    const after1sSavedAt = JSON.parse(after1sRaw).savedAt;
+    expect(after1sSavedAt).toBe(initialSavedAt);
+
+    // Advance past the 5-second throttle threshold
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
+
+    const after5sRaw = window.localStorage.getItem("gateqa_mock_attempt_v1");
+    const after5sSavedAt = JSON.parse(after5sRaw).savedAt;
+    expect(after5sSavedAt).toBeGreaterThan(initialSavedAt);
+
+    // Now save a user response — MUST write immediately without waiting for throttle
+    const beforeResponseTime = after5sSavedAt;
+    act(() => {
+      vi.advanceTimersByTime(500); // only 500ms elapsed
+      latest.saveResponse("ga:throt-1", "C");
+    });
+
+    const afterResponseRaw = window.localStorage.getItem("gateqa_mock_attempt_v1");
+    const afterResponseSavedAt = JSON.parse(afterResponseRaw).savedAt;
+    expect(afterResponseSavedAt).toBeGreaterThan(beforeResponseTime);
+    expect(JSON.parse(afterResponseRaw).responses["ga:throt-1"]).toBe("C");
   });
 });

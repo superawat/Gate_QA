@@ -5,7 +5,10 @@ import { AnswerService } from "../services/AnswerService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
 import { MockCatalogService } from "../services/MockCatalogService";
+import { QuestionService } from "../services/QuestionService";
 import {
+  MOCK_AUTO_AWARD_TYPES,
+  MOCK_OBJECTIVE_TYPES,
   buildMockResultSummary,
   getNegativeMarksForQuestion,
   hasMeaningfulResponse,
@@ -27,7 +30,11 @@ export const ATTEMPT_STORAGE_KEY = "gateqa_mock_attempt_v1";
 export const ATTEMPT_BACKUP_KEY = "gateqa_mock_attempt_backup_v1";
 const APTITUDE_UID_PREFIX = "APT-";
 const APTITUDE_MOCK_ORDER_OFFSET = 100000;
-const VALID_MOCK_TYPES = new Set(["MCQ", "MSQ", "NAT"]);
+const VALID_MOCK_TYPES = new Set([
+  ...MOCK_OBJECTIVE_TYPES.map((t) => String(t || "").toUpperCase()),
+  ...MOCK_AUTO_AWARD_TYPES.map((t) => String(t || "").toUpperCase()),
+  "MCQ", "MSQ", "NAT", "MULTI_NAT", "MULTI_BLANK_NAT", "MARKS_TO_ALL", "MTA", "AMBIGUOUS", "SUBJECTIVE"
+]);
 
 export const isValidStoredAttempt = (payload) => {
   if (!payload || typeof payload !== "object") {
@@ -47,12 +54,15 @@ export const isValidEmbeddedQuestion = (q) => {
   if (!uid) {
     return false;
   }
-  const rawType = String(q.type || "").toUpperCase().trim();
-  if (!VALID_MOCK_TYPES.has(rawType)) {
+  const rawType = String(q.type || q?.answerMeta?.type || "").toUpperCase().trim();
+  if (rawType && !VALID_MOCK_TYPES.has(rawType)) {
     return false;
   }
-  const questionContent = String(q.question || "").trim();
-  return questionContent.length > 0;
+  const questionContent = String(q.question || q.preview || q.searchText || "").trim();
+  const hasContent = questionContent.length > 0;
+  const hasOptions = Array.isArray(q.options) && q.options.length > 0;
+  const hasNormalizedOptions = Array.isArray(q.normalizedOptions) && q.normalizedOptions.length > 0;
+  return hasContent || hasOptions || hasNormalizedOptions;
 };
 
 export const readAttemptStorage = () => {
@@ -127,24 +137,30 @@ export const writeAttemptStorage = (payload) => {
     return;
   }
 
-  // Strip verbose HTML if oversized or if storage quota errors occur
+  // Strip oversized attributes if storage quota errors occur without corrupting content
   const createLightweightPayload = () => ({
     ...safePayload,
     questions: Array.isArray(safePayload.questions)
-      ? safePayload.questions.map((q) => ({
-          question_uid: q.question_uid,
-          title: q.title,
-          subject: q.subject,
-          subjectSlug: q.subjectSlug,
-          question: (q.question || "").slice(0, 1500),
-          normalizedOptions: q.normalizedOptions,
-          options: q.options,
-          type: q.type,
-          exam: q.exam,
-          answerMeta: q.answerMeta,
-          marks: q.marks,
-          negativeMarks: q.negativeMarks,
-        }))
+      ? safePayload.questions.map((q) => {
+          let cleanQuestion = String(q?.question || "");
+          if (cleanQuestion.length > 20000) {
+            cleanQuestion = cleanQuestion.slice(0, 10000);
+          }
+          return {
+            question_uid: q.question_uid,
+            title: q.title,
+            subject: q.subject,
+            subjectSlug: q.subjectSlug,
+            question: cleanQuestion,
+            normalizedOptions: q.normalizedOptions,
+            options: q.options,
+            type: q.type,
+            exam: q.exam,
+            answerMeta: q.answerMeta,
+            marks: q.marks,
+            negativeMarks: q.negativeMarks,
+          };
+        })
       : [],
   });
 
@@ -154,10 +170,13 @@ export const writeAttemptStorage = (payload) => {
     if (existingRaw) {
       const existingParsed = JSON.parse(existingRaw);
       if (existingParsed && typeof existingParsed === "object" && existingParsed.savedAt !== safePayload.savedAt) {
-        const isSameSession = Array.isArray(existingParsed.gaUids)
-          && Array.isArray(safePayload.gaUids)
-          && existingParsed.gaUids.join(",") === safePayload.gaUids.join(",")
-          && (existingParsed.csUids || []).join(",") === (safePayload.csUids || []).join(",");
+        const getAttemptUidsKey = (attempt) => {
+          const ga = Array.isArray(attempt?.gaUids) ? attempt.gaUids.join(",") : "";
+          const cs = Array.isArray(attempt?.csUids) ? attempt.csUids.join(",") : "";
+          const legacy = Array.isArray(attempt?.questionUids) ? attempt.questionUids.join(",") : "";
+          return `${ga}::${cs}::${legacy}`;
+        };
+        const isSameSession = getAttemptUidsKey(existingParsed) === getAttemptUidsKey(safePayload);
         if (!isSameSession) {
           window.localStorage?.setItem(ATTEMPT_BACKUP_KEY, existingRaw);
         }
@@ -346,9 +365,11 @@ const buildFallbackMockMetaByUid = (questions = []) => {
 
     const answerRecord = AnswerService.getAnswerForQuestion(question);
     const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
-    let rawType = String(answerRecord?.type || question?.type || "").trim().toUpperCase();
+    let rawType = String(answerRecord?.type || question?.answerMeta?.type || question?.type || "").trim().toUpperCase();
 
-    if (tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat")) {
+    if (tags.includes("multi-nat") || tags.includes("multi-blank-nat") || rawType === "MULTI_NAT" || rawType === "MULTI_BLANK_NAT") {
+      rawType = "MULTI_NAT";
+    } else if (tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat")) {
       rawType = "NAT";
     } else if (tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq")) {
       rawType = "MSQ";
@@ -362,10 +383,26 @@ const buildFallbackMockMetaByUid = (questions = []) => {
       || tags.includes("general-aptitude")
       || uid.startsWith("APT-");
     const section = isGa ? "GA" : "CS";
-    const marks = tags.includes("two-marks") || tags.includes("2-marks") || question?.marks === 2 ? 2 : 1;
-    const negativeMarks = getNegativeMarksForQuestion(type, marks);
+    const directMarks = Number(question?.marks);
+    const metaMarks = Number(question?.answerMeta?.marks);
+    const marks = (Number.isFinite(directMarks) && directMarks > 0)
+      ? directMarks
+      : ((Number.isFinite(metaMarks) && metaMarks > 0)
+        ? metaMarks
+        : (tags.includes("two-marks") || tags.includes("2-marks") ? 2 : 1));
+    const directNeg = Number(question?.negativeMarks);
+    const metaNeg = Number(question?.answerMeta?.negativeMarks);
+    const negativeMarks = (Number.isFinite(directNeg) && directNeg >= 0)
+      ? directNeg
+      : ((Number.isFinite(metaNeg) && metaNeg >= 0)
+        ? metaNeg
+        : getNegativeMarksForQuestion(type, marks));
     const isAuto = Boolean(normalizeMockAutoAwardType(type));
-    const scorable = Boolean(isAuto || (normalizeMockType(type) && answerRecord));
+    const scorable = Boolean(
+      question?.scorable === true
+      || isAuto
+      || (normalizeMockType(type) && (answerRecord || question?.answerMeta || (Array.isArray(question?.options) && question.options.length > 0) || (Array.isArray(question?.normalizedOptions) && question.normalizedOptions.length > 0)))
+    );
 
     metaMap[uid] = {
       questionUid: uid,
@@ -609,6 +646,8 @@ export const MockTestProvider = ({ children }) => {
     questionMetaByUid: {},
     attemptMeta: null,
   });
+  const lastStateFingerprintRef = useRef("");
+  const lastStorageWriteRef = useRef(0);
 
   const catalogQuestionMetaByUid = useMemo(
     () => (catalog?.byQuestionUid && typeof catalog.byQuestionUid === "object" ? catalog.byQuestionUid : {}),
@@ -622,13 +661,23 @@ export const MockTestProvider = ({ children }) => {
     () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions, ...daQuestions]),
     [allQuestions, aptitudeQuestions, daQuestions]
   );
-  const questionMetaByUid = useMemo(
-    () => ({
+  const fallbackQuestionMetaByUid = useMemo(
+    () => buildFallbackMockMetaByUid(mockQuestionPool),
+    [mockQuestionPool]
+  );
+  const questionMetaByUid = useMemo(() => {
+    if (attemptMeta?.kindId === "paper_mode") {
+      return {
+        ...catalogQuestionMetaByUid,
+        ...aptitudeQuestionMetaByUid,
+      };
+    }
+    return {
+      ...fallbackQuestionMetaByUid,
       ...catalogQuestionMetaByUid,
       ...aptitudeQuestionMetaByUid,
-    }),
-    [aptitudeQuestionMetaByUid, catalogQuestionMetaByUid]
-  );
+    };
+  }, [aptitudeQuestionMetaByUid, attemptMeta?.kindId, catalogQuestionMetaByUid, fallbackQuestionMetaByUid]);
   const paperCatalog = useMemo(
     () => (Array.isArray(catalog?.papers) ? catalog.papers : []),
     [catalog]
@@ -824,6 +873,8 @@ export const MockTestProvider = ({ children }) => {
       questionMetaByUid,
       attemptMeta: null,
     };
+    lastStateFingerprintRef.current = "";
+    lastStorageWriteRef.current = 0;
   }, [questionMetaByUid]);
 
   const markUidVisited = useCallback((uid) => {
@@ -865,7 +916,12 @@ export const MockTestProvider = ({ children }) => {
       return { ok: false, reason: "empty_attempt" };
     }
 
+    const isPaperMode = parsedAttempt?.meta?.kindId === "paper_mode";
     const embeddedQuestions = Array.isArray(parsedAttempt?.questions) ? parsedAttempt.questions : [];
+    const embeddedMetaByUid = buildFallbackMockMetaByUid(embeddedQuestions);
+    const effectiveMetaByUid = isPaperMode
+      ? { ...catalogQuestionMetaByUid, ...aptitudeQuestionMetaByUid }
+      : { ...embeddedMetaByUid, ...fallbackQuestionMetaByUid, ...catalogQuestionMetaByUid, ...aptitudeQuestionMetaByUid };
     const embeddedMap = new Map(
       embeddedQuestions
         .filter((q) => isValidEmbeddedQuestion(q))
@@ -883,7 +939,7 @@ export const MockTestProvider = ({ children }) => {
       if (!question) {
         return { ok: false, reason: "invalid_uid", retry: true };
       }
-      if (!hasValidMockQuestionForPool(question, questionMetaByUid) && !embeddedMap.has(uid)) {
+      if (!hasValidMockQuestionForPool(question, effectiveMetaByUid) && !embeddedMap.has(uid)) {
         return { ok: false, reason: "invalid_uid" };
       }
       restoredQuestions.push(question);
@@ -907,7 +963,7 @@ export const MockTestProvider = ({ children }) => {
       sanitizeQuestionStates(parsedAttempt?.questionStates, orderedUids, currentUid),
       restoredResponses,
       orderedUids,
-      questionMetaByUid
+      effectiveMetaByUid
     );
 
     return {
@@ -930,7 +986,12 @@ export const MockTestProvider = ({ children }) => {
       return { ok: false, reason: "empty_attempt" };
     }
 
+    const isPaperMode = parsedAttempt?.meta?.kindId === "paper_mode";
     const embeddedQuestions = Array.isArray(parsedAttempt?.questions) ? parsedAttempt.questions : [];
+    const embeddedMetaByUid = buildFallbackMockMetaByUid(embeddedQuestions);
+    const effectiveMetaByUid = isPaperMode
+      ? { ...catalogQuestionMetaByUid, ...aptitudeQuestionMetaByUid }
+      : { ...embeddedMetaByUid, ...fallbackQuestionMetaByUid, ...catalogQuestionMetaByUid, ...aptitudeQuestionMetaByUid };
     const embeddedMap = new Map(
       embeddedQuestions
         .filter((q) => isValidEmbeddedQuestion(q))
@@ -941,7 +1002,7 @@ export const MockTestProvider = ({ children }) => {
       .map((uid) => {
         const question = byUid.get(uid) || embeddedMap.get(uid);
         if (!question) return null;
-        if (!hasValidMockQuestionForPool(question, questionMetaByUid) && !embeddedMap.has(uid)) {
+        if (!hasValidMockQuestionForPool(question, effectiveMetaByUid) && !embeddedMap.has(uid)) {
           return null;
         }
         return question;
@@ -1039,7 +1100,8 @@ export const MockTestProvider = ({ children }) => {
         : restoreFromLegacyPayload(rawAttempt, byUid);
 
       if (!restored.ok) {
-        if (restored.retry && isCatalogPending) {
+        const canRetryLoading = restored.retry && (isCatalogPending || allQuestions.length === 0);
+        if (canRetryLoading) {
           hasAttemptRestoreRun.current = false;
           return;
         }
@@ -1066,6 +1128,15 @@ export const MockTestProvider = ({ children }) => {
         restored.sectionIndexes,
         restored.activeSection
       );
+      lastStateFingerprintRef.current = JSON.stringify([
+        restored.activeSection,
+        restored.sectionIndexes.GA,
+        restored.sectionIndexes.CS,
+        restored.responses,
+        restored.questionStates,
+        restored.meta,
+      ]);
+      lastStorageWriteRef.current = Date.now();
       setAttemptError("");
     } catch (error) {
       hasAttemptRestoreRun.current = true;
@@ -1076,6 +1147,7 @@ export const MockTestProvider = ({ children }) => {
     aptitudeMockLoading,
     catalogError,
     catalogLoading,
+    daMockLoading,
     mockQuestionPool,
     restoreFromLegacyPayload,
     restoreFromSectionedPayload,
@@ -1174,6 +1246,7 @@ export const MockTestProvider = ({ children }) => {
     } catch {}
 
     // Immediate initial write to storage
+    const initialSavedAt = Date.now();
     writeAttemptStorage({
       v: 5,
       gaUids: sectionUids.GA,
@@ -1200,8 +1273,18 @@ export const MockTestProvider = ({ children }) => {
       questionTimeSpent: {},
       timeLeft: safeTime,
       meta: config?.meta || null,
-      savedAt: Date.now(),
+      savedAt: initialSavedAt,
     });
+
+    lastStateFingerprintRef.current = JSON.stringify([
+      startSection,
+      0,
+      0,
+      {},
+      initialQuestionStates,
+      config?.meta || null,
+    ]);
+    lastStorageWriteRef.current = initialSavedAt;
 
     return true;
   }, [
@@ -1212,10 +1295,30 @@ export const MockTestProvider = ({ children }) => {
     questionMetaByUid,
   ]);
 
-  const persistAttempt = useCallback(() => {
+  const persistAttempt = useCallback((force = false) => {
     if (!testActive || testSubmitted || questions.length === 0 || typeof window === "undefined") {
       return;
     }
+
+    const stateFingerprint = JSON.stringify([
+      currentSection,
+      sectionIndexes.GA,
+      sectionIndexes.CS,
+      responses,
+      questionStates,
+      attemptMeta,
+    ]);
+
+    const isStateChanged = stateFingerprint !== lastStateFingerprintRef.current;
+    const now = Date.now();
+    const isThrottleElapsed = now - lastStorageWriteRef.current >= 5000;
+
+    if (!force && !isStateChanged && !isThrottleElapsed) {
+      return;
+    }
+
+    lastStateFingerprintRef.current = stateFingerprint;
+    lastStorageWriteRef.current = now;
 
     const payload = {
       v: 5,
@@ -1243,7 +1346,7 @@ export const MockTestProvider = ({ children }) => {
       questionTimeSpent,
       timeLeft,
       meta: attemptMeta || null,
-      savedAt: Date.now(),
+      savedAt: now,
     };
 
     writeAttemptStorage(payload);
@@ -1263,6 +1366,11 @@ export const MockTestProvider = ({ children }) => {
     timeLeft,
   ]);
 
+  const persistAttemptRef = useRef(persistAttempt);
+  useEffect(() => {
+    persistAttemptRef.current = persistAttempt;
+  }, [persistAttempt]);
+
   useEffect(() => {
     persistAttempt();
   }, [persistAttempt]);
@@ -1273,16 +1381,17 @@ export const MockTestProvider = ({ children }) => {
     }
 
     const handleFlush = () => {
-      persistAttempt();
+      persistAttemptRef.current?.(true);
     };
 
     window.addEventListener("beforeunload", handleFlush);
     window.addEventListener("pagehide", handleFlush);
     return () => {
+      handleFlush();
       window.removeEventListener("beforeunload", handleFlush);
       window.removeEventListener("pagehide", handleFlush);
     };
-  }, [persistAttempt, testActive, testSubmitted]);
+  }, [testActive, testSubmitted]);
 
   useEffect(() => {
     if (!testActive || questions.length === 0) {

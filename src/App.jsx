@@ -95,7 +95,7 @@ const ScrollToTop = () => {
 // ── Isolated Mock Test Branch ──────────────────────────────────────────────
 // Renders outside the practice provider tree so mock test navigation,
 // filters, and session state never interfere with practice-mode effects.
-const MockBranch = ({ loadQuestions, questionBankManifest, questionDataRevision }) => {
+const MockBranch = React.memo(({ loadQuestions, questionBankManifest, questionDataRevision }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const stage = new URLSearchParams(location.search).get("stage") === "exam" ? "exam" : "setup";
@@ -144,7 +144,7 @@ const MockBranch = ({ loadQuestions, questionBankManifest, questionDataRevision 
         </ErrorBoundary>
       </FilterProvider>
   );
-};
+});
 
 // ── Legacy Navigation Handler ──────────────────────────────────────────────
 const LegacyNavigationHandler = ({ loadQuestions, resumeRoute = "" }) => {

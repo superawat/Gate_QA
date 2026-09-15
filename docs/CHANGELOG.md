@@ -1,5 +1,27 @@
 # Changelog
 
+- **Custom Builder Test Attempt Invalidation Prevention & Storage Throttling Architecture (DEC-112)**:
+  - *Context & User Bug Report*: User bhairabmahato7384@gmail.com reported that active tests generated through the Custom Builder automatically invalidated after 20–25 minutes: *"There is a problem: whenever I give test using custom builder after 20-25 min, test automatically goes off and a popup came ‘Attempt invalid, restart mock.’"*
+  - *Root Cause Analysis*:
+    - **Question Type Rejection in Embedded Attempts**: In `src/contexts/MockTestContext.tsx`, `VALID_MOCK_TYPES` strictly included only `MCQ`, `MSQ`, and `NAT`. When custom builder tests included modern or official types like `MULTI_NAT` (multi-blank NAT) or auto-awarded types like `MARKS_TO_ALL` (`MTA`), `isValidEmbeddedQuestion()` failed, marking questions un-scorable and causing attempt restoration/validation to declare the attempt invalid upon re-render.
+    - **Destructive Question String Slicing**: In `writeAttemptStorage()`, question bodies were aggressively sliced to 1500 characters (`q.question.slice(0, 1500)`), truncating questions that had embedded options or LaTeX formulas, corrupting option arrays on restore.
+    - **Single-Track Session Signature Collisions**: In `isSameSession()`, tests with empty `gaUids` (single-track CSE or custom test) failed signature comparisons or matched old attempts with different questions.
+    - **Strict Paper Catalog Dependency**: `questionMetaByUid` strictly depended on `catalogQuestionMetaByUid` (full papers only). For custom tests containing arbitrary question pool selections outside full official papers, fallback question metadata was missing.
+    - **Auth Token Refresh Shell Remount**: Supabase auth tokens refresh automatically every ~20–25 minutes. When `onAuthStateChange` fired, the unmemoized top-level `MockBranch` in `src/App.jsx` re-rendered. If the question bank or catalog was in a loading state (`isCatalogPending`), attempt restoration ran and permanently set `attemptError: "Attempt invalid, restart mock."` instead of waiting for questions to load.
+    - **Unthrottled 1-Second Storage Thrashing**: `persistAttempt()` wrote to `localStorage` and `sessionStorage` on every single second tick, causing disk I/O thrashing and quota pressure.
+  - *Architectural Resolution*:
+    - **Extended Question Types**: Added `MOCK_OBJECTIVE_TYPES` (`MULTI_NAT`, `MULTI_BLANK_NAT`) and `MOCK_AUTO_AWARD_TYPES` (`MARKS_TO_ALL`, `MTA`, `AMBIGUOUS`, `SUBJECTIVE`) to `VALID_MOCK_TYPES` and `isValidEmbeddedQuestion()`.
+    - **Safe Text Bounds**: Replaced aggressive 1500-char truncation with safe length validation (`> 20,000` chars), preserving options and question integrity intact.
+    - **Section UID Signatures**: Upgraded `isSameSession()` to compare deterministic UID keys (`getAttemptUidsKey()`).
+    - **Runtime Question Pool Metadata**: Upgraded `buildFallbackMockMetaByUid()` and decoupled `paper_mode` (strict full-paper catalog) from `custom`, `topic`, and `subject` modes (which use `fallbackQuestionMetaByUid` and `embeddedMetaByUid`).
+    - **Restoration Retry**: Added retry logic during question catalog loading (`const canRetryLoading = restored.retry && (isCatalogPending || allQuestions.length === 0);`) so pending async loads never permanently invalidate an attempt.
+    - **Component Memoization**: Wrapped `MockBranch` in `React.memo` in `src/App.jsx` to eliminate spurious unmounting/remounting during Supabase auth token refreshes.
+    - **Storage Throttling**: Throttled periodic writes to every 5 seconds (5000ms) for timer ticks, while immediately flushing writes on response updates (`saveResponse`) and on browser navigation/close (`beforeunload`, `pagehide`) via `persistAttemptRef`.
+  - *Verification & Testing*:
+    - Added 4 unit regression tests in `src/contexts/MockTestContext.test.jsx` (22/22 passing).
+    - All 8 mock test component test files passing (79/79 tests in `src/components/MockTest/`).
+    - Full test suite: 998 unit tests passing across 81 files, TypeScript typecheck 100% clean, production build clean.
+
 - **Bookmark Unbookmark Permanence via LWW-Tombstone Sets & Additive Cloud Sync Architecture (DEC-111)**:
   - *Context & User Bug Report*: Users reported that unbookmarking a question would not persist permanently ("When you bookmark a question, you can't unbookmark it. It comes back in some time.").
   - *Root Cause Analysis*:
