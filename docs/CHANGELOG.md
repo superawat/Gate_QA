@@ -1,5 +1,26 @@
 # Changelog
 
+- **Bookmark Unbookmark Permanence via LWW-Tombstone Sets & Additive Cloud Sync Architecture (DEC-111)**:
+  - *Context & User Bug Report*: Users reported that unbookmarking a question would not persist permanently ("When you bookmark a question, you can't unbookmark it. It comes back in some time.").
+  - *Root Cause Analysis*:
+    - **Union-Merge Asymmetry**: In `src/utils/cloudSyncManager.js`, `unionMergeData()` computed bookmarks as a naive set union: `Set.union(localBookmarks, cloudBookmarks)`. When a user bookmarked question `Q`, synced to Supabase (`user_progress.bookmarks`), and later clicked unbookmark, local `localStorage` removed `Q`. However, during the next background or event-driven sync (`gateqa:sync-complete`, `gateqa:auth-signed-in`), `unionMergeData` merged local `[]` with cloud `["Q"]`, yielding `["Q"]`.
+    - **Context Refresh Loop**: `FilterContext.tsx` listened to `gateqa:sync-complete` via `refreshProgressState()`, which re-read the merged localStorage array, silently resurrecting `Q` in React state and in the UI.
+  - *Architectural Resolution (LWW Tombstone Removal Sets)*:
+    - **Tombstone Architecture**: Introduced explicit tombstone removal sets for each syllabus track:
+      - GATE CSE: `gate_qa_bookmark_removals` (`bookmark_removals` in DB)
+      - Aptitude: `gateqa-apt-bookmark-removals` (`aptitude_bookmark_removals` in DB)
+      - GATE DA: `gate_qa_da_bookmark_removals` (`da_bookmark_removals` in DB)
+    - **Additive Removal Union**: In `unionMergeData()`, removal sets are union-merged additively (once removed, stays removed across all devices):
+      `finalRemovals = union(localRemovals, cloudRemovals)`
+    - **Tombstone Subtraction**: Bookmarks are computed by subtracting the unified removal set from the unified bookmark set:
+      `finalBookmarks = union(localBookmarks, cloudBookmarks).filter(id => !finalRemovals.has(id))`
+    - **Re-Bookmark Support**: In `FilterContext.tsx`, `toggleBookmark()` atomically records the ID into removal IDs upon unbookmark, and purges the ID from removal IDs if the student deliberately re-bookmarks the question.
+    - **Database Migration**: Created migration `supabase/migrations/20260915000000_add_bookmark_removals.sql` adding nullable `jsonb` columns `bookmark_removals`, `aptitude_bookmark_removals`, and `da_bookmark_removals` to `public.user_progress` with `DEFAULT NULL` (treated as `[]` for backwards compatibility with legacy clients and unmigrated remote schemas).
+  - *Verification & Testing*:
+    - Added 9 unit regression tests in `src/utils/cloudSyncManager.test.js` covering unbookmark permanence across cloud sync, additive tombstone merging, re-bookmarking recovery, Aptitude/DA track isolation, pre-merge snapshot retention, and legacy `null` compatibility.
+    - Added 3 integration regression tests in `src/contexts/FilterContext.test.jsx` verifying tombstone persistence and atomic sync refresh behavior.
+    - Full suite passing: 991 unit tests green across 81 test files, 0 TypeScript errors (`npm run typecheck`), production build clean.
+
 - **Comprehensive GATE CSE 2026–2001 Answer Key Audit & Verified Discrepancies Resolution across Master Datasets (DEC-110)**:
   - *Context*: Conducted a comprehensive answer audit of all 2,440 questions across 36 examination papers from GATE CSE 2026 down to 2001, comparing GateQA JSON datasets against PracticePaper.in and GateOverflow authoritative references.
   - *Audit Resolution*:

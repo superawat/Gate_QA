@@ -103,8 +103,11 @@ One row per user containing the cloud backup. `user_id` is both the primary key 
 | `aptitude_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical Aptitude bookmarked question IDs array |
 | `da_solved` | `jsonb` | **No** | `'[]'::jsonb` | Canonical GATE DA question IDs solved by the user |
 | `da_bookmarks` | `jsonb` | **No** | `'[]'::jsonb` | Canonical GATE DA question IDs bookmarked by the user |
+| `bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked GATE CSE question IDs (DEC-111; migration `20260915000000_add_bookmark_removals.sql`) |
+| `aptitude_bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked Aptitude question IDs (DEC-111; migration `20260915000000_add_bookmark_removals.sql`) |
+| `da_bookmark_removals` | `jsonb` | Yes | `null` | Tombstone set of explicitly unbookmarked GATE DA question IDs (DEC-111; migration `20260915000000_add_bookmark_removals.sql`) |
 
-The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns. The client includes resilient schema fallback that safely embeds DA progress inside `progress_records` if the remote table schema lacks optional top-level columns.
+The application calls `upsert()` for this table, so the authenticated role needs `SELECT`, `INSERT`, and `UPDATE` access for rows it owns. The client includes resilient schema fallback that safely embeds DA progress inside `progress_records` if the remote table schema lacks optional top-level columns, and gracefully treats `null` or missing removal columns as empty sets (`[]`).
 
 ### `public.sync_log`
 
@@ -254,11 +257,11 @@ The sync is single-flight: a user must not generate overlapping sync requests wh
 
 | Data | Rule |
 | --- | --- |
-| Bookmarks | Set union with duplicates removed |
+| Bookmarks | Additive union of local and cloud bookmarks **minus** the union of tombstone removals: `(local ∪ cloud) \ (localRemovals ∪ cloudRemovals)` (DEC-111) |
 | Notes | Keep the longer note; equal-length notes use the newer timestamp |
 | Solved questions | Additive union of canonical string IDs; legacy object rows are recovered during sync |
-| Aptitude solved/bookmarked IDs | Additive union of canonical string IDs in dedicated columns |
-| GATE DA solved/bookmarked IDs | Additive union of canonical string IDs in dedicated columns and namespaced progress records |
+| Aptitude solved/bookmarked IDs | Additive union of solved IDs; bookmarks merged minus `aptitude_bookmark_removals` tombstones (DEC-111) |
+| GATE DA solved/bookmarked IDs | Additive union of solved IDs; bookmarks merged minus `da_bookmark_removals` tombstones (DEC-111) |
 | Mock history | Combine records, deduplicate by test identity, and sort chronologically |
 | Practice progress | Merge attempt histories by timestamp and preserve the union of activity dates used by streaks |
 

@@ -49,11 +49,14 @@ GateQA follows a **Local-First Hybrid Architecture**:
 1. **Zero Data Loss Invariant:**
    - Local device data is never deleted or overwritten during sync.
    - An automatic pre-merge JSON snapshot is stored in `localStorage` before any cloud sync starts.
-2. **Additive-Only Union-Merge Algorithm:**
-   - **Bookmarks:** Deduplicated set union (`Set.union(local, cloud)`).
+2. **Additive-Only Union-Merge Algorithm & Bookmark Tombstone Sets (DEC-111):**
+   - **Bookmarks with Tombstone Removal Sets:** To prevent cloud sync from resurrecting deliberately unbookmarked questions, GateQA uses an LWW-tombstone set model. Unbookmark actions write question IDs to local tombstone removal sets (`gate_qa_bookmark_removals`, `gateqa-apt-bookmark-removals`, `gate_qa_da_bookmark_removals`) and sync them to Supabase (`bookmark_removals`, `aptitude_bookmark_removals`, `da_bookmark_removals`). The union-merge algorithm additively merges the tombstone sets across local and cloud, then subtracts the combined tombstones from the unified bookmarks:
+     $$\text{Merged Bookmarks} = (\text{Local} \cup \text{Cloud}) \setminus (\text{Local Removals} \cup \text{Cloud Removals})$$
+     If a user deliberately re-bookmarks a question, the ID is immediately removed from the tombstone set before the next sync write.
    - **Personal Notes:** Longest Note Wins policy (preserves student effort; falls back to newer timestamp).
    - **Solved Questions:** Deduplicated union of canonical string IDs; legacy attempt maps and numeric-index corruption are recovered.
-   - **Aptitude Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`aptitude_solved`, `aptitude_bookmarks`).
+   - **Aptitude Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`aptitude_solved`, `aptitude_bookmarks`), with `aptitude_bookmark_removals` tombstone protection.
+   - **GATE DA Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`da_solved`, `da_bookmarks`), with `da_bookmark_removals` tombstone protection.
    - **Mock Test History:** Deduplicated chronologically by `testId`.
    - **Streak & Daily Heatmap:** Synced via `progress_records` JSON array.
 3. **Offline Resilience:**

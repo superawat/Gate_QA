@@ -25,14 +25,17 @@ import { mergeSyncedRevisionSummary, summarizeRevisionEvents } from "./trackerRe
 const LOCAL_STORAGE_KEYS = {
   solved: "gate_qa_solved_questions",
   bookmarks: "gate_qa_bookmarked_questions",
+  bookmarkRemovals: "gate_qa_bookmark_removals",
   aptitudeSolved: "gateqa-apt-solved-questions",
   aptitudeBookmarks: "gateqa-apt-bookmarked-questions",
+  aptitudeBookmarkRemovals: "gateqa-apt-bookmark-removals",
   notes: "gate_qa_user_notes",
   mockHistory: "gateqa_mock_history_v1",
   progress: "gateqa_progress_v1",
   aptitudeProgress: "gateqa_apt_progress_v1",
   daSolved: "gate_qa_da_solved_questions",
   daBookmarks: "gate_qa_da_bookmarked_questions",
+  daBookmarkRemovals: "gate_qa_da_bookmark_removals",
   daProgress: "gateqa_da_progress_v1",
   trackerCse: "gate_qa_tracker_cse_v1",
   trackerDa: "gate_qa_tracker_da_v1",
@@ -49,14 +52,17 @@ function createPreMergeSnapshot() {
       timestamp: new Date().toISOString(),
       solved: localStorage.getItem(LOCAL_STORAGE_KEYS.solved),
       bookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarks),
+      bookmarkRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarkRemovals),
       aptitudeSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolved),
       aptitudeBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarks),
+      aptitudeBookmarkRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarkRemovals),
       notes: localStorage.getItem(LOCAL_STORAGE_KEYS.notes),
       mockHistory: localStorage.getItem(LOCAL_STORAGE_KEYS.mockHistory),
       progress: localStorage.getItem(LOCAL_STORAGE_KEYS.progress),
       aptitudeProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeProgress),
       daSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved),
       daBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks),
+      daBookmarkRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals),
       daProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress),
       trackerCse: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerCse),
       trackerDa: localStorage.getItem(LOCAL_STORAGE_KEYS.trackerDa),
@@ -91,14 +97,17 @@ function cleanOldSnapshots() {
 function readLocalData() {
   let solved = [];
   let bookmarks = [];
+  let bookmarkRemovals = [];
   let aptitudeSolved = [];
   let aptitudeBookmarks = [];
+  let aptitudeBookmarkRemovals = [];
   let notes = {};
   let mockHistory = [];
   let progress = {};
   let aptitudeProgress = {};
   let daSolved = [];
   let daBookmarks = [];
+  let daBookmarkRemovals = [];
   let daProgress = {};
   let streakFreeze = {};
 
@@ -114,6 +123,7 @@ function readLocalData() {
 
   try { daSolved = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved) || "[]"); } catch {}
   try { daBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks) || "[]"); } catch {}
+  try { daBookmarkRemovals = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals) || "[]"); } catch {}
   try { daProgress = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress) || "{}"); } catch {}
 
   try {
@@ -122,8 +132,18 @@ function readLocalData() {
   } catch {}
 
   try {
+    const rawAptitudeBookmarkRemovals = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarkRemovals);
+    aptitudeBookmarkRemovals = rawAptitudeBookmarkRemovals ? JSON.parse(rawAptitudeBookmarkRemovals) : [];
+  } catch {}
+
+  try {
     const rawBookmarks = localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarks);
     bookmarks = rawBookmarks ? JSON.parse(rawBookmarks) : [];
+  } catch {}
+
+  try {
+    const rawBookmarkRemovals = localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarkRemovals);
+    bookmarkRemovals = rawBookmarkRemovals ? JSON.parse(rawBookmarkRemovals) : [];
   } catch {}
 
   try {
@@ -154,14 +174,17 @@ function readLocalData() {
   return {
     solved,
     bookmarks,
+    bookmarkRemovals,
     aptitudeSolved,
     aptitudeBookmarks,
+    aptitudeBookmarkRemovals,
     notes,
     mockHistory,
     progress,
     aptitudeProgress,
     daSolved,
     daBookmarks,
+    daBookmarkRemovals,
     daProgress,
     streakFreeze,
   };
@@ -384,12 +407,38 @@ function normalizeCloudProgress(cloudProgress) {
 
 /**
  * The Additive-Only Union Merge Engine.
+ *
+ * DEC-111: Bookmark removals (unbookmarks) are now tracked explicitly as tombstone sets.
+ * The merge subtracts the union of all bookmark_removals from the union of all bookmarks,
+ * ensuring an explicit unbookmark is never overwritten by a stale cloud bookmark entry.
+ *
+ * Re-bookmarking a question is handled in FilterContext: the ID is removed from the local
+ * bookmark_removals array before writing to localStorage, so the next sync will not subtract it.
  */
 export function unionMergeData(localData, cloudData) {
+  // ── Bookmark Removals (tombstone sets) — union-merged, additive ──────────────
+  // A removal is permanent once recorded; union ensures we never lose a tombstone.
+  const mergedBookmarkRemovals = Array.from(new Set([
+    ...extractQuestionIdArray(localData.bookmarkRemovals),
+    ...extractQuestionIdArray(cloudData.bookmark_removals),
+  ]));
+  const mergedAptitudeBookmarkRemovals = Array.from(new Set([
+    ...extractQuestionIdArray(localData.aptitudeBookmarkRemovals),
+    ...extractQuestionIdArray(cloudData.aptitude_bookmark_removals),
+  ]));
+  const mergedDaBookmarkRemovals = Array.from(new Set([
+    ...extractQuestionIdArray(localData.daBookmarkRemovals),
+    ...extractQuestionIdArray(cloudData.da_bookmark_removals),
+  ]));
+
+  // ── Bookmarks — union MINUS removals ─────────────────────────────────────────
+  // First compute the raw union (unchanged additive behaviour for all normal IDs),
+  // then subtract the removal tombstones so explicitly unbookmarked IDs are excluded.
+  const bookmarkRemovalSet = new Set(mergedBookmarkRemovals);
   const mergedBookmarks = Array.from(new Set([
     ...extractQuestionIdArray(localData.bookmarks),
     ...extractQuestionIdArray(cloudData.bookmarks),
-  ]));
+  ])).filter(id => !bookmarkRemovalSet.has(id));
 
   const mergedNotes = mergeNotes(localData.notes, cloudData.notes);
   const mergedSolved = mergeSolvedQuestionIds(
@@ -409,10 +458,13 @@ export function unionMergeData(localData, cloudData) {
     localData.aptitudeSolved,
     cloudAptitudeSolvedIds
   );
-  const mergedAptitudeBookmarks = mergeSolvedQuestionIds(
-    localData.aptitudeBookmarks,
-    cloudAptitudeBookmarkIds
-  );
+  // Aptitude bookmarks — subtract aptitude removal tombstones
+  const aptitudeBookmarkRemovalSet = new Set(mergedAptitudeBookmarkRemovals);
+  const mergedAptitudeBookmarks = Array.from(new Set([
+    ...extractQuestionIdArray(localData.aptitudeBookmarks),
+    ...extractQuestionIdArray(cloudAptitudeBookmarkIds),
+  ])).filter(id => !aptitudeBookmarkRemovalSet.has(id));
+
   const mergedMockHistory = mergeMockHistory(
     localData.mockHistory,
     cloudData.mock_history
@@ -431,7 +483,13 @@ export function unionMergeData(localData, cloudData) {
     ...extractQuestionIdArray(cloudProgress.da_bookmarks),
   ];
   const mergedDaSolved = mergeSolvedQuestionIds(localData.daSolved, cloudDaSolvedIds);
-  const mergedDaBookmarks = mergeSolvedQuestionIds(localData.daBookmarks, cloudDaBookmarkIds);
+  // DA bookmarks — subtract DA removal tombstones
+  const daBookmarkRemovalSet = new Set(mergedDaBookmarkRemovals);
+  const mergedDaBookmarks = Array.from(new Set([
+    ...extractQuestionIdArray(localData.daBookmarks),
+    ...extractQuestionIdArray(cloudDaBookmarkIds),
+  ])).filter(id => !daBookmarkRemovalSet.has(id));
+
   const cloudDaProgress = cloudData.progress_records?.da || cloudProgress.da || {};
   const mergedDaProgress = mergeProgressRecords(localData.daProgress, cloudDaProgress);
 
@@ -449,12 +507,15 @@ export function unionMergeData(localData, cloudData) {
 
   return {
     bookmarks: mergedBookmarks,
+    bookmark_removals: mergedBookmarkRemovals,
     notes: mergedNotes,
     solved_questions: mergedSolved,
     aptitude_solved: mergedAptitudeSolved,
     aptitude_bookmarks: mergedAptitudeBookmarks,
+    aptitude_bookmark_removals: mergedAptitudeBookmarkRemovals,
     da_solved: mergedDaSolved,
     da_bookmarks: mergedDaBookmarks,
+    da_bookmark_removals: mergedDaBookmarkRemovals,
     mock_history: mergedMockHistory,
     progress_records: progressRecords,
     streakFreeze: mergedStreakFreeze,
@@ -511,16 +572,19 @@ export async function syncUserData(userId) {
     const merged = unionMergeData(localData, cloudData);
 
     // 5. Save the merged data back to Supabase
-    // Tier 1: Full 12-column payload matching live artifacts/db-schema contract
+    // Tier 1: Full payload matching live artifacts/db-schema contract (including bookmark removal tombstones)
     const upsertPayload = {
       user_id: userId,
       bookmarks: merged.bookmarks,
+      bookmark_removals: merged.bookmark_removals,
       notes: merged.notes,
       solved_questions: merged.solved_questions,
       aptitude_solved: merged.aptitude_solved,
       aptitude_bookmarks: merged.aptitude_bookmarks,
+      aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
       da_solved: merged.da_solved,
       da_bookmarks: merged.da_bookmarks,
+      da_bookmark_removals: merged.da_bookmark_removals,
       mock_history: merged.mock_history,
       progress_records: merged.progress_records,
       data_version: 1,
@@ -603,7 +667,7 @@ export async function syncUserData(userId) {
       console.warn("[CloudSync] Audit log insert warning:", logErr);
     }
 
-    // 7. Update local localStorage with merged data
+    // 7. Update local localStorage with merged data (bookmarks + removals)
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.solved,
       JSON.stringify(merged.solved_questions)
@@ -617,8 +681,16 @@ export async function syncUserData(userId) {
       JSON.stringify(merged.aptitude_bookmarks)
     );
     localStorage.setItem(
+      LOCAL_STORAGE_KEYS.aptitudeBookmarkRemovals,
+      JSON.stringify(merged.aptitude_bookmark_removals || [])
+    );
+    localStorage.setItem(
       LOCAL_STORAGE_KEYS.bookmarks,
       JSON.stringify(merged.bookmarks)
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.bookmarkRemovals,
+      JSON.stringify(merged.bookmark_removals || [])
     );
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.notes,
@@ -638,6 +710,7 @@ export async function syncUserData(userId) {
     );
     localStorage.setItem(LOCAL_STORAGE_KEYS.daSolved, JSON.stringify(merged.da_solved));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarks, JSON.stringify(merged.da_bookmarks));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals, JSON.stringify(merged.da_bookmark_removals || []));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daProgress, JSON.stringify(merged.progress_records.da || {}));
     if (merged.streakFreeze) {
       localStorage.setItem(LOCAL_STORAGE_KEYS.streakFreeze, JSON.stringify(merged.streakFreeze));

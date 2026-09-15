@@ -39,6 +39,159 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     expect(result2.bookmarks).toEqual(["go:10"]);
   });
 
+  // ── DEC-111: Bookmark Unbookmark Permanence ─────────────────────────────────
+
+  describe("DEC-111: Bookmark unbookmark permanence", () => {
+    test("unbookmark is not overwritten by cloud union-merge (primary bug fix)", () => {
+      // User bookmarked go:123, synced to cloud, then unbookmarked locally.
+      // Without the fix: cloud "go:123" would be re-added to merged bookmarks.
+      // With the fix: local bookmark_removals tombstone subtracts it from the union.
+      const local = {
+        bookmarks: [],                        // local no longer contains it
+        bookmarkRemovals: ["go:123"],         // explicit unbookmark tombstone
+      };
+      const cloud = {
+        bookmarks: ["go:123"],                // cloud still has the old bookmark
+        bookmark_removals: null,              // old cloud row has no removals column
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmarks).not.toContain("go:123");
+      expect(result.bookmark_removals).toContain("go:123");
+    });
+
+    test("cloud removal tombstone prevents bookmark even when local has no removal", () => {
+      // Another device unbookmarked go:456; local doesn't have the tombstone yet.
+      const local = {
+        bookmarks: ["go:456"],                // local still shows it bookmarked
+        bookmarkRemovals: [],
+      };
+      const cloud = {
+        bookmarks: ["go:456"],
+        bookmark_removals: ["go:456"],        // another device recorded the removal
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmarks).not.toContain("go:456");
+      expect(result.bookmark_removals).toContain("go:456");
+    });
+
+    test("bookmark_removals are union-merged across local and cloud (additive)", () => {
+      // Each side has a different removal; merged set must contain both.
+      const local = {
+        bookmarks: [],
+        bookmarkRemovals: ["go:1"],
+      };
+      const cloud = {
+        bookmarks: [],
+        bookmark_removals: ["go:2"],
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmark_removals).toContain("go:1");
+      expect(result.bookmark_removals).toContain("go:2");
+    });
+
+    test("re-bookmarking after unbooking: ID absent from removals means it stays in bookmarks", () => {
+      // User unbookmarked go:789 on device A (tombstone), then re-bookmarked on device B.
+      // Device B clears the tombstone and adds go:789 back to bookmarks.
+      // After sync: no tombstone → go:789 should remain bookmarked.
+      const local = {
+        bookmarks: ["go:789"],                // re-bookmarked locally
+        bookmarkRemovals: [],                 // tombstone cleared on re-bookmark
+      };
+      const cloud = {
+        bookmarks: ["go:789"],
+        bookmark_removals: [],                // cloud tombstone also cleared
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmarks).toContain("go:789");
+      expect(result.bookmark_removals).not.toContain("go:789");
+    });
+
+    test("existing bookmarks without any removal tombstone are preserved unchanged", () => {
+      const local = { bookmarks: ["go:A", "go:B"], bookmarkRemovals: [] };
+      const cloud = { bookmarks: ["go:B", "go:C"], bookmark_removals: [] };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmarks).toContain("go:A");
+      expect(result.bookmarks).toContain("go:B");
+      expect(result.bookmarks).toContain("go:C");
+    });
+
+    test("aptitude bookmark removal tombstones are handled separately from GATE bookmarks", () => {
+      const local = {
+        bookmarks: ["go:1"],
+        bookmarkRemovals: [],
+        aptitudeBookmarks: [],
+        aptitudeBookmarkRemovals: ["APT-ENG-0001"],
+      };
+      const cloud = {
+        bookmarks: ["go:1"],
+        bookmark_removals: [],
+        aptitude_bookmarks: ["APT-ENG-0001"],
+        aptitude_bookmark_removals: null,
+      };
+
+      const result = unionMergeData(local, cloud);
+      // GATE bookmark unaffected
+      expect(result.bookmarks).toContain("go:1");
+      // Aptitude bookmark correctly removed via tombstone
+      expect(result.aptitude_bookmarks).not.toContain("APT-ENG-0001");
+      expect(result.aptitude_bookmark_removals).toContain("APT-ENG-0001");
+    });
+
+    test("DA bookmark removal tombstones are handled separately", () => {
+      const local = {
+        daBookmarks: [],
+        daBookmarkRemovals: ["da:2024:q-prob"],
+      };
+      const cloud = {
+        da_bookmarks: ["da:2024:q-prob"],
+        da_bookmark_removals: null,
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.da_bookmarks).not.toContain("da:2024:q-prob");
+      expect(result.da_bookmark_removals).toContain("da:2024:q-prob");
+    });
+
+    test("bookmark_removals: null from old cloud row is handled gracefully (backward compat)", () => {
+      const local = {
+        bookmarks: ["go:safe"],
+        bookmarkRemovals: ["go:removed"],
+      };
+      const cloud = {
+        bookmarks: ["go:safe", "go:removed"],
+        bookmark_removals: null,              // old schema, column doesn't exist
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmarks).toContain("go:safe");
+      expect(result.bookmarks).not.toContain("go:removed");
+      expect(result.bookmark_removals).toContain("go:removed");
+    });
+
+    test("explicit false (unbookmark tombstone) always beats stale true (cloud bookmark)", () => {
+      // Validates the core invariant: undefined (missing) ≠ false (explicit removal).
+      // An entry present in bookmark_removals is a definitive "the user said NO."
+      const local = {
+        bookmarks: [],
+        bookmarkRemovals: ["go:conflict"],
+      };
+      const cloud = {
+        bookmarks: ["go:conflict"],           // stale; user explicitly removed this
+        bookmark_removals: null,
+      };
+
+      const result = unionMergeData(local, cloud);
+      expect(result.bookmarks).toEqual(
+        expect.not.arrayContaining(["go:conflict"])
+      );
+    });
+  });
+
   test("merges notes using the Longest Note Wins policy", () => {
     const local = {
       notes: {

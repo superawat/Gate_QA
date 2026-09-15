@@ -972,4 +972,123 @@ describe('FilterContext', () => {
             expect(getByTestId('year-range').textContent).toBe('1987,2026');
         });
     });
+
+    // ── DEC-111: Bookmark Unbookmark Permanence ─────────────────────────────────
+    describe('DEC-111: Bookmark unbookmark permanence', () => {
+        const BOOKMARKS_KEY = 'gate_qa_bookmarked_questions';
+        const BOOKMARK_REMOVALS_KEY = 'gate_qa_bookmark_removals';
+
+        const BookmarkTestComponent = () => {
+            const { isQuestionBookmarked } = useFilterActions();
+            const { toggleBookmark } = useFilterActions();
+            return (
+                <div>
+                    <div data-testid="bm-go1">{isQuestionBookmarked('go:1') ? 'bookmarked' : 'not-bookmarked'}</div>
+                    <button data-testid="toggle-go1" onClick={() => toggleBookmark('go:1')}>Toggle</button>
+                </div>
+            );
+        };
+
+        test('unbookmark writes tombstone to localStorage', async () => {
+            // Pre-seed: go:1 is already bookmarked in storage
+            window.localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(['go:1']));
+            window.localStorage.setItem(BOOKMARK_REMOVALS_KEY, JSON.stringify([]));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BookmarkTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('bm-go1').textContent).toBe('bookmarked');
+            });
+
+            // Click to unbookmark
+            act(() => {
+                getByTestId('toggle-go1').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('bm-go1').textContent).toBe('not-bookmarked');
+            });
+
+            // The tombstone must be written to localStorage
+            const removals = JSON.parse(window.localStorage.getItem(BOOKMARK_REMOVALS_KEY) || '[]');
+            expect(removals).toContain('go:1');
+
+            // The bookmark must also be absent from the bookmarks key
+            const bookmarks = JSON.parse(window.localStorage.getItem(BOOKMARKS_KEY) || '[]');
+            expect(bookmarks).not.toContain('go:1');
+        });
+
+        test('re-bookmark clears the tombstone from localStorage', async () => {
+            // Pre-seed: go:1 is NOT bookmarked and has an existing tombstone
+            window.localStorage.setItem(BOOKMARKS_KEY, JSON.stringify([]));
+            window.localStorage.setItem(BOOKMARK_REMOVALS_KEY, JSON.stringify(['go:1']));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BookmarkTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('bm-go1').textContent).toBe('not-bookmarked');
+            });
+
+            // Click to re-bookmark
+            act(() => {
+                getByTestId('toggle-go1').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('bm-go1').textContent).toBe('bookmarked');
+            });
+
+            // The tombstone must be cleared
+            const removals = JSON.parse(window.localStorage.getItem(BOOKMARK_REMOVALS_KEY) || '[]');
+            expect(removals).not.toContain('go:1');
+
+            // The bookmark must be present
+            const bookmarks = JSON.parse(window.localStorage.getItem(BOOKMARKS_KEY) || '[]');
+            expect(bookmarks).toContain('go:1');
+        });
+
+        test('sync-complete with stale bookmark does not restore unbookmarked state', async () => {
+            // Simulate the exact bug scenario:
+            // 1. User unbookmarked go:1 (local bookmarks=[], removals=['go:1'])
+            // 2. Sync fires and (with old broken merge) overwrites bookmarks=['go:1'] back
+            // 3. refreshProgressState re-reads localStorage
+            // With the fix applied: sync writes the correct merged result (removals respected),
+            // so gateqa:sync-complete should NOT cause the bookmark to re-appear.
+
+            window.localStorage.setItem(BOOKMARKS_KEY, JSON.stringify([]));
+            window.localStorage.setItem(BOOKMARK_REMOVALS_KEY, JSON.stringify(['go:1']));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <BookmarkTestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('bm-go1').textContent).toBe('not-bookmarked');
+            });
+
+            // Simulate post-sync localStorage state: sync correctly preserved removals and kept bookmarks empty
+            window.localStorage.setItem(BOOKMARKS_KEY, JSON.stringify([]));
+            window.localStorage.setItem(BOOKMARK_REMOVALS_KEY, JSON.stringify(['go:1']));
+
+            // Fire the sync-complete event (which calls refreshProgressState)
+            act(() => {
+                window.dispatchEvent(new CustomEvent('gateqa:sync-complete', { detail: {} }));
+            });
+
+            await waitFor(() => {
+                // The question must remain unbookmarked after sync-complete
+                expect(getByTestId('bm-go1').textContent).toBe('not-bookmarked');
+            });
+        });
+    });
 });

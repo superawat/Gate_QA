@@ -27,14 +27,17 @@ const DEFAULT_SELECTED_TYPES = ['MCQ', 'MSQ', 'NAT'];
 const STORAGE_KEYS = {
     solved: 'gate_qa_solved_questions',
     bookmarked: 'gate_qa_bookmarked_questions',
+    bookmarkRemovals: 'gate_qa_bookmark_removals',
     metadata: 'gate_qa_progress_metadata',
     progress: 'gateqa_progress_v1'
 };
 const DA_STORAGE_KEYS = {
     solved: 'gate_qa_da_solved_questions',
     bookmarked: 'gate_qa_da_bookmarked_questions',
+    bookmarkRemovals: 'gate_qa_da_bookmark_removals',
     progress: 'gateqa_da_progress_v1',
 };
+const APTITUDE_BOOKMARK_REMOVALS_KEY = 'gateqa-apt-bookmark-removals';
 const DEFAULT_MIN_YEAR = 2000;
 const DEFAULT_MAX_YEAR = new Date().getFullYear();
 const LEGACY_STORAGE_KEYS = {
@@ -597,10 +600,13 @@ export const FilterProvider = ({
 
     const [solvedQuestionIds, setSolvedQuestionIds] = useState([]);
     const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState([]);
+    const [bookmarkRemovalIds, setBookmarkRemovalIds] = useState([]);
     const [aptitudeSolvedQuestionIds, setAptitudeSolvedQuestionIds] = useState([]);
     const [aptitudeBookmarkedQuestionIds, setAptitudeBookmarkedQuestionIds] = useState([]);
+    const [aptitudeBookmarkRemovalIds, setAptitudeBookmarkRemovalIds] = useState([]);
     const [daSolvedQuestionIds, setDaSolvedQuestionIds] = useState([]);
     const [daBookmarkedQuestionIds, setDaBookmarkedQuestionIds] = useState([]);
+    const [daBookmarkRemovalIds, setDaBookmarkRemovalIds] = useState([]);
     const [includeCse, setIncludeCseState] = useState(() => (
         initialIncludeCse !== undefined
             ? Boolean(initialIncludeCse)
@@ -1056,21 +1062,29 @@ export const FilterProvider = ({
         const storedBookmarked = storedBookmarkedRaw === null
             ? normalizeStoredIds(legacyStorageKeys.bookmarked ? readJsonFromStorage(legacyStorageKeys.bookmarked, []) : [])
             : normalizeStoredIds(storedBookmarkedRaw);
+        const storedBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(storageKeys.bookmarkRemovals, []));
         const storedAptitudeSolved = canMergeAptitude
             ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, []))
             : [];
         const storedAptitudeBookmarked = canMergeAptitude
             ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, []))
             : [];
+        const storedAptitudeBookmarkRemovals = canMergeAptitude
+            ? normalizeStoredIds(readJsonFromStorage(APTITUDE_BOOKMARK_REMOVALS_KEY, []))
+            : [];
         const storedDaSolved = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.solved, []));
         const storedDaBookmarked = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, []));
+        const storedDaBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarkRemovals, []));
 
         setSolvedQuestionIds(storedSolved);
         setBookmarkedQuestionIds(storedBookmarked);
+        setBookmarkRemovalIds(storedBookmarkRemovals);
         setAptitudeSolvedQuestionIds(storedAptitudeSolved);
         setAptitudeBookmarkedQuestionIds(storedAptitudeBookmarked);
+        setAptitudeBookmarkRemovalIds(storedAptitudeBookmarkRemovals);
         setDaSolvedQuestionIds(storedDaSolved);
         setDaBookmarkedQuestionIds(storedDaBookmarked);
+        setDaBookmarkRemovalIds(storedDaBookmarkRemovals);
 
         if (storedBookmarkedRaw === null) {
             try {
@@ -1081,7 +1095,7 @@ export const FilterProvider = ({
         }
 
         setHasLoadedProgressState(true);
-    }, [canMergeAptitude, legacyStorageKeys.bookmarked, storageKeys.bookmarked, storageKeys.solved]);
+    }, [canMergeAptitude, legacyStorageKeys.bookmarked, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved]);
 
     useEffect(() => {
         if (!hasLoadedProgressState || !isProgressStorageAvailable || typeof window === 'undefined') {
@@ -1091,6 +1105,7 @@ export const FilterProvider = ({
         try {
             window.localStorage.setItem(storageKeys.solved, JSON.stringify(solvedQuestionIds));
             window.localStorage.setItem(storageKeys.bookmarked, JSON.stringify(bookmarkedQuestionIds));
+            window.localStorage.setItem(storageKeys.bookmarkRemovals, JSON.stringify(bookmarkRemovalIds));
             window.localStorage.setItem(storageKeys.metadata, JSON.stringify({
                 lastUpdated: new Date().toISOString(),
                 solvedCount: solvedQuestionIds.length,
@@ -1099,6 +1114,7 @@ export const FilterProvider = ({
             if (canMergeAptitude) {
                 window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.solved, JSON.stringify(aptitudeSolvedQuestionIds));
                 window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, JSON.stringify(aptitudeBookmarkedQuestionIds));
+                window.localStorage.setItem(APTITUDE_BOOKMARK_REMOVALS_KEY, JSON.stringify(aptitudeBookmarkRemovalIds));
                 window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.metadata, JSON.stringify({
                     lastUpdated: new Date().toISOString(),
                     solvedCount: aptitudeSolvedQuestionIds.length,
@@ -1107,19 +1123,24 @@ export const FilterProvider = ({
             }
             window.localStorage.setItem(DA_STORAGE_KEYS.solved, JSON.stringify(daSolvedQuestionIds));
             window.localStorage.setItem(DA_STORAGE_KEYS.bookmarked, JSON.stringify(daBookmarkedQuestionIds));
+            window.localStorage.setItem(DA_STORAGE_KEYS.bookmarkRemovals, JSON.stringify(daBookmarkRemovalIds));
         } catch (error) {
             setIsProgressStorageAvailable(false);
         }
     }, [
         aptitudeBookmarkedQuestionIds,
+        aptitudeBookmarkRemovalIds,
         daBookmarkedQuestionIds,
+        daBookmarkRemovalIds,
         daSolvedQuestionIds,
         aptitudeSolvedQuestionIds,
         bookmarkedQuestionIds,
+        bookmarkRemovalIds,
         canMergeAptitude,
         hasLoadedProgressState,
         isProgressStorageAvailable,
         solvedQuestionIds,
+        storageKeys.bookmarkRemovals,
         storageKeys.bookmarked,
         storageKeys.metadata,
         storageKeys.solved
@@ -1455,17 +1476,41 @@ export const FilterProvider = ({
         }
 
         const isDa = isDaTarget(questionOrId);
+        const isAptitude = !isDa && canMergeAptitude && isAptitudeQuestionId(questionId);
+
         const setTargetBookmarkedQuestionIds = isDa
             ? setDaBookmarkedQuestionIds
-            : canMergeAptitude && isAptitudeQuestionId(questionId)
+            : isAptitude
                 ? setAptitudeBookmarkedQuestionIds
                 : setBookmarkedQuestionIds;
 
-        setTargetBookmarkedQuestionIds((prev) => (
-            prev.includes(questionId)
-                ? prev.filter(id => id !== questionId)
-                : [...prev, questionId]
-        ));
+        const setTargetBookmarkRemovalIds = isDa
+            ? setDaBookmarkRemovalIds
+            : isAptitude
+                ? setAptitudeBookmarkRemovalIds
+                : setBookmarkRemovalIds;
+
+        setTargetBookmarkedQuestionIds((prev) => {
+            const isCurrentlyBookmarked = prev.includes(questionId);
+
+            // Record/clear the tombstone synchronously inside the same state update batch.
+            setTargetBookmarkRemovalIds((prevRemovals) => {
+                if (isCurrentlyBookmarked) {
+                    // Unbookmarking: add tombstone so cloud sync never restores this ID.
+                    return prevRemovals.includes(questionId)
+                        ? prevRemovals
+                        : [...prevRemovals, questionId];
+                } else {
+                    // Re-bookmarking: clear the tombstone so the ID is kept after sync.
+                    return prevRemovals.filter((id) => id !== questionId);
+                }
+            });
+
+            return isCurrentlyBookmarked
+                ? prev.filter((id) => id !== questionId)
+                : [...prev, questionId];
+        });
+
         enqueueChange('BOOKMARK', { questionUid: questionId });
     }, [answerService, canMergeAptitude, isDaTarget]);
 
@@ -1541,15 +1586,19 @@ export const FilterProvider = ({
         }
         const storedSolved = normalizeStoredIds(readJsonFromStorage(storageKeys.solved, []));
         const storedBookmarked = normalizeStoredIds(readJsonFromStorage(storageKeys.bookmarked, []));
+        const storedBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(storageKeys.bookmarkRemovals, []));
         setSolvedQuestionIds(storedSolved);
         setBookmarkedQuestionIds(storedBookmarked);
+        setBookmarkRemovalIds(storedBookmarkRemovals);
         if (canMergeAptitude) {
             setAptitudeSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, [])));
             setAptitudeBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, [])));
+            setAptitudeBookmarkRemovalIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_BOOKMARK_REMOVALS_KEY, [])));
         }
         setDaSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.solved, [])));
         setDaBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, [])));
-    }, [canMergeAptitude, storageKeys.bookmarked, storageKeys.solved]);
+        setDaBookmarkRemovalIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarkRemovals, [])));
+    }, [canMergeAptitude, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved]);
 
     useEffect(() => {
         const handleSyncComplete = () => refreshProgressState();
