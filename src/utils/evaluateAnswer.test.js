@@ -1240,17 +1240,18 @@ describe("evaluateAnswer", () => {
     expect(evaluateAnswer(record, 10).correct).toBe(false);
   });
 
-  test("evaluates GATE CSE 2017 Set 1 CS Q45 (go:118328) NAT range [86.5, 87.5]", () => {
+  test("evaluates GATE CSE 2017 Set 1 CS Q45 (go:118328) NAT range [86.5, 89.5]", () => {
     const record = {
       type: "NAT",
-      answer: 87.0,
-      tolerance: { lower: 86.5, upper: 87.5, abs: 0.5 },
+      answer: 88.0,
+      tolerance: { lower: 86.5, upper: 89.5, abs: 1.5 },
     };
     expect(evaluateAnswer(record, 86.5).correct).toBe(true);
     expect(evaluateAnswer(record, 87.0).correct).toBe(true);
-    expect(evaluateAnswer(record, 87.5).correct).toBe(true);
-    expect(evaluateAnswer(record, 86.4).correct).toBe(false);
-    expect(evaluateAnswer(record, 87.6).correct).toBe(false);
+    expect(evaluateAnswer(record, 88.0).correct).toBe(true);
+    expect(evaluateAnswer(record, 89.5).correct).toBe(true);
+    expect(evaluateAnswer(record, 86.49).correct).toBe(false);
+    expect(evaluateAnswer(record, 89.51).correct).toBe(false);
   });
 
   test("evaluates GATE CSE 2017 Set 1 CS Q48 (go:118331) NAT 5", () => {

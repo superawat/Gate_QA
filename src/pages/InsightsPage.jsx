@@ -2035,7 +2035,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("cs")}
-                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3.5 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
                     selectedTrack === "cs"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -2047,7 +2047,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("da")}
-                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3.5 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
                     selectedTrack === "da"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -2059,7 +2059,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("all")}
-                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
+                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3.5 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
                     selectedTrack === "all"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"

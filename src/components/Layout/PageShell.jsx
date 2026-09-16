@@ -7,6 +7,7 @@ import MobileBottomNav from "./MobileBottomNav";
 const PageShell = ({
   children,
   contentClassName = "",
+  showHeader = true,
   showFooter = true,
   showMobileBottomNav = true,
   onResume = null,
@@ -19,10 +20,12 @@ const PageShell = ({
     >
       Skip to content
     </a>
-    <AppHeader onResume={onResume} resumeLabel={resumeLabel} />
+    {showHeader ? <AppHeader onResume={onResume} resumeLabel={resumeLabel} /> : null}
     <main
       id="main-content"
-      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 pt-4 sm:pt-6 sm:px-6 md:pb-6 lg:px-8 ${contentClassName}`}
+      className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 sm:px-6 md:pb-6 lg:px-8 ${
+        showHeader ? "pt-4 sm:pt-6" : "pt-[calc(0.75rem+env(safe-area-inset-top,0px))] sm:pt-5"
+      } ${contentClassName}`}
     >
       {children}
     </main>

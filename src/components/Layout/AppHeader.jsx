@@ -26,7 +26,13 @@ const AuthModal = lazy(() => import("../Auth/AuthModal"));
 const UserProfileMenu = lazy(() => import("../Auth/UserProfileMenu"));
 const TrackerAnnouncementModal = lazy(() => import("../Tracker/TrackerAnnouncementModal"));
 
-const THEME_STORAGE_KEY = "gate_qa_theme";
+import {
+  THEME_STORAGE_KEY,
+  THEME_CHANGE_EVENT,
+  resolveInitialTheme,
+  applyDocumentTheme,
+  toggleTheme,
+} from "../../utils/theme";
 const DOMAIN_SHIFT_SEEN_KEY = "gateqa_domain_shift_notice_seen_v2";
 const DOMAIN_SHIFT_TARGET_DATE = "2026-06-14T00:00:00+05:30";
 const DOMAIN_SHIFT_IS_COMPLETE = true;
@@ -67,34 +73,6 @@ const getDomainShiftCountdown = () => {
 
   const days = Math.ceil(remainingMs / (1000 * 60 * 60 * 24));
   return `${days} ${days === 1 ? "day" : "days"} remaining`;
-};
-
-const resolveInitialTheme = () => {
-  if (typeof window === "undefined") {
-    return { theme: "light", followsSystem: true };
-  }
-
-  const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
-  if (stored === "light" || stored === "dark") {
-    return { theme: stored, followsSystem: false };
-  }
-
-  const canReadSystemTheme = typeof window.matchMedia === "function";
-  return {
-    theme: canReadSystemTheme && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light",
-    followsSystem: true,
-  };
-};
-
-const applyDocumentTheme = (theme) => {
-  if (typeof document === "undefined") {
-    return;
-  }
-  document.documentElement.setAttribute("data-theme", theme);
-  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-  if (metaThemeColor) {
-    metaThemeColor.setAttribute("content", theme === "dark" ? "#0d1117" : "#f9fafb");
-  }
 };
 
 const readAptitudeBadge = () => {
@@ -235,6 +213,19 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   }, [followsSystemTheme]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    const handleExternalThemeChange = (event) => {
+      const nextTheme = event?.detail?.theme;
+      if (nextTheme === "light" || nextTheme === "dark") {
+        setTheme(nextTheme);
+        setFollowsSystemTheme(false);
+      }
+    };
+    window.addEventListener(THEME_CHANGE_EVENT, handleExternalThemeChange);
+    return () => window.removeEventListener(THEME_CHANGE_EVENT, handleExternalThemeChange);
+  }, []);
+
+  useEffect(() => {
     if (typeof window === "undefined") {
       return undefined;
     }
@@ -280,51 +271,9 @@ const AppHeader = ({ onHomeNavigate = null }) => {
 
   const handleToggleTheme = (event) => {
     const nextTheme = isDarkMode ? "light" : "dark";
-
-    if (!document.startViewTransition) {
-      setTheme(nextTheme);
-      setFollowsSystemTheme(false);
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-      }
-      return;
-    }
-
-    const x = event?.clientX ?? window.innerWidth / 2;
-    const y = event?.clientY ?? window.innerHeight / 2;
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
-    const transition = document.startViewTransition(() => {
-      flushSync(() => {
-        setTheme(nextTheme);
-        setFollowsSystemTheme(false);
-      });
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-      }
-    });
-
-    transition.ready.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`
-      ];
-      document.documentElement.animate(
-        {
-          clipPath: isDarkMode ? clipPath.reverse() : clipPath,
-        },
-        {
-          duration: 450,
-          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-          pseudoElement: isDarkMode
-            ? "::view-transition-old(root)"
-            : "::view-transition-new(root)",
-        }
-      );
-    });
+    toggleTheme(theme, event);
+    setTheme(nextTheme);
+    setFollowsSystemTheme(false);
   };
 
 
@@ -583,7 +532,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   return (
     <>
     <header className={`sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] transition-transform duration-200 ease-in-out ${isHeaderHidden ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}>
-      <div className="app-header-inner mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-6 sm:py-5 lg:px-8">
+      <div className="app-header-inner mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-2.5 py-2.5 min-[360px]:px-3 min-[360px]:py-3 sm:gap-4 sm:px-6 sm:py-5 lg:px-8">
         <div className="flex min-w-0 items-center gap-2 sm:gap-4">
           <Link
             to={HOME_ROUTE}
@@ -605,7 +554,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 min-[380px]:gap-2">
           {showInstallButton ? (
             <button
               type="button"

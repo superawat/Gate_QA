@@ -18,7 +18,15 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children }) => <div>{children}</div>,
+  default: ({ children, showHeader, showFooter }) => (
+    <div
+      data-testid="page-shell"
+      data-show-header={String(showHeader)}
+      data-show-footer={String(showFooter)}
+    >
+      {children}
+    </div>
+  ),
 }));
 
 vi.mock("../components/Filters/FilterModal", () => ({
@@ -458,5 +466,30 @@ describe("ExplorePage", () => {
 
     expect(screen.getByText("Unable to load questions.")).toBeTruthy();
     expect(loadQuestions).toHaveBeenCalledTimes(1);
+  });
+
+  test("renders PageShell with showHeader=false and showFooter=false for distraction-free filtering", async () => {
+    renderExplorePage();
+    await screen.findByRole("button", { name: /start practice/i });
+    const pageShell = screen.getByTestId("page-shell");
+    expect(pageShell.getAttribute("data-show-header")).toBe("false");
+    expect(pageShell.getAttribute("data-show-footer")).toBe("false");
+  });
+
+  test("renders Back to Home button and navigates to home", async () => {
+    renderExplorePage();
+    const homeBtn = await screen.findByRole("button", { name: /back to home/i });
+    expect(homeBtn).toBeTruthy();
+    fireEvent.click(homeBtn);
+    expect(screen.getByTestId("location-probe").textContent).toBe("/");
+  });
+
+  test("renders theme toggle button and toggles theme", async () => {
+    window.localStorage.setItem("gate_qa_theme", "light");
+    renderExplorePage();
+    const themeToggle = await screen.findByRole("switch", { name: /switch to dark mode/i });
+    expect(themeToggle).toBeTruthy();
+    fireEvent.click(themeToggle);
+    expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
   });
 });

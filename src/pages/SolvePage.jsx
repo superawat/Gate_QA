@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaArrowLeft, FaCheckCircle, FaStar } from "react-icons/fa";
+import { FiHome, FiMoon, FiSun } from "react-icons/fi";
 import { SITE_URL } from "../constants/siteConfig";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
@@ -18,11 +19,12 @@ import { DaQuestionService } from "../services/DaQuestionService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
-import { buildSolvePath, parsePageParam, PRACTICE_ROUTE } from "../utils/routes";
+import { buildSolvePath, parsePageParam, HOME_ROUTE, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
 import { readPracticeShuffleEnabled } from "../utils/practicePreference";
 import { getDisplayQuestionTypeLabel, MTA_EXPLANATION_TEXT } from "../utils/questionType";
 import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../utils/examTrack";
+import { useTheme } from "../utils/theme";
 
 const isUnavailableQuestionDetailError = (error) => (
   /question detail missing|not available in the current index/i.test(String(error?.message || error || ""))
@@ -48,6 +50,7 @@ const SolvePage = ({
   const [isQuestionDetailLoading, setIsQuestionDetailLoading] = useState(false);
   const [questionDetailRequestNonce, setQuestionDetailRequestNonce] = useState(0);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const {
     filteredQuestions,
@@ -267,6 +270,10 @@ const SolvePage = ({
       }
     );
   }, [activeSearch, navigate, questionUid]);
+
+  const handleBackHome = useCallback(() => {
+    navigate(HOME_ROUTE);
+  }, [navigate]);
 
   const retryCurrentQuestionDetail = useCallback(() => {
     setQuestionDetailRequestNonce((previous) => previous + 1);
@@ -586,44 +593,65 @@ const SolvePage = ({
         ] : []}
       />
       <PageShell
+        showHeader={false}
+        showFooter={false}
         showMobileBottomNav={false}
+        contentClassName="pb-24 sm:pb-28 md:pb-6"
         onResume={hasResumeRoute ? onResumePractice : null}
         resumeLabel="Continue"
       >
         <section className="space-y-4">
           <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
-            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={handleBackToResults}
-                    className="inline-flex min-h-[32px] sm:min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
-                  >
-                    <FaArrowLeft className="mr-1.5 sm:mr-2" />
-                    <span className="hidden sm:inline">Back to Results</span>
-                  </button>
-                  <p className="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-700">Solve</p>
-                  {heroMetaChips}
-                </div>
-                <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <h1 className="text-xl sm:text-[clamp(1.9rem,2.7vw,2.85rem)] font-bold sm:font-semibold leading-tight text-[color:var(--color-text)]">
-                      {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
-                    </h1>
-                  </div>
-                </div>
+            {/* Top Bar: Navigation on left, Session Status & Utilities on right */}
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <button
+                  type="button"
+                  onClick={handleBackToResults}
+                  aria-label="Back to Results"
+                  title="Back to Results"
+                  className="inline-flex min-h-[32px] sm:min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                >
+                  <FaArrowLeft className="mr-1 sm:mr-1.5 text-xs sm:text-sm" />
+                  <span className="hidden min-[360px]:inline">Back</span>
+                  <span className="hidden sm:inline"> to Results</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleBackHome}
+                  className="inline-flex min-h-[32px] sm:min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  aria-label="Back to Home"
+                  title="Home"
+                >
+                  <FiHome className="sm:mr-1.5 text-sm sm:text-base" />
+                  <span className="hidden sm:inline">Home</span>
+                </button>
               </div>
 
-              <div className="flex items-center justify-between gap-2 lg:items-start lg:justify-end lg:pt-0.5">
-                <div className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2.5 py-1.5 sm:px-3 sm:py-2 text-right">
-                  <div className="flex items-center justify-between gap-2 sm:gap-3">
-                    <p className="hidden sm:block text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <div className="rounded-lg sm:rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-1 sm:px-3 sm:py-1.5 text-right">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <p className="hidden md:block text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
                     <p className="text-xs sm:text-sm font-semibold text-[color:var(--color-text)]">
                       {navigationSummary}
                     </p>
                   </div>
                 </div>
+                <button
+                  type="button"
+                  role="switch"
+                  onClick={toggleTheme}
+                  aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                  aria-checked={isDarkMode}
+                  title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                  className="inline-flex min-h-[32px] sm:min-h-[38px] min-w-[32px] sm:min-w-[38px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                >
+                  {isDarkMode ? (
+                    <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                  ) : (
+                    <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                  )}
+                </button>
                 <div className="hidden md:inline-flex">
                   <CalculatorButton
                     ref={calculatorButtonRef}
@@ -632,6 +660,19 @@ const SolvePage = ({
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Title */}
+            <div className="mt-2.5 sm:mt-3">
+              <h1 className="text-lg sm:text-2xl lg:text-[clamp(1.9rem,2.7vw,2.85rem)] font-bold sm:font-semibold leading-tight text-[color:var(--color-text)]">
+                {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
+              </h1>
+            </div>
+
+            {/* Meta Badges & Chips */}
+            <div className="mt-2 sm:mt-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-sky-700 dark:text-sky-400">Solve</p>
+              {heroMetaChips}
             </div>
           </div>
 

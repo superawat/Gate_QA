@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaFilter, FaPlay, FaRandom, FaSortAmountDown } from "react-icons/fa";
+import { FiHome, FiMoon, FiSun } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
@@ -16,11 +17,12 @@ import { useSession } from "../contexts/SessionContext";
 import { trackEvent } from "../utils/analytics";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { writeLastSession } from "../utils/lastSession";
-import { buildSolvePath, parsePageParam, PRACTICE_ROUTE, writePageParam } from "../utils/routes";
+import { buildSolvePath, parsePageParam, HOME_ROUTE, PRACTICE_ROUTE, writePageParam } from "../utils/routes";
 import {
   usePracticeShuffleEnabled,
   usePracticeApplyFiltersEnabled,
 } from "../utils/practicePreference";
+import { useTheme } from "../utils/theme";
 
 const PAGE_SIZE = 25;
 
@@ -39,6 +41,11 @@ const ExplorePage = ({
   const filterChangeRef = useRef(null);
   const pullStartRef = useRef(null);
   const pullActiveRef = useRef(false);
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  const handleBackHome = useCallback(() => {
+    navigate(HOME_ROUTE);
+  }, [navigate]);
 
   const { filteredQuestions, filters, isInitialized, structuredTags, totalQuestions, allQuestions } = useFilterState();
   const { isQuestionSolved, isQuestionBookmarked, clearFilters } = useFilterActions();
@@ -407,6 +414,8 @@ const ExplorePage = ({
 
   return (
     <PageShell
+      showHeader={false}
+      showFooter={false}
       contentClassName="practice-explore-shell"
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
@@ -423,14 +432,14 @@ const ExplorePage = ({
 
       <div className="practice-explore-layout grid min-w-0 gap-6 xl:grid-cols-[360px_minmax(0,1fr)] 2xl:grid-cols-[380px_minmax(0,1fr)]">
         <div className="hidden xl:block">
-          <div className="sticky top-24 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)]">
-            <FilterSidebar className="h-[calc(100vh-8rem)] border-r-0 bg-[color:var(--color-surface)]" />
+          <div className="sticky top-3 sm:top-5 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)]">
+            <FilterSidebar className="h-[calc(100dvh-2.5rem)] sm:h-[calc(100dvh-3rem)] border-r-0 bg-[color:var(--color-surface)]" />
           </div>
         </div>
 
-        <section className="practice-explore-content min-w-0 space-y-3 xl:flex xl:h-[calc(100vh-8rem)] xl:flex-col xl:overflow-hidden">
+        <section className="practice-explore-content min-w-0 space-y-3 xl:flex xl:h-[calc(100dvh-2.5rem)] sm:xl:h-[calc(100dvh-3rem)] xl:flex-col xl:overflow-hidden">
           {(pullDistance > 0 || isPullRefreshing) ? (
-            <div className="sticky top-20 z-20 -mb-2 flex justify-center md:hidden">
+            <div className="sticky top-4 z-20 -mb-2 flex justify-center md:hidden">
               <div className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 shadow-[var(--shadow-soft)]">
                 {isPullRefreshing ? "Refreshing..." : pullDistance >= 72 ? "Release to refresh" : "Pull to refresh"}
               </div>
@@ -439,17 +448,29 @@ const ExplorePage = ({
 
           <div className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 sm:px-5 sm:py-3.5 shadow-[var(--shadow-card)]">
             <div className="practice-explore-heading flex flex-wrap items-center justify-between gap-3">
-              <div className="min-w-0">
-                <h1 className="practice-explore-title text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>
-                <p className="practice-result-summary mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
+              <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <button
+                  type="button"
+                  onClick={handleBackHome}
+                  className="inline-flex min-h-[36px] sm:min-h-[40px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                  aria-label="Back to Home"
+                  title="Home"
+                >
+                  <FiHome className="sm:mr-1.5 text-sm sm:text-base" />
+                  <span className="hidden sm:inline">Home</span>
+                </button>
+                <div className="min-w-0">
+                  <h1 className="practice-explore-title text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>
+                  <p className="practice-result-summary mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium text-[color:var(--color-text-muted)]">{resultSummary}</p>
+                </div>
               </div>
 
-              <div className="practice-filter-actions grid grid-cols-2 gap-2 w-full sm:flex sm:w-auto sm:items-center">
+              <div className="practice-filter-actions flex items-center gap-2 w-full sm:w-auto">
                 <button
                   type="button"
                   onClick={handleStartFilteredPractice}
                   disabled={!filteredQuestions.length}
-                  className="inline-flex min-h-[40px] sm:min-h-[42px] w-full items-center justify-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                  className="inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center justify-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <FaPlay className="text-xs" aria-hidden="true" />
                   <span className="truncate">{quickStartLabel}</span>
@@ -458,7 +479,7 @@ const ExplorePage = ({
                   type="button"
                   onClick={handleOpenFilters}
                   aria-keyshortcuts="F"
-                  className="practice-filter-trigger inline-flex min-h-[40px] sm:min-h-[42px] w-full items-center gap-2 sm:gap-2.5 rounded-xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 sm:px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden sm:w-auto"
+                  className="practice-filter-trigger inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center gap-2 sm:gap-2.5 rounded-xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 sm:px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
                 >
                   <span className="practice-filter-trigger-icon inline-flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-white shadow-sm">
                     <FaFilter className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
@@ -469,6 +490,21 @@ const ExplorePage = ({
                       {activeFilterCount > 0 ? `${activeFilterCount} active` : "All questions"}
                     </span>
                   </span>
+                </button>
+                <button
+                  type="button"
+                  role="switch"
+                  onClick={toggleTheme}
+                  aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                  aria-checked={isDarkMode}
+                  title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                  className="inline-flex min-h-[40px] sm:min-h-[42px] min-w-[40px] sm:min-w-[42px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                >
+                  {isDarkMode ? (
+                    <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                  ) : (
+                    <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                  )}
                 </button>
               </div>
             </div>

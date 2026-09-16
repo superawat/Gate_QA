@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import AnswerPanel from "../AnswerPanel/AnswerPanel";
@@ -19,6 +19,23 @@ function Question({
   canGoNext,
 }) {
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
+  const [isEditingNote, setIsEditingNote] = useState(false);
+  const [hasNote, setHasNote] = useState(false);
+
+  useEffect(() => {
+    setIsEditingNote(false);
+  }, [question?.question_uid]);
+
+  const handleOpenNotes = () => {
+    if (!hasNote) {
+      setIsEditingNote(true);
+    } else {
+      const notesEl = document.getElementById("question-notes-section");
+      if (notesEl) {
+        notesEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  };
 
   const sanitizedQuestionHtml = useMemo(() => {
     const rawContent = question.question || "";
@@ -43,7 +60,7 @@ function Question({
 
   return (
     <div>
-      <div className="rounded-lg bg-[color:var(--color-surface)] p-6 shadow-lg">
+      <div className="rounded-xl sm:rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 sm:p-6 shadow-sm sm:shadow-lg">
         <div className="mb-4">
           {showStatusChips ? (
             <div className="flex flex-wrap items-start justify-end gap-2 pb-3">
@@ -105,9 +122,16 @@ function Question({
           canGoPrevious={canGoPrevious}
           canGoNext={canGoNext}
           solutionLink={solutionLink}
+          onOpenNotes={handleOpenNotes}
+          hasNote={hasNote}
         />
 
-        <QuestionNotes storageKey={questionProgressId} />
+        <QuestionNotes
+          storageKey={questionProgressId}
+          isEditing={isEditingNote}
+          setIsEditing={setIsEditingNote}
+          onHasNoteChange={setHasNote}
+        />
       </div>
     </div>
   );

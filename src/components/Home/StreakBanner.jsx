@@ -289,7 +289,7 @@ const StreakBanner = ({ activity = null }) => {
                       onClick={() => setActiveMetricKey(null)}
                       className="mt-4 w-full min-h-[44px] rounded-xl bg-[color:var(--color-surface-muted)] hover:bg-[color:var(--color-border)] active:scale-[0.99] py-2.5 text-xs font-bold uppercase tracking-wider text-[color:var(--color-text)] transition focus:outline-none focus:ring-2 focus:ring-sky-500 touch-manipulation"
                     >
-                      Got it
+                      Close
                     </button>
                   </>
                 );

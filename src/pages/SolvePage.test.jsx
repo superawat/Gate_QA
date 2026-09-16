@@ -24,7 +24,16 @@ let filterActions;
 let sessionState;
 
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children }) => <div>{children}</div>,
+  default: ({ children, showHeader, showFooter, showMobileBottomNav }) => (
+    <div
+      data-testid="page-shell"
+      data-show-header={String(showHeader)}
+      data-show-footer={String(showFooter)}
+      data-show-mobile-bottom-nav={String(showMobileBottomNav)}
+    >
+      {children}
+    </div>
+  ),
 }));
 
 vi.mock("../components/Question/Question", () => ({
@@ -564,5 +573,30 @@ describe("SolvePage", () => {
     expect(mocks.setCurrentQuestionUid).toHaveBeenCalledWith("go:1");
     expect(mocks.startOrderedSession).not.toHaveBeenCalled();
     expect(mocks.startRandomSession).not.toHaveBeenCalled();
+  });
+
+  test("renders PageShell with showHeader=false and showFooter=false for distraction-free practice", () => {
+    renderSolvePage();
+    const pageShell = screen.getByTestId("page-shell");
+    expect(pageShell.getAttribute("data-show-header")).toBe("false");
+    expect(pageShell.getAttribute("data-show-footer")).toBe("false");
+    expect(pageShell.getAttribute("data-show-mobile-bottom-nav")).toBe("false");
+  });
+
+  test("renders Back to Home button and navigates to home", () => {
+    renderSolvePage();
+    const homeBtn = screen.getByRole("button", { name: /back to home/i });
+    expect(homeBtn).toBeTruthy();
+    fireEvent.click(homeBtn);
+    expect(screen.getByTestId("location-probe").textContent).toBe("/");
+  });
+
+  test("renders theme toggle button in practice header and toggles theme", () => {
+    window.localStorage.setItem("gate_qa_theme", "light");
+    renderSolvePage();
+    const themeToggle = screen.getByRole("switch", { name: /switch to dark mode/i });
+    expect(themeToggle).toBeTruthy();
+    fireEvent.click(themeToggle);
+    expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
   });
 });

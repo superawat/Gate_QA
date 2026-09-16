@@ -1,5 +1,63 @@
 # Changelog
 
+- **Cross-Device Responsive Dashboard Optimization: Mobile, Galaxy Z Fold 5, iPad Mini & Surface Pro (DEC-116)**:
+  - *Context & User Feedback*: The user reported unoptimized card sizes on mobile, excessive dead space on the left side of the Practice card, awkward text wrapping on tablets/foldables, and a large gap between the bottom navigation bar and the Practice Activity heatmap.
+  - *Root Cause Analysis*:
+    - **Oversized Mobile Cards (180px–216px)**: Forced height created hollow vertical empty space around small icons and short labels, pushing dashboard analytics below the fold.
+    - **Artificial Centering Formula**: The previous mobile CSS used `padding: 0.35rem calc((100vw - card_width)/2)`. Because the Practice card is the first card (index 0) with no elements to its left, this formula generated a 50px dead margin on the left, misaligning it with the `GATE QA` logo and the streak banner below.
+    - **Tablet & Foldable Unfolded Grid Squeeze**: At the 768px threshold (iPad Mini, Surface Pro, Galaxy Z Fold 5 unfolded), desktop 3-column styles applied with 63px icons and 48px padding, leaving only ~98px text width for secondary cards and causing titles like "Performance Insights" to wrap awkwardly and vertically overflow. Primary cards with fixed `height: 108px` overflowed when displaying multi-line quotes.
+    - **Tall Viewport Disconnection**: On ultra-tall devices like Galaxy Z Fold 5 (344px x 882px cover screen, 23:9 aspect ratio), total content height was ~540px. Applying `margin-top: auto` dumped all remaining vertical space into a 200px chasm in the middle of the page.
+  - *Architectural Resolution*:
+    - **Proportional Mobile Sizing**: Increased mobile card height to a balanced, comfortable `168px` (`min-height: 168px`) and `155px` on narrow screens (<= 360px), scaled icons to `3.85rem` / `3.05rem`, and adjusted padding to `0.95rem 1rem 0.85rem`.
+    - **Native Left-Aligned Pattern**: Replaced forced centering with flush left-edge alignment (`padding: 0.35rem 0.75rem`, `scroll-padding-left: 0.75rem`, `scroll-snap-align: start`). Set card width to `calc(100vw - 3.25rem)` (`max-width: 22rem`), providing a clean ~35px peek of the next card on the right edge with zero dead space on the left.
+    - **Scroll Tracker Synchronization**: Updated distance calculations in `src/pages/HomePage.jsx` to measure from `railRect.left` so carousel pagination dots synchronize with start-aligned snap scrolling.
+    - **Tablet Breakpoint (`@media (min-width: 768px) and (max-width: 1023px)`)**:
+      - Secondary cards: Padding `0.85rem 1rem`, gap `0.75rem`, icon `2.75rem` (44px), giving ~155px text width so labels fit on 1-2 clean lines without overflow.
+      - Primary Practice card: `height: auto; min-height: 96px; padding: 0.85rem 1.25rem;` with `max-width: 48%` quote container and `font-size: 0.82rem; line-height: 1.35;`.
+      - Streak banner: `auto 1fr auto` layout with compact pills (`2.1rem` min-height) keeping all 4 stats on one row.
+    - **Unified Vertical Flow**: Removed `margin-top: auto` and flex-stretching; restored natural vertical flow with consistent `0.65rem` gaps between carousel, quote, streak banner, and activity heatmap.
+    - **Bottom Clearance**: Set `padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px))` on `home-dashboard-shell` so content clears the fixed bottom navigation bar comfortably.
+  - *Verification & Testing*:
+    - `src/pages/HomePage.test.jsx` (4/4 tests passing).
+    - `src/components/Home/StreakBanner.test.jsx` (6/6 tests passing).
+    - Full unit test suite (1,010/1,010 tests passing across 81 files).
+    - TypeScript typecheck passed with 0 errors.
+
+- **Distraction-Free Filter Window Layout & Header/Footer Removal (DEC-115)**:
+  - *Context & User Request*: The user requested removing the header and footer in the filter window (`/practice` — `ExplorePage`), noting that they are unnecessary there and that removing them creates a much better, focused experience.
+  - *Architectural Resolution*:
+    - Configured `PageShell` on `ExplorePage` with `showHeader={false}` and `showFooter={false}`.
+    - Added direct `Back to Home` navigation button (`FiHome`) beside `Explore questions` title so learners can return to Home with a single click from both desktop and mobile viewports.
+    - Added dedicated dark/light mode `ThemeToggle` switch (`FiSun` / `FiMoon`) using `useTheme()` hook from `src/utils/theme.js` in the filter actions row.
+    - Updated desktop vertical height layout:
+      - Adjusted `FilterSidebar` sticky top from `top-24` to `top-3 sm:top-5` and height to `h-[calc(100dvh-2.5rem)] sm:h-[calc(100dvh-3rem)]`.
+      - Adjusted `practice-explore-content` height to `xl:h-[calc(100dvh-2.5rem)] sm:xl:h-[calc(100dvh-3rem)]`, reclaiming full vertical screen estate for table rows and filters without double scrollbars.
+      - Updated pull-to-refresh pill top position from `top-20` to `top-4`.
+  - *Verification & Testing*:
+    - Added regression tests in `src/pages/ExplorePage.test.jsx` verifying `showHeader=false`, `showFooter=false`, Home navigation, and Theme toggle.
+    - Vitest unit tests passed 18/18 for `ExplorePage.test.jsx`, 23/23 for `SolvePage.test.jsx`, 4/4 for `PageShell.test.jsx`, 5/5 for `theme.test.js`.
+    - Verified layout visually via browser testing on `http://localhost:5173/practice`.
+
+- **GATE CSE 2017 Set 1 Q45 NAT Tolerance Range Correction to Official GATE Key [86.50, 89.50] (DEC-114)**:
+  - *Context & User Bug Report*: User pointed out that for GATE CSE 2017 Set 1 Q45 ([go:118328](https://gateoverflow.in/118328/gate-cse-2017-set-1-question-45)), the official GATE 2017 answer key (IIT Guwahati) specifies the accepted range as `86.50 to 89.50`. GateQA had previously hardened this range too narrowly to `[86.5, 87.5]`.
+  - *Root Cause Analysis*:
+    - In legacy patch entry `gate_cse_2017_set1_q45:nat_range_hardening`, tolerance was configured as `{ lower: 86.5, upper: 87.5, abs: 0.5 }` around center `87`.
+    - Depending on whether the information frame size of 1980 bytes includes or excludes overhead and whether receiver ACK transmission/processing delay is accounted for in transmission efficiency calculations, official evaluations accept between 86.50% and 89.50%. Candidates submitting values between 87.51 and 89.50 (such as 88 or 89) were incorrectly rejected.
+  - *Architectural Resolution*:
+    - Followed the 6-phase Question & Answer Maintenance Protocol (`docs/QUESTION_DATA_CORRECTION_RUNBOOK.md`).
+    - Synchronized NAT answer configuration across all authoritative pipeline stores and public runtime registries:
+      - `data/answers/manual-answers-patch-v1.json`
+      - `data/answers/answers_by_question_uid_v1.json`
+      - `public/data/answers/answers_by_question_uid_v1.json`
+      - `public/data/answers/answers_by_exam_uid_v1.json` (`cse:2017:set1:main:q45`)
+      - `public/questions-with-answers.json`
+    - Set `answer: 88`, `tolerance: { lower: 86.5, upper: 89.5, abs: 1.5 }`.
+    - Rebuilt static shards and search catalogs via `node scripts/precompute-subtopics.mjs; node scripts/build-public-artifacts.mjs`, synchronizing `public/question-detail-shards/2017-s1.json`.
+    - Updated unit regression test in `src/utils/evaluateAnswer.test.js` validating boundaries `86.5`, `89.5`, interior values `87.0`, `88.0`, and rejecting out-of-range inputs `86.49` and `89.51`.
+  - *Verification & Testing*:
+    - Vitest unit suite passed 1,010/1,010 tests across 81 files (including `src/utils/evaluateAnswer.test.js` 268/268 tests).
+    - Shard `public/question-detail-shards/2017-s1.json` verified with updated `answer_meta`.
+
 - **Expanded Depthful Motivational Quotes Pool & Zero-Repeat Shuffled Permutation Deck Engine (DEC-113)**:
   - *Context & User Request*: The user requested expanding the pool of motivational quotes with deeper quotes that drive hard work, align with competitive exam preparation, and provide life awareness strictly from deceased figures, while improving the rotation algorithm to eliminate repetitive quotes.
   - *Root Cause of Quote Repetition*:

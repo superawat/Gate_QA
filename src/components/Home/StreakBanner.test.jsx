@@ -53,8 +53,8 @@ describe("StreakBanner", () => {
     expect(screen.getByText(/All-time longest daily practice streak/i)).toBeTruthy();
     expect(screen.getByText(/11 Days/i)).toBeTruthy();
 
-    // Dismiss with "Got it"
-    fireEvent.click(screen.getByRole("button", { name: /Got it/i }));
+    // Dismiss with "Close"
+    fireEvent.click(screen.getByRole("button", { name: /Close/i }));
     expect(screen.queryByRole("dialog")).toBeNull();
   });
 
@@ -101,8 +101,8 @@ describe("StreakBanner", () => {
     expect(screen.getByText(/Total distinct days practiced/i)).toBeTruthy();
     expect(screen.getByText(/Unlike daily streaks, Active Days never resets/i)).toBeTruthy();
 
-    // Dismiss with "Got it"
-    fireEvent.click(screen.getByRole("button", { name: /Got it/i }));
+    // Dismiss with "Close"
+    fireEvent.click(screen.getByRole("button", { name: /Close/i }));
     expect(screen.queryByRole("dialog")).toBeNull();
   });
 });

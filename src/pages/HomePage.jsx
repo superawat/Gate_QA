@@ -36,9 +36,8 @@ import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
-import { getQuoteForToday, getNextQuote, parseQuote } from "../utils/motivationalQuotes";
+import { getQuoteForToday, parseQuote } from "../utils/motivationalQuotes";
 import { FaQuoteLeft } from "react-icons/fa";
-import { FiRefreshCw } from "react-icons/fi";
 import {
   preloadExploreRoute,
   preloadInsightsRoute,
@@ -67,14 +66,6 @@ const HomePage = ({
     return parseQuote(getQuoteForToday());
   });
 
-  const handleCycleQuote = useCallback((e) => {
-    if (e) {
-      e.stopPropagation?.();
-      e.preventDefault?.();
-    }
-    const nextRaw = getNextQuote();
-    setParsedQuote(parseQuote(nextRaw));
-  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -151,14 +142,13 @@ const HomePage = ({
       }
 
       const railRect = rail.getBoundingClientRect();
-      const railCenter = railRect.left + railRect.width / 2;
+      const railLeft = railRect.left;
       let nearestIndex = 0;
       let nearestDistance = Number.POSITIVE_INFINITY;
 
       cards.forEach((card, index) => {
         const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distance = Math.abs(cardCenter - railCenter);
+        const distance = Math.abs(cardRect.left - railLeft);
         if (distance < nearestDistance) {
           nearestDistance = distance;
           nearestIndex = index;
@@ -223,6 +213,7 @@ const HomePage = ({
       key: "practice",
       label: "Practice",
       subtext: "Start with a fresh question",
+      badge: "Instant PYQ",
       icon: `${HOMEPAGE_ICON_BASE}/practice_no_bg.webp`,
       variant: "primary",
       onClick: onStartRandomPractice,
@@ -364,15 +355,6 @@ const HomePage = ({
                   <span className="home-quote-author"> — {parsedQuote.author}</span>
                 ) : null}
               </p>
-              <button
-                type="button"
-                className="home-quote-mobile-refresh"
-                onClick={handleCycleQuote}
-                aria-label="Show another quote"
-                title="Next quote"
-              >
-                <FiRefreshCw className="home-quote-refresh-icon" aria-hidden="true" />
-              </button>
             </aside>
           ) : null}
 

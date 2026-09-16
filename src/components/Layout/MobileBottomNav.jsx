@@ -11,7 +11,7 @@ import {
 import { preloadRouteByPath } from "../../utils/routePreload";
 
 const navLinkClassName = ({ isActive }) => (
-  `flex min-h-[48px] flex-1 flex-col items-center justify-center rounded-xl px-1 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] transition-all active:scale-[0.95] ${
+  `flex min-h-[48px] flex-1 flex-col items-center justify-center rounded-[10px] px-1 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] transition-all active:scale-[0.95] ${
     isActive
       ? "bg-sky-700 text-white shadow-sm font-bold"
       : "text-[color:var(--color-text-muted)] hover:bg-[color:var(--color-surface-muted)] hover:text-[color:var(--color-text)]"

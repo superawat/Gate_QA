@@ -218,10 +218,10 @@ export default function TrackerCountdownHero({
       )}
 
       {/* Main Countdown Uniform 4-Card Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto my-3 text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-3xl mx-auto my-3 text-center">
         {/* Days */}
-        <div className="relative group p-4 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
-          <div className="text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
+        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+          <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
             {time.days}
           </div>
           <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5 flex items-center justify-center gap-1">
@@ -230,8 +230,8 @@ export default function TrackerCountdownHero({
         </div>
 
         {/* Hours */}
-        <div className="relative group p-4 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
-          <div className="text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
+        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+          <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
             {pad(time.hours)}
           </div>
           <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5">
@@ -240,8 +240,8 @@ export default function TrackerCountdownHero({
         </div>
 
         {/* Minutes */}
-        <div className="relative group p-4 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
-          <div className="text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
+        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+          <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
             {pad(time.minutes)}
           </div>
           <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5">
@@ -250,9 +250,9 @@ export default function TrackerCountdownHero({
         </div>
 
         {/* Seconds */}
-        <div className="relative group p-4 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
           <div
-            className={`text-3xl sm:text-5xl font-black font-mono tracking-tight tabular-nums ${
+            className={`text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight tabular-nums ${
               isCse ? "text-blue-400" : "text-purple-400"
             }`}
           >

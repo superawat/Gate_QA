@@ -344,7 +344,7 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
 
       <MockAnalyticsCharts history={mockAttemptHistory} />
 
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {mockAttemptHistory.map((attempt) => {
           const attemptTitle = attempt.selectedPaperLabel
             ? `${attempt.kindTitle} - ${attempt.selectedPaperLabel}`
@@ -355,7 +355,7 @@ const MockHistoryPanel = ({ onStartMockTest }) => {
             <details
               key={attempt.id}
               open={isOpen}
-              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 shadow-[var(--shadow-soft)] overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-600 [&[open]]:shadow-lg"
+              className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-2.5 sm:p-3 shadow-[var(--shadow-soft)] overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-600 [&[open]]:shadow-lg"
             >
               <summary
                 className="cursor-pointer list-none [&::-webkit-details-marker]:hidden"

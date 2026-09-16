@@ -500,7 +500,7 @@ const GlobalNavigationDrawer = ({
 
               {showStudyGuides && (
                 <div className="space-y-1.5 pl-2 border-l border-[color:var(--color-border)] mt-1 transition-all duration-300">
-                  <div className="grid gap-1 max-h-64 overflow-y-auto pr-1">
+                  <div className="grid gap-1 max-h-64 overflow-y-auto overscroll-contain pr-1">
                     {EDITORIAL_PAGES.map((page) => {
                       const label = page.keyword || page.title || page.h1 || page.path;
                       return (
@@ -595,7 +595,10 @@ const GlobalNavigationDrawer = ({
         </div>
 
         {/* Footer status bar */}
-        <div className="min-h-[48px] border-t border-[color:var(--color-border)] px-4 py-3">
+        <div
+          className="min-h-[48px] border-t border-[color:var(--color-border)] px-4 py-3"
+          style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+        >
           <p className="text-xs font-medium text-[color:var(--color-text-muted)]" role="status" aria-live="polite">
             {statusMessage}
           </p>

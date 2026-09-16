@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag } from "react-icons/fa";
+import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag, FaStickyNote } from "react-icons/fa";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
 import { evaluateAnswer } from "../../utils/evaluateAnswer";
@@ -31,6 +31,8 @@ export default function AnswerPanel({
   canGoPrevious = false,
   canGoNext = false,
   solutionLink: passedSolutionLink,
+  onOpenNotes,
+  hasNote = false,
 }) {
   const {
     toggleSolved,
@@ -865,25 +867,44 @@ export default function AnswerPanel({
             <AskAIButton question={question} onNotification={showToast} isMobile />
           </div>
 
-          <div className="flex items-center justify-between gap-2 pt-2 border-t border-[color:var(--color-border)]">
-            <button
-              type="button"
-              disabled={isStatusActionDisabled}
-              onClick={handleToggleSolved}
-              title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
-              aria-label={isSolved ? "Mark question as unsolved" : "Mark question as solved"}
-              aria-pressed={isSolved}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition ${
-                isStatusActionDisabled
-                  ? "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] cursor-not-allowed opacity-50"
-                  : isSolved
-                  ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
-                  : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-              }`}
-            >
-              <FaCheck className="text-xs" />
-              <span>{isSolved ? "Solved" : "Mark Solved"}</span>
-            </button>
+          <div className="flex items-center justify-between gap-2 pt-2.5 border-t border-[color:var(--color-border)]">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                disabled={isStatusActionDisabled}
+                onClick={handleToggleSolved}
+                title={isSolved ? "Mark as Unsolved" : "Mark as Solved"}
+                aria-label={isSolved ? "Mark question as unsolved" : "Mark question as solved"}
+                aria-pressed={isSolved}
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 rounded-lg border text-xs font-semibold transition ${
+                  isStatusActionDisabled
+                    ? "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)] cursor-not-allowed opacity-50"
+                    : isSolved
+                    ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
+                    : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                }`}
+              >
+                <FaCheck className="text-xs" />
+                <span>{isSolved ? "Solved" : "Mark Solved"}</span>
+              </button>
+
+              {onOpenNotes && (
+                <button
+                  type="button"
+                  onClick={onOpenNotes}
+                  title={hasNote ? "View personal note" : "Add personal note"}
+                  aria-label={hasNote ? "View personal note" : "Add personal note"}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 rounded-lg border text-xs font-semibold transition ${
+                    hasNote
+                      ? "border-sky-500 bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400"
+                      : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaStickyNote className="text-xs" />
+                  <span>{hasNote ? "Note" : "Add Note"}</span>
+                </button>
+              )}
+            </div>
 
             <a
               href={reportIssueUrl}
@@ -891,7 +912,7 @@ export default function AnswerPanel({
               rel="noopener noreferrer"
               title="Report an issue with this question"
               aria-label="Report an issue via Google Form"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-rose-200 dark:border-rose-900/40 bg-rose-50 dark:bg-rose-950/30 text-rose-500 hover:text-rose-700 text-xs font-semibold transition"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 rounded-lg border border-rose-200 dark:border-rose-900/40 bg-rose-50 dark:bg-rose-950/30 text-rose-500 hover:text-rose-700 text-xs font-semibold transition shrink-0"
             >
               <FaFlag className="text-xs" />
               <span>Report</span>

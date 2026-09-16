@@ -38,22 +38,39 @@ const writeAllNotes = (notes) => {
   }
 };
 
-function QuestionNotes({ storageKey }) {
+function QuestionNotes({
+  storageKey,
+  isEditing: externalIsEditing,
+  setIsEditing: setExternalIsEditing,
+  onHasNoteChange,
+}) {
   const [note, setNote] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
+  const [internalIsEditing, setInternalIsEditing] = useState(false);
   const [hasNote, setHasNote] = useState(false);
+
+  const isEditing = externalIsEditing !== undefined ? externalIsEditing : internalIsEditing;
+  const setIsEditing = (val) => {
+    if (setExternalIsEditing) {
+      setExternalIsEditing(val);
+    } else {
+      setInternalIsEditing(val);
+    }
+  };
 
   useEffect(() => {
     if (!storageKey) {
       setNote("");
       setHasNote(false);
+      onHasNoteChange?.(false);
       setIsEditing(false);
       return;
     }
 
     const existingNote = normalizeNote(readAllNotes()[storageKey]);
+    const noteExists = Boolean(existingNote.text);
     setNote(existingNote.text);
-    setHasNote(Boolean(existingNote.text));
+    setHasNote(noteExists);
+    onHasNoteChange?.(noteExists);
     setIsEditing(false);
   }, [storageKey]);
 
@@ -67,9 +84,11 @@ function QuestionNotes({ storageKey }) {
         updatedAt: new Date().toISOString(),
       };
       setHasNote(true);
+      onHasNoteChange?.(true);
     } else {
       delete notes[storageKey];
       setHasNote(false);
+      onHasNoteChange?.(false);
     }
 
     writeAllNotes(notes);
@@ -89,6 +108,7 @@ function QuestionNotes({ storageKey }) {
     enqueueChange("NOTE", { questionUid: storageKey, text: "", deleted: true, updatedAt: new Date().toISOString() });
     setNote("");
     setHasNote(false);
+    onHasNoteChange?.(false);
     setIsEditing(false);
   };
 
@@ -98,7 +118,7 @@ function QuestionNotes({ storageKey }) {
 
   if (!hasNote && !isEditing) {
     return (
-      <div className="mt-4">
+      <div className="mt-4 hidden md:block">
         <button
           type="button"
           onClick={() => setIsEditing(true)}
@@ -111,7 +131,7 @@ function QuestionNotes({ storageKey }) {
   }
 
   return (
-    <div className="mt-4 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-sm transition-shadow hover:shadow-md">
+    <div id="question-notes-section" className="mt-4 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-sm transition-shadow hover:shadow-md">
       <div className="flex items-center justify-between border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-4 py-3">
         <div className="flex items-center gap-2 text-[color:var(--color-text)]">
           <FaStickyNote className="text-[color:var(--color-primary)]" />
