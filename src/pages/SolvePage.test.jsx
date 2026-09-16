@@ -575,11 +575,11 @@ describe("SolvePage", () => {
     expect(mocks.startRandomSession).not.toHaveBeenCalled();
   });
 
-  test("renders PageShell with showHeader=true and showFooter=true for landmark compliance", () => {
+  test("renders PageShell with showHeader=false and showFooter=false for distraction-free practice", () => {
     renderSolvePage();
     const pageShell = screen.getByTestId("page-shell");
-    expect(pageShell.getAttribute("data-show-header")).toBe("true");
-    expect(pageShell.getAttribute("data-show-footer")).toBe("true");
+    expect(pageShell.getAttribute("data-show-header")).toBe("false");
+    expect(pageShell.getAttribute("data-show-footer")).toBe("false");
     expect(pageShell.getAttribute("data-show-mobile-bottom-nav")).toBe("false");
   });
 

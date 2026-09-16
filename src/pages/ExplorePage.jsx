@@ -414,8 +414,8 @@ const ExplorePage = ({
 
   return (
     <PageShell
-      showHeader
-      showFooter
+      showHeader={false}
+      showFooter={false}
       contentClassName="practice-explore-shell"
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
@@ -446,7 +446,7 @@ const ExplorePage = ({
             </div>
           ) : null}
 
-          <div className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 sm:px-5 sm:py-3.5 shadow-[var(--shadow-card)]">
+          <header className="practice-explore-panel rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 sm:px-5 sm:py-3.5 shadow-[var(--shadow-card)]">
             <div className="practice-explore-heading flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                 <button
@@ -572,7 +572,7 @@ const ExplorePage = ({
             <div className="practice-active-chips">
               <ActiveFilterChips />
             </div>
-          </div>
+          </header>
 
           {error ? (
             <div className="rounded-[var(--radius-card)] border border-rose-200 bg-rose-50 p-6 text-center shadow-[var(--shadow-soft)]">

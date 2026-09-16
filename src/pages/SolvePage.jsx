@@ -593,15 +593,15 @@ const SolvePage = ({
         ] : []}
       />
       <PageShell
-        showHeader
-        showFooter
+        showHeader={false}
+        showFooter={false}
         showMobileBottomNav={false}
         contentClassName="pb-24 sm:pb-28 md:pb-6"
         onResume={hasResumeRoute ? onResumePractice : null}
         resumeLabel="Continue"
       >
         <section className="space-y-4">
-          <div className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
+          <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
             {/* Top Bar: Navigation on left, Session Status & Utilities on right */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-1.5 sm:gap-2">
@@ -674,7 +674,7 @@ const SolvePage = ({
               <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-sky-700 dark:text-sky-400">Solve</p>
               {heroMetaChips}
             </div>
-          </div>
+          </header>
 
           <CalculatorWidget
             isOpen={isCalculatorOpen}

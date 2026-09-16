@@ -468,12 +468,12 @@ describe("ExplorePage", () => {
     expect(loadQuestions).toHaveBeenCalledTimes(1);
   });
 
-  test("renders PageShell with showHeader=true and showFooter=true for landmark compliance", async () => {
+  test("renders PageShell with showHeader=false and showFooter=false for distraction-free filtering", async () => {
     renderExplorePage();
     await screen.findByRole("button", { name: /start practice/i });
     const pageShell = screen.getByTestId("page-shell");
-    expect(pageShell.getAttribute("data-show-header")).toBe("true");
-    expect(pageShell.getAttribute("data-show-footer")).toBe("true");
+    expect(pageShell.getAttribute("data-show-header")).toBe("false");
+    expect(pageShell.getAttribute("data-show-footer")).toBe("false");
   });
 
   test("renders Back to Home button and navigates to home", async () => {

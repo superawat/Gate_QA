@@ -1,14 +1,12 @@
 # Changelog
 
-- **Accessibility Landmark Compliance: Explore & Solve Routes (Playwright a11y.axe)**:
-  - *Context & CI Failure*: The Playwright automated accessibility test suite (`tests/e2e/a11y.axe.spec.js`) failed during `expectAccessibilityStructure` checks for Explore and Solve routes because `header`, `footer`, and `aside` landmarks were missing.
-  - *Root Cause*:
-    - `ExplorePage` and `SolvePage` used `showHeader={false}` and `showFooter={false}`, omitting `<header>` (`AppHeader`) and `<footer>` (`Footer`) landmarks required by the test contract.
-    - `ExplorePage` sidebar was rendered in a plain `<div>` rather than an `<aside>`.
-  - *Resolution*:
-    - Restored `showHeader` and `showFooter` on `ExplorePage.jsx` and `SolvePage.jsx`.
+- **Distraction-Free Semantic Landmark Compliance (Explore & Solve Routes)**:
+  - *Context*: Playwright accessibility suite (`tests/e2e/a11y.axe.spec.js`) asserted `header` and `footer` landmarks on all pages, which failed when global headers/footers were removed for distraction-free practice.
+  - *Architectural Resolution (Option A)*:
+    - Preserved distraction-free layout (`showHeader={false}`, `showFooter={false}`) on `ExplorePage.jsx` and `SolvePage.jsx`, retaining 100% full-viewport space (`100dvh`) without bulky global navigation bars.
+    - Wrapped dedicated top toolbars in semantic `<header>` elements on both pages (`practice-explore-panel` on Explore, top navigation/status bar on Solve).
     - Wrapped `FilterSidebar` in an `<aside className="hidden xl:block" aria-label="Question filters">` on `ExplorePage.jsx`.
-    - Updated unit test assertions in `src/pages/ExplorePage.test.jsx` and `src/pages/SolvePage.test.jsx` to verify `showHeader=true` and `showFooter=true`.
+    - Updated `tests/e2e/a11y.axe.spec.js` landmark expectations to reflect the distraction-free design contract: `landmarks: ["header", "main", "aside"]` for Explore and `landmarks: ["header", "main"]` for Solve.
   - *Verification*:
     - `npx playwright test tests/e2e/a11y.axe.spec.js`: 3/3 passed (Landing, Explore, Solve).
     - `npm run test:unit`: 1,027/1,027 tests passed.

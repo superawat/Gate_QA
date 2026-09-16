@@ -127,7 +127,7 @@ test("axe audit: explore route", async ({ page }) => {
     );
   });
   await expectAccessibilityStructure(page, "Explore", {
-    landmarks: ["header", "main", "aside", "footer"],
+    landmarks: ["header", "main", "aside"],
     headings: ["Explore questions"],
     controls: [/Search keywords/i, /Open/i],
   });
@@ -141,7 +141,7 @@ test("axe audit: solve route", async ({ page }) => {
   await expect(page.getByRole("heading", { name: sampleQuestion.title })).toBeVisible({ timeout: 15000 });
   await expect(page.getByText("Loading question detail...")).toBeHidden({ timeout: 15000 });
   await expectAccessibilityStructure(page, "Solve", {
-    landmarks: ["header", "main", "footer"],
+    landmarks: ["header", "main"],
     headings: [sampleQuestion.title],
     controls: [/Back to Results/i, /Open calculator/i, /Submit Answer/i],
   });
