@@ -1,5 +1,20 @@
 # Changelog
 
+- **Accessibility Landmark Compliance: Explore & Solve Routes (Playwright a11y.axe)**:
+  - *Context & CI Failure*: The Playwright automated accessibility test suite (`tests/e2e/a11y.axe.spec.js`) failed during `expectAccessibilityStructure` checks for Explore and Solve routes because `header`, `footer`, and `aside` landmarks were missing.
+  - *Root Cause*:
+    - `ExplorePage` and `SolvePage` used `showHeader={false}` and `showFooter={false}`, omitting `<header>` (`AppHeader`) and `<footer>` (`Footer`) landmarks required by the test contract.
+    - `ExplorePage` sidebar was rendered in a plain `<div>` rather than an `<aside>`.
+  - *Resolution*:
+    - Restored `showHeader` and `showFooter` on `ExplorePage.jsx` and `SolvePage.jsx`.
+    - Wrapped `FilterSidebar` in an `<aside className="hidden xl:block" aria-label="Question filters">` on `ExplorePage.jsx`.
+    - Updated unit test assertions in `src/pages/ExplorePage.test.jsx` and `src/pages/SolvePage.test.jsx` to verify `showHeader=true` and `showFooter=true`.
+  - *Verification*:
+    - `npx playwright test tests/e2e/a11y.axe.spec.js`: 3/3 passed (Landing, Explore, Solve).
+    - `npm run test:unit`: 1,027/1,027 tests passed.
+    - `npm run typecheck`: 0 errors.
+
+
 - **Cross-Device Responsive Dashboard Optimization: Mobile, Galaxy Z Fold 5, iPad Mini & Surface Pro (DEC-116)**:
   - *Context & User Feedback*: The user reported unoptimized card sizes on mobile, excessive dead space on the left side of the Practice card, awkward text wrapping on tablets/foldables, and a large gap between the bottom navigation bar and the Practice Activity heatmap.
   - *Root Cause Analysis*:

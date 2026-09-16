@@ -593,8 +593,8 @@ const SolvePage = ({
         ] : []}
       />
       <PageShell
-        showHeader={false}
-        showFooter={false}
+        showHeader
+        showFooter
         showMobileBottomNav={false}
         contentClassName="pb-24 sm:pb-28 md:pb-6"
         onResume={hasResumeRoute ? onResumePractice : null}

@@ -414,8 +414,8 @@ const ExplorePage = ({
 
   return (
     <PageShell
-      showHeader={false}
-      showFooter={false}
+      showHeader
+      showFooter
       contentClassName="practice-explore-shell"
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
@@ -431,11 +431,11 @@ const ExplorePage = ({
       />
 
       <div className="practice-explore-layout grid min-w-0 gap-6 xl:grid-cols-[360px_minmax(0,1fr)] 2xl:grid-cols-[380px_minmax(0,1fr)]">
-        <div className="hidden xl:block">
+        <aside className="hidden xl:block" aria-label="Question filters">
           <div className="sticky top-3 sm:top-5 overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)]">
             <FilterSidebar className="h-[calc(100dvh-2.5rem)] sm:h-[calc(100dvh-3rem)] border-r-0 bg-[color:var(--color-surface)]" />
           </div>
-        </div>
+        </aside>
 
         <section className="practice-explore-content min-w-0 space-y-3 xl:flex xl:h-[calc(100dvh-2.5rem)] sm:xl:h-[calc(100dvh-3rem)] xl:flex-col xl:overflow-hidden">
           {(pullDistance > 0 || isPullRefreshing) ? (
