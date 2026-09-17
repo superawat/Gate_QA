@@ -22,11 +22,15 @@ import { supabase } from "../services/supabase";
 import { clearSyncQueue } from "./syncQueue";
 import { mergeSyncedRevisionSummary, summarizeRevisionEvents } from "./trackerRevisionSummary";
 
-const LOCAL_STORAGE_KEYS = {
+export const LOCAL_STORAGE_KEYS = {
   solved: "gate_qa_solved_questions",
+  solvedRemovals: "gate_qa_solved_removals",
+  solvedTimestamps: "gate_qa_solved_timestamps",
   bookmarks: "gate_qa_bookmarked_questions",
   bookmarkRemovals: "gate_qa_bookmark_removals",
   aptitudeSolved: "gateqa-apt-solved-questions",
+  aptitudeSolvedRemovals: "gateqa-apt-solved-removals",
+  aptitudeSolvedTimestamps: "gateqa-apt-solved-timestamps",
   aptitudeBookmarks: "gateqa-apt-bookmarked-questions",
   aptitudeBookmarkRemovals: "gateqa-apt-bookmark-removals",
   notes: "gate_qa_user_notes",
@@ -34,6 +38,8 @@ const LOCAL_STORAGE_KEYS = {
   progress: "gateqa_progress_v1",
   aptitudeProgress: "gateqa_apt_progress_v1",
   daSolved: "gate_qa_da_solved_questions",
+  daSolvedRemovals: "gate_qa_da_solved_removals",
+  daSolvedTimestamps: "gate_qa_da_solved_timestamps",
   daBookmarks: "gate_qa_da_bookmarked_questions",
   daBookmarkRemovals: "gate_qa_da_bookmark_removals",
   daProgress: "gateqa_da_progress_v1",
@@ -51,9 +57,13 @@ function createPreMergeSnapshot() {
     const snapshot = {
       timestamp: new Date().toISOString(),
       solved: localStorage.getItem(LOCAL_STORAGE_KEYS.solved),
+      solvedRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.solvedRemovals),
+      solvedTimestamps: localStorage.getItem(LOCAL_STORAGE_KEYS.solvedTimestamps),
       bookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarks),
       bookmarkRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarkRemovals),
       aptitudeSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolved),
+      aptitudeSolvedRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolvedRemovals),
+      aptitudeSolvedTimestamps: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolvedTimestamps),
       aptitudeBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarks),
       aptitudeBookmarkRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeBookmarkRemovals),
       notes: localStorage.getItem(LOCAL_STORAGE_KEYS.notes),
@@ -61,6 +71,8 @@ function createPreMergeSnapshot() {
       progress: localStorage.getItem(LOCAL_STORAGE_KEYS.progress),
       aptitudeProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeProgress),
       daSolved: localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved),
+      daSolvedRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.daSolvedRemovals),
+      daSolvedTimestamps: localStorage.getItem(LOCAL_STORAGE_KEYS.daSolvedTimestamps),
       daBookmarks: localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks),
       daBookmarkRemovals: localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals),
       daProgress: localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress),
@@ -96,9 +108,13 @@ function cleanOldSnapshots() {
  */
 function readLocalData() {
   let solved = [];
+  let solvedRemovals = {};
+  let solvedTimestamps = {};
   let bookmarks = [];
   let bookmarkRemovals = [];
   let aptitudeSolved = [];
+  let aptitudeSolvedRemovals = {};
+  let aptitudeSolvedTimestamps = {};
   let aptitudeBookmarks = [];
   let aptitudeBookmarkRemovals = [];
   let notes = {};
@@ -106,6 +122,8 @@ function readLocalData() {
   let progress = {};
   let aptitudeProgress = {};
   let daSolved = [];
+  let daSolvedRemovals = {};
+  let daSolvedTimestamps = {};
   let daBookmarks = [];
   let daBookmarkRemovals = [];
   let daProgress = {};
@@ -117,11 +135,40 @@ function readLocalData() {
   } catch {}
 
   try {
+    const rawSolvedRemovals = localStorage.getItem(LOCAL_STORAGE_KEYS.solvedRemovals);
+    solvedRemovals = extractTimestampMap(rawSolvedRemovals);
+  } catch {}
+
+  try {
+    const rawSolvedTimestamps = localStorage.getItem(LOCAL_STORAGE_KEYS.solvedTimestamps);
+    solvedTimestamps = extractTimestampMap(rawSolvedTimestamps);
+  } catch {}
+
+  try {
     const rawAptitudeSolved = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolved);
     aptitudeSolved = rawAptitudeSolved ? JSON.parse(rawAptitudeSolved) : [];
   } catch {}
 
+  try {
+    const rawAptSolvedRemovals = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolvedRemovals);
+    aptitudeSolvedRemovals = extractTimestampMap(rawAptSolvedRemovals);
+  } catch {}
+
+  try {
+    const rawAptSolvedTimestamps = localStorage.getItem(LOCAL_STORAGE_KEYS.aptitudeSolvedTimestamps);
+    aptitudeSolvedTimestamps = extractTimestampMap(rawAptSolvedTimestamps);
+  } catch {}
+
   try { daSolved = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daSolved) || "[]"); } catch {}
+  try {
+    const rawDaSolvedRemovals = localStorage.getItem(LOCAL_STORAGE_KEYS.daSolvedRemovals);
+    daSolvedRemovals = extractTimestampMap(rawDaSolvedRemovals);
+  } catch {}
+  try {
+    const rawDaSolvedTimestamps = localStorage.getItem(LOCAL_STORAGE_KEYS.daSolvedTimestamps);
+    daSolvedTimestamps = extractTimestampMap(rawDaSolvedTimestamps);
+  } catch {}
+
   try { daBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarks) || "[]"); } catch {}
   try { daBookmarkRemovals = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals) || "[]"); } catch {}
   try { daProgress = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.daProgress) || "{}"); } catch {}
@@ -173,9 +220,13 @@ function readLocalData() {
 
   return {
     solved,
+    solvedRemovals,
+    solvedTimestamps,
     bookmarks,
     bookmarkRemovals,
     aptitudeSolved,
+    aptitudeSolvedRemovals,
+    aptitudeSolvedTimestamps,
     aptitudeBookmarks,
     aptitudeBookmarkRemovals,
     notes,
@@ -183,6 +234,8 @@ function readLocalData() {
     progress,
     aptitudeProgress,
     daSolved,
+    daSolvedRemovals,
+    daSolvedTimestamps,
     daBookmarks,
     daBookmarkRemovals,
     daProgress,
@@ -271,6 +324,117 @@ export function mergeSolvedQuestionIds(localSolvedRaw, cloudSolvedRaw) {
   const localIds = extractQuestionIdArray(localSolvedRaw);
   const cloudIds = extractQuestionIdArray(cloudSolvedRaw);
   return Array.from(new Set([...localIds, ...cloudIds])).sort();
+}
+
+/**
+ * Normalizes question timestamp or removal maps from supported shapes { [uid]: epochMs }.
+ * Resilient against stringified objects or legacy arrays.
+ */
+export function extractTimestampMap(rawInput) {
+  if (!rawInput) {
+    return {};
+  }
+  let parsed = rawInput;
+  if (typeof rawInput === "string") {
+    try {
+      parsed = JSON.parse(rawInput);
+    } catch {
+      return {};
+    }
+  }
+  if (!parsed || typeof parsed !== "object") {
+    return {};
+  }
+  if (Array.isArray(parsed)) {
+    const result = {};
+    parsed.forEach((id) => {
+      if (typeof id === "string" && id.trim()) {
+        result[id.trim()] = 1;
+      }
+    });
+    return result;
+  }
+  const result = {};
+  for (const [key, val] of Object.entries(parsed)) {
+    if (typeof key !== "string" || !key.trim()) continue;
+    const num = Number(val);
+    if (!Number.isNaN(num) && num > 0) {
+      result[key.trim()] = num;
+    }
+  }
+  return result;
+}
+
+/**
+ * Merges solved questions using a Last-Write-Wins Element-Set (LWW-Element-Set) CRDT.
+ *
+ * Prevents "Permanent Tombstone Trap" and guarantees that explicit unsolve actions
+ * persist permanently without resurrection, while allowing infinite Solve -> Unsolve -> Solve cycles.
+ *
+ * Membership rule:
+ *   q in MergedSolved <=> T_solve(q) > T_remove(q)
+ *
+ * NOTE: Questions unsolved before LWW deployment (no timestamps) will be
+ * resurrected once on next sync. This is the expected migration behavior (Option B) —
+ * only post-deployment unsolves carry LWW timestamps.
+ */
+export function mergeLwwElementSet(
+  localSolvedRaw,
+  cloudSolvedRaw,
+  localRemovalsRaw,
+  cloudRemovalsRaw,
+  localTimestampsRaw,
+  cloudTimestampsRaw
+) {
+  const localSolvedIds = extractQuestionIdArray(localSolvedRaw);
+  const cloudSolvedIds = extractQuestionIdArray(cloudSolvedRaw);
+  const localRemovals = extractTimestampMap(localRemovalsRaw);
+  const cloudRemovals = extractTimestampMap(cloudRemovalsRaw);
+  const localTimestamps = extractTimestampMap(localTimestampsRaw);
+  const cloudTimestamps = extractTimestampMap(cloudTimestampsRaw);
+
+  const localSolvedSet = new Set(localSolvedIds);
+  const cloudSolvedSet = new Set(cloudSolvedIds);
+
+  const allUids = new Set([
+    ...localSolvedIds,
+    ...cloudSolvedIds,
+    ...Object.keys(localRemovals),
+    ...Object.keys(cloudRemovals),
+    ...Object.keys(localTimestamps),
+    ...Object.keys(cloudTimestamps),
+  ]);
+
+  const mergedSolved = [];
+  const mergedRemovals = {};
+  const mergedTimestamps = {};
+
+  for (const uid of allUids) {
+    const localSolveTime = localTimestamps[uid] || (localSolvedSet.has(uid) ? 1 : 0);
+    const cloudSolveTime = cloudTimestamps[uid] || (cloudSolvedSet.has(uid) ? 1 : 0);
+    const tSolve = Math.max(localSolveTime, cloudSolveTime);
+
+    const localRemoveTime = localRemovals[uid] || 0;
+    const cloudRemoveTime = cloudRemovals[uid] || 0;
+    const tRemove = Math.max(localRemoveTime, cloudRemoveTime);
+
+    if (tSolve > tRemove) {
+      mergedSolved.push(uid);
+      mergedTimestamps[uid] = tSolve;
+    } else {
+      if (tRemove > 0) {
+        mergedRemovals[uid] = tRemove;
+      }
+    }
+  }
+
+  mergedSolved.sort();
+
+  return {
+    mergedSolved,
+    mergedRemovals,
+    mergedTimestamps,
+  };
 }
 
 /**
@@ -441,10 +605,21 @@ export function unionMergeData(localData, cloudData) {
   ])).filter(id => !bookmarkRemovalSet.has(id));
 
   const mergedNotes = mergeNotes(localData.notes, cloudData.notes);
-  const mergedSolved = mergeSolvedQuestionIds(
+
+  // ── Solved Questions: LWW-Element-Set CRDT ──────────────────────────────────
+  // CSE / IT Solved Questions
+  const cseLww = mergeLwwElementSet(
     localData.solved,
-    cloudData.solved_questions
+    cloudData.solved_questions,
+    localData.solvedRemovals,
+    cloudData.solved_removals || cloudData.progress_records?.solved_removals,
+    localData.solvedTimestamps,
+    cloudData.solved_timestamps || cloudData.progress_records?.solved_timestamps
   );
+  const mergedSolved = cseLww.mergedSolved;
+  const mergedSolvedRemovals = cseLww.mergedRemovals;
+  const mergedSolvedTimestamps = cseLww.mergedTimestamps;
+
   const cloudProgress = normalizeCloudProgress(cloudData.progress_records);
   const cloudAptitudeSolvedIds = [
     ...extractQuestionIdArray(cloudData.aptitude_solved),
@@ -454,10 +629,20 @@ export function unionMergeData(localData, cloudData) {
     ...extractQuestionIdArray(cloudData.aptitude_bookmarks),
     ...extractQuestionIdArray(cloudProgress.aptitude_bookmarks),
   ];
-  const mergedAptitudeSolved = mergeSolvedQuestionIds(
+
+  // General Aptitude Solved Questions
+  const aptitudeLww = mergeLwwElementSet(
     localData.aptitudeSolved,
-    cloudAptitudeSolvedIds
+    cloudAptitudeSolvedIds,
+    localData.aptitudeSolvedRemovals,
+    cloudData.aptitude_solved_removals || cloudData.progress_records?.aptitude_solved_removals,
+    localData.aptitudeSolvedTimestamps,
+    cloudData.aptitude_solved_timestamps || cloudData.progress_records?.aptitude_solved_timestamps
   );
+  const mergedAptitudeSolved = aptitudeLww.mergedSolved;
+  const mergedAptitudeSolvedRemovals = aptitudeLww.mergedRemovals;
+  const mergedAptitudeSolvedTimestamps = aptitudeLww.mergedTimestamps;
+
   // Aptitude bookmarks — subtract aptitude removal tombstones
   const aptitudeBookmarkRemovalSet = new Set(mergedAptitudeBookmarkRemovals);
   const mergedAptitudeBookmarks = Array.from(new Set([
@@ -482,7 +667,20 @@ export function unionMergeData(localData, cloudData) {
     ...extractQuestionIdArray(cloudData.da_bookmarks),
     ...extractQuestionIdArray(cloudProgress.da_bookmarks),
   ];
-  const mergedDaSolved = mergeSolvedQuestionIds(localData.daSolved, cloudDaSolvedIds);
+
+  // GATE DA Solved Questions
+  const daLww = mergeLwwElementSet(
+    localData.daSolved,
+    cloudDaSolvedIds,
+    localData.daSolvedRemovals,
+    cloudData.da_solved_removals || cloudData.progress_records?.da_solved_removals,
+    localData.daSolvedTimestamps,
+    cloudData.da_solved_timestamps || cloudData.progress_records?.da_solved_timestamps
+  );
+  const mergedDaSolved = daLww.mergedSolved;
+  const mergedDaSolvedRemovals = daLww.mergedRemovals;
+  const mergedDaSolvedTimestamps = daLww.mergedTimestamps;
+
   // DA bookmarks — subtract DA removal tombstones
   const daBookmarkRemovalSet = new Set(mergedDaBookmarkRemovals);
   const mergedDaBookmarks = Array.from(new Set([
@@ -510,10 +708,16 @@ export function unionMergeData(localData, cloudData) {
     bookmark_removals: mergedBookmarkRemovals,
     notes: mergedNotes,
     solved_questions: mergedSolved,
+    solved_removals: mergedSolvedRemovals,
+    solved_timestamps: mergedSolvedTimestamps,
     aptitude_solved: mergedAptitudeSolved,
+    aptitude_solved_removals: mergedAptitudeSolvedRemovals,
+    aptitude_solved_timestamps: mergedAptitudeSolvedTimestamps,
     aptitude_bookmarks: mergedAptitudeBookmarks,
     aptitude_bookmark_removals: mergedAptitudeBookmarkRemovals,
     da_solved: mergedDaSolved,
+    da_solved_removals: mergedDaSolvedRemovals,
+    da_solved_timestamps: mergedDaSolvedTimestamps,
     da_bookmarks: mergedDaBookmarks,
     da_bookmark_removals: mergedDaBookmarkRemovals,
     mock_history: mergedMockHistory,
@@ -560,29 +764,41 @@ export async function syncUserData(userId) {
       bookmarks: [],
       notes: {},
       solved_questions: [],
+      solved_removals: {},
+      solved_timestamps: {},
       aptitude_solved: [],
+      aptitude_solved_removals: {},
+      aptitude_solved_timestamps: {},
       aptitude_bookmarks: [],
       da_solved: [],
+      da_solved_removals: {},
+      da_solved_timestamps: {},
       da_bookmarks: [],
       mock_history: [],
       progress_records: { standard: {}, aptitude: {}, da: {} },
     };
 
-    // 4. Run the Additive Union-Merge Algorithm
+    // 4. Run the Additive Union-Merge Algorithm (with LWW-Element-Set for Solved)
     const merged = unionMergeData(localData, cloudData);
 
     // 5. Save the merged data back to Supabase
-    // Tier 1: Full payload matching live artifacts/db-schema contract (including bookmark removal tombstones)
+    // Tier 1: Full payload matching live artifacts/db-schema contract (including solved & bookmark removals)
     const upsertPayload = {
       user_id: userId,
       bookmarks: merged.bookmarks,
       bookmark_removals: merged.bookmark_removals,
       notes: merged.notes,
       solved_questions: merged.solved_questions,
+      solved_removals: merged.solved_removals,
+      solved_timestamps: merged.solved_timestamps,
       aptitude_solved: merged.aptitude_solved,
+      aptitude_solved_removals: merged.aptitude_solved_removals,
+      aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
       aptitude_bookmarks: merged.aptitude_bookmarks,
       aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
       da_solved: merged.da_solved,
+      da_solved_removals: merged.da_solved_removals,
+      da_solved_timestamps: merged.da_solved_timestamps,
       da_bookmarks: merged.da_bookmarks,
       da_bookmark_removals: merged.da_bookmark_removals,
       mock_history: merged.mock_history,
@@ -593,21 +809,30 @@ export async function syncUserData(userId) {
 
     let { error: upsertErr } = await supabase.from("user_progress").upsert(upsertPayload);
 
-    // Resilient fallback: Tier 2 (if DA columns are missing on older schema, preserve aptitude columns and embed DA in progress_records)
+    // Resilient fallback: Tier 2 (if DA/removals columns are missing on older schema, preserve aptitude columns and embed in progress_records)
     if (upsertErr) {
       console.warn("[CloudSync] Initial upsert error, attempting Tier 2 fallback (preserving Aptitude columns):", upsertErr);
       const fallbackPayload = {
         user_id: userId,
         bookmarks: merged.bookmarks,
+        bookmark_removals: merged.bookmark_removals,
         notes: merged.notes,
         solved_questions: merged.solved_questions,
+        solved_removals: merged.solved_removals,
+        solved_timestamps: merged.solved_timestamps,
         aptitude_solved: merged.aptitude_solved,
+        aptitude_solved_removals: merged.aptitude_solved_removals,
+        aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
         aptitude_bookmarks: merged.aptitude_bookmarks,
+        aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
         mock_history: merged.mock_history,
         progress_records: {
           ...merged.progress_records,
           da_solved: merged.da_solved,
+          da_solved_removals: merged.da_solved_removals,
+          da_solved_timestamps: merged.da_solved_timestamps,
           da_bookmarks: merged.da_bookmarks,
+          da_bookmark_removals: merged.da_bookmark_removals,
         },
         data_version: 1,
         last_synced_at: new Date().toISOString(),
@@ -615,7 +840,7 @@ export async function syncUserData(userId) {
       const fallbackResult = await supabase.from("user_progress").upsert(fallbackPayload);
       upsertErr = fallbackResult.error;
 
-      // Resilient fallback: Tier 3 (if even aptitude columns are missing on a minimal legacy schema, embed all non-standard arrays in progress_records)
+      // Resilient fallback: Tier 3 (if even aptitude columns or new removals are missing on a minimal legacy schema, embed all in progress_records)
       if (upsertErr) {
         console.warn("[CloudSync] Tier 2 upsert error, attempting Tier 3 core baseline fallback:", upsertErr);
         const coreBaselinePayload = {
@@ -626,10 +851,18 @@ export async function syncUserData(userId) {
           mock_history: merged.mock_history,
           progress_records: {
             ...merged.progress_records,
+            solved_removals: merged.solved_removals,
+            solved_timestamps: merged.solved_timestamps,
             aptitude_solved: merged.aptitude_solved,
+            aptitude_solved_removals: merged.aptitude_solved_removals,
+            aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
             aptitude_bookmarks: merged.aptitude_bookmarks,
+            aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
             da_solved: merged.da_solved,
+            da_solved_removals: merged.da_solved_removals,
+            da_solved_timestamps: merged.da_solved_timestamps,
             da_bookmarks: merged.da_bookmarks,
+            da_bookmark_removals: merged.da_bookmark_removals,
           },
           data_version: 1,
           last_synced_at: new Date().toISOString(),
@@ -667,14 +900,30 @@ export async function syncUserData(userId) {
       console.warn("[CloudSync] Audit log insert warning:", logErr);
     }
 
-    // 7. Update local localStorage with merged data (bookmarks + removals)
+    // 7. Update local localStorage with merged data (solved + bookmarks + removals + timestamps)
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.solved,
       JSON.stringify(merged.solved_questions)
     );
     localStorage.setItem(
+      LOCAL_STORAGE_KEYS.solvedRemovals,
+      JSON.stringify(merged.solved_removals || {})
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.solvedTimestamps,
+      JSON.stringify(merged.solved_timestamps || {})
+    );
+    localStorage.setItem(
       LOCAL_STORAGE_KEYS.aptitudeSolved,
       JSON.stringify(merged.aptitude_solved)
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.aptitudeSolvedRemovals,
+      JSON.stringify(merged.aptitude_solved_removals || {})
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.aptitudeSolvedTimestamps,
+      JSON.stringify(merged.aptitude_solved_timestamps || {})
     );
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.aptitudeBookmarks,
@@ -709,6 +958,8 @@ export async function syncUserData(userId) {
       JSON.stringify(merged.progress_records.aptitude)
     );
     localStorage.setItem(LOCAL_STORAGE_KEYS.daSolved, JSON.stringify(merged.da_solved));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.daSolvedRemovals, JSON.stringify(merged.da_solved_removals || {}));
+    localStorage.setItem(LOCAL_STORAGE_KEYS.daSolvedTimestamps, JSON.stringify(merged.da_solved_timestamps || {}));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarks, JSON.stringify(merged.da_bookmarks));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daBookmarkRemovals, JSON.stringify(merged.da_bookmark_removals || []));
     localStorage.setItem(LOCAL_STORAGE_KEYS.daProgress, JSON.stringify(merged.progress_records.da || {}));

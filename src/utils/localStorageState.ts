@@ -32,14 +32,20 @@ export interface ImportUserStateResult {
 
 const USER_STATE_STORAGE_KEYS = Object.freeze({
   solved: "gate_qa_solved_questions",
+  solvedRemovals: "gate_qa_solved_removals",
+  solvedTimestamps: "gate_qa_solved_timestamps",
   bookmarked: "gate_qa_bookmarked_questions",
+  bookmarkRemovals: "gate_qa_bookmark_removals",
   metadata: "gate_qa_progress_metadata",
   progress: "gateqa_progress_v1",
 });
 
 const APTITUDE_USER_STATE_STORAGE_KEYS = Object.freeze({
   solved: "gateqa-apt-solved-questions",
+  solvedRemovals: "gateqa-apt-solved-removals",
+  solvedTimestamps: "gateqa-apt-solved-timestamps",
   bookmarked: "gateqa-apt-bookmarked-questions",
+  bookmarkRemovals: "gateqa-apt-bookmark-removals",
   metadata: "gateqa-apt-progress-metadata",
   progress: "gateqa_apt_progress_v1",
 });

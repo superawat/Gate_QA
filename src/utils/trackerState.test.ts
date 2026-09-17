@@ -579,6 +579,35 @@ describe("trackerState", () => {
       expect(canonical.progressMap["go:1005"]?.incorrectAttempts).toBe(1);
     });
 
+    it("does not re-solve a question from mock history if explicitly unsolved after the mock test", () => {
+      const mockSubmitTime = new Date("2026-09-01T12:00:00Z").getTime();
+      const unsolveTime = mockSubmitTime + 60000; // 1 minute after mock submission
+
+      window.localStorage.setItem(
+        "gate_qa_solved_questions",
+        JSON.stringify([])
+      );
+      window.localStorage.setItem(
+        "gate_qa_solved_removals",
+        JSON.stringify({ "go:1004": unsolveTime })
+      );
+      window.localStorage.setItem(
+        "gateqa_mock_history_v1",
+        JSON.stringify([
+          {
+            submittedAt: "2026-09-01T12:00:00Z",
+            correctQuestions: [{ questionUid: "go:1004", timeSpentSeconds: 60 }],
+            incorrectQuestions: [],
+            bonusQuestions: [],
+          },
+        ])
+      );
+
+      const canonical = loadCanonicalPracticeRecords("cse", window.localStorage);
+      expect(canonical.solvedSet.has("go:1004")).toBe(false);
+      expect(canonical.progressMap["go:1004"]?.isSolved).toBe(false);
+    });
+
     it("isolates CSE and DA practice progress strictly", () => {
       window.localStorage.setItem(
         "gateqa_progress_v1",

@@ -105,13 +105,19 @@ export const buildWorkspaceSnapshot = (storage = getDefaultStorage()) => ({
   data: {
     gate: {
       solvedQuestions: compactStringArray(readStorageJson(USER_STATE_STORAGE_KEYS.solved, [], storage)),
+      solvedRemovals: readStorageJson("gate_qa_solved_removals", {}, storage),
+      solvedTimestamps: readStorageJson("gate_qa_solved_timestamps", {}, storage),
       bookmarkedQuestions: compactStringArray(readStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, [], storage)),
+      bookmarkRemovals: compactStringArray(readStorageJson("gate_qa_bookmark_removals", [], storage)),
       metadata: readStorageJson(USER_STATE_STORAGE_KEYS.metadata, {}, storage),
       progress: readStorageJson(USER_STATE_STORAGE_KEYS.progress, {}, storage),
     },
     aptitude: {
       solvedQuestions: compactStringArray(readStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.solved, [], storage)),
+      solvedRemovals: readStorageJson("gateqa-apt-solved-removals", {}, storage),
+      solvedTimestamps: readStorageJson("gateqa-apt-solved-timestamps", {}, storage),
       bookmarkedQuestions: compactStringArray(readStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, [], storage)),
+      bookmarkRemovals: compactStringArray(readStorageJson("gateqa-apt-bookmark-removals", [], storage)),
       metadata: readStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.metadata, {}, storage),
       progress: readStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.progress, {}, storage),
     },
@@ -160,13 +166,37 @@ export const importWorkspaceSnapshot = (payload, storage = getDefaultStorage()) 
   }
 
   const { gate = {}, aptitude = {}, sessions = {}, preferences = {}, mockHistory = [] } = workspace.data;
+
+  const now = Date.now();
+  const gateSolved = compactStringArray(gate.solvedQuestions);
+  const gateRemovals = typeof gate.solvedRemovals === "object" && gate.solvedRemovals ? { ...gate.solvedRemovals } : {};
+  const gateTimestamps = typeof gate.solvedTimestamps === "object" && gate.solvedTimestamps ? { ...gate.solvedTimestamps } : {};
+  gateSolved.forEach((id) => {
+    delete gateRemovals[id];
+    if (!gateTimestamps[id]) gateTimestamps[id] = now;
+  });
+
+  const aptSolved = compactStringArray(aptitude.solvedQuestions);
+  const aptRemovals = typeof aptitude.solvedRemovals === "object" && aptitude.solvedRemovals ? { ...aptitude.solvedRemovals } : {};
+  const aptTimestamps = typeof aptitude.solvedTimestamps === "object" && aptitude.solvedTimestamps ? { ...aptitude.solvedTimestamps } : {};
+  aptSolved.forEach((id) => {
+    delete aptRemovals[id];
+    if (!aptTimestamps[id]) aptTimestamps[id] = now;
+  });
+
   const writes = [
-    writeStorageJson(USER_STATE_STORAGE_KEYS.solved, compactStringArray(gate.solvedQuestions), storage),
+    writeStorageJson(USER_STATE_STORAGE_KEYS.solved, gateSolved, storage),
+    writeWorkspaceJson(storage, "gate_qa_solved_removals", gateRemovals),
+    writeWorkspaceJson(storage, "gate_qa_solved_timestamps", gateTimestamps),
     writeStorageJson(USER_STATE_STORAGE_KEYS.bookmarked, compactStringArray(gate.bookmarkedQuestions), storage),
+    writeWorkspaceJson(storage, "gate_qa_bookmark_removals", compactStringArray(gate.bookmarkRemovals)),
     writeWorkspaceJson(storage, USER_STATE_STORAGE_KEYS.metadata, gate.metadata || {}),
     writeWorkspaceJson(storage, USER_STATE_STORAGE_KEYS.progress, gate.progress || {}),
-    writeStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.solved, compactStringArray(aptitude.solvedQuestions), storage),
+    writeStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.solved, aptSolved, storage),
+    writeWorkspaceJson(storage, "gateqa-apt-solved-removals", aptRemovals),
+    writeWorkspaceJson(storage, "gateqa-apt-solved-timestamps", aptTimestamps),
     writeStorageJson(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, compactStringArray(aptitude.bookmarkedQuestions), storage),
+    writeWorkspaceJson(storage, "gateqa-apt-bookmark-removals", compactStringArray(aptitude.bookmarkRemovals)),
     writeWorkspaceJson(storage, APTITUDE_USER_STATE_STORAGE_KEYS.metadata, aptitude.metadata || {}),
     writeWorkspaceJson(storage, APTITUDE_USER_STATE_STORAGE_KEYS.progress, aptitude.progress || {}),
     writeWorkspaceJson(storage, USER_NOTES_STORAGE_KEY, sessions.scratchpadNotes || {}),

@@ -10,7 +10,9 @@
 import { describe, test, expect, beforeEach, vi } from "vitest";
 import {
   extractQuestionIdArray,
+  extractTimestampMap,
   mergeSolvedQuestionIds,
+  mergeLwwElementSet,
   mergeStreakFreeze,
   unionMergeData,
   syncUserData,
@@ -19,6 +21,7 @@ import {
   mergeTrackerRevisionsSummary,
   mergeTrackerPreferences,
   syncTrackerData,
+  LOCAL_STORAGE_KEYS,
 } from "./cloudSyncManager";
 import * as supabaseService from "../services/supabase";
 
@@ -981,4 +984,204 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
       expect(merged.countdownDisplayMode).toBe("hero");
     });
   });
+
+  describe("cloudSyncManager - LWW-Element-Set Solved Question CRDT & Resurrection Prevention", () => {
+    test("extractTimestampMap parses objects, stringified JSON, and arrays gracefully", () => {
+      expect(extractTimestampMap({ "go:1": 100, "go:2": 200 })).toEqual({ "go:1": 100, "go:2": 200 });
+      expect(extractTimestampMap('{"go:1": 500}')).toEqual({ "go:1": 500 });
+      expect(extractTimestampMap(["go:1", "go:2"])).toEqual({ "go:1": 1, "go:2": 1 });
+      expect(extractTimestampMap(null)).toEqual({});
+      expect(extractTimestampMap(undefined)).toEqual({});
+      expect(extractTimestampMap("not-json")).toEqual({});
+    });
+
+    test("explicit local unsolve (removal timestamp > 0) wins over stale cloud solved array", () => {
+      const now = 1726570000000;
+      const localSolved = [];
+      const cloudSolved = ["go:1", "go:2"];
+      const localRemovals = { "go:1": now };
+      const cloudRemovals = {};
+      const localTimestamps = {};
+      const cloudTimestamps = {}; // no cloud timestamps (legacy or older solve)
+
+      const result = mergeLwwElementSet(
+        localSolved,
+        cloudSolved,
+        localRemovals,
+        cloudRemovals,
+        localTimestamps,
+        cloudTimestamps
+      );
+
+      // go:1 was explicitly unsolved locally -> it MUST NOT be in mergedSolved
+      expect(result.mergedSolved).not.toContain("go:1");
+      // go:2 was never unsolved -> stays solved
+      expect(result.mergedSolved).toContain("go:2");
+      // Tombstone for go:1 must be retained
+      expect(result.mergedRemovals["go:1"]).toBe(now);
+    });
+
+    test("re-solving a previously unsolved question (new T_solve > T_remove) clears tombstone and marks solved", () => {
+      const tRemove = 1726570000000;
+      const tReSolve = 1726570050000; // 50 seconds later, user solves it again
+
+      const localSolved = ["go:1"];
+      const cloudSolved = []; // cloud hasn't received the re-solve yet
+      const localRemovals = {}; // cleared on re-solve
+      const cloudRemovals = { "go:1": tRemove }; // cloud still has old unsolve tombstone
+      const localTimestamps = { "go:1": tReSolve };
+      const cloudTimestamps = {};
+
+      const result = mergeLwwElementSet(
+        localSolved,
+        cloudSolved,
+        localRemovals,
+        cloudRemovals,
+        localTimestamps,
+        cloudTimestamps
+      );
+
+      // T_solve (1726570050000) > T_remove (1726570000000) -> Question is SOLVED
+      expect(result.mergedSolved).toContain("go:1");
+      expect(result.mergedTimestamps["go:1"]).toBe(tReSolve);
+      // Tombstone must NOT be retained
+      expect(result.mergedRemovals["go:1"]).toBeUndefined();
+    });
+
+    test("repeated Solve -> Unsolve -> Solve -> Unsolve cycles maintain correct state", () => {
+      let tSolve1 = 1000;
+      let tUnsolve1 = 2000;
+      let tSolve2 = 3000;
+      let tUnsolve2 = 4000;
+
+      // Cycle 1: Solve
+      let r1 = mergeLwwElementSet(["q1"], [], {}, {}, { q1: tSolve1 }, {});
+      expect(r1.mergedSolved).toEqual(["q1"]);
+
+      // Cycle 2: Unsolve
+      let r2 = mergeLwwElementSet([], ["q1"], { q1: tUnsolve1 }, {}, {}, { q1: tSolve1 });
+      expect(r2.mergedSolved).toEqual([]);
+      expect(r2.mergedRemovals["q1"]).toBe(tUnsolve1);
+
+      // Cycle 3: Solve again
+      let r3 = mergeLwwElementSet(["q1"], [], {}, { q1: tUnsolve1 }, { q1: tSolve2 }, {});
+      expect(r3.mergedSolved).toEqual(["q1"]);
+      expect(r3.mergedRemovals["q1"]).toBeUndefined();
+
+      // Cycle 4: Unsolve again
+      let r4 = mergeLwwElementSet([], ["q1"], { q1: tUnsolve2 }, {}, {}, { q1: tSolve2 });
+      expect(r4.mergedSolved).toEqual([]);
+      expect(r4.mergedRemovals["q1"]).toBe(tUnsolve2);
+    });
+
+    test("track isolation: Aptitude, DA, and CSE removals do not interfere", () => {
+      const now = 1726570000000;
+      const localData = {
+        solved: [],
+        solvedRemovals: { "go:1": now },
+        solvedTimestamps: {},
+        aptitudeSolved: ["apt:1"],
+        aptitudeSolvedRemovals: {},
+        aptitudeSolvedTimestamps: { "apt:1": now },
+        daSolved: [],
+        daSolvedRemovals: { "da:1": now },
+        daSolvedTimestamps: {},
+        bookmarks: [],
+        bookmarkRemovals: [],
+        aptitudeBookmarks: [],
+        aptitudeBookmarkRemovals: [],
+        daBookmarks: [],
+        daBookmarkRemovals: [],
+        notes: {},
+        mockHistory: [],
+        progress: {},
+        aptitudeProgress: {},
+        daProgress: {},
+        streakFreeze: {},
+      };
+
+      const cloudData = {
+        solved_questions: ["go:1"],
+        aptitude_solved: ["apt:1"],
+        da_solved: ["da:1"],
+      };
+
+      const merged = unionMergeData(localData, cloudData);
+
+      // CSE go:1 was unsolved locally -> not in solved_questions
+      expect(merged.solved_questions).not.toContain("go:1");
+      expect(merged.solved_removals["go:1"]).toBe(now);
+
+      // Aptitude apt:1 was solved -> in aptitude_solved
+      expect(merged.aptitude_solved).toContain("apt:1");
+
+      // DA da:1 was unsolved locally -> not in da_solved
+      expect(merged.da_solved).not.toContain("da:1");
+      expect(merged.da_solved_removals["da:1"]).toBe(now);
+    });
+
+    test("syncUserData preserves local unsolve in localStorage and writes removals to DB", async () => {
+      const now = Date.now();
+      localStorage.setItem("gate_qa_solved_questions", JSON.stringify([]));
+      localStorage.setItem("gate_qa_solved_removals", JSON.stringify({ "go:42": now }));
+      localStorage.setItem("gate_qa_solved_timestamps", JSON.stringify({}));
+
+      const mockUpsert = vi.fn().mockResolvedValue({ error: null });
+      const mockInsert = vi.fn().mockResolvedValue({ error: null });
+      const mockSingle = vi.fn().mockResolvedValue({
+        data: {
+          user_id: "user-sync-test",
+          solved_questions: ["go:42", "go:99"], // stale cloud has go:42
+          solved_removals: {},
+          solved_timestamps: {},
+          bookmarks: [],
+          notes: {},
+        },
+        error: null,
+      });
+      const mockEq = vi.fn().mockReturnValue({ single: mockSingle, maybeSingle: mockSingle });
+      const mockSelect = vi.fn().mockReturnValue({ eq: mockEq });
+
+      const mockTrackerHandler = {
+        select: vi.fn().mockReturnValue({ eq: vi.fn().mockReturnValue({ single: vi.fn().mockResolvedValue({ data: null, error: null }) }) }),
+        upsert: vi.fn().mockResolvedValue({ error: null }),
+      };
+
+      const mockFrom = vi.fn((table) => {
+        if (table === "user_progress") {
+          return { select: mockSelect, upsert: mockUpsert };
+        }
+        if (table === "user_tracker") {
+          return mockTrackerHandler;
+        }
+        if (table === "sync_log") {
+          return { insert: mockInsert };
+        }
+        return {};
+      });
+
+      vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
+
+      const result = await syncUserData("user-sync-test");
+      expect(result.success).toBe(true);
+
+      // Verify localStorage was written with unsolve preserved
+      const localSolved = JSON.parse(localStorage.getItem("gate_qa_solved_questions"));
+      expect(localSolved).not.toContain("go:42");
+      expect(localSolved).toContain("go:99");
+
+      const localRemovals = JSON.parse(localStorage.getItem("gate_qa_solved_removals"));
+      expect(localRemovals["go:42"]).toBe(now);
+
+      // Verify Supabase upsert payload contained solved_removals
+      expect(mockUpsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          user_id: "user-sync-test",
+          solved_questions: ["go:99"],
+          solved_removals: expect.objectContaining({ "go:42": now }),
+        })
+      );
+    });
+  });
 });
+

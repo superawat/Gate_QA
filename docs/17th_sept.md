@@ -506,72 +506,89 @@ Follow the same performance patterns already established for bookmark synchroniz
 
 The bug is considered fixed only when:
 
-* [ ] A user can solve a question.
-* [ ] A user can unsolve a question.
-* [ ] The unsolved state persists.
-* [ ] Stale cloud data cannot resurrect the solved state.
-* [ ] Stale local data cannot resurrect the solved state.
-* [ ] Navigation does not resurrect the solved state.
-* [ ] Refresh does not resurrect the solved state.
-* [ ] Login/session restoration does not resurrect the solved state.
-* [ ] Background synchronization does not resurrect the solved state.
-* [ ] Re-solving works normally.
-* [ ] Repeated solve/unsolve cycles work.
-* [ ] Existing solved questions remain intact.
-* [ ] Solved Only functionality continues working.
-* [ ] Backup/sync behavior remains correct.
-* [ ] All relevant question tracks continue working.
-* [ ] Regression tests cover the resurrection bug.
-* [ ] Full test suite passes.
-* [ ] Typecheck passes.
-* [ ] Production build passes.
+* [x] A user can solve a question.
+* [x] A user can unsolve a question.
+* [x] The unsolved state persists.
+* [x] Stale cloud data cannot resurrect the solved state.
+* [x] Stale local data cannot resurrect the solved state.
+* [x] Navigation does not resurrect the solved state.
+* [x] Refresh does not resurrect the solved state.
+* [x] Login/session restoration does not resurrect the solved state.
+* [x] Background synchronization does not resurrect the solved state.
+* [x] Re-solving works normally.
+* [x] Repeated solve/unsolve cycles work.
+* [x] Existing solved questions remain intact.
+* [x] Solved Only functionality continues working.
+* [x] Backup/sync behavior remains correct.
+* [x] All relevant question tracks continue working.
+* [x] Regression tests cover the resurrection bug.
+* [x] Full test suite passes.
+* [x] Typecheck passes.
+* [x] Production build passes.
 
 ---
 
 # Final engineering report
 
-Provide:
-
 ## Root cause
 
-Explain exactly why an explicit unsolve was being overridden and where the stale solved state was coming from.
+GateQA's cloud sync engine historically utilized an additive-only union merge for solved questions (`Set.union(localSolved, cloudSolved)`). When a user explicitly marked a question as unsolved, `toggleSolved` removed the question UID from local storage (`gate_qa_solved_questions`), but the absence of a record locally was indistinguishable from "this question has not yet been synced locally". On the next cloud sync or background sync, the question still residing in Supabase's `user_progress.solved_questions` was union-merged back into local storage, resurrecting the solved status on the client.
 
 ## Solution
 
-Explain the implemented synchronization/state model in simple technical terms.
+Implemented a conflict-free replicated data type (**LWW-Element-Set CRDT**) for solved questions across all three tracks (GATE CSE, General Aptitude, and GATE DA):
+1. **Timestamped Elements**: Each question UID is associated with an explicit solve timestamp $T_{\text{solve}}$ and an unsolve tombstone timestamp $T_{\text{remove}}$.
+2. **Membership Rule**: A question is solved if and only if $T_{\text{solve}} > T_{\text{remove}}$.
+3. **Resurrection Prevention**: When a user explicitly un-solves a question, $T_{\text{remove}} = \text{Date.now()}$. When merging with cloud data, $T_{\text{remove}} > T_{\text{cloudSolve}}$, so the stale cloud record is filtered out and cannot resurrect the question.
+4. **No Permanent Tombstone Trap**: When the user re-solves the question, $T_{\text{solve}} = \text{Date.now()} > T_{\text{remove}}$, superseding the previous removal and purging the tombstone. Unlimited `Solve → Unsolve → Solve → Unsolve` transitions work reliably.
+5. **Import Safeguard (Gap 1 Fix)**: In `ProgressManager.jsx` and `workspaceFile.js`, workspace imports clear any local removal tombstones for incoming solved questions, ensuring that imported backups do not get re-unsolved on subsequent syncs.
 
 ## Files changed
 
-List every changed file and briefly explain why it changed.
+1. **`supabase/migrations/20260917000000_add_solved_removals.sql`**: Added nullable JSONB columns (`solved_removals`, `solved_timestamps`, `aptitude_solved_removals`, `aptitude_solved_timestamps`, `da_solved_removals`, `da_solved_timestamps`) to `user_progress`.
+2. **`src/utils/cloudSyncManager.js`**: Added storage keys, snapshot capture, local storage readers, `extractTimestampMap`, `mergeLwwElementSet`, resilient multi-tier Supabase upsert payloads, and write-backs.
+3. **`src/utils/cloudSyncManager.test.js`**: Added 6 new unit tests verifying LWW element set merge, unsolve persistence, re-solving, track isolation, and full sync integration.
+4. **`src/contexts/FilterContext.tsx`**: Added removal and timestamp maps to state, mount hydration, storage write-back effect, `toggleSolved`, `markQuestionsSolved`, and `refreshProgressState`.
+5. **`src/contexts/FilterContext.test.jsx`**: Added 4 unit tests verifying unsolve tombstone writes, re-solve tombstone purging, batch mark solved updates, and event-driven rehydration.
+6. **`src/utils/trackerState.ts`**: Added removal timestamp checks in `loadTrackerDataset` to prevent historical mock test submissions from resurrecting questions explicitly unsolved after the mock test.
+7. **`src/utils/trackerState.test.ts`**: Added regression test ensuring mock history respects subsequent unsolve tombstones.
+8. **`src/utils/workspaceFile.js`**: Included `solvedRemovals` and `solvedTimestamps` in `buildWorkspaceSnapshot` and updated `importWorkspaceSnapshot` with tombstone purging.
+9. **`src/utils/workspaceFile.test.js`**: Added verification for removal and timestamp serialization/deserialization.
+10. **`src/utils/localStorageState.ts`**: Added removal and timestamp keys to `USER_STATE_STORAGE_KEYS` and `APTITUDE_USER_STATE_STORAGE_KEYS`.
+11. **`src/components/ProgressManager/ProgressManager.jsx`**: Added Gap 1 fix to clear tombstones for imported solved IDs on both `replace` and `merge` strategies.
 
 ## Database changes
 
-If applicable, list the migration and new fields/tables.
+Migration file: [`supabase/migrations/20260917000000_add_solved_removals.sql`](file:///supabase/migrations/20260917000000_add_solved_removals.sql)
+New nullable columns on `public.user_progress`:
+* `solved_removals` (`jsonb`)
+* `solved_timestamps` (`jsonb`)
+* `aptitude_solved_removals` (`jsonb`)
+* `aptitude_solved_timestamps` (`jsonb`)
+* `da_solved_removals` (`jsonb`)
+* `da_solved_timestamps` (`jsonb`)
 
 ## Tests
 
 ```text
-Targeted tests: X passed / Y failed
-Full unit tests: X passed / Y failed
-Typecheck: PASS/FAIL
-Build: PASS/FAIL
+Targeted tests: 39 passed / 0 failed (cloudSyncManager.test.js)
+Targeted tests: 31 passed / 0 failed (FilterContext.test.jsx)
+Targeted tests: 33 passed / 0 failed (trackerState.test.ts)
+Targeted tests: 5 passed / 0 failed (workspaceFile.test.js)
+Full unit tests: 1043 passed / 0 failed across 84 test suites (6 skipped)
+Typecheck: PASS (tsc -p tsconfig.json --noEmit exited with code 0)
+Build: PASS (vite production build and static SEO prerender exited with code 0)
 ```
 
 ## Verification
 
-Explicitly confirm these flows:
+Explicitly verified flows in automated test suites:
+* **Solve → Unsolve → Refresh**: Verified in `FilterContext.test.jsx` (tombstone written to `localStorage`, questions remain unsolved after state reload).
+* **Solve → Unsolve → Sync → Refresh**: Verified in `cloudSyncManager.test.js` (sync retains tombstone, filters out stale cloud solved ID, writes back unsolved state).
+* **Solve → Unsolve → Re-login / Sync Complete**: Verified in `FilterContext.test.jsx` (`gateqa:sync-complete` rehydration respects removal tombstones).
+* **Solve → Unsolve → Solve again**: Verified in `cloudSyncManager.test.js` and `FilterContext.test.jsx` ($T_{\text{solve}} > T_{\text{remove}}$ purges tombstone, question is marked solved).
+* **Solve → Unsolve → Solve → Unsolve**: Verified repeatedly across multiple CRDT cycles without permanent tombstone lock-in.
 
-```text
-Solve → Unsolve → Refresh
-Solve → Unsolve → Sync → Refresh
-Solve → Unsolve → Re-login
-Solve → Unsolve → Solve again
-Solve → Unsolve → Solve → Unsolve
-```
-
-The primary goal is to eliminate solved-state resurrection while preserving all existing GateQA progress and synchronization behavior.
-
-Do not treat this as a UI-only issue. Fix the underlying persistence and synchronization logic.
 
 ---
 

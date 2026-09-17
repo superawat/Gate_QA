@@ -761,6 +761,13 @@ export const loadCanonicalPracticeRecords = (
   const aptSolved = parseJsonSafe<string[]>(storage.getItem("gateqa-apt-solved-questions"), []);
   const daSolved = parseJsonSafe<string[]>(storage.getItem("gate_qa_da_solved_questions"), []);
 
+  const gateSolvedRemovals = parseJsonSafe<Record<string, number>>(storage.getItem("gate_qa_solved_removals"), {});
+  const aptSolvedRemovals = parseJsonSafe<Record<string, number>>(storage.getItem("gateqa-apt-solved-removals"), {});
+  const daSolvedRemovals = parseJsonSafe<Record<string, number>>(storage.getItem("gate_qa_da_solved_removals"), {});
+  const solvedRemovals: Record<string, number> = track === "da"
+    ? { ...daSolvedRemovals, ...aptSolvedRemovals }
+    : { ...gateSolvedRemovals, ...aptSolvedRemovals };
+
   let rawProgressRecords: Record<string, RawPracticeRecord> = {};
   let rawSolvedIds: string[] = [];
 
@@ -781,6 +788,7 @@ export const loadCanonicalPracticeRecords = (
   if (Array.isArray(mockHistory) && mockHistory.length > 0) {
     mockHistory.forEach((session) => {
       const submittedAt = session?.submittedAt;
+      const submitTime = submittedAt ? new Date(submittedAt).getTime() : 0;
       const correctList = Array.isArray(session?.correctQuestions) ? session.correctQuestions : [];
       const incorrectList = Array.isArray(session?.incorrectQuestions) ? session.incorrectQuestions : [];
       const bonusList = Array.isArray(session?.bonusQuestions) ? session.bonusQuestions : [];
@@ -789,7 +797,10 @@ export const loadCanonicalPracticeRecords = (
         const uid = String(questionUid || "").trim();
         if (!uid) return;
 
-        if (isCorrect) mergedSolved.add(uid);
+        const removalTime = Number(solvedRemovals[uid] || 0);
+        const isExplicitlyUnsolvedAfterMock = removalTime > 0 && removalTime >= submitTime;
+
+        if (isCorrect && !isExplicitlyUnsolvedAfterMock) mergedSolved.add(uid);
 
         if (!mergedProgress[uid]) {
           mergedProgress[uid] = {
@@ -797,7 +808,7 @@ export const loadCanonicalPracticeRecords = (
             correctAttempts: isCorrect ? 1 : 0,
             incorrectAttempts: isCorrect ? 0 : 1,
             lastSubmittedAt: submittedAt,
-            isSolved: isCorrect,
+            isSolved: isCorrect && !isExplicitlyUnsolvedAfterMock,
             correct: isCorrect,
           };
         } else {
@@ -809,7 +820,9 @@ export const loadCanonicalPracticeRecords = (
           entry.attempts = currAttempts + 1;
           if (isCorrect) {
             entry.correctAttempts = currCorrect + 1;
-            entry.isSolved = true;
+            if (!isExplicitlyUnsolvedAfterMock) {
+              entry.isSolved = true;
+            }
             entry.correct = true;
           } else {
             entry.incorrectAttempts = currIncorrect + 1;

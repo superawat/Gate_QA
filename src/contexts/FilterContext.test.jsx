@@ -275,6 +275,14 @@ describe('FilterContext', () => {
                     })}
                 >Combined</button>
                 <button
+                    data-testid="toggle-go1-solved"
+                    onClick={() => toggleSolved('go:1')}
+                >Toggle go:1 Solved</button>
+                <button
+                    data-testid="mark-go1-solved"
+                    onClick={() => markQuestionsSolved(['go:1'])}
+                >Mark go:1 Solved</button>
+                <button
                     data-testid="solve-apt"
                     onClick={() => toggleSolved('APT-ENG-0001')}
                 >Solve Apt</button>
@@ -1088,6 +1096,139 @@ describe('FilterContext', () => {
             await waitFor(() => {
                 // The question must remain unbookmarked after sync-complete
                 expect(getByTestId('bm-go1').textContent).toBe('not-bookmarked');
+            });
+        });
+    });
+
+    describe('DEC-112: Solved question unsolve permanence & resurrection prevention (LWW-Element-Set)', () => {
+        const SOLVED_KEY = 'gate_qa_solved_questions';
+        const SOLVED_REMOVALS_KEY = 'gate_qa_solved_removals';
+        const SOLVED_TIMESTAMPS_KEY = 'gate_qa_solved_timestamps';
+
+        test('unsolving a question writes removal tombstone and clears solve timestamp in localStorage', async () => {
+            // Seed localStorage with a solved question
+            window.localStorage.setItem(SOLVED_KEY, JSON.stringify(['go:1']));
+            window.localStorage.setItem(SOLVED_TIMESTAMPS_KEY, JSON.stringify({ 'go:1': 1000 }));
+            window.localStorage.setItem(SOLVED_REMOVALS_KEY, JSON.stringify({}));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('yes');
+            });
+
+            // Click to unsolve
+            act(() => {
+                getByTestId('toggle-go1-solved').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('no');
+            });
+
+            // Verify localStorage
+            const localSolved = JSON.parse(window.localStorage.getItem(SOLVED_KEY) || '[]');
+            expect(localSolved).not.toContain('go:1');
+
+            const localRemovals = JSON.parse(window.localStorage.getItem(SOLVED_REMOVALS_KEY) || '{}');
+            expect(typeof localRemovals['go:1']).toBe('number');
+            expect(localRemovals['go:1']).toBeGreaterThan(0);
+
+            const localTimestamps = JSON.parse(window.localStorage.getItem(SOLVED_TIMESTAMPS_KEY) || '{}');
+            expect(localTimestamps['go:1']).toBeUndefined();
+        });
+
+        test('re-solving an unsolved question clears removal tombstone and records new solve timestamp', async () => {
+            // Seed with an explicitly unsolved question
+            window.localStorage.setItem(SOLVED_KEY, JSON.stringify([]));
+            window.localStorage.setItem(SOLVED_REMOVALS_KEY, JSON.stringify({ 'go:1': 1000 }));
+            window.localStorage.setItem(SOLVED_TIMESTAMPS_KEY, JSON.stringify({}));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('no');
+            });
+
+            // Click to solve again
+            act(() => {
+                getByTestId('toggle-go1-solved').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('yes');
+            });
+
+            // Verify localStorage
+            const localSolved = JSON.parse(window.localStorage.getItem(SOLVED_KEY) || '[]');
+            expect(localSolved).toContain('go:1');
+
+            const localRemovals = JSON.parse(window.localStorage.getItem(SOLVED_REMOVALS_KEY) || '{}');
+            expect(localRemovals['go:1']).toBeUndefined();
+
+            const localTimestamps = JSON.parse(window.localStorage.getItem(SOLVED_TIMESTAMPS_KEY) || '{}');
+            expect(typeof localTimestamps['go:1']).toBe('number');
+            expect(localTimestamps['go:1']).toBeGreaterThan(1000);
+        });
+
+        test('markQuestionsSolved clears removal tombstones and records solve timestamps for batch questions', async () => {
+            window.localStorage.setItem(SOLVED_KEY, JSON.stringify([]));
+            window.localStorage.setItem(SOLVED_REMOVALS_KEY, JSON.stringify({ 'go:1': 500 }));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('no');
+            });
+
+            act(() => {
+                getByTestId('mark-go1-solved').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('yes');
+            });
+
+            const localRemovals = JSON.parse(window.localStorage.getItem(SOLVED_REMOVALS_KEY) || '{}');
+            expect(localRemovals['go:1']).toBeUndefined();
+
+            const localTimestamps = JSON.parse(window.localStorage.getItem(SOLVED_TIMESTAMPS_KEY) || '{}');
+            expect(localTimestamps['go:1']).toBeGreaterThan(500);
+        });
+
+        test('gateqa:sync-complete preserves unsolve state when synced storage has removal tombstones', async () => {
+            window.localStorage.setItem(SOLVED_KEY, JSON.stringify([]));
+            window.localStorage.setItem(SOLVED_REMOVALS_KEY, JSON.stringify({ 'go:1': 2000 }));
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('no');
+            });
+
+            // Simulate sync complete event
+            act(() => {
+                window.dispatchEvent(new CustomEvent('gateqa:sync-complete', { detail: {} }));
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('go1-solved').textContent).toBe('no');
             });
         });
     });

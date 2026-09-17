@@ -26,6 +26,8 @@ const FilterActionsContext = createContext();
 const DEFAULT_SELECTED_TYPES = ['MCQ', 'MSQ', 'NAT'];
 const STORAGE_KEYS = {
     solved: 'gate_qa_solved_questions',
+    solvedRemovals: 'gate_qa_solved_removals',
+    solvedTimestamps: 'gate_qa_solved_timestamps',
     bookmarked: 'gate_qa_bookmarked_questions',
     bookmarkRemovals: 'gate_qa_bookmark_removals',
     metadata: 'gate_qa_progress_metadata',
@@ -33,11 +35,15 @@ const STORAGE_KEYS = {
 };
 const DA_STORAGE_KEYS = {
     solved: 'gate_qa_da_solved_questions',
+    solvedRemovals: 'gate_qa_da_solved_removals',
+    solvedTimestamps: 'gate_qa_da_solved_timestamps',
     bookmarked: 'gate_qa_da_bookmarked_questions',
     bookmarkRemovals: 'gate_qa_da_bookmark_removals',
     progress: 'gateqa_da_progress_v1',
 };
 const APTITUDE_BOOKMARK_REMOVALS_KEY = 'gateqa-apt-bookmark-removals';
+const APTITUDE_SOLVED_REMOVALS_KEY = 'gateqa-apt-solved-removals';
+const APTITUDE_SOLVED_TIMESTAMPS_KEY = 'gateqa-apt-solved-timestamps';
 const DEFAULT_MIN_YEAR = 2000;
 const DEFAULT_MAX_YEAR = new Date().getFullYear();
 const LEGACY_STORAGE_KEYS = {
@@ -599,12 +605,18 @@ export const FilterProvider = ({
     const [isInitialized, setIsInitialized] = useState(false);
 
     const [solvedQuestionIds, setSolvedQuestionIds] = useState([]);
+    const [solvedRemovalMap, setSolvedRemovalMap] = useState({});
+    const [solvedTimestampMap, setSolvedTimestampMap] = useState({});
     const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState([]);
     const [bookmarkRemovalIds, setBookmarkRemovalIds] = useState([]);
     const [aptitudeSolvedQuestionIds, setAptitudeSolvedQuestionIds] = useState([]);
+    const [aptitudeSolvedRemovalMap, setAptitudeSolvedRemovalMap] = useState({});
+    const [aptitudeSolvedTimestampMap, setAptitudeSolvedTimestampMap] = useState({});
     const [aptitudeBookmarkedQuestionIds, setAptitudeBookmarkedQuestionIds] = useState([]);
     const [aptitudeBookmarkRemovalIds, setAptitudeBookmarkRemovalIds] = useState([]);
     const [daSolvedQuestionIds, setDaSolvedQuestionIds] = useState([]);
+    const [daSolvedRemovalMap, setDaSolvedRemovalMap] = useState({});
+    const [daSolvedTimestampMap, setDaSolvedTimestampMap] = useState({});
     const [daBookmarkedQuestionIds, setDaBookmarkedQuestionIds] = useState([]);
     const [daBookmarkRemovalIds, setDaBookmarkRemovalIds] = useState([]);
     const [includeCse, setIncludeCseState] = useState(() => (
@@ -1058,6 +1070,8 @@ export const FilterProvider = ({
         }
 
         const storedSolved = normalizeStoredIds(readJsonFromStorage(storageKeys.solved, []));
+        const storedSolvedRemovals = readJsonFromStorage(storageKeys.solvedRemovals, {});
+        const storedSolvedTimestamps = readJsonFromStorage(storageKeys.solvedTimestamps, {});
         const storedBookmarkedRaw = readJsonFromStorage(storageKeys.bookmarked, null);
         const storedBookmarked = storedBookmarkedRaw === null
             ? normalizeStoredIds(legacyStorageKeys.bookmarked ? readJsonFromStorage(legacyStorageKeys.bookmarked, []) : [])
@@ -1066,6 +1080,12 @@ export const FilterProvider = ({
         const storedAptitudeSolved = canMergeAptitude
             ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, []))
             : [];
+        const storedAptitudeSolvedRemovals = canMergeAptitude
+            ? readJsonFromStorage(APTITUDE_SOLVED_REMOVALS_KEY, {})
+            : {};
+        const storedAptitudeSolvedTimestamps = canMergeAptitude
+            ? readJsonFromStorage(APTITUDE_SOLVED_TIMESTAMPS_KEY, {})
+            : {};
         const storedAptitudeBookmarked = canMergeAptitude
             ? normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, []))
             : [];
@@ -1073,16 +1093,24 @@ export const FilterProvider = ({
             ? normalizeStoredIds(readJsonFromStorage(APTITUDE_BOOKMARK_REMOVALS_KEY, []))
             : [];
         const storedDaSolved = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.solved, []));
+        const storedDaSolvedRemovals = readJsonFromStorage(DA_STORAGE_KEYS.solvedRemovals, {});
+        const storedDaSolvedTimestamps = readJsonFromStorage(DA_STORAGE_KEYS.solvedTimestamps, {});
         const storedDaBookmarked = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, []));
         const storedDaBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarkRemovals, []));
 
         setSolvedQuestionIds(storedSolved);
+        setSolvedRemovalMap(storedSolvedRemovals);
+        setSolvedTimestampMap(storedSolvedTimestamps);
         setBookmarkedQuestionIds(storedBookmarked);
         setBookmarkRemovalIds(storedBookmarkRemovals);
         setAptitudeSolvedQuestionIds(storedAptitudeSolved);
+        setAptitudeSolvedRemovalMap(storedAptitudeSolvedRemovals);
+        setAptitudeSolvedTimestampMap(storedAptitudeSolvedTimestamps);
         setAptitudeBookmarkedQuestionIds(storedAptitudeBookmarked);
         setAptitudeBookmarkRemovalIds(storedAptitudeBookmarkRemovals);
         setDaSolvedQuestionIds(storedDaSolved);
+        setDaSolvedRemovalMap(storedDaSolvedRemovals);
+        setDaSolvedTimestampMap(storedDaSolvedTimestamps);
         setDaBookmarkedQuestionIds(storedDaBookmarked);
         setDaBookmarkRemovalIds(storedDaBookmarkRemovals);
 
@@ -1095,7 +1123,7 @@ export const FilterProvider = ({
         }
 
         setHasLoadedProgressState(true);
-    }, [canMergeAptitude, legacyStorageKeys.bookmarked, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved]);
+    }, [canMergeAptitude, legacyStorageKeys.bookmarked, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved, storageKeys.solvedRemovals, storageKeys.solvedTimestamps]);
 
     useEffect(() => {
         if (!hasLoadedProgressState || !isProgressStorageAvailable || typeof window === 'undefined') {
@@ -1104,6 +1132,8 @@ export const FilterProvider = ({
 
         try {
             window.localStorage.setItem(storageKeys.solved, JSON.stringify(solvedQuestionIds));
+            window.localStorage.setItem(storageKeys.solvedRemovals, JSON.stringify(solvedRemovalMap));
+            window.localStorage.setItem(storageKeys.solvedTimestamps, JSON.stringify(solvedTimestampMap));
             window.localStorage.setItem(storageKeys.bookmarked, JSON.stringify(bookmarkedQuestionIds));
             window.localStorage.setItem(storageKeys.bookmarkRemovals, JSON.stringify(bookmarkRemovalIds));
             window.localStorage.setItem(storageKeys.metadata, JSON.stringify({
@@ -1113,6 +1143,8 @@ export const FilterProvider = ({
             }));
             if (canMergeAptitude) {
                 window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.solved, JSON.stringify(aptitudeSolvedQuestionIds));
+                window.localStorage.setItem(APTITUDE_SOLVED_REMOVALS_KEY, JSON.stringify(aptitudeSolvedRemovalMap));
+                window.localStorage.setItem(APTITUDE_SOLVED_TIMESTAMPS_KEY, JSON.stringify(aptitudeSolvedTimestampMap));
                 window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, JSON.stringify(aptitudeBookmarkedQuestionIds));
                 window.localStorage.setItem(APTITUDE_BOOKMARK_REMOVALS_KEY, JSON.stringify(aptitudeBookmarkRemovalIds));
                 window.localStorage.setItem(APTITUDE_USER_STATE_STORAGE_KEYS.metadata, JSON.stringify({
@@ -1122,6 +1154,8 @@ export const FilterProvider = ({
                 }));
             }
             window.localStorage.setItem(DA_STORAGE_KEYS.solved, JSON.stringify(daSolvedQuestionIds));
+            window.localStorage.setItem(DA_STORAGE_KEYS.solvedRemovals, JSON.stringify(daSolvedRemovalMap));
+            window.localStorage.setItem(DA_STORAGE_KEYS.solvedTimestamps, JSON.stringify(daSolvedTimestampMap));
             window.localStorage.setItem(DA_STORAGE_KEYS.bookmarked, JSON.stringify(daBookmarkedQuestionIds));
             window.localStorage.setItem(DA_STORAGE_KEYS.bookmarkRemovals, JSON.stringify(daBookmarkRemovalIds));
         } catch (error) {
@@ -1130,20 +1164,28 @@ export const FilterProvider = ({
     }, [
         aptitudeBookmarkedQuestionIds,
         aptitudeBookmarkRemovalIds,
-        daBookmarkedQuestionIds,
-        daBookmarkRemovalIds,
-        daSolvedQuestionIds,
         aptitudeSolvedQuestionIds,
+        aptitudeSolvedRemovalMap,
+        aptitudeSolvedTimestampMap,
         bookmarkedQuestionIds,
         bookmarkRemovalIds,
         canMergeAptitude,
+        daBookmarkedQuestionIds,
+        daBookmarkRemovalIds,
+        daSolvedQuestionIds,
+        daSolvedRemovalMap,
+        daSolvedTimestampMap,
         hasLoadedProgressState,
         isProgressStorageAvailable,
         solvedQuestionIds,
+        solvedRemovalMap,
+        solvedTimestampMap,
         storageKeys.bookmarkRemovals,
         storageKeys.bookmarked,
         storageKeys.metadata,
-        storageKeys.solved
+        storageKeys.solved,
+        storageKeys.solvedRemovals,
+        storageKeys.solvedTimestamps
     ]);
 
     const gateValidQuestionIdSet = useMemo(() => {
@@ -1453,17 +1495,60 @@ export const FilterProvider = ({
         }
 
         const isDa = isDaTarget(questionOrId);
+        const isAptitude = !isDa && canMergeAptitude && isAptitudeQuestionId(questionId);
+
         const setTargetSolvedQuestionIds = isDa
             ? setDaSolvedQuestionIds
-            : canMergeAptitude && isAptitudeQuestionId(questionId)
+            : isAptitude
                 ? setAptitudeSolvedQuestionIds
                 : setSolvedQuestionIds;
 
-        setTargetSolvedQuestionIds((prev) => (
-            prev.includes(questionId)
-                ? prev.filter(id => id !== questionId)
-                : [...prev, questionId]
-        ));
+        const setTargetSolvedRemovalMap = isDa
+            ? setDaSolvedRemovalMap
+            : isAptitude
+                ? setAptitudeSolvedRemovalMap
+                : setSolvedRemovalMap;
+
+        const setTargetSolvedTimestampMap = isDa
+            ? setDaSolvedTimestampMap
+            : isAptitude
+                ? setAptitudeSolvedTimestampMap
+                : setSolvedTimestampMap;
+
+        setTargetSolvedQuestionIds((prev) => {
+            const isCurrentlySolved = prev.includes(questionId);
+            const now = Date.now();
+
+            if (isCurrentlySolved) {
+                // UNSOLVING: record removal tombstone with epoch timestamp, clear solve timestamp
+                setTargetSolvedRemovalMap((prevRemovals) => ({
+                    ...prevRemovals,
+                    [questionId]: now,
+                }));
+                setTargetSolvedTimestampMap((prevTimestamps) => {
+                    if (!prevTimestamps[questionId]) return prevTimestamps;
+                    const next = { ...prevTimestamps };
+                    delete next[questionId];
+                    return next;
+                });
+                return prev.filter(id => id !== questionId);
+            } else {
+                // SOLVING / RE-SOLVING: record solve timestamp with epoch timestamp, clear removal tombstone
+                setTargetSolvedTimestampMap((prevTimestamps) => ({
+                    ...prevTimestamps,
+                    [questionId]: now,
+                }));
+                setTargetSolvedRemovalMap((prevRemovals) => {
+                    if (!prevRemovals[questionId]) return prevRemovals;
+                    const next = { ...prevRemovals };
+                    delete next[questionId];
+                    return next;
+                });
+                return [...prev, questionId];
+            }
+        });
+
+        enqueueChange('SOLVE', { questionUid: questionId });
     }, [answerService, canMergeAptitude, isDaTarget]);
 
     const toggleBookmark = useCallback((questionOrId) => {
@@ -1544,6 +1629,7 @@ export const FilterProvider = ({
             gateQuestionIds.push(questionId);
         });
 
+        const now = Date.now();
         if (gateQuestionIds.length > 0) {
             setSolvedQuestionIds((prev) => {
                 const nextSet = new Set(prev);
@@ -1552,6 +1638,22 @@ export const FilterProvider = ({
                 });
                 const next = Array.from(nextSet);
                 return next.length === prev.length ? prev : next;
+            });
+            setSolvedTimestampMap((prev) => {
+                const next = { ...prev };
+                gateQuestionIds.forEach((id) => { next[id] = now; });
+                return next;
+            });
+            setSolvedRemovalMap((prev) => {
+                let changed = false;
+                const next = { ...prev };
+                gateQuestionIds.forEach((id) => {
+                    if (next[id]) {
+                        delete next[id];
+                        changed = true;
+                    }
+                });
+                return changed ? next : prev;
             });
         }
 
@@ -1563,6 +1665,22 @@ export const FilterProvider = ({
                 });
                 const next = Array.from(nextSet);
                 return next.length === prev.length ? prev : next;
+            });
+            setDaSolvedTimestampMap((prev) => {
+                const next = { ...prev };
+                daQuestionIds.forEach((id) => { next[id] = now; });
+                return next;
+            });
+            setDaSolvedRemovalMap((prev) => {
+                let changed = false;
+                const next = { ...prev };
+                daQuestionIds.forEach((id) => {
+                    if (next[id]) {
+                        delete next[id];
+                        changed = true;
+                    }
+                });
+                return changed ? next : prev;
             });
         }
 
@@ -1577,6 +1695,22 @@ export const FilterProvider = ({
                 const next = Array.from(nextSet);
                 return next.length === prev.length ? prev : next;
             });
+            setAptitudeSolvedTimestampMap((prev) => {
+                const next = { ...prev };
+                aptitudeQuestionIds.forEach((id) => { next[id] = now; });
+                return next;
+            });
+            setAptitudeSolvedRemovalMap((prev) => {
+                let changed = false;
+                const next = { ...prev };
+                aptitudeQuestionIds.forEach((id) => {
+                    if (next[id]) {
+                        delete next[id];
+                        changed = true;
+                    }
+                });
+                return changed ? next : prev;
+            });
         }
     }, [answerService, canMergeAptitude, isDaTarget]);
 
@@ -1585,20 +1719,28 @@ export const FilterProvider = ({
             return;
         }
         const storedSolved = normalizeStoredIds(readJsonFromStorage(storageKeys.solved, []));
+        const storedSolvedRemovals = readJsonFromStorage(storageKeys.solvedRemovals, {});
+        const storedSolvedTimestamps = readJsonFromStorage(storageKeys.solvedTimestamps, {});
         const storedBookmarked = normalizeStoredIds(readJsonFromStorage(storageKeys.bookmarked, []));
         const storedBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(storageKeys.bookmarkRemovals, []));
         setSolvedQuestionIds(storedSolved);
+        setSolvedRemovalMap(storedSolvedRemovals);
+        setSolvedTimestampMap(storedSolvedTimestamps);
         setBookmarkedQuestionIds(storedBookmarked);
         setBookmarkRemovalIds(storedBookmarkRemovals);
         if (canMergeAptitude) {
             setAptitudeSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.solved, [])));
+            setAptitudeSolvedRemovalMap(readJsonFromStorage(APTITUDE_SOLVED_REMOVALS_KEY, {}));
+            setAptitudeSolvedTimestampMap(readJsonFromStorage(APTITUDE_SOLVED_TIMESTAMPS_KEY, {}));
             setAptitudeBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked, [])));
             setAptitudeBookmarkRemovalIds(normalizeStoredIds(readJsonFromStorage(APTITUDE_BOOKMARK_REMOVALS_KEY, [])));
         }
         setDaSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.solved, [])));
+        setDaSolvedRemovalMap(readJsonFromStorage(DA_STORAGE_KEYS.solvedRemovals, {}));
+        setDaSolvedTimestampMap(readJsonFromStorage(DA_STORAGE_KEYS.solvedTimestamps, {}));
         setDaBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, [])));
         setDaBookmarkRemovalIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarkRemovals, [])));
-    }, [canMergeAptitude, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved]);
+    }, [canMergeAptitude, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved, storageKeys.solvedRemovals, storageKeys.solvedTimestamps]);
 
     useEffect(() => {
         const handleSyncComplete = () => refreshProgressState();

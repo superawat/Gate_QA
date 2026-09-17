@@ -353,6 +353,14 @@ export default function ProgressManager() {
                 finalSolved = dedupeStringArray(incomingSolved);
                 finalBookmarked = dedupeStringArray(incomingBookmarked);
                 finalProgress = incomingProgress;
+
+                // Gap 1 Fix: Reset local tombstones and record solve timestamps for imported solved questions
+                const now = Date.now();
+                const nextTimestamps = {};
+                finalSolved.forEach((id) => { nextTimestamps[id] = now; });
+                if (storageKeys.solvedRemovals) writeStorageJson(storageKeys.solvedRemovals, {});
+                if (storageKeys.solvedTimestamps) writeStorageJson(storageKeys.solvedTimestamps, nextTimestamps);
+                if (storageKeys.bookmarkRemovals) writeStorageJson(storageKeys.bookmarkRemovals, []);
             } else {
                 const currentSolved = dedupeStringArray(
                     readStorageJson(storageKeys.solved, [])
@@ -375,6 +383,47 @@ export default function ProgressManager() {
                         ...(incomingProgress.history || []),
                     ],
                 };
+
+                // Gap 1 Fix: Clear tombstones for re-imported solved IDs and record solve timestamps
+                // so an existing tombstone cannot re-delete them on next sync
+                const now = Date.now();
+                if (storageKeys.solvedRemovals) {
+                    const removalMap = readStorageJson(storageKeys.solvedRemovals, {});
+                    let removalsChanged = false;
+                    finalSolved.forEach((id) => {
+                        if (removalMap[id]) {
+                            delete removalMap[id];
+                            removalsChanged = true;
+                        }
+                    });
+                    if (removalsChanged) {
+                        writeStorageJson(storageKeys.solvedRemovals, removalMap);
+                    }
+                }
+
+                if (storageKeys.solvedTimestamps) {
+                    const timestampMap = readStorageJson(storageKeys.solvedTimestamps, {});
+                    let timestampsChanged = false;
+                    finalSolved.forEach((id) => {
+                        if (!timestampMap[id]) {
+                            timestampMap[id] = now;
+                            timestampsChanged = true;
+                        }
+                    });
+                    if (timestampsChanged) {
+                        writeStorageJson(storageKeys.solvedTimestamps, timestampMap);
+                    }
+                }
+
+                // Clear bookmark removal tombstones for any question IDs present in finalBookmarked
+                if (storageKeys.bookmarkRemovals) {
+                    const bookmarkRemovals = dedupeStringArray(readStorageJson(storageKeys.bookmarkRemovals, []));
+                    const finalBookmarkedSet = new Set(finalBookmarked);
+                    const nextBookmarkRemovals = bookmarkRemovals.filter((id) => !finalBookmarkedSet.has(id));
+                    if (nextBookmarkRemovals.length !== bookmarkRemovals.length) {
+                        writeStorageJson(storageKeys.bookmarkRemovals, nextBookmarkRemovals);
+                    }
+                }
             }
 
             const okSolved = writeStorageJson(storageKeys.solved, finalSolved);
@@ -412,7 +461,19 @@ export default function ProgressManager() {
                 `Progress ${label} - ${finalSolved.length} solved, ${finalBookmarked.length} bookmarked.`
             );
         },
-        [includeExtendedProgress, modalData, refreshProgressState, showToast, storageKeys.bookmarked, storageKeys.metadata, storageKeys.progress, storageKeys.solved]
+        [
+            includeExtendedProgress,
+            modalData,
+            refreshProgressState,
+            showToast,
+            storageKeys.bookmarkRemovals,
+            storageKeys.bookmarked,
+            storageKeys.metadata,
+            storageKeys.progress,
+            storageKeys.solved,
+            storageKeys.solvedRemovals,
+            storageKeys.solvedTimestamps
+        ]
     );
 
     // ── Render ─────────────────────────────────────────────────────────────

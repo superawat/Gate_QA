@@ -59,6 +59,8 @@ describe("workspaceFile", () => {
 
     expect(snapshot.version).toBe(WORKSPACE_SCHEMA_VERSION);
     expect(snapshot.data.gate.solvedQuestions).toEqual(["GATE-1"]);
+    expect(snapshot.data.gate.solvedRemovals).toEqual({});
+    expect(snapshot.data.gate.solvedTimestamps).toEqual({});
     expect(snapshot.data.gate.bookmarkedQuestions).toEqual(["GATE-2"]);
     expect(snapshot.data.aptitude.solvedQuestions).toEqual(["APT-1"]);
     expect(snapshot.data.gate.progress).toEqual({ streak: 4 });
@@ -77,15 +79,16 @@ describe("workspaceFile", () => {
       data: {
         gate: {
           solvedQuestions: ["GATE-1", "GATE-1"],
+          solvedRemovals: { "GATE-OLD": 1000, "GATE-1": 500 }, // GATE-1 has old tombstone in file
           bookmarkedQuestions: ["GATE-2"],
-          metadata: { "GATE-1": { lastAnsweredAt: "2026-05-23T00:00:00.000Z" } },
-          progress: { streak: 4 },
+          metadata: { solvedCount: 1 },
+          progress: { streak: 5 },
         },
         aptitude: {
           solvedQuestions: ["APT-1"],
           bookmarkedQuestions: ["APT-2"],
-          metadata: {},
-          progress: { daily: 2 },
+          metadata: { solvedCount: 1 },
+          progress: { streak: 2 },
         },
         sessions: {
           lastSession: { route: "/practice/question/GATE-1" },
@@ -111,6 +114,9 @@ describe("workspaceFile", () => {
       mockHistory: 1,
     });
     expect(JSON.parse(storage.getItem(USER_STATE_STORAGE_KEYS.solved))).toEqual(["GATE-1"]);
+    // GATE-1 tombstone was purged because GATE-1 is in solvedQuestions; GATE-OLD tombstone preserved
+    expect(JSON.parse(storage.getItem("gate_qa_solved_removals"))).toEqual({ "GATE-OLD": 1000 });
+    expect(JSON.parse(storage.getItem("gate_qa_solved_timestamps"))["GATE-1"]).toBeGreaterThan(0);
     expect(JSON.parse(storage.getItem(APTITUDE_USER_STATE_STORAGE_KEYS.bookmarked))).toEqual(["APT-2"]);
     expect(JSON.parse(storage.getItem(USER_NOTES_STORAGE_KEY))).toEqual({ "GATE-1": "Review later" });
     expect(JSON.parse(storage.getItem(MOCK_TEST_HISTORY_STORAGE_KEY))).toEqual([{ attemptId: "mock-1" }]);
