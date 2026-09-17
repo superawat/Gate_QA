@@ -107,7 +107,7 @@ describe("Question Component - Mobile & Responsive Layout", () => {
 </ol>`,
       answer_meta: {
         type: "MSQ",
-        answer: ["A", "D"],
+        answer: ["A", "C"],
       },
     };
 

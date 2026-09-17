@@ -2962,19 +2962,19 @@ describe("evaluateAnswer", () => {
       });
     });
 
-    test("evaluates GATE CSE 1991 Q03.xiii (go:527) as MSQ Options {A, D} (DEC-115)", () => {
+    test("evaluates GATE CSE 1991 Q03.xiii (go:527) as MSQ Options {A, C} (DEC-115)", () => {
       const record = {
         type: "MSQ",
-        answer: ["A", "D"],
+        answer: ["A", "C"],
         tolerance: null,
       };
 
-      // Both {A, D} and {D, A} evaluate as correct
-      expect(evaluateAnswer(record, ["A", "D"])).toEqual({
+      // Both {A, C} and {C, A} evaluate as correct
+      expect(evaluateAnswer(record, ["A", "C"])).toEqual({
         status: "evaluated",
         correct: true,
       });
-      expect(evaluateAnswer(record, ["D", "A"])).toEqual({
+      expect(evaluateAnswer(record, ["C", "A"])).toEqual({
         status: "evaluated",
         correct: true,
       });
@@ -2984,15 +2984,15 @@ describe("evaluateAnswer", () => {
         status: "evaluated",
         correct: false,
       });
-      expect(evaluateAnswer(record, ["D"])).toEqual({
+      expect(evaluateAnswer(record, ["C"])).toEqual({
         status: "evaluated",
         correct: false,
       });
-      expect(evaluateAnswer(record, ["A", "C"])).toEqual({
+      expect(evaluateAnswer(record, ["A", "D"])).toEqual({
         status: "evaluated",
         correct: false,
       });
-      expect(evaluateAnswer(record, ["A", "B", "D"])).toEqual({
+      expect(evaluateAnswer(record, ["A", "B", "C"])).toEqual({
         status: "evaluated",
         correct: false,
       });

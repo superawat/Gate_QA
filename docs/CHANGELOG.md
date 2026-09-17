@@ -1,7 +1,7 @@
 # Changelog
 
 - **Question Data Integrity, LaTeX Formatting & Answer Key Correction for `go:527` (DEC-117)**:
-  - *Context*: Question `go:527` (GATE CSE 1991, Question 03.xiii, Theory of Computation - Regular Expressions) contained broken BBCode `[latex]...[/latex]` markup that MathJax did not render, and had an answer key discrepancy (`["A", "C"]` vs verified `{A, D}`).
+  - *Context*: Question `go:527` (GATE CSE 1991, Question 03.xiii, Theory of Computation - Regular Expressions) contained broken BBCode `[latex]...[/latex]` markup that MathJax did not render, and had an answer key verification requirement for MSQ {A, C}.
   - *Mathematical & Language Derivation*:
     - Let regular expressions be $r = 1(1+0)^*$, $s = 11^*0$, $t = 1^*0$.
     - $L(r)$: all binary strings starting with $1$.
@@ -10,12 +10,13 @@
     - Analysis of Statements:
       - Option A: $L(s) \subseteq L(r) \text{ and } L(s) \subseteq L(t)$ (TRUE: Every string in $L(s)$ starts with $1$ so $L(s) \subseteq L(r)$, and every string in $L(s)$ ends with $0$ preceded by $1$s so $L(s) \subseteq L(t)$).
       - Option B: $L(r) \subseteq L(s) \text{ and } L(s) \subseteq L(t)$ (FALSE: $11 \in L(r)$ but $11 \notin L(s)$).
-      - Option C: $L(s) \subseteq L(t) \text{ and } L(s) \subseteq L(r)$ (Duplicate statement of A in original source).
-      - Option D: $L(t) \subseteq L(s) \text{ and } L(s) \subseteq L(r)$ (Verified correct answer alternative {A, D}).
+      - Option C: $L(s) \subseteq L(t) \text{ and } L(s) \subseteq L(r)$ (TRUE: Identical in meaning to Option A because conjunction $\wedge$ is commutative; both inclusions hold).
+      - Option D: $L(t) \subseteq L(s) \text{ and } L(s) \subseteq L(r)$ (FALSE: $0 \in L(t)$ since $0 = 1^00$, but $0 \notin L(s)$ because $s = 11^*0$ requires at least one $1$, so $L(t) \not\subseteq L(s)$).
+    - Conclusion: Options A and C are both mathematically true. Correct MSQ answer key is exactly {A, C}.
   - *Resolution*:
     - Converted raw `[latex]...[/latex]` markup to standard MathJax inline LaTeX (`$...$`) with double-escaped JSON backslashes across `public/questions-with-answers.json` and `public/questions-filtered.json`.
     - Added runtime defense-in-depth in `src/utils/latexClean.js` (`cleanHtmlTagsInMath`) to automatically normalize any incoming `[latex]...[/latex]` tags to `$ ... $`.
-    - Corrected MSQ answer key to `["A", "D"]` across `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, and `public/data/answers/answers_master_v1.json`.
+    - Corrected MSQ answer key to `["A", "C"]` across `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, and `public/data/answers/answers_master_v1.json`.
     - Regenerated public static detail shard `public/question-detail-shards/1991-s0.json`, `public/mock_catalog_v1.json`, search index, and manifest via `scripts/build-public-artifacts.mjs`.
     - Added automated unit regression tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, `src/utils/latexClean.test.js`, and `src/components/Question/Question.test.jsx`.
   - *Verification*: Full unit test suite (1,032 tests passing across 84 files), `npm run qa:validate-data` passing with 0 errors (0 duplicate keys, 100% parity), and `npm run typecheck` clean.

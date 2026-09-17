@@ -2519,7 +2519,7 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
           "go:527": {
             answer_uid: "manual:go:527",
             type: "MSQ",
-            answer: ["A", "D"],
+            answer: ["A", "C"],
             tolerance: null,
           },
         };
@@ -2527,7 +2527,7 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
           "cse:1991:set1:main:q03-xiii": {
             answer_uid: "manual:go:527",
             type: "MSQ",
-            answer: ["A", "D"],
+            answer: ["A", "C"],
             tolerance: null,
           },
         };
@@ -2536,7 +2536,7 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         AnswerService.loadError = "";
       });
 
-      test("resolves go:527 via question_uid as MSQ [A, D]", () => {
+      test("resolves go:527 via question_uid as MSQ [A, C]", () => {
         const answer = AnswerService.getAnswerForQuestion({
           question_uid: "go:527",
           exam_uid: "cse:1991:set1:main:q03-xiii",
@@ -2545,12 +2545,12 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         expect(answer).toEqual({
           answer_uid: "manual:go:527",
           type: "MSQ",
-          answer: ["A", "D"],
+          answer: ["A", "C"],
           tolerance: null,
         });
       });
 
-      test("resolves go:527 via exam_uid fallback as MSQ [A, D]", () => {
+      test("resolves go:527 via exam_uid fallback as MSQ [A, C]", () => {
         AnswerService.answersByQuestionUid = {};
         const answer = AnswerService.getAnswerForQuestion({
           exam_uid: "cse:1991:set1:main:q03-xiii",
@@ -2559,7 +2559,7 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         expect(answer).toEqual({
           answer_uid: "manual:go:527",
           type: "MSQ",
-          answer: ["A", "D"],
+          answer: ["A", "C"],
           tolerance: null,
         });
       });
