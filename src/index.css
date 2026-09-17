@@ -2379,25 +2379,22 @@ canvas {
   }
 
   .home-actions-wrap {
-    margin-right: -0.75rem;
-    margin-bottom: 0.45rem;
-    margin-left: -0.75rem;
-    overflow: hidden;
+    margin-right: 0;
+    margin-bottom: 0.75rem;
+    margin-left: 0;
+    overflow: visible;
   }
 
   .home-quick-actions {
-    display: flex;
-    grid-template-columns: none;
-    gap: 0.75rem;
-    margin-bottom: 0.15rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding: 0.35rem 0.75rem 0.45rem;
-    scroll-padding-left: 0.75rem;
-    scroll-padding-right: 0.75rem;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.6rem;
+    margin-bottom: 0;
+    overflow-x: visible;
+    padding: 0;
+    scroll-snap-type: none;
+    -webkit-overflow-scrolling: auto;
   }
 
   .home-quick-actions::-webkit-scrollbar,
@@ -2405,222 +2402,315 @@ canvas {
     display: none;
   }
 
-  .home-action-card,
-  .home-action-card--primary,
-  .home-action-card--secondary {
-    flex: 0 0 calc(100vw - 3.25rem);
-    max-width: 22rem;
-    grid-column: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    height: clamp(164px, 22vh, 184px);
-    min-height: clamp(164px, 22vh, 184px);
-    padding: 1.15rem 1rem 1rem;
-    border-radius: 16px;
-    opacity: 0.86;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    transform: scale(0.96);
-    transform-origin: left center;
+  .home-action-card {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+    opacity: 1;
+    transform: none;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    text-align: left;
     transition:
-      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
-      opacity 220ms ease,
+      transform 180ms ease,
       border-color 180ms ease,
       box-shadow 180ms ease,
       background 180ms ease;
-    will-change: transform;
-  }
-
-  .home-action-card--secondary {
-    background: linear-gradient(160deg, #f8faff 0%, #ffffff 55%, #f0f7ff 100%);
-    border: 1.5px solid #c8d9f0;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(37, 99, 235, 0.05);
-  }
-
-  .home-action-card--primary {
-    background:
-      radial-gradient(110% 90% at 50% 0%, rgba(14, 165, 233, 0.25) 0%, rgba(37, 99, 235, 0.12) 50%, transparent 80%),
-      linear-gradient(160deg, #e0f2fe 0%, #edf6ff 50%, #f8faff 100%);
-    border: 1.5px solid rgba(2, 132, 199, 0.35);
-    box-shadow:
-      0 6px 20px rgba(37, 99, 235, 0.1),
-      0 2px 8px rgba(14, 165, 233, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  }
-
-  .home-action-card--active {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.14), 0 0 0 2px rgba(37, 99, 235, 0.32);
-  }
-
-  .home-action-card--primary.home-action-card--active {
-    box-shadow:
-      0 12px 40px rgba(37, 99, 235, 0.2),
-      0 0 0 1.5px rgba(2, 132, 199, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  }
-
-  .home-action-card--secondary.home-action-card--active {
-    border-color: rgba(37, 99, 235, 0.45);
-    box-shadow:
-      0 12px 40px rgba(37, 99, 235, 0.12),
-      0 0 0 1.5px rgba(37, 99, 235, 0.2);
-  }
-
-  .home-action-card--side {
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
   }
 
   .home-action-card:hover,
   .home-action-card:focus-within {
-    transform: scale(1);
+    transform: translateY(-1px);
   }
 
-  .home-action-icon {
-    width: 3.15rem;
-    height: 3.15rem;
-    border-radius: 8px;
-    flex-shrink: 0;
-    margin: 0 auto;
+  .home-action-card:active {
+    transform: scale(0.99);
   }
 
-  .home-action-card--primary .home-action-icon {
-    width: 3.15rem;
-    height: 3.15rem;
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.16) 0%, rgba(37, 99, 235, 0.1) 100%);
-    border: 1.5px solid rgba(2, 132, 199, 0.3);
-    border-radius: 10px;
-    padding: 0.3rem;
-    box-shadow: 0 3px 10px rgba(2, 132, 199, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: transform 220ms ease, box-shadow 220ms ease;
-  }
-
-  .home-action-icon img {
+  .home-action-card--active,
+  .home-action-card--side {
+    opacity: 1;
     transform: none;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
-  .home-action-card--primary .home-action-icon img {
-    transform: none;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(2, 132, 199, 0.2));
+  /* --- Mobile Practice Hero Card (Full-width hero, light blueish gradient, icon on right) --- */
+  .home-action-card--primary {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    text-align: left;
+    min-height: 130px;
+    height: auto;
+    padding: 1.1rem 1.15rem;
+    gap: 0.6rem 1rem;
+    border-radius: 18px;
+    background:
+      radial-gradient(ellipse 85% 80% at 85% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 60% at 15% 20%, rgba(147, 197, 253, 0.35) 0%, transparent 60%),
+      linear-gradient(135deg, #e0f2fe 0%, #e6f4fe 45%, #dbeafe 80%, #eff6ff 100%);
+    border: 1.5px solid rgba(14, 165, 233, 0.35);
+    box-shadow:
+      0 8px 24px rgba(14, 165, 233, 0.12),
+      0 2px 8px rgba(15, 23, 42, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    overflow: hidden;
+    position: relative;
   }
 
-  .home-action-card--secondary .home-action-icon {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(14, 165, 233, 0.06) 100%);
-    border: 1.5px solid rgba(37, 99, 235, 0.16);
-    border-radius: 10px;
-    padding: 0.3rem;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  .home-action-card--primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
+    pointer-events: none;
   }
 
-  .home-action-copy {
+  .home-action-card--primary:hover,
+  .home-action-card--primary:focus-within {
+    border-color: rgba(14, 165, 233, 0.6);
+    box-shadow:
+      0 12px 32px rgba(14, 165, 233, 0.2),
+      0 3px 10px rgba(15, 23, 42, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  /* Text content on the left side */
+  .home-action-card--primary .home-action-copy {
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    margin-top: 0.2rem;
+    align-items: flex-start;
+    text-align: left;
+    min-width: 0;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
   }
 
-  .home-action-label,
   .home-action-card--primary .home-action-label {
-    font-size: 1.15rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 850;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    text-align: left;
   }
 
-  .home-action-subtext,
   .home-action-card--primary .home-action-subtext {
-    margin-top: 0.22rem;
+    margin-top: 0.28rem;
     font-size: 0.82rem;
-    line-height: 1.32;
-    opacity: 0.9;
-    text-align: center;
-  }
-
-  .home-action-footer-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.32rem;
-    width: auto;
-    margin-top: auto;
-    margin-bottom: 0.35rem;
-    padding: 0.26rem 0.8rem;
-    border-radius: 999px;
-    background: rgba(14, 165, 233, 0.1);
-    border: 1px solid rgba(14, 165, 233, 0.25);
-    font-size: 0.72rem;
-    font-weight: 650;
-    color: var(--color-primary-text);
-    text-align: center;
+    font-weight: 550;
+    line-height: 1.3;
+    color: #1e40af;
+    text-align: left;
+    opacity: 1;
   }
 
   .home-action-card--primary .home-action-footer-badge {
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.16) 0%, rgba(37, 99, 235, 0.12) 100%);
-    border: 1px solid rgba(2, 132, 199, 0.35);
-    color: #0284c7;
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0;
+    align-self: end;
+    justify-self: start;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.36rem;
+    padding: 0.38rem 1rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
     font-weight: 700;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    border: 1px solid rgba(99, 179, 237, 0.35);
+    color: #ffffff;
+    max-width: none;
+    box-shadow: 0 3px 12px rgba(37, 99, 235, 0.45);
   }
 
   .home-action-card--primary .home-action-badge-arrow {
-    color: #0284c7;
+    color: #ffffff;
+    font-size: 0.88rem;
+  }
+
+  /* Icon floated to the right */
+  .home-action-card--primary .home-action-icon {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    width: 5.5rem;
+    height: 5.5rem;
+    flex-shrink: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    position: relative;
+    z-index: 1;
+    align-self: center;
+  }
+
+  .home-action-card--primary .home-action-icon img {
+    transform: scale(1.15);
+    transform-origin: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(14, 165, 233, 0.55)) brightness(1.08);
+  }
+
+  /* --- Mobile Secondary Cards (Filter, Mock Tests, Performance Insights) --- */
+  /* All three sit in a 3-column row below the hero — vertical layout with icon on top */
+  .home-action-card--secondary {
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    min-height: 100px;
+    height: auto;
+    padding: 0.75rem 0.7rem 0.7rem;
+    gap: 0;
+    border-radius: 14px;
+    background: linear-gradient(160deg, #f8faff 0%, #ffffff 55%, #f0f7ff 100%);
+    border: 1.5px solid #c8d9f0;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  }
+
+  .home-action-card--secondary:hover,
+  .home-action-card--secondary:focus-within {
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+  }
+
+  .home-action-card--secondary .home-action-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    margin: 0 0 0.5rem 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.08) 100%);
+    border: 1.5px solid rgba(37, 99, 235, 0.2);
+    padding: 0.22rem;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .home-action-card--secondary .home-action-icon img {
+    transform: none;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .home-action-card--secondary .home-action-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .home-action-card--secondary .home-action-label {
+    font-size: 0.82rem;
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #111827;
+    text-align: left;
+    word-break: break-word;
+  }
+
+  .home-action-card--secondary .home-action-subtext {
+    margin-top: 0.14rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #64748b;
+    text-align: left;
+    opacity: 1;
+    word-break: break-word;
+  }
+
+  /* Hide arrows / badges inside secondary cards on mobile */
+  .home-action-card--secondary .home-action-footer-badge {
+    display: none !important;
+  }
+
+  .home-action-badge-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .home-action-badge-arrow {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     transition: transform 180ms ease;
     color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .home-action-card:hover .home-action-badge-arrow,
+  .home-action-card:focus-within .home-action-badge-arrow {
+    transform: translateX(2px);
   }
 
   /* Narrow mobile / Foldable Cover (Galaxy Z Fold 5 closed screen: 344px) */
   @media (max-width: 360px) {
-    .home-action-card,
-    .home-action-card--primary,
-    .home-action-card--secondary {
-      flex: 0 0 calc(100vw - 3rem);
-      height: 158px;
-      min-height: 158px;
-      padding: 0.85rem 0.75rem 0.75rem;
-    }
-
-    .home-action-footer-badge {
-      margin-bottom: 0.2rem;
-      padding: 0.2rem 0.6rem;
-      font-size: 0.65rem;
+    .home-action-card--primary {
+      min-height: 110px;
+      padding: 0.85rem 0.9rem;
+      gap: 0.8rem;
     }
 
     .home-action-card--primary .home-action-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0.22rem;
+      width: 4.2rem;
+      height: 4.2rem;
     }
 
-    .home-action-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-
-    .home-action-label,
     .home-action-card--primary .home-action-label {
-      font-size: 0.98rem;
+      font-size: 1.35rem;
     }
 
-    .home-action-subtext,
     .home-action-card--primary .home-action-subtext {
-      font-size: 0.72rem;
+      font-size: 0.76rem;
     }
+
+    .home-action-card--primary .home-action-footer-badge {
+      padding: 0.32rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .home-action-card--secondary {
+      min-height: 90px;
+      padding: 0.6rem 0.55rem 0.55rem;
+    }
+
+    .home-action-card--secondary .home-action-icon {
+      width: 1.9rem;
+      height: 1.9rem;
+      margin: 0 0 0.4rem 0;
+      padding: 0.18rem;
+    }
+
+    .home-action-card--secondary .home-action-label {
+      font-size: 0.74rem;
+    }
+
+    .home-action-card--secondary .home-action-subtext {
+      font-size: 0.64rem;
+    }
+
 
     /* Narrow quote banner */
     .home-quote-banner {
@@ -2723,13 +2813,14 @@ canvas {
 
   :root[data-theme="dark"] .home-action-card--primary {
     background:
-      radial-gradient(110% 90% at 50% 0%, rgba(14, 165, 233, 0.28) 0%, rgba(30, 58, 138, 0.18) 50%, transparent 80%),
-      linear-gradient(160deg, #12213d 0%, #10192b 50%, #0d121c 100%);
-    border: 1.5px solid rgba(56, 189, 248, 0.35);
+      radial-gradient(ellipse 85% 80% at 85% 50%, rgba(56, 189, 248, 0.28) 0%, transparent 70%),
+      radial-gradient(ellipse 65% 65% at 15% 25%, rgba(14, 165, 233, 0.2) 0%, transparent 60%),
+      linear-gradient(140deg, #0c213d 0%, #112e54 35%, #0e2749 70%, #091a33 100%);
+    border: 1.5px solid rgba(56, 189, 248, 0.38);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.6),
-      inset 0 1px 0 rgba(125, 211, 252, 0.18),
-      0 0 24px rgba(14, 165, 233, 0.08);
+      0 8px 32px rgba(0, 0, 0, 0.65),
+      inset 0 1px 0 rgba(125, 211, 252, 0.15),
+      0 0 24px rgba(14, 165, 233, 0.1);
   }
 
   :root[data-theme="dark"] .home-action-card--primary.home-action-card--active {
@@ -2740,26 +2831,43 @@ canvas {
       inset 0 1px 0 rgba(125, 211, 252, 0.25);
   }
 
+  :root[data-theme="dark"] .home-action-card--primary .home-action-label {
+    color: #f8fafc;
+  }
+
+  :root[data-theme="dark"] .home-action-card--primary .home-action-subtext {
+    color: #38bdf8;
+  }
+
+  :root[data-theme="dark"] .home-action-card--secondary .home-action-label {
+    color: #f1f5f9;
+  }
+
+  :root[data-theme="dark"] .home-action-card--secondary .home-action-subtext {
+    color: #94a3b8;
+  }
+
+  /* In dark mode, icon is transparent (no box, just the image with glow) */
   :root[data-theme="dark"] .home-action-card--primary .home-action-icon {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(14, 165, 233, 0.1) 100%);
-    border: 1.5px solid rgba(56, 189, 248, 0.35);
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   :root[data-theme="dark"] .home-action-card--primary .home-action-icon img {
-    filter: drop-shadow(0 2px 6px rgba(14, 165, 233, 0.35));
+    filter: drop-shadow(0 4px 14px rgba(56, 189, 248, 0.65)) brightness(1.1);
   }
 
   :root[data-theme="dark"] .home-action-card--primary .home-action-footer-badge {
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.22) 0%, rgba(37, 99, 235, 0.18) 100%);
-    border-color: rgba(56, 189, 248, 0.38);
-    color: #38bdf8;
-    box-shadow: 0 2px 10px rgba(14, 165, 233, 0.15);
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    border-color: rgba(56, 189, 248, 0.4);
+    color: #ffffff;
+    box-shadow: 0 3px 12px rgba(37, 99, 235, 0.5);
   }
 
   :root[data-theme="dark"] .home-action-card--primary .home-action-badge-arrow {
-    color: #38bdf8;
+    color: #ffffff;
   }
 
   :root[data-theme="dark"] .home-action-footer-badge {
@@ -2781,11 +2889,12 @@ canvas {
       inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
-  :root[data-theme="dark"] .home-action-card--secondary.home-action-card--active {
+  :root[data-theme="dark"] .home-action-card--secondary:hover,
+  :root[data-theme="dark"] .home-action-card--secondary:focus-within {
     border-color: rgba(56, 189, 248, 0.42);
     box-shadow:
-      0 12px 40px rgba(0, 0, 0, 0.65),
-      0 0 20px rgba(56, 189, 248, 0.12);
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      0 0 16px rgba(56, 189, 248, 0.1);
   }
 
   :root[data-theme="dark"] .home-action-card--secondary .home-action-icon {
@@ -2795,31 +2904,8 @@ canvas {
     box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
-
-
   .home-action-carousel-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.45rem;
-    margin-bottom: 0.45rem;
-  }
-
-  .home-action-carousel-dots span {
-    width: 0.35rem;
-    height: 0.35rem;
-    border-radius: 999px;
-    background: var(--color-border);
-    transition:
-      width 200ms ease,
-      background 200ms ease,
-      opacity 200ms ease;
-  }
-
-  .home-action-carousel-dots .home-action-carousel-dot--active {
-    width: 1.15rem;
-    background: var(--color-primary);
+    display: none !important;
   }
 
   .home-quote-banner {

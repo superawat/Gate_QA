@@ -2049,6 +2049,13 @@ async function buildArtifacts() {
       return existingPayload && hasSameGeneratedContent(existingPayload, payload);
     });
 
+  for (const [shardKey, payload] of detailShards.entries()) {
+    const existingPayload = readJson(path.join(DETAIL_SHARDS_DIR, `${shardKey}.json`), null);
+    if (existingPayload?.generatedAt && hasSameGeneratedContent(existingPayload, payload)) {
+      payload.generatedAt = existingPayload.generatedAt;
+    }
+  }
+
   if (
     existingManifest?.generatedAt &&
     hasSameGeneratedContent(existingManifest, manifest) &&
@@ -2057,16 +2064,6 @@ async function buildArtifacts() {
     generatedAt = existingManifest.generatedAt;
     manifest.generatedAt = generatedAt;
     manifest.dataRevision = existingManifest.dataRevision || manifest.dataRevision;
-    for (const payload of detailShards.values()) {
-      payload.generatedAt = generatedAt;
-    }
-  } else {
-    for (const [shardKey, payload] of detailShards.entries()) {
-      const existingPayload = readJson(path.join(DETAIL_SHARDS_DIR, `${shardKey}.json`), null);
-      if (existingPayload?.generatedAt && hasSameGeneratedContent(existingPayload, payload)) {
-        payload.generatedAt = existingPayload.generatedAt;
-      }
-    }
   }
   const latestYearCoverageEntries = manifest.answerCoverage.yearSets.filter(
     (entry) => Number(entry.year) === Number(manifest.latestYear)

@@ -1,5 +1,24 @@
 # Changelog
 
+- **Mobile Homepage Action Cards: Replace Sliding Carousel with Static Prominent Practice + 3 Equal-Sized Secondary Cards (DEC-120)**:
+  - *Context*: On mobile viewports (<= 767px), the four homepage action cards (Practice, Filter Questions, Mock Test, Performance Insights) were previously rendered inside a horizontal carousel/sliding deck with scroll-snap and pagination dots, requiring users to horizontally swipe to access Mock Test and Performance Insights.
+  - *Resolution*:
+    - Removed horizontal sliding and carousel interaction on mobile viewports; all four cards are now displayed statically and directly in the vertical flow without swiping.
+    - Sizing & Visual Hierarchy:
+      - **Practice Card (Hero)**: Given primary visual prominence with a larger footprint (`min-height: 96px`, `padding: 0.95rem 1.15rem`, `gap: 0.95rem`), 3.5rem glowing 3D icon box, larger bold title (`1.35rem`, weight 850), vibrant radial/linear blue-sky gradient, and right-aligned "Instant PYQ →" pill badge.
+      - **Three Secondary Cards (Filter, Mock Tests, Performance Insights)**: Sized with identical, consistent dimensions (`min-height: 72px`, `padding: 0.75rem 1rem`, `gap: 0.85rem`), 2.5rem icon boxes, bold `1.02rem` titles, `0.78rem` subtexts, and aligned secondary pill badges with arrows.
+    - Preserved 100% of existing card content, icons, labels, subtexts, badges, theme colors, and click functionality.
+    - Hidden carousel pagination dots on mobile (`display: none !important`) and removed `aria-roledescription="carousel"`.
+    - Zero modifications to desktop or tablet layouts (`>= 768px`).
+    - Verified cross-viewport responsiveness on 320px, 344px (Galaxy Z Fold cover), 360px, 375px, and 412px viewports in both light and dark themes with zero horizontal overflow.
+  - *Verification*: Full unit test suite (1,044 tests passing across 84 test files), `npm run typecheck` clean (0 errors), visual validation via browser subagent.
+
+- **Prevent False Question Detail Shards Dirtying on Build & Dev Server Launch (DEC-119)**:
+  - *Problem*: Whenever `npm start` (or `node scripts/build-public-artifacts.mjs`) was executed, 59 detail shards in `public/question-detail-shards/` were rewritten and marked as modified in git, despite zero changes to question data or formulas.
+  - *Root Cause*: In `scripts/build-public-artifacts.mjs`, when `existingManifest` and all detail shards had unchanged content (`hasSameGeneratedContent`), the script assigned `generatedAt = existingManifest.generatedAt` and unconditionally overwrote `payload.generatedAt = generatedAt` for every shard. Because `question-bank-manifest.json` had a timestamp from a previous build while the 59 historical shards had their original timestamp from Sept 14, every run forced all 59 shards to adopt the manifest's newer timestamp, causing `writeJsonIfChanged` to rewrite all 59 files.
+  - *Resolution*: Updated `scripts/build-public-artifacts.mjs` to preserve each shard's own existing `generatedAt` whenever its content has not changed (`hasSameGeneratedContent(existingPayload, payload)`), regardless of whether the manifest itself is updated.
+  - *Verification*: Reverted the 59 unchanged shard files to match HEAD. Tested `node scripts/build-public-artifacts.mjs` — verified 0 shards rewritten, 60 unchanged/skipped. Ran full unit test suite (1,044 passed across 84 files) and `npm run typecheck` (0 errors).
+
 - **Mobile Explore Header Action Overflow & Theme Toggle Alignment Fix (DEC-118)**:
   - *Problem*: On mobile viewports (<= 767px), when users selected topics through filters, the quick-start button expanded from "Start Practice" (14 chars) to "Continue Filtered Practice" (26 chars). In `src/index.css`, `.practice-filter-trigger` was defined with `width: 100%`, and the flex child buttons lacked `min-w-0`. Consequently, the flex items could not shrink below their intrinsic content widths (~396px min content size vs ~300px available card inner width), pushing the light/dark theme switch button off the right edge of the card and screen where it became cut in half.
   - *Resolution*:

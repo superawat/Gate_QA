@@ -277,7 +277,6 @@ const HomePage = ({
               ref={actionsRailRef}
               className="home-quick-actions"
               aria-label="Dashboard actions"
-              aria-roledescription="carousel"
             >
               {actionCards.map((card, index) => {
                 const isDisabled = Boolean(card.disabled);
