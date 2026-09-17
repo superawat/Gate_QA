@@ -364,6 +364,16 @@ const ExplorePage = ({
     return shufflePractice ? "Start Practice" : "Start in Order";
   }, [activeFilterCount, filters.selectedSubjects, shufflePractice]);
 
+  const mobileQuickStartLabel = useMemo(() => {
+    if (filters.selectedSubjects.includes("reasoning")) {
+      return "Reasoning";
+    }
+    if (activeFilterCount > 0) {
+      return shufflePractice ? "Practice" : "In Order";
+    }
+    return shufflePractice ? "Start Practice" : "Start in Order";
+  }, [activeFilterCount, filters.selectedSubjects, shufflePractice]);
+
   const handleStartFilteredPractice = useCallback(() => {
     const pool = applyFiltersToPractice
       ? filteredQuestions
@@ -465,21 +475,23 @@ const ExplorePage = ({
                 </div>
               </div>
 
-              <div className="practice-filter-actions flex items-center gap-2 w-full sm:w-auto">
+              <div className="practice-filter-actions flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto min-w-0">
                 <button
                   type="button"
                   onClick={handleStartFilteredPractice}
                   disabled={!filteredQuestions.length}
-                  className="inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center justify-center gap-2 rounded-xl bg-[color:var(--color-primary)] px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
+                  aria-label={quickStartLabel}
+                  className="inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary)] px-2.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-hover)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 min-w-0"
                 >
-                  <FaPlay className="text-xs" aria-hidden="true" />
-                  <span className="truncate">{quickStartLabel}</span>
+                  <FaPlay className="text-[10px] sm:text-xs shrink-0" aria-hidden="true" />
+                  <span className="truncate hidden sm:inline">{quickStartLabel}</span>
+                  <span className="truncate sm:hidden">{mobileQuickStartLabel}</span>
                 </button>
                 <button
                   type="button"
                   onClick={handleOpenFilters}
                   aria-keyshortcuts="F"
-                  className="practice-filter-trigger inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center gap-2 sm:gap-2.5 rounded-xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-3 sm:px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden"
+                  className="practice-filter-trigger inline-flex min-h-[40px] sm:min-h-[42px] flex-1 sm:flex-initial items-center gap-1.5 sm:gap-2.5 rounded-xl border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm font-semibold text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-primary-soft-hover)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500 active:scale-[0.98] xl:hidden min-w-0"
                 >
                   <span className="practice-filter-trigger-icon inline-flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-lg bg-sky-600 text-white shadow-sm">
                     <FaFilter className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
@@ -498,7 +510,7 @@ const ExplorePage = ({
                   aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                   aria-checked={isDarkMode}
                   title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                  className="inline-flex min-h-[40px] sm:min-h-[42px] min-w-[40px] sm:min-w-[42px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                  className="inline-flex min-h-[40px] sm:min-h-[42px] min-w-[40px] sm:min-w-[42px] w-[40px] sm:w-[42px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 text-[color:var(--color-text)] shadow-[var(--shadow-soft)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                 >
                   {isDarkMode ? (
                     <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />

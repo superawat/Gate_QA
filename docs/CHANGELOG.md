@@ -1,5 +1,16 @@
 # Changelog
 
+- **Mobile Explore Header Action Overflow & Theme Toggle Alignment Fix (DEC-118)**:
+  - *Problem*: On mobile viewports (<= 767px), when users selected topics through filters, the quick-start button expanded from "Start Practice" (14 chars) to "Continue Filtered Practice" (26 chars). In `src/index.css`, `.practice-filter-trigger` was defined with `width: 100%`, and the flex child buttons lacked `min-w-0`. Consequently, the flex items could not shrink below their intrinsic content widths (~396px min content size vs ~300px available card inner width), pushing the light/dark theme switch button off the right edge of the card and screen where it became cut in half.
+  - *Resolution*:
+    - Removed `width: 100%` from `.practice-filter-trigger` in `src/index.css` under `@media (max-width: 767px)` and added `min-width: 0` to `.practice-filter-actions` and `.practice-filter-trigger`.
+    - Added `min-w-0` to the flex container and both button elements (`handleStartFilteredPractice` and `handleOpenFilters`), allowing flex shrink and ellipsis truncation to function as specified by CSS flexbox.
+    - Added `shrink-0` and explicit square dimensions `w-[40px] sm:w-[42px]` to the theme switch button so it is never compressed or displaced.
+    - Introduced a responsive mobile quick start label (`mobileQuickStartLabel` = "Practice" / "Reasoning" / "In Order") alongside desktop `quickStartLabel` ("Continue Filtered Practice"), paired with `aria-label={quickStartLabel}` to maintain full accessibility and 100% test compatibility.
+    - Added a regression test in `src/pages/ExplorePage.test.jsx` verifying `min-w-0` and accessible naming.
+    - Verified cross-viewport layout via Playwright across 360px, 375px, and 412px viewports in both light and dark themes with zero overflow.
+  - *Verification*: Full unit test suite (1,044 tests passing across 84 files), `npm run typecheck` clean.
+
 - **Question Data Integrity, LaTeX Formatting & Answer Key Correction for `go:527` (DEC-117)**:
   - *Context*: Question `go:527` (GATE CSE 1991, Question 03.xiii, Theory of Computation - Regular Expressions) contained broken BBCode `[latex]...[/latex]` markup that MathJax did not render, and had an answer key verification requirement for MSQ {A, C}.
   - *Mathematical & Language Derivation*:

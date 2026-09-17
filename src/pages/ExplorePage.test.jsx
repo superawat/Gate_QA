@@ -492,4 +492,15 @@ describe("ExplorePage", () => {
     fireEvent.click(themeToggle);
     expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
   });
+
+  test("renders quick-start and filter buttons with min-w-0 and accessible label to prevent mobile overflow", async () => {
+    renderExplorePage({ route: "/practice?subjects=algorithms" });
+    const practiceBtn = await screen.findByRole("button", { name: /continue filtered practice/i });
+    expect(practiceBtn).toBeTruthy();
+    expect(practiceBtn.getAttribute("aria-label")).toBe("Continue Filtered Practice");
+    expect(practiceBtn.className).toContain("min-w-0");
+    const filterBtn = document.querySelector(".practice-filter-trigger");
+    expect(filterBtn).toBeTruthy();
+    expect(filterBtn.className).toContain("min-w-0");
+  });
 });
