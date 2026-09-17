@@ -75,4 +75,10 @@ describe("latexClean utility", () => {
     const cleaned = cleanLatexHtml(raw);
     expect(cleaned).toBe("<ol><li>Cost is $100</li><li>Cost is $200</li></ol>");
   });
+
+  it("should convert BBCode [latex]...[/latex] tags to inline math $...$", () => {
+    const raw = "Let [latex]r=1(1+0)^*, s=11^*0 \\text{ and } t=1^*0[/latex] be three regular expressions.";
+    const cleaned = cleanLatexHtml(raw);
+    expect(cleaned).toBe("Let $r=1(1+0)^*, s=11^*0 \\text{ and } t=1^*0$ be three regular expressions.");
+  });
 });

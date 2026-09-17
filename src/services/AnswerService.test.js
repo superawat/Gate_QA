@@ -2512,6 +2512,58 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         });
       });
     });
+
+    describe("DEC-115 Answer Key Correction for go:527 (GATE CSE 1991 Q03.xiii)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:527": {
+            answer_uid: "manual:go:527",
+            type: "MSQ",
+            answer: ["A", "D"],
+            tolerance: null,
+          },
+        };
+        AnswerService.answersByExamUid = {
+          "cse:1991:set1:main:q03-xiii": {
+            answer_uid: "manual:go:527",
+            type: "MSQ",
+            answer: ["A", "D"],
+            tolerance: null,
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:527 via question_uid as MSQ [A, D]", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:527",
+          exam_uid: "cse:1991:set1:main:q03-xiii",
+          title: "GATE CSE 1991 | Question: 03.xiii",
+        });
+        expect(answer).toEqual({
+          answer_uid: "manual:go:527",
+          type: "MSQ",
+          answer: ["A", "D"],
+          tolerance: null,
+        });
+      });
+
+      test("resolves go:527 via exam_uid fallback as MSQ [A, D]", () => {
+        AnswerService.answersByQuestionUid = {};
+        const answer = AnswerService.getAnswerForQuestion({
+          exam_uid: "cse:1991:set1:main:q03-xiii",
+          title: "GATE CSE 1991 | Question: 03.xiii",
+        });
+        expect(answer).toEqual({
+          answer_uid: "manual:go:527",
+          type: "MSQ",
+          answer: ["A", "D"],
+          tolerance: null,
+        });
+      });
+    });
   });
 });
 

@@ -190,6 +190,34 @@ function writeJson(filePath, payload) {
   fs.writeFileSync(filePath, JSON.stringify(payload, null, 2), "utf8");
 }
 
+/**
+ * Write JSON only when the serialized content differs from the file already on
+ * disk.  Returns true when the file was written, false when it was skipped.
+ *
+ * Line-ending note: on Windows with git autocrlf=true, checked-out files have
+ * CRLF but JSON.stringify produces LF.  We always write LF (matching what git
+ * stores internally) and normalise CRLF→LF before comparing so the check is
+ * not fooled by line-ending-only differences.
+ */
+function writeJsonIfChanged(filePath, payload) {
+  ensureDir(path.dirname(filePath));
+  // Always use LF so the written content matches what git stores (git
+  // autocrlf converts LF→CRLF on checkout but stores LF in the object db).
+  const next = JSON.stringify(payload, null, 2).replace(/\r\n/g, "\n");
+  if (fs.existsSync(filePath)) {
+    try {
+      // Normalise CRLF→LF so a CRLF file checked out by git autocrlf
+      // compares equal to the LF content we are about to write.
+      const current = fs.readFileSync(filePath, "utf8").replace(/\r\n/g, "\n");
+      if (current === next) return false; // identical – skip write
+    } catch (_) {
+      // fall through and write
+    }
+  }
+  fs.writeFileSync(filePath, next, "utf8");
+  return true;
+}
+
 function writeText(filePath, contents) {
   ensureDir(path.dirname(filePath));
   fs.writeFileSync(filePath, contents, "utf8");
@@ -2127,17 +2155,35 @@ async function buildArtifacts() {
     sampleQuestions: remoteImageSamples,
   };
 
-  fs.rmSync(DETAIL_SHARDS_DIR, { recursive: true, force: true });
+  // --- Smart detail-shard writes ------------------------------------------
+  // Only write a shard file when its content actually changed.  This keeps
+  // git clean: only files with real data changes appear as modified.
+  // We also remove any stale shard files that no longer exist in the new build.
   ensureDir(DETAIL_SHARDS_DIR);
+  const newShardKeys = new Set(detailShards.keys());
+  // Delete stale shards
+  if (fs.existsSync(DETAIL_SHARDS_DIR)) {
+    for (const existingFile of fs.readdirSync(DETAIL_SHARDS_DIR)) {
+      if (!existingFile.endsWith(".json")) continue;
+      const key = existingFile.replace(/\.json$/, "");
+      if (!newShardKeys.has(key)) {
+        fs.unlinkSync(path.join(DETAIL_SHARDS_DIR, existingFile));
+      }
+    }
+  }
+  let shardsWritten = 0;
+  let shardsSkipped = 0;
+  for (const [detailShardKey, payload] of detailShards.entries()) {
+    const wrote = writeJsonIfChanged(path.join(DETAIL_SHARDS_DIR, `${detailShardKey}.json`), payload);
+    if (wrote) shardsWritten++; else shardsSkipped++;
+  }
+  // -------------------------------------------------------------------------
 
   writeJson(path.join(PUBLIC_DIR, "question-bank-manifest.json"), manifest);
   writeJson(MOCK_CATALOG_PATH, mockCatalog);
   writeJson(path.join(PUBLIC_DIR, "question-search-index.json"), searchIndex);
   writeText(path.join(PUBLIC_DIR, "sitemap.xml"), buildSitemapXml(manifest, questions, generatedAt));
   writeText(path.join(PUBLIC_DIR, "robots.txt"), buildRobotsTxt());
-  for (const [detailShardKey, payload] of detailShards.entries()) {
-    writeJson(path.join(DETAIL_SHARDS_DIR, `${detailShardKey}.json`), payload);
-  }
   writeJson(path.join(DOCS_GENERATED_DIR, "data-status.json"), dataStatusJson);
   writeText(path.join(DOCS_GENERATED_DIR, "DATA_STATUS.md"), `${dataStatusMarkdown}\n`);
   writeJson(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
@@ -2145,7 +2191,8 @@ async function buildArtifacts() {
   await buildDaPublicArtifacts();
 
   console.log(
-    `[build-public-artifacts] Generated manifest, mock catalog, search index, and ${detailShards.size} detail shards for ${publicQuestionCount} questions`
+    `[build-public-artifacts] Generated manifest, mock catalog, search index, and ${detailShards.size} detail shards for ${publicQuestionCount} questions` +
+    ` (shards written: ${shardsWritten}, unchanged/skipped: ${shardsSkipped})`
   );
 }
 

@@ -2961,6 +2961,43 @@ describe("evaluateAnswer", () => {
         correct: false,
       });
     });
+
+    test("evaluates GATE CSE 1991 Q03.xiii (go:527) as MSQ Options {A, D} (DEC-115)", () => {
+      const record = {
+        type: "MSQ",
+        answer: ["A", "D"],
+        tolerance: null,
+      };
+
+      // Both {A, D} and {D, A} evaluate as correct
+      expect(evaluateAnswer(record, ["A", "D"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, ["D", "A"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+
+      // Incomplete or wrong subsets evaluate as false
+      expect(evaluateAnswer(record, ["A"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["D"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["A", "C"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["A", "B", "D"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, []).correct).toBe(false);
+    });
   });
 });
 

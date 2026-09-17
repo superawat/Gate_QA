@@ -57,6 +57,13 @@ export const cleanHtmlTagsInMath = (text) => {
     return `\\(${stripped}\\)`;
   });
 
+  // Clean and convert BBCode [latex] ... [/latex] tags to standard inline math $ ... $
+  tokenized = tokenized.replace(/\[latex\]([\s\S]*?)\[\/latex\]/gi, (match, math) => {
+    if (hasBlockHtml(math)) return match;
+    const stripped = math.replace(/<br\s*\/?>/gi, " ").replace(/<\/?[^>]+>/g, "").trim();
+    return `$${stripped}$`;
+  });
+
   // Clean inline math: $ ... $ (non-greedy, single line for $)
   tokenized = tokenized.replace(/\$([^\$\n]+?)\$/g, (match, math) => {
     if (hasBlockHtml(math)) return match;

@@ -85,4 +85,36 @@ describe("Question Component - Mobile & Responsive Layout", () => {
     // Mobile button label should now be "Note"
     expect(screen.getByRole("button", { name: "View personal note" })).toBeTruthy();
   });
+
+  test("renders question go:527 without raw [latex] tags and with math delimiters intact", () => {
+    const go527Question = {
+      question_uid: "go:527",
+      title: "GATE CSE 1991 | Question: 03.xiii",
+      question: `<p>Choose the correct alternatives (more than one may be correct) and write the corresponding letters only.</p><p>Let $r=1(1+0)^*, s=11^*0 \\text{ and } t=1^*0$ be three regular expressions. Which one of the following is true?</p>
+<ol style="list-style-type:upper-alpha">
+<li>
+<p>$L(s) \\subseteq L(r) \\text{ and } L(s) \\subseteq L(t)$</p>
+</li>
+<li>
+<p>$L(r) \\subseteq L(s) \\text{ and }  L(s) \\subseteq L(t)$</p>
+</li>
+<li>
+<p>$L(s) \\subseteq L(t) \\text{ and }  L(s) \\subseteq L(r)$</p>
+</li>
+<li>
+<p>$L(t) \\subseteq L(s) \\text{ and }  L(s) \\subseteq L(r)$</p>
+</li>
+</ol>`,
+      answer_meta: {
+        type: "MSQ",
+        answer: ["A", "D"],
+      },
+    };
+
+    const { container } = render(<Question question={go527Question} />);
+    expect(container.innerHTML).not.toContain("[latex]");
+    expect(container.innerHTML).not.toContain("[/latex]");
+    expect(container.innerHTML).toContain("$r=1(1+0)^*");
+    expect(container.innerHTML).toContain("$L(s)");
+  });
 });
