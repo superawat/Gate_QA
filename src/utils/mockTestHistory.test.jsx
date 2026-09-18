@@ -1,4 +1,4 @@
-/**
+/**
  * @vitest-environment jsdom
  */
 import { beforeEach, describe, expect, test } from "vitest";
@@ -9,6 +9,7 @@ import {
   clearMockTestHistory,
   MOCK_TEST_HISTORY_STORAGE_KEY,
   readMockTestHistory,
+  recoverMockHistoryFromBackups,
 } from "./mockTestHistory";
 
 describe("mockTestHistory", () => {
@@ -137,5 +138,58 @@ describe("mockTestHistory", () => {
 
     clearMockTestHistory();
     expect(readMockTestHistory()).toEqual([]);
+  });
+
+  test("recovers dropped mock attempts from gate_qa_backup_* snapshots and restores them to localStorage", () => {
+    // Simulate user completing a custom builder test that was backed up before sync wiped it
+    const droppedAttempt = {
+      id: "2026-09-17T19:20:00.000Z:custom:25",
+      submittedAt: "2026-09-17T19:20:00.000Z",
+      kindId: "custom",
+      kindTitle: "Custom Builder",
+      questionCount: 25,
+      score: 45,
+    };
+
+    window.localStorage.setItem(
+      "gate_qa_backup_1726600000000",
+      JSON.stringify({
+        timestamp: "2026-09-17T19:20:05.000Z",
+        mockHistory: JSON.stringify([droppedAttempt]),
+      })
+    );
+
+    // Currently gateqa_mock_history_v1 is empty in localStorage
+    expect(window.localStorage.getItem(MOCK_TEST_HISTORY_STORAGE_KEY)).toBeNull();
+
+    // recoverMockHistoryFromBackups finds the attempt
+    const recovered = recoverMockHistoryFromBackups(window.localStorage);
+    expect(recovered).toHaveLength(1);
+    expect(recovered[0].id).toBe("2026-09-17T19:20:00.000Z:custom:25");
+
+    // readMockTestHistory automatically recovers it, returns it, and persists back to storage
+    const history = readMockTestHistory(window.localStorage);
+    expect(history).toHaveLength(1);
+    expect(history[0].kindTitle).toBe("Custom Builder");
+    expect(window.localStorage.getItem(MOCK_TEST_HISTORY_STORAGE_KEY)).toContain("Custom Builder");
+  });
+
+  test("normalizes attempts with fallback fields (startedAt / testId)", () => {
+    window.localStorage.setItem(
+      MOCK_TEST_HISTORY_STORAGE_KEY,
+      JSON.stringify([
+        {
+          testId: "legacy-1",
+          startedAt: "2026-09-15T08:00:00Z",
+          kindTitle: "Legacy Test",
+          score: 30,
+        },
+      ])
+    );
+
+    const history = readMockTestHistory(window.localStorage);
+    expect(history).toHaveLength(1);
+    expect(history[0].id).toBe("legacy-1");
+    expect(history[0].submittedAt).toBe("2026-09-15T08:00:00Z");
   });
 });

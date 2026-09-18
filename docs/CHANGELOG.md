@@ -1,5 +1,22 @@
 # Changelog
 
+- **Fix "Recent Mock Attempts" Disappearing for Custom Builder & Cloud Sync Mock History Erasure (DEC-121)**:
+  - *Context*: User reported that after completing a mock test using Custom Builder, the attempt did not appear under the "Recent Mock Attempts" section (`bhairabmahato7384@gmail.com`).
+  - *Root Causes*:
+    1. **Cloud Sync Identity Collision & Erasure (`cloudSyncManager.js`)**: Real production mock test entries use `id` and `submittedAt`, but `mergeMockHistory` evaluated `key = item.testId || `${item.subject}_${item.startedAt}``. Because `testId`, `subject`, and `startedAt` do not exist on production entries, every attempt evaluated to `"undefined_undefined"`. When a logged-in user completed a mock test, `syncUserData` ran 2 seconds later, matched `"undefined_undefined"` against the cloud history, and silently dropped the newly completed Custom Builder attempt, overwriting `localStorage` and permanently deleting the attempt from the browser.
+    2. **Insights Page Gating Condition (`InsightsPage.jsx`)**: The tabs were gated behind `summary.attemptedQuestionCount <= 0` (which only tracked practice-mode questions), hiding the Mock History tab if the user only took mock exams.
+    3. **Insights Page URL Tab Desynchronization (`InsightsPage.jsx`)**: `InsightsPage` lacked a `location.search` listener to switch tabs when navigating directly to `?tab=mock-history`.
+    4. **Mock History Panel Reactivity (`MockHistoryPanel.jsx`)**: The panel used an unreactive `useMemo(() => readMockTestHistory(), [])`.
+    5. **Normalization Fallbacks (`mockTestHistory.js`)**: `normalizeAttemptEntry` strictly required `submittedAt` and `id`, dropping entries that had legacy `startedAt` or `testId`.
+  - *Resolution*:
+    - **Cloud Sync Algorithm Repair**: In `src/utils/cloudSyncManager.js`, implemented `getMockAttemptIdentityKey` using `item.id || item.testId || (timestamp ? `${timestamp}_${kind}_${count}` : "")`, ignoring empty/invalid entries instead of grouping them under `"undefined_undefined"`. When identical IDs exist, preserved richer question details. Sorted chronologically by `submittedAt || startedAt` and capped at 50 entries.
+    - **Automatic Local Backup Recovery**: Added `recoverMockHistoryFromBackups(storage)` in `src/utils/mockTestHistory.js` that scans `gate_qa_backup_*` snapshots in `localStorage`. Integrated recovery into `readMockTestHistory` and `cloudSyncManager.js` so any mock attempts previously wiped by cloud sync are automatically resurrected, written back to `gateqa_mock_history_v1`, and pushed to Supabase.
+    - **Insights Page Gating & URL Sync**: Updated empty state condition in `src/pages/InsightsPage.jsx` so tabs and `MockHistoryPanel` are rendered whenever `activeTab === "mock-history"`, `summary.attemptedQuestionCount > 0`, or mock attempts exist (`hasMockAttempts`). Added `useEffect` listening to `location.search` to keep `activeTab` and `selectedTrack` in sync with query parameters.
+    - **Mock History Panel Reactivity**: Converted `mockAttemptHistory` in `MockHistoryPanel.jsx` to `useState(() => readMockTestHistory())` with event listeners for `gateqa:mock-history-updated`, `gateqa:sync-complete`, `gateqa:progress-updated`, `gateqa:workspace-imported`, and `storage`.
+    - **Submission Pipeline Hardening**: In `MockTestContext.tsx`, defensively isolated side-effects in `finalizeSubmission()`, wrapped history persistence in try/catch, and dispatched `gateqa:mock-history-updated`.
+    - **Normalization Fallbacks**: Updated `normalizeAttemptEntry` in `mockTestHistory.js` to fallback to `entry.startedAt || entry.createdAt` if `entry.submittedAt` is absent, and `entry.testId || submittedAt` if `entry.id` is absent.
+  - *Verification*: Added unit tests in `mockTestHistory.test.jsx`, `cloudSyncManager.test.js`, and `InsightsPage.test.jsx`. All 1,049 unit tests passing across 84 files, `npm run typecheck` clean (0 errors).
+
 - **Mobile Homepage Action Cards: Replace Sliding Carousel with Static Prominent Practice + 3 Equal-Sized Secondary Cards (DEC-120)**:
   - *Context*: On mobile viewports (<= 767px), the four homepage action cards (Practice, Filter Questions, Mock Test, Performance Insights) were previously rendered inside a horizontal carousel/sliding deck with scroll-snap and pagination dots, requiring users to horizontally swipe to access Mock Test and Performance Insights.
   - *Resolution*:

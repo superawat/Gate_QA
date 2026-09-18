@@ -21,6 +21,7 @@
 import { supabase } from "../services/supabase";
 import { clearSyncQueue } from "./syncQueue";
 import { mergeSyncedRevisionSummary, summarizeRevisionEvents } from "./trackerRevisionSummary";
+import { readMockTestHistory } from "./mockTestHistory";
 
 export const LOCAL_STORAGE_KEYS = {
   solved: "gate_qa_solved_questions",
@@ -199,9 +200,13 @@ function readLocalData() {
   } catch {}
 
   try {
-    const rawMock = localStorage.getItem(LOCAL_STORAGE_KEYS.mockHistory);
-    mockHistory = rawMock ? JSON.parse(rawMock) : [];
-  } catch {}
+    mockHistory = readMockTestHistory(localStorage);
+  } catch {
+    try {
+      const rawMock = localStorage.getItem(LOCAL_STORAGE_KEYS.mockHistory);
+      mockHistory = rawMock ? JSON.parse(rawMock) : [];
+    } catch {}
+  }
 
   try {
     const rawProgress = localStorage.getItem(LOCAL_STORAGE_KEYS.progress);
@@ -468,26 +473,56 @@ export function mergeStreakFreeze(localFreeze = {}, cloudFreeze = {}) {
   };
 }
 
+export function getMockAttemptIdentityKey(item) {
+  if (!item || typeof item !== "object") return "";
+  const directId = String(item.id || item.testId || "").trim();
+  if (directId) return directId;
+
+  const timestamp = String(item.submittedAt || item.startedAt || item.createdAt || "").trim();
+  const kind = String(item.kindTitle || item.kindId || item.subject || "").trim();
+  const count = item.questionCount != null ? String(item.questionCount) : "";
+  if (timestamp || kind) {
+    return `${kind}_${timestamp}_${count}`.trim();
+  }
+  return "";
+}
+
 /**
- * Merges mock test history (deduplicates by testId and sorts chronologically).
+ * Merges mock test history (deduplicates by attempt identity and sorts chronologically).
  */
-function mergeMockHistory(localHistory = [], cloudHistory = []) {
+export function mergeMockHistory(localHistory = [], cloudHistory = []) {
   const map = new Map();
 
   const addTest = (item) => {
-    if (!item) return;
-    const key = item.testId || `${item.subject}_${item.startedAt}`;
+    if (!item || typeof item !== "object") return;
+    const key = getMockAttemptIdentityKey(item);
+    if (!key) return;
+
     if (!map.has(key)) {
       map.set(key, item);
+    } else {
+      // If already present, prefer the entry with richer question details
+      const existing = map.get(key);
+      const existingDetailCount = (Array.isArray(existing.correctQuestions) ? existing.correctQuestions.length : 0)
+        + (Array.isArray(existing.incorrectQuestions) ? existing.incorrectQuestions.length : 0);
+      const itemDetailCount = (Array.isArray(item.correctQuestions) ? item.correctQuestions.length : 0)
+        + (Array.isArray(item.incorrectQuestions) ? item.incorrectQuestions.length : 0);
+      if (itemDetailCount > existingDetailCount) {
+        map.set(key, item);
+      }
     }
   };
 
   (cloudHistory || []).forEach(addTest);
   (localHistory || []).forEach(addTest);
 
-  return Array.from(map.values()).sort(
-    (a, b) => new Date(a.startedAt || 0) - new Date(b.startedAt || 0)
-  );
+  return Array.from(map.values())
+    .sort((a, b) => {
+      const timeA = new Date(a.submittedAt || a.startedAt || a.createdAt || 0).getTime() || 0;
+      const timeB = new Date(b.submittedAt || b.startedAt || b.createdAt || 0).getTime() || 0;
+      return timeA - timeB;
+    })
+    .slice(0, 50);
 }
 
 const progressAttemptKey = (attempt = {}) => [
@@ -969,6 +1004,7 @@ export async function syncUserData(userId) {
 
     if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
       window.dispatchEvent(new CustomEvent("gateqa:sync-complete", { detail: merged }));
+      window.dispatchEvent(new CustomEvent("gateqa:mock-history-updated", { detail: { history: merged.mock_history } }));
     }
 
     // 8. Flush offline queue

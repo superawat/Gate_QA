@@ -1487,45 +1487,63 @@ export const MockTestProvider = ({ children }) => {
       questionMetaByUid: liveMeta,
       questions: activeQuestions,
     });
-    const solvedQuestions = activeQuestions.filter((question) => {
-      const questionUid = String(question?.question_uid || "").trim();
-      return !!nextSummary.perQuestionResult?.[questionUid]?.correct;
-    });
-
-    if (solvedQuestions.length > 0) {
-      markQuestionsSolved(solvedQuestions);
-    }
-    activeQuestions.forEach((question) => {
-      const questionUid = String(question?.question_uid || "").trim();
-      if (!questionUid) {
-        return;
-      }
-
-      const questionResult = nextSummary.perQuestionResult?.[questionUid];
-      if (!questionResult?.answered && questionResult?.correct !== true) {
-        return;
-      }
-
-      const isApt = isAptitudeQuestionUid(questionUid);
-      const isDa = isDaQuestion(question) || String(questionUid).startsWith("da:");
-      const storageKey = isApt
-        ? questionUid
-        : (AnswerService.getStorageKeyForQuestion(question) || questionUid);
-
-      if (!storageKey) {
-        return;
-      }
-
-      recordPracticeAttempt({
-        storageKey,
-        correct: questionResult.correct === true,
-        type: liveMeta[questionUid]?.type || question?.answerMeta?.type || question?.type || "",
-        input: liveResponses[questionUid] ?? null,
-        progressStorageKey: isApt ? APTITUDE_PROGRESS_STORAGE_KEY : (isDa ? DA_PROGRESS_STORAGE_KEY : PRACTICE_PROGRESS_STORAGE_KEY),
+    try {
+      const solvedQuestions = activeQuestions.filter((question) => {
+        const questionUid = String(question?.question_uid || "").trim();
+        return !!nextSummary.perQuestionResult?.[questionUid]?.correct;
       });
+
+      if (solvedQuestions.length > 0) {
+        markQuestionsSolved(solvedQuestions);
+      }
+    } catch (solvedErr) {
+      console.warn("[MockTest] markQuestionsSolved warning:", solvedErr);
+    }
+
+    activeQuestions.forEach((question) => {
+      try {
+        const questionUid = String(question?.question_uid || "").trim();
+        if (!questionUid) {
+          return;
+        }
+
+        const questionResult = nextSummary.perQuestionResult?.[questionUid];
+        if (!questionResult?.answered && questionResult?.correct !== true) {
+          return;
+        }
+
+        const isApt = isAptitudeQuestionUid(questionUid);
+        const isDa = isDaQuestion(question) || String(questionUid).startsWith("da:");
+        const storageKey = isApt
+          ? questionUid
+          : (AnswerService.getStorageKeyForQuestion(question) || questionUid);
+
+        if (!storageKey) {
+          return;
+        }
+
+        recordPracticeAttempt({
+          storageKey,
+          correct: questionResult.correct === true,
+          type: liveMeta[questionUid]?.type || question?.answerMeta?.type || question?.type || "",
+          input: liveResponses[questionUid] ?? null,
+          progressStorageKey: isApt ? APTITUDE_PROGRESS_STORAGE_KEY : (isDa ? DA_PROGRESS_STORAGE_KEY : PRACTICE_PROGRESS_STORAGE_KEY),
+        });
+      } catch (practiceAttemptErr) {
+        console.warn("[MockTest] recordPracticeAttempt warning:", practiceAttemptErr);
+      }
     });
-    appendMockTestHistoryEntry(historyEntry);
-    enqueueChange("MOCK", historyEntry);
+
+    try {
+      appendMockTestHistoryEntry(historyEntry);
+      enqueueChange("MOCK", historyEntry);
+      if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+        window.dispatchEvent(new CustomEvent("gateqa:mock-history-updated", { detail: historyEntry }));
+      }
+    } catch (historyErr) {
+      console.error("[MockTest] Failed to append mock test history entry:", historyErr);
+    }
+
     setResultSummary(nextSummary);
     setTestSubmitted(true);
     setTestActive(false);

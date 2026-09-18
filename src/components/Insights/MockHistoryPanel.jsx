@@ -299,8 +299,28 @@ const MockAnalyticsCharts = ({ history = [] }) => {
 };
 
 const MockHistoryPanel = ({ onStartMockTest }) => {
-  const mockAttemptHistory = React.useMemo(() => readMockTestHistory(), []);
+  const [mockAttemptHistory, setMockAttemptHistory] = React.useState(() => readMockTestHistory());
   const [openAttemptId, setOpenAttemptId] = React.useState(null);
+
+  React.useEffect(() => {
+    const handleReload = () => {
+      setMockAttemptHistory(readMockTestHistory());
+    };
+
+    window.addEventListener("gateqa:mock-history-updated", handleReload);
+    window.addEventListener("gateqa:sync-complete", handleReload);
+    window.addEventListener("gateqa:progress-updated", handleReload);
+    window.addEventListener("gateqa:workspace-imported", handleReload);
+    window.addEventListener("storage", handleReload);
+
+    return () => {
+      window.removeEventListener("gateqa:mock-history-updated", handleReload);
+      window.removeEventListener("gateqa:sync-complete", handleReload);
+      window.removeEventListener("gateqa:progress-updated", handleReload);
+      window.removeEventListener("gateqa:workspace-imported", handleReload);
+      window.removeEventListener("storage", handleReload);
+    };
+  }, []);
 
   const toggleAttempt = React.useCallback((attemptId) => {
     setOpenAttemptId((current) => (current === attemptId ? null : attemptId));

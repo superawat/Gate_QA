@@ -56,9 +56,7 @@ GateQA follows a **Local-First Hybrid Architecture**:
    - **Personal Notes:** Longest Note Wins policy (preserves student effort; falls back to newer timestamp).
    - **Solved Questions:** Deduplicated union of canonical string IDs; legacy attempt maps and numeric-index corruption are recovered.
    - **Aptitude Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`aptitude_solved`, `aptitude_bookmarks`), with `aptitude_bookmark_removals` tombstone protection.
-   - **GATE DA Progress IDs:** Solved and bookmarked IDs sync through dedicated JSONB array columns (`da_solved`, `da_bookmarks`), with `da_bookmark_removals` tombstone protection.
-   - **Mock Test History:** Deduplicated chronologically by `testId`.
-   - **Streak & Daily Heatmap:** Synced via `progress_records` JSON array.
+   - **Mock Test History & Automatic Snapshot Recovery (DEC-121):** Production mock attempts store `id`, `testType`, `title`, and `submittedAt`. Merging uses `getMockAttemptIdentityKey(item)` to uniquely identify attempts across `id`, `testId`, and fallback timestamps, preventing key collisions (such as legacy `"undefined_undefined"`). The merge algorithm filters out empty objects, preserves richer question arrays across local/cloud duplicates, sorts chronologically descending by submission date, and caps history at 50 items. In addition, `recoverMockHistoryFromBackups(storage)` scans `localStorage` pre-merge snapshots (`gate_qa_backup_*`) to automatically resurrect and sync any mock attempts previously lost to cloud sync collisions.
 3. **Offline Resilience:**
    - All mutations while offline are queued in `localStorage` (`gate_qa_sync_queue`) with exponential backoff retry and automatic reconnect flushing.
 4. **Database Security (Least Privilege):**

@@ -1799,6 +1799,18 @@ const InsightsPage = ({
     navigate({ search: `?${params.toString()}` }, { replace: true });
   }, [location.search, navigate]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tabParam = params.get("tab");
+    if (tabParam && TABS.some((t) => t.id === tabParam) && tabParam !== activeTab) {
+      setActiveTab(tabParam);
+    }
+    const trackParam = params.get("track");
+    if ((trackParam === "da" || trackParam === "cs" || trackParam === "all") && trackParam !== selectedTrack) {
+      setSelectedTrack(trackParam);
+    }
+  }, [location.search, activeTab, selectedTrack]);
+
   const [retryKey, setRetryKey] = useState(0);
 
   const handleRetry = useCallback(() => {
@@ -1945,6 +1957,8 @@ const InsightsPage = ({
 
   const wrongCount = Array.isArray(scopedInsights.wrongQuestions) ? scopedInsights.wrongQuestions.length : 0;
   const dueReviewCount = Array.isArray(scopedInsights.reviewQueue) ? scopedInsights.reviewQueue.length : 0;
+  const hasMockAttempts = summary.mockAttemptedQuestionCount > 0
+    || Number(scopedInsights.mockSummary?.attemptCount || 0) > 0;
 
   return (
     <>
@@ -2011,7 +2025,7 @@ const InsightsPage = ({
               </div>
             </div>
           </div>
-        ) : summary.attemptedQuestionCount <= 0 ? (
+        ) : (activeTab !== "mock-history" && summary.attemptedQuestionCount <= 0 && !hasMockAttempts) ? (
           <div className="rounded-[var(--radius-card)] border border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 sm:p-8 text-center shadow-[var(--shadow-soft)]">
             <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]">
               <FaLightbulb />

@@ -75,8 +75,8 @@ const normalizeTimeAnalysis = (entry = {}, questionRecords = []) => {
 };
 
 const normalizeAttemptEntry = (entry = {}) => {
-  const submittedAt = String(entry.submittedAt || "").trim();
-  const id = String(entry.id || submittedAt || "").trim();
+  const submittedAt = String(entry.submittedAt || entry.startedAt || entry.createdAt || "").trim();
+  const id = String(entry.id || entry.testId || submittedAt || "").trim();
   if (!id || !submittedAt) {
     return null;
   }
@@ -115,26 +115,96 @@ const normalizeAttemptEntry = (entry = {}) => {
   };
 };
 
+export const recoverMockHistoryFromBackups = (storage = getDefaultStorage()) => {
+  if (!storage || typeof storage.getItem !== "function") {
+    return [];
+  }
+
+  try {
+    const recovered = [];
+    const keys = [];
+    if (typeof storage.length === "number" && typeof storage.key === "function") {
+      for (let i = 0; i < storage.length; i += 1) {
+        const key = storage.key(i);
+        if (key && key.startsWith("gate_qa_backup_")) {
+          keys.push(key);
+        }
+      }
+    } else if (typeof Object.keys === "function") {
+      keys.push(...Object.keys(storage).filter((k) => k.startsWith("gate_qa_backup_")));
+    }
+
+    keys.sort((a, b) => b.localeCompare(a));
+
+    for (const key of keys) {
+      try {
+        const raw = storage.getItem(key);
+        if (!raw) continue;
+        const snapshot = JSON.parse(raw);
+        const rawMock = snapshot?.mockHistory;
+        if (!rawMock) continue;
+        const parsedMock = typeof rawMock === "string" ? JSON.parse(rawMock) : rawMock;
+        if (Array.isArray(parsedMock)) {
+          for (const entry of parsedMock) {
+            if (entry && typeof entry === "object") {
+              recovered.push(entry);
+            }
+          }
+        }
+      } catch {
+        // Continue scanning other backup snapshots
+      }
+    }
+    return recovered;
+  } catch {
+    return [];
+  }
+};
+
 export const readMockTestHistory = (storage = getDefaultStorage()) => {
   if (!storage) {
     return [];
   }
 
   try {
+    let currentEntries = [];
     const raw = storage.getItem(MOCK_TEST_HISTORY_STORAGE_KEY);
-    if (!raw) {
-      return [];
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        currentEntries = parsed;
+      }
     }
 
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) {
-      return [];
+    // Recover any attempts from local pre-merge snapshots that were dropped or wiped
+    const backupEntries = recoverMockHistoryFromBackups(storage);
+    const existingKeys = new Set(
+      currentEntries
+        .map((entry) => String(entry?.id || entry?.testId || entry?.submittedAt || "").trim())
+        .filter(Boolean)
+    );
+
+    let hadRecovered = false;
+    for (const backupEntry of backupEntries) {
+      const entryKey = String(backupEntry?.id || backupEntry?.testId || backupEntry?.submittedAt || "").trim();
+      if (entryKey && !existingKeys.has(entryKey)) {
+        currentEntries.push(backupEntry);
+        existingKeys.add(entryKey);
+        hadRecovered = true;
+      }
     }
 
-    return parsed
+    const normalized = currentEntries
       .map((entry) => normalizeAttemptEntry(entry))
       .filter(Boolean)
-      .sort((left, right) => String(right.submittedAt).localeCompare(String(left.submittedAt)));
+      .sort((left, right) => String(right.submittedAt).localeCompare(String(left.submittedAt)))
+      .slice(0, MAX_MOCK_TEST_HISTORY_ENTRIES);
+
+    if (hadRecovered && storage && typeof storage.setItem === "function") {
+      writeMockTestHistory(normalized, storage);
+    }
+
+    return normalized;
   } catch {
     return [];
   }

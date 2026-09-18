@@ -369,6 +369,66 @@ describe("cloudSyncManager - Union Merge Algorithm", () => {
     expect(result.mock_history[2].testId).toBe("mock_2");
   });
 
+  test("merges production GateQA mock attempts with id and submittedAt without key collision or erasure", () => {
+    const local = {
+      mockHistory: [
+        {
+          id: "2026-09-17T19:20:00.000Z:custom:25",
+          submittedAt: "2026-09-17T19:20:00.000Z",
+          kindId: "custom",
+          kindTitle: "Custom Builder",
+          score: 42,
+          correctQuestions: [{ questionUid: "go:101" }],
+        },
+      ],
+    };
+
+    const cloud = {
+      mock_history: [
+        {
+          id: "2026-09-16T10:00:00.000Z:full_length:65",
+          submittedAt: "2026-09-16T10:00:00.000Z",
+          kindId: "full_length",
+          kindTitle: "Full Length Mock",
+          score: 55,
+        },
+      ],
+    };
+
+    const result = unionMergeData(local, cloud);
+    expect(result.mock_history).toHaveLength(2);
+    expect(result.mock_history[0].id).toBe("2026-09-16T10:00:00.000Z:full_length:65");
+    expect(result.mock_history[1].id).toBe("2026-09-17T19:20:00.000Z:custom:25");
+    expect(result.mock_history[1].kindTitle).toBe("Custom Builder");
+  });
+
+  test("enriches mock attempt with richer question details when same id exists in local and cloud", () => {
+    const local = {
+      mockHistory: [
+        {
+          id: "attempt-1",
+          submittedAt: "2026-09-17T12:00:00Z",
+          correctQuestions: [{ questionUid: "go:1" }, { questionUid: "go:2" }],
+          incorrectQuestions: [{ questionUid: "go:3" }],
+        },
+      ],
+    };
+    const cloud = {
+      mock_history: [
+        {
+          id: "attempt-1",
+          submittedAt: "2026-09-17T12:00:00Z",
+          correctQuestions: [],
+          incorrectQuestions: [],
+        },
+      ],
+    };
+
+    const result = unionMergeData(local, cloud);
+    expect(result.mock_history).toHaveLength(1);
+    expect(result.mock_history[0].correctQuestions).toHaveLength(2);
+  });
+
   test("merges practice progress histories without duplicating repeated syncs", () => {
     const local = {
       progress: {

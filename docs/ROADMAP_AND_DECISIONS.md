@@ -24,6 +24,17 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-121: Mock Test History Collision Prevention, Custom Builder Attempt Preservation & Automatic Backup Recovery
+- Status: Delivered (2026-09-18)
+- Priority: P0
+- Decision:
+  1. Add `getMockAttemptIdentityKey(item)` in `src/utils/cloudSyncManager.js` supporting production `id`, `testId`, composite `${subject}_${startedAt}`, and fallback `${title}_${submittedAt}` to eliminate identity collisions (where all production attempts previously evaluated to `"undefined_undefined"`).
+  2. Filter out empty `{}` items in `mergeMockHistory`, merge question details additively, sort chronologically descending by submission timestamp, and cap history at 50 attempts.
+  3. Implement `recoverMockHistoryFromBackups(storage)` in `src/utils/mockTestHistory.js` scanning local `gate_qa_backup_*` snapshots to automatically resurrect lost mock attempts for affected users (`bhairabmahato7384@gmail.com`).
+  4. Make `MockHistoryPanel` reactive to `gateqa:mock-history-updated` and cloud sync events, and synchronize `InsightsPage` `activeTab` with URL query parameters (`?tab=mock-history`).
+- Why:
+  Production mock attempts were colliding under `"undefined_undefined"` during cloud syncs, causing newly completed attempts to be overwritten by cloud sync within 2 seconds of submit. Resolving the keying algorithm and adding snapshot recovery restores missing mock history automatically.
+
 ### DEC-028: Verified Question Reports Resolution & Multi-Subject Subtopic Taxonomy Rectification
 - Status: Delivered (2026-08-22)
 - Priority: P1

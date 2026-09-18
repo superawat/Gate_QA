@@ -337,6 +337,48 @@ describe("InsightsPage", () => {
     expect(screen.getByText(/id q1/i)).toBeTruthy();
   });
 
+  test("renders Mock History tab even when attemptedQuestionCount is 0 (user only completed mock tests)", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 0,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      mockSummary: {
+        attemptCount: 1,
+        attemptedQuestionCount: 25,
+      },
+    });
+    mocks.readMockTestHistory.mockReturnValue([
+      {
+        id: "custom-mock-1",
+        kindTitle: "Custom Builder",
+        submittedAt: "2026-09-17T19:20:00Z",
+        score: 42,
+        maxScore: 60,
+        questionCount: 25,
+        durationMinutes: 75,
+        attempted: 20,
+        correct: 15,
+        incorrect: 5,
+        unanswered: 5,
+        correctQuestions: [{ questionUid: "q1", label: "Custom Question 1", type: "MCQ", scoreDelta: 2 }],
+        incorrectQuestions: [],
+        unansweredQuestions: [],
+      },
+    ]);
+
+    render(
+      <MemoryRouter initialEntries={["/insights?tab=mock-history"]}>
+        <InsightsPage hasResumeRoute={false} onResumePractice={vi.fn()} />
+      </MemoryRouter>
+    );
+
+    // Should display Recent Mock Attempts instead of "No insights yet"
+    expect(await screen.findByText(/recent mock attempts/i)).toBeTruthy();
+    expect(screen.getAllByText("Custom Builder").length).toBeGreaterThan(0);
+    expect(screen.queryByText(/no insights yet/i)).toBeNull();
+  });
+
   test("generates correct practice filter URLs for DA subtopics with multi-colon keys", async () => {
     mocks.loadWeakTopicInsights.mockResolvedValueOnce({
       attemptedQuestionCount: 4,
