@@ -17,7 +17,7 @@
  *  - wrap <AuthProvider> at the root level (in App.jsx), outside all other
  *    providers so every component can access auth state.
  */
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../services/supabase";
 import { syncUserData } from "../utils/cloudSyncManager";
 
@@ -157,7 +157,7 @@ export function AuthProvider({ children }) {
   /**
    * Sign in with Google via OAuth redirect.
    */
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = useCallback(async () => {
     if (!supabase) {
       console.warn("[GateQA Auth] Supabase not configured. Cannot sign in.");
       return { error: new Error("Supabase authentication is not configured.") };
@@ -172,22 +172,22 @@ export function AuthProvider({ children }) {
       console.error("[GateQA Auth] Google sign-in error:", error.message);
     }
     return { data, error };
-  };
+  }, []);
 
   /**
    * Sign out the current user.
    * IMPORTANT: This does NOT delete localStorage data.
    */
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     if (!supabase) return;
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error("[GateQA Auth] Sign-out error:", error.message);
     }
     setLastSyncedAt(null);
-  };
+  }, []);
 
-  const value = {
+  const value = useMemo(() => ({
     user,
     session,
     loading,
@@ -197,7 +197,7 @@ export function AuthProvider({ children }) {
     triggerSync,
     signInWithGoogle,
     signOut,
-  };
+  }), [user, session, loading, isSyncing, lastSyncedAt, triggerSync, signInWithGoogle, signOut]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

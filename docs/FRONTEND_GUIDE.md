@@ -55,8 +55,13 @@ npm run typecheck
 - `useFilters()` no longer exists and must not be reintroduced.
 - All frontend filter components are expected to consume one or both of the split hooks.
 
-### MockTestContext & Timer Context (split for 60 FPS performance)
+### MockTestContext & Timer Context (split for 60 FPS performance & OOM prevention)
 - `useMockTest()`: Primary hook providing global exam state, question navigation, response submission, and section switching.
+  - **Dynamic Getters Decoupling (DEC-122)**: The provider `value` exposes `timeLeft` and `questionTimeSpent` via dynamic object getters (`get timeLeft()`, `get questionTimeSpent()`) referencing internal live refs (`liveAttemptRef`). They are deliberately **excluded** from the context `useMemo` dependency array. This guarantees that 1-second countdown ticks do NOT re-render consumers of `useMockTest()` (such as `MockTestShell`, `MockTestQuestion`, and `<MathContent>` typesetting), eliminating Chromium renderer memory exhaustion crashes (Error code 11) during 10–15+ minute exams.
+  - **Synchronous Live Time Spent Tracking**: During active exams, per-second time spent is tracked synchronously in `liveAttemptRef.current.questionTimeSpent` without updating React state every second. State is committed to React only upon discrete events: question navigation (`goToQuestion`), exam submission (`finalizeSubmission`), and attempt restoration.
+  - **Exit-to-Landing Storage Purge**: When a user leaves an active exam to the mock portal landing via `handleFastExitToLanding`, `endMockTest()` is explicitly invoked to purge in-progress test keys (`gate_qa_mock_active_attempt_v1` and `gate_qa_mock_attempt_v1`). The React unmount cleanup effect does NOT invoke `handleFlush()`, ensuring exited tests cannot inadvertently resurrect.
+  - **Attempt Staleness & Active Invariant**: Stored attempts require `status: "active"` and enforce staleness validation (`Date.now() - savedAt <= 2 * configuredDuration`).
+  - **Custom Builder Deferred Hydration Validation**: In `src/utils/mockTest.js`, `validateMockQuestionForPool` recognizes deferred hydration items (`isDeferredHydration` for `APT-` and `_detailShard`), allowing candidate questions without pre-loaded answers to pass custom builder pool validation.
 - `useMockTimer()`: Dedicated hook subscribing to `MockTimerContext` (`{ timeLeft }`). Used exclusively by `MockTimerDisplay` in `MockTestHeader.jsx` to isolate 1-second interval countdown ticks and prevent re-render cascades across question stems, MathJax LaTeX equations, option choices, and the question palette during active exams.
 
 ### Performance Insights & In-Memory Questions Contract

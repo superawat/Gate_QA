@@ -43,6 +43,10 @@ const CANONICAL_CSE_SUBJECT_SLUG_MAP = {
   "engg-math": "engg-math",
   "general-aptitude": "ga",
   "ga": "ga",
+  "english": "english",
+  "quant": "quant",
+  "quantitative-aptitude": "quant",
+  "reasoning": "reasoning",
   "operating-system": "os",
   "os": "os",
   "programming-and-ds": "prog-ds",
@@ -293,7 +297,13 @@ export const validateMockQuestionForPool = ({
     question?.detailShardKey
     || question?.track === "da"
     || questionUid.startsWith("da:")
+    || questionUid.startsWith("APT-")
+    || Boolean(question?._detailShard)
     || (question?.preview && !question?.question)
+  ) && !Boolean(
+    String(question?.question || "").trim()
+    && Array.isArray(question?.options)
+    && question.options.length > 0
   );
 
   const imageSources = extractMockImageSources(question || {});
@@ -318,7 +328,7 @@ export const validateMockQuestionForPool = ({
   const optionLabels = new Set(options.map((option) => normalizeOptionLabel(option?.label)).filter(Boolean));
   const objectiveType = normalizeMockType(type);
 
-  if (objectiveType && !hasValidAnswerForType(answerRecord, objectiveType)) {
+  if (objectiveType && !hasValidAnswerForType(answerRecord, objectiveType) && !isDeferredHydration) {
     issues.push("missing_answer");
   }
 

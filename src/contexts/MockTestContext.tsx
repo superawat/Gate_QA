@@ -40,6 +40,16 @@ export const isValidStoredAttempt = (payload) => {
   if (!payload || typeof payload !== "object") {
     return false;
   }
+  if (payload.status && payload.status !== "active") {
+    return false;
+  }
+  const savedAt = Number(payload.savedAt) || 0;
+  const configuredDuration = Number(payload.meta?.durationSeconds) || TOTAL_MOCK_TIME_SECONDS;
+  const maxStaleAge = configuredDuration * 2 * 1000;
+  const isRealTimestamp = savedAt > 1_000_000_000_000;
+  if (isRealTimestamp && Date.now() - savedAt > maxStaleAge) {
+    return false;
+  }
   const hasGa = Array.isArray(payload.gaUids) && payload.gaUids.length > 0;
   const hasCs = Array.isArray(payload.csUids) && payload.csUids.length > 0;
   const hasLegacy = Array.isArray(payload.questionUids) && payload.questionUids.length > 0;
@@ -86,13 +96,19 @@ export const readAttemptStorage = () => {
 
   try {
     localAttempt = parseCandidate(window.localStorage?.getItem(ATTEMPT_STORAGE_KEY));
-  } catch {}
+  } catch (error) {
+    console.warn(`[MockTest] readAttemptStorage localStorage error: code=${error?.code || error?.name || ""}`);
+  }
   try {
     sessionAttempt = parseCandidate(window.sessionStorage?.getItem(ATTEMPT_STORAGE_KEY));
-  } catch {}
+  } catch (error) {
+    console.warn(`[MockTest] readAttemptStorage sessionStorage error: code=${error?.code || error?.name || ""}`);
+  }
   try {
     backupAttempt = parseCandidate(window.localStorage?.getItem(ATTEMPT_BACKUP_KEY));
-  } catch {}
+  } catch (error) {
+    console.warn(`[MockTest] readAttemptStorage backup error: code=${error?.code || error?.name || ""}`);
+  }
 
   const candidates = [sessionAttempt, localAttempt, backupAttempt].filter(Boolean);
   if (candidates.length === 0) {
@@ -187,27 +203,33 @@ export const writeAttemptStorage = (payload) => {
   // Write to localStorage with fallback
   try {
     window.localStorage?.setItem(ATTEMPT_STORAGE_KEY, serialized);
-  } catch {
+  } catch (error) {
+    console.warn(`[MockTest] LocalStorage write failed: code=${error?.code || error?.name || ""}, msg=${error?.message || error}`);
     try {
       const lightweight = createLightweightPayload();
       const lightSerialized = serialize(lightweight);
       if (lightSerialized) {
         window.localStorage?.setItem(ATTEMPT_STORAGE_KEY, lightSerialized);
       }
-    } catch {}
+    } catch (fallbackError) {
+      console.warn(`[MockTest] LocalStorage fallback write failed: code=${fallbackError?.code || fallbackError?.name || ""}`);
+    }
   }
 
   // Write to sessionStorage with fallback
   try {
     window.sessionStorage?.setItem(ATTEMPT_STORAGE_KEY, serialized);
-  } catch {
+  } catch (error) {
+    console.warn(`[MockTest] SessionStorage write failed: code=${error?.code || error?.name || ""}, msg=${error?.message || error}`);
     try {
       const lightweight = createLightweightPayload();
       const lightSerialized = serialize(lightweight);
       if (lightSerialized) {
         window.sessionStorage?.setItem(ATTEMPT_STORAGE_KEY, lightSerialized);
       }
-    } catch {}
+    } catch (fallbackError) {
+      console.warn(`[MockTest] SessionStorage fallback write failed: code=${fallbackError?.code || fallbackError?.name || ""}`);
+    }
   }
 };
 
@@ -636,6 +658,8 @@ export const MockTestProvider = ({ children }) => {
   const [resultSummary, setResultSummary] = useState(null);
 
   const timerRef = useRef(null);
+  const timeLeftRef = useRef(timeLeft);
+  timeLeftRef.current = timeLeft;
   const lastTickRef = useRef(Date.now());
   const activeTimingUidRef = useRef(null);
   const hasAttemptRestoreRun = useRef(false);
@@ -1071,6 +1095,23 @@ export const MockTestProvider = ({ children }) => {
 
     const rawAttempt = readAttemptStorage();
     if (!rawAttempt) {
+      clearAttemptStorage();
+      hasAttemptRestoreRun.current = true;
+      return;
+    }
+
+    const savedAt = Number(rawAttempt?.savedAt) || 0;
+    const configuredDuration = Number(rawAttempt?.meta?.durationSeconds) || TOTAL_MOCK_TIME_SECONDS;
+    const maxStaleAge = configuredDuration * 2 * 1000;
+    const isRealTimestamp = savedAt > 1_000_000_000_000;
+    if (isRealTimestamp && Date.now() - savedAt > maxStaleAge) {
+      clearAttemptStorage();
+      hasAttemptRestoreRun.current = true;
+      return;
+    }
+
+    if (rawAttempt?.status && rawAttempt.status !== "active") {
+      clearAttemptStorage();
       hasAttemptRestoreRun.current = true;
       return;
     }
@@ -1139,8 +1180,11 @@ export const MockTestProvider = ({ children }) => {
       lastStorageWriteRef.current = Date.now();
       setAttemptError("");
     } catch (error) {
+      const errorCode = error?.code || error?.status || "";
+      const errorMessage = error?.message || String(error) || "Unknown error";
+      console.error(`[MockTest] Attempt restore failed: code=${errorCode}, msg=${errorMessage}`, error);
       hasAttemptRestoreRun.current = true;
-      setAttemptError("Attempt invalid, restart mock.");
+      setAttemptError("Attempt could not be restored. Please restart the test.");
     }
   }, [
     allQuestions.length,
@@ -1322,6 +1366,7 @@ export const MockTestProvider = ({ children }) => {
 
     const payload = {
       v: 5,
+      status: "active",
       gaUids: sectionQuestionUids.GA,
       csUids: sectionQuestionUids.CS,
       questions: questions.map((q) => ({
@@ -1343,8 +1388,8 @@ export const MockTestProvider = ({ children }) => {
       csIndex: sectionIndexes.CS,
       responses,
       questionStates,
-      questionTimeSpent,
-      timeLeft,
+      questionTimeSpent: liveAttemptRef.current?.questionTimeSpent || questionTimeSpent,
+      timeLeft: timeLeftRef.current,
       meta: attemptMeta || null,
       savedAt: now,
     };
@@ -1354,7 +1399,6 @@ export const MockTestProvider = ({ children }) => {
     attemptMeta,
     currentSection,
     questionStates,
-    questionTimeSpent,
     questions,
     responses,
     sectionIndexes.CS,
@@ -1363,7 +1407,6 @@ export const MockTestProvider = ({ children }) => {
     sectionQuestionUids.GA,
     testActive,
     testSubmitted,
-    timeLeft,
   ]);
 
   const persistAttemptRef = useRef(persistAttempt);
@@ -1387,7 +1430,6 @@ export const MockTestProvider = ({ children }) => {
     window.addEventListener("beforeunload", handleFlush);
     window.addEventListener("pagehide", handleFlush);
     return () => {
-      handleFlush();
       window.removeEventListener("beforeunload", handleFlush);
       window.removeEventListener("pagehide", handleFlush);
     };
@@ -1453,11 +1495,6 @@ export const MockTestProvider = ({ children }) => {
       ...liveAttemptRef.current,
       questionTimeSpent: nextLiveTimes,
     };
-
-    setQuestionTimeSpent((prev) => ({
-      ...prev,
-      [safeUid]: Math.max(normalizeMockTimeSpentSeconds(prev[safeUid]), nextSeconds),
-    }));
   }, []);
 
   const finalizeSubmission = useCallback(() => {
@@ -1544,6 +1581,10 @@ export const MockTestProvider = ({ children }) => {
       console.error("[MockTest] Failed to append mock test history entry:", historyErr);
     }
 
+    if (liveAttemptRef.current?.questionTimeSpent) {
+      setQuestionTimeSpent({ ...liveAttemptRef.current.questionTimeSpent });
+    }
+
     setResultSummary(nextSummary);
     setTestSubmitted(true);
     setTestActive(false);
@@ -1574,6 +1615,10 @@ export const MockTestProvider = ({ children }) => {
         if (attributedSeconds > 0) {
           recordQuestionTimeSpent(activeUid, attributedSeconds);
         }
+      }
+
+      if (now - lastStorageWriteRef.current >= 5000) {
+        persistAttemptRef.current?.(false);
       }
     }
   }, [finalizeSubmission, recordQuestionTimeSpent]);
@@ -1619,6 +1664,10 @@ export const MockTestProvider = ({ children }) => {
     const targetUids = getSectionUids(targetSection);
     if (targetUids.length === 0 || index < 0 || index >= targetUids.length) {
       return;
+    }
+
+    if (liveAttemptRef.current?.questionTimeSpent) {
+      setQuestionTimeSpent({ ...liveAttemptRef.current.questionTimeSpent });
     }
 
     setCurrentSectionState(targetSection);
@@ -1767,63 +1816,74 @@ export const MockTestProvider = ({ children }) => {
     return questionMetaByUid[questionUid] || null;
   }, [questionMetaByUid]);
 
-  const value = useMemo(() => ({
-    STATUS,
-    attemptError,
-    attemptMeta,
-    catalog,
-    catalogError,
-    catalogLoading,
-    aptitudeMockError,
-    aptitudeMockLoading,
-    daMockError,
-    daMockLoading,
-    clearAttemptError,
-    currentQuestion,
-    currentQuestionIndex,
-    currentQuestionMeta,
-    currentQuestionResult,
-    currentQuestionUid,
-    currentSection,
-    currentSectionIndex,
-    endMockTest,
-    getQuestionMeta,
-    mockQuestionPool,
-    paperCatalog,
-    goToNext,
-    goToPrevious,
-    goToQuestion,
-    questionMetaByUid,
-    questionStates,
-    questionTimeSpent,
-    questions,
-    readyPapers,
-    responses,
-    resultSummary,
-    saveAndNext,
-    saveResponse,
-    sectionIndexes,
-    sectionQuestionUids,
-    sectionQuestions,
-    setCurrentSection,
-    startTest,
-    submitTest,
-    testActive,
-    testSubmitted,
-    timeLeft,
-    clearResponse,
-    markForReviewAndNext,
-  }), [
+  const value = useMemo(() => {
+    const ctx = {
+      STATUS,
+      attemptError,
+      attemptMeta,
+      catalog,
+      catalogError,
+      catalogLoading,
+      aptitudeMockError,
+      aptitudeMockLoading,
+      daMockError,
+      daMockLoading,
+      clearAttemptError,
+      currentQuestion,
+      currentQuestionIndex,
+      currentQuestionMeta,
+      currentQuestionResult,
+      currentQuestionUid,
+      currentSection,
+      currentSectionIndex,
+      endMockTest,
+      getQuestionMeta,
+      mockQuestionPool,
+      paperCatalog,
+      goToNext,
+      goToPrevious,
+      goToQuestion,
+      questionMetaByUid,
+      questionStates,
+      questions,
+      readyPapers,
+      responses,
+      resultSummary,
+      saveAndNext,
+      saveResponse,
+      sectionIndexes,
+      sectionQuestionUids,
+      sectionQuestions,
+      setCurrentSection,
+      startTest,
+      submitTest,
+      testActive,
+      testSubmitted,
+      clearResponse,
+      markForReviewAndNext,
+    };
+    Object.defineProperty(ctx, "timeLeft", {
+      get: () => timeLeftRef.current,
+      enumerable: true,
+      configurable: true,
+    });
+    Object.defineProperty(ctx, "questionTimeSpent", {
+      get: () => liveAttemptRef.current?.questionTimeSpent || questionTimeSpent,
+      enumerable: true,
+      configurable: true,
+    });
+    return ctx;
+  }, [
     attemptError, attemptMeta, catalog, catalogError, catalogLoading,
     aptitudeMockError, aptitudeMockLoading, daMockError, daMockLoading, clearAttemptError,
     currentQuestion, currentQuestionIndex, currentQuestionMeta,
     currentQuestionResult, currentQuestionUid, currentSection, currentSectionIndex,
     endMockTest, getQuestionMeta, mockQuestionPool, paperCatalog,
     goToNext, goToPrevious, goToQuestion, questionMetaByUid, questionStates,
-    questionTimeSpent, questions, readyPapers, responses, resultSummary,
+    questions, readyPapers, responses, resultSummary,
     saveAndNext, saveResponse, sectionIndexes, sectionQuestionUids, sectionQuestions,
     setCurrentSection, startTest, submitTest, testActive, testSubmitted,
-    timeLeft, clearResponse, markForReviewAndNext,
+    clearResponse, markForReviewAndNext,
   ]);
 
   const timerValue = useMemo(() => ({ timeLeft }), [timeLeft]);

@@ -74,6 +74,15 @@ GateQA follows a **Local-First Hybrid Architecture**:
   - `InsightsPage`
   - `MockShell`
 - Failures inside those trees now render a local retryable fallback instead of collapsing the entire SPA.
+- Question stem fallbacks inside `MockTestShell.jsx` and `ErrorBoundary.jsx` render explicit `(Error code: ${code})` when errors with numeric codes or storage quota errors occur.
+
+## Mock Test Engine & CBT Runtime (DEC-122)
+
+- **Dynamic Getters & OOM Prevention**: `MockTestContext` provider value exposes `timeLeft` and `questionTimeSpent` as dynamic object getters referencing `liveAttemptRef.current`. They are excluded from `useMemo` dependencies so that 1-second countdown ticks run at 60 FPS without re-rendering `MockTestShell`, `MockTestQuestion`, or `<MathContent>`. This eliminates Chromium renderer memory exhaustion crashes (Error code 11) caused by hundreds of continuous MathJax SVG typesetting cycles.
+- **Synchronous Live Time Spent Tracking**: Per-second elapsed time on active questions updates synchronously in `liveAttemptRef.current.questionTimeSpent` without dispatching React state updates every 1,000ms. React state is committed only on question navigation (`goToQuestion`), submission (`finalizeSubmission`), and attempt restoration.
+- **Exited Test Lifecycle Invariant**: Exiting an active test via `handleFastExitToLanding` explicitly calls `endMockTest()`, clearing active attempt keys (`gate_qa_mock_active_attempt_v1`, `gate_qa_mock_attempt_v1`) from both `localStorage` and `sessionStorage`. Component unmount does not invoke `handleFlush()`, preventing resuscitation of exited tests on subsequent visits to `/mock`.
+- **Attempt Staleness & Active Invariant**: Stored attempts require `status: "active"` and enforce staleness validation (`Date.now() - savedAt <= 2 * configuredDuration`).
+- **Deferred Hydration Validation in Custom Builder**: `validateMockQuestionForPool` recognizes deferred hydration questions (`APT-` and `_detailShard`), bypassing premature `missing_answer` checks for aptitude questions whose detail shards are fetched on-demand at test start.
 
 ## Dark Mode
 

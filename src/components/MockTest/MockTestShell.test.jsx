@@ -229,6 +229,26 @@ describe("MockTestShell", () => {
     expect(onStageChange).toHaveBeenCalledTimes(1);
   });
 
+  test("exit in exam layout calls endMockTest and onExit (Bug 1 regression)", async () => {
+    mockMockTestContext = {
+      ...mockMockTestContext,
+      testActive: true,
+      testSubmitted: false,
+    };
+    const onExit = vi.fn();
+    renderInMockRoute(
+      <MockTestShell onExit={onExit} />
+    );
+
+    fireEvent.click(screen.getByTestId("mock-exit-button"));
+    fireEvent.click(screen.getByRole("button", { name: "Exit" }));
+
+    await waitFor(() => {
+      expect(mockMockTestContext.endMockTest).toHaveBeenCalledTimes(1);
+      expect(onExit).toHaveBeenCalledTimes(1);
+    });
+  });
+
   test("keeps custom setup focused on essential filters only", () => {
     renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
 
@@ -550,5 +570,114 @@ describe("MockTestShell", () => {
     expect(goToPrevious).toHaveBeenCalledTimes(1);
 
     shouldQuestionThrow = false;
+  });
+
+  test("Bug 2 regression: displays non-zero counts for aptitude categories and filters by selected category", () => {
+    const englishQ = {
+      question_uid: "APT-ENG-0001",
+      title: "English Practice",
+      subject: "English",
+      subjectLabel: "English",
+      subjectSlug: "english",
+      preview: "English question stem",
+      _detailShard: "data/aptitude/english/spot-the-error.json",
+      options: [],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: null },
+      subtopics: [{ slug: "spot-the-error", label: "Spot the Error" }],
+    };
+    const quantQ = {
+      question_uid: "APT-QNT-0001",
+      title: "Quant Practice",
+      subject: "Quant",
+      subjectLabel: "Quant",
+      subjectSlug: "quant",
+      preview: "Quant question stem",
+      _detailShard: "data/aptitude/quant/number-system.json",
+      options: [],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: null },
+      subtopics: [{ slug: "number-system", label: "Number System" }],
+    };
+    const reasoningQ = {
+      question_uid: "APT-RSN-0001",
+      title: "Reasoning Practice",
+      subject: "Reasoning",
+      subjectLabel: "Reasoning",
+      subjectSlug: "reasoning",
+      preview: "Reasoning question stem",
+      _detailShard: "data/aptitude/reasoning/coding-decoding.json",
+      options: [],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: null },
+      subtopics: [{ slug: "coding-decoding", label: "Coding - Decoding" }],
+    };
+
+    mockMockTestContext = {
+      ...mockMockTestContext,
+      mockQuestionPool: [...mockFilterContext.allQuestions, englishQ, quantQ, reasoningQ],
+      questionMetaByUid: {
+        ...mockMockTestContext.questionMetaByUid,
+        "APT-ENG-0001": {
+          questionUid: "APT-ENG-0001",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.33,
+          scorable: true,
+          paperReady: true,
+        },
+        "APT-QNT-0001": {
+          questionUid: "APT-QNT-0001",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.33,
+          scorable: true,
+          paperReady: true,
+        },
+        "APT-RSN-0001": {
+          questionUid: "APT-RSN-0001",
+          section: "GA",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.33,
+          scorable: true,
+          paperReady: true,
+        },
+      },
+    };
+
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    const englishCheckbox = screen.getByRole("checkbox", { name: "English" });
+    const quantCheckbox = screen.getByRole("checkbox", { name: "Quant" });
+    const reasoningCheckbox = screen.getByRole("checkbox", { name: "Reasoning" });
+
+    expect(englishCheckbox).toBeTruthy();
+    expect(quantCheckbox).toBeTruthy();
+    expect(reasoningCheckbox).toBeTruthy();
+
+    // 3 aptitude questions are scorable in the pool
+    expect(screen.getByTestId("preview-ga").textContent).toBe("3");
+
+    // Select English only
+    fireEvent.click(englishCheckbox);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("1");
+
+    // Select Quant as well
+    fireEvent.click(quantCheckbox);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("2");
+
+    // Unselect English
+    fireEvent.click(englishCheckbox);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("1");
+
+    // Toggle off Aptitude
+    fireEvent.click(screen.getByTestId("mock-toggle-ga"));
+    expect(screen.getByTestId("preview-ga").textContent).toBe("0");
   });
 });

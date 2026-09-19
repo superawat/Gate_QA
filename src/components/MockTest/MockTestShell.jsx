@@ -105,6 +105,9 @@ const CANONICAL_CSE_SUBJECT_LABELS = {
     "prog-c": "Programming in C",
     toc: "Theory of Computation",
     "legacy-other": "Other / Optional",
+    english: "English",
+    quant: "Quant",
+    reasoning: "Reasoning",
 };
 
 const getQuestionSubjectKey = (question = {}) => getMockQuestionSubjectKey(question);
@@ -347,9 +350,18 @@ const resolveCountBasedSectionTargets = (count = 0, gaAvailable = 0, csAvailable
     return { gaTarget, csTarget };
 };
 
+const APTITUDE_BASE_SUBJECTS = [
+    { slug: "english", label: "English" },
+    { slug: "quant", label: "Quant" },
+    { slug: "reasoning", label: "Reasoning" },
+];
+
 const buildSubjectOptions = (rows = [], structuredTags = {}) => {
     const bySlug = new Map();
-    const baseSubjects = Array.isArray(structuredTags?.subjects) ? structuredTags.subjects : [];
+    const baseSubjects = [
+        ...(Array.isArray(structuredTags?.subjects) ? structuredTags.subjects : []),
+        ...APTITUDE_BASE_SUBJECTS,
+    ];
     baseSubjects.forEach((sub) => {
         if (!sub?.slug) return;
         const normSlug = normalizeMockSubjectKey(sub.slug);
@@ -455,7 +467,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         startTest,
         testActive,
         testSubmitted,
-        timeLeft,
     } = useMockTest();
     const {
         allQuestions,
@@ -645,9 +656,36 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         [solvedFilter, scorableQuestions, solvedQuestionSet, bookmarkedQuestionSet]
     );
 
+    const combinedStructuredTags = useMemo(() => {
+        const aptTags = AptitudeQuestionService.loaded && typeof AptitudeQuestionService.getStructuredTags === "function"
+            ? AptitudeQuestionService.getStructuredTags()
+            : {};
+        const daTags = DaQuestionService.loaded && typeof DaQuestionService.getStructuredTags === "function"
+            ? DaQuestionService.getStructuredTags()
+            : {};
+        return {
+            ...structuredTags,
+            subjects: [
+                ...(structuredTags?.subjects || []),
+                ...(aptTags?.subjects || []),
+                ...(daTags?.subjects || []),
+            ],
+            structuredSubtopics: {
+                ...(structuredTags?.structuredSubtopics || {}),
+                ...(aptTags?.structuredSubtopics || {}),
+                ...(daTags?.structuredSubtopics || {}),
+            },
+            structuredTopics: {
+                ...(structuredTags?.structuredTopics || {}),
+                ...(aptTags?.structuredTopics || {}),
+                ...(daTags?.structuredTopics || {}),
+            },
+        };
+    }, [structuredTags, mockQuestionPool]);
+
     const mockSubjects = useMemo(
-        () => buildSubjectOptions(scorableQuestions, structuredTags),
-        [scorableQuestions, structuredTags]
+        () => buildSubjectOptions(scorableQuestions, combinedStructuredTags),
+        [scorableQuestions, combinedStructuredTags]
     );
 
     const selectedPaperYearSetKey = useMemo(() => {
@@ -777,8 +815,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 // 3. Subtopic-level narrowing (if any subtopics are selected for this subject)
                 const selectedSubtopics = Array.isArray(setupState.selectedSubtopics) ? setupState.selectedSubtopics : [];
                 if (selectedSubtopics.length > 0) {
-                    const subjectSubtopics = (structuredTags?.structuredSubtopics?.[questionSubjectKey] || []).map((st) => st?.slug).filter(Boolean);
-                    const taxSubtopics = Array.from(getSubjectAllSubtopicSlugs({ slug: questionSubjectKey }, structuredTags?.structuredSubtopics));
+                    const subjectSubtopics = (combinedStructuredTags?.structuredSubtopics?.[questionSubjectKey] || []).map((st) => st?.slug).filter(Boolean);
+                    const taxSubtopics = Array.from(getSubjectAllSubtopicSlugs({ slug: questionSubjectKey }, combinedStructuredTags?.structuredSubtopics));
                     const allSubjectSubtopicSlugs = new Set([...subjectSubtopics, ...taxSubtopics]);
                     const hasSelectedSubtopicsForThisSubject = selectedSubtopics.some((s) => allSubjectSubtopicSlugs.has(s));
                     if (hasSelectedSubtopicsForThisSubject) {
@@ -811,6 +849,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         setupState.yearFilterMode,
         setupState.yearRangeEnd,
         setupState.yearRangeStart,
+        combinedStructuredTags?.structuredSubtopics,
     ]);
 
     const filteredPoolSections = useMemo(
@@ -1066,7 +1105,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             // When selectedSubjects changes, purge orphaned subtopics whose parent was deselected
             if (Object.prototype.hasOwnProperty.call(patch, "selectedSubjects")) {
                 const activeSubjectSet = new Set((next.selectedSubjects || []).map(normalizeMockSubjectKey));
-                const allSubtopicsBySubject = structuredTags?.structuredSubtopics || {};
+                const allSubtopicsBySubject = combinedStructuredTags?.structuredSubtopics || {};
                 if (Array.isArray(next.selectedSubtopics) && next.selectedSubtopics.length > 0) {
                     const validSubtopicSet = new Set();
                     activeSubjectSet.forEach((subjectSlug) => {
@@ -1085,7 +1124,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
             return next;
         });
-    }, [structuredTags?.structuredSubtopics]);
+    }, [combinedStructuredTags?.structuredSubtopics]);
 
     const toggleSelection = useCallback((field, value) => {
         setSetupState((prev) => {
@@ -1390,8 +1429,13 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         exitInProgressRef.current = true;
         clearAttemptError();
         setIsCalculatorOpen(false);
+        if (testActive || testSubmitted) {
+            endMockTest();
+            setSelectedKindId(DEFAULT_MOCK_KIND_ID);
+            setStep("portal");
+        }
         onExit?.();
-    }, [clearAttemptError, onExit]);
+    }, [clearAttemptError, endMockTest, onExit, testActive, testSubmitted]);
 
     const handleExitToLanding = useCallback(() => {
         exitInProgressRef.current = true;
@@ -1428,7 +1472,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         <div className="mocktest-root flex min-h-screen h-[100dvh] w-full flex-col overflow-y-auto bg-[#dcebf9] text-sm selection:bg-blue-200">
             <ErrorBoundary>
                 <MockTestHeader
-                    timeLeft={timeLeft}
                     onToggleCalculator={() => setIsCalculatorOpen((prev) => !prev)}
                     isCalculatorOpen={isCalculatorOpen}
                     calculatorButtonRef={calculatorButtonRef}
@@ -1443,14 +1486,16 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             <div className="flex min-h-0 flex-1 overflow-hidden">
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-r border-[#b8c9d9] bg-white">
                     <ErrorBoundary
-                        fallback={({ reset }) => (
+                        fallback={({ reset, error }) => (
                             <div className="flex flex-col items-center justify-center p-8 text-center bg-white h-full">
                                 <div className="rounded-full bg-rose-50 p-3 mb-3">
                                     <svg className="w-6 h-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-base font-bold text-rose-800">Question Render Issue</h3>
+                                <h3 className="text-base font-bold text-rose-800">
+                                    Question Render Issue{error?.code || error?.status ? ` (Error code: ${error.code || error.status})` : ""}
+                                </h3>
                                 <p className="mt-1 text-sm text-slate-600 max-w-md">
                                     This question could not be displayed due to a formatting error. Your active exam timer, responses, and test state are completely safe.
                                 </p>
@@ -1582,7 +1627,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         kind={selectedKind}
                         setupState={setupState}
                         subjects={mockSubjects}
-                        structuredSubtopics={structuredTags.structuredSubtopics || {}}
+                        structuredSubtopics={combinedStructuredTags.structuredSubtopics || {}}
                         availability={availability}
                         livePreview={livePreview}
                         paperOptions={paperCatalog}

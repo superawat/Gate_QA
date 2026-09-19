@@ -488,5 +488,87 @@ describe("mockTest utilities", () => {
       maxScore: 0,
     });
   });
+
+  test("normalizes aptitude subject keys and preserves their identities", () => {
+    const englishQ = { question_uid: "APT-ENG-0001", subjectSlug: "english", subject: "English" };
+    const quantQ = { question_uid: "APT-QNT-0001", subjectSlug: "quantitative-aptitude", subject: "Quant" };
+    const reasoningQ = { question_uid: "APT-RSN-0001", subjectSlug: "reasoning", subject: "Reasoning" };
+
+    expect(getMockQuestionSubjectKey(englishQ)).toBe("english");
+    expect(getMockQuestionSubjectKey(quantQ)).toBe("quant");
+    expect(getMockQuestionSubjectKey(reasoningQ)).toBe("reasoning");
+
+    const pool = [englishQ, quantQ, reasoningQ];
+    expect(filterMockQuestionsByScope(pool, { selectedSubjects: ["english"] })).toEqual([englishQ]);
+    expect(filterMockQuestionsByScope(pool, { selectedSubjects: ["quant"] })).toEqual([quantQ]);
+    expect(filterMockQuestionsByScope(pool, { selectedSubjects: ["reasoning"] })).toEqual([reasoningQ]);
+  });
+
+  test("validateMockQuestionForPool allows unhydrated aptitude questions with deferred hydration", () => {
+    const unhydratedAptitude = {
+      question_uid: "APT-ENG-0001",
+      preview: "Select the option that contains a grammatical error",
+      _detailShard: "data/aptitude/english/spot-the-error.json",
+      options: [],
+      type: "mcq",
+    };
+    const questionMeta = {
+      questionUid: "APT-ENG-0001",
+      section: "GA",
+      type: "MCQ",
+      scorable: true,
+    };
+    const emptyAnswerRecord = {
+      answer_uid: "apt:APT-ENG-0001",
+      type: "MCQ",
+      answer: "",
+    };
+
+    const result = validateMockQuestionForPool({
+      question: unhydratedAptitude,
+      questionMeta,
+      answerRecord: emptyAnswerRecord,
+    });
+    expect(result.valid).toBe(true);
+    expect(result.issues).toEqual([]);
+  });
+
+  test("validateMockQuestionForPool strictly validates hydrated aptitude questions", () => {
+    const hydratedAptitude = {
+      question_uid: "APT-ENG-0001",
+      question: "<p>Select the option that contains a grammatical error</p>",
+      preview: "Select the option that contains a grammatical error",
+      _detailShard: "data/aptitude/english/spot-the-error.json",
+      options: ["<p>A</p>", "<p>B</p>", "<p>C</p>", "<p>D</p>"],
+      type: "mcq",
+    };
+    const questionMeta = {
+      questionUid: "APT-ENG-0001",
+      section: "GA",
+      type: "MCQ",
+      scorable: true,
+    };
+    const validAnswerRecord = {
+      answer_uid: "apt:APT-ENG-0001",
+      type: "MCQ",
+      answer: "B",
+    };
+
+    const validResult = validateMockQuestionForPool({
+      question: hydratedAptitude,
+      questionMeta,
+      answerRecord: validAnswerRecord,
+    });
+    expect(validResult.valid).toBe(true);
+
+    // If hydrated but missing answer, it should fail validation
+    const invalidResult = validateMockQuestionForPool({
+      question: hydratedAptitude,
+      questionMeta,
+      answerRecord: { type: "MCQ", answer: "" },
+    });
+    expect(invalidResult.valid).toBe(false);
+    expect(invalidResult.issues).toContain("missing_answer");
+  });
 });
 

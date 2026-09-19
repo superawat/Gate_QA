@@ -24,6 +24,18 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-122: Custom Builder Exited Test Restoration Fix, Aptitude Pool Validation & Error Code 11 Memory Leak Decoupling
+- Status: Delivered (2026-09-19)
+- Priority: P0
+- Decision:
+  1. **Purge Exited Tests from Storage**: In `MockTestShell.jsx`, update `handleFastExitToLanding` to explicitly call `endMockTest()`, clearing `gate_qa_mock_active_attempt_v1` and `gate_qa_mock_attempt_v1` across `localStorage` and `sessionStorage`. In `MockTestContext.tsx`, remove `handleFlush()` from the component unmount cleanup effect while retaining legitimate `beforeunload`/`pagehide` listeners. Enforce `status: "active"` and reject stale attempts (`Date.now() - savedAt > 2 * configuredDuration`).
+  2. **Allow Deferred Hydration in Custom Builder Pool Validation**: In `src/utils/mockTest.js`, update `validateMockQuestionForPool` to allow `missing_answer` for deferred hydration items (`isDeferredHydration` checking `APT-` and `_detailShard`), allowing unhydrated aptitude questions to pass custom test pool selection. Seed `APTITUDE_BASE_SUBJECTS` in `buildSubjectOptions`, map slug aliases for English, Quant, and Reasoning, and show count badges in `MockTestSetup.jsx`.
+  3. **Decouple 1-Second Timer from Context Value to Prevent Memory Exhaustion (Chromium Error code 11)**: In `MockTestContext.tsx`, expose `timeLeft` and `questionTimeSpent` as dynamic object getters on `value` and remove them from the `useMemo` dependency array. Remove `setQuestionTimeSpent` from 1-second ticks; update `liveAttemptRef.current.questionTimeSpent` synchronously and commit to React state only on discrete navigation/submission events. Add defensive try/catch logging to storage operations; update `ErrorBoundary.jsx` to render `(Error code: ${code})`; and memoize `AuthContext.jsx`.
+- Why:
+  1. Leaving an active test without submitting previously left active attempt keys intact or resuscitated them via unmount flush, causing the exited test to automatically reappear on next visit to `/mock`.
+  2. Aptitude questions do not have pre-loaded answers until their detail shards are fetched, causing all 36,836 aptitude questions to be falsely rejected as invalid during pool creation.
+  3. Re-rendering `MockTestShell`, `MockTestQuestion`, and `<MathContent>` every second forced 600–900 continuous MathJax SVG DOM typesetting cycles over 10–15 minutes, leaking memory until Chromium's renderer crashed with `SIGSEGV / OOM` (Error code 11).
+
 ### DEC-121: Mock Test History Collision Prevention, Custom Builder Attempt Preservation & Automatic Backup Recovery
 - Status: Delivered (2026-09-18)
 - Priority: P0

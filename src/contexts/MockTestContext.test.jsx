@@ -4,7 +4,7 @@
 import React from "react";
 import { act, cleanup, render, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { MockTestProvider, useMockTest } from "./MockTestContext";
+import { MockTestProvider, useMockTest, useMockTimer, isValidStoredAttempt } from "./MockTestContext";
 import { MockCatalogService } from "../services/MockCatalogService";
 import { AnswerService } from "../services/AnswerService";
 import { readMockTestHistory } from "../utils/mockTestHistory";
@@ -1579,5 +1579,166 @@ describe("MockTestContext", () => {
     const afterResponseSavedAt = JSON.parse(afterResponseRaw).savedAt;
     expect(afterResponseSavedAt).toBeGreaterThan(beforeResponseTime);
     expect(JSON.parse(afterResponseRaw).responses["ga:throt-1"]).toBe("C");
+    expect(JSON.parse(afterResponseRaw).status).toBe("active");
+  });
+
+  test("Bug 1 regression: isValidStoredAttempt rejects expired attempts and non-active statuses", () => {
+    const validAttempt = {
+      v: 5,
+      status: "active",
+      gaUids: ["ga:1"],
+      csUids: [],
+      meta: { durationSeconds: 1800 },
+      savedAt: Date.now() - 1000,
+    };
+    expect(isValidStoredAttempt(validAttempt)).toBe(true);
+
+    // Stale: savedAt is 5000 seconds ago, duration is 1800s (maxStaleAge = 3600s)
+    const staleAttempt = {
+      ...validAttempt,
+      savedAt: Date.now() - (5000 * 1000),
+    };
+    expect(isValidStoredAttempt(staleAttempt)).toBe(false);
+
+    // Non-active status: submitted
+    const submittedAttempt = {
+      ...validAttempt,
+      status: "submitted",
+    };
+    expect(isValidStoredAttempt(submittedAttempt)).toBe(false);
+
+    // Missing status is allowed for backwards compatibility
+    const legacyAttempt = {
+      ...validAttempt,
+      status: undefined,
+    };
+    expect(isValidStoredAttempt(legacyAttempt)).toBe(true);
+  });
+
+  test("Bug 1 regression: provider clears and discards expired attempts on restore", async () => {
+    const ga1 = buildQuestion("ga:exp-1", "General Aptitude", "2024-s1", 2024);
+    mockAllQuestions = [ga1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:exp-1": { questionUid: "ga:exp-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:exp-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    // Stored attempt that is expired (saved 10 hours ago for a 30-min test)
+    const expiredPayload = {
+      v: 5,
+      status: "active",
+      gaUids: ["ga:exp-1"],
+      csUids: [],
+      activeSection: "GA",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: {},
+      questionStates: { "ga:exp-1": "not_visited" },
+      timeLeft: 1800,
+      meta: { kindId: "custom", durationSeconds: 1800 },
+      questions: [ga1],
+      savedAt: Date.now() - (10 * 3600 * 1000),
+    };
+
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify(expiredPayload));
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <Probe />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(false);
+      expect(latest.questions).toHaveLength(0);
+      expect(window.localStorage.getItem("gateqa_mock_attempt_v1")).toBeNull();
+    });
+  });
+
+  test("timer ticks do not cause re-render of useMockTest consumers while useMockTimer updates reactively (Bug 3)", async () => {
+    const ga1 = buildQuestion("ga:iso-1", "General Aptitude", "2024-s1", 2024);
+    const cs1 = buildQuestion("cs:iso-1", "Operating System", "2024-s1", 2024);
+    mockAllQuestions = [ga1, cs1];
+
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        "ga:iso-1": { questionUid: "ga:iso-1", section: "GA", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+        "cs:iso-1": { questionUid: "cs:iso-1", section: "CS", type: "MCQ", marks: 1, negativeMarks: 0.3333333333, yearSetKey: "2024-s1", orderIndex: 1, scorable: true, paperReady: false },
+      },
+      scorableQuestionUids: ["ga:iso-1", "cs:iso-1"],
+    });
+    MockCatalogService.loaded = true;
+
+    let mockTestRenderCount = 0;
+    let timerRenderCount = 0;
+    let latestMockTest = null;
+    let latestTimer = null;
+
+    const MockTestConsumer = () => {
+      latestMockTest = useMockTest();
+      mockTestRenderCount += 1;
+      return null;
+    };
+
+    const TimerConsumer = () => {
+      latestTimer = useMockTimer();
+      timerRenderCount += 1;
+      return null;
+    };
+
+    render(
+      <MockTestProvider>
+        <MockTestConsumer />
+        <TimerConsumer />
+      </MockTestProvider>
+    );
+
+    await waitFor(() => {
+      expect(latestMockTest.catalogLoading).toBe(false);
+    });
+
+    act(() => {
+      latestMockTest.startTest({
+        gaQuestions: [ga1],
+        csQuestions: [cs1],
+        timeSeconds: 1800,
+        meta: { kindId: "custom" },
+      });
+    });
+
+    await waitFor(() => {
+      expect(latestMockTest.testActive).toBe(true);
+    });
+
+    const mockTestRendersBefore = mockTestRenderCount;
+    const timerRendersBefore = timerRenderCount;
+
+    // Advance by 3 timer seconds
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    // MockTimer consumer MUST re-render on timer ticks to show time
+    expect(timerRenderCount).toBeGreaterThan(timerRendersBefore);
+    expect(latestTimer.timeLeft).toBe(1797);
+
+    // MockTest consumer MUST NOT re-render on timer ticks (prevents Error Code 11 / OOM)
+    expect(mockTestRenderCount).toBe(mockTestRendersBefore);
+
+    // Dynamic getters still provide up-to-date values
+    expect(latestMockTest.timeLeft).toBe(1797);
+    expect(latestMockTest.questionTimeSpent["ga:iso-1"]).toBe(3);
   });
 });

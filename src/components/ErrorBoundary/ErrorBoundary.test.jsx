@@ -49,4 +49,20 @@ describe("ErrorBoundary", () => {
 
     expect(screen.getByText("Recovered")).toBeTruthy();
   });
+
+  test("shows error code in fallback UI when error has a code property", () => {
+    const CustomErrorComponent = () => {
+      const error = new Error("Invalid state");
+      error.code = 11;
+      throw error;
+    };
+
+    render(
+      <ErrorBoundary>
+        <CustomErrorComponent />
+      </ErrorBoundary>
+    );
+
+    expect(screen.getByText(/error code: 11/i)).toBeTruthy();
+  });
 });

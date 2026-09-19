@@ -33,6 +33,43 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-MOCK-CUSTOM-BUILDER-01: Custom Builder Automatically Restores an Exited Test on Return
+
+- **Status**: Resolved on 2026-09-19 (DEC-122)
+- **Severity**: High (P1)
+- **Area**: Mock Test / State Lifecycle / Persistence
+- **Symptom**: When a user creates a test using Custom Builder and exits without submitting, re-entering `/mock` automatically forces the exited test back open.
+- **Root Cause & Fix**:
+  - `handleFastExitToLanding` in `MockTestShell.jsx` exited to portal without calling `endMockTest()`.
+  - Unmount cleanup in `MockTestContext.tsx` invoked `handleFlush()`, re-persisting the active test.
+  - Stored attempt validation lacked `status: "active"` and timestamp staleness expiration.
+  - Fixed by calling `endMockTest()`, removing `handleFlush()` from unmount cleanup, and checking `status: "active"` and max stale age.
+- **Verification**: 25 unit tests passing in `MockTestContext.test.jsx`, 19 in `MockTestShell.test.jsx`.
+
+### BUG-MOCK-CUSTOM-BUILDER-02: Special Aptitude Categories (English, Quant, Reasoning) Show Zero Questions
+
+- **Status**: Resolved on 2026-09-19 (DEC-122)
+- **Severity**: High (P1)
+- **Area**: Mock Test / Custom Builder / Aptitude Intake
+- **Symptom**: In Custom Builder, English, Quantitative Aptitude, and Analytical Reasoning showed `0 Available Questions` despite thousands of aptitude questions in the bank.
+- **Root Cause & Fix**:
+  - `validateMockQuestionForPool` in `src/utils/mockTest.js` deferred hydration check only guarded `missing_options`, rejecting all 36,836 aptitude questions with `missing_answer`.
+  - `buildSubjectOptions` did not seed `APTITUDE_BASE_SUBJECTS`.
+  - Fixed by checking `!isDeferredHydration` on `missing_answer`, recognizing `APT-` in `isDeferredHydration`, seeding base subjects, and adding count badges in `MockTestSetup.jsx`.
+- **Verification**: 21 unit tests passing in `src/utils/mockTest.test.js`.
+
+### BUG-MOCK-PERF-OOM-03: Custom Builder Crashes After 10–15 Minutes with Chromium Error Code 11 (SIGSEGV / OOM)
+
+- **Status**: Resolved on 2026-09-19 (DEC-122)
+- **Severity**: Critical (P0)
+- **Area**: Mock Test / React Performance / Memory Leak / Error Boundaries
+- **Symptom**: During 10–15 minute mock sessions, the browser tab unexpectedly crashes with Chromium native "Aw, Snap! Error code: 11" (SIGSEGV / OOM).
+- **Root Cause & Fix**:
+  - Provider `value` in `MockTestContext.tsx` included `timeLeft` and `questionTimeSpent` in its `useMemo` dependency array, and `recordQuestionTimeSpent` called `setQuestionTimeSpent` every second.
+  - This forced `MockTestShell`, `MockTestQuestion`, and `<MathContent>` to re-render 600–900 times, causing memory bloat and native renderer exhaustion from MathJax SVG typesetting.
+  - Fixed by exposing `timeLeft` and `questionTimeSpent` as dynamic object getters on `value`, decoupling them from `useMemo` dependencies, tracking live per-second time synchronously in `liveAttemptRef.current.questionTimeSpent`, and isolating reactive 1s ticking to `MockTimerContext`. Added error code formatting to `ErrorBoundary.jsx` and memoized `AuthContext.jsx`.
+- **Verification**: Full test suite passes (84 test files, 1,058 tests passing). Clean `npm run typecheck` and production build.
+
 ### BUG-REPORTS-028: 7 Verified Question Reports & Taxonomy Rectification
 
 - **Status**: Resolved on 2026-08-22

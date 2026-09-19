@@ -39,7 +39,6 @@ const getBaseAssetUrl = () => (
 );
 
 const MockTestHeader = ({
-    timeLeft,
     onToggleCalculator,
     isCalculatorOpen,
     calculatorButtonRef,
@@ -328,7 +327,7 @@ const MockTestHeader = ({
                                 </svg>
                             </button>
 
-                            <MockTimerDisplay fallbackTimeLeft={timeLeft} />
+                            <MockTimerDisplay />
                         </div>
                     </div>
                 </div>

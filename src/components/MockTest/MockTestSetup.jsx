@@ -1257,12 +1257,18 @@ const MockTestSetup = ({
                                             <label key={subjectSlug} className="flex min-w-0 cursor-pointer items-center gap-2 py-0.5">
                                                 <input
                                                     type="checkbox"
+                                                    aria-label={subject.label}
                                                     className="h-3.5 w-3.5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
                                                     checked={isSelected}
                                                     onChange={() => onToggleSelection("selectedSubjects", subjectSlug)}
                                                 />
                                                 <span className={`truncate text-xs ${isSelected ? "font-semibold text-slate-900" : "text-slate-600"}`}>
                                                     {subject.label}
+                                                    {typeof subject.count === "number" && (
+                                                        <span className="ml-1 text-[11px] font-normal text-slate-400">
+                                                            ({subject.count.toLocaleString()})
+                                                        </span>
+                                                    )}
                                                 </span>
                                             </label>
                                         );
