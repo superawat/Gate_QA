@@ -12,6 +12,7 @@ import {
   buildMockResultSummary,
   getNegativeMarksForQuestion,
   hasMeaningfulResponse,
+  isTechnicalMockQuestion,
   normalizeMockAutoAwardType,
   normalizeMockTimeSpentSeconds,
   normalizeMockType,
@@ -277,7 +278,11 @@ const isGaQuestion = (question = {}) => {
   if (isAptitudeQuestionUid(question?.question_uid)) {
     return true;
   }
-  return question.section === "GA" || question.subject === "General Aptitude";
+  if (isTechnicalMockQuestion(question)) {
+    return false;
+  }
+  const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
+  return question.section === "GA" || question.subject === "General Aptitude" || tags.includes("general-aptitude");
 };
 
 const clampToRange = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -400,10 +405,13 @@ const buildFallbackMockMetaByUid = (questions = []) => {
     }
 
     const type = normalizeMockType(rawType) || normalizeMockAutoAwardType(rawType) || "MCQ";
-    const isGa = question?.subjectSlug === "ga"
+    const isTechnical = isTechnicalMockQuestion(question);
+    const isGa = !isTechnical && (
+      question?.subjectSlug === "ga"
       || question?.subject === "General Aptitude"
       || tags.includes("general-aptitude")
-      || uid.startsWith("APT-");
+      || uid.startsWith("APT-")
+    );
     const section = isGa ? "GA" : "CS";
     const directMarks = Number(question?.marks);
     const metaMarks = Number(question?.answerMeta?.marks);

@@ -630,6 +630,8 @@ const MockTestSetup = ({
 
     const selectedCseCount = cseSubjectSlugs.filter((slug) => selectedSubjectSet.has(slug)).length;
     const selectedDaCount = daSubjectSlugs.filter((slug) => selectedSubjectSet.has(slug)).length;
+    const selectedSpecialAptCount = ["english", "quant", "reasoning"].filter((slug) => selectedSubjectSet.has(slug)).length;
+    const isBroadMix = selectedCseCount === 0 && selectedDaCount === 0 && selectedSpecialAptCount === 0 && (selectedSubjectSet.has("ga") || selectedSubjectSet.has("general-aptitude") || selectedSubjectSet.size === 0);
 
     const selectedPaperDuration = Number.parseInt(String(selectedPaper?.durationMinutes ?? ""), 10);
     const selectedPaperRequiredCount = Number.parseInt(String(selectedPaper?.requiredQuestionCount ?? ""), 10);
@@ -730,10 +732,10 @@ const MockTestSetup = ({
     );
 
     const renderPaperModeContent = () => {
-        const csePaperCount = paperOptions.filter((p) => (p.track || "cse") === "cse").length;
+        const csePaperCount = paperOptions.filter((p) => (p.track || "cse") === "cse" || p.track === "it").length;
         const daPaperCount = paperOptions.filter((p) => p.track === "da").length;
         const displayedPapers = paperOptions.filter((paper) => {
-            if (paperTrackFilter === "cse") return (paper.track || "cse") === "cse";
+            if (paperTrackFilter === "cse") return (paper.track || "cse") === "cse" || paper.track === "it";
             if (paperTrackFilter === "da") return paper.track === "da";
             return true;
         });
@@ -795,6 +797,7 @@ const MockTestSetup = ({
                             {displayedPapers.map((paper) => {
                                 const paperIdentity = getMockPaperYearSetIdentity(paper);
                                 const isDaPaper = paper.track === "da";
+                                const isItPaper = paper.track === "it" || paper.paperScope === "official_it" || (paper.label && paper.label.includes("IT"));
                                 const paperTestToken = isDaPaper
                                     ? paperIdentity
                                     : (paper.yearSetKey || paperIdentity);
@@ -814,7 +817,9 @@ const MockTestSetup = ({
                                             isSelected
                                                 ? (isDaPaper
                                                     ? "border-indigo-400 bg-[linear-gradient(180deg,#ffffff_0%,#eef2ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-indigo-100"
-                                                    : "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100")
+                                                    : isItPaper
+                                                        ? "border-cyan-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfeff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-cyan-100"
+                                                        : "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100")
                                                 : (paper.paperReady
                                                     ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
                                                     : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
@@ -827,14 +832,16 @@ const MockTestSetup = ({
                                                         "inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide border",
                                                         isDaPaper
                                                             ? "bg-indigo-50 text-indigo-700 border-indigo-200"
-                                                            : "bg-sky-50 text-sky-700 border-sky-200"
+                                                            : isItPaper
+                                                                ? "bg-cyan-50 text-cyan-700 border-cyan-200"
+                                                                : "bg-sky-50 text-sky-700 border-sky-200"
                                                     )}>
-                                                        {isDaPaper ? "GATE DA" : "GATE CSE"}
+                                                        {isDaPaper ? "GATE DA" : isItPaper ? "GATE IT" : "GATE CSE"}
                                                     </span>
                                                     <span className="text-base font-semibold text-slate-950">{paper.label}</span>
                                                 </div>
                                                 <p className="mt-1.5 text-[13px] text-slate-600">
-                                                    {paper.gaCount} GA and {paper.csCount || paper.daCount || 55} {isDaPaper ? "DA" : "CS"} questions in paper order.
+                                                    {paper.gaCount} GA and {paper.csCount || paper.daCount || 55} {isDaPaper ? "DA" : isItPaper ? "IT" : "CS"} questions in paper order.
                                                 </p>
                                                 {!paper.paperReady && paper.statusReason ? (
                                                     <p className="mt-1 text-[13px] font-medium text-amber-700">
@@ -854,7 +861,7 @@ const MockTestSetup = ({
                                                 <span className={joinClasses(
                                                     "mocktest-pill inline-flex px-2 py-0.5 text-[10px] font-semibold uppercase shrink-0 mt-0.5",
                                                     isSelected
-                                                        ? (isDaPaper ? "bg-indigo-50 text-indigo-700" : "bg-sky-50 text-sky-700")
+                                                        ? (isDaPaper ? "bg-indigo-50 text-indigo-700" : isItPaper ? "bg-cyan-50 text-cyan-700" : "bg-sky-50 text-sky-700")
                                                         : "bg-amber-50 text-amber-700"
                                                 )}>
                                                     {isSelected ? "Selected" : statusLabel}
@@ -1036,9 +1043,9 @@ const MockTestSetup = ({
 
                     {/* All-subjects broad mix shortcut */}
                     <FilterChip
-                        active={selectedSubjectSet.size === 0}
+                        active={isBroadMix}
                         tone="purple"
-                        onClick={() => onPatchState({ selectedSubjects: [], selectedSubtopics: [], expandedSubjectSlug: null })}
+                        onClick={() => onPatchState({ selectedSubjects: ["ga"], selectedSubtopics: [], expandedSubjectSlug: null })}
                     >
                         All Subjects (Broad Mix)
                     </FilterChip>
@@ -1266,7 +1273,8 @@ const MockTestSetup = ({
                                 <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
                                     {aptitudeSubjects.map((subject) => {
                                         const subjectSlug = subject.slug;
-                                        const isSelected = selectedSubjectSet.has(subjectSlug);
+                                        const normSlug = normalizeMockSubjectKey(subjectSlug);
+                                        const isSelected = selectedSubjectSet.has(subjectSlug) || selectedSubjectSet.has(normSlug);
                                         return (
                                             <label key={subjectSlug} className="flex min-w-0 cursor-pointer items-center gap-2 py-0.5">
                                                 <input
@@ -1274,7 +1282,7 @@ const MockTestSetup = ({
                                                     aria-label={subject.label}
                                                     className="h-3.5 w-3.5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
                                                     checked={isSelected}
-                                                    onChange={() => onToggleSelection("selectedSubjects", subjectSlug)}
+                                                    onChange={() => onToggleSelection("selectedSubjects", normSlug)}
                                                 />
                                                 <span className={`truncate text-xs ${isSelected ? "font-semibold text-slate-900" : "text-slate-600"}`}>
                                                     {subject.label}

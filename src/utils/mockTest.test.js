@@ -11,6 +11,7 @@ import {
   formatExpectedAnswer,
   formatMockTimeSpent,
   hasMeaningfulResponse,
+  isTechnicalMockQuestion,
   MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
   validateMockQuestionForPool,
 } from "./mockTest";
@@ -569,6 +570,63 @@ describe("mockTest utilities", () => {
     });
     expect(invalidResult.valid).toBe(false);
     expect(invalidResult.issues).toContain("missing_answer");
+  });
+
+  test("isTechnicalMockQuestion correctly identifies CSE and DA technical questions", () => {
+    // GATE DA 2025 Q8 Hash Table question
+    const hashTableQ = {
+      question_uid: "go:461014",
+      title: "GATE DA 2025 | Question: 8",
+      tags: ["gateda-2025", "programming-data-structures-and-algorithms", "one-mark", "mcq"],
+      subject: "Programming & DSA",
+      subjectSlug: "programming-data-structures-and-algorithms",
+    };
+    expect(isTechnicalMockQuestion(hashTableQ)).toBe(true);
+
+    // GATE DA Linear Algebra question
+    const linearAlgebraQ = {
+      question_uid: "go:461019",
+      title: "GATE DA 2025 | Question: 3",
+      tags: ["gateda-2025", "linear-algebra", "one-mark", "mcq"],
+      subject: "Linear Algebra",
+      subjectSlug: "linear-algebra",
+    };
+    expect(isTechnicalMockQuestion(linearAlgebraQ)).toBe(true);
+
+    // Raw question without subjectSlug populated, relying on tags
+    const rawTagQ = {
+      question_uid: "go:999999",
+      tags: ["database-management-and-warehousing"],
+    };
+    expect(isTechnicalMockQuestion(rawTagQ)).toBe(true);
+
+    // CSE Operating System question
+    const osQ = {
+      question_uid: "go:1234",
+      subject: "Operating System",
+      subjectSlug: "os",
+      tags: ["operating-system"],
+    };
+    expect(isTechnicalMockQuestion(osQ)).toBe(true);
+
+    // Genuine General Aptitude question
+    const gaQ = {
+      question_uid: "go:461032",
+      title: "GATE DA 2025 | Question: 56",
+      tags: ["gateda-2025", "general-aptitude", "verbal-ability"],
+      subject: "General Aptitude",
+      subjectSlug: "general-aptitude",
+    };
+    expect(isTechnicalMockQuestion(gaQ)).toBe(false);
+
+    // Standalone Aptitude question
+    const standaloneAptQ = {
+      question_uid: "APT-ENG-0001",
+      subject: "English",
+      subjectSlug: "english",
+      tags: ["english"],
+    };
+    expect(isTechnicalMockQuestion(standaloneAptQ)).toBe(false);
   });
 });
 

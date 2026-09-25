@@ -2199,7 +2199,7 @@
     },
     "go:357468": {
       "answer_uid": "manual:go:357468",
-      "type": "MCQ",
+      "type": "MSQ",
       "answer": [
         "C",
         "D"
@@ -2719,11 +2719,10 @@
       "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/3345/gate-it-2008-question-35"
     },
     "go:3319": {
-      "type": "MCQ",
-      "answer": null,
-      "is_defective": true,
-      "defective_reason": "For a square matrix M with det(M)=0, only S3 (MX=0 has a nontrivial solution) is correct. S1 and S2 are not necessarily true, and S4 is false. Since none of the options represents 'S3 only', no option is correct and the question is excluded from scoring.",
-      "note": "gate_it_2008_q29:defective_question:only_s3_true_none_of_options_matches:excluded_from_scoring"
+      "type": "MTA",
+      "answer": "MTA",
+      "tolerance": null,
+      "note": "gateit_2008_q29_mta_defective_matrix_determinant"
     },
     "go:3348": {
       "type": "MCQ",
@@ -2830,9 +2829,14 @@
       "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/80274/gate-cse-1987-question-1-viii"
     },
     "go:83991": {
-      "type": "MCQ",
-      "answer": "B",
-      "note": "auto_backfill:gateoverflow_widget:https://gateoverflow.in/83991/gate-cse-1990-question-2-vii"
+      "answer_uid": "manual:go:83991",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1990:q2_vii:subjective_matching"
+      }
     },
     "go:84837": {
       "type": "MSQ",
@@ -7411,9 +7415,14 @@
       "note": "gate_cse_2019_q54:nat_answer_restoral:official_gate_key_97"
     },
     "go:80029": {
+      "answer_uid": "manual:go:80029",
       "type": "MCQ",
       "answer": "A",
-      "note": "curated_resolution:manual_hardware_reasoning:https://gateoverflow.in/80029/gate-cse-1987-question-1-i :: Leftmost circuit is the standard TTL sink-driver configuration; TTL sinks LED current more reliably than it sources it."
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1987:q1_i:ttl_led_driver_circuit"
+      }
     },
     "go:80562": {
       "type": "MCQ",
@@ -7447,13 +7456,18 @@
       "note": "curated_resolution:manual_legacy_subjective_resolution:https://gateoverflow.in/529/gate-cse-1991-question-04-i-ii-iii-iv :: Short answers: (i) y := x > 5; (ii) S; while not B do S; (iii) optimal BST root stop, left if, right while; (iv) every subsystem remains consistent, but not necessarily complete."
     },
     "go:599": {
+      "answer_uid": "manual:go:599",
       "type": "MSQ",
       "answer": [
         "A",
         "C",
         "D"
       ],
-      "note": "curated_resolution:manual_language_semantics:https://gateoverflow.in/599/gate-cse-1993-question-01-4 :: FORTRAN 77 spacing and implicit typing make (a), (c), and (d) valid, while (b) is invalid."
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1993:q1_4:image_options_msq"
+      }
     },
     "go:606": {
       "type": "NAT",
@@ -7493,18 +7507,27 @@
       "note": "curated_resolution:manual_symbolic_derivation:https://gateoverflow.in/614/gate-cse-1993-question-02-10 :: Laplace transform: -1 / ((s^2 + 1)(e^(pi s) - 1))."
     },
     "go:2291": {
+      "answer_uid": "manual:go:2291",
       "type": "MCQ",
       "answer": "B",
       "tolerance": null,
-      "note": "gate_cse_batch_audit:Pascal parameter passing procedure P"
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1993:q7_1:image_options"
+      }
     },
     "go:2293": {
+      "answer_uid": "manual:go:2293",
       "type": "MSQ",
       "answer": [
         "B",
         "D"
       ],
-      "note": "curated_resolution:manual_language_semantics:https://gateoverflow.in/2293/gate-cse-1993-question-7-5 :: The fragment causes a runtime error due to nil-pointer dereferencing."
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1993:q7_5:image_options_msq"
+      }
     },
     "go:2317": {
       "type": "SUBJECTIVE",
@@ -7527,14 +7550,24 @@
       "note": "curated_resolution:manual_legacy_subjective_resolution:https://gateoverflow.in/2496/gate-cse-1994-question-3-10 :: Match: ECL -> (c), GaAs -> (a), TTL -> (d), CMOS -> (b)."
     },
     "go:2600": {
+      "answer_uid": "manual:go:2600",
       "type": "MCQ",
       "answer": "C",
-      "note": "curated_resolution:manual_language_semantics:https://gateoverflow.in/2600/gate-cse-1995-question-1-13 :: Only <> is definitely a complete token without inspecting the next character."
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1995:q1_13:image_options"
+      }
     },
     "go:2623": {
+      "answer_uid": "manual:go:2623",
       "type": "MCQ",
       "answer": "C",
-      "note": "curated_resolution:manual_storage_layout_derivation:https://gateoverflow.in/2623/gate-cse-1995-question-2-11 :: Each record uses 4 bytes for the fixed integer plus max(8,16)=16 bytes for the variant part, so 100 records need 2000 bytes."
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1995:q2_11:image_options"
+      }
     },
     "go:2645": {
       "type": "SUBJECTIVE",
@@ -7557,9 +7590,14 @@
       "note": "curated_resolution:manual_numerical_reasoning:https://gateoverflow.in/2244/gate-cse-1997-question-4-3 :: Forward Euler on y'=v and v'=f(t) gives y0=0, y1=0, y2=h^2 f(0), y3=2 h^2 f(0) + h^2 f(h); option B is the intended scan despite the dropped h^2 before f(h)."
     },
     "go:2249": {
+      "answer_uid": "manual:go:2249",
       "type": "MCQ",
       "answer": "C",
-      "note": "curated_resolution:manual_scope_reasoning:https://gateoverflow.in/2249/gate-cse-1997-question-4-8 :: In S1 the accessible variables are x of B, z, and y; in S2 they are x of A, i, and y."
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1997:q4_8:image_options_circuit"
+      }
     },
     "go:2267": {
       "type": "SUBJECTIVE",
@@ -13063,9 +13101,95 @@
       "answer": "D",
       "tolerance": null,
       "note": "gate_ch_2022_ga_q7:options_markup_repair_option_d_7_over_64"
+    },
+    "go:394296": {
+      "type": "MCQ",
+      "answer": "C",
+      "tolerance": null,
+      "note": "gateit_2007_q66_lock_compatibility_canonical_go3511"
+    },
+    "go:814": {
+      "answer_uid": "manual:go:814",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2002:q1_10:8085_instructions_modify_pc"
+      }
+    },
+    "go:815": {
+      "answer_uid": "manual:go:815",
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2002:q1_11:serial_transmission_framing_sync"
+      }
+    },
+    "go:823": {
+      "answer_uid": "manual:go:823",
+      "type": "MCQ",
+      "answer": "D",
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2002:q1_18:value_result_vs_reference_exceptions"
+      }
+    },
+    "go:44584": {
+      "answer_uid": "manual:go:44584",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1998:q6a:subjective_recurrence"
+      }
+    },
+    "go:2770": {
+      "answer_uid": "manual:go:2770",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1996:q18:subjective_pascal_defect"
+      }
+    },
+    "go:865": {
+      "answer_uid": "manual:go:865",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse2002:q12:subjective_floyd_warshall"
+      }
+    },
+    "go:2269": {
+      "answer_uid": "manual:go:2269",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1997:q9:subjective_mst_subparts"
+      }
+    },
+    "go:2312": {
+      "answer_uid": "manual:go:2312",
+      "type": "SUBJECTIVE",
+      "answer": null,
+      "tolerance": null,
+      "source": {
+        "kind": "manual_patch",
+        "note": "gatecse1993:q15:subjective_bubblesort_recurrence"
+      }
     }
   },
   "stats": {
-    "records": 1885
+    "records": 1887
   }
 }

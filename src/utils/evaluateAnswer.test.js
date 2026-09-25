@@ -937,16 +937,17 @@ describe("evaluateAnswer", () => {
     expect(evaluateAnswer(record, 7.091).correct).toBe(false);
   });
 
-  test("evaluates GATE CSE 2021 Session 1 GA Q9 (go:357468) multi-accepted MCQ C OR D", () => {
+  test("evaluates GATE CSE 2021 Session 1 GA Q9 (go:357468) MSQ C, D", () => {
     const record = {
-      type: "MCQ",
+      type: "MSQ",
       answer: ["C", "D"],
       tolerance: null,
     };
-    expect(evaluateAnswer(record, "C").correct).toBe(true);
-    expect(evaluateAnswer(record, "c").correct).toBe(true);
-    expect(evaluateAnswer(record, "D").correct).toBe(true);
-    expect(evaluateAnswer(record, "d").correct).toBe(true);
+    expect(evaluateAnswer(record, ["C", "D"]).correct).toBe(true);
+    expect(evaluateAnswer(record, "C, D").correct).toBe(true);
+    expect(evaluateAnswer(record, ["D", "C"]).correct).toBe(true);
+    expect(evaluateAnswer(record, "C").correct).toBe(false);
+    expect(evaluateAnswer(record, "D").correct).toBe(false);
     expect(evaluateAnswer(record, "A").correct).toBe(false);
     expect(evaluateAnswer(record, "B").correct).toBe(false);
     expect(evaluateAnswer(record, "").correct).toBe(false);

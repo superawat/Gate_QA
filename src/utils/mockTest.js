@@ -72,10 +72,59 @@ export const normalizeMockSubjectKey = (value = "") => {
   return CANONICAL_CSE_SUBJECT_SLUG_MAP[slug] || slug;
 };
 
+export const TECHNICAL_SUBJECT_NAMES = new Set([
+  "algorithms", "co & architecture", "compiler design", "computer networks",
+  "databases", "digital logic", "discrete mathematics", "engineering mathematics",
+  "operating system", "programming and ds", "programming in c", "theory of computation",
+  "artificial intelligence", "calculus & optimization", "dbms & warehousing",
+  "linear algebra", "machine learning", "probability & statistics",
+  "programming & dsa",
+]);
+
+export const TECHNICAL_SUBJECT_SLUGS = new Set([
+  "algorithms", "co-and-architecture", "coa", "computer-organization-and-architecture", "computer-architecture",
+  "compiler-design", "compiler",
+  "computer-networks", "cn",
+  "databases", "dbms", "database-management-systems",
+  "digital-logic", "integrated-circuits",
+  "discrete-mathematics", "discrete-math",
+  "engineering-mathematics", "engg-math",
+  "operating-system", "os",
+  "programming-and-ds", "programming-ds", "prog-ds",
+  "programming-in-c", "c-programming", "prog-c",
+  "theory-of-computation", "toc",
+  "artificial-intelligence", "data-science-and-artificial-intelligence",
+  "calculus-and-optimization",
+  "dbms-and-warehousing", "database-management-and-warehousing",
+  "linear-algebra",
+  "machine-learning",
+  "probability-and-statistics",
+  "programming-data-structures-and-algorithms", "programming-in-python", "data-structures",
+]);
+
+export const isTechnicalMockQuestion = (question = {}, questionMeta = null) => {
+  const subject = String(question?.subject || questionMeta?.subject || "").trim().toLowerCase();
+  const rawSlug = String(question?.subjectSlug || questionMeta?.subjectSlug || "").trim().toLowerCase();
+  const subjectSlug = rawSlug.replace(/^da:/i, "");
+  const tags = (Array.isArray(question?.tags) ? question.tags : []).map((t) => String(t || "").toLowerCase());
+
+  if (TECHNICAL_SUBJECT_NAMES.has(subject) || TECHNICAL_SUBJECT_SLUGS.has(subjectSlug) || TECHNICAL_SUBJECT_SLUGS.has(rawSlug)) {
+    return true;
+  }
+
+  return tags.some((t) => TECHNICAL_SUBJECT_SLUGS.has(t));
+};
+
 export const getMockQuestionSubjectKey = (question = {}) => {
   if (isDaMockQuestion(question)) {
-    const raw = question?.subjectSlug || question?.subject || "unknown";
-    const daSlug = slugifyMockFilterToken(String(raw).replace(/^da:/i, ""));
+    let raw = question?.subjectSlug || question?.subject;
+    if (!raw && Array.isArray(question?.tags)) {
+      raw = question.tags.find((t) => {
+        const tag = String(t || "").toLowerCase();
+        return tag && !/^gateda-\d{4}$/.test(tag) && !["one-mark", "two-marks", "mcq", "msq", "nat"].includes(tag) && !/^question-\d+$/.test(tag);
+      });
+    }
+    const daSlug = slugifyMockFilterToken(String(raw || "unknown").replace(/^da:/i, ""));
     return `da:${daSlug || "unknown"}`;
   }
   const rawSubject = question?.subjectSlug || question?.subject || "unknown";

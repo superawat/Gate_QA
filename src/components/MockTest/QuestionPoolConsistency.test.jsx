@@ -122,4 +122,40 @@ describe("Question Pool Consistency: Filter Questions vs Custom Builder", () => 
     });
     expect(scorableDa.length).toBe(195);
   });
+
+  test("Technical DA questions are partitioned into CS section and NEVER into General Aptitude section", () => {
+    const mockCatalogDa = require("../../../public/mock_catalog_da_v1.json");
+    const daSearchIndex = require("../../../public/data/da/search-index.json");
+    const daQuestions = Array.isArray(daSearchIndex) ? daSearchIndex : daSearchIndex.questions;
+    const qMap = new Map(daQuestions.map((q) => [q.question_uid, q]));
+
+    // GATE DA 2025 Question 8 (Hash Table) must be CS, not GA
+    const hashTableMeta = mockCatalogDa.byQuestionUid["go:461014"];
+    expect(hashTableMeta).toBeDefined();
+    expect(hashTableMeta.section).toBe("CS");
+    expect(hashTableMeta.title).toBe("GATE DA 2025 | Question: 8");
+
+    // All GA questions in mockCatalogDa must be genuine General Aptitude questions
+    const daGaList = Object.values(mockCatalogDa.byQuestionUid).filter((meta) => meta.section === "GA");
+    expect(daGaList.length).toBe(30); // 10 per paper across 2024, 2025, 2026
+
+    daGaList.forEach((meta) => {
+      const q = qMap.get(meta.questionUid);
+      expect(q).toBeDefined();
+      const tags = (q.tags || []).map((t) => String(t || "").toLowerCase());
+      const isGa = tags.includes("general-aptitude")
+        || q.subjectSlug === "general-aptitude"
+        || /general aptitude/i.test(q.title || "");
+      expect(isGa).toBe(true);
+
+      // Must NOT contain technical subjects like programming-data-structures-and-algorithms
+      expect(tags).not.toContain("programming-data-structures-and-algorithms");
+      expect(tags).not.toContain("linear-algebra");
+      expect(tags).not.toContain("calculus-and-optimization");
+      expect(tags).not.toContain("database-management-and-warehousing");
+      expect(tags).not.toContain("artificial-intelligence");
+      expect(tags).not.toContain("machine-learning");
+      expect(tags).not.toContain("probability-and-statistics");
+    });
+  });
 });

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import {
   DA_BANK_PATH,
   DA_DATA_DIR,
@@ -208,9 +209,24 @@ export async function buildDaPublicArtifacts() {
   for (const category of categories.values()) {
     const year = Number(category.year);
     const paperQuestions = questions
-      .filter((question) => getCategory(question) === String(year))
+      .filter((question) => getCategory(question) === String(year));
+
+    const isQuestionGa = (question) => {
+      const tags = (question?.tags || []).map((t) => String(t || "").toLowerCase());
+      return tags.includes("general-aptitude")
+        || getSubjectSlug(question) === "general-aptitude"
+        || /\|\s*GA\b/i.test(question.title || "")
+        || /general aptitude/i.test(question.title || "");
+    };
+
+    const gaQuestions = paperQuestions
+      .filter(isQuestionGa)
       .sort((left, right) => Number(getQuestionNumber(left)) - Number(getQuestionNumber(right)));
-    paperQuestions.forEach((question, index) => {
+    const csQuestions = paperQuestions
+      .filter((question) => !isQuestionGa(question))
+      .sort((left, right) => Number(getQuestionNumber(left)) - Number(getQuestionNumber(right)));
+
+    gaQuestions.forEach((question, gaIndex) => {
       const questionUid = getQuestionUid(question);
       const type = String((question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "").toUpperCase();
       const marks = (question.tags || []).includes("two-marks") ? 2 : 1;
@@ -220,8 +236,8 @@ export async function buildDaPublicArtifacts() {
         yearSetKey: `${year}-s1`,
         yearSetIdentity: buildTrackYearSetKey("da", year, 1),
         track: "da",
-        orderIndex: index + 1,
-        section: index < 10 ? "GA" : "CS",
+        orderIndex: gaIndex + 1,
+        section: "GA",
         title: question.title,
         type,
         marks,
@@ -232,6 +248,30 @@ export async function buildDaPublicArtifacts() {
         source: "gateda",
       };
     });
+
+    csQuestions.forEach((question, csIndex) => {
+      const questionUid = getQuestionUid(question);
+      const type = String((question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "").toUpperCase();
+      const marks = (question.tags || []).includes("two-marks") ? 2 : 1;
+      const answerRecord = answersByQuestionUid[questionUid] || null;
+      mockByQuestionUid[questionUid] = {
+        questionUid,
+        yearSetKey: `${year}-s1`,
+        yearSetIdentity: buildTrackYearSetKey("da", year, 1),
+        track: "da",
+        orderIndex: csIndex + 1,
+        section: "CS",
+        title: question.title,
+        type,
+        marks,
+        negativeMarks: type === "MCQ" ? (marks === 1 ? 0.3333333333 : 0.6666666667) : 0,
+        paperReady: true,
+        scorable: Boolean(answerRecord),
+        autoAwarded: false,
+        source: "gateda",
+      };
+    });
+
     mockPapers.push({
       yearSetKey: `${year}-s1`,
       yearSetIdentity: buildTrackYearSetKey("da", year, 1),
@@ -239,16 +279,16 @@ export async function buildDaPublicArtifacts() {
       year,
       set: 1,
       label: `GATE DA ${year}`,
-      paperReady: paperQuestions.length === 65,
-      gaCount: Math.min(10, paperQuestions.length),
-      csCount: Math.max(0, paperQuestions.length - 10),
+      paperReady: paperQuestions.length === 65 && gaQuestions.length === 10 && csQuestions.length === 55,
+      gaCount: gaQuestions.length,
+      csCount: csQuestions.length,
       requiredQuestionCount: 65,
       requiredGaCount: 10,
       requiredCsCount: 55,
       durationMinutes: 180,
       scorableCount: paperQuestions.filter((question) => Boolean(answersByQuestionUid[getQuestionUid(question)])).length,
-      scorableGaCount: paperQuestions.slice(0, 10).filter((question) => Boolean(answersByQuestionUid[getQuestionUid(question)])).length,
-      scorableCsCount: paperQuestions.slice(10).filter((question) => Boolean(answersByQuestionUid[getQuestionUid(question)])).length,
+      scorableGaCount: gaQuestions.filter((question) => Boolean(answersByQuestionUid[getQuestionUid(question)])).length,
+      scorableCsCount: csQuestions.filter((question) => Boolean(answersByQuestionUid[getQuestionUid(question)])).length,
       missingScorableCount: paperQuestions.filter((question) => !answersByQuestionUid[getQuestionUid(question)]).length,
       statusReason: paperQuestions.length === 65 ? "Release-ready." : "Incomplete paper.",
       blockedQuestions: [],
@@ -293,7 +333,7 @@ export async function buildDaPublicArtifacts() {
   return true;
 }
 
-if (import.meta.url === `file://${process.argv[1].replaceAll("\\", "/")}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   buildDaPublicArtifacts().catch((error) => {
     console.error(`[build-da] ${error.stack || error.message}`);
     process.exitCode = 1;

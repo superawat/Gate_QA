@@ -1,5 +1,76 @@
 # Changelog
 
+- **Question Bank Resolution for Single-Space Inline Options, Pre-2003 Image Options & Missing 2002 Answer Records (DEC-130)**:
+  - *Context*: Resolved validation and parsing defects across three historical paper categories (Bucket 2, Bucket 3, Bucket 4).
+  - *Changes*:
+    - **Bucket 2 (Single-Space Inline Options)**: In [`src/utils/stripEmbeddedOptions.js`](file:///src/utils/stripEmbeddedOptions.js), updated `OPTION_INLINE_RE` and `OPTION_INLINE_CAPTURE_RE` to match single spaces `(?:\s+|&nbsp;)`. Unlocked GATE CSE 2013 Q23 (`go:1534`, numerical integration via trapezoidal rule) with verified answer `"D"`.
+    - **Bucket 3 (Pre-2003 Scanned Options & Subjective Questions)**:
+      - Appended standard upper-alpha option lists to questions where choices (A, B, C, D) were embedded inside scanned diagrams: 1997 Q4.8 (`go:2249`), 1995 Q1.13 (`go:2600`), 1995 Q2.11 (`go:2623`), 1993 Q7.1 (`go:2291`), 1993 Q1.4 (`go:599`), 1993 Q7.5 (`go:2293`), 1987 Q1-I (`go:80029`).
+      - Reclassified non-objective descriptive/derivation questions to `type: "SUBJECTIVE"`, `answer: null`: 1998 Q6a (`go:44584`), 1996 Q18 (`go:2770`), 2002 Q12 (`go:865`), 1990 Q2-vii (`go:83991`), 1997 Q9 (`go:2269`), 1993 Q15 (`go:2312`).
+    - **Bucket 4 (Missing 2002 Answer Records)**: Populated verified answer keys for 2002 Q1.10 (`go:814` -> `MCQ` `"D"`), 2002 Q1.11 (`go:815` -> `MCQ` `"A"`), and 2002 Q1.18 (`go:823` -> `MCQ` `"D"`).
+    - Synchronized all changes across `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/questions-with-answers.json`, and static detail shards.
+    - Rebuilt all static shards, mock catalog, and search index via `scripts/build-public-artifacts.mjs`.
+    - **100% of all 55 papers in the Mock Catalog are now Release-ready (0 papers blocked)**.
+    - Unit tests: **1,074 tests passing across 84 test files (0 failures)**.
+
+- **GATE CSE 2021 Set 1 GA Q9 (`go:357468`) Question Type Update to MSQ & Verification Architecture (DEC-129)**:
+  - *Context*: GATE CSE 2021 Set 1 GA Question 9 (`go:357468`, Syllogisms / Statements & Conclusions) had multi-accepted correct conclusions (`C` and `D`).
+  - *Changes*:
+    - Updated question type from `MCQ` to `MSQ` with answer `["C", "D"]` in `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and `public/questions-with-answers.json`.
+    - Rebuilt static detail shard `2021-s1.json`, search index, and mock catalog via `scripts/build-public-artifacts.mjs`.
+    - Confirmed **GATE CSE 2021 Set 1** mock catalog status is **100% Release-ready** (`paperReady: true`, 65 scorable questions, 0 missing).
+    - Updated regression test in `src/utils/evaluateAnswer.test.js` validating MSQ evaluation requirements for `go:357468`.
+    - All 84 test suites (1,073 tests) passing, clean typecheck.
+
+- **Mock Test General Aptitude Default Selection & Special Aptitude Opt-In Isolation Architecture (DEC-128)**:
+  - *Context*: In Custom Builder mock test setup (`/mock?stage=setup`), under the Aptitude section:
+    - User requirement: *"make English(12,702) Quant(14,406) Reasoning(9,728) as not selected until someone manually selects and make General Aptitude(538) as default selected options"*.
+  - *Root Cause & Architectural Shift*:
+    - Previously, in `buildDefaultSetupState`, `selectedSubjects` defaulted to empty `[]`. In `MockTestShell.jsx`, when `selectedSubjects` was empty, `filteredPool` included all questions whose subject was an aptitude slug. This flooded the mock test question pool with over 36,000 broad aptitude practice questions (English: 12,702, Quant: 14,406, Reasoning: 9,728) by default, instead of isolating the standard ~538 official GATE General Aptitude questions.
+    - Furthermore, `APTITUDE_BASE_SUBJECTS` only seeded `english`, `quant`, and `reasoning`, omitting an explicit `ga` ("General Aptitude") option, which caused `General Aptitude` not to be cleanly selectable or rendered as an independent checkbox.
+  - *Comprehensive Implementation*:
+    - **Default Selection Seed**:
+      - Updated `buildDefaultSetupState` in `MockTestShell.jsx` so `selectedSubjects` initializes to `["ga"]` by default.
+      - Updated `APTITUDE_BASE_SUBJECTS` to include `{ slug: "ga", label: "General Aptitude" }` alongside English, Quant, and Reasoning so all 4 aptitude categories are rendered with their respective live counts in `MockTestSetup.jsx`.
+    - **Rigorous Filter & Exclusion Invariant in `filteredPool`**:
+      - In `MockTestShell.jsx`, ensured `getQuestionSubjectKey` assigns `"ga"` to any genuine GATE GA question (identified via `isTrueGaQuestion`) that lacks an auxiliary aptitude slug (`english`, `quant`, `reasoning`).
+      - In `filteredPool`, under the `isGa` branch:
+        - If `gaSelected.length > 0`, only questions matching selected aptitude categories (`ga`, `english`, `quant`, `reasoning`) are included in the pool. English, Quant, and Reasoning are auxiliary categories and remain strictly excluded unless explicitly checked by the user.
+        - If `gaSelected.length === 0` (user unchecked all 4 aptitude categories), 0 GA questions are included in the pool (prevents fallback leaking all 37k questions).
+    - **Slug Normalization & Toggle Consistency**:
+      - In `toggleSelection`, normalized input slugs with `normalizeMockSubjectKey` to prevent discrepancies between alias keys (e.g. `ga` vs `general-aptitude`).
+      - In `toggleGeneralAptitude`, when turning the Aptitude track toggle back ON, if no aptitude subject is currently in `selectedSubjects`, automatically restores `["ga"]`.
+    - **Setup UI Synchronization (`MockTestSetup.jsx`)**:
+      - Added `isBroadMix` logic: active when `selectedCseCount === 0 && selectedDaCount === 0 && !hasSpecialAptitude`.
+      - Updated "All Subjects (Broad Mix)" filter chip click handler to set `selectedSubjects: ["ga"]` and dynamically show `active={isBroadMix}`.
+      - Normalized aptitude checkbox slug checking via `normalizeMockSubjectKey` to guarantee reliable checkmark states.
+  - *Testing & Verification*:
+    - Added dedicated unit test in `src/components/MockTest/MockTestShell.test.jsx`: verifies General Aptitude (538) is checked by default while English, Quant, Reasoning are unchecked by default, verifies pool size changes dynamically as options are toggled, and verifies unchecking all categories yields 0 GA questions.
+    - Updated regression tests in `MockTestShell.test.jsx`.
+    - Full test suite passed (84 test files, 1,073 tests passing, 0 failures), TypeScript typecheck clean (0 errors).
+
+- **GATE DA Mock Catalog Section Partition Fix & Technical Subject General Aptitude Isolation Architecture (DEC-127)**:
+  - *Context*: In a Custom Builder mock test (`Custom Builder | General Aptitude | 25 validated questions`), Question 4 in the **General Aptitude** section was a technical Data Structures question: *"Consider a hash table of size 10 with indices {0, 1, ..., 9}, with the hash function h(x) = 3x mod 10, where linear probing is used to handle collisions... keys 14 and 15 stored are, respectively: A. 2 and 5 B. 2 and 6 C. 4 and 5 D. 4 and 6"* (`go:461014`, GATE DA 2025 Question 8).
+  - *Root Cause Analysis*:
+    - **DA Paper Structure Invariant**: In GATE CSE and GATE DA 2026, questions 1–10 are General Aptitude and 11–65 are Core technical subjects. However, in **GATE DA 2024 and GATE DA 2025**, questions 1–55 are Core technical subjects (Linear Algebra, Calculus, AI, DBMS, Programming & DSA, etc.) and questions 56–65 are the 10 General Aptitude questions.
+    - **Catalog Generation Discrepancy (`build-da-artifacts.mjs`)**: When generating `public/mock_catalog_da_v1.json`, the build script sorted paper questions by question number (1..65) and partitioned sections using `section: index < 10 ? "GA" : "CS"`. Consequently, questions 1–10 of GATE DA 2024 and 2025 (20 technical questions total, including `go:461014` Hash Table) were erroneously cataloged as `"section": "GA"` while the actual GA questions (56–65) were cataloged as `"section": "CS"`.
+    - **Runtime Classifier Gaps**: In `src/components/MockTest/MockTestShell.jsx`, `isTrueGaQuestion` lacked DA technical subject slugs and did not check `question.tags`. Since `questionMetaByUid[uid]?.section === "GA"`, `isTrueGaQuestion` treated them as GA. In `src/contexts/MockTestContext.tsx`, `isGaQuestion` trusted `question.section === "GA"` without guarding against technical subjects.
+  - *Dual-Layer Resolution*:
+    - **Layer 1 (Pipeline & Catalog Partition Fix in `build-da-artifacts.mjs`)**:
+      - Updated question partitioning to inspect `tags.includes("general-aptitude")`, `getSubjectSlug() === "general-aptitude"`, and title patterns rather than relying on index slicing.
+      - Genuine GA questions are assigned `section: "GA"` (orderIndex 1..10) and Core technical questions are assigned `section: "CS"` (orderIndex 1..55).
+      - Updated `mockPapers` to calculate `scorableGaCount` and `scorableCsCount` accurately.
+      - Fixed Windows ES module script entry check using `pathToFileURL(process.argv[1]).href`.
+      - Rebuilt `public/mock_catalog_da_v1.json`. All 30 DA GA questions across 2024, 2025, and 2026 are verified genuine GA questions, and `go:461014` has `section: 'CS'`.
+    - **Layer 2 (Runtime Defense Layer in `mockTest.js`, `MockTestShell.jsx`, `MockTestContext.tsx`)**:
+      - In `src/utils/mockTest.js`, introduced `TECHNICAL_SUBJECT_NAMES`, `TECHNICAL_SUBJECT_SLUGS`, and exported `isTechnicalMockQuestion(question, questionMeta)` covering all canonical CSE & DA technical subjects.
+      - In `src/components/MockTest/MockTestShell.jsx`, integrated `isTechnicalMockQuestion` as an immediate short-circuit in `isTrueGaQuestion`: technical subject questions can never be classified as GA under any circumstances.
+      - In `src/contexts/MockTestContext.tsx`, integrated `isTechnicalMockQuestion` into `isGaQuestion` and `buildFallbackMockMetaByUid` as an additional defensive runtime guard.
+  - *Testing & Verification*:
+    - Added unit tests in `src/utils/mockTest.test.js` validating `isTechnicalMockQuestion` against DA and CSE technical questions vs GA questions.
+    - Added tests in `src/components/MockTest/QuestionPoolConsistency.test.jsx` verifying `go:461014` has `section: 'CS'` and all 30 DA GA catalog entries contain only genuine GA questions.
+    - Full test suite passed (84 test files, 1,071 unit tests passing, 0 failures), TypeScript typecheck clean (0 errors).
+
 - **Mock Test Strict Light-Theme Isolation & Dark-Mode Bleed Elimination (DEC-126)**:
   - *Context*: When users had dark mode active site-wide (`data-theme="dark"`), navigating to `/mock` caused the Mock Test portal page to render with washed-out, white-on-white text (e.g., `"Choose Attempt Type"`, `"Full Mock"`, and subtitles became white `#f0f6fc` on white `#ffffff` cards, and pill badges became dark black boxes).
   - *Root Cause Analysis*:

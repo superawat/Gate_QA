@@ -82,4 +82,17 @@ describe("MockCatalogService", () => {
     expect(ready2023Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
     expect(ready2019Paper).toMatchObject({ paperReady: true, scorableCount: 65 });
   });
+
+  test("includes all 5 IT branch papers (2004-2008) in mock catalog as release-ready", () => {
+    const catalogPath = path.resolve(process.cwd(), "public", "mock_catalog_v1.json");
+    const payload = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
+    const papers = MockCatalogService.normalizeCatalog(payload).papers;
+    const itPapers = papers.filter((paper) => paper.track === "it" || paper.paperScope === "official_it");
+
+    expect(itPapers).toHaveLength(5);
+    expect(itPapers.every((paper) => paper.paperReady)).toBe(true);
+    expect(itPapers.map((p) => p.yearSetKey)).toEqual(
+      expect.arrayContaining(["it-2008-s0", "it-2007-s0", "it-2006-s0", "it-2005-s0", "it-2004-s0"])
+    );
+  });
 });

@@ -898,14 +898,14 @@ function extractLegacyQuestionTokenFromTitle(title = "") {
 }
 
 function extractLegacyQuestionTokenFromExamUid(examUid = "") {
-  const match = String(examUid || "").trim().match(/^cse:\d{4}:set\d+:[^:]+:q(.+)$/i);
+  const match = String(examUid || "").trim().match(/^(?:cse|it):\d{4}:set\d+:[^:]+:q(.+)$/i);
   return match ? normalizeLegacyQuestionToken(match[1]) : null;
 }
 
 function extractLegacyQuestionTokenFromLink(link = "", yearSet = null) {
   const resolvedYearSet = yearSet && Number.isFinite(yearSet.year) ? yearSet : null;
   const yearToken = resolvedYearSet ? String(resolvedYearSet.year) : "\\d{4}";
-  const pattern = new RegExp(`gate-cse-${yearToken}-question-([a-z0-9-]+)`, "i");
+  const pattern = new RegExp(`gate-(?:cse|it)-${yearToken}-question-([a-z0-9-]+)`, "i");
   const match = String(link || "").trim().match(pattern);
   return match ? normalizeLegacyQuestionToken(match[1]) : null;
 }
@@ -1291,7 +1291,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       ? null
       : parseMockSectionPosition(question, yearSet);
 
-    if (!yearSet.key || yearSet.isAdditional || yearSet.paperScope === "official_it" || (!paperPosition && !useLegacySlotDedup)) {
+    if (!yearSet.key || yearSet.isAdditional || (!paperPosition && !useLegacySlotDedup)) {
       return;
     }
 
@@ -1307,7 +1307,8 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     if (!paperGroups.has(yearSet.key)) {
       paperGroups.set(yearSet.key, {
         yearSetKey: yearSet.key,
-        track: "cse",
+        track: yearSet.track || (yearSet.paperScope === "official_it" ? "it" : "cse"),
+        paperScope: yearSet.paperScope || "official_cse",
         yearSetIdentity: yearSet.yearSetIdentity,
         year: yearSet.year,
         set: yearSet.set,
@@ -1485,6 +1486,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       return {
         yearSetKey: group.yearSetKey,
         track: group.track,
+        paperScope: group.paperScope,
         yearSetIdentity: group.yearSetIdentity,
         year: group.year,
         set: group.set,
@@ -1513,6 +1515,9 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     .sort((left, right) => {
       if (left.year !== right.year) {
         return (right.year || 0) - (left.year || 0);
+      }
+      if (left.track !== right.track) {
+        return left.track === "cse" ? -1 : 1;
       }
       return (right.set || 0) - (left.set || 0);
     });

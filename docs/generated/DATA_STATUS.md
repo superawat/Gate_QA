@@ -1,10 +1,10 @@
 # Generated Data Status
 
-Generated: 2026-09-25T12:30:06.388Z
+Generated: 2026-09-25T18:43:54.998Z
 
 - Public question count: 3682
 - Latest year in public bank: 2026
-- Direct answer coverage: 3679/3682 (99.9%)
+- Direct answer coverage: 3682/3682 (100.0%)
 - Latest year answer coverage: 2026: 130/130 (100.0%)
 - Remote GateOverflow blob-image questions: 0
 - Pipeline-state published question count: 3682

@@ -13,6 +13,7 @@ import {
     filterMockQuestionsByScope,
     getMockQuestionSubjectKey,
     getMockQuestionYearSetIdentity,
+    isTechnicalMockQuestion,
     normalizeMockSubjectKey,
     validateMockQuestionForPool,
 } from "../../utils/mockTest";
@@ -110,7 +111,48 @@ const CANONICAL_CSE_SUBJECT_LABELS = {
     reasoning: "Reasoning",
 };
 
-const getQuestionSubjectKey = (question = {}) => getMockQuestionSubjectKey(question);
+const isTrueGaQuestion = (question, questionMeta = null) => {
+    const uid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
+    if (uid.startsWith(APTITUDE_UID_PREFIX) || uid.startsWith("ga:")) {
+        return true;
+    }
+
+    // Known technical subjects must NEVER be classified as General Aptitude
+    if (isTechnicalMockQuestion(question, questionMeta)) {
+        return false;
+    }
+
+    const subject = String(question?.subject || questionMeta?.subject || "").trim().toLowerCase();
+    const subjectSlug = String(question?.subjectSlug || questionMeta?.subjectSlug || "").trim().toLowerCase();
+    const tags = (Array.isArray(question?.tags) ? question.tags : []).map((t) => String(t || "").toLowerCase());
+    const title = String(question?.title || questionMeta?.title || "");
+
+    if (
+        subject === "general aptitude"
+        || subjectSlug === "general-aptitude"
+        || subjectSlug === "ga"
+        || subjectSlug === "da:general-aptitude"
+        || APTITUDE_SUBJECT_SLUGS.has(subjectSlug)
+        || tags.includes("general-aptitude")
+        || tags.includes("ga")
+        || /\bGA(?:\s*QUESTION|\s*[-:]\s*\d+|\s*\d+)\b/i.test(title)
+        || /\|\s*GA\b/i.test(title)
+        || /general aptitude/i.test(title)
+    ) {
+        return true;
+    }
+
+    const section = questionMeta?.section || question?.section;
+    return section === "GA";
+};
+
+const getQuestionSubjectKey = (question = {}) => {
+    const key = getMockQuestionSubjectKey(question);
+    if (isTrueGaQuestion(question) && !APTITUDE_SUBJECT_SLUGS.has(key)) {
+        return "ga";
+    }
+    return key;
+};
 
 const getQuestionSubjectLabel = (question = {}) => {
     const key = getQuestionSubjectKey(question);
@@ -246,7 +288,7 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     yearRangeEnd: maxYear,
     enabledTracks: ["cse"],
     includeGeneralAptitude: true,
-    selectedSubjects: [],
+    selectedSubjects: ["ga"],
     selectedSubtopics: [],
     expandedSubjectSlug: null,
     selectedTypes: [...TYPE_OPTIONS],
@@ -256,47 +298,6 @@ const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYear
     customDurationMode: "adaptive",
     customDurationMinutes: 180,
 });
-
-const isTrueGaQuestion = (question, questionMeta = null) => {
-    const uid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
-    if (uid.startsWith(APTITUDE_UID_PREFIX) || uid.startsWith("ga:")) {
-        return true;
-    }
-    const subject = String(question?.subject || questionMeta?.subject || "").trim().toLowerCase();
-    const subjectSlug = String(question?.subjectSlug || questionMeta?.subjectSlug || "").trim().toLowerCase();
-
-    // Known technical subjects must NEVER be classified as General Aptitude
-    const isTechnicalSubject = [
-        "algorithms", "co & architecture", "compiler design", "computer networks",
-        "databases", "digital logic", "discrete mathematics", "engineering mathematics",
-        "operating system", "programming and ds", "programming in c", "theory of computation",
-        "artificial intelligence", "calculus & optimization", "dbms & warehousing",
-        "linear algebra", "machine learning", "probability & statistics"
-    ].includes(subject) || [
-        "algorithms", "co-and-architecture", "compiler-design", "computer-networks",
-        "databases", "digital-logic", "discrete-mathematics", "engineering-mathematics",
-        "operating-system", "programming-and-ds", "programming-in-c", "theory-of-computation",
-        "artificial-intelligence", "calculus-and-optimization", "dbms-and-warehousing",
-        "linear-algebra", "machine-learning", "probability-and-statistics"
-    ].includes(subjectSlug);
-
-    if (isTechnicalSubject) {
-        return false;
-    }
-
-    if (
-        subject === "general aptitude"
-        || subjectSlug === "general-aptitude"
-        || subjectSlug === "ga"
-        || subjectSlug === "da:general-aptitude"
-        || APTITUDE_SUBJECT_SLUGS.has(subjectSlug)
-    ) {
-        return true;
-    }
-
-    const section = questionMeta?.section || question?.section;
-    return section === "GA";
-};
 
 const splitByCatalogSection = (rows = [], questionMetaByUid = {}) => {
     const gaQuestions = [];
@@ -351,6 +352,7 @@ const resolveCountBasedSectionTargets = (count = 0, gaAvailable = 0, csAvailable
 };
 
 const APTITUDE_BASE_SUBJECTS = [
+    { slug: "ga", label: "General Aptitude" },
     { slug: "english", label: "English" },
     { slug: "quant", label: "Quant" },
     { slug: "reasoning", label: "Reasoning" },
@@ -807,26 +809,33 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 const selectedSubjects = Array.isArray(setupState.selectedSubjects) ? setupState.selectedSubjects : [];
                 const questionSubjectKey = getQuestionSubjectKey(question);
 
-                if (selectedSubjects.length > 0) {
-                    if (isGa) {
-                        const gaSelected = selectedSubjects.filter(
-                            (s) => s === "general-aptitude" || s === "ga" || s === "da:general-aptitude" || APTITUDE_SUBJECT_SLUGS.has(s)
-                        ).map(normalizeMockSubjectKey);
-                        if (gaSelected.length > 0 && !gaSelected.includes(questionSubjectKey)) {
+                if (isGa) {
+                    const gaSelected = selectedSubjects.filter(
+                        (s) => s === "general-aptitude" || s === "ga" || s === "da:general-aptitude" || APTITUDE_SUBJECT_SLUGS.has(s)
+                    ).map(normalizeMockSubjectKey);
+
+                    // English, Quant, Reasoning are auxiliary special aptitude categories and
+                    // must NEVER be included in the test pool unless explicitly selected by the user.
+                    // General Aptitude ("ga") is default selected, but if unselected, it is excluded.
+                    if (gaSelected.length > 0) {
+                        if (!gaSelected.includes(questionSubjectKey)) {
                             return false;
                         }
-                    } else if (isDa) {
-                        const daSelected = selectedSubjects.filter((s) => s.startsWith("da:"));
-                        if (daSelected.length > 0 && !daSelected.includes(questionSubjectKey)) {
-                            return false;
-                        }
-                    } else if (isCse) {
-                        const cseSelected = selectedSubjects.filter(
-                            (s) => !s.startsWith("da:") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG
-                        ).map(normalizeMockSubjectKey);
-                        if (cseSelected.length > 0 && !cseSelected.includes(questionSubjectKey)) {
-                            return false;
-                        }
+                    } else {
+                        // When no aptitude categories are selected, exclude all GA questions
+                        return false;
+                    }
+                } else if (isDa) {
+                    const daSelected = selectedSubjects.filter((s) => s.startsWith("da:"));
+                    if (daSelected.length > 0 && !daSelected.includes(questionSubjectKey)) {
+                        return false;
+                    }
+                } else if (isCse) {
+                    const cseSelected = selectedSubjects.filter(
+                        (s) => !s.startsWith("da:") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG
+                    ).map(normalizeMockSubjectKey);
+                    if (cseSelected.length > 0 && !cseSelected.includes(questionSubjectKey)) {
+                        return false;
                     }
                 }
 
@@ -1147,10 +1156,20 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const toggleSelection = useCallback((field, value) => {
         setSetupState((prev) => {
             const current = Array.isArray(prev[field]) ? prev[field] : [];
-            const exists = current.includes(value);
-            const nextValues = exists
-                ? current.filter((entry) => entry !== value)
-                : [...current, value];
+            let nextValues;
+
+            if (field === "selectedSubjects") {
+                const normValue = normalizeMockSubjectKey(value);
+                const exists = current.some((entry) => normalizeMockSubjectKey(entry) === normValue);
+                nextValues = exists
+                    ? current.filter((entry) => normalizeMockSubjectKey(entry) !== normValue)
+                    : [...current, normValue];
+            } else {
+                const exists = current.includes(value);
+                nextValues = exists
+                    ? current.filter((entry) => entry !== value)
+                    : [...current, value];
+            }
 
             const next = {
                 ...prev,
@@ -1233,10 +1252,23 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     }, []);
 
     const toggleGeneralAptitude = useCallback((forceVal) => {
-        setSetupState((prev) => ({
-            ...prev,
-            includeGeneralAptitude: typeof forceVal === "boolean" ? forceVal : prev.includeGeneralAptitude === false,
-        }));
+        setSetupState((prev) => {
+            const nextInclude = typeof forceVal === "boolean" ? forceVal : prev.includeGeneralAptitude === false;
+            let nextSubjects = Array.isArray(prev.selectedSubjects) ? [...prev.selectedSubjects] : [];
+            if (nextInclude) {
+                const hasAptSubject = nextSubjects.some(
+                    (s) => s === "general-aptitude" || s === "ga" || s === "da:general-aptitude" || APTITUDE_SUBJECT_SLUGS.has(s)
+                );
+                if (!hasAptSubject) {
+                    nextSubjects.push("ga");
+                }
+            }
+            return {
+                ...prev,
+                includeGeneralAptitude: nextInclude,
+                selectedSubjects: nextSubjects,
+            };
+        });
     }, []);
 
     const bulkToggleTrackSubjects = useCallback((track, subjectSlugs, selectAll) => {

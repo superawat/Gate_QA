@@ -148,4 +148,20 @@ describe("stripEmbeddedOptions", () => {
     expect(cleaned).not.toContain("(A) 4");
     expect(cleaned).not.toContain("(B) 5");
   });
+
+  test("extracts and strips single-space inline options (GATE CSE 2013 Q23 - go:1534)", () => {
+    const html = `
+      <div itemprop="text"><p>The value of $\\int_{0}^{3} f(x) \\text{d}x$ computed using the trapezoidal rule is<br>
+(A) 8.983 (B) 9.003 (C) 9.017 (D) 9.045</p></div>
+    `;
+
+    const options = extractEmbeddedOptions(html);
+    const cleaned = stripEmbeddedOptions(html);
+
+    expect(options.map((option) => option.label)).toEqual(["A", "B", "C", "D"]);
+    expect(options.map((option) => option.text)).toEqual(["8.983", "9.003", "9.017", "9.045"]);
+    expect(cleaned).toContain("The value of");
+    expect(cleaned).not.toContain("(A) 8.983");
+  });
 });
+

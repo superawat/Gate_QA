@@ -480,10 +480,10 @@ describe("MockTestShell", () => {
 
   test("enables only General Aptitude when CSE toggle is turned off, keeping 0 CS questions", async () => {
     const gaQuestion = {
-      question_uid: "APT-ENG-0001",
+      question_uid: "go:111",
       title: "Sample GA",
-      subject: "English",
-      subjectSlug: "english",
+      subject: "General Aptitude",
+      subjectSlug: "ga",
       question: "<p>GA Question</p>",
       options: [{ label: "A", html: "A" }, { label: "B", html: "B" }],
       exam: { year: 2024, yearSetKey: "2024-s1" },
@@ -501,8 +501,8 @@ describe("MockTestShell", () => {
     mockFilterContext.allQuestions = [gaQuestion, csQuestion];
     mockMockTestContext.mockQuestionPool = [gaQuestion, csQuestion];
     mockMockTestContext.questionMetaByUid = {
-      "APT-ENG-0001": {
-        questionUid: "APT-ENG-0001",
+      "go:111": {
+        questionUid: "go:111",
         section: "GA",
         type: "MCQ",
         marks: 1,
@@ -656,13 +656,21 @@ describe("MockTestShell", () => {
     const englishCheckbox = screen.getByRole("checkbox", { name: "English" });
     const quantCheckbox = screen.getByRole("checkbox", { name: "Quant" });
     const reasoningCheckbox = screen.getByRole("checkbox", { name: "Reasoning" });
+    const gaCheckbox = screen.getByRole("checkbox", { name: "General Aptitude" });
 
     expect(englishCheckbox).toBeTruthy();
     expect(quantCheckbox).toBeTruthy();
     expect(reasoningCheckbox).toBeTruthy();
+    expect(gaCheckbox).toBeTruthy();
 
-    // 3 aptitude questions are scorable in the pool
-    expect(screen.getByTestId("preview-ga").textContent).toBe("3");
+    // General Aptitude is selected by default; English, Quant, Reasoning are unselected until manually selected
+    expect(gaCheckbox.checked).toBe(true);
+    expect(englishCheckbox.checked).toBe(false);
+    expect(quantCheckbox.checked).toBe(false);
+    expect(reasoningCheckbox.checked).toBe(false);
+
+    // Initial pool has only English, Quant, Reasoning questions, so preview-ga starts at 0 until an aptitude category is selected
+    expect(screen.getByTestId("preview-ga").textContent).toBe("0");
 
     // Select English only
     fireEvent.click(englishCheckbox);
@@ -689,5 +697,99 @@ describe("MockTestShell", () => {
 
     unmount();
     expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
+  });
+
+  test("General Aptitude (538) is selected by default while English, Quant, Reasoning are unselected until manually checked", () => {
+    const gaQuestion = {
+      question_uid: "go:111",
+      title: "GATE GA Question",
+      subject: "General Aptitude",
+      subjectSlug: "general-aptitude",
+      question: "<p>GATE GA question</p>",
+      options: [{ label: "A", html: "A" }, { label: "B", html: "B" }],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: "2024-s1" },
+    };
+    const englishQuestion = {
+      question_uid: "APT-ENG-0010",
+      title: "English Vocab",
+      subject: "English",
+      subjectSlug: "english",
+      question: "<p>English question</p>",
+      options: [],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: null },
+    };
+    const quantQuestion = {
+      question_uid: "APT-QNT-0020",
+      title: "Quant Math",
+      subject: "Quant",
+      subjectSlug: "quant",
+      question: "<p>Quant question</p>",
+      options: [],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: null },
+    };
+    const reasoningQuestion = {
+      question_uid: "APT-RSN-0030",
+      title: "Reasoning Logic",
+      subject: "Reasoning",
+      subjectSlug: "reasoning",
+      question: "<p>Reasoning question</p>",
+      options: [],
+      type: "mcq",
+      exam: { year: 2024, yearSetKey: null },
+    };
+
+    mockFilterContext.allQuestions = [gaQuestion, englishQuestion, quantQuestion, reasoningQuestion];
+    mockMockTestContext = {
+      ...mockMockTestContext,
+      mockQuestionPool: [gaQuestion, englishQuestion, quantQuestion, reasoningQuestion],
+      questionMetaByUid: {
+        "go:111": { questionUid: "go:111", section: "GA", type: "MCQ", marks: 1, scorable: true, paperReady: true, yearSetKey: "2024-s1" },
+        "APT-ENG-0010": { questionUid: "APT-ENG-0010", section: "GA", type: "MCQ", marks: 1, scorable: true, paperReady: true },
+        "APT-QNT-0020": { questionUid: "APT-QNT-0020", section: "GA", type: "MCQ", marks: 1, scorable: true, paperReady: true },
+        "APT-RSN-0030": { questionUid: "APT-RSN-0030", section: "GA", type: "MCQ", marks: 1, scorable: true, paperReady: true },
+      },
+    };
+
+    renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    fireEvent.click(screen.getByTestId("mock-portal-option-custom"));
+    fireEvent.click(screen.getByTestId("mock-portal-continue"));
+
+    const gaCheckbox = screen.getByRole("checkbox", { name: "General Aptitude" });
+    const englishCheckbox = screen.getByRole("checkbox", { name: "English" });
+    const quantCheckbox = screen.getByRole("checkbox", { name: "Quant" });
+    const reasoningCheckbox = screen.getByRole("checkbox", { name: "Reasoning" });
+
+    // General Aptitude is selected by default; English, Quant, Reasoning are NOT selected
+    expect(gaCheckbox.checked).toBe(true);
+    expect(englishCheckbox.checked).toBe(false);
+    expect(quantCheckbox.checked).toBe(false);
+    expect(reasoningCheckbox.checked).toBe(false);
+
+    // Only General Aptitude question (1) is in the pool initially
+    expect(screen.getByTestId("preview-ga").textContent).toBe("1");
+
+    // Manually selecting English adds English to the pool (1 GA + 1 English = 2)
+    fireEvent.click(englishCheckbox);
+    expect(englishCheckbox.checked).toBe(true);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("2");
+
+    // Manually selecting Quant adds Quant to the pool (1 GA + 1 English + 1 Quant = 3)
+    fireEvent.click(quantCheckbox);
+    expect(quantCheckbox.checked).toBe(true);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("3");
+
+    // Manually selecting Reasoning adds Reasoning (all 4 = 4)
+    fireEvent.click(reasoningCheckbox);
+    expect(reasoningCheckbox.checked).toBe(true);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("4");
+
+    // Unselecting General Aptitude removes General Aptitude (3 left)
+    fireEvent.click(gaCheckbox);
+    expect(gaCheckbox.checked).toBe(false);
+    expect(screen.getByTestId("preview-ga").textContent).toBe("3");
   });
 });

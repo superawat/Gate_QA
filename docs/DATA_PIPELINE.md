@@ -48,7 +48,9 @@ The published 2026 data and optimized figures do not depend on that source folde
    by `npm run qa:build-da-artifacts` and the public artifact build.
 7. `npm run qa:build-da-artifacts` (also invoked by the public artifact build) emits
    the DA manifest, search index, separate year detail shards, and
-   `public/mock_catalog_da_v1.json`.
+   `public/mock_catalog_da_v1.json`. Section partitioning (`GA` vs `CS` Core) in the mock catalog
+   inspects `tags` and subject slugs rather than question index order because GATE DA 2024 & 2025
+   placed GA questions at Q56–Q65 (with Q1–Q55 Core), whereas GATE DA 2026 placed GA at Q1–Q10.
 
 The DA normalizer maps all source labels into eight canonical runtime subjects. The
 validator rejects any unmapped subject label, so source taxonomy drift cannot silently
