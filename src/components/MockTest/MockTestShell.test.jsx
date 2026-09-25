@@ -680,4 +680,14 @@ describe("MockTestShell", () => {
     fireEvent.click(screen.getByTestId("mock-toggle-ga"));
     expect(screen.getByTestId("preview-ga").textContent).toBe("0");
   });
+
+  test("enforces light mode on documentElement while mounted and restores previous theme on unmount", () => {
+    document.documentElement.setAttribute("data-theme", "dark");
+    const { unmount } = renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
+
+    expect(document.documentElement.getAttribute("data-theme")).toBe("light");
+
+    unmount();
+    expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
+  });
 });

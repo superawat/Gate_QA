@@ -462,12 +462,11 @@ const ExplorePage = ({
                 <button
                   type="button"
                   onClick={handleBackHome}
-                  className="inline-flex min-h-[36px] sm:min-h-[40px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                  className="inline-flex min-h-[36px] sm:min-h-[40px] min-w-[36px] sm:min-w-[40px] w-[36px] sm:w-[40px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                   aria-label="Back to Home"
                   title="Home"
                 >
-                  <FiHome className="sm:mr-1.5 text-sm sm:text-base" />
-                  <span className="hidden sm:inline">Home</span>
+                  <FiHome className="text-base sm:text-lg" />
                 </button>
                 <div className="min-w-0">
                   <h1 className="practice-explore-title text-2xl font-semibold text-[color:var(--color-text)] sm:text-3xl">Explore questions</h1>

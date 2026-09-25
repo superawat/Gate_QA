@@ -1,5 +1,68 @@
 # Changelog
 
+- **Mock Test Strict Light-Theme Isolation & Dark-Mode Bleed Elimination (DEC-126)**:
+  - *Context*: When users had dark mode active site-wide (`data-theme="dark"`), navigating to `/mock` caused the Mock Test portal page to render with washed-out, white-on-white text (e.g., `"Choose Attempt Type"`, `"Full Mock"`, and subtitles became white `#f0f6fc` on white `#ffffff` cards, and pill badges became dark black boxes).
+  - *Root Cause Analysis*:
+    - **Not Temporary**: This was a deterministic CSS cascade collision. `src/index.css` contains global descendant overrides (`:root[data-theme="dark"] .text-slate-900 { color: #f0f6fc !important; }`, `:root[data-theme="dark"] .bg-slate-50 { background-color: #0d1117 !important; }`, etc.) intended for app-wide dark mode.
+    - When `AppHeader` was unmounted on `/mock` (which previously managed theme syncing), `document.documentElement` retained `data-theme="dark"`. Because `.mocktest-root` isolated its card surface to light white (`#ffffff`), `index.css`'s `!important` text and background overrides collided with the light container, turning text white-on-white and turning light badges black.
+  - *Dual-Layer Resolution*:
+    - **Layer 1 (Lifecycle Theme Lock in `MockTestShell.jsx`)**: Added a mount/unmount lifecycle `useEffect` that calls `applyDocumentTheme("light")` upon mounting `/mock` to enforce the authentic daytime TCS iON exam hall environment. When navigating away (unmounting), the user's prior `data-theme` preference (e.g., `"dark"`) is automatically restored.
+    - **Layer 2 (CSS Defense in `MockTest.css`)**: Added high-specificity override rules under `:root[data-theme="dark"] .mocktest-root` targeting `.text-slate-*`, `.text-gray-*`, `.bg-white`, `.bg-slate-*`, `.border-slate-*`, and themed accent tokens (`.bg-sky-50`, `.bg-emerald-50`, `.bg-purple-50`, `.mocktest-portal-selection`, `.mocktest-portal-fact`). This guarantees full light-mode legibility and contrast even in edge cases where `data-theme="dark"` is active on `:root`.
+  - *Testing & Verification*:
+    - Added unit test in `src/components/MockTest/MockTestShell.test.jsx` verifying that `MockTestShell` sets `data-theme="light"` on mount and restores the prior theme on unmount.
+    - Verified all 20 tests pass in `MockTestShell.test.jsx`.
+    - Ran TypeScript typecheck: `0 errors`.
+
+- **Custom Builder Purple Theme Alignment for Brand Consistency (DEC-125)**:
+  - *Context*: Visual alignment of Custom Builder setup (`/mock?stage=setup`) with the outer card on the Mock Test portal page (`MockTestPortal.jsx`) where Custom Builder is prominently themed in purple/violet (`#7c3aed` / `#9333ea`).
+  - *Changes*:
+    - **`MockTestSetup.jsx`**:
+      - Updated `KIND_META.custom.accent` to `"purple"` (was `"amber"`).
+      - Added `ACCENT_CLASSES.purple` providing cohesive purple tokens:
+        - `badge`: `"bg-purple-50 text-purple-700 border border-purple-200"`
+        - `chip`: `"border-purple-300 bg-purple-50 text-purple-800"`
+        - `panel`: `"border-purple-200 bg-[linear-gradient(180deg,#ffffff_0%,#faf5ff_100%)]"`
+        - `icon`: `"bg-purple-100 text-purple-700 border border-purple-200/60"`
+        - `button`: `"bg-purple-600 text-white hover:bg-purple-700"`
+      - Updated `FILTER_CHIP_TONE_CLASSES` to map `purple` and `violet` to `"border-purple-400 bg-purple-100 text-purple-900 ring-2 ring-purple-100"`.
+      - Updated `FilterChip` focus ring to dynamically provide `focus:ring-purple-500/30` for purple/violet tones.
+      - Updated `renderCustomContent()` to use `tone="purple"` for Question Count presets (15Q, 25Q, 65Q), Duration Mode (Adaptive, Custom), Year Scope (All years, Recent years, Custom range), All Subjects Broad Mix, and Question Types.
+      - Updated input focus outlines in Custom Builder to `focus:border-purple-400 focus:ring-2 focus:ring-purple-100`.
+      - Updated Attempt Summary sidebar container to use a soft purple gradient (`bg-[linear-gradient(180deg,#ffffff_0%,#faf5ff_100%)]`) when in Custom Builder mode.
+      - Updated Solved Questions Policy chips in the sidebar to adopt `tone={isCustom ? "purple" : "sky"}`.
+    - **`MockTest.css`**:
+      - Updated `.mocktest-root .mocktest-portal-option--custom::before` background from `#b45309` (amber) to `#9333ea` (purple-600), unifying the portal card's indicator stripe with its purple theme.
+  - *Verification*: Full test suite (84 test files, 1,068 tests passing, 0 failures), TypeScript typecheck clean (0 errors).
+
+- **Header Removal from Mock Test Portal, Performance Insights & Preparation Tracker Pages (DEC-124)**:
+  - *Context*: Align `/mock` (Mock Test portal/setup), `/insights` (Performance Insights page), and `/tracker` (Preparation Tracker page) with the distraction-free, dedicated full-app workspace paradigm established by `/practice` (`ExplorePage.jsx`) and `/practice/question/:id` (`SolvePage.jsx`).
+  - *Mock Test Changes*:
+    - Removed `AppHeader` from `renderPreExamShell` in `src/components/MockTest/MockTestShell.jsx`.
+    - Added `showBackButton={true}` and `backLabel="Back Home"` to `MockTestPortal.jsx`, wired to `handleFastExitToLanding` with teardown guards (`endMockTest()`), ensuring users can exit safely to `/` without accidental attempt restoration.
+    - **Preserved TCS Mock Test UI Header**: The exam-time TCS iON header (`MockTestHeader.jsx`) in `renderExamLayout` remains 100% untouched with all countdown timers, candidate details, GA/Core section tabs, question palette toggles, and calculator buttons active.
+    - **Strict Exam Light-Mode Lock**: Hardened `.mocktest-root` and `:root[data-theme="dark"] .mocktest-root` in `src/components/MockTest/MockTest.css` with locked light mode variables (`color-scheme: light !important`, light background/surface/border tokens) and purged `dark:` utility classes from `MockTestSetup.jsx`, strictly prohibiting dark mode features in mock tests to guarantee 100% fidelity to the authentic daytime TCS iON exam hall display.
+    - **Redesigned Front Page UI (`MockTestPortal.jsx`)**:
+      - Elevated card container with `rounded-2xl`, refined soft shadows, and clean border radius.
+      - Modernized header with active `GATE CBT Exam Simulator` live status badge, bold typography, interactive selected mode chip, and the square `<FiHome />` Back to Home button positioned at the top left of the header.
+      - Themed attempt cards: distinct color palettes for Full Mock (emerald), Past Paper (sky), and Custom Builder (purple), featuring top accent borders, soft tinted active backgrounds, radio-check selection indicators, and icon badges for question counts and timer duration.
+      - Removed secondary text assurance banner to keep the attempt layout clean, uncluttered, and focused.
+      - Footer cleanly presents the primary right-aligned `Continue with [Mode]` action.
+  - *Performance Insights Changes*:
+    - Configured `PageShell` in `src/pages/InsightsPage.jsx` with `showHeader={false}`.
+    - Added a direct "Back Home" navigation link and a compact dark/light theme switch button (`<FiSun />` / `<FiMoon />`) directly in the Insights Hero Header card.
+    - **Track Switcher Relocation & Import/Export Removal**: Removed `<ProgressManager />` (`Export JSON`, `Export CSV`, `Import`, info icon) from `InsightsPage.jsx` and relocated the track switcher (`GATE CS`, `GATE DA`, `Combined`) into the hero header card exactly where the import and export buttons previously were. Cleanly removed the redundant standalone track switcher row from below the hero card.
+  - *Home Navigation Icon-Only Harmonization*:
+    - Removed the redundant `"Home"` text string across `InsightsPage.jsx`, `ExplorePage.jsx`, and `SolvePage.jsx`, retaining strictly the `<FiHome />` symbol inside a balanced, square icon button with full accessibility (`aria-label="Back to Home"` and `title="Home"`).
+  - *Preparation Tracker Changes*:
+    - Configured `PageShell` in `src/pages/TrackerPage.jsx` with `showHeader={false}`.
+    - Added a compact dark/light theme switch button (`<FiSun />` / `<FiMoon />`) directly in the Track Switcher toolbar, seamlessly complementing the built-in `<-- Back to Home` button.
+  - *Testing & Verification*:
+    - Updated `MockTestShell.test.jsx` exit test to verify that the portal's `"Back Home"` button exits immediately without teardown when no test is active.
+    - Updated `InsightsPage.test.jsx` `PageShell` mock and added regression tests verifying `showHeader={false}`, the presence of the Home link pointing to `/`, theme switch, track switcher rendering in hero header, and absence of `ProgressManager` import/export buttons.
+    - Updated `TrackerPage.test.jsx` `PageShell` mock and added regression tests verifying `showHeader={false}` and the theme switch.
+    - Ran full unit test suite: **84 passed, 1,068 tests passed (0 failures)**.
+    - Ran TypeScript typecheck: **0 errors**.
+
 - **Question Bank Data Corrections & Integrity Fixes for `go:3278`, `go:422825`, `go:3831`, and `go:411710` (DEC-123)**:
   - *Context*: Four user-reported question data and classification defects resolved:
     1. **`go:3278` (GATE IT 2008 Q18)**: Asynchronous serial transmission / baud rate question was showing under Computer Networks CSE syllabus despite being obsolete.

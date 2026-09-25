@@ -1,6 +1,17 @@
 /* Scope mock-test styling strictly under .mocktest-root */
 
 .mocktest-root {
+  color-scheme: light !important;
+  --color-bg: #f8fafc !important;
+  --color-surface: #ffffff !important;
+  --color-surface-muted: #f1f5f9 !important;
+  --color-border: #e2e8f0 !important;
+  --color-text: #0f172a !important;
+  --color-text-muted: #475569 !important;
+  --color-primary: #0369a1 !important;
+  --color-primary-text: #0369a1 !important;
+  --color-primary-soft: #e0f2fe !important;
+  --color-primary-border: #7dd3fc !important;
   --mock-top-banner-h: 54px;
   --mock-header-h: 36px;
   --mock-info-row-h: 62px;
@@ -30,6 +41,130 @@
   --gate-color-marked: #7d4cb6;
   --gate-color-current-ring: #1a63c6;
   --gate-color-check: #84e04f;
+}
+
+/* Strict exam light-mode lock: prevent any dark theme overrides from bleeding into mock tests */
+:root[data-theme="dark"] .mocktest-root {
+  color-scheme: light !important;
+  --color-bg: #f8fafc !important;
+  --color-surface: #ffffff !important;
+  --color-surface-muted: #f1f5f9 !important;
+  --color-border: #e2e8f0 !important;
+  --color-text: #0f172a !important;
+  --color-text-muted: #475569 !important;
+  --color-primary: #0369a1 !important;
+  --color-primary-text: #0369a1 !important;
+  --color-primary-soft: #e0f2fe !important;
+  --color-primary-border: #7dd3fc !important;
+  background-color: #f4f8fc !important;
+  color: #0f172a !important;
+}
+
+/* Strict exam light-mode lock: defeat global !important dark mode overrides from index.css */
+:root[data-theme="dark"] .mocktest-root .text-slate-950,
+:root[data-theme="dark"] .mocktest-root .text-slate-900,
+:root[data-theme="dark"] .mocktest-root .text-slate-800,
+:root[data-theme="dark"] .mocktest-root .text-gray-900,
+:root[data-theme="dark"] .mocktest-root .text-gray-800 {
+  color: #0f172a !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-slate-700,
+:root[data-theme="dark"] .mocktest-root .text-gray-700 {
+  color: #334155 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-slate-600,
+:root[data-theme="dark"] .mocktest-root .text-gray-600 {
+  color: #475569 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-slate-500,
+:root[data-theme="dark"] .mocktest-root .text-gray-500 {
+  color: #64748b !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-slate-400,
+:root[data-theme="dark"] .mocktest-root .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-white {
+  background-color: #ffffff !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-slate-50,
+:root[data-theme="dark"] .mocktest-root .bg-slate-50\/80,
+:root[data-theme="dark"] .mocktest-root .bg-slate-50\/85,
+:root[data-theme="dark"] .mocktest-root .bg-slate-50\/50,
+:root[data-theme="dark"] .mocktest-root .bg-gray-50 {
+  background-color: #f8fafc !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-slate-100,
+:root[data-theme="dark"] .mocktest-root .bg-gray-100 {
+  background-color: #f1f5f9 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-slate-200 {
+  background-color: #e2e8f0 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .border-slate-200,
+:root[data-theme="dark"] .mocktest-root .border-slate-200\/80,
+:root[data-theme="dark"] .mocktest-root .border-slate-200\/90,
+:root[data-theme="dark"] .mocktest-root .border-slate-300 {
+  border-color: #e2e8f0 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-slate-900 {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-slate-900 .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-sky-50 {
+  background-color: #f0f9ff !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-sky-800 {
+  color: #075985 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-sky-700 {
+  color: #0369a1 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .border-sky-200,
+:root[data-theme="dark"] .mocktest-root .border-sky-200\/70 {
+  border-color: #bae6fd !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-emerald-50 {
+  background-color: #ecfdf5 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-emerald-800 {
+  color: #065f46 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .border-emerald-200 {
+  border-color: #a7f3d0 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .bg-purple-50 {
+  background-color: #faf5ff !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .text-purple-800 {
+  color: #6b21a8 !important;
+}
+
+:root[data-theme="dark"] .mocktest-root .border-purple-200 {
+  border-color: #e9d5ff !important;
 }
 
 .mocktest-root,
@@ -881,20 +1016,21 @@
 .mocktest-root .mocktest-setup-card {
   min-height: 540px;
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.03);
 }
 
 .mocktest-root .mocktest-portal-head {
   background:
-    linear-gradient(135deg, #ffffff 0%, #f7fbff 58%, #f4fbf2 100%);
+    linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
 }
 
 .mocktest-root .mocktest-portal-selection,
 .mocktest-root .mocktest-stat-tile,
 .mocktest-root .mocktest-preview-card,
 .mocktest-root .mocktest-summary-note {
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .mocktest-root .mocktest-portal-grid {
@@ -903,9 +1039,10 @@
 
 .mocktest-root .mocktest-portal-option {
   position: relative;
-  min-height: 260px;
+  min-height: 270px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 14px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mocktest-root .mocktest-portal-option::before {
@@ -926,7 +1063,7 @@
 }
 
 .mocktest-root .mocktest-portal-option--custom::before {
-  background: #b45309;
+  background: #9333ea;
 }
 
 .mocktest-root .mocktest-portal-option.is-selected::before {

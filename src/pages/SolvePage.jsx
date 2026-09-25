@@ -619,12 +619,11 @@ const SolvePage = ({
                 <button
                   type="button"
                   onClick={handleBackHome}
-                  className="inline-flex min-h-[32px] sm:min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="inline-flex min-h-[32px] sm:min-h-[38px] min-w-[32px] sm:min-w-[38px] w-[32px] sm:w-[38px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                   aria-label="Back to Home"
                   title="Home"
                 >
-                  <FiHome className="sm:mr-1.5 text-sm sm:text-base" />
-                  <span className="hidden sm:inline">Home</span>
+                  <FiHome className="text-sm sm:text-base" />
                 </button>
               </div>
 

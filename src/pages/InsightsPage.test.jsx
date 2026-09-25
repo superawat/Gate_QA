@@ -13,7 +13,15 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children }) => <div>{children}</div>,
+  default: ({ children, showHeader, showFooter }) => (
+    <div
+      data-testid="page-shell"
+      data-show-header={String(showHeader)}
+      data-show-footer={String(showFooter)}
+    >
+      {children}
+    </div>
+  ),
 }));
 
 vi.mock("../utils/weakTopicAnalyzer", () => ({
@@ -479,4 +487,59 @@ describe("InsightsPage", () => {
     });
     expect(mocks.clearInsightsCache).toHaveBeenCalled();
   });
+
+  test("renders PageShell with showHeader=false for distraction-free analytics", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 0,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText(/no insights yet/i);
+
+    const pageShell = screen.getByTestId("page-shell");
+    expect(pageShell.getAttribute("data-show-header")).toBe("false");
+  });
+
+  test("renders Home navigation button and theme toggle in hero header", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 0,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText(/no insights yet/i);
+
+    const homeLink = screen.getByRole("link", { name: /back to home/i });
+    expect(homeLink).toBeTruthy();
+    expect(homeLink.getAttribute("href")).toBe("/");
+
+    const themeToggle = screen.getByRole("switch", { name: /switch to (dark|light) mode/i });
+    expect(themeToggle).toBeTruthy();
+  });
+
+  test("renders track switcher in header and does not render ProgressManager import/export buttons", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 0,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText(/no insights yet/i);
+
+    expect(screen.getByRole("button", { name: /gate cs/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /gate da/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /combined/i })).toBeTruthy();
+
+    expect(screen.queryByRole("button", { name: /export json/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /export csv/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /import/i })).toBeNull();
+  });
 });
+

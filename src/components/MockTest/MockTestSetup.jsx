@@ -74,7 +74,7 @@ const KIND_META = {
     },
     custom: {
         icon: FaSlidersH,
-        accent: "amber",
+        accent: "purple",
         title: "Custom Builder",
         description: "",
         note: "",
@@ -85,21 +85,28 @@ const joinClasses = (...tokens) => tokens.filter(Boolean).join(" ");
 
 const ACCENT_CLASSES = {
     emerald: {
-        badge: "bg-emerald-50 text-emerald-700",
+        badge: "bg-emerald-50 text-emerald-700 border border-emerald-200",
         chip: "border-emerald-300 bg-emerald-50 text-emerald-800",
         panel: "border-emerald-200 bg-[linear-gradient(180deg,#ffffff_0%,#ecfdf5_100%)]",
         icon: "bg-emerald-100 text-emerald-700",
         button: "bg-emerald-600 text-white hover:bg-emerald-700",
     },
     sky: {
-        badge: "bg-sky-50 text-sky-700",
+        badge: "bg-sky-50 text-sky-700 border border-sky-200",
         chip: "border-sky-300 bg-sky-50 text-sky-800",
         panel: "border-sky-200 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)]",
         icon: "bg-sky-100 text-sky-700",
         button: "bg-sky-700 text-white hover:bg-sky-800",
     },
+    purple: {
+        badge: "bg-purple-50 text-purple-700 border border-purple-200",
+        chip: "border-purple-300 bg-purple-50 text-purple-800",
+        panel: "border-purple-200 bg-[linear-gradient(180deg,#ffffff_0%,#faf5ff_100%)]",
+        icon: "bg-purple-100 text-purple-700 border border-purple-200/60",
+        button: "bg-purple-600 text-white hover:bg-purple-700",
+    },
     amber: {
-        badge: "bg-amber-50 text-amber-700",
+        badge: "bg-amber-50 text-amber-700 border border-amber-200",
         chip: "border-amber-300 bg-amber-50 text-amber-800",
         panel: "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)]",
         icon: "bg-amber-100 text-amber-700",
@@ -118,7 +125,8 @@ const FILTER_CHIP_TONE_CLASSES = {
     slate: "border-slate-400 bg-slate-100 text-slate-900 ring-2 ring-slate-200",
     sky: "border-sky-400 bg-sky-100 text-sky-900 ring-2 ring-sky-100",
     emerald: "border-emerald-400 bg-emerald-100 text-emerald-900 ring-2 ring-emerald-100",
-    violet: "border-violet-400 bg-violet-100 text-violet-900 ring-2 ring-violet-100",
+    violet: "border-purple-400 bg-purple-100 text-purple-900 ring-2 ring-purple-100",
+    purple: "border-purple-400 bg-purple-100 text-purple-900 ring-2 ring-purple-100",
 };
 
 const FilterChip = ({
@@ -129,13 +137,19 @@ const FilterChip = ({
     ...rest
 }) => {
     const toneClass = FILTER_CHIP_TONE_CLASSES[tone] || FILTER_CHIP_TONE_CLASSES.slate;
+    const focusRing = (tone === "purple" || tone === "violet")
+        ? "focus:ring-purple-500/30"
+        : tone === "emerald"
+            ? "focus:ring-emerald-500/30"
+            : "focus:ring-sky-500/30";
 
     return (
         <button
             type="button"
             onClick={onClick}
             className={joinClasses(
-                "mocktest-filter-chip border px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-sky-500/30",
+                "mocktest-filter-chip border px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2",
+                focusRing,
                 active
                     ? toneClass
                     : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
@@ -172,7 +186,7 @@ const ToggleSwitch = ({
             aria-label={label}
         />
         <span
-            className={`h-6 w-11 rounded-full bg-slate-300 dark:bg-slate-600 transition-colors duration-200 ${activeColor} peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2`}
+            className={`h-6 w-11 rounded-full bg-slate-300 transition-colors duration-200 ${activeColor} peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2`}
         />
         <span
             className="pointer-events-none absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform duration-200 peer-checked:translate-x-5"
@@ -874,7 +888,7 @@ const MockTestSetup = ({
                             max={65}
                             value={setupState.customCount}
                             onChange={(event) => onPatchState({ customCount: Number(event.target.value) })}
-                            className="mocktest-input w-full border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                            className="mocktest-input w-full border border-slate-300 bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
                         />
                     </div>
                 </div>
@@ -883,7 +897,7 @@ const MockTestSetup = ({
                         <FilterChip
                             key={count}
                             active={Number(setupState.customCount) === count}
-                            tone="sky"
+                            tone="purple"
                             data-testid={`mock-setup-count-preset-${count}`}
                             onClick={() => onPatchState({ customCount: count })}
                         >
@@ -902,7 +916,7 @@ const MockTestSetup = ({
                     <div className="flex gap-2">
                         <FilterChip
                             active={setupState.customDurationMode === "adaptive"}
-                            tone="sky"
+                            tone="purple"
                             data-testid="duration-mode-adaptive"
                             onClick={() => onPatchState({ customDurationMode: "adaptive" })}
                         >
@@ -910,7 +924,7 @@ const MockTestSetup = ({
                         </FilterChip>
                         <FilterChip
                             active={setupState.customDurationMode === "manual"}
-                            tone="sky"
+                            tone="purple"
                             data-testid="duration-mode-manual"
                             onClick={() => onPatchState({ customDurationMode: "manual" })}
                         >
@@ -946,7 +960,7 @@ const MockTestSetup = ({
                                     className={`mocktest-input w-full border bg-white px-3 py-2 text-base font-semibold text-slate-950 shadow-[var(--shadow-soft)] focus:outline-none ${
                                         (!Number.isFinite(Number(setupState.customDurationMinutes)) || Number(setupState.customDurationMinutes) < 1 || setupState.customDurationMinutes === "")
                                             ? "border-rose-400 focus:border-rose-500 ring-2 ring-rose-100"
-                                            : "border-slate-300 focus:border-sky-400"
+                                            : "border-slate-300 focus:border-purple-400 focus:ring-2 focus:ring-purple-100"
                                     }`}
                                 />
                             </div>
@@ -969,7 +983,7 @@ const MockTestSetup = ({
                         <FilterChip
                             key={option.id}
                             active={setupState.yearFilterMode === option.id}
-                            tone="sky"
+                            tone="purple"
                             data-testid={`mock-setup-year-scope-${option.id}`}
                             onClick={() => onPatchState({ yearFilterMode: option.id })}
                         >
@@ -987,7 +1001,7 @@ const MockTestSetup = ({
                                 max={setupState.maxYear}
                                 value={setupState.yearRangeStart}
                                 onChange={(event) => onPatchState({ yearRangeStart: Number(event.target.value) })}
-                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
                             />
                         </label>
                         <label className="text-sm font-semibold text-slate-700">
@@ -998,7 +1012,7 @@ const MockTestSetup = ({
                                 max={setupState.maxYear}
                                 value={setupState.yearRangeEnd}
                                 onChange={(event) => onPatchState({ yearRangeEnd: Number(event.target.value) })}
-                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-sky-400 focus:outline-none"
+                                className="mocktest-input mt-2 w-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 shadow-[var(--shadow-soft)] focus:border-purple-400 focus:ring-2 focus:ring-purple-100 focus:outline-none"
                             />
                         </label>
                     </div>
@@ -1023,7 +1037,7 @@ const MockTestSetup = ({
                     {/* All-subjects broad mix shortcut */}
                     <FilterChip
                         active={selectedSubjectSet.size === 0}
-                        tone="sky"
+                        tone="purple"
                         onClick={() => onPatchState({ selectedSubjects: [], selectedSubtopics: [], expandedSubjectSlug: null })}
                     >
                         All Subjects (Broad Mix)
@@ -1307,7 +1321,7 @@ const MockTestSetup = ({
                         <FilterChip
                             key={type}
                             active={selectedTypeSet.has(type)}
-                            tone="violet"
+                            tone="purple"
                             onClick={() => onToggleSelection("selectedTypes", type)}
                         >
                             {type}
@@ -1345,7 +1359,7 @@ const MockTestSetup = ({
                     </section>
 
                     <aside className="sticky top-6 space-y-4 self-start overflow-y-auto max-h-[calc(100vh-260px)]">
-                        <div className="rounded-[var(--radius-card)] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] p-4 shadow-[var(--shadow-soft)]">
+                        <div className={joinClasses("rounded-[var(--radius-card)] border border-slate-200 p-4 shadow-[var(--shadow-soft)]", isCustom ? "bg-[linear-gradient(180deg,#ffffff_0%,#faf5ff_100%)]" : "bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]")}>
                             <div className="flex items-start gap-3">
                                 <span className={joinClasses("mocktest-icon-box inline-flex h-11 w-11 shrink-0 items-center justify-center", accent.icon)}>
                                     <Icon />
@@ -1383,7 +1397,7 @@ const MockTestSetup = ({
                                 <div className="mt-3 flex flex-wrap gap-2">
                                     <FilterChip
                                         active={setupState.solvedFilter === "unsolved"}
-                                        tone="sky"
+                                        tone={isCustom ? "purple" : "sky"}
                                         data-testid="solved-filter-unsolved"
                                         onClick={() => onPatchState({ solvedFilter: "unsolved" })}
                                     >
@@ -1391,7 +1405,7 @@ const MockTestSetup = ({
                                     </FilterChip>
                                     <FilterChip
                                         active={setupState.solvedFilter === "all"}
-                                        tone="sky"
+                                        tone={isCustom ? "purple" : "sky"}
                                         data-testid="solved-filter-all"
                                         onClick={() => onPatchState({ solvedFilter: "all" })}
                                     >
@@ -1399,7 +1413,7 @@ const MockTestSetup = ({
                                     </FilterChip>
                                     <FilterChip
                                         active={setupState.solvedFilter === "solved_only"}
-                                        tone="sky"
+                                        tone={isCustom ? "purple" : "sky"}
                                         data-testid="solved-filter-solved-only"
                                         onClick={() => onPatchState({ solvedFilter: "solved_only" })}
                                     >

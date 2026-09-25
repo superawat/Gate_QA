@@ -40,17 +40,18 @@ import {
 } from "recharts";
 
 import ProgressBar from "../components/Filters/ProgressBar";
-import ProgressManager from "../components/ProgressManager/ProgressManager";
 import { useFilterState } from "../contexts/FilterContext";
 import PageShell from "../components/Layout/PageShell";
 import SEOHead from "../components/SEO/SEOHead";
 import LoadingState from "../components/Loaders/LoadingState";
-import { PRACTICE_ROUTE } from "../utils/routes";
+import { FiHome, FiMoon, FiSun } from "react-icons/fi";
+import { HOME_ROUTE, PRACTICE_ROUTE } from "../utils/routes";
 import { buildSolvePath } from "../utils/routes";
 import { loadWeakTopicInsights, clearInsightsCache } from "../utils/weakTopicAnalyzer";
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
 import useChartTheme from "../hooks/useChartTheme";
 import CollapsibleSection from "../components/Layout/CollapsibleSection";
+import { useTheme } from "../utils/theme";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -1755,6 +1756,7 @@ const InsightsPage = ({
   onStartMockTest,
 }) => {
   const { allQuestions, solvedCount, totalQuestions, progressPercentage } = useFilterState();
+  const { isDarkMode, toggleTheme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -1967,23 +1969,89 @@ const InsightsPage = ({
       description="Track your GATE CS practice progress with subject-wise accuracy, coverage stats, weak topic analysis, mock test history, and spaced repetition review."
       path="/insights"
     />
-    <PageShell onResume={hasResumeRoute ? onResumePractice : null} resumeLabel="Continue">
+    <PageShell
+      showHeader={false}
+      onResume={hasResumeRoute ? onResumePractice : null}
+      resumeLabel="Continue"
+    >
       <section className="space-y-5">
         {/* Hero header */}
         <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-card)] sm:p-5">
           <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
-            <div className="flex flex-wrap xl:flex-nowrap items-center gap-4">
+            <div className="flex flex-wrap xl:flex-nowrap items-center gap-3 sm:gap-4">
+              <Link
+                to={HOME_ROUTE}
+                className="inline-flex min-h-[38px] sm:min-h-[40px] min-w-[38px] sm:min-w-[40px] w-[38px] sm:w-[40px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                aria-label="Back to Home"
+                title="Home"
+              >
+                <FiHome className="text-base sm:text-lg shrink-0" />
+              </Link>
               <div className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary-soft)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-primary-text)] shrink-0">
                 <FaChartLine />
                 Insights
               </div>
-              <ProgressManager />
+
+              {/* Multi-Branch Track Switcher */}
+              <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-sm">
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("cs")}
+                  className={`inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
+                    selectedTrack === "cs"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaGraduationCap className="text-xs shrink-0" />
+                  <span>GATE CS</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("da")}
+                  className={`inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
+                    selectedTrack === "da"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaRobot className="text-xs shrink-0" />
+                  <span>GATE DA</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("all")}
+                  className={`inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
+                    selectedTrack === "all"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaLayerGroup className="text-xs shrink-0" />
+                  <span>Combined</span>
+                </button>
+              </div>
             </div>
 
-            <div className="shrink-0 ml-auto lg:ml-0">
+            <div className="flex items-center gap-2 shrink-0 ml-auto lg:ml-0">
+              <button
+                type="button"
+                role="switch"
+                onClick={toggleTheme}
+                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                aria-checked={isDarkMode}
+                title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                className="inline-flex min-h-[38px] sm:min-h-[40px] min-w-[38px] sm:min-w-[40px] w-[38px] sm:w-[40px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+              >
+                {isDarkMode ? (
+                  <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                ) : (
+                  <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                )}
+              </button>
               <Link
                 to={PRACTICE_ROUTE}
-                className="inline-flex min-h-[40px] items-center rounded-xl bg-[color:var(--color-primary)] px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm"
+                className="inline-flex min-h-[38px] sm:min-h-[40px] items-center rounded-xl bg-[color:var(--color-primary)] px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm"
               >
                 <FaCompass className="mr-2" />
                 Open Practice
@@ -2043,55 +2111,6 @@ const InsightsPage = ({
           </div>
         ) : (
           <>
-            {/* Multi-Branch Option C Track Switcher */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-              <div className="inline-flex w-full sm:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-sm">
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("cs")}
-                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3.5 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
-                    selectedTrack === "cs"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaGraduationCap className="text-xs shrink-0" />
-                  <span>GATE CS</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("da")}
-                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3.5 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
-                    selectedTrack === "da"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaRobot className="text-xs shrink-0" />
-                  <span>GATE DA</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("all")}
-                  className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3.5 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
-                    selectedTrack === "all"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaLayerGroup className="text-xs shrink-0" />
-                  <span>Combined</span>
-                </button>
-              </div>
-              <span className="text-xs text-[color:var(--color-text-muted)] font-medium">
-                {selectedTrack === "cs"
-                  ? "Showing GATE CS syllabus readiness"
-                  : selectedTrack === "da"
-                    ? "Showing GATE DA & AI syllabus readiness"
-                    : "Showing combined practice syllabus"}
-              </span>
-            </div>
-
             {/* Tab navigation */}
             <div className="flex gap-1 rounded-2xl bg-[color:var(--color-surface-muted)] p-1 shadow-inner">
               {TABS.map((tab) => {

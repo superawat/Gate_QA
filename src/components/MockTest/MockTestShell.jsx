@@ -18,7 +18,6 @@ import {
 } from "../../utils/mockTest";
 import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
 import { getSubjectAllSubtopicSlugs } from "../../utils/mockTaxonomyHierarchy";
-import AppHeader from "../Layout/AppHeader";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
 import CalculatorWidget from "../Calculator/CalculatorWidget";
 import MockTestHeader from "./MockTestHeader";
@@ -29,6 +28,7 @@ import MockTestResults from "./MockTestResults";
 import MockTestPortal from "./MockTestPortal";
 import MockTestSetup from "./MockTestSetup";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { applyDocumentTheme, resolveInitialTheme } from "../../utils/theme";
 import "./MockTest.css";
 
 const PALETTE_COLLAPSE_STORAGE_KEY = "gateqa_mock_palette_collapsed";
@@ -492,6 +492,24 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const exitInProgressRef = useRef(false);
     const [isStartingExam, setIsStartingExam] = useState(false);
     const [setupState, setSetupState] = useState(() => buildDefaultSetupState(2000, 2025));
+
+    useEffect(() => {
+        // Enforce strict exam daytime light-mode lock during mock test session
+        const previousTheme = typeof document !== "undefined"
+            ? document.documentElement.getAttribute("data-theme")
+            : null;
+        applyDocumentTheme("light");
+
+        return () => {
+            // Restore user's preferred theme when navigating away
+            if (previousTheme) {
+                applyDocumentTheme(previousTheme);
+            } else {
+                const { theme } = resolveInitialTheme();
+                applyDocumentTheme(theme);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
@@ -1460,7 +1478,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
 
     const renderPreExamShell = (content) => (
         <div className="mocktest-root flex min-h-screen w-full flex-col bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.08),_transparent_24%),linear-gradient(180deg,#eef4fb_0%,#f8fbff_18%,#f4f7fb_100%)] text-sm selection:bg-sky-100">
-            <AppHeader onHomeNavigate={handleFastExitToLanding} />
             <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
                 {setupBanner}
                 {content}
@@ -1619,8 +1636,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         selectedKindId={selectedKindId}
                         onSelectKind={setSelectedKindId}
                         onContinue={handleContinueFromPortal}
-                        onBack={handleExitToLanding}
-                        showBackButton={false}
+                        onBack={handleFastExitToLanding}
+                        backLabel="Back Home"
+                        showBackButton={true}
                     />
                 ) : (
                     <MockTestSetup
@@ -1680,8 +1698,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 selectedKindId={selectedKindId}
                 onSelectKind={setSelectedKindId}
                 onContinue={handleContinueFromPortal}
-                onBack={handleExitToLanding}
-                showBackButton={false}
+                onBack={handleFastExitToLanding}
+                backLabel="Back Home"
+                showBackButton={true}
             />
         )
     );

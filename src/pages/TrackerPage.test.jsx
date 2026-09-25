@@ -15,7 +15,15 @@ vi.mock("../components/Math/MathRuntime", () => ({
 
 // Mock PageShell
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children }) => <div data-testid="page-shell">{children}</div>,
+  default: ({ children, showHeader, showFooter }) => (
+    <div
+      data-testid="page-shell"
+      data-show-header={String(showHeader)}
+      data-show-footer={String(showFooter)}
+    >
+      {children}
+    </div>
+  ),
 }));
 
 
@@ -267,6 +275,18 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     const backBtn = screen.getByRole("link", { name: /back to home/i });
     expect(backBtn).toBeTruthy();
     expect(backBtn.getAttribute("href")).toBe("/");
+  });
+
+  it("renders PageShell with showHeader=false for distraction-free tracker experience", () => {
+    renderTrackerPage();
+    const pageShell = screen.getByTestId("page-shell");
+    expect(pageShell.getAttribute("data-show-header")).toBe("false");
+  });
+
+  it("renders a theme toggle switch button in track switcher toolbar", () => {
+    renderTrackerPage();
+    const themeToggle = screen.getByRole("switch", { name: /switch to (dark|light) mode/i });
+    expect(themeToggle).toBeTruthy();
   });
 });
 

@@ -11,7 +11,10 @@ import {
   FiAlertCircle,
   FiBell,
   FiBookOpen,
+  FiMoon,
+  FiSun,
 } from "react-icons/fi";
+import { useTheme } from "../utils/theme";
 import { useFilterState } from "../contexts/FilterContext";
 import { QuestionService } from "../services/QuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
@@ -49,6 +52,7 @@ import TrackerResetModal from "../components/Tracker/TrackerResetModal";
 
 export default function TrackerPage() {
   const filterState = useFilterState();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   // Load preferences
   const [preferences, setPreferences] = useState(loadTrackerPreferences);
@@ -333,7 +337,7 @@ export default function TrackerPage() {
         />
       </Helmet>
 
-      <PageShell contentClassName="pb-16 sm:pb-24 pt-3 sm:pt-5">
+      <PageShell showHeader={false} contentClassName="pb-16 sm:pb-24 pt-3 sm:pt-5">
         {/* Top Header */}
         <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[color:var(--color-border)] pb-5 sm:pb-6 mb-5 sm:mb-6">
           <div>
@@ -384,6 +388,21 @@ export default function TrackerPage() {
             >
               <FiTrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>GATE DA</span>
+            </button>
+            <button
+              type="button"
+              role="switch"
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              aria-checked={isDarkMode}
+              title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              className="inline-flex min-h-[32px] sm:min-h-[34px] min-w-[32px] sm:min-w-[34px] w-[32px] sm:w-[34px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1.5 text-[color:var(--color-text)] shadow-xs transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+            >
+              {isDarkMode ? (
+                <FiSun className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
+              ) : (
+                <FiMoon className="h-3.5 w-3.5 text-slate-600" aria-hidden="true" />
+              )}
             </button>
           </div>
         </header>
