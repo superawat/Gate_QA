@@ -90,9 +90,9 @@ describe("Question Pool Consistency: Filter Questions vs Custom Builder", () => 
       return meta?.type === "MSQ" && meta?.scorable;
     });
 
-    expect(mcqQuestions.length).toBe(199);
-    expect(natQuestions.length).toBe(46);
-    expect(msqQuestions.length).toBe(16);
+    expect(mcqQuestions.length).toBe(206);
+    expect(natQuestions.length).toBe(34);
+    expect(msqQuestions.length).toBe(21);
     expect(mcqQuestions.length + natQuestions.length + msqQuestions.length).toBe(261);
   });
 

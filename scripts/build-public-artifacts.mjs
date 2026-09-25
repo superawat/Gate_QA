@@ -1245,30 +1245,44 @@ function registerMockMeta(group, meta, byQuestionUid) {
 }
 
 function resolveMockQuestionType(question = {}, answerRecord = null) {
-  const tags = Array.isArray(question.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
   const answerType = String(answerRecord?.type || question.type || "").trim().toUpperCase();
 
   if (MOCK_AUTO_AWARD_TYPES.has(answerType)) {
     return answerType;
   }
 
-  const isExplicitNatTag = tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat");
-  const isExplicitMsqTag = tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq");
-  const isExplicitMcqTag = tags.includes("multiple-choice") || tags.includes("mcq");
-
   if (answerType === "MULTI_NAT" || answerType === "MULTI_BLANK_NAT") {
     return "MULTI_NAT";
   }
 
-  if (answerType === "NAT" || isExplicitNatTag) {
-    return "NAT";
+  // Authoritative answerRecord/question types take precedence over loose community tags
+  if (answerType === "MCQ") {
+    return "MCQ";
   }
 
-  if (answerType === "MSQ" || (isExplicitMsqTag && Array.isArray(answerRecord?.answer))) {
+  if (answerType === "MSQ") {
     return "MSQ";
   }
 
-  if (answerType === "MCQ" || isExplicitMcqTag) {
+  if (answerType === "NAT") {
+    return "NAT";
+  }
+
+  // Fallback to tags only if answerType is not already definitive
+  const tags = Array.isArray(question.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
+  const isExplicitNatTag = tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat");
+  const isExplicitMsqTag = tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq");
+  const isExplicitMcqTag = tags.includes("multiple-choice") || tags.includes("mcq");
+
+  if (isExplicitNatTag) {
+    return "NAT";
+  }
+
+  if (isExplicitMsqTag && Array.isArray(answerRecord?.answer)) {
+    return "MSQ";
+  }
+
+  if (isExplicitMcqTag) {
     return "MCQ";
   }
 

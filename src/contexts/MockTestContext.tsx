@@ -394,7 +394,9 @@ const buildFallbackMockMetaByUid = (questions = []) => {
     const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
     let rawType = String(answerRecord?.type || question?.answerMeta?.type || question?.type || "").trim().toUpperCase();
 
-    if (tags.includes("multi-nat") || tags.includes("multi-blank-nat") || rawType === "MULTI_NAT" || rawType === "MULTI_BLANK_NAT") {
+    if (rawType === "MULTI_NAT" || rawType === "MULTI_BLANK_NAT" || rawType === "MCQ" || rawType === "MSQ" || rawType === "NAT") {
+      // Authoritative answerRecord/question type takes precedence over community tags
+    } else if (tags.includes("multi-nat") || tags.includes("multi-blank-nat")) {
       rawType = "MULTI_NAT";
     } else if (tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat")) {
       rawType = "NAT";

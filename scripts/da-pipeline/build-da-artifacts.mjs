@@ -136,9 +136,12 @@ export async function buildDaPublicArtifacts() {
       count: (subjectCounts.get(subjectSlug)?.count || 0) + 1,
     });
 
+    const questionUid = getQuestionUid(question);
+    const answerRecord = answersByQuestionUid[questionUid] || null;
+
     return {
-      question_uid: getQuestionUid(question),
-      exam_uid: getQuestionUid(question),
+      question_uid: questionUid,
+      exam_uid: questionUid,
       title: question.title,
       category,
       track: "da",
@@ -147,7 +150,7 @@ export async function buildDaPublicArtifacts() {
       year: Number(category),
       subjectSlug,
       subjectLabel,
-      type: (question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase()))?.toUpperCase() || "UNKNOWN",
+      type: String(answerRecord?.type || (question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "UNKNOWN").toUpperCase(),
       marks: (question.tags || []).includes("two-marks") ? 2 : 1,
       link: question.link,
       preview: buildPreview(question),
@@ -228,9 +231,9 @@ export async function buildDaPublicArtifacts() {
 
     gaQuestions.forEach((question, gaIndex) => {
       const questionUid = getQuestionUid(question);
-      const type = String((question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "").toUpperCase();
-      const marks = (question.tags || []).includes("two-marks") ? 2 : 1;
       const answerRecord = answersByQuestionUid[questionUid] || null;
+      const type = String(answerRecord?.type || (question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "").toUpperCase();
+      const marks = (question.tags || []).includes("two-marks") ? 2 : 1;
       mockByQuestionUid[questionUid] = {
         questionUid,
         yearSetKey: `${year}-s1`,
@@ -251,9 +254,9 @@ export async function buildDaPublicArtifacts() {
 
     csQuestions.forEach((question, csIndex) => {
       const questionUid = getQuestionUid(question);
-      const type = String((question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "").toUpperCase();
-      const marks = (question.tags || []).includes("two-marks") ? 2 : 1;
       const answerRecord = answersByQuestionUid[questionUid] || null;
+      const type = String(answerRecord?.type || (question.tags || []).find((tag) => ["mcq", "msq", "nat"].includes(String(tag || "").toLowerCase())) || "").toUpperCase();
+      const marks = (question.tags || []).includes("two-marks") ? 2 : 1;
       mockByQuestionUid[questionUid] = {
         questionUid,
         yearSetKey: `${year}-s1`,

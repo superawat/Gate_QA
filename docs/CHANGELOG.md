@@ -1,5 +1,25 @@
 # Changelog
 
+- **Mock Catalog Elimination of Loose Tag Precedence over Authoritative Answer Records & Resolution of 160 False NAT Classifications (DEC-131)**:
+  - *Context*: In Mock Test mode, questions like GATE CSE 2026 Set 1 Q33 (`go:523047`) appeared as `type: "NAT"` with a virtual numeric keypad and 0 negative marking instead of rendering their 4 option choices (A, B, C, D) as an MCQ or MSQ.
+  - *Root Cause Analysis*:
+    - When memory-based questions were scraped from GateOverflow, community contributors attached the `"numerical-answers"` tag before official keys/papers were released.
+    - In `scripts/build-public-artifacts.mjs`, `resolveMockQuestionType` checked `isExplicitNatTag` (`tags.includes("numerical-answers") || tags.includes("nat")`) *before* checking the question's true type (`answerRecord.type`).
+    - In `src/contexts/MockTestContext.tsx`, `buildFallbackMockMetaByUid` also allowed community tags to overwrite raw types.
+    - Across the master question bank, **160 verified questions** (123 MCQs and 37 MSQs) were being forced into `type: "NAT"` in `public/mock_catalog_v1.json`, hiding their options during mock exams and misapplying 0 negative marking.
+  - *Implementation*:
+    - **In `scripts/build-public-artifacts.mjs` (`resolveMockQuestionType`)**: Authoritative answer records (`answerType === "MCQ"`, `"MSQ"`, `"NAT"`, `"MULTI_NAT"`) now take strict precedence over loose community tags. Community tags are only consulted as fallbacks when `answerType` is missing or undefined.
+    - **In `src/contexts/MockTestContext.tsx` (`buildFallbackMockMetaByUid`)**: Preserved authoritative `rawType` if already `"MCQ"`, `"MSQ"`, `"NAT"`, or `"MULTI_NAT"`, preventing tags from overwriting official answer records.
+    - **In `scripts/da-pipeline/build-da-artifacts.mjs`**: Hardened DA mock catalog and search question type generation to prioritize authoritative `answerRecord.type` over question tags.
+    - **Preserved Source Tags Intact**: Retained source question tags faithfully across master datasets without manual edits, as the code fix ensures loose tags can no longer override official question types.
+    - **Rebuilt Public Artifacts**: Ran `node scripts/precompute-subtopics.mjs; node scripts/build-public-artifacts.mjs; node scripts/da-pipeline/build-da-artifacts.mjs`.
+  - *Verification*:
+    - Recomputed `public/mock_catalog_v1.json`: All 160 previously misclassified questions are now accurately typed as MCQ and MSQ (`go:523047` has `type: "MCQ"`, `marks: 2`, `negativeMarks: 0.6666666667`).
+    - 0 question type mismatches remain across the entire mock catalog.
+    - **All 55 papers in the Mock Catalog remain 100% Release-ready (0 papers blocked)**.
+    - Updated `src/components/MockTest/QuestionPoolConsistency.test.jsx` Digital Logic question breakdown (MCQs: 199 -> 206, MSQs: 16 -> 21, NATs: 46 -> 34).
+    - Unit tests: **1,074 tests passing across 84 test files (0 failures)**; TypeScript typecheck clean (0 errors).
+
 - **Question Bank Resolution for Single-Space Inline Options, Pre-2003 Image Options & Missing 2002 Answer Records (DEC-130)**:
   - *Context*: Resolved validation and parsing defects across three historical paper categories (Bucket 2, Bucket 3, Bucket 4).
   - *Changes*:
