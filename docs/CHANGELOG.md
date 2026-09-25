@@ -1,6 +1,26 @@
 # Changelog
 
+- **Question Bank Data Corrections & Integrity Fixes for `go:3278`, `go:422825`, `go:3831`, and `go:411710` (DEC-123)**:
+  - *Context*: Four user-reported question data and classification defects resolved:
+    1. **`go:3278` (GATE IT 2008 Q18)**: Asynchronous serial transmission / baud rate question was showing under Computer Networks CSE syllabus despite being obsolete.
+    2. **`go:422825` (GATE CSE 2024 Set 1 Q17)**: Probability events question was contaminated with `databases` and `database-normalization` tags, showing under DBMS instead of Engineering Mathematics.
+    3. **`go:3831` (GATE IT 2005 Q68)**: SQL `NATURAL JOIN` vs duplicate-eliminating relational algebra question was marked as Option D (0) instead of Option B (4).
+    4. **`go:411710` (GATE CH 2022 GA Q7)**: 8-sector wheel sum-to-8 probability question had malformed split `<ol>` markup with roman numeral starts (`start="100"`, `start="500"`), rendering only 2 options instead of A–D.
+  - *Mathematical & Official Proofs*:
+    - **`go:3831`**: Table `student` filtered by `marks >= 75 and roll between 2000 and 3000` matches rolls 2369, 2581, 2643, 2872, 2926, 2959. In SQL (bag semantics), hostel outputs with hobbies produce 7 rows (`[7, 6, 5, 5, 5, 5, 7]`). Relational algebra $\Pi_{\text{hostel}}$ uses set semantics, eliminating duplicates to produce 3 tuples ($\{5, 6, 7\}$). Difference = $7 - 3 = 4$ rows (Option B).
+    - **`go:411710`**: Two 8-sector wheels have $8 \times 8 = 64$ outcomes. Pairs summing to 8 are $(1,7), (2,6), (3,5), (4,4), (5,3), (6,2), (7,1)$ = 7 outcomes. Probability = $\frac{7}{64}$ (Option D).
+    - **`go:422825`**: $P(A)=0.3, P(B)=0.5, P(A \cap B)=0.1$. $P(A)P(B) = 0.15 \ne 0.1$ (not independent $\implies$ A false); $P(A \cup B) = 0.3+0.5-0.1 = 0.7$ (B true); $P(A \cap B^c) = P(A) - P(A \cap B) = 0.3 - 0.1 = 0.2$ (C true); $P(A^c \cap B^c) = 1 - P(A \cup B) = 0.3 \ne 0.4$ (D false). Correct MSQ answer is $\{B, C\}$. Tag cleaned to `engineering-mathematics` and `probability`.
+  - *Resolution*:
+    - Updated `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `data/it/answers-gateit.json`, and `public/data/it/answers-gateit.json`.
+    - Repaired `public/questions-with-answers.json`, `public/questions-filtered.json`, and IT datasets (`data/it/gateit-2005.json`, `data/it/gateit-2008.json`, `data/it/gateit-all.json`).
+    - Tagged `go:3278` with `"out-of-syllabus-now"`, routing it out of core GATE CSE syllabus into `"Other / Optional"`.
+    - Replaced fragmented `<ol>` in `go:411710` with standard single `<ol style="list-style-type:upper-alpha" type="A">` containing all 4 options A–D.
+    - Rebuilt all artifacts (`scripts/precompute-subtopics.mjs`, `scripts/build-public-artifacts.mjs`).
+    - Added automated regression tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, and `src/services/QuestionService.test.js`.
+  - *Verification*: Full test suite (1,063 unit tests across 84 files passing, 0 failures), `npm run qa:validate-data` clean (0 errors), `npm run typecheck` clean (0 errors).
+
 - **Custom Builder Triple Defect Resolution: Exited Test Restoration Prevention, Special Aptitude Category Pool Validation, and 10-15 Min OOM / Error Code 11 Elimination (DEC-122)**:
+
   - *Context*: Three confirmed issues in the Custom Builder workflow:
     1. Exiting a Custom Builder test via header home/back button caused the test to automatically restore upon returning to `/mock`.
     2. Checking special aptitude categories (English, Quant, Reasoning) in Custom Builder showed zero available questions.

@@ -200,6 +200,11 @@ describe("QuestionService", () => {
       title: "GATE CSE 2005 | Question: 85",
       tags: ["gate2005", "web-technologies", "html", "out-of-syllabus-now"],
     })).toBe("Other / Optional");
+
+    expect(QuestionService.resolveCanonicalSubject({
+      title: "GATE IT 2008 | Question: 18",
+      tags: ["gateit-2008", "computer-networks", "normal", "it", "computer-network", "out-of-syllabus-now"],
+    })).toBe("Other / Optional");
   });
 
   test("correctly classifies GATE 2022 Q39 into Algorithms Minimum Spanning Tree", () => {
@@ -215,6 +220,17 @@ describe("QuestionService", () => {
   });
 
   test("correctly classifies technical Probability questions into Engineering Mathematics", () => {
+    // Technical Probability question (GATE CSE 2024 Set 1 Q17 - go:422825)
+    const q422825 = {
+      title: "GATE CSE 2024 | Set 1 | Question: 17",
+      tags: ["gatecse-2024-set1", "engineering-mathematics", "probability", "independent-events", "multiple-selects", "one-mark"],
+    };
+    const subj422825 = QuestionService.resolveCanonicalSubject(q422825);
+    expect(subj422825).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj422825)).toBe("engg-math");
+    const subtopics422825 = QuestionService.extractCanonicalSubtopics(q422825.tags, subj422825);
+    expect(subtopics422825).toEqual([{ slug: "probability", label: "Probability" }]);
+
     // Technical Probability question (GATE CSE 2026 Set 1 Q1)
     const q523079 = {
       title: "GATE CSE 2026 | Set 1 | Question: 1",
@@ -225,6 +241,7 @@ describe("QuestionService", () => {
     expect(QuestionService.getSubjectSlugByLabel(subj523079)).toBe("engg-math");
     const subtopics523079 = QuestionService.extractCanonicalSubtopics(q523079.tags, subj523079);
     expect(subtopics523079).toEqual([{ slug: "probability", label: "Probability" }]);
+
 
     // Technical Probability question (GATE CSE 2024 Set 2 Q8)
     const q422889 = {

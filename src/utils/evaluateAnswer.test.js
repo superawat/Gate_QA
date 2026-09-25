@@ -2998,6 +2998,78 @@ describe("evaluateAnswer", () => {
       });
       expect(evaluateAnswer(record, []).correct).toBe(false);
     });
+
+    test("evaluates GATE IT 2005 Q68 (go:3831) as MCQ Option B", () => {
+      const record = {
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      };
+
+      expect(evaluateAnswer(record, "B")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "b")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "D")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CH 2022 GA Q7 (go:411710) as MCQ Option D", () => {
+      const record = {
+        type: "MCQ",
+        answer: "D",
+        tolerance: null,
+      };
+
+      expect(evaluateAnswer(record, "D")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "d")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("evaluates GATE CSE 2024 Set 1 Q17 (go:422825) as MSQ Options {B, C}", () => {
+      const record = {
+        type: "MSQ",
+        answer: ["B", "C"],
+        tolerance: null,
+      };
+
+      expect(evaluateAnswer(record, ["B", "C"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, ["C", "B"])).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, ["B"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+      expect(evaluateAnswer(record, ["A", "B", "C"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
   });
 });
+
 

@@ -2563,9 +2563,52 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
           tolerance: null,
         });
       });
+
+      test("resolves go:3831 (GATE IT 2005 Q68) as MCQ Option B", () => {
+        AnswerService.answersByQuestionUid = {
+          "go:3831": {
+            answer_uid: "manual:go:3831",
+            type: "MCQ",
+            answer: "B",
+            tolerance: null,
+          },
+        };
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:3831",
+          link: "https://gateoverflow.in/3831/gate-it-2005-question-68",
+        });
+        expect(answer).toEqual({
+          answer_uid: "manual:go:3831",
+          type: "MCQ",
+          answer: "B",
+          tolerance: null,
+        });
+      });
+
+      test("resolves go:411710 (GATE CH 2022 GA Q7) as MCQ Option D", () => {
+        AnswerService.answersByQuestionUid = {
+          "go:411710": {
+            answer_uid: "manual:go:411710",
+            type: "MCQ",
+            answer: "D",
+            tolerance: null,
+          },
+        };
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:411710",
+          link: "https://gateoverflow.in/411710/gate-ch-2022-ga-question-7",
+        });
+        expect(answer).toEqual({
+          answer_uid: "manual:go:411710",
+          type: "MCQ",
+          answer: "D",
+          tolerance: null,
+        });
+      });
     });
   });
 });
+
 
 
 
