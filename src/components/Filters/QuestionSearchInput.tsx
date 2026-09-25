@@ -77,7 +77,7 @@ const QuestionSearchInput = ({
           autoComplete="off"
           aria-describedby={helperId}
           aria-keyshortcuts={ariaKeyShortcuts}
-          className={`w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-9 sm:pl-10 pr-10 text-[color:var(--color-text)] shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 ${
+          className={`w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-9 sm:pl-10 pr-10 text-[color:var(--color-text)] shadow-sm transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden ${
             compact ? "min-h-[36px] sm:min-h-[38px] py-1.5 text-base sm:text-sm" : "min-h-[48px] py-3 text-base sm:text-sm"
           } ${inputClassName}`}
         />
