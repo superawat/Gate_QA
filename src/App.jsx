@@ -245,6 +245,9 @@ const PracticeRoutes = ({
   const resumeRoute = typeof lastSession?.route === "string" ? lastSession.route : "";
   const hasResumeRoute = !!resumeRoute || hasPriorProgress;
 
+  const [practiceLoading, setPracticeLoading] = useState(false);
+  const isNavigatingRef = useRef(false);
+
   const handleResumePractice = useCallback(() => {
     const session = readLastSession();
     trackEvent("resume", {
@@ -266,23 +269,36 @@ const PracticeRoutes = ({
   }, [location.pathname, navigate]);
 
   const handleStartRandomPractice = useCallback(async () => {
-    trackEvent("home_cta", { target: "random", source: "home" });
-    const loadedQuestions = await loadQuestions();
-    clearFilters();
-    const questionPool = (Array.isArray(loadedQuestions) && loadedQuestions.length > 0)
-      ? loadedQuestions
-      : (allQuestions.length > 0 ? allQuestions : QuestionService.questions);
-    const firstQuestion = startRandomSession(questionPool);
-
-    if (firstQuestion?.question_uid) {
-      navigate({
-        pathname: buildSolvePath(firstQuestion.question_uid),
-        search: "",
-      });
+    if (isNavigatingRef.current) {
       return;
     }
+    isNavigatingRef.current = true;
+    setPracticeLoading(true);
+    trackEvent("home_cta", { target: "random", source: "home" });
 
-    navigate(PRACTICE_ROUTE);
+    try {
+      const loadedQuestions = await loadQuestions();
+      clearFilters();
+      const questionPool = (Array.isArray(loadedQuestions) && loadedQuestions.length > 0)
+        ? loadedQuestions
+        : (allQuestions.length > 0 ? allQuestions : QuestionService.questions);
+      const firstQuestion = startRandomSession(questionPool);
+
+      if (firstQuestion?.question_uid) {
+        navigate({
+          pathname: buildSolvePath(firstQuestion.question_uid),
+          search: "",
+        });
+        return;
+      }
+
+      navigate(PRACTICE_ROUTE);
+    } catch {
+      // Error handled by loadQuestions state
+    } finally {
+      setPracticeLoading(false);
+      isNavigatingRef.current = false;
+    }
   }, [allQuestions, clearFilters, loadQuestions, navigate, startRandomSession]);
 
   const handleExplorePractice = useCallback(() => {
@@ -331,6 +347,8 @@ const PracticeRoutes = ({
                   hasResumeRoute={hasResumeRoute}
                   lastSession={lastSession}
                   mockModeEnabled={MOCK_TEST_MODE_ENABLED}
+                  practiceLoading={practiceLoading}
+                  onPreloadQuestions={loadQuestions}
                   onStartRandomPractice={handleStartRandomPractice}
                   onExplorePractice={handleExplorePractice}
                   onOpenInsights={handleOpenInsights}

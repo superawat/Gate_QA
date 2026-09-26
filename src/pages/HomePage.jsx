@@ -38,7 +38,7 @@ import ActivityHeatmap from "../components/Home/ActivityHeatmap";
 import { HomeSearchBar } from "../components/HomeSearch";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 import { getQuoteForToday, parseQuote } from "../utils/motivationalQuotes";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaQuoteLeft, FaSpinner } from "react-icons/fa";
 import {
   preloadExploreRoute,
   preloadInsightsRoute,
@@ -52,6 +52,8 @@ const SEARCH_BANNER_SRC = `${(import.meta.env.BASE_URL || "/").replace(/\/$/, ""
 const HomePage = ({
   hasResumeRoute,
   mockModeEnabled,
+  practiceLoading = false,
+  onPreloadQuestions,
   onStartRandomPractice,
   onExplorePractice,
   onOpenInsights = () => {},
@@ -213,13 +215,19 @@ const HomePage = ({
   const actionCards = [
     {
       key: "practice",
-      label: "Practice",
-      subtext: "Start with a fresh question",
-      badge: "Instant PYQ",
+      label: practiceLoading ? "Loading..." : "Practice",
+      subtext: practiceLoading ? "Preparing questions..." : "Start with a fresh question",
+      badge: practiceLoading ? "Loading..." : "Instant PYQ",
       icon: `${HOMEPAGE_ICON_BASE}/practice_no_bg.webp`,
       variant: "primary",
+      disabled: practiceLoading,
       onClick: onStartRandomPractice,
-      preload: preloadPracticeStartExperience,
+      preload: () => {
+        preloadPracticeStartExperience();
+        if (typeof onPreloadQuestions === "function") {
+          void onPreloadQuestions();
+        }
+      },
       quote: parsedQuote,
     },
     {
@@ -342,8 +350,13 @@ const HomePage = ({
 
                     {card.badge ? (
                       <span className="home-action-footer-badge">
+                        {card.key === "practice" && practiceLoading ? (
+                          <FaSpinner className="inline-block animate-spin mr-1 text-xs" aria-hidden="true" />
+                        ) : null}
                         <span className="home-action-badge-text">{card.badge}</span>
-                        <span className="home-action-badge-arrow" aria-hidden="true">→</span>
+                        {!(card.key === "practice" && practiceLoading) && (
+                          <span className="home-action-badge-arrow" aria-hidden="true">→</span>
+                        )}
                       </span>
                     ) : null}
                   </button>

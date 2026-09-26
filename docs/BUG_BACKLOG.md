@@ -33,6 +33,52 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-PERF-PRACTICE-DELAY-01: Delay Between Loader and Practice Button Click (Perceived Freeze)
+- **Status**: Resolved on 2026-09-26 (DEC-138)
+- **Severity**: High (P0 UX)
+- **Area**: Homepage / Practice Entry
+- **Symptom**: Clicking "Practice" on the homepage produced a 1-3s gap where nothing visible occurred, creating perceived unresponsiveness.
+- **Root Cause & Fix**:
+  - `handleStartRandomPractice` in `App.jsx` performed `await loadQuestions()` (4.9MB fetch) with no loading state variable on the landing page.
+  - Added `practiceLoading` state and `isNavigatingRef` re-entrance lock in `App.jsx`. Passed `practiceLoading` down to `HomePage.jsx`.
+  - While loading, the Practice card displays "Loading...", "Preparing questions...", disables repeated clicks, and renders an animated `FaSpinner` in the footer badge.
+  - Pre-triggers `loadQuestions()` on `onPointerEnter`, `onFocus`, and `onTouchStart` of the Practice card alongside route preloading.
+- **Verification**: Verified zero delay for hovered clicks; instant visual spinner on click; 1,110 unit tests passing.
+
+### BUG-TAXONOMY-SUBTOPIC-MISMATCH-02: Home Search Subtopic Routing Returns All Subject Questions (321 vs 3)
+- **Status**: Resolved on 2026-09-26 (DEC-138)
+- **Severity**: High (P0 Data Integrity)
+- **Area**: Global Home Search / Filter Navigation
+- **Symptom**: Searching "hashing" showed "Double Hashing - 3 PYQs" in the dropdown, but clicking it navigated to `/practice?subtopics=double-hashing&subjects=algorithms` which displayed 321 questions (all Algorithms).
+- **Root Cause & Fix**:
+  - `FilterContext` initialized `structuredSubtopics` as empty arrays from the manifest. When `?subtopics=double-hashing` was hydrated, `reconcileSubjectAndSubtopicFilters` dropped the subtopic because it was not found in the empty map, falling back to all 321 subject questions.
+  - In `homeSearchMatcher.ts`, updated subtopic match results to populate `searchParam: subtopic.label` instead of `subtopicFilter: subtopic.slug`.
+  - Clicking a subtopic now routes to `/practice?subjects=algorithms&search=Double+Hashing`, leveraging FilterContext's existing AND-token search engine to isolate the exact ~3 questions matching that subtopic within that subject.
+  - Also fixed React hook violation in `HomeSearchBar.jsx` by splitting into `HomeSearchBarCore` and `HomeSearchBarWithRouter` to call `useNavigate()` unconditionally.
+- **Verification**: 20 unit tests in `src/components/HomeSearch/` passing; manual URL verification confirms ~3 questions return.
+
+### BUG-SESSION-EXHAUSTION-JITTER-03: Session Exhaustion Banner Jittering/Flashing on Route Sync
+- **Status**: Resolved on 2026-09-26 (DEC-138)
+- **Severity**: Medium (P1 UX Polish)
+- **Area**: Session Engine / Solve Page
+- **Symptom**: When reaching the end of a random session, the banner "You've reached the end of this random session. A fresh shuffle is ready." appeared for a split second and jittered off immediately.
+- **Root Cause & Fix**:
+  - `rebuildRandomQueue()` in `SessionContext.tsx` set `showExhaustionBanner(true)`. However, `SolvePage.jsx`'s route sync effect immediately called `setCurrentQuestionUid` on arrival at the new question, which unconditionally set `showExhaustionBanner(false)` within milliseconds.
+  - Decoupled exhaustion banner lifecycle in `SessionContext.tsx` using `exhaustionBannerShownAtRef` and a 5,000ms minimum display window + 5s auto-dismiss timer. Navigational methods (`setCurrentQuestionUid`, `goToNextQuestion`, `goToPreviousQuestion`) only dismiss the banner if eligible (>5s elapsed).
+  - Added `@keyframes exhaustion-slide-in` and `.animate-exhaustion-banner` with dark mode support in `SolvePage.jsx` and `index.css`.
+- **Verification**: 9 unit tests in `SessionContext.test.jsx` passing, 23 in `SolvePage.test.jsx` passing.
+
+### BUG-LOADER-STATIC-IMAGE-04: BrandLoader Renders Static WebP Image Without Motion
+- **Status**: Resolved on 2026-09-26 (DEC-138)
+- **Severity**: Medium (P1 Visual Polish)
+- **Area**: Brand Loaders / Visual Design
+- **Symptom**: `BrandLoader` rendered a static WebP logo with no CSS animation, providing no motion feedback during question/test loading.
+- **Root Cause & Fix**:
+  - Added `@keyframes gateqa-loader-breathe` (scale 0.95 ↔ 1.05 and opacity 0.85 ↔ 1.0, 1.8s ease-in-out infinite) and optional orbital spinning ring (`.gateqa-loader-ring`) in `index.css`.
+  - Wrapped `BrandLoader.jsx` in a relative inline-flex container and applied `gateqa-loader-breathe`.
+  - Connected `showRing={!isInline && size !== "xs" && size !== "sm"}` in `LoadingState.jsx`.
+- **Verification**: 10 unit tests in `src/components/Loaders/` passing; clean visual breathing animation.
+
 ### BUG-MOCK-CUSTOM-BUILDER-01: Custom Builder Automatically Restores an Exited Test on Return
 
 - **Status**: Resolved on 2026-09-19 (DEC-122)

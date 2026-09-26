@@ -14,6 +14,7 @@ export default function BrandLoader({
   theme = "auto", // "auto" | "dark" | "light"
   className = "",
   alt = "Loading GateQA...",
+  showRing = false,
 }) {
   const [currentTheme, setCurrentTheme] = useState(() => {
     if (typeof theme === "string" && theme !== "auto") return theme;
@@ -69,14 +70,17 @@ export default function BrandLoader({
   const pxHint = size === "xs" ? 20 : size === "sm" ? 28 : size === "md" ? 40 : size === "lg" ? 56 : 64;
 
   return (
-    <img
-      src={imageSrc}
-      alt={alt}
-      width={pxHint}
-      height={pxHint}
-      className={`inline-block select-none pointer-events-none object-contain ${sizeClass} ${className}`}
-      loading="eager"
-      decoding="sync"
-    />
+    <span className="relative inline-flex items-center justify-center">
+      {showRing && <span className="gateqa-loader-ring" aria-hidden="true" />}
+      <img
+        src={imageSrc}
+        alt={alt}
+        width={pxHint}
+        height={pxHint}
+        className={`inline-block select-none pointer-events-none object-contain gateqa-loader-breathe ${sizeClass} ${className}`}
+        loading="eager"
+        decoding="sync"
+      />
+    </span>
   );
 }

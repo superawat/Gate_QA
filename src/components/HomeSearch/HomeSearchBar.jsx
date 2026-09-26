@@ -5,13 +5,12 @@ import { useHomeSearchCatalog } from './useHomeSearchCatalog';
 import { classifyAndMatch } from './homeSearchMatcher';
 import { HomeSearchResults } from './HomeSearchResults';
 
-export const HomeSearchBar = ({
+const HomeSearchBarCore = ({
   onNavigateToExplore,
   placeholder = 'Search topics, subjects, questions...',
   className = '',
+  routerNavigate = null,
 }) => {
-  const inRouter = useInRouterContext();
-  const routerNavigate = inRouter ? useNavigate() : null;
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [results, setResults] = useState([]);
@@ -260,6 +259,19 @@ export const HomeSearchBar = ({
       />
     </div>
   );
+};
+
+const HomeSearchBarWithRouter = (props) => {
+  const navigate = useNavigate();
+  return <HomeSearchBarCore {...props} routerNavigate={navigate} />;
+};
+
+export const HomeSearchBar = (props) => {
+  const inRouter = useInRouterContext();
+  if (inRouter) {
+    return <HomeSearchBarWithRouter {...props} />;
+  }
+  return <HomeSearchBarCore {...props} routerNavigate={null} />;
 };
 
 export default HomeSearchBar;

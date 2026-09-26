@@ -127,7 +127,7 @@ describe('HomeSearchBar component', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
 
     expect(handleNavigate).toHaveBeenCalledWith(
-      '?subjects=algorithms&subtopics=dijkstras-algorithm'
+      '?subjects=algorithms&search=Dijkstra%27s+Algorithm'
     );
   });
 

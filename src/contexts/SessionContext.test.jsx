@@ -362,7 +362,7 @@ describe('SessionContext', () => {
         });
     });
 
-    test('auto-dismisses exhaustion banner when setting question or navigating', async () => {
+    test('persists exhaustion banner across immediate question navigation and dismisses via dismissExhaustionBanner', async () => {
         renderHarness();
 
         await waitFor(() => {
@@ -388,12 +388,18 @@ describe('SessionContext', () => {
 
         expect(latestSession.showExhaustionBanner).toBe(true);
 
+        // Immediate route sync on arrival at the new question must NOT dismiss the banner
         act(() => {
             latestSession.setCurrentQuestionUid('q1');
         });
 
-        await waitFor(() => {
-            expect(latestSession.showExhaustionBanner).toBe(false);
+        expect(latestSession.showExhaustionBanner).toBe(true);
+
+        // Explicit dismiss action dismisses the banner
+        act(() => {
+            latestSession.dismissExhaustionBanner();
         });
+
+        expect(latestSession.showExhaustionBanner).toBe(false);
     });
 });

@@ -686,7 +686,7 @@ const SolvePage = ({
 
           {showExhaustionBanner ? (
             <div
-              className="flex items-center justify-between gap-3 rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-900 shadow-[var(--shadow-soft)]"
+              className="animate-exhaustion-banner flex items-center justify-between gap-3 rounded-[var(--radius-card)] border border-sky-200 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/70 px-4 py-3 text-sm text-sky-900 dark:text-sky-200 shadow-[var(--shadow-soft)]"
               role="status"
               aria-live="polite"
             >
@@ -696,7 +696,7 @@ const SolvePage = ({
               <button
                 type="button"
                 onClick={dismissExhaustionBanner}
-                className="rounded-lg px-2 py-1 font-semibold text-sky-700 transition hover:bg-sky-100"
+                className="rounded-lg px-2 py-1 font-semibold text-sky-700 dark:text-sky-300 transition hover:bg-sky-100 dark:hover:bg-sky-900"
               >
                 Dismiss
               </button>

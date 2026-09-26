@@ -5327,3 +5327,57 @@ footer {
   border-top-color: #21262d !important;
 }
 
+/* ── GateQA Brand Loader Animations ── */
+@keyframes gateqa-loader-breathe {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes gateqa-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gateqa-loader-breathe {
+  animation: gateqa-loader-breathe 1.8s ease-in-out infinite;
+}
+
+.gateqa-loader-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  border-top-color: #3b82f6;
+  border-right-color: rgba(59, 130, 246, 0.25);
+  animation: gateqa-loader-spin 1s linear infinite;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .gateqa-loader-ring {
+  border-top-color: #60a5fa;
+  border-right-color: rgba(96, 165, 250, 0.25);
+}
+
+/* ── Exhaustion Banner Slide-in ── */
+@keyframes exhaustion-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-exhaustion-banner {
+  animation: exhaustion-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

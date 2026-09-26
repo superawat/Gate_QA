@@ -191,7 +191,7 @@ export function classifyAndMatch(
         label: subtopic.label,
         subLabel: subtopic.parentLabel || subtopic.parentSubject,
         count: subtopic.count,
-        subtopicFilter: subtopic.slug,
+        searchParam: subtopic.label,
         subjectFilter: subtopic.parentSubject,
       });
     });

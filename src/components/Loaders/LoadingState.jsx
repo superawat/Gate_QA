@@ -72,7 +72,13 @@ const LoadingState = ({
           : "flex-col items-center justify-center gap-2.5 sm:gap-3.5 py-3 sm:py-4"
       } ${className}`}
     >
-      <BrandLoader size={brandSize} theme={theme} alt={ariaLabel || label} />
+      <BrandLoader
+        size={brandSize}
+        theme={theme}
+        alt={ariaLabel || label}
+        showRing={!isInline && size !== "xs" && size !== "sm"}
+        {...loaderProps}
+      />
       {label && (
         <div className={isInline ? "" : "text-center px-4"}>
           <p className={`font-medium tracking-tight ${textClassName || "text-xs sm:text-sm text-slate-700 dark:text-slate-200"}`}>

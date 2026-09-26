@@ -24,6 +24,21 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-138: Practice Button Latency Optimization, Subtopic Search Routing Precision, Session Exhaustion Banner Anti-Jitter Architecture & BrandLoader Animation
+- Status: Delivered (2026-09-26)
+- Priority: P0
+- Decision:
+  1. **Practice Button Instant Loading & Double-Click Guard**: Add `practiceLoading` state and `isNavigatingRef` in `App.jsx`, passed down to `HomePage.jsx`. Display "Loading...", "Preparing questions...", disable repeated clicks, and render an animated `FaSpinner` in the footer badge. Pre-trigger `loadQuestions()` on `onPointerEnter`, `onFocus`, and `onTouchStart` of the Practice card.
+  2. **Subtopic Search Routing Precision via Text Search**: In `homeSearchMatcher.ts`, map subtopic search results to `searchParam: subtopic.label` rather than `subtopicFilter: subtopic.slug`. Navigating to `/practice?subjects=algorithms&search=Double+Hashing` leverages FilterContext's existing AND-token search engine to isolate the exact ~3 questions matching that subtopic within that subject.
+  3. **Router Hook Rule Compliance**: Refactor `HomeSearchBar.jsx` into `HomeSearchBarCore` and top-level router wrapper `HomeSearchBarWithRouter` to call all React hooks unconditionally.
+  4. **Session Exhaustion Banner Jitter Elimination**: Decouple exhaustion banner lifecycle in `SessionContext.tsx` from immediate route sync calls using `exhaustionBannerShownAtRef` and a 5,000ms minimum display window + 5s auto-dismiss timer. Navigational methods (`setCurrentQuestionUid`, `goToNextQuestion`, `goToPreviousQuestion`) only dismiss the banner if eligible (>5s elapsed). Add `@keyframes exhaustion-slide-in` and `.animate-exhaustion-banner` with dark mode support in `SolvePage.jsx` and `index.css`.
+  5. **BrandLoader Breathing Animation & Orbital Ring**: Add `@keyframes gateqa-loader-breathe` (scale 0.95 ↔ 1.05 and opacity 0.85 ↔ 1.0, 1.8s ease-in-out infinite) and optional orbital spinning ring (`.gateqa-loader-ring`) in `index.css`. Wrap `BrandLoader.jsx` in a relative container and apply animation classes; connect `showRing` in `LoadingState.jsx`.
+- Why:
+  1. Clicking "Practice" previously performed `await loadQuestions()` (~4.9MB) with zero visual feedback, appearing frozen for 1–3 seconds.
+  2. Subtopic selection from the search bar previously navigated to `?subtopics=double-hashing&subjects=algorithms`, but FilterContext had empty subtopic maps for question tags, dropping the subtopic and returning all 321 subject questions.
+  3. Reaching the end of a random session triggered an exhaustion banner, but SolvePage's route sync immediately dismissed it within milliseconds.
+  4. BrandLoader was a static WebP logo that provided no motion cues during data loading.
+
 ### DEC-122: Custom Builder Exited Test Restoration Fix, Aptitude Pool Validation & Error Code 11 Memory Leak Decoupling
 - Status: Delivered (2026-09-19)
 - Priority: P0

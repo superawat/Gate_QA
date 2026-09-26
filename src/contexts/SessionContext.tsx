@@ -460,6 +460,51 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     const [sourceQuestionUids, setSourceQuestionUids] = useState<string[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showExhaustionBanner, setShowExhaustionBanner] = useState(false);
+    const exhaustionBannerShownAtRef = useRef<number>(0);
+    const exhaustionBannerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const clearExhaustionBannerTimer = useCallback(() => {
+        if (exhaustionBannerTimerRef.current) {
+            clearTimeout(exhaustionBannerTimerRef.current);
+            exhaustionBannerTimerRef.current = null;
+        }
+    }, []);
+
+    const dismissExhaustionBanner = useCallback(() => {
+        clearExhaustionBannerTimer();
+        exhaustionBannerShownAtRef.current = 0;
+        setShowExhaustionBanner(false);
+    }, [clearExhaustionBannerTimer]);
+
+    const dismissExhaustionBannerIfEligible = useCallback(() => {
+        if (!exhaustionBannerShownAtRef.current) {
+            setShowExhaustionBanner(false);
+            return;
+        }
+        if (Date.now() - exhaustionBannerShownAtRef.current >= 5000) {
+            clearExhaustionBannerTimer();
+            exhaustionBannerShownAtRef.current = 0;
+            setShowExhaustionBanner(false);
+        }
+    }, [clearExhaustionBannerTimer]);
+
+    const triggerExhaustionBanner = useCallback(() => {
+        clearExhaustionBannerTimer();
+        exhaustionBannerShownAtRef.current = Date.now();
+        setShowExhaustionBanner(true);
+        exhaustionBannerTimerRef.current = setTimeout(() => {
+            setShowExhaustionBanner(false);
+            exhaustionBannerTimerRef.current = null;
+            exhaustionBannerShownAtRef.current = 0;
+        }, 5000);
+    }, [clearExhaustionBannerTimer]);
+
+    useEffect(() => {
+        return () => {
+            clearExhaustionBannerTimer();
+        };
+    }, [clearExhaustionBannerTimer]);
+
     const seenThisSession = useRef<Set<string>>(new Set());
     const randomTopicMemoryRef = useRef(readRandomTopicMemory());
 
@@ -490,7 +535,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
             setSessionQueue([]);
             setSourceQuestionUids([]);
             setCurrentIndex(0);
-            setShowExhaustionBanner(false);
+            dismissExhaustionBanner();
             seenThisSession.current.clear();
             return null;
         }
@@ -521,7 +566,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         setSessionQueue(nextQueue);
         setSourceQuestionUids(normalizedQuestions.map((question) => question.question_uid));
         setCurrentIndex(0);
-        setShowExhaustionBanner(false);
+        dismissExhaustionBanner();
 
         return firstUid ? getQuestionByUid(firstUid) : null;
     }, [getQuestionByUid, rememberRandomQuestion, resolveQuestionPool]);
@@ -541,7 +586,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         setSessionQueue(orderedUids);
         setSourceQuestionUids(orderedUids);
         setCurrentIndex(nextIndex);
-        setShowExhaustionBanner(false);
+        dismissExhaustionBanner();
 
         return firstUid ? getQuestionByUid(firstUid) : null;
     }, [getQuestionByUid, resolveQuestionPool]);
@@ -558,7 +603,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         }
 
         setCurrentIndex(nextIndex);
-        setShowExhaustionBanner(false);
+        dismissExhaustionBannerIfEligible();
         if (sessionMode === 'random') {
             seenThisSession.current.add(normalizedUid);
             rememberRandomQuestion(getQuestionByUid(normalizedUid));
@@ -645,7 +690,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
 
         setSessionQueue(nextQueue);
         setCurrentIndex(0);
-        setShowExhaustionBanner(true);
+        triggerExhaustionBanner();
         return firstUid ? getQuestionByUid(firstUid) : null;
     }, [getQuestionByUid, rememberRandomQuestion, sourceQuestionUids]);
 
@@ -675,7 +720,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
             }
         }
 
-        setShowExhaustionBanner(false);
+        dismissExhaustionBannerIfEligible();
         setCurrentIndex(Math.max(0, prevIndex));
         return getQuestionByUid(prevUid);
     }, [getNavigationState, getQuestionByUid, sessionMode, sessionQueue]);
@@ -706,7 +751,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
                 }
             }
 
-            setShowExhaustionBanner(false);
+            dismissExhaustionBannerIfEligible();
             setCurrentIndex(nextIndex);
             if (sessionMode === 'random') {
                 seenThisSession.current.add(nextUid);
@@ -812,10 +857,11 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         canGoBack: currentIndex > 0,
         markSeen,
         markDeepLinkedQuestion,
-        dismissExhaustionBanner: () => setShowExhaustionBanner(false),
+        dismissExhaustionBanner,
     }), [
         advanceQueue,
         currentIndex,
+        dismissExhaustionBanner,
         getCurrentQuestion,
         getNavigationState,
         goBack,

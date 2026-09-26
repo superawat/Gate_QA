@@ -113,7 +113,7 @@ describe('homeSearchMatcher', () => {
       const subtopic = results.find((r) => r.type === 'subtopic');
       expect(subtopic).toBeDefined();
       expect(subtopic?.label).toBe("Dijkstra's Algorithm");
-      expect(subtopic?.subtopicFilter).toBe('dijkstras-algorithm');
+      expect(subtopic?.searchParam).toBe("Dijkstra's Algorithm");
       expect(subtopic?.subjectFilter).toBe('algorithms');
       expect(subtopic?.count).toBe(25);
     });
