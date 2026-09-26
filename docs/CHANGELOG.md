@@ -1,5 +1,18 @@
 # Changelog
 
+- **Supabase Log Ingestion Reduction & Sync Cadence Optimization (DEC-139)**:
+  - *Context*: GateQA's Supabase Free Plan telemetry revealed ~14,400 API Gateway requests/day (~30–35 MB/day log ingestion, approaching the 1 GB/month limit). Investigation identified that every `syncUserData()` call generated a 5-request burst every ~30s: fetching/upserting `user_progress`, writing routine `sync_log` audit rows (unused by the client/admin), and unconditionally fetching/upserting `user_tracker` even when users were only solving questions and hadn't touched syllabus checkboxes.
+  - *Implementation (Option 2 — Persistent Sync Metadata & Cadence Relaxing)*:
+    - **Persistent Sync Metadata (`gateqa_sync_meta`)**: Added persistent ISO timestamp tracking in `localStorage` (`lastLocalProgressUpdate`, `lastLocalTrackerUpdate`, `lastSuccessfulProgressSync`, `lastSuccessfulTrackerSync`). Dirty states (`isProgressDirty`, `isTrackerDirty`) are derived dynamically by comparing local update timestamps against last successful sync timestamps, surviving tab closures, crashes, and reloads.
+    - **Startup Invariant & Local Update Hooks**: Session initialization triggers a full GET → merge → POST sync with `{ force: true }` so newly opened tabs sync any locally newer pending state while preserving multi-device union-merges. Local updates in `syncQueue.js` and `trackerState.ts` automatically mark progress/tracker as updated.
+    - **Conditional Table Syncing**: `syncUserData` skips `user_progress` if progress is clean, and only invokes `syncTrackerData` if the syllabus tracker is dirty, cutting routine quiz bursts from 5 to 2 requests.
+    - **Relaxed Cadence & Cooldown**: Increased `MIN_SYNC_INTERVAL_MS` from 30s to 120s (2 minutes). Routine user actions are debounced while respecting the cooldown window.
+    - **Tab Lifecycle Sync (`visibilitychange`)**: Added `visibilitychange` listener that triggers a best-effort sync on tab hide if dirty and catches up on tab reveal if dirty (ignoring routine cooldown).
+    - **Cross-Tab Deduplication (`BroadcastChannel`)**: Added `BroadcastChannel("gateqa_sync_channel")` with `storage` event fallback for `gateqa_sync_meta` so concurrent tabs coordinate sync completions and cancel redundant pending sync timers.
+    - **Sampled Audit Logging**: Replaced unconditional `sync_log` writes with 100% logging on failures/first-login-merge and ~1% deterministic sampled logging on routine successes, wrapped in try/catch to avoid failure loops.
+    - **Profile Menu Sync Indicator & Manual Sync Action**: Updated `UserProfileMenu.jsx` to display relative last sync time (`just now`, `2m ago`) and added an unobtrusive "Sync now" action button allowing immediate manual backup.
+  - *Verification*: Full test suite passing (**1,123 unit tests across 86 test files, 100% passing**), TypeScript typecheck clean (`0 errors`), and added 14 new comprehensive unit tests in `cloudSyncManager.test.js`, `AuthContext.test.jsx`, and `UserProfileMenu.test.jsx`.
+
 - **Practice Button Latency Optimization, Subtopic Search Routing Precision, Session Exhaustion Banner Anti-Jitter Architecture & BrandLoader Animation (DEC-138)**:
   - *Context*: Following the DEC-132 homepage search bar rollout, user testing uncovered four UX and data integrity issues:
     1. **Practice Button Unresponsiveness**: Clicking "Practice" on the homepage initiated an asynchronous dataset fetch (`loadQuestions()`, ~4.9MB) with no visual feedback on the homepage, causing perceived freeze/delay.

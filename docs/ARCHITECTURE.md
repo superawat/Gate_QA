@@ -63,6 +63,16 @@ GateQA follows a **Local-First Hybrid Architecture**:
    - RLS enabled on `profiles`, `user_progress`, and `sync_log`.
    - All access restricted to authenticated owners (`auth.uid() = user_id`).
    - Automated PostgreSQL trigger `handle_new_auth_user()` provisions `public.profiles` automatically upon Google OAuth sign-up.
+5. **Persistent Sync Metadata & Conditional Cadence Optimization (DEC-139):**
+   - **Persistent Sync Metadata (`gateqa_sync_meta`):** Tracks ISO timestamps in `localStorage` for `lastLocalProgressUpdate`, `lastLocalTrackerUpdate`, `lastSuccessfulProgressSync`, and `lastSuccessfulTrackerSync`.
+   - **Derived Dirty States:** `isProgressDirty` and `isTrackerDirty` are derived dynamically by comparing local update timestamps against the last successful sync timestamps, surviving tab closures, page reloads, and mobile browser evictions.
+   - **Conditional Table Syncing:** `syncUserData` skips `user_progress` when progress is clean and skips `user_tracker` (`syncTrackerData`) when tracker is clean, reducing routine practice burst traffic from 5 requests to 2.
+   - **Relaxed Sync Cadence (2-Minute Cooldown):** `MIN_SYNC_INTERVAL_MS = 120_000` (2 minutes). Routine student actions are debounced (750ms) while respecting the 2-minute cooldown window.
+   - **Lifecycle & Visibility Sync:** `visibilitychange` listener attempts best-effort sync on tab hide if dirty and catches up on tab reveal if dirty (bypassing the routine cooldown with `{ ignoreCooldown: true }`).
+   - **Cross-Tab Deduplication:** Uses `BroadcastChannel("gateqa_sync_channel")` with `storage` event fallback on `gateqa_sync_meta` so concurrent tabs coordinate sync completions and cancel redundant pending timers.
+   - **Sampled Audit Logging (`sync_log`):** Writes audit rows 100% on failure or first-login-merge, and samples ~1% on routine successes (using an injectable `shouldSampleSuccess` sampler for deterministic testing), wrapped in defensive `try / catch` to avoid backend failure cascades.
+   - **Startup Invariant:** Initial session mount triggers a sync with `{ force: true }` participating in the full GET → merge → POST flow, preserving multi-device merge safety while pushing pending local changes.
+   - **UI Sync Telemetry:** `UserProfileMenu.jsx` displays relative sync time (`Synced just now`, `Synced 2m ago`) and provides an unobtrusive manual "Sync now" button (`#user-manual-sync-btn`).
 
 ## Error Boundaries
 

@@ -32,6 +32,7 @@ import {
   mergeSyncedRevisionSummary,
   TRACKER_ANNOUNCEMENT_SEEN_KEY,
 } from "./trackerRevisionSummary";
+import { markLocalTrackerUpdated } from "./cloudSyncManager";
 
 export {
   type RevisionEvent,
@@ -206,12 +207,15 @@ export const loadTrackerStore = (track: "cse" | "da"): UserTrackerStore => {
 /** Save local tracker store for a track */
 export const saveTrackerStore = (track: "cse" | "da", store: UserTrackerStore): void => {
   if (typeof window === "undefined" || !window.localStorage) return;
+  const nowIso = new Date().toISOString();
   const updatedStore: UserTrackerStore = {
     ...store,
-    updatedAt: new Date().toISOString(),
+    updatedAt: nowIso,
   };
   try {
     window.localStorage.setItem(getTrackerStorageKey(track), JSON.stringify(updatedStore));
+    markLocalTrackerUpdated(nowIso);
+    window.dispatchEvent(new CustomEvent("gateqa:sync-request", { detail: { type: "TRACKER", track } }));
   } catch (error) {
     console.warn("Failed to persist tracker state to localStorage", error);
   }
@@ -232,14 +236,17 @@ export const loadTrackerPreferences = (): UserTrackerPreferences => {
 /** Save tracker preferences */
 export const saveTrackerPreferences = (prefs: Partial<UserTrackerPreferences>): UserTrackerPreferences => {
   const current = loadTrackerPreferences();
+  const nowIso = new Date().toISOString();
   const next: UserTrackerPreferences = {
     ...current,
     ...prefs,
-    updatedAt: new Date().toISOString(),
+    updatedAt: nowIso,
   };
   if (typeof window !== "undefined" && window.localStorage) {
     try {
       window.localStorage.setItem(TRACKER_PREFS_STORAGE_KEY, JSON.stringify(next));
+      markLocalTrackerUpdated(nowIso);
+      window.dispatchEvent(new CustomEvent("gateqa:sync-request", { detail: { type: "TRACKER_PREFS" } }));
     } catch (error) {
       console.warn("Failed to persist tracker preferences to localStorage", error);
     }

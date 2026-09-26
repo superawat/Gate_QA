@@ -96,4 +96,28 @@ describe("UserProfileMenu", () => {
     expect(mockSignOut).toHaveBeenCalledTimes(1);
     expect(screen.queryByRole("menu")).toBeNull();
   });
+
+  test("displays lastSyncedAt and allows triggering manual sync", async () => {
+    const mockTriggerSync = vi.fn();
+    vi.spyOn(authContext, "useAuth").mockReturnValue({
+      user: {
+        id: "user-123",
+        email: "student@gateqa.in",
+      },
+      signOut: mockSignOut,
+      isSyncing: false,
+      lastSyncedAt: new Date(Date.now() - 30 * 1000), // 30s ago -> 'just now'
+      triggerSync: mockTriggerSync,
+    });
+
+    render(<UserProfileMenu />);
+    fireEvent.click(screen.getByRole("button", { name: /Signed in as student/i }));
+
+    expect(screen.getByText("just now")).toBeDefined();
+    const syncBtn = screen.getByRole("button", { name: /Sync with cloud now/i });
+    expect(syncBtn).toBeDefined();
+
+    fireEvent.click(syncBtn);
+    expect(mockTriggerSync).toHaveBeenCalledWith("user-123", { force: true });
+  });
 });

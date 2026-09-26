@@ -7,11 +7,7 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 - Add only bugs with a clear symptom or a strong code/data signal.
 - Mark each entry as `Observed` or `Inferred`.
 - Keep reproduction steps short and concrete.
-# Bug Backlog
-
-This file tracks open bugs, suspected regressions, and recently closed audit issues for GateQA.
-
-## How To Use
+- When fixed, move the final user-facing note into `CHANGELOG.md`.
 
 - Add only bugs with a clear symptom or a strong code/data signal.
 - Mark each entry as `Observed` or `Inferred`.

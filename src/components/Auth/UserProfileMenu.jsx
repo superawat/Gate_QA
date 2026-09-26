@@ -14,8 +14,19 @@ import React, { useEffect, useRef, useState } from "react";
 import { FiLogOut, FiCheck, FiRefreshCw, FiCloud } from "react-icons/fi";
 import { useAuth } from "../../contexts/AuthContext";
 
+function formatSyncTime(date) {
+  if (!date) return null;
+  const diffSec = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
+  if (diffSec < 60) return "just now";
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `${diffMin}m ago`;
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours < 24) return `${diffHours}h ago`;
+  return new Date(date).toLocaleDateString();
+}
+
 function UserProfileMenu() {
-  const { user, signOut, isSyncing } = useAuth();
+  const { user, signOut, isSyncing, lastSyncedAt, triggerSync } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -61,6 +72,13 @@ function UserProfileMenu() {
   const handleSignOut = async () => {
     setIsOpen(false);
     await signOut();
+  };
+
+  const handleManualSync = (e) => {
+    e.stopPropagation();
+    if (triggerSync && user?.id) {
+      triggerSync(user.id, { force: true });
+    }
   };
 
   return (
@@ -109,7 +127,7 @@ function UserProfileMenu() {
             {isSyncing ? (
               <>
                 <FiRefreshCw className="h-3.5 w-3.5 animate-spin text-sky-400 shrink-0" />
-                <div className="user-sync-text-group">
+                <div className="user-sync-text-group" style={{ flex: 1, minWidth: 0 }}>
                   <span className="user-sync-title">Syncing to cloud...</span>
                   <span className="user-sync-subtitle">Updating progress</span>
                 </div>
@@ -120,10 +138,26 @@ function UserProfileMenu() {
                   <FiCloud className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <FiCheck className="user-sync-check-icon" />
                 </div>
-                <div className="user-sync-text-group">
-                  <span className="user-sync-title">Data Synced to Cloud</span>
+                <div className="user-sync-text-group" style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.25rem" }}>
+                    <span className="user-sync-title">Data Synced to Cloud</span>
+                    {lastSyncedAt && (
+                      <span className="user-sync-time">{formatSyncTime(lastSyncedAt)}</span>
+                    )}
+                  </div>
                   <span className="user-sync-subtitle">Notes, bookmarks & tests backed up</span>
                 </div>
+                <button
+                  type="button"
+                  id="user-manual-sync-btn"
+                  className="user-sync-action-btn"
+                  onClick={handleManualSync}
+                  disabled={isSyncing}
+                  title="Sync now"
+                  aria-label="Sync with cloud now"
+                >
+                  <FiRefreshCw className="h-3 w-3" />
+                </button>
               </>
             )}
           </div>

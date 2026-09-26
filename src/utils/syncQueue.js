@@ -9,6 +9,8 @@
  * automatically as soon as internet connectivity returns.
  */
 
+import { markLocalProgressUpdated } from "./cloudSyncManager";
+
 const QUEUE_KEY = "gate_qa_sync_queue";
 
 /**
@@ -33,14 +35,16 @@ export function getSyncQueue() {
 export function enqueueChange(type, payload) {
   try {
     const queue = getSyncQueue();
+    const nowIso = new Date().toISOString();
     const newItem = {
       id: `change_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
       type,
       payload,
-      timestamp: new Date().toISOString(),
+      timestamp: nowIso,
     };
     queue.push(newItem);
     localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
+    markLocalProgressUpdated(nowIso);
     if (typeof window !== "undefined") {
       window.dispatchEvent(new CustomEvent("gateqa:sync-request", { detail: newItem }));
     }

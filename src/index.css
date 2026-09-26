@@ -4930,6 +4930,34 @@ canvas {
   font-size: 0.65rem;
   color: var(--color-text-muted, #64748b);
 }
+.user-sync-time {
+  font-size: 0.65rem;
+  color: var(--color-text-muted, #64748b);
+  font-weight: 500;
+}
+.user-sync-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: transparent;
+  color: #10b981;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+.user-sync-action-btn:hover:not(:disabled) {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+.user-sync-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 :root[data-theme="dark"] .user-profile-sync-status {
   background: rgba(16, 185, 129, 0.12);
@@ -4940,6 +4968,17 @@ canvas {
 }
 :root[data-theme="dark"] .user-sync-subtitle {
   color: #94a3b8;
+}
+:root[data-theme="dark"] .user-sync-time {
+  color: #94a3b8;
+}
+:root[data-theme="dark"] .user-sync-action-btn {
+  border-color: rgba(52, 211, 153, 0.3);
+  color: #34d399;
+}
+:root[data-theme="dark"] .user-sync-action-btn:hover:not(:disabled) {
+  background: rgba(52, 211, 153, 0.15);
+  color: #6ee7b7;
 }
 
 .user-profile-divider {

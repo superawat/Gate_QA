@@ -22,6 +22,17 @@ import {
   mergeTrackerPreferences,
   syncTrackerData,
   LOCAL_STORAGE_KEYS,
+  SYNC_META_KEY,
+  getSyncMeta,
+  setSyncMeta,
+  markLocalProgressUpdated,
+  markLocalTrackerUpdated,
+  markProgressSyncSuccess,
+  markTrackerSyncSuccess,
+  isTimestampNewer,
+  isProgressDirty,
+  isTrackerDirty,
+  getDerivedDirtyState,
 } from "./cloudSyncManager";
 import * as supabaseService from "../services/supabase";
 
@@ -570,7 +581,7 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
     vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
 
     // Run syncUserData
-    const result = await syncUserData("user-uuid-123");
+    const result = await syncUserData("user-uuid-123", { shouldSampleSuccess: () => true });
     expect(result.success).toBe(true);
 
     // Verify pre-merge snapshot was stored
@@ -1241,6 +1252,294 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
           solved_removals: expect.objectContaining({ "go:42": now }),
         })
       );
+    });
+  });
+
+  // ── DEC-139: Supabase Log Ingestion & Sync Optimization (Option 2) ───────────
+
+  describe("DEC-139: Supabase Log Ingestion & Sync Optimization", () => {
+    function setupSupabaseMock({
+      progressData = { bookmarks: [] },
+      progressError = null,
+      progressUpsertError = null,
+      trackerData = { active_track: "cse", cse_theory: {} },
+      trackerError = null,
+      trackerUpsertError = null,
+      syncLogInsert = vi.fn().mockResolvedValue({ error: null }),
+    } = {}) {
+      const mockProgressMaybeSingle = vi.fn().mockResolvedValue({
+        data: progressData,
+        error: progressError,
+      });
+      const mockProgressEq = vi.fn().mockReturnValue({
+        maybeSingle: mockProgressMaybeSingle,
+        single: mockProgressMaybeSingle,
+      });
+      const mockProgressSelect = vi.fn().mockReturnValue({ eq: mockProgressEq });
+      const mockProgressUpsert = vi.fn().mockImplementation(async () => {
+        if (typeof progressUpsertError === "function") {
+          const err = progressUpsertError();
+          return { error: err };
+        }
+        return { error: progressUpsertError };
+      });
+
+      const mockTrackerMaybeSingle = vi.fn().mockResolvedValue({
+        data: trackerData,
+        error: trackerError,
+      });
+      const mockTrackerEq = vi.fn().mockReturnValue({
+        maybeSingle: mockTrackerMaybeSingle,
+        single: mockTrackerMaybeSingle,
+      });
+      const mockTrackerSelect = vi.fn().mockReturnValue({ eq: mockTrackerEq });
+      const mockTrackerUpsert = vi.fn().mockImplementation(async () => {
+        if (typeof trackerUpsertError === "function") {
+          return trackerUpsertError();
+        }
+        return { error: trackerUpsertError };
+      });
+
+      const mockFrom = vi.fn().mockImplementation((table) => {
+        if (table === "user_progress") {
+          return {
+            select: mockProgressSelect,
+            upsert: mockProgressUpsert,
+          };
+        }
+        if (table === "user_tracker") {
+          return {
+            select: mockTrackerSelect,
+            upsert: mockTrackerUpsert,
+          };
+        }
+        if (table === "sync_log") {
+          return { insert: syncLogInsert };
+        }
+        return {};
+      });
+
+      vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
+
+      return {
+        mockFrom,
+        mockProgressSelect,
+        mockProgressUpsert,
+        mockTrackerSelect,
+        mockTrackerUpsert,
+        syncLogInsert,
+      };
+    }
+
+    test("gateqa_sync_meta persists across simulated page reloads", () => {
+      const t1 = "2026-09-26T10:00:00.000Z";
+      const t2 = "2026-09-26T10:05:00.000Z";
+      const t3 = "2026-09-26T10:10:00.000Z";
+      const t4 = "2026-09-26T10:15:00.000Z";
+
+      markLocalProgressUpdated(t1);
+      markLocalTrackerUpdated(t2);
+      markProgressSyncSuccess(t3);
+      markTrackerSyncSuccess(t4);
+
+      // Verify raw localStorage entry
+      const raw = localStorage.getItem(SYNC_META_KEY);
+      expect(raw).toBeDefined();
+      const parsed = JSON.parse(raw);
+      expect(parsed.lastLocalProgressUpdate).toBe(t1);
+      expect(parsed.lastLocalTrackerUpdate).toBe(t2);
+      expect(parsed.lastSuccessfulProgressSync).toBe(t3);
+      expect(parsed.lastSuccessfulTrackerSync).toBe(t4);
+
+      // Verify helper retrieval
+      const meta = getSyncMeta();
+      expect(meta).toEqual({
+        lastLocalProgressUpdate: t1,
+        lastLocalTrackerUpdate: t2,
+        lastSuccessfulProgressSync: t3,
+        lastSuccessfulTrackerSync: t4,
+      });
+
+      // Verify derived dirty state: t1 <= t3 (clean), t2 <= t4 (clean)
+      const dirty = getDerivedDirtyState(meta);
+      expect(dirty.progressDirty).toBe(false);
+      expect(dirty.trackerDirty).toBe(false);
+    });
+
+    test("syncTrackerData() is NOT called when tracker timestamp ≤ lastSuccessfulTrackerSync", async () => {
+      const syncTime = "2026-09-26T12:00:00.000Z";
+      const trackerUpdateTime = "2026-09-26T12:00:00.000Z"; // equal -> clean
+      const progressUpdateTime = "2026-09-26T12:05:00.000Z"; // newer -> dirty
+
+      setSyncMeta({
+        lastLocalProgressUpdate: progressUpdateTime,
+        lastSuccessfulProgressSync: syncTime,
+        lastLocalTrackerUpdate: trackerUpdateTime,
+        lastSuccessfulTrackerSync: syncTime,
+      });
+
+      const { mockFrom } = setupSupabaseMock({
+        progressData: { bookmarks: [] },
+      });
+
+      const result = await syncUserData("user-dec139-1", { shouldSampleSuccess: () => false });
+      expect(result.success).toBe(true);
+      expect(result.progressSkipped).toBe(false);
+      expect(result.trackerSkipped).toBe(true);
+
+      // Verify user_tracker table was never touched
+      expect(mockFrom).not.toHaveBeenCalledWith("user_tracker");
+      // user_progress was touched
+      expect(mockFrom).toHaveBeenCalledWith("user_progress");
+    });
+
+    test("syncTrackerData() IS called when tracker timestamp > lastSuccessfulTrackerSync", async () => {
+      const syncTime = "2026-09-26T12:00:00.000Z";
+      const trackerUpdateTime = "2026-09-26T12:05:00.000Z"; // newer -> dirty
+      const progressUpdateTime = "2026-09-26T12:00:00.000Z"; // equal -> clean
+
+      setSyncMeta({
+        lastLocalProgressUpdate: progressUpdateTime,
+        lastSuccessfulProgressSync: syncTime,
+        lastLocalTrackerUpdate: trackerUpdateTime,
+        lastSuccessfulTrackerSync: syncTime,
+      });
+
+      const { mockFrom, mockTrackerUpsert } = setupSupabaseMock();
+
+      const result = await syncUserData("user-dec139-2");
+      expect(result.success).toBe(true);
+      expect(result.progressSkipped).toBe(true);
+      expect(result.trackerSkipped).toBe(false);
+
+      // Verify user_progress was skipped
+      expect(mockFrom).not.toHaveBeenCalledWith("user_progress");
+      // user_tracker was called
+      expect(mockFrom).toHaveBeenCalledWith("user_tracker");
+      expect(mockTrackerUpsert).toHaveBeenCalled();
+    });
+
+    test("progress sync is skipped when progress timestamp ≤ lastSuccessfulProgressSync", async () => {
+      const syncTime = "2026-09-26T12:00:00.000Z";
+      setSyncMeta({
+        lastLocalProgressUpdate: "2026-09-26T11:59:00.000Z", // older -> clean
+        lastSuccessfulProgressSync: syncTime,
+        lastLocalTrackerUpdate: "2026-09-26T11:59:00.000Z",  // older -> clean
+        lastSuccessfulTrackerSync: syncTime,
+      });
+
+      const mockFrom = vi.fn();
+      vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({ from: mockFrom });
+
+      const result = await syncUserData("user-dec139-3");
+      expect(result.success).toBe(true);
+      expect(result.skipped).toBe(true);
+      expect(result.progressSkipped).toBe(true);
+      expect(result.trackerSkipped).toBe(true);
+      expect(mockFrom).not.toHaveBeenCalled();
+    });
+
+    test("sync_log insert fires on failure (using shouldSampleSuccess: () => false)", async () => {
+      markLocalProgressUpdated(); // dirty
+      const mockInsert = vi.fn().mockResolvedValue({ error: null });
+
+      setupSupabaseMock({
+        progressData: { bookmarks: [] },
+        progressUpsertError: { code: "PGRST500", message: "Database error" },
+        syncLogInsert: mockInsert,
+      });
+
+      const result = await syncUserData("user-dec139-4", { shouldSampleSuccess: () => false });
+      expect(result.success).toBe(false);
+      expect(mockInsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          user_id: "user-dec139-4",
+          action: "sync_failed",
+          payload_snapshot: expect.objectContaining({
+            stage: "upsert",
+            errorCode: "PGRST500",
+          }),
+        })
+      );
+    });
+
+    test("sync_log insert fires on success when sampled (using shouldSampleSuccess: () => true)", async () => {
+      markLocalProgressUpdated();
+      const mockInsert = vi.fn().mockResolvedValue({ error: null });
+
+      setupSupabaseMock({
+        progressData: { bookmarks: ["go:1"] },
+        syncLogInsert: mockInsert,
+      });
+
+      const result = await syncUserData("user-dec139-5", { shouldSampleSuccess: () => true });
+      expect(result.success).toBe(true);
+      expect(mockInsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          user_id: "user-dec139-5",
+          action: "incremental_sync",
+        })
+      );
+    });
+
+    test("sync_log insert is skipped on success when not sampled (using shouldSampleSuccess: () => false)", async () => {
+      markLocalProgressUpdated();
+      const mockInsert = vi.fn().mockResolvedValue({ error: null });
+
+      setupSupabaseMock({
+        progressData: { bookmarks: ["go:1"] },
+        syncLogInsert: mockInsert,
+      });
+
+      const result = await syncUserData("user-dec139-6", { shouldSampleSuccess: () => false });
+      expect(result.success).toBe(true);
+      expect(mockInsert).not.toHaveBeenCalled();
+    });
+
+    test("sync_log insert still fires on first-login-merge (always, regardless of sampler)", async () => {
+      markLocalProgressUpdated();
+      const mockInsert = vi.fn().mockResolvedValue({ error: null });
+
+      setupSupabaseMock({
+        progressData: null, // First-login merge: no cloud row exists
+        syncLogInsert: mockInsert,
+      });
+
+      const result = await syncUserData("user-dec139-7", { shouldSampleSuccess: () => false });
+      expect(result.success).toBe(true);
+      expect(mockInsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          user_id: "user-dec139-7",
+          action: "first_login_merge",
+        })
+      );
+    });
+
+    test("lastSuccessfulProgressSync / lastSuccessfulTrackerSync update only after respective successful sync, not on attempt", async () => {
+      // 1. Initial state: both null
+      expect(getSyncMeta().lastSuccessfulProgressSync).toBeNull();
+      expect(getSyncMeta().lastSuccessfulTrackerSync).toBeNull();
+
+      // 2. Failed progress upsert -> must NOT update lastSuccessfulProgressSync
+      markLocalProgressUpdated();
+      let shouldProgressFail = true;
+
+      setupSupabaseMock({
+        progressData: { bookmarks: [] },
+        progressUpsertError: () => (shouldProgressFail ? { message: "Fail" } : null),
+        trackerUpsertError: { message: "Tracker Fail" },
+      });
+
+      await syncUserData("user-dec139-8");
+      expect(getSyncMeta().lastSuccessfulProgressSync).toBeNull();
+
+      // 3. Successful progress sync, failed tracker sync
+      shouldProgressFail = false;
+      markLocalTrackerUpdated(); // dirty tracker
+      await syncUserData("user-dec139-8");
+
+      expect(getSyncMeta().lastSuccessfulProgressSync).not.toBeNull();
+      expect(getSyncMeta().lastSuccessfulTrackerSync).toBeNull(); // tracker still failed
     });
   });
 });

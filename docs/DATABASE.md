@@ -45,22 +45,26 @@ The hosted project does not contain `supabase_migrations.schema_migrations`; the
 
 ## Free-Tier Resource Usage & Quota Audit
 
-> **Last Inspected**: `2026-09-03` (Current Billing Cycle Audit)  
+> **Last Inspected**: `2026-09-26` (Log Ingestion Telemetry & Optimization Audit — DEC-139)  
 > **Plan**: Supabase Free Tier ($0/mo)  
-> **Status**: 🟢 **Healthy & Well Within Limits (< 12% utilization across all metrics)**
+> **Status**: 🟢 **Healthy & Well Within Limits**
 
 | Resource Metric | Current Usage | Free Tier Limit | Utilization | Headroom / Remaining | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Log Ingestion** | `0.63 GB (630 MB)` | `1.00 GB` | **63.0%** | `370 MB` remaining (grace period through early 2027) | 🟢 Optimized (DEC-139) |
 | **Egress (Network)** | `0.56 GB (560 MB)` | `5.00 GB` | **11.2%** | `4.44 GB` remaining | 🟢 Safe |
 | **Database Size** | `41 MB` | `500 MB` | **8.2%** | `459 MB` remaining | 🟢 Safe |
-| **Monthly Active Users (MAU)** | `332` | `50,000` | **0.66%** | `49,668` MAUs remaining | 🟢 Safe |
+| **Monthly Active Users (MAU)** | `270–332` | `50,000` | **~0.6%** | `49,600+` MAUs remaining | 🟢 Safe |
 | **File Storage** | `0 GB` | `1.00 GB` | **0.0%** | `1.00 GB` remaining | 🟢 Safe |
 
 ### Architectural Guardrails Maintaining Free-Tier Health:
 1. **Local-First Architecture**: App reads/writes to `localStorage` (0ms); Supabase is only contacted for optional cross-device backup.
-2. **Debounced & Throttled Sync**: Writes are debounced by 750ms and throttled to maximum 1 sync per 30s per user.
-3. **Bounded Payloads (< 10 KB per user)**: Only user annotations and bounded summary maps are uploaded; raw question shards remain static assets on GitHub Pages / CDN.
-4. **Zero Live Database Queries on Normal Navigation**: Navigating questions, filter tables, and tracker pages consumes 0 database queries and 0 live database bandwidth.
+2. **Debounced & Throttled Sync (DEC-139)**: Writes are debounced by 750ms and throttled to maximum 1 sync per 120s (2 minutes) per user.
+3. **Persistent Sync Metadata & Conditional Table Syncing (DEC-139)**: Timestamps in `localStorage` (`gateqa_sync_meta`) track local updates and sync success per table. Sync requests only fetch and upsert `user_progress` when progress is dirty, and only contact `user_tracker` when the syllabus checklist is dirty.
+4. **Cross-Tab Sync Deduplication (DEC-139)**: `BroadcastChannel("gateqa_sync_channel")` and `storage` event fallback cancel redundant concurrent sync timers across multiple open tabs.
+5. **Sampled Audit Logging (DEC-139)**: `sync_log` writes are reduced to 100% on failure/first-login-merge and ~1% on routine successes, preventing logging loops and reducing API Gateway load by ~80%.
+6. **Bounded Payloads (< 10 KB per user)**: Only user annotations and bounded summary maps are uploaded; raw question shards remain static assets on GitHub Pages / CDN.
+7. **Zero Live Database Queries on Normal Navigation**: Navigating questions, filter tables, and tracker pages consumes 0 database queries and 0 live database bandwidth.
 
 ---
 
@@ -117,10 +121,12 @@ Append-only audit records for synchronization events.
 | :--- | :--- | :---: | :--- | :--- |
 | `id` | `bigint` | **No** | `nextval('sync_log_id_seq')` | Log identity (Primary Key) |
 | `user_id` | `uuid` | Yes | null | Owning user (`ON DELETE CASCADE`) |
-| `action` | `text` | **No** | null | For example `first_login_merge` or `incremental_sync` |
+| `action` | `text` | **No** | null | For example `first_login_merge`, `incremental_sync`, or `sync_failure` |
 | `payload_snapshot` | `jsonb` | Yes | null | Lightweight count summary of the merged state: `{ summaryVersion, solvedCount, bookmarkCount, notesCount, mockCount, standardProgressCount, aptitudeProgressCount, daProgressCount }` |
 | `device_info` | `text` | Yes | null | Browser user-agent and platform metadata |
 | `created_at` | `timestamptz` | Yes | `now()` | Timestamp of audit entry |
+
+> **Sampled Logging (DEC-139)**: To conserve API Gateway requests and Supabase Log Ingestion quotas, `sync_log` writes are sampled. 100% of failed syncs and initial `first_login_merge` actions are logged for diagnostic auditing. Routine successful syncs are sampled at ~1%. Inserts are wrapped in defensive `try / catch` so server logging errors never block client operations. The client application never reads from this table.
 
 ### `public.user_tracker`
 
@@ -240,14 +246,17 @@ All database functions in the cluster adhere to the Supabase Database Advisor & 
    `https://<project-ref>.supabase.co/auth/v1/callback`.
 3. Supabase creates or restores the Auth session and redirects to the configured application origin.
 4. `AuthContext` receives the session and user UUID.
-5. `cloudSyncManager` creates a local backup snapshot before touching cloud data (`gate_qa_backup_<timestamp>`).
-6. Existing `user_progress` is read, if present.
-7. Local and cloud data are merged additively.
-8. The merged payload is upserted into `user_progress`.
-9. A `sync_log` record is appended with a lightweight summary.
-10. The merged state is written back to localStorage so the UI is immediately consistent.
+5. On mount / sign-in, an initial sync is executed with `{ force: true }` participating in the full GET → merge → POST flow to guarantee cross-device alignment.
+6. For routine sync cycles:
+   - `cloudSyncManager` derives dirty flags per table (`isProgressDirty`, `isTrackerDirty`) from persistent timestamps in `gateqa_sync_meta`.
+   - If a table is clean and sync is not forced, network requests for that table are skipped.
+   - If dirty, a local backup snapshot is created before touching cloud data (`gate_qa_backup_<timestamp>`).
+   - For `user_progress`: Reads cloud state, additively merges local and cloud data, and upserts merged state back to Supabase. On success, updates `lastSuccessfulProgressSync`.
+   - For `user_tracker`: Invoked only if the syllabus checklist is dirty. Reads cloud tracker state, merges revision summaries and theory checkboxes, and upserts back to Supabase. On success, updates `lastSuccessfulTrackerSync`.
+   - A `sync_log` record is inserted with a lightweight summary (100% on failure/first-login-merge; sampled at ~1% on routine successes).
+   - Merged state is written back to `localStorage` so the UI is immediately consistent.
 
-The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running. Sync requests are debounced by 750 ms and successful syncs are throttled to one per 30 seconds per user. Changes remain in the local offline queue until the next permitted sync, so throttling does not discard local work. Authentication/session initialization still performs the first sync immediately.
+The sync is single-flight: a user must not generate overlapping sync requests while the previous request is still running. Sync requests are debounced by 750 ms and routine syncs are throttled to one per 120 seconds (2 minutes) per user (`MIN_SYNC_INTERVAL_MS`). Changes remain in the local offline queue and dirty timestamps remain persistent in `localStorage`, surviving browser restarts. Lifecycle events (`visibilitychange`) attempt a best-effort sync on tab hidden and catch up on tab visible. Multiple open tabs coordinate via `BroadcastChannel("gateqa_sync_channel")` to cancel redundant sync timers.
 
 `sync_log.payload_snapshot` stores a lightweight summary rather than student content. New rows contain `summaryVersion`, solved/bookmark/note/mock counts, and separate standard/aptitude/da progress counts. Older rows may contain full snapshots and should be retained only according to the documented cleanup policy.
 
