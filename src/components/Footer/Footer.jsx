@@ -11,13 +11,13 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="mt-auto w-full border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-2 px-4">
+      <footer className="app-footer mt-auto w-full border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-2 px-4">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 text-[10px] sm:text-xs text-[color:var(--color-text-muted)]">
           <span>© 2026 GateQA. All rights reserved.</span>
           <span className="text-[color:var(--color-border)]">|</span>
           <span>
             Powered by{' '}
-            <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[color:var(--color-primary-text)] hover:underline">
+            <a href="https://gateoverflow.in/" target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-800 dark:text-slate-200 hover:text-black dark:hover:text-white underline underline-offset-2 transition-colors">
               GATE Overflow
             </a>
           </span>

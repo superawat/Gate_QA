@@ -35,6 +35,7 @@ const HOMEPAGE_FAQS = [
 import PageShell from "../components/Layout/PageShell";
 import StreakBanner from "../components/Home/StreakBanner";
 import ActivityHeatmap from "../components/Home/ActivityHeatmap";
+import { HomeSearchBar } from "../components/HomeSearch";
 import { loadStudyActivityFast } from "../utils/weakTopicAnalyzer";
 import { getQuoteForToday, parseQuote } from "../utils/motivationalQuotes";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -46,6 +47,7 @@ import {
 } from "../utils/routePreload";
 
 const HOMEPAGE_ICON_BASE = "/homepage_icon/optimized";
+const SEARCH_BANNER_SRC = `${(import.meta.env.BASE_URL || "/").replace(/\/$/, "")}/images/searchbar.webp`;
 
 const HomePage = ({
   hasResumeRoute,
@@ -271,6 +273,22 @@ const HomePage = ({
           aria-busy={false}
         >
           <h1 className="sr-only">GateQA practice dashboard</h1>
+
+          <div className="home-search-hero">
+            <div className="home-search-hero-bg" aria-hidden="true">
+              <img
+                src={SEARCH_BANNER_SRC}
+                alt=""
+                className="home-search-hero-img"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="home-search-hero-overlay" />
+            </div>
+            <div className="home-search-hero-content">
+              <HomeSearchBar />
+            </div>
+          </div>
 
           <div className="home-actions-wrap">
             <section

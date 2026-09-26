@@ -14,28 +14,28 @@ const CollapsibleSection = ({
   const panelId = `collapsible-panel-${uid}`;
 
   return (
-    <section className={`rounded-[var(--radius-card)] border overflow-hidden ${className}`}>
+    <section className={`rounded-2xl sm:rounded-[var(--radius-card)] border overflow-hidden ${className}`}>
       <button
         id={buttonId}
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-black/5 dark:hover:bg-white/5 transition-colors focus:outline-none"
+        className="w-full flex items-center justify-between p-3.5 sm:p-5 text-left hover:bg-black/5 dark:hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
       >
         <div>
           {typeof title === "string" ? (
-            <h2 className="text-xl font-semibold text-[color:var(--color-text)]">{title}</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-[color:var(--color-text)]">{title}</h2>
           ) : (
             title
           )}
           {description && (
-            <p className="mt-1 text-sm text-[color:var(--color-text-muted)]">
+            <p className="mt-1 text-xs sm:text-sm text-[color:var(--color-text-muted)]">
               {description}
             </p>
           )}
         </div>
-        <div className="ml-4 shrink-0 text-[color:var(--color-text-muted)]">
+        <div className="ml-3 sm:ml-4 shrink-0 text-[color:var(--color-text-muted)]">
           {isOpen ? <FaChevronUp /> : <FaChevronDown />}
         </div>
       </button>
@@ -44,7 +44,7 @@ const CollapsibleSection = ({
           id={panelId}
           role="region"
           aria-labelledby={buttonId}
-          className="p-5 pt-0 sm:p-6 sm:pt-0"
+          className="p-3.5 pt-0 sm:p-5 sm:pt-0"
         >
           {children}
         </div>

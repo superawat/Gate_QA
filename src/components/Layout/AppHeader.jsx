@@ -49,9 +49,9 @@ const PRACTICE_BADGE_QUERY_KEYS = [
 
 const navButtonClassName = "inline-flex min-h-[44px] items-center rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2 text-sm font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)]";
 const navLinkClassName = ({ isActive }) => (
-  `inline-flex min-h-[44px] items-center rounded-2xl border px-4 py-2 text-sm font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-sky-500 ${
+  `inline-flex min-h-[44px] items-center rounded-2xl border px-4 py-2 text-sm font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-500 ${
     isActive
-      ? "border-sky-700 bg-sky-700 text-white"
+      ? "border-slate-800 bg-slate-900 text-white dark:border-slate-700 dark:bg-slate-800"
       : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)]"
   }`
 );
@@ -549,7 +549,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               />
             </span>
             <div className="min-w-0">
-              <p className="text-base font-semibold uppercase tracking-[0.08em] text-sky-700 sm:text-2xl">GATE QA</p>
+              <p className="text-base font-bold uppercase tracking-[0.08em] text-slate-900 dark:text-white sm:text-2xl">GATE QA</p>
             </div>
           </Link>
         </div>
@@ -559,7 +559,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
             <button
               type="button"
               onClick={handleInstallApp}
-              className="inline-flex min-h-[44px] items-center rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="inline-flex min-h-[44px] items-center rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-500"
             >
               Install App
             </button>
@@ -623,14 +623,14 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               onClick={handleToggleTheme}
               aria-label={themeToggleLabel}
               aria-checked={isDarkMode}
-              className="group relative flex h-8 w-14 cursor-pointer items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="group relative flex h-8 w-14 cursor-pointer items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-500"
             >
               <div className="absolute inset-0 flex items-center justify-between px-2 text-xs text-[color:var(--color-text-muted)] pointer-events-none">
                 <FiMoon className="h-3.5 w-3.5" />
                 <FiSun className="h-3.5 w-3.5" />
               </div>
               <span
-                className={`relative inline-block h-6 w-6 transform rounded-full bg-sky-600 shadow-md transition-transform duration-200 ease-in-out ${
+                className={`relative inline-block h-6 w-6 transform rounded-full bg-slate-800 dark:bg-slate-100 shadow-md transition-transform duration-200 ease-in-out ${
                   isDarkMode ? "translate-x-7" : "translate-x-1"
                 }`}
               />
@@ -649,7 +649,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
                   onClick={() => setShowAuthModal(true)}
                   aria-label="Sign in with Google to back up your progress"
                   title="Sign in"
-                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 min-[380px]:px-3 py-1 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 min-[380px]:px-3 py-1 text-xs font-semibold text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-500"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" className="h-3.5 w-3.5 shrink-0">
                     <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.6 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.9z"/>

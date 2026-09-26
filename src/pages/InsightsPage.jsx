@@ -226,61 +226,91 @@ const ProgressRing = ({ value, size = 80, strokeWidth = 7, color = "#059669", la
             className="transition-all duration-700 ease-out"
           />
         </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-base font-bold" style={{ color: "var(--chart-tooltip-text)" }}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-sm sm:text-base font-bold leading-none" style={{ color: "var(--chart-tooltip-text)" }}>
             {formatPercent(safeValue)}
           </span>
+          {sublabel && (
+            <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)] opacity-75">
+              {sublabel}
+            </span>
+          )}
         </div>
       </div>
       {label && <p className="text-xs font-semibold text-center leading-tight" style={{ color: "var(--chart-tooltip-text)" }}>{label}</p>}
-      {sublabel && <p className="text-[10px] text-center" style={{ color: "var(--chart-tooltip-muted)" }}>{sublabel}</p>}
     </div>
   );
 };
 
 /* ── Stat card ──────────────────────────────────────────────────────────── */
 
-const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel }) => {
+const StatCard = ({ label, value, icon: Icon, accent = "sky", sublabel, isWideOnMobile = false }) => {
   const accentMap = {
     sky: {
-      borderColor: "var(--color-info-border)",
-      background: "linear-gradient(135deg, var(--color-info-soft), var(--color-surface))",
-      color: "var(--color-info-text)",
+      border: "border-sky-500/25 dark:border-sky-500/35",
+      background: "bg-gradient-to-br from-sky-500/10 via-sky-500/5 to-transparent dark:from-sky-500/15 dark:via-sky-950/25 dark:to-transparent",
+      iconBg: "bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/20",
     },
     rose: {
-      borderColor: "var(--color-danger-border)",
-      background: "linear-gradient(135deg, var(--color-danger-soft), var(--color-surface))",
-      color: "var(--color-danger-text)",
+      border: "border-rose-500/25 dark:border-rose-500/35",
+      background: "bg-gradient-to-br from-rose-500/10 via-rose-500/5 to-transparent dark:from-rose-500/15 dark:via-rose-950/25 dark:to-transparent",
+      iconBg: "bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/20",
     },
     amber: {
-      borderColor: "var(--color-warning-border)",
-      background: "linear-gradient(135deg, var(--color-warning-soft), var(--color-surface))",
-      color: "var(--color-warning-text)",
+      border: "border-amber-500/25 dark:border-amber-500/35",
+      background: "bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent dark:from-amber-500/15 dark:via-amber-950/25 dark:to-transparent",
+      iconBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/20",
     },
     emerald: {
-      borderColor: "var(--color-success-border)",
-      background: "linear-gradient(135deg, var(--color-success-soft), var(--color-surface))",
-      color: "var(--color-success-text)",
+      border: "border-emerald-500/25 dark:border-emerald-500/35",
+      background: "bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent dark:from-emerald-500/15 dark:via-emerald-950/25 dark:to-transparent",
+      iconBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20",
     },
     violet: {
-      borderColor: "var(--color-purple-border)",
-      background: "linear-gradient(135deg, var(--color-purple-soft), var(--color-surface))",
-      color: "var(--color-purple-text)",
+      border: "border-purple-500/25 dark:border-purple-500/35",
+      background: "bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent dark:from-purple-500/15 dark:via-purple-950/25 dark:to-transparent",
+      iconBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/20",
     },
   };
   const token = accentMap[accent] || accentMap.sky;
 
+  if (isWideOnMobile) {
+    return (
+      <div
+        className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:scale-[1.01] flex flex-row sm:flex-col items-center sm:items-stretch justify-between gap-3`}
+      >
+        <div className="flex items-center sm:justify-between gap-2.5 min-w-0">
+          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate order-2 sm:order-1">{label}</p>
+          {Icon && (
+            <div className={`flex items-center justify-center w-8 h-8 sm:w-6 sm:h-6 rounded-xl sm:rounded-lg shrink-0 ${token.iconBg} order-1 sm:order-2`}>
+              <Icon className="text-xs sm:text-[10px]" />
+            </div>
+          )}
+        </div>
+        <div className="flex sm:block flex-col items-end sm:items-start shrink-0">
+          <p className="text-2xl font-black text-[color:var(--color-text)] tracking-tight leading-none sm:leading-tight">{value}</p>
+          {sublabel && <p className="mt-0.5 sm:mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 truncate">{sublabel}</p>}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="rounded-xl border px-3 py-2.5 shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.01]"
-      style={token}
+      className={`rounded-2xl border ${token.border} ${token.background} p-3.5 sm:p-4 shadow-[var(--shadow-soft)] transition-all hover:scale-[1.01] flex flex-col justify-between`}
     >
-      <div className="flex items-center gap-1.5">
-        {Icon && <Icon className="text-[10px]" style={{ color: token.color }} />}
-        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] opacity-75">{label}</p>
+      <div className="flex items-center justify-between gap-1.5">
+        <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)] truncate">{label}</p>
+        {Icon && (
+          <div className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-lg shrink-0 ${token.iconBg}`}>
+            <Icon className="text-[10px] sm:text-xs" />
+          </div>
+        )}
       </div>
-      <p className="mt-1 text-xl font-bold">{value}</p>
-      {sublabel && <p className="mt-0.5 text-[10px] opacity-60 leading-tight">{sublabel}</p>}
+      <div className="mt-2">
+        <p className="text-2xl font-black text-[color:var(--color-text)] tracking-tight">{value}</p>
+        {sublabel && <p className="mt-1 text-[11px] text-[color:var(--color-text-muted)] opacity-75 leading-tight line-clamp-1">{sublabel}</p>}
+      </div>
     </div>
   );
 };
@@ -738,7 +768,7 @@ const SubjectProgressRings = ({ subjects = [] }) => {
   if (subjects.length === 0) return null;
 
   return (
-    <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       {subjects.map((item, index) => {
         const coveragePercent = Math.round((item.coverageRate || 0) * 100);
         const accuracyPercent = Math.round((item.accuracyRate || 0) * 100);
@@ -747,22 +777,32 @@ const SubjectProgressRings = ({ subjects = [] }) => {
         return (
           <div
             key={item.key}
-            className={`${staggerClass} flex flex-col items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3 transition-transform hover:scale-[1.02]`}
+            className={`${staggerClass} flex flex-col items-center justify-between gap-2.5 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 sm:p-3.5 transition-all hover:scale-[1.02] shadow-[var(--shadow-soft)]`}
           >
             <ProgressRing
               value={coveragePercent}
               size={64}
               strokeWidth={6}
               color={tone.color}
+              sublabel="Coverage"
             />
-            <p className="text-xs font-semibold text-center text-[color:var(--color-text)] leading-tight truncate w-full" title={item.label}>
-              {item.label}
-            </p>
-            <div className="flex items-center gap-1 text-[10px] text-[color:var(--color-text-muted)]">
-              <span className="font-bold" style={{ color: tone.color }}>{accuracyPercent}%</span>
-              <span>acc</span>
-              <span className="mx-0.5">·</span>
-              <span>{formatNumber(item.attemptedQuestions)}/{formatNumber(item.availableQuestions)}</span>
+            <div className="w-full text-center">
+              <p
+                className="text-xs font-semibold text-[color:var(--color-text)] leading-snug line-clamp-2 min-h-[2rem] flex items-center justify-center"
+                title={item.label}
+              >
+                {item.label}
+              </p>
+              <div className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[10px] text-[color:var(--color-text-muted)] w-full">
+                <span className="font-bold tabular-nums" style={{ color: tone.color }}>
+                  {accuracyPercent}%
+                </span>
+                <span className="opacity-75">acc</span>
+                <span className="opacity-40">·</span>
+                <span className="tabular-nums opacity-90">
+                  {formatNumber(item.attemptedQuestions)}/{formatNumber(item.availableQuestions)}
+                </span>
+              </div>
             </div>
           </div>
         );
@@ -829,20 +869,20 @@ const FocusAreas = ({ subtopics = [] }) => {
   return (
     <div className="space-y-3">
       {allWeakSubtopics.length > 1 && (
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 p-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]">
           <div className="text-xs text-[color:var(--color-text-muted)]">
-            <span className="font-semibold text-[color:var(--color-text)]">{allWeakSubtopics.length} subtopics</span> below 60% proficiency threshold.
+            <span className="font-bold text-[color:var(--color-text)]">{allWeakSubtopics.length} subtopics</span> below 60% proficiency threshold.
           </div>
           <Link
             to={practiceAllWeakUrl}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[color:var(--color-primary)] px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs shrink-0"
           >
             Practice Top Weak Areas <FaArrowRight className="text-[10px]" />
           </Link>
         </div>
       )}
 
-      <div className="grid gap-2.5 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         {displayedSubtopics.map((st) => {
           const accuracyPercent = Math.round(Number(st.accuracyRate || 0) * 100);
           const tone = getAccuracyTone(st.accuracyRate);
@@ -854,7 +894,7 @@ const FocusAreas = ({ subtopics = [] }) => {
           return (
             <div
               key={st.key}
-              className="flex flex-col justify-between rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 transition-all hover:border-[color:var(--color-primary-border)] hover:shadow-md group"
+              className="flex flex-col justify-between rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 sm:p-4 transition-all hover:border-[color:var(--color-primary-border)] hover:shadow-md group shadow-[var(--shadow-soft)]"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-1.5">
@@ -897,7 +937,7 @@ const FocusAreas = ({ subtopics = [] }) => {
               <div className="mt-3.5 pt-2.5 border-t border-[color:var(--color-border)] flex items-center justify-end">
                 <Link
                   to={practiceUrl}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[color:var(--color-primary)] hover:text-[color:var(--color-primary-hover)] transition-colors"
+                  className="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-lg text-xs font-semibold text-[color:var(--color-primary)] hover:bg-[color:var(--color-primary-soft)] transition-colors"
                 >
                   Practice <FaArrowRight className="text-[9px] group-hover:translate-x-0.5 transition-transform" />
                 </Link>
@@ -912,7 +952,7 @@ const FocusAreas = ({ subtopics = [] }) => {
           <button
             type="button"
             onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-xs font-medium text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-xs font-semibold text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors shadow-xs"
           >
             {showAll ? "Show Top 4 Priority" : `View all ${allWeakSubtopics.length} weak topics`}
           </button>
@@ -1140,7 +1180,7 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
   return (
     <div className="space-y-6">
       {/* Stat cards row */}
-      <div className={`grid gap-2 grid-cols-2 md:grid-cols-3 ${summary.mockAttemptedQuestionCount > 0 ? "lg:grid-cols-6" : "lg:grid-cols-5"}`}>
+      <div className={`grid gap-2.5 sm:gap-3 grid-cols-2 md:grid-cols-3 ${summary.mockAttemptedQuestionCount > 0 ? "lg:grid-cols-6" : "lg:grid-cols-5"}`}>
         <div className="stagger-card-1">
           <StatCard
             label="Attempted"
@@ -1177,13 +1217,14 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
             sublabel="questions ready"
           />
         </div>
-        <div className="stagger-card-5">
+        <div className={`stagger-card-5 ${summary.mockAttemptedQuestionCount > 0 ? "" : "col-span-2 sm:col-span-1"}`}>
           <StatCard
             label="Avg Time"
             value={formatDuration(summary.averageDurationMs)}
             icon={FaClock}
             accent="violet"
             sublabel="per timed attempt"
+            isWideOnMobile={summary.mockAttemptedQuestionCount <= 0}
           />
         </div>
         {summary.mockAttemptedQuestionCount > 0 ? (
@@ -1974,30 +2015,59 @@ const InsightsPage = ({
       onResume={hasResumeRoute ? onResumePractice : null}
       resumeLabel="Continue"
     >
-      <section className="space-y-5">
+      <section className="space-y-4 sm:space-y-5 pb-24 md:pb-8">
         {/* Hero header */}
-        <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 shadow-[var(--shadow-card)] sm:p-5">
-          <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
-            <div className="flex flex-wrap xl:flex-nowrap items-center gap-3 sm:gap-4">
+        <header className="rounded-2xl sm:rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 sm:p-5 shadow-[var(--shadow-card)]">
+          <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 sm:gap-4">
+            {/* Left: Home button & Insights title pill */}
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <Link
                 to={HOME_ROUTE}
-                className="inline-flex min-h-[38px] sm:min-h-[40px] min-w-[38px] sm:min-w-[40px] w-[38px] sm:w-[40px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] shadow-xs focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                 aria-label="Back to Home"
                 title="Home"
               >
                 <FiHome className="text-base sm:text-lg shrink-0" />
               </Link>
-              <div className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary-soft)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-primary-text)] shrink-0">
-                <FaChartLine />
-                Insights
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl bg-[color:var(--color-primary-soft)] px-2.5 py-1.5 sm:px-3 text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--color-primary-text)]">
+                <FaChartLine className="text-xs" />
+                <span>Insights</span>
               </div>
+            </div>
 
-              {/* Multi-Branch Track Switcher */}
-              <div className="inline-flex rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-sm">
+            {/* Actions: Theme Toggle & Practice CTA (Right on mobile, far-right on desktop) */}
+            <div className="flex items-center gap-2 shrink-0 order-2 lg:order-3 ml-auto lg:ml-0">
+              <button
+                type="button"
+                role="switch"
+                onClick={toggleTheme}
+                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                aria-checked={isDarkMode}
+                title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-xs transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+              >
+                {isDarkMode ? (
+                  <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                ) : (
+                  <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                )}
+              </button>
+              <Link
+                to={PRACTICE_ROUTE}
+                className="inline-flex h-9 sm:h-10 items-center rounded-xl bg-[color:var(--color-primary)] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs sm:shadow-sm"
+              >
+                <FaCompass className="mr-1.5 sm:mr-2 text-xs sm:text-sm" />
+                <span>Open Practice</span>
+              </Link>
+            </div>
+
+            {/* Track Switcher (Row 2 on mobile, center on desktop) */}
+            <div className="w-full lg:w-auto order-3 lg:order-2">
+              <div className="grid grid-cols-3 lg:inline-flex w-full lg:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs">
                 <button
                   type="button"
                   onClick={() => handleTrackChange("cs")}
-                  className={`inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
+                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
                     selectedTrack === "cs"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -2009,7 +2079,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("da")}
-                  className={`inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
+                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
                     selectedTrack === "da"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -2021,7 +2091,7 @@ const InsightsPage = ({
                 <button
                   type="button"
                   onClick={() => handleTrackChange("all")}
-                  className={`inline-flex items-center justify-center gap-1 min-[360px]:gap-1.5 px-2 min-[360px]:px-3 py-1.5 text-[11px] min-[360px]:text-xs rounded-lg transition-all ${
+                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
                     selectedTrack === "all"
                       ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
                       : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -2031,31 +2101,6 @@ const InsightsPage = ({
                   <span>Combined</span>
                 </button>
               </div>
-            </div>
-
-            <div className="flex items-center gap-2 shrink-0 ml-auto lg:ml-0">
-              <button
-                type="button"
-                role="switch"
-                onClick={toggleTheme}
-                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                aria-checked={isDarkMode}
-                title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                className="inline-flex min-h-[38px] sm:min-h-[40px] min-w-[38px] sm:min-w-[40px] w-[38px] sm:w-[40px] items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] shadow-sm transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
-              >
-                {isDarkMode ? (
-                  <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
-                ) : (
-                  <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
-                )}
-              </button>
-              <Link
-                to={PRACTICE_ROUTE}
-                className="inline-flex min-h-[38px] sm:min-h-[40px] items-center rounded-xl bg-[color:var(--color-primary)] px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-sm"
-              >
-                <FaCompass className="mr-2" />
-                Open Practice
-              </Link>
             </div>
           </div>
         </header>
@@ -2112,7 +2157,7 @@ const InsightsPage = ({
         ) : (
           <>
             {/* Tab navigation */}
-            <div className="flex gap-1 rounded-2xl bg-[color:var(--color-surface-muted)] p-1 shadow-inner">
+            <div className="flex gap-1 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 shadow-xs">
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 const TabIcon = tab.icon;
@@ -2128,24 +2173,33 @@ const InsightsPage = ({
                     key={tab.id}
                     type="button"
                     onClick={() => handleTabChange(tab.id)}
-                    className={`flex-1 inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl px-1 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold transition-all ${
+                    aria-label={tab.label}
+                    className={`flex-1 min-h-[42px] inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl px-1.5 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold transition-all ${
                       isActive
-                        ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-md"
+                        ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold border border-[color:var(--color-border)]"
                         : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-surface)]/50"
                     }`}
                   >
-                    <TabIcon className={`text-xs ${isActive ? "text-sky-600" : ""}`} />
+                    <TabIcon className={`text-xs shrink-0 ${isActive ? "text-sky-600 dark:text-sky-400" : ""}`} />
                     <span className="text-[11px] sm:text-sm">
                       <span className="inline sm:hidden">{shortLabel}</span>
                       <span className="hidden sm:inline">{tab.label}</span>
                     </span>
                     {tab.id === "wrong" && wrongCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-rose-100 text-rose-700" : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"}`}>
+                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
+                        isActive
+                          ? "bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30"
+                          : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)]"
+                      }`}>
                         {wrongCount}
                       </span>
                     )}
                     {tab.id === "review" && dueReviewCount > 0 && (
-                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${isActive ? "bg-amber-100 text-amber-700" : "bg-[color:var(--color-surface-muted)] text-[color:var(--color-text-muted)]"}`}>
+                      <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
+                        isActive
+                          ? "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+                          : "bg-[color:var(--color-surface)] text-[color:var(--color-text-muted)]"
+                      }`}>
                         {dueReviewCount}
                       </span>
                     )}

@@ -1,5 +1,59 @@
 # Changelog
 
+- **Homepage Test Suite Modernization & Full Behavioral Coverage Architecture (DEC-137)**:
+  - *Context*: Following major UX overhauls to the homepage (search hero banner, instant HomeSearchBar integration, 4-card static responsive layout with prominent Practice card, disabled Mock Test guards, 3D mouse tilt handlers, route preloading on hover/focus, daily inspiration quote integration, daily goal modals, and multi-event activity refreshes), the existing tests were minimal and lagged behind production features.
+  - *Implementation*:
+    - **`HomePage.test.jsx`**: Expanded from 4 to 16 comprehensive unit tests covering: search hero container and image asset rendering, screen-reader `<h1>` accessibility, clicking Practice, Filter, Mock Test, and Performance Insights cards, mock card disabling when `mockModeEnabled` is false (disabled attribute, class, prevented click), route preloading triggers on `pointerEnter` and `focus` (prevented when disabled), 3D mouse tilt style updates (`--rx`, `--ry`) on `mouseMove` and reset on `mouseLeave`, daily inspiration quote rendering in Practice card and mobile quote banner, `PageShell` `onResume` integration when `hasResumeRoute` is true/false, exclusion of answer coverage counters, and activity refreshes across all 6 window/document events (`gateqa:progress-updated`, `gateqa:sync-complete`, `gateqa:workspace-imported`, `storage`, `focus`, `visibilitychange`).
+    - **`StreakBanner.test.jsx`**: Expanded from 6 to 8 tests covering daily goal progress ring rendering, opening the Set Daily Goal dialog, preset goal selection, and dynamic motivational text by streak level.
+    - **`ActivityHeatmap.test.jsx`**: Expanded from 4 to 6 tests covering range switching (12w, 26w, 52w) and detailed cell tooltip/aria formatting for attempt count, accuracy %, duration, and current streak indicators.
+  - *Verification*: Full unit test suite grew from 1,094 to **1,110 tests across 86 test files (100% passing)**, TypeScript typecheck clean (`0 errors`).
+
+- **Question Practice Header Vertical Compression & Mobile Insights Overhaul Architecture (DEC-136)**:
+  - *Context*: The Question Practice header (`/practice/question/:questionUid`) previously occupied ~187px across 3 vertically stacked rows with large text sizes and bulky badges, forcing question text and options below the fold. Simultaneously, the mobile Performance Insights page had cluttered header spacing, an awkward orphan 5th summary card, and truncated subject titles.
+  - *Implementation*:
+    - **Header Compression**: Reduced vertical height from ~187px to ~68–78px (>55% space savings). Consolidated navigation buttons, question title (`<h1>`), session status, theme toggle, and scientific calculator into a unified responsive top bar with sleek metadata chips in a compact sub-bar.
+    - **Mobile Insights Overhaul**: Reorganized mobile hero header into a 2-row layout with full-width track switcher, balanced the 5th summary card with `col-span-2 sm:col-span-1`, resolved subject title truncation with `line-clamp-2 min-h-[2rem]` and dual metrics pill, and optimized collapsible section padding.
+  - *Verification*: Full test suite passing (**1,094 unit tests across 86 test files**), TypeScript typecheck clean (`0 errors`), and verified visually across desktop and mobile.
+
+- **Mobile Homepage Search Bar Hero Full Architectural Image Fit (DEC-135)**:
+  - *Context*: On mobile viewports (<=767px), `object-fit: cover` cropped out 50% of the horizontal campus panorama background image in the search hero banner.
+  - *Implementation*: Updated `.home-search-hero-img` under mobile media query to `object-fit: fill; object-position: center bottom;` and tuned hero min-height to 104px, preserving full architectural panorama while keeping desktop untouched.
+  - *Verification*: Full test suite passing, verified across mobile viewports (320px–412px).
+
+- **Header Complete Blue Tint Elimination, Neutral Wordmark & Obsidian Theme Lock (DEC-134)**:
+  - *Context*: Residual sky blue styling in the application header wordmark, theme toggle knob, and mobile navigation drawer conflicted with the obsidian dark theme.
+  - *Implementation*: Transitioned "GATE QA" brand wordmark to neutral `text-slate-900 dark:text-white`, theme toggle knob to `bg-slate-800 dark:bg-slate-100`, header dark backdrop to deep obsidian `rgba(9, 12, 17, 0.9)`, and neutralized drawer logo frames and focus rings.
+  - *Verification*: All 1,094 unit tests passing, clean typecheck.
+
+- **Homepage Action Buttons, Streak, Activity Heatmap & Footer Complete Neutralization & Darkening Architecture (DEC-133)**:
+  - *Context*: The homepage action buttons, streak banner card, practice activity heatmap, and footer previously featured blue/navy gradients, cyan highlights, and sky blue hover states. In dark mode, cards had navy tones (`#132238`, `#161b22`, `#1e293b`) that detracted from a clean, neutral, high-contrast dark aesthetic.
+  - *Implementation*:
+    - **Action Buttons Neutralization & Darkening**: Removed all blueish radial and linear gradients, borders, and hover glows from `.home-action-card`, `.home-action-card--primary`, and `.home-action-card--secondary` across desktop and mobile. Darkened to deep obsidian black (`#090c11` for Practice, `#0a0d13` for secondary cards) with crisp slate borders (`#28303d` and `#21262d`).
+    - **Streak Banner Neutralization**: Darkened `.home-streak-banner-card` to deep black (`#0a0d13`) with `#21262d` border. Transitioned Aura pill from blue to rich purple (`#c084fc` in dark, `#7e22ce` in light) and daily goal ring progress (`.home-goal-ring-progress`) from blue to warm glowing amber (`#fbbf24` in dark, `#f59e0b` in light) matching the streak flame.
+    - **Activity Heatmap Neutralization**: Darkened `.home-activity-heatmap` to `#0a0d13`. Replaced cyan and blue activity intensity levels (`#164e63`, `#0284c7`, `#38bdf8`) with classic contribution emerald green (`#064e3b`, `#059669`, `#34d399` in dark; `#a7f3d0`, `#34d399`, `#059669` in light). Neutralized frozen cells to slate.
+    - **Footer Neutralization**: Darkened `.app-footer` to `#090c11` in dark mode with `#21262d` border, and transitioned link text from sky blue to neutral slate text.
+    - **Search Hero Dark Alignment**: Aligned search hero banner background, input box, and dropdown in dark mode with the deep neutral black palette (`#090c11` background, `#0d1017` input, `#21262d` / `#30363d` borders) with neutral gradient overlays.
+  - *Verification*: Full test suite passing (**1,094 unit tests across 86 test files**), TypeScript typecheck clean (`0 errors`), and verified visually across desktop and mobile in both themes.
+
+- **Global Homepage Search Bar Architecture & Zero-Overhead Routing Catalog (DEC-132)**:
+  - *Context*: GateQA already possessed comprehensive search and filtering engines within `/practice` (`FilterContext`), but lacked a rapid, intuitive global discovery entry point directly on the homepage (`/`).
+  - *Design & Architecture*:
+    - **Principle**: "Search → Summarize → Route" without duplicating question browsing infrastructure or loading the 4.9MB master search index on the landing page.
+    - **Compact Search Catalog**: Added [`scripts/build-homepage-search-catalog.mjs`](file:///scripts/build-homepage-search-catalog.mjs) generating [`public/homepage-search-catalog.json`](file:///public/homepage-search-catalog.json) (~62 KB uncompressed, ~10-12 KB gzipped), aggregating subjects (with alias lookup), subtopics with canonical parent subjects and question counts, examination years, question number distributions, and topical keyword tags.
+    - **Build Pipeline Integration**: Embedded search catalog precomputation into [`scripts/build-public-artifacts.mjs`](file:///scripts/build-public-artifacts.mjs) so the catalog is automatically refreshed on every build and dev start.
+    - **Query Classification & Matching Engine**: Created [`src/components/HomeSearch/homeSearchMatcher.ts`](file:///src/components/HomeSearch/homeSearchMatcher.ts) supporting 6 query dimensions: Question Numbers (`q30`, `question 30`, `#30`), Years (`2024`, `gate 2024`), Subjects with alias resolution (`os`, `toc`, `coa`, `dbms`, `ga`, `cn`), Subtopics with parent subject mapping (`dijkstra`, `b-tree`, `deadlock`), Keyword tags, and full-text fallback search.
+    - **Lazy Catalog Hook**: Created [`src/components/HomeSearch/useHomeSearchCatalog.ts`](file:///src/components/HomeSearch/useHomeSearchCatalog.ts) using in-memory module caching and on-demand fetching upon initial focus/interaction.
+    - **Responsive UI Components**:
+      - Created [`src/components/HomeSearch/HomeSearchBar.jsx`](file:///src/components/HomeSearch/HomeSearchBar.jsx) with 200ms debounce, keyboard shortcuts (`/` and `Ctrl+K`), full ArrowUp/Down/Enter/Escape keyboard accessibility, clear button, and router-safe navigation.
+      - Created [`src/components/HomeSearch/HomeSearchResults.jsx`](file:///src/components/HomeSearch/HomeSearchResults.jsx) dropdown displaying categorized result rows with type badges, count badges, and navigation arrows.
+      - **Hero Banner Background Integration**: Wrapped `HomeSearchBar` inside a dedicated `.home-search-hero` card with an optimized high-contrast WebP banner (`/images/home_search_banner.webp`, 59.7 KB) featuring dark sapphire cybernetic waves and glowing binary particles. Sized to match the exact horizontal width (100% grid/container width) of the primary **Practice** action card on both web and mobile displays.
+      - Placed seamlessly between the header area and quick actions grid in [`src/pages/HomePage.jsx`](file:///src/pages/HomePage.jsx).
+      - Added responsive styling, dropdown z-index management, and dark/light mode contrast rules in [`src/index.css`](file:///src/index.css).
+  - *Verification*:
+    - **Unit Tests**: Added 20 new tests (13 in `homeSearchMatcher.test.ts`, 7 in `HomeSearchBar.test.jsx`). Full suite: **1,094 tests passing across 86 test files (0 failures)**.
+    - **TypeScript Typecheck**: Clean (`0 errors`).
+    - **Visual & Interaction Verification**: E2E verified via browser subagent across both desktop and mobile viewports (390px), confirming query debounce, dropdown presentation, click-to-route behavior, and auto-hydration into `/practice?subjects=algorithms`.
+
 - **Mock Catalog Elimination of Loose Tag Precedence over Authoritative Answer Records & Resolution of 160 False NAT Classifications (DEC-131)**:
   - *Context*: In Mock Test mode, questions like GATE CSE 2026 Set 1 Q33 (`go:523047`) appeared as `type: "NAT"` with a virtual numeric keypad and 0 negative marking instead of rendering their 4 option choices (A, B, C, D) as an MCQ or MSQ.
   - *Root Cause Analysis*:

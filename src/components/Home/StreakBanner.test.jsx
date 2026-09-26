@@ -7,10 +7,12 @@ import { describe, expect, test, vi } from "vitest";
 
 import StreakBanner from "./StreakBanner";
 
+const updateGoalMock = vi.fn();
+
 vi.mock("../../hooks/useDailyGoal", () => ({
   useDailyGoal: () => ({
     goal: 5,
-    updateGoal: vi.fn(),
+    updateGoal: updateGoalMock,
   }),
 }));
 
@@ -104,5 +106,35 @@ describe("StreakBanner", () => {
     // Dismiss with "Close"
     fireEvent.click(screen.getByRole("button", { name: /Close/i }));
     expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  test("opens the daily goal modal, sets a preset goal, and updates goal state", () => {
+    updateGoalMock.mockClear();
+    render(<StreakBanner activity={mockActivity} />);
+
+    const goalRingButton = screen.getByRole("button", { name: /Edit daily goal/i });
+    expect(goalRingButton).toBeTruthy();
+    expect(screen.getByText(/2\s*\/\s*5/)).toBeTruthy();
+
+    fireEvent.click(goalRingButton);
+
+    expect(screen.getByRole("dialog")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Set Daily Goal" })).toBeTruthy();
+
+    // Click preset "10"
+    fireEvent.click(screen.getByRole("button", { name: "10" }));
+    expect(updateGoalMock).toHaveBeenCalledWith(10);
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  test("renders appropriate motivational text based on streak count", () => {
+    const { rerender } = render(<StreakBanner activity={{ ...mockActivity, currentStreak: 0 }} />);
+    expect(screen.getByText("Start a new streak today! 💪")).toBeTruthy();
+
+    rerender(<StreakBanner activity={{ ...mockActivity, currentStreak: 1 }} />);
+    expect(screen.getByText("Great start. Come back tomorrow.")).toBeTruthy();
+
+    rerender(<StreakBanner activity={{ ...mockActivity, currentStreak: 4 }} />);
+    expect(screen.getByText("Keep your streak moving today.")).toBeTruthy();
   });
 });

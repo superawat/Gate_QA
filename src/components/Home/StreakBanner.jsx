@@ -39,8 +39,8 @@ const METRIC_DETAILS = {
     title: "Aura (Practice XP)",
     icon: FaBolt,
     tone: "blue",
-    iconColor: "text-blue-500 dark:text-blue-400",
-    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+    iconColor: "text-purple-500 dark:text-purple-400",
+    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
     getFormattedValue: (val) => `${formatAura(val)} XP`,
     subtitle: "Your cumulative practice experience points",
     whatIsIt: "Aura reflects your total effort, accuracy, problem difficulty, and consistency on GateQA.",
@@ -57,8 +57,8 @@ const METRIC_DETAILS = {
     title: "Streak Freeze",
     icon: FaShieldAlt,
     tone: "slate",
-    iconColor: "text-sky-500 dark:text-sky-400",
-    badgeColor: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
+    iconColor: "text-slate-500 dark:text-slate-400",
+    badgeColor: "bg-slate-500/10 text-slate-600 dark:text-slate-400 border-slate-500/20",
     getFormattedValue: (val) => `${val} ${val === 1 ? "Shield" : "Shields"}`,
     subtitle: "Streak preservation shield",
     whatIsIt: "An automatic safety shield that protects your daily streak when life interrupts your practice.",
@@ -196,7 +196,7 @@ const StreakBanner = ({ activity = null }) => {
                       setIsEditingGoal(false);
                     }
                   }}
-                  className="rounded-xl bg-gradient-to-br from-[#0ea5e9] to-[#2563eb] px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition hover:from-[#0284c7] hover:to-[#1d4ed8] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-primary-border)]"
+                  className="rounded-xl bg-gradient-to-br from-[#f59e0b] to-[#d97706] px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-500/20 transition hover:from-[#d97706] hover:to-[#b45309] focus:outline-none focus:ring-2 focus:ring-amber-500"
                 >
                   Set
                 </button>
@@ -346,7 +346,7 @@ const StreakBanner = ({ activity = null }) => {
           <button
             type="button"
             onClick={() => setIsEditingGoal(true)}
-            className="home-goal-ring cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-full"
+            className="home-goal-ring cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-full"
             aria-label={`${safeTodayAttempts} / ${safeGoal} — Edit daily goal`}
             style={{ "--home-goal-dash": goalDash }}
           >

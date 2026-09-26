@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { describe, expect, test } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { ActivityHeatmap } from "./ActivityHeatmap";
 
 describe("ActivityHeatmap", () => {
@@ -84,5 +84,58 @@ describe("ActivityHeatmap", () => {
     expect(screen.getByText("Frozen")).toBeTruthy();
     expect(screen.getByText("Less")).toBeTruthy();
     expect(screen.getByText("More")).toBeTruthy();
+  });
+
+  test("allows switching date range between 12 weeks, 6 months, and 1 year", () => {
+    const { container } = render(
+      <ActivityHeatmap
+        attemptTimeline={[]}
+        now={new Date(2026, 7, 17, 10, 0, 0)}
+      />
+    );
+
+    const select = screen.getByRole("combobox", { name: "Activity range" });
+    expect(select.value).toBe("52w"); // desktop default (window.matchMedia defaults false in test env)
+
+    // Check count of week columns for 52w
+    const weeks52 = container.querySelectorAll(".home-activity-week");
+    expect(weeks52.length).toBeGreaterThanOrEqual(52);
+
+    // Switch to 12 weeks
+    fireEvent.change(select, { target: { value: "12w" } });
+    const weeks12 = container.querySelectorAll(".home-activity-week");
+    expect(weeks12.length).toBeLessThanOrEqual(13);
+
+    // Switch to 26 weeks
+    fireEvent.change(select, { target: { value: "26w" } });
+    const weeks26 = container.querySelectorAll(".home-activity-week");
+    expect(weeks26.length).toBeGreaterThan(13);
+    expect(weeks26.length).toBeLessThanOrEqual(27);
+  });
+
+  test("formats cell tooltip and aria label accurately for attempts and duration", () => {
+    const attemptTimeline = [
+      {
+        date: "2026-08-16",
+        attempts: 8,
+        accuracyRate: 0.75,
+        totalDurationMs: 3600000 + 120000, // 1h 2m
+        correct: 6,
+      },
+    ];
+
+    const { container } = render(
+      <ActivityHeatmap
+        attemptTimeline={attemptTimeline}
+        now={new Date(2026, 7, 17, 10, 0, 0)}
+        streakDateKeys={["2026-08-16"]}
+      />
+    );
+
+    const activeCell = container.querySelector(".home-activity-intensity--3");
+    expect(activeCell).toBeTruthy();
+    expect(activeCell.getAttribute("aria-label")).toContain("8 attempts, 75% accuracy");
+    expect(activeCell.getAttribute("title")).toContain("Time spent: 1h 2m");
+    expect(activeCell.getAttribute("title")).toContain("Current streak day 🔥");
   });
 });

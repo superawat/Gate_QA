@@ -470,7 +470,7 @@ const SolvePage = ({
         <span
           key="gate-it"
           data-testid="gate-it-badge"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-2 sm:px-2.5 py-1 text-xs font-semibold text-cyan-800 dark:text-cyan-300"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/40 px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-cyan-800 dark:text-cyan-300"
         >
           GATE IT
         </span>
@@ -481,7 +481,7 @@ const SolvePage = ({
       chips.push(
         <span
           key="year-set"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)]"
         >
           {yearSetText}
         </span>
@@ -495,7 +495,7 @@ const SolvePage = ({
         <span
           key="type"
           title={isMta ? MTA_EXPLANATION_TEXT : undefined}
-          className={`inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border px-2 sm:px-2.5 py-1 text-xs font-semibold ${
+          className={`inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border px-2 py-0.5 text-[11px] sm:text-xs font-semibold ${
             isMta
               ? "border-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300"
               : "border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)]"
@@ -515,7 +515,7 @@ const SolvePage = ({
       chips.push(
         <span
           key="marks"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)]"
         >
           {marksValue} {Number(marksValue) === 1 ? "Mark" : "Marks"}
         </span>
@@ -527,7 +527,7 @@ const SolvePage = ({
       chips.push(
         <span
           key="subject"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-text)]"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)]"
         >
           {subjectLabel}
         </span>
@@ -538,9 +538,9 @@ const SolvePage = ({
       chips.push(
         <span
           key="solved"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center gap-1 rounded-lg border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-success-text)]"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center gap-1 rounded-md border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-success-text)]"
         >
-          <FaCheckCircle className="text-[color:var(--color-success-text)]" />
+          <FaCheckCircle className="text-[color:var(--color-success-text)] text-[10px]" />
           Solved
         </span>
       );
@@ -550,9 +550,9 @@ const SolvePage = ({
       chips.push(
         <span
           key="bookmarked"
-          className="inline-flex min-h-[28px] sm:min-h-[32px] items-center gap-1 rounded-lg border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2 sm:px-2.5 py-1 text-xs font-semibold text-[color:var(--color-warning-text)]"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center gap-1 rounded-md border border-[color:var(--color-warning-border)] bg-[color:var(--color-warning-soft)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-warning-text)]"
         >
-          <FaStar className="text-[color:var(--color-warning-text)]" />
+          <FaStar className="text-[color:var(--color-warning-text)] text-[10px]" />
           Bookmarked
         </span>
       );
@@ -600,17 +600,17 @@ const SolvePage = ({
         onResume={hasResumeRoute ? onResumePractice : null}
         resumeLabel="Continue"
       >
-        <section className="space-y-4">
-          <header className="rounded-[var(--radius-card)] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2.5 shadow-[var(--shadow-card)] sm:px-5 sm:py-4">
-            {/* Top Bar: Navigation on left, Session Status & Utilities on right */}
-            <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5 sm:gap-2">
+        <section className="space-y-3 sm:space-y-4">
+          <header className="rounded-xl sm:rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 sm:px-4 sm:py-2.5 shadow-[var(--shadow-card)]">
+            <div className="flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5 sm:gap-y-2">
+              {/* Navigation group */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={handleBackToResults}
                   aria-label="Back to Results"
                   title="Back to Results"
-                  className="inline-flex min-h-[32px] sm:min-h-[38px] items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="inline-flex h-8 sm:h-9 items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2.5 py-1 text-xs sm:text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                 >
                   <FaArrowLeft className="mr-1 sm:mr-1.5 text-xs sm:text-sm" />
                   <span className="hidden min-[360px]:inline">Back</span>
@@ -619,19 +619,20 @@ const SolvePage = ({
                 <button
                   type="button"
                   onClick={handleBackHome}
-                  className="inline-flex min-h-[32px] sm:min-h-[38px] min-w-[32px] sm:min-w-[38px] w-[32px] sm:w-[38px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+                  className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                   aria-label="Back to Home"
                   title="Home"
                 >
-                  <FiHome className="text-sm sm:text-base" />
+                  <FiHome className="text-xs sm:text-sm" />
                 </button>
               </div>
 
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <div className="rounded-lg sm:rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-1 sm:px-3 sm:py-1.5 text-right">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <p className="hidden md:block text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
-                    <p className="text-xs sm:text-sm font-semibold text-[color:var(--color-text)]">
+              {/* Utility controls on the right (floats right on Row 1) */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 order-2 sm:order-3 ml-auto">
+                <div className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 sm:px-2.5 sm:py-1 text-right">
+                  <div className="flex items-center gap-1.5">
+                    <p className="hidden md:block text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-muted)]">{navigationContextLabel}</p>
+                    <p className="text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)]">
                       {navigationSummary}
                     </p>
                   </div>
@@ -643,12 +644,12 @@ const SolvePage = ({
                   aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                   aria-checked={isDarkMode}
                   title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                  className="inline-flex min-h-[32px] sm:min-h-[38px] min-w-[32px] sm:min-w-[38px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[color:var(--color-text)] shadow-xs transition hover:bg-[color:var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
                 >
                   {isDarkMode ? (
-                    <FiSun className="h-4 w-4 text-amber-400" aria-hidden="true" />
+                    <FiSun className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
                   ) : (
-                    <FiMoon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                    <FiMoon className="h-3.5 w-3.5 text-slate-600" aria-hidden="true" />
                   )}
                 </button>
                 <div className="hidden md:inline-flex">
@@ -659,18 +660,20 @@ const SolvePage = ({
                   />
                 </div>
               </div>
+
+              {/* Title: On desktop, sits in the center (order-2); on mobile, wraps full-width (order-3) */}
+              <div className="w-full sm:w-auto sm:flex-1 sm:order-2 min-w-0 order-3 sm:px-2">
+                <h1 className="text-sm sm:text-base lg:text-lg font-bold text-[color:var(--color-text)] truncate leading-tight">
+                  {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
+                </h1>
+              </div>
             </div>
 
-            {/* Title */}
-            <div className="mt-2.5 sm:mt-3">
-              <h1 className="text-lg sm:text-2xl lg:text-[clamp(1.9rem,2.7vw,2.85rem)] font-bold sm:font-semibold leading-tight text-[color:var(--color-text)]">
-                {resolvedQuestion?.title || indexedQuestion?.title || "Loading question"}
-              </h1>
-            </div>
-
-            {/* Meta Badges & Chips */}
-            <div className="mt-2 sm:mt-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-sky-700 dark:text-sky-400">Solve</p>
+            {/* Meta Badges & Chips: Compact row with subtle top divider */}
+            <div className="mt-1.5 sm:mt-2 pt-1.5 sm:pt-2 border-t border-[color:var(--color-border)]/60 flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400 bg-sky-500/10">
+                Solve
+              </span>
               {heroMetaChips}
             </div>
           </header>

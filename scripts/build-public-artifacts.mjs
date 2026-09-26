@@ -9,6 +9,7 @@ import {
 } from "../src/utils/stripEmbeddedOptions.js";
 import { buildDaPublicArtifacts } from "./da-pipeline/build-da-artifacts.mjs";
 import { buildTrackYearSetKey, getQuestionTrack, isItQuestion } from "../src/utils/examTrack.js";
+import { buildHomepageSearchCatalog } from "./build-homepage-search-catalog.mjs";
 
 const ROOT = process.cwd();
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -2205,6 +2206,7 @@ async function buildArtifacts() {
   writeJson(path.join(REVIEW_DIR, "remote-image-report.json"), remoteImageReport);
 
   await buildDaPublicArtifacts();
+  await buildHomepageSearchCatalog({ searchIndex });
 
   console.log(
     `[build-public-artifacts] Generated manifest, mock catalog, search index, and ${detailShards.size} detail shards for ${publicQuestionCount} questions` +

@@ -46,7 +46,7 @@ const focusableSelector = [
 
 const sectionHeadingClassName = "px-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)]";
 
-const actionButtonClassName = "flex min-h-[46px] w-full items-center gap-3 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-left text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500";
+const actionButtonClassName = "flex min-h-[46px] w-full items-center gap-3 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-2 text-left text-sm font-semibold text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-500";
 
 const getFocusableElements = (container) => (
   Array.from(container?.querySelectorAll(focusableSelector) || [])
@@ -282,7 +282,7 @@ const GlobalNavigationDrawer = ({
         {/* Header */}
         <div className="flex items-center justify-between gap-3 border-b border-[color:var(--color-border)] px-4 py-4">
           <div className="flex min-w-0 items-center gap-3">
-            <span className="shrink-0 rounded-xl bg-sky-50 p-1.5 dark:bg-sky-950/40">
+            <span className="shrink-0 rounded-xl bg-slate-100 p-1.5 dark:bg-slate-800">
               <img
                 src={logoSrc}
                 alt="GATE QA drawer logo"
@@ -293,7 +293,7 @@ const GlobalNavigationDrawer = ({
             </span>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <p className="text-lg font-bold uppercase tracking-[0.08em] text-sky-700 dark:text-sky-400">GATE QA</p>
+                <p className="text-lg font-bold uppercase tracking-[0.08em] text-slate-900 dark:text-white">GATE QA</p>
                 <button
                   type="button"
                   onClick={() => setIsSupportOpen(true)}
