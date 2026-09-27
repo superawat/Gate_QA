@@ -4,12 +4,15 @@ import { FaSearch, FaTimes, FaSpinner } from 'react-icons/fa';
 import { useHomeSearchCatalog } from './useHomeSearchCatalog';
 import { classifyAndMatch } from './homeSearchMatcher';
 import { HomeSearchResults } from './HomeSearchResults';
+import { BorderBeam } from '../UI/BorderBeam';
 
 const HomeSearchBarCore = ({
   onNavigateToExplore,
   placeholder = 'Search topics, subjects, questions...',
   className = '',
   routerNavigate = null,
+  enableBorderBeam = true,
+  borderBeamProps = {},
 }) => {
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
@@ -191,6 +194,17 @@ const HomeSearchBarCore = ({
       onPointerEnter={handleInteractionPreload}
     >
       <div className="home-search-input-box">
+        {enableBorderBeam && (
+          <BorderBeam
+            size={90}
+            duration={6}
+            colorFrom="#06b6d4"
+            colorTo="#3b82f6"
+            borderWidth={1.5}
+            borderRadius={14}
+            {...borderBeamProps}
+          />
+        )}
         <FaSearch
           className="home-search-lens-icon"
           aria-hidden="true"

@@ -105,6 +105,19 @@ npm run typecheck
   official DA papers retain 65-question order, GA/technical sections, 180 minutes, marks,
   and MCQ negative marking.
 
+### ISRO CS Stream Integration (DEC-142)
+
+- `IsroQuestionService` lazily loads `public/data/isro/isro-all.json` (~1.5 MB) and `public/data/isro/answers-isro.json`.
+- The user's preference is controlled via `useIsroEnabled()` in `src/utils/isroPreference.ts` (persisting to `gateqa_include_isro` with cross-tab event synchronization via `gateqa:isro-enabled-change`). Deep-linking directly to any `/practice/question/isro:*` route automatically forces the toggle on.
+- The practice filter sidebar mounts `IsroToggle.jsx` with amber branding, a master switch, and a collapsible subject breakdown showing real-time question counts across all 12 ISRO subjects.
+- `GlobalNavigationDrawer.jsx` provides an `ISRO CS Section` toggle switch styled with `FaRocket` and amber accent.
+- Filter state merges ISRO questions into `allQuestions` when enabled; dynamic count calculators (`calculateDynamicFilterCounts`) tally available ISRO questions without polluting GATE counts. When toggled off, active ISRO year and subject filters are cleanly auto-pruned.
+- Solved question IDs, bookmarks, and attempt timelines are strictly isolated in `gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, and `gateqa_isro_progress_v1`.
+- Visual cues:
+  - `QuestionResultCard.jsx`, `QuestionPickerList.jsx` (desktop & mobile drawers), `YearFilter.tsx`, and `ActiveFilterChips.tsx` render an amber `ISRO CS` badge (`bg-amber-100 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800/60`).
+  - `SolvePage.jsx` dynamically formats marks chips based on paper era: `+3 / -1` for 2007–2020 legacy papers, and `+1 / -0.33` for 2023 & 2025 revised papers.
+  - Solution button links directly to GateOverflow discussion threads when `gateoverflow_id` or `link` exists.
+
 ### Landing startup contract
 
 - `QuestionBankManifestService` hydrates the landing page from `public/question-bank-manifest.json`.
@@ -261,6 +274,12 @@ Rules:
 - **Scroll-Reactive Header (`AppHeader.jsx`)**: Auto-collapses on scroll down on mobile viewports while remaining firmly pinned on desktop (`-translate-y-full md:translate-y-0`).
 - **Drawer Swipe-to-Dismiss (`GlobalNavigationDrawer.jsx`)**: Supports horizontal swipe-to-dismiss gesture (`diffX < -50`) with vertical scroll disambiguation.
 - **Selective Bottom Navigation (`PageShell.jsx`)**: Provides `showMobileBottomNav` prop (defaults `true`). Disabled (`false`) on the active `/practice/question/:id` route to eliminate double navigation bars.
+- **SubHeader Slot (`PageShell.jsx`, DEC-145)**: Provides `subHeader` prop positioned directly between `<AppHeader />` and `<main>`, rendering full-width below the sticky header without requiring padding-breaking negative margins. Used on the homepage for the ISRO examination marquee ribbon.
+- **Mobile Marquee Touch Ergonomics (`IsroMarquee.jsx`, DEC-145)**:
+  - Touch-active scroll pause: touching or holding the marquee on mobile devices instantly freezes the scrolling track (`onTouchStart`/`onTouchEnd`, `:active`, `.isro-marquee-strip--paused`) to prevent mis-taps.
+  - Responsive text contraction: automatically contracts `"ISRO CS"` -> `"ISRO"` and `"Explore all →"` -> `"All →"` on `<=540px` and `<=360px` screens, saving ~50px of horizontal room for multiple visible year chips.
+  - Invisible touch target expansion: `5px` vertical and `2px` horizontal padding pseudo-element (`::after`) on chips ensures comfortable mobile touch targets without inflating the thin `18px` badge size.
+  - GPU compositing: `transform: translate3d(...)` keyframe animations with `will-change: transform` and `backface-visibility: hidden` prevent mobile browser repaint jitter.
 - **Sticky Solve Action Bar (`MobileSolveActionBar.jsx`)**: Dedicated bottom toolbar for active problem solving with Previous, Bookmark, Calculator toggle, Native Share (`navigator.share`), and Next controls with safe-area padding.
 - **Haptic Feedback**: Integrates `triggerHaptic(15)` on option selection, solve toggling, bookmarking, and answer evaluation.
 - **MathJax & Code Touch Scrolling**: Touch horizontal scrolling (`-webkit-overflow-scrolling: touch`) configured for `mjx-container`, `MathJax`, and code blocks.
@@ -310,6 +329,12 @@ Rules:
 - `gateqa-apt-solved-questions` (isolated aptitude progress)
 - `gateqa-apt-bookmarked-questions` (isolated aptitude progress)
 - `gateqa-aptitude-enabled` (unified toggle state)
+- `gateqa_include_isro` (ISRO CS toggle state)
+- `gate_qa_isro_solved_questions` (isolated ISRO solved IDs)
+- `gate_qa_isro_bookmarked_questions` (isolated ISRO bookmark IDs)
+- `gate_qa_isro_solved_removals` (ISRO solved removal tombstones)
+- `gate_qa_isro_bookmark_removals` (ISRO bookmark removal tombstones)
+- `gateqa_isro_progress_v1` (ISRO attempt progress timeline)
 - `gate_qa_theme`
 - `gate_qa_mock_attempt_v1`
 - `gateqa_mock_palette_collapsed`

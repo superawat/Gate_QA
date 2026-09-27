@@ -16,6 +16,7 @@ import { useFilterActions, useFilterState } from "../contexts/FilterContext";
 import { useSession } from "../contexts/SessionContext";
 import { QuestionService } from "../services/QuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
+import { IsroQuestionService } from "../services/IsroQuestionService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
@@ -23,13 +24,14 @@ import { buildSolvePath, parsePageParam, HOME_ROUTE, PRACTICE_ROUTE } from "../u
 import { writeLastSession } from "../utils/lastSession";
 import { readPracticeShuffleEnabled } from "../utils/practicePreference";
 import { getDisplayQuestionTypeLabel, MTA_EXPLANATION_TEXT } from "../utils/questionType";
-import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../utils/examTrack";
+import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion } from "../utils/examTrack";
 import { useTheme } from "../utils/theme";
 
 const isUnavailableQuestionDetailError = (error) => (
   /question detail missing|not available in the current index/i.test(String(error?.message || error || ""))
 );
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
+const isIsroQuestion = (question = {}) => isIsroQuestionByMetadata(question);
 
 const SolvePage = ({
   loading,
@@ -123,11 +125,13 @@ const SolvePage = ({
     }
 
     // 3. Standalone direct question URL (no explore search parameters)
-    const activeService = isDaQuestion(indexedQuestion)
-      ? DaQuestionService
-      : isAptitudeQuestion
-        ? AptitudeQuestionService
-        : questionService;
+    const activeService = isIsroQuestion(indexedQuestion)
+      ? IsroQuestionService
+      : isDaQuestion(indexedQuestion)
+        ? DaQuestionService
+        : isAptitudeQuestion
+          ? AptitudeQuestionService
+          : questionService;
 
     const paperQuestions = typeof activeService?.getQuestionsByYearSet === "function"
       && (indexedQuestion.yearSetKey || indexedQuestion.exam?.year)
@@ -183,11 +187,13 @@ const SolvePage = ({
     setQuestionDetailError("");
     setIsQuestionDetailLoading(true);
 
-    const detailService = isDaQuestion(indexedQuestion)
-      ? DaQuestionService
-      : isAptitudeQuestion
-        ? AptitudeQuestionService
-        : questionService;
+    const detailService = isIsroQuestion(indexedQuestion)
+      ? IsroQuestionService
+      : isDaQuestion(indexedQuestion)
+        ? DaQuestionService
+        : isAptitudeQuestion
+          ? AptitudeQuestionService
+          : questionService;
 
     detailService
       .ensureQuestionDetail(indexedQuestion)
@@ -459,11 +465,25 @@ const SolvePage = ({
     const isBookmarked = isQuestionBookmarked(questionProgressId);
 
     const yearSetText = targetQuestion.yearSetLabel
-      || (targetQuestion.exam?.year
-        ? `GATE ${targetQuestion.exam.year}${targetQuestion.exam.set ? ` Set ${targetQuestion.exam.set}` : ""}`
-        : targetQuestion.year
-          ? `GATE ${targetQuestion.year}`
-          : "");
+      || (isIsroQuestion(targetQuestion)
+        ? `ISRO ${targetQuestion.exam?.year || targetQuestion.year || ""}`.trim()
+        : targetQuestion.exam?.year
+          ? `GATE ${targetQuestion.exam.year}${targetQuestion.exam.set ? ` Set ${targetQuestion.exam.set}` : ""}`
+          : targetQuestion.year
+            ? `GATE ${targetQuestion.year}`
+            : "");
+
+    if (isIsroQuestion(targetQuestion)) {
+      chips.push(
+        <span
+          key="isro-cs"
+          data-testid="isro-badge"
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-amber-800 dark:text-amber-300"
+        >
+          ISRO CS
+        </span>
+      );
+    }
 
     if (isItQuestion(targetQuestion)) {
       chips.push(
@@ -561,19 +581,27 @@ const SolvePage = ({
     return chips;
   }, [getQuestionProgressId, indexedQuestion, isQuestionBookmarked, isQuestionSolved, resolvedQuestion]);
 
+  const isIsroTargetQuestion = isIsroQuestion(resolvedQuestion || indexedQuestion);
   const questionSubjectLabel = resolvedQuestion?.subjectLabel || resolvedQuestion?.subject || indexedQuestion?.subjectLabel || indexedQuestion?.subject || "Computer Science";
-  const questionYearLabel = resolvedQuestion?.yearSetLabel || (resolvedQuestion?.year ? `GATE ${resolvedQuestion.year}` : "") || indexedQuestion?.yearSetLabel || (indexedQuestion?.year ? `GATE ${indexedQuestion.year}` : "") || "GATE CSE";
+  const questionYearLabel = resolvedQuestion?.yearSetLabel
+    || (isIsroTargetQuestion ? `ISRO ${resolvedQuestion?.year || indexedQuestion?.year || ""}`.trim() : resolvedQuestion?.year ? `GATE ${resolvedQuestion.year}` : "")
+    || indexedQuestion?.yearSetLabel
+    || (isIsroTargetQuestion ? `ISRO ${indexedQuestion?.year || ""}`.trim() : indexedQuestion?.year ? `GATE ${indexedQuestion.year}` : "")
+    || (isIsroTargetQuestion ? "ISRO CS" : "GATE CSE");
+  const examStreamLabel = isIsroTargetQuestion ? "ISRO Practice" : "GATE Practice";
 
   return (
     <MathRuntimeProvider>
       <SEOHead
         title={resolvedQuestion?.title
-          ? `${resolvedQuestion.title} — ${questionSubjectLabel} — GATE Practice | GateQA`
+          ? `${resolvedQuestion.title} — ${questionSubjectLabel} — ${examStreamLabel} | GateQA`
           : indexedQuestion?.title
-          ? `${indexedQuestion.title} — GATE Practice | GateQA`
-          : `Question ${questionUid} — GATE Practice | GateQA`}
+          ? `${indexedQuestion.title} — ${examStreamLabel} | GateQA`
+          : `Question ${questionUid} — ${examStreamLabel} | GateQA`}
         description={resolvedQuestion?.question
           ? String(resolvedQuestion.question).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160)
+          : isIsroTargetQuestion
+          ? "Practice ISRO CS previous year questions with detailed solutions on GateQA."
           : "Practice GATE CS previous year questions with detailed solutions on GateQA."}
         path={`/practice/question/${encodeURIComponent(questionUid)}`}
         schemaOrg={resolvedQuestion ? [

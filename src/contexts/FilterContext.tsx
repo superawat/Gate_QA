@@ -3,11 +3,13 @@ import React, { createContext, useContext, useState, useEffect, useMemo, useCall
 import { useLocation, useNavigate } from 'react-router-dom';
 import { QuestionService } from '../services/QuestionService';
 import { DaQuestionService } from '../services/DaQuestionService';
+import { IsroQuestionService } from '../services/IsroQuestionService';
 import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { FILTER_QUERY_KEYS, PRACTICE_ROUTE } from '../utils/routes';
 import { useAptitudeEnabled } from '../utils/aptitudePreference';
 import { useDaEnabled, writeDaEnabled } from '../utils/daPreference';
+import { useIsroEnabled, writeIsroEnabled } from '../utils/isroPreference';
 import { APTITUDE_USER_STATE_STORAGE_KEYS } from '../utils/localStorageState';
 import { enqueueChange } from '../utils/syncQueue';
 import { extractQuestionIdArray } from '../utils/cloudSyncManager';
@@ -16,6 +18,7 @@ import {
     getQuestionTrack,
     getQuestionYearSetIdentity,
     isDaQuestion as isDaQuestionByMetadata,
+    isIsroQuestion as isIsroQuestionByMetadata,
     parseTrackYearSetKey,
     toLegacyYearSetKey,
 } from '../utils/examTrack';
@@ -41,6 +44,14 @@ const DA_STORAGE_KEYS = {
     bookmarkRemovals: 'gate_qa_da_bookmark_removals',
     progress: 'gateqa_da_progress_v1',
 };
+const ISRO_STORAGE_KEYS = {
+    solved: 'gate_qa_isro_solved_questions',
+    solvedRemovals: 'gate_qa_isro_solved_removals',
+    solvedTimestamps: 'gate_qa_isro_solved_timestamps',
+    bookmarked: 'gate_qa_isro_bookmarked_questions',
+    bookmarkRemovals: 'gate_qa_isro_bookmark_removals',
+    progress: 'gateqa_isro_progress_v1',
+};
 const APTITUDE_BOOKMARK_REMOVALS_KEY = 'gateqa-apt-bookmark-removals';
 const APTITUDE_SOLVED_REMOVALS_KEY = 'gateqa-apt-solved-removals';
 const APTITUDE_SOLVED_TIMESTAMPS_KEY = 'gateqa-apt-solved-timestamps';
@@ -56,11 +67,18 @@ const EMPTY_QUESTION_LIST = Object.freeze([]);
 
 const isAptitudeQuestionId = (value = '') => String(value || '').startsWith(APTITUDE_UID_PREFIX);
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
+const isIsroQuestion = (question = {}) => isIsroQuestionByMetadata(question);
 
 const getDaFilterSubjectKey = (question = {}) => {
     const rawSlug = question?.subjectSlug || question?.subject || question?.tags?.[1] || '';
     const normalizedSlug = DaQuestionService.normalizeSubjectSlug(rawSlug);
     return normalizedSlug ? `da:${normalizedSlug}` : 'da:unknown';
+};
+
+const getIsroFilterSubjectKey = (question = {}) => {
+    const rawSlug = question?.subjectSlug || question?.subject || '';
+    const normalizedSlug = IsroQuestionService.normalizeSubjectSlug(rawSlug);
+    return normalizedSlug ? `isro:${normalizedSlug}` : 'isro:other';
 };
 
 const normalizeQuestionPool = (questions = []) => {
@@ -182,7 +200,8 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
             || parsedKey?.track === 'it'
             || /\bIT\b/i.test(String(entry?.label || ''));
         const isDa = entryTrack === 'da' || parsedKey?.track === 'da';
-        const track = isDa ? 'da' : (isIt ? 'it' : 'cse');
+        const isIsro = entryTrack === 'isro' || parsedKey?.track === 'isro';
+        const track = isIsro ? 'isro' : (isDa ? 'da' : (isIt ? 'it' : 'cse'));
         const isAdditional = Boolean(entry?.isAdditional || entry?.paperScope === 'additional_ga' || rawKey.includes('additional'));
         const identity = buildTrackYearSetKey(track, entry?.year, entry?.set, isAdditional) || rawKey;
         return {
@@ -205,12 +224,12 @@ const mergeStructuredTags = (gateTags = {}, aptitudeTags = {}) => {
         const setDifference = Number(parsedRight?.set || 0) - Number(parsedLeft?.set || 0);
         if (setDifference !== 0) return setDifference;
 
-        const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2 };
-        const trackLeft = trackOrder[parsedLeft?.track || ''] ?? 3;
-        const trackRight = trackOrder[parsedRight?.track || ''] ?? 3;
+        const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2, isro: 3 };
+        const trackLeft = trackOrder[parsedLeft?.track || ''] ?? 4;
+        const trackRight = trackOrder[parsedRight?.track || ''] ?? 4;
         if (trackLeft !== trackRight) return trackLeft - trackRight;
 
-        return Number(parsedLeft?.track === 'da') - Number(parsedRight?.track === 'da');
+        return 0;
     });
 
     const candidateMinYears = [gateTags.minYear, aptitudeTags.minYear].filter((y) => Number.isFinite(y) && Number(y) > 0);
@@ -288,11 +307,11 @@ const yearSetComparator = (a, b, questionService = QuestionService) => {
     }
     const setDifference = (parsedB.set || 0) - (parsedA.set || 0);
     if (setDifference !== 0) return setDifference;
-    const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2 };
-    const trackA = trackOrder[parsedA.track || ''] ?? 3;
-    const trackB = trackOrder[parsedB.track || ''] ?? 3;
+    const trackOrder: Record<string, number> = { cse: 0, it: 1, da: 2, isro: 3 };
+    const trackA = trackOrder[parsedA.track || ''] ?? 4;
+    const trackB = trackOrder[parsedB.track || ''] ?? 4;
     if (trackA !== trackB) return trackA - trackB;
-    return Number(parsedA.track === 'da') - Number(parsedB.track === 'da');
+    return 0;
 };
 
 const normalizeYearSetTokens = (rawTokens, questionService = QuestionService) => {
@@ -334,6 +353,14 @@ const normalizeSubjectSlugs = (rawSubjects, questionService = QuestionService) =
             return;
         }
 
+        if (token.toLowerCase().startsWith('isro:')) {
+            const isroSlug = IsroQuestionService.normalizeSubjectSlug(token.slice(5));
+            if (isroSlug) {
+                unique.add(`isro:${isroSlug}`);
+            }
+            return;
+        }
+
         const subjectSlug = questionService.normalizeSubjectSlug(token);
         if (subjectSlug && subjectSlug !== 'unknown') {
             unique.add(subjectSlug);
@@ -348,6 +375,12 @@ const normalizeSubjectSlugs = (rawSubjects, questionService = QuestionService) =
         const daSlug = DaQuestionService.normalizeSubjectSlug(rawSubject);
         if (daSlug) {
             unique.add(`da:${daSlug}`);
+            return;
+        }
+        const isroSlug = IsroQuestionService.normalizeSubjectSlug(rawSubject);
+        if (isroSlug) {
+            unique.add(`isro:${isroSlug}`);
+            return;
         }
     });
 
@@ -560,6 +593,7 @@ export const FilterProvider = ({
     includeExtendedProgress = true,
     initialIncludeCse = true,
     initialIncludeDa = false,
+    initialIncludeIsro = false,
 }) => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -619,6 +653,11 @@ export const FilterProvider = ({
     const [daSolvedTimestampMap, setDaSolvedTimestampMap] = useState({});
     const [daBookmarkedQuestionIds, setDaBookmarkedQuestionIds] = useState([]);
     const [daBookmarkRemovalIds, setDaBookmarkRemovalIds] = useState([]);
+    const [isroSolvedQuestionIds, setIsroSolvedQuestionIds] = useState([]);
+    const [isroSolvedRemovalMap, setIsroSolvedRemovalMap] = useState({});
+    const [isroSolvedTimestampMap, setIsroSolvedTimestampMap] = useState({});
+    const [isroBookmarkedQuestionIds, setIsroBookmarkedQuestionIds] = useState([]);
+    const [isroBookmarkRemovalIds, setIsroBookmarkRemovalIds] = useState([]);
     const [includeCse, setIncludeCseState] = useState(() => (
         initialIncludeCse !== undefined
             ? Boolean(initialIncludeCse)
@@ -633,6 +672,13 @@ export const FilterProvider = ({
                 ? window.localStorage.getItem('gateqa_include_da') === 'true'
                 : false)
     ));
+    const [includeIsro, setIncludeIsroState] = useState(() => (
+        initialIncludeIsro !== undefined
+            ? Boolean(initialIncludeIsro)
+            : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_isro') !== null
+                ? window.localStorage.getItem('gateqa_include_isro') === 'true'
+                : false)
+    ));
 
     useEffect(() => {
         if (typeof window === 'undefined') return undefined;
@@ -641,9 +687,16 @@ export const FilterProvider = ({
                 setIncludeDaState(event.detail.enabled);
             }
         };
+        const handleIsroChange = (event) => {
+            if (event?.detail && typeof event.detail.enabled === 'boolean') {
+                setIncludeIsroState(event.detail.enabled);
+            }
+        };
         window.addEventListener('gateqa:da-enabled-change', handleDaChange);
+        window.addEventListener('gateqa:isro-enabled-change', handleIsroChange);
         return () => {
             window.removeEventListener('gateqa:da-enabled-change', handleDaChange);
+            window.removeEventListener('gateqa:isro-enabled-change', handleIsroChange);
         };
     }, []);
     const [daQuestions, setDaQuestions] = useState(() => (
@@ -651,6 +704,11 @@ export const FilterProvider = ({
     ));
     const [daLoading, setDaLoading] = useState(false);
     const [daError, setDaError] = useState('');
+    const [isroQuestions, setIsroQuestions] = useState(() => (
+        IsroQuestionService.loaded ? normalizeQuestionPool(IsroQuestionService.questions) : []
+    ));
+    const [isroLoading, setIsroLoading] = useState(false);
+    const [isroError, setIsroError] = useState('');
     const [aptitudeQuestions, setAptitudeQuestions] = useState(() => (
         AptitudeQuestionService.loaded ? normalizeQuestionPool(AptitudeQuestionService.questions) : []
     ));
@@ -762,16 +820,64 @@ export const FilterProvider = ({
         return () => { cancelled = true; };
     }, [includeDa]);
 
+    useEffect(() => {
+        if (!includeIsro) {
+            setFilters((prev) => {
+                const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('isro:'));
+                const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('isro:'));
+                const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('isro:'));
+                if (
+                    nextSubjects.length === prev.selectedSubjects.length
+                    && nextSubtopics.length === prev.selectedSubtopics.length
+                    && nextYearSets.length === prev.selectedYearSets.length
+                ) {
+                    return prev;
+                }
+                return {
+                    ...prev,
+                    selectedSubjects: nextSubjects,
+                    selectedSubtopics: nextSubtopics,
+                    selectedYearSets: nextYearSets,
+                };
+            });
+            return undefined;
+        }
+
+        let cancelled = false;
+        const loadIsroQuestions = async () => {
+            if (IsroQuestionService.loaded) {
+                setIsroQuestions(normalizeQuestionPool(IsroQuestionService.questions));
+                return;
+            }
+            setIsroLoading(true);
+            setIsroError('');
+            try {
+                await IsroQuestionService.init();
+                if (!cancelled) setIsroQuestions(normalizeQuestionPool(IsroQuestionService.questions));
+            } catch (error) {
+                if (!cancelled) {
+                    setIsroQuestions([]);
+                    setIsroError(error.message || 'Unable to load ISRO questions.');
+                }
+            } finally {
+                if (!cancelled) setIsroLoading(false);
+            }
+        };
+        void loadIsroQuestions();
+        return () => { cancelled = true; };
+    }, [includeIsro]);
+
     const baseQuestions = questionService.questions;
     const activeCseQuestions = includeCse ? baseQuestions : EMPTY_QUESTION_LIST;
     const activeAptitudeQuestions = shouldMergeAptitude ? aptitudeQuestions : EMPTY_QUESTION_LIST;
     const activeDaQuestions = includeDa ? daQuestions : EMPTY_QUESTION_LIST;
+    const activeIsroQuestions = includeIsro ? isroQuestions : EMPTY_QUESTION_LIST;
     const allQuestions = useMemo(() => {
-        if (!activeCseQuestions.length && !activeDaQuestions.length && !activeAptitudeQuestions.length) {
+        if (!activeCseQuestions.length && !activeDaQuestions.length && !activeIsroQuestions.length && !activeAptitudeQuestions.length) {
             return [];
         }
-        return normalizeQuestionPool([...activeCseQuestions, ...activeDaQuestions, ...activeAptitudeQuestions]);
-    }, [activeAptitudeQuestions, activeCseQuestions, activeDaQuestions, questionDataRevision]);
+        return normalizeQuestionPool([...activeCseQuestions, ...activeDaQuestions, ...activeIsroQuestions, ...activeAptitudeQuestions]);
+    }, [activeAptitudeQuestions, activeCseQuestions, activeDaQuestions, activeIsroQuestions, questionDataRevision]);
 
     const questionByUidMap = useMemo(() => {
         const map = new Map();
@@ -808,9 +914,11 @@ export const FilterProvider = ({
                 track: getQuestionTrack(question),
                 resolvedType,
                 resolvedTypeUpper: String(resolvedType || '').toUpperCase(),
-                subjectSlug: isDaQuestion(question)
-                    ? getDaFilterSubjectKey(question)
-                    : question.subjectSlug || 'unknown',
+                subjectSlug: isIsroQuestion(question)
+                    ? getIsroFilterSubjectKey(question)
+                    : isDaQuestion(question)
+                        ? getDaFilterSubjectKey(question)
+                        : question.subjectSlug || 'unknown',
                 subtopicSlugs,
                 subtopicSlugSet: new Set(subtopicSlugs),
                 yearSetKey: question.exam?.yearSetKey || null,
@@ -842,11 +950,12 @@ export const FilterProvider = ({
     }, [initialManifest, questionService, structuredTags.minYear, structuredTags.maxYear]);
 
     useEffect(() => {
-        if (activeCseQuestions.length > 0 || activeDaQuestions.length > 0 || activeAptitudeQuestions.length > 0) {
+        if (activeCseQuestions.length > 0 || activeDaQuestions.length > 0 || activeIsroQuestions.length > 0 || activeAptitudeQuestions.length > 0) {
             const gateTags = activeCseQuestions.length > 0 ? questionService.getStructuredTags() : {};
             const daTags = activeDaQuestions.length > 0 ? DaQuestionService.getStructuredTags() : {};
+            const isroTags = activeIsroQuestions.length > 0 ? IsroQuestionService.getStructuredTags() : {};
             const aptitudeTags = activeAptitudeQuestions.length > 0 ? AptitudeQuestionService.getStructuredTags() : {};
-            const tags = mergeStructuredTags(mergeStructuredTags(gateTags, daTags), aptitudeTags);
+            const tags = mergeStructuredTags(mergeStructuredTags(mergeStructuredTags(gateTags, daTags), isroTags), aptitudeTags);
             setStructuredTags(tags);
             setTotalQuestions(allQuestions.length);
 
@@ -900,10 +1009,12 @@ export const FilterProvider = ({
     }, [
         includeCse,
         includeDa,
+        includeIsro,
         shouldMergeAptitude,
         activeAptitudeQuestions.length,
         activeCseQuestions.length,
         activeDaQuestions.length,
+        activeIsroQuestions.length,
         allQuestions.length,
         isInitialized,
         questionDataRevision,
@@ -1097,6 +1208,11 @@ export const FilterProvider = ({
         const storedDaSolvedTimestamps = readJsonFromStorage(DA_STORAGE_KEYS.solvedTimestamps, {});
         const storedDaBookmarked = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, []));
         const storedDaBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarkRemovals, []));
+        const storedIsroSolved = normalizeStoredIds(readJsonFromStorage(ISRO_STORAGE_KEYS.solved, []));
+        const storedIsroSolvedRemovals = readJsonFromStorage(ISRO_STORAGE_KEYS.solvedRemovals, {});
+        const storedIsroSolvedTimestamps = readJsonFromStorage(ISRO_STORAGE_KEYS.solvedTimestamps, {});
+        const storedIsroBookmarked = normalizeStoredIds(readJsonFromStorage(ISRO_STORAGE_KEYS.bookmarked, []));
+        const storedIsroBookmarkRemovals = normalizeStoredIds(readJsonFromStorage(ISRO_STORAGE_KEYS.bookmarkRemovals, []));
 
         setSolvedQuestionIds(storedSolved);
         setSolvedRemovalMap(storedSolvedRemovals);
@@ -1113,6 +1229,11 @@ export const FilterProvider = ({
         setDaSolvedTimestampMap(storedDaSolvedTimestamps);
         setDaBookmarkedQuestionIds(storedDaBookmarked);
         setDaBookmarkRemovalIds(storedDaBookmarkRemovals);
+        setIsroSolvedQuestionIds(storedIsroSolved);
+        setIsroSolvedRemovalMap(storedIsroSolvedRemovals);
+        setIsroSolvedTimestampMap(storedIsroSolvedTimestamps);
+        setIsroBookmarkedQuestionIds(storedIsroBookmarked);
+        setIsroBookmarkRemovalIds(storedIsroBookmarkRemovals);
 
         if (storedBookmarkedRaw === null) {
             try {
@@ -1158,6 +1279,11 @@ export const FilterProvider = ({
             window.localStorage.setItem(DA_STORAGE_KEYS.solvedTimestamps, JSON.stringify(daSolvedTimestampMap));
             window.localStorage.setItem(DA_STORAGE_KEYS.bookmarked, JSON.stringify(daBookmarkedQuestionIds));
             window.localStorage.setItem(DA_STORAGE_KEYS.bookmarkRemovals, JSON.stringify(daBookmarkRemovalIds));
+            window.localStorage.setItem(ISRO_STORAGE_KEYS.solved, JSON.stringify(isroSolvedQuestionIds));
+            window.localStorage.setItem(ISRO_STORAGE_KEYS.solvedRemovals, JSON.stringify(isroSolvedRemovalMap));
+            window.localStorage.setItem(ISRO_STORAGE_KEYS.solvedTimestamps, JSON.stringify(isroSolvedTimestampMap));
+            window.localStorage.setItem(ISRO_STORAGE_KEYS.bookmarked, JSON.stringify(isroBookmarkedQuestionIds));
+            window.localStorage.setItem(ISRO_STORAGE_KEYS.bookmarkRemovals, JSON.stringify(isroBookmarkRemovalIds));
         } catch (error) {
             setIsProgressStorageAvailable(false);
         }
@@ -1175,6 +1301,11 @@ export const FilterProvider = ({
         daSolvedQuestionIds,
         daSolvedRemovalMap,
         daSolvedTimestampMap,
+        isroBookmarkedQuestionIds,
+        isroBookmarkRemovalIds,
+        isroSolvedQuestionIds,
+        isroSolvedRemovalMap,
+        isroSolvedTimestampMap,
         hasLoadedProgressState,
         isProgressStorageAvailable,
         solvedQuestionIds,
@@ -1189,16 +1320,16 @@ export const FilterProvider = ({
     ]);
 
     const gateValidQuestionIdSet = useMemo(() => {
-        if (!isInitialized || (!questionService.questions.length && !daQuestions.length)) {
+        if (!isInitialized || (!questionService.questions.length && !daQuestions.length && !isroQuestions.length)) {
             return new Set();
         }
 
         return new Set(
-            [...questionService.questions, ...daQuestions]
+            [...questionService.questions, ...daQuestions, ...isroQuestions]
                 .map(question => getQuestionTrackingId(question, answerService))
                 .filter(Boolean)
         );
-    }, [answerService, daQuestions, isInitialized, questionDataRevision, questionService, totalQuestions]);
+    }, [answerService, daQuestions, isroQuestions, isInitialized, questionDataRevision, questionService, totalQuestions]);
 
     const aptitudeValidQuestionIdSet = useMemo(() => {
         if (!canMergeAptitude || aptitudeQuestions.length === 0) {
@@ -1257,12 +1388,12 @@ export const FilterProvider = ({
     }, [aptitudeValidQuestionIdSet, canMergeAptitude]);
 
     const solvedQuestionSet = useMemo(
-        () => new Set([...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds]),
-        [aptitudeSolvedQuestionIds, daSolvedQuestionIds, solvedQuestionIds]
+        () => new Set([...solvedQuestionIds, ...daSolvedQuestionIds, ...isroSolvedQuestionIds, ...aptitudeSolvedQuestionIds]),
+        [aptitudeSolvedQuestionIds, daSolvedQuestionIds, isroSolvedQuestionIds, solvedQuestionIds]
     );
     const bookmarkedQuestionSet = useMemo(
-        () => new Set([...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds]),
-        [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds]
+        () => new Set([...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...isroBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds]),
+        [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds, isroBookmarkedQuestionIds]
     );
 
     // ── Reverse map: subtopicSlug → parent subjectSlug (for scoped filtering) ──
@@ -1485,6 +1616,16 @@ export const FilterProvider = ({
         return false;
     }, [questionByUidMap]);
 
+    const isIsroTarget = useCallback((target) => {
+        if (!target) return false;
+        if (typeof target === 'object') return isIsroQuestion(target);
+        const stringId = String(target).trim();
+        if (stringId.startsWith('isro:')) return true;
+        const candidate = questionByUidMap.get(stringId);
+        if (candidate) return isIsroQuestion(candidate);
+        return false;
+    }, [questionByUidMap]);
+
     const toggleSolved = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
             ? String(questionOrId || '').trim()
@@ -1494,26 +1635,33 @@ export const FilterProvider = ({
             return;
         }
 
-        const isDa = isDaTarget(questionOrId);
-        const isAptitude = !isDa && canMergeAptitude && isAptitudeQuestionId(questionId);
+        const isIsro = isIsroTarget(questionOrId);
+        const isDa = !isIsro && isDaTarget(questionOrId);
+        const isAptitude = !isIsro && !isDa && canMergeAptitude && isAptitudeQuestionId(questionId);
 
-        const setTargetSolvedQuestionIds = isDa
-            ? setDaSolvedQuestionIds
-            : isAptitude
-                ? setAptitudeSolvedQuestionIds
-                : setSolvedQuestionIds;
+        const setTargetSolvedQuestionIds = isIsro
+            ? setIsroSolvedQuestionIds
+            : isDa
+                ? setDaSolvedQuestionIds
+                : isAptitude
+                    ? setAptitudeSolvedQuestionIds
+                    : setSolvedQuestionIds;
 
-        const setTargetSolvedRemovalMap = isDa
-            ? setDaSolvedRemovalMap
-            : isAptitude
-                ? setAptitudeSolvedRemovalMap
-                : setSolvedRemovalMap;
+        const setTargetSolvedRemovalMap = isIsro
+            ? setIsroSolvedRemovalMap
+            : isDa
+                ? setDaSolvedRemovalMap
+                : isAptitude
+                    ? setAptitudeSolvedRemovalMap
+                    : setSolvedRemovalMap;
 
-        const setTargetSolvedTimestampMap = isDa
-            ? setDaSolvedTimestampMap
-            : isAptitude
-                ? setAptitudeSolvedTimestampMap
-                : setSolvedTimestampMap;
+        const setTargetSolvedTimestampMap = isIsro
+            ? setIsroSolvedTimestampMap
+            : isDa
+                ? setDaSolvedTimestampMap
+                : isAptitude
+                    ? setAptitudeSolvedTimestampMap
+                    : setSolvedTimestampMap;
 
         setTargetSolvedQuestionIds((prev) => {
             const isCurrentlySolved = prev.includes(questionId);
@@ -1549,7 +1697,7 @@ export const FilterProvider = ({
         });
 
         enqueueChange('SOLVE', { questionUid: questionId });
-    }, [answerService, canMergeAptitude, isDaTarget]);
+    }, [answerService, canMergeAptitude, isDaTarget, isIsroTarget]);
 
     const toggleBookmark = useCallback((questionOrId) => {
         const questionId = typeof questionOrId === 'string'
@@ -1560,20 +1708,25 @@ export const FilterProvider = ({
             return;
         }
 
-        const isDa = isDaTarget(questionOrId);
-        const isAptitude = !isDa && canMergeAptitude && isAptitudeQuestionId(questionId);
+        const isIsro = isIsroTarget(questionOrId);
+        const isDa = !isIsro && isDaTarget(questionOrId);
+        const isAptitude = !isIsro && !isDa && canMergeAptitude && isAptitudeQuestionId(questionId);
 
-        const setTargetBookmarkedQuestionIds = isDa
-            ? setDaBookmarkedQuestionIds
-            : isAptitude
-                ? setAptitudeBookmarkedQuestionIds
-                : setBookmarkedQuestionIds;
+        const setTargetBookmarkedQuestionIds = isIsro
+            ? setIsroBookmarkedQuestionIds
+            : isDa
+                ? setDaBookmarkedQuestionIds
+                : isAptitude
+                    ? setAptitudeBookmarkedQuestionIds
+                    : setBookmarkedQuestionIds;
 
-        const setTargetBookmarkRemovalIds = isDa
-            ? setDaBookmarkRemovalIds
-            : isAptitude
-                ? setAptitudeBookmarkRemovalIds
-                : setBookmarkRemovalIds;
+        const setTargetBookmarkRemovalIds = isIsro
+            ? setIsroBookmarkRemovalIds
+            : isDa
+                ? setDaBookmarkRemovalIds
+                : isAptitude
+                    ? setAptitudeBookmarkRemovalIds
+                    : setBookmarkRemovalIds;
 
         setTargetBookmarkedQuestionIds((prev) => {
             const isCurrentlyBookmarked = prev.includes(questionId);
@@ -1597,7 +1750,7 @@ export const FilterProvider = ({
         });
 
         enqueueChange('BOOKMARK', { questionUid: questionId });
-    }, [answerService, canMergeAptitude, isDaTarget]);
+    }, [answerService, canMergeAptitude, isDaTarget, isIsroTarget]);
 
     const markQuestionsSolved = useCallback((questionOrIds) => {
         const questionIds = normalizeProgressTargets(questionOrIds, answerService);
@@ -1605,10 +1758,14 @@ export const FilterProvider = ({
             return;
         }
 
+        const isroIdSet = new Set();
         const daIdSet = new Set();
         const rawList = Array.isArray(questionOrIds) ? questionOrIds : [questionOrIds];
         rawList.forEach((item) => {
-            if (isDaTarget(item)) {
+            if (isIsroTarget(item)) {
+                const id = typeof item === 'string' ? item.trim() : getQuestionTrackingId(item, answerService);
+                if (id) isroIdSet.add(id);
+            } else if (isDaTarget(item)) {
                 const id = typeof item === 'string' ? item.trim() : getQuestionTrackingId(item, answerService);
                 if (id) daIdSet.add(id);
             }
@@ -1616,8 +1773,13 @@ export const FilterProvider = ({
 
         const gateQuestionIds = [];
         const daQuestionIds = [];
+        const isroQuestionIds = [];
         const aptitudeQuestionIds = [];
         questionIds.forEach((questionId) => {
+            if (isroIdSet.has(questionId) || isIsroTarget(questionId)) {
+                isroQuestionIds.push(questionId);
+                return;
+            }
             if (daIdSet.has(questionId) || isDaTarget(questionId)) {
                 daQuestionIds.push(questionId);
                 return;
@@ -1684,6 +1846,33 @@ export const FilterProvider = ({
             });
         }
 
+        if (isroQuestionIds.length > 0) {
+            setIsroSolvedQuestionIds((prev) => {
+                const nextSet = new Set(prev);
+                isroQuestionIds.forEach((questionId) => {
+                    nextSet.add(questionId);
+                });
+                const next = Array.from(nextSet);
+                return next.length === prev.length ? prev : next;
+            });
+            setIsroSolvedTimestampMap((prev) => {
+                const next = { ...prev };
+                isroQuestionIds.forEach((id) => { next[id] = now; });
+                return next;
+            });
+            setIsroSolvedRemovalMap((prev) => {
+                let changed = false;
+                const next = { ...prev };
+                isroQuestionIds.forEach((id) => {
+                    if (next[id]) {
+                        delete next[id];
+                        changed = true;
+                    }
+                });
+                return changed ? next : prev;
+            });
+        }
+
         enqueueChange('SOLVE', { questionUids: questionIds });
 
         if (aptitudeQuestionIds.length > 0) {
@@ -1712,7 +1901,7 @@ export const FilterProvider = ({
                 return changed ? next : prev;
             });
         }
-    }, [answerService, canMergeAptitude, isDaTarget]);
+    }, [answerService, canMergeAptitude, isDaTarget, isIsroTarget]);
 
     const refreshProgressState = useCallback(() => {
         if (typeof window === 'undefined' || !canUseBrowserStorage()) {
@@ -1740,6 +1929,11 @@ export const FilterProvider = ({
         setDaSolvedTimestampMap(readJsonFromStorage(DA_STORAGE_KEYS.solvedTimestamps, {}));
         setDaBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarked, [])));
         setDaBookmarkRemovalIds(normalizeStoredIds(readJsonFromStorage(DA_STORAGE_KEYS.bookmarkRemovals, [])));
+        setIsroSolvedQuestionIds(normalizeStoredIds(readJsonFromStorage(ISRO_STORAGE_KEYS.solved, [])));
+        setIsroSolvedRemovalMap(readJsonFromStorage(ISRO_STORAGE_KEYS.solvedRemovals, {}));
+        setIsroSolvedTimestampMap(readJsonFromStorage(ISRO_STORAGE_KEYS.solvedTimestamps, {}));
+        setIsroBookmarkedQuestionIds(normalizeStoredIds(readJsonFromStorage(ISRO_STORAGE_KEYS.bookmarked, [])));
+        setIsroBookmarkRemovalIds(normalizeStoredIds(readJsonFromStorage(ISRO_STORAGE_KEYS.bookmarkRemovals, [])));
     }, [canMergeAptitude, storageKeys.bookmarkRemovals, storageKeys.bookmarked, storageKeys.solved, storageKeys.solvedRemovals, storageKeys.solvedTimestamps]);
 
     useEffect(() => {
@@ -1800,14 +1994,14 @@ export const FilterProvider = ({
         setIncludeCseState(isEnabled);
         if (!isEnabled) {
             setFilters((prev) => {
-                const nextSubjects = prev.selectedSubjects.filter((s) => String(s || '').startsWith('da:') || APTITUDE_SUBJECT_SLUGS.has(String(s || '')));
+                const nextSubjects = prev.selectedSubjects.filter((s) => String(s || '').startsWith('da:') || String(s || '').startsWith('isro:') || APTITUDE_SUBJECT_SLUGS.has(String(s || '')));
                 const nextSubtopics = prev.selectedSubtopics.filter((st) => {
                     const parentSlug = urlHydrationSubtopicToSubjectSlug.get(st) || subtopicToSubjectSlug.get(st);
-                    return parentSlug && (parentSlug.startsWith('da:') || APTITUDE_SUBJECT_SLUGS.has(parentSlug));
+                    return parentSlug && (parentSlug.startsWith('da:') || parentSlug.startsWith('isro:') || APTITUDE_SUBJECT_SLUGS.has(parentSlug));
                 });
                 const nextYearSets = prev.selectedYearSets.filter((ys) => {
                     const parsed = parseTrackYearSetKey(ys);
-                    return parsed?.track === 'da';
+                    return parsed?.track === 'da' || parsed?.track === 'isro';
                 });
                 if (
                     nextSubjects.length === prev.selectedSubjects.length
@@ -1852,18 +2046,44 @@ export const FilterProvider = ({
         }
     }, [includeDa]);
 
+    const setIncludeIsro = useCallback((value) => {
+        const isEnabled = typeof value === 'function' ? value(includeIsro) : Boolean(value);
+        setIncludeIsroState(isEnabled);
+        writeIsroEnabled(isEnabled);
+        if (!isEnabled) {
+            setFilters((prev) => {
+                const nextSubjects = prev.selectedSubjects.filter((s) => !String(s || '').startsWith('isro:'));
+                const nextSubtopics = prev.selectedSubtopics.filter((st) => !String(st || '').startsWith('isro:'));
+                const nextYearSets = prev.selectedYearSets.filter((ys) => !String(ys || '').toLowerCase().startsWith('isro:'));
+                if (
+                    nextSubjects.length === prev.selectedSubjects.length
+                    && nextSubtopics.length === prev.selectedSubtopics.length
+                    && nextYearSets.length === prev.selectedYearSets.length
+                ) {
+                    return prev;
+                }
+                return {
+                    ...prev,
+                    selectedSubjects: nextSubjects,
+                    selectedSubtopics: nextSubtopics,
+                    selectedYearSets: nextYearSets,
+                };
+            });
+        }
+    }, [includeIsro]);
+
     const solvedCount = useMemo(() => {
-        const activeSolvedIds = [...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds];
+        const activeSolvedIds = [...solvedQuestionIds, ...daSolvedQuestionIds, ...isroSolvedQuestionIds, ...aptitudeSolvedQuestionIds];
         if (validQuestionIdSet.size === 0) {
             return activeSolvedIds.length;
         }
         return activeSolvedIds.filter(id => validQuestionIdSet.has(id)).length;
-    }, [aptitudeSolvedQuestionIds, daSolvedQuestionIds, solvedQuestionIds, validQuestionIdSet]);
+    }, [aptitudeSolvedQuestionIds, daSolvedQuestionIds, isroSolvedQuestionIds, solvedQuestionIds, validQuestionIdSet]);
 
     const bookmarkedCount = useMemo(() => {
-        const activeBookmarkedIds = [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds];
+        const activeBookmarkedIds = [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...isroBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds];
         return activeBookmarkedIds.filter(id => validQuestionIdSet.has(id)).length;
-    }, [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds, validQuestionIdSet]);
+    }, [aptitudeBookmarkedQuestionIds, bookmarkedQuestionIds, daBookmarkedQuestionIds, isroBookmarkedQuestionIds, validQuestionIdSet]);
 
     const progressPercentage = totalQuestions > 0
         ? Math.round((solvedCount / totalQuestions) * 100)
@@ -1901,8 +2121,8 @@ export const FilterProvider = ({
         isInitialized,
         solvedQuestionIds,
         bookmarkedQuestionIds,
-        activeBookmarkedQuestionIds: [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds],
-        activeSolvedQuestionIds: [...solvedQuestionIds, ...daSolvedQuestionIds, ...aptitudeSolvedQuestionIds],
+        activeBookmarkedQuestionIds: [...bookmarkedQuestionIds, ...daBookmarkedQuestionIds, ...isroBookmarkedQuestionIds, ...aptitudeBookmarkedQuestionIds],
+        activeSolvedQuestionIds: [...solvedQuestionIds, ...daSolvedQuestionIds, ...isroSolvedQuestionIds, ...aptitudeSolvedQuestionIds],
         solvedCount,
         bookmarkedCount,
         progressPercentage,
@@ -1915,6 +2135,10 @@ export const FilterProvider = ({
         daLoading,
         daError,
         daProgressStorageKeys: DA_STORAGE_KEYS,
+        includeIsro,
+        isroLoading,
+        isroError,
+        isroProgressStorageKeys: ISRO_STORAGE_KEYS,
         aptitudeLoading,
         aptitudeError,
         progressScope,
@@ -1926,11 +2150,13 @@ export const FilterProvider = ({
         totalQuestions, isInitialized, solvedQuestionIds,
         aptitudeSolvedQuestionIds, bookmarkedQuestionIds,
         aptitudeBookmarkedQuestionIds, daBookmarkedQuestionIds, daSolvedQuestionIds,
+        isroBookmarkedQuestionIds, isroSolvedQuestionIds,
         solvedCount, bookmarkedCount,
         progressPercentage, isProgressStorageAvailable,
         storageKeys, shouldMergeAptitude, aptitudeLoading, aptitudeError,
         progressScope, progressExportPrefix,
-        includeExtendedProgress, questionService, includeCse, includeDa, daLoading, daError
+        includeExtendedProgress, questionService, includeCse, includeDa, daLoading, daError,
+        includeIsro, isroLoading, isroError
     ]);
 
     const actionsValue = useMemo(() => ({
@@ -1948,13 +2174,14 @@ export const FilterProvider = ({
         setShowOnlySolved,
         setShowOnlyBookmarked,
         setIncludeCse,
-        setIncludeDa
+        setIncludeDa,
+        setIncludeIsro
     }), [
         updateFilters, clearFilters, getQuestionById,
         toggleSolved, markQuestionsSolved, toggleBookmark, isQuestionSolved,
         isQuestionBookmarked, getQuestionProgressId,
         refreshProgressState,
-        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setIncludeCse, setIncludeDa
+        setHideSolved, setShowOnlySolved, setShowOnlyBookmarked, setIncludeCse, setIncludeDa, setIncludeIsro
     ]);
 
     return (

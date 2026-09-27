@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Structured GATE DA 2026 source content. These selectors are DA-only and do
-   not alter the existing CSE question markup. */
-.da-question-options {
+/* Structured question options content */
+.da-question-options,
+.question-options {
   list-style-type: upper-alpha;
   margin: 0.75rem 0 0;
   padding-left: 1.75rem;
 }
 
-.da-question-options > li {
+.da-question-options > li,
+.question-options > li {
   margin: 0.4rem 0;
   padding-left: 0.35rem;
 }
@@ -25,6 +26,62 @@
   padding: 0.25rem 0.5rem;
   text-align: center;
   vertical-align: middle;
+}
+
+/* Question diagram and figure styling — well-balanced, left-aligned, boundary-free */
+.question-stem-content img,
+.question-html-body img,
+.mocktest-question-stem img,
+.mocktest-html-body img,
+.question-card img,
+.question-diagram-img {
+  display: block;
+  max-width: min(100%, 520px);
+  max-height: min(400px, 48vh);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0.75rem auto 0.75rem 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Option-specific images (e.g. multiple small choice diagrams) */
+.question-options li img,
+.da-question-options li img {
+  display: inline-block;
+  max-width: min(100%, 360px);
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0.35rem 0;
+  vertical-align: middle;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .question-stem-content img,
+  .question-html-body img,
+  .mocktest-question-stem img,
+  .mocktest-html-body img,
+  .question-card img,
+  .question-diagram-img {
+    max-width: 100%;
+    max-height: min(300px, 40vh);
+    margin: 0.5rem auto 0.5rem 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 :root {
@@ -135,6 +192,44 @@
   --chart-accuracy-low: #fb7185;
   --chart-accuracy-medium: #fbbf24;
   --chart-accuracy-high: #34d399;
+}
+
+/* View Transition optimizations: disable conflicting default fades so clipPath transition is 100% smooth */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* Hardware-accelerated Border Beam (runs 100% on GPU compositor, 0 JS / 0 main-thread load) */
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.border-beam-element {
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  offset-distance: 0%;
+  animation: border-beam var(--border-beam-duration, 6s) linear infinite;
+  animation-delay: var(--border-beam-delay, 0s);
+  will-change: offset-distance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-beam-element {
+    animation: none;
+  }
 }
 
 @keyframes streak-celebrate {
@@ -2500,6 +2595,7 @@ canvas {
   display: flex;
   align-items: center;
   width: 100%;
+  border-radius: 14px;
 }
 
 .home-search-lens-icon {
@@ -2544,6 +2640,7 @@ canvas {
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  z-index: 2;
 }
 
 .home-search-clear-btn {
@@ -2560,6 +2657,7 @@ canvas {
   color: var(--color-text-muted);
   cursor: pointer;
   transition: all 150ms ease;
+  z-index: 2;
 }
 
 .home-search-clear-btn:hover {
@@ -2578,6 +2676,7 @@ canvas {
   padding: 0 0.35rem;
   font-size: 0.72rem;
   font-weight: 600;
+  z-index: 2;
   font-family: ui-monospace, monospace;
   color: var(--color-text-muted);
   background-color: var(--color-surface-muted);
@@ -5419,4 +5518,325 @@ footer {
 .animate-exhaustion-banner {
   animation: exhaustion-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ── ISRO CS Marquee Strip ──────────────────────────────────────────────── */
+@keyframes isro-scroll {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.isro-marquee-strip {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  background: linear-gradient(90deg, #fffdf2 0%, #fef3c7 35%, #fffbeb 70%, #fefdf2 100%);
+  border-top: 1px solid rgba(245, 158, 11, 0.22);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.22);
+  height: 28px;
+  position: relative;
+  width: 100%;
+  z-index: 20;
+  touch-action: pan-y;
+}
+
+:root[data-theme="dark"] .isro-marquee-strip {
+  background: linear-gradient(90deg, #120e06 0%, #1a1408 45%, #140f06 100%);
+  border-top: 1px solid rgba(245, 158, 11, 0.18);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.18);
+}
+
+/* Fixed label on the left */
+.isro-marquee-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 0 10px 0 12px;
+  height: 100%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-right: 1px solid rgba(217, 119, 6, 0.35);
+  box-shadow: 2px 0 8px rgba(217, 119, 6, 0.15);
+  z-index: 2;
+  user-select: none;
+}
+
+:root[data-theme="dark"] .isro-marquee-label {
+  background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
+  color: #fef3c7;
+  border-right-color: rgba(245, 158, 11, 0.2);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.isro-marquee-rocket {
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  color: #fffbeb;
+}
+
+.isro-marquee-label-text {
+  font-size: 0.62rem;
+  line-height: 1;
+}
+
+.isro-marquee-label-short {
+  display: none;
+}
+
+/* Scrolling overflow container with edge fade */
+.isro-marquee-overflow {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0px,
+    black 20px,
+    black calc(100% - 20px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0px,
+    black 20px,
+    black calc(100% - 20px),
+    transparent 100%
+  );
+}
+
+/* The scrolling track */
+.isro-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0 6px;
+  animation: isro-scroll 30s linear infinite;
+  width: max-content;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Pause scroll on hover, active touch, focus, or explicit pause state */
+.isro-marquee-strip:hover .isro-marquee-track,
+.isro-marquee-strip:active .isro-marquee-track,
+.isro-marquee-strip:focus-within .isro-marquee-track,
+.isro-marquee-strip--paused .isro-marquee-track {
+  animation-play-state: paused;
+}
+
+.isro-marquee-item {
+  flex-shrink: 0;
+}
+
+/* Individual year chip */
+.isro-marquee-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 7px;
+  border-radius: 9999px;
+  border: 1px solid rgba(217, 119, 6, 0.28);
+  background: rgba(254, 243, 199, 0.65);
+  color: #92400e;
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
+  white-space: nowrap;
+  line-height: 1;
+  user-select: none;
+  position: relative;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Invisible touch padding expansion for mobile accessibility without inflating chip size */
+.isro-marquee-chip::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -2px;
+  right: -2px;
+}
+
+.isro-marquee-chip:hover,
+.isro-marquee-chip:focus-visible {
+  background: #f59e0b;
+  color: #ffffff;
+  border-color: #d97706;
+  transform: translateY(-0.5px);
+  box-shadow: 0 1px 4px rgba(217, 119, 6, 0.28);
+  outline: none;
+}
+
+:root[data-theme="dark"] .isro-marquee-chip {
+  border-color: rgba(245, 158, 11, 0.2);
+  background: rgba(245, 158, 11, 0.08);
+  color: #fbbf24;
+}
+
+:root[data-theme="dark"] .isro-marquee-chip:hover,
+:root[data-theme="dark"] .isro-marquee-chip:focus-visible {
+  background: rgba(245, 158, 11, 0.24);
+  color: #fffbeb;
+  border-color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+/* Right-side CTA button */
+.isro-marquee-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 0 10px;
+  height: 100%;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #ffffff;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border: none;
+  border-left: 1px solid rgba(217, 119, 6, 0.35);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s ease, opacity 0.12s ease;
+  position: relative;
+  z-index: 2;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.isro-marquee-cta-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.isro-marquee-cta-text-short {
+  display: none;
+}
+
+.isro-marquee-cta-arrow {
+  display: inline-block;
+  font-size: 0.68rem;
+  transition: transform 0.12s ease;
+}
+
+.isro-marquee-cta:hover .isro-marquee-cta-arrow,
+.isro-marquee-cta:focus-visible .isro-marquee-cta-arrow {
+  transform: translateX(2px);
+}
+
+.isro-marquee-cta:hover,
+.isro-marquee-cta:focus-visible {
+  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+  outline: none;
+}
+
+:root[data-theme="dark"] .isro-marquee-cta {
+  background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+  color: #fef3c7;
+  border-left-color: rgba(245, 158, 11, 0.25);
+}
+
+:root[data-theme="dark"] .isro-marquee-cta:hover,
+:root[data-theme="dark"] .isro-marquee-cta:focus-visible {
+  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+  color: #ffffff;
+}
+
+/* Reduce motion — disable animation, show static track */
+@media (prefers-reduced-motion: reduce) {
+  .isro-marquee-track {
+    animation: none;
+  }
+}
+
+/* Mobile responsive optimizations (<= 540px) */
+@media (max-width: 540px) {
+  .isro-marquee-label-full {
+    display: none;
+  }
+  .isro-marquee-label-short {
+    display: inline;
+  }
+  .isro-marquee-label {
+    padding: 0 7px 0 9px;
+    font-size: 0.61rem;
+    gap: 4px;
+  }
+  .isro-marquee-rocket {
+    font-size: 0.6rem;
+  }
+  .isro-marquee-cta-text-full {
+    display: none;
+  }
+  .isro-marquee-cta-text-short {
+    display: inline;
+  }
+  .isro-marquee-cta {
+    padding: 0 8px;
+    font-size: 0.61rem;
+    gap: 3px;
+  }
+  .isro-marquee-chip {
+    height: 18px;
+    padding: 0 6px;
+    font-size: 0.63rem;
+  }
+  .isro-marquee-overflow {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0px,
+      black 14px,
+      black calc(100% - 14px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0px,
+      black 14px,
+      black calc(100% - 14px),
+      transparent 100%
+    );
+  }
+}
+
+/* Ultra-compact screens (<= 360px, e.g. Galaxy Fold cover / 320px devices) */
+@media (max-width: 360px) {
+  .isro-marquee-strip {
+    height: 26px;
+  }
+  .isro-marquee-label {
+    padding: 0 5px 0 6px;
+    font-size: 0.58rem;
+    gap: 3px;
+  }
+  .isro-marquee-cta {
+    padding: 0 6px;
+    font-size: 0.58rem;
+  }
+  .isro-marquee-chip {
+    height: 17px;
+    padding: 0 5px;
+    font-size: 0.6rem;
+  }
+}
+
+
 

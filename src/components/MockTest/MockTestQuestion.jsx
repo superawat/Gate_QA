@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { useMockTest } from "../../contexts/MockTestContext";
 import { QuestionService } from "../../services/QuestionService";
@@ -421,6 +421,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                 className="mt-1 max-w-full overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
                             >
                                 <div
+                                    className="mocktest-html-body"
                                     dangerouslySetInnerHTML={{ __html: sanitizedQuestionHtml }}
                                 ></div>
                             </MathContent>

@@ -46,7 +46,11 @@ export const toggleTheme = (currentTheme, event) => {
     }
   };
 
-  if (typeof document === "undefined" || !document.startViewTransition) {
+  const isReducedMotion = typeof window !== "undefined"
+    && typeof window.matchMedia === "function"
+    && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (typeof document === "undefined" || !document.startViewTransition || isReducedMotion) {
     commitTheme();
     return nextTheme;
   }
@@ -64,18 +68,17 @@ export const toggleTheme = (currentTheme, event) => {
     });
 
     transition?.ready?.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`
-      ];
       document.documentElement.animate(
         {
-          clipPath: currentTheme === "dark" ? clipPath.reverse() : clipPath,
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
         },
         {
-          duration: 450,
-          easing: "ease-in-out",
-          pseudoElement: currentTheme === "dark" ? "::view-transition-old(root)" : "::view-transition-new(root)",
+          duration: 240,
+          easing: "ease-out",
+          pseudoElement: "::view-transition-new(root)",
         }
       );
     }).catch(() => {});

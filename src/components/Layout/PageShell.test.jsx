@@ -69,4 +69,16 @@ describe("PageShell", () => {
     expect(screen.queryByTestId("mock-bottom-nav")).toBeNull();
     expect(screen.getByTestId("test-content")).toBeTruthy();
   });
+
+  test("renders subHeader when provided", () => {
+    render(
+      <PageShell subHeader={<div data-testid="test-sub-header">SubHeader Content</div>}>
+        <div data-testid="test-content">Main Content</div>
+      </PageShell>
+    );
+
+    expect(screen.getByTestId("mock-header")).toBeTruthy();
+    expect(screen.getByTestId("test-sub-header")).toBeTruthy();
+    expect(screen.getByTestId("test-content")).toBeTruthy();
+  });
 });

@@ -5,13 +5,16 @@ import { getDisplayQuestionTypeToken, MTA_EXPLANATION_TEXT } from "../../utils/q
 import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
-import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../../utils/examTrack";
+import { IsroQuestionService } from "../../services/IsroQuestionService";
+import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion } from "../../utils/examTrack";
 
 const prefetchQuestionShard = (question) => {
   if (!question) return;
   preloadSolveExperience();
   const uid = String(question.question_uid || "").trim();
-  if (isDaQuestionByMetadata(question)) {
+  if (isIsroQuestionByMetadata(question)) {
+    IsroQuestionService.ensureQuestionDetail(question).catch(() => {});
+  } else if (isDaQuestionByMetadata(question)) {
     DaQuestionService.ensureQuestionDetail(question).catch(() => {});
   } else if (uid.startsWith("APT-")) {
     AptitudeQuestionService.ensureQuestionDetail(question).catch(() => {});
@@ -114,6 +117,14 @@ const QuestionPickerList = ({
                   {question?.title || "Untitled question"}
                 </p>
                 <div className="practice-question-meta mt-2 flex flex-wrap items-center gap-2 text-xs text-[color:var(--color-text-muted)] md:hidden">
+                  {isIsroQuestionByMetadata(question) ? (
+                    <span
+                      data-testid="isro-badge-mobile"
+                      className="inline-flex rounded-full border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 dark:text-amber-300"
+                    >
+                      ISRO CS
+                    </span>
+                  ) : null}
                   {isItQuestion(question) ? (
                     <span
                       data-testid="gate-it-badge-mobile"
@@ -146,6 +157,14 @@ const QuestionPickerList = ({
 
               <div className="hidden text-sm font-medium text-[color:var(--color-text)] md:flex md:flex-col md:items-start md:gap-1">
                 <span>{question?.yearSetLabel || "Unknown Year"}</span>
+                {isIsroQuestionByMetadata(question) ? (
+                  <span
+                    data-testid="isro-badge"
+                    className="inline-flex rounded-full border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 dark:text-amber-300"
+                  >
+                    ISRO CS
+                  </span>
+                ) : null}
                 {isItQuestion(question) ? (
                   <span
                     data-testid="gate-it-badge"

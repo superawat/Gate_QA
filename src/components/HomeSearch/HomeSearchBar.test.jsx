@@ -174,4 +174,25 @@ describe('HomeSearchBar component', () => {
 
     expect(screen.queryByRole('listbox')).toBeNull();
   });
+
+  it('renders BorderBeam by default and can be disabled via prop', () => {
+    const { container: containerWithBeam } = render(
+      <MemoryRouter>
+        <HomeSearchBar />
+      </MemoryRouter>
+    );
+    // BorderBeam renders an element with aria-hidden="true" and pointer-events-none inside .home-search-input-box
+    const inputBox = containerWithBeam.querySelector('.home-search-input-box');
+    const beamEl = inputBox?.querySelector('[aria-hidden="true"].pointer-events-none');
+    expect(beamEl).toBeTruthy();
+
+    const { container: containerWithoutBeam } = render(
+      <MemoryRouter>
+        <HomeSearchBar enableBorderBeam={false} />
+      </MemoryRouter>
+    );
+    const inputBoxWithoutBeam = containerWithoutBeam.querySelector('.home-search-input-box');
+    const noBeamEl = inputBoxWithoutBeam?.querySelector('[aria-hidden="true"].pointer-events-none');
+    expect(noBeamEl).toBeNull();
+  });
 });

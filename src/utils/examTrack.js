@@ -1,9 +1,10 @@
 export const EXAM_TRACKS = Object.freeze({
   CSE: "cse",
   DA: "da",
+  ISRO: "isro",
 });
 
-const YEAR_SET_KEY_RE = /^(cse|da|it):(\d{4}):(?:set-(\d+)|(additional))$/i;
+const YEAR_SET_KEY_RE = /^(cse|da|it|isro):(\d{4}):(?:set-(\d+)|(additional))$/i;
 const LEGACY_YEAR_SET_KEY_RE = /^(?:(it)-)?(\d{4})-s(\d+)$/i;
 const LEGACY_ADDITIONAL_KEY_RE = /^(\d{4})-additional$/i;
 const YEAR_SET_LABEL_RE = /^(?:(it)\s+)?(\d{4})(?:\s+set\s*(\d+)|\s+additional(?:\s+questions)?)?$/i;
@@ -25,6 +26,9 @@ export function normalizeExamTrack(value) {
 
   if (!token) {
     return null;
+  }
+  if (/^isro(?:\s|$)/.test(token) || token === "isro" || token === "isro cs" || token === "isro cse") {
+    return EXAM_TRACKS.ISRO;
   }
   if (/^(?:gate\s*)?da(?:\s|$)/.test(token)) {
     return EXAM_TRACKS.DA;
@@ -78,6 +82,9 @@ export function getQuestionTrack(question = {}) {
   }
 
   const questionUid = String(question?.question_uid || question?.uid || "").trim().toLowerCase();
+  if (questionUid.startsWith("isro:")) {
+    return EXAM_TRACKS.ISRO;
+  }
   if (questionUid.startsWith("da:")) {
     return EXAM_TRACKS.DA;
   }
@@ -92,9 +99,12 @@ export function getQuestionTrack(question = {}) {
     return identityTrack;
   }
 
-  const text = [question?.title, question?.link, question?.exam?.label]
+  const text = [question?.title, question?.link, question?.exam?.label, question?.exam?.paper, question?.paper]
     .map((value) => String(value || ""))
     .join(" ");
+  if (/\bisro\b/i.test(text)) {
+    return EXAM_TRACKS.ISRO;
+  }
   if (/\bgate\s+da\b/i.test(text)) {
     return EXAM_TRACKS.DA;
   }
@@ -107,6 +117,10 @@ export function getQuestionTrack(question = {}) {
   // DA must be positively identified by track/source, UID, title, or identity.
   return EXAM_TRACKS.CSE;
 }
+
+export const isIsroQuestion = (question = {}) => (
+  getQuestionTrack(question) === EXAM_TRACKS.ISRO
+);
 
 export const isDaQuestion = (question = {}) => (
   getQuestionTrack(question) === EXAM_TRACKS.DA
@@ -238,6 +252,9 @@ export function formatTrackYearSetLabel(rawValue) {
   const parsed = parseTrackYearSetKey(rawValue);
   if (!parsed) {
     return String(rawValue ?? "");
+  }
+  if (parsed.track === "isro") {
+    return `ISRO ${parsed.year}`;
   }
   if (parsed.track === "it") {
     return `${parsed.year} IT`;

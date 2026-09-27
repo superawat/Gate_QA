@@ -3,7 +3,7 @@ import { FaCheckCircle, FaRegStar, FaStar } from "react-icons/fa";
 import { MathContent } from "../Math/MathRuntime";
 import { formatExplorePreview } from "../../utils/questionPreview";
 import { getDisplayQuestionTypeToken, MTA_EXPLANATION_TEXT } from "../../utils/questionType";
-import { isDaQuestion as isDaQuestionByMetadata, isItQuestion } from "../../utils/examTrack";
+import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion } from "../../utils/examTrack";
 
 const typeStyles = {
   mcq: "bg-[color:var(--color-info-soft)] text-[color:var(--color-info-text)] ring-[color:var(--color-info-border)]",
@@ -14,6 +14,7 @@ const typeStyles = {
   unknown: "bg-[color:var(--color-neutral-soft)] text-[color:var(--color-neutral-text)] ring-[color:var(--color-neutral-border)]",
 };
 const isDaQuestion = (question = {}) => isDaQuestionByMetadata(question);
+const isIsroQuestion = (question = {}) => isIsroQuestionByMetadata(question);
 
 const QuestionResultCard = ({
   question,
@@ -33,6 +34,14 @@ const QuestionResultCard = ({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-muted)]">
+            {isIsroQuestion(question) ? (
+              <span
+                data-testid="isro-badge"
+                className="rounded-full border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 dark:text-amber-300"
+              >
+                ISRO CS
+              </span>
+            ) : null}
             {isDaQuestion(question) ? <span className="rounded-full bg-violet-100 px-2 py-1 text-[10px] tracking-[0.12em] text-violet-800">GATE DA</span> : null}
             {isItQuestion(question) ? (
               <span

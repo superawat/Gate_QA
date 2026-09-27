@@ -45,8 +45,9 @@ vi.mock("../contexts/FilterContext", () => ({
 }));
 
 vi.mock("../components/Layout/PageShell", () => ({
-  default: ({ children, onResume, resumeLabel }) => (
+  default: ({ children, onResume, resumeLabel, subHeader }) => (
     <div data-testid="page-shell" data-resume-label={resumeLabel}>
+      {subHeader ?? null}
       {children}
       {onResume && (
         <button type="button" onClick={onResume} aria-label={resumeLabel || "Continue"}>
@@ -349,5 +350,21 @@ describe("HomePage", () => {
     });
     fireEvent(document, new Event("visibilitychange"));
     expect(loadStudyActivityFastMock.mock.calls.length).toBe(callCountBefore + 5);
+  });
+
+  test("renders ISRO exam marquee ribbon in subHeader with clickable year chips and explore action", () => {
+    renderHomePage();
+
+    // Verify marquee region and label
+    const marqueeRegion = screen.getByRole("region", { name: "ISRO CS exam papers — click a year to practice" });
+    expect(marqueeRegion).toBeTruthy();
+    expect(screen.getByText("ISRO CS")).toBeTruthy();
+
+    // Verify year chips are rendered
+    expect(screen.getByRole("button", { name: "ISRO CS 2007" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "ISRO CS 2025" })).toBeTruthy();
+
+    // Verify explore all action
+    expect(screen.getByRole("button", { name: "Explore all ISRO CS questions" })).toBeTruthy();
   });
 });

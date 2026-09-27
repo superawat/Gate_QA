@@ -271,10 +271,32 @@ The sync is single-flight: a user must not generate overlapping sync requests wh
 | Solved questions | Additive union of canonical string IDs; legacy object rows are recovered during sync |
 | Aptitude solved/bookmarked IDs | Additive union of solved IDs; bookmarks merged minus `aptitude_bookmark_removals` tombstones (DEC-111) |
 | GATE DA solved/bookmarked IDs | Additive union of solved IDs; bookmarks merged minus `da_bookmark_removals` tombstones (DEC-111) |
+| ISRO CS solved/bookmarked IDs | Local-first additive sets (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`) with LWW-tombstone removal protection (`gate_qa_isro_solved_removals`, `gate_qa_isro_bookmark_removals`) (DEC-142) |
 | Mock history | Combine records, deduplicate by test identity, and sort chronologically |
 | Practice progress | Merge attempt histories by timestamp and preserve the union of activity dates used by streaks |
 
 Before a merge, the client stores a timestamped local snapshot using keys like `gate_qa_backup_<timestamp>`. A failed cloud operation must leave the original local data available.
+
+---
+
+## Local-First Multi-Stream Storage Registry
+
+GateQA uses strict key namespacing in browser `localStorage` to guarantee complete isolation across exam tracks:
+
+| Exam Stream | Solved Questions Key | Bookmarks Key | Tombstone Removal Key(s) | Attempt Progress Key | User Preference Key |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **GATE CSE** (3,682 Qs) | `gate_qa_solved_questions` | `gate_qa_bookmarked_questions` | `gate_qa_bookmark_removals` | `gateqa_progress_v1` | *(Core / Default)* |
+| **GATE DA** (195 Qs) | `gate_qa_da_solved_questions` | `gate_qa_da_bookmarked_questions` | `gate_qa_da_bookmark_removals` | `gateqa_da_progress_v1` | `gateqa_include_da` |
+| **Aptitude** (36,836 Qs) | `gateqa-apt-solved-questions` | `gateqa-apt-bookmarked-questions` | `gateqa-apt-bookmark-removals` | `gateqa_apt_progress_v1` | `gateqa-aptitude-enabled` |
+| **ISRO CS** (1,070 Qs) | `gate_qa_isro_solved_questions` | `gate_qa_isro_bookmarked_questions` | `gate_qa_isro_solved_removals`, `gate_qa_isro_bookmark_removals` | `gateqa_isro_progress_v1` | `gateqa_include_isro` |
+
+### Static Data Files Registry
+
+Static datasets are organized cleanly under `public/data/`:
+- **GATE CSE**: `public/questions-with-answers.json`, `public/question-search-index.json`, `public/question-detail-shards/*.json`, `public/data/answers/`.
+- **GATE DA**: `public/data/da/questions-with-answers.json`, `public/data/da/manifest.json`, `public/data/da/search-index.json`, `public/data/da/shards/*.json`, `public/mock_catalog_da_v1.json`.
+- **Aptitude**: `public/aptitude-search-index.json`, `public/data/aptitude/{english,quant,reasoning}/*.json` (62 subtopic shards).
+- **ISRO CS**: `public/data/isro/isro-all.json` (1,070 questions, ~1.5 MB), `public/data/isro/answers-isro.json` (answer key registry), `public/data/isro/isro-<year>.json` (individual examination papers for 2007–2025).
 
 ---
 

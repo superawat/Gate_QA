@@ -20,7 +20,7 @@ GateQA is a static, local-first React SPA hosted on GitHub Pages with an optiona
    - Practice view (filter modal, chips, question card, answer panel)
    - Mock setup shell
    - Mock exam shell
-9. Header, calculator, and footer remain shared shell components.
+9. Header, subHeader (`PageShell` slot for header-adjacent banners like `IsroMarquee`), calculator, and footer remain shared shell components.
 
 ## User Authentication & Cloud Sync Architecture (FEAT-032)
 
@@ -264,6 +264,20 @@ Performance:
 - 60 subject/subtopic shards prevent sending a massive monolithic aptitude payload to the client.
 - The search index drives the Explore page filter and search.
 
+## `IsroQuestionService` (DEC-142)
+
+`IsroQuestionService.ts` manages the external ISRO Scientist/Engineer 'SC' Computer Science examination bank (1,070 questions across 13 examination years: 2007–2020 legacy papers + 2023 & 2025 Set A papers).
+
+Responsibilities:
+- Lazily fetches the master question set `public/data/isro/isro-all.json` and answer key registry `public/data/isro/answers-isro.json`.
+- Normalizes questions into standard `QuestionRecord` shapes with `question_uid` formatted as `isro:cs:<year>:q<num>` and `exam_uid` as `isro-<year>-q<num>`.
+- Normalizes subject taxonomy across 12 canonical subjects (`algorithms`, `coa`, `cn`, `compiler`, `dbms`, `digital-logic`, `discrete-math`, `engg-math`, `general-aptitude`, `os`, `toc`, `other`) with namespaced `isro:<subject-slug>` tags to prevent topic cross-contamination with GATE CSE.
+- Dynamically assigns marks metadata:
+  - **Legacy papers (2007–2020)**: `marks: 3`, `negativeMarks: 1`
+  - **Revised papers (2023 & 2025)**: `marks: 1`, `negativeMarks: 0.33`
+- Supports single question lookup by UID (`getQuestionByUid`) and direct answer resolution via `AnswerService.ts`.
+- Preserves absolute isolation from the GATE CSE (3,682 questions), GATE DA (195 questions), and Aptitude (36,836 questions) question banks.
+
 ## Filter and progress state model
 
 ### Filter state (`FilterStateContext`)
@@ -278,14 +292,16 @@ Performance:
 - `showOnlyBookmarked`
 - `searchQuery`
 
-When the optional GATE DA track is enabled, `structuredTags.yearSets` contains
-the CSE year/set options plus matching DA options. Every option has a
-track-aware internal identity (`cse:2026:set-1` or `da:2026:set-1`) and carries
-its track for the compact visual `DA` badge in the Years filter. Legacy CSE
-URL tokens such as `2026-s1` hydrate to the CSE identity; DA URLs use the
-explicit track-aware token. Question classification is always derived from
-the question's own metadata, never from the active filter state or a shared
-year/set label.
+### Multi-Track Filtering (GATE CSE, GATE DA, ISRO CS)
+
+When optional tracks are toggled:
+- **GATE CSE**: Always available by default (3,682 questions spanning 1987–2026).
+- **GATE DA (`includeDa`)**: Merges 195 DA questions with track key `da:<year>:set-<n>` and purple badges.
+- **ISRO CS (`includeIsro`)**: Merges 1,070 ISRO CS questions with track key `isro:<year>:set-1` and amber badges.
+  - Enabled via the `useIsroEnabled()` hook (`src/utils/isroPreference.ts`) and stored under `gateqa_include_isro`.
+  - When enabled, `structuredTags.yearSets` dynamically includes ISRO examination years (2007–2025) and `structuredTags.subjects` presents the 12 ISRO subjects.
+  - When disabled, ISRO filter tokens are automatically pruned from active filter state (`selectedYearSets`, `selectedSubjects`, `selectedSubtopics`) so student views are never corrupted.
+  - Progress tracking operates independently via dedicated local storage keys (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, `gateqa_isro_progress_v1`).
 
 ### Actions (`FilterActionsContext`)
 
@@ -475,6 +491,7 @@ Synchronized params:
   - `ProgressFilterToggles`
   - `TopicFilter`, `YearFilter`, `YearRangeFilter`
 - `ActiveFilterChips`
+- `Filters/IsroToggle.jsx` (amber toggle with collapsible subject taxonomy)
 - `Question`
 - `AnswerPanel`
 - `CalculatorWidget`
@@ -488,6 +505,12 @@ Synchronized params:
 - `gate_qa_bookmarked_questions`
 - `gateqa-apt-solved-questions`
 - `gateqa-apt-bookmarked-questions`
+- `gateqa_include_isro` (toggle state for ISRO CS stream)
+- `gate_qa_isro_solved_questions`
+- `gate_qa_isro_bookmarked_questions`
+- `gate_qa_isro_solved_removals`
+- `gate_qa_isro_bookmark_removals`
+- `gateqa_isro_progress_v1` (ISRO attempt metadata)
 - `gate_qa_progress_metadata`
 - `gateqa_progress_v1` (attempt metadata, used by AnswerPanel)
 

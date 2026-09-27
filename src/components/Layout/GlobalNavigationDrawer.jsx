@@ -11,6 +11,7 @@ import {
   FaHeart,
   FaFire,
   FaNewspaper,
+  FaRocket,
 } from "react-icons/fa";
 import { FiGrid, FiMessageSquare } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
@@ -21,6 +22,7 @@ import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, TRACKER_ROUTE, USER_MANUAL_
 import { EDITORIAL_PAGE_ROUTES as EDITORIAL_PAGES } from "../../data/editorialRoutes";
 import { useAptitudeEnabled } from "../../utils/aptitudePreference";
 import { useDaEnabled } from "../../utils/daPreference";
+import { useIsroEnabled } from "../../utils/isroPreference";
 import {
   preloadExploreRoute,
   preloadTrackerRoute,
@@ -126,6 +128,7 @@ const GlobalNavigationDrawer = ({
   const [showStudyGuides, setShowStudyGuides] = useState(false);
   const [aptitudeEnabled, setAptitudeEnabled] = useAptitudeEnabled();
   const [daEnabled, setDaEnabled] = useDaEnabled();
+  const [isroEnabled, setIsroEnabled] = useIsroEnabled();
 
   const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
@@ -415,6 +418,29 @@ const GlobalNavigationDrawer = ({
                   aria-hidden="true"
                   className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
                     daEnabled ? "translate-x-5" : "translate-x-0"
+                  }`}
+                />
+              </button>
+            </div>
+            <div className={`${actionButtonClassName} flex items-center justify-between gap-3`}>
+              <span className="flex min-w-0 items-center gap-3">
+                <FaRocket className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                <span className="truncate font-extrabold text-amber-700 dark:text-amber-400">ISRO CS Section</span>
+              </span>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={isroEnabled}
+                onClick={() => setIsroEnabled(!isroEnabled)}
+                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                  isroEnabled ? "bg-amber-500" : "bg-slate-300 dark:bg-slate-700"
+                }`}
+              >
+                <span className="sr-only">Toggle ISRO CS Section</span>
+                <span
+                  aria-hidden="true"
+                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                    isroEnabled ? "translate-x-5" : "translate-x-0"
                   }`}
                 />
               </button>

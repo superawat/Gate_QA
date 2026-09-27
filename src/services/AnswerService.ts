@@ -1,6 +1,7 @@
 import { getExamUidFromQuestion } from "../utils/examUid";
 import { DaQuestionService } from "./DaQuestionService";
-import { isDaQuestion as isDaQuestionByMetadata } from "../utils/examTrack";
+import { IsroQuestionService } from "./IsroQuestionService";
+import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion } from "../utils/examTrack";
 import type { QuestionUid, AnswerRecord, AnswerRecordMap } from "../types";
 
 export interface QuestionIdentity {
@@ -211,6 +212,11 @@ export class AnswerService {
     const isDaQuestion = isDaQuestionByMetadata(question);
     if (isDaQuestion) {
       return DaQuestionService.getAnswerForQuestion(question) as AnswerRecord | null;
+    }
+
+    const isIsro = isIsroQuestion(question) || String(identity.rawQuestionUid || identity.questionUid || "").startsWith("isro:");
+    if (isIsro) {
+      return IsroQuestionService.getAnswerForQuestion(question) as AnswerRecord | null;
     }
 
     const questionUid = identity.questionUid;

@@ -117,4 +117,64 @@ describe("Question Component - Mobile & Responsive Layout", () => {
     expect(container.innerHTML).toContain("$r=1(1+0)^*");
     expect(container.innerHTML).toContain("$L(s)");
   });
+
+  test("defensively renders options list when question object has separate options array without embedded list", () => {
+    const isroQuestion = {
+      question_uid: "isro:cs:2008:q73",
+      title: "ISRO CS 2008 | Question 73",
+      question: "We can make a class abstract by",
+      type: "MCQ",
+      options: [
+        { label: "A", text: "Declaring it abstract using the virtual keyword", html: "Declaring it abstract using the virtual keyword" },
+        { label: "B", text: "Making at least one member function as virtual function", html: "Making at least one member function as virtual function" },
+        { label: "C", text: "Making at least one member function as pure virtual function", html: "Making at least one member function as pure virtual function" },
+        { label: "D", text: "Making all member function const.", html: "Making all member function const." },
+      ],
+      answer_meta: {
+        type: "MCQ",
+        answer: "C",
+      },
+    };
+
+    const { container } = render(<Question question={isroQuestion} />);
+    expect(container.innerHTML).toContain("We can make a class abstract by");
+    expect(container.innerHTML).toContain("Declaring it abstract using the virtual keyword");
+    expect(container.innerHTML).toContain("Making at least one member function as pure virtual function");
+    expect(container.innerHTML).toContain("Making all member function const.");
+    expect(container.querySelector("ol.question-options, ol[style*=\"upper-alpha\"]")).toBeTruthy();
+  });
+
+  test("renders question-stem-content and question-html-body classes, and image renders without any modal/popup", () => {
+    const questionWithDiagram = {
+      question_uid: "isro:cs:2025:q1",
+      title: "ISRO CS 2025 | Question 1",
+      question: "When a tree given in the diagram is traversed inorder, the order would be<br /><img src=\"/question-images/external/isro/isro_2025_q1.webp\" alt=\"ISRO 2025 Q1 Diagram\" />",
+      type: "MCQ",
+      options: [
+        { label: "A", text: "a, b, d", html: "a, b, d" },
+        { label: "B", text: "h, d, i", html: "h, d, i" },
+      ],
+      answer_meta: {
+        type: "MCQ",
+        answer: "A",
+      },
+    };
+
+    const { container } = render(<Question question={questionWithDiagram} />);
+    const stem = container.querySelector(".question-stem-content");
+    const htmlBody = container.querySelector(".question-html-body");
+    expect(stem).toBeTruthy();
+    expect(htmlBody).toBeTruthy();
+
+    const img = htmlBody.querySelector("img");
+    expect(img).toBeTruthy();
+    expect(img.getAttribute("src")).toContain("isro_2025_q1.webp");
+
+    // No modal/dialog should exist at all — lightbox has been removed
+    expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
+
+    // Clicking image should NOT open any modal
+    fireEvent.click(img);
+    expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
+  });
 });

@@ -411,4 +411,37 @@ describe("MockTestQuestion", () => {
     expect(screen.getByRole("button", { name: "Backspace" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Clear All" })).toBeTruthy();
   });
+
+  test("clicking diagram in mocktest question stem does not open any modal (lightbox removed)", () => {
+    mockContextValue.currentQuestion = {
+      question_uid: "isro:cs:2025:q1",
+      title: "ISRO CS 2025 | Question 1",
+      question: "When a tree given in the diagram is traversed inorder, the order would be<br /><img src=\"/question-images/external/isro/isro_2025_q1.webp\" alt=\"ISRO 2025 Q1 Diagram\" />",
+      options: ["A", "B", "C", "D"],
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "isro:cs:2025:q1",
+      section: "CS",
+      type: "MCQ",
+      marks: 1,
+      negativeMarks: 0.33,
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["isro:cs:2025:q1"] };
+    mockContextValue.responses = {};
+
+    const { container } = render(<MockTestQuestion isReviewPhase={false} />);
+    const htmlBody = container.querySelector(".mocktest-html-body");
+    expect(htmlBody).toBeTruthy();
+
+    const img = htmlBody.querySelector("img");
+    expect(img).toBeTruthy();
+
+    // No modal should exist — lightbox has been removed
+    expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
+
+    // Clicking image should NOT open any modal
+    fireEvent.click(img);
+    expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
+  });
 });

@@ -38,7 +38,27 @@ function Question({
   };
 
   const sanitizedQuestionHtml = useMemo(() => {
-    const rawContent = question.question || "";
+    let rawContent = question.question || question.questionHtml || "";
+    const hasList = /<(ol|ul)\b[^>]*>/i.test(rawContent);
+    const options = (Array.isArray(question.normalizedOptions) && question.normalizedOptions.length > 0)
+      ? question.normalizedOptions
+      : (Array.isArray(question.options) && question.options.length > 0)
+        ? question.options
+        : null;
+
+    if (!hasList && options && options.length > 0) {
+      const validOptions = options
+        .map((opt) => (typeof opt === "string" ? opt : (opt?.html || opt?.text || opt?.value || "")))
+        .filter((val) => typeof val === "string" && val.trim().length > 0);
+
+      if (validOptions.length > 0) {
+        const optionsHtml = `<ol class="question-options" style="list-style-type: upper-alpha; margin-top: 1rem; padding-left: 1.75rem;">${validOptions
+          .map((opt) => `<li style="margin: 0.4rem 0; padding-left: 0.35rem;">${opt}</li>`)
+          .join("")}</ol>`;
+        rawContent = rawContent ? `${rawContent}<br><br>${optionsHtml}` : optionsHtml;
+      }
+    }
+
     if (!rawContent) return "";
     const questionHtml = formatCodeSnippets(
       normalizeHtmlAssetUrls(cleanLatexHtml(rawContent))
@@ -48,7 +68,7 @@ function Question({
     return DOMPurify.sanitize(questionHtml, {
       ADD_ATTR: ["data-lang", "style"],
     });
-  }, [question.question_uid, question.question]);
+  }, [question.question_uid, question.question, question.questionHtml, question.options, question.normalizedOptions]);
 
   const isMalformed = question.malformed || !sanitizedQuestionHtml.trim();
   const questionProgressId = getQuestionProgressId(question);
@@ -104,9 +124,10 @@ function Question({
               key={question.question_uid || sanitizedQuestionHtml}
               as="div"
               dynamic
-              className="mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
+              className="question-stem-content mt-1 overflow-auto whitespace-normal text-xl leading-6 text-[color:var(--color-text)]"
             >
               <div
+                className="question-html-body"
                 dangerouslySetInnerHTML={{
                   __html: sanitizedQuestionHtml,
                 }}

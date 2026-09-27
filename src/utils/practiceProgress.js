@@ -1,6 +1,7 @@
 export const PRACTICE_PROGRESS_STORAGE_KEY = "gateqa_progress_v1";
 export const APTITUDE_PROGRESS_STORAGE_KEY = "gateqa_apt_progress_v1";
 export const DA_PROGRESS_STORAGE_KEY = "gateqa_da_progress_v1";
+export const ISRO_PROGRESS_STORAGE_KEY = "gateqa_isro_progress_v1";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MAX_HISTORY_ENTRIES = 50;

@@ -6,6 +6,7 @@ import AptitudeTopicFilter from './AptitudeTopicFilter';
 import ProgressFilterToggles from './ProgressFilterToggles';
 import QuestionSearchInput from './QuestionSearchInput';
 import DaToggle from './DaToggle';
+import IsroToggle from './IsroToggle';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
@@ -157,6 +158,11 @@ const FilterSidebar = ({ className = "", onClose }) => {
                     {/* ── GATE DA Section (distinct card with toggle + subjects) ── */}
                     <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)]/50 p-3">
                         <DaToggle />
+                    </div>
+
+                    {/* ── ISRO CS Section (distinct card with toggle + subjects) ── */}
+                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-amber-300/50 bg-gradient-to-br from-amber-50/70 to-orange-50/40 dark:border-amber-700/40 dark:from-amber-950/25 dark:to-orange-950/15 p-3">
+                        <IsroToggle />
                     </div>
 
                     {/* ── Aptitude Section (distinct card) ── */}

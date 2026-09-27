@@ -12,6 +12,7 @@ const PageShell = ({
   showMobileBottomNav = true,
   onResume = null,
   resumeLabel = "",
+  subHeader = null,
 }) => (
   <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-hidden bg-[color:var(--color-bg)] text-[color:var(--color-text)]">
     <a
@@ -21,6 +22,7 @@ const PageShell = ({
       Skip to content
     </a>
     {showHeader ? <AppHeader onResume={onResume} resumeLabel={resumeLabel} /> : null}
+    {subHeader ?? null}
     <main
       id="main-content"
       className={`flex-1 mx-auto w-full max-w-7xl min-w-0 px-4 sm:px-6 md:pb-6 lg:px-8 ${

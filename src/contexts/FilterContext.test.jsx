@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider, normalizeStoredIds, useFilterState, useFilterActions } from './FilterContext';
 import ActiveFilterChips from '../components/Filters/ActiveFilterChips';
 import DaToggle from '../components/Filters/DaToggle';
+import IsroToggle from '../components/Filters/IsroToggle';
 import TopicFilter from '../components/Filters/TopicFilter';
 import YearFilter from '../components/Filters/YearFilter';
 import YearRangeFilter from '../components/Filters/YearRangeFilter';
@@ -31,6 +32,37 @@ const aptitudeMock = vi.hoisted(() => ({
             subtopics: [{ slug: 'spot-the-error', label: 'Spot the Error' }],
             answerMeta: { type: 'MCQ', answer: 'A' },
             exam: { year: null, yearSetKey: null }
+        }
+    ],
+}));
+
+const isroMock = vi.hoisted(() => ({
+    questions: [
+        {
+            question_uid: 'isro:cs:2025:q1',
+            title: 'ISRO CS 2025 | Question: 1',
+            searchText: 'isro algorithms dynamic programming knapsack',
+            subjectSlug: 'algorithms',
+            subject: 'Algorithms',
+            subjectLabel: 'Algorithms',
+            type: 'MCQ',
+            tags: ['isro-2025', 'algorithms'],
+            subtopics: [{ slug: 'dynamic-programming', label: 'Dynamic Programming' }],
+            exam: { year: 2025, set: 1, yearSetKey: 'isro:2025:set-1', yearSetIdentity: 'isro:2025:set-1' },
+            track: 'isro',
+        },
+        {
+            question_uid: 'isro:cs:2020:q1',
+            title: 'ISRO CS 2020 | Question: 1',
+            searchText: 'isro operating systems memory paging virtual',
+            subjectSlug: 'os',
+            subject: 'Operating System',
+            subjectLabel: 'Operating System',
+            type: 'MCQ',
+            tags: ['isro-2020', 'os'],
+            subtopics: [{ slug: 'paging', label: 'Paging' }],
+            exam: { year: 2020, set: 1, yearSetKey: 'isro:2020:set-1', yearSetIdentity: 'isro:2020:set-1' },
+            track: 'isro',
         }
     ],
 }));
@@ -195,9 +227,42 @@ vi.mock('../services/DaQuestionService', () => ({
     },
 }));
 
+vi.mock('../services/IsroQuestionService', () => ({
+    IsroQuestionService: {
+        loaded: true,
+        questions: isroMock.questions,
+        normalizeSubjectSlug: vi.fn((value) => String(value || '').trim().toLowerCase()),
+        getStructuredTags: vi.fn(() => ({
+            minYear: 2020,
+            maxYear: 2025,
+            subjects: [
+                { slug: 'isro:algorithms', label: 'Algorithms', count: 1 },
+                { slug: 'isro:os', label: 'Operating System', count: 1 },
+            ],
+            structuredSubtopics: {
+                'isro:algorithms': [{ slug: 'dynamic-programming', label: 'Dynamic Programming' }],
+                'isro:os': [{ slug: 'paging', label: 'Paging' }],
+            },
+            structuredTopics: {},
+            questionTypes: ['MCQ'],
+            yearSets: [
+                { key: 'isro:2025:set-1', year: 2025, set: 1, label: 'ISRO 2025', count: 1, track: 'isro', legacyKey: 'isro:2025:set-1' },
+                { key: 'isro:2020:set-1', year: 2020, set: 1, label: 'ISRO 2020', count: 1, track: 'isro', legacyKey: 'isro:2020:set-1' },
+            ],
+            years: ['isro:2025:set-1', 'isro:2020:set-1'],
+            topics: [
+                'isro:algorithms',
+                'isro:os',
+            ],
+        })),
+        ensureQuestionDetail: vi.fn(async (q) => q),
+        getAnswerForQuestion: vi.fn(() => null),
+    },
+}));
+
 vi.mock('../services/AnswerService', () => ({
     AnswerService: {
-        getStorageKeyForQuestion: vi.fn((q) => q.question_uid),
+        getStorageKeyForQuestion: vi.fn((q) => (typeof q === 'string' ? q : q.question_uid)),
         getAnswerForQuestion: vi.fn(() => null)
     }
 }));
@@ -216,8 +281,8 @@ describe('FilterContext', () => {
     );
 
     const TestComponent = () => {
-        const { allQuestions, filters, filteredQuestions, structuredTags, includeCse } = useFilterState();
-        const { isQuestionSolved, toggleBookmark, toggleSolved, markQuestionsSolved, updateFilters, setIncludeDa, setIncludeCse } = useFilterActions();
+        const { allQuestions, filters, filteredQuestions, structuredTags, includeCse, includeIsro } = useFilterState();
+        const { isQuestionSolved, toggleBookmark, toggleSolved, markQuestionsSolved, updateFilters, setIncludeDa, setIncludeCse, setIncludeIsro } = useFilterActions();
 
         return (
             <div>
@@ -233,8 +298,10 @@ describe('FilterContext', () => {
                 <div data-testid="go1-solved">{isQuestionSolved('go:1') ? 'yes' : 'no'}</div>
                 <div data-testid="apt-solved">{isQuestionSolved('APT-ENG-0001') ? 'yes' : 'no'}</div>
                 <div data-testid="da-prob-solved">{isQuestionSolved('da:2024:q-probability') ? 'yes' : 'no'}</div>
+                <div data-testid="isro-q1-solved">{isQuestionSolved('isro:cs:2025:q1') ? 'yes' : 'no'}</div>
                 <ActiveFilterChips />
                 <DaToggle />
+                <IsroToggle />
                 <TopicFilter />
                 <YearRangeFilter />
                 <YearFilter />
@@ -326,6 +393,30 @@ describe('FilterContext', () => {
                     data-testid="enable-cse"
                     onClick={() => setIncludeCse(true)}
                 >Enable CSE</button>
+                <button
+                    data-testid="solve-isro-string"
+                    onClick={() => toggleSolved('isro:cs:2025:q1')}
+                >Solve ISRO String</button>
+                <button
+                    data-testid="bookmark-isro-string"
+                    onClick={() => toggleBookmark('isro:cs:2025:q1')}
+                >Bookmark ISRO String</button>
+                <button
+                    data-testid="set-isro-filters"
+                    onClick={() => updateFilters({
+                        selectedSubjects: ['isro:algorithms'],
+                        selectedSubtopics: ['dynamic-programming'],
+                        selectedYearSets: ['isro:2025:set-1']
+                    })}
+                >Set ISRO Filters</button>
+                <button
+                    data-testid="enable-isro"
+                    onClick={() => setIncludeIsro(true)}
+                >Enable ISRO</button>
+                <button
+                    data-testid="disable-isro"
+                    onClick={() => setIncludeIsro(false)}
+                >Disable ISRO</button>
             </div>
         );
     };
@@ -1230,6 +1321,83 @@ describe('FilterContext', () => {
             await waitFor(() => {
                 expect(getByTestId('go1-solved').textContent).toBe('no');
             });
+        });
+
+        test('merges ISRO questions and structured tags when includeIsro is true', async () => {
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider initialIncludeIsro={true}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2025:q1');
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2020:q1');
+            });
+
+            expect(getByTestId('subject-options').textContent).toContain('isro:algorithms');
+            expect(getByTestId('subject-options').textContent).toContain('isro:os');
+        });
+
+        test('prunes ISRO filters when includeIsro is toggled to false', async () => {
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider initialIncludeIsro={true}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2025:q1');
+            });
+
+            act(() => {
+                getByTestId('set-isro-filters').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('subjects').textContent).toBe('isro:algorithms');
+                expect(getByTestId('selected-year-sets').textContent).toBe('isro:2025:set-1');
+            });
+
+            act(() => {
+                getByTestId('disable-isro').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('subjects').textContent).toBe('');
+                expect(getByTestId('selected-year-sets').textContent).toBe('');
+            });
+        });
+
+        test('tracks ISRO solved and bookmarks independently in ISRO storage', async () => {
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider initialIncludeIsro={true}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('isro-q1-solved').textContent).toBe('no');
+            });
+
+            act(() => {
+                getByTestId('solve-isro-string').click();
+                getByTestId('bookmark-isro-string').click();
+            });
+
+            await waitFor(() => {
+                expect(getByTestId('isro-q1-solved').textContent).toBe('yes');
+            });
+
+            const isroSolved = JSON.parse(window.localStorage.getItem('gate_qa_isro_solved_questions') || '[]');
+            expect(isroSolved).toContain('isro:cs:2025:q1');
+
+            const isroBookmarked = JSON.parse(window.localStorage.getItem('gate_qa_isro_bookmarked_questions') || '[]');
+            expect(isroBookmarked).toContain('isro:cs:2025:q1');
+
+            // CSE storage should remain unpolluted
+            const cseSolved = JSON.parse(window.localStorage.getItem(SOLVED_KEY) || '[]');
+            expect(cseSolved).not.toContain('isro:cs:2025:q1');
         });
     });
 });

@@ -277,6 +277,42 @@ Current state:
 - The local PDF/OCR path was retired to avoid duplicate parsing work, large private PDFs, and low-signal generated artifacts.
 - Intake, mirror, quality, and audit reports are written under `artifacts/review/`, which is local-only and git-ignored.
 
+## ISRO CS External Exam Pipeline (DEC-141, DEC-142)
+
+The ISRO Scientist/Engineer 'SC' Computer Science dataset is an external examination intake of **1,070 questions** across 13 examination papers, fully isolated from canonical GATE CSE (3,682 questions), GATE DA (195 questions), and Aptitude (36,836 questions).
+
+### Corpus Composition:
+1. **11 Historical Legacy Papers (2007–2020)**:
+   - Examination years: 2007, 2008, 2009, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2020.
+   - 80 questions per paper (880 total questions).
+   - Scoring standard: `marks: 3`, `negativeMarks: 1`.
+2. **2 Revised Set A Papers (2023 & 2025)**:
+   - Examination years: 2023 (Set A, 95 questions) and 2025 (Set A, 95 questions).
+   - 95 questions per paper (190 total questions).
+   - Scoring standard: `marks: 1`, `negativeMarks: 0.33`.
+   - 100% enriched with direct GateOverflow community discussion links (`https://gateoverflow.in/<id>`) and numeric `gateoverflow_id`.
+
+### Pipeline Tooling (`scripts/external-pipeline/`):
+
+- **Diagram Extraction & WebP Optimization**:
+  - `extract_pdf_images.py`: PyMuPDF (`fitz`) rasterization extracting raw diagrams from bilingual official PDFs into `public/question-images/external/isro/`.
+  - `optimize-all-external-images.mjs`: Sharp-based batch processor converting all 69 figures to optimized `.webp` format (quality 85, near-lossless) and updating image paths in question stems from `.png` to `.webp`.
+- **Intake & Normalization**:
+  - `ingest-isro-papers.mjs` & `ingest-parsed-json.mjs`: Normalizes questions into standard `QuestionRecord` shapes, classifies stems into 12 canonical subjects (`algorithms`, `coa`, `cn`, `compiler`, `dbms`, `digital-logic`, `discrete-math`, `engg-math`, `general-aptitude`, `os`, `toc`, `other`), assigns namespaced tags (`isro:<subject-slug>`), and generates `data/isro/isro-all.json`, `data/isro/answers-isro.json`, and `public/data/isro/` runtime mirrors.
+- **GateOverflow Discussion Link Attachment & Bipartite Matching (DEC-141)**:
+  - `attach-gateoverflow-links.py`: Live scraping of GateOverflow tag pages (`isro-cse-2023`, `isro-cse-2025`) using Chrome DevTools Protocol (CDP) on `localhost:9222` to bypass Cloudflare Turnstile anti-bot checks.
+  - Due to set-shuffling (GateOverflow questions are ordered by community post creation or different paper sets, e.g., GO 2023 Q1 = Set A Q8; GO 2025 Q1 = Set A Q7), the pipeline computes a pairwise TF-IDF cosine similarity matrix over question stems and option choices.
+  - Applies the Hungarian maximum-weight bipartite matching algorithm (`scipy.optimize.linear_sum_assignment`) to find the optimal 1-to-1 bijection.
+  - Achieved 100% bijective match across all 190 questions with 0 false pairings (average similarity score ~0.78, minimum match score > 0.40).
+- **Validation Gate**:
+  - `validate-isro-data.py`: Verifies all 1,070 questions have valid IDs, complete stems, 4 options (A–D), authoritative answers, 100% GateOverflow link coverage on 2023/2025 papers, and zero broken or missing local WebP diagram references.
+
+### Published Datasets:
+- `public/data/isro/isro-all.json`: Monolithic 1,070-question JSON bundle (~1.5 MB uncompressed, ~300 KB gzip) used for zero-latency in-memory practice filtering.
+- `public/data/isro/answers-isro.json`: Authoritative answer key registry keyed by `question_uid`.
+- `public/data/isro/isro-<year>.json`: Standalone year papers for 2007 through 2025.
+- `public/question-images/external/isro/*.webp`: 69 optimized WebP diagram assets.
+
 ## Manual catch-up runbook
 
 Use this when a scheduled run misses the intake window or when you intentionally want to

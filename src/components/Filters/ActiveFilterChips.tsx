@@ -133,6 +133,7 @@ const ActiveFilterChips = () => {
                 const parsedKey = parseTrackYearSetKey(yearSetKey);
                 const isDa = yearMeta?.track === 'da' || parsedKey?.track === 'da';
                 const isIt = yearMeta?.track === 'it' || parsedKey?.track === 'it';
+                const isIsro = yearMeta?.track === 'isro' || parsedKey?.track === 'isro';
                 const isAdditional = Boolean(
                     yearMeta?.paperScope === 'additional_ga' ||
                     parsedKey?.isAdditional ||
@@ -146,6 +147,11 @@ const ActiveFilterChips = () => {
                 return (
                     <span key={yearSetKey} className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-primary-border)] bg-[color:var(--color-primary-soft)] px-2.5 py-0.5 text-xs font-medium text-[color:var(--color-primary-text)] shadow-sm">
                         {label}
+                        {isIsro && (
+                            <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-amber-700 dark:text-amber-300">
+                                ISRO
+                            </span>
+                        )}
                         {isDa && (
                             <span className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]">
                                 DA
@@ -194,6 +200,16 @@ const ActiveFilterChips = () => {
             {selectedSubjects.map((subjectSlug) => (
                 <span key={subjectSlug} className="inline-flex min-h-[30px] sm:min-h-[32px] items-center gap-1.5 rounded-full border border-[color:var(--color-success-border)] bg-[color:var(--color-success-soft)] px-2.5 py-0.5 text-xs font-medium capitalize text-[color:var(--color-success-text)] shadow-sm">
                     {subjectLabelBySlug.get(subjectSlug) || subjectSlug}
+                    {subjectSlug.startsWith('isro:') && (
+                        <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-amber-700 dark:text-amber-300">
+                            ISRO
+                        </span>
+                    )}
+                    {subjectSlug.startsWith('da:') && (
+                        <span className="rounded-full border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)] px-1.5 py-0.2 text-[9px] font-semibold leading-none tracking-wide text-[color:var(--color-purple-text)]">
+                            DA
+                        </span>
+                    )}
                     <button type="button" onClick={() => removeSubject(subjectSlug)} className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[color:var(--color-success-text)] transition hover:bg-[color:var(--color-success-soft)] focus:outline-none focus:ring-2 focus:ring-sky-500 text-[10px]">
                         <FaTimes />
                     </button>

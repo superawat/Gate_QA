@@ -60,6 +60,8 @@ Gate_QA/
 |   |   |   `-- types.ts
 |   |   |-- AptitudeQuestionService.ts
 |   |   |-- AptitudeQuestionService.test.js
+|   |   |-- IsroQuestionService.ts
+|   |   |-- IsroQuestionService.test.js
 |   |   `-- AnswerService.test.js
 |   |-- pages/
 |   |   |-- HomePage.jsx
@@ -77,6 +79,7 @@ Gate_QA/
 |   |   |-- examUid.js
 |   |   |-- analytics.js
 |   |   |-- aptitudePreference.ts
+|   |   |-- isroPreference.ts
 |   |   |-- keyboardShortcuts.ts
 |   |   |-- routes.ts
 |   |   |-- stripEmbeddedOptions.d.ts
@@ -85,6 +88,10 @@ Gate_QA/
 |   `-- components/
 |       |-- ErrorBoundary/ErrorBoundary.jsx
 |       |-- ErrorBoundary/ErrorBoundary.test.jsx
+|       |-- Home/IsroMarquee.jsx
+|       |-- Home/IsroMarquee.test.jsx
+|       |-- Home/StreakBanner.jsx
+|       |-- Home/ActivityHeatmap.jsx
 |       |-- Landing/ModeSelectionPage.jsx
 |       |-- Landing/ModeCard.jsx
 |       |-- Loaders/LoadingState.jsx
@@ -104,6 +111,8 @@ Gate_QA/
 |       |-- Filters/ProgressBar.jsx
 |       |-- Filters/ProgressFilterToggles.tsx
 |       |-- Filters/ActiveFilterChips.tsx
+|       |-- Filters/IsroToggle.jsx
+|       |-- Filters/IsroToggle.test.jsx
 |       |-- ProgressManager/ProgressManager.jsx
 |       |-- ProgressManager/ImportConfirmationModal.jsx
 |       |-- Footer/Footer.jsx
@@ -125,6 +134,8 @@ Gate_QA/
 |   |-- aptitude-search-index.json       # Generated compact search index for aptitude
 |   |-- question-detail-shards/          # Generated detail payloads keyed by year/set
 |   |-- data/aptitude/                   # Generated detail payloads for aptitude sharded by subject/subtopic
+|   |-- data/isro/                       # ISRO master (isro-all.json), answers registry, and year papers
+|   |-- question-images/external/isro/   # 69 optimized WebP diagrams for ISRO examination papers
 |   |-- mocktest/                        # Mock exam image assets used by the exam shell
 |   |-- questions-filtered.json
 |   |-- questions-filtered-with-ids.json
@@ -141,6 +152,7 @@ Gate_QA/
 |   `-- answers/
 |       |-- answers_by_question_uid_v1.json   # Read by pipeline answer-backfill
 |       `-- manual-answers-patch-v1.json      # Live answer patch queue (written by pipeline)
+|   `-- isro/                                 # Authoritative ISRO CS datasets and answers
 |
 |-- scripts/
 |   |-- precompute-subtopics.mjs
@@ -173,6 +185,13 @@ Gate_QA/
 |   |   |-- remaps.py                     # Aptitude taxonomy/remap rules
 |   |   |-- config.py
 |   |   `-- README.md
+|   |-- external-pipeline/
+|   |   |-- attach-gateoverflow-links.py  # CDP scrape + bipartite matching for GO discussion links
+|   |   |-- extract_pdf_images.py         # PyMuPDF diagram extraction from PDF papers
+|   |   |-- ingest-isro-papers.mjs        # Master ingestion & subject normalization
+|   |   |-- ingest-parsed-json.mjs        # Single-paper parser and validator
+|   |   |-- optimize-all-external-images.mjs # Sharp WebP batch optimizer for diagrams
+|   |   `-- validate-isro-data.py         # Multi-metric validation gate
 |   `-- pipeline/
 |       |-- shared.mjs            # Shared retry/sleep/output helpers for pipeline stages
 |       |-- scrape.mjs            # Stage 1: Tag discovery, pagination, question extraction

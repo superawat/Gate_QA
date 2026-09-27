@@ -57,7 +57,7 @@ export interface QuestionOption {
 }
 
 export interface QuestionExamMeta {
-  track?: 'cse' | 'da' | null;
+  track?: 'cse' | 'da' | 'it' | 'isro' | null;
   year?: number | null;
   set?: number | null;
   yearSetKey?: string | null;
@@ -94,7 +94,7 @@ export interface QuestionRow {
   normalizedOptions?: QuestionOption[];
   answerMeta?: AnswerRecord;
   exam?: QuestionExamMeta;
-  track?: 'cse' | 'da' | null;
+  track?: 'cse' | 'da' | 'it' | 'isro' | null;
   yearSetKey?: string | null;
   yearSetIdentity?: string | null;
   yearSetLabel?: string | null;
@@ -115,7 +115,7 @@ export interface QuestionSearchIndexRow {
   title: string;
   subjectSlug?: string;
   subjectLabel?: string;
-  track?: 'cse' | 'da' | null;
+  track?: 'cse' | 'da' | 'it' | 'isro' | null;
   year?: number | null;
   set?: number | null;
   yearSetKey?: string;
@@ -175,7 +175,7 @@ export interface YearSetOption {
   set?: number | null;
   label: string;
   count?: number;
-  track?: 'cse' | 'da' | 'it';
+  track?: 'cse' | 'da' | 'it' | 'isro';
   legacyKey?: string;
   yearSetIdentity?: string;
   hasItPaper?: boolean;
@@ -228,6 +228,9 @@ export interface FilterStateShape {
   includeDa?: boolean;
   daLoading?: boolean;
   daError?: string;
+  includeIsro?: boolean;
+  isroLoading?: boolean;
+  isroError?: string;
   aptitudeLoading?: boolean;
   aptitudeError?: string;
   aptitudeEnabled?: boolean;
@@ -247,6 +250,7 @@ export interface FilterActionsShape {
   setShowOnlyBookmarked?: (value: boolean) => void;
   setIncludeCse?: (value: boolean | ((prev: boolean) => boolean)) => void;
   setIncludeDa?: (value: boolean | ((prev: boolean) => boolean)) => void;
+  setIncludeIsro?: (value: boolean | ((prev: boolean) => boolean)) => void;
   [key: string]: unknown;
 }
 

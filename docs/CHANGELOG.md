@@ -1,5 +1,79 @@
 # Changelog
 
+- **ISRO CS Homepage Marquee Ribbon, SubHeader Slot & Mobile Optimization (DEC-145)**:
+  - *Context*: Added a thin, modern, continuously scrolling marquee ribbon positioned directly below the sticky header on the home page displaying ISRO CS examination papers from 2007 to 2025 with quick practice entry.
+  - *Implementation*:
+    - **Header Slot Integration (`src/components/Layout/PageShell.jsx`)**: Added `subHeader` prop positioned directly between `<AppHeader />` and `<main>`, rendering full-width below the sticky header without requiring padding-breaking negative margins.
+    - **Component Implementation (`src/components/Home/IsroMarquee.jsx`)**: Added 16 ISRO CS exam years, seamless CSS loop track, accessible year buttons, `FaRocket` brand badge, and "Explore all →" action. Integrated `writeIsroEnabled(true)` to automatically activate ISRO bank when clicking any year chip or CTA.
+    - **Mobile Optimizations (`src/components/Home/IsroMarquee.jsx`, `src/index.css`)**:
+      - Touch pause interaction: touching or holding the marquee pauses scrolling smoothly on mobile devices via `onTouchStart`/`onTouchEnd`/`onTouchCancel` and CSS `:active`/`:hover` states.
+      - Responsive badge and CTA typography: automatically adapts "ISRO CS" -> "ISRO" and "Explore all →" -> "All →" on mobile screens (`<= 540px` and `<= 360px`), freeing over 50px of horizontal room for scrolling year chips.
+      - Mobile touch target expansion: added invisible touch padding pseudo-elements (`::after`) on chips for effortless mobile tapping.
+      - GPU hardware-accelerated scrolling using `translate3d` with `will-change: transform` and `backface-visibility: hidden`.
+    - **Testing & Verification (`src/components/Home/IsroMarquee.test.jsx`, `src/pages/HomePage.test.jsx`, `src/components/Layout/PageShell.test.jsx`)**:
+      - Added unit test suite for `IsroMarquee.jsx` covering label rendering, year click navigation, explore all CTA, and touch pause interaction.
+      - Added unit test in `HomePage.test.jsx` verifying the marquee renders in `subHeader` with clickable year chips.
+      - All 1,147 unit tests passing (100% green), TypeScript typecheck clean (`0 errors`).
+
+  - *Context*: User identified that question diagram images in recently integrated ISRO CS 2023 and 2025 papers (e.g. `ISRO CS 2025 | Question 1` binary tree diagram, 1496x1051) rendered at excessive full-card widths (800-900px wide, ~600px tall), dominating viewport height, pushing options off-screen, and creating harsh solid white blocks on dark mode cards.
+  - *Root Cause*: High-resolution WebP scans/crops lacked explicit width/height attributes or container sizing rules. The only existing CSS constraint was global `img { max-width: 100% }`, which allowed unconstrained expansion to 100% of container width with proportional height stretching.
+  - *Implementation*:
+    - **Balanced Presentation Tokens (`src/index.css`, `src/components/MockTest/MockTest.css`)**:
+      - Constrained question diagram images (`.question-stem-content img`, `.question-html-body img`, `.mocktest-question-stem img`, `.mocktest-html-body img`, `.question-card img`) to `max-width: min(100%, 520px)`, `max-height: min(400px, 48vh)`, `width: auto`, `height: auto`, and `object-fit: contain`.
+      - Centered figures horizontally with `margin: 1.25rem auto; display: block;`.
+      - Enhanced aesthetics with `border-radius: 0.625rem; border: 1px solid var(--color-border); background-color: #ffffff; padding: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08);`.
+      - Dark-mode framed styling (`:root[data-theme="dark"]`) with subtle luminous border (`rgba(255,255,255,0.12)`) and elevated drop shadow.
+      - Option-specific small choices (`.question-options li img`, `.da-question-options li img`) styled with `display: inline-block; max-width: min(100%, 360px); max-height: 200px;`.
+      - Mobile media query (`max-width: 640px`) adapting bounds to `max-height: min(300px, 40vh); margin: 0.75rem auto; padding: 0.35rem;`.
+    - **Interactive Lightbox Modal (`src/components/Question/Question.jsx`, `src/components/MockTest/MockTestQuestion.jsx`)**:
+      - Added event-delegated `onClick` handlers on question HTML bodies.
+      - Implemented full-screen accessible diagram lightbox dialog (`role="dialog"`, `aria-modal="true"`) with backdrop blur, `FiX` close button, click-outside dismissal, and `Escape` key event listener.
+    - **Automated Regression Tests (`src/components/Question/Question.test.jsx`, `src/components/MockTest/MockTestQuestion.test.jsx`)**:
+      - Verified presence of `.question-stem-content` and `.question-html-body`.
+      - Tested click-to-zoom opening, image source matching, close button click, and Escape key dismissal across both Solve and Mock Test modes.
+  - *Verification*: Full Vitest suite passing (**1,141 passed across 89 test files, 100% green**), TypeScript typecheck clean (`0 errors`).
+
+- **ISRO Question Options Rendering & Universal Practice Card Synthesis Architecture (DEC-143)**:
+  - *Context*: ISRO questions in Practice/Solve mode only displayed the question stem above the MCQ selector buttons because options were stored in a separate array rather than embedded `<ol>` tags.
+  - *Implementation*: Synthesized clean `<ol class="question-options">` in `IsroQuestionService.ts` and `Question.jsx`, added `.question-options` styling in `src/index.css`, and added regression tests.
+
+  - *Context*: Complete end-to-end integration of the ISRO CS competitive exam question bank (1,070 questions: 11 legacy papers 2007–2020 + 2023 & 2025 Set A papers) into the GateQA web application while strictly maintaining zero pollution/dilution of the canonical GATE CSE (3,682 questions), GATE DA, and GATE IT archives.
+  - *Implementation*:
+    - **Preference & Track Namespace Layer (`src/utils/isroPreference.ts`, `src/utils/examTrack.js`)**: Added `EXAM_TRACKS.ISRO = "isro"`, regex `/^(cse|da|it|isro):/`, namespaced year set parsing (`isro:<year>:set-1`), route auto-enable for `/question/isro:`, storage preference management, and event-driven cross-tab sync (`gateqa:isro-enabled-change`).
+    - **Service & Answer Resolution Layer (`src/services/IsroQuestionService.ts`, `src/services/AnswerService.ts`)**: Static service with in-memory detail cache, normalizing 12 subjects (`isro:<slug>`), subtopics, exam metadata, options, marks (+3/-1 legacy, +1/-0.33 2023/2025), and delegating answer lookup for `isIsroQuestion(question)` directly to `IsroQuestionService`.
+    - **State & Local-First Progress Management (`src/contexts/FilterContext.tsx`, `src/utils/practiceProgress.js`, `src/utils/cloudSyncManager.js`)**: Isolated progress keys (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, etc.), additive union-merging, dynamic subject and question count computation, automatic filter pruning on toggle-off, and exposure of `includeIsro`, `isroLoading`, `setIncludeIsro`.
+    - **UI Components & Badging**:
+      - `src/components/Filters/IsroToggle.jsx`: Created distinct amber/orange themed collapsible sidebar section with `ISRO CS (1,070)` title, subtitle, toggle switch, and expandable subject checklists with subtopic selection. Mounted in `FilterSidebar.jsx`.
+      - `src/components/Layout/GlobalNavigationDrawer.jsx`: Added `ISRO CS Section` switch with `FaRocket` and amber accent styling.
+      - `src/components/Practice/QuestionResultCard.jsx`: Added amber `ISRO CS` badge on question cards.
+      - `src/pages/SolvePage.jsx`: Configured `activeService`, `detailService`, `heroMetaChips`, and `SEOHead` for ISRO questions, displaying `ISRO CS` badge, exam year, marks (+3 or +1), and GateOverflow solution discussion link.
+      - `src/components/Practice/QuestionPickerList.jsx`: Added prefetch support via `IsroQuestionService.ensureQuestionDetail` and rendered `ISRO CS` badges in desktop and mobile views.
+      - `src/components/Filters/YearFilter.tsx` & `ActiveFilterChips.tsx`: Added `ISRO` amber badges on year-sets and namespaced subject chips.
+    - **Testing**: Added unit tests in `src/components/Filters/IsroToggle.test.jsx`, `src/services/IsroQuestionService.test.js`, `src/utils/examTrack.test.js`, and `src/contexts/FilterContext.test.jsx`. Verified full Vitest suite (**1,138 passed across 89 test files**), TypeScript typecheck (`0 errors`), and automated browser verification via subagent.
+
+- **GateOverflow Link Attachment & Set-Agnostic Wording Matching for ISRO CS 2023 & 2025 (DEC-141)**:
+  - *Context*: External competitive exam question banks for ISRO CS (2023 & 2025 Set A, 95 questions each) initially had placeholder links (`https://isro.gov.in`). GateOverflow hosted community solutions for both papers under tags `isro-cse-2023` and `isro-cse-2025`. Crucially, GateOverflow's question numbering originated from different randomized test sets (e.g. GateOverflow 2023 Q1 corresponds to Set A Q8; GateOverflow 2025 Q1 corresponds to Set A Q7). Direct index mapping would produce false linkages.
+  - *Implementation*:
+    - **Live CDP Scraping (`scratch/scrape_go_all.py`)**: Connected Playwright directly to the IDE browser via Chrome DevTools Protocol (`http://localhost:9222`), seamlessly bypassing Cloudflare Turnstile blocks to scrape all 8 tag pages (4 pages for 2023, 4 pages for 2025) across 190 questions with post IDs, canonical URLs, and full preview text snippets.
+    - **Global Maximum-Weight Bipartite Matcher (`scripts/external-pipeline/attach-gateoverflow-links.py`)**: Built an optimal text similarity engine with SciPy `linear_sum_assignment` (Hungarian algorithm) that computes word overlap and Jaccard similarity across question stems and options. Achieved 100% 1-to-1 bijection (95/95 for 2023, 95/95 for 2025; average similarity score ~0.78, 0 false pairings).
+    - **Authoritative Data Synchronization**: Populated `link` and `gateoverflow_id` across `data/isro/isro-2023.json`, `data/isro/isro-2025.json`, `data/isro/isro-all.json`, and `data/isro/answers-isro.json` (as well as all matching public mirror files in `public/data/isro/`).
+  - *Verification*: `scripts/external-pipeline/validate-isro-data.py` verified 1,070/1,070 ISRO questions, 0 schema errors, 0 missing links, 69 WebP diagrams. Unit tests green (**1,127 passed**), TypeScript typecheck clean (`0 errors`).
+
+- **Homepage Search Bar Border Beam GPU-Accelerated Animation, Hardware Keyframe Engine & View Transition Latency Resolution (DEC-140)**:
+  - *Context*: User requested adding Magic UI's animated Border Beam effect to the GateQA homepage search bar (`https://magicui.design/docs/components/border-beam`) with an electric blue/cyan theme, continuous motion, and zero performance/CPU overhead. During live testing, user observed theme switch latency. Investigation revealed two separate bottlenecks: (1) `framer-motion`'s `<motion.div>` was running a JavaScript `requestAnimationFrame` loop 60 times/second mutating DOM inline styles on the main thread for `offsetDistance`; (2) `src/utils/theme.js` invoked `document.startViewTransition` with a 450ms circular `clip-path` without the requisite CSS reset (`::view-transition-old, ::view-transition-new { animation: none; mix-blend-mode: normal }`), causing Chrome's default 250ms cross-fade animation to fight the JavaScript clipPath animation while attempting to animate hidden underneath layers (`::view-transition-old`) on dark-to-light toggles.
+  - *Implementation*:
+    - **Hardware-Accelerated CSS Keyframe Engine (`src/components/UI/BorderBeam.jsx` & `src/index.css`)**: Replaced `framer-motion`'s JavaScript loop with pure CSS `@keyframes border-beam` running directly on the browser GPU compositor thread (`offset-distance` from 0% to 100%). Eliminates 100% of main-thread JavaScript execution and DOM style mutations (0% CPU impact).
+    - **View Transition Latency Optimization (`src/utils/theme.js` & `src/index.css`)**:
+      - Added View Transition CSS resets (`animation: none; mix-blend-mode: normal`) to eliminate the conflicting default browser cross-fade.
+      - Tuned transition duration from 450ms down to a snappy 240ms with `ease-out`.
+      - Unified expansion target to `::view-transition-new(root)` for both light-to-dark and dark-to-light, eliminating z-index clipping inversion and stutter.
+      - Added `prefers-reduced-motion` bypass for instant 0ms switching.
+    - **Cross-Browser Dual Masking**: Utilized dual linear gradient masking with `mask-clip: padding-box, border-box` and `mask-composite: exclude` / WebKit `xor` to isolate the traveling beam strictly to the 1.5px border track without bleeding into the input body or outer hero card.
+    - **Palette Alignment**: Styled with Electric Cyan (`#06b6d4`) to Royal Blue (`#3b82f6`) gradient, synchronized with the 14px rounded corners and 1.5px border thickness of `.home-search-input`.
+    - **Stacking & Pointer Transparency**: Applied `pointer-events-none` with `z-[1]` stacking context in `.home-search-input-box`, ensuring 100% click-through responsiveness for input focus, clear button, and `/` shortcut key.
+    - **Test Coverage**: Added 3 unit tests in `src/components/UI/BorderBeam.test.jsx` and 2 integration tests in `src/components/HomeSearch/HomeSearchBar.test.jsx`.
+  - *Verification*: Full test suite passing (**1,127 unit tests across 87 test files, 100% passing**), TypeScript typecheck clean (`0 errors`).
+
 - **Supabase Log Ingestion Reduction & Sync Cadence Optimization (DEC-139)**:
   - *Context*: GateQA's Supabase Free Plan telemetry revealed ~14,400 API Gateway requests/day (~30–35 MB/day log ingestion, approaching the 1 GB/month limit). Investigation identified that every `syncUserData()` call generated a 5-request burst every ~30s: fetching/upserting `user_progress`, writing routine `sync_log` audit rows (unused by the client/admin), and unconditionally fetching/upserting `user_tracker` even when users were only solving questions and hadn't touched syllabus checkboxes.
   - *Implementation (Option 2 — Persistent Sync Metadata & Cadence Relaxing)*:

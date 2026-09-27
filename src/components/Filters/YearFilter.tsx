@@ -38,6 +38,11 @@ const YearFilter = () => {
                     || /:it:/i.test(yearSetKey)
                     || /\bIT\b/i.test(rawDisplay);
 
+                const isIsroYearSet = parsedKey?.track === 'isro'
+                    || String(yearSet.track || yearSet.source || yearSet.paper || '').toLowerCase() === 'isro'
+                    || /^isro:/i.test(yearSetKey)
+                    || /^isro\b/i.test(rawDisplay);
+
                 const isAdditional = Boolean(yearSet.isAdditional
                     || yearSet.paperScope === 'additional_ga'
                     || parsedKey?.isAdditional
@@ -47,11 +52,13 @@ const YearFilter = () => {
                     ? (rawDisplay.replace(/\s*additional(?:\s+questions?)?/i, '').trim() || (yearSet.year ? String(yearSet.year) : rawDisplay))
                     : isItYearSet
                         ? (rawDisplay.replace(/\s*IT\b/i, '').trim() || (yearSet.year ? String(yearSet.year) : rawDisplay))
-                        : rawDisplay;
+                        : isIsroYearSet
+                            ? (rawDisplay.replace(/\s*ISRO\s*/i, '').trim() || (yearSet.year ? String(yearSet.year) : rawDisplay))
+                            : rawDisplay;
                 const isSelected = selectedYearSets.includes(yearSetKey);
 
                 return (
-                    <label key={`${yearSetKey}-${isDaYearSet ? 'da' : isItYearSet ? 'it' : 'cse'}`} className="flex items-center cursor-pointer group">
+                    <label key={`${yearSetKey}-${isIsroYearSet ? 'isro' : isDaYearSet ? 'da' : isItYearSet ? 'it' : 'cse'}`} className="flex items-center cursor-pointer group">
                         <input
                             data-testid={`year-filter-${yearSetKey}`}
                             type="checkbox"
@@ -61,6 +68,14 @@ const YearFilter = () => {
                         />
                         <span className={`ml-3 flex min-w-0 items-center gap-2 text-sm transition-colors ${isSelected ? 'font-medium text-[color:var(--color-primary-text)]' : 'text-[color:var(--color-text)] group-hover:text-[color:var(--color-primary-text)]'}`}>
                             <span>{displayYear}</span>
+                            {isIsroYearSet && (
+                                <span
+                                    aria-label="ISRO CS"
+                                    className="rounded-full border border-amber-400/40 bg-amber-400/10 px-1.5 py-0.5 text-[10px] font-semibold leading-none tracking-wide text-amber-700 dark:text-amber-300"
+                                >
+                                    ISRO
+                                </span>
+                            )}
                             {isDaYearSet && (
                                 <span
                                     aria-label="GATE DA"

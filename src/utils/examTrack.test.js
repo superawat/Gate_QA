@@ -1,9 +1,11 @@
 import { describe, expect, test } from "vitest";
 import {
   buildTrackYearSetKey,
+  formatTrackYearSetLabel,
   getQuestionTrack,
   getQuestionYearSetIdentity,
   isDaQuestion,
+  isIsroQuestion,
   isItQuestion,
   parseTrackYearSetKey,
   toLegacyYearSetKey,
@@ -134,5 +136,32 @@ describe("exam track identity", () => {
 
     expect(getQuestionYearSetIdentity(itQuestion)).toBe("it:2004:set-0");
     expect(getQuestionYearSetIdentity(cseQuestion)).toBe("cse:2004:set-0");
+  });
+
+  test("accurately identifies authentic ISRO CS questions and formats their labels", () => {
+    const isroQuestion = {
+      question_uid: "isro:cs:2025:q1",
+      title: "ISRO CS 2025 | Question 1",
+      year: 2025,
+      yearSetIdentity: "isro:2025:set-1",
+    };
+
+    expect(getQuestionTrack(isroQuestion)).toBe("isro");
+    expect(isIsroQuestion(isroQuestion)).toBe(true);
+    expect(isDaQuestion(isroQuestion)).toBe(false);
+    expect(isItQuestion(isroQuestion)).toBe(false);
+    expect(getQuestionYearSetIdentity(isroQuestion)).toBe("isro:2025:set-1");
+
+    const isroKey = buildTrackYearSetKey("isro", 2025, 1);
+    expect(isroKey).toBe("isro:2025:set-1");
+    expect(formatTrackYearSetLabel(isroKey)).toBe("ISRO 2025");
+
+    const parsed = parseTrackYearSetKey(isroKey);
+    expect(parsed).toMatchObject({
+      track: "isro",
+      year: 2025,
+      set: 1,
+      key: "isro:2025:set-1",
+    });
   });
 });
