@@ -1,0 +1,4152 @@
+[
+  {
+    "question_uid": "isro:cs:2018:q1",
+    "exam_uid": "isro-2018-q1",
+    "title": "ISRO CS 2018 | Question 1",
+    "link": "https://gateoverflow.in/213587/isro2018-1",
+    "gateoverflow_id": 213587,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the following program<pre><code>{\n    int x=1;\n    printf(\"%d\",(*char(char*)&x));\n} </pre></code>Assuming required header files are included and if the machine in which this program is executed is little endian, then the output will be",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "0",
+        "html": "0"
+      },
+      {
+        "label": "B",
+        "text": "99999999",
+        "html": "99999999"
+      },
+      {
+        "label": "C",
+        "text": "1",
+        "html": "1"
+      },
+      {
+        "label": "D",
+        "text": "unpredictable",
+        "html": "unpredictable"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "array-and-pointer",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "array-and-pointer"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q2",
+    "exam_uid": "isro-2018-q2",
+    "title": "ISRO CS 2018 | Question 2",
+    "link": "https://gateoverflow.in/213586/isro2018-2",
+    "gateoverflow_id": 213586,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the following declaration :<br><pre><code> structaddr {\n    char city[10];\n    char street[30];\n    int pin;\n};\nstruct {\n    char name[30];\n    int gender;\n    struct addr locate;\n} person, *kd = &person;</pre></code>Then $^{\\star}(k d->\\text { name }+2)$ can be used instead of:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "person.name+2",
+        "html": "person.name+2"
+      },
+      {
+        "label": "B",
+        "text": "$k d->(\\text { name }+2)$",
+        "html": "$k d->(\\text { name }+2)$"
+      },
+      {
+        "label": "C",
+        "text": "$*((* k d) . \\text { name }+2)$",
+        "html": "$*((* k d) . \\text { name }+2)$"
+      },
+      {
+        "label": "D",
+        "text": "either (A) or(B), not (C)",
+        "html": "either (A) or(B), not (C)"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "array-and-pointer",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "array-and-pointer"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q3",
+    "exam_uid": "isro-2018-q3",
+    "title": "ISRO CS 2018 | Question 3",
+    "link": "https://gateoverflow.in/213585/isro2018-3",
+    "gateoverflow_id": 213585,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "If a variable can take only integral values from 0 to n, where n is an integer, then the variable can be represented as a bit-field whose width is (the log in the answer are to the base 2, and $\\lceil\\log n\\rceil$ means the floor of $\\log_{}{n}$ )",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$\\left \\lceil \\log (n) \\right \\rceil + 1 \\text{ bits}$",
+        "html": "$\\left \\lceil \\log (n) \\right \\rceil + 1 \\text{ bits}$"
+      },
+      {
+        "label": "B",
+        "text": "$\\left \\lceil \\log (n-1) \\right \\rceil + 1 \\text{ bits}$",
+        "html": "$\\left \\lceil \\log (n-1) \\right \\rceil + 1 \\text{ bits}$"
+      },
+      {
+        "label": "C",
+        "text": "$\\left \\lceil \\log (n+1) \\right \\rceil + 1\\text{ bits}$",
+        "html": "$\\left \\lceil \\log (n+1) \\right \\rceil + 1\\text{ bits}$"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "digital-logic",
+    "subjectSlug": "digital-logic",
+    "subtopic": "number-system",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "digital-logic",
+      "number-system"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q4",
+    "exam_uid": "isro-2018-q4",
+    "title": "ISRO CS 2018 | Question 4",
+    "link": "https://gateoverflow.in/213584/isro2018-4",
+    "gateoverflow_id": 213584,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The following C program:<br><pre><code> {\n    fork(); fork(); printf(\"yes\");\n    \n}</pre></code>If we execute this core segment, how many times the string yes will be printed?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only once",
+        "html": "Only once"
+      },
+      {
+        "label": "B",
+        "text": "2 times",
+        "html": "2 times"
+      },
+      {
+        "label": "C",
+        "text": "4 times",
+        "html": "4 times"
+      },
+      {
+        "label": "D",
+        "text": "8 times",
+        "html": "8 times"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "system-call",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "system-call"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q5",
+    "exam_uid": "isro-2018-q5",
+    "title": "ISRO CS 2018 | Question 5",
+    "link": "https://gateoverflow.in/213583/isro2018-5",
+    "gateoverflow_id": 213583,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Considering the following table in a relational database :<br>$\\begin{array}{|c|c|c|c|} \\hline \\text { Last Name } & \\text { Rank } & \\text { Room } & \\text { Shift } \\\\ \\hline \\text { Smith } & \\text { Manager } & 234 & \\text { Morning } \\\\ \\hline \\text { Jones } & \\text { Custodian } & 33 & \\text { Afternoon } \\\\ \\hline \\text { Smith } & \\text { Custodian } & 33 & \\text { Evening } \\\\ \\hline \\text { Doe } & \\text { Clerical } & 222 & \\text { Morning } \\\\ \\hline \\end{array}$<br>According to the data shown in the table, which of the following could be a candidate key of the table?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "{Last Name}",
+        "html": "{Last Name}"
+      },
+      {
+        "label": "B",
+        "text": "{Room}",
+        "html": "{Room}"
+      },
+      {
+        "label": "C",
+        "text": "{Shift}",
+        "html": "{Shift}"
+      },
+      {
+        "label": "D",
+        "text": "{Room, Shift}",
+        "html": "{Room, Shift}"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "relational-schema",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "relational-schema"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q6",
+    "exam_uid": "isro-2018-q6",
+    "title": "ISRO CS 2018 | Question 6",
+    "link": "https://gateoverflow.in/213582/isro2018-6",
+    "gateoverflow_id": 213582,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A data driven machine is one that executes an instruction if the needed data is available. The physical ordering of the code listing does not dictate the course of execution. Consider the following pseudo-code:<br><br>A. Multiply E by 0.5 to get F<br>B. Add A and B to get E<br>\nC. Add B with 0.5 to get D<br>\nD. Add E and F to get G<br>\nE. Add A with 10.5 to get C<br><br>Assume A,B,C are already assigned values and the desired output is G. Which of the following sequence of execution is valid?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "B, C, D, A, E",
+        "html": "B, C, D, A, E"
+      },
+      {
+        "label": "B",
+        "text": "C, B, E, A, D",
+        "html": "C, B, E, A, D"
+      },
+      {
+        "label": "C",
+        "text": "A, B, C, D, E",
+        "html": "A, B, C, D, E"
+      },
+      {
+        "label": "D",
+        "text": "E, D, C, B, A",
+        "html": "E, D, C, B, A"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "machine-instruction",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "machine-instruction"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q7",
+    "exam_uid": "isro-2018-q7",
+    "title": "ISRO CS 2018 | Question 7",
+    "link": "https://gateoverflow.in/213581/isro2018-7",
+    "gateoverflow_id": 213581,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Assume A and B are non-zero positive integers. The following code segment:<br><pre><code> while(A!=B){\n    if(A> B)\n    A -= B;\n    else\n    B -= A;\n}\ncout << A; // printing the value of A</pre></code>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Computes the LCM of two numbers",
+        "html": "Computes the LCM of two numbers"
+      },
+      {
+        "label": "B",
+        "text": "Divides the larger number by the smaller number",
+        "html": "Divides the larger number by the smaller number"
+      },
+      {
+        "label": "C",
+        "text": "Computes the GCD of two numbers",
+        "html": "Computes the GCD of two numbers"
+      },
+      {
+        "label": "D",
+        "text": "Finds the smaller of two numbers",
+        "html": "Finds the smaller of two numbers"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "conditional-statement",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "conditional-statement"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q8",
+    "exam_uid": "isro-2018-q8",
+    "title": "ISRO CS 2018 | Question 8",
+    "link": "https://gateoverflow.in/213580/isro2018-8",
+    "gateoverflow_id": 213580,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A language with string manipulation facilities uses the following operations.<br><br>\nhead(s)- returns the first character of the string s<br>tails(s)- returns all but the first character of the string s<br>concat(s1,s2)- concatenates string s1 with s2.<br>\n<br>The output of concat(head(s), head(tail(tail(s)))), where s is acbc is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "ab",
+        "html": "ab"
+      },
+      {
+        "label": "B",
+        "text": "ba",
+        "html": "ba"
+      },
+      {
+        "label": "C",
+        "text": "ac",
+        "html": "ac"
+      },
+      {
+        "label": "D",
+        "text": "aa",
+        "html": "aa"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "function",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "function"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q9",
+    "exam_uid": "isro-2018-q9",
+    "title": "ISRO CS 2018 | Question 9",
+    "link": "https://gateoverflow.in/213579/isro2018-9",
+    "gateoverflow_id": 213579,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "<br><img src=\"/question-images/external/isro/isro_e5f453c26c528f39.webp\" alt=\"ISRO Figure\" /><br>  In the diagram above, the inverter (NOT gate) and the AND-gates labeled 1 and 2 have delays of 9, 10 and 12 nanoseconds (ns), respectively. Wire delays are negligible. For certain values a and c, together with certain transition of b, a glitch (spurious output) is generated for a short time, after which the output assumes its correct value. The duration of glitch is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "7 ns",
+        "html": "7 ns"
+      },
+      {
+        "label": "B",
+        "text": "9 ns",
+        "html": "9 ns"
+      },
+      {
+        "label": "C",
+        "text": "11 ns",
+        "html": "11 ns"
+      },
+      {
+        "label": "D",
+        "text": "13 ns",
+        "html": "13 ns"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "digital-logic",
+    "subjectSlug": "digital-logic",
+    "subtopic": "boolean-algebra",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "digital-logic",
+      "boolean-algebra"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q10",
+    "exam_uid": "isro-2018-q10",
+    "title": "ISRO CS 2018 | Question 10",
+    "link": "https://gateoverflow.in/213578/isro2018-10",
+    "gateoverflow_id": 213578,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Which of the following comparisons between static and dynamic type checking incorrect?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Dynamic type checking slows down the execution",
+        "html": "Dynamic type checking slows down the execution"
+      },
+      {
+        "label": "B",
+        "text": "Dynamic type checking offers more flexibility to the programmers",
+        "html": "Dynamic type checking offers more flexibility to the programmers"
+      },
+      {
+        "label": "C",
+        "text": "In contrast to Static type checking, dynamic type checking may cause failure in runtime due to type errors",
+        "html": "In contrast to Static type checking, dynamic type checking may cause failure in runtime due to type errors"
+      },
+      {
+        "label": "D",
+        "text": "Unlike static type checking dynamic type checking is done during compilation",
+        "html": "Unlike static type checking dynamic type checking is done during compilation"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "compiler",
+    "subjectSlug": "compiler",
+    "subtopic": "runtime-environment",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "compiler",
+      "runtime-environment"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q11",
+    "exam_uid": "isro-2018-q11",
+    "title": "ISRO CS 2018 | Question 11",
+    "link": "https://gateoverflow.in/213577/isro2018-11",
+    "gateoverflow_id": 213577,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "________ can detect burst error of length less than or equal to degree of the polynomial and detects burst errors that affect odd number of bits.",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Hamming Code",
+        "html": "Hamming Code"
+      },
+      {
+        "label": "B",
+        "text": "CRC",
+        "html": "CRC"
+      },
+      {
+        "label": "C",
+        "text": "VRC",
+        "html": "VRC"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "data-link-layer",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "data-link-layer"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q12",
+    "exam_uid": "isro-2018-q12",
+    "title": "ISRO CS 2018 | Question 12",
+    "link": "https://gateoverflow.in/213576/isro2018-12",
+    "gateoverflow_id": 213576,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "An array A consists of n integers in locations A[0],A[1],...A[n-1]. It is required to shift the elements of the array cyclically to the left by k places, where $1 \\leq k \\leq (n-1)$. An incomplete algorithm for doing this in linear time, without using another array is given bellow. Complete the algorithm by filling in the blanks.<br><pre><code> min=n; i=0;\nwhile(_________) {\n    temp= A[i]; j=i;\n    while(_________) {\n        A[j]= _______;\n        j=(j+k) mod n;\n        if(j < min) then\n        min = j;\n    }\n    A[(n+i-k) mod n]=_______;\n    i=________;\n    \n}</pre></code>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$i  \\gt \\min ; \\quad j !=(n+1) \\bmod n ; \\quad A[j+k] \\quad \\text { temp; } \\quad i+1 ;$",
+        "html": "$i  \\gt \\min ; \\quad j !=(n+1) \\bmod n ; \\quad A[j+k] \\quad \\text { temp; } \\quad i+1 ;$"
+      },
+      {
+        "label": "B",
+        "text": "$i \\lt \\min ; \\quad j !=(n+i) \\bmod n ; \\quad A[j+k] \\quad \\text { temp; } \\quad i+1 ;$",
+        "html": "$i \\lt \\min ; \\quad j !=(n+i) \\bmod n ; \\quad A[j+k] \\quad \\text { temp; } \\quad i+1 ;$"
+      },
+      {
+        "label": "C",
+        "text": "$i \\gt \\min ; \\quad j !=(n+i+k) \\bmod n ; \\quad A[j+k] \\quad \\text { temp; } \\quad i+1 ;$",
+        "html": "$i \\gt \\min ; \\quad j !=(n+i+k) \\bmod n ; \\quad A[j+k] \\quad \\text { temp; } \\quad i+1 ;$"
+      },
+      {
+        "label": "D",
+        "text": "$i \\lt \\min ; \\quad j !=(n+i-k) \\bmod n ; \\quad A[(j+k) \\bmod n] \\quad \\text { temp; } \\quad i+1 ;$",
+        "html": "$i \\lt \\min ; \\quad j !=(n+i-k) \\bmod n ; \\quad A[(j+k) \\bmod n] \\quad \\text { temp; } \\quad i+1 ;$"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "array",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "array"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q13",
+    "exam_uid": "isro-2018-q13",
+    "title": "ISRO CS 2018 | Question 13",
+    "link": "https://gateoverflow.in/213575/isro2018-13",
+    "gateoverflow_id": 213575,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The difference between a named pipe and a regular file in Unix is that",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Unlike a regular file, named pipe is a special file",
+        "html": "Unlike a regular file, named pipe is a special file"
+      },
+      {
+        "label": "B",
+        "text": "The data in a pipe is transient, unlike the content of a regular file",
+        "html": "The data in a pipe is transient, unlike the content of a regular file"
+      },
+      {
+        "label": "C",
+        "text": "Pipes forbid random accessing, while regular files do allow this.",
+        "html": "Pipes forbid random accessing, while regular files do allow this."
+      },
+      {
+        "label": "D",
+        "text": "All of the above",
+        "html": "All of the above"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "system-call",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "system-call"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q14",
+    "exam_uid": "isro-2018-q14",
+    "title": "ISRO CS 2018 | Question 14",
+    "link": "https://gateoverflow.in/213574/isro2018-14",
+    "gateoverflow_id": 213574,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A class of 30 students occupy a classroom containing 5 rows of seats, with 8 seats in each row. If the students seat themselves at random, the probability that sixth seat in the fifth row will be empty is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$1/5$",
+        "html": "$1/5$"
+      },
+      {
+        "label": "B",
+        "text": "$1/3$",
+        "html": "$1/3$"
+      },
+      {
+        "label": "C",
+        "text": "$1/4$",
+        "html": "$1/4$"
+      },
+      {
+        "label": "D",
+        "text": "$2/5$",
+        "html": "$2/5$"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "discrete-math",
+    "subjectSlug": "discrete-math",
+    "subtopic": "probability-theory",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "discrete-math",
+      "probability-theory"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q15",
+    "exam_uid": "isro-2018-q15",
+    "title": "ISRO CS 2018 | Question 15",
+    "link": "https://gateoverflow.in/213573/isro2018-15",
+    "gateoverflow_id": 213573,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The domain of the function $\\log (\\log \\sin (x))$ is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0\\lt x \\lt \\pi$",
+        "html": "$0\\lt x \\lt \\pi$"
+      },
+      {
+        "label": "B",
+        "text": "$2 n \\pi \\lt x \\lt (2 n+1) \\pi$, for n in N",
+        "html": "$2 n \\pi \\lt x \\lt (2 n+1) \\pi$, for n in N"
+      },
+      {
+        "label": "C",
+        "text": "Empty set",
+        "html": "Empty set"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "engg-math",
+    "subjectSlug": "engg-math",
+    "subtopic": "calculus",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "engg-math",
+      "calculus"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q16",
+    "exam_uid": "isro-2018-q16",
+    "title": "ISRO CS 2018 | Question 16",
+    "link": "https://gateoverflow.in/213572/isro2018-16",
+    "gateoverflow_id": 213572,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The following paradigm can be used to find the solution of the problem in minimum time:<br>Given a set of non-negative integer and a value K, determine if there is a subset of the given set with sum equal to K:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Divide and Conquer",
+        "html": "Divide and Conquer"
+      },
+      {
+        "label": "B",
+        "text": "Dynamic Programming",
+        "html": "Dynamic Programming"
+      },
+      {
+        "label": "C",
+        "text": "Greedy Algorithm",
+        "html": "Greedy Algorithm"
+      },
+      {
+        "label": "D",
+        "text": "Branch and Bound",
+        "html": "Branch and Bound"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "discrete-math",
+    "subjectSlug": "discrete-math",
+    "subtopic": "set-theory",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "discrete-math",
+      "set-theory"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q17",
+    "exam_uid": "isro-2018-q17",
+    "title": "ISRO CS 2018 | Question 17",
+    "link": "https://gateoverflow.in/213571/isro2018-17",
+    "gateoverflow_id": 213571,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "(G,*)  is an abelian group. Then",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$x=x^{-1}$ for any x belonging to G",
+        "html": "$x=x^{-1}$ for any x belonging to G"
+      },
+      {
+        "label": "B",
+        "text": "$x=x^{2}$ for any x belonging to G",
+        "html": "$x=x^{2}$ for any x belonging to G"
+      },
+      {
+        "label": "C",
+        "text": "$(x * y)^{2}=x^{2} * y^{2}$ , for any x,y belonging to G",
+        "html": "$(x * y)^{2}=x^{2} * y^{2}$ , for any x,y belonging to G"
+      },
+      {
+        "label": "D",
+        "text": "G is of finite order",
+        "html": "G is of finite order"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "discrete-math",
+    "subjectSlug": "discrete-math",
+    "subtopic": "group-theory",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "discrete-math",
+      "group-theory"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q18",
+    "exam_uid": "isro-2018-q18",
+    "title": "ISRO CS 2018 | Question 18",
+    "link": "https://gateoverflow.in/213570/isro2018-18",
+    "gateoverflow_id": 213570,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the following C code segment:<br><pre><code> #include &lt stdio.h &gt\nmain()\n{\n    int i, j, x;\n    scanf(\"%d\", &x);\n    i=1; j=1;\n    while (i<10) {\n            j =j*i;\n            i= i+1;\n            if(i==x) break;\n        }\n}</pre></code>For the program fragment above, which of the following statements about the variables i and j must be true after execution of this program? [ !(exclamation) sign denotes factorial in the answer]",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$(j=(x-1) !) \\wedge(i \\geq x)$",
+        "html": "$(j=(x-1) !) \\wedge(i \\geq x)$"
+      },
+      {
+        "label": "B",
+        "text": "$(j=9 !) \\wedge(j=10)$",
+        "html": "$(j=9 !) \\wedge(j=10)$"
+      },
+      {
+        "label": "C",
+        "text": "$((j=10 !) \\wedge(i=10)) \\vee((j=(x-1) !) \\wedge(i=x))$",
+        "html": "$((j=10 !) \\wedge(i=10)) \\vee((j=(x-1) !) \\wedge(i=x))$"
+      },
+      {
+        "label": "D",
+        "text": "$(j=9 !) \\wedge(i \\geqslant 10)) \\vee((j=(x-1) !) \\wedge(i=x))$",
+        "html": "$(j=9 !) \\wedge(i \\geqslant 10)) \\vee((j=(x-1) !) \\wedge(i=x))$"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "arithmetic-operation",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "arithmetic-operation"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q19",
+    "exam_uid": "isro-2018-q19",
+    "title": "ISRO CS 2018 | Question 19",
+    "link": "https://gateoverflow.in/213569/isro2018-19",
+    "gateoverflow_id": 213569,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Given $\\sqrt{224_{r}}=13_{r}$ the value of radix r is",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "10",
+        "html": "10"
+      },
+      {
+        "label": "B",
+        "text": "8",
+        "html": "8"
+      },
+      {
+        "label": "C",
+        "text": "6",
+        "html": "6"
+      },
+      {
+        "label": "D",
+        "text": "5",
+        "html": "5"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "digital-logic",
+    "subjectSlug": "digital-logic",
+    "subtopic": "number-system",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "digital-logic",
+      "number-system"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q20",
+    "exam_uid": "isro-2018-q20",
+    "title": "ISRO CS 2018 | Question 20",
+    "link": "https://gateoverflow.in/213426/isro2018-20",
+    "gateoverflow_id": 213426,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Determine the number of page faults when references to pages occur in the order 1,2,4,5,2,1,2,4. Assume that the main memory can accommodate 3 pages and the main memory already has the pages 1 and 2, with page 1 brought earlier than page 2. (assume LRU i.e., Least-Recently-Used algorithm is applied)",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "3",
+        "html": "3"
+      },
+      {
+        "label": "B",
+        "text": "4",
+        "html": "4"
+      },
+      {
+        "label": "C",
+        "text": "5",
+        "html": "5"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "memory-management",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "memory-management"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q21",
+    "exam_uid": "isro-2018-q21",
+    "title": "ISRO CS 2018 | Question 21",
+    "link": "https://gateoverflow.in/213567/isro2018-21",
+    "gateoverflow_id": 213567,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider a system having m resources of the same type. These resources are shared by 3 processes A,B,C, which have peak time demands of 3,4,6 respectively. The minimum value of m that ensures that deadlock will never occur is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "11",
+        "html": "11"
+      },
+      {
+        "label": "B",
+        "text": "12",
+        "html": "12"
+      },
+      {
+        "label": "C",
+        "text": "13",
+        "html": "13"
+      },
+      {
+        "label": "D",
+        "text": "14",
+        "html": "14"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "deadlock",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "deadlock"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q22",
+    "exam_uid": "isro-2018-q22",
+    "title": "ISRO CS 2018 | Question 22",
+    "link": "https://gateoverflow.in/213566/isro2018-22",
+    "gateoverflow_id": 213566,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A computer has 1000K of main memory. The jobs arrive and finish in the following sequence.<br> Job 1 requiring 200 K arrives <br>Job 2 requiring 350 K arrives <br>Job 3 requiring 300 K arrives<br>Job 1 finishes<br>Job 4 requiring 120 K arrives<br>Job 5 requiring 150 K arrives<br>Job 6 requiring 80 K arrives<br>Among best fit and first fit, which performs better for this sequence?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "First fit",
+        "html": "First fit"
+      },
+      {
+        "label": "B",
+        "text": "Best fit",
+        "html": "Best fit"
+      },
+      {
+        "label": "C",
+        "text": "Both perform the same",
+        "html": "Both perform the same"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "memory-management",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "memory-management"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q23",
+    "exam_uid": "isro-2018-q23",
+    "title": "ISRO CS 2018 | Question 23",
+    "link": "https://gateoverflow.in/213565/isro2018-23",
+    "gateoverflow_id": 213565,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Disk requests come to a disk driver for cylinders in the order 10, 22, 20, 2, 40, 6 and 38 at a time when the disk drive is reading from cylinder 20. The seek time is 6 ms/cylinder. The total seek time, if the disk arm scheduling algorithms is first-come-first-served is",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "360",
+        "html": "360"
+      },
+      {
+        "label": "B",
+        "text": "850",
+        "html": "850"
+      },
+      {
+        "label": "C",
+        "text": "900",
+        "html": "900"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "disk-scheduling",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "disk-scheduling"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q24",
+    "exam_uid": "isro-2018-q24",
+    "title": "ISRO CS 2018 | Question 24",
+    "link": "https://gateoverflow.in/213564/isro2018-24",
+    "gateoverflow_id": 213564,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Choose the correct statement -",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$A=\\left\\{a^{n} b^{n} \\mid n=1,2,3, \\ldots\\right\\}$  is a regular language",
+        "html": "$A=\\left\\{a^{n} b^{n} \\mid n=1,2,3, \\ldots\\right\\}$  is a regular language"
+      },
+      {
+        "label": "B",
+        "text": "The set B, consisting of all strings made up of only $a^{\\prime} s$ and $b^{\\prime} s$ having equal number of $a^{\\prime} s$ and bs defines a regular language",
+        "html": "The set B, consisting of all strings made up of only $a^{\\prime} s$ and $b^{\\prime} s$ having equal number of $a^{\\prime} s$ and bs defines a regular language"
+      },
+      {
+        "label": "C",
+        "text": "$L\\left(A^{*} B\\right) \\cap B$ gives the set A",
+        "html": "$L\\left(A^{*} B\\right) \\cap B$ gives the set A"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "toc",
+    "subjectSlug": "toc",
+    "subtopic": "regular-language",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "toc",
+      "regular-language"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q25",
+    "exam_uid": "isro-2018-q25",
+    "title": "ISRO CS 2018 | Question 25",
+    "link": "https://gateoverflow.in/213563/isro2018-25",
+    "gateoverflow_id": 213563,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "CFG  (Context Free Grammar) is not closed under:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Union",
+        "html": "Union"
+      },
+      {
+        "label": "B",
+        "text": "Complementation",
+        "html": "Complementation"
+      },
+      {
+        "label": "C",
+        "text": "Kleene star",
+        "html": "Kleene star"
+      },
+      {
+        "label": "D",
+        "text": "Product",
+        "html": "Product"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "toc",
+    "subjectSlug": "toc",
+    "subtopic": "context-free-grammar",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "toc",
+      "context-free-grammar"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q26",
+    "exam_uid": "isro-2018-q26",
+    "title": "ISRO CS 2018 | Question 26",
+    "link": "https://gateoverflow.in/213562/isro2018-26",
+    "gateoverflow_id": 213562,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "<br><img src=\"/question-images/external/isro/isro_b1e1f0f4172b4fbb.webp\" alt=\"ISRO Figure\" /><br>  The FSM (Finite State Machine) machine pictured in the figure above",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Complements a given bit pattern",
+        "html": "Complements a given bit pattern"
+      },
+      {
+        "label": "B",
+        "text": "Finds $2^{\\prime} s$ complement of a given bit pattern",
+        "html": "Finds $2^{\\prime} s$ complement of a given bit pattern"
+      },
+      {
+        "label": "C",
+        "text": "Increments a given bit pattern by 1",
+        "html": "Increments a given bit pattern by 1"
+      },
+      {
+        "label": "D",
+        "text": "Changes the sign bit",
+        "html": "Changes the sign bit"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "toc",
+    "subjectSlug": "toc",
+    "subtopic": "finite-automata",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "toc",
+      "finite-automata"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q27",
+    "exam_uid": "isro-2018-q27",
+    "title": "ISRO CS 2018 | Question 27",
+    "link": "https://gateoverflow.in/213561/isro2018-27",
+    "gateoverflow_id": 213561,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A CFG (Context Free Grammar) is said to be in Chomsky Normal Form (CNF), if all the productions are of the form $\\mathrm{A} \\rightarrow \\mathrm{BC}$ or $\\mathrm{A} \\rightarrow \\mathrm{a}$. Let G be a CFG in CNF. To derive a string of terminals of length x, the number of products to be used is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "2x-1",
+        "html": "2x-1"
+      },
+      {
+        "label": "B",
+        "text": "2x",
+        "html": "2x"
+      },
+      {
+        "label": "C",
+        "text": "2x+1",
+        "html": "2x+1"
+      },
+      {
+        "label": "D",
+        "text": "$2^{x}$",
+        "html": "$2^{x}$"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "toc",
+    "subjectSlug": "toc",
+    "subtopic": "context-free-grammar",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "toc",
+      "context-free-grammar"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q28",
+    "exam_uid": "isro-2018-q28",
+    "title": "ISRO CS 2018 | Question 28",
+    "link": "https://gateoverflow.in/213560/isro2018-28",
+    "gateoverflow_id": 213560,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Incremental-Compiler is a compiler:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "which is written in a language that is different from the source language",
+        "html": "which is written in a language that is different from the source language"
+      },
+      {
+        "label": "B",
+        "text": "compiles the whole source code to generate object code afresh",
+        "html": "compiles the whole source code to generate object code afresh"
+      },
+      {
+        "label": "C",
+        "text": "compiles only those portion of source code that have been modified",
+        "html": "compiles only those portion of source code that have been modified"
+      },
+      {
+        "label": "D",
+        "text": "that runs on one machine but produces object code for another machine",
+        "html": "that runs on one machine but produces object code for another machine"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "compiler",
+    "subjectSlug": "compiler",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "compiler"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q29",
+    "exam_uid": "isro-2018-q29",
+    "title": "ISRO CS 2018 | Question 29",
+    "link": "https://gateoverflow.in/213559/isro2018-29",
+    "gateoverflow_id": 213559,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "DU-chains(Definition-Use) in compiler design:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "consist of a definition of a variable and all its uses, reachable from that definition",
+        "html": "consist of a definition of a variable and all its uses, reachable from that definition"
+      },
+      {
+        "label": "B",
+        "text": "are created using a form static code analysis",
+        "html": "are created using a form static code analysis"
+      },
+      {
+        "label": "C",
+        "text": "are prerequisite for many compiler optimization including constant propagation and common sub-expression elimination",
+        "html": "are prerequisite for many compiler optimization including constant propagation and common sub-expression elimination"
+      },
+      {
+        "label": "D",
+        "text": "All of the above",
+        "html": "All of the above"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "compiler",
+    "subjectSlug": "compiler",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "compiler"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q30",
+    "exam_uid": "isro-2018-q30",
+    "title": "ISRO CS 2018 | Question 30",
+    "link": "https://gateoverflow.in/213558/isro2018-30",
+    "gateoverflow_id": 213558,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Which of the following comment about peep-hole optimization is true?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "It is applied to small part of the code and applied repeatedly",
+        "html": "It is applied to small part of the code and applied repeatedly"
+      },
+      {
+        "label": "B",
+        "text": "It can be used to optimize intermediate code",
+        "html": "It can be used to optimize intermediate code"
+      },
+      {
+        "label": "C",
+        "text": "It can be applied to a portion of the code that is not contiguous",
+        "html": "It can be applied to a portion of the code that is not contiguous"
+      },
+      {
+        "label": "D",
+        "text": "It is applied in symbol table to optimize the memory requirements.",
+        "html": "It is applied in symbol table to optimize the memory requirements."
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "compiler",
+    "subjectSlug": "compiler",
+    "subtopic": "intermediate-code-generation",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "compiler",
+      "intermediate-code-generation"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q31",
+    "exam_uid": "isro-2018-q31",
+    "title": "ISRO CS 2018 | Question 31",
+    "link": "https://gateoverflow.in/213557/isro2018-31",
+    "gateoverflow_id": 213557,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A byte addressable computer has a memory capacity of $2^{m} K B(k \\text { bytes })$ and can perform $2^{n}$ operations. An instruction involving 3 operands and one operator needs maximum of:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "3m bits",
+        "html": "3m bits"
+      },
+      {
+        "label": "B",
+        "text": "3m+n bits",
+        "html": "3m+n bits"
+      },
+      {
+        "label": "C",
+        "text": "m+n bits",
+        "html": "m+n bits"
+      },
+      {
+        "label": "D",
+        "text": "none of the above",
+        "html": "none of the above"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "machine-instruction",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "machine-instruction"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q32",
+    "exam_uid": "isro-2018-q32",
+    "title": "ISRO CS 2018 | Question 32",
+    "link": "https://gateoverflow.in/213556/isro2018-32",
+    "gateoverflow_id": 213556,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A computer uses ternary system instead of the traditional systen, An n bit string in the binary system will occupy",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "3+n ternary digits",
+        "html": "3+n ternary digits"
+      },
+      {
+        "label": "B",
+        "text": "2n/3 ternary digits",
+        "html": "2n/3 ternary digits"
+      },
+      {
+        "label": "C",
+        "text": "$n \\log _{2} 3$ ternary digits",
+        "html": "$n \\log _{2} 3$ ternary digits"
+      },
+      {
+        "label": "D",
+        "text": "$n \\log _{3} 2$ ternary digits",
+        "html": "$n \\log _{3} 2$ ternary digits"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "digital-logic",
+    "subjectSlug": "digital-logic",
+    "subtopic": "number-system",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "digital-logic",
+      "number-system"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q33",
+    "exam_uid": "isro-2018-q33",
+    "title": "ISRO CS 2018 | Question 33",
+    "link": "https://gateoverflow.in/213555/isro2018-33",
+    "gateoverflow_id": 213555,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Which of the following is application of Breath First Search on the graph?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Finding diameter of the graph",
+        "html": "Finding diameter of the graph"
+      },
+      {
+        "label": "B",
+        "text": "Finding bipartite graph",
+        "html": "Finding bipartite graph"
+      },
+      {
+        "label": "C",
+        "text": "Both (A) and (B)",
+        "html": "Both (A) and (B)"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "graph-traversal",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "graph-traversal"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q34",
+    "exam_uid": "isro-2018-q34",
+    "title": "ISRO CS 2018 | Question 34",
+    "link": "https://gateoverflow.in/213554/isro2018-34",
+    "gateoverflow_id": 213554,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Micro program is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "the name of a source program in micro computers",
+        "html": "the name of a source program in micro computers"
+      },
+      {
+        "label": "B",
+        "text": "set of microinstructions that defines the individual operations in response to a machine-language instruction",
+        "html": "set of microinstructions that defines the individual operations in response to a machine-language instruction"
+      },
+      {
+        "label": "C",
+        "text": "a primitive form of macros used in assembly language programming",
+        "html": "a primitive form of macros used in assembly language programming"
+      },
+      {
+        "label": "D",
+        "text": "a very small segment of machine code",
+        "html": "a very small segment of machine code"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "alu-data-path-and-control-unit",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "alu-data-path-and-control-unit"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q35",
+    "exam_uid": "isro-2018-q35",
+    "title": "ISRO CS 2018 | Question 35",
+    "link": "https://gateoverflow.in/213553/isro2018-35",
+    "gateoverflow_id": 213553,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Given two sorted list of size m and n respectively. The number of comparisons needed the worst case by the merge sort algorithm will be:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "m-n",
+        "html": "m-n"
+      },
+      {
+        "label": "B",
+        "text": "maximum of m and n",
+        "html": "maximum of m and n"
+      },
+      {
+        "label": "C",
+        "text": "minimum of m and n",
+        "html": "minimum of m and n"
+      },
+      {
+        "label": "D",
+        "text": "m+n-1",
+        "html": "m+n-1"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "sorting",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "sorting"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q36",
+    "exam_uid": "isro-2018-q36",
+    "title": "ISRO CS 2018 | Question 36",
+    "link": "https://gateoverflow.in/213552/isro2018-36",
+    "gateoverflow_id": 213552,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A hash table with 10 buckets with one slot pet per bucket is depicted here. The symbols, S1 to S7 are initially entered using a hashing function with linear probing. The maximum number of comparisons needed in searching an item that is not present is:<br>$\\begin{array}{|c|c|} \\hline 0 & S 7 \\\\ \\hline 1 & S 1 \\\\ \\hline 2 & \\\\ \\hline 3 & S 4 \\\\ \\hline 4 & S 2 \\\\ \\hline 5 & \\\\ \\hline 6 & S 5 \\\\ \\hline 7 & \\\\ \\hline 8 & S 6 \\\\ \\hline 9 & S 3 \\\\ \\hline \\end{array}$",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "4",
+        "html": "4"
+      },
+      {
+        "label": "B",
+        "text": "5",
+        "html": "5"
+      },
+      {
+        "label": "C",
+        "text": "6",
+        "html": "6"
+      },
+      {
+        "label": "D",
+        "text": "3",
+        "html": "3"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "hashing",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "hashing"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q37",
+    "exam_uid": "isro-2018-q37",
+    "title": "ISRO CS 2018 | Question 37",
+    "link": "https://gateoverflow.in/213551/isro2018-37",
+    "gateoverflow_id": 213551,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The running time of an algorithm is given by:<br>$T(n)=\\left\\{\\begin{matrix} T(n-1)+T(n-2)-T(n-3), &\\text {  if } n>3\\\\  n, &\\text{  otherwise}\\end{matrix}\\right.$<br>Then what should be the relation between $T(1),T(2),T(3)$, so that the order of the algorithm is constant?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "T(1) = T(2) = T(3)",
+        "html": "T(1) = T(2) = T(3)"
+      },
+      {
+        "label": "B",
+        "text": "T(1) + T(3) = 2T(2)",
+        "html": "T(1) + T(3) = 2T(2)"
+      },
+      {
+        "label": "C",
+        "text": "T(1) - T(3) = T(2)",
+        "html": "T(1) - T(3) = T(2)"
+      },
+      {
+        "label": "D",
+        "text": "T(1) + T(2) = T(3)",
+        "html": "T(1) + T(2) = T(3)"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "recurrence-relation",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "recurrence-relation"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q38",
+    "exam_uid": "isro-2018-q38",
+    "title": "ISRO CS 2018 | Question 38",
+    "link": "https://gateoverflow.in/213550/isro2018-38",
+    "gateoverflow_id": 213550,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The number of edges in a regular graph of degree: d and n vertices is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "maximum of n and d",
+        "html": "maximum of n and d"
+      },
+      {
+        "label": "B",
+        "text": "n+d",
+        "html": "n+d"
+      },
+      {
+        "label": "C",
+        "text": "nd",
+        "html": "nd"
+      },
+      {
+        "label": "D",
+        "text": "nd/2",
+        "html": "nd/2"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "discrete-math",
+    "subjectSlug": "discrete-math",
+    "subtopic": "graph-theory",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "discrete-math",
+      "graph-theory"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q39",
+    "exam_uid": "isro-2018-q39",
+    "title": "ISRO CS 2018 | Question 39",
+    "link": "https://gateoverflow.in/213549/isro2018-39",
+    "gateoverflow_id": 213549,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Perform window to viewport transformation for the point (20,15). Assume that $\\left(X_{w \\min }, Y_{w \\min }\\right)$ is (0,0) ; $\\left(X_{w \\max }, Y_{w \\max }\\right)$ is (100,100) ; $\\left(X_{v \\min }, Y_{v \\min }\\right)$ is (5,5) ; $\\left(X_{v \\max }, Y_{v \\max }\\right)$ is (20,20) . The value of x and y in the viewport is",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "x=4,y=4",
+        "html": "x=4,y=4"
+      },
+      {
+        "label": "B",
+        "text": "x=3,y=3",
+        "html": "x=3,y=3"
+      },
+      {
+        "label": "C",
+        "text": "x=8,y=7.25",
+        "html": "x=8,y=7.25"
+      },
+      {
+        "label": "D",
+        "text": "x=3,y=4",
+        "html": "x=3,y=4"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q40",
+    "exam_uid": "isro-2018-q40",
+    "title": "ISRO CS 2018 | Question 40",
+    "link": "https://gateoverflow.in/213548/isro2018-40",
+    "gateoverflow_id": 213548,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Given relations R(w,x) and S(y,z), the result of<br>SELECT DISTINCT w,x<br>FROM R,S<br>is guaranteed to be same as R, if",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "R has no duplicates and S is non-empty",
+        "html": "R has no duplicates and S is non-empty"
+      },
+      {
+        "label": "B",
+        "text": "R and S have no duplicates",
+        "html": "R and S have no duplicates"
+      },
+      {
+        "label": "C",
+        "text": "S has no duplicates and R is non-empty",
+        "html": "S has no duplicates and R is non-empty"
+      },
+      {
+        "label": "D",
+        "text": "R and S have the same number of tuples",
+        "html": "R and S have the same number of tuples"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "sql",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "sql"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q41",
+    "exam_uid": "isro-2018-q41",
+    "title": "ISRO CS 2018 | Question 41",
+    "link": "https://gateoverflow.in/213547/isro2018-41",
+    "gateoverflow_id": 213547,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "For a database relation R(a,b,c,d) where the domain of a,b,c and d include only atomic value, only the following functions dependencies and those that can be inferred from them hold<br>a$\\rightarrow$c<br>b$\\rightarrow$d<br>The relation is in:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "First normal form but not in second normal form",
+        "html": "First normal form but not in second normal form"
+      },
+      {
+        "label": "B",
+        "text": "Second normal form but not in third normal form",
+        "html": "Second normal form but not in third normal form"
+      },
+      {
+        "label": "C",
+        "text": "Third normal form",
+        "html": "Third normal form"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "normal-form",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "normal-form"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q42",
+    "exam_uid": "isro-2018-q42",
+    "title": "ISRO CS 2018 | Question 42",
+    "link": "https://gateoverflow.in/213546/isro2018-42",
+    "gateoverflow_id": 213546,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the set of relations given below and the SQL query that follows:<br><pre><code> Students: (Roll_number, Name, Date_of_birth )\n\nCoursed: (Course_number, Course_name, Instructor )\n\nGrades: (Roll_number, Course_number, Grade)\n\nSELECT DISTINCT Name\n\nFROM Students, Courses, Grades\n\nWHERE Students.Roll_number = Grades.Roll_number\n\n                            AND   Courses.Intructor =Sriram\n\n                            AND   Courses.Course_number = Grades.Course_number\n\n                            AND   Grades.Grade = A</pre></code>Which of the following sets is computed by the above query?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Names of Students who have got an A grade in all courses taught by Sriram",
+        "html": "Names of Students who have got an A grade in all courses taught by Sriram"
+      },
+      {
+        "label": "B",
+        "text": "Names of Students who have got an A grade in all courses",
+        "html": "Names of Students who have got an A grade in all courses"
+      },
+      {
+        "label": "C",
+        "text": "Names of Students who have got an A grade in at least one of the courses taught by Sriram",
+        "html": "Names of Students who have got an A grade in at least one of the courses taught by Sriram"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "sql",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "sql"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q43",
+    "exam_uid": "isro-2018-q43",
+    "title": "ISRO CS 2018 | Question 43",
+    "link": "https://gateoverflow.in/213545/isro2018-43",
+    "gateoverflow_id": 213545,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the following C++ program<br><pre><code> int a (int m)\n{return ++m;}\nint b(int&m)\n{return ++m;}\nint{char &m}\n{return ++m;}\nvoid main()\n{             \n       int p = 0, q=0, r = 0;\n       p += a(b(p)) ;\n       q+= b(a(q);)\n       r+=a(c(r));\n       cout << p << q << r;\n}</pre></code> Assuming the required header first are already included, the above program",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "results in compilation error",
+        "html": "results in compilation error"
+      },
+      {
+        "label": "B",
+        "text": "print 123",
+        "html": "print 123"
+      },
+      {
+        "label": "C",
+        "text": "print 111",
+        "html": "print 111"
+      },
+      {
+        "label": "D",
+        "text": "print 322",
+        "html": "print 322"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "function",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "function"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q44",
+    "exam_uid": "isro-2018-q44",
+    "title": "ISRO CS 2018 | Question 44",
+    "link": "https://gateoverflow.in/213544/isro2018-44",
+    "gateoverflow_id": 213544,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "StationA uses 32 byte packets to transmit messages to Station B using a sliding window protocol. The round trip delay between A and B is 80 ms and the bottleneck bandwidth on the path between A and B is 128 kbps. What is the optimal window size that A should use?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "20",
+        "html": "20"
+      },
+      {
+        "label": "B",
+        "text": "40",
+        "html": "40"
+      },
+      {
+        "label": "C",
+        "text": "160",
+        "html": "160"
+      },
+      {
+        "label": "D",
+        "text": "320",
+        "html": "320"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "data-link-layer",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "data-link-layer"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q45",
+    "exam_uid": "isro-2018-q45",
+    "title": "ISRO CS 2018 | Question 45",
+    "link": "https://gateoverflow.in/213543/isro2018-45",
+    "gateoverflow_id": 213543,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Assuming that for a given network layer implementation, connection establishment overhead is 100 bytes and disconnection overhead is 28 bytes. What would be the minimum size of the packet the transport layer needs to keep up, if it wishes to implement a datagram service above the network layer and needs to keep its overhead to a minimum of 12.5%. (ignore transport layer overhead)",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "512 bytes",
+        "html": "512 bytes"
+      },
+      {
+        "label": "B",
+        "text": "768 bytes",
+        "html": "768 bytes"
+      },
+      {
+        "label": "C",
+        "text": "1152 bytes",
+        "html": "1152 bytes"
+      },
+      {
+        "label": "D",
+        "text": "1024 bytes",
+        "html": "1024 bytes"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "transport-layer-protocol",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "transport-layer-protocol"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q46",
+    "exam_uid": "isro-2018-q46",
+    "title": "ISRO CS 2018 | Question 46",
+    "link": "https://gateoverflow.in/213542/isro2018-46",
+    "gateoverflow_id": 213542,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "In cryptography, the following uses transposition ciphers and the keyword is LAYER. Encrypt the following message. (Spaces are omitted during encrypton)<br>WELCOME TO NETWORK SECURITY!",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "WMEKREETSILTWETCOOCYONRU!",
+        "html": "WMEKREETSILTWETCOOCYONRU!"
+      },
+      {
+        "label": "B",
+        "text": "EETSICOOCYWMEKRONRU!LTWET",
+        "html": "EETSICOOCYWMEKRONRU!LTWET"
+      },
+      {
+        "label": "C",
+        "text": "LTWETONRU!WMEKRCOOCYEETSI",
+        "html": "LTWETONRU!WMEKRCOOCYEETSI"
+      },
+      {
+        "label": "D",
+        "text": "ONRU!COOCYLTWETEETSIWMEKR",
+        "html": "ONRU!COOCYLTWETEETSIWMEKR"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "network-security",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "network-security"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q47",
+    "exam_uid": "isro-2018-q47",
+    "title": "ISRO CS 2018 | Question 47",
+    "link": "https://gateoverflow.in/213541/isro2018-47",
+    "gateoverflow_id": 213541,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "In a particular program, it is found that 1% of the code account for 50% of the execution time. To code a program in C++, it takes 100 man-days. Coding in assembly language is 10 times harder than coding in C++, but runs 5 times faster. Converting an existing C++ program into an assembly language program is 4 times faster.<br>To completely write the program in C++ and rewrite the 1% code in assembly language, if a project team needs 13 days, the team consist of",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "13  programmers",
+        "html": "13  programmers"
+      },
+      {
+        "label": "B",
+        "text": "10 programmers",
+        "html": "10 programmers"
+      },
+      {
+        "label": "C",
+        "text": "8 programmers",
+        "html": "8 programmers"
+      },
+      {
+        "label": "D",
+        "text": "100/13 programmers",
+        "html": "100/13 programmers"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q48",
+    "exam_uid": "isro-2018-q48",
+    "title": "ISRO CS 2018 | Question 48",
+    "link": "https://gateoverflow.in/213540/isro2018-48",
+    "gateoverflow_id": 213540,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "In unit testing of a module, it is found that for a set of test data, at the maximum 90% of the code alone were tested with the probability of success 0.9. The reliability of module is",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Greater than 0.9",
+        "html": "Greater than 0.9"
+      },
+      {
+        "label": "B",
+        "text": "Equal to 0.9",
+        "html": "Equal to 0.9"
+      },
+      {
+        "label": "C",
+        "text": "At most 0.81",
+        "html": "At most 0.81"
+      },
+      {
+        "label": "D",
+        "text": "At least 0.81",
+        "html": "At least 0.81"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q49",
+    "exam_uid": "isro-2018-q49",
+    "title": "ISRO CS 2018 | Question 49",
+    "link": "https://gateoverflow.in/213539/isro2018-49",
+    "gateoverflow_id": 213539,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "in a file which contains 1 million records and the order of the tree is 100, then what is the maximum number of nodes to be accessed if B+ tree index is used?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "5",
+        "html": "5"
+      },
+      {
+        "label": "B",
+        "text": "4",
+        "html": "4"
+      },
+      {
+        "label": "C",
+        "text": "3",
+        "html": "3"
+      },
+      {
+        "label": "D",
+        "text": "10",
+        "html": "10"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "file-system",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "file-system"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q50",
+    "exam_uid": "isro-2018-q50",
+    "title": "ISRO CS 2018 | Question 50",
+    "link": "https://gateoverflow.in/213538/isro2018-50",
+    "gateoverflow_id": 213538,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A particular disk unit uses a bit string to record the occupancy or vacancy of its tracks, with 0 denoting vacant and 1 for occupied. A 32-bit segment of this string has hexadecimal value D4FE2003. The percentage of occupied tracks for the corresponding part of the disk, to the nearest percentage is:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "12",
+        "html": "12"
+      },
+      {
+        "label": "B",
+        "text": "25",
+        "html": "25"
+      },
+      {
+        "label": "C",
+        "text": "38",
+        "html": "38"
+      },
+      {
+        "label": "D",
+        "text": "44",
+        "html": "44"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "secondary-storage",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "secondary-storage"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q51",
+    "exam_uid": "isro-2018-q51",
+    "title": "ISRO CS 2018 | Question 51",
+    "link": "https://gateoverflow.in/213537/isro2018-51",
+    "gateoverflow_id": 213537,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Which of the following is dense index?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Primary index",
+        "html": "Primary index"
+      },
+      {
+        "label": "B",
+        "text": "Clustered index",
+        "html": "Clustered index"
+      },
+      {
+        "label": "C",
+        "text": "Secondary index",
+        "html": "Secondary index"
+      },
+      {
+        "label": "D",
+        "text": "Secondary non-key index",
+        "html": "Secondary non-key index"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "file-system",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "file-system"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q52",
+    "exam_uid": "isro-2018-q52",
+    "title": "ISRO CS 2018 | Question 52",
+    "link": "https://gateoverflow.in/213536/isro2018-52",
+    "gateoverflow_id": 213536,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "In E-R model, Y is the dominant entity and X is subordinate entity",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "If X is deleted, then Y is also deleted",
+        "html": "If X is deleted, then Y is also deleted"
+      },
+      {
+        "label": "B",
+        "text": "If Y is deleted, then X is also deleted",
+        "html": "If Y is deleted, then X is also deleted"
+      },
+      {
+        "label": "C",
+        "text": "If Y is deleted, then X is not deleted",
+        "html": "If Y is deleted, then X is not deleted"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "-er-model",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "-er-model"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q53",
+    "exam_uid": "isro-2018-q53",
+    "title": "ISRO CS 2018 | Question 53",
+    "link": "https://gateoverflow.in/213535/isro2018-53",
+    "gateoverflow_id": 213535,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Immunity of the external schemas (or application programs) to changes in the conceptual scheme is referred to as:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Physical Data Independence",
+        "html": "Physical Data Independence"
+      },
+      {
+        "label": "B",
+        "text": "Logical Data Independence",
+        "html": "Logical Data Independence"
+      },
+      {
+        "label": "C",
+        "text": "Both (A) and (B)",
+        "html": "Both (A) and (B)"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "relational-schema",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "relational-schema"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q54",
+    "exam_uid": "isro-2018-q54",
+    "title": "ISRO CS 2018 | Question 54",
+    "link": "https://gateoverflow.in/213534/isro2018-54",
+    "gateoverflow_id": 213534,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The set of attributes X will be fully functionally dependent on the set of attributes Y if the following conditions are satisfied.",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "X is functionally dependent on Y",
+        "html": "X is functionally dependent on Y"
+      },
+      {
+        "label": "B",
+        "text": "X is not functionally dependent on any subset of Y",
+        "html": "X is not functionally dependent on any subset of Y"
+      },
+      {
+        "label": "C",
+        "text": "Both (A) and (B)",
+        "html": "Both (A) and (B)"
+      },
+      {
+        "label": "D",
+        "text": "None of these",
+        "html": "None of these"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "normal-form",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "normal-form"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q55",
+    "exam_uid": "isro-2018-q55",
+    "title": "ISRO CS 2018 | Question 55",
+    "link": "https://gateoverflow.in/213533/isro2018-55",
+    "gateoverflow_id": 213533,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Let us assume that transaction T1 has arrived before transaction T2. Consider the schedule s=r1(A);r2(B):w2(A);w1(B)<br>Which of the following is true?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Allowed under basic timestamp protocol.",
+        "html": "Allowed under basic timestamp protocol."
+      },
+      {
+        "label": "B",
+        "text": "Not allowed under basic timestamp protocols because T1 is rolled back.",
+        "html": "Not allowed under basic timestamp protocols because T1 is rolled back."
+      },
+      {
+        "label": "C",
+        "text": "Not allowed under basic timestamp protocols because T2 is rolled back.",
+        "html": "Not allowed under basic timestamp protocols because T2 is rolled back."
+      },
+      {
+        "label": "D",
+        "text": "None of these",
+        "html": "None of these"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "transaction",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "transaction"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q56",
+    "exam_uid": "isro-2018-q56",
+    "title": "ISRO CS 2018 | Question 56",
+    "link": "https://gateoverflow.in/213532/isro2018-56",
+    "gateoverflow_id": 213532,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The time complexity of computing the transitive closure of binary relation on a set of n elements is known to be",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(n)",
+        "html": "O(n)"
+      },
+      {
+        "label": "B",
+        "text": "$O(n * \\log (n))$",
+        "html": "$O(n * \\log (n))$"
+      },
+      {
+        "label": "C",
+        "text": "$O\\left(n^{\\frac{3}{2}}\\right)$",
+        "html": "$O\\left(n^{\\frac{3}{2}}\\right)$"
+      },
+      {
+        "label": "D",
+        "text": "$O\\left(n^{3}\\right)$",
+        "html": "$O\\left(n^{3}\\right)$"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "discrete-math",
+    "subjectSlug": "discrete-math",
+    "subtopic": "relation",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "discrete-math",
+      "relation"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q57",
+    "exam_uid": "isro-2018-q57",
+    "title": "ISRO CS 2018 | Question 57",
+    "link": "https://gateoverflow.in/213531/isro2018-57",
+    "gateoverflow_id": 213531,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Given a binary-max heap. The elements are stored in an arrays as 25,14,16,13,10,8,12. What is the content of the array after two delete operations?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "14,13,8,12,10",
+        "html": "14,13,8,12,10"
+      },
+      {
+        "label": "B",
+        "text": "14,12,13,10,8",
+        "html": "14,12,13,10,8"
+      },
+      {
+        "label": "C",
+        "text": "14,13,12,8,10",
+        "html": "14,13,12,8,10"
+      },
+      {
+        "label": "D",
+        "text": "14,13,12,10,8",
+        "html": "14,13,12,10,8"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "heap-tree",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "heap-tree"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q58",
+    "exam_uid": "isro-2018-q58",
+    "title": "ISRO CS 2018 | Question 58",
+    "link": "https://gateoverflow.in/213530/isro2018-58",
+    "gateoverflow_id": 213530,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The Functions Point (FP) metric is",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Calculated from user requirement",
+        "html": "Calculated from user requirement"
+      },
+      {
+        "label": "B",
+        "text": "Calculated from lines of code",
+        "html": "Calculated from lines of code"
+      },
+      {
+        "label": "C",
+        "text": "Calculated from software complexity assessment",
+        "html": "Calculated from software complexity assessment"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q59",
+    "exam_uid": "isro-2018-q59",
+    "title": "ISRO CS 2018 | Question 59",
+    "link": "https://gateoverflow.in/213529/isro2018-59",
+    "gateoverflow_id": 213529,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The lower degree of cohesion is kind of:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Logical Cohesion",
+        "html": "Logical Cohesion"
+      },
+      {
+        "label": "B",
+        "text": "Coincidental Cohesion",
+        "html": "Coincidental Cohesion"
+      },
+      {
+        "label": "C",
+        "text": "Procedural Cohesion",
+        "html": "Procedural Cohesion"
+      },
+      {
+        "label": "D",
+        "text": "Communicational Cohesion",
+        "html": "Communicational Cohesion"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q60",
+    "exam_uid": "isro-2018-q60",
+    "title": "ISRO CS 2018 | Question 60",
+    "link": "https://gateoverflow.in/213528/isro2018-60",
+    "gateoverflow_id": 213528,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "What is the output of tho following program?<br><pre><code> main(){\n    int x=2, y=5;\n    if(x < y) return (x=x+y);\n    else printf(\"z1\");\n    printf(\"z2\");\n}</pre></code>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "z2",
+        "html": "z2"
+      },
+      {
+        "label": "B",
+        "text": "z1z2",
+        "html": "z1z2"
+      },
+      {
+        "label": "C",
+        "text": "Compilation error",
+        "html": "Compilation error"
+      },
+      {
+        "label": "D",
+        "text": "None of these",
+        "html": "None of these"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "conditional-statement",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "conditional-statement"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q61",
+    "exam_uid": "isro-2018-q61",
+    "title": "ISRO CS 2018 | Question 61",
+    "link": "https://gateoverflow.in/213527/isro2018-61",
+    "gateoverflow_id": 213527,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "The Operating System of a computer may periodically collect all the free memory space to form contiguous block of free space. This is called:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Concatenation",
+        "html": "Concatenation"
+      },
+      {
+        "label": "B",
+        "text": "Garbage Collection",
+        "html": "Garbage Collection"
+      },
+      {
+        "label": "C",
+        "text": "Collision",
+        "html": "Collision"
+      },
+      {
+        "label": "D",
+        "text": "Dynamic Memory Allocation",
+        "html": "Dynamic Memory Allocation"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "memory-management",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "memory-management"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q62",
+    "exam_uid": "isro-2018-q62",
+    "title": "ISRO CS 2018 | Question 62",
+    "link": "https://gateoverflow.in/213526/isro2018-62",
+    "gateoverflow_id": 213526,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Any set of Boolean operation that is sufficient to represent all Boolean expression is said to be complete. Which of the following is not complete ?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "{AND, OR}",
+        "html": "{AND, OR}"
+      },
+      {
+        "label": "B",
+        "text": "{AND, NOT}",
+        "html": "{AND, NOT}"
+      },
+      {
+        "label": "C",
+        "text": "{NOT, OR}",
+        "html": "{NOT, OR}"
+      },
+      {
+        "label": "D",
+        "text": "{NOR}",
+        "html": "{NOR}"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "digital-logic",
+    "subjectSlug": "digital-logic",
+    "subtopic": "boolean-algebra",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "digital-logic",
+      "boolean-algebra"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q63",
+    "exam_uid": "isro-2018-q63",
+    "title": "ISRO CS 2018 | Question 63",
+    "link": "https://gateoverflow.in/213525/isro2018-63",
+    "gateoverflow_id": 213525,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider a singly linked list of the form where F is a pointer to the first element in the linked list and L is the pointer to the last element in the list. The time of which of the following operations depends on the length of the list?<br><img src=\"/question-images/external/isro/isro_ff3f42fa6b659ccb.webp\" alt=\"ISRO Figure\" /><br>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Delete the last element of the list",
+        "html": "Delete the last element of the list"
+      },
+      {
+        "label": "B",
+        "text": "Delete the first element of the list",
+        "html": "Delete the first element of the list"
+      },
+      {
+        "label": "C",
+        "text": "Add an element after the last element of the list",
+        "html": "Add an element after the last element of the list"
+      },
+      {
+        "label": "D",
+        "text": "Interchange the first two elements of the list",
+        "html": "Interchange the first two elements of the list"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "link-list",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "link-list"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q64",
+    "exam_uid": "isro-2018-q64",
+    "title": "ISRO CS 2018 | Question 64",
+    "link": "https://gateoverflow.in/213524/isro2018-64",
+    "gateoverflow_id": 213524,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A particular BNF definition for a \"word is given by the following rules.<br>< word >      :: =< letter > I < letter > < charpair > I < letter >< intpair ><br>< charpair > :: =< letter >< letter > I < charpair >< letter >< letter ><br>< intpair >    :: = < integer >< integer > I < intpair >< integer >< integer ><br>< letter >      :: = a I b I c I ......I Y I Z<br>< integer >   :: = 0 I 1 I 2 I ......I 9<br>Which of the following lexical entries can be derived from < word >?<br>I.   pick<br>\nII.  picks<br>\nIII. c44<br>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "I, II and III",
+        "html": "I, II and III"
+      },
+      {
+        "label": "B",
+        "text": "I and II only",
+        "html": "I and II only"
+      },
+      {
+        "label": "C",
+        "text": "I and III only",
+        "html": "I and III only"
+      },
+      {
+        "label": "D",
+        "text": "II and III only",
+        "html": "II and III only"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "compiler",
+    "subjectSlug": "compiler",
+    "subtopic": "lexical-analysis",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "compiler",
+      "lexical-analysis"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q65",
+    "exam_uid": "isro-2018-q65",
+    "title": "ISRO CS 2018 | Question 65",
+    "link": "https://gateoverflow.in/213523/isro2018-65",
+    "gateoverflow_id": 213523,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Of the following, which best characterizes computers that use memory-mapped I/O?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "The computer provides special instructions for manipulating I/O ports",
+        "html": "The computer provides special instructions for manipulating I/O ports"
+      },
+      {
+        "label": "B",
+        "text": "I/O ports are placed at addresses on the bus and are accessed just like other memory locations",
+        "html": "I/O ports are placed at addresses on the bus and are accessed just like other memory locations"
+      },
+      {
+        "label": "C",
+        "text": "To perform I/O operations. it is sufficient to place the data in an address register and call channel to perform the operation",
+        "html": "To perform I/O operations. it is sufficient to place the data in an address register and call channel to perform the operation"
+      },
+      {
+        "label": "D",
+        "text": "I/O can be performed only when memory management hardware is turned on",
+        "html": "I/O can be performed only when memory management hardware is turned on"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "io-interface",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "io-interface"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q66",
+    "exam_uid": "isro-2018-q66",
+    "title": "ISRO CS 2018 | Question 66",
+    "link": "https://gateoverflow.in/213522/isro2018-66",
+    "gateoverflow_id": 213522,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Of the following sorting algorithms, which has a running time that is least dependent on the initial ordering of the input?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Mege Sort",
+        "html": "Mege Sort"
+      },
+      {
+        "label": "B",
+        "text": "Insertion Sort",
+        "html": "Insertion Sort"
+      },
+      {
+        "label": "C",
+        "text": "Selection Sort",
+        "html": "Selection Sort"
+      },
+      {
+        "label": "D",
+        "text": "Quick Sort",
+        "html": "Quick Sort"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "sorting",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "sorting"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q67",
+    "exam_uid": "isro-2018-q67",
+    "title": "ISRO CS 2018 | Question 67",
+    "link": "https://gateoverflow.in/213521/isro2018-67",
+    "gateoverflow_id": 213521,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Procedures P1 and P2 have a producer-consumer relationship, communicating by the use of a set of shared buffers.<br><br>P1 : <br>       repeat<br>Obtain an empty buffer<br>Fill it<br>Return a full buffer<br>forever<br><br>P2:<br> repeat<br>Obtain a full buffer<br>Empty it<br>Return an empty buffer<br>forever<br><br>Increasing the number of buffers is likely to do which of the following?<br><br>I. Increase the rate at which requests are satisfied (throughput)<br>\nII. Decrease the likelihood of deadlock<br>\nIII. Increase the ease of achieving a correct implementation",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "III only",
+        "html": "III only"
+      },
+      {
+        "label": "B",
+        "text": "II only",
+        "html": "II only"
+      },
+      {
+        "label": "C",
+        "text": "I only",
+        "html": "I only"
+      },
+      {
+        "label": "D",
+        "text": "II and III only",
+        "html": "II and III only"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "process-synchronization",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "process-synchronization"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q68",
+    "exam_uid": "isro-2018-q68",
+    "title": "ISRO CS 2018 | Question 68",
+    "link": "https://gateoverflow.in/213520/isro2018-67",
+    "gateoverflow_id": 213520,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "In multi-programmed systems, it is advantageous if some programs such as editors and compilers can be\nshared by several users.<br>\nWhich of the following must be true of multi-programmed systems in order that a single copy of a program can be shared by several\nusers?<br><br>\nI.   The program is a macro<br>\nII.  The program is recursive<br>\nIII. The program is reentrant<br>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "I only",
+        "html": "I only"
+      },
+      {
+        "label": "B",
+        "text": "II only",
+        "html": "II only"
+      },
+      {
+        "label": "C",
+        "text": "III only",
+        "html": "III only"
+      },
+      {
+        "label": "D",
+        "text": "I, II and III",
+        "html": "I, II and III"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "os",
+    "subjectSlug": "os",
+    "subtopic": "process-synchronization",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "os",
+      "process-synchronization"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q69",
+    "exam_uid": "isro-2018-q69",
+    "title": "ISRO CS 2018 | Question 69",
+    "link": "https://gateoverflow.in/213519/isro2018-69",
+    "gateoverflow_id": 213519,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Let P be a procedure that for some inputs calls itself (i.e. is recursive). If P is guaranteed to terminate, which of the following statement(s) must be true?<br>I.   P has a local variable<br>\nII.  P has an execution path where it does not call itself<br>\nIII. P either refers to a global variable or has at least one parameter",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "I only",
+        "html": "I only"
+      },
+      {
+        "label": "B",
+        "text": "II only",
+        "html": "II only"
+      },
+      {
+        "label": "C",
+        "text": "III only",
+        "html": "III only"
+      },
+      {
+        "label": "D",
+        "text": "II and III only",
+        "html": "II and III only"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q70",
+    "exam_uid": "isro-2018-q70",
+    "title": "ISRO CS 2018 | Question 70",
+    "link": "https://gateoverflow.in/213518/isro2018-70",
+    "gateoverflow_id": 213518,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the following C program:<br><pre><code> main()\n{\nfloat sum= 0.0, j=1.0,i=2.0;\nwhile(i/j>0.001){\n    j=j+1;\n    sum=sum+i/j;\n    printf(\"%f/n\", sum);\n  }\n}</pre></code>",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "0  - 9 lines of output",
+        "html": "0  - 9 lines of output"
+      },
+      {
+        "label": "B",
+        "text": "10 - 19 lines out output",
+        "html": "10 - 19 lines out output"
+      },
+      {
+        "label": "C",
+        "text": "20  - 29 lines of output",
+        "html": "20  - 29 lines of output"
+      },
+      {
+        "label": "D",
+        "text": "More than 29 lines of output",
+        "html": "More than 29 lines of output"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "arithmetic-operation",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "arithmetic-operation"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q71",
+    "exam_uid": "isro-2018-q71",
+    "title": "ISRO CS 2018 | Question 71",
+    "link": "https://gateoverflow.in/213517/isro2018-71",
+    "gateoverflow_id": 213517,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A particular parallel program computation requires 100 sec when executed on a single processor, if 40% of this computation is inherently sequential (i.e. will not benefit from additional processors), then theoretically best possible elapsed times of this program running with 2 and 4 processors, respectively, are:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "20 sec and 10 sec",
+        "html": "20 sec and 10 sec"
+      },
+      {
+        "label": "B",
+        "text": "30 sec and 15 sec",
+        "html": "30 sec and 15 sec"
+      },
+      {
+        "label": "C",
+        "text": "50 sec and 25 sec",
+        "html": "50 sec and 25 sec"
+      },
+      {
+        "label": "D",
+        "text": "70 sec and 55 sec",
+        "html": "70 sec and 55 sec"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "pipeline-processor",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "pipeline-processor"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q72",
+    "exam_uid": "isro-2018-q72",
+    "title": "ISRO CS 2018 | Question 72",
+    "link": "https://gateoverflow.in/213516/isro2018-72",
+    "gateoverflow_id": 213516,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Consider the following C code segment<br><pre><code> int f(int x)\n{\n    if(x<1) return 1;\n    else return (f(x-1) + g(x));\n}\nint g(int x)\n{\n    if(x<2) return 2;\n    else return (f(x-1) + g(x/2));\n}</pre></code>Of the following, which best describes the growth of f(x) as a function of x ?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Linear",
+        "html": "Linear"
+      },
+      {
+        "label": "B",
+        "text": "Exponential",
+        "html": "Exponential"
+      },
+      {
+        "label": "C",
+        "text": "Quadratic",
+        "html": "Quadratic"
+      },
+      {
+        "label": "D",
+        "text": "Cubic",
+        "html": "Cubic"
+      }
+    ],
+    "answer": "B",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "algorithms",
+    "subjectSlug": "algorithms",
+    "subtopic": "function",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "algorithms",
+      "function"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q73",
+    "exam_uid": "isro-2018-q73",
+    "title": "ISRO CS 2018 | Question 73",
+    "link": "https://gateoverflow.in/213515/isro2018-73",
+    "gateoverflow_id": 213515,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "For a multi-processor architecture, in which protocol a write transaction is forwarded to only those processors that are known to possess a copy of newly altered cache line?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Snoopy bus protocol",
+        "html": "Snoopy bus protocol"
+      },
+      {
+        "label": "B",
+        "text": "Cache coherency protocol",
+        "html": "Cache coherency protocol"
+      },
+      {
+        "label": "C",
+        "text": "Directory based protocol",
+        "html": "Directory based protocol"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "coa",
+    "subjectSlug": "coa",
+    "subtopic": "cache-memory",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "coa",
+      "cache-memory"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q74",
+    "exam_uid": "isro-2018-q74",
+    "title": "ISRO CS 2018 | Question 74",
+    "link": "https://gateoverflow.in/213514/isro2018-74",
+    "gateoverflow_id": 213514,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Avalanche effect in cryptography",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Is desirable property of cryptographic algorithm",
+        "html": "Is desirable property of cryptographic algorithm"
+      },
+      {
+        "label": "B",
+        "text": "Is undesirable property of cryptographic algorithm",
+        "html": "Is undesirable property of cryptographic algorithm"
+      },
+      {
+        "label": "C",
+        "text": "Has no effect on encryption algorithm",
+        "html": "Has no effect on encryption algorithm"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "network-security",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "network-security"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q75",
+    "exam_uid": "isro-2018-q75",
+    "title": "ISRO CS 2018 | Question 75",
+    "link": "https://gateoverflow.in/213513/isro2018-75",
+    "gateoverflow_id": 213513,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "ln neural network, the network capacity is defined as:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "The traffic (tarry capacity of the network",
+        "html": "The traffic (tarry capacity of the network"
+      },
+      {
+        "label": "B",
+        "text": "The total number of nodes in the network",
+        "html": "The total number of nodes in the network"
+      },
+      {
+        "label": "C",
+        "text": "The number of patterns that can be stored and recalled in a network",
+        "html": "The number of patterns that can be stored and recalled in a network"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "general-aptitude",
+    "subjectSlug": "general-aptitude",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "general-aptitude"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q76",
+    "exam_uid": "isro-2018-q76",
+    "title": "ISRO CS 2018 | Question 76",
+    "link": "https://gateoverflow.in/213512/isro2018-76",
+    "gateoverflow_id": 213512,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Cloaking is a search engine optimization (SEO) technique. During cloaking:",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Content presented to search engine spider is different from that presented to user's browser",
+        "html": "Content presented to search engine spider is different from that presented to user's browser"
+      },
+      {
+        "label": "B",
+        "text": "Content present to search engine spider and browser is same",
+        "html": "Content present to search engine spider and browser is same"
+      },
+      {
+        "label": "C",
+        "text": "Contents of user's requested website are changed",
+        "html": "Contents of user's requested website are changed"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q77",
+    "exam_uid": "isro-2018-q77",
+    "title": "ISRO CS 2018 | Question 77",
+    "link": "https://gateoverflow.in/213511/isro2018-77",
+    "gateoverflow_id": 213511,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "What is one advantage of setting up a DMZ (Demilitarized Zone) with two firewalls?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "You can control where traffic goes in the three networks",
+        "html": "You can control where traffic goes in the three networks"
+      },
+      {
+        "label": "B",
+        "text": "You can do statefull packet filtering",
+        "html": "You can do statefull packet filtering"
+      },
+      {
+        "label": "C",
+        "text": "You can do load balancing",
+        "html": "You can do load balancing"
+      },
+      {
+        "label": "D",
+        "text": "Improve network performance",
+        "html": "Improve network performance"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "network-security",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "network-security"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q78",
+    "exam_uid": "isro-2018-q78",
+    "title": "ISRO CS 2018 | Question 78",
+    "link": "https://gateoverflow.in/213510/isro2018-78",
+    "gateoverflow_id": 213510,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "Which one of the following algorithm is not used in asymmetric key cryptography?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "RSA Algorithm",
+        "html": "RSA Algorithm"
+      },
+      {
+        "label": "B",
+        "text": "Gillie-Hellman Algorithm",
+        "html": "Gillie-Hellman Algorithm"
+      },
+      {
+        "label": "C",
+        "text": "Electronic Code Book Algorithm",
+        "html": "Electronic Code Book Algorithm"
+      },
+      {
+        "label": "D",
+        "text": "None of the above",
+        "html": "None of the above"
+      }
+    ],
+    "answer": "C",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "cn",
+    "subjectSlug": "cn",
+    "subtopic": "network-security",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "cn",
+      "network-security"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q79",
+    "exam_uid": "isro-2018-q79",
+    "title": "ISRO CS 2018 | Question 79",
+    "link": "https://gateoverflow.in/213509/isro2018-79",
+    "gateoverflow_id": 213509,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "A doubly linked list is declared as:<br><pre><code> struct Node {\n    int Value;\n    struct Node *Fwd;\n    struct Node *Bwd;\n};</pre></code>Where Fwd and Bwd represent forward and backward link to the adjacent elements of the list. Which of the following segment of code deletes the node pointed to by X from the doubly linked list, if it is assumed that X points to neither the first nor the last node of the list?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "$X \\rightarrow \\text { Bwd } \\rightarrow \\text { Fwd }=X \\rightarrow \\text { Fwd; } X \\rightarrow F w d \\rightarrow { Bwd }=X \\rightarrow { Bwd; }$",
+        "html": "$X \\rightarrow \\text { Bwd } \\rightarrow \\text { Fwd }=X \\rightarrow \\text { Fwd; } X \\rightarrow F w d \\rightarrow { Bwd }=X \\rightarrow { Bwd; }$"
+      },
+      {
+        "label": "B",
+        "text": "$X \\rightarrow \\text { Bwd.Fwd }=X \\rightarrow \\text { Fwd; } X . \\text { Fwd } \\rightarrow \\text { Bwd }=X \\rightarrow \\text { Bwd; }$",
+        "html": "$X \\rightarrow \\text { Bwd.Fwd }=X \\rightarrow \\text { Fwd; } X . \\text { Fwd } \\rightarrow \\text { Bwd }=X \\rightarrow \\text { Bwd; }$"
+      },
+      {
+        "label": "C",
+        "text": "$X . \\text { Bwd } \\rightarrow \\text { Fwd }=X . \\text { Bwd; } x \\rightarrow { Fwd.Bwd }=X . B w d$",
+        "html": "$X . \\text { Bwd } \\rightarrow \\text { Fwd }=X . \\text { Bwd; } x \\rightarrow { Fwd.Bwd }=X . B w d$"
+      },
+      {
+        "label": "D",
+        "text": "$X \\rightarrow \\text { Bwd } \\rightarrow \\text { Fwd }=X \\rightarrow \\text { Bwd; } X \\rightarrow \\text{ Fwd } \\rightarrow \\text { Bwd }=X \\rightarrow \\text { Fwd; }$",
+        "html": "$X \\rightarrow \\text { Bwd } \\rightarrow \\text { Fwd }=X \\rightarrow \\text { Bwd; } X \\rightarrow \\text{ Fwd } \\rightarrow \\text { Bwd }=X \\rightarrow \\text { Fwd; }$"
+      }
+    ],
+    "answer": "A",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "link-list",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "link-list"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  },
+  {
+    "question_uid": "isro:cs:2018:q80",
+    "exam_uid": "isro-2018-q80",
+    "title": "ISRO CS 2018 | Question 80",
+    "link": "https://gateoverflow.in/213508/isro2018-80",
+    "gateoverflow_id": 213508,
+    "exam": "ISRO",
+    "branch": "CSE",
+    "paper_scope": "external_exam",
+    "origin_branch": "CS",
+    "origin_year": 2018,
+    "origin_session": null,
+    "origin_paper": "CS",
+    "question": "<br><img src=\"/question-images/external/isro/isro_b2a3ddb42c2b5a95.webp\" alt=\"ISRO Figure\" /><br>Which traversals of Tree-1 and Tree-2, respectively, will produce the same sequence?",
+    "type": "MCQ",
+    "options": [
+      {
+        "label": "A",
+        "text": "Preorder, postorder",
+        "html": "Preorder, postorder"
+      },
+      {
+        "label": "B",
+        "text": "Postorder, inorder",
+        "html": "Postorder, inorder"
+      },
+      {
+        "label": "C",
+        "text": "Postorder, preorder",
+        "html": "Postorder, preorder"
+      },
+      {
+        "label": "D",
+        "text": "None of these",
+        "html": "None of these"
+      }
+    ],
+    "answer": "D",
+    "marks": 3,
+    "negativeMarks": 1,
+    "subject": "other",
+    "subjectSlug": "other",
+    "subtopic": "binary-tree",
+    "tags": [
+      "isro",
+      "isro-cs",
+      "isro-2018",
+      "other",
+      "binary-tree"
+    ],
+    "detailShardKey": "isro-2018-s0"
+  }
+]
