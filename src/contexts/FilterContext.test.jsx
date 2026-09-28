@@ -1399,5 +1399,47 @@ describe('FilterContext', () => {
             const cseSolved = JSON.parse(window.localStorage.getItem(SOLVED_KEY) || '[]');
             expect(cseSolved).not.toContain('isro:cs:2025:q1');
         });
+
+        test('auto-enables ISRO questions on cold page load / refresh when URL contains ISRO year sets', async () => {
+            window.history.replaceState({}, '', '/practice?years=isro:2025:set-1');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2025:q1');
+                expect(getByTestId('selected-year-sets').textContent).toBe('isro:2025:set-1');
+            });
+
+            // Filtered questions must ONLY contain ISRO questions and zero CSE questions
+            expect(getByTestId('filtered-question-uids').textContent).toBe('isro:cs:2025:q1');
+            expect(getByTestId('filtered-question-uids').textContent).not.toContain('go:1');
+        });
+
+        test('ISRO All year-sets URL isolates all ISRO questions with no CSE leakage', async () => {
+            window.history.replaceState({}, '', '/practice?years=isro:2025:set-1,isro:2020:set-1');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2025:q1');
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2020:q1');
+            });
+
+            const filteredUids = getByTestId('filtered-question-uids').textContent;
+            expect(filteredUids).toContain('isro:cs:2025:q1');
+            expect(filteredUids).toContain('isro:cs:2020:q1');
+            // Strict exclusion of CSE questions
+            expect(filteredUids).not.toContain('go:1');
+            expect(filteredUids).not.toContain('go:2');
+            expect(filteredUids).not.toContain('go:3');
+        });
     });
 });

@@ -43,7 +43,11 @@ export default function IsroMarquee() {
 
   const handleExploreAll = useCallback(() => {
     writeIsroEnabled(true);
-    navigate(PRACTICE_ROUTE);
+    // Navigate with all ISRO year sets so only ISRO questions are shown.
+    const allIsroYears = ISRO_YEARS.map(
+      (y) => `isro:${y}:set-1`
+    ).join(",");
+    navigate(`${PRACTICE_ROUTE}?years=${encodeURIComponent(allIsroYears)}`);
   }, [navigate]);
 
   const handleTouchStart = useCallback(() => {

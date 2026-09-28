@@ -34,6 +34,18 @@ export const readIsroEnabled = (): boolean => {
     return true;
   }
 
+  // Auto-enable if URL search params contain ISRO year set keys (e.g. ?years=isro:2025:set-1).
+  // Ensures ISRO questions load correctly on browser refresh with ISRO filters active.
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const rawYears = params.get('years');
+    if (rawYears && rawYears.split(',').some((t) => t.trim().toLowerCase().startsWith('isro:'))) {
+      return true;
+    }
+  } catch {
+    // Ignore parse errors
+  }
+
   try {
     const rawValue = window.localStorage.getItem(ISRO_ENABLED_STORAGE_KEY);
     if (rawValue === null) {

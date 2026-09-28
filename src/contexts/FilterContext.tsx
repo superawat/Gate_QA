@@ -579,6 +579,25 @@ export const useFilterActions = () => {
     return ctx;
 };
 
+/**
+ * Detect whether the current URL contains year-set keys belonging to a specific exam track.
+ * Used to auto-enable ISRO/DA question loading on cold page loads (e.g. browser refresh).
+ */
+const urlHasTrackYearSets = (track: string): boolean => {
+    if (typeof window === 'undefined') return false;
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const rawYears = params.get('years');
+        if (!rawYears) return false;
+        return rawYears.split(',').some((token) => {
+            const parsed = parseTrackYearSetKey(token.trim());
+            return parsed && parsed.track === track;
+        });
+    } catch {
+        return false;
+    }
+};
+
 export const FilterProvider = ({
     children,
     initialManifest = null,
@@ -591,9 +610,9 @@ export const FilterProvider = ({
     progressScope = 'gate',
     progressExportPrefix = 'gateqa-progress',
     includeExtendedProgress = true,
-    initialIncludeCse = true,
-    initialIncludeDa = false,
-    initialIncludeIsro = false,
+    initialIncludeCse = null as boolean | null,
+    initialIncludeDa = null as boolean | null,
+    initialIncludeIsro = null as boolean | null,
 }) => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -659,25 +678,25 @@ export const FilterProvider = ({
     const [isroBookmarkedQuestionIds, setIsroBookmarkedQuestionIds] = useState([]);
     const [isroBookmarkRemovalIds, setIsroBookmarkRemovalIds] = useState([]);
     const [includeCse, setIncludeCseState] = useState(() => (
-        initialIncludeCse !== undefined
+        initialIncludeCse !== null
             ? Boolean(initialIncludeCse)
             : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_cse') !== null
                 ? window.localStorage.getItem('gateqa_include_cse') === 'true'
                 : true)
     ));
     const [includeDa, setIncludeDaState] = useState(() => (
-        initialIncludeDa !== undefined
+        initialIncludeDa !== null
             ? Boolean(initialIncludeDa)
             : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') !== null
                 ? window.localStorage.getItem('gateqa_include_da') === 'true'
-                : false)
+                : urlHasTrackYearSets('da'))
     ));
     const [includeIsro, setIncludeIsroState] = useState(() => (
-        initialIncludeIsro !== undefined
+        initialIncludeIsro !== null
             ? Boolean(initialIncludeIsro)
             : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_isro') !== null
                 ? window.localStorage.getItem('gateqa_include_isro') === 'true'
-                : false)
+                : urlHasTrackYearSets('isro'))
     ));
 
     useEffect(() => {

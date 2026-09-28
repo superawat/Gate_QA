@@ -1,5 +1,24 @@
 # Changelog
 
+- **ISRO Question Edition Navigation, Page Refresh Persistence & Year-Scope Isolation Architecture (DEC-146)**:
+  - *Context*: Two issues were reported in the ISRO Question Edition: (1) After clicking the ISRO marquee and navigating to the Filter/Explore page, refreshing the browser caused questions to disappear with "No index of questions found"; (2) Clicking "Explore all" (or "All" on mobile) navigated to a bare `/practice` route where GATE CSE questions appeared first instead of strictly showing ISRO questions.
+  - *Root Causes*:
+    1. In `FilterContext.tsx`, `FilterProvider` declared default parameter values `initialIncludeCse = true`, `initialIncludeDa = false`, and `initialIncludeIsro = false`. The initialization logic used `initialIncludeIsro !== undefined ? Boolean(initialIncludeIsro) : ...localStorage...`. Because default parameters are assigned when callers omit the prop, `initialIncludeIsro !== undefined` was always `true`, so `includeIsro` was unconditionally forced to `false` on initial mount regardless of what `writeIsroEnabled(true)` had written to `localStorage`.
+    2. In `IsroMarquee.jsx`, `handleExploreAll` navigated to bare `/practice` without year set parameters. Because `/practice` without filters displays all enabled tracks and CSE questions sort first chronologically, CSE questions appeared before ISRO questions.
+  - *Implementation*:
+    - **FilterProvider Sentinel & Track Auto-Enable (`src/contexts/FilterContext.tsx`)**:
+      - Converted default parameters `initialIncludeCse`, `initialIncludeDa`, `initialIncludeIsro` from boolean literals to `null as boolean | null`, and changed sentinel checks from `!== undefined` to `!== null`. Callers that do not provide explicit props now correctly fall through to `localStorage` checking.
+      - Added `urlHasTrackYearSets(track)` helper that inspects `window.location.search` for year tokens matching `isro:` or `da:`. If a user refreshes or cold-loads a URL with ISRO year sets (e.g. `?years=isro:2025:set-1`), `includeIsro` automatically initializes to `true`.
+    - **URL Search Parameter Auto-Detection (`src/utils/isroPreference.ts`)**:
+      - Added URL parameter detection in `readIsroEnabled()` so `?years=` containing tokens starting with `isro:` returns `true` even before the React tree mounts.
+    - **ISRO Edition "All" Scope Isolation (`src/components/Home/IsroMarquee.jsx`)**:
+      - Updated `handleExploreAll` to construct a query string containing all 16 ISRO year sets (`isro:2007:set-1` through `isro:2025:set-1`).
+      - This cleanly routes to `/practice?years=...`, guaranteeing that the Filter page restricts results exclusively to ISRO questions, the first displayed question is an ISRO question, and zero GATE CSE questions leak into the view.
+    - **Regression Tests (`src/components/Home/IsroMarquee.test.jsx`, `src/contexts/FilterContext.test.jsx`)**:
+      - Updated marquee test to assert navigation with all 16 ISRO year-set keys.
+      - Added unit tests in `FilterContext.test.jsx` verifying cold load / refresh auto-enable and complete CSE exclusion under ISRO year filters.
+  - *Verification*: Full Vitest suite passing (**1,149 passed across 91 test files, 100% green**), TypeScript typecheck clean (`0 errors`).
+
 - **ISRO CS Homepage Marquee Ribbon, SubHeader Slot & Mobile Optimization (DEC-145)**:
   - *Context*: Added a thin, modern, continuously scrolling marquee ribbon positioned directly below the sticky header on the home page displaying ISRO CS examination papers from 2007 to 2025 with quick practice entry.
   - *Implementation*:
@@ -15,6 +34,7 @@
       - Added unit test in `HomePage.test.jsx` verifying the marquee renders in `subHeader` with clickable year chips.
       - All 1,147 unit tests passing (100% green), TypeScript typecheck clean (`0 errors`).
 
+- **Question Diagram Responsive Sizing & Click-to-Zoom Lightbox Architecture (DEC-144)**:
   - *Context*: User identified that question diagram images in recently integrated ISRO CS 2023 and 2025 papers (e.g. `ISRO CS 2025 | Question 1` binary tree diagram, 1496x1051) rendered at excessive full-card widths (800-900px wide, ~600px tall), dominating viewport height, pushing options off-screen, and creating harsh solid white blocks on dark mode cards.
   - *Root Cause*: High-resolution WebP scans/crops lacked explicit width/height attributes or container sizing rules. The only existing CSS constraint was global `img { max-width: 100% }`, which allowed unconstrained expansion to 100% of container width with proportional height stretching.
   - *Implementation*:
@@ -37,6 +57,7 @@
   - *Context*: ISRO questions in Practice/Solve mode only displayed the question stem above the MCQ selector buttons because options were stored in a separate array rather than embedded `<ol>` tags.
   - *Implementation*: Synthesized clean `<ol class="question-options">` in `IsroQuestionService.ts` and `Question.jsx`, added `.question-options` styling in `src/index.css`, and added regression tests.
 
+- **ISRO CS Stream Integration: Frontend, Filtering, Navigation & Practice UI (DEC-142)**:
   - *Context*: Complete end-to-end integration of the ISRO CS competitive exam question bank (1,070 questions: 11 legacy papers 2007–2020 + 2023 & 2025 Set A papers) into the GateQA web application while strictly maintaining zero pollution/dilution of the canonical GATE CSE (3,682 questions), GATE DA, and GATE IT archives.
   - *Implementation*:
     - **Preference & Track Namespace Layer (`src/utils/isroPreference.ts`, `src/utils/examTrack.js`)**: Added `EXAM_TRACKS.ISRO = "isro"`, regex `/^(cse|da|it|isro):/`, namespaced year set parsing (`isro:<year>:set-1`), route auto-enable for `/question/isro:`, storage preference management, and event-driven cross-tab sync (`gateqa:isro-enabled-change`).

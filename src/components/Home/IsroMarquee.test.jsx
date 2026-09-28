@@ -41,14 +41,19 @@ describe("IsroMarquee", () => {
     expect(navigateMock).toHaveBeenCalledWith("/practice?years=isro%3A2025%3Aset-1");
   });
 
-  test("clicking 'Explore all' enables ISRO mode and navigates to /practice", () => {
+  test("clicking 'Explore all' enables ISRO mode and navigates to /practice with all ISRO year sets", () => {
     render(<IsroMarquee />);
 
     const cta = screen.getByRole("button", { name: /Explore all/i });
     fireEvent.click(cta);
 
     expect(writeIsroEnabledMock).toHaveBeenCalledWith(true);
-    expect(navigateMock).toHaveBeenCalledWith("/practice");
+    // Should navigate with all ISRO year set keys so only ISRO questions are shown.
+    const call = navigateMock.mock.calls[0][0];
+    expect(call).toContain("/practice?years=");
+    expect(call).toContain("isro");
+    expect(call).toContain("2007");
+    expect(call).toContain("2025");
   });
 
   test("touch interactions toggle the paused state for mobile accessibility", () => {
