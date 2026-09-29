@@ -832,7 +832,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                     }
                 } else if (isCse) {
                     const cseSelected = selectedSubjects.filter(
-                        (s) => !s.startsWith("da:") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG
+                        (s) => !s.startsWith("da:") && !s.startsWith("isro:") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG
                     ).map(normalizeMockSubjectKey);
                     if (cseSelected.length > 0 && !cseSelected.includes(questionSubjectKey)) {
                         return false;

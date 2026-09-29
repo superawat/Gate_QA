@@ -1,5 +1,26 @@
 # Changelog
 
+- **ISRO Subject Isolation from GATE CSE TopicFilter & Track Scoping Architecture (DEC-147)**:
+  - *Context*: When ISRO was enabled, all 12 ISRO subjects (such as Computer Networks, Compiler Design, Databases, Digital Logic, etc.) were duplicated inside the "GATE CSE" filter group in addition to appearing under the dedicated "ISRO CS (1,070)" card. Users saw duplicate subject options (e.g. two "Computer Networks" checkboxes) inside GATE CSE without any visual differentiation, making it ambiguous which option was for GATE CSE and which was for ISRO CS.
+  - *Root Causes*:
+    1. In `src/components/Filters/TopicFilter.tsx`, `coreSubjects` filtered `subjects` by checking `!subject?.slug.startsWith('da:')`, `!APTITUDE_SUBJECT_SLUGS.has(...)`, and `!== LEGACY_OPTIONAL_SUBJECT_SLUG`, but omitted checking `!subject?.slug.startsWith('isro:')`. When `includeIsro` was toggled ON, ISRO's subjects (whose slugs start with `isro:`) were merged into `structuredTags.subjects` and passed right into `coreSubjects`, rendering duplicate subject checkboxes inside the GATE CSE section.
+    2. In `TopicFilter.tsx`, the auto-expansion `useEffect` inspected all `selectedSubjects` rather than restricting itself to CSE-scoped subjects, causing selected ISRO or DA subjects to erroneously register in CSE expanded state.
+    3. In `src/pages/InsightsPage.jsx`, `isSubjectInTrack` did not exclude `isro:` slugs when filtering for the CS track (`track === "cs"`).
+    4. In `src/components/MockTest/MockTestSetup.jsx` and `MockTestShell.jsx`, `cseSubjects` and `cseSelected` filtered out `da:` but did not defensively exclude `isro:` slugs.
+  - *Implementation*:
+    - **GATE CSE TopicFilter Subject Isolation (`src/components/Filters/TopicFilter.tsx`)**:
+      - Defined `isCseSubjectSlug(slug)` helper strictly ensuring `!slug.startsWith('isro:') && !slug.startsWith('da:') && !APTITUDE_SUBJECT_SLUGS.has(slug) && slug !== LEGACY_OPTIONAL_SUBJECT_SLUG`.
+      - Filtered `coreSubjects` with `isCseSubjectSlug(subject?.slug)`, cleanly guaranteeing that only authentic GATE CSE subjects appear inside the GATE CSE card.
+      - Filtered `activeCseSelected` to only include CSE subjects, cleanly decoupling subtopic auto-expansion and selection management from ISRO and DA subjects.
+    - **Insights Page Track Isolation (`src/pages/InsightsPage.jsx`)**:
+      - Updated `isSubjectInTrack` to detect `isIsro` (`key.startsWith("isro:") || key.startsWith("isro-")`) and ensure `track === "cs"` returns `(!isDa && !isIsro) || isGa`.
+    - **Mock Test Defensive Isolation (`src/components/MockTest/MockTestSetup.jsx`, `MockTestShell.jsx`)**:
+      - Excluded `!s.slug.startsWith("isro:")` from `cseSubjects` in `MockTestSetup.jsx` and `!s.startsWith("isro:")` from `cseSelected` in `MockTestShell.jsx`.
+    - **Automated Regression Testing (`src/contexts/FilterContext.test.jsx`)**:
+      - Added regression test `ISRO subjects are isolated to ISRO toggle and never leak into TopicFilter (GATE CSE)` confirming that when `includeIsro = true`, `.gate-cse-section-wrapper` strictly contains only GATE CSE subjects with zero ISRO subjects or badges.
+  - *Verification*: Full Vitest suite passing (**1,150 passed across 91 test files, 100% green**), TypeScript typecheck clean (`0 errors`).
+
+
 - **ISRO Question Edition Navigation, Page Refresh Persistence & Year-Scope Isolation Architecture (DEC-146)**:
   - *Context*: Two issues were reported in the ISRO Question Edition: (1) After clicking the ISRO marquee and navigating to the Filter/Explore page, refreshing the browser caused questions to disappear with "No index of questions found"; (2) Clicking "Explore all" (or "All" on mobile) navigated to a bare `/practice` route where GATE CSE questions appeared first instead of strictly showing ISRO questions.
   - *Root Causes*:

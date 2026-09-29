@@ -952,7 +952,7 @@ export async function syncUserData(userId, options = {}) {
       merged = unionMergeData(localData, cloudData);
 
       // 5. Save the merged data back to Supabase
-      // Tier 1: Full payload matching live artifacts/db-schema contract (including solved & bookmark removals)
+      // Tier 1: Full payload matching live supabase/db-schema contract (including solved & bookmark removals)
       const upsertPayload = {
         user_id: userId,
         bookmarks: merged.bookmarks,

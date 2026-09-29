@@ -1772,6 +1772,7 @@ const isSubjectInTrack = (subjectSlugOrKey = "", track = "all") => {
   if (track === "all") return true;
   const key = String(subjectSlugOrKey || "").toLowerCase();
   const isDa = key.startsWith("da:") || key.startsWith("da-");
+  const isIsro = key.startsWith("isro:") || key.startsWith("isro-");
   const isGa =
     key === "ga" ||
     key.startsWith("apt-") ||
@@ -1783,7 +1784,7 @@ const isSubjectInTrack = (subjectSlugOrKey = "", track = "all") => {
     return isDa || isGa;
   }
   if (track === "cs") {
-    return !isDa || isGa;
+    return (!isDa && !isIsro) || isGa;
   }
   return true;
 };

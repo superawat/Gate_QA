@@ -22,14 +22,14 @@ Cloud synchronization is a backup and cross-device layer. A network or Supabase 
 
 ## Live schema verification
 
-The live Supabase project was inspected using comprehensive schema metadata queries on **2026-08-17**. The captured metadata is retained locally under the [`artifacts/db-schema/`](../artifacts/db-schema/) directory:
+The live Supabase project was inspected using comprehensive schema metadata queries on **2026-08-17**. The captured metadata is retained locally under the [`supabase/db-schema/`](../supabase/db-schema/) directory:
 
-- [**`applied-migrations.md`**](../artifacts/db-schema/applied-migrations.md) — Relation check for migration history.
-- [**`schema.md`**](../artifacts/db-schema/schema.md) — Table columns, ordinal positions, defaults, constraints (`ON DELETE CASCADE`), indexes, and RLS flags.
-- [**`policies-and-grants.md`**](../artifacts/db-schema/policies-and-grants.md) — Active RLS policies (`USING` and `WITH CHECK`) and role-level table grants.
-- [**`jsonb-contracts.md`**](../artifacts/db-schema/jsonb-contracts.md) — JSONB column definitions and data structures.
-- [**`extensions-and-views.md`**](../artifacts/db-schema/extensions-and-views.md) — Installed PostgreSQL extensions and database views.
-- [**`functions-and-triggers.md`**](../artifacts/db-schema/functions-and-triggers.md) — Database functions, security definitions (`SECURITY DEFINER`), and active triggers.
+- [**`applied-migrations.md`**](../supabase/db-schema/applied-migrations.md) — Relation check for migration history.
+- [**`schema.md`**](../supabase/db-schema/schema.md) — Table columns, ordinal positions, defaults, constraints (`ON DELETE CASCADE`), indexes, and RLS flags.
+- [**`policies-and-grants.md`**](../supabase/db-schema/policies-and-grants.md) — Active RLS policies (`USING` and `WITH CHECK`) and role-level table grants.
+- [**`jsonb-contracts.md`**](../supabase/db-schema/jsonb-contracts.md) — JSONB column definitions and data structures.
+- [**`extensions-and-views.md`**](../supabase/db-schema/extensions-and-views.md) — Installed PostgreSQL extensions and database views.
+- [**`functions-and-triggers.md`**](../supabase/db-schema/functions-and-triggers.md) — Database functions, security definitions (`SECURITY DEFINER`), and active triggers.
 
 Verified public tables:
 

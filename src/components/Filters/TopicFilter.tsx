@@ -47,12 +47,18 @@ const TopicFilter = () => {
         return nextMap;
     }, [structuredSubtopics, subjects]);
 
+    const isCseSubjectSlug = (slug?: string) =>
+        Boolean(
+            slug
+            && slug !== LEGACY_OPTIONAL_SUBJECT_SLUG
+            && !APTITUDE_SUBJECT_SLUGS.has(slug)
+            && !slug.startsWith('da:')
+            && !slug.startsWith('isro:')
+        );
+
     const subjectGroups = useMemo<SubjectGroup[]>(() => {
         const coreSubjects = subjects.filter(
-            (subject) =>
-                subject?.slug !== LEGACY_OPTIONAL_SUBJECT_SLUG
-                && !APTITUDE_SUBJECT_SLUGS.has(subject?.slug)
-                && !subject?.slug.startsWith('da:')
+            (subject) => isCseSubjectSlug(subject?.slug)
         );
         const optionalSubjects = subjects.filter((subject) => subject?.slug === LEGACY_OPTIONAL_SUBJECT_SLUG);
 
@@ -76,8 +82,13 @@ const TopicFilter = () => {
         ].filter(Boolean) as SubjectGroup[];
     }, [subjects]);
 
+    const activeCseSelected = useMemo(
+        () => selectedSubjects.filter((slug) => isCseSubjectSlug(slug) || slug === LEGACY_OPTIONAL_SUBJECT_SLUG),
+        [selectedSubjects]
+    );
+
     useEffect(() => {
-        if (selectedSubjects.length === 0) {
+        if (activeCseSelected.length === 0) {
             if (expandedSubjectSlugs.size > 0) {
                 setExpandedSubjectSlugs(new Set());
             }
@@ -88,9 +99,9 @@ const TopicFilter = () => {
             let changed = false;
             const next = new Set<string>();
 
-            // Keep existing expansions that are still selected
+            // Keep existing expansions that are still selected and belong to CSE
             prev.forEach((slug) => {
-                if (selectedSubjectSet.has(slug)) {
+                if (selectedSubjectSet.has(slug) && (isCseSubjectSlug(slug) || slug === LEGACY_OPTIONAL_SUBJECT_SLUG)) {
                     next.add(slug);
                 } else {
                     changed = true;
@@ -98,7 +109,7 @@ const TopicFilter = () => {
             });
 
             // Auto-expand any subject that has active subtopic filters
-            selectedSubjects.forEach((subjectSlug) => {
+            activeCseSelected.forEach((subjectSlug) => {
                 const hasActiveSubtopic = (sortedSubtopicsBySubject.get(subjectSlug) || []).some(
                     (subtopic) => selectedSubtopicSet.has(subtopic.slug)
                 );
@@ -109,16 +120,16 @@ const TopicFilter = () => {
             });
 
             // If nothing is expanded yet, expand the first selected subject
-            if (next.size === 0 && selectedSubjects.length > 0) {
-                next.add(selectedSubjects[0]);
+            if (next.size === 0 && activeCseSelected.length > 0) {
+                next.add(activeCseSelected[0]);
                 changed = true;
             }
 
             return changed ? next : prev;
         });
     }, [
+        activeCseSelected,
         selectedSubjectSet,
-        selectedSubjects,
         selectedSubtopicSet,
         sortedSubtopicsBySubject,
     ]);

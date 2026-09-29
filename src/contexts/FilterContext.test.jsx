@@ -1441,5 +1441,33 @@ describe('FilterContext', () => {
             expect(filteredUids).not.toContain('go:2');
             expect(filteredUids).not.toContain('go:3');
         });
+
+        test('ISRO subjects are isolated to ISRO toggle and never leak into TopicFilter (GATE CSE)', async () => {
+            const { container, getByTestId } = renderWithRouter(
+                <FilterProvider initialIncludeIsro={true}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                expect(getByTestId('all-question-uids').textContent).toContain('isro:cs:2025:q1');
+            });
+
+            // The GATE CSE section must only contain CSE subjects, not ISRO subjects
+            const cseSection = container.querySelector('.gate-cse-section-wrapper');
+            expect(cseSection).toBeTruthy();
+            const cseText = cseSection.textContent;
+            expect(cseText).toContain('Databases');
+            expect(cseText).toContain('Operating System');
+            // Must NOT have ISRO badge or ISRO-specific subjects like Algorithms (from isro:algorithms)
+            expect(cseText).not.toContain('ISRO');
+            // Check that the number of subject labels in cseSection matches only the CSE subjects (databases, os)
+            const cseSubjectLabels = Array.from(cseSection.querySelectorAll('label span[title]')).map(el => el.getAttribute('title'));
+            expect(cseSubjectLabels).toEqual(['Databases', 'Operating System']);
+            expect(cseSubjectLabels).not.toContain('isro:algorithms');
+            expect(cseSubjectLabels).not.toContain('isro:os');
+            // Total subjects in CSE section should be exactly 2 from mock (Databases, Operating System)
+            expect(cseSubjectLabels.length).toBe(2);
+        });
     });
 });

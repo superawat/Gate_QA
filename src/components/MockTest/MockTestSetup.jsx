@@ -619,7 +619,7 @@ const MockTestSetup = ({
     };
 
     const cseSubjects = subjects.filter(
-        (s) => !s.slug.startsWith("da:") && s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug)
+        (s) => !s.slug.startsWith("da:") && !s.slug.startsWith("isro:") && s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug)
     );
     const daSubjects = subjects.filter((s) => s.slug.startsWith("da:"));
     const aptitudeSubjects = subjects.filter((s) => APTITUDE_SUBJECT_SLUGS.has(s.slug));
