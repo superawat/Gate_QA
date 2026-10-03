@@ -109,7 +109,7 @@ npm run typecheck
 
 - `IsroQuestionService` lazily loads `public/data/isro/isro-all.json` (~1.5 MB) and `public/data/isro/answers-isro.json`.
 - The user's preference is controlled via `useIsroEnabled()` in `src/utils/isroPreference.ts` (persisting to `gateqa_include_isro` with cross-tab event synchronization via `gateqa:isro-enabled-change`). Deep-linking directly to any `/practice/question/isro:*` route automatically forces the toggle on.
-- The practice filter sidebar mounts `IsroToggle.jsx` with amber branding, a master switch, and a collapsible subject breakdown showing real-time question counts across all 12 ISRO subjects.
+- The practice filter sidebar mounts `IsroToggle.jsx` with amber branding, a master switch, and a collapsible subject breakdown showing real-time question counts across all 12 ISRO subjects. ISRO subjects (`isro:<slug>`) are strictly isolated to `IsroToggle.jsx` and excluded from `TopicFilter.tsx` (GATE CSE) to eliminate duplicate subject listings (DEC-147).
 - `GlobalNavigationDrawer.jsx` provides an `ISRO CS Section` toggle switch styled with `FaRocket` and amber accent.
 - Filter state merges ISRO questions into `allQuestions` when enabled; dynamic count calculators (`calculateDynamicFilterCounts`) tally available ISRO questions without polluting GATE counts. When toggled off, active ISRO year and subject filters are cleanly auto-pruned.
 - Solved question IDs, bookmarks, and attempt timelines are strictly isolated in `gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, and `gateqa_isro_progress_v1`.

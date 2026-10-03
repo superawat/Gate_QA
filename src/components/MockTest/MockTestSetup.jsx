@@ -667,7 +667,7 @@ const MockTestSetup = ({
         : isCustom
             ? (selectedSubtopicCount > 0
                 ? `Will sample from ${selectedSubtopicCount} subtopic${selectedSubtopicCount === 1 ? "" : "s"} in the filtered pool when you start.`
-                : `Will sample ${setupState.customCount} question${Number(setupState.customCount) === 1 ? "" : "s"} from the filtered pool when you start.`)
+                : `Questions are balanced across your chosen subjects, with each question chosen uniformly at random within its subject.`)
             : "";
     const yearScopeLabel = setupState.yearFilterMode === "recent"
         ? `Recent years (${recentYearRangeLabel || "last 10 years"})`

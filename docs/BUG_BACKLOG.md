@@ -29,6 +29,32 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-MOCK-CUSTOM-BUILDER-SAMPLING-01: Custom Builder Question Frequency Bias & Subtopic Starvation
+- **Status**: Resolved on 2026-10-03 (DEC-148)
+- **Severity**: High (P1 Mock Engine / User Practice Fidelity)
+- **Area**: Custom Builder Mock Test Generation (`MockTestShell.jsx`, `mockSampling.ts`)
+- **Symptom**: User reported that Custom Builder questions did not feel random across attempts and consistently favoured an identical cluster of 40–50 questions per subject across two months of daily practice (`akshatchavan0@gmail.com`).
+- **Root Cause & Fix**:
+  - Legacy `takeFromBalancedSubject` in `MockTestShell.jsx` grouped pools by subtopic and iterated in a round-robin FIFO loop. In a 25Q test across ~20 subtopics, single-question subtopics appeared in 90–100% of tests, while 50+ question subtopics had <2% chance per question (a 50x probability distortion). Unclassified questions collapsed into a single "general" subtopic, starving them.
+  - Implemented `src/utils/mockSampling.ts` with `sampleSubjectStratifiedQuestions` and Fisher-Yates `uniformShuffle`. The sampler divides target quotas equally across selected subjects (bounded by pool size, with unfulfilled quota redistribution), then selects 100% uniformly at random within each subject stratum ($P(q_i | q_i \in S) = \text{quota}(S) / |Pool_S|$).
+  - Decoupled Custom Builder from Full Mock: Custom Builder calls `buildCustomMockSelection` while Full Mock preserves `balancedSample` in `buildStrictGeneratedSelection`.
+  - Added canonical subject normalization via `getQuestionSubjectKey` and pre-sampling `question_uid` deduplication.
+  - Fixed `resolveCountBasedSectionTargets` for count = 1 to allocate to the larger pool instead of hardcoding GA.
+  - Added empty pool guards and updated UI copy in `MockTestSetup.jsx`.
+- **Verification**: Created 11 unit tests in `mockSampling.test.ts`, 3 tests in `MockTestShell.test.jsx`, and audit script `scripts/qa/audit-custom-builder-sampling.mjs`. All 1,164 unit tests pass (100% green), TypeScript typecheck clean (0 errors).
+
+### BUG-FILTER-ISRO-SUBJECT-LEAKAGE-01: ISRO Subjects Duplicated Inside GATE CSE Filter Card
+- **Status**: Resolved on 2026-09-29 (DEC-147)
+- **Severity**: High (P1 Filter UX)
+- **Area**: Filter Sidebar / TopicFilter Component
+- **Symptom**: When ISRO was enabled, all 12 ISRO subjects (such as Computer Networks, Compiler Design, Databases, etc.) were duplicated inside the "GATE CSE" filter group in addition to appearing under the dedicated "ISRO CS (1,070)" card. Users saw duplicate subject options (e.g. two "Computer Networks" checkboxes) inside GATE CSE without any visual differentiation, making it ambiguous which option was for GATE CSE and which was for ISRO CS.
+- **Root Cause & Fix**:
+  - `TopicFilter.tsx` filtered `subjects` by checking `!subject?.slug.startsWith('da:')`, `!APTITUDE_SUBJECT_SLUGS.has(...)`, and `!== LEGACY_OPTIONAL_SUBJECT_SLUG`, but omitted checking `!subject?.slug.startsWith('isro:')`.
+  - Added `isCseSubjectSlug` helper in `TopicFilter.tsx` requiring `!slug.startsWith('isro:') && !slug.startsWith('da:') && !APTITUDE_SUBJECT_SLUGS.has(slug) && slug !== LEGACY_OPTIONAL_SUBJECT_SLUG`.
+  - Applied `isCseSubjectSlug` to `coreSubjects` and `activeCseSelected`, strictly isolating GATE CSE subjects and auto-expansions.
+  - Excluded `isro:` subjects from `isSubjectInTrack` in `InsightsPage.jsx` when `track === "cs"`, and added defensive checks to `MockTestSetup.jsx` and `MockTestShell.jsx`.
+- **Verification**: Added regression test in `FilterContext.test.jsx` verifying that `.gate-cse-section-wrapper` strictly contains only GATE CSE subjects and zero ISRO subjects; all 1,150 unit tests pass (100% green).
+
 ### BUG-PERF-PRACTICE-DELAY-01: Delay Between Loader and Practice Button Click (Perceived Freeze)
 - **Status**: Resolved on 2026-09-26 (DEC-138)
 - **Severity**: High (P0 UX)

@@ -295,11 +295,12 @@ Responsibilities:
 ### Multi-Track Filtering (GATE CSE, GATE DA, ISRO CS)
 
 When optional tracks are toggled:
-- **GATE CSE**: Always available by default (3,682 questions spanning 1987–2026).
-- **GATE DA (`includeDa`)**: Merges 195 DA questions with track key `da:<year>:set-<n>` and purple badges.
+- **GATE CSE**: Always available by default (3,682 questions spanning 1987–2026). Handled via `TopicFilter.tsx`, which strictly isolates genuine GATE CSE subjects by filtering out `isro:` and `da:` prefixes (DEC-147).
+- **GATE DA (`includeDa`)**: Merges 195 DA questions with track key `da:<year>:set-<n>` and purple badges. Displayed in dedicated `DaToggle.jsx` card.
 - **ISRO CS (`includeIsro`)**: Merges 1,070 ISRO CS questions with track key `isro:<year>:set-1` and amber badges.
   - Enabled via the `useIsroEnabled()` hook (`src/utils/isroPreference.ts`) and stored under `gateqa_include_isro`.
   - When enabled, `structuredTags.yearSets` dynamically includes ISRO examination years (2007–2025) and `structuredTags.subjects` presents the 12 ISRO subjects.
+  - ISRO subjects (`isro:<slug>`) are strictly isolated to the dedicated `IsroToggle.jsx` card and never leak into `TopicFilter.tsx` or GATE CSE auto-expansion states (DEC-147).
   - When disabled, ISRO filter tokens are automatically pruned from active filter state (`selectedYearSets`, `selectedSubjects`, `selectedSubtopics`) so student views are never corrupted.
   - Progress tracking operates independently via dedicated local storage keys (`gate_qa_isro_solved_questions`, `gate_qa_isro_bookmarked_questions`, `gateqa_isro_progress_v1`).
 
@@ -458,6 +459,17 @@ The Custom Mock Test Builder has been enhanced to support granular configuration
 - **Custom practice duration (`customDurationMode` & `customDurationMinutes`)**: Allows manual override of the default adaptive duration calculation:
   - `"adaptive"` (default): The exam duration dynamically scales based on the available questions in the filtered pool.
   - `"manual"`: Enforces a manual duration specified by `customDurationMinutes` (integer clamped between 5 and 180).
+
+### 6. Subject-Stratified Uniform Question Sampling (DEC-148)
+
+To eliminate the 50x frequency skew and rare subtopic starvation caused by legacy round-robin subtopic queues:
+- **Dedicated Custom Sampler (`src/utils/mockSampling.ts`)**: Custom Builder decouples from Full Mock's `balancedSample` and invokes `sampleSubjectStratifiedQuestions` via `buildCustomMockSelection`.
+- **Mathematical Guarantees**:
+  - **Single Subject**: 100% pure uniform random sampling across the pool ($P(q_i) = \text{targetCount} / |Pool|$).
+  - **Multi-Subject**: Equal/balanced quota allocation across selected subjects, followed by 100% uniform random selection within each subject stratum ($P(q_i \mid q_i \in S) = \text{quota}(S) / |Pool_S|$).
+  - **Small/Exhausted Pools**: Bounded by pool size; unfulfilled slots are redistributed across remaining active subjects.
+- **Canonical Subject Normalization**: Preserves track prefixes (`da:*`, `isro:*`) and special aptitude categories (`english`, `quant`, `reasoning`) via `getQuestionSubjectKey`.
+- **Empty Pool Guard**: When filtered pool count is 0, the attempt is blocked with clear resolution guidance.
 
 ## URL contract
 

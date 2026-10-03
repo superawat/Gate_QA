@@ -19,6 +19,7 @@ import {
 } from "../../utils/mockTest";
 import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
 import { getSubjectAllSubtopicSlugs } from "../../utils/mockTaxonomyHierarchy";
+import { sampleSubjectStratifiedQuestions } from "../../utils/mockSampling";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
 import CalculatorWidget from "../Calculator/CalculatorWidget";
 import MockTestHeader from "./MockTestHeader";
@@ -65,7 +66,7 @@ const MOCK_KIND_OPTIONS = [
         title: "Custom Builder",
         badge: "Flexible",
         subtitle: "Create a short mock, subject-focused run, or 15Q/25Q practice set from one builder.",
-        helper: "Build custom practice attempts across GATE CSE, GATE DA, and General Aptitude.",
+        helper: "Build custom practice attempts with balanced subject representation and uniform random question selection.",
         facts: { count: "1 to 65 Questions", duration: "Adaptive" },
         fixedCount: null,
         durationMinutes: null,
@@ -329,7 +330,7 @@ const resolveCountBasedSectionTargets = (count = 0, gaAvailable = 0, csAvailable
         return { gaTarget: Math.min(targetCount, gaAvailable), csTarget: 0 };
     }
     if (targetCount === 1) {
-        return { gaTarget: 1, csTarget: 0 };
+        return csAvailable >= gaAvailable ? { gaTarget: 0, csTarget: 1 } : { gaTarget: 1, csTarget: 0 };
     }
 
     const totalPatternCount = MOCK_SECTION_COUNTS.GA + MOCK_SECTION_COUNTS.CS;
@@ -400,6 +401,37 @@ const sortByCatalogOrder = (rows = [], questionMetaByUid = {}) => (
         return String(left?.question_uid || "").localeCompare(String(right?.question_uid || ""));
     })
 );
+
+export const buildCustomMockSelection = (rows = [], count = 0, questionMetaByUid = {}) => {
+    // 1. Deduplicate input rows by question_uid
+    const seenUids = new Set();
+    const uniqueRows = [];
+    for (const row of rows) {
+        const uid = String(row?.question_uid || "").trim();
+        if (uid && !seenUids.has(uid)) {
+            seenUids.add(uid);
+            uniqueRows.push(row);
+        } else if (!uid) {
+            uniqueRows.push(row);
+        }
+    }
+
+    // 2. Split into GA and CS sections
+    const sections = splitByCatalogSection(uniqueRows, questionMetaByUid);
+    const targets = resolveCountBasedSectionTargets(
+        count,
+        sections.gaQuestions.length,
+        sections.csQuestions.length
+    );
+
+    // 3. Subject-Stratified Uniform Sampling within each section
+    const getSubjectKey = (question) => getQuestionSubjectKey(question);
+
+    return {
+        gaQuestions: sampleSubjectStratifiedQuestions(sections.gaQuestions, targets.gaTarget, { getSubjectKey }),
+        csQuestions: sampleSubjectStratifiedQuestions(sections.csQuestions, targets.csTarget, { getSubjectKey }),
+    };
+};
 
 const buildCountBasedSelection = (rows = [], count = 0, questionMetaByUid = {}) => {
     const sections = splitByCatalogSection(rows, questionMetaByUid);
@@ -1048,7 +1080,9 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 canStart: false,
                 requiredSummary: String(requiredCount),
                 availableSummary: String(filteredPool.length),
-                message: `Only ${filteredPool.length} validated questions match the current filters.`,
+                message: filteredPool.length === 0
+                    ? "No scorable questions match the current filters. Adjust your subjects, years, or question types."
+                    : `Only ${filteredPool.length} validated questions match the current filters.`,
             };
         }
 
@@ -1346,7 +1380,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     }, []);
 
     const handleStartExam = useCallback(async () => {
-        if (!selectedKind || !availability.canStart || isStartingExam) {
+        if (!selectedKind || !availability.canStart || isStartingExam || (selectedKind.id === "custom" && filteredPool.length === 0)) {
             return;
         }
 
@@ -1390,7 +1424,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 csQuestions = selection.csQuestions;
                 strictSectionCounts = { ...MOCK_SECTION_COUNTS };
             } else if (selectedKind.id === "custom") {
-                const selection = buildCountBasedSelection(filteredPool, customCount, questionMetaByUid);
+                const selection = buildCustomMockSelection(filteredPool, customCount, questionMetaByUid);
                 gaQuestions = selection.gaQuestions;
                 csQuestions = selection.csQuestions;
                 const manualMins = Number(setupState.customDurationMinutes);

@@ -5,7 +5,7 @@ import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
-import MockTestShell, { isSolvedQuestion, isBookmarkedQuestion } from "./MockTestShell";
+import MockTestShell, { isSolvedQuestion, isBookmarkedQuestion, buildCustomMockSelection } from "./MockTestShell";
 
 let mockMockTestContext = null;
 let mockFilterContext = null;
@@ -792,4 +792,42 @@ describe("MockTestShell", () => {
     expect(gaCheckbox.checked).toBe(false);
     expect(screen.getByTestId("preview-ga").textContent).toBe("3");
   });
+
+  describe("buildCustomMockSelection", () => {
+    test("deduplicates questions by question_uid before sampling", () => {
+      const rows = [
+        { question_uid: "q1", subjectSlug: "os" },
+        { question_uid: "q1", subjectSlug: "os" }, // Duplicate!
+        { question_uid: "q2", subjectSlug: "os" },
+      ];
+      const result = buildCustomMockSelection(rows, 10, {});
+      expect(result.csQuestions).toHaveLength(2);
+      expect(result.csQuestions.map((q) => q.question_uid).sort()).toEqual(["q1", "q2"]);
+    });
+
+    test("allocates single question tests to CS when CS pool is larger than GA", () => {
+      const rows = [
+        { question_uid: "ga1", subjectSlug: "ga" },
+        { question_uid: "cs1", subjectSlug: "os" },
+        { question_uid: "cs2", subjectSlug: "os" },
+      ];
+      const result = buildCustomMockSelection(rows, 1, {});
+      expect(result.gaQuestions).toHaveLength(0);
+      expect(result.csQuestions).toHaveLength(1);
+    });
+
+    test("balances selection across subjects in multi-subject pool", () => {
+      const rows = [
+        ...Array.from({ length: 10 }, (_, i) => ({ question_uid: `os_${i}`, subjectSlug: "os" })),
+        ...Array.from({ length: 10 }, (_, i) => ({ question_uid: `algo_${i}`, subjectSlug: "algorithms" })),
+      ];
+      const result = buildCustomMockSelection(rows, 6, {});
+      expect(result.csQuestions).toHaveLength(6);
+      const osCount = result.csQuestions.filter((q) => q.subjectSlug === "os").length;
+      const algoCount = result.csQuestions.filter((q) => q.subjectSlug === "algorithms").length;
+      expect(osCount).toBe(3);
+      expect(algoCount).toBe(3);
+    });
+  });
 });
+

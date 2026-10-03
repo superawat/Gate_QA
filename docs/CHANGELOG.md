@@ -1,5 +1,29 @@
 # Changelog
 
+- **Custom Builder Subject-Stratified Uniform Sampling & Subtopic Starvation Elimination Architecture (DEC-148)**:
+  - *Context*: A dedicated daily user reported that Custom Builder questions did not feel random across attempts and consistently favoured an identical cluster of 40–50 questions per subject across two months of daily practice (`akshatchavan0@gmail.com`).
+  - *Root Causes*:
+    1. In `src/components/MockTest/MockTestShell.jsx`, `balancedSample` and `takeFromBalancedSubject` implemented a hierarchical FIFO round-robin queue over subtopics. In a 25-question single-subject test where $T \ge$ number of subtopics $K$ ($K \approx 20\text{--}27$), every subtopic was forced into the attempt. Single-question subtopics (e.g. `depth-first-search` in Algorithms) appeared in 90–100% of all generated tests, while 50+ question subtopics (e.g. `graph-algorithms`) had individual question probabilities under 1.6% (a 50x probability distortion).
+    2. Questions without taxonomy tags collapsed into a single `"general"` subtopic bucket, diluting unclassified questions 40-fold.
+    3. The sum of questions in small and medium subtopic buckets averaged 40–50 questions per subject, producing the persistent question repetition observed by the user.
+  - *Implementation*:
+    - **Subject-Stratified Uniform Sampling Engine (`src/utils/mockSampling.ts`)**:
+      - Created `sampleSubjectStratifiedQuestions` and `uniformShuffle` using pure Fisher-Yates with optional injected PRNG.
+      - Guarantees: (a) Single-subject selection yields 100% pure uniform random sampling across the pool ($P(q_i) = T / |Pool|$); (b) Multi-subject selection allocates bounded equal representation per selected subject, followed by 100% uniform random selection within each subject stratum ($P(q_i \mid q_i \in S) = \text{quota}(S) / |Pool_S|$); (c) Small or exhausted subject pools cap at availability and unfulfilled quotas are dynamically redistributed among remaining active subjects.
+    - **Custom Builder Scoping & Caller Decoupling (`src/components/MockTest/MockTestShell.jsx`)**:
+      - Decoupled Custom Builder from Full Mock: preserved `balancedSample` exclusively for `buildStrictGeneratedSelection` (Full Mock 10 GA / 55 CS), while Custom Builder calls `buildCustomMockSelection`.
+      - Integrated canonical subject normalization via `getQuestionSubjectKey` (preserving `da:*`, `isro:*`, and special aptitude categories).
+      - Added pre-sampling deduplication by `question_uid`.
+      - Resolved single-question allocation in `resolveCountBasedSectionTargets`: when $count = 1$ and both GA and Core are selected, allocates proportionally to the larger pool rather than hardcoding a 100% GA override.
+      - Updated `availability` to provide clear guidance when `filteredPool.length === 0`: *"No scorable questions match the current filters. Adjust your subjects, years, or question types."*
+    - **UI & Error States (`src/components/MockTest/MockTestSetup.jsx`, `MockTestShell.jsx`)**:
+      - Updated Custom Builder helper copy: *"Questions are balanced across your chosen subjects, with each question chosen uniformly at random within its subject."*
+    - **Testing & QA Verification**:
+      - Added 11 deterministic unit tests in `src/utils/mockSampling.test.ts` using seeded PRNG (`mulberry32`).
+      - Added 3 unit tests in `src/components/MockTest/MockTestShell.test.jsx` verifying deduplication, section splitting, and multi-subject balance.
+      - Checked in standalone audit script `scripts/qa/audit-custom-builder-sampling.mjs` confirming maximum appearance frequency dropped from 100/100 to 17–20/100, and zero-appearance questions dropped to zero.
+  - *Verification*: Full Vitest suite passing (**1,164 passed across 91 test files, 100% green**), TypeScript typecheck clean (`0 errors`).
+
 - **ISRO Subject Isolation from GATE CSE TopicFilter & Track Scoping Architecture (DEC-147)**:
   - *Context*: When ISRO was enabled, all 12 ISRO subjects (such as Computer Networks, Compiler Design, Databases, Digital Logic, etc.) were duplicated inside the "GATE CSE" filter group in addition to appearing under the dedicated "ISRO CS (1,070)" card. Users saw duplicate subject options (e.g. two "Computer Networks" checkboxes) inside GATE CSE without any visual differentiation, making it ambiguous which option was for GATE CSE and which was for ISRO CS.
   - *Root Causes*:
