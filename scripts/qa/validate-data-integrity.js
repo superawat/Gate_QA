@@ -32,6 +32,13 @@ const SHARDS_DIR = path.join(ROOT, "public/question-detail-shards");
 const VALID_OPTION_LABELS = new Set(["A", "B", "C", "D", "E"]);
 const ERRORS = [];
 
+function normalizeTypeAlias(value = "") {
+  const type = String(value || "").trim().toUpperCase().replace(/[\s-]+/g, "_");
+  if (type === "MTA") return "MARKS_TO_ALL";
+  if (type === "MULTI_BLANK_NAT") return "MULTI_NAT";
+  return type;
+}
+
 function logError(category, message, details = null) {
   ERRORS.push({ category, message, details });
   console.error(`❌ [${category}] ${message}`, details ? details : "");
@@ -191,8 +198,8 @@ if (fs.existsSync(SHARDS_DIR)) {
     for (const [uid, sRec] of Object.entries(records)) {
       const pRec = publicAnswers[uid];
       if (pRec) {
-        const sType = String(sRec.type || "").trim().toUpperCase();
-        const pType = String(pRec.type || "").trim().toUpperCase();
+        const sType = normalizeTypeAlias(sRec.type);
+        const pType = normalizeTypeAlias(pRec.type);
         if (sType && pType && sType !== pType) {
           logError("SHARD_PUBLIC_PARITY", `Shard ${file} ${uid} type mismatch: shard=${sRec.type} vs public=${pRec.type}`);
         }

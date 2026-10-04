@@ -5,10 +5,12 @@ import path from "node:path";
 import { EDITORIAL_PAGES } from "../src/data/editorialPages.js";
 import {
   extractEmbeddedOptions as extractSharedEmbeddedOptions,
+  countStructuredEmbeddedOptions,
   stripEmbeddedOptions as stripSharedEmbeddedOptions,
 } from "../src/utils/stripEmbeddedOptions.js";
 import { buildDaPublicArtifacts } from "./da-pipeline/build-da-artifacts.mjs";
 import { buildTrackYearSetKey, getQuestionTrack, isItQuestion } from "../src/utils/examTrack.js";
+import { resolveQuestionType } from "../src/utils/questionTypeResolution.js";
 import { buildHomepageSearchCatalog } from "./build-homepage-search-catalog.mjs";
 
 const ROOT = process.cwd();
@@ -762,12 +764,18 @@ function hasValidMockAnswer(answerRecord = null, type = "") {
     const values = Array.isArray(answerRecord.answer)
       ? answerRecord.answer
       : [answerRecord.answer];
-    return values.some((value) => String(value ?? "").trim() !== "");
+    return values.some((value) => {
+      const token = String(value ?? "").trim();
+      return token !== "" && Number.isFinite(Number(token));
+    });
   }
   if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
     return Array.isArray(answerRecord.answer)
       && answerRecord.answer.length > 0
-      && answerRecord.answer.every((value) => String(value ?? "").trim() !== "");
+      && answerRecord.answer.every((value) => {
+        const token = String(value ?? "").trim();
+        return token !== "" && Number.isFinite(Number(token));
+      });
   }
   return false;
 }
@@ -1246,53 +1254,24 @@ function registerMockMeta(group, meta, byQuestionUid) {
 }
 
 function resolveMockQuestionType(question = {}, answerRecord = null) {
-  const answerType = String(answerRecord?.type || question.type || "").trim().toUpperCase();
-
-  if (MOCK_AUTO_AWARD_TYPES.has(answerType)) {
-    return answerType;
-  }
-
-  if (answerType === "MULTI_NAT" || answerType === "MULTI_BLANK_NAT") {
-    return "MULTI_NAT";
-  }
-
-  // Authoritative answerRecord/question types take precedence over loose community tags
-  if (answerType === "MCQ") {
-    return "MCQ";
-  }
-
-  if (answerType === "MSQ") {
-    return "MSQ";
-  }
-
-  if (answerType === "NAT") {
-    return "NAT";
-  }
-
-  // Fallback to tags only if answerType is not already definitive
-  const tags = Array.isArray(question.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
-  const isExplicitNatTag = tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat");
-  const isExplicitMsqTag = tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq");
-  const isExplicitMcqTag = tags.includes("multiple-choice") || tags.includes("mcq");
-
-  if (isExplicitNatTag) {
-    return "NAT";
-  }
-
-  if (isExplicitMsqTag && Array.isArray(answerRecord?.answer)) {
-    return "MSQ";
-  }
-
-  if (isExplicitMcqTag) {
-    return "MCQ";
-  }
-
-  if (MOCK_OBJECTIVE_TYPES.has(answerType)) {
-    return answerType;
-  }
-
-  return null;
+  const options = getMockOptions(question);
+  const answer = answerRecord?.answer ?? question?.answer_meta?.answer ?? question?.answerMeta?.answer;
+  return resolveQuestionType({
+    candidates: [
+      { source: "answer_record", type: answerRecord?.type },
+      { source: "answer_meta", type: question?.answer_meta?.type },
+      { source: "answerMeta", type: question?.answerMeta?.type },
+      { source: "question.type", type: question?.type },
+    ],
+    optionCount: options.length,
+    conflictOptionCount: Math.max(
+      normalizeMockOptionsFromRaw(question?.options).length,
+      countStructuredEmbeddedOptions(question?.question || ""),
+    ),
+    answer,
+  });
 }
+
 
 function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
   const byQuestionUid = {};
@@ -1311,12 +1290,14 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
     }
 
     const answerRecord = answersByQuestionUid[questionUid] || null;
-    const type = resolveMockQuestionType(question, answerRecord);
+    const typeResolution = resolveMockQuestionType(question, answerRecord);
+    const type = typeResolution.type;
     const isObjectiveType = Boolean(type && MOCK_OBJECTIVE_TYPES.has(type));
     const isAutoAwardType = Boolean(type && MOCK_AUTO_AWARD_TYPES.has(type));
-    const validationIssues = isObjectiveType
-      ? getMockQuestionValidationIssues(question, answerRecord, type)
-      : [];
+    const validationIssues = [
+      ...typeResolution.issues,
+      ...(isObjectiveType ? getMockQuestionValidationIssues(question, answerRecord, type) : []),
+    ];
     const mockReady = isAutoAwardType || (isObjectiveType && validationIssues.length === 0);
 
     if (!paperGroups.has(yearSet.key)) {
@@ -1545,12 +1526,14 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
 
     const yearSet = parseYearSet(question);
     const answerRecord = answersByQuestionUid[questionUid] || null;
-    const type = resolveMockQuestionType(question, answerRecord);
+    const typeResolution = resolveMockQuestionType(question, answerRecord);
+    const type = typeResolution.type;
     const isObjectiveType = Boolean(type && MOCK_OBJECTIVE_TYPES.has(type));
     const isAutoAwardType = Boolean(type && MOCK_AUTO_AWARD_TYPES.has(type));
-    const validationIssues = isObjectiveType
-      ? getMockQuestionValidationIssues(question, answerRecord, type)
-      : [];
+    const validationIssues = [
+      ...typeResolution.issues,
+      ...(isObjectiveType ? getMockQuestionValidationIssues(question, answerRecord, type) : []),
+    ];
     const mockReady = isAutoAwardType || (isObjectiveType && validationIssues.length === 0);
 
     const isGa = question.subjectSlug === "ga"
@@ -1570,7 +1553,7 @@ function buildMockCatalog(questions = [], answersByQuestionUid = {}) {
       orderIndex: null,
       section,
       title: String(question.title || "").trim(),
-      type: type || "MCQ",
+      type: type || "",
       marks,
       negativeMarks,
       paperReady: false,
@@ -1918,6 +1901,9 @@ async function buildArtifacts() {
       });
     }
 
+    const answerRecord = answersByQuestionUid[questionUid] || null;
+    const resolvedType = resolveMockQuestionType(question, answerRecord).type;
+
     const shard = detailShards.get(detailShardKey);
     shard.questionCount += 1;
     shard.recordsByQuestionUid[questionUid] = {
@@ -1927,6 +1913,7 @@ async function buildArtifacts() {
       yearSetKey: yearSet.key || null,
       yearSetIdentity: yearSet.yearSetIdentity || null,
       tags: sanitizedTags,
+      type: resolvedType,
     };
 
     return {
@@ -1944,7 +1931,7 @@ async function buildArtifacts() {
       exam_uid: String(question.exam_uid || "").trim(),
       id_str: question.id_str ?? null,
       volume: question.volume ?? null,
-      type: String(question.type || "").trim(),
+      type: resolvedType,
       link: question.link || "",
       preview,
       searchText,

@@ -3,7 +3,8 @@ import {
   getCanonicalExamUidFromQuestion,
   parseExamUid,
 } from "../../utils/examUid";
-import { extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
+import { countStructuredEmbeddedOptions, extractEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
+import { resolveQuestionType } from "../../utils/questionTypeResolution.js";
 import { buildTrackYearSetKey, isItQuestion } from "../../utils/examTrack";
 import { IQuestionService } from "./types";
 import { QuestionRow, QuestionOption } from "../../types";
@@ -460,8 +461,29 @@ export function normalizeQuestion(this: IQuestionService, question: any = {}): Q
   const subjectLabel = this.resolveCanonicalSubject(normalized);
   const subjectSlug = this.getSubjectSlugByLabel(subjectLabel);
   const canonicalSubtopics = this.extractCanonicalSubtopics(normalized.tagsRaw, subjectLabel);
-  const canonicalType = this.normalizeTypeToken(normalized.type);
   const normalizedOptions = this.normalizeQuestionOptions(normalized.options, normalized.question);
+  const typeResolution = resolveQuestionType({
+    candidates: [
+      { source: "answer_meta", type: normalized.answer_meta?.type },
+      { source: "answerMeta", type: normalized.answerMeta?.type },
+      { source: "question.type", type: normalized.type },
+    ],
+    optionCount: normalizedOptions.length,
+    conflictOptionCount: Math.max(
+      this.normalizeQuestionOptionsFromRaw(normalized.options).length,
+      countStructuredEmbeddedOptions(normalized.question || ""),
+    ),
+    answer: normalized.answer_meta?.answer ?? normalized.answerMeta?.answer,
+  });
+  const canonicalType = typeResolution.type
+    ? this.normalizeTypeToken(typeResolution.type)
+    : "unknown";
+
+  if (normalized.answer_meta && !normalized.answerMeta) {
+    normalized.answerMeta = normalized.answer_meta;
+  } else if (normalized.answerMeta && !normalized.answer_meta) {
+    normalized.answer_meta = normalized.answerMeta;
+  }
 
   normalized.canonical = {
     uid: normalized.question_uid,
@@ -484,6 +506,7 @@ export function normalizeQuestion(this: IQuestionService, question: any = {}): Q
   normalized.yearSetLabel = exam.label;
   normalized.subtopics = canonicalSubtopics;
   normalized.type = canonicalType;
+  normalized.typeResolutionIssues = typeResolution.issues;
   normalized.normalizedOptions = normalizedOptions;
   normalized.malformed = isMalformedContent(normalized.question);
 
@@ -737,6 +760,7 @@ export function finalizeQuestions(this: IQuestionService, questions: QuestionRow
 
 export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any = {}, indexedQuestion: any = null): QuestionRow {
   const normalizedDetail = this.normalizeQuestion(rawQuestion);
+  const rawAnswerMeta = rawQuestion?.answer_meta || rawQuestion?.answerMeta || null;
   const mergedExam = indexedQuestion?.exam || normalizedDetail.exam;
   const mergedSubjectLabel = indexedQuestion?.subject || normalizedDetail.subject;
   const mergedSubjectSlug = indexedQuestion?.subjectSlug || normalizedDetail.subjectSlug;
@@ -744,7 +768,24 @@ export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any =
     Array.isArray(indexedQuestion?.subtopics) && indexedQuestion.subtopics.length > 0
       ? indexedQuestion.subtopics
       : normalizedDetail.subtopics;
-  const mergedType = this.normalizeTypeToken(indexedQuestion?.type || normalizedDetail.type);
+  const typeResolution = resolveQuestionType({
+    candidates: [
+      { source: "answer_record", type: rawAnswerMeta?.type },
+      { source: "search_index", type: indexedQuestion?.type },
+      { source: "answer_meta", type: rawQuestion?.answer_meta?.type },
+      { source: "answerMeta", type: rawQuestion?.answerMeta?.type },
+      { source: "question.type", type: rawQuestion?.type },
+    ],
+    optionCount: normalizedDetail.normalizedOptions?.length || 0,
+    conflictOptionCount: Math.max(
+      this.normalizeQuestionOptionsFromRaw(rawQuestion?.options).length,
+      countStructuredEmbeddedOptions(rawQuestion?.question || ""),
+    ),
+    answer: rawAnswerMeta?.answer,
+  });
+  const mergedType = typeResolution.type
+    ? this.normalizeTypeToken(typeResolution.type)
+    : "unknown";
   const mergedTags =
     Array.isArray(normalizedDetail.tags) && normalizedDetail.tags.length > 0
       ? normalizedDetail.tags
@@ -758,12 +799,14 @@ export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any =
 
   return {
     ...normalizedDetail,
+    ...(rawAnswerMeta ? { answer_meta: rawAnswerMeta, answerMeta: rawAnswerMeta } : {}),
     preview: indexedQuestion?.preview || "",
     searchText: indexedQuestion?.searchText || "",
     detailShardKey: this.getDetailShardKey(indexedQuestion || normalizedDetail),
     track: mergedTrack,
     tags: sanitizedMergedTags,
     tagsRaw: [...sanitizedMergedTags],
+    typeResolutionIssues: typeResolution.issues,
     exam: mergedExam,
     year: mergedExam?.year ?? normalizedDetail.year,
     set: mergedExam?.set ?? normalizedDetail.set,
@@ -782,6 +825,7 @@ export function buildDetailedQuestion(this: IQuestionService, rawQuestion: any =
       subjectLabel: mergedSubjectLabel,
       subtopics: mergedSubtopics,
       type: mergedType,
+      typeResolutionIssues: typeResolution.issues,
       tagsRaw: [...sanitizedMergedTags],
     },
   } as QuestionRow;

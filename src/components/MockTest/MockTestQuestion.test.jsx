@@ -85,6 +85,57 @@ describe("MockTestQuestion", () => {
     expect(metaRow.textContent).toContain("Negative Marks: 1/3");
   });
 
+  test("renders the numeric-output incident as an MCQ with selectable A-D options", () => {
+    mockContextValue.currentQuestion = {
+      ...baseMcqQuestion,
+      question_uid: "go:422894",
+      type: "MCQ",
+      title: "GATE CSE 2024 | Set 2 | Question: 3",
+      tags: ["numerical-answers", "multiple-selects", "output"],
+      question: "<p>Which option is the correct program output?</p>",
+      options: [
+        { label: "A", text: "20101020" },
+        { label: "B", text: "10202010" },
+        { label: "C", text: "20102010" },
+        { label: "D", text: "10201020" },
+      ],
+      normalizedOptions: [
+        { label: "A", text: "20101020", html: "20101020" },
+        { label: "B", text: "10202010", html: "10202010" },
+        { label: "C", text: "20102010", html: "20102010" },
+        { label: "D", text: "10201020", html: "10201020" },
+      ],
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:422894",
+      section: "CS",
+      type: "MCQ",
+      marks: 1,
+      negativeMarks: 0.3333333333,
+    };
+
+    render(<MockTestQuestion isReviewPhase={false} />);
+
+    expect(screen.getByText("MCQ")).toBeTruthy();
+    expect(screen.getByTestId("mock-option-selector-A")).toBeTruthy();
+    expect(screen.getByText("20101020")).toBeTruthy();
+    expect(screen.queryByTestId("mock-nat-input")).toBeNull();
+  });
+
+  test("shows choices but disables scoring controls when explicit type metadata conflicts", () => {
+    mockContextValue.currentQuestion = {
+      ...baseMcqQuestion,
+      type: "NAT",
+    };
+
+    render(<MockTestQuestion isReviewPhase={false} />);
+
+    expect(screen.getByRole("alert").textContent).toContain("excluded from scoring");
+    expect(screen.getByTestId("mock-options-display").textContent).toContain("First option");
+    expect(screen.queryByTestId("mock-option-selector-A")).toBeNull();
+    expect(screen.queryByTestId("mock-nat-input")).toBeNull();
+  });
+
   test("strips embedded option lists from the mock question stem", () => {
     mockContextValue.currentQuestion = {
       ...baseMcqQuestion,

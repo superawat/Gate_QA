@@ -3,7 +3,7 @@ import { IQuestionService } from "./types";
 import { QuestionRow } from "../../types";
 import { parseTrackYearSetKey } from "../../utils/examTrack";
 
-const INIT_CACHE_VERSION = "v12";
+const INIT_CACHE_VERSION = "v13";
 const INDEX_CACHE_KEY = `gateqa_index_cache_${INIT_CACHE_VERSION}`;
 const FULL_BANK_CACHE_KEY = `gateqa_full_bank_cache_${INIT_CACHE_VERSION}`;
 

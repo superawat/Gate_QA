@@ -9,11 +9,12 @@ import {
     isMockAutoAwardType,
 } from "../../utils/mockTest";
 import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
-import { stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
+import { countStructuredEmbeddedOptions, stripEmbeddedOptions } from "../../utils/stripEmbeddedOptions";
 import { MathContent } from "../Math/MathRuntime";
 import { cleanLatexHtml } from "../../utils/latexClean";
 import { formatCodeSnippets } from "../../utils/codeSnippet";
 import { MTA_EXPLANATION_TEXT } from "../../utils/questionType";
+import { resolveQuestionType } from "../../utils/questionTypeResolution.js";
 
 const OPTION_LABELS = QuestionService.OPTION_LABELS;
 
@@ -148,39 +149,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         return null;
     }
 
-    const rawType = String(currentQuestionMeta?.type || "").trim().toUpperCase();
     const reviewResult = isReviewPhase ? currentQuestionResult : null;
-    const isTrueFalse = useMemo(
-        () => isTrueFalseMockQuestion(
-            currentQuestion,
-            rawType,
-            reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta
-        ),
-        [currentQuestion, rawType, reviewResult?.answerRecord]
-    );
-    const typeLabel = formatQuestionTypeLabel(currentQuestionMeta?.type);
-    const marks = Number(currentQuestionMeta?.marks || 0);
-    const negativeMarks = formatNegativeMarks(currentQuestionMeta?.negativeMarks);
-    const isNAT = rawType === "NAT";
-    const isMultiNAT = rawType === "MULTI_NAT" || rawType === "MULTI_BLANK_NAT";
-    const blankCount = useMemo(() => {
-        if (!isMultiNAT) return 0;
-        const ansRecord = reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta;
-        if (Array.isArray(ansRecord?.answer)) return ansRecord.answer.length;
-        return 2;
-    }, [isMultiNAT, reviewResult?.answerRecord, currentQuestion]);
-    const isMSQ = rawType === "MSQ";
-    const isAutoAwarded = isMockAutoAwardType(rawType);
-
-    const autoAwardMessage = rawType === "SUBJECTIVE"
-        ? "This legacy subjective prompt is awarded automatically. No response is required."
-        : `${MTA_EXPLANATION_TEXT} No response is required.`;
-    const currentResponse = responses[questionUid];
-    const verdictCopy = getVerdictCopy(reviewResult);
-    const correctOptionSet = useMemo(
-        () => buildCorrectOptionSet(reviewResult?.answerRecord),
-        [reviewResult?.answerRecord]
-    );
 
     const normalizedOptions = useMemo(
         () => QuestionService.getNormalizedOptions(currentQuestion),
@@ -194,6 +163,60 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         [currentQuestion]
     );
     const displayOptions = explicitOptions.length > 0 ? explicitOptions : normalizedOptions;
+    // Parsed A/B/C fragments can also be multipart prompts. Only explicit choices
+    // or structured alpha lists can contradict explicit NAT answer metadata.
+    const typeResolution = useMemo(() => {
+        const answerRecord = reviewResult?.answerRecord;
+        return resolveQuestionType({
+            candidates: [
+                { source: "answer_record", type: answerRecord?.type },
+                { source: "answer_meta", type: currentQuestion?.answer_meta?.type },
+                { source: "answerMeta", type: currentQuestion?.answerMeta?.type },
+                { source: "catalog", type: currentQuestionMeta?.type },
+                { source: "question.type", type: currentQuestion?.type },
+            ],
+            optionCount: displayOptions.length,
+            conflictOptionCount: Math.max(
+                explicitOptions.length,
+                countStructuredEmbeddedOptions(currentQuestion?.question || ""),
+            ),
+            answer: answerRecord?.answer ?? currentQuestion?.answer_meta?.answer ?? currentQuestion?.answerMeta?.answer,
+        });
+    }, [currentQuestion, currentQuestionMeta?.type, displayOptions.length, reviewResult?.answerRecord]);
+    const effectiveType = typeResolution.type;
+    const isTypeResolved = Boolean(effectiveType);
+
+    const isTrueFalse = useMemo(
+        () => isTrueFalseMockQuestion(
+            currentQuestion,
+            effectiveType,
+            reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta
+        ),
+        [currentQuestion, effectiveType, reviewResult?.answerRecord]
+    );
+    const typeLabel = formatQuestionTypeLabel(effectiveType);
+    const marks = Number(currentQuestionMeta?.marks || 0);
+    const negativeMarks = formatNegativeMarks(currentQuestionMeta?.negativeMarks);
+    const isNAT = effectiveType === "NAT";
+    const isMultiNAT = effectiveType === "MULTI_NAT" || effectiveType === "MULTI_BLANK_NAT";
+    const blankCount = useMemo(() => {
+        if (!isMultiNAT) return 0;
+        const ansRecord = reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta;
+        if (Array.isArray(ansRecord?.answer)) return ansRecord.answer.length;
+        return 2;
+    }, [isMultiNAT, reviewResult?.answerRecord, currentQuestion]);
+    const isMSQ = effectiveType === "MSQ";
+    const isAutoAwarded = isMockAutoAwardType(effectiveType);
+
+    const autoAwardMessage = effectiveType === "SUBJECTIVE"
+        ? "This legacy subjective prompt is awarded automatically. No response is required."
+        : `${MTA_EXPLANATION_TEXT} No response is required.`;
+    const currentResponse = responses[questionUid];
+    const verdictCopy = getVerdictCopy(reviewResult);
+    const correctOptionSet = useMemo(
+        () => buildCorrectOptionSet(reviewResult?.answerRecord),
+        [reviewResult?.answerRecord]
+    );
 
     const sanitizedQuestionHtml = useMemo(() => {
         try {
@@ -203,7 +226,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                     .replace(/\n\n/g, "<br />")
                     .replace(/\n<li>/g, "<br><li>")
             );
-            const questionHtmlForDisplay = displayOptions.length > 0
+            const questionHtmlForDisplay = (displayOptions.length > 0 && isTypeResolved && !isNAT && !isMultiNAT)
                 ? stripEmbeddedOptions(rawQuestionHtml)
                 : rawQuestionHtml;
             return DOMPurify.sanitize(questionHtmlForDisplay || "", {
@@ -212,7 +235,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         } catch {
             return DOMPurify.sanitize(String(currentQuestion?.question || ""));
         }
-    }, [currentQuestion?.question_uid, currentQuestion?.question, displayOptions.length]);
+    }, [currentQuestion?.question_uid, currentQuestion?.question, displayOptions.length, isTypeResolved, isNAT, isMultiNAT]);
 
     const sanitizedDisplayOptions = useMemo(() => {
         try {
@@ -254,7 +277,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
     }
     let reviewResponseText = reviewResult?.status === "bonus"
         ? "Not required"
-        : formatMockResponse(reviewResult?.response, rawType);
+        : formatMockResponse(reviewResult?.response, effectiveType);
     if (isTrueFalse) {
         if (String(reviewResponseText).trim() === "1") {
             reviewResponseText = "TRUE";
@@ -431,6 +454,26 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                             {isAutoAwarded ? (
                                 <div className="rounded border border-[#c8e6d1] bg-[#f1fbf4] px-3 py-3 text-sm font-semibold text-[#0f6f2f]">
                                     {autoAwardMessage}
+                                </div>
+                            ) : !isTypeResolved ? (
+                                <div className="mt-2 flex flex-col gap-3">
+                                    <div role="alert" className="rounded border border-[#e6c987] bg-[#fff9e9] px-3 py-2 text-sm text-[#6f4d00]">
+                                        Question format could not be verified. This item is excluded from scoring until its answer metadata is corrected.
+                                    </div>
+                                    {displayOptions.length > 0 ? (
+                                        <div className="flex flex-col gap-2" data-testid="mock-options-display">
+                                            {sanitizedDisplayOptions.map((option, index) => (
+                                                option.sanitizedHtml ? (
+                                                    <div key={index} className="flex items-start gap-2 text-[15px] text-gray-800">
+                                                        <span className="font-bold flex-shrink-0">{option.label || OPTION_LABELS[index]}.</span>
+                                                        <MathContent as="div" dynamic className="mock-option-text flex-1 overflow-auto">
+                                                            <span dangerouslySetInnerHTML={{ __html: option.sanitizedHtml }} />
+                                                        </MathContent>
+                                                    </div>
+                                                ) : null
+                                            ))}
+                                        </div>
+                                    ) : null}
                                 </div>
                             ) : isNAT ? (
                                 <div className="relative z-10 mt-4 flex flex-col gap-2">

@@ -19,6 +19,8 @@ import {
   validateMockQuestionForPool,
 } from "../utils/mockTest";
 import { isDaQuestion } from "../utils/examTrack";
+import { resolveQuestionType } from "../utils/questionTypeResolution.js";
+import { countStructuredEmbeddedOptions } from "../utils/stripEmbeddedOptions";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
 import { APTITUDE_PROGRESS_STORAGE_KEY, DA_PROGRESS_STORAGE_KEY, PRACTICE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
 import { enqueueChange } from "../utils/syncQueue";
@@ -173,7 +175,6 @@ export const writeAttemptStorage = (payload) => {
             options: q.options,
             type: q.type,
             exam: q.exam,
-            answerMeta: q.answerMeta,
             marks: q.marks,
             negativeMarks: q.negativeMarks,
           };
@@ -392,21 +393,22 @@ const buildFallbackMockMetaByUid = (questions = []) => {
 
     const answerRecord = AnswerService.getAnswerForQuestion(question);
     const tags = Array.isArray(question?.tags) ? question.tags.map((t) => String(t || "").toLowerCase()) : [];
-    let rawType = String(answerRecord?.type || question?.answerMeta?.type || question?.type || "").trim().toUpperCase();
-
-    if (rawType === "MULTI_NAT" || rawType === "MULTI_BLANK_NAT" || rawType === "MCQ" || rawType === "MSQ" || rawType === "NAT") {
-      // Authoritative answerRecord/question type takes precedence over community tags
-    } else if (tags.includes("multi-nat") || tags.includes("multi-blank-nat")) {
-      rawType = "MULTI_NAT";
-    } else if (tags.includes("numerical-answers") || tags.includes("numerical-answer") || tags.includes("nat")) {
-      rawType = "NAT";
-    } else if (tags.includes("multiple-selects") || tags.includes("multiple-select") || tags.includes("msq")) {
-      rawType = "MSQ";
-    } else if (tags.includes("multiple-choice") || tags.includes("mcq")) {
-      rawType = "MCQ";
-    }
-
-    const type = normalizeMockType(rawType) || normalizeMockAutoAwardType(rawType) || "MCQ";
+    const options = QuestionService.getNormalizedOptions(question);
+    const typeResolution = resolveQuestionType({
+      candidates: [
+        { source: "answer_record", type: answerRecord?.type },
+        { source: "answer_meta", type: question?.answer_meta?.type },
+        { source: "answerMeta", type: question?.answerMeta?.type },
+        { source: "question.type", type: question?.type },
+      ],
+      optionCount: options.length,
+      conflictOptionCount: Math.max(
+        QuestionService.normalizeQuestionOptionsFromRaw(question?.options || []).length,
+        countStructuredEmbeddedOptions(question?.question || ""),
+      ),
+      answer: answerRecord?.answer ?? question?.answer_meta?.answer ?? question?.answerMeta?.answer,
+    });
+    const type = typeResolution.type;
     const isTechnical = isTechnicalMockQuestion(question);
     const isGa = !isTechnical && (
       question?.subjectSlug === "ga"
@@ -444,6 +446,7 @@ const buildFallbackMockMetaByUid = (questions = []) => {
       section,
       title: String(question?.title || "").trim(),
       type,
+      typeResolutionIssues: typeResolution.issues,
       marks,
       negativeMarks,
       paperReady: false,
@@ -592,6 +595,19 @@ const hasValidMockQuestionForPool = (question = null, questionMetaByUid = {}) =>
   }).valid;
 };
 
+const restoreEmbeddedQuestionWithCatalogType = (question, catalogQuestionMetaByUid = {}) => {
+  if (!question || typeof question !== "object") return question;
+  const catalogMeta = catalogQuestionMetaByUid[normalizeUid(question.question_uid)];
+  if (!catalogMeta?.scorable || !catalogMeta?.type) return question;
+  return {
+    ...question,
+    type: catalogMeta.type,
+    answer_meta: undefined,
+    answerMeta: undefined,
+    typeResolutionIssues: [],
+  };
+};
+
 const reconcileQuestionStatesWithResponses = (
   questionStates,
   responses,
@@ -683,6 +699,19 @@ export const MockTestProvider = ({ children }) => {
   const lastStateFingerprintRef = useRef("");
   const lastStorageWriteRef = useRef(0);
 
+  const [answersLoaded, setAnswersLoaded] = useState(() => AnswerService.loaded);
+
+  useEffect(() => {
+    if (AnswerService.loaded) {
+      setAnswersLoaded(true);
+      return;
+    }
+    const unsubscribe = AnswerService.subscribe(() => {
+      setAnswersLoaded(AnswerService.loaded);
+    });
+    return unsubscribe;
+  }, []);
+
   const catalogQuestionMetaByUid = useMemo(
     () => (catalog?.byQuestionUid && typeof catalog.byQuestionUid === "object" ? catalog.byQuestionUid : {}),
     [catalog]
@@ -697,7 +726,7 @@ export const MockTestProvider = ({ children }) => {
   );
   const fallbackQuestionMetaByUid = useMemo(
     () => buildFallbackMockMetaByUid(mockQuestionPool),
-    [mockQuestionPool]
+    [mockQuestionPool, answersLoaded]
   );
   const questionMetaByUid = useMemo(() => {
     if (attemptMeta?.kindId === "paper_mode") {
@@ -969,7 +998,9 @@ export const MockTestProvider = ({ children }) => {
         return { ok: false, reason: "duplicate_uid" };
       }
       seen.add(uid);
-      const question = byUid.get(uid) || embeddedMap.get(uid);
+      const currentQuestion = byUid.get(uid);
+      const embeddedQuestion = embeddedMap.get(uid);
+      const question = currentQuestion || restoreEmbeddedQuestionWithCatalogType(embeddedQuestion, catalogQuestionMetaByUid);
       if (!question) {
         return { ok: false, reason: "invalid_uid", retry: true };
       }
@@ -1034,7 +1065,9 @@ export const MockTestProvider = ({ children }) => {
 
     const restoredQuestions = questionUids
       .map((uid) => {
-        const question = byUid.get(uid) || embeddedMap.get(uid);
+        const currentQuestion = byUid.get(uid);
+        const embeddedQuestion = embeddedMap.get(uid);
+        const question = currentQuestion || restoreEmbeddedQuestionWithCatalogType(embeddedQuestion, catalogQuestionMetaByUid);
         if (!question) return null;
         if (!hasValidMockQuestionForPool(question, effectiveMetaByUid) && !embeddedMap.has(uid)) {
           return null;
@@ -1138,13 +1171,6 @@ export const MockTestProvider = ({ children }) => {
 
     try {
       const byUid = new Map(mockQuestionPool.map((question) => [question.question_uid, question]));
-      if (Array.isArray(rawAttempt?.questions)) {
-        rawAttempt.questions.forEach((q) => {
-          if (q?.question_uid && isValidEmbeddedQuestion(q) && !byUid.has(q.question_uid)) {
-            byUid.set(q.question_uid, q);
-          }
-        });
-      }
 
       const restored = Array.isArray(rawAttempt?.gaUids) || Array.isArray(rawAttempt?.csUids)
         ? restoreFromSectionedPayload(rawAttempt, byUid)
@@ -1315,7 +1341,6 @@ export const MockTestProvider = ({ children }) => {
         options: q.options,
         type: q.type,
         exam: q.exam,
-        answerMeta: q.answerMeta,
         marks: q.marks,
         negativeMarks: q.negativeMarks,
       })),
@@ -1389,7 +1414,6 @@ export const MockTestProvider = ({ children }) => {
         options: q.options,
         type: q.type,
         exam: q.exam,
-        answerMeta: q.answerMeta,
         marks: q.marks,
         negativeMarks: q.negativeMarks,
       })),

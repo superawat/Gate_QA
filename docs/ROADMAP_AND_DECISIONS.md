@@ -24,6 +24,37 @@ This file is the working backlog for future product improvements and important d
 
 ## Decision Log
 
+### DEC-149: Custom Builder Question Type Invariant & False-NAT Elimination Architecture
+- Status: Locally Verified (2026-10-05); Phase 6 Deployment Smoke Checks & Broader Content Review Pending
+- Priority: P0 (Exam Simulation Integrity / Grading Correctness)
+- Decision:
+  1. **Structural Option Invariant Across Pipeline and Client**: Enforce the invariant that any question possessing $\ge 2$ options is structurally guaranteed to be an objective choice question (MCQ or MSQ) and strictly cannot be classified as NAT. Scraper tag `numerical-answers` indicates only that the mathematical solution is numeric, not that the delivery mode is NAT; it resolves to NAT only when no options are present and the answer is non-letter.
+  2. **Multipart NAT Prompt vs True Choice Disambiguation**: In `src/utils/questionTypeResolution.js`, lettered multipart NAT prompts (e.g. subparts `(A)... (B)...` in questions like `go:19701`, `go:118746`) are distinguished from confirmed choice options by validating that NAT only conflicts if `isOptionLabel(answer)` (answer is `"A"`, `"B"`, etc.) or parsed option count $\ge 4$, preserving scorable Digital Logic NAT questions.
+  3. **Pipeline Shard & Search Index Injection (`scripts/build-public-artifacts.mjs`)**: Inject authoritative `resolvedType` and `answer_meta` into `public/question-search-index.json` and all 60 static detail shards (`public/question-detail-shards/`), eliminating all 1,538 empty type fields (0 empty types remaining across the 3,682 questions).
+  4. **Normalizer & Reactivity Engine (`QuestionNormalizer.ts`, `AnswerService.ts`, `MockTestContext.tsx`)**: In `QuestionNormalizer.ts`, map `answer_meta` to top-level `type` and `answerMeta` rather than dropping to `"unknown"`. In `AnswerService.ts`, introduce pub/sub listener subscriptions (`subscribe`/`notifyListeners`). In `MockTestContext.tsx`, subscribe to `AnswerService` to recompute `fallbackQuestionMetaByUid` when answers finish loading, preventing premature tag fallback.
+  5. **Mock Question Presentation Protection (`src/components/MockTest/MockTestQuestion.jsx`)**: Derive `effectiveType` respecting the structural option invariant. Suppress `stripEmbeddedOptions` when `isNAT` or `isMultiNAT` is true so that question statement `<ol>` choices are never stripped from display when a numeric keypad is shown.
+  6. **Validation & Answer Robustness (`src/utils/mockTest.js`)**: Require numeric parsing in `hasValidAnswerForType` for NAT (rejecting option letters like `"A"`). Enforce option invariant checks in `validateMockQuestionForPool`. Corrected GATE IT 2004 Q40 (`go:3683`) from legacy NAT index `3` to `MCQ: C`.
+  7. **Audit & DA Parity Extension (`scripts/qa/audit-custom-builder-question-types.mjs`)**: Extended audit coverage to include all 195 GATE DA rows alongside 3,682 CSE rows (3,677 scorable). All 195 DA rows verified with 0 mismatches across search index, catalog, and answers (`artifacts/review/custom-builder-question-type-audit.json`).
+  8. **Cache Invalidation**: Bump `INIT_CACHE_VERSION = "v13"` in `QuestionLoader.ts` and `SW_VERSION = "gateqa-sw-v2"` in `public/sw.js` to purge stale cached metadata on client browsers.
+- Why:
+  1. A student reported a critical defect on 04/10/2026: In Custom Builder, questions with multiple choices were presented as NAT with only a numeric keypad, and entering the correct numerical answer was graded as incorrect (e.g. `go:422894` output `20101020` graded against MCQ option `"A"`).
+  2. Investigation revealed that GateOverflow's `numerical-answers` tag was mistakenly treated as a delivery format, empty types in the search index fell back to tags, and `MockTestQuestion` stripped `<ol>` options while hiding MCQ selector buttons.
+- Remaining Work:
+  1. Complete Phase 6 deployment and service-worker cache smoke checks (testing returning client with old cache and in-progress attempt restore across Custom Builder, Paper Mode, and Full Mock).
+  2. Broader review of student-reported wrong options and calculations (investigating specific UIDs against official keys, separate from the 1,172 general missing answer records reported by the data validator).
+
+### DEC-148: Custom Builder Subject-Stratified Uniform Sampling & Subtopic Starvation Elimination Architecture
+- Status: Delivered (2026-10-03)
+- Priority: P1 (Mock Test Engine / Practice Fidelity)
+- Decision:
+  1. **Subject-Stratified Uniform Sampler Utility (`src/utils/mockSampling.ts`)**: Create `sampleSubjectStratifiedQuestions` and `uniformShuffle` (unbiased Fisher-Yates shuffle with optional injected PRNG). The sampler allocates target question quotas equally across selected subjects (bounded by subject pool capacity), redistributes unfulfilled quotas from exhausted subjects iteratively across remaining active subjects, and selects questions 100% uniformly at random within each subject stratum ($P(q_i \mid q_i \in S) = \text{quota}(S) / |Pool_S|$). For single-subject selection, this guarantees pure uniform randomness ($P(q_i) = \text{targetCount} / |Pool|$).
+  2. **Caller Decoupling & Scoping (`src/components/MockTest/MockTestShell.jsx`)**: Decouple Custom Builder from Full Mock's `balancedSample`. Implement `buildCustomMockSelection` exclusively for Custom Builder, while keeping Full Mock (`full_length`, 10 GA + 55 Core across 12 subjects) strictly on `buildStrictGeneratedSelection` and `balancedSample`.
+  3. **Section Target Allocation & Pre-Sampling Deduplication**: In `resolveCountBasedSectionTargets`, fix the $count = 1$ edge case by allocating to the larger available pool rather than hardcoding GA. Deduplicate candidate rows by `question_uid` before sampling. Normalize subject slugs via `getQuestionSubjectKey` to preserve `da:*` and `isro:*` tracks and special aptitude categories.
+  4. **UI Honesty & Empty State Guards (`src/components/MockTest/MockTestSetup.jsx`)**: Update helper copy to: *"Questions are balanced across your chosen subjects, with each question chosen uniformly at random within its subject."* Guard exam start and display an explanatory warning if `filteredPool.length === 0`.
+- Why:
+  1. A daily user (`akshatchavan0@gmail.com`) reported that Custom Builder questions consistently favoured an identical cluster of 40–50 questions per subject across attempts.
+  2. Monte Carlo audit confirmed that legacy `takeFromBalancedSubject` grouped questions by subtopic tag and ran a round-robin FIFO loop. Single-question subtopics appeared in 90–100% of 25Q tests, while 50+ question subtopics appeared with <2% chance (a 50x distortion), and untagged questions collapsed into a single "general" bucket.
+
 ### DEC-138: Practice Button Latency Optimization, Subtopic Search Routing Precision, Session Exhaustion Banner Anti-Jitter Architecture & BrandLoader Animation
 - Status: Delivered (2026-09-26)
 - Priority: P0

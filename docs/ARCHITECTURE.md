@@ -651,6 +651,18 @@ The Mock Test subsystem (`/mock`) provides authentic simulation of the GATE comp
 4. **History Retention & Post-Exam Drills:**
    - Retains up to 50 attempts in `gateqa_mock_history_v1` (FIFO).
    - Direct `"Practice Missed Questions"` integration links incorrect/unanswered questions straight to Practice Mode.
+5. **Custom Builder Subject-Stratified Uniform Sampling Architecture (DEC-148):**
+   - Decoupled from Full Mock's `balancedSample`: Custom Builder uses `sampleSubjectStratifiedQuestions` (`src/utils/mockSampling.ts`) via `buildCustomMockSelection`.
+   - Divides target question quotas equally across selected subjects (bounded by subject pool capacity), redistributes unfulfilled quotas from exhausted subjects iteratively across remaining active subjects, and selects questions 100% uniformly at random within each subject stratum ($P(q_i \mid q_i \in S) = \text{quota}(S) / |Pool_S|$), eliminating subtopic skew and repeated-question clusters.
+   - Enforces pre-sampling `question_uid` deduplication, handles $count = 1$ allocations to the larger pool, and normalizes canonical subject slugs via `getQuestionSubjectKey`.
+6. **Structural Option Invariant & Delivery Type Resolution Engine (DEC-149):**
+   - **Type source rule:** The shared `src/utils/questionTypeResolution.js` resolver trusts explicit answer-record, answer metadata, and documented top-level types. Semantic tags such as `numerical-answers` and numeric answer values never imply NAT. Unknown or conflicting explicit types remain unresolved.
+   - **Choice evidence rule:** Direct option arrays and validated alpha-marked answer lists can conflict with NAT metadata. Lettered multipart prompts are excluded from that conflict check; extracting A/B/C fragments for display is not by itself proof of MCQ options.
+   - **Generated types:** `scripts/build-public-artifacts.mjs` writes normalized `type` values to the search index, mock catalog, and detail shards (0 blank search types among 3,682 CSE rows). It does not inject full `answer_meta` answer values into unrelated index/shard records.
+   - **Context & Normalizer reactivity:** `AnswerService` pub/sub notification triggers `MockTestContext` fallback metadata recomputation when answers load. `QuestionNormalizer` preserves source answer metadata and resolves effective type using the shared resolver.
+   - **Scoring and rendering safeguards:** Mock pool validation and scoring fail closed on type conflicts; NAT answers must be numeric. `MockTestQuestion.jsx` only strips extracted choice HTML when matching MCQ/MSQ controls render and exposes an unscored state for unresolved types.
+   - **Cache invalidation:** `INIT_CACHE_VERSION = "v13"` in `QuestionLoader.ts` and `SW_VERSION = "gateqa-sw-v2"` in `public/sw.js`.
+   - **Local verification (2026-10-05):** Full Vitest run passed (1,179 passed, 6 skipped), typecheck/build and artifact validators passed. Audit checked 3,677 scorable CSE rows and 195 DA rows with no type mismatches or scorable contract violations. The general data validator still reports 1,172 actionable missing answer records, 3 subjective, and 11 unsupported; this is outside the type-resolution checks. Production cache/browser smoke and broad wrong-option/calculation audit remain open.
 
 ## Known limitation reference
 

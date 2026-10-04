@@ -1,5 +1,23 @@
 # Changelog
 
+- **Custom Builder Question Type Invariant & False-NAT Elimination Architecture (DEC-149)**:
+  - *Context*: A student reported on 04/10/2026: *"Several times a week. You have many Questions which have wrong options, the caluclations are wrong, liek I got a normal question asking for NAT answer, and one NAT answer which I gave was correct, but somehow it was marked wrong. this only specific to custom builder . image attached ."*
+  - *Root Causes*:
+    1. Scraper Tag Conflation: On GateOverflow, tag `numerical-answers` describes numerical content, not the exam response format. The October 5 artifact audit found 162 tagged questions with parsed choice-like fragments; 160 are MCQ/MSQ and 2 are explicit NAT multipart prompts.
+    2. Search Index Deprivation: `scripts/build-public-artifacts.mjs` wrote unverified `type: String(question.type || "").trim()`, leaving 1,538 out of 3,682 questions with `type: ""` in `public/question-search-index.json`.
+    3. Normalization Drop: `QuestionNormalizer.ts` didn't copy `answer_meta` (snake_case) to top-level `type` or camelCase `answerMeta`, serializing questions as `type: "unknown"`.
+    4. Reactivity Race: `MockTestContext.tsx` computed `fallbackQuestionMetaByUid` while `AnswerService.init()` was in flight, falling back to tags (`numerical-answers` -> `NAT`) and never recomputing upon answer load.
+    5. Option-Stripping Trap: In `MockTestQuestion.jsx`, because `isNAT` was true and `displayOptions.length > 0`, `stripEmbeddedOptions` removed option text from the stem while the MCQ buttons were suppressed, leaving only a numeric keypad. When the user entered the numerical output (e.g. `20101020`), the evaluator checked for option letter `"A"`, marking it wrong.
+  - *Implementation*:
+    - **Shared Type Resolver (`src/utils/questionTypeResolution.js`)**: Canonicalizes trusted type metadata, never infers NAT from semantic tags or numeric answers, and leaves explicit type conflicts unresolved. Choice evidence distinguishes direct option arrays and alpha-marked answer lists from lettered multipart prompts.
+    - **Build Pipeline (`scripts/build-public-artifacts.mjs`)**: Uses the shared resolver for search index and mock catalog types; the current audit reports 0 blank search-index types. Detail shards retain source fields and carry the resolved `type`; the builder does not inject full answer values into unrelated records.
+    - **Normalizer (`src/services/question-service/QuestionNormalizer.ts`)**: In `normalizeQuestion` and `buildDetailedQuestion`, resolves type from trusted type sources and uses confirmed choice evidence to detect NAT conflicts; preserves answer metadata supplied by the source.
+    - **Context Reactivity (`src/contexts/MockTestContext.tsx`, `src/services/AnswerService.ts`)**: Added `subscribe`/`notifyListeners` to `AnswerService` so `MockTestContext` reactively recomputes fallback mock metadata when answers finish loading without triggering premature network fetches in unit tests.
+    - **Validation (`src/utils/mockTest.js`)**: Updated NAT answer validation to require numeric values; type mismatches and stale numeric free-text responses for MCQs fail closed without negative marks.
+    - **UI Protection (`src/components/MockTest/MockTestQuestion.jsx`)**: Derives the effective type from trusted metadata and only removes extracted choice HTML when the matching MCQ/MSQ controls render. Unresolved types show a non-scoring state.
+    - **Cache Invalidation**: Bumped `INIT_CACHE_VERSION` to `"v13"` in `QuestionLoader.ts` and `SW_VERSION` to `"gateqa-sw-v2"` in `public/sw.js`.
+  - *Verification (local, October 5, 2026)*: Vitest passed (**1,179 passed, 6 skipped; 92 passing files, 1 skipped file**); typecheck, production build, CSE and DA data validators, CSE/DA type audit, and public parity passed. Audit: 3,677 scorable CSE rows and 195 DA rows checked; zero type mismatches or scorable contract violations. `go:422894` is MCQ/A across source, answer registry, search index, and catalog, with a regression test confirming the MCQ UI/scoring path. `qa:validate-data` still reports 1,172 actionable missing answers, 3 subjective, and 11 unsupported records as a separate coverage issue. Deployment verification and the wider wrong-option/calculation content audit remain pending.
+
 - **Custom Builder Subject-Stratified Uniform Sampling & Subtopic Starvation Elimination Architecture (DEC-148)**:
   - *Context*: A dedicated daily user reported that Custom Builder questions did not feel random across attempts and consistently favoured an identical cluster of 40–50 questions per subject across two months of daily practice (`akshatchavan0@gmail.com`).
   - *Root Causes*:

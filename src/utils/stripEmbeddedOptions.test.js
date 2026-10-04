@@ -1,8 +1,37 @@
 import { describe, expect, test } from "vitest";
 
-import { extractEmbeddedOptions, stripEmbeddedOptions } from "./stripEmbeddedOptions";
+import { countStructuredEmbeddedOptions, extractEmbeddedOptions, stripEmbeddedOptions } from "./stripEmbeddedOptions";
 
 describe("stripEmbeddedOptions", () => {
+  test("only counts explicitly alpha-marked lists as strong choice evidence", () => {
+    const multipartPrompt = `
+      <p>A. First subquestion?</p>
+      <p>B. Second subquestion?</p>
+      <p>C. Third subquestion?</p>
+    `;
+    const choiceList = `
+      <ol style="list-style-type:upper-alpha"><li>One</li><li>Two</li><li>Three</li></ol>
+    `;
+
+    expect(extractEmbeddedOptions(multipartPrompt)).toHaveLength(3);
+    expect(countStructuredEmbeddedOptions(multipartPrompt)).toBe(0);
+    expect(countStructuredEmbeddedOptions(choiceList)).toBe(3);
+  });
+
+  test("does not treat alpha-labeled multipart NAT subquestions as answer choices", () => {
+    const multipartPrompt = `
+      <p>What is the elapsed time if:</p>
+      <ol style="list-style-type:upper-alpha">
+        <li>records are unblocked and no buffering is used?</li>
+        <li>records are blocked and one buffer is used?</li>
+      </ol>
+      <p>The value is ______.</p>
+    `;
+
+    expect(extractEmbeddedOptions(multipartPrompt)).toHaveLength(2);
+    expect(countStructuredEmbeddedOptions(multipartPrompt)).toBe(0);
+  });
+
   test("removes wrapped alpha option lists", () => {
     const html = `
       <div itemprop="text">

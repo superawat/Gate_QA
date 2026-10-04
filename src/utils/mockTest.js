@@ -1,6 +1,7 @@
 import { evaluateAnswer } from "./evaluateAnswer.js";
-import { extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions.js";
+import { countStructuredEmbeddedOptions, extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions.js";
 import { getQuestionTrack, getQuestionYearSetIdentity, isDaQuestion } from "./examTrack.js";
+import { resolveQuestionType } from "./questionTypeResolution.js";
 
 export const MOCK_SECTION_COUNTS = {
   GA: 10,
@@ -307,13 +308,19 @@ const hasValidAnswerForType = (answerRecord = null, type = "") => {
     const values = Array.isArray(answerRecord.answer)
       ? answerRecord.answer
       : [answerRecord.answer];
-    return values.some((value) => String(value ?? "").trim() !== "");
+    return values.some((value) => {
+      const trimmed = String(value ?? "").trim();
+      return trimmed !== "" && !Number.isNaN(Number(trimmed));
+    });
   }
 
   if (normalizedType === "MULTI_NAT" || normalizedType === "MULTI_BLANK_NAT") {
     return Array.isArray(answerRecord.answer)
       && answerRecord.answer.length > 0
-      && answerRecord.answer.every((value) => String(value ?? "").trim() !== "");
+      && answerRecord.answer.every((value) => {
+        const trimmed = String(value ?? "").trim();
+        return trimmed !== "" && !Number.isNaN(Number(trimmed));
+      });
   }
 
   return false;
@@ -326,8 +333,33 @@ export const validateMockQuestionForPool = ({
 } = {}) => {
   const issues = [];
   const questionUid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
-  const type = normalizeMockType(questionMeta?.type || answerRecord?.type || question?.type || "")
-    || normalizeMockAutoAwardType(questionMeta?.type || answerRecord?.type || question?.type || "");
+
+  const options = getMockQuestionOptions(question || {});
+  const structuredOptionCount = Math.max(
+    normalizeRawOptions(question?.options).length,
+    Array.isArray(question?.normalizedOptions) ? normalizeRawOptions(question.normalizedOptions).length : 0
+  );
+  const embeddedOptionCount = extractOptionsFromQuestionHtml(question?.question || "").length;
+  const conflictOptionCount = Math.max(
+    structuredOptionCount,
+    countStructuredEmbeddedOptions(question?.question || ""),
+  );
+  const hasOptions = options.length >= 2 || structuredOptionCount >= 2 || embeddedOptionCount >= 2;
+
+  const typeResolution = resolveQuestionType({
+    candidates: [
+      { source: "answer_record", type: answerRecord?.type },
+      { source: "question_meta", type: questionMeta?.type },
+      { source: "answer_meta", type: question?.answer_meta?.type },
+      { source: "answerMeta", type: question?.answerMeta?.type },
+      { source: "question.type", type: question?.type },
+    ],
+    optionCount: Math.max(options.length, structuredOptionCount, embeddedOptionCount),
+    conflictOptionCount,
+    answer: answerRecord?.answer ?? question?.answer_meta?.answer ?? question?.answerMeta?.answer,
+  });
+  const type = typeResolution.type;
+  issues.push(...typeResolution.issues);
 
   if (!question || typeof question !== "object") {
     issues.push("missing_question");
@@ -338,10 +370,6 @@ export const validateMockQuestionForPool = ({
   if (!questionMeta || questionMeta.scorable !== true) {
     issues.push("unscorable_meta");
   }
-  if (!type) {
-    issues.push("missing_type");
-  }
-
   const isDeferredHydration = Boolean(
     question?.detailShardKey
     || question?.track === "da"
@@ -367,12 +395,6 @@ export const validateMockQuestionForPool = ({
     issues.push("remote_gateoverflow_image");
   }
 
-  const options = getMockQuestionOptions(question || {});
-  const structuredOptionCount = Math.max(
-    normalizeRawOptions(question?.options).length,
-    Array.isArray(question?.normalizedOptions) ? normalizeRawOptions(question.normalizedOptions).length : 0
-  );
-  const embeddedOptionCount = extractOptionsFromQuestionHtml(question?.question || "").length;
   const hasMixedOptionSources = structuredOptionCount > 0 && hasEmbeddedOptions(question?.question || "");
   const optionLabels = new Set(options.map((option) => normalizeOptionLabel(option?.label)).filter(Boolean));
   const objectiveType = normalizeMockType(type);
@@ -601,12 +623,25 @@ export const buildMockQuestionResult = ({
   timeSpentSeconds = 0,
 } = {}) => {
   const questionUid = String(question?.question_uid || questionMeta?.questionUid || "").trim();
-  const type = normalizeMockType(questionMeta?.type || answerRecord?.type || "")
-    || normalizeMockAutoAwardType(questionMeta?.type || answerRecord?.type || "");
+  const options = getMockQuestionOptions(question || {});
+  const typeResolution = resolveQuestionType({
+    candidates: [
+      { source: "answer_record", type: answerRecord?.type },
+      { source: "question_meta", type: questionMeta?.type },
+      { source: "answer_meta", type: question?.answer_meta?.type },
+      { source: "answerMeta", type: question?.answerMeta?.type },
+      { source: "question.type", type: question?.type },
+    ],
+    optionCount: options.length,
+    conflictOptionCount: Math.max(
+      normalizeRawOptions(question?.options).length,
+      countStructuredEmbeddedOptions(question?.question || ""),
+    ),
+    answer: answerRecord?.answer ?? question?.answer_meta?.answer ?? question?.answerMeta?.answer,
+  });
+  const type = typeResolution.type;
   const autoAwarded = Boolean(
-    questionMeta?.autoAwarded
-    || isMockAutoAwardType(questionMeta?.type)
-    || isMockAutoAwardType(answerRecord?.type)
+    type && (questionMeta?.autoAwarded || isMockAutoAwardType(type))
   );
   const marks = Number(questionMeta?.marks || 0);
   const negativeMarks = Number.isFinite(Number(questionMeta?.negativeMarks))
@@ -634,6 +669,20 @@ export const buildMockQuestionResult = ({
     timeExceededThreshold: normalizedTimeSpentSeconds > MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
   };
 
+  if (!type || typeResolution.issues.length > 0) {
+    return {
+      ...baseResult,
+      status: "excluded",
+      correct: false,
+      scoreDelta: 0,
+      marks: 0,
+      negativeMarks: 0,
+      excluded: true,
+      exclusionReason: typeResolution.issues[0] || "missing_type",
+      typeResolutionIssues: typeResolution.issues.length > 0 ? typeResolution.issues : ["missing_type"],
+    };
+  }
+
   if (autoAwarded) {
     return {
       ...baseResult,
@@ -650,6 +699,25 @@ export const buildMockQuestionResult = ({
     return {
       ...baseResult,
       status: "missing_answer",
+    };
+  }
+
+  const hasValidOptionResponse = type === "MCQ"
+    ? /^[A-E]$/i.test(String(response ?? "").trim())
+    : (type === "MSQ"
+      ? Array.isArray(response) && response.length > 0 && response.every((value) => /^[A-E]$/i.test(String(value ?? "").trim()))
+      : true);
+  if (!hasValidOptionResponse) {
+    return {
+      ...baseResult,
+      status: "excluded",
+      correct: false,
+      scoreDelta: 0,
+      marks: 0,
+      negativeMarks: 0,
+      excluded: true,
+      exclusionReason: "invalid_response_for_type",
+      typeResolutionIssues: ["invalid_response_for_type"],
     };
   }
 

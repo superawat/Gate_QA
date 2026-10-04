@@ -244,7 +244,7 @@ describe("MockTestContext", () => {
   });
 
   test("empty NAT values stay unanswered and submitTest stores a result summary", async () => {
-    const natQuestion = buildQuestion("cs:nat", "Operating System", "2024-s1", 2024);
+    const natQuestion = buildQuestion("cs:nat", "Operating System", "2024-s1", 2024, "NAT");
     mockAllQuestions = [natQuestion];
 
     MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
@@ -743,7 +743,7 @@ describe("MockTestContext", () => {
   });
 
   test("partial MSQ answers score zero without negative marks", async () => {
-    const question = buildQuestion("cs:msq", "Operating System", "2024-s1", 2024);
+    const question = buildQuestion("cs:msq", "Operating System", "2024-s1", 2024, "MSQ");
     mockAllQuestions = [question];
 
     MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
@@ -808,7 +808,7 @@ describe("MockTestContext", () => {
   });
 
   test("NAT answers within tolerance receive full marks", async () => {
-    const question = buildQuestion("cs:nat-tolerance", "Operating System", "2024-s1", 2024);
+    const question = buildQuestion("cs:nat-tolerance", "Operating System", "2024-s1", 2024, "NAT");
     mockAllQuestions = [question];
 
     MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
@@ -874,7 +874,7 @@ describe("MockTestContext", () => {
   });
 
   test("NAT answers outside tolerance stay incorrect without negative marks", async () => {
-    const question = buildQuestion("cs:nat-outside", "Operating System", "2024-s1", 2024);
+    const question = buildQuestion("cs:nat-outside", "Operating System", "2024-s1", 2024, "NAT");
     mockAllQuestions = [question];
 
     MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
@@ -1092,6 +1092,70 @@ describe("MockTestContext", () => {
       expect(latest.questionStates["cs:crash-1"]).toBe("answered");
       expect(latest.questionTimeSpent["ga:crash-1"]).toBe(45);
       expect(latest.questionTimeSpent["cs:crash-1"]).toBe(30);
+    });
+  });
+
+  test("restores legacy embedded type from current catalog metadata and preserves its response and time", async () => {
+    const uid = "go:422894";
+    const legacyEmbeddedQuestion = {
+      question_uid: uid,
+      title: "GATE CSE 2024 | Set 2 | Question: 3",
+      subject: "Programming in C",
+      subjectSlug: "prog-c",
+      question: "<p>Which option is the correct output?</p>",
+      options: DEFAULT_OPTIONS,
+      normalizedOptions: DEFAULT_OPTIONS,
+      type: "NAT",
+      answerMeta: { type: "NAT", answer: 20101020 },
+    };
+    AnswerService.answersByQuestionUid[uid] = { type: "MCQ", answer: "A" };
+    mockAllQuestions = [];
+    MockCatalogService.catalog = MockCatalogService.normalizeCatalog({
+      papers: [],
+      byQuestionUid: {
+        [uid]: {
+          questionUid: uid,
+          section: "CS",
+          type: "MCQ",
+          marks: 1,
+          negativeMarks: 0.3333333333,
+          scorable: true,
+          paperReady: false,
+        },
+      },
+      scorableQuestionUids: [uid],
+    });
+    MockCatalogService.loaded = true;
+
+    window.localStorage.setItem("gateqa_mock_attempt_v1", JSON.stringify({
+      v: 5,
+      gaUids: [],
+      csUids: [uid],
+      activeSection: "CS",
+      gaIndex: 0,
+      csIndex: 0,
+      responses: { [uid]: "20101020" },
+      questionStates: { [uid]: "answered" },
+      questionTimeSpent: { [uid]: 47 },
+      timeLeft: 3120,
+      meta: { kindId: "custom", durationMinutes: 60 },
+      questions: [legacyEmbeddedQuestion],
+    }));
+
+    let latest = null;
+    const Probe = () => {
+      latest = useMockTest();
+      return null;
+    };
+    render(<MockTestProvider><Probe /></MockTestProvider>);
+
+    await waitFor(() => {
+      expect(latest.testActive).toBe(true);
+      expect(latest.currentQuestion.type).toBe("MCQ");
+      expect(latest.currentQuestion.answerMeta).toBeUndefined();
+      expect(latest.responses[uid]).toBe("20101020");
+      expect(latest.questionTimeSpent[uid]).toBe(47);
+      expect(latest.timeLeft).toBe(3120);
     });
   });
 

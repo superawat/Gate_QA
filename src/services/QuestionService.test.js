@@ -585,5 +585,84 @@ describe("QuestionService", () => {
     expect(QuestionService.normalizeTypeToken("NAT")).toBe("nat");
     expect(QuestionService.normalizeTypeToken("unknown_type")).toBe("unknown");
   });
+
+  test("enforces structural option invariant in normalizeQuestion: options present means never NAT even with numerical-answers tag", () => {
+    const rawQuestion = {
+      question_uid: "go:422894",
+      title: "GATE CSE 2024 | Set 2 | Question: 3",
+      question: "<p>What is the output?</p>",
+      tags: ["numerical-answers", "multiple-selects", "output"],
+      options: [
+        { label: "A", text: "20101020" },
+        { label: "B", text: "10202010" },
+        { label: "C", text: "20201010" },
+        { label: "D", text: "10102020" },
+      ],
+      answer_meta: {
+        type: "MCQ",
+        answer: "A",
+      },
+    };
+
+    const normalized = QuestionService.normalizeQuestion(rawQuestion);
+    expect(normalized.type).toBe("mcq");
+    expect(normalized.canonical.type).toBe("mcq");
+    expect(normalized.normalizedOptions.length).toBe(4);
+    expect(normalized.answerMeta).toBeDefined();
+    expect(normalized.answerMeta.type).toBe("MCQ");
+
+    // Conflicting explicit NAT metadata is not silently rewritten from structure.
+    const rawNoMeta = {
+      ...rawQuestion,
+      type: "NAT", // misclassified
+      answer_meta: undefined,
+    };
+    const normalizedNoMeta = QuestionService.normalizeQuestion(rawNoMeta);
+    expect(normalizedNoMeta.type).toBe("unknown");
+    expect(normalizedNoMeta.typeResolutionIssues).toContain("type_option_conflict");
+
+    const safeInference = QuestionService.normalizeQuestion({
+      question_uid: "go:label-key-inference",
+      question: "<p>Choose one.</p>",
+      options: rawQuestion.options,
+      answer_meta: { answer: "A" },
+    });
+    expect(safeInference.type).toBe("mcq");
+  });
+
+  test("buildDetailedQuestion preserves answer_meta and resolves type via structural option invariant", () => {
+    const rawQuestion = {
+      question_uid: "go:422894",
+      title: "GATE CSE 2024 | Set 2 | Question: 3",
+      question: "<p>What is the output?</p>",
+      tags: ["numerical-answers", "output"],
+      options: [
+        { label: "A", text: "20101020" },
+        { label: "B", text: "10202010" },
+        { label: "C", text: "20201010" },
+        { label: "D", text: "10102020" },
+      ],
+      answer_meta: {
+        type: "MCQ",
+        answer: "A",
+      },
+    };
+
+    const indexedQuestion = {
+      question_uid: "go:422894",
+      title: "GATE CSE 2024 | Set 2 | Question: 3",
+      type: "MCQ",
+      subject: "Programming in C",
+      subjectSlug: "prog-c",
+      preview: "Consider the following C program...",
+    };
+
+    const detailed = QuestionService.buildDetailedQuestion(rawQuestion, indexedQuestion);
+    expect(detailed.type).toBe("mcq");
+    expect(detailed.canonical.type).toBe("mcq");
+    expect(detailed.answer_meta).toEqual(rawQuestion.answer_meta);
+    expect(detailed.answerMeta).toEqual(rawQuestion.answer_meta);
+    expect(detailed.normalizedOptions.length).toBe(4);
+  });
 });
 

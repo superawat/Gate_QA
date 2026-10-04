@@ -149,6 +149,41 @@ export function hasEmbeddedOptions(html = "") {
   );
 }
 
+/**
+ * Counts choices supported by explicit upper/lower alpha list markup. Alpha lists
+ * used for multipart numeric prompts are excluded: those often label subquestions
+ * A/B/C rather than answer choices.
+ */
+export function countStructuredEmbeddedOptions(html = "") {
+  const raw = String(html || "");
+  const fillInAnswerPrompt = /\b(?:value|answer|number|quantity)\b[\s\S]{0,180}(?:_{2,}|\.{3,}|\bblank\b)/i.test(raw);
+  let optionCount = 0;
+  getAlphaOptionListMatches(raw).forEach(({ attrs, body }) => {
+    const listItems = Array.from(body.matchAll(LI_CAPTURE_RE));
+    const isMultipartPrompt = fillInAnswerPrompt || listItems.some((itemMatch) => {
+      const itemText = stripHtmlToText(itemMatch[1] || "");
+      return /\?/.test(itemText)
+        || /^(?:express|find|calculate|determine|compute|state|write)\b/i.test(itemText);
+    });
+    if (isMultipartPrompt) return;
+
+    const isImageOnlyOverflowList = listItems.length > OPTION_LABELS.length
+      && listItems.every((itemMatch) => /<img\b/i.test(itemMatch[1] || "") && !stripHtmlToText(itemMatch[1]));
+    const groupedOptionCount = isImageOnlyOverflowList && listItems.length % 4 === 0
+      ? 4
+      : isImageOnlyOverflowList && listItems.length % 5 === 0
+        ? 5
+        : 0;
+    const startIndex = parseStartIndex(attrs);
+    const availableLabelCount = Math.max(0, OPTION_LABELS.length - startIndex);
+    optionCount = Math.max(
+      optionCount,
+      groupedOptionCount || Math.min(listItems.length, availableLabelCount),
+    );
+  });
+  return optionCount;
+}
+
 export function extractEmbeddedOptions(html = "") {
   const raw = String(html || "");
   if (!raw.trim()) {

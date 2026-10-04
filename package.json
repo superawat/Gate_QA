@@ -43,6 +43,7 @@
     "serve": "vite preview",
     "qa:audit-historical-papers": "node scripts/qa/historical-paper-audit.js",
     "qa:audit-pre-2010-gateoverflow": "node scripts/qa/pre-2010-gateoverflow-audit.js",
+    "qa:audit-custom-builder-question-types": "node scripts/qa/audit-custom-builder-question-types.mjs",
     "qa:import-missing-paper": "node scripts/qa/import-missing-paper-from-tag.js",
     "qa:import-external-aptitude": "node --max-old-space-size=4096 scripts/qa/import-external-aptitude.mjs --write",
     "qa:backfill-gateoverflow-top-answers": "node scripts/qa/backfill-gateoverflow-top-answers.mjs --write",

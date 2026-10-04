@@ -628,5 +628,177 @@ describe("mockTest utilities", () => {
     };
     expect(isTechnicalMockQuestion(standaloneAptQ)).toBe(false);
   });
+
+  test("enforces structural option invariant: questions with options never resolve to NAT even with numerical-answers tag", () => {
+    const questionWithNumericalTagAndOptions = {
+      question_uid: "go:422894",
+      title: "GATE CSE 2024 | Set 2 | Question: 3",
+      question: "<p>What is the output?</p>",
+      tags: ["numerical-answers", "multiple-selects", "output"],
+      options: [
+        { label: "A", text: "20101020" },
+        { label: "B", text: "10202010" },
+        { label: "C", text: "20201010" },
+        { label: "D", text: "10102020" },
+      ],
+    };
+    const answerRecord = {
+      type: "MCQ",
+      answer: "A",
+    };
+
+    // The catalog and answer registry both carry the canonical MCQ type.
+    const validation = validateMockQuestionForPool({
+      question: questionWithNumericalTagAndOptions,
+      questionMeta: {
+        questionUid: "go:422894",
+        type: "MCQ",
+        marks: 1,
+        scorable: true,
+      },
+      answerRecord,
+    });
+
+    expect(validation.valid).toBe(true);
+    expect(validation.type).toBe("MCQ");
+    expect(validation.issues).toEqual([]);
+
+    const conflictingValidation = validateMockQuestionForPool({
+      question: questionWithNumericalTagAndOptions,
+      questionMeta: { questionUid: "go:422894", type: "NAT", marks: 1, scorable: true },
+      answerRecord,
+    });
+    expect(conflictingValidation.valid).toBe(false);
+    expect(conflictingValidation.type).toBe("");
+    expect(conflictingValidation.issues).toContain("type_mismatch");
+  });
+
+  test("rejects non-numeric letter answers or invalid answers for NAT questions", () => {
+    const natQuestionWithoutOptions = {
+      question_uid: "go:real-nat",
+      title: "GATE CSE 2024 | Set 2 | Question: 15",
+      question: "<p>Enter the numerical value:</p>",
+      tags: ["numerical-answers"],
+      options: [],
+    };
+
+    // A disagreement between the catalog format and answer record is rejected.
+    const letterAnswerNat = validateMockQuestionForPool({
+      question: natQuestionWithoutOptions,
+      questionMeta: {
+        questionUid: "go:real-nat",
+        type: "NAT",
+        marks: 2,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "MCQ",
+        answer: "A",
+      },
+    });
+    expect(letterAnswerNat.valid).toBe(false);
+    expect(letterAnswerNat.type).toBe("");
+    expect(letterAnswerNat.issues).toContain("type_mismatch");
+
+    // If answer is non-numeric text for NAT:
+    const invalidNat = validateMockQuestionForPool({
+      question: natQuestionWithoutOptions,
+      questionMeta: {
+        questionUid: "go:real-nat",
+        type: "NAT",
+        marks: 2,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "NAT",
+        answer: "not_a_number",
+      },
+    });
+    expect(invalidNat.valid).toBe(false);
+    expect(invalidNat.issues).toContain("missing_answer");
+
+    // If answer is valid numeric:
+    const validNat = validateMockQuestionForPool({
+      question: natQuestionWithoutOptions,
+      questionMeta: {
+        questionUid: "go:real-nat",
+        type: "NAT",
+        marks: 2,
+        scorable: true,
+      },
+      answerRecord: {
+        type: "NAT",
+        answer: "42.5",
+      },
+    });
+    expect(validNat.valid).toBe(true);
+    expect(validNat.type).toBe("NAT");
+    expect(validNat.issues).toEqual([]);
+  });
+
+  test("type mismatches are excluded from scoring with no negative marks", () => {
+    const result = buildMockQuestionResult({
+      question: {
+        question_uid: "go:type-mismatch",
+        question: "<p>Choose the correct option.</p>",
+        options: [{ label: "A", text: "12" }, { label: "B", text: "13" }],
+      },
+      questionMeta: {
+        questionUid: "go:type-mismatch",
+        type: "NAT",
+        marks: 1,
+        negativeMarks: 0.3333333333,
+      },
+      answerRecord: { type: "MCQ", answer: "A" },
+      response: "B",
+    });
+
+    expect(result.status).toBe("excluded");
+    expect(result.exclusionReason).toBe("type_mismatch");
+    expect(result.scoreDelta).toBe(0);
+    expect(result.marks).toBe(0);
+    expect(result.negativeMarks).toBe(0);
+  });
+
+  test("scores the reported output question by option label and excludes a stale numeric NAT response", () => {
+    const question = {
+      question_uid: "go:422894",
+      type: "MCQ",
+      question: "<p>Which option is the correct program output?</p>",
+      options: [
+        { label: "A", text: "20101020" },
+        { label: "B", text: "10202010" },
+        { label: "C", text: "20102010" },
+        { label: "D", text: "10201020" },
+      ],
+    };
+    const questionMeta = {
+      questionUid: "go:422894",
+      type: "MCQ",
+      marks: 1,
+      negativeMarks: 0,
+    };
+    const answerRecord = { type: "MCQ", answer: "A" };
+
+    const selectedOption = buildMockQuestionResult({
+      question,
+      questionMeta,
+      answerRecord,
+      response: "A",
+    });
+    expect(selectedOption.status).toBe("correct");
+    expect(selectedOption.scoreDelta).toBe(1);
+
+    const staleNatResponse = buildMockQuestionResult({
+      question,
+      questionMeta,
+      answerRecord,
+      response: "20101020",
+    });
+    expect(staleNatResponse.status).toBe("excluded");
+    expect(staleNatResponse.exclusionReason).toBe("invalid_response_for_type");
+    expect(staleNatResponse.scoreDelta).toBe(0);
+    expect(staleNatResponse.negativeMarks).toBe(0);
+  });
 });
 

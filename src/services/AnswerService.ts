@@ -21,6 +21,24 @@ export class AnswerService {
   static unsupportedQuestionUids: Set<string> = new Set();
   static loaded: boolean = false;
   static loadError: string = "";
+  static listeners: Set<() => void> = new Set();
+
+  static subscribe(fn: () => void): () => void {
+    this.listeners.add(fn);
+    return () => {
+      this.listeners.delete(fn);
+    };
+  }
+
+  static notifyListeners(): void {
+    this.listeners.forEach((fn) => {
+      try {
+        fn();
+      } catch {
+        // ignore
+      }
+    });
+  }
 
   static extractGateOverflowId(link: string = ""): string | null {
     const raw = String(link || "").trim();
@@ -179,13 +197,11 @@ export class AnswerService {
 
       this.loadError = "";
       this.loaded = true;
+      this.notifyListeners();
     } catch (error: any) {
       this.loadError = error.message || "Failed to load answers";
-      this.answersByQuestionUid = {};
-      this.answersByUid = {};
-      this.answersByExamUid = {};
-      this.unsupportedQuestionUids = new Set();
       this.loaded = true;
+      this.notifyListeners();
     }
   }
 

@@ -5,5 +5,6 @@ export interface EmbeddedOption {
 }
 
 export function hasEmbeddedOptions(html?: string): boolean;
+export function countStructuredEmbeddedOptions(html?: string): number;
 export function extractEmbeddedOptions(html?: string): EmbeddedOption[];
 export function stripEmbeddedOptions(html?: string): string;
