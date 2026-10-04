@@ -1,4 +1,4 @@
-const SW_VERSION = "gateqa-sw-v1";
+const SW_VERSION = "gateqa-sw-v2";
 const CORE_CACHE = `${SW_VERSION}-core`;
 const RUNTIME_CACHE = `${SW_VERSION}-runtime`;
 
