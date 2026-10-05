@@ -205,6 +205,17 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
         if (Array.isArray(ansRecord?.answer)) return ansRecord.answer.length;
         return 2;
     }, [isMultiNAT, reviewResult?.answerRecord, currentQuestion]);
+    const multiNatLabels = useMemo(() => {
+        if (!isMultiNAT) return [];
+        const ansRecord = reviewResult?.answerRecord || currentQuestion?.answerMeta || currentQuestion?.answer_meta;
+        if (Array.isArray(ansRecord?.blank_labels) && ansRecord.blank_labels.length === blankCount) {
+            return ansRecord.blank_labels;
+        }
+        if (Array.isArray(ansRecord?.labels) && ansRecord.labels.length === blankCount) {
+            return ansRecord.labels;
+        }
+        return Array.from({ length: blankCount }, (_, i) => `Blank ${i + 1}`);
+    }, [isMultiNAT, blankCount, reviewResult?.answerRecord, currentQuestion]);
     const isMSQ = effectiveType === "MSQ";
     const isAutoAwarded = isMockAutoAwardType(effectiveType);
 
@@ -597,7 +608,7 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                                             return (
                                                 <div key={idx} className="flex flex-col gap-1">
                                                     <label htmlFor={`mock-multi-nat-${idx}`} className="text-xs font-bold text-gray-600">
-                                                        Blank {idx + 1}
+                                                        {multiNatLabels[idx] || `Blank ${idx + 1}`}
                                                     </label>
                                                     <input
                                                         id={`mock-multi-nat-${idx}`}

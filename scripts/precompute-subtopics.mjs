@@ -106,7 +106,7 @@ const TOPIC_HIERARCHY = {
         'Channel Utilization', 'Communication', 'Congestion Control', 'Distance Vector Routing',
         'Error Detection', 'Ethernet', 'Fragmentation', 'IP Addressing', 'IP Packet', 'LAN Technologies',
         'MAC Protocol', 'Network Flow', 'Network Layering', 'Network Protocols', 'Network Switching',
-        'Osi Model', 'Probability', 'Routing', 'Routing Protocols', 'Sliding Window', 'Sockets',
+        'Osi Model', 'Routing', 'Routing Protocols', 'Sliding Window', 'Sockets',
         'Stop and Wait', 'Subnetting', 'TCP', 'Token Bucket', 'UDP'
     ],
     Databases: [

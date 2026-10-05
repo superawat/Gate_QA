@@ -1,5 +1,76 @@
 # Changelog
 
+- **Question Answer Correction for ISRO CS 2015 Q59, GATE CSE 2010 Q50 & GATE CSE 1996 Q2.15 (DEC-153, DEC-154, DEC-155)**:
+  - *Context*:
+    - `isro:cs:2015:q59` (ISRO CS 2015 Q59): "Alpha and Beta testing are forms of: (A) Acceptance testing (B) Integration testing (C) System testing (D) Unit testing". In the official ISRO 2015 answer key and software engineering taxonomy, Alpha and Beta testing are user acceptance testing techniques conducted at the end of the development cycle. The stored key was erroneously marked as C (System testing). Corrected to Option A.
+    - `go:2355` (GATE CSE 2010 Q50): "What is the minimum possible weight of a spanning tree $T$ in this graph such that vertex $0$ is a leaf node in the tree $T$?". In a tree of 5 vertices $\{0, 1, 2, 3, 4\}$, vertex 0 being a leaf means it has degree 1, connecting via its minimum weight incident edge $\{0, 1\}$ or $\{0, 3\}$ (weight 1). The remaining 4 vertices $\{1, 2, 3, 4\}$ must form a spanning tree among themselves. In subgraph $\{1, 2, 3, 4\}$, the minimum spanning tree edges are $\{3, 4\}$ (weight 2), $\{2, 4\}$ (weight 3), and $\{1, 3\}$ (weight 4), with total weight $2 + 3 + 4 = 9$. Adding the connection to vertex 0 (weight 1) yields total weight $1 + 9 = 10$. The options are: A: 7, B: 10, C: 9, D: 8. The correct answer is Option B (weight 10). The stored key was erroneously marked as D (weight 8). Corrected to Option B.
+    - `go:2744` (GATE CSE 1996 Q2.15): Quicksort algorithm sorting $A[1..n]$. Let $C_1$ be the number of comparisons when the array is already sorted in ascending order, and $C_2$ when sorted in descending order. Using standard Hoare or Lomuto partitioning with a fixed pivot, both ascending and descending inputs constitute worst-case inputs with identical recurrence $T(n) = T(n-1) + \Theta(n)$ and comparison count $n(n-1)/2$, yielding $C_1 = C_2$. The options are: A: $C_1 < C_2$, B: $C_1 > C_2$, C: $C_1 = C_2$, D: None of the above. The correct answer is Option C. The stored key was erroneously marked as B. Corrected to Option C.
+  - *Resolution*:
+    - Updated `isro:cs:2015:q59` answer to `"A"` in `data/isro/answers-isro.json`, `public/data/isro/answers-isro.json`, `data/isro/isro-2015.json`, `public/data/isro/isro-2015.json`, `data/isro/isro-all.json`, `public/data/isro/isro-all.json`, `data/answers/manual-answers-patch-v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, and `public/data/answers/answers_master_v1.json`.
+    - Updated `go:2355` answer to `"B"` in `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and `public/questions-with-answers.json`.
+    - Updated `go:2744` answer to `"C"` in `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and `public/questions-with-answers.json`.
+    - Rebuilt public artifacts and static detail shards (`2010-s0.json`, `1996-s0.json`) via `node scripts/precompute-subtopics.mjs; node scripts/build-public-artifacts.mjs`.
+    - Added automated regression tests in `src/utils/evaluateAnswer.test.js` and `src/services/AnswerService.test.js`.
+  - *Verification*: Full test suite passing (1,189 tests passed, 0 failures), data integrity validation clean (`npm run qa:validate-data` 0 errors), TypeScript typecheck clean (0 errors).
+
+- **Question Data Integrity & Multi-Part NAT Conversion for `go:761` (DEC-152)**:
+  - *Context*: Question `go:761` (GATE CSE 2001 Question 20, Operating System - Disk Elevator Scheduling) contains two distinct sub-questions (A, B) requiring numerical answers. Previously, GateQA erroneously rendered it as an MCQ with two empty options (`A`, `B`) derived from the question stem's `<ol>` tag, preventing users from entering numeric values.
+  - *Mathematical & Official Derivation*:
+    - Part (A): Tracks 0 to 99, rotating at 3000 rpm, track-to-track seek time = 0.2 ms. Requests: tracks 32, 7, 45, 5, 10. Head initially at track 25 moving up. Using elevator (SCAN) algorithm, head moves upward to end track 99 servicing 32 and 45: $(99 - 25) = 74$ tracks. Then reverses downward to track 5 servicing 10, 7, and 5: $(99 - 5) = 94$ tracks. Total tracks moved = $74 + 94 = 168$ tracks. Total seek time = $168 \times 0.2\text{ ms} = 33.6\text{ ms}$.
+    - Part (B): 100 arbitrary requests, head initially at track 0. Worst-case head traversal from track 0 to 99 = 99 tracks $\times 0.2\text{ ms} = 19.8\text{ ms}$ seek time. At 3000 rpm = 50 rev/sec, 1 full rotation = 20 ms. Worst-case rotational delay for 100 requests (or half-rotation average worst-case accumulation) = 1000 ms. Worst-case total time = $1000\text{ ms} + 19.8\text{ ms} = 1019.8\text{ ms}$.
+    - Units: Both answers are strictly in milliseconds (ms), i.e., $A = 33.6\text{ ms}$ and $B = 1019.8\text{ ms}$.
+  - *Resolution*:
+    - Converted question type from `MCQ` to `MULTI_NAT` with answer `[33.6, 1019.8]`, labels `["A", "B"]`, blank labels `["A", "B"]`, units `["ms", "ms"]`, and per-blank tolerances `[{ abs: 0.1 }, { abs: 0.1 }]`.
+    - Preserved original question text HTML and `<ol>` markup completely intact. Kept question record as ONE unified question with 2 sub-parts.
+    - Updated `AnswerPanel.jsx` to render exactly 2 input blanks in A $\rightarrow$ B order in the exact same answer section position without changing layout, width, or styling, adding visual `(ms)` unit indicators and informative placeholders.
+    - Preserved independent evaluation for parts A and B with live status indicators (`✓ Correct` / `✗ Incorrect`).
+    - Synchronized all authoritative data stores and runtime registries: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and `public/questions-with-answers.json`.
+    - Rebuilt public artifacts and static detail shard `public/question-detail-shards/2001-s0.json` via `scripts/build-public-artifacts.mjs`.
+    - Added automated regression tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, `src/components/AnswerPanel/AnswerPanel.test.jsx`, and `src/utils/questionTypeResolution.test.js` verifying 2 blanks rendered, independent evaluation, ms interpretation (rejecting seconds values), and that normal NAT/MCQ questions remain completely unaffected.
+  - *Verification*: Full test suite passing (1,189 tests passed across 92 files, 0 failures), TypeScript typecheck clean (0 errors).
+
+- **Question Data Integrity & Multi-Part NAT Conversion for `go:749` (DEC-151)**:
+  - *Context*: Question `go:749` (GATE CSE 2001 Question 8, Operating System - Disk I/O & DMA) contains four distinct sub-questions (A, B, C, D) requiring numerical answers. Previously, GateQA rendered only a single NAT input field and evaluated only a single answer (`800`), preventing users from answering parts A, C, and D.
+  - *Mathematical & Official Derivation*:
+    - Part (A): Disk capacity = 20 surfaces $\times$ 1,000 tracks/surface $\times$ 16 sectors/track $\times$ 1 KB/sector = 320,000 KB.
+    - Part (B): Rotational speed = 3000 rpm = 50 rotations/sec. 1 rotation = 1 track = 16 sectors = 16 KB. Transfer rate = 50 rot/s $\times$ 16 KB = 800 KB/s.
+    - Part (C): Byte transfer time = $1 / 800\text{ KB/s} = 1.25\,\mu\text{s}$. Interrupt overhead = $0.4\,\mu\text{s}$, memory cycle = $0.1\,\mu\text{s}$. Total CPU time per byte = $0.5\,\mu\text{s}$. Total elapsed time per byte = $1.25 + 0.5 = 1.75\,\mu\text{s}$. CPU percentage = $0.5 / 1.75 = 2/7 \approx 28.57\%$.
+    - Part (D): 1 sector = 1 KB = 1000 bytes. Sector transfer time = $1000 / 800,000\text{ s} = 1.25\text{ ms} = 1250\,\mu\text{s}$. Cycle stealing DMA steals 1 memory cycle per byte = $1000 \times 0.1\,\mu\text{s} = 100\,\mu\text{s}$. Percentage CPU held up = $100 / 1250 = 8\%$.
+  - *Resolution*:
+    - Converted question type from `NAT` to `MULTI_NAT` with answer `[320000, 800, 28.57, 8]`, labels `["A", "B", "C", "D"]`, and per-blank tolerances (`[{ abs: 0.01 }, { abs: 0.01 }, { lower: 28.5, upper: 28.6 }, { abs: 0.01 }]`).
+    - Extended `AnswerPanel.jsx` to render 4 vertically stacked inputs in the same answer area position, with individual labels and independent evaluation indicators (`✓ Correct` / `✗ Incorrect`).
+    - Exported and integrated `evaluateMultiNatPart` in `src/utils/evaluateAnswer.js` for independent sub-question scoring.
+    - Extended `MockTestQuestion.jsx` to dynamically respect custom sub-question blank labels (`A`, `B`, `C`, `D`).
+    - Updated `src/types/runtime.ts` to allow array tolerances and custom labels in `AnswerRecord`.
+    - Synchronized all authoritative and public registries: `data/answers/manual-answers-patch-v1.json`, `data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_question_uid_v1.json`, `public/data/answers/answers_by_exam_uid_v1.json`, `public/data/answers/answers_master_v1.json`, and `public/questions-with-answers.json`.
+    - Rebuilt public artifacts and static detail shard `public/question-detail-shards/2001-s0.json` via `scripts/build-public-artifacts.mjs`.
+    - Added automated regression tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, and `src/components/AnswerPanel/AnswerPanel.test.jsx`.
+  - *Verification*: Full test suite passing (1,184 tests passed), `npm run qa:validate-data` passed with 0 errors, `npm run typecheck` passed with 0 errors.
+
+
+- **Question Classification & Taxonomy Audit Resolution: Computer Networks Probability De-Contamination, Contaminated Tag Cleanup, and Discrete Math Category Corrections (DEC-150)**:
+  - *Context*: A user report on 03/10/2026 and 05/10/2026 flagged 24 questions with incorrect subjects in `plan/oct_26/5th_oct_questionaudit.md`:
+    - 21 questions flagged as "Computer Networks" that should be "Engineering Maths" (e.g. `go:460058`, `go:3284`, `go:3224`, `go:3745`, `go:3642`, `go:357507`, `go:204089`, `go:2082`, `go:2014`, `go:1953`, `go:2136`, `go:1153`, `go:1152`, `go:1022`, `go:722`, `go:1638`, `go:2217`, `go:2736`, `go:2709`, `go:2626`, `go:780`).
+    - 1 question flagged as "Engineering Maths" that should be "Discrete Maths" (`go:302838`).
+    - 1 question flagged as "Operating System" that should be "Engineering Maths" (`go:422789`).
+    - 1 question flagged as "COA" that should be "Engineering Maths" (`go:1927`).
+  - *Root Causes*:
+    1. Taxonomy Leak: `"Probability"` was erroneously listed under `Computer Networks` in `TOPIC_HIERARCHY` (`scripts/precompute-subtopics.mjs` and `src/services/question-service/SubjectTaxonomy.ts`). Because `Computer Networks` had higher precedence in `SUBJECT_PRIORITY` (priority 1) than `Engineering Mathematics` (priority 11), any question tagged solely with `"probability"` and lacking an explicit subject alias collapsed into `Computer Networks`.
+    2. Contaminated Tags on Scraped Questions:
+       - `go:460058` (GATE CSE 2025 Set 1 Q22 - coin toss with fake coin) was contaminated with `"computer-networks"`, `"operating-system"`, `"process-scheduling"`, `"input-output"`.
+       - `go:422789` (GATE CSE 2024 Set 1 Q53 - colored balls from a bag) was contaminated with `"operating-system"`, `"disk"`, `"gatecse-2021-set1"`.
+       - `go:1927` (GATE CSE 2014 Set 1 Q48 - rolling four six-sided dice) was contaminated with `"co-and-architecture"`, `"speedup"`, `"graph-theory"`, `"graph-connectivity"`, `"combinatory"`.
+    3. Parent Category Inversion on Discrete Mathematics:
+       - In GATE CSE 2019, questions (`go:302838`, `go:302843`, `go:302836`, `go:302813`, `go:302810`) had both `"engineering-mathematics"` and `"discrete-mathematics"` in tags. Because `"engineering-mathematics"` occurred at index 1 and `"discrete-mathematics"` at index 2, `explicitIndex` sorting selected Engineering Mathematics even though the topics (Group Theory, Combinatorics, Graph Theory, First Order Logic) are purely Discrete Mathematics.
+  - *Implementation*:
+    - Removed `"Probability"` from `TOPIC_HIERARCHY['Computer Networks']` in `src/services/question-service/SubjectTaxonomy.ts` and `scripts/precompute-subtopics.mjs`.
+    - Regenerated precomputed taxonomy lookup `src/generated/subtopicLookup.json` via `scripts/precompute-subtopics.mjs`.
+    - Cleaned contaminated tags across `public/questions-with-answers.json`, `public/questions-filtered-with-ids.json`, `public/questions-filtered.json`, and IT datasets (`data/it/` and `public/data/it/`).
+    - Added explicit `"engineering-mathematics"` tags to all 21 technical probability questions and `"discrete-mathematics"` to `go:302838` (and companion 2019 questions).
+    - Rebuilt all static artifacts (`scripts/build-public-artifacts.mjs`), updating search index (`public/question-search-index.json`), mock catalog, manifests, and 20 detail shards.
+    - Added regression tests in `src/services/QuestionService.test.js`.
+  - *Verification*: Full Vitest suite passing (**1,180 passed across 92 test files, 100% green**), TypeScript typecheck clean (`0 errors`). All 24 reported questions verified to resolve to their correct subjects and subtopics.
+
 - **Custom Builder Question Type Invariant & False-NAT Elimination Architecture (DEC-149)**:
   - *Context*: A student reported on 04/10/2026: *"Several times a week. You have many Questions which have wrong options, the caluclations are wrong, liek I got a normal question asking for NAT answer, and one NAT answer which I gave was correct, but somehow it was marked wrong. this only specific to custom builder . image attached ."*
   - *Root Causes*:

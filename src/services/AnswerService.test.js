@@ -1,4 +1,5 @@
 import { AnswerService } from "./AnswerService";
+import { IsroQuestionService } from "./IsroQuestionService";
 
 describe("AnswerService", () => {
   beforeEach(() => {
@@ -2603,6 +2604,161 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
           type: "MCQ",
           answer: "D",
           tolerance: null,
+        });
+      });
+    });
+
+    describe("DEC-150: go:749 (GATE CSE 2001 Q8)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:749": {
+            answer_uid: "manual:go:749",
+            type: "MULTI_NAT",
+            answer: [320000, 800, 28.57, 8],
+            labels: ["A", "B", "C", "D"],
+            blank_labels: ["A", "B", "C", "D"],
+            tolerance: [
+              { abs: 0.01 },
+              { abs: 0.01 },
+              { lower: 28.5, upper: 28.6 },
+              { abs: 0.01 },
+            ],
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:749 as MULTI_NAT [320000, 800, 28.57, 8]", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:749",
+          exam_uid: "cse:2001:set1:main:q8",
+          title: "GATE CSE 2001 | Question: 8",
+        });
+        expect(answer).toMatchObject({
+          type: "MULTI_NAT",
+          answer: [320000, 800, 28.57, 8],
+          labels: ["A", "B", "C", "D"],
+          blank_labels: ["A", "B", "C", "D"],
+        });
+      });
+    });
+
+    describe("DEC-151: go:761 (GATE CSE 2001 Q20)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:761": {
+            answer_uid: "manual:go:761",
+            type: "MULTI_NAT",
+            answer: [33.6, 1019.8],
+            labels: ["A", "B"],
+            blank_labels: ["A", "B"],
+            tolerance: [
+              { abs: 0.1 },
+              { abs: 0.1 },
+            ],
+            units: ["ms", "ms"],
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:761 as MULTI_NAT [33.6, 1019.8] with ms units", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:761",
+          exam_uid: "cse:2001:set1:main:q20",
+          title: "GATE CSE 2001 | Question: 20",
+        });
+        expect(answer).toMatchObject({
+          type: "MULTI_NAT",
+          answer: [33.6, 1019.8],
+          labels: ["A", "B"],
+          blank_labels: ["A", "B"],
+          units: ["ms", "ms"],
+        });
+      });
+    });
+
+    describe("DEC-152: isro:cs:2015:q59 (ISRO CS 2015 Q59)", () => {
+      beforeEach(() => {
+        IsroQuestionService.answersByQuestionUid = {
+          "isro:cs:2015:q59": {
+            question_uid: "isro:cs:2015:q59",
+            type: "MCQ",
+            answer: "A",
+            tolerance: null,
+          },
+        };
+      });
+
+      test("resolves isro:cs:2015:q59 as MCQ Option A (Acceptance testing)", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "isro:cs:2015:q59",
+          exam_uid: "isro-2015-q59",
+          title: "ISRO CS 2015 | Question: 59",
+        });
+        expect(answer).toMatchObject({
+          type: "MCQ",
+          answer: "A",
+        });
+      });
+    });
+
+    describe("DEC-153: go:2355 (GATE CSE 2010 Q50)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:2355": {
+            answer_uid: "manual:go:2355",
+            type: "MCQ",
+            answer: "B",
+            tolerance: null,
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:2355 as MCQ Option B (weight 10 with vertex 0 as leaf)", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:2355",
+          exam_uid: "cse:2010:set1:main:q50",
+          title: "GATE CSE 2010 | Question: 50",
+        });
+        expect(answer).toMatchObject({
+          type: "MCQ",
+          answer: "B",
+        });
+      });
+    });
+
+    describe("DEC-154: go:2744 (GATE CSE 1996 Q2.15)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:2744": {
+            answer_uid: "manual:go:2744",
+            type: "MCQ",
+            answer: "C",
+            tolerance: null,
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:2744 as MCQ Option C (C1 = C2 Quicksort comparisons)", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:2744",
+          exam_uid: "cse:1996:set1:main:q2-15",
+          title: "GATE CSE 1996 | Question: 2.15",
+        });
+        expect(answer).toMatchObject({
+          type: "MCQ",
+          answer: "C",
         });
       });
     });

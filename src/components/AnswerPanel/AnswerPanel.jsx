@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo, useRef } from "react"
 import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag, FaStickyNote } from "react-icons/fa";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
-import { evaluateAnswer } from "../../utils/evaluateAnswer";
+import { evaluateAnswer, evaluateMultiNatPart } from "../../utils/evaluateAnswer";
 import { trackEvent } from "../../utils/analytics";
 import Toast from "../Toast/Toast";
 import AskAIButton from "../AskAI/AskAIButton";
@@ -85,6 +85,37 @@ export default function AnswerPanel({
     }
     return 0;
   }, [isMultiNat, answerRecord, question]);
+
+  const multiNatLabels = useMemo(() => {
+    if (!isMultiNat) return [];
+    if (Array.isArray(answerRecord?.blank_labels) && answerRecord.blank_labels.length === blankCount) {
+      return answerRecord.blank_labels;
+    }
+    if (Array.isArray(answerRecord?.labels) && answerRecord.labels.length === blankCount) {
+      return answerRecord.labels;
+    }
+    if (Array.isArray(question?.blank_labels) && question.blank_labels.length === blankCount) {
+      return question.blank_labels;
+    }
+    if (Array.isArray(question?.labels) && question.labels.length === blankCount) {
+      return question.labels;
+    }
+    return Array.from({ length: blankCount }, (_, i) => `Blank ${i + 1}`);
+  }, [isMultiNat, answerRecord, question, blankCount]);
+
+  const multiNatUnits = useMemo(() => {
+    if (!isMultiNat) return [];
+    if (Array.isArray(answerRecord?.units) && answerRecord.units.length === blankCount) {
+      return answerRecord.units;
+    }
+    if (Array.isArray(question?.answer_meta?.units) && question.answer_meta.units.length === blankCount) {
+      return question.answer_meta.units;
+    }
+    if (Array.isArray(question?.units) && question.units.length === blankCount) {
+      return question.units;
+    }
+    return [];
+  }, [isMultiNat, answerRecord, question, blankCount]);
 
   const questionIdentity = useMemo(() => {
     const trackingId = questionProgressId || question.question_uid || question.id || "";
@@ -630,28 +661,64 @@ export default function AnswerPanel({
           {isMultiNat && (
             <div className="flex flex-col gap-3">
               <div className="text-xs font-medium text-[color:var(--color-text-muted)]">
-                Enter numeric answers for each blank in order (all {blankCount} blanks required):
+                {`Enter numeric answers for each blank in order (all ${blankCount} blanks required):`}
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {Array.from({ length: blankCount }).map((_, idx) => (
-                  <div key={idx} className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor={`multi-nat-input-${idx}`}
-                      className="text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]"
-                    >
-                      {`Blank ${idx + 1}`}
-                    </label>
-                    <input
-                      id={`multi-nat-input-${idx}`}
-                      type="text"
-                      inputMode="numeric"
-                      value={multiNatInputs[idx] ?? ""}
-                      onChange={(e) => handleMultiNatChange(idx, e.target.value)}
-                      placeholder={`Enter numeric answer for Blank ${idx + 1}`}
-                      className="w-full min-h-[44px] rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-2.5 text-base sm:text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                    />
-                  </div>
-                ))}
+              <div className="flex flex-col gap-3.5">
+                {Array.from({ length: blankCount }).map((_, idx) => {
+                  const label = multiNatLabels[idx] || `Blank ${idx + 1}`;
+                  const unit = multiNatUnits[idx];
+                  const val = multiNatInputs[idx] ?? "";
+                  const hasEval = Boolean(result && result.status === "evaluated");
+                  const partEval = hasEval ? evaluateMultiNatPart(answerRecord, idx, val) : null;
+                  const isPartCorrect = partEval?.correct;
+
+                  return (
+                    <div key={idx} className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-baseline gap-1">
+                          <label
+                            htmlFor={`multi-nat-input-${idx}`}
+                            className="text-xs font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]"
+                          >
+                            {label}
+                          </label>
+                          {unit && (
+                            <span className="text-[11px] font-normal lowercase tracking-normal text-[color:var(--color-text-muted)]">
+                              ({unit})
+                            </span>
+                          )}
+                        </div>
+                        {hasEval && (
+                          <span
+                            data-testid={`multi-nat-status-${idx}`}
+                            className={`text-xs font-semibold ${
+                              isPartCorrect
+                                ? "text-emerald-600 dark:text-emerald-400"
+                                : "text-rose-600 dark:text-rose-400"
+                            }`}
+                          >
+                            {isPartCorrect ? "✓ Correct" : "✗ Incorrect"}
+                          </span>
+                        )}
+                      </div>
+                      <input
+                        id={`multi-nat-input-${idx}`}
+                        type="text"
+                        inputMode="numeric"
+                        value={val}
+                        onChange={(e) => handleMultiNatChange(idx, e.target.value)}
+                        placeholder={`Enter numeric answer for ${label}${unit ? ` (in ${unit})` : ""}`}
+                        className={`w-full min-h-[44px] rounded-xl border px-4 py-2.5 text-base sm:text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:ring-2 ${
+                          hasEval
+                            ? isPartCorrect
+                              ? "border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/20 focus:border-emerald-500 focus:ring-emerald-500"
+                              : "border-rose-500 bg-rose-50/30 dark:bg-rose-950/20 focus:border-rose-500 focus:ring-rose-500"
+                            : "border-[color:var(--color-border)] bg-[color:var(--color-surface)] focus:border-sky-500 focus:ring-sky-500"
+                        }`}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

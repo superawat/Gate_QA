@@ -505,6 +505,230 @@ describe("AnswerPanel", () => {
       expect(screen.getByLabelText("Blank 3")).toBeTruthy();
       expect(screen.getByText(/all 3 blanks required/i)).toBeTruthy();
     });
+
+    test("renders exactly four vertically stacked inputs for go:749 (GATE CSE 2001 Q8), evaluates independently and handles partial inputs", () => {
+      const go749Question = {
+        question_uid: "go:749",
+        exam_uid: "cse:2001:set1:main:q8",
+        title: "GATE CSE 2001 | Question: 8",
+        question: "<p>Consider a disk with...</p><ol start=\"1\" style=\"list-style-type:upper-alpha\"><li>What is the total capacity?</li><li>What is the data transfer rate?</li><li>What is the percentage CPU required?</li><li>What is the DMA percentage?</li></ol>",
+        answer_meta: {
+          type: "MULTI_NAT",
+          answer: [320000, 800, 28.57, 8],
+          labels: ["A", "B", "C", "D"],
+          blank_labels: ["A", "B", "C", "D"],
+          tolerance: [
+            { abs: 0.01 },
+            { abs: 0.01 },
+            { lower: 28.5, upper: 28.6 },
+            { abs: 0.01 },
+          ],
+        },
+      };
+
+      AnswerService.answersByQuestionUid["go:749"] = {
+        answer_uid: "manual:go:749",
+        type: "MULTI_NAT",
+        answer: [320000, 800, 28.57, 8],
+        labels: ["A", "B", "C", "D"],
+        blank_labels: ["A", "B", "C", "D"],
+        tolerance: [
+          { abs: 0.01 },
+          { abs: 0.01 },
+          { lower: 28.5, upper: 28.6 },
+          { abs: 0.01 },
+        ],
+      };
+
+      const { unmount } = render(<AnswerPanel question={go749Question} />);
+
+      // Badge check
+      expect(screen.getByText("Multi-NAT")).toBeTruthy();
+
+      // Exactly 4 numeric inputs labeled A, B, C, D
+      const inputA = screen.getByLabelText("A");
+      const inputB = screen.getByLabelText("B");
+      const inputC = screen.getByLabelText("C");
+      const inputD = screen.getByLabelText("D");
+      expect(inputA).toBeTruthy();
+      expect(inputB).toBeTruthy();
+      expect(inputC).toBeTruthy();
+      expect(inputD).toBeTruthy();
+
+      // All 4 blanks required helper text
+      expect(screen.getByText(/all 4 blanks required/i)).toBeTruthy();
+
+      // Submit is disabled initially
+      const submitBtn = screen.getAllByRole("button", { name: /Submit Answer/i })[0];
+      expect(submitBtn.hasAttribute("disabled")).toBe(true);
+
+      // Partial inputs: fill only A, B, C -> submit remains disabled
+      fireEvent.change(inputA, { target: { value: "320000" } });
+      fireEvent.change(inputB, { target: { value: "800" } });
+      fireEvent.change(inputC, { target: { value: "28.57" } });
+      expect(submitBtn.hasAttribute("disabled")).toBe(true);
+
+      // Fill D with invalid text -> submit remains disabled
+      fireEvent.change(inputD, { target: { value: "xyz" } });
+      expect(submitBtn.hasAttribute("disabled")).toBe(true);
+
+      // Fill D with wrong number 99 -> submit enabled
+      fireEvent.change(inputD, { target: { value: "99" } });
+      expect(submitBtn.hasAttribute("disabled")).toBe(false);
+
+      // Submit partial/wrong response -> banner is Incorrect
+      fireEvent.click(submitBtn);
+      expect(screen.getByText("Incorrect")).toBeTruthy();
+
+      // Verify answers A-D are evaluated independently:
+      // Status for A, B, C is Correct, status for D is Incorrect
+      expect(screen.getByTestId("multi-nat-status-0").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-1").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-2").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-3").textContent).toContain("Incorrect");
+
+      // Now fix D to correct answer 8
+      fireEvent.change(inputD, { target: { value: "8" } });
+      const submitAgainBtn = screen.getAllByRole("button", { name: /Submit/i })[0];
+      fireEvent.click(submitAgainBtn);
+
+      // Now all 4 are correct -> banner is Correct!
+      expect(screen.getByText("Correct!")).toBeTruthy();
+      expect(screen.getByTestId("multi-nat-status-0").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-1").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-2").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-3").textContent).toContain("Correct");
+
+      unmount();
+    });
+
+    test("renders exactly 2 numeric blanks for go:761 (GATE CSE 2001 Q20), evaluates independently in ms, and preserves normal NAT/MCQ questions", () => {
+      const go761Question = {
+        question_uid: "go:761",
+        exam_uid: "cse:2001:set1:main:q20",
+        title: "GATE CSE 2001 | Question: 20",
+        question: "<p>Consider a disk with the $100$ tracks numbered from $0$ to $99$ rotating at $3000$ rpm...</p><ol start=\"1\" style=\"list-style-type:upper-alpha\"><li>Consider a set of disk requests... what is the total seek time?</li><li>Consider an initial set of 100 arbitrary disk requests... what is the worse case time?</li></ol>",
+        answer_meta: {
+          type: "MULTI_NAT",
+          answer: [33.6, 1019.8],
+          labels: ["A", "B"],
+          blank_labels: ["A", "B"],
+          tolerance: [
+            { abs: 0.1 },
+            { abs: 0.1 },
+          ],
+          units: ["ms", "ms"],
+        },
+      };
+
+      AnswerService.answersByQuestionUid["go:761"] = {
+        answer_uid: "manual:go:761",
+        type: "MULTI_NAT",
+        answer: [33.6, 1019.8],
+        labels: ["A", "B"],
+        blank_labels: ["A", "B"],
+        tolerance: [
+          { abs: 0.1 },
+          { abs: 0.1 },
+        ],
+        units: ["ms", "ms"],
+      };
+
+      const { unmount } = render(<AnswerPanel question={go761Question} />);
+
+      // Badge check
+      expect(screen.getByText("Multi-NAT")).toBeTruthy();
+
+      // Exactly 2 numeric inputs labeled A and B
+      const inputA = screen.getByLabelText("A");
+      const inputB = screen.getByLabelText("B");
+      expect(inputA).toBeTruthy();
+      expect(inputB).toBeTruthy();
+      expect(screen.queryByLabelText("C")).toBeNull();
+
+      // Millisecond unit indicators and placeholders
+      expect(screen.getAllByText("(ms)").length).toBe(2);
+      expect(screen.getByPlaceholderText("Enter numeric answer for A (in ms)")).toBeTruthy();
+      expect(screen.getByPlaceholderText("Enter numeric answer for B (in ms)")).toBeTruthy();
+
+      // All 2 blanks required helper text
+      expect(screen.getByText(/all 2 blanks required/i)).toBeTruthy();
+
+      // Submit is disabled initially
+      const submitBtn = screen.getAllByRole("button", { name: /Submit Answer/i })[0];
+      expect(submitBtn.hasAttribute("disabled")).toBe(true);
+
+      // Partial inputs: fill only A -> submit remains disabled
+      fireEvent.change(inputA, { target: { value: "33.6" } });
+      expect(submitBtn.hasAttribute("disabled")).toBe(true);
+
+      // Fill B with seconds value 1.0198 (wrong unit) -> submit enabled
+      fireEvent.change(inputB, { target: { value: "1.0198" } });
+      expect(submitBtn.hasAttribute("disabled")).toBe(false);
+
+      // Submit -> banner is Incorrect
+      fireEvent.click(submitBtn);
+      expect(screen.getByText("Incorrect")).toBeTruthy();
+
+      // Verify answers A and B are evaluated independently:
+      // Status for A (33.6 ms) is Correct, status for B (1.0198 s) is Incorrect
+      expect(screen.getByTestId("multi-nat-status-0").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-1").textContent).toContain("Incorrect");
+
+      // Now fix B to correct answer 1019.8 ms
+      fireEvent.change(inputB, { target: { value: "1019.8" } });
+      const submitAgainBtn = screen.getAllByRole("button", { name: /Submit/i })[0];
+      fireEvent.click(submitAgainBtn);
+
+      // Now both A and B are correct -> banner is Correct!
+      expect(screen.getByText("Correct!")).toBeTruthy();
+      expect(screen.getByTestId("multi-nat-status-0").textContent).toContain("Correct");
+      expect(screen.getByTestId("multi-nat-status-1").textContent).toContain("Correct");
+
+      unmount();
+    });
+
+    test("preserves existing single-NAT layout for normal NAT questions", () => {
+      const normalNatQuestion = {
+        question_uid: "test:single-nat",
+        exam_uid: "cse:2020:set1:main:q10",
+        title: "GATE CSE 2020 | Question: 10",
+      };
+
+      AnswerService.answersByQuestionUid["test:single-nat"] = {
+        type: "NAT",
+        answer: 42,
+        tolerance: { abs: 0 },
+      };
+
+      const { unmount } = render(<AnswerPanel question={normalNatQuestion} />);
+
+      // Exactly one NAT input rendered
+      const input = screen.getByPlaceholderText("Enter numeric answer");
+      expect(input).toBeTruthy();
+      expect(screen.queryByLabelText("Blank 1")).toBeNull();
+      expect(screen.queryByLabelText("A")).toBeNull();
+      unmount();
+    });
+
+    test("preserves existing MCQ layout for normal MCQ questions", () => {
+      const normalMcqQuestion = {
+        question_uid: "test:single-mcq",
+        title: "Sample MCQ",
+      };
+      AnswerService.answersByQuestionUid["test:single-mcq"] = {
+        type: "MCQ",
+        answer: "B",
+      };
+
+      const { unmount } = render(<AnswerPanel question={normalMcqQuestion} />);
+      expect(screen.getByText("MCQ")).toBeTruthy();
+      expect(screen.getByRole("button", { name: "A" })).toBeTruthy();
+      expect(screen.getByRole("button", { name: "B" })).toBeTruthy();
+      expect(screen.queryByPlaceholderText(/Enter numeric answer/i)).toBeNull();
+      unmount();
+    });
   });
 });
+
 

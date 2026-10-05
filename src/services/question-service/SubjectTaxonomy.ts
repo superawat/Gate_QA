@@ -449,7 +449,6 @@ export const TOPIC_HIERARCHY: Record<string, string[]> = {
     "Network Protocols",
     "Network Switching",
     "Osi Model",
-    "Probability",
     "Routing",
     "Routing Protocols",
     "Sliding Window",

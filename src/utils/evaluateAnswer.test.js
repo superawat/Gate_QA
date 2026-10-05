@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { evaluateAnswer } from "./evaluateAnswer";
+import { evaluateAnswer, evaluateMultiNatPart } from "./evaluateAnswer";
 
 describe("evaluateAnswer", () => {
   test("supports legacy five-option MCQ answers", () => {
@@ -2739,6 +2739,107 @@ describe("evaluateAnswer", () => {
       expect(evaluateAnswer(aliasRec, [5, 6]).correct).toBe(true);
       expect(evaluateAnswer(aliasRec, [6, 5]).correct).toBe(false);
     });
+
+    // DEC-150: GATE CSE 2001 Q8 (go:749) MULTI_NAT 4-sub-part question
+    test("go:749 - GATE CSE 2001 Q8 evaluates strictly as MULTI_NAT [320000, 800, 28.57, 8]", () => {
+      const rec = {
+        type: "MULTI_NAT",
+        answer: [320000, 800, 28.57, 8],
+        labels: ["A", "B", "C", "D"],
+        blank_labels: ["A", "B", "C", "D"],
+        tolerance: [
+          { abs: 0.01 },
+          { abs: 0.01 },
+          { lower: 28.5, upper: 28.6 },
+          { abs: 0.01 },
+        ],
+      };
+
+      // Exactly correct inputs
+      expect(evaluateAnswer(rec, [320000, 800, 28.57, 8])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, ["320000", "800", "28.57", "8"])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, [320000, 800, 28.5, 8])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, [320000, 800, 28.6, 8])).toEqual({ status: "evaluated", correct: true });
+
+      // Wrong inputs
+      expect(evaluateAnswer(rec, [320000, 800, 28.57, 9])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [320000, 800, 24.24, 8])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [160000, 800, 28.57, 8])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [320000, 400, 28.57, 8])).toEqual({ status: "evaluated", correct: false });
+
+      // Incomplete or non-numeric inputs
+      expect(evaluateAnswer(rec, [320000, 800, 28.57])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [320000, 800, 28.57, ""])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [320000, 800, "abc", 8])).toEqual({ status: "invalid_input", correct: false });
+
+      // Independent sub-question evaluation via evaluateMultiNatPart
+      expect(evaluateMultiNatPart(rec, 0, 320000)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 0, 100000)).toEqual({ status: "evaluated", correct: false });
+
+      expect(evaluateMultiNatPart(rec, 1, 800)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 1, 400)).toEqual({ status: "evaluated", correct: false });
+
+      expect(evaluateMultiNatPart(rec, 2, 28.57)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 2, 28.5)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 2, 28.6)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 2, 24.24)).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateMultiNatPart(rec, 2, 30)).toEqual({ status: "evaluated", correct: false });
+
+      expect(evaluateMultiNatPart(rec, 3, 8)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 3, 10)).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateMultiNatPart(rec, 3, "")).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateMultiNatPart(rec, 3, "xyz")).toEqual({ status: "invalid_input", correct: false });
+    });
+
+    // DEC-151: GATE CSE 2001 Q20 (go:761) MULTI_NAT 2-sub-part question
+    test("go:761 - GATE CSE 2001 Q20 evaluates strictly as MULTI_NAT [33.6, 1019.8] in milliseconds", () => {
+      const rec = {
+        type: "MULTI_NAT",
+        answer: [33.6, 1019.8],
+        labels: ["A", "B"],
+        blank_labels: ["A", "B"],
+        tolerance: [
+          { abs: 0.1 },
+          { abs: 0.1 },
+        ],
+        units: ["ms", "ms"],
+      };
+
+      // Exactly correct inputs in milliseconds
+      expect(evaluateAnswer(rec, [33.6, 1019.8])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, ["33.6", "1019.8"])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, [33.55, 1019.75])).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateAnswer(rec, [33.65, 1019.85])).toEqual({ status: "evaluated", correct: true });
+
+      // Verifying answers are interpreted in milliseconds: values in seconds (0.0336, 1.0198) are rejected
+      expect(evaluateAnswer(rec, [0.0336, 1.0198])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [33.6, 1.0198])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [0.0336, 1019.8])).toEqual({ status: "evaluated", correct: false });
+
+      // Wrong inputs
+      expect(evaluateAnswer(rec, [33.6, 999])).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateAnswer(rec, [12.0, 1019.8])).toEqual({ status: "evaluated", correct: false });
+
+      // Incomplete or non-numeric inputs
+      expect(evaluateAnswer(rec, [33.6])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, [33.6, ""])).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateAnswer(rec, ["abc", 1019.8])).toEqual({ status: "invalid_input", correct: false });
+
+      // Independent sub-question evaluation via evaluateMultiNatPart
+      // Part A: expected 33.6 ms
+      expect(evaluateMultiNatPart(rec, 0, 33.6)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 0, "33.6")).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 0, 0.0336)).toEqual({ status: "evaluated", correct: false }); // rejected if in seconds
+      expect(evaluateMultiNatPart(rec, 0, 12)).toEqual({ status: "evaluated", correct: false });
+
+      // Part B: expected 1019.8 ms
+      expect(evaluateMultiNatPart(rec, 1, 1019.8)).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 1, "1019.8")).toEqual({ status: "evaluated", correct: true });
+      expect(evaluateMultiNatPart(rec, 1, 1.0198)).toEqual({ status: "evaluated", correct: false }); // rejected if in seconds
+      expect(evaluateMultiNatPart(rec, 1, 500)).toEqual({ status: "evaluated", correct: false });
+      expect(evaluateMultiNatPart(rec, 1, "")).toEqual({ status: "invalid_input", correct: false });
+      expect(evaluateMultiNatPart(rec, 1, "xyz")).toEqual({ status: "invalid_input", correct: false });
+    });
   });
 
   describe("DEC-109: go:357498 (GATE CSE 2021 Set 2 Q42) MSQ evaluation", () => {
@@ -3066,6 +3167,54 @@ describe("evaluateAnswer", () => {
         correct: false,
       });
       expect(evaluateAnswer(record, ["A", "B", "C"])).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("DEC-152: evaluates ISRO CS 2015 Q59 (isro:cs:2015:q59) as MCQ Option A", () => {
+      const record = {
+        type: "MCQ",
+        answer: "A",
+        tolerance: null,
+      };
+      expect(evaluateAnswer(record, "A")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "C")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("DEC-153: evaluates GATE CSE 2010 Q50 (go:2355) as MCQ Option B", () => {
+      const record = {
+        type: "MCQ",
+        answer: "B",
+        tolerance: null,
+      };
+      expect(evaluateAnswer(record, "B")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "D")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
+
+    test("DEC-154: evaluates GATE CSE 1996 Q2.15 (go:2744) as MCQ Option C", () => {
+      const record = {
+        type: "MCQ",
+        answer: "C",
+        tolerance: null,
+      };
+      expect(evaluateAnswer(record, "C")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "B")).toEqual({
         status: "evaluated",
         correct: false,
       });

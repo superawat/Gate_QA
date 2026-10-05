@@ -61,6 +61,27 @@ function evaluateNatNumericValue(submitted, expectedAnswer, tolerance) {
   return Math.abs(submitted - expected) <= absTol;
 }
 
+export function evaluateMultiNatPart(record, index, inputVal) {
+  if (!record || !Array.isArray(record.answer) || index < 0 || index >= record.answer.length) {
+    return { status: "missing_answer", correct: false };
+  }
+  if (inputVal === null || inputVal === undefined || String(inputVal).trim() === "") {
+    return { status: "invalid_input", correct: false };
+  }
+  const submitted = Number(inputVal);
+  if (!Number.isFinite(submitted)) {
+    return { status: "invalid_input", correct: false };
+  }
+
+  const expectedVal = record.answer[index];
+  const tolerance = Array.isArray(record.tolerance)
+    ? record.tolerance[index]
+    : record.tolerance;
+
+  const correct = evaluateNatNumericValue(submitted, expectedVal, tolerance);
+  return { status: "evaluated", correct };
+}
+
 export function evaluateAnswer(record, userInput) {
   if (!record || !record.type) {
     return { status: "missing_answer", correct: false };
@@ -146,12 +167,8 @@ export function evaluateAnswer(record, userInput) {
       }
     }
 
-    const isAllCorrect = record.answer.every((expectedVal, index) => {
-      const submitted = Number(userInput[index]);
-      const tolerance = Array.isArray(record.tolerance)
-        ? record.tolerance[index]
-        : record.tolerance;
-      return evaluateNatNumericValue(submitted, expectedVal, tolerance);
+    const isAllCorrect = record.answer.every((_, index) => {
+      return evaluateMultiNatPart(record, index, userInput[index]).correct;
     });
 
     return {

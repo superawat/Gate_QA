@@ -25,6 +25,12 @@ export type AnswerTolerance =
       upper?: number;
       [key: string]: unknown;
     }
+  | Array<{
+      abs?: number;
+      lower?: number;
+      upper?: number;
+      [key: string]: unknown;
+    }>
   | null;
 
 export type AnswerSource =
@@ -42,6 +48,8 @@ export interface AnswerRecord {
   answer: AnswerValue;
   tolerance?: AnswerTolerance;
   source?: AnswerSource | null;
+  labels?: string[];
+  blank_labels?: string[];
   [key: string]: unknown;
 }
 

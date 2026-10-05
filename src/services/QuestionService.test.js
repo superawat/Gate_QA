@@ -278,6 +278,83 @@ describe("QuestionService", () => {
     expect(subtopics523078).toEqual([{ slug: "combinatory", label: "Combinatory" }]);
   });
 
+  test("correctly resolves subjects for October 2026 question audit (DEC-150)", () => {
+    // 1. Ensure Probability is NOT in Computer Networks hierarchy
+    const cnSubtopics = QuestionService.TOPIC_HIERARCHY["Computer Networks"] || [];
+    expect(cnSubtopics).not.toContain("Probability");
+
+    // 2. go:460058 (GATE CSE 2025 Set 1 Q22) -> Engineering Mathematics (Probability)
+    const q460058 = {
+      title: "GATE CSE 2025 | Set 1 | Question: 22",
+      tags: ["gatecse-2025-set1", "engineering-mathematics", "probability", "conditional-probability", "bayes-theorem", "probability-distribution", "numerical-answers", "one-mark", "two-marks", "easy", "gatecse-2025"],
+    };
+    const subj460058 = QuestionService.resolveCanonicalSubject(q460058);
+    expect(subj460058).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj460058)).toBe("engg-math");
+    expect(QuestionService.extractCanonicalSubtopics(q460058.tags, subj460058)).toEqual([{ slug: "probability", label: "Probability" }]);
+
+    // 3. go:302838 (GATE CSE 2019 Q10) -> Discrete Mathematics (Group Theory)
+    const q302838 = {
+      title: "GATE CSE 2019 | Question: 10",
+      tags: ["gatecse-2019", "discrete-mathematics", "set-theory&algebra", "group-theory", "1-mark"],
+    };
+    const subj302838 = QuestionService.resolveCanonicalSubject(q302838);
+    expect(subj302838).toBe("Discrete Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj302838)).toBe("discrete-math");
+    expect(QuestionService.extractCanonicalSubtopics(q302838.tags, subj302838)).toEqual([{ slug: "group-theory", label: "Group Theory" }]);
+
+    // 4. go:422789 (GATE CSE 2024 Set 1 Q53) -> Engineering Mathematics (Probability)
+    const q422789 = {
+      title: "GATE CSE 2024 | Set 1 | Question: 53",
+      tags: ["gatecse-2024-set1", "engineering-mathematics", "probability", "conditional-probability", "numerical-answers", "two-marks", "uniform-distribution"],
+    };
+    const subj422789 = QuestionService.resolveCanonicalSubject(q422789);
+    expect(subj422789).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj422789)).toBe("engg-math");
+
+    // 5. go:1927 (GATE CSE 2014 Set 1 Q48) -> Engineering Mathematics (Probability)
+    const q1927 = {
+      title: "GATE CSE 2014 Set 1 | Question: 48",
+      tags: ["gatecse-2014-set1", "engineering-mathematics", "probability", "numerical-answers", "normal", "uniform-distribution", "expectation"],
+    };
+    const subj1927 = QuestionService.resolveCanonicalSubject(q1927);
+    expect(subj1927).toBe("Engineering Mathematics");
+    expect(QuestionService.getSubjectSlugByLabel(subj1927)).toBe("engg-math");
+
+    // 6. IT Probability questions (go:3284, go:3224, go:3745, go:3642)
+    const itProbabilityUids = [
+      { uid: "go:3284", tags: ["gateit-2008", "engineering-mathematics", "probability", "normal", "it"] },
+      { uid: "go:3224", tags: ["gateit-2008", "engineering-mathematics", "probability", "easy", "it"] },
+      { uid: "go:3745", tags: ["gateit-2005", "engineering-mathematics", "probability", "normal", "it"] },
+      { uid: "go:3642", tags: ["gateit-2004", "engineering-mathematics", "probability", "normal", "it"] },
+    ];
+    for (const q of itProbabilityUids) {
+      const subj = QuestionService.resolveCanonicalSubject(q);
+      expect(subj).toBe("Engineering Mathematics");
+      expect(QuestionService.getSubjectSlugByLabel(subj)).toBe("engg-math");
+    }
+
+    // 7. Questions with only 'probability' and paper tags (without explicit engg-math) must NOT resolve to Computer Networks
+    const legacyProbabilityTags = [
+      ["gatecse-2021-set2", "probability", "normal", "2-marks"],
+      ["gatecse-2018", "probability", "normal", "numerical-answers", "1-mark"],
+      ["gatecse-2014-set3", "probability", "numerical-answers", "normal"],
+      ["gatecse-2011", "probability", "normal"],
+      ["gatecse-2010", "probability", "normal"],
+      ["gatecse-2004", "probability", "easy"],
+      ["gatecse-2001", "probability", "normal"],
+      ["gate1998", "probability", "easy"],
+      ["gate1997", "probability", "easy"],
+      ["gate1996", "probability", "easy"],
+      ["gate1995", "probability", "normal"],
+    ];
+    for (const tags of legacyProbabilityTags) {
+      const subj = QuestionService.resolveCanonicalSubject({ title: "GATE question", tags });
+      expect(subj).toBe("Engineering Mathematics");
+      expect(QuestionService.getSubjectSlugByLabel(subj)).toBe("engg-math");
+    }
+  });
+
   test("extractCanonicalSubtopics enforces MAX_SUBTOPICS_PER_QUESTION limit", () => {
     // We mock the lookup map just for this test
     const mockLookupObj = {

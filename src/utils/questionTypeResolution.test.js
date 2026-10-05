@@ -42,4 +42,13 @@ describe("resolveQuestionType", () => {
       answer: 9,
     })).toMatchObject({ type: "NAT", issues: [] });
   });
+
+  test("resolves MULTI_NAT candidate correctly", () => {
+    expect(resolveQuestionType({
+      candidates: [{ source: "answer_record", type: "MULTI_NAT" }],
+      optionCount: 2,
+      conflictOptionCount: 2,
+      answer: [33.6, 1019.8],
+    })).toMatchObject({ type: "MULTI_NAT", issues: [] });
+  });
 });

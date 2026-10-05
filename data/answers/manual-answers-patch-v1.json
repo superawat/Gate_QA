@@ -25,6 +25,47 @@
         "note": "gate_cse_1992:q1_ii:multi_blank_nat:hamming_code_parity_and_distance"
       }
     },
+    "go:749": {
+      "answer_uid": "manual:go:749",
+      "type": "MULTI_NAT",
+      "answer": [
+        320000,
+        800,
+        28.57,
+        8
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "blank_labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "tolerance": [
+        {
+          "abs": 0.01
+        },
+        {
+          "abs": 0.01
+        },
+        {
+          "lower": 28.5,
+          "upper": 28.6
+        },
+        {
+          "abs": 0.01
+        }
+      ],
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_2001:q8:multi_nat_disk_specifications"
+      }
+    },
     "go:422828": {
       "type": "MCQ",
       "answer": "D",
@@ -8769,10 +8810,9 @@
     },
     "go:2355": {
       "type": "MCQ",
-      "answer": "D",
+      "answer": "B",
       "tolerance": null,
-      "source": "official_key",
-      "note": "gate_cse_2010_q50:official_gate_key_d"
+      "note": "gate_cse_2010_q50:minimum_spanning_tree_leaf_weight_10_option_b"
     },
     "go:43328": {
       "type": "MCQ",
@@ -12138,9 +12178,9 @@
     },
     "go:2744": {
       "type": "MCQ",
-      "answer": "B",
+      "answer": "C",
       "tolerance": null,
-      "note": "gate_cse_batch_audit:Quicksort comparisons C1 = C2"
+      "note": "gate_cse_batch_audit:Quicksort comparisons C1 = C2:option_c"
     },
     "go:2603": {
       "type": "MCQ",
@@ -13197,9 +13237,47 @@
         "kind": "manual_patch",
         "note": "gatecse1993:q15:subjective_bubblesort_recurrence"
       }
+    },
+    "isro:cs:2015:q59": {
+      "type": "MCQ",
+      "answer": "A",
+      "tolerance": null,
+      "note": "isro_cs_2015_q59:alpha_beta_acceptance_testing:official_answer_key_a"
+    },
+    "go:761": {
+      "answer_uid": "manual:go:761",
+      "type": "MULTI_NAT",
+      "answer": [
+        33.6,
+        1019.8
+      ],
+      "labels": [
+        "A",
+        "B"
+      ],
+      "blank_labels": [
+        "A",
+        "B"
+      ],
+      "tolerance": [
+        {
+          "abs": 0.1
+        },
+        {
+          "abs": 0.1
+        }
+      ],
+      "units": [
+        "ms",
+        "ms"
+      ],
+      "source": {
+        "kind": "manual_patch",
+        "note": "gate_cse_2001:q20:multi_nat_disk_elevator_scheduling"
+      }
     }
   },
   "stats": {
-    "records": 1887
+    "records": 1889
   }
 }
