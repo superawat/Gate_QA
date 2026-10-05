@@ -6700,10 +6700,10 @@
     },
     "cse:2010:set1:main:q50": {
       "type": "MCQ",
-      "answer": "D",
+      "answer": "B",
       "tolerance": null,
-      "source": "official_key",
-      "note": "gate_cse_2010_q50:official_gate_key_d",
+      "source": "manual_patch",
+      "note": "gate_cse_2010_q50:minimum_spanning_tree_leaf_weight_10_option_b",
       "question_uid": "go:2355"
     },
     "cse:2010:set1:main:q48": {
@@ -8442,10 +8442,32 @@
       }
     },
     "cse:2001:set1:main:q20": {
-      "answer_uid": "v2:7.3.11",
-      "type": "MCQ",
-      "answer": "A",
-      "tolerance": null,
+      "answer_uid": "manual:go:761",
+      "type": "MULTI_NAT",
+      "answer": [
+        33.6,
+        1019.8
+      ],
+      "labels": [
+        "A",
+        "B"
+      ],
+      "blank_labels": [
+        "A",
+        "B"
+      ],
+      "tolerance": [
+        {
+          "abs": 0.1
+        },
+        {
+          "abs": 0.1
+        }
+      ],
+      "units": [
+        "ms",
+        "ms"
+      ],
       "source": {
         "kind": "question_uid",
         "question_uids": [
@@ -8466,12 +8488,41 @@
       }
     },
     "cse:2001:set1:main:q8": {
-      "answer_uid": "v2:7.3.12",
-      "type": "NAT",
-      "answer": 800,
-      "tolerance": {
-        "abs": 0.01
-      },
+      "answer_uid": "manual:go:749",
+      "type": "MULTI_NAT",
+      "answer": [
+        320000,
+        800,
+        28.57,
+        8
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "blank_labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "tolerance": [
+        {
+          "abs": 0.01
+        },
+        {
+          "abs": 0.01
+        },
+        {
+          "lower": 28.5,
+          "upper": 28.6
+        },
+        {
+          "abs": 0.01
+        }
+      ],
       "source": {
         "kind": "question_uid",
         "question_uids": [
@@ -34678,10 +34729,10 @@
   },
   "cse:2010:set1:main:q50": {
     "type": "MCQ",
-    "answer": "D",
+    "answer": "B",
     "tolerance": null,
-    "source": "official_key",
-    "note": "gate_cse_2010_q50:official_gate_key_d",
+    "source": "manual_patch",
+    "note": "gate_cse_2010_q50:minimum_spanning_tree_leaf_weight_10_option_b",
     "question_uid": "go:2355"
   },
   "cse:2010:set1:main:q51": {
@@ -39492,5 +39543,27 @@
     "source": {
       "kind": "exam_uid"
     }
+  },
+  "cse:1996:set1:main:q2-15": {
+    "answer_uid": "manual:go:2744",
+    "type": "MCQ",
+    "answer": "C",
+    "tolerance": null,
+    "source": {
+      "kind": "manual_patch",
+      "note": "gate_cse_batch_audit:Quicksort comparisons C1 = C2:option_c"
+    },
+    "question_uid": "go:2744"
+  },
+  "isro-2015-q59": {
+    "answer_uid": "manual:isro:cs:2015:q59",
+    "type": "MCQ",
+    "answer": "A",
+    "tolerance": null,
+    "source": {
+      "kind": "manual_patch",
+      "note": "isro_cs_2015_q59:alpha_beta_acceptance_testing:official_answer_key_a"
+    },
+    "question_uid": "isro:cs:2015:q59"
   }
 }

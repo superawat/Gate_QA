@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T19:24:46.941Z",
+  "generatedAt": "2026-10-05T10:27:45.939Z",
   "shardKey": "2001-s0",
   "yearSetKey": "2001-s0",
   "yearSetIdentity": "cse:2001:set-0",
@@ -762,6 +762,7 @@
       "question": "<p>Seven (distinct) car accidents occurred in a week. What is the probability that they all occurred on the same day?</p>\n<ol style=\"list-style-type:upper-alpha\">\n<li>$\\dfrac{1}{7^7}\\\\$</li>\n<li>$\\dfrac{1}{7^6}\\\\$</li>\n<li>$\\dfrac{1}{2^7}\\\\$</li>\n<li>$\\dfrac{7}{2^7}\\\\$</li>\n</ol>",
       "tags": [
         "gatecse-2001",
+        "engineering-mathematics",
         "probability",
         "normal"
       ],
@@ -1394,23 +1395,70 @@
       ],
       "question_uid": "go:749",
       "exam_uid": "cse:2001:set1:main:q8",
-      "answer_uid": "v2:7.3.12",
+      "answer_uid": "manual:go:749",
       "answer_meta": {
-        "type": "NAT",
-        "answer": 800,
-        "tolerance": {
-          "abs": 0.01
-        },
-        "source": "question_uid"
+        "type": "MULTI_NAT",
+        "answer": [
+          320000,
+          800,
+          28.57,
+          8
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "blank_labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "tolerance": [
+          {
+            "abs": 0.01
+          },
+          {
+            "abs": 0.01
+          },
+          {
+            "lower": 28.5,
+            "upper": 28.6
+          },
+          {
+            "abs": 0.01
+          }
+        ],
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "type": "MULTI_NAT",
+      "answer": [
+        320000,
+        800,
+        28.57,
+        8
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "blank_labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
       "track": "cse",
       "yearSetKey": "2001-s0",
-      "yearSetIdentity": "cse:2001:set-0",
-      "type": "NAT"
+      "yearSetIdentity": "cse:2001:set-0"
     },
     "go:756": {
       "title": "GATE CSE 2001 | Question: 15",
@@ -1456,21 +1504,59 @@
       ],
       "question_uid": "go:761",
       "exam_uid": "cse:2001:set1:main:q20",
-      "answer_uid": "v2:7.3.11",
+      "answer_uid": "manual:go:761",
       "answer_meta": {
-        "type": "MCQ",
-        "answer": "A",
-        "tolerance": null,
-        "source": "question_uid"
+        "type": "MULTI_NAT",
+        "answer": [
+          33.6,
+          1019.8
+        ],
+        "labels": [
+          "A",
+          "B"
+        ],
+        "blank_labels": [
+          "A",
+          "B"
+        ],
+        "tolerance": [
+          {
+            "abs": 0.1
+          },
+          {
+            "abs": 0.1
+          }
+        ],
+        "units": [
+          "ms",
+          "ms"
+        ],
+        "source": "manual_patch"
       },
       "paper_scope": "official_cse",
       "source_branch": "CSE",
       "cse_set": null,
       "source_session": null,
+      "type": "MULTI_NAT",
+      "answer": [
+        33.6,
+        1019.8
+      ],
+      "labels": [
+        "A",
+        "B"
+      ],
+      "blank_labels": [
+        "A",
+        "B"
+      ],
+      "units": [
+        "ms",
+        "ms"
+      ],
       "track": "cse",
       "yearSetKey": "2001-s0",
-      "yearSetIdentity": "cse:2001:set-0",
-      "type": "MCQ"
+      "yearSetIdentity": "cse:2001:set-0"
     },
     "go:716": {
       "title": "GATE CSE 2001 | Question: 1.23",
