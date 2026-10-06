@@ -24,7 +24,7 @@ export const FILTER_QUERY_KEYS = [
   "showOnlyBookmarked",
 ] as const;
 
-export const PRACTICE_QUERY_KEYS = [...FILTER_QUERY_KEYS, PAGE_QUERY_KEY] as const;
+export const PRACTICE_QUERY_KEYS = [...FILTER_QUERY_KEYS, PAGE_QUERY_KEY, "track"] as const;
 
 type LegacyRedirectKind =
   | "question"

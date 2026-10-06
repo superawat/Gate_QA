@@ -2,6 +2,7 @@ import { AnswerService } from "../services/AnswerService";
 import { QuestionService } from "../services/QuestionService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
+import { IsroQuestionService } from "../services/IsroQuestionService";
 import {
   deriveDifficulty,
   resolveReviewStatus,
@@ -122,6 +123,40 @@ const toNormalizedQuestion = (question = {}) => {
     return question?.question
       ? question
       : AptitudeQuestionService.normalizeQuestion(question);
+  }
+  if (uid.toLowerCase().startsWith("isro:")) {
+    const rawSubject = question.subjectSlug || question.subject || "";
+    const canonicalSlug = (typeof QuestionService?.normalizeSubjectSlug === "function"
+      ? QuestionService.normalizeSubjectSlug(rawSubject)
+      : null) || (typeof IsroQuestionService?.normalizeSubjectSlug === "function"
+      ? IsroQuestionService.normalizeSubjectSlug(rawSubject)
+      : rawSubject) || "other";
+    const canonicalLabel = (typeof QuestionService?.getSubjectLabelBySlug === "function"
+      ? QuestionService.getSubjectLabelBySlug(canonicalSlug)
+      : null) || (typeof IsroQuestionService?.getSubjectLabelBySlug === "function"
+      ? IsroQuestionService.getSubjectLabelBySlug(canonicalSlug)
+      : "Specialized CS & Others");
+
+    let subtopics = Array.isArray(question.subtopics) && question.subtopics.length > 0
+      ? question.subtopics
+      : [];
+    if (subtopics.length === 0 && Array.isArray(question.tags)) {
+      subtopics = question.tags
+        .filter((t) => t && !["isro", "isro-cs", "isro-cse", canonicalSlug, rawSubject].includes(t) && !String(t).startsWith("isro-"))
+        .map((t) => ({
+          slug: String(t).trim(),
+          label: typeof QuestionService?.formatSubtopicLabel === "function"
+            ? QuestionService.formatSubtopicLabel(t)
+            : String(t).replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+        }));
+    }
+
+    return {
+      ...question,
+      subjectSlug: canonicalSlug,
+      subjectLabel: canonicalLabel,
+      subtopics,
+    };
   }
   if (question?.question) {
     return QuestionService.normalizeQuestion(question);
@@ -779,18 +814,26 @@ export const buildWeakTopicInsights = ({
       const cseQ = typeof QuestionService?.getQuestionByUid === "function"
         ? QuestionService.getQuestionByUid(trimmedKey)
         : null;
-      const aptQ = !cseQ && typeof AptitudeQuestionService?.getQuestionByUid === "function"
+      const isroQ = !cseQ && typeof IsroQuestionService?.getQuestionByUid === "function"
+        ? IsroQuestionService.getQuestionByUid(trimmedKey)
+        : (!cseQ && typeof IsroQuestionService?.questionsByUid?.get === "function"
+          ? IsroQuestionService.questionsByUid.get(trimmedKey)
+          : null);
+      const aptQ = !cseQ && !isroQ && typeof AptitudeQuestionService?.getQuestionByUid === "function"
         ? AptitudeQuestionService.getQuestionByUid(trimmedKey)
         : null;
-      const daQ = !cseQ && !aptQ && typeof DaQuestionService?.questionsByUid?.get === "function"
+      const daQ = !cseQ && !isroQ && !aptQ && typeof DaQuestionService?.questionsByUid?.get === "function"
         ? DaQuestionService.questionsByUid.get(trimmedKey)
         : null;
-      const fallbackQ = cseQ || aptQ || daQ;
+      const fallbackQ = cseQ || isroQ || aptQ || daQ;
       if (fallbackQ) {
-        const subjectSlug = String(fallbackQ.subjectSlug || "").trim() || "unknown";
+        const rawSubject = fallbackQ.subjectSlug || fallbackQ.subject || "";
+        const subjectSlug = (typeof QuestionService?.normalizeSubjectSlug === "function"
+          ? QuestionService.normalizeSubjectSlug(rawSubject)
+          : null) || String(fallbackQ.subjectSlug || "").trim() || "unknown";
         const subjectLabel = String(
-          fallbackQ.subjectLabel
-          || (typeof QuestionService?.getSubjectLabelBySlug === "function" ? QuestionService.getSubjectLabelBySlug(subjectSlug) : "")
+          (typeof QuestionService?.getSubjectLabelBySlug === "function" ? QuestionService.getSubjectLabelBySlug(subjectSlug) : "")
+          || fallbackQ.subjectLabel
         ).trim() || "Unknown";
         const subtopics = Array.isArray(fallbackQ.subtopics) ? fallbackQ.subtopics : [];
         const year = fallbackQ.exam?.year || fallbackQ.year || null;
@@ -1184,6 +1227,9 @@ export const loadWeakTopicInsights = async ({
   now = new Date(),
   questions: passedQuestions = null,
   providedQuestions = null,
+  includeAptitude = false,
+  track = null,
+  ...options
 } = {}) => {
   if (!fetchImpl && !storage) {
     return buildWeakTopicInsights({ now });
@@ -1192,12 +1238,14 @@ export const loadWeakTopicInsights = async ({
   const gateProgress = parseJson(storage?.getItem?.(PROGRESS_STORAGE_KEY), {});
   const aptProgress = parseJson(storage?.getItem?.("gateqa_apt_progress_v1"), {});
   const daProgress = parseJson(storage?.getItem?.("gateqa_da_progress_v1"), {});
-  const rawProgressRecords = { ...gateProgress, ...aptProgress, ...daProgress };
+  const isroProgress = parseJson(storage?.getItem?.("gateqa_isro_progress_v1"), {});
+  const rawProgressRecords = { ...gateProgress, ...aptProgress, ...daProgress, ...isroProgress };
 
   const gateSolved = parseJson(storage?.getItem?.(SOLVED_STORAGE_KEY), []);
   const aptSolved = parseJson(storage?.getItem?.("gateqa-apt-solved-questions"), []);
   const daSolved = parseJson(storage?.getItem?.("gate_qa_da_solved_questions"), []);
-  const rawSolvedQuestionIds = [...gateSolved, ...aptSolved, ...daSolved];
+  const isroSolved = parseJson(storage?.getItem?.("gate_qa_isro_solved_questions"), []);
+  const rawSolvedQuestionIds = [...gateSolved, ...aptSolved, ...daSolved, ...isroSolved];
 
   const { progressRecords, solvedQuestionIds, mockSummary } = mergeMockHistoryIntoProgress(
     rawProgressRecords,
@@ -1266,20 +1314,39 @@ export const loadWeakTopicInsights = async ({
         questions = questionsPayload;
       }
     }
+  }
 
-    questions = Array.isArray(questions) ? [...questions] : [];
+  questions = Array.isArray(questions) ? [...questions] : [];
 
-    // 4. Enrich with Aptitude questions ONLY if the user actually has aptitude activity
+    const seenUids = new Set(questions.map((q) => String(q?.question_uid || q?.uid || "")));
+
+    // 4. Enrich with Aptitude questions if user has activity, or requested via options
     const hasAptitudeActivity = (aptProgress && Object.keys(aptProgress).length > 0)
       || (Array.isArray(aptSolved) && aptSolved.length > 0);
-    if (hasAptitudeActivity) {
+    const shouldIncludeAptitude = hasAptitudeActivity
+      || Boolean(includeAptitude || options?.includeAptitude)
+      || track === "aptitude"
+      || options?.track === "aptitude";
+
+    if (shouldIncludeAptitude) {
+      const appendApt = (aptQuestions) => {
+        if (!Array.isArray(aptQuestions)) return;
+        for (const q of aptQuestions) {
+          const uid = String(q?.question_uid || q?.uid || "");
+          if (uid && !seenUids.has(uid)) {
+            seenUids.add(uid);
+            questions.push(q);
+          }
+        }
+      };
+
       if (AptitudeQuestionService.loaded && Array.isArray(AptitudeQuestionService.questions) && AptitudeQuestionService.questions.length > 0) {
-        questions = [...questions, ...AptitudeQuestionService.questions];
+        appendApt(AptitudeQuestionService.questions);
       } else {
         try {
           await AptitudeQuestionService.init();
           if (AptitudeQuestionService.loaded && Array.isArray(AptitudeQuestionService.questions) && AptitudeQuestionService.questions.length > 0) {
-            questions = [...questions, ...AptitudeQuestionService.questions];
+            appendApt(AptitudeQuestionService.questions);
           }
         } catch (aptErr) {
           console.warn("[WeakTopicAnalyzer] Aptitude init warning:", aptErr?.message);
@@ -1287,21 +1354,70 @@ export const loadWeakTopicInsights = async ({
       }
     }
 
-    // 5. Enrich with DA questions ONLY if the user actually has DA activity
+    // 5. Enrich with DA questions if user has activity, or requested via options
     const hasDaActivity = (daProgress && Object.keys(daProgress).length > 0)
       || (Array.isArray(daSolved) && daSolved.length > 0);
-    if (hasDaActivity) {
+    const shouldIncludeDa = hasDaActivity
+      || Boolean(options?.includeDa)
+      || options?.track === "da";
+
+    if (shouldIncludeDa) {
+      const appendDa = (daQuestions) => {
+        if (!Array.isArray(daQuestions)) return;
+        for (const q of daQuestions) {
+          const uid = String(q?.question_uid || q?.uid || "");
+          if (uid && !seenUids.has(uid)) {
+            seenUids.add(uid);
+            questions.push(q);
+          }
+        }
+      };
+
       if (DaQuestionService.loaded && Array.isArray(DaQuestionService.questions) && DaQuestionService.questions.length > 0) {
-        questions = [...questions, ...DaQuestionService.questions];
+        appendDa(DaQuestionService.questions);
       } else {
         try {
           await DaQuestionService.init();
           if (DaQuestionService.loaded && Array.isArray(DaQuestionService.questions) && DaQuestionService.questions.length > 0) {
-            questions = [...questions, ...DaQuestionService.questions];
+            appendDa(DaQuestionService.questions);
           }
         } catch (daErr) {
           console.warn("[WeakTopicAnalyzer] DA init warning:", daErr?.message);
         }
+      }
+    }
+
+  // 6. Enrich with ISRO CSE questions (contributes to CS analytics and Combined)
+  const hasIsroActivity = (isroProgress && Object.keys(isroProgress).length > 0)
+    || (Array.isArray(isroSolved) && isroSolved.length > 0);
+  const shouldIncludeIsro = hasIsroActivity
+    || Boolean(options?.includeIsro)
+    || track === "cs"
+    || track === "all"
+    || !track;
+
+  if (shouldIncludeIsro) {
+    const appendIsro = (isroQuestions) => {
+      if (!Array.isArray(isroQuestions)) return;
+      for (const q of isroQuestions) {
+        const uid = String(q?.question_uid || q?.uid || "");
+        if (uid && !seenUids.has(uid)) {
+          seenUids.add(uid);
+          questions.push(q);
+        }
+      }
+    };
+
+    if (IsroQuestionService.loaded && Array.isArray(IsroQuestionService.questions) && IsroQuestionService.questions.length > 0) {
+      appendIsro(IsroQuestionService.questions);
+    } else {
+      try {
+        await IsroQuestionService.init();
+        if (IsroQuestionService.loaded && Array.isArray(IsroQuestionService.questions) && IsroQuestionService.questions.length > 0) {
+          appendIsro(IsroQuestionService.questions);
+        }
+      } catch (isroErr) {
+        console.warn("[WeakTopicAnalyzer] ISRO init warning:", isroErr?.message);
       }
     }
   }

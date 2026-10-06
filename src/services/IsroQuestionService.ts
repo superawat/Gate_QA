@@ -246,6 +246,12 @@ export class IsroQuestionService {
     return clean(question.question_uid || question.uid || question.id) || null;
   }
 
+  static getQuestionByUid(uid = ""): QuestionRow | null {
+    const cleanUid = clean(uid);
+    if (!cleanUid) return null;
+    return this.questionsByUid.get(cleanUid) || null;
+  }
+
   static getQuestionsByYearSet(yearSetKeyOrYear: string | number) {
     const parsedYear = Number(
       String(yearSetKeyOrYear).match(/\b(\d{4})\b/)?.[1] || yearSetKeyOrYear

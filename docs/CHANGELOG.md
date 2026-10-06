@@ -1,5 +1,99 @@
 # Changelog
 
+- **Insights Section Updates: Standardize Top-Level Categories (CS, DA, APTITUDE, COMBINED) & ISRO CSE Analytics Integration (DEC-160)**:
+  - *Context*: Users requested two improvements to the Insights dashboard:
+    1. Rename and standardize the top-level section selector to exactly four categories: `CS`, `DA`, `APTITUDE`, `COMBINED`.
+    2. Seamlessly include all valid ISRO CSE questions (`isro:...`) in CS Insights analytics using the existing canonical CS subject and topic mapping, while ensuring zero leakage into DA or Aptitude and natural non-duplicated aggregation into Combined.
+  - *Implementation*:
+    - **Insights Category Selector Standardization (`src/pages/InsightsPage.jsx`)**:
+      - Standardized button labels and render order to strictly: `CS`, `DA`, `APTITUDE`, `COMBINED` across desktop and mobile layouts.
+      - Preserved the existing responsive grid styling (`grid grid-cols-2 sm:grid-cols-4 lg:inline-flex`), state management, theme responsiveness, and URL parameter synchronization (`?track=cs`, `?track=da`, `?track=aptitude`, `?track=all`).
+    - **ISRO CSE Canonical Identification & Classification (`src/utils/examTrack.js`, `src/pages/InsightsPage.jsx`)**:
+      - Reused canonical ISRO identifiers: `isIsroQuestion(q)`, UID prefixes (`isro:`, `isro-`), and exam track metadata.
+      - Updated `isSubjectInTrack` so ISRO CSE questions and subjects map to `track === "cs"` and `track === "all"`, while strictly isolating them from `track === "da"` and `track === "aptitude"`.
+      - Scoped `attemptedQuestionCount` dynamically to the track-filtered subjects.
+      - Expanded `APTITUDE_SUBJECT_SLUGS` in `src/utils/examTrack.js` to recognize `verbal`, `verbal-ability`, and `verbal-aptitude`.
+    - **Analytics Pipeline & Taxonomy Integration (`src/utils/weakTopicAnalyzer.js`, `src/services/IsroQuestionService.ts`)**:
+      - Added static helper `IsroQuestionService.getQuestionByUid(uid)`.
+      - In `toNormalizedQuestion`, mapped ISRO questions to canonical CS subject slugs and labels via `QuestionService.normalizeSubjectSlug` / `getSubjectLabelBySlug`, and derived subtopics from tags if explicit subtopics are absent.
+      - In `loadWeakTopicInsights`, parsed ISRO user activity (`gateqa_isro_progress_v1` and `gate_qa_isro_solved_questions`) into `rawProgressRecords` and `rawSolvedQuestionIds`.
+      - Decoupled question enrichment so Aptitude, DA, and ISRO question sources are always enriched and deduplicated against `seenUids`.
+      - Ensured ISRO questions contribute to all CS metrics: attempted count, correct/incorrect count, accuracy, subject/topic coverage, review queue, and mistake tracking.
+    - **Hook Lifecycle & Stability Fix (`src/pages/InsightsPage.jsx`)**:
+      - Fixed React Hook ordering violation in `SmartPracticeBanner`, ensuring `useCallback` is declared before conditional early return.
+    - **Automated Tests**:
+      - Added category label, isolation, and ISRO integration tests in `src/pages/InsightsPage.test.jsx`.
+      - Added ISRO question normalization, combined aggregation, accuracy, and deduplication tests in `src/utils/weakTopicAnalyzer.test.js`.
+  - *Verification*: Full Vitest suite passing (1,240 tests across 94 files, 100% green), TypeScript typecheck clean (0 errors), production Vite build successful (`npm run build`).
+
+- **Dedicated Special Aptitude Top-Level Section Architecture & Strict Exam Track Isolation (DEC-159)**:
+  - *Context*: Users requested adding "Special Aptitude" as a dedicated top-level section selector alongside "GATE CS", "GATE DA", and "Combined" (`GATE CS | GATE DA | Combined | Special Aptitude`). Previously, Special Aptitude questions and categories (English, Quant, Reasoning) lacked a dedicated top-level track and could leak into General Aptitude (GA) or CS/DA filter views.
+  - *Implementation*:
+    - **Canonical Identification & Track Model (`src/utils/examTrack.js`)**:
+      - Added `APTITUDE: "aptitude"` to `EXAM_TRACKS`.
+      - Exported `APTITUDE_SUBJECT_SLUGS` and `isAptitudeSubjectSlug(slug)` covering `english`, `quant`, `reasoning`, `quantitative-aptitude`, etc.
+      - Added canonical `isAptitudeQuestion(question)` examining explicit track identifiers, UID prefixes (`APT-`, `apt-`, `apt:`), `answerMeta.source === 'aptitude_embedded'`, `_detailShard` paths, and paper names.
+      - Updated `normalizeExamTrack(value)` and `getQuestionTrack(question)` to return `EXAM_TRACKS.APTITUDE`.
+    - **Insights Dashboard Top-Level Switcher (`src/pages/InsightsPage.jsx`)**:
+      - Added 4th section button with `FaBrain` icon, exact matching active/hover styling, and responsive 2x2 layout on mobile / inline flex on desktop (`grid grid-cols-2 sm:grid-cols-4 lg:inline-flex`).
+      - Overhauled `isSubjectInTrack` ensuring complete, strict isolation across all 4 tracks (CS excludes Aptitude/DA/ISRO; DA excludes Aptitude/CSE/ISRO; Aptitude isolates strictly to Aptitude subjects; Combined preserves broad mix).
+      - Synced `track=aptitude` URL search parameter and wired "Open Practice" link (`/practice?track=aptitude`).
+      - Passed `includeAptitude: true` to `loadWeakTopicInsights` to enrich weak area analytics with aptitude questions.
+    - **URL Navigation & Route Preservation (`src/utils/routes.ts`)**:
+      - Added `"track"` to `PRACTICE_QUERY_KEYS` so `extractKnownPracticeSearch` preserves track filters across question solving, pagination, and back navigation.
+    - **Filter & Exploration Provider (`src/contexts/FilterContext.tsx`)**:
+      - Added cold-load detection for `track=aptitude`, `track=cs`, and `track=da`.
+      - Added dynamic URL parameter listener switching tracks and pruning active subjects, subtopics, and year sets.
+    - **Aptitude Preference Layer (`src/utils/aptitudePreference.ts`)**:
+      - Synchronously enabled aptitude on cold load when `track=aptitude` is detected in URL query or hash.
+    - **Weak Topic Analyzer (`src/utils/weakTopicAnalyzer.js`)**:
+      - Supported `includeAptitude` and `track` parameters in `loadWeakTopicInsights` to incorporate aptitude questions and deduplicate via `seenUids`.
+    - **Zero Hardcoding**:
+      - All counts and category pools derived dynamically from active questions without hardcoded counts.
+    - **Automated Tests**:
+      - Added 8 unit tests in `src/utils/examTrack.test.js`.
+      - Added 2 integration tests in `src/pages/InsightsPage.test.jsx`.
+      - Added 2 integration tests in `src/contexts/FilterContext.test.jsx`.
+  - *Verification*: Full Vitest suite passing (1,237 tests across 94 files, 100% green), TypeScript typecheck clean (0 errors), production Vite build successful (`npm run build`).
+
+- **Subject Progress Sorting by Coverage/Accuracy & ProgressRing Typography Optimization (DEC-157)**:
+  - *Context*: In the Insights dashboard (`/insights`), the Subject Progress section previously rendered subject cards in a fixed/static order without the ability to order subjects by attempted coverage or performance accuracy. Additionally, the uppercase label "COVERAGE" inside the 52px inner circular `ProgressRing` was tightly rendered at 9px with letter-spacing, risking visual overflow against the progress ring track.
+  - *Implementation*:
+    - **Preference & Sorting Engine (`src/utils/subjectProgressSortPreference.ts`)**:
+      - Supported 4 sort options: `coverage_desc` ("Coverage — High to Low", default), `coverage_asc` ("Coverage — Low to High"), `accuracy_desc` ("Accuracy — High to Low"), and `accuracy_asc` ("Accuracy — Low to High").
+      - Persisted user preference under namespaced key `gateqa_subject_progress_sort` in `localStorage` across page refreshes, tab closures, and sessions.
+      - Ensured dynamic calculation from live progress data (never storing static arrays).
+      - Deterministic tie-breaking: primary by percentage (coverage or accuracy), secondary alphabetically by subject label (`labelA.localeCompare(labelB)`).
+      - Robust edge case handling: handles 0% coverage, 100% coverage, missing/null/NaN accuracy (treated as 0% for sorting), empty list, and malformed/missing storage values gracefully falling back to `coverage_desc`.
+    - **Header Sort Control (`src/components/Insights/SubjectProgressSortControl.jsx`)**:
+      - Compact dropdown trigger in Subject Progress header displaying active state (e.g. `Sort: Coverage ↓`, `Sort: Accuracy ↑`).
+      - Accessible ARIA attributes (`aria-haspopup="listbox"`, `aria-expanded`, `role="listbox"`, `role="option"`, `aria-selected`).
+      - Keyboard accessible (ArrowUp, ArrowDown, Enter, Space, Escape) and click-outside dismissal.
+    - **Collapsible Section Header Action Slot (`src/components/Layout/CollapsibleSection.jsx`)**:
+      - Refactored `CollapsibleSection` to separate the header title button from the action controls slot (`headerAction`), stopping event propagation so interacting with the sort dropdown never collapses or expands the accordion.
+    - **Circular Progress Ring Typography (`src/pages/InsightsPage.jsx`)**:
+      - Adjusted `ProgressRing` sublabel font size and tracking from `text-[9px] font-semibold uppercase tracking-wider` to `text-[7.5px] font-semibold uppercase tracking-tight`, guaranteeing that "COVERAGE" fits comfortably within the circle with clean padding.
+    - **Automated Tests**:
+      - Added 15 unit tests in `src/utils/subjectProgressSortPreference.test.ts`.
+      - Added 9 unit tests in `src/components/Insights/SubjectProgressSortControl.test.jsx`.
+      - Added 3 integration tests in `src/pages/InsightsPage.test.jsx` verifying sort reordering, localStorage persistence across remounts, and isolated collapse/expand interaction.
+  - *Verification*: Full Vitest suite passing (1,225 passed across 94 files, 100% green), TypeScript typecheck clean (0 errors), production build passing (`npm run build`).
+
+- **Question Data Integrity & LaTeX Formatting Correction for `go:523100` (DEC-156)**:
+  - *Context*: Question `go:523100` (GATE CSE 2026 Set 2 Question 46, Computer Organization & Architecture - Cache Memory): "The word with physical address 0xA2C28 is mapped to the cache block number $17610$." The subscript indicating base 10 ($10$) was stripped during data ingestion, erroneously rendering as "$17610$" instead of "$176_{10}$" (176 base 10).
+  - *Mathematical & Official Derivation*:
+    - Physical memory is 1 MB ($2^{20}$ bytes), so the physical address is 20 bits: $\text{0xA2C28}_{16} = 1010\;0010\;1100\;0010\;1000_2$.
+    - In direct-mapped cache, the physical address is partitioned into: $[\text{Tag}]\;[\text{Cache Block Number / Line Index}]\;[\text{Block Offset}]$.
+    - The cache block number is $176_{10} = 10110000_2$ (8 bits).
+    - To maximize cache size $2^{\text{index} + \text{offset}}$, we minimize the tag length. In the binary string of $\text{0xA2C28}$, the pattern $10110000$ (with valid preceding zeros $00010110000_2 = 176_{10}$) appears spanning bits 16 down to 6 (11 index bits), with 6 block offset bits (bits 5 down to 0) and 3 tag bits (bits 19 to 17).
+    - Maximum cache size = $2^{11 + 6} \text{ bytes} = 2^{17} \text{ bytes} = 128 \text{ KB}$.
+    - Without the base-10 subscript ($176_{10}$), rendering as "17610" confused candidates into searching for $17610_{10}$ ($100010011001010_2$), which is not present in the address.
+  - *Resolution*:
+    - Corrected `$17610$` to `$176_{10}$` across `public/questions-with-answers.json`, `public/questions-filtered-with-ids.json`, `public/questions-filtered.json`, and `audit/normalised-2026.json`.
+    - Regenerated static detail shard `public/question-detail-shards/2026-s2.json`, search index `public/question-search-index.json`, and mock catalog via `scripts/build-public-artifacts.mjs`.
+    - Added automated unit regression tests in `src/utils/evaluateAnswer.test.js`, `src/services/AnswerService.test.js`, and `src/services/QuestionService.test.js`.
+  - *Verification*: Full Vitest suite passing (1,198 tests passed across 92 files, 0 failures), data integrity validation clean (`npm run qa:validate-data` 0 errors), TypeScript typecheck clean (0 errors).
+
 - **Question Answer Correction for ISRO CS 2015 Q59, GATE CSE 2010 Q50 & GATE CSE 1996 Q2.15 (DEC-153, DEC-154, DEC-155)**:
   - *Context*:
     - `isro:cs:2015:q59` (ISRO CS 2015 Q59): "Alpha and Beta testing are forms of: (A) Acceptance testing (B) Integration testing (C) System testing (D) Unit testing". In the official ISRO 2015 answer key and software engineering taxonomy, Alpha and Beta testing are user acceptance testing techniques conducted at the end of the development cycle. The stored key was erroneously marked as C (System testing). Corrected to Option A.

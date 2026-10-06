@@ -276,7 +276,7 @@ Responsibilities:
   - **Legacy papers (2007–2020)**: `marks: 3`, `negativeMarks: 1`
   - **Revised papers (2023 & 2025)**: `marks: 1`, `negativeMarks: 0.33`
 - Supports single question lookup by UID (`getQuestionByUid`) and direct answer resolution via `AnswerService.ts`.
-- Preserves absolute isolation from the GATE CSE (3,682 questions), GATE DA (195 questions), and Aptitude (36,836 questions) question banks.
+- Preserves absolute isolation from the GATE CSE (3,682 questions), GATE DA (195 questions), and Aptitude (36,836 questions) question banks during practice exploration. In Performance Insights (`/insights`), all valid ISRO CSE questions and user attempts seamlessly contribute to the **CS Insights** section and canonical CS subject/topic taxonomy (DEC-160).
 
 ## Filter and progress state model
 
@@ -599,23 +599,28 @@ The startup split is now live end to end:
 The Performance Insights engine (`/insights`) analyzes practice attempts, mock exam sessions, review queues (spaced repetition), weak subtopics, and exam history.
 
 ```text
-[ Global Progress Store (gateqa_progress_v1, gateqa_da_progress_v1) ]
-                        │
-                        ▼
-      [ weakTopicAnalyzer.js (0ms Memoized Cache) ]
-                        │
-       ┌────────────────┴────────────────┐
-       ▼                                 ▼
-[ Track Scoping Engine (Option C) ]  [ Unified Study Momentum ]
-  • GATE CS: 10 Core CSE + GA          • Daily Streak & Heatmap
-  • GATE DA: 7 Core DA + GA            • Earned XP & Level
-  • Combined: Full Practice Pool       • Active Practice Days
+[ Global Progress Store (gateqa_progress_v1, gateqa_da_progress_v1, gateqa_apt_progress_v1, gateqa_isro_progress_v1) ]
+                                              │
+                                              ▼
+                            [ weakTopicAnalyzer.js (0ms Memoized Cache) ]
+                                              │
+                      ┌───────────────────────┴───────────────────────┐
+                      ▼                                               ▼
+      [ Track Scoping Engine (DEC-160) ]                  [ Unified Study Momentum ]
+  • CS: 10 Core CSE + GA + ISRO CSE (1,070 Qs)              • Daily Streak & Heatmap
+  • DA: 7 Core DA + GA (195 Qs)                             • Earned XP & Level
+  • APTITUDE: Dedicated Special Aptitude (36k+ Qs)          • Active Practice Days
+  • COMBINED: Full Deduplicated Pool
 ```
 
-1. **Multi-Branch Architecture (Option C — Unified Effort + Track-Scoped Analytics):**
-   - **Unified Momentum:** Daily learning streak, XP, active days, and streak freezes remain global and uninterrupted across both CSE and DA practice.
-   - **Track-Scoped Metrics:** Subject completion %, skill radar axes, focus areas (weak subtopics), mistakes, and review queues dynamically partition based on the active branch selector (`cs`, `da`, `all`).
-   - **Strict Prefix Disambiguation:** DA questions and subjects are isolated via `da:` / `da-` prefixes, preserving CSE Engineering Mathematics subtopics (`engg-math:linear-algebra`, `engg-math:calculus`) without keyword collision.
+1. **Standardized 4-Category Multi-Branch Architecture (DEC-160, DEC-159):**
+   - **Unified Momentum:** Daily learning streak, XP, active days, and streak freezes remain global and uninterrupted across all question solving.
+   - **Standardized Top-Level Categories:** Exactly 4 top-level categories are available throughout the Insights UI: `CS`, `DA`, `APTITUDE`, `COMBINED`.
+   - **ISRO CSE Integration in CS:** All valid ISRO CSE questions (`isro:...`) and their attempt records contribute to **CS Insights** analytics (attempted count, correct/incorrect count, accuracy, coverage, weak topics, and review queues) using the canonical CS subject/topic taxonomy (`os`, `cn`, `coa`, `dbms`, `algorithms`, etc.). ISRO questions are strictly isolated from `DA` and `APTITUDE`.
+   - **Track-Scoped Metrics:** Subject completion %, skill radar axes, focus areas (weak subtopics), mistakes, and review queues dynamically partition based on the active branch selector (`cs`, `da`, `aptitude`, `all`).
+   - **Combined Natural Aggregation & Deduplication:** The `COMBINED` category aggregates CS (including ISRO), DA, and Aptitude without double-counting (enforced via in-memory `seenUids` deduplication).
+   - **Subject Progress Sorting (DEC-157):** Supports Coverage (High to Low [default], Low to High) and Accuracy (High to Low, Low to High) persisted under `gateqa_subject_progress_sort`.
+   - **Spaced Repetition Review Mode (DEC-158):** Review cards in `SmartPracticeBanner` and `ReviewQueueTab` initialize first-class `'review'` sessions via `startReviewSession` in `SessionContext`, protected from `hideSolved` skipping and persisted in `sessionStorage` (`gateqa_active_session_v1`).
 2. **0ms In-Memory Memoization:**
    - `weakTopicAnalyzer.js` reuses in-memory questions passed from `FilterContext.allQuestions`, eliminating redundant network requests for search indexes.
    - Insights results are memoized in memory keyed by progress state and solved counts.

@@ -2,6 +2,7 @@ export const EXAM_TRACKS = Object.freeze({
   CSE: "cse",
   DA: "da",
   ISRO: "isro",
+  APTITUDE: "aptitude",
 });
 
 const YEAR_SET_KEY_RE = /^(cse|da|it|isro):(\d{4}):(?:set-(\d+)|(additional))$/i;
@@ -26,6 +27,15 @@ export function normalizeExamTrack(value) {
 
   if (!token) {
     return null;
+  }
+  if (
+    token === "aptitude"
+    || token === "apt"
+    || token === "special aptitude"
+    || token === "special_aptitude"
+    || token === "gate aptitude"
+  ) {
+    return EXAM_TRACKS.APTITUDE;
   }
   if (/^isro(?:\s|$)/.test(token) || token === "isro" || token === "isro cs" || token === "isro cse") {
     return EXAM_TRACKS.ISRO;
@@ -61,6 +71,56 @@ export function normalizeExamTrack(value) {
   return null;
 }
 
+export const APTITUDE_SUBJECT_SLUGS = Object.freeze(new Set([
+  "english",
+  "quant",
+  "mathematics",
+  "math",
+  "maths",
+  "quantitative-aptitude",
+  "reasoning",
+  "verbal",
+  "verbal-ability",
+  "verbal-aptitude",
+]));
+
+export function isAptitudeSubjectSlug(value = "") {
+  const token = String(value ?? "")
+    .trim()
+    .toLowerCase();
+  if (!token) {
+    return false;
+  }
+  if (token.startsWith("apt-") || token.startsWith("apt:")) {
+    return true;
+  }
+  return APTITUDE_SUBJECT_SLUGS.has(token);
+}
+
+export function isAptitudeQuestion(question = {}) {
+  const explicitTrack = normalizeExamTrack(
+    question?.track
+    || question?.sourceTrack
+    || question?.examTrack
+    || question?.exam?.paper
+    || question?.paper
+  );
+  if (explicitTrack === EXAM_TRACKS.APTITUDE) {
+    return true;
+  }
+  const questionUid = String(question?.question_uid || question?.uid || question?.id || "").trim();
+  if (questionUid.startsWith("APT-") || questionUid.startsWith("apt-") || questionUid.startsWith("apt:")) {
+    return true;
+  }
+  if (question?.answerMeta?.source === "aptitude_embedded") {
+    return true;
+  }
+  if (String(question?._detailShard || "").includes("aptitude/")) {
+    return true;
+  }
+  return false;
+}
+
 const getExplicitTrack = (question = {}) => {
   const candidates = [
     ...TRACK_FIELDS.map((field) => question?.[field]),
@@ -76,6 +136,10 @@ const getExplicitTrack = (question = {}) => {
 };
 
 export function getQuestionTrack(question = {}) {
+  if (isAptitudeQuestion(question)) {
+    return EXAM_TRACKS.APTITUDE;
+  }
+
   const explicitTrack = getExplicitTrack(question);
   if (explicitTrack) {
     return explicitTrack;

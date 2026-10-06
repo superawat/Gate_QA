@@ -23,7 +23,7 @@ export const readAptitudeEnabled = (): boolean => {
 
   // Force enable synchronously if directly landing on an Aptitude question route,
   // preventing initial-tick race condition redirects before React useEffect hydrates.
-  if (window.location.pathname.includes('/question/APT-') || window.location.hash.includes('/question/APT-')) {
+  if (window.location.pathname.includes('/question/APT-') || window.location.hash.includes('/question/APT-') || window.location.search.includes('track=aptitude') || window.location.hash.includes('track=aptitude')) {
     return true;
   }
 

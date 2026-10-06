@@ -19,6 +19,7 @@ import {
   FaGraduationCap,
   FaRobot,
   FaLayerGroup,
+  FaBrain,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -40,7 +41,8 @@ import {
 } from "recharts";
 
 import ProgressBar from "../components/Filters/ProgressBar";
-import { useFilterState } from "../contexts/FilterContext";
+import { useFilterState, useFilterActions } from "../contexts/FilterContext";
+import { useSession } from "../contexts/SessionContext";
 import PageShell from "../components/Layout/PageShell";
 import SEOHead from "../components/SEO/SEOHead";
 import LoadingState from "../components/Loaders/LoadingState";
@@ -51,7 +53,18 @@ import { loadWeakTopicInsights, clearInsightsCache } from "../utils/weakTopicAna
 import MockHistoryPanel from "../components/Insights/MockHistoryPanel";
 import useChartTheme from "../hooks/useChartTheme";
 import CollapsibleSection from "../components/Layout/CollapsibleSection";
+import SubjectProgressSortControl from "../components/Insights/SubjectProgressSortControl";
+import {
+  useSubjectProgressSort,
+  sortSubjectProgress,
+} from "../utils/subjectProgressSortPreference";
 import { useTheme } from "../utils/theme";
+import {
+  isAptitudeQuestion,
+  isAptitudeSubjectSlug,
+  isDaQuestion,
+  isIsroQuestion,
+} from "../utils/examTrack";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -231,7 +244,7 @@ const ProgressRing = ({ value, size = 80, strokeWidth = 7, color = "#059669", la
             {formatPercent(safeValue)}
           </span>
           {sublabel && (
-            <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)] opacity-75">
+            <span className="mt-0.5 text-[7.5px] font-semibold uppercase tracking-tight text-[color:var(--color-text-muted)] opacity-75">
               {sublabel}
             </span>
           )}
@@ -965,6 +978,11 @@ const FocusAreas = ({ subtopics = [] }) => {
 /* ── Smart Practice Banner ──────────────────────────────────────────────── */
 
 const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { startReviewSession } = useSession();
+  const { getQuestionById } = useFilterActions();
+
   const weakSubtopics = useMemo(() =>
     subtopics.filter((st) => st.attemptedCount > 0 && st.accuracyRate < 0.6),
     [subtopics]
@@ -973,6 +991,23 @@ const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
   const hasReviewDue = reviewQueue.length > 0;
   const hasWeakAreas = weakSubtopics.length > 0;
   
+  const handleStartReview = useCallback((e) => {
+    if (e && typeof e.preventDefault === "function") {
+      e.preventDefault();
+    }
+    if (!hasReviewDue || reviewQueue.length === 0) return;
+    const initialKey = reviewQueue[0].storageKey;
+    const questionPool = reviewQueue
+      .map((item) => (getQuestionById ? getQuestionById(item.storageKey) : null) || { question_uid: item.storageKey })
+      .filter(Boolean);
+    if (typeof startReviewSession === "function") {
+      startReviewSession(questionPool, initialKey);
+    }
+    navigate(buildSolvePath(initialKey), {
+      state: { returnTo: `${location.pathname}${location.search}` },
+    });
+  }, [hasReviewDue, reviewQueue, getQuestionById, startReviewSession, navigate, location.pathname, location.search]);
+
   if (!hasReviewDue && !hasWeakAreas) return null;
 
   // Build the multi-subtopic URL for the weakest areas (max 3 to avoid giant URLs)
@@ -1001,7 +1036,8 @@ const SmartPracticeBanner = ({ subtopics = [], reviewQueue = [] }) => {
           </div>
           <Link
             to={reviewUrl}
-            className="inline-flex w-full justify-center items-center gap-2 rounded-lg bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[color:var(--color-primary-hover)]"
+            onClick={handleStartReview}
+            className="inline-flex w-full justify-center items-center gap-2 rounded-lg bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[color:var(--color-primary-hover)] cursor-pointer"
           >
             Start Review <FaArrowRight />
           </Link>
@@ -1170,6 +1206,12 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
   const subjectsList = Array.isArray(insights?.subjects) ? insights.subjects : [];
   const subtopicsList = Array.isArray(insights?.subtopics) ? insights.subtopics : [];
   const reviewQueueList = Array.isArray(insights?.reviewQueue) ? insights.reviewQueue : [];
+  const [subjectSortOption, setSubjectSortOption] = useSubjectProgressSort();
+
+  const sortedSubjectsList = useMemo(() => {
+    return sortSubjectProgress(subjectsList, subjectSortOption);
+  }, [subjectsList, subjectSortOption]);
+
   const totalCorrect = useMemo(() =>
     subjectsList.reduce((sum, s) => sum + (Number(s?.correctAttempts) || 0), 0)
   , [subjectsList]);
@@ -1256,9 +1298,15 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
               </div>
             </div>
           }
+          headerAction={
+            <SubjectProgressSortControl
+              value={subjectSortOption}
+              onChange={setSubjectSortOption}
+            />
+          }
           defaultOpen={true}
         >
-          <SubjectProgressRings subjects={subjectsList} />
+          <SubjectProgressRings subjects={sortedSubjectsList} />
         </CollapsibleSection>
       )}
 
@@ -1432,12 +1480,20 @@ const OverviewTab = ({ insights = {}, summary = {} }) => {
 const ReviewQueueTab = ({ reviewQueue = [] }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { startReviewSession } = useSession();
+  const { getQuestionById } = useFilterActions();
 
   const handleNavigateToQuestion = useCallback((storageKey) => {
+    const questionPool = reviewQueue
+      .map((item) => (getQuestionById ? getQuestionById(item.storageKey) : null) || { question_uid: item.storageKey })
+      .filter(Boolean);
+    if (typeof startReviewSession === "function") {
+      startReviewSession(questionPool, storageKey);
+    }
     navigate(buildSolvePath(storageKey), {
       state: { returnTo: `${location.pathname}${location.search}` },
     });
-  }, [navigate, location.pathname, location.search]);
+  }, [navigate, location.pathname, location.search, reviewQueue, getQuestionById, startReviewSession]);
 
   if (!reviewQueue.length) {
     return (
@@ -1768,23 +1824,55 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
 
 /* ── Track scoping helper ────────────────────────────────────────────────── */
 
-const isSubjectInTrack = (subjectSlugOrKey = "", track = "all") => {
+const isSubjectInTrack = (subjectSlugOrKeyOrQuestion = "", track = "all") => {
   if (track === "all") return true;
-  const key = String(subjectSlugOrKey || "").toLowerCase();
-  const isDa = key.startsWith("da:") || key.startsWith("da-");
-  const isIsro = key.startsWith("isro:") || key.startsWith("isro-");
-  const isGa =
-    key === "ga" ||
-    key.startsWith("apt-") ||
-    key.includes("aptitude") ||
-    key === "english" ||
-    key === "reasoning";
+  if (!subjectSlugOrKeyOrQuestion) return false;
 
-  if (track === "da") {
-    return isDa || isGa;
+  let key = "";
+  if (typeof subjectSlugOrKeyOrQuestion === "object") {
+    const q = subjectSlugOrKeyOrQuestion;
+    const uid = String(q.question_uid || q.uid || q.storageKey || "").trim();
+    if (isAptitudeQuestion(q) || (uid && isAptitudeQuestion({ question_uid: uid }))) {
+      return track === "aptitude";
+    }
+    if (isDaQuestion(q) || (uid && isDaQuestion({ question_uid: uid }))) {
+      return track === "da";
+    }
+    if (isIsroQuestion(q) || (uid && isIsroQuestion({ question_uid: uid })) || uid.toLowerCase().startsWith("isro:") || uid.toLowerCase().startsWith("isro-")) {
+      return track === "cs";
+    }
+    key = String(q.subjectSlug || q.subject || q.key || uid).toLowerCase();
+  } else {
+    key = String(subjectSlugOrKeyOrQuestion).toLowerCase();
+  }
+
+  // Check if UID
+  if (key.startsWith("apt-") || key.startsWith("apt:")) {
+    return track === "aptitude";
+  }
+  if (key.startsWith("da:") || key.startsWith("da-")) {
+    return track === "da";
+  }
+  if (key.startsWith("isro:") || key.startsWith("isro-")) {
+    return track === "cs";
+  }
+  if (key.startsWith("go:")) {
+    return track === "cs";
+  }
+
+  // Check if subject
+  const isApt = isAptitudeSubjectSlug(key) || key === "aptitude";
+  const isDa = key.startsWith("da:") || key.startsWith("da-");
+  const isGateGa = key === "ga" || key === "general-aptitude";
+
+  if (track === "aptitude") {
+    return isApt;
   }
   if (track === "cs") {
-    return (!isDa && !isIsro) || isGa;
+    return !isApt && !isDa;
+  }
+  if (track === "da") {
+    return !isApt && (isDa || isGateGa);
   }
   return true;
 };
@@ -1823,7 +1911,7 @@ const InsightsPage = ({
   const [selectedTrack, setSelectedTrack] = useState(() => {
     const params = new URLSearchParams(location.search);
     const trackParam = params.get("track");
-    if (trackParam === "da" || trackParam === "cs" || trackParam === "all") {
+    if (trackParam === "da" || trackParam === "cs" || trackParam === "aptitude" || trackParam === "all") {
       return trackParam;
     }
     return "all";
@@ -1850,7 +1938,7 @@ const InsightsPage = ({
       setActiveTab(tabParam);
     }
     const trackParam = params.get("track");
-    if ((trackParam === "da" || trackParam === "cs" || trackParam === "all") && trackParam !== selectedTrack) {
+    if ((trackParam === "da" || trackParam === "cs" || trackParam === "aptitude" || trackParam === "all") && trackParam !== selectedTrack) {
       setSelectedTrack(trackParam);
     }
   }, [location.search, activeTab, selectedTrack]);
@@ -1880,6 +1968,8 @@ const InsightsPage = ({
           : allQuestionsRef.current;
         const result = await loadWeakTopicInsights({
           questions: Array.isArray(questionsList) && questionsList.length > 0 ? questionsList : null,
+          includeAptitude: true,
+          includeIsro: true,
         });
         if (active) {
           setInsights(result || {
@@ -1946,12 +2036,19 @@ const InsightsPage = ({
         reviewQueue,
       };
     }
+    const filteredSubjects = subjects.filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug || s, selectedTrack));
+    const filteredSubtopics = subtopics.filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key || st, selectedTrack));
+    const filteredWrong = wrongQuestions.filter((q) => isSubjectInTrack(q, selectedTrack));
+    const filteredReview = reviewQueue.filter((q) => isSubjectInTrack(q, selectedTrack));
+    const scopedAttemptedCount = filteredSubjects.reduce((sum, s) => sum + Number(s.attemptedCount || 0), 0);
+
     return {
       ...safeInsights,
-      subjects: subjects.filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug, selectedTrack)),
-      subtopics: subtopics.filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key, selectedTrack)),
-      wrongQuestions: wrongQuestions.filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
-      reviewQueue: reviewQueue.filter((q) => isSubjectInTrack(q?.subjectSlug, selectedTrack)),
+      subjects: filteredSubjects,
+      subtopics: filteredSubtopics,
+      wrongQuestions: filteredWrong,
+      reviewQueue: filteredReview,
+      attemptedQuestionCount: scopedAttemptedCount > 0 ? scopedAttemptedCount : Number(safeInsights.attemptedQuestionCount || 0),
     };
   }, [insights, selectedTrack]);
 
@@ -2054,7 +2151,7 @@ const InsightsPage = ({
                 )}
               </button>
               <Link
-                to={PRACTICE_ROUTE}
+                to={selectedTrack === "all" ? PRACTICE_ROUTE : `${PRACTICE_ROUTE}?track=${selectedTrack}`}
                 className="inline-flex h-9 sm:h-10 items-center rounded-xl bg-[color:var(--color-primary)] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-hover)] shadow-xs sm:shadow-sm"
               >
                 <FaCompass className="mr-1.5 sm:mr-2 text-xs sm:text-sm" />
@@ -2064,7 +2161,7 @@ const InsightsPage = ({
 
             {/* Track Switcher (Row 2 on mobile, center on desktop) */}
             <div className="w-full lg:w-auto order-3 lg:order-2">
-              <div className="grid grid-cols-3 lg:inline-flex w-full lg:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs">
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:inline-flex w-full lg:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs">
                 <button
                   type="button"
                   onClick={() => handleTrackChange("cs")}
@@ -2075,7 +2172,7 @@ const InsightsPage = ({
                   }`}
                 >
                   <FaGraduationCap className="text-xs shrink-0" />
-                  <span>GATE CS</span>
+                  <span>CS</span>
                 </button>
                 <button
                   type="button"
@@ -2087,7 +2184,19 @@ const InsightsPage = ({
                   }`}
                 >
                   <FaRobot className="text-xs shrink-0" />
-                  <span>GATE DA</span>
+                  <span>DA</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleTrackChange("aptitude")}
+                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
+                    selectedTrack === "aptitude"
+                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                  }`}
+                >
+                  <FaBrain className="text-xs shrink-0" />
+                  <span>APTITUDE</span>
                 </button>
                 <button
                   type="button"
@@ -2099,7 +2208,7 @@ const InsightsPage = ({
                   }`}
                 >
                   <FaLayerGroup className="text-xs shrink-0" />
-                  <span>Combined</span>
+                  <span>COMBINED</span>
                 </button>
               </div>
             </div>

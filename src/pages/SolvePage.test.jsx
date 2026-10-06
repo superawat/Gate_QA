@@ -137,6 +137,7 @@ const buildQuestion = (question_uid, overrides = {}) => ({
 
 const renderSolvePage = ({
   route = "/practice/question/go%3A1?subjects=algorithms&page=2",
+  locationState = undefined,
   loading = false,
   error = "",
   filteredQuestions = [buildQuestion("go:1"), buildQuestion("go:2")],
@@ -165,6 +166,7 @@ const renderSolvePage = ({
     dismissExhaustionBanner: mocks.dismissExhaustionBanner,
     startRandomSession: mocks.startRandomSession,
     startOrderedSession: mocks.startOrderedSession,
+    startReviewSession: vi.fn(),
     setCurrentQuestionUid: mocks.setCurrentQuestionUid,
     getNavigationState: mocks.getNavigationState,
     goToNextQuestion: mocks.goToNextQuestion,
@@ -172,10 +174,18 @@ const renderSolvePage = ({
     ...sessionOverrides,
   };
 
+  const initialEntry = locationState
+    ? {
+        pathname: route.split("?")[0],
+        search: route.includes("?") ? `?${route.split("?")[1]}` : "",
+        state: locationState,
+      }
+    : route;
+
   return {
     loadQuestions,
     ...render(
-      <MemoryRouter initialEntries={[route]}>
+      <MemoryRouter initialEntries={[initialEntry]}>
         <LocationProbe />
         <Routes>
           <Route
@@ -598,5 +608,39 @@ describe("SolvePage", () => {
     expect(themeToggle).toBeTruthy();
     fireEvent.click(themeToggle);
     expect(window.localStorage.getItem("gate_qa_theme")).toBe("dark");
+  });
+
+  test("displays Spaced Revision when session mode is review", async () => {
+    mocks.getNavigationState.mockReturnValue({
+      mode: "review",
+      index: 1,
+      total: 5,
+      canGoPrevious: true,
+      canGoNext: true,
+    });
+
+    renderSolvePage({
+      route: "/practice/question/go%3A1",
+      sessionOverrides: {
+        sessionMode: "review",
+        sessionQueue: ["go:0", "go:1", "go:2", "go:3", "go:4"],
+      },
+    });
+
+    expect(await screen.findByText("Spaced Revision")).toBeTruthy();
+    expect(screen.getByText("Question 2 of 5")).toBeTruthy();
+  });
+
+  test("back to results honors returnTo route provided in location state", async () => {
+    renderSolvePage({
+      route: "/practice/question/go%3A1",
+      locationState: { returnTo: "/insights?tab=review" },
+    });
+
+    fireEvent.click(await screen.findByRole("button", { name: /back to results/i }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location-probe").textContent).toBe("/insights?tab=review");
+    });
   });
 });

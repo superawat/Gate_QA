@@ -1,12 +1,16 @@
 import { describe, expect, test } from "vitest";
 import {
+  EXAM_TRACKS,
   buildTrackYearSetKey,
   formatTrackYearSetLabel,
   getQuestionTrack,
   getQuestionYearSetIdentity,
+  isAptitudeQuestion,
+  isAptitudeSubjectSlug,
   isDaQuestion,
   isIsroQuestion,
   isItQuestion,
+  normalizeExamTrack,
   parseTrackYearSetKey,
   toLegacyYearSetKey,
 } from "./examTrack";
@@ -163,5 +167,62 @@ describe("exam track identity", () => {
       set: 1,
       key: "isro:2025:set-1",
     });
+  });
+
+  test("accurately identifies Special Aptitude questions and isolates them from CSE and DA", () => {
+    expect(EXAM_TRACKS.APTITUDE).toBe("aptitude");
+    expect(normalizeExamTrack("aptitude")).toBe("aptitude");
+    expect(normalizeExamTrack("special aptitude")).toBe("aptitude");
+    expect(normalizeExamTrack("apt")).toBe("aptitude");
+
+    const aptQuestion1 = {
+      question_uid: "APT-ENG-0001",
+      title: "English Practice",
+      subject: "English",
+      subjectSlug: "english",
+    };
+    const aptQuestion2 = {
+      question_uid: "APT-QUA-0042",
+      answerMeta: { source: "aptitude_embedded" },
+      exam: { paper: "Aptitude" },
+    };
+    const aptQuestion3 = {
+      uid: "APT-REA-0105",
+      _detailShard: "data/shards/aptitude/reasoning.json",
+    };
+    const cseQuestion = {
+      question_uid: "go:523089",
+      title: "GATE CSE 2026 | Set 1 | GA | Question: 1",
+    };
+    const daQuestion = {
+      question_uid: "da:2026:set1:main:q1",
+      title: "GATE DA 2026 | Question: 1",
+    };
+
+    expect(isAptitudeQuestion(aptQuestion1)).toBe(true);
+    expect(isAptitudeQuestion(aptQuestion2)).toBe(true);
+    expect(isAptitudeQuestion(aptQuestion3)).toBe(true);
+    expect(isAptitudeQuestion(cseQuestion)).toBe(false);
+    expect(isAptitudeQuestion(daQuestion)).toBe(false);
+
+    expect(getQuestionTrack(aptQuestion1)).toBe("aptitude");
+    expect(getQuestionTrack(aptQuestion2)).toBe("aptitude");
+    expect(getQuestionTrack(aptQuestion3)).toBe("aptitude");
+    expect(getQuestionTrack(cseQuestion)).toBe("cse");
+    expect(getQuestionTrack(daQuestion)).toBe("da");
+
+    // Subject slugs isolation
+    expect(isAptitudeSubjectSlug("english")).toBe(true);
+    expect(isAptitudeSubjectSlug("quant")).toBe(true);
+    expect(isAptitudeSubjectSlug("reasoning")).toBe(true);
+    expect(isAptitudeSubjectSlug("mathematics")).toBe(true);
+    expect(isAptitudeSubjectSlug("quantitative-aptitude")).toBe(true);
+    expect(isAptitudeSubjectSlug("apt-vocab")).toBe(true);
+
+    // CSE / DA / GATE GA subjects must NOT be aptitude subjects
+    expect(isAptitudeSubjectSlug("algorithms")).toBe(false);
+    expect(isAptitudeSubjectSlug("dbms")).toBe(false);
+    expect(isAptitudeSubjectSlug("da:python")).toBe(false);
+    expect(isAptitudeSubjectSlug("ga")).toBe(false);
   });
 });

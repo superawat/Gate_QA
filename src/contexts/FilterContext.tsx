@@ -621,7 +621,7 @@ export const FilterProvider = ({
     const shouldMergeAptitude = canMergeAptitude && aptitudeEnabled;
 
     useEffect(() => {
-        if (location.pathname.includes('/question/APT-')) {
+        if (location.pathname.includes('/question/APT-') || location.search.includes('track=aptitude')) {
             if (!aptitudeEnabled) {
                 setAptitudeEnabled(true);
             } else {
@@ -632,7 +632,7 @@ export const FilterProvider = ({
                 } catch (e) {}
             }
         }
-    }, [location.pathname, aptitudeEnabled, setAptitudeEnabled]);
+    }, [location.pathname, location.search, aptitudeEnabled, setAptitudeEnabled]);
 
     const [structuredTags, setStructuredTags] = useState(() => buildStructuredTagsFromManifest(initialManifest, questionService));
     const previousStructuredTagsRef = useRef(structuredTags);
@@ -677,27 +677,76 @@ export const FilterProvider = ({
     const [isroSolvedTimestampMap, setIsroSolvedTimestampMap] = useState({});
     const [isroBookmarkedQuestionIds, setIsroBookmarkedQuestionIds] = useState([]);
     const [isroBookmarkRemovalIds, setIsroBookmarkRemovalIds] = useState([]);
-    const [includeCse, setIncludeCseState] = useState(() => (
-        initialIncludeCse !== null
-            ? Boolean(initialIncludeCse)
-            : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_cse') !== null
-                ? window.localStorage.getItem('gateqa_include_cse') === 'true'
-                : true)
-    ));
-    const [includeDa, setIncludeDaState] = useState(() => (
-        initialIncludeDa !== null
-            ? Boolean(initialIncludeDa)
-            : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') !== null
-                ? window.localStorage.getItem('gateqa_include_da') === 'true'
-                : urlHasTrackYearSets('da'))
-    ));
-    const [includeIsro, setIncludeIsroState] = useState(() => (
-        initialIncludeIsro !== null
-            ? Boolean(initialIncludeIsro)
-            : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_isro') !== null
-                ? window.localStorage.getItem('gateqa_include_isro') === 'true'
-                : urlHasTrackYearSets('isro'))
-    ));
+    const getInitialTrackParam = () => {
+        if (typeof window === 'undefined') return null;
+        try {
+            return new URLSearchParams(window.location.search).get('track');
+        } catch {
+            return null;
+        }
+    };
+    const initialTrack = getInitialTrackParam();
+
+    const [includeCse, setIncludeCseState] = useState(() => {
+        if (initialTrack === 'aptitude' || initialTrack === 'da') return false;
+        if (initialTrack === 'cs') return true;
+        return (
+            initialIncludeCse !== null
+                ? Boolean(initialIncludeCse)
+                : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_cse') !== null
+                    ? window.localStorage.getItem('gateqa_include_cse') === 'true'
+                    : true)
+        );
+    });
+    const [includeDa, setIncludeDaState] = useState(() => {
+        if (initialTrack === 'aptitude' || initialTrack === 'cs') return false;
+        if (initialTrack === 'da') return true;
+        return (
+            initialIncludeDa !== null
+                ? Boolean(initialIncludeDa)
+                : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_da') !== null
+                    ? window.localStorage.getItem('gateqa_include_da') === 'true'
+                    : urlHasTrackYearSets('da'))
+        );
+    });
+    const [includeIsro, setIncludeIsroState] = useState(() => {
+        if (initialTrack === 'aptitude' || initialTrack === 'cs' || initialTrack === 'da') return false;
+        return (
+            initialIncludeIsro !== null
+                ? Boolean(initialIncludeIsro)
+                : (typeof window !== 'undefined' && window.localStorage.getItem('gateqa_include_isro') !== null
+                    ? window.localStorage.getItem('gateqa_include_isro') === 'true'
+                    : urlHasTrackYearSets('isro'))
+        );
+    });
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const trackParam = params.get('track');
+        if (trackParam === 'aptitude') {
+            setIncludeCseState(false);
+            setIncludeDaState(false);
+            setIncludeIsroState(false);
+            setFilters(prev => (prev.selectedYearSets.length > 0 ? { ...prev, selectedYearSets: [] } : prev));
+            if (!aptitudeEnabled) {
+                setAptitudeEnabled(true);
+            }
+        } else if (trackParam === 'cs') {
+            setIncludeCseState(true);
+            setIncludeDaState(false);
+            setIncludeIsroState(false);
+            if (aptitudeEnabled) {
+                setAptitudeEnabled(false);
+            }
+        } else if (trackParam === 'da') {
+            setIncludeCseState(false);
+            setIncludeDaState(true);
+            setIncludeIsroState(false);
+            if (aptitudeEnabled) {
+                setAptitudeEnabled(false);
+            }
+        }
+    }, [location.search, aptitudeEnabled, setAptitudeEnabled]);
 
     useEffect(() => {
         if (typeof window === 'undefined') return undefined;

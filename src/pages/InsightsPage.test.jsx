@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import React from "react";
-import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent, act, within } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 
@@ -10,6 +10,9 @@ const mocks = vi.hoisted(() => ({
   loadWeakTopicInsights: vi.fn(),
   clearInsightsCache: vi.fn(),
   readMockTestHistory: vi.fn().mockReturnValue([]),
+  startReviewSession: vi.fn(),
+  startOrderedSession: vi.fn(),
+  startRandomSession: vi.fn(),
 }));
 
 vi.mock("../components/Layout/PageShell", () => ({
@@ -44,6 +47,15 @@ vi.mock("../contexts/FilterContext", () => ({
   }),
   useFilterActions: () => ({
     refreshProgressState: vi.fn(),
+    getQuestionById: vi.fn((uid) => ({ question_uid: uid, title: uid })),
+  }),
+}));
+
+vi.mock("../contexts/SessionContext", () => ({
+  useSession: () => ({
+    startReviewSession: mocks.startReviewSession,
+    startOrderedSession: mocks.startOrderedSession,
+    startRandomSession: mocks.startRandomSession,
   }),
 }));
 
@@ -533,13 +545,338 @@ describe("InsightsPage", () => {
     renderInsightsPage();
     await screen.findByText(/no insights yet/i);
 
-    expect(screen.getByRole("button", { name: /gate cs/i })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /gate da/i })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /combined/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /^cs$/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /^da$/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /^aptitude$/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /^combined$/i })).toBeTruthy();
 
     expect(screen.queryByRole("button", { name: /export json/i })).toBeNull();
     expect(screen.queryByRole("button", { name: /export csv/i })).toBeNull();
     expect(screen.queryByRole("button", { name: /import/i })).toBeNull();
+  });
+
+  test("renders sorting control in Subject Progress and dynamically reorders cards", async () => {
+    window.localStorage.clear();
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 20,
+      subjects: [
+        { key: "cn", label: "Computer Networks", coverageRate: 0.01, accuracyRate: 0.4, attemptedCount: 2, availableQuestions: 200 },
+        { key: "dl", label: "Digital Logic", coverageRate: 0.09, accuracyRate: 0.61, attemptedCount: 9, availableQuestions: 100 },
+        { key: "os", label: "Operating System", coverageRate: 0.29, accuracyRate: 0.66, attemptedCount: 29, availableQuestions: 100 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText("Subject Progress");
+
+    // Default sort is Coverage — High to Low (coverage_desc)
+    expect(screen.getByText("Coverage ↓")).toBeTruthy();
+
+    // Verify initial ordering: Operating System (29%) -> Digital Logic (9%) -> Computer Networks (1%)
+    let subjectNames = screen.getAllByText(/Computer Networks|Digital Logic|Operating System/).map((el) => el.textContent);
+    expect(subjectNames).toEqual([
+      "Operating System",
+      "Digital Logic",
+      "Computer Networks",
+    ]);
+
+    // Open sorting dropdown
+    const sortBtn = screen.getByRole("button", { name: /sort subjects/i });
+    fireEvent.click(sortBtn);
+
+    // Select Coverage — Low to High (coverage_asc)
+    const covAscOption = screen.getByRole("option", { name: /coverage — low to high/i });
+    fireEvent.click(covAscOption);
+
+    // Verify updated header display
+    expect(screen.getByText("Coverage ↑")).toBeTruthy();
+
+    // Verify updated ordering: Computer Networks (1%) -> Digital Logic (9%) -> Operating System (29%)
+    subjectNames = screen.getAllByText(/Computer Networks|Digital Logic|Operating System/).map((el) => el.textContent);
+    expect(subjectNames).toEqual([
+      "Computer Networks",
+      "Digital Logic",
+      "Operating System",
+    ]);
+
+    // Verify persistence in localStorage
+    expect(window.localStorage.getItem("gateqa_subject_progress_sort")).toBe("coverage_asc");
+  });
+
+  test("restores persisted sorting preference on initial mount", async () => {
+    window.localStorage.setItem("gateqa_subject_progress_sort", "accuracy_asc");
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 20,
+      subjects: [
+        { key: "os", label: "Operating System", coverageRate: 0.29, accuracyRate: 0.85, attemptedCount: 29, availableQuestions: 100 },
+        { key: "cn", label: "Computer Networks", coverageRate: 0.01, accuracyRate: 0.4, attemptedCount: 2, availableQuestions: 200 },
+        { key: "dl", label: "Digital Logic", coverageRate: 0.09, accuracyRate: 0.61, attemptedCount: 9, availableQuestions: 100 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText("Subject Progress");
+
+    // Restores Accuracy ↑
+    expect(screen.getByText("Accuracy ↑")).toBeTruthy();
+
+    // Accuracy low to high: Computer Networks (40%) -> Digital Logic (61%) -> Operating System (85%)
+    const subjectNames = screen.getAllByText(/Computer Networks|Digital Logic|Operating System/).map((el) => el.textContent);
+    expect(subjectNames).toEqual([
+      "Computer Networks",
+      "Digital Logic",
+      "Operating System",
+    ]);
+  });
+
+  test("Subject Progress collapse and expand toggles without interfering with sorting control", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [
+        { key: "algo", label: "Algorithms", coverageRate: 0.5, accuracyRate: 0.7, attemptedCount: 5, availableQuestions: 10 },
+      ],
+      subtopics: [],
+      wrongQuestions: [],
+    });
+
+    renderInsightsPage();
+    const heading = await screen.findByText("Subject Progress");
+    const section = heading.closest("section");
+    expect(section).toBeTruthy();
+
+    expect(within(section).getByText("Algorithms")).toBeTruthy();
+
+    // Click collapse chevron button inside Subject Progress section
+    const collapseBtn = within(section).getByRole("button", { name: /collapse section/i });
+    fireEvent.click(collapseBtn);
+
+    // Subject rings should be collapsed
+    expect(within(section).queryByText("Algorithms")).toBeNull();
+
+    // Click expand chevron button inside Subject Progress section
+    const expandBtn = within(section).getByRole("button", { name: /expand section/i });
+    fireEvent.click(expandBtn);
+
+    // Subject rings restored
+    expect(within(section).getByText("Algorithms")).toBeTruthy();
+  });
+
+  test("clicking Start Review in Spaced Repetition banner initializes review session with all due questions", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [
+        { storageKey: "q-rev-1", subjectLabel: "Algorithms", difficultyLabel: "Medium" },
+        { storageKey: "q-rev-2", subjectLabel: "Algorithms", difficultyLabel: "Hard" },
+        { storageKey: "q-rev-3", subjectLabel: "OS", difficultyLabel: "Easy" },
+      ],
+    });
+
+    renderInsightsPage();
+
+    const startReviewBtn = await screen.findByRole("link", { name: /start review/i });
+    expect(startReviewBtn).toBeTruthy();
+
+    fireEvent.click(startReviewBtn);
+
+    expect(mocks.startReviewSession).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        expect.objectContaining({ question_uid: "q-rev-1" }),
+        expect.objectContaining({ question_uid: "q-rev-2" }),
+        expect.objectContaining({ question_uid: "q-rev-3" }),
+      ]),
+      "q-rev-1"
+    );
+  });
+
+  test("clicking a card in Review Queue tab initializes review session starting at that question", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 5,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [
+        { storageKey: "q-rev-1", subjectLabel: "Algorithms", difficultyLabel: "Medium" },
+        { storageKey: "q-rev-2", subjectLabel: "Algorithms", difficultyLabel: "Hard" },
+      ],
+    });
+
+    renderInsightsPage();
+
+    fireEvent.click(await screen.findByRole("button", { name: /review queue/i }));
+
+    const card = await screen.findByText("q-rev-2");
+    fireEvent.click(card.closest("button"));
+
+    expect(mocks.startReviewSession).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        expect.objectContaining({ question_uid: "q-rev-1" }),
+        expect.objectContaining({ question_uid: "q-rev-2" }),
+      ]),
+      "q-rev-2"
+    );
+  });
+
+  test("allows switching between CS, DA, Combined, and Aptitude sections with strict isolation", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 30,
+      subjects: [
+        { key: "algo", label: "Algorithms", accuracyRate: 0.8, attemptedCount: 10, correctAttempts: 8, incorrectAttempts: 2, availableQuestions: 20 },
+        { key: "da:python", label: "Python Programming", accuracyRate: 0.6, attemptedCount: 10, correctAttempts: 6, incorrectAttempts: 4, availableQuestions: 20 },
+        { key: "english", label: "English", accuracyRate: 0.9, attemptedCount: 10, correctAttempts: 9, incorrectAttempts: 1, availableQuestions: 50 },
+      ],
+      subtopics: [
+        { key: "algo-graphs", label: "Graphs", subjectLabel: "Algorithms", subjectSlug: "algo" },
+        { key: "da:python-numpy", label: "NumPy", subjectLabel: "Python Programming", subjectSlug: "da:python" },
+        { key: "english-vocab", label: "Vocabulary", subjectLabel: "English", subjectSlug: "english" },
+      ],
+      wrongQuestions: [],
+      reviewQueue: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText("Subject Progress");
+
+    // Initially "all" (Combined) -> all 3 subjects visible
+    expect(screen.getByText("Algorithms")).toBeTruthy();
+    expect(screen.getByText("Python Programming")).toBeTruthy();
+    expect(screen.getByText("English")).toBeTruthy();
+
+    // Click "APTITUDE"
+    const aptBtn = screen.getByRole("button", { name: /^aptitude$/i });
+    fireEvent.click(aptBtn);
+
+    // In Aptitude: English must be visible, Algorithms and Python must NOT be visible
+    expect(screen.getByText("English")).toBeTruthy();
+    expect(screen.queryByText("Algorithms")).toBeNull();
+    expect(screen.queryByText("Python Programming")).toBeNull();
+
+    // Check Open Practice link has track=aptitude
+    const openPracticeLink = screen.getByRole("link", { name: /open practice/i });
+    expect(openPracticeLink.getAttribute("href")).toBe("/practice?track=aptitude");
+
+    // Click "CS"
+    const csBtn = screen.getByRole("button", { name: /^cs$/i });
+    fireEvent.click(csBtn);
+
+    // In CS: Algorithms visible, English and Python NOT visible
+    expect(screen.getByText("Algorithms")).toBeTruthy();
+    expect(screen.queryByText("English")).toBeNull();
+    expect(screen.queryByText("Python Programming")).toBeNull();
+    expect(openPracticeLink.getAttribute("href")).toBe("/practice?track=cs");
+
+    // Click "DA"
+    const daBtn = screen.getByRole("button", { name: /^da$/i });
+    fireEvent.click(daBtn);
+
+    // In DA: Python visible, English and Algorithms NOT visible
+    expect(screen.getByText("Python Programming")).toBeTruthy();
+    expect(screen.queryByText("English")).toBeNull();
+    expect(screen.queryByText("Algorithms")).toBeNull();
+    expect(openPracticeLink.getAttribute("href")).toBe("/practice?track=da");
+
+    // Click "COMBINED"
+    const allBtn = screen.getByRole("button", { name: /^combined$/i });
+    fireEvent.click(allBtn);
+
+    // Combined: All 3 visible
+    expect(screen.getByText("Algorithms")).toBeTruthy();
+    expect(screen.getByText("Python Programming")).toBeTruthy();
+    expect(screen.getByText("English")).toBeTruthy();
+    expect(openPracticeLink.getAttribute("href")).toBe("/practice");
+  });
+
+  test("displays standardized categories CS, DA, APTITUDE, COMBINED and invokes loadWeakTopicInsights with includeIsro", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 0,
+      subjects: [],
+      subtopics: [],
+      wrongQuestions: [],
+      reviewQueue: [],
+    });
+
+    renderInsightsPage();
+    await screen.findByText(/no insights yet/i);
+
+    // Verify all 4 category buttons exist with exact labels
+    const csBtn = screen.getByRole("button", { name: /^cs$/i });
+    const daBtn = screen.getByRole("button", { name: /^da$/i });
+    const aptBtn = screen.getByRole("button", { name: /^aptitude$/i });
+    const combinedBtn = screen.getByRole("button", { name: /^combined$/i });
+
+    expect(csBtn).toBeTruthy();
+    expect(daBtn).toBeTruthy();
+    expect(aptBtn).toBeTruthy();
+    expect(combinedBtn).toBeTruthy();
+
+    // Verify legacy names are absent
+    expect(screen.queryByRole("button", { name: /gate cs/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /gate da/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /general aptitude/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /special aptitude/i })).toBeNull();
+
+    // Verify loadWeakTopicInsights was called with includeIsro: true
+    expect(mocks.loadWeakTopicInsights).toHaveBeenCalledWith(
+      expect.objectContaining({
+        includeAptitude: true,
+        includeIsro: true,
+      })
+    );
+  });
+
+  test("classifies ISRO CSE questions under CS track and COMBINED track while strictly isolating from DA and APTITUDE", async () => {
+    mocks.loadWeakTopicInsights.mockResolvedValueOnce({
+      attemptedQuestionCount: 40,
+      subjects: [
+        { key: "os", label: "Operating Systems", accuracyRate: 0.85, attemptedCount: 10, correctAttempts: 8, incorrectAttempts: 2, availableQuestions: 50 },
+        { key: "da:dbms", label: "DBMS & Warehousing", accuracyRate: 0.7, attemptedCount: 10, correctAttempts: 7, incorrectAttempts: 3, availableQuestions: 30 },
+        { key: "verbal", label: "Verbal Ability", accuracyRate: 0.9, attemptedCount: 10, correctAttempts: 9, incorrectAttempts: 1, availableQuestions: 40 },
+      ],
+      subtopics: [
+        { key: "os:scheduling", label: "CPU Scheduling", subjectLabel: "Operating Systems", subjectSlug: "os" },
+        { key: "da:dbms:sql", label: "SQL", subjectLabel: "DBMS & Warehousing", subjectSlug: "da:dbms" },
+        { key: "verbal:grammar", label: "Grammar", subjectLabel: "Verbal Ability", subjectSlug: "verbal" },
+      ],
+      wrongQuestions: [
+        { storageKey: "isro:2020:15", subjectLabel: "Operating Systems", subjectSlug: "os", attempts: 2, incorrectAttempts: 1 },
+        { storageKey: "da:2024:5", subjectLabel: "DBMS & Warehousing", subjectSlug: "da:dbms", attempts: 1, incorrectAttempts: 1 },
+      ],
+      reviewQueue: [
+        { storageKey: "isro:2020:15", subjectLabel: "Operating Systems", subjectSlug: "os" },
+      ],
+    });
+
+    renderInsightsPage();
+    await screen.findByText("Subject Progress");
+
+    // Initially COMBINED (all 3 visible)
+    expect(screen.getByText("Operating Systems")).toBeTruthy();
+    expect(screen.getByText("DBMS & Warehousing")).toBeTruthy();
+    expect(screen.getByText("Verbal Ability")).toBeTruthy();
+
+    // Switch to CS track -> Operating Systems (which includes ISRO) must be visible, DA and Verbal must NOT
+    fireEvent.click(screen.getByRole("button", { name: /^cs$/i }));
+    expect(screen.getByText("Operating Systems")).toBeTruthy();
+    expect(screen.queryByText("DBMS & Warehousing")).toBeNull();
+    expect(screen.queryByText("Verbal Ability")).toBeNull();
+
+    // Switch to DA track -> only DA visible; ISRO Operating Systems must NOT be present
+    fireEvent.click(screen.getByRole("button", { name: /^da$/i }));
+    expect(screen.getByText("DBMS & Warehousing")).toBeTruthy();
+    expect(screen.queryByText("Operating Systems")).toBeNull();
+    expect(screen.queryByText("Verbal Ability")).toBeNull();
+
+    // Switch to APTITUDE track -> only Verbal visible; ISRO Operating Systems must NOT be present
+    fireEvent.click(screen.getByRole("button", { name: /^aptitude$/i }));
+    expect(screen.getByText("Verbal Ability")).toBeTruthy();
+    expect(screen.queryByText("Operating Systems")).toBeNull();
+    expect(screen.queryByText("DBMS & Warehousing")).toBeNull();
   });
 });
 

@@ -3219,6 +3219,30 @@ describe("evaluateAnswer", () => {
         correct: false,
       });
     });
+
+    test("DEC-156: evaluates GATE CSE 2026 Set 2 Q46 (go:523100) as NAT 128", () => {
+      const record = {
+        type: "NAT",
+        answer: 128,
+        tolerance: { abs: 0.01 },
+      };
+      expect(evaluateAnswer(record, "128")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, 128)).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "128.0")).toEqual({
+        status: "evaluated",
+        correct: true,
+      });
+      expect(evaluateAnswer(record, "64")).toEqual({
+        status: "evaluated",
+        correct: false,
+      });
+    });
   });
 });
 

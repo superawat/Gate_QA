@@ -741,5 +741,26 @@ describe("QuestionService", () => {
     expect(detailed.answerMeta).toEqual(rawQuestion.answer_meta);
     expect(detailed.normalizedOptions.length).toBe(4);
   });
+
+  test("DEC-156: normalizes go:523100 (GATE CSE 2026 Set 2 Q46) with base 10 subscript in question stem", () => {
+    const rawQuestion = {
+      question_uid: "go:523100",
+      title: "GATE CSE 2026 | Set 2 | Question: 46",
+      question:
+        'Consider a system with $1$ MB physical memory... cache block number $176_{10}$. The maximum possible size...',
+      tags: ["gatecse-2026-set2", "co-and-architecture", "cache-memory", "numerical-answers"],
+      answer_meta: {
+        type: "NAT",
+        answer: 128,
+        tolerance: { abs: 0.01 },
+      },
+    };
+
+    const normalized = QuestionService.normalizeQuestion(rawQuestion);
+    expect(normalized.type).toBe("nat");
+    expect(normalized.question).toContain("$176_{10}$");
+    expect(normalized.question).not.toContain("$17610$");
+    expect(normalized.answerMeta.answer).toBe(128);
+  });
 });
 

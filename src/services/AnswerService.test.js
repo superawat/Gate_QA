@@ -2762,6 +2762,34 @@ describe("GATE CSE 2011 Answer Key Audit - AnswerService Integration (DEC-080)",
         });
       });
     });
+
+    describe("DEC-156: go:523100 (GATE CSE 2026 Set 2 Q46)", () => {
+      beforeEach(() => {
+        AnswerService.answersByQuestionUid = {
+          "go:523100": {
+            answer_uid: "manual:go:523100",
+            type: "NAT",
+            answer: 128,
+            tolerance: { abs: 0.01 },
+          },
+        };
+        AnswerService.unsupportedQuestionUids = new Set();
+        AnswerService.loaded = true;
+        AnswerService.loadError = "";
+      });
+
+      test("resolves go:523100 as NAT answer 128", () => {
+        const answer = AnswerService.getAnswerForQuestion({
+          question_uid: "go:523100",
+          title: "GATE CSE 2026 | Set 2 | Question: 46",
+        });
+        expect(answer).toMatchObject({
+          type: "NAT",
+          answer: 128,
+          tolerance: { abs: 0.01 },
+        });
+      });
+    });
   });
 });
 

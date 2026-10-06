@@ -730,4 +730,113 @@ describe("buildWeakTopicInsights", () => {
       label: "Matrices",
     });
   });
+
+  test("integrates ISRO CSE questions into canonical CS subjects, aggregating attempts, accuracy, and topic analytics without duplication", () => {
+    const insights = buildWeakTopicInsights({
+      questions: [
+        {
+          question_uid: "go:101",
+          title: "GATE CSE 2024 | Operating Systems",
+          subjectSlug: "os",
+          subjectLabel: "Operating Systems",
+          subtopics: [{ slug: "cpu-scheduling", label: "CPU Scheduling" }],
+          type: "MCQ",
+        },
+        {
+          question_uid: "isro:2020:12",
+          title: "ISRO CSE 2020 | Operating Systems",
+          subject: "os",
+          tags: ["cpu-scheduling"],
+          type: "MCQ",
+        },
+        {
+          question_uid: "isro:2020:13",
+          title: "ISRO CSE 2020 | Computer Networks",
+          subject: "cn",
+          tags: ["routing"],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: {
+        "go:101": {
+          attempts: 2,
+          correctAttempts: 2,
+          incorrectAttempts: 0,
+          correct: true,
+          lastSubmittedAt: "2026-05-10T10:00:00.000Z",
+        },
+        "isro:2020:12": {
+          attempts: 3,
+          correctAttempts: 1,
+          incorrectAttempts: 2,
+          correct: false,
+          lastSubmittedAt: "2026-05-11T10:00:00.000Z",
+        },
+        "isro:2020:13": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          lastSubmittedAt: "2026-05-12T10:00:00.000Z",
+        },
+      },
+      solvedQuestionIds: ["go:101", "isro:2020:13"],
+    });
+
+    expect(insights.attemptedQuestionCount).toBe(3);
+
+    const osSubject = insights.subjects.find((s) => s.key === "os");
+    expect(osSubject).toBeDefined();
+    expect(osSubject.label).toBe("Operating Systems");
+    expect(osSubject.attemptedQuestions).toBe(2);
+    expect(osSubject.attemptedCount).toBe(5);
+    expect(osSubject.correctAttempts).toBe(3);
+    expect(osSubject.incorrectAttempts).toBe(2);
+    expect(osSubject.accuracyRate).toBeCloseTo(3 / 5, 4);
+
+    const cnSubject = insights.subjects.find((s) => s.key === "cn");
+    expect(cnSubject).toBeDefined();
+    expect(cnSubject.label).toBe("Computer Networks");
+    expect(cnSubject.attemptedQuestions).toBe(1);
+    expect(cnSubject.attemptedCount).toBe(1);
+    expect(cnSubject.correctAttempts).toBe(1);
+    expect(cnSubject.accuracyRate).toBe(1);
+
+    const schedSubtopic = insights.subtopics.find((st) => st.key === "os:cpu-scheduling");
+    expect(schedSubtopic).toBeDefined();
+    expect(schedSubtopic.attemptedCount).toBe(5);
+
+    expect(insights.wrongQuestions.some((q) => q.storageKey === "isro:2020:12")).toBe(true);
+
+    const deduplicatedInsights = buildWeakTopicInsights({
+      questions: [
+        {
+          question_uid: "isro:2020:12",
+          subject: "os",
+          tags: ["cpu-scheduling"],
+          type: "MCQ",
+        },
+        {
+          question_uid: "isro:2020:12",
+          subject: "os",
+          tags: ["cpu-scheduling"],
+          type: "MCQ",
+        },
+      ],
+      progressRecords: {
+        "isro:2020:12": {
+          attempts: 1,
+          correctAttempts: 1,
+          incorrectAttempts: 0,
+          correct: true,
+          lastSubmittedAt: "2026-05-11T10:00:00.000Z",
+        },
+      },
+      solvedQuestionIds: ["isro:2020:12"],
+    });
+    expect(deduplicatedInsights.attemptedQuestionCount).toBe(1);
+    const dedupOs = deduplicatedInsights.subjects.find((s) => s.key === "os");
+    expect(dedupOs.attemptedQuestions).toBe(1);
+    expect(dedupOs.attemptedCount).toBe(1);
+  });
 });

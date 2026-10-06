@@ -402,4 +402,155 @@ describe('SessionContext', () => {
 
         expect(latestSession.showExhaustionBanner).toBe(false);
     });
+
+    test('startReviewSession initializes review mode with all provided questions', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startReviewSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+                { question_uid: 'q3' },
+            ], 'q1');
+        });
+
+        expect(firstQuestion.question_uid).toBe('q1');
+        expect(latestSession.sessionMode).toBe('review');
+        expect(latestSession.sessionQueue).toEqual(['q1', 'q2', 'q3']);
+        expect(latestSession.getNavigationState('q1')).toMatchObject({
+            mode: 'review',
+            index: 0,
+            total: 3,
+            previousUid: null,
+            nextUid: 'q2',
+            canGoPrevious: false,
+            canGoNext: true,
+        });
+    });
+
+    test('review mode does not skip solved questions even when hideSolved filter is enabled', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+            expect(latestFilterActions).toBeTruthy();
+        });
+
+        // Mark q2 as solved and enable hideSolved filter
+        act(() => {
+            latestFilterActions.markQuestionsSolved(['q1', 'q2', 'q3']);
+            latestFilterActions.updateFilters({ hideSolved: true });
+        });
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startReviewSession([
+                { question_uid: 'q1' },
+                { question_uid: 'q2' },
+                { question_uid: 'q3' },
+            ], 'q1');
+        });
+
+        // In review mode, q2 should NOT be skipped despite being solved
+        expect(latestSession.getNavigationState('q1')).toMatchObject({
+            mode: 'review',
+            nextUid: 'q2',
+            canGoNext: true,
+        });
+
+        let secondQuestion;
+        act(() => {
+            secondQuestion = latestSession.goToNextQuestion('q1');
+        });
+
+        expect(secondQuestion.question_uid).toBe('q2');
+        expect(latestSession.getNavigationState('q2')).toMatchObject({
+            previousUid: 'q1',
+            nextUid: 'q3',
+            canGoPrevious: true,
+            canGoNext: true,
+        });
+
+        let thirdQuestion;
+        act(() => {
+            thirdQuestion = latestSession.goToNextQuestion('q2');
+        });
+
+        expect(thirdQuestion.question_uid).toBe('q3');
+        expect(latestSession.getNavigationState('q3')).toMatchObject({
+            previousUid: 'q2',
+            nextUid: null,
+            canGoPrevious: true,
+            canGoNext: false,
+        });
+    });
+
+    test('single due revision question does not allow next or inject random questions', async () => {
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        let firstQuestion;
+        act(() => {
+            firstQuestion = latestSession.startReviewSession([
+                { question_uid: 'q1' },
+            ], 'q1');
+        });
+
+        expect(firstQuestion.question_uid).toBe('q1');
+        expect(latestSession.sessionQueue).toEqual(['q1']);
+        expect(latestSession.getNavigationState('q1')).toMatchObject({
+            mode: 'review',
+            index: 0,
+            total: 1,
+            previousUid: null,
+            nextUid: null,
+            canGoPrevious: false,
+            canGoNext: false,
+        });
+
+        let nextResult;
+        act(() => {
+            nextResult = latestSession.goToNextQuestion('q1');
+        });
+
+        expect(nextResult).toBeNull();
+        expect(latestSession.sessionQueue).toEqual(['q1']);
+    });
+
+    test('persists review session to sessionStorage and restores state on mount', async () => {
+        const storedState = {
+            mode: 'review',
+            queue: ['q2', 'q3'],
+            sourceUids: ['q2', 'q3'],
+            currentIndex: 1,
+        };
+        window.sessionStorage.setItem('gateqa_active_session_v1', JSON.stringify(storedState));
+
+        renderHarness();
+
+        await waitFor(() => {
+            expect(latestSession).toBeTruthy();
+        });
+
+        expect(latestSession.sessionMode).toBe('review');
+        expect(latestSession.sessionQueue).toEqual(['q2', 'q3']);
+        expect(latestSession.currentIndex).toBe(1);
+        expect(latestSession.getNavigationState('q3')).toMatchObject({
+            mode: 'review',
+            index: 1,
+            total: 2,
+            previousUid: 'q2',
+            nextUid: null,
+            canGoPrevious: true,
+            canGoNext: false,
+        });
+    });
 });

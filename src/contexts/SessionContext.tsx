@@ -7,7 +7,7 @@ import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
 import type { FilterStateShape, QuestionRow } from '../types';
 import { isDaQuestion as isDaQuestionByMetadata } from '../utils/examTrack';
 
-type SessionMode = 'random' | 'ordered' | null;
+type SessionMode = 'random' | 'ordered' | 'review' | null;
 
 interface TopicMemory {
     recentTopicKeys: string[];
@@ -45,6 +45,7 @@ export interface SessionContextValue {
     getNavigationState: (uid?: string) => NavigationState;
     startRandomSession: (questionPool?: QuestionRow[], initialUid?: string) => QuestionRow | null;
     startOrderedSession: (questionPool?: QuestionRow[], initialUid?: string) => QuestionRow | null;
+    startReviewSession: (questionPool?: QuestionRow[], initialUid?: string) => QuestionRow | null;
     setCurrentQuestionUid: (uid?: string) => void;
     goToPreviousQuestion: (uid?: string) => QuestionRow | null;
     goToNextQuestion: (uid?: string) => QuestionRow | null;
@@ -70,6 +71,56 @@ const RANDOM_TOPIC_MEMORY_KEY = 'gateqa_random_recent_topics_v1';
 const RANDOM_TOPIC_MEMORY_LIMIT = 6;
 const PREFETCH_LOOKAHEAD_COUNT = 3;
 const APTITUDE_UID_PREFIX = 'APT-';
+const ACTIVE_SESSION_STORAGE_KEY = 'gateqa_active_session_v1';
+
+interface StoredActiveSession {
+    mode: SessionMode;
+    queue: string[];
+    sourceUids: string[];
+    currentIndex: number;
+}
+
+function readActiveSessionStorage(): StoredActiveSession | null {
+    if (typeof window === 'undefined' || !window.sessionStorage) {
+        return null;
+    }
+    try {
+        const raw = window.sessionStorage.getItem(ACTIVE_SESSION_STORAGE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (
+            parsed &&
+            Array.isArray(parsed.queue) &&
+            parsed.queue.length > 0 &&
+            (parsed.mode === 'random' || parsed.mode === 'ordered' || parsed.mode === 'review')
+        ) {
+            return {
+                mode: parsed.mode,
+                queue: parsed.queue,
+                sourceUids: Array.isArray(parsed.sourceUids) ? parsed.sourceUids : parsed.queue,
+                currentIndex: typeof parsed.currentIndex === 'number' ? parsed.currentIndex : 0,
+            };
+        }
+    } catch {
+        // Ignore read/parse errors
+    }
+    return null;
+}
+
+function writeActiveSessionStorage(session: StoredActiveSession | null) {
+    if (typeof window === 'undefined' || !window.sessionStorage) {
+        return;
+    }
+    try {
+        if (!session || !session.mode || !Array.isArray(session.queue) || session.queue.length === 0) {
+            window.sessionStorage.removeItem(ACTIVE_SESSION_STORAGE_KEY);
+        } else {
+            window.sessionStorage.setItem(ACTIVE_SESSION_STORAGE_KEY, JSON.stringify(session));
+        }
+    } catch {
+        // Ignore storage write errors
+    }
+}
 
 function isQuestionRow(question: QuestionRow | null | undefined): question is QuestionRow {
     return Boolean(question?.question_uid);
@@ -455,13 +506,27 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         return map;
     }, [allQuestions, filterQuestionMap]);
 
-    const [sessionMode, setSessionMode] = useState<SessionMode>(null);
-    const [sessionQueue, setSessionQueue] = useState<string[]>([]);
-    const [sourceQuestionUids, setSourceQuestionUids] = useState<string[]>([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const initialStoredSession = readActiveSessionStorage();
+    const [sessionMode, setSessionMode] = useState<SessionMode>(() => initialStoredSession?.mode ?? null);
+    const [sessionQueue, setSessionQueue] = useState<string[]>(() => initialStoredSession?.queue ?? []);
+    const [sourceQuestionUids, setSourceQuestionUids] = useState<string[]>(() => initialStoredSession?.sourceUids ?? []);
+    const [currentIndex, setCurrentIndex] = useState<number>(() => initialStoredSession?.currentIndex ?? 0);
     const [showExhaustionBanner, setShowExhaustionBanner] = useState(false);
     const exhaustionBannerShownAtRef = useRef<number>(0);
     const exhaustionBannerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(() => {
+        if (sessionMode && sessionQueue.length > 0) {
+            writeActiveSessionStorage({
+                mode: sessionMode,
+                queue: sessionQueue,
+                sourceUids: sourceQuestionUids,
+                currentIndex,
+            });
+        } else {
+            writeActiveSessionStorage(null);
+        }
+    }, [sessionMode, sessionQueue, sourceQuestionUids, currentIndex]);
 
     const clearExhaustionBannerTimer = useCallback(() => {
         if (exhaustionBannerTimerRef.current) {
@@ -583,6 +648,26 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         const firstUid = orderedUids[nextIndex] || '';
 
         setSessionMode('ordered');
+        setSessionQueue(orderedUids);
+        setSourceQuestionUids(orderedUids);
+        setCurrentIndex(nextIndex);
+        dismissExhaustionBanner();
+
+        return firstUid ? getQuestionByUid(firstUid) : null;
+    }, [getQuestionByUid, resolveQuestionPool]);
+
+    const startReviewSession = useCallback((questionPool: QuestionRow[] = [], initialUid = ''): QuestionRow | null => {
+        const normalizedQuestions = resolveQuestionPool(questionPool);
+        const orderedUids = normalizedQuestions.map((question) => question.question_uid);
+        activeQuestionMapRef.current = new Map(
+            normalizedQuestions.map((question) => [question.question_uid, question])
+        );
+        const requestedUid = String(initialUid || '').trim();
+        const resolvedIndex = requestedUid ? findIndexForUid(orderedUids, requestedUid) : 0;
+        const nextIndex = Math.max(0, resolvedIndex);
+        const firstUid = orderedUids[nextIndex] || '';
+
+        setSessionMode('review');
         setSessionQueue(orderedUids);
         setSourceQuestionUids(orderedUids);
         setCurrentIndex(nextIndex);
@@ -848,6 +933,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         getNavigationState,
         startRandomSession,
         startOrderedSession,
+        startReviewSession,
         setCurrentQuestionUid,
         goToPreviousQuestion,
         goToNextQuestion,
@@ -876,6 +962,7 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
         sourceQuestionUids,
         startOrderedSession,
         startRandomSession,
+        startReviewSession,
         setCurrentQuestionUid,
     ]);
 

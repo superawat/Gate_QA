@@ -261,6 +261,10 @@ const SolvePage = ({
   }, [goToNextQuestion, navigateToQuestion, questionUid]);
 
   const handleBackToResults = useCallback(() => {
+    if (location.state?.returnTo) {
+      navigate(location.state.returnTo);
+      return;
+    }
     const parsedPage = parsePageParam(activeSearch);
     navigate(
       {
@@ -275,7 +279,7 @@ const SolvePage = ({
         },
       }
     );
-  }, [activeSearch, navigate, questionUid]);
+  }, [activeSearch, location.state?.returnTo, navigate, questionUid]);
 
   const handleBackHome = useCallback(() => {
     navigate(HOME_ROUTE);
@@ -432,7 +436,7 @@ const SolvePage = ({
   };
 
   const navigationSummary = useMemo(() => {
-    if (navigationState.mode !== "ordered") {
+    if (navigationState.mode !== "ordered" && navigationState.mode !== "review") {
       return "Question details";
     }
 
@@ -446,6 +450,9 @@ const SolvePage = ({
   }, [navigationState]);
 
   const navigationContextLabel = useMemo(() => {
+    if (navigationState.mode === "review") {
+      return "Spaced Revision";
+    }
     if (navigationState.mode === "ordered") {
       return "Current filtered queue";
     }

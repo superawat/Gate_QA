@@ -32,6 +32,30 @@ const aptitudeMock = vi.hoisted(() => ({
             subtopics: [{ slug: 'spot-the-error', label: 'Spot the Error' }],
             answerMeta: { type: 'MCQ', answer: 'A' },
             exam: { year: null, yearSetKey: null }
+        },
+        {
+            question_uid: 'APT-QUA-0001',
+            title: 'Quant Practice',
+            searchText: 'quant number system aptitude',
+            subjectSlug: 'quant',
+            subject: 'Quant',
+            subjectLabel: 'Quant',
+            type: 'mcq',
+            subtopics: [{ slug: 'number-system', label: 'Number System' }],
+            answerMeta: { type: 'MCQ', answer: 'B' },
+            exam: { year: null, yearSetKey: null }
+        },
+        {
+            question_uid: 'APT-REA-0001',
+            title: 'Reasoning Practice',
+            searchText: 'reasoning syllogism aptitude',
+            subjectSlug: 'reasoning',
+            subject: 'Reasoning',
+            subjectLabel: 'Reasoning',
+            type: 'mcq',
+            subtopics: [{ slug: 'syllogism', label: 'Syllogism' }],
+            answerMeta: { type: 'MCQ', answer: 'C' },
+            exam: { year: null, yearSetKey: null }
         }
     ],
 }));
@@ -168,20 +192,30 @@ vi.mock('../services/AptitudeQuestionService', () => ({
             minYear: 0,
             maxYear: 0,
             subjects: [
-                { slug: 'english', label: 'English', count: 1 }
+                { slug: 'english', label: 'English', count: 1 },
+                { slug: 'quant', label: 'Quant', count: 1 },
+                { slug: 'reasoning', label: 'Reasoning', count: 1 },
             ],
             structuredSubtopics: {
                 english: [
                     { slug: 'spot-the-error', label: 'Spot the Error' }
-                ]
+                ],
+                quant: [
+                    { slug: 'number-system', label: 'Number System' }
+                ],
+                reasoning: [
+                    { slug: 'syllogism', label: 'Syllogism' }
+                ],
             },
             structuredTopics: {
-                English: ['Spot the Error']
+                English: ['Spot the Error'],
+                Quant: ['Number System'],
+                Reasoning: ['Syllogism'],
             },
             questionTypes: ['MCQ'],
             yearSets: [],
             years: [],
-            topics: ['english'],
+            topics: ['english', 'quant', 'reasoning'],
             hideYearFilters: true
         })),
     },
@@ -1468,6 +1502,55 @@ describe('FilterContext', () => {
             expect(cseSubjectLabels).not.toContain('isro:os');
             // Total subjects in CSE section should be exactly 2 from mock (Databases, Operating System)
             expect(cseSubjectLabels.length).toBe(2);
+        });
+
+        test('isolates question pool and subjects when track=aptitude is passed in URL', async () => {
+            window.history.replaceState({}, '', '/practice?track=aptitude');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const allUids = getByTestId('all-question-uids').textContent;
+                expect(allUids).toContain('APT-ENG-0001');
+                expect(allUids).toContain('APT-QUA-0001');
+                expect(allUids).toContain('APT-REA-0001');
+            });
+
+            // CSE, DA, and ISRO questions must be strictly excluded from the pool
+            const allUids = getByTestId('all-question-uids').textContent;
+            expect(allUids).not.toContain('go:1');
+            expect(allUids).not.toContain('go:2');
+            expect(allUids).not.toContain('da:2024:q-probability');
+            expect(allUids).not.toContain('isro:cs:2025:q1');
+
+            // Structured tag subjects must only contain Special Aptitude subjects
+            const subjectOptions = getByTestId('subject-options').textContent;
+            expect(subjectOptions).toContain('english');
+            expect(subjectOptions).toContain('quant');
+            expect(subjectOptions).toContain('reasoning');
+            expect(subjectOptions).not.toContain('databases');
+            expect(subjectOptions).not.toContain('os');
+        });
+
+        test('Special Aptitude category filtering restricts pool to selected category', async () => {
+            window.history.replaceState({}, '', '/practice?track=aptitude&subjects=english');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const filteredUids = getByTestId('filtered-question-uids').textContent;
+                expect(filteredUids).toContain('APT-ENG-0001');
+                expect(filteredUids).not.toContain('APT-QUA-0001');
+                expect(filteredUids).not.toContain('APT-REA-0001');
+            });
         });
     });
 });
