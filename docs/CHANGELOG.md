@@ -1,5 +1,19 @@
 # Changelog
 
+- **SEO Prerender String Replacement Pattern Protection & Schema.org JSON-LD Parsing Error Resolution (DEC-161)**:
+  - *Context*: Google Search Console reported `Parsing error: Missing ',' or '}'` for structured data on question URLs (`https://gateqa.in/practice/question/go%3A460066/` and `https://gateqa.in/practice/question/go%3A118289/`), invalidating them for rich results.
+  - *Root Cause*:
+    - In `scripts/prerender-seo-pages.mjs`, `replaceOrInsertHeadTag` and `replaceHead` passed dynamic page metadata strings directly into JavaScript's `String.prototype.replace(pattern, replacement)` without replacer functions.
+    - JavaScript evaluates `$'` inside string replacements as a special token that inserts the entire portion of the string that follows the matched substring.
+    - Questions with LaTeX / math containing `$'` (e.g. `$'1'$` in `go:460066` or `$2$'s complement` in `go:118289`) caused `$'` to duplicate and inject the entire remainder of the HTML template (`</head>...<body>...</html>`) inside `<meta name="description">`, OpenGraph/Twitter tags, and within Schema.org `<script type="application/ld+json">` tags.
+    - This corrupted the JSON-LD string into invalid JSON with missing `,` or `}` and caused duplicated/malformed HTML tags trailing after `</html>`.
+  - *Implementation*:
+    - Converted `replaceOrInsertHeadTag` and `replaceHead` in `scripts/prerender-seo-pages.mjs` to use function replacers `() => replacement` so `$` tokens (including `$'`, `$&`, `$1`) are never evaluated as substitution tokens.
+    - Added `<` escaping as `\u003c` for Schema.org JSON-LD scripts in both `scripts/prerender-seo-pages.mjs` and `src/components/SEO/SEOHead.jsx` to ensure HTML parsers never prematurely close `<script>` blocks.
+    - Exported prerender utility functions conditionally in `scripts/prerender-seo-pages.mjs` guarded by `fileURLToPath` execution check.
+    - Added automated unit test suite `src/tests/prerenderSeo.test.js` validating `$'` resilience, math formatting, JSON-LD syntax validity, and an audit verifying zero JSON-LD errors across all 3,500+ generated question pages in `dist/`.
+  - *Verification*: Full Vitest suite passing (1,241 tests across 95 files, 100% green), TypeScript typecheck clean (0 errors), all 3,529 generated question pages in `dist/` verified with 0 JSON-LD syntax errors.
+
 - **Insights Section Updates: Standardize Top-Level Categories (CS, DA, APTITUDE, COMBINED) & ISRO CSE Analytics Integration (DEC-160)**:
   - *Context*: Users requested two improvements to the Insights dashboard:
     1. Rename and standardize the top-level section selector to exactly four categories: `CS`, `DA`, `APTITUDE`, `COMBINED`.

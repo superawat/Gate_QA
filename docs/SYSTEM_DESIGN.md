@@ -26,7 +26,7 @@ flowchart TB
         Manifest["question-bank-manifest.json"]
         SearchIdx["Search Indices (CS, DA, Aptitude)"]
         Shards["Detail Shards (58 CS, 3 DA, Aptitude)"]
-        SEO["3,493 Prerendered Static SEO Pages"]
+        SEO["3,605 Prerendered Static SEO Pages"]
         Calc["Embedded GATE Calculator Assets"]
     end
 
@@ -439,7 +439,7 @@ flowchart TD
     subgraph StaticDist["Static Dist Output (dist/)"]
         Manifest["question-bank-manifest.json"]
         Shards["58 CS Shards + 3 DA Shards + Aptitude Shards"]
-        SEOPages["3,493 Prerendered Static SEO HTML Pages"]
+        SEOPages["3,605 Prerendered Static SEO HTML Pages"]
         CalcBundle["dist/calculator/* Standalone Assets"]
         Bundles["Vite Optimized Code-Split SPA Chunks"]
     end
@@ -499,7 +499,7 @@ GATE_QA/
 ├── scripts/                          # Automated Ingestion, Build & Prerender Pipelines
 │   ├── build-public-artifacts.mjs    # Generates public manifests, indices & 58 shards
 │   ├── precompute-subtopics.mjs      # Precomputes subtopic lookup table
-│   ├── prerender-seo-pages.mjs       # Prerenders 3,493 SEO static HTML pages
+│   ├── prerender-seo-pages.mjs       # Prerenders 3,605 SEO static HTML pages
 │   ├── da-pipeline/                  # GATE DA ingestion and shard generator
 │   └── aptitude-pipeline/            # Aptitude scraping & artifact generator
 ├── src/

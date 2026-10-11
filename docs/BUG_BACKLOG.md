@@ -29,6 +29,18 @@ This file tracks open bugs, suspected regressions, and recently closed audit iss
 
 ## Recently Closed
 
+### BUG-SEO-PRERENDER-DOLLAR-TOKEN-01: Google Search Console Schema.org JSON-LD Parsing Error on Math/LaTeX Questions
+- **Status**: Resolved on 2026-10-11 (DEC-161)
+- **Severity**: High (P1 SEO & Search Indexing / Rich Results)
+- **Area**: Static SEO Prerender Pipeline (`scripts/prerender-seo-pages.mjs`, `src/components/SEO/SEOHead.jsx`)
+- **Symptom**: Google Search Console reported `Parsing error: Missing ',' or '}'` for structured data on question URLs `go:460066` and `go:118289`, invalidating them for rich search results.
+- **Root Cause & Fix**:
+  - In `scripts/prerender-seo-pages.mjs`, `replaceOrInsertHeadTag` and `replaceHead` passed dynamic page metadata strings directly into JavaScript's `String.prototype.replace(pattern, replacement)`.
+  - Questions containing LaTeX math with `$'` (e.g. `$'1'$` in `go:460066` and `$2$'s complement` in `go:118289`) triggered JavaScript's special replacement token `$'` (which inserts the portion of the string following the matched substring). This duplicated the entire document tail (`</head>...<body>...</html>`) directly into the middle of Schema.org `<script type="application/ld+json">` tags and `<meta name="description">`.
+  - Converted `replaceOrInsertHeadTag` and `replaceHead` to use function replacers `() => replacement`, which return strings verbatim and prevent any `$` substitution evaluation.
+  - Escaped `<` as `\u003c` in Schema.org JSON-LD scripts across `scripts/prerender-seo-pages.mjs` and `src/components/SEO/SEOHead.jsx` to prevent HTML parsers from prematurely terminating `<script>` blocks.
+- **Verification**: Created `src/tests/prerenderSeo.test.js` auditing all 3,500+ generated question pages in `dist/`. All 1,241 unit tests pass (100% green), typecheck clean (0 errors), 0 JSON-LD syntax errors across all static pages.
+
 ### BUG-MOCK-CUSTOM-BUILDER-SAMPLING-01: Custom Builder Question Frequency Bias & Subtopic Starvation
 - **Status**: Resolved on 2026-10-03 (DEC-148)
 - **Severity**: High (P1 Mock Engine / User Practice Fidelity)

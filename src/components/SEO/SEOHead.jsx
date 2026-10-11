@@ -189,7 +189,7 @@ const SEOHead = ({
           key={index}
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 0) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 0).replace(/</g, "\\u003c") }}
         />
       ))}
     </Helmet>

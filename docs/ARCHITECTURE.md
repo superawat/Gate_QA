@@ -119,8 +119,12 @@ The landing route now stays on a lightweight startup path:
 ## Pre-rendering and SEO Alias Routes
 
 - Script: `scripts/prerender-seo-pages.mjs`
-- Outputs: 528 pre-rendered static HTML files in `dist/` (covering subjects, years, high-value questions, and 5 short-form alias routes: `/gate-cs-pyq`, `/gate-aptitude`, `/mock-tests`, `/operating-systems-pyq`, and `/dbms-pyq`).
-- Pre-rendering generates SEO-optimized HTML copies with JSON-LD schema markups and crawler-readable contents while seamlessly preserving client-side React SPA routing on execution.
+- Outputs: 3,605 pre-rendered static HTML files in `dist/` (covering all 14 subjects, exam years, 3,500+ question pages with solutions, blog, static info pages, and short-form editorial alias routes).
+- Pre-rendering generates SEO-optimized HTML copies with Schema.org JSON-LD markups (`QAPage`, `Quiz`, `BreadcrumbList`, `WebPage`, `FAQPage`) and crawler-readable contents while seamlessly preserving client-side React SPA routing on hydration.
+- **String Replacement Pattern Resilience (DEC-161)**: Head and tag substitutions in `prerender-seo-pages.mjs` strictly use function replacers (`() => replacement`) rather than plain replacement strings. This guarantees that mathematical notation and LaTeX containing `$` tokens (such as `$'` in `$'1'$` or `$2$'s complement`) are never evaluated by JavaScript's `String.prototype.replace()` as substitution tokens (which would duplicate the entire document tail into `<meta>` or `<script>` tags).
+- **JSON-LD Script Tag Escaping**: `<` is safely escaped as `\u003c` in all JSON-LD strings across `prerender-seo-pages.mjs` and `src/components/SEO/SEOHead.jsx` to ensure HTML parsers never prematurely terminate `<script>` blocks if question contents contain HTML tags.
+- Post-build step outputs `dist/sitemap-questions.xml` containing only verified static question pages.
+- Automated regression suite: `src/tests/prerenderSeo.test.js` audits generated dist files and validates JSON-LD syntax integrity across all question pages.
 
 ## LLM-Assisted Question Explanation Subsystem (AUG-014)
 

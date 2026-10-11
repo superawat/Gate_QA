@@ -1,7 +1,6 @@
-#!/usr/bin/env node
-
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { EDITORIAL_PAGES } from "../src/data/editorialPages.js";
 
 const ROOT = process.cwd();
@@ -403,9 +402,9 @@ function getOutputPath(routePath = "/") {
 
 function replaceOrInsertHeadTag(html, pattern, replacement) {
   if (pattern.test(html)) {
-    return html.replace(pattern, replacement);
+    return html.replace(pattern, () => replacement);
   }
-  return html.replace("</head>", `  ${replacement}\n</head>`);
+  return html.replace("</head>", () => `  ${replacement}\n</head>`);
 }
 
 function removeExistingJsonLd(html) {
@@ -419,7 +418,7 @@ function buildMetaTags({ title, description, canonicalUrl, ogType = "website", s
   const safeImage = escapeAttribute(DEFAULT_OG_IMAGE);
   const schemaTags = schemas
     .filter(Boolean)
-    .map((schema) => `  <script type="application/ld+json">${JSON.stringify(schema)}</script>`)
+    .map((schema) => `  <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`)
     .join("\n");
 
   return [
@@ -472,7 +471,7 @@ function replaceHead(html, page) {
     .filter((line) => !/<title>|name="description"|name="robots"|rel="canonical"/.test(line))
     .join("\n");
 
-  return nextHtml.replace("</head>", `${metaTags}\n</head>`);
+  return nextHtml.replace("</head>", () => `${metaTags}\n</head>`);
 }
 
 function buildStaticRoot(page) {
@@ -1241,4 +1240,21 @@ function main() {
   console.log(`[prerender-seo-pages] Wrote ${pages.length} static SEO pages (${QUESTION_PRERENDER_LIMIT} question-page limit).`);
 }
 
-main();
+const isDirectExecution = process.argv[1] && (
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1])
+);
+
+if (isDirectExecution) {
+  main();
+}
+
+export {
+  renderPage,
+  replaceHead,
+  buildMetaTags,
+  replaceOrInsertHeadTag,
+  breadcrumbSchema,
+  qaPageSchema,
+  quizSchema,
+  buildQuestionPages,
+};
