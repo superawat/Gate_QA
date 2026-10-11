@@ -142,6 +142,16 @@ const QuestionPickerList = ({
                       <span>{subtopicLabel}</span>
                     </>
                   ) : null}
+                  {Array.isArray(question?.taxonomy?.secondary) && question.taxonomy.secondary.length > 0 ? (
+                    question.taxonomy.secondary.map((sec, i) => (
+                      <span
+                        key={`sec-tag-${i}`}
+                        className="rounded-full border border-dashed border-indigo-400/50 bg-indigo-50/60 dark:bg-indigo-950/30 px-2 py-0.5 text-[9px] font-medium text-indigo-700 dark:text-indigo-300"
+                      >
+                        Also: {sec.subtopicLabel || sec.subjectLabel}
+                      </span>
+                    ))
+                  ) : null}
                 </div>
                 <div className="practice-question-mobile-actions mt-3 flex flex-wrap items-center gap-2 md:hidden">
                   <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset ${status.className}`}>
@@ -181,7 +191,13 @@ const QuestionPickerList = ({
                 </p>
                 {subtopicLabel ? (
                   <p className="mt-1 truncate text-xs text-[color:var(--color-text-muted)]">{subtopicLabel}</p>
-                ) : typeToken ? (
+                ) : null}
+                {Array.isArray(question?.taxonomy?.secondary) && question.taxonomy.secondary.length > 0 ? (
+                  <p className="mt-0.5 truncate text-[11px] text-indigo-600 dark:text-indigo-400">
+                    Also: {question.taxonomy.secondary.map(sec => sec.subtopicLabel || sec.subjectLabel).join(", ")}
+                  </p>
+                ) : null}
+                {!subtopicLabel && (!question?.taxonomy?.secondary || question.taxonomy.secondary.length === 0) && typeToken ? (
                   <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase ring-1 ring-inset ${typeStyles[typeToken] || typeStyles.unknown}`}>
                     {typeToken === "multi_nat" ? "Multi-NAT" : typeToken}
                   </span>

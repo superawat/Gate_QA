@@ -188,6 +188,42 @@ describe("prerender-seo-pages string replacement resilience", () => {
     expect(errors).toEqual([]);
     expect(pagesChecked).toBeGreaterThan(3000);
     expect(jsonLdBlocksChecked).toBeGreaterThan(6000);
+  }, 60000);
+
+  it("enriches quizSchema about entities with primary and secondary taxonomy paths", () => {
+    const questionWithTaxonomy = {
+      title: "GATE CSE 2020 | Set 1 | Question: 17",
+      year: "2020",
+      subjectLabel: "Engineering Mathematics",
+      taxonomy: {
+        primary: {
+          subjectSlug: "engg-math",
+          subjectLabel: "Engineering Mathematics",
+          subtopicLabel: "Probability",
+        },
+        secondary: [
+          {
+            subjectSlug: "discrete-math",
+            subjectLabel: "Discrete Mathematics",
+            subtopicLabel: "Relations",
+          },
+        ],
+      },
+    };
+
+    const schema = quizSchema({
+      question: questionWithTaxonomy,
+      url: "https://gateqa.in/practice/question/go%3A333214/",
+    });
+
+    expect(schema["@type"]).toBe("Quiz");
+    expect(Array.isArray(schema.about)).toBe(true);
+    expect(schema.about).toEqual([
+      { "@type": "Thing", name: "Engineering Mathematics" },
+      { "@type": "Thing", name: "Probability" },
+      { "@type": "Thing", name: "Discrete Mathematics: Relations" },
+    ]);
   });
 });
+
 

@@ -66,6 +66,7 @@ export class QuestionService {
   static getSubtopicLookupForSubject = taxonomy.getSubtopicLookupForSubject;
   static extractCanonicalSubtopics = taxonomy.extractCanonicalSubtopics;
   static resolveCanonicalSubject = taxonomy.resolveCanonicalSubject;
+  static resolveQuestionTaxonomy = taxonomy.resolveQuestionTaxonomy;
   static normalizeQuestion = normalizer.normalizeQuestion;
   static hydrateIndexedQuestion = normalizer.hydrateIndexedQuestion;
   static isPracticeExcludedQuestion = normalizer.isPracticeExcludedQuestion;

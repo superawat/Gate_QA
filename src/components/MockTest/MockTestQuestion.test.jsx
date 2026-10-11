@@ -495,4 +495,50 @@ describe("MockTestQuestion", () => {
     fireEvent.click(img);
     expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
   });
+
+  test("renders syllabus topic and secondary taxonomy in review phase", () => {
+    mockContextValue.currentQuestion = {
+      question_uid: "go:333214",
+      title: "GATE CSE 2020 | Set 1 | Question: 17",
+      question: "<p>Question stem</p>",
+      options: [],
+      taxonomy: {
+        primary: {
+          subjectSlug: "engg-math",
+          subjectLabel: "Engineering Mathematics",
+          subtopicSlug: "probability",
+          subtopicLabel: "Probability",
+        },
+        secondary: [
+          {
+            subjectSlug: "discrete-math",
+            subjectLabel: "Discrete Mathematics",
+            subtopicSlug: "relations",
+            subtopicLabel: "Relations",
+          },
+        ],
+      },
+    };
+    mockContextValue.currentQuestionMeta = {
+      questionUid: "go:333214",
+      section: "CS",
+      type: "NAT",
+      marks: 2,
+      negativeMarks: 0,
+    };
+    mockContextValue.currentQuestionResult = {
+      isCorrect: true,
+      marks: 2,
+    };
+    mockContextValue.currentSection = "CS";
+    mockContextValue.sectionQuestionUids = { GA: [], CS: ["go:333214"] };
+    mockContextValue.responses = { "go:333214": "0.125" };
+
+    render(<MockTestQuestion isReviewPhase={true} />);
+
+    expect(screen.getByText(/Syllabus Topic:/i)).toBeTruthy();
+    expect(screen.getByText(/Engineering Mathematics › Probability/i)).toBeTruthy();
+    expect(screen.getByText(/Also: Discrete Mathematics › Relations/i)).toBeTruthy();
+  });
 });
+

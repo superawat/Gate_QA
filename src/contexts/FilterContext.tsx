@@ -976,19 +976,55 @@ export const FilterProvider = ({
                     .map(subtopic => questionService.slugifyToken(subtopic?.slug || subtopic?.label || subtopic))
                     .filter(Boolean)
                 : [];
+            const taxonomy = question.taxonomy || (typeof questionService.resolveQuestionTaxonomy === 'function' ? questionService.resolveQuestionTaxonomy(question) : null);
+            const rawSubjectSlug = isIsroQuestion(question)
+                ? getIsroFilterSubjectKey(question)
+                : isDaQuestion(question)
+                    ? getDaFilterSubjectKey(question)
+                    : (question.subjectSlug && question.subjectSlug !== 'unknown'
+                        ? question.subjectSlug
+                        : (taxonomy?.primary?.subjectSlug && taxonomy.primary.subjectSlug !== 'unknown'
+                            ? taxonomy.primary.subjectSlug
+                            : (question.subjectSlug || 'unknown')));
+            const primarySubjectKey = rawSubjectSlug || 'unknown';
+
+            const primarySubtopicSlug = taxonomy?.primary?.subtopicSlug || subtopicSlugs[0] || null;
+            const primaryTopicSlug = taxonomy?.primary?.topicSlug || null;
+
+            const paths = [
+                {
+                    subjectSlug: primarySubjectKey,
+                    subtopicSlug: primarySubtopicSlug,
+                    topicSlug: primaryTopicSlug,
+                }
+            ];
+
+            if (!isIsroQuestion(question) && !isDaQuestion(question) && Array.isArray(taxonomy?.secondary)) {
+                for (const sec of taxonomy.secondary) {
+                    if (sec && sec.subjectSlug) {
+                        paths.push({
+                            subjectSlug: sec.subjectSlug,
+                            subtopicSlug: sec.subtopicSlug || null,
+                            topicSlug: sec.topicSlug || null,
+                        });
+                    }
+                }
+            }
+
+            const pathSubjectSlugs = new Set(paths.map(p => p.subjectSlug));
+            const pathSubtopicSlugs = new Set(paths.map(p => p.subtopicSlug).filter(Boolean));
 
             map.set(uid, {
                 questionId: getQuestionTrackingId(question, answerService),
                 track: getQuestionTrack(question),
                 resolvedType,
                 resolvedTypeUpper: String(resolvedType || '').toUpperCase(),
-                subjectSlug: isIsroQuestion(question)
-                    ? getIsroFilterSubjectKey(question)
-                    : isDaQuestion(question)
-                        ? getDaFilterSubjectKey(question)
-                        : question.subjectSlug || 'unknown',
+                subjectSlug: primarySubjectKey,
                 subtopicSlugs,
                 subtopicSlugSet: new Set(subtopicSlugs),
+                paths,
+                pathSubjectSlugs,
+                pathSubtopicSlugs,
                 yearSetKey: question.exam?.yearSetKey || null,
                 yearSetIdentity: getQuestionYearSetIdentity(question),
                 year: Number.isFinite(question.exam?.year) ? question.exam.year : 0,
@@ -1529,6 +1565,7 @@ export const FilterProvider = ({
         const selectedTypeSet = new Set(selectedTypes.map(type => type.toUpperCase()));
         const selectedYearSet = new Set(selectedYearSets);
         const selectedSubjectSet = new Set(selectedSubjects);
+        const selectedSubtopicSet = new Set(selectedSubtopics);
         const isTypeConstrained = selectedTypes.length < defaultSelectedTypes.length;
         const isRangeConstrained = yearRange
             && yearRange.length === 2
@@ -1591,22 +1628,40 @@ export const FilterProvider = ({
                 }
             }
 
-            const qSubjectSlug = meta?.subjectSlug || q.subjectSlug || 'unknown';
-
-            if (selectedSubjects.length > 0) {
-                if (!selectedSubjectSet.has(qSubjectSlug)) {
-                    return false;
-                }
-            }
-
-            // Subtopic match: scoped to parent subject (AND logic).
-            if (subtopicsByParentSubject.size > 0) {
-                const requiredSubtopics = subtopicsByParentSubject.get(qSubjectSlug);
-                if (requiredSubtopics) {
+            // Taxonomy path matching (Same-path rule)
+            // If subject and/or subtopic filters are active, at least one approved path must satisfy all active taxonomy constraints.
+            if (selectedSubjects.length > 0 || selectedSubtopics.length > 0) {
+                const paths = meta?.paths;
+                if (paths && paths.length > 0) {
                     const subtopicSlugs = meta?.subtopicSlugs || [];
-                    const hasMatchingSubtopic = subtopicSlugs.some(slug => requiredSubtopics.has(slug));
-                    if (!hasMatchingSubtopic) {
+                    const hasMatchingPath = paths.some((path, pathIdx) => {
+                        if (selectedSubjects.length > 0 && !selectedSubjectSet.has(path.subjectSlug)) {
+                            return false;
+                        }
+                        if (selectedSubtopics.length > 0) {
+                            const isPrimary = pathIdx === 0;
+                            const matchesSubtopic = (path.subtopicSlug && selectedSubtopicSet.has(path.subtopicSlug))
+                                || (isPrimary && subtopicSlugs.some(slug => selectedSubtopicSet.has(slug)));
+                            if (!matchesSubtopic) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    });
+                    if (!hasMatchingPath) {
                         return false;
+                    }
+                } else {
+                    const qSubjectSlug = meta?.subjectSlug || q.subjectSlug || 'unknown';
+                    if (selectedSubjects.length > 0 && !selectedSubjectSet.has(qSubjectSlug)) {
+                        return false;
+                    }
+                    if (selectedSubtopics.length > 0) {
+                        const qSubtopicSlugs = meta?.subtopicSlugs || [];
+                        const hasMatchingSubtopic = qSubtopicSlugs.some(slug => selectedSubtopicSet.has(slug));
+                        if (!hasMatchingSubtopic) {
+                            return false;
+                        }
                     }
                 }
             }

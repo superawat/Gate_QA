@@ -673,6 +673,76 @@ The Mock Test subsystem (`/mock`) provides authentic simulation of the GATE comp
    - **Cache invalidation:** `INIT_CACHE_VERSION = "v13"` in `QuestionLoader.ts` and `SW_VERSION = "gateqa-sw-v2"` in `public/sw.js`.
    - **Local verification (2026-10-05):** Full Vitest run passed (1,179 passed, 6 skipped), typecheck/build and artifact validators passed. Audit checked 3,677 scorable CSE rows and 195 DA rows with no type mismatches or scorable contract violations. The general data validator still reports 1,172 actionable missing answer records, 3 subjective, and 11 unsupported; this is outside the type-resolution checks. Production cache/browser smoke and broad wrong-option/calculation audit remain open.
 
+## Multi-Level Question Tagging & Hierarchical Topic Discovery Subsystem (FEAT-035 / DEC-162)
+
+The Multi-Level Question Tagging & Hierarchical Topic Discovery subsystem equips questions with granular, 3-tier canonical taxonomy (`Subject → Topic → Subtopic`) alongside curated secondary learning paths for cross-disciplinary GATE questions (e.g., pilot reference `go:333214`, GATE CSE 2020 Q17 bridging *Engineering Mathematics / Probability* and *Discrete Mathematics / Relations*).
+
+```text
+┌────────────────────────────────────────────────────────┐
+│               Authoritative Source Data                │
+│  - data/taxonomy/gate-syllabus-taxonomy-v1.json        │
+│  - data/taxonomy/curated-question-taxonomy-v1.json     │
+│  - public/questions-with-answers.json                  │
+└───────────────────────────┬────────────────────────────┘
+                            │
+              Multi-Taxonomy Build Pipeline
+      (precompute-subtopics.mjs + build-public-artifacts.mjs)
+                            │
+        ┌───────────────────┴───────────────────┐
+        ▼                                       ▼
+┌──────────────────────────────┐ ┌──────────────────────────────┐
+│  Static Shards & Indexes     │ │  Runtime Discovery Engine    │
+│  - question.taxonomy         │ │  - FilterContext multi-path  │
+│  - question-search-index     │ │  - Same-path matching rule   │
+│  - homepage-search-catalog   │ │  - Track-isolated facets     │
+└──────────────┬───────────────┘ └──────────────┬───────────────┘
+               │                                │
+               ▼                                ▼
+┌──────────────────────────────┐ ┌──────────────────────────────┐
+│  UI Presentation Layer       │ │  Preparation & Mock Engines  │
+│  - SolvePage Hierarchical    │ │  - Primary subject preserved │
+│    Hero & Secondary Chips    │ │  - Uniform Builder intact    │
+│  - Result Card Topic Badges  │ │  - Tracker metrics canonical │
+│  - Review Phase Badges       │ │  - 0 Supabase schema changes │
+└──────────────────────────────┘ └──────────────────────────────┘
+```
+
+1. **3-Tier Canonical Taxonomy Contract (`Subject → Topic → Subtopic`):**
+   - Defined centrally in `data/taxonomy/gate-syllabus-taxonomy-v1.json`, mapping all 14 syllabus subjects to distinct topics and 405 canonical subtopics.
+   - Question taxonomy structure:
+     ```ts
+     interface TaxonomyPath {
+       subjectSlug: string;
+       subjectLabel?: string;
+       topicSlug?: string;
+       topicLabel?: string;
+       subtopicSlug?: string;
+       subtopicLabel?: string;
+     }
+     interface QuestionTaxonomy {
+       primary: TaxonomyPath;
+       secondary: TaxonomyPath[];
+       conceptTags?: string[];
+     }
+     ```
+2. **Explicit Curated Secondary Paths (`data/taxonomy/curated-question-taxonomy-v1.json`):**
+   - Secondary paths are explicitly curated with versioned exam syllabus rationales (e.g. GATE 2025 Section 1 syllabus).
+   - Raw tags are strictly preserved for free-text search; uncurated community tags are never blindly converted into secondary subjects.
+   - For legacy questions without explicit entries, `SubjectTaxonomy.ts` derives the canonical primary path and defaults `secondary: []`.
+3. **Same-Path Matching Rule in `FilterContext`:**
+   - A question matches a subject filter if *any* approved taxonomy path (primary or secondary) contains that subject.
+   - A question matches a subtopic filter if *any* approved path contains that subtopic.
+   - **Critical Invariant**: When both a subject and a subtopic filter are selected, they MUST be satisfied within the *same* taxonomy path on the question. This prevents false positive matches where a question matches Subject A via path 1 and Subtopic B via disjoint path 2.
+4. **Primary Compatibility & Rollup Invariants:**
+   - Primary `subjectSlug` / `subjectLabel` remain canonical compatibility mirrors of `taxonomy.primary`.
+   - Preparation Tracker rollups, Mock Test section scoring, and Custom Builder uniform subject-stratified sampling continue to operate strictly on the canonical primary subject to avoid double-counting.
+   - Facet counts count each unique `question_uid` at most once per facet.
+5. **UI & Accessibility:**
+   - **SolvePage (`/practice/question/:id`):** Displays interactive hierarchical hero chips (`[Engineering Mathematics] › [Probability]`) and secondary paths (`[Also: Discrete Mathematics: Relations]`) with direct filtering navigation links (`/practice?subjects=...&subtopics=...`).
+   - **Practice Cards & Mock Test Review:** Display secondary path tags with distinct subtle styling and accessible text.
+6. **SEO & Structured Data:**
+   - `scripts/prerender-seo-pages.mjs` maps both primary and secondary topics to schema `about` entities, enriching search discovery without altering the canonical `QAPage` or `BreadcrumbList` hierarchy.
+
 ## Known limitation reference
 
-See `docs/KNOWN-LIMITATIONS.md` for the subtopic cap tradeoff and expected false negatives on genuine multi-subtopic questions.
+See `docs/KNOWN-LIMITATIONS.md` for historical subtopic cap tradeoffs and the DEC-162 multi-level taxonomy resolution.

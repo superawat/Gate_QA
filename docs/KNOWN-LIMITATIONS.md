@@ -1,32 +1,22 @@
-﻿# Known Limitations
+# Known Limitations
 
 This file documents intentional tradeoffs and known functional limits.
 
-## Subtopic cap tradeoff (BUG-007 mitigation)
+## Subtopic cap tradeoff & Multi-Level Taxonomy Resolution (BUG-007 & DEC-162)
 
-### Current behavior
+### Legacy Behavior (BUG-007 Mitigation)
 
 - `QuestionService.MAX_SUBTOPICS_PER_QUESTION = 1`
-- only the first matched canonical subtopic is retained per question
+- Only the first matched canonical subtopic is retained per uncurated question row.
+- **Why this exists**: GateOverflow scrape data can include section-level tag pollution where many subtopic tags are attached indiscriminately. Keeping only the first matched subtopic prevents cross-topic contamination in legacy filters.
 
-### Why this exists
+### Curated Multi-Taxonomy Resolution (DEC-162 / FEAT-035)
 
-GateOverflow scrape data can include section-level tag pollution where many subtopic tags are attached to every question in a section. Keeping only the first matched subtopic prevents cross-topic contamination in filters.
-
-### User-visible impact
-
-- Genuine multi-subtopic questions may appear under only one subtopic.
-- Filtering by a second genuine subtopic can miss such questions (false negatives).
-
-### Scope of impact
-
-- subtopic-level filtering only
-- subject-level and year/type/progress filters remain unaffected
-
-### Related safeguards
-
-- Filter engine uses a scoped subtopic predicate by parent subject (`subtopicToSubjectSlug`).
-- Subject deselection removes orphan subtopics to avoid impossible filter states.
+- Genuine cross-disciplinary questions (e.g. `go:333214`, GATE CSE 2020 Q17 bridging *Engineering Mathematics / Probability* and *Discrete Mathematics / Relations*) are now explicitly curated in `data/taxonomy/curated-question-taxonomy-v1.json`.
+- Supports one canonical `primary` path and one or more curated `secondary` learning paths with versioned exam syllabus citations.
+- The 1-subtopic cap is scoped *per taxonomy path*, permitting multiple genuine subtopics across approved paths while strictly defending against raw tag contamination.
+- The runtime discovery engine enforces the **same-path rule**: simultaneous subject and subtopic selections must be satisfied within the same path on the question.
+- Primary `subjectSlug` remains canonical for Preparation Tracker metrics, mock scoring, and Custom Builder uniform sampling.
 
 ## Generated precompute dependency
 

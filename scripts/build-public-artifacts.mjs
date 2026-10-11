@@ -26,6 +26,12 @@ const PRECOMPUTED_SUBTOPIC_LOOKUP_PATH = path.join(
   "generated",
   "subtopicLookup.json"
 );
+const CURATED_TAXONOMY_PATH = path.join(
+  ROOT,
+  "data",
+  "taxonomy",
+  "curated-question-taxonomy-v1.json"
+);
 
 const QUESTION_BANK_CANDIDATES = [
   path.join(PUBLIC_DIR, "questions-with-answers.json"),
@@ -155,6 +161,9 @@ const SUBJECTS = [
 
 const SUBJECT_BY_LABEL = new Map(
   SUBJECTS.map((subject) => [subject.label, subject])
+);
+const SUBJECT_BY_SLUG = new Map(
+  SUBJECTS.map((subject) => [subject.slug, subject])
 );
 const SUBJECT_PRIORITY = [
   "Digital Logic",
@@ -1780,6 +1789,11 @@ async function buildArtifacts() {
       ? unsupportedPayload.question_uids.map((value) => String(value || "").trim()).filter(Boolean)
       : []
   );
+  const curatedTaxonomyPayload = readJson(CURATED_TAXONOMY_PATH, {});
+  const curatedTaxonomyMap = curatedTaxonomyPayload?.questions || {};
+  const subtopicLookupPayload = readJson(PRECOMPUTED_SUBTOPIC_LOOKUP_PATH, {});
+  const subtopicToTopicLookup = subtopicLookupPayload?.subtopicToTopic || {};
+  const subtopicsBySubjectLookup = subtopicLookupPayload?.subtopicsBySubject || {};
 
   const questionUidSet = new Set();
   const directAnswerUidSet = new Set(Object.keys(answersByQuestionUid));
@@ -1873,11 +1887,81 @@ async function buildArtifacts() {
       }
     }
 
+    const curatedTaxonomyEntry = curatedTaxonomyMap[questionUid];
+    let resolvedTaxonomy = question.taxonomy || curatedTaxonomyEntry?.taxonomy || null;
+
+    if (!resolvedTaxonomy) {
+      const subjectLookup = subtopicsBySubjectLookup[subject.label] || {};
+      let primarySubtopic = null;
+      for (const tag of sanitizedTags) {
+        const norm = tag.toLowerCase().replace(/[^a-z0-9]/g, "");
+        if (subjectLookup[norm]) {
+          primarySubtopic = subjectLookup[norm];
+          break;
+        }
+      }
+      resolvedTaxonomy = {
+        primary: {
+          subjectSlug: subject.slug || "unknown",
+          subjectLabel: subject.label || "Unknown",
+          ...(primarySubtopic?.topicSlug ? { topicSlug: primarySubtopic.topicSlug, topicLabel: primarySubtopic.topicLabel } : {}),
+          ...(primarySubtopic?.slug ? { subtopicSlug: primarySubtopic.slug, subtopicLabel: primarySubtopic.label } : {}),
+        },
+        secondary: [],
+        conceptTags: [],
+      };
+    } else {
+      const primary = { ...resolvedTaxonomy.primary };
+      if (!primary.subjectLabel && primary.subjectSlug) {
+        primary.subjectLabel = SUBJECT_BY_SLUG.get(primary.subjectSlug)?.label || primary.subjectSlug;
+      }
+      if (primary.subtopicSlug && !primary.topicSlug && subtopicToTopicLookup[primary.subtopicSlug]) {
+        primary.topicSlug = subtopicToTopicLookup[primary.subtopicSlug].topicSlug;
+        primary.topicLabel = subtopicToTopicLookup[primary.subtopicSlug].topicLabel;
+        if (!primary.subtopicLabel) primary.subtopicLabel = subtopicToTopicLookup[primary.subtopicSlug].subtopicLabel;
+      }
+      const secondary = Array.isArray(resolvedTaxonomy.secondary)
+        ? resolvedTaxonomy.secondary.map((sec) => {
+            const copy = { ...sec };
+            if (!copy.subjectLabel && copy.subjectSlug) {
+              copy.subjectLabel = SUBJECT_BY_SLUG.get(copy.subjectSlug)?.label || copy.subjectSlug;
+            }
+            if (copy.subtopicSlug && !copy.topicSlug && subtopicToTopicLookup[copy.subtopicSlug]) {
+              copy.topicSlug = subtopicToTopicLookup[copy.subtopicSlug].topicSlug;
+              copy.topicLabel = subtopicToTopicLookup[copy.subtopicSlug].topicLabel;
+              if (!copy.subtopicLabel) copy.subtopicLabel = subtopicToTopicLookup[copy.subtopicSlug].subtopicLabel;
+            }
+            return copy;
+          })
+        : [];
+      resolvedTaxonomy = {
+        ...resolvedTaxonomy,
+        primary,
+        secondary,
+        conceptTags: Array.isArray(resolvedTaxonomy.conceptTags) ? resolvedTaxonomy.conceptTags : [],
+      };
+    }
+
+    const taxonomySearchTokens = [];
+    if (resolvedTaxonomy.primary?.topicLabel) taxonomySearchTokens.push(resolvedTaxonomy.primary.topicLabel);
+    if (resolvedTaxonomy.primary?.subtopicLabel) taxonomySearchTokens.push(resolvedTaxonomy.primary.subtopicLabel);
+    if (Array.isArray(resolvedTaxonomy.secondary)) {
+      for (const sec of resolvedTaxonomy.secondary) {
+        if (sec.subjectLabel) taxonomySearchTokens.push(sec.subjectLabel);
+        if (sec.topicLabel) taxonomySearchTokens.push(sec.topicLabel);
+        if (sec.subtopicLabel) taxonomySearchTokens.push(sec.subtopicLabel);
+      }
+    }
+    if (Array.isArray(resolvedTaxonomy.conceptTags)) {
+      taxonomySearchTokens.push(...resolvedTaxonomy.conceptTags.map((t) => String(t || "").replace(/-/g, " ")));
+    }
+
     const subjectLabel = subject.label || "Unknown";
     const title = String(question.title || "").trim();
     const searchText = [
       title,
       subjectLabel,
+      taxonomySearchTokens.join(" "),
       yearSet.label,
       sanitizedTags.join(" "),
       plainText,
@@ -1913,6 +1997,7 @@ async function buildArtifacts() {
       yearSetKey: yearSet.key || null,
       yearSetIdentity: yearSet.yearSetIdentity || null,
       tags: sanitizedTags,
+      taxonomy: resolvedTaxonomy,
       type: resolvedType,
     };
 
@@ -1934,6 +2019,7 @@ async function buildArtifacts() {
       type: resolvedType,
       link: question.link || "",
       preview,
+      taxonomy: resolvedTaxonomy,
       searchText,
       tags: sanitizedTags,
     };

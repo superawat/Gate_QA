@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { FaArrowLeft, FaCheckCircle, FaStar } from "react-icons/fa";
 import { FiHome, FiMoon, FiSun } from "react-icons/fi";
 import { SITE_URL } from "../constants/siteConfig";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import PageShell from "../components/Layout/PageShell";
 import SEOHead, { buildBreadcrumbSchema, buildQAPageSchema } from "../components/SEO/SEOHead";
@@ -549,16 +549,68 @@ const SolvePage = ({
       );
     }
 
-    const subjectLabel = targetQuestion.subjectLabel || targetQuestion.subject;
+    const taxonomy = targetQuestion.taxonomy || (typeof QuestionService.resolveQuestionTaxonomy === "function" ? QuestionService.resolveQuestionTaxonomy(targetQuestion) : null);
+    const subjectLabel = targetQuestion.subjectLabel || targetQuestion.subject || taxonomy?.primary?.subjectLabel;
+    const subjectSlug = targetQuestion.subjectSlug || taxonomy?.primary?.subjectSlug;
+    const primarySubtopicLabel = taxonomy?.primary?.subtopicLabel || targetQuestion.subtopics?.[0]?.label;
+    const primarySubtopicSlug = taxonomy?.primary?.subtopicSlug || targetQuestion.subtopics?.[0]?.slug;
+
     if (subjectLabel) {
+      const subjectTo = subjectSlug ? `/practice?subjects=${encodeURIComponent(subjectSlug)}` : `/practice`;
       chips.push(
-        <span
+        <Link
           key="subject"
-          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)]"
+          to={subjectTo}
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)] hover:border-sky-500/50 hover:bg-sky-500/10 transition-colors"
+          title={`Filter by subject: ${subjectLabel}`}
         >
           {subjectLabel}
+        </Link>
+      );
+    }
+
+    if (primarySubtopicLabel && primarySubtopicSlug && subjectSlug) {
+      chips.push(
+        <span key="subtopic-separator" className="text-[color:var(--color-text-muted)] text-[11px] select-none" aria-hidden="true">
+          ›
         </span>
       );
+      chips.push(
+        <Link
+          key="primary-subtopic"
+          to={`/practice?subjects=${encodeURIComponent(subjectSlug)}&subtopics=${encodeURIComponent(primarySubtopicSlug)}`}
+          className="inline-flex min-h-[24px] sm:min-h-[26px] items-center rounded-md border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] px-2 py-0.5 text-[11px] sm:text-xs font-semibold text-[color:var(--color-text)] hover:border-sky-500/50 hover:bg-sky-500/10 transition-colors"
+          title={`Filter by subtopic: ${primarySubtopicLabel}`}
+        >
+          {primarySubtopicLabel}
+        </Link>
+      );
+    }
+
+    if (Array.isArray(taxonomy?.secondary)) {
+      taxonomy.secondary.forEach((sec, idx) => {
+        if (!sec || !sec.subjectSlug) return;
+        const secLabel = sec.subtopicLabel
+          ? `${sec.subjectLabel || sec.subjectSlug}: ${sec.subtopicLabel}`
+          : (sec.subjectLabel || sec.subjectSlug);
+        const params = new URLSearchParams();
+        params.set("subjects", sec.subjectSlug);
+        if (sec.subtopicSlug) {
+          params.set("subtopics", sec.subtopicSlug);
+        }
+        chips.push(
+          <Link
+            key={`secondary-path-${idx}`}
+            to={`/practice?${params.toString()}`}
+            className="inline-flex min-h-[24px] sm:min-h-[26px] items-center gap-1 rounded-md border border-dashed border-indigo-400/60 dark:border-indigo-500/50 bg-indigo-50/70 dark:bg-indigo-950/30 px-2 py-0.5 text-[11px] sm:text-xs font-medium text-indigo-900 dark:text-indigo-300 hover:border-indigo-500 hover:bg-indigo-100/80 transition-colors"
+            title={`Additional learning path: ${sec.subjectLabel || sec.subjectSlug}${sec.subtopicLabel ? ` › ${sec.subtopicLabel}` : ""}`}
+            aria-label={`Additional learning path: ${secLabel}`}
+          >
+            <span className="text-[9px] uppercase font-bold tracking-wider text-indigo-600 dark:text-indigo-400">Also:</span>
+            <span>{secLabel}</span>
+          </Link>
+        );
+      });
     }
 
     if (isSolved) {

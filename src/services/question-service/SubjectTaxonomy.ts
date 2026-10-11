@@ -1,11 +1,13 @@
 import precomputedLookup from "../../generated/subtopicLookup.json";
 import { IQuestionService } from "./types";
-import { SubtopicOption, StructuredTags, SubjectOption, YearSetOption } from "../../types";
+import { SubtopicOption, StructuredTags, SubjectOption, YearSetOption, TaxonomyPath, QuestionTaxonomy } from "../../types";
 import { buildTrackYearSetKey } from "../../utils/examTrack";
 
 const PRECOMPUTED_SUBTOPICS = (precomputedLookup as any).subtopicsBySubject;
 const PRECOMPUTED_NORMALIZED = (precomputedLookup as any).normalizedSubtopicsBySubject;
 const PRECOMPUTED_ALIASES = (precomputedLookup as any).subjectAliases;
+export const PRECOMPUTED_SUBTOPIC_TO_TOPIC = (precomputedLookup as any).subtopicToTopic || {};
+export const PRECOMPUTED_TOPICS_BY_SUBJECT = (precomputedLookup as any).topicsBySubject || {};
 
 export interface SubjectEnumItem {
   slug: string;
@@ -910,6 +912,123 @@ export function resolveCanonicalSubject(this: IQuestionService, question: any): 
   return "Unknown";
 }
 
+export function resolveQuestionTaxonomy(this: IQuestionService, question: any): QuestionTaxonomy {
+  if (!question || typeof question !== "object") {
+    return {
+      primary: { subjectSlug: "unknown", subjectLabel: "Unknown" },
+      secondary: [],
+      conceptTags: [],
+    };
+  }
+
+  this.ensureSubjectMaps();
+
+  // 1. Explicit curated taxonomy on the question record
+  if (question.taxonomy && typeof question.taxonomy === "object" && question.taxonomy.primary) {
+    const rawPrimary = question.taxonomy.primary;
+    const primarySubjectSlug = this.normalizeSubjectSlug(rawPrimary.subjectSlug) || rawPrimary.subjectSlug || "unknown";
+    const primarySubjectLabel = rawPrimary.subjectLabel || this.getSubjectLabelBySlug(primarySubjectSlug);
+    const subtopicSlug = rawPrimary.subtopicSlug || undefined;
+    const subtopicInfo = subtopicSlug ? PRECOMPUTED_SUBTOPIC_TO_TOPIC[subtopicSlug] : undefined;
+    const topicSlug = rawPrimary.topicSlug || subtopicInfo?.topicSlug || undefined;
+    const topicLabel = rawPrimary.topicLabel || subtopicInfo?.topicLabel || undefined;
+    const subtopicLabel = rawPrimary.subtopicLabel || subtopicInfo?.subtopicLabel || subtopicSlug || undefined;
+
+    const primary: TaxonomyPath = {
+      subjectSlug: primarySubjectSlug,
+      subjectLabel: primarySubjectLabel,
+      ...(topicSlug ? { topicSlug, topicLabel } : {}),
+      ...(subtopicSlug ? { subtopicSlug, subtopicLabel } : {}),
+    };
+
+    const secondary: TaxonomyPath[] = [];
+    if (Array.isArray(question.taxonomy.secondary)) {
+      for (const rawSec of question.taxonomy.secondary) {
+        if (!rawSec || typeof rawSec !== "object" || !rawSec.subjectSlug) continue;
+        const secSubjSlug = this.normalizeSubjectSlug(rawSec.subjectSlug) || rawSec.subjectSlug;
+        const secSubjLabel = rawSec.subjectLabel || this.getSubjectLabelBySlug(secSubjSlug);
+        const secSubSlug = rawSec.subtopicSlug || undefined;
+        const secSubInfo = secSubSlug ? PRECOMPUTED_SUBTOPIC_TO_TOPIC[secSubSlug] : undefined;
+        const secTopicSlug = rawSec.topicSlug || secSubInfo?.topicSlug || undefined;
+        const secTopicLabel = rawSec.topicLabel || secSubInfo?.topicLabel || undefined;
+        const secSubLabel = rawSec.subtopicLabel || secSubInfo?.subtopicLabel || secSubSlug || undefined;
+
+        secondary.push({
+          subjectSlug: secSubjSlug,
+          subjectLabel: secSubjLabel,
+          ...(secTopicSlug ? { topicSlug: secTopicSlug, topicLabel: secTopicLabel } : {}),
+          ...(secSubSlug ? { subtopicSlug: secSubSlug, subtopicLabel: secSubLabel } : {}),
+        });
+      }
+    }
+
+    const conceptTags = Array.isArray(question.taxonomy.conceptTags)
+      ? question.taxonomy.conceptTags.map((t: any) => String(t || "").trim()).filter(Boolean)
+      : [];
+
+    return {
+      primary,
+      secondary,
+      conceptTags,
+    };
+  }
+
+  // 2. Legacy fallback derivation
+  const rawSubjectSlug = question.subjectSlug ? this.normalizeSubjectSlug(question.subjectSlug) : undefined;
+  const rawSubjectLabel = question.subjectLabel
+    || (rawSubjectSlug ? this.getSubjectLabelBySlug(rawSubjectSlug) : undefined)
+    || (question.subject && question.subject !== "Unknown" ? question.subject : undefined);
+
+  let subjectLabel = (rawSubjectLabel && rawSubjectLabel !== "Unknown")
+    ? rawSubjectLabel
+    : this.resolveCanonicalSubject(question);
+  if (!subjectLabel || subjectLabel === "Unknown") {
+    subjectLabel = rawSubjectLabel || "Unknown";
+  }
+
+  const subjectSlug = (rawSubjectSlug && rawSubjectSlug !== "unknown")
+    ? rawSubjectSlug
+    : this.getSubjectSlugByLabel(subjectLabel);
+  if (!subjectLabel || subjectLabel === "Unknown") {
+    subjectLabel = this.getSubjectLabelBySlug(subjectSlug);
+  }
+  const tagsRaw = Array.isArray(question.tagsRaw)
+    ? question.tagsRaw
+    : (Array.isArray(question.tags) ? question.tags : []);
+  const canonicalSubtopics = Array.isArray(question.subtopics) && question.subtopics.length > 0
+    ? question.subtopics
+    : this.extractCanonicalSubtopics(tagsRaw, subjectLabel);
+
+  const leafSubtopic = canonicalSubtopics[0];
+  let topicSlug: string | undefined;
+  let topicLabel: string | undefined;
+  let subtopicSlug: string | undefined;
+  let subtopicLabel: string | undefined;
+
+  if (leafSubtopic) {
+    subtopicSlug = leafSubtopic.slug;
+    subtopicLabel = leafSubtopic.label;
+    const topicInfo = PRECOMPUTED_SUBTOPIC_TO_TOPIC[leafSubtopic.slug];
+    if (topicInfo) {
+      topicSlug = topicInfo.topicSlug;
+      topicLabel = topicInfo.topicLabel;
+    }
+  }
+
+  const primary: TaxonomyPath = {
+    subjectSlug,
+    subjectLabel,
+    ...(topicSlug ? { topicSlug, topicLabel } : {}),
+    ...(subtopicSlug ? { subtopicSlug, subtopicLabel } : {}),
+  };
+
+  return {
+    primary,
+    secondary: [],
+    conceptTags: [],
+  };
+}
+
 export function getStructuredTags(this: IQuestionService): StructuredTags {
   const yearSetMap = new Map<string, YearSetOption>();
   const subjectCountMap = new Map<string, number>();
@@ -974,6 +1093,19 @@ export function getStructuredTags(this: IQuestionService): StructuredTags {
         structuredSubtopics[subjectSlug].set(slug, { slug, label });
       }
     });
+
+    if (Array.isArray(question.taxonomy?.secondary)) {
+      question.taxonomy.secondary.forEach((sec: any) => {
+        if (!sec || !sec.subjectSlug || !sec.subtopicSlug) return;
+        const secSubjSlug = this.normalizeSubjectSlug(sec.subjectSlug);
+        if (!secSubjSlug || !structuredSubtopics[secSubjSlug]) return;
+        const slug = this.slugifyToken(sec.subtopicSlug);
+        const label = String(sec.subtopicLabel || sec.subtopicSlug).trim();
+        if (slug && label && !structuredSubtopics[secSubjSlug].has(slug)) {
+          structuredSubtopics[secSubjSlug].set(slug, { slug, label });
+        }
+      });
+    }
   });
 
   const yearSets = Array.from(yearSetMap.values()).sort((a, b) => {

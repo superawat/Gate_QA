@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-10-11",
+  "description": "Curated multi-level question taxonomy assignments for GATE CSE (pilot cross-topic indexing)",
+  "questions": {
+    "go:333214": {
+      "question_uid": "go:333214",
+      "exam_uid": "cse:2020:set1:main:q17",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "engg-math",
+          "topicSlug": "probability-statistics",
+          "subtopicSlug": "probability"
+        },
+        "secondary": [
+          {
+            "subjectSlug": "discrete-math",
+            "topicSlug": "set-theory-algebra",
+            "subtopicSlug": "relations"
+          }
+        ],
+        "conceptTags": [
+          "reflexive-relations",
+          "binary-relations",
+          "combinatorial-probability"
+        ]
+      },
+      "rationale": "GATE CSE 2020 Q17 evaluates the probability that a randomly chosen binary relation on a 3-element set is reflexive (2^6 / 2^9 = 1/8 = 0.125). It bridges combinatorial probability with reflexive relation counting.",
+      "syllabusRef": "GATE 2025 CSE Section 1 (Engineering Mathematics / Discrete Mathematics)"
+    }
+  }
+}

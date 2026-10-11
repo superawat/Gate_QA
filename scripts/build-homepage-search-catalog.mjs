@@ -151,19 +151,43 @@ export async function buildHomepageSearchCatalog({
 
         if (subjectSubtopics) {
           const match = subjectSubtopics[normalizeString(t)];
-          if (match && !seenSubtopicsForQ.has(match.slug)) {
-            seenSubtopicsForQ.add(match.slug);
+          if (match) {
             const key = `${q.subjectSlug}:${match.slug}`;
-            if (!subtopicsMap[key]) {
-              subtopicsMap[key] = {
-                slug: match.slug,
-                label: match.label,
-                parentSubject: q.subjectSlug,
-                parentLabel: q.subjectLabel,
-                count: 0,
-              };
+            if (!seenSubtopicsForQ.has(key)) {
+              seenSubtopicsForQ.add(key);
+              if (!subtopicsMap[key]) {
+                subtopicsMap[key] = {
+                  slug: match.slug,
+                  label: match.label,
+                  parentSubject: q.subjectSlug,
+                  parentLabel: q.subjectLabel,
+                  count: 0,
+                };
+              }
+              subtopicsMap[key].count++;
             }
-            subtopicsMap[key].count++;
+          }
+        }
+      }
+
+      // Include secondary taxonomy paths, counting each question UID at most once per facet
+      if (Array.isArray(q.taxonomy?.secondary)) {
+        for (const sec of q.taxonomy.secondary) {
+          if (sec && sec.subjectSlug && sec.subtopicSlug) {
+            const secKey = `${sec.subjectSlug}:${sec.subtopicSlug}`;
+            if (!seenSubtopicsForQ.has(secKey)) {
+              seenSubtopicsForQ.add(secKey);
+              if (!subtopicsMap[secKey]) {
+                subtopicsMap[secKey] = {
+                  slug: sec.subtopicSlug,
+                  label: sec.subtopicLabel || sec.subtopicSlug,
+                  parentSubject: sec.subjectSlug,
+                  parentLabel: sec.subjectLabel || sec.subjectSlug,
+                  count: 0,
+                };
+              }
+              subtopicsMap[secKey].count++;
+            }
           }
         }
       }

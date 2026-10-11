@@ -1,5 +1,36 @@
 # Changelog
 
+- **Multi-Level Question Tagging & Hierarchical Topic Discovery Architecture (DEC-162)**:
+  - *Context*:
+    - Questions on SolvePage previously displayed only a single flat subject badge (e.g. `Engineering Mathematics`), obscuring the granular topic tested and siloing cross-disciplinary questions.
+    - Cross-disciplinary GATE questions (e.g. pilot reference `go:333214`, GATE CSE 2020 Q17 testing binary relations reflexivity and combinatorial probability) could never be discovered by students practicing *Discrete Mathematics* $\rightarrow$ *Relations*.
+  - *Implementation*:
+    - **Shared 3-Tier Taxonomy Registry (`data/taxonomy/gate-syllabus-taxonomy-v1.json`)**:
+      - Defined canonical 3-tier mapping (`Subject → Topic → Subtopic`) across all 14 syllabus subjects, linking 405 subtopics to parent topics and subjects.
+    - **Curated Cross-Topic Question Registry (`data/taxonomy/curated-question-taxonomy-v1.json`)**:
+      - Established an explicit, versioned curation file for multi-path questions with syllabus citations (`syllabusRationale`). Seeded pilot assignment for `go:333214` bridging *Engineering Mathematics / Probability* and *Discrete Mathematics / Relations*.
+    - **Contracts & Normalization (`src/types/runtime.ts`, `src/services/question-service/types.ts`, `SubjectTaxonomy.ts`, `QuestionNormalizer.ts`)**:
+      - Introduced `TaxonomyPath` and `QuestionTaxonomy` (`primary`, `secondary`, `conceptTags`).
+      - Implemented `resolveQuestionTaxonomy(question)` prioritizing explicit curation, with fallback to legacy topic resolver for uncurated questions.
+      - Replaced the global single-subtopic cap with a scoped 1-subtopic limit per taxonomy path, preventing tag pollution while permitting curated secondary paths.
+    - **Ingestion & Static Artifact Enrichment (`scripts/precompute-subtopics.mjs`, `scripts/build-public-artifacts.mjs`, `scripts/build-homepage-search-catalog.mjs`)**:
+      - Precomputed `topicsBySubject` and `subtopicToTopic` in `src/generated/subtopicLookup.json`.
+      - Enriched detail shards and `public/question-search-index.json` with `taxonomy` metadata, including primary and secondary labels in searchable tokens.
+      - Indexed secondary paths into `public/homepage-search-catalog.json` with zero double-counting per facet.
+    - **Runtime Discovery & Filter Engine (`src/contexts/FilterContext.tsx`)**:
+      - Supported multi-path matching while enforcing the **same-path rule**: simultaneous subject and subtopic selections must be satisfied within the *same* taxonomy path on the question.
+      - Strictly preserved track isolation (CSE, DA, ISRO, Aptitude).
+      - Preserved canonical primary `subjectSlug` for Preparation Tracker metrics, mock scoring, and Custom Builder uniform subject-stratified sampling.
+    - **UI/UX Redesign**:
+      - `src/pages/SolvePage.jsx`: Hierarchical hero chips (`[Engineering Mathematics] › [Probability]`) and secondary paths (`[Also: Discrete Mathematics: Relations]`) with direct filter links (`/practice?subjects=...&subtopics=...`).
+      - `src/components/Practice/QuestionResultCard.jsx`, `QuestionPickerList.jsx`, and `src/components/MockTest/MockTestQuestion.jsx`: Render secondary learning path tags.
+      - Mobile ergonomics: compact chips, flex wrapping, keyboard accessibility.
+    - **SEO Structured Data (`scripts/prerender-seo-pages.mjs`)**:
+      - Enriched Schema.org structured data with `about` entities for primary and secondary topics without breaking `QAPage` or `BreadcrumbList`.
+    - **Tests & Verification**:
+      - Added regression test suites across `QuestionService.test.js`, `FilterContext.test.jsx`, `ExplorePage.test.jsx`, `SolvePage.test.jsx`, `QuestionResultCard.test.jsx`, `QuestionPickerList.test.jsx`, `MockTestQuestion.test.jsx`, and `prerenderSeo.test.js`.
+  - *Verification*: Full Vitest suite passing (1,257 tests across 95 files, 100% green), TypeScript typecheck clean (0 errors), pipeline rebuild scripts successful.
+
 - **SEO Prerender String Replacement Pattern Protection & Schema.org JSON-LD Parsing Error Resolution (DEC-161)**:
   - *Context*: Google Search Console reported `Parsing error: Missing ',' or '}'` for structured data on question URLs (`https://gateqa.in/practice/question/go%3A460066/` and `https://gateqa.in/practice/question/go%3A118289/`), invalidating them for rich results.
   - *Root Cause*:

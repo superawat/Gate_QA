@@ -173,5 +173,42 @@ describe("QuestionResultCard", () => {
 
     expect(screen.getByText("Multi-NAT")).toBeTruthy();
   });
+
+  test("renders secondary taxonomy chips with Also: prefix", () => {
+    render(
+      <QuestionResultCard
+        question={{
+          question_uid: "go:333214",
+          title: "GATE CSE 2020 | Set 1 | Question: 17",
+          preview: "Let R be the set of all binary relations...",
+          type: "nat",
+          yearSetLabel: "2020 Set 1",
+          subjectLabel: "Engineering Mathematics",
+          taxonomy: {
+            primary: {
+              subjectSlug: "engg-math",
+              subjectLabel: "Engineering Mathematics",
+              subtopicSlug: "probability",
+              subtopicLabel: "Probability",
+            },
+            secondary: [
+              {
+                subjectSlug: "discrete-math",
+                subjectLabel: "Discrete Mathematics",
+                subtopicSlug: "relations",
+                subtopicLabel: "Relations",
+              },
+            ],
+          },
+        }}
+        isSolved={false}
+        isBookmarked={false}
+        onOpen={() => {}}
+      />
+    );
+
+    expect(screen.getByText("Also: Discrete Mathematics: Relations")).toBeTruthy();
+  });
 });
+
 

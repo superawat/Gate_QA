@@ -1553,4 +1553,162 @@ describe('FilterContext', () => {
             });
         });
     });
+
+    describe('Multi-Level Question Taxonomy Discovery & Same-Path Filtering', () => {
+        const taxonomyQuestionService = {
+            loaded: true,
+            questions: [
+                {
+                    question_uid: 'go:333214',
+                    title: 'GATE CSE 2020 | Set 1 | Question: 17',
+                    searchText: 'probability relations reflexive engineering math discrete math',
+                    subjectSlug: 'engg-math',
+                    subjectLabel: 'Engineering Mathematics',
+                    type: 'NAT',
+                    tags: ['gatecse-2020', 'probability', 'relations'],
+                    subtopics: [{ slug: 'probability', label: 'Probability' }],
+                    taxonomy: {
+                        primary: {
+                            subjectSlug: 'engg-math',
+                            topicSlug: 'probability-statistics',
+                            subtopicSlug: 'probability',
+                            subtopicLabel: 'Probability',
+                        },
+                        secondary: [
+                            {
+                                subjectSlug: 'discrete-math',
+                                topicSlug: 'set-theory-algebra',
+                                subtopicSlug: 'relations',
+                                subtopicLabel: 'Relations',
+                            },
+                        ],
+                        conceptTags: ['reflexive-relations', 'binary-relations'],
+                    },
+                    exam: { year: 2020, set: 1, yearSetKey: 'cse:2020:set-1' }
+                },
+                {
+                    question_uid: 'go:dm-only',
+                    title: 'Discrete Math only',
+                    searchText: 'discrete math relations graphs',
+                    subjectSlug: 'discrete-math',
+                    subjectLabel: 'Discrete Mathematics',
+                    type: 'MCQ',
+                    tags: ['discrete-math', 'relations'],
+                    subtopics: [{ slug: 'relations', label: 'Relations' }],
+                    taxonomy: {
+                        primary: {
+                            subjectSlug: 'discrete-math',
+                            topicSlug: 'set-theory-algebra',
+                            subtopicSlug: 'relations',
+                            subtopicLabel: 'Relations',
+                        },
+                        secondary: [],
+                    },
+                    exam: { year: 2020, set: 1, yearSetKey: 'cse:2020:set-1' }
+                }
+            ],
+            getStructuredTags: vi.fn(() => ({
+                minYear: 2020,
+                maxYear: 2020,
+                subjects: [
+                    { slug: 'engg-math', label: 'Engineering Mathematics' },
+                    { slug: 'discrete-math', label: 'Discrete Mathematics' }
+                ],
+                structuredSubtopics: {
+                    'engg-math': [{ slug: 'probability', label: 'Probability' }],
+                    'discrete-math': [{ slug: 'relations', label: 'Relations' }]
+                },
+                yearSets: [{ key: 'cse:2020:set-1', legacyKey: '2020-s1', year: 2020, set: 1, label: '2020 Set 1', track: 'cse' }],
+                years: ['cse:2020:set-1']
+            })),
+            parseYearSetKey: vi.fn(() => null),
+            extractYearSetFromTag: vi.fn(() => null),
+            normalizeSubjectSlug: vi.fn((s) => String(s).toLowerCase()),
+            slugifyToken: vi.fn((s) => String(s).toLowerCase()),
+            normalizeTypeToken: vi.fn((t) => (t || 'MCQ').toUpperCase()),
+            formatYearSetLabel: vi.fn((s) => s),
+            ensureQuestionDetail: vi.fn()
+        };
+
+        test('filtering for relations (secondary subtopic) returns go:333214 even when primary subject is engg-math', async () => {
+            window.history.replaceState({}, '', '/practice?subtopics=relations');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider questionService={taxonomyQuestionService}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const filteredUids = getByTestId('filtered-question-uids').textContent;
+                expect(filteredUids).toContain('go:333214');
+                expect(filteredUids).toContain('go:dm-only');
+            });
+        });
+
+        test('filtering for probability returns go:333214 and excludes discrete math only question', async () => {
+            window.history.replaceState({}, '', '/practice?subtopics=probability');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider questionService={taxonomyQuestionService}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const filteredUids = getByTestId('filtered-question-uids').textContent;
+                expect(filteredUids).toContain('go:333214');
+                expect(filteredUids).not.toContain('go:dm-only');
+            });
+        });
+
+        test('filtering by primary subject engg-math surfaces go:333214 while discrete-math surfaces both', async () => {
+            window.history.replaceState({}, '', '/practice?subjects=engg-math');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider questionService={taxonomyQuestionService}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const filteredUids = getByTestId('filtered-question-uids').textContent;
+                expect(filteredUids).toContain('go:333214');
+                expect(filteredUids).not.toContain('go:dm-only');
+            });
+        });
+
+        test('subject-plus-subtopic matching uses same-path rule for secondary path discrete-math:relations', async () => {
+            window.history.replaceState({}, '', '/practice?subjects=discrete-math&subtopics=relations');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider questionService={taxonomyQuestionService}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const filteredUids = getByTestId('filtered-question-uids').textContent;
+                expect(filteredUids).toContain('go:333214');
+                expect(filteredUids).toContain('go:dm-only');
+            });
+        });
+
+        test('subject-plus-subtopic matching uses same-path rule for primary path engg-math:probability', async () => {
+            window.history.replaceState({}, '', '/practice?subjects=engg-math&subtopics=probability');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider questionService={taxonomyQuestionService}>
+                    <TestComponent />
+                </FilterProvider>
+            );
+
+            await waitFor(() => {
+                const filteredUids = getByTestId('filtered-question-uids').textContent;
+                expect(filteredUids).toContain('go:333214');
+                expect(filteredUids).not.toContain('go:dm-only');
+            });
+        });
+    });
 });
+

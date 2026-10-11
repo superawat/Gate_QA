@@ -461,6 +461,13 @@ export function normalizeQuestion(this: IQuestionService, question: any = {}): Q
   const subjectLabel = this.resolveCanonicalSubject(normalized);
   const subjectSlug = this.getSubjectSlugByLabel(subjectLabel);
   const canonicalSubtopics = this.extractCanonicalSubtopics(normalized.tagsRaw, subjectLabel);
+  const taxonomy = this.resolveQuestionTaxonomy(normalized);
+  if (canonicalSubtopics.length === 0 && taxonomy.primary?.subtopicSlug) {
+    canonicalSubtopics.push({
+      slug: taxonomy.primary.subtopicSlug,
+      label: taxonomy.primary.subtopicLabel || taxonomy.primary.subtopicSlug,
+    });
+  }
   const normalizedOptions = this.normalizeQuestionOptions(normalized.options, normalized.question);
   const typeResolution = resolveQuestionType({
     candidates: [
@@ -492,11 +499,15 @@ export function normalizeQuestion(this: IQuestionService, question: any = {}): Q
     subjectLabel,
     topics: subjectSlug === "unknown" ? [] : [subjectSlug],
     subtopics: canonicalSubtopics,
+    taxonomy,
     type: canonicalType,
     options: normalizedOptions,
     tagsRaw: [...normalized.tagsRaw],
   };
 
+  normalized.taxonomy = taxonomy;
+  normalized.topicSlug = taxonomy.primary?.topicSlug || undefined;
+  normalized.topicLabel = taxonomy.primary?.topicLabel || undefined;
   normalized.subject = subjectLabel;
   normalized.subjectLabel = subjectLabel;
   normalized.subjectSlug = subjectSlug;
@@ -539,6 +550,13 @@ export function hydrateIndexedQuestion(this: IQuestionService, question: any = {
   const subjectLabel = this.resolveCanonicalSubject(indexed);
   const subjectSlug = this.getSubjectSlugByLabel(subjectLabel);
   const canonicalSubtopics = this.extractCanonicalSubtopics(indexed.tagsRaw, subjectLabel);
+  const taxonomy = this.resolveQuestionTaxonomy(indexed);
+  if (canonicalSubtopics.length === 0 && taxonomy.primary?.subtopicSlug) {
+    canonicalSubtopics.push({
+      slug: taxonomy.primary.subtopicSlug,
+      label: taxonomy.primary.subtopicLabel || taxonomy.primary.subtopicSlug,
+    });
+  }
   const canonicalType = this.normalizeTypeToken(indexed.type);
 
   indexed.canonical = {
@@ -548,12 +566,16 @@ export function hydrateIndexedQuestion(this: IQuestionService, question: any = {
     subjectLabel,
     topics: subjectSlug === "unknown" ? [] : [subjectSlug],
     subtopics: canonicalSubtopics,
+    taxonomy,
     type: canonicalType,
     options: [],
     tagsRaw: [...indexed.tagsRaw],
     isIndexEntry: true,
   };
 
+  indexed.taxonomy = taxonomy;
+  indexed.topicSlug = taxonomy.primary?.topicSlug || undefined;
+  indexed.topicLabel = taxonomy.primary?.topicLabel || undefined;
   indexed.subject = subjectLabel;
   indexed.subjectLabel = subjectLabel;
   indexed.subjectSlug = subjectSlug;

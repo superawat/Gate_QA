@@ -60,6 +60,19 @@ const QuestionResultCard = ({
                 <span className="normal-case tracking-normal text-[color:var(--color-text-muted)]">{subtopicLabel}</span>
               </>
             ) : null}
+            {Array.isArray(question?.taxonomy?.secondary) && question.taxonomy.secondary.length > 0 ? (
+              question.taxonomy.secondary.map((sec, i) => {
+                const label = sec.subtopicLabel ? `${sec.subjectLabel || sec.subjectSlug}: ${sec.subtopicLabel}` : (sec.subjectLabel || sec.subjectSlug);
+                return (
+                  <span
+                    key={`sec-tag-${i}`}
+                    className="rounded-full border border-dashed border-indigo-400/50 bg-indigo-50/60 dark:bg-indigo-950/30 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-indigo-700 dark:text-indigo-300"
+                  >
+                    Also: {label}
+                  </span>
+                );
+              })
+            ) : null}
           </div>
           <h2 className="text-lg font-semibold leading-snug text-[color:var(--color-text)]">{question?.title || "Untitled question"}</h2>
           <MathContent

@@ -698,15 +698,38 @@ function qaPageSchema({ question, answerText, url }) {
 
 function quizSchema({ question, url }) {
   const title = `${question.title || `GATE ${question.year || ""} Question`} | GateQA Practice Quiz`;
+  const aboutEntities = [
+    {
+      "@type": "Thing",
+      name: question.subjectLabel || "GATE Computer Science",
+    },
+  ];
+  if (question.taxonomy?.primary?.subtopicLabel) {
+    aboutEntities.push({
+      "@type": "Thing",
+      name: question.taxonomy.primary.subtopicLabel,
+    });
+  }
+  if (Array.isArray(question.taxonomy?.secondary)) {
+    for (const sec of question.taxonomy.secondary) {
+      const secLabel = sec.subtopicLabel
+        ? `${sec.subjectLabel || sec.subjectSlug}: ${sec.subtopicLabel}`
+        : (sec.subjectLabel || sec.subjectSlug);
+      if (secLabel) {
+        aboutEntities.push({
+          "@type": "Thing",
+          name: secLabel,
+        });
+      }
+    }
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "Quiz",
     name: title,
     url,
-    about: {
-      "@type": "Thing",
-      name: question.subjectLabel || "GATE Computer Science",
-    },
+    about: aboutEntities.length === 1 ? aboutEntities[0] : aboutEntities,
     hasPart: [
       {
         "@type": "Question",

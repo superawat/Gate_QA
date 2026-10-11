@@ -35,6 +35,9 @@ export default defineConfig(async ({ mode }) => {
             if (id.includes('vite/preload-helper')) {
               return 'vendor-preload-helper';
             }
+            if (id.includes('subtopicLookup.json')) {
+              return 'data-taxonomy-lookup';
+            }
             if (!id.includes('node_modules')) {
               return undefined;
             }

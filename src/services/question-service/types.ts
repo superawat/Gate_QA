@@ -61,6 +61,7 @@ export interface IQuestionService {
   getSubtopicLookupForSubject(subjectLabel?: string): Map<string, SubtopicOption>;
   extractCanonicalSubtopics(tags?: string[], subjectLabel?: string): SubtopicOption[];
   resolveCanonicalSubject(question: any): string;
+  resolveQuestionTaxonomy(question: any): any;
   normalizeQuestion(question?: any): QuestionRow;
   hydrateIndexedQuestion(question?: any): QuestionRow;
   isPracticeExcludedQuestion(question?: any): boolean;

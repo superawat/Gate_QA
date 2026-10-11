@@ -440,6 +440,20 @@ const MockTestQuestion = ({ isReviewPhase = false }) => {
                             {reviewMessage ? (
                                 <div className="mt-2 text-[#9b2a2a]">{reviewMessage}</div>
                             ) : null}
+                            {currentQuestion?.taxonomy?.primary?.subjectLabel ? (
+                                <div className="mt-2.5 flex flex-wrap items-center gap-1.5 border-t border-[#d7e3ee] pt-2 text-xs">
+                                    <span className="font-semibold text-[#1f2a36]">Syllabus Topic:</span>
+                                    <span className="rounded bg-sky-100 px-2 py-0.5 font-medium text-sky-800">
+                                        {currentQuestion.taxonomy.primary.subjectLabel}
+                                        {currentQuestion.taxonomy.primary.subtopicLabel ? ` › ${currentQuestion.taxonomy.primary.subtopicLabel}` : ""}
+                                    </span>
+                                    {Array.isArray(currentQuestion.taxonomy.secondary) && currentQuestion.taxonomy.secondary.map((sec, i) => (
+                                        <span key={i} className="rounded border border-dashed border-indigo-300 bg-indigo-50 px-2 py-0.5 font-medium text-indigo-700">
+                                            Also: {sec.subjectLabel}{sec.subtopicLabel ? ` › ${sec.subtopicLabel}` : ""}
+                                        </span>
+                                    ))}
+                                </div>
+                            ) : null}
                         </div>
                     ) : null}
 

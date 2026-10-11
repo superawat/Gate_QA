@@ -762,5 +762,78 @@ describe("QuestionService", () => {
     expect(normalized.question).not.toContain("$17610$");
     expect(normalized.answerMeta.answer).toBe(128);
   });
+
+  describe("Multi-Level Question Taxonomy & go:333214 resolution", () => {
+    test("resolves explicit curated taxonomy for go:333214 spanning Engineering Math and Discrete Math", () => {
+      const question = {
+        question_uid: "go:333214",
+        title: "GATE CSE 2020 | Set 1 | Question: 17",
+        subjectSlug: "engg-math",
+        subjectLabel: "Engineering Mathematics",
+        tags: ["gatecse-2020", "probability", "relations", "numerical-answers"],
+        taxonomy: {
+          primary: {
+            subjectSlug: "engg-math",
+            topicSlug: "probability-statistics",
+            subtopicSlug: "probability",
+          },
+          secondary: [
+            {
+              subjectSlug: "discrete-math",
+              topicSlug: "set-theory-algebra",
+              subtopicSlug: "relations",
+            },
+          ],
+          conceptTags: [
+            "reflexive-relations",
+            "binary-relations",
+            "combinatorial-probability",
+          ],
+        },
+      };
+
+      const resolved = QuestionService.resolveQuestionTaxonomy(question);
+      expect(resolved.primary.subjectSlug).toBe("engg-math");
+      expect(resolved.primary.subjectLabel).toBe("Engineering Mathematics");
+      expect(resolved.primary.subtopicSlug).toBe("probability");
+      expect(resolved.primary.topicSlug).toBe("probability-statistics");
+
+      expect(resolved.secondary).toHaveLength(1);
+      expect(resolved.secondary[0].subjectSlug).toBe("discrete-math");
+      expect(resolved.secondary[0].subjectLabel).toBe("Discrete Mathematics");
+      expect(resolved.secondary[0].subtopicSlug).toBe("relations");
+      expect(resolved.secondary[0].topicSlug).toBe("set-theory-algebra");
+
+      expect(resolved.conceptTags).toEqual([
+        "reflexive-relations",
+        "binary-relations",
+        "combinatorial-probability",
+      ]);
+
+      const normalized = QuestionService.normalizeQuestion(question);
+      expect(normalized.subjectSlug).toBe("engg-math");
+      expect(normalized.taxonomy).toBeDefined();
+      expect(normalized.taxonomy.primary.subjectSlug).toBe("engg-math");
+      expect(normalized.taxonomy.secondary[0].subjectSlug).toBe("discrete-math");
+      expect(normalized.tags).toEqual(expect.arrayContaining(["probability", "relations"]));
+    });
+
+    test("legacy fallback derivation populates primary path and defaults secondary to empty array", () => {
+      const legacyQuestion = {
+        question_uid: "go:9999",
+        title: "Legacy Question",
+        subjectSlug: "algorithms",
+        subjectLabel: "Algorithms",
+        tags: ["sorting", "divide-and-conquer"],
+      };
+
+      const resolved = QuestionService.resolveQuestionTaxonomy(legacyQuestion);
+      expect(resolved.primary.subjectSlug).toBe("algorithms");
+      expect(resolved.primary.subjectLabel).toBe("Algorithms");
+      expect(resolved.secondary).toEqual([]);
+      expect(resolved.conceptTags).toEqual([]);
+    });
+  });
 });
+
 

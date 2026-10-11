@@ -84,6 +84,23 @@ export interface QuestionSubtopic {
   [key: string]: unknown;
 }
 
+export interface TaxonomyPath {
+  subjectSlug: string;
+  subjectLabel?: string;
+  topicSlug?: string;
+  topicLabel?: string;
+  subtopicSlug?: string;
+  subtopicLabel?: string;
+  [key: string]: unknown;
+}
+
+export interface QuestionTaxonomy {
+  primary: TaxonomyPath;
+  secondary?: TaxonomyPath[];
+  conceptTags?: string[];
+  [key: string]: unknown;
+}
+
 export interface QuestionRow {
   question_uid: QuestionUid;
   uid?: QuestionUid;
@@ -107,6 +124,7 @@ export interface QuestionRow {
   yearSetIdentity?: string | null;
   yearSetLabel?: string | null;
   subtopics?: QuestionSubtopic[];
+  taxonomy?: QuestionTaxonomy;
   tags?: string[];
   link?: string;
   canonicalExamUid?: string;
@@ -137,6 +155,7 @@ export interface QuestionSearchIndexRow {
   link?: string;
   preview?: string;
   searchText?: string;
+  taxonomy?: QuestionTaxonomy;
   tags?: string[];
   [key: string]: unknown;
 }

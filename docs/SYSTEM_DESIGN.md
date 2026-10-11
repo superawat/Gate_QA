@@ -235,6 +235,12 @@ flowchart LR
 - **GATE DA**: UIDs formatted as `da:<year>:<slug>` or `da:2026:set-1:q1`.
 - **Aptitude**: UIDs formatted as `APT-<CATEGORY>-<INDEX>` (e.g. `APT-ENG-0001`, `APT-QA-0120`).
 
+#### Multi-Level Taxonomy & Same-Path Matching Engine (DEC-162)
+- **Hierarchical Path Resolution**: Questions normalize into a 3-tier taxonomy schema (`Subject → Topic → Subtopic`) with one canonical `primary` path and optional curated `secondary` paths for cross-disciplinary problems (e.g. `go:333214`, GATE CSE 2020 Q17 bridging *Engineering Mathematics / Probability* and *Discrete Mathematics / Relations*).
+- **Same-Path Matching Invariant**: When both a `subject` and a `subtopic` filter are active, `FilterContext` requires both constraints to match within the **same** taxonomy path on the question. This prevents disjoint false matches where a question matches Subject A via its primary path and Subtopic B via an unrelated secondary path.
+- **Track Isolation**: Taxonomy assignments remain track-scoped (CSE secondary paths cannot cross into DA, and DA has its own isolated syllabus).
+- **Primary Preservation**: Preparation Tracker metrics, mock test scoring, and Custom Builder uniform subject-stratified sampling operate exclusively on the canonical primary `subjectSlug`.
+
 ---
 
 ### 4.3 Mock Test & CBT Simulator Subsystem (AUG-013 Zero-Data-Loss Architecture)
@@ -421,46 +427,56 @@ All data stored by GateQA across `localStorage` and `sessionStorage` follows a s
 
 ```mermaid
 flowchart TD
-    subgraph DataSources["External Data Ingestion"]
+    subgraph DataSources["External Data & Authoritative Taxonomy Registries"]
         GO["GateOverflow Scraper / Repositories"]
         AB["AptitudeBank Question Datasets"]
         DA_Raw["GATE DA 2024-2026 Raw Papers"]
+        TaxRegistry["data/taxonomy/gate-syllabus-taxonomy-v1.json"]
+        CuratedTax["data/taxonomy/curated-question-taxonomy-v1.json"]
     end
 
     subgraph BuildPipelines["Build-Time Pipeline Scripts"]
         P1["scripts/precompute-subtopics.mjs"]
         P2["scripts/build-public-artifacts.mjs"]
-        P3["scripts/da-pipeline/build-da-artifacts.mjs"]
-        P4["scripts/aptitude-pipeline/build-aptitude-artifacts.mjs"]
-        P5["scripts/prerender-seo-pages.mjs"]
-        P6["scripts/deployment/sync-calculator.mjs"]
+        P3["scripts/build-homepage-search-catalog.mjs"]
+        P4["scripts/da-pipeline/build-da-artifacts.mjs"]
+        P5["scripts/aptitude-pipeline/build-aptitude-artifacts.mjs"]
+        P6["scripts/prerender-seo-pages.mjs"]
+        P7["scripts/deployment/sync-calculator.mjs"]
     end
 
-    subgraph StaticDist["Static Dist Output (dist/)"]
+    subgraph StaticDist["Static Dist Output (public/ & dist/)"]
         Manifest["question-bank-manifest.json"]
         Shards["58 CS Shards + 3 DA Shards + Aptitude Shards"]
+        SearchIndex["public/question-search-index.json"]
+        SearchCatalog["public/homepage-search-catalog.json"]
         SEOPages["3,605 Prerendered Static SEO HTML Pages"]
         CalcBundle["dist/calculator/* Standalone Assets"]
         Bundles["Vite Optimized Code-Split SPA Chunks"]
     end
 
+    TaxRegistry --> P1
+    TaxRegistry & CuratedTax --> P2
+    TaxRegistry & CuratedTax --> P3
     GO --> P2
-    AB --> P4
-    DA_Raw --> P3
+    AB --> P5
+    DA_Raw --> P4
 
     P1 --> P2
-    P2 & P3 & P4 --> StaticDist
-    P5 --> SEOPages
-    P6 --> CalcBundle
+    P2 & P4 & P5 --> StaticDist
+    P3 --> SearchCatalog
+    P6 --> SEOPages
+    P7 --> CalcBundle
 ```
 
 ### Build Commands & Execution Sequence
-1. `npm run precompute`: Generates `src/generated/subtopicLookup.json`.
-2. `npm run build:artifacts`: Compiles question manifest, mock catalog, search indices, and 58 detail shards.
-3. `npm run build:da`: Generates GATE DA manifest and 3 detail shards.
-4. `vite build`: Compiles optimized, code-split client SPA chunks with dynamic CSS tokens.
-5. `npm run build:seo`: Pre-renders 3,493 crawler-ready static HTML landing and question pages with JSON-LD metadata.
-6. `npm run sync:calculator`: Synchronizes standalone virtual calculator assets into `dist/calculator`.
+1. `npm run precompute` (`node scripts/precompute-subtopics.mjs`): Reads `gate-syllabus-taxonomy-v1.json` and generates `src/generated/subtopicLookup.json` with topic and subtopic mappings.
+2. `npm run build:artifacts` (`node scripts/build-public-artifacts.mjs`): Enriches multi-tier question taxonomy (`primary` and `secondary` paths), compiles question manifest, mock catalog, search indices, and 58 detail shards.
+3. `node scripts/build-homepage-search-catalog.mjs`: Indexes primary and secondary paths into `public/homepage-search-catalog.json` with zero double-counting per facet.
+4. `npm run build:da`: Generates GATE DA manifest and 3 detail shards.
+5. `vite build`: Compiles optimized, code-split client SPA chunks with dynamic CSS tokens.
+6. `npm run build:seo` (`scripts/prerender-seo-pages.mjs`): Pre-renders crawler-ready static HTML landing and question pages with JSON-LD metadata and semantic `about` entities.
+7. `npm run sync:calculator`: Synchronizes standalone virtual calculator assets into `dist/calculator`.
 
 ---
 

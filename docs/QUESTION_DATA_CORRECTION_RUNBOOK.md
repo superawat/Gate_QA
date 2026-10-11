@@ -15,6 +15,7 @@
 | **Case E: Defective Question (Excluded)** | None of the 4 options is correct, question contains contradictory data, or correct value is missing from choices (e.g. `go:1376`, `go:43485`). | Set `"answer": null`, `"is_defective": true`, `"defective_reason": "<explanation>"`.<br>Remove from `unsupported_question_uids_v1.json` if previously listed. | Rebuild artifacts.<br>Evaluator returns `{ status: "excluded", correct: false, reason: ... }`. Excluded from mock scoring. |
 | **Case F: Question Stem / LaTeX / Options Repair** | Broken MathJax formula, scrambled HTML list, or missing figure. | Update `question` HTML in `public/questions-with-answers.json`.<br>Ensure LaTeX backslashes are double-escaped (`\\frac`, `\\sum`, `\\Theta`). | Run image mirroring if external URL.<br>Rebuild shards with `node scripts/build-public-artifacts.mjs`. |
 | **Case G: Subject / Subtopic Taxonomy Fix** | Question mapped to wrong subject or subtopic. | Update subject slug / subtopic tags in `public/questions-with-answers.json`. | `node scripts/precompute-subtopics.mjs`<br>`node scripts/build-public-artifacts.mjs` |
+| **Case H: Multi-Level / Cross-Disciplinary Question Taxonomy** | Question bridges multiple subjects (e.g. EM Probability + DM Relations) or requires hierarchical topic attribution. | Update `data/taxonomy/curated-question-taxonomy-v1.json` (`primary` path, `secondary` paths, and syllabus rationale). Ensure all slugs exist in `data/taxonomy/gate-syllabus-taxonomy-v1.json`. | `node scripts/precompute-subtopics.mjs`<br>`node scripts/build-public-artifacts.mjs`<br>`node scripts/build-homepage-search-catalog.mjs`<br>Add tests in `QuestionService.test.js` & `FilterContext.test.jsx`. |
 
 ---
 
@@ -176,6 +177,42 @@ Locate the question object by `question_uid`. Ensure:
 - If question type changed from NAT to MCQ/MSQ, verify the options in `question` HTML have option labels:
   `<ol class="qa-options"><li data-option-label="A">...</li>...</ol>`.
 - If math formulas or HTML were modified, **always double-escape LaTeX backslashes** in JSON: `\\frac`, `\\times`, `\\Theta`, `\\le`, `\\ge`, `\\begin{bmatrix}`.
+
+---
+
+#### 5. Curating Multi-Level Question Taxonomy (`data/taxonomy/curated-question-taxonomy-v1.json`)
+For questions that legitimately bridge multiple syllabus areas or require 3-tier hierarchical topic attribution:
+1. Ensure all `subjectSlug`, `topicSlug`, and `subtopicSlug` entries exist in `data/taxonomy/gate-syllabus-taxonomy-v1.json`.
+2. Add or update the question entry in `data/taxonomy/curated-question-taxonomy-v1.json`:
+   ```json
+   "go:333214": {
+     "question_uid": "go:333214",
+     "exam_uid": "cse:2020:main:q17",
+     "primary": {
+       "subjectSlug": "engg-math",
+       "topicSlug": "em-prob-stats",
+       "subtopicSlug": "probability"
+     },
+     "secondary": [
+       {
+         "subjectSlug": "discrete-math",
+         "topicSlug": "dm-set-relations",
+         "subtopicSlug": "relations"
+       }
+     ],
+     "conceptTags": [
+       "binary-relations",
+       "reflexive-relations",
+       "combinatorics"
+     ],
+     "syllabusRationale": {
+       "primary": "Official GATE CSE 2020 Section 1: Probability and Statistics",
+       "secondary": "Discrete Mathematics Relations facet inside Engineering Mathematics syllabus"
+     }
+   }
+   ```
+3. Primary `subjectSlug` remains the single canonical authority for Preparation Tracker metrics and Custom Builder subject stratification.
+4. When both `subjects` and `subtopics` are selected in Practice filters, the query engine enforces the **same-path rule** (they must match within the *same* taxonomy path).
 
 ---
 

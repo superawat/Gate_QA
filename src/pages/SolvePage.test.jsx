@@ -643,4 +643,46 @@ describe("SolvePage", () => {
       expect(screen.getByTestId("location-probe").textContent).toBe("/insights?tab=review");
     });
   });
+
+  test("renders hierarchical hero chips with primary topic and accessible secondary learning path chips", async () => {
+    const questionWithTaxonomy = buildQuestion("go:333214", {
+      title: "GATE CSE 2020 | Question 17",
+      subjectSlug: "engg-math",
+      subjectLabel: "Engineering Mathematics",
+      taxonomy: {
+        primary: {
+          subjectSlug: "engg-math",
+          subjectLabel: "Engineering Mathematics",
+          topicSlug: "probability-statistics",
+          topicLabel: "Probability & Statistics",
+          subtopicSlug: "probability",
+          subtopicLabel: "Probability",
+        },
+        secondary: [
+          {
+            subjectSlug: "discrete-math",
+            subjectLabel: "Discrete Mathematics",
+            topicSlug: "set-theory-algebra",
+            topicLabel: "Set Theory & Algebra",
+            subtopicSlug: "relations",
+            subtopicLabel: "Relations",
+          },
+        ],
+        conceptTags: ["reflexive-relations"],
+      },
+    });
+
+    mocks.ensureQuestionDetail.mockResolvedValueOnce(questionWithTaxonomy);
+
+    renderSolvePage({
+      route: "/practice/question/go%3A333214",
+      indexedQuestion: questionWithTaxonomy,
+      filteredQuestions: [questionWithTaxonomy],
+    });
+
+    expect(await screen.findByRole("link", { name: "Engineering Mathematics" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Probability" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: /additional learning path: discrete mathematics: relations/i })).toBeTruthy();
+  });
 });
+

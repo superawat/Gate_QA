@@ -123,5 +123,42 @@ describe("QuestionPickerList", () => {
 
     expect(screen.getAllByText("Multi-NAT").length).toBeGreaterThan(0);
   });
+
+  test("renders secondary taxonomy badges in question picker items", () => {
+    render(
+      <QuestionPickerList
+        questions={[
+          {
+            question_uid: "go:333214",
+            title: "GATE CSE 2020 | Set 1 | Question: 17",
+            yearSetLabel: "2020 Set 1",
+            subjectLabel: "Engineering Mathematics",
+            type: "nat",
+            taxonomy: {
+              primary: {
+                subjectSlug: "engg-math",
+                subjectLabel: "Engineering Mathematics",
+                subtopicSlug: "probability",
+                subtopicLabel: "Probability",
+              },
+              secondary: [
+                {
+                  subjectSlug: "discrete-math",
+                  subjectLabel: "Discrete Mathematics",
+                  subtopicSlug: "relations",
+                  subtopicLabel: "Relations",
+                },
+              ],
+            },
+          },
+        ]}
+        pageStartIndex={0}
+        onOpenQuestion={() => {}}
+      />
+    );
+
+    expect(screen.getAllByText("Also: Relations").length).toBeGreaterThan(0);
+  });
 });
+
 
