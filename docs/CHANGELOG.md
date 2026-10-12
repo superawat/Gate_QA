@@ -1,5 +1,27 @@
 # Changelog
 
+- **Supabase Phase 1 Log Ingestion Reduction & Sync Hardening (DEC-163)**:
+  - *Context*:
+    - Production telemetry analysis of `supabase/supabase_logs_oct_26.json` and dashboard readings revealed ~18.5–21.0 MB/day log ingestion on Supabase Free Tier (~580–630 MB/month, ~60% of 1 GB quota with only ~5–10 concurrent users).
+    - 86% of all logs were API gateway requests (`user_progress` and `user_tracker`), with zero application errors.
+    - Forensic investigation identified: (1) `visibilitychange` bypassing the 2-minute cooldown with `{ ignoreCooldown: true }` on both tab blur and focus, causing 20-second repeat syncs; (2) initial session startup and sign-in triggering forced `GET` + `POST` upserts even when local data was clean; (3) uncoordinated open tabs firing duplicate simultaneous bursts; and (4) routine practice syncing `user_tracker` alongside progress.
+  - *Implementation*:
+    - **Tamed `visibilitychange` Cooldown Bypass (`src/contexts/AuthContext.jsx`)**:
+      - Restructured `handleVisibilityChange` to only fire when `document.visibilityState === "hidden"` (tab blur/exit), never on reveal/focus.
+      - Enforced `MIN_VISIBILITY_SYNC_INTERVAL_MS = 60_000` (1 minute cooldown) even on visibility change to eliminate tab-switching bursts.
+    - **Read-Only Startup Pull Optimization (`src/utils/cloudSyncManager.js`)**:
+      - Converted mount/startup sync into a read-only `GET` pull when local storage is clean (`!isProgressDirty(meta)`).
+      - Cloud data is merged and written to `localStorage` (guaranteeing cross-device sync), while the redundant `POST` upsert and WAL checkpoint writes are skipped entirely.
+    - **Decoupled Syllabus Tracker from Routine Practice Sync (`src/utils/cloudSyncManager.js`)**:
+      - `user_tracker` skips upserts unless `isTrackerDirty(meta)` is strictly true or `forcePush` is explicitly requested.
+      - Routine MCQ practice syncs no longer touch or upsert `user_tracker`.
+    - **Cross-Tab Concurrency Mutex (`src/contexts/AuthContext.jsx`)**:
+      - Wrapped sync execution in `navigator.locks.request("gateqa_cloud_sync_lock", { ifAvailable: true })`.
+      - When a lock is held by a peer tab, secondary tabs skip immediate execution, eliminating concurrent duplicate bursts.
+    - **Unit Tests & Regression Guardrails (`src/contexts/AuthContext.test.jsx`, `src/utils/cloudSyncManager.test.js`)**:
+      - Added regression tests verifying hidden-only visibility triggers, 60s visibility cooldown, Web Locks peer contention skipping, and read-only pull upsert skipping.
+  - *Verification*: Full Vitest suite passing (1,260 tests across 95 files, 100% green), TypeScript typecheck clean (0 errors).
+
 - **Multi-Level Question Tagging & Hierarchical Topic Discovery Architecture (DEC-162)**:
   - *Context*:
     - Questions on SolvePage previously displayed only a single flat subject badge (e.g. `Engineering Mathematics`), obscuring the granular topic tested and siloing cross-disciplinary questions.

@@ -1439,6 +1439,60 @@ describe("cloudSyncManager - Snapshot & Full Sync Integration", () => {
       expect(mockFrom).not.toHaveBeenCalled();
     });
 
+    test("Phase 1: Read-only pull skips upsert when local progress is clean on mount with force: true", async () => {
+      const syncTime = "2026-10-12T12:00:00.000Z";
+      setSyncMeta({
+        lastLocalProgressUpdate: "2026-10-12T11:59:00.000Z", // clean
+        lastSuccessfulProgressSync: syncTime,
+        lastLocalTrackerUpdate: "2026-10-12T11:59:00.000Z", // clean
+        lastSuccessfulTrackerSync: syncTime,
+      });
+
+      const { mockFrom, mockProgressUpsert, mockTrackerUpsert } = setupSupabaseMock({
+        progressData: { bookmarks: ["go:100"], solved_questions: ["go:200"] },
+        trackerData: { active_track: "cse" },
+      });
+
+      // Force is true (simulating startup mount or manual sync)
+      const result = await syncUserData("user-phase1-mount", { force: true });
+      expect(result.success).toBe(true);
+
+      // Cloud rows WERE fetched (Read-Only Pull)
+      expect(mockFrom).toHaveBeenCalledWith("user_progress");
+      expect(mockFrom).toHaveBeenCalledWith("user_tracker");
+
+      // But upserts WERE SKIPPED because local progress and tracker were clean!
+      expect(mockProgressUpsert).not.toHaveBeenCalled();
+      expect(mockTrackerUpsert).not.toHaveBeenCalled();
+
+      // Local storage received the pulled cloud data!
+      expect(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.bookmarks))).toEqual(["go:100"]);
+      expect(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.solved))).toEqual(["go:200"]);
+    });
+
+    test("Phase 1: Upsert runs when local progress is dirty", async () => {
+      const syncTime = "2026-10-12T12:00:00.000Z";
+      setSyncMeta({
+        lastLocalProgressUpdate: "2026-10-12T12:05:00.000Z", // dirty!
+        lastSuccessfulProgressSync: syncTime,
+        lastLocalTrackerUpdate: "2026-10-12T11:59:00.000Z", // clean
+        lastSuccessfulTrackerSync: syncTime,
+      });
+
+      const { mockFrom, mockProgressUpsert, mockTrackerUpsert } = setupSupabaseMock({
+        progressData: { bookmarks: [] },
+      });
+
+      const result = await syncUserData("user-phase1-dirty");
+      expect(result.success).toBe(true);
+
+      // Progress was dirty -> upsert called
+      expect(mockProgressUpsert).toHaveBeenCalled();
+      // Tracker was clean -> tracker skipped
+      expect(mockFrom).not.toHaveBeenCalledWith("user_tracker");
+      expect(mockTrackerUpsert).not.toHaveBeenCalled();
+    });
+
     test("sync_log insert fires on failure (using shouldSampleSuccess: () => false)", async () => {
       markLocalProgressUpdated(); // dirty
       const mockInsert = vi.fn().mockResolvedValue({ error: null });

@@ -29,6 +29,7 @@ import {
 
 const SYNC_DEBOUNCE_MS = 750;
 const MIN_SYNC_INTERVAL_MS = 120_000; // 2 minutes (Option 2)
+export const MIN_VISIBILITY_SYNC_INTERVAL_MS = 60_000; // 1 minute minimum cooldown for visibilitychange
 
 const DEFAULT_AUTH_CONTEXT = {
   user: null,
@@ -73,7 +74,7 @@ export function AuthProvider({ children }) {
     if (!targetId) return;
     if (syncInFlightRef.current === targetId) return;
 
-    const { force = false, ignoreCooldown = false } = opts;
+    const { force = false, forcePush = false, ignoreCooldown = false } = opts;
     const meta = getSyncMeta();
     const progressDirty = force || isProgressDirty(meta);
     const trackerDirty = force || isTrackerDirty(meta);
@@ -98,34 +99,52 @@ export function AuthProvider({ children }) {
       } catch {}
     }
 
-    try {
-      const res = await syncUserData(targetId, force ? { force: true } : {});
-      if (res.success) {
-        retryAttemptRef.current = 0;
-        const now = Date.now();
-        lastSuccessfulSyncRef.current = {
-          userId: targetId,
-          timestamp: now,
-        };
-        setLastSyncedAt(new Date(now));
+    const performSync = async () => {
+      try {
+        const res = await syncUserData(targetId, force ? { force: true, ...(forcePush ? { forcePush: true } : {}) } : {});
+        if (res.success) {
+          retryAttemptRef.current = 0;
+          const now = Date.now();
+          lastSuccessfulSyncRef.current = {
+            userId: targetId,
+            timestamp: now,
+          };
+          setLastSyncedAt(new Date(now));
 
-        if (channelRef.current) {
-          try {
-            channelRef.current.postMessage({ type: "sync-completed", userId: targetId, timestamp: now });
-          } catch {}
+          if (channelRef.current) {
+            try {
+              channelRef.current.postMessage({ type: "sync-completed", userId: targetId, timestamp: now });
+            } catch {}
+          }
+        } else if (typeof window !== "undefined" && window.navigator.onLine) {
+          const attempt = retryAttemptRef.current;
+          if (attempt < 4) {
+            retryAttemptRef.current += 1;
+            const delay = 2000 * (2 ** attempt);
+            syncTimerRef.current = window.setTimeout(() => {
+              triggerSyncRef.current?.(targetId, opts);
+            }, delay);
+          }
         }
-      } else if (typeof window !== "undefined" && window.navigator.onLine) {
-        const attempt = retryAttemptRef.current;
-        if (attempt < 4) {
-          retryAttemptRef.current += 1;
-          const delay = 2000 * (2 ** attempt);
-          syncTimerRef.current = window.setTimeout(() => {
-            triggerSyncRef.current?.(targetId, opts);
-          }, delay);
-        }
+      } catch (err) {
+        console.error("[AuthContext] Cloud sync failed:", err);
       }
-    } catch (err) {
-      console.error("[AuthContext] Cloud sync failed:", err);
+    };
+
+    try {
+      if (typeof window !== "undefined" && window.navigator?.locks?.request) {
+        await window.navigator.locks.request("gateqa_cloud_sync_lock", { ifAvailable: true }, async (lock) => {
+          if (!lock) {
+            // Web Lock held by a peer tab; skip to eliminate concurrent duplicate bursts
+            return;
+          }
+          await performSync();
+        });
+      } else {
+        await performSync();
+      }
+    } catch {
+      await performSync();
     } finally {
       setIsSyncing(false);
       syncInFlightRef.current = null;
@@ -193,14 +212,23 @@ export function AuthProvider({ children }) {
     };
 
     const handleVisibilityChange = () => {
+      // Phase 1 (Task 1.1): Only sync on tab blur/hide (page exiting view), never on reveal/focus
+      if (document.visibilityState !== "hidden") return;
+
       const activeId = userRef.current?.id;
       if (!activeId) return;
       const meta = getSyncMeta();
       const isDirty = isProgressDirty(meta) || isTrackerDirty(meta);
-      if (isDirty) {
-        // Tab hidden: best-effort sync attempt; Tab visible: resume pending sync
-        triggerSync(activeId, { ignoreCooldown: true });
+      if (!isDirty) return;
+
+      const lastSync = lastSuccessfulSyncRef.current;
+      const elapsed = Date.now() - lastSync.timestamp;
+      // Enforce at least 60s minimum interval on visibility change to eliminate tab-switching bursts
+      if (lastSync.userId === activeId && elapsed < MIN_VISIBILITY_SYNC_INTERVAL_MS) {
+        return;
       }
+
+      triggerSync(activeId, { ignoreCooldown: true });
     };
 
     window.addEventListener("gateqa:sync-request", scheduleSync);

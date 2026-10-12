@@ -875,6 +875,7 @@ export async function syncUserData(userId, options = {}) {
 
   const {
     force = false,
+    forcePush = false,
     shouldSampleSuccess = defaultSyncLogSampler,
   } = options;
 
@@ -952,37 +953,15 @@ export async function syncUserData(userId, options = {}) {
       merged = unionMergeData(localData, cloudData);
 
       // 5. Save the merged data back to Supabase
-      // Tier 1: Full payload matching live supabase/db-schema contract (including solved & bookmark removals)
-      const upsertPayload = {
-        user_id: userId,
-        bookmarks: merged.bookmarks,
-        bookmark_removals: merged.bookmark_removals,
-        notes: merged.notes,
-        solved_questions: merged.solved_questions,
-        solved_removals: merged.solved_removals,
-        solved_timestamps: merged.solved_timestamps,
-        aptitude_solved: merged.aptitude_solved,
-        aptitude_solved_removals: merged.aptitude_solved_removals,
-        aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
-        aptitude_bookmarks: merged.aptitude_bookmarks,
-        aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
-        da_solved: merged.da_solved,
-        da_solved_removals: merged.da_solved_removals,
-        da_solved_timestamps: merged.da_solved_timestamps,
-        da_bookmarks: merged.da_bookmarks,
-        da_bookmark_removals: merged.da_bookmark_removals,
-        mock_history: merged.mock_history,
-        progress_records: merged.progress_records,
-        data_version: 1,
-        last_synced_at: new Date().toISOString(),
-      };
+      // Phase 1 (Task 1.2): Read-Only Pull Optimization
+      // If cloudRow exists and local progress is clean, skip the upsert (POST).
+      // The cloud already has all our data; local storage only needed to pull new items from other devices!
+      const isLocalProgressDirty = isProgressDirty(meta);
+      const shouldUpsertProgress = !cloudRow || isLocalProgressDirty || Boolean(forcePush);
 
-      let { error: upsertErr } = await supabase.from("user_progress").upsert(upsertPayload);
-
-      // Resilient fallback: Tier 2 (if DA/removals columns are missing on older schema, preserve aptitude columns and embed in progress_records)
-      if (upsertErr) {
-        console.warn("[CloudSync] Initial upsert error, attempting Tier 2 fallback (preserving Aptitude columns):", upsertErr);
-        const fallbackPayload = {
+      if (shouldUpsertProgress) {
+        // Tier 1: Full payload matching live supabase/db-schema contract (including solved & bookmark removals)
+        const upsertPayload = {
           user_id: userId,
           bookmarks: merged.bookmarks,
           bookmark_removals: merged.bookmark_removals,
@@ -995,39 +974,38 @@ export async function syncUserData(userId, options = {}) {
           aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
           aptitude_bookmarks: merged.aptitude_bookmarks,
           aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
+          da_solved: merged.da_solved,
+          da_solved_removals: merged.da_solved_removals,
+          da_solved_timestamps: merged.da_solved_timestamps,
+          da_bookmarks: merged.da_bookmarks,
+          da_bookmark_removals: merged.da_bookmark_removals,
           mock_history: merged.mock_history,
-          progress_records: {
-            ...merged.progress_records,
-            da_solved: merged.da_solved,
-            da_solved_removals: merged.da_solved_removals,
-            da_solved_timestamps: merged.da_solved_timestamps,
-            da_bookmarks: merged.da_bookmarks,
-            da_bookmark_removals: merged.da_bookmark_removals,
-          },
+          progress_records: merged.progress_records,
           data_version: 1,
           last_synced_at: new Date().toISOString(),
         };
-        const fallbackResult = await supabase.from("user_progress").upsert(fallbackPayload);
-        upsertErr = fallbackResult.error;
 
-        // Resilient fallback: Tier 3 (if even aptitude columns or new removals are missing on a minimal legacy schema, embed all in progress_records)
+        let { error: upsertErr } = await supabase.from("user_progress").upsert(upsertPayload);
+
+        // Resilient fallback: Tier 2 (if DA/removals columns are missing on older schema, preserve aptitude columns and embed in progress_records)
         if (upsertErr) {
-          console.warn("[CloudSync] Tier 2 upsert error, attempting Tier 3 core baseline fallback:", upsertErr);
-          const coreBaselinePayload = {
+          console.warn("[CloudSync] Initial upsert error, attempting Tier 2 fallback (preserving Aptitude columns):", upsertErr);
+          const fallbackPayload = {
             user_id: userId,
             bookmarks: merged.bookmarks,
+            bookmark_removals: merged.bookmark_removals,
             notes: merged.notes,
             solved_questions: merged.solved_questions,
+            solved_removals: merged.solved_removals,
+            solved_timestamps: merged.solved_timestamps,
+            aptitude_solved: merged.aptitude_solved,
+            aptitude_solved_removals: merged.aptitude_solved_removals,
+            aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
+            aptitude_bookmarks: merged.aptitude_bookmarks,
+            aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
             mock_history: merged.mock_history,
             progress_records: {
               ...merged.progress_records,
-              solved_removals: merged.solved_removals,
-              solved_timestamps: merged.solved_timestamps,
-              aptitude_solved: merged.aptitude_solved,
-              aptitude_solved_removals: merged.aptitude_solved_removals,
-              aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
-              aptitude_bookmarks: merged.aptitude_bookmarks,
-              aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
               da_solved: merged.da_solved,
               da_solved_removals: merged.da_solved_removals,
               da_solved_timestamps: merged.da_solved_timestamps,
@@ -1037,57 +1015,92 @@ export async function syncUserData(userId, options = {}) {
             data_version: 1,
             last_synced_at: new Date().toISOString(),
           };
-          const coreResult = await supabase.from("user_progress").upsert(coreBaselinePayload);
-          upsertErr = coreResult.error;
+          const fallbackResult = await supabase.from("user_progress").upsert(fallbackPayload);
+          upsertErr = fallbackResult.error;
+
+          // Resilient fallback: Tier 3 (if even aptitude columns or new removals are missing on a minimal legacy schema, embed all in progress_records)
+          if (upsertErr) {
+            console.warn("[CloudSync] Tier 2 upsert error, attempting Tier 3 core baseline fallback:", upsertErr);
+            const coreBaselinePayload = {
+              user_id: userId,
+              bookmarks: merged.bookmarks,
+              notes: merged.notes,
+              solved_questions: merged.solved_questions,
+              mock_history: merged.mock_history,
+              progress_records: {
+                ...merged.progress_records,
+                solved_removals: merged.solved_removals,
+                solved_timestamps: merged.solved_timestamps,
+                aptitude_solved: merged.aptitude_solved,
+                aptitude_solved_removals: merged.aptitude_solved_removals,
+                aptitude_solved_timestamps: merged.aptitude_solved_timestamps,
+                aptitude_bookmarks: merged.aptitude_bookmarks,
+                aptitude_bookmark_removals: merged.aptitude_bookmark_removals,
+                da_solved: merged.da_solved,
+                da_solved_removals: merged.da_solved_removals,
+                da_solved_timestamps: merged.da_solved_timestamps,
+                da_bookmarks: merged.da_bookmarks,
+                da_bookmark_removals: merged.da_bookmark_removals,
+              },
+              data_version: 1,
+              last_synced_at: new Date().toISOString(),
+            };
+            const coreResult = await supabase.from("user_progress").upsert(coreBaselinePayload);
+            upsertErr = coreResult.error;
+          }
         }
-      }
 
-      if (upsertErr) {
-        console.error("[CloudSync] Upsert error:", upsertErr);
-        try {
-          await supabase.from("sync_log").insert({
-            user_id: userId,
-            action: "sync_failed",
-            payload_snapshot: {
-              stage: "upsert",
-              error: upsertErr.message || String(upsertErr),
-              errorCode: upsertErr.code || null,
-            },
-            device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
-          });
-        } catch {}
-        return { success: false, error: upsertErr };
-      }
-
-      // Progress sync succeeded: update lastSuccessfulProgressSync
-      markProgressSyncSuccess();
-
-      // 6. Record audit log in `sync_log` table
-      // First login merge: ALWAYS insert (100%)
-      // Routine incremental: Sampled (~1% or per shouldSampleSuccess)
-      const isFirstLogin = !cloudRow;
-      const shouldLog = isFirstLogin || (typeof shouldSampleSuccess === "function" ? shouldSampleSuccess() : false);
-      if (shouldLog) {
-        try {
-          await supabase.from("sync_log").insert({
-            user_id: userId,
-            action: isFirstLogin ? "first_login_merge" : "incremental_sync",
-            payload_snapshot: {
-              summaryVersion:        1,
-              solvedCount:           (merged.solved_questions || []).length,
-              bookmarkCount:         (merged.bookmarks || []).length,
-              notesCount:            Object.keys(merged.notes || {}).length,
-              mockCount:             (merged.mock_history || []).length,
-              standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
-              aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
-              daProgressCount:       Object.keys(merged.progress_records?.da || {}).length,
-            },
-            device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
-          });
-        } catch (logErr) {
-          console.warn("[CloudSync] Audit log insert warning:", logErr);
+        if (upsertErr) {
+          console.error("[CloudSync] Upsert error:", upsertErr);
+          try {
+            await supabase.from("sync_log").insert({
+              user_id: userId,
+              action: "sync_failed",
+              payload_snapshot: {
+                stage: "upsert",
+                error: upsertErr.message || String(upsertErr),
+                errorCode: upsertErr.code || null,
+              },
+              device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
+            });
+          } catch {}
+          return { success: false, error: upsertErr };
         }
+
+        // Progress sync succeeded: update lastSuccessfulProgressSync
+        markProgressSyncSuccess();
+
+        // 6. Record audit log in `sync_log` table
+        // First login merge: ALWAYS insert (100%)
+        // Routine incremental: Sampled (~1% or per shouldSampleSuccess)
+        const isFirstLogin = !cloudRow;
+        const shouldLog = isFirstLogin || (typeof shouldSampleSuccess === "function" ? shouldSampleSuccess() : false);
+        if (shouldLog) {
+          try {
+            await supabase.from("sync_log").insert({
+              user_id: userId,
+              action: isFirstLogin ? "first_login_merge" : "incremental_sync",
+              payload_snapshot: {
+                summaryVersion:        1,
+                solvedCount:           (merged.solved_questions || []).length,
+                bookmarkCount:         (merged.bookmarks || []).length,
+                notesCount:            Object.keys(merged.notes || {}).length,
+                mockCount:             (merged.mock_history || []).length,
+                standardProgressCount: Object.keys(merged.progress_records?.standard || {}).length,
+                aptitudeProgressCount: Object.keys(merged.progress_records?.aptitude || {}).length,
+                daProgressCount:       Object.keys(merged.progress_records?.da || {}).length,
+              },
+              device_info: typeof navigator !== "undefined" ? navigator.userAgent : "web",
+            });
+          } catch (logErr) {
+            console.warn("[CloudSync] Audit log insert warning:", logErr);
+          }
+        }
+      } else {
+        // Read-only pull succeeded: update lastSuccessfulProgressSync without writing to DB
+        markProgressSyncSuccess();
       }
+
 
       // 7. Update local localStorage with merged data (solved + bookmarks + removals + timestamps)
       localStorage.setItem(
@@ -1173,7 +1186,7 @@ export async function syncUserData(userId, options = {}) {
   let trackerResult = null;
   if (trackerDirty) {
     try {
-      trackerResult = await syncTrackerData(userId);
+      trackerResult = await syncTrackerData(userId, options);
     } catch (trackerSyncErr) {
       console.warn("[CloudSync] Tracker sync non-fatal error:", trackerSyncErr);
     }
@@ -1288,10 +1301,12 @@ export function mergeTrackerPreferences(localPrefs = {}, cloudPrefs = {}) {
  * @param {string} userId - The Supabase user UUID.
  * @returns {Promise<{ success: boolean, data?: any, error?: any }>}
  */
-export async function syncTrackerData(userId) {
+export async function syncTrackerData(userId, options = {}) {
   if (!supabase || !userId) {
     return { success: false, reason: "Supabase or User ID missing" };
   }
+
+  const { forcePush = false } = options;
 
   try {
     let localCse = { theory: {}, revisions: {}, notes: {}, dataVersion: 1, updatedAt: new Date().toISOString() };
@@ -1385,31 +1400,44 @@ export async function syncTrackerData(userId) {
     localStorage.setItem(LOCAL_STORAGE_KEYS.trackerPrefs, JSON.stringify(mergedPrefs));
 
     // Upsert merged summary back to Supabase
-    const trackerUpsertPayload = {
-      user_id: userId,
-      active_track: mergedPrefs.activeTrack,
-      exam_date_cse: mergedPrefs.examDateCse,
-      exam_date_da: mergedPrefs.examDateDa,
-      countdown_display_mode: mergedPrefs.countdownDisplayMode,
-      show_countdown_widget: mergedPrefs.showCountdownWidget,
-      cse_theory: mergedCseTheory,
-      cse_revisions: mergedCseRevisionsSummary,
-      cse_notes: mergedCseNotes,
-      da_theory: mergedDaTheory,
-      da_revisions: mergedDaRevisionsSummary,
-      da_notes: mergedDaNotes,
-      data_version: 1,
-      last_synced_at: new Date().toISOString(),
-    };
+    // Phase 1 (Task 1.2 & 1.3): Read-Only Pull Optimization for Tracker
+    const isLocalTrackerDirty = isTrackerDirty(getSyncMeta());
+    const shouldUpsertTracker = !cloudRow || isLocalTrackerDirty || Boolean(forcePush);
 
-    const { error: upsertErr } = await supabase.from("user_tracker").upsert(trackerUpsertPayload);
-    if (upsertErr) {
-      console.warn("[CloudSync] user_tracker upsert warning:", upsertErr);
+    let upsertErr = null;
+    let trackerUpsertPayload = cloudData;
+
+    if (shouldUpsertTracker) {
+      trackerUpsertPayload = {
+        user_id: userId,
+        active_track: mergedPrefs.activeTrack,
+        exam_date_cse: mergedPrefs.examDateCse,
+        exam_date_da: mergedPrefs.examDateDa,
+        countdown_display_mode: mergedPrefs.countdownDisplayMode,
+        show_countdown_widget: mergedPrefs.showCountdownWidget,
+        cse_theory: mergedCseTheory,
+        cse_revisions: mergedCseRevisionsSummary,
+        cse_notes: mergedCseNotes,
+        da_theory: mergedDaTheory,
+        da_revisions: mergedDaRevisionsSummary,
+        da_notes: mergedDaNotes,
+        data_version: 1,
+        last_synced_at: new Date().toISOString(),
+      };
+
+      const res = await supabase.from("user_tracker").upsert(trackerUpsertPayload);
+      upsertErr = res.error;
+      if (upsertErr) {
+        console.warn("[CloudSync] user_tracker upsert warning:", upsertErr);
+      } else {
+        markTrackerSyncSuccess();
+      }
     } else {
+      // Read-only pull: remote tracker row already ingested into localStorage
       markTrackerSyncSuccess();
     }
 
-    return { success: !upsertErr, data: trackerUpsertPayload };
+    return { success: !upsertErr, data: shouldUpsertTracker ? trackerUpsertPayload : cloudData };
   } catch (trackerErr) {
     console.error("[CloudSync] Unexpected error during tracker sync:", trackerErr);
     return { success: false, error: trackerErr };

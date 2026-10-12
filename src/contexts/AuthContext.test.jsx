@@ -202,7 +202,86 @@ describe("AuthContext", () => {
     expect(localStorage.getItem("gate_qa_solved_questions")).not.toBeNull();
   });
 
-  test("triggers sync on visibilitychange when dirty", async () => {
+  test("triggers sync on visibilitychange only when hidden and cooldown fulfilled", async () => {
+    const originalVisibility = document.visibilityState;
+    const realNow = Date.now;
+    let mockTime = 1_000_000;
+    vi.spyOn(Date, "now").mockImplementation(() => mockTime);
+
+    try {
+      const mockUser = { id: "user-123", email: "student@gateqa.in" };
+      const mockSession = { user: mockUser, access_token: "fake-jwt" };
+      const mockSyncUserData = vi.spyOn(cloudSyncManager, "syncUserData").mockResolvedValue({
+        success: true,
+      });
+      vi.spyOn(cloudSyncManager, "isProgressDirty").mockReturnValue(true);
+
+      const mockGetSession = vi.fn().mockResolvedValue({
+        data: { session: mockSession },
+      });
+      const mockOnAuthStateChange = vi.fn().mockReturnValue({
+        data: { subscription: { unsubscribe: vi.fn() } },
+      });
+
+      vi.spyOn(supabaseService, "supabase", "get").mockReturnValue({
+        auth: {
+          getSession: mockGetSession,
+          onAuthStateChange: mockOnAuthStateChange,
+        },
+      });
+
+      render(
+        <AuthProvider>
+          <TestConsumer />
+        </AuthProvider>
+      );
+
+      await waitFor(() => {
+        expect(mockSyncUserData).toHaveBeenCalledWith("user-123", { force: true });
+      });
+
+      mockSyncUserData.mockClear();
+
+      // Case 1: Tab reveal (visibilityState: "visible") -> should NOT sync
+      Object.defineProperty(document, "visibilityState", {
+        configurable: true,
+        value: "visible",
+      });
+      act(() => {
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+      expect(mockSyncUserData).not.toHaveBeenCalled();
+
+      // Case 2: Tab hide (visibilityState: "hidden") but elapsed < 60s -> should NOT sync
+      Object.defineProperty(document, "visibilityState", {
+        configurable: true,
+        value: "hidden",
+      });
+      mockTime += 30_000; // only 30s elapsed
+      act(() => {
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+      expect(mockSyncUserData).not.toHaveBeenCalled();
+
+      // Case 3: Tab hide (visibilityState: "hidden") and elapsed >= 60s -> SHOULD sync!
+      mockTime += 35_000; // total 65s elapsed
+      act(() => {
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+
+      await waitFor(() => {
+        expect(mockSyncUserData).toHaveBeenCalledWith("user-123", {});
+      });
+    } finally {
+      Object.defineProperty(document, "visibilityState", {
+        configurable: true,
+        value: originalVisibility,
+      });
+      vi.spyOn(Date, "now").mockImplementation(realNow);
+    }
+  });
+
+  test("skips sync if Web Lock is held by another tab", async () => {
     const mockUser = { id: "user-123", email: "student@gateqa.in" };
     const mockSession = { user: mockUser, access_token: "fake-jwt" };
     const mockSyncUserData = vi.spyOn(cloudSyncManager, "syncUserData").mockResolvedValue({
@@ -224,26 +303,34 @@ describe("AuthContext", () => {
       },
     });
 
-    render(
-      <AuthProvider>
-        <TestConsumer />
-      </AuthProvider>
-    );
-
-    await waitFor(() => {
-      expect(mockSyncUserData).toHaveBeenCalledWith("user-123", { force: true });
+    // Mock navigator.locks to simulate contested lock (lock is null)
+    const originalLocks = window.navigator.locks;
+    Object.defineProperty(window.navigator, "locks", {
+      configurable: true,
+      value: {
+        request: vi.fn().mockImplementation((name, options, cb) => cb(null)),
+      },
     });
 
-    mockSyncUserData.mockClear();
+    try {
+      render(
+        <AuthProvider>
+          <TestConsumer />
+        </AuthProvider>
+      );
 
-    // Trigger visibilitychange
-    act(() => {
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
+      await waitFor(() => {
+        expect(window.navigator.locks.request).toHaveBeenCalled();
+      });
 
-    await waitFor(() => {
-      expect(mockSyncUserData).toHaveBeenCalledWith("user-123", {});
-    });
+      // Because lock was null (held by peer tab), syncUserData was skipped!
+      expect(mockSyncUserData).not.toHaveBeenCalled();
+    } finally {
+      Object.defineProperty(window.navigator, "locks", {
+        configurable: true,
+        value: originalLocks,
+      });
+    }
   });
 
   test("respects 2-minute cooldown before firing routine sync request", async () => {
