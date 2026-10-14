@@ -20,6 +20,14 @@ module.exports = defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1365, height: 900 },
+        launchOptions: {
+          args: [
+            "--disable-dev-shm-usage",
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-gpu",
+          ],
+        },
       },
     },
   ],

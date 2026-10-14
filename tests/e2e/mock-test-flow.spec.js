@@ -5,13 +5,17 @@ const appPath = (route = "/") => `${APP_BASE}${route}`;
 
 test.beforeEach(async ({ context }) => {
   await context.addInitScript(() => {
-    window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
-    window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
-    window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
-    window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
-    window.localStorage.setItem("gateqa_branch_onboarding_completed", "true");
-    window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["cse"]));
-    window.localStorage.setItem("gateqa_active_branch", "cse");
+    try {
+      window.localStorage.setItem("gateqa_domain_shift_notice_seen_v2", "1");
+      window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
+      window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
+      window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
+      window.localStorage.setItem("gateqa_branch_onboarding_completed", "true");
+      window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["cse"]));
+      window.localStorage.setItem("gateqa_active_branch", "cse");
+    } catch {
+      // Ignore if called on about:blank or cross-origin before navigation
+    }
   });
 });
 
