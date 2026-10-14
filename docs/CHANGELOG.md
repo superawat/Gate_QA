@@ -1,5 +1,41 @@
 # Changelog
 
+- **GateQA Editorial Typography Integration (DM Serif Display), Home Navigation & Streamlining Overhaul (DEC-181)**:
+  - *Context*: Elevated visual aesthetics and brand identity across GateQA through editorial typography (`DM Serif Display`), improved visual hierarchy on the Home Dashboard, renamed "Practice Activity" to "Practice Map", refactored the homepage marquee into a high-visibility platform updates ribbon, and completely removed intrusive legacy announcement modal popups.
+  - *Changes*:
+    - **Editorial Typography Integration (DM Serif Display)**:
+      - Imported Google Font `DM Serif Display` (`400`, italic/normal) via `<link>` in `index.html` and `@import` in `src/index.css`.
+      - Defined root CSS variable `--font-display: 'DM Serif Display', Georgia, serif;` in `src/index.css` and registered `display: ['var(--font-display)', 'Georgia', 'serif']` under `fontFamily` in `tailwind.config.js`.
+      - Applied editorial serif typography to:
+        - Primary Header brand: `GATE QA` in `src/components/Layout/AppHeader.jsx` (`font-display tracking-tight text-xl sm:text-3xl lg:text-[2.1rem]`) and `GlobalNavigationDrawer.jsx`.
+        - Primary and secondary Action Cards on the Home dashboard (`.home-action-label` in `src/index.css`): `Practice`, `Filter Questions`, `Mock Test`, `Performance Insights`, and `Tracker`.
+        - Daily streak counter heading (`.home-streak-title`).
+        - Practice Map heading (`.home-activity-header h2`).
+    - **Visual Hierarchy & Card Sizing Rebalance**:
+      - Rebalanced the primary hero card (`Practice`) title to `clamp(1.45rem, 2vw, 1.85rem)` in `src/index.css`, establishing harmonious scale alongside the enlarged brand header and secondary feature cards.
+    - **Practice Activity Renamed to "Practice Map"**:
+      - In `src/components/Home/ActivityHeatmap.jsx`, updated the 365-day activity calendar section title from "Practice Activity" to "Practice Map" with editorial serif styling.
+      - Updated test assertions in `src/components/Home/ActivityHeatmap.test.jsx`.
+    - **Complete Removal of Tracker Announcement Popup Modal**:
+      - Completely deleted `src/components/Tracker/TrackerAnnouncementModal.jsx` and its test suite `src/components/Tracker/TrackerAnnouncementModal.test.jsx`.
+      - In `src/components/Layout/AppHeader.jsx`, removed the 1.2s delay timer, `showTrackerAnnouncement` state, and modal DOM mounting, eliminating unprompted overlay interruptions for candidates.
+    - **Platform Updates Marquee Ribbon (`src/components/Home/HomeMarquee.jsx`)**:
+      - Renamed and refactored component from `IsroMarquee` to `HomeMarquee`.
+      - Replaced legacy ISRO exam paper links with an informative platform status ribbon highlighting live engineering disciplines (EC, EE, ME, CE), the Candidate Profile Hub, multi-discipline switching, and zero-friction offline sync.
+      - Replaced "Explore all" with a direct "Profile" quick-access CTA button routing to `/profile`.
+      - Slowed animation duration from 45s to 80s for comfortable reading speed, and adopted an electric blue/indigo color palette.
+    - **Discipline Wall & Navigation Drawer Streamlining**:
+      - In `src/components/Branch/BranchSelectionWall.jsx`, deduplicated the reassurance notice ("Don't worry, you can change it later from your profile") so it displays strictly in the header, and compacted card padding for small mobile viewports.
+      - In `src/components/Filters/FilterSidebar.jsx`, removed redundant Enrolled Disciplines switcher and duplicate search bar.
+      - In `src/components/Layout/GlobalNavigationDrawer.jsx`, added a prominent Candidate Profile action button at top of the slide drawer linking to `/profile`, and removed redundant section toggles (Special Aptitude, GATE DA, ISRO CS) and the Save Reminder card.
+    - **Regression Tests & Suite Updates**:
+      - Updated `src/pages/HomePage.test.jsx` with test coverage for font token classes, "Practice Map" heading, and responsive layouts.
+      - Updated `src/components/Home/ActivityHeatmap.test.jsx` for "Practice Map" text.
+      - Updated `src/components/Layout/AppHeader.test.jsx` removing modal assertions.
+  - *Verification*:
+    - Vitest unit test suite: 105 test files passed, 1,327 tests green (100%).
+    - TypeScript typecheck: clean (`npm run typecheck` exited 0).
+
 - **100% Detailed Solution Coverage Across All Multi-Branch Papers (DEC-180)**:
   - *Context*: Made Detailed Solutions parsed from `practicepaper.in` 100% complete across all 9,325 questions in EC, EE, ME, and CE by eliminating historical paper pagination cutoff, recovering 516 previously skipped PracticePaper solutions with diagrams, and synthesizing rigorous academic derivations for remaining questions with empty practicepaper seeds.
   - *Changes*:

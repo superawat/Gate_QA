@@ -285,7 +285,7 @@ const GlobalNavigationDrawer = ({
             </span>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <p className="text-lg font-bold uppercase tracking-[0.08em] text-slate-900 dark:text-white">GATE QA</p>
+                <p className="font-display text-xl sm:text-2xl font-normal uppercase tracking-[0.05em] text-slate-900 dark:text-white leading-none">GATE QA</p>
                 <button
                   type="button"
                   onClick={() => setIsSupportOpen(true)}

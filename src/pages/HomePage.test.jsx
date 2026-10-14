@@ -418,4 +418,38 @@ describe("HomePage", () => {
     // Verify profile action
     expect(screen.getByRole("button", { name: "Open Profile and Disciplines" })).toBeTruthy();
   });
+
+  test("renders Practice Map section heading and activity heatmap on dashboard", () => {
+    renderHomePage();
+
+    // Verify the renamed Practice Map heading (level 2)
+    const mapHeading = screen.getByRole("heading", { name: "Practice Map", level: 2 });
+    expect(mapHeading).toBeTruthy();
+
+    // Verify practice map scroll container
+    expect(screen.getByLabelText("Practice map heatmap")).toBeTruthy();
+    // Ensure old "Practice Activity" text is no longer rendered
+    expect(screen.queryByText("Practice Activity")).toBeNull();
+  });
+
+  test("renders major dashboard action labels and streak banner", () => {
+    const { container } = renderHomePage();
+
+    const actionLabels = Array.from(container.querySelectorAll(".home-action-label")).map(
+      (el) => el.textContent?.trim()
+    );
+
+    expect(actionLabels).toEqual([
+      "Practice",
+      "Filter Questions",
+      "Mock Test",
+      "Performance Insights",
+      "Tracker",
+    ]);
+
+    // Verify streak banner title element exists
+    const streakTitle = container.querySelector(".home-streak-title");
+    expect(streakTitle).toBeTruthy();
+    expect(streakTitle.textContent).toMatch(/Day Streak/i);
+  });
 });

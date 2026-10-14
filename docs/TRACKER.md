@@ -1,7 +1,7 @@
 # GATE Preparation & Syllabus Tracker — Multi-Branch Architecture
-## Master Architecture & Specification (v4.4 — Main Feature Navigation & Mobile Touch Ergonomics)
+## Master Architecture & Specification (v4.5 — Editorial Typography, Main Action Navigation & Elimination of Modal Overlays)
 
-> **Document Version**: 4.4.0 (Main Feature Navigation, Mobile UI Optimization, Sticky Column Scaling, Official Syllabi for EC/EE/ME/CE/CSE/DA)  
+> **Document Version**: 4.5.0 (Editorial Typography, Main Feature Navigation, Mobile UI Optimization, Zero Modal Popups, Official Syllabi for EC/EE/ME/CE/CSE/DA)  
 > **Execution Status**: 🟢 **100% Completed**  
 > **Route**: `/tracker` (Completely standalone page, accessible via Main Feature Navigation on Home)  
 > **Target Exams**: User-selected examination papers (Max 2: CSE, DA, EC, EE, ME, CE)  
@@ -15,6 +15,13 @@
 ---
 
 ### Changelog
+
+#### v4.5 (Editorial Typography & Elimination of Announcement Modal Popups — DEC-181)
+- **Elimination of Announcement Modal Popups**:
+  - Completely removed `TrackerAnnouncementModal.jsx` and its accompanying test suite.
+  - Eliminated the unprompted 1.2s delay timer and overlay JSX from `AppHeader.jsx`. Candidates discover the Preparation Tracker directly via the prominent Home action card and the Candidate Profile Hub (`/profile`) without jarring modal interruptions.
+- **Editorial Typography Integration**:
+  - The Tracker action card on the Home dashboard is styled with `DM Serif Display` (`--font-display`), harmonizing with the overarching brand design system.
 
 #### v4.4 (Main Feature Navigation Integration & Mobile UI Optimization — DEC-176, DEC-178)
 - **Main Feature Navigation (DEC-176)**:
@@ -561,7 +568,7 @@ export interface UserTrackerRow {
 
 ### Phase 5: Verification, Header Discoverability & Mobile Polish (Completed ✅)
 - [x] Header quick-access button: Placed `FiTarget` bullseye icon in `AppHeader.jsx` directly to the left of the feedback button with vibrant pink styling and pure-CSS GPU breathing halo (`tracker-glow-breathe`).
-- [x] Interactive 1-time announcement popup modal (`TrackerAnnouncementModal.jsx`) highlighting the 4 core pillars with guaranteed 1-time display per user device (`gateqa_tracker_announcement_seen_v1`).
+- [x] ~~Interactive 1-time announcement popup modal (`TrackerAnnouncementModal.jsx`)~~: Completely removed in DEC-181 in favor of clean navigation discovery via the Home action card and Candidate Profile Hub without intrusive modal popups.
 - [x] Mobile touch ergonomics overhaul:
   - Dynamically scaled sticky syllabus column (`min-w-[190px]` on mobile vs `min-w-[320px]` on desktop) leaving ample room for scrollable status columns.
   - Streamlined indentations on Topic and Subtopic rows on mobile.

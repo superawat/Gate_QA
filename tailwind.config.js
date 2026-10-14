@@ -7,6 +7,9 @@ export default {
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['var(--font-display)', "'DM Serif Display'", 'Georgia', 'serif'],
+      },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0', transform: 'translateY(-4px)' },

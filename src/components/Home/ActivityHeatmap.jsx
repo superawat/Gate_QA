@@ -119,7 +119,7 @@ export const ActivityHeatmap = ({
   return (
     <div className="home-activity-heatmap">
       <div className="home-activity-header">
-        <h2>Practice Activity</h2>
+        <h2>Practice Map</h2>
         <label htmlFor="activity-year" className="sr-only">Activity range</label>
         <select
           id="activity-year"
@@ -133,7 +133,7 @@ export const ActivityHeatmap = ({
         </select>
       </div>
 
-      <div ref={scrollRef} className="home-activity-scroll" aria-label="Practice activity heatmap">
+      <div ref={scrollRef} className="home-activity-scroll" aria-label="Practice map heatmap">
         <div className="home-activity-y-axis" aria-hidden="true">
           <span>Mon</span>
           <span>Wed</span>

@@ -16,7 +16,7 @@ describe("ActivityHeatmap", () => {
       />
     );
 
-    expect(screen.getByText("Practice Activity")).toBeTruthy();
+    expect(screen.getByText("Practice Map")).toBeTruthy();
 
     const gridStreakCells = container.querySelectorAll(".home-activity-grid .home-activity-cell--streak");
     // With 0 attempts in timeline, no grid cell should have the active streak class

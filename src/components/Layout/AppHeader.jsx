@@ -20,11 +20,9 @@ import {
   saveWorkspaceCsv,
 } from "../../utils/workspaceFile";
 import { useAuth } from "../../contexts/AuthContext";
-import { TRACKER_ANNOUNCEMENT_SEEN_KEY } from "../../utils/trackerRevisionSummary";
 
 const AuthModal = lazy(() => import("../Auth/AuthModal"));
 const UserProfileMenu = lazy(() => import("../Auth/UserProfileMenu"));
-const TrackerAnnouncementModal = lazy(() => import("../Tracker/TrackerAnnouncementModal"));
 
 import {
   THEME_STORAGE_KEY,
@@ -125,28 +123,12 @@ const AppHeader = ({ onHomeNavigate = null }) => {
   const [domainShiftCountdown, setDomainShiftCountdown] = useState(getDomainShiftCountdown);
   const [drawerStatus, setDrawerStatus] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [showTrackerAnnouncement, setShowTrackerAnnouncement] = useState(false);
 
   const { user, loading: authLoading } = useAuth();
   const workspaceFileInputRef = useRef(null);
   const isMockWindowRoute =
     location.pathname === MOCK_ROUTE || location.pathname.startsWith(`${MOCK_ROUTE}/`);
   const appliedTheme = isMockWindowRoute ? "light" : theme;
-
-  useEffect(() => {
-    try {
-      const seen = localStorage.getItem(TRACKER_ANNOUNCEMENT_SEEN_KEY);
-      if (seen || location.pathname === TRACKER_ROUTE || isMockWindowRoute) {
-        return;
-      }
-      // Set seen immediately so the popup is strictly one-time per user
-      localStorage.setItem(TRACKER_ANNOUNCEMENT_SEEN_KEY, "true");
-      const timer = setTimeout(() => {
-        setShowTrackerAnnouncement(true);
-      }, 1200);
-      return () => clearTimeout(timer);
-    } catch {}
-  }, [location.pathname, isMockWindowRoute]);
 
   useEffect(() => {
     applyDocumentTheme(appliedTheme);
@@ -541,7 +523,7 @@ const AppHeader = ({ onHomeNavigate = null }) => {
               />
             </span>
             <div className="min-w-0">
-              <p className="text-base font-bold uppercase tracking-[0.08em] text-slate-900 dark:text-white sm:text-2xl">GATE QA</p>
+              <p className="font-display text-xl sm:text-3xl lg:text-[2.1rem] font-normal uppercase tracking-[0.05em] text-slate-900 dark:text-white leading-none">GATE QA</p>
             </div>
           </Link>
         </div>
@@ -678,16 +660,6 @@ const AppHeader = ({ onHomeNavigate = null }) => {
       isOpen={isDomainShiftOpen}
       onClose={() => setIsDomainShiftOpen(false)}
     />
-    {showTrackerAnnouncement && (
-      <Suspense fallback={null}>
-        <TrackerAnnouncementModal
-          isOpen={showTrackerAnnouncement}
-          onClose={() => {
-            setShowTrackerAnnouncement(false);
-          }}
-        />
-      </Suspense>
-    )}
     {showAuthModal && (
       <Suspense fallback={null}>
         <AuthModal onClose={() => setShowAuthModal(false)} />

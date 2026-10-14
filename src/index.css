@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-display {
+  font-family: var(--font-display);
+}
 
 /* Structured question options content */
 .da-question-options,
@@ -85,6 +91,7 @@
 }
 
 :root {
+  --font-display: 'DM Serif Display', Georgia, serif;
   color-scheme: light;
   --color-bg: #f9fafb;
   --color-surface: #ffffff;
@@ -354,9 +361,10 @@
 }
 
 .home-action-label {
+  font-family: var(--font-display);
   font-size: 1rem;
   line-height: 1.25;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
@@ -1541,15 +1549,18 @@ input[type="search"]::-webkit-search-results-decoration {
 .home-action-label {
   display: block;
   color: inherit;
-  font-size: clamp(1.05rem, 1vw, 1.2rem);
-  font-weight: 800;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.2vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.15;
   letter-spacing: 0;
 }
 
 .home-action-card--primary .home-action-label {
-  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
-  letter-spacing: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: #0f172a;
 }
 
@@ -1759,8 +1770,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .home-streak-title {
   color: #111827;
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
-  font-weight: 850;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -1895,9 +1907,11 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .home-activity-header h2 {
   color: #111827;
-  font-size: 1rem;
-  font-weight: 850;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
   line-height: 1.1;
+  letter-spacing: 0;
 }
 
 .home-activity-header select {
@@ -2326,7 +2340,7 @@ header:has(.app-header-logo-frame) {
   }
 
   .home-action-card--primary .home-action-label {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
   }
 
   .home-streak-banner-card,
@@ -3022,10 +3036,11 @@ canvas {
   }
 
   .home-action-card--primary .home-action-label {
-    font-size: 1.55rem;
-    font-weight: 850;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 400;
     line-height: 1.05;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     color: #0f172a;
     text-align: left;
   }
@@ -3538,8 +3553,9 @@ canvas {
   }
 
   .home-streak-title {
+    font-family: var(--font-display);
     font-size: 1.15rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.2;
   }
 
@@ -3633,8 +3649,9 @@ canvas {
   }
 
   .home-activity-header h2 {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
     margin: 0;
   }
 
