@@ -175,6 +175,24 @@ export function clearInitCache(): void {
   }
 }
 
+export function clearBranch(this: IQuestionService): void {
+  this.questions = [];
+  this.loaded = false;
+  this.loadMode = "none";
+  this.count = new Map();
+  this.tags = [];
+  this.sourceUrl = "";
+  this.questionsByUid = new Map();
+  this.detailCache = new Map();
+  this.detailShardCache = new Map();
+  this.detailShardPromises = new Map();
+  this.pendingLoads = {
+    index: null,
+    full: null,
+  };
+  clearInitCache();
+}
+
 export async function _loadIndexedDataset(this: IQuestionService, baseUrl: string): Promise<{ sourceUrl: string; questions: QuestionRow[] }> {
   const dataUrl = `${baseUrl}question-search-index.json`;
   const response = await fetch(dataUrl, { cache: "no-cache" });
@@ -294,6 +312,14 @@ export async function init(this: IQuestionService, options: { fullBank?: boolean
     const dataset = fullBank
       ? await this._loadFullBankDataset(baseUrl)
       : await this._loadIndexedDataset(baseUrl);
+
+    const { readBranchPreferences } = await import("../../utils/branchPreference");
+    const prefs = readBranchPreferences();
+    if (prefs?.hasCompletedOnboarding && prefs.selectedBranches.length > 0 && !prefs.selectedBranches.includes("cse")) {
+      // CSE was deselected while network request was in-flight; discard without caching
+      this.clearBranch();
+      return;
+    }
 
     this.sourceUrl = dataset.sourceUrl;
     this.questions = dataset.questions;

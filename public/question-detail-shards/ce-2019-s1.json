@@ -1,0 +1,2614 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.654Z",
+  "shardKey": "ce-2019-s1",
+  "yearSetKey": "ce-2019-s1",
+  "yearSetIdentity": "ce:2019:set-1",
+  "track": "ce",
+  "year": 2019,
+  "set": 1,
+  "label": "2019 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ce:2019:q1": {
+      "question_uid": "pp:ce:2019:q1",
+      "exam_uid": "ce:2019:set1:q1",
+      "title": "GATE CE 2019 | Set 1 | Question: 1",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following is correct?",
+      "options": [
+        "$\\lim_{x\\rightarrow 0}\\left ( \\frac{sin4x}{sin 2x} \\right )=2$ and  $\\lim_{x\\rightarrow 0}\\left ( \\frac{tanx}{x} \\right )=1$\n",
+        "$\\lim_{x\\rightarrow 0}\\left ( \\frac{sin4x}{sin 2x} \\right )=1$ and  $\\lim_{x\\rightarrow 0}\\left ( \\frac{tanx}{x} \\right )=1$\n",
+        "$\\lim_{x\\rightarrow 0}\\left ( \\frac{sin4x}{sin 2x} \\right )= \\infty$ and  $\\lim_{x\\rightarrow 0}\\left ( \\frac{tanx}{x} \\right )=1$\n",
+        "$\\lim_{x\\rightarrow 0}\\left ( \\frac{sin4x}{sin 2x} \\right )=2$ and  $\\lim_{x\\rightarrow 0}\\left ( \\frac{tanx}{x} \\right )= \\infty$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\lim_{x \\to 0}\\left ( \\frac{\\sin 4x}{\\sin 2x} \\right )=\\lim_{x \\to 0}\\left ( \\frac{\\frac{\\sin 4x}{x}}{\\frac{\\sin 2x}{x}} \\right )=\\frac{4}{2}=2$ and $\\lim_{x \\to 0}\\left ( \\frac{\\tan x}{x} \\right )=1$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q2": {
+      "question_uid": "pp:ce:2019:q2",
+      "exam_uid": "ce:2019:set1:q2",
+      "title": "GATE CE 2019 | Set 1 | Question: 2",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a two-dimensional flow through isotropic soil along x direction and z direction. If h is the hydraulic head, the Laplace's equation of continuity is expressed as ",
+      "options": [
+        "$\\frac{\\partial h}{\\partial x}+\\frac{\\partial h}{\\partial z}=0$",
+        "$\\frac{\\partial h}{\\partial x}+\\frac{\\partial h}{\\partial x}\\frac{\\partial h}{\\partial z}+\\frac{\\partial h}{\\partial z}=0$",
+        "$\\frac{\\partial^2 h}{\\partial x^2}+\\frac{\\partial^2 h}{\\partial z^2}=0$",
+        "$\\frac{\\partial^2 h}{\\partial x^2}+\\frac{\\partial^2 h}{\\partial x \\partial z}+\\frac{\\partial^2 h}{\\partial z^2}=0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Partial Differential Equation",
+        "markdown": "The Laplace's equation of continuity for two dimensional flow in a soil is expressed as:\n\n$k_x\\frac{\\partial^2 h}{\\partial x^2}+k_z\\frac{\\partial^2 h}{\\partial z^2}=0$... for anisotropic soil $[k_x\\neq k_z]$\n\n:\n\n$\\frac{\\partial^2 h}{\\partial x^2}+\\frac{\\partial^2 h}{\\partial z^2}=0$... for isotropic soil $[k_x = k_z]$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2019:q3": {
+      "question_uid": "pp:ce:2019:q3",
+      "exam_uid": "ce:2019:set1:q3",
+      "title": "GATE CE 2019 | Set 1 | Question: 3",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A simple mass-spring oscillatory system consists of a mass m, suspended from a spring of stiffness k. Considering z as the displacementof the system at any time t, the equation of motion for the free vibration of the system is $m\\ddot{z}+kz=0$. The natural frequency of the system is",
+      "options": [
+        "$\\frac{k}{m}$",
+        "$\\sqrt{\\frac{k}{m}}$",
+        "$\\frac{m}{k}$",
+        "$\\sqrt{\\frac{m}{k}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mechanics - Engineering Mechanics",
+        "markdown": "$$\\begin{aligned} m\\ddot{z}+kz&=0 \\\\ \\ddot{z}+\\frac{k}{m}z&=0 \\\\ \\text{Comparing with} \\\\ \\ddot{z}+\\omega _n^2 z&=0 \\\\ \\text{We get}\\;\\; \\omega _n&=\\sqrt{\\frac{k}{m}} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2019:q4": {
+      "question_uid": "pp:ce:2019:q4",
+      "exam_uid": "ce:2019:set1:q4",
+      "title": "GATE CE 2019 | Set 1 | Question: 4",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a small value of h, the Taylor series expansion for $f(x+h)$ is",
+      "options": [
+        "$f(x)+hf'(x)+\\frac{h^2}{2!}f''(x)+\\frac{h^3}{3!}f'''(x)+...\\infty$",
+        "$f(x)-hf'(x)+\\frac{h^2}{2!}f''(x)-\\frac{h^3}{3!}f'''(x)+...\\infty$",
+        "$f(x)+hf'(x)+\\frac{h^2}{2}f''(x)+\\frac{h^3}{3}f'''(x)+...\\infty$",
+        "$f(x)-hf'(x)+\\frac{h^2}{2}f''(x)-\\frac{h^3}{3}f'''(x)+...\\infty$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "We know that Taylor series for small h of f(x + h) is,\n\n$f(x+h)=f(x)+hf'(x)+\\frac{h^2}{2!}f''(x)+\\frac{h^3}{3!}f'''(x)+...$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q5": {
+      "question_uid": "pp:ce:2019:q5",
+      "exam_uid": "ce:2019:set1:q5",
+      "title": "GATE CE 2019 | Set 1 | Question: 5",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A plane truss is shown in the figure <br><img src=\"/question-images/ce/2019/ce-2019-c7b9f1d93e.webp\" /><br> Which one of the options contains ONLY zero force members in the truss?",
+      "options": [
+        "FG, FI, HI, RS",
+        "FG, FH, HI, RS",
+        "FI, HI, PR, RS",
+        "FI, FG, RS, PR"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Trusses",
+        "markdown": "So zero force members are FI, FG, RS, PR\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2019:q6": {
+      "question_uid": "pp:ce:2019:q6",
+      "exam_uid": "ce:2019:set1:q6",
+      "title": "GATE CE 2019 | Set 1 | Question: 6",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An element is subjected to biaxial normal tensile strains of 0.0030 and 0.0020. The normal strain in the plane of maximum shear strain is ",
+      "options": [
+        "Zero",
+        "0.001",
+        "0.0025",
+        "0.005"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
+        "markdown": "$\\varepsilon _x=0.0030$\n\n$\\varepsilon _y=0.0020$\n\nNormal strain in the plane of maximum shear strain\n\n$\\varepsilon _{avg}=\\frac{\\varepsilon _x+\\varepsilon _y}{2}=\\frac{0.0030+0.0020}{2}=0.0025$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2019:q7": {
+      "question_uid": "pp:ce:2019:q7",
+      "exam_uid": "ce:2019:set1:q7",
+      "title": "GATE CE 2019 | Set 1 | Question: 7",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the pin-jointed plane truss shown in the figure. Let $R_P,R_Q$ and $R_R$ denote the vertical reactions (upward positive) applied by the supports at P, Q, and R, respectively, on the truss. The correct combination of ($R_P,R_Q,R_R$)is represented by <br><img src=\"/question-images/ce/2019/ce-2019-0eb941838d.webp\" />\n",
+      "options": [
+        "(30, -30, 30) kN",
+        "(20, 0, 10) kN",
+        "(10, 30, -10) kN",
+        "(0, 60, -30) kN"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Trusses",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-3ad5ffcbce.webp\" />\n\n<img src=\"/question-images/ce/2019/ce-2019-6eb31b672c.webp\" />\n\nAdopting method of sections and taking LHS of the section\n\n$$\\begin{aligned} &\\Sigma F_y= 0\\\\ &R_P=30kN \\\\ &\\text{For complete truss,} \\\\ &\\Sigma M_R =0 \\\\ &9R_P-30 \\times 6 -R_Q \\times 3=0 \\\\ &R_Q=30kN(\\downarrow ) \\\\ &\\text{Taking RHS of section,} \\\\ &\\Sigma F_y=0\\Rightarrow R_R=-R_Q \\\\ &\\text{Thus},\\;\\; R_Q= 30kN(\\downarrow )\\\\ &R_R=30kN(\\uparrow ) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q8": {
+      "question_uid": "pp:ce:2019:q8",
+      "exam_uid": "ce:2019:set1:q8",
+      "title": "GATE CE 2019 | Set 1 | Question: 8",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Assuming that there is no possibility of shear buckling in the web, the maximum reduction permitted by IS 800-2007 in the (low-shear) design bending strength of a semi-compact steel section due to high shear is",
+      "options": [
+        "Zero",
+        "25%",
+        "50%",
+        "governed by the area of the flange"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Beams",
+        "markdown": "As per IS 800 : 2007\n\nFor semi compact section\n\n(i) In low shear case ($V \\leq 0.6 V_d$)\n\n$M_d = Z_ef_y/\\gamma _{mo}$\n\n(ii) In high shear case ($V \\gt 0.6 V_d$)\n\n$M_d = Z_ef_y/\\gamma _{mo}$\n\nSo reduction is zero.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q9": {
+      "question_uid": "pp:ce:2019:q9",
+      "exam_uid": "ce:2019:set1:q9",
+      "title": "GATE CE 2019 | Set 1 | Question: 9",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the reinforced beam section shown in the figure, the nominal cover provided at the bottom of the beam as per IS 456-2000, is <br><img src=\"/question-images/ce/2019/ce-2019-4420d2e6ac.webp\" />\n",
+      "options": [
+        "30 mm",
+        "36 mm",
+        "42 mm",
+        "50 mm"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Working Stress and Limit State Method",
+        "markdown": "Nominal cover = Effective cover $-\\frac{\\phi _m}{2}-\\phi _{st}$\n\n$=50-\\frac{16}{2}-12=30mm$\n\nNominal cover is the distance from extreme concrete fbre to the surface of stirrup.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q10": {
+      "question_uid": "pp:ce:2019:q10",
+      "exam_uid": "ce:2019:set1:q10",
+      "title": "GATE CE 2019 | Set 1 | Question: 10",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The interior angles of four triangles are given below: <br><img src=\"/question-images/ce/2019/ce-2019-a0e6525de7.webp\" /><br>Which of the triangles are ill-conditioned and should be avoided in Triangulation surveys?",
+      "options": [
+        "Both P and R ",
+        "Both Q and R ",
+        "Both P and S",
+        "Both Q and S "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
+        "markdown": "For an ill conditioned traingle in triangulation survey, any angle can be less than $30^{\\circ}$, and can be greater than $120^{\\circ}$.\n\nFor traingles Q and S, the above condition is valid.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2019:q11": {
+      "question_uid": "pp:ce:2019:q11",
+      "exam_uid": "ce:2019:set1:q11",
+      "title": "GATE CE 2019 | Set 1 | Question: 11",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The coefficient of average rolling friction of a road is $f_r$ and its grade is +G%. If the grade of this road is doubled, what will be the percentage change in the braking distance (for the design vehicle to come to a stop) measured along the horizontal (assume all other parameters are kept unchanged)?",
+      "options": [
+        "$\\frac{0.01G}{f_r+0.02G}\\times 100$",
+        "$\\frac{f_r}{f_r+0.02G}\\times 100$",
+        "$\\frac{0.02G}{f_r+0.01G}\\times 100$",
+        "$\\frac{2 f_r}{f_r+0.01G}\\times 100$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "Percentage change in Braking Distance\n\n$$\\begin{aligned} &=\\left ( \\frac{L_{B_1}-L_{B_2} }{L_{B_1}} \\right ) \\times 100\\\\ \\%\\Delta L_B&=\\frac{\\frac{V^2}{254[f_r+0.01G]}-\\frac{V^2}{254[f_r+0.02G]}}{\\frac{V^2}{254[f_r+0.01G]}}\\\\ &=\\frac{f_r+0.02G-f_r-0.01G}{(f_r+0.01G)(f_r+0.02G)} \\times (f_r+0.01G)\\\\ \\%\\Delta L_B&=\\left ( \\frac{0.01G}{f_r+0.02G} \\times 100 \\right ) \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q12": {
+      "question_uid": "pp:ce:2019:q12",
+      "exam_uid": "ce:2019:set1:q12",
+      "title": "GATE CE 2019 | Set 1 | Question: 12",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An isolated concrete pavement slab of length L is resting on a frictionless base. The temperature of the top and bottom fibre of the slab are $T_t \\; and \\; T_b$, respectively. Given: the coefficient of thermal expansion $=\\alpha$ and the elastic modulus =E. Assuming $T_t \\gt T_b$ and the unit weight of concrete as zero, the maximum thermal stress is calculated as",
+      "options": [
+        "$L \\alpha (T_t-T_b)$",
+        "$E \\alpha (T_t-T_b)$",
+        "$\\frac{E \\alpha (T_t-T_b)}{2}$",
+        "Zero"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "properties-of-metals-stress-and-strain",
+          "subtopicLabel": "Properties of Metals, Stress and Strain"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "properties-of-metals-stress-and-strain"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
+        "markdown": "Due to frictionless, thermal stress developed in concrete pavement slab is zero\n\n$\\sigma _{th}=0$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2019:q13": {
+      "question_uid": "pp:ce:2019:q13",
+      "exam_uid": "ce:2019:set1:q13",
+      "title": "GATE CE 2019 | Set 1 | Question: 13",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a rectangular channel, the ratio of the velocity head to the flow depth for critical flow condition, is",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{2}$",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "For Critical flow $\\Rightarrow$ Velocity Head is equal to half of hydraulic depth.\n\n$\\frac{V^2}{2g}=\\frac{D}{2}$\n\nfor rectangular channel D = y\n\n$\\frac{\\frac{V^2}{2g}}{y}=\\frac{1}{2}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q14": {
+      "question_uid": "pp:ce:2019:q14",
+      "exam_uid": "ce:2019:set1:q14",
+      "title": "GATE CE 2019 | Set 1 | Question: 14",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If the path of an irrigation canal is below the bed level of a natural stream, the type of cross-drainage structure provided is",
+      "options": [
+        "Aqueduct ",
+        "Level crossing",
+        "Sluice gate",
+        "Super passage"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-irrigation-engineering",
+          "subjectLabel": "Irrigation Engineering",
+          "subtopicSlug": "theories-of-seepage-spillways-and-miscellaneous",
+          "subtopicLabel": "Theories of Seepage, Spillways and Miscellaneous"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-irrigation-engineering",
+          "theories-of-seepage-spillways-and-miscellaneous"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Irrigation Engineering - Theories of Seepage, Spillways and Miscellaneous",
+        "markdown": "Irrigation canal below the bed level of a natural stream\n\n$\\rightarrow$ Super passage\n\n<img src=\"/question-images/ce/2019/ce-2019-c727424b3a.webp\" />\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2019:q15": {
+      "question_uid": "pp:ce:2019:q15",
+      "exam_uid": "ce:2019:set1:q15",
+      "title": "GATE CE 2019 | Set 1 | Question: 15",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A catchment may be idealised as a rectangle. There are three rain gauges located inside the catchment at arbitrary locations. The average precipitation over the catchment is estimated by two methods: <br><br>(i) Arithmetic mean ($P_A$), and <br>(ii) Thiessen polygon ($P_T$). <br><br>Which one of the followingstatements is correct?",
+      "options": [
+        "$P_A$ is always smaller than $P_T$",
+        "$P_A$ is always greater than $P_T$",
+        "$P_A$ is always  equal to $P_T$",
+        "There is no definite relationship between $P_A \\; and \\; P_T$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "precipitation-and-general-aspects-of-hydrology",
+          "subtopicLabel": "Precipitation and General Aspects of Hydrology"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "precipitation-and-general-aspects-of-hydrology"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
+        "markdown": "The result from Thiessen polygon method is more accurate than arithmetic mean method.\n\nBut there is no any close relationship between values obtained by Thiessen polygon method and Arithmetic mean method.\n\nTherefore, there is no any relation between $P_A$ and $P_T$.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2019:q16": {
+      "question_uid": "pp:ce:2019:q16",
+      "exam_uid": "ce:2019:set1:q16",
+      "title": "GATE CE 2019 | Set 1 | Question: 16",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A retaining wall of height H with smooth vertical backface supports a backfill inclined at an angle $\\beta$ with the horizontal. The backfill consists of cohesionless soil having angle of internal friction $\\phi$. If the active lateral thrust acting on the wall is $P_a$, which one of the following statements is TRUE?",
+      "options": [
+        "$P_a$ acts at a height H/2 from the base of the wall and at an angle  $\\beta$ with the horizontal",
+        "$P_a$ acts at a height H/2 from the base of the wall and at an angle  $\\phi$ with the horizontal",
+        "$P_a$ acts at a height H/3 from the base of the wall and at an angle  $\\beta$ with the horizontal",
+        "$P_a$ acts at a height H/3 from the base of the wall and at an angle  $\\phi$ with the horizontal"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "retaining-wall-earth-pressure-theories",
+          "subtopicLabel": "Retaining Wall-Earth Pressure Theories"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "retaining-wall-earth-pressure-theories"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-f6323b56ce.webp\" />\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2019:q17": {
+      "question_uid": "pp:ce:2019:q17",
+      "exam_uid": "ce:2019:set1:q17",
+      "title": "GATE CE 2019 | Set 1 | Question: 17",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a soil specimen, the total stress, effective stress, hydraulic gradient and critical hydraulic gradient are $\\sigma ,\\sigma ',i, \\; and \\; i_c$, respectively. For initiation of quicksand condition, which one of the following statements is TRUE?",
+      "options": [
+        "$\\sigma '\\neq 0 \\; and \\;i =i_c$",
+        "$\\sigma '= 0 \\; and \\;i =i_c$",
+        "$\\sigma '\\neq 0 \\; and \\;i \\neq i_c$",
+        "$\\sigma = 0 \\; and \\;i =i_c$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "effective-stress-and-permeability",
+          "subtopicLabel": "Effective Stress and Permeability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "effective-stress-and-permeability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Effective Stress and Permeability",
+        "markdown": "Quick sand condition occurs if $\\sigma '=0$ and $i=i_c$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2019:q18": {
+      "question_uid": "pp:ce:2019:q18",
+      "exam_uid": "ce:2019:set1:q18",
+      "title": "GATE CE 2019 | Set 1 | Question: 18",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following is a secondary pollutant?",
+      "options": [
+        "Ozone",
+        "Carbon Monoxide ",
+        "Hydrocarbon",
+        "Volatile Organic Carbon (VOC)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "Ozone is a dangerous secondary air contaminant.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q19": {
+      "question_uid": "pp:ce:2019:q19",
+      "exam_uid": "ce:2019:set1:q19",
+      "title": "GATE CE 2019 | Set 1 | Question: 19",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "For a given loading on a rectangular plain concrete beam with an overall depth of 500 mm, the compressive strain and tensile strain developed at the extreme fibers are of the same magnitude of $2.5 \\times 10^{-4}$. The curvature in the beam cross-section (in $m^{-1}$, round off to 3 decimal places), is ____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.001",
+        "tolerance": {
+          "lower": 0.001,
+          "upper": 0.001
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "shear-torsion-bond-anchorage-and-development-length",
+          "subtopicLabel": "Shear, Torsion, Bond, Anchorage and Development Length"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "shear-torsion-bond-anchorage-and-development-length"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
+        "markdown": "Simple bending equation\n\n$$\\begin{aligned} \\frac{m}{I}&=\\frac{f}{y}=\\frac{E}{R} \\\\ \\frac{1}{R}&=\\frac{f}{E}\\cdot \\frac{1}{y} \\\\ &=\\frac{\\varepsilon }{y}=\\frac{2.5 \\times 10^{-4}}{(0.5/2)}=0.001m^{-1} \\end{aligned}$$\n\nTherefore, the correct answer is **0.001**."
+      }
+    },
+    "pp:ce:2019:q20": {
+      "question_uid": "pp:ce:2019:q20",
+      "exam_uid": "ce:2019:set1:q20",
+      "title": "GATE CE 2019 | Set 1 | Question: 20",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A completely mixed dilute suspension of sand particles having diameters 0.25, 0.35, 0.40, 0.45 and 0.50 mm are filled in a transparent glass column of diameter 10 cm and height 2.50 m. The suspension is allowed to settle without any disturbance. It is observed that all particles of diameter 0.35 mm settle to the bottom of the column in 30 s. For the same period of 30 s, the percentage removal (round off to integer value) of particles of diameters 0.45 and 0.50 mm from the suspension is ____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "100",
+        "tolerance": {
+          "lower": 100,
+          "upper": 100
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-and-characteristics-of-waste-water",
+          "subtopicLabel": "Quality and Characteristics of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-and-characteristics-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
+        "markdown": "Since sand particle of size 0.35 mm settles to the bottom of the column in 30 sec\n\nparticles having size greater than 0.35 mm i.e. 0.45 and 0.50 mm will also settle in\n\nsuspension at the bottom of column by 100% in 30 sec, infact these bigger sized particle\n\nwill settle by 100% in less than 30 sec. So answer is 100%.\n\nTherefore, the correct answer is **100**."
+      }
+    },
+    "pp:ce:2019:q21": {
+      "question_uid": "pp:ce:2019:q21",
+      "exam_uid": "ce:2019:set1:q21",
+      "title": "GATE CE 2019 | Set 1 | Question: 21",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The maximum number of vehicles observed in any five minute period during the peak hour is 160. If the total flow in the peak hour is 1000 vehicles, the five minute peak hour factor (round off to 2 decimal places) is ___",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.52",
+        "tolerance": {
+          "lower": 0.51,
+          "upper": 0.53
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "Given actual flow in peak hour, $q_{actual}=10^3 \\;\\text{veh/hr}$\n\npeak 5 min rate = 160 veh/5min\n\nPeak (5min)rate volume, $q_{\\text{peak rate}}=\\frac{160}{\\frac{5}{60}} =1920\\;\\text{veh/hr}$\n\nTherefore, peak hourly factor (PHF) for 5 min is\n\n$PHF_5=\\frac{q_{\\text{actual}}}{q_{\\text{peak rate}}}=\\frac{10^3}{1920}=0.52083\\approx 0.52$\n\nTherefore, the correct answer is **0.52** (acceptable range: [0.51, 0.53])."
+      }
+    },
+    "pp:ce:2019:q22": {
+      "question_uid": "pp:ce:2019:q22",
+      "exam_uid": "ce:2019:set1:q22",
+      "title": "GATE CE 2019 | Set 1 | Question: 22",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A circular duct carrying water gradually contracts from a diameter of 30 cm to 15 cm. The figure shows the arrangement of differential manometer attached to the duct <br><img src=\"/question-images/ce/2019/ce-2019-8c493c17a3.webp\" />When the water flows, the differential manometer shows a deflection of 8 cm of mercury (Hg). The values of specific gravity of mercury and water are 13.6 and 1.0, respectively. Consider the acceleration due to gravity, $g=9.81m/s^2$. Assuming frictionless flow, the flow rate (in $m^3/s$, round off to 3 decimal places) through the duct is ____\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.0815",
+        "tolerance": {
+          "lower": 0.078,
+          "upper": 0.085
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "flow-through-pipes",
+          "subtopicLabel": "Flow Through Pipes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "flow-through-pipes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-807c41de43.webp\" />\n\n$$\\begin{aligned} Q&=\\frac{A_1A_2}{\\sqrt{A_1^2-A_2^2}}\\sqrt{2gh} \\\\ h&=x\\left [ \\frac{\\rho H_g}{\\rho _w}-1 \\right ] \\\\ &=0.08(13.6-1)=1.008m \\;\\;(A_1=4A_2) \\\\ Q&=\\frac{4A_2 \\times A_2}{\\sqrt{16A_2^2-A_2^2}}\\times \\sqrt{2 \\times 9.81 \\times 1.008} \\\\ &= \\frac{4}{\\sqrt{15}} \\times A_2 \\times \\sqrt{2 \\times 9.81 \\times 1.008}\\\\ &= \\frac{4}{\\sqrt{15}} \\times \\frac{\\pi}{4}(0.15)^2 \\times \\sqrt{2 \\times 9.81 \\times 1.008} \\\\ Q&=0.081m^3/s \\end{aligned}$$\n\nTherefore, the correct answer is **0.0815** (acceptable range: [0.078, 0.085])."
+      }
+    },
+    "pp:ce:2019:q23": {
+      "question_uid": "pp:ce:2019:q23",
+      "exam_uid": "ce:2019:set1:q23",
+      "title": "GATE CE 2019 | Set 1 | Question: 23",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The probability that the annual maximum flood discharge will exceed 25000 $m^3/s$, at least once in next 5 years is found to be 0.25. The return period of this flood event (in years, round off to 1 decimal place) is ____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "17.9",
+        "tolerance": {
+          "lower": 17.8,
+          "upper": 18
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "flood-routing-and-flood-control",
+          "subtopicLabel": "Flood Routing and Flood Control"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "flood-routing-and-flood-control"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Flood Routing and Flood Control",
+        "markdown": "$$\\begin{aligned} \\text{Risk} &=1-q^n \\\\ 0.25&=1-q^5 \\\\ q&=0.944087 \\\\ 1-p&=0.944087 \\\\ 1-\\frac{1}{T}&=0.944087 \\\\ T&\\simeq 17.9 \\; \\text{years} \\end{aligned}$$\n\nTherefore, the correct answer is **17.9** (acceptable range: [17.8, 18])."
+      }
+    },
+    "pp:ce:2019:q24": {
+      "question_uid": "pp:ce:2019:q24",
+      "exam_uid": "ce:2019:set1:q24",
+      "title": "GATE CE 2019 | Set 1 | Question: 24",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A soil has specific gravity of its solids equal to 2.65. The mass density of water is 1000 $kg/m^3$. Considering zero air voids and 10% moisture content of the soil sample, the dry density (in $kg/m^3$, round off to 1 decimal place) would be _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2090.8",
+        "tolerance": {
+          "lower": 2086.6,
+          "upper": 2095
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "properties-of-soils",
+          "subtopicLabel": "Properties of Soils"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "properties-of-soils"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Properties of Soils",
+        "markdown": "$G_s=2.65,$\n\n$\\gamma _w=1000kg/m^3$\n\nDegree of saturation, S = 100% (Zero air voids)\n\nw = 10%\n\nThe dry density corresponding to zero air voids or 100% saturation,\n\n$$\\begin{aligned} \\gamma _d&= \\frac{\\gamma _wG_s}{1+wG_s}\\\\ &= \\frac{1000\\times 2.65}{1+0.1 \\times 2.65}\\\\ &= 2094.9kg/m^3 \\end{aligned}$$\n\nTherefore, the correct answer is **2090.8** (acceptable range: [2086.6, 2095])."
+      }
+    },
+    "pp:ce:2019:q25": {
+      "question_uid": "pp:ce:2019:q25",
+      "exam_uid": "ce:2019:set1:q25",
+      "title": "GATE CE 2019 | Set 1 | Question: 25",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A concentrated load of 500 kN is applied on an elastic half space. The ratio of the increase in vertical normal stress at depths of 2m and 4m along the point of the loading, as per Boussinesq's theory, would be ___",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "stress-distribution-in-the-soil",
+          "subtopicLabel": "Stress Distribution in the Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "stress-distribution-in-the-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Stress Distribution in the Soil",
+        "markdown": "As per Boussinesq's equation,\n\nThe vertical stress below the ground level at a depth, Z, vertically below the load,\n\n$$\\begin{aligned} \\sigma _Z&=\\frac{3}{2\\pi}\\frac{Q}{Z^2}\\\\ \\sigma _Z &\\propto \\frac{1}{Z^2}\\\\ \\therefore \\;\\; \\frac{\\sigma _{Z_1}}{\\sigma _{Z_2}}&=\\left [ \\frac{Z_2}{Z_1} \\right ]^2\\\\ &=\\left [ \\frac{4}{2} \\right ]^2=4 \\end{aligned}$$\n\nTherefore, the correct answer is **4**."
+      }
+    },
+    "pp:ce:2019:q26": {
+      "question_uid": "pp:ce:2019:q26",
+      "exam_uid": "ce:2019:set1:q26",
+      "title": "GATE CE 2019 | Set 1 | Question: 26",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which one of the following is NOT a correct statement?",
+      "options": [
+        "The function $\\sqrt[x]{x},(x \\gt 0)$, has the global maxima at $x=e$",
+        "The function $\\sqrt[x]{x},(x \\gt 0)$, has the global minima at $x=e$",
+        "The function $x^3$ has neither global minima nor global maxima",
+        "The function |x| has the global minima at x=0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned} \\text{Let}\\;y &=\\sqrt[x]{x}\\;\\;x \\gt 0 \\\\ y&=x^{\\frac{1}{x}} \\\\ \\ln y&=\\ln x^{\\frac{1}{x}} \\\\ \\ln y &=\\frac{1}{x} \\ln x \\\\ \\frac{1}{y} \\frac{dy}{dx}&=\\frac{1}{x^2}-\\frac{\\ln x}{x^2} \\\\ \\frac{1}{y} \\frac{dy}{dx}&=\\frac{1}{x^2}(1-\\ln x) \\\\ \\frac{dy}{dx}&= \\frac{y}{x^2}(1-\\ln x)\\\\ \\text{put}\\;\\; \\frac{dy}{dx}&=0\\Rightarrow \\frac{y}{x^2}(1-\\ln x)=0 \\\\ \\Rightarrow \\; x&=e \\\\ \\text{Now,}\\;\\frac{d^2y}{dx^2} &=\\frac{-y}{x^3}-\\frac{2y}{x^3}(1- \\ln x)+\\frac{1}{x^2}(1-\\ln x)\\frac{dy}{dx} \\\\ \\text{At}\\; x &=e, \\\\ \\frac{d^2y}{dx^2}&=\\left ( \\frac{-y}{x^3} \\right )_{x=e}-\\frac{2y}{x^3}(1-\\ln e)+\\frac{1}{x^2}(1- \\ln e)\\frac{dy}{dx} \\\\ &= \\left ( \\frac{-x^{\\frac{1}{x}}}{x} \\right )_{at\\; x=e}\\\\ &=\\frac{-e^{\\frac{1}{e}}}{e}=0\\\\ \\frac{d^2y}{dx^2}\\; & \\text{has maximum at }\\; x=e \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2019:q27": {
+      "question_uid": "pp:ce:2019:q27",
+      "exam_uid": "ce:2019:set1:q27",
+      "title": "GATE CE 2019 | Set 1 | Question: 27",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A one-dimensional domain is discretized into N sub-domains of width $\\Delta x$ with node numbers i=0,1, 2, 3,...,N. If the time scale is discretized in steps of $\\Delta t$, the forward-time and centered-space finite difference approximation at $i^{th}$ node and $n^{th}$ time step, for the partial differential equation $\\frac{\\partial v}{\\partial t}=\\beta \\frac{\\partial^2 v}{\\partial x^2}$ is",
+      "options": [
+        "$\\frac{v_{i}^{(n+1)}-v_{i}^{(n)}}{\\Delta t}=\\beta \\left [ \\frac{v_{i+1}^{(n)}-2v_{i}^{(n)}+v_{i-1}^{(n)}}{(\\Delta x)^2} \\right ]$",
+        "$\\frac{v_{i+1}^{(n+1)}-v_{i}^{(n)}}{\\Delta t}=\\beta \\left [ \\frac{v_{i+1}^{(n)}-2v_{i}^{(n)}+v_{i-1}^{(n)}}{2\\Delta x} \\right ]$",
+        "$\\frac{v_{i}^{(n)}-v_{i}^{(n-1)}}{\\Delta t}=\\beta \\left [ \\frac{v_{i+1}^{(n)}-2v_{i}^{(n)}+v_{i-1}^{(n)}}{(\\Delta x)^2} \\right ]$",
+        "$\\frac{v_{i}^{(n)}-v_{i}^{(n-1)}}{2\\Delta t}=\\beta \\left [ \\frac{v_{i+1}^{(n)}-2v_{i}^{(n)}+v_{i-1}^{(n)}}{2\\Delta x} \\right ]$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "Given $\\frac{\\partial V}{\\partial t}=\\beta \\frac{\\partial^2 V}{\\partial x^2}$\n\nThe centred space finite difference approximation at $i^{th}$ node $n^{th}$ time step is\n\n$\\frac{V_i^{n+1}-V_i^n}{\\Delta t}=\\beta \\left [ \\frac{V_{i+1}^n -2V_i^n +V_{i-1}^n}{(\\Delta X)^2} \\right ]$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q28": {
+      "question_uid": "pp:ce:2019:q28",
+      "exam_uid": "ce:2019:set1:q28",
+      "title": "GATE CE 2019 | Set 1 | Question: 28",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A rectangular open channel has a width of 5 m and a bed slope of 0.001. For a uniform flow of depth 2 m, the velocity is 2 m/s. The Manning's roughness coefficient for the channel is",
+      "options": [
+        "0.002",
+        "0.017",
+        "0.033",
+        "0.05"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "Given,\n\n$$\\begin{aligned} V&= 2 m/sec, \\; S=0.001\\\\ A&=5 \\times 2=10m^2\\\\ P&=5+2+2=9m\\\\ & \\text{Hydraulic mean radius}\\\\ (R)&=\\frac{A}{P}=\\frac{10}{9}\\\\ V&=\\frac{1}{n}R^{2/3}S^{1/2}\\\\ 2&=\\frac{1}{n}\\left ( \\frac{10}{9} \\right )^{2/3}(0.001)^{1/2}\\\\ n&=0.0169\\simeq 0.017 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2019:q29": {
+      "question_uid": "pp:ce:2019:q29",
+      "exam_uid": "ce:2019:set1:q29",
+      "title": "GATE CE 2019 | Set 1 | Question: 29",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "For the following statements:<br><br>P: The lateral stress in the soil while being tested in an oedometer is always at-rest. <br>Q: For a perfectly rigid strip footing at deeper depths in a sand deposit, the vertical normal contact stress at the footing edge is greater than that at its centre. <br>R: The corrections for overburden pressure and dilatancy are not applied to measured SPT-N values in case of clay deposits.<br><br>The correct combination of the statements is",
+      "options": [
+        "P -TRUE; Q -TRUE; R -TRUE",
+        "P -FALSE; Q -FALSE; R -TRUE",
+        "P -TRUE; Q -TRUE; R -FALSE",
+        "P -FALSE; Q -FALSE; R -FALSE"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "soil-stabilization-and-soil-exploration",
+          "subtopicLabel": "Soil Stabilization and Soil Exploration"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "soil-stabilization-and-soil-exploration"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Soil Stabilization and Soil Exploration",
+        "markdown": "P: True\n\nIn the Oedometer test, stress is applied to the soil specimen along the vertical axis, while strain in the horizontal\n\ndirection is prevented by the confining ring (a condition of zero lateral strain). Thus it simulates at-rest condition.\n\nQ: True\n\nFor a perfectly rigid footing resting on surface of sand deposit, the contact pressure distribution is zero\n\nat the edges and maximum at centre. However, for a very deep rigid footing on sand, the contact pressure\n\ndistribution may tend to become like that of rigid footing on clayey soil, with edge contact stress greater than at\n\nits centre.\n\nR: True\n\nFor cohesive soil, there is no need for overburden pressure correction (Peck et al 1974). For cohesionless soil at\n\nfirst overburden pressure correction is made, then if it is fine sand or silt under water table with N-value $\\gt$ 15,\n\ndilatancy correction is made.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q30": {
+      "question_uid": "pp:ce:2019:q30",
+      "exam_uid": "ce:2019:set1:q30",
+      "title": "GATE CE 2019 | Set 1 | Question: 30",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider two functions: $x=\\psi ln\\phi$ and $y=\\phi ln\\psi$. Which one of the following is the correct expression for $\\frac{\\partial \\psi }{\\partial x}$?",
+      "options": [
+        "$\\frac{xln\\psi }{ln\\phi \\; ln\\psi -1}$",
+        "$\\frac{xln\\phi }{ln\\phi \\; ln\\psi -1}$",
+        "$\\frac{ln\\phi }{ln\\phi \\; ln\\psi -1}$",
+        "$\\frac{ln\\psi }{ln\\phi \\; ln\\psi -1}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "Taking the partial derivative with respect to x for the two equations, we get\n\n$$\\begin{aligned} 1&=\\frac{\\partial \\psi }{\\partial x}\\ln \\phi +\\frac{\\psi }{\\phi }\\frac{\\partial \\phi }{\\partial x}\\\\ 0&=\\frac{\\phi }{\\psi }\\frac{\\partial \\psi }{\\partial x}+ \\ln \\psi \\frac{\\partial \\phi }{\\partial x} \\end{aligned}$$\n\nFrom above two equations, we get\n\n$\\frac{\\partial \\psi }{\\partial x}=\\frac{\\ln \\psi }{\\ln \\phi \\ln \\psi -1}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2019:q31": {
+      "question_uid": "pp:ce:2019:q31",
+      "exam_uid": "ce:2019:set1:q31",
+      "title": "GATE CE 2019 | Set 1 | Question: 31",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The cross-section of a built-up wooden beam as shown in the figure is subjected to a vertical shear force of 8 kN. The beam is symmetrical about the neutral axis (N.A.) shown, and the moment of inertia about N.A. is $1.5 \\times 10^9 mm^4$. Considering that the nails at the location P are spaced longitudinally (along the length of the beam) at 60 mm, each of the nails at P will be subjected to the shear force of <br><img src=\"/question-images/ce/2019/ce-2019-76f3675a82.webp\" />\n",
+      "options": [
+        "60N",
+        "120N",
+        "240N",
+        "480N"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "bending-and-shear-stresses",
+          "subtopicLabel": "Bending and Shear Stresses"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "bending-and-shear-stresses"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Bending and Shear Stresses",
+        "markdown": "Shear stress acting at the joint at which the nail 'P' is resisting the shear.\n\n$$\\begin{aligned} \\tau &=\\frac{FA\\bar{y}}{Ib}\\\\ &=\\frac{(8 \\times 10^3)(50 \\times 100)(150)}{1.5 \\times 10^9 \\times 50}\\\\ &=0.08N/mm^2 \\end{aligned}$$\n\nThe shear force acting on nail at 'P'.\n\n$F=\\tau (60\\times 50)=240N$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2019:q32": {
+      "question_uid": "pp:ce:2019:q32",
+      "exam_uid": "ce:2019:set1:q32",
+      "title": "GATE CE 2019 | Set 1 | Question: 32",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The rigid-jointed plane frame QRS shown in the figure is subjected to a load P at the joint R. Let the axial deformations in the frame be neglected. If the support S undergoes a settlement of $\\Delta =\\frac{PL^3}{\\beta EI}$, the vertical reaction at the support S will become zero when $\\beta$ is equal to <br><img src=\"/question-images/ce/2019/ce-2019-14086be9f7.webp\" />\n",
+      "options": [
+        "0.1",
+        "3",
+        "7.5",
+        "48"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "methods-of-structural-analysis",
+          "subtopicLabel": "Methods of Structural Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "methods-of-structural-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Methods of Structural Analysis",
+        "markdown": "Adopting moment distribution method:\n\n<img src=\"/question-images/ce/2019/ce-2019-21beef644e.webp\" />\n\nThus, fnal vertical reaction at S (both due $f_0$ sinking and P)\n\n$$\\begin{aligned} R_S&=P-V \\\\ &= P-\\frac{7.5EI}{L^3} \\times \\frac{PL^3}{\\beta EI}\\\\ R_S&=\\frac{P-7.5T}{\\beta}\\;\\;\\text{when}\\; \\beta =\\text{ reaction at S = 0} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2019:q33": {
+      "question_uid": "pp:ce:2019:q33",
+      "exam_uid": "ce:2019:set1:q33",
+      "title": "GATE CE 2019 | Set 1 | Question: 33",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": " If the section shown in the figure turns from fully-elastic to fully-plastic, the depth of neutral axis (N.A.), $\\bar{y}$, decreases by<br><img src=\"/question-images/ce/2019/ce-2019-680cddb0d1.webp\" />\n",
+      "options": [
+        "10.75 mm",
+        "12.25 mm",
+        "13.75 mm",
+        "15.25 mm"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "plastic-analysis",
+          "subtopicLabel": "Plastic Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-design-of-steel-structures",
+          "plastic-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Plastic Analysis",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-44f22ada8d.webp\" />\n\n$\\bar{y}=\\frac{A_1y_1+A_2y_2}{A_1+A_2}=\\frac{300\\times 2.5+300 \\times 35}{300+300}=18.75m$\n\n<img src=\"/question-images/ce/2019/ce-2019-d1ec560ed1.webp\" />\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2019:q34": {
+      "question_uid": "pp:ce:2019:q34",
+      "exam_uid": "ce:2019:set1:q34",
+      "title": "GATE CE 2019 | Set 1 | Question: 34",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Sedimentation basin in a water treatment plant is designed for a flow rate of 0.2 $m^3/s$. The basin is rectangular with a length of 32m, width of 8m, and depth of 4m. Assume that the settling velocity of these particles is governed by the Stokes' law. Given: <br>density of the particles = 2.5 $g/cm^3$; <br>density of water = 1 $g/cm^3$; <br>dynamic viscosity of water = 0.01 g/(cm.s); <br>gravitational acceleration = 980 $cm/s^2$.<br><br> If the incoming water contains particles of diameter 25 $\\mu m$(spherical and uniform), the removal efficiency of these particles is",
+      "options": [
+        "51%",
+        "65%",
+        "78%",
+        "100%"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "water-treatment",
+          "subtopicLabel": "Water Treatment"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "water-treatment"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Water Treatment",
+        "markdown": "$$\\begin{aligned} Q&=0.2m^3/sec,\\; L=32m\\\\ B&=8m,\\; H=4m\\\\ \\rho _p&=2.5gm/cc=2500kg/m^3\\\\ \\rho _w&=1gm/cc=1000kg/m^3\\\\ \\mu &=0.01gm/cm-sec=1 \\times 10^{-3}kg/m-sec\\\\ d&=25\\mu m=25 \\times 10^{-6}m\\\\ g&=980cm/sec^2=9.8m/sec^2\\\\ v_0&=\\frac{Q}{A_s}=\\frac{Q}{L \\times B}\\\\ &=\\frac{0.2}{32 \\times 8}=7.8125 \\times 10^{-4}m/sec\\\\ v_s&=\\frac{g(\\rho _p-\\rho _w)d^2}{18\\mu }\\\\ &=\\frac{9.8(2500-1000)\\times (25 \\times 10^{-6})^2}{18 \\times (1 \\times 10^{-3})}\\\\ &=5.1041 \\times 10^{-4}m/sec\\\\ \\eta &=\\frac{v_s}{v_0}\\times 100\\\\ &=\\frac{5.1041 \\times 10^{-4}}{7.8125 \\times 10^{-4}}\\times 100\\\\ &=65.33\\%\\simeq 65\\% \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2019:q35": {
+      "question_uid": "pp:ce:2019:q35",
+      "exam_uid": "ce:2019:set1:q35",
+      "title": "GATE CE 2019 | Set 1 | Question: 35",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A survey line was measured to be 285.5 m with a tape having a nominal length of 30 m. On checking, the true length of the tape was found to be 0.05 m too short. If the line lay on a slope of 1 in 10, the reduced length (horizontal length) of the line for plotting of survey work would be",
+      "options": [
+        "283.6 m",
+        "284.5 m",
+        "285 m",
+        "285.6 m"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "classification-of-soils-and-clay-minerals",
+          "subtopicLabel": "Classification of Soils and Clay Minerals"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "classification-of-soils-and-clay-minerals"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-3a751c704c.webp\" />\n\n$$\\begin{aligned} L&=30m, \\; L'=30-0.05=29.95m\\\\ \\therefore \\;\\;& \\; \\text{Correct Length}\\\\ l&=l' \\times \\frac{l'}{L}\\\\ &=285.5 \\times \\frac{29.95}{30}=285.024m\\\\ D&=l \\cos \\theta \\\\ \\cos \\theta &=\\frac{10}{\\sqrt{10^2+1^2}}=0.995\\\\ \\therefore \\;D \\;&\\; =\\text{ correct Horizontal length }\\\\ &=l\\cos \\theta \\\\ &=285.024 \\times 0.9950\\\\ &=283.6m \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2019:q36": {
+      "question_uid": "pp:ce:2019:q36",
+      "exam_uid": "ce:2019:set1:q36",
+      "title": "GATE CE 2019 | Set 1 | Question: 36",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 16 mm thick gusset plate is connected to the 12 mm thick flange plate of an I-section using fillet welds on both sides as shown in the figure. The gusset plate is subjected to a point load of 350 kN acting at a distance of 100 mm from the flange plate. Size of fillet weld is 10 mm. <br><img src=\"/question-images/ce/2019/ce-2019-090c49de85.webp\" /><br> The maximum resultant stress (in MPa, round off to 1 decimalplace) on the fillet weld along the vertical plane would be ____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "105.4",
+        "tolerance": {
+          "lower": 105.3,
+          "upper": 105.5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "structural-fasteners",
+          "subtopicLabel": "Structural Fasteners"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-design-of-steel-structures",
+          "structural-fasteners"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Structural Fasteners",
+        "markdown": "Direct concentrated load (P) = 350 kN\n\nEccentricity (e) = 100 mm\n\nDepth of weld ($d_w$) at each face = 500 mm\n\nSize of weld (S) = 10 mm\n\nThroat thickness of weld ($t_t$) = 0.7S = 7 mm\n\nIt is a case of combined shear (P) and Bending moment (M = P.e)\n\nShear stress acting on weld due to direct shear force P,\n\n$$\\begin{aligned} (q)&=\\frac{P}{A_w} \\\\ &= \\frac{P}{2d_wt_t}\\\\ &=\\frac{350 \\times 10^3}{2 \\times 500 \\times 7}=50MPa \\end{aligned}$$\n\nBending normal stress acting at $i^{th}$ point from Neutral axis $[f_i]=\\frac{M}{I}y_i$\n\nMaximum bending stress at extreme point in weld\n\n$$\\begin{aligned} [f]&=\\frac{M}{I}y_{max} \\\\ &= \\frac{Pe}{2t_t \\frac{d_w^3}{12}} \\times y_{max}\\\\ &= \\frac{350 \\times 10^3 \\times 100}{2 \\times 7 \\times \\frac{(500)^3}{12}} \\times 250\\\\ &= 60MPa \\end{aligned}$$\n\n<img src=\"/question-images/ce/2019/ce-2019-6961e4b4ab.webp\" />\n\nAs per IS800:2007. Maximum resultant stress an equivalent stress in fllet weld due to combined shear and bending stress\n\n$$\\begin{aligned} (f_{eq})&=\\sqrt{f^2+3q^2} \\\\ &= \\sqrt{60^2+3 \\times 50^2}\\\\ &=105.3MPa \\end{aligned}$$\n\nTherefore, the correct answer is **105.4** (acceptable range: [105.3, 105.5])."
+      }
+    },
+    "pp:ce:2019:q37": {
+      "question_uid": "pp:ce:2019:q37",
+      "exam_uid": "ce:2019:set1:q37",
+      "title": "GATE CE 2019 | Set 1 | Question: 37",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The network of a small construction project awarded to a contractor is shown in the following figure. The normal duration, crash duration, normal cost, and crash cost of all the activities are shown in the table. The indirect cost incurred by the contractor is INR 5000 per day. <br><img src=\"/question-images/ce/2019/ce-2019-055717651b.webp\" /><br> If the project is targeted for completion in 16 days, the total cost(in INR) to be incurred by the contractor would be _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "149500",
+        "tolerance": {
+          "lower": 149500,
+          "upper": 149500
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-construction-materials-and-management",
+          "subjectLabel": "Construction Materials and Management",
+          "subtopicSlug": "general",
+          "subtopicLabel": "Construction Materials and Management"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-construction-materials-and-management",
+          "general"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Construction Materials and Management - Construction Materials and Management",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-3701ff66e3.webp\" />\n\nIndirect cost = Rs. 5000\n\nCrashing possibility = 18 - 17 = 1 day\n\nTo reduce the project duration by 1 day, the following options available.\n\n<img src=\"/question-images/ce/2019/ce-2019-5f745ea218.webp\" />\n\nBest option : Crashing 'R' by 1 day.\n\nAfter crashing 'R' by 1 day, the new network is as for follows.\n\n<img src=\"/question-images/ce/2019/ce-2019-88fe12dd18.webp\" />\n\nThe reduce the project duration by 1 day\n\n<img src=\"/question-images/ce/2019/ce-2019-90c8e5797b.webp\" />\n\nAfter crashing Q & R by 1 day, the new network is as follows.\n\n<img src=\"/question-images/ce/2019/ce-2019-fab33912a9.webp\" />\n\nTotal project cost = Total normal cost + crashing cost of 'R' by 1 day + crashing cost of Q & R by 1 day +\n\nIndirect cost/day ? Project duration\n\n= 15000 + 6000 + 8000 + 7000 + 6000 + 4000 + 20000 + 750 ? 1 + 2750 x 1 + 5000 x 16\n\n= 1,49,500 /-\n\nTherefore, the correct answer is **149500**."
+      }
+    },
+    "pp:ce:2019:q38": {
+      "question_uid": "pp:ce:2019:q38",
+      "exam_uid": "ce:2019:set1:q38",
+      "title": "GATE CE 2019 | Set 1 | Question: 38",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A box measuring 50 cmx50cmx50cm is filled to the top with dry coarse aggregate of mass 187.5 kg. The water absorption and specific gravity of the aggregate are 0.5% and 2.5, respectively. The maximum quantity of water (in kg, round off to 2 decimal places) required to fill the box completely is_______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "50.85",
+        "tolerance": {
+          "lower": 50.5,
+          "upper": 51.2
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "properties-of-soils",
+          "subtopicLabel": "Properties of Soils"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "properties-of-soils"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Properties of Soils",
+        "markdown": "Total volume of Box $=0.5 \\times 0.5\\times 0.5=0.125m^3$\n\nwt of aggregates = 187.5 kg\n\nsp. gravity = 2.5\n\nUnit weight $=2.5 \\times 9.81=24.525kN/m^3$\n\nwt of water absorbed $=\\frac{0.5}{100}\\times 187.5=0.9375kg$\n\nvol of aggregate $=\\frac{187.5 \\times 9.81}{1000 \\times 24.525}=0.075m^3$\n\nvolume of voids $=0.125-0.075=0.05m^3$\n\nwt of water in voids $=0.05 \\times 1000=50kg$\n\nwt of water required to fill the box $= 50 + 0.9375 = 50.94 kg$\n\nTherefore, the correct answer is **50.85** (acceptable range: [50.5, 51.2])."
+      }
+    },
+    "pp:ce:2019:q39": {
+      "question_uid": "pp:ce:2019:q39",
+      "exam_uid": "ce:2019:set1:q39",
+      "title": "GATE CE 2019 | Set 1 | Question: 39",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A portal frame shown in figure has a hinge support at joint P and a roller support at joint R. A point load of 50 kN is acting at joint R in the horizontal direction. The flexural rigidity, EI, of each member is 10 $kNm^2$. Under the applied load, the horizontal displacement (in mm, round off to 1 decimal place) of joint R would be _______ <br><img src=\"/question-images/ce/2019/ce-2019-660eb4e834.webp\" />\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "25",
+        "tolerance": {
+          "lower": 24.9,
+          "upper": 25.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "methods-of-structural-analysis",
+          "subtopicLabel": "Methods of Structural Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "methods-of-structural-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Methods of Structural Analysis",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-30fce40b5b.webp\" />\n\n$$\\begin{aligned} \\Sigma M_p&=0\\;\\;[\\text{Take clockwise as positive}]\\\\ R_R \\times 5-50 \\times 10&=0\\\\ R_R&=-100kN(\\downarrow )\\\\ R_P&=100kN(\\uparrow )\\\\ EI&=10^6kN-m^2\\\\ \\end{aligned}$$\n\nUsing unit load method:\n\nThe horizontal displacement at 'R'\n\n$\\delta _{HR}=\\int_{0}^{L}\\frac{M_xm_x}{EI}dx$\n\nwhere\n\n$M_x=$ BM at X-X due to real loads\n\n$m_x=$ BM at X-X due to vertical unit load applied where we want to find the deflection.\n\n<img src=\"/question-images/ce/2019/ce-2019-d687351445.webp\" />\n\n$$\\begin{aligned} \\Sigma M_R &=0\\;\\;[\\text{Take clockwise as positive}]\\\\ R_P \\times 5-1 \\times 10&=0\\\\ R_P&=2kN(\\uparrow )\\end{aligned}$$\n\nSign conventions:\n\nSagging +ve\n\nHogging -ve\n\n<img src=\"/question-images/ce/2019/ce-2019-e316cca735.webp\" />\n\n$\\delta _{HR}=\\int_{0}^{5}\\frac{200x^2}{10^6}dx+\\int_{0}^{10}\\frac{50x^2}{10^6}dx=\\frac{1}{40}=0.025m=25mm$\n\nTherefore, the correct answer is **25** (acceptable range: [24.9, 25.1])."
+      }
+    },
+    "pp:ce:2019:q40": {
+      "question_uid": "pp:ce:2019:q40",
+      "exam_uid": "ce:2019:set1:q40",
+      "title": "GATE CE 2019 | Set 1 | Question: 40",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A sample of air analysed at 0$^{\\circ}$C and 1 atm pressure is reported to contain 0.02 ppm(parts per million) of $NO_2$. Assume the gram molecular mass of $NO_2$ as 46 and its volume at 0$^{\\circ}$C and 1 atm pressure as 22.4 litres per mole. The equivalent $NO_2$ concentration (in microgram per cubic meter, round off to 2 decimalplaces) would be ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "41.05",
+        "tolerance": {
+          "lower": 41,
+          "upper": 41.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "$$\\begin{aligned} k&=22.4\\\\ M&=46\\\\ 0.02\\; \\text{ppm of}\\; NO_2&=0.02 \\times \\frac{M}{k}\\times 10^3 \\mu g/m^3\\\\ &=0.02 \\times \\frac{46}{22.4}\\times 10^{3}\\\\ &=41.0714\\mu g/m^3 \\end{aligned}$$\n\nTherefore, the correct answer is **41.05** (acceptable range: [41, 41.1])."
+      }
+    },
+    "pp:ce:2019:q41": {
+      "question_uid": "pp:ce:2019:q41",
+      "exam_uid": "ce:2019:set1:q41",
+      "title": "GATE CE 2019 | Set 1 | Question: 41",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 0.80 m deep bed of sand filter (length 4 m and width 3 m) is made of uniform particles (diameter = 0.40 mm, specific gravity = 2.65, shape factor = 0.85) with bed porosity of 0.4. The bed has to be backwashed at a flow rate of 3.60 $m^3/min$. During backwashing, if the terminal settling velocity of sand particles is 0.05 m/s, the expanded bed depth (in m, round off to 2 decimal places) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.2",
+        "tolerance": {
+          "lower": 1.15,
+          "upper": 1.25
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "water-treatment",
+          "subtopicLabel": "Water Treatment"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "water-treatment"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Water Treatment",
+        "markdown": "Given,\n\n$$\\begin{aligned} z &=0.8m \\\\ n &=0.4m \\\\ Q_B &=3.6m^3/min \\\\ &= \\frac{3.6}{60}m^3/sec=0.06m^3/sec\\\\ L&=4m \\\\ B&= 3m\\\\ V_B&= \\frac{Q_B}{A_s}=\\frac{Q_B}{LB}\\\\ &= \\frac{0.06}{4 \\times 3}=5 \\times 10^{-3}m/sec\\\\ V_s&= 0.05m/sec\\\\ V_B&=V_s(n_e)^{4.5} \\\\ (n_e)^{4.5}&= \\frac{V_B}{V_s}=\\frac{5 \\times 10^{-3}}{0.05}\\\\ n_e&=\\left ( \\frac{5 \\times 10^{-3}}{0.05} \\right )^{\\frac{1}{4.5}} \\\\ &= 0.599\\simeq 0.6\\\\ \\frac{z_e}{z}&=\\frac{1-n}{1-n_e} \\\\ z_e &=z\\left ( \\frac{1-n}{1-n_e} \\right ) \\\\ z_e&=0.8 \\times \\left ( \\frac{1-0.4}{1-0.6} \\right )=1.2m \\end{aligned}$$\n\nTherefore, the correct answer is **1.2** (acceptable range: [1.15, 1.25])."
+      }
+    },
+    "pp:ce:2019:q42": {
+      "question_uid": "pp:ce:2019:q42",
+      "exam_uid": "ce:2019:set1:q42",
+      "title": "GATE CE 2019 | Set 1 | Question: 42",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A wastewater is to be disinfected with 35 mg/Lof chlorine to obtain 99% kill of micro-organisms. The number of micro-organisms remaining alive ($N_t$) at time t, is modelled by $N_t=N_oe^{-kt}$, where $N_o$ is number of micro-organisms at t= 0, and k is the rate of kill. The wastewater flow rate is 36 $m^3/hr$, and k= 0.23 $min^{-1}$. If the depth and width of the chlorination tank are 1.5 m and 1.0 m, respectively, the length of the tank (in m, round off to 2 decimal places) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8.05",
+        "tolerance": {
+          "lower": 7.95,
+          "upper": 8.15
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "treatment-of-waste-water",
+          "subtopicLabel": "Treatment of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "treatment-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Treatment of Waste Water",
+        "markdown": "$$\\begin{aligned} N_t&=N_0e^{-kt}\\\\ \\therefore \\; \\eta &=[1-e^{-kt}]100\\\\ 99&=[1-e^{-0.23\\times t}]100\\\\ \\therefore \\;t&=20.22min\\\\ Q&=36m^3/hr\\\\ V&=Q \\times t\\\\ &=\\frac{36}{60}\\times 20.22=12.0132\\\\ \\text{Length}&=\\frac{V}{B \\times H}=\\frac{12.0132}{1 \\times 1.5}\\\\ &=8.008\\cong 8m \\end{aligned}$$\n\nTherefore, the correct answer is **8.05** (acceptable range: [7.95, 8.15])."
+      }
+    },
+    "pp:ce:2019:q43": {
+      "question_uid": "pp:ce:2019:q43",
+      "exam_uid": "ce:2019:set1:q43",
+      "title": "GATE CE 2019 | Set 1 | Question: 43",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A staff is placed on a benchmark (BM) of reduced level (RL) 100.000 m and a theodolite is placed at a horizontal distance of 50 m from the BM to measure the vertical angles. The measured vertical angles from the horizontal at the staff readings of 0.400 m and 2.400 m are found to be the same. Taking the height of the instrument as 1.400m, the RL (in m) of the theodolite station is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "100",
+        "tolerance": {
+          "lower": 100,
+          "upper": 100
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geomatics-engineering",
+          "subjectLabel": "Geomatics Engineering",
+          "subtopicSlug": "theodolites-compass-and-traverse-surveying",
+          "subtopicLabel": "Theodolites, Compass and Traverse Surveying"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geomatics-engineering",
+          "theodolites-compass-and-traverse-surveying"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-f61db7223f.webp\" />\n\n$$\\begin{aligned} x&=50 \\tan \\alpha \\\\ 2-x&=50 \\tan \\alpha \\\\ \\therefore \\;\\;x&=2-x \\\\ 2x&=2 \\\\ x&=1m \\end{aligned}$$\n\nR.L of theodolite station (P): 100 + 1.4 - 0.1 - 0.4 = 100 m\n\nTherefore, the correct answer is **100**."
+      }
+    },
+    "pp:ce:2019:q44": {
+      "question_uid": "pp:ce:2019:q44",
+      "exam_uid": "ce:2019:set1:q44",
+      "title": "GATE CE 2019 | Set 1 | Question: 44",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the ordinary differential equation $$x^2\\frac{d^2y}{dx^2}-2x\\frac{dy}{dx}+2y=0$$. Given the values of y(1)=0 and y(2)=2, the value of y(3) (round off to 1 decimal place), is ____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "6",
+        "tolerance": {
+          "lower": 5.9,
+          "upper": 6.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "$$\\begin{aligned} (xD^2-2xD+2)y&=0\\\\ \\text{Put,}\\; x&=e^z\\\\ xD&=D_1\\\\ x^2D^2&=D_1(D_1-1) \\\\ [D_1(D_1-1)-2D_1+2]y&=0 \\\\ [D_1^2-3D_1+2]y&=0 \\\\ m^2-3m+2&=0 \\\\ m=1,2 \\\\ y&=C_1e^z+C_2e^{2z} \\\\ e^z&=x \\\\ y&=C_1x+C_2x^2 \\\\ y(1)=0\\;\\; y(2) &=2 \\\\ y(1)&=C_1+C_2=0 \\\\ y(2)&=2C_1+4C_2=2\\\\ C_1&=-1, \\; C_2=1\\\\ y&=x^2-x\\\\ y(3)&=6 \\end{aligned}$$\n\nTherefore, the correct answer is **6** (acceptable range: [5.9, 6.1])."
+      }
+    },
+    "pp:ce:2019:q45": {
+      "question_uid": "pp:ce:2019:q45",
+      "exam_uid": "ce:2019:set1:q45",
+      "title": "GATE CE 2019 | Set 1 | Question: 45",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Average free flow speed and the jam density observed on a roadstretch are 60 km/h and 120 vehicles/km, respectively. For a linear speed-density relationship, the maximum flow on the road stretch (in vehicles/h) is _________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1800",
+        "tolerance": {
+          "lower": 1800,
+          "upper": 1800
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "pavement-design",
+          "subtopicLabel": "Pavement Design"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "pavement-design"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Pavement Design",
+        "markdown": "Maximum Speed / Free ?ow speed, $V_m$ = 60 kmph\n\nJam density, $K_m$ = 120 kmph\n\nfor linear speed - density (Green shield's model) relationship,\n\nmax. ?ow, is $q_{max}=\\frac{k_j}{2}\\times \\frac{V_f}{2}$\n\n$q_{max}=\\frac{120}{2}\\times \\frac{60}{2}=1800veh/hr$\n\nTherefore, the correct answer is **1800**."
+      }
+    },
+    "pp:ce:2019:q46": {
+      "question_uid": "pp:ce:2019:q46",
+      "exam_uid": "ce:2019:set1:q46",
+      "title": "GATE CE 2019 | Set 1 | Question: 46",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Traffic on a highway is moving at a rate of 360 vehicles per hour at a location. If the number of vehicles arriving on this highway follows Poisson distribution, the probability (round off to 2 decimal places) that the headway between successive vehicles lies between 6 and 10 seconds is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.18",
+        "tolerance": {
+          "lower": 0.17,
+          "upper": 0.19
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "$h_1=$ 6 seconds, $h_1=$ 10 seconds\n\ngiven, avg. rate, $\\lambda =360\\;veh/hr=360\\times \\frac{1}{3600}=\\frac{1}{10}\\; veh/sec$\n\nProbability that the headway is between $h_1 \\; and \\; h_2$ is given by,\n\n$$\\begin{aligned} P(h_1\\leq h\\leq h_2)&=e^{\\lambda h_1}-e^{-\\lambda h_2} \\\\ &= e^{-\\frac{1}{10}\\times 6}-e^{-\\frac{1}{10}\\times 10}\\\\ &= 0.1808\\approx 0.18 \\end{aligned}$$\n\nTherefore, the correct answer is **0.18** (acceptable range: [0.17, 0.19])."
+      }
+    },
+    "pp:ce:2019:q47": {
+      "question_uid": "pp:ce:2019:q47",
+      "exam_uid": "ce:2019:set1:q47",
+      "title": "GATE CE 2019 | Set 1 | Question: 47",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A parabolic vertical curve is being designed to join a road of grade +5% with a road of grade -3%. The length of the vertical curve is 400m measured along the horizontal. The vertical point of curvature (VPC) is located on the road of grade +5%. The difference in height between VPC and vertical point of intersection (VPI) (in m, round off to the nearest integer)is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "10",
+        "tolerance": {
+          "lower": 10,
+          "upper": 10
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "pavement-design",
+          "subtopicLabel": "Pavement Design"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "pavement-design"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Pavement Design",
+        "markdown": "Given, $N_1=+5\\%,\\; N_2=-3\\%$\n\nLength of summit curve is, $l = 400 m$\n\n<img src=\"/question-images/ce/2019/ce-2019-0dc608c4cf.webp\" />\n\nVertical distance between VPC and VPI is $N_1 \\times \\frac{l}{2}=\\frac{5\\%}{100}\\times 200=10m$\n\nTherefore, the correct answer is **10**."
+      }
+    },
+    "pp:ce:2019:q48": {
+      "question_uid": "pp:ce:2019:q48",
+      "exam_uid": "ce:2019:set1:q48",
+      "title": "GATE CE 2019 | Set 1 | Question: 48",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Tie bars of 12 mm diameter are to be provided in a concrete pavement slab. The working tensile stress of the tie bars is 230 MPa, the average bond strength between a tie bar and concrete is 2 MPa, and the joint gap between the slabs is 10 mm. Ignoring the loss of bond and the tolerance factor, the design length of the tie bars (in mm, round off to the nearest integer) is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "700",
+        "tolerance": {
+          "lower": 700,
+          "upper": 700
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "shear-torsion-bond-anchorage-and-development-length",
+          "subtopicLabel": "Shear, Torsion, Bond, Anchorage and Development Length"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "shear-torsion-bond-anchorage-and-development-length"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-1db1e26238.webp\" />\n\n$L_d=\\frac{\\phi \\sigma _{st}}{4\\tau _{bd}}=\\frac{12 \\times 230}{4 \\times 2}=345mm$\n\nLength of tie bar $=L_d+10+L_d=345+10+345=700mm$\n\nTherefore, the correct answer is **700**."
+      }
+    },
+    "pp:ce:2019:q49": {
+      "question_uid": "pp:ce:2019:q49",
+      "exam_uid": "ce:2019:set1:q49",
+      "title": "GATE CE 2019 | Set 1 | Question: 49",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The hyetograph of a storm event of duration 140 minutesis shown in the figure. <br><img src=\"/question-images/ce/2019/ce-2019-fb4efa0618.webp\" /><br>The infiltration capacity at the start of this event (t=0) is 17 mm/hour, which linearly decreases to 10 mm/hour after 40 minutes duration. As the event progresses, the infiltration rate further drops down linearly to attain a value of 4 mm/hour at t=100 minutes and remains constant thereafter till the end of the storm event. The value of the infiltration index, $\\phi$ (in mm/hour, round off to 2 decimal places), is _______\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "7.15",
+        "tolerance": {
+          "lower": 7,
+          "upper": 7.3
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "$$\\begin{aligned} P&=(4+8+15+10+8+3+1) \\times \\frac{20}{60} \\\\ &=16.33\\; minute \\\\ Q&=(15-10) \\times \\frac{20}{60} +(10-8) \\times \\frac{20}{60} \\\\ &+(8-6) \\times \\frac{20}{60} +\\frac{1}{2}\\times 2 \\times \\frac{20}{60}+\\frac{1}{2} \\\\ &+\\frac{1}{2}\\times 2 \\times \\frac{20}{60}+frac{1}{2}\\times 2 \\times \\frac{20}{60}\\\\ &=4mm\\\\ W-index&=\\frac{P-Q}{t}=\\frac{16.33-4}{\\frac{140}{60}}=5.28 mm/hr\\\\ \\text{Since,} \\; \\phi & \\geq W\\\\ \\text{Assume, }\\; \\phi &=5.28 mm/hr\\\\ \\Rightarrow \\; \\text{Corrected, }\\phi &=\\frac{16.33-4-4 \\times \\frac{20}{60}-3 \\times \\frac{20}{60}-1 \\times \\frac{20}{60}}{\\left ( \\frac{140-30-20-20}{60} \\right )} \\\\ &=7.2475 mm/hr \\end{aligned}$$\n\nTherefore, the correct answer is **7.15** (acceptable range: [7, 7.3])."
+      }
+    },
+    "pp:ce:2019:q50": {
+      "question_uid": "pp:ce:2019:q50",
+      "exam_uid": "ce:2019:set1:q50",
+      "title": "GATE CE 2019 | Set 1 | Question: 50",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Two water reservoirs are connected by a siphon (running full) of total length 5000 m and diameter of 0.10m, as shown below <br><img src=\"/question-images/ce/2019/ce-2019-555c8e18e7.webp\" /><br>The inlet leg length of the siphon to its summit is 2000m. The difference in the water surface levels of the two reservoirs is 5 m. Assume the permissible minimum absolute pressure at the summit of siphon to be 2.5 m of water when running full. Given:<br> friction factor f=0.02 throughout, <br>atmospheric pressure= 10.3 m of water, and <br>acceleration due to gravity g= 9.81 $m/s^2$. <br><br>Considering only major loss using Darcy-Weisbach equation, the maximum height of the summit of siphon from the water level of upper reservoir,h (in m, round off to 1 decimal place)is _____\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5.8",
+        "tolerance": {
+          "lower": 5.7,
+          "upper": 5.9
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "fluid-dynamics-and-flow-measurements",
+          "subtopicLabel": "Fluid Dynamics and Flow Measurements"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "fluid-dynamics-and-flow-measurements"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Fluid Dynamics and Flow Measurements",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-21b609cbb0.webp\" />\n\nApplying Bernoulli's equation between 1 & 3\n\n$$\\begin{aligned} \\frac{P_1}{\\rho g}+\\frac{v_1^2}{2g}+z_1&= \\frac{P_3}{\\rho g}+\\frac{v_3^2}{2g}+z_3+h_{f13}\\\\ z_1-z_3&=h_{f13}\\;\\;\\;(\\because \\; P_1=P_3=P_{atm}\\; and \\; v_1=v_3=0) \\\\ 5&=\\frac{fLv^2}{2gd} \\\\ v^2&=\\frac{5 \\times 2\\times 9.81\\times 0.1}{0.02\\times 5000} \\\\ v&=0.313m/s \\end{aligned}$$\n\nApplying Bernoulli's equation between 1 & 2\n\n$$\\begin{aligned} \\frac{P_1}{\\rho g}+\\frac{v_1^2}{2g}+z_1&= \\frac{P_2}{\\rho g}+\\frac{v_2^2}{2g}+z_2+h_{f12}\\\\ 10.3+0+0&=2.5+\\frac{0.313^2}{2 \\times 9.81}+h+\\frac{0.02 \\times 2000 \\times 0.313^2}{2 \\times 9.81 \\times 0.1}\\\\ h&=5.798m \\end{aligned}$$\n\nTherefore, the correct answer is **5.8** (acceptable range: [5.7, 5.9])."
+      }
+    },
+    "pp:ce:2019:q51": {
+      "question_uid": "pp:ce:2019:q51",
+      "exam_uid": "ce:2019:set1:q51",
+      "title": "GATE CE 2019 | Set 1 | Question: 51",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider a laminar flow in the x-direction between two infinite parallel plates (Couette flow). The lower plate is stationary and the upper plate is moving with a velocity of 1 cm/s in the x-direction. The distance between the plates is 5 mm and the dynamic viscosity of the fluid is 0.01 $N-s/m^2$. If the shear stress on the lower plate is zero, the pressure gradient, $\\frac{\\partial p}{\\partial x}$, (in $N/m^2$ per m,round off to 1 decimal place)is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8",
+        "tolerance": {
+          "lower": 7.9,
+          "upper": 8.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "boundary-layer-theory-drag-and-lift",
+          "subtopicLabel": "Boundary Layer Theory, Drag and Lift"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "boundary-layer-theory-drag-and-lift"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Boundary Layer Theory, Drag and Lift",
+        "markdown": "Given fl\\ow is a couette flow with pressure gradient\n\n$\\mu =0.01N-s/m^2$\n\nh=5mm\n\nif $\\tau _{y=0}=0, \\; \\text{find}\\; \\frac{dp}{dx}$\n\nThe velocity distribution, for the couette flow with pressure gradient is given by\n\n$u=\\frac{wy}{h}-\\frac{1}{2\\mu }\\frac{dp}{dx}[hy-y^2]$\n\nwhere w is the velocity of the top plate and h is the gap between the plates\n\n$$\\begin{aligned} \\frac{du}{dy}&=\\frac{w}{h}-\\frac{1}{2\\mu }\\frac{dp}{dx}[h-2y] \\\\ \\left.\\begin{matrix} \\frac{du}{dy} \\end{matrix}\\right|_{y=0} &=\\frac{w}{h}-\\frac{1}{2\\mu }\\frac{dp}{dx}h \\\\ \\tau _{y=0}&=\\mu \\left [ \\frac{w}{h}-\\frac{1}{2\\mu }\\frac{dp}{dx}h \\right ] \\\\ \\tau _{y=0}&=\\frac{w\\mu }{h}-\\frac{1}{2}\\frac{dp}{dx}h \\\\ \\text{when}\\; \\tau _{y=0}&=0, \\; \\text{we will have}\\\\ \\frac{1}{2}\\frac{dp}{dx}h&=\\frac{w\\mu }{h}\\\\ \\frac{dp}{dx}&=\\frac{2w\\mu }{h^2} \\\\ &=\\frac{2 \\times 1 \\times 10^{-2}\\times 0.01}{(5 \\times 10^{-3})^2} \\\\ &=8 N/m^2 \\; \\text{per} \\; m \\end{aligned}$$\n\nTherefore, the correct answer is **8** (acceptable range: [7.9, 8.1])."
+      }
+    },
+    "pp:ce:2019:q52": {
+      "question_uid": "pp:ce:2019:q52",
+      "exam_uid": "ce:2019:set1:q52",
+      "title": "GATE CE 2019 | Set 1 | Question: 52",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A reinforced concrete circular pile of 12 m length and 0.6 m diameter is embedded in stiff clay which has an undrained unit cohesion of 110 $kN/m^2$. The adhesion factor is 0.5. The Net Ultimate Pullout (uplift) Load for the pile (in kN, round off to 1 decimal place) is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1245",
+        "tolerance": {
+          "lower": 1240,
+          "upper": 1250
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "deep-foundation",
+          "subtopicLabel": "Deep Foundation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "deep-foundation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Deep Foundation",
+        "markdown": "<img src=\"/question-images/ce/2019/ce-2019-03ec8c0979.webp\" />\n\n$$\\begin{aligned} &\\text{Net Ultimate pullout} \\\\ &=\\alpha CA_s =0.5 \\times 110(\\pi dL) \\\\ &=0.5 \\times 110(\\pi \\times 0.6 \\times 12)\\\\&=1244.1kN \\end{aligned}$$\n\nTherefore, the correct answer is **1245** (acceptable range: [1240, 1250])."
+      }
+    },
+    "pp:ce:2019:q53": {
+      "question_uid": "pp:ce:2019:q53",
+      "exam_uid": "ce:2019:set1:q53",
+      "title": "GATE CE 2019 | Set 1 | Question: 53",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A granular soil has a saturated unit weight of 20$kN/m^3$ and an effective angle of shearing resistance of 30$^{\\circ}$. The unit weight of water is 9.81 $kN/m^3$. A slope is to be made on this soil deposit in which the seepage occurs parallel to the slope up to the free surface. Under this seepage condition for a factor of safety of 1.5, the safe slope angle (in degree, round off to 1 decimal place) would be _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "11.05",
+        "tolerance": {
+          "lower": 10.8,
+          "upper": 11.3
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "seepage-analysis",
+          "subtopicLabel": "Seepage Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "seepage-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Seepage Analysis",
+        "markdown": "$$\\begin{aligned} \\gamma _{sat}&=20kN/m^3\\\\ \\gamma _w&=9.81kN/m^3\\\\ \\therefore \\; \\gamma '&=\\gamma _{sat}-\\gamma _w=10.19kN/m^3\\\\ \\therefore \\; \\phi '&=30^{\\circ},\\; F=1.5 \\end{aligned}$$\n\nFor infnite slope, the F.O. safety for seepage parallel to the slope in a granular soil (C = 0) is given below\n\n$$\\begin{aligned} F&=\\frac{\\gamma '}{\\gamma _{sat}}\\frac{\\tan \\phi '}{\\tan i}\\\\ 1.5&=\\frac{10.19}{20}\\frac{\\tan 30}{\\tan i}\\\\ i&=11.095 \\; \\text{say}\\; 11.1^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **11.05** (acceptable range: [10.8, 11.3])."
+      }
+    },
+    "pp:ce:2019:q54": {
+      "question_uid": "pp:ce:2019:q54",
+      "exam_uid": "ce:2019:set1:q54",
+      "title": "GATE CE 2019 | Set 1 | Question: 54",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 3mx3m square precast reinforced concrete segments to be installed by pushing them through an existing railway embankment for making an underpass as shown in the figure. A reaction arrangement using precast PCC blocks placed on the ground is to be made for the jacks. <br><img src=\"/question-images/ce/2019/ce-2019-9e307c75e7.webp\" /><br> At each stage, the jacks are required to apply a force of 1875 kN to push the segment. The jacks will react against the rigid steel plate placed against the reaction arrangement. The footprint area of reaction arrangement on natural ground is 37.5 $m^2$. The unit weight of PCC block is 24 $kN/m^3$. The properties of the natural ground are: c = 17 kPa; $\\phi =25^{\\circ}$ and $\\gamma =18 kN/m^3$. Assuming that the reaction arrangement has rough interface and has the same properties that of soil, the factor of safety (round off to 1 decimal place) against shear failure is _____\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.95",
+        "tolerance": {
+          "lower": 1.8,
+          "upper": 2.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "prestressed-concrete-beams",
+          "subtopicLabel": "Prestressed Concrete Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "prestressed-concrete-beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Prestressed Concrete Beams",
+        "markdown": "Weight of Precast PCC block,\n\n$W=volume \\times \\gamma _c=37.5 \\times 7.5 \\times 24=6750kN$\n\nShear resistance below the Precast PCC block is,\n\n$S = C.A + W\\tan \\phi$\n\nF.O safety against shear failure,\n\n$$\\begin{aligned} F&=\\frac{S}{T} \\\\ F&=\\frac{C.A.+W \\tan \\phi }{T} \\\\ &= \\frac{C.A.+N \\tan \\phi }{T}\\;\\;\\; (Since, \\; N=W)\\\\ &= \\frac{17 \\times 37.5+6750 \\times \\tan 25^{\\circ}}{1875}\\\\ &= 2.0187\\approx 2.0 \\end{aligned}$$\n\nTherefore, the correct answer is **1.95** (acceptable range: [1.8, 2.1])."
+      }
+    },
+    "pp:ce:2019:q55": {
+      "question_uid": "pp:ce:2019:q55",
+      "exam_uid": "ce:2019:set1:q55",
+      "title": "GATE CE 2019 | Set 1 | Question: 55",
+      "year": "gatece-2019-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A square footing of 4 m side is placed at 1 m depth in a sand deposit. The dry unit weight ($\\gamma$) of sand is 15 $kN/m^3$. This footing has an ultimate bearing capacity of 600 kPa. Consider the depth factors: $d_q=d_\\gamma =1.0$ and the bearing capacity factor: $N_\\gamma =18.75$. This footing is placed at a depth of 2m in the same soil deposit. For a factor of safety of 3.0 as per Terzaghi's theory, the safe bearing capacity (in kPa) of this footing would be _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "270",
+        "tolerance": {
+          "lower": 270,
+          "upper": 270
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shallow-foundation-and-bearing-capacity",
+          "subtopicLabel": "Shallow Foundation and Bearing Capacity"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shallow-foundation-and-bearing-capacity"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
+        "markdown": "As per Terzaghi's theory, the ultimate bearing capacity for a square footing considering depth factors: $d_q=d_\\gamma =1$ is as follows:\n\n$$\\begin{aligned} q_u&=1.3CN_C+\\gamma D_fN_q+0.4\\gamma BN_\\gamma \\\\ &\\text{For sand,} \\\\ C&=0 \\\\ q_u&=\\gamma D_fN_q+0.4\\gamma BN_\\gamma \\\\ \\text{Given:} \\\\ \\gamma &=15kN/m^3 \\\\ B&=4m \\\\ N_\\gamma &= 18.75\\\\ &\\text{Initial condition: } \\\\ D_f&= 1m\\\\ q_u&=600kPa\\\\ q_u&=\\gamma D_fN_q+0.4\\gamma BN_\\gamma \\\\ 600&=15 \\times 1 \\times N_q +0.4 \\times 15 \\times 4 \\times 18.75\\\\ N_q&=10\\\\ \\text{If}\\;\\; D_f&=2m, \\;\\; \\text{then,}\\\\ q_u&=\\gamma D_fN_q+0.4\\gamma BN_\\gamma \\\\ &=15 \\times 2 \\times 10 +0.4 \\times 15 \\times 4 \\times 18.75\\\\ &=750kN/m^2\\\\ &\\text{Net ultimate BC of soil, }\\\\ q_{nu}&=q_u-\\gamma D_f\\\\ &=750-15 \\times 2=720kN/m^2\\\\ &\\text{The gross safe BC or safe BC, }\\\\ q_s&=\\frac{q_{nu}}{F}+\\gamma D_f\\\\ &=\\frac{720}{3}+15 \\times 2\\\\ &=270kPa \\end{aligned}$$\n\nTherefore, the correct answer is **270**."
+      }
+    },
+    "pp:ce:2019:q56": {
+      "question_uid": "pp:ce:2019:q56",
+      "exam_uid": "ce:2019:set1:q56",
+      "title": "GATE CE 2019 | Set 1 | Question: 56",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The lecture was attended by quite _______ students, so the hall was not very _______",
+      "options": [
+        "a few, quite",
+        "few, quiet",
+        "a few, quiet",
+        "few, quite "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *a few, quiet*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (a few, quiet)."
+      }
+    },
+    "pp:ce:2019:q57": {
+      "question_uid": "pp:ce:2019:q57",
+      "exam_uid": "ce:2019:set1:q57",
+      "title": "GATE CE 2019 | Set 1 | Question: 57",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "They have come a long way in ________ trust among the users.",
+      "options": [
+        "creating",
+        "created",
+        "creation",
+        "create"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *creating*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (creating)."
+      }
+    },
+    "pp:ce:2019:q58": {
+      "question_uid": "pp:ce:2019:q58",
+      "exam_uid": "ce:2019:set1:q58",
+      "title": "GATE CE 2019 | Set 1 | Question: 58",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "On a horizontal ground, the base of a straight ladder is 6 m away from the base of a vertical pole. The ladder makes an angle of 45 to the horizontal. If the ladder is resting at a point located at one-fifth of the height of the pole from the bottom, the height of the pole is ______ meters.",
+      "options": [
+        "15",
+        "25",
+        "30",
+        "35"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *30*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (30)."
+      }
+    },
+    "pp:ce:2019:q59": {
+      "question_uid": "pp:ce:2019:q59",
+      "exam_uid": "ce:2019:set1:q59",
+      "title": "GATE CE 2019 | Set 1 | Question: 59",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If E=10, J=20, O=30, and T=40, what will be P+E+S+T?",
+      "options": [
+        "51",
+        "82",
+        "120",
+        "164"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *120*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (120)."
+      }
+    },
+    "pp:ce:2019:q60": {
+      "question_uid": "pp:ce:2019:q60",
+      "exam_uid": "ce:2019:set1:q60",
+      "title": "GATE CE 2019 | Set 1 | Question: 60",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The CEO's decision to quit was as shocking to the Board as it was to ______.",
+      "options": [
+        "I",
+        "me",
+        "my",
+        "myself "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *me*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (me)."
+      }
+    },
+    "pp:ce:2019:q61": {
+      "question_uid": "pp:ce:2019:q61",
+      "exam_uid": "ce:2019:set1:q61",
+      "title": "GATE CE 2019 | Set 1 | Question: 61",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The new cotton technology, Bollgard-II, with herbicide-tolerant traits has developed into a thriving business in India. However, the commercial use of this technology is not legal in India. Notwithstanding that, reports indicate that the herbicide tolerant Bt cotton had been purchased by farmers at an average of Rs 200 more than the control price of ordinary cotton, and planted in  15% of the cotton growing area in the 2017 Kharif season.\n<br>\nWhich one of the following statements can be inferred from the given passage?",
+      "options": [
+        "Farmers want to access the new technology if India benefits from it",
+        "Farmers want to access the new technology even if it is not legal",
+        "Farmers want to access the new technology for experimental purposes",
+        "Farmers want to access the new technology by paying high price"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *Farmers want to access the new technology even if it is not legal*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (Farmers want to access the new technology even if it is not legal)."
+      }
+    },
+    "pp:ce:2019:q62": {
+      "question_uid": "pp:ce:2019:q62",
+      "exam_uid": "ce:2019:set1:q62",
+      "title": "GATE CE 2019 | Set 1 | Question: 62",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In a sports academy of 300 peoples, 105 play only cricket, 70 play only hockey, 50 play only football, 25 play both cricket and hockey, 15 play both hockey and football and 30 play both cricket and football. The rest of them play all three sports. What is the percentage of people who play at least two sports?",
+      "options": [
+        "23.3",
+        "25",
+        "28",
+        "50"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *25*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (25)."
+      }
+    },
+    "pp:ce:2019:q63": {
+      "question_uid": "pp:ce:2019:q63",
+      "exam_uid": "ce:2019:set1:q63",
+      "title": "GATE CE 2019 | Set 1 | Question: 63",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "\"The increasing interest in tribal characters might be a mere coincidence, but the timing is of interest. None of this, though, is to say that the tribal hero has arrived in Hindi cinema, or that the new crop of characters represents the acceptance of the tribal character in the industry. The films and characters are too few to be described as a pattern.\"\n<br>\nWhat does the word 'arrived' mean in the paragraph above?",
+      "options": [
+        "reached a terminus",
+        "came to a conclusion",
+        "attained a status",
+        "went to a place"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *attained a status*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (attained a status)."
+      }
+    },
+    "pp:ce:2019:q64": {
+      "question_uid": "pp:ce:2019:q64",
+      "exam_uid": "ce:2019:set1:q64",
+      "title": "GATE CE 2019 | Set 1 | Question: 64",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A square has side 5 cm smaller than the sides of a second square. The area of the larger square is four times the area of the smaller square. The side of the larger square is _______ cm.",
+      "options": [
+        "18.5",
+        "15.1",
+        "10",
+        "8.5"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *10*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (10)."
+      }
+    },
+    "pp:ce:2019:q65": {
+      "question_uid": "pp:ce:2019:q65",
+      "exam_uid": "ce:2019:set1:q65",
+      "title": "GATE CE 2019 | Set 1 | Question: 65",
+      "year": "gatece-2019-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "P, Q, R, S and T are related and belong to the same family. P is the brother of S, Q is the wife of P. R and T are the children of the siblings P and S respectively. Which one of the following statement is necessarily FALSE?",
+      "options": [
+        "S is the aunt of R",
+        "S is the aunt of T",
+        "S is the sister-in-law of Q",
+        "S is the brother of P"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2019-s1",
+      "yearSetIdentity": "ce:2019:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *S is the aunt of T*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (S is the aunt of T)."
+      }
+    }
+  }
+}

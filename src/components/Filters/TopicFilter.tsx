@@ -21,7 +21,7 @@ interface SubjectGroup {
 }
 
 const TopicFilter = () => {
-    const { structuredTags = {}, filters = {}, includeCse = true } = useFilterState() as FilterStateShape;
+    const { structuredTags = {}, filters = {}, includeCse = true, isCseEnrolled = true } = useFilterState() as any;
     const { updateFilters, setIncludeCse } = useFilterActions() as FilterActionsShape;
     const { subjects = [], structuredSubtopics = {} } = structuredTags;
     const { selectedSubjects = [], selectedSubtopics = [] } = filters;
@@ -33,7 +33,7 @@ const TopicFilter = () => {
         const nextMap = new Map<string, SubtopicOption[]>();
         const subtopicsBySubject = structuredSubtopics as StructuredSubtopics;
 
-        subjects.forEach((subject) => {
+        (subjects as SubjectOption[]).forEach((subject: SubjectOption) => {
             const subjectSlug = subject?.slug;
             const subtopics = subtopicsBySubject[subjectSlug] || [];
             nextMap.set(
@@ -54,13 +54,21 @@ const TopicFilter = () => {
             && !APTITUDE_SUBJECT_SLUGS.has(slug)
             && !slug.startsWith('da:')
             && !slug.startsWith('isro:')
+            && !slug.startsWith('ec:')
+            && !slug.startsWith('ec-')
+            && !slug.startsWith('ee:')
+            && !slug.startsWith('ee-')
+            && !slug.startsWith('me:')
+            && !slug.startsWith('me-')
+            && !slug.startsWith('ce:')
+            && !slug.startsWith('ce-')
         );
 
     const subjectGroups = useMemo<SubjectGroup[]>(() => {
-        const coreSubjects = subjects.filter(
-            (subject) => isCseSubjectSlug(subject?.slug)
+        const coreSubjects = (subjects as SubjectOption[]).filter(
+            (subject: SubjectOption) => isCseSubjectSlug(subject?.slug)
         );
-        const optionalSubjects = subjects.filter((subject) => subject?.slug === LEGACY_OPTIONAL_SUBJECT_SLUG);
+        const optionalSubjects = (subjects as SubjectOption[]).filter((subject: SubjectOption) => subject?.slug === LEGACY_OPTIONAL_SUBJECT_SLUG);
 
         return [
             {
@@ -83,7 +91,7 @@ const TopicFilter = () => {
     }, [subjects]);
 
     const activeCseSelected = useMemo(
-        () => selectedSubjects.filter((slug) => isCseSubjectSlug(slug) || slug === LEGACY_OPTIONAL_SUBJECT_SLUG),
+        () => (selectedSubjects as string[]).filter((slug: string) => isCseSubjectSlug(slug) || slug === LEGACY_OPTIONAL_SUBJECT_SLUG),
         [selectedSubjects]
     );
 
@@ -100,7 +108,7 @@ const TopicFilter = () => {
             const next = new Set<string>();
 
             // Keep existing expansions that are still selected and belong to CSE
-            prev.forEach((slug) => {
+            prev.forEach((slug: string) => {
                 if (selectedSubjectSet.has(slug) && (isCseSubjectSlug(slug) || slug === LEGACY_OPTIONAL_SUBJECT_SLUG)) {
                     next.add(slug);
                 } else {
@@ -109,9 +117,9 @@ const TopicFilter = () => {
             });
 
             // Auto-expand any subject that has active subtopic filters
-            activeCseSelected.forEach((subjectSlug) => {
+            activeCseSelected.forEach((subjectSlug: string) => {
                 const hasActiveSubtopic = (sortedSubtopicsBySubject.get(subjectSlug) || []).some(
-                    (subtopic) => selectedSubtopicSet.has(subtopic.slug)
+                    (subtopic: SubtopicOption) => selectedSubtopicSet.has(subtopic.slug)
                 );
                 if (hasActiveSubtopic && !next.has(subjectSlug)) {
                     next.add(subjectSlug);
@@ -137,8 +145,8 @@ const TopicFilter = () => {
     const handleSubjectChange = (subjectSlug: string) => {
         const isAlreadySelected = selectedSubjectSet.has(subjectSlug);
         const nextSubjects = isAlreadySelected
-            ? selectedSubjects.filter((slug) => slug !== subjectSlug)
-            : [...selectedSubjects, subjectSlug];
+            ? (selectedSubjects as string[]).filter((slug: string) => slug !== subjectSlug)
+            : [...(selectedSubjects as string[]), subjectSlug];
 
         if (!isAlreadySelected) {
             setExpandedSubjectSlugs((prev) => new Set([...prev, subjectSlug]));
@@ -166,33 +174,37 @@ const TopicFilter = () => {
     };
 
     const handleSubtopicChange = (subtopicSlug: string) => {
-        const nextSubtopics = selectedSubtopics.includes(subtopicSlug)
-            ? selectedSubtopics.filter((slug) => slug !== subtopicSlug)
-            : [...selectedSubtopics, subtopicSlug];
+        const nextSubtopics = (selectedSubtopics as string[]).includes(subtopicSlug)
+            ? (selectedSubtopics as string[]).filter((slug: string) => slug !== subtopicSlug)
+            : [...(selectedSubtopics as string[]), subtopicSlug];
         updateFilters({ selectedSubtopics: nextSubtopics });
     };
 
     const handleSubjectBulkToggle = (subjectSlug: string) => {
         const subjectSubtopics = sortedSubtopicsBySubject.get(subjectSlug) || [];
         const subjectSubtopicSlugs = subjectSubtopics
-            .map((subtopic) => subtopic?.slug)
+            .map((subtopic: SubtopicOption) => subtopic?.slug)
             .filter(Boolean) as string[];
 
         if (subjectSubtopicSlugs.length === 0) return;
 
-        const allSelected = subjectSubtopicSlugs.every((slug) => selectedSubtopicSet.has(slug));
+        const allSelected = subjectSubtopicSlugs.every((slug: string) => selectedSubtopicSet.has(slug));
 
         if (allSelected) {
             const removeSet = new Set(subjectSubtopicSlugs);
-            const nextSubtopics = selectedSubtopics.filter((slug) => !removeSet.has(slug));
+            const nextSubtopics = (selectedSubtopics as string[]).filter((slug: string) => !removeSet.has(slug));
             updateFilters({ selectedSubtopics: nextSubtopics });
             return;
         }
 
-        const nextSet = new Set(selectedSubtopics);
-        subjectSubtopicSlugs.forEach((slug) => nextSet.add(slug));
+        const nextSet = new Set<string>(selectedSubtopics as string[]);
+        subjectSubtopicSlugs.forEach((slug: string) => nextSet.add(slug));
         updateFilters({ selectedSubtopics: Array.from(nextSet) });
     };
+
+    if (!isCseEnrolled) {
+        return null;
+    }
 
     return (
         <div className="gate-cse-section-wrapper">

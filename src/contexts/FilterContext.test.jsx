@@ -14,6 +14,7 @@ import YearRangeFilter from '../components/Filters/YearRangeFilter';
 import { QuestionService } from '../services/QuestionService';
 import { AnswerService } from '../services/AnswerService';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
+import { writeBranchPreferences } from '../utils/branchPreference';
 
 vi.useFakeTimers();
 vi.setSystemTime(new Date('2026-04-04T12:00:00Z'));
@@ -117,6 +118,7 @@ const daMock = vi.hoisted(() => ({
 vi.mock('../services/QuestionService', () => ({
     QuestionService: {
         loaded: true,
+        clearBranch: vi.fn(),
         questions: [
             {
                 question_uid: 'go:1',
@@ -224,6 +226,7 @@ vi.mock('../services/AptitudeQuestionService', () => ({
 vi.mock('../services/DaQuestionService', () => ({
     DaQuestionService: {
         loaded: true,
+        clearBranch: vi.fn(),
         questions: daMock.questions,
         normalizeSubjectSlug: vi.fn((value) => String(value || '').trim().toLowerCase()),
         getStructuredTags: vi.fn(() => ({
@@ -1710,5 +1713,73 @@ describe('FilterContext', () => {
             });
         });
     });
+
+    describe('Multi-Branch Enrollment and State', () => {
+        const MultiBranchTestComponent = () => {
+            const {
+                isCseEnrolled,
+                isEcEnrolled,
+                isEeEnrolled,
+                includeEc,
+                selectedBranches,
+                activeBranch,
+                filters,
+            } = useFilterState();
+            const { setIncludeEc, updateFilters } = useFilterActions();
+
+            return (
+                <div>
+                    <div data-testid="is-cse-enrolled">{isCseEnrolled ? 'yes' : 'no'}</div>
+                    <div data-testid="is-ec-enrolled">{isEcEnrolled ? 'yes' : 'no'}</div>
+                    <div data-testid="is-ee-enrolled">{isEeEnrolled ? 'yes' : 'no'}</div>
+                    <div data-testid="include-ec">{includeEc ? 'yes' : 'no'}</div>
+                    <div data-testid="selected-branches">{selectedBranches.join(',')}</div>
+                    <div data-testid="active-branch">{activeBranch}</div>
+                    <div data-testid="selected-subjects">{filters.selectedSubjects.join(',')}</div>
+                    <button data-testid="toggle-include-ec" onClick={() => setIncludeEc(false)}>Disable EC</button>
+                    <button data-testid="set-ec-filters" onClick={() => updateFilters({ selectedSubjects: ['ec-analog-circuits'] })}>Set EC Filter</button>
+                </div>
+            );
+        };
+
+        test('derives isCseEnrolled and isEcEnrolled accurately from branch preferences', async () => {
+            writeBranchPreferences(['ec', 'cse'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <MultiBranchTestComponent />
+                </FilterProvider>
+            );
+
+            expect(getByTestId('is-cse-enrolled').textContent).toBe('yes');
+            expect(getByTestId('is-ec-enrolled').textContent).toBe('yes');
+            expect(getByTestId('is-ee-enrolled').textContent).toBe('no');
+            expect(getByTestId('selected-branches').textContent).toBe('ec,cse');
+            expect(getByTestId('active-branch').textContent).toBe('ec');
+            expect(getByTestId('include-ec').textContent).toBe('yes');
+        });
+
+        test('toggling setIncludeEc(false) sets includeEc to false and prunes ec subjects', async () => {
+            writeBranchPreferences(['ec', 'cse'], 'ec');
+
+            const { getByTestId } = renderWithRouter(
+                <FilterProvider>
+                    <MultiBranchTestComponent />
+                </FilterProvider>
+            );
+
+            // Add an ec subject
+            fireEvent.click(getByTestId('set-ec-filters'));
+            expect(getByTestId('selected-subjects').textContent).toContain('ec-analog-circuits');
+
+            // Disable EC
+            fireEvent.click(getByTestId('toggle-include-ec'));
+            await waitFor(() => {
+                expect(getByTestId('include-ec').textContent).toBe('no');
+                expect(getByTestId('selected-subjects').textContent).not.toContain('ec-analog-circuits');
+            });
+        });
+    });
 });
+
 

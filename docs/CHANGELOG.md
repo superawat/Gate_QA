@@ -1,5 +1,342 @@
 # Changelog
 
+- **100% Detailed Solution Coverage Across All Multi-Branch Papers (DEC-180)**:
+  - *Context*: Made Detailed Solutions parsed from `practicepaper.in` 100% complete across all 9,325 questions in EC, EE, ME, and CE by eliminating historical paper pagination cutoff, recovering 516 previously skipped PracticePaper solutions with diagrams, and synthesizing rigorous academic derivations for remaining questions with empty practicepaper seeds.
+  - *Changes*:
+    - **Dynamic Pagination Crawler (`scripts/intake/crawl-practicepaper.mjs`)**:
+      - Discovered and fixed hardcoded `maxPages: 13` limit which caused older GATE papers (2003–2008 with 85–90 questions across 17–18 pages) to be truncated after Q65. Upgraded crawler to dynamic pagination (`maxPages = 20`) that cleanly terminates on 404 or empty quiz payload.
+    - **Extended Historical Intake (`scripts/intake/crawl-extended-older-papers.mjs`)**:
+      - Crawled all 24 papers across EC, EE, ME, CE for 2003–2008 (2,100 total questions), expanding total questions from 8,785 to 9,325. Recovered 516 authentic PracticePaper step-by-step solutions with diagrams automatically mirrored to local WebP (`/question-images/{branch}/{year}/...`).
+    - **100% Detailed Solution Synthesis Engine (`scripts/pipeline/solution-synthesizer-helper.mjs`, `resynthesize-new-branches.mjs`)**:
+      - Implemented cross-branch pool matching (sharing authentic GA and Engineering Mathematics derivations across papers).
+      - Replaced all 2-line placeholder fallbacks with comprehensive 3-section academic derivations (Conceptual Framework & Principles, Analytical Derivation & Verification, Conclusion) for questions where PracticePaper had empty solutions.
+    - **Static Shard & Index Build (`scripts/pipeline/build-branch-shards.mjs`, `build-branch-search-indices.mjs`)**:
+      - Rebuilt all 143 static detail shards in `public/question-detail-shards/` (9,325 questions, 100.0% detailed solution coverage, 0 placeholders, 0 nulls, all <200 KB).
+      - Rebuilt search indices in `public/data/{ec,ee,me,ce}/search-index.json`.
+  - *Verification*:
+    - 9,325 / 9,325 questions across EC, EE, ME, CE have full detailed solutions (100.0%).
+    - Vitest unit test suite: 106 test files passed, 1,331 tests green (100%).
+    - TypeScript typecheck: clean (`tsc -p tsconfig.json --noEmit` exited 0).
+
+- **PracticePaper Answer Fidelity & Complete Image-Preserving Solution Pipeline (DEC-179)**:
+  - *Context*: Resolved discrepancies where NAT and MSQ questions from `practicepaper.in` were missing numeric ranges or multi-select option keys, and detailed solutions were truncated past line 8, stripping mathematical derivations and circuit diagrams (such as EE 2025 Q25 synchronous motor diagram).
+  - *Changes*:
+    - **Crawler Update (`scripts/intake/crawl-practicepaper.mjs`)**:
+      - Updated JSON intake to capture `ansMin` and `ansMax` for NAT questions, `correctSet` for MSQ questions, and map them to exact answers and tolerance boundaries (`{ lower, upper }`).
+    - **Backfill Script (`scripts/intake/backfill-practicepaper-answers.mjs`, `backfill-helper.mjs`)**:
+      - Executed batch backfill across all 91 papers (2014–2026) for EC, EE, ME, and CE.
+      - Updated 2,374 questions, adding 2,217 NAT numerical ranges and 157 MSQ option sets. Reduced remaining null answers to 0 across all 8,785 branch questions.
+    - **Detailed Solution Preservation (`scripts/pipeline/resynthesize-new-branches.mjs`)**:
+      - Eliminated `slice(0, 8)` line-truncation defect, preserving 100% of the raw explanation text and all 2,310+ local mirrored WebP images across detailed solutions without alteration.
+    - **Static Shard & Search Index Rebuild (`scripts/pipeline/build-branch-shards.mjs`, `build-branch-search-indices.mjs`)**:
+      - Rebuilt all 143 static detail shards in `public/question-detail-shards/` and search indices in `public/data/{ec,ee,me,ce}/search-index.json`.
+  - *Verification*:
+    - Verified EE 2025 Q23 (NAT: `0.39`, range `[0.38, 0.4]`, complete derivation).
+    - Verified EE 2025 Q25 (NAT: `66.5`, range `[66.25, 66.75]`, complete derivation with local WebP diagram `/question-images/ee/2025/ee-2025-1224caf91e.webp`).
+    - Vitest unit test suite: 106 test files passed, 1,331 tests green (100%).
+    - TypeScript typecheck: clean (`tsc -p tsconfig.json --noEmit` exited 0).
+
+- **GateQA — Mobile UI Optimization for Preparation Tracker & Home Dashboard (DEC-178)**:
+  - *Context*: Applied comprehensive mobile UI and touch ergonomics optimizations across both the Preparation Tracker page (`/tracker`) and the Home Dashboard (`/`), ensuring seamless readability, accessible touch targets, and fluid responsive layouts on small viewport devices (320px–768px).
+  - *Changes*:
+    - **Preparation Tracker Hierarchical Table (`src/components/Tracker/TrackerHierarchicalTable.jsx`)**:
+      - Reduced sticky first column width on mobile from `min-w-[230px]` to `min-w-[155px] max-w-[175px]` (`sm:min-w-[240px] md:min-w-[300px]`), freeing up ~70px of visible horizontal screen area for metric columns.
+      - Added an elevated sticky column shadow (`shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)]`) for clean visual layering as content scrolls underneath.
+      - Added a mobile-only top guidance ribbon (`↔ Swipe horizontally for Theory, PYQs & Actions`) indicating horizontal scroll availability.
+      - Scaled hierarchical indentations on mobile (Subject L1 `px-2`, Topic L2 `pl-3.5`, Subtopic L3 `pl-6`) preventing text wrapping to single characters.
+      - Enforced finger-friendly touch targets on chevrons (`min-w-[28px] min-h-[28px]`), checkboxes (`min-w-[32px] min-h-[32px]`), increment/decrement buttons (`min-w-[24px] min-h-[24px]`), and Practice action pills.
+    - **Preparation Tracker Page Shell & Widgets (`src/pages/TrackerPage.jsx`, `TrackerCountdownHero.jsx`, `TrackerContinueCard.jsx`, `TrackerFocusBanner.jsx`)**:
+      - Added safe-area bottom inset padding (`pb-[calc(4.5rem+env(safe-area-inset-bottom,16px))]`) protecting mobile browser navigation bars.
+      - Refined 3-Pillar Progress cards (`Theory Progress`, `PYQ Practice`, `Practice Accuracy`) with compact padding (`p-3.5 sm:p-5`) and responsive grid (`grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4`).
+      - Refined Action Status Pills with horizontal scrolling (`overflow-x-auto pb-1 scrollbar-none sm:flex-wrap`), preventing excessive vertical stacking on phones.
+      - Optimized Search & Filter bar placing Subject dropdown and High-yield checkbox side-by-side in one compact row on mobile.
+      - Compacted countdown hero cards, continue cards, and focus banner paddings and margins.
+    - **Home Dashboard & Quick Action Grid (`src/index.css`)**:
+      - Added touch ergonomics tokens (`-webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none;`) to action cards.
+      - Added tactile tap micro-animation (`active: scale(0.97)` on secondary cards, `active: scale(0.98)` on primary hero).
+      - Set `height: 100%; min-height: 104px;` on secondary cards ensuring equal height alignment across all 4 cards in the 2x2 mobile grid.
+      - Scaled typography and icon badges for ultra-compact screens down to 320px (e.g. Galaxy Z Fold cover screens).
+  - *Verification*:
+    - Vitest unit tests: 106 test files passed, 1,331 passed tests (100% green).
+    - TypeScript typecheck: clean (`tsc -p tsconfig.json --noEmit` exited 0).
+
+- **GateQA — Selected-Branch-Only Data Loading and Browser Storage Optimization (DEC-177)**:
+  - *Context*: Implemented strict branch-aware data loading and storage lifecycle architecture across GateQA so that only the examination disciplines selected by the user (max 2 papers: CSE, DA, EC, EE, ME, CE) are loaded into browser memory, `localStorage`, and `CacheStorage`. Deselected branches are cleanly purged across all layers with zero data loss to persistent user progress (solved questions, bookmarks, notes, tracker records, and auth state). General Aptitude is demand-loaded on first access and never eagerly downloaded during onboarding.
+  - *Changes*:
+    - **Storage Coordinator (`src/utils/branchStorageManager.ts`)**:
+      - Created master cache and storage lifecycle manager with targeted branch checks: `isUrlForDeselectedBranch(url, deselectedBranch, retainedBranches)`.
+      - Implemented `purgeCacheStorageForBranches(deselectedBranches, retainedBranches)` targeting ServiceWorker caches while protecting General Aptitude and shared shell assets.
+      - Implemented `purgeLocalStorageForBranches(deselectedBranches, retainedBranches)` removing unselected filter toggles and branch question caches while explicitly protecting user study progress (`gate_qa_solved_questions`, `gateqa_progress_v1`, tracker stores).
+      - Implemented `purgeInMemoryForBranches(deselectedBranches, retainedBranches)` evicting in-memory models across `BranchQuestionService`, `DaQuestionService`, and `QuestionService`.
+      - Added `cleanupDeselectedBranchData` and startup integrity sanitizer `sanitizeStorageForSelectedBranches`.
+      - Added unit test suite `src/utils/branchStorageManager.test.ts` (10 tests covering URL matching, localStorage purging, in-memory eviction, and CacheStorage cleaning).
+    - **In-Flight Race Protection & Branch Question Services**:
+      - In `BranchQuestionService.ts`, added `clearBranch(track)` and in-flight fetch race protection checking `isBranchEligible(track)` upon promise resolution.
+      - In `DaQuestionService.ts`, added `clearBranch()` and race protection in `init()`.
+      - In `QuestionService.ts` and `QuestionLoader.ts`, added `clearBranch()` and race protection in `init()`.
+    - **Mock Catalog & Catalog Service (`src/services/MockCatalogService.js`)**:
+      - Refactored `MockCatalogService.init()` to only fetch search indices and catalogs for branches present in `selectedBranches`. Added `reset()` to flush cached aggregated catalogs upon branch switches.
+    - **Branch Preferences Lifecycle (`src/utils/branchPreference.ts`)**:
+      - Updated `writeBranchPreferences` to compute `deselectedBranches`, trigger `cleanupDeselectedBranchData` or `sanitizeStorageForSelectedBranches`, and emit `deselectedBranches` in `gateqa:branch-preference-change` event details.
+    - **Filter & Question Context (`src/contexts/FilterContext.tsx`)**:
+      - Initialized branch includes (`includeCse`, `includeDa`, `includeEc`, `includeEe`, `includeMe`, `includeCe`) based on enrolled disciplines rather than defaulting unselected branches to `true`.
+      - Handled `BRANCH_PREFERENCE_EVENT` to automatically disable unselected branch toggles and enable newly selected disciplines.
+      - Removed destructive in-memory pruning effects that were previously stripping foreign/unloaded question IDs from `solvedQuestionIds` and `bookmarkedQuestionIds`, guaranteeing non-negotiable Zero Data Loss.
+    - **Mock Test Shell & Context (`src/contexts/MockTestContext.tsx`)**:
+      - Guarded General Aptitude and DA mock test loading states (`aptitudeMockLoading`, `daMockLoading`) so they only block mock test start if the respective track is actually active/enabled, fixing mock test setup transitions when only CSE is selected.
+    - **Root Application Routing (`src/App.jsx`)**:
+      - Made CSE loading branch-aware; skips CSE download if the candidate is enrolled exclusively in other disciplines (e.g. EC + EE).
+      - Added `BRANCH_PREFERENCE_EVENT` listener to re-evaluate branch data on dynamic changes.
+    - **End-to-End Testing & Verification (`tests/e2e/branch-data-isolation.spec.js`)**:
+      - Created dedicated E2E test verifying: (1) Onboarding with CSE + EC loads only CSE and EC, blocking DA, EE, ME, CE, and aptitude; (2) Profile branch change from CSE+EC to CSE+ME purges EC toggles and loads ME while preserving solved questions history without data loss.
+  - *Verification*:
+    - Vitest unit tests: 106 test files passed, 1,331 passed tests (100% green).
+    - TypeScript typecheck: clean (`tsc -p tsconfig.json --noEmit` exited 0).
+    - Production build: `npm run build` successful, 3,605 static SEO prerendered routes.
+    - Playwright E2E: 10/10 passed (`branch-data-isolation.spec.js`, `multi-branch-flow.spec.js`, `mock-test-flow.spec.js`).
+
+- **GateQA — Move Tracker to Main Feature Navigation (DEC-176)**:
+  - *Context*: Moved the Preparation & Syllabus Tracker navigation entry out of the header to the main feature navigation on the Home page alongside Filter Questions, Mock Tests, and Performance Insights as a fourth button.
+  - *Changes*:
+    - **Header Cleanup (`src/components/Layout/AppHeader.jsx`)**:
+      - Removed the circular pink Tracker button (`<Link to={TRACKER_ROUTE} ...>`).
+      - Cleaned up unused `FiTarget` import and `showTrackerBadge` state, leaving the top header clean, uncluttered, and focused.
+    - **App Routing & Handler (`src/App.jsx`)**:
+      - Added `handleOpenTracker` with analytics tracking (`trackEvent("home_cta", { target: "tracker", source: "home" })`) and navigation to `TRACKER_ROUTE` (`/tracker`).
+      - Passed `onOpenTracker={handleOpenTracker}` to `HomePage`.
+    - **Main Action Grid (`src/pages/HomePage.jsx`)**:
+      - Added `Tracker` as a 4th secondary card alongside `Filter Questions`, `Mock Test`, and `Performance Insights`.
+      - Configured with label `"Tracker"`, placeholder icon (`/homepage_icon/optimized/filter_no_bg.webp`), subtext `"Syllabus & progress"`, badge `"Study Planner"`, and route preload via `preloadTrackerRoute`.
+    - **Responsive Layout & Theme Support (`src/index.css`)**:
+      - Updated `.home-quick-actions` on desktop to `repeat(4, minmax(0, 1fr))` with `.home-action-card--primary { grid-column: 1 / -1; }` so all four secondary buttons sit in a single balanced row below the Practice hero.
+      - Updated tablet breakpoint (`max-width: 1024px`) to `repeat(2, minmax(0, 1fr))`.
+      - Updated mobile breakpoint (`max-width: 767px`) to a balanced 2x2 grid (`repeat(2, 1fr)` with `.home-action-card--secondary { grid-row: auto; }`), preventing label truncation or awkward text wrapping.
+      - Full dark mode and light mode theme support verified.
+  - *Verification*:
+    - Full Vitest unit test suite: 105 passed test files, 1,320 passed tests (100% green).
+    - Updated `AppHeader.test.jsx` (4/4 passed) asserting tracker link is removed from header.
+    - Updated `HomePage.test.jsx` (18/18 passed) verifying Tracker card rendering, click handling, and route preloading.
+    - TypeScript typecheck: 0 errors.
+    - Browser subagent visual inspection: verified button rendering, header removal, navigation to `/tracker`, light and dark themes, and mobile responsiveness.
+
+- **GateQA — Multi-Branch Tracker Integration Using Official GATE Syllabi (DEC-175)**:
+  - *Context*: Previously, the Preparation & Syllabus Tracker (`/tracker`) was hardcoded to offer two fixed options ("GATE CSE" and "GATE DA"). The Tracker must now adapt dynamically to the candidate's selected examination branches (from `readBranchPreferences()`, max 2 branches as per GATE rules: CSE, DA, EC, EE, ME, CE), using strictly the official GATE syllabi without artificial or invented subdivisions.
+  - *Changes*:
+    - **Dynamic Branch Adaptation**:
+      - Connected `TrackerPage.jsx` to `readBranchPreferences()` and subscribed to `BRANCH_PREFERENCE_EVENT`.
+      - Renders switcher buttons strictly for candidate's selected branches (e.g. CSE + EC, EC + EE, ME + CE, or single branch).
+      - Unselected branches are completely excluded from the switcher.
+      - Preserved default `["cse", "da"]` fallback before onboarding.
+    - **Official GATE Syllabi Taxonomies (`src/data/`)**:
+      - Created authoritative taxonomy files adhering 100% to official GATE syllabi:
+        - `src/data/ecTaxonomy.ts`: 8 official sections (Engineering Mathematics; Networks, Signals and Systems; Electronic Devices; Analog Circuits; Digital Circuits; Control Systems; Communications; Electromagnetics).
+        - `src/data/eeTaxonomy.ts`: 10 official sections (Engineering Mathematics; Electric Circuits; Electromagnetic Fields; Signals and Systems; Electrical Machines; Power Systems; Control Systems; Electrical and Electronic Measurements; Analog and Digital Electronics; Power Electronics).
+        - `src/data/meTaxonomy.ts`: 4 official sections (Engineering Mathematics; Applied Mechanics and Design; Fluid Mechanics and Thermal Sciences; Materials, Manufacturing and Industrial Engineering).
+        - `src/data/ceTaxonomy.ts`: 7 official sections (Engineering Mathematics; Structural Engineering; Geotechnical Engineering; Water Resources Engineering; Environmental Engineering; Transportation Engineering; Geomatics Engineering).
+      - Zero invented or inferred topics/subtopics without official syllabus support.
+      - Registered all 6 disciplines in `src/data/trackerTaxonomy.ts`.
+    - **Tracker State & Engine Generalization (`src/utils/trackerState.ts`)**:
+      - `getTrackerStorageKey` preserves existing `gate_qa_tracker_cse_v1` and `gate_qa_tracker_da_v1` while routing new branches to `gate_qa_tracker_${track}_v1`.
+      - Generalized `isQuestionInTrack` and prefix stripping for all branches (`/^(da|ec|ee|me|ce)[:\-]/`).
+      - Connected `BranchQuestionService` for dynamic question indexing of `ec`, `ee`, `me`, and `ce`.
+    - **UI & Practice Deep-Linking**:
+      - `TrackerCountdownHero.jsx` dynamically adapts to active branch exam dates, target badges, and color tokens.
+      - Deep-links in `TrackerHierarchicalTable.jsx`, `TrackerContinueCard.jsx`, and `TrackerFocusBanner.jsx` generate track-aware URLs (`/practice?track=${track}&subjects=...&hideSolved=1`).
+  - *Verification*:
+    - Full Vitest unit test suite: 105 passed test files, 1,319 passed tests (100% green).
+    - `TrackerPage.test.jsx`: 13/13 passed, including regression tests for multi-branch selection combinations.
+    - `trackerState.test.ts`: 33/33 passed.
+    - TypeScript typecheck: 0 errors.
+
+- **GateQA — Multi-Branch Personalization across Mock Tests & Performance Insights (DEC-174)**:
+  - *Context*: Candidates selecting up to 2 GATE examination papers (CSE, DA, EC, EE, ME, CE) required multi-branch personalization across Mock Tests and Performance Insights, while General Aptitude (GA) remains universally accessible across all screens.
+  - *Changes*:
+    - **Centralized Branch Eligibility (`src/utils/branchEligibility.ts`)**:
+      - Implemented helpers: `normalizeBranchId`, `isBranchEligible`, `isQuestionEligibleForBranches`, `filterPapersBySelectedBranches`, `getInsightTracksForSelectedBranches`, `getTrackForSubjectSlug`, `getTrackForSubjectOrQuestion`, `isItemEligibleForTrack`, and `getBranchSubjects`.
+      - Ensured General Aptitude is universally accessible across all branch combinations.
+      - Re-exported via `src/utils/branchPreference.ts`.
+    - **Mock Catalog Multi-Branch Loading (`src/services/MockCatalogService.js`)**:
+      - Dynamically loads search indices for `ec`, `ee`, `me`, and `ce`, merging past papers into the mock catalog alongside CSE and DA.
+    - **Streamlined Mock Test UI (`MockTestPortal.jsx`, `MockTestShell.jsx`, `MockTestSetup.jsx`)**:
+      - Completely removed legacy "Full Mock Test" (90 Qs / 180m) from user-facing UI, leaving only "Past Papers" and "Custom Builder".
+      - Restricted Past Papers to candidate's enrolled branches only, preventing URL bypass and falling back to eligible papers.
+      - Restricted Custom Builder subject selections, question counts, and pool generation strictly to enrolled branches + GA.
+      - Styled custom builder discipline cards with distinctive tones (sky, indigo, purple, amber, rose, emerald).
+    - **Personalized Performance Insights (`src/pages/InsightsPage.jsx`)**:
+      - Rendered dynamic track tabs based on selected branches: `[Selected Branch 1, Selected Branch 2 (if any), Special Aptitude, Combined]`.
+      - Strict track isolation: each individual branch view only includes that branch's attempts.
+      - Combined track aggregates strictly enrolled branches + General Aptitude, with correctly weighted accuracy (`totalCorrect / totalAttempted` across scoped subjects).
+      - Reconciled active and invalid track selections when candidate modifies branch preferences.
+  - *Verification*:
+    - Full Vitest suite passed: 105 passed test files, 1,316 passed tests (100% green).
+    - Dedicated test suites passed: `branchEligibility.test.ts` (20/20), `InsightsPage.test.jsx` (25/25), `MockTestShell.test.jsx` (24/24), `MockTestTwoSection.test.jsx` (8/8), `MockTestFlow.test.jsx` (2/2).
+    - TypeScript typecheck passed: 0 errors.
+    - Production build: `npm run build` completed cleanly, generating 3,605 static SEO prerendered pages and sitemap.
+
+- **GateQA — Simplify Detailed Solutions Across All Branches (DEC-173)**:
+  - *Context*: The original detailed solutions across branches contained artificial boilerplate sections (Key Concept and Formula, Given Information and Problem Modeling, Step-by-Step Derivation heading, Option Analysis and Distractor Diagnostic, Examiner Trap Alert and Pro Tip) that made answers look over-engineered.
+  - *Changes*:
+    - **Removed Over-Engineered Sections**: Stripped the 5 rigid boilerplate sections across all 12,659 solutions in all 6 branches (EC: 1,985 Qs, EE: 1,820 Qs, ME: 2,490 Qs, CE: 2,490 Qs, CSE: 3,679 Qs, DA: 195 Qs).
+    - **Direct & Natural Solutions**: The mathematical derivations, equations, calculations, and official conclusions are now presented directly without artificial boilerplate or filler lines (such as "Parameter Setup:" or distractor diagnostic lists).
+    - **Cleaned Data Stores & Static Shards**:
+      - Updated `data/solutions/{ec,ee,me,ce,cse,da}-v1.json` to store clean direct markdown and removed `pro_tip` and `distractor_breakdown`.
+      - Rebuilt static shards via `scripts/pipeline/build-branch-shards.mjs`, dropping shard sizes from ~180-230 KB to ~75-125 KB (well within the 250 KB budget).
+      - Updated solution synthesis pipelines (`scripts/pipeline/resynthesize-new-branches.mjs`, `synthesize-cse-da-solutions.mjs`, `simplify-detailed-solutions.mjs`).
+    - **UI Streamlining (`DetailedSolutionView.jsx`)**:
+      - Changed header badge from `"Detailed 5-Block Solution"` to `"Detailed Solution"`.
+      - Removed the separate `"Examiner Pro-Tip & Trap Alert"` callout box.
+      - Updated `DetailedSolutionView.test.jsx` to verify that removed sections do not appear.
+  - *Verification*:
+    - All 12,659 data solutions and 12,464 shard questions verified with 0 errors via `scripts/qa/verify-simplified-solutions.mjs`.
+    - Full Vitest unit suite passed: 105 passed test files, 1,316 passed tests.
+    - TypeScript typecheck passed: 0 errors.
+
+- **AppHeader Branch Switcher Removal & Top Bar Clean-up (DEC-172)**:
+  - *Context*: Removed the branch switcher toggle (`[CSE | EC ⌵]` / `BranchHeaderSwitcher`) from `src/components/Layout/AppHeader.jsx` to eliminate header clutter.
+  - *Implementation*:
+    - Removed `BranchHeaderSwitcher` import and rendering in `AppHeader.jsx`.
+    - Preserved `BranchHeaderSwitcher.jsx` and its unit tests for standalone/filter contexts.
+    - Updated `tests/e2e/multi-branch-flow.spec.js` to assert onboarding completion via localStorage persistence.
+    - Verified typecheck clean (`0 errors`), `AppHeader.test.jsx` (4/4 passed), and Playwright E2E suite (2/2 passed).
+
+
+- **GateQA Aspirant Hub Dashboard UI Refinement — Dark & Light Themes (DEC-171)**:
+  - *Context*: Refined the Candidate Profile Hub dashboard (`/profile`, `src/components/Profile/UserProfileHub.jsx`) into a restrained, professional engineering-exam preparation workspace with dark & light theme consistency.
+  - *Implementation*:
+    - **Removed Sections Completely**: Removed "Personalized Study Shortcuts" and "Target Exam Milestones" along with their layout wrappers, extra spacing, and unused state (`targetYear`, `targetRank`).
+    - **Core Functionality Preserved**:
+      - Preserved the GATE Aspirant Hub header and subtle offline-readiness indicator (`Guest Mode · Offline Ready` / `Authenticated Aspirant`).
+      - Preserved Enrolled GATE Disciplines section with all 6 branches visible: CSE, DA, EC, EE, ME, CE.
+      - Preserved the maximum 2-paper selection rule (`MAX_ALLOWED_BRANCHES = 2`).
+      - Preserved Primary and Secondary paper labels with clean "Set as Primary" swap affordance.
+      - Preserved compact Cloud Sync panel with dynamic status indicator, "Sync Now" action, and local JSON backup export.
+    - **Visual Direction & Technical Minimalism**:
+      - Removed decorative background glows, gradient headers, and unnecessary animations.
+      - Set clean content hierarchy with the 6 discipline cards as the primary focus, and the sync/backup area as a compact secondary panel.
+      - Displayed full discipline names and descriptions without truncation or clipping.
+    - **Semantic Theme Token Architecture**:
+      - Configured consistent dark and light tokens: Main surface (`#161B22` / `#FFFFFF`), Secondary surface (`#1C222B` / `#EEF1F5`), Primary text (`#E6EDF3` / `#1F2937`), Secondary text (`#9DA7B3` / `#64748B`), Border (`#30363D` / `#DCE2E9`), Primary action (`#477FE8` / `#285FC7`), and Selected card bg (`#1C2B41` / `#EFF5FF`).
+      - Single-component implementation reused across both themes without duplicated code or hardcoded dark-only colors.
+  - *Verification*:
+    - Unit tests: `UserProfileHub.test.jsx` (3/3 passing), `ProfilePage.test.jsx` (1/1 passing).
+    - Typecheck: `tsc -p tsconfig.json --noEmit` clean (0 errors).
+    - Playwright E2E: `tests/e2e/multi-branch-flow.spec.js` (2/2 passing).
+    - Visual inspection: Browser subagent verified both dark (`#0D1117`) and light (`#F5F7FA`) modes with screenshots.
+
+
+- **Multi-Branch Filter Integration, ECE Discovery Resolution & Question Service Hydration (DEC-170)**:
+  - *Context*: When candidates selected `ec` and `cse` in branch preferences, only `GATE CSE` appeared in the filter panel, while `GATE EC (ECE)` was missing.
+  - *Root Cause*: `FilterSidebar.jsx` and `FilterContext.tsx` historically only contained hardcoded sections for CSE, DA, and ISRO without state, loading pipelines, or filter cards for EC, EE, ME, or CE.
+  - *Implementation*:
+    - **Lightweight Branch Search Indices**: Generated lightweight index shards `public/data/{ec,ee,me,ce}/search-index.json` containing 8,785 questions with answer metadata, marks, and subject taxonomies (EC: 1,985 Qs; EE: 1,820 Qs; ME: 2,490 Qs; CE: 2,490 Qs).
+    - **Lazy-Load Branch Question Service (`src/services/BranchQuestionService.ts`)**: Loads question indices and taxonomy trees on-demand when a branch is enrolled, hydrating full question stems, KaTeX solutions, diagrams, and answer records from static detail shards in `public/question-detail-shards/`.
+    - **Branch Topic Filter Component (`src/components/Filters/BranchTopicFilter.tsx`)**: Created topic filter cards for `ec`, `ee`, `me`, and `ce` with discipline-specific theme colors, topic trees, subtopic expand/collapse accordions, and Select All / Clear All toggles.
+    - **Dynamic Discipline Enrollment in `FilterContext.tsx`**: Derived `isCseEnrolled`, `isEcEnrolled`, `isEeEnrolled`, `isMeEnrolled`, and `isCeEnrolled` from candidate preferences; automatically loads active branch questions into `allQuestions`, `gateValidQuestionIdSet`, and `structuredTags`.
+    - **Enrolled Disciplines Switcher & Filter Cards in `FilterSidebar.jsx`**: Added segmented switcher (`[ ECE | CSE ]`) at the top of the filter panel when multiple disciplines are enrolled; mounted `<BranchTopicFilter branch="ec" />` when EC is enrolled alongside `<TopicFilter />` when CSE is enrolled.
+    - **Hydration & Answer Verification**: Routed `SolvePage.jsx`, `SessionContext.tsx`, and `AnswerService.ts` to `BranchQuestionService` with embedded answer fallbacks; added branch badges to `QuestionResultCard.jsx` and `QuestionPickerList.jsx`.
+  - *Verification*:
+    - Added dedicated unit tests in `src/components/Filters/BranchTopicFilter.test.tsx` (7/7 passed).
+    - Added integration tests in `src/components/Filters/BranchFilterIntegration.test.jsx` (4/4 passed).
+    - Added multi-branch state tests in `src/contexts/FilterContext.test.jsx`.
+    - Full Vitest suite passing: 104 test files, 1,296 tests passed (100% green).
+    - TypeScript typecheck: clean (0 errors).
+
+
+- **Branch Selection Wall Design & Usability Overhaul (DEC-169)**:
+  - *Context*: The initial branch selection onboarding wall featured an oversized modal-like frame with thick borders and rounded corners, large centered marketing-style typography, truncated subject descriptions behind ellipses, bulky icon background boxes, and a plain-text footer button.
+  - *Implementation*:
+    - **A. Frame & Layout Modernization**: Converted the container to a flat `#0B0D10` screen background with a clean centered `1080px` content container (`max-w-[1080px]`), removing oversized double borders, excessive backdrop blur, and bulky nested modals.
+    - **B. Typography & Hierarchy Alignment**: Reduced the main heading from ~42px to 30–34px (`text-[28px] sm:text-[32px] md:text-[34px]`), aligned heading and supporting copy to the left, shortened copy to *"Choose 1–2 papers to personalize your preparation."*, and moved the official GATE rule into an understated info row.
+    - **C. Branch Cards Redesign**: Redesigned cards to 150–180px height (`min-h-[160px] sm:min-h-[170px]`), removed bulky icon background boxes in favor of quiet branch icons with distinct colors (`text-blue-400`, `text-emerald-400`, etc.), eliminated `line-clamp` so all subject lists are visible without ellipses, and rendered restrained `#6B9BFF` accent borders and check indicators.
+    - **D. Intentional Selection Mechanics**: Allowed natural deselection down to 0, clearly explained the 2-paper maximum limit on cards (*"Max 2 papers selected · Deselect one to swap"*), disabled unselected cards with accessible `aria-disabled` and reduced opacity, and disabled the primary action button when 0 papers are selected.
+    - **E. Compact Action Footer**: Streamlined the bottom area with a top divider (`border-t border-[#2A313B]`), selection count on the left, sticky positioning on mobile viewports, and a solid blue primary button (`#6B9BFF` background with `#0B0D10` text) labeled *"Continue to preparation"*.
+  - *Verification*:
+    - Unit tests: 5 tests in `src/components/Branch/BranchSelectionWall.test.jsx` passing (100% green).
+    - E2E Playwright test: `tests/e2e/multi-branch-flow.spec.js` passing (2/2 tests green).
+    - Related components: `BranchHeaderSwitcher.test.jsx` and `UserProfileHub.test.jsx` passing.
+
+  - *Context*: Engineering branch diagrams in `public/question-images/{branch}/` (`ce`, `ec`, `ee`, `me`) were initially stored as loose flat files (`{branch}-{year}-{hash}.webp`), making the folders unwieldy with over 5,459 images and lacking hierarchical year grouping.
+  - *Implementation*:
+    - **Year-Nested Image Directory Structure**: Organized all 5,459 images across `ce` (1,252), `ec` (1,458), `ee` (1,576), and `me` (1,173) into deterministic year subdirectories `public/question-images/{branch}/{year}/{filename}` spanning 2001–2026 (26 years per branch, 104 directories in total).
+    - **Repository-Wide Reference Migration**: Migrated all 8,214 image URL occurrences across 271 files (`audit/ce/*.json`, `audit/ec/*.json`, `audit/ee/*.json`, `audit/me/*.json`, and all 128 multi-branch static detail shards in `public/question-detail-shards/{branch}-{year}-s*.json`) from `/question-images/{branch}/{filename}` to `/question-images/{branch}/{year}/{filename}`.
+    - **Pipeline Generation Protection**: Updated `scripts/pipeline/mirror-branch-images.mjs` lines 58–64 so all future downloads automatically write to and return `/question-images/{branch}/{year}/{fileName}`. Deprecated `scripts/pipeline/flatten-branch-images.mjs`.
+    - **Automated Reorganization Utility (`scripts/pipeline/organize-branch-images-by-year.mjs`)**: Created an idempotent migration script to maintain and enforce the year-nested hierarchy.
+    - **QA Image Validation Suite Updates (`scripts/qa/validate-question-images.mjs`)**: Updated directory scanning to traverse recursively and inspect questions in both static shards and audit files.
+  - *Verification*:
+    - Bi-directional 1-to-1 parity confirmed: 5,459 image files on disk = 5,459 unique references across repository files.
+    - Missing files count on disk: 0. Loose files in branch roots: 0.
+    - `npm run qa:validate-question-images`: 0 missing files across 25,389 questions.
+    - TypeScript typecheck: `tsc -p tsconfig.json --noEmit` clean (0 errors).
+    - Full Vitest test suite: 101 test files passing, 1,279 unit tests green (100% passing).
+
+- **Playwright E2E Multi-Branch Verification, A11y Suite Hardening & Mock Exam URL Synchronization (DEC-167)**:
+  - *Context*: Complete Phase 6 end-to-end verification and testing suite hardening for the Multi-Branch Ingestion, Detailed Solution Engine, and Candidate Profile Hub architecture (DEC-164 through DEC-166).
+  - *Implementation*:
+    - **E2E Onboarding Seed Isolation**: In `tests/e2e/a11y.axe.spec.js`, `tests/e2e/mock-test-flow.spec.js`, and `tests/e2e/practice-flow.spec.js`, pre-seeded branch onboarding keys (`gateqa_branch_onboarding_completed: "true"`, `gateqa_selected_branches: '["cse"]'`, `gateqa_active_branch: "cse"`) via `context.addInitScript`, isolating existing test suites from the pre-home Onboarding Wall modal.
+    - **Multi-Branch Flow E2E Suite (`tests/e2e/multi-branch-flow.spec.js`)**: Created comprehensive Playwright spec testing:
+      - First-time fresh sessions prompt `BranchSelectionWall` modal.
+      - Official IIT $\le 2$ branches rule is strictly enforced (disabling third branch selection with warning message).
+      - Enrolling in branches unlocks the application and scopes `/profile` Candidate Profile Hub.
+      - Active branch toggling switches application context smoothly.
+    - **A11y Suite Hardening**: Hardened `waitForPracticeList` in `tests/e2e/a11y.axe.spec.js` to await rendered question card controls (`Open` button) before capturing accessibility snapshots, eliminating race conditions on dynamic question fetching.
+    - **Mock Exam URL Synchronization**: Removed duplicate `onStageChange` hook in `src/components/MockTest/MockTestShell.jsx`, ensuring exact URL synchronization between `/mock?stage=setup` and `/mock?stage=exam` without breaking unit test assertion counts.
+  - *Verification*:
+    - Full Playwright E2E test suite: **19/19 tests passing (100% green in 2.2m)**.
+    - Full Vitest unit test suite: **101 test files, 1,279 tests passing (100% green in 99s)**.
+    - TypeScript typecheck: `tsc -p tsconfig.json --noEmit` **clean (0 errors)**.
+    - Production static build: **3,605 pre-rendered static SEO routes** in `dist/`.
+
+- **Full Historical Multi-Branch Ingestion, 5-Block Solution Synthesis & Static Shards Build for EC, EE, ME, CE (2001–2026) (DEC-166)**:
+  - *Context*: Following the DEC-164 2024 pilot, the master sequential crawler (`scripts/intake/crawl-all-sequential.mjs`) was executed across all 143 discovered historical papers for Electronics & Communication (`EC`), Electrical (`EE`), Mechanical (`ME`), and Civil (`CE`) spanning 2001 through 2026.
+  - *Implementation*:
+    - **143 Papers & 8,785 Questions Ingested**: Successfully crawled 1,985 EC, 1,820 EE, 2,490 ME, and 2,490 CE questions with stems, option arrays, marks, question types (6,411 MCQs, 157 MSQs, 2,217 NATs), and official IIT answer keys into `audit/{branch}/raw-*.json`.
+    - **5,459 WebP Diagrams Mirrored Locally**: Processed all engineering schematics, Mohr's circles, Bode plots, trusses, and mechanism diagrams via `scripts/pipeline/mirror-branch-images.mjs` using Sharp, rewriting HTML tags to `public/question-images/{branch}/` with SHA-256 hashes for 100% offline-first reliability and zero external hotlinks.
+    - **8,785 5-Block Solutions Re-Synthesized**: Ran `scripts/pipeline/resynthesize-new-branches.mjs --branch=all`, generating structured 5-block solutions with KaTeX formatting and official key validation into `data/solutions/ec-v1.json`, `ee-v1.json`, `me-v1.json`, and `ce-v1.json`.
+    - **143 Static Detail Shards Built**: Executed `scripts/pipeline/build-branch-shards.mjs`, generating all 143 shards in `public/question-detail-shards/` strictly within the 250 KB budget (150–228 KB), isolating branch math taxonomies, universally cross-indexing General Aptitude, attaching detailed solutions to 3,679 CSE/DA questions, and expanding the authoritative answer registry (`answers_by_question_uid_v1.json`) to 12,900 verified records.
+    - **Verification**: `npm run precompute`, `node scripts/build-public-artifacts.mjs`, `npm run typecheck` (0 errors), and `npm run test:unit` (101 test files passing, 1,279 unit tests green, 100% passing).
+
+- **Candidate Profile Hub Lazy Chunk Export Resolution & Cloud Sync Hardening (DEC-165)**:
+  - *Context*: Navigating to `/profile` triggered the route `ErrorBoundary` with "Something went wrong (This section hit an unexpected error)" in the browser runtime.
+  - *Root Cause*: In `UserProfileHub.jsx`, `manualSyncWithCloud` was imported from `src/utils/cloudSyncManager.js`, which did not export this named function. During Vite dynamic chunk evaluation in the browser, this resulted in an unresolved named import `SyntaxError`, causing the lazy route component to fail mounting. Additionally, `useAuth()` provides `isAuthenticated`, `triggerSync`, and `lastSyncedAt`, rather than an `isGuest` property.
+  - *Fix*:
+    - Exported `manualSyncWithCloud(userId, options)` in `src/utils/cloudSyncManager.js` to coordinate `syncUserData` and `syncTrackerData` with forced push semantics.
+    - Updated `UserProfileHub.jsx` to properly destructure `useAuth` (`isAuthenticated`, `triggerSync`, `lastSyncedAt`, `isGuest = !isAuthenticated`) and gracefully handle manual sync in both guest and authenticated states.
+    - Updated `UserProfileHub.test.jsx` test mocks with complete auth properties; verified with unit tests and browser subagent runtime inspection.
+
+- **Multi-Branch Expansion (EC, EE, ME, CE), Detailed 5-Block Solution Engine, Onboarding Wall & Candidate Profile Hub (DEC-164)**:
+  - *Context*:
+    - GateQA historically focused on GATE CSE (with supplementary IT and DA 2024–2026 archives). Candidates preparing for other major GATE engineering disciplines (Electronics & Communication `EC`, Electrical Engineering `EE`, Mechanical Engineering `ME`, Civil Engineering `CE`) required access to verified question archives and diagrams.
+    - Questions lacked in-app detailed pedagogical derivations, forcing students to rely solely on external forum threads.
+    - Official GATE examination regulations allow a candidate to apply for at most 2 papers. Without disciplined scoping, displaying all branches simultaneously introduces severe cognitive clutter.
+  - *Implementation*:
+    - **Intake Engine & Diagram Mirroring Pipeline (`scripts/intake/`, `scripts/pipeline/mirror-branch-images.mjs`)**:
+      - Discovered 143 papers from practicepaper.in and implemented robust scraper with pagination and KaTeX sanitization (`scripts/intake/crawl-practicepaper.mjs`).
+      - Ingested 325 questions across EC 2024, EE 2024, ME 2024, CE 2024 Set 1, and CE 2024 Set 2.
+      - Mirrored 177+ external diagrams into local WebP assets in `public/question-images/{branch}/2024/`, rewriting image tags to enforce zero third-party hotlink dependency.
+    - **Detailed 5-Block Solution Engine (`scripts/pipeline/synthesize-cse-da-solutions.mjs`, `resynthesize-new-branches.mjs`)**:
+      - Generated 3,679 detailed 5-block solutions for CSE & DA and 325 solutions for new branches (`Concept & Formulae`, `Step-by-Step Derivation`, `Alternative Fast Method`, `Examiner Pro-Tip & Trap Alert`, and `Option Analysis`).
+      - Enforced <35% 4-gram overlap against source texts and validated KaTeX balance.
+    - **Branch-Exclusive Math & Static Shards (`scripts/pipeline/build-branch-shards.mjs`)**:
+      - Built precomputed static shards for new branches in `public/question-detail-shards/` (`ec-2024-s1.json`, `ee-2024-s1.json`, `me-2024-s1.json`, `ce-2024-s1.json`, `ce-2024-s2.json`), all strictly under the 250 KB budget.
+      - Enriched CSE static shards with native detailed solutions and updated authoritative answer indices.
+    - **Unified Branch Preference Engine (`src/utils/branchPreference.ts`)**:
+      - Implemented `readBranchPreferences`, `writeBranchPreferences`, `setActiveBranch`, and `MAX_ALLOWED_BRANCHES = 2`.
+      - Dispatched `BRANCH_PREFERENCE_EVENT` for live reactivity across all application contexts.
+    - **Pre-Home Onboarding Wall (`src/components/Branch/BranchSelectionWall.jsx`)**:
+      - Renders an interactive 6-card discipline picker modal enforcing the $\le 2$ papers limit.
+      - Bypasses automatically on deep-link routes (e.g. solve/question links).
+    - **Global Header Switcher (`src/components/Branch/BranchHeaderSwitcher.jsx`)**:
+      - Segmented toggle (`[ EC | EE ]`) embedded directly into `AppHeader.jsx`, allowing instantaneous active branch swapping with a reconfigure action.
+    - **Deep Filter Scoping & ISRO CSE Guard (`src/contexts/FilterContext.tsx`, `FilterSidebar.jsx`, `IsroToggle.jsx`)**:
+      - Scoped filter taxonomy trees and year-sets to selected branches.
+      - Enforced ISRO CSE coupling: ISRO CS is visible and ingested only if CSE is among the candidate's enrolled disciplines.
+    - **Candidate Profile Hub (`src/components/Profile/UserProfileHub.jsx`, `src/pages/ProfilePage.jsx`)**:
+      - Created `/profile` route with SEO metadata, enrolled paper management, active paper switcher, personalized navigation shortcuts, target exam year/rank goals, and JSON backup export.
+      - Integrated profile link into `UserProfileMenu.jsx` dropdown.
+    - **Dual Action Solution Viewer (`src/components/AnswerPanel/AnswerPanel.jsx`, `DetailedSolutionView.jsx`)**:
+      - Toggles rich in-app 5-block KaTeX solution while strictly preserving external GateOverflow discussion links with `FiExternalLink` on CSE, ISRO, and DA questions.
+  - *Verification*: Full Vitest suite passing (101 test files passed, 1,279 tests passed, 100% green), TypeScript typecheck clean (0 errors), all static shards verified under 250 KB budget.
+
 - **Supabase Phase 1 Log Ingestion Reduction & Sync Hardening (DEC-163)**:
   - *Context*:
     - Production telemetry analysis of `supabase/supabase_logs_oct_26.json` and dashboard readings revealed ~18.5–21.0 MB/day log ingestion on Supabase Free Tier (~580–630 MB/month, ~60% of 1 GB quota with only ~5–10 concurrent users).

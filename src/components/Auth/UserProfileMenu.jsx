@@ -11,8 +11,9 @@
  *  - Accessible: aria-expanded, aria-label
  */
 import React, { useEffect, useRef, useState } from "react";
-import { FiLogOut, FiCheck, FiRefreshCw, FiCloud } from "react-icons/fi";
+import { FiLogOut, FiCheck, FiRefreshCw, FiCloud, FiUser } from "react-icons/fi";
 import { useAuth } from "../../contexts/AuthContext";
+import { PROFILE_ROUTE } from "../../utils/routes";
 
 function formatSyncTime(date) {
   if (!date) return null;
@@ -163,6 +164,18 @@ function UserProfileMenu() {
           </div>
 
           <div className="user-profile-divider" role="separator" />
+
+          {/* Profile & Disciplines Hub */}
+          <a
+            id="user-profile-hub-link"
+            href={PROFILE_ROUTE}
+            className="user-profile-menu-item flex items-center gap-2 px-3 py-2 text-xs font-medium text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-muted)] rounded-lg transition"
+            onClick={() => setIsOpen(false)}
+            role="menuitem"
+          >
+            <FiUser className="h-4 w-4 shrink-0 text-sky-500" />
+            <span>Profile &amp; Disciplines</span>
+          </a>
 
           {/* Sign Out */}
           <button

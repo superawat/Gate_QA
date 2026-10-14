@@ -265,6 +265,8 @@ export default function TrackerHierarchicalTable({
   const handlePracticeSubject = useCallback((subject) => {
     if (subject.track === "da") {
       navigate(`${PRACTICE_ROUTE}?subjects=da:${subject.slug}&hideSolved=1`);
+    } else if (subject.track && subject.track !== "cse") {
+      navigate(`${PRACTICE_ROUTE}?track=${subject.track}&subjects=${encodeURIComponent(subject.slug)}&hideSolved=1`);
     } else {
       const slugs = subject.canonicalSubjectSlugs?.length ? subject.canonicalSubjectSlugs.join(",") : subject.slug;
       navigate(`${PRACTICE_ROUTE}?subjects=${encodeURIComponent(slugs)}&hideSolved=1`);
@@ -272,8 +274,11 @@ export default function TrackerHierarchicalTable({
   }, [navigate]);
 
   const handlePracticeTopic = useCallback((topic, subject) => {
-    if (subject.track === "da") {
+    const track = subject?.track || topic?.track;
+    if (track === "da") {
       navigate(`${PRACTICE_ROUTE}?subjects=da:${topic.subjectSlug || subject.slug}&subtopics=${topic.primaryTopicTag}&hideSolved=1`);
+    } else if (track && track !== "cse") {
+      navigate(`${PRACTICE_ROUTE}?track=${track}&subjects=${encodeURIComponent(topic.subjectSlug || subject.slug)}&subtopics=${encodeURIComponent(topic.primaryTopicTag || "")}&hideSolved=1`);
     } else {
       navigate(`${PRACTICE_ROUTE}?subjects=${topic.subjectSlug || subject.slug}&subtopics=${topic.primaryTopicTag}&hideSolved=1`);
     }
@@ -566,50 +571,61 @@ export default function TrackerHierarchicalTable({
         </div>
       </div>
 
+      {/* Mobile Swipe Guidance Banner */}
+      <div className="sm:hidden px-3.5 py-2 bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-transparent border-b border-[color:var(--color-border)] flex items-center justify-between text-[11px] text-[color:var(--color-text)]">
+        <span className="inline-flex items-center gap-1.5 font-medium text-blue-500 dark:text-blue-400">
+          <span className="animate-pulse">↔</span>
+          <span>Swipe horizontally for Theory, PYQs &amp; Actions</span>
+        </span>
+        <span className="text-[10px] text-[color:var(--color-text-muted)] font-mono">
+          {subjects.length} subjects
+        </span>
+      </div>
+
       {/* Hierarchical Table Container with Sticky First Column & Smooth Touch Momentum */}
       <div className="overflow-x-auto overscroll-x-contain scrollbar-thin">
-        <table className="w-full text-left border-collapse min-w-[700px] sm:min-w-[760px]">
+        <table className="w-full text-left border-collapse min-w-[660px] sm:min-w-[760px]">
           <thead>
             <tr className="border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] text-[11px] font-bold text-[color:var(--color-text-muted)] uppercase tracking-wider">
-              <th scope="col" className="py-3 px-3 sm:px-4 sticky left-0 z-20 bg-[color:var(--color-surface-muted)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
-                Syllabus (Subject / Topic)
+              <th scope="col" className="py-2.5 sm:py-3 px-2.5 sm:px-4 sticky left-0 z-20 bg-[color:var(--color-surface-muted)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                Syllabus
               </th>
-              <th scope="col" className="py-3 px-3 text-center w-24">
+              <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-20 sm:w-24">
                 Theory
               </th>
-              <th scope="col" className="py-3 px-3 text-center w-20">
+              <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-16 sm:w-20">
                 Revised
               </th>
-              <th scope="col" className="py-3 px-3 text-center w-28">
+              <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-24 sm:w-28">
                 Revision Count
               </th>
-              <th scope="col" className="py-3 px-4 text-center w-36">
+              <th scope="col" className="py-2.5 sm:py-3 px-3 sm:px-4 text-center w-28 sm:w-36">
                 PYQs Practiced
               </th>
-              <th scope="col" className="py-3 px-3 text-center w-20">
+              <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-16 sm:w-20">
                 Accuracy
               </th>
               {isColVisible("marks") && (
-                <th scope="col" className="py-3 px-3 text-center w-28">
+                <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-20 sm:w-28">
                   Marks
                 </th>
               )}
               {isColVisible("priority") && (
-                <th scope="col" className="py-3 px-3 text-center w-28">
+                <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-20 sm:w-28">
                   Priority
                 </th>
               )}
               {isColVisible("mock") && (
-                <th scope="col" className="py-3 px-3 text-center w-20">
+                <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-16 sm:w-20">
                   Mock
                 </th>
               )}
               {isColVisible("mockCount") && (
-                <th scope="col" className="py-3 px-3 text-center w-28">
+                <th scope="col" className="py-2.5 sm:py-3 px-2 sm:px-3 text-center w-20 sm:w-28">
                   Mock Count
                 </th>
               )}
-              <th scope="col" className="py-3 px-4 text-right w-44">
+              <th scope="col" className="py-2.5 sm:py-3 px-2.5 sm:px-4 text-right w-32 sm:w-44">
                 Actions
               </th>
             </tr>
@@ -665,12 +681,12 @@ export default function TrackerHierarchicalTable({
                   {/* LEVEL 1: Subject Header Row */}
                   <tr className="bg-[color:var(--color-surface)] border-b border-[color:var(--color-border)] hover:bg-[color:var(--color-bg)] transition-colors group/subject">
                     {/* Sticky Subject Title */}
-                    <td className="py-3 px-3 sm:px-4 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/subject:bg-[color:var(--color-bg)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
-                      <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                    <td className="py-2.5 sm:py-3 px-2 sm:px-4 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/subject:bg-[color:var(--color-bg)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                      <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
                         <button
                           type="button"
                           onClick={() => toggleSubjectExpand(subject.id)}
-                          className="w-6 h-6 flex items-center justify-center -ml-0.5 rounded-lg shrink-0 text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-border)]/50 transition-colors"
+                          className="w-7 h-7 sm:w-6 sm:h-6 flex items-center justify-center -ml-0.5 rounded-lg shrink-0 text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-border)]/50 transition-colors"
                           aria-label={isSubjectExpanded ? `Collapse ${subject.label}` : `Expand ${subject.label}`}
                         >
                           {isSubjectExpanded ? (
@@ -680,13 +696,13 @@ export default function TrackerHierarchicalTable({
                           )}
                         </button>
                         <div
-                          className="cursor-pointer select-none flex-1 min-w-0 flex items-center justify-between gap-2"
+                          className="cursor-pointer select-none flex-1 min-w-0 flex items-center justify-between gap-1 sm:gap-2"
                           onClick={() => toggleSubjectExpand(subject.id)}
                         >
                           <span className="font-bold text-xs sm:text-sm text-[color:var(--color-text)] leading-snug break-words">
                             {subject.label}
                           </span>
-                          <span className="shrink-0 whitespace-nowrap text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 tabular-nums inline-flex items-center justify-center">
+                          <span className="shrink-0 whitespace-nowrap text-[9px] sm:text-[11px] font-semibold px-1.5 sm:px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 tabular-nums inline-flex items-center justify-center">
                             {subject.topics.length} Topics
                           </span>
                         </div>
@@ -944,13 +960,13 @@ export default function TrackerHierarchicalTable({
                         <React.Fragment key={topic.id}>
                           <tr className="hover:bg-[color:var(--color-bg)] transition-colors group/topic">
                             {/* Sticky Topic Title with Indent */}
-                            <td className="py-2.5 px-3 sm:px-4 pl-6 sm:pl-8 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-bg)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
-                              <div className="flex items-center gap-2 min-w-0">
+                            <td className="py-2 sm:py-2.5 px-2 sm:px-4 pl-3.5 sm:pl-8 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-bg)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                                 {hasSubtopics ? (
                                   <button
                                     type="button"
                                     onClick={() => toggleTopicExpand(topic.id)}
-                                    className="w-5 h-5 flex items-center justify-center rounded text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors shrink-0"
+                                    className="w-6 h-6 sm:w-5 sm:h-5 flex items-center justify-center rounded text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] transition-colors shrink-0"
                                     aria-label={isTopicExpanded ? `Collapse ${topic.label}` : `Expand ${topic.label}`}
                                   >
                                     {isTopicExpanded ? (
@@ -1192,9 +1208,9 @@ export default function TrackerHierarchicalTable({
                                   className="bg-[color:var(--color-surface-muted)]/30 hover:bg-[color:var(--color-surface-muted)] transition-colors text-[11px]"
                                 >
                                   {/* Deeply Indented Subtopic Title with Enumeration */}
-                                  <td className="py-2 px-3 sm:px-4 pl-10 sm:pl-14 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-surface-muted)] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)] min-w-[230px] sm:min-w-[260px] md:min-w-[320px]">
-                                    <div className="flex items-center gap-2 min-w-0">
-                                      <span className="text-[11px] font-mono font-bold text-[color:var(--color-text-muted)] w-4 text-right shrink-0">
+                                  <td className="py-1.5 sm:py-2 px-2 sm:px-4 pl-6 sm:pl-14 sticky left-0 z-10 bg-[color:var(--color-surface)] group-hover/topic:bg-[color:var(--color-surface-muted)] shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)] min-w-[155px] sm:min-w-[240px] md:min-w-[300px] max-w-[175px] sm:max-w-none">
+                                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                                      <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[color:var(--color-text-muted)] w-3.5 sm:w-4 text-right shrink-0">
                                         {sIdx + 1}.
                                       </span>
                                       <span className="text-[color:var(--color-text)] font-medium text-xs leading-snug break-words">

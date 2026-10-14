@@ -131,16 +131,14 @@ describe("AppHeader", () => {
     });
   });
 
-  test("renders tracker icon link in header on non-mock routes and hides on mock routes", () => {
+  test("does not render tracker link in header as it moved to main navigation", () => {
     const { unmount } = render(
       <MemoryRouter initialEntries={["/practice"]}>
         <AppHeader />
       </MemoryRouter>
     );
 
-    const trackerLink = screen.getByRole("link", { name: /open gate preparation & syllabus tracker/i });
-    expect(trackerLink).toBeTruthy();
-    expect(trackerLink.getAttribute("href")).toBe("/tracker");
+    expect(screen.queryByRole("link", { name: /open gate preparation & syllabus tracker/i })).toBeNull();
 
     unmount();
 

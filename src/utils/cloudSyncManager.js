@@ -1443,3 +1443,24 @@ export async function syncTrackerData(userId, options = {}) {
     return { success: false, error: trackerErr };
   }
 }
+
+/**
+ * Manual sync helper triggered from UserProfileHub or manual sync buttons.
+ * Syncs user progress and user tracker data with forced push semantics.
+ */
+export async function manualSyncWithCloud(userId, options = {}) {
+  if (!userId) {
+    return { success: true, message: "Guest mode: local progress safely stored." };
+  }
+  const [progressResult, trackerResult] = await Promise.all([
+    syncUserData(userId, { force: true, forcePush: true, ...options }),
+    syncTrackerData(userId, { force: true, forcePush: true, ...options }),
+  ]);
+  const success = Boolean(progressResult?.success && trackerResult?.success);
+  return {
+    success,
+    progress: progressResult,
+    tracker: trackerResult,
+  };
+}
+

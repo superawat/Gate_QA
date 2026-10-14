@@ -82,6 +82,9 @@ export class QuestionService {
   static _hydrateFromCache = loader._hydrateFromCache;
   static _writeCache = loader._writeCache;
   static clearInitCache = loader.clearInitCache;
+  static clearBranch(): void {
+    loader.clearBranch.call(QuestionService as any);
+  }
   static _loadIndexedDataset = loader._loadIndexedDataset;
   static _loadFullBankDataset = loader._loadFullBankDataset;
   static init = loader.init;

@@ -29,6 +29,7 @@ vi.mock("./pages/HomePage", () => ({
     manifestLoading,
     onOpenMockHistory,
     onOpenInsights,
+    onOpenTracker,
     onResumePractice,
     onStartRandomPractice,
     onStartMockTest,
@@ -42,8 +43,13 @@ vi.mock("./pages/HomePage", () => ({
       <button type="button" onClick={onStartMockTest}>Mock</button>
       <button type="button" onClick={onOpenMockHistory}>History</button>
       <button type="button" onClick={onOpenInsights}>Insights</button>
+      <button type="button" onClick={onOpenTracker}>Tracker</button>
     </div>
   ),
+}));
+
+vi.mock("./pages/TrackerPage", () => ({
+  default: () => <div>Tracker page</div>,
 }));
 
 vi.mock("./pages/ExplorePage", () => ({
@@ -257,6 +263,18 @@ describe("App routes", () => {
     });
 
     expect(await screen.findByText("Insights page 3271")).toBeTruthy();
+  });
+
+  test("home tracker button opens the tracker page", async () => {
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /tracker/i }));
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/tracker");
+    });
+
+    expect(await screen.findByText("Tracker page")).toBeTruthy();
   });
 
   test("manual route renders without initializing question data", async () => {

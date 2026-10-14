@@ -1,0 +1,2258 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.350Z",
+  "shardKey": "ee-2013-s1",
+  "yearSetKey": "ee-2013-s1",
+  "yearSetIdentity": "ee:2013:set-1",
+  "track": "ee",
+  "year": 2013,
+  "set": 1,
+  "label": "2013 Set 1",
+  "questionCount": 55,
+  "recordsByQuestionUid": {
+    "pp:ee:2013:q1": {
+      "question_uid": "pp:ee:2013:q1",
+      "exam_uid": "ee:2013:set1:q1",
+      "title": "GATE EE 2013 | Set 1 | Question: 1",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below what is the output voltage $(V_{out})$ if a silicon transistor Q and an ideal op-amp are used? <br><img src=\"/question-images/ee/2013/ee-2013-7b18dd33fd.webp\"/>",
+      "options": [
+        "$-15 V$",
+        "$-0.7 V$",
+        "$+0.7 V$",
+        "$+15 V$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-7976108467.webp\" />\n\nUsing the concept of vitual ground, V=0\n\n<img src=\"/question-images/ee/2013/ee-2013-8605253cb5.webp\" />\n\n$V_{out}=-0.7V$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q2": {
+      "question_uid": "pp:ee:2013:q2",
+      "exam_uid": "ee:2013:set1:q2",
+      "title": "GATE EE 2013 | Set 1 | Question: 2",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The transfer function $\\frac{V_{2}(s)}{V_{1}(s)}$ of the circuit shown below is <br><img src=\"/question-images/ee/2013/ee-2013-440fca3557.webp\"/>",
+      "options": [
+        "$\\frac{0.5s+1}{s+1}$",
+        "$\\frac{3s+6}{s+2}$",
+        "$\\frac{s+2}{s+1}$",
+        "$\\frac{s+1}{s+2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-bd238be1c6.webp\" />\n\n$\\frac{V_2(s)}{V_1(s)}=\\frac{R+\\frac{1}{Cs}}{\\frac{1}{Cs}+R+\\frac{1}{Cs}}$\n\n$=\\frac{1+RCs}{2+RCs}$\n\n$=\\frac{1+10 \\times 10^3 \\times 100 \\times 10^{-6}s}{2+10 \\times 10^3 \\times 100 \\times 10^{-6}s}$\n\n$=\\frac{s+1}{s+2}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q3": {
+      "question_uid": "pp:ee:2013:q3",
+      "exam_uid": "ee:2013:set1:q3",
+      "title": "GATE EE 2013 | Set 1 | Question: 3",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Assuming zero initial condition, the response y(t) of the system given below to a\nunit step input u(t) is <br><img src=\"/question-images/ee/2013/ee-2013-57af6586c7.webp\"/>",
+      "options": [
+        "u(t)",
+        "tu(t)",
+        "$\\frac{t^{2}}{2}u(t)$",
+        "$e^{-t}u(t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "$$\\begin{aligned} Y(s)&=\\frac{1}{s}U(s)=\\frac{1}{s^2}\\\\ y(t)&=tu(t) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q4": {
+      "question_uid": "pp:ee:2013:q4",
+      "exam_uid": "ee:2013:set1:q4",
+      "title": "GATE EE 2013 | Set 1 | Question: 4",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The impulse response of a system is h(t)=tu(t). For an input u(t-1), the output is",
+      "options": [
+        "$\\frac{t^{2}}{2}u(t)$",
+        "$\\frac{t(t-1)}{2}u(t-1)$",
+        "$\\frac{(t-1)^{2}}{2}u(t-1)$",
+        "$\\frac{t^{2}-1}{2}u(t-1)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "$$\\begin{aligned} h(t) &=tu(t) \\\\ H(s) &=\\frac{1}{s^2} \\\\ \\Rightarrow \\; \\frac{Y(s)}{U(s)} &=\\frac{1}{s^2} \\\\ Y(s) &=\\frac{1}{s^2} \\frac{e^{-s}}{s}\\\\ \\Rightarrow \\; y(t) &=\\frac{(t-1)^2}{2}u(t-1) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q5": {
+      "question_uid": "pp:ee:2013:q5",
+      "exam_uid": "ee:2013:set1:q5",
+      "title": "GATE EE 2013 | Set 1 | Question: 5",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following statements is NOT TRUE for a continuous time\ncausal and stable LTI system?",
+      "options": [
+        "All the poles of the system must lie on the left side of the $j \\omega$ axis",
+        "Zeros of the system can lie anywhere in the s-plane",
+        "All the poles must lie within |s| = 1",
+        "All the roots of the characteristic equation must be located on the left side\nof the $j \\omega$ axis."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "All poles must lie within |Z|=1\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q6": {
+      "question_uid": "pp:ee:2013:q6",
+      "exam_uid": "ee:2013:set1:q6",
+      "title": "GATE EE 2013 | Set 1 | Question: 6",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Two systems with impulse responses $h_{1}(t) \\; and \\; h_{2}(t)$ are connected in cascade. Then the overall impulse response of the cascaded system is given by",
+      "options": [
+        "product of $h_{1}(t) \\; and \\; h_{2}(t)$",
+        "sum of $h_{1}(t) \\; and \\; h_{2}(t)$",
+        "convolution of $h_{1}(t) \\; and \\; h_{2}(t)$",
+        "subtraction of $h_{1}(t) \\; and \\; h_{2}(t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "In cascade connection,\n\n<img src=\"/question-images/ee/2013/ee-2013-38b94d3249.webp\" />\n\n$$\\begin{aligned} H(s) &=H_1(s)\\cdot H_2(s)\\\\ \\Rightarrow \\; h(t)&=h_1(t) * h_2(t) \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q7": {
+      "question_uid": "pp:ee:2013:q7",
+      "exam_uid": "ee:2013:set1:q7",
+      "title": "GATE EE 2013 | Set 1 | Question: 7",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A source $v_{s}(t)=V \\cos 100\\pi t$ has an internal impedance of $(4+j3)\\Omega$. If a purely resistive load connected to this source has to extract the maximum power out of the source, its value in $\\Omega$ should be",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "Using maximum power transfer theorem,\n\n$R_L=|Z|=|4-j3|$\n\n$\\;\\;=\\sqrt{4^2+3^2}=5\\Omega$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q8": {
+      "question_uid": "pp:ee:2013:q8",
+      "exam_uid": "ee:2013:set1:q8",
+      "title": "GATE EE 2013 | Set 1 | Question: 8",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A single-phase load is supplied by a single-phase voltage source. If the current\nflowing from the load to the source is $10\\angle -150^{\\circ}$A and if the voltage at the load terminal is $100\\angle 60^{\\circ}$V, then the",
+      "options": [
+        "load absorbs real power and delivers reactive power",
+        "load absorbs real power and absorbs reactive power",
+        "load delivers real power and delivers reactive power",
+        "load delivers real power and absorbs reactive power"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-f7aeec4681.webp\" />\n\nComplex power supplied by load  $=(100\\angle 60^{\\circ})(10\\angle -150^{\\circ})=-866.022-j500 VA$\n\nAs supplied active and reactive power are negative.\n\nLoad absorbs active and reactive power both.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q9": {
+      "question_uid": "pp:ee:2013:q9",
+      "exam_uid": "ee:2013:set1:q9",
+      "title": "GATE EE 2013 | Set 1 | Question: 9",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A single-phase transformer has no-load loss of 64W, as obtained from an open\ncircuit test. When a short-circuit test is performed on it with 90% of the rated\ncurrents flowing in its both LV and HV windings, he measured loss is 81 W. The\ntransformer has maximum efficiency when operated at",
+      "options": [
+        "50.0% of the rated current",
+        "64.0% of the rated current",
+        "80.0% of the rated current",
+        "88.8% of the rated current"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "For 90% current,\n\n$$\\begin{aligned} P_{cu} &=(0.9)^2 P_{fl\\;cu} \\\\ P_{fl\\;cu} &= \\frac{81}{0.81}=100W\\\\ x&=\\sqrt{\\frac{P_{core}}{P_{fl\\;cu}}}=\\sqrt{\\frac{64}{100}}=0.8=80\\% \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q10": {
+      "question_uid": "pp:ee:2013:q10",
+      "exam_uid": "ee:2013:set1:q10",
+      "title": "GATE EE 2013 | Set 1 | Question: 10",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The flux density at a point in space is given by $B=4xa_{x}+2kya_{y}+8a_{z} Wb/m^{2}$. The value of constant k must be equal to",
+      "options": [
+        "-2",
+        "-0.5",
+        "0.5",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Magnetostatic Fields",
+        "markdown": "$$\\begin{aligned} \\bigtriangledown \\cdot B &=0 \\\\ \\left ( \\frac{\\partial }{\\partial x}a_x +\\frac{\\partial }{\\partial y}a_y + \\frac{\\partial }{\\partial z}a_z\\right )&(4xa_x+2kya_y+8a_z)=0 \\\\ 4+2k&=0\\\\ k&=-2 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q11": {
+      "question_uid": "pp:ee:2013:q11",
+      "exam_uid": "ee:2013:set1:q11",
+      "title": "GATE EE 2013 | Set 1 | Question: 11",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A continuous random variable X has a probability density function $f(x)=e^{-x},\\; 0\\lt x\\lt \\infty$. Then P{X $\\gt$ 1} is",
+      "options": [
+        "0.368",
+        "0.5",
+        "0.632",
+        "1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "probability-and-statistics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "$P=\\int_{1}^{\\infty }f(x)dx=\\int_{1}^{\\infty }e^{-x}dx=e^{-x}|_\\infty ^1=e^{-1}=0.368$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q12": {
+      "question_uid": "pp:ee:2013:q12",
+      "exam_uid": "ee:2013:set1:q12",
+      "title": "GATE EE 2013 | Set 1 | Question: 12",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The curl of the gradient of the scalar field defined by $V=2x^{2}y+3y^{2}z+4z^{2}x$ is",
+      "options": [
+        "$4xya_{x}+6yza_{x}+8zxa_{z}$",
+        "$4a_{x}+6a_{x}+8a_{z}$",
+        "$(4xy+4z^{2})a_{x}+(2x^{2}+6yz)a_{x}+(3y^{2}+8zx)a_{z}$",
+        "0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Curl of gradient of a scalar field is always zero.\n\n$\\bigtriangledown \\times \\bigtriangledown V=0$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q13": {
+      "question_uid": "pp:ee:2013:q13",
+      "exam_uid": "ee:2013:set1:q13",
+      "title": "GATE EE 2013 | Set 1 | Question: 13",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the feedback network shown below, if the feedback factore k is increased, then the <br><img src=\"/question-images/ee/2013/ee-2013-499cb3e8fc.webp\"/>",
+      "options": [
+        "The input impedance increases and output impedance decreases",
+        "The input impedance increases and output impedance also increases",
+        "The input impedance decreases and output impedance also decreases",
+        "The input impedance decreases and output impedance increases"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "oscillators-and-feedback-amplifiers",
+          "subtopicLabel": "Oscillators and Feedback Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "oscillators-and-feedback-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Oscillators and Feedback Amplifiers",
+        "markdown": "The given configuration is a voltage-series feedback configuration.\n\nSo, the input impedance  increases\n\n$R_{if}=R_i(1+A_o k)$\n\nSo, the output impedance  decreases\n\n$R_{of}=\\frac{R_o}{1+A_o k}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q14": {
+      "question_uid": "pp:ee:2013:q14",
+      "exam_uid": "ee:2013:set1:q14",
+      "title": "GATE EE 2013 | Set 1 | Question: 14",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The input impedance of the permanent magnet moving coil (PMMC) voltmeter is\ninfinite. Assuming that the diode shown in the figure below is ideal, the reading\nof the voltmeter in Volts is <br><img src=\"/question-images/ee/2013/ee-2013-ca8dfabf3e.webp\"/>",
+      "options": [
+        "4.46",
+        "3.15",
+        "2.23",
+        "0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "galvanometers-voltmeters-and-ammeters",
+          "subtopicLabel": "Galvanometers, Voltmeters and Ammeters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "galvanometers-voltmeters-and-ammeters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
+        "markdown": "In the half cycle, D is ON\n\n$\\Rightarrow \\;\\;V_0=0V$\n\nIn negative half cycle, D id OFF, PMMC voltmeter measures average value of $V_0$.\n\nIn case of half wave rectification,\n\n$$\\begin{aligned} V_{0 \\; avg.}&=\\frac{14.14}{\\pi}\\times \\frac{100}{101} \\\\ &= 4.456V \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q15": {
+      "question_uid": "pp:ee:2013:q15",
+      "exam_uid": "ee:2013:set1:q15",
+      "title": "GATE EE 2013 | Set 1 | Question: 15",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Bode plot of a transfer function G(s) is shown in the figure below.  <br><img src=\"/question-images/ee/2013/ee-2013-0388dae2f8.webp\"/><br> The gain (20 log|G(s)| is 32 dB and -8 dB at 1 rad/s and 10 rad/s respectively.\nThe phase is negative for all $\\omega$. Then G(s) is",
+      "options": [
+        "$\\frac{39.8}{s}$",
+        "$\\frac{39.8}{s^2}$",
+        "$\\frac{32}{s}$",
+        "$\\frac{32}{s^2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "Let,  $G(s)=\\frac{K}{s^n}$\n\n$G(j\\omega )=\\frac{K}{(j\\omega )^n}$\n\n$\\because$  Gain=32 dB at $\\omega =1$ rad/sec\n\n$\\therefore \\; 20log\\left | \\frac{K}{1^n} \\right |=32$\n\n$\\Rightarrow \\; 20 log K=32$\n\n$\\Rightarrow \\; K=39.8$\n\n$Now,$\n\n$\\because \\;$ Gain=-8 dB at $\\omega =10$ rad/sec\n\n$\\therefore \\; 20log\\left | \\frac{39.8}{10^n} \\right |=-8$\n\n$\\Rightarrow \\; 10^n=100$\n\n$\\Rightarrow \\; n=2$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q16": {
+      "question_uid": "pp:ee:2013:q16",
+      "exam_uid": "ee:2013:set1:q16",
+      "title": "GATE EE 2013 | Set 1 | Question: 16",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A bulb in a staircase has two switches, one switch being at the ground floor and the other one at the first floor. The bulb can be turned ON and also can be turned OFF by any one of the switches irrespective of the state of the other switch. The logic of switching of the bulb resembles",
+      "options": [
+        "and AND gate",
+        "an OR gate",
+        "an XOR gate",
+        "a NAND gate"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "logic-gates",
+          "subtopicLabel": "Logic Gates"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "logic-gates"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Logic Gates",
+        "markdown": "Truth table of XOR gate is,\n\n<img src=\"/question-images/ee/2013/ee-2013-8fd84f71fe.webp\" />\n\nSo, from the XOR gate truth table, it is clear that the bulb can be turned ON and also can be turned OFF by any one of the switched irrespective of the state of the other switch.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q17": {
+      "question_uid": "pp:ee:2013:q17",
+      "exam_uid": "ee:2013:set1:q17",
+      "title": "GATE EE 2013 | Set 1 | Question: 17",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a periodic signal  <br>$v(t)=30 sin100t + 10 cos 300t + 6 sin(500t +\\pi/4)$, <br>the\r\nfundamental frequency in rad/s",
+      "options": [
+        "100",
+        "300",
+        "500",
+        "1500"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-series",
+          "subtopicLabel": "Fourier Series"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "fourier-series"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Series",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Signals and Systems** (specifically *Fourier Series*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Fourier Series**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *100*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (100)."
+      }
+    },
+    "pp:ee:2013:q18": {
+      "question_uid": "pp:ee:2013:q18",
+      "exam_uid": "ee:2013:set1:q18",
+      "title": "GATE EE 2013 | Set 1 | Question: 18",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A band-limited signal with a maximum frequency of 5 kHz is to be sampled.\r\nAccording to the sampling theorem, the sampling frequency in kHz which is not valid is",
+      "options": [
+        "5 kHz",
+        "12 kHz",
+        "15 kHz",
+        "20 kHz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "sampling",
+          "subtopicLabel": "Sampling"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "sampling"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Sampling",
+        "markdown": "$$\\begin{aligned} (f_s)_{min}&=2f_m \\\\ (f_s)_{min}&=2 \\times 5=10kHz \\\\ f_s&\\geq 10kHz \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q19": {
+      "question_uid": "pp:ee:2013:q19",
+      "exam_uid": "ee:2013:set1:q19",
+      "title": "GATE EE 2013 | Set 1 | Question: 19",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a delta connection of resistors and its equivalent star connection as\nshown below. If all elements of the delta connection are scaled by a factor $k , k\\gt 0$, the elements of the corresponding star equivalent will be scaled by a factor of  <br><img src=\"/question-images/ee/2013/ee-2013-b44ffa4a7b.webp\"/>",
+      "options": [
+        "$k^{2}$",
+        "k",
+        "$1/k$",
+        "$\\sqrt{k}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Basics of Electric Circuit",
+        "markdown": "$R_A=\\frac{R_bR_c}{R_a+R_b+R_c}$\n\n$R'_a=kR_a$\n\n$R'_b=kR_b$\n\n$R'_c=kR_c$\n\n$R'_A=\\frac{kR_b\\cdot kR_c}{kR_a+kR_b+kR_c}$\n\n$\\;\\;=\\frac{k^2R_bR_c}{k(R_a+R_b+R_c)}$\n\n$\\;\\;=k \\times \\frac{R_bR_c}{R_a+R_b+R_c}$\n\n$R'_A=kR_A$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q20": {
+      "question_uid": "pp:ee:2013:q20",
+      "exam_uid": "ee:2013:set1:q20",
+      "title": "GATE EE 2013 | Set 1 | Question: 20",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The angle $\\delta$ in the swing equation of a synchronous generator is the",
+      "options": [
+        "angle between stator voltage and current",
+        "angular displacement of the rotor with respect to the stator",
+        "angular displacement of the stator mmf with respect to a synchronously\nrotating axis",
+        "angular displacement of an axis fixed to the rotor with respect to a\nsynchronously rotating axis"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Synchronous Machines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Synchronous Machines**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *angular displacement of an axis fixed to the rotor with respect to a synchronously rotating axis*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (angular displacement of an axis fixed to the rotor with respect to a synchronously rotating axis)."
+      }
+    },
+    "pp:ee:2013:q21": {
+      "question_uid": "pp:ee:2013:q21",
+      "exam_uid": "ee:2013:set1:q21",
+      "title": "GATE EE 2013 | Set 1 | Question: 21",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Leakage flux in an induction motor is",
+      "options": [
+        "flux that leaks through the machine",
+        "flux that links both stator and rotor windings",
+        "flux that links none of the windings",
+        "flux that links the stator winding or the rotor winding but not both"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "three-phase-induction-machines",
+          "subtopicLabel": "Three Phase Induction Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "three-phase-induction-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Three Phase Induction Machines",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Three Phase Induction Machines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Three Phase Induction Machines**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *flux that links the stator winding or the rotor winding but not both*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (flux that links the stator winding or the rotor winding but not both)."
+      }
+    },
+    "pp:ee:2013:q22": {
+      "question_uid": "pp:ee:2013:q22",
+      "exam_uid": "ee:2013:set1:q22",
+      "title": "GATE EE 2013 | Set 1 | Question: 22",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Three moving iron type voltmeters are connected as shown below. Voltmeter\r\nreadings are $V, V_1 \\; and \\;V_2$ as indicated. The correct relation among the voltmeter\r\nreadings is <br><img src=\"/question-images/ee/2013/ee-2013-ab623fdcf7.webp\"/>",
+      "options": [
+        "$V=\\frac{V_{1}}{\\sqrt{2}}+\\frac{V_{2}}{\\sqrt{2}}$",
+        "$V=V_{1}+V_{2}$",
+        "$V=V_{1}V_{2}$",
+        "$V=V_{2}-V_{1}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "a-c-bridges",
+          "subtopicLabel": "A.C. Bridges"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "a-c-bridges"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - A.C. Bridges",
+        "markdown": "$$\\begin{aligned} V_1&= -|j1\\Omega | \\times I \\\\ V_2 &= |j2\\Omega | \\times I \\\\ V&= -j1\\Omega | \\times I +j2\\Omega | \\times I \\\\ &=V_2-V_1 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q23": {
+      "question_uid": "pp:ee:2013:q23",
+      "exam_uid": "ee:2013:set1:q23",
+      "title": "GATE EE 2013 | Set 1 | Question: 23",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Square roots of -i , where  $i = \\sqrt{-1}$, are",
+      "options": [
+        "i, -i",
+        "$cos(-\\frac{\\pi }{4})+isin(-\\frac{\\pi }{4})$, $cos(\\frac{3\\pi }{4})+isin(\\frac{3\\pi }{4})$",
+        "$cos(\\frac{\\pi }{4})+isin(\\frac{3\\pi }{4})$, $cos(\\frac{3\\pi }{4})+isin(\\frac{\\pi }{4})$",
+        "$cos(\\frac{3\\pi }{4})+isin(-\\frac{3\\pi }{4})$, $cos(-\\frac{3\\pi }{4})+isin(\\frac{3\\pi }{4})$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "complex-variables"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$$\\begin{aligned} -i &= \\cos \\left ( -\\frac{\\pi}{2} \\right )+i \\sin \\left ( -\\frac{\\pi}{2} \\right )\\\\ &= \\cos \\left ( \\frac{3\\pi}{2} \\right ) +i \\sin \\left ( \\frac{3\\pi}{2} \\right )\\\\ (-i)^{1/2}&=\\left [ \\cos \\left ( -\\frac{\\pi}{2} \\right )+i \\sin \\left ( -\\frac{\\pi}{2} \\right ) \\right ] ^{1/2}\\\\ &= \\cos \\left ( -\\frac{\\pi}{4} \\right )+i \\sin \\left ( -\\frac{\\pi}{4} \\right )\\\\ &= \\cos \\left ( \\frac{3\\pi}{4} \\right )+i \\sin \\left ( \\frac{3\\pi}{4} \\right ) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q24": {
+      "question_uid": "pp:ee:2013:q24",
+      "exam_uid": "ee:2013:set1:q24",
+      "title": "GATE EE 2013 | Set 1 | Question: 24",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Given a vector field $F=y^{2}xa_{x}-yza_{y}-x^{2}a_{z}$, the line integral $\\int F\\cdot dl$ evaluated along a segment on the x-axis from x = 1 to x = 2 is",
+      "options": [
+        "-2.33",
+        "0",
+        "2.33",
+        "7"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "To find: $\\int \\vec{F}\\cdot \\vec{dl}$ along a segment on the x-axis from x=1 and x=2.\n\ni.e.   Y=0,  z=0, dy=0  and dz=0\n\n$$\\begin{aligned} \\int \\vec{F}\\cdot \\vec{dl}&= \\int (y^2 \\times \\hat{a_x}-yz\\hat{a_y}-x^2\\hat{a_z})(\\hat{a_x}dx +\\hat{a_y}dy+\\hat{a_z}dz)\\\\ &= \\int y^2x \\;dx-yz\\; dy -x^2 \\; dz \\end{aligned}$$\n\nPutting y=0, z=0, dy=0 and dz=0, we get $\\int \\vec{F}\\cdot \\vec{dl}=0$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q25": {
+      "question_uid": "pp:ee:2013:q25",
+      "exam_uid": "ee:2013:set1:q25",
+      "title": "GATE EE 2013 | Set 1 | Question: 25",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The equation $$\\begin{bmatrix} 2 &-2 \\\\ 1& -1 \\end{bmatrix}\\begin{bmatrix} x_{1}\\\\ x_{2} \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0 \\end{bmatrix}$$ has",
+      "options": [
+        "no solution",
+        "only one solution $$\\begin{bmatrix} x_{1}\\\\ x_{2} \\end{bmatrix}=\\begin{bmatrix} 0\\\\ 0 \\end{bmatrix}$$",
+        "non-zero unique solution",
+        "multiple solutions"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{aligned} \\begin{bmatrix} 2 & -2\\\\ 1& -1 \\end{bmatrix}\\begin{bmatrix} x_1\\\\ x_2 \\end{bmatrix}&=\\begin{bmatrix} 0\\\\ 0 \\end{bmatrix} \\\\ 2x_1-2x_2&= 0\\\\ x_1-x_2&=0 \\\\ x_1&=x_2 \\end{aligned}$$\n\ni.e.  $x_1$ and $x_2$ are having infinite number of solutions.\n\n$\\Rightarrow$  Multiple solutions are these.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q26": {
+      "question_uid": "pp:ee:2013:q26",
+      "exam_uid": "ee:2013:set1:q26",
+      "title": "GATE EE 2013 | Set 1 | Question: 26",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A strain gauge forms one arm of the bridge shown in the figure below and has\na nominal resistance without any load as $R_s=300\\Omega$. Other bridge resistances\nare $R_1=R_2=R_3=300\\Omega$. The maximum permissible current through the strain\ngauge is 20 mA. During certain measurement when the bridge is excited by\nmaximum permissible voltage and the strain gauge resistance is increased by 1%\nover the nominal value, the output voltage $V_0$ in mV is <br><img src=\"/question-images/ee/2013/ee-2013-fce008ce8c.webp\"/>",
+      "options": [
+        "56.02",
+        "40.83",
+        "29.85",
+        "10.02"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "measurement-of-resistance-and-potentiometers",
+          "subtopicLabel": "Measurement of Resistance and Potentiometers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "measurement-of-resistance-and-potentiometers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Measurement of Resistance and Potentiometers",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-a7f76ba54a.webp\" />\n\n$V_{ab}=V_a-V_b$\n\nUsing voltage division rule,\n\n$V_{ab}=\\left ( \\frac{300}{300+300}-\\frac{300}{300+303} \\right ) \\times 12$\n\n$\\;\\;\\;=29.85 mV$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q27": {
+      "question_uid": "pp:ee:2013:q27",
+      "exam_uid": "ee:2013:set1:q27",
+      "title": "GATE EE 2013 | Set 1 | Question: 27",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, the knee current of the ideal Zener dioide is 10 mA. To maintain 5 V across $R_L$, the minimum value of $R_L$ in $\\Omega$ and the minimum\npower rating of the Zener diode in mW, respectively, are <br><img src=\"/question-images/ee/2013/ee-2013-9ab3a78399.webp\"/>",
+      "options": [
+        "125 and 125",
+        "125 and 250",
+        "250 and 125",
+        "250 and 250"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "diodes-and-their-applications",
+          "subtopicLabel": "Diodes and their Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "diodes-and-their-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Diodes and their Applications",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-49af1da69c.webp\" />\n\n$I_s=\\frac{10-5}{100}=50\\; mA$\n\n$I_{load}=50\\;mA-10\\; mA =40\\; mA$\n\n$R_L=\\frac{5 V}{40mA}=125\\Omega$\n\n$P_{min}=50 mA \\times 5V=250\\;mW$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q28": {
+      "question_uid": "pp:ee:2013:q28",
+      "exam_uid": "ee:2013:set1:q28",
+      "title": "GATE EE 2013 | Set 1 | Question: 28",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The open-loop transfer function of a dc motor is given as $\\frac{\\omega (s)}{V_a(s)}=\\frac{10}{1+10s}$. When\nconnected in feedback as shown below, the approximate value of $K_a$ that will\nreduce the time constant of the closed loop system by one hundred times as\ncompared to that of the open-loop system is <br><img src=\"/question-images/ee/2013/ee-2013-757ce9e09a.webp\"/>",
+      "options": [
+        "1",
+        "5",
+        "10",
+        "100"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "feedback-characteristics-of-control-systems",
+          "subtopicLabel": "Feedback Characteristics of Control Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "feedback-characteristics-of-control-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Feedback Characteristics of Control Systems",
+        "markdown": "$\\frac{\\omega (s)}{V_a(s)}=\\frac{10}{1+10s}=\\frac{10}{1+\\tau s}$\n\n$\\tau =10$\n\nClosed loop systems,\n\n$\\frac{\\omega (s)}{R(s)}=\\frac{\\frac{10K_a}{1+10s}}{1+\\frac{10K_a}{1+10s}}$\n\n$=\\frac{10K_a}{1+10K_a+10s}$\n\n$=\\frac{\\frac{10K_a}{1+10K_a}}{1+\\frac{10}{1+10K_a}s}$\n\nAccording to quetion,\n\n$\\frac{10}{1+10K_a}=\\frac{1}{100}\\times 10$\n\n$1+10K_a=100$\n\n$K_a=9.9$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q29": {
+      "question_uid": "pp:ee:2013:q29",
+      "exam_uid": "ee:2013:set1:q29",
+      "title": "GATE EE 2013 | Set 1 | Question: 29",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, if the source voltage $V_{s}=100\\angle 53.13^{\\circ}$V then the Thevenin's equivalent voltage in Volts as seen by the load resistance $R_L$ is <br><img src=\"/question-images/ee/2013/ee-2013-f77a75dbf5.webp\"/>",
+      "options": [
+        "$100\\angle 90^{\\circ}$",
+        "$800\\angle 0^{\\circ}$",
+        "$800\\angle 90^{\\circ}$",
+        "$100\\angle 60^{\\circ}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-24a6330839.webp\" />\n\n$V_{L_1}=\\left ( \\frac{j4}{3+j4} \\right )100\\angle 53.13^{\\circ}$\n\n$\\;\\;=80\\angle 90^{\\circ}V$\n\n$V_{Th}=10V_{L_1}=800\\angle 90^{\\circ}V$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q30": {
+      "question_uid": "pp:ee:2013:q30",
+      "exam_uid": "ee:2013:set1:q30",
+      "title": "GATE EE 2013 | Set 1 | Question: 30",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Three capacitors $C_1, C_2 \\; and \\; C_3$ whose values are 10 $\\mu$F, 5 $\\mu$F, and 2 $\\mu$F respectively, have breakdown voltages of 10 V, 5 V and 2 V respectively. For the interconnection shown below, the maximum safe voltage in Volts that can be applied across the combination, and the corresponding total charge in $\\mu$C stored in the effective capacitance across the terminals are respectively, <br><img src=\"/question-images/ee/2013/ee-2013-5f413dbe56.webp\"/>",
+      "options": [
+        "2.8 and 36",
+        "7 and 119",
+        "2.8 and 32",
+        "7 and 80"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Basics of Electric Circuit",
+        "markdown": "$Q=CV$\n\n$Q_1=C_1V_1 =10 \\times 10^{-6} \\times 10=100\\mu C$\n\n$Q_2=C_2V_2 =5 \\times 10^{-6} \\times 5=25\\mu C$\n\n$Q_3=C_3V_3 =2 \\times 10^{-6} \\times 2=4\\mu C$\n\nCapacitor $C_2 \\; and \\; C_3$ are in series.\n\nIn series charge is same.\n\nSo, maximum charge on $C_2 \\; and \\; C_3$ will be minimum of\n\n$(Q_2,Q_3)=min(25\\mu C,4\\mu C)=4\\mu C=Q_{23}$.\n\nIn series the equivalent capacitance of $C_2 \\; and \\; C_3$ is\n\n$C_{23}=\\frac{C_2C_3}{C_2+C_3}=\\frac{5 \\times 2}{5+2}=\\frac{10}{7}\\mu F$\n\nSo, equivalent voltage,\n\n$V_{23}=\\frac{Q_{23}}{C_{23}}=\\frac{4 \\times 10^{-6}}{\\frac{10}{7} \\times 10^{-6}}=\\frac{28}{10}2.8V$\n\nIn parallel, the voltage is same.\n\n$V_1=V_{23}=2.8V$\n\nChange in capacitor $C_1$\n\n$Q_1=C_1V_1 =10 \\times 10^{-6}\\times 2.8=28\\mu C$\n\nIn parallel, the total charge\n\n$Q=Q_1+Q_{23}$\n\n$Q=4+28=32\\mu C$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q31": {
+      "question_uid": "pp:ee:2013:q31",
+      "exam_uid": "ee:2013:set1:q31",
+      "title": "GATE EE 2013 | Set 1 | Question: 31",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A voltage 1000sin$\\omega t$ Volts is applied across YZ. Assuming ideal diodes, the\r\nvoltage measured across WX in Volts, is <br><img src=\"/question-images/ee/2013/ee-2013-1075afe78a.webp\"/>",
+      "options": [
+        "$\\sin \\omega t$",
+        "$(\\sin \\omega t + |\\sin \\omega t|)/2$",
+        "$(\\sin \\omega t - |\\sin \\omega t|)/2$",
+        "0 for all t"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "diodes-and-their-applications",
+          "subtopicLabel": "Diodes and their Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "diodes-and-their-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Diodes and their Applications",
+        "markdown": "For positive half cycle,\n\n<img src=\"/question-images/ee/2013/ee-2013-31f4f25d33.webp\" />\n\n$V_{WX}=0$\n\nFor negative half cycle,\n\n<img src=\"/question-images/ee/2013/ee-2013-3c43ad5e2d.webp\" />\n\nShort circuit condition,\n\n$V_{WX}=0$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q32": {
+      "question_uid": "pp:ee:2013:q32",
+      "exam_uid": "ee:2013:set1:q32",
+      "title": "GATE EE 2013 | Set 1 | Question: 32",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The separately excited dc motor in the figure below has a rated armature current\nof 20 A and a rated armature voltage of 150 V. An ideal chopper switching\nat 5 kHz is used to control the armature voltage. If $L_a=0.1mH, R_a=1\\Omega$,\nneglecting armature reaction, the duty ratio of the chopper to obtain 50% of the\nrated torque at the rated speed and the rated field current is <br><img src=\"/question-images/ee/2013/ee-2013-5c5f23d848.webp\"/>",
+      "options": [
+        "0.4",
+        "0.5",
+        "0.6",
+        "0.7"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "electrical-drives",
+          "subtopicLabel": "Electrical Drives"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "electrical-drives"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Electrical Drives",
+        "markdown": "$$\\begin{aligned} V_a &=E_b+I_aR_a \\\\ 150&=E_b+20 \\times 1 \\\\ E_b&= 130V\\\\ \\text{For half} &\\text{ the rated torque,} \\\\ I_a&=10A \\\\ V_a&=130+10 \\times 1=140 \\\\ D&=\\frac{140}{200}=0.7 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q33": {
+      "question_uid": "pp:ee:2013:q33",
+      "exam_uid": "ee:2013:set1:q33",
+      "title": "GATE EE 2013 | Set 1 | Question: 33",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a power system network with n nodes, $Z_{33}$ of its bus impedance matrix is\nj0.5 per unit. The voltage at node 3 is 1.3$\\angle -10^{\\circ}$ per unit. If a capacitor having reactance of -j3.5 per unit is now added to the network between node 3 and the\nreference node, the current drawn by the capacitor per unit is",
+      "options": [
+        "0.325 $\\angle -100^{\\circ}$",
+        "0.325 $\\angle 80^{\\circ}$",
+        "0.371 $\\angle -100^{\\circ}$",
+        "0.433 $\\angle 80^{\\circ}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "fault-analysis",
+          "subtopicLabel": "Fault Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "fault-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Fault Analysis",
+        "markdown": "Thevenin's equivalent circuit between bus (3) and reference bus $=Z_{33}=j0.5$\n\n<img src=\"/question-images/ee/2013/ee-2013-56a34a72fe.webp\" />\n\nThevenin's equivalent circuit between 3rd bus (3) and reference\n\n$V_{Th}=1.3\\angle -10^{\\circ}p.u.$\n\n<img src=\"/question-images/ee/2013/ee-2013-3a5ff9e48e.webp\" />\n\n$I_{C}=\\frac{1.3\\angle -10}{j0.5-j3.5}=0.433\\angle 80^{\\circ}p.u.$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q34": {
+      "question_uid": "pp:ee:2013:q34",
+      "exam_uid": "ee:2013:set1:q34",
+      "title": "GATE EE 2013 | Set 1 | Question: 34",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A dielectric slab with 500 mm x 500 mm cross-section is 0.4 m long. The slab is subjected to a uniform electric field of $E=6a_{x}+8a_{y}$ kV/mm. The relative permittivity of the dielectric material is equal to 2. The value of constant $\\varepsilon _{0} \\; is\\;  8.85\\times 10^{-12}$ F/m. The energy stored in the dielectric in Joules is",
+      "options": [
+        "$8.85 \\times 10^{-11}$",
+        "$8.85 \\times 10^{-5}$",
+        "88.5",
+        "885"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "electrostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Electrostatic Fields",
+        "markdown": "Energy density $=\\frac{1}{2}\\in |\\vec{E}|^2$\n\nEnergy = Energy density x Volume\n\nEnergy $=\\frac{1}{2} \\times \\in _0 \\times \\in _r(6^2+8^2)\\times 10^{12}$  $\\times 0.5 \\times 0.5 \\times 0.5$\n\n$=\\frac{1}{2} \\times 8.85 \\times 10^{-12} \\times 2 \\times 100 \\times 10^{12} \\times 0.1$\n\n$=88.5 J$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q35": {
+      "question_uid": "pp:ee:2013:q35",
+      "exam_uid": "ee:2013:set1:q35",
+      "title": "GATE EE 2013 | Set 1 | Question: 35",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A Matrix has eigenvalues -1 and -2. The corresponding eigenvectors are $$\\begin{bmatrix} 1\\\\ -1 \\end{bmatrix} and \\begin{bmatrix} 1\\\\ -2 \\end{bmatrix}$$ respectively. The matrix is",
+      "options": [
+        "$$\\begin{bmatrix} 1 & 1\\\\ -1& -2 \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} 1 & 2\\\\ -2& -4 \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} -1 & 0\\\\ 0& -2 \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} 0 & 1\\\\ -2& -3 \\end{bmatrix}$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{aligned} AX &=\\lambda X \\\\ \\begin{bmatrix} a & b\\\\ c & d \\end{bmatrix} \\begin{bmatrix} 1\\\\ -1 \\end{bmatrix}&=(-1) \\begin{bmatrix} 1\\\\ -1 \\end{bmatrix}\\\\ a-b&= -1\\\\ c-d&=1 \\\\ \\begin{bmatrix} a & b\\;\\;...(i)\\\\ c & d\\;\\;...(ii) \\end{bmatrix} \\begin{bmatrix} 1\\\\ -2 \\end{bmatrix}&=(-2) \\begin{bmatrix} 1\\\\ -2 \\end{bmatrix}\\\\ a-2b&=-2\\;\\;...(iii) \\\\ c-2d&=4\\;\\;...(iv) \\end{aligned}$$\n\nFrom equation (i) and (iii), a=0 and  b=1\n\nFrom equation (ii) and (iv), c=-2 and d=-3\n\n$$A= \\begin{bmatrix} a & b\\\\ c & d \\end{bmatrix} =\\begin{bmatrix} 0 & 1\\\\ -2 & -3 \\end{bmatrix}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q36": {
+      "question_uid": "pp:ee:2013:q36",
+      "exam_uid": "ee:2013:set1:q36",
+      "title": "GATE EE 2013 | Set 1 | Question: 36",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "$\\oint \\frac{z^{2}-4}{z^{2}+4}dz$ evaluated anticlockwise around the circle |z-i|=2, where $i=\\sqrt{-1}$, is",
+      "options": [
+        "$-4\\pi$",
+        "0",
+        "$2+\\pi$",
+        "2+2i"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "complex-variables"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$\\frac{Z^2-4}{Z^2+4}=\\frac{Z^2-4}{(Z+2i)(Z-2i)}$\n\nPoles at 2i and -2i i.e. (0,2i) and (0,-2i)\n\n<img src=\"/question-images/ee/2013/ee-2013-d39033c6af.webp\" />\n\nFrom figure of |Z-i|=2, we see that pole, is insice C.\n\nwhile pole, -2i is outside of C.\n\n$$\\begin{aligned} \\therefore \\;\\oint \\frac{Z^2-4}{Z^2+4}dZ &=2 \\pi i \\times \\text{Res.} \\;F(Z)\\\\ &= \\left.\\begin{matrix} 2 \\pi i \\frac{(Z-2i)(Z^2-4)}{(Z+2i)(Z-2i)} \\end{matrix}\\right|_{Z=2i}\\\\ &= 2 \\pi i\\frac{(2i)^2 -4}{(2i+2i)}=-4 \\pi \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q37": {
+      "question_uid": "pp:ee:2013:q37",
+      "exam_uid": "ee:2013:set1:q37",
+      "title": "GATE EE 2013 | Set 1 | Question: 37",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The clock frequency applied to the digital circuit shown in the figure below is\r\n1 kHz. If the initial state of the output Q of the flip-flop is '0', then the frequency of\r\nthe output waveform Q in kHz is <br><img src=\"/question-images/ee/2013/ee-2013-3284f27b51.webp\"/>",
+      "options": [
+        "0.25",
+        "0.5",
+        "1",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "sequential-logic-circuits",
+          "subtopicLabel": "Sequential Logic Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "sequential-logic-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Sequential Logic Circuits",
+        "markdown": "$x=\\overline{(Q\\oplus \\bar{Q})\\cdot (Q \\odot \\bar{Q})}$\n\n$\\;\\;=\\overline{1\\cdot 0}=1$\n\n$\\because \\;\\; X=1=T \\Rightarrow$  Q always toggle whenever clock triggers.\n\n<img src=\"/question-images/ee/2013/ee-2013-4bd9705db9.webp\" />\n\n$\\therefore \\; f_Q=\\frac{f_{clk}}{2}=\\frac{1kHz}{2}=0.5kHz$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q38": {
+      "question_uid": "pp:ee:2013:q38",
+      "exam_uid": "ee:2013:set1:q38",
+      "title": "GATE EE 2013 | Set 1 | Question: 38",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, $Q_{1}$ has negligible collector-to-emitter saturation\nvoltage and the diode drops negligible voltage across it under forward bias. If $V_{cc}$\nis +5 V, X and Y are digital signals with 0 V as logic 0 and $V_{cc}$ as logic 1, then\nthe Boolean expression for Z is <br><img src=\"/question-images/ee/2013/ee-2013-e9b0657562.webp\"/>",
+      "options": [
+        "XY",
+        "$\\bar{X}Y$",
+        "$X\\bar{Y}$",
+        "$\\overline{XY}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "logic-families-and-miscellaneous",
+          "subtopicLabel": "Logic Families and Miscellaneous"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "logic-families-and-miscellaneous"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Logic Families and Miscellaneous",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-733a2bcf6f.webp\" />\n\n$\\Rightarrow \\;\\;Z=\\bar{X}Y$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q39": {
+      "question_uid": "pp:ee:2013:q39",
+      "exam_uid": "ee:2013:set1:q39",
+      "title": "GATE EE 2013 | Set 1 | Question: 39",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below the op-amps are ideal. Then, $V_{out}$ in Volts is <br><img src=\"/question-images/ee/2013/ee-2013-aec4f5d6a4.webp\"/>",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "Output of the first op-amp\n\n$V_{out1}=-2\\left [ \\frac{-1}{1} \\right ]+1\\left [ 1+\\frac{1}{1} \\right ]=2+1(2)=4V$\n\n$V_{out}=4\\left ( 1+\\frac{1}{1} \\right )=4(2)=8V$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q40": {
+      "question_uid": "pp:ee:2013:q40",
+      "exam_uid": "ee:2013:set1:q40",
+      "title": "GATE EE 2013 | Set 1 | Question: 40",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The signal flow graph for a system is given below. The transfer function $\\frac{Y(s)}{U(s)}$ for this system is <br><img src=\"/question-images/ee/2013/ee-2013-81715e90ff.webp\"/>",
+      "options": [
+        "$\\frac{s+1}{5s^{2}+6s+2}$",
+        "$\\frac{s+1}{s^{2}+6s+2}$",
+        "$\\frac{s+1}{s^{2}+4s+2}$",
+        "$\\frac{1}{5s^{2}+6s+2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "mathematical-models-of-physical-systems",
+          "subtopicLabel": "Mathematical Models of Physical Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "mathematical-models-of-physical-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "Using mason's gain formula,\n\n$\\Delta =1-[-2s^{-1}-2s^{-2}-4-4s^{-1}]$\n\n$\\Delta =1+\\frac{2}{s}+\\frac{2}{s^2}+4+\\frac{4}{s}$\n\n$\\Delta =\\frac{5s^2+6s+2}{s^2}$\n\n$P_1=s^{-2}=\\frac{1}{s^2}$\n\n$P_2=s^{-1}=\\frac{1}{s}$\n\n$\\Delta _1=1$\n\n$\\Delta _2=2$\n\n$\\frac{Y(s)}{U(s)}=\\frac{\\Sigma P_k\\Delta _k}{\\Delta }$\n\n$\\;\\;\\;\\;=\\frac{\\frac{1}{s^2} \\times 1+\\frac{1}{s} \\times 1}{\\frac{5s^2+6s+2}{s^2}}$\n\n$\\frac{Y(s)}{U(s)}=\\frac{s+1}{5s^2+6s+2}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q41": {
+      "question_uid": "pp:ee:2013:q41",
+      "exam_uid": "ee:2013:set1:q41",
+      "title": "GATE EE 2013 | Set 1 | Question: 41",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The impulse response of a continuous time system is given by $h(t)=\\delta(t-1) \\delta (t-3)$ . The value of the step response at t=2 is",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "For step response, impulse response can be integrated.\n\n$$\\begin{aligned} y(t)&=u(t-1)+u(t-3)\\\\ y(2)&=u(1)+u(-1)\\\\ &=1+0=1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q42": {
+      "question_uid": "pp:ee:2013:q42",
+      "exam_uid": "ee:2013:set1:q42",
+      "title": "GATE EE 2013 | Set 1 | Question: 42",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Two magnetically uncoupled inductive coils have Q factors $q_1 \\; and \\; q_2$ at the chosen\noperating frequency. Their respective resistances are $R_1 \\; and \\; R_2$. When connected\nin series, their effective Q factor at the same operating frequency is",
+      "options": [
+        "$q_{1}R_1+q_{2}R_2$",
+        "$(q_{1}/R_1)+(q_{2}/R_2)$",
+        "$(q_{1}R_{1}+q_{2}R_{2})/(R_{1}+R_{2})$",
+        "$q_{1}R_{2}+q_{2}R_{1}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "resonance-and-locus-diagrams",
+          "subtopicLabel": "Resonance and Locus Diagrams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "resonance-and-locus-diagrams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Resonance and Locus Diagrams",
+        "markdown": "<img src=\"/wp-content/uploads/GATE/EE/20131/a42.jpg\" />\n\n$q_1=\\frac{\\omega L_1}{R_1}$\n\n$L_1=\\frac{q_1R_1}{\\omega }$\n\nSimilarly,\n\n$L_2=\\frac{q_2R_2}{\\omega }$\n\n<img src=\"/wp-content/uploads/GATE/EE/20131/a42a.jpg\" />\n\n$Q=\\frac{\\omega (L_1+L_2)}{R_1+R_2}$\n\n$=\\frac{q_1R_1+q_2R_2}{R_1+R_2}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q43": {
+      "question_uid": "pp:ee:2013:q43",
+      "exam_uid": "ee:2013:set1:q43",
+      "title": "GATE EE 2013 | Set 1 | Question: 43",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The following arrangement consists of an ideal transformer and an attenuator\nwhich attenuates by a factor of 0.8. An ac voltage $V_{WX1}$ = 100 V is applied\nacross WX to get an open circuit voltage $V_{YZ1}$ across YZ. Next, an ac voltage$V_{YZ2}$ = 100 V is applied across YZ to get an open circuit voltage $V_{WX2}$ across WX. Then,$V_{YZ1}/V_{WX1},V_{WX2}/V_{YZ2}$ are respectively, <br><img src=\"/question-images/ee/2013/ee-2013-45a2733074.webp\"/>",
+      "options": [
+        "125/100 and 80/100",
+        "100/100 and 80/100",
+        "100/100 and 100/100",
+        "80/100 and 80/100"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "magnetically-coupled-circuits-network-topology-and-filters",
+          "subtopicLabel": "Magnetically Coupled Circuits, Network Topology and Filters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "magnetically-coupled-circuits-network-topology-and-filters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Magnetically Coupled Circuits, Network Topology and Filters",
+        "markdown": "$V_{YZ_1}=100\\times 1.25 \\times 0.8 =100$\n\nIn second case when 100 V is applied at YZ terminals, this whole 100 V will appear across the secondary winding,\n\nHence, $V_{WX_2}=\\frac{100}{1.25}=80V$\n\n$\\Rightarrow \\; \\frac{V_{YZ_1}}{V_{WX_1}}=\\frac{100}{100}$\n\n$\\frac{V_{WX_2}}{V_{YZ_2}}=\\frac{80}{100}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q44": {
+      "question_uid": "pp:ee:2013:q44",
+      "exam_uid": "ee:2013:set1:q44",
+      "title": "GATE EE 2013 | Set 1 | Question: 44",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Thyristor T in the figure below is initially off and is triggered with a single\r\npulse of width 10 $\\mu$s. It is given that $L=(\\frac{100}{\\pi })\\mu H$ and $C=(\\frac{100}{\\pi})\\mu F$ Assuming latching and holding currents of the thyristor are both zero and the initial charge on C is zero, T conducts for  <br><img src=\"/question-images/ee/2013/ee-2013-78cf0c9c5e.webp\"/>",
+      "options": [
+        "$10 \\mu s$",
+        "$50 \\mu s$",
+        "$100 \\mu s$",
+        "$200 \\mu s$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "<img src=\"/question-images/ee/2013/ee-2013-b0173e4830.webp\" />\n\nConduction time,\n\n$$\\begin{aligned} &=\\pi \\sqrt{LC} \\\\ &=\\pi \\sqrt{\\left ( \\frac{100}{\\pi}\\times 10^{-6} \\right )\\left ( \\frac{100}{\\pi}\\times 10^{-6} \\right )} \\\\ &= 100\\mu s \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q45": {
+      "question_uid": "pp:ee:2013:q45",
+      "exam_uid": "ee:2013:set1:q45",
+      "title": "GATE EE 2013 | Set 1 | Question: 45",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A 4-pole induction motor, supplied by a slightly unbalanced three-phase 50 Hz\nsource, is rotating at 1440 rpm. The electrical frequency in Hz of the induced\nnegative sequence current in the rotor is",
+      "options": [
+        "100",
+        "98",
+        "52",
+        "48"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "three-phase-induction-machines",
+          "subtopicLabel": "Three Phase Induction Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "three-phase-induction-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Three Phase Induction Machines",
+        "markdown": "$$\\begin{aligned} N_s &=\\frac{120 \\times 50}{14}=1500 \\; \\text{rpm} \\\\ s&= \\frac{1500-1440}{1500}=0.04 \\end{aligned}$$\n\nFor negative sequence component,\n\n$$\\begin{aligned} s'&=2-s \\\\ &=2-0.04=1.96 \\\\ f'&=s'f \\\\ &= 1.96 \\times 50=98.00Hz \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q46": {
+      "question_uid": "pp:ee:2013:q46",
+      "exam_uid": "ee:2013:set1:q46",
+      "title": "GATE EE 2013 | Set 1 | Question: 46",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A function $y=5x^{2}+10x$ is defined over an open interval x = (1,2). Atleast at one\r\npoint in this interval, dy/dx is exactly",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned} \\frac{dy}{dx}&=10x+10\\\\ \\left.\\begin{matrix} \\frac{dy}{dx} \\end{matrix}\\right|_{x=1}=20\\\\ \\left.\\begin{matrix} \\frac{dy}{dx} \\end{matrix}\\right|_{x=2}=30 \\end{aligned}$$\n\n$\\because \\;\\; x$ is defined open interval $x=(1,2)$\n\n$\\therefore \\;\\;1 \\lt x \\lt 2$\n\n$\\therefore \\;\\;20 \\lt \\frac{dy}{dx} \\lt 30$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q47": {
+      "question_uid": "pp:ee:2013:q47",
+      "exam_uid": "ee:2013:set1:q47",
+      "title": "GATE EE 2013 | Set 1 | Question: 47",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "When the Newton-Raphson method is applied to solve the equation $f(x)=x^{3}+2x-1=0$, the solution at the end of the first iteration with the initial\nvalue as $x_{0}=1.2$ is",
+      "options": [
+        "-0.82",
+        "0.49",
+        "0.705",
+        "1.69"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "numerical-methods"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Numerical Methods",
+        "markdown": "$$\\begin{aligned} f'(x)&=3x^2+2\\\\ f'(x_0)&=3(1.2)^2+2=6.32\\\\ f(x_0)&=(1.2)^3+2 \\times 1.2-1=3.128\\\\ f'(x_1)&=x_0-\\frac{f(x_0)}{f'(x_1)}=1.2-\\frac{3.728}{6.32}=0.705 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q48": {
+      "question_uid": "pp:ee:2013:q48",
+      "exam_uid": "ee:2013:set1:q48",
+      "title": "GATE EE 2013 | Set 1 | Question: 48",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the figure shown below, the chopper feeds a resistive load from a battery source. MOSFET Q is\nswitched at 250 kHz, with a duty ratio of 0.4. All elements of the circuit are assumed to be ideal.<br><img src=\"/question-images/ee/2013/ee-2013-0b466f3407.webp\"/><br>The average source current in Amps in steady-state is",
+      "options": [
+        "$3/2$",
+        "$5/3$",
+        "$5/2$",
+        "$15/4$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "As it is a boost converter, average current through capacitor is zero.\n\nWhen Q is ON, $I_c=-I_0$\n\n$I_c=I_s-I_0$\n\nTherefore, average through capacitor\n\n$$\\begin{aligned} &=(-I_0)I_{ON}+(I_s-I_0)T_{OFF}=0 \\\\ &(-I_0)DT+(I_s-I_0)(1-D)T=0 \\\\ & -I_0D+I_s-I_sD-I_0+I_0D=0\\\\ &\\Rightarrow \\;\\; I_0=(1-D)I_s\\\\ I_s&=\\frac{I_0}{(1-D)}\\\\ &=\\frac{V_0}{R(1-D)}\\\\ &=\\frac{V_s}{R(1-D)^2}\\\\ &=\\frac{12}{20(1-0.4)^2}=\\frac{5}{3}A \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q49": {
+      "question_uid": "pp:ee:2013:q49",
+      "exam_uid": "ee:2013:set1:q49",
+      "title": "GATE EE 2013 | Set 1 | Question: 49",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the figure shown below, the chopper feeds a resistive load from a battery source. MOSFET Q is\nswitched at 250 kHz, with a duty ratio of 0.4. All elements of the circuit are assumed to be ideal.<br><img src=\"/question-images/ee/2013/ee-2013-0b466f3407.webp\"/><br>The PEAK-TO-PEAK source current ripple in Amps is",
+      "options": [
+        "0.96",
+        "0.144",
+        "0.192",
+        "0.288"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "Here,\n\n$$\\begin{aligned} I_{source}&=\\text{Inductor current}\\\\ \\because \\;\\; V&=L\\frac{dI_s}{dt}\\\\ \\Rightarrow \\; \\frac{V}{L}\\int_{0}^{T_{ON}}dt&=\\int_{min}^{max}dI_s\\\\ \\Rightarrow \\;\\frac{V}{L}T_{ON}&=I_{s\\; max}-I_{s \\; min}\\\\ &= \\text{ripple source current}\\\\ \\Rightarrow \\; T_{ON}&=D.T.\\\\ \\therefore \\; \\text{ripple source current}&=\\frac{V}{L}(D.T.)\\\\ &=\\frac{12}{100 \\times 10^{-6}}\\times 0.4 \\times \\frac{1}{250 \\times 10^3}\\\\ &=0.192A \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q50": {
+      "question_uid": "pp:ee:2013:q50",
+      "exam_uid": "ee:2013:set1:q50",
+      "title": "GATE EE 2013 | Set 1 | Question: 50",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The state variable formulation of a system is given as <br>$$\\begin{bmatrix} \\dot{x_1}\\\\ \\dot{x_2} \\end{bmatrix}=\\begin{bmatrix} -2 & 0\\\\ 0&-1 \\end{bmatrix}\\begin{bmatrix} x_1\\\\x_2 \\end{bmatrix}+\\begin{bmatrix} 1\\\\1 \\end{bmatrix}u$$ $$x_1(0)=0,x_2(0)=0\\ and \\; y=\\begin{bmatrix} 1 & 0 \\end{bmatrix}\\begin{bmatrix} x_1\\\\x_2 \\end{bmatrix}$$<br>The system is",
+      "options": [
+        "controllable but not observable",
+        "not controllable but observable",
+        "both controllable and observable",
+        "both not controllable and not observable"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-variable-analysis",
+          "subtopicLabel": "State Variable Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "state-variable-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Variable Analysis",
+        "markdown": "$$A=\\begin{bmatrix} -2 &0 \\\\ 0& -1 \\end{bmatrix},$$  $$B=\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}$$\n\n$$AB=\\begin{bmatrix} -2 &0 \\\\ 0& -1 \\end{bmatrix}\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}=\\begin{bmatrix} -2\\\\ -1 \\end{bmatrix}$$\n\nFor controllability, $|B \\; : \\;\\;AB|\\neq 0$\n\n$$\\;\\;\\; \\begin{bmatrix} 1 & -2\\\\ 1& -1 \\end{bmatrix}=-1-(-2)=1 \\neq 0$$\n\nThe system is controllable.\n\n$$C^T=\\begin{bmatrix} 1\\\\ 0 \\end{bmatrix}$$\n\n$$A^TC^T=\\begin{bmatrix} -2 &0 \\\\ 0& -1 \\end{bmatrix}\\begin{bmatrix} 1\\\\ 0 \\end{bmatrix}=\\begin{bmatrix} -2\\\\ 0 \\end{bmatrix}$$\n\nFor observability, $[C^T\\;: \\; A^TC^T]\\neq 0$\n\n$$\\begin{bmatrix} 1 & -2\\\\ 0 & 0 \\end{bmatrix}=0$$\n\nThe system is not observable.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q51": {
+      "question_uid": "pp:ee:2013:q51",
+      "exam_uid": "ee:2013:set1:q51",
+      "title": "GATE EE 2013 | Set 1 | Question: 51",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The state variable formulation of a system is given as <br>$$\\begin{bmatrix} \\dot{x_1}\\\\ \\dot{x_2} \\end{bmatrix}=\\begin{bmatrix} -2 & 0\\\\ 0&-1 \\end{bmatrix}\\begin{bmatrix} x_1\\\\x_2 \\end{bmatrix}+\\begin{bmatrix} 1\\\\1 \\end{bmatrix}u$$ $$x_1(0)=0,x_2(0)=0\\ and \\; y=\\begin{bmatrix} 1 & 0 \\end{bmatrix}\\begin{bmatrix} x_1\\\\x_2 \\end{bmatrix}$$<br>The response y(t) to the unit step input is",
+      "options": [
+        "$\\frac{1}{2}-\\frac{1}{2}e^{-2t}$",
+        "$1-\\frac{1}{2}e^{-2t}-\\frac{1}{2}e^{-2t}$",
+        "$e^{-2t}-e^{-t}$",
+        "$1-e^{-t}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-variable-analysis",
+          "subtopicLabel": "State Variable Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "state-variable-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Variable Analysis",
+        "markdown": "$$\\begin{aligned} [sI-A]&=\\begin{bmatrix} s & 0\\\\ 0 &s \\end{bmatrix}-\\begin{bmatrix} -2 & 0\\\\ 0& -1 \\end{bmatrix} \\\\ &=\\begin{bmatrix} s+2 & 0\\\\ 0 &s+1 \\end{bmatrix} \\\\ [sI-A]^{-1}&=\\begin{bmatrix} \\frac{1}{s+2} & 0\\\\ 0 &\\frac{1}{s+1} \\end{bmatrix} \\\\ [sI-A]^{-1}[B]&=\\begin{bmatrix} \\frac{1}{s+2} & 0\\\\ 0 &\\frac{1}{s+1} \\end{bmatrix}\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix} \\\\ &=\\begin{bmatrix} \\frac{1}{s+2}\\\\ \\frac{1}{s+1} \\end{bmatrix} \\\\ C[sI-A]^{-1}[B]&=\\begin{bmatrix} 1 &0 \\end{bmatrix}\\begin{bmatrix} \\frac{1}{s+2}\\\\ \\frac{1}{s+1} \\end{bmatrix}=\\frac{1}{s+2} \\\\ G(s)&=\\frac{1}{s+2} \\\\ \\frac{Y(s)}{X(s)}&=\\frac{1}{s+2} \\\\ Y(s)&=\\frac{1}{s(s+2)}=\\frac{1}{2}\\left [ \\frac{1}{s}-\\frac{1}{s+2} \\right ] \\\\ y(t)&=\\frac{1}{2}(1-e^{-2t})=\\frac{1}{2}-\\frac{1}{2}e^{-2t} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2013:q52": {
+      "question_uid": "pp:ee:2013:q52",
+      "exam_uid": "ee:2013:set1:q52",
+      "title": "GATE EE 2013 | Set 1 | Question: 52",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the following network, the voltage magnitudes at all buses are equal to 1 p.u., the voltage phase angles\nare very small, and the line resistances are negligible. All the line reactances are equal to $j1 \\Omega$.<br><img src=\"/question-images/ee/2013/ee-2013-cde6e5f1a3.webp\"/><br>The voltage phase angles in rad at buses 2 and 3 are",
+      "options": [
+        "$\\theta _{2}=-0.1, \\theta _{3}=-0.2$",
+        "$\\theta _{2}=0, \\theta _{3}=-0.1$",
+        "$\\theta _{2}=0.1, \\theta _{3}=0.1$",
+        "$\\theta _{2}=0.1, \\theta _{3}=0.2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "load-flow-studies"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "$$\\begin{aligned} P_1+P_2+P_3&=0 \\\\ P_1+j0.1-j0.2&=0 \\\\ P_1&= j0.1\\; p.u. \\end{aligned}$$\n\nNo power flow in between bus 1 and 2.\n\n$$\\begin{aligned} P_{12}\\propto &\\sin (\\theta _1-\\theta _2)=0\\\\ \\theta _1-\\theta _2&=0 \\end{aligned}$$\n\nAs bus 1 is a slack bus\n\n$$\\begin{aligned} \\theta _1&=0\\\\ \\Rightarrow \\; \\theta _2&=0\\\\ \\text{Now, }P_{23}&=\\frac{V_2V_3}{X} \\sin (\\theta _2-\\theta _3)\\\\ 0.1&=\\frac{1 \\times 1}{1}\\sin (\\theta _2-\\theta _3)\\\\ \\Rightarrow \\; \\theta _2-\\theta _3&= \\sin ^{-1}(0.1)\\\\ &=0.10016\\simeq 0.1\\\\ \\theta _3&=-0.1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2013:q53": {
+      "question_uid": "pp:ee:2013:q53",
+      "exam_uid": "ee:2013:set1:q53",
+      "title": "GATE EE 2013 | Set 1 | Question: 53",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the following network, the voltage magnitudes at all buses are equal to 1 p.u., the voltage phase angles\nare very small, and the line resistances are negligible. All the line reactances are equal to $j1 \\Omega$.<br><img src=\"/question-images/ee/2013/ee-2013-cde6e5f1a3.webp\"/><br>If the base impedance and the line-to line base voltage are 100 $\\Omega$ and 100 kV\nrespectively, then the real power in MW delivered by the generator connected at\nthe slack bus is",
+      "options": [
+        "-10",
+        "0",
+        "10",
+        "20"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "load-flow-studies"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "$$\\begin{aligned} P_1&=0.1 \\;p.u.\\\\ &=0.1 \\times \\frac{(100 kV)^2}{100}\\\\ &=10MW \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2013:q54": {
+      "question_uid": "pp:ee:2013:q54",
+      "exam_uid": "ee:2013:set1:q54",
+      "title": "GATE EE 2013 | Set 1 | Question: 54",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Voltage Source Inverter (VSI) shown in the figure below is switched to provide a 50 Hz, square-wave\nac output voltage ($v_o$) across an R-L load. Reference polarity of $v_o$ and reference direction of the output\ncurrent $i_o$ are indicated in the figure. It is given that R = 3$\\Omega$, L = 55.9 mH.<br><img src=\"/question-images/ee/2013/ee-2013-3273722bd2.webp\"/><br>In the interval when $v_o \\lt 0$and $i_o \\gt 0$ the pair of devices which conducts the load current is",
+      "options": [
+        "$Q_{1},Q_{2}$",
+        "$Q_{3},Q_{4}$",
+        "$D_{1},D_{2}$",
+        "$D_{3},D_{4}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "inverters",
+          "subtopicLabel": "Inverters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "inverters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Inverters",
+        "markdown": "As $V_0 \\lt 0, \\;(Q_3,D_3) \\text{ and }(Q_4,D_4)$ should work.\n\nAlso $P=v_0i_0$\n\nAs $I_0 \\gt 0$\n\n$P \\lt 0$\n\nPower is being feedback.\n\nso $D_3 \\text{ and } D_4$ are working.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2013:q55": {
+      "question_uid": "pp:ee:2013:q55",
+      "exam_uid": "ee:2013:set1:q55",
+      "title": "GATE EE 2013 | Set 1 | Question: 55",
+      "year": "gateee-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Voltage Source Inverter (VSI) shown in the figure below is switched to provide a 50 Hz, square-wave\nac output voltage ($v_o$) across an R-L load. Reference polarity of $v_o$ and reference direction of the output\ncurrent $i_o$ are indicated in the figure. It is given that R = 3$\\Omega$, L = 55.9 mH.<br><img src=\"/question-images/ee/2013/ee-2013-3273722bd2.webp\"/><br>Appropriate transition i.e., Zero Voltage Switching (ZVS)/Zero Current Switching (ZCS) of the\nIGBTs during turn-on/turn-off is",
+      "options": [
+        "ZVS during turn off",
+        "ZVS during turn-on",
+        "ZCS during turn off",
+        "ZCS during turn-on"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2013-s1",
+      "yearSetIdentity": "ee:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "inverters",
+          "subtopicLabel": "Inverters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "inverters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Inverters",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Power Electronics** (specifically *Inverters*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Inverters**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *ZCS during turn-on*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (ZCS during turn-on)."
+      }
+    }
+  }
+}

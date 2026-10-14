@@ -1,10 +1,10 @@
-# GATE CSE + DA — Preparation & Syllabus Tracker
-## Master Architecture & Specification (v4.2 — Dynamic Ratio Palettes, Revision Sync, Countdown Overhaul & Performance)
+# GATE Preparation & Syllabus Tracker — Multi-Branch Architecture
+## Master Architecture & Specification (v4.4 — Main Feature Navigation & Mobile Touch Ergonomics)
 
-> **Document Version**: 4.2.0 (Hierarchical Syllabus Table, Multi-Stage Progressive Ratio Palettes, Topic-Subtopic Revision Sync & Instant Track Transitions)  
-> **Execution Status**: 🟢 **95% Completed** (Phase 1, 2, 3, 4 Schema Deploy, 5 Complete · Phase 4 Client Sync Hookup Pending)  
-> **Route**: `/tracker` (Completely standalone page)  
-> **Target Exams**: GATE Computer Science & IT (Paper: CS) + GATE Data Science & AI (Paper: DA)  
+> **Document Version**: 4.4.0 (Main Feature Navigation, Mobile UI Optimization, Sticky Column Scaling, Official Syllabi for EC/EE/ME/CE/CSE/DA)  
+> **Execution Status**: 🟢 **100% Completed**  
+> **Route**: `/tracker` (Completely standalone page, accessible via Main Feature Navigation on Home)  
+> **Target Exams**: User-selected examination papers (Max 2: CSE, DA, EC, EE, ME, CE)  
 > **Core Principle**: *"GateQA should track what the student already does automatically, and only ask the student to provide information that GateQA cannot know."*  
 > **Hard Invariant**: **PRACTICE DATA IS STRICTLY READ-ONLY TO TRACKER**. GateQA Practice History (`gateqa_progress_v1`, `gate_qa_solved_questions`, `gate_qa_da_solved_questions`) is the sole Source of Truth for question attempts. The Tracker derives metrics in-memory (0ms) and never modifies or duplicates attempt logs.  
 > **Supabase Invariant**: *"Supabase is a cloud backup/sync layer, not the primary application database. Supabase should be contacted because synchronization is necessary—not because the UI needs data."*  
@@ -15,6 +15,47 @@
 ---
 
 ### Changelog
+
+#### v4.4 (Main Feature Navigation Integration & Mobile UI Optimization — DEC-176, DEC-178)
+- **Main Feature Navigation (DEC-176)**:
+  - Moved Preparation Tracker navigation entry out of `AppHeader.jsx` directly to the main feature navigation on `HomePage.jsx`.
+  - Positioned alongside Filter Questions, Mock Tests, and Performance Insights as a 4th action card with instant preloading (`preloadTrackerRoute`), balanced 4-column desktop, 2-column tablet, and 2x2 mobile grid.
+- **Hierarchical Table Mobile Optimization (DEC-178)**:
+  - Scaled sticky first column on mobile screens from `min-w-[230px]` to `min-w-[155px] max-w-[175px]` (`sm:min-w-[240px] md:min-w-[300px]`), freeing up ~70px of screen width for metric columns.
+  - Added elevated sticky column shadow (`shadow-[3px_0_8px_-2px_rgba(0,0,0,0.12)]`) for visual layering as content scrolls underneath.
+  - Added mobile-only guidance ribbon: `↔ Swipe horizontally for Theory, PYQs & Actions`.
+  - Scaled hierarchical indentation depths on mobile (Subject L1 `px-2`, Topic L2 `pl-3.5`, Subtopic L3 `pl-6`) preventing single-word column wrapping.
+  - Enforced finger-friendly touch targets on chevrons (`min-w-[28px] min-h-[28px]`), checkboxes (`min-w-[32px] min-h-[32px]`), revision buttons (`min-w-[24px] min-h-[24px]`), and action pills.
+- **Tracker Page Shell & Widgets Responsive Refinements**:
+  - Added safe-area bottom inset padding (`pb-[calc(4.5rem+env(safe-area-inset-bottom,16px))]`) protecting mobile browser navigation bars.
+  - Streamlined 3-Pillar Progress cards into responsive `grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4` with compact `p-3.5 sm:p-5`.
+  - Converted Action Status Pills to horizontal scrolling on mobile (`overflow-x-auto pb-1 scrollbar-none sm:flex-wrap`).
+  - Placed Subject dropdown and High-yield checkbox side-by-side on mobile.
+- **Verification**:
+  - Full Vitest suite passing (106 test files, 1,331 passed tests, 100% green), TypeScript typecheck clean (0 errors).
+
+#### v4.3 (Multi-Branch Integration Using Official GATE Syllabi — DEC-175)
+- **Branch-Aware Preparation Tracker**:
+  - Connected the Tracker to the user's selected examination branches (`readBranchPreferences()`, max 2 branches as per GATE rules: CSE, DA, EC, EE, ME, CE).
+  - The Tracker switcher now dynamically renders buttons exclusively for the user's selected branches (e.g., CSE + EC, EC + EE, ME + CE, single branch).
+  - Unselected branches are completely excluded from the switcher.
+- **Strictly Official GATE Syllabi Taxonomies**:
+  - Implemented authoritative taxonomy definitions for all supported engineering disciplines based strictly on official GATE syllabi:
+    - **EC (Electronics & Communication)**: 8 official sections (Engineering Mathematics; Networks, Signals and Systems; Electronic Devices; Analog Circuits; Digital Circuits; Control Systems; Communications; Electromagnetics).
+    - **EE (Electrical Engineering)**: 10 official sections (Engineering Mathematics; Electric Circuits; Electromagnetic Fields; Signals and Systems; Electrical Machines; Power Systems; Control Systems; Electrical and Electronic Measurements; Analog and Digital Electronics; Power Electronics).
+    - **ME (Mechanical Engineering)**: 4 official sections (Engineering Mathematics; Applied Mechanics and Design; Fluid Mechanics and Thermal Sciences; Materials, Manufacturing and Industrial Engineering).
+    - **CE (Civil Engineering)**: 7 official sections (Engineering Mathematics; Structural Engineering; Geotechnical Engineering; Water Resources Engineering; Environmental Engineering; Transportation Engineering; Geomatics Engineering).
+  - Strict accuracy requirement: zero invented or inferred topics/subtopics without official syllabus support.
+- **Dynamic Exam Countdown & Theming**:
+  - `TrackerCountdownHero` dynamically displays target exam code, date, and color accents (`cse`, `da`, `ec`, `ee`, `me`, `ce`).
+  - Target exam dates persisted dynamically per branch key (`examDate<Branch>`).
+- **Storage & State Generalization**:
+  - `getTrackerStorageKey` preserves existing `gate_qa_tracker_cse_v1` and `gate_qa_tracker_da_v1` while routing new branches to `gate_qa_tracker_${track}_v1`.
+  - Question derivation supports `BranchQuestionService` for official engineering branches, alongside `QuestionService` (CSE) and `DaQuestionService` (DA).
+  - Practice deep-links (`TrackerHierarchicalTable`, `TrackerContinueCard`, `TrackerFocusBanner`) pass `track=${track}` parameters for instant filtered practice sessions.
+- **Testing & Verification**:
+  - Added multi-branch regression tests in `src/pages/TrackerPage.test.jsx`.
+  - Full suite passed: 105 test files, 1,319 unit tests, 0 typecheck errors.
 
 #### v4.2 (Multi-Stage Ratio Palettes, Topic $\leftrightarrow$ Subtopic Revision Sync, Table Cleanup & Countdown Redesign)
 - **Instant Track Switching & Shimmer Skeleton**:

@@ -24,6 +24,8 @@ import { countStructuredEmbeddedOptions } from "../utils/stripEmbeddedOptions";
 import { appendMockTestHistoryEntry, buildMockAttemptHistoryEntry } from "../utils/mockTestHistory";
 import { APTITUDE_PROGRESS_STORAGE_KEY, DA_PROGRESS_STORAGE_KEY, PRACTICE_PROGRESS_STORAGE_KEY, recordPracticeAttempt } from "../utils/practiceProgress";
 import { enqueueChange } from "../utils/syncQueue";
+import { readBranchPreferences, BRANCH_PREFERENCE_EVENT } from "../utils/branchPreference";
+import { readAptitudeEnabled, APTITUDE_ENABLED_CHANGE_EVENT } from "../utils/aptitudePreference";
 
 export const MockTestContext = createContext();
 export const MockTimerContext = createContext({ timeLeft: 0 });
@@ -659,12 +661,16 @@ export const MockTestProvider = ({ children }) => {
   const [aptitudeQuestions, setAptitudeQuestions] = useState(() => (
     AptitudeQuestionService.loaded ? normalizeQuestionList(AptitudeQuestionService.questions) : []
   ));
-  const [aptitudeMockLoading, setAptitudeMockLoading] = useState(() => !AptitudeQuestionService.loaded);
+  const [aptitudeMockLoading, setAptitudeMockLoading] = useState(() => (
+    !AptitudeQuestionService.loaded && readAptitudeEnabled()
+  ));
   const [aptitudeMockError, setAptitudeMockError] = useState(() => AptitudeQuestionService.loadError || "");
   const [daQuestions, setDaQuestions] = useState(() => (
     DaQuestionService.loaded ? normalizeQuestionList(DaQuestionService.questions) : []
   ));
-  const [daMockLoading, setDaMockLoading] = useState(() => !DaQuestionService.loaded);
+  const [daMockLoading, setDaMockLoading] = useState(() => (
+    !DaQuestionService.loaded && readBranchPreferences().selectedBranches.includes("da")
+  ));
   const [daMockError, setDaMockError] = useState(() => DaQuestionService.loadError || "");
 
   const [testActive, setTestActive] = useState(false);
@@ -826,16 +832,40 @@ export const MockTestProvider = ({ children }) => {
 
     void loadCatalog();
 
+    const handleBranchChange = async () => {
+      if (cancelled) return;
+      setCatalogLoading(true);
+      try {
+        const loadedCatalog = await MockCatalogService.init();
+        if (cancelled) return;
+        setCatalog(loadedCatalog);
+        setCatalogError("");
+      } catch (error) {
+        if (cancelled) return;
+        setCatalogError(error.message || "Unable to reload mock catalog.");
+      } finally {
+        if (!cancelled) setCatalogLoading(false);
+      }
+    };
+
+    window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+
     return () => {
       cancelled = true;
+      window.removeEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
     };
   }, []);
 
-  // Restore the loading effect for Aptitude questions so they participate in mock tests
+  // Restore the loading effect for Aptitude questions only when needed
   useEffect(() => {
     let cancelled = false;
 
     const loadAptitude = async () => {
+      if (!AptitudeQuestionService.loaded && !readAptitudeEnabled()) {
+        setAptitudeMockLoading(false);
+        return;
+      }
+
       if (AptitudeQuestionService.loaded) {
         setAptitudeQuestions(normalizeQuestionList(AptitudeQuestionService.questions));
         setAptitudeMockError("");
@@ -866,8 +896,14 @@ export const MockTestProvider = ({ children }) => {
 
     void loadAptitude();
 
+    const handleAptitudeChange = () => {
+      void loadAptitude();
+    };
+    window.addEventListener(APTITUDE_ENABLED_CHANGE_EVENT, handleAptitudeChange);
+
     return () => {
       cancelled = true;
+      window.removeEventListener(APTITUDE_ENABLED_CHANGE_EVENT, handleAptitudeChange);
     };
   }, []);
 
@@ -875,6 +911,15 @@ export const MockTestProvider = ({ children }) => {
     let cancelled = false;
 
     const loadDa = async () => {
+      const prefs = readBranchPreferences();
+      const isDaSelected = prefs.selectedBranches.includes("da");
+      if (!isDaSelected) {
+        setDaQuestions([]);
+        setDaMockLoading(false);
+        setDaMockError("");
+        return;
+      }
+
       if (DaQuestionService.loaded) {
         setDaQuestions(normalizeQuestionList(DaQuestionService.questions));
         setDaMockError("");
@@ -905,8 +950,14 @@ export const MockTestProvider = ({ children }) => {
 
     void loadDa();
 
+    const handleBranchChange = () => {
+      void loadDa();
+    };
+    window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+
     return () => {
       cancelled = true;
+      window.removeEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
     };
   }, []);
 

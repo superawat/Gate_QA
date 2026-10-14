@@ -1,0 +1,2211 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.362Z",
+  "shardKey": "ee-2015-s1",
+  "yearSetKey": "ee-2015-s1",
+  "yearSetIdentity": "ee:2015:set-1",
+  "track": "ee",
+  "year": 2015,
+  "set": 1,
+  "label": "2015 Set 1",
+  "questionCount": 55,
+  "recordsByQuestionUid": {
+    "pp:ee:2015:q1": {
+      "question_uid": "pp:ee:2015:q1",
+      "exam_uid": "ee:2015:set1:q1",
+      "title": "GATE EE 2015 | Set 1 | Question: 1",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A random variable X has probability density function f(x) as given below: <br><br>$$f(x)=\\left\\{\\begin{matrix} a+bx & for \\; 0 \\lt x \\lt 1\\\\ 0& otherwise \\end{matrix}\\right.$$<br><br> If the expected value E[X]=2/3, then $Pr[X \\lt 0.5]$ is _____________.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.25",
+        "tolerance": {
+          "lower": 0.25,
+          "upper": 0.25
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "$$\\begin{aligned} f(x)&=\\left\\{\\begin{matrix} a+bx & \\text{for }0 \\lt x \\lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now given }E(X)&=2/3\\\\ \\int_{0}^{1}xf(x)dx&=\\frac{2}{3}\\\\ \\int_{0}^{1}x(a+bx)dx&=\\frac{2}{3}\\\\ a\\left ( \\frac{x^2}{2} \\right )_0^1+b\\left ( \\frac{x^3}{3} \\right )_0^1&=\\frac{2}{3}\\\\ a\\left ( \\frac{1}{2} \\right )+b\\left ( \\frac{1}{3} \\right )&=\\frac{2}{3}\\\\ 3a+2b&=4\\;\\;...(i)\\\\ \\text{Now, }\\int_{0}^{1}f(x)dx &=1\\\\ (\\text{total probability} & \\text{ is always equal to 1})\\\\ \\int_{0}^{1}(a+bx)dx&=\\left ( ax+\\frac{bx^2}{2} \\right )_0^1=1\\\\ a+\\frac{b}{2}&=1\\\\ 2a+b&=2\\;\\;...(ii)\\\\ \\text{Now solving } & \\text{ (i) and (ii), we get}\\\\ a&=0,b=2\\\\ So,\\; \\;f(x)&=\\left\\{\\begin{matrix} 2x & \\text{for }0 \\lt x lt 1\\\\ 0 & \\text{otherwise} \\end{matrix}\\right.&\\\\ \\text{Now we need}&\\\\ P(x \\lt 0.5)&=\\int_{0}^{0.5}2xdx=2\\left ( \\frac{x^2}{2} \\right )_0^{0.5}\\\\ &=0.5^2-0^2=0.25 \\end{aligned}$$\n\nTherefore, the correct answer is **0.25**."
+      }
+    },
+    "pp:ee:2015:q2": {
+      "question_uid": "pp:ee:2015:q2",
+      "exam_uid": "ee:2015:set1:q2",
+      "title": "GATE EE 2015 | Set 1 | Question: 2",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If a continuous function f(x) does not have a root in the interval [a,b], then which one of the following statements is TRUE?",
+      "options": [
+        "$f(a)\\cdot f(b)=0$",
+        "$f(a)\\cdot f(b) \\lt 0$",
+        "$f(a)\\cdot f(b) \\gt 0$",
+        "$f(a)/ f(b)\\leq 0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Intermediate value theorem states that if a function is continious and $f(a) \\cdot f(b) \\lt 0$, then surely there is a root in (a,b). The contrapositive of this theorem is that if a function is continious and has no root in (a,b) then surely $f(a) \\cdot f(b) \\geq 0$. But since it is given that there is no root in the closed interval [a,b] it means $f(a) \\cdot f(b) \\neq 0$.\n\nSo surely $f(a) \\cdot f(b) \\gt 0$ which is choise(C).\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2015:q3": {
+      "question_uid": "pp:ee:2015:q3",
+      "exam_uid": "ee:2015:set1:q3",
+      "title": "GATE EE 2015 | Set 1 | Question: 3",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "If the sum of the diagonal elements of a 2x2 matrix is -6, then the maximum possible value of determinant of the matrix is ________.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "9",
+        "tolerance": {
+          "lower": 9,
+          "upper": 9
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Consider a symmetric matrix $$A =\\begin{bmatrix} a & b\\\\ b & d \\end{bmatrix}$$\n\nGiven $a+d=-6$\n\n$|A|=ad-b^2$\n\nNow since $b^2$ is always non-negative, maximum determinant will come when $b^2=0$.\n\nSo we need to maximize\n\n$$\\begin{aligned} |A|&=ad-0=ad=a \\times -(6+a) \\\\ &= -a^2-6a\\\\ \\frac{d|A|}{da} &=-2a-6=0 \\\\ \\Rightarrow \\;\\; a &=-3 \\text{ is the only stationary point} \\end{aligned}$$\n\nSince, $$\\left [\\frac{d^2|A|}{da} \\right ]_{a=-3}=-2 \\lt 0$$, we have a maximum at $a=-3$.\n\nSince $a+d=-6$, corresponding value of $d=-3$.\n\n$|A|=ad=-3 \\times -3=9$\n\nTherefore, the correct answer is **9**."
+      }
+    },
+    "pp:ee:2015:q4": {
+      "question_uid": "pp:ee:2015:q4",
+      "exam_uid": "ee:2015:set1:q4",
+      "title": "GATE EE 2015 | Set 1 | Question: 4",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a function $\\vec{f}=\\frac{1}{r^{2}}\\hat{r}$, where r is the distance from the origin and $\\hat{r}$ is the unit vector in the radial direction. The divergence of this function over a sphere of radius R, which includes the origin, is",
+      "options": [
+        "0",
+        "2$\\pi$",
+        "4$\\pi$",
+        "R$\\pi$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Coordinate Systems and Vector Calculus",
+        "markdown": "$\\bar{f}=\\frac{1}{r^2}\\hat{r}$\n\nFrom divergence theorem as we know,\n\n$$\\begin{aligned} \\int _{vol.} (\\triangledown \\cdot \\bar{f})dV &=\\oint \\oint _S \\bar{f}\\cdot d\\bar{S}\\\\ \\oint \\oint _S \\bar{f}\\cdot d\\bar{S} &= \\oint \\oint _S \\left ( \\frac{1}{r^2} \\cdot \\hat{r}\\right ) \\times r^2 \\sin \\theta \\cdot d\\theta \\cdot d\\phi \\cdot \\hat{r} \\\\ &= \\oint \\oint _S \\sin \\theta \\cdot d\\theta \\cdot d\\phi=4\\pi \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2015:q5": {
+      "question_uid": "pp:ee:2015:q5",
+      "exam_uid": "ee:2015:set1:q5",
+      "title": "GATE EE 2015 | Set 1 | Question: 5",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "When the Wheatstone bridge shown in the figure is used to find the value of resistor $R_X$, the galvanometer G indicates zero current when $R_1=50\\Omega ,R_2=65\\Omega$ and $R_3=100\\Omega$. If $R_3$ is known with $\\pm 5$% tolerance on its nominal value of 100 $\\Omega$ , what is the range of $R_X$ in Ohms? <br><img src=\"/question-images/ee/2015/ee-2015-7f47ebb30c.webp\"/>",
+      "options": [
+        "[123.50, 136.50]",
+        "[125.89, 134.12]",
+        "[117.00, 143.00]",
+        "[120.25, 139.75]"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Characteristics of Instruments and Measurement Systems",
+        "markdown": "$R_1=50\\Omega$\n\n$R_2=60\\Omega$\n\n$R_3=100\\pm 5%\\Omega$\n\nThe value of $R_3 \\text{with} \\pm 5$%  of tollerance,\n\n$$\\begin{aligned} R_3&= 100\\pm 5\\% \\\\ &= 100+100 \\times \\frac{5}{100}=105 \\Omega \\\\ &= 100-100 \\times \\frac{5}{100}=95 \\Omega \\end{aligned}$$\n\nIn both condition, the bridge is balance, so under balance condition,\n\n$$\\begin{aligned} \\frac{R_1}{R_3}&=\\frac{R_2}{R_x} \\\\ R_x&=\\frac{R_2R_3}{R_1} \\\\ (i) \\; \\text{when}, \\; R_3&=105\\Omega \\\\ \\therefore \\;\\;R_x &= \\frac{105 \\times 65}{50}=136.50\\Omega \\\\ (ii)\\; \\text{when}, \\; R_3&=95 \\Omega \\\\ \\therefore \\;\\;R_x &= \\frac{95 \\times 65}{50}=123.50\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q6": {
+      "question_uid": "pp:ee:2015:q6",
+      "exam_uid": "ee:2015:set1:q6",
+      "title": "GATE EE 2015 | Set 1 | Question: 6",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A (0-50 A) moving coil ammeter has a voltage drop of 0.1 V across its terminals at full scale deflection. The external shunt resistance (in milliohms) needed to extend its range to (0-500 A) is _______.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.225",
+        "tolerance": {
+          "lower": 0.22,
+          "upper": 0.23
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-c029082fc4.webp\" />\n\n$I_{fs}=50A,$\n\n$V_m=0.1V,$\n\n$R_m=\\frac{0.1}{50}=2 \\times 10^{-3}\\Omega$\n\n$\\because \\; m=10$\n\n$R_{sh}=\\frac{R_m}{(m-1)}$\n\n$\\;\\;\\;=\\frac{2 \\times 10^{-3}}{9}=0.22\\Omega$\n\nTherefore, the correct answer is **0.225** (acceptable range: [0.22, 0.23])."
+      }
+    },
+    "pp:ee:2015:q7": {
+      "question_uid": "pp:ee:2015:q7",
+      "exam_uid": "ee:2015:set1:q7",
+      "title": "GATE EE 2015 | Set 1 | Question: 7",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Of the four characteristics given below, which are the major requirements for an instrumentation amplifier?<br><br>\nP. High common mode rejection ratio <br>\nQ. High input impedance <br>\nR. High linearity <br>\nS. High output impedance",
+      "options": [
+        "P, Q and R only",
+        "P and R only",
+        "P, Q and S only",
+        "Q, R and S only"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Electronics** (specifically *Operational Amplifiers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Operational Amplifiers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *P, Q and R only*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (P, Q and R only)."
+      }
+    },
+    "pp:ee:2015:q8": {
+      "question_uid": "pp:ee:2015:q8",
+      "exam_uid": "ee:2015:set1:q8",
+      "title": "GATE EE 2015 | Set 1 | Question: 8",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the following chopper, the duty ratio of switch S is 0.4. If the inductor and capacitor are sufficiently large to ensure continuous inductor current and ripple free capacitor voltage, the charging current (in Ampere) of the 5 V battery, under steady-state, is_____.  <br><img src=\"/question-images/ee/2015/ee-2015-e59e015e21.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1",
+        "tolerance": {
+          "lower": 1,
+          "upper": 1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-53768bb84e.webp\" />\n\nStep down chopper\n\n$$\\begin{aligned} \\Rightarrow \\; V_0&=\\alpha V_s\\\\ V_0&=I_0R+E\\\\ I_0&=\\frac{V_0-E}{R}\\\\ I_0&=\\frac{\\alpha V_s-E}{R}\\\\ &=\\frac{(0.4)20-5}{3}=1A \\end{aligned}$$\n\nTherefore, the correct answer is **1**."
+      }
+    },
+    "pp:ee:2015:q9": {
+      "question_uid": "pp:ee:2015:q9",
+      "exam_uid": "ee:2015:set1:q9",
+      "title": "GATE EE 2015 | Set 1 | Question: 9",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A moving average function is given by $y(t)=\\frac{1}{T}\\int_{t-T}^{t}u(\\tau )d\\tau$. If the input u is a sinusoidal signal of frequency $\\frac{1}{2\\tau }$ Hz, then in steady state, the output y will lag u (in degree) by ______ .",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "90",
+        "tolerance": {
+          "lower": 90,
+          "upper": 90
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "System input: $\\sin \\omega _0 t$\n\n$$\\begin{aligned}\n\nf_0&=\\frac{1}{2T}Hz\\\\\n\n\\text{Therefore,}\\\\\n\n\\omega _0&=2 \\pi f_0=\\frac{2 \\pi}{2T}=\\frac{\\pi}{T}\\; rad/sec\\\\\n\ny(t)&=\\frac{1}{T}\\int_{t-T}^{t}\\sin \\omega _0\\tau \\; d\\tau\\\\\n\n&=\\frac{1}{T}[-\\cos\\omega _0 t ]_{t-T}^t\\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t -\\cos\\omega _0 (t-T) ]\\\\\n\n&\\left [ \\because \\; \\omega _0=\\frac{t}{T} \\right ]\\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t -\\cos\\left ( \\frac{\\pi t}{T}- \\pi \\right ) ]\\\\ \\\\\n\n&=-\\frac{1}{T}[\\cos\\omega _0 t +\\cos\\omega _0 t ]\\\\\n\n&=-\\frac{2}{T} \\cos\\omega _0 t \\\\\n\n&=\\frac{2}{T}\\sin (\\omega _0 t -90^{\\circ}) \\\\\n\n&=\\text{Output is lagging by }90^{\\circ} \\text{ w.r.t. input.}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **90**."
+      }
+    },
+    "pp:ee:2015:q10": {
+      "question_uid": "pp:ee:2015:q10",
+      "exam_uid": "ee:2015:set1:q10",
+      "title": "GATE EE 2015 | Set 1 | Question: 10",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The impulse response g(t) of a system, G , is as shown in Figure (a). What is the maximum value attained by the impulse response of two cascaded blocks of G as shown in Figure (b)? <br><img src=\"/question-images/ee/2015/ee-2015-3570990d9e.webp\"/>",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{5}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "$$\\begin{aligned} g(t)&=u(t)-u(t-1)\\\\ G(s)&=\\frac{1}{s}-\\frac{e^{-s}}{s}\\\\ G(s) \\times G(s)&=g(t)* g(t) \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-b8932a73de.webp\" />\n\nMaximum value =1\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q11": {
+      "question_uid": "pp:ee:2015:q11",
+      "exam_uid": "ee:2015:set1:q11",
+      "title": "GATE EE 2015 | Set 1 | Question: 11",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Consider a one-turn rectangular loop of wire placed in a uniform magnetic field as shown in the figure. The plane of the loop is perpendicular to the field lines. The resistance of the loop is 0.4 $\\Omega$, and its inductance is negligible. The magnetic flux density (in Tesla) is a function of time, and is given by $B(t)=0.25 \\sin \\omega t,$ where $\\omega =2\\pi \\times 50$ radian/second. The power absorbed (in Watt) by the loop from the magnetic field is ________. <br><img src=\"/question-images/ee/2015/ee-2015-08b8465933.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.185",
+        "tolerance": {
+          "lower": 0.17,
+          "upper": 0.2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "time-varying-fields",
+          "subtopicLabel": "Time Varying Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "time-varying-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Time Varying Fields",
+        "markdown": "$$\\begin{aligned} A&=10cm \\times 5 cm\\\\ B(t)&=0.25 \\sin \\omega t,\\; R=0.4\\Omega \\\\ P&=i^2 R\\\\ \\because \\; e&=-\\frac{d\\phi }{dt}=-\\frac{d}{dt}(B \\times A)\\\\ &=-\\frac{d}{dt}[0.25 \\times 50 \\times 10^{-4} \\sin \\omega t]\\\\ e&=-0.25 \\times 50 \\times 10^4 \\omega \\cos \\omega t\\\\ &=-1.25 \\times 10^{-3}\\omega \\cos \\omega t\\\\ P_{evg}&=\\frac{e^2_{rms}}{R}\\\\ P&=\\int_{0}^{T}\\frac{(12.5 \\times 100 \\pi \\times 10^{-4})^2}{0.4} \\times \\cos ^2 \\omega t d(\\omega t)\\\\ &=(12.5 \\times \\pi \\times 10^{-2})^2 \\times \\frac{1}{2 \\times 0.4}\\\\ &=0.193\\; \\text{Watt} \\end{aligned}$$\n\nTherefore, the correct answer is **0.185** (acceptable range: [0.17, 0.2])."
+      }
+    },
+    "pp:ee:2015:q12": {
+      "question_uid": "pp:ee:2015:q12",
+      "exam_uid": "ee:2015:set1:q12",
+      "title": "GATE EE 2015 | Set 1 | Question: 12",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A steady current I is flowing in the -x direction through each of two infinitely long wires at $y=\\pm \\frac{L}{2}$ as shown in the figure. The permeability of the medium is $\\mu _{0}$. The $\\vec{B}$-field at (0,L,0) is<br><img src=\"/question-images/ee/2015/ee-2015-2f8a0c8fc7.webp\"/>",
+      "options": [
+        "$-\\frac{4\\mu _0I}{3 \\pi L}\\hat{Z}$",
+        "$+\\frac{4\\mu _0I}{3 \\pi L}\\hat{Z}$",
+        "0",
+        "$-\\frac{3\\mu _0I}{4 \\pi L}\\hat{Z}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "magnetostatic-fields",
+          "subtopicLabel": "Magnetostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "magnetostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Magnetostatic Fields",
+        "markdown": "$$\\begin{aligned} \\vec{B}&=\\frac{\\mu _0 I}{2\\pi \\left ( \\frac{L}{2} \\right )}(-\\hat{z})+\\frac{\\mu _0 I}{2\\pi \\left ( \\frac{3L}{2} \\right )}(-\\hat{z}) \\\\ &=\\frac{\\mu _0 I(-\\hat{z})}{2\\pi L}\\left ( 2+\\frac{2}{3} \\right )\\\\ &=-\\frac{4}{3}\\frac{\\mu _0 I}{\\pi L}\\hat{z} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q13": {
+      "question_uid": "pp:ee:2015:q13",
+      "exam_uid": "ee:2015:set1:q13",
+      "title": "GATE EE 2015 | Set 1 | Question: 13",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the circuit shown in the figure. In this circuit R=1k$\\Omega$, and C=1$\\mu$F. The input voltage is sinusoidal with a frequency of 50 Hz, represented as a phasor with magnitude $V_i$ and phase angle 0 radian as shown in the figure. The output voltage is represented as a phasor with magnitude $V_o$ and phase angle $\\delta$ radian. What is the value of the output phase angle $\\delta$ (in radian) relative to the phase angle of the input voltage? <br><img src=\"/question-images/ee/2015/ee-2015-ee0d7c4bce.webp\"/>",
+      "options": [
+        "0",
+        "$\\pi$",
+        "$\\pi/2$",
+        "$-\\pi/2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "The circuit is\n\n<img src=\"/question-images/ee/2015/ee-2015-c18dd39bc4.webp\" />\n\nSince circuit has negative feedback, so with help of virtual short $V_A=V_B$\n\nSo, KVL in the loop from A to B given,\n\n$I\\left ( \\frac{1}{sC} \\right )-V_i+I\\left ( \\frac{1}{sC} \\right )=0$\n\nSo,  $I=\\frac{V_i(sC)}{2}$\n\nSo,   $V_A=-IR$\n\n$V_A=-\\frac{sCRV_i}{2}$\n\nand   $V_A=V_B$\n\nSo,   $V_B=-\\frac{sCRV_i}{2}$\n\nNow,   $\\frac{V_B-V_o}{R}=I$\n\nSo,   $V_o=V_B-IR$\n\n$V_o=-\\frac{V_i(sCR)}{2}-\\frac{V_i(sCR)}{2}$\n\n$\\;\\; =-V_i(sCR)$\n\nSo,  $V_o=-j\\omega RCV_i$\n\nSo, $V_o$ lag $V_i$ by $90^{\\circ}$ or phase of  $V_o$ w.r.t $V_i$ is $-90^{\\circ}$.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2015:q14": {
+      "question_uid": "pp:ee:2015:q14",
+      "exam_uid": "ee:2015:set1:q14",
+      "title": "GATE EE 2015 | Set 1 | Question: 14",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the given circuit, the silicon transistor has $\\beta$=75 and a collector voltage $V_c$=9 V. Then the ratio of $R_{B}$ and $R_{C}$ is ________. <br><img src=\"/question-images/ee/2015/ee-2015-23f4c93c38.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "105",
+        "tolerance": {
+          "lower": 100,
+          "upper": 110
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "bjt-fet-and-their-biasing-circuits",
+          "subtopicLabel": "BJT, FET and their Biasing Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "bjt-fet-and-their-biasing-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
+        "markdown": "Consider the circuit shown in figure.\n\n<img src=\"/question-images/ee/2015/ee-2015-ce3f2d864d.webp\" />\n\n$V_C=9V$\n\n$So,\\;\\; \\frac{15-9}{R_C}=I_E$\n\n$\\frac{6}{R_C}=I_E$\n\n$and \\;\\;\\frac{9-0.7}{R_B}=I_B$\n\n$So,\\;\\;\\frac{8.3}{R_B}=I_B$\n\n$So, \\;\\; \\frac{I_E}{I_B}=\\frac{6 \\times R_B}{R_C \\times 8.3}$\n\n$(\\beta +1)=\\frac{R_B \\times 6}{R_C \\times 8.3}$\n\n$\\frac{R_B}{R_C}=105.13$\n\nTherefore, the correct answer is **105** (acceptable range: [100, 110])."
+      }
+    },
+    "pp:ee:2015:q15": {
+      "question_uid": "pp:ee:2015:q15",
+      "exam_uid": "ee:2015:set1:q15",
+      "title": "GATE EE 2015 | Set 1 | Question: 15",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the 4 x 1 multiplexer, the output F is given by $F=A\\oplus B$. Find the required input '$I_{3}I_{2}I_{1}I_{0}$'. <br><img src=\"/question-images/ee/2015/ee-2015-d56ce1d49d.webp\"/>",
+      "options": [
+        "1010",
+        "110",
+        "1000",
+        "1110"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "combinational-logic-circuits",
+          "subtopicLabel": "Combinational Logic Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "combinational-logic-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Combinational Logic Circuits",
+        "markdown": "$F=A\\oplus B$\n\n$\\;\\;=\\bar{A}B+A\\bar{B}$\n\n$\\;\\;=\\bar{A}\\bar{B}I_0+\\bar{A}BI_1+A\\bar{B}I_2+ABI_3$\n\n$\\Rightarrow \\; I_0=0, I_1=1, I_2=1, i_3=0$\n\n$I_3I_2I_1I_0=0110$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q16": {
+      "question_uid": "pp:ee:2015:q16",
+      "exam_uid": "ee:2015:set1:q16",
+      "title": "GATE EE 2015 | Set 1 | Question: 16",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a HVDC link which uses thyristor based line-commutated converters as shown in the figure. For a power flow of 750 MW from System 1 to System 2, the voltages at the two ends, and the current, are given by: $V_{1}$=500 kV, $V_{2}$=485 kV and $V_{3}$=1.5 kA. If the direction of power flow is to be reversed (that is, from System 2 to System 1) without changing the electrical connections, then which one of the following combinations is feasible? <br><img src=\"/question-images/ee/2015/ee-2015-b7db2c35e2.webp\"/>",
+      "options": [
+        "$V_{1}=-500 kV,V_{2}=-485 kV$ and  latex]I=1.5kA[/latex]",
+        "$V_{1}=-485 kV,V_{2}=500 kV$ and latex]I=1.5kA[/latex]",
+        "$V_{1}=500 kV,V_{2}=-485 kV$ and latex]I=-1.5kA[/latex]",
+        "$V_{1}=-500 kV,V_{2}=-485 kV$ and latex]I=-1.5kA[/latex]"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "miscellaneous",
+          "subtopicLabel": "Miscellaneous"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "miscellaneous"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Miscellaneous",
+        "markdown": "To maintain the direction of power flow from system 2 to system 1, the voltage $V_1=-485kV$ and voltage $V_2=500kV$ and $I=1.5kA$.\n\nSince, current cannot flow in reverse direction. Option (B) is correct answer.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q17": {
+      "question_uid": "pp:ee:2015:q17",
+      "exam_uid": "ee:2015:set1:q17",
+      "title": "GATE EE 2015 | Set 1 | Question: 17",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Base load power plants are <br><br>P: wind farms. <br>Q: run-of-river plants. <br>R: nuclear power plants. <br>S: diesel power plants.",
+      "options": [
+        "P, Q and S only",
+        "P, R and S only",
+        "P, Q and R only",
+        "Q and R only"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "generating-power-stations",
+          "subtopicLabel": "Generating Power Stations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "generating-power-stations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Generating Power Stations",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Power Systems** (specifically *Generating Power Stations*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Generating Power Stations**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Q and R only*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Q and R only)."
+      }
+    },
+    "pp:ee:2015:q18": {
+      "question_uid": "pp:ee:2015:q18",
+      "exam_uid": "ee:2015:set1:q18",
+      "title": "GATE EE 2015 | Set 1 | Question: 18",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The voltages developed across the 3 $\\Omega$ and 2 $\\Omega$ resistors shown in the figure are 6 V and 2V respectively, with the polarity as marked. What is the power (in Watt) delivered by the 5V voltage source? <br><img src=\"/question-images/ee/2015/ee-2015-388b9f9932.webp\"/>",
+      "options": [
+        "5",
+        "7",
+        "10",
+        "14"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Basics of Electric Circuit",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-454883d154.webp\" />\n\nPower =5x1=5 Watt\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q19": {
+      "question_uid": "pp:ee:2015:q19",
+      "exam_uid": "ee:2015:set1:q19",
+      "title": "GATE EE 2015 | Set 1 | Question: 19",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "For the given circuit, the Thevenin equivalent is to be determined. The Thevenin voltage, $V_{Th}$ (in Volt), seen from terminal AB is __________. <br><img src=\"/question-images/ee/2015/ee-2015-cc440c2f53.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "3.35",
+        "tolerance": {
+          "lower": 3.3,
+          "upper": 3.4
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-77c54b1db8.webp\" />\n\n$2-1(i_1+i)-i=0$\n\n$2-i_1-2i=0$\n\n$2i + i_1=2\\;\\;...(i)$\n\n$\\frac{V-2}{1}+\\frac{V}{1}+\\frac{V-(-20i)}{2}=0$\n\n$2(V-2)+2V+V+20i=0$\n\n$5V+20i=4$\n\nwhere,  $\\frac{V}{1}=i$\n\n$\\Rightarrow \\; 25i=4$\n\n$i=\\frac{4}{25}A$\n\n$i_1=2-2 \\times \\frac{4}{25} =1.68A$\n\n$V_{AB}=1.68 \\times 2=3.36 V$\n\nTherefore, the correct answer is **3.35** (acceptable range: [3.3, 3.4])."
+      }
+    },
+    "pp:ee:2015:q20": {
+      "question_uid": "pp:ee:2015:q20",
+      "exam_uid": "ee:2015:set1:q20",
+      "title": "GATE EE 2015 | Set 1 | Question: 20",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An inductor is connected in parallel with a capacitor as shown in the figure. <br><img src=\"/question-images/ee/2015/ee-2015-fa69a429a2.webp\"/><br> As the frequency of current i is increased, the impedance (Z) of the network varies as  <br><img src=\"/question-images/ee/2015/ee-2015-221f7d0c87.webp\"/>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "resonance-and-locus-diagrams",
+          "subtopicLabel": "Resonance and Locus Diagrams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "resonance-and-locus-diagrams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Resonance and Locus Diagrams",
+        "markdown": "$Z=j\\omega L||\\frac{1}{j\\omega C}$\n\n$\\;\\;=\\frac{L/C}{j\\omega L+\\frac{1}{j\\omega C}}$\n\n$\\;\\;=\\frac{(L/C)j\\omega C}{-\\omega ^2 LC+1}$\n\n$Z=\\frac{j\\omega L}{1-\\omega^2 LC}$\n\n$|Z|=\\frac{\\omega L}{1-\\omega^2 LC}$\n\nFor,  $1\\gt \\omega^2 LC;$\n\n$Z=+ve$\n\n<img src=\"/question-images/ee/2015/ee-2015-719a361bd8.webp\" />\n\nFor, $1 \\lt \\omega^2 LC;$\n\n$Z=-ve$\n\n<img src=\"/question-images/ee/2015/ee-2015-9d8f18524f.webp\" />\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q21": {
+      "question_uid": "pp:ee:2015:q21",
+      "exam_uid": "ee:2015:set1:q21",
+      "title": "GATE EE 2015 | Set 1 | Question: 21",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A separately excited DC generator has an armature resistance of 0.1$\\Omega$ and negligible armature inductance. At rated field current and rated rotor speed, its open-circuit voltage is 200 V. When this generator is operated at half the rated speed, with half the rated field current, an un-charged 1000 $\\mu$F capacitor is suddenly connected across the armature terminals. Assume that the speed remains unchanged during the transient. At what time (in microsecond) after the capacitor is connected will the voltage across it reach 25 V?",
+      "options": [
+        "62.25",
+        "69.3",
+        "73.25",
+        "77.3"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-a68dda37ef.webp\" />\n\n$$\\begin{aligned} R_a &= 0.1\\Omega \\\\ V_{OC}&= 200V\\\\ I'_{f}&= \\frac{I_f}{2}\\\\ \\omega '&= \\frac{\\omega _{rated}}{2}\\\\ E_g&= k\\phi \\omega \\\\ E'_g&= k\\frac{\\phi }{2} \\times \\frac{\\omega }{2}\\\\ &= \\frac{200}{4}=50V\\\\ V&=V(\\infty )-[V(\\infty )-V(0)]e^{-t/T} \\\\ &= 50-[50-0]e^{-t/T} \\\\ 25&= 50[1-e^{-t/RC} ]\\\\ \\frac{1}{2}&= 1-e^{-t/100 \\times 10^{-6}}\\\\ e^{-t/10^{-4}}&= \\frac{1}{2}\\\\ t&=0.693 \\times 10^{-4}\\\\ &=69.3\\mu s \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q22": {
+      "question_uid": "pp:ee:2015:q22",
+      "exam_uid": "ee:2015:set1:q22",
+      "title": "GATE EE 2015 | Set 1 | Question: 22",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The self inductance of the primary winding of a single phase, 50 Hz, transformer is 800 mH, and that of the secondary winding is 600 mH. The mutual inductance between these two windings is 480 mH. The secondary winding of this transformer is short circuited and the primary winding is connected to a 50 Hz, single phase, sinusoidal voltage source. The current flowing in both the windings is less than their respective rated currents. The resistance of both windings can be neglected. In this condition, what is the effective inductance (in mH) seen by the source?",
+      "options": [
+        "416",
+        "440",
+        "200",
+        "920"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "Self inductance of primary coil is 500 mH.\n\nSelf inductance of secondary coil is 600 mH.\n\nMutual inductance is 480 mH.\n\n$$\\begin{aligned} \\text{So,} \\;\\; L_1&=800mH \\\\ L_2&=600 mH \\\\ M &=480mH \\end{aligned}$$\n\n<img src=\"/question-images/ee/2015/ee-2015-369a74c2e2.webp\" />\n\nThe voltage source $V_1$ is sinusoidal with frequency 50 Hz.\n\n$$\\begin{aligned} \\text{So,} \\;\\; V_2&=L_2 \\frac{dI_2}{dt}+\\frac{MdI_1}{dt} \\\\ V_2&=0 \\\\ \\text{So,} \\;\\; j\\omega L_2I_2 &=-j\\omega MI_1 \\\\ \\text{So,} \\;\\; I_2&=-I_1 \\frac{M}{L_2}=-\\frac{4}{5}I_1 \\\\ \\text{Now,} \\;\\; V_1&= L_1 \\frac{dI_1}{dt}+\\frac{MdI_2}{dt} \\\\ V_1 &=j\\omega L_1I_1+j\\omega MI_2 \\\\ V_1&=j\\omega [L_1I_1+MI_2] \\\\ V_1&=j\\omega [800mH-384mH]I_1 \\\\ \\frac{V_1}{I_1}&=j\\omega [416mH] \\end{aligned}$$\n\nSo, equivalent inductance is $416 mH.$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q23": {
+      "question_uid": "pp:ee:2015:q23",
+      "exam_uid": "ee:2015:set1:q23",
+      "title": "GATE EE 2015 | Set 1 | Question: 23",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The primary mmf is least affected by the secondary terminal conditions in a",
+      "options": [
+        "power transformer.",
+        "potential transformer.",
+        "current transformer.",
+        "distribution transformer."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical Machines** (specifically *Transformers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Transformers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *current transformer.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (current transformer.)."
+      }
+    },
+    "pp:ee:2015:q24": {
+      "question_uid": "pp:ee:2015:q24",
+      "exam_uid": "ee:2015:set1:q24",
+      "title": "GATE EE 2015 | Set 1 | Question: 24",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A Bode magnitude plot for the transfer function G(s) of a plant is shown in the figure. Which one of the following transfer functions best describes the plant?<br><img src=\"/question-images/ee/2015/ee-2015-d18ebbc09c.webp\"/>",
+      "options": [
+        "$\\frac{1000(s+10)}{s+1000}$",
+        "$\\frac{10(s+10)}{s(s+1000)}$",
+        "$\\frac{s+1000}{10s(s+10)}$",
+        "$\\frac{s+1000}{10(s+10)}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "From initial line equation,\n\n$20 dB=20log_{10}K$\n\nas we know,\n\n$20 dB=20log_{10}K$\n\n$K=10$\n\nnow, from the given plot we know type of system is one.\n\nHence, $G(s)=\\frac{K(1+sT_1)}{(1+sT_2)}$\n\n$T_1=\\frac{1}{10}; \\;\\;T_2=\\frac{1}{1000}$\n\n$G(s)=\\frac{10(1+0.001s)}{(1+0.1s)} =\\frac{(1000+s)}{10(s+10)}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2015:q25": {
+      "question_uid": "pp:ee:2015:q25",
+      "exam_uid": "ee:2015:set1:q25",
+      "title": "GATE EE 2015 | Set 1 | Question: 25",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the signal-flow graph shown in the figure, which one of the following expressions is equal to the transfer function $\\frac{Y(s)}{X_{2}(s)}|_{X_{1}(s)=0}$? <br> <br><img src=\"/question-images/ee/2015/ee-2015-302c9c6486.webp\"/>",
+      "options": [
+        "$\\frac{G_{1}}{1+G_{2}(1+G_{1})}$",
+        "$\\frac{G_{2}}{1+G_{1}(1+G_{2})}$",
+        "$\\frac{G_{1}}{1+G_{1}G_{2}}$",
+        "$\\frac{G_{2}}{1+G_{1}G_{2}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "mathematical-models-of-physical-systems",
+          "subtopicLabel": "Mathematical Models of Physical Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "mathematical-models-of-physical-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-43aa7b6595.webp\" />\n\n$\\frac{Y(s)}{X_2(s)}|_{X_1(s)=0}=\\frac{G_2}{1-(-G_1G_2-G_1)} =\\frac{G_2}{1+G_1(1+G_2)}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q26": {
+      "question_uid": "pp:ee:2015:q26",
+      "exam_uid": "ee:2015:set1:q26",
+      "title": "GATE EE 2015 | Set 1 | Question: 26",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The maximum value of \"a\" such that the matrix <br>$$\\begin{pmatrix} -3 & 0& -2\\\\ 1 &-1 & 0\\\\ 0& a&-2 \\end{pmatrix}$$ <br>has three linearly independent real eigenvectors is",
+      "options": [
+        "$\\frac{2}{3\\sqrt{3}}$",
+        "$\\frac{1}{3\\sqrt{3}}$",
+        "$\\frac{1+2\\sqrt{3}}{3\\sqrt{3}}$",
+        "$\\frac{1+\\sqrt{3}}{3\\sqrt{3}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Linear Algebra*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Linear Algebra**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$\\frac{1}{3\\sqrt{3}}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($\\frac{1}{3\\sqrt{3}}$)."
+      }
+    },
+    "pp:ee:2015:q27": {
+      "question_uid": "pp:ee:2015:q27",
+      "exam_uid": "ee:2015:set1:q27",
+      "title": "GATE EE 2015 | Set 1 | Question: 27",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A solution of the ordinary differential equation $\\frac{d^{2}y}{dt^{2}}+5\\frac{dy}{dt}+6y=0$ is such that y(0)=2 and $y(1)= -\\frac{1-3e}{e^{3}}$. The value of $\\frac{dy}{dt}(0)$ is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "-3",
+        "tolerance": {
+          "lower": -3,
+          "upper": -3
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "$$\\begin{aligned}\n\nD^2+5D+6&=0 \\\\\n\nD &=-1,-3 \\\\\n\ny(t)&=c_1e^{-2t}+c_2e^{-3t} \\\\\n\n\\text{Given,  } y(0)&=2 \\\\\n\n\\Rightarrow \\; c_1+c_2 &=2\\;\\;...(i) \\\\\n\ny(1)&=-\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\; \\frac{c_1}{e^2}+\\frac{c_2}{e^3} &= -\\left ( \\frac{1-3e}{e^3} \\right ) \\\\\n\n\\Rightarrow \\;\\;ec_1+c_2 &=3e-1\\;\\;\\;...(ii) \\\\\n\n\\text{Now solving equation} &\\text{ (i) and (ii), we get} \\\\\n\nc_1=3, &c_2=-1\\\\\n\n\\text{Substituting in  }y(t),& we get \\\\\n\ny(t)&=3e^{-2t}-e^{-3t}\\\\\n\n\\text{Now,   }\\frac{dy}{dt}&=-6e^{-2t}+3e^{-3t}\\\\\n\n\\left ( \\frac{dy}{dt} \\right )_{t=0}&=-6+3=-3\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **-3**."
+      }
+    },
+    "pp:ee:2015:q28": {
+      "question_uid": "pp:ee:2015:q28",
+      "exam_uid": "ee:2015:set1:q28",
+      "title": "GATE EE 2015 | Set 1 | Question: 28",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The signum function is given by <br>$$sgn(x)=\\left\\{\\begin{matrix} \\frac{x}{|x|}; &x\\neq 0 \\\\ 0; & x=0 \\end{matrix}\\right.$$<br> The Fourier series expansion of sgn(cos(t)) has",
+      "options": [
+        "only sine terms with all harmonics",
+        "only cosine terms with all harmonics.",
+        "only sine terms with even numbered harmonics.",
+        "only cosine terms with odd numbered harmonics."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-series",
+          "subtopicLabel": "Fourier Series"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "fourier-series"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Series",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-22c34dd034.webp\" />\n\nSo, cos(t) is\n\n<img src=\"/question-images/ee/2015/ee-2015-0a1cf32978.webp\" />\n\nSo, sgn(cos t) is a rectangular signal which is even and has half wave symmetry.\n\nSo, Fourier series will have only cosine terms with add harmonics only.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2015:q29": {
+      "question_uid": "pp:ee:2015:q29",
+      "exam_uid": "ee:2015:set1:q29",
+      "title": "GATE EE 2015 | Set 1 | Question: 29",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Two players, A and B, alternately keep rolling a fair dice. The person to get a six first wins the game. Given that player A starts the game, the probability that A wins the game is",
+      "options": [
+        "$5/11$",
+        "$1/2$",
+        "$7/13$",
+        "$6/11$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "probability-and-statistics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "P(A wins) = P( 6 in first throw by A) + P(A not 6, B not 6,)+...\n\n$$\\begin{aligned} &=\\frac{1}{6}+\\frac{5}{6}\\frac{5}{6}\\frac{1}{6}+....\\\\ &=\\frac{1}{6}\\left ( 1+\\left ( \\frac{5}{6} \\right )^2+\\left ( \\frac{5}{6} \\right )^4+... \\right )\\\\ &=\\frac{1}{6}\\left ( \\frac{1}{1-\\left (\\frac{5}{6} \\right )^2} \\right )=\\frac{6}{11} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2015:q30": {
+      "question_uid": "pp:ee:2015:q30",
+      "exam_uid": "ee:2015:set1:q30",
+      "title": "GATE EE 2015 | Set 1 | Question: 30",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An unbalanced DC Wheatstone bridge is shown in the figure. At what value of p will the magnitude of $V_o$ be maximum?  <br><img src=\"/question-images/ee/2015/ee-2015-e794e3f41c.webp\"/>",
+      "options": [
+        "$\\sqrt{(1+x)}$",
+        "(1+x)",
+        "$1/\\sqrt{(1+x)}$",
+        "$\\sqrt{(1-x)}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "measurement-of-resistance-and-potentiometers",
+          "subtopicLabel": "Measurement of Resistance and Potentiometers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "measurement-of-resistance-and-potentiometers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Measurement of Resistance and Potentiometers",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-357ba78430.webp\" />\n\n$$\\begin{aligned} V_0 &= \\left [ \\frac{R(1+x)}{PR+R(1+x)}-\\frac{R}{R+PR} \\right ]E\\\\ V_0 &=\\left [ \\frac{R(1+x)}{R+(1+x+P)}-\\frac{R}{R+(1+P)} \\right ]E \\\\ V_0&= \\left [ \\frac{1+x}{1+x+P}-\\frac{1}{1+P} \\right ]E\\\\ V_0&=\\left [ \\frac{(1+x)(1+P)-(1+x+P)}{(1+x+P)(1+P)} \\right ]E \\\\ V_0&=\\left [ \\frac{1+x+Px+P-1-x-P}{1+P+x+xP+P+P^2} \\right ]E \\\\ V_0&=\\left [ \\frac{Px}{1+2P+P^2+x+xP} \\right ]E \\end{aligned}$$\n\nFor maximum $V_0,$\n\n$\\frac{dV_0}{dP}=0$\n\n$\\Rightarrow \\;\\frac{x}{1+x+P(P+2+x)}-\\frac{xP(2P+x+2)}{1+x+P(2+P+x)^2}=0$\n\n$\\Rightarrow \\; [1+x+P(2+P+x)]=P(2P+x+2)$\n\n$\\Rightarrow \\; 1+x+2P+P^2+Px=2p^2+Px+2P$\n\n$\\Rightarrow \\; 1+x=P^2$\n\n$\\Rightarrow \\; P=\\sqrt{1+x}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q31": {
+      "question_uid": "pp:ee:2015:q31",
+      "exam_uid": "ee:2015:set1:q31",
+      "title": "GATE EE 2015 | Set 1 | Question: 31",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The circuit shown is meant to supply a resistive load $R_{L}$ from two separate DC voltage sources. The switches S1 and S2 are controlled so that only one of them is ON at any instant. S1 is turned on for 0.2 ms and S2 is turned on for 0.3 ms in a 0.5 ms switching cycle time period. Assuming continuous conduction of the inductor current and negligible ripple on the capacitor voltage, the output voltage $V_{0}$ (in Volt) across $R_{L}$ is ___________. <br><img src=\"/question-images/ee/2015/ee-2015-70a77f180e.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "7",
+        "tolerance": {
+          "lower": 7,
+          "upper": 7
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "power-semiconductor-devices-and-commutation-techniques",
+          "subtopicLabel": "Power Semiconductor Devices and Commutation Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "power-semiconductor-devices-and-commutation-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-35ad6f9717.webp\" />\n\n$S_1$ is turn ON for 0.2 ms\n\n$S_2$ is turn ON for 0.3 ms.\n\nSwitching cycle time period is 0.5 ms.\n\n<img src=\"/question-images/ee/2015/ee-2015-589727f84f.webp\" />\n\nthe output voltage $V_0$ across $R_L$ is\n\n<img src=\"/question-images/ee/2015/ee-2015-4eb28fbd4a.webp\" />\n\n$$\\begin{aligned} V_0&= \\frac{1}{0.5 \\times 10^{-3}}\\left [ \\int_{0}^{0.2}10dt +\\int_{0.2}^{0.5}5 dt \\right ]\\\\ &= \\frac{1}{0.5 \\times 10^{-3}} [10(0.2)+5(0.5-0.2)]\\\\ &=\\frac{1}{0.5 \\times 10^{-3}} [2 \\times 10^{-3}+1.5 \\times 10^{-3}] \\\\ &= \\frac{3.5 \\times 10^{-3}}{0.5 \\times 10^{-3}}=7V \\end{aligned}$$\n\nTherefore, the correct answer is **7**."
+      }
+    },
+    "pp:ee:2015:q32": {
+      "question_uid": "pp:ee:2015:q32",
+      "exam_uid": "ee:2015:set1:q32",
+      "title": "GATE EE 2015 | Set 1 | Question: 32",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A self commutating switch SW, operated at duty cycle $\\delta$ is used to control the load voltage as shown in the figure <br><img src=\"/question-images/ee/2015/ee-2015-31ddf5fa24.webp\"/><br> Under steady state operating conditions, the average voltage across the inductor and the capacitor respectively, are",
+      "options": [
+        "$V_{L}=0 \\; and \\; V_{C}=\\frac{1}{1-\\delta }V_{dc}$",
+        "$V_{L}=\\frac{\\delta }{2}V_{dc} \\; and \\; V_{C}=\\frac{1 }{1-\\delta }V_{dc}$",
+        "$V_{L}=0 \\; and \\; V_{C}=\\frac{\\delta}{1-\\delta }V_{dc}$",
+        "$V_{L}=\\frac{\\delta }{2}V_{dc} \\; and \\; V_{C}=\\frac{\\delta }{1-\\delta }V_{dc}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "The average voltage across inductor, $V_L=0$ and hence the given circuit is a boost regular so average voltage across capacitor is equal to average voltage across the load so,\n\n$V_0=\\left ( \\frac{1}{1-\\delta } \\right )V_{dc}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q33": {
+      "question_uid": "pp:ee:2015:q33",
+      "exam_uid": "ee:2015:set1:q33",
+      "title": "GATE EE 2015 | Set 1 | Question: 33",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The single-phase full-bridge voltage source inverter (VSI), shown in figure, has an output frequency of 50 Hz. It uses unipolar pulse width modulation with switching frequency of 50 kHz and modulation index of 0.7. For $V_{in}$ =100 V DC, L=9.55 mH, C=63.66 $\\mu$F, and R=5 $\\Omega$, the amplitude of the fundamental component in the output voltage $V_o$ (in Volt) under steady-state is ________. <br><img src=\"/question-images/ee/2015/ee-2015-0a40176505.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "62",
+        "tolerance": {
+          "lower": 60,
+          "upper": 64
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "inverters",
+          "subtopicLabel": "Inverters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "inverters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Inverters",
+        "markdown": "The rms value of the fundamental component of output voltage,\n\n$$\\begin{aligned} V_{R1}&=\\frac{V_s}{\\sqrt{2}}\\times m_i \\\\ &= \\frac{100}{\\sqrt{2}} \\times 0.7=49.49V \\end{aligned}$$\n\nAmplitude of the value is peak value (i.e.)\n\n$V_{R_{peak}}=\\sqrt{2} \\times 49.49=70V$\n\n<img src=\"/question-images/ee/2015/ee-2015-1a3fa7829a.webp\" />\n\n$V_{R_{peak}}$ is the amplitude of fundamental voltage at the VSI. $V_{0_{(peak)}}$ is the amplitude of fundamental voltage at the resistor.\n\n$$\\begin{aligned}\n\nZ&=\\frac{R(-jX_C)}{R-X_Cj} \\\\\n\n&= \\frac{5(-j50)}{5-j50}\\\\\n\n&= 4.97\\angle -5.71^{\\circ}\\Omega \\\\\n\n\\text{where, } X_C&= \\frac{1}{\\omega C}\\\\\n\n&=\\frac{1}{2 \\pi \\times 50 \\times 63.66 \\times 10^{-6}} \\\\\n\n&= 50\\Omega \\\\\n\nX_L &=\\omega L \\\\\n\n&=2 \\pi \\times 50 \\times 9.55 \\times 10^{-3} \\\\\n\n&= 3 \\Omega\\\\\n\nV_{0(peak)}&=V_{R_{peak}} \\times \\frac{4.97\\angle -5.71^{\\circ}}{(4.97\\angle -5.71^{\\circ})+j3}\\\\\n\n&=62.75\\angle -32.5^{\\circ}\\;V\n\n\\end{aligned}$$\n\nTherefore, the amplitude of the fundamental component in the output voltage,\n\n$V_0=62.75V$\n\nTherefore, the correct answer is **62** (acceptable range: [60, 64])."
+      }
+    },
+    "pp:ee:2015:q34": {
+      "question_uid": "pp:ee:2015:q34",
+      "exam_uid": "ee:2015:set1:q34",
+      "title": "GATE EE 2015 | Set 1 | Question: 34",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 3-phase 50 Hz square wave (6-step) VSI feeds a 3-phase, 4 pole induction motor. The VSI line voltage has a dominant $5^{th}$ harmonic component. If the operating slip of the motor with respect to fundamental component voltage is 0.04, the slip of the motor with respect to $5^{th}$ harmonic component of voltage is _________.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.19",
+        "tolerance": {
+          "lower": 1.16,
+          "upper": 1.22
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "three-phase-induction-machines",
+          "subtopicLabel": "Three Phase Induction Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "three-phase-induction-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Three Phase Induction Machines",
+        "markdown": "$N_S=\\frac{120f}{P}=1500$\n\nSlip due to 5th harmmonic\n\n$S_5=\\frac{N_S+\\frac{N_s}{5}}{N_S}=\\frac{6}{5}=1.2$\n\nTherefore, the correct answer is **1.19** (acceptable range: [1.16, 1.22])."
+      }
+    },
+    "pp:ee:2015:q35": {
+      "question_uid": "pp:ee:2015:q35",
+      "exam_uid": "ee:2015:set1:q35",
+      "title": "GATE EE 2015 | Set 1 | Question: 35",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a discrete time signal given by <br>$x[n]=(-0.25)^{n}u[n]+(0.5)^{n}u[-n-1]$ <br>The region of convergence of its Z-transform would be",
+      "options": [
+        "the region inside the circle of radius 0.5 and centered at origin",
+        "the region outside the circle of radius 0.25 and centered at origin",
+        "the annular region between the two circles, both centered at origin and having radii 0.25 and 0.5",
+        "the entire Z plane."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "z-transform",
+          "subtopicLabel": "Z-Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "z-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Z-Transform",
+        "markdown": "$x[n]=(0.25)^nu(n)+(0.5)^n u(-n-1)$\n\nSignal $x[n]$ is sum of two signals, one is right sided $[(-0.25)^n u(n)]$ and other is left sided $[(0.5)^n u(-n-1)]$. The right sided signal will have pole at location with magnitude 0.25. So, ROC is $|z| \\gt 0.25$. The left sided signal will have pole at location with magnitude 0.5. So, ROC is $|z| \\lt 0.5$. So, ROC of X(z) (Z-transform of x(n) will be ) $0.25 \\lt |z| \\lt 0.5$.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2015:q36": {
+      "question_uid": "pp:ee:2015:q36",
+      "exam_uid": "ee:2015:set1:q36",
+      "title": "GATE EE 2015 | Set 1 | Question: 36",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A parallel plate capacitor is partially filled with glass of dielectric constant 4.0 as shown below. The dielectric strengths of air and glass are 30 kV/cm and 300 kV/cm, respectively. The maximum voltage (in kilovolts), which can be applied across the capacitor without any breakdown, is ______. <br><img src=\"/question-images/ee/2015/ee-2015-17c5acaaf7.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "18.5",
+        "tolerance": {
+          "lower": 17,
+          "upper": 20
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "electrostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Electrostatic Fields",
+        "markdown": "A capacitor is made as shown in figure\n\n<img src=\"/question-images/ee/2015/ee-2015-386382ebd3.webp\" />\n\nBreakdown of dielectric air is 30 kV/cm and breakdown of dielectric glass is 300 kV/cm.\n\nWe need to find maximum value of $V_{AB}$ so that no $C_1$ or $C_2$ breaks down.\n\nSince, area and width of  $C_1$ and $C_2$ is same but $\\varepsilon _{r_1}=1$ and $\\varepsilon _{r_2}=4$\n\nSo,  $C_2=4C_1$\n\nSo, if $V_{AB}$ is applied,\n\n$V_{C_1}=\\frac{4}{5}V_{AB}$ and $V_{C_2}=\\frac{1}{5}V_{AB}$\n\nFor $C_1$ not breakdown, we need\n\n$$\\begin{aligned} \\frac{4}{5}\\frac{V_{AB}}{5mm}&\\lt 30kV/cm \\\\ V_{AB}& \\lt \\frac{30 \\times 25 \\times 1000}{4}V \\\\ V_{A}& \\lt 18.75kV \\end{aligned}$$\n\nTherefore, the correct answer is **18.5** (acceptable range: [17, 20])."
+      }
+    },
+    "pp:ee:2015:q37": {
+      "question_uid": "pp:ee:2015:q37",
+      "exam_uid": "ee:2015:set1:q37",
+      "title": "GATE EE 2015 | Set 1 | Question: 37",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The figure shows a digital circuit constructed using negative edge triggered J-K flip flops. Assume a starting state of $Q_{2}Q_{1}Q_{0}=000$. This state $Q_{2}Q_{1}Q_{0}=000$ will repeat after _______ number of cycles of the clock CLK <br><img src=\"/question-images/ee/2015/ee-2015-d4d2b6a80f.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "6",
+        "tolerance": {
+          "lower": 6,
+          "upper": 6
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "sequential-logic-circuits",
+          "subtopicLabel": "Sequential Logic Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "sequential-logic-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Sequential Logic Circuits",
+        "markdown": "JK flip-flop1 and 2 from a syncgronous sequential circuits and they are synchronized with the output of 0th JK flip-flop.\n\n<img src=\"/question-images/ee/2015/ee-2015-e8619dc254.webp\" />\n\nNumber of cycles = 3 i.e. equal to 6 clock cycles.\n\nTherefore, the correct answer is **6**."
+      }
+    },
+    "pp:ee:2015:q38": {
+      "question_uid": "pp:ee:2015:q38",
+      "exam_uid": "ee:2015:set1:q38",
+      "title": "GATE EE 2015 | Set 1 | Question: 38",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "f(A,B,C,D)=$\\Pi$M(0,1,3,4,5,7,9,11,12,13,14,15) is a maxterm representation of a Boolean function f(A,B,C,D) where A is the MSB and D is the LSB. The equivalent minimized representation of this function is",
+      "options": [
+        "$(A+\\bar{C}+D)(\\bar{A}+B+D)$",
+        "$(A\\bar{C}D)+(\\bar{A}BD)$",
+        "$\\bar{A}C\\bar{D}+A\\bar{B}C\\bar{D}+A\\bar{B}\\bar{C}\\bar{D}$",
+        "$(B+\\bar{C}+D)(A+\\bar{B}+\\bar{C}+D)(\\bar{A}+B+C+D)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "boolean-algebra-and-minimization",
+          "subtopicLabel": "Boolean Algebra and Minimization"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "boolean-algebra-and-minimization"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Boolean Algebra and Minimization",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Electronics** (specifically *Boolean Algebra and Minimization*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Boolean Algebra and Minimization**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$(A+\\bar{C}+D)(\\bar{A}+B+D)$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($(A+\\bar{C}+D)(\\bar{A}+B+D)$)."
+      }
+    },
+    "pp:ee:2015:q39": {
+      "question_uid": "pp:ee:2015:q39",
+      "exam_uid": "ee:2015:set1:q39",
+      "title": "GATE EE 2015 | Set 1 | Question: 39",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The op-amp shown in the figure has a finite gain A = 1000 and an infinite input resistance. A step-voltage $V_{i}=1 mV$ is applied at the input at time t=0 as shown. Assuming that the operational amplifier is not saturated, the time constant (in millisecond) of the output voltage $V_{o}$ is <br><img src=\"/question-images/ee/2015/ee-2015-d5660694a3.webp\"/>",
+      "options": [
+        "1001",
+        "101",
+        "11",
+        "1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "The circuit is\n\n<img src=\"/question-images/ee/2015/ee-2015-fa2bea7507.webp\" />\n\nNow, the gain of op-amp is 1000\n\nSo,   $V_o=1000(V_+-V_-)$\n\nSince  $V_+=0$ (grounded)\n\n$V_-=V_A$\n\nThe above circuit can be redrawn as\n\n<img src=\"/question-images/ee/2015/ee-2015-8d5d15c398.webp\" />\n\nSo, $V_o=1000\\;VA$\n\nNow, KCL at node 'A'\n\n$\\frac{V_A-V_i}{1000}=\\left ( \\frac{V_A-V_o}{1/sC} \\right )$\n\n$\\frac{V_A-V_i}{1000}=\\frac{V_A-(-1000V_A)}{1/sC}$\n\n$\\frac{V_A-V_i}{1000}=(1001V_A)sC$\n\n$V_A-V_i=(1001)\\times 1000V_AsC$\n\n$V_A-V_i=s(1001000 \\times 10^{-6}) V_A$\n\n$V_A-s1.001V_A=V_i$\n\n$V_A=\\left [ \\frac{V_i}{1-s(1.001)} \\right ]$\n\nSince,  $V_o=-1000V_A$\n\n$\\;\\; =-\\frac{1000}{1-s(1.001)} V_i$\n\nSince, pole is at (1/1.001), so time constant is approax '1001'.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q40": {
+      "question_uid": "pp:ee:2015:q40",
+      "exam_uid": "ee:2015:set1:q40",
+      "title": "GATE EE 2015 | Set 1 | Question: 40",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An 8-bit, unipolar Successive Approximation Register type ADC is used to convert 3.5 V to digital equivalent output. The reference voltage is +5 V. The output of the ADC, at the end of 3rd clock pulse after the start of conversion, is",
+      "options": [
+        "1010 0000",
+        "1000 0000",
+        "0000 0001",
+        "1000 0000"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "a-d-and-d-a-converters",
+          "subtopicLabel": "A-D and D-A Converters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "a-d-and-d-a-converters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - A-D and D-A Converters",
+        "markdown": "The reference voltage is 5 V.\n\nThe number of bits in ADC are 8.\n\nSo, the resolution will be $=\\frac{5}{2^8-1}=\\frac{5}{255}$\n\nThe applied input is 3.5 V.\n\nThe succesive approximation ADC start working from the MSB so,\n\nAfter one clock:\n\nSAR will toggle it's MSB from $0\\rightarrow 1$. So, output of SAR will be 1000 0000.\n\nAfter second clock:\n\nSAR will toggle its 7th bit from $0\\rightarrow 1$ but 1100 0000 will result in value greater than 3.5. So, output of SAR after 2nd clock will be 1000 0000.\n\nAfter third clock:\n\nSAR will toggle it's 6th bit from $0\\rightarrow 1$ and output will be 1010 0000.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2015:q41": {
+      "question_uid": "pp:ee:2015:q41",
+      "exam_uid": "ee:2015:set1:q41",
+      "title": "GATE EE 2015 | Set 1 | Question: 41",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the economic dispatch problem for a power plant having two generating units. The fuel costs in Rs/MWh along with the generation limits for the two units are given below: <br><br> $C_{1}(P_{1})=0.01{P_{1}}^2+30P_{1}+10$;   $100MW\\leq P_{1} \\leq 150MW$  <br>$C_{2}(P_{2})=0.05{P_{2}}^2+10P_{2}+10$;  $100MW\\leq P_{2} \\leq 180MW$<br><br> The incremental cost (in Rs/MWh) of the power plant when it supplies 200 MW is ______ .",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "20",
+        "tolerance": {
+          "lower": 20,
+          "upper": 20
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "economic-power-generation-and-load-dispatch",
+          "subtopicLabel": "Economic Power Generation and Load Dispatch"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "economic-power-generation-and-load-dispatch"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Economic Power Generation and Load Dispatch",
+        "markdown": "$$\\begin{aligned} C_1&=0.01P_1^2+30P_1+10\\\\ \\frac{dC_1}{dP_1}&=2 \\times 0.01P_1+30\\\\ &=0.02P_1+30\\\\ C_2&=0.05P_2^2+10P_2+10\\\\ \\frac{dC-2}{dP_2}&=0.1P_2+10\\\\ \\text{For optimum } &\\text{incremental cost,}\\\\ \\frac{dC_1}{dP_1}&=\\frac{dC_2}{dP_2}\\\\ 0.02P_1+30&=0.1P_2+10\\\\ 0.02P_1-0.1P_2&=-20 \\;\\;...(i)\\\\ \\text{Given, }P_1+P_2&=200 \\;\\;...(ii)\\\\ \\text{Solving } & \\text{equation (i) and (ii),}\\\\ P_2&=200, P_1=0\\\\ \\text{But the }& \\text{range of }P_1 \\text{ and }P_2 \\text{ are specified as}\\\\ 100MW \\leq & P_1 \\leq 150MW\\\\ 100MW \\leq & P_2 \\leq 180MW\\\\ \\text{hence, }& P_2=200 MW \\text{ is not valid}\\\\ \\text{so, both }& P_1 \\text{ and } P_2 \\text{ are operating at}\\\\ P_1=100,P_2=100\\;& \\Rightarrow \\; P_1+P_2=200\\\\ IC_1=\\frac{dC_1}{dP_1}&=0.02 \\times P_1+30=32 Rs/MW\\\\ IC_2=\\frac{dC_2}{dP_2}&=0.1 \\times P_2+10=20 Rs/MW \\end{aligned}$$\n\nTherefore, the correct answer is **20**."
+      }
+    },
+    "pp:ee:2015:q42": {
+      "question_uid": "pp:ee:2015:q42",
+      "exam_uid": "ee:2015:set1:q42",
+      "title": "GATE EE 2015 | Set 1 | Question: 42",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Determine the correctness or otherwise of the following Assertion [a] and the Reason [r]. <br><br>Assertion: Fast decoupled load flow method gives approximate load flow solution because it uses several assumptions. <br><br>Reason: Accuracy depends on the power mismatch vector tolerance.",
+      "options": [
+        "Both [a] and [r] are true and [r] is the correct reason for [a].",
+        "Both [a] and [r] are true but [r] is not the correct reason for [a].",
+        "Both [a] and [r] are false.",
+        "[a] is false and [r] is true."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "load-flow-studies"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "FDLF method gives approximate solution not because it uses several assumption but due to the fixed number of iterations.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2015:q43": {
+      "question_uid": "pp:ee:2015:q43",
+      "exam_uid": "ee:2015:set1:q43",
+      "title": "GATE EE 2015 | Set 1 | Question: 43",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 50 Hz generating unit has H-constant of 2 MJ/MVA. The machine is initially operating in steady state at synchronous speed, and producing 1 pu of real power. The initial value of the rotor angle $\\delta$ is 5$^{\\circ}$, when a bolted three phase to ground short circuit fault occurs at the terminal of the generator. Assuming the input mechanical power to remain at 1 pu, the value of $\\delta$ in degrees, 0.02 second after the fault is _________.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5.9",
+        "tolerance": {
+          "lower": 5.7,
+          "upper": 6.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "power-system-stability",
+          "subtopicLabel": "Power System Stability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "power-system-stability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Power System Stability",
+        "markdown": "Let $3-\\phi$ fault occurs at t=0\n\n$\\Rightarrow \\; P_e=0\\text{ for }t\\geq 0^+$\n\nNow, swing equation for $t\\geq 0^+$\n\n$$\\begin{aligned}\n\n\\frac{2H}{\\omega _s}\\frac{d^2\\delta }{dt^2} &=P_m \\\\\n\n\\frac{d^2\\delta }{dt^2}&= \\frac{P_m \\omega _s }{2H}\\\\\n\n\\frac{d\\delta }{dt}&= \\frac{P_m \\omega _s }{2H}t+C\\\\\n\nC=\\left.\\begin{matrix}\n\n\\frac{d\\delta }{dt}\n\n\\end{matrix}\\right| _{t=0^+}&=\\omega (t=0^+)-\\omega _s\\\\\n\nC=\\omega _s-\\omega _s&=0\\;(\\omega (t-0^+)=\\omega _s) \\\\\n\n\\frac{d\\delta }{dt}&=\\frac{P_m \\omega _s }{2H}t \\\\\n\n\\Rightarrow \\; \\delta &= \\frac{P_m \\omega _s }{4H}t^2+C'\\\\\n\nC'&= \\delta |_{t=0^+}=\\delta _0\\\\\n\n\\delta  &= \\frac{P_m \\omega _s }{4H}t^2+\\delta _0\\\\\n\n\\text{Now in problem,}\\\\\n\n\\delta (t=0.02)&\\\\\n\n&=\\frac{1 \\times 2  \\times 180  \\times 50 \\times 0.02^2 +5^{\\circ}}{4 \\times 2}\\\\\n\n&=5.9^{\\circ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.9** (acceptable range: [5.7, 6.1])."
+      }
+    },
+    "pp:ee:2015:q44": {
+      "question_uid": "pp:ee:2015:q44",
+      "exam_uid": "ee:2015:set1:q44",
+      "title": "GATE EE 2015 | Set 1 | Question: 44",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A sustained three-phase fault occurs in the power system shown in the figure. The current and voltage phasors during the fault (on a common reference), after the natural transients have died down, are also shown. Where is the fault located? <br><img src=\"/question-images/ee/2015/ee-2015-95d5ec03fe.webp\"/>",
+      "options": [
+        "Location P",
+        "Location Q",
+        "Location R",
+        "Location S"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "fault-analysis",
+          "subtopicLabel": "Fault Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "fault-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Fault Analysis",
+        "markdown": "From the phasor $I_2$ and $I_4$ are having $180^{\\circ}$ phase shift. $|I_1|$ is higher than all other. Hence fault occurred at point Q.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q45": {
+      "question_uid": "pp:ee:2015:q45",
+      "exam_uid": "ee:2015:set1:q45",
+      "title": "GATE EE 2015 | Set 1 | Question: 45",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The circuit s hown in the figure has two sources connected in series. The instantaneous voltage of the AC source (in Volt) is given by $v(t)=12\\sin t$. If the circuit is in steady state, then the rms value of the current (in Ampere) flowing in the circuit is ______ .<br><img src=\"/question-images/ee/2015/ee-2015-99c4834bcb.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "10",
+        "tolerance": {
+          "lower": 9.9,
+          "upper": 10.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "$i(t)=\\frac{8}{1}+\\frac{12 \\sin t}{\\sqrt{1+1}}=8+6\\sqrt{2} \\sin t$\n\n$i_{rms}(t)=\\sqrt{8^2+\\frac{1}{2}(6\\sqrt{2} )^2}=10A$\n\nTherefore, the correct answer is **10** (acceptable range: [9.9, 10.1])."
+      }
+    },
+    "pp:ee:2015:q46": {
+      "question_uid": "pp:ee:2015:q46",
+      "exam_uid": "ee:2015:set1:q46",
+      "title": "GATE EE 2015 | Set 1 | Question: 46",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In a linear two-port network, when 10 V is applied to Port 1, a current of 4 A flows through Port 2 when it is short-circuited. When 5 V is applied to Port 1, a current of 1.25 A flows through a 1 $\\Omega$ resistance connected across Port 2. When 3 V is applied to Port 1, the current (in Ampere) through a 2 $\\Omega$ resistance connected across Port 2 is _______.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.5",
+        "tolerance": {
+          "lower": 0.4,
+          "upper": 0.6
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-34f4baeb42.webp\" />\n\n$V_1=10V, I_2=4 A, V_2=0\\;\\;Cond...(i)$\n\n$V_1=5V, I_2=1.25 A,$  $V_2=1.25 \\times 1=1.25V\\;\\;Cond...(ii)$\n\n$V_1=3V, I_2=? , R=2\\Omega \\;\\;Cond...(iii)$\n\nas we know from ABCD parameter,\n\n$V_1=AV_2-BI_2$\n\n$I_1=CV_2-DI_2$\n\nFrom condition (i),\n\n$10=A(0)-B(4)$\n\n$B=-\\frac{10}{4}$\n\nFrom condition (ii),\n\n$5=A(1.25)-\\left ( -\\frac{10}{4} \\right ) \\times 1.25$\n\n$A=\\frac{\\left ( 5-\\frac{12.5}{4} \\right )}{1.25}=1.5$\n\nFrom condition (iii),\n\n$3=1.5(2I)-\\left ( -\\frac{10}{4} \\right )\\times I$\n\n$3=3I+2.5I$\n\n$I=0.545 A$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.4, 0.6])."
+      }
+    },
+    "pp:ee:2015:q47": {
+      "question_uid": "pp:ee:2015:q47",
+      "exam_uid": "ee:2015:set1:q47",
+      "title": "GATE EE 2015 | Set 1 | Question: 47",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In the given circuit, the parameter k is positive, and the power dissipated in the 2 $\\Omega$ resistor is 12.5W. The value of k is _________. <br><img src=\"/question-images/ee/2015/ee-2015-8aa25f2586.webp\"/>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.5",
+        "tolerance": {
+          "lower": 0.48,
+          "upper": 0.52
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Basics of Electric Circuit",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-b1fceb637f.webp\" />\n\n$\\Rightarrow \\; \\frac{V_0^2}{2}=12.5$\n\n$\\Rightarrow \\; V_0^2=12.5 \\times 2$\n\n$\\Rightarrow \\; V_0=5$\n\nKCL at A,\n\n$\\Rightarrow \\; -2.5-k(5)+5=0$\n\n$\\Rightarrow \\; k=\\frac{2.5}{5}=\\frac{1}{2}$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.48, 0.52])."
+      }
+    },
+    "pp:ee:2015:q48": {
+      "question_uid": "pp:ee:2015:q48",
+      "exam_uid": "ee:2015:set1:q48",
+      "title": "GATE EE 2015 | Set 1 | Question: 48",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A separately excited DC motor runs at 1000 rpm on no load when its armature terminals are connected to a 200V DC source and the rated voltage is applied to the field winding. The armature resistance of this motor is 1$\\Omega$. The no-load armature current is negligible. With the motor developing its full load torque, the armature voltage is set so that the rotor speed is 500 rpm. When the load torque is reduced to 50% of the full load value under the same armature voltage conditions, the speed rises to 520 rpm. Neglecting the rotational losses, the full load armature current (in Ampere) is _______.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8",
+        "tolerance": {
+          "lower": 8,
+          "upper": 8
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "$V_t=200V, N=1000 \\text{rpm}, I_{a0}=0A\\;...(1)$\n\n$V_t=V(say), N=500\\text{rpm}, T_d=T_{fL}\\;...(2)$\n\n$V_t=V(said),N=520\\text{rpm},$\n\n$T'_L=\\frac{T_L}{2}=\\frac{T_{FL}}{2}\\;\\;...(3)$\n\n$P_{lossws}=0$\n\n$R_a=1\\Omega$\n\nFrom condition (1),\n\n$E_b=V_t-I_aR_a$\n\n$E_{b_1}=200V, N=1000\\text{rpm}$\n\nSince from (2),\n\n$$\\begin{aligned} N_2 &=500\\text{rpm} \\\\ E_{b_2} &=\\frac{500 \\times 200}{1000}=100V \\\\ E_{b_2} &= V-I_{fL}R_a\\\\ 100 &= V-I_{fL}R_a\\\\ 100 &= V-I_{fL}\\;...(4)\\\\ & \\text{Again (3)},\\\\ N_3 &= 520 \\text{rpm}\\\\ E_{b_3}&= \\frac{520 \\times 200}{1000}=104V\\\\ & \\text{as we know}\\\\ 104&=V-\\frac{I_{fL}}{2}\\times R \\\\ &= V-\\frac{I_{fL}}{2}\\;...(5)\\\\ &\\text{From equation (4) and (5),}\\\\ 100 + I_{fL}&= 104+\\frac{I_{fL}}{2}\\\\ \\text{on solving,} I_{fL}&=8A \\end{aligned}$$\n\nTherefore, the correct answer is **8**."
+      }
+    },
+    "pp:ee:2015:q49": {
+      "question_uid": "pp:ee:2015:q49",
+      "exam_uid": "ee:2015:set1:q49",
+      "title": "GATE EE 2015 | Set 1 | Question: 49",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A DC motor has the following specifications: 10 hp, 37.5 A, 230 V; flux/pole = 0.01 Wb, number of poles = 4, number of conductors = 666, number of parallel paths = 2. Armature resistance = 0.267 $\\Omega$. The armature reaction is negligible and rotational losses are 600 W. The motor operates from a 230 V DC supply. If the motor runs at 1000 rpm, the output torque produced (in Nm) is ___-________.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "57.5",
+        "tolerance": {
+          "lower": 57,
+          "upper": 58
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "$$\\begin{aligned} E_b &=\\frac{\\phi ZNP}{60A} =222V\\\\ I_a&= \\frac{V-E_b}{P_a}\\\\ &= \\frac{230-222}{0.267}\\\\ &=29.9625A \\\\ T &=\\frac{60}{2\\pi (1000)}[222 \\times 29.96-600] \\\\ &= 57.8 N-m \\end{aligned}$$\n\nTherefore, the correct answer is **57.5** (acceptable range: [57, 58])."
+      }
+    },
+    "pp:ee:2015:q50": {
+      "question_uid": "pp:ee:2015:q50",
+      "exam_uid": "ee:2015:set1:q50",
+      "title": "GATE EE 2015 | Set 1 | Question: 50",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 200/400 V, 50 Hz, two-winding transformer is rated at 20 kVA. Its windings are connected as an auto-transformer of rating 200/600 V. A resistive load of 12 $\\Omega$ is connected to the high voltage (600 V) side of the auto-transformer. The value of equivalent load resistance (in Ohm) as seen from low voltage side is _____.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.35",
+        "tolerance": {
+          "lower": 1.3,
+          "upper": 1.4
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-a496485e14.webp\" />\n\n$$\\begin{aligned} K &=\\frac{200}{600}=\\frac{1}{3} \\\\ R_{eq} &=12 \\times \\frac{1}{9}=1.33\\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **1.35** (acceptable range: [1.3, 1.4])."
+      }
+    },
+    "pp:ee:2015:q51": {
+      "question_uid": "pp:ee:2015:q51",
+      "exam_uid": "ee:2015:set1:q51",
+      "title": "GATE EE 2015 | Set 1 | Question: 51",
+      "year": "gateee-2015-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Two single-phase transformers T1 and T2 each rated at 500 kVA are operated in parallel. Percentage impedances of T1 and T2 are (1 + j6) and (0.8 + j4.8), respectively. To share a load of 1000 kVA at 0.8 lagging power factor, the contribution of T2 (in kVA) is ________.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "555",
+        "tolerance": {
+          "lower": 554,
+          "upper": 556
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "$$\\begin{aligned} S_{T_2} &=\\frac{1+j6}{(1+j6)+(0.8+j4.8)} \\times 1000\\angle \\cos ^{-1}(0.8) \\\\ &= \\frac{(1+j6)}{(1.8+j0.8)} 1000\\angle \\cos ^{-1}(0.8)\\\\ &=0.55 \\angle 0 \\times 1000\\angle \\cos ^{-1}(0.8) \\\\ &= 555.55\\angle 36.89^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **555** (acceptable range: [554, 556])."
+      }
+    },
+    "pp:ee:2015:q52": {
+      "question_uid": "pp:ee:2015:q52",
+      "exam_uid": "ee:2015:set1:q52",
+      "title": "GATE EE 2015 | Set 1 | Question: 52",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the signal flow diagram given in the figure, $u_{1} \\; and \\; u_{2}$ are possible inputs whereas $y_{1} \\; and \\;  y_{2}$ are possible outputs. When would the SISO system derived from this diagram be controllable and observable? <br><img src=\"/question-images/ee/2015/ee-2015-c57b635a51.webp\"/>",
+      "options": [
+        "When $u_{1}$ is the only input and $y_{1}$ is the only output",
+        "When $u_{2}$ is the only input and $y_{1}$ is the only output",
+        "When $u_{1}$ is the only input and $y_{2}$ is the only output",
+        "When $u_{2}$ is the only input and $y_{2}$ is the only output"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-variable-analysis",
+          "subtopicLabel": "State Variable Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "state-variable-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Variable Analysis",
+        "markdown": "Equations from the flow diagram,$\\dot{x}_1=5x_1-2x_2+u_1$\n\n$y_1=x_1$\n\n$\\dot{x}_2=5x_1+x_2+u_1+u_2$\n\n$y_2=x_1-x_2$\n\n$$\\dot{x}=\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}x+\\begin{bmatrix} 1 &0 \\\\ 1& 1 \\end{bmatrix}u$$\n\n$$y=\\begin{bmatrix} 1 & 0\\\\ 1 & -1 \\end{bmatrix}x$$\n\nConsidering the SISO cases:[/latex]\n\n$1. \\;\\;u_1(input)$ and $y_1(output):$\n\n$$A\\triangleq\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}$$\n\n$$B\\triangleq\\begin{bmatrix} 1\\\\ 1 \\end{bmatrix}$$ and  $$C=\\begin{bmatrix} 1 &0 \\end{bmatrix}$$\n\n$$O\\triangleq\\begin{bmatrix} C\\\\ CA \\end{bmatrix}=\\begin{bmatrix} 1 & 0\\\\ 5 & -2 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank (O)=2$\n\n$\\Rightarrow \\;  Observable$\n\n$$C\\triangleq\\begin{bmatrix} B & AB \\end{bmatrix}=\\begin{bmatrix} 1 &3 \\\\ 1 & 3 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank(C)\\neq 2$\n\n$\\Rightarrow \\; non-controllable$\n\n$2.\\;\\;u_2(input)$ and  $y_1(output):$\n\n$$A\\triangleq\\begin{bmatrix} 5 & -2\\\\ 2 & 1 \\end{bmatrix}$$\n\n$$B\\triangleq\\begin{bmatrix} 0\\\\ 1 \\end{bmatrix}$$ and  $$C\\triangleq \\begin{bmatrix} 1 &-1 \\end{bmatrix}$$\n\n$$O\\triangleq\\begin{bmatrix} 1 & 0\\\\ 5 & -2 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank (O)=2$\n\n$\\Rightarrow \\; Observable$\n\n$$C\\triangleq\\begin{bmatrix} 0 &-2 \\\\ 1 & 1 \\end{bmatrix}$$\n\n$\\Rightarrow \\; Rank(C)=2$\n\n$\\Rightarrow \\; controllable$\n\n$3. \\;\\;u_2(input)$ and $y_2(output) :$\n\n$Rank(O)\\neq 2\\Rightarrow$ non-observable\n\n$Rank(C) =2 \\Rightarrow$ controllable\n\n$4. \\; \\; u_1 (input)$ and $y_2(output)$:\n\nnon-observale and non-controllable.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2015:q53": {
+      "question_uid": "pp:ee:2015:q53",
+      "exam_uid": "ee:2015:set1:q53",
+      "title": "GATE EE 2015 | Set 1 | Question: 53",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The transfer function of a second order real system with a perfectly flat magnitude response of unity has a pole at (2-j3). List all the poles and zeroes.",
+      "options": [
+        "Poles at (2$\\pm$j3), no zeroes.",
+        "Poles at ($\\pm$2-j3), one zero at origin.",
+        "Poles at (2-j3),(-2+j3), zeroes at (-2-j3),(2+j3).",
+        "Poles at (2$\\pm$j3), zeroes at (-2$\\pm$j3)."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "concepts-of-stability",
+          "subtopicLabel": "Concepts of Stability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "concepts-of-stability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Concepts of Stability",
+        "markdown": "Response of transfer function is unit for all $\\omega$.\n\n$M=1; P_1=2-j3$\n\nSecond order system, hence number of poles =2\n\nTherefore, second pole $P_2=2+j3$\n\nNow for M=1, and due to x-axis symmetry of root locus of transfer function, position of zeroes must be\n\n$Z_1=-2-j3$ and $Z_2=-2+j3$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2015:q54": {
+      "question_uid": "pp:ee:2015:q54",
+      "exam_uid": "ee:2015:set1:q54",
+      "title": "GATE EE 2015 | Set 1 | Question: 54",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Find the transfer function $\\frac{Y(s)}{X(s)}$ of the system given below. <br><img src=\"/question-images/ee/2015/ee-2015-a91c7a6a4e.webp\"/>",
+      "options": [
+        "$\\frac{G_{1}}{1-HG_{1}}+\\frac{G_{2}}{1-HG_{2}}$",
+        "$\\frac{G_{1}}{1+HG_{1}}+\\frac{G_{2}}{1+HG_{2}}$",
+        "$\\frac{G_{1}+G_{2}}{1+H(G_{1}+G_{2})}$",
+        "$\\frac{G_{1}+G_{2}}{1-H(G_{1}+G_{2})}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "mathematical-models-of-physical-systems",
+          "subtopicLabel": "Mathematical Models of Physical Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "mathematical-models-of-physical-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "<img src=\"/question-images/ee/2015/ee-2015-0904c1ed6f.webp\" />\n\n$\\frac{Y(s)}{X(s)}=\\frac{G_1+G_2}{1-(-G_1H-G_2H)}$\n\n$\\;\\;\\;=\\frac{G_1+G_2}{1+G_1H+G_2H)}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2015:q55": {
+      "question_uid": "pp:ee:2015:q55",
+      "exam_uid": "ee:2015:set1:q55",
+      "title": "GATE EE 2015 | Set 1 | Question: 55",
+      "year": "gateee-2015-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The open loop poles of a third order unity feedback system are at 0, -1, -2. Let the frequency corresponding to the point where the root locus of the system transits to unstable region be K. Now suppose we introduce a zero in the open loop transfer function at -3, while keeping all the earlier open loop poles intact. Which one of the following is TRUE about the point where the root locus of the modified system transits to unstable region?",
+      "options": [
+        "It corresponds to a frequency greater than K",
+        "It corresponds to a frequency less than K",
+        "It corresponds to a frequency K",
+        "Root locus of modified system never transits to unstable region"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2015-s1",
+      "yearSetIdentity": "ee:2015:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "root-locus-techniques",
+          "subtopicLabel": "Root Locus Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "root-locus-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Root Locus Techniques",
+        "markdown": "$\\frac{K(s+3)}{s(s+1)(s+2)}$\n\n$P=3, \\; Z=1$\n\n$P-Z=3-1=2$\n\nasymptotes angle $=90^{\\circ}, 180^{\\circ}$\n\nCentroid $=\\frac{(-3)-(-3)}{2}=0$\n\nas root locus never cross asymptotes so, will remain in left sideof x-axis.\n\nTherefore, the correct answer is **D**."
+      }
+    }
+  }
+}

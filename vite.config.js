@@ -38,6 +38,12 @@ export default defineConfig(async ({ mode }) => {
             if (id.includes('subtopicLookup.json')) {
               return 'data-taxonomy-lookup';
             }
+            if (id.includes('daTaxonomy')) {
+              return 'data-da-taxonomy';
+            }
+            if (id.includes('weakTopicAnalyzer')) {
+              return 'util-weak-topic';
+            }
             if (!id.includes('node_modules')) {
               return undefined;
             }

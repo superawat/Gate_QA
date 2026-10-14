@@ -29,7 +29,7 @@ export default function TrackerFocusBanner({
   return (
     <section
       aria-label="Today's Recommended Focus"
-      className="mb-8 p-5 rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)] transition-all"
+      className="mb-4 sm:mb-8 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)] transition-all"
     >
       <div className="flex items-center justify-between gap-2 border-b border-[color:var(--color-border)] pb-3 mb-4">
         <div className="flex items-center gap-2">
@@ -107,10 +107,13 @@ export default function TrackerFocusBanner({
                 <button
                   type="button"
                   onClick={() => {
+                    const track = topic?.track;
+                    const trackParam = track && track !== "cse" ? (track === "da" ? "" : `&track=${track}`) : "";
+                    const subjectPrefix = track === "da" ? "da:" : "";
                     if (isWeak) {
-                      navigate(`${PRACTICE_ROUTE}?subjects=${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&showOnlyErrors=true`);
+                      navigate(`${PRACTICE_ROUTE}?subjects=${subjectPrefix}${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&showOnlyErrors=true${trackParam}`);
                     } else {
-                      navigate(`${PRACTICE_ROUTE}?subjects=${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true`);
+                      navigate(`${PRACTICE_ROUTE}?subjects=${subjectPrefix}${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true${trackParam}`);
                     }
                   }}
                   className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm"

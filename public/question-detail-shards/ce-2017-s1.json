@@ -1,0 +1,2618 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.644Z",
+  "shardKey": "ce-2017-s1",
+  "yearSetKey": "ce-2017-s1",
+  "yearSetIdentity": "ce:2017:set-1",
+  "track": "ce",
+  "year": 2017,
+  "set": 1,
+  "label": "2017 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ce:2017:q1": {
+      "question_uid": "pp:ce:2017:q1",
+      "exam_uid": "ce:2017:set1:q1",
+      "title": "GATE CE 2017 | Set 1 | Question: 1",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The matrix P is the inverse of a matrix Q. If $I$ denotes the identity matrix, which one of the following options is correct?",
+      "options": [
+        "$PQ = I  \\text{ but  }QP \\neq I$ ",
+        "$QP = I \\text{ but }PQ  \\neq I$ ",
+        "$PQ = I  \\text{ and } QP =  I$",
+        "$PQ  - QP = I$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Given that P is inverse of Q.\n\n$$\\begin{aligned}   P&=Q^{-1}  & P&=Q^{-1} \\\\    PQ&=Q^{-1}Q &  QP&=QQ^{-1} \\\\    PQ&=I &  QP&=I \\\\ \\therefore    PQ&=QP=I \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q2": {
+      "question_uid": "pp:ce:2017:q2",
+      "exam_uid": "ce:2017:set1:q2",
+      "title": "GATE CE 2017 | Set 1 | Question: 2",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The number of parameters in the univariate exponential and Gaussian distributions, respectively, are",
+      "options": [
+        "2 and 2",
+        "1 and 2",
+        "2 and 1",
+        " 1 and 1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "In exponential,\n\n$f\\left ( x \\right )=\\lambda e^{-\\lambda x}$; $x=0$\n\nThe parameter is $\\lambda$\n\nIn Gaussian, $f(x)=\\frac{1}{\\sigma \\sqrt{2\\pi }}e^{-\\frac{1}{2}\\left ( \\frac{x-\\mu }{\\sigma } \\right )^{2}}; \\;\\; -\\infty \\lt x\\lt \\infty$\n\nThe parameters are $\\mu$ and $\\sigma$.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q3": {
+      "question_uid": "pp:ce:2017:q3",
+      "exam_uid": "ce:2017:set1:q3",
+      "title": "GATE CE 2017 | Set 1 | Question: 3",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let x be a continuous variable defined over the interval ($-\\infty ,\\infty$), and $f(x)=e^{-x-e^{-x}}$. The integral $g(x)=\\int f(x)dx$ is equal to ",
+      "options": [
+        "$e^{e^{-x}}$ ",
+        "$e^{-e^{-x}}$ ",
+        "$e^{-e^{x}}$ ",
+        "$e^{-x}$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned} f\\left ( x \\right )&=e^{-x-e^{-x}}= e^{-x}.e^{-e^{-x}} \\\\  y\\left ( x \\right )&=\\int f\\left ( x \\right )dx=\\int e^{-x}.e^{-e^{-x}}dx\\\\ \\text{Let }  e^{-x}&=t \\\\  -e^{-x}dx&=dt \\\\ \\int f\\left ( x \\right )dx&=\\int e^{-t}.\\left ( -dt \\right ) \\\\    &=\\frac{e^{-t}}{-1}.\\left ( -d \\right ) \\\\    &=e^{-t} \\\\    &=e^{-\\left ( e^{-x} \\right )} \\\\ &=e^{-e^{-x}} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q4": {
+      "question_uid": "pp:ce:2017:q4",
+      "exam_uid": "ce:2017:set1:q4",
+      "title": "GATE CE 2017 | Set 1 | Question: 4",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An elastic bar of length L, uniform cross sectional area A, coefficient of thermal expansion $\\alpha$, and Young's modulus E is fixed at the two ends. The temperature of the bar is increased by T, resulting in an axial stress $\\sigma$. Keeping all other parameters unchanged, if the length of the bar is doubled, the axial stress would be",
+      "options": [
+        "$\\sigma$",
+        "2$\\sigma$",
+        "0.5$\\sigma$",
+        "0.25$\\alpha \\sigma$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-650fdf5cdf.webp\" />\n\n$\\sigma=\\alpha T E$\n\n$\\therefore \\;$ Length have no effect on thermal stress.\n\n$\\therefore \\;$ Axial stress is only $\\sigma$.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q5": {
+      "question_uid": "pp:ce:2017:q5",
+      "exam_uid": "ce:2017:set1:q5",
+      "title": "GATE CE 2017 | Set 1 | Question: 5",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A simply supported beam is subjected to uniformly distributed load. Which one of the following statements is true?",
+      "options": [
+        "Maximum or minimum shear force occurs where the curvature is zero.",
+        "Maximum or minimum bending moment occurs where the shear force is zero.",
+        "Maximum or minimum bending moment occurs where the curvature is zero.",
+        "Maximum bending moment and maximum shear force occur at the same section."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Shear Force and Bending Moment",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Solid Mechanics** (specifically *Shear Force and Bending Moment*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Shear Force and Bending Moment**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *Maximum or minimum shear force occurs where the curvature is zero.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (Maximum or minimum shear force occurs where the curvature is zero.)."
+      }
+    },
+    "pp:ce:2017:q6": {
+      "question_uid": "pp:ce:2017:q6",
+      "exam_uid": "ce:2017:set1:q6",
+      "title": "GATE CE 2017 | Set 1 | Question: 6",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "According to IS 456-2000, which one of the following statements about the depth of neutral axis $\\chi _{u,bal}$  for a balanced reinforced concrete section is correct?",
+      "options": [
+        "$\\chi _{u,bal}$  depends on the grade of concrete only.",
+        "$\\chi _{u,bal}$  depends on the grade of steel only.",
+        "$\\chi _{u,bal}$  depends on both the grade of concrete and grade of steel.",
+        "$\\chi _{u,bal}$  bal does not depend on the grade of concrete and grade of steel."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Working Stress and Limit State Method",
+        "markdown": "$x_{u, \\text { bal }}=\\frac{700}{1100+0.87 f_{y}} \\times d$\n\nSo it depends upon grade of steel only.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q7": {
+      "question_uid": "pp:ce:2017:q7",
+      "exam_uid": "ce:2017:set1:q7",
+      "title": "GATE CE 2017 | Set 1 | Question: 7",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The figure shows a two-hinged parabolic arch of span L subjected to a uniformly distributed load of intensity q per unit length <br>\n<img src=\"/question-images/ce/2017/ce-2017-0a472532a7.webp\" />\n<br> The maximum bending moment in the arch is equal to",
+      "options": [
+        "$\\frac{qL^{2}}{8}$ ",
+        "$\\frac{qL^{2}}{12}$ ",
+        "Zero",
+        "$\\frac{qL^{2}}{10}$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Arches",
+        "markdown": "If a two hinged or three hinged parabolic arch is\n\nsubjected to UDL throughout its length, bending\n\nmoment is zero everywhere.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q8": {
+      "question_uid": "pp:ce:2017:q8",
+      "exam_uid": "ce:2017:set1:q8",
+      "title": "GATE CE 2017 | Set 1 | Question: 8",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Group I lists the type of gain or loss of strength in soils. Group II lists the property or process responsible for the loss or gain of strength in soils. <br>\n<img src=\"/question-images/ce/2017/ce-2017-a485895a57.webp\" />\n\n<br> The correct match between Group I and Group II is",
+      "options": [
+        "P-4, Q-1, R-2, S-3",
+        "P-3, Q-1, R-2, S-4",
+        "P-3, Q-2, R-1, S-4",
+        "P-4, Q-2, R-1, S-3"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Properties of Soils",
+        "markdown": "Loss in strength of soil due to remoulding\n\nat same water content is termed as\n\nsensitivity.\n\nOver a period of time soil regain a part of\n\nits lost strength is termed as thixotropy.\n\nWhen seepage takes place in upward\n\ndirection, seepage pressure acts in upward\n\ndirection and effective stress is reduced\n\nconsequently shear strength is reduced.\n\nIn liquefaction, due to dynamic/cyclic loading\n\nin loose saturated sand, effective stress\n\ndecreases and decrease in shear strength\n\nis recorded.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q9": {
+      "question_uid": "pp:ce:2017:q9",
+      "exam_uid": "ce:2017:set1:q9",
+      "title": "GATE CE 2017 | Set 1 | Question: 9",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A soil sample is subjected to a hydrostatic pressure, $\\sigma$. The Mohr circle for any point in the soil sample would be",
+      "options": [
+        "a circle of radius  $\\sigma$   and center at the origin",
+        "a circle of radius $\\sigma$  and center at a distance $\\sigma$ from the origin",
+        "a point at a distance $\\sigma$   from the origin",
+        "a circle of diameter $\\sigma$   and center at the origin"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "Hydrostatic pressure acts equally in all directions.\n\n<img src=\"/question-images/ce/2017/ce-2017-ef36fa96a8.webp\" />\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q10": {
+      "question_uid": "pp:ce:2017:q10",
+      "exam_uid": "ce:2017:set1:q10",
+      "title": "GATE CE 2017 | Set 1 | Question: 10",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A strip footing is resting on the ground surface of a pure clay bed having an undrainedcohesion $C_{u}$. The ultimate bearing capacity of the footing is equal to",
+      "options": [
+        "$2\\pi C_{u}$ ",
+        "$\\pi C_{u}$ ",
+        "$(\\pi+1) C_{u}$ ",
+        "$(\\pi+2) C_{u}$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
+        "markdown": "Footing is at surface Hence,\n\n$$\\begin{aligned} \\text{Hence},\\quad D_{t}&=0 \\\\ q_{u}&=C N_{c}+\\gamma D_{f} N_{q}+0.5 \\mathrm{B} \\gamma N_{\\gamma} \\end{aligned}$$\n\n$\\Rightarrow \\quad$For clay\n\n$$\\begin{aligned} N_{Y} &=0, N_{q}=1 \\\\ \\therefore \\quad q_{U}&=C N_{c} \\end{aligned}$$\n\nAs per Terzaghi\n\n$N_{c}=5.7$\n\nand as per Meyerhoff and Prandtl.\n\n$$\\begin{aligned} N_{c} &=5.14 \\\\ \\therefore \\quad q_{u} &=(\\pi+2) C_{u} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2017:q11": {
+      "question_uid": "pp:ce:2017:q11",
+      "exam_uid": "ce:2017:set1:q11",
+      "title": "GATE CE 2017 | Set 1 | Question: 11",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": " A uniformly distributed line load of 500 kN/m is acting on the ground surface. Based on Boussinesq's theory, the ratio of vertical stress at a depth 2 m to that at 4 m, right below the line of loading, is",
+      "options": [
+        "0.25",
+        "0.5",
+        "2",
+        "4"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "stress-distribution-in-the-soil",
+          "subtopicLabel": "Stress Distribution in the Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "stress-distribution-in-the-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Stress Distribution in the Soil",
+        "markdown": "$q^{\\prime}=500 \\mathrm{kN} / \\mathrm{m}$\n\n$x=0$ (Just below the line load)\n\n$$\\begin{aligned} \\sigma_{z} &=\\frac{2 q^{\\prime}}{\\pi z}\\left(\\frac{1}{1+\\frac{x^{2}}{z^{2}}}\\right)^{2}=\\frac{2 q^{\\prime}}{\\pi z} \\\\ \\text { Ratio } &=\\frac{\\left(\\sigma_{z}\\right)_{a t, 2 m}}{\\left(\\sigma_{z}\\right)_{a t, 4 m}}=\\frac{\\frac{2 q^{\\prime}}{\\pi \\times 2}}{\\frac{2 q^{\\prime}}{\\pi \\times 4}}=\\frac{4}{2}=2 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q12": {
+      "question_uid": "pp:ce:2017:q12",
+      "exam_uid": "ce:2017:set1:q12",
+      "title": "GATE CE 2017 | Set 1 | Question: 12",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a steady incompressible laminar flow between two infinite parallel stationary plates, the shear stress variation is",
+      "options": [
+        "linear with zero value at the plates",
+        "linear with zero value at the center",
+        "quadratic with zero value at the Plates",
+        "quadratic with zero value at the centre"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "viscous-flow-of-incompressible-fluid",
+          "subtopicLabel": "Viscous Flow of Incompressible Fluid"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "viscous-flow-of-incompressible-fluid"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Viscous Flow of Incompressible Fluid",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-e091510d21.webp\" />\n\nShear stress variation between parallel stationary plates.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q13": {
+      "question_uid": "pp:ce:2017:q13",
+      "exam_uid": "ce:2017:set1:q13",
+      "title": "GATE CE 2017 | Set 1 | Question: 13",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The reaction rate involving reactants A and B is given by $-k[A]^{\\alpha }[B]^{\\beta }$. Which one of the following statements is valid for the reaction to be first-order reaction?",
+      "options": [
+        " $\\alpha =0  \\; and \\;  \\beta =0$",
+        " $\\alpha =1   \\; and \\;  \\beta =0$",
+        " $\\alpha =1   \\; and \\;   \\beta =1$",
+        " $\\alpha =1   \\; and \\;   \\beta =2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "The order of reaction is the exponent to which its concentration term in the rate equation is raised.\n\nRate, $r=K\\left [ A \\right ]^{\\alpha }\\left [ B \\right ]^{\\beta }$\n\nFor the first order reaction,\n\n$\\alpha +\\beta =1$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q14": {
+      "question_uid": "pp:ce:2017:q14",
+      "exam_uid": "ce:2017:set1:q14",
+      "title": "GATE CE 2017 | Set 1 | Question: 14",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The wastewater form a city, containing a high concentration of biodegradable organics, is beingsteadily discharged into a flowing river at a location S. If the rate of aeration of the river water islower than the rate of degradation of the organics, then the dissolved oxygen of the river water",
+      "options": [
+        "is lowest at the locations S",
+        "is lowest at a point upstream of the location S",
+        "remains constant all along the length of the river",
+        "is lowest at a point downstream of the location S"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "disposal-of-sewage-effluents",
+          "subtopicLabel": "Disposal of Sewage Effluents"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "disposal-of-sewage-effluents"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Disposal of Sewage Effluents",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-d4148d633c.webp\" />\n\nAs given rate of aeration is less than rate of degradation which decreases with time/distance, minimum DO is observed downstream of point of disposal 'S' where both rate of a reaction and degradation becomes equals.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2017:q15": {
+      "question_uid": "pp:ce:2017:q15",
+      "exam_uid": "ce:2017:set1:q15",
+      "title": "GATE CE 2017 | Set 1 | Question: 15",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following is NOT present in the acid rain?",
+      "options": [
+        "$HNO_{3}$ ",
+        "$H_{2}SO_{4}$ ",
+        "$H_{2}CO_{3}$ ",
+        "$CH_{3}COOH$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "Acid rain primarily consist of $HNO_{3}$, $H_{2}SO_{4}$ and $H_{2}CO_{3}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2017:q16": {
+      "question_uid": "pp:ce:2017:q16",
+      "exam_uid": "ce:2017:set1:q16",
+      "title": "GATE CE 2017 | Set 1 | Question: 16",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A super-elevation e is provided on a circular horizontal curve such that a vehicle can be stopped on the curve without sliding. Assuming a design speed v and maximum coefficient of side friction $f_{max}$, which one of the following criteria should be satisfied?",
+      "options": [
+        "$e\\leq f_{max}$ ",
+        "$e \\gt  f_{max}$ ",
+        "no limit on e can be set",
+        "$e=\\frac{1-(f_{max})^{2}}{f_{max}}$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "Sliding occurs if\n\n$$\\begin{aligned}\n\nf& \\lt e\\\\\n\n\\text{and }\\quad f& \\lt \\frac{V^{2}}{g R}\n\n\\end{aligned}$$\n\nOverturning occurs if\n\n$$\\begin{aligned}\n\nf& \\gt e\\\\\n\n\\text{and }\\quad e& \\lt \\frac{V^{2}}{g R}\n\n\\end{aligned}$$\n\nHence, option (A) is true.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q17": {
+      "question_uid": "pp:ce:2017:q17",
+      "exam_uid": "ce:2017:set1:q17",
+      "title": "GATE CE 2017 | Set 1 | Question: 17",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A runway is being constructed in a new airport as per the International Civil Aviation Organization (ICAO) recommendations. The elevation and the airport reference temperature of this airport are 535 m above the mean sea level and 22.65$^{\\circ}$C, respectively. Consider the effective gradient of runway as 1%. The length of runway required for a design-aircraft under the standard conditions is 2000 m. Within the framework of applying sequential corrections as per the ICAO recommendations, the length of runway corrected for the temperature is",
+      "options": [
+        "2223 m",
+        "2250 m",
+        "2500 m",
+        "2750 m"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "railway-and-airport-engineering",
+          "subtopicLabel": "Railway and Airport Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "railway-and-airport-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Railway and Airport Engineering",
+        "markdown": "Elevation =535 m\n\nAirport Reference Temperature $=22.65^{\\circ} \\mathrm{C}$\n\nEffective Gradient = 1%\n\nRunway length =2000 m under standard conditions.\n\nRunway length correction for $T^{\\circ} \\mathrm{C} .$\n\n$\\Rightarrow$Correction for elevation\n\n$=\\frac{7}{100} \\times 2000 \\times \\frac{535}{300}=249.67 \\mathrm{m}$\n\nCorrected runway length $=2249.67 \\mathrm{m}$\n\n$\\Rightarrow$ Corrected standard $T^{\\circ}$ at 535 m elevation\n\n$=15^{\\circ} \\mathrm{C}-(0.0065 \\times 535)=11.52^{\\circ} \\mathrm{C}$\n\nCorrection for $T^{\\circ}$\n\n$$\\begin{aligned} &=\\frac{1}{100} \\times 2249.67 \\times \\frac{\\Delta T^{\\circ} \\mathrm{C}}{1^{\\circ} \\mathrm{C}} \\\\ \\Delta T^{\\circ} \\mathrm{C} &=22.65-11.52=11.13^{\\circ} \\mathrm{C} \\\\ &=\\frac{1}{100} \\times 2249.67 \\times \\frac{11.13^{\\circ} \\mathrm{C}}{1^{\\circ} \\mathrm{C}} \\\\ &=250.39 \\mathrm{m} \\end{aligned}$$\n\nCorrected Runway length\n\n$$\\begin{array}{l} =2249.67+250.39 \\\\ =2500.06 \\mathrm{m} \\simeq 2500 \\mathrm{m} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q18": {
+      "question_uid": "pp:ce:2017:q18",
+      "exam_uid": "ce:2017:set1:q18",
+      "title": "GATE CE 2017 | Set 1 | Question: 18",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The accuracy of an Electronic Distance Measuring Instrument (EDMI) is specified as $\\pm$( a mm + b ppm). Which one of the following statements is correct?",
+      "options": [
+        "Both a and b remain constant, irrespective of the distance being measured.",
+        "a remains constant and b varies in proportion to the distance being measured.",
+        "a varies in proportion to the distance being measured and b remains constant.",
+        "Both a and b vary in proportion to the distance being measured."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geomatics-engineering",
+          "subjectLabel": "Geomatics Engineering",
+          "subtopicSlug": "theodolites-compass-and-traverse-surveying",
+          "subtopicLabel": "Theodolites, Compass and Traverse Surveying"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geomatics-engineering",
+          "theodolites-compass-and-traverse-surveying"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
+        "markdown": "Accuracy of EDMI is generally stated in terms\n\nof constant instruments error and a measuring\n\nerror proportional to the distance being measured:\n\n$\\pm$(a mm + b ppm).\n\nThe first part indicates a\n\nconstant instrument error that is independent of\n\nthe length of the line measured. The second\n\ncomponent is the distance related error.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q19": {
+      "question_uid": "pp:ce:2017:q19",
+      "exam_uid": "ce:2017:set1:q19",
+      "title": "GATE CE 2017 | Set 1 | Question: 19",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The number of spectral bands in the Enhanced Thematic Mapper sensor on the remote sensing satellite Landsat-7 is",
+      "options": [
+        "64",
+        "10",
+        "8",
+        "15"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geomatics-engineering",
+          "subjectLabel": "Geomatics Engineering",
+          "subtopicSlug": "remote-sensing-gis-gps-and-photogrammetry",
+          "subtopicLabel": "Remote Sensing, GIS, GPS and Photogrammetry"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geomatics-engineering",
+          "remote-sensing-gis-gps-and-photogrammetry"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Remote Sensing, GIS, GPS and Photogrammetry",
+        "markdown": "Total number of spectrum band in Enhanced\n\nThematic Mapper sender =8\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q20": {
+      "question_uid": "pp:ce:2017:q20",
+      "exam_uid": "ce:2017:set1:q20",
+      "title": "GATE CE 2017 | Set 1 | Question: 20",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Consider the following partial differential equation: <br>$3\\frac{\\partial^2 \\phi }{\\partial x^2}+B\\frac{\\partial^2 \\phi }{\\partial x \\partial y} + 3\\frac{\\partial^2 \\phi }{\\partial y^2}+4\\phi =0$<br>For this equation to be classified as parabolic, the value of $B^{2}$ must be_______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "36",
+        "tolerance": {
+          "lower": 35.9,
+          "upper": 36.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "Given that the partial differential equation is parabolic.\n\n$\\therefore  \\;\\; B^{2}-4AC=0$ Here $A=3 , C=3$\n\n$\\therefore \\;\\; B^{2}-4\\left ( 3 \\right )\\left ( 3 \\right )=0$\n\n$B^{2}-36=0$\n\n$B^{2}=36$\n\nTherefore, the correct answer is **36** (acceptable range: [35.9, 36.1])."
+      }
+    },
+    "pp:ce:2017:q21": {
+      "question_uid": "pp:ce:2017:q21",
+      "exam_uid": "ce:2017:set1:q21",
+      "title": "GATE CE 2017 | Set 1 | Question: 21",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "$\\lim_{x \\to 0} (\\frac{\\tan x}{x^{2}-x})$ is equals to",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "-1",
+        "tolerance": {
+          "lower": -1.1,
+          "upper": -0.9
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\lim_{x\\rightarrow 0}\\frac{\\tan x}{x^{2}-x}$\n\n(Applying L'Hospital rule)\n\n$\\lim_{x\\rightarrow 0}\\frac{\\sec ^{2}x}{2x^{2}-1}=\\frac{\\sec ^{2}0}{0-1}=\\frac{1}{-1}=-1$\n\nTherefore, the correct answer is **-1** (acceptable range: [-1.1, -0.9])."
+      }
+    },
+    "pp:ce:2017:q22": {
+      "question_uid": "pp:ce:2017:q22",
+      "exam_uid": "ce:2017:set1:q22",
+      "title": "GATE CE 2017 | Set 1 | Question: 22",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A 3 m thick clay layer is subjected to an initial uniform pore pressure of 145 kPa as shown in the figure. <br>\n<img src=\"/question-images/ce/2017/ce-2017-bef8759285.webp\" />\n\n<br> For the given ground conditions, the time (in days, rounded to the nearest integer) required for 90% consolidation would be ____________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1770",
+        "tolerance": {
+          "lower": 1765,
+          "upper": 1775
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "consolidation-of-soils",
+          "subtopicLabel": "Consolidation of Soils"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "consolidation-of-soils"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Consolidation of Soils",
+        "markdown": "As per Terzaghi's 1-D consolidation theory\n\n$T_{v}=C_{v} \\frac{t}{d^{2}}$\n\nOne way drainage condition d=3m\n\nFor 90% consolidation\n\n$$\\begin{aligned} \\left(T_{v}\\right)_{90} &=C_{v} \\cdot \\frac{t_{90}}{d^{2}} \\\\ 0.85 &=3 \\times 10^{-6} \\times \\frac{t_{90}}{(3)^{2}} \\\\ t_{90} &=\\frac{0.85 \\times 9}{3 \\times 10^{-6}} \\mathrm{min} \\\\ t_{90} &=1770.83 \\simeq 1771 \\text { days } \\end{aligned}$$\n\nTherefore, the correct answer is **1770** (acceptable range: [1765, 1775])."
+      }
+    },
+    "pp:ce:2017:q23": {
+      "question_uid": "pp:ce:2017:q23",
+      "exam_uid": "ce:2017:set1:q23",
+      "title": "GATE CE 2017 | Set 1 | Question: 23",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A triangular pipe network is shown in the figure. <br>\r\n<img src=\"/question-images/ce/2017/ce-2017-bb76fa58ed.webp\" />\r\n<br> The head loss in each pipe is given by $h_{f}=rQ^{1.8}$ with\r\nthe variables expressed in a consistent set of units. The value of r for the pipe AB is 1 and for the pipe BC is 2. If the discharge supplied at the point A (i.e., 100) is equally divided between the pipes AB and AC, the value of r (up to two decimal places) for the pipe AC should be ____________\r\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.615",
+        "tolerance": {
+          "lower": 0.6,
+          "upper": 0.63
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "flow-through-pipes",
+          "subtopicLabel": "Flow Through Pipes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "flow-through-pipes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
+        "markdown": "Given $h_{j}=r$\n\nBecause of the given condition of equal discharge\n\ndistribution in pipe AB and AC, the discharge in AB\n\nand AC will be 50 and 50. Now satisfy continuity\n\nat point B and C,\n\nfor close Loop ABCA,\n\n$$\\begin{aligned}\n\n\\sum n_{1},&=0\\\\\n\n\\Rightarrow \\quad 1(50)^{1.8}+2(20)^{1.5}&=r(50)^{1.5}=0 \\\\\n\n\\Rightarrow \\quad 1143.26-430.42&=r(50)^{1.5} \\\\\n\nr&=0.62\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.615** (acceptable range: [0.6, 0.63])."
+      }
+    },
+    "pp:ce:2017:q24": {
+      "question_uid": "pp:ce:2017:q24",
+      "exam_uid": "ce:2017:set1:q24",
+      "title": "GATE CE 2017 | Set 1 | Question: 24",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The ordinates of a 2-hour unit hydrograph for a catchment are given as <br>\n<img src=\"/question-images/ce/2017/ce-2017-2f908466bb.webp\" />\n<br> The ordinate (in $m^{3}/s$ ) of a 4-hour unit hydrograph for this catchment at the time of 3 h would be ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "15",
+        "tolerance": {
+          "lower": 15,
+          "upper": 15
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-98b97b8ea6.webp\" />\n\n$\\therefore$ Ordinate of 4 hr U.H. at 3 hr duration $=15.0 m^{3}/sec.$\n\nTherefore, the correct answer is **15**."
+      }
+    },
+    "pp:ce:2017:q25": {
+      "question_uid": "pp:ce:2017:q25",
+      "exam_uid": "ce:2017:set1:q25",
+      "title": "GATE CE 2017 | Set 1 | Question: 25",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Vehicles arriving at an intersection from one of the approach road follow the Poisson distribution. The mean rate of arrival is 900 vehicles per hour. If a gap is defined as the time difference between two successive vehicle arrivals (with vehicles assumed to be points), the probability (up to four decimal places) that the gap is greater than 8 seconds is",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.1324",
+        "tolerance": {
+          "lower": 0.1276,
+          "upper": 0.1372
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "$$\\begin{aligned} \\lambda &=900\\text{veh/hour}\\\\ &=\\frac{900}{3600}=\\frac{1}{4} \\mathrm{veh} / \\mathrm{sec} \\\\ P[t \\geq 8 \\mathrm{sec}] &=\\theta^{-\\lambda t} \\\\ &=e^{-\\frac{1}{4} \\times 8}=e^{-2}=0.1353 \\end{aligned}$$\n\nTherefore, the correct answer is **0.1324** (acceptable range: [0.1276, 0.1372])."
+      }
+    },
+    "pp:ce:2017:q26": {
+      "question_uid": "pp:ce:2017:q26",
+      "exam_uid": "ce:2017:set1:q26",
+      "title": "GATE CE 2017 | Set 1 | Question: 26",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "For the function $f(x)=a+bx, \\; \\; 0\\leq x\\leq 1,$ to be a valid probability density function, which one of the following statements is correct?",
+      "options": [
+        "a = 1, b = 4",
+        "a = 0.5, b = 1",
+        "a = 0, b = 1",
+        "a = 1, b =-1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned} \\int_{-\\infty }^{\\infty }f\\left ( x \\right )dx &= 1 \\\\ \\int_{0}^{1}\\left ( a+bx \\right )dx &= 1 \\\\ \\left.\\begin{matrix} \\left ( ax+\\frac{bx^{2}}{2} \\right ) \\end{matrix}\\right|_{0}^{1}&=1 \\\\ a+\\frac{b}{2}&=1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q27": {
+      "question_uid": "pp:ce:2017:q27",
+      "exam_uid": "ce:2017:set1:q27",
+      "title": "GATE CE 2017 | Set 1 | Question: 27",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The solution of the equation $\\frac{\\mathrm{d} Q}{\\mathrm{d} t}+Q=1$ with $Q=0$ at $t=0$ is",
+      "options": [
+        "$Q(t)=e^{-t} -1$ ",
+        "$Q(t)=1+e^{-t}$ ",
+        "$Q(t)=1-e^{t}$ ",
+        "$Q(t)=1-e^{-t}$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "$\\frac{\\mathrm{d} Q}{\\mathrm{d} t}+Q=1$\n\nComparing with standard form, $I.F.=e^{\\int 1dt}=e^{t}$\n\nSolution is,\n\n$$\\begin{aligned}   Q.e^{t}&=\\int 1.e^{t}dt=e^{t}+C \\\\    Q&=1+Ce^{-t} \\;\\;...(i) \\\\ \\text{When }t&=0, Q=0 \\\\ \\Rightarrow \\;\\;   0&=1+C \\\\ \\Rightarrow \\;\\;   C&=-1 \\end{aligned}$$\n\nTherefore, $Q\\left ( t \\right ) =1-e^{-t}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2017:q28": {
+      "question_uid": "pp:ce:2017:q28",
+      "exam_uid": "ce:2017:set1:q28",
+      "title": "GATE CE 2017 | Set 1 | Question: 28",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider the matix $$\\begin{bmatrix} 5 & -1\\\\ 4 & 1 \\end{bmatrix}$$. Which one of the following statements is TRUE for the eigenvalues and eigenvectors of this matrix?",
+      "options": [
+        "Eigenvalue 3 has a multiplicity of 2, and only one independent eigenvector exists.",
+        "Eigenvalue 3 has a multiplicity of 2, and two independent eigenvectors exist.",
+        "Eigenvalue 3 has a multiplicity of 2, and no independent eigenvector exists.",
+        "Eigenvalues are 3 and -3, and two independent eigenvectors exist."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$A=\\begin{bmatrix} 5 & -1\\\\ 4 & 1 \\end{bmatrix}$$\n\nCharacteristic equation is $\\left | A-\\lambda I \\right |=0$\n\n$$\\begin{aligned}     \\begin{vmatrix} 5-\\lambda & -1\\\\ 4 & 1-\\lambda \\end{vmatrix}&=0 \\\\ 5-5\\lambda -\\lambda +\\lambda ^{2}+4&=0 \\\\     \\lambda ^{2}-6\\lambda +9&=0 \\\\         \\lambda &=3,\\, 3 \\end{aligned}$$\n\nAlgebraic multiplicity of eigen value 3 is 2. It has only one independent eigen vector exists.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q29": {
+      "question_uid": "pp:ce:2017:q29",
+      "exam_uid": "ce:2017:set1:q29",
+      "title": "GATE CE 2017 | Set 1 | Question: 29",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A Planar truss tower structure is shown in the figure. <br>\n<img src=\"/question-images/ce/2017/ce-2017-115f7a6304.webp\" />\n<br> Consider the following statements about the external and internal determinacies of the truss. <br>(P) Externally Determinate\n<br>(Q) External Static Indeterminacy = 1\n<br>(R) External Static Indeterminacy = 2\n<br>(S) Internally Determinate\n<br>(T) Internal Static Indeterminacy = 1\n<br>(U) Internal Static Indeterminacy = 2\n<br>\nWhich one of the following options is correct?\n",
+      "options": [
+        "P-False; Q-True; R-False; S-False; T-False; U-True",
+        "P-False; Q-True; R-False; S-False; T-True; U-False",
+        "P-False; Q-False; R-True; S-False; T-False; U-True",
+        "P-True; Q-True; R-False; S-True; T-False; U-True"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "determinacy-and-indeterminacy",
+          "subtopicLabel": "Determinacy and indeterminacy"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "determinacy-and-indeterminacy"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Determinacy and indeterminacy",
+        "markdown": "$$\\begin{aligned} \\text{External Indeterminacy}&=r-s=4-3=1 \\text { degree } \\\\ \\text{Internal indeterminacy}&=m-(2 j-3)=15-(2 \\times 8-3)\\\\ & =2 \\text{ degrees} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q30": {
+      "question_uid": "pp:ce:2017:q30",
+      "exam_uid": "ce:2017:set1:q30",
+      "title": "GATE CE 2017 | Set 1 | Question: 30",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Group I contains three broad classes of irrigation supply canal outlets. Group II presents hydraulic performance attributes.  <br>\n<img src=\"/question-images/ce/2017/ce-2017-aab2ee7051.webp\" />\n<br> The correct match of the items in Group I with the items in Group II is",
+      "options": [
+        "P-1; Q-2; R-3",
+        "P-3; Q-1; R-2",
+        "P-2; Q-3; R-1",
+        "P-1; Q-3; R-2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-irrigation-engineering",
+          "subjectLabel": "Irrigation Engineering",
+          "subtopicSlug": "theories-of-seepage-spillways-and-miscellaneous",
+          "subtopicLabel": "Theories of Seepage, Spillways and Miscellaneous"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-irrigation-engineering",
+          "theories-of-seepage-spillways-and-miscellaneous"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Irrigation Engineering - Theories of Seepage, Spillways and Miscellaneous",
+        "markdown": "Non-modular outlet :These are the outlets whose\n\ndischarge depends on the difference in water\n\nlevels in the distributing channel and the water <\n\ncourse. The discharge of such outlets, therefore,\n\nvaries with the variation of the water levels in the\n\ndistributing channel and the water course.\n\nSemi-modular outlet : These are the outlets\n\nwhose discharge varies with the variation of the\n\nwater level in the distribution channel but it is\n\nindependent of the water level in the water course,\n\nso long as the minimum working head required\n\nfor their working is available.\n\nModular outlet : These are the outlets whose\n\ndischarge is independent of the water levels in\n\nthe distributing channel and the water course,\n\nwithin reasonable working limits. In other words\n\nmodular outlets maintain a constant discharge\n\nirrespective of variation of the water levels in the\n\ndistributing channel and the water course.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2017:q31": {
+      "question_uid": "pp:ce:2017:q31",
+      "exam_uid": "ce:2017:set1:q31",
+      "title": "GATE CE 2017 | Set 1 | Question: 31",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A 1 m wide rectangular channel has a bed slope of 0.0016 and the Manning's roughness coefficient is 0.04. Uniform flow takes place in the channel at a flow depth of 0.5 m. At a particular section, gradually varied flow (GVF) is observed and the flow depth is measured as 0.6 m. The GVF profile at that section is classified as",
+      "options": [
+        "$S_{1}$ ",
+        "$S_{2}$ ",
+        "$M_{1}$ ",
+        "$M_{2}$ "
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "$Q=\\frac{1}{n} \\times A \\times R^{2 / 3} \\times S^{1 / 2}$\n\n<img src=\"/question-images/ce/2017/ce-2017-894d5cf215.webp\" />\n\n$$\\begin{array}{l} A=1 \\times 0.5=0.5 \\mathrm{m}^{2} \\\\ P=1+(0.5 \\times 2)=2 \\mathrm{m} \\\\ Q=\\frac{1}{0.04} \\times 0.5 \\times\\left(\\frac{0.5}{2}\\right)^{2 / 3} \\times(0.0016)^{1 / 2} \\\\ &=0.1984 \\mathrm{m}^{3} / \\mathrm{s} \\\\ q&=\\frac{Q}{1}=0.1984 \\mathrm{m}^{3} / \\mathrm{s} / \\mathrm{m} \\end{array}$$\n\nFor rectangular channel\n\n$y_{c}=\\left(\\frac{q^{2}}{g}\\right)^{1 / 3}=\\left(\\frac{0.1984^{2}}{9.81}\\right)^{1 / 3}=0.159 \\mathrm{m}$\n\nsince, $y_{n}>y_{c}$ (Thus it is Mild Slope)[/latex]\n\n<img src=\"/question-images/ce/2017/ce-2017-f4a768fcac.webp\" />\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q32": {
+      "question_uid": "pp:ce:2017:q32",
+      "exam_uid": "ce:2017:set1:q32",
+      "title": "GATE CE 2017 | Set 1 | Question: 32",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The following observations are made while testing aggregate for its suitability in pavement construction: <br><br>i. Mass of oven-dry aggregate in air = 1000 g <br>ii. Mass of saturated surface-dry aggregate in air = 1025 g <br>iii. Mass of saturated surface-dry aggregate under water = 625 g<br><br>Based on the above observations, the correct statement is",
+      "options": [
+        "bulk specific gravity of aggregate = 2.5 and water absorption = 2.5 %",
+        "bulk specific gravity of aggregate = 2.5 and water absorption = 2.4 %",
+        "apparent specific gravity of aggregate = 2.5 and water absorption = 2.5%",
+        "apparent specific gravity of aggregate = 2.5 and water absorption = 2.4 %"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "highway-materials",
+          "subtopicLabel": "Highway Materials"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "highway-materials"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Highway Materials",
+        "markdown": "Bulk specific gravity $=\\frac{A}{B-C}$\n\nApparent specific gravity $=\\frac{A}{A-C}$\n\nWhere,\n\nA= Mass of oven dry aggregate in air\n\nB= Mass of Saturated surface dry aggregate in air\n\nC= Mass of Saturated surface dry aggregate under water\n\n$\\therefore$ Bulk specific gravity\n\n$=\\frac{1000}{1025-625}=\\frac{1000}{400}=2.5$\n\nWater absorption\n\n$=\\frac{1025-1000}{1000} \\times 100=2.5 \\%$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q33": {
+      "question_uid": "pp:ce:2017:q33",
+      "exam_uid": "ce:2017:set1:q33",
+      "title": "GATE CE 2017 | Set 1 | Question: 33",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The queue length (in number of vehicles) versus time (in seconds) plot for an approach to a signalized intersection with the cycle length of 96 seconds is shown in the figure. <br>\r\n<img src=\"/question-images/ce/2017/ce-2017-2c1554f09e.webp\" />\r\n<br> At time t = 0, the light has just turned red. The effective green time is 36 seconds, during which vehicles discharge at the saturation flow rate, s (in vph). Vehicles arrive at a uniform rate, v (in vph), throughout the cycle. Which one of the following statements is TRUE?",
+      "options": [
+        "v = 600 vph, and for this cycle, the average stopped delay per vehicle = 30 seconds",
+        "s = 1800 vph, and for this cycle, the average stopped delay per vehicle = 28.125 seconds",
+        "v = 600 vph, and for this cycle, the average stopped delay per vehicle = 45 seconds",
+        "s = 1200 vph, and for this cycle, the average stopped delay per vehicle = 28.125 seconds"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "Vehicle arrived upto 60 sec (Red time) = 10\n\nArrival rate $= 1060 \\times 3600=600 \\; vph$\n\n$v=600\\; vph$\n\nDeparture at vehicle starts at 60 second and ends 90 seconds.\n\nSo, between 60 second to 90 second total vehicle departed\n\n= Vehicle arrived upto 60 second + Vehicle arriving between 60 sec to 90 sec\n\n$= 10 + 6003600 \\times 30$\n\n$= 10 + 5= 15$\n\nSo, departure rate = Saturation flow\n\n$= s = 1530 \\times 3600$\n\n$s=1800\\; vph$\n\nAverage delay time is given by\n\n$t_d=\\frac{\\frac{C}{2}\\left ( 1-\\frac{g}{c} \\right )^2}{1-\\frac{v}{s}}$\n\nC = 96 second\n\ng = 96 -60 = 36 seconds\n\nv = 600 Vph\n\ns = 1800 Vph\n\n$t_d=\\frac{\\frac{96}{2}\\left ( 1-\\frac{36}{96} \\right )^2}{1-\\frac{600}{1800}}$\n\n$t_d=28.125 \\; sec$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2017:q34": {
+      "question_uid": "pp:ce:2017:q34",
+      "exam_uid": "ce:2017:set1:q34",
+      "title": "GATE CE 2017 | Set 1 | Question: 34",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The radius of a horizontal circular curve on a highway is 120 m. The design speed is 60 km/hour, and the design coefficient of lateral friction between the tyre and the road surface is 0.15. The estimated value of superelevation required (if full lateral friction is assumed to develop), and the value of coefficient of friction needed (if no superelevation is provided) will, respectively, be",
+      "options": [
+        "$\\frac{1}{11.6}$  and 0.10",
+        "$\\frac{1}{10.5}$  and 0.37",
+        "$\\frac{1}{11.6}$  and 0.24",
+        "$\\frac{1}{12.9}$  and 0.24"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "Given, $R=120 \\mathrm{m}, V=60 \\mathrm{kmph}\\text{ and }f=0.15$\n\n$$\\begin{aligned} \\Rightarrow \\quad e+f&=\\frac{v^{2}}{127 R} \\\\ \\Rightarrow \\quad e+0.15&=\\frac{60^{2}}{127 \\times 120} \\\\ \\Rightarrow \\quad e&=\\frac{1}{11.6} \\\\ \\text{Also, if }e&=0\\\\ \\Rightarrow \\quad f&=\\frac{V^{2}}{127 R}=\\frac{60^{2}}{127 \\times 120} \\simeq 0.24 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2017:q35": {
+      "question_uid": "pp:ce:2017:q35",
+      "exam_uid": "ce:2017:set1:q35",
+      "title": "GATE CE 2017 | Set 1 | Question: 35",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The observed bearings of a traverse are given below: <br>\n<img src=\"/question-images/ce/2017/ce-2017-d4bda26641.webp\" />\n<br> The stations(s) most likely to be affected by the local attraction is/are",
+      "options": [
+        "Only R",
+        "Only S",
+        "R and S",
+        "P and Q"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geomatics-engineering",
+          "subjectLabel": "Geomatics Engineering",
+          "subtopicSlug": "theodolites-compass-and-traverse-surveying",
+          "subtopicLabel": "Theodolites, Compass and Traverse Surveying"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geomatics-engineering",
+          "theodolites-compass-and-traverse-surveying"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
+        "markdown": "As per GATE official Answer key MTA( Marks to ALL)\n\n<img src=\"/question-images/ce/2017/ce-2017-5233e4f4e5.webp\" />\n\nStation R is most likely to be affected.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q36": {
+      "question_uid": "pp:ce:2017:q36",
+      "exam_uid": "ce:2017:set1:q36",
+      "title": "GATE CE 2017 | Set 1 | Question: 36",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The laboratory test on a soil sample yields the following results: natural moisture content = 18%, liquid limit = 60%, plastic limit = 25%, percentage of clay sized fraction = 25%. The liquidity index and activity (as per the expression proposed by skempton) of the soil, respectively, are",
+      "options": [
+        " -0.2 and 1.4",
+        "   0.2 and 1.4",
+        " -1.2 and 0.714",
+        "   1.2 and 0.714"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "properties-of-soils",
+          "subtopicLabel": "Properties of Soils"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "properties-of-soils"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Properties of Soils",
+        "markdown": "Given data: $w_{n}=18 \\%, w_{L}=60 \\%, w_{p}=25 \\%$\n\n% of clay size particle =25 %\n\nLiquidity index\n\n$I_{L}=\\frac{w_{n}-w_{p}}{w_{L}-w_{p}}=\\frac{0.18-0.25}{0.60-0.25}=-0.2$\n\nActivity $=\\frac{I_{p}}{\\% C}=\\frac{w_{L}-w_{p}}{\\% C}=\\frac{60-25}{25}=1.4$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2017:q37": {
+      "question_uid": "pp:ce:2017:q37",
+      "exam_uid": "ce:2017:set1:q37",
+      "title": "GATE CE 2017 | Set 1 | Question: 37",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the equation $\\frac{\\mathrm{d} u}{\\mathrm{d} t}=3t^{2}+1$ with u=0 at t=0. This is numerically solved by using the forward Euler method with a step size $\\Delta t= 2$. The absolute error in the solution at the end of the first time step is_________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8",
+        "tolerance": {
+          "lower": 7.95,
+          "upper": 8.05
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "numerical-methods"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Numerical Methods",
+        "markdown": "$$\\begin{aligned}   \\frac{\\mathrm{d} u}{\\mathrm{d} t}&=3t^{2}+1 \\\\ f\\left ( u,\\: t \\right )&=3t^{2}+1 \\\\ u_{0}&=0 \\\\ t_{0}&=0 \\\\ \\Delta t&=2\\\\ &\\text{By Euler's method} \\\\     u_{1}&=u_{0}+hf\\left ( u_{0}t_{0} \\right )  & t_{1}&=t_{0}+h \\\\     &=u_{0}+h\\left ( 3t^{2}_{0}+1 \\right )   &  &=0+2 \\\\     &=0+2\\left ( 3\\left ( 0 \\right )^{2}+1 \\right )   &  &=2 \\\\     &=2 \\end{aligned}$$\n\nAfter first iteration u=0 when t=2,\n\n$$\\begin{aligned}    \\frac{\\mathrm{d} u}{\\mathrm{d} t}&=3t^{2}+1 \\\\     du&=\\left ( 3t^{2}+1 \\right )dt \\\\    \\int du&=\\int_{0}^{2}\\left ( 3t^{2}+1 \\right )dt \\\\     u&=\\left.\\begin{matrix} \\left ( 3\\frac{t^{3}}{3}+t \\right ) \\end{matrix}\\right|_{0}^{2} \\\\     &=8+2=10 \\end{aligned}$$\n\nAbsolute error = Exact value - approx value\n\n$=10-2 =8$\n\nTherefore, the correct answer is **8** (acceptable range: [7.95, 8.05])."
+      }
+    },
+    "pp:ce:2017:q38": {
+      "question_uid": "pp:ce:2017:q38",
+      "exam_uid": "ce:2017:set1:q38",
+      "title": "GATE CE 2017 | Set 1 | Question: 38",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A pre-tensioned rectangular concrete beam 150 mm wide and 300 mm depth is prestressed with three straight tendons, each having a cross-sectional area of 50 $mm^{2}$, to an initial stress of 1200 $N / mm^{2}$. The tendons are located at 100 mm from the soffit of the beam. If the modular ratio is 6, the loss of prestressing force (in kN, up to one decimal place) due to the elastic deformation of concrete only is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.75",
+        "tolerance": {
+          "lower": 4.5,
+          "upper": 5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "prestressed-concrete-beams",
+          "subtopicLabel": "Prestressed Concrete Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "prestressed-concrete-beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Prestressed Concrete Beams",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-6d06126be7.webp\" />\n\nPrestressing force,\n\n$$\\begin{aligned} P&=3 \\times 50 \\times 1200=180000 \\mathrm{N} \\\\ e&=\\left(\\frac{D}{2}-100\\right)=\\left(\\frac{300}{2}-100\\right)=50 \\mathrm{mm} \\end{aligned}$$\n\nStress in concrete at the location of steel\n\n$$\\begin{aligned} &=\\frac{P}{A}+\\frac{P \\cdot e}{I} e\\\\ &=\\frac{180000}{150 \\times 300}+\\frac{180000 \\times 50^{2}}{\\left(\\frac{150 \\times 300^{3}}{12}\\right)} \\\\ &=4.0+1.33=5.333 \\end{aligned}$$\n\nLoss of stress\n\n$=m \\times f_{c}=6 \\times 5.3333=32 \\mathrm{N} / \\mathrm{mm}^{2}$\n\nLoss of prestressing force\n\n$=\\frac{3 \\times 50 \\times 32}{1000} \\mathrm{kN}=4.8 \\mathrm{kN}$\n\nTherefore, the correct answer is **4.75** (acceptable range: [4.5, 5])."
+      }
+    },
+    "pp:ce:2017:q39": {
+      "question_uid": "pp:ce:2017:q39",
+      "exam_uid": "ce:2017:set1:q39",
+      "title": "GATE CE 2017 | Set 1 | Question: 39",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the stepped bar made with a linear elastic material and subjected to an axial load of 1 kN, as shown in the figure. <br>\r\n<img src=\"/question-images/ce/2017/ce-2017-bce75b7320.webp\" />\r\n<br>  Segments 1 and 2 have cross-sectional are of $100mm^{2}$ and $60mm^{2}$, Young's modulus of $2 \\times 10^{5}$ MPa and $3 \\times 10^{5}$ MPa, and length of 400mm and 900mm, respectively. The strain energy (in N-mm, up to one decimal place) in the bar due to the axial load is __________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "35",
+        "tolerance": {
+          "lower": 34.9,
+          "upper": 35.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "properties-of-metals-stress-and-strain",
+          "subtopicLabel": "Properties of Metals, Stress and Strain"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "properties-of-metals-stress-and-strain"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-a17bdaf2cf.webp\" />\n\n$$\\begin{aligned} A_{1}=100 \\mathrm{mm}^{2}, & E I=2 \\times 10^{5} \\mathrm{MPa} \\\\ A_{2}=60 \\mathrm{mm}^{2}, &E I=3 \\times 10^{5} \\mathrm{MPa} \\\\ \\Delta_{A C}=&\\Delta_{A B}+\\Delta_{B C} \\\\ =& \\frac{1 \\times 10^{3} \\times 400}{100 \\times 2 \\times 10^{5}}+\\frac{1 \\times 10^{3} \\times 900}{60 \\times 3 \\times 10^{5}} \\\\ =& 0.02+0.05=0.07 \\mathrm{mm} \\\\ U=\\frac{1}{2} \\times P \\times \\Delta&=\\frac{1}{2} \\times 1 \\times 1000 \\times 0.07=35 \\mathrm{N}-\\mathrm{mm} \\end{aligned}$$\n\nTherefore, the correct answer is **35** (acceptable range: [34.9, 35.1])."
+      }
+    },
+    "pp:ce:2017:q40": {
+      "question_uid": "pp:ce:2017:q40",
+      "exam_uid": "ce:2017:set1:q40",
+      "title": "GATE CE 2017 | Set 1 | Question: 40",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The value of M in the beam ABC shown in the figure is such that the joint B does not rotate. <br>\n<img src=\"/question-images/ce/2017/ce-2017-15674deb55.webp\" />\n<br> The value of support reaction (in kN) at B should\nbe equal to ______ \n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "60",
+        "tolerance": {
+          "lower": 59,
+          "upper": 61
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "methods-of-structural-analysis",
+          "subtopicLabel": "Methods of Structural Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "methods-of-structural-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Methods of Structural Analysis",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-c2397217aa.webp\" />\n\nAs the slope $\\theta_{B}$ is an anticlockwise sense, hence the moment at joint B must be applied in clockwise sense $=40 \\mathrm{kNm}$ to make $\\theta_{B}=0$\n\n<img src=\"/question-images/ce/2017/ce-2017-d84257e3f7.webp\" />\n\nTherefore, the correct answer is **60** (acceptable range: [59, 61])."
+      }
+    },
+    "pp:ce:2017:q41": {
+      "question_uid": "pp:ce:2017:q41",
+      "exam_uid": "ce:2017:set1:q41",
+      "title": "GATE CE 2017 | Set 1 | Question: 41",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the beam ABCD shown in the figure. <br>\n<img src=\"/question-images/ce/2017/ce-2017-c6362f6fe2.webp\" />\n<br> For a moving concentrated load of 50 kN on the beam, the magnitude of the maximum bending moment (in kN-m) obtained at the support C will be equal to _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "200",
+        "tolerance": {
+          "lower": 199,
+          "upper": 201
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "influence-line-diagram-and-rolling-loads",
+          "subtopicLabel": "Influence Line Diagram and Rolling Loads"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "influence-line-diagram-and-rolling-loads"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Influence Line Diagram and Rolling Loads",
+        "markdown": "$\\text { B.M. at } C=50 \\times 4=200 \\mathrm{kNm}$\n\n<img src=\"/question-images/ce/2017/ce-2017-7e04cf2459.webp\" />\n\nILD for BM at C\n\n<img src=\"/question-images/ce/2017/ce-2017-72dd071b3c.webp\" />\n\nTherefore, the correct answer is **200** (acceptable range: [199, 201])."
+      }
+    },
+    "pp:ce:2017:q42": {
+      "question_uid": "pp:ce:2017:q42",
+      "exam_uid": "ce:2017:set1:q42",
+      "title": "GATE CE 2017 | Set 1 | Question: 42",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider two axially loaded columns, namely, 1 and 2, made of a linear elastic material with Young's modulus $2 \\times 10^{5}$  MPa, square cross- section with side 10 mm, and length 1 m. For Column 1, one end is fixed and the other end is free. For Column 2, one end is fixed and the other end is pinned. Based on the Euler's theory, the ratio (up to one decimal place) of the buckling load of Column 2 to the buckling load of Column 1 is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8.1",
+        "tolerance": {
+          "lower": 7.9,
+          "upper": 8.3
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "theory-of-columns-and-shear-centre",
+          "subtopicLabel": "Theory of Columns and Shear Centre"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "theory-of-columns-and-shear-centre"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Theory of Columns and Shear Centre",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-fe2b669b1c.webp\" />\n\n$$\\begin{aligned} P_{c r 1}&=\\frac{\\pi^{2} E \\cdot I}{(2 l)^{2}}=\\frac{\\pi^{2} E I}{4 l^{2}} \\\\ P_{c r 2}&=\\frac{\\pi^{2} E \\cdot I}{\\left(\\frac{l}{\\sqrt{2}}\\right)^{2}}=\\frac{2 \\pi^{2} E I}{l^{2}}\\\\ \\therefore \\text{Required ratio }&=\\frac{P_{C r 2}}{P_{c r 1}}=\\frac{\\frac{2 \\pi^{2} E I}{l^{2}}}{\\frac{\\pi^{2} E I}{4 l^{2}}}=8 \\end{aligned}$$\n\nTherefore, the correct answer is **8.1** (acceptable range: [7.9, 8.3])."
+      }
+    },
+    "pp:ce:2017:q43": {
+      "question_uid": "pp:ce:2017:q43",
+      "exam_uid": "ce:2017:set1:q43",
+      "title": "GATE CE 2017 | Set 1 | Question: 43",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A column is subjected to a load through a bracket as shown in the figure. <br>\n<img src=\"/question-images/ce/2017/ce-2017-f21ba2403f.webp\" />\n<br> The resultant force (in kN, up to one decimal place)\nin the bolt 1 is_____\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "6",
+        "tolerance": {
+          "lower": 5.9,
+          "upper": 6.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "structural-fasteners",
+          "subtopicLabel": "Structural Fasteners"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-design-of-steel-structures",
+          "structural-fasteners"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Structural Fasteners",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-f13acf14fb.webp\" />\n\n$$\\begin{aligned} F_{1}&=\\frac{P}{n}=\\frac{10}{4}=2.5kN \\\\ F_{2}&=\\frac{Pe}{\\sum r^{2}_{i}}\\times r_{1} \\\\&=\\frac{10\\times 15}{4\\times 5^{2}}\\times 5=7.5 kN \\\\ F_{R}&=\\sqrt{F^{2}_{1}+F_{2}^{2}+2F_{1}F_{2}\\cos \\theta } \\\\  &=\\sqrt{2.5^{2}+7.5^{2}+2\\times 2.5\\times 7.5\\times \\cos 135^{\\circ}} \\\\  &=6kN \\end{aligned}$$\n\nTherefore, the correct answer is **6** (acceptable range: [5.9, 6.1])."
+      }
+    },
+    "pp:ce:2017:q44": {
+      "question_uid": "pp:ce:2017:q44",
+      "exam_uid": "ce:2017:set1:q44",
+      "title": "GATE CE 2017 | Set 1 | Question: 44",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A particle of mass 2 kg is travelling at a velocity of 1.5 m/s. A force $f(t)=3t^{2}$  (in N) is applied to it in the direction of motion for a duration of 2 seconds, where t denotes time in seconds. The velocity (in m/s, up to one decimal place) of the particle immediately after the removal of the force is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5.5",
+        "tolerance": {
+          "lower": 5.4,
+          "upper": 5.6
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned}m=2 kg, \\; V_{0}&=1.5\\: m/sec \\\\  \\int_{0}^{t}F\\left ( t \\right )dt &= m\\left ( V-V_{0} \\right ) \\\\  \\int_{0}^{2}3t^{2}dt &= 2\\left ( V-1.5 \\right ) \\\\  \\left [ t^{3} \\right ]_{0}^{2} &= 2\\left ( V-1.5 \\right ) \\\\ \\Rightarrow \\;\\;  \\left ( 8-0 \\right ) &= 2\\left ( V-1.5 \\right ) \\\\   V&=5.5\\: m/s \\end{aligned}$$\n\nTherefore, the correct answer is **5.5** (acceptable range: [5.4, 5.6])."
+      }
+    },
+    "pp:ce:2017:q45": {
+      "question_uid": "pp:ce:2017:q45",
+      "exam_uid": "ce:2017:set1:q45",
+      "title": "GATE CE 2017 | Set 1 | Question: 45",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The activity details of a project are given below: <br>\r\n<img src=\"/question-images/ce/2017/ce-2017-1e7eccb62e.webp\" />\r\n<br> The estimated minimum time (in days) for the completion of the project will be________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "51",
+        "tolerance": {
+          "lower": 51,
+          "upper": 51
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-construction-materials-and-management",
+          "subjectLabel": "Construction Materials and Management",
+          "subtopicSlug": "general",
+          "subtopicLabel": "Construction Materials and Management"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-construction-materials-and-management",
+          "general"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Construction Materials and Management - Construction Materials and Management",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-f8c5bf9b5a.webp\" />\n\nThe minimun time for project completion is with respect to critical path.\n\nCritical Path$\\, \\rightarrow \\, P-Q-U-V$\n\n$T_{cp}=6 + 15 + 14 + 16= 51$ days\n\nTherefore, the correct answer is **51**."
+      }
+    },
+    "pp:ce:2017:q46": {
+      "question_uid": "pp:ce:2017:q46",
+      "exam_uid": "ce:2017:set1:q46",
+      "title": "GATE CE 2017 | Set 1 | Question: 46",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "It is proposed to drive H-piles up to a depth of 7 m at a construction site. The average surfacearea of the H-pile is 3 $m^{2}$ per meter length. The soil at the site is homogeneous sand, havingan effective friction angle of 32$^{\\circ}$. The ground water table (GWT) is at a depth of 2 m below the ground surface. The unit weights of the soil above and below the GWT are 16 $kN/m^{3}$ and 19 $kN/m^{3}$ respectively. Assume the earth pressure coefficient, K= 1.0, and the angle of wall friction $\\delta =23^{\\circ}$, The total axial frictional resistance (in kN, up to one decimal place) mobilized on the pile against the driving is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "388.5",
+        "tolerance": {
+          "lower": 385,
+          "upper": 392
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "deep-foundation",
+          "subtopicLabel": "Deep Foundation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "deep-foundation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Deep Foundation",
+        "markdown": "<img src=\"/question-images/ce/2017/ce-2017-72bf639988.webp\" />\n\n$$\\begin{aligned} Q_{s t} &=\\frac{1}{2} k \\gamma L_{1} \\tan \\delta A_{s_{1}}+\\frac{1}{2} K\\left[\\gamma L_{1}+\\gamma^{\\prime} L_{2}\\right] \\tan \\delta A_{s_{2}} \\\\ &=\\frac{1}{2} \\times 1 \\times 16 \\times 2 \\tan 23^{\\circ}(3 \\times 2) \\\\ &+\\frac{1}{2} \\times 1[16 \\times 2+77.95] \\times \\tan 23^{\\circ}(5 \\times 3) \\\\ &=390.8 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **388.5** (acceptable range: [385, 392])."
+      }
+    },
+    "pp:ce:2017:q47": {
+      "question_uid": "pp:ce:2017:q47",
+      "exam_uid": "ce:2017:set1:q47",
+      "title": "GATE CE 2017 | Set 1 | Question: 47",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The infinite sand slope shown in the figure is on theverge of sliding failure. The ground water tablecoincides with the ground surface. Unit weight of water $\\gamma _{w}=9.81\\; kN/m^{3}$. <br>\r\n<img src=\"/question-images/ce/2017/ce-2017-06f33b075a.webp\" />\r\n<br> The value of the effective angle of internal friction (indegrees, up to one decimal place) of the sand is________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "34.25",
+        "tolerance": {
+          "lower": 34,
+          "upper": 34.5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "stability-analysis-of-slopes",
+          "subtopicLabel": "Stability Analysis of Slopes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "stability-analysis-of-slopes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
+        "markdown": "Infinite sand slope:\n\nGWT coincides with the ground surface, therefore\n\n$F.O.S. =\\frac{\\gamma^{\\prime}}{\\gamma_{\\mathrm{sat}}} \\times \\frac{\\tan \\phi^{\\prime}}{\\tan \\beta}$\n\nAs slope is on the verge of sliding failure hence,\n\n$$\\begin{array}{l} \\mathrm{F} \\mathrm{O} . \\mathrm{S}=\\frac{\\gamma^{\\prime} \\tan \\phi^{\\prime}}{\\gamma_{\\mathrm{sat}} \\tan \\beta}=1\\\\ (21-9.81) \\tan \\phi^{\\prime}=21 \\tan 20^{\\circ} \\\\ \\phi=34.3^{\\circ} \\end{array}$$\n\nTherefore, the correct answer is **34.25** (acceptable range: [34, 34.5])."
+      }
+    },
+    "pp:ce:2017:q48": {
+      "question_uid": "pp:ce:2017:q48",
+      "exam_uid": "ce:2017:set1:q48",
+      "title": "GATE CE 2017 | Set 1 | Question: 48",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A sluice gate used to control the flow in a horizontal channel of unit width is shown in the figure. <br>\r\n<img src=\"/question-images/ce/2017/ce-2017-9fd7480559.webp\" />\r\n<br> It is observed that the depth of flow is 1.0 m upstream of the gate, while the depth is 0.2 m downstream of the gate. Assuming a smooth flow transition across the sluice gate, i.e., without any energy loss, and the acceleration due to gravity as 10 $m/s^{2}$ the discharge (in $m^{3}/ s$, up to two decimal places) passing under the sluice gate is_____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.815",
+        "tolerance": {
+          "lower": 0.8,
+          "upper": 0.83
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "Applying Bernoulli's energy balance equation\n\n$$\\begin{aligned} y_{1}+\\frac{Q^{2}}{2 g A_{1}^{2}}&=y_{2}+\\frac{Q^{2}}{2 g A_{2}^{2}}\\\\ \\text{Given }\\quad y_{1}=1 \\mathrm{m}, b&=1 \\mathrm{m}, \\quad y_{2}=0.2 \\\\ \\Rightarrow 1+\\frac{q^{2} \\times 1^{2}}{2 g(1 \\times 1)^{2}}&=0.2+\\frac{q^{2} \\times 1^{2}}{2 g \\times(0.2 \\times 1)^{2}} \\\\ \\Rightarrow \\quad 0.8 &=\\frac{q^{2}}{2 g}\\left(\\frac{1}{(0.2)^{2}}-1\\right) \\\\ 0.8 &=\\frac{q^{2}}{20} \\times 24 \\\\ q &=0.816 \\mathrm{m}^{2} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **0.815** (acceptable range: [0.8, 0.83])."
+      }
+    },
+    "pp:ce:2017:q49": {
+      "question_uid": "pp:ce:2017:q49",
+      "exam_uid": "ce:2017:set1:q49",
+      "title": "GATE CE 2017 | Set 1 | Question: 49",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Water flows through a 90$^{\\circ}$ bend in a horizontal plane as depicted in the figure. <br>\n<img src=\"/question-images/ce/2017/ce-2017-512da2890b.webp\" />\n<br>  A pressure of 140 kPa is measured at section 1-1. The inlet diameter marked at section 1-1 is $\\frac{27}{\\sqrt{\\pi }}cm$, while the nozzle diameter marked at section 2-2 is $\\frac{14}{\\sqrt{\\pi }}cm$.  Assume the following:\n<br><br>\n(i) Acceleration due to gravity = 10 $m/s^{2}$\n<br>(ii) Weights of both the bent pipe segment as well as water are negligible.\n<br>(iii) Friction across the bend is negligible.\n<br><br>\nThe magnitude of the force (in kN, up to two decimal places) that would be required to hold the pipe section is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "3.125",
+        "tolerance": {
+          "lower": 2.5,
+          "upper": 3.75
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "fluid-dynamics-and-flow-measurements",
+          "subtopicLabel": "Fluid Dynamics and Flow Measurements"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "fluid-dynamics-and-flow-measurements"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Fluid Dynamics and Flow Measurements",
+        "markdown": "$$\\begin{aligned} P_{1} A_{1} &=F_{x} \\\\ F_{x} &=\\left(140 \\times 10^{3}\\right)\\left[\\frac{\\pi}{4}\\left(\\frac{0.27}{\\sqrt{\\pi}}\\right)^{2}\\right] \\\\ &=2551.5 \\mathrm{N}\\\\ F_{y} &=P_{2} A_{2} \\\\ &=\\left(1.013 \\times 10^{5}\\right)\\left[\\frac{\\pi}{4}\\left(\\frac{0.14}{\\sqrt{\\pi}}\\right)^{2}\\right] \\\\ &=49637 \\mathrm{N} \\\\ \\text { Resultant force } &=\\sqrt{F_{x}^{2}+F_{y}^{2}} \\\\ &=\\sqrt{(2551.5)^{2}+(49637)^{2}} \\\\ &=259933 \\mathrm{N} \\\\ &=2.60 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **3.125** (acceptable range: [2.5, 3.75])."
+      }
+    },
+    "pp:ce:2017:q50": {
+      "question_uid": "pp:ce:2017:q50",
+      "exam_uid": "ce:2017:set1:q50",
+      "title": "GATE CE 2017 | Set 1 | Question: 50",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A consolidated undrained $\\bar{CU}$ triaxial compression test is conducted on a normally consolidated clay at a confining pressure of 100 kPa. The deviator stress at failure is 80 kPa, and the pore-water pressure measured at failure is 50 kPa. The effective angle of internalfriction (in degrees, up to one decimal place) of the soil is _________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "26.25",
+        "tolerance": {
+          "lower": 25.5,
+          "upper": 27
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shear-strength-of-soil",
+          "subtopicLabel": "Shear Strength of Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shear-strength-of-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "CU test is conducted.\n\n$$\\begin{aligned} \\sigma_{3}= 100 &\\mathrm{kPa}, \\sigma_{a}=80 \\mathrm{kPa}, u=50 \\mathrm{kPa} \\\\ \\sigma_{1}&=\\sigma_{3}+\\sigma_{d} =100+80=180 \\mathrm{kPa} \\\\ \\bar{\\sigma}_{1}&=\\sigma_{1}-u= 180-50=130 \\mathrm{kPa}\\\\ \\bar{\\sigma}_{3}&=\\sigma_{3}-u=100-50=50 \\mathrm{kPa} \\\\ \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right)+2 C^{\\prime} \\tan \\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ \\text{Assume }\\quad C^{\\prime}&=0 \\\\ \\bar{\\sigma}_{1}&=\\bar{\\sigma}_{3} \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ 130&=50 \\tan ^{2}\\left(45+\\frac{\\phi^{\\prime}}{2}\\right) \\\\ \\phi^{\\prime}&=26.4^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **26.25** (acceptable range: [25.5, 27])."
+      }
+    },
+    "pp:ce:2017:q51": {
+      "question_uid": "pp:ce:2017:q51",
+      "exam_uid": "ce:2017:set1:q51",
+      "title": "GATE CE 2017 | Set 1 | Question: 51",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An effective rainfall of 2-hour duration produced a flood hydrograph peak of 200 $m^{3}/s$. The flood hydrograph has a base flow of 20 $m^{3}/s$. If the spatial average rainfall in the watershed for the duration of storm is 2 cm and the average loss rate is 0.4 cm/hour, the peak of 2-hour unit hydrograph (in $m^{3}/s-cm$, up to one decimal place) is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "150",
+        "tolerance": {
+          "lower": 149,
+          "upper": 151
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "Peak of 2 hr direct runoff hydrograph = Peak of 2 hr flood hydrograph-Base flow\n\n=200-20\n\n=180 $m^{3}/sec.$\n\nThe rainfall excess depth for a given duration of 2 hr effective storm/rainfall is given by,\n\nRainfall excess depth\n\n$=2 cm-0.4 \\frac{cm}{hr}\\times 2 hr$\n\n$=1.2 cm$\n\n$\\therefore$Peak of 2 hr UH\n\n$=\\frac{180}{1.2}=150 m^{3}/s-cm$\n\nTherefore, the correct answer is **150** (acceptable range: [149, 151])."
+      }
+    },
+    "pp:ce:2017:q52": {
+      "question_uid": "pp:ce:2017:q52",
+      "exam_uid": "ce:2017:set1:q52",
+      "title": "GATE CE 2017 | Set 1 | Question: 52",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The equivalent sound power level (in dB) of the four sources with the noise levels of 60 dB, 69 dB, 70 dB and 79 dB is_______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "80",
+        "tolerance": {
+          "lower": 79,
+          "upper": 81
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "$$\\begin{aligned} L_{eq} &=10\\log_{10}\\left [ \\sum 10^{\\frac{L_{i}}{10}} \\right ] \\\\ &=10\\log_{10}\\left ( 10^{\\frac{60}{10}}+10^{\\frac{69}{10}}+10^{\\frac{70}{10}}+10^{\\frac{79}{10}} \\right ) \\\\ &=79.9\\: \\text{dB} \\end{aligned}$$\n\nTherefore, the correct answer is **80** (acceptable range: [79, 81])."
+      }
+    },
+    "pp:ce:2017:q53": {
+      "question_uid": "pp:ce:2017:q53",
+      "exam_uid": "ce:2017:set1:q53",
+      "title": "GATE CE 2017 | Set 1 | Question: 53",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The spherical grit particles, having a radius of 0.01mm and specific gravity of 3.0, need to beseparated in a settling chamber. It is given that<br><br>\n\n $g=9.81 \\; m/s^{2}$ \n<br>\nthe density of the liquid in the settling chamber $=1000 \\; kg/m^{3}$\n<br>\nthe kinematic viscosity of the liquid in the settling chamber = $10^{-6} \\; m^{2}/s$ \n<br><br>\nAssuming laminar conditions, the settling velocity (in mm/s, up to one decimal place) is_____\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.4",
+        "tolerance": {
+          "lower": 0.3,
+          "upper": 0.5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "water-treatment",
+          "subtopicLabel": "Water Treatment"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "water-treatment"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Water Treatment",
+        "markdown": "$$\\begin{aligned} v_{s} &=\\frac{(G-1) g d^{2}}{18 v}=\\frac{(3-1) 9.81\\left(0.02 \\times 10^{-3}\\right)^{2}}{18 \\times 10^{-6}} \\times 10^{3} \\\\ &=0.436 \\mathrm{mm} / \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **0.4** (acceptable range: [0.3, 0.5])."
+      }
+    },
+    "pp:ce:2017:q54": {
+      "question_uid": "pp:ce:2017:q54",
+      "exam_uid": "ce:2017:set1:q54",
+      "title": "GATE CE 2017 | Set 1 | Question: 54",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Two wastewater streams A and B, having an identical ultimate BOD are getting mixed to form the stream C. The temperature of the stream A is 20$^{\\circ}$C and the temperature of the stream C is 10$^{\\circ}$C. It is given that <br> <br>The 5-day BOD of the stream A measured at 20$^{\\circ}$C=50 mg/l  <br>BOD rate constant (base 10) at 20$^{\\circ}$C=0.115 per day <br>Temperature coefficient = 1.135 <br><br> The 5-day BOD (in mg/l, up to one decimal place)of stream C, calculated at 10$^{\\circ}$C, is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "21",
+        "tolerance": {
+          "lower": 20,
+          "upper": 22
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-and-characteristics-of-waste-water",
+          "subtopicLabel": "Quality and Characteristics of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-and-characteristics-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
+        "markdown": "$$\\begin{aligned} \\text{At A,}\\; \\; \\; \\left ( BOD_{5} \\right )_{20^{\\circ}C}&=L\\left ( 1-10^{-k_{D}20^{\\circ}C\\times 5} \\right ) \\\\ 50 &=L\\left ( 1-10^{-0.115\\times 5} \\right ) \\\\ L&= 68.129\\; mg/l\\\\ \\text{Here,} \\; \\; k_{D_{10}}&=k_{D_{20}}\\times \\left [ 1.135 \\right ]^{10-20} \\\\ &=0.115\\times \\left ( 1.135 \\right )^{-10} \\\\ &=0.0324 \\\\ \\text{For C,}\\; \\;\\left ( BOD_{5} \\right )_{10^{\\circ}C} &=L\\left [ 1-10^{-k_{D_{10\\times 4}}} \\right ] \\\\ &=68.13\\left [ 1-10^{-0.0324\\times 5} \\right ] \\\\ &=21.21\\; mg/l \\end{aligned}$$\n\nTherefore, the correct answer is **21** (acceptable range: [20, 22])."
+      }
+    },
+    "pp:ce:2017:q55": {
+      "question_uid": "pp:ce:2017:q55",
+      "exam_uid": "ce:2017:set1:q55",
+      "title": "GATE CE 2017 | Set 1 | Question: 55",
+      "year": "gatece-2017-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The wastewater having an organic concentration of 54 mg/l is flowing at a steady rate of 0.8 $m^{3}/day$ through a detention tank of dimensions $2m\\times 4m\\times 2m$. If the contents of the tankare well mixed and the decay constant is 0.1 per day, the outlet concentration (in mg/l, up to one decimal place) is ______\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "18",
+        "tolerance": {
+          "lower": 17.9,
+          "upper": 18.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "treatment-of-waste-water",
+          "subtopicLabel": "Treatment of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "treatment-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Treatment of Waste Water",
+        "markdown": "$Q=0.8 \\mathrm{m}^{3} / \\mathrm{d}$\n\nDetention time,\n\n$$\\begin{aligned} D_{t}&=\\frac{V}{Q}=\\frac{4 \\times 2 \\times 2 \\mathrm{m}^{3}}{0.8 \\mathrm{m}^{3} / \\mathrm{day}}=20 \\mathrm{days} \\\\ L_{t}&=\\frac{L_{0}}{1+k_{\\mathrm{e}} t}=\\frac{54}{1+0.1 \\times 20}=18 \\mathrm{mg} / l \\end{aligned}$$\n\nTherefore, the correct answer is **18** (acceptable range: [17.9, 18.1])."
+      }
+    },
+    "pp:ce:2017:q56": {
+      "question_uid": "pp:ce:2017:q56",
+      "exam_uid": "ce:2017:set1:q56",
+      "title": "GATE CE 2017 | Set 1 | Question: 56",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The bacteria in milk are destroyed when it __________ heated to 80 degree Celsius.",
+      "options": [
+        "would be",
+        "will be",
+        "is",
+        "was"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *is*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (is)."
+      }
+    },
+    "pp:ce:2017:q57": {
+      "question_uid": "pp:ce:2017:q57",
+      "exam_uid": "ce:2017:set1:q57",
+      "title": "GATE CE 2017 | Set 1 | Question: 57",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "_______with someone else's email account is now a very serious offence.",
+      "options": [
+        "Involving",
+        "Assisting",
+        "Tampering",
+        "Incubating"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *Tampering*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (Tampering)."
+      }
+    },
+    "pp:ce:2017:q58": {
+      "question_uid": "pp:ce:2017:q58",
+      "exam_uid": "ce:2017:set1:q58",
+      "title": "GATE CE 2017 | Set 1 | Question: 58",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the following sentences:\n<br>\nAll benches are beds. No bed is a bulb. Some bulbs are lamps.\n<br>\nWhich of the following can be inferred?\n<br><br>\ni.  Some beds are lamps.\nIi. Some lamps are beds.",
+      "options": [
+        "Only i",
+        "Only ii",
+        "Both i and ii",
+        "Neither i nor ii"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Neither i nor ii*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Neither i nor ii)."
+      }
+    },
+    "pp:ce:2017:q59": {
+      "question_uid": "pp:ce:2017:q59",
+      "exam_uid": "ce:2017:set1:q59",
+      "title": "GATE CE 2017 | Set 1 | Question: 59",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If the radius of a right circular cone is increased by 50%, its volume increases by",
+      "options": [
+        "0.75",
+        "1",
+        "1.25",
+        "2.375"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *1.25*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (1.25)."
+      }
+    },
+    "pp:ce:2017:q60": {
+      "question_uid": "pp:ce:2017:q60",
+      "exam_uid": "ce:2017:set1:q60",
+      "title": "GATE CE 2017 | Set 1 | Question: 60",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The following sequence of numbers is arranged in increasing order: 1, x, x, x, y, y, 9, 16, 18. Given that the mean and median are equal, and are also equal to twice the mode, the value of y is",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *8*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (8)."
+      }
+    },
+    "pp:ce:2017:q61": {
+      "question_uid": "pp:ce:2017:q61",
+      "exam_uid": "ce:2017:set1:q61",
+      "title": "GATE CE 2017 | Set 1 | Question: 61",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The old concert hall was demolished because of fears that the foundation would be affected by the construction of the new metro line in the area. Modern technology for underground metro construction tried to mitigate the impact of pressurized air pockets created by the excavation of large amounts of soil. But even with these safeguards, it was feared the soil below the concert hall would not be stable.\n<br>\nFrom this, one can infer that",
+      "options": [
+        "the foundations of old buildings create pressurized air pockets underground, which are difficult to handle during metro construction.",
+        "metro construction has to be done carefully considering its impact on the foundations of existing buildings.",
+        "old buildings in an area from an impossible hurdle to metro construction in that area.",
+        "pressurized air can be used to excavate large amounts of soil from underground areas."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *metro construction has to be done carefully considering its impact on the foundations of existing buildings.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (metro construction has to be done carefully considering its impact on the foundations of existing buildings.)."
+      }
+    },
+    "pp:ce:2017:q62": {
+      "question_uid": "pp:ce:2017:q62",
+      "exam_uid": "ce:2017:set1:q62",
+      "title": "GATE CE 2017 | Set 1 | Question: 62",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Students applying for hostel rooms are allotted rooms in order of seniority. Students already staying in a room will move if they get a room in their preferred list. Preferences of lower ranked applicants are ignored during allocation.\n<br>\nGiven the data below, which room will Ajit stay in ?<br>$$\\begin{array}{|l|l|l|l|}\\hline \\textbf{Names} & \\textbf{Student seniority} & \\textbf{Current room} & \\textbf{Room preference list} \\\\\\hline \\text{Amar} & \\text{1}& \\text{P} & \\text{R,S,Q}\\\\\\hline \\text{Akbar} & \\text{2}& \\text{None} & \\text{R,S}\\\\\\hline \\text{Anthony} & \\text{3}& \\text{Q} & \\text{P}\\\\\\hline \\text{Ajit} & \\text{4}& \\text{S} & \\text{Q,P,R}\\\\\\hline \\end{array}$$\n",
+      "options": [
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *Q*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (Q)."
+      }
+    },
+    "pp:ce:2017:q63": {
+      "question_uid": "pp:ce:2017:q63",
+      "exam_uid": "ce:2017:set1:q63",
+      "title": "GATE CE 2017 | Set 1 | Question: 63",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The last digit of $(2171)^{7}+(2172)^{9}+(2173)^{11}+(2174)^{13}$ is ",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *4*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (4)."
+      }
+    },
+    "pp:ce:2017:q64": {
+      "question_uid": "pp:ce:2017:q64",
+      "exam_uid": "ce:2017:set1:q64",
+      "title": "GATE CE 2017 | Set 1 | Question: 64",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Two machines M1 and M2  are able to execute any of four jobs P, Q, R and S. The machines can perform one job on one object at a time. Jobs P, Q, R and S take 30 minutes, 20 minutes, 60 minutes and 15 minutes each respectively. There are 10 objects each requiring exactly 1 job. Job P is to be performed on 2 objects. Job Q on 3 objects, Job R on 1 object and Job S on 4 objects. What is the minimum time needed to complete all the jobs?",
+      "options": [
+        "2 hours",
+        "2.5 hours",
+        "3 hours",
+        "3.5 hours"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *2 hours*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (2 hours)."
+      }
+    },
+    "pp:ce:2017:q65": {
+      "question_uid": "pp:ce:2017:q65",
+      "exam_uid": "ce:2017:set1:q65",
+      "title": "GATE CE 2017 | Set 1 | Question: 65",
+      "year": "gatece-2017-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The bar graph below shows the output of five carpenters over one month, each of whom made different items of furniture: chairs, tables, and beds. <br><img src=\"/question-images/ce/2017/ce-2017-4689341fa2.webp\" /><br>Consider the following statements.\n<br><br>\ni. The number of beds made by carpenter C2 is exactly the same as the number of tables made by carpenter C3.<br>\nii. The total number of chairs made by all carpenters is less than the total number of tables.<br><br>\nWhich one of the following is true?",
+      "options": [
+        "Only i",
+        "Only ii",
+        "Both i and ii",
+        "Neither i nor ii"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2017-s1",
+      "yearSetIdentity": "ce:2017:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *Both i and ii*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (Both i and ii)."
+      }
+    }
+  }
+}

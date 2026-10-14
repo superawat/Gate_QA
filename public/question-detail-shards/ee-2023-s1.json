@@ -1,0 +1,2612 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.394Z",
+  "shardKey": "ee-2023-s1",
+  "yearSetKey": "ee-2023-s1",
+  "yearSetIdentity": "ee:2023:set-1",
+  "track": "ee",
+  "year": 2023,
+  "set": 1,
+  "label": "2023 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ee:2023:q1": {
+      "question_uid": "pp:ee:2023:q1",
+      "exam_uid": "ee:2023:set1:q1",
+      "title": "GATE EE 2023 | Set 1 | Question: 1",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a given vector $$w=\\left[\\begin{array}{lll}1 & 2 & 3\\end{array}\\right]^{\\top}$$, the vector normal to the plane defined by $\\mathbf{w}^{\\top} x=1$ is",
+      "options": [
+        "$$\\left[\\begin{array}{lll}-2 & -2 & 2\\end{array}\\right]^{T}$$",
+        "$$\\left[\\begin{array}{lll}3 & 0 & -1\\end{array}\\right]^{T}$$",
+        "$$\\left[\\begin{array}{lll}3 & 2 & 1\\end{array}\\right]^{T}$$",
+        "$$\\left[\\begin{array}{llll}1 & 2 & 3\\end{array}\\right]^{T}$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Given, $W^{T}=1$\n\n$$\\left[\\begin{array}{lll}1 & 2 & 3\\end{array}\\right]\\left[\\begin{array}{l}x \\\\ y \\\\ z\\end{array}\\right]=1$$\n\nWe have, vector normal to the plane $=\\nabla F$\n\n$$\\begin{aligned}\n\n& =i \\frac{\\partial F}{\\partial x}+\\hat{j} \\frac{\\partial F}{\\partial y}+\\hat{k} \\frac{\\partial F}{\\partial z} \\\\\n\n& =\\hat{i}+2 \\hat{j}+3 \\hat{k}\n\n\\end{aligned}$$\n\n$\\therefore$ Normal vector $$=\\left[\\begin{array}{lll}1 & 2 & 3\\end{array}\\right]^{T}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q2": {
+      "question_uid": "pp:ee:2023:q2",
+      "exam_uid": "ee:2023:set1:q2",
+      "title": "GATE EE 2023 | Set 1 | Question: 2",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the block diagrm shown in the figure, the transfer function $\\frac{Y(s)}{R(s)}$ is\n<br><img src=\"/question-images/ee/2023/ee-2023-154662117a.webp\" /><br>",
+      "options": [
+        "$\\frac{2 s+3}{s+1}$",
+        "$\\frac{3 s+2}{s-1}$",
+        "$\\frac{s+1}{3 \\mathrm{~s}+2}$",
+        "$\\frac{3 s+2}{s+1}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "Signal flow graph:\n\n<img src=\"/question-images/ee/2023/ee-2023-42636c347a.webp\" />\n\nForward paths,\n\n$$\\begin{aligned}\n\n& \\mathrm{P}_{1}=3, \\quad \\Delta_{1}=1 \\\\\n\n& \\mathrm{P}_{2}=\\frac{2}{\\mathrm{~S}}, \\Delta_{2}=1\n\n\\end{aligned}$$\n\nLoops: $L_1=\\frac{1}{S}$\n\nUsing Masson's graph formula,\n\n$$\\begin{aligned}\n\n\\frac{Y(s)}{R(s)} & =\\frac{P_{1} \\Delta_{1}+P_{1} \\Delta_{2}}{1-L_{1}} \\\\\n\n& =\\frac{3+\\frac{2}{S}}{1-\\frac{1}{S}} \\\\\n\n& =\\frac{3 S+2}{S-1}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q3": {
+      "question_uid": "pp:ee:2023:q3",
+      "exam_uid": "ee:2023:set1:q3",
+      "title": "GATE EE 2023 | Set 1 | Question: 3",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the Nyquist plot of the open-loop transfer function\n<br>\n<br>\n$\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s})=\\frac{3 \\mathrm{~s}+5}{\\mathrm{~s}-1}$\n<br><br>\ncorresponding to the feedback loop shown in the figure, the infinite semi-circular arc of the Nyquist contour in s-plane is mapped into a point at\n\n<br><img src=\"/question-images/ee/2023/ee-2023-84b93cb16c.webp\" /><br> ",
+      "options": [
+        "$\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s})=\\infty$",
+        "$\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s})=0$",
+        "$\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s})=3$",
+        "$\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s})=-5$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "Nyquist Contour :\n\n<img src=\"/question-images/ee/2023/ee-2023-b8fae067b5.webp\" />\n\nGiven:\n\n$$\\begin{aligned}\n\n\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s}) & =\\frac{3 \\mathrm{~s}+5}{\\mathrm{~s}-1} \\\\\n\n\\text { Put } \\quad \\mathrm{s} & =R e^{j \\theta} \\\\\n\n\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s}) & =\\operatorname{Lim}_{R \\rightarrow \\infty} \\frac{3 R e^{j \\theta}+5}{\\operatorname{Re}^{j \\theta}-1} \\\\\n\n\\mathrm{G}(\\mathrm{s}) \\mathrm{H}(\\mathrm{s}) & =3\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2023:q4": {
+      "question_uid": "pp:ee:2023:q4",
+      "exam_uid": "ee:2023:set1:q4",
+      "title": "GATE EE 2023 | Set 1 | Question: 4",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a unity-gain negative feedback system consisting of the plant $G(s)$ (given below) and a proportional-integral controller. Let the proportional gain and integral gain be 3 and 1, respectively. For a unit step reference input, the final values of the controller output and the plant output, respectively, are\r\n<br>\r\n<br>\r\n$G(s)=\\frac{1}{s-1}$",
+      "options": [
+        "$\\infty, \\infty$",
+        "$1,0$",
+        "$1,-1$",
+        "$-1,1$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Feedback Characteristics of Control Systems",
+        "markdown": "Given plant:\n\n<img src=\"/question-images/ee/2023/ee-2023-6454c6b4cd.webp\" />\n\nSo, $\\quad$ OLTF $=\\frac{(3 s+1)}{s(s-1)}$\n\nClosed loop transfer function,\n\n$$\\begin{aligned}\n\n\\frac{Y(s)}{R(s)} & =\\frac{3 s+1}{s^{2}+2 s+1} \\\\\n\nY(s) & =\\frac{3 s+1}{s\\left(s^{2}+2 s+1\\right)} \\quad\\left[\\because R(s)=\\frac{1}{s}\\right]\n\n\\end{aligned}$$\n\nFinal value of plant,\n\n$Y(\\infty)=\\operatorname{Lims}_{s \\rightarrow 0} Y(s)=1$\n\nFrom plant,\n\n$$\\begin{aligned}\n\nX(\\mathrm{~s}) & =\\left[\\mathrm{R}(\\mathrm{s})-\\frac{\\mathrm{X}(\\mathrm{s})}{\\mathrm{s}-1}\\right]\\left(3+\\frac{1}{\\mathrm{~s}}\\right) \\\\\n\nX(\\mathrm{~s})\\left[1+\\frac{3 \\mathrm{~s}+1}{\\mathrm{~s}(\\mathrm{~s}-1)}\\right] & =\\left(\\frac{3 \\mathrm{~s}+1}{\\mathrm{~s}^{2}}\\right)\\left[\\because \\mathrm{R}(\\mathrm{s})=\\frac{1}{\\mathrm{~s}}\\right] \\\\\n\nX(\\mathrm{~s})\\left[\\frac{\\mathrm{s}^{2}+2 s+1}{\\mathrm{~s}(\\mathrm{~s}-1)}\\right] & =\\left(\\frac{3 \\mathrm{~s}+1}{\\mathrm{~s}^{2}}\\right) \\\\\n\n\\Rightarrow \\quad X(\\mathrm{~s}) & =\\frac{(3 \\mathrm{~s}+1)(\\mathrm{s}-1)}{\\mathrm{s}\\left(\\mathrm{s}^{2}+2 \\mathrm{~s}+1\\right)}\n\n\\end{aligned}$$\n\n$\\therefore$ Final value of controller,\n\n$x(\\infty)=\\operatorname{LimsX}_{s \\rightarrow 0} \\mathrm{~s}(\\mathrm{~s})=-1$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q5": {
+      "question_uid": "pp:ee:2023:q5",
+      "exam_uid": "ee:2023:set1:q5",
+      "title": "GATE EE 2023 | Set 1 | Question: 5",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The following columns present various modes of induction machine operation and the ranges of slip\r\n<br>\r\n<br>\r\n\r\n$$\\begin{array}{ll}\r\n\\textbf{A (Mode of operation)}& \\textbf{B (Range of slip)}\\\\\\\\ \r\n\r\n\\text{a. Running in generator mode}&\\text{p) From 0.0 to 1.0}\\\\\\\\ \r\n\r\n\r\n\\text{b. Running in motor mode} & \\text{q) From 1.0 to 2.0}\\\\\\\\ \r\n\r\n\r\n\\text{c. Plugging in motor mode} & \\text{r) From - 1.0 to 0.0}\r\n\\end{array}$$\r\n<br>\r\nThe correct matching between the elements in column A with those of column B is",
+      "options": [
+        "a-r, b-p, and c-q",
+        "a-r, b-q, and c-p",
+        "a-p, b-r, and c-q",
+        "a-q, b-p, and c-r"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
+        "markdown": "Torque speed characteristic of $3-\\phi$ IM :\n\n<img src=\"/question-images/ee/2023/ee-2023-dd842406a3.webp\" />\n\n$\\mathrm{S} \\gt 1 \\Rightarrow$ Plugging mode\n\n$0 \\lt \\mathrm{S} \\lt 1 \\Rightarrow$ Motoring mode\n\n$\\mathrm{S} \\lt 0 \\Rightarrow$ Generating Mode\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q6": {
+      "question_uid": "pp:ee:2023:q6",
+      "exam_uid": "ee:2023:set1:q6",
+      "title": "GATE EE 2023 | Set 1 | Question: 6",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A 10-pole, $50 \\mathrm{~Hz}, 240 \\mathrm{~V}$, single phase induction motor runs at 540 RPM while driving rated load. The frequency of induced rotor currents due to backward field is",
+      "options": [
+        "$100 \\mathrm{~Hz}$",
+        "$95 \\mathrm{~Hz}$",
+        "$10 \\mathrm{~Hz}$",
+        "$5 \\mathrm{~Hz}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
+        "markdown": "Synchronous speed,\n\n$$\\begin{aligned}\n\nN_{s} & =\\frac{120 f}{P} \\\\\n\n& =\\frac{120 \\times 50}{10}=600 \\mathrm{rpm}\n\n\\end{aligned}$$\n\nNow, forward slip,\n\n$$\\begin{aligned}\n\nS & =\\frac{N_{\\mathrm{s}}-N}{N_{\\mathrm{s}}} \\\\\n\n& =\\frac{600-540}{600}=0.1\n\n\\end{aligned}$$\n\n$\\therefore$ Backward slip $=2-\\mathrm{S}=1.9$\n\nThus, required frequency $=1.9 \\times 50=95 \\mathrm{~Hz}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q7": {
+      "question_uid": "pp:ee:2023:q7",
+      "exam_uid": "ee:2023:set1:q7",
+      "title": "GATE EE 2023 | Set 1 | Question: 7",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A continuous-time system that is initially at rest is described by\n<br><br>\n$\\frac{d y(t)}{d t}+3 y(t)=2 x(t)$\n<br><br>\nwhere $x(t)$ is the input voltage and $y(t)$ is the output voltage. The impulse response of the system is",
+      "options": [
+        "$3 e^{-2 t}$",
+        "$\\frac{1}{3} e^{-2 t} u(t)$",
+        "$2 \\mathrm{e}^{-3 \\mathrm{t}} \\mathrm{u}(\\mathrm{t})$",
+        "$2 \\mathrm{e}^{-3 \\mathrm{t}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "Given :\n\n$\\frac{\\mathrm{dy}(\\mathrm{t})}{\\mathrm{dt}}+3 \\mathrm{y}(\\mathrm{t})=x(\\mathrm{t})$\n\nTaking Laplace transform,\n\n$$\\begin{aligned}\n\nY(\\mathrm{~s})[\\mathrm{s}+3] & =2 X(\\mathrm{~s}) \\\\\n\n\\frac{Y(s)}{X(\\mathrm{~s})} & =\\frac{2}{s+3}\n\n\\end{aligned}$$\n\nWe have impulse response\n\n$=\\mathrm{L}^{-1} \\text { (Transfer function) }$\n\nSo, taking inverse Laplace transform,\n\n$y(t)=2 e^{-3 t} u(t)$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2023:q8": {
+      "question_uid": "pp:ee:2023:q8",
+      "exam_uid": "ee:2023:set1:q8",
+      "title": "GATE EE 2023 | Set 1 | Question: 8",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Fourier transform $X(\\omega)$ of the signal $x(t)$ is given by\n<br>\n<br>\n$$\\begin{aligned}\nX(\\omega) & =1, \\text { for }|\\omega| \\lt W_{0} \\\\\n& =0, \\text { for }|\\omega| \\gt W_{0}\n\\end{aligned}$$\n<br><br>\nWhich one of the following statements is true?",
+      "options": [
+        "$x(t)$ tends to be an impulse as $\\mathrm{W}_{0} \\rightarrow \\infty$",
+        "$x(0)$ decreases as $W_{0}$ increases",
+        "At $\\mathrm{t}=\\frac{\\pi}{2 \\mathrm{~W}_{0}}, \\mathrm{x}(\\mathrm{t})=-\\frac{1}{\\pi}$",
+        "At $\\mathrm{t}=\\frac{\\pi}{2 \\mathrm{~W}_{0}}, \\mathrm{x}(\\mathrm{t})=\\frac{1}{\\pi}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transform",
+        "markdown": "Given,\n\n$$\\quad X(\\omega)=\\left\\{\\begin{array}{l}1, \\text { for }|\\omega|<W_{0} \\\\ 0, \\text { for }|\\omega|>W_{0}\\end{array}\\right.$$\n\n$X(\\omega)=\\operatorname{rect}\\left(\\frac{\\omega}{2 W_{0}}\\right)$\n\n<img src=\"/question-images/ee/2023/ee-2023-50913e4691.webp\" />\n\nWe know,\n\n$\\operatorname{Arect}\\left(\\frac{\\mathrm{t}}{\\tau}\\right)=\\operatorname{A\\tau S}\\left(\\frac{\\omega \\tau}{2}\\right)$\n\nBy duality,\n\n$\\operatorname{A} \\tau \\mathrm{Sa}\\left(\\frac{\\mathrm{t} \\tau}{2}\\right) \\leftrightarrow 2 \\pi \\operatorname{Arect}\\left(\\frac{\\omega}{\\tau}\\right)$\n\nGiven,\n\n$2 \\pi \\mathrm{A}=1$\n\n$\\Rightarrow \\quad A=\\frac{1}{2 \\pi}$\n\n$\\therefore \\quad \\mathrm{x}(\\mathrm{t})=\\frac{\\tau}{2 \\pi} \\mathrm{Sa}\\left(\\frac{\\mathrm{t} \\tau}{2}\\right)$, where $\\tau=2 \\mathrm{~W}_{0}$\n\nThus,\n\n$$\\begin{aligned}\n\nx(t)&=\\frac{W_0}{\\pi} \\mathrm{Sa}(W_0 t)\\\\\n\n&=\\frac{1}{\\pi}\\frac{\\sin W_0 t}{t}\\\\\n\n\\therefore \\quad \\text{At } t&=\\frac{\\pi}{2W_0}, x(t)=\\frac{1}{\\pi t}\n\n\\end{aligned}$$\n\nFrom rectangular function, At $W \\Rightarrow \\infty ,X(w)=1$\n\nTaking inverse fourier transform\n\n$x(t)=\\delta (t)$\n\nOption (A) will be correct.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q9": {
+      "question_uid": "pp:ee:2023:q9",
+      "exam_uid": "ee:2023:set1:q9",
+      "title": "GATE EE 2023 | Set 1 | Question: 9",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Z-transform of a discrete signal $x[n]$ is\n<br><br>   \n$X(z)=\\frac{4z}{\\left ( z-\\frac{1}{5} \\right ) \\left ( z-\\frac{2}{3} \\right ) (z-3)}$ with ROC = R\n<br>\n<br> Which one of the following statements is\ntrue?",
+      "options": [
+        "Discrete-time Fourier transform of $x[n]$ converges if $R$ is $|z| \\gt 3$",
+        "Discrete-time Fourier transform of $x[n]$ converges if $R$ is $\\frac{2}{3} \\lt |z| \\lt 3$",
+        "Discrete-time Fourier transform of $x[n]$ converges if $R$ is such that $x[n]$ is a leftsided sequence",
+        "Discrete-time Fourier transform of $x[n]$ converges if $R$ is such that $x[n]$ is a rightsided sequence"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Z-Transform",
+        "markdown": "$Z = 1$, unit circle include by ROC : $\\frac{2}{3} \\lt |z| \\lt 3$.\n\nTherefore DIFT of $x[n]$ conveys for this ROC.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q10": {
+      "question_uid": "pp:ee:2023:q10",
+      "exam_uid": "ee:2023:set1:q10",
+      "title": "GATE EE 2023 | Set 1 | Question: 10",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the three-bus power system shown in the\nfigure, the trip signals to the circuit breakers  $B_1$ to $B_9$ are provided by overcurrent relays $R_1$ to $R_9$, respectively, some of which have directional\nproperties also. The necessary condition for the\nsystem to be protected for short circuit fault at\nany part of the system between bus $1$ and the\n$R-L$ loads with isolation of minimum portion of\nthe network using minimum number of\ndirectional relays is <br><img src=\"/question-images/ee/2023/ee-2023-5a0668b1e3.webp\" /><br>\n",
+      "options": [
+        "$\\mathrm{R}_{3}$ and $\\mathrm{R}_{4}$ are directional overcurrent relays blocking faults towards bus 2",
+        "$R_{3}$ and $R_{4}$ are directional overcurrent relays blocking faults towards bus 2 and $R_{7}$ is directional overcurrent relay blocking faults towards bus 3",
+        "$R_{3}$ and $\\mathrm{R}_{4}$ are directional overcurrent relays blocking faults towards Line 1 and Line 2, respectively, $R_{7}$ is directional overcurrent relay blocking faults towards Line 3 and R5 is directional overcurrent relay blocking faults towards bus 2",
+        "$\\mathrm{R}_{3}$ and $\\mathrm{R}_{4}$ are directional overcurrent relays blocking faults towards Line 1 and Line 2, respectively."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Switch Gear and Protection",
+        "markdown": "<img src=\"/question-images/ee/2023/ee-2023-596d75425e.webp\" />\n\n$B_3,B_4$ and $B_5,B_7$ are directional over current relays.\n\nAll remaining are $( B_1,B_2,B_6,B_8,B_9)$\n\nNow directional over current relays.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q11": {
+      "question_uid": "pp:ee:2023:q11",
+      "exam_uid": "ee:2023:set1:q11",
+      "title": "GATE EE 2023 | Set 1 | Question: 11",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The expressions of fuel cost of two thermal generating units as a function of the respective power generation $\\mathrm{P}_{\\mathrm{G} 1}$ and $\\mathrm{P}_{\\mathrm{G} 2}$ are given as\r\n<br><br>\r\n$\\mathrm{F}_{1}\\left(\\mathrm{P}_{\\mathrm{G} 1}\\right)=0.1 \\mathrm{aP}_{\\mathrm{G} 1}^{2}+40 \\mathrm{P}_{\\mathrm{G} 1}+120 \\mathrm{Rs} /hour$ \r\n<br>\r\n$0 \\mathrm{MW} \\leq \\mathrm{P}_{\\mathrm{G} 1} \\leq 350 \\mathrm{MW}$\r\n<br><br>\r\n$\\mathrm{F}_{2}\\left(\\mathrm{P}_{\\mathrm{G} 2}\\right)=0.2 \\mathrm{P}_{\\mathrm{G} 2}^{2}+30 \\mathrm{P}_{\\mathrm{G} 2}+100 \\mathrm{Rs} /hour$ \r\n<br>\r\n$0 \\mathrm{MW} \\leq \\mathrm{P}_{\\mathrm{G} 2} \\leq 300 \\mathrm{MW}$\r\n<br><br>\r\nwhere $a$ is a constant. For a given value of a, optimal dispatch requires the total load of $290 \\mathrm{MW}$ to be shared as $\\mathrm{P}_{\\mathrm{G} 1}=175 \\mathrm{MW}$ and $\\mathrm{P}_{\\mathrm{G} 2}$ $=115 \\mathrm{MW}$. With the load remaining unchanged, the value of $a$ is increased by $10 \\%$ and optimal dispatch is carried out. The changes in $\\mathrm{P}_{\\mathrm{G} 1}$ and the total cost of generation, $F\\left(=F_{1}+F_{2}\\right)$ in Rs/hour will be as follows.",
+      "options": [
+        "$\\mathrm{P}_{\\mathrm{G} 1}$ will decrease and $\\mathrm{F}$ will increase",
+        "Both $\\mathrm{P}_{\\mathrm{G} 1}$ and $\\mathrm{F}$ will increase",
+        "$P_{\\mathrm{G1}}$ will increase and $F$ will decrease",
+        "Both $\\mathrm{P}_{\\mathrm{G} 1}$ and $F$ will decrease"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "generating-power-stations",
+          "subtopicLabel": "Generating Power Stations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "generating-power-stations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Generating Power Stations",
+        "markdown": "$$\\begin{aligned}\n\n& \\mathrm{IC}_{1}=0.2 \\mathrm{aP}_{\\mathrm{a}_{1}}+40 \\\\\n\n& \\mathrm{IC}_{2}=0.4 \\mathrm{P}_{\\mathrm{a}_{2}}+30\n\n\\end{aligned}$$\n\nFor optimal dispatch,\n\n$\\mathrm{IC}_{1}=\\mathrm{IC}_{2}$\n\n$0.2 \\mathrm{aP}_{\\mathrm{G}_{1}}+40=0.4 \\mathrm{P}_{\\mathrm{G}_{2}}+30$\n\nGiven :\n\n$$\\begin{aligned}\n\n\\mathrm{P}_{\\mathrm{G}_{1}} & =175 \\mathrm{MW} \\text { and } \\mathrm{P}_{\\mathrm{G}_{2}}=115 \\mathrm{MW} \\\\\n\n\\therefore 0.2 \\mathrm{a} \\times 175+40 & =0.4 \\times 115+30 \\\\\n\n\\Rightarrow \\quad \\mathrm{a} & =1.0286\n\n\\end{aligned}$$\n\nEconomic scheduling,\n\n$\\mathrm{P}_{\\mathrm{G}_{1}}+\\mathrm{P}_{\\mathrm{G}_{2}}=290 \\mathrm{MW}$\n\nNow, if a increases by $10 \\%, \\mathrm{P}_{\\mathrm{G}_{1}}$ should be decreases and total cost of generation increases.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q12": {
+      "question_uid": "pp:ee:2023:q12",
+      "exam_uid": "ee:2023:set1:q12",
+      "title": "GATE EE 2023 | Set 1 | Question: 12",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The four stator conductor $\\left(A, A^{\\prime}, B\\right.$ and $\\left.B^{\\prime}\\right)$ of a rotating machine are carrying DC currents of the same value, the directions of which are shown in figure (i). The rotor coils $a-a^{\\prime}$ and $b-b^{\\prime}$ are formed by connecting the back ends of conductor '$a$' and '$a^{\\prime}$' and '$b$' and '$b^{\\prime}$', respectively, as shown in figure (ii). The e.m.f. induced in coil $a-a^{\\prime}$ and coil  $b-b^{\\prime}$ are denoted by $E_{a-a^{\\prime}}$ and $E_{b-b^{\\prime}}$; respectively. If the rotor is rotated at uniform angular speed $\\omega \\mathrm{rad} / \\mathrm{s}$ in the clockwise direction then which of the following correctly describes the $\\mathrm{E}_{\\mathrm{a}-\\mathrm{a}^{\\prime}}$ and $\\mathrm{E}_{\\mathrm{b}-\\mathrm{b}^{\\prime}}$ ?\r\n<br><img src=\"/question-images/ee/2023/ee-2023-992343de0f.webp\" /><br>",
+      "options": [
+        "$E_{a-a^{\\prime}}$ and $E_{b-b^{\\prime}}$ have finite magnitudes and are in the same phase",
+        "$E_{a-a^{\\prime}}$ and $E_{b-b^{\\prime}}$ have finite magnitudes with $\\mathrm{E}_{\\mathrm{b}-b^{\\prime}}$ leading $\\mathrm{E}_{\\mathrm{a-a}}$",
+        "$\\mathrm{E}_{\\mathrm{a}-\\mathrm{a}^{\\prime}}$ and $\\mathrm{E}_{\\mathrm{b}-\\mathrm{b}^{\\prime}}$ have finite magnitudes with $E_{a-a^{\\prime}}$ leading $E_{b-b^{\\prime}}$",
+        "$\\mathrm{E}_{\\mathrm{a}-\\mathrm{a}^{\\prime}}=\\mathrm{E}_{\\mathrm{b}-\\mathrm{b}^{\\prime}}=0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system",
+          "subtopicLabel": "Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
+        "markdown": "Since, a-a' and b-b' are placed at GNA (Geometric Neutral Axis) therefore,\n\n$\\mathrm{E}_{\\mathrm{a}-\\mathrm{a}^{\\prime}}=\\mathrm{E}_{\\mathrm{b}-\\mathrm{b}^{\\prime}}=0$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q13": {
+      "question_uid": "pp:ee:2023:q13",
+      "exam_uid": "ee:2023:set1:q13",
+      "title": "GATE EE 2023 | Set 1 | Question: 13",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The chopper circuit shown in figure (i) feeds power to a 5 A DC constant current source. The switching frequency of the chopper is $100 \\mathrm{kHz}$. All the components can be assumed to be ideal. The gate signals of switches $S_{1}$ and $S_{2}$ are shown in figure (ii). Average voltage across the $5 \\mathrm{~A}$ current source is\n<br><img src=\"/question-images/ee/2023/ee-2023-919a1e0b52.webp\" /><br>",
+      "options": [
+        "$10 \\mathrm{~V}$",
+        "$6 \\mathrm{~V}$",
+        "$12 \\mathrm{~V}$",
+        "$20 \\mathrm{~V}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "Output Voltage Waveform :\n\n<img src=\"/question-images/ee/2023/ee-2023-eb3b99ec1b.webp\" />\n\n$\\therefore$ Average voltage, $\\mathrm{V}_{0}=\\frac{1}{10}[20 \\times 3]=6 \\mathrm{~V}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q14": {
+      "question_uid": "pp:ee:2023:q14",
+      "exam_uid": "ee:2023:set1:q14",
+      "title": "GATE EE 2023 | Set 1 | Question: 14",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the figure, the vectors $u$ and $v$ are related as: $A u=v$ by a transformation matrix $A$. The correct choice of $A$ is\n<br><img src=\"/question-images/ee/2023/ee-2023-72db04adc2.webp\" /><br>",
+      "options": [
+        "$$\\left[\\begin{array}{cc}\\frac{4}{5} & \\frac{3}{5} \\\\ -\\frac{3}{5} & \\frac{4}{5}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{cc}\\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{ll}\\frac{4}{5} & \\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{rr}\\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & -\\frac{4}{5}\\end{array}\\right]$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Given :\n\n<img src=\"/question-images/ee/2023/ee-2023-3e943bf84f.webp\" />\n\n$$\\begin{aligned}\n\n& |u|=\\sqrt{4^{2}+3^{2}}=5 \\\\\n\n& |V|=5\n\n\\end{aligned}$$\n\nand $\\quad \\theta=\\tan ^{-1} \\frac{3}{4} \\Rightarrow \\tan \\theta=\\frac{3}{4}$\n\n$\\therefore \\quad \\sin \\theta=\\frac{3}{5}$ and $\\cos \\theta=\\frac{4}{5}$\n\nFor clockwise relation by $\\theta$, transformation matrix,\n\n$$\\begin{aligned}\n\nA & =\\left[\\begin{array}{cc}\n\n\\cos \\theta & -\\sin \\theta \\\\\n\n\\sin \\theta & \\cos \\theta\n\n\\end{array}\\right] \\\\\n\n& =\\left[\\begin{array}{cc}\n\n\\frac{4}{5} & \\frac{3}{5} \\\\\n\n-\\frac{3}{5} & \\frac{4}{5}\n\n\\end{array}\\right]\n\n\\end{aligned}$$\n\n$[\\because$ F or clockwise $\\theta \\rightarrow$ N egative $]$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q15": {
+      "question_uid": "pp:ee:2023:q15",
+      "exam_uid": "ee:2023:set1:q15",
+      "title": "GATE EE 2023 | Set 1 | Question: 15",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "One million random numbers are generated from a statistically stationary process with a Gaussian distribution with mean zero and standard deviation $\\sigma_{0}$.\n<br>\nThe $\\sigma_{0}$ is estimated by randomly drawing out 10,000 numbers of samples $\\left(x_{n}\\right)$. The estimates $\\hat{\\sigma}_{1}, \\hat{\\sigma}_{2}$ are computed in the following two ways.\n<br>\n$\\hat{\\sigma}_{1}^{2}=\\frac{1}{10000} \\sum_{n=1}^{10000} x_{n}^{2} \\quad \\hat{\\sigma}_{2}^{2}=\\frac{1}{9999} \\sum_{n=1}^{10000} x_{n}^{2}$\n<br><br>\nWhich of the following statements is true?",
+      "options": [
+        "$E\\left(\\hat{\\sigma}_{2}^{2}\\right)=\\sigma_{0}^{2}$",
+        "$\\mathrm{E}\\left(\\hat{\\sigma}_{2}\\right)=\\sigma_{0}$",
+        "$E\\left(\\hat{\\sigma}_{1}^{2}\\right)=\\sigma_{0}^{2}$",
+        "$\\mathrm{E}\\left(\\hat{\\sigma}_{1}\\right)=\\mathrm{E}\\left(\\hat{\\sigma}_{2}\\right)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "We know,\n\n$\\mathrm{E}\\left[(\\mathrm{X}-\\overline{\\mathrm{X}})^{2}\\right]=\\operatorname{Var}$\n\nGiven, $\\quad \\bar{X}=0$\n\n$\\therefore \\quad E[X]=\\operatorname{Var}$.\n\nWe have,\n\nStandard deviation, $\\sigma^{2}$\n\n$=\\frac{1}{N-1} \\sum_{n=1}^{n} x_{n}^{2} \\Rightarrow \\text { for sample }$\n\nand $\\quad \\sigma^{2}=\\frac{1}{N} \\sum_{n=1}^{n} x_{n}^{2} \\Rightarrow$ For population\n\nHere, we take samples from $10^{6}$ numbers.\n\n$\\therefore \\quad \\mathrm{E}\\left(\\sigma_{2}^{2}\\right)=\\sigma_{0}^{2}$ will be correct.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2023:q16": {
+      "question_uid": "pp:ee:2023:q16",
+      "exam_uid": "ee:2023:set1:q16",
+      "title": "GATE EE 2023 | Set 1 | Question: 16",
+      "year": "gateee-2023-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "A semiconductor switch needs to block voltage $V$ of only one polarity $(V \\gt 0)$ during OFF state as shown in figure (i) and carry current in both directions during ON state as shown in figure (ii). Which of the following switch combination(s) will realize the same?\n<br><img src=\"/question-images/ee/2023/ee-2023-7eaba35329.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "power-semiconductor-devices-and-commutation-techniques",
+          "subtopicLabel": "Power Semiconductor Devices and Commutation Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "power-semiconductor-devices-and-commutation-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
+        "markdown": "I-V characteristic of given switch :\n\n<img src=\"/question-images/ee/2023/ee-2023-03d398daa3.webp\" />\n\nthis characteristic shows by options (A) and (D) switch.\n\nTherefore, the correct option(s) are **A, D**."
+      }
+    },
+    "pp:ee:2023:q17": {
+      "question_uid": "pp:ee:2023:q17",
+      "exam_uid": "ee:2023:set1:q17",
+      "title": "GATE EE 2023 | Set 1 | Question: 17",
+      "year": "gateee-2023-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Which of the following statement(s) is/are true?",
+      "options": [
+        "If an LTI system is causal, it is stable",
+        "A discrete time LTI system is causal if and only if its response to a step input $u[n]$ is 0 for $\\mathrm{n} \\lt 0$",
+        "If a discrete time LTI system has an impulse response $h[n]$ of finite duration the system is stable",
+        "If the impulse response $0 \\lt |h[n]| \\lt 1$ for all $n$, then the $L T I$ system is stable."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "For causal system, impuse response\n\n$h(n)=0 ; \\quad n \\lt 0$\n\nTherefore, for step input also\n\n$h(n)=0 ; n \\lt 0$\n\nTherefore, the correct option(s) are **B**."
+      }
+    },
+    "pp:ee:2023:q18": {
+      "question_uid": "pp:ee:2023:q18",
+      "exam_uid": "ee:2023:set1:q18",
+      "title": "GATE EE 2023 | Set 1 | Question: 18",
+      "year": "gateee-2023-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "The bus admittance $\\left(Y_{\\text {bus }}\\right)$ matrix of a 3-bus power system is given below.\n<br><br>\n\n$$\\begin{bmatrix}\n-j15 &j10  &j5 \\\\ \n j10& -j13.5 &j4 \\\\ \n j5& j4 & -j8\n\\end{bmatrix}$$\n<br><br>\n\n\nConsidering that there is no shunt inductor connected to any of the buses, which of the following can NOT be true?",
+      "options": [
+        "Line charging capacitor of finite value is present in all three lines",
+        "Line charging capacitor of finite value is present in line 2-3 only",
+        "Line charging capacitor of finite value is present in line 2-3 only and shunt capacitor of finite value is present in bus 1 only",
+        "Line charging capacitor of finite value is present in line 2-3 only and shunt capacitor of finite value is present in bus 3 only"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "performance-of-transmission-lines-line-parameters-and-corona",
+          "subtopicLabel": "Performance of Transmission Lines, Line Parameters and Corona"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "performance-of-transmission-lines-line-parameters-and-corona"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
+        "markdown": "From $Y_{\\text {Bus }}$ matrix\n\n$$\\begin{aligned}\n\n& y_{10}=-j 15+j 10+j 5=0 \\\\\n\n& y_{20}=j 10-j 13.5+j 4=j 0.5 \\\\\n\n& y_{30}=j 5+j 4-j 8=j 1\n\n\\end{aligned}$$\n\nPower system network :\n\n<img src=\"/question-images/ee/2023/ee-2023-e7c2e7a83d.webp\" />\n\nHence, option (A) and (C) will not be correct.\n\nTherefore, the correct option(s) are **A, C**."
+      }
+    },
+    "pp:ee:2023:q19": {
+      "question_uid": "pp:ee:2023:q19",
+      "exam_uid": "ee:2023:set1:q19",
+      "title": "GATE EE 2023 | Set 1 | Question: 19",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The value of parameters of the circuit shown in the figure are\n<br><br>\n$\\mathrm{R}_{1}=2 \\Omega, \\mathrm{R}_{2}=2 \\Omega, \\mathrm{R}_{3}=3 \\Omega, \\mathrm{L}=10 \\mathrm{mH}, \\mathrm{C}=100 \\mu \\mathrm{F}$\n<br><br>\nFor time $t \\lt 0$, the circuit is at steady state with the switch '$K$' in closed condition. If the switch is opened at $t=0$, the value of the voltage across the inductor $\\left(\\mathrm{V}_{\\mathrm{L}}\\right)$ at $t=0^{+}$in  Volts is _____ (Round off to 1 decimal place).<br><img src=\"/question-images/ee/2023/ee-2023-80b00e56be.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8",
+        "tolerance": {
+          "lower": 7.9,
+          "upper": 8.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "steady-state-ac-analysis",
+          "subtopicLabel": "Steady state AC Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "steady-state-ac-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Steady state AC Analysis",
+        "markdown": "Case (i) $\\mathbf{t} \\lt 1$\n\nAt steady state, capacitor behaves as open circuit and inductor behaves as short circuit.\n\nRedraw the circuit:\n\n<img src=\"/question-images/ee/2023/ee-2023-8b293f09fb.webp\" />\n\nUsing current division,\n\n$$\\begin{aligned}\n\n\\mathrm{i}_{\\mathrm{L}}\\left(0^{-}\\right) & =\\frac{3}{3+2} \\times 10=6 \\mathrm{~A} \\\\\n\n\\therefore \\quad \\mathrm{V}_{\\mathrm{C}}\\left(0^{-}\\right) & =5 \\times 2=12 \\mathrm{~V}\n\n\\end{aligned}$$\n\nCase (ii) $\\mathbf{t} \\gt 0$ :\n\nSwitch is opened.\n\n$\\because \\quad \\mathrm{V}_{\\mathrm{C}}\\left(0^{-}\\right)=\\mathrm{V}_{\\mathrm{C}}\\left(0^{+}\\right)=12 \\mathrm{~V}$\n\nand $\\quad \\mathrm{i}_{\\mathrm{L}}\\left(0^{-}\\right)=\\mathrm{i}_{\\mathrm{L}}\\left(0^{+}\\right)=6 \\mathrm{~A}$\n\nRedraw the circuit $\\mathrm{t}=0^{+}$:\n\n<img src=\"/question-images/ee/2023/ee-2023-ef1541a67f.webp\" />\n\nApply KVL in loop,\n\n$$\\begin{array}{rlrl}\n\n12+8-12-\\mathrm{V}_{\\mathrm{L}} & =0 \\\\\n\n\\Rightarrow & \\mathrm{V}_{\\mathrm{L}} & =8 \\mathrm{~V}\n\n\\end{array}$$\n\nTherefore, the correct answer is **8** (acceptable range: [7.9, 8.1])."
+      }
+    },
+    "pp:ee:2023:q20": {
+      "question_uid": "pp:ee:2023:q20",
+      "exam_uid": "ee:2023:set1:q20",
+      "title": "GATE EE 2023 | Set 1 | Question: 20",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A separately excited DC motor rated $400 \\mathrm{~V}, 15A, 1500 RPM$  drives a constant torque load at rated speed operating from $400 \\mathrm{~V}$ DC supply drawing rated current. The armature resistance is $1.2 \\Omega$. If the supply voltage drops by $10 \\%$ with field current unaltered then the resultant speed of the motor in RPM is ___ (Round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1342.5",
+        "tolerance": {
+          "lower": 1340,
+          "upper": 1345
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "Seperately excited motor :\n\n<img src=\"/question-images/ee/2023/ee-2023-65bea26271.webp\" />\n\nBack emf, $\\mathrm{E}_{\\mathrm{b}_{1}}=400-15 \\times 1.2=382 \\mathrm{~V}$\n\nGiven: $\\quad \\tau=$ constant\n\n$\\because \\quad \\tau \\propto \\phi I_{a}$\n\nwhere $\\phi \\rightarrow$ constant\n\n$\\therefore \\mathrm{I}_{\\mathrm{a}} \\rightarrow$ consant\n\nIf supply voltage is drops by $10 \\%$, then new value of supply voltage $=0.9 \\times 400=360 \\mathrm{~V}$\n\nNow, back emf, $\\mathrm{E}_{\\mathrm{b}_{2}}=360-15 \\times 1.2=342 \\mathrm{~V}$\n\nWe have,\n\n$$\\begin{aligned}\n\n\\mathrm{E}_{\\mathrm{b}} & =\\phi \\omega_{\\mathrm{m}} \\\\\n\n\\therefore \\quad \\frac{\\mathrm{E}_{\\mathrm{b}_{2}}}{\\mathrm{E}_{\\mathrm{b}_{1}}} & =\\frac{\\mathrm{N}_{2}}{\\mathrm{~N}_{1}} \\\\\n\n\\Rightarrow \\quad \\frac{342}{382} & =\\frac{\\mathrm{N}_{2}}{1500} \\\\\n\n\\Rightarrow \\quad \\mathrm{N}_{2} & =342.93 \\mathrm{rpm} \\\\ &\\approx 1343 \\mathrm{rpm}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1342.5** (acceptable range: [1340, 1345])."
+      }
+    },
+    "pp:ee:2023:q21": {
+      "question_uid": "pp:ee:2023:q21",
+      "exam_uid": "ee:2023:set1:q21",
+      "title": "GATE EE 2023 | Set 1 | Question: 21",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "For the signals $x(t)$ and $y(t)$ shown in the figure, $z(t)=x(t) * y(t)$ is maximum at $t=T_{1}$. Then $T_{1}$ in seconds is (Round off to the nearest integer).\r\n<br><img src=\"/question-images/ee/2023/ee-2023-d45bfaad4b.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "introduction-of-c-t-and-d-t-signals",
+          "subtopicLabel": "Introduction of C.T. and D.T. Signals"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "introduction-of-c-t-and-d-t-signals"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
+        "markdown": "Using convotution property\n\n$$\\begin{aligned}\n\nz(t) & =x(t) * y(t) \\\\\n\n& =\\int_{-\\infty}^{\\infty} \\mathrm{y}(\\tau) \\mathrm{x}(\\mathrm{t}-\\tau) \\mathrm{d} \\tau\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2023/ee-2023-6a04f3b2e4.webp\" />\n\nFor max. overlap\n\n<img src=\"/question-images/ee/2023/ee-2023-c68ee8aafa.webp\" />\n\n$$\\begin{aligned}\n\n\\therefore  \\quad -1+t&=3\\\\\n\n\\Rightarrow \\quad t&=4 sec \\\\\n\nor, \\quad \\quad T_1&=4 sec\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4**."
+      }
+    },
+    "pp:ee:2023:q22": {
+      "question_uid": "pp:ee:2023:q22",
+      "exam_uid": "ee:2023:set1:q22",
+      "title": "GATE EE 2023 | Set 1 | Question: 22",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "For the circuit shown in the figure, $\\mathrm{V}_{1}=8 \\mathrm{~V},$  DC and $I_{1}=8 A$, DC. The voltage $V_{a b}$ in  Volts is ___ (Round off to 1 decimal place).\n<br><img src=\"/question-images/ee/2023/ee-2023-76c1e09230.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "6",
+        "tolerance": {
+          "lower": 5.9,
+          "upper": 6.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "basics-of-electric-circuit",
+          "subtopicLabel": "Basics of Electric Circuit"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "basics-of-electric-circuit"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Basics of Electric Circuit",
+        "markdown": "Reraw the circuit:\n\n<img src=\"/question-images/ee/2023/ee-2023-d4801f8b06.webp\" />\n\nNow, using voltage division,\n\n$\\mathrm{V}_{\\mathrm{ab}}=\\frac{1.5 \\times 8}{1.5+0.5}=6 \\mathrm{~V}$\n\nTherefore, the correct answer is **6** (acceptable range: [5.9, 6.1])."
+      }
+    },
+    "pp:ee:2023:q23": {
+      "question_uid": "pp:ee:2023:q23",
+      "exam_uid": "ee:2023:set1:q23",
+      "title": "GATE EE 2023 | Set 1 | Question: 23",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A $50 \\mathrm{~Hz}, 275 \\mathrm{kV}$ line of length $400 \\mathrm{~km}$ has the following parameters:\n<br><br>\nResistance, $R=0.035 \\Omega / \\mathrm{km}$;\n<br>\nInductance, $\\mathrm{L}=1 \\mathrm{mH} / \\mathrm{km}$;\n<br>\nCapacitance, $\\mathrm{C}=0.01 \\mu \\mathrm{F} / \\mathrm{km}$;\n<br><br>\nThe line is represented by the nominal $-\\pi$ model. With the magnitudes of the sending end and the receiving end voltages of the line (denoted by $V_{S}$ and $V_{R}$, respectively) maintained at 275 $\\mathrm{kV}$, the phase angle difference $(\\theta)$ between $V_{S}$ and $V_{R}$ required for maximum possible active power to be delivered to the receiving end, in degree is ____ (Round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "83.5",
+        "tolerance": {
+          "lower": 83,
+          "upper": 84
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "performance-of-transmission-lines-line-parameters-and-corona",
+          "subtopicLabel": "Performance of Transmission Lines, Line Parameters and Corona"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "performance-of-transmission-lines-line-parameters-and-corona"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
+        "markdown": "We have,\n\n$\\mathrm{P}_{\\mathrm{R}}=\\frac{\\mathrm{V}_{\\mathrm{S}} \\mathrm{V}_{\\mathrm{R}}}{\\mathrm{B}} \\cos (\\beta-\\delta)-\\frac{\\mathrm{AV}_{\\mathrm{R}}^{2}}{\\mathrm{~B}} \\cos (\\beta-\\alpha)$\n\nAt max. power,\n\n$\\delta=\\beta$\n\nwhere, $\\beta=$ angle of T-parameter of $B$.\n\n$\\pi$-Model :\n\n<img src=\"/question-images/ee/2023/ee-2023-d926de2fb9.webp\" />\n\n$$[T]=\\begin{bmatrix}\n\n1+\\frac{yz}{2} &z  \\\\\n\ny\\left ( 1+ \\frac{yz}{4}\\right )& 1+ \\frac{yz}{2}\\\\\n\n\\end{bmatrix}=\\begin{bmatrix}\n\nA & B\\\\\n\nC&D\n\n\\end{bmatrix}$$\n\n$\\therefore  \\quad B=z$\n\n$=(0.035 \\times 400)+j(2 \\pi \\times 50 \\times 10^{-3} \\times 400) = 126.44\\angle 83.643^{\\circ}\\Omega$\n\nTherefore, the correct answer is **83.5** (acceptable range: [83, 84])."
+      }
+    },
+    "pp:ee:2023:q24": {
+      "question_uid": "pp:ee:2023:q24",
+      "exam_uid": "ee:2023:set1:q24",
+      "title": "GATE EE 2023 | Set 1 | Question: 24",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the following differential equation, the numerically obtained value of $y(t)$, at $t=1$, is ___ (Round off to 2 decimal places).\r\n<br>\r\n<br>\r\n$\\frac{d y}{d t}=\\frac{e^{-\\alpha t}}{2+\\alpha \\mathrm{t}}, \\alpha=0.01 \\text { and } y(0)=0$",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.5",
+        "tolerance": {
+          "lower": 0.48,
+          "upper": 0.52
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "Given :\n\n$\\frac{d y}{d t}=\\frac{e^{-\\alpha t}}{2+\\alpha t}$\n\n$\\alpha=0.01$ and $y(0)=0$\n\n$$\\begin{aligned}\n\n\\left.\\frac{d^{2} y}{d t^{2}}\\right|_{\\mathrm{t}=0} & =y^{\\prime \\prime}(0) \\\\\n\n& =-\\frac{\\alpha e^{-\\alpha t}}{2+\\alpha \\mathrm{T}}-\\left.\\frac{\\alpha e^{-\\alpha t}}{(2+\\alpha \\mathrm{t})^{2}}\\right|_{\\mathrm{t}=0} \\\\\n\n& =-\\frac{\\alpha}{2}-\\frac{\\alpha}{4}=-\\frac{3 \\alpha}{4}\n\n\\end{aligned}$$\n\nWe know,\n\nTaylor's series\n\n$$\\begin{aligned}\n\ny(t) & =y(0)+y^{\\prime}(0)+\\frac{t^{2} y^{\\prime \\prime}(0)}{2 !}+\\ldots \\\\\n\n& =0+t\\left(\\frac{1}{2}\\right)+\\frac{t^{2}}{2}\\left(-\\frac{3 \\alpha}{4}\\right) \\\\\n\n& =\\frac{t}{2}-\\frac{3}{8} \\alpha t^{2}\n\n\\end{aligned}$$\n\nAt $\\mathrm{t}=1$\n\n$$\\begin{aligned}\n\ny(1) & =\\frac{1}{2}-\\frac{3}{8}(0.01) \\times 1^{2} \\\\\n\n& =0.5-\\frac{3}{8} \\times 0.01 \\\\\n\n& =0.496 \\approx 0.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0.48, 0.52])."
+      }
+    },
+    "pp:ee:2023:q25": {
+      "question_uid": "pp:ee:2023:q25",
+      "exam_uid": "ee:2023:set1:q25",
+      "title": "GATE EE 2023 | Set 1 | Question: 25",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Three points in the $x-y$ plane are $(-1,0.8)$ $(0,2.2)$ and $(1,2.8)$. The value of the slope of the best fit straight line in the least square sense is ___  (Round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1",
+        "tolerance": {
+          "lower": 0.9,
+          "upper": 1.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "Straight line equation, $y=a x+b$ [Let]\n\nwhere, $a=$ slope\n\nBy lest approximation,\n\n$\\sum \\mathrm{y}_{i}=a \\sum \\mathrm{x}_{\\mathrm{i}}+\\mathrm{bn}$\n\nand $\\quad \\sum x_{i} y_{i}=a \\sum x_{1}^{2}+b \\sum x_{i}$\n\n$$\\begin{array}{|c|c|c|c|}\n\n\\hline\n\nx & y & x^{2} & xy \\\\\n\n\\hline\n\n-1 & 0.8 & 1 & -0.8 \\\\\n\n0 & 2.2 & 0 & 0 \\\\\n\n1 & 2.8 & 1 & 2.8 \\\\\n\n\\hline\n\n\\sum x=0 & \\sum y=5.8 &\\sum x^{2}=2 & \\sum x y=2 \\\\\n\n\\hline\n\n\\end{array}$$\n\nFrom eqn. (1), we get\n\n$$\\begin{aligned}\n\n5.8 & =a(0)+3 b \\Rightarrow 5.8=3 b \\\\\n\n2 & =a(2)+b(0) \\\\\n\n\\Rightarrow \\quad a & =1\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1** (acceptable range: [0.9, 1.1])."
+      }
+    },
+    "pp:ee:2023:q26": {
+      "question_uid": "pp:ee:2023:q26",
+      "exam_uid": "ee:2023:set1:q26",
+      "title": "GATE EE 2023 | Set 1 | Question: 26",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The magnitude and phase plots of an LTI system are shown in the figure. The transfer function of the system is\n<br><img src=\"/question-images/ee/2023/ee-2023-1efe6780c9.webp\" /><br>",
+      "options": [
+        "$2.51 \\mathrm{e}^{-0.032 \\mathrm{~s}}$",
+        "$\\frac{\\mathrm{e}^{-2.514 \\mathrm{~s}}}{\\mathrm{~s}+1}$",
+        "$1.04 \\mathrm{e}^{-2.514 \\mathrm{~s}}$",
+        "$2.51 e^{-1.047\\mathrm{~s}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "mathematical-models-of-physical-systems",
+          "subtopicLabel": "Mathematical Models of Physical Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "mathematical-models-of-physical-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "Transfer function of transportation lag system,\n\n$\\mathrm{T}(\\mathrm{s})=\\mathrm{Ke}^{-\\mathrm{ST} T_{\\mathrm{d}}}$\n\nFrom magnitude plot,\n\n$$\\begin{aligned}\n\n& 20 \\log \\mathrm{K}=8 \\\\\n\n& \\Rightarrow \\quad \\mathrm{K}=2.51\n\n\\end{aligned}$$\n\nFrom angle plot,\n\nat $\\omega=1 \\mathrm{rad} / \\mathrm{sec} ., \\theta=-60^{\\circ}$\n\nWe have,\n\n$$\\begin{aligned}\n\n\\theta & =-\\omega \\mathrm{T}_{\\mathrm{d}} \\times \\frac{180^{\\circ}}{\\pi} \\\\\n\n-60^{\\circ} & =-1 \\times \\mathrm{T}_{\\mathrm{d}} \\times \\frac{180^{\\circ}}{\\pi} \\\\\n\n\\Rightarrow \\quad \\mathrm{T}_{\\mathrm{d}} & =\\frac{\\pi}{3}=1.047 \\\\\n\n\\therefore \\quad \\mathrm{T}(\\mathrm{s}) & =2.51 \\mathrm{e}^{-1.047\\mathrm{~s}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q27": {
+      "question_uid": "pp:ee:2023:q27",
+      "exam_uid": "ee:2023:set1:q27",
+      "title": "GATE EE 2023 | Set 1 | Question: 27",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider the OP AMP based circuit shown in the figure. Ignore the conduction drops of diodes $D_{1}$ and $D_{2}$. All the components are ideal and the breakdown voltage of the Zener is $5 \\mathrm{~V}$. Which of the following statements is true?\n<br><img src=\"/question-images/ee/2023/ee-2023-212f0fdcec.webp\" /><br>",
+      "options": [
+        "The maximum and minimum values of the output voltage $\\mathrm{V}_{0}$ are $+15 \\mathrm{~V}$ and $-10 \\mathrm{~V}$, respectively.",
+        "The maximum and minimum values of the output voltage $\\mathrm{V}_{0}$ are $+5 \\mathrm{~V}$ and $-15 \\mathrm{~V}$, respectively.",
+        "The maximum and minimum values of the output voltage $\\mathrm{V}_{0}$ are $+10 \\mathrm{~V}$ and $-5 \\mathrm{~V}$, respectively.",
+        "The maximum and minimum values of the output voltage $\\mathrm{V}_{0}$ are $+5 \\mathrm{~V}$ and -10V, respectively"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "During positive hall cycle:\n\n$\\therefore \\mathrm{D}_{1} \\rightarrow \\mathrm{ON}$ and $\\mathrm{D}_{2} \\rightarrow \\mathrm{OFF}$\n\nRedraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-3faae14983.webp\" />\n\n$\\therefore V_0=-V_i$\n\n$\\quad (V_0)_{min}=-10V$\n\nDuring negative half cycle :\n\n$\\mathrm{V}^{+} \\gt \\mathrm{V}^{-}$\n\nZener diode $\\rightarrow$ ON, $\\mathrm{D}_{1} \\rightarrow$ OFF and $\\mathrm{D}_{2} \\rightarrow \\mathrm{ON}$\n\nRedraw the circuit:\n\n<img src=\"/question-images/ee/2023/ee-2023-88bdedbf11.webp\" />\n\n$\\therefore \\quad (V_0)_{max}=5V$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q28": {
+      "question_uid": "pp:ee:2023:q28",
+      "exam_uid": "ee:2023:set1:q28",
+      "title": "GATE EE 2023 | Set 1 | Question: 28",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a lead compensator of the form\n<br><br>\n\n$K(s)=\\frac{1+\\frac{s}{a}}{1+\\frac{s}{\\beta a}}, \\quad \\beta \\gt 1, a \\gt 0$\n<br><br>\nThe frequency at which this compensator produces maximum phase lead is $4 \\mathrm{rad} / \\mathrm{s}$. At this frequency, the gain amplification provided by the controller, assuming asymptotic Bodemagnitude plot of $K(\\mathrm{~s})$, is $6 \\mathrm{~dB}$. The values of $\\alpha, \\beta$, respectively, are",
+      "options": [
+        "1, 16",
+        "2, 4",
+        "3, 5",
+        "2.66, 2.25"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "$K(s)=\\frac{1+\\frac{s}{a}}{1+\\frac{s}{\\beta}}$\n\nMax. phase lead occur at, $\\omega_{m}=\\sqrt{a(a \\beta)}$\n\n$=\\sqrt{\\beta}$\n\nGiven : $\\quad \\omega_{\\mathrm{m}}=4 \\mathrm{rad} / \\mathrm{sec}$\n\n$a \\sqrt{\\beta}=4   \\quad ...(1)$\n\nNow, $\\quad K(s)=\\frac{1+\\frac{s}{a}}{1+\\frac{s}{\\beta a}}$\n\nPut, $s=j \\omega$\n\n$\\mathrm{K}\\left(\\mathrm{j} \\omega_{\\mathrm{n}}\\right)=\\frac{1+\\frac{\\mathrm{j} \\omega_{m}}{a}}{1+\\frac{j \\omega_{m}}{\\beta a}}=\\frac{j w_{m}}{a}$\n\nGiven : $M=6$\n\n$$\\begin{aligned}\n\n20 \\log \\left(\\frac{4}{a}\\right) & =6 \\\\\n\n\\Rightarrow \\quad a & =2\n\n\\end{aligned}$$\n\nFrom eqn. (1), we get\n\n$$\\begin{aligned}\n\n2 \\sqrt{\\beta} & =4 \\\\\n\n\\beta & =4\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q29": {
+      "question_uid": "pp:ee:2023:q29",
+      "exam_uid": "ee:2023:set1:q29",
+      "title": "GATE EE 2023 | Set 1 | Question: 29",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A 3-phase, star-connected, balanced load is supplied from a 3-phase, 400V (rms), balanced voltage source with phase sequence $R-Y-B$, as shown in the figure. If the wattmeter reading is $-400 \\mathrm{~W}$ and the line current is $\\mathrm{I}_{\\mathrm{R}}=2 \\mathrm{~A}(\\mathrm{rms})$, then the power factor of the load per phase is\n<br><img src=\"/question-images/ee/2023/ee-2023-f0068f6158.webp\" /><br>",
+      "options": [
+        "Unity",
+        "0.5 leading",
+        "0.866 leading",
+        "0.707 lagging"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "measurement-of-energy-and-power",
+          "subtopicLabel": "Measurement of Energy and Power"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "measurement-of-energy-and-power"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
+        "markdown": "By observation of wattmeter connection, the wattmeter read reactive power\n\n$\\because$ Wattmeter reading,\n\n$W=Y_{Y B} I_{R}$ (Angle between $V_{Y B}$ and $I_{R}$.\n\nPhasor diagram :\n\n<img src=\"/question-images/ee/2023/ee-2023-091554f220.webp\" />\n\n$\\therefore \\quad W=V_{\\mathrm{L}} \\mathrm{I}_{\\mathrm{L}} \\cos \\left(90^{\\circ}-\\beta\\right)$\n\n$=V_{L} I_{L} \\sin \\phi$\n\nGiven: $\\quad W=-400 \\mathrm{~W}$\n\n$\\therefore \\quad-400=400 \\times 2 \\times \\sin \\phi$\n\n$\\Rightarrow \\quad \\phi=-30^{\\circ}$\n\nThus, P.F. $=\\cos \\phi=0.866$ leading\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2023:q30": {
+      "question_uid": "pp:ee:2023:q30",
+      "exam_uid": "ee:2023:set1:q30",
+      "title": "GATE EE 2023 | Set 1 | Question: 30",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An 8-bit ADC converts analog voltage in the range of 0 to $+5 \\mathrm{~V}$ to the corresponding digital code as per the conversion characteristics shown in figure. For $\\mathrm{V}_{\\text {in }}=1,9922 \\mathrm{~V}$, which of the following digital output, given in hex is true?\n<br><img src=\"/question-images/ee/2023/ee-2023-8848df9749.webp\" /><br>",
+      "options": [
+        "$64 \\mathrm{H}$",
+        "$65 \\mathrm{H}$",
+        "$66 \\mathrm{H}$",
+        "$67 \\mathrm{H}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "a-d-and-d-a-converters",
+          "subtopicLabel": "A-D and D-A Converters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "a-d-and-d-a-converters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - A-D and D-A Converters",
+        "markdown": "Resolution $=\\frac{V_{F S}}{2^{n}-1}=\\frac{5}{2^{8}-1}=0.0196 \\mathrm{~V}$\n\nNow, No. of step $=\\frac{\\mathrm{V}_{\\text {in }}}{\\text { Resolution }}$\n\n$=\\frac{1.9922}{0.0196}=(101.64)_{10}$\n\nFor $(101)_{10}$ the analog input is less than $1.9922 \\mathrm{~V}$.\n\nSo, here we take $(102)_{10}$.\n\n$\\therefore \\quad(102)_{10}=66 \\mathrm{H}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2023:q31": {
+      "question_uid": "pp:ee:2023:q31",
+      "exam_uid": "ee:2023:set1:q31",
+      "title": "GATE EE 2023 | Set 1 | Question: 31",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The three-bus power system shown in the figure has one alternator connected to bus 2 which supplies $200 \\mathrm{MW}$ and $40 MVAR$ power. Bus 3 is infinite bus having a voltage of magnitude $\\left|\\mathrm{V}_{3}\\right|=1.0$ p.u. and angle of $-15^{\\circ}$. A variable current source, $|1| \\angle \\phi$ is connected at bus 1 and controlled such that the magnitude of the bus 1 voltage is maintained at 1.05 p.u. and the phase angle of the source current, $\\phi=\\theta_{1} \\pm \\frac{\\pi}{2}$, where $\\theta_{1}$ is the phase angle of the bus 1 voltage. The three buses can be categorized for load flow analysis as\r\n<br><img src=\"/question-images/ee/2023/ee-2023-7e7e8439f7.webp\" /><br>",
+      "options": [
+        "Bus 1  Slack bus<br>Bus 2  $P-|V|$ bus<br>Bus 3  $P-Q$ bus",
+        "Bus 1  $P-|V|$ bus<br>Bus 2  $P-|V|$ bus<br>Bus 3 Slack bus",
+        "Bus 1 $P-Q$ bus<br>Bus 2 $P-Q$ bus<br>Bus 3 Slack bus",
+        "Bus 1 $P-|V|$ bus<br>Bus 2 $P-Q$ bus<br>Bus 3 Slack bus"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "load-flow-studies"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "Concept : Classification of Bus system :\n\n$$\\begin{array}{|c|c|c|}\n\n\\hline \\\\\n\n\\textbf{Bus Type} & \\textbf{Specified} & \\textbf{Unspecified} \\\\\n\n&\\textbf{Value}  &\\textbf{Value} \\\\\n\n\\hline\n\n\\text{Slack Bus} & |\\mathrm{V}|, \\delta &\\mathrm{P}, \\mathrm{Q} \\\\\n\n\\text{PV Bus} &\\mathrm{P},|\\mathrm{V}| & \\mathrm{Q}, \\delta \\\\\n\n\\text{PQ (load) Bus} & \\mathrm{P}, \\mathrm{Q} & |\\mathrm{V}|, \\delta \\\\\n\n\\hline\n\n\\end{array}$$\n\nNow, from given power system network.\n\nBus-1 $\\Rightarrow$ PV bus\n\nBus-2 $\\Rightarrow \\mathrm{PQ}$ (load) bus\n\nBus-3 $\\Rightarrow$ Slack bus\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q32": {
+      "question_uid": "pp:ee:2023:q32",
+      "exam_uid": "ee:2023:set1:q32",
+      "title": "GATE EE 2023 | Set 1 | Question: 32",
+      "year": "gateee-2023-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "Consider the following equation in a 2-D realspace.\n<br><br>\n\n$\\left|x_{1}\\right|^{p}+\\left|x_{2}\\right|^{p}=1$ for $p \\gt 0$\n<br><br>\nWhich of the following statement(s) is/are true.",
+      "options": [
+        "When $\\mathrm{p}=2$, the area enclosed by the curve is $\\pi$.",
+        "When $p$ tends to $\\infty$, the area enclosed by the curve tends to 4.",
+        "When $p$ tends to 0 , the area enclosed by the curve is 1.",
+        "When $p=1$, the area enclosed by the curve is 2."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Check option (A),\n\nput $P=2$\n\n$x_{1}^{2}+x_{2}^{2}=1$\n\nWhich is equation of circle whose radius is 1 .\n\n$\\therefore \\quad$ Area $=\\pi r^{2}=\\pi$\n\nCheck option (B),\n\nIf $x_{2} \\lt 1$ Then, $P \\rightarrow \\infty,\\left|x_{2}\\right|^{P} \\rightarrow 0$\n\n$\\therefore$ For equation $\\left|x_{1}\\right|^{\\mathrm{P}}+\\left|\\mathrm{x}_{2}\\right|^{\\mathrm{P}}=1$ satisfaction,\n\n$\\mathrm{x}_{1} \\rightarrow 1 \\text { or } \\dot{Y}$\n\nCurve :\n\n<img src=\"/question-images/ee/2023/ee-2023-b9bea3e852.webp\" />\n\n$\\therefore$ Area tends to 4 .\n\nCheck option (D),\n\nPut $P=1$,\n\n$\\left|x_{1}\\right|+\\left|\\mathrm{x}_{2}\\right|=1$\n\nCurve:\n\n<img src=\"/question-images/ee/2023/ee-2023-fd2e9cbc10.webp\" />\n\n$\\therefore$ Area of curve (square) $=(\\sqrt{2})^{2}=2$\n\nTherefore, the correct option(s) are **A, B, D**."
+      }
+    },
+    "pp:ee:2023:q33": {
+      "question_uid": "pp:ee:2023:q33",
+      "exam_uid": "ee:2023:set1:q33",
+      "title": "GATE EE 2023 | Set 1 | Question: 33",
+      "year": "gateee-2023-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "In the figure, the electric field $E$ and the magnetic field $B$ point to $\\mathrm{x}$ and $\\mathrm{z}$ directions, respectively, and have constant magnitudes. $A$ positive charge '$q$' is released from rest at the origin. Which of the following statement(s) is/ are true.\n<br><img src=\"/question-images/ee/2023/ee-2023-11281ffa98.webp\" /><br>",
+      "options": [
+        "The charge will move in the direction of $z$ with constant velocity.",
+        "The charge will al ways move on the $y$-z plane only.",
+        "The trajectory of the charge will be a cycle.",
+        "The charge will progress in the direction of $y$."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-theory",
+          "subjectLabel": "Electromagnetic Theory",
+          "subtopicSlug": "coordinate-systems-and-vector-calculus",
+          "subtopicLabel": "Coordinate Systems and Vector Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-theory",
+          "coordinate-systems-and-vector-calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Theory - Coordinate Systems and Vector Calculus",
+        "markdown": "<b>As per Answer key of IIT Official : MTA (Marks to All)</b>\n\nGiven :\n\nTherefore, the correct option(s) are **A**."
+      }
+    },
+    "pp:ee:2023:q34": {
+      "question_uid": "pp:ee:2023:q34",
+      "exam_uid": "ee:2023:set1:q34",
+      "title": "GATE EE 2023 | Set 1 | Question: 34",
+      "year": "gateee-2023-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "All the elements in the circuit shown in the following figure are ideal. Which of the following statements is/are true?\n<br><img src=\"/question-images/ee/2023/ee-2023-a74f65e92c.webp\" /><br>",
+      "options": [
+        "When switch $S$ is $O N$, both $D_{1}$ and $D_{2}$ conducts and $D_{3}$ is reverse biased",
+        "When switch $\\mathrm{S}$ is ON, $\\mathrm{D}_{1}$ conducts and both $D_{2}$ and $D_{3}$ are reverse biased",
+        "When switch $S$ is OF $F, D_{1}$ is reverse biased and both $D_{2}$ and $D_{3}$ conduct",
+        "When switch $S$ is OFF, $D_{1}$ conducts, $D_{2}$ is reverse biased and $D_{3}$ conducts"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "bjt-fet-and-their-biasing-circuits",
+          "subtopicLabel": "BJT, FET and their Biasing Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "bjt-fet-and-their-biasing-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
+        "markdown": "Case (i): Switch $\\mathrm{S}$ is ON\n\nAssume $\\mathrm{D}_{3} \\rightarrow$ OFF, $D_{2} \\rightarrow$ OFF and $\\mathrm{D}_{1} \\rightarrow \\mathrm{ON}$\n\nRedraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-005c677f7f.webp\" />\n\n$\\therefore$ Our assumption is correct.\n\nCase (ii) : Switch $\\mathrm{S}$ is OFF.\n\nThen, $\\mathrm{D}_{3} \\rightarrow \\mathrm{ON}, \\mathrm{D}_{2} \\rightarrow \\mathrm{ON}$ and $\\mathrm{D}_{1} \\rightarrow \\mathrm{OFF}$\n\nRedraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-ba36ddb13b.webp\" />\n\n$\\therefore$ Circuit satisfy this condition also.\n\nHence, option (B) and (C) will be correct.\n\nTherefore, the correct option(s) are **B, C**."
+      }
+    },
+    "pp:ee:2023:q35": {
+      "question_uid": "pp:ee:2023:q35",
+      "exam_uid": "ee:2023:set1:q35",
+      "title": "GATE EE 2023 | Set 1 | Question: 35",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The expected number of trials for first occurrence of a \"head\" in a biased coin is known to be 4. The probability of first occurrence of a \"head\" in the second trial is  ___ (Round off to 3 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.1875",
+        "tolerance": {
+          "lower": 0.187,
+          "upper": 0.188
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "probability-and-statistics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "Let probability of head $=\\mathrm{P}$\n\nLet probability of Tail $=q=P-1$\n\n$$\\begin{array}{|c|c|c|c|c|}\n\n\\hline\n\nTrial & 1 & 2 & 3 & ... \\\\\n\n\\hline\n\nProbability & [\\mathrm{P} & \\mathrm{qP} & [latex]\\mathrm{q}^{2} \\mathrm{P} & .... \\\\\n\n\\hline\n\n\\end{array}$$\n\n$\\therefore$ Expected No. of trail\n\n$$\\begin{aligned}\n\n& =\\sum_{n=1}^{\\infty} p+2 P q+3 q^{2} P+\\ldots \\\\\n\n& =P\\left(1+2 q+3 q^{2}+\\ldots\\right) \\\\\n\n& =P(1-q)^{-2} \\\\\n\n& =\\frac{P}{P^{2}}=\\frac{1}{P}\n\n\\end{aligned}$$\n\nGiven : Trial $=4$\n\n$\\frac{1}{P}=4 \\Rightarrow P=\\frac{1}{4}$\n\n$\\therefore \\quad \\mathrm{q}=\\frac{3}{4}$\n\nNow, probability of head for second trail.\n\n$$\\begin{aligned}\n\n& =\\mathrm{qP} \\\\\n\n& =\\frac{3}{4} \\times \\frac{1}{4}=\\frac{3}{16}=0.1875\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.1875** (acceptable range: [0.187, 0.188])."
+      }
+    },
+    "pp:ee:2023:q36": {
+      "question_uid": "pp:ee:2023:q36",
+      "exam_uid": "ee:2023:set1:q36",
+      "title": "GATE EE 2023 | Set 1 | Question: 36",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the state-space description of an LTI system with matrices\n<br><br>\n$$A=\\left[\\begin{array}{cc}0 & 1 \\\\ -1 & -2\\end{array}\\right], B=\\left[\\begin{array}{l}0 \\\\ 1\\end{array}\\right], C=[3-2], D=1$$\n<br><br>\nFor the input, $\\sin (\\omega t), \\omega \\gt 0$, the value of $\\omega$ for which the steady-state output of the system will be zero, is ___ (Round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-variable-analysis",
+          "subtopicLabel": "State Variable Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "state-variable-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Variable Analysis",
+        "markdown": "We have, transfer function\n\n$\\mathrm{T}(\\mathrm{s})=\\mathrm{C}[\\mathrm{SI}-\\mathrm{A}]^{-1} \\mathrm{~B}+\\mathrm{D} \\quad (1)$\n\nwhere, $$[S I-A]=\\left[\\begin{array}{ll}S & 0 \\\\ 0 & S\\end{array}\\right]-\\left[\\begin{array}{cc}0 & 1 \\\\ -1 & -2\\end{array}\\right]$$\n\n$$\\begin{aligned}\n\n& =\\left[\\begin{array}{cc}\n\n\\mathrm{s} & -1 \\\\\n\n1 & \\mathrm{~s}+2\n\n\\end{array}\\right] \\\\\n\n\\therefore \\quad[\\mathrm{sl}-\\mathrm{A}]^{-1} & =\\frac{1}{\\mathrm{~s}^{2}+2 \\mathrm{~s}+1}\\left[\\begin{array}{cc}\n\n\\mathrm{s}+2 & 1 \\\\\n\n-1 & \\mathrm{~s}\n\n\\end{array}\\right]\n\n\\end{aligned}$$\n\nFrom eqn. (1), we get\n\n$$\\begin{aligned}\n\n\\mathrm{T}(\\mathrm{s})&=\\left[\\begin{array}{ll}\n\n3 & -2\n\n\\end{array}\\right]\\left[\\begin{array}{cc}\n\n\\frac{\\mathrm{s}+2}{(\\mathrm{~s}+1)^{2}} & \\frac{1}{(s+1)^{2}} \\\\\n\n-\\frac{1}{(s+1)^{2}} & \\frac{s}{(s+1)^{2}}\n\n\\end{array}\\right]\\left[\\begin{array}{l}\n\n0 \\\\\n\n1\n\n\\end{array}\\right]+1 \\\\\n\n&=\\left[\\begin{array}{ll}\n\n3 & -2\n\n\\end{array}\\right]\\left[\\begin{array}{c}\n\n\\frac{1}{(s+1)^{2}} \\\\\n\n\\frac{s}{(s+1)^{2}}\n\n\\end{array}\\right]+1 \\\\\n\n&=\\frac{3}{(s+1)^{2}}-\\frac{2 s}{(s+1)}+1 \\\\\n\n&=\\frac{3-2 s+s^{2}+2 s+1}{s^{2}+2 s+1} \\\\\n\n&=\\frac{s^{2}+4}{s^{2}+2 s+1}\n\n\\end{aligned}$$\n\nPut, $s=j \\omega$,\n\n$T(j \\omega)=\\frac{-\\omega^{2}+4}{-\\omega^{2}+\\mathrm{j} 2 \\omega+1}$\n\nNow, condition for output is zero,\n\n$$\\begin{aligned}\n\n-\\omega^{2}+4 & =0 \\\\\n\n\\Rightarrow \\quad \\omega & =2 \\mathrm{rad} / \\mathrm{sec} .\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ee:2023:q37": {
+      "question_uid": "pp:ee:2023:q37",
+      "exam_uid": "ee:2023:set1:q37",
+      "title": "GATE EE 2023 | Set 1 | Question: 37",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A three-phase synchronous motor with synchronous impedance of $0.1+j0.3$  per unit per phase has a static stability limit of 2.5 per unit. The corresponding excitation voltage in per unit is ____ (Round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.585",
+        "tolerance": {
+          "lower": 1.58,
+          "upper": 1.59
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "Developed power for motor,\n\n$P_{d e v}=\\frac{V_{f}}{Z_{s}} \\cos \\left(\\theta_{s}-\\delta\\right)-\\frac{E_{F}^{2}}{2} \\cos \\theta_{s}$\n\nAt max. power developed,\n\n$\\delta=\\theta_{\\mathrm{S}}$\n\nand this is decide steady state stability of motor.\n\n$\\therefore \\mathrm{SSSL}, \\mathrm{P}_{\\text {dev }(max)}=\\frac{V E_{F}}{\\mathrm{Z}_{\\mathrm{S}}}-\\frac{\\mathrm{E}_{\\mathrm{F}}^{2}}{\\mathrm{Z}_{\\mathrm{S}}} \\cos \\theta_{\\mathrm{s}}$\n\nwhere, $V=1.0 \\mathrm{pu}$\n\n$\\mathrm{Z}_{\\mathrm{S}}=0.1+\\mathrm{j} 0.3=0.316 \\angle 71.6^{\\circ} \\mathrm{pu}$\n\nand $\\mathrm{SSSL}=2.5$\n\n$\\therefore \\quad 2.5=\\frac{1 \\times E_{F}}{0.316}-\\frac{E_{F}^{2}}{0.316} \\cos 71.56^{\\circ}$\n\n$1.001 \\mathrm{E}_{F}^{2}-3.16 \\mathrm{E}_{F}+2.5=0$\n\n$\\Rightarrow \\quad \\mathrm{E}_{\\mathrm{F}}=1.595 \\mathrm{pu}$\n\nTherefore, the correct answer is **1.585** (acceptable range: [1.58, 1.59])."
+      }
+    },
+    "pp:ee:2023:q38": {
+      "question_uid": "pp:ee:2023:q38",
+      "exam_uid": "ee:2023:set1:q38",
+      "title": "GATE EE 2023 | Set 1 | Question: 38",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A three phase $415 \\mathrm{~V}, 50 \\mathrm{~Hz}, 6-pole, 960 RPM, 4 HP$ squirrel cage induction motor drives a constant torque load at rated speed operating from rated supply and delivering rated output. If the supply voltage and frequency are reduced by $20 \\%$ the resultant speed of the motor in RPM (neglecting the stator leakage impednace and rotational losses) is ____ (Round off to the nearest integer)",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "760",
+        "tolerance": {
+          "lower": 760,
+          "upper": 760
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "three-phase-induction-machines",
+          "subtopicLabel": "Three Phase Induction Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "three-phase-induction-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Three Phase Induction Machines",
+        "markdown": "Given : Torque is constant.\n\nWe have, $\\quad \\tau \\propto \\frac{s V^{2}}{f}  \\quad ...(1)$\n\nSynchronous speed, $N_{S}=\\frac{120 f}{P}$\n\n$=\\frac{120 \\times 50}{6}=1000 \\mathrm{rpm}$\n\n$\\text { Slip, } S=\\frac{1000-960}{1000}=0.04$\n\nNow, from eqn. (1), we get\n\n$$\\begin{aligned}\n\n\\frac{0.04 \\times \\mathrm{V}^{2}}{\\mathrm{~F}} & =\\frac{\\mathrm{S}_{\\text {new }} \\times(0.8)^{2} \\mathrm{~V}}{0.8 \\mathrm{~F}} \\\\\n\n\\Rightarrow \\quad \\mathrm{S}_{\\text {new }} & =0.05\n\n\\end{aligned}$$\n\nSynchronous speed at reduced frequency i.e. $50 \\times 0.8=40 \\mathrm{~Hz}$.\n\n$\\mathrm{N}_{\\mathrm{s}(\\mathrm{new})}=\\frac{120 \\times 40}{6}=800 \\mathrm{rpm}$\n\n$\\therefore$ Motor speed,\n\n$$\\begin{aligned}\n\n\\mathrm{N}&=\\left(1-\\mathrm{S}_{\\text {new }}\\right) \\mathrm{N}_{\\mathrm{s} \\text { (new) }}\n\n& =(1-0.05) \\times 800 \\\\\n\n& =760 \\mathrm{rpm}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **760**."
+      }
+    },
+    "pp:ee:2023:q39": {
+      "question_uid": "pp:ee:2023:q39",
+      "exam_uid": "ee:2023:set1:q39",
+      "title": "GATE EE 2023 | Set 1 | Question: 39",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The period of the discrete-time signal $x[n]$ described by the equation below is $N=$ ___ (Round off to the nearest integer).<br><br>\n$x[n]=1+3 \\sin \\left(\\frac{15 \\pi}{8} n+\\frac{3 \\pi}{4}\\right)-5 \\sin \\left(\\frac{\\pi}{3} n-\\frac{\\pi}{4}\\right)$",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "48",
+        "tolerance": {
+          "lower": 48,
+          "upper": 48
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "introduction-of-c-t-and-d-t-signals",
+          "subtopicLabel": "Introduction of C.T. and D.T. Signals"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "introduction-of-c-t-and-d-t-signals"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
+        "markdown": "Given :\n\n$x[n]=1+3 \\sin \\left(\\frac{15 \\pi}{8} n+\\frac{3 \\pi}{4}\\right)-5 \\sin \\left(\\frac{\\pi}{3} n-\\frac{\\pi}{4}\\right)$\n\n$$\\begin{aligned}\n\n\\omega_{1}&=\\frac{15 \\pi}{8} \\\\\n\n\\therefore \\quad \\mathrm{N}_{1}&=\\frac{2 \\pi}{\\omega_{1}} \\mathrm{~K}-=\\frac{2 \\pi}{15 \\pi} \\times 8 \\times \\mathrm{K}=16 \\\\\n\n\\text { and } \\quad \\mathrm{N}_{2}&=\\frac{2 \\pi}{\\omega_{2}} \\mathrm{~K}=\\frac{2 \\pi}{\\pi} \\times 3 \\times \\mathrm{K}=6 \\\\\n\n\\therefore \\quad \\text { Period }&=\\operatorname{LCM}\\left(\\mathrm{N}_{1}, \\mathrm{~N}_{2}\\right) \\\\\n\n&=\\operatorname{LCM}(16,6) \\\\\n\n&=48\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **48**."
+      }
+    },
+    "pp:ee:2023:q40": {
+      "question_uid": "pp:ee:2023:q40",
+      "exam_uid": "ee:2023:set1:q40",
+      "title": "GATE EE 2023 | Set 1 | Question: 40",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The discrete-time Fourier transform of a signal $x[n]$ is $X(\\Omega)=1(1+\\cos \\Omega) e^{-j \\Omega}$. Consider that $x_{p}[n]$ is a periodic signal of period $N=5$ such that\n<br><br>\n\n$$\\begin{aligned}\nx_{p}[n] & =x[n], \\text { for } n=0,1,2 \\\\\n& =0, \\text { for } n=3,4\n\\end{aligned}$$\n<br><br>\nNote that $x_{p}[n]=\\sum_{k=0}^{N-1} a_{k} e^{j \\frac{2 \\pi}{N} k m}$. The magnitude of the Fourier series coefficient $a_{3}$ is ____ (Round off to 3 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.038",
+        "tolerance": {
+          "lower": 0.037,
+          "upper": 0.039
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transform",
+          "subtopicLabel": "Fourier Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "fourier-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transform",
+        "markdown": "Given : $x_{p}(n)$ is a period signal of period $N=5$.\n\n$$x_{p}(n)=\\left\\{\\begin{array}{cc}\n\nx(n), & \\text { for } n=0,1,2 \\\\\n\n0, & \\text { for } n=3,4\n\n\\end{array}\\right.$$\n\nand $\\mathrm{x}(\\mathrm{n}) \\stackrel{\\text { DTFT }}{\\longrightarrow} \\mathrm{X}(\\Omega)=(1+\\cos \\Omega) \\mathrm{e}^{-\\mathrm{j} \\Omega}$\n\nWe have,\n\n$$\\begin{aligned}\n\na_{K} & =\\frac{X\\left(\\frac{2 \\pi}{N} K\\right)}{N} \\\\\n\n& =\\frac{\\left[1+\\cos \\left(\\frac{2 \\pi}{N} K\\right)\\right] \\mathrm{e}^{-\\mathrm{j} \\frac{2 \\pi}{N} R}}{N}\n\n\\end{aligned}$$\n\nFor, $\\mathrm{N}=5$ and $\\mathrm{K}=3$\n\n$$\\begin{aligned}\n\na_{3} & =\\frac{\\left[1+\\cos \\left(\\frac{2 \\pi \\times 3}{5}\\right)\\right] \\mathrm{e}^{-\\mathrm{j} \\frac{2 \\pi}{5} \\times 3}}{5} \\\\\n\n\\left|a_{3}\\right| & =\\frac{1}{5}\\left[1+\\cos \\frac{6 \\pi}{5}\\right] \\\\\n\n& =0.0382\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.038** (acceptable range: [0.037, 0.039])."
+      }
+    },
+    "pp:ee:2023:q41": {
+      "question_uid": "pp:ee:2023:q41",
+      "exam_uid": "ee:2023:set1:q41",
+      "title": "GATE EE 2023 | Set 1 | Question: 41",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "For the circuit shown, if $\\mathrm{i}=\\sin 1000 t$, the instantaneous value of the Thevenin's equivalent voltage (in Volts) across the terminals a-b at time $\\mathrm{t}=5 \\mathrm{~ms}$ is ___ (Round off to 2 decimal places).\n<br><img src=\"/question-images/ee/2023/ee-2023-6449bb7d83.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "-12",
+        "tolerance": {
+          "lower": -12.1,
+          "upper": -11.9
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "By source transformation, the circuit become\n\n<img src=\"/question-images/ee/2023/ee-2023-ab77c725e9.webp\" />\n\nApply KVL in loop,\n\n$$\\begin{aligned}\n\n& (10+j 1)+4 i_{x}-(10+j 10+10-j 10) i_{x}=0 \\\\\n\n& 10+\\mathrm{j} 10+4 \\mathrm{i}_{x}-20 \\mathrm{i}_{x}=0 \\\\\n\n& \\Rightarrow \\quad \\mathrm{i}_{\\mathrm{x}}=0.884 \\angle 45^{\\circ} \\mathrm{A} \\\\\n\n& \\text { Now, } \\quad \\mathrm{V}_{\\text {Th }}=\\mathrm{i}_{x}(10-\\mathrm{j10}) \\\\\n\n& =0.884 \\angle 45^{\\circ} \\times 14.142 \\angle-45^{\\circ} \\\\\n\n& =12.5 \\angle 0^{\\circ} \\mathrm{V} \\\\\n\n& \\therefore \\quad \\mathrm{V}_{\\text {Th }}=12.5 \\sin 1000 \\mathrm{t} \\\\\n\n& \\text { At } \\quad \\mathrm{t}=5 \\mathrm{msec} \\\\\n\n& \\mathrm{V}_{\\text {Th }}=12.5 \\times \\sin \\left(\\frac{5 \\times 180^{\\circ}}{\\pi}\\right) \\\\\n\n& =-11.986 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **-12** (acceptable range: [-12.1, -11.9])."
+      }
+    },
+    "pp:ee:2023:q42": {
+      "question_uid": "pp:ee:2023:q42",
+      "exam_uid": "ee:2023:set1:q42",
+      "title": "GATE EE 2023 | Set 1 | Question: 42",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The admittance parameters of the passive resistive two-port network shown in the figure are\r\n<br><br>\r\n$\\mathrm{y}_{11}=5 \\mathrm{~S}, \\mathrm{y}_{22}=1 \\mathrm{~S}, \\mathrm{y}_{12}=\\mathrm{y}_{21}=-2.5 \\mathrm{~S}$\r\n<br><br>\r\nThe power delivered to the load resistor $R_{L}$ in Watt is ____ (Round off to 2 decimal places).\r\n\r\n<br><img src=\"/question-images/ee/2023/ee-2023-7bdc20f749.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "238",
+        "tolerance": {
+          "lower": 237,
+          "upper": 239
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "two-port-network-and-network-functions",
+          "subtopicLabel": "Two Port Network and Network Functions"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "two-port-network-and-network-functions"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Two Port Network and Network Functions",
+        "markdown": "$Y =[Y]_{A}+[Y]_{B}$\n\n<img src=\"/question-images/ee/2023/ee-2023-dc28a2a572.webp\" />\n\n$$\\begin{aligned}\n\nY_{A} & =\\left[\\begin{array}{cc}\n\n\\frac{1}{3} & -\\frac{1}{3} \\\\\n\n-\\frac{1}{3} & \\frac{1}{3}\n\n\\end{array}\\right] \\\\\n\nY_{B} & =\\left[\\begin{array}{cc}\n\n5 & -2.5 \\\\\n\n-2.5 & 1\n\n\\end{array}\\right] s \\\\\n\nY & =\\left[\\begin{array}{cc}\n\n\\frac{1}{3} & -\\frac{1}{3} \\\\\n\n-\\frac{1}{3} & \\frac{1}{3}\n\n\\end{array}\\right]+\\left[\\begin{array}{cc}\n\n5 \\\\\n\n-2.5 & 1\n\n\\end{array}\\right] \\\\\n\n& =\\left[\\begin{array}{cc}\n\n\\frac{16}{3} & -\\frac{8.5}{3} \\\\\n\n-\\frac{8.5}{3} & \\frac{4}{3}\n\n\\end{array}\\right] \\\\\n\nI_{1} & =\\frac{16}{3} V_{1}-\\frac{8.5}{3} V_{2} \\\\\n\nI_{2} & =-\\frac{8.5}{3} V_{1}+\\frac{4}{3} V_{2}\n\n\\end{aligned}$$\n\nPut $I_{2}=0$ and $V_{1}=20 \\mathrm{~V}$\n\n$0=-\\frac{8.5}{3} \\times 20+\\frac{4}{3} V_{2}$\n\n$$\\begin{aligned}\n\nV_{\\text {th }} & =V_{2}=\\frac{8.5 \\times 20}{4}=42.5 \\mathrm{~V} \\\\\n\nR_{\\mathrm{th}} & =\\frac{V_{2}}{I_{2}} \\\\\n\nI_{2} & =\\frac{4}{3} V_{2} \\\\\n\n\\frac{V_{2}}{I_{2}} & =\\frac{3}{4} \\Omega\n\n\\end{aligned}$$\n\nEquivalent circuit\n\n<img src=\"/question-images/ee/2023/ee-2023-38710b7724.webp\" />\n\n$I=\\frac{42.5}{\\frac{3}{4}+6}=6.296 \\mathrm{~A}$\n\n$$\\begin{aligned}\n\nP & =I^{2} R_{L}=(6.296)^{2} \\times 6 \\\\\n\n& =238 \\mathrm{~W}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **238** (acceptable range: [237, 239])."
+      }
+    },
+    "pp:ee:2023:q43": {
+      "question_uid": "pp:ee:2023:q43",
+      "exam_uid": "ee:2023:set1:q43",
+      "title": "GATE EE 2023 | Set 1 | Question: 43",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "When the winding $c-d$ of the singlephase, 50 $\\mathrm{Hz}$, two winding transformer is supplied from an AC current source of frequency $50 \\mathrm{~Hz}$, the rated voltage of $200 \\mathrm{~V}$ (rms), $50 \\mathrm{~Hz}$. is obtained at the open-circuited terminals a-b. The cross sectional area of the core $5000 \\mathrm{~mm}^{2}$ and the average core length traversed by the mutual flux is $500 \\mathrm{~mm}$. The maximum allowable flux density in the core is $B_{\\max }=1 \\mathrm{~Wb} / \\mathrm{m}^{2}$ and the relative permeability of the core material is $5000$. The leakage impedance of the winding $a-b$ and winding c-d at $50 \\mathrm{~Hz}$ are $(5+j 100 \\pi \\times 0.16) \\Omega$ and $(11.5+j 100 \\pi \\times 0.36) \\Omega$, respectively. Considering the magnetizing characteristics to be linear and neglecting core loss, the self-inductance of the winding $a-b$ in millihenry is ____  (Round off to 1 decimal place).\r\n<br><img src=\"/question-images/ee/2023/ee-2023-6b10bf8602.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2200",
+        "tolerance": {
+          "lower": 2150,
+          "upper": 2250
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "$$\\begin{aligned}\n\n\\mathrm{A} & =5000 \\mathrm{~mm}^{2} \\\\\n\n\\mathrm{I} & =500 \\mathrm{~mm} \\\\\n\n\\mathrm{~B}_{\\max } & =1 \\mathrm{~Wb} / \\mathrm{m}^{2} \\\\\n\n\\mathrm{~V}_{\\mathrm{ab}} & =200 \\mathrm{~V} \\\\\n\n\\sqrt{2} \\pi \\mathrm{fN}_{1} \\phi_{\\max } & =200 \\\\\n\n\\sqrt{2 \\pi} \\times 50 \\times \\mathrm{N}_{1} \\times 1 & \\times 5000 \\times 10^{-6}=200 \\quad[\\because \\phi=\\beta \\mathrm{A}] \\\\\n\n\\Rightarrow \\quad \\mathrm{N}_{1} & =181\n\n\\end{aligned}$$\n\nNow, mutual inductance,\n\n$$\\begin{aligned}\n\nM&=\\frac{N^{2}}{I / \\mu A} \\\\\n\n& =\\frac{4 \\pi \\times 10^{-7} \\times 5000 \\times 5000 \\times 10^{-6} \\times(181)^{2}}{0.5} \\\\\n\n& =2.05843 \\mathrm{H}\n\n\\end{aligned}$$\n\nTherefore, self inductance of winding.\n\n$$\\begin{aligned}\n\nL & =\\text { Mutual + leakage } \\\\\n\n& =2.05843+0.16 \\\\\n\n& =2.21843 \\mathrm{H} \\text { or } 2218.43 \\mathrm{mH}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2200** (acceptable range: [2150, 2250])."
+      }
+    },
+    "pp:ee:2023:q44": {
+      "question_uid": "pp:ee:2023:q44",
+      "exam_uid": "ee:2023:set1:q44",
+      "title": "GATE EE 2023 | Set 1 | Question: 44",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The circuit shown in the figure is initially in the steady state with the switch $\\mathrm{K}$ in open condition and $\\bar{K}$ in closed condition. The switch $\\mathrm{K}$ is closed and $\\overline{\\mathrm{K}}$ is opened simultaneously at the instant $t=t_{1}$, where $t_{1} \\gt 0$. The minimum value of $t_{1}$ in milliseconds, such that there is no transient in the voltage across the $100 \\mu \\mathrm{F}$ capacitor, is ___ (Round off to 2 decimal places).\n<br><img src=\"/question-images/ee/2023/ee-2023-970fe8a2ef.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.57",
+        "tolerance": {
+          "lower": 1.56,
+          "upper": 1.58
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "transients-and-steady-state-response",
+          "subtopicLabel": "Transients and Steady State Response"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "transients-and-steady-state-response"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Transients and Steady State Response",
+        "markdown": "<b>Case (i):</b>\n\nSwitch $K$ is open and $\\bar{K}$ is closed.\n\nRedraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-fcbe3dedc7.webp\" />\n\nFrom circuit, using current division,\n\n$$\\begin{aligned}\n\n\\mathrm{i}_{\\mathrm{C}} & =\\frac{10}{10-\\mathrm{j} 10} \\times 1 \\angle 0^{\\circ} \\\\\n\n\\therefore \\quad \\mathrm{V}_{\\mathrm{C}} & =\\frac{10}{10-\\mathrm{j} 10} \\times(-\\mathrm{j} 10)=7.07 \\angle-45^{\\circ} \\mathrm{V} \\\\\n\n\\therefore \\quad \\mathrm{V}_{\\mathrm{C}}\\left(\\mathrm{t}_{1}\\right) & =7.07 \\sin \\left(1000 \\mathrm{t}-45^{\\circ}\\right) \\mathrm{V}\n\n\\end{aligned}$$\n\n<b>Case (ii) :</b>\n\nSwitch $K$ is closed and $\\bar{K}$ is open.\n\nCurrent source and $10 \\Omega$ resistor becomes short circuited.\n\nRedraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-c7842d49cb.webp\" />\n\nFrom circuit,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{\\mathrm{C}}(\\infty) & =5 \\mathrm{~V} \\\\\n\n\\tau & =\\mathrm{RC}=10 \\times 100 \\times 10^{-6}=1 \\mathrm{msec}\n\n\\end{aligned}$$\n\nWe have,\n\n$\\mathrm{V}_{\\mathrm{C}}(\\mathrm{t})=\\mathrm{V}_{\\mathrm{C}}(\\infty)+\\left[\\mathrm{V}_{\\mathrm{C}}(0)-\\mathrm{V}_{\\mathrm{C}}(\\infty)\\right] \\mathrm{e}^{-\\mathrm{t} / \\tau}$\n\n$=5+\\left(7.07 \\sin \\left(1000 t_{1}-45^{\\circ}\\right)-5\\right) e^{-t / \\tau}$\n\nFor transient free voltage,\n\n$$\\begin{aligned}\n\n7.07 \\sin \\left(1000 \\mathrm{t}_{1}-45^{\\circ}\\right)&=5 \\\\\n\n1000 \\mathrm{t}_{1}-\\frac{\\pi}{4}&=\\frac{\\pi}{4} \\\\\n\n\\Rightarrow \\quad t_{1}&=1.57 \\mathrm{msec} .\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.57** (acceptable range: [1.56, 1.58])."
+      }
+    },
+    "pp:ee:2023:q45": {
+      "question_uid": "pp:ee:2023:q45",
+      "exam_uid": "ee:2023:set1:q45",
+      "title": "GATE EE 2023 | Set 1 | Question: 45",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The circuit shown in the figure has reached steady state with thyristor '$T$' in OFF condition. Assume that the latching and holding currents of the thyristor are zero.\n<br>\nThe thyristor is turned ON at $t=0$ sec. The duration in microseconds for which the thyristor would conduct, before it turns off, is  ___ (Round off to 2 decimal places).\n\n<br><img src=\"/question-images/ee/2023/ee-2023-cba9d837a4.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "7.3",
+        "tolerance": {
+          "lower": 7.1,
+          "upper": 7.5
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "Case (i) $t\\lt 0$ sec :\n\nSteady state circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-0d5f944059.webp\" />\n\nCase (ii) $\\mathrm{t} \\gt 0$ sec:\n\nThyristor is ON\n\nRedraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-b5f057e47b.webp\" />\n\n$\\mathrm{I}_{4 \\Omega}=\\frac{100}{4}=25 \\mathrm{~A}$\n\nand\n\n$$\\begin{aligned}\n\n\\mathrm{i}_{\\mathrm{C}} & =\\mathrm{I}_{\\mathrm{P}} \\sin \\omega_{0} \\mathrm{t} \\\\\n\n& =\\mathrm{V}_{\\mathrm{S}} \\sqrt{\\frac{C}{L}} \\sin \\omega_{0} \\mathrm{t} \\\\\n\n& =100 \\sqrt{\\frac{1}{4}} \\sin \\omega_{0} \\mathrm{t}=50 \\sin \\omega_{0} \\mathrm{t}\n\n\\end{aligned}$$\n\n$\\therefore$ Current through thyristor :\n\n$\\mathrm{I}_{\\mathrm{T}}=25+50 \\sin \\omega_{0} \\mathrm{t}$\n\nWhen $\\mathrm{I}_{\\mathrm{T}}=0 \\Rightarrow$ Thyristor is turn off.\n\n$0=25+50 \\sin \\omega_{0} t$\n\n$\\Rightarrow \\quad \\omega_{0} \\mathrm{t}=210^{\\circ} \\times \\frac{\\pi}{180^{\\circ}}$\n\n$\\Rightarrow \\quad \\mathrm{t}=\\sqrt{\\mathrm{LC}} \\times \\frac{7 \\pi}{6}$\n\n$=\\sqrt{10^{-6} \\times 4 \\times 10^{-6}} \\times \\frac{7 \\pi}{6}$\n\n$=7.33 \\mu \\mathrm{sec}$\n\nTherefore, the correct answer is **7.3** (acceptable range: [7.1, 7.5])."
+      }
+    },
+    "pp:ee:2023:q46": {
+      "question_uid": "pp:ee:2023:q46",
+      "exam_uid": "ee:2023:set1:q46",
+      "title": "GATE EE 2023 | Set 1 | Question: 46",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Neglecting the delays due to the logic gates in the circuit shown in figure, the decimal equivalent of the binary sequence [ABCD] of initial logic states, which will not change with clock, is\n<br><img src=\"/question-images/ee/2023/ee-2023-8b536474a3.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8",
+        "tolerance": {
+          "lower": 8,
+          "upper": 8
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "sequential-logic-circuits",
+          "subtopicLabel": "Sequential Logic Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "sequential-logic-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Sequential Logic Circuits",
+        "markdown": "Redraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-db4fc9256a.webp\" />\n\nFrom circuit :\n\n$$\\begin{array}{c|ccc|cccc}\n\n&  &  &  &\\overline{\\mathrm{Q}_{2}} & \\mathrm{Q}_{2} & \\overline{\\mathrm{Q}}_{1} & \\mathrm{Q}_{1} \\oplus \\mathrm{Q}_{2}   \\\\\n\n\\mathrm{CLK} & \\mathrm{D} & \\mathrm{Q}_{1} & \\mathrm{Q}_{0} & \\mathrm{~A} & \\mathrm{~B} & \\mathrm{C} & \\mathrm{D} \\\\\n\n\\hline\n\n1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\\\\n\n2 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\\\\n\n\\hline\n\n\\end{array}$$\n\n$\\therefore \\quad A B C D=(1000)_{2}=(8)_{10}$\n\nTherefore, the correct answer is **8**."
+      }
+    },
+    "pp:ee:2023:q47": {
+      "question_uid": "pp:ee:2023:q47",
+      "exam_uid": "ee:2023:set1:q47",
+      "title": "GATE EE 2023 | Set 1 | Question: 47",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In a given 8-bit general purpose micro-controller there are following flags.\n<br>\nC-Carry, A-Auxiliary Carry, O-Overflow flag, PParity ( 0 for even, 1 for odd) R0 and R 1 are the two general purpose registers of the microcontroller.\n<br>\nAfter execution of the following instructions, the decimal equivalent of the binary sequence of the flag pattern [CAOP] will be\n<br><br>\nMOV R0, +0x60\n<br>\nMOV R1, +0x46\n<br>\nADD R0, R 1",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "microprocessors",
+          "subtopicLabel": "Microprocessors"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "microprocessors"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Microprocessors",
+        "markdown": "MOV $R_{0},+0 \\times 60 \\Rightarrow R_{0} \\leftarrow 60 \\mathrm{H}$\n\nMOV $R_{1},+0 \\times 46 \\Rightarrow \\mathrm{R}_{1} \\leftarrow 46 \\mathrm{H}$\n\nADD $R_{0}, R_{1}$ :\n\n$$\\begin{array}{lllllllll}\n\n0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & \\rightarrow 46 \\mathrm{H} \\\\\n\n\\hline\n\n1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & \\rightarrow \\mathrm{A} 6 \\mathrm{H} \\\\\n\n\\hline\n\n\\end{array}$$\n\nNow, carry flag $(C Y)=0$\n\nAuxiliary carry $(\\mathrm{AC})=0$\n\n$\\left[\\because\\right.$ No carry fro $D_{3}$ to $\\left.D_{4}\\right]$\n\n$\\because \\mathrm{MSB}=1$, overflow flag $=1$\n\n$P=0[\\because$ Four 1's i.e. even numb\n\ner $]$\n\n$\\therefore$ Required Flag patter $=[$ CAOP $]$\n\n$=[0010]_{2}=2$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ee:2023:q48": {
+      "question_uid": "pp:ee:2023:q48",
+      "exam_uid": "ee:2023:set1:q48",
+      "title": "GATE EE 2023 | Set 1 | Question: 48",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The single phase rectifier consisting of three thyristors $T_{1}, T_{2}, T_{3}$ and a diode $D_{1}$ feed power to a $10 \\mathrm{~A}$ constant current load. $T_{1}$ and $T_{3}$ are fired at $\\alpha=60^{\\circ}$ and $T_{2}$ is fired at $\\alpha=240^{\\circ}$. The reference for $\\alpha$ is the positive zero crossing of $\\mathrm{V}_{\\text {in }}$. The average voltage $\\mathrm{V}_{o}$ across the load in volts is _____ (Round off to 2 decimal places).\r\n<br><img src=\"/question-images/ee/2023/ee-2023-31637d97a7.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "39.75",
+        "tolerance": {
+          "lower": 39,
+          "upper": 40.5
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "<img src=\"/question-images/ee/2023/ee-2023-83397378b6.webp\" />\n\n$\\therefore$ Average output voltage,\n\n$$\\begin{gathered}\n\n\\mathrm{V}_{o}=\\frac{1}{2 \\pi}\\left[\\int_{\\alpha}^{\\pi} \\mathrm{V}_{\\mathrm{m}} \\sin \\omega t d \\omega t+\\int_{\\pi+\\alpha}^{2 \\pi+\\alpha}-\\mathrm{V}_{\\mathrm{m}} \\sin \\omega \\mathrm{t} d \\omega t\\right] \\\\\n\n=\\frac{V_{m}}{2 \\pi}[1+3 \\cos \\alpha]\n\n\\end{gathered}$$\n\nPut the values,\n\n$$\\begin{aligned}\n\nV_{o} & =\\frac{100}{2 \\pi}\\left[1+3 \\cos 60^{\\circ}\\right] \\\\\n\n& =39.79 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **39.75** (acceptable range: [39, 40.5])."
+      }
+    },
+    "pp:ee:2023:q49": {
+      "question_uid": "pp:ee:2023:q49",
+      "exam_uid": "ee:2023:set1:q49",
+      "title": "GATE EE 2023 | Set 1 | Question: 49",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The Zener diode in circuit has a breakdown voltage of $5 \\mathrm{~V}$. The current gain $\\beta$ of the transistor in the active region in $99$. Ignore baseemitter voltage drop $\\mathrm{V}_{\\mathrm{BE}}$. The current through the $20 \\Omega$ resistance in milliamperes is ____ (Round off to 2 decimal places).\r\n<br><img src=\"/question-images/ee/2023/ee-2023-ae9e5a09a7.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "250",
+        "tolerance": {
+          "lower": 245,
+          "upper": 255
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "diodes-and-their-applications",
+          "subtopicLabel": "Diodes and their Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "diodes-and-their-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Diodes and their Applications",
+        "markdown": "Redraw the circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-0d8234c54a.webp\" />\n\nWe know,\n\n$$\\begin{aligned}\n\n\\mathrm{I}_{\\mathrm{E}} & =(1+\\beta) \\mathrm{I}_{\\mathrm{B}} \\\\\n\n& =100 \\mathrm{I}_{\\mathrm{B}} \\\\\n\n\\Rightarrow \\quad \\mathrm{I}_{\\mathrm{B}} & =\\frac{\\mathrm{I}_{\\mathrm{E}}}{100}\n\n\\end{aligned}$$\n\nApply KVL in loop,\n\n$$\\begin{aligned}\n\n& 25-\\frac{\\mathrm{I}_{E}}{100} \\times 7000-I_{E} \\times 10-I_{E} \\times 20=0 \\\\\n\n& \\Rightarrow \\quad \\mathrm{I}_{\\mathrm{E}}=0.25 \\mathrm{~A} \\text { or } 250 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **250** (acceptable range: [245, 255])."
+      }
+    },
+    "pp:ee:2023:q50": {
+      "question_uid": "pp:ee:2023:q50",
+      "exam_uid": "ee:2023:set1:q50",
+      "title": "GATE EE 2023 | Set 1 | Question: 50",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The two-bus power system shown in figure (i) has one alternator supplying a synchronous motor load through a $Y-\\Delta$ transformer. The positive, negative and zero-sequence diagrams of the system are shown in figures (ii), (iii) and (iv), respectively. All reactances in the sequence diagrams are in p.u. For a bolted line-to-line fault (fault impedance $=$ zero) between phases '$b$' and '$c$' at bus 1, neglecting all pre-fault currents, the magnitude of the fault current (from phase '$b$' to '$c$') in p.u. is _____ (Round off to 2 decimal places).\n<br><img src=\"/question-images/ee/2023/ee-2023-d2b24ced23.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "7.2",
+        "tolerance": {
+          "lower": 7.1,
+          "upper": 7.3
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "fault-analysis",
+          "subtopicLabel": "Fault Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "fault-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Fault Analysis",
+        "markdown": "From positive sequence network :\n\n$$\\begin{aligned}\n\nX_{1} & =\\mathrm{j}(0.3 \\| 0.2) \\\\\n\n& =\\mathrm{j} 0.12 \\mathrm{pu}\n\n\\end{aligned}$$\n\nFrom negative sequence network :\n\n$$\\begin{aligned}\n\n\\mathrm{X}_{2} & =\\mathrm{j}(0.3 \\| 0.2) \\\\\n\n& =\\mathrm{j} 0.12 \\mathrm{pu}\n\n\\end{aligned}$$\n\nFor $\\mathrm{L}-\\mathrm{L}$ fault,\n\nFault current, $I_{f}=\\frac{\\sqrt{3} E}{\\left(X_{1}+X_{2}\\right)}$\n\n$=\\frac{\\sqrt{3} \\times 1}{0.12+0.12} =7.217 \\mathrm{pu}$\n\nTherefore, the correct answer is **7.2** (acceptable range: [7.1, 7.3])."
+      }
+    },
+    "pp:ee:2023:q51": {
+      "question_uid": "pp:ee:2023:q51",
+      "exam_uid": "ee:2023:set1:q51",
+      "title": "GATE EE 2023 | Set 1 | Question: 51",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An infinite surface of linear current density $K=5 \\hat{a}_{x} A / m$ exists on the $x-y$ plane, as shown in the figure. The magnitude of the magnetic field intensity $(H)$ at a point $(1,1,1)$ due to the surface current in Ampere/meter is ___ (Round off to 2 decimal places).\n<br><img src=\"/question-images/ee/2023/ee-2023-d54b57e09b.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.5",
+        "tolerance": {
+          "lower": 2.49,
+          "upper": 2.51
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-theory",
+          "subjectLabel": "Electromagnetic Theory",
+          "subtopicSlug": "magnetostatic-fields",
+          "subtopicLabel": "Magnetostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-theory",
+          "magnetostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Theory - Magnetostatic Fields",
+        "markdown": "$$\\begin{aligned}\n\n\\overrightarrow{\\mathrm{a}}_{\\mathrm{N}}&=\\overrightarrow{\\mathrm{a}}_{\\mathrm{Z}}\\\\\n\n\\text{Now, }\\quad \\overrightarrow{\\mathrm{H}}&=\\frac{1}{2}\\left(\\overrightarrow{\\mathrm{K}} \\times \\overrightarrow{\\mathrm{a}}_{\\mathrm{N}}\\right) \\\\\n\n& =\\frac{1}{2}\\left(5 \\hat{a}_{x} \\times \\hat{a}_{z}\\right) \\\\\n\n& =-2.5 \\hat{a}_{y} A / m\n\n\\end{aligned}$$\n\n$\\therefore$ Magnitude, $|\\overrightarrow{\\mathrm{H}}|=2.5 \\mathrm{~A} / \\mathrm{m}$\n\nTherefore, the correct answer is **2.5** (acceptable range: [2.49, 2.51])."
+      }
+    },
+    "pp:ee:2023:q52": {
+      "question_uid": "pp:ee:2023:q52",
+      "exam_uid": "ee:2023:set1:q52",
+      "title": "GATE EE 2023 | Set 1 | Question: 52",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The closed curve shown in the figure is described by\r\n<br>\r\n<br>\r\n$r=1+\\cos \\theta$, where $r=\\sqrt{x^{2}+y^{2}}$\r\n $x=r \\cos \\theta, y=r \\sin \\theta$\r\n<br><br>\r\nThe magnitude of the line integral of the vector field $F=-y \\hat{i}+x \\hat{j}$ around the closed curve is ___(Round off to 2 decimal places).\r\n<br><img src=\"/question-images/ee/2023/ee-2023-9d873960b5.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "9.5",
+        "tolerance": {
+          "lower": 9,
+          "upper": 10
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned}\n\nI & =\\int_{0}^{2 \\pi} \\vec{F} \\cdot \\overrightarrow{d l} \\\\\n\n& =\\int_{0}^{2 \\pi}(-y \\hat{i}+x)(d x \\hat{i}+d y) \\\\\n\n& =\\int_{0}^{2 \\pi}(-y d x+x d y)\n\n\\end{aligned}$$\n\nGiven : $\\quad x=r \\cos \\theta$ and $y=r \\sin \\theta$\n\n$$\\begin{aligned}\n\n\\therefore I&=\\int_{0}^{2 \\pi}[(-r \\sin \\theta)(-r \\sin \\theta) d \\theta+(r \\cos \\theta)(r \\cos \\theta) d \\theta] \\\\\n\n&=\\int_{0}^{2 \\pi} r^{2} d \\theta \\\\\n\n&=\\int_{0}^{2 \\pi}(1+\\cos \\theta)^{2} d \\theta \\\\\n\n&=\\int_{0}^{2 \\pi}\\left(1+\\cos ^{2} \\theta+2 \\cos \\theta\\right) d \\theta \\\\\n\n&=\\int_{0}^{2 \\pi}\\left(1+\\frac{1+\\cos 2 \\theta}{2}+2 \\cos \\theta\\right) \\mathrm{d} \\theta \\\\\n\n&=3 \\pi=9.425\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **9.5** (acceptable range: [9, 10])."
+      }
+    },
+    "pp:ee:2023:q53": {
+      "question_uid": "pp:ee:2023:q53",
+      "exam_uid": "ee:2023:set1:q53",
+      "title": "GATE EE 2023 | Set 1 | Question: 53",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A signal $x(t)=2 \\cos (180 \\pi t) \\cos (60 \\pi t)$ is sampled at $200 \\mathrm{~Hz}$ and then passed through an ideal low pass filter having cut-off frequency of $100 \\mathrm{~Hz}$.\n<br>\nThe maximum frequency present in the filtered signal in $\\mathrm{Hz}$ is ____ (Round off to the nearest integer)",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "80",
+        "tolerance": {
+          "lower": 80,
+          "upper": 80
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "sampling",
+          "subtopicLabel": "Sampling"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "sampling"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Sampling",
+        "markdown": "Given :\n\n$$\\begin{aligned}\n\nx(\\mathrm{t})&=2 \\cos (180 \\pi \\mathrm{t}) \\cos (60 \\pi \\mathrm{t}) \\\\\n\n&=\\cos 240 \\pi \\mathrm{t}+\\cos 120 \\pi \\mathrm{t}\n\n\\end{aligned}$$\n\n$\\mathrm{F}_{1}=120 \\mathrm{~Hz}$ and $\\mathrm{F}_{2}=60 \\mathrm{~Hz}$\n\nNow, present frequency component,\n\n$$\\begin{aligned}\n\n& =\\mathrm{nf}_{\\mathrm{s}} \\pm \\mathrm{f}_{1} \\\\\n\n& =\\mathrm{f}_{1}, \\mathrm{f}_{\\mathrm{s}} \\pm \\mathrm{f}_{1}, 2 \\mathrm{f}_{\\mathrm{s}} \\pm \\mathrm{f}_{1} \\\\\n\n& =120 \\mathrm{~Hz}, 200 \\pm 120, \\ldots . \\\\\n\n& =120 \\mathrm{~Hz}, 80 \\mathrm{~Hz}, 320 \\mathrm{~Hz}, \\ldots .\n\n\\end{aligned}$$\n\nand other frequency component.\n\n$$\\begin{aligned}\n\n& =n f_{s} \\pm f_{2} \\\\\n\n& =f_{2}, f_{s} \\pm f_{2}, 2 f_{s} \\pm f_{2}, \\ldots \\\\\n\n& =60,200 \\pm 60, \\ldots \\\\\n\n& =60 \\mathrm{~Hz}, 140,260 \\mathrm{~Hz}, \\ldots\n\n\\end{aligned}$$\n\nGiven cut-off frequency of LPF $=100 \\mathrm{~Hz}$\n\n$\\therefore$ It is pas only $60 \\mathrm{~Hz}$ and $80 \\mathrm{~Hz}$ frequency component.\n\n$\\therefore$ Max. frequency $=80 \\mathrm{~Hz}$.\n\nTherefore, the correct answer is **80**."
+      }
+    },
+    "pp:ee:2023:q54": {
+      "question_uid": "pp:ee:2023:q54",
+      "exam_uid": "ee:2023:set1:q54",
+      "title": "GATE EE 2023 | Set 1 | Question: 54",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A balanced delta connected load consisting of the series connection of one resistor $(R=15 \\Omega)$ and a capacitor $(C=212.21 \\mu \\mathrm{F})$ in each phase is connected to three-phase, $50 \\mathrm{~Hz}, 415 \\mathrm{~V}$ supply terminals through a line having an inductance of $\\mathrm{L}=31.83 \\mathrm{mH}$ per phase, as shown in the figure. Considering the change in the supply terminal voltage with loading to be negligible, the magnitude of the voltage across the terminals $V_{AB}$ in Volts is ____ (Round off to the nearest integer).\n<br><img src=\"/question-images/ee/2023/ee-2023-a7094625ef.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "415",
+        "tolerance": {
+          "lower": 414,
+          "upper": 416
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "switch-gear-and-protection",
+          "subtopicLabel": "Switch Gear and Protection"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "switch-gear-and-protection"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Switch Gear and Protection",
+        "markdown": "Given circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-e68a586f31.webp\" />\n\nwhere,\n\n$$\\begin{aligned}\n\nX_{L} & =2 \\pi \\times 50 \\times 31.83 \\times 10^{-3}=10 \\Omega \\\\\n\nR & =15 \\Omega \\\\\n\nX_{C} & =\\frac{1}{2 \\pi \\times 50 \\times 212.21 \\times 10^{-6}}=15 \\Omega\n\n\\end{aligned}$$\n\nConvert $\\Delta$ to star :\n\n$$\\begin{aligned}\n\nZ_{Y} & =\\frac{Z_{\\Delta}}{3} \\\\\n\n& =\\frac{15-j 15}{3}=5-j 5\n\n\\end{aligned}$$\n\nNow, per phase equivalent circuit :\n\n<img src=\"/question-images/ee/2023/ee-2023-1f655724c0.webp\" />\n\nUsing voltage division,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{\\mathrm{AN}} & =\\frac{5-\\mathrm{j} 5}{5-\\mathrm{j} 5+10 \\mathrm{j}} \\times \\frac{415 \\angle 0^{\\circ}}{\\sqrt{3}} \\\\\n\n& =\\frac{415}{\\sqrt{3}} \\angle-90^{\\circ} \\mathrm{V} \\\\\n\n\\therefore \\quad \\quad\\left|\\mathrm{V}_{\\mathrm{AB}}\\right| & =\\sqrt{3} \\times \\frac{415}{\\sqrt{3}}=415 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **415** (acceptable range: [414, 416])."
+      }
+    },
+    "pp:ee:2023:q55": {
+      "question_uid": "pp:ee:2023:q55",
+      "exam_uid": "ee:2023:set1:q55",
+      "title": "GATE EE 2023 | Set 1 | Question: 55",
+      "year": "gateee-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A quadratic function of two variables is given as <br><br>$f\\left(x_{1}, x_{2}\\right)=x_{1}^{2}+2 x_{2}^{2}+3 x_{1}+3 x_{2}+x_{1} x_{2}+1$\n<br><br>\n\nThe magnitude of the maximum rate of change of the function at the point $(1,1)$ is ____(Round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "10",
+        "tolerance": {
+          "lower": 10,
+          "upper": 10
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "Given :\n\n$\\mathrm{F}\\left(\\mathrm{x}, \\mathrm{x}_{2}\\right)=\\mathrm{x}_{1}^{2}+2 \\mathrm{x}_{2}^{2}+\\mathrm{x}_{1}+\\mathrm{x}_{1} \\mathrm{x}_{2}+1$\n\n$\\nabla \\cdot F=\\left(2 x_{1}+3+x_{2}\\right) \\hat{a}_{x_{1}}+\\left(4 x_{2}+3+x_{1}\\right) \\hat{a}_{x_{z}}$\n\nAt $(1,1)$\n\n$$\\begin{aligned}\n\n\\nabla \\cdot F & =6 \\hat{a}_{x_{1}}+7 \\hat{a}_{x_{2}} \\\\\n\n|\\nabla \\cdot F| & =\\sqrt{6^{2}+8^{2}}=10\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10**."
+      }
+    },
+    "pp:ee:2023:q56": {
+      "question_uid": "pp:ee:2023:q56",
+      "exam_uid": "ee:2023:set1:q56",
+      "title": "GATE EE 2023 | Set 1 | Question: 56",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Rafi told Mary, \"I am thinking of watching a film this weekend.\"\n<br>\n<br>\nThe following reports the above statement in indirect speech:\n<br><br>\nRafi told Mary that he of watching a film that weekend.",
+      "options": [
+        "thought",
+        "is thinking",
+        "am thinking",
+        "was thinking"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Rafi told Mary that he was thinking of watching a film that weekend.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2023:q57": {
+      "question_uid": "pp:ee:2023:q57",
+      "exam_uid": "ee:2023:set1:q57",
+      "title": "GATE EE 2023 | Set 1 | Question: 57",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Permit: : : Enforce : Relax\n<br>\n\n(By word meaning)",
+      "options": [
+        "Allow",
+        "Forbid",
+        "License",
+        "Reinforce"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Enforce $\\stackrel{\\text { Antonym }}{\\longrightarrow}$ Relax\n\nSimilarly,\n\nPemit $\\stackrel{\\text { Antonym }}{\\longrightarrow}$ Forbid\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q58": {
+      "question_uid": "pp:ee:2023:q58",
+      "exam_uid": "ee:2023:set1:q58",
+      "title": "GATE EE 2023 | Set 1 | Question: 58",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Given a fair six-faced dice where the faces are labelled ' 1 ', ' 2 ', '3', ' 4 ', '5', and ' 6 ', what is the probability of getting a ' 1 ' on the first roll of the dice and a '4' on the second roll?",
+      "options": [
+        "$\\frac{1}{36}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{5}{6}$",
+        "$\\frac{1}{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Probability of getting ' $t$ ' on the first roll,\n\n$P(1)=\\frac{1}{6}$\n\nProbability of getting ' 4 ' on the second roll,\n\n$P(4)=\\frac{1}{6}$\n\n$\\therefore$ Required probability $=\\frac{1}{6} \\times \\frac{1}{6}=\\frac{1}{36}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q59": {
+      "question_uid": "pp:ee:2023:q59",
+      "exam_uid": "ee:2023:set1:q59",
+      "title": "GATE EE 2023 | Set 1 | Question: 59",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A recent survey shows that $65 \\%$ of tobacco users were advised to stop consuming tobacco. The survey also shows that 3 out of 10 tobacco users attempted to stop using tobacco. <br> <br>Based only on the information in the above passage, which one of the following options can be logically inferred with certainty?",
+      "options": [
+        "A majority of tobacco users who were advised to stop consuming tobacco made an attempt to do so.",
+        "A majority of tobacco users who were advised to stop consuming tobacco did not attempt to do so.",
+        "Approximately $30 \\%$ of tobacco users successfully stopped consuming tobacco.",
+        "Approximately $65 \\%$ of tobacco users successfully stopped consuming tobacco."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *A majority of tobacco users who were advised to stop consuming tobacco did not attempt to do so.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (A majority of tobacco users who were advised to stop consuming tobacco did not attempt to do so.)."
+      }
+    },
+    "pp:ee:2023:q60": {
+      "question_uid": "pp:ee:2023:q60",
+      "exam_uid": "ee:2023:set1:q60",
+      "title": "GATE EE 2023 | Set 1 | Question: 60",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "How many triangles are present in the given figure?\n<br><img src=\"/question-images/ee/2023/ee-2023-496f7091c6.webp\" /><br>",
+      "options": [
+        "12",
+        "16",
+        "20",
+        "24"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/ee/2023/ee-2023-f4509012ac.webp\" />\n\nNo. of triangles $=\\triangle \\mathrm{ABC}, \\triangle \\mathrm{ACD}, \\triangle \\mathrm{BDC}$, $\\triangle \\mathrm{ABD}, \\triangle \\mathrm{CDK}, \\triangle \\mathrm{BCK}, \\triangle \\mathrm{ADK}, \\triangle \\mathrm{ABK}, \\triangle \\mathrm{AHJ}$, $\\triangle \\mathrm{AEH}, \\triangle \\mathrm{AEJ}, \\triangle \\mathrm{BEM}, \\triangle \\mathrm{BFM}, \\triangle \\mathrm{CFL}, \\triangle \\mathrm{CGL}$, $\\triangle \\mathrm{CGF}, \\triangle \\mathrm{DGI}, \\triangle \\mathrm{DHI} \\Delta \\mathrm{DGH}$.\n\n$\\therefore$ Total no. of triangles $=20$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2023:q61": {
+      "question_uid": "pp:ee:2023:q61",
+      "exam_uid": "ee:2023:set1:q61",
+      "title": "GATE EE 2023 | Set 1 | Question: 61",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Students of all the departments of a college who have successfully completed the registration process are eligible to vote in the upcoming college elections. However, by the time the due date for registration was over, it was found that suprisingly none of the students from the Department of Human Sciences had completed the registration process.\n<br><br>\n\nBased only on the information provided above, which one of the following sets of statement(s) can be logically inferred with certainty?",
+      "options": [
+        "(i) and (ii)",
+        "(i) and (iii)",
+        "only (i)",
+        "only (iii)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *only (iii)*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (only (iii))."
+      }
+    },
+    "pp:ee:2023:q62": {
+      "question_uid": "pp:ee:2023:q62",
+      "exam_uid": "ee:2023:set1:q62",
+      "title": "GATE EE 2023 | Set 1 | Question: 62",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which one of the following options represents the given graph?\n<br><img src=\"/question-images/ee/2023/ee-2023-9f26552e28.webp\" /><br>",
+      "options": [
+        "$f(x)=x^{2} 2^{-|x|}$",
+        "$f(x)=x 2^{-|x|}$",
+        "$f(x)=|x| 2^{-x}$",
+        "$f(x)=x 2^{-x}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "The given function is odd function.\n\nProperty of odd function.\n\n$F(-x)=-f(x)$\n\nTherefore, option (B) is an odd function.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2023:q63": {
+      "question_uid": "pp:ee:2023:q63",
+      "exam_uid": "ee:2023:set1:q63",
+      "title": "GATE EE 2023 | Set 1 | Question: 63",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which one of the options does NOT describe the passage below or follow from it?\n<br><br>\n\nWe tend to think of cancer as a 'modern' illness because its metaphors are so modern. It is a disease of overproduction, of sudden growth, a growth that is unstoppable, tipped into the abyss of no control. Modern cell biology encourages us to imagine the cell as a molecular machine. Cancer is that machine unable to quench its intial command (to grow) and thus transform into an indestructible, self-propelled automaton.\n<br><br>\n[Adapted from The Emperor of All Maladies by Siddhartha Mukherjee] (a) It is a reflection of why cancer seems so modern to most of us.",
+      "options": [
+        "It is a reflection of why cancer seems so modern to most of us.",
+        "It tells us that modern cell biology uses and promotes metaphors of machinery.",
+        "Modern cell biology encourages metaphors of machinery, and cancer is often imagined as a machine.",
+        "Modern cell biology never uses figurative language, such as metaphors, to describe or explain anything."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *Modern cell biology never uses figurative language, such as metaphors, to describe or explain anything.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (Modern cell biology never uses figurative language, such as metaphors, to describe or explain anything.)."
+      }
+    },
+    "pp:ee:2023:q64": {
+      "question_uid": "pp:ee:2023:q64",
+      "exam_uid": "ee:2023:set1:q64",
+      "title": "GATE EE 2023 | Set 1 | Question: 64",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The digit in the unit's place of the product $3^{999} \\times 7^{1000}$ is ___",
+      "options": [
+        "7",
+        "1",
+        "3",
+        "9"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "We know, 2, 3, 7 and 8 are repeat unit digit after 4th power.\n\nSo, $3^{999} \\times 7^{1000}=7 \\times 1=7$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2023:q65": {
+      "question_uid": "pp:ee:2023:q65",
+      "exam_uid": "ee:2023:set1:q65",
+      "title": "GATE EE 2023 | Set 1 | Question: 65",
+      "year": "gateee-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A square with sides of length $6 \\mathrm{~cm}$ is given. The boundary of the shaded region is defined by two semi-circles whose diameters are the sides of the square, as shown.\n<br>\nThe area of the shaded region is ___ $\\mathrm{cm}^{2}$<br><img src=\"/question-images/ee/2023/ee-2023-f432d9d419.webp\" /><br>",
+      "options": [
+        "$6 \\pi$",
+        "18",
+        "20",
+        "$9 \\pi$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2023-s1",
+      "yearSetIdentity": "ee:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Area of shaded region\n\n$$\\begin{aligned}\n\n& =\\frac{\\pi r^{2}}{2}+\\frac{\\pi r^{2}}{2}-2 A \\\\\n\n& =8 \\pi-2 A[\\because r=3 \\mathrm{~cm}]\n\n\\end{aligned}$$\n\nTo find ' $A$ ' :\n\n<img src=\"/question-images/ee/2023/ee-2023-9fdd32e73e.webp\" />\n\nArea, $B=\\frac{\\pi r^{2}}{4}-\\frac{1}{2} \\times 3 \\times 3$\n\n$=\\frac{9 \\pi}{4}-\\frac{9}{2}$\n\n$\\therefore$ Area of $A=2 B=\\frac{9 \\pi}{2}-9$\n\nNow, area of shaded region\n\n$$\\begin{aligned}\n\n& =9 \\pi-2\\left(\\frac{9 \\pi}{2}-9\\right) \\\\\n\n& =18 \\mathrm{~cm}^{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    }
+  }
+}

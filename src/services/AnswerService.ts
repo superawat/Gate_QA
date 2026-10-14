@@ -207,7 +207,7 @@ export class AnswerService {
 
   static getAnswerForQuestion(question: any = {}): AnswerRecord | null {
     const identity = this.getQuestionIdentity(question);
-    const embeddedAnswer = question?.answerMeta;
+    const embeddedAnswer = question?.answerMeta || question?.answer_meta;
     if (
       identity.rawQuestionUid
       && String(identity.rawQuestionUid).startsWith("APT-")
@@ -248,6 +248,18 @@ export class AnswerService {
     const examUid = identity.examUid;
     if (examUid && this.answersByExamUid[examUid]) {
       return this.answersByExamUid[examUid];
+    }
+
+    if (embeddedAnswer && embeddedAnswer.answer != null) {
+      return {
+        answer_uid: `embedded:${identity.questionUid || identity.rawQuestionUid || 'branch'}`,
+        type: String(embeddedAnswer.type || question.type || "MCQ").trim().toUpperCase(),
+        answer: embeddedAnswer.answer,
+        tolerance: embeddedAnswer.tolerance ?? null,
+        source: {
+          kind: embeddedAnswer.source || "embedded_record",
+        },
+      };
     }
 
     const unsupportedCandidates = [

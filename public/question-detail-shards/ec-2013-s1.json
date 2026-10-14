@@ -1,0 +1,2258 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.240Z",
+  "shardKey": "ec-2013-s1",
+  "yearSetKey": "ec-2013-s1",
+  "yearSetIdentity": "ec:2013:set-1",
+  "track": "ec",
+  "year": 2013,
+  "set": 1,
+  "label": "2013 Set 1",
+  "questionCount": 55,
+  "recordsByQuestionUid": {
+    "pp:ec:2013:q1": {
+      "question_uid": "pp:ec:2013:q1",
+      "exam_uid": "ec:2013:set1:q1",
+      "title": "GATE EC 2013 | Set 1 | Question: 1",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A bulb in a staircase has two switches, one switch being at the ground floor and the other one at the first floor. The bulb can be turned ON and also can be turned OFF by any one of the switches irrespective of the state of the other switch. The logic of switching of the bulb resembles",
+      "options": [
+        "an AND gate",
+        "an OR gate",
+        "an XOR gate",
+        "a NAND gate"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "analytical-aptitude",
+          "subtopicLabel": "Analytical Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "analytical-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Logic Gates",
+        "markdown": "Truth table of XOR gate\n\n$$\\begin{array}{cc|c}\n\nA & B & Y \\\\\n\n\\hline 0 & 0 & 0 \\\\\n\n0 & 1 & 1 \\\\\n\n1 & 0 & 1 \\\\\n\n1 & 1 & 0\n\n\\end{array}$$\n\nSo, from the XOR gate truth table it is clear that\n\nthe bulb can be turned ON and also can be turned\n\nOFF by any one of the switches irrespective of\n\nthe state of the other switch.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q2": {
+      "question_uid": "pp:ec:2013:q2",
+      "exam_uid": "ec:2013:set1:q2",
+      "title": "GATE EC 2013 | Set 1 | Question: 2",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a vector field ${\\overrightarrow{A}}( \\overrightarrow{r})$. The closed loop line integral $\\int \\overrightarrow{A}\\cdot \\overrightarrow{di}$ can be expressed as",
+      "options": [
+        "$\\int \\int  ( \\overline{V}\\times \\overrightarrow{A}  )\\cdot \\overrightarrow{ds}$ over the closed surface bounded by the loop",
+        "$\\int \\int \\int  ( \\overline{V}\\cdot \\overrightarrow{A}  )dv$ over the closed volume bounded by the loop\r\n",
+        "$\\int \\int \\int  ( \\overline{V}\\cdot \\overrightarrow{A}  )dv$ over the open volume bounded by the loop\r\n",
+        "$\\int \\int  ( \\overline{V}\\times \\overrightarrow{A}  )\\cdot \\overrightarrow{ds}$ over the open surface bounded by the loop"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "According to Stoke's theorem\n\n$\\oint_{c} \\vec{A} \\cdot \\vec{d} i=\\iint_{s}(\\nabla \\times \\vec{A}) \\cdot \\overrightarrow{d s}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q3": {
+      "question_uid": "pp:ec:2013:q3",
+      "exam_uid": "ec:2013:set1:q3",
+      "title": "GATE EC 2013 | Set 1 | Question: 3",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Two systems with impulse responses $h_{1}\\left ( t \\right )$ and $h_{2}\\left ( t \\right )$ are connected in cascade. Then the overall impulse response of the cascaded system is given by",
+      "options": [
+        "product of $h_{1}\\left ( t \\right )$ and $h_{2}\\left ( t \\right )$\n\n",
+        "sum of $h_{1}\\left ( t \\right )$ and $h_{2}\\left ( t \\right )$\n\n",
+        "convolution of $h_{1}\\left ( t \\right )$ and $h_{2}\\left ( t \\right )$\n\n",
+        "subtraction of $h_{2}\\left ( t \\right )$ from $h_{1}\\left ( t \\right )$\n\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "The overall impulse response h(t) of the cascade\n\nsystem is given by:\n\n$h(t)=h_{1}(t) * h_{2}(t)$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q4": {
+      "question_uid": "pp:ec:2013:q4",
+      "exam_uid": "ec:2013:set1:q4",
+      "title": "GATE EC 2013 | Set 1 | Question: 4",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a forward biased pn junction diode, the sequence of events that best describes the mechanism of current flow is",
+      "options": [
+        "injection, and subsequent diffusion and recombination of minority carriers",
+        "injection, and subsequent drift and generation of minority carriers",
+        "extraction, and subsequent diffusion and generation of minority carriers",
+        "extraction, and subsequent drift and recombination of minority carriers"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
+        "markdown": "In a forward biased pn-junction diode, the current\n\nflow is due to diffusion of majority carriers and\n\nrecombination of minority carriers.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q5": {
+      "question_uid": "pp:ec:2013:q5",
+      "exam_uid": "ec:2013:set1:q5",
+      "title": "GATE EC 2013 | Set 1 | Question: 5",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In IC technology, dry oxidation (using dry oxygen) as compared to wet oxidation (using steam or water vapor) produces",
+      "options": [
+        "superior quality oxide with a higher growth rate",
+        "inferior quality oxide with a higher growth rate",
+        "inferior quality oxide with a lower growth rate",
+        "superior quality oxide with a lower growth rate"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - IC Fabrication",
+        "markdown": "Dry oxidation has better quality over wet oxidation.\n\nDry oxidation is slower over wet oxidation.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q6": {
+      "question_uid": "pp:ec:2013:q6",
+      "exam_uid": "ec:2013:set1:q6",
+      "title": "GATE EC 2013 | Set 1 | Question: 6",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The maximum value of $\\theta$ until which the approximation $\\sin \\theta \\approx \\theta$ holds to within 10% error is",
+      "options": [
+        "$10^{\\circ}$\r\n",
+        "$18^{\\circ}$",
+        "$50^{\\circ}$\r\n",
+        "$90^{\\circ}$\r\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Numerical Methods",
+        "markdown": "$10^{\\circ}=\\frac{10 \\pi}{180}=0.1745$\n\n$\\sin 10^{\\circ}=0.1736$\n\nSo, for $10^{\\circ} \\rightarrow \\sin \\cong \\theta$ holds within 10 % error\n\n$$\\begin{aligned} 18^{\\circ} &=\\frac{18 \\times \\pi}{180}=0.3142 \\\\ \\sin 18^{\\circ} &=0.3090 \\end{aligned}$$\n\nSo, for $18^{\\circ} \\rightarrow \\sin \\theta \\equiv \\theta$ holds within 10% error\n\n$50^{\\circ}=\\frac{50 \\times \\pi}{180}=0.8727$\n\n$\\sin 50^{\\circ}=0.766$\n\nSo, for $50^{\\circ} \\rightarrow \\sin \\theta \\cong \\theta$ does not hold within 10 % error\n\n$90^{\\circ}=\\frac{90 \\times \\pi}{180}=1.571$\n\n$\\sin 90^{\\circ}=1$\n\nSo, for $90^{\\circ} \\rightarrow \\sin \\theta \\cong \\theta$ does not hold within 10 % error.\n\nSo, the maximum value of \\theta for the approximation\n\n$\\sin \\theta \\cong \\theta \\text{ holds to within } 10 \\% \\text{ error is } 18^{\\circ}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q7": {
+      "question_uid": "pp:ec:2013:q7",
+      "exam_uid": "ec:2013:set1:q7",
+      "title": "GATE EC 2013 | Set 1 | Question: 7",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The divergence of the vector field $\\overrightarrow{A}=x\\hat{a_{x}}+y\\hat{a_{y}}+z\\hat{a_{x}}$ is",
+      "options": [
+        "$0$\n",
+        "$1/3$\n",
+        "$1$\n",
+        "$3$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{array}{l} \\nabla \\cdot \\vec{A}=\\frac{\\partial A_{x}}{\\partial x}+\\frac{\\partial A_{y}}{\\partial y}+\\frac{\\partial A_{z}}{\\partial z} \\\\ \\nabla \\cdot \\vec{A}=\\frac{\\partial}{\\partial x}(x)+\\frac{\\partial}{\\partial y}(y)+\\frac{\\partial}{\\partial z}(z)=1+1+1 \\\\ \\nabla \\cdot \\vec{A}=3 \\end{array}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q8": {
+      "question_uid": "pp:ec:2013:q8",
+      "exam_uid": "ec:2013:set1:q8",
+      "title": "GATE EC 2013 | Set 1 | Question: 8",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The impulse response of a system is $h\\left ( t \\right )= tu\\left ( t \\right )$. For an input u(t-1), the output is\r\n",
+      "options": [
+        "$\\frac{t^{2}}{2}u\\left ( t \\right )$\n\n",
+        "$\\frac{t(t-1)}{2}u(t-1)$\n",
+        "$\\frac{\\left ( t-1 \\right )^{2}}{2}u\\left ( t-1 \\right )$\n\n",
+        "$\\frac{t^{2}-1}{2}u\\left ( t-1 \\right )$\n\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "$$\\begin{aligned} h(t)&=t u(t) \\\\ \\text{Taking }&\\text{Laplace transform}\\\\ H(s)&=\\frac{1}{s^{2}} \\\\ x(t) &=u(t-1) \\\\ \\text { Taking }&\\text{Laplace transform } \\\\ X(s)&=\\frac{e^{-s}}{s} \\\\ \\frac{Y(s)}{X(s)}&=H(s) \\\\ Y(s)&=H(s) X(s) \\\\ Y(s)&=\\frac{1}{s^{2}} \\cdot \\frac{e^{-s}}{s}=\\frac{e^{-s}}{s^{3}} \\\\ \\text{Taking } &\\text{the inverse Laplace transform } \\\\ y(t)&=\\frac{(t-1)^{2}}{2} u(t-1) \\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q9": {
+      "question_uid": "pp:ec:2013:q9",
+      "exam_uid": "ec:2013:set1:q9",
+      "title": "GATE EC 2013 | Set 1 | Question: 9",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Bode plot of a transfer function G(s) is shown in the figure below.<br><img src=\"/question-images/ec/2013/ec-2013-54a90d247a.webp\"/> The gain $\\left ( 20\\log\\left | G\\left ( s \\right ) \\right | \\right )$ is 32 dB and -8 dB at 1 rad/s and 10 rad/s respectively. The phase is negative for all $\\omega$. Then G(s) is\n\n",
+      "options": [
+        "$\\frac{39.8}{s}$\n",
+        "$\\frac{39.8}{s^{2}}$\n",
+        "$\\frac{32}{s}$\n",
+        "$\\frac{32}{s^{2}}$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "$10 \\mathrm{rad} / \\mathrm{s}$ to $1 \\mathrm{rad} / \\mathrm{s}$ is 1 decade\n\n$32-(-8)=40 d B$\n\nSo, the slope is 40dB/decade it means there are two poles at origin, it means either option (B) or  option (D) is correct put $\\omega=1$rad/sec in both the options.\n\n$20 \\log \\left[\\frac{39.8}{(1)^{2}}\\right]=32 \\mathrm{dB}$\n\n$20 \\log \\left[\\frac{32}{(1)^{2}}\\right]=30.1 \\mathrm{dB}$\n\nSo, option (B) is correct option $=\\frac{39.8}{s^{2}}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q10": {
+      "question_uid": "pp:ec:2013:q10",
+      "exam_uid": "ec:2013:set1:q10",
+      "title": "GATE EC 2013 | Set 1 | Question: 10",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below what is the output voltage $\\left ( V_{out} \\right )$ if a silicon transistor Q and an ideal op-amp are used?<br><img src=\"/question-images/ec/2013/ec-2013-3d06e70c70.webp\"/> ",
+      "options": [
+        "$-15V$\n",
+        "$-0.7V$\n",
+        "$+0.7V$\n",
+        "$+15V$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "Due to virtual short\n\n$V_{c} = V_{B} = 0V$\n\n(collector voltage of transistor 0)\n\nand given that base voltage of transistor 0\n\n$V_{B} = O_{V}$\n\nSo, $V_{C} = O_{V}$\n\nIt means collector to base of transistor Oare short circuited.\n\nIf any junction of transistor is short circuited then the junction acts as reverse bias. So, the C-B junction is reverse bias. The given op-amp is an inverting configuration which have positive voltage as input. So the output voltage of op-amp will be negative voltage.\n\n$V_{\\text{out}}$= -ve voltage\n\nEmitter voltage of transistor\n\n$V_{E}$ = -ve voltage\n\ngiven transistor is n-p-ntransistor and\n\n$V_{B}$ = OV\n\n$V_{E}$ = -ve voltage\n\nSo, the E-8 junction will be forward bias. Thus, the transistor is in active region and will behave as closed switch.\n\nSo,\n\n$$\\begin{aligned} V_{B E} &=0.7 \\mathrm{V} \\quad \\text { (for silicon transistor) } \\\\ \\mathrm{V}_{\\mathrm{B}}-\\mathrm{V}_{E} &=0.7 \\mathrm{V} \\\\ \\mathrm{V}_{\\mathrm{E}} &=\\mathrm{V}_{\\mathrm{B}}-0.7 \\\\ \\mathrm{V}_{\\mathrm{E}} &=0-0.7 \\\\ \\mathrm{V}_{\\mathrm{E}} &=-0.7 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q11": {
+      "question_uid": "pp:ec:2013:q11",
+      "exam_uid": "ec:2013:set1:q11",
+      "title": "GATE EC 2013 | Set 1 | Question: 11",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a delta connection of resistors and its equivalent star connection as shown below. If all elements of the delta connection are scaled by a factor k, k>0, the elements of the corresponding star equivalent will be scaled by a factor of<br><img src=\"/question-images/ec/2013/ec-2013-68f944b596.webp\"/> ",
+      "options": [
+        "$k^{2}$\r\n",
+        "$k$\n",
+        "$\\frac{1}{k}$\n",
+        "$\\sqrt{k}$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "$$\\begin{aligned} R_{A} &=\\frac{R_{b} R_{c}}{R_{a}+R_{b}+R_{c}} \\\\ R_{a}^{\\prime} &=k R_{a} \\\\ R_{b}^{\\prime} &=k R_{b} \\\\ R_{c}^{\\prime} &=k R_{c} \\\\ R_{A}^{\\prime} &=\\frac{k R_{b} \\cdot k R_{c}}{k R_{a}+k R_{b}+k R_{c}}=\\frac{k^{2} R_{b} R_{c}}{k\\left(R_{A}+R_{b}+R_{c}\\right)} \\\\ &=k \\times \\frac{R_{b} R_{c}}{R_{a}+R_{b}+R_{c}} \\\\ R_{A}^{\\prime} &=k R_{A} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q12": {
+      "question_uid": "pp:ec:2013:q12",
+      "exam_uid": "ec:2013:set1:q12",
+      "title": "GATE EC 2013 | Set 1 | Question: 12",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For 8085 microprocessor, the following program is executed. <br>\nMVI A, 05H; <br>\nMVI B, 05H;<br>\nPTR: ADD B;<br>\nDCR B;<br>\nJNZ PTR;<br>\nADI 03H;<br>\nHLT;<br>\nAt the end of program, accumulator contains",
+      "options": [
+        "17H",
+        "20H",
+        "23H",
+        "05H"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-microprocessors",
+          "subjectLabel": "Microprocessors",
+          "subtopicSlug": "microprocessor-8085-programming",
+          "subtopicLabel": "Microprocessor 8085 Programming"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-microprocessors",
+          "microprocessor-8085-programming"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Microprocessor 8085 Programming",
+        "markdown": "$$\\begin{array}{l} A=05+05+04+03+02+01+03 \\\\ A=23 \\\\ A=17 H \\end{array}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q13": {
+      "question_uid": "pp:ec:2013:q13",
+      "exam_uid": "ec:2013:set1:q13",
+      "title": "GATE EC 2013 | Set 1 | Question: 13",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The bit rate of a digital communication system is R kbits/s. The modulation used is 32-QAM. The minimum bandwidth required for ISI free transmission is",
+      "options": [
+        "$\\frac{R}{10}Hz$\n",
+        "$\\frac{R}{10}kHz$\n",
+        "$\\frac{R}{5}Hz$",
+        "$\\frac{R}{5}kHz$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "Nyquist pulses should be used for baseband  pulse shaping to avoid ISI, with minimum bandwidth requirement. In this case the bandwidth of the base band signal will be,\n\n$$\\begin{aligned} (B W)_{\\text {baseband }}&=\\frac{R}{2} \\mathrm{kHz} \\\\ (\\mathrm{BW})_{\\text {MOAM }} &=\\frac{2(\\mathrm{BW})_{\\text {baseband }}}{\\log _{2} M}\\\\ \\text{For }32-\\mathrm{QAM} \\\\ (\\mathrm{BW})_{32 \\mathrm{QAM}}&=\\frac{2(\\mathrm{BW})_{\\text {baseband }}}{\\log _{2}(32)}=\\frac{R}{5} \\mathrm{kHz} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q14": {
+      "question_uid": "pp:ec:2013:q14",
+      "exam_uid": "ec:2013:set1:q14",
+      "title": "GATE EC 2013 | Set 1 | Question: 14",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": " For a periodic signal $v\\left ( t \\right )=30\\sin 100t+10\\cos 300t+6\\sin \\left ( 500t+\\frac{\\pi }{4} \\right )$, the fundamental frequency in rad/s is",
+      "options": [
+        "100",
+        "300",
+        "500",
+        "1500"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "$$\\begin{array}{l} \\omega_{1}=100 \\\\ \\omega_{2}=300 \\\\ \\omega_{3}=500 \\end{array}$$\n\nH.C.F. of $\\left(\\omega_{1}, \\omega_{2} \\text { and } \\omega_{3}\\right)=$ H.C.F. (100,300,500)\n\n$\\omega=100 \\mathrm{rad} / \\mathrm{sec}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q15": {
+      "question_uid": "pp:ec:2013:q15",
+      "exam_uid": "ec:2013:set1:q15",
+      "title": "GATE EC 2013 | Set 1 | Question: 15",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a voltage-voltage feedback as shown below, which one of the following statements is TRUE if the gain k is increased? <br><img src=\"/question-images/ec/2013/ec-2013-129c306e11.webp\"/> ",
+      "options": [
+        "The input impedance increases and output impedance decreases.",
+        "The input impedance increases and output impedance also increases.",
+        "The input impedance decreases and output impedance also decreases.",
+        "The input impedance decreases and output impedance increases."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "feedback-amplifiers",
+          "subtopicLabel": "Feedback Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "feedback-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Feedback Amplifiers",
+        "markdown": "The given configuration is a voltage-series feedback configuration.\n\nSo, the input impedance increases\n\n$R_{i f}=R_{i}\\left(1+A_{0} K\\right)$\n\nand, the output impedance decreases\n\n$R_{o f}=\\frac{R_{o}}{1+A_{o} K}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q16": {
+      "question_uid": "pp:ec:2013:q16",
+      "exam_uid": "ec:2013:set1:q16",
+      "title": "GATE EC 2013 | Set 1 | Question: 16",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A band-limited signal with a maximum frequency of 5 kHz is to be sampled. According to the sampling theorem, the sampling frequency which is not valid is",
+      "options": [
+        "5 kHz",
+        "12 kHz",
+        "15 kHz",
+        "20 kHz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "sampling",
+          "subtopicLabel": "Sampling"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "sampling"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Sampling",
+        "markdown": "$$\\begin{aligned} \\left(f_{s}\\right)_{\\min } &=2 f_{m} \\\\ \\left(f_{s}\\right)_{\\min } &=2 \\times 5=10 \\mathrm{kHz} \\\\ \\mathrm{So}, \\quad f_{s} & \\geq 10 \\mathrm{kHz} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q17": {
+      "question_uid": "pp:ec:2013:q17",
+      "exam_uid": "ec:2013:set1:q17",
+      "title": "GATE EC 2013 | Set 1 | Question: 17",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a MOSFET operating in the saturation region, the channel length modulation effect causes",
+      "options": [
+        "an increase in the gate-source capacitance",
+        "a decrease in the transconductance",
+        "a decrease in the unity-gain cutoff frequency",
+        "a decrease in the output resistance"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "fet-and-mosfet-analysis",
+          "subtopicLabel": "FET and MOSFET Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "fet-and-mosfet-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - FET and MOSFET Analysis",
+        "markdown": "In a MOSFET operating in the saturation region,\n\nthe channel length modulation effect causes a\n\ndecrease in the output resistance\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q18": {
+      "question_uid": "pp:ec:2013:q18",
+      "exam_uid": "ec:2013:set1:q18",
+      "title": "GATE EC 2013 | Set 1 | Question: 18",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following statements is NOT TRUE for a continuous time causal and stable LTI system?",
+      "options": [
+        "All the poles of the system must lie on the left side of the $j\\omega$ axis.",
+        "Zeros of the system can lie anywhere in the s-plane.",
+        "All the poles must lie within $\\left | s \\right |=1$",
+        "All the roots of the characteristic equation must be located on the left side of the $j\\omega$ axis."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "laplace-transform",
+          "subtopicLabel": "Laplace Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "laplace-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "For a causal and stable LTI system the ROC must be right sided and it must include the $s=j \\omega$ line $(\\sigma=0)$. For all the poles must lie within $|s|=1$ then all poles will lie between -1 to +1.\n\nWe know that ROC does not include any pole, so in this case ROC will not be able to include $s= j0$  line $(\\sigma=0) .$ Thus the system will not be stable. Hence,\n\nthis statement is NOT TRUE.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q19": {
+      "question_uid": "pp:ec:2013:q19",
+      "exam_uid": "ec:2013:set1:q19",
+      "title": "GATE EC 2013 | Set 1 | Question: 19",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The minimum eigenvalue of the following matrix is $$\\begin{bmatrix} 3 &5 &2 \\\\ 5 &12 &7 \\\\ 2 &7 &5 \\end{bmatrix}$$",
+      "options": [
+        "$0$\n",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{array}{l} |A-\\lambda I|=0 \\\\ \\left| \\begin{array}{rcc} 3-\\lambda & 5 & 2 \\\\ 5 & 12-\\lambda & 7 \\\\ 2 & 7 & 5-\\lambda \\end{array} \\right|=0 \\\\ (3-\\lambda)[(12-\\lambda)(5-\\lambda)-49] \\\\ -5[5(5-\\lambda)-14]+2[35-2(12-\\lambda)]=0 \\\\ (3-\\lambda)\\left[60-17 \\lambda+\\lambda^{2}-49\\right] \\\\ -5(25-5 \\lambda-14)+2(35-24+2 \\lambda)=0 \\\\ (3-\\lambda)\\left(\\lambda^{2}-17 \\lambda+11\\right)-5(11-5 \\lambda)+2(11+2 \\lambda)=0 \\\\ 3 \\lambda^{2}-51 \\lambda+33-\\lambda^{3}+17 \\lambda^{2} \\\\ \\begin{aligned} -11 \\lambda-55+25 \\lambda+22+4 \\lambda^{2}&=0 \\\\ -\\lambda^{3}+24 \\lambda^{2}-37 \\lambda&=0 \\\\ \\lambda^{3}-24 \\lambda^{2}+37 \\lambda&=0 \\\\ \\lambda\\left(\\lambda^{2}-24 \\lambda+37\\right)&=0 \\\\ \\lambda_{1}&=0\\\\ \\lambda_{2}, \\lambda_{3} &=\\frac{24 \\pm \\sqrt{(24)^{2}-4(37)}}{2} \\\\ \\lambda_{2} &=22 \\\\ \\lambda_{3} &=2 \\\\ \\lambda_{\\min } &=0 \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q20": {
+      "question_uid": "pp:ec:2013:q20",
+      "exam_uid": "ec:2013:set1:q20",
+      "title": "GATE EC 2013 | Set 1 | Question: 20",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A polynomial $f\\left ( x \\right )=a_{4}x^{4}+a_{3}x^{3}+a_{2}x^{2}+a_{1}x-a_{0}$ with all coefficients positive has",
+      "options": [
+        "no real roots",
+        "no negative real root",
+        "odd number of real roots",
+        "at least one positive and one negative real root"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "numerical-methods"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Numerical Methods",
+        "markdown": "Using R-H criterion\n\n$$\\begin{array}{c|ccc} x^{4} & a_{4} & a_{2} & -a_{0} \\\\ x^{3} & a_{3} & a_{1} & \\\\ x^{2} & A & & \\\\ x^{1} & a_{1} & & \\\\ x^{0} & -a_{0} & & \\end{array}$$\n\n$Where, A=\\frac{a_{3} a_{2}-a_{1} a_{4}}{a_{3}}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q21": {
+      "question_uid": "pp:ec:2013:q21",
+      "exam_uid": "ec:2013:set1:q21",
+      "title": "GATE EC 2013 | Set 1 | Question: 21",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Assuming zero initial condition, the response y(t) of the system given below to a unit step input u(t) is <br><img src=\"/question-images/ec/2013/ec-2013-8e4803f0db.webp\"/> ",
+      "options": [
+        "$u\\left ( t \\right )$\n",
+        "$tu\\left ( t \\right )$\n",
+        "$\\frac{t^{2}}{2}u\\left ( t \\right )$",
+        "$e^{-t}u\\left ( t \\right )$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "laplace-transform",
+          "subtopicLabel": "Laplace Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "laplace-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "$x(t)=u(t)$\n\nApply Laplace transform\n\n$$\\begin{aligned} X(s) &=\\frac{1}{s} \\\\ H(s) &=\\frac{1}{s} \\quad(\\text { given }) \\\\ Y(s) &=H(s) X(s) \\\\ &=\\frac{1}{s} \\times \\frac{1}{s}=\\frac{1}{s^{2}} \\end{aligned}$$\n\nTaking inverse Laplace transform\n\n$y(t)=t u(t)$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q22": {
+      "question_uid": "pp:ec:2013:q22",
+      "exam_uid": "ec:2013:set1:q22",
+      "title": "GATE EC 2013 | Set 1 | Question: 22",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The transfer function $\\frac{V_{2}\\left ( s \\right )}{V_{1}\\left ( s \\right )}$ of the circuit shown below is <br><img src=\"/question-images/ec/2013/ec-2013-9cce60964e.webp\"/>  ",
+      "options": [
+        "$\\frac{0.5s+1}{s+1}$\n",
+        "$\\frac{3s+6}{s+2}$\n\n",
+        "$\\frac{s+2}{s+1}$\n",
+        "$\\frac{s+1}{s+2}$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "network-functions",
+          "subtopicLabel": "Network Functions"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "network-functions"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Network Functions",
+        "markdown": "$$\\begin{aligned} \\frac{V_{2}(s)}{V_{1}(s)}&=\\frac{10 \\times 10^{3}+\\frac{1}{100 \\times 10^{-6} s}}{10 \\times 10^{3}+\\frac{1}{100 \\times 10^{-6} s}+\\frac{1}{100 \\times 10^{-6} s}} \\\\ \\frac{V_{2}(s)}{V_{1}(s)}&=\\frac{s \\times 10^{4}+10^{4}}{s \\times 10^{4}+10^{4}+10^{4}}=\\frac{10^{4}(1+s)}{10^{4}(s+2)} \\\\ \\frac{v_{2}(s)}{V_{1}(s)}&=\\frac{s+1}{s+2} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q23": {
+      "question_uid": "pp:ec:2013:q23",
+      "exam_uid": "ec:2013:set1:q23",
+      "title": "GATE EC 2013 | Set 1 | Question: 23",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A source $v_{s}\\left ( t \\right )=V\\cos 100\\pi t$ has an internal impedance of $\\left ( 4+j3 \\right )\\Omega$. If a purely resistive load connected to this source has to extract the maximum power out of the source, its value in $\\Omega$ should be \n\n",
+      "options": [
+        "$3$\n",
+        "$4$",
+        "$5$",
+        "$7$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Network Theorems",
+        "markdown": "For pure resistive load to extract the maximum power.\n\n$R_{L}=\\left|Z_{s}\\right|=\\sqrt{R_{s}^{2}+X_{s}^{2}}=\\sqrt{4^{2}+3^{2}}=5 \\Omega$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q24": {
+      "question_uid": "pp:ec:2013:q24",
+      "exam_uid": "ec:2013:set1:q24",
+      "title": "GATE EC 2013 | Set 1 | Question: 24",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The return loss of a device is found to be 20 dB. The voltage standing wave ratio (VSWR) and magnitude of reflection coefficient are respectively",
+      "options": [
+        "1.22 and 0.1",
+        "0.81 and 0.1",
+        "- 1.22 and 0.1",
+        "2.44 and 0.2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "$$\\begin{aligned} \\text { Return loss }&=-20 \\log |\\Gamma| \\\\ -20 \\log |\\Gamma|&=20 \\\\ \\Rightarrow \\quad|\\Gamma|&=10^{-1}=0.1 \\\\ \\text{VSWR}&=\\frac{1+|\\Gamma|}{1-|\\Gamma|}=\\frac{1+0.1}{1-0.1}=1.22 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q25": {
+      "question_uid": "pp:ec:2013:q25",
+      "exam_uid": "ec:2013:set1:q25",
+      "title": "GATE EC 2013 | Set 1 | Question: 25",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $g(t)=e^{-\\pi t^{2}}$, and $h(t)$ is a filter matched to $g(t)$. If $g(t)$ is applied as input to $h(t)$, then the Fourier transform of the output is",
+      "options": [
+        "$e^{-\\pi f^{2}}$\n\n",
+        "$e^{\\frac{-\\pi f^{2}}{2}}$",
+        "$e^{-\\pi \\left | f \\right |}$",
+        "$e^{-2\\pi f^{2}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "$$\\begin{array}{l} g(t)=e^{-\\pi t^{2}} \\\\ G(f)=e^{-\\pi f^{2}} \\\\ H(f)=e^{-\\pi f^{2}} \\\\ Y(f)=G(f) H(f) \\\\ Y(t)=e^{-\\pi  f^{2}} \\cdot e^{-\\pi f^{2}}=e^{-2 \\pi f^{2}} \\end{array}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q26": {
+      "question_uid": "pp:ec:2013:q26",
+      "exam_uid": "ec:2013:set1:q26",
+      "title": "GATE EC 2013 | Set 1 | Question: 26",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $U$ and $V$ be two independent zero mean Gaussian random variables of variances $\\frac{1}{4}$ and $\\frac{1}{9}$ respectively. The probability $P\\left ( 3V\\geq 2U \\right )$ is\n\n\n",
+      "options": [
+        "$\\frac{4}{9}$\n",
+        "$\\frac{1}{2}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{5}{9}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "random-processes",
+          "subtopicLabel": "Random Processes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "random-processes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Processes",
+        "markdown": "The probability\n\n$$\\begin{aligned} P(3 V-2 U) &=P(3 V-2 U \\geq 0) \\\\ &=P(W \\geq 0) \\\\ \\text{where,}\\quad W &=3 V-2 U \\end{aligned}$$\n\nU and V are independent random variables and can be expressed in terms of mean and variance  as shown below:\n\n$$\\begin{aligned} U &=N\\left(0, \\frac{1}{4}\\right) \\\\ V &=N\\left(0, \\frac{1}{9}\\right) \\\\ \\because \\quad W &=3 v-2 U \\\\ \\therefore W &=N\\left(0,9 \\times \\frac{1}{9}+4 \\times \\frac{1}{4}\\right)=N(0,2) \\end{aligned}$$\n\nHence W is Gaussian variable with mean 0 and variance 2.\n\n<img src=\"/question-images/ec/2013/ec-2013-91db757841.webp\" />\n\n$\\therefore P(W \\geq 0)=\\frac{1}{2}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q27": {
+      "question_uid": "pp:ec:2013:q27",
+      "exam_uid": "ec:2013:set1:q27",
+      "title": "GATE EC 2013 | Set 1 | Question: 27",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $A$ be an $m\\times n$ matrix and $B$ an $n\\times m$ matrix. It is given that determinant $\\left ( I_{m}+AB \\right )=$ determinant $\\left ( I_{m}+BA \\right )$, where $I_{k}$ is the $k\\times k$ identity matrix. Using the above property, the determinant of the matrix given below is<br> $$\\begin{bmatrix} 2 &1 &1 &1 \\\\ 1 &2 &1 &1 \\\\ 1 &1 &2 &1 \\\\ 1 &1 &1 &2 \\end{bmatrix}$$\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n",
+      "options": [
+        "$2$",
+        "$5$",
+        "$8$",
+        "$16$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Take the determinant of given matrix\n\n$$\\begin{aligned} |P|=& 2[2(4-1)-(2-1)+(1-2)] \\\\ &-1[(4-1)-1(2-1)+1(1-2)] \\\\ &+1[(1-1)-2(2-1)+(1-1)] \\\\ &-1[(1-2)-2(1-2)+(1-1)] \\\\ =& 2[6-1-1]-1[3-1-1] \\\\ & +1[1-2+0]-1[-1+2+0] \\\\ =& 2(4)-1(1)+1(-1)-1(1)=8-1-1-1 \\\\ =& 5 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q28": {
+      "question_uid": "pp:ec:2013:q28",
+      "exam_uid": "ec:2013:set1:q28",
+      "title": "GATE EC 2013 | Set 1 | Question: 28",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, if the source voltage $V_{s}= 100\\angle 53.13^{\\circ}V$ then the Thevenin?s equivalent voltage in Volts as seen by the load resistance $R_{L}$ is <br><img src=\"/question-images/ec/2013/ec-2013-e4c97c896b.webp\"/> ",
+      "options": [
+        "$100\\angle 90^{\\circ}$",
+        "$800\\angle 0^{\\circ}$",
+        "$800\\angle 90^{\\circ}$",
+        "$100\\angle 60^{\\circ}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Network Theorems",
+        "markdown": "To find $V_{Th}$, open circuit the load voltage $R_{L}$ then\n\n<img src=\"/question-images/ec/2013/ec-2013-b953085e94.webp\" />\n\n$$\\begin{aligned} I_{2} &=0 \\\\ j 40 I_{2} &=0 \\\\ V_{L_{1}} &=\\frac{V_{s} \\cdot(j 4)}{3+j 4}=\\frac{100 \\angle 53.13^{\\circ}}{5 \\angle 53.13^{\\circ}} \\times 4 \\angle 90^{\\circ} \\\\ V_{L_{1}} &=80 \\angle 90^{\\circ} \\\\ V_{\\mathrm{Th}} &=10 V_{L_{4}}+I_{2} j 6+I_{2} 3 \\\\ V_{\\mathrm{Th}} &=10 \\times 80 \\angle 90^{\\circ}+0 \\times j 6+0 \\times 3 \\\\ V_{\\mathrm{Th}} &=800 \\angle 90^{\\circ} \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q29": {
+      "question_uid": "pp:ec:2013:q29",
+      "exam_uid": "ec:2013:set1:q29",
+      "title": "GATE EC 2013 | Set 1 | Question: 29",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The open-loop transfer function of a dc motor is given as $\\frac{w\\left ( s \\right )}{V_{a}\\left ( s \\right )}= \\frac{10}{1+10s}$. When connected in feedback as shown below, the approximate value of $K_{a}$ that will reduce the time constant of the closed loop system by one hundred times as compared to that of the open-loop system is<br><img src=\"/question-images/ec/2013/ec-2013-420a88f961.webp\"/> ",
+      "options": [
+        "$1$",
+        "$5$",
+        "$10$",
+        "$100$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "$$\\begin{aligned} \\frac{\\omega(s)}{V_{a}(s)} &=\\frac{10}{1+10 s} \\\\ 1+T s &=1+10 s \\\\ T s &=10 s \\\\ \\therefore \\quad T &=10\\\\ T^{\\prime}=& \\frac{T}{100}=\\frac{10}{100}=\\frac{1}{10} \\\\ \\frac{\\omega(s)}{R(s)}=& \\frac{K_{a} \\times \\frac{10}{1+10 s}}{1+K_{a} \\frac{10}{1+10 s}} \\\\ \\frac{\\omega(s)}{R(s)}&=\\frac{10 K_{a}}{1+10 s+10 K_{a}}=\\frac{10 K_{a}}{\\left(1+10 K_{a}\\right)+10s} \\\\ \\frac{\\omega(s)}{R(s)}&=\\frac{10k_{a}}{\\left(1+10 K_{a}\\right)\\left[1+\\frac{10 s}{1+10 K_{a}}\\right]} \\\\ T^{\\prime}&=\\frac{10}{1+10K_{a}}=\\frac{1}{10}\\\\ 1+10 K_{a}&=100 \\\\ 10 K_{a}&=99 \\\\ K_{a}&=9.9 \\\\ K_{a} &\\cong 10 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q30": {
+      "question_uid": "pp:ec:2013:q30",
+      "exam_uid": "ec:2013:set1:q30",
+      "title": "GATE EC 2013 | Set 1 | Question: 30",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, the knee current of the ideal Zener diode is 10 mA. To maintain 5 V across $R_{L}$, the minimum value of $R_{L}$ in  $\\Omega$ and the minimum power rating of the Zener diode in mW, respectively, are <br><img src=\"/question-images/ec/2013/ec-2013-520b32cca0.webp\"/> ",
+      "options": [
+        "125 and 125",
+        "125 and 250",
+        "250 and 125",
+        "250 and 250"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "diodes-applications",
+          "subtopicLabel": "Diodes Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "diodes-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Diodes Applications",
+        "markdown": "$$\\begin{aligned} I &=\\frac{V_{\\text {in }}-V_{z}}{R}=\\frac{10-5}{100}=50 \\mathrm{mA} \\\\ R_{\\text {Lmin }} &=\\frac{V_{z}}{I_{L \\max }}=\\frac{V_{z}}{I-I_{z \\min }}=125 \\Omega \\end{aligned}$$\n\nMinimum power rating of Zener diode\n\n$$\\begin{aligned} P_{z} &=V_{z} I_{z \\max } \\\\ I_{z \\max } &=50 \\mathrm{mA} \\\\ P z &=5 \\times 50=250 \\mathrm{mW} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q31": {
+      "question_uid": "pp:ec:2013:q31",
+      "exam_uid": "ec:2013:set1:q31",
+      "title": "GATE EC 2013 | Set 1 | Question: 31",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The following arrangement consists of an ideal transformer and an attenuator which attenuates by a factor of 0.8. An ac voltage $V_{WX1}= 100V$ is applied across WX to get an open circuit voltage $V_{YZ1}$ across YZ. Next, an ac voltage $V_{YZ2}= 100V$ is applied across YZ to get an open circuit voltage $V_{WX2}$ across WX. Then $\\frac{V_{YZ1}}{V_{WX1}}$ , $\\frac{V_{WX2}}{V_{YZ2}}$ are respectively, <br><img src=\"/question-images/ec/2013/ec-2013-c15bd4fdac.webp\"/> ",
+      "options": [
+        "125/100 and 80/100",
+        "100/100 and 80/100",
+        "100/100 and 100/100",
+        "80/100 and 80/100"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "$$\\begin{aligned} V_{Y Z_{1}} &=100 \\times 1.25 \\times 0.8 \\\\ &=100 \\mathrm{V} \\end{aligned}$$\n\nIn second case, when 100 V is applied at YZ terminals, this whole 100 V will appear across the secondary winding.\n\nHence,\n\n$$\\begin{aligned} V_{\\mathrm{w} x_{2}} &=\\frac{100}{1.25}=80 \\mathrm{V} \\\\ \\Rightarrow \\quad \\frac{Y_{\\mathrm{YZ}_{1}}}{Y_{\\mathrm{wx}_{1}}} &=\\frac{100}{100}, \\frac{V_{\\mathrm{w} \\times 2}}{V_{\\mathrm{YZ}_{2}}}=\\frac{80}{100} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q32": {
+      "question_uid": "pp:ec:2013:q32",
+      "exam_uid": "ec:2013:set1:q32",
+      "title": "GATE EC 2013 | Set 1 | Question: 32",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Two magnetically uncoupled inductive coils have Q factors $q_{1}$ and $q_{2}$ at the chosen operating frequency. Their respective resistances are $R_{1}$ and $R_{2}$ When connected in series, their effective Q factor at the same operating frequency is\n\n",
+      "options": [
+        "$q_{1}+q_{2}$",
+        "$\\left ( \\frac{1}{q_{1}} \\right )+\\left ( \\frac{1}{q_{2}} \\right )$",
+        "$\\frac{\\left ( q_{1}R_{1}+q_{2}R_{2} \\right )}{R_{1}+R_{2}}$",
+        "$\\frac{\\left ( q_{1}R_{2}+q_{2}R_{1} \\right )}{R_{1}+R_{2}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "sinusoidal-steady-state-analysis",
+          "subtopicLabel": "Sinusoidal Steady State Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "sinusoidal-steady-state-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Sinusoidal Steady State Analysis",
+        "markdown": "$$\\begin{aligned} q_{1} &=\\frac{\\omega L_{1}}{R_{1}} \\text { and } q_{2}=\\frac{\\omega L_{2}}{R_{2}} \\\\ \\omega L_{1} &=q_{1} R_{1} \\text { and } \\omega L_{2}=q_{2} R_{2} \\end{aligned}$$\n\nCoils are connected in series.\n\n$$\\begin{aligned} S_{0} q \\cdot R &=\\omega L_{1}+\\omega L_{2}=q_{1} R_{1}+q_{2} R_{2} \\\\ q &=\\frac{q_{1} R_{1}+q_{2} R_{2}}{R} \\\\ h &=R_{1}+R_{2} \\\\ q &=\\frac{q_{1} R_{1}+q_{2} R_{2}}{R_{1}+R_{2}} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q33": {
+      "question_uid": "pp:ec:2013:q33",
+      "exam_uid": "ec:2013:set1:q33",
+      "title": "GATE EC 2013 | Set 1 | Question: 33",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The impulse response of a continuous time system is given by $h(t)= \\delta (t-1)+\\delta (t-3)$. The value of the step response at t = 2 is",
+      "options": [
+        "$0$\n",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "Step response = Integration of impulse response\n\n$\\int_{-\\infty}^{t} \\delta(t-1) d t=u(t-1)$\n\n$\\int_{-\\infty}^{t} \\delta(t-3) d t=u(t-3)$\n\n<img src=\"/question-images/ec/2013/ec-2013-e7841c67df.webp\" />\n\n$$\\begin{aligned} \\text{at}\\quad t&=2\\\\ y(t)&=1 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q34": {
+      "question_uid": "pp:ec:2013:q34",
+      "exam_uid": "ec:2013:set1:q34",
+      "title": "GATE EC 2013 | Set 1 | Question: 34",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The small-signal resistance $\\left ( i.e.,dV_{B}/dI_{D} \\right )$ in $k\\Omega$ offered by the n-channel MOSFET M shown in the figure below, at a bias point of $V_{B}=2V$ is (device data for M: device transconductance parameter $k_{N}=\\mu _{n}{C}'_{OX}\\left ( \\frac{W}{L} \\right )= 40\\mu A/V^{2}$, threshold voltage $V_{TN}=1V$, and neglect body effect and channel length modulation effects)<br><img src=\"/question-images/ec/2013/ec-2013-172f79f3d9.webp\"/> \r\n\r\n",
+      "options": [
+        "$12.5$",
+        "$25$",
+        "$50$",
+        "$100$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "fet-and-mosfet-analysis",
+          "subtopicLabel": "FET and MOSFET Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "fet-and-mosfet-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - FET and MOSFET Analysis",
+        "markdown": "$$\\begin{aligned} g_{m}&=\\frac{\\partial I_{B}}{\\partial V_{GS}} \\\\ V_{B} &=V_{G} \\\\ V_{S} &=0 \\\\ V_{G S} &=V_{G}-V_{S}=V_{G}-0=V_{G}=V_{B} \\\\ \\frac{\\partial V_{B}}{\\partial I_{D}} &=\\frac{1}{g_{m}} \\\\ V_{D} &=V_{G} \\\\ V_{D}-V_{S} &=V_{G}-V_{S} \\\\ V_{D S} &=V_{G S} \\\\ V_{D S} &>V_{G S}-V_{T} \\end{aligned}$$\n\nSo, the given MOSFET is in saturation region\n\n$$\\begin{aligned} g_{m} &=\\mu_{n} C_{O x}^{\\prime} \\frac{W}{L}\\left(V_{G S}-V_{T}\\right) \\\\ g_{m} &=40 \\times 10^{-6} \\times(2-1)=4 \\times 10^{-5} \\mathrm{S} \\\\ \\frac{\\partial V_{B}}{\\partial I_{D}} &=\\frac{1}{g_{m}}=\\frac{1}{4 \\times 10^{-5}}=\\frac{100 \\times 10^{3}}{4}=25 \\mathrm{k} \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q35": {
+      "question_uid": "pp:ec:2013:q35",
+      "exam_uid": "ec:2013:set1:q35",
+      "title": "GATE EC 2013 | Set 1 | Question: 35",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The ac schematic of an NMOS common-source stage is shown in the figure below, where part of the biasing circuits has been omitted for simplicity. For the n -channel MOSFET M, the transconductance $g_{m}=1 mA/V$ and body effect and channel length modulation effect are to be neglected. The lower cutoff frequency in Hz of the circuit is approximately at<br><img src=\"/question-images/ec/2013/ec-2013-93856921c3.webp\"/> ",
+      "options": [
+        "$8$\n",
+        "$32$",
+        "$50$",
+        "$200$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "frequency-response-of-amplifier",
+          "subtopicLabel": "Frequency Response of Amplifier"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "frequency-response-of-amplifier"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Frequency Response of Amplifier",
+        "markdown": "$f_{L}=\\frac{1}{2 \\pi R C}=\\frac{1}{2 \\times 3.14 \\times(10 k+10 k) \\times 1 \\mu F}=8 Hz$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q36": {
+      "question_uid": "pp:ec:2013:q36",
+      "exam_uid": "ec:2013:set1:q36",
+      "title": "GATE EC 2013 | Set 1 | Question: 36",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A system is described by the differential equation $\\frac{d^{2}y}{dt^{2}}+5\\frac{dy}{dt}+6y (t)=x(t)$ <br> Let $x(t )$ be a rectangular pulse given by <br> $$x(t)=\\left\\{\\begin{matrix} 1 & o \\lt t \\lt 2 \\\\ 0 & otherwise \\end{matrix}\\right.$$<br>\n\n Assuming that y(0) = 0 and $\\frac{dy}{dt}=0$ at t = 0, the Laplace transform of y(t) is",
+      "options": [
+        "$\\frac{e^{-2s}}{s\\left ( s+2 \\right )\\left ( s+3 \\right )}$\n",
+        "$\\frac{1-e^{-2s}}{s\\left ( s+2 \\right )\\left ( s+3 \\right )}$",
+        "$\\frac{e^{-2s}}{\\left ( s+2 \\right )\\left ( s+3 \\right )}$",
+        "$\\frac{1-e^{-2s}}{\\left ( s+2 \\right )\\left ( s+3 \\right )}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "laplace-transform",
+          "subtopicLabel": "Laplace Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "laplace-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "$$\\begin{array}{l} x(t)=u(t)-u(t-2) \\\\ X(s)=\\frac{1}{s}-\\frac{e^{-2 s}}{s}=\\frac{1-e^{-2 s}}{s} \\end{array}$$\n\nGiven that\n\n$\\frac{d^{2} y}{d t^{2}}+5 \\frac{d y}{d t}+6 y(t)=x(t)$\n\nTaking Laplace transform on both the sides\n\n$$\\begin{array}{l} \\left(y(0)=0 \\text { and } \\frac{d y}{d t}=0 \\text { at } t=0\\right)\\\\ \\left.s^{2} \\eta s\\right)+5 s Y(s)+6 Y(s)=x(s) \\\\ Y(s)\\left[s^{2}+5 s+6\\right]=\\frac{1-e^{-2 s}}{s}\\\\ Y(s)=\\frac{1-e^{-2 s}}{s\\left(s^{2}+5 s+6\\right)}=\\frac{1-e^{-2 s}}{s(s+2)(s+3)} \\end{array}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q37": {
+      "question_uid": "pp:ec:2013:q37",
+      "exam_uid": "ec:2013:set1:q37",
+      "title": "GATE EC 2013 | Set 1 | Question: 37",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A system described by a linear, constant coefficient, ordinary, first order differential equation has an exact solution given by y(t) for t > 0, when the forcing function is x(t) and the initial condition is y(0). If one wishes to modify the system so that the solution becomes -2y(t) for t > 0, we need to",
+      "options": [
+        "change the initial condition to -y(0) and the forcing function to 2x(t)",
+        "change the initial condition to 2y(0) and the forcing function to -x(t)",
+        "change the initial condition to $j\\sqrt{2}y\\left ( 0 \\right )$ and the forcing function to $j\\sqrt{2}x\\left ( t \\right )$\n",
+        "change the initial condition to -2y(0) and the forcing function to -2x(t)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "$\\frac{d y(t)}{d t}+k y(t)=x(t)$\n\nTaking Laplace transform of both sides, we have\n\n$s Y(s)-y(0)+k Y(s)=X(s)$\n\n$Y(s)[s+k]=X(s)+y(0)$\n\n$\\Rightarrow Y(s)=\\frac{X(s)}{s+k}+\\frac{y(0)}{s+k}$\n\nTaking inverse Laplace transform, we have\n\n$y(t)=e^{-k t} x(t)+y(0) e^{-k t}$\n\nSo if we want -2y(t) as a solution both x(t) and  y(0) has to be multiplied by -2; hence change x(t) by -2x(t) and y(0) by -2y(0).\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q38": {
+      "question_uid": "pp:ec:2013:q38",
+      "exam_uid": "ec:2013:set1:q38",
+      "title": "GATE EC 2013 | Set 1 | Question: 38",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider two identically distributed zero-mean random variables U and V. Let the cumulative distribution functions of U and 2V be $F(x)$ and $G(x)$ respectively. Then, for all values of $x$",
+      "options": [
+        "$F\\left ( x \\right )-G\\left ( x \\right )\\leq 0$\n",
+        "$F\\left ( x \\right )-G\\left ( x \\right )\\geq 0$",
+        "$\\left ( F\\left ( x \\right )-G\\left ( x \\right ) \\right )\\cdot x\\leq 0$",
+        "$\\left ( F\\left ( x \\right )-G\\left ( x \\right ) \\right )\\cdot x\\geq 0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "random-processes",
+          "subtopicLabel": "Random Processes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "random-processes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Processes",
+        "markdown": "$$\\begin{aligned} F(x) &=P\\{X \\leq x\\} \\\\ G(x) &=P\\{2 x \\leq x\\} \\\\ &=P\\{x \\leq x / 2\\} \\end{aligned}$$\n\nFor positive values of x\n\n$F(x)-G(x) \\geq 0$\n\nFor negative values of x\n\n$F(x)-G(x) \\lt 0$\n\nbut $[F(x)-G(x)] \\cdot x \\geq 0 \\cdots$ for all values of x\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q39": {
+      "question_uid": "pp:ec:2013:q39",
+      "exam_uid": "ec:2013:set1:q39",
+      "title": "GATE EC 2013 | Set 1 | Question: 39",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The DFT of a vector [a b c d] is the vector $$\\begin{bmatrix} \\alpha & \\beta & \\gamma &\\delta \\end{bmatrix}$$. Consider the product <br>$$\\begin{bmatrix} p &q &r &s\\end{bmatrix}=\\begin{bmatrix} a &b &c &d \\end{bmatrix}\\begin{bmatrix} a &b &c &d \\\\ d &a &b & c\\\\ c& d &a &b \\\\ b&c &d &a \\end{bmatrix}$$<br> The DFT of the vector $$\\begin{bmatrix} p &q &r &s \\end{bmatrix}$$ is a scaled version of\r\n ",
+      "options": [
+        "$$\\begin{bmatrix} \\alpha ^{2} &\\beta ^{2} &\\gamma ^{2} &\\delta ^{2} \\end{bmatrix}$$\n",
+        "$$\\begin{bmatrix} \\sqrt{\\alpha } &\\sqrt{\\beta } &\\sqrt{\\gamma } &\\sqrt{\\delta } \\end{bmatrix}$$\n",
+        "$$\\begin{bmatrix} \\alpha +\\beta &\\beta +\\delta &\\delta +\\gamma &\\gamma +\\alpha \\end{bmatrix}$$\n",
+        "$$\\begin{bmatrix} \\alpha &\\beta &\\gamma &\\delta \\end{bmatrix}$$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "dtfs-dtft-and-dft",
+          "subtopicLabel": "DTFS, DTFT and DFT"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "dtfs-dtft-and-dft"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - DTFS, DTFT and DFT",
+        "markdown": "$$\\begin{aligned} \\operatorname{DFT}[\\rho q r s] &=[a b c d] *[a b c d] \\\\ \\text { So, DFT }[p q r s] &=\\left[\\alpha^{2} \\beta^{2} \\gamma^{2} \\delta^{2}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q40": {
+      "question_uid": "pp:ec:2013:q40",
+      "exam_uid": "ec:2013:set1:q40",
+      "title": "GATE EC 2013 | Set 1 | Question: 40",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The signal flow graph for a system is given below. The transfer function $\\frac{Y\\left ( s \\right )}{U\\left ( s \\right )}$ for this system is<br><img src=\"/question-images/ec/2013/ec-2013-24efa30070.webp\"/> \n\n",
+      "options": [
+        "$\\frac{s+1}{5s^{2}+6s+2}$\n",
+        "$\\frac{s+1}{s^{2}+6s+2}$\n",
+        "$\\frac{s+1}{s^{2}+4s+2}$\n",
+        "$\\frac{1}{5s^{2}+6s+2}$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "basics-of-control-systems-block-diagram-and-sfgs",
+          "subtopicLabel": "Basics of Control Systems, Block Diagram and SFGs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "basics-of-control-systems-block-diagram-and-sfgs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
+        "markdown": "Using Mason's gain formula,\n\n$$\\begin{aligned} \\Delta &=1-\\left[-2 s^{-1}-2 s^{-2}-4-4 s^{-1}\\right] \\\\ \\Delta &=1+\\frac{2}{s}+\\frac{2}{s^{2}}+4+\\frac{4}{s} \\\\ \\Delta &=\\frac{5 s^{2}+6 s+2}{s^{2}} \\\\ P_{1} &=s^{2}=\\frac{1}{s^{2}} \\\\ P_{2} &=s^{-1}=\\frac{1}{s} \\\\ \\Delta_{1} &=1 \\\\ \\Delta_{2} &=1 \\\\ \\frac{Y(s)}{U(s)} &=\\frac{\\sum P_{k} \\Delta_{k}}{\\Delta}=\\frac{\\frac{1}{s^{2}} \\times 1+\\frac{1}{s} \\times 1}{\\frac{5 s^{2}+6 s+2}{s^{2}}} \\\\ \\frac{Y(s)}{U(s)} &=\\frac{s+1}{5 s^{2}+6 s+2} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q41": {
+      "question_uid": "pp:ec:2013:q41",
+      "exam_uid": "ec:2013:set1:q41",
+      "title": "GATE EC 2013 | Set 1 | Question: 41",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below the op-amps are ideal. Then $V_{out}$ in Volts is<br><img src=\"/question-images/ec/2013/ec-2013-d4e02570cc.webp\"/> \n",
+      "options": [
+        "$4$\n",
+        "$6$\n",
+        "$8$",
+        "$10$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "Output of first op-amp\n\n$$\\begin{array}{l} V_{\\text {out } 1}=-2\\left[-\\frac{1}{1}\\right]+1\\left[1+\\frac{1}{1}\\right]=2+1(2)=4 \\mathrm{V} \\\\ V_{\\text {out }}=4\\left(1+\\frac{1}{1}\\right)=4(2)=8 \\mathrm{V} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q42": {
+      "question_uid": "pp:ec:2013:q42",
+      "exam_uid": "ec:2013:set1:q42",
+      "title": "GATE EC 2013 | Set 1 | Question: 42",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, $Q_{1}$ has negligible collector-to-emitter saturation voltage and the diode drops negligible voltage across it under forward bias. If $V_{cc}$\n is +5 V, X and Y are digital signals with 0 V as logic 0 and $V_{cc}$ as logic 1, then the Boolean expression for Z is<br><img src=\"/question-images/ec/2013/ec-2013-2cf1a27b9c.webp\"/> \n",
+      "options": [
+        "XY",
+        "$\\overline{X}Y$\n",
+        "$X\\overline{Y}$\n",
+        "$\\overline{XY}$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "logic-families",
+          "subtopicLabel": "Logic Families"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "logic-families"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Logic Families",
+        "markdown": "$$\\begin{array}{cc|c} X & Y & Z \\\\ \\hline 0 & 0 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 0 \\\\ 1 & 1 & 0 \\end{array}\\quad \\begin{array}{cc|c|c} X & Y & Q & Z \\\\ \\hline 0 & 0 & OFF & 0 \\\\ 0 & +5 \\vee & OFF & +5 V \\\\ +5 \\vee & 0 & ON & 0 \\\\ +5 \\vee & +5 \\vee & ON & 0 \\end{array}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q43": {
+      "question_uid": "pp:ec:2013:q43",
+      "exam_uid": "ec:2013:set1:q43",
+      "title": "GATE EC 2013 | Set 1 | Question: 43",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A voltage $1000\\sin \\omega t$ Volts is applied across YZ. Assuming ideal diodes, the voltage measured across WX in Volts, is <br><img src=\"/question-images/ec/2013/ec-2013-4c609f0093.webp\"/> \r\n",
+      "options": [
+        "$\\sin wt$\n",
+        "$\\frac{\\left ( \\sin wt+\\left | \\sin wt \\right | \\right )}{2}$",
+        "$\\frac{\\left ( \\sin wt-\\left | \\sin wt \\right | \\right )}{2}$\n",
+        "0 for all t"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "diodes-applications",
+          "subtopicLabel": "Diodes Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "diodes-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Diodes Applications",
+        "markdown": "Case 1:\n\nWhen $V_{Y Z}$ is positive, then all the four diodes are reverse bias\n\n$$\\begin{aligned} \\mathrm{So}, V_{w} &=V_{x}=0 \\\\ V_{w x} &=0 \\mathrm{V} \\end{aligned}$$\n\nCase 2:\n\nWhen $V_{Y Z}$ is negative,\n\nthen all the four diodes are forward bias\n\nSo, all the diodes will be short circuit\n\n$$\\begin{aligned} V_{w} &=V_{x} \\\\ V_{w x} &=V_{w}-V_{x}=V_{w}-V_{w}=0 \\\\ V_{w x} &=0\\\\ \\text{So}, V_{w x}&=0 \\;\\text{for all }t \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q44": {
+      "question_uid": "pp:ec:2013:q44",
+      "exam_uid": "ec:2013:set1:q44",
+      "title": "GATE EC 2013 | Set 1 | Question: 44",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Three capacitors $C_{1}$, $C_{2}$ and $C_{3}$  whose values are 10$\\mu$F, 5$\\mu$F, and 2$\\mu$F respectively, have breakdown voltages of 10V, 5V, and 2V respectively. For the interconnection shown below, the maximum safe voltage in Volts that can be applied across the combination, and the corresponding total charge in $\\mu$C stored in the effective capacitance across the terminals are respectively, <br><img src=\"/question-images/ec/2013/ec-2013-fc78ee77a2.webp\"/> ",
+      "options": [
+        "2.8 and 36",
+        "7 and 119",
+        "2.8 and 32",
+        "7 and 80"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "$$\\begin{aligned} Q &=C V \\\\ Q_{1} &=C_{1} V_{1}=10 \\times 10^{-6} \\times 10=100 \\mu \\mathrm{C} \\\\ Q_{2} &=C_{2} V_{2}=5 \\times 10^{-6} \\times 5=25 \\mu \\mathrm{C} \\\\ Q_{3} &=C_{3} V_{3}=2 \\times 10^{-6} \\times 2=4 \\mu \\mathrm{C} \\end{aligned}$$\n\nCapacitors $C_{2}$ and $C_{3}$ are in series.\n\nIn series charge is same. So, the maximum charge on $C_{2}$ and $C_{3}$ will be\n\nminimum of $\\left(Q_{2}, Q_{3}\\right)=\\min (25 \\mu C, 4 \\mu C)=4 \\mu C=Q_{23}$\n\nIn series the equivalent capacitance of $C_{2}$ and $C_{3}$ is\n\n$C_{23}=\\frac{C_{2} C_{3}}{C_{2}+C_{3}}=\\frac{5 \\times 2}{5+2}=\\frac{10}{7} \\mu \\mathrm{F}$\n\nSo, the equivalent voltage\n\n$V_{23}=\\frac{Q_{23}}{C_{23}}=\\frac{4 \\times 10^{-6}}{\\frac{10}{7} \\times 10^{-6}}=\\frac{28}{10}=2.8 \\mathrm{V}$\n\nIn parallel, the voltage is same.\n\n$V_{1}=V_{23}=2.8 \\mathrm{V}$\n\nCharge in capacitor $C_{1}$\n\n$Q_{1}=C_{1} V_{1}=10 \\times 10^{-6} \\times 2.8=28 \\mu \\mathrm{C}$\n\nIn parallel, the total charge\n\n$$\\begin{array}{l} Q=Q_{1}+Q_{23} \\\\ Q=4+28 \\\\ Q=32 \\mu \\mathrm{C} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q45": {
+      "question_uid": "pp:ec:2013:q45",
+      "exam_uid": "ec:2013:set1:q45",
+      "title": "GATE EC 2013 | Set 1 | Question: 45",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "There are four chips each of 1024 bytes connected to a 16 bit address bus as shown in the figure below. RAMs 1, 2, 3 and 4 respectively are mapped to addresses <br><img src=\"/question-images/ec/2013/ec-2013-7b07c8f465.webp\"/> ",
+      "options": [
+        "0C00H-0FFFH, 1C00H-1FFFH, 2C00H-2FFFH, 3C00H-3FFFH",
+        "1800H-1FFFH, 2800H-2FFFH, 3800H-3FFFH, 4800H-4FFFH",
+        "0500H-08FFH, 1500H-18FFH, 3500H-38FFH, 5500H-58FFH",
+        "0800H-0BFFH, 1800H-1BFFH, 2800H-2BFFH, 3800H-3BFFH"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-microprocessors",
+          "subjectLabel": "Microprocessors",
+          "subtopicSlug": "interfacing-and-peripheral-devices",
+          "subtopicLabel": "Interfacing and Peripheral Devices"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-microprocessors",
+          "interfacing-and-peripheral-devices"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Interfacing and Peripheral Devices",
+        "markdown": "Since the range of RAM # 1 is different in all the four options. So we will check for RAM 1 only and then the same procedure can be followed for RAM 2, 3 and 4.\n\nSo, RAM # 1 will be selected when\n\n$$\\begin{array}{l} S_{0}=0 \\\\ S_{1}=0 \\\\ S_{0}=A_{12}=0 \\\\ S_{1}=A_{13}=0 \\end{array}$$\n\nNow the RAM # 1 will be enable when the input of  MUX is 1, or the output of AND gate is 1.\n\n$$\\begin{aligned} \\mathrm{SO}, & A_{10}=0 \\\\ A_{11} &=1 \\\\ A_{14} &=0 \\\\ A_{15} &=0 \\end{aligned}$$\n\n$$\\begin{array}{cccc|cccc|cccc|cccc|c} A_{15} & A_{14} & A_{13} & A_{12} & A_{11} & A_{10} & A_{9} & A_{8} & A_{7} & A_{6} & A_{5} & A_{4} & A_{3} & A_{2} & A_{1} & A_{0} & \\\\ \\hline 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \\text { Start } \\\\ 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & \\text { End } \\\\ \\hline 0 & & &&& 8 & & & 0 & & & &0 & &&&\\text { Start } \\\\ 0& &&& & B& & & F& & & & F & & &&\\text { End } \\\\ \\hline \\end{array}$$\n\nSo, range of RAM # 1 is 0800H to 0BFFH\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q46": {
+      "question_uid": "pp:ec:2013:q46",
+      "exam_uid": "ec:2013:set1:q46",
+      "title": "GATE EC 2013 | Set 1 | Question: 46",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, the silicon npn transistor Q has a very high value of $\\beta$. The required value of $R_{2}$ in k$\\Omega$ to produce $I_{c}=1$ mA is<br><img src=\"/question-images/ec/2013/ec-2013-f5d613b0a1.webp\"/> ",
+      "options": [
+        "$20$\n",
+        "$30$",
+        "$40$",
+        "$50$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "bjt-analysis",
+          "subtopicLabel": "BJT Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "bjt-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - BJT Analysis",
+        "markdown": "Given that, $\\beta$ is very large.\n\n$$\\begin{aligned} \\text{So}, \\quad I_{c}&=I_{E}=1 \\mathrm{mA} \\\\ V_{E} &=I_{E} R_{E}=1 \\times 10^{-3} \\times 500=0.5 \\mathrm{V} \\\\ V_{B E} &=0.7 \\mathrm{V} \\\\ V_{R 2} &=V_{B E}+V_{E}=0.7+0.5=1.2 \\mathrm{V}\\\\ \\text{It is a self bias circuit}\\\\ \\text{So, }\\quad V_{R 2}&=V_{c c} \\times \\frac{R_{2}}{R_{1}+R_{2}} \\\\ 1.2 &=3 \\times \\frac{R_{2}}{60+R_{2}} \\\\ 72+1.2 R_{2} &=3 R_{2} \\\\ 1.8 R_{2} &=72 \\\\ R_{2} &=40 \\mathrm{k} \\Omega \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q47": {
+      "question_uid": "pp:ec:2013:q47",
+      "exam_uid": "ec:2013:set1:q47",
+      "title": "GATE EC 2013 | Set 1 | Question: 47",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let U and V be two independent and identically distributed random variables such that  $P\\left ( U=+1 \\right )=P\\left ( U=-1 \\right )=\\frac{1}{2}$. The entropy H(U +V) in bits is",
+      "options": [
+        "$\\frac{3}{4}$\n",
+        "$1$",
+        "$\\frac{3}{2}$",
+        "$\\log _{2}3$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "information-theory-and-coding",
+          "subtopicLabel": "Information Theory and Coding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "information-theory-and-coding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Information Theory and Coding",
+        "markdown": "$$\\begin{aligned} P(U+V=+2) &=\\frac{1}{2} \\cdot \\frac{1}{2}=\\frac{1}{4} \\\\ P U+V=0) &=\\frac{1}{4}+\\frac{1}{4}=\\frac{1}{2} \\\\ U+V=-2 &=\\frac{1}{2} \\cdot \\frac{1}{2}=\\frac{1}{4} \\\\ H(U+V) &=\\frac{1}{2} \\log _{2} 2+2 \\times \\frac{1}{4} \\log _{2} 4 \\\\ &=\\frac{1}{2}+1=\\frac{3}{2} \\end{aligned}$$\n\n$$\\begin{array}{|c|c|c|} \\hline U & V & (U+V) \\\\ \\hline+1 & +1 & +2 \\\\ +1 & -1 & 0 \\\\ -1 & +1 & 0 \\\\ -1 & -1 & -2 \\\\ \\hline \\end{array}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q48": {
+      "question_uid": "pp:ec:2013:q48",
+      "exam_uid": "ec:2013:set1:q48",
+      "title": "GATE EC 2013 | Set 1 | Question: 48",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Bits 1 and 0 are transmitted with equal probability. At the receiver, the pdf of the respective received signals for both bits are as shown below. <br><img src=\"/question-images/ec/2013/ec-2013-22afac3d8f.webp\"/> <br> If the detection threshold is 1, the BER will be",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{8}$",
+        "$\\frac{1}{16}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "BER is given as\n\n$P_{e}=P(0) P(1 / 0)+P(1) P(0 / 1)$\n\nIf detection threshold = 1 then\n\n$$\\begin{array}{c} P(0)=P(1)=\\frac{1}{2} \\\\ P\\left(\\frac{Y=1}{X=0}\\right)=\\int_{1}^{\\infty} f(z / 0) d z=0 \\end{array}$$\n\n<img src=\"/question-images/ec/2013/ec-2013-e2ea01d60e.webp\" />\n\n$$\\begin{array}{l} P\\left(\\frac{Y=0}{X=1}\\right)=\\int_{0}^{1} f(z / 1) d z=\\frac{1}{4} \\times \\frac{1}{4} \\times 1=\\frac{1}{8} \\\\ \\therefore \\quad P_{e}=\\frac{1}{2} \\times 0+\\frac{1}{2} \\times \\frac{1}{8}=\\frac{1}{16} \\end{array}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q49": {
+      "question_uid": "pp:ec:2013:q49",
+      "exam_uid": "ec:2013:set1:q49",
+      "title": "GATE EC 2013 | Set 1 | Question: 49",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Bits 1 and 0 are transmitted with equal probability. At the receiver, the pdf of the respective received signals for both bits are as shown below. <br><img src=\"/question-images/ec/2013/ec-2013-22afac3d8f.webp\"/> <br> The optimum threshold to achieve minimum bit error rate (BER) is",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{4}{5}$",
+        "$1$",
+        "$\\frac{3}{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "Optimum threshold is given by the point of\n\nintersection of two pdf curves.\n\n$f(z / 0)=1-|z| \\quad ; \\quad|z| \\leq 1$\n\n$f(z / 1)=z / 4 \\quad ; \\quad 0 \\lt z \\lt 2$\n\nThe point of intersection which decides optimum threshold\n\n$$\\begin{aligned} 1-z&=\\frac{1}{4} \\\\ 1&=z+\\frac{z}{4}\\\\ \\Rightarrow \\quad z&=\\frac{4}{5} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2013:q50": {
+      "question_uid": "pp:ec:2013:q50",
+      "exam_uid": "ec:2013:set1:q50",
+      "title": "GATE EC 2013 | Set 1 | Question: 50",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the following figure<br><img src=\"/question-images/ec/2013/ec-2013-2a9b11170f.webp\"/> <br>The current $I_{s}$ in Amps in the voltage source, and voltage $V_{s}$ in Volts across the current source respectively, are ",
+      "options": [
+        "13, - 20",
+        "8, - 10",
+        "- 8, 20",
+        "- 13, 20"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "<img src=\"/question-images/ec/2013/ec-2013-047cc0544a.webp\" />\n\nVoltage across $1 \\Omega$ resistance,\n\n$V_{1}=10 \\mathrm{V}$\n\nCurrent through $1 \\Omega$ resistance,\n\n$I_{1}=\\frac{10}{1}=10 \\mathrm{Amp}$\n\nVoltage across $2 \\Omega$ resistance,\n\n$V_{2}=10 \\mathrm{V}$\n\nCurrent through $2 \\Omega$ resistance,\n\n$I_{2}=\\frac{10}{2}=5 \\mathrm{Amp}$\n\nApply KCL at node A\n\n$$\\begin{array}{c} -2+I_{s}+I_{2}+I_{1}=0 \\\\ I_{s}=2-I_{1}-I_{2}=2-10-5 \\\\ I_{s}=-13 \\mathrm{Amp} \\end{array}$$\n\nVoltage at node A,\n\n$$\\begin{aligned}\n\nV_{A} &=10 \\mathrm{V} \\\\\n\nV_{s}-10 &=10 \\mathrm{V} \\\\\n\nV_{s} &=10+10=20 \\mathrm{V} \\\\\n\nV_{s} &=20 \\mathrm{V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2013:q51": {
+      "question_uid": "pp:ec:2013:q51",
+      "exam_uid": "ec:2013:set1:q51",
+      "title": "GATE EC 2013 | Set 1 | Question: 51",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the following figure<br><img src=\"/question-images/ec/2013/ec-2013-2a9b11170f.webp\"/> <br>The current in the $1\\Omega$ resistor in Amps is",
+      "options": [
+        "$2$\n",
+        "$3.33$\n",
+        "$10$",
+        "$12$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "The current in the $1 \\Omega$ resistor\n\n$I_{1}=\\frac{10}{1}=10 \\mathrm{Amp}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q52": {
+      "question_uid": "pp:ec:2013:q52",
+      "exam_uid": "ec:2013:set1:q52",
+      "title": "GATE EC 2013 | Set 1 | Question: 52",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A monochromatic plane wave of wavelength $\\lambda =600\\mu m$ is propagating in the direction as shown in the figure below.$\\overrightarrow{E_{i}}$ , $\\overrightarrow{E_{r}}$ , and $\\overrightarrow{E_{t}}$ denote incident, reflected, and transmitted electric field vectors associated with the wave <br><img src=\"/question-images/ec/2013/ec-2013-2c70622faf.webp\"/> <br>The angle of incidence $\\theta _{i}$ and the expression for $\\overrightarrow{E_{i}}$ are",
+      "options": [
+        "$60^{\\circ}$ and $\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}-\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}\\left ( x+z \\right )}{3\\sqrt{2}}}V/m$\r\n",
+        "$45^{\\circ}$ and $\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}+\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}z}{3}}V/m$",
+        "$45^{\\circ}$ and $\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}-\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}\\left ( x+z \\right )}{3\\sqrt{2}}}V/m$",
+        "$60^{\\circ}$ and $\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}-\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}z}{3}}V/m$\r\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "plane-waves-and-properties",
+          "subtopicLabel": "Plane waves and Properties"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "plane-waves-and-properties"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Plane waves and Properties",
+        "markdown": "$E_{i}$ propagates in ZXplane.\n\n$E_{i}$ directed in ZX-plane.\n\nIt is a p-plane of incidence polarized wave.\n\nUsing Snell's law,\n\n$$\\begin{aligned} \\frac{\\sin \\theta_{i}}{\\sin 19.2^{\\circ}} &=\\sqrt{\\frac{4.5 \\epsilon_{o}}{\\epsilon_{o}}} &\\theta_{i}=45^{\\circ} \\\\ \\beta_{x} &=\\beta_{z}=\\beta \\cos 45^{\\circ}=\\frac{\\beta}{\\sqrt{2}} \\end{aligned}$$\n\n(for propagation direction)\n\nFor field direction $=\\frac{\\hat{a}_{x}-\\hat{a}_{z}}{\\sqrt{2}}\\left(45^{\\circ}\\right)$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2013:q53": {
+      "question_uid": "pp:ec:2013:q53",
+      "exam_uid": "ec:2013:set1:q53",
+      "title": "GATE EC 2013 | Set 1 | Question: 53",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A monochromatic plane wave of wavelength $\\lambda =600\\mu m$ is propagating in the direction as shown in the figure below.$\\overrightarrow{E_{i}}$ , $\\overrightarrow{E_{r}}$ , and $\\overrightarrow{E_{t}}$ denote incident, reflected, and transmitted electric field vectors associated with the wave <br><img src=\"/question-images/ec/2013/ec-2013-2c70622faf.webp\"/><br> The expression for $\\overrightarrow{E_{r}}$ is",
+      "options": [
+        "$0.23\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}+\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}\\left ( x-z \\right )}{3\\sqrt{2}}}V/m$",
+        "$-\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}+\\hat{a_{z}} \\right )e^{j\\frac{\\pi \\times 10^{4}z}{3}}V/m$",
+        "$0.44\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}+\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}\\left ( x-z \\right )}{3\\sqrt{2}}}V/m$",
+        "$\\frac{E_{0}}{\\sqrt{2}}\\left ( \\hat{a_{x}}+\\hat{a_{z}} \\right )e^{-j\\frac{\\pi \\times 10^{4}\\left ( x+z \\right )}{3}}V/m$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "plane-waves-and-properties",
+          "subtopicLabel": "Plane waves and Properties"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "plane-waves-and-properties"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Plane waves and Properties",
+        "markdown": "For reflected wave.\n\n$E_{r}$ propagation direction changes without change in angle $45^{\\circ}$\n\n$E_{r} \\text { propagation direction }=\\frac{\\hat{a}_{x}-\\hat{a}_{z}}{\\sqrt{2}}$\n\n$\\Gamma$reflection coefficient\n\n$\\Gamma=-0.23$\n\n$E_{r}$ field direction suitably changes satisfying\n\n$E \\cdot P=0$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q54": {
+      "question_uid": "pp:ec:2013:q54",
+      "exam_uid": "ec:2013:set1:q54",
+      "title": "GATE EC 2013 | Set 1 | Question: 54",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The state diagram of a system is shown below. A system is described by the state-variable equations<br>$\\dot{X}= AX+Bu$;  $y=CX+Du$<br><img src=\"/question-images/ec/2013/ec-2013-a6245bbc6a.webp\"/> <br>The state-variable equations of the system shown in the figure above are",
+      "options": [
+        "$$\\dot{X}= \\begin{bmatrix} -1 &0 \\\\ 1 & -1 \\end{bmatrix}X+\\begin{bmatrix} -1\\\\ 1 \\end{bmatrix}u$$\n$$y=\\begin{bmatrix} 1 & -1 \\end{bmatrix}X+u$$",
+        "$$\\dot{X}= \\begin{bmatrix} -1 &0 \\\\ -1 & -1 \\end{bmatrix}X+\\begin{bmatrix} -1\\\\ 1 \\end{bmatrix}u$$ $$y=\\begin{bmatrix} -1 & -1 \\end{bmatrix}X+u$$                                                                                                                                                                                                           ",
+        "$$\\dot{X}= \\begin{bmatrix} -1 &0 \\\\ -1 & -1 \\end{bmatrix}X+\\begin{bmatrix} -1\\\\ 1 \\end{bmatrix}u$$ $$y=\\begin{bmatrix} -1 & -1 \\end{bmatrix}X-u$$",
+        "$$\\dot{X}= \\begin{bmatrix} -1 &-1 \\\\ 0 & -1 \\end{bmatrix}X+\\begin{bmatrix} -1\\\\ 1 \\end{bmatrix}u$$ $$y=\\begin{bmatrix} 1 & -1 \\end{bmatrix}X-u$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-space-analysis",
+          "subtopicLabel": "State Space Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "state-space-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Space Analysis",
+        "markdown": "<img src=\"/question-images/ec/2013/ec-2013-8443c91197.webp\" />\n\n$$\\begin{aligned} \\mathrm{So}, \\dot{x}_{1} &=-x_{1}-u \\\\ \\dot{x}_{2} &=-\\left(x_{2}+\\dot{x}_{1}\\right)=-\\left(x_{2}-x_{1}-u\\right) \\\\ \\dot{x}_{2} &=x_{1}-x_{2}+u \\\\ y &=\\dot{x}_{2} \\\\ y &=x_{1}-x_{2}+u \\\\ \\dot{x}_{2} &=\\left[\\begin{array}{rr}-1 & 0 \\\\1 & -1\\end{array}\\right]\\left[\\begin{array}{c} x_{1} \\\\x_{2}\\end{array}\\right]+\\left[\\begin{array}{c}-1 \\\\1 \\end{array}\\right] u \\\\ \\dot{x} &=\\left[\\begin{array}{rr} -1 & 0 \\\\ 1 & -1 \\end{array}\\right] X+\\left[\\begin{array}{c} -1 \\\\ 1 \\end{array}\\right] u \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2013:q55": {
+      "question_uid": "pp:ec:2013:q55",
+      "exam_uid": "ec:2013:set1:q55",
+      "title": "GATE EC 2013 | Set 1 | Question: 55",
+      "year": "gateec-2013-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The state diagram of a system is shown below. A system is described by the state-variable equations $\\dot{X}= AX+Bu$ ; $y=CX+Du$<br><img src=\"/question-images/ec/2013/ec-2013-a6245bbc6a.webp\"/> <br>The state transition matrix $e^{At}$ of the system shown in the figure above is ",
+      "options": [
+        "$$\\begin{bmatrix} e^{-t} &0 \\\\ te^{-t} & e^{-t} \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} e^{-t} &0 \\\\ -te^{-t} & e^{-t} \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} e^{-t} &0 \\\\ e^{-t} & e^{-t} \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} e^{-t} &-te^{-t} \\\\ 0 & e^{-t} \\end{bmatrix}$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2013-s1",
+      "yearSetIdentity": "ec:2013:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-space-analysis",
+          "subtopicLabel": "State Space Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "state-space-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Space Analysis",
+        "markdown": "$$\\begin{aligned} A &=\\left[\\begin{array}{rr} -1 & 0 \\\\ 1 & -1 \\end{array}\\right] \\\\ s I-A&=\\left[\\begin{array}{cc} s+1 & 0 \\\\ -1 & s+1 \\end{array}\\right] \\\\ [s I-A]^{-1}&=\\frac{1}{(s+1) \\times(s+1)}\\left[\\begin{array}{cc} s+1 & 0 \\\\ 1 & s+1 \\end{array}\\right]\\\\ [s I-A]^{-1}&=\\left[\\begin{array}{cc}\\frac{1}{s+1} & 0 \\\\ \\frac{1}{(s+1)^{2}} & \\frac{1}{s+1}\\end{array}\\right] \\\\ \\phi(t)&=e^{A t}=L^{-1}\\left\\{(s I-A)^{-1}\\right\\} \\\\ e^{A t}&=\\left[\\begin{array}{cc}e^{-t} & 0 \\\\ t e^{-t} & e^{-t}\\end{array}\\right] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    }
+  }
+}

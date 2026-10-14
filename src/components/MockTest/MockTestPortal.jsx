@@ -13,21 +13,11 @@ import {
 } from "react-icons/fi";
 
 const ICON_BY_OPTION_ID = {
-    full_length: FaBolt,
     paper_mode: FaFileAlt,
     custom: FaSlidersH,
 };
 
 const THEME_BY_OPTION_ID = {
-    full_length: {
-        accent: "emerald",
-        borderSelected: "border-emerald-500",
-        ringSelected: "ring-2 ring-emerald-500/20",
-        bgSelected: "bg-gradient-to-b from-emerald-50/40 via-white to-white",
-        iconSelected: "bg-emerald-600 text-white shadow-sm shadow-emerald-600/30",
-        badgeSelected: "bg-emerald-50 text-emerald-800 border-emerald-200",
-        radioSelected: "bg-emerald-600 border-emerald-600 text-white",
-    },
     paper_mode: {
         accent: "sky",
         borderSelected: "border-sky-500",
@@ -58,7 +48,7 @@ const MockTestPortal = ({
     showBackButton = true,
 }) => {
     const selectedOption = options.find((option) => option.id === selectedKindId) || null;
-    const SelectedIcon = selectedOption ? ICON_BY_OPTION_ID[selectedOption.id] || FaBolt : FaBolt;
+    const SelectedIcon = selectedOption ? ICON_BY_OPTION_ID[selectedOption.id] || FaFileAlt : FaFileAlt;
 
     return (
         <div className="mocktest-portal-wrap flex min-h-0 flex-1 items-start justify-center overflow-y-auto p-4 sm:p-6 lg:p-8">
@@ -108,13 +98,13 @@ const MockTestPortal = ({
                     </div>
                 </div>
 
-                {/* Option Cards Grid */}
+                {/* Option Cards Grid - exactly 2 modes: Past Papers & Custom Builder */}
                 <div className="p-6 lg:p-8">
-                    <div className="mocktest-portal-grid grid grid-cols-1 gap-5 lg:grid-cols-3">
+                    <div className="mocktest-portal-grid grid grid-cols-1 gap-5 md:grid-cols-2 max-w-4xl mx-auto">
                         {options.map((option) => {
                             const isSelected = selectedKindId === option.id;
-                            const Icon = ICON_BY_OPTION_ID[option.id] || FaBolt;
-                            const theme = THEME_BY_OPTION_ID[option.id] || THEME_BY_OPTION_ID.full_length;
+                            const Icon = ICON_BY_OPTION_ID[option.id] || FaFileAlt;
+                            const theme = THEME_BY_OPTION_ID[option.id] || THEME_BY_OPTION_ID.paper_mode;
 
                             return (
                                 <button

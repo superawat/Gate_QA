@@ -58,7 +58,8 @@ export interface TopicNoteRecord {
 }
 
 export interface UserTrackerPreferences {
-  activeTrack: "cse" | "da";
+  activeTrack: string;
+  [key: string]: any;
   examDateCse: string;        // default: "2027-02-06"
   examDateDa: string;         // default: "2027-02-07"
   countdownDisplayMode: "hero" | "compact" | "hidden";
@@ -184,11 +185,14 @@ const safeParseJson = <T>(value: string | null, fallback: T): T => {
   }
 };
 
-export const getTrackerStorageKey = (track: "cse" | "da"): string =>
-  track === "da" ? TRACKER_STORAGE_KEY_DA : TRACKER_STORAGE_KEY_CSE;
+export const getTrackerStorageKey = (track: string = "cse"): string => {
+  if (track === "da") return TRACKER_STORAGE_KEY_DA;
+  if (track === "cse") return TRACKER_STORAGE_KEY_CSE;
+  return `${TRACKER_STORAGE_KEY_PREFIX}${track}_v1`;
+};
 
 /** Load local tracker store for a track */
-export const loadTrackerStore = (track: "cse" | "da"): UserTrackerStore => {
+export const loadTrackerStore = (track: string): UserTrackerStore => {
   if (typeof window === "undefined" || !window.localStorage) {
     return createEmptyTrackerStore();
   }
@@ -205,7 +209,7 @@ export const loadTrackerStore = (track: "cse" | "da"): UserTrackerStore => {
 };
 
 /** Save local tracker store for a track */
-export const saveTrackerStore = (track: "cse" | "da", store: UserTrackerStore): void => {
+export const saveTrackerStore = (track: string, store: UserTrackerStore): void => {
   if (typeof window === "undefined" || !window.localStorage) return;
   const nowIso = new Date().toISOString();
   const updatedStore: UserTrackerStore = {
@@ -260,7 +264,7 @@ export const saveTrackerPreferences = (prefs: Partial<UserTrackerPreferences>): 
 
 /** Toggle Theory status for any node (Topic or Subtopic) */
 export const toggleTheoryStatus = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string,
   explicitValue?: boolean,
   childNodeIds?: string[],
@@ -315,7 +319,7 @@ export const toggleTheoryStatus = (
 
 /** Bulk mark all topics and subtopics in a subject as theory complete / incomplete */
 export const setSubjectTheoryStatus = (
-  track: "cse" | "da",
+  track: string,
   topicIds: string[],
   isCompleted: boolean,
   allSubtopicIds?: string[]
@@ -344,7 +348,7 @@ export const setSubjectTheoryStatus = (
 
 /** Bulk mark nodes as revised / not revised in a single atomic store mutation */
 export const setSubjectRevisionStatus = (
-  track: "cse" | "da",
+  track: string,
   nodeIds: string[],
   isRevised: boolean
 ): UserTrackerStore => {
@@ -381,7 +385,7 @@ export const setSubjectRevisionStatus = (
 
 /** Bulk set custom field for multiple nodes in a single atomic store mutation */
 export const setSubjectCustomField = (
-  track: "cse" | "da",
+  track: string,
   nodeIds: string[],
   fieldKey: string,
   value: string
@@ -428,7 +432,7 @@ export const setSubjectCustomField = (
 
 /** Save or delete a topic note using LWW + Tombstones */
 export const saveTopicNote = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string,
   content: string
 ): UserTrackerStore => {
@@ -457,7 +461,7 @@ export const saveTopicNote = (
 
 /** Record a revision event (appends to local history) */
 export const recordRevisionEvent = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string,
   details: {
     source: "practice" | "manual";
@@ -493,7 +497,7 @@ export const recordRevisionEvent = (
 
 /** Increment or decrement manual revision count */
 export const incrementRevisionCount = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string,
   delta = 1
 ): UserTrackerStore => {
@@ -528,7 +532,7 @@ export const incrementRevisionCount = (
 
 /** Toggle or set Revised status checkbox for any node (Topic or Subtopic) with parent/child auto-sync */
 export const setRevisionStatus = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string,
   isRevised?: boolean,
   childNodeIds?: string[],
@@ -619,7 +623,7 @@ export const setRevisionStatus = (
 
 /** Set a custom column field for any node with automatic mock & mockCount synchronization */
 export const setCustomField = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string,
   fieldKey: string,
   value: string
@@ -668,7 +672,7 @@ export const setCustomField = (
 
 /** Reset topic or node manual progress (Theory, Notes, Revisions, Custom Fields) without touching practice data */
 export const resetTopicManualProgress = (
-  track: "cse" | "da",
+  track: string,
   nodeId: string
 ): UserTrackerStore => {
   const store = loadTrackerStore(track);
@@ -732,7 +736,7 @@ export interface QuestionBankItem {
   primaryTopic?: string;
   tags?: string[] | string;
   subtopics?: Array<{ label?: string; slug?: string }>;
-  track?: "cse" | "da";
+  track?: string;
   exam?: { track?: string; year?: number; set?: number; [key: string]: unknown };
   [key: string]: unknown;
 }
@@ -750,7 +754,7 @@ const parseJsonSafe = <T>(rawValue: string | null, fallback: T): T => {
  * Merges practice attempts, Aptitude, DA, and mock test sessions without modifying raw store.
  */
 export const loadCanonicalPracticeRecords = (
-  track: "cse" | "da" = "cse",
+  track: string = "cse",
   storage: Storage | null = typeof window !== "undefined" ? window.localStorage : null
 ): {
   solvedSet: Set<string>;
@@ -875,21 +879,39 @@ export const normalizeToken = (val: unknown): string =>
 /**
  * Checks if a question belongs to a track
  */
-export const isQuestionInTrack = (q: QuestionBankItem, track: "cse" | "da"): boolean => {
+export const isQuestionInTrack = (q: QuestionBankItem, track: string): boolean => {
   if (!q) return false;
+  const target = String(track || "").trim().toLowerCase();
   const explicitTrack = String(q.track || q.exam?.track || "").toLowerCase();
-  if (explicitTrack === "cse" || explicitTrack === "da") {
-    return explicitTrack === track;
+  if (explicitTrack) {
+    if (explicitTrack === "cse" || explicitTrack === "cs" || explicitTrack === "it" || explicitTrack === "isro") {
+      return target === "cse";
+    }
+    return explicitTrack === target;
   }
   const uid = String(q.question_uid || q.uid || "").toLowerCase();
   if (uid.startsWith("da:") || uid.startsWith("da-")) {
-    return track === "da";
+    return target === "da";
+  }
+  if (uid.startsWith("pp:ec:") || uid.startsWith("ec:") || uid.startsWith("ec-")) {
+    return target === "ec";
+  }
+  if (uid.startsWith("pp:ee:") || uid.startsWith("ee:") || uid.startsWith("ee-")) {
+    return target === "ee";
+  }
+  if (uid.startsWith("pp:me:") || uid.startsWith("me:") || uid.startsWith("me-")) {
+    return target === "me";
+  }
+  if (uid.startsWith("pp:ce:") || uid.startsWith("ce:") || uid.startsWith("ce-")) {
+    return target === "ce";
   }
   const slug = String(q.subjectSlug || "").toLowerCase();
-  if (slug.startsWith("da:")) {
-    return track === "da";
-  }
-  return track === "cse";
+  if (slug.startsWith("da:") || slug.startsWith("da-")) return target === "da";
+  if (slug.startsWith("ec-") || slug.startsWith("ec:")) return target === "ec";
+  if (slug.startsWith("ee-") || slug.startsWith("ee:")) return target === "ee";
+  if (slug.startsWith("me-") || slug.startsWith("me:")) return target === "me";
+  if (slug.startsWith("ce-") || slug.startsWith("ce:")) return target === "ce";
+  return target === "cse";
 };
 
 /**
@@ -898,7 +920,7 @@ export const isQuestionInTrack = (q: QuestionBankItem, track: "cse" | "da"): boo
 export const isQuestionInSubject = (q: QuestionBankItem, subject: SubjectNode): boolean => {
   if (!q) return false;
   const qSubjectSlug = normalizeToken(q.subjectSlug || q.subject);
-  const qSubjectClean = qSubjectSlug.replace(/^da:/, "");
+  const qSubjectClean = qSubjectSlug.replace(/^(da|ec|ee|me|ce)[:\-]/, "");
   
   const matchesDirectSlug = normalizeToken(subject.slug) === qSubjectSlug || normalizeToken(subject.slug) === qSubjectClean;
   const matchesCanonical = subject.canonicalSubjectSlugs.some(
@@ -925,13 +947,13 @@ export const isQuestionInTopic = (q: QuestionBankItem, topic: TopicNode): boolea
   );
   
   const qPrimary = normalizeToken(q.primaryTopic);
-  const qSubject = normalizeToken(q.subjectSlug || q.subject).replace(/^da:/, "");
+  const qSubject = normalizeToken(q.subjectSlug || q.subject).replace(/^(da|ec|ee|me|ce)[:\-]/, "");
 
   // Subject match check
-  const topicSubjectClean = normalizeToken(topic.subjectSlug).replace(/^da:/, "");
+  const topicSubjectClean = normalizeToken(topic.subjectSlug).replace(/^(da|ec|ee|me|ce)[:\-]/, "");
   const subjectMatches =
     qSubject === topicSubjectClean ||
-    (topic.canonicalSubjectSlugs && topic.canonicalSubjectSlugs.some((cs) => normalizeToken(cs).replace(/^da:/, "") === qSubject));
+    (topic.canonicalSubjectSlugs && topic.canonicalSubjectSlugs.some((cs) => normalizeToken(cs).replace(/^(da|ec|ee|me|ce)[:\-]/, "") === qSubject));
 
   // Direct tag matching
   const hasPrimaryTag =
@@ -975,7 +997,7 @@ export interface QuestionTaxonomyIndex {
 export const buildQuestionIndexForTrack = (
   questions: QuestionBankItem[],
   taxonomy: TrackTaxonomy,
-  track: "cse" | "da"
+  track: string
 ): QuestionTaxonomyIndex => {
   const trackQuestions: QuestionBankItem[] = [];
   const subjectQuestions = new Map<string, QuestionBankItem[]>();
@@ -991,8 +1013,8 @@ export const buildQuestionIndexForTrack = (
       topicQuestions.set(topic.id, []);
       const primaryTag = normalizeToken(topic.primaryTopicTag);
       const secondaryTags = (topic.secondaryTopicTags || []).map(normalizeToken);
-      const topicSubjectClean = normalizeToken(topic.subjectSlug).replace(/^da:/, "");
-      const topicCanonicalSlugs = (topic.canonicalSubjectSlugs || []).map((cs) => normalizeToken(cs).replace(/^da:/, ""));
+      const topicSubjectClean = normalizeToken(topic.subjectSlug).replace(/^(da|ec|ee|me|ce)[:\-]/, "");
+      const topicCanonicalSlugs = (topic.canonicalSubjectSlugs || []).map((cs) => normalizeToken(cs).replace(/^(da|ec|ee|me|ce)[:\-]/, ""));
 
       const subtopicMatchers: Array<{ slug: string; tags: string[] }> = [];
       if (Array.isArray(topic.subtopics)) {
@@ -1035,7 +1057,7 @@ export const buildQuestionIndexForTrack = (
     );
     const qPrimary = normalizeToken(q.primaryTopic);
     const qSubjectSlug = normalizeToken(q.subjectSlug || q.subject);
-    const qSubjectClean = qSubjectSlug.replace(/^da:/, "");
+    const qSubjectClean = qSubjectSlug.replace(/^(da|ec|ee|me|ce)[:\-]/, "");
 
     for (const pSubject of precomputedSubjects) {
       const matchesSubject =
@@ -1100,7 +1122,7 @@ export const deriveTopicMetrics = (
   questions: QuestionBankItem[],
   solvedQuestionUids: Set<string>,
   progressMap: Record<string, RawPracticeRecord>,
-  track: "cse" | "da" = "cse"
+  track: string = "cse"
 ): DerivedTopicMetrics => {
   const theoryRecord = store.theory[topic.id];
   const explicitTheoryCompleted = Boolean(theoryRecord?.isCompleted);
@@ -1327,7 +1349,7 @@ export const deriveSubjectMetrics = (
   questions: QuestionBankItem[],
   solvedQuestionUids: Set<string>,
   progressMap: Record<string, RawPracticeRecord>,
-  track: "cse" | "da" = "cse"
+  track: string = "cse"
 ): DerivedSubjectMetrics => {
   const matchingTopicMetrics = topicMetricsList.filter((m) =>
     subject.topics.some((t) => t.id === m.topicId)

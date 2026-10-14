@@ -230,6 +230,13 @@ export class DaQuestionService {
         throw new Error("GATE DA search index is invalid.");
       }
 
+      const { readBranchPreferences } = await import("../utils/branchPreference");
+      const prefs = readBranchPreferences();
+      if (prefs?.hasCompletedOnboarding && prefs.selectedBranches.length > 0 && !prefs.selectedBranches.includes("da")) {
+        // DA was deselected while network request was in-flight; discard without caching
+        return;
+      }
+
       this.manifest = manifest;
       this.answersByQuestionUid = answerPayload?.records_by_question_uid || {};
       this.questions = rows.map((row) => normalizeRow(row, this.answersByQuestionUid));
@@ -248,6 +255,19 @@ export class DaQuestionService {
       });
 
     return this.loading;
+  }
+
+  static clearBranch() {
+    this.loaded = false;
+    this.loading = null;
+    this.questions = [];
+    this.questionsByUid = new Map();
+    this.answersByQuestionUid = {};
+    this.detailShardCache.clear();
+    this.detailShardPromises.clear();
+    this.structuredTagsCache = null;
+    this.manifest = null;
+    this.loadError = "";
   }
 
   static async loadDetailShard(shardKey = "unknown") {

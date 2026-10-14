@@ -10,6 +10,7 @@ export const SUBJECTS_ROUTE = "/subjects";
 export const GATE_YEAR_ROUTE = "/gate-:year-pyq";
 export const BLOG_ROUTE = "/blog";
 export const SUPPORT_ROUTE = "/support";
+export const PROFILE_ROUTE = "/profile";
 export const PAGE_QUERY_KEY = "page";
 
 export const FILTER_QUERY_KEYS = [

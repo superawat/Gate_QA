@@ -1,0 +1,2214 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.384Z",
+  "shardKey": "ee-2020-s1",
+  "yearSetKey": "ee-2020-s1",
+  "yearSetIdentity": "ee:2020:set-1",
+  "track": "ee",
+  "year": 2020,
+  "set": 1,
+  "label": "2020 Set 1",
+  "questionCount": 55,
+  "recordsByQuestionUid": {
+    "pp:ee:2020:q1": {
+      "question_uid": "pp:ee:2020:q1",
+      "exam_uid": "ee:2020:set1:q1",
+      "title": "GATE EE 2020 | Set 1 | Question: 1",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "$ax^3+bx^2+cx+d$ is a polynomial on real $x$ over real coefficients $a, b, c, d$ wherein\n$a \\neq 0$. Which of the following statements is true?",
+      "options": [
+        "d can be chosen to ensure that x = 0 is a root for any given set a, b, c.",
+        "No choice of coefficients can make all roots identical.",
+        "a, b, c, d can be chosen to ensure that all roots are complex.",
+        "c alone cannot ensure that all roots are real."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "Given Polynomial $ax^{3}+bx^{2}+cx+d=0;\\; \\; \\; a\\neq 0$\n\nOption (A):\n\nIf d=0, then the polynomial equation becomes\n\n$$\\begin{aligned} ax^3+bx^2+cx&=0\\\\ x(ax^2+bx+c)&=0 \\\\ x=0 \\text{ or } ax^2+bx+c&=0 \\end{aligned}$$\n\nd can be choosen to ensure x=0 is a root of given polynomial.\n\nHence, Option (A) is correct.\n\nOption B:\n\nA third degree polynomial equation with all root equal is given by\n\n$(x+\\alpha )^3=0$\n\nThus, by selecting suitable values of a, b, c and d we can have all roots identical.\n\nHence, option (B) is incorrect.\n\nOption (C): Complex roots always occurs in pairs,\n\nSo, the given polynomial will have maximum of 2 complex roots and 1 real root.\n\nHence, option (C) is incorrect.\n\nOption (D): Nature or roots depends on other coefficients also apart from coefficient 'c'.\n\nHence, option (D) is correct.\n\nHence, the correct options are (A) and (D).\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q2": {
+      "question_uid": "pp:ee:2020:q2",
+      "exam_uid": "ee:2020:set1:q2",
+      "title": "GATE EE 2020 | Set 1 | Question: 2",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which of the following is true for all possible non-zero choices of integers $m, n; m \\neq n$,\nor all possible non-zero choices of real numbers $p, q ; p\\neq q$, as applicable?",
+      "options": [
+        "$\\frac{1}{\\pi}\\int_{0}^{\\pi}\\sin m\\theta \\sin n\\theta \\; d\\theta =0$",
+        "$\\frac{1}{2\\pi}\\int_{-\\pi/2}^{\\pi/2}\\sin p\\theta \\sin q\\theta \\; d\\theta =0$",
+        "$\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}\\sin p\\theta \\cos q\\theta \\; d\\theta =0$",
+        "$\\lim_{\\alpha \\to \\infty }\\frac{1}{2\\alpha }\\int_{-\\alpha }^{\\alpha }\\sin p\\theta \\sin q\\theta \\; d\\theta =0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$$\\begin{aligned} \\because \\; p& \\neq q\\\\ &\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} \\sin p\\theta \\cos q\\theta d\\theta \\\\ &=\\frac{1}{2\\pi}\\cdot \\frac{1}{2}\\int_{-\\pi}^{\\pi} [\\sin (p+q)\\theta + \\sin (p-q)\\theta] d\\theta \\\\ &=\\frac{1}{4\\pi}\\left [ \\frac{-1}{(p+q)}\\cos (p+q)\\theta -\\frac{1}{(p-q)}\\cos (p-q)\\theta \\right ]_{-\\pi}^{\\pi}\\\\ &=\\frac{-1}{4\\pi} \\left \\{ \\frac{1}{(p+q)}(\\cos (p+q) \\pi -\\cos (p+q)(-\\pi)) \\right.\\\\ &+\\left. \\frac{1}{(p-q)}(\\cos (p-q) \\pi -\\cos (p-q)(-\\pi)) \\right \\}\\\\ &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q3": {
+      "question_uid": "pp:ee:2020:q3",
+      "exam_uid": "ee:2020:set1:q3",
+      "title": "GATE EE 2020 | Set 1 | Question: 3",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which of the following statements is true about the two sided Laplace transform?",
+      "options": [
+        "It exists for every signal that may or may not have a Fourier transform.",
+        "It has no poles for any bounded signal that is non-zero only inside a finite time\ninterval.",
+        "The number of finite poles and finite zeroes must be equal.",
+        "If a signal can be expressed as a weighted sum of shifted one sided exponentials,\nthen its Laplace Transform will have no poles."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "It has no poles for any bounded signal that is nonzero in a finite time interval. This is true as we know for finite amplitude finite width signal ROC is entire s plane and ROC never includes any pole.\n\nIt implies for such signals there is no poles. Hence the correct answer is option (B).\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q4": {
+      "question_uid": "pp:ee:2020:q4",
+      "exam_uid": "ee:2020:set1:q4",
+      "title": "GATE EE 2020 | Set 1 | Question: 4",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a signal  $x[n]=\\left ( \\frac{1}{2} \\right )^n \\; 1[n]$, where 1[n]=0 if $n \\lt 0$, and 1[n]=1 if $n \\geq 0.$ The\r\nz-transform of $x[n-k], k \\gt 0$ is $\\frac{z^{-k}}{1-\\frac{1}{2}z^{-1}}$\r\nwith region of convergence being",
+      "options": [
+        "$|z| \\lt 2$",
+        "$|z| \\gt 2$",
+        "$|z| \\lt 1/2$",
+        "$|z| \\gt 1/2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Z-Transform",
+        "markdown": "$$\\begin{aligned}x(n)&=\\left (\\frac{1}{2} \\right )^{n} u(n)\n\n, \\; \\; \\;  \\text{ROC of }x(n):\\left | z \\right | \\gt  \\frac{1}{2} \\\\ x(n-k)\\rightleftharpoons X(z)&=\\frac{z^{-k}}{1-\\frac{1}{2}z^{-1}}\n\n, \\; \\; \\; \\text{ROC of }x(n-k): \\left | z \\right | \\gt \\frac{1}{2}\\\\ \\text{For } x(n-k) \\; \\; \\;  &\\text{ROC will be } \\left | z \\right |\\gt \\frac{1}{2}\\end{aligned}$$.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2020:q5": {
+      "question_uid": "pp:ee:2020:q5",
+      "exam_uid": "ee:2020:set1:q5",
+      "title": "GATE EE 2020 | Set 1 | Question: 5",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The value of the following complex integral, with C representing the unit circle centered\nat origin in the counterclockwise sense, is: <br><br>$\\int_{c}\\frac{z^2+1}{z^2-2z}dz$",
+      "options": [
+        "$8 \\pi i$",
+        "$-8 \\pi i$",
+        "$- \\pi i$",
+        "$\\pi i$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$$\\begin{aligned} I&=\\int _C \\frac{z^2+1}{z^2-2z}dz\\;\\;\\;|z|=1 \\\\ \\text{Using } & \\text{Cauchy's integral theorem}\\\\ \\int _C\\frac{F(z)}{z-a}dz&=2 \\pi i (Re_{(z=a)})\\;\\;\\;...(i)\\\\ I&=\\int _C \\frac{z^2+1}{z(z-2)}dz \\end{aligned}$$\n\nPoles are at z=0 and 2 but only z=0 lies inside the unit circle.\n\nResidue at $(z=0)=\\lim_{z \\to 0}\\frac{z^2+1}{z(z-2)}$\n\n$Re_{(z=0)}=-\\frac{1}{2}$\n\nUsing equation (i)\n\n$\\int _C \\frac{z^2+1}{z^2-2z}dz=2 \\pi i \\times \\left ( \\frac{-1}{2} \\right )=-\\pi i$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q6": {
+      "question_uid": "pp:ee:2020:q6",
+      "exam_uid": "ee:2020:set1:q6",
+      "title": "GATE EE 2020 | Set 1 | Question: 6",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "$x_R\\; and \\; x_A$ are, respectively, the rms and average values of $x(t) = x(t - T)$, and similarly,\n$y_R\\; and \\; y_A$ are, respectively, the rms and average values of $y(t) = kx(t). k, \\;T$ are\nindependent of t. Which of the following is true?",
+      "options": [
+        "$y_A=kx_A;\\; y_R=kx_R$",
+        "$y_A=kx_A;\\; y_R\\neq kx_R$",
+        "$y_A \\neq kx_A;\\; y_R= kx_R$",
+        "$y_A \\neq kx_A;\\; y_R\\neq kx_R$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "Given that,\n\n$$\\begin{aligned} x(t)&=x(t-T) \\; \\text{  i.e. periodic signal}\\\\ \\text{Average of } x(t)&=x_{A}\\\\ \\text{Rms of  }x(t)&=x_{R} \\\\ \\text{Average of }y(t)&=y_{A}\\\\ \\text{Rms of } y(t)&=y_{R} \\\\ y(t)&=k_{x}(t_{0}) \\; \\; ....(i) \\\\ &\\text{Using equation(i),}\\\\ \\text{Average of }y(t)&=k\n\n\\times \\text{ Average of }x(t) \\\\ y_{A}&=kx_{A}\\\\ \\text{Power of }y(t)&=|k|^{2}\\text{ Power of }x(t) \\\\ Rms^{2} \\text{ of } y(t)&=|k|^{2}\\; Rms^{2}\\text{ of }x(t) \\\\ y_{R}^{2}=|k|^{2}\\cdot x_{R}^{2} \\\\ y_{R}=|k|x_{R}\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q7": {
+      "question_uid": "pp:ee:2020:q7",
+      "exam_uid": "ee:2020:set1:q7",
+      "title": "GATE EE 2020 | Set 1 | Question: 7",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A three-phase cylindrical rotor synchronous generator has a synchronous reactance $X_s$\nand a negligible armature resistance. The magnitude of per phase terminal voltage is\n$V_A$ and the magnitude of per phase induced emf is $E_A$. Considering the following two\nstatements, P and Q.<br><br>\nP : For any three-phase balanced leading load connected across the terminals of this\nsynchronous generator, $V_A$ is always more than $E_A$.<br>\nQ : For any three-phase balanced lagging load connected across the terminals of this\nsynchronous generator, $V_A$ is always less than $E_A$. <br><br>Which of the following options is correct?",
+      "options": [
+        "P is false and Q is true.",
+        "P is true and Q is false.",
+        "P is false and Q is false.",
+        "P is true and Q is true."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "<img src=\"/question-images/ee/2020/ee-2020-ddc5604fa8.webp\" />\n\nFor lagging p.f. load :\n\n<img src=\"/question-images/ee/2020/ee-2020-67788654f9.webp\" />\n\nFor all lagging power factor loads: $E_A \\gt V_A$\n\nFor unity p.f. load:\n\n<img src=\"/question-images/ee/2020/ee-2020-5354ac5cf7.webp\" />\n\nStill we can see : $E_A \\gt V_A$\n\nFor 'slighlty' load, phasor diagram will be quite similar to that of unity p.f. load, thus $E_A$ will be greater than $V_A$. Thus P is false.\n\n<img src=\"/question-images/ee/2020/ee-2020-0726c1c743.webp\" />\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q8": {
+      "question_uid": "pp:ee:2020:q8",
+      "exam_uid": "ee:2020:set1:q8",
+      "title": "GATE EE 2020 | Set 1 | Question: 8",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A lossless transmission line with 0.2 pu reactance per phase uniformly distributed along\nthe length of the line, connecting a generator bus to a load bus, is protected up to 80%\nof its length by a distance relay placed at the generator bus. The generator terminal\nvoltage is 1 pu. There is no generation at the load bus. The threshold pu current for\noperation of the distance relay for a solid three phase-to-ground fault on the transmission\nline is closest to:",
+      "options": [
+        "1",
+        "3.61",
+        "5",
+        "6.25"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
+        "markdown": "$I_{f}=\\frac{1}{Z_{Th}}=\\frac{1}{0.2}$\n\n=5 pu for 100% of line\n\nRelay is operated for 80%\n\n$Z_{f}=0.8\\, Z_{t}\\Rightarrow 0.8\\times 0.2=0.16\\, p.u.$\n\nFor 80% of line,\n\n$I_{f}=\\frac{1}{0.16}=6.25\\: p.u.$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2020:q9": {
+      "question_uid": "pp:ee:2020:q9",
+      "exam_uid": "ee:2020:set1:q9",
+      "title": "GATE EE 2020 | Set 1 | Question: 9",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Out of the following options, the most relevant information needed to specify the real\npower (P) at the PV buses in a load flow analysis is",
+      "options": [
+        "solution of economic load dispatch",
+        "rated power output of the generator",
+        "rated voltage of the generator",
+        "base power of the generator"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "Most relevant information needed to specify P at PV buses is solution of economic load dispatch.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q10": {
+      "question_uid": "pp:ee:2020:q10",
+      "exam_uid": "ee:2020:set1:q10",
+      "title": "GATE EE 2020 | Set 1 | Question: 10",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a linear time-invariant system whose input r(t) and output y(t) are related by\nthe following differential equation.<br>$$\\frac{d^2y(t)}{dt^2}+4y(t)=6r(t)$$<br>The poles of this system are at",
+      "options": [
+        "+2j, -2j",
+        "+2, -2",
+        "+4, -4",
+        "+4j, -4j"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "$$\\begin{aligned}\\frac{d^2 y(t)}{dt^{2}}+4y(t) &=6 r(t)\\\\ [s^{2}+4]Y(s)&=6 R(s) \\\\ \\frac{Y(s)}{R(s)}&=\\frac{6}{s^{2}+4} \\\\ \\text{Poles: } s^{2}+4&=0 \\\\ s&=\\pm j2 \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q11": {
+      "question_uid": "pp:ee:2020:q11",
+      "exam_uid": "ee:2020:set1:q11",
+      "title": "GATE EE 2020 | Set 1 | Question: 11",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A single-phase, full-bridge diode rectifier fed from a 230 V, 50 Hz sinusoidal source\nsupplies a series combination of finite resistance. R, and a very large inductance, L,\nThe two most dominant frequency components in the source current are:",
+      "options": [
+        "50 Hz, 0 Hz",
+        "50 Hz, 100 Hz",
+        "50 Hz, 150 Hz",
+        "50 Hz, 250 Hz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "For full bridge rectifier, High inductive load\n\n<img src=\"/question-images/ee/2020/ee-2020-52b3b64025.webp\" />\n\n$$\\begin{aligned} I_{source}&=\\sum_{n=1,3,5}^{\\infty }\\frac{4I_0}{n \\pi} \\sin nd \\sin \\frac{n \\pi}{2} \\sin (n\\omega t+\\phi _n) \\\\ 2d &=\\pi , \\;\\; d=\\frac{\\pi}{2}\\\\ I_{source}&= \\frac{4I_0}{n \\pi} \\sum_{n=1,3,5}^{\\infty } \\sin ^2 n\\left ( \\frac{\\pi}{2} \\right ) \\sin (n\\omega t+\\phi _n)\\\\ I_{source}&\\neq 0 \\end{aligned}$$ For $n=1,3,5,...$\n\nSince the most dominant frequency component will be $f, 3f, f = 50$\n\nSo dominant frequency $= 50 Hz, 150 Hz.$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q12": {
+      "question_uid": "pp:ee:2020:q12",
+      "exam_uid": "ee:2020:set1:q12",
+      "title": "GATE EE 2020 | Set 1 | Question: 12",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Thyristor $T_1$ is triggered at an angle $\\alpha$ (in degree), and $T_2$ at angle $180^{\\circ} + \\alpha$, in each\ncycle of the sinusoidal input voltage. Assume both thyristors to be ideal. To control the\nload power over the range 0 to 2 kW, the minimum range of variation in $\\alpha$ is: <br><img src=\"/question-images/ee/2020/ee-2020-eec0c7b328.webp\" />",
+      "options": [
+        "$0^{\\circ} \\; to \\; 60^{\\circ}$",
+        "$0^{\\circ} \\; to \\; 120^{\\circ}$",
+        "$60^{\\circ} \\; to \\; 120^{\\circ}$",
+        "$60^{\\circ} \\; to \\; 180^{\\circ}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "As per GATE official answer key, MTA (Marks to All)\n\n<img src=\"/question-images/ee/2020/ee-2020-b330c4aa45.webp\" />\n\nAs load is capacitive, for any $\\alpha$ :\n\n<img src=\"/question-images/ee/2020/ee-2020-a39252a61e.webp\" />\n\n$$\\begin{aligned} V_{or}&=\\frac{V_m}{\\sqrt{2\\pi}}\\left [ \\pi - \\alpha +\\frac{1}{2} \\sin 2\\alpha \\right ]^{1/2}\\\\ P_0&=\\left ( \\frac{V_{or}}{z} \\right )^2 \\times R\\\\ &=\\frac{V_{or}^2}{100} \\times 5=\\frac{V_{or}^2}{20}\\\\ \\text{For }\\alpha &=0^{\\circ}\\\\ V_{or}&=\\frac{V_m}{\\sqrt{2}}=200\\\\ P_0&=\\frac{200}{20}=2KW \\end{aligned}$$\n\nFor $\\alpha =120^{\\circ}$, as current distinguishes, so $P=0.$\n\nSo, $\\alpha$ should be $0^{\\circ} \\text{ to } 120^{\\circ}.$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q13": {
+      "question_uid": "pp:ee:2020:q13",
+      "exam_uid": "ee:2020:set1:q13",
+      "title": "GATE EE 2020 | Set 1 | Question: 13",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which of the options is an equivalent representation of the signal flow graph shown here? <br><img src=\"/question-images/ee/2020/ee-2020-6ab35ab725.webp\" />",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "mathematical-models-of-physical-systems",
+          "subtopicLabel": "Mathematical Models of Physical Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "mathematical-models-of-physical-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Mathematical Models of Physical Systems",
+        "markdown": "Simplifying given signal flow graph\n\n<img src=\"/question-images/ee/2020/ee-2020-2cebdf102d.webp\" />\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q14": {
+      "question_uid": "pp:ee:2020:q14",
+      "exam_uid": "ee:2020:set1:q14",
+      "title": "GATE EE 2020 | Set 1 | Question: 14",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A common-source amplifier with a drain resistance, $R_D = 4.7 k\\Omega$, is powered using a\n10 V power supply. Assuming that the transconductance, $g_m, \\;is\\; 520 \\mu A/V$, the voltage\ngain of the amplifier is closest to:",
+      "options": [
+        "-2.44",
+        "-1.22",
+        "1.22",
+        "2.44"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "Given data:\n\n$R_{D}=4.7  K\\Omega ,\\; g_{m}=520 \\mu A/V$\n\nVoltage gain of CS amplifier\n\n$=-g_{m}R_{D}=-520\\, \\mu A/V\\, \\times \\, 4.7\\, k\\Omega =-2.44$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q15": {
+      "question_uid": "pp:ee:2020:q15",
+      "exam_uid": "ee:2020:set1:q15",
+      "title": "GATE EE 2020 | Set 1 | Question: 15",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A sequence detector is designed to detect precisely 3 digital inputs, with overlapping\r\nsequences detectable. For the sequence (1,0,1) and input data (1,1,0,1,0,0,1,1,0,1,0,1,1,0):<br><br>\r\nwhat is the output of this detector?",
+      "options": [
+        "1,1,0,0,0,0,1,1,0,1,0,0",
+        "0,1,0,0,0,0,0,1,0,1,0,0",
+        "0,1,0,0,0,0,0,1,0,1,1,0",
+        "0,1,0,0,0,0,0,0,1,0,0,0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "sequential-logic-circuits",
+          "subtopicLabel": "Sequential Logic Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "sequential-logic-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Sequential Logic Circuits",
+        "markdown": "Given overlapping sequence input data $= 11010011010110$\n\nIt will give output $1$ when $101$ is detected.\n\n$$\\begin{aligned} 110 - 0\\\\ 101 - 1\\\\ 010 - 0\\\\ 100 - 0\\\\ 001 - 0\\\\ 011 - 0\\\\ 110 - 0\\\\ 101 - 1\\\\ 010 - 0\\\\ 101 - 1\\\\ 011 - 0\\\\ 110 - 0\\\\ \\end{aligned}$$\n\nSo, output $= 010000010100$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q16": {
+      "question_uid": "pp:ee:2020:q16",
+      "exam_uid": "ee:2020:set1:q16",
+      "title": "GATE EE 2020 | Set 1 | Question: 16",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Consider the initial value problem below. The value of y at $x = ln \\;2$. (rounded off to 3\ndecimal places) is ________ . <br><br>$\\frac{dy}{dx}=2x-y,\\; y(0)=1$",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.8863",
+        "tolerance": {
+          "lower": 0.8774,
+          "upper": 0.8952
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "$$\\begin{aligned} \\frac{\\mathrm{d} y}{\\mathrm{d} x}&=2x-y \\\\  y(0)&=1, \\; y \\text{ at } x=\\ln  2\\\\ \\frac{\\mathrm{d} y}{\\mathrm{d} x}+y&=2x \\\\ P&=1, \\;\\;     Q=2x \\\\ I.F.&=e^{\\int Pdx}=e^{\\int 1dx}=e^{x}\\\\ \\text{Solution, }   Y(I.F)&=\\int Q(I.F.)dx\\\\ye^{x}&=\\int 2x\\cdot e^{x}dx \\\\&=2(xe^{x}-e^{x})+C \\\\ y&=2x-2+ce^{-x} \\\\ y(0)&=1 \\\\ 1&=0-2+C \\\\ C&=3 \\\\ \\therefore \\; \\; y&=2x-2+3e^{-x} \\\\ \\text{At }x&= \\ln 2 \\\\ y&=2(\\ln 2)-2+3e^{-\\ln 2} \\\\ &=1.386-2+\\frac{3}{2}\\\\\n\n&=0.886\\end{aligned}$$\n\nTherefore, the correct answer is **0.8863** (acceptable range: [0.8774, 0.8952])."
+      }
+    },
+    "pp:ee:2020:q17": {
+      "question_uid": "pp:ee:2020:q17",
+      "exam_uid": "ee:2020:set1:q17",
+      "title": "GATE EE 2020 | Set 1 | Question: 17",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A three-phase, 50 Hz, 4-pole induction motor runs at no-load with a slip of 1%. With\r\nfull load, the slip increases to 5 %. The % speed regulation of the motor (rounded off\r\nto 2 decimal places) is _________ .",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.25",
+        "tolerance": {
+          "lower": 4.1,
+          "upper": 4.4
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system",
+          "subtopicLabel": "Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
+        "markdown": "$$\\begin{aligned} \\text{Synchronous speed, }\\\\ N_s&=\\frac{120f}{P}\\\\ N_s&=\\frac{120 \\times 50}{4}rpm\\\\ N_s&=1500 \\; rpm\\\\ \\text{Speed at no-load,}\\\\ &=N_s(1-S_{nL})\\\\ &=1500(1-0.01)\\\\ &=1485 \\; rpm\\\\ \\text{Speed at full-load,}\\\\ &=N_s(1-S_{fL})\\\\ &=1500(1-0.05)\\\\ &=1425 \\; rpm\\\\ \\% \\text{ speed regulation}&=\\frac{N_{NL}-N_{FL}}{N_{FL}} \\times 100\\\\ &=\\frac{1485-1425}{1425} \\times 100\\\\ &=4.21\\% \\end{aligned}$$\n\nTherefore, the correct answer is **4.25** (acceptable range: [4.1, 4.4])."
+      }
+    },
+    "pp:ee:2020:q18": {
+      "question_uid": "pp:ee:2020:q18",
+      "exam_uid": "ee:2020:set1:q18",
+      "title": "GATE EE 2020 | Set 1 | Question: 18",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Currents through ammeters A2 and A3 in the figure are $1\\angle 10^{\\circ} \\; and \\; 1\\angle 70^{\\circ}$ respectively.\nThe reading of the ammeter A1 (rounded off to 3 decimal places) is ________ A. <br><img src=\"/question-images/ee/2020/ee-2020-4afb333ce5.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.725",
+        "tolerance": {
+          "lower": 1.7,
+          "upper": 1.75
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "galvanometers-voltmeters-and-ammeters",
+          "subtopicLabel": "Galvanometers, Voltmeters and Ammeters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "galvanometers-voltmeters-and-ammeters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Galvanometers, Voltmeters and Ammeters",
+        "markdown": "$I=1\\angle 10^{\\circ}+1\\angle 70^{\\circ}$\n\n$I=1.732\\angle 40^{\\circ}$\n\nThe ready of ammeter is 1.732 A.\n\nTherefore, the correct answer is **1.725** (acceptable range: [1.7, 1.75])."
+      }
+    },
+    "pp:ee:2020:q19": {
+      "question_uid": "pp:ee:2020:q19",
+      "exam_uid": "ee:2020:set1:q19",
+      "title": "GATE EE 2020 | Set 1 | Question: 19",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The Thevenin equivalent voltage, $V_{TH}$, in V (rounded off to 2 decimal places) of the network\nshown below, is _______ .<br><img src=\"/question-images/ee/2020/ee-2020-f364d43488.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "14",
+        "tolerance": {
+          "lower": 13.8,
+          "upper": 14.2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electric-circuits",
+          "subjectLabel": "Electric Circuits",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electric-circuits",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Network Theorems",
+        "markdown": "Only voltage source 4V is there and current source 5A is open circuited\n\n<img src=\"/question-images/ee/2020/ee-2020-61505c8d0c.webp\" />\n\nFrom the above circuit,\n\n$V_{TH1}=4V$\n\nCase-II:\n\nOnly current source 5A is there and voltage source 4V is short circuited.\n\n<img src=\"/question-images/ee/2020/ee-2020-759f90dbb3.webp\" />\n\nFrom the above circuit,\n\n$V_{TH2}=2 \\times 5=10V$\n\nBy applying superposition theorem,\n\n$V_{TH}=V_{TH1}+V_{TH2}=10+4=14V$\n\nTherefore, the correct answer is **14** (acceptable range: [13.8, 14.2])."
+      }
+    },
+    "pp:ee:2020:q20": {
+      "question_uid": "pp:ee:2020:q20",
+      "exam_uid": "ee:2020:set1:q20",
+      "title": "GATE EE 2020 | Set 1 | Question: 20",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A double pulse measurement for an inductively loaded circuit controlled by the IGBT\nswitch is carried out to evaluate the reverse recovery characteristics of the diode. D,\nrepresented approximately as a piecewise linear plot of current vs time at diode turn-off.\n$L_{par}$ is a parasitic inductance due to the wiring of the circuit, and is in series with the\ndiode. The point on the plot (indicate your choice by entering 1. 2, 3 or 4) at which the\nIGBT experiences the highest current stress is ______. <br><img src=\"/question-images/ee/2020/ee-2020-110358f97a.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "3",
+        "tolerance": {
+          "lower": 3,
+          "upper": 3
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "miscellaneous",
+          "subtopicLabel": "Miscellaneous"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "miscellaneous"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Miscellaneous",
+        "markdown": "<img src=\"/question-images/ee/2020/ee-2020-78b9d5fbbf.webp\" />\n\nUsing KCL, $I_s=I_L-I_D$\n\nFor inductively loaded circuits, load can be assumed to be constant.\n\n$\\therefore \\; I_s$ is maximum  when, $I_D$ is minimum, i.e. at point 3.\n\nTherefore, IGBT experiences highest current stress at point 3.\n\nTherefore, the correct answer is **3**."
+      }
+    },
+    "pp:ee:2020:q21": {
+      "question_uid": "pp:ee:2020:q21",
+      "exam_uid": "ee:2020:set1:q21",
+      "title": "GATE EE 2020 | Set 1 | Question: 21",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A single-phase, 4 kVA, 200 V/100 V, 50 Hz transformer with laminated CRGO steel core\nhas rated no-load loss of 450 W. When the high-voltage winding is excited with 160 V,\n40 Hz sinusoidal ac supply, the no-load losses are found to be 320 W. When the highvoltage winding of the same transformer is supplied from a 100 V, 25 Hz sinusoidal ac\nsource, the no-load losses will be _________W (rounded off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "162.5",
+        "tolerance": {
+          "lower": 162.41,
+          "upper": 162.59
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "$$\\begin{aligned}200 V,50 Hz, P_{c}&=450 Watt\\\\ 160 V,40 Hz,\n\nP_{c}&=320 Watt \\\\ 100 V,25 Hz,]P_{c}&=?   Watt \\\\ \\frac{v}{f}=\\text{constant}&=\\frac{200}{50}=\\frac{160}{40}=\\frac{100}{25}\\\\ \\text{So, }    P_{c}&=Af+Bf^{2} \\\\ 450&=A\\times (50)+B\\times (50)^{2} \\;\\; ...(i)\\\\ 320&=A\\times (40)+B\\times (40)^{2} \\;\\; ...(ii)\\\\ \\text{From (i) and (ii),}\\\\ \\frac{450}{50}&=A+B(50) \\;\\;...(iii)\n\n\\\\ \\frac{320}{40}&=A+B(40) \\;\\;...(iv)\n\n\\\\ \\text{Equation (iii)-(iv),} \\\\ (9-8)&=B(10)\\\\ B&=\\frac{1}{10} \\\\   A&=9-\\frac{1}{10}\\times 50=4 \\\\ \\text{Now at 100V,25 Hz,} \\\\P_{c}&=4\\times 25+\\frac{1}{10}\\times (25)^{2}\\\\\n\n&=100+62.5=162.50 Watt\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **162.5** (acceptable range: [162.41, 162.59])."
+      }
+    },
+    "pp:ee:2020:q22": {
+      "question_uid": "pp:ee:2020:q22",
+      "exam_uid": "ee:2020:set1:q22",
+      "title": "GATE EE 2020 | Set 1 | Question: 22",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A single-phase inverter is fed from a 100 V dc source and is controlled using a quasisquare wave modulation scheme to produce an output waveform, $v(t)$. as shown. The\nangle $\\sigma$ is adjusted to entirely eliminate the $3^{rd}$ harmonic component from the output\nvoltage. Under this condition, for $v(t)$, the magnitude of the $5^{th}$ harmonic component as\na percentage of the magnitude of the fundamental component is _______(rounded off\nto 2 decimal places). <br><img src=\"/question-images/ee/2020/ee-2020-749a017bff.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "20.05",
+        "tolerance": {
+          "lower": 19.9,
+          "upper": 20.2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "power-semiconductor-devices-and-commutation-techniques",
+          "subtopicLabel": "Power Semiconductor Devices and Commutation Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "power-semiconductor-devices-and-commutation-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
+        "markdown": "Using result,\n\n$$\\begin{aligned}     V_{n}&=\\frac{4V_{s}}{n\\pi }\\cos n\\sigma\\\\ \\text{For,  }       V_{3}=0\\\\   \\cos 3\\sigma &=0 \\\\   3\\sigma &=\\frac{\\pi }{2} \\\\   \\sigma &=\\frac{\\pi }{6}\\\\ \\text{Now, }   \\frac{V_{5}}{V_{1}}&=\\frac{\\cos 5\\sigma }{5\\cos\\sigma }\\\\&=\\frac{\\cos 5\\pi /6}{5\\cos \\pi /6}=-\\frac{1}{5} \\\\ \\% \\left | \\frac{V_{5}}{V_{1}} \\right |&=\\frac{1}{5}\\times 100=20\\% \\end{aligned}$$\n\nTherefore, the correct answer is **20.05** (acceptable range: [19.9, 20.2])."
+      }
+    },
+    "pp:ee:2020:q23": {
+      "question_uid": "pp:ee:2020:q23",
+      "exam_uid": "ee:2020:set1:q23",
+      "title": "GATE EE 2020 | Set 1 | Question: 23",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A single 50 Hz synchronous generator on droop control was delivering 100 MW power\nto a system. Due to increase in load, generator power had to be increased by 10 MW.\nas a result of which, system frequency dropped to 49.75 Hz. Further increase in load\nin the system resulted in a frequency of 49.25 Hz. At this condition, the power in MW\nsupplied by the generator is ________ (rounded off to 2 decimal places)",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "129",
+        "tolerance": {
+          "lower": 123,
+          "upper": 135
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "Assumed full load frequency is 50 Hz\n\n$$\\begin{aligned}\\tan \\theta &=\\frac{50-49.75}{110-100} \\\\ &=\\frac{49.75-49.25}{(x-(110))} \\\\ \\frac{0.25}{10}&=\\frac{0.5}{(x-150)} \\\\ x-110&=\\frac{0.5\\times 10}{0.25} \\\\ x&=110+20=130\\, MW\\end{aligned}$$\n\n<img src=\"/question-images/ee/2020/ee-2020-99a8a8d4d7.webp\" />\n\nTherefore, the correct answer is **129** (acceptable range: [123, 135])."
+      }
+    },
+    "pp:ee:2020:q24": {
+      "question_uid": "pp:ee:2020:q24",
+      "exam_uid": "ee:2020:set1:q24",
+      "title": "GATE EE 2020 | Set 1 | Question: 24",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Consider a negative unity feedback system with forward path transfer function\n$G(s)=\\frac{K}{(s+a)(s-b)(s+c)}$, where K, a, b, c are positive real numbers. For a Nyquist\npath enclosing the entire imaginary axis and right half of the s-plane in the clockwise\ndirection, the Nyquist plot of $(1 + G(s))$, encircles the origin of $(1 + G(s))$-plane once\nin the clockwise direction and never passes through this origin for a certain value of\nK. Then, the number of poles of $\\frac{G(s)}{1+G(s)}$ lying in the open right half of the s-plane is\n_________ .",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "$$\\begin{aligned}O.L.T.F = G(s) &=\\frac{K}{(s+a)(s-b)(s+c)} \\\\ N &= P - Z ;   \\; \\;P = 1 \\\\\n\n-1 &= 1 - Z ; \\; \\;   N = -1 \\\\\n\nZ &= 2\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ee:2020:q25": {
+      "question_uid": "pp:ee:2020:q25",
+      "exam_uid": "ee:2020:set1:q25",
+      "title": "GATE EE 2020 | Set 1 | Question: 25",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The cross-section of a metal-oxide-semiconductor structure is shown schematically.\nStarting from an uncharged condition, a bias of +3V is applied to the gate contact with\nrespect to the body contact. The charge inside the silicon dioxide layer is then measured\nto be +Q. The total charge contained within the dashed box shown, upon application\nof bias, expressed as a multiple of Q (absolute value in Coulombs, rounded off to the\nnearest integer) is __________ . <br><img src=\"/question-images/ee/2020/ee-2020-26bdb1d666.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0",
+        "tolerance": {
+          "lower": 0,
+          "upper": 0
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "bjt-fet-and-their-biasing-circuits",
+          "subtopicLabel": "BJT, FET and their Biasing Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "bjt-fet-and-their-biasing-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - BJT, FET and their Biasing Circuits",
+        "markdown": "<img src=\"/question-images/ee/2020/ee-2020-cb7052aac7.webp\" />\n\nOverall charge in side the box $q + q - q - q = 0$ charge\n\nTherefore, the correct answer is **0**."
+      }
+    },
+    "pp:ee:2020:q26": {
+      "question_uid": "pp:ee:2020:q26",
+      "exam_uid": "ee:2020:set1:q26",
+      "title": "GATE EE 2020 | Set 1 | Question: 26",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The real numbers, x and y with $y = 3x^2 + 3x + 1$, the maximum and minimum value\nof y for $x \\in [-2, 0]$ are respectively ________",
+      "options": [
+        "7 and 1/4",
+        "7 and 1",
+        "-2 and -1/2",
+        "1 and 1/4"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "complex-variables"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$$\\begin{aligned}\n\ny&=3x^{2}+3x+1 \\; \\;    in \\; [-2,0] \\\\ \\frac{\\partial y}{\\partial x}&=6x+3,\\; \\; \\frac{\\partial^2 y}{\\partial x^2}=6  \\\\ \\frac{\\mathrm{d} y}{\\mathrm{d} x}&=0\\\\ 6x+3&=0 \\\\ x&=\\frac{-1}{2} \\\\ \\frac{d^{2} y}{dx^{2}}&=6 \\gt 0\\text{ minimum} \\end{aligned}$$\n\nMaximum value of y in [-2, 0] is maximum {f(-2), f(0)}\n\nmax{7, 1} = 7\n\nMinimum value of y in [-2, 0]\n\n$$min\\begin{Bmatrix} f(-2) & f(0) &f(-\\frac{1}{2}) \\\\ \\downarrow, &\\downarrow, &\\downarrow \\\\ 7& 1 & \\frac{1}{4} \\end{Bmatrix}+=\\frac{1}{4}$$\n\nMaximum value 7, minimum value $\\frac{1}{4}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q27": {
+      "question_uid": "pp:ee:2020:q27",
+      "exam_uid": "ee:2020:set1:q27",
+      "title": "GATE EE 2020 | Set 1 | Question: 27",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The vector function expressed by <br><br>$F = a_x(5y - k_1z) + a_y(3z + k_2x) + a_z(k_3y - 4x)$ <br><br>represents\na conservative field, where $a_x, a_y, a_z$ are unit vectors along x, y and z directions,\nrespectively. The values of constants $k_1, k_2, k_3$ are given by:",
+      "options": [
+        "$k_1=3, k_2=3, k_3=7$",
+        "$k_1=3, k_2=8, k_3=5$",
+        "$k_1=4, k_2=5, k_3=3$",
+        "$k_1=0, k_2=0, k_3=0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "coordinate-systems-and-vector-calculus",
+          "subtopicLabel": "Coordinate Systems and Vector Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "coordinate-systems-and-vector-calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Coordinate Systems and Vector Calculus",
+        "markdown": "$\\bar{F}=(5y-k_{1}Z)\\hat{i}+(3z+k_{2}x)\\hat{j}+(k_{3}y-4x)\\hat{k}$\n\nis conservative field\n\n$\\bar{F}$ is irrotational,\n\n$$\\begin{aligned}\n\n\\triangledown \\times \\bar{F}&=0\\\\ \\begin{vmatrix} \\hat{i} &\\hat{j} &\\hat{k} \\\\ \\frac{\\partial }{\\partial x}&\\frac{\\partial }{\\partial y} &\\frac{\\partial }{\\partial z} \\\\ 5y-k_{1}z &3z-k_{2}x &k_{3}y -4x \\end{vmatrix}&=0\\\\ \\hat{i}(k_{3}-3)-\\hat{j}(-4+k_{1})+\\hat{k}(k_{2}-5)&=0\\\\ k_{3}-3&=0\\\\  4-k_{1}&=0\\\\ k_{2}-5&=0\\\\ k_{1}&=4\\\\ k_{2}&=5\\\\ k_{3}&=3\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q28": {
+      "question_uid": "pp:ee:2020:q28",
+      "exam_uid": "ee:2020:set1:q28",
+      "title": "GATE EE 2020 | Set 1 | Question: 28",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A 250 V dc shunt motor has an armature resistance of 0.2$\\Omega$ and a field resistance of\r\n100$\\Omega$. When the motor is operated on no-load at rated voltage. It draws an armature\r\ncurrent of 5 A and runs at 1200 rpm. When a load is coupled to the motor, it draws\r\ntotal line current of 50 A at rated voltage, with a 5% reduction in the air-gap flux due\r\nto armature reaction. Voltage drop across the brushes can be taken as 1 V per brush\r\nunder all operating conditions. The speed of the motor, in rpm, under this loaded\r\ncondition, is closest to:",
+      "options": [
+        "1200",
+        "1000",
+        "1220",
+        "900"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "no load current 5 A\n\n<img src&=\"/wp-content/uploads/GATE/EE/20201/a32.jpg\" />\n\n$$\\begin{aligned}\n\nB.R.D&=\\text{1 V per brush}\\\\ \\text{loaded, }I_{L}&=50 A \\\\R_{sh}&=100 \\Omega\\\\ I_{sh}&=\\frac{250}{100}=2.5\\: A \\\\I_{a0}&=2.5\\: A\\\\I_{aL}&=47.5\\: A \\\\V&=E_{b}+I_{a}R_{a}+B.R.D\\\\ E_{b\\, no\\, load}&=V-I_{a0}R_{a}-B.R.D \\\\&=250-2.5(0.2)-1\\times 2 \\\\&=247.5\\, Volts \\\\E_{b\\, load}&=250-47.5(0.2)-1\\times 2 \\\\&=238.5\\, volts\\\\ \\frac{N_{2}}{N_{1}}&=\\frac{E_{b_{2}}}{E_{b_{1}}}\\times \\frac{\\phi_{1} }{\\phi _{2}} \\\\ \\frac{N_{2}}{1200}&=\\frac{238.5}{247.5}\\times \\frac{\\phi _{1}}{0.95\\phi_{1}}\\\\ N_{2}&=1217.22\\, rpm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q29": {
+      "question_uid": "pp:ee:2020:q29",
+      "exam_uid": "ee:2020:set1:q29",
+      "title": "GATE EE 2020 | Set 1 | Question: 29",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Two buses, i and j, are connected with a transmission line of admittance Y, at the two\nends of which there are ideal transformers with turns ratios as shown. Bus admittance\nmatrix for the system is: <br><img src=\"/question-images/ee/2020/ee-2020-2b75e1d0c7.webp\" />",
+      "options": [
+        "$$\\begin{bmatrix} -t_it_jY & t_j^2 Y\\\\ t_i^2 Y & -t_it_jY \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} t_it_jY & -t_j^2 Y\\\\ -t_i^2 Y & t_it_jY \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} t_i^2 Y & -t_it_jY\\\\ -t_it_jY & t_j^2 Y \\end{bmatrix}$$",
+        "$$\\begin{bmatrix} t_it_jY & -(t_i-t_j)^2Y\\\\ -(t_i-t_j)^2Y & t_it_jY \\end{bmatrix}$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "performance-of-transmission-lines-line-parameters-and-corona",
+          "subtopicLabel": "Performance of Transmission Lines, Line Parameters and Corona"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "performance-of-transmission-lines-line-parameters-and-corona"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
+        "markdown": "<img src=\"/question-images/ee/2020/ee-2020-b15ea9ed4d.webp\" />\n\n$$\\begin{aligned}\n\nI&=Y(t_{i}V_{i}-V_{j}t_{j})  \\\\ I_{i}&=t_{i}I \\\\   &=t_{i}^{2}YV_{i}-t_{i}t_{j}YV_{j} \\\\ I_{j}&=-t_{j}I \\\\   &=-I_{i}t_{j}YV_{i}+t_{i}^{2}YV_{j} \\\\ \\begin{bmatrix} I_{i}\\\\ I_{j} \\end{bmatrix}&=\\begin{bmatrix} t_{i}^{2}Y &-t_{i}t_{j}Y \\\\ -t_{i}t_{j}Y &t_{j}^{2}Y \\end{bmatrix}\\begin{bmatrix} V_{i}\\\\ v_{j} \\end{bmatrix}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q30": {
+      "question_uid": "pp:ee:2020:q30",
+      "exam_uid": "ee:2020:set1:q30",
+      "title": "GATE EE 2020 | Set 1 | Question: 30",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider the diode circuit shown below. The diode, D, obeys the current-voltage\ncharacteristic $I_D=I_S\\left ( exp\\left ( \\frac{V_D}{nV_T} \\right )-1 \\right )$, where $n \\gt 1, V_T \\gt 0, V_D$ is the voltage across\nthe diode and $I_D$ is the current through it. The circuit is biased so that voltage, $V \\gt 0$ and current, $I \\lt 0$. If you had to design this circuit to transfer maximum power from\nthe current source ($I_1$) to a resistive load (not shown) at the output, what values $R_1 \\; and \\; R_2$ would you choose? <br><img src=\"/question-images/ee/2020/ee-2020-55e42f5f98.webp\" />",
+      "options": [
+        "Large $R_1$ and large $R_2$.",
+        "Small $R_1$ and small $R_2$.",
+        "Large $R_1$ and small $R_2$.",
+        "Small $R_1$ and large $R_2$."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "$R_{1}$-low, $R_{2}$- high\n\n$V_{D}=V\\times \\frac{R_{2}}{R_{1}+R_{2}}$\n\nIf $R_{2}$ is large $V_{D}$ becomes high\n\nIf $R_{1}$ is less $V_{D}=V$\n\nSo for maximum power,  $R_{1}$ is small and $R_{2}$ is large.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2020:q31": {
+      "question_uid": "pp:ee:2020:q31",
+      "exam_uid": "ee:2020:set1:q31",
+      "title": "GATE EE 2020 | Set 1 | Question: 31",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A non-ideal diode is biased with a voltage of -0.03 V, and a diode current of $I_1$ is\nmeasured. The thermal voltage is 26 mV and the ideality factor for the diode is 15/13.\nThe voltage, in V, at which the measured current increases to 1.5$I_1$ is closest to:",
+      "options": [
+        "-0.02",
+        "-0.09",
+        "-1.5",
+        "-4.5"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "power-semiconductor-devices-and-commutation-techniques",
+          "subtopicLabel": "Power Semiconductor Devices and Commutation Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "power-semiconductor-devices-and-commutation-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
+        "markdown": "$$\\begin{aligned}\n\nI_{1}&=i_{0}\\left [ e^{\\frac{0.03}{15/13\\times 26mV}}-1 \\right ] \\\\ V_{D}&=\\text{ -ve '1' can not be neglected}\\\\&\\text{in diode current equation} \\\\ I_{1}&=I_{0}[e^{-30mV/30mV}-1] \\\\   &=I_{0}[e^{-1}-1]  \\\\  &=-0.64\\: I_{0}  \\\\ 1.5I_{1}&=I_{0}[e^{V_{D}/30mV}-1] \\\\ -1.5\\times 0.64 I_{0}&=I_{0}[e^{V_{D}/30mV}-1]\\\\-0.96&=e^{V_{D2}/30mV}-1\\\\1-0.96&=e^{V_{D2}/30mV}\\\\0.04&=e^{V_{D2}/30mV}\\\\ 30 mV \\ln (0.04)&=V_{D}\\\\ V_{D}&=-0.09 V\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q32": {
+      "question_uid": "pp:ee:2020:q32",
+      "exam_uid": "ee:2020:set1:q32",
+      "title": "GATE EE 2020 | Set 1 | Question: 32",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A benchtop dc power supply acts as an ideal 4 A current source as long as its terminal\nvoltage is below 10 V. Beyond this point, it begins to behave as an ideal 10 V voltage\nsource for all load currents going down to 0 A. When connected to an ideal rheostat,\nfind the load resistance value at which maximum power is transferred, and the corresponding\nload voltage and current.",
+      "options": [
+        "Short, $\\infty$ A, 10 V",
+        "Open, 4 A, 0 V",
+        "2.5 $\\Omega$, 4 A, 10 V",
+        "2.5 $\\Omega$, 4 A, 5 V"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "basic",
+          "subtopicLabel": "Basic "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "basic"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Basic ",
+        "markdown": "<img src=\"/question-images/ee/2020/ee-2020-5d02f9dcbc.webp\" />\n\nMaximum power transistor of VI product is maximum. If draw the the curve, it intersect\n\n(10, 4) that will give maximum power.\n\nThe terminal voltage is 10 V (Load voltage) and current is 4 A (Load current).\n\nLoad resistance is $\\frac{10}{4}=2.5\\Omega$\n\n.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q33": {
+      "question_uid": "pp:ee:2020:q33",
+      "exam_uid": "ee:2020:set1:q33",
+      "title": "GATE EE 2020 | Set 1 | Question: 33",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The static electric field inside a dielectric medium with relative permittivity, $\\varepsilon _r = 2.25$,\nexpressed in cylindrical coordinate system is given by the following expression <br><br>\n$E=a_r 2r+a_\\varphi \\left ( \\frac{3}{r} \\right )+a_z6$<br><br>\nwhere $a_r,a_\\varphi ,a_z$ are unit vectors along $r, \\varphi \\; and \\;z$ directions, respectively. If the above\nexpression represents a valid electrostatic field inside the medium, then the volume\ncharge density associated with this field in terms of free space permittivity, $\\varepsilon _0$, in SI\nunits is given by:",
+      "options": [
+        "$3\\varepsilon _0$",
+        "$4\\varepsilon _0$",
+        "$5\\varepsilon _0$",
+        "$9\\varepsilon _0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "electrostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Electrostatic Fields",
+        "markdown": "$\\vec{D}=\\epsilon \\vec{E}=\\epsilon _{o}\\epsilon _{r}\\vec{E}$\n\n$\\vec{D}=\\epsilon _{o}2.25\\left ( 2r\\hat{a_{r}}+\\frac{3}{r}\\hat{a_{\\phi}+6\\hat{a_{z}}} \\right )$\n\n$\\vec{D}=4.5\\epsilon _{o}r\\hat{a_{r}}+\\frac{6.75\\epsilon _{o}}{r}\\hat{a_{\\phi }}+13.5\\epsilon _{o}\\hat{a_{z}}$\n\nvolume charge density\n\n$\\rho _{v}=\\vec{\\bigtriangledown }\\cdot \\vec{D}$\n\n$\\rho _{v}=\\frac{1}{r}\\frac{\\partial }{\\partial r}(rD_{r})+\\frac{1}{r}\\frac{\\partial D_{\\phi }}{\\partial \\phi }+\\frac{\\partial D_{z}}{\\partial z}$\n\n$\\rho _{v}=\\frac{1}{r}\\frac{\\partial }{\\partial r}(r4.5\\epsilon _{o}r)+\\frac{1}{r}\\frac{\\partial }{\\partial \\phi }\\left ( \\frac{6.75\\epsilon _{o}}{r} \\right )+\\frac{\\partial }{\\partial z}(13.5\\epsilon _{o})$\n\n$\\, \\, \\, =\\frac{1}{r}\\frac{\\partial }{\\partial r}(4.5\\epsilon _{o}r^{2})+0+0$\n\n$\\, \\, \\, =\\frac{1}{r}(4.5\\epsilon _{o})(2r)=9\\epsilon _{o}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2020:q34": {
+      "question_uid": "pp:ee:2020:q34",
+      "exam_uid": "ee:2020:set1:q34",
+      "title": "GATE EE 2020 | Set 1 | Question: 34",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a permanent magnet dc (PMDC) motor which is initially at rest. At t=0, a\ndc voltage of 5 V is applied to the motor. Its speed monotonically increases from 0 rad/s\nto 6.32 rad/s in 0.5 s and finally settles to 10 rad/s. Assuming that the armature\ninductance of the motor is negligible, the transfer function for the motor is",
+      "options": [
+        "$\\frac{10}{0.5s+1}$",
+        "$\\frac{2}{0.5s+1}$",
+        "$\\frac{2}{s+0.5}$",
+        "$\\frac{10}{s+0.5}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "$$\\begin{aligned}\n\n\\text{Input} &= 5 V \\\\ \\Rightarrow \\; R(s)&=\\frac{5}{s}  \\\\ \\frac{C(s)}{R(s)}&=T.F.=\\frac{K}{1+Ts}  \\\\ C(s)&=\\frac{5K}{s(1+Ts)} \\\\ \\lim_{s\\rightarrow 0}&=5K=10\\\\ \\Rightarrow \\;  K&=2\\\\ \\text{Steady state speed}&=10 \\text{ rad/sec.(Given)} \\\\ C(s)&=\\frac{2}{1+0.5s}\\times \\frac{5}{s}  \\\\ \\Rightarrow \\;  \\lim_{s\\rightarrow 0}sC(s)&=10\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q35": {
+      "question_uid": "pp:ee:2020:q35",
+      "exam_uid": "ee:2020:set1:q35",
+      "title": "GATE EE 2020 | Set 1 | Question: 35",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which of the following option is correct for the system shown below? <br><img src=\"/question-images/ee/2020/ee-2020-f97626e3d2.webp\" />",
+      "options": [
+        "$4^{th}$ order and stable",
+        "$3^{rd}$ order and stable",
+        "$4^{th}$ order and unstable",
+        "$3^{rd}$ order and unstable"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "$$\\begin{aligned}\n\n1+\\frac{20}{s^{2}(s+1)(s+20)}&=0\\\\ (s^{3}+s^{2})(s+20)+20&=0\\\\ s^{4}+20s^{3}+s^{3}+20s^{2}+20&=0\\\\ s^{4}+21s^{3}+20s^{2}+20&=0\n\n\\end{aligned}$$\n\nGiven system is fourth order system and unstable.\n\nstablity status: since it has one missing term\n\nof 's' thus undoubtedly given transfer function is unstable.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q36": {
+      "question_uid": "pp:ee:2020:q36",
+      "exam_uid": "ee:2020:set1:q36",
+      "title": "GATE EE 2020 | Set 1 | Question: 36",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a negative unity feedback system with the forward path transfer function $\\frac{s^2+s+1}{s^3+2s^2+2s+K}$, where K is a positive real number. The value of K for which the system\nwill have some of its poles on the imaginary axis is ________ .",
+      "options": [
+        "9",
+        "8",
+        "7",
+        "6"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "CE is\n\n$1+G(s)H(s)=0$\n\n$\\Rightarrow \\, 1+\\frac{s^{2}+s+1}{s^{3}+2s^{2}+2s+k}=0$\n\n$\\Rightarrow \\, s^{3}+3s^{2}+3s+(1+K)=0$\n\nR.H. criteria:\n\n<img src=\"/question-images/ee/2020/ee-2020-c0cddc85bc.webp\" />\n\n$9 - (1 + K) = 0$\n\n$\\Rightarrow \\, \\, K=8$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q37": {
+      "question_uid": "pp:ee:2020:q37",
+      "exam_uid": "ee:2020:set1:q37",
+      "title": "GATE EE 2020 | Set 1 | Question: 37",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Suppose for input $x(t)$ a linear time-invariant system with impulse response $h(t)$ produces\noutput $y(t)$, so that $x(t)*h(t)=y(t)$. Further, if $|x(t)|*|h(t)|=z(t)$, which of the following\nstatements is true?",
+      "options": [
+        "For all $t \\in (-\\infty ,\\infty ), z(t)\\leq y(t)$",
+        "For some but not all $t \\in (-\\infty ,\\infty ), z(t)\\leq y(t)$",
+        "For all $t \\in (-\\infty ,\\infty ), z(t)\\geq y(t)$",
+        "For some but not all $t \\in (-\\infty ,\\infty ), z(t)\\geq y(t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "introduction-of-c-t-and-d-t-signals",
+          "subtopicLabel": "Introduction of C.T. and D.T. Signals"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "introduction-of-c-t-and-d-t-signals"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
+        "markdown": "$$\\begin{aligned}\n\n\\text{Since, } y(t) &= x(t) + h(t)\\\\ \\text{and  }z(t)&=\\left | x(t) \\right |\\times \\left | h(t) \\right |\n\n\\end{aligned}$$\n\nCase-1:\n\n<img src=\"/question-images/ee/2020/ee-2020-6d0233b18f.webp\" />\n\ncase 2:\n\n<br\n\n<img src=\"/question-images/ee/2020/ee-2020-01e0bd5ba1.webp\" />\n\n$\\text{then,  }y(t)=z(t)$\n\n<img src=\"/question-images/ee/2020/ee-2020-b95592ba64.webp\" />\n\n$\\text{Thus,  } z(t)\\geq y(t),   \\text{\n\nfor all 't'}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q38": {
+      "question_uid": "pp:ee:2020:q38",
+      "exam_uid": "ee:2020:set1:q38",
+      "title": "GATE EE 2020 | Set 1 | Question: 38",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": " The causal realization of a system transfer function H(s) having poles at (2,-1), (-2,1)\nand zeroes at (2,1), (-2,-1) will be",
+      "options": [
+        "stable, real, allpass",
+        "unstable, complex, allpass",
+        "unstable, real, highpass",
+        "stable, complex, lowpass"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "z-transform",
+          "subtopicLabel": "Z-Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "z-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Z-Transform",
+        "markdown": "Since pole zero plot of given transfer function\n\n<img src=\"/question-images/ee/2020/ee-2020-937cd39503.webp\" />\n\nSince, given pole zero is symmetrical\n\nabout origin hence it is a all pass system.\n\nSince, one pole on the RHS thus unstable.\n\nSince, pole doesnot have complex conjugate poles and zeros present thus system is not real means system is complex.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2020:q39": {
+      "question_uid": "pp:ee:2020:q39",
+      "exam_uid": "ee:2020:set1:q39",
+      "title": "GATE EE 2020 | Set 1 | Question: 39",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which of the following options is true for a linear time-invariant discrete time system that\nobeys the difference equation: <br><br>$y[n]-ay[n-1]=b_0x[n]-b_1x[n-1]$",
+      "options": [
+        "y[n] is unaffected by the values of $x[n - k]; k \\gt 2$",
+        "The system is necessarily causal.",
+        "The system impulse response is non-zero at infinitely many instants.",
+        "When $x[n] = 0, n \\lt 0$, the function $y[n]; n \\gt 0$ is solely determined by the function x[n]."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "$$\\begin{aligned}\n\ny(n)-ay(n-1)&=b_{0}x(n)-b_{1}x(n-2) \\\\ &\\text{By applying ZT,} \\\\ Y(z)-az^{-1}Y(z)&=b_{0}X(z)-b_{1}z^{-1}X(z)\\\\ \\Rightarrow \\, \\, H(z)&=\\frac{Y(z)}{X(z)}=\\frac{b_{0}-b_{1}z^{-1}}{1-az^{-1}}\n\n\\end{aligned}$$\n\nBy taking right-sided inverse ZT,\n\n$h(n)=b_{0}a^{n}u(n)-b_{1}a^{n-1}u(n-1)$\n\nBy taking left-sided inverse ZT,\n\n$h(n)=-b_{0}a^{n}u(-n-1)+b_{1}a^{n-1}u(-n)$\n\nThus system is not necessarily causal.\n\nThe impulse response is non-zero at infinitely many instants.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2020:q40": {
+      "question_uid": "pp:ee:2020:q40",
+      "exam_uid": "ee:2020:set1:q40",
+      "title": "GATE EE 2020 | Set 1 | Question: 40",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let $a_r, a_\\phi \\; and \\; a_z$ be unit vectors along $r, \\phi \\; and \\; z$ directions, respectively in the cylindrical\ncoordinate system. For the electric flux density given by $D = (a_r15 + a_\\phi 2r - a_z3rz)$ Coulomb/$m^2$, the total electric flux, in Coulomb, emanating from the volume enclosed\nby a solid cylinder of radius 3 m and height 5 m oriented along the z-axis with its base\nat the origin is:",
+      "options": [
+        "$108 \\pi$",
+        "$54 \\pi$",
+        "$90 \\pi$",
+        "$180 \\pi$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-fields",
+          "subjectLabel": "Electromagnetic Fields",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-fields",
+          "electrostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Fields - Electrostatic Fields",
+        "markdown": "$$\\begin{aligned}\n\n& \\psi / \\text{Crossing closed surface} \\\\ \\oint \\oint  \\vec{D}.\\vec{ds}&=\\int \\int \\int (\\vec{\\triangledown }\\cdot \\vec{D}) dv \\\\ (\\vec{V}.\\vec{D}) &=\\frac{1}{\\rho }\\frac{\\partial }{\\partial p}(\\rho D_{\\rho })+\\frac{1}{\\rho }\\frac{\\partial D_{\\phi }}{\\partial \\phi }+\\frac{\\partial D_{z}}{\\partial z} \\\\ &=\\frac{1}{\\rho }\\frac{\\partial }{\\partial p}(\\rho 15)+\\frac{1}{\\rho }\\frac{\\partial }{\\partial \\phi }(2\\rho )+\\frac{\\partial }{\\partial z}(-3\\rho z) \\\\ &=\\frac{1}{\\rho }15-3\\rho \\\\ \\int \\int \\int (\\vec{\\triangledown }\\cdot \\vec{D})dv&=\\int \\int \\int \\left ( \\frac{15}{\\rho}-3\\rho \\right )\\rho d\\rho d\\phi dz \\\\ &=\\int \\int \\int 15d\\rho d\\phi dz-3\\int \\int \\int \\rho ^{2}d\\rho d\\phi dz \\\\ &=15\\int_{\\rho =0}^{3}d\\rho \\int_{\\phi =0}^{2\\pi }d\\phi \\int_{z=0}^{5}-3\\int_{\\rho =0}^{3}\\rho^{2}d\\rho \\int_{\\phi =0}^{2\\pi }d\\phi \\int_{z=0}^{5}dz \\\\  &= 15(3-0)(2\\pi )(5)-3\\left ( \\frac{3^{3}}{3} \\right )\\times (2\\pi )(5) \\\\ &=45(10\\pi )-27(10\\pi )=180\\pi C\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2020:q41": {
+      "question_uid": "pp:ee:2020:q41",
+      "exam_uid": "ee:2020:set1:q41",
+      "title": "GATE EE 2020 | Set 1 | Question: 41",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A stable real linear time-invariant system with single pole at p, has a transfer function $H(s)=\\frac{s^2+100}{s-p}$\nwith a dc gain of 5. The smallest positive frequency, in rad/s at unity\ngain is closed to:",
+      "options": [
+        "8.84",
+        "11.08",
+        "78.13",
+        "122.87"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "$$\\begin{aligned}\n\nH(s)&=T.F.=[latex]\\frac{s^{2}+100}{s-p} \\\\ \\text{D.C. gain }&= 5 \\\\ \\Rightarrow \\; \\; \\frac{100}{-P}&=5=P=-20 \\\\ H(j\\omega )&=\\frac{-\\omega ^{2}+100}{j\\omega +20} \\\\ \\left |H(j\\omega ) \\right |&=\\frac{-\\omega ^{2}+100}{\\sqrt{\\omega ^{2}+400}} \\\\ \\frac{-\\omega ^{2}+100}{\\sqrt{\\omega ^{2}+400}}&=1 \\\\ \\Rightarrow \\; \\; \\omega &=8.84 \\text{rad/sec.}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q42": {
+      "question_uid": "pp:ee:2020:q42",
+      "exam_uid": "ee:2020:set1:q42",
+      "title": "GATE EE 2020 | Set 1 | Question: 42",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The number of purely real elements in a lower triangular representation of the given 3x3\nmatrix, obtained through the given decomposition is <br>  $$\\begin{bmatrix} 2 &3 &3 \\\\ 3& 2 & 1\\\\ 3& 1 & 7 \\end{bmatrix}=$$ $$\\begin{bmatrix} a_{11} &0 &0 \\\\ a_{12}& a_{22} & 0\\\\ a_{13}& a_{23} & a_{33} \\end{bmatrix}\\begin{bmatrix} a_{11} &0 &0 \\\\ a_{12}& a_{22} & 0\\\\ a_{13}& a_{23} & a_{33} \\end{bmatrix}^T$$",
+      "options": [
+        "5",
+        "6",
+        "8",
+        "9"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "As per GATE official answer key MTA (Marks to ALL)\n\n$$\\begin{aligned}\n\n\\begin{bmatrix} 2 &3 &3 \\\\ 3 &2 &1 \\\\ 3 &1 &7 \\end{bmatrix}&=\\begin{bmatrix} I_{11} & 0 &0 \\\\ I_{21}&l_{22} & 0\\\\ l_{31} &l_{32} &l_{33} \\end{bmatrix}\\begin{bmatrix} u_{11} &u_{12} &u_{13} \\\\ 0 &u_{22} &u_{23} \\\\ 0 & 0 &u_{33} \\end{bmatrix} \\\\ \\text{consider, }u_{11}&=u_{22}=u_{33}=1 \\\\ \\begin{bmatrix} 2 &3 &3 \\\\ 3 &2 &1 \\\\ 3 &1 &7 \\end{bmatrix}&=\\begin{bmatrix} l_{11} & 0 &0 \\\\ l_{21}&l_{22} & 0\\\\ l_{31} &l_{32} &l_{33} \\end{bmatrix}\\begin{bmatrix} 1 &u_{12} &u_{13} \\\\ 0 &1 &u_{23} \\\\ 0 & 0 &1 \\end{bmatrix}\n\n\\\\ \\begin{bmatrix} 2 &3 &3 \\\\ 3 &2 &1 \\\\ 3 &1 &7 \\end{bmatrix}&=\\begin{bmatrix} l_{11} & l_{11}u_{12} &l_{11}u_{13} \\\\ l_{21}& l_{21}u_{12}+l_{22} & l_{21}u_{13}+ l_{22}u_{23}\\\\ l_{31} &l_{31}u_{12}+l_{32} & l_{31}u_{13}+ l_{32}u_{23}+l_{33}\\end{bmatrix}\n\n\\\\\n\nl_{11}&=2 \\; \\; l_{11}u_{12}=3 \\; \\; l_{11}u_{13}=3 \\; \\;  \\\\ l_{21}&=3 \\; \\; 2u_{12}=3 \\; \\; 2u_{13}=3 \\\\ l_{31}&=3\\; \\; u_{12}=\\frac{3}{2} \\; \\; u_{13}=\\frac{3}{2} \\\\ l_{21}u_{12}+l_{22}&=2\\; \\; l_{21}u_{13}+l_{22}u_{23}=1 \\\\ (3)\\left ( \\frac{3}{2} \\right )+l_{22}&=2 \\; \\; (3)\\left ( \\frac{3}{2} \\right )+\\left ( -\\frac{5}{2} \\right )u_{23}=1 \\\\ l_{22}&=-\\frac{5}{2} \\; \\; u_{23}=-\\frac{7}{5} \\\\ l_{31}u_{12}+l_{32}&=1 \\; \\; l_{31}u_{13}+l_{32}u_{23}+l_{33}=7\\\\\n\n(3)(\\frac{3}{2})+l_{32}&=1 \\; \\; (3)\\left ( \\frac{3}{2} \\right )+\\left ( -\\frac{7}{2} \\right )\\left ( \\frac{7}{5} \\right )+l_{33}=7 \\\\ l_{32}&=-\\frac{7}{2} \\; \\; l_{33}=-\\frac{74}{10}\\\\ L&=\\begin{bmatrix} 2 &0 &0 \\\\ 3 &-5/2 &0 \\\\ 3 &-7/2 & 74/10 \\end{bmatrix}\n\n\\end{aligned}$$\n\nThe number of purely real elements of lower triangular matrix are 9.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2020:q43": {
+      "question_uid": "pp:ee:2020:q43",
+      "exam_uid": "ee:2020:set1:q43",
+      "title": "GATE EE 2020 | Set 1 | Question: 43",
+      "year": "gateee-2020-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The figure below shows the per-phase Open Circuit Characteristics (measured in V) and\nShort Circuit Characteristics (measured in A) of a 14 kVA, 400 V, 50 Hz, 4-pole, 3-phase,\ndelta connected alternator, driven at 1500 rpm. The field current, $I_f$ is measured in A.\nReadings taken are marked as respective (x,y) coordinates in the figure. Ratio of the\nunsaturated and saturated synchronous impedances ($Z_{s(unsat)}/Z_{s(sat)}$) of the alternator is\nclosest to <br><img src=\"/question-images/ee/2020/ee-2020-aed9563c37.webp\" />",
+      "options": [
+        "2.1",
+        "2.025",
+        "2",
+        "1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "For unsaturated synchronous impedance\n\n$$\\begin{aligned}\n\n\\text{At } I_f&=2A, \\; V_{OC}=210V \\\\\n\n\\text{From SCC}\\\\\n\n\\text{at } I_f&=4A, \\; I_{SC}=20A \\\\\n\n\\therefore \\;  I_f&=2A, \\; I_{SC}=10A \\\\\n\nZ_s, \\text{unsaturated }&=\\left.\\begin{matrix}\n\n\\frac{V_{OC}}{I_{SC}}\n\n\\end{matrix}\\right|_{I_f=const.} \\\\\n\n&= \\frac{210}{10}=21 \\Omega \\\\\n\n\\text{For } Z_s, \\text{ saurated}:\\\\\n\n\\text{when, } V_{OC}&=V_{rated}=400V\\\\\n\nI_f&=8A \\\\\n\n\\text{From SCC, }\n\nI_f&=8A, \\; I_{SC}=40A \\\\\n\nZ_s, \\text{saturated }&=\\frac{400}{40}=10\\Omega \\\\\n\n\\text{Hence,}\\\\\n\n\\frac{Z_s, \\text{unsaturated }}{Z_s, \\text{ saturated }}&=\\frac{21}{10}=2.1\\Omega\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2020:q44": {
+      "question_uid": "pp:ee:2020:q44",
+      "exam_uid": "ee:2020:set1:q44",
+      "title": "GATE EE 2020 | Set 1 | Question: 44",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let $a_x \\; and \\; a_y$ be unit vectors along x and y directions, respectively. A vector function is given by <br><br>$F = a_xy - a_yx$<br><br>\nThe line integral of the above function<br><br>\n$\\int _c F\\cdot dl$<br><br>\nalong the curve C, which follows the parabola $y = x^2$ as shown below is _______ (rounded\noff to 2 decimal places). <br><img src=\"/question-images/ee/2020/ee-2020-3d047b4ae2.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "-3",
+        "tolerance": {
+          "lower": -3.05,
+          "upper": -2.95
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned}\n\n\\vec{F}&=y\\hat{a}_{x}-x\\hat{a}_{y} \\\\  \\vec{r}&=x\\hat{i}+y\\hat{j}  \\\\ \\vec{F}&=y\\hat{i}-x\\hat{j}  \\\\ d\\vec{r}&=dx\\hat{i}+dy\\hat{j} \\\\ &=\\int _{c}F.d\\vec{r}\\\\ &=\\int_{c}F_{1}dx+F_{2}dy \\\\ &=\\int _{c}ydx-xdy \\\\ &\\text{Where C is,}\\\\ y&=x^{2} \\\\ dy&=2x dx \\\\ x &\\text{ varies from -1 to 2,}\\\\ \\int _{c}\\vec{F}dl&=\\int_{-1}^{2}x^{2}dx-x\\cdot 2xdx \\\\ &=\\int_{-1}^{2}(x^{2}-2x)dx \\\\ &=\\int_{-1}^{2}-x^{2}dx=\\left.\\begin{matrix} -\\frac{x^{3}}{3} \\end{matrix}\\right|_{-1}^{2} \\\\ &=-\\frac{8}{3}-\\frac{1}{3}=-\\frac{9}{3}\\\\ &=-3\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **-3** (acceptable range: [-3.05, -2.95])."
+      }
+    },
+    "pp:ee:2020:q45": {
+      "question_uid": "pp:ee:2020:q45",
+      "exam_uid": "ee:2020:set1:q45",
+      "title": "GATE EE 2020 | Set 1 | Question: 45",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A resistor and a capacitor are connected in series to a 10 V dc supply through a switch.\nThe switch is closed at $t=0$, and the capacitor voltage is found to cross 0 V at $t=0.4 \\tau$,\nwhere $\\tau$ is the circuit time constant. The absolute value of percentage change required\nin the initial capacitor voltage if the zero crossing has to happen at $t=0.2 \\tau$ is _______\n(rounded off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "55",
+        "tolerance": {
+          "lower": 54,
+          "upper": 56
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "power-semiconductor-devices-and-commutation-techniques",
+          "subtopicLabel": "Power Semiconductor Devices and Commutation Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "power-semiconductor-devices-and-commutation-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Power Semiconductor Devices and Commutation Techniques",
+        "markdown": "If initial charge polarities on the capacitor is opposite to the supply voltage then only\n\nthe capacitor voltage crosses the zero line.\n\n$$\\begin{aligned}\n\nV_{c}(t) \\; \\Rightarrow  \\;& \\text{Final value} \\\\ &+ (\\text{Initial value - Final value}) e^{-t/\\tau }\\\\ 0&=10+(-V_{0}-10)e^{-0.4}  \\\\ 10&=(V_{0}+10)e^{-0.4}  \\\\ V_{0}&=4.918 V \\\\ \\text{Now, } t&=0.2\\tau \\\\  0&=10+(-{V_{0}}'-10)e^{-0.2}  \\\\ {V_{0}}'&=2.214 \\\\ \\%\\text{change in voltage}  &= \\frac{4.918-2.214}{4.918}\\times 100 \\%\\\\ &=54.99\\%\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2020/ee-2020-13174d1dab.webp\" />\n\nTherefore, the correct answer is **55** (acceptable range: [54, 56])."
+      }
+    },
+    "pp:ee:2020:q46": {
+      "question_uid": "pp:ee:2020:q46",
+      "exam_uid": "ee:2020:set1:q46",
+      "title": "GATE EE 2020 | Set 1 | Question: 46",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A cylindrical rotor synchronous generator with constant real power output and constant\nterminal voltage is supplying 100 A current to a 0.9 lagging power factor load. An ideal\nreactor is now connected in parallel with the load, as a result of which the total lagging\nreactive power requirement of the load is twice the previous value while the real power\nremains unchanged. The armature current is now _______ A (rounded off to 2 decimal\nplaces).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "125",
+        "tolerance": {
+          "lower": 123,
+          "upper": 127
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "At $P_{constant},$\n\n$I_{a1}\\cos \\phi _{1}=I_{a2}\\cos \\phi _{2}$\n\n$\\cos \\phi _{1}=0.9$\n\n$\\tan \\phi _{1}=0.484=\\frac{Q}{P}$\n\n$\\Rightarrow \\, \\, \\frac{2Q}{P}=0.9686=\\tan \\phi _{2}$\n\n$\\cos \\phi _{2}=0.7182$\n\n$\\therefore \\, 100\\times 0.9=I_{a2}\\times 0.7182$\n\n$\\Rightarrow \\, \\, I_{a2}=125.29\\: A$\n\nTherefore, the correct answer is **125** (acceptable range: [123, 127])."
+      }
+    },
+    "pp:ee:2020:q47": {
+      "question_uid": "pp:ee:2020:q47",
+      "exam_uid": "ee:2020:set1:q47",
+      "title": "GATE EE 2020 | Set 1 | Question: 47",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Bus 1 with voltage magnitude $V_1 = 1.1 p.u.$ is sending reactive power $Q_{12}$ towards bus\n2 with voltage magnitude $V_2 = 1 p.u.$ through a lossless transmission line of reactance\nX. Keeping the voltage at bus 2 fixed at 1 p.u., magnitude of voltage at bus 1 is changed,\nso that the reactive power $Q_{12}$ sent from bus 1 is increased by 20%. Real power flow\nthrough the line under both the conditions is zero. The new value of the voltage\nmagnitude, $V_1$, in p.u. (rounded off to 2 decimal places) at bus 1 is _______ . <br><img src=\"/question-images/ee/2020/ee-2020-8753dd2d26.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.12",
+        "tolerance": {
+          "lower": 1.11,
+          "upper": 1.13
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "load-flow-studies"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies",
+        "markdown": "With real power zero, load angle $\\delta =0$\n\nwith initial values,  $V_{1}=1.1, \\; \\; \\; V_{2}=1$\n\n$Q_{12}=\\frac{V_{1}^{2}}{X}-\\frac{V_{1}V_{2}}{X}\\sin \\delta$\n\n$\\, \\, =\\frac{(1.1)^{2}}{X}-\\frac{1.1\\times 1}{X}\\sin 0=\\frac{0.11}{x}$\n\n<img src=\"/question-images/ee/2020/ee-2020-c70b34fd7b.webp\" />\n\nWith increased value of voltage,\n\nnew value of $\\; Q_{12}=1.2Q_{12},\\; \\;  V_{2}=1$\n\n$1.2\\, Q_{12}=\\frac{V_{1}^{2}}{X}-\\frac{V_{1}\\times 1}{X}=1.2\\times \\frac{0.11}{X}$\n\n$V_{1}^{2}-V_{1}-0.132=0$\n\n$V_{1}=1.12,\\; \\;  -0.118$\n\nHence the practical value in per unit,$V_{1}=1.12$ p.u.\n\nTherefore, the correct answer is **1.12** (acceptable range: [1.11, 1.13])."
+      }
+    },
+    "pp:ee:2020:q48": {
+      "question_uid": "pp:ee:2020:q48",
+      "exam_uid": "ee:2020:set1:q48",
+      "title": "GATE EE 2020 | Set 1 | Question: 48",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Windings 'A', 'B' and 'C' have 20 turns each and are wound on the same iron core as\nshown, along with winding 'X' which has 2 turns. The figure shows the sense (clockwise/\nanti-clockwise) of each of the windings only and does not reflect the exact number of\nturns, If windings 'A', 'B' and 'C' are supplied with balanced 3-phase voltages at 50 Hz\nand there is no core saturation, the no-load RMS voltage (in V, rounded off to 2 decimal\nplaces) across winding 'X' is _________ .<br><img src=\"/question-images/ee/2020/ee-2020-fc3655d35b.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "46",
+        "tolerance": {
+          "lower": 46,
+          "upper": 46
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "As per GATE official answer key MTA (Marks to ALL)\n\n$V_{X}=\\frac{2}{20}(230\\angle 0^{\\circ}-230\\angle 120^{\\circ}-230\\angle -120^{\\circ})=46\\angle 0^{\\circ}\\: V$\n\nTherefore, the correct answer is **46**."
+      }
+    },
+    "pp:ee:2020:q49": {
+      "question_uid": "pp:ee:2020:q49",
+      "exam_uid": "ee:2020:set1:q49",
+      "title": "GATE EE 2020 | Set 1 | Question: 49",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A cylindrical rotor synchronous generator has steady state synchronous reactance of\n0.7 pu and subtransient reactance of 0.2 pu. It is operating at (1+j0) pu terminal voltage\nwith an internal emf of (1+j0.7) pu. Following a three-phase solid short circuit fault at\nthe terminal of the generator, the magnitude of the subtransient internal emf (rounded\noff to 2 decimal places) is ________ pu.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.02",
+        "tolerance": {
+          "lower": 1.01,
+          "upper": 1.03
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "$$\\begin{aligned}\n\n&\\text{Prefault current,}\\\\ I_{0}&=\\frac{E_{f}-V_{t}}{jX_{d}} \\\\ &=\\frac{1+j0.7-1}{j0.7}=1 \\\\ &\\text{Subtransient induced emf,} \\\\ {E_{f}}''&=V_{0}+j{X_{d}}''I_{0}  \\\\ &=1+j0.2\\times 1=1+j0.2  \\\\ | {E_{f}''}|&=\\sqrt{1^{2}+0.2^{2}}=1.02\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.02** (acceptable range: [1.01, 1.03])."
+      }
+    },
+    "pp:ee:2020:q50": {
+      "question_uid": "pp:ee:2020:q50",
+      "exam_uid": "ee:2020:set1:q50",
+      "title": "GATE EE 2020 | Set 1 | Question: 50",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In the dc-dc converter circuit shown, switch Q is switched at a frequency of 10 kHz\nwith a duty ratio of 0.6. All components of the circuit are ideal, and the initial current\nin the inductor is zero. Energy stored in the inductor in mJ (rounded off to 2 decimal\nplaces) at the end of 10 complete switching cycles is ________. <br><img src=\"/question-images/ee/2020/ee-2020-f66f02ab88.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5",
+        "tolerance": {
+          "lower": 4.95,
+          "upper": 5.05
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "Buck boost converter,\n\n$D=0.6\\rightarrow \\text{store energy}$\n\n$D=\\frac{T_{ON}}{T}=0.6$\n\n$T_{ON}=0.6\\: T\\rightarrow \\text{store energy}$\n\n$T_{OFF}=0.4\\: T\\rightarrow \\text{releasing  energy}$\n\n<img src=\"/question-images/ee/2020/ee-2020-11d02cba2a.webp\" />\n\nFor one cycle: Rise in current for $0.2T$\n\nFor 10 cycles: Find rise in current $(0.2T) \\times  10 = 2T$\n\n$i=\\frac{50}{L}t$\n\n$i=\\frac{50}{L}(2T)=\\frac{50\\times 2}{LP}=\\frac{100}{10\\cdot 10^{-3}\\times 10\\cdot 10^{3}}=1\\, A$\n\n$\\therefore \\, \\text{Energy stored}=\\frac{1}{2}Li^{2}=\\frac{1}{2}\\times (10\\cdot 10^{-3})(1)^{2}=5\\: mJ$\n\nTherefore, the correct answer is **5** (acceptable range: [4.95, 5.05])."
+      }
+    },
+    "pp:ee:2020:q51": {
+      "question_uid": "pp:ee:2020:q51",
+      "exam_uid": "ee:2020:set1:q51",
+      "title": "GATE EE 2020 | Set 1 | Question: 51",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A single-phase, full-bridge, fully controlled thyristor rectifier feeds a load comprising a\n10$\\Omega$ resistance in series with a very large inductance. The rectifier is fed from an ideal 230 V, 50 Hz sinusoidal source through cables which have negligible internal resistance\nand a total inductance of 2.28 mH. If the thyristors are triggered at an angle $\\alpha = 45^{\\circ}$,\nthe commutation overlap angle in degree (rounded off to 2 decimal places) is_____.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.805",
+        "tolerance": {
+          "lower": 4.51,
+          "upper": 5.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "$$\\begin{aligned}&1-\\phi\\text{ SCR bridge rectifier} \\\\ \\alpha &=45^{\\circ},\\; \\;  R=10\\, \\Omega\\\\ &\\text{supply 230 V, 50 Hz}\\\\ L_{s}&=2.28\\, mH \\\\ \\mu &=? \\\\ \\Delta V_{d}&=\\frac{V_{m}}{\\pi }[\\cos \\alpha -\\cos (\\alpha +\\mu )]\\\\ &= 4fL_{s}I_{0} \\\\ V_{0}&=\\frac{2V_{m}}{\\pi }\\cos \\alpha -4fL_{s}I_{0} \\\\ I_{0}R&=\\frac{2V_{m}}{\\pi}\\cos \\alpha -4fL_{s}I_{0} \\\\ &\\text{Find }I_{0} \\\\ I_{0}\\times 10&=\\frac{2\\times 230\\sqrt{2}}{\\pi } \\cos 45 \\\\&-4\\times 50\\times 2.28\\times 10^{-3}I_{0} \\\\ I_{0}(10+0.456)&=146.42 \\\\  I_{0}&=\\frac{146.49}{10.456}=14.0036\\: A \\\\  \\Delta V_{d0 }&=\\frac{230\\sqrt{2}}{\\pi }[\\cos 45-\\cos (45+\\mu)]  \\\\  &=4\\times 50\\times 2.28\\times 10^{-3}\\times 14 \\\\ &=6.384 \\\\  \\cos 45^{\\circ}-\\cos (45^{\\circ}+\\mu )&=0.061659  \\\\ 45+\\mu &=49.80  \\\\ \\therefore \\, \\,   \\mu =4.80^{\\circ}\\end{aligned}$$\n\nTherefore, the correct answer is **4.805** (acceptable range: [4.51, 5.1])."
+      }
+    },
+    "pp:ee:2020:q52": {
+      "question_uid": "pp:ee:2020:q52",
+      "exam_uid": "ee:2020:set1:q52",
+      "title": "GATE EE 2020 | Set 1 | Question: 52",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A non-ideal Si-based pn junction diode is tested by sweeping the bias applied across\r\nits terminals from -5 V to +5 V. The effective thermal voltage, $V_T$, for the diode is\r\nmeasured to be (29$\\pm$2) mV. The resolution of the voltage source in the measurement\r\nrange is 1 mV. The percentage uncertainty (rounded off to 2 decimal plates) in the\r\nmeasured current at a bias voltage of 0.02 V is _______.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "11.75",
+        "tolerance": {
+          "lower": 11.5,
+          "upper": 12
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "characteristics-of-instruments-and-measurement-systems",
+          "subtopicLabel": "Characteristics of Instruments and Measurement Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "characteristics-of-instruments-and-measurement-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Characteristics of Instruments and Measurement Systems",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electrical and Electronic Measurements** (specifically *Characteristics of Instruments and Measurement Systems*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **11.75** within the official acceptable numerical range of $[11.5, 12]$.\n\n### Conclusion\n\nTherefore, the correct answer is **11.75** (acceptable range: [11.5, 12])."
+      }
+    },
+    "pp:ee:2020:q53": {
+      "question_uid": "pp:ee:2020:q53",
+      "exam_uid": "ee:2020:set1:q53",
+      "title": "GATE EE 2020 | Set 1 | Question: 53",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The temperature of the coolant oil bath for a transformer is monitored using the circuit\nshown. It contains a thermistor with a temperature-dependent resistance,\n$R_{thermistor} = 2(1 + \\alpha T) k\\Omega$. Where T is the temperature in $^{\\circ}C$. The temperature coefficient\n$\\alpha$, is $-(4 \\pm 0.25) \\%/^{\\circ}C$. Circuit parameters: $R_1 = 1 k\\Omega , R_2 = 1.3 k\\Omega , R_3 = 2.6 k\\Omega$. The\nerror in the output signal (in V. rounded off lo 2 decimal places) at 150$^{\\circ}C$ is ________. <br><img src=\"/question-images/ee/2020/ee-2020-3290bc7a35.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.04",
+        "tolerance": {
+          "lower": 0.04,
+          "upper": 0.04
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "As per GATE official answer key MTA (Marks to ALL)\n\n$$\\begin{aligned}\n\n\\text{Given data,}\\\\ R_{thermistor}&=R_{th}=2(1+\\alpha T)K\\Omega \\\\  \\alpha &=-(4+0.25)\\%/^{\\circ}C=-(0.04\\pm 0.0025)^{\\circ}C \\\\  \\alpha _{max}&=-0.0424/^{\\circ}C, \\; \\; \\alpha _{min}=-0.375/^{\\circ}C\\\\ \\text{Temperature, } T&=150^{\\circ}C \\\\ R_{1}&=1 K\\Omega ,\\; R_{2}=1.3 K\\Omega , \\; R_{3}=2.6 K\\Omega\\\\ \\text{Considering, }\\alpha &=-0.04 \\\\  R_{th}&=2[1-0.04\\times 150]=-10 K\\Omega  \\\\ V_{0}&=V_{1}\\times \\frac{R_{1}}{R_{1}+R_{th}}\\left [ 1+\\frac{R_{2}}{R_{3}} \\right ]\\\\ &=3\\times \\frac{1k}{1k+10k}\\left [ 1+\\frac{1.3k}{2.6k} \\right ] \\\\  &=-0.5 V\n\n\\\\\n\n\\text{Case-1:} \\\\ \\text{Considering, }\\alpha _{max}&=-0.0425/^{\\circ}C \\\\\n\nR_{thmax}&=2[1+(-0.0425)\\times 150] =-10.75\\, k\\Omega \\\\\n\nV_{0}&=V_{1}\\times \\frac{R_{1}}{R_{1}+R_{th}}\\left [ 1+\\frac{R_{2}}{R_{3}} \\right ]\\\\ &=3\\times \\frac{1k}{1k-10.75k}\\left [ 1+\\frac{1.3k}{2.6k} \\right ] \\\\  &=-0.46 V\n\n\\\\\n\n\\text{Case-2:} \\\\ \\text{Considering, }\\alpha _{min}&=-0.0375/^{\\circ}C \\\\\n\nR_{thmin}&=2[1+(-0.0375)\\times 150] =-9.25\\, k\\Omega \\\\\n\nV_{0} &=3\\times \\frac{1k}{1k-9.25k}\\left [ 1+\\frac{1.3k}{2.6k} \\right ] \\\\  &=-0.54 V\n\n\\\\\n\n\\text{Output voltage, }\\\\\n\nV_0&=0.5\\pm0.04 \\; \\Rightarrow \\; \\text{Error}=0.04\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.04**."
+      }
+    },
+    "pp:ee:2020:q54": {
+      "question_uid": "pp:ee:2020:q54",
+      "exam_uid": "ee:2020:set1:q54",
+      "title": "GATE EE 2020 | Set 1 | Question: 54",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An 8085 microprocessor accesses two memory locations (2001 H) and (2002H), that\ncontain 8-bit numbers 98H and B1H respectively. The following program is executed:<br><br>\nLXI H, 2001 H<br>\nMVIA, 21H<br>\nINX H<br>\nADD M<br>\nINX H<br>\nMOV M, A<br>\nHLT<br><br>\nAt the end of this program, the memory location 2003H contains the number in decimal\n(base 10) form ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "210",
+        "tolerance": {
+          "lower": 210,
+          "upper": 210
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "microprocessors",
+          "subtopicLabel": "Microprocessors"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "microprocessors"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Microprocessors",
+        "markdown": "$$\\begin{aligned} LXI H, 2001 H & \\rightarrow  [HL]  \\rightarrow 2001 H \\\\MVI A, 21 H & \\rightarrow [A]  \\leftarrow 21 H \\\\INX H & \\rightarrow [HL]  \\rightarrow 2002 H \\\\ ADD M & \\rightarrow [A] + [2002]  \\rightarrow [A] \\\\ &= (21H + B1 H)  \\rightarrow [A] \\\\ &= D2 H  \\rightarrow [A] \\\\ INX H & \\rightarrow [HL]  \\rightarrow 2003 H \\\\  MOV M, A & \\rightarrow [2003] \\leftarrow [A] \\\\ [2003] &= D2 H = (1101\\; 0010)_2 \\\\ &= 1 \\times 2^7+1\\times 2^6+1\\times 2^4 +1\\times 2^1 \\\\&= 128 + 64 + 16 + 2 \\\\&= 210 \\end{aligned}$$\n\nTherefore, the correct answer is **210**."
+      }
+    },
+    "pp:ee:2020:q55": {
+      "question_uid": "pp:ee:2020:q55",
+      "exam_uid": "ee:2020:set1:q55",
+      "title": "GATE EE 2020 | Set 1 | Question: 55",
+      "year": "gateee-2020-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A conducting square loop of side length 1 m is placed at a distance of 1 m from a\nlong straight wire carrying a current l=2 A as shown below. The mutual inductance,\nin nH (rounded off to 2 decimal places), between the conducting loop and the long wire\nis __________. <br><img src=\"/question-images/ee/2020/ee-2020-77a793234b.webp\" />",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "168.6",
+        "tolerance": {
+          "lower": 198,
+          "upper": 139.2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2020-s1",
+      "yearSetIdentity": "ee:2020:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "transformers",
+          "subtopicLabel": "Transformers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "transformers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Transformers",
+        "markdown": "$$\\begin{aligned}\n\n\\phi &\\propto I  \\\\  \\phi &=MI  \\\\ \\vec{B}&=\\frac{\\mu _{o}I}{2\\pi \\rho }\\hat{a_{\\phi }} \\;\\; (\\vec{B} \\text{ due to infinite long line}) \\\\ \\text{Magnetic flux}& \\text{  crossing square loop is}\\\\ \\phi &=\\int \\int \\vec{B}\\cdot \\vec{ds} \\\\ &=\\int \\int \\frac{\\mu _{o}I}{2\\pi \\rho }\\hat{a_{\\phi }}\\cdot (d\\rho dz)\\hat{a_{\\phi }}\\\\ &=\\frac{\\mu _{0}I}{2\\pi }\\int_{\\rho =1}^{2}\\frac{d\\rho }{\\rho }\\int_{z=0}^{1}dz \\\\ \\phi &=\\frac{\\mu _{o} I}{2\\pi }(\\ln \\rho )_{\\rho =1}^{2}(z)_{z=0}^{1} \\\\ \\phi &=\\frac{\\mu _{o} I}{2\\pi }(\\ln 2)\\\\ M&=\\frac{\\phi }{I} \\\\ M&=\\frac{\\phi_{o}(\\ln2)}{2\\pi }=\\frac{4\\pi \\times 10^{-7}(\\ln _{2})}{2\\pi } \\\\  M&=1.386\\times 10^{-7}\\, Henry \\simeq 138.63\\, nH\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **168.6** (acceptable range: [198, 139.2])."
+      }
+    }
+  }
+}

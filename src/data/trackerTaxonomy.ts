@@ -33,7 +33,7 @@ export interface SubjectNode {
   id: string;                      // e.g. "cse-os"
   slug: string;                    // e.g. "os"
   canonicalSubjectSlugs: string[]; // Slugs used in GateQA question bank
-  track: 'cse' | 'da';
+  track: string;
   label: string;                   // e.g. "Operating Systems"
   shortLabel: string;              // e.g. "OS"
   marksRange: string;              // e.g. "7–10 Marks"
@@ -44,10 +44,11 @@ export interface SubjectNode {
 }
 
 export interface TrackTaxonomy {
-  track: 'cse' | 'da';
+  track: string;
   title: string;
   defaultExamDate: string;
   subjects: SubjectNode[];
+  syllabusSource?: string;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1379,25 +1380,61 @@ export const CSE_SUBJECTS: SubjectNode[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { DA_SUBJECTS } from "./daTaxonomy";
-export { DA_SUBJECTS };
-
+import { EC_SUBJECTS } from "./ecTaxonomy";
+import { EE_SUBJECTS } from "./eeTaxonomy";
+import { ME_SUBJECTS } from "./meTaxonomy";
+import { CE_SUBJECTS } from "./ceTaxonomy";
+export { DA_SUBJECTS, EC_SUBJECTS, EE_SUBJECTS, ME_SUBJECTS, CE_SUBJECTS };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Combined Map & Lookup Utilities
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const TRACK_TAXONOMIES: Record<'cse' | 'da', TrackTaxonomy> = {
+export const SUPPORTED_TRACKS = ['cse', 'da', 'ec', 'ee', 'me', 'ce'] as const;
+export type SupportedTrack = typeof SUPPORTED_TRACKS[number];
+
+export const TRACK_TAXONOMIES: Record<string, TrackTaxonomy> = {
   cse: {
     track: "cse",
     title: "GATE Computer Science & IT (CSE)",
     defaultExamDate: "2027-02-06",
+    syllabusSource: "GATE Official CS Syllabus (Organising Institute: IITs, Applicable for GATE 2026 / 2027)",
     subjects: CSE_SUBJECTS,
   },
   da: {
     track: "da",
     title: "GATE Data Science & AI (DA)",
     defaultExamDate: "2027-02-07",
+    syllabusSource: "GATE Official DA Syllabus (Organising Institute: IISc / IITs, Applicable for GATE 2026 / 2027)",
     subjects: DA_SUBJECTS,
+  },
+  ec: {
+    track: "ec",
+    title: "GATE Electronics & Communication (EC)",
+    defaultExamDate: "2027-02-06",
+    syllabusSource: "GATE Official EC Syllabus (Organising Institute: IITs, Applicable for GATE 2026 / 2027)",
+    subjects: EC_SUBJECTS,
+  },
+  ee: {
+    track: "ee",
+    title: "GATE Electrical Engineering (EE)",
+    defaultExamDate: "2027-02-07",
+    syllabusSource: "GATE Official EE Syllabus (Organising Institute: IITs, Applicable for GATE 2026 / 2027)",
+    subjects: EE_SUBJECTS,
+  },
+  me: {
+    track: "me",
+    title: "GATE Mechanical Engineering (ME)",
+    defaultExamDate: "2027-02-13",
+    syllabusSource: "GATE Official ME Syllabus (Organising Institute: IITs, Applicable for GATE 2026 / 2027)",
+    subjects: ME_SUBJECTS,
+  },
+  ce: {
+    track: "ce",
+    title: "GATE Civil Engineering (CE)",
+    defaultExamDate: "2027-02-14",
+    syllabusSource: "GATE Official CE Syllabus (Organising Institute: IITs, Applicable for GATE 2026 / 2027)",
+    subjects: CE_SUBJECTS,
   },
 };
 
@@ -1411,8 +1448,9 @@ export const SUBJECTS_BY_SLUG = new Map<string, SubjectNode>();
 export const TOPICS_BY_PRIMARY_TAG = new Map<string, TopicNode>();
 
 // Populate fast lookups
-for (const trackKey of ['cse', 'da'] as const) {
+for (const trackKey of SUPPORTED_TRACKS) {
   const track = TRACK_TAXONOMIES[trackKey];
+  if (!track) continue;
   for (const subject of track.subjects) {
     ALL_SUBJECTS_BY_ID.set(subject.id, subject);
     SUBJECTS_BY_SLUG.set(`${trackKey}:${subject.slug}`, subject);
@@ -1427,14 +1465,14 @@ for (const trackKey of ['cse', 'da'] as const) {
 }
 
 /** Get list of all topics for a given track */
-export function getTopicsForTrack(track: 'cse' | 'da'): TopicNode[] {
+export function getTopicsForTrack(track: string): TopicNode[] {
   const taxonomy = TRACK_TAXONOMIES[track];
   if (!taxonomy) return [];
   return taxonomy.subjects.flatMap((subject) => subject.topics);
 }
 
 /** Get subject by track and subject slug */
-export function getSubjectBySlug(track: 'cse' | 'da', slug: string): SubjectNode | null {
+export function getSubjectBySlug(track: string, slug: string): SubjectNode | null {
   return SUBJECTS_BY_SLUG.get(`${track}:${slug}`) || null;
 }
 

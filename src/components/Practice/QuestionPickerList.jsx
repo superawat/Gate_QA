@@ -6,16 +6,20 @@ import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
 import { IsroQuestionService } from "../../services/IsroQuestionService";
-import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion } from "../../utils/examTrack";
+import { BranchQuestionService } from "../../services/BranchQuestionService";
+import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion, getQuestionTrack } from "../../utils/examTrack";
 
 const prefetchQuestionShard = (question) => {
   if (!question) return;
   preloadSolveExperience();
   const uid = String(question.question_uid || "").trim();
+  const track = getQuestionTrack(question);
   if (isIsroQuestionByMetadata(question)) {
     IsroQuestionService.ensureQuestionDetail(question).catch(() => {});
   } else if (isDaQuestionByMetadata(question)) {
     DaQuestionService.ensureQuestionDetail(question).catch(() => {});
+  } else if (["ec", "ee", "me", "ce"].includes(track)) {
+    BranchQuestionService.ensureQuestionDetail(question).catch(() => {});
   } else if (uid.startsWith("APT-")) {
     AptitudeQuestionService.ensureQuestionDetail(question).catch(() => {});
   } else {
@@ -125,6 +129,11 @@ const QuestionPickerList = ({
                       ISRO CS
                     </span>
                   ) : null}
+                  {["ec", "ee", "me", "ce"].includes(getQuestionTrack(question)) ? (
+                    <span className="inline-flex rounded-full border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 dark:text-amber-300">
+                      GATE {getQuestionTrack(question).toUpperCase() === "EC" ? "EC (ECE)" : getQuestionTrack(question).toUpperCase()}
+                    </span>
+                  ) : null}
                   {isItQuestion(question) ? (
                     <span
                       data-testid="gate-it-badge-mobile"
@@ -173,6 +182,11 @@ const QuestionPickerList = ({
                     className="inline-flex rounded-full border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 dark:text-amber-300"
                   >
                     ISRO CS
+                  </span>
+                ) : null}
+                {["ec", "ee", "me", "ce"].includes(getQuestionTrack(question)) ? (
+                  <span className="inline-flex rounded-full border border-amber-400/40 bg-amber-100 dark:bg-amber-950/40 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-amber-800 dark:text-amber-300">
+                    GATE {getQuestionTrack(question).toUpperCase() === "EC" ? "EC (ECE)" : getQuestionTrack(question).toUpperCase()}
                   </span>
                 ) : null}
                 {isItQuestion(question) ? (

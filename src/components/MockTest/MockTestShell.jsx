@@ -7,7 +7,7 @@ import { QuestionService } from "../../services/QuestionService";
 import { AptitudeQuestionService } from "../../services/AptitudeQuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
 import { TOGGLE_CALCULATOR_EVENT } from "../../utils/globalEvents";
-import { isDaQuestion } from "../../utils/examTrack";
+import { isDaQuestion, getQuestionTrack } from "../../utils/examTrack";
 import {
     MOCK_SECTION_COUNTS,
     filterMockQuestionsByScope,
@@ -18,6 +18,14 @@ import {
     validateMockQuestionForPool,
 } from "../../utils/mockTest";
 import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
+import { BranchQuestionService } from "../../services/BranchQuestionService";
+import {
+    readBranchPreferences,
+    BRANCH_PREFERENCE_EVENT,
+    filterPapersBySelectedBranches,
+    isQuestionEligibleForBranches,
+    isBranchEligible,
+} from "../../utils/branchPreference";
 import { getSubjectAllSubtopicSlugs } from "../../utils/mockTaxonomyHierarchy";
 import { sampleSubjectStratifiedQuestions } from "../../utils/mockSampling";
 import MockCatalogLoaderCard from "../Loaders/MockCatalogLoaderCard";
@@ -35,28 +43,17 @@ import "./MockTest.css";
 
 const PALETTE_COLLAPSE_STORAGE_KEY = "gateqa_mock_palette_collapsed";
 const TYPE_OPTIONS = ["MCQ", "MSQ", "NAT"];
-const DEFAULT_MOCK_KIND_ID = "full_length";
+const DEFAULT_MOCK_KIND_ID = "paper_mode";
 const APTITUDE_UID_PREFIX = "APT-";
 
 const MOCK_KIND_OPTIONS = [
     {
-        id: "full_length",
-        title: "Full Mock",
-        badge: "Recommended",
-        subtitle: "Best default if you want a serious exam-style run before the real test.",
-        helper: "Builds a 65-question attempt from the cross-year scorable GA and core pool.",
-        facts: { count: "65 Questions", duration: "180 min" },
-        fixedCount: 65,
-        durationMinutes: 180,
-        durationLabel: "180 min",
-    },
-    {
         id: "paper_mode",
-        title: "Past Paper",
-        badge: "Closest to Exam",
-        subtitle: "Attempt release-ready GATE CSE and GATE DA papers in official order.",
-        helper: "Practice exact official papers with 10 GA + 55 Core (CSE or DA).",
-        facts: { count: "10 GA + 55 Core", duration: "180 min" },
+        title: "Past Papers",
+        badge: "Official Papers",
+        subtitle: "Attempt release-ready GATE examination papers for your selected branches in official order.",
+        helper: "Practice exact official examination papers with authentic question order, section structure, and timing.",
+        facts: { count: "65 Questions", duration: "180 min" },
         fixedCount: 65,
         durationMinutes: 180,
         durationLabel: "180 min",
@@ -65,7 +62,7 @@ const MOCK_KIND_OPTIONS = [
         id: "custom",
         title: "Custom Builder",
         badge: "Flexible",
-        subtitle: "Create a short mock, subject-focused run, or 15Q/25Q practice set from one builder.",
+        subtitle: "Create a focused practice set, subject test, or multi-subject builder from your selected branches.",
         helper: "Build custom practice attempts with balanced subject representation and uniform random question selection.",
         facts: { count: "1 to 65 Questions", duration: "Adaptive" },
         fixedCount: null,
@@ -281,20 +278,20 @@ const formatSectionRequirement = (gaCount, csCount, questionCount = null) => {
 const APTITUDE_SUBJECT_SLUGS = new Set(["english", "quant", "mathematics", "reasoning", "general-aptitude", "ga"]);
 const LEGACY_SUBJECT_SLUG = "legacy-other";
 
-const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYearSetKey = "") => ({
+const buildDefaultSetupState = (minYear, maxYear, kindId = "", selectedPaperYearSetKey = "", defaultTracks = ["cse"]) => ({
     minYear,
     maxYear,
     yearFilterMode: "all",
     yearRangeStart: minYear,
     yearRangeEnd: maxYear,
-    enabledTracks: ["cse"],
+    enabledTracks: Array.isArray(defaultTracks) && defaultTracks.length > 0 ? [...defaultTracks] : ["cse"],
     includeGeneralAptitude: true,
     selectedSubjects: ["ga"],
     selectedSubtopics: [],
     expandedSubjectSlug: null,
     selectedTypes: [...TYPE_OPTIONS],
     selectedPaperYearSetKey,
-    customCount: kindId === "custom" ? 25 : 65,
+    customCount: 25,
     solvedFilter: "unsolved",
     customDurationMode: "adaptive",
     customDurationMinutes: 180,
@@ -516,6 +513,22 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     });
     const [step, setStep] = useState(() => (hasActiveAttemptInStorage() || (initialStage === "exam" && testActive) ? "exam" : "portal"));
     const [selectedKindId, setSelectedKindId] = useState(DEFAULT_MOCK_KIND_ID);
+    const [branchPreferences, setBranchPreferences] = useState(() => readBranchPreferences());
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const handleBranchChange = () => {
+            setBranchPreferences(readBranchPreferences());
+        };
+        window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+        return () => window.removeEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+    }, []);
+
+    const selectedBranches = useMemo(() => {
+        const branches = branchPreferences?.selectedBranches;
+        return Array.isArray(branches) && branches.length > 0 ? branches : ["cse"];
+    }, [branchPreferences]);
+
     const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
     const [isPaletteCollapsed, setIsPaletteCollapsed] = useState(() => {
         if (typeof window === "undefined") return false;
@@ -525,7 +538,36 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const calculatorButtonRef = useRef(null);
     const exitInProgressRef = useRef(false);
     const [isStartingExam, setIsStartingExam] = useState(false);
-    const [setupState, setSetupState] = useState(() => buildDefaultSetupState(2000, 2025));
+    const [setupState, setSetupState] = useState(() => buildDefaultSetupState(2000, 2025, "", "", readBranchPreferences().selectedBranches));
+
+    useEffect(() => {
+        setSetupState((prev) => {
+            const currentEnabled = Array.isArray(prev.enabledTracks) ? prev.enabledTracks : ["cse"];
+            const nextEnabled = currentEnabled.filter((t) => selectedBranches.includes(t));
+            const safeEnabled = nextEnabled.length > 0 ? nextEnabled : [...selectedBranches];
+
+            const currentSubjects = Array.isArray(prev.selectedSubjects) ? prev.selectedSubjects : [];
+            const safeSubjects = currentSubjects.filter((s) => {
+                if (APTITUDE_SUBJECT_SLUGS.has(s) || s === "ga" || s === "general-aptitude") return true;
+                if (s.startsWith("da:")) return selectedBranches.includes("da");
+                if (s.startsWith("ec-") || s.startsWith("ec:")) return selectedBranches.includes("ec");
+                if (s.startsWith("ee-") || s.startsWith("ee:")) return selectedBranches.includes("ee");
+                if (s.startsWith("me-") || s.startsWith("me:")) return selectedBranches.includes("me");
+                if (s.startsWith("ce-") || s.startsWith("ce:")) return selectedBranches.includes("ce");
+                return selectedBranches.includes("cse");
+            });
+
+            if (safeEnabled.length === currentEnabled.length && safeSubjects.length === currentSubjects.length) {
+                return prev;
+            }
+
+            return {
+                ...prev,
+                enabledTracks: safeEnabled,
+                selectedSubjects: safeSubjects,
+            };
+        });
+    }, [selectedBranches]);
 
     useEffect(() => {
         // Enforce strict exam daytime light-mode lock during mock test session
@@ -712,33 +754,57 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const aptTags = AptitudeQuestionService.loaded && typeof AptitudeQuestionService.getStructuredTags === "function"
             ? AptitudeQuestionService.getStructuredTags()
             : {};
-        const daTags = DaQuestionService.loaded && typeof DaQuestionService.getStructuredTags === "function"
+        const daTags = (selectedBranches.includes("da") && DaQuestionService.loaded && typeof DaQuestionService.getStructuredTags === "function")
             ? DaQuestionService.getStructuredTags()
             : {};
+
+        const branchTagsList = ["ec", "ee", "me", "ce"]
+            .filter((branch) => selectedBranches.includes(branch))
+            .map((branch) => {
+                return BranchQuestionService.isLoaded(branch)
+                    ? BranchQuestionService.getStructuredTags(branch)
+                    : {};
+            });
+
+        const cseStructuredTags = selectedBranches.includes("cse")
+            ? (structuredTags || {})
+            : { subjects: [], structuredSubtopics: {}, structuredTopics: {} };
+
         return {
             ...structuredTags,
             subjects: [
-                ...(structuredTags?.subjects || []),
+                ...(cseStructuredTags?.subjects || []),
                 ...(aptTags?.subjects || []),
                 ...(daTags?.subjects || []),
+                ...branchTagsList.flatMap((bt) => bt?.subjects || []),
             ],
             structuredSubtopics: {
-                ...(structuredTags?.structuredSubtopics || {}),
+                ...(cseStructuredTags?.structuredSubtopics || {}),
                 ...(aptTags?.structuredSubtopics || {}),
                 ...(daTags?.structuredSubtopics || {}),
+                ...branchTagsList.reduce((acc, bt) => ({ ...acc, ...(bt?.structuredSubtopics || {}) }), {}),
             },
             structuredTopics: {
-                ...(structuredTags?.structuredTopics || {}),
+                ...(cseStructuredTags?.structuredTopics || {}),
                 ...(aptTags?.structuredTopics || {}),
                 ...(daTags?.structuredTopics || {}),
+                ...branchTagsList.reduce((acc, bt) => ({ ...acc, ...(bt?.structuredTopics || {}) }), {}),
             },
         };
-    }, [structuredTags, mockQuestionPool]);
+    }, [structuredTags, mockQuestionPool, selectedBranches]);
 
     const mockSubjects = useMemo(
         () => buildSubjectOptions(scorableQuestions, combinedStructuredTags),
         [scorableQuestions, combinedStructuredTags]
     );
+
+    const eligiblePapers = useMemo(() => {
+        return filterPapersBySelectedBranches(paperCatalog, selectedBranches);
+    }, [paperCatalog, selectedBranches]);
+
+    const eligibleReadyPapers = useMemo(() => {
+        return eligiblePapers.filter((paper) => paper?.paperReady);
+    }, [eligiblePapers]);
 
     const selectedPaperYearSetKey = useMemo(() => {
         if (selectedKind?.id !== "paper_mode") {
@@ -746,16 +812,16 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         }
 
         const requestedKey = String(setupState.selectedPaperYearSetKey || "").trim();
-        if (requestedKey && paperCatalog.some((paper) => getMockPaperYearSetIdentity(paper) === requestedKey)) {
+        if (requestedKey && eligiblePapers.some((paper) => getMockPaperYearSetIdentity(paper) === requestedKey)) {
             return requestedKey;
         }
 
-        return getMockPaperYearSetIdentity(readyPapers[0] || paperCatalog[0]) || null;
-    }, [paperCatalog, readyPapers, selectedKind?.id, setupState.selectedPaperYearSetKey]);
+        return getMockPaperYearSetIdentity(eligibleReadyPapers[0] || eligiblePapers[0]) || null;
+    }, [eligiblePapers, eligibleReadyPapers, selectedKind?.id, setupState.selectedPaperYearSetKey]);
 
     const selectedPaper = useMemo(
-        () => paperCatalog.find((paper) => getMockPaperYearSetIdentity(paper) === selectedPaperYearSetKey) || null,
-        [paperCatalog, selectedPaperYearSetKey]
+        () => eligiblePapers.find((paper) => getMockPaperYearSetIdentity(paper) === selectedPaperYearSetKey) || null,
+        [eligiblePapers, selectedPaperYearSetKey]
     );
 
     const selectedSetupTypes = useMemo(
@@ -815,26 +881,29 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             }
 
             if (isCustom) {
-                const enabledTracks = Array.isArray(setupState.enabledTracks)
-                    ? setupState.enabledTracks
-                    : ["cse"];
-                const isCseTrackEnabled = enabledTracks.includes("cse");
-                const isDaTrackEnabled = enabledTracks.includes("da");
-                const isAptitudeTrackEnabled = setupState.includeGeneralAptitude !== false;
+                // Strict selected-branch invariant: question must be eligible under user's selected branches
+                if (!isQuestionEligibleForBranches(question, selectedBranches)) {
+                    return false;
+                }
 
                 const isGa = isTrueGaQuestion(question, questionMeta);
-                const isDa = !isGa && (isDaQuestion(question) || String(questionUid).startsWith("da:"));
-                const isCse = !isGa && !isDa;
+                const isAptitudeTrackEnabled = setupState.includeGeneralAptitude !== false;
+
+                const enabledTracks = Array.isArray(setupState.enabledTracks)
+                    ? setupState.enabledTracks
+                    : selectedBranches;
 
                 // 1. Discipline Track Gating: If track is OFF, question is strictly excluded
-                if (isGa && !isAptitudeTrackEnabled) {
-                    return false;
-                }
-                if (isDa && !isDaTrackEnabled) {
-                    return false;
-                }
-                if (isCse && !isCseTrackEnabled) {
-                    return false;
+                if (isGa) {
+                    if (!isAptitudeTrackEnabled) {
+                        return false;
+                    }
+                } else {
+                    const qTrack = getQuestionTrack(question);
+                    const isTrackEnabled = enabledTracks.includes(qTrack) || (qTrack === "cse" && enabledTracks.includes("cs"));
+                    if (!isTrackEnabled) {
+                        return false;
+                    }
                 }
 
                 // 2. Subject-level narrowing within enabled tracks
@@ -857,16 +926,19 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         // When no aptitude categories are selected, exclude all GA questions
                         return false;
                     }
-                } else if (isDa) {
-                    const daSelected = selectedSubjects.filter((s) => s.startsWith("da:"));
-                    if (daSelected.length > 0 && !daSelected.includes(questionSubjectKey)) {
+                } else if (selectedSubjects.length > 0) {
+                    const qTrack = getQuestionTrack(question);
+                    const trackSelected = selectedSubjects.filter((s) => {
+                        if (qTrack === "da") return s.startsWith("da:");
+                        if (qTrack === "ec") return s.startsWith("ec-") || s.startsWith("ec:");
+                        if (qTrack === "ee") return s.startsWith("ee-") || s.startsWith("ee:");
+                        if (qTrack === "me") return s.startsWith("me-") || s.startsWith("me:");
+                        if (qTrack === "ce") return s.startsWith("ce-") || s.startsWith("ce:");
+                        if (qTrack === "cse") return !s.startsWith("da:") && !s.startsWith("isro:") && !s.startsWith("ec-") && !s.startsWith("ee-") && !s.startsWith("me-") && !s.startsWith("ce-") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG;
                         return false;
-                    }
-                } else if (isCse) {
-                    const cseSelected = selectedSubjects.filter(
-                        (s) => !s.startsWith("da:") && !s.startsWith("isro:") && !APTITUDE_SUBJECT_SLUGS.has(s) && s !== LEGACY_SUBJECT_SLUG
-                    ).map(normalizeMockSubjectKey);
-                    if (cseSelected.length > 0 && !cseSelected.includes(questionSubjectKey)) {
+                    }).map(normalizeMockSubjectKey);
+
+                    if (trackSelected.length > 0 && !trackSelected.includes(questionSubjectKey)) {
                         return false;
                     }
                 }
@@ -909,6 +981,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         setupState.yearRangeEnd,
         setupState.yearRangeStart,
         combinedStructuredTags?.structuredSubtopics,
+        selectedBranches,
     ]);
 
     const filteredPoolSections = useMemo(
@@ -1032,24 +1105,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             };
         }
 
-        if (selectedKind.id === "full_length") {
-            if (scorableGaCount < MOCK_SECTION_COUNTS.GA || scorableCsCount < MOCK_SECTION_COUNTS.CS) {
-                return {
-                    canStart: false,
-                    requiredSummary: "10 GA + 55 CS",
-                    availableSummary: scorableSectionSummary,
-                    message: "The validated pool does not currently have enough GA and CS questions for a full-length attempt.",
-                };
-            }
-
-            return {
-                canStart: true,
-                requiredSummary: "10 GA + 55 CS",
-                availableSummary: scorableSectionSummary,
-                message: "",
-            };
-        }
-
         if (selectedSetupTypes.length === 0) {
             return {
                 canStart: false,
@@ -1112,7 +1167,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
     const livePreview = useMemo(() => {
         const pool = selectedKind?.id === "paper_mode"
             ? paperQuestions
-            : (selectedKind?.id === "full_length" ? generatedScorableQuestions : filteredPool);
+            : filteredPool;
         const sections = splitByCatalogSection(pool, questionMetaByUid);
         const typeCounts = { MCQ: 0, MSQ: 0, NAT: 0 };
 
@@ -1321,10 +1376,10 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
         const minYear = structuredTags?.minYear || 2000;
         const maxYear = structuredTags?.maxYear || 2025;
         const defaultPaperKey = kindId === "paper_mode"
-            ? (getMockPaperYearSetIdentity(readyPapers[0] || paperCatalog[0]) || "")
+            ? (getMockPaperYearSetIdentity(eligibleReadyPapers[0] || eligiblePapers[0]) || "")
             : "";
-        setSetupState(buildDefaultSetupState(minYear, maxYear, kindId, defaultPaperKey));
-    }, [paperCatalog, readyPapers, selectedKindId, structuredTags?.maxYear, structuredTags?.minYear]);
+        setSetupState(buildDefaultSetupState(minYear, maxYear, kindId, defaultPaperKey, selectedBranches));
+    }, [eligiblePapers, eligibleReadyPapers, selectedBranches, selectedKindId, structuredTags?.maxYear, structuredTags?.minYear]);
 
     const handleContinueFromPortal = useCallback(() => {
         if (!selectedKindId) {
@@ -1415,14 +1470,6 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                     durationMinutes = selectedPaperDurationMinutes;
                 }
                 selectedPaperLabel = selectedPaper?.label || QuestionService.formatYearSetLabel(selectedPaperYearSetKey || "");
-            } else if (selectedKind.id === "full_length") {
-                const selection = buildStrictGeneratedSelection(generatedScorableQuestions, questionMetaByUid);
-                if (!selection) {
-                    return;
-                }
-                gaQuestions = selection.gaQuestions;
-                csQuestions = selection.csQuestions;
-                strictSectionCounts = { ...MOCK_SECTION_COUNTS };
             } else if (selectedKind.id === "custom") {
                 const selection = buildCustomMockSelection(filteredPool, customCount, questionMetaByUid);
                 gaQuestions = selection.gaQuestions;
@@ -1714,7 +1761,8 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                         structuredSubtopics={combinedStructuredTags.structuredSubtopics || {}}
                         availability={availability}
                         livePreview={livePreview}
-                        paperOptions={paperCatalog}
+                        paperOptions={eligiblePapers}
+                        selectedBranches={selectedBranches}
                         selectedPaperYearSetKey={selectedPaperYearSetKey || ""}
                         customDurationMinutes={customDurationMinutes}
                         recentYearRangeLabel={`${recentYearStart} - ${setupState.maxYear}`}

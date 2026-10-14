@@ -16,8 +16,11 @@ GateQA is a static, local-first React SPA hosted on GitHub Pages with an optiona
    - practice loads the lightweight search index plus answer lookups
    - mock still loads the full question bank
 8. UI renders one of:
-   - Landing mode selector dashboard (with dynamic sync-refreshed streak and activity heatmap)
+   - Landing mode selector dashboard (with dynamic sync-refreshed streak, activity heatmap, and 4 core action cards: Practice Questions, Filter Questions, Mock Tests, Performance Insights, and Preparation Tracker)
    - Practice view (filter modal, chips, question card, answer panel)
+   - Preparation Tracker view (`/tracker` hierarchical syllabus & progress table)
+   - Performance Insights view (`/insights` analytics & review queue)
+   - Candidate Profile Hub (`/profile` multi-branch management & data backup)
    - Mock setup shell
    - Mock exam shell
 9. Header, subHeader (`PageShell` slot for header-adjacent banners like `IsroMarquee`), calculator, and footer remain shared shell components.
@@ -82,6 +85,8 @@ GateQA follows a **Local-First Hybrid Architecture**:
   - `ExplorePage`
   - `SolvePage`
   - `InsightsPage`
+  - `TrackerPage`
+  - `ProfilePage`
   - `MockShell`
 - Failures inside those trees now render a local retryable fallback instead of collapsing the entire SPA.
 - Question stem fallbacks inside `MockTestShell.jsx` and `ErrorBoundary.jsx` render explicit `(Error code: ${code})` when errors with numeric codes or storage quota errors occur.
@@ -743,6 +748,54 @@ The Multi-Level Question Tagging & Hierarchical Topic Discovery subsystem equips
 6. **SEO & Structured Data:**
    - `scripts/prerender-seo-pages.mjs` maps both primary and secondary topics to schema `about` entities, enriching search discovery without altering the canonical `QAPage` or `BreadcrumbList` hierarchy.
 
+## Multi-Branch Expansion, Candidate Profile Hub & 5-Block Solution Engine (DEC-164, DEC-165)
+
+GateQA supports major engineering disciplines beyond Computer Science & IT (CSE): Data Science & AI (DA), Electronics & Communication (EC), Electrical Engineering (EE), Mechanical Engineering (ME), and Civil Engineering (CE).
+
+```text
+┌────────────────────────────────────────────────────────┐
+│            Official GATE Invariant (Max 2 Papers)       │
+│  - branchPreference.ts enforces selectedBranches <= 2   │
+│  - BranchSelectionWall: pre-home 6-card discipline modal│
+│  - BranchHeaderSwitcher: zero-reload active paper swap  │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+        ┌──────────────────┴──────────────────┐
+        ▼                                     ▼
+┌──────────────────────────────┐ ┌──────────────────────────────┐
+│  Static Sharding & Assets    │ │  Candidate Profile Hub       │
+│  - 250 KB shard budget       │ │  - /profile route            │
+│  - Local WebP diagrams       │ │  - Milestone configuration   │
+│  - Zero external hotlinks    │ │  - Additive cloud sync       │
+│  - Math isolation per branch │ │  - Full JSON backup download │
+└──────────────────────────────┘ └──────────────────────────────┘
+```
+
+1. **Intake & Local WebP Asset Pipeline (`scripts/intake/`, `scripts/pipeline/`):**
+   - Ingests verified examination papers from practicepaper.in with KaTeX delimiter normalization and option array extraction.
+   - Converts and mirrors all diagram images locally into `public/question-images/{branch}/2024/` in WebP format, enforcing zero third-party hotlink dependency.
+2. **Direct Simplified Solution Engine (`scripts/pipeline/`):**
+   - Synthesizes clean, direct solutions with authentic mathematical steps, equations, derivations, and official answers without artificial boilerplate sections.
+   - Enriched directly into static question detail shards (`public/question-detail-shards/`).
+   - Integrated into `AnswerPanel.jsx` with collapsible `DetailedSolutionView.jsx` while keeping external GateOverflow community discussion links 100% active and intact.
+3. **Discipline Preference Engine & Onboarding Wall (`src/utils/branchPreference.ts`, `src/components/Branch/`):**
+   - Follows official IIT GATE candidate rules: a student may enroll in at most 2 examination papers (`MAX_ALLOWED_BRANCHES = 2`).
+   - `readBranchPreferences` and `writeBranchPreferences` persist state under `gateqa_branch_preferences_v1`.
+   - `BranchSelectionWall` guides first-time visitors with an interactive modal, with automatic bypass for incoming deep links.
+   - `BranchHeaderSwitcher` provides a compact segmented toggle `[CS | DA]` in the top application bar for seamless switching between enrolled disciplines.
+4. **Deep Filter Scoping & ISRO CSE Coupling:**
+   - Topic and subtopic trees in `FilterContext.tsx` dynamically scope to the active branch.
+   - ISRO CSE is strictly coupled to CSE enrollment; ISRO options are defensively hidden from candidates pursuing non-CSE tracks.
+5. **Candidate Profile Hub (`src/pages/ProfilePage.jsx`, `src/components/Profile/UserProfileHub.jsx`):**
+   - Accessible at `/profile` and linked in `UserProfileMenu.jsx`.
+   - Allows enrolled paper adjustments, active track selection, target exam year/rank milestone setting, manual cloud sync via `manualSyncWithCloud(userId)`, and instant full offline JSON backup download.
+6. **Multi-Branch Topic Filtering & Enrolled Disciplines Switcher (DEC-170):**
+   - Lightweight branch search indices: `public/data/{ec,ee,me,ce}/search-index.json` indexing 8,785 questions.
+   - Lazy-load service `BranchQuestionService.ts` handles index loading, tag extraction, and on-demand solution/stem hydration from static detail shards (`public/question-detail-shards/`).
+   - `FilterContext.tsx` dynamically derives `isCseEnrolled`, `isEcEnrolled`, `isEeEnrolled`, `isMeEnrolled`, `isCeEnrolled` and merges active branch questions into `allQuestions`, `gateValidQuestionIdSet`, and `structuredTags`.
+   - `FilterSidebar.jsx` displays a top segmented switcher (`[ ECE | CSE ]`) when $\ge 2$ disciplines are enrolled, and renders dedicated `<BranchTopicFilter branch="ec" />` cards with discipline-specific colors, subject checklists, and subtopic accordions. Non-enrolled disciplines remain strictly hidden.
+
 ## Known limitation reference
 
 See `docs/KNOWN-LIMITATIONS.md` for historical subtopic cap tradeoffs and the DEC-162 multi-level taxonomy resolution.
+

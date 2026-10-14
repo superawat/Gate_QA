@@ -36,19 +36,30 @@ const calculateTimeRemaining = (targetDateString) => {
   };
 };
 
+const TRACK_ACCENTS = {
+  cse: { text: "text-blue-400", ping: "bg-blue-400", dot: "bg-blue-500", pill: "bg-blue-500/10 text-blue-400 border-blue-500/25", iconBox: "bg-blue-500/10 text-blue-400" },
+  da: { text: "text-purple-400", ping: "bg-purple-400", dot: "bg-purple-500", pill: "bg-purple-500/10 text-purple-400 border-purple-500/25", iconBox: "bg-purple-500/10 text-purple-400" },
+  ec: { text: "text-amber-400", ping: "bg-amber-400", dot: "bg-amber-500", pill: "bg-amber-500/10 text-amber-400 border-amber-500/25", iconBox: "bg-amber-500/10 text-amber-400" },
+  ee: { text: "text-yellow-400", ping: "bg-yellow-400", dot: "bg-yellow-500", pill: "bg-yellow-500/10 text-yellow-400 border-yellow-500/25", iconBox: "bg-yellow-500/10 text-yellow-400" },
+  me: { text: "text-rose-400", ping: "bg-rose-400", dot: "bg-rose-500", pill: "bg-rose-500/10 text-rose-400 border-rose-500/25", iconBox: "bg-rose-500/10 text-rose-400" },
+  ce: { text: "text-cyan-400", ping: "bg-cyan-400", dot: "bg-cyan-500", pill: "bg-cyan-500/10 text-cyan-400 border-cyan-500/25", iconBox: "bg-cyan-500/10 text-cyan-400" },
+};
+
 export default function TrackerCountdownHero({
   activeTrack,
   preferences,
   onUpdatePreferences,
   syllabusDonePercentage = 0,
 }) {
-  const targetDate = activeTrack === "cse" ? preferences.examDateCse : preferences.examDateDa;
+  const normTrack = String(activeTrack || "cse").toLowerCase();
+  const dateKey = `examDate${normTrack.charAt(0).toUpperCase() + normTrack.slice(1)}`;
+  const targetDate = preferences[dateKey] || (normTrack === "da" ? preferences.examDateDa : preferences.examDateCse) || "2027-02-06";
   const [time, setTime] = useState(() => calculateTimeRemaining(targetDate));
   const [isEditingDate, setIsEditingDate] = useState(false);
   const [tempDate, setTempDate] = useState(targetDate);
 
-  const isCse = activeTrack === "cse";
-  const accentColor = isCse ? "blue" : "purple";
+  const accent = TRACK_ACCENTS[normTrack] || TRACK_ACCENTS.cse;
+  const trackLabel = normTrack.toUpperCase();
 
   // Update timer every second
   useEffect(() => {
@@ -80,11 +91,7 @@ export default function TrackerCountdownHero({
 
   const handleSaveDate = (e) => {
     e?.preventDefault?.();
-    if (activeTrack === "cse") {
-      onUpdatePreferences({ examDateCse: tempDate });
-    } else {
-      onUpdatePreferences({ examDateDa: tempDate });
-    }
+    onUpdatePreferences({ [dateKey]: tempDate });
     setIsEditingDate(false);
   };
 
@@ -102,32 +109,24 @@ export default function TrackerCountdownHero({
   return (
     <section
       aria-label="Exam Countdown"
-      className="relative mb-8 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 sm:p-7 shadow-[var(--shadow-card)]"
+      className="relative mb-4 sm:mb-8 rounded-xl sm:rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 sm:p-7 shadow-[var(--shadow-card)]"
     >
       {/* Top action row */}
-      <div className="relative flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[color:var(--color-border)]/70">
-        <div className="flex items-center gap-2.5 flex-wrap">
+      <div className="relative flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 mb-3.5 sm:mb-6 pb-3 sm:pb-4 border-b border-[color:var(--color-border)]/70">
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
           <span className="relative flex h-2.5 w-2.5">
             <span
-              className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                isCse ? "bg-blue-400" : "bg-purple-400"
-              }`}
+              className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${accent.ping}`}
             />
             <span
-              className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
-                isCse ? "bg-blue-500" : "bg-purple-500"
-              }`}
+              className={`relative inline-flex rounded-full h-2.5 w-2.5 ${accent.dot}`}
             />
           </span>
 
           <h2 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[color:var(--color-text)] flex items-center gap-2">
-            <span>GATE {isCse ? "CSE" : "DA"} Target Exam</span>
+            <span>GATE {trackLabel} Target Exam</span>
             <span
-              className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${
-                isCse
-                  ? "bg-blue-500/10 text-blue-400 border-blue-500/25"
-                  : "bg-purple-500/10 text-purple-400 border-purple-500/25"
-              }`}
+              className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${accent.pill}`}
             >
               {formattedTargetDate}
             </span>
@@ -218,57 +217,55 @@ export default function TrackerCountdownHero({
       )}
 
       {/* Main Countdown Uniform 4-Card Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-3xl mx-auto my-3 text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-3xl mx-auto my-2 sm:my-3 text-center">
         {/* Days */}
-        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+        <div className="relative group p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
           <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
             {time.days}
           </div>
-          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5 flex items-center justify-center gap-1">
+          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1 flex items-center justify-center gap-1">
             <span>DAYS</span>
           </div>
         </div>
 
         {/* Hours */}
-        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+        <div className="relative group p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
           <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
             {pad(time.hours)}
           </div>
-          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5">
+          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1">
             HOURS
           </div>
         </div>
 
         {/* Minutes */}
-        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+        <div className="relative group p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
           <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight text-[color:var(--color-text)] tabular-nums">
             {pad(time.minutes)}
           </div>
-          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5">
+          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1">
             MINUTES
           </div>
         </div>
 
         {/* Seconds */}
-        <div className="relative group p-3 sm:p-5 rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
+        <div className="relative group p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-bg)]/80 border border-[color:var(--color-border)] shadow-sm hover:border-[color:var(--color-border-hover)] transition-all">
           <div
-            className={`text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight tabular-nums ${
-              isCse ? "text-blue-400" : "text-purple-400"
-            }`}
+            className={`text-2xl min-[360px]:text-3xl sm:text-5xl font-black font-mono tracking-tight tabular-nums ${accent.text}`}
           >
             {pad(time.seconds)}
           </div>
-          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1.5">
+          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[color:var(--color-text-muted)] mt-1">
             SECONDS
           </div>
         </div>
       </div>
 
       {/* Secondary Balanced Insight Badges */}
-      <div className="mt-6 pt-4 border-t border-[color:var(--color-border)]/70 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-[color:var(--color-border)]/70 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
         {/* Metric 1: Time Horizon */}
         <div className="flex items-center gap-3 p-3 rounded-xl bg-[color:var(--color-bg)]/50 border border-[color:var(--color-border)]/50">
-          <div className={`p-2 rounded-lg ${isCse ? "bg-blue-500/10 text-blue-400" : "bg-purple-500/10 text-purple-400"}`}>
+          <div className={`p-2 rounded-lg ${accent.iconBox}`}>
             <FiClock className="w-4 h-4" />
           </div>
           <div className="text-left">

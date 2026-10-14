@@ -7,6 +7,9 @@ import ProgressFilterToggles from './ProgressFilterToggles';
 import QuestionSearchInput from './QuestionSearchInput';
 import DaToggle from './DaToggle';
 import IsroToggle from './IsroToggle';
+import BranchTopicFilter from './BranchTopicFilter';
+import { DISCIPLINES } from '../Branch/BranchSelectionWall';
+import { setActiveBranch } from '../../utils/branchPreference';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
@@ -31,6 +34,14 @@ const FilterSidebar = ({ className = "", onClose }) => {
         totalQuestions,
         filters,
         structuredTags,
+        isCseEnrolled = true,
+        isDaEnrolled = false,
+        isEcEnrolled = false,
+        isEeEnrolled = false,
+        isMeEnrolled = false,
+        isCeEnrolled = false,
+        selectedBranches = [],
+        activeBranch = 'cse',
     } = useFilterState();
 
     const {
@@ -88,6 +99,35 @@ const FilterSidebar = ({ className = "", onClose }) => {
                     )}
                 </div>
             </div>
+
+            {/* ── Segmented Discipline Switcher (when multiple branches selected) ── */}
+            {selectedBranches.length > 1 && (
+                <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
+                    <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+                        Enrolled Disciplines
+                    </div>
+                    <div className="flex gap-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1">
+                        {selectedBranches.map((code) => {
+                            const meta = DISCIPLINES.find((d) => d.code === code) || { short: code.toUpperCase() };
+                            const isActive = activeBranch === code;
+                            return (
+                                <button
+                                    key={code}
+                                    type="button"
+                                    onClick={() => setActiveBranch(code)}
+                                    className={`flex-1 rounded-md px-2 py-1.5 text-xs font-bold uppercase tracking-wide transition-all ${
+                                        isActive
+                                            ? "border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-primary-text)] shadow-sm"
+                                            : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                                    }`}
+                                >
+                                    {meta.short === "EC" ? "ECE" : meta.short}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            )}
 
             <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
                 <QuestionSearchInput
@@ -151,19 +191,53 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 <div className="flex flex-col gap-4">
 
                     {/* ── GATE CSE Section (distinct card with toggle + subjects) ── */}
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
-                        <TopicFilter />
-                    </div>
+                    {isCseEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
+                            <TopicFilter />
+                        </div>
+                    )}
 
                     {/* ── GATE DA Section (distinct card with toggle + subjects) ── */}
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)]/50 p-3">
-                        <DaToggle />
-                    </div>
+                    {isDaEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-[color:var(--color-purple-border)] bg-[color:var(--color-purple-soft)]/50 p-3">
+                            <DaToggle />
+                        </div>
+                    )}
+
+                    {/* ── GATE EC (ECE) Section ── */}
+                    {isEcEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-amber-300/60 bg-gradient-to-br from-amber-50/70 to-orange-50/40 dark:border-amber-700/50 dark:from-amber-950/25 dark:to-orange-950/15 p-3">
+                            <BranchTopicFilter branch="ec" />
+                        </div>
+                    )}
+
+                    {/* ── GATE EE Section ── */}
+                    {isEeEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-yellow-300/60 bg-gradient-to-br from-yellow-50/70 to-amber-50/40 dark:border-yellow-700/50 dark:from-yellow-950/25 dark:to-amber-950/15 p-3">
+                            <BranchTopicFilter branch="ee" />
+                        </div>
+                    )}
+
+                    {/* ── GATE ME Section ── */}
+                    {isMeEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-blue-300/60 bg-gradient-to-br from-blue-50/70 to-indigo-50/40 dark:border-blue-700/50 dark:from-blue-950/25 dark:to-indigo-950/15 p-3">
+                            <BranchTopicFilter branch="me" />
+                        </div>
+                    )}
+
+                    {/* ── GATE CE Section ── */}
+                    {isCeEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-emerald-300/60 bg-gradient-to-br from-emerald-50/70 to-teal-50/40 dark:border-emerald-700/50 dark:from-emerald-950/25 dark:to-teal-950/15 p-3">
+                            <BranchTopicFilter branch="ce" />
+                        </div>
+                    )}
 
                     {/* ── ISRO CS Section (distinct card with toggle + subjects) ── */}
-                    <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-amber-300/50 bg-gradient-to-br from-amber-50/70 to-orange-50/40 dark:border-amber-700/40 dark:from-amber-950/25 dark:to-orange-950/15 p-3">
-                        <IsroToggle />
-                    </div>
+                    {isCseEnrolled && (
+                        <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-amber-300/50 bg-gradient-to-br from-amber-50/70 to-orange-50/40 dark:border-amber-700/40 dark:from-amber-950/25 dark:to-orange-950/15 p-3">
+                            <IsroToggle />
+                        </div>
+                    )}
 
                     {/* ── Aptitude Section (distinct card) ── */}
                     <div className="flex min-h-0 flex-col overflow-hidden rounded-xl border border-pink-300/40 bg-gradient-to-br from-pink-50/60 to-rose-50/40 dark:border-pink-700/30 dark:from-pink-950/20 dark:to-rose-950/10 p-3">

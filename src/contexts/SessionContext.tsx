@@ -4,8 +4,9 @@ import { AnswerService } from '../services/AnswerService';
 import { QuestionService } from '../services/QuestionService';
 import { DaQuestionService } from '../services/DaQuestionService';
 import { AptitudeQuestionService } from '../services/AptitudeQuestionService';
+import { BranchQuestionService } from '../services/BranchQuestionService';
 import type { FilterStateShape, QuestionRow } from '../types';
-import { isDaQuestion as isDaQuestionByMetadata } from '../utils/examTrack';
+import { isDaQuestion as isDaQuestionByMetadata, getQuestionTrack } from '../utils/examTrack';
 
 type SessionMode = 'random' | 'ordered' | 'review' | null;
 
@@ -431,6 +432,10 @@ function getDetailServiceForQuestion(question: Partial<QuestionRow> = {}) {
     const isDaQuestion = isDaQuestionByMetadata(question);
     if (isDaQuestion) {
         return DaQuestionService;
+    }
+    const track = getQuestionTrack(question);
+    if (['ec', 'ee', 'me', 'ce'].includes(track)) {
+        return BranchQuestionService;
     }
     return uid.startsWith(APTITUDE_UID_PREFIX) ? AptitudeQuestionService : QuestionService;
 }
