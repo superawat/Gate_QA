@@ -18,13 +18,14 @@ import { QuestionService } from "../services/QuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
 import { IsroQuestionService } from "../services/IsroQuestionService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
+import { BranchQuestionService } from "../services/BranchQuestionService";
 import { getShortcutKey, shouldIgnorePlainShortcut } from "../utils/keyboardShortcuts";
 import { resolveHorizontalSwipeNavigation } from "../utils/mobileGestures";
 import { buildSolvePath, parsePageParam, HOME_ROUTE, PRACTICE_ROUTE } from "../utils/routes";
 import { writeLastSession } from "../utils/lastSession";
 import { readPracticeShuffleEnabled } from "../utils/practicePreference";
 import { getDisplayQuestionTypeLabel, MTA_EXPLANATION_TEXT } from "../utils/questionType";
-import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion } from "../utils/examTrack";
+import { isDaQuestion as isDaQuestionByMetadata, isIsroQuestion as isIsroQuestionByMetadata, isItQuestion, getQuestionTrack } from "../utils/examTrack";
 import { useTheme } from "../utils/theme";
 
 const isUnavailableQuestionDetailError = (error) => (
@@ -125,13 +126,17 @@ const SolvePage = ({
     }
 
     // 3. Standalone direct question URL (no explore search parameters)
+    const track = getQuestionTrack(indexedQuestion);
+    const isBranchQuestion = ["ec", "ee", "me", "ce"].includes(track);
     const activeService = isIsroQuestion(indexedQuestion)
       ? IsroQuestionService
       : isDaQuestion(indexedQuestion)
         ? DaQuestionService
         : isAptitudeQuestion
           ? AptitudeQuestionService
-          : questionService;
+          : isBranchQuestion
+            ? BranchQuestionService
+            : questionService;
 
     const paperQuestions = typeof activeService?.getQuestionsByYearSet === "function"
       && (indexedQuestion.yearSetKey || indexedQuestion.exam?.year)
@@ -187,13 +192,17 @@ const SolvePage = ({
     setQuestionDetailError("");
     setIsQuestionDetailLoading(true);
 
+    const questionTrack = getQuestionTrack(indexedQuestion);
+    const isBranchQuestion = ["ec", "ee", "me", "ce"].includes(questionTrack);
     const detailService = isIsroQuestion(indexedQuestion)
       ? IsroQuestionService
       : isDaQuestion(indexedQuestion)
         ? DaQuestionService
         : isAptitudeQuestion
           ? AptitudeQuestionService
-          : questionService;
+          : isBranchQuestion
+            ? BranchQuestionService
+            : questionService;
 
     detailService
       .ensureQuestionDetail(indexedQuestion)

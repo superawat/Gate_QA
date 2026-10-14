@@ -77,6 +77,7 @@ export interface IQuestionService {
   _hydrateFromCache(questions: QuestionRow[], options?: { fullBank?: boolean }): QuestionRow[];
   _writeCache(options?: { fullBank?: boolean }): void;
   clearInitCache(): void;
+  clearBranch(): void;
   _loadIndexedDataset(baseUrl: string): Promise<{ sourceUrl: string; questions: QuestionRow[] }>;
   _loadFullBankDataset(baseUrl: string): Promise<any>;
   init(options?: { fullBank?: boolean }): Promise<void>;

@@ -20,6 +20,7 @@ const QUESTION_BANK_CANDIDATES = [
 ];
 
 const DETAIL_SHARDS_DIR = path.join(PUBLIC_DIR, "question-detail-shards");
+const AUDIT_DIR = path.join(ROOT, "audit");
 const LOCAL_IMAGE_RE = /\/(?:Gate_QA\/)?question-images\/([^"')\s>]+)/g;
 const REMOTE_BLOB_RE = /https:\/\/(?:[a-z0-9-]+\.)?gateoverflow\.in\/\?qa=blob(?:&amp;|&)qa_blobid=\d+/gi;
 
@@ -67,6 +68,7 @@ function getQuestionSourceFiles() {
   return [
     getQuestionBankPath(),
     ...listJsonFiles(DETAIL_SHARDS_DIR),
+    ...listJsonFiles(AUDIT_DIR),
   ];
 }
 
@@ -108,13 +110,22 @@ function main() {
     source.questions.map((question) => ({ ...question, __sourceFile: source.filePath }))
   ));
 
-  const imageDirEntries = fs.existsSync(IMAGE_DIR)
-    ? fs.readdirSync(IMAGE_DIR, { withFileTypes: true })
-    : [];
-  const imageFiles = imageDirEntries
-    .filter((entry) => entry.isFile())
-    .map((entry) => entry.name)
-    .sort((left, right) => left.localeCompare(right));
+  function listAllFiles(dir, relPrefix = "") {
+    if (!fs.existsSync(dir)) return [];
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const list = [];
+    for (const entry of entries) {
+      const rel = relPrefix ? `${relPrefix}/${entry.name}` : entry.name;
+      if (entry.isDirectory()) {
+        list.push(...listAllFiles(path.join(dir, entry.name), rel));
+      } else if (entry.isFile()) {
+        list.push(rel);
+      }
+    }
+    return list;
+  }
+
+  const imageFiles = listAllFiles(IMAGE_DIR).sort((left, right) => left.localeCompare(right));
   const imageFileSet = new Set(imageFiles);
 
   const referencedFileNames = new Set();
@@ -125,7 +136,16 @@ function main() {
   questions.forEach((question) => {
     const questionUid = String(question?.question_uid || "").trim();
     const title = String(question?.title || "").trim();
-    const html = String(question?.question || "");
+    let html = String(question?.question || question?.stem || "");
+    if (Array.isArray(question?.options)) {
+      html += " " + question.options.join(" ");
+    }
+    if (question?.detailed_solution) {
+      html += " " + JSON.stringify(question.detailed_solution);
+    }
+    if (question?.rawSolution) {
+      html += " " + String(question.rawSolution);
+    }
 
     const localRefs = extractLocalImageFileNames(html);
     totalLocalImageRefs += localRefs.size;

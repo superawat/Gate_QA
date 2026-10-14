@@ -18,15 +18,22 @@ export default function TrackerContinueCard({
   const accuracyPct = Math.round(metrics.accuracyRate * 100);
 
   const handleAction = () => {
-    navigate(
-      `${PRACTICE_ROUTE}?subjects=${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true`
-    );
+    const track = topic?.track;
+    if (track === "da") {
+      navigate(`${PRACTICE_ROUTE}?subjects=da:${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true`);
+    } else if (track && track !== "cse") {
+      navigate(`${PRACTICE_ROUTE}?track=${track}&subjects=${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true`);
+    } else {
+      navigate(
+        `${PRACTICE_ROUTE}?subjects=${topic.subjectSlug}&subtopics=${topic.primaryTopicTag}&hideSolved=true`
+      );
+    }
   };
 
   return (
     <section
       aria-label={isStarter ? "Recommended Starting Topic" : "Continue Practice"}
-      className="mb-8 p-4 sm:p-5 rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+      className="mb-4 sm:mb-8 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] shadow-[var(--shadow-card)] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4"
     >
       <div className="flex items-start gap-3">
         <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 mt-0.5">

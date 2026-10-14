@@ -26,7 +26,6 @@ vi.mock("../components/Layout/PageShell", () => ({
   ),
 }));
 
-
 // Mock FilterContext for instant test execution
 vi.mock("../contexts/FilterContext", () => ({
   useFilterState: () => ({
@@ -52,6 +51,15 @@ vi.mock("../services/DaQuestionService", () => ({
     loaded: true,
     questions: [],
     init: vi.fn().mockResolvedValue(undefined),
+  },
+}));
+
+vi.mock("../services/BranchQuestionService", () => ({
+  BranchQuestionService: {
+    isLoaded: vi.fn().mockReturnValue(true),
+    getQuestions: vi.fn().mockReturnValue([]),
+    init: vi.fn().mockResolvedValue([]),
+    getStructuredTags: vi.fn().mockReturnValue({}),
   },
 }));
 
@@ -125,12 +133,81 @@ vi.mock("../data/trackerTaxonomy", () => {
     },
   ];
 
-  return {
-    TRACK_TAXONOMIES: {
-      cse: { track: "cse", title: "GATE CSE", defaultExamDate: "2027-02-06", subjects: cseSubjects },
-      da: { track: "da", title: "GATE DA", defaultExamDate: "2027-02-07", subjects: daSubjects },
+  const ecSubjects = [
+    {
+      id: "ec-comm",
+      slug: "communications",
+      canonicalSubjectSlugs: ["communications"],
+      track: "ec",
+      label: "Communications",
+      shortLabel: "COMM",
+      marksRange: "10–12 Marks",
+      estimatedHours: 40,
+      weightageTier: "tier-1-high",
+      recommendedTextbook: "Simon Haykin",
+      topics: [
+        {
+          id: "ec-comm-digital-comm",
+          label: "Digital Communications",
+          subjectSlug: "communications",
+          canonicalSubjectSlugs: ["communications"],
+          primaryTopicTag: "digital-communications",
+          secondaryTopicTags: [],
+          estimatedHours: 12,
+          weightageTier: "tier-1-high",
+          marksRange: "4–6 Marks",
+          keyConcepts: ["PCM", "QAM"],
+          recommendedTextbook: "Simon Haykin",
+          subtopics: [],
+        },
+      ],
     },
-    getTopicsForTrack: (track) => (track === "da" ? daSubjects[0].topics : cseSubjects[0].topics),
+  ];
+
+  const eeSubjects = [
+    {
+      id: "ee-machines",
+      slug: "electrical-machines",
+      canonicalSubjectSlugs: ["electrical-machines"],
+      track: "ee",
+      label: "Electrical Machines",
+      shortLabel: "Machines",
+      marksRange: "9–11 Marks",
+      estimatedHours: 45,
+      weightageTier: "tier-1-high",
+      recommendedTextbook: "P.S. Bimbhra",
+      topics: [
+        {
+          id: "ee-mach-transformers",
+          label: "Single Phase and Three Phase Transformers",
+          subjectSlug: "electrical-machines",
+          canonicalSubjectSlugs: ["electrical-machines"],
+          primaryTopicTag: "transformers",
+          secondaryTopicTags: [],
+          estimatedHours: 14,
+          weightageTier: "tier-1-high",
+          marksRange: "4–5 Marks",
+          keyConcepts: ["Auto transformer"],
+          recommendedTextbook: "P.S. Bimbhra",
+          subtopics: [],
+        },
+      ],
+    },
+  ];
+
+  const taxonomyMap = {
+    cse: { track: "cse", title: "GATE CSE", defaultExamDate: "2027-02-06", subjects: cseSubjects },
+    da: { track: "da", title: "GATE DA", defaultExamDate: "2027-02-07", subjects: daSubjects },
+    ec: { track: "ec", title: "GATE EC", defaultExamDate: "2027-02-06", subjects: ecSubjects },
+    ee: { track: "ee", title: "GATE EE", defaultExamDate: "2027-02-06", subjects: eeSubjects },
+  };
+
+  return {
+    TRACK_TAXONOMIES: taxonomyMap,
+    getTopicsForTrack: (track) => {
+      const entry = taxonomyMap[track] || taxonomyMap.cse;
+      return entry.subjects[0]?.topics || [];
+    },
     CSE_SUBJECTS: cseSubjects,
     DA_SUBJECTS: daSubjects,
   };
@@ -185,7 +262,7 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     expect(screen.getByText(/theory progress/i)).toBeTruthy();
     expect(screen.getByText(/pyq practice/i)).toBeTruthy();
     expect(screen.getByText(/practice accuracy/i)).toBeTruthy();
-    expect(screen.getByText(/syllabus & preparation table/i)).toBeTruthy();
+    expect(screen.getByText(/subject breakdown/i)).toBeTruthy();
     expect(screen.getAllByText(/engineering mathematics/i).length).toBeGreaterThan(0);
   });
 
@@ -288,5 +365,58 @@ describe("TrackerPage", { timeout: 60000 }, () => {
     const themeToggle = screen.getByRole("switch", { name: /switch to (dark|light) mode/i });
     expect(themeToggle).toBeTruthy();
   });
-});
 
+  // Multi-branch integration tests based on user's selected branches
+  it("renders only user's selected branches when CSE and EC combination is selected", () => {
+    window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["cse", "ec"]));
+    window.localStorage.setItem("gateqa_active_branch", "cse");
+
+    renderTrackerPage();
+
+    // CSE and EC switcher buttons are present
+    expect(screen.getByRole("button", { name: /gate cse/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /gate ec/i })).toBeTruthy();
+
+    // Unselected branches (DA, EE, ME, CE) are NOT rendered
+    expect(screen.queryByRole("button", { name: /gate da/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /gate ee/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /gate me/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /gate ce/i })).toBeNull();
+  });
+
+  it("switches to EC and renders official EC syllabus when user selected EC and EE", () => {
+    window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["ec", "ee"]));
+    window.localStorage.setItem("gateqa_active_branch", "ec");
+
+    renderTrackerPage();
+
+    // EC is default active
+    expect(screen.getByRole("heading", { name: /gate ec preparation tracker/i })).toBeTruthy();
+    expect(screen.getByText(/paper: ec/i)).toBeTruthy();
+    expect(screen.getByRole("button", { name: /gate ec/i })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /gate ee/i })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /gate cse/i })).toBeNull();
+
+    // EC syllabus subject is rendered
+    expect(screen.getAllByText(/communications/i).length).toBeGreaterThan(0);
+
+    // Switch to EE
+    const eeBtn = screen.getByRole("button", { name: /gate ee/i });
+    fireEvent.click(eeBtn);
+
+    expect(screen.getByRole("heading", { name: /gate ee preparation tracker/i })).toBeTruthy();
+    expect(screen.getByText(/paper: ee/i)).toBeTruthy();
+    expect(screen.getAllByText(/electrical machines/i).length).toBeGreaterThan(0);
+  });
+
+  it("renders a single branch button when user only selected 1 branch", () => {
+    window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["ec"]));
+    window.localStorage.setItem("gateqa_active_branch", "ec");
+
+    renderTrackerPage();
+
+    expect(screen.getByRole("button", { name: /gate ec/i })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /gate cse/i })).toBeNull();
+    expect(screen.queryByRole("button", { name: /gate da/i })).toBeNull();
+  });
+});

@@ -180,17 +180,17 @@ describe("MockTestShell", () => {
       "/mock?stage=exam"
     );
 
-    expect(screen.getByTestId("mock-portal-option-full_length")).toBeTruthy();
+    expect(screen.getByTestId("mock-portal-option-paper_mode")).toBeTruthy();
     expect(screen.queryByText("Could not start a valid mock attempt.")).toBeNull();
     expect(onStageChange).toHaveBeenCalledWith("setup");
   });
 
-  test("simplifies the portal to the three supported start modes", () => {
+  test("simplifies the portal to the supported start modes", () => {
     renderInMockRoute(<MockTestShell onExit={vi.fn()} />);
 
-    expect(screen.getByTestId("mock-portal-option-full_length")).toBeTruthy();
     expect(screen.getByTestId("mock-portal-option-paper_mode")).toBeTruthy();
     expect(screen.getByTestId("mock-portal-option-custom")).toBeTruthy();
+    expect(screen.queryByTestId("mock-portal-option-full_length")).toBeNull();
     expect(screen.queryByText("Mini mock 15Q")).toBeNull();
     expect(screen.queryByText("Mini mock 25Q")).toBeNull();
     expect(screen.queryByText("Random generated exam (GATE pattern)")).toBeNull();
@@ -316,7 +316,6 @@ describe("MockTestShell", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /back to modes/i }));
 
-    expect(screen.getByTestId("mock-portal-option-full_length")).toBeTruthy();
     expect(screen.getByTestId("mock-portal-option-paper_mode")).toBeTruthy();
     expect(screen.getByTestId("mock-portal-option-custom")).toBeTruthy();
   });

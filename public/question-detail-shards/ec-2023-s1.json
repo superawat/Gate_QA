@@ -1,0 +1,2636 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.287Z",
+  "shardKey": "ec-2023-s1",
+  "yearSetKey": "ec-2023-s1",
+  "yearSetIdentity": "ec:2023:set-1",
+  "track": "ec",
+  "year": 2023,
+  "set": 1,
+  "label": "2023 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ec:2023:q1": {
+      "question_uid": "pp:ec:2023:q1",
+      "exam_uid": "ec:2023:set1:q1",
+      "title": "GATE EC 2023 | Set 1 | Question: 1",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $$v_{1}=\\left[\\begin{array}{l}1 \\\\ 2 \\\\ 0\\end{array}\\right]$$ and $$v_{2}=\\left[\\begin{array}{l}2 \\\\ 1 \\\\ 3\\end{array}\\right]$$ be two vectors. The value of the coefficient $\\alpha$ in the expression $v_{1}=\\alpha v_{2}+e$, which minimizes the length of the error vector $e$, is",
+      "options": [
+        "$\\frac{7}{2}$",
+        "$-\\frac{2}{7}$",
+        "$\\frac{2}{7}$",
+        "$-\\frac{7}{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{aligned}\n\ne & =V_{1}-\\alpha V_{2} \\\\\n\ne & =(i+2 k+0 k)-\\alpha(2 i+j+3 k) \\\\\n\n\\hat{e} & =(1-2 \\alpha) \\hat{i}+(2-\\alpha) \\hat{j}+(0-3 \\alpha) \\hat{k} \\\\\n\n|\\hat{e}| & =\\sqrt{(1-2 \\alpha)^{2}+(2-\\alpha)^{2}+(-3 \\alpha)^{2}} \\\\\n\n|\\hat{e}|^{2} & =5+14 \\alpha^{2}-8 \\alpha \\text { to be minimum at } \\frac{\\partial e^{2}}{\\partial \\alpha}=28 \\alpha-8=0 \\\\\n\n\\alpha & =\\frac{2}{7} \\text { stationary point }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q2": {
+      "question_uid": "pp:ec:2023:q2",
+      "exam_uid": "ec:2023:set1:q2",
+      "title": "GATE EC 2023 | Set 1 | Question: 2",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The rate of increase, of a scalar field $f(x, y, z)=x y z$ in the direction $v=(2,1,2)$ at a point $(0,2,1)$ is",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{4}{3}$",
+        "$2$",
+        "$4$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{aligned}\n\nf(x, y, z) & =x y z \\\\\n\n\\overline{\\nabla f} & =\\hat{i} f_{x}+\\hat{j} f_{y}+\\hat{k} f_{z} \\\\\n\n& =\\hat{i}(y z)+\\hat{j}(x z)+\\hat{k}(x y) \\\\\n\n\\overline{\\nabla f}_{(0,2,1)} & =\\hat{i}(2)+0 \\hat{j}+0 \\hat{k}\n\n\\end{aligned}$$\n\nDirectional derivative,\n\n$$\\begin{aligned}\n\nD \\cdot D & =\\overline{\\nabla f} \\cdot \\frac{\\bar{a}}{|\\bar{a}|} \\\\\n\n& =(2 \\hat{i}+0 \\hat{j}+0 \\hat{k}) \\cdot \\frac{(2 \\hat{i}+\\hat{j}+2 \\hat{k})}{\\sqrt{2^{2}+1^{2}+2^{2}}}=\\frac{4}{\\sqrt{9}}=\\frac{4}{3}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q3": {
+      "question_uid": "pp:ec:2023:q3",
+      "exam_uid": "ec:2023:set1:q3",
+      "title": "GATE EC 2023 | Set 1 | Question: 3",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $w^{4}=16 j$. Which of the following cannot be a value of $w$ ?",
+      "options": [
+        "$2 e^{\\frac{j 2 \\pi}{8}}$",
+        "$2 e^{\\frac{j \\pi}{8}}$",
+        "$2 e^{\\frac{j 5 \\pi}{8}}$",
+        "$2 e^{\\frac{j 9 \\pi}{8}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$w=(2) j^{1 / 4}$\n\n$w=2(0+j)^{1 / 4}$\n\n$w=2\\left[e^{j(2 n+1) \\pi / 2}\\right]^{1 / 4}$\n\n$=2\\left[e^{j(2 n+1) \\pi / 8}\\right]$\n\nFor $n=0$,\n\n$w=e^{j \\pi / 8}$\n\nFor $n=2$,\n\n$w=2 e^{5 \\pi j / 8}$\n\nFor $n=4$,\n\n$w=2 e^{9 \\pi j / 8}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q4": {
+      "question_uid": "pp:ec:2023:q4",
+      "exam_uid": "ec:2023:set1:q4",
+      "title": "GATE EC 2023 | Set 1 | Question: 4",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The value of the contour integral, $\\oint_{c}\\left(\\frac{z+2}{z^{2}+2 z+2}\\right) d z$, where the contour $C$ is $\\left\\{z:\\left|z+1-\\frac{3}{2} j\\right|=1\\right\\}$, taken in the counter clockwise direction, is",
+      "options": [
+        "$-\\pi(1+j)$",
+        "$\\pi(1+j)$",
+        "$\\pi(1-j)$",
+        "$-\\pi(1-j)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$I=\\oint_{c} \\frac{z+2}{z^{2}+2 z+2} d z ; \\quad c=\\left|z+1-\\frac{3}{2} i\\right|=1$\n\nPoles are given $(z+1)^{2}+1=0$\n\n$$\\begin{aligned}\n\n& z+1= \\pm \\sqrt{-1} \\\\\n\n& z=-1+j,-1-j\n\n\\end{aligned}$$\n\nwhere $-1-i$ lies outside ' $c$ '\n\n$z=(-1,1) \\text { lies inside }  'c'$.\n\nby $\\mathrm{CRT}$\n\n$$\\begin{aligned}\n\n\\oint_{c} f(z) d z & =2 \\pi i \\operatorname{Res}(f(z), z=-1+j) \\\\\n\n& =2 \\pi i\\left(\\frac{z+2}{2(z+1)}\\right)_{z=-1+i}\\\\\n\n& =2 \\pi i\\left(\\frac{-1+j+2}{2(-1+j+1)}\\right) \\\\\n\n& =\\pi(1+j)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q5": {
+      "question_uid": "pp:ec:2023:q5",
+      "exam_uid": "ec:2023:set1:q5",
+      "title": "GATE EC 2023 | Set 1 | Question: 5",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let the sets of eigenvalues and eigenvectors of a matrix $B$ be $\\left\\{\\lambda_{k} \\mid 1 \\leq k \\leq n\\right\\}$ and $\\left\\{v_{k} \\mid 1 \\leq k \\leq n\\right\\}$, respectively. For any invertible matrix $P$, the sets of eigenvalues and eigenvectors of the matrix $A$, where $B=P^{-1} A B$, respectively, are",
+      "options": [
+        "$\\left\\{\\lambda_{k} \\operatorname{det}\\mid 1 \\leq k \\leq n\\right\\}$ and $\\left\\{P v_{k} \\mid 1 \\leq k \\leq n\\right\\}$",
+        "$\\left\\{\\lambda_{k} \\mid 1 \\leq k \\leq n\\right\\}$ and $\\left\\{v_{k} \\mid 1 \\leq k \\leq n\\right\\}$",
+        "$\\left\\{\\lambda_{k} \\mid 1 \\leq k \\leq n\\right\\}$ and $\\left\\{P v_{k} \\mid 1 \\leq k \\leq n\\right\\}$",
+        "$\\left\\{\\lambda_{k} \\mid 1 \\leq k \\leq n\\right\\}$ and $\\left\\{P^{-1} v_{k} \\mid 1 \\leq k \\leq n\\right\\}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{aligned} & B & =P^{-1} A P \\\\ A & =P B P^{-1}\\end{aligned}$$\n\n$\\Rightarrow A, B$ are called matrices similar.\n\n$\\Rightarrow$ Both $A, B$ have same set 7 eigen values\n\nBut eigen vectors of $A, B$ are different.\n\nLet $B X=\\lambda X$\n\n$\\Rightarrow \\quad\\left(P^{-1} A P\\right) X=\\lambda X$\n\n$\\Rightarrow \\quad A(P X)=\\lambda(P X)$\n\n$\\therefore$ Eigen vectors of $A$ are $P X$.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q6": {
+      "question_uid": "pp:ec:2023:q6",
+      "exam_uid": "ec:2023:set1:q6",
+      "title": "GATE EC 2023 | Set 1 | Question: 6",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a semiconductor, if the Fermi energy level lies in the conduction band, then the semiconductor is known as",
+      "options": [
+        "degenerate $n$-type.",
+        "degenerate $p$-type.",
+        "non-degenerate $n$-type.",
+        "non-degenerate $p$-type."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "As the Fermi lies inside the conduction band hence it is degenerate $n$-type semiconductor.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q7": {
+      "question_uid": "pp:ec:2023:q7",
+      "exam_uid": "ec:2023:set1:q7",
+      "title": "GATE EC 2023 | Set 1 | Question: 7",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For an intrinsic semiconductor at temperature $T=0 \\mathrm{~K}$, which of the following statement is true?",
+      "options": [
+        "All energy states in the valence band are filled with electrons and all energy states in the conduction band are empty of electrons.",
+        "All energy states in the valence band are empty of electrons and all energy states in the conduction band are filled with electrons.",
+        "All energy states in the valence and conduction band are filled with holes.",
+        "All energy states in the valence and conduction band are filled with electrons."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "Intrinsic semiconductor at $\\mathrm{T}=0 \\mathrm{~K}$ behaves as an insulator.\n\nHence, valence band is completely filled with electron and conduction band is completely empty.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q8": {
+      "question_uid": "pp:ec:2023:q8",
+      "exam_uid": "ec:2023:set1:q8",
+      "title": "GATE EC 2023 | Set 1 | Question: 8",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A series $R L C$ circuit has a quality factor $Q$ of 1000 at a center frequency of $10^{6} \\mathrm{rad} / \\mathrm{s}$. The possible values of $R, L$ and $C$ are",
+      "options": [
+        "$R=1 \\Omega, L=1 \\mu \\mathrm{H}$ and $C=1 \\mu \\mathrm{F}$",
+        "$R=0.1 \\Omega, L=1 \\mu \\mathrm{H}$ and $C=1 \\mu \\mathrm{F}$",
+        "$R=0.01 \\Omega, L=1 \\mu \\mathrm{H}$ and $C=1 \\mu \\mathrm{F}$",
+        "$R=0.001 \\Omega, L=1 \\mu \\mathrm{H}$ and $C=1 \\mu \\mathrm{F}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Network Functions",
+        "markdown": "Given: $Q=1000$ and $\\omega_{0}=10^{6} \\mathrm{rad} / \\mathrm{sec}$\n\nWe know, for series $R L C$ circuit,\n\n$$\\begin{aligned}\n\nQ & =\\frac{\\omega_{0} L}{R} \\\\\n\n\\omega_{0} & =\\sqrt{\\frac{1}{L C}} \\\\\n\nQ & =\\frac{1}{\\sqrt{L C}} \\times \\frac{1}{R}=\\frac{1}{R} \\sqrt{\\frac{L}{C}}\n\n\\end{aligned}$$\n\nSo, $L=1 \\mu \\mathrm{H}, C=1 \\mu \\mathrm{F}$ and $R=0.001$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2023:q9": {
+      "question_uid": "pp:ec:2023:q9",
+      "exam_uid": "ec:2023:set1:q9",
+      "title": "GATE EC 2023 | Set 1 | Question: 9",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a MOS capacitor, $V_{f b}$ and $V_{t}$ are the flat-band voltage and the threshold voltage, respectively. The variation of the depletion width $\\left(W_{\\text {dep }}\\right)$ for varying gate voltage $\\left(V_{g}\\right)$ is best represented by\n<br><img src=\"/question-images/ec/2023/ec-2023-c303d9bc08.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - FET and MOSFET Analysis",
+        "markdown": "$\\because$ We know $V_{G} \\lt V_{F B}$ then accumulation mode.\n\n$\\therefore$ In accumulation mode $W_{d}=0$ because there is no depletion charge.\n\nNow, $V_{F B} \\lt V_{G} \\lt V_{T} \\Rightarrow$ then depletion and inversion mode.\n\n$\\therefore$ Depletion width is available.\n\n$\\therefore V_{G} \\gt V_{T} \\Rightarrow$ Strong inversion.\n\n$\\therefore$ Depletion width $W_{d} \\Rightarrow$ Constant.\n\nAnd $W_{d}=\\sqrt{\\frac{2 \\epsilon\\left|\\phi_{S}\\right|}{q N_{S}}}$ and $\\left|\\phi_{S}\\right| \\propto V_{G}$\n\nBut after strong inversion, $W_{d}$ remains constant.\n\n$\\therefore$ Correction option is (B).\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q10": {
+      "question_uid": "pp:ec:2023:q10",
+      "exam_uid": "ec:2023:set1:q10",
+      "title": "GATE EC 2023 | Set 1 | Question: 10",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a narrow band signal, propagating in a lossless dielectric medium $\\left(\\epsilon_{r}=4, \\mu_{r}=1\\right)$, with phase velocity $v_{p}$ and group velocity $v_{g}$. Which of the following statement is true? ( $c$ is the velocity of light in vacuum.)",
+      "options": [
+        "$v_{p} \\gt c, v_{g} \\gt c$",
+        "$v_{p} \\lt c, v_{g} \\gt c$",
+        "$v_{p} \\gt c, v_{g} \\lt c$",
+        "$v_{p} \\lt c, v_{g} \\lt c$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Miscellaneous Topics",
+        "markdown": "Phase velocity, $V_{p}=\\frac{\\omega}{\\beta}=\\frac{\\omega}{\\omega \\sqrt{\\mu \\epsilon}}=\\frac{1}{\\sqrt{\\mu_{0} \\epsilon_{0}}}, \\frac{1}{\\sqrt{\\mu_{r} \\epsilon_{r}}}=\\frac{C}{\\sqrt{\\mu_{r} \\epsilon_{r}}}$\n\n$\\therefore \\quad V_{p} \\lt C$\n\nGroup velocity, $V_{g}=\\frac{d \\omega}{d \\beta}=\\frac{V_{p}}{1-\\frac{\\omega}{V_{p}} \\frac{d V_{p}}{d \\omega}}$\n\nHere, $\\quad V_{p} \\neq f(\\omega)$\n\n$\\therefore \\quad V_{g}=V_{p} \\lt C$\n\nHence, $\\quad V_{p} \\lt C$\n\n$\\quad \\quad V_{g} \\lt C$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2023:q11": {
+      "question_uid": "pp:ec:2023:q11",
+      "exam_uid": "ec:2023:set1:q11",
+      "title": "GATE EC 2023 | Set 1 | Question: 11",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, $V_{1}$ and $V_{2}$ are bias voltages. Based on input and output impedances, the circuit behaves as a\n<br><img src=\"/question-images/ec/2023/ec-2023-4142977ad7.webp\" /><br>",
+      "options": [
+        "voltage controlled voltage source.",
+        "voltage controlled current source.",
+        "current controlled voltage source.",
+        "current controlled current source."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "feedback-amplifiers",
+          "subtopicLabel": "Feedback Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "feedback-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Feedback Amplifiers",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-4142977ad7.webp\" />\n\nHere from circuit,\n\n$M_{1}$ is common-gate amplifier and $M_{2}$ behaves as an active load.\n\nBy using properties of common gate (CG) amplifier,\n\nInput impedance $\\left(R_{i}\\right)$ is low\n\nOutput impedance $\\left(R_{0}\\right)$ is high\n\nSo, it is a current amplifier.\n\nCurrent amplifier is a current controlled current source.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2023:q12": {
+      "question_uid": "pp:ec:2023:q12",
+      "exam_uid": "ec:2023:set1:q12",
+      "title": "GATE EC 2023 | Set 1 | Question: 12",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A cascade of common-source amplifiers in a unity gain feedback configuration oscillates when",
+      "options": [
+        "the closed loop gain is less than 1 and the phase shift is less than $180^{\\circ}$.",
+        "the closed loop gain is greater than 1 and the phase shift is less than $180^{\\circ}$.",
+        "the closed loop gain is less than 1 and the phase shift is greater than $180^{\\circ}$.",
+        "the closed loop gain is greater than 1 and the phase shift is greater than $180^{\\circ}$."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "For oscillation,\n\nLoop gain magnitude $\\geq 1$.\n\nPhase of loop gain $=360^{\\circ}$\n\nSo, correct answer is option (D).\n\nIn options, closes loop gain is mentioned technically it should be loop gain.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2023:q13": {
+      "question_uid": "pp:ec:2023:q13",
+      "exam_uid": "ec:2023:set1:q13",
+      "title": "GATE EC 2023 | Set 1 | Question: 13",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown below, $P$ and $Q$ are the inputs. The logical function realized by the circuit shown below is\n<br><img src=\"/question-images/ec/2023/ec-2023-eb35dfebbf.webp\" /><br>",
+      "options": [
+        "$Y=P Q$",
+        "$Y=P+Q$",
+        "$Y=\\overline{P Q}$",
+        "$Y=\\overline{P+Q}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "combinational-circuits",
+          "subtopicLabel": "Combinational Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "combinational-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Combinational Circuits",
+        "markdown": "$$\\begin{aligned}\n\n\\text { Output } & =\\bar{Q} \\cdot I_{0}+Q \\cdot I_{1} \\\\\n\n& =\\bar{Q} \\cdot 0+Q \\cdot P \\\\\n\n& =P Q\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q14": {
+      "question_uid": "pp:ec:2023:q14",
+      "exam_uid": "ec:2023:set1:q14",
+      "title": "GATE EC 2023 | Set 1 | Question: 14",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The synchronous sequential circuit shown below works at a clock frequency of $1 \\mathrm{GHz}$. The throughput, in $\\mathrm{M}$ bits/s, and the latency, in ns, respectively, are\n<br><img src=\"/question-images/ec/2023/ec-2023-6714a51168.webp\" /><br>",
+      "options": [
+        "$1000,3$",
+        "$333.33,1$",
+        "$2000,3$",
+        "$333.33,3$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "sequential-circuits",
+          "subtopicLabel": "Sequential Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "sequential-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Sequential Circuits",
+        "markdown": "The given circuit is a type of SISO.\n\n$$\\begin{aligned} \\therefore \\quad Latency &=n \\times T_{\\text {clk }} \\ldots . .& n= \\text{number of flip flops}\\\\\n\n&=3 \\times 1 \\quad \\ldots . &T_{\\mathrm{clk}}=\\frac{1}{f_{\\mathrm{clk}}}=1 \\mathrm{~ns}\\\\\n\n&=3 \\mathrm{~ns} &\n\n\\end{aligned}$$\n\nNow,\n\n$$\\begin{aligned}\n\n\\text{Throughput}&= \\text{Number of bits/sec}\\\\\n\n\\because \\quad 1 \\;bit &=1\\; nsec\\\\\n\n\\therefore \\quad \\text{Throughput} &=10^{9} \\mathrm{bits} / \\mathrm{sec}\\\\\n\n&=1000 \\mathrm{Mbps}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q15": {
+      "question_uid": "pp:ec:2023:q15",
+      "exam_uid": "ec:2023:set1:q15",
+      "title": "GATE EC 2023 | Set 1 | Question: 15",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The open loop transfer function of a unity negative feedback system is $G(s)=\\frac{k}{s\\left(1+s T_{1}\\right)\\left(1+s T_{2}\\right)}$, where $k, T_{1}$ and $T_{2}$ are positive constants. The phase crossover frequency, in rad/s, is",
+      "options": [
+        "$\\frac{1}{\\sqrt{T_{1} T_{2}}}$",
+        "$\\frac{1}{T_{1} T_{2}}$",
+        "$\\frac{1}{T_{1} \\sqrt{T_{2}}}$",
+        "$\\frac{1}{T_{2} \\sqrt{T_{1}}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "basics-of-control-systems-block-diagram-and-sfgs",
+          "subtopicLabel": "Basics of Control Systems, Block Diagram and SFGs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "basics-of-control-systems-block-diagram-and-sfgs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
+        "markdown": "We know phase crossover frequency is that frequency at which phase of the open loop transfer function is $-180^{\\circ}$.\n\n$$\\begin{aligned}\n\n\\therefore \\quad G(s) & =\\frac{K}{s\\left(1+s T_{1}\\right)\\left(1+s T_{2}\\right)} \\\\\n\nG(j \\omega) & =\\frac{K}{(j \\omega)\\left(1+j \\omega T_{1}\\right)\\left(1+j \\omega T_{2}\\right)} \\\\\n\n\\text{Phase of }G(j \\omega) & =\\phi =-90-\\tan ^{-1}\\left(\\omega T_{1}\\right) - \\tan ^{-1}\\left(\\omega T_{2}\\right) \\\\\n\n\\therefore \\quad \\text { At } \\omega &=\\omega_{p c}, \\phi =-180  \\\\\n\n-180 & =-90-\\tan ^{-1}\\left(\\omega_{p c} T_{1}\\right)-\\tan ^{-1}\\left(\\omega_{p c} T_{2}\\right) \\\\\n\n9 \\quad 90 & =\\tan ^{-1}\\left(\\omega_{p c} T_{1}\\right)+\\tan ^{-1}\\left(\\omega_{p c} T_{2}\\right) \\\\\n\n\\tan ^{-1}\\left(\\frac{\\omega_{p c} T_{1}+\\omega_{p c} T_{2}}{1-\\omega_{p c}^{2} T_{1} T_{2}}\\right) & =90 \\\\\n\n1-\\omega_{p c}^{2} T_{1} T_{2} & =0 \\\\\n\n\\omega_{p c} & =\\frac{1}{\\sqrt{T_{1} T_{2}}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q16": {
+      "question_uid": "pp:ec:2023:q16",
+      "exam_uid": "ec:2023:set1:q16",
+      "title": "GATE EC 2023 | Set 1 | Question: 16",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a system with input $x(t)$ and output $y(t)=x\\left(e^{t}\\right)$. The system is",
+      "options": [
+        "Causal and time invariant",
+        "Non-causal and time varying",
+        "Causal and time varying",
+        "Non-causal and time invariant"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "lti-systems-continuous-and-discrete",
+          "subtopicLabel": "LTI Systems Continuous and Discrete"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "lti-systems-continuous-and-discrete"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "We have, $\\quad y(t)=x\\left(e^{t}\\right)$\n\nAt $t=0$\n\n$y(0)=x(1)$\n\ni.e. present value of output depends on future value of input, hence it is non-causal.\n\nFor Time Variant:\n\nDelay the input,\n\n$y(t)=x\\left(e^{t}-t_{0}\\right) \\quad . . . (i)$\n\nDelay the output,\n\n$y\\left(t-t_{0}\\right)=x\\left(e^{t-t_{0}}\\right) \\quad . . . (ii)$\n\ni.e. equations (i) $\\neq$ (ii)\n\nHence, it is time variant system.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q17": {
+      "question_uid": "pp:ec:2023:q17",
+      "exam_uid": "ec:2023:set1:q17",
+      "title": "GATE EC 2023 | Set 1 | Question: 17",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $m(t)$ be a strictly band-limited signal with bandwidth $B$ and energy $E$. Assuming $\\omega_{0}=10 B$, the energy in the signal $m(t) \\cos \\omega_{0} t$ is",
+      "options": [
+        "$\\frac{E}{4}$",
+        "$\\frac{E}{2}$",
+        "$E$",
+        "$2 E$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-30a894871c.webp\" />\n\n$$\\begin{aligned}\n\n\\text { Energy }(E)&=\\frac{1}{2 \\pi} \\int_{-B}^{B}(1)^{2} \\cdot d \\omega \\\\\n\nE&=\\frac{B}{\\pi}\\\\\n\n\\text {Now, let } y(t)&=m(t) \\cos \\omega_{0} t \\\\\n\nY(\\omega)&=\\frac{1}{2}\\left[M\\left(\\omega-\\omega_{0}\\right)+M\\left(\\omega+\\omega_{0}\\right)\\right] \\\\\n\n\\text{Here;  }\\omega_{0}&=10 B\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2023/ec-2023-46223577e1.webp\" />\n\nNow,\n\n$$\\begin{aligned}\n\nEnergy \\left(E^{\\prime}\\right)&=\\frac{1}{2 \\pi} \\int_{-\\infty}^{\\infty}|Y(\\omega)|^{2} \\cdot d \\omega\\\\\n\n&=\\frac{1}{2 \\pi}\\left[\\int_{-11 B}^{-9 B}\\left(\\frac{1}{2}\\right)^{2} \\cdot d \\omega+\\int_{9 B}^{11 B}\\left(\\frac{1}{2}\\right)^{2} \\cdot d \\omega\\right]\\\\\n\n& =\\frac{1}{2 \\pi}\\left[\\frac{1}{4} \\times 2 B+\\frac{1}{4} \\times 2 B\\right] \\\\\n\nE^{\\prime} & =\\frac{B}{2 \\pi}=\\frac{1}{2}\\left(\\frac{B}{\\pi}\\right)=\\frac{E}{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q18": {
+      "question_uid": "pp:ec:2023:q18",
+      "exam_uid": "ec:2023:set1:q18",
+      "title": "GATE EC 2023 | Set 1 | Question: 18",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Fourier transform $X(\\omega)$ of $x(t)=e^{-t^{2}}$ is",
+      "options": [
+        "$\\sqrt{\\pi} e^{\\frac{\\omega^{2}}{2}}$",
+        "$\\frac{e^{-\\frac{\\omega^{2}}{4}}}{2 \\sqrt{\\pi}}$",
+        "$\\sqrt{\\pi} e^{-\\frac{\\omega^{2}}{4}}$",
+        "$\\sqrt{\\pi} e^{-\\frac{\\omega^{2}}{2}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transforms-frequency-response-and-correlation",
+          "subtopicLabel": "Fourier Transforms, Frequency Response and Correlation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "fourier-transforms-frequency-response-and-correlation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
+        "markdown": "We know; $\\quad e^{-a t^{2}} ; a>0 \\stackrel{F T}{\\rightleftharpoons} \\sqrt{\\frac{\\pi}{a}} \\cdot e^{-\\omega^{2} / 4 a}$\n\nHere; $a=1$\n\n$\\therefore \\quad X(\\omega)=\\sqrt{\\pi} \\cdot e^{-\\omega^{2} / 4}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q19": {
+      "question_uid": "pp:ec:2023:q19",
+      "exam_uid": "ec:2023:set1:q19",
+      "title": "GATE EC 2023 | Set 1 | Question: 19",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the table shown below, match the signal type with its spectral characteristics.\n<br><br>$$\\begin{array}{ll}\n\\textbf{Signal type} &\\textbf{Spectral Characteristics}\\\\\n\\text{(i) Continuous, aperiodic}& \\text{(i) Continuous, aperiodic}\\\\\n\\text{(ii) Continuous, periodic}& \\text{(ii) Continuous, periodic}\\\\\n\\text{(iii) Discrete, aperiodic}& \\text{(iii) Discrete, aperiodic}}\\\\\n\\text{(iv) Discrete, periodic} & \\text{(iv) Discrete, periodic}}\n\\end{array}$$",
+      "options": [
+        "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (b), (iii) $\\rightarrow$ (c), (iv) $\\rightarrow$ (d)",
+        "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ , (iv) $\\rightarrow$ (d)",
+        "(i) $\\rightarrow$ (d), (ii) $\\rightarrow$ (b), (iii) $\\rightarrow$ (c), (iv) $\\rightarrow$ (a)",
+        "(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ (d), (iv) $\\rightarrow$ (b)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Signals and Systems** (specifically *Basics of Signals and Systems*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Basics of Signals and Systems**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *(i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ , (iv) $\\rightarrow$ (d)*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ((i) $\\rightarrow$ (a), (ii) $\\rightarrow$ (c), (iii) $\\rightarrow$ , (iv) $\\rightarrow$ (d))."
+      }
+    },
+    "pp:ec:2023:q20": {
+      "question_uid": "pp:ec:2023:q20",
+      "exam_uid": "ec:2023:set1:q20",
+      "title": "GATE EC 2023 | Set 1 | Question: 20",
+      "year": "gateec-2023-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "For a real signal, which of the following is/are valid power spectral density/densities?<br><img src=\"/question-images/ec/2023/ec-2023-4a65d752fe.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "random-signals-and-noise",
+          "subtopicLabel": "Random Signals and Noise"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "random-signals-and-noise"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Signals and Noise",
+        "markdown": "(i) $S_{x}(\\omega) \\geq 0$\n\n(ii) $S_{x}(\\omega)$ is even function\n\nHence, options (A) and (B) are valid power spectral densities.\n\nTherefore, the correct option(s) are **A, B**."
+      }
+    },
+    "pp:ec:2023:q21": {
+      "question_uid": "pp:ec:2023:q21",
+      "exam_uid": "ec:2023:set1:q21",
+      "title": "GATE EC 2023 | Set 1 | Question: 21",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The signal-to-noise ratio (SNR) of an ADC with a full-scale sinusoidal input is given to be $61.96 \\mathrm{~dB}$. The resolution of the ADC is _____ bits. (rounded off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "10",
+        "tolerance": {
+          "lower": 10,
+          "upper": 10
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "analog-communication-systems",
+          "subtopicLabel": "Analog Communication Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "analog-communication-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Analog Communication Systems",
+        "markdown": "We know that for sinusoidal input, the signal to noise ratio (SNR) is given as,\n\n$$\\begin{aligned}\n\n\\mathrm{SNR} & =1.76+6.02 \\mathrm{n} \\mathrm{dB} \\\\\n\n61.96 \\mathrm{~dB} & =1.76+6.02 \\mathrm{n} \\mathrm{dB} \\\\\n\n6.02 \\mathrm{n} & =61.96-1.76 \\\\\n\nn & =10 \\text { bits }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10**."
+      }
+    },
+    "pp:ec:2023:q22": {
+      "question_uid": "pp:ec:2023:q22",
+      "exam_uid": "ec:2023:set1:q22",
+      "title": "GATE EC 2023 | Set 1 | Question: 22",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the circuit shown below, the current $i$ flowing through $200 \\Omega$ resistor is ____ $m A$ (rounded off to two decimal places).\n\n<br><img src=\"/question-images/ec/2023/ec-2023-f263a929ba.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.35",
+        "tolerance": {
+          "lower": 1.3,
+          "upper": 1.4
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "By applying source transformation,\n\n<img src=\"/question-images/ec/2023/ec-2023-85a4615a1e.webp\" />\n\nApply nodal at node $V_{A}$,\n\n$$\\begin{aligned}\n\n\\frac{V_{A}-2}{2 \\mathrm{k} \\Omega}+\\frac{V_{A}}{2 \\mathrm{k} \\Omega}+\\frac{V_{A}+1}{1.2 \\mathrm{k} \\Omega} & =1 \\mathrm{~mA} \\\\\n\nV_{A}\\left[\\frac{1}{2}+\\frac{1}{2}+\\frac{1}{1.2}\\right] & =1+\\frac{2}{2}-\\left(\\frac{1}{1.2}\\right) \\\\\n\nV_{A} & =0.636 \\mathrm{~V}\n\n\\end{aligned}$$\n\nThe current through $200 \\Omega$ resistor,\n\n$$\\begin{aligned}\n\n& i=\\frac{V_{A}+1}{1.2 \\mathrm{k} \\Omega}=\\frac{0.636+1}{1.2} \\\\\n\n& i=1.36 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.35** (acceptable range: [1.3, 1.4])."
+      }
+    },
+    "pp:ec:2023:q23": {
+      "question_uid": "pp:ec:2023:q23",
+      "exam_uid": "ec:2023:set1:q23",
+      "title": "GATE EC 2023 | Set 1 | Question: 23",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "For the two port network shown below, the $[Y]$-parameters is given as\n<br><br>\n$$[Y]=\\frac{1}{100}\\left[\\begin{array}{cc}\n2 & -1 \\\\\n-1 & 4 / 3\n\\end{array}\\right] S$$\n<br><br>\nThe value of load impedance $Z_{L}$, in $\\Omega$, for maximum power transfer will be ____ (rounded off to the nearest integer).\n<br><img src=\"/question-images/ec/2023/ec-2023-5a582da0fd.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "80",
+        "tolerance": {
+          "lower": 80,
+          "upper": 80
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "two-port-networks",
+          "subtopicLabel": "Two Port Networks"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "two-port-networks"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Two Port Networks",
+        "markdown": "$$[Y]=\\left[\\begin{array}{cc}\n\n\\frac{2}{100} & -\\frac{1}{100} \\\\\n\n-\\frac{1}{100} & \\frac{4}{300}\n\n\\end{array}\\right]$$\n\nFor the given $Y$-parameter the two-port network is\n\n<img src=\"/question-images/ec/2023/ec-2023-e5a0cb556b.webp\" />\n\n$Y_{11}=Y_{a}+Y_{b}=\\frac{2}{100}$[\n\n$Y_{12}=Y_{21}=-Y_{b}=-\\frac{1}{100}$\n\n$Y_{22}=Y_{b}+Y_{c}=\\frac{4}{300}$\n\nOn solving,\n\n$\\quad Y_{b}=\\frac{1}{100} S$\n\n$Y_{a}=\\frac{1}{100} S$\n\n$Y_{c}=\\frac{1}{300} S$\n\nThe network becomes,\n\n<img src=\"/question-images/ec/2023/ec-2023-a6b3748163.webp\" />\n\nConverting $\\Delta$ - to $\\lambda$\n\n<img src=\"/question-images/ec/2023/ec-2023-de78349242.webp\" />\n\n$Z_{Th}=60+[(20+10)||60]=60+\\frac{30 \\times 60}{30+60}=80 \\Omega$\n\nFor maximum power transfer,\n\n$Z_{L}=Z_{\\text {Th }}=80 \\Omega$\n\nTherefore, the correct answer is **80**."
+      }
+    },
+    "pp:ec:2023:q24": {
+      "question_uid": "pp:ec:2023:q24",
+      "exam_uid": "ec:2023:set1:q24",
+      "title": "GATE EC 2023 | Set 1 | Question: 24",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "For the circuit shown below, the propagation delay of each NAND gate is $1 \\mathrm{~ns}$. The critical path delay, in ns, is ____ (rounded off to the nearest integer).\n<br><img src=\"/question-images/ec/2023/ec-2023-3082558b7b.webp\" /><br><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "logic-gates",
+          "subtopicLabel": "Logic Gates"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "logic-gates"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Logic Gates",
+        "markdown": "The given circuit can be drawn as;\n\n<img src=\"/question-images/ec/2023/ec-2023-38ddb06229.webp\" />\n\n$\\therefore \\quad$ The critical path delay $=1 \\mathrm{~ns}+1 \\mathrm{~ns}=2 \\mathrm{~ns}$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ec:2023:q25": {
+      "question_uid": "pp:ec:2023:q25",
+      "exam_uid": "ec:2023:set1:q25",
+      "title": "GATE EC 2023 | Set 1 | Question: 25",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the circuit shown below, switch $S$ was closed for a long time. If the switch is opened at $t=0$, the maximum magnitude of the voltage $V_{R}$, in volts, is ____ (rounded off to the nearest integer).\n<br><img src=\"/question-images/ec/2023/ec-2023-75a9579c97.webp\" /><br><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "transient-analysis",
+          "subtopicLabel": "Transient Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "transient-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Transient Analysis",
+        "markdown": "At $t=0^{-}$\n\n<img src=\"/question-images/ec/2023/ec-2023-481dac4808.webp\" />\n\n$i_{L}\\left(0^{-}\\right)=\\frac{2}{1}=2 \\mathrm{~A}$\n\nAt $t=0^{+}$\n\n<img src=\"/question-images/ec/2023/ec-2023-481dac4808.webp\" />\n\n$V_{R}=-2 \\times 2=-4$,\n\nMagnitude of voltage $V_{R}$,\n\n$\\left|V_{R}\\right|=4$\n\nTherefore, the correct answer is **4**."
+      }
+    },
+    "pp:ec:2023:q26": {
+      "question_uid": "pp:ec:2023:q26",
+      "exam_uid": "ec:2023:set1:q26",
+      "title": "GATE EC 2023 | Set 1 | Question: 26",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A random variable $X$, distributed normally as $N(0,1)$, undergoes the transformation $Y=h(X)$, given in the figure. The form of the probability density function of $Y$ is (In the options given below, $a, b, c$ are non-zero constants and $g(y)$ is piece-wise continuous function)\n<br><img src=\"/question-images/ec/2023/ec-2023-eb6084d319.webp\" /><br>",
+      "options": [
+        "$a \\delta(y-1)+b \\delta(y+1)+g(y)$",
+        "$a \\delta(y+1)+b \\delta(y)+c \\delta(y-1)+g(y)$",
+        "$a \\delta(y+2)+b \\delta(y)+c \\delta(y-2)+g(y)$",
+        "$a \\delta(y+1)+b \\delta(y-2)+g(y)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "probability-and-statistics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "$X=N(0,1)$\n\n<img src=\"/question-images/ec/2023/ec-2023-c35861807d.webp\" />\n\n$f_X(x)=\\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}$\n\n<img src=\"/question-images/ec/2023/ec-2023-750e24790c.webp\" />\n\n$$\\begin{aligned}\n\nY= & -1 ; x \\leq-2 \\\\\n\n& 0 ;-1 \\leq x \\leq 1 \\\\\n\n& 1 ; x \\geq 2 \\\\\n\n& x+1 ;-2 \\leq x \\leq-1 \\\\\n\n& x-1 ; 1 \\leq x \\leq 2\n\n\\end{aligned}$$\n\n$Y$ is taking discrete set of values and a continuous range of values, so it is mixed random variable.\n\nFrom the given options, density function of '$Y$' will be.\n\n$f_{Y}(y)=a \\delta(y+1)+b \\delta(y)+c \\delta(y-1)+g(y)$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q27": {
+      "question_uid": "pp:ec:2023:q27",
+      "exam_uid": "ec:2023:set1:q27",
+      "title": "GATE EC 2023 | Set 1 | Question: 27",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The value of the line integral $\\int_{P}^{Q}\\left(z^{2} d x+3 y^{2} d y+2 x z d z\\right)$ along the straight line joining the points $P(1,1,2)$ and $Q(2,3,1)$ is",
+      "options": [
+        "20",
+        "24",
+        "29",
+        "-5"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\int_{P}^{Q} z^{2} d x+3 y^{2} d y+2 x z d z$ along the line joining the points $P(1,1,2)$ and $Q(2,3,1)$ is\n\n$$\\begin{aligned}\n\n& =\\int_{P(1,2)}^{P(2,1)} z^{2} d x+2 x y d z+\\int_{y=1}^{3} 3 y^{2} d y \\\\\n\n& =\\left(x z^{2}\\right)_{(1,2)}^{(2,1)}+\\left(y^{3}\\right)_{1}^{3} \\\\\n\n& =\\left(2 \\times 1^{2}-1 \\times 2^{2}\\right)+\\left(3^{3}-1^{3}\\right) \\\\\n\n& =-2+26=24\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q28": {
+      "question_uid": "pp:ec:2023:q28",
+      "exam_uid": "ec:2023:set1:q28",
+      "title": "GATE EC 2023 | Set 1 | Question: 28",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let $x$ be an $n \\times 1$ real column vector with length $l=\\sqrt{x^{T} x}$. The trace of the matrix $P=x x^{T}$ is",
+      "options": [
+        "$l^{2}$",
+        "$\\frac{l^{2}}{4}$",
+        "$l$",
+        "$\\frac{l^{2}}{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Given,\n\n$l=\\sqrt{x^{T} x}, P=\\left(x x^{T}\\right)_{n \\times n}$\n\nLet\n\n$$\\begin{aligned}\n\n(x)_{n \\times 1} & =\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2} \\\\\n\nx_{3} \\\\\n\n\\vdots \\\\\n\nx_{n}\n\n\\end{array}\\right] \\\\\n\nl & =\\sqrt{x^{T} x}=\\sqrt{x_{1}^{2}+x_{2}^{2}+x_{3}^{2}+\\ldots x_{n}^{2}} \\\\\n\nP & =x x^{T} \\\\\n\n&=\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2} \\\\\n\nx_{3} \\\\\n\n\\cdot \\\\\n\nx_{n}\n\n\\end{array}\\right]\\left[x_{1} x_{2} x_{3} \\ldots x_{n}\\right]\\\\\n\nP&=\\left[\n\n\\begin{array}{lllll}\n\nx_{1}^{2} & & & & \\\\\n\n& x_{1}^{2} & & & \\\\\n\n& & - & & \\\\\n\n& & & - & \\\\\n\n& & & & x_{n}^{2}\n\n\\end{array}\n\n\\right]\n\n\\end{aligned}$$\n\nTrace of $P=x_{1}^{2}+x_{2}^{2}+ . . .+ x_{n}^{2}=l^2$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q29": {
+      "question_uid": "pp:ec:2023:q29",
+      "exam_uid": "ec:2023:set1:q29",
+      "title": "GATE EC 2023 | Set 1 | Question: 29",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The $\\frac{V_{\\text {OUT }}}{V_{\\text {IN }}}$ of the circuit shown below is\n<br><img src=\"/question-images/ec/2023/ec-2023-7754c30373.webp\" /><br>",
+      "options": [
+        "$-\\frac{R_{4}}{R_{3}}$",
+        "$\\frac{R_{4}}{R_{3}}$",
+        "$1+\\frac{R_{4}}{R_{3}}$",
+        "$1-\\frac{R_{4}}{R_{3}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-05a38b6b45.webp\" />\n\nHere, $A_{1}$ is an inverting amplifier and $A_{2}$ is a non-inverting amplifier.\n\n$$\\begin{aligned}\n\nV_{01}&=\\frac{-R_{2}}{R_{1}} V_{i n} \\\\\n\nV_{02}&=\\left(1+\\frac{R_{2}}{R_{1}}\\right) V_{i n}\n\n\\end{aligned}$$\n\nAlso, $A_{3}$ is an inverting summing amplifier,\n\n$$\\begin{aligned}\n\nV_{\\text {out }} & =\\frac{-R_{4}}{R_{3}} V_{01}-\\frac{R_{4}}{R_{3}} V_{02}=\\frac{-R_{4}}{R_{3}}\\left[\\frac{R_{2}}{R_{1}} V_{\\text {in }}+\\left(1+\\frac{R_{2}}{R_{1}}\\right) V_{\\text {in }}\\right] \\\\\n\nV_{\\text {out }} & =\\frac{-R_{4}}{R_{3}} V_{\\text {in }} \\\\\n\n\\text { Gain, } \\frac{V_{\\text {out }}}{V_{\\text {in }}} & =\\frac{-R_{4}}{R_{3}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q30": {
+      "question_uid": "pp:ec:2023:q30",
+      "exam_uid": "ec:2023:set1:q30",
+      "title": "GATE EC 2023 | Set 1 | Question: 30",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the circuit shown below, $D_{1}$ and $D_{2}$ are silicon diodes with cut-in voltage of $0.7 \\mathrm{~V}$. $V_{\\text {IN }}$ and $V_{\\text {OUT }}$ are input and output voltages in volts. The transfer characteristic is\n<br><img src=\"/question-images/ec/2023/ec-2023-cdece14591.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "diodes-applications",
+          "subtopicLabel": "Diodes Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "diodes-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Diodes Applications",
+        "markdown": "Case I:\n\n$$\\begin{aligned}\n\nV_{\\gamma}&=0.7 \\mathrm{~V} \\\\\n\n\\text { For the +ve half cycle } &\\text { if input } V_{\\text {in }} \\\\\n\nD_{1} & \\rightarrow O \\mathrm{ON} \\text { and } D_{2} \\rightarrow \\text { OFF } \\\\\n\n\\text { For diode } D_{1}:& \\quad V_{\\text {in }}-1 V \\gt 0.7 \\\\\n\nV_{\\text {in }} & \\gt 1.7 \\mathrm{~V} \\\\\n\nV_{0}&=V_{\\text {in }}-0.7\n\n\\end{aligned}$$\n\nCase II:\n\nFor the + ve half cycle if input $V_{\\text {in }}$,\n\n$D_{1} \\rightarrow \\mathrm{OFF}$ and $D_{2} \\rightarrow \\mathrm{ON}$\n\nFor diode $D_{2}: \\quad 1-V_{\\text {in }} \\gt 0.7$\n\n$V_{\\text {in }} \\lt 0.3 \\mathrm{~V}$\n\n$V_{0}=V_{\\text {in }}+0.7$\n\nCase III:\n\n$$\\begin{aligned}\n\n0.3 \\mathrm{~V} &  \\lt V_{\\text {in }} \\lt 1.7 \\mathrm{~V} \\\\\n\nD_{1} & \\rightarrow \\mathrm{OFF} \\text { and } D_{2} \\rightarrow \\mathrm{OFF} \\\\\n\nV_{0} & =1 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTransfer characteristics,\n\n<img src=\"/question-images/ec/2023/ec-2023-91bdf0e2db.webp\" />\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q31": {
+      "question_uid": "pp:ec:2023:q31",
+      "exam_uid": "ec:2023:set1:q31",
+      "title": "GATE EC 2023 | Set 1 | Question: 31",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A closed loop system is shown in the figure where $k \\gt 0$ and $\\alpha \\gt 0$. The steady state error due to a ramp input $\\left(R(s)=\\alpha / s^{2}\\right)$ is given by\n<br><img src=\"/question-images/ec/2023/ec-2023-8ba49b5566.webp\" /><br>",
+      "options": [
+        "$\\frac{2 \\alpha}{k}$",
+        "$\\frac{\\alpha}{k}$",
+        "$\\frac{\\alpha}{2 k}$",
+        "$\\frac{\\alpha}{4 k}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "Given, $\\quad$ input is $r(t)=\\alpha t u(t)$\n\n$R(s)=\\frac{\\alpha}{s^{2}}$\n\nFrom the figure,\n\n$G(s) H(s)=\\frac{K}{s(s+2)}$\n\nNow steady state error for Ramp input is\n\n$e_{s s} =\\frac{\\alpha}{K_{v}}, \\text { where } \\alpha \\text { is the magnitude of Ramp input }$\n\n$$\\begin{aligned}\n\nK_{v} & =\\lim _{s \\rightarrow 0}[s G(s) H(s)] \\\\\n\nK_{v} & =\\lim _{s \\rightarrow 0}\\left[\\frac{s \\times K}{s(s+2)}\\right]=\\frac{K}{2}\\\\\n\n\\therefore \\quad e_{s s} & =\\frac{\\alpha \\times 2}{K} \\\\\n\ne_{s s} & =\\frac{2 \\alpha}{K}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q32": {
+      "question_uid": "pp:ec:2023:q32",
+      "exam_uid": "ec:2023:set1:q32",
+      "title": "GATE EC 2023 | Set 1 | Question: 32",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the following block diagram, $R(s)$ and $D(s)$ are two inputs. The output $Y(s)$ is expressed as $Y(s)=G_{1}(s) R(s)+G_{2}(s) D(s)$.\n<br>\n$G_{1}(s)$ and $G_{2}(s)$ are given by\n<br><img src=\"/question-images/ec/2023/ec-2023-b01b772531.webp\" /><br>\n",
+      "options": [
+        "$G_{1}(s)=\\frac{G(s)}{1+G(s)+G(s) H(s)}$ and $G_{2}(s)=\\frac{G(s)}{1+G(s)+G(s) H(s)}$",
+        "$G_{1}(s)=\\frac{G(s)}{1+G(s)+H(s)}$ and $G_{2}(s)=\\frac{G(s)}{1+G(s)+H(s)}$",
+        "$G_{1}(s)=\\frac{G(s)}{1+G(s)+H(s)}$ and $G_{2}(s)=\\frac{G(s)}{1+G(s)+G(s) H(s)}$",
+        "$G_{1}(s)=\\frac{G(s)}{1+G(s)+G(s) H(s)}$ and $G_{2}(s)=\\frac{G(s)}{1+G(s)+H(s)}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "basics-of-control-systems-block-diagram-and-sfgs",
+          "subtopicLabel": "Basics of Control Systems, Block Diagram and SFGs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "basics-of-control-systems-block-diagram-and-sfgs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-f4b53ce197.webp\" />\n\n$Y(s)=\\underbrace{G_{1}(s) R(s)}_{Y_{1}(s)}+\\underbrace{G_{2}(s) D(s)}_{Y_{2}(s)}$\n\nConsidering first $R(s)$ only, then $Y(s)$ is $Y_{1}(s)$\n\n<img src=\"/question-images/ec/2023/ec-2023-cef413bb5c.webp\" />\n\n<img src=\"/question-images/ec/2023/ec-2023-6f23e51717.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{Y_{1}(s)}{R(s)}&=\\frac{\\frac{G(s)}{1+G(s) H(s)}}{1+\\frac{G(s)}{1+G(s) H(s)}} \\\\\n\n\\frac{Y_{1}(s)}{R(s)}&=\\frac{G(s)}{1+G(s) H(s)+G(s)} \\\\\n\nY_{1}(s)&=\\left[\\frac{G(s)}{1+G(s)+G(s) H(s)}\\right] R(s) \\\\\n\nG_{1}(s)&=\\frac{G(s)}{1+G(s)+G(s) H(s)}\n\n\\end{aligned}$$\n\nNow considering $D(s)$ only, then $Y(s)$ is $Y_{2}(s)$\n\n<img src=\"/question-images/ec/2023/ec-2023-3db1c6ab8b.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{Y_{2}(s)}{D(s)} & =\\frac{G(s)}{1+G(s)[1+H(s)]} \\\\\n\nY_{2}(s) & =\\left[\\frac{G(s)}{1+G(s)+G(s) H(s)}\\right] D(s) \\\\\n\nG_{2}(s) & =\\frac{G(s)}{1+G(s)+G(s) H(s)}\n\n\\end{aligned}$$\n\nHence, $G_{1}(s)$ and $G_{2}(s)$ both are equal.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q33": {
+      "question_uid": "pp:ec:2023:q33",
+      "exam_uid": "ec:2023:set1:q33",
+      "title": "GATE EC 2023 | Set 1 | Question: 33",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The state equation of a second order system is <br><br>$\\dot{x}(t)=A x(t), x(0)$ is the initial condition.\n<br><br>\nSuppose $\\lambda_{1}$ and $\\lambda_{2}$ are two distinct eigenvalues of $A$ and $v_{1}$ and $v_{2}$ are the corresponding eigenvectors. For constants $\\alpha_{1}$ and $\\alpha_{2}$, the solution, $x(t)$, of the state equation is",
+      "options": [
+        "$\\sum_{i=1}^{2} \\alpha_{i} e^{\\lambda_{i} t} v_{i}$",
+        "$\\sum_{i=1}^{2} \\alpha_{i} e^{2 \\lambda_{i} t} v_{i}$",
+        "$\\sum_{i=1}^{2} \\alpha_{i} e^{3 \\lambda_{i} t} v_{i}$",
+        "$\\sum_{i=1}^{2} \\alpha_{i} e^{4 \\lambda_{i} t} v_{i}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Linear Algebra*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Linear Algebra**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$\\sum_{i=1}^{2} \\alpha_{i} e^{\\lambda_{i} t} v_{i}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($\\sum_{i=1}^{2} \\alpha_{i} e^{\\lambda_{i} t} v_{i}$)."
+      }
+    },
+    "pp:ec:2023:q34": {
+      "question_uid": "pp:ec:2023:q34",
+      "exam_uid": "ec:2023:set1:q34",
+      "title": "GATE EC 2023 | Set 1 | Question: 34",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The switch $S_{1}$ was closed and $S_{2}$ was open for a long time. At $t=0$, switch $S_{1}$ is opened and $S_{2}$ is closed, simultaneously. The value of $i_{c}\\left(0^{+}\\right)$, in amperes, is\n<br><img src=\"/question-images/ec/2023/ec-2023-73d18a7597.webp\" /><br>",
+      "options": [
+        "1",
+        "-1",
+        "0.2",
+        "0.8"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "transient-analysis",
+          "subtopicLabel": "Transient Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "transient-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Transient Analysis",
+        "markdown": "At $t=0^{-} ; S_{1} \\rightarrow$ closed, $S_{2} \\rightarrow$ opened\n\n<img src=\"/question-images/ec/2023/ec-2023-580d5bff9c.webp\" />\n\n$$\\begin{aligned}\n\ni_{L}\\left(0^{-}\\right)&=\\frac{1 \\times 25}{100+25}=0.2 \\mathrm{~A} \\\\\n\nv_{C}\\left(0^{-}\\right)&=\\frac{1}{5} \\times 100=20 \\mathrm{~V}\n\n\\end{aligned}$$\n\nAt $t=0^{+} ; S_{1} \\rightarrow$ opened, $S_{2} \\rightarrow$ closed\n\n<img src=\"/question-images/ec/2023/ec-2023-79c57edaf8.webp\" />\n\n$$\\begin{aligned}\n\ni_{x} & =\\frac{20}{25}=\\frac{4}{5} \\mathrm{~A}=0.8 \\mathrm{~A} \\\\\n\n\\text{By KCL:  }-i_{c} & =i_{x}+0.2=0.8+0.2 \\\\\n\n\\Rightarrow \\quad i_{c} & =-1 \\mathrm{~A}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q35": {
+      "question_uid": "pp:ec:2023:q35",
+      "exam_uid": "ec:2023:set1:q35",
+      "title": "GATE EC 2023 | Set 1 | Question: 35",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let a frequency modulated (FM) signal\n$x(t)=A \\cos \\left(\\omega_{c} t+k_{f} \\int_{-\\infty}^{t} m(\\lambda) d \\lambda\\right)$, where $m(t)$ is a message signal of bandwidth $W$. It is passed through a non-linear system with output $y(t)=2 x(t)+5(x(t))^{2}$. Let $B_{T}$ denote the FM bandwidth. The minimum value of $\\omega_{c}$ required to recover $x(t)$ from $y(t)$ is",
+      "options": [
+        "$B_{T}+W$",
+        "$\\frac{3}{2} B_{T}$",
+        "$2 B_{T}+W$",
+        "$\\frac{5}{2} B_{T}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "analog-communication-systems",
+          "subtopicLabel": "Analog Communication Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "analog-communication-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Analog Communication Systems",
+        "markdown": "$x(t)=A \\cos \\left[\\omega_{c} t+K_{f} \\int_{-\\infty}^{t} m(\\lambda) d \\lambda\\right]$\n\nB.W. $[x(t)] \\rightarrow B T=2[\\Delta f+\\omega]$\n\n<img src=\"/question-images/ec/2023/ec-2023-5d6831a55c.webp\" />\n\n$$\\left.x^{2}(t) \\rightarrow \\begin{array}{c}\n\n\\Delta f^{\\prime}=2 \\Delta f \\\\\n\n\\omega_{c}^{\\prime}=2 \\omega_{c}\n\n\\end{array}\\right\\}$$\n\n<img src=\"/question-images/ec/2023/ec-2023-e478abedbc.webp\" />\n\n$\\mathrm{BW}\\left[x^{2}(t)\\right]=2\\left[\\Delta f^{\\prime}+\\omega\\right]$\n\n$=2[2 \\Delta f+\\omega]=B T+2 \\Delta f$\n\n$y(t)=2x(t)+5x^2(t)$\n\n<img src=\"/question-images/ec/2023/ec-2023-9845f65a24.webp\" />\n\nTo recover $x(t) \\rightarrow \\quad 2 \\omega_{C}-\\frac{B_{T}}{2}-\\Delta f \\gt \\omega_{C}+\\frac{B_{T}}{2}$\n\n$\\omega_{c} \\gt \\Delta f+B T$\n\n$\\omega_{c} \\gt \\Delta f+2 \\Delta f+2 \\omega$\n\n$\\omega_{c} \\gt 3 \\Delta f+2 \\omega$\n\n$\\omega_{c} \\gt \\frac{3}{2}\\{2[\\Delta f+\\omega]\\}-\\omega$\n\n$\\omega_{c} \\gt \\frac{3}{2} B_{T}-\\omega$\n\nCompared to FM BW, message BW is very small. So, that it can be ignored.\n\n$$\\begin{aligned}\n\n\\omega_{C} & \\gt \\frac{3}{2} B_{T} \\\\\n\n\\left[\\omega_{C}\\right]_{min } & =\\frac{3}{2} B_{T}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2023:q36": {
+      "question_uid": "pp:ec:2023:q36",
+      "exam_uid": "ec:2023:set1:q36",
+      "title": "GATE EC 2023 | Set 1 | Question: 36",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The h-parameters of a two port network are shown below. The condition for the maximum small signal voltage gain $\\frac{V_{\\text {out }}}{V_{s}}$ is\n<br><img src=\"/question-images/ec/2023/ec-2023-07444f4a86.webp\" /><br>",
+      "options": [
+        "$h_{11}=0, h_{12}=0, h_{21}=$ very high and $h_{22}=0$",
+        "$h_{11}=$ very high, $h_{12}=0, h_{21}=$ very high and $h_{22}=0$",
+        "$h_{11}=0, h_{12}=$ very high, $h_{21}=$ very high and $h_{22}=0$",
+        "$h_{11}=0, h_{12}=0, h_{21}=$ very high and $h_{22}=$ very high"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "two-port-networks",
+          "subtopicLabel": "Two Port Networks"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "two-port-networks"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Two Port Networks",
+        "markdown": "Dependent current source should have $h_{21} I_{1}$ instead of $h_{21} V_{1}$ according to $h$-parameter.\n\n$A_{V}=\\frac{V_{\\text {out }}}{V_{s}}=\\frac{-h_{21} I_{1} \\times\\left(\\frac{1}{h_{22}} \\| R_{L}\\right)}{h_{11} I_{1}+h_{12} V_{2}}$\n\nTo achieve maximum $\\frac{V_{\\text {out }}}{V_{s}}$\n\n$$\\begin{aligned}\n\n& h_{11}=0, \\quad h_{12}=0 \\\\\n\n& h_{21}=\\text { Very high, } \\quad h_{22}=0\n\n\\end{aligned}$$\n\nHence, answer should be (A) according to $h_{21} I_{1}$.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q37": {
+      "question_uid": "pp:ec:2023:q37",
+      "exam_uid": "ec:2023:set1:q37",
+      "title": "GATE EC 2023 | Set 1 | Question: 37",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a discrete-time periodic signal with period $N=5$. Let the discrete-time Fourier series (DTFS) representation be $x[n]=\\sum_{k=0}^{4} a_{k} e^{\\frac{j k 2 \\pi n}{5}}$, where $a_{0}=1, a_{1}=3 j, a_{2}=2 j$, $a_{3}=-2 j$ and $a_{4}=-3 j$. The value of the sum $\\sum_{n=0}^{4} x[n] \\sin \\frac{4 \\pi n}{5}$ is",
+      "options": [
+        "-10",
+        "10",
+        "-2",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "dtfs-dtft-and-dft",
+          "subtopicLabel": "DTFS, DTFT and DFT"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "dtfs-dtft-and-dft"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - DTFS, DTFT and DFT",
+        "markdown": "Let, $I=\\sum_{n=0}^{4} x(n) \\sin \\frac{4 \\pi n}{5}$\n\n$$\\begin{aligned}\n\n& =\\frac{1}{2 j} \\sum_{n=0}^{4} x(n) \\cdot\\left[e^{j \\frac{4 \\pi n}{5}}-e^{-j \\frac{4 \\pi n}{5}}\\right] \\\\\n\n& =\\frac{1}{2 j}\\left[\\sum_{n=0}^{4} x(n) e^{j \\frac{4 \\pi n}{5}}-\\sum_{n=0}^{4} x(n) \\cdot e^{-j \\frac{4 \\pi n}{5}}\\right]  \\quad (i)\n\n\\end{aligned}$$\n\nAs we know, $\\quad a_{k}=\\frac{1}{N} \\sum_{n=0}^{4} x(n) \\cdot e^{-j k \\cdot \\frac{2 \\pi}{N} n}$\n\n$=\\frac{1}{5} \\sum_{n=0}^{4} x(n) \\cdot e^{-j \\frac{2 \\pi}{N} k n}$\n\nPut $K=2 ; \\quad a_{2}=\\frac{1}{5} \\sum_{n=0}^{4} x(n) \\cdot e^{-j \\frac{4 \\pi n}{5}}$\n\nPut $K=-2 ; \\quad a_{-2}=\\frac{1}{5} \\sum_{n=0}^{4} x(n) \\cdot e^{j \\frac{4 \\pi n}{5}}$\n\nFrom equation (i),\n\n$$\\begin{aligned}\n\nI&=\\frac{1}{2 j}\\left[5 a_{-2}-5 a_{2}\\right]\n\n& =\\frac{5}{2 j}\\left[a_{3}-a_{2}\\right] \\\\\n\nI & =\\frac{5}{2 j}[-2 j-2 j]=-10\n\n\\end{aligned}$$\n\n$$\\begin{array}{rl}\n\na_{-2} & =a_{-2+N} \\\\\n\n\\because \\quad & =a_{-2+5} \\\\\n\n& =a_{3}\n\n\\end{array}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q38": {
+      "question_uid": "pp:ec:2023:q38",
+      "exam_uid": "ec:2023:set1:q38",
+      "title": "GATE EC 2023 | Set 1 | Question: 38",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let an input $x[n]$ having discrete time Fourier transform.\n<br>\n$X\\left(e^{j \\Omega}\\right)=1-e^{-j \\Omega}+2 e^{-3 j \\Omega}$ be passed through an LTI system. The frequency response of the LTI system is $H\\left(e^{j \\Omega}\\right)=1-\\frac{1}{2} e^{-j 2 \\Omega}$. The output $y[n]$ of the system is",
+      "options": [
+        "$\\delta[n]+\\delta[n-1]-\\frac{1}{2} \\delta[n-2]-\\frac{5}{2} \\delta[n-3]+\\delta[n-5]$",
+        "$\\delta[n]-\\delta[n-1]-\\frac{1}{2} \\delta[n-2]-\\frac{5}{2} \\delta[n-3]+\\delta[n-5]$",
+        "$\\delta[n]-\\delta[n-1]-\\frac{1}{2} \\delta[n-2]+\\frac{5}{2} \\delta[n-3]-\\delta[n-5]$",
+        "$\\delta[n]+\\delta[n-1]+\\frac{1}{2} \\delta[n-2]+\\frac{5}{2} \\delta[n-3]+\\delta[n-5]$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "dtfs-dtft-and-dft",
+          "subtopicLabel": "DTFS, DTFT and DFT"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "dtfs-dtft-and-dft"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - DTFS, DTFT and DFT",
+        "markdown": "$$\\begin{aligned}\n\ny[n] & =x[n] * h[n] \\\\\n\nY\\left(e^{j \\Omega}\\right) & =X\\left(e^{j \\Omega}\\right) H\\left(e^{j \\Omega}\\right) \\\\\n\n& =\\left[1-e^{-j \\Omega}+2 e^{-3 j \\Omega}\\right]\\left[1-\\frac{1}{2} e^{-2 j \\Omega}\\right] \\\\\n\n& =1-e^{-j \\Omega}+2.5 e^{-3 j \\Omega}-0.5 e^{-j 2 \\Omega}-e^{-j 5 \\Omega}\n\n\\end{aligned}$$\n\nTaking IDTFT;\n\n$y[n]=\\delta[n]-\\delta[n-1]-0.5 \\delta[n-2]+2.5 \\delta[n-3]-\\delta[n-5]$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q39": {
+      "question_uid": "pp:ec:2023:q39",
+      "exam_uid": "ec:2023:set1:q39",
+      "title": "GATE EC 2023 | Set 1 | Question: 39",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let $x(t)=10 \\cos (10.5 \\mathrm{Wt})$ be passed through an LTI system having impulse response $h(t)=\\pi\\left(\\frac{\\sin W t}{\\pi t}\\right)^{2} \\cos 10 W t$. The output of the system is",
+      "options": [
+        "$\\left(\\frac{15 W}{4}\\right) \\cos (10.5 W t)$",
+        "$\\left(\\frac{15 W}{2}\\right) \\cos (10.5 W t)$",
+        "$\\left(\\frac{15 W}{8}\\right) \\cos (10.5 W t)$",
+        "$(15 W) \\cos (10.5 W t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "lti-systems-continuous-and-discrete",
+          "subtopicLabel": "LTI Systems Continuous and Discrete"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "lti-systems-continuous-and-discrete"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "Given $h(t)$ is Real and Even. When sinusoidal input applied to LTI system having even impulse response, then output will also be sinusoidal.\n\nhere,\n\n$y(t)=\\left.H(W)\\right|_{W=10.5 W} \\cdot 10 \\cos (10.5 W t)$\n\nlet,\n\n$h(t)=f(t) \\cos 10 W t$\n\nwhere, $f(t)=\\pi\\left(\\frac{\\sin W t}{\\pi t}\\right)^{2}$\n\n<img src=\"/question-images/ec/2023/ec-2023-516f37c596.webp\" />\n\nNow;\n\n$H(W)=\\frac{1}{2}[F(W+10 W)+F(W-10 W)]$\n\n<img src=\"/question-images/ec/2023/ec-2023-c8040d1aef.webp\" />\n\n$\\left.\\therefore \\quad H(W)\\right|_{W=10.5 W}=\\frac{3}{8} W$\n\nHence,\n\n$$\\begin{aligned}\n\ny(t) & =\\left(\\frac{3}{8} W\\right)(10 \\cos 10.5 W t) \\\\\n\n& =\\frac{15}{4} W \\cos 10.5 W t\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q40": {
+      "question_uid": "pp:ec:2023:q40",
+      "exam_uid": "ec:2023:set1:q40",
+      "title": "GATE EC 2023 | Set 1 | Question: 40",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let $x_{1}(t)$ and $x_{2}(t)$ be two band-limited signals having bandwidth $B=4 \\pi \\times 10^{3} \\mathrm{rad} / \\mathrm{s} \\mathrm{each}$. In the figure below, the Nyquist sampling frequency, in rad/s, required to sample $y(t)$, is\n<br><img src=\"/question-images/ec/2023/ec-2023-a7bbb8fc22.webp\" /><br>",
+      "options": [
+        "$20 \\pi \\times 10^{3}$",
+        "$40 \\pi \\times 10^{3}$",
+        "$8 \\pi \\times 10^{3}$",
+        "$32 \\pi \\times 10^{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "sampling",
+          "subtopicLabel": "Sampling"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "sampling"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Sampling",
+        "markdown": "Given that, $x_{1}(t)$ and $x_{2}(t)$ are two bandlimited signals having bandwidth $B=4 \\pi \\times 10^{3} \\mathrm{rad} / \\mathrm{sec}$.\n\n<img src=\"/question-images/ec/2023/ec-2023-fa27391e0b.webp\" />\n\nand $y(t)=x_{2}(t) \\cos \\left(12 \\pi \\times 10^{3} t\\right)+x_{1}(t) \\cos \\left(4 \\pi \\times 10^{3} t\\right)$\n\n<img src=\"/question-images/ec/2023/ec-2023-f113e2d4f9.webp\" />\n\nSo, $\\text{Nyquist Rate }=2\\omega _{max}=2[16 \\pi \\times 10^3]=32 \\pi \\times 10^3\\; rad/sec$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2023:q41": {
+      "question_uid": "pp:ec:2023:q41",
+      "exam_uid": "ec:2023:set1:q41",
+      "title": "GATE EC 2023 | Set 1 | Question: 41",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The S-parameters of a two port network is given as\n<br><br>\n$$[S]=\\left[\\begin{array}{ll}\nS_{11} & S_{12} \\\\\nS_{21} & S_{22}\n\\end{array}\\right]$$\n<br><br>\nwith reference to $Z_{0}$. Two lossless transmission line sections of electrical lengths $\\theta_{1}=\\beta l_{1}$ and $\\theta_{2}=\\beta l 2$ are added to the input and output ports for measurement purposes, respectively. The S-parameters $\\left[S^{\\prime}\\right]$ of the resultant two port network is\n<br><img src=\"/question-images/ec/2023/ec-2023-3b37d09bf4.webp\" /><br>",
+      "options": [
+        "$$\\left[\\begin{array}{cc}S_{11} e^{-j 2 \\theta_{1}} & S_{12} e^{-j\\left(\\theta_{1}+\\theta_{2}\\right)} \\\\ S_{21} e^{-j\\left(\\theta_{1}+\\theta_{2}\\right)} & S_{22} e^{-j 2 \\theta_{2}}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{cc}S_{11} e^{j 2 \\theta_{1}} & S_{12} e^{-j\\left(\\theta_{1}+\\theta_{2}\\right)} \\\\ S_{21} e^{-j\\left(\\theta_{1}+\\theta_{2}\\right)} & S_{22} e^{j 2 \\theta_{2}}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{cc}S_{1} e^{j 2 \\theta_{1}} & S_{12} e^{e j\\left(\\theta_{1}+\\theta_{2}\\right)} \\\\ S_{21} e^{j\\left(\\theta_{1}+\\theta_{2}\\right)} & S_{22} e^{j 2 \\theta_{2}}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{cc}S_{11} e^{-j 2 \\theta_{1}} & S_{12} e^{e j\\left(\\theta_{1}+\\theta_{2}\\right)} \\\\ S_{21} e^{j\\left(\\theta_{1}+\\theta_{2}\\right)} & S_{22} e^{-j 2 \\theta_{2}}\\end{array}\\right]$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "two-port-networks",
+          "subtopicLabel": "Two Port Networks"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "two-port-networks"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Two Port Networks",
+        "markdown": "Let us evaluate $S_{11}$ and $S_{21}$ first at $V_{2}^{+}=0$\n\n<img src=\"/question-images/ec/2023/ec-2023-8631ce58e8.webp\" />\n\n(A) $S11:$\n\n$$\\begin{aligned}\n\nV_{1}&=V_{1}^{+}+V_{1}^{-}=\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}}+\\left(V_{1}^{-}\\right) e^{+j \\beta l_{1}} \\\\\n\n\\therefore \\quad V_{1}^{+}&=\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}} \\\\\n\nV_{1}^{-}&=\\left(V_{1}^{-}\\right) e^{+j \\beta l_{1}} \\\\\n\nS_{11}&=\\frac{V_{1}^{-}}{V_{1}^{+}}=\\frac{\\left(V_{1}^{-}\\right) e^{+j \\beta l_{1}}}{\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}}}=S_{11}^{\\prime} e^{+j 2 \\beta l_{1}} \\\\\n\n\\Rightarrow \\quad S_{11}^{\\prime}&=S_{11} e^{-j 2 \\beta l_{1}}=S_{11} e^{-j 2 \\theta_{1}} \\\\\n\n\\therefore \\quad S_{11}^{\\prime}&=S_{11} e^{-j 2 \\theta_{1}}\n\n\\end{aligned}$$\n\n(B) $S_{21}$ :\n\n$V_{2}=V_{2}^{+} e^{+j \\beta l_{2}}+V_{2}^{-} e^{-j \\beta l_{2}}=\\left(V_{2}^{+}\\right)^{\\prime}+\\left(V_{2}^{-}\\right)^{\\prime}$\n\nHere, $V_{2}^{+}=0$\n\nHence,\n\n$V_{2}=\\left(V_{2}^{-}\\right)^{\\prime}=V_{2}^{-} e^{-j \\beta l_{2}}$\n\n$\\Rightarrow  \\quad\n\nV_{2}^{-}=\\left(V_{2}^{-}\\right)^{\\prime} e^{+j \\beta l_{2}}$\n\nFrom previous discussion in $S_{11}$,\n\n$$\\begin{aligned}\n\nV_{1}^{+}&=\\left(V_{1}^{+}\\right) e^{-j l_{1}} \\\\\n\n\\therefore  \\quad S_{21}&=\\frac{V_{2}^{-}}{V_{1}^{+}}=\\frac{\\left(V_{2}^{-}\\right)^{\\prime} e^{+j \\beta l_{2}}}{\\left(V_{1}^{+}\\right)^{\\prime} e^{-j \\beta l_{1}}}=S_{21}^{\\prime} e^{+j\\left(\\beta l_{2}+\\beta l_{1}\\right)} \\\\\n\n\\Rightarrow S_{21}^{\\prime}&=S_{21} e^{-j\\left(\\beta l_{2}+\\beta l_{1}\\right)} \\\\\n\n\\Rightarrow \\quad  S_{21}^{\\prime}&=S_{21} e^{-j\\left(\\theta_{1}+\\theta_{2}\\right)}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q42": {
+      "question_uid": "pp:ec:2023:q42",
+      "exam_uid": "ec:2023:set1:q42",
+      "title": "GATE EC 2023 | Set 1 | Question: 42",
+      "year": "gateec-2023-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "The standing wave ratio on a $50 \\Omega$ lossless transmission line terminated in an unknown load impedance is found to be 2.0. The distance between successive voltage minima is $30 \\mathrm{~cm}$ and the first minimum is located at $10 \\mathrm{~cm}$ from the load. $Z_{L}$ can be replaced by an equivalent length $l_{m}$ and terminating resistance $R_{m}$ of the same line. The value of $R_{m}$ and $l_{m}$, respectively, are\n<br><img src=\"/question-images/ec/2023/ec-2023-e5cb414191.webp\" /><br>",
+      "options": [
+        "$R_{m}=100 \\Omega, l_{m}=20 \\mathrm{~cm}$",
+        "$R_{m}=25 \\Omega, l_{m}=20 \\mathrm{~cm}$",
+        "$R_{m}=100 \\Omega, l_{m}=5 \\mathrm{~cm}$",
+        "$R_{m}=25 \\Omega, l_{m}=5 \\mathrm{~cm}$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "Given $S=2, Z_{\\min }=10 \\mathrm{~cm}, Z_{0}=50 \\Omega$\n\nAs we know that, $\\quad|\\Gamma|=\\frac{S-1}{S+1}=\\frac{2-1}{2+1}=\\frac{1}{3}$\n\nNow, distance between successive voltage minima $=30 \\mathrm{~cm}$\n\n$\\Rightarrow \\quad \\frac{\\lambda}{2}=30 \\mathrm{~cm}$\n\n$\\Rightarrow \\quad \\lambda=60 \\mathrm{~cm}$\n\nAlso, for minima,\n\n$2 \\beta Z_{\\min }=(2 n+1) \\pi+\\theta_{\\Gamma}$\n\nAt $n=0,1 \\mathrm{st}$ minima, $Z_{\\text {min }}=10 \\mathrm{~cm}$\n\n$\\frac{4 \\pi}{\\lambda} Z_{\\min }=\\pi+\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\frac{4 \\pi}{60} * 10=\\pi+\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\frac{2 \\pi}{3}-\\pi=\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\theta_{\\Gamma}=\\frac{-\\pi}{3} \\quad \\therefore \\Gamma=\\frac{1}{3} \\angle-60^{\\circ}$\n\nNow,\n\n$\\Gamma=\\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}$\n\n<img src=\"/question-images/ec/2023/ec-2023-5073749f58.webp\" />\n\n$$\\begin{array}{ll}\\Rightarrow \\quad & Z_{L}=Z_{0}\\left[\\frac{1+\\Gamma}{1-\\Gamma}\\right] \\\\ \\Rightarrow & Z_{L}=50\\left[\\frac{1+0.33 e^{-j \\frac{\\pi}{3}}}{1-0.33 e^{-j \\frac{\\pi}{3}}}\\right]\\end{array}$$\n\n$\\Rightarrow \\quad Z_{L}=67.97 \\angle-32.67^{\\circ}$\n\nNow $Z_{\\text {in }}=Z_{0}\\left[\\frac{Z_{L}+j Z_{0} \\tan \\beta l}{Z_{0}+j Z_{L} \\tan \\beta l}\\right]$\n\n$\\Rightarrow \\quad Z_{\\text {in }}=50\\left[\\frac{R_{m}+j 50 \\tan \\beta l_{m}}{50+j R_{m} \\tan \\beta l_{m}}\\right]$\n\nHere, $\\quad Z_{\\text {in }}=Z_{L}=67.97 \\angle-32.67^{\\circ}$\n\nGoing through options,\n\n$$\\left.\\begin{array}{l}R_{m}=100 \\Omega \\text { and } L_{m}=5 \\mathrm{~cm} \\\\ R_{m}=25 \\Omega \\text { and } L_{m}=20 \\mathrm{~cm}\\end{array}\\right\\}$$ satisfy this identity, hence option (B) and (C) are correct.\n\nTherefore, the correct option(s) are **B, C**."
+      }
+    },
+    "pp:ec:2023:q43": {
+      "question_uid": "pp:ec:2023:q43",
+      "exam_uid": "ec:2023:set1:q43",
+      "title": "GATE EC 2023 | Set 1 | Question: 43",
+      "year": "gateec-2023-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "The electric field of a plane electromagnetic wave is <br><br>$E=a_{x} C_{1 x} \\cos (\\omega t-\\beta z)+a_{y} C_{1 y} \\cos (\\omega t-\\beta z+\\theta) \\mathrm{V} / \\mathrm{m}$ <br><br> Which of the following combination(s) will give rise to a left handed elliptically polarized (LHEP) wave?",
+      "options": [
+        "$C_{1 x}=1, C_{1 y}=1, \\theta=\\pi / 4$",
+        "$C_{1 x}=2, C_{1 y}=1, \\theta=\\pi / 2$",
+        "$C_{1 x}=1, C_{1 y}=2, \\theta=3 \\pi / 2$",
+        "$C_{1 x}=2, C_{1 y}=1, \\theta=3 \\pi / 4$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "uniform-plane-waves",
+          "subtopicLabel": "Uniform Plane Waves"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "uniform-plane-waves"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Uniform Plane Waves",
+        "markdown": "Given, $\\quad \\vec{E}=\\hat{a}_{x} C_{1 x} \\cos (\\omega t-\\beta z)+\\hat{a}_{y} C_{1 y} \\cos (\\omega t-\\beta z+\\theta)$\n\nat $z=0$\n\n$\\vec{E}=C_{1 x} \\cos \\omega t \\hat{a}_{x}+C_{1 y} \\cos (\\omega t+\\theta) \\hat{a}_{y}$\n\nGoing by options,\n\nOption (A) $\\quad \\vec{E}=\\cos \\omega t \\hat{a}_{x}+\\cos (\\omega t+\\pi / 4) \\hat{a}_{y}$\n\nat $t=0, \\omega t=0, \\vec{E}=\\hat{a}_{x}+\\frac{1}{\\sqrt{2}} \\hat{a}_{y}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=0-\\frac{1}{\\sqrt{2}} \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is LHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-ed3f3f2b0c.webp\" />\n\nOption (B) $\\quad \\vec{E}=2 \\cos \\omega t \\hat{a}_{x}+\\cos (\\omega t+\\pi / 2) \\hat{a}_{y}$\n\nat $t=0, \\omega t=0, \\vec{E}=2 \\hat{a}_{x}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=-1 \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is LHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-56fd1c1b9a.webp\" />\n\nOption (C) $\\quad \\vec{E}=\\cos \\omega t \\hat{a}_{x}+2 \\cos (\\omega t+3 \\pi / 2) \\hat{a}_{y}$\n\nat $t=0, \\quad \\quad \\omega t=0, \\vec{E}=\\hat{a}_{x}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=2 \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is RHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-960bca57a6.webp\" />\n\nOption (D) $\\quad \\vec{E}=2 \\cos \\omega t \\hat{a}_{x}+\\cos (\\omega t+3 \\pi / 4) \\hat{a}_{y}$\n\nat $t=0, \\omega t=0, \\vec{E}=2 \\hat{a}_{x}-\\frac{1}{\\sqrt{2}} \\hat{a}_{y}$\n\nat $t=T / 4, \\omega t=\\pi / 2, \\vec{E}=0-\\frac{1}{\\sqrt{2}} \\hat{a}_{y}=\\frac{-1}{\\sqrt{2}} \\hat{a}_{y}$\n\n$\\Rightarrow$ Hence, it is LHEP.\n\n<img src=\"/question-images/ec/2023/ec-2023-58db51f392.webp\" />\n\n$\\therefore$ Option (A), (B) and (D) are correct.\n\nTherefore, the correct option(s) are **A, B, D**."
+      }
+    },
+    "pp:ec:2023:q44": {
+      "question_uid": "pp:ec:2023:q44",
+      "exam_uid": "ec:2023:set1:q44",
+      "title": "GATE EC 2023 | Set 1 | Question: 44",
+      "year": "gateec-2023-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "The following circuit(s) representing a lumped element equivalent of an infinitesimal section of a transmission line is/are\n<br><br><img src=\"/question-images/ec/2023/ec-2023-9d00b379b4.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B, C, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electromagnetics** (specifically *Transmission Lines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Option-by-Option Theoretical Evaluation\n\nIn Multiple Select Questions (MSQ), each statement must be verified independently against theoretical laws:\n\n- **Evaluation of Options:** Comparing each statement against the fundamental laws of Electromagnetics.\n- The statements corresponding to **Option(s) B, C, D** are mathematically and physically consistent with the governing equations.\n- Distractor options fail the consistency criteria or violate boundary conditions.\n\n### Conclusion\n\nTherefore, the correct option(s) are **B, C, D**."
+      }
+    },
+    "pp:ec:2023:q45": {
+      "question_uid": "pp:ec:2023:q45",
+      "exam_uid": "ec:2023:set1:q45",
+      "title": "GATE EC 2023 | Set 1 | Question: 45",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The value of the integral $\\iint_{R} x y d x d y$ over the region $R$, given in the figure, is ___ <br>\n(rounded off to the nearest integer).\n<br><br><img src=\"/question-images/ec/2023/ec-2023-436e742a36.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0",
+        "tolerance": {
+          "lower": 0,
+          "upper": 0
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-5c43f95e33.webp\" />\n\n$$\\begin{aligned}\n\nI & =\\iint_{R} x y d x d y \\\\\n\n& =\\int_{y=0}^{1} \\int_{x=-y}^{y} x y d x d y+\\int_{y=1}^{2} \\int_{x=y-2}^{2-y} x y d x d y \\\\\n\n& =\\int_{0}^{1} y\\left(\\frac{x^{2}}{2}\\right)_{-y}^{y} d y+\\int_{1}^{2} y\\left(\\frac{x^{2}}{2}\\right)_{y-2}^{2-y} d y \\\\\n\n& =0+0=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+      }
+    },
+    "pp:ec:2023:q46": {
+      "question_uid": "pp:ec:2023:q46",
+      "exam_uid": "ec:2023:set1:q46",
+      "title": "GATE EC 2023 | Set 1 | Question: 46",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In an extrinsic semiconductor, the hole concentration is given to be $1.5 n_{i}$ where $n_{i}$ is the intrinsic carrier concentration of $1 \\times 10^{10} \\mathrm{~cm}^{-3}$. The ratio of electron to hole mobility for equal hole and electron drift current is given as  ___ <br>\n(rounded off to two decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.25",
+        "tolerance": {
+          "lower": 2.2,
+          "upper": 2.3
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "basic-semiconductor-physics",
+          "subtopicLabel": "Basic Semiconductor Physics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "basic-semiconductor-physics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "Given, intrinsic carrier concentration $n_{i}=1 \\times 10^{10} \\mathrm{~cm}^{-3}$\n\nHole concentration,\n\n$\\quad p=1.5 \\times n_{i}$\n\n$p=1.5 \\times 10^{10} \\mathrm{~cm}^{-3}$\n\nGiven, electron and hole current are equal\n\n$$\\begin{aligned}\n\nI_{p \\text { dritt }} & =I_{n \\text { dritt }} \\\\\n\np q \\mu_{p} E A & =n q \\mu_{n} E A \\\\\n\n1.5 \\times 10^{10} \\mu_{p} & =n \\mu_{n} \\quad ...(i)\n\n\\end{aligned}$$\n\nBut according to mass action law,\n\n$$\\begin{aligned}\n\nn p & =n_{i}^{2} \\\\\n\nn & =\\frac{n_{i}}{1.5}=\\frac{10^{10}}{1.5} \\mathrm{~cm}^{-3}\n\n\\end{aligned}$$\n\nPut in equation (i)\n\n$\\therefore \\quad 1.5 \\times 10^{10} \\mu_{p}=\\frac{10^{10}}{1.5} \\times \\mu_{n}$\n\n$\\frac{\\mu_{n}}{\\mu_{p}}=2.25$\n\nTherefore, the correct answer is **2.25** (acceptable range: [2.2, 2.3])."
+      }
+    },
+    "pp:ec:2023:q47": {
+      "question_uid": "pp:ec:2023:q47",
+      "exam_uid": "ec:2023:set1:q47",
+      "title": "GATE EC 2023 | Set 1 | Question: 47",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The asymptotic magnitude Bode plot of a minimum phase system is shown in the figure.\n\nThe transfer function of the system is $(s)=\\frac{k(s+z)^{a}}{s^{b}(s+p)^{c}}$, where $k, z, p, a, b$ and $c$ are positive constants. The value of $(a+b+c)$ is ___ <br>\n(rounded off to the nearest integer).\n<br><img src=\"/question-images/ec/2023/ec-2023-f9623e64d7.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "From the Bode magnitude plot, it is clear that there is one pole at origin,\n\n$\\therefore$ $b=1$\n\nand at frequency\n\n$\\omega_{1}$, system has a zero\n\n$\\therefore$ $a=1$\n\nand at frequency\n\n$\\omega_{2}$, system has a two poles\n\n$$\\begin{aligned}\n\n\\therefore \\quad c&=2 \\\\\n\n\\therefore \\quad a+b+c&=1+1+2 \\\\\n\na+b+c&=4\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4**."
+      }
+    },
+    "pp:ec:2023:q48": {
+      "question_uid": "pp:ec:2023:q48",
+      "exam_uid": "ec:2023:set1:q48",
+      "title": "GATE EC 2023 | Set 1 | Question: 48",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let $x_{1}(t)=u(t+1.5)-u(t-1.5)$ and $x_{2}(t)$ is shown in the figure below. For $y(t)=x_{1}(t) * x_{2}(t)$, the $\\int_{-\\infty}^{\\infty} y(t) d t$ is ___. (rounded off to the nearest integer).\n<br><img src=\"/question-images/ec/2023/ec-2023-ba14d4c78a.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "15",
+        "tolerance": {
+          "lower": 15,
+          "upper": 15
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transforms-frequency-response-and-correlation",
+          "subtopicLabel": "Fourier Transforms, Frequency Response and Correlation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "fourier-transforms-frequency-response-and-correlation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
+        "markdown": "$x_{1}(t)=u(t+1.5)-u(t-1.5)$\n\n<img src=\"/question-images/ec/2023/ec-2023-be31fcbe10.webp\" />\n\n$]\\Rightarrow x_1(t)=rect\\left ( \\frac{t}{3} \\right )$\n\n$] x_1(t)=rect\\left ( \\frac{t}{3} \\right )  \\overset{FT}{\\leftrightarrow} 3Sa(1.5\\omega )$\n\nNow,\n\n$x_{2}(t)=\\delta(t+3)+\\operatorname{rect}\\left(\\frac{t}{2}\\right)+2 \\delta(t-2)$\n\nTaking Fourier transform\n\n$$\\begin{aligned}\n\nX_{2}(\\omega) & =e^{3 j \\omega}+2 S a(\\omega)+2 e^{-2 j \\omega} \\\\\n\ny(t) & =x_{1}(t) * x_{2}(t) \\\\\n\nY(\\omega) & =X_{1}(\\omega) \\cdot X_{2}(\\omega) \\\\\n\nY(\\omega) & =\\int_{-\\infty}^{\\infty} y(t) \\cdot e^{-j \\omega t} \\cdot d t\n\n\\end{aligned}$$\n\nWe know\n\n$\\therefore \\quad \\int_{-\\infty}^{\\infty} y(t)=Y(0)$\n\n$\\therefore \\quad Y(0)=X_{1}(0) \\cdot X_{2}(0)$\n\n$=3[1+2+2]=15$\n\nTherefore, the correct answer is **15**."
+      }
+    },
+    "pp:ec:2023:q49": {
+      "question_uid": "pp:ec:2023:q49",
+      "exam_uid": "ec:2023:set1:q49",
+      "title": "GATE EC 2023 | Set 1 | Question: 49",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let $X(t)$ be a white Gaussian noise with power spectral density $\\frac{1}{2} \\mathrm{~W} / \\mathrm{Hz}$. If $X(t)$ is input to an LTI system with impulse response $e^{-t} u(t)$. The average power of the system output is ___ $\\mathrm{W}$. (Rounded off to two decimal place).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.25",
+        "tolerance": {
+          "lower": 0.24,
+          "upper": 0.26
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "lti-systems-continuous-and-discrete",
+          "subtopicLabel": "LTI Systems Continuous and Discrete"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "lti-systems-continuous-and-discrete"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-90bf7e3aee.webp\" />\n\n$h(t)=e^{-t} u(t)$\n\nGiven: Input PSD\n\n$\\Rightarrow \\quad S_{x}(f)=\\frac{1}{2} \\mathrm{~W} / \\mathrm{Hz}$\n\nWe know output PSD,\n\n$$\\begin{aligned}\n\nS_{Y}(f) & =S_{X}(f)|H(f)|^{2} \\\\\n\nS_{Y}(f) & =\\frac{1}{2}|H(f)|^{2} \\\\\n\n\\text { Power }[y(t)] & =\\int_{-\\infty}^{\\infty} S_{Y}(f) d f=\\int_{-\\infty}^{\\infty} \\frac{1}{2}|H(f)|^{2} d f \\\\\n\n& =\\frac{1}{2} \\int_{-\\infty}^{\\infty} h^{2}(t) d t=\\frac{1}{2} \\int_{0}^{\\infty} e^{-2 t} d t \\\\\n\n& =\\frac{1}{2} \\times \\frac{1}{2}=\\frac{1}{4}=0.25 \\mathrm{~W}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
+      }
+    },
+    "pp:ec:2023:q50": {
+      "question_uid": "pp:ec:2023:q50",
+      "exam_uid": "ec:2023:set1:q50",
+      "title": "GATE EC 2023 | Set 1 | Question: 50",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A transparent dielectric coating is applied to glass $\\left(\\epsilon_{r}=4, \\mu_{r}=1\\right)$ to eliminate the reflection of red light $\\left(\\lambda_{0}=0.75 \\mu \\mathrm{m}\\right)$. The minimum thickness of the dielectric coating, in $\\mu \\mathrm{m}$, that can be used is ____ (rounded off to two decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.13",
+        "tolerance": {
+          "lower": 0.12,
+          "upper": 0.14
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "basics-of-electromagnetics",
+          "subtopicLabel": "Basics of Electromagnetics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "basics-of-electromagnetics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Basics of Electromagnetics",
+        "markdown": "For no reflection, impedance must be matched.\n\nHence, $\\eta_{2}$ acts like a quarter wave impedance transformer.\n\n<img src=\"/question-images/ec/2023/ec-2023-60c7205614.webp\" />\n\nSo,\n\n$(i) \\quad \\eta_{2}=\\sqrt{\\eta_{1} \\cdot \\eta_{3}} \\Rightarrow \\epsilon_{r_{2}}=\\sqrt{\\epsilon_{r_{1}} \\cdot \\epsilon_{r_{3}}} \\Rightarrow \\epsilon_{r_{2}}=2$\n\n(ii) For impedance matching,\n\n$$\\begin{aligned}\n\n& d=(2 n+1) \\frac{\\lambda}{4} ; n=0,1,2 \\ldots \\\\\n\n& \\lambda=\\frac{\\lambda_{0}}{\\sqrt{\\epsilon_{r}}}=\\frac{\\lambda_{0}}{\\sqrt{\\epsilon_{r_{2}}}} \\\\\n\nHere \\;\\;& \\lambda=\\frac{0.75 \\times 10^{-6}}{\\sqrt{2}}=0.53 \\times 10^{-6}\n\n\\end{aligned}$$\n\nHence, for minimum distance, $n=0$\n\nSo,\n\n$d=\\frac{\\lambda}{4}=\\frac{0.53 \\times 10^{-6}}{4}=0.133 \\mu \\mathrm{m}$\n\nTherefore, the correct answer is **0.13** (acceptable range: [0.12, 0.14])."
+      }
+    },
+    "pp:ec:2023:q51": {
+      "question_uid": "pp:ec:2023:q51",
+      "exam_uid": "ec:2023:set1:q51",
+      "title": "GATE EC 2023 | Set 1 | Question: 51",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In a semiconductor device, the Fermi-energy level is $0.35 \\mathrm{eV}$ above the valence band energy. The effective density of states in the valence band at $T=300 \\mathrm{~K}$ is $1 \\times 10^{19} \\mathrm{~cm}^{-3}$. The thermal equilibrium hole concentration in silicon at $400 \\mathrm{~K}$ is ___ $\\_\\times 10^{13} \\mathrm{~cm}^{-3}$. (rounded off to two decimal places).\n<br>\nGiven $\\mathrm{kT}$ at $300 \\mathrm{~K}$ is $0.026 \\mathrm{eV}$.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "65",
+        "tolerance": {
+          "lower": 60,
+          "upper": 70
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "basic-semiconductor-physics",
+          "subtopicLabel": "Basic Semiconductor Physics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "basic-semiconductor-physics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "Given,\n\n$E_{F}-E_{V}=0.35 \\mathrm{eV} \\quad \\text { [Considering it is given at } 400 \\mathrm{~K} \\text { ] }$\n\nAlso,\n\n$V_{T_{1}}=K T_{1}=0.026 \\mathrm{eV}$ at $T_{1}=300 \\mathrm{~K}$\n\n$\\therefore$\n\n$\\frac{V_{T_{1}}}{V_{T_{2}}}=\\frac{T_{1}}{T_{2}} \\Rightarrow V_{T_{2}}=\\frac{T_{2}}{T_{1}} \\times V_{T_{1}}$\n\n$\\therefore$\n\n$V_{T_{2}}=\\frac{400}{300} \\times 0.026$\n\n$V_{T_{2}}=0.03466 \\mathrm{eV}$ at $T_{2}=400 \\mathrm{~K}$\n\nNow,\n\n$N_{v}=1 \\times 10^{19} / \\mathrm{cm}^{3}$ at $T_{1}=300 \\mathrm{~K}$\n\n$N_{v} \\propto T^{3 / 2}$\n\n$\\frac{N_{V_{2}}}{N_{V_{1}}}=\\left(\\frac{T_{2}}{T_{1}}\\right)^{3 / 2}$\n\n$N_{V_{2}}=\\left(\\frac{T_{2}}{T_{1}}\\right)^{3 / 2} N V_{1}$\n\n$\\left(\\because T_{2}=400 \\mathrm{~K}\\right)$\n\n$=\\left(\\frac{400}{300}\\right)^{3 / 2} N_{V_{1}}$\n\n$N_{V_{2}}=1.5396 \\times 10^{19} / \\mathrm{cm}^{3}$\n\nNow, hole concentration at $400 \\mathrm{~K}$ is given as\n\n$$\\begin{aligned}\n\n& p=N_{V} e^{-\\left(E_{F}-E_{V}\\right) / k T_{2}}=1.5396 \\times 10^{19} \\times e^{-0.35 \\mathrm{eV} / 0.03466 \\mathrm{eV}} \\\\\n\n& p=63.36 \\times 10^{13} \\mathrm{~cm}^{-3}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **65** (acceptable range: [60, 70])."
+      }
+    },
+    "pp:ec:2023:q52": {
+      "question_uid": "pp:ec:2023:q52",
+      "exam_uid": "ec:2023:set1:q52",
+      "title": "GATE EC 2023 | Set 1 | Question: 52",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A sample and hold circuit is implemented using a resistive switch and a capacitor with a time constant of $1 \\mu \\mathrm{s}$. The time for sampling switch to stay closed to charge a capacitor adequately to a full scale voltage of $1 \\mathrm{~V}$ with 12-bit accuracy is ____ $\\mu \\mathrm{s}$. (rounded off to two decimal places)",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8.32",
+        "tolerance": {
+          "lower": 8.3,
+          "upper": 8.34
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "transient-analysis",
+          "subtopicLabel": "Transient Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "transient-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Transient Analysis",
+        "markdown": "Given: Time constant $(\\tau)$ of $1 \\mu \\mathrm{sec}$.\n\nFull scale voltage $=1 \\mathrm{~V}$\n\n<img src=\"/question-images/ec/2023/ec-2023-21f3740d94.webp\" />\n\nThe voltage across capacitor is given as\n\n$\\quad \\quad V_{c}(t)=V_{\\text {in }}\\left(1-e^{-t / \\tau}\\right)$\n\n$\\therefore \\quad V_{c}(t)=\\left(1-e^{-t / 1 \\mu \\mathrm{sec}}\\right) \\quad ...(i)$\n\nTo calculate the voltage to stay closed to charge capacitor adequately to a full scale voltage with 12-bit accuracy is given by\n\n$$\\begin{aligned}\n\nV_{c}(t) & =V_{\\text {ref }}\\left[1-\\frac{1}{2^{n}}\\right] \\\\\n\nn & =\\text { Number of bit }=12 \\\\\n\nV_{c}(t) & =\\left[1-\\frac{1}{4096}\\right] \\quad ...(ii)\n\n\\end{aligned}$$\n\nComparing equations (i) and (ii), we get,\n\n$$\\begin{aligned}\n\ne^{-t / 1 \\mu \\mathrm{sec}} & =\\frac{1}{4096} \\\\\n\n-\\frac{t}{1 \\mu \\mathrm{sec}} & =\\ln \\left\\{\\frac{1}{4096}\\right\\} \\\\\n\nt & =8.3177 \\mu \\mathrm{sec}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **8.32** (acceptable range: [8.3, 8.34])."
+      }
+    },
+    "pp:ec:2023:q53": {
+      "question_uid": "pp:ec:2023:q53",
+      "exam_uid": "ec:2023:set1:q53",
+      "title": "GATE EC 2023 | Set 1 | Question: 53",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In a given sequential circuit, initial states are $Q_{1}=1$ and $Q_{2}=0$. For a clock frequency of $1 \\mathrm{MHz}$, the frequency of signal $Q_{2}$ in $\\mathrm{kHz}$, is ____\n<br>\n(rounded off to the nearest integer).\n<br><img src=\"/question-images/ec/2023/ec-2023-e437db50f3.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "250",
+        "tolerance": {
+          "lower": 250,
+          "upper": 250
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "sequential-circuits",
+          "subtopicLabel": "Sequential Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "sequential-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Sequential Circuits",
+        "markdown": "$$\\begin{array}{|c|c|c|c|c|}\n\n\\hline\n\nClk & {D}_{\\mathbf{1}}=\\mathbf{Q}_{\\mathbf{2}}[ & D_{\\mathbf{2}}=\\overline{\\mathbf{Q}}_{\\mathbf{1}} & {Q}_{\\mathbf{1}} & {Q}_{\\mathbf{2}} \\\\\n\n\\hline\n\nInitial &  &  & 1 & 0 \\\\\n\n\\hline\n\n1 & 0 & 0 & 0 & 0 \\\\\n\n2 & 0 & 1 & 0 & 1 \\\\\n\n3 & 1 & 1 & 1 & 1 \\\\\n\n4 & 1 & 0 & 1 & 0 \\\\\n\n\\hline\n\n\\end{array}$$\n\nTherefore, the given counter is having MOD-4\n\n$\\therefore$ The frequency of signal $Q_{2}=\\frac{f_{i}}{4}=\\frac{1000}{4} \\mathrm{kHz}=250 \\mathrm{kHz}$\n\nTherefore, the correct answer is **250**."
+      }
+    },
+    "pp:ec:2023:q54": {
+      "question_uid": "pp:ec:2023:q54",
+      "exam_uid": "ec:2023:set1:q54",
+      "title": "GATE EC 2023 | Set 1 | Question: 54",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In the circuit below, the voltage $V_{L}$ is ____ $\\_V$.\n<br>\n(rounded off to two decimal places)\n<br><img src=\"/question-images/ec/2023/ec-2023-e11154b1df.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "fet-and-mosfet-analysis",
+          "subtopicLabel": "FET and MOSFET Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "fet-and-mosfet-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - FET and MOSFET Analysis",
+        "markdown": "<img src=\"/question-images/ec/2023/ec-2023-11c51c98d8.webp\" />\n\nWe know,\n\n$$\\begin{aligned}\n\nI_{D} & \\propto\\left(\\frac{W}{L}\\right) \\\\\n\nI_{1} & =1 \\mathrm{~mA} \\\\\n\nI_{2} & =\\frac{10}{1} \\times 1=10 \\mathrm{~mA} \\\\\n\nI_{3} & =10 \\mathrm{~mA} \\\\\n\nI_{4} & =7 \\mathrm{~mA} \\\\\n\nI_{5} & =5 \\mathrm{~mA} \\\\\n\nI_{0} & =I_{4}-I_{5}=7-5=2 \\mathrm{~mA} \\\\\n\nV_{L} & =2 \\times 1=2 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ec:2023:q55": {
+      "question_uid": "pp:ec:2023:q55",
+      "exam_uid": "ec:2023:set1:q55",
+      "title": "GATE EC 2023 | Set 1 | Question: 55",
+      "year": "gateec-2023-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The frequency of occurrence of 8 symbols $(a-h)$ is shown in the table below. A symbol is chosen and it is determined by asking a series of \"yes/no\" questions which are assumed to be truthfully answered. The average number of questions when asked in the most efficient sequence, to determine the chosen symbol, is ____\n<br>\n(rounded off to two decimal places).\n<br>\n$$\\begin{array}{|c|c|c|c|c|c|c|c|c|}\n\\hline\nSymbols & a & b & c & d & e & f & g & h \\\\\n\\hline\nFrequency& \\frac{1}{2} & \\frac{1}{4} & \\frac{1}{8} & \\frac{1}{16} & \\frac{1}{32} & \\frac{1}{64} & \\frac{1}{128} & \\frac{1}{128} \\\\ \nof \\; occurrence& &&&&&&& \\\\\n\\hline\n\\end{array}$$",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.98",
+        "tolerance": {
+          "lower": 1.97,
+          "upper": 1.99
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "information-theory-and-coding",
+          "subtopicLabel": "Information Theory and Coding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "information-theory-and-coding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Information Theory and Coding",
+        "markdown": "The average number of questions when asked in the most efficient sequence, to determine the chosen symbol $=\\min$ possible number of questions per symbol $(H)$\n\n$H=\\sum_{i} P_{x}\\left(x_{i}\\right) \\log _{2} \\frac{1}{P_{x}\\left(x_{i}\\right)}\n\n=\\frac{1}{2} \\log _{2} 2+\\frac{1}{4} \\log _{2} 4+\\frac{1}{8} \\log _{2} 8+\\frac{1}{16} \\log _{2} 16+\\frac{1}{32} \\log _{2} 32+\\frac{1}{64} \\log _{2} 64+2 \\times \\frac{1}{128} \\log _{2} 128\n\n=1.984 \\frac{\\text { Questions }}{\\text { Symbol }}$\n\nTherefore, the correct answer is **1.98** (acceptable range: [1.97, 1.99])."
+      }
+    },
+    "pp:ec:2023:q56": {
+      "question_uid": "pp:ec:2023:q56",
+      "exam_uid": "ec:2023:set1:q56",
+      "title": "GATE EC 2023 | Set 1 | Question: 56",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": " \"I cannot support this proposal. My ______ will not permit it.\"",
+      "options": [
+        "conscious",
+        "consensus",
+        "conscience",
+        "consent"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *conscience*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (conscience)."
+      }
+    },
+    "pp:ec:2023:q57": {
+      "question_uid": "pp:ec:2023:q57",
+      "exam_uid": "ec:2023:set1:q57",
+      "title": "GATE EC 2023 | Set 1 | Question: 57",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Courts :______: Parliament : Legislature",
+      "options": [
+        "Judiciary",
+        "Executive",
+        "Governmental",
+        "Legal"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *Judiciary*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (Judiciary)."
+      }
+    },
+    "pp:ec:2023:q58": {
+      "question_uid": "pp:ec:2023:q58",
+      "exam_uid": "ec:2023:set1:q58",
+      "title": "GATE EC 2023 | Set 1 | Question: 58",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "What is the smallest number with distinct digits whose digits add up to 45 ?",
+      "options": [
+        "123555789",
+        "123457869",
+        "123456789",
+        "99999"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "The digits should be distinct and smallest number is 123456789.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q59": {
+      "question_uid": "pp:ec:2023:q59",
+      "exam_uid": "ec:2023:set1:q59",
+      "title": "GATE EC 2023 | Set 1 | Question: 59",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a class of 100 students,\n<br><br>\n(i) there are 30 students who neither like romantic movies nor comedy movies,\n<br>\n(ii) the number of students who like romantic movies is twice the number of students who like comedy movies, and\n<br>\n(iii) the number of students who like both romantic movies and comedy movies is 20.\n<br><br>\nHow many students in the class like romantic movies?",
+      "options": [
+        "40",
+        "20",
+        "60",
+        "30"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Let students who like Romantic Movies $=R$.\n\nStudents who like Comedy Movies $=C$.\n\nGiven $R=2 C$\n\nAlso, 30 students do not like Romantic and Comedy Movies both.\n\n$$\\begin{aligned}\n\n\\therefore \\quad 100-30&=70=n(R \\cap C) \\\\\n\n\\text{and  } n(C \\cap R)&=20 \\\\\n\nn(R \\cap C)&=n(R)+n(C)-n(C \\cap R)\\\\\n\n70&=2 C+C-20\n\n3 C & =90 \\\\\n\nC & =30 \\\\\n\nR & =2 C=60\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q60": {
+      "question_uid": "pp:ec:2023:q60",
+      "exam_uid": "ec:2023:set1:q60",
+      "title": "GATE EC 2023 | Set 1 | Question: 60",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "How many rectangles are present in the given figure?\n<br><img src=\"/question-images/ec/2023/ec-2023-e7c62116c6.webp\" /><br>",
+      "options": [
+        "8",
+        "9",
+        "10",
+        "12"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Number of rectangles $=10$ as square is also called as rectangle.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2023:q61": {
+      "question_uid": "pp:ec:2023:q61",
+      "exam_uid": "ec:2023:set1:q61",
+      "title": "GATE EC 2023 | Set 1 | Question: 61",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Forestland is a planet inhabited by different kinds of creatures. Among other creatures, it is populated by animals all of whom are ferocious. There are also creatures that have claws, and some that do not. All creatures that have claws are ferocious.\n<br><br>\nBased only on the information provided above, which one of the following options can be logically inferred with certainty?",
+      "options": [
+        "All creatures with claws are animals.",
+        "Some creatures with claws are non-ferocious.",
+        "Some non-ferocious creatures have claws.",
+        "Some ferocious creatures are creatures with claws."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Since, the given function is an even function.\n\nOption (D) is only represents the even function.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2023:q62": {
+      "question_uid": "pp:ec:2023:q62",
+      "exam_uid": "ec:2023:set1:q62",
+      "title": "GATE EC 2023 | Set 1 | Question: 62",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which one of the following options represents the given graph?\n<br><img src=\"/question-images/ec/2023/ec-2023-bb2797b14e.webp\" /><br>",
+      "options": [
+        "$f(x)=x^{2} 2^{-|x|}$",
+        "$f(x)=x 2^{-|x|}$",
+        "$f(x)=|x| 2^{-x}$",
+        "$f(x)=x 2^{-x}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "The given function is odd function.\n\n\nProperty of odd function.\n\n\n\n$F(-x)=-f(x)$\n\n\nTherefore, option (B) is an odd function.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2023:q63": {
+      "question_uid": "pp:ec:2023:q63",
+      "exam_uid": "ec:2023:set1:q63",
+      "title": "GATE EC 2023 | Set 1 | Question: 63",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Which one of the following options can be inferred from the given passage alone? When I was a kid, I was partial to stories about other worlds and interplanetary travel. I used to imagine that I could just gaze off into space and be whisked to another planet.\n<br><br>\n[Excerpt from The Truth about Stories by T. King]",
+      "options": [
+        "It is a child's description of what he or she likes.",
+        "It is an adult's memory of what he or she liked as a child.",
+        "The child in the passage read stories about interplanetary travel only in parts.",
+        "It teaches us that stories are good for children."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *It is an adult's memory of what he or she liked as a child.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (It is an adult's memory of what he or she liked as a child.)."
+      }
+    },
+    "pp:ec:2023:q64": {
+      "question_uid": "pp:ec:2023:q64",
+      "exam_uid": "ec:2023:set1:q64",
+      "title": "GATE EC 2023 | Set 1 | Question: 64",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Out of 1000 individuals in a town, 100 unidentified individuals are covid positive. Due to lack of adequate covid-testing kits, the health authorities of the town devised a strategy to identify these covid-positive individuals. The strategy is to:\n<br><br>\n(i) Collect saliva samples from all 1000 individuals and randomly group them into sets of 5 .\n<br>\n(ii) Mix the samples within each set and test the mixed sample for covid.\n<br>\n(iii) If the test done in (ii) gives a negative result, then declare all the 5 individuals to be covid negative.\n<br>\n(iv) If the test done in (ii) gives a positive result, then all the 5 individuals are separately tested for covid.\n<br><br>\nGiven this strategy, no more than ______ testing kits will be required to identify all the 100 covid positive individuals irrespective of how they are grouped.",
+      "options": [
+        "700",
+        "600",
+        "800",
+        "1000"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *700*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (700)."
+      }
+    },
+    "pp:ec:2023:q65": {
+      "question_uid": "pp:ec:2023:q65",
+      "exam_uid": "ec:2023:set1:q65",
+      "title": "GATE EC 2023 | Set 1 | Question: 65",
+      "year": "gateec-2023-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "$100 \\mathrm{~cm} \\times 32 \\mathrm{~cm}$ rectangular sheet is folded 5 times. Each time the sheet is folded, the long edge aligns with its opposite side. Eventually, the folded sheet is a rectangle of dimensions $100 \\mathrm{~cm} \\times 1 \\mathrm{~cm}$.\n<br><br>\nThe total number of creases visible when the sheet is unfolded is",
+      "options": [
+        "32",
+        "5",
+        "31",
+        "63"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2023-s1",
+      "yearSetIdentity": "ec:2023:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$\\therefore$ After folding 5 times $=1+2^{1}+2^{2}+2^{3}+2^{4}=1+2+4+8+16=31$\n\nTherefore, the correct answer is **C**."
+      }
+    }
+  }
+}

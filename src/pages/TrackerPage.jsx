@@ -18,6 +18,7 @@ import { useTheme } from "../utils/theme";
 import { useFilterState } from "../contexts/FilterContext";
 import { QuestionService } from "../services/QuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
+import { BranchQuestionService } from "../services/BranchQuestionService";
 import {
   TRACK_TAXONOMIES,
   getTopicsForTrack,
@@ -42,6 +43,12 @@ import {
   isQuestionInTrack,
   buildQuestionIndexForTrack,
 } from "../utils/trackerState";
+import {
+  readBranchPreferences,
+  BRANCH_PREFERENCE_EVENT,
+  DEFAULT_BRANCH,
+} from "../utils/branchPreference";
+import { DISCIPLINES } from "../components/Branch/BranchSelectionWall";
 import { HOME_ROUTE } from "../utils/routes";
 import PageShell from "../components/Layout/PageShell";
 import TrackerCountdownHero from "../components/Tracker/TrackerCountdownHero";
@@ -50,19 +57,100 @@ import TrackerFocusBanner from "../components/Tracker/TrackerFocusBanner";
 import TrackerHierarchicalTable from "../components/Tracker/TrackerHierarchicalTable";
 import TrackerResetModal from "../components/Tracker/TrackerResetModal";
 
+const TRACK_BADGES = {
+  cse: "bg-blue-500/10 border-blue-500/30 text-blue-400",
+  da: "bg-purple-500/10 border-purple-500/30 text-purple-400",
+  ec: "bg-amber-500/10 border-amber-500/30 text-amber-400",
+  ee: "bg-yellow-500/10 border-yellow-500/30 text-yellow-400",
+  me: "bg-rose-500/10 border-rose-500/30 text-rose-400",
+  ce: "bg-cyan-500/10 border-cyan-500/30 text-cyan-400",
+};
+
+const TRACK_ACTIVE_BTN = {
+  cse: "bg-blue-600 text-white",
+  da: "bg-purple-600 text-white",
+  ec: "bg-amber-600 text-white",
+  ee: "bg-yellow-600 text-white",
+  me: "bg-rose-600 text-white",
+  ce: "bg-cyan-600 text-white",
+};
+
 export default function TrackerPage() {
   const filterState = useFilterState();
   const { isDarkMode, toggleTheme } = useTheme();
 
   // Load preferences
   const [preferences, setPreferences] = useState(loadTrackerPreferences);
-  const activeTrack = preferences.activeTrack || "cse";
+
+  // Branch preferences (source of truth for selected examination branches)
+  const [branchPref, setBranchPref] = useState(() => {
+    const bp = readBranchPreferences();
+    const branches = (bp && Array.isArray(bp.selectedBranches) && bp.selectedBranches.length > 0)
+      ? bp.selectedBranches
+      : ["cse", "da"];
+    return {
+      selectedBranches: branches,
+      activeBranch: branches.includes(bp?.activeBranch) ? bp.activeBranch : branches[0],
+    };
+  });
+
+  // Listen for branch changes from settings, onboarding, or other tabs
+  useEffect(() => {
+    const handleBranchChange = () => {
+      const bp = readBranchPreferences();
+      const branches = (bp && Array.isArray(bp.selectedBranches) && bp.selectedBranches.length > 0)
+        ? bp.selectedBranches
+        : ["cse", "da"];
+      setBranchPref({
+        selectedBranches: branches,
+        activeBranch: branches.includes(bp?.activeBranch) ? bp.activeBranch : branches[0],
+      });
+    };
+    window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+    window.addEventListener("storage", handleBranchChange);
+    return () => {
+      window.removeEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+      window.removeEventListener("storage", handleBranchChange);
+    };
+  }, []);
+
+  // Active track is constrained strictly to the user's selected branches
+  const activeTrack = useMemo(() => {
+    if (branchPref.selectedBranches.includes(preferences.activeTrack)) {
+      return preferences.activeTrack;
+    }
+    if (branchPref.selectedBranches.includes(branchPref.activeBranch)) {
+      return branchPref.activeBranch;
+    }
+    return branchPref.selectedBranches[0] || DEFAULT_BRANCH;
+  }, [branchPref.selectedBranches, branchPref.activeBranch, preferences.activeTrack]);
+
+  // Discipline metadata for active track
+  const activeTrackMeta = useMemo(() => {
+    const found = DISCIPLINES.find((d) => d.code === activeTrack);
+    return found || {
+      code: activeTrack,
+      short: activeTrack.toUpperCase(),
+      label: activeTrack.toUpperCase(),
+    };
+  }, [activeTrack]);
 
   // Local tracker store state
   const [store, setStore] = useState(() => loadTrackerStore(activeTrack));
 
   // Transition for non-urgent track-switch re-renders
   const [isPending, startTransition] = useTransition();
+
+  // Keep store synchronized when activeTrack transitions
+  const prevActiveTrackRef = useRef(activeTrack);
+  useEffect(() => {
+    if (prevActiveTrackRef.current !== activeTrack) {
+      prevActiveTrackRef.current = activeTrack;
+      startTransition(() => {
+        setStore(loadTrackerStore(activeTrack));
+      });
+    }
+  }, [activeTrack, startTransition]);
 
   // Stable counter bumped when solved-question lists change; avoids depending on full filterState
   const [practiceRevision, setPracticeRevision] = useState(0);
@@ -88,10 +176,6 @@ export default function TrackerPage() {
   const [selectedSubjectFilter, setSelectedSubjectFilter] = useState("all");
   const [onlyHighYield, setOnlyHighYield] = useState(false);
   const [statusFilter, setStatusFilter] = useState("all");
-
-  // REMOVED: The useEffect below was a duplicate — handleTrackChange already calls
-  // setStore(loadTrackerStore(newTrack)), so this caused a needless third re-render
-  // on every track switch. Removing it eliminates one full synchronous render cycle.
 
   const handleTrackChange = useCallback((newTrack) => {
     // Update active-button highlight synchronously (high priority)
@@ -129,10 +213,16 @@ export default function TrackerPage() {
             neededLoad = true;
             await DaQuestionService.init();
           }
-        } else {
+        } else if (activeTrack === "cse") {
           if (!QuestionService.loaded) {
             neededLoad = true;
             await QuestionService.init();
+          }
+        } else {
+          // Official engineering disciplines (ec, ee, me, ce)
+          if (!BranchQuestionService.isLoaded(activeTrack)) {
+            neededLoad = true;
+            await BranchQuestionService.init(activeTrack);
           }
         }
         if (!cancelled && neededLoad) {
@@ -150,7 +240,7 @@ export default function TrackerPage() {
 
   // Aggregate questions strictly matching the active track.
   // NOTE: Aptitude questions are intentionally excluded — the tracker only covers
-  // GATE syllabus PYQs (CSE ~3,500, DA ~1,500). Aptitude is a separate practice bank.
+  // GATE syllabus PYQs. Aptitude is a separate practice bank.
   const activeTrackQuestions = useMemo(() => {
     let baseList = [];
     if (activeTrack === "da") {
@@ -159,13 +249,18 @@ export default function TrackerPage() {
       } else {
         baseList = (filterState.allQuestions || []).filter((q) => isQuestionInTrack(q, "da"));
       }
-    } else {
+    } else if (activeTrack === "cse") {
       if (QuestionService.loaded && QuestionService.questions.length > 0) {
-        // Do NOT include AptitudeQuestionService here — aptitude questions are a
-        // separate practice bank and must not inflate tracker PYQ counts.
         baseList = QuestionService.questions;
       } else {
         baseList = (filterState.allQuestions || []).filter((q) => isQuestionInTrack(q, "cse"));
+      }
+    } else {
+      // Official engineering branches: ec, ee, me, ce
+      if (BranchQuestionService.isLoaded(activeTrack)) {
+        baseList = BranchQuestionService.getQuestions(activeTrack);
+      } else {
+        baseList = (filterState.allQuestions || []).filter((q) => isQuestionInTrack(q, activeTrack));
       }
     }
     return baseList;
@@ -330,18 +425,18 @@ export default function TrackerPage() {
   return (
     <>
       <Helmet>
-        <title>{activeTrack === "cse" ? "GATE CSE Preparation Tracker" : "GATE DA Preparation Tracker"} | GateQA</title>
+        <title>{`GATE ${activeTrackMeta.short} Preparation Tracker | GateQA`}</title>
         <meta
           name="description"
-          content="Track your GATE Computer Science (CSE) and Data Science (DA) preparation progress. Local-first, automated PYQ tracking, hierarchical table, and revision planner."
+          content={`Track your GATE ${activeTrackMeta.label} (${activeTrackMeta.short}) preparation progress. Local-first, automated PYQ tracking, hierarchical table, and revision planner.`}
         />
       </Helmet>
 
-      <PageShell showHeader={false} contentClassName="pb-16 sm:pb-24 pt-3 sm:pt-5">
+      <PageShell showHeader={false} contentClassName="pb-[calc(4.5rem+env(safe-area-inset-bottom,16px))] sm:pb-24 pt-3 sm:pt-5 px-3 sm:px-6">
         {/* Top Header */}
-        <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[color:var(--color-border)] pb-5 sm:pb-6 mb-5 sm:mb-6">
+        <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 border-b border-[color:var(--color-border)] pb-4 sm:pb-6 mb-4 sm:mb-6">
           <div>
-            <div className="flex items-center gap-2.5 mb-2">
+            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
               <Link
                 to={HOME_ROUTE}
                 className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] bg-[color:var(--color-surface)] border border-[color:var(--color-border)] hover:bg-[color:var(--color-surface-muted)] shadow-xs transition-all group"
@@ -351,44 +446,43 @@ export default function TrackerPage() {
                 <FiArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
                 <span>Back to Home</span>
               </Link>
-              <span className={`text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full border uppercase tracking-wider ${activeTrack === "cse" ? "bg-blue-500/10 border-blue-500/30 text-blue-400" : "bg-purple-500/10 border-purple-500/30 text-purple-400"}`}>
-                {activeTrack === "cse" ? "Paper: CS" : "Paper: DA"}
+              <span className={`text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full border uppercase tracking-wider ${TRACK_BADGES[activeTrack] || TRACK_BADGES.cse}`}>
+                Paper: {activeTrackMeta.short}
               </span>
             </div>
-            <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[color:var(--color-text)]">
-              {activeTrack === "cse" ? "GATE CSE Preparation Tracker" : "GATE DA Preparation Tracker"}
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[color:var(--color-text)]">
+              GATE {activeTrackMeta.short} Preparation Tracker
             </h1>
-            <p className="text-xs sm:text-sm text-[color:var(--color-text-muted)] mt-1">
-              Automated syllabus coverage, honest PYQ analytics &amp; intelligent revision queue
+            <p className="text-xs sm:text-sm text-[color:var(--color-text-muted)] mt-0.5 sm:mt-1">
+              Official syllabus coverage, honest PYQ analytics &amp; intelligent revision queue
             </p>
           </div>
 
-          {/* Track Switcher */}
+          {/* Track Switcher (Adapts strictly to user's selected branches) */}
           <div className="flex items-center gap-1.5 sm:gap-2 bg-[color:var(--color-surface)] border border-[color:var(--color-border)] p-1 rounded-xl shadow-sm w-full sm:w-auto self-start sm:self-center">
-            <button
-              type="button"
-              onClick={() => handleTrackChange("cse")}
-              className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
-                activeTrack === "cse"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)]"
-              }`}
-            >
-              <FiCpu className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span>GATE CSE</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => handleTrackChange("da")}
-              className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
-                activeTrack === "da"
-                  ? "bg-purple-600 text-white shadow-sm"
-                  : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)]"
-              }`}
-            >
-              <FiTrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span>GATE DA</span>
-            </button>
+            {branchPref.selectedBranches.map((branchCode) => {
+              const disc = DISCIPLINES.find((d) => d.code === branchCode);
+              const Icon = disc?.icon || FiCpu;
+              const shortName = disc?.short || branchCode.toUpperCase();
+              const isActive = activeTrack === branchCode;
+              const activeClass = TRACK_ACTIVE_BTN[branchCode] || "bg-blue-600 text-white";
+
+              return (
+                <button
+                  key={branchCode}
+                  type="button"
+                  onClick={() => handleTrackChange(branchCode)}
+                  className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
+                    isActive
+                      ? `${activeClass} shadow-sm`
+                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-[color:var(--color-bg)]"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span>GATE {shortName}</span>
+                </button>
+              );
+            })}
             <button
               type="button"
               role="switch"
@@ -396,7 +490,7 @@ export default function TrackerPage() {
               aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
               aria-checked={isDarkMode}
               title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              className="inline-flex min-h-[32px] sm:min-h-[34px] min-w-[32px] sm:min-w-[34px] w-[32px] sm:w-[34px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1.5 text-[color:var(--color-text)] shadow-xs transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
+              className="inline-flex min-h-[34px] min-w-[34px] w-[34px] items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1.5 text-[color:var(--color-text)] shadow-xs transition hover:bg-[color:var(--color-surface-muted)] focus:outline-none focus:ring-2 focus:ring-sky-500 shrink-0"
             >
               {isDarkMode ? (
                 <FiSun className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
@@ -416,17 +510,17 @@ export default function TrackerPage() {
         />
 
         {/* 3-Pillar Progress Summary */}
-        <section aria-label="Preparation Progress" className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <section aria-label="Preparation Progress" className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 mb-4 sm:mb-8">
           {/* Pillar 1: Theory */}
-          <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow-card)]">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider">Theory Progress</span>
+          <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow-card)]">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[11px] sm:text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider">Theory Progress</span>
               <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">
                 {overallMetrics.theoryPercentage}%
               </span>
             </div>
-            <div className="text-xl sm:text-2xl font-bold mb-1">
-              {overallMetrics.theoryCompletedCount} <span className="text-sm font-normal text-[color:var(--color-text-muted)]">/ {overallMetrics.totalTopics} Subtopics Completed</span>
+            <div className="text-lg sm:text-2xl font-bold mb-0.5 sm:mb-1">
+              {overallMetrics.theoryCompletedCount} <span className="text-xs sm:text-sm font-normal text-[color:var(--color-text-muted)]">/ {overallMetrics.totalTopics} Subtopics Completed</span>
             </div>
             <p className="text-[11px] text-[color:var(--color-text-muted)] mb-2">
               Across {taxonomy.subjects.length} syllabus subjects
@@ -437,21 +531,21 @@ export default function TrackerPage() {
           </div>
 
           {/* Pillar 2: PYQ Practice */}
-          <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow-card)]">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider">PYQ Practice</span>
+          <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow-card)]">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[11px] sm:text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider">PYQ Practice</span>
               <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 {overallMetrics.practicePercentage}%
               </span>
             </div>
-            <div className="text-xl sm:text-2xl font-bold mb-1">
+            <div className="text-lg sm:text-2xl font-bold mb-0.5 sm:mb-1">
               {overallMetrics.totalAttemptedPyqs > 0 ? (
                 <>
-                  {overallMetrics.totalAttemptedPyqs} <span className="text-sm font-normal text-[color:var(--color-text-muted)]">/ {overallMetrics.totalAvailablePyqs} PYQs</span>
+                  {overallMetrics.totalAttemptedPyqs} <span className="text-xs sm:text-sm font-normal text-[color:var(--color-text-muted)]">/ {overallMetrics.totalAvailablePyqs} PYQs</span>
                 </>
               ) : (
                 <>
-                  0 <span className="text-sm font-normal text-[color:var(--color-text-muted)]">/ {overallMetrics.totalAvailablePyqs} PYQs</span>
+                  0 <span className="text-xs sm:text-sm font-normal text-[color:var(--color-text-muted)]">/ {overallMetrics.totalAvailablePyqs} PYQs</span>
                 </>
               )}
             </div>
@@ -464,21 +558,21 @@ export default function TrackerPage() {
           </div>
 
           {/* Pillar 3: Practice Accuracy */}
-          <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow-card)]">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider">Practice Accuracy</span>
+          <div className="bg-[color:var(--color-surface)] border border-[color:var(--color-border)] rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow-card)]">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[11px] sm:text-xs font-semibold text-[color:var(--color-text-muted)] uppercase tracking-wider">Practice Accuracy</span>
               <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                 {overallMetrics.totalAttemptedPyqs > 0 ? `${overallMetrics.overallAccuracyRate}%` : "—%"}
               </span>
             </div>
-            <div className="text-xl sm:text-2xl font-bold mb-1">
+            <div className="text-lg sm:text-2xl font-bold mb-0.5 sm:mb-1">
               {overallMetrics.totalAttemptedPyqs > 0 ? (
                 <>
-                  {overallMetrics.overallAccuracyRate}% <span className="text-sm font-normal text-[color:var(--color-text-muted)]">({overallMetrics.totalSolvedPyqs} Solved)</span>
+                  {overallMetrics.overallAccuracyRate}% <span className="text-xs sm:text-sm font-normal text-[color:var(--color-text-muted)]">({overallMetrics.totalSolvedPyqs} Solved)</span>
                 </>
               ) : (
                 <>
-                  — <span className="text-sm font-normal text-[color:var(--color-text-muted)]">(No attempts yet)</span>
+                  — <span className="text-xs sm:text-sm font-normal text-[color:var(--color-text-muted)]">(No attempts yet)</span>
                 </>
               )}
             </div>
@@ -492,11 +586,11 @@ export default function TrackerPage() {
         </section>
 
         {/* Action Status Pills */}
-        <section aria-label="Status Summary" className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+        <section aria-label="Status Summary" className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 mb-4 sm:mb-8 scrollbar-none sm:flex-wrap sm:overflow-visible">
           <button
             type="button"
             onClick={() => setStatusFilter((prev) => (prev === "revision" ? "all" : "revision"))}
-            className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+            className={`shrink-0 sm:shrink sm:flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               statusFilter === "revision"
                 ? "bg-amber-500 text-slate-950 font-bold shadow-sm"
                 : "bg-amber-500/10 text-amber-400 border border-amber-500/20 hover:bg-amber-500/20"
@@ -509,7 +603,7 @@ export default function TrackerPage() {
           <button
             type="button"
             onClick={() => setStatusFilter((prev) => (prev === "attention" ? "all" : "attention"))}
-            className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+            className={`shrink-0 sm:shrink sm:flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               statusFilter === "attention"
                 ? "bg-rose-500 text-white font-bold shadow-sm"
                 : "bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20"
@@ -522,7 +616,7 @@ export default function TrackerPage() {
           <button
             type="button"
             onClick={() => setStatusFilter((prev) => (prev === "unpracticed" ? "all" : "unpracticed"))}
-            className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+            className={`shrink-0 sm:shrink sm:flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               statusFilter === "unpracticed"
                 ? "bg-slate-300 text-slate-900 font-bold shadow-sm"
                 : "bg-slate-500/10 text-[color:var(--color-text-muted)] border border-[color:var(--color-border)] hover:bg-slate-500/20"
@@ -532,32 +626,32 @@ export default function TrackerPage() {
             <span>{overallMetrics.unpracticedTopicsCount} Unpracticed</span>
           </button>
 
-          <div className="w-full sm:w-auto sm:ml-auto inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <div className="shrink-0 sm:shrink sm:flex-1 md:flex-none sm:ml-auto inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
             <FiAward className="w-3.5 h-3.5" />
             <span>{overallMetrics.wellPracticedTopicsCount} Well Practiced</span>
           </div>
         </section>
 
         {/* Search & Filter Bar */}
-        <section aria-label="Syllabus Filters" className="mb-6 p-3.5 sm:p-4 rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+        <section aria-label="Syllabus Filters" className="mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[color:var(--color-surface)] border border-[color:var(--color-border)] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
           <div className="relative w-full sm:w-80">
             <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--color-text-muted)]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search topics, concepts (e.g. Paging, Logic)..."
+              placeholder="Search topics, concepts..."
               className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-bg)] text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
+          <div className="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
             {/* Subject Dropdown */}
             <select
               value={selectedSubjectFilter}
               onChange={(e) => setSelectedSubjectFilter(e.target.value)}
               aria-label="Filter by Subject"
-              className="w-full sm:w-auto text-xs px-3 py-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-bg)] text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 sm:flex-none text-xs px-3 py-2 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-bg)] text-[color:var(--color-text)] focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Subjects ({taxonomy.subjects.length})</option>
               {taxonomy.subjects.map((s) => (
@@ -568,7 +662,7 @@ export default function TrackerPage() {
             </select>
 
             {/* High Yield Filter Toggle */}
-            <label className={`inline-flex items-center justify-center gap-2 cursor-pointer text-xs font-semibold px-3 py-2 rounded-xl border select-none transition-all ${
+            <label className={`shrink-0 inline-flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer text-xs font-semibold px-2.5 sm:px-3 py-2 rounded-xl border select-none transition-all ${
               onlyHighYield
                 ? "bg-blue-600/10 border-blue-500/40 text-blue-400 shadow-sm"
                 : "border-[color:var(--color-border)] bg-[color:var(--color-bg)] text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
@@ -579,7 +673,7 @@ export default function TrackerPage() {
                 onChange={(e) => setOnlyHighYield(e.target.checked)}
                 className="rounded text-blue-600 focus:ring-blue-500 bg-[color:var(--color-surface)] border-[color:var(--color-border)] w-3.5 h-3.5"
               />
-              <span>High-yield only</span>
+              <span>High-yield</span>
             </label>
           </div>
         </section>
@@ -628,6 +722,7 @@ export default function TrackerPage() {
           topicMetricsList={topicMetricsList}
           allTopics={allTopics}
         />
+
         {/* Reset Confirmation Modal */}
         <TrackerResetModal
           topic={resetModalTopic}
@@ -639,4 +734,3 @@ export default function TrackerPage() {
     </>
   );
 }
-

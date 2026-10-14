@@ -1,0 +1,2612 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.666Z",
+  "shardKey": "ce-2021-s1",
+  "yearSetKey": "ce-2021-s1",
+  "yearSetIdentity": "ce:2021:set-1",
+  "track": "ce",
+  "year": 2021,
+  "set": 1,
+  "label": "2021 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ce:2021:q1": {
+      "question_uid": "pp:ce:2021:q1",
+      "exam_uid": "ce:2021:set1:q1",
+      "title": "GATE CE 2021 | Set 1 | Question: 1",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The rank of matrix $$\\left[\\begin{array}{llll} 1 & 2 & 2 & 3 \\\\ 3 & 4 & 2 & 5 \\\\ 5 & 6 & 2 & 7 \\\\ 7 & 8 & 2 & 9 \\end{array}\\right]$$ is",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Using $R_{2} \\rightarrow R_{2} \\rightarrow 3 R_{1}, R_{3} \\rightarrow R_{3}-5 R_{1}, R_{4} \\rightarrow R_{4}-7 R_{1}$\n\n$$A=\\left[\\begin{array}{cccc} 1 & 2 & 2 & 3 \\\\ 0 & -2 & -4 & -4 \\\\ 0 & -4 & -8 & -8 \\\\ 0 & -6 & -12 & -12 \\end{array}\\right]$$\n\nUsing $R_{3} \\rightarrow R_{3}-2 R_{2}, R_{4} \\rightarrow R_{4}-3 R_{2}$\n\n$$A=\\left[\\begin{array}{cccc} 1 & 2 & 2 & 3 \\\\ 0 & -2 & -4 & -4 \\\\ 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 \\end{array}\\right]$$\n\nSo, $\\rho(A)=$ No. of non-zero rows = 2.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q2": {
+      "question_uid": "pp:ce:2021:q2",
+      "exam_uid": "ce:2021:set1:q2",
+      "title": "GATE CE 2021 | Set 1 | Question: 2",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If $$P=\\left[\\begin{array}{ll} 1 & 2 \\\\ 3 & 4 \\end{array}\\right]$$ and $$Q=\\left[\\begin{array}{ll} 0 & 1 \\\\ 1 & 0 \\end{array}\\right]$$ then $Q^{T} P^{T}$ is\n",
+      "options": [
+        "$$\\left[\\begin{array}{ll} 1 & 2 \\\\ 3 & 4 \\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{ll} 1 & 3 \\\\ 2 & 4 \\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{ll} 2 & 1 \\\\ 4 & 3 \\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{ll} 2 & 4 \\\\ 1 & 3 \\end{array}\\right]$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{array}{l} \\quad P Q=\\left[\\begin{array}{ll} 1 & 3 \\\\ 2 & 4 \\end{array}\\right]\\left[\\begin{array}{ll} 0 & 1 \\\\ 1 & 0 \\end{array}\\right]=\\left[\\begin{array}{ll} 2 & 4 \\\\ 1 & 3 \\end{array}\\right] \\\\ (P Q)^{\\top}=\\left[\\begin{array}{ll} 2 & 4 \\\\ 1 & 3 \\end{array}\\right] \\end{array}$$\n\nNow using Reversal law\n\n$$Q^{\\top} P^{\\top}=(P Q) T=\\left[\\begin{array}{ll} 2 & 4 \\\\ 1 & 3 \\end{array}\\right]$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q3": {
+      "question_uid": "pp:ce:2021:q3",
+      "exam_uid": "ce:2021:set1:q3",
+      "title": "GATE CE 2021 | Set 1 | Question: 3",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The shape of the cumulative distribution function of Gaussian distribution is",
+      "options": [
+        "Horizontal line",
+        "Straight line at 45 degree angle",
+        "Bell-shaped",
+        "S-shaped"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-8652ebaf8c.webp\" />\n\n$PDF:f(x)=\\frac{1}{\\sigma \\sqrt{2 \\pi}}e^{-(x-\\mu )^2/(2\\sigma ^2)}$\n\n$CDF:F(x)=\\frac{1}{2}\\left [ 1+eff\\left ( \\frac{x-\\mu }{\\sigma \\sqrt{2}} \\right ) \\right ]$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q4": {
+      "question_uid": "pp:ce:2021:q4",
+      "exam_uid": "ce:2021:set1:q4",
+      "title": "GATE CE 2021 | Set 1 | Question: 4",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A propped cantilever beam EF is subjected to a unit moving load as shown in the figure (not to scale). The sign convention for positive shear force at the left and right sides of any section is also shown.<br><img src=\"/question-images/ce/2021/ce-2021-b684d31322.webp\" /><br>The CORRECT qualitative nature of the influence line diagram for shear force at G is\n\n",
+      "options": [
+        "<img src=\"/question-images/ce/2021/ce-2021-87d05819a0.webp\" />",
+        "<img src=\"/question-images/ce/2021/ce-2021-b070336ea6.webp\" />",
+        "<img src=\"/question-images/ce/2021/ce-2021-55b43c33af.webp\" />",
+        "<img src=\"/question-images/ce/2021/ce-2021-ed0562fb84.webp\" />"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Influence Line Diagram and Rolling Loads",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-4440e72fe1.webp\" />\n\nAs per Muller Breslau principle ILD for stress function (shear $-V_{G}$) will be a combination\n\nof curves ($3^{\\circ}$ curves).\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q5": {
+      "question_uid": "pp:ce:2021:q5",
+      "exam_uid": "ce:2021:set1:q5",
+      "title": "GATE CE 2021 | Set 1 | Question: 5",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Gypsum is typically added in cement to",
+      "options": [
+        "prevent quick setting",
+        "enhance hardening",
+        "increase workability",
+        "decrease heat of hydration"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Construction Materials and Management - Construction Materials and Management",
+        "markdown": "The Gypsum is added to cement at the end of grinding clinker it is added to prevent quick setting.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q6": {
+      "question_uid": "pp:ce:2021:q6",
+      "exam_uid": "ce:2021:set1:q6",
+      "title": "GATE CE 2021 | Set 1 | Question: 6",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The direct and indirect costs estimated by a contractor for bidding a project is Rs.160000 and Rs.20000 respectively. If the mark up applied is 10% of the bid price, the quoted price (in Rs.) of the contractor is",
+      "options": [
+        "200000",
+        "198000",
+        "196000",
+        "182000"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Construction Materials and Management - Construction Materials and Management",
+        "markdown": "Direct Costs = 160000\n\nIndirect costs = 20000\n\nMark up applied is 10% of the Bid price\n\nBid price = Direct cost + Indirect cost + Markup\n\nBid price = Direct cost + Indirect cost + $\\frac{10}{100} \\times$ Bid price\n\n$\\text{Bid price}\\left (1-\\frac{10}{100} \\right )=DC+IC$\n\n$\\text{Bid price}=\\frac{160000+20000}{0.9}=2,00,000$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q7": {
+      "question_uid": "pp:ce:2021:q7",
+      "exam_uid": "ce:2021:set1:q7",
+      "title": "GATE CE 2021 | Set 1 | Question: 7",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In an Oedometer apparatus, a specimen of fully saturated clay has been consolidated under a vertical pressure of $50 \\mathrm{kN} / \\mathrm{m}^{2}$ and is presently at equilibrium. The effective stress and pore water pressure immediately on increasing the vertical stress to $150 \\mathrm{kN} / \\mathrm{m}^{2}$, respectively are",
+      "options": [
+        "$150 \\mathrm{kN} / \\mathrm{m}^{2}$ and 0",
+        "$100 \\mathrm{kN} / \\mathrm{m}^{2}$ and $50 \\mathrm{kN} / \\mathrm{m}^{2}$",
+        "$50 \\mathrm{kN} / \\mathrm{m}^{2}$ and $100 \\mathrm{kN} / \\mathrm{m}^{2}$",
+        "0 and $150 \\mathrm{kN} / \\mathrm{m}^{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Effective Stress and Permeability",
+        "markdown": "Stress is increased suddenly, hence entire change will be taken by water $\\Delta \\bar{\\sigma}=\\Delta U=100 \\mathrm{kPa}$.\n\nThere will be no change in effective stress\n\n$\\therefore \\qquad \\qquad\\bar{\\sigma}=50 \\mathrm{kPa}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2021:q8": {
+      "question_uid": "pp:ce:2021:q8",
+      "exam_uid": "ce:2021:set1:q8",
+      "title": "GATE CE 2021 | Set 1 | Question: 8",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A partially-saturated soil sample has natural moisture content of 25% and bulk unit weight of $18.5 \\mathrm{kN} / \\mathrm{m}^{3}$. The specific gravity of soil solids is 2.65 and unit weight of water is $9.81 \\mathrm{kN} / \\mathrm{m}^{3}$. The unit weight of the soil sample on full saturation is",
+      "options": [
+        "$21.12 \\mathrm{kN} / \\mathrm{m}^{3}$",
+        "$19.03 \\mathrm{kN} / \\mathrm{m}^{3}$",
+        "$20.12 \\mathrm{kN} / \\mathrm{m}^{3}$",
+        "$18.50 \\mathrm{kN} / \\mathrm{m}^{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Properties of Soils",
+        "markdown": "$$\\begin{aligned} \\mathrm{w} &=0.25, \\gamma_{\\mathrm{t}}=18.5 \\mathrm{kN} / \\mathrm{m}^{3} \\\\ \\mathrm{G}_{\\mathrm{s}} &=2.65, \\gamma_{\\mathrm{w}}=9.81 \\\\ \\gamma_{\\mathrm{t}} &=\\frac{G_{\\mathrm{S}} \\gamma_{W}(1+w)}{1+e} \\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\mathrm{e} &=\\frac{2.65 \\times 9.81 \\times 1.25}{18.5}-1\\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad e&=0.756\\\\ \\text{At full saturation}, \\quad \\mathrm{S}&=1\\\\ \\Rightarrow \\qquad \\qquad \\qquad \\quad \\gamma_{\\mathrm{sat}}&=\\frac{\\left(G_{\\mathrm{S}}+e\\right) \\gamma_{\\mathrm{W}}}{1+e}\\\\ \\gamma_{\\text {sat }} &=\\frac{(2.65+0.756) \\times 9.81}{1.756} \\\\ &=19.03 \\mathrm{kN} / \\mathrm{m}^{3} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q9": {
+      "question_uid": "pp:ce:2021:q9",
+      "exam_uid": "ce:2021:set1:q9",
+      "title": "GATE CE 2021 | Set 1 | Question: 9",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If water is flowing at the same depth in most hydraulically efficient triangular and rectangular channel sections then the ratio of hydraulic radius of triangular section to that of rectangular section is",
+      "options": [
+        "$\\frac{1}{\\sqrt{2}}$",
+        "$\\sqrt{2}$",
+        "1",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "Efficient channel section\n\n<img src=\"/question-images/ce/2021/ce-2021-1d48eac0f1.webp\" />\n\n$$\\begin{aligned} A & =y^{2} & & A=2 y^{2} \\\\ P & =2 \\sqrt{2} y & P & =4 y \\\\ R_{I} & =\\frac{y}{2 \\sqrt{2}} & R_{I I}&=\\frac{y}{2} \\\\ \\therefore \\qquad \\qquad \\qquad \\frac{R_{I}}{R_{I I}} & =\\frac{1}{\\sqrt{2}} & \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q10": {
+      "question_uid": "pp:ce:2021:q10",
+      "exam_uid": "ce:2021:set1:q10",
+      "title": "GATE CE 2021 | Set 1 | Question: 10",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Kinematic viscosity' is dimensionally represented as",
+      "options": [
+        "$\\frac{M}{LT}$",
+        "$\\frac{M}{L^{2} T}$",
+        "$\\frac{T^{2}}{L}$",
+        "$\\frac{L^{2}}{T}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Dimensional Analysis",
+        "markdown": "Kinematic viscosity\n\n$v=\\frac{\\mu }{\\rho }=\\frac{kg/m\\cdot s}{kg/m^3}=m^2/s$\n\n$[v]=\\frac{m^2}{s }=\\frac{L^2}{T}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q11": {
+      "question_uid": "pp:ce:2021:q11",
+      "exam_uid": "ce:2021:set1:q11",
+      "title": "GATE CE 2021 | Set 1 | Question: 11",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following statements is correct?",
+      "options": [
+        "Pyrolysis is an endothermic process, which takes place in the absence of oxygen",
+        "Pyrolysis is an exothermic process, which takes place in the absence of oxygen",
+        "Combustion is an endothermic process, which takes place in the abundance of oxygen",
+        "Combustion is an exothermic process, which takes place in the absence of oxygen"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "Pyrolysis is an endothermic process as there is a substantial heat input required to\n\nraise the biomass to the reaction temperature.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q12": {
+      "question_uid": "pp:ce:2021:q12",
+      "exam_uid": "ce:2021:set1:q12",
+      "title": "GATE CE 2021 | Set 1 | Question: 12",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following is correct?",
+      "options": [
+        "The partially treated effluent from a food processing industry, containing high concentration of biodegradable organics, is being discharged into a flowing river at a point P. If the rate of degradation of the organics is higher than the rate of aeration, then dissolved oxygen of the river water will be lowest at point P.",
+        "The most important type of species involved in the degradation of organic matter in the case of activated sludge process based wastewater treatment is chemoheterotrophs",
+        "For an effluent sample of a sewage treatment plant, the ratio BOD $5-\\text { day }, 20^{\\circ} C$ upon ultimate BOD is more than 1",
+        "A young lake characterized by low nutrient content and low plant productivity is called eutrophic lake"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-characteristics-of-water",
+          "subtopicLabel": "Quality Characteristics of Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-characteristics-of-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality Characteristics of Water",
+        "markdown": "Chemoheterotrophs are the organisms which generate energy with the help of chemical reactions by consuming organic matter during their metabolism. These are the species which help to degrade the organic matter in ASP.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q13": {
+      "question_uid": "pp:ce:2021:q13",
+      "exam_uid": "ce:2021:set1:q13",
+      "title": "GATE CE 2021 | Set 1 | Question: 13",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The liquid forms of particulate air pollutants are",
+      "options": [
+        "dust and mist",
+        "mist and spray",
+        "smoke and spray",
+        "fly ash and fumes"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "The liquid forms of particulate air pollutants are mist and spray.\n\nNote: Mist is a cloud made of very small drops of water in the air just above the ground which reduces the visibility\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q14": {
+      "question_uid": "pp:ce:2021:q14",
+      "exam_uid": "ce:2021:set1:q14",
+      "title": "GATE CE 2021 | Set 1 | Question: 14",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The shape of the most commonly designed highway vertical curve is",
+      "options": [
+        "circular (single radius)",
+        "circular (multiple radii)",
+        "parabolic",
+        "spiral"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "The ideal vertical curve is a $2^{\\circ}$ parabola.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2021:q15": {
+      "question_uid": "pp:ce:2021:q15",
+      "exam_uid": "ce:2021:set1:q15",
+      "title": "GATE CE 2021 | Set 1 | Question: 15",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A highway designed for 80 km/h speed has a horizontal curve section with radius 250 m. If the design lateral friction is assumed to develop fully, the required super elevation is",
+      "options": [
+        "0.02",
+        "0.05",
+        "0.07",
+        "0.09"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "$$\\begin{aligned} V &=80 \\mathrm{kmph}, R=250 \\mathrm{~m} \\\\ e+f &=\\frac{V^{2}}{127 R} \\\\ e+0.15 &=\\frac{80^{2}}{127 \\times 250} \\\\ e &=0.051 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q16": {
+      "question_uid": "pp:ce:2021:q16",
+      "exam_uid": "ce:2021:set1:q16",
+      "title": "GATE CE 2021 | Set 1 | Question: 16",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which of the following is NOT a correct statement?",
+      "options": [
+        "The first reading from a level station is a 'Fore Sight'",
+        "Basic principle of surveying is to work from whole to parts",
+        "Contours of different elevations may intersect each other in case of an overhanging cliff",
+        "Planimeter is used for measuring 'area'"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geometics-engineering",
+          "subjectLabel": "Geometics Engineering",
+          "subtopicSlug": "levelling-and-contouring",
+          "subtopicLabel": "Levelling and Contouring"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geometics-engineering",
+          "levelling-and-contouring"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geometics Engineering - Levelling and Contouring",
+        "markdown": "First reading from level station is called BS.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q17": {
+      "question_uid": "pp:ce:2021:q17",
+      "exam_uid": "ce:2021:set1:q17",
+      "title": "GATE CE 2021 | Set 1 | Question: 17",
+      "year": "gatece-2021-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Which of the following is/are correct statement(s)?",
+      "options": [
+        "Back Bearing of a line is equal to Fore Bearing $\\pm 180^{\\circ}$",
+        "If the whole circle bearing of a line is $270^{\\circ}$, its reduced bearing is $90^{\\circ} \\mathrm{NW}$",
+        "The boundary of water of a calm water pond will represent contour line",
+        "In the case of fixed hair stadia tachometry, the staff intercept will be larger, when the staff is held nearer to the observation point"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geometics-engineering",
+          "subjectLabel": "Geometics Engineering",
+          "subtopicSlug": "fundamental-concepts-of-surveying",
+          "subtopicLabel": "Fundamental Concepts of Surveying"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geometics-engineering",
+          "fundamental-concepts-of-surveying"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geometics Engineering - Fundamental Concepts of Surveying",
+        "markdown": "The principal of fixed hair tacheometry is that distances are proportional to staff intercept.\n\nAs distance increase, staff intercept also increases.\n\nTherefore, the correct option(s) are **A, B, C**."
+      }
+    },
+    "pp:ce:2021:q18": {
+      "question_uid": "pp:ce:2021:q18",
+      "exam_uid": "ce:2021:set1:q18",
+      "title": "GATE CE 2021 | Set 1 | Question: 18",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Consider the limit:<br>$\\lim _{x \\rightarrow 1}\\left(\\frac{1}{\\ln x}-\\frac{1}{x-1}\\right)$<br>The limit (correct up to one decimal place) is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.5",
+        "tolerance": {
+          "lower": 0.5,
+          "upper": 0.5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\lim _{x \\rightarrow 1}\\left[\\frac{1}{\\ln x}-\\frac{1}{x-1}\\right]=\\lim _{x \\rightarrow 1}\\left[\\frac{(x-1)-\\ln x}{\\ln x(x-1)}\\right]\\left(\\frac{0}{0} \\text { form }\\right)$\n\nSo using L-Hospital's rule twices\n\n$=\\lim _{x \\rightarrow 1}\\left[\\frac{1-\\frac{1}{x}}{\\log x+(x-1)\\left(\\frac{1}{x}\\right)}\\right]=\\lim _{x \\rightarrow 1}\\left(\\frac{1}{2+\\log x}\\right)=0.5$\n\nTherefore, the correct answer is **0.5**."
+      }
+    },
+    "pp:ce:2021:q19": {
+      "question_uid": "pp:ce:2021:q19",
+      "exam_uid": "ce:2021:set1:q19",
+      "title": "GATE CE 2021 | Set 1 | Question: 19",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The volume determined from $\\iiint_{V} 8 x y z d V \\text { for } V=[2,3] \\times[1,2] \\times[0,1]$ will be (in integer) _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "15",
+        "tolerance": {
+          "lower": 15,
+          "upper": 15
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{array}{l} \\begin{aligned} \\text{Given,}\\qquad \\qquad \\qquad V&=[2,3,] \\times[1,2] \\times[0,1] \\text { i.e. } \\\\ 2& \\lt x  \\lt  3,1  \\lt  y  \\lt  2,0  \\lt  z  \\lt  1 \\\\ I&=\\iiint_{V} 8 x y z d V=8 \\iiint_{V} x y z d x d y d z\\\\ So,\\qquad \\qquad \\qquad \\qquad &=8 \\int_{x=2}^{3} x d x \\times \\int_{y=1}^{2} y d y \\times \\int_{z=0}^{1} z d z \\\\ &=8\\left[\\frac{x^{2}}{2}\\right]_{2}^{3}\\left[\\frac{y^{2}}{2}\\right]_{1}^{2}\\left[\\frac{z^{2}}{2}\\right]_{0}^{1} \\\\ &=(9-4)(4-1)(1-0) \\\\ &=5 \\times 3 \\times 1 \\\\ &=15 \\end{aligned} \\end{array}$$\n\nTherefore, the correct answer is **15**."
+      }
+    },
+    "pp:ce:2021:q20": {
+      "question_uid": "pp:ce:2021:q20",
+      "exam_uid": "ce:2021:set1:q20",
+      "title": "GATE CE 2021 | Set 1 | Question: 20",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The state of stress in a deformable body is shown in the figure. Consider transformation of the stress from the x-y coordinate system to the X-Y coordinate system. The angle $\\theta$, locating the X-axis, is assumed to be positive when measured from the x-axis in counter-clockwise direction.<br><br><img src=\"/question-images/ce/2021/ce-2021-28a94f251f.webp\" /><br>The absolute magnitude of the shear stress component $\\sigma_{\\mathrm{xy}}$ (in MPa,round off to one decimal place) in x-y coordinate system is ________________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "96",
+        "tolerance": {
+          "lower": 95,
+          "upper": 97
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "principal-stress-and-principal-strain",
+          "subtopicLabel": "Principal Stress and Principal Strain"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "principal-stress-and-principal-strain"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Principal Stress and Principal Strain",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-9e2596e61f.webp\" />\n\n<img src=\"/question-images/ce/2021/ce-2021-8c847de8a1.webp\" />\n\n$$\\begin{aligned}  \\sigma_{x}^{\\prime}&=\\frac{\\sigma_{x}+\\sigma_{y}}{2}+\\left(\\frac{\\sigma_{x}-\\sigma_{y}}{2}\\right) \\cos 2 \\theta+\\tau_{x y} \\sin 2 \\theta \\\\ \\text { Here } \\theta=60^{\\circ} \\\\ \\sigma_{x}&=40 \\mathrm{MPa}, \\sigma_{y}=35.6, \\sigma_{x}^{\\prime}=120, \\tau_{x^{\\prime} y^{\\prime}}=-50 \\end{aligned}$$\n\nSubstituting the values in above equation, we get\n\n$\\tau_{x y}=96.186 \\mathrm{MPa}$\n\nTherefore, the correct answer is **96** (acceptable range: [95, 97])."
+      }
+    },
+    "pp:ce:2021:q21": {
+      "question_uid": "pp:ce:2021:q21",
+      "exam_uid": "ce:2021:set1:q21",
+      "title": "GATE CE 2021 | Set 1 | Question: 21",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The equation of deformation is derived to be $y=x^{2}-x L$ for a beam shown in the figure.<br><img src=\"/question-images/ce/2021/ce-2021-4f4555ddaf.webp\" /><br>The curvature of the beam at the mid-span (in units, in integer) will be ______________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "deflection-of-beams",
+          "subtopicLabel": "Deflection of Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "deflection-of-beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Deflection of Beams",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-126c8467b4.webp\" />\n\n$\\text { Given, } \\qquad \\qquad y=x^{2}-x l$\n\nCurvature at mid section is $$\\begin{aligned} \\frac{1}{R}&=\\frac{d^{2} y}{d x^{2}}\\\\ \\frac{d y}{d x}&=2 x-l\\\\ \\frac{d^{2} y}{d x^{2}}&=2\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ce:2021:q22": {
+      "question_uid": "pp:ce:2021:q22",
+      "exam_uid": "ce:2021:set1:q22",
+      "title": "GATE CE 2021 | Set 1 | Question: 22",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A truss EFGH is shown in the figure, in which all the members have the same axial rigidity R. In the figure, P is the magnitude of external horizontal forces acting at joints F and G.<br><img src=\"/question-images/ce/2021/ce-2021-60af5a2bbf.webp\" /><br>If $R=500 \\times 10^{3} \\mathrm{kN}$,$P=150 \\mathrm{kN}$ and L=3 m, the magnitude of the horizontal displacement of joint G (in mm,round off to one decimal place) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.9",
+        "tolerance": {
+          "lower": 0.9,
+          "upper": 0.9
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "trusses",
+          "subtopicLabel": "Trusses"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "trusses"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Trusses",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-6bc70520b0.webp\" />\n\n<img src=\"/question-images/ce/2021/ce-2021-d555216816.webp\" />\n\nNote: No need to calculate 'I< force in all members because 'P force is zero fore all members except FG\n\nBy unit load method\n\n$$\\begin{aligned} \\text { 1. } \\Delta_{\\mathrm{HG}}=& \\sum_{i=1}^{n} \\frac{P_{i} k_{i} L_{i}}{A_{i} E_{i}} \\\\ \\Delta_{\\mathrm{HG}}=& \\text { Horizontal deflection at joint } \\mathrm{G} \\\\ \\therefore \\qquad & \\qquad \\qquad\\Delta_{\\mathrm{HG}} =\\underbrace{\\frac{P \\times 1 \\times L}{A E}}_{\\text {FG-member }} \\times \\underbrace{Q^{\\prime}}_{\\text {(For all other members) }} \\\\ & \\qquad \\qquad\\Delta_{\\mathrm{HG}} =\\frac{P L}{A E}=\\left(\\frac{150 \\times 3}{500 \\times 10^{3}} \\times 10^{3}\\right) \\mathrm{mm} \\\\ & \\qquad \\qquad \\qquad=0.90 \\mathrm{~mm} \\end{aligned}$$\n\nTherefore, the correct answer is **0.9**."
+      }
+    },
+    "pp:ce:2021:q23": {
+      "question_uid": "pp:ce:2021:q23",
+      "exam_uid": "ce:2021:set1:q23",
+      "title": "GATE CE 2021 | Set 1 | Question: 23",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The cohesion (c), angle of internal friction $(\\phi)$ and unit weight $(\\gamma)$ of a soil are $15 \\mathrm{kPa}, 20^{\\circ}$\n and $17.5 \\mathrm{kN} / \\mathrm{m}^{3}$, respectively. The maximum depth of unsupported excavation in the soil (in m, round off to two decimal places) is __________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.9",
+        "tolerance": {
+          "lower": 4.8,
+          "upper": 5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shallow-foundation-and-bearing-capacity",
+          "subtopicLabel": "Shallow Foundation and Bearing Capacity"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shallow-foundation-and-bearing-capacity"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
+        "markdown": "Maximum depth of unsupported excavation,\n\n$$\\begin{aligned} H&=\\frac{4 C}{\\gamma_{t} \\sqrt{k_{a}}} \\\\ k_{a}&=\\frac{1-\\sin \\phi}{1+\\sin \\phi}=\\frac{1-\\sin 20^{\\circ}}{1+\\sin 20^{\\circ}}=0.49 \\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad H&=\\frac{4 \\times 15}{17.5 \\sqrt{0.49}}=4.9 \\mathrm{~m} \\end{aligned}$$\n\nTherefore, the correct answer is **4.9** (acceptable range: [4.8, 5])."
+      }
+    },
+    "pp:ce:2021:q24": {
+      "question_uid": "pp:ce:2021:q24",
+      "exam_uid": "ce:2021:set1:q24",
+      "title": "GATE CE 2021 | Set 1 | Question: 24",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Two reservoirs are connected through a homogeneous and isotropic aquifer having hydraulic conductivity (K) of 25 m/day and effective porosity $(\\eta)$ of 0.3 as shown in the figure (not to scale). Ground water is flowing in the aquifer at the steady state.<br><img src=\"/question-images/ce/2021/ce-2021-986f5a17c5.webp\" /><br>If water in Reservoir 1 is contaminated then the time (in days, round off to one decimal place) taken by the contaminated water to reach to Reservoir 2 will be _____________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2400",
+        "tolerance": {
+          "lower": 2400,
+          "upper": 2400
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "precipitation-and-general-aspects-of-hydrology",
+          "subtopicLabel": "Precipitation and General Aspects of Hydrology"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "precipitation-and-general-aspects-of-hydrology"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
+        "markdown": "$$\\begin{aligned} k&=25 \\mathrm{~m} / \\mathrm{d} \\\\ n&=0.3 \\\\ i&=\\frac{20 \\mathrm{~m}}{2000 \\mathrm{~m}}=0.01 \\\\ V&=k i \\\\ V_{s}&=\\frac{V}{n} \\\\ t&=\\frac{l}{V_{s}} \\\\ t&=2400 \\mathrm{days} \\end{aligned}$$\n\nTherefore, the correct answer is **2400**."
+      }
+    },
+    "pp:ce:2021:q25": {
+      "question_uid": "pp:ce:2021:q25",
+      "exam_uid": "ce:2021:set1:q25",
+      "title": "GATE CE 2021 | Set 1 | Question: 25",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A signalized intersection operates in two phases. The lost time is 3 seconds per phase. The maximum ratios of approach flow to saturation flow for the two phases are 0.37 and 0.40. The optimum cycle length using the Webster's method (in seconds, round off to one decimal place) is ______________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "60.9",
+        "tolerance": {
+          "lower": 60.7,
+          "upper": 61.1
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "$$\\begin{aligned} \\mathrm{n} &=2, \\mathrm{~L}=3 \\times 2=6 \\mathrm{sec} \\\\ \\mathrm{y}_{1} &=0.37, \\mathrm{y}_{2}=0.40 \\\\ \\mathrm{Y} &=\\mathrm{y}_{1}+\\mathrm{y}_{2} \\\\ &=0.37+0.40 \\\\ &=0.77 \\\\ \\mathrm{C}_{0} &=\\left(\\frac{1.5 \\mathrm{~L}+5}{1-\\mathrm{Y}}\\right)=\\frac{1.5 \\times 6+5}{1-0.77} \\\\ &=60.87 \\mathrm{sec} \\simeq 60.9 \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **60.9** (acceptable range: [60.7, 61.1])."
+      }
+    },
+    "pp:ce:2021:q26": {
+      "question_uid": "pp:ce:2021:q26",
+      "exam_uid": "ce:2021:set1:q26",
+      "title": "GATE CE 2021 | Set 1 | Question: 26",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The solution of the second-order differential equation $\\frac{d^{2} y}{d x^{2}}+2 \\frac{d y}{d x}+y=0$ with boundary conditions y(0)=1 and y(1)=3 is",
+      "options": [
+        "$e^{-x}+(3 e-1) x e^{-x}$",
+        "$e^{-x}-(3 e-1) x e^{-x}$",
+        "$e^{-x}+\\left[3 e \\sin \\left(\\frac{\\pi x}{2}\\right)-1\\right] x e^{-x}$",
+        "$e^{-x}-\\left[3 e \\sin \\left(\\frac{\\pi x}{2}\\right)-1\\right] x e^{-x}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "Given $$\\begin{aligned} \\left(D^{2}+2 D+1\\right) & y=0 \\\\ & y(0)=1 \\\\ & y(1)=3 \\end{aligned}$$\n\nAuxiliary equation in $m^{2}+2 m+1=0$\n\n$$\\begin{aligned} \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\quad &m=-1,-1\\\\ \\mathrm{CF}&=\\left(C_{1}+C_{2} x\\right) e^{-x}\\\\ \\text { And } \\qquad \\qquad \\qquad \\quad \\mathrm{PI}&=0\\\\ C_{1} \\text { solution is } \\qquad \\quad u y &=C F+P I \\\\ y &=\\left(C_{1}+C_{2} x\\right) e^{-x} \\\\ \\text { Using } y(0)=1, \\qquad C_{1} &=1 \\\\ \\text { Using } y(1)=3, \\qquad C_{2} &=3 e-1 \\\\ \\text { Hence by eq. (i), } \\qquad y &=[1+(3 e-1) x] e^{-x} \\\\ y &=e^{-x}+(3 e-1) x e^{-x} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q27": {
+      "question_uid": "pp:ce:2021:q27",
+      "exam_uid": "ce:2021:set1:q27",
+      "title": "GATE CE 2021 | Set 1 | Question: 27",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The value of $\\int_{0}^{1} e^{x} d x$ using the trapezoidal rule with four equal subintervals is",
+      "options": [
+        "1.718",
+        "1.727",
+        "2.192",
+        "2.718"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "numerical-methods",
+          "subtopicLabel": "Numerical Methods"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "numerical-methods"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Numerical Methods",
+        "markdown": "Let $\\int_{a}^{b}f(x)dx=\\int_{0}^{1}e^x \\; dx \\text{ and }n=4$\n\nThen $a=0,b=1,f(x)=e^x \\text{ and }h=\\frac{b-a}{n}=\\frac{1-0}{4}=0.25$\n\n$$\\begin{array}{|c|c|c|c|c|c|} \\hline x&0&0.25&0.50&0.75&1\\\\ \\hline y=f(x=e^x)&1&1.284&1.649&2.117&2.718\\\\ \\hline \\end{array}$$\n\nThe formula of trapezoidal rule to the given data is given by\n\n$\\int_{a}^{b}f(x)dx\\simeq \\int_{a}^{b}p(x)dx=\\frac{h}{2}\\left \\{ (y_0+y_n)+2(y_1+y_2+y_3) \\right \\}$\n\n$\\int_{0}^{1}e^x \\; dx\\simeq \\int_{0}^{1}p(x)dx=\\frac{0.25}{2}\\left \\{ (1+2.718)+2(1.284+1.640+2.117) \\right \\}$\n\n$\\int_{0}^{1}e^x \\; dx\\simeq \\int_{0}^{1}p(x)dx=\\frac{0.25}{2}\\left \\{ (3.718)+2(5.03) \\right \\}=1.727$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q28": {
+      "question_uid": "pp:ce:2021:q28",
+      "exam_uid": "ce:2021:set1:q28",
+      "title": "GATE CE 2021 | Set 1 | Question: 28",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A 50 mL sample of industrial wastewater is taken into a silica crucible. The empty weight of the crucible is 54.352 g. The crucible with the sample is dried in a hot air oven at 104 $^{\\circ}C$ till a constant weight of 55.129 g. Thereafter, the crucible with the dried sample is fired at 600 $^{\\circ}C$ for 1 h in a muffle furnace, and the weight of the crucible along with residue is determined as 54.783 g. The concentration of total volatile solids is ",
+      "options": [
+        "15540 mg/L",
+        "8620 mg/L",
+        "6920 mg/L",
+        "1700 mg/L"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-and-characteristics-of-waste-water",
+          "subtopicLabel": "Quality and Characteristics of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-and-characteristics-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
+        "markdown": "$$\\begin{aligned} V&= 50 \\; ml\\\\ W_1&=54.352\\; gm \\\\ W_2&=55.129 \\; gm \\\\ W_3&=54.783 \\; gm \\\\ &\\text{Total volatile solids,} \\\\ &=\\frac{W_2-W_3}{V} \\\\ &= \\frac{(55.129-54.783)}{50} \\times 10^6 \\; mg/lit\\\\ &=6920\\; mg/l \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2021:q29": {
+      "question_uid": "pp:ce:2021:q29",
+      "exam_uid": "ce:2021:set1:q29",
+      "title": "GATE CE 2021 | Set 1 | Question: 29",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A wedge M and a block N are subjected to forces P and Q as shown in the figure. If force P is sufficiently large, then the block N can be raised. The weights of the wedge and the block are negligible compared to the forces P and Q. The coefficient of friction $(\\mu)$ along the inclined surface between the wedge and the block is 0.2. All other surfaces are frictionless. The wedge angle is $30^{\\circ}$.<br><img src=\"/question-images/ce/2021/ce-2021-a95b1ac972.webp\" /><br>The limiting force P, in terms of Q, required for impending motion of block N to just move it in the upward direction is given as $P=\\alpha Q$. The value of the coefficient '?' (rounded off to one decimal place) is",
+      "options": [
+        "0.6",
+        "0.5",
+        "$2.0$",
+        "0.9"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "general",
+          "subtopicLabel": "Engineering Mechanics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-mechanics",
+          "general"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mechanics - Engineering Mechanics",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-d4edd7e008.webp\" />\n\n$$\\begin{aligned} \\Sigma Y&=0 \\Rightarrow \\\\ N_{2} \\sin 60^{\\circ}-0.2 N_{2} \\sin &30^{\\circ}-Q=0 \\\\ Q&=0.766 \\mathrm{~N}_{2} \\end{aligned}$$\n\n<img src=\"/question-images/ce/2021/ce-2021-937863130f.webp\" />\n\n$$\\begin{aligned} \\Sigma X &=0 \\\\ \\Rightarrow \\qquad 0.2 N_{2} \\cos 30^{\\circ}+N_{2} \\cos 60^{\\circ}-P &=0\\\\ P &=0.67 N_{2} \\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad P &=0.67 \\times \\frac{Q}{0.766}\\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad P&=0.875 \\mathrm{Q} \\simeq 0.9 Q \\\\ P&=\\alpha Q \\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\alpha&=0.9 \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q30": {
+      "question_uid": "pp:ce:2021:q30",
+      "exam_uid": "ce:2021:set1:q30",
+      "title": "GATE CE 2021 | Set 1 | Question: 30",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Contractor X is developing his bidding strategy against Contractor Y. The ratio of Y's bid price to X's cost for the 30 previous bids in which Contractor X has competed against Contractor Y is given in the Table <br><br> $$\\begin{array}{|l|l|} \\hline \\begin{matrix} \\text{Ratio of Y's bid}\\\\ \\text{price to X's cost } \\end{matrix} & \\text{Number of bids}\\\\ \\hline 1.02 & 6 \\\\ \\hline 1.04 &12\\\\ \\hline 1.06 & 3\\\\ \\hline 1.10 & 6\\\\ \\hline 1.12 & 3\\\\ \\hline \\end{array}$$\n<br><br>     Based on the bidding behaviour of the Contractor Y, the probability of winning against Contractor Y at a mark up of 8% for the next project is",
+      "options": [
+        "0%",
+        "more than 0% but less than 50%",
+        "more than 50% but less than 100%",
+        "100%"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-construction-materials-and-management",
+          "subjectLabel": "Construction Materials and Management",
+          "subtopicSlug": "general",
+          "subtopicLabel": "Construction Materials and Management"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-construction-materials-and-management",
+          "general"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Construction Materials and Management - Construction Materials and Management",
+        "markdown": "$SD(\\sigma )=\\frac{6 \\times (1.02-1.058)^2+ 12 \\times (1.04-1.058)^2 +3 \\times (1.06-1.058)^2 + 6 \\times (1.10-1.058)^2 +3 \\times (1.12-1.058)^2}{30}=0.034$\n\nMarkup is 8%\n\n$Z=\\frac{T-mean}{SD}=\\frac{1.08-1.058}{0.034}=0.647$\n\nBy general understanding of normal distribution table.\n\nCorresponding to Z=0.647 and 8% mark up we get probability of 0.2668=26.68%\n\nWhich is more than 0% bu less tahn 50%.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q31": {
+      "question_uid": "pp:ce:2021:q31",
+      "exam_uid": "ce:2021:set1:q31",
+      "title": "GATE CE 2021 | Set 1 | Question: 31",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Based on drained triaxial shear tests on sands and clays, the representative variations of volumetric strain $(\\Delta V / V)$ with the shear strain $(\\gamma)$ is shown in the figure.<br><img src=\"/question-images/ce/2021/ce-2021-e133a3fda5.webp\" /><br>Choose the CORRECT option regarding the representative behaviour exhibited by Curve P and Curve Q.",
+      "options": [
+        "Curve P represents dense sand and overconsolidated clay, while Curve Q represents loose sand and normally consolidated clay",
+        "Curve P represents dense sand and normally consolidated clay, while Curve Q represents loose sand and overconsolidated clay",
+        "Curve P represents loose sand and overconsolidated clay, while Curve Q represents dense sand and normally consolidated clay",
+        "Curve P represents loose sand and normally consolidated clay, while Curve Q represents dense sand and overconsolidated clay"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shear-strength-of-soil",
+          "subtopicLabel": "Shear Strength of Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shear-strength-of-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-2cbfc08c6f.webp\" />\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q32": {
+      "question_uid": "pp:ce:2021:q32",
+      "exam_uid": "ce:2021:set1:q32",
+      "title": "GATE CE 2021 | Set 1 | Question: 32",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A fluid flowing steadily in a circular pipe of radius R has a velocity that is everywhere parallel to the axis (centerline) of the pipe. The velocity distribution  along the radial direction is $V_r=U\\left ( 1-\\frac{r^2}{R^2} \\right )$, where $r$ is the radial distance as \nmeasured from the pipe axis and $U$ is the maximum velocity at $r=0$. The average velocity of the fluid in the pipe is\n",
+      "options": [
+        "$\\frac{U}{2}$",
+        "$\\frac{U}{3}$",
+        "$\\frac{U}{4}$",
+        "$\\frac{5}{6}U$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "flow-through-pipes",
+          "subtopicLabel": "Flow Through Pipes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "flow-through-pipes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-4ae488a537.webp\" />\n\n$$\\begin{aligned} u&=U\\left ( 1-\\frac{r^2}{R^2} \\right ) \\\\ \\dot{m}&=\\int_{0}^{R} \\rho (2 \\pi r\\; dr)u\\\\ &= 2 \\pi \\rho U\\int_{0}^{R} \\left ( 1-\\frac{r^2}{R^2} \\right ) r\\; dr\\\\ \\rho (\\pi R^2)\\bar{u} &= 2 \\pi \\rho U \\left ( \\frac{R^2}{2}-\\frac{R^4}{R^2 \\times 4} \\right )\\\\ \\bar{u}&= \\frac{U}{2}\\\\ \\bar{u} &= \\text{Mean velocity} \\\\ U&=\\text{Max velocity} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q33": {
+      "question_uid": "pp:ce:2021:q33",
+      "exam_uid": "ce:2021:set1:q33",
+      "title": "GATE CE 2021 | Set 1 | Question: 33",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A water sample is analyzed for coliform organisms by the multiple-tube fermentation method. The results of confirmed test are as follows:<br>$$\\begin{array}{|l|c|c|} \\hline \\text { Sample size (mL) } & \\begin{array}{c} \\text { Number of positive } \\\\ \\text { results out of } 5 \\text { tubes } \\end{array} & \\begin{array}{c} \\text { Number of negative } \\\\ \\text { results out } 5 \\text { tubes } \\end{array} \\\\ \\hline 0.01 & 5 & 0 \\\\ \\hline 0.001 & 3 & 2 \\\\ \\hline 0.0001 & 1 & 4 \\\\ \\hline \\end{array}$$<br>The most probable number (MPN) of coliform organisms for the above results is to be obtained using the following MPN Index.<br><br><img src=\"/question-images/ce/2021/ce-2021-d17d18edac.webp\" /><br>The MPN of coliform organisms per 100 mL is",
+      "options": [
+        "1100000",
+        "110000",
+        "1100",
+        "110"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-characteristics-of-water",
+          "subtopicLabel": "Quality Characteristics of Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-characteristics-of-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality Characteristics of Water",
+        "markdown": "The sample size is 0.01 ml, 0.001 ml and 0.0001 ml which is 1000 times lesser than\n\nthe standard of 10 ml, 1 ml and 0.1 ml.\n\nThe positive set is 5-3-1 and w.r.t. the positive combination,\n\nMPN/100 ml will be 110 x 1000 = 110000\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q34": {
+      "question_uid": "pp:ce:2021:q34",
+      "exam_uid": "ce:2021:set1:q34",
+      "title": "GATE CE 2021 | Set 1 | Question: 34",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Ammonia nitrogen is present in a given wastewater sample as the ammonium ion $\\left(N H_{4}^{+}\\right)$ and ammonia $\\left(N H_{3}\\right)$. If pH is the only deciding factor for the proportion of these two constituents, which of the following is a correct statement?",
+      "options": [
+        "At pH above 9.25, only $\\left(N H_{4}^{+}\\right)$ will be present",
+        "At pH above 9.25, $\\left(N H_{3}\\right)$ will be predominant",
+        "At pH 7.0, $\\left(N H_{4}^{+}\\right)$ and $\\left(N H_{3}\\right)$ will be found in equal measures",
+        "At pH 7.0, $\\left(N H_{4}^{+}\\right)$  will be predominant"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-and-characteristics-of-waste-water",
+          "subtopicLabel": "Quality and Characteristics of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-and-characteristics-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality and Characteristics of Waste Water",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-b14c2d6e61.webp\" />\n\nFrom the above curve, it is evident that at pH 7.0, $\\mathrm{NH}_{4}^{+}$ will be predominant.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q35": {
+      "question_uid": "pp:ce:2021:q35",
+      "exam_uid": "ce:2021:set1:q35",
+      "title": "GATE CE 2021 | Set 1 | Question: 35",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "On a road, the speed - density relationship of a traffic stream is given by u=70 - 0.7k (where speed, u, is in km/h and density, k is in veh/km). At the capacity condition, the average time headway will be",
+      "options": [
+        "0.5s",
+        "1.0s",
+        "1.6s",
+        "2.1s"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "$$\\begin{aligned} \\mathrm{u}&=70-0.07 \\mathrm{k} \\\\ \\mathrm{u}&=70\\left[1-\\frac{\\mathrm{k}}{\\frac{70}{0.7}}\\right]\\\\ V_{f} &=70 \\mathrm{kmph} \\\\ \\mathrm{k}_{\\mathrm{j}} &=\\frac{70}{0.7}=100 \\mathrm{veh} / \\mathrm{km} \\\\ \\mathrm{q}_{\\max } &=\\frac{1}{4} V_{f} k_{j}=\\left(\\frac{1}{4} \\times 70 \\times 100\\right)=1750 \\mathrm{veh} / \\mathrm{hr} \\\\ \\mathrm{q}_{\\max } &=\\frac{3600}{h_{i}} \\\\ 1750 &=\\frac{300}{h_{i}}\\\\ & \\text{Average time headway}\\\\ h_{i}&=\\frac{3600}{1750}=2.057=2.1 \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q36": {
+      "question_uid": "pp:ce:2021:q36",
+      "exam_uid": "ce:2021:set1:q36",
+      "title": "GATE CE 2021 | Set 1 | Question: 36",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The value of abscissa (x) and ordinate (y) of a curve are as follows:<br>$$\\begin{array}{|c|c|} \\hline x & y \\\\ \\hline 2.0 & 5.00 \\\\ \\hline 2.5 & 7.25 \\\\ \\hline 3.0 & 10.00 \\\\ \\hline 3.5 & 13.25 \\\\ \\hline 4.0 & 17.00 \\\\ \\hline \\end{array}$$<br>By Simpson's $1 / 3^{\\mathrm{rd}}$ rule, the area under the curve (round off to two decimal places) is ______________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "20.5",
+        "tolerance": {
+          "lower": 20,
+          "upper": 21
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "d = 0.5 unit\n\n<img src=\"/question-images/ce/2021/ce-2021-e55c39bab6.webp\" />\n\n$$\\begin{aligned} A &=\\frac{d}{3}\\left[\\left(y_{1}+y_{5}\\right)+4\\left(y_{2}+y_{4}\\right)+2 y_{3}\\right] \\\\ &=\\frac{0.5}{3}[(5+17)+4(7.25+13.25)+2 \\times 10] \\\\ &=20.67 \\text { unit }^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **20.5** (acceptable range: [20, 21])."
+      }
+    },
+    "pp:ce:2021:q37": {
+      "question_uid": "pp:ce:2021:q37",
+      "exam_uid": "ce:2021:set1:q37",
+      "title": "GATE CE 2021 | Set 1 | Question: 37",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Vehicular arrival at an isolated intersection follows the Poisson distribution. The mean vehicular arrival rate is 2 vehicle per minute. The probability (round off to two decimal places) that at least 2 vehicles will arrive in any given 1-minute interval is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.59",
+        "tolerance": {
+          "lower": 0.58,
+          "upper": 0.6
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "$P(n,t)=\\frac{(\\lambda t)^n e^{-\\lambda t}}{n!}$\n\n$\\lambda =2 \\;v/m$\n\n$t = 1 \\text{ minute}$\n\nprobability of at least 2 vehicles arriving in 1 ? minute is given by,\n\n$1-(P(0,1)+P(1,1))$\n\n$$\\begin{aligned} &= 1-\\left \\{ \\frac{(2 \\times 1)^0 e^{-2(1)}}{0!}+\\frac{(2 \\times 1)^1 e^{-2(1)}}{1!} \\right \\}\\\\ &=1-\\left \\{ \\frac{1(e^{-2})}{1}+ \\frac{2(e^{-2})}{1} \\right \\} \\\\ &= 1-(e^{-2}+2e^{-2})\\\\ &=1-3e^{-2}=0.59 \\end{aligned}$$\n\nTherefore, the correct answer is **0.59** (acceptable range: [0.58, 0.6])."
+      }
+    },
+    "pp:ce:2021:q38": {
+      "question_uid": "pp:ce:2021:q38",
+      "exam_uid": "ce:2021:set1:q38",
+      "title": "GATE CE 2021 | Set 1 | Question: 38",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Refer the truss as shown in the figure (not to scale).<br><img src=\"/question-images/ce/2021/ce-2021-20174255d3.webp\" /><br>If load, $F=10 \\sqrt{3} \\mathrm{kN}$, moment of inertia, $I=8.33 \\times 10^{6} \\mathrm{~mm}^{4}$, area of cross-section, $A=10^{4} \\mathrm{~mm}^{2}$, and length, L=2 m for all the members of the truss, the compressive stress (in $\\mathrm{kN} / \\mathrm{m}^{2}$,in integer) carried by the member Q-R is _________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "500",
+        "tolerance": {
+          "lower": 490,
+          "upper": 510
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "trusses",
+          "subtopicLabel": "Trusses"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "trusses"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Trusses",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-2cc2da8807.webp\" />\n\n$V_{P}=V_{S}=5 \\sqrt{3} \\mathrm{kN}$\n\nConsidering equilibrium of LHS of section (1 )-(1)\n\n<img src=\"/question-images/ce/2021/ce-2021-a3022f240f.webp\" />\n\nTaking moment about 'T'\n\n$$\\begin{aligned} \\Sigma M_{T}(C W)&=0\\\\ (5 \\sqrt{3} \\times a)+F_{Q R}\\left(\\frac{\\sqrt{3} a}{2}\\right)&=0\\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\quad F_{O A}&=-10 \\mathrm{kN} or 10 \\mathrm{kN} (C) \\\\ \\text{ Compressive} &\\text{ stress in member QR} \\left(\\sigma_{\\mathrm{C}}\\right)\\\\ \\sigma_{\\mathrm{C}}&=\\frac{F_{Q A}}{2 A} \\\\ &=\\frac{10 \\mathrm{kN}}{2 \\times\\left(10^{4} \\times 10^{-6}\\right) \\mathrm{m}^{2}} \\\\ &=500 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **500** (acceptable range: [490, 510])."
+      }
+    },
+    "pp:ce:2021:q39": {
+      "question_uid": "pp:ce:2021:q39",
+      "exam_uid": "ce:2021:set1:q39",
+      "title": "GATE CE 2021 | Set 1 | Question: 39",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A prismatic cantilever prestressed concrete beam of span length, L=1.5 m has one straight tendon placed in the cross-section as shown in the following figure (not to scale). The total prestressing force of 50 kN in the tendon is applied at $d_{c}=50 \\mathrm{~mm}$ from the top in the cross-section of width, b=200 mm and depth, d=300 mm.<br><img src=\"/question-images/ce/2021/ce-2021-e0848ace58.webp\" /><br>If the concentrated load, P=5 kN, the resultant stress (in Mpa,in integer) experienced at point 'Q' will be _________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0",
+        "tolerance": {
+          "lower": 0,
+          "upper": 0
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "prestressed-concrete-beams",
+          "subtopicLabel": "Prestressed Concrete Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "prestressed-concrete-beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Prestressed Concrete Beams",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-1ac9441228.webp\" />\n\n$$\\begin{aligned} \\mathrm{e} &=\\frac{D}{2}-50=\\frac{300}{2}-50=100 \\mathrm{~mm} \\\\ \\mathrm{DL} &=0.2 \\times 0.3 \\times 1.0 \\times 25=1.50 \\mathrm{kN} / \\mathrm{m} \\\\ P &=50 \\mathrm{kN}=50000 \\mathrm{~N} \\\\ W &=5 \\mathrm{kN} \\\\ \\text { Maximum BM } &=\\frac{w^{2}}{2}+\\mathrm{W} \\\\ &=\\frac{1.5 \\times 1.5^{2}}{2}+5 \\times 1.50=9.1875 \\mathrm{kNm} \\end{aligned}$$\n\n<img src=\"/question-images/ce/2021/ce-2021-380d5106f5.webp\" />\n\n$$\\begin{aligned} \\frac{P}{A}&=\\frac{50000}{200 \\times 300}=0.833 \\mathrm{~N} / \\mathrm{mm}^{2} \\\\ \\frac{P e}{Z}&=\\frac{50000 \\times 100}{200 \\times \\frac{300^{2}}{6}}=1.67 \\mathrm{~N} / \\mathrm{mm}^{2} \\\\ \\frac{M}{Z}&=\\frac{9.1875 \\times 10^{6}}{200 \\times \\frac{300^{2}}{6}}=3.0625 \\mathrm{~N} / \\mathrm{mm}^{2}\\\\ \\text{Stress at Q,}\\qquad \\qquad\\\\ \\text { Stress at } Q &=\\frac{P}{A}+\\frac{P e}{Z}-\\frac{M}{Z} \\\\ &=0.833+1.67-3.0625 \\\\ &=-0.56 \\mathrm{~N} / \\mathrm{mm}^{2} \\text { (Tensile) } \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+      }
+    },
+    "pp:ce:2021:q40": {
+      "question_uid": "pp:ce:2021:q40",
+      "exam_uid": "ce:2021:set1:q40",
+      "title": "GATE CE 2021 | Set 1 | Question: 40",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A column is subjected to a total load (P) of 60 kN supported through a bracket connection, as shown in the figure (not to scale).<br><img src=\"/question-images/ce/2021/ce-2021-9ab88dc952.webp\" /><br>The resultant force in bolt R (in kN,round off to one decimal place) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "28",
+        "tolerance": {
+          "lower": 27,
+          "upper": 29
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "structural-fasteners",
+          "subtopicLabel": "Structural Fasteners"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-design-of-steel-structures",
+          "structural-fasteners"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Structural Fasteners",
+        "markdown": "$$\\begin{aligned} F_{1}&=\\frac{P}{n}=\\frac{60}{6}=10 \\mathrm{kN}\\\\ F_{2}&=\\frac{P \\cdot e}{\\sum r_{i}^{2}} \\times r_{R}=\\frac{60 \\times 100\\mathrm{~mm}}{4 \\times 50^{2}+2 \\times 40^{2}} \\times 40\\\\ F_{2}&=\\frac{60 \\times 100 \\times 40}{10000+3200}=\\frac{60 \\times 100 \\times 40}{13200}=\\frac{200}{11} \\mathrm{kN}\\\\ F_{R}&=F_{1}+F_{2}\\\\ &=10+\\frac{200}{11}=\\frac{310}{11}=28.2 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **28** (acceptable range: [27, 29])."
+      }
+    },
+    "pp:ce:2021:q41": {
+      "question_uid": "pp:ce:2021:q41",
+      "exam_uid": "ce:2021:set1:q41",
+      "title": "GATE CE 2021 | Set 1 | Question: 41",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Employ stiffness matrix approach for the simply supported beam as shown in the figure to calculate unknown displacements/rotations. Take length, L=8 m; modulus of elasticity, $E=3 \\times 10^{4} \\mathrm{~N} / \\mathrm{mm}^{2}$; moment of inertia, $I=225 \\times 10^{6} \\mathrm{mm}^{4}$.<br><img src=\"/question-images/ce/2021/ce-2021-e392f02065.webp\" /><br>The mid-span deflection of the beam (in mm,round off to integer) under P=100 kN in downward direction will be ___________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "115",
+        "tolerance": {
+          "lower": 100,
+          "upper": 130
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-structural-analysis",
+          "subjectLabel": "Structural Analysis",
+          "subtopicSlug": "matrix-method-of-structural-analysis",
+          "subtopicLabel": "Matrix Method of Structural Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-structural-analysis",
+          "matrix-method-of-structural-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Structural Analysis - Matrix Method of Structural Analysis",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-0bf79b3d79.webp\" />\n\nBy stiffness matrix method\n\nStep-1 : Generation of stiffness matrix\n\nColumn-1\n\n<img src=\"/question-images/ce/2021/ce-2021-d5108cbcec.webp\" />\n\n$$\\begin{aligned} \\mathrm{k}_{11}&=\\frac{3 E(2 I)}{(L / 2)^{3}}+\\frac{3 E(I)}{(L / 2)^{3}}=\\frac{72 \\mathrm{E} I}{L^{3}}\\\\ k_{21}&=-\\frac{3 E(2 I)}{(L / 2)^{2}}+\\frac{3 E(I)}{(L / 2)^{2}}=-\\frac{12 E I}{L^{2}} \\end{aligned}$$\n\nColumn-2\n\n<img src=\"/question-images/ce/2021/ce-2021-b1c2807377.webp\" />\n\n$$\\begin{aligned} k_{22}&=\\frac{3 E(2 I)}{(L / 2)}+\\frac{3 E(I)}{(L / 2)}=18 \\frac{E I}{L} \\\\ \\text { Stiffness matrix }[k]&=\\left[\\begin{array}{cc} 72 \\frac{E I}{L^{3}} & -\\frac{12 E I}{L^{2}} \\\\ -\\frac{12 E I}{L^{2}} & \\frac{E I}{L} \\end{array}\\right] \\end{aligned}$$\n\nStep-2: Calculation of unknown Nodal displacements $\\left(\\Delta_{\\mathrm{B}}, \\theta_{\\mathrm{B}}\\right)$\n\n$$\\begin{aligned} \\text{Using} \\qquad \\qquad \\qquad \\qquad [P]&=[k][\\Delta]\\\\ \\Rightarrow \\qquad \\qquad \\qquad \\qquad \\qquad \\quad & \\quad\\left[\\begin{array}{l} P \\\\ O \\end{array}\\right]=\\left[\\begin{array}{cc} \\frac{72 E I}{L^{2}} & -\\frac{12 E I}{L^{2}} \\\\ -\\frac{12 E I}{L^{2}} & \\frac{8 E I}{L} \\end{array}\\right]\\left[\\begin{array}{l} \\Delta_{B} \\\\ \\theta_{B} \\end{array}\\right]\\\\ \\text{On solving} \\qquad \\qquad \\qquad \\quad\\\\\\Delta_{\\mathrm{B}}&=\\frac{P L^{3}}{64 E I}(\\downarrow) \\\\ \\therefore \\qquad \\qquad \\qquad \\qquad \\qquad \\theta_{\\mathrm{B}}&=\\frac{P L^{2}}{96 E I}(\\mathrm{CW}) \\\\ \\Delta_{\\mathrm{B}}&=\\frac{\\left(100 \\times 10^{3}\\right) \\times(8000)^{3}}{64 \\times 3 \\times 10^{4} \\times 225 \\times 10^{6}}\\\\ &=118.519 \\mathrm{~mm} \\simeq 119 \\mathrm{~mm} \\end{aligned}$$\n\nTherefore, the correct answer is **115** (acceptable range: [100, 130])."
+      }
+    },
+    "pp:ce:2021:q42": {
+      "question_uid": "pp:ce:2021:q42",
+      "exam_uid": "ce:2021:set1:q42",
+      "title": "GATE CE 2021 | Set 1 | Question: 42",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A square plate O-P-Q-R of a linear elastic material with sides 1.0 m is loaded in a state of plane stress. Under a given stress condition, the plate deforms to a new configuration O-P'-Q'-R' as shown in the figure (not to scale). Under the given deformation, the edges of the plate remain straight.<br><img src=\"/question-images/ce/2021/ce-2021-9ceb4b44f8.webp\" /><br>The horizontal displacement of the point (0.5 m, 0.5 m) in the plate O-P-Q-R (in mm,round off to one decimal place) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.5",
+        "tolerance": {
+          "lower": 2.4,
+          "upper": 2.6
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "properties-of-metals-stress-and-strain",
+          "subtopicLabel": "Properties of Metals, Stress and Strain"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "properties-of-metals-stress-and-strain"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Properties of Metals, Stress and Strain",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-0ae134e5d7.webp\" />\n\nSo horizontal displacement of the point (0.5 m, 0.5 m)\n\n$=-2.5 \\mathrm{~mm}+5 \\mathrm{~mm}=2.5 \\mathrm{~mm}$\n\nTherefore, the correct answer is **2.5** (acceptable range: [2.4, 2.6])."
+      }
+    },
+    "pp:ce:2021:q43": {
+      "question_uid": "pp:ce:2021:q43",
+      "exam_uid": "ce:2021:set1:q43",
+      "title": "GATE CE 2021 | Set 1 | Question: 43",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A small project has 12 activities - N, P, Q, R, S, T, U, V, W, X, Y, and Z. The relationship among these activities and the duration of these activities are given in the Table.<br>$$\\begin{array}{|c|c|c|} \\hline \\text { Activity } & \\begin{array}{c} \\text { Duration } \\\\ \\text { (in weeks) } \\end{array} & \\begin{array}{c} \\text { Depends } \\\\ \\text { upon } \\end{array} \\\\ \\hline N & 2 & - \\\\ \\hline \\mathrm{P} & 5 & \\mathrm{~N} \\\\ \\hline \\mathrm{Q} & 3 & \\mathrm{~N} \\\\ \\hline \\mathrm{R} & 4 & \\mathrm{P} \\\\ \\hline \\mathrm{S} & 5 & \\mathrm{Q} \\\\ \\hline \\mathrm{T} & 8 & \\mathrm{R} \\\\ \\hline \\mathrm{U} & 7 & \\mathrm{R}, \\mathrm{S} \\\\ \\hline \\mathrm{V} & 2 & \\mathrm{U} \\\\ \\hline \\mathrm{W} & 3 & \\mathrm{U} \\\\ \\hline \\mathrm{X} & 5 & \\mathrm{~T}, \\mathrm{~V} \\\\ \\hline \\mathrm{Y} & 1 & \\mathrm{~W} \\\\ \\hline \\mathrm{Z} & 3 & \\mathrm{X}, \\mathrm{Y} \\\\ \\hline \\end{array}$$<br>The total float of the activity 'V' (in weeks, in integer) is _________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0",
+        "tolerance": {
+          "lower": 0,
+          "upper": 0
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-construction-materials-and-management",
+          "subjectLabel": "Construction Materials and Management",
+          "subtopicSlug": "general",
+          "subtopicLabel": "Construction Materials and Management"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-construction-materials-and-management",
+          "general"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Construction Materials and Management - Construction Materials and Management",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-a6705d5f3d.webp\" />\n\n$$\\begin{aligned} F_{T_{V}} &=T_{L_{j}}-T_{E_{i}}-t_{i_{j}} \\\\ &=20-18-2 \\\\ &=0 \\end{aligned}$$\n\nTherefore, the correct answer is **0**."
+      }
+    },
+    "pp:ce:2021:q44": {
+      "question_uid": "pp:ce:2021:q44",
+      "exam_uid": "ce:2021:set1:q44",
+      "title": "GATE CE 2021 | Set 1 | Question: 44",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The soil profile at a construction site is shown in the figure (not to scale). Ground water table (GWT) is at 5 m below the ground level at present. An old well data shows that the ground water table was as low as 10 m below the ground level in the past. Take unit weight of water, $\\gamma_{W}=9.81 \\mathrm{kN} / \\mathrm{m}^{3}$.<br><img src=\"/question-images/ce/2021/ce-2021-852840cb7f.webp\" /><br>The overconsolidation ratio (OCR)(round off to two decimal places) at the mid-point of the clay layer is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.22",
+        "tolerance": {
+          "lower": 1.18,
+          "upper": 1.26
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "consolidation-of-soils",
+          "subtopicLabel": "Consolidation of Soils"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "consolidation-of-soils"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Consolidation of Soils",
+        "markdown": "$$\\begin{aligned} \\mathrm{OCR} &=\\frac{\\bar{\\sigma}_{c}}{\\bar{\\sigma}_{0}} \\\\ \\bar{\\sigma}_{c} &=\\text { Preconsolidation stress } \\\\ \\bar{\\sigma}_{0} &=\\text { Present effective stress } \\\\ \\bar{\\sigma}_{c} &=17.5 \\times 10+(18.5-9.81) \\times 5+(17-9.81) \\times 4 \\\\ &=247.21 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\bar{\\sigma}_{0} &=17.5 \\times 5+(18.5-9.81) \\times 10+(17-9.81) \\times 4 \\\\ &=203.16 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\mathrm{OCR} &=\\frac{247.21}{203.16}=1.22 \\end{aligned}$$\n\nTherefore, the correct answer is **1.22** (acceptable range: [1.18, 1.26])."
+      }
+    },
+    "pp:ce:2021:q45": {
+      "question_uid": "pp:ce:2021:q45",
+      "exam_uid": "ce:2021:set1:q45",
+      "title": "GATE CE 2021 | Set 1 | Question: 45",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A retaining wall of height 10 m with clay backfill is shown in the figure (not to scale). Weight of the retaining wall is 5000 kN per m acting at 3.3 m from the toe of the retaining wall. The interface friction angle between base of the retaining wall and the base soil is $20^{\\circ}$. The depth of clay in front of the retaining wall is 2.0 m. The properties of the clay backfill and the clay placed in front of the retaining wall are the same. Assume that the tension crack is filled with water. Use Rankine's earth pressure theory. Take unit weight of water, $\\gamma_{w}=9.81 \\mathrm{kN} / \\mathrm{m}^{3}$.<br><img src=\"/question-images/ce/2021/ce-2021-7946b3df00.webp\" /><br>The factor of safety (round off to two decimal places) against sliding failure of the retaining wall after ignoring the passive earth pressure will be ________________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.275",
+        "tolerance": {
+          "lower": 4.2,
+          "upper": 4.35
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "retaining-wall-earth-pressure-theories",
+          "subtopicLabel": "Retaining Wall-Earth Pressure Theories"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "retaining-wall-earth-pressure-theories"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Retaining Wall-Earth Pressure Theories",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-8ba16ffa13.webp\" />\n\nDepth of tension crack,\n\n$$\\begin{aligned} Z_{C}&=\\frac{2 C}{\\gamma }  \\text {  If } \\phi=0 \\\\ &=\\frac{2 \\times 30}{17.2 }=3.488 \\mathrm{~m} \\end{aligned}$$\n\nTension crack develops only in the back fill (clay)\n\nThe tension crack will not develop in the clay which is infront of the wall.\n\nThe total active thrust on the wall, due to the backfill, and the water in the tension crack\n\n$F_a=k_a\\cdot \\frac{\\gamma H^2}{2}-2C\\sqrt{k_a}\\cdot H+\\frac{2C^2}{\\gamma }+\\frac{\\gamma _wz_c^2}{2}$\n\n$k_a=1 \\text{ since }\\phi =0$\n\n$F_a=1 \\times \\frac{17.2 \\times 10^2}{2}-2 \\times 30\\sqrt{1} \\times 10+\\frac{2 \\times 30^2}{17.2 }+\\frac{9.81 \\times 3.488^2}{2}=424.326 \\; kN$\n\nFactor of safety against sliding neglecting passive earth pressure on front side, $F_s$\n\n$F_s=\\frac{\\mu \\cdot W}{F_a}$\n\n$\\mu =$ coefficient of friction at base $= \\tan \\delta$\n\n$F_s=\\frac{\\tan \\delta \\cdot W}{F_a}=\\frac{\\tan 20^{\\circ} \\times 5000}{424.326}=4.2888\\approx 4.29$\n\nTherefore, the correct answer is **4.275** (acceptable range: [4.2, 4.35])."
+      }
+    },
+    "pp:ce:2021:q46": {
+      "question_uid": "pp:ce:2021:q46",
+      "exam_uid": "ce:2021:set1:q46",
+      "title": "GATE CE 2021 | Set 1 | Question: 46",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A combined trapezoidal footing of length L supports two identical square columns  ($P_{1}$ and $P_{2}$) of size 0.5m x 0.5m, as shown in the figure. The columns $P_{1}$ and $P_{2}$ carry loads of 2000 kN and 1500 kN, respectively.<br><img src=\"/question-images/ce/2021/ce-2021-11cc305f8b.webp\" /><br>If the stress beneath the footing is uniform, the length of the combined footing L (in m,round off to two decimal places) is _____",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5.8",
+        "tolerance": {
+          "lower": 5.7,
+          "upper": 5.9
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "footing-columns-beams-and-slabs",
+          "subtopicLabel": "Footing, Columns, Beams and Slabs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "footing-columns-beams-and-slabs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
+        "markdown": "C.G. of load from $P_{1}$\n\n<img src=\"/question-images/ce/2021/ce-2021-c41c2fd45c.webp\" />\n\n$$\\begin{aligned} P_{R} \\bar{x} &=P_{1} \\times 0+P_{2} \\times 5 \\\\ \\bar{x} &=\\frac{1500 \\times 5}{3500}=2.143 \\mathrm{~m} \\end{aligned}$$\n\nDistance of C.G. of footing from face of $P_{1}$\n\n$\\bar{y}=\\bar{x}+0.25=2.393 \\mathrm{~m}$\n\n<img src=\"/question-images/ce/2021/ce-2021-a5508e2ea7.webp\" />\n\nC.G of footing $$\\begin{aligned} \\bar{y} &=\\left(\\frac{B_{1}+2 B_{2}}{B_{1}+B_{2}}\\right) \\times \\frac{L}{3} \\\\ 2.393 &=\\left(\\frac{5+2 \\times 1.5}{5+1.5}\\right) \\times \\frac{L}{3} \\\\ L &=5.833 \\mathrm{~m} \\text { say } 5.83 \\mathrm{~m} \\end{aligned}$$\n\nTherefore, the correct answer is **5.8** (acceptable range: [5.7, 5.9])."
+      }
+    },
+    "pp:ce:2021:q47": {
+      "question_uid": "pp:ce:2021:q47",
+      "exam_uid": "ce:2021:set1:q47",
+      "title": "GATE CE 2021 | Set 1 | Question: 47",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An unsupported slope of height 15 m is shown in the figure (not to scale), in which the slope face makes an angle $50^{\\circ}$ with the horizontal. The slope material comprises purely cohesive soil having undrained cohesion 75 kPa. A trial slip circle KLM, with a radius 25 m, passes through the crest and toe of the slope and it subtends an  angle $60^{\\circ}$ at its center O. The weight of the active soil mass (W, bounded by KLMN) is 2500 kN/m, which is acting at a horizontal distance of 10 m from the toe of the slope. Consider the water table to be present at a very large depth from the ground surface.<br><img src=\"/question-images/ce/2021/ce-2021-9031ce906a.webp\" /><br>Considering the trail slip circle KLM, the factor of the safety against the failure of slope under undrained condition (round off to two decimal places) is ___________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.96",
+        "tolerance": {
+          "lower": 1.94,
+          "upper": 1.98
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "stability-analysis-of-slopes",
+          "subtopicLabel": "Stability Analysis of Slopes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "stability-analysis-of-slopes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Stability Analysis of Slopes",
+        "markdown": "$$\\begin{aligned} &\\begin{aligned} \\mathrm{FOS} &=\\frac{\\text { Resisting moment }}{\\text { Actuating moment }} \\\\ \\mathrm{FOS} &=\\frac{\\mathrm{C}_{\\mathrm{u}} l R}{w \\bar{x}} \\\\ l &=\\text { Length of ac } \\mathrm{KLM} \\\\ \\bar{x} &=\\text { Distance of ' } \\mathrm{w}^{\\prime} \\text { from toe } \\\\ \\Rightarrow \\qquad \\qquad \\quad \\mathrm{FOS} &=\\frac{75 \\times 2 \\pi \\times 25 \\times \\frac{60}{36} \\times 25}{2500 \\times 10} \\\\ \\Rightarrow \\qquad \\qquad \\quad \\mathrm{FOS} &=1.96 \\end{aligned} \\end{aligned}$$\n\nTherefore, the correct answer is **1.96** (acceptable range: [1.94, 1.98])."
+      }
+    },
+    "pp:ce:2021:q48": {
+      "question_uid": "pp:ce:2021:q48",
+      "exam_uid": "ce:2021:set1:q48",
+      "title": "GATE CE 2021 | Set 1 | Question: 48",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An unlined canal under regime conditions along with a silt factor of 1 has a width of flow 71.25m. Assuming the unlined canal as a wide channel, the corresponding average depth of flow (in m, round off to two decimal places) in the canal will be ______________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.875",
+        "tolerance": {
+          "lower": 2.8,
+          "upper": 2.95
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-irrigation-engineering",
+          "subjectLabel": "Irrigation Engineering",
+          "subtopicSlug": "design-of-stable-channels",
+          "subtopicLabel": "Design of Stable Channels"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-irrigation-engineering",
+          "design-of-stable-channels"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Irrigation Engineering - Design of Stable Channels",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-ef612938d7.webp\" />\n\nR = D (for wide rectangular channel)\n\n$$\\begin{aligned} &\\begin{aligned} A f^{2} &=140\\left(\\frac{2}{5} f R\\right)^{5 / 2} \\\\ (B D) f^{2} &=140\\left(\\frac{2}{5} f \\times D\\right)^{5 / 2} \\\\ (71.25 \\times D) \\times 1 &=140\\left(\\frac{2}{5} \\times 1 \\times D\\right)^{5 / 2} \\\\ D \\times 0.5089 &=\\left(\\frac{2}{5}\\right)^{5 / 2} \\times(D)^{5 / 2} \\\\ D^{3 / 2} &=5.029 \\\\ \\text { or } \\qquad \\qquad \\qquad \\qquad D &=2.94 \\mathrm{~m} \\end{aligned} \\end{aligned}$$\n\nTherefore, the correct answer is **2.875** (acceptable range: [2.8, 2.95])."
+      }
+    },
+    "pp:ce:2021:q49": {
+      "question_uid": "pp:ce:2021:q49",
+      "exam_uid": "ce:2021:set1:q49",
+      "title": "GATE CE 2021 | Set 1 | Question: 49",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A cylinder (2.0 m diameter, 3.0 m long and 25 kN weight) is acted upon by water on one side and oil (specific gravity=0.8) on other side as shown in the figure.<br><img src=\"/question-images/ce/2021/ce-2021-4e672db5cf.webp\" /><br>The absolute  ratio of the net magnitude of vertical forces to the net  magnitude of horizontal forces (round off to two decimal places) is _____________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.375",
+        "tolerance": {
+          "lower": 0.35,
+          "upper": 0.4
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "buoyancy-and-floatation",
+          "subtopicLabel": "Buoyancy and Floatation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "buoyancy-and-floatation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Buoyancy and Floatation",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-e052cc0406.webp\" />\n\nNet horizontal force $\\left(F_{H}\\right)$ due to liquids\n\n$$\\begin{aligned} F_{H} &=F_{H 1}-F_{H 2} \\\\ &=\\rho_{w} g \\bar{h}_{1} A_{v_{1}}-\\rho_{\\mathrm{oil}} g \\bar{h}_{2} A_{v_{2}} \\\\ &=\\left(10^{3}\\right)(9.81)\\left(1+\\frac{2}{2}\\right)(2 \\times 3)-(800)(9.81)\\left(\\frac{1}{2}\\right)(1 \\times 3) \\\\ F_{H} &=105.948 \\mathrm{kN}(\\rightarrow) \\end{aligned}$$\n\nNet vertical force  $\\left(F_{v}\\right)$ due to liquids\n\n$$\\begin{aligned} F_{v} &=F_{1}+F_{2} \\\\ &=\\rho_{w} g \\forall_{1}+\\rho_{o i l} g \\forall_{2} \\\\ &=\\left(10^{3}\\right)(9.81)\\left(\\frac{\\pi(1)^{2} \\times 3}{2}\\right)+(800)(9.81)\\left(\\frac{\\pi}{4}(1)^{2} \\times 3\\right) \\\\ &=64.7199 \\mathrm{kN}(\\uparrow) \\\\ \\frac{F_{V}}{F_{H}} &=\\frac{64.7199}{105.948}=0.61 \\end{aligned}$$\n\nTherefore, the correct answer is **0.375** (acceptable range: [0.35, 0.4])."
+      }
+    },
+    "pp:ce:2021:q50": {
+      "question_uid": "pp:ce:2021:q50",
+      "exam_uid": "ce:2021:set1:q50",
+      "title": "GATE CE 2021 | Set 1 | Question: 50",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A tube-well of 20 cm diameter fully penetrates a horizontal, homogeneous and isotropic confined aquifer of infinite horizontal extent. The aquifer is of 30 m uniform thickness. A steady pumping at the rate of 40 litres/s from the well for a long time results in a steady drawdown of 4 m at the well face. The subsurface flow to the well due to pumping is steady, horizontal and Darcian and the radius of influence of the well is 245 m. The hydraulic conductivity of the aquifer (in m/day,round off to integer) is ______________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "36",
+        "tolerance": {
+          "lower": 34,
+          "upper": 38
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "precipitation-and-general-aspects-of-hydrology",
+          "subtopicLabel": "Precipitation and General Aspects of Hydrology"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "precipitation-and-general-aspects-of-hydrology"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Precipitation and General Aspects of Hydrology",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-44436dadfd.webp\" />\n\n$$\\begin{aligned} 40 \\times 10^{-3} \\mathrm{~m}^{3} / \\mathrm{s} &=\\frac{2 \\pi k \\times 30 \\mathrm{~m} \\times 4 \\mathrm{~m}}{\\ln \\left(\\frac{245}{0.1}\\right)} \\\\ k &=4.14 \\times 10^{-4} \\mathrm{~m} / \\mathrm{s} \\\\ \\text{or, } \\qquad \\qquad \\qquad \\qquad k &=35.77 \\mathrm{~m} / \\mathrm{d} \\\\ &\\approx 36 \\mathrm{~m} / \\mathrm{d} (\\text{ round off to nearest integer}) \\end{aligned}$$\n\nTherefore, the correct answer is **36** (acceptable range: [34, 38])."
+      }
+    },
+    "pp:ce:2021:q51": {
+      "question_uid": "pp:ce:2021:q51",
+      "exam_uid": "ce:2021:set1:q51",
+      "title": "GATE CE 2021 | Set 1 | Question: 51",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A baghouse filter has to treat $12 \\mathrm{~m}^{3} / \\mathrm{s}$ of waste gas continuously. The baghouse is to be divided into 5 sections of equal cloth area such that one section can be shut down for cleaning and/or repairing, while the other 4 sections continue to operate. An air-to-cloth ratio of $6.0 \\mathrm{~m}^{3} / \\mathrm{min}-\\mathrm{m}^{2}$ cloth will provide sufficient treatment to the gas. The individual bags are of 32 cm in diameter and 5 m in length. The total number of bags (in integer) required in the baghouse is ________________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "30",
+        "tolerance": {
+          "lower": 30,
+          "upper": 30
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "Given, discharge to be passed = $12 \\mathrm{~m}^{3} / \\mathrm{s}$\n\nOut of 5 sections, 4 will operate at a time.\n\nEach bag is\n\n<img src=\"/question-images/ce/2021/ce-2021-d224b51841.webp\" />\n\nThus, surface area of each bag $=\\pi \\times 0.32 \\times 5 \\mathrm{~m}^{2}=5.0265 \\mathrm{~m}^{2}$\n\nTotal surface area required wr.t. given discharge\n\n$=\\frac{12 \\mathrm{~m}^{3} / \\mathrm{s}}{6 \\mathrm{~m}^{3} / \\mathrm{min}-\\mathrm{m}^{2}}=\\frac{12 \\mathrm{~m}^{3} / \\mathrm{s}}{\\frac{6}{60} \\mathrm{~m}^{3} / \\mathrm{s}-\\mathrm{m}^{2}}=120 \\mathrm{~m}^{2}$\n\n$\\therefore$\n\nWorking bag filters required $=\\frac{120 m^{2}}{5.0265 m^{2}}=$ 23.87 or 24 bag filters\n\nBut, since it is asked total (which includes a standby set also), then,Total no. of bag filters $=24 \\times \\frac{5}{4}=30$\n\nTherefore, the correct answer is **30**."
+      }
+    },
+    "pp:ce:2021:q52": {
+      "question_uid": "pp:ce:2021:q52",
+      "exam_uid": "ce:2021:set1:q52",
+      "title": "GATE CE 2021 | Set 1 | Question: 52",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A secondary clarifier handles a total flow of $9600 \\mathrm{~m}^{3} / \\mathrm{d}$ from the aeration tank of a conventional activated-sludge treatment system. The concentration of solids in the flow from the aeration tank is 3000 mg/L. The clarifier is required to thicken the solids to 12000 mg/L, and hence it is to be designed for a solid flux of $3.2 \\frac{\\mathrm{kg}}{\\mathrm{m}^{2} \\cdot \\mathrm{h}}$. The surface area of the designed clarifier for thickening (in $\\mathrm{~m}^{2}$, in integer) is _________________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "375",
+        "tolerance": {
+          "lower": 375,
+          "upper": 375
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "treatment-of-waste-water",
+          "subtopicLabel": "Treatment of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "treatment-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Treatment of Waste Water",
+        "markdown": "$$\\begin{aligned} Q &=9600 \\mathrm{~m}^{3} / \\mathrm{d} \\\\ X &=3000 \\mathrm{mg} / l \\\\ X_{u} &=12000 \\mathrm{mg} / l \\\\ \\text {Solid flux }& =3.2 \\mathrm{~kg} / \\mathrm{m}^{2}-\\mathrm{h}\\\\ \\text{Surface area,}  \\qquad \\mathrm{A}&=\\frac{\\text { Total quantity of solids entering }}{\\text { Solid flux }}\\\\ A &=\\frac{9600 \\mathrm{~m}^{3} / \\mathrm{d} \\times 3000 \\mathrm{mg} / l}{3.2 \\times 10^{6} \\mathrm{mg} / \\mathrm{m}^{2}-\\mathrm{h}} \\\\ &=\\frac{9600 \\times 10^{3} \\mathrm{lld} \\times 3000 \\mathrm{mg} / \\mathrm{l}}{3.2 \\times 10^{6} \\mathrm{mg} / \\mathrm{m}^{2}-\\mathrm{h} \\times 24 \\mathrm{~h} / \\mathrm{d}} \\\\ &=375 \\mathrm{~m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **375**."
+      }
+    },
+    "pp:ce:2021:q53": {
+      "question_uid": "pp:ce:2021:q53",
+      "exam_uid": "ce:2021:set1:q53",
+      "title": "GATE CE 2021 | Set 1 | Question: 53",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Spot speeds of vehicles observed at a point on a highway are 40, 55, 60, 65 and 80 km/h. The space-mean speed (in km/h, round off to two decimal places) of the observed vehicles is ______________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "57",
+        "tolerance": {
+          "lower": 55.5,
+          "upper": 58.5
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "$$\\begin{aligned} V_{1}=40, V_{2}=55, V_{3}=60, & V_{4}=65, V_{5}=80 \\\\ V_{S}=&\\left(\\frac{n}{\\frac{1}{V_{1}}+\\frac{1}{V_{2}}+\\ldots+\\frac{1}{V_{n}}}\\right)=\\frac{1}{40}+\\frac{1}{55}+\\frac{1}{60}+\\frac{1}{65}+\\frac{1}{80} \\\\ =& 56.99 \\mathrm{kmph} \\end{aligned}$$\n\nTherefore, the correct answer is **57** (acceptable range: [55.5, 58.5])."
+      }
+    },
+    "pp:ce:2021:q54": {
+      "question_uid": "pp:ce:2021:q54",
+      "exam_uid": "ce:2021:set1:q54",
+      "title": "GATE CE 2021 | Set 1 | Question: 54",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The longitudinal section of a runway provides the following data:<br>$$\\begin{array}{|c|c|} \\hline \\text { End-to-end runway (m) } & \\text { Gradient (\\%) } \\\\ \\hline 0 \\text { to 300 } & +1.2 \\\\ \\hline 300 \\text { to } 600 & -0.7 \\\\ \\hline 600 \\text { to } 1100 & +0.6 \\\\ \\hline 1100 \\text { to } 1400 & -0.8 \\\\ \\hline 1400 \\text { to } 1700 & -1.0 \\\\ \\hline \\end{array}$$<br>The effective gradient of the runway (in %, round off to two decimal places) is _____________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.32",
+        "tolerance": {
+          "lower": 0.3,
+          "upper": 0.34
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "railway-and-airport-engineering",
+          "subtopicLabel": "Railway and Airport Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "railway-and-airport-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Railway and Airport Engineering",
+        "markdown": "Assuming RL of start of runway as datum i.e., RL = 0 m)\n\n<img src=\"/question-images/ce/2021/ce-2021-50dce1f33d.webp\" />\n\n$$\\begin{aligned} \\text { Effective gradient } &=\\left[\\frac{\\text { Maximum difference in reduced level }}{\\text { Total runway length }}\\right] \\\\ &=\\left[\\frac{4.5-(-0.9)}{1700} \\times 100\\right] \\% \\\\ &=0.3176 \\% \\simeq 0.32 \\% \\end{aligned}$$\n\nTherefore, the correct answer is **0.32** (acceptable range: [0.3, 0.34])."
+      }
+    },
+    "pp:ce:2021:q55": {
+      "question_uid": "pp:ce:2021:q55",
+      "exam_uid": "ce:2021:set1:q55",
+      "title": "GATE CE 2021 | Set 1 | Question: 55",
+      "year": "gatece-2021-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Traversing is carried out for a closed traverse PQRS. The internal angles at vertices P, Q, R and S are measured as $92^{\\circ}$,$68^{\\circ}$,$123^{\\circ}$ and $77^{\\circ}$, respectively. If fore bearing of line PQ is $27^{\\circ}$, fore bearing of line RS (in degrees, in integer) is _________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "218",
+        "tolerance": {
+          "lower": 218,
+          "upper": 218
+        },
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geometics-engineering",
+          "subjectLabel": "Geometics Engineering",
+          "subtopicSlug": "theodolites-compass-and-traverse-surveying",
+          "subtopicLabel": "Theodolites, Compass and Traverse Surveying"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geometics-engineering",
+          "theodolites-compass-and-traverse-surveying"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geometics Engineering - Theodolites, Compass and Traverse Surveying",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-24082c2327.webp\" />\n\n$$\\begin{array}{l} Q=\\left[\\begin{array}{l} B B \\text { of } P Q=27^{\\circ}+180^{\\circ}=207^{\\circ} \\\\ F B \\text { of } Q R=207^{\\circ}-68^{\\circ}=139^{\\circ} \\end{array}\\right. \\\\ R=\\left[\\begin{array}{l} B B \\text { of } Q R=139^{\\circ}+180^{\\circ}=319^{\\circ} \\\\ F B \\text { of } R S=319^{\\circ}-123^{\\circ}=196^{\\circ} \\end{array}\\right. \\end{array}$$\n\n<img src=\"/question-images/ce/2021/ce-2021-a8c7b974f4.webp\" />\n\n$$\\begin{array}{l} Q=\\left[\\begin{array}{l} B B \\text { of } P Q=27^{\\circ}+180^{\\circ}=207^{\\circ} \\\\ F B \\text { of } Q R=207^{\\circ}+68^{\\circ}=275^{\\circ} \\end{array}\\right. \\\\ R=\\left[\\begin{array}{l} B B \\text { of } Q R=275^{\\circ}-180^{\\circ}=95^{\\circ} \\\\ F B \\text { of } R S=95^{\\circ}+123^{\\circ}=218^{\\circ} \\end{array}\\right. \\end{array}$$\n\nTherefore, the correct answer is **218**."
+      }
+    },
+    "pp:ce:2021:q56": {
+      "question_uid": "pp:ce:2021:q56",
+      "exam_uid": "ce:2021:set1:q56",
+      "title": "GATE CE 2021 | Set 1 | Question: 56",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Getting to the top is _____ than staying on top.",
+      "options": [
+        "more easy",
+        " much easy",
+        " easiest",
+        " easier"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "When the comparison is between two things we use the second degree of the adjective.The degree form of easy are: (easy - easier - easiest)\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2021:q57": {
+      "question_uid": "pp:ce:2021:q57",
+      "exam_uid": "ce:2021:set1:q57",
+      "title": "GATE CE 2021 | Set 1 | Question: 57",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "<br><img src=\"/question-images/ce/2021/ce-2021-fd0a3ad362.webp\" /><br>The mirror image of the above test about the X-axis is",
+      "options": [
+        "<img src=\"/question-images/ce/2021/ce-2021-1f6e953c5c.webp\" />",
+        "<img src=\"/question-images/ce/2021/ce-2021-38729aba13.webp\" />",
+        "<img src=\"/question-images/ce/2021/ce-2021-9eb6c8c60b.webp\" />",
+        "<img src=\"/question-images/ce/2021/ce-2021-c489cdb897.webp\" />"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-bcc002bdee.webp\" />\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q58": {
+      "question_uid": "pp:ce:2021:q58",
+      "exam_uid": "ce:2021:set1:q58",
+      "title": "GATE CE 2021 | Set 1 | Question: 58",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a company, 35% of the employees drink coffee, 40% of the employees drink tea and 10% of the employees drink both tea and coffee. What % of employees drink neither tea nor coffee?",
+      "options": [
+        "15",
+        "25",
+        "35",
+        "40"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-59c1335a37.webp\" />\n\nPercent of employees drink neither tea nor coffee = 100 - 25 - 1 0 - 30 = 35\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2021:q59": {
+      "question_uid": "pp:ce:2021:q59",
+      "exam_uid": "ce:2021:set1:q59",
+      "title": "GATE CE 2021 | Set 1 | Question: 59",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "$\\oplus$ and $\\odot$ are two operators on numbers p and q such that $p \\oplus q=\\frac{p^{2}+q^{2}}{p q}$ and $p \\odot q=\\frac{p^{2}}{q}$;<br>If $x \\oplus y=2 \\odot 2$, then x =\r\n",
+      "options": [
+        "$\\frac{y}{2}$",
+        "y",
+        "$\\frac{3y}{2}$",
+        "2y"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$$\\begin{aligned} x \\oplus y &=2 \\odot 2 \\\\ \\frac{x^{2}+y^{2}}{x y} &=\\frac{2^{2}}{2} \\\\ x^{2}+y^{2} &=2 x y \\\\ (x-y)^{2} &=0 \\\\ x &=y \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q60": {
+      "question_uid": "pp:ce:2021:q60",
+      "exam_uid": "ce:2021:set1:q60",
+      "title": "GATE CE 2021 | Set 1 | Question: 60",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Four persons P, Q, R and S are to be seated in a row, all facing the same direction, but not necessarily in the same order. P and R cannot sit adjacent to each other. S should be seated to the right of Q. The number of distinct seating arrangements possible is:",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Following cases can be\n\nPQSR, RQSP, QPSR, QRSP, RQPS and PQRS\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2021:q61": {
+      "question_uid": "pp:ce:2021:q61",
+      "exam_uid": "ce:2021:set1:q61",
+      "title": "GATE CE 2021 | Set 1 | Question: 61",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Statement: Either P marries Q or X marries Y<br>Among the options below, the logical NEGATION of the above statement is :",
+      "options": [
+        "P  does not marry Q and X marries Y",
+        "Neither P marries Q nor X marries Y",
+        "X does not marry Y and P marries Q",
+        "P marries Q and X marries Y"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "The statement says only one of these two action will happen, it's NEGATION should be a confirmed action, hence option (c) is the answer.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q62": {
+      "question_uid": "pp:ce:2021:q62",
+      "exam_uid": "ce:2021:set1:q62",
+      "title": "GATE CE 2021 | Set 1 | Question: 62",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider two rectangular sheets, Sheet M and Sheet N of dimensions 6cm x 4cm each.<br>Folding operation 1: The sheet is folded into half by joining the short edges of the current shape.<br>Folding operation 2: The sheet is folded into half by joining the long edges of the current shape.<br>Folding operation 1 is carried out on Sheet M three times.<br>Folding operation 2 is carried out on Sheet N three times.<br>The ratio of perimeters of the final folded shape of Sheet N to the final folded shape of Sheet M is ____.",
+      "options": [
+        "0.546527778",
+        "0.126388889",
+        "0.295138889",
+        "0.217361111"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-b92b28aa33.webp\" />\n\n$(\\text { Perimeter })_{M}=2(2+1.5)=7$\n\n<img src=\"/question-images/ce/2021/ce-2021-0990eb23ea.webp\" />\n\n$\\text { (Perimeter })_{N}=2(0.5+6)=13$\n\nRequired ratio $=\\frac{13}{7}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q63": {
+      "question_uid": "pp:ce:2021:q63",
+      "exam_uid": "ce:2021:set1:q63",
+      "title": "GATE CE 2021 | Set 1 | Question: 63",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "<br><img src=\"/question-images/ce/2021/ce-2021-96498e873d.webp\" /><br>Five line segments of equal lengths, PR, PS, QS, QT and RT are used to form a star as shown in the figure above.<br>The value of $\\theta$, in degrees, is ________",
+      "options": [
+        "36",
+        "45",
+        "72",
+        "108"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/ce/2021/ce-2021-1bc1363cfa.webp\" />\n\nSum of angle formed at the pentagon = $540^{\\circ}$\n\nEach angle of $=\\frac{540}{5}=108^{\\circ}$\n\n$\\angle x=180-108=72^{\\circ}$\n\nSum of angle of triangle $=180^{\\circ}$\n\n$$\\begin{aligned} 72^{\\circ}+72^{\\circ}+\\theta &=180^{\\circ} \\\\ \\theta &=36^{\\circ} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2021:q64": {
+      "question_uid": "pp:ce:2021:q64",
+      "exam_uid": "ce:2021:set1:q64",
+      "title": "GATE CE 2021 | Set 1 | Question: 64",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A function, $\\lambda$, is defined by<br>$$\\lambda(p, q)=\\left\\{\\begin{array}{cl} (p-q)^{2}, & \\text { if } p \\geq q \\\\ p+q, & \\text { if } p \\lt q \\end{array}\\right.$$<br>The value of the expression $\\frac{\\lambda(-(-3+2),(-2+3))}{(-(-2+1))}$ is:",
+      "options": [
+        "-1",
+        "0",
+        "$\\frac{16}{3}$",
+        "16"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$\\frac{\\lambda(-(-3+2),(-2+3))}{(-(2+1))}=\\lambda \\frac{(1,1)}{1}=\\lambda(1,1)$\n\nSo, 1st definition will be applicable as p = q.\n\n$\\text { Hence, } \\qquad \\lambda(1,1)=(1-1)^{2}=0$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2021:q65": {
+      "question_uid": "pp:ce:2021:q65",
+      "exam_uid": "ce:2021:set1:q65",
+      "title": "GATE CE 2021 | Set 1 | Question: 65",
+      "year": "gatece-2021-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Humans have the ability to construct worlds entirely in their minds, which don't exist in the physical world. So far as we know, no other species possesses this ability. This skill is so important that we have different words to refer to its different flavors, such as imagination, invention and innovation.<br>Based on the above passage, which one of the following is TRUE?",
+      "options": [
+        "No species possess the ability to construct worlds in their minds",
+        "The terms imagination, invention and innovation refer to unrelated skills",
+        "We do not know of any species other than humans who possess the ability to construct mental worlds",
+        "Imagination, invention and innovation are unrelated to the ability to construct mental worlds"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2021-s1",
+      "yearSetIdentity": "ce:2021:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Option (B) and (D) are weekend by the word 'UNRELATED SKILLS'. Option (A) is weekend by the expression, no species posses the ability.\n\nHence answer is option (C) which reflects the information given in the passage.\n\nTherefore, the correct answer is **C**."
+      }
+    }
+  }
+}

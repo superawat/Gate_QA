@@ -9,6 +9,9 @@ test.beforeEach(async ({ context }) => {
     window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
+    window.localStorage.setItem("gateqa_branch_onboarding_completed", "true");
+    window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["cse"]));
+    window.localStorage.setItem("gateqa_active_branch", "cse");
   });
 });
 
@@ -23,7 +26,7 @@ async function openMockPortal(page) {
 
 async function continueToFullMockSetup(page) {
   await openMockPortal(page);
-  await expect(page.getByTestId("mock-portal-option-full_length")).toBeVisible({ timeout: 15000 });
+  await expect(page.getByTestId("mock-portal-option-paper_mode")).toBeVisible({ timeout: 15000 });
   await page.getByTestId("mock-portal-continue").click();
   await expect(page.getByRole("heading", { name: /mock test setup/i })).toBeVisible({
     timeout: 15000,
@@ -56,7 +59,7 @@ test("continuing from the mock portal opens the setup screen", async ({ page }) 
   await expect(page.getByRole("button", { name: /start mock/i })).toBeVisible({
     timeout: 15000,
   });
-  await expect(page.getByText(/no setup noise here/i)).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText(/Past Paper/i).first()).toBeVisible({ timeout: 15000 });
 });
 
 test("starting a full mock shows the exam shell", async ({ page }) => {

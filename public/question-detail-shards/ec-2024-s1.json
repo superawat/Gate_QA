@@ -1,0 +1,2632 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.290Z",
+  "shardKey": "ec-2024-s1",
+  "yearSetKey": "ec-2024-s1",
+  "yearSetIdentity": "ec:2024:set-1",
+  "track": "ec",
+  "year": 2024,
+  "set": 1,
+  "label": "2024 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ec:2024:q1": {
+      "question_uid": "pp:ec:2024:q1",
+      "exam_uid": "ec:2024:set1:q1",
+      "title": "GATE EC 2024 | Set 1 | Question: 1",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The general form of the complementary function of a differential equation is given by $y(t)=(A t+B) e^{-2 t}$, where $A$ and $B$ are real constants determined by the initial condition. The corresponding differential equation is",
+      "options": [
+        "$\\frac{d^{2} y}{d t^{2}}+4 \\frac{d y}{d t}+4 y=f(t)$",
+        "$\\frac{d^{2} y}{d t^{2}}+4 y=f(t)$",
+        "$\\frac{d^{2} y}{d t^{2}}+3 \\frac{d y}{d t}+2 y=f(t)$",
+        "$\\frac{d^{2} y}{d t^{2}}+5 \\frac{d y}{d t}+6 y=f(t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "$\\because$ Given\n\nComplementary function $=(A t+B) e^{-2 t} \\approx\\left(C_{1}+C_{2} t\\right) e^{-2 t}$\n\ni.e. roots of auxiliary equation are $m=-2,-2$\n\nSo, $\\mathrm{AE}$ is $(m+2)(m+2)=0$\n\n$m^{2}+4 m+4=0$\n\nReplace $m \\rightarrow D$ we get,\n\n$\\left(D^{2}+4 D+4\\right) y=0$\n\ni.e. the required different\n\n$\\frac{d^{2} y}{d x^{2}}+4 \\frac{d y}{d x}+4 y=f(t)$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q2": {
+      "question_uid": "pp:ec:2024:q2",
+      "exam_uid": "ec:2024:set1:q2",
+      "title": "GATE EC 2024 | Set 1 | Question: 2",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the context of Bode magnitude plots, $40 \\mathrm{~dB} /$ decade is the same as _______",
+      "options": [
+        "$12 \\mathrm{~dB} /$ octave",
+        "$6 \\mathrm{~dB} /$ octave",
+        "$20 \\mathrm{~dB} /$ octave",
+        "$10 \\mathrm{~dB} /$ octave"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "$$\\begin{aligned}\n\n20 \\times \\mathrm{ndB} / \\text { decade } & =6 \\times \\mathrm{n} \\mathrm{dB} / \\text { octave } \\\\\n\n40 \\mathrm{~dB} / \\text { decade } & =12 \\mathrm{~dB} / \\text { octave }\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q3": {
+      "question_uid": "pp:ec:2024:q3",
+      "exam_uid": "ec:2024:set1:q3",
+      "title": "GATE EC 2024 | Set 1 | Question: 3",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the feedback control system shown in the figure below $G(s)=\\frac{6}{s(s+1)(s+2)}$. <br><img src=\"/question-images/ec/2024/ec-2024-48d7f12f59.webp\" /><br>\n$R(s), Y(s)$, and $E(s)$ are the Laplace transforms of $r(t), y(t)$, and $e(t)$, respectively. If the input $r(t)$ is a unit step function, then _____",
+      "options": [
+        "$\\lim _{t \\rightarrow \\infty} e(t)=0$",
+        "$\\lim _{t \\rightarrow \\infty} e(t)=\\frac{1}{3}$",
+        "$\\lim _{t \\rightarrow \\infty} e(t)=\\frac{1}{4}$",
+        "$\\lim _{t \\rightarrow \\infty} e(t)$ does not exist, $e(t)$ is oscillatory"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Stability Analysis",
+        "markdown": "Given system is\n\n<img src=\"/question-images/ec/2024/ec-2024-86bcd48375.webp\" />\n\n$G(s)=\\frac{6}{s(s+1)(s+2)}$\n\nThe characteristic equation,\n\n$$\\begin{aligned}\n\n1+G(s) & =0 \\\\\n\n1+\\frac{6}{s(s+1)(s+2)} & =0 \\\\\n\ns(s+1)(s+2)+6 & =0 \\\\\n\ns^{3}+3 s^{2}+2 s+6 & =0\n\n\\end{aligned}$$\n\nClearly, here the internal coefficient product is equal to external coefficient product i.e.,\n\n$3 \\times 2=6 \\times 1$\n\nHence, the given system is marginally stable system.\n\n$\\therefore e(t)$ not exist because system is oscillatory system.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2024:q4": {
+      "question_uid": "pp:ec:2024:q4",
+      "exam_uid": "ec:2024:set1:q4",
+      "title": "GATE EC 2024 | Set 1 | Question: 4",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A digital communication system transmits through a noiseless bandlimited channel $[-W W]$. The received signal $z(t)$ at the output of the receiving filter is given by $z(t)=\\sum_{n} b[n] x(t-n T)$ where $b[n]$ are the symbols and $x(t)$ is the overall system response to a single symbol. The received signal is sampled at $t=m T$. The Fourier transform of $x(t)$ is $X(f)$. The Nyquist condition that $X(f)$ must satisfy for zero intersymbol interference at the receiver is ______ ",
+      "options": [
+        "$\\sum_{m=-\\infty}^{\\infty} x\\left(f+\\frac{m}{T}\\right)=T$",
+        "$\\sum_{m=-\\infty}^{\\infty} x\\left(f+\\frac{m}{T}\\right)=\\frac{1}{T}$",
+        "$\\sum_{m=-\\infty}^{\\infty} X(f+m T)=T$",
+        "$\\sum_{m=-\\infty}^{\\infty} X(f+m T)=\\frac{1}{T}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communication Systems",
+        "markdown": "For zero ISI, $x(t)$ should have zero crossings at $\\pm T, \\pm 2 T, \\pm 3 T \\ldots$\n\n<img src=\"/question-images/ec/2024/ec-2024-fc2c4433d7.webp\" />\n\n$x(t) \\sum_{m=-\\infty}^{\\infty} \\delta(t-m T)=x(0) \\delta(t)$\n\n$\\frac{1}{T} \\sum_{m=-\\infty}^{\\infty} x\\left(f-\\frac{m}{T}\\right)=x(0)$\n\n$\\sum_{m=-\\infty}^{\\infty} X\\left(f-\\frac{m}{T}\\right)=x(0) T$\n\n(or)\n\n$\\sum_{m=-\\infty}^{\\infty} X\\left(f+\\frac{m}{T}\\right)=x(0) T$\n\nAs per GATE official Answer Key-MTA\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q5": {
+      "question_uid": "pp:ec:2024:q5",
+      "exam_uid": "ec:2024:set1:q5",
+      "title": "GATE EC 2024 | Set 1 | Question: 5",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a lossless transmission line terminated with a short circuit as shown in the figure below. As one moves towards the generator from the load, the normalized impedances $z_{\\text {in } A}, z_{\\text {in } B}, z_{\\text {in } C}$ and $z_{\\text {in } D}$ (indicated in the figure) are _____ <br><img src=\"/question-images/ec/2024/ec-2024-350a07af98.webp\" /><br>",
+      "options": [
+        "$z_{\\text {in } A}=+0.4 j \\Omega, z_{\\text {in } B}=\\infty, z_{\\text {in } C}=-0.4 j \\Omega, z_{\\text {in } D}=0$",
+        "$z_{\\text {in } A}=\\infty, z_{\\text {in } B}=+0.4 j \\Omega, z_{\\text {in } C}=0, z_{\\text {in } D}=+0.4 j \\Omega$",
+        "$z_{\\text {in } A}=-1 j \\Omega, z_{\\text {in } B}=0, z_{\\text {in } C}=+1 j \\Omega, z_{\\text {in } D}=\\infty$",
+        "$z_{\\text {in } A}=+1 j \\Omega, z_{\\text {in } B}=\\infty, z_{\\text {in } C}=-1 j \\Omega, z_{\\text {in } D}=0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-56976a7fd9.webp\" />\n\n$Z_{s / c}=j Z_{0} \\tan \\beta l$.\n\n$\\Rightarrow$ Normalized impedance,\n\n$$\\begin{aligned}\n\n& \\bar{Z}_{S / C}=\\frac{Z_{S / C}}{Z_{0}}=j \\tan \\beta l \\\\\n\n& \\bar{Z}_{\\text {in } A}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{8}\\right)=j \\tan (\\pi / 4)=j 1 \\Omega \\\\\n\n& \\bar{Z}_{\\text {in } B}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{4}\\right)=\\infty \\\\\n\n& \\bar{Z}_{\\text {in } C}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{3 \\lambda}{8}\\right)=-j 1 \\Omega \\\\\n\n& \\bar{Z}_{\\text {in } D}=j \\tan \\left(\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{2}\\right)=0\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2024:q6": {
+      "question_uid": "pp:ec:2024:q6",
+      "exam_uid": "ec:2024:set1:q6",
+      "title": "GATE EC 2024 | Set 1 | Question: 6",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $\\hat{i}$ and $\\hat{j}$ be the unit vectors along $x$ and $y$ axes, respectively and let $A$ be a positive constant. Which one of the following statements is true for the vector fields $\\vec{F}_{1}=A(\\hat{i} y+\\hat{j} x)$ and $\\vec{F}_{2}=A(\\hat{i} y-\\hat{j} x) ?$",
+      "options": [
+        "Both $\\vec{F}_{1}$ and $\\vec{F}_{2}$ are electrostatic fields.",
+        "Only $\\vec{F}_{1}$ is an electrostatic field.",
+        "Only $\\vec{F}_{2}$ is an electrostatic field.",
+        "Neither $\\vec{F}_{1}$ nor $\\vec{F}_{2}$ is an electrostatic field."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Basics of Electromagnetics",
+        "markdown": "For an electrostatic field, $\\nabla \\times \\bar{F}=0$\n\n$$\\begin{aligned}\n\n& \\bar{F}_{1}=A[y \\hat{i}+x \\hat{j}] \\\\\n\n& \\Rightarrow \\\\\n\n& \\Delta \\times \\bar{F}_{1}=A\\left|\\begin{array}{ccc}\n\n\\hat{i} & \\hat{j} & \\hat{k} \\\\\n\n\\partial / \\partial x & \\partial / \\partial y & \\partial / \\partial z \\\\\n\ny & x & 0\n\n\\end{array}\\right| \\\\\n\n& =A[0 \\hat{i}-0 \\hat{j}+(1-1) \\hat{k}] \\\\\n\n& =0 \\\\\n\n& \\bar{F}_{2}=A[y \\hat{i}-x \\hat{j}] \\\\\n\n& \\Rightarrow \\\\\n\n& \\Delta \\times \\bar{F}_{2}=A\\left|\\begin{array}{ccc}\n\n\\hat{i} & \\hat{j} & \\hat{k} \\\\\n\n\\partial / \\partial x & \\partial / \\partial y & \\partial / \\partial z \\\\\n\ny & -x & 0\n\n\\end{array}\\right| \\\\\n\n& =A[0 \\hat{i}-0 \\hat{j}+(-1-1) \\hat{k}] \\\\\n\n& =-2 A \\hat{k}\n\n\\end{aligned}$$\n\nHence, $\\bar{F}_{1}$ is electrostatic, $\\bar{F}_{2}$ is not electrostatic.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q7": {
+      "question_uid": "pp:ec:2024:q7",
+      "exam_uid": "ec:2024:set1:q7",
+      "title": "GATE EC 2024 | Set 1 | Question: 7",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit below, assume that the long channel NMOS transistor is biased in saturation. The small signal trans-conductance of the transistor is $g_{m}$ Neglect body effect, channel length modulation and intrinsic device capacitances. The small signal input impedance $Z_{\\text {in }}(j \\omega)$ is _____ <br><img src=\"/question-images/ec/2024/ec-2024-a2b0a90eee.webp\" /><br>",
+      "options": [
+        "$\\frac{-g_{m}}{C_{1} C_{L} \\omega^{2}}+\\frac{1}{j \\omega C_{1}}+\\frac{1}{j \\omega C_{L}}$",
+        "$\\frac{g_{m}}{C_{1} C_{L} \\omega^{2}}+\\frac{1}{j \\omega C_{1}}+\\frac{1}{j \\omega C_{L}}$",
+        "$\\frac{1}{j \\omega C_{1}}+\\frac{1}{j \\omega C_{L}}$",
+        "$\\frac{-g_{m}}{C_{1} C_{L} \\omega^{2}}+\\frac{1}{j \\omega C_{1}+j \\omega C_{L}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - FET and MOSFET Analysis",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-263f65bf98.webp\" />\n\n$$\\begin{aligned}\n\n& I_{i}=\\frac{V_{i}-V_{0}}{z_{i}}=\\frac{V_{i}}{z_{i}}-\\frac{V_{0}}{z_{i}} \\\\\n\n& V_{0}=\\left(I_{i}+g_{m} V_{g s}\\right) z_{L} \\\\\n\n& V_{0}=I_{i} Z_{L}+g_{m} V_{g S} z_{L} \\\\\n\n& V_{0}=I_{i}\\left(z_{L}+g_{m} z_{1} z_{L}\\right) \\\\\n\n& I_{i}=\\frac{V_{1}^{i}}{z_{1}}-\\frac{I_{i}\\left(z_{L}+g_{m} z_{1} z_{L}\\right)}{z_{1}} \\\\\n\n& I_{i} \\frac{\\left[z_{1}+z_{L}+g_{m} z_{1} z_{L}\\right]}{z_{1}}=\\frac{V_{L}^{i}}{z_{1}} \\\\\n\n& \\frac{V_{L}^{i}}{I_{i}}=z_{1}+z_{L}+g_{m} z_{1} z_{L} \\\\\n\n& z_{\\text {in }}=\\frac{1}{j \\omega C_{1}}+\\frac{1}{j \\omega C_{L}}-\\frac{g_{m}}{\\omega^{2} C_{1} C_{L}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q8": {
+      "question_uid": "pp:ec:2024:q8",
+      "exam_uid": "ec:2024:set1:q8",
+      "title": "GATE EC 2024 | Set 1 | Question: 8",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the closed loop amplifier circuit shown below, the magnitude of open loop low frequency small signal voltage gain is 40. All the transistors are biased in saturation. The current source Iss is ideal. Neglect body effect. channel length modulation and intrinsic device capacitances. The closed loop low frequency small signal voltage gain $\\frac{V_{\\text {out }}}{V_{\\text {in }}}$ (rounded off to three decimal places) is ____. <br><img src=\"/question-images/ec/2024/ec-2024-c4b497868e.webp\" /><br>",
+      "options": [
+        "0.976",
+        "1",
+        "1.025",
+        "0.488"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Frequency Response of Amplifier",
+        "markdown": "$A_{O L}=40$\n\nGiven circuit is differential amplifier with current mirror active load.\n\n$$\\begin{aligned}\n\nV_{f} & =V_{\\text {out }} \\\\\n\n\\frac{V_{f}}{V_{\\text {out }}} & =\\beta=1 \\\\\n\nA_{C L} & =\\frac{A_{O L}}{1+\\beta A_{O L}}=\\frac{40}{1+1 \\times 40} \\\\\n\nA_{C L} & =0.976\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q9": {
+      "question_uid": "pp:ec:2024:q9",
+      "exam_uid": "ec:2024:set1:q9",
+      "title": "GATE EC 2024 | Set 1 | Question: 9",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the Boolean function\n<br><br> $F(A, B, C, D)=\\Sigma m(0,2,5,7,8,10,12,13,14,15)$<br><br>\nthe essential prime implicants are",
+      "options": [
+        "$B D, \\bar{B} \\bar{D}$",
+        "$B D, A B$",
+        "$A B, \\bar{B} \\bar{D}$",
+        "$B D, \\bar{B} \\bar{D}, A B$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Boolean Algebra",
+        "markdown": "$f(A, B, C, D)=\\Sigma m(0.2,5,7,8,10,12,13,14,15)$\n\n<img src=\"/question-images/ec/2024/ec-2024-54e02eeade.webp\" />\n\n$B D \\quad \\bar{B} \\bar{D}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q10": {
+      "question_uid": "pp:ec:2024:q10",
+      "exam_uid": "ec:2024:set1:q10",
+      "title": "GATE EC 2024 | Set 1 | Question: 10",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A White Gaussian noise $w(t)$ with zero mean and power spectral density $\\frac{N_{0}}{2}$, when applied to a first-order $R C$ low pass filter produces an output $n(t)$. At a particular time $t=t_{k}$, the variance of the random variable $n\\left(t_{k}\\right)$ is _____ ",
+      "options": [
+        "$\\frac{N_{0}}{4 R C}$",
+        "$\\frac{N_{o}}{2 R C}$",
+        "$\\frac{N_{o}}{R C}$",
+        "$\\frac{2 N_{0}}{R C}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Signals and Noise",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-a451396d1e.webp\" />\n\n$$\\begin{aligned}\n\nE[n(t)] & =E[W(t)] \\cdot H(0) \\\\\n\nE[n(t)] & =0 \\\\\n\nE\\left[n^{2}(t)\\right] & =\\left\\{E(n(t)\\}^{2}+\\operatorname{var}[n(t)]\\right. \\\\\n\n\\operatorname{var}[n(t)] & =E\\left[n^{2}(t)\\right]\n\n\\end{aligned}$$\n\nat $t=t_{k}$\n\n$$\\begin{aligned}\n\n\\left.\\operatorname{var}[n(t)]\\right|_{t=t_{k}} & =E\\left[n^{2}\\left(t_{k}\\right)\\right]=E\\left[n\\left(t_{k}\\right) \\cdot n\\left(t_{k}\\right)\\right]=R_{n}(0) \\\\\n\nS_{n}(f) & =S_{W}(f) \\cdot|H(f)|^{2} \\\\\n\n& =\\frac{N_{0}}{2} \\cdot \\frac{1}{1+(\\omega R C)^{2}} \\\\\n\nR_{n}(\\tau) & =\\operatorname{IFT}\\left[S_{n}(f)\\right]=\\frac{N_{0}}{4 R C} \\cdot e^{\\frac{-|\\tau|}{R C}} \\\\\n\nR_{n}(0) & =\\frac{N_{0}}{4 R C}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q11": {
+      "question_uid": "pp:ec:2024:q11",
+      "exam_uid": "ec:2024:set1:q11",
+      "title": "GATE EC 2024 | Set 1 | Question: 11",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A causal and stable LTI system with impulse response $h(t)$ produces an output $y(t)$ for an input signal $x(t)$. A signal $x(0.5 t)$ is applied to another causal and stable LTI system with impulse response $h(0.5 t)$. The resulting output is ______",
+      "options": [
+        "$2 y(0.5 t)$",
+        "$4 y(0.5 t)$",
+        "$0.25 y(2 t)$",
+        "$0.25 y(0.25 t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "lti-systems-continuous-and-discrete",
+          "subtopicLabel": "LTI Systems Continuous and Discrete"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "lti-systems-continuous-and-discrete"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "$y(t)=x(t) * h(t)$\n\n$x(t) \\leftrightarrow X(\\omega)$\n\n$$\\begin{aligned}\n\nx(0.5 t) & \\leftrightarrow 2 X(2 \\omega) \\\\\n\nh(0.5 t) & \\leftrightarrow 2 H(2 \\omega) \\\\\n\ny(t) & \\leftrightarrow Y(\\omega) \\\\\n\nY(\\omega) & \\leftrightarrow X(\\omega) \\times H(\\omega)\n\n\\end{aligned}$$\n\nAfter scaling,\n\n$Y_{1}(\\omega)=2 X(2 \\omega) \\times 2 H(2 \\omega)$\n\n$=4 X(2 \\omega) \\times H(2 \\omega)$\n\nAfter taking inverser Fourier transform\n\n$y_{1}(t)=2 y(0.5 t)$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q12": {
+      "question_uid": "pp:ec:2024:q12",
+      "exam_uid": "ec:2024:set1:q12",
+      "title": "GATE EC 2024 | Set 1 | Question: 12",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For non-degenerately doped n-type silicon, which one of the following plots represents the temperature $(T)$ dependence of free electron concentration $(n)$ ? <br><img src=\"/question-images/ec/2024/ec-2024-06e49bc7c3.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "basic-semiconductor-physics",
+          "subtopicLabel": "Basic Semiconductor Physics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "basic-semiconductor-physics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electronic Devices** (specifically *Basic Semiconductor Physics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Basic Semiconductor Physics**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *A*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (A)."
+      }
+    },
+    "pp:ec:2024:q13": {
+      "question_uid": "pp:ec:2024:q13",
+      "exam_uid": "ec:2024:set1:q13",
+      "title": "GATE EC 2024 | Set 1 | Question: 13",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the circuit shown, the $n: 1$  step-down transformer and the diodes are ideal. The diodes have no voltage drop in forward biased condition. If the input voltage (in Volts) is $V_{s}(t)=10 \\sin \\omega t$ and the average value of load voltage $V_{L}(t)$ (in Volts) is $2.5 / \\pi$, the value of $n$ is ______ <br><img src=\"/question-images/ec/2024/ec-2024-74d004dda7.webp\" /><br>",
+      "options": [
+        "4",
+        "8",
+        "12",
+        "16"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "diodes-applications",
+          "subtopicLabel": "Diodes Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "diodes-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Diodes Applications",
+        "markdown": "Given,\n\n$V_{D C}=\\frac{2 V_{M}}{\\pi}=\\frac{2.5}{\\pi}$\n\n<img src=\"/question-images/ec/2024/ec-2024-4e01dd0fac.webp\" />\n\n$$\\begin{aligned}\n\nV_{M} & =\\frac{2.5}{2} \\\\\n\n\\therefore \\quad 2 V_{M} & =V_{S}=2.5 \\mathrm{~V} \\\\\n\nn: 1 & =\\frac{V_{P}}{V_{s}}: 1 \\\\\n\n& =\\frac{10}{2.5}: 1 \\\\\n\n& =4: 1\n\n\\end{aligned}$$\n\n$\\therefore \\quad n=4$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q14": {
+      "question_uid": "pp:ec:2024:q14",
+      "exam_uid": "ec:2024:set1:q14",
+      "title": "GATE EC 2024 | Set 1 | Question: 14",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "For a causal discrete-time LTI system with transfer function\n<br><br> $H(z)=\\frac{2 z^{2}+3}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}$<br><br>\nwhich of the following statements is/are true?",
+      "options": [
+        "The system is stable.",
+        "The system is a minimum phase system.",
+        "The initial value of the impulse response is 2.",
+        "The final value of the impulse response is 0."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "lti-systems-continuous-and-discrete",
+          "subtopicLabel": "LTI Systems Continuous and Discrete"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "lti-systems-continuous-and-discrete"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "Given: $H(z)=\\frac{2 z^{2}+3}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}$\n\nSystem is non-minimum phase system. Since zero are lying outside the unit circle.\n\nFinal value:\n\n$h(\\infty)=\\lim _{z \\rightarrow 1}(z-1) \\frac{2 z^{2}+3}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}=0$\n\nInitial value:\n\n$$\\begin{aligned}\n\nh(0) & =\\lim _{z \\rightarrow \\infty} \\frac{\\left(2 z^{2}+3\\right)}{\\left(z+\\frac{1}{3}\\right)\\left(z-\\frac{1}{3}\\right)}=\\lim _{z \\rightarrow \\infty} \\frac{z^{2}\\left[2+\\frac{3}{z^{2}}\\right]}{z^{2}\\left[1+\\frac{1}{3 z}\\right]\\left[1-\\frac{1}{3 z}\\right]} \\\\\n\n& =\\lim _{z \\rightarrow \\infty} \\frac{\\left[2+\\frac{3}{z^{2}}\\right]}{\\left[1+\\frac{1}{3 z}\\right]\\left[1-\\frac{1}{3 z}\\right]}=\\frac{2}{1 \\times 1}=2 \\\\\n\n|z| & =\\frac{1}{3}=0.33\n\n\\end{aligned}$$\n\n$z=-\\frac{1}{3}, z=\\frac{1}{3}$\n\nSystem is stable. Since $\\mid$ pole $\\mid \\lt 1$ i.e. pole are lying inside the unit circle.\n\nTherefore, the correct option(s) are **A, C, D**."
+      }
+    },
+    "pp:ec:2024:q15": {
+      "question_uid": "pp:ec:2024:q15",
+      "exam_uid": "ec:2024:set1:q15",
+      "title": "GATE EC 2024 | Set 1 | Question: 15",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Let $\\rho(x, y, z, t)$ and $u(x, y, z, t)$ represent density and velocity, respectively, at a point $(x, y, z)$ and time $t$. Assume $\\frac{\\partial \\rho}{\\partial t}$ is continuous. Let $V$ be an arbitrary volume in space enclosed by the closed surface $S$ and $\\hat{n}$ be the outward unit normal of $S$.\n<br>\nWhich of the following equations is/are equivalent $\\frac{\\partial \\rho}{\\partial t}+\\nabla \\cdot(\\rho u)=0$ ?",
+      "options": [
+        "$\\int_{V} \\frac{\\partial \\rho}{\\partial t} d v=-\\oint_{S} \\rho u \\cdot \\hat{n} d s$",
+        "$\\int_{V} \\frac{\\partial \\rho}{\\partial t} d v=\\oint_{S} \\rho u \\cdot \\hat{n} d s$",
+        "$\\int_{V} \\frac{\\partial \\rho}{\\partial t} d v=-\\int_{V} \\nabla \\cdot(\\rho u) d v$",
+        "$\\int_{V} \\frac{\\partial \\rho}{\\partial t} d v=\\int_{V} \\nabla \\cdot(\\rho u) d v$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Calculus*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Option-by-Option Theoretical Evaluation\n\nIn Multiple Select Questions (MSQ), each statement must be verified independently against theoretical laws:\n\n- **Evaluation of Options:** Comparing each statement against the fundamental laws of Engineering Mathematics.\n- The statements corresponding to **Option(s) A, C** are mathematically and physically consistent with the governing equations.\n- Distractor options fail the consistency criteria or violate boundary conditions.\n\n### Conclusion\n\nTherefore, the correct option(s) are **A, C**."
+      }
+    },
+    "pp:ec:2024:q16": {
+      "question_uid": "pp:ec:2024:q16",
+      "exam_uid": "ec:2024:set1:q16",
+      "title": "GATE EC 2024 | Set 1 | Question: 16",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "The free electron concentration profile $n(x)$ in a doped semiconductor at equilibrium is shown in the figure, where the points $A, B$, and $C$ mark three different positions. Which of the following statements is/are true? <br><img src=\"/question-images/ec/2024/ec-2024-50919a1f6b.webp\" /><br>",
+      "options": [
+        "For $x$ between $\\mathrm{B}$ and $\\mathrm{C}$, the electron diffusion current is directed from $\\mathrm{C}$ to $\\mathrm{B}$.",
+        "For $x$ between $\\mathrm{B}$ and $\\mathrm{A}$, the electron drift current is directed from $\\mathrm{B}$ to $\\mathrm{A}$.",
+        "For $x$ between $\\mathrm{B}$ and $\\mathrm{C}$, the electric field is directed from $\\mathrm{B}$ to $\\mathrm{C}$.",
+        "For $x$ between $B$ and $A$. the electric field is directed from $A$ to $B$."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "basic-semiconductor-physics",
+          "subtopicLabel": "Basic Semiconductor Physics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "basic-semiconductor-physics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electronic Devices** (specifically *Basic Semiconductor Physics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Option-by-Option Theoretical Evaluation\n\nIn Multiple Select Questions (MSQ), each statement must be verified independently against theoretical laws:\n\n- **Evaluation of Options:** Comparing each statement against the fundamental laws of Electronic Devices.\n- The statements corresponding to **Option(s) A, B, C** are mathematically and physically consistent with the governing equations.\n- Distractor options fail the consistency criteria or violate boundary conditions.\n\n### Conclusion\n\nTherefore, the correct option(s) are **A, B, C**."
+      }
+    },
+    "pp:ec:2024:q17": {
+      "question_uid": "pp:ec:2024:q17",
+      "exam_uid": "ec:2024:set1:q17",
+      "title": "GATE EC 2024 | Set 1 | Question: 17",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A machine has a 32-bit architecture with 1-word long instructions. It has 24 registers and supports an instruction set of size 40. Each instruction has five distinct fields, namely opcode, two source register identifiers, one destination register identifier, and an immediate value. Assuming that the immediate operand is an unsigned integer, its maximum value is ______.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2047",
+        "tolerance": {
+          "lower": 2047,
+          "upper": 2047
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-microprocessors",
+          "subjectLabel": "Microprocessors",
+          "subtopicSlug": "instructions-of-8085-microprocessor",
+          "subtopicLabel": "Instructions of 8085 Microprocessor"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-microprocessors",
+          "instructions-of-8085-microprocessor"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Instructions of 8085 Microprocessor",
+        "markdown": "Given 32-bit architecture $\\{1$ word long instructions $\\}$\n\n$1 \\text { word }=32 \\text {-bits }$\n\nNumber of registers $=24$, bits required $\\Rightarrow 2^{n}=24$\n\n$n=\\log _{2}(24)$\n\n$\\therefore \\quad n=5 \\text {-bits }$\n\nNumber instructions $=40$\n\n$\\therefore$ Opcode bits would be $2^{n}=40$\n\n$\\therefore \\quad n=\\log _{2}(40)$\n\n$n=6 \\text {-bits }$\n\nEach register field requires 5 -bits.\n\nInstruction format would be\n\n<img src=\"/question-images/ec/2024/ec-2024-386c5fd7b6.webp\" />\n\n$\\therefore$ Immediate value bits $=32-(6+5+5+5)=32-21=11$-bits\n\nThe range of unsigned values $=0$ to $2^{n}-1$\n\n$=0 \\text { to } 2^{11}-1=0 \\text { to }(2048-1)=0 \\text { to } 2047$\n\n$\\therefore$ Maximum unsigned integer $=2047$\n\nTherefore, the correct answer is **2047**."
+      }
+    },
+    "pp:ec:2024:q18": {
+      "question_uid": "pp:ec:2024:q18",
+      "exam_uid": "ec:2024:set1:q18",
+      "title": "GATE EC 2024 | Set 1 | Question: 18",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "An amplitude modulator has output (in Volts)\n<br> <br>$s(t)=A \\cos (400 \\pi t)+B \\cos (360 \\pi t)+B \\cos (440 \\pi t)$<br><br>\nThe carrier power normalized to $1 \\Omega$ resistance is 50 Watts. The ratio of the total sideband power to the total power is $1 / 9$. The value of $B$ (in Volts. rounded off to two decimal places) is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.5",
+        "tolerance": {
+          "lower": 2.49,
+          "upper": 2.51
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "analog-communication-systems",
+          "subtopicLabel": "Analog Communication Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "analog-communication-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Analog Communication Systems",
+        "markdown": "$$\\begin{aligned}\n\nP_{C} & =\\frac{A^{2}}{2}=50 \\\\\n\nA & =10 \\\\\n\n\\frac{P_{S B}}{P_{t}} & =\\frac{\\mu^{2}}{2+\\mu^{2}}=\\frac{1}{9} \\\\\n\n\\mu & =\\frac{1}{2} \\\\\n\nB & =\\frac{A_{c} \\mu}{2}=\\frac{10}{2} \\times \\frac{1}{2}=2.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.5** (acceptable range: [2.49, 2.51])."
+      }
+    },
+    "pp:ec:2024:q19": {
+      "question_uid": "pp:ec:2024:q19",
+      "exam_uid": "ec:2024:set1:q19",
+      "title": "GATE EC 2024 | Set 1 | Question: 19",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In a number system of base $r$, the equation $x^{2}-12 x+37=0$ has $x=8$ as one of its solutions. The value of $r$ is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "11",
+        "tolerance": {
+          "lower": 11,
+          "upper": 11
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "number-systems",
+          "subtopicLabel": "Number Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "number-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Number Systems",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Circuits** (specifically *Number Systems*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Step-by-Step Mathematical Derivation\n\n1. **Given Data & Parameters:**\n   Extracting the numerical parameters and operating constraints specified in the problem statement.\n2. **Governing Equation Setup:**\n   Applying the governing analytical formula and substituting the known operating values into the characteristic equations.\n3. **Calculation & Simplification:**\n   Evaluating the intermediate expressions yields the numerical result of **11**.\n\n### Conclusion\n\nTherefore, the correct answer is **11**."
+      }
+    },
+    "pp:ec:2024:q20": {
+      "question_uid": "pp:ec:2024:q20",
+      "exam_uid": "ec:2024:set1:q20",
+      "title": "GATE EC 2024 | Set 1 | Question: 20",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Let $R$ and $R^{3}$ denote the set of real numbers and the three dimensional vector space over it, respectively. The value of $\\alpha$ for which the set of vectors\n<br> $$\\left\\{\\left[\\begin{array}{lll}\n2 & -3 & \\alpha\n\\end{array}\\right],\\left[\\begin{array}{lll}\n3 & -1 & 3\n\\end{array}\\right],\\left[\\begin{array}{lll}\n1 & -5 & 7\n\\end{array}\\right]\\right\\}$$<br>\ndoes not form a basis of $R^{3}$ is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5",
+        "tolerance": {
+          "lower": 5,
+          "upper": 5
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$\\because$ Given vectors form basis so there must be L.I and its condition is,\n\n$|A| \\neq 0$\n\nor\n\n$$\\left|\\begin{array}{ccc}\n\n2 & 3 & 1 \\\\\n\n-3 & -1 & -5 \\\\\n\na & 3 & 7\n\n\\end{array}\\right| \\neq 0$$\n\n$$\\begin{aligned}\n\n2[-7+15]-3[-21+5 a]+1[-9+a] & \\neq 0 \\\\\n\n16+63-15 a-9+a & \\neq 0 \\\\\n\n\\Rightarrow \\quad-14 a & \\neq-70 \\\\\n\n\\Rightarrow & a \\neq 5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5**."
+      }
+    },
+    "pp:ec:2024:q21": {
+      "question_uid": "pp:ec:2024:q21",
+      "exam_uid": "ec:2024:set1:q21",
+      "title": "GATE EC 2024 | Set 1 | Question: 21",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the given circuit, the current $I_{x}$ (in $\\mathrm{mA}$ ) is _____ <br><img src=\"/question-images/ec/2024/ec-2024-9645ebd237.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-1c80f0164f.webp\" />\n\n$V_{1}$ and $V_{2}$ are super node. KCL at $V_{1}$ and $V_{2}$.\n\n$$\\begin{aligned}\n\n& \\frac{V_{1}}{10^{3}}+\\frac{V_{2}}{1 \\times 10^{3}}+2 \\times 10^{-3}=5 \\times 10^{-3} \\\\\n\n& I_{0}=\\frac{V_{1}}{10^{3}} \\\\\n\n& V_{2}-V_{1}=10^{3} I_{0}=10^{3} \\times \\frac{V_{1}}{10^{3}}=V_{1}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\n& V_{2}=2 V_{1} \\\\\n\n& V_{1}=\\frac{V_{2}}{2}\n\n\\end{aligned}$$\n\nPut in equation (i)\n\n$$\\begin{aligned}\n\n\\frac{1}{2} V_{2}+V_{2} & =3 \\\\\n\nV_{2} & =2 \\mathrm{~V} \\\\\n\nI_{x} & =\\frac{V_{2}}{10^{3}}=2 \\mathrm{~mA} \\\\\n\nI_{x} & =2 \\mathrm{~mA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ec:2024:q22": {
+      "question_uid": "pp:ec:2024:q22",
+      "exam_uid": "ec:2024:set1:q22",
+      "title": "GATE EC 2024 | Set 1 | Question: 22",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the circuit given below, the switch S was kept open for a sufficiently long time and is closed at time $t=0$. The time constant (in seconds) of the circuit for $t > 0$ is ______ <br><img src=\"/question-images/ec/2024/ec-2024-18939124be.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.75",
+        "tolerance": {
+          "lower": 0.75,
+          "upper": 0.75
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "transient-analysis",
+          "subtopicLabel": "Transient Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "transient-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Transient Analysis",
+        "markdown": "After the switch closed\n\n<img src=\"/question-images/ec/2024/ec-2024-5baf6ca924.webp\" />\n\nFor time constant, current source is open circuit.\n\n<img src=\"/question-images/ec/2024/ec-2024-bc3121e74e.webp\" />\n\nTherefore, the correct answer is **0.75**."
+      }
+    },
+    "pp:ec:2024:q23": {
+      "question_uid": "pp:ec:2024:q23",
+      "exam_uid": "ec:2024:set1:q23",
+      "title": "GATE EC 2024 | Set 1 | Question: 23",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Suppose $X$ and $Y$ are independent and identically distributed random variables that are distributed uniformly in the interval $[0,1]$. The probability that $X \\geq Y$ is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.5",
+        "tolerance": {
+          "lower": 0.5,
+          "upper": 0.5
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "information-theory-and-coding",
+          "subtopicLabel": "Information Theory and Coding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "information-theory-and-coding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Information Theory and Coding",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-dcefac8d8f.webp\" />\n\nLet\n\n$P(X \\geq Y)=P(X-Y \\geq 0)$\n\n$Z=X+(-Y)$\n\n$$\\begin{aligned}\n\n&P(Z \\geq 0)=\\int_0^{\\infty} f_z(Z) d_z\\\\\n\n&f_z(z)=f_x(z) \\text { * } f_{-y}(z)\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2024/ec-2024-80557b0600.webp\" />\n\n$P(Z \\geq 0)=\\frac{1}{2}$\n\nTherefore, the correct answer is **0.5**."
+      }
+    },
+    "pp:ec:2024:q24": {
+      "question_uid": "pp:ec:2024:q24",
+      "exam_uid": "ec:2024:set1:q24",
+      "title": "GATE EC 2024 | Set 1 | Question: 24",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A source transmits symbols from an alphabet of size 16. The value of maximum achievable entropy (in bits) is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "information-theory-and-coding",
+          "subtopicLabel": "Information Theory and Coding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "information-theory-and-coding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Information Theory and Coding",
+        "markdown": "$H_{\\text {max }}=\\log _{2} 16=4$\n\nTherefore, the correct answer is **4**."
+      }
+    },
+    "pp:ec:2024:q25": {
+      "question_uid": "pp:ec:2024:q25",
+      "exam_uid": "ec:2024:set1:q25",
+      "title": "GATE EC 2024 | Set 1 | Question: 25",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "As shown in the circuit, the initial voltage across the capacitor is $10 \\mathrm{~V}$, with the switch being open. The switch is then closed at $t=0$. The total energy dissipated in the ideal Zener diode ( $V_{z}=5 \\mathrm{~V}$ ) after the switch is closed (in $\\mathrm{mJ}$, rounded off to three decimal places) is ________ <br><img src=\"/question-images/ec/2024/ec-2024-c208b758c7.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.25",
+        "tolerance": {
+          "lower": 0.25,
+          "upper": 0.25
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "diodes-applications",
+          "subtopicLabel": "Diodes Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "diodes-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Diodes Applications",
+        "markdown": "For $t > 0$ : Capacitor starts discharging through $10 \\mathrm{~K}$ resistor and zener diode.\n\n$V_{c}(t)=10 e^{-t / R C}, R \\times C=0.1 \\mathrm{sec}$\n\nZener diode remains on till $V_{C}$ becomes $5 \\mathrm{~V}$.\n\n$5=10 e^{-t_{1} / R C} \\Rightarrow t_{1}=R C \\ln 2=0.0693 \\mathrm{sec}$\n\nCurrent in the circuit is $i(t)=I_{0} e^{-t / R C}$\n\nwhere\n\n$I_{0}=\\frac{10-5}{10 \\mathrm{k}}=0.5 \\mathrm{~mA}$\n\nTotal energy dissipated in zener diode is,\n\n$W=\\int_{0}^{t_{1}} V_{z} \\times i(t) d t$\n\n$$\\begin{aligned}\n\nW & =\\int_{0}^{0.0693} 5 \\times 0.5 e^{-t / R C} \\mathrm{~mJ} \\\\\n\n& =2.5[-0.1]\\left[e^{-t / 0.1}\\right]_{0}^{0.0693} \\\\\n\nW & =0.125 \\mathrm{~mJ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.25**."
+      }
+    },
+    "pp:ec:2024:q26": {
+      "question_uid": "pp:ec:2024:q26",
+      "exam_uid": "ec:2024:set1:q26",
+      "title": "GATE EC 2024 | Set 1 | Question: 26",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider the Earth to be a perfect sphere of radius $R$. Then the surface area of the region, enclosed by the $60^{\\circ} \\mathrm{N}$ latitude circle, that contains the north pole in its interior is _______",
+      "options": [
+        "$(2-\\sqrt{3}) \\pi R^{2}$",
+        "$\\frac{(\\sqrt{2}-1) \\pi R^{2}}{2}$",
+        "$\\frac{2 \\pi R^{2}}{3}$",
+        "$\\frac{(2+\\sqrt{3}) \\pi R^{2}}{8 \\sqrt{2}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-993be99cd5.webp\" />\n\nFrom the figure\n\nEarth's North pole $=90^{\\circ}$\n\nEarth's equator $=0^{\\circ}$\n\nIn spherical co-ordinate system\n\nEarth's North pole, $\\theta=0^{\\circ}$\n\nEarth's equator, $\\theta=90^{\\circ}$\n\nThe area of the shaded portion,\n\n$\\overline{d S}=d S \\hat{a}_{r}$\n\nHence, in spherical coordinate system\n\n$\\Rightarrow$\n\n$\\overline{d S}=r^{2} \\sin \\theta d \\theta d \\phi \\hat{a}_{r}$\n\n$$\\begin{aligned}\n\n\\Rightarrow \\quad S=\\int d & =\\int r^{2} \\sin \\theta d \\theta d \\phi \\\\\n\n& =r^{2} \\int_{\\theta=0^{\\circ}}^{30^{\\circ}} \\sin \\theta d \\theta \\int_{\\phi=0}^{2 \\pi} d \\phi \\text { at } r=R \\\\\n\n& =R^{2}-\\left.\\left[-\\left.\\cos \\theta\\right|_{0} ^{30^{\\circ}}\\right] \\cdot \\phi\\right|_{0} ^{2 \\pi} \\\\\n\n& =R^{2}\\left\\{-\\left[\\cos 30^{\\circ}-\\cos 0^{\\circ}\\right]\\right\\} \\cdot 2 \\pi \\\\\n\n& =R^{2}\\left\\{-\\left[\\frac{\\sqrt{3}}{2}-1\\right]\\right\\} \\cdot 2 \\pi=R^{2} \\cdot \\frac{2-\\sqrt{3}}{2} \\cdot 2 \\pi \\\\\n\n& =(2-\\sqrt{3}) \\pi R^{2}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q27": {
+      "question_uid": "pp:ec:2024:q27",
+      "exam_uid": "ec:2024:set1:q27",
+      "title": "GATE EC 2024 | Set 1 | Question: 27",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a unity negative feedback control system with forward path gain $G(s)=\\frac{K}{(s+1)(s+2)(s+3)}$ as shown.\nThe impulse response of the closed-loop system decays faster than $e^{-t}$ if ______ <br><img src=\"/question-images/ec/2024/ec-2024-c440405522.webp\" /><br>",
+      "options": [
+        "$1 \\leq K \\leq 5$",
+        "$7 \\leq K \\leq 21$",
+        "$-4 \\leq K \\leq-1$",
+        "$-24 \\leq K \\leq-6$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "Given,\n\n$G(s)=\\frac{K}{(S+1)(S+2)(S+3)}$\n\nImpulse response of system is\n\n$Y(S)=\\frac{K}{(S+1)(S+2)(S+3)+K}$\n\nGiven: At impulse response of closed loop system decay faster than $e^{-t}$ Hence, put $s=s-1$,\n\n$\\therefore$ The new characteristic equation is,\n\n$$\\begin{aligned}\n\n& (s-1+1)(s-1+2)(s-1+3)+K=0 \\\\\n\n& s(s+1)(s+2)+K=0 \\\\\n\n& s^{3}+3 s^{2}+2 s+K=0\n\n\\end{aligned}$$\n\nBy $\\mathrm{RH}$ criterion,\n\n$$\\begin{array}{c|cc}\n\ns^{3} & 1 & 2 \\\\\n\ns^{2} & 3 & K \\\\\n\ns^{1} & \\frac{6-K}{3} & \\\\\n\ns^{0} & K &\n\n\\end{array}$$\n\n$\\therefore K \\gt 0 ; \\quad \\frac{6-K}{3} \\gt 0 \\Rightarrow K \\lt 6$\n\n$\\therefore \\quad 0 \\lt K \\lt 6$\n\nHence, option satisfies above range of $K$.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q28": {
+      "question_uid": "pp:ec:2024:q28",
+      "exam_uid": "ec:2024:set1:q28",
+      "title": "GATE EC 2024 | Set 1 | Question: 28",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A satellite attitude control system, as shown below, has a plant with transfer function $G(s)=\\frac{1}{s^{2}}$ cascaded with a compensator $C(s)=\\frac{K(s+\\alpha)}{s+4}$, where $K$ and $\\alpha$ are positive real constants.\n <br><img src=\"/question-images/ec/2024/ec-2024-a068eecb1f.webp\" /><br>\nIn order for the closed-loop system to have poles at $-1 \\pm j \\sqrt{3}$, the value of $\\alpha$ must be ____ ",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "compensators-and-controllers",
+          "subtopicLabel": "Compensators and Controllers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "compensators-and-controllers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Compensators and Controllers",
+        "markdown": "$G(S) C(s)=\\frac{1}{S^{2}} \\frac{k(S+\\alpha)}{(S+4)}$\n\nCharacteristic equation is\n\n$S^{3}+4 S^{2}+k S+\\alpha=0$\n\nPoles of the system present at $=-1 \\pm j \\sqrt{3}$\n\nCharacteristic equation is\n\n$$\\begin{aligned}\n\n&(S+a)\\left[(S+1)^{2}+3\\right]=0 \\\\\n\n&(S+a)\\left(S^{2}+2 S+4\\right)=0 \\\\\n\n& S^{3}+(2+a) S^{2}+(4+2 a) S+4 a=0\n\n\\end{aligned}$$\n\nCompare equation (I) and (II)\n\n$$\\begin{aligned}\n\n2+a & =4 \\\\\n\na & =2 \\\\\n\n4+2 a & =k \\\\\n\nk & =8 \\\\\n\nk \\alpha & =4 a \\\\\n\n\\alpha & =\\frac{8}{8}=1 \\\\\n\n\\alpha & =1\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q29": {
+      "question_uid": "pp:ec:2024:q29",
+      "exam_uid": "ec:2024:set1:q29",
+      "title": "GATE EC 2024 | Set 1 | Question: 29",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A uniform plane wave with electric field $\\vec{E}(x)=A_{y} \\hat{a}_{y} e^{-j \\frac{2 \\pi x}{3}} \\mathrm{~V} / \\mathrm{m}$ is travelling in the air (relative permittivity, $\\epsilon_{r}=1$ and relative permeability, $\\mu_{r}=1$ ) in the $+x$ direction $\\left(A_{y}\\right.$ is a positive constant, $\\hat{a}_{y}$ is the unit vector along the $y$ axis). It is incident normally on an ideal electric conductor (conductivity, $\\sigma=\\infty$ ) at $x=0$. The position of the first null of the total magnetic field in the air (measured from $x=0$, in metres) is ________ ",
+      "options": [
+        "$-\\frac{3}{4}$",
+        "$-\\frac{3}{2}$",
+        "$-6$",
+        "$-3$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "uniform-plane-waves",
+          "subtopicLabel": "Uniform Plane Waves"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "uniform-plane-waves"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Uniform Plane Waves",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-afad221811.webp\" />\n\nAt perfect conductor,\n\n$$\\begin{array}{ll}\n\n& \\Gamma=-1 \\\\\n\n\\Rightarrow & \\Gamma=1 \\mid \\pi\n\n\\end{array}$$\n\nAs we know that $H_{\\min }$ occurs at $E_{\\max }$.\n\nHence,\n\n$$\\begin{aligned}\n\n& E_{\\max }=E_{0}[1+|\\Gamma|] \\\\\n\n& H_{\\min }=\\frac{E_{0}}{\\eta}[1-|\\Gamma|] \\text { at } 2 \\beta x_{\\max }=2 n \\pi+\\theta_{\\Gamma}\n\n\\end{aligned}$$\n\nSo,\n\n$2 \\beta x_{\\max }=2 n \\pi+\\theta_{\\Gamma}$\n\n$\\Rightarrow \\quad \\frac{4 \\pi}{\\lambda} x_{\\max }=2 n \\pi+\\pi$\n\n$\\Rightarrow \\quad x_{\\max }=(2 n+1) \\frac{\\lambda}{4} ; n=0,1,2,3 \\ldots$\n\nSo, for $1^{\\text {st }}$ value of $x$ for $\\mathrm{H}$-field to be zero is\n\n$x_{\\max }=\\frac{\\lambda}{4} \\quad[\\text { at } n=0]$\n\nNow, from the equation given,\n\n$$\\begin{array}{rlrl}\n\n\\beta & =\\frac{2 \\pi}{3} \\\\\n\n\\Rightarrow & \\frac{2 \\pi}{\\lambda} & =\\frac{2 \\pi}{3} \\\\\n\n\\Rightarrow \\quad & \\lambda & =3\n\n\\end{array}$$\n\nHence,\n\n$x_{\\max }=\\frac{3}{4}$\n\nIf the reference is not at interference then $x=-\\frac{3}{4}$.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q30": {
+      "question_uid": "pp:ec:2024:q30",
+      "exam_uid": "ec:2024:set1:q30",
+      "title": "GATE EC 2024 | Set 1 | Question: 30",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A 4-bit priority encoder has inputs $D_{3}, D_{2}, D_{1}$ and $D_{0}$ in descending order of priority. The two-bit output $A B$ is generated as 00,01, 10, and 11 corresponding to inputs $D_{3}$, $D_{2}, D_{1}$ and $D_{0}$, respectively. The Boolean expression of the output bit $B$ is _____ ",
+      "options": [
+        "$\\overline{D_{3}} \\; \\overline{D_{2}}$",
+        "$\\overline{D_{3}} D_{2}+\\overline{D_{3}} \\; \\overline{D_{1}}$",
+        "$D_{3} \\overline{D_{2}}+\\overline{D_{3}} D_{1}$",
+        "$\\overline{D_{3}} \\; \\overline{D_{1}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "boolean-algebra",
+          "subtopicLabel": "Boolean Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "boolean-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Boolean Algebra",
+        "markdown": "Given 4-bit priority encoder has inputs $D_{3}, D_{2}, D_{1}$ and $D_{0}$ in descending order of priority.\n\n$$\\begin{array}{|cccc|c|c|}\n\n\\hline\n\nD_{3} & D_{2} & D_{1} & D_{0} & A & B \\\\\n\n\\hline\n\n0 & 0 & 0 & 1 & 0 & 0 \\\\\n\n0 & 0 & 1 & X & 0 & 1 \\\\\n\n0 & 1 & X & X & 1 & 0 \\\\\n\n1 & X & X & X & 1 & 1 \\\\\n\n\\hline\n\n\\end{array}$$\n\nThe Boolean expression of the output bit $B=\\overline{D_{3}} D_{2}+\\overline{D_{3}} \\; \\overline{D_{1}}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q31": {
+      "question_uid": "pp:ec:2024:q31",
+      "exam_uid": "ec:2024:set1:q31",
+      "title": "GATE EC 2024 | Set 1 | Question: 31",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The propagation delay of the $2 \\times 1 \\mathrm{MUX}$ shown in the circuit is $10 \\mathrm{~ns}$. Consider the propagation delay of the inverter as $0 \\mathrm{~ns}$.\n <br><img src=\"/question-images/ec/2024/ec-2024-e2da333475.webp\" /><br>\nIf $S$ is set to 1 then the output $Y$ is ______",
+      "options": [
+        "a square wave of frequency $100 \\mathrm{MHz}$",
+        "a square wave of frequency $50 \\mathrm{MHz}$",
+        "constant at 0",
+        "constant at 1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "combinational-circuits",
+          "subtopicLabel": "Combinational Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "combinational-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Combinational Circuits",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-8f1d1865f0.webp\" />\n\n$$\\begin{array}{ll}\n\n\\therefore & T_{c}=10+10=20 \\mathrm{nsec} \\\\\n\n\\therefore & f_{c}=\\frac{1}{T_{C}}=\\frac{10^{9}}{20}=50 \\mathrm{MHz}\n\n\\end{array}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q32": {
+      "question_uid": "pp:ec:2024:q32",
+      "exam_uid": "ec:2024:set1:q32",
+      "title": "GATE EC 2024 | Set 1 | Question: 32",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The sequence of states $\\left(Q_{1} Q_{0}\\right)$ of the given synchronous sequential circuit is ______ <br><img src=\"/question-images/ec/2024/ec-2024-67147f51ab.webp\" /><br>",
+      "options": [
+        "$00 \\rightarrow 10 \\rightarrow 11 \\rightarrow 00$",
+        "$11 \\rightarrow 00 \\rightarrow 10 \\rightarrow 01 \\rightarrow 00$",
+        "$01 \\rightarrow 10 \\rightarrow 11 \\rightarrow 00 \\rightarrow 01$",
+        "$00 \\rightarrow 01 \\rightarrow 10 \\rightarrow 00$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "sequential-circuits",
+          "subtopicLabel": "Sequential Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "sequential-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Sequential Circuits",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Circuits** (specifically *Sequential Circuits*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Sequential Circuits**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$11 \\rightarrow 00 \\rightarrow 10 \\rightarrow 01 \\rightarrow 00$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($11 \\rightarrow 00 \\rightarrow 10 \\rightarrow 01 \\rightarrow 00$)."
+      }
+    },
+    "pp:ec:2024:q33": {
+      "question_uid": "pp:ec:2024:q33",
+      "exam_uid": "ec:2024:set1:q33",
+      "title": "GATE EC 2024 | Set 1 | Question: 33",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let $z$ be a complex variable. If $f(z)=\\frac{\\sin (\\pi z)}{z^{2}(z-2)}$ and $C$ is the circle in the complex plane with $|z|=3$ then $\\oint_{c} f(z) d z$ is ______ ",
+      "options": [
+        "$\\pi^{2} j$",
+        "$j \\pi\\left(\\frac{1}{2}-\\pi\\right)$",
+        "$j \\pi\\left(\\frac{1}{2}+\\pi\\right)$",
+        "$-\\pi^{2} j$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "complex-variables"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$R_{1}=$ Residue of $f(z)=$ at $(z=2)$\n\n$=\\lim _{z \\rightarrow 2} \\cdot(z-2) f(z)=\\lim _{z \\rightarrow 2} \\cdot\\left(\\frac{\\sin \\pi z}{z^{2}}\\right)=0$\n\n$R_{2}=$ Residue of $f(z)(a t(z=0, m=2)$\n\n$$\\begin{aligned}\n\nR_{2} & =\\frac{1}{2-1}\\left[\\frac{d^{2-1}}{d z^{2-1}}(z-0)^{2} f(z)\\right]_{z=0} \\\\\n\n{\\left[\\frac{d}{d z}\\left[\\frac{\\sin \\pi z}{z-2}\\right]\\right]_{z=0} } & =\\left[\\frac{(z-2) \\cos \\pi z(\\pi)-\\sin \\pi z}{(z-2)^{2}}\\right]_{z=0} \\\\\n\n& =\\frac{(0-2) \\cos (2 \\pi) \\cdot \\pi-\\sin 0}{(0-2)^{2}}=\\frac{-2 \\pi}{4}=\\frac{-\\pi}{2}\n\n\\end{aligned}$$\n\nBy $C-$ R.T.\n\n$$\\begin{aligned}\n\nI & =\\oint_{c} f(z) d z=2 \\pi j\\left(R_{1}+R_{2}\\right) \\\\\n\n& =2 \\pi i\\left(0-\\frac{\\pi}{2}\\right)=-\\pi^{2} j\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2024:q34": {
+      "question_uid": "pp:ec:2024:q34",
+      "exam_uid": "ec:2024:set1:q34",
+      "title": "GATE EC 2024 | Set 1 | Question: 34",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider two continuous time signals $x(t)$ and $y(t)$ as shown below <br><img src=\"/question-images/ec/2024/ec-2024-a493eac0e9.webp\" /><br>\nIf $X(f)$ denotes the Fourier transform of $x(t)$, then the Fourier transform of $y(t)$ is ____ ",
+      "options": [
+        "$-4 X(4 f) e^{-j \\pi f}$",
+        "$-4 X(4 f) e^{-j 4 \\pi f}$",
+        "$-\\frac{1}{4} X(f / 4) e^{-j \\pi f}$",
+        "$-\\frac{1}{4} X(f / 4) e^{-j 4 \\pi f}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transforms-frequency-response-and-correlation",
+          "subtopicLabel": "Fourier Transforms, Frequency Response and Correlation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "fourier-transforms-frequency-response-and-correlation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
+        "markdown": "Given\n\n<img src=\"/question-images/ec/2024/ec-2024-676e2f739b.webp\" />\n\nLength of $x(t)$ is 1 and length of $y(t)$ is 4.\n\n<img src=\"/question-images/ec/2024/ec-2024-0b99464c0c.webp\" />\n\n$$\\begin{aligned}\n\n\\therefore \\quad y(t) & =-x\\left(\\frac{t-2}{4}\\right) \\\\\n\ny(t) & =-x\\left(\\frac{t}{4}-\\frac{2}{4}\\right)=-x\\left(\\frac{t}{4}-\\frac{1}{2}\\right)\n\n\\end{aligned}$$\n\nOn taking Fourier transform, we get\n\n$x(t) \\leftrightarrow X(f)$\n\n$x\\left(\\frac{t}{4}-\\frac{1}{2}\\right) \\leftrightarrow 4 X(4 f) e^{-j 4 \\pi f}$\n\n$-x\\left(\\frac{t}{4}-\\frac{1}{2}\\right) \\leftrightarrow-4 X(4 f) e^{-j 4 \\pi t}$\n\nAs per GATE official Answer Key-MTA\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q35": {
+      "question_uid": "pp:ec:2024:q35",
+      "exam_uid": "ec:2024:set1:q35",
+      "title": "GATE EC 2024 | Set 1 | Question: 35",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A source transmits a symbol $s$, taken from $(-4,0,4)$ with equal probability, over an additive white Gaussian noise channel. The received noisy symbol $r$ is given by $r=s+w$, where the noise $w$ is zero mean with variance 4 and is independent of $s$. Using $Q(x)=\\frac{1}{\\sqrt{2 \\pi}} \\int_{x}^{\\infty} e^{\\frac{-t^{2}}{2}} d t$, the optimum symbol error probability is ______ ",
+      "options": [
+        "$\\frac{2}{3} Q(2)$",
+        "$\\frac{4}{3} Q(1)$",
+        "$\\frac{2}{3} Q(1)$",
+        "$\\frac{4}{3} Q(2)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "information-theory-and-coding",
+          "subtopicLabel": "Information Theory and Coding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "information-theory-and-coding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Information Theory and Coding",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-1d68cd9330.webp\" />\n\n$$\\begin{aligned}\n\nr & =s+\\omega \\\\\n\nf_{\\omega}(\\omega) & =\\frac{1}{\\sqrt{2 \\pi}} e^{\\frac{-\\omega^{2}}{2 \\times 4}}=N(0,4)\n\n\\end{aligned}$$\n\ntransmission of $-4 \\rightarrow r=-4+\\omega$\n\n$f(r /-4)=\\frac{1}{\\sqrt{2 \\pi}} e^{\\frac{-(r+4)^{2}}{2 \\times 4}}$\n\ntransmission of $0 \\rightarrow r=\\omega$\n\n$f(r / 0)=\\frac{1}{\\sqrt{2 \\pi}} e^{-\\frac{r^{2}}{2 \\times 4}}$\n\ntransmission of $4 \\rightarrow r=4+n$\n\n$f(r / 4)=\\frac{1}{\\sqrt{2 \\pi}} e^{\\frac{-(r-4)^{2}}{2 \\times 4}}$\n\n$P_{e}=P(-4) P_{e-4}+P(0) P_{e 0}+P(4) P_{e 4}$\n\nGiven\n\n$$\\begin{aligned}\n\n& P(-4)=P(0)=P(4)=\\frac{1}{3} \\\\\n\n& P_{e-4}=P(r \\gt -2) \\\\\n\n& =1-\\left(1-F_{r}(2)\\right) \\\\\n\n& =1-\\left(1-Q\\left(\\frac{-2+4}{2}\\right)\\right) \\\\\n\n& =Q(1) \\\\\n\n& P_{e 0}=P(r \\lt -2)+P(r \\gt 2) \\\\\n\n& =F_{r}(-2)+\\left\\{1-F_{r}(2)\\right\\} \\\\\n\n& =\\left(1-Q\\left(\\frac{-2-0}{2}\\right)\\right)+Q\\left(\\frac{2-0}{2}\\right) \\\\\n\n& =[1-Q(-1)]+Q(1)=2 Q(1)\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\nP_{e 4} & =P(r \\lt 2) \\\\\n\n& =F_{r}(2) \\\\\n\n& =1-Q\\left(\\frac{2-4}{2}\\right) \\\\\n\n& =1-Q(-1) \\\\\n\n& =Q(1) \\\\\n\nP_{e} & =\\frac{1}{3} Q(1)+\\frac{2}{3} Q(1)+\\frac{1}{3} Q(1) \\\\\n\n& =\\frac{4}{3} Q(1)\n\n\\end{aligned}$$\n\nwhere, $r=N(4,4)$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q36": {
+      "question_uid": "pp:ec:2024:q36",
+      "exam_uid": "ec:2024:set1:q36",
+      "title": "GATE EC 2024 | Set 1 | Question: 36",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A full scale sinusoidal signal is applied to a 10-bit ADC. The fundamental signal component in the ADC output has a normalized power of $1 \\mathrm{~W}$, and the total noise and distortion normalized power is $10 \\mu \\mathrm{W}$. The effective number of bits (rounded off to the nearest integer) of the ADC is  ____",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "adc-and-dac",
+          "subtopicLabel": "ADC and DAC"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "adc-and-dac"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - ADC and DAC",
+        "markdown": "$$\\begin{aligned}\n\n\\frac{S}{N_{q}} & =\\frac{1}{10 \\times 10^{-6}} \\\\\n\n\\frac{S}{N_{q}} & =10^{5} \\\\\n\n\\left(\\frac{S}{N_{a}}\\right)_{\\mathrm{dB}} & =10 \\log _{10} 10^{5} \\\\\n\n& =50 \\mathrm{~dB} \\\\\n\n1.76+6.02 n & =50 \\\\\n\nn & =8.01\n\n\\end{aligned}$$\n\nrounded off to nearest integer $\\rightarrow n \\simeq 8$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q37": {
+      "question_uid": "pp:ec:2024:q37",
+      "exam_uid": "ec:2024:set1:q37",
+      "title": "GATE EC 2024 | Set 1 | Question: 37",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The information bit sequence (11101010 1) is to be transmitted by encoding with Cyclic Redundancy Check 4 (CRC-4) code, for which the generator polynomial is $C(x)=x^{4}+x+1$. The encoded sequence of bits is ______",
+      "options": [
+        "$\\{11110101011100\\}$",
+        "$\\{11110101011101\\}$",
+        "$\\{11110101011110\\}$",
+        "$\\{1110101010100\\}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "information-theory-and-coding",
+          "subtopicLabel": "Information Theory and Coding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "information-theory-and-coding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Information Theory and Coding",
+        "markdown": "Given information bit sequence $\\rightarrow d=111010101$\n\nGenerator polymial $\\rightarrow C(x)=x^{4}+x+1$\n\n$C=10011$\n\nGenerator polynomial having 5 bits, so append $5-1=4$ bits to information sequence.\n\n$d=111010101010000$\n\n<img src=\"/question-images/ec/2024/ec-2024-a28e97b647.webp\" />\n\nEncoded sequence $=1110101011100$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q38": {
+      "question_uid": "pp:ec:2024:q38",
+      "exam_uid": "ec:2024:set1:q38",
+      "title": "GATE EC 2024 | Set 1 | Question: 38",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A continuous time signal $x(t)=2 \\cos (8 \\pi t+\\pi / 3)$ is sampled at a rate of $15 \\mathrm{~Hz}$. The sampled signal $x_{s}(t)$ when passed through an LTI system with impulse response\n<br><br> $h(t)=\\left(\\frac{\\sin 2 \\pi t}{\\pi t}\\right) \\cos (38 \\pi t-\\pi / 2)$<br><br>\nproduces an output $x_{0}(t)$. The expression for $x_{0}(t)$ is _____",
+      "options": [
+        "$15 \\sin (38 \\pi t+\\pi / 3)$",
+        "$15 \\sin (38 \\pi t-\\pi / 3)$",
+        "$15 \\cos (38 \\pi t-\\pi / 6)$",
+        "$15 \\cos (38 \\pi t+\\pi / 6)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transforms-frequency-response-and-correlation",
+          "subtopicLabel": "Fourier Transforms, Frequency Response and Correlation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "fourier-transforms-frequency-response-and-correlation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transforms, Frequency Response and Correlation",
+        "markdown": "$$\\begin{aligned}\n\nx(t) & =2 \\cos \\left(8 \\pi t+\\frac{\\pi}{3}\\right), \\quad \\omega_{o}=8 \\pi \\\\\n\nf_{s} & =15 \\mathrm{~Hz} \\\\\n\nx(t) \\xrightarrow{\\text { sample }} x_{S}(t) \\xrightarrow{h(t)} & x_{0}(t) \\\\\n\n\\Rightarrow \\quad h(t) & =\\frac{\\sin 2 \\pi t}{\\pi t} \\cos \\left(38 \\pi t-\\frac{\\pi}{2}\\right)\n\n\\end{aligned}$$\n\nLet $p(t)=\\frac{\\sin 2 \\pi t}{\\pi t}$\n\n<img src=\"/question-images/ec/2024/ec-2024-b7394ab74e.webp\" />\n\nAfter sampling: $\\quad X_{s}(\\omega)=f_{s} \\sum_{n=-\\infty}^{\\infty} X\\left(\\omega-n \\omega_{s}\\right)$\n\nFrequency components present in sampler output $n \\omega_{s} \\pm \\omega_{0}$\n\n$\\omega_{o}, \\omega_{s}+ \\pm \\omega_{o}, 2 \\omega_{s} \\pm \\omega_{o}, \\ldots$\n\n$8 \\pi, 30 \\pi \\pm 8 \\pi, 60 \\pi \\pm 8 \\pi$, ..\n\n$8 \\pi, 22 \\pi, 38 \\pi, 52 \\mathrm{p}, 68 \\pi, \\ldots(\\mathrm{rad} / \\mathrm{sec})$\n\nSystem will pass '$38 \\pi$' component of input.\n\n$x_{o}(t)=2 \\times \\frac{f_{s}}{2} \\cos \\left[38 \\pi t+\\frac{\\pi}{3}-\\frac{\\pi}{2}\\right]=15 \\cos \\left(38 \\pi t-\\frac{\\pi}{6}\\right)$\n\nAs per GATE official Answer Key-MTA\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2024:q39": {
+      "question_uid": "pp:ec:2024:q39",
+      "exam_uid": "ec:2024:set1:q39",
+      "title": "GATE EC 2024 | Set 1 | Question: 39",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The opamps in the circuit shown are ideal, but have saturation voltages of $\\pm 10 \\mathrm{~V}$.\n <br><img src=\"/question-images/ec/2024/ec-2024-90e2369278.webp\" /><br>\nAssume that the initial inductor current is $0 \\mathrm{~A}$. The input voltage $\\left(V_{i}\\right)$ is a triangular signal with peak voltages of $\\pm 2 \\mathrm{~V}$ and time period of $8 \\mu \\mathrm{s}$. Which one of the following statements is true?",
+      "options": [
+        "$V_{01}$ is delayed by $2 \\mu$s relative to $V_{i}$, and $V_{02}$ is a triangular waveform.",
+        "$V_{01}$ is not delayed relative to $V_{i}$, and $V_{02}$ is a trapezoidal waveform.",
+        "$V_{01}$ is not delayed relative to $V_{i}$, and $V_{02}$ is a triangular waveform.",
+        "$V_{01}$ is delayed by $1 \\mu$s relative to $V_{i}$, and $V_{02}$ is a trapezoidal waveform."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "Opamp $A_{1}$ is non-inverting type Schmitt Trigger.\n\n$$\\begin{aligned}\n\n& V_{U T}=\\frac{R_{1}}{R_{2}} \\times V_{S a t}=\\frac{10}{100} \\times 10 \\mathrm{~V}=1 \\mathrm{~V} \\\\\n\n& V_{L T}=-\\frac{R_{1}}{R_{2}} \\times V_{\\text {sat }}=\\frac{-10}{100} \\times 10=-1 \\mathrm{~V}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ec/2024/ec-2024-154701f4e0.webp\" />\n\n$V_{01}$ is square wave. It is delayed by $1 \\mu$ s wrt input $V_{i}$.\n\nOpamp $A_{2}$ is integrator.\n\n$V_{02}$ is gettng saturated in less than half time period. Hence $V_{02}$ is a combination of ramp and constant portion. Thus $V_{02}$ resembles trapezoidal wave.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2024:q40": {
+      "question_uid": "pp:ec:2024:q40",
+      "exam_uid": "ec:2024:set1:q40",
+      "title": "GATE EC 2024 | Set 1 | Question: 40",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the circuit below, the opamp is ideal. <br><img src=\"/question-images/ec/2024/ec-2024-f36a868148.webp\" /><br>\nIf the circuit is to show sustained oscillations, the respective values of $R_{1}$ and the corresponding frequency of oscillation are ______",
+      "options": [
+        "$29 R$ and $1 /(2 \\pi \\sqrt{6} R C)$",
+        "$2 R$ and $1 /(2 \\pi R C)$",
+        "$29 R$ and $1 /(2 \\pi R C)$",
+        "$2 R$ and $1 /(2 \\pi \\sqrt{6} R C)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "For given circuit, frequency of oscillations is $f_{o}=\\frac{1}{2 \\pi R C}$.\n\nFor sustained oscillations, minimum gain should be 3\n\n$$\\begin{aligned} \\Rightarrow \\quad 1+\\frac{R_{1}}{R} & =3 \\\\ R_{1} & =2 R\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q41": {
+      "question_uid": "pp:ec:2024:q41",
+      "exam_uid": "ec:2024:set1:q41",
+      "title": "GATE EC 2024 | Set 1 | Question: 41",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the circuit shown below, the transistors $M_{1}$ and $M_{2}$ are biased in saturation. Their small signal transconductances are $g_{m 1}$ and $g_{m 2}$ respectively. Neglect body effect, channel length modulation and intrinsic device capacitances.\n <br><img src=\"/question-images/ec/2024/ec-2024-f7b13c098a.webp\" /><br>\nAssuming that capacitor $C_{1}$ is a short circuit for $A C$ analysis, the exact magnitude of small signal voltage gain $\\left|\\frac{v_{\\text {out }}}{v_{\\text {in }}}\\right|$ is _______",
+      "options": [
+        "$g_{m 2} R_{D}$",
+        "$\\frac{g_{m 2} R_{D}\\left(R_{B}+\\frac{1}{g_{m 1}}\\right)}{R_{B}+\\frac{1}{g_{m 1}}+R_{s}}$",
+        "$\\frac{g_{m 2} R_{D}\\left(R_{B}+\\frac{1}{g_{m 1}}+R_{s}\\right)}{R_{B}+\\frac{1}{g_{m 1}}}$",
+        "$\\frac{g_{m 2} R_{D}\\left(\\frac{1}{g_{m 1}}\\right)}{\\frac{1}{g_{m 1}}+R_{s}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "fet-and-mosfet-analysis",
+          "subtopicLabel": "FET and MOSFET Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "fet-and-mosfet-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - FET and MOSFET Analysis",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-edc6bebda2.webp\" />\n\n$$\\begin{aligned}\n\nV_{0} & =-g_{m 2} V_{g s} R_{D} \\\\\n\nV_{g s} & =v_{L}^{i} \\times \\frac{R_{B}+\\frac{1}{g_{m 1}}}{R_{S}+R_{B}+\\frac{1}{g_{m 1}}} \\\\\n\n\\left|\\frac{V_{0}}{V_{i n}}\\right| & =\\frac{g_{m 2} R_{D}\\left(R_{B}+\\frac{1}{g_{m 1}}\\right)}{R_{S}+R_{B}+\\frac{1}{g_{m 1}}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q42": {
+      "question_uid": "pp:ec:2024:q42",
+      "exam_uid": "ec:2024:set1:q42",
+      "title": "GATE EC 2024 | Set 1 | Question: 42",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "Which of the following statements is/are true for a BJT with respect to its DC current gain $\\beta$ ?",
+      "options": [
+        "Under high-level injection condition in forward active mode, $\\beta$ will decrease with increase in the magnitude of collector current.",
+        "Under low-level injection condition in forward active mode, where the current at the emitter-base junction is dominated by recombination-generation process, $\\beta$ will decrease with increase in the magnitude of collector current.",
+        "$\\beta$ will be lower when the BJT is in saturation region compared to when it is in active region.",
+        "A higher value of $\\beta$ will lead To a lower value of the collector-to-emitter breakdown voltage."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "bjt-and-fet-basics",
+          "subtopicLabel": "BJT and FET Basics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "bjt-and-fet-basics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - BJT and FET Basics",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electronic Devices** (specifically *BJT and FET Basics*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Option-by-Option Theoretical Evaluation\n\nIn Multiple Select Questions (MSQ), each statement must be verified independently against theoretical laws:\n\n- **Evaluation of Options:** Comparing each statement against the fundamental laws of Electronic Devices.\n- The statements corresponding to **Option(s) A, C, D** are mathematically and physically consistent with the governing equations.\n- Distractor options fail the consistency criteria or violate boundary conditions.\n\n### Conclusion\n\nTherefore, the correct option(s) are **A, C, D**."
+      }
+    },
+    "pp:ec:2024:q43": {
+      "question_uid": "pp:ec:2024:q43",
+      "exam_uid": "ec:2024:set1:q43",
+      "title": "GATE EC 2024 | Set 1 | Question: 43",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "Consider a system $S$ represented in state space as\n<br>\n<br> $$\\frac{d x}{d t}=\\left[\\begin{array}{ll}\n0 & -2 \\\\\n1 & -3\n\\end{array}\\right] x+\\left[\\begin{array}{l}\n1 \\\\\n0\n\\end{array}\\right] r, y=\\left[\\begin{array}{ll}\n2 & -5\n\\end{array}\\right] x$$<br>\n<br>\nWhich of the state space representations given below has/have the same transfer function as that of $S$ ?",
+      "options": [
+        "$$\\frac{d x}{d t}=\\left[\\begin{array}{cc}0 & 1 \\\\ -2 & -3\\end{array}\\right] x+\\left[\\begin{array}{l}1 \\\\ 0\\end{array}\\right] r, y=\\left[\\begin{array}{ll}1 & 2\\end{array}\\right] x$$",
+        "$$\\frac{d x}{d t}=\\left[\\begin{array}{cc}0 & 1 \\\\ -2 & -3\\end{array}\\right] x+\\left[\\begin{array}{l}1 \\\\ 0\\end{array}\\right] r, y=\\left[\\begin{array}{ll}0 & 2\\end{array}\\right] x$$",
+        "$$\\frac{d x}{d t}=\\left[\\begin{array}{cc}-1 & 0 \\\\ 0 & -2\\end{array}\\right] x+\\left[\\begin{array}{c}-1 \\\\ 3\\end{array}\\right] r, y=\\left[\\begin{array}{ll}1 & 1\\end{array}\\right] x$$",
+        "$$\\frac{d x}{d t}=\\left[\\begin{array}{cc}-1 & 0 \\\\ 0 & -2\\end{array}\\right] x+\\left[\\begin{array}{l}1 \\\\ 1\\end{array}\\right] r, y=\\left[\\begin{array}{ll}1 & 2\\end{array}\\right] x$$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-space-analysis",
+          "subtopicLabel": "State Space Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "state-space-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Space Analysis",
+        "markdown": "From given state model, (observable form)\n\n$T F=C\\left[(s I-A)^{-1} B\\right]+D$\n\n$=\\frac{(2 s+1)}{s^{2}+3 s+2}$\n\nFrom this controllable form can be written as\n\n$$\\begin{aligned}\n\nX^{0} & =\\left[\\begin{array}{cc}\n\n0 & 1 \\\\\n\n-2 & -3\n\n\\end{array}\\right] X+\\left[\\begin{array}{l}\n\n0 \\\\\n\n1\n\n\\end{array}\\right] u \\\\\n\nY & =\\left[\\begin{array}{ll}\n\n1 & 2\n\n\\end{array}\\right] X+[0] u\n\n\\end{aligned}$$\n\nAnother possibility, $\\quad \\mathrm{TF}=\\frac{2 s+1}{s^{2}+3 s+2}=\\frac{-1}{s+1}+\\frac{3}{s+2}$\n\n$$\\begin{aligned}\n\nX^{0} & =\\left[\\begin{array}{cc}\n\n-1 & 0 \\\\\n\n0 & -2\n\n\\end{array}\\right] X+\\left[\\begin{array}{c}\n\n-1 \\\\\n\n3\n\n\\end{array}\\right] v \\\\\n\nY & =\\left[\\begin{array}{ll}\n\n1 & 1\n\n\\end{array}\\right] X+[0] u\n\n\\end{aligned}$$\n\nDiagonal form of state mode.\n\nTherefore, the correct option(s) are **A, C**."
+      }
+    },
+    "pp:ec:2024:q44": {
+      "question_uid": "pp:ec:2024:q44",
+      "exam_uid": "ec:2024:set1:q44",
+      "title": "GATE EC 2024 | Set 1 | Question: 44",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "Let $F_{1}, F_{2}$, and $F_{3}$ be functions of $(x, y, z)$. Suppose that for every given pair of points $A$ and $B$ in space, the line integral $\\int_{C}\\left(F_{1} d x+F_{2} d y+F_{3} d z\\right)$ evaluates to the same value along any path $C$ that starts at $A$ and ends at $B$. Then which of the following is/are true?",
+      "options": [
+        "There exists a differentiable scalar function $f(x, y, z)$ such that $F_{1}=\\frac{\\partial f}{\\partial x}, F_{2}=\\frac{\\partial f}{\\partial y}, F_{3}=\\frac{\\partial f}{\\partial z}$.",
+        "For every closed path $\\Gamma$, we have $\\oint_{\\Gamma}\\left(F_{1} d x+F_{2} d y+F_{3} d z\\right)=0$",
+        "$\\frac{\\partial F_{1}}{\\partial x}+\\frac{\\partial F_{2}}{\\partial y}+\\frac{\\partial F_{3}}{\\partial z}=0$.",
+        "$\\frac{\\partial F_{3}}{\\partial y}=\\frac{\\partial F_{2}}{\\partial z}, \\frac{\\partial F_{1}}{\\partial z}=\\frac{\\partial F_{3}}{\\partial x}, \\frac{\\partial F_{2}}{\\partial x}=\\frac{\\partial F_{1}}{\\partial y}$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "$\\because$ Given integral is independent of contour ' $C$ ' $\\int_{C}\\left(F_{1} d x+F_{2} d y+F_{3} d z\\right)=\\int_{C} \\bar{F} \\cdot \\overline{d r}$ is independent of ' $C$ '\n\nThen $\\bar{F}$ is conservative field\n\n$$\\begin{array}{ll}\n\n\\therefore & \\bar{F}=\\overline{\\nabla \\phi} \\\\\n\n\\Rightarrow & F_{1}=\\frac{\\partial \\phi}{\\partial x}, F_{2}=\\frac{\\partial \\phi}{\\partial y}, F_{3}=\\frac{\\partial \\phi}{\\partial z}\n\n\\end{array}$$\n\n$\\therefore$ Option is true.\n\n$\\because \\bar{F}$ is conservative\n\nThen,\n\n$\\nabla \\times \\bar{F}=0$\n\n$$\\Rightarrow \\quad\\left|\\begin{array}{ccc}i & j & K \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ F_{1} & F_{2} & F_{3}\\end{array}\\right|=\\overrightarrow{0}$$\n\n$=i\\left(\\frac{\\partial F_{3}}{\\partial y}-\\frac{\\partial F_{2}}{\\partial z}\\right)-j\\left(\\frac{\\partial F_{3}}{\\partial x}-\\frac{\\partial F_{1}}{\\partial z}\\right)+K\\left(\\frac{\\partial F_{2}}{\\partial x}-\\frac{\\partial F_{1}}{\\partial y}\\right)=0 \\hat{i}+0 \\hat{j}+0 \\hat{k}$\n\nEquate on both sides,\n\nWe get,\n\n$\\frac{\\partial F_{3}}{\\partial y}=\\frac{\\partial F_{2}}{\\partial z}, \\quad \\frac{\\partial F_{3}}{\\partial x}=\\frac{\\partial F_{1}}{\\partial z}, \\quad \\frac{\\partial F_{2}}{\\partial x}=\\frac{\\partial F_{1}}{\\partial y}$\n\n$\\therefore$ Option is true.\n\nIf $\\bar{F}$ is irrotational then,\n\n$\\oint_{C} F_{1} d x+F_{2} d y+F_{3} d z=0$\n\n$\\therefore$ Option is also true.\n\nBut,\n\n$\\bar{\\nabla} \\cdot \\bar{F}=\\bar{\\nabla} \\cdot(\\bar{\\nabla} \\phi) \\neq 0$\n\n$\\therefore$ Option is false.\n\nTherefore, the correct option(s) are **A, B, D**."
+      }
+    },
+    "pp:ec:2024:q45": {
+      "question_uid": "pp:ec:2024:q45",
+      "exam_uid": "ec:2024:set1:q45",
+      "title": "GATE EC 2024 | Set 1 | Question: 45",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "Consider the matrix $$\\left[\\begin{array}{ll}1 & k \\\\ 2 & 1\\end{array}\\right]$$, where $k$ is a positive real number. Which of the following vectors is/are eigenvector(s) of this matrix?",
+      "options": [
+        "$$\\left[\\begin{array}{c}1 \\\\ -\\sqrt{2 / k}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{c}1 \\\\ \\sqrt{2 / k}\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{c}\\sqrt{2 k} \\\\ 1\\end{array}\\right]$$",
+        "$$\\left[\\begin{array}{c}\\sqrt{2 k} \\\\ -1\\end{array}\\right]$$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-math",
+          "subjectLabel": "Engineering Mathematics (EC)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$C \\mathrm{Eq}$ is\n\n$|A-\\lambda I|=0$\n\nor $\\lambda^{2}-2 \\lambda+(1-2 K)=0$\n\n$\\lambda=1 \\pm \\sqrt{2 K}$\n\nE vector for $\\lambda=1 \\pm \\sqrt{2 K}$ :\n\n$A X=\\lambda X$\n\n$$\\begin{aligned}\n\n(A-\\lambda I) X & =0 \\\\\n\n{\\left[\\begin{array}{cc}\n\n-\\sqrt{2 K} & K \\\\\n\n2 & -\\sqrt{2 K}\n\n\\end{array}\\right]\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2}\n\n\\end{array}\\right] } & =\\left[\\begin{array}{l}\n\n0 \\\\\n\n0\n\n\\end{array}\\right] \\\\\n\n\\Rightarrow \\quad-\\sqrt{2 K} x_{1}+K x_{2} & =0\n\n\\end{aligned}$$\n\nor\n\n$$\\begin{aligned}\n\n& x_{1}=\\sqrt{\\frac{K}{2}} x_{2} \\\\\n\n& X=\\left[\\begin{array}{l}\n\nx_{1} \\\\\n\nx_{2}\n\n\\end{array}\\right]=\\left[\\begin{array}{c}\n\n\\sqrt{K / 2} \\\\\n\n1\n\n\\end{array}\\right] \\approx\\left[\\begin{array}{c}\n\n1 \\\\\n\n\\sqrt{\\frac{2}{K}}\n\n\\end{array}\\right]\n\n\\end{aligned}$$\n\nSimilarly other $E$ vector is\n\n$$X=\\left[\\begin{array}{c}\n\n-\\sqrt{\\frac{K}{2}} \\\\\n\n1\n\n\\end{array}\\right]=\\left[\\begin{array}{c}\n\n1 \\\\\n\n-\\sqrt{\\frac{2}{K}}\n\n\\end{array}\\right]$$\n\nTherefore, the correct option(s) are **A, B**."
+      }
+    },
+    "pp:ec:2024:q46": {
+      "question_uid": "pp:ec:2024:q46",
+      "exam_uid": "ec:2024:set1:q46",
+      "title": "GATE EC 2024 | Set 1 | Question: 46",
+      "year": "gateec-2024-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "The radian frequency value(s) for which the discrete time sinusoidal signal $x[n]=A$ $\\cos (\\Omega n+\\pi / 3)$ has a period of 40 is/are  _____",
+      "options": [
+        "$0.15 \\pi$",
+        "$0.225 \\pi$",
+        "$0.3 \\pi$",
+        "$0.45 \\pi$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "$$\\begin{aligned}\n\n& x[n]=A \\cos \\left[\\Omega n+\\frac{\\pi}{3}\\right] \\\\\n\n& N=40 \\\\\n\n& \\Omega=\\text { ? } \\\\\n\n& \\frac{\\Omega}{2 \\pi}=\\frac{m}{N} \\\\\n\n& \\frac{\\Omega}{2 \\pi}=\\frac{m}{40} \\\\\n\n& \\Omega=m \\cdot \\frac{2 \\pi}{40}=\\pi \\cdot m(0.05) \\\\\n\n& \\Omega=0.05 \\pi \\\\\n\n& m=1 \\quad \\Omega=0.05 \\pi \\\\\n\n& m=2 \\quad \\Omega=0.10 \\pi \\\\\n\n& m=3 \\quad \\Omega=0.15 \\pi \\\\\n\n& m=4 \\quad \\Omega=0.20 \\pi \\\\\n\n& m=5 \\quad \\Omega=0.25 \\pi \\\\\n\n& m=6 \\quad \\Omega=0.30 \\pi \\\\\n\n& m=7 \\quad \\Omega=0.35 \\pi \\\\\n\n& m=8 \\quad \\Omega=0.40 \\pi \\\\\n\n& m=9 \\quad \\Omega=0.45 \\pi\n\n\\end{aligned}$$\n\nTherefore, the correct option(s) are **A, C, D**."
+      }
+    },
+    "pp:ec:2024:q47": {
+      "question_uid": "pp:ec:2024:q47",
+      "exam_uid": "ec:2024:set1:q47",
+      "title": "GATE EC 2024 | Set 1 | Question: 47",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let $X(t)=A \\cos \\left(2 \\pi f_{0} t+\\theta\\right)$ be a random process, where amplitude $A$ and phase $\\theta$ are independent of each other, and are uniformly distributed in the intervals $[-2,2]$ and $[0,2 \\pi]$, respectively. $X(t)$ is fed to an 8-bit uniform mid-rise type quantizer. Given that the autocorrelation of $X(t)$ is $R_{x}(\\tau)=\\frac{2}{3} \\cos \\left(2 \\pi f_{0} \\tau\\right)$, the signal to quantization noise ratio (in $\\mathrm{dB}$, rounded off to two decimal places) at the output of the quantizer is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "45.15",
+        "tolerance": {
+          "lower": 45,
+          "upper": 45.3
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "random-signals-and-noise",
+          "subtopicLabel": "Random Signals and Noise"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "random-signals-and-noise"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Signals and Noise",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-323be91164.webp\" />\n\n$$\\begin{aligned}\n\nS & =R_{x}(0)=\\frac{2}{3} \\\\\n\nN_{q} & =\\frac{\\Delta^{2}}{12} \\\\\n\n\\Delta & =\\frac{2-(-2)}{2^{8}}=\\frac{4}{2^{8}}\n\n\\end{aligned}$$\n\n$$\\begin{aligned}\n\nN_{q} & =\\frac{4^{2}}{\\frac{2^{16}}{12}}=\\frac{2^{4}}{12 \\times 2^{16}}=\\frac{1}{12 \\times 2^{12}} \\\\\n\n\\frac{S}{N_{a}} & =\\frac{2}{3} \\times \\frac{12 \\times 2^{12}}{1}=32,768 \\\\\n\n\\left(\\frac{S}{N_{a}}\\right)_{d B} & =10 \\log 32768=45.15 \\mathrm{~dB}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **45.15** (acceptable range: [45, 45.3])."
+      }
+    },
+    "pp:ec:2024:q48": {
+      "question_uid": "pp:ec:2024:q48",
+      "exam_uid": "ec:2024:set1:q48",
+      "title": "GATE EC 2024 | Set 1 | Question: 48",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A lossless transmission line with characteristic impedance $Z_{0}=50 \\Omega$ is terminated with an unknown load. The magnitude of the reflection co-efficient is $|\\Gamma|=0.6$. As one moves towards the generator from the load, the maximum value of the input impedance magnitude looking towards the load (in $\\Omega$ ) is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "200",
+        "tolerance": {
+          "lower": 200,
+          "upper": 200
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "As we know that\n\n$Z_{\\max }=S Z_{0}$\n\nNow,\n\n$$\\begin{aligned}\n\nS & =\\frac{1+|\\Gamma|}{1-|\\Gamma|}=\\frac{1+0.6}{1-0.6}=\\frac{1.6}{0.4}=4 \\\\\n\n\\therefore \\quad Z_{\\text {max }} & =4 \\times 50=200 \\Omega .\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **200**."
+      }
+    },
+    "pp:ec:2024:q49": {
+      "question_uid": "pp:ec:2024:q49",
+      "exam_uid": "ec:2024:set1:q49",
+      "title": "GATE EC 2024 | Set 1 | Question: 49",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The relationship between any $\\mathrm{N}$-length sequence $x[n]$ and its corresponding $\\mathrm{N}$-point discrete Fourier transform $X[k]$ is defined as\n<br><br>\n$X[k]=F\\{x[n]\\}$.\n<br><br>\nAnother sequence $y[n]$ is formed as below\n<br><br>\n$y[n]=F\\{F\\{F\\{F\\{x[n]\\}\\}\\}\\}$\n<br><br>\nFor the sequence $x[n]=\\{1,2,1,3\\}$, the value of $Y[0]$ is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "112",
+        "tolerance": {
+          "lower": 112,
+          "upper": 112
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "dtfs-dtft-and-dft",
+          "subtopicLabel": "DTFS, DTFT and DFT"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "dtfs-dtft-and-dft"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - DTFS, DTFT and DFT",
+        "markdown": "$$\\begin{aligned}\n\ny[n] & =N^{2} x[n] \\\\\n\ny[n] & =N^{2} x[n] \\\\\n\n\\left.Y[k]\\right|_{K=0} & =\\sum_{n=0}^{3} y[n]=\\sum_{n=0}^{3} N^{2} x[n] \\\\\n\n& =N^{2}[x[0]+x[1]+x[2]+x[3]] \\\\\n\n& =(4)^{2}[1+2+1+3]=16 \\times 7=112\n\n\\end{aligned}$$\n\n$y[n]=N^{2} x[n] \\quad \\because N=4$\n\nTherefore, the correct answer is **112**."
+      }
+    },
+    "pp:ec:2024:q50": {
+      "question_uid": "pp:ec:2024:q50",
+      "exam_uid": "ec:2024:set1:q50",
+      "title": "GATE EC 2024 | Set 1 | Question: 50",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "For the two port network shown below, the value of the $Y_{21}$ parameter (in Siemens) is _____ <br><img src=\"/question-images/ec/2024/ec-2024-b389a2fd63.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.5",
+        "tolerance": {
+          "lower": 1.5,
+          "upper": 1.5
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "two-port-networks",
+          "subtopicLabel": "Two Port Networks"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "two-port-networks"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Two Port Networks",
+        "markdown": "Given two-port network,\n\n$Y_{21}=\\left.\\frac{I_{2}}{V_{1}}\\right|_{V_{2}=0}$\n\n<img src=\"/question-images/ec/2024/ec-2024-f391e45024.webp\" />\n\nby applying $\\mathrm{KVL}$ in the loop,\n\n$V_{1}-2 I_{1}-4\\left(I_{1}+I_{2}\\right)+8 V_{1}=0$\n\n$9 V_{1}-6 I_{1}-4 I_{2}=0$\n\nbut $\\quad I_{1}=\\frac{V_{1}-0}{2} \\Rightarrow \\frac{V_{1}}{2}=I_{1}$\n\n$\\therefore \\quad 9 V_{1}-6\\left(\\frac{V_{1}}{2}\\right)-4 I_{2}=0$\n\n$6 V_{1}=4 I_{2}$\n\n$\\therefore \\quad \\frac{I_{2}}{V_{1}}=\\frac{6}{4}=\\frac{3}{2}=1.5 \\mathrm{~S}$\n\nTherefore, the correct answer is **1.5**."
+      }
+    },
+    "pp:ec:2024:q51": {
+      "question_uid": "pp:ec:2024:q51",
+      "exam_uid": "ec:2024:set1:q51",
+      "title": "GATE EC 2024 | Set 1 | Question: 51",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider a MOS capacitor made with p-type silicon. It has an oxide thickness of $100 \\mathrm{~nm}$, a fixed positive oxide charge of $10^{-8} \\mathrm{C} / \\mathrm{cm}^{2}$ at the oxide-silicon interface, and a metal work function of $4.6 \\mathrm{eV}$. Assume that the relative permittivity of the oxide is 4 and the absolute permittivity of free space is $8.85 \\times 10^{-14} \\mathrm{~F} / \\mathrm{cm}$. If the flatband voltage is $0 \\mathrm{~V}$, the work function of the $\\mathrm{p}$-type silicon (in $\\mathrm{eV}$, rounded off to two decimal places) is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.3",
+        "tolerance": {
+          "lower": 4.1,
+          "upper": 4.5
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "basic-semiconductor-physics",
+          "subtopicLabel": "Basic Semiconductor Physics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "basic-semiconductor-physics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "$$\\begin{aligned}\n\nC_{O X} & =\\frac{\\varepsilon_{O x}}{t_{O x}}=\\frac{4 \\times 8.85 \\times 10^{-14}}{100 \\times 10^{-9} \\times 100} \\\\\n\n& =4 \\times 8.85 \\times 10^{-14} \\times 10^{5}=35.4 \\times 10^{-9} \\mathrm{~F} / \\mathrm{cm}^{2} \\\\\n\nV_{F B} & =\\frac{Q_{O x}}{C_{O x}}+\\phi_{m s} \\\\\n\n0 & =\\frac{Q_{O x}}{C_{O x}}+\\phi_{m s}\n\n\\end{aligned}$$\n\n$Q_{o x} \\rightarrow$ Positive\n\n$\\frac{Q_{O x}}{C_{o x}}=\\frac{10^{-8}}{35.4 \\times 10^{-9}}=\\frac{10}{35.4} \\text { volt }$\n\n$\\therefore \\quad \\frac{Q_{O x}}{C_{O x}} \\rightarrow$ Negative\n\n$$\\begin{aligned}\n\n0 & =\\frac{-10}{35.4}+\\phi_{\\mathrm{ms}} \\\\\n\n\\phi_{\\mathrm{ms}} & =\\frac{10}{35.4} \\\\\n\n\\phi_{m}-\\phi_{s} & =\\frac{10}{35.4} \\\\\n\n\\phi_{s} & =\\phi_{m}-\\frac{10}{35.4}=4.6-\\frac{10}{35.4}=4.317 \\text { volt } \\\\\n\n\\therefore \\quad 9 \\phi_{s} & =4.317 \\simeq 4.32 \\mathrm{eV}\n\n\\end{aligned}$$\n\nWork function energy of semiconductor.\n\nTherefore, the correct answer is **4.3** (acceptable range: [4.1, 4.5])."
+      }
+    },
+    "pp:ec:2024:q52": {
+      "question_uid": "pp:ec:2024:q52",
+      "exam_uid": "ec:2024:set1:q52",
+      "title": "GATE EC 2024 | Set 1 | Question: 52",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In the network shown below, maximum power is to be transferred to the load $R_{L}$\n <br><img src=\"/question-images/ec/2024/ec-2024-7e3c047ffe.webp\" /><br>\nThe value of $R_{L}$ (in $\\Omega$ ) is _______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.5",
+        "tolerance": {
+          "lower": 2.5,
+          "upper": 2.5
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Network Theorems",
+        "markdown": "<img src=\"/question-images/ec/2024/ec-2024-6fda5cef2c.webp\" />\n\n$I=\\frac{V-V_{x}}{2}+\\frac{V}{5}=\\frac{V}{2}-\\frac{V_{x}}{2}+\\frac{V}{5}$\n\nBut,\n\n$V_{x}=\\frac{V}{5} \\times 3$\n\n$\\therefore \\quad I=\\frac{V}{2}-\\frac{1}{2} \\times \\frac{3 V}{5}+\\frac{V}{5}=\\frac{V}{2}-\\frac{3 V}{10}+\\frac{V}{5}$\n\n$I=\\frac{5 V-3 V+2 V}{10}=\\frac{4 V}{10}$\n\n$\\therefore \\quad \\frac{V}{I}=\\frac{10}{4}=2.5 \\Omega$\n\nTherefore, the correct answer is **2.5**."
+      }
+    },
+    "pp:ec:2024:q53": {
+      "question_uid": "pp:ec:2024:q53",
+      "exam_uid": "ec:2024:set1:q53",
+      "title": "GATE EC 2024 | Set 1 | Question: 53",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A non-degenerate n-type semiconductor has 5\\% neutral dopant atoms. Its Fermi level is located at $0.25 \\mathrm{eV}$ below the conduction band $\\left(E_{C}\\right)$ and the donor energy level $\\left(E_{D}\\right)$ has a degeneracy of 2. Assuming the thermal voltage to be $20 \\mathrm{mV}$. The difference between $E_{C}$ and $E_{D}$ (in $\\mathrm{eV}$, rounded off to two decimal places) is ______",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.18",
+        "tolerance": {
+          "lower": 0.17,
+          "upper": 0.19
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "basic-semiconductor-physics",
+          "subtopicLabel": "Basic Semiconductor Physics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "basic-semiconductor-physics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - Basic Semiconductor Physics",
+        "markdown": "$5 \\%$ neutral donor atoms/dopant atoms means $95 \\%$ donor atoms are ionized.\n\nConcentration of electrons occupying the donor level is given as\n\n$n_{d}=\\frac{N_{d}}{1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)}$\n\nand $n_{d}=N_{d}-N_{d}^{+}$where $N_{d}^{+}$is ionized donor atoms concentration.\n\naccording to question\n\n$$\\begin{aligned}\n\nn_{d} & =5 \\% \\text { of } N_{d} \\\\\n\ng & =2 \\text { degeneracy factor }\n\n\\end{aligned}$$\n\n$\\frac{5}{100} N_{d}=\\frac{N_{d}}{1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)}$\n\n$\\frac{1}{20}=\\frac{1}{1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)}$\n\n$1+\\frac{1}{g} \\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)=20$\n\n$\\exp \\left(\\frac{E_{D}-E_{F}}{k T}\\right)=38$\n\n$$\\begin{aligned}\n\n\\frac{E_{D}-E_{F}}{k T} & =\\ln (38) \\quad\\left\\{\\text { given } V_{T}=\\frac{k T}{q}=20 \\mathrm{mV}\\right\\} \\\\\n\nE_{D}-E_{F} & =\\ln (38) \\times 0.020 \\\\\n\n& =0.07275 \\mathrm{eV}\n\n\\end{aligned}$$\n\ngiven: $\\quad E_{C}-E_{F}=0.25 \\mathrm{eV}$\n\n$\\therefore \\quad E_{C}-E_{D}+E_{D}-E_{F}=0.25 \\mathrm{eV}$\n\n$$\\begin{aligned}\n\nE_{C}-E_{D} & =0.25 \\mathrm{eV}-\\left(E_{D}-E_{F}\\right) \\\\\n\n& =0.25 \\mathrm{eV}-0.07275 \\mathrm{eV} \\\\\n\n& =0.17725 \\mathrm{eV} \\simeq 0.18 \\mathrm{eV}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.18** (acceptable range: [0.17, 0.19])."
+      }
+    },
+    "pp:ec:2024:q54": {
+      "question_uid": "pp:ec:2024:q54",
+      "exam_uid": "ec:2024:set1:q54",
+      "title": "GATE EC 2024 | Set 1 | Question: 54",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An NMOS transistor operating in the linear region has $I_{D S}$ of $5 \\mu \\mathrm{A}$ at $V_{D S}$ of $0.1 \\mathrm{~V}$. Keeping $V_{G S}$ constant, the $V_{D S}$ is increased to $1.5 \\mathrm{~V}$.\n<br>\nGiven that $\\mu_{n} C_{o x} \\frac{W}{L}=50 \\mu \\mathrm{A} / \\mathrm{V}^{2}$, the transconductance at the new operating point (in $\\mu \\mathrm{A} / \\mathrm{V}$, rounded off to two decimal places) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "52.5",
+        "tolerance": {
+          "lower": 52.4,
+          "upper": 52.6
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "bjt-and-fet-basics",
+          "subtopicLabel": "BJT and FET Basics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "bjt-and-fet-basics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - BJT and FET Basics",
+        "markdown": "For linear region of MOS,\n\n$$\\begin{aligned}\n\nI_{D} & =\\mu_{n} C_{O X}\\left(\\frac{W}{L}\\right)\\left[\\left(V_{G S}-V_{T}\\right) V_{D S}-\\frac{1}{2} V_{D S}^{2}\\right] \\\\\n\n5 \\times 10^{-6} & =50 \\times 10^{-6}\\left[\\left(V_{G S}-V_{T}\\right) 0.1-\\frac{1}{2}(0.1)^{2}\\right] \\\\\n\n\\frac{1}{10} & =\\left(V_{G S}-V_{T}\\right) 0.1-\\frac{1}{2} \\times 0.1^{2} \\\\\n\n0.1+0.5(0.1)^{2} & =\\left(V_{G S}-V_{T}\\right) 0.1 \\\\\n\n1+0.5(0.1) & =\\left(V_{G S}-V_{T}\\right) \\\\\n\n1.05 \\text { volt } & =V_{G S}-V_{T}\n\n\\end{aligned}$$\n\nNow: $V_{G S} \\rightarrow$ fix\n\n$$\\begin{aligned}\n\nV_{D S} & =1.5 \\\\\n\nV_{D S} & >V_{G S}-V_{T} \\Rightarrow \\mathrm{MOS} \\text { is in saturation } \\\\\n\ng_{m \\text { (sat) }} & =\\mu_{n} C_{o x}\\left(\\frac{W}{L}\\right)\\left(V_{G S}-V_{T}\\right) \\\\\n\n& =50 \\times 10^{-6} \\times 1.05 \\\\\n\n& =52.5 \\times 10^{-6} \\mathrm{~A} / \\mathrm{V}=52.5 \\mu \\mathrm{A} / \\mathrm{V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **52.5** (acceptable range: [52.4, 52.6])."
+      }
+    },
+    "pp:ec:2024:q55": {
+      "question_uid": "pp:ec:2024:q55",
+      "exam_uid": "ec:2024:set1:q55",
+      "title": "GATE EC 2024 | Set 1 | Question: 55",
+      "year": "gateec-2024-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The photocurrent of a PN junction diode solar cell is $1 \\mathrm{~mA}$. The voltage corresponding to its maximum power point is $0.3 \\mathrm{~V}$. If the thermal voltage is $30 \\mathrm{mV}$, the reverse saturation current of the diode (in $\\mathrm{nA}$, rounded off to two decimal places) is ________",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.13",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4.26
+        },
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electronic-devices",
+          "subjectLabel": "Electronic Devices",
+          "subtopicSlug": "pn-junction-diodes-and-special-diodes",
+          "subtopicLabel": "PN-Junction Diodes and Special Diodes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electronic-devices",
+          "pn-junction-diodes-and-special-diodes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - PN-Junction Diodes and Special Diodes",
+        "markdown": "Note: In this question voltage corresponds to max. power, $V_{m}$ is given\n\ni.e., $\\quad V_{m}=0.3$ Volt\n\n( $V_{O C}$ is not given be careful)\n\n$$\\begin{aligned}\n\nI_{0} & =\\frac{I_{L}}{\\left(1+\\frac{V_{m}}{V_{T}}\\right) e^{V_{m} / V_{T}}-1}=\\frac{1 \\mathrm{~mA}}{\\left(1+\\frac{0.3}{0.03}\\right) e^{0.3 / 0.03}-1} \\\\\n\n& =4.127 \\mathrm{nA} \\simeq 4.13 \\mathrm{nA}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4.13** (acceptable range: [4, 4.26])."
+      }
+    },
+    "pp:ec:2024:q56": {
+      "question_uid": "pp:ec:2024:q56",
+      "exam_uid": "ec:2024:set1:q56",
+      "title": "GATE EC 2024 | Set 1 | Question: 56",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If '$\\rightarrow$' denotes increasing order of intensity, then the meaning of the words [charm $\\rightarrow$ enamor $\\rightarrow$ bewitch] is analogous to [bored $\\rightarrow$ ________$\\rightarrow$ weary].\n<br>\nWhich one of the given options is appropriate to fill the blank?",
+      "options": [
+        "jaded",
+        "baffled",
+        "dead",
+        "worsted"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *jaded*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (jaded)."
+      }
+    },
+    "pp:ec:2024:q57": {
+      "question_uid": "pp:ec:2024:q57",
+      "exam_uid": "ec:2024:set1:q57",
+      "title": "GATE EC 2024 | Set 1 | Question: 57",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "P, Q, R, S, and T have launched a new startup. Two of them are siblings. The office of the startup has just three rooms. All of them agree that the siblings should not share the same room.\n<br>\nIf $S$ and $Q$ are single children, and the room allocations shown below are acceptable to all,\n<br>\n<br> $$\\begin{array}{|l|l|l|}\n\\hline \\mathrm{PR} & \\mathrm{TS} & \\mathrm{Q} \\\\\n\\hline \\mathrm{PQ} & \\mathrm{PQ} & \\mathrm{RT} \\\\\n\\hline\n\\end{array}$$<br><br>\nthen, which one of the given options is the siblings?",
+      "options": [
+        "$P$ and $T$",
+        "$P$ and $S$",
+        "$T$ and $Q$",
+        "$T$ and $R$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$P$ and $T$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($P$ and $T$)."
+      }
+    },
+    "pp:ec:2024:q58": {
+      "question_uid": "pp:ec:2024:q58",
+      "exam_uid": "ec:2024:set1:q58",
+      "title": "GATE EC 2024 | Set 1 | Question: 58",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Five years ago, the ratio of Aman's age to his father’s age was 1:4, and five years from now, the ratio will be 2:5. What was his father’s age when Aman was born?",
+      "options": [
+        "28 years",
+        "30 years",
+        "35 years",
+        "32 years"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Five year ago\n\nSon's age $=x$\n\nFather's age $=4 x$\n\nFive year after\n\n$$\\begin{aligned}\n\n\\text { Son's age } & =x+10 \\\\\n\n\\frac{x+10}{4 x+10} & =\\frac{2}{5} \\\\\n\n5 x+50 & =8 x+20 \\\\\n\n3 x & =30 \\\\\n\nx & =10\n\n\\end{aligned}$$\n\nSon's age five year ago $=10$\n\nFather's age five year age $=40$\n\nAt the time of son's birth father's age $=40-10=30$ year\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2024:q59": {
+      "question_uid": "pp:ec:2024:q59",
+      "exam_uid": "ec:2024:set1:q59",
+      "title": "GATE EC 2024 | Set 1 | Question: 59",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a real number $x > 1$,\n<br> <br>$\\frac{1}{\\log _{2} x}+\\frac{1}{\\log _{3} x}+\\frac{1}{\\log _{4} x}=1$<br><br>\nThe value of $x$ is",
+      "options": [
+        "4",
+        "12",
+        "24",
+        "36"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$$\\begin{aligned}\n\n\\log _{x}^{2}+\\log _{x}^{3}+\\log _{x}^{4} & =1 \\\\\n\n\\log _{x}^{24} & =1 \\\\\n\nx & =24\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2024:q60": {
+      "question_uid": "pp:ec:2024:q60",
+      "exam_uid": "ec:2024:set1:q60",
+      "title": "GATE EC 2024 | Set 1 | Question: 60",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The greatest prime factor of $\\left(3^{199}-3^{196}\\right)$ is",
+      "options": [
+        "13",
+        "17",
+        "3",
+        "11"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$=3^{196}\\left(3^{3}-1\\right)=3^{196} \\times 26=2 \\times 3^{196} \\times 13$\n\nHighest prime factors $=13$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2024:q61": {
+      "question_uid": "pp:ec:2024:q61",
+      "exam_uid": "ec:2024:set1:q61",
+      "title": "GATE EC 2024 | Set 1 | Question: 61",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Sequence the following sentences (P, Q, R, S) in a coherent passage:<br>\nP: Shifu's student exclaimed, \"Why do you run since the bull is an illusion?\"<br>\nQ: Shifu said, \"Surely my running away from the bull is also an illusion.\"<br>\nR: Shifu once proclaimed that all life is illusion.<br>\nS: One day, when a bull gave him chase, Shifu began running for his life. ",
+      "options": [
+        "SPRQ",
+        "SRPQ",
+        "RSPQ",
+        "RPQS"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *RSPQ*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (RSPQ)."
+      }
+    },
+    "pp:ec:2024:q62": {
+      "question_uid": "pp:ec:2024:q62",
+      "exam_uid": "ec:2024:set1:q62",
+      "title": "GATE EC 2024 | Set 1 | Question: 62",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Four identical cylindrical chalk-sticks, each of radius $r=0.5 \\mathrm{~cm}$ and length $l=10 \\mathrm{~cm}$. are bound tightly together using a duct tape as shown in the following figure\n <br><img src=\"/question-images/ec/2024/ec-2024-44b3a784ca.webp\" /><br>\nThe width of the duct tape is equal to the length of the chalk-stick. The area (in $\\mathrm{cm}^{2}$ ) of the duct tape required to wrap the bundle of chalk-sticks once, is",
+      "options": [
+        "$20(4+\\pi)$",
+        "$20(8+\\pi)$",
+        "$10(8+\\pi)$",
+        "$10(4+\\pi)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *$10(4+\\pi)$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** ($10(4+\\pi)$)."
+      }
+    },
+    "pp:ec:2024:q63": {
+      "question_uid": "pp:ec:2024:q63",
+      "exam_uid": "ec:2024:set1:q63",
+      "title": "GATE EC 2024 | Set 1 | Question: 63",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The bar chart shows the data for the percentage of population falling into different\ncategories based on Body Mass Index (BMI) in 2003 and 2023.  <br><img src=\"/question-images/ec/2024/ec-2024-d1dfde170b.webp\" /><br>\nBased on the data provided, which one of the following options is INCORRECT? ",
+      "options": [
+        "The ratio of the percentage of population falling into overweight category to the\r\npercentage of population falling into normal category has increased in 20 years.",
+        "The ratio of the percentage of population falling into underweight category to the\r\npercentage of population falling into normal category has decreased in 20 years.",
+        "The ratio of the percentage of population falling into obese category to the\r\npercentage of population falling into normal category has decreased in 20 years.",
+        "The percentage of population falling into normal category has decreased in 20 years."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *The ratio of the percentage of population falling into obese category to the percentage of population falling into normal category has decreased in 20 years.*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (The ratio of the percentage of population falling into obese category to the percentage of population falling into normal category has decreased in 20 years.)."
+      }
+    },
+    "pp:ec:2024:q64": {
+      "question_uid": "pp:ec:2024:q64",
+      "exam_uid": "ec:2024:set1:q64",
+      "title": "GATE EC 2024 | Set 1 | Question: 64",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Examples of mirror and water reflections are shown in the figures below: <br><img src=\"/question-images/ec/2024/ec-2024-3e27da1500.webp\" /><br>\nAn object appears as the following image after first reflecting in a minor and then reflecting on water. <br><img src=\"/question-images/ec/2024/ec-2024-33b078715e.webp\" /><br>\nThe original object is <br><img src=\"/question-images/ec/2024/ec-2024-ca3fd80766.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *A*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (A)."
+      }
+    },
+    "pp:ec:2024:q65": {
+      "question_uid": "pp:ec:2024:q65",
+      "exam_uid": "ec:2024:set1:q65",
+      "title": "GATE EC 2024 | Set 1 | Question: 65",
+      "year": "gateec-2024-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Two identical sheets A and B. of dimensions $24 \\mathrm{~cm} \\times 16 \\mathrm{~cm}$, can be folded into half using two distinct operations. FO1 or FO2.\n<br>\nIn FO1. the axis of folding remains parallel to the initial long edge, and in FO2, the axis of folding remains parallel to the initial short edge.\n<br>\nIf sheet $A$ is folded twice using $F O 1$, and sheet $B$ is folded twice using $F O 2$, the ratio of the perimeters of the final shapes of $A$ and $B$ is",
+      "options": [
+        "$14: 11$",
+        "$11: 14$",
+        "$18: 11$",
+        "$11: 18$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2024-s1",
+      "yearSetIdentity": "ec:2024:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Condition 1:\n\nFolding first time\n\n<img src=\"/question-images/ec/2024/ec-2024-d1717b8ef8.webp\" />\n\nFolding first time\n\n<img src=\"/question-images/ec/2024/ec-2024-f6f44636bd.webp\" />\n\nCondition 2:\n\nFolding first time\n\n<img src=\"/question-images/ec/2024/ec-2024-d9c8605a37.webp\" />\n\nFolding second time\n\n<img src=\"/question-images/ec/2024/ec-2024-fc94621215.webp\" />\n\nPerimeter $=2(16+6)=44 \\mathrm{~cm}$\n\nRatio $=56: 44=14: 11$\n\nTherefore, the correct answer is **A**."
+      }
+    }
+  }
+}

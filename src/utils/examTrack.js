@@ -1,12 +1,27 @@
 export const EXAM_TRACKS = Object.freeze({
   CSE: "cse",
   DA: "da",
+  EC: "ec",
+  EE: "ee",
+  ME: "me",
+  CE: "ce",
   ISRO: "isro",
   APTITUDE: "aptitude",
 });
 
-const YEAR_SET_KEY_RE = /^(cse|da|it|isro):(\d{4}):(?:set-(\d+)|(additional))$/i;
-const LEGACY_YEAR_SET_KEY_RE = /^(?:(it)-)?(\d{4})-s(\d+)$/i;
+export const TRACK_LABELS = Object.freeze({
+  [EXAM_TRACKS.CSE]: "Computer Science (CSE)",
+  [EXAM_TRACKS.DA]: "Data Science & AI (DA)",
+  [EXAM_TRACKS.EC]: "Electronics & Comm. (ECE)",
+  [EXAM_TRACKS.EE]: "Electrical Eng. (EE)",
+  [EXAM_TRACKS.ME]: "Mechanical Eng. (ME)",
+  [EXAM_TRACKS.CE]: "Civil Eng. (CE)",
+  [EXAM_TRACKS.APTITUDE]: "General Aptitude (GA)",
+  [EXAM_TRACKS.ISRO]: "ISRO Scientist (CSE)",
+});
+
+const YEAR_SET_KEY_RE = /^(cse|da|it|isro|ec|ee|me|ce):(\d{4}):(?:set-(\d+)|(additional))$/i;
+const LEGACY_YEAR_SET_KEY_RE = /^(?:(it|ec|ee|me|ce|da|isro)-)?(\d{4})-s(\d+)$/i;
 const LEGACY_ADDITIONAL_KEY_RE = /^(\d{4})-additional$/i;
 const YEAR_SET_LABEL_RE = /^(?:(it)\s+)?(\d{4})(?:\s+set\s*(\d+)|\s+additional(?:\s+questions)?)?$/i;
 
@@ -67,6 +82,18 @@ export function normalizeExamTrack(value) {
     || token === "gateit"
   ) {
     return EXAM_TRACKS.CSE;
+  }
+  if (/^(?:gate\s*)?ec(?:\s|$)/.test(token) || token === "ec" || token === "ece" || token === "electronics") {
+    return EXAM_TRACKS.EC;
+  }
+  if (/^(?:gate\s*)?ee(?:\s|$)/.test(token) || token === "ee" || token === "electrical") {
+    return EXAM_TRACKS.EE;
+  }
+  if (/^(?:gate\s*)?me(?:\s|$)/.test(token) || token === "me" || token === "mechanical") {
+    return EXAM_TRACKS.ME;
+  }
+  if (/^(?:gate\s*)?ce(?:\s|$)/.test(token) || token === "ce" || token === "civil") {
+    return EXAM_TRACKS.CE;
   }
   return null;
 }
@@ -151,6 +178,18 @@ export function getQuestionTrack(question = {}) {
   }
   if (questionUid.startsWith("da:")) {
     return EXAM_TRACKS.DA;
+  }
+  if (questionUid.startsWith("pp:ec:") || questionUid.startsWith("ec:")) {
+    return EXAM_TRACKS.EC;
+  }
+  if (questionUid.startsWith("pp:ee:") || questionUid.startsWith("ee:")) {
+    return EXAM_TRACKS.EE;
+  }
+  if (questionUid.startsWith("pp:me:") || questionUid.startsWith("me:")) {
+    return EXAM_TRACKS.ME;
+  }
+  if (questionUid.startsWith("pp:ce:") || questionUid.startsWith("ce:")) {
+    return EXAM_TRACKS.CE;
   }
   if (questionUid.startsWith("go:")) {
     return EXAM_TRACKS.CSE;
@@ -275,8 +314,9 @@ export function parseTrackYearSetKey(rawValue) {
   if (!legacyMatch) {
     return null;
   }
-  const isItLegacy = Boolean(legacyMatch[1] && legacyMatch[1].toLowerCase() === "it");
-  const track = isItLegacy ? "it" : EXAM_TRACKS.CSE;
+  const legacyTrackRaw = legacyMatch[1] ? legacyMatch[1].toLowerCase() : null;
+  const isItLegacy = legacyTrackRaw === "it";
+  const track = isItLegacy ? "it" : (legacyTrackRaw ? (normalizeExamTrack(legacyTrackRaw) || legacyTrackRaw) : EXAM_TRACKS.CSE);
   const year = Number.parseInt(legacyMatch[2], 10);
   const setNumber = Number.parseInt(legacyMatch[3], 10);
   const set = Number.isFinite(setNumber) && setNumber > 0 ? setNumber : null;
@@ -286,7 +326,7 @@ export function parseTrackYearSetKey(rawValue) {
     set,
     isAdditional: false,
     key: buildTrackYearSetKey(track, year, set),
-    legacyKey: isItLegacy ? `it-${year}-s${set || 0}` : `${year}-s${set || 0}`,
+    legacyKey: track === EXAM_TRACKS.CSE ? `${year}-s${set || 0}` : `${track}-${year}-s${set || 0}`,
   };
 }
 
@@ -322,6 +362,10 @@ export function formatTrackYearSetLabel(rawValue) {
   }
   if (parsed.track === "it") {
     return `${parsed.year} IT`;
+  }
+  if (parsed.track === "ec" || parsed.track === "ee" || parsed.track === "me" || parsed.track === "ce" || parsed.track === "da") {
+    const b = parsed.track.toUpperCase();
+    return parsed.set ? `${b} ${parsed.year} Set ${parsed.set}` : `${b} ${parsed.year}`;
   }
   if (parsed.isAdditional) {
     return `${parsed.year} Additional Questions`;

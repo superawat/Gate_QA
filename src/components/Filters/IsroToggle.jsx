@@ -8,8 +8,13 @@ export default function IsroToggle() {
     isroError,
     structuredTags = {},
     filters = {},
+    isCseEnrolled = true,
   } = useFilterState();
   const { setIncludeIsro, updateFilters } = useFilterActions();
+
+  if (!isCseEnrolled) {
+    return null;
+  }
 
   const { subjects = [], structuredSubtopics = {} } = structuredTags;
   const { selectedSubjects = [], selectedSubtopics = [] } = filters;

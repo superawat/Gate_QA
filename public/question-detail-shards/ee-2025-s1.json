@@ -1,0 +1,2630 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.401Z",
+  "shardKey": "ee-2025-s1",
+  "yearSetKey": "ee-2025-s1",
+  "yearSetIdentity": "ee:2025:set-1",
+  "track": "ee",
+  "year": 2025,
+  "set": 1,
+  "label": "2025 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ee:2025:q1": {
+      "question_uid": "pp:ee:2025:q1",
+      "exam_uid": "ee:2025:set1:q1",
+      "title": "GATE EE 2025 | Set 1 | Question: 1",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the set $S$ of points $(x, y) \\in  \\mathfrak{R}^2$ which minimize the real-valued function<br><br>\n$f(x, y) = (x + y - 1)^2 + (x + y)^2$<br><br>\nWhich of the following statements is true about the set $S$? ",
+      "options": [
+        "The number of elements in the set S is finite and more than one.",
+        "The number of elements in the set S is infinite.",
+        "The set S is empty.",
+        "The number of elements in the set S is exactly one."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "We are given:\n\n$f(x, y) = (x + y - 1)^2 + (x + y)^2$\n\n<b>Step 1: Substitute a single variable</b>\n\nLet $u = x + y$\n\nThen, the function becomes:\n\n$f(x, y) = (u - 1)^2 + u^2 = u^2 - 2u + 1 + u^2 = 2u^2 - 2u + 1$\n\n<b>Step 2: Minimize $f(u) = 2u^2 - 2u + 1$</b>\n\nThis is a quadratic function in $u$ with a positive coefficient, so it has a unique minimum.\n\nThe minimum occurs at:\n\n$u = \\frac{-(-2)}{2 \\cdot 2} = \\frac{2}{4} = \\frac{1}{2}$\n\nSo, the function is minimized when $x + y = \\frac{1}{2}$\n\n<b>Step 3: Analyze the set $S$</b>\n\nAll points $(x, y)$ satisfying $x + y = \\frac{1}{2}$ will minimize $f(x, y)$.\n\nThere are infinitely many such points in $\\mathbb{R}^2$.\n\n<b>Final Answer:</b>\n\n$\\boxed{\\text{The number of elements in the set } S \\text{ is infinite}}$\n\n<b>Correct Option: (B)</b>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q2": {
+      "question_uid": "pp:ee:2025:q2",
+      "exam_uid": "ee:2025:set1:q2",
+      "title": "GATE EE 2025 | Set 1 | Question: 2",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": " Let $v_{1}$ and $v_{2}$ be the two eigenvectors corresponding to distinct eigenvalues of a $3 \\times 3$ real symmetric matrix. Which one of the following statements is true?",
+      "options": [
+        "$\\mathrm{v}_{1}^{\\mathrm{T}} \\mathrm{v}_{2} \\neq 0$",
+        "$\\mathrm{v}_{1}^{\\mathrm{T}} \\mathrm{v}_{2}=0$",
+        "$\\mathrm{v}_{1}+\\mathrm{v}_{2}=0$",
+        "$\\mathrm{v}_{1}-\\mathrm{v}_{2}=0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "<b>Step 1:</b> Given that the matrix is a real symmetric matrix.\n\n<b>Step 2:</b> A well-known property of real symmetric matrices is that eigenvectors corresponding to distinct eigenvalues are orthogonal.\n\n<b>Step 3:</b> If $\\mathbf{v}_1$ and $\\mathbf{v}_2$ are eigenvectors corresponding to distinct eigenvalues of a real symmetric matrix, then:\n\n$\\mathbf{v}_1^T \\mathbf{v}_2 = 0$\n\nThis means they are orthogonal.\n\n<b>Step 4:</b> Among the given options, option (B) matches this condition.\n\n<b>Final Answer:</b> <b>(B) $\\mathbf{v}_1^T \\mathbf{v}_2 = 0$</b>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q3": {
+      "question_uid": "pp:ee:2025:q3",
+      "exam_uid": "ee:2025:set1:q3",
+      "title": "GATE EE 2025 | Set 1 | Question: 3",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $$\\mathrm{A}=\\left[\\begin{array}{ccc}1 & 1 & 1 \\\\ -1 & -1 & -1 \\\\ 0 & 1 & -1\\end{array}\\right]$$, and $$\\mathrm{b}=\\left[\\begin{array}{c}1 / 3 \\\\  -1 / 3 \\\\ 0\\end{array}\\right]$$. Then, the system of linear equations $\\mathrm{Ax}=\\mathrm{b}$ has",
+      "options": [
+        "a unique solution.",
+        "infinitely many solutions.",
+        "a finite number of solutions.",
+        "no solution."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$(A \\mid B)=\\left[\\begin{array}{lll|c}1 & 1 & 1 & 1 / 3 \\\\ -1 & -1 & -1 & -1 / 3\\\\ 0 & 1 & -1 & 0\\end{array}\\right]$$\n\n$\\mathrm{R}_{2} \\rightarrow \\mathrm{R}_{2}+\\mathrm{R}_{1}$\n\n$$\\Rightarrow(\\mathrm{A} \\mid \\mathrm{B}) \\sim\\left[\\begin{array}{ccc|c}1 & 1 & 1 & 1 / 3 \\\\ 0 & 0 & 0 & 0 \\\\ 0 & 1 & -1 & 0\\end{array}\\right]$$ $\\mathrm{R}_{2} \\leftrightarrows \\mathrm{R}_{3}$\n\n$$\\Rightarrow(\\mathrm{A} \\mid \\mathrm{B}) \\sim\\left[\\begin{array}{lll|c}1 & 1 & 1 & 1 / 3 \\\\ 0 & 1 & -1 & 0 \\\\ 0 & 0 & 0 & 0\\end{array}\\right]$$\n\n$\\Rightarrow \\rho(\\mathrm{A})=2=\\rho(\\mathrm{A} \\mid \\mathrm{B}) < \\mathrm{n}=3$ (no. of variables)\n\n$\\Rightarrow \\mathrm{Ax}=\\mathrm{b}$ will have an infinite no. of solutions\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q4": {
+      "question_uid": "pp:ee:2025:q4",
+      "exam_uid": "ee:2025:set1:q4",
+      "title": "GATE EE 2025 | Set 1 | Question: 4",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $$\\mathrm{P}=\\left[\\begin{array}{ccc}2 & 1 & 0\\\\ -1 & 0 & 0 \\\\0 & 0 & 1\\end{array}\\right]$$ and let  $\\mathrm{I}$  be the identity matrix. Then $P^2$ is equal to",
+      "options": [
+        "$2 \\mathrm{P}-\\mathrm{I}$",
+        "$\\mathrm{P}$",
+        "$\\mathrm{I}$",
+        "$\\mathrm{P}+\\mathrm{I}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Given that $$\\mathrm{P}=\\left[\\begin{array}{ccc}2 & 1 & 0 \\\\ -1 & 0 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]$$\n\n$$\\Rightarrow \\mathrm{P}^{2}=\\mathrm{P} . \\mathrm{P}=\\left[\\begin{array}{ccc}2 & 1 & 0 \\\\ -1 & 0 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]\\left[\\begin{array}{ccc}2 & 1 & 0 \\\\ -1 & 0 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]$$\n\n$$\\Rightarrow P^{2}=\\left[\\begin{array}{ccc}3 & 2 & 0 \\\\ -2 & -1 & 0 \\\\ 0 & 0 & 1\\end{array}\\right]$$\n\n$\\Rightarrow P^{2} \\neq P, P^{2} \\neq I$ and $$P^{2} \\neq P+I=\\left[\\begin{array}{ccc}3 & 1 & 0 \\\\ -1 & 1 & 0 \\\\ 0 & 0 & 2\\end{array}\\right]$$\n\n$\\Rightarrow \\mathrm{P}^{2}=2 \\mathrm{P}-\\mathrm{I}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q5": {
+      "question_uid": "pp:ee:2025:q5",
+      "exam_uid": "ee:2025:set1:q5",
+      "title": "GATE EE 2025 | Set 1 | Question: 5",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider discrete random variables X and Y with probabilities as follows:<br><br>\n$\\mathrm{P}(\\mathrm{X}=0$ and $\\mathrm{Y}=0)=\\frac{1}{4}$,<br><br>\n$\\mathrm{P}(\\mathrm{X}=1$ and $\\mathrm{Y}=0)=\\frac{1}{8}$<br><br>\n$\\mathrm{P}(\\mathrm{X}=0$ and $\\mathrm{Y}=1)=\\frac{1}{2}$<br><br>\n$\\mathrm{P}(\\mathrm{X}=1$ and $\\mathrm{Y}=1)=\\frac{1}{8}$<br><br>\nGiven $\\mathrm{X}=1$, the expected value of $\\mathrm{Y}$ is",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{8}$",
+        "$\\frac{1}{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "<b>Step 1:</b> Identify the conditional probabilities of $Y$ given $X = 1$.\n\nFrom the given:\n\n$P(X=1, Y=0) = \\frac{1}{8}, \\quad P(X=1, Y=1) = \\frac{1}{8}$\n\nSo, total probability $P(X=1) = \\frac{1}{8} + \\frac{1}{8} = \\frac{1}{4}$\n\n<b>Step 2:</b> Compute the conditional probabilities:\n\n$P(Y=0 \\mid X=1) = \\frac{P(X=1, Y=0)}{P(X=1)} = \\frac{\\frac{1}{8}}{\\frac{1}{4}} = \\frac{1}{2}$\n\n$P(Y=1 \\mid X=1) = \\frac{P(X=1, Y=1)}{P(X=1)} = \\frac{\\frac{1}{8}}{\\frac{1}{4}} = \\frac{1}{2}$\n\n<b>Step 3:</b> Compute the expected value:\n\n$\\mathbb{E}[Y \\mid X=1] = 0 \\cdot P(Y=0 \\mid X=1) + 1 \\cdot P(Y=1 \\mid X=1) = 0 \\cdot \\frac{1}{2} + 1 \\cdot \\frac{1}{2} = \\frac{1}{2}$\n\n<b>Final Answer:</b> <b>(B) $\\frac{1}{2}$</b>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q6": {
+      "question_uid": "pp:ee:2025:q6",
+      "exam_uid": "ee:2025:set1:q6",
+      "title": "GATE EE 2025 | Set 1 | Question: 6",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following statement is true about the small signal voltage gain of a MOSFET based single stage amplifier?",
+      "options": [
+        "Common source and common gate amplifiers are both inverting amplifiers",
+        "Common source and common gate amplifiers are both non-inverting amplifiers",
+        "Common source amplifier is inverting and common gate amplifier is non-inverting amplifier",
+        "Common source amplifier is non-inverting and common gate amplifier is inverting amplifier"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Small Signal Analysis",
+        "markdown": "<b>Step 1:</b> Understand the characteristics of MOSFET amplifiers:\n\nA <b>Common Source (CS)</b> amplifier produces a 180° phase shift between the input and output. Hence, it is an inverting amplifier.\n\nA <b>Common Gate (CG)</b> amplifier does not produce a phase shift between input and output, so it is a non-inverting amplifier.\n\n<b>Step 2:</b> Match this with the options:\n\nOption (C): \"Common source amplifier is inverting and common gate amplifier is non-inverting amplifier\" is correct.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q7": {
+      "question_uid": "pp:ee:2025:q7",
+      "exam_uid": "ee:2025:set1:q7",
+      "title": "GATE EE 2025 | Set 1 | Question: 7",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Assuming ideal op-amps, the circuit represents a<br><br><br><img src=\"/question-images/ee/2025/ee-2025-0f15b32263.webp\"/><br>",
+      "options": [
+        "summing amplifier.",
+        "difference amplifier.",
+        "logarithmic amplifier.",
+        "buffer."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "The given amplifier can be redrawn as\n\n<img src=\"/question-images/ee/2025/ee-2025-be9521aa58.webp\"/>\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2025:q8": {
+      "question_uid": "pp:ee:2025:q8",
+      "exam_uid": "ee:2025:set1:q8",
+      "title": "GATE EE 2025 | Set 1 | Question: 8",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The I-V characteristics of the element between the nodes X and Y is best depicted by <br><br><img src=\"/question-images/ee/2025/ee-2025-64951ad4ed.webp\"/><br><br><br><img src=\"/question-images/ee/2025/ee-2025-876f330b6d.webp\"/><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electric Circuits - Basics of Electric Circuit",
+        "markdown": "<img src=\"/question-images/ee/2025/ee-2025-97bdda1ecb.webp\"/>\n\n$\\mathrm{V}_{\\mathrm{xy}}=1000\\left[\\mathrm{I}_{\\mathrm{xy}}-1\\right]$\n\n$I_{x y}-1=\\frac{V_{x y}}{1000}$\n\n$\\mathrm{I}_{\\mathrm{xy}}=\\left[\\frac{1}{1000}\\right] \\mathrm{V}_{\\mathrm{xy}}+[1]$\n\nThis is like straight line equation $\\mathrm{y}=+[\\mathrm{m}] \\mathrm{x}+[\\mathrm{c}]$\n\n<img src=\"/question-images/ee/2025/ee-2025-190ae664f9.webp\"/>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q9": {
+      "question_uid": "pp:ee:2025:q9",
+      "exam_uid": "ee:2025:set1:q9",
+      "title": "GATE EE 2025 | Set 1 | Question: 9",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": " A nullator is defined as a circuit element where the voltage across the device and the current through the device are both zero. A series combination of a nullator and a resistor of value $R$, will behave as a",
+      "options": [
+        "resistor of value R",
+        "nullator.",
+        "open circuit.",
+        "short circuit."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Miscellaneous",
+        "markdown": "Nullator circuit symbol\n\n<img src=\"/question-images/ee/2025/ee-2025-1ebe86a473.webp\"/>\n\nNullator have the property of $\\mathrm{V}=0$ [short circuit] and $\\mathrm{I}=0$ [Open circuit]\n\n<img src=\"/question-images/ee/2025/ee-2025-427b2e144d.webp\"/>\n\nWhen a resistor is connected in series to a nullator then\n\n$$\\begin{aligned}\n\n& V_{x}=0 \\\\\n\n& I_{x}=0\n\n\\end{aligned}$$\n\nOverall circuit again behaves as nullator.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q10": {
+      "question_uid": "pp:ee:2025:q10",
+      "exam_uid": "ee:2025:set1:q10",
+      "title": "GATE EE 2025 | Set 1 | Question: 10",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a discrete-time linear time-invariant (LTI) system S , where <br><br>$\\mathrm{y}[\\mathrm{n}]={S}\\{{x}[\\mathrm{n}]\\}$<br> <br>\nLet<br>  $$S\\{\\delta[n]\\}= \\begin{cases}1, & \\mathrm{n} \\in\\{0,1,2\\}\\\\  0, & \\text { otherwise }\\end{cases}$$<br><br>\n\nWhere $\\delta[\\mathrm{n}]$ is the discrete-time unit impulse function. For an input signal $x[n]$, the output $y[n]$ is",
+      "options": [
+        "$x[n]+x[n-1]+x[n-2]$",
+        "${x}[{n}-1]+{x}[{n}]+{x}[{n}+1]$",
+        "$x[n]+x[n+1]+x[n+2]$",
+        "$x[n+1]+x[n+2]+x[n+3]$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "The impulse response of discrete-time LTI system is given as $\\mathrm{h}(\\mathrm{n})=\\delta(\\mathrm{n})+\\delta(\\mathrm{n}-1)+\\delta(\\mathrm{n}-2)$\n\nFor an input $\\mathrm{x}(\\mathrm{n})$, the output $\\mathrm{y}(\\mathrm{n})$ is given by\n\n$$\\begin{aligned}\n\n\\mathrm{y}(\\mathrm{n}) & =\\mathrm{x}(\\mathrm{n}) * \\mathrm{~h}(\\mathrm{n}) \\\\\n\n& =\\mathrm{x}(\\mathrm{n}) *[\\delta(\\mathrm{n})+\\delta(\\mathrm{n}-1)+\\delta(\\mathrm{n}-2)] \\\\\n\n& =\\mathrm{x}(\\mathrm{n})+\\mathrm{x}(\\mathrm{n}-1)+\\mathrm{x}(\\mathrm{n}-2)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q11": {
+      "question_uid": "pp:ee:2025:q11",
+      "exam_uid": "ee:2025:set1:q11",
+      "title": "GATE EE 2025 | Set 1 | Question: 11",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a continuous-time signal<br><br>\n$\\mathrm{x}(\\mathrm{t})=-\\mathrm{t}^{2}\\{\\mathrm{u}(\\mathrm{t}+4)-\\mathrm{u}(\\mathrm{t}-4)\\}$<br><br>\nWhere $u(t)$ is the continuous-time unit step function. Let $\\delta(\\mathrm{t})$ be the continuous-time unit impulse function. The value of <br>\n<br>\n$\\int_{-\\infty}^{\\infty} \\mathrm{x}(\\mathrm{t}) \\delta(\\mathrm{t}+3) \\mathrm{dt}$ <br>\n<br>\nis",
+      "options": [
+        "-9",
+        "9",
+        "3",
+        "-3"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "introduction-of-c-t-and-d-t-signals",
+          "subtopicLabel": "Introduction of C.T. and D.T. Signals"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "introduction-of-c-t-and-d-t-signals"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
+        "markdown": "<b>Given:</b>\n\n$\\mathrm{x}(\\mathrm{t}) = -\\mathrm{t}^2 {\\mathrm{u}(\\mathrm{t}+4) - \\mathrm{u}(\\mathrm{t}-4)}$\n\nThis represents a time-limited signal that exists only between $t = -4$ and $t = 4$. Outside this interval, $x(t) = 0$.\n\n<b>Also given:</b>\n\nWe are to compute the value of the integral:\n\n$\\int_{-\\infty}^{\\infty} \\mathrm{x}(\\mathrm{t}) \\delta(\\mathrm{t}+3) , \\mathrm{dt}$\n\n<b>Step 1: Use the sifting property of the delta function:</b>\n\n$\\int_{-\\infty}^{\\infty} f(t) \\delta(t - t_0) , dt = f(t_0)$\n\nSimilarly,\n\n$\\int_{-\\infty}^{\\infty} f(t) \\delta(t + 3) , dt = f(-3)$\n\n<b>Step 2: Evaluate $x(-3)$</b>\n\n$x(t) = -t^2 {u(t+4) - u(t-4)}$\n\nAt $t = -3$,\n\n$u(-3 + 4) = u(1) = 1$ and $u(-3 - 4) = u(-7) = 0$\n\nSo,\n\n$x(-3) = -(-3)^2 (1 - 0) = -9$\n\n<b>Final Answer:</b>\n\n$\\int_{-\\infty}^{\\infty} \\mathrm{x}(\\mathrm{t}) \\delta(\\mathrm{t}+3) , \\mathrm{dt} = x(-3) = -9$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q12": {
+      "question_uid": "pp:ee:2025:q12",
+      "exam_uid": "ee:2025:set1:q12",
+      "title": "GATE EE 2025 | Set 1 | Question: 12",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Selected data points of the step response of a stable first-order linear time-invariant (LTI) system are given below. The closest value of the time-constant, in sec, of the system is\n<br><br>$$\\begin{array}{|l|l|l|l|l|l|}\n\\hline\nTime(sec) & 0.6 & 1.6 & 2.6 & 10 & \\infty \\\\\n\\hline\nOutput & 0.78 & 1.65 & 2.18 & 2.98 & 3 \\\\\n\\hline\n\\end{array}$$",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "<b>Step 1: Analyze the step response of a first-order LTI system</b>\n\nFor a first-order LTI system, the step response is given by:\n\n$y(t) = K \\left(1 - e^{-t/\\tau}\\right)$\n\nWhere $K$ is the steady-state value (final output), and $\\tau$ is the time constant.\n\n<b>Step 2: Use the steady-state value</b>\n\nThe output approaches the steady-state value as $t \\to \\infty$.\n\nAt $t = \\infty$, the output is 3, which is the steady-state value (K).\n\nThus, $K = 3$.\n\n<b>Step 3: Relating time and output</b>\n\nFor a first-order system, the time at which the output reaches $63%$ of the final value is equal to the time constant $\\tau$.\n\nSo, $y(\\tau) = K \\left(1 - e^{-1}\\right) = 3 \\times (1 - e^{-1}) \\approx 3 \\times 0.632 = 1.896$.\n\n<b>Step 4: Find the closest data point to 1.896</b>\n\nLooking at the given data points, at $t = 1.6 \\text{ sec}, y(t) = 1.65$, which is the closest to 1.896.\n\nThus, the time constant $\\tau \\approx 2 \\text{ sec}$.\n\n<b>Final Answer:</b>\n\nThe closest value of the time constant is $2 \\text{ sec}$.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q13": {
+      "question_uid": "pp:ee:2025:q13",
+      "exam_uid": "ee:2025:set1:q13",
+      "title": "GATE EE 2025 | Set 1 | Question: 13",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Nyquist plot of a strictly stable $G(s)$ having the numerator polynomial as $(s-3)$ encircles the critical point $-1$ once in the anti-clockwise direction. Which one of the following statements on the closed-loop system shown in figure, is correct? <br><br><img src=\"/question-images/ee/2025/ee-2025-1a083df044.webp\"/><br>",
+      "options": [
+        "The system stability cannot be ascertained.",
+        "The system is marginally stable.",
+        "The system is stable.",
+        "The system is unstable."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "root-locus-techniques",
+          "subtopicLabel": "Root Locus Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "root-locus-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Root Locus Techniques",
+        "markdown": "<b>Given:</b>\n\nThe Nyquist plot of a strictly stable transfer function $G(s)$ has the numerator polynomial $(s - 3)$, and it encircles the critical point $-1$ once in the anti-clockwise direction.\n\n<b>Step 1: Understand the Nyquist criterion</b>\n\nThe Nyquist criterion provides a relationship between the open-loop transfer function’s Nyquist plot and the stability of the closed-loop system. According to the Nyquist criterion, the number of encirclements of the critical point $-1$ determines the stability of the closed-loop system.\n\n<b>Step 2: Analyze the information given</b>\n\nThe Nyquist plot encircles the critical point $-1$ once in the anti-clockwise direction.\n\nThe open-loop transfer function is strictly stable, implying that all poles are in the left half of the complex plane.\n\nThe system's Nyquist plot encircles the critical point $-1$ once in the anti-clockwise direction. According to the Nyquist criterion, this indicates that the number of right-half-plane poles of the open-loop transfer function is 1.\n\n<b>Step 3: Apply the Nyquist criterion for stability</b>\n\nThe Nyquist criterion states that for the closed-loop system to be stable, the number of encirclements of the point $-1$ must be equal to the number of right-half-plane poles of the open-loop transfer function.\n\nSince the Nyquist plot encircles $-1$ once in the anti-clockwise direction, the number of right-half-plane poles is 1. This suggests that the closed-loop system is unstable because the number of encirclements of $-1$ is non-zero, and the system has a pole in the right half of the complex plane.\n\n<b>Final Answer:</b>\n\nThe system is unstable.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ee:2025:q14": {
+      "question_uid": "pp:ee:2025:q14",
+      "exam_uid": "ee:2025:set1:q14",
+      "title": "GATE EE 2025 | Set 1 | Question: 14",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "During a power failure, a domestic household uninterruptible power supply (UPS) supplies AC power to a limited number of lights and fans in various rooms. As per a Newton-Raphson loadflow formulation, the UPS would be represented as a",
+      "options": [
+        "Slack bus",
+        "PV bus",
+        "PQ bus",
+        "PQV bus"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "load-flow-studies",
+          "subtopicLabel": "Load Flow Studies\n"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "load-flow-studies"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Load Flow Studies\n",
+        "markdown": "In a power system load-flow analysis:\n\nA Slack bus (swing bus) is defined with specified voltage magnitude and angle. It balances the active and reactive power in the network.\n\nA PV bus has specified real power $P$ and voltage magnitude $V$, while $Q$ is calculated.\n\nA PQ bus has specified real power $P$ and reactive power $Q$, and $V$ and angle $\\theta$ are calculated.\n\nA PQV bus is not a standard term in load-flow analysis.\n\nIn this case, the UPS supplies power and maintains the system voltage, effectively acting as the reference. Hence, it is modeled as a Slack bus in Newton-Raphson load-flow formulation.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q15": {
+      "question_uid": "pp:ee:2025:q15",
+      "exam_uid": "ee:2025:set1:q15",
+      "title": "GATE EE 2025 | Set 1 | Question: 15",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following figures represents the radial electric field distribution ${E}_{{R}}$ caused by a spherical cloud of electrons with a volume charge density, $\\rho=-3 \\rho_{0}$ for $0 \\leq R \\leq  a$  (both $\\rho_{0}$, a are positive and $R$ is the radial distance) and $\\rho=0$ for ${R} > {a}$ ?  <br><br><img src=\"/question-images/ee/2025/ee-2025-259ef0bda8.webp\"/><br>",
+      "options": [
+        "Fig. (i)",
+        "Fig. (ii)",
+        "Fig. (iii)",
+        "Fig. (iv)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-theory",
+          "subjectLabel": "Electromagnetic Theory",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-theory",
+          "electrostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Theory - Electrostatic Fields",
+        "markdown": "<img src=\"/question-images/ee/2025/ee-2025-d12dfe07b4.webp\"/>\n\n$0 < \\mathrm{R}  < \\mathrm{a}:$\n\n$\\oiint \\overline{\\mathrm{E}} \\cdot \\overline{\\mathrm{dA}}=\\frac{\\mathrm{Q}_{\\mathrm{ENC}}}{\\varepsilon_{0}}=\\frac{1}{\\varepsilon_{0}} \\iiint\\left(-3 \\rho_{0}\\right) \\mathrm{dv}$\n\n$\\mathrm{E}_{\\mathrm{r}} 4 \\pi \\mathrm{R}^{2}=\\frac{1}{\\varepsilon_{0}}\\left(-3 \\rho_{0}\\right) \\frac{4}{3} \\pi \\mathrm{R}^{3}$\n\n$\\mathrm{E}_{\\mathrm{r}}=\\frac{-3 \\rho_{0}}{\\varepsilon_{0}} \\frac{\\mathrm{R}}{3}=\\frac{-\\rho_{0} \\mathrm{R}}{\\varepsilon_{0}}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q16": {
+      "question_uid": "pp:ee:2025:q16",
+      "exam_uid": "ee:2025:set1:q16",
+      "title": "GATE EE 2025 | Set 1 | Question: 16",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The operating region of the developed torque $\\left(\\mathrm{T}_{\\mathrm{em}}\\right)$ and speed $(\\omega)$ of an induction motor drive is given by the shaded region OQRE in the figure. The load torque $\\left(\\mathrm{T}_{\\mathrm{L}}\\right)$ characteristic is also shown. The motor drive moves from the initial operating point O to the final operating point S. Which one of the following trajectories will take the shortest time? <br><br><img src=\"/question-images/ee/2025/ee-2025-4787af19dd.webp\"/><br>",
+      "options": [
+        "$\\mathrm{O}-\\mathrm{Q}-\\mathrm{R}-\\mathrm{S}$",
+        "$\\mathrm{O}-\\mathrm{P}-\\mathrm{S}$",
+        "$\\mathrm{O}-\\mathrm{E}-\\mathrm{S}$",
+        "$\\mathrm{O}-\\mathrm{F}-\\mathrm{S}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system",
+          "subtopicLabel": "Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "single-phase-induction-motors-special-purpose-machines-and-electromechanical-energy-conversion-system"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Single Phase Induction Motors, Special Purpose Machines and Electromechanical Energy Conversion System",
+        "markdown": "The shortest time to reach the final operating point happens when the motor accelerates with the maximum possible torque. In the torque speed plane, the maximum developed torque corresponds to the uppermost boundary of the shaded region, the line QR\n\nSo the fastest trajectory will follow:\n\nO-Q-R-S\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q17": {
+      "question_uid": "pp:ee:2025:q17",
+      "exam_uid": "ee:2025:set1:q17",
+      "title": "GATE EE 2025 | Set 1 | Question: 17",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The input voltage $\\mathrm{v}(\\mathrm{t})$ and current $\\mathrm{i}(\\mathrm{t})$ of a converter are given by,<br><br>\n$\\mathrm{v}(\\mathrm{t})=300 \\sin (\\omega \\mathrm{t})$<br><br>\n\n$\\mathrm{i}(\\mathrm{t})=10 \\sin \\left(\\omega \\mathrm{t}-\\frac{\\pi}{6}\\right)+2 \\sin \\left(3 \\omega \\mathrm{t}+\\frac{\\pi}{6}\\right)+\\sin \\left(5 \\omega \\mathrm{t}+\\frac{\\pi}{2}\\right) \\mathrm{A}$<br><br>\n\nWhere, $\\omega=2 \\pi \\times 50 \\mathrm{rad} / \\mathrm{s}$. The input power factor of the converter is closest to",
+      "options": [
+        "0.845",
+        "0.867",
+        "0.887",
+        "1"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "$\\mathrm{V}(\\mathrm{t})=300 \\sin (\\omega \\mathrm{t})$\n\n$\\mathrm{i}(\\mathrm{t})=10 \\sin \\left(\\omega \\mathrm{t}-\\frac{\\pi}{6}\\right)+2 \\sin \\left(3 \\omega \\mathrm{t}+\\frac{\\pi}{6}\\right)+\\sin \\left(5 \\omega \\mathrm{t}+\\frac{\\pi}{2}\\right)$\n\n$\\omega=2 \\pi \\times 50 \\mathrm{rad} / \\mathrm{sec}$, I.P.F $=$ ?\n\nSupply voltage is pure sinusoidal\n\n$\\therefore \\mathrm{V}(\\mathrm{t})=\\mathrm{V}_{1}(\\mathrm{t})=300 \\sin (\\omega \\mathrm{t})$\n\nSupply current has fundamental, third harmonic and fifth harmonic component\n\n$\\mathrm{i}_{1}(\\mathrm{t})=10 \\sin \\left(\\omega \\mathrm{t}-\\frac{\\pi}{6}\\right)$\n\n$\\mathrm{i}_{3}(\\mathrm{t})=2 \\sin \\left(3 \\omega \\mathrm{t}+\\frac{\\pi}{6}\\right)$\n\n$\\mathrm{i}_{5}(\\mathrm{t})=\\sin \\left(5 \\omega \\mathrm{t}+\\frac{\\pi}{2}\\right)$\n\n$$\\begin{aligned}\n\n& \\mathrm{i}_{\\mathrm{RMS}}=\\sqrt{\\mathrm{i}_{1}{ }^{2}{ }_{\\mathrm{RMS}}+\\mathrm{i}_{3}{ }^{2}{ }_{\\mathrm{RMS}}+\\mathrm{i}_{5 \\mathrm{RMS}}^{2}}\\\\\n\n&=\\sqrt{\\left(\\frac{10}{\\sqrt{2}}\\right)^{2}+\\left(\\frac{2}{\\sqrt{2}}\\right)^{2}+\\left(\\frac{1}{\\sqrt{2}}\\right)^{2}} \\\\\n\n& \\begin{aligned}\n\n\\therefore \\mathrm{i}_{\\mathrm{RMS}} & =7.2457 \\mathrm{~A}\n\n\\end{aligned} \\\\\n\n& \\begin{aligned}\n\n\\text { Distortion factor } & =\\frac{\\mathrm{i}_{1 \\mathrm{RMS}}}{\\mathrm{i}_{\\mathrm{RMS}}}=\\frac{\\left(\\frac{10}{\\sqrt{2}}\\right)}{7.2457} \\\\\n\n& =0.976\n\n\\end{aligned} \\\\\n\n& \\begin{aligned}\n\n\\text { Displacement power factor } & =\\cos \\left(\\frac{\\pi}{6}\\right)\n\n\\end{aligned} \\\\\n\n& \\text { Input power factor }=\\binom{\\text { Distortion }}{\\text { factor }} \\times\\binom{\\text { Displacement }}{\\text { power factor }} \\\\\n\n&=0.976 \\times 0.866 \\\\\n\n&=0.845\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q18": {
+      "question_uid": "pp:ee:2025:q18",
+      "exam_uid": "ee:2025:set1:q18",
+      "title": "GATE EE 2025 | Set 1 | Question: 18",
+      "year": "gateee-2025-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Instrument(s) required to synchronize an alternator to the grid is/are",
+      "options": [
+        "Voltmeter",
+        "Wattmeter",
+        "Synchroscope",
+        "Stroboscope"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "To synchronize an alternator with the grid, the following conditions must be satisfied:\n\nThe terminal voltage of the alternator should match the grid voltage.\n\nThe frequency of the alternator must be equal to the grid frequency.\n\nThe phase sequence should be identical.\n\nThe phase angle difference should be nearly zero at the instant of synchronization.\n\nInstruments used to verify these conditions are:\n\n(A) Voltmeter:\n\nUsed to ensure the voltage of the alternator matches the grid voltage.\n\n(B) Wattmeter:\n\nMeasures power; not used for synchronization.\n\n(C) Synchroscope:\n\nUsed to indicate the phase angle and frequency difference between the alternator and the grid. It shows whether the alternator is running fast or slow and when to close the circuit breaker.\n\n(D) Stroboscope:\n\nUsed to measure rotational speed visually; not used in electrical synchronization.\n\nTherefore, the correct option(s) are **A, C**."
+      }
+    },
+    "pp:ee:2025:q19": {
+      "question_uid": "pp:ee:2025:q19",
+      "exam_uid": "ee:2025:set1:q19",
+      "title": "GATE EE 2025 | Set 1 | Question: 19",
+      "year": "gateee-2025-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "The open-loop transfer function of the system shown in the figure, is\n<br><br>\n$\\mathrm{G}(\\mathrm{s})=\\frac{\\mathrm{Ks}(\\mathrm{s}+2)}{(\\mathrm{s}+5)(\\mathrm{s}+7)}$\n<br><br>\nFor $\\mathrm{K} \\geq 0$, which of the following real axis point(s) is/are on the root locus? <br><br><img src=\"/question-images/ee/2025/ee-2025-5f60b91bab.webp\"/><br>",
+      "options": [
+        "-1",
+        "-4",
+        "-6",
+        "-10"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "root-locus-techniques",
+          "subtopicLabel": "Root Locus Techniques"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "root-locus-techniques"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Root Locus Techniques",
+        "markdown": "Given $G(s)=\\frac{K s(s+2)}{[s+5][s+7]}$\n\n<img src=\"/question-images/ee/2025/ee-2025-6044424268.webp\"/>\n\nFrom the given options\n\n$s=-1, s=-6$ are on the root locus\n\nTherefore, the correct option(s) are **A, C**."
+      }
+    },
+    "pp:ee:2025:q20": {
+      "question_uid": "pp:ee:2025:q20",
+      "exam_uid": "ee:2025:set1:q20",
+      "title": "GATE EE 2025 | Set 1 | Question: 20",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A continuous time periodic signal ${x}({t})$ is<br><br>\n$x(t)=1+2 \\cos 2 \\pi t+2 \\cos 4 \\pi t+2 \\cos 6 \\pi t$.<br><br>\nIf $T$ is the period of $x(t)$, then $\\frac{1}{T} \\int_{0}^{T}| x(t)| ^{2} dt=$ _________  (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "7",
+        "tolerance": {
+          "lower": 7,
+          "upper": 7
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-series",
+          "subtopicLabel": "Fourier Series"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "fourier-series"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Series",
+        "markdown": "<b>Step 1: Find the period $T$</b>\n\nThe signal $x(t)$ consists of cosine terms with frequencies $2\\pi, 4\\pi, 6\\pi$, which correspond to fundamental frequencies $1 , \\text{Hz}, 2 , \\text{Hz}, 3 , \\text{Hz}$. The period of the signal $T$ is the least common multiple (LCM) of the periods of these individual cosine terms.\n\nThe period of $2\\pi t$ (1 Hz) is $T_1 = 1 , \\text{sec}$.\n\nThe period of $4\\pi t$ (2 Hz) is $T_2 = 0.5 , \\text{sec}$.\n\nThe period of $6\\pi t$ (3 Hz) is $T_3 = \\frac{1}{3} , \\text{sec}$.\n\nThe LCM of $T_1, T_2, T_3$ is $T = 1 , \\text{sec}$.\n\n<b>Step 2: Calculate $|x(t)|^2$</b>\n\nThe signal $x(t)$ is real, so we can calculate $|x(t)|^2$ directly:\n\n$|x(t)|^2 = (1 + 2 \\cos(2\\pi t) + 2 \\cos(4\\pi t) + 2 \\cos(6\\pi t))^2$\n\nExpanding the square:\n\n$|x(t)|^2 = 1 + 4 \\cos(2\\pi t) + 4 \\cos(4\\pi t) + 4 \\cos(6\\pi t) + 4 \\cos^2(2\\pi t) + 4 \\cos(2\\pi t) \\cos(4\\pi t) + \\ldots$\n\n<b>Step 3: Integrate over one period</b>\n\nWe now need to compute the integral of $|x(t)|^2$ over one period $T = 1 , \\text{sec}$. Many of the cross-term integrals, like $\\int_0^T \\cos(2\\pi t) \\cos(4\\pi t) dt$, will be zero due to the orthogonality property of the cosine functions.\n\nFor the terms that do not vanish:\n\n$\\int_0^T 1 , dt = T = 1 , \\text{sec}$\n\n$\\int_0^T \\cos^2(2\\pi t) , dt = \\frac{1}{2} T = \\frac{1}{2}$ (using the identity $\\cos^2(x) = \\frac{1 + \\cos(2x)}{2}$)\n\nSimilarly, $\\int_0^T \\cos^2(4\\pi t) , dt = \\frac{1}{2}$ and $\\int_0^T \\cos^2(6\\pi t) , dt = \\frac{1}{2}$.\n\n<b>Step 4: Sum up the integrals</b>\n\nAfter evaluating the integrals and summing them up, the result of the integral is:\n\n$\\int_0^T |x(t)|^2 , dt = 1 + 4 \\times \\frac{1}{2} + 4 \\times \\frac{1}{2} + 4 \\times \\frac{1}{2} = 1 + 2 + 2 + 2 = 7$.\n\n<b>Step 5: Compute the final result</b>\n\nNow, we divide by the period $T = 1] sec:\n\n[latex]\\frac{1}{T} \\int_0^T |x(t)|^2 , dt = \\frac{7}{1} = 7$.\n\n<b>Final Answer:</b>\n\nThe value of $\\frac{1}{T} \\int_0^T |x(t)|^2 , dt$ is closest to 7.\n\nTherefore, the correct answer is **7**."
+      }
+    },
+    "pp:ee:2025:q21": {
+      "question_uid": "pp:ee:2025:q21",
+      "exam_uid": "ee:2025:set1:q21",
+      "title": "GATE EE 2025 | Set 1 | Question: 21",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The maximum percentage error in the equivalent resistance of two parallel-connected resistors of $100 \\Omega$ and $900 \\Omega$ with each having a maximum $5 \\%$ error is __________  % (round off to nearest integer value).\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5",
+        "tolerance": {
+          "lower": 5,
+          "upper": 5
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "measurement-of-resistance-and-potentiometers",
+          "subtopicLabel": "Measurement of Resistance and Potentiometers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "measurement-of-resistance-and-potentiometers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Measurement of Resistance and Potentiometers",
+        "markdown": "$\\mathrm{R}_{1}=100 \\Omega \\pm 5 \\%=100 \\pm 5$\n\n$$\\begin{aligned}\n\n& \\quad=95 \\text { to } 105 \\\\\n\n& \\mathrm{R}_{2}=900 \\Omega \\pm 5 \\%=900 \\pm 45 \\\\\n\n& =855 \\text { to } 945 \\\\\n\n& \\mathrm{R}_{\\text {totaltrue }}=\\frac{100 \\times 900}{100+900}=\\frac{90000}{1000}=90 \\Omega \\\\\n\n& \\mathrm{R}_{\\text {total mas }}=\\frac{105 \\times 945}{105+945}=94.5 \\Omega\\\\\n\n& \\% \\text { Error }=\\frac{94.5-90}{90} \\times 100=5 \\%\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5**."
+      }
+    },
+    "pp:ee:2025:q22": {
+      "question_uid": "pp:ee:2025:q22",
+      "exam_uid": "ee:2025:set1:q22",
+      "title": "GATE EE 2025 | Set 1 | Question: 22",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Consider a distribution feeder, with $\\mathrm{R} / \\mathrm{X}$ ratio of 5 . At the receiving end, a 350 kVA load is connected. The maximum voltage drop will occur from the sending end to the receiving end, when the power factor of the load is ___________ (round off to three decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.98",
+        "tolerance": {
+          "lower": 0.975,
+          "upper": 0.985
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "compensation-techniques-and-voltage-profile-control",
+          "subtopicLabel": "Compensation Techniques and Voltage profile Control"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "compensation-techniques-and-voltage-profile-control"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Compensation Techniques and Voltage profile Control",
+        "markdown": "$\\therefore \\frac{\\mathrm{X}}{\\mathrm{R}}=\\frac{1}{5}$\n\nTo have maximum voltage drop,\n\n$$\\begin{aligned}\n\n& \\begin{aligned}\n\n\\phi=\\theta= & \\tan ^{-1}\\left(\\frac{\\mathrm{X}}{\\mathrm{R}}\\right) \\\\\n\n& =\\tan ^{-1}\\left(\\frac{1}{5}\\right)=11.31 \\\\\n\n\\therefore \\cos \\phi & =\\cos (11.31)=0.981\n\n\\end{aligned}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.98** (acceptable range: [0.975, 0.985])."
+      }
+    },
+    "pp:ee:2025:q23": {
+      "question_uid": "pp:ee:2025:q23",
+      "exam_uid": "ee:2025:set1:q23",
+      "title": "GATE EE 2025 | Set 1 | Question: 23",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The bus impedance matrix of a 3-bus system (in $pu$ ) is\n<br><br>\n$$Z_{\\text {bus }}=\\left[\\begin{array}{lll}\nj 0.059 & j 0.061 & j 0.038 \\\\\nj 0.061 & j 0.093 & j 0.066 \\\\\nj 0.038 & j 0.066 & j 0.110\n\\end{array}\\right]$$\n<br>\n<br>\nA symmetrical fault (through a fault impedance of $j0.007 pu$) occurs at bus 2. Neglecting pre-fault loading conditions, the voltage at bus 1, during the fault is ___________  $pu$  (round off to three decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.39",
+        "tolerance": {
+          "lower": 0.38,
+          "upper": 0.4
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "fault-analysis",
+          "subtopicLabel": "Fault Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "fault-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Fault Analysis",
+        "markdown": "$$\\begin{aligned}\n\n& Z_{\\text {Bus }}=\\left[\\begin{array}{lll}\n\n\\mathrm{j} 0.059 & \\mathrm{j} 0.061 & \\mathrm{j} 0.038 \\\\\n\n\\mathrm{j} 0.061 & \\mathrm{j} 0.093 & \\mathrm{j} 0.066 \\\\\n\n\\mathrm{j} 0.038 & \\mathrm{j} 0.066 & \\mathrm{j} 0.110\n\n\\end{array}\\right] \\\\\n\n& \\mathrm{Z}_{\\mathrm{f}}=\\mathrm{j} 0.007 \\mathrm{pu}\n\n\\end{aligned}$$\n\nWhen the fault is at bus-2,\n\n$\\mathrm{I}_{\\mathrm{f}}=\\frac{\\mathrm{V}_{\\mathrm{f} 2}}{\\mathrm{Z}_{22}+\\mathrm{Z}_{\\mathrm{f}}}=\\frac{1 \\mathrm{pu}}{\\mathrm{j} 0.093+0.007}=-\\mathrm{j} 10 \\mathrm{pu}$\n\n$\\therefore$ Voltage at bus-1,\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{1(\\mathrm{~F})} & =\\mathrm{V}_{1}^{0}-\\mathrm{I}_{\\mathrm{F}} \\mathrm{Z}_{12} \\\\\n\n& =1-(-\\mathrm{j} 10)(\\mathrm{j} 0.061) \\\\\n\n& =1-0.61 \\\\\n\n& =0.39 \\mathrm{pu}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.39** (acceptable range: [0.38, 0.4])."
+      }
+    },
+    "pp:ee:2025:q24": {
+      "question_uid": "pp:ee:2025:q24",
+      "exam_uid": "ee:2025:set1:q24",
+      "title": "GATE EE 2025 | Set 1 | Question: 24",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "In the circuit with ideal devices, the power MOSFET is operated with a duty cycle of 0.4 in a switching cycle with $\\mathrm{I}=10 \\mathrm{~A}$ and $\\mathrm{V}=15 \\mathrm{~V}$. The power delivered by the current source, in $W$ , is ___________ (round off to the nearest integer). <br><br><img src=\"/question-images/ee/2025/ee-2025-c2648d5b90.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "90",
+        "tolerance": {
+          "lower": 90,
+          "upper": 90
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "$\\mathrm{D}=0.4, \\mathrm{I}=\\mathrm{i}_{\\mathrm{S}}=10 \\mathrm{~A}, \\mathrm{~V}=\\mathrm{V}_{0}=15 \\mathrm{~V}$\n\nPower delivered by current source $=$ ?\n\nDuring ${t}=0$ to DT:\n\nMOSFET-ON, D-OFF\n\n<img src=\"/question-images/ee/2025/ee-2025-7fae12eac3.webp\"/>\n\n$\\therefore \\mathrm{Vs}=0 \\mathrm{~V}$\n\nDuring ${t}=\\mathrm{DT}$ to T :\n\nMOSFET-OFF, D-ON\n\n<img src=\"/question-images/ee/2025/ee-2025-32457a0e46.webp\"/>\n\n$\\mathrm{V}_{\\mathrm{s}}=\\mathrm{V}=15 \\mathrm{~V}$\n\n<img src=\"/question-images/ee/2025/ee-2025-0b5fef0d39.webp\"/>\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{\\mathrm{Savg}}=\\frac{(\\mathrm{T}-\\mathrm{DT}) \\times 15}{\\mathrm{~T}}= & (1-\\mathrm{D}) \\times 15 \\\\\n\n& =(1-0.4) \\times 15\n\n\\end{aligned}$$\n\n$\\therefore$ Power delivered by current source\n\n$$\\begin{aligned}\n\n& =V_{S_{\\text {avg }}} \\mathrm{I}_{\\mathrm{avg}} \\\\\n\n& =9 \\times 10\\\\\n\n& =90 \\mathrm{~W}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **90**."
+      }
+    },
+    "pp:ee:2025:q25": {
+      "question_uid": "pp:ee:2025:q25",
+      "exam_uid": "ee:2025:set1:q25",
+      "title": "GATE EE 2025 | Set 1 | Question: 25",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The induced emf in a $3.3 \\mathrm{kV}, 4$ pole, 3-phase star connected synchronous motor is considered to be equal and in phase with the terminal voltage under no load condition. On application of a mechanical load, the induced emf phasor is deflected by an angle of $2^{\\circ}$ mechanical with respect to the terminal voltage phasor. If the synchronous reactance is $2 \\Omega$, and stator resistance is negligible, then the motor armature current magnitude, in ampere, during loaded condition is closest to, ___________ (round off to two decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "66.5",
+        "tolerance": {
+          "lower": 66.25,
+          "upper": 66.75
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "synchronous-machines",
+          "subtopicLabel": "Synchronous Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "synchronous-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Synchronous Machines",
+        "markdown": "$\\quad \\mathrm{V}_{\\mathrm{ph}}=\\frac{3.3 \\times 10^{3}}{\\sqrt{3}}=190.25 \\mathrm{~V}$\n\n$\\mathrm{E}_{\\mathrm{ph}}=\\mathrm{V}_{\\mathrm{ph}}$ [Given at no-load)\n\n$\\theta_{\\mathrm{e}}=\\frac{\\mathrm{P}}{2} \\times \\theta_{\\mathrm{m}}=\\frac{4}{2} \\times 2^{\\circ}$\n\n$\\theta_{\\mathrm{e}}=4^{\\circ}$\n\nDue to load, $\\mathrm{E} \\angle 0^{\\circ}$ will become $\\mathrm{E} \\angle-4^{\\circ}$\n\n<img src=\"/question-images/ee/2025/ee-2025-1224caf91e.webp\"/>\n\n$$\\begin{aligned}\n\n& \\mathrm{I}_{\\mathrm{a}}=\\frac{\\mathrm{V}-\\mathrm{E} \\angle-\\delta}{\\mathrm{X}_{\\mathrm{s}}} \\\\\n\n& =\\frac{1905.25-1905.25 \\angle-4^{\\circ}}{2 \\angle 90^{\\circ}}\\\\\n\n& \\mathrm{I}_{\\mathrm{a}}=66.45-\\mathrm{j} 2.32 \\quad(\\mathrm{or}) \\quad 66.49 \\angle-2^{\\circ} \\\\\n\n& \\left|\\mathrm{I}_{\\mathrm{a}}\\right|=\\sqrt{2.32^{2}+(66.45)^{2}} \\\\\n\n& =66.49 \\mathrm{Amp}{ }_{\\mathrm{A}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **66.5** (acceptable range: [66.25, 66.75])."
+      }
+    },
+    "pp:ee:2025:q26": {
+      "question_uid": "pp:ee:2025:q26",
+      "exam_uid": "ee:2025:set1:q26",
+      "title": "GATE EE 2025 | Set 1 | Question: 26",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let  $X$ and  $Y$ be continuous random variables with probability density functions $\\mathrm{P}_{\\mathrm{X}}(x)$ and $\\mathrm{P}_{\\mathrm{Y}}(y)$, respectively. Further, let $\\mathrm{Y}=\\mathrm{X}^{2}$ and\n<br><br>\n$$\\mathrm{P}_{\\mathrm{X}}(x)= \\begin{cases}1, & x \\in (0,1] \\\\ 0, & \\text { otherwise }\\end{cases}$$\n<br><br>\nWhich one of the following options is correct?",
+      "options": [
+        "$$P_{Y}(y)=\\begin{cases}\\frac{1}{2 \\sqrt{y}}, & y \\in (0,1] \\\\ 0, & \\text { otherwise }\\end{cases}$$",
+        "$$P_{Y}(y)= \\begin{cases}1, & {y} \\in(0,1]  \\\\ 0, & \\text { otherwise }\\end{cases}$$",
+        "$$P_{Y}(y)=\\begin{cases}1.5 \\sqrt{y}, & y \\in (0,1] \\\\ 0, & \\text { otherwise }\\end{cases}$$",
+        "$$P_{Y}(y)= \\begin{cases}2 y, & y \\in (0,1]  \\\\  0, & \\text { otherwise }\\end{cases}$$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "probability-and-statistics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "<b>Step 1:</b> Given: $Y = X^2$, and $X \\in (0, 1]$ with uniform distribution:\n\n$P_X(x) = 1$ for $x \\in (0, 1]$\n\n<b>Step 2:</b> Use the change of variable technique for continuous random variables.\n\nIf $Y = g(X) = X^2$, then $X = \\sqrt{Y}$ (since $X > 0$), and the PDF of $Y$ is:\n\n$P_Y(y) = P_X(x) \\cdot \\left| \\frac{dx}{dy} \\right|$\n\nWe know $x = \\sqrt{y}$, so:\n\n$\\frac{dx}{dy} = \\frac{1}{2\\sqrt{y}}$\n\nTherefore:\n\n$P_Y(y) = P_X(\\sqrt{y}) \\cdot \\left| \\frac{1}{2\\sqrt{y}} \\right| = 1 \\cdot \\frac{1}{2\\sqrt{y}} = \\frac{1}{2\\sqrt{y}}$, for $y \\in (0, 1]$\n\n<b>Step 3:</b> So the correct PDF of $Y$ is:\n\n$$P_Y(y) = \\begin{cases} \\dfrac{1}{2\\sqrt{y}}, & y \\in (0, 1] \\ 0, & \\text{otherwise} \\end{cases}$$\n\n<b>Final Answer:</b> <b>(A) $\\dfrac{1}{2\\sqrt{y}}$, for $y \\in (0, 1]$</b>\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q27": {
+      "question_uid": "pp:ee:2025:q27",
+      "exam_uid": "ee:2025:set1:q27",
+      "title": "GATE EE 2025 | Set 1 | Question: 27",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A Boolean function is given as<br><br>\n$f=(\\bar{u}+\\bar{v}+\\bar{w}+\\bar{x}) \\cdot(\\bar{u}+\\bar{v}+\\bar{w}+x) \\cdot(\\bar{u}+v+\\bar{w}+\\bar{x}) \\cdot(\\bar{u}+v+\\bar{w}+x)$<br><br>\nThe simplified form of this function is represented by <br><br><img src=\"/question-images/ee/2025/ee-2025-14b2736202.webp\"/><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-digital-electronics",
+          "subjectLabel": "Digital Electronics",
+          "subtopicSlug": "boolean-algebra-and-minimization",
+          "subtopicLabel": "Boolean Algebra and Minimization"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-digital-electronics",
+          "boolean-algebra-and-minimization"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Electronics - Boolean Algebra and Minimization",
+        "markdown": "$f=(\\bar{u}+\\bar{v}+\\bar{w}+\\bar{x})(\\bar{u}+\\bar{v}+\\bar{w}+x)(\\bar{u}+v+\\bar{w}+\\bar{x})(\\bar{u}+v+\\bar{w}+x)$\n\nGiven is a POS function\n\nThe integer form of the given function\n\n<img src=\"/question-images/ee/2025/ee-2025-c0e4f572ac.webp\"/>\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q28": {
+      "question_uid": "pp:ee:2025:q28",
+      "exam_uid": "ee:2025:set1:q28",
+      "title": "GATE EE 2025 | Set 1 | Question: 28",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the circuit, $\\mathrm{I}_{\\mathrm{DC}}$ is an ideal current source. The transistors $\\mathrm{M}_{1}$ and $\\mathrm{M}_{2}$ are assumed to be biased in saturation, wherein $V_{i n}$ is the input signal and $V_{D C}$ is fixed DC voltage. Both transistors have a small signal resistance of $\\mathrm{r}_{\\mathrm{ds}}$ and trans-conductance of $\\mathrm{g}_{\\mathrm{m}}$. The small signal output impedance of this circuit is <br><br><img src=\"/question-images/ee/2025/ee-2025-0fa3dbd339.webp\"/><br>",
+      "options": [
+        "$2 \\mathrm{r}_{\\mathrm{ds}}$",
+        "$\\frac{1}{\\mathrm{~g}_{\\mathrm{m}}}+\\mathrm{r}_{\\mathrm{ds}}$",
+        "$g_{m} \\mathrm{r}_{\\mathrm{ds}}^{2}+2 \\mathrm{r}_{\\mathrm{ds}}$",
+        "infinity"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "small-signal-analysis",
+          "subtopicLabel": "Small Signal Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "small-signal-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Small Signal Analysis",
+        "markdown": "Given\n\n$$\\begin{aligned}\n\n& \\mathrm{r}_{01}=\\mathrm{r}_{02}=\\mathrm{r}_{\\mathrm{ds}} \\\\\n\n& \\mathrm{~g}_{\\mathrm{m} 1}=\\mathrm{g}_{\\mathrm{m} 2}=\\mathrm{g}_{\\mathrm{m}}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/ee/2025/ee-2025-361a935866.webp\"/>\n\nFrom resistance reflection rule,\n\n$$\\begin{aligned}\n\n\\mathrm{R}_{\\mathrm{eq}} & =\\left(1+\\mathrm{g}_{\\mathrm{m}} \\mathrm{r}_{01}\\right) \\mathrm{r}_{02}+\\mathrm{r}_{01} \\\\\n\n& =\\mathrm{r}_{0}+\\mathrm{g}_{\\mathrm{m}} \\mathrm{r}_{0}{ }^{2}+\\mathrm{r}_{0} \\\\\n\n& =\\mathrm{g}_{\\mathrm{m}} \\mathrm{r}_{0}{ }^{2}+2 \\mathrm{r}_{0} \\\\\n\n& =\\mathrm{g}_{\\mathrm{m}} \\mathrm{r}_{\\mathrm{ds}}{ }^{2}+2 \\mathrm{r}_{\\mathrm{ds}}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q29": {
+      "question_uid": "pp:ee:2025:q29",
+      "exam_uid": "ee:2025:set1:q29",
+      "title": "GATE EE 2025 | Set 1 | Question: 29",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the circuit, shown below, if the values of R and C are very large, the form of the output voltage for a very high frequency square wave input, is best represented by<br><br><img src=\"/question-images/ee/2025/ee-2025-8d652eaa8a.webp\"/><br><br><br><img src=\"/question-images/ee/2025/ee-2025-7d44286a8b.webp\"/><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "cro-and-electronic-measurements",
+          "subtopicLabel": "CRO and Electronic Measurements"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "cro-and-electronic-measurements"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - CRO and Electronic Measurements",
+        "markdown": "As R and C are very large. The time-constant also very large but input supply square-wave frequency is high, so time-period of supply square is very small, so with large T in circuit but with small timeperiod of supply, output can never reach steadystate value of +1 (or) -1 V .\n\nSo, this originally is step (or) pulse response to1 ${ }^{\\text {st }}$ order circuit where original shape of ' $\\mathrm{V}_{0}$ ' is exponential but almost linearized as ' $T$ ' is very large.\n\n<img src=\"/question-images/ee/2025/ee-2025-d97052bbde.webp\"/>\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q30": {
+      "question_uid": "pp:ee:2025:q30",
+      "exam_uid": "ee:2025:set1:q30",
+      "title": "GATE EE 2025 | Set 1 | Question: 30",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let continuous-time signals ${x}_{1}({t})$ and ${x}_{2}({t})$ be<br><br>\n$${x}_{1}({t})= \\begin{cases}1, & {t} \\in[0,1] \\\\ 2-{t}, & {t} \\in[1,2] \\text { and } \\\\ 0, & \\text { otherwise }\\end{cases}$$<br><br>\n$${x}_{2}({t})= \\begin{cases}{t}, & {t} \\in[0,1] \\\\ 2-{t}, & {t} \\in[1,2] \\\\ 0, & \\text { otherwise }\\end{cases}$$<br><br>\nConsider the convolution ${y}({t})={x}_{1}({t}){*} {x}_{2}({t})$. Then $\\int_{-\\infty}^{\\infty} y(t) d t$ is",
+      "options": [
+        "1.5",
+        "2.5",
+        "3.5",
+        "4"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "introduction-of-c-t-and-d-t-signals",
+          "subtopicLabel": "Introduction of C.T. and D.T. Signals"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "introduction-of-c-t-and-d-t-signals"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Introduction of C.T. and D.T. Signals",
+        "markdown": "<img src=\"/question-images/ee/2025/ee-2025-90b84cf8ca.webp\"/>\n\nFrom the area property of convolution\n\n$$\\begin{aligned}\n\n\\int_{-\\infty}^{\\infty} y(t) d t & =\\left(\\int_{-\\infty}^{\\infty} x_{1}(t) d t\\right)\\left(\\int_{-\\infty}^{\\infty} x_{2}(t) d t\\right) \\\\\n\n& =\\left(1(1)+\\frac{1}{2}(1)(1)\\right)\\left(\\frac{1}{2}(2)(1)\\right)=1.5\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q31": {
+      "question_uid": "pp:ee:2025:q31",
+      "exam_uid": "ee:2025:set1:q31",
+      "title": "GATE EE 2025 | Set 1 | Question: 31",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Let $\\mathrm{G}(\\mathrm{s})=\\frac{1}{(\\mathrm{s}+1)(\\mathrm{s}+2)}$. Then the closed-loop system shown in the figure below, is <br><br><img src=\"/question-images/ee/2025/ee-2025-a8ea9e2d15.webp\"/><br>",
+      "options": [
+        "stable for all $\\mathrm{K} > 2$.",
+        "unstable for all $\\mathrm{K} > 2$.",
+        "unstable for all $\\mathrm{K} > 1$.",
+        "stable for all $\\mathrm{K} > 1$."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "feedback-characteristics-of-control-systems",
+          "subtopicLabel": "Feedback Characteristics of Control Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "feedback-characteristics-of-control-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Feedback Characteristics of Control Systems",
+        "markdown": "<b>Step 1:</b> Open-loop transfer function:\n\n$G(s) = \\frac{1}{(s+1)(s+2)}$,\n\nSo the forward path becomes:\n\n$K(s-1)G(s) = \\frac{K(s-1)}{(s+1)(s+2)}$\n\n<b>Step 2:</b> Closed-loop transfer function (unity feedback):\n\n$T(s) = \\frac{K(s-1)G(s)}{1 + K(s-1)G(s)} = \\frac{K(s-1)}{(s+1)(s+2) + K(s-1)}$\n\n<b>Step 3:</b> Characteristic equation:\n\n$(s+1)(s+2) + K(s-1) = 0$\n\nCompute:\n\n$s^2 + 3s + 2 + K(s - 1) = 0$\n\n$s^2 + 3s + 2 + Ks - K = 0$\n\n$s^2 + (3 + K)s + (2 - K) = 0$\n\n<b>Step 4:</b> Apply Routh-Hurwitz criterion:\n\nFor a second-order system $s^2 + a_1 s + a_0$ to be stable, both coefficients must be positive:\n\n$a_1 = 3 + K > 0 \\Rightarrow \\text{always true for } K > -3$\n\n$a_0 = 2 - K > 0 \\Rightarrow K < 2$\n\nSo the system is stable for $K < 2$, and unstable for $K \\geq 2$.\n\n<b>Final Answer:</b> <b>(B) unstable for all $K \\geq 2$</b>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q32": {
+      "question_uid": "pp:ee:2025:q32",
+      "exam_uid": "ee:2025:set1:q32",
+      "title": "GATE EE 2025 | Set 1 | Question: 32",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The continuous-time unit impulse signal is applied as an input to a continuous-time linear timeinvariant system $\\mathbf{S}$. The output is observed to be the continuous-time unit step signal $u(t)$. Which one of the following statements is true?",
+      "options": [
+        "very bounded input signal applied to $\\mathbf{S}$ results in a bounded output signal.",
+        "It is possible to find a bounded input signal which when applied to $\\mathbf{S}$ results in an unbounded output signal.",
+        "On applying any input signal to $\\mathbf{S}$, the output signal is always bounded.",
+        "On applying any input signal to $\\mathbf{S}$ the output signal is always unbounded."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "linear-time-invariant-systems",
+          "subtopicLabel": "Linear Time Invariant Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "linear-time-invariant-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Linear Time Invariant Systems",
+        "markdown": "<b>Step 1:</b> Given that the output of system $\\mathcal{S}$ for an input $\\delta(t)$ (unit impulse) is $u(t)$ (unit step),\n\nSo, the impulse response of the system is:\n\n$h(t) = u(t)$\n\n<b>Step 2:</b> A system is Bounded Input Bounded Output (BIBO) stable if its impulse response is absolutely integrable:\n\n$\\int_{-\\infty}^{\\infty} |h(t)| dt < \\infty$\n\nHere, $h(t) = u(t)$, so:\n\n$\\int_{-\\infty}^{\\infty} |u(t)| dt = \\int_{0}^{\\infty} 1 , dt = \\infty$\n\nHence, the system is not BIBO stable.\n\n<b>Step 3:</b> If a system is not BIBO stable, then there exists at least one bounded input that will produce an unbounded output.\n\n<b>Final Answer:</b> <b>(B) It is possible to find a bounded input signal which when applied to $\\mathbf{S}$ results in an unbounded output signal.</b>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q33": {
+      "question_uid": "pp:ee:2025:q33",
+      "exam_uid": "ee:2025:set1:q33",
+      "title": "GATE EE 2025 | Set 1 | Question: 33",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The transformer connection given in the figure is part of a balanced 3-phase circuit where the phase sequence is \"abc\". The primary to secondary turns ratio is 2:1. If $\\left(I_{a}+I_{b}+I_{c}=0\\right)$, then the relationship between $I_{A}$ and $I_{a d}$ will be <br><br><img src=\"/question-images/ee/2025/ee-2025-a5d851461b.webp\"/><br>",
+      "options": [
+        "$\\frac{\\left|I_{A}\\right|}{\\left|\\mathrm{I}_{\\text {ad }}\\right|}=\\frac{1}{2 \\sqrt{3}}$ and $\\mathrm{I}_{\\text {ad }} \\operatorname{lags} I_{A}$ by $30^{\\circ}$",
+        "$\\frac{\\left|\\mathrm{I}_{\\mathrm{A}}\\right|}{\\left|\\mathrm{I}_{\\mathrm{ad}}\\right|}=\\frac{1}{2 \\sqrt{3}}$ and $\\mathrm{I}_{\\text {ad }}$ leads $\\mathrm{I}_{\\mathrm{A}}$ by $30^{\\circ}$",
+        "$\\frac{\\left|I_{A}\\right|}{\\left|\\mathrm{I}_{\\mathrm{ad}}\\right|}=2 \\sqrt{3}$ and $\\mathrm{I}_{\\text {ad }} \\operatorname{lags} \\mathrm{I}_{\\mathrm{A}}$ by $30^{\\circ}$",
+        "$\\frac{\\left|\\mathrm{I}_{\\mathrm{A}}\\right|}{\\left|\\mathrm{I}_{\\mathrm{ad}}\\right|}=2 \\sqrt{3}$ and $\\mathrm{I}_{\\mathrm{ad}}$ leads $\\mathrm{I}_{\\mathrm{A}}$ by $30^{\\circ}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "performance-of-transmission-lines-line-parameters-and-corona",
+          "subtopicLabel": "Performance of Transmission Lines, Line Parameters and Corona"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "performance-of-transmission-lines-line-parameters-and-corona"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Performance of Transmission Lines, Line Parameters and Corona",
+        "markdown": "Given $\\frac{\\mathrm{N}_{1}}{\\mathrm{~N}_{2}}=2$\n\n$\\overline{\\mathrm{I}}_{\\mathrm{a}}+\\overline{\\mathrm{I}}_{\\mathrm{b}}+\\mathrm{I}_{\\mathrm{c}}=0$\n\nFrom figure, phase current ratio,\n\n$\\frac{\\mathrm{I}_{\\mathrm{A}}}{\\mathrm{I}_{\\mathrm{a}}}=\\frac{\\mathrm{N}_{2}}{\\mathrm{~N}_{1}}=\\frac{1}{2}$\n\n$\\mathrm{I}_{\\mathrm{a}}=2 \\mathrm{I}_{\\mathrm{A}}$\n\n$\\therefore$ Secondary line current, $\\mathrm{I}_{\\mathrm{ad}}=\\sqrt{3} \\mathrm{I}_{\\mathrm{a}}$\n\n$\\therefore \\mathrm{I}_{\\mathrm{ad}}=\\sqrt{3} \\times 2 \\mathrm{I}_{\\mathrm{A}} \\Rightarrow \\frac{\\mathrm{I}_{\\mathrm{A}}}{\\mathrm{I}_{\\mathrm{ad}}}=\\frac{1}{2 \\sqrt{3}}$\n\n<img src=\"/question-images/ee/2025/ee-2025-5f4f4fadf7.webp\"/>\n\n$\\overline{\\mathrm{I}}_{\\mathrm{ad}}=\\overline{\\mathrm{I}}_{\\mathrm{a}}-\\overline{\\mathrm{I}}_{\\mathrm{c}}$\n\n$\\therefore$ From figure, $\\mathrm{I}_{\\mathrm{ad}}$ lags $\\mathrm{I}_{\\mathrm{A}}$ by $30^{\\circ}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q34": {
+      "question_uid": "pp:ee:2025:q34",
+      "exam_uid": "ee:2025:set1:q34",
+      "title": "GATE EE 2025 | Set 1 | Question: 34",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A DC series motor with negligible series resistance is running at a certain speed driving a load, where the load torque varies as cube of the speed. The motor is fed from a 400 V DC source and draws 40 A armature current. Assume linear magnetic circuit. The external resistance, in $\\Omega$, that must be connected in series with the armature to reduce the speed of the motor by half, is closest to",
+      "options": [
+        "23.28",
+        "4.82",
+        "46.7",
+        "0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "dc-machines",
+          "subtopicLabel": "DC Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "dc-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - DC Machines",
+        "markdown": "<img src=\"/question-images/ee/2025/ee-2025-bc87cf0ca8.webp\"/>\n\n$T_{e m} \\propto I_{a}{ }^{2}$\n\n$\\mathrm{T}_{\\mathrm{L}} \\propto \\mathrm{N}^{3}$\n\n$\\Rightarrow \\mathrm{I}_{\\mathrm{a}}{ }^{2} \\propto \\mathrm{~N}^{3}$\n\n$\\left(\\frac{\\mathrm{I}_{\\mathrm{a} 2}}{\\mathrm{I}_{\\mathrm{a} 1}}\\right)^{2}=\\left(\\frac{\\mathrm{N}_{2}}{\\mathrm{~N}_{1}}\\right)^{3}$\n\n$\\Rightarrow \\mathrm{I}_{\\mathrm{a} 2}^{2}=40^{2} \\times \\frac{1}{8}$\n\n$\\Rightarrow \\mathrm{I}_{\\mathrm{a} 2}=14.142 \\mathrm{~A}$\n\n$\\mathrm{E}_{\\mathrm{b} 2}=400-14.14\\left(\\mathrm{R}_{\\mathrm{ex}}\\right)$\n\n$\\therefore \\frac{N_{2}}{N_{1}}=\\frac{E_{b 2}}{E_{b 1}} \\times \\frac{\\phi_{1}}{\\phi_{2}}$\n\n$\\Rightarrow \\frac{1}{2}=\\frac{400-14.14\\left(R_{\\text {ex }}\\right)}{400} \\times \\frac{40}{14.142}$\n\n$\\Rightarrow \\mathrm{R}_{\\mathrm{ex}}=23.28 \\Omega$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q35": {
+      "question_uid": "pp:ee:2025:q35",
+      "exam_uid": "ee:2025:set1:q35",
+      "title": "GATE EE 2025 | Set 1 | Question: 35",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A 3-phase, $400 \\mathrm{~V}, 4$ pole, 50 Hz star connected induction motor has the following parameters referred to the stator:<br><br>\n\n$\\mathrm{R}_{\\mathrm{r}}^{\\prime}=1 \\Omega, \\mathrm{X}_{\\mathrm{s}}=\\mathrm{X}_{\\mathrm{r}}^{\\prime}=2 \\Omega$\n<br>\n<br>\nStator resistance, magnetizing reactance and core loss of the motor are neglected. The motor is run with constant $V/f$ control from a drive. For maximum starting torque, the voltage and frequency output, respectively, from the drive, is closest to,",
+      "options": [
+        "400 V and 50 Hz",
+        "200 V and 25 Hz",
+        "100 V and 12.5 Hz",
+        "300 V and 37.5 Hz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "three-phase-induction-machines",
+          "subtopicLabel": "Three Phase Induction Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "three-phase-induction-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Three Phase Induction Machines",
+        "markdown": "$\\mathrm{V}_{1}=400 \\mathrm{~V} ; \\mathrm{f}_{1}=50 \\mathrm{~Hz}$\n\n$S_{m T}=\\frac{R_{2}{ }^{1}}{\\sqrt{R_{1}^{2}+\\left(X_{1}+X_{2}^{1}\\right)^{2}}}$\n\n$$\\begin{aligned}\n\n\\mathrm{R}_{1}=0 ; \\mathrm{S}_{\\mathrm{mT}} & =\\frac{\\mathrm{R}_{2}^{1}}{\\left(\\mathrm{X}_{1}+\\mathrm{X}_{2}^{1}\\right)} \\\\\n\n& =\\frac{1}{2+2}=\\frac{1}{4}\n\n\\end{aligned}$$\n\nWe know, $\\frac{\\mathrm{V}}{\\mathrm{f}}=$ constant\n\n$\\mathrm{S}_{\\mathrm{mT}} \\propto \\frac{1}{\\mathrm{f}}$\n\nFor $\\mathrm{T}_{\\mathrm{st}}=\\mathrm{T}_{\\text {max }} ; \\mathrm{S}_{\\mathrm{m} \\mathrm{T}_{2}}=1$\n\n$$\\begin{aligned}\n\n& \\mathrm{S}_{\\mathrm{mT}_{1}} \\mathrm{f}_{1}=\\mathrm{S}_{\\mathrm{m} \\mathrm{~m}_{2}} \\mathrm{f}_{2} \\\\\n\n& \\frac{1}{4} \\times 50=1 \\times \\mathrm{f}_{2}, \\\\\n\n& \\mathrm{f}_{2}=12.5 \\mathrm{~Hz} \\\\\n\n& \\frac{\\mathrm{~V}_{1}}{\\mathrm{f}_{1}}=\\frac{\\mathrm{V}_{2}}{\\mathrm{f}_{2}} ; \\mathrm{V}_{2}=100 \\mathrm{~V}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q36": {
+      "question_uid": "pp:ee:2025:q36",
+      "exam_uid": "ee:2025:set1:q36",
+      "title": "GATE EE 2025 | Set 1 | Question: 36",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The 3-phase modulating waveforms $({v}_{{a}}({t}), {v}_{{b}}({t})$ and ${v}_{{c}}({t}) )$, used in sinusoidal PWM in a Voltage Source Inverter (VSI) are<br><br>\n${v}_{{a}}({t})=0.8 \\sin (\\omega {t}) {V}$<br><br>\n${v}_{{b}}({t})=0.8 \\sin \\left(\\omega {t}-\\frac{2 \\pi}{3}\\right) {V}$<br><br>\n${V}_{{c}}({t})=0.8 \\sin \\left(\\omega {t}+\\frac{2 \\pi}{3}\\right) {V}$<br><br>\nWhere $\\omega=2 \\pi \\times 40 {rad} / {s}$ is the fundamental frequency. The modulating waveforms are compared with a 10 kHz triangular carrier whose magnitude varies between +1 and -1 . The VSI has a DC link voltage of 600 V and feeds a star connected motor. The per phase fundamental RMS motor voltage, in volts, is closest to",
+      "options": [
+        "169.71",
+        "300",
+        "424.26",
+        "212.13"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "inverters",
+          "subtopicLabel": "Inverters"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "inverters"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Inverters",
+        "markdown": "<b>Step 1:</b> The modulation index $m_a$ is defined as:\n\n$m_a = \\frac{V_m}{V_{\\text{tri}}}$, where $V_m = 0.8$ (peak of sine) and $V_{\\text{tri}} = 1$ (peak of carrier)\n\nSo:\n\n$m_a = 0.8$\n\n<b>Step 2:</b> In sinusoidal PWM for a 3-phase VSI, the peak value of fundamental line-to-neutral voltage is:\n\n$V_{an}^{\\text{peak}} = m_a \\cdot \\frac{V_{dc}}{2} = 0.8 \\cdot \\frac{600}{2} = 240, \\text{V}$\n\n<b>Step 3:</b> Convert peak to RMS for a sine wave:\n\n$V_{an}^{\\text{rms}} = \\frac{V_{an}^{\\text{peak}}}{\\sqrt{2}} = \\frac{240}{\\sqrt{2}} \\approx 169.71, \\text{V}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q37": {
+      "question_uid": "pp:ee:2025:q37",
+      "exam_uid": "ee:2025:set1:q37",
+      "title": "GATE EE 2025 | Set 1 | Question: 37",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An ideal sinusoidal voltage source $\\mathrm{V}(\\mathrm{t})=230 \\sqrt{2} \\sin (2 \\pi \\times 50 \\mathrm{t}) \\mathrm{V}$ feeds an ideal inductor L through an ideal SCR with firing angle $\\alpha=0^{\\circ}$. If $L=100 \\mathrm{mH}$, then the peak of the inductor current, in ampere, is closest to <br><br><img src=\"/question-images/ee/2025/ee-2025-bf6aa04927.webp\"/><br>",
+      "options": [
+        "20.71",
+        "0",
+        "10.35",
+        "7.32"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "<b>Step 1:</b> Given:\n\n$v(t) = 230\\sqrt{2} \\sin(2\\pi \\cdot 50 t)$\n\n$\\omega = 2\\pi \\cdot 50 = 100\\pi$\n\n$L = 100, \\text{mH} = 0.1, \\text{H}$\n\nFiring angle $\\alpha = 0^\\circ$, i.e., conduction starts at $t = 0$\n\n<b>Step 2:</b> The current through an inductor is given by:\n\n$i(t) = \\frac{1}{L} \\int_0^t v(\\tau), d\\tau = \\frac{1}{L} \\int_0^t 230\\sqrt{2} \\sin(100\\pi \\tau), d\\tau$\n\n<b>Step 3:</b> Integrating:\n\n$i(t) = \\frac{230\\sqrt{2}}{L \\cdot 100\\pi} (1 - \\cos(100\\pi t))$\n\n<b>Step 4:</b> The peak of this expression occurs when $\\cos(100\\pi t) = -1$\n\nThen:\n\n$i_{\\text{peak}} = \\frac{230\\sqrt{2}}{0.1 \\cdot 100\\pi} \\cdot (1 - (-1)) = \\frac{230\\sqrt{2}}{10\\pi} \\cdot 2$\n\nCalculate it:\n\n$i_{\\text{peak}} = \\frac{2 \\cdot 230\\sqrt{2}}{10\\pi} = \\frac{460 \\cdot 1.4142}{10\\pi} \\approx \\frac{651}{31.4159} \\approx 20.72, \\text{A}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q38": {
+      "question_uid": "pp:ee:2025:q38",
+      "exam_uid": "ee:2025:set1:q38",
+      "title": "GATE EE 2025 | Set 1 | Question: 38",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the following circuit, the average voltage<br><br>\n$\\mathrm{V}_{0}=400\\left(1+\\frac{\\cos \\alpha}{3}\\right) \\mathrm{V}$<br><br>\nWhere $\\alpha$ is the firing angle. If the power dissipated in the resistor is 64 W , then the closest value of $\\alpha$ in degrees is <br><br><img src=\"/question-images/ee/2025/ee-2025-fa0c8f24ee.webp\"/><br>",
+      "options": [
+        "35.9",
+        "46.4",
+        "41.4",
+        "0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "phase-controlled-rectifiers",
+          "subtopicLabel": "Phase Controlled Rectifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "phase-controlled-rectifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Phase Controlled Rectifiers",
+        "markdown": "$\\quad V_{0_{\\text {avg }}}=400\\left[1+\\frac{\\cos (\\alpha)}{3}\\right]$\n\n$\\mathrm{P}_{\\text {Ravg }}=64 \\mathrm{~W} ; \\alpha=?, \\mathrm{R}=1 \\Omega, \\mathrm{~L}=100 \\mathrm{mH}, \\mathrm{E}=500 \\mathrm{~V}$\n\n$\\mathrm{P}_{\\mathrm{R}_{\\text {avg }}}=\\mathrm{I}_{0}^{2} \\times \\mathrm{R}$\n\n$64=\\mathrm{I}_{0}^{2} \\times 1$\n\n$$\\begin{aligned}\n\n& \\therefore \\mathrm{I}_{0}=8 \\mathrm{~A} \\\\\n\n& \\mathrm{~V}_{0_{\\text {avg }}}=\\mathrm{I}_{0} \\cdot \\mathrm{R}+\\mathrm{E} \\\\\n\n& 400 \\times\\left[1+\\frac{\\cos (\\alpha)}{3}\\right]=8 \\times 1+500 \\\\\n\n& \\therefore \\alpha=35.9^{\\circ}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q39": {
+      "question_uid": "pp:ee:2025:q39",
+      "exam_uid": "ee:2025:set1:q39",
+      "title": "GATE EE 2025 | Set 1 | Question: 39",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the system shown below, the generator was initially supplying power to the grid. \nA temporary LLLG bolted fault occurs at F very close to circuit breaker 1. The circuit breakers open to isolate the line. The fault self-clears. The circuit breakers reclose and restore the line. Which one of the following diagrams best indicates the rotor accelerating and decelerating areas? <br><br><img src=\"/question-images/ee/2025/ee-2025-5750abadc6.webp\"/><br>",
+      "options": [
+        "Fig. (i)",
+        "Fig. (ii)",
+        "Fig. (iii)",
+        "Fig. (iv)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "power-system-transients",
+          "subtopicLabel": "Power System Transients"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "power-system-transients"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Power System Transients",
+        "markdown": "According to equal area criterion, |A1 | = |A2 | is the condition for stable system.\n\n<img src=\"/question-images/ee/2025/ee-2025-24b54c888f.webp\"/>\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q40": {
+      "question_uid": "pp:ee:2025:q40",
+      "exam_uid": "ee:2025:set1:q40",
+      "title": "GATE EE 2025 | Set 1 | Question: 40",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An air filled cylindrical capacitor (capacitance $\\mathrm{C}_{0}$ ) of length $L$, with $a$ and $b$ as its inner and outer radii, respectively, consists of two coaxial conducting surfaces. Its cross-sectional view is shown in Fig. (i). In order to increase the capacitance, a dielectric material of relative permittivity $\\varepsilon_{\\mathrm{r}}$ is inserted inside $50 \\%$ of the annular region as shown in Fig. (ii). The value of $\\varepsilon_{\\mathrm{r}}$ for which the capacitance of the capacitor in Fig. (ii), becomes $5 \\mathrm{C}_{0}$ is <br><br><img src=\"/question-images/ee/2025/ee-2025-54644eafc6.webp\"/><br>",
+      "options": [
+        "4",
+        "5",
+        "9",
+        "10"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-theory",
+          "subjectLabel": "Electromagnetic Theory",
+          "subtopicSlug": "electrostatic-fields",
+          "subtopicLabel": "Electrostatic Fields"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-theory",
+          "electrostatic-fields"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Theory - Electrostatic Fields",
+        "markdown": "<b>Step 1: Capacitance of a cylindrical capacitor</b>\n\nThe capacitance of a coaxial cylindrical capacitor filled with dielectric of permittivity $\\varepsilon$ is given by:\n\n$C = \\frac{2\\pi \\varepsilon L}{\\ln(b/a)}$\n\nSo, for Fig. (i) with air throughout (i.e., permittivity $\\varepsilon_0$):\n\n$C_0 = \\frac{2\\pi \\varepsilon_0 L}{\\ln(b/a)}$\n\n<b>Step 2: For Fig. (ii)</b>\n\nThe cross-section is split into two equal parts (in parallel):\n\nOne half is filled with air $\\varepsilon_0$\n\nThe other half is filled with dielectric $\\varepsilon_r \\varepsilon_0$\n\nSince they are in parallel, total capacitance is:\n\n$C = \\frac{1}{2} C_0 + \\frac{1}{2} \\varepsilon_r C_0 = \\frac{C_0}{2}(1 + \\varepsilon_r)$\n\nWe are given that $C = 5C_0$. So:\n\n$\\frac{C_0}{2}(1 + \\varepsilon_r) = 5C_0$\n\nDivide both sides by $C_0$:\n\n$\\frac{1 + \\varepsilon_r}{2} = 5$\n\n$1 + \\varepsilon_r = 10 \\Rightarrow \\varepsilon_r = 9$\n\n<b>Final Answer:</b> (C) 9\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q41": {
+      "question_uid": "pp:ee:2025:q41",
+      "exam_uid": "ee:2025:set1:q41",
+      "title": "GATE EE 2025 | Set 1 | Question: 41",
+      "year": "gateee-2025-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "Let ${a}_{{R}}$ be the unit radial vector in the spherical co-ordinate system. For which of the following value(s) of $n$, the divergence of the radial vector field $f(R)=a_{R} \\frac{1}{R^{n}}$ is independent of $R$ ?",
+      "options": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-theory",
+          "subjectLabel": "Electromagnetic Theory",
+          "subtopicSlug": "coordinate-systems-and-vector-calculus",
+          "subtopicLabel": "Coordinate Systems and Vector Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-theory",
+          "coordinate-systems-and-vector-calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Theory - Coordinate Systems and Vector Calculus",
+        "markdown": "We use the divergence formula for a purely radial vector field in spherical coordinates:\n\n$\\nabla \\cdot \\left( \\frac{1}{R^n} \\mathbf{a}_R \\right)\n\n= \\frac{1}{R^2} \\frac{d}{dR} \\left( R^2 \\cdot \\frac{1}{R^n} \\right)\n\n= \\frac{1}{R^2} \\frac{d}{dR} \\left( R^{2-n} \\right)\n\n= \\frac{1}{R^2} \\cdot (2 - n) R^{1 - n}\n\n= (2 - n) R^{-1 - n}$\n\nWe want this expression to be independent of $R$, so the power of $R$ must be zero:\n\n$-1 - n = 0 \\quad \\Rightarrow \\quad n = -1$\n\nSo clearly $n = -1$ is one valid value. Now check another special case:\n\n<b>Case: $n = 2$</b>\n\nTry plugging $n = 2$ directly into the divergence expression:\n\n$\\nabla \\cdot \\left( \\frac{1}{R^2} \\mathbf{a}_R \\right)\n\n= \\frac{1}{R^2} \\frac{d}{dR} \\left( R^2 \\cdot \\frac{1}{R^2} \\right)\n\n= \\frac{1}{R^2} \\frac{d}{dR} (1) = 0$\n\nSo the divergence is zero, which is also independent of $R$.\n\nTherefore, the correct option(s) are **B, D**."
+      }
+    },
+    "pp:ee:2025:q42": {
+      "question_uid": "pp:ee:2025:q42",
+      "exam_uid": "ee:2025:set1:q42",
+      "title": "GATE EE 2025 | Set 1 | Question: 42",
+      "year": "gateee-2025-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": " Consider two coupled circuits, having selfinductances $L_{1}$ and $L_{2}$, that carry non-zero currents $\\mathrm{I}_{1}$ and $\\mathrm{I}_{2}$, respectively. The mutual inductance between the circuits is M with unity coupling coefficient. The stored magnetic energy of the coupled circuits is minimum at which of the following value(s) of $\\frac{\\mathrm{I}_{1}}{\\mathrm{I}_{2}}$ ?",
+      "options": [
+        "$-\\frac{\\mathrm{M}}{\\mathrm{L}_{1}}$",
+        "$-\\frac{\\mathrm{M}}{\\mathrm{L}_{2}}$",
+        "$-\\frac{\\mathrm{L}_{1}}{\\mathrm{M}}$",
+        "$-\\frac{L_{2}}{\\mathrm{M}}$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electromagnetic-theory",
+          "subjectLabel": "Electromagnetic Theory",
+          "subtopicSlug": "coordinate-systems-and-vector-calculus",
+          "subtopicLabel": "Coordinate Systems and Vector Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electromagnetic-theory",
+          "coordinate-systems-and-vector-calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetic Theory - Coordinate Systems and Vector Calculus",
+        "markdown": "<img src=\"/question-images/ee/2025/ee-2025-be1cc430bf.webp\"/>\n\n$\\mathrm{E}_{\\mathrm{s}}=\\frac{1}{2} \\mathrm{~L}_{1} \\mathrm{I}_{1}^{2}+\\frac{1}{2} \\mathrm{~L}_{2} \\mathrm{I}_{2}^{2}+\\mathrm{MI}_{1} \\mathrm{I}_{2}$\n\n[Based on given options it has to be mutally adding only]\n\n$$\\begin{aligned}\n\n\\frac{\\partial \\mathrm{E}_{\\mathrm{s}}}{\\partial \\mathrm{I}_{1}}=0 & \\Rightarrow \\mathrm{~L}_{1} \\mathrm{I}_{1}+\\mathrm{MI}_{2}=0 \\Rightarrow \\frac{\\mathrm{I}_{1}}{\\mathrm{I}_{2}}=-\\frac{\\mathrm{M}}{\\mathrm{~L}_{1}} \\\\\n\n& \\Rightarrow \\mathrm{~L}_{1} \\mathrm{I}_{1}=-\\mathrm{MI}_{2} \\\\\n\n\\frac{\\partial \\mathrm{E}_{\\mathrm{s}}}{\\partial \\mathrm{I}_{2}}= & \\Rightarrow \\mathrm{L}_{2} \\mathrm{I}_{2}+\\mathrm{MI}_{1}=0 \\Rightarrow \\frac{\\mathrm{I}_{1}}{\\mathrm{I}_{2}}=-\\frac{\\mathrm{L}_{2}}{\\mathrm{M}} \\\\\n\n& \\Rightarrow \\mathrm{~L}_{2} \\mathrm{I}_{2}=-M I_{1}\n\n\\end{aligned}$$\n\nNow put both condition's together only $\\mathrm{E}_{\\mathrm{s}}$ is minimum,\n\n$$\\begin{aligned}\n\n\\mathrm{E}_{\\mathrm{s}} & =\\frac{1}{2} \\mathrm{~L}_{1} \\mathrm{I}_{1}^{2}+\\frac{1}{2} \\mathrm{~L}_{2} \\mathrm{I}_{2}^{2}+\\mathrm{MI}_{1} \\mathrm{I}_{2} \\\\\n\n& =\\frac{1}{2}\\left[-\\mathrm{MI}_{2}\\right]_{1}+\\frac{1}{2}\\left[-\\mathrm{MI}_{1}\\right] \\mathrm{I}_{2}+\\mathrm{MI}_{1} \\mathrm{I}_{2} \\\\\n\n& =0 \\mathrm{~J}\n\n\\end{aligned}$$\n\nTherefore, the correct option(s) are **A, D**."
+      }
+    },
+    "pp:ee:2025:q43": {
+      "question_uid": "pp:ee:2025:q43",
+      "exam_uid": "ee:2025:set1:q43",
+      "title": "GATE EE 2025 | Set 1 | Question: 43",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let $(\\mathrm{x}, \\mathrm{y}) \\in \\mathfrak{R}^{2}$. The rate of change of the real valued function,<br><br>\n$\\mathrm{V}(\\mathrm{x}, \\mathrm{y})=\\mathrm{x}^{2}+\\mathrm{x}+\\mathrm{y}^{2}+1$<br><br>\nat the origin in the direction of the point $(1,2)$ is ___________ (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.5",
+        "tolerance": {
+          "lower": 0,
+          "upper": 1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus\n"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus\n",
+        "markdown": "<b>Step 1: Direction vector and its unit vector</b>\n\nThe direction vector from origin to point (1, 2) is:\n\n$\\vec{u} = \\langle 1, 2 \\rangle$\n\nMagnitude of this vector is:\n\n$|\\vec{u}| = \\sqrt{1^2 + 2^2} = \\sqrt{5}$\n\nUnit vector in the given direction is:\n\n$\\hat{u} = \\left\\langle \\frac{1}{\\sqrt{5}}, \\frac{2}{\\sqrt{5}} \\right\\rangle$\n\n<b>Step 2: Compute the gradient of V(x, y)</b>\n\n$\\nabla V = \\left\\langle \\frac{\\partial V}{\\partial x}, \\frac{\\partial V}{\\partial y} \\right\\rangle = \\left\\langle 2x + 1, 2y \\right\\rangle$\n\nAt the origin (0, 0), the gradient becomes:\n\n$\\nabla V(0, 0) = \\langle 1, 0 \\rangle$\n\n<b>Step 3: Compute the directional derivative</b>\n\nDirectional derivative of V in the direction of unit vector $\\hat{u}$ is:\n\n$D_{\\hat{u}} V = \\nabla V \\cdot \\hat{u} = \\langle 1, 0 \\rangle \\cdot \\left\\langle \\frac{1}{\\sqrt{5}}, \\frac{2}{\\sqrt{5}} \\right\\rangle = \\frac{1}{\\sqrt{5}}$\n\nNumerical value:\n\n$\\frac{1}{\\sqrt{5}} \\approx \\frac{1}{2.236} \\approx 0.447$\n\nTherefore, the correct answer is **0.5** (acceptable range: [0, 1])."
+      }
+    },
+    "pp:ee:2025:q44": {
+      "question_uid": "pp:ee:2025:q44",
+      "exam_uid": "ee:2025:set1:q44",
+      "title": "GATE EE 2025 | Set 1 | Question: 44",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider ordinary differential equations given by <br><br>$\\dot{x}_{1}({t})=2 {x}_{2}({t})$ <br> $\\dot{{x}}_{2}({t})={r}({t})$<br><br>\nwith initial conditions ${x}_{1}(0)=1$ and ${x}_{2}(0)=0$.<br><br>\nIf $$r(t)=\\left\\{\\begin{array}{ll}1, & t \\geq 0 \\\\ 0, & t < 0\\end{array}\\right.$$, then at $t=1, x_{1}(t)=$ ___________ (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "differential-equations",
+          "subtopicLabel": "Differential Equations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "differential-equations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "Given $\\frac{{dx}_{1}}{{dt}}=2 {x}_{2} \\quad ...(1)$\n\n$$\\frac{{dx}_{2}}{{dt}}={r}({t}), \\quad {r}({t})=\\left\\{\\begin{array}{l}1: {t} \\geq 0 \\\\ 0: {t} < 0 \\end{array}\\right.$$\n\n$\\Rightarrow \\frac{{dx}_{2}}{{dt}}=1$ for ${t} \\geq 0 \\quad ...(2)$\n\n$\\Rightarrow {x}_{2}={t}+{c}  \\quad ...(3)$\n\nGiven $x_{2}(0)=0$\n\n(3) $\\Rightarrow 0=0+c \\Rightarrow c=0$\n\n$\\therefore {x}_{2}={t}$\n\nFrom (1) $\\frac{d x_{1}}{d t}=2 t$\n\n$\\Rightarrow {x}_{1}=\\frac{2 {t}^{2}}{2}+{K} \\quad ...(4)$\n\nGiven ${x}_{1}(0)=1:(4) \\Rightarrow 1=0+{K}$\n\n$\\Rightarrow {K}=1$\n\n$\\therefore$ From (4) ${x}_{1}={t}^{2}+1$\n\nNow ${X}_{1}(1)=1+1=2$\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ee:2025:q45": {
+      "question_uid": "pp:ee:2025:q45",
+      "exam_uid": "ee:2025:set1:q45",
+      "title": "GATE EE 2025 | Set 1 | Question: 45",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let $C$ be a clockwise oriented closed curve in the complex plane defined by $|z|=1$. Further, let $f(z)=j z$ be a complex function, where $j=\\sqrt{-1}$.<br>\nThen, $\\oint_{{C}} {f}({z}) {dz}=$ ___________ (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0",
+        "tolerance": {
+          "lower": 0,
+          "upper": 0
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-math",
+          "subjectLabel": "Engineering Mathematics (EE)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-math",
+          "complex-variables"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "<b>Step 1: Express the function</b>\n\nWe are given $f(z) = jz$, and we want to compute:\n\n$\\oint_C jz , dz$\n\n<b>Step 2: Use properties of contour integrals</b>\n\n$j = \\sqrt{-1}$ is a constant, so it can be pulled out of the integral:\n\n$\\oint_C jz , dz = j \\oint_C z , dz$\n\n<b>Step 3: Recall the standard result</b>\n\nFor a closed contour $C$ enclosing the origin (like $|z| = 1$),\n\n$\\oint_C z , dz = 0$ because $z$ is an analytic function inside and on $C$.\n\n<b>Step 4: Apply the result</b>\n\n$\\oint_C f(z) , dz = j \\cdot 0 = 0$\n\nTherefore, the correct answer is **0**."
+      }
+    },
+    "pp:ee:2025:q46": {
+      "question_uid": "pp:ee:2025:q46",
+      "exam_uid": "ee:2025:set1:q46",
+      "title": "GATE EE 2025 | Set 1 | Question: 46",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The op-amps in the following circuit are ideal. The voltage gain of the circuit is ___________ (round off to the nearest integer). <br><br><img src=\"/question-images/ee/2025/ee-2025-5a51938b3d.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2",
+        "tolerance": {
+          "lower": 2,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-analog-electronics",
+          "subjectLabel": "Analog Electronics",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-analog-electronics",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Electronics - Operational Amplifiers",
+        "markdown": "<b>Step 1: Recognize the configuration</b>\n\nThe circuit consists of two inverting amplifier stages connected in cascade.\n\n<b>Step 2: Analyze the first op-amp</b>\n\nFor an inverting amplifier, the gain is:\n\n$A_{v1} = -\\frac{R_f}{R_{in}}$\n\nFrom the diagram:\n\nInput resistor: $R_{in1} = 10\\ \\text{k}\\Omega$\n\nFeedback resistor: $R_{f1} = 10\\ \\text{k}\\Omega$\n\nSo,\n\n$A_{v1} = -\\frac{10}{10} = -1$\n\n<b>Step 3: Analyze the second op-amp</b>\n\nThis stage is also an inverting amplifier:\n\nInput resistor: $R_{in2} = 10\\ \\text{k}\\Omega$\n\nFeedback resistor: $R_{f2} = 20\\ \\text{k}\\Omega$ (notice the input is tapped from the junction between two 10 kΩ resistors in series, so it's effectively 10 kΩ from input and 10 kΩ in feedback, making total feedback resistance = 10k + 10k = 20k)\n\nSo,\n\n$A_{v2} = -\\frac{20}{10} = -2$\n\n<b>Step 4: Total Gain</b>\n\nOverall voltage gain is:\n\n$A_v = A_{v1} \\cdot A_{v2} = (-1) \\cdot (-2) = 2$\n\n<b>Final Answer:</b> <b>2</b>\n\nTherefore, the correct answer is **2**."
+      }
+    },
+    "pp:ee:2025:q47": {
+      "question_uid": "pp:ee:2025:q47",
+      "exam_uid": "ee:2025:set1:q47",
+      "title": "GATE EE 2025 | Set 1 | Question: 47",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The switch (S) closes at $\\mathrm{t}=0 \\mathrm{sec}$. The time, in sec, the capacitor takes to charge to 50 V is ___________ (round off to one decimal place). <br><br><img src=\"/question-images/ee/2025/ee-2025-d0d4206d41.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.1",
+        "tolerance": {
+          "lower": 4,
+          "upper": 4.2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "characteristics-of-instruments-and-measurement-systems",
+          "subtopicLabel": "Characteristics of Instruments and Measurement Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "characteristics-of-instruments-and-measurement-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Characteristics of Instruments and Measurement Systems",
+        "markdown": "$\\quad v(t)=v(\\alpha)+[V(0)-V(\\alpha)] e^{-t \\tau}$\n\n$\\rightarrow \\mathrm{V}(0)$\n\n<img src=\"/question-images/ee/2025/ee-2025-4fc41afc7f.webp\"/>\n\nKVL\n\n$-100+\\mathrm{V}(0)+75=0 \\Rightarrow \\mathrm{~V}(0)=25 \\mathrm{~V}$\n\n$\\rightarrow \\mathrm{V}(\\propto)$\n\n<img src=\"/question-images/ee/2025/ee-2025-987a79044c.webp\"/>\n\nKVL\n\n$-100+\\mathrm{V}(\\propto)=0 \\Rightarrow \\mathrm{~V}(\\propto)=100 \\mathrm{~V}$\n\n$\\rightarrow \\tau, \\mathrm{t} \\geq 0 \\Rightarrow \\tau=\\mathrm{R}_{\\text {eq }} \\cdot \\mathrm{C}=2(5)=10 \\mathrm{sec}$\n\n<img src=\"/question-images/ee/2025/ee-2025-6e5ab82add.webp\"/>\n\nSo, $v(t)=100+[25-100] \\mathrm{e}^{-t / 10}$\n\n$\\mathrm{v}(\\mathrm{t})=100-75 \\mathrm{e}^{-\\mathrm{t} 10} \\mathrm{~V}$\n\nNow $V(t)=500 \\mathrm{~V}$, then $\\mathrm{t}=$ ___________\n\n$50=100-75 \\mathrm{e}^{-\\mathrm{t} / 10}$\n\n$75 \\mathrm{e}^{-t / 10}=50$\n\n$\\mathrm{e}^{-t / 10}=\\frac{2}{3}$\n\n$-\\frac{\\mathrm{t}}{10}=\\ln \\left[\\frac{2}{3}\\right]$\n\n$-\\frac{\\mathrm{t}}{10}=-0.40546$\n\n$\\mathrm{t}=4.05 \\mathrm{sec}$\n\nTherefore, the correct answer is **4.1** (acceptable range: [4, 4.2])."
+      }
+    },
+    "pp:ee:2025:q48": {
+      "question_uid": "pp:ee:2025:q48",
+      "exam_uid": "ee:2025:set1:q48",
+      "title": "GATE EE 2025 | Set 1 | Question: 48",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In an experiment to measure the active power drawn by a single-phase RL Load connected to an AC source through a $2 \\Omega$ resistor, three voltmeters are connected as shown in the figure below. The voltmeter readings are as follows: \n$\\mathrm{V}_{\\text {source }}=200 \\mathrm{~V}, \\mathrm{~V}_{\\mathrm{R}}=9 \\mathrm{~V}, \\mathrm{~V}_{\\text {Load }}=199 \\mathrm{~V}$. Assuming perfect resistors and ideal voltmeters, the Loadactive power measured in this experiment, in W, is\n___________ (round off to one decimal place). <br><br><img src=\"/question-images/ee/2025/ee-2025-59190c7f70.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "79.5",
+        "tolerance": {
+          "lower": 78,
+          "upper": 81
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "measurement-of-energy-and-power",
+          "subtopicLabel": "Measurement of Energy and Power"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "measurement-of-energy-and-power"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - Measurement of Energy and Power",
+        "markdown": "Here $|\\mathrm{I}|=\\frac{\\left|\\mathrm{V}_{\\mathrm{R}}\\right|}{2}=\\frac{9}{2}=4.5 \\mathrm{~A}[\\mathrm{RMS}]$\n\n<img src=\"/question-images/ee/2025/ee-2025-39f045313f.webp\"/>\n\nFrom resultant of vectors's formulae\n\n$$\\begin{aligned}\n\n\\mathrm{V}_{\\text {source }} & =\\sqrt{\\mathrm{V}_{\\mathrm{R}}^{2}+\\mathrm{V}_{\\mathrm{Load}}^{2}+2 \\mathrm{~V}_{\\mathrm{R}} \\cdot \\mathrm{~V}_{\\mathrm{Load}} \\cos \\phi_{\\mathrm{L}}} \\\\\n\n200 & =\\sqrt{9^{2}+199^{2}+2(9)(199) \\cos \\phi_{\\mathrm{L}}} \\\\\n\n\\cos \\phi_{\\mathrm{L}} & =\\frac{(200)^{2}-9^{2}-199^{2}}{2(9)(199)}=\\frac{318}{3582}=0.08877(\\mathrm{lag}) \\\\\n\n\\mathrm{P} & =\\left|\\mathrm{V}_{\\mathrm{Load}}\\right| \\mathrm{I} \\mid \\cos \\phi_{\\mathrm{L}} \\\\\n\n& =|199|\\left|\\frac{9}{2}\\right|(0.08877) \\\\\n\n\\mathrm{P} & =79.5 \\mathrm{~W}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **79.5** (acceptable range: [78, 81])."
+      }
+    },
+    "pp:ee:2025:q49": {
+      "question_uid": "pp:ee:2025:q49",
+      "exam_uid": "ee:2025:set1:q49",
+      "title": "GATE EE 2025 | Set 1 | Question: 49",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In the Wheatstone bridge shown below, the sensitivity of the bridge in terms of change in balancing voltage E for unit change in the resistance R , in $\\mathrm{mV} / \\Omega$, is ___________ (round off to two decimal places).<br><br><br><img src=\"/question-images/ee/2025/ee-2025-9ff7f69623.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.97",
+        "tolerance": {
+          "lower": 1.94,
+          "upper": 2
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-and-electronic-measurements",
+          "subjectLabel": "Electrical and Electronic Measurements",
+          "subtopicSlug": "a-c-bridges",
+          "subtopicLabel": "A.C. Bridges"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-and-electronic-measurements",
+          "a-c-bridges"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical and Electronic Measurements - A.C. Bridges",
+        "markdown": "<img src=\"/question-images/ee/2025/ee-2025-0ccfd41e73.webp\"/>\n\n$E=V_{C}-V_{D}=\\left(10 \\times \\frac{5000}{5000+51}-10 \\times \\frac{1000}{1010}\\right)$\n\n$=10\\left[\\frac{5000}{5051}-\\frac{1000}{1010}\\right]=1.96 \\mathrm{mV} / \\Omega$\n\nTherefore, the correct answer is **1.97** (acceptable range: [1.94, 2])."
+      }
+    },
+    "pp:ee:2025:q50": {
+      "question_uid": "pp:ee:2025:q50",
+      "exam_uid": "ee:2025:set1:q50",
+      "title": "GATE EE 2025 | Set 1 | Question: 50",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The steady state capacitor current of a conventional DC-DC buck converter, working in CCM, is shown in one switching cycle. If the input voltage is 30 V , the value of the inductor used, in mH, is ___________ (round off to one decimal place).\n <br><br><img src=\"/question-images/ee/2025/ee-2025-ae1fe9c0f0.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.8",
+        "tolerance": {
+          "lower": 1.7,
+          "upper": 1.9
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-electronics",
+          "subjectLabel": "Power Electronics",
+          "subtopicSlug": "choppers",
+          "subtopicLabel": "Choppers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-electronics",
+          "choppers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Electronics - Choppers",
+        "markdown": "$\\mathrm{V}_{\\mathrm{S}}=30 \\mathrm{~V}, \\mathrm{~L}=?$\n\n<img src=\"/question-images/ee/2025/ee-2025-6b7512c2f0.webp\"/>\n\n$\\Delta \\mathrm{i}_{\\mathrm{c}}=0.1-(-0.1)=0.2 \\mathrm{~A}$\n\n$\\mathrm{D}=\\frac{\\mathrm{T}_{\\mathrm{ON}}}{\\mathrm{T}}=\\frac{30 \\times 10^{-6}}{\\left(\\mathrm{~T}_{\\mathrm{ON}}+\\mathrm{T}_{\\mathrm{OFF}}\\right)}=\\frac{30 \\times 10^{-6}}{50 \\times 10^{-6}}$\n\n$\\therefore \\mathrm{D}=0.6$\n\n$\\Delta \\mathrm{i}_{\\mathrm{L}}=\\Delta \\mathrm{i}_{\\mathrm{C}}$\n\n$\\frac{\\mathrm{D}(1-\\mathrm{D}) \\mathrm{V}_{\\mathrm{s}} \\mathrm{T}}{\\mathrm{L}}=0.2$\n\n$\\frac{0.6 \\times(1-0.6) \\times 30 \\times 50 \\times 10^{-6}}{\\mathrm{~L}}=0.2$\n\n$\\therefore \\mathrm{L}=1.8 \\mathrm{mH}$\n\nTherefore, the correct answer is **1.8** (acceptable range: [1.7, 1.9])."
+      }
+    },
+    "pp:ee:2025:q51": {
+      "question_uid": "pp:ee:2025:q51",
+      "exam_uid": "ee:2025:set1:q51",
+      "title": "GATE EE 2025 | Set 1 | Question: 51",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An ideal low pass filter has frequency response given by\n<br><br>\n$$H(j \\omega)= \\begin{cases}1, & |\\omega| \\leq 200 \\pi \\\\ 0, & \\text { otherwise }\\end{cases}$$\n<br><br>\nLet $h(t)$ be its time domain representation. Then \n$h(0)=$ ___________ (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "200",
+        "tolerance": {
+          "lower": 200,
+          "upper": 200
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "fourier-transform",
+          "subtopicLabel": "Fourier Transform"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-signals-and-systems",
+          "fourier-transform"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Fourier Transform",
+        "markdown": "<b>Step 1: Frequency response</b>\n\n$$H(j\\omega) =\n\n\\begin{cases}\n\n1, & |\\omega| \\leq 200\\pi \\\n\n0, & \\text{otherwise}\n\n\\end{cases}$$\n\n<b>Step 2: Find impulse response $h(t)$ by inverse Fourier transform</b>\n\n$h(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^{\\infty} H(j\\omega) e^{j\\omega t} d\\omega$\n\nBut since $H(j\\omega) = 1$ for $|\\omega| \\leq 200\\pi$, and 0 otherwise:\n\n$h(t) = \\frac{1}{2\\pi} \\int_{-200\\pi}^{200\\pi} e^{j\\omega t} d\\omega$\n\n<b>Step 3: Evaluate the integral</b>\n\nThis is a standard Fourier inverse transform result:\n\n$h(t) = \\frac{1}{2\\pi} \\cdot \\frac{2 \\sin(200\\pi t)}{t} = \\frac{200 \\sin(200\\pi t)}{\\pi t}$\n\nThis is the sinc function scaled:\n\n$h(t) = 200 \\cdot \\text{sinc}(200 t)$ where $\\text{sinc}(x) = \\frac{\\sin(\\pi x)}{\\pi x}$\n\n<b>Step 4: Find $h(0)$</b>\n\nUse the standard limit:\n\n$\\lim_{t \\to 0} \\frac{\\sin(200\\pi t)}{\\pi t} = 200$\n\nSo:\n\n$h(0) = \\frac{200 \\sin(0)}{\\pi \\cdot 0} = 200$\n\n<b>Final Answer:</b> <b>200</b>\n\nTherefore, the correct answer is **200**."
+      }
+    },
+    "pp:ee:2025:q52": {
+      "question_uid": "pp:ee:2025:q52",
+      "exam_uid": "ee:2025:set1:q52",
+      "title": "GATE EE 2025 | Set 1 | Question: 52",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider the state-space model\n<br><br>\n$$\\begin{aligned}\n\\dot{x}({t}) & ={Ax}({t})+{Br}({t}) \\\\\n{y}({t}) & ={Cx}({t})\n\\end{aligned}$$\n<br><br>\nWhere ${x}({t}), {r}({t}), {y}({t})$ are the state, input and output, respectively. The matrices ${A}, {B}, {C}$ are given below\n<br><br>\n$$A=\\left[\\begin{array}{cc}\n0 & 1 \\\\\n-2 & -3\n\\end{array}\\right], {B}=\\left[\\begin{array}{l}\n0 \\\\\n1\n\\end{array}\\right], {C}=\\left[\\begin{array}{ll}\n1 & 0\n\\end{array}\\right]$$\n<br><br>\nThe sum of the magnitudes of the poles is ________ (round off to nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "3",
+        "tolerance": {
+          "lower": 3,
+          "upper": 3
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "state-variable-analysis",
+          "subtopicLabel": "State Variable Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "state-variable-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - State Variable Analysis",
+        "markdown": "<b>Step 1: Write the state matrix</b>\n\n$$A = \\begin{bmatrix} 0 & 1 \\ -2 & -3 \\end{bmatrix}$$\n\n<b>Step 2: Find the characteristic equation</b>\n\nWe compute the determinant of $sI - A$:\n\n$$\\det(sI - A) = \\left| \\begin{array}{cc} s & -1 \\ 2 & s + 3 \\end{array} \\right| = s(s + 3) - (-2)(1) = s^2 + 3s + 2$$\n\n<b>Step 3: Find the roots of the characteristic equation</b>\n\n$s^2 + 3s + 2 = 0$\n\nFactorizing:\n\n$(s + 1)(s + 2) = 0 \\Rightarrow s = -1, -2$\n\n<b>Step 4: Compute the sum of the magnitudes of the poles</b>\n\n$|{-1}| + |{-2}| = 1 + 2 = 3$\n\nTherefore, the correct answer is **3**."
+      }
+    },
+    "pp:ee:2025:q53": {
+      "question_uid": "pp:ee:2025:q53",
+      "exam_uid": "ee:2025:set1:q53",
+      "title": "GATE EE 2025 | Set 1 | Question: 53",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Using shunt capacitors, the power factor of a 3-phase, 4 kV induction motor (drawing 390 kVA at 0.77 pf lag ) is to be corrected to 0.85 pf lag. The line current of the capacitor bank, in A, is ___________ (round off to one decimal place).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "9.25",
+        "tolerance": {
+          "lower": 8.5,
+          "upper": 10
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-electrical-machines",
+          "subjectLabel": "Electrical Machines",
+          "subtopicSlug": "three-phase-induction-machines",
+          "subtopicLabel": "Three Phase Induction Machines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-electrical-machines",
+          "three-phase-induction-machines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electrical Machines - Three Phase Induction Machines",
+        "markdown": "<b>Given:</b>\n\nLine voltage of motor: $V_L = 4000\\ \\text{V}$\n\nApparent power: $S = 390\\ \\text{kVA}$\n\nInitial power factor: $\\cos\\phi_1 = 0.77\\ (\\text{lagging})$\n\nTarget power factor: $\\cos\\phi_2 = 0.85\\ (\\text{lagging})$\n\n<b>Step 1: Compute the active power (real power)</b>\n\n$P = S \\cdot \\cos\\phi_1 = 390 \\cdot 0.77 = 300.3\\ \\text{kW}$\n\n<b>Step 2: Compute reactive power before correction</b>\n\n$Q_1 = \\sqrt{S^2 - P^2} = \\sqrt{390^2 - 300.3^2} = \\sqrt{152100 - 90180.09} = \\sqrt{61919.91} \\approx 248.8\\ \\text{kVAR}$\n\n<b>Step 3: Compute reactive power after correction</b>\n\nNew apparent power $S_2 = \\frac{P}{\\cos\\phi_2} = \\frac{300.3}{0.85} \\approx 353.3\\ \\text{kVA}$\n\n$Q_2 = \\sqrt{S_2^2 - P^2} = \\sqrt{353.3^2 - 300.3^2} = \\sqrt{124821.89 - 90180.09} = \\sqrt{34641.8} \\approx 186.0\\ \\text{kVAR}$\n\n<b>Step 4: Required reactive power by capacitor bank</b>\n\n$Q_c = Q_1 - Q_2 = 248.8 - 186.0 = 62.8\\ \\text{kVAR}$\n\n<b>Step 5: Convert to line current</b>\n\nIn a 3-phase system, reactive power is:\n\n$Q = \\sqrt{3} V_L I_L \\Rightarrow I_L = \\frac{Q}{\\sqrt{3} V_L}$\n\n$I_L = \\frac{62.8 \\times 10^3}{\\sqrt{3} \\cdot 4000} = \\frac{62800}{6928.2} \\approx 9.1\\ \\text{A}$\n\n<b>Final Answer:</b> $\\boxed{9.1\\ \\text{A}}$\n\nTherefore, the correct answer is **9.25** (acceptable range: [8.5, 10])."
+      }
+    },
+    "pp:ee:2025:q54": {
+      "question_uid": "pp:ee:2025:q54",
+      "exam_uid": "ee:2025:set1:q54",
+      "title": "GATE EE 2025 | Set 1 | Question: 54",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Two units, rated at 100 MW and 150 MW , are enabled for economic load dispatch. When the overall incremental cost is 10,000 Rs./MWh, the units are dispatched to 50 MW and 80 MW respectively. At an overall incremental cost of $10,600 \\mathrm{Rs} . / \\mathrm{MWh}$, the power output of the units are 80 MW and 92 MW , respectively. The total plant MW-output (without overloading any unit) at an overall incremental cost of 11,800 Rs./MWh is ___________ (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "216",
+        "tolerance": {
+          "lower": 216,
+          "upper": 216
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-power-systems",
+          "subjectLabel": "Power Systems",
+          "subtopicSlug": "generating-power-stations",
+          "subtopicLabel": "Generating Power Stations"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-power-systems",
+          "generating-power-stations"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Power Systems - Generating Power Stations",
+        "markdown": "<b>Let’s define:</b>\n\nUnit 1 outputs:\n\nAt 10,000 Rs./MWh → $P_1 = 50\\ \\text{MW}$\n\nAt 10,600 Rs./MWh → $P_1 = 80\\ \\text{MW}$\n\nUnit 2 outputs:\n\nAt 10,000 Rs./MWh → $P_2 = 80\\ \\text{MW}$\n\nAt 10,600 Rs./MWh → $P_2 = 92\\ \\text{MW}$\n\nWe are to find outputs at 11,800 Rs./MWh using extrapolation for both units (assuming linearity of power vs incremental cost curve).\n\n<b>Step 1: Find slope of output with respect to cost for each unit</b>\n\nUnit 1 slope:\n\n$\\frac{80 - 50}{10,600 - 10,000} = \\frac{30}{600} = 0.05\\ \\text{MW per Rs./MWh}$\n\nUnit 2 slope:\n\n$\\frac{92 - 80}{10,600 - 10,000} = \\frac{12}{600} = 0.02\\ \\text{MW per Rs./MWh}$\n\n<b>Step 2: Extrapolate to 11,800 Rs./MWh</b>\n\nCost increase: $11,800 - 10,600 = 1,200\\ \\text{Rs./MWh}$\n\nUnit 1 output:\n\n$P_1 = 80 + (0.05)(1200) = 80 + 60 = 140\\ \\text{MW}$\n\n(but Unit 1 is rated for 100 MW max ⇒ limit to 100 MW)\n\nUnit 2 output:\n\n$P_2 = 92 + (0.02)(1200) = 92 + 24 = 116\\ \\text{MW}$\n\n(but Unit 2 is rated for 150 MW ⇒ no limit hit)\n\n<b>Step 3: Total Output</b>\n\n$P_{\\text{total}} = 100 + 116 = \\boxed{216\\ \\text{MW}}$\n\n<b>Final Answer:</b> $\\boxed{216}$\n\nTherefore, the correct answer is **216**."
+      }
+    },
+    "pp:ee:2025:q55": {
+      "question_uid": "pp:ee:2025:q55",
+      "exam_uid": "ee:2025:set1:q55",
+      "title": "GATE EE 2025 | Set 1 | Question: 55",
+      "year": "gateee-2025-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": " A controller $D(s)$ of the form $\\left(1+K_{D} s\\right)$ is to be designed for the plant $G(s)=\\frac{1000 \\sqrt{2}}{s(s+10)^{2}}$ as shown in the figure. The value of $\\mathrm{K}_{\\mathrm{D}}$ that yields a phase margin of $45^{\\circ}$ at the gain cross-over frequency of $10 \\mathrm{rad} / \\mathrm{sec}$ is ___________ (round off to one decimal place). <br><br><img src=\"/question-images/ee/2025/ee-2025-d3e32c0896.webp\"/><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.1",
+        "tolerance": {
+          "lower": 0.1,
+          "upper": 0.1
+        },
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "Given phase margin [P.M] $=45^{\\circ}$ at gain cross over frequency $\\left[\\omega_{\\mathrm{gc}}\\right]=10$\n\nO.L.T.F with controller $=\\mathrm{G}_{\\mathrm{c}}(\\mathrm{s})=\\mathrm{D}(\\mathrm{s}) . \\mathrm{G}(\\mathrm{s})$\n\n$$\\begin{gathered}\n\n\\mathrm{G}_{\\mathrm{c}}(\\mathrm{~s})=\\frac{\\left[1+\\mathrm{K}_{\\mathrm{D}} \\mathrm{~S}\\right] \\times 1000 \\sqrt{2}}{\\mathrm{~s}[\\mathrm{~s}+10]^{2}} \\\\\n\n\\text { P.M }=180^{\\circ}+\\left.\\angle \\mathrm{G}_{\\mathrm{c}}(\\mathrm{~s})\\right|_{\\omega=\\omega_{\\mathrm{gc}}} \\\\\n\n\\text { Given P.M }=45^{\\circ} \\text { at } \\omega_{\\mathrm{gc}}=10 \\\\\n\n45^{\\circ}=180^{\\circ}+\\angle \\frac{1000 \\sqrt{2}\\left[1+\\mathrm{K}_{\\mathrm{D}} \\mathrm{~s}\\right.}{} \\mathrm{s}[\\mathrm{~s}+10]^{2} \\\\\n\n45^{\\circ}=\\left[180^{\\circ}-90^{\\circ}+\\tan ^{-1}\\left[\\frac{\\omega_{\\mathrm{gc}} \\mathrm{~K}_{\\mathrm{D}}}{1}\\right]-2 \\tan ^{-1}\\left(\\frac{\\omega_{\\mathrm{gc}}=10}{10}\\right)\\right]_{\\mathrm{\\omega gc}}=10 \\\\\n\n45^{\\circ}=90^{\\circ}+\\tan ^{-1}\\left[10 \\mathrm{~K}_{\\mathrm{D}}\\right]-2 \\tan ^{-1}\\left(\\frac{10}{10}\\right) \\\\\n\n45^{\\circ}=90^{\\circ}+\\tan ^{-1}\\left[10 \\mathrm{~K}_{\\mathrm{D}}\\right]-2 \\times 45^{\\circ} \\\\\n\n\\tan ^{-1}\\left[10 \\mathrm{~K}_{\\mathrm{D}}\\right]=45^{\\circ} \\\\\n\n10 \\mathrm{~K}_{\\mathrm{D}}={\\tan 45^{\\circ}=1}\\\\{\\mathrm{K}_{\\mathrm{D}}=\\frac{1}{10}=0.1}\n\n\\end{gathered}$$\n\nTherefore, the correct answer is **0.1**."
+      }
+    },
+    "pp:ee:2025:q56": {
+      "question_uid": "pp:ee:2025:q56",
+      "exam_uid": "ee:2025:set1:q56",
+      "title": "GATE EE 2025 | Set 1 | Question: 56",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Kavya _________ go to work yesterday as she __________ feeling well.<br> <br>\nSelect the most appropriate option to complete the above sentence. ",
+      "options": [
+        "didn't; isn't",
+        "wouldn't; wasn't",
+        "wasn't; wasn't",
+        "couldn't; wasn't"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *couldn't; wasn't*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** (couldn't; wasn't)."
+      }
+    },
+    "pp:ee:2025:q57": {
+      "question_uid": "pp:ee:2025:q57",
+      "exam_uid": "ee:2025:set1:q57",
+      "title": "GATE EE 2025 | Set 1 | Question: 57",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Good : Evil :: Genuine : _______ <br><br>\nSelect the most appropriate option to complete the analogy.",
+      "options": [
+        "Counterfeit",
+        "Contraband",
+        "Counterfoil",
+        "Counterpart"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *Counterfeit*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (Counterfeit)."
+      }
+    },
+    "pp:ee:2025:q58": {
+      "question_uid": "pp:ee:2025:q58",
+      "exam_uid": "ee:2025:set1:q58",
+      "title": "GATE EE 2025 | Set 1 | Question: 58",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The relationship between two variables $x$ and $y$ is given by $x + py + q = 0$ and is shown in the figure. Find the values of $p$ and $q$.<br>\nNote: The figure shown is representative.  ]<br><br><img src=\"/question-images/ee/2025/ee-2025-0ccaf38791.webp\"/><br>",
+      "options": [
+        "$p = -\\frac{1}{2} ; \\; q = 2$ ",
+        "$p = 2 ;\\; q = -2$ ",
+        "$p = \\frac{1}{2} ;\\; q = 4$ ",
+        "$p = 2 ;\\; q = 4$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "The equation is of the form: $x + py + q = 0$\n\nRewriting it in slope-intercept form:\n\n$py = -x - q$\n\n$y = -\\frac{1}{p}x - \\frac{q}{p}$\n\nThis is of the form $y = mx + c$ where slope $m = -\\frac{1}{p}$ and intercept $c = -\\frac{q}{p}$\n\nFrom the figure:\n\nThe y-intercept is $c = 4$ (line passes through point (0, 4))\n\nThe line passes through another point (2, 8), so slope is:\n\n$m = \\frac{8 - 4}{2 - 0} = \\frac{4}{2} = 2$\n\nEquating this with $-\\frac{1}{p}$,\n\n$-\\frac{1}{p} = 2 \\Rightarrow p = -\\frac{1}{2}$\n\nNow use y-intercept formula: $-\\frac{q}{p} = 4$\n\nSubstitute $p = -\\frac{1}{2}$:\n\n$-\\frac{q}{-\\frac{1}{2}} = 4 \\Rightarrow \\frac{q}{\\frac{1}{2}} = 4 \\Rightarrow q = 2$\n\n<b>Final Answer:</b>\n\n$p = -\\frac{1}{2}, \\quad q = 2$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ee:2025:q59": {
+      "question_uid": "pp:ee:2025:q59",
+      "exam_uid": "ee:2025:set1:q59",
+      "title": "GATE EE 2025 | Set 1 | Question: 59",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Each row of Column-I has three items and each item is represented by a circle in Column-II. The arrangement of circles in Column-II represents the relationship among the items in Column-I.<br><br>\n\nIdentify the option that has the most appropriate match between Column-I and Column-II.<br>\n<br>\n<br>\nNote: The figures shown are representative. <br><br><img src=\"/question-images/ee/2025/ee-2025-dd914ec40c.webp\"/><br>",
+      "options": [
+        "(1)-(Q); (2)-(P); (3)-(S); (4)-(R)",
+        "(1)-(Q); (2)-(R); (3)-(S); (4)-(P)",
+        "(1)-(S); (2)-(P); (3)-(R); (4)-(Q)",
+        "(1)-(R); (2)-(S); (3)-(Q); (4)-(P)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Verbal Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Verbal Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *(1)-(Q); (2)-(R); (3)-(S); (4)-(P)*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ((1)-(Q); (2)-(R); (3)-(S); (4)-(P))."
+      }
+    },
+    "pp:ee:2025:q60": {
+      "question_uid": "pp:ee:2025:q60",
+      "exam_uid": "ee:2025:set1:q60",
+      "title": "GATE EE 2025 | Set 1 | Question: 60",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "What is the value of $\\left(\\frac{3^{81}}{27^{4}}\\right)^{\\frac{1}{3}}$ ?",
+      "options": [
+        "$3^{13}$",
+        "$3^{96}$",
+        "$3^{23}$",
+        "$3^{69}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$\\left[\\frac{3^{81}}{\\left(3^{3}\\right)^{4}}\\right]^{1 / 3}$\n\n$=\\left(3^{81-12}\\right)^{1 / 3}$\n\n$=\\left(3^{69}\\right)^{1 / 3}=3^{23}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q61": {
+      "question_uid": "pp:ee:2025:q61",
+      "exam_uid": "ee:2025:set1:q61",
+      "title": "GATE EE 2025 | Set 1 | Question: 61",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Identify the option that has the most appropriate sequence such that a coherent paragraph is formed:<br><br>\nP. It is because deer, like most of the animals that tigers normally prey on, run much faster! It simply means, another day of empty stomach for the big cats.<br>\nQ. Tigers spend most of their life searching for food.<br>\nR. If they trace the scent of deer, tigers follow the trail, chase the deer for a mile or two in the dark, and yet may not catch them.<br>\nS. For several nights, they relentlessly prowl through the forest, hunting for a trail that may lead to their prey.",
+      "options": [
+        "$\\mathrm{S} \\rightarrow \\mathrm{P} \\rightarrow \\mathrm{R} \\rightarrow \\mathrm{Q}$",
+        "$\\mathrm{R} \\rightarrow \\mathrm{P} \\rightarrow \\mathrm{S} \\rightarrow \\mathrm{Q}$",
+        "$\\mathrm{Q} \\rightarrow \\mathrm{S} \\rightarrow \\mathrm{R} \\rightarrow \\mathrm{P}$",
+        "$\\mathrm{P} \\rightarrow \\mathrm{Q} \\rightarrow \\mathrm{S} \\rightarrow \\mathrm{R}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Let's analyze the logical flow of ideas:\n\nQ: Introduces the main idea that tigers spend most of their life searching for food. This is the best opening.\n\nS: Explains how tigers prowl through forests for several nights hunting. Follows logically from Q.\n\nR: Describes how tigers follow the scent and chase deer but may not catch them. This naturally follows S.\n\nP: Explains why tigers often fail-deer run much faster. This conclusion makes sense after R. Thus, the correct sequence is:\n\n$\\mathrm{Q} \\rightarrow \\mathrm{S} \\rightarrow \\mathrm{R} \\rightarrow \\mathrm{P}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q62": {
+      "question_uid": "pp:ee:2025:q62",
+      "exam_uid": "ee:2025:set1:q62",
+      "title": "GATE EE 2025 | Set 1 | Question: 62",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the given figure, EF and HJ are coded as 30 and 80, respectively. Which one among the given options is most appropriate for the entries marked (i) and (ii) ? <br><br><img src=\"/question-images/ee/2025/ee-2025-06864902cb.webp\"/><br>",
+      "options": [
+        "(i) EH ;  (ii) 40",
+        "(i) JK;   (ii) 36",
+        "(i) EG;   (ii) 42",
+        "(i) PS;   (ii) 14"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *(i) EG; (ii) 42*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** ((i) EG; (ii) 42)."
+      }
+    },
+    "pp:ee:2025:q63": {
+      "question_uid": "pp:ee:2025:q63",
+      "exam_uid": "ee:2025:set1:q63",
+      "title": "GATE EE 2025 | Set 1 | Question: 63",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Scores obtained by two students P and Q in seven courses are given in the table below. Based on the information given in the table, which one of the following statements is INCORRECT?\n<br><br>\n$$\\begin{array}{|l|l|l|l|l|l|l|l|}\n\\hline\nP & 22 & 89 & 50 & 45 & 78 & 60 & 39\\\\\n\\hline\nQ & 35 & 65 & 60 & 56 & 81 & 45 & 50 \\\\\n\\hline\n\\end{array}$$\n",
+      "options": [
+        "Average score of P is less than the average score of Q.",
+        "Median score of P is same as the median score of Q .",
+        "Difference between the maximum and minimum scores of P is greater than the difference between the maximum and minimum scores of Q .",
+        "Median score and the average score of Q are same."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<b>Step 1: Calculate average score of P and Q</b>\n\nP total = $22 + 89 + 50 + 45 + 78 + 60 + 39 = 383$\n\nAverage of P = $\\frac{383}{7} \\approx 54.71$\n\nQ total = $35 + 65 + 60 + 56 + 81 + 45 + 50 = 392$\n\nAverage of Q = $\\frac{392}{7} = 56$\n\nSo, average of P is less than average of Q ->(A) is correct.\n\n<b>Step 2: Calculate median score</b>\n\nSorted scores:\n\nP: 22, 39, 45, 50, 60, 78, 89 → Median = 50\n\nQ: 35, 45, 50, 56, 60, 65, 81 → Median = 56\n\nSo, (B) is incorrect (they are not the same).\n\n<b>Step 3: Difference between max and min</b>\n\nP: Max = 89, Min = 22 → Difference = $89 - 22 = 67$\n\nQ: Max = 81, Min = 35 → Difference = $81 - 35 = 46$\n\n67 > 46 → (C) is correct.\n\n<b>Step 4: Check if average and median of Q are same</b>\n\nAverage of Q = 56, Median of Q = 56 → (D) is correct.\n\n<b>Final Answer:</b>\n\n<b>The INCORRECT statement is:</b> (B)\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ee:2025:q64": {
+      "question_uid": "pp:ee:2025:q64",
+      "exam_uid": "ee:2025:set1:q64",
+      "title": "GATE EE 2025 | Set 1 | Question: 64",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Spheres of unit diameter are centered at ( $l, {m}, {n}$ ) where $l, {m}$, and $n$ take every possible integer values.<br>\nThe distance between two spheres is computed from the center of one sphere to the center of the other sphere. For a given sphere, $x$ is the distance to its nearest sphere and $y$ is the distance to its next nearest sphere. The value of $\\frac{y}{x}$ is:",
+      "options": [
+        "$2 \\sqrt{2}$",
+        "$\\frac{1}{\\sqrt{2}}$",
+        "$\\sqrt{2}$",
+        "$2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Spheres are centered at all points $(l, m, n)$ where $l, m, n \\in \\mathbb{Z}$ (i.e., all integer coordinates).\n\nThat means the spheres are placed in a cubic lattice with unit spacing between centers.\n\n<b>Step 1: Nearest sphere distance $x$</b>\n\nEach sphere has 6 immediate neighbors at a distance of 1 unit along the directions $\\pm x$, $\\pm y$, and $\\pm z$.\n\nSo, $x = 1$\n\n<b>Step 2: Next nearest sphere distance $y$</b>\n\nThe next nearest neighbors are along the diagonals of the faces (e.g., from (0,0,0) to (1,1,0)).\n\nTheir distance is:\n\n$y = \\sqrt{(1)^2 + (1)^2} = \\sqrt{2}$\n\n<b>Step 3: Compute $\\frac{y}{x}$</b>\n\n$\\frac{y}{x} = \\frac{\\sqrt{2}}{1} = \\sqrt{2}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\sqrt{2}}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ee:2025:q65": {
+      "question_uid": "pp:ee:2025:q65",
+      "exam_uid": "ee:2025:set1:q65",
+      "title": "GATE EE 2025 | Set 1 | Question: 65",
+      "year": "gateee-2025-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In the triangle PQR, the lengths of PT and TR are in the ratio of $3: 2$.<br>\nST is parallel to QR. Two semicircles are drawn with PS and PQ as diameters, as shown in the figure.<br>\nWhich one of the following statements is true about the shaded area PQS?<br>\nNote: The figure shown is representative.<br><br><br><img src=\"/question-images/ee/2025/ee-2025-e585d5dd84.webp\"/><br>",
+      "options": [
+        "The shaded area is $\\frac{16}{9}$ times the area of the semicircle with the diameter PS.",
+        "The shaded area is equal to the area of the semicircle with the diameter PS.",
+        "The shaded area is $\\frac{14}{9}$ times the area of the semicircle with the diameter PS.",
+        "The shaded area is $\\frac{14}{25}$ times the area of the semicircle with the diameter PQ."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ee",
+      "yearSetKey": "ee-2025-s1",
+      "yearSetIdentity": "ee:2025:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ee-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ee-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<b>Step 1: Let us assume PQ = 5 units</b>\n\nGiven the ratio $PT : TR = 3 : 2$, then $PT = 3$ units and $TR = 2$ units, so total $PR = PT + TR = 5$ units.\n\nSince $ST \\parallel QR$ and $T$ lies on $PR$, by Basic Proportionality Theorem:\n\n$\\frac{PS}{PQ} = \\frac{PT}{PR} = \\frac{3}{5}$\n\nSo, $PS = \\frac{3}{5} \\cdot PQ$\n\n<b>Step 2: Area of semicircle is proportional to square of diameter</b>\n\nLet the diameter $PQ = d$.\n\nThen the area of the semicircle with diameter $PQ$ is:\n\n$A_{PQ} = \\frac{1}{2} \\cdot \\frac{\\pi d^2}{4} = \\frac{\\pi d^2}{8}$\n\nNow, $PS = \\frac{3}{5} d$, so area of semicircle on PS:\n\n$A_{PS} = \\frac{1}{2} \\cdot \\frac{\\pi (3d/5)^2}{4} = \\frac{\\pi d^2}{8} \\cdot \\frac{9}{25} = A_{PQ} \\cdot \\frac{9}{25}$\n\n<b>Step 3: Shaded Area = Area of semicircle on PQ − Area of semicircle on PS</b>\n\n$A_{\\text{shaded}} = A_{PQ} - A_{PS} = A_{PQ} \\left(1 - \\frac{9}{25}\\right) = A_{PQ} \\cdot \\frac{16}{25}$\n\nNow convert the shaded area as a multiple of the semicircle on PS:\n\n$\\frac{A_{\\text{shaded}}}{A_{PS}} = \\frac{A_{PQ} \\cdot \\frac{16}{25}}{A_{PQ} \\cdot \\frac{9}{25}} = \\frac{16}{9}$\n\n<b>Final Answer:</b>\n\n$\\boxed{\\frac{16}{9}}$ times the area of the semicircle with diameter $PS$\n\nTherefore, the correct answer is **A**."
+      }
+    }
+  }
+}

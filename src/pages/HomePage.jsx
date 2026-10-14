@@ -45,6 +45,7 @@ import {
   preloadInsightsRoute,
   preloadMockExperience,
   preloadPracticeStartExperience,
+  preloadTrackerRoute,
 } from "../utils/routePreload";
 
 const HOMEPAGE_ICON_BASE = "/homepage_icon/optimized";
@@ -58,6 +59,7 @@ const HomePage = ({
   onStartRandomPractice,
   onExplorePractice,
   onOpenInsights = () => {},
+  onOpenTracker = () => {},
   onStartMockTest,
   onResumePractice,
 }) => {
@@ -261,6 +263,16 @@ const HomePage = ({
       variant: "secondary",
       onClick: onOpenInsights,
       preload: preloadInsightsRoute,
+    },
+    {
+      key: "tracker",
+      label: "Tracker",
+      subtext: "Syllabus & progress",
+      badge: "Study Planner",
+      icon: `${HOMEPAGE_ICON_BASE}/tracker.webp`,
+      variant: "secondary",
+      onClick: onOpenTracker,
+      preload: preloadTrackerRoute,
     },
   ];
 

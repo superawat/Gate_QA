@@ -20,6 +20,9 @@ import {
   FaRobot,
   FaLayerGroup,
   FaBrain,
+  FaBolt,
+  FaCogs,
+  FaBuilding,
 } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -65,6 +68,12 @@ import {
   isDaQuestion,
   isIsroQuestion,
 } from "../utils/examTrack";
+import {
+  readBranchPreferences,
+  BRANCH_PREFERENCE_EVENT,
+  getInsightTracksForSelectedBranches,
+  isItemEligibleForTrack,
+} from "../utils/branchPreference";
 
 /* ── Formatting helpers ─────────────────────────────────────────────────── */
 
@@ -1822,59 +1831,22 @@ const WrongAnswersTab = ({ wrongQuestions = [] }) => {
   );
 };
 
-/* ── Track scoping helper ────────────────────────────────────────────────── */
+/* ── Track icons & scoping helper ────────────────────────────────────────── */
 
-const isSubjectInTrack = (subjectSlugOrKeyOrQuestion = "", track = "all") => {
-  if (track === "all") return true;
-  if (!subjectSlugOrKeyOrQuestion) return false;
+const TRACK_ICONS = {
+  cs: FaGraduationCap,
+  cse: FaGraduationCap,
+  da: FaRobot,
+  ec: FaBolt,
+  ee: FaBolt,
+  me: FaCogs,
+  ce: FaBuilding,
+  aptitude: FaBrain,
+  all: FaLayerGroup,
+};
 
-  let key = "";
-  if (typeof subjectSlugOrKeyOrQuestion === "object") {
-    const q = subjectSlugOrKeyOrQuestion;
-    const uid = String(q.question_uid || q.uid || q.storageKey || "").trim();
-    if (isAptitudeQuestion(q) || (uid && isAptitudeQuestion({ question_uid: uid }))) {
-      return track === "aptitude";
-    }
-    if (isDaQuestion(q) || (uid && isDaQuestion({ question_uid: uid }))) {
-      return track === "da";
-    }
-    if (isIsroQuestion(q) || (uid && isIsroQuestion({ question_uid: uid })) || uid.toLowerCase().startsWith("isro:") || uid.toLowerCase().startsWith("isro-")) {
-      return track === "cs";
-    }
-    key = String(q.subjectSlug || q.subject || q.key || uid).toLowerCase();
-  } else {
-    key = String(subjectSlugOrKeyOrQuestion).toLowerCase();
-  }
-
-  // Check if UID
-  if (key.startsWith("apt-") || key.startsWith("apt:")) {
-    return track === "aptitude";
-  }
-  if (key.startsWith("da:") || key.startsWith("da-")) {
-    return track === "da";
-  }
-  if (key.startsWith("isro:") || key.startsWith("isro-")) {
-    return track === "cs";
-  }
-  if (key.startsWith("go:")) {
-    return track === "cs";
-  }
-
-  // Check if subject
-  const isApt = isAptitudeSubjectSlug(key) || key === "aptitude";
-  const isDa = key.startsWith("da:") || key.startsWith("da-");
-  const isGateGa = key === "ga" || key === "general-aptitude";
-
-  if (track === "aptitude") {
-    return isApt;
-  }
-  if (track === "cs") {
-    return !isApt && !isDa;
-  }
-  if (track === "da") {
-    return !isApt && (isDa || isGateGa);
-  }
-  return true;
+const isSubjectInTrack = (subjectSlugOrKeyOrQuestion = "", track = "all", selectedBranches = ["cse"]) => {
+  return isItemEligibleForTrack(subjectSlugOrKeyOrQuestion, track, selectedBranches);
 };
 
 /* ── Main InsightsPage ──────────────────────────────────────────────────── */
@@ -1891,27 +1863,46 @@ const InsightsPage = ({
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const initialTab = queryParams.get("tab") || "overview";
-
-  const [insights, setInsights] = useState({
-    subjects: [],
-    subtopics: [],
-    wrongQuestions: [],
-    reviewQueue: [],
-    attemptTimeline: [],
-    studyActivity: {},
-    timeSummary: {},
-    difficultySummary: { counts: {} },
-    mockSummary: {},
-    attemptedQuestionCount: 0,
-  });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState(initialTab);
+
+  const [selectedBranches, setSelectedBranches] = useState(() => {
+    const prefs = readBranchPreferences();
+    return Array.isArray(prefs?.selectedBranches) && prefs.selectedBranches.length > 0
+      ? prefs.selectedBranches
+      : ["cse", "da"];
+  });
+
+  useEffect(() => {
+    const handlePrefChange = (event) => {
+      const detailBranches = event?.detail?.selectedBranches;
+      if (Array.isArray(detailBranches) && detailBranches.length > 0) {
+        setSelectedBranches(detailBranches);
+      } else {
+        const prefs = readBranchPreferences();
+        if (Array.isArray(prefs?.selectedBranches) && prefs.selectedBranches.length > 0) {
+          setSelectedBranches(prefs.selectedBranches);
+        } else {
+          setSelectedBranches(["cse", "da"]);
+        }
+      }
+    };
+    window.addEventListener(BRANCH_PREFERENCE_EVENT, handlePrefChange);
+    return () => {
+      window.removeEventListener(BRANCH_PREFERENCE_EVENT, handlePrefChange);
+    };
+  }, []);
+
+  const trackOptions = useMemo(() => {
+    return getInsightTracksForSelectedBranches(selectedBranches);
+  }, [selectedBranches]);
 
   const [selectedTrack, setSelectedTrack] = useState(() => {
     const params = new URLSearchParams(location.search);
     const trackParam = params.get("track");
-    if (trackParam === "da" || trackParam === "cs" || trackParam === "aptitude" || trackParam === "all") {
+    const validTrackIds = getInsightTracksForSelectedBranches(
+      readBranchPreferences()?.selectedBranches?.length ? readBranchPreferences().selectedBranches : ["cse", "da"]
+    ).map((t) => t.id);
+    if (trackParam && validTrackIds.includes(trackParam)) {
       return trackParam;
     }
     return "all";
@@ -1932,16 +1923,44 @@ const InsightsPage = ({
   }, [location.search, navigate]);
 
   useEffect(() => {
+    const validTrackIds = trackOptions.map((t) => t.id);
+    if (!validTrackIds.includes(selectedTrack)) {
+      setSelectedTrack("all");
+      const params = new URLSearchParams(location.search);
+      if (params.get("track") && params.get("track") !== "all") {
+        params.set("track", "all");
+        navigate({ search: `?${params.toString()}` }, { replace: true });
+      }
+    }
+  }, [trackOptions, selectedTrack, location.search, navigate]);
+
+  useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tabParam = params.get("tab");
     if (tabParam && TABS.some((t) => t.id === tabParam) && tabParam !== activeTab) {
       setActiveTab(tabParam);
     }
     const trackParam = params.get("track");
-    if ((trackParam === "da" || trackParam === "cs" || trackParam === "aptitude" || trackParam === "all") && trackParam !== selectedTrack) {
+    const validTrackIds = trackOptions.map((t) => t.id);
+    if (trackParam && validTrackIds.includes(trackParam) && trackParam !== selectedTrack) {
       setSelectedTrack(trackParam);
     }
-  }, [location.search, activeTab, selectedTrack]);
+  }, [location.search, activeTab, selectedTrack, trackOptions]);
+
+  const [insights, setInsights] = useState({
+    subjects: [],
+    subtopics: [],
+    wrongQuestions: [],
+    reviewQueue: [],
+    attemptTimeline: [],
+    studyActivity: {},
+    timeSummary: {},
+    difficultySummary: { counts: {} },
+    mockSummary: {},
+    attemptedQuestionCount: 0,
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const [retryKey, setRetryKey] = useState(0);
 
@@ -2027,20 +2046,23 @@ const InsightsPage = ({
     const wrongQuestions = Array.isArray(safeInsights.wrongQuestions) ? safeInsights.wrongQuestions : [];
     const reviewQueue = Array.isArray(safeInsights.reviewQueue) ? safeInsights.reviewQueue : [];
 
-    if (selectedTrack === "all") {
-      return {
-        ...safeInsights,
-        subjects,
-        subtopics,
-        wrongQuestions,
-        reviewQueue,
-      };
-    }
-    const filteredSubjects = subjects.filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug || s, selectedTrack));
-    const filteredSubtopics = subtopics.filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key || st, selectedTrack));
-    const filteredWrong = wrongQuestions.filter((q) => isSubjectInTrack(q, selectedTrack));
-    const filteredReview = reviewQueue.filter((q) => isSubjectInTrack(q, selectedTrack));
+    const filteredSubjects = subjects.filter((s) => isSubjectInTrack(s?.key || s?.subjectSlug || s, selectedTrack, selectedBranches));
+    const filteredSubtopics = subtopics.filter((st) => isSubjectInTrack(st?.subjectSlug || st?.key || st, selectedTrack, selectedBranches));
+    const filteredWrong = wrongQuestions.filter((q) => isSubjectInTrack(q, selectedTrack, selectedBranches));
+    const filteredReview = reviewQueue.filter((q) => isSubjectInTrack(q, selectedTrack, selectedBranches));
     const scopedAttemptedCount = filteredSubjects.reduce((sum, s) => sum + Number(s.attemptedCount || 0), 0);
+    const rawAttemptedCount = Number(safeInsights.attemptedQuestionCount || 0);
+
+    let attemptedQuestionCount = scopedAttemptedCount;
+    if (selectedTrack === "all") {
+      if (filteredSubjects.length === subjects.length || scopedAttemptedCount === 0) {
+        attemptedQuestionCount = rawAttemptedCount > 0 ? rawAttemptedCount : scopedAttemptedCount;
+      }
+    } else {
+      if (scopedAttemptedCount === 0 && (filteredReview.length > 0 || filteredWrong.length > 0)) {
+        attemptedQuestionCount = rawAttemptedCount > 0 ? rawAttemptedCount : (filteredReview.length + filteredWrong.length);
+      }
+    }
 
     return {
       ...safeInsights,
@@ -2048,9 +2070,9 @@ const InsightsPage = ({
       subtopics: filteredSubtopics,
       wrongQuestions: filteredWrong,
       reviewQueue: filteredReview,
-      attemptedQuestionCount: scopedAttemptedCount > 0 ? scopedAttemptedCount : Number(safeInsights.attemptedQuestionCount || 0),
+      attemptedQuestionCount,
     };
-  }, [insights, selectedTrack]);
+  }, [insights, selectedTrack, selectedBranches]);
 
   const summary = useMemo(() => {
     const subjects = Array.isArray(scopedInsights.subjects) ? scopedInsights.subjects : [];
@@ -2161,55 +2183,27 @@ const InsightsPage = ({
 
             {/* Track Switcher (Row 2 on mobile, center on desktop) */}
             <div className="w-full lg:w-auto order-3 lg:order-2">
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:inline-flex w-full lg:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs">
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("cs")}
-                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
-                    selectedTrack === "cs"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaGraduationCap className="text-xs shrink-0" />
-                  <span>CS</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("da")}
-                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
-                    selectedTrack === "da"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaRobot className="text-xs shrink-0" />
-                  <span>DA</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("aptitude")}
-                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
-                    selectedTrack === "aptitude"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaBrain className="text-xs shrink-0" />
-                  <span>APTITUDE</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleTrackChange("all")}
-                  className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
-                    selectedTrack === "all"
-                      ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
-                      : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                  }`}
-                >
-                  <FaLayerGroup className="text-xs shrink-0" />
-                  <span>COMBINED</span>
-                </button>
+              <div className="flex flex-wrap lg:inline-flex w-full lg:w-auto rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1 text-xs font-semibold shadow-xs gap-1">
+                {trackOptions.map((option) => {
+                  const TrackIcon = TRACK_ICONS[option.id] || FaGraduationCap;
+                  const isSelected = selectedTrack === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      data-testid={`insights-track-${option.id}`}
+                      onClick={() => handleTrackChange(option.id)}
+                      className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] sm:text-xs rounded-lg transition-all ${
+                        isSelected
+                          ? "bg-[color:var(--color-surface)] text-[color:var(--color-text)] shadow-sm font-bold"
+                          : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
+                      }`}
+                    >
+                      <TrackIcon className="text-xs shrink-0" />
+                      <span>{option.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>

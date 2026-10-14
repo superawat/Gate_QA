@@ -3,6 +3,7 @@ import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
 import { TOPIC_HIERARCHY } from "../../services/question-service/SubjectTaxonomy";
 import { normalizeMockSubjectKey } from "../../utils/mockTest";
 import { getSubjectHierarchy } from "../../utils/mockTaxonomyHierarchy";
+import { getBranchSubjects, normalizeBranchId, getTrackForSubjectSlug } from "../../utils/branchPreference";
 import {
     FaBolt,
     FaCheckCircle,
@@ -58,13 +59,6 @@ const YEAR_SCOPE_OPTIONS = [
 ];
 
 const KIND_META = {
-    full_length: {
-        icon: FaBolt,
-        accent: "emerald",
-        title: "Full Mock",
-        description: "",
-        note: "",
-    },
     paper_mode: {
         icon: FaFileAlt,
         accent: "sky",
@@ -78,6 +72,81 @@ const KIND_META = {
         title: "Custom Builder",
         description: "",
         note: "",
+    },
+};
+
+const BRANCH_CONFIG = {
+    cse: {
+        id: "cse",
+        label: "Computer Science / CSE",
+        shortLabel: "GATE CSE",
+        badgeTrack: "GATE CSE",
+        accentTone: "sky",
+        borderClass: "border-sky-200",
+        badgeClass: "bg-sky-50 text-sky-700 border-sky-200",
+        activePillClass: "bg-sky-700 text-white shadow-sm",
+        btnSelectedClass: "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100",
+        switchColor: "peer-checked:bg-sky-600 peer-focus-visible:ring-sky-500",
+    },
+    da: {
+        id: "da",
+        label: "Data Science and AI",
+        shortLabel: "GATE DA",
+        badgeTrack: "GATE DA",
+        accentTone: "indigo",
+        borderClass: "border-indigo-200",
+        badgeClass: "bg-indigo-50 text-indigo-700 border-indigo-200",
+        activePillClass: "bg-indigo-700 text-white shadow-sm",
+        btnSelectedClass: "border-indigo-400 bg-[linear-gradient(180deg,#ffffff_0%,#eef2ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-indigo-100",
+        switchColor: "peer-checked:bg-indigo-600 peer-focus-visible:ring-indigo-500",
+    },
+    ec: {
+        id: "ec",
+        label: "Electronics & Communication (EC)",
+        shortLabel: "GATE EC",
+        badgeTrack: "GATE EC",
+        accentTone: "purple",
+        borderClass: "border-purple-200",
+        badgeClass: "bg-purple-50 text-purple-700 border-purple-200",
+        activePillClass: "bg-purple-700 text-white shadow-sm",
+        btnSelectedClass: "border-purple-300 bg-[linear-gradient(180deg,#ffffff_0%,#faf5ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-purple-100",
+        switchColor: "peer-checked:bg-purple-600 peer-focus-visible:ring-purple-500",
+    },
+    ee: {
+        id: "ee",
+        label: "Electrical Engineering (EE)",
+        shortLabel: "GATE EE",
+        badgeTrack: "GATE EE",
+        accentTone: "amber",
+        borderClass: "border-amber-200",
+        badgeClass: "bg-amber-50 text-amber-700 border-amber-200",
+        activePillClass: "bg-amber-700 text-white shadow-sm",
+        btnSelectedClass: "border-amber-300 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] shadow-[var(--shadow-soft)] ring-2 ring-amber-100",
+        switchColor: "peer-checked:bg-amber-600 peer-focus-visible:ring-amber-500",
+    },
+    me: {
+        id: "me",
+        label: "Mechanical Engineering (ME)",
+        shortLabel: "GATE ME",
+        badgeTrack: "GATE ME",
+        accentTone: "rose",
+        borderClass: "border-rose-200",
+        badgeClass: "bg-rose-50 text-rose-700 border-rose-200",
+        activePillClass: "bg-rose-700 text-white shadow-sm",
+        btnSelectedClass: "border-rose-300 bg-[linear-gradient(180deg,#ffffff_0%,#fff1f2_100%)] shadow-[var(--shadow-soft)] ring-2 ring-rose-100",
+        switchColor: "peer-checked:bg-rose-600 peer-focus-visible:ring-rose-500",
+    },
+    ce: {
+        id: "ce",
+        label: "Civil Engineering (CE)",
+        shortLabel: "GATE CE",
+        badgeTrack: "GATE CE",
+        accentTone: "emerald",
+        borderClass: "border-emerald-200",
+        badgeClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+        activePillClass: "bg-emerald-700 text-white shadow-sm",
+        btnSelectedClass: "border-emerald-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfdf5_100%)] shadow-[var(--shadow-soft)] ring-2 ring-emerald-100",
+        switchColor: "peer-checked:bg-emerald-600 peer-focus-visible:ring-emerald-500",
     },
 };
 
@@ -284,6 +353,33 @@ const SubjectHierarchyCard = ({
             btnActive: "border-indigo-300 bg-indigo-50 text-indigo-800 hover:bg-indigo-100",
             badge: "bg-indigo-100 text-indigo-800",
         },
+        purple: {
+            cardBorder: isSubjectSelected ? "border-purple-300 ring-1 ring-purple-100" : "border-slate-200/70",
+            cardBg: isSubjectSelected ? "bg-white shadow-xs" : "bg-white/70",
+            checkbox: "text-purple-600 focus:ring-purple-500",
+            topicBox: "border-purple-100/80 bg-purple-50/40",
+            topicLine: "border-purple-300",
+            btnActive: "border-purple-300 bg-purple-50 text-purple-800 hover:bg-purple-100",
+            badge: "bg-purple-100 text-purple-800",
+        },
+        amber: {
+            cardBorder: isSubjectSelected ? "border-amber-300 ring-1 ring-amber-100" : "border-slate-200/70",
+            cardBg: isSubjectSelected ? "bg-white shadow-xs" : "bg-white/70",
+            checkbox: "text-amber-600 focus:ring-amber-500",
+            topicBox: "border-amber-100/80 bg-amber-50/40",
+            topicLine: "border-amber-300",
+            btnActive: "border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100",
+            badge: "bg-amber-100 text-amber-800",
+        },
+        rose: {
+            cardBorder: isSubjectSelected ? "border-rose-300 ring-1 ring-rose-100" : "border-slate-200/70",
+            cardBg: isSubjectSelected ? "bg-white shadow-xs" : "bg-white/70",
+            checkbox: "text-rose-600 focus:ring-rose-500",
+            topicBox: "border-rose-100/80 bg-rose-50/40",
+            topicLine: "border-rose-300",
+            btnActive: "border-rose-300 bg-rose-50 text-rose-800 hover:bg-rose-100",
+            badge: "bg-rose-100 text-rose-800",
+        },
         emerald: {
             cardBorder: isSubjectSelected ? "border-emerald-300 ring-1 ring-emerald-100" : "border-slate-200/70",
             cardBg: isSubjectSelected ? "bg-white shadow-xs" : "bg-white/70",
@@ -452,6 +548,7 @@ const MockTestSetup = ({
     availability,
     livePreview,
     paperOptions = [],
+    selectedBranches = null,
     selectedPaperYearSetKey = "",
     customDurationMinutes = 180,
     recentYearRangeLabel = "",
@@ -479,12 +576,15 @@ const MockTestSetup = ({
     const kindMeta = KIND_META[kind.id] || KIND_META.custom;
     const accent = ACCENT_CLASSES[kindMeta.accent] || ACCENT_CLASSES.amber;
     const Icon = kindMeta.icon || FaSlidersH;
-    const isFullMock = kind.id === "full_length";
     const isPaperMode = kind.id === "paper_mode";
     const isCustom = kind.id === "custom";
+    const derivedSubjectBranches = (Array.isArray(subjects) && subjects.length > 0)
+        ? Array.from(new Set(subjects.map(s => getTrackForSubjectSlug(s.slug)).filter(t => t !== "aptitude").map(t => t === "cs" ? "cse" : t)))
+        : [];
+    const effectiveBranches = (Array.isArray(selectedBranches) && selectedBranches.length > 0)
+        ? selectedBranches.map(normalizeBranchId)
+        : (derivedSubjectBranches.length > 0 ? derivedSubjectBranches : ["cse"]);
     const enabledTracks = Array.isArray(setupState.enabledTracks) ? setupState.enabledTracks : ["cse"];
-    const isCseEnabled = enabledTracks.includes("cse");
-    const isDaEnabled = enabledTracks.includes("da");
     const includeGeneralAptitude = setupState.includeGeneralAptitude !== false;
     const [paperTrackFilter, setPaperTrackFilter] = React.useState("all");
     const showSolvedQuestionToggle = !isPaperMode;
@@ -618,20 +718,14 @@ const MockTestSetup = ({
         onBulkToggleSubtopics(subjectSlug, subjectSubtopicSlugs);
     };
 
-    const cseSubjects = subjects.filter(
-        (s) => !s.slug.startsWith("da:") && !s.slug.startsWith("isro:") && s.slug !== LEGACY_SUBJECT_SLUG && !APTITUDE_SUBJECT_SLUGS.has(s.slug)
-    );
-    const daSubjects = subjects.filter((s) => s.slug.startsWith("da:"));
     const aptitudeSubjects = subjects.filter((s) => APTITUDE_SUBJECT_SLUGS.has(s.slug));
     const legacySubjects = subjects.filter((s) => s.slug === LEGACY_SUBJECT_SLUG);
 
-    const cseSubjectSlugs = cseSubjects.map((s) => s.slug);
-    const daSubjectSlugs = daSubjects.map((s) => s.slug);
-
-    const selectedCseCount = cseSubjectSlugs.filter((slug) => selectedSubjectSet.has(slug)).length;
-    const selectedDaCount = daSubjectSlugs.filter((slug) => selectedSubjectSet.has(slug)).length;
     const selectedSpecialAptCount = ["english", "quant", "reasoning"].filter((slug) => selectedSubjectSet.has(slug)).length;
-    const isBroadMix = selectedCseCount === 0 && selectedDaCount === 0 && selectedSpecialAptCount === 0 && (selectedSubjectSet.has("ga") || selectedSubjectSet.has("general-aptitude") || selectedSubjectSet.size === 0);
+    const selectedEngineeringCount = (subjects || [])
+        .filter((s) => !APTITUDE_SUBJECT_SLUGS.has(s.slug) && s.slug !== LEGACY_SUBJECT_SLUG)
+        .filter((s) => selectedSubjectSet.has(s.slug)).length;
+    const isBroadMix = selectedEngineeringCount === 0 && selectedSpecialAptCount === 0 && (selectedSubjectSet.has("ga") || selectedSubjectSet.has("general-aptitude") || selectedSubjectSet.size === 0);
 
     const selectedPaperDuration = Number.parseInt(String(selectedPaper?.durationMinutes ?? ""), 10);
     const selectedPaperRequiredCount = Number.parseInt(String(selectedPaper?.requiredQuestionCount ?? ""), 10);
@@ -654,12 +748,15 @@ const MockTestSetup = ({
             : "65 Questions");
     const poolTotalLabel = livePreview?.total ? `${livePreview.total} Questions` : "0 Questions";
     const selectedSubtopicCount = (setupState.selectedSubtopics || []).length;
+    const selectedPaperTrack = selectedPaper ? normalizeBranchId(selectedPaper.track || "cse") : "cse";
+    const selectedPaperConfig = BRANCH_CONFIG[selectedPaperTrack] || BRANCH_CONFIG.cse;
+    const selectedPaperTrackShort = selectedPaper?.track === "it" ? "IT" : selectedPaperConfig.shortLabel.replace("GATE ", "");
     const summaryNote = isPaperMode
         ? (
             selectedPaper
                 ? (
                     selectedPaper.paperReady
-                        ? `${Number.isFinite(selectedPaperRequiredGa) ? selectedPaperRequiredGa : selectedPaper.gaCount} GA and ${Number.isFinite(selectedPaperRequiredCs) ? selectedPaperRequiredCs : selectedPaper.csCount} ${selectedPaper.track === "da" ? "DA" : "CS"} questions in paper order.`
+                        ? `${Number.isFinite(selectedPaperRequiredGa) ? selectedPaperRequiredGa : selectedPaper.gaCount} GA and ${Number.isFinite(selectedPaperRequiredCs) ? selectedPaperRequiredCs : selectedPaper.csCount} ${selectedPaperTrackShort} questions in paper order.`
                         : (selectedPaper.statusReason || "This paper is not release-ready yet.")
                 )
                 : "Select a paper to continue."
@@ -675,7 +772,7 @@ const MockTestSetup = ({
             ? `${setupState.yearRangeStart} - ${setupState.yearRangeEnd}`
             : `All years (${setupState.minYear} - ${setupState.maxYear})`;
     const showReset = Boolean(onReset) && (isCustom || isPaperMode);
-    const showPreviewInAside = !isFullMock;
+    const showPreviewInAside = true;
 
     const renderOverviewPanel = () => (
         kindMeta.description || kindMeta.note ? (
@@ -700,44 +797,11 @@ const MockTestSetup = ({
         ) : null
     );
 
-    const renderFullMockContent = () => (
-        <div className="space-y-4">
-            {renderOverviewPanel()}
-
-            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                <SummaryStat label="Attempt size" value="65 Questions" />
-                <SummaryStat label="Duration" value="180 min" />
-                <SummaryStat label="Section balance" value="10 GA / 55 CS" />
-                <SummaryStat label="Pool total" value={poolTotalLabel} />
-            </div>
-
-            <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_280px]">
-                <PreviewCard livePreview={livePreview} />
-
-                <div className="rounded-[var(--radius-card)] border border-slate-200 bg-white p-4">
-                    <div className="flex items-start gap-3">
-                        <span className="mocktest-icon-box inline-flex h-10 w-10 shrink-0 items-center justify-center bg-emerald-50 text-emerald-700">
-                            <FaCheckCircle />
-                        </span>
-                        <div>
-                            <h4 className="text-base font-semibold text-slate-950">No setup noise here</h4>
-                            <p className="mt-1 text-sm leading-6 text-slate-600">
-                                Full Mock starts directly from the validated pool and keeps the paper split balanced automatically.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-
     const renderPaperModeContent = () => {
-        const csePaperCount = paperOptions.filter((p) => (p.track || "cse") === "cse" || p.track === "it").length;
-        const daPaperCount = paperOptions.filter((p) => p.track === "da").length;
         const displayedPapers = paperOptions.filter((paper) => {
-            if (paperTrackFilter === "cse") return (paper.track || "cse") === "cse" || paper.track === "it";
-            if (paperTrackFilter === "da") return paper.track === "da";
-            return true;
+            if (paperTrackFilter === "all") return true;
+            const rawTrack = paper.track || "cse";
+            return normalizeBranchId(rawTrack) === normalizeBranchId(paperTrackFilter);
         });
 
         return (
@@ -765,47 +829,52 @@ const MockTestSetup = ({
                             >
                                 All Papers ({paperOptions.length})
                             </button>
-                            <button
-                                type="button"
-                                data-testid="mock-paper-filter-cse"
-                                onClick={() => setPaperTrackFilter("cse")}
-                                className={joinClasses(
-                                    "rounded-full px-3 py-1 text-xs font-semibold transition",
-                                    paperTrackFilter === "cse"
-                                        ? "bg-sky-700 text-white shadow-sm"
-                                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                                )}
-                            >
-                                GATE CSE ({csePaperCount})
-                            </button>
-                            <button
-                                type="button"
-                                data-testid="mock-paper-filter-da"
-                                onClick={() => setPaperTrackFilter("da")}
-                                className={joinClasses(
-                                    "rounded-full px-3 py-1 text-xs font-semibold transition",
-                                    paperTrackFilter === "da"
-                                        ? "bg-indigo-700 text-white shadow-sm"
-                                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                                )}
-                            >
-                                GATE DA ({daPaperCount})
-                            </button>
+                            {effectiveBranches.map((branchId) => {
+                                const conf = BRANCH_CONFIG[branchId] || { shortLabel: `GATE ${branchId.toUpperCase()}`, activePillClass: "bg-slate-900 text-white shadow-sm" };
+                                const branchPaperCount = paperOptions.filter((p) => {
+                                    const raw = p.track || "cse";
+                                    return normalizeBranchId(raw) === branchId;
+                                }).length;
+                                const isSelected = paperTrackFilter === branchId;
+                                return (
+                                    <button
+                                        key={branchId}
+                                        type="button"
+                                        data-testid={`mock-paper-filter-${branchId}`}
+                                        onClick={() => setPaperTrackFilter(branchId)}
+                                        className={joinClasses(
+                                            "rounded-full px-3 py-1 text-xs font-semibold transition",
+                                            isSelected
+                                                ? conf.activePillClass
+                                                : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                                        )}
+                                    >
+                                        {conf.shortLabel} ({branchPaperCount})
+                                    </button>
+                                );
+                            })}
                         </div>
 
                         <div className="grid gap-3 md:grid-cols-2 auto-rows-fr">
                             {displayedPapers.map((paper) => {
                                 const paperIdentity = getMockPaperYearSetIdentity(paper);
-                                const isDaPaper = paper.track === "da";
+                                const rawTrack = paper.track || "cse";
+                                const normTrack = normalizeBranchId(rawTrack);
                                 const isItPaper = paper.track === "it" || paper.paperScope === "official_it" || (paper.label && paper.label.includes("IT"));
-                                const paperTestToken = isDaPaper
-                                    ? paperIdentity
-                                    : (paper.yearSetKey || paperIdentity);
+                                const conf = BRANCH_CONFIG[normTrack] || BRANCH_CONFIG.cse;
+                                const paperTestToken = paper.yearSetKey || paperIdentity;
                                 const isSelected = paperIdentity === selectedPaperYearSetKey;
                                 const blockedQuestions = Array.isArray(paper.blockedQuestions) ? paper.blockedQuestions : [];
                                 const statusLabel = paper.paperReady
                                     ? (paper.legacyPartial ? "Legacy-ready" : "Release-ready")
                                     : `Needs ${paper.missingScorableCount || blockedQuestions.length || 0} answer${(paper.missingScorableCount || blockedQuestions.length || 0) === 1 ? "" : "s"}`;
+                                const badgeLabel = isItPaper ? "GATE IT" : conf.badgeTrack;
+                                const badgeClass = isItPaper ? "bg-cyan-50 text-cyan-700 border-cyan-200" : conf.badgeClass;
+                                const cardSelectedClass = isItPaper
+                                    ? "border-cyan-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfeff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-cyan-100"
+                                    : conf.btnSelectedClass;
+                                const trackShort = isItPaper ? "IT" : conf.shortLabel.replace("GATE ", "");
+
                                 return (
                                     <button
                                         key={paperIdentity}
@@ -815,11 +884,7 @@ const MockTestSetup = ({
                                         className={joinClasses(
                                             "flex h-full w-full flex-col justify-between rounded-[var(--radius-card)] border p-4 text-left transition",
                                             isSelected
-                                                ? (isDaPaper
-                                                    ? "border-indigo-400 bg-[linear-gradient(180deg,#ffffff_0%,#eef2ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-indigo-100"
-                                                    : isItPaper
-                                                        ? "border-cyan-300 bg-[linear-gradient(180deg,#ffffff_0%,#ecfeff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-cyan-100"
-                                                        : "border-sky-300 bg-[linear-gradient(180deg,#ffffff_0%,#eff6ff_100%)] shadow-[var(--shadow-soft)] ring-2 ring-sky-100")
+                                                ? cardSelectedClass
                                                 : (paper.paperReady
                                                     ? "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[var(--shadow-soft)]"
                                                     : "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_100%)] hover:border-amber-300 hover:shadow-[var(--shadow-soft)]")
@@ -830,18 +895,14 @@ const MockTestSetup = ({
                                                 <div className="flex items-center gap-2 flex-wrap">
                                                     <span className={joinClasses(
                                                         "inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide border",
-                                                        isDaPaper
-                                                            ? "bg-indigo-50 text-indigo-700 border-indigo-200"
-                                                            : isItPaper
-                                                                ? "bg-cyan-50 text-cyan-700 border-cyan-200"
-                                                                : "bg-sky-50 text-sky-700 border-sky-200"
+                                                        badgeClass
                                                     )}>
-                                                        {isDaPaper ? "GATE DA" : isItPaper ? "GATE IT" : "GATE CSE"}
+                                                        {badgeLabel}
                                                     </span>
                                                     <span className="text-base font-semibold text-slate-950">{paper.label}</span>
                                                 </div>
                                                 <p className="mt-1.5 text-[13px] text-slate-600">
-                                                    {paper.gaCount} GA and {paper.csCount || paper.daCount || 55} {isDaPaper ? "DA" : isItPaper ? "IT" : "CS"} questions in paper order.
+                                                    {paper.gaCount} GA and {paper.csCount || paper.daCount || paper.questionCount || 55} {trackShort} questions in paper order.
                                                 </p>
                                                 {!paper.paperReady && paper.statusReason ? (
                                                     <p className="mt-1 text-[13px] font-medium text-amber-700">
@@ -861,7 +922,7 @@ const MockTestSetup = ({
                                                 <span className={joinClasses(
                                                     "mocktest-pill inline-flex px-2 py-0.5 text-[10px] font-semibold uppercase shrink-0 mt-0.5",
                                                     isSelected
-                                                        ? (isDaPaper ? "bg-indigo-50 text-indigo-700" : isItPaper ? "bg-cyan-50 text-cyan-700" : "bg-sky-50 text-sky-700")
+                                                        ? badgeClass
                                                         : "bg-amber-50 text-amber-700"
                                                 )}>
                                                     {isSelected ? "Selected" : statusLabel}
@@ -1052,186 +1113,110 @@ const MockTestSetup = ({
                 </div>
 
                 {/* Warning if all tracks are disabled */}
-                {!isCseEnabled && !isDaEnabled && !includeGeneralAptitude && (
+                {effectiveBranches.every((b) => !enabledTracks.includes(b)) && !includeGeneralAptitude && (
                     <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs font-semibold text-amber-800">
-                        Please enable at least one section (Computer Science / CSE, Data Science and AI, or Aptitude) to create a valid test.
+                        Please enable at least one section to create a valid test.
                     </div>
                 )}
 
                 <div className="mt-4 space-y-4">
-                    {/* Core CSE track */}
-                    {cseSubjects.length > 0 && (
-                        <div className={`rounded-xl border transition-all duration-200 ${
-                            isCseEnabled
-                                ? "border-sky-200 bg-white shadow-sm"
-                                : "border-slate-200 bg-slate-50/70"
-                        }`}>
-                            <div className={`flex flex-wrap items-center justify-between gap-3 p-4 ${isCseEnabled ? "border-b border-slate-100" : ""}`}>
-                                <div
-                                    className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 select-none"
-                                    onClick={() => onToggleTrack("cse")}
-                                >
-                                    <span className="text-sm font-bold text-slate-900">
-                                        Computer Science / CSE
-                                    </span>
-                                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                                        !isCseEnabled
-                                            ? "bg-slate-200 text-slate-600"
-                                            : selectedCseCount > 0
-                                                ? "bg-sky-100 text-sky-800 font-bold"
-                                                : "bg-emerald-100 text-emerald-800"
-                                    }`}>
-                                        {!isCseEnabled
-                                            ? "Disabled"
-                                            : selectedCseCount > 0
-                                                ? `${selectedCseCount} / ${cseSubjects.length} selected`
-                                                : "All CSE subjects active"}
-                                    </span>
-                                </div>
+                    {effectiveBranches.map((branchId) => {
+                        const branchSubjects = getBranchSubjects(subjects, branchId);
+                        if (!branchSubjects || branchSubjects.length === 0) return null;
+                        const isTrackEnabled = enabledTracks.includes(branchId);
+                        const branchSubjectSlugs = branchSubjects.map((s) => s.slug);
+                        const selectedBranchCount = branchSubjects.filter((s) => selectedSubjectSet.has(s.slug)).length;
+                        const conf = BRANCH_CONFIG[branchId] || BRANCH_CONFIG.cse;
 
-                                <div className="flex items-center gap-3">
-                                    {isCseEnabled && (
-                                        <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
-                                            <button
-                                                type="button"
-                                                onClick={() => onBulkToggleTrackSubjects("cse", cseSubjectSlugs, true)}
-                                                className="rounded-md border border-sky-300 bg-white px-2.5 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-50"
-                                            >
-                                                Select All
-                                            </button>
-                                            <button
-                                                type="button"
-                                                onClick={() => onBulkToggleTrackSubjects("cse", cseSubjectSlugs, false)}
-                                                className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 hover:bg-slate-50"
-                                            >
-                                                Clear All
-                                            </button>
-                                        </div>
-                                    )}
-                                    <ToggleSwitch
-                                        id="mock-toggle-cse"
-                                        checked={isCseEnabled}
-                                        onChange={() => onToggleTrack("cse")}
-                                        label="Toggle Computer Science / CSE"
-                                        activeColor="peer-checked:bg-sky-600 peer-focus-visible:ring-sky-500"
-                                    />
-                                </div>
-                            </div>
+                        return (
+                            <div
+                                key={branchId}
+                                className={`rounded-xl border transition-all duration-200 ${
+                                    isTrackEnabled
+                                        ? `${conf.borderClass || "border-sky-200"} bg-white shadow-sm`
+                                        : "border-slate-200 bg-slate-50/70"
+                                }`}
+                            >
+                                <div className={`flex flex-wrap items-center justify-between gap-3 p-4 ${isTrackEnabled ? "border-b border-slate-100" : ""}`}>
+                                    <div
+                                        className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 select-none"
+                                        onClick={() => onToggleTrack(branchId)}
+                                    >
+                                        <span className="text-sm font-bold text-slate-900">
+                                            {conf.label || conf.shortLabel}
+                                        </span>
+                                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+                                            !isTrackEnabled
+                                                ? "bg-slate-200 text-slate-600"
+                                                : selectedBranchCount > 0
+                                                    ? "bg-indigo-100 text-indigo-800 font-bold"
+                                                    : "bg-emerald-100 text-emerald-800"
+                                        }`}>
+                                            {!isTrackEnabled
+                                                ? "Disabled"
+                                                : selectedBranchCount > 0
+                                                    ? `${selectedBranchCount} / ${branchSubjects.length} selected`
+                                                    : `All ${conf.shortLabel.replace("GATE ", "")} subjects active`}
+                                        </span>
+                                    </div>
 
-                            {isCseEnabled && (
-                                <div className="p-4">
-                                    <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-2">
-                                        {cseSubjects.map((subject) => (
-                                            <SubjectHierarchyCard
-                                                key={subject.slug}
-                                                subject={subject}
-                                                structuredSubtopics={structuredSubtopics}
-                                                selectedSubjectSet={selectedSubjectSet}
-                                                selectedSubtopicSet={selectedSubtopicSet}
-                                                expandedSubjectSlugs={expandedSubjectSlugs}
-                                                expandedSubjectSlug={setupState.expandedSubjectSlug}
-                                                expandedTopicIds={expandedTopicIds}
-                                                onSubjectToggle={handleSubjectToggle}
-                                                onToggleSubjectExpansion={toggleSubjectExpansion}
-                                                onToggleTopicExpansion={toggleTopicExpansion}
-                                                onTopicToggle={handleTopicToggle}
-                                                onSubtopicToggle={handleSubtopicToggle}
-                                                onSubjectBulkToggle={handleSubjectBulkToggle}
-                                                tone="sky"
-                                            />
-                                        ))}
+                                    <div className="flex items-center gap-3">
+                                        {isTrackEnabled && (
+                                            <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => onBulkToggleTrackSubjects(branchId, branchSubjectSlugs, true)}
+                                                    className="rounded-md border border-slate-300 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                                                >
+                                                    Select All
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => onBulkToggleTrackSubjects(branchId, branchSubjectSlugs, false)}
+                                                    className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                                                >
+                                                    Clear All
+                                                </button>
+                                            </div>
+                                        )}
+                                        <ToggleSwitch
+                                            id={`mock-toggle-${branchId}`}
+                                            checked={isTrackEnabled}
+                                            onChange={() => onToggleTrack(branchId)}
+                                            label={`Toggle ${conf.label || conf.shortLabel}`}
+                                            activeColor={conf.switchColor || "peer-checked:bg-purple-600 peer-focus-visible:ring-purple-500"}
+                                        />
                                     </div>
                                 </div>
-                            )}
-                        </div>
-                    )}
 
-                    {/* Core DA track */}
-                    {daSubjects.length > 0 && (
-                        <div className={`rounded-xl border transition-all duration-200 ${
-                            isDaEnabled
-                                ? "border-indigo-200 bg-white shadow-sm"
-                                : "border-slate-200 bg-slate-50/70"
-                        }`}>
-                            <div className={`flex flex-wrap items-center justify-between gap-3 p-4 ${isDaEnabled ? "border-b border-slate-100" : ""}`}>
-                                <div
-                                    className="flex min-w-0 flex-1 cursor-pointer items-center gap-2.5 select-none"
-                                    onClick={() => onToggleTrack("da")}
-                                >
-                                    <span className="text-sm font-bold text-slate-900">
-                                        Data Science and AI
-                                    </span>
-                                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                                        !isDaEnabled
-                                            ? "bg-slate-200 text-slate-600"
-                                            : selectedDaCount > 0
-                                                ? "bg-indigo-100 text-indigo-800 font-bold"
-                                                : "bg-indigo-100/70 text-indigo-800"
-                                    }`}>
-                                        {!isDaEnabled
-                                            ? "Disabled"
-                                            : selectedDaCount > 0
-                                                ? `${selectedDaCount} / ${daSubjects.length} selected`
-                                                : "All DA subjects active"}
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center gap-3">
-                                    {isDaEnabled && (
-                                        <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
-                                            <button
-                                                type="button"
-                                                onClick={() => onBulkToggleTrackSubjects("da", daSubjectSlugs, true)}
-                                                className="rounded-md border border-indigo-300 bg-white px-2.5 py-1 text-xs font-semibold text-indigo-700 hover:bg-indigo-50"
-                                            >
-                                                Select All
-                                            </button>
-                                            <button
-                                                type="button"
-                                                onClick={() => onBulkToggleTrackSubjects("da", daSubjectSlugs, false)}
-                                                className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 hover:bg-slate-50"
-                                            >
-                                                Clear All
-                                            </button>
+                                {isTrackEnabled && (
+                                    <div className="p-4">
+                                        <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-2">
+                                            {branchSubjects.map((subject) => (
+                                                <SubjectHierarchyCard
+                                                    key={subject.slug}
+                                                    subject={subject}
+                                                    structuredSubtopics={structuredSubtopics}
+                                                    selectedSubjectSet={selectedSubjectSet}
+                                                    selectedSubtopicSet={selectedSubtopicSet}
+                                                    expandedSubjectSlugs={expandedSubjectSlugs}
+                                                    expandedSubjectSlug={setupState.expandedSubjectSlug}
+                                                    expandedTopicIds={expandedTopicIds}
+                                                    onSubjectToggle={handleSubjectToggle}
+                                                    onToggleSubjectExpansion={toggleSubjectExpansion}
+                                                    onToggleTopicExpansion={toggleTopicExpansion}
+                                                    onTopicToggle={handleTopicToggle}
+                                                    onSubtopicToggle={handleSubtopicToggle}
+                                                    onSubjectBulkToggle={handleSubjectBulkToggle}
+                                                    tone={conf.accentTone || "sky"}
+                                                />
+                                            ))}
                                         </div>
-                                    )}
-                                    <ToggleSwitch
-                                        id="mock-toggle-da"
-                                        checked={isDaEnabled}
-                                        onChange={() => onToggleTrack("da")}
-                                        label="Toggle Data Science and AI"
-                                        activeColor="peer-checked:bg-indigo-600 peer-focus-visible:ring-indigo-500"
-                                    />
-                                </div>
-                            </div>
-
-                            {isDaEnabled && (
-                                <div className="p-4">
-                                    <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-2">
-                                        {daSubjects.map((subject) => (
-                                            <SubjectHierarchyCard
-                                                key={subject.slug}
-                                                subject={subject}
-                                                structuredSubtopics={structuredSubtopics}
-                                                selectedSubjectSet={selectedSubjectSet}
-                                                selectedSubtopicSet={selectedSubtopicSet}
-                                                expandedSubjectSlugs={expandedSubjectSlugs}
-                                                expandedSubjectSlug={setupState.expandedSubjectSlug}
-                                                expandedTopicIds={expandedTopicIds}
-                                                onSubjectToggle={handleSubjectToggle}
-                                                onToggleSubjectExpansion={toggleSubjectExpansion}
-                                                onToggleTopicExpansion={toggleTopicExpansion}
-                                                onTopicToggle={handleTopicToggle}
-                                                onSubtopicToggle={handleSubtopicToggle}
-                                                onSubjectBulkToggle={handleSubjectBulkToggle}
-                                                tone="indigo"
-                                            />
-                                        ))}
                                     </div>
-                                </div>
-                            )}
-                        </div>
-                    )}
+                                )}
+                            </div>
+                        );
+                    })}
 
                     {/* Aptitude track */}
                     <div className={`rounded-xl border transition-all duration-200 ${
@@ -1354,13 +1339,9 @@ const MockTestSetup = ({
                     </div>
                 </div>
 
-                <div className={`grid items-stretch gap-5 p-5 lg:gap-8 lg:p-8 ${isFullMock
-                    ? "lg:grid-cols-[minmax(0,1.2fr)_380px]"
-                    : "lg:grid-cols-[minmax(0,1.15fr)_380px]"
-                    }`} style={{minHeight: 0}}>
+                <div className="grid items-stretch gap-5 p-5 lg:gap-8 lg:p-8 lg:grid-cols-[minmax(0,1.15fr)_380px]" style={{minHeight: 0}}>
                     <section className="min-w-0 min-h-0">
                         <div className="h-full max-h-[calc(100vh-260px)] overflow-y-auto pr-1">
-                            {isFullMock ? renderFullMockContent() : null}
                             {isPaperMode ? renderPaperModeContent() : null}
                             {isCustom ? renderCustomContent() : null}
                         </div>
@@ -1382,7 +1363,7 @@ const MockTestSetup = ({
                                 <SummaryStat label="Requested" value={requestedCount} />
                                 <SummaryStat label="Duration" value={durationLabel} />
                                 <SummaryStat
-                                    label={isPaperMode ? "Selected paper" : (isFullMock ? "Available split" : "Available")}
+                                    label={isPaperMode ? "Selected paper" : "Available"}
                                     value={isPaperMode ? (selectedPaper?.label || "Choose a paper") : availableSummary}
                                 />
                                 {isCustom ? (

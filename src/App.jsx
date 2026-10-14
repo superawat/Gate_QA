@@ -37,7 +37,10 @@ import {
   SUPPORT_ROUTE,
   USER_MANUAL_ROUTE,
   BLOG_ROUTE,
+  PROFILE_ROUTE,
 } from "./utils/routes";
+import BranchSelectionWall from "./components/Branch/BranchSelectionWall";
+import { readBranchPreferences, BRANCH_PREFERENCE_EVENT } from "./utils/branchPreference";
 import {
   loadExploreRoute,
   loadTrackerRoute,
@@ -67,6 +70,7 @@ const ContactPage = lazy(() => import("./pages/StaticPages").then(m => ({ defaul
 const PrivacyPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import("./pages/StaticPages").then(m => ({ default: m.TermsPage })));
 const SupportPage = lazy(() => import("./pages/SupportPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 // HomePage is lazy-loaded to keep the landing entry chunk under the 300 KB budget.
 // The HTML splash screen (#app-splash) covers the brief chunk-download gap, so
 // the Suspense fallback is intentionally null — no second loader is shown.
@@ -328,10 +332,16 @@ const PracticeRoutes = ({
     navigate(INSIGHTS_ROUTE);
   }, [navigate]);
 
+  const handleOpenTracker = useCallback(() => {
+    trackEvent("home_cta", { target: "tracker", source: "home" });
+    navigate(TRACKER_ROUTE);
+  }, [navigate]);
+
   return (
     <>
       <ScrollToTop />
       <LegacyNavigationHandler loadQuestions={loadQuestions} resumeRoute={resumeRoute} />
+      <BranchSelectionWall />
 
       <Routes>
         <Route
@@ -352,6 +362,7 @@ const PracticeRoutes = ({
                   onStartRandomPractice={handleStartRandomPractice}
                   onExplorePractice={handleExplorePractice}
                   onOpenInsights={handleOpenInsights}
+                  onOpenTracker={handleOpenTracker}
                   onOpenMockHistory={handleOpenMockHistory}
                   onStartMockTest={handleStartMockTest}
                   onResumePractice={handleResumePractice}
@@ -493,6 +504,16 @@ const PracticeRoutes = ({
         <Route path="/privacy" element={<Suspense fallback={<RouteLoader label="Loading..." />}><PrivacyPage /></Suspense>} />
         <Route path="/terms"   element={<Suspense fallback={<RouteLoader label="Loading..." />}><TermsPage /></Suspense>} />
         <Route path={SUPPORT_ROUTE} element={<Suspense fallback={<RouteLoader label="Loading Support..." />}><SupportPage /></Suspense>} />
+        <Route
+          path={PROFILE_ROUTE}
+          element={(
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoader label="Loading Profile..." />}>
+                <ProfilePage />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        />
         <Route path="*" element={<Navigate to={HOME_ROUTE} replace />} />
       </Routes>
     </>
@@ -547,6 +568,17 @@ const AppRuntime = () => {
   }, []);
 
   const loadQuestions = useCallback(async ({ fullBank = false } = {}) => {
+    const prefs = readBranchPreferences();
+    const hasBranchSelection = Array.isArray(prefs.selectedBranches) && prefs.selectedBranches.length > 0;
+    const isCseEnrolled = hasBranchSelection ? prefs.selectedBranches.includes("cse") : !prefs.hasCompletedOnboarding;
+
+    // If CSE is not enrolled (e.g. user selected EC + EE, or changed branches), do not load CSE
+    if (prefs.hasCompletedOnboarding && !isCseEnrolled) {
+      setError("");
+      setLoading(false);
+      return;
+    }
+
     const hasRequiredQuestions = QuestionService.loaded
       && (!fullBank || QuestionService.loadMode === "full");
     if (hasRequiredQuestions && AnswerService.loaded) {
@@ -588,6 +620,27 @@ const AppRuntime = () => {
 
     return loadPromise;
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleBranchChange = (event) => {
+      const selected = event?.detail?.selectedBranches || [];
+      if (selected.includes("cse")) {
+        const needsQuestionData = location.pathname.startsWith(PRACTICE_ROUTE)
+          || location.pathname.startsWith(TRACKER_ROUTE)
+          || location.pathname.startsWith(INSIGHTS_ROUTE);
+        if (needsQuestionData) {
+          void loadQuestions();
+        }
+      } else {
+        setQuestionDataRevision((value) => value + 1);
+      }
+    };
+    window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+    return () => {
+      window.removeEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+    };
+  }, [loadQuestions, location.pathname]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.dismissStaticSplash === "function") {
@@ -655,6 +708,10 @@ const AppRuntime = () => {
     }
     if (location.pathname === USER_MANUAL_ROUTE) {
       pageview("UserManual");
+      return;
+    }
+    if (location.pathname === PROFILE_ROUTE) {
+      pageview("Profile");
       return;
     }
     if (location.pathname.startsWith(MOCK_HISTORY_ROUTE)) {

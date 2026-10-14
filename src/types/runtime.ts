@@ -202,7 +202,7 @@ export interface YearSetOption {
   set?: number | null;
   label: string;
   count?: number;
-  track?: 'cse' | 'da' | 'it' | 'isro';
+  track?: 'cse' | 'da' | 'it' | 'isro' | 'ec' | 'ee' | 'me' | 'ce' | string;
   legacyKey?: string;
   yearSetIdentity?: string;
   hasItPaper?: boolean;

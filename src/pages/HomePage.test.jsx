@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
@@ -27,12 +27,14 @@ const preloadPracticeStartExperienceMock = vi.fn();
 const preloadExploreRouteMock = vi.fn();
 const preloadMockExperienceMock = vi.fn();
 const preloadInsightsRouteMock = vi.fn();
+const preloadTrackerRouteMock = vi.fn();
 
 vi.mock("../utils/routePreload", () => ({
   preloadPracticeStartExperience: () => preloadPracticeStartExperienceMock(),
   preloadExploreRoute: () => preloadExploreRouteMock(),
   preloadMockExperience: () => preloadMockExperienceMock(),
   preloadInsightsRoute: () => preloadInsightsRouteMock(),
+  preloadTrackerRoute: () => preloadTrackerRouteMock(),
 }));
 
 vi.mock("../contexts/FilterContext", () => ({
@@ -77,6 +79,7 @@ const renderHomePage = (props = {}) => {
     onStartRandomPractice: vi.fn(),
     onExplorePractice: vi.fn(),
     onOpenInsights: vi.fn(),
+    onOpenTracker: vi.fn(),
     onOpenMockHistory: vi.fn(),
     onStartMockTest: vi.fn(),
     onResumePractice: vi.fn(),
@@ -103,6 +106,7 @@ describe("HomePage", () => {
     preloadExploreRouteMock.mockClear();
     preloadMockExperienceMock.mockClear();
     preloadInsightsRouteMock.mockClear();
+    preloadTrackerRouteMock.mockClear();
   });
 
   test("renders search hero banner with input, background image, and screen-reader heading", () => {
@@ -121,11 +125,39 @@ describe("HomePage", () => {
     expect(searchInput).toBeTruthy();
   });
 
-  test("renders quick actions container with accessible label", () => {
-    renderHomePage();
+  test("renders quick actions container with accessible label and all 5 action cards in sequence", () => {
+    const { container } = renderHomePage();
 
     const quickActionsSection = screen.getByRole("region", { name: "Dashboard actions" });
     expect(quickActionsSection).toBeTruthy();
+
+    const actionButtons = within(quickActionsSection).getAllByRole("button");
+    expect(actionButtons).toHaveLength(5);
+
+    // Primary Hero Action
+    expect(actionButtons[0].textContent).toMatch(/Practice/i);
+    expect(actionButtons[0].className).toContain("home-action-card--primary");
+
+    // 4 Secondary Feature Actions: Filter Questions, Mock Test, Performance Insights, Tracker
+    expect(actionButtons[1].textContent).toMatch(/Filter Questions/i);
+    expect(actionButtons[1].className).toContain("home-action-card--secondary");
+
+    expect(actionButtons[2].textContent).toMatch(/Mock Test/i);
+    expect(actionButtons[2].className).toContain("home-action-card--secondary");
+
+    expect(actionButtons[3].textContent).toMatch(/Performance Insights/i);
+    expect(actionButtons[3].className).toContain("home-action-card--secondary");
+
+    expect(actionButtons[4].textContent).toMatch(/Tracker/i);
+    expect(actionButtons[4].className).toContain("home-action-card--secondary");
+
+    // Verify Tracker card subtext and badge
+    expect(within(actionButtons[4]).getByText("Syllabus & progress")).toBeTruthy();
+    expect(within(actionButtons[4]).getByText("Study Planner")).toBeTruthy();
+
+    // Verify 5 carousel indicator dots
+    const dots = container.querySelectorAll(".home-action-carousel-dots span");
+    expect(dots).toHaveLength(5);
   });
 
   test("clicking Practice card calls onStartRandomPractice and renders badge and copy", () => {
@@ -195,6 +227,19 @@ describe("HomePage", () => {
     expect(onOpenInsights).toHaveBeenCalledTimes(1);
   });
 
+  test("opens the tracker page from the Tracker button", () => {
+    const onOpenTracker = vi.fn();
+    renderHomePage({ onOpenTracker });
+
+    const trackerCard = screen.getByRole("button", { name: /^Tracker/i });
+    expect(trackerCard).toBeTruthy();
+    expect(screen.getByText("Syllabus & progress")).toBeTruthy();
+    expect(screen.getByText("Study Planner")).toBeTruthy();
+
+    fireEvent.click(trackerCard);
+    expect(onOpenTracker).toHaveBeenCalledTimes(1);
+  });
+
   test("preloads respective route experiences on card pointer enter or focus", () => {
     renderHomePage({ mockModeEnabled: true });
 
@@ -213,6 +258,12 @@ describe("HomePage", () => {
     const insightsCard = screen.getByRole("button", { name: /Performance Insights/i });
     fireEvent.focus(insightsCard);
     expect(preloadInsightsRouteMock).toHaveBeenCalledTimes(1);
+
+    const trackerCard = screen.getByRole("button", { name: /^Tracker/i });
+    fireEvent.pointerEnter(trackerCard);
+    expect(preloadTrackerRouteMock).toHaveBeenCalledTimes(1);
+    fireEvent.focus(trackerCard);
+    expect(preloadTrackerRouteMock).toHaveBeenCalledTimes(2);
   });
 
   test("does not trigger preload on disabled Mock Test card", () => {

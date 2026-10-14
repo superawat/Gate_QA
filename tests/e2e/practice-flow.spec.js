@@ -10,6 +10,9 @@ test.beforeEach(async ({ context }) => {
     window.localStorage.setItem("gateqa_auth_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_da_questions_announcement_seen_v1", "1");
     window.localStorage.setItem("gateqa_tracker_announcement_seen_v1", "true");
+    window.localStorage.setItem("gateqa_branch_onboarding_completed", "true");
+    window.localStorage.setItem("gateqa_selected_branches", JSON.stringify(["cse"]));
+    window.localStorage.setItem("gateqa_active_branch", "cse");
   });
 });
 

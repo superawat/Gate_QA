@@ -2256,7 +2256,7 @@ async function buildArtifacts() {
     for (const existingFile of fs.readdirSync(DETAIL_SHARDS_DIR)) {
       if (!existingFile.endsWith(".json")) continue;
       const key = existingFile.replace(/\.json$/, "");
-      if (!newShardKeys.has(key)) {
+      if (!newShardKeys.has(key) && !/^(?:ec|ee|me|ce)-\d{4}-s\d+$/i.test(key)) {
         fs.unlinkSync(path.join(DETAIL_SHARDS_DIR, existingFile));
       }
     }

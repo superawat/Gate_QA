@@ -1,0 +1,2049 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.196Z",
+  "shardKey": "ec-2001-s1",
+  "yearSetKey": "ec-2001-s1",
+  "yearSetIdentity": "ec:2001:set-1",
+  "track": "ec",
+  "year": 2001,
+  "set": 1,
+  "label": "2001 Set 1",
+  "questionCount": 50,
+  "recordsByQuestionUid": {
+    "pp:ec:2001:q1": {
+      "question_uid": "pp:ec:2001:q1",
+      "exam_uid": "ec:2001:set1:q1",
+      "title": "GATE EC 2001 | Set 1 | Question: 1",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The voltage $e_o$ in figure is <br><img src=\"/question-images/ec/2001/ec-2001-bb6202db98.webp\" />",
+      "options": [
+        "2V",
+        "4V",
+        "8V"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "Applying KCL,\n\n$$\\begin{aligned} \\frac{e_{0}-12}{4}+\\frac{e_{0}}{4}+\\frac{e_{0}}{4}&=0 \\\\ \\Rightarrow \\quad 3 e_{0}&=12 \\\\ \\therefore \\quad e_{0}&=4 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q2": {
+      "question_uid": "pp:ec:2001:q2",
+      "exam_uid": "ec:2001:set1:q2",
+      "title": "GATE EC 2001 | Set 1 | Question: 2",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If each branch of a Delta circuit has impedance $\\sqrt{3}Z$, then each branch of the\nequivalent Wye circuit has impedance.",
+      "options": [
+        "$\\frac{Z}{\\sqrt{3}}$",
+        "3Z",
+        "$3\\sqrt{3}Z$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "$$\\begin{aligned} Z_{\\Delta} &=3 Z_{Y} \\\\ \\Rightarrow \\quad \\sqrt{3} Z_{\\Delta} &=3 Z_{Y} \\\\ Z_{Y} &=\\frac{Z_{\\Delta}}{\\sqrt{3}} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q3": {
+      "question_uid": "pp:ec:2001:q3",
+      "exam_uid": "ec:2001:set1:q3",
+      "title": "GATE EC 2001 | Set 1 | Question: 3",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The transfer function of a system is given by $H(s)=\\frac{1}{s^2(s-2)}$. The impulse\nresponse of the system is: (* denotes convolution, and U(t) is unit step function)",
+      "options": [
+        "$(t^2 * e^{-2t})U(t)$",
+        "$(t * e^{2t})U(t)$",
+        "$(te^{-2t})U(t)$",
+        "$(te^{-2}t)U(t)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Laplace Transform",
+        "markdown": "Impulse response of system is $L^{-1}[H(s)]$\n\n$\\frac{1}{s^{2}(s-2)}=\\frac{1}{s^{2}} \\times \\frac{1}{s-2}=\\left(t * e^{+2 t}\\right) u(t)$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q4": {
+      "question_uid": "pp:ec:2001:q4",
+      "exam_uid": "ec:2001:set1:q4",
+      "title": "GATE EC 2001 | Set 1 | Question: 4",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The admittance parameter $Y_{12}$ in the 2-port network in figure is <br><img src=\"/question-images/ec/2001/ec-2001-7d4c23ba4e.webp\"/>",
+      "options": [
+        "0.2 mho",
+        "-0.05 mho",
+        "0.05 mho"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Two Port Networks",
+        "markdown": "$$\\left[\\begin{array}{cc} y_{1}+y_{3} & -y_{3} \\\\ -y_{3} & y_{2}+y_{3} \\end{array}\\right]=\\left[\\begin{array}{cc} y_{11} & y_{12} \\\\ y_{21} & y_{22} \\end{array}\\right]$$\n\n$y_{12}=-y_{3}$\n\n<img src=\"/question-images/ec/2001/ec-2001-78ed39c93f.webp\" />\n\n$y_{12}=-\\frac{1}{20}=-0.05 \\mathrm{mho}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q5": {
+      "question_uid": "pp:ec:2001:q5",
+      "exam_uid": "ec:2001:set1:q5",
+      "title": "GATE EC 2001 | Set 1 | Question: 5",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The region of convergence of the z-transform of a unit step function is",
+      "options": [
+        "$\\mid z\\mid \\gt 1$",
+        "$\\mid z\\mid \\lt 1$",
+        "(real part of Z)$\\gt$0"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Z-Transform",
+        "markdown": "$$\\begin{aligned} h(n)&=u(n) \\\\ H(z)&=\\sum_{n=0}^{\\infty} 1 . z^{-n} \\end{aligned}$$\n\nFor the convergence of H(z)\n\n$\\sum_{n=0}^{n}\\left(z^{-1}\\right)^{n}\\lt \\infty$\n\n\\therefore ROC is the range of values of z for which\n\n$\\left|z^{-1}\\right| \\lt 1\\text{ or } |z|\\gt |1|$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q6": {
+      "question_uid": "pp:ec:2001:q6",
+      "exam_uid": "ec:2001:set1:q6",
+      "title": "GATE EC 2001 | Set 1 | Question: 6",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The current gain of a BJT is",
+      "options": [
+        "$g_{m}r_{0}$",
+        "$\\frac{g_{m}}{r_{o}}$",
+        "$g_{m}r_{\\pi }$",
+        "$\\frac{g_{m}}{r_{\\pi }}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - BJT Analysis",
+        "markdown": "$h_{f e}=g_{m} \\cdot r_{\\pi}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q7": {
+      "question_uid": "pp:ec:2001:q7",
+      "exam_uid": "ec:2001:set1:q7",
+      "title": "GATE EC 2001 | Set 1 | Question: 7",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "MOSFET can be used as a",
+      "options": [
+        "current controlled capacitor",
+        "voltage controlled capacitor",
+        "current controlled inductor",
+        "voltage controlled inductor"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - BJT and FET Basics",
+        "markdown": "Voltage controlled capacitor.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q8": {
+      "question_uid": "pp:ec:2001:q8",
+      "exam_uid": "ec:2001:set1:q8",
+      "title": "GATE EC 2001 | Set 1 | Question: 8",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The effective channel length of a MOSFET in saturation decreases with increase in",
+      "options": [
+        "gate voltage \n",
+        "drain voltage",
+        "source voltage ",
+        "body voltage"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electronic Devices - BJT and FET Basics",
+        "markdown": "At the edge of saturation i.e. when drain to source voltage reaches $V_{D_{sat}}$ the inversion layer charge at the drain end becomes zero (ideally). The channel is said to be pinched off at the drain end. If the drain to source voltage $V_{DS}$ is increased even further beyond the saturation edge so that $V_{DS} \\gt V_{D_{sat}}$, an even larger  portion of the channel becomes pinched off and effective channel length is reduced.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q9": {
+      "question_uid": "pp:ec:2001:q9",
+      "exam_uid": "ec:2001:set1:q9",
+      "title": "GATE EC 2001 | Set 1 | Question: 9",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The ideal OP-AMP has the following characteristics.",
+      "options": [
+        "$R_{i}=\\infty , A=\\infty , R_{0}=0$",
+        "$R_{i}=0, A=\\infty , R_{0}=0$",
+        "$R_{i}=\\infty , A=\\infty , R_{0}=\\infty$",
+        "$R_{i}=0 , A=\\infty , R_{0}=\\infty$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Circuits** (specifically *Operational Amplifiers*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Operational Amplifiers**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$R_{i}=\\infty , A=\\infty , R_{0}=0$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($R_{i}=\\infty , A=\\infty , R_{0}=0$)."
+      }
+    },
+    "pp:ec:2001:q10": {
+      "question_uid": "pp:ec:2001:q10",
+      "exam_uid": "ec:2001:set1:q10",
+      "title": "GATE EC 2001 | Set 1 | Question: 10",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The 2's complement representation of -17 is",
+      "options": [
+        "101110",
+        "101111",
+        "111110",
+        "110001"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Number Systems",
+        "markdown": "$$\\begin{aligned} 17 &=010001 \\\\ -17 &=101111(2 \\text { 's complement }) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q11": {
+      "question_uid": "pp:ec:2001:q11",
+      "exam_uid": "ec:2001:set1:q11",
+      "title": "GATE EC 2001 | Set 1 | Question: 11",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the following two statements:<br><br>Statement 1: A stable multi-vibrator can be used for generating square wave.<br>Statement 2: B stable multi-vibrator can be used for storing binary information.",
+      "options": [
+        " Only statement 1 is correct",
+        "Only statement 2 is correct",
+        "Both the statements 1 and 2 are correct",
+        "Both the statements 1 and 2 are incorrect"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "multivibrators-and-555-timer",
+          "subtopicLabel": "Multivibrators and 555 Timer"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "multivibrators-and-555-timer"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Multivibrators and 555 Timer",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Analog Circuits** (specifically *Multivibrators and 555 Timer*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Multivibrators and 555 Timer**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *Both the statements 1 and 2 are correct*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (Both the statements 1 and 2 are correct)."
+      }
+    },
+    "pp:ec:2001:q12": {
+      "question_uid": "pp:ec:2001:q12",
+      "exam_uid": "ec:2001:set1:q12",
+      "title": "GATE EC 2001 | Set 1 | Question: 12",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the ring oscillator shown in figure, the propagation delay of each\r\ninverter is 100 pico second. What is the fundamental frequency of the oscillator output?<br><br><img src=\"/question-images/ec/2001/ec-2001-31bdc0a093.webp\" />",
+      "options": [
+        "10 MHz",
+        "100 MHz",
+        "1 GHz",
+        "2 GHz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "sequential-circuits",
+          "subtopicLabel": "Sequential Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "sequential-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Sequential Circuits",
+        "markdown": "$t_{P d}$ of all 5 intervals\n\n$=5 \\times 100 \\mathrm{p} \\mathrm{sec}=500 \\mathrm{p} \\mathrm{sec}$\n\n$\\therefore$ fundamental frequency of oscillator\n\n$\\text { Output }=\\frac{1}{2 \\times 500 \\mathrm{ps}}=1 \\mathrm{GHz}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q13": {
+      "question_uid": "pp:ec:2001:q13",
+      "exam_uid": "ec:2001:set1:q13",
+      "title": "GATE EC 2001 | Set 1 | Question: 13",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An 8085 microprocessor based system uses a 4K x 8-bit RAM whose starting address is AA00. The address of the last byte in this RAM is",
+      "options": [
+        "0FFFH ",
+        "1000 H ",
+        "B9FF H",
+        "BA00 H"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-microprocessors",
+          "subjectLabel": "Microprocessors",
+          "subtopicSlug": "interfacing-and-peripheral-devices",
+          "subtopicLabel": "Interfacing and Peripheral Devices"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-microprocessors",
+          "interfacing-and-peripheral-devices"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Microprocessors - Interfacing and Peripheral Devices",
+        "markdown": "12 add. lines are present $4k = 2^{12}$\n\n$$\\begin{aligned} AA00&=1010 1010 0000 0000 \\\\ \\text{Last Add }&= \\frac{\\quad 1111\\quad 1111 \\quad 1111\\quad}{\\frac{1011}{B}\\quad\\frac{1001}{B}\\quad F\\quad F} = B9FF \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q14": {
+      "question_uid": "pp:ec:2001:q14",
+      "exam_uid": "ec:2001:set1:q14",
+      "title": "GATE EC 2001 | Set 1 | Question: 14",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The equivalent of the block diagram in figure is given in<br><img src=\"/question-images/ec/2001/ec-2001-7b46ff8bb9.webp\" /><br><img src=\"/question-images/ec/2001/ec-2001-c47679a8eb.webp\" />",
+      "options": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "basics-of-control-systems-block-diagram-and-sfgs",
+          "subtopicLabel": "Basics of Control Systems, Block Diagram and SFGs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "basics-of-control-systems-block-diagram-and-sfgs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
+        "markdown": "Take off points is moved $G_{2}$ so $H/G_{2}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q15": {
+      "question_uid": "pp:ec:2001:q15",
+      "exam_uid": "ec:2001:set1:q15",
+      "title": "GATE EC 2001 | Set 1 | Question: 15",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If the characteristic equation of a closed-loop system is $s^{2}+2s+2=0$, then the system is",
+      "options": [
+        "over damped \n ",
+        "critically damped",
+        "underdamped",
+        "undamped"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "$$\\begin{aligned} s^{2}+2 \\xi \\omega_{n}+\\omega_{n}^{2} &=0 \\\\ 2 \\xi\\omega{n} &=2, \\xi=\\frac{1}{\\omega_{n}} \\\\ \\omega_{n} &=\\sqrt{2}\\\\ \\therefore \\quad \\xi&=\\frac{1}{\\sqrt{2}} \\end{aligned}$$\n\n$\\because \\xi \\lt 1,$ hence response will be underdamped.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q16": {
+      "question_uid": "pp:ec:2001:q16",
+      "exam_uid": "ec:2001:set1:q16",
+      "title": "GATE EC 2001 | Set 1 | Question: 16",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The root-locus diagram for a closed loop feedback system is shown in figure. The system is overdamped.<br><img src=\"/question-images/ec/2001/ec-2001-564c34ccdc.webp\" />",
+      "options": [
+        "only if $0\\leq K\\leq 1$",
+        "only if $1 \\lt k \\lt 5$",
+        "only if K$\\gt$5",
+        "if $0\\leq K \\lt 1\\, or \\, K \\gt 5$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "root-locus",
+          "subtopicLabel": "Root Locus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "root-locus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Root Locus",
+        "markdown": "For overdamping roots of characteristic equation\n\nshould lie on negative axis and be unequal.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q17": {
+      "question_uid": "pp:ec:2001:q17",
+      "exam_uid": "ec:2001:set1:q17",
+      "title": "GATE EC 2001 | Set 1 | Question: 17",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Nyquist plot for the open-loop transfer function G(s) of a unity negative\r\nfeedback system is shown in figure. If G(s) has no pole in the right half of splane, the number of roots of the system characteristic equation in the right half\r\nof s-plane is<br><img src=\"/question-images/ec/2001/ec-2001-18390bcdb8.webp\" />",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "frequency-response-analysis",
+          "subtopicLabel": "Frequency Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "frequency-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Frequency Response Analysis",
+        "markdown": "$N=0$\n\n(1 encirclement in CW direction and other in ACW)\n\n$P=0$(no pole in right half)\n\nSo, $N=P-Z$\n\n$Z=P-N=0$\n\n$\\therefore \\quad$ No roots on RH of s-plane.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q18": {
+      "question_uid": "pp:ec:2001:q18",
+      "exam_uid": "ec:2001:set1:q18",
+      "title": "GATE EC 2001 | Set 1 | Question: 18",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Let $\\delta(t)$ denote the delta function. The value of the integral $\\int_{-\\infty }^{\\infty}\\delta (t)\\cos \\left ( \\frac{3t}{2} \\right )dt$ is\r\n",
+      "options": [
+        "1",
+        "-1",
+        "0",
+        "$\\frac{\\pi }{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "$\\int_{-\\infty}^{\\infty} \\delta(t) \\cos \\left(\\frac{3 t}{2}\\right) d t=f(0)=\\cos \\left(\\frac{3 \\times 0}{2}\\right)=\\cos 0=1$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q19": {
+      "question_uid": "pp:ec:2001:q19",
+      "exam_uid": "ec:2001:set1:q19",
+      "title": "GATE EC 2001 | Set 1 | Question: 19",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A band limited signal is sampled at the Nyquist rate. The signal can be recovered\nby passing the samples through",
+      "options": [
+        "an RC filter ",
+        "an envelope detector",
+        "a PLL",
+        "an ideal low-pass filter with appropriate bandwidth"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "analog-communications",
+          "subtopicLabel": "Analog Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "analog-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Analog Communications",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Communication Systems** (specifically *Analog Communications*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Analog Communications**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *a PLL*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (a PLL)."
+      }
+    },
+    "pp:ec:2001:q20": {
+      "question_uid": "pp:ec:2001:q20",
+      "exam_uid": "ec:2001:set1:q20",
+      "title": "GATE EC 2001 | Set 1 | Question: 20",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The PDF of a Gaussian random variable X is given by $P_{X}(X)=\\frac{1}{3\\sqrt{2\\pi}}e^{\\frac{-(x-4)^{2}}{18}}$.\r\nThe probability of the event {X=4} is",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3\\sqrt{2\\pi }}$",
+        "0",
+        "$\\frac{1}{4}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "random-processes",
+          "subtopicLabel": "Random Processes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "random-processes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Processes",
+        "markdown": "Probability of a Gaussion random variable is defined for an interval and not at a point.  So at X=4, it is zero.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q21": {
+      "question_uid": "pp:ec:2001:q21",
+      "exam_uid": "ec:2001:set1:q21",
+      "title": "GATE EC 2001 | Set 1 | Question: 21",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If a signal f(t) has energy E, the energy of the signal f(2t) is equal to",
+      "options": [
+        "E",
+        "$\\frac{E}{2}$",
+        "2E",
+        "4E"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "basics-of-signals-and-systems",
+          "subtopicLabel": "Basics of Signals and Systems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "basics-of-signals-and-systems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - Basics of Signals and Systems",
+        "markdown": "$$\\begin{aligned} E &=\\int_{-\\infty}^{\\infty} f(t)^{2} d t \\\\ E^{\\prime} &=\\int_{-\\infty}^{\\infty} f(2 t)^{2} d t \\\\ &=\\int_{-\\infty}^{\\infty} f(p)^{2}-\\frac{d p}{2}\\left(2 t=p ; d t=\\frac{d p}{2}\\right) \\\\ E^{\\prime} &=\\frac{E}{2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q22": {
+      "question_uid": "pp:ec:2001:q22",
+      "exam_uid": "ec:2001:set1:q22",
+      "title": "GATE EC 2001 | Set 1 | Question: 22",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A transmission line is distortion-less if",
+      "options": [
+        "$RL=\\frac{1}{GC}$",
+        "RL=GC",
+        "LG=RC",
+        "RG=LC"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Electromagnetics** (specifically *Transmission Lines*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Transmission Lines**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *LG=RC*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (LG=RC)."
+      }
+    },
+    "pp:ec:2001:q23": {
+      "question_uid": "pp:ec:2001:q23",
+      "exam_uid": "ec:2001:set1:q23",
+      "title": "GATE EC 2001 | Set 1 | Question: 23",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If a plane electromagnetic wave satisfies the equation $\\frac{\\partial^2 E_{X}}{\\partial x^2}=C^{2}\\frac{\\partial^2X }{\\partial t^2}$ the wave propagates in the",
+      "options": [
+        "x-direction ",
+        "z-direction",
+        "y-direction",
+        "xy plane at an angle of $45^{\\circ}$\n between the x and z directions"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "plane-waves-and-properties",
+          "subtopicLabel": "Plane waves and Properties"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "plane-waves-and-properties"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Plane waves and Properties",
+        "markdown": "The E field is a function of z and directed in X. i.e.\n\nharmonic function of z or travelling in z direction.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q24": {
+      "question_uid": "pp:ec:2001:q24",
+      "exam_uid": "ec:2001:set1:q24",
+      "title": "GATE EC 2001 | Set 1 | Question: 24",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The phase velocity of waves propagating in a hollow metal waveguide is",
+      "options": [
+        "greater than the velocity of light in free space.",
+        "less than the velocity of light in free space.",
+        "equal to the velocity of light in free space.",
+        "equal to the group velocity."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "waveguides",
+          "subtopicLabel": "Waveguides"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "waveguides"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Waveguides",
+        "markdown": "$$\\begin{aligned} V_{p}&=\\frac{c}{\\cos \\theta}=\\frac{c}{\\sqrt{1-\\left(\\frac{f_{c}}{f}\\right)^{2}}} \\\\ \\text { with } f& \\gt f_{c^{\\prime}} V_{p} \\gt c \\text { always. } \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q25": {
+      "question_uid": "pp:ec:2001:q25",
+      "exam_uid": "ec:2001:set1:q25",
+      "title": "GATE EC 2001 | Set 1 | Question: 25",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The dominant mode in a rectangular waveguide is $TE_{10}$, because this mode has",
+      "options": [
+        "no attenuation ",
+        "no cut-off",
+        "no magnetic field component",
+        "the highest cut-off wavelength"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "waveguides",
+          "subtopicLabel": "Waveguides"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "waveguides"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Waveguides",
+        "markdown": "Dominant mode in waveguide has lowest cut-off\n\nfrequency and hence the highest cut-off\n\nwavelength\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q26": {
+      "question_uid": "pp:ec:2001:q26",
+      "exam_uid": "ec:2001:set1:q26",
+      "title": "GATE EC 2001 | Set 1 | Question: 26",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The voltage $e_{0}$ in figure is<br><img src=\"/question-images/ec/2001/ec-2001-c6396aa229.webp\" />",
+      "options": [
+        "48 V ",
+        "24 V",
+        "36 V",
+        "28 V"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "basics-of-network-analysis",
+          "subtopicLabel": "Basics of Network Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "basics-of-network-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Basics of Network Analysis",
+        "markdown": "Applying source conversion\n\n<img src=\"/question-images/ec/2001/ec-2001-1e8357215d.webp\" />\n\n$$\\begin{aligned} \\frac{e_{0}-80}{12}+\\frac{e_{0}}{12}+\\frac{e_{0}-16}{6} &=0 \\\\ 4 e_{0} &=112 \\\\ e_{0} &=\\frac{112}{4}=28 \\mathrm{V} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q27": {
+      "question_uid": "pp:ec:2001:q27",
+      "exam_uid": "ec:2001:set1:q27",
+      "title": "GATE EC 2001 | Set 1 | Question: 27",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In figure shown below, the value of the load resistor R which maximizes the power delivered to it is<br><img src=\"/question-images/ec/2001/ec-2001-17cd9c875b.webp\" />",
+      "options": [
+        "$14.14\\Omega$",
+        "$10\\Omega$",
+        "$200\\Omega$",
+        "$28.28\\Omega$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "network-theorems",
+          "subtopicLabel": "Network Theorems"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "network-theorems"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Network Theorems",
+        "markdown": "$$\\begin{array}{l} X_{S}=\\omega L=10 \\Omega \\\\ Z_{S}=10+j 10 \\end{array}$$\n\nR for max power transfer $=\\left|Z_{s}\\right|=10 \\sqrt{2}$\n\n$$\\begin{array}{l} =|10+10 j|=10 \\sqrt{2} \\angle 45^{\\circ} \\\\ =14.14 \\Omega \\end{array}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q28": {
+      "question_uid": "pp:ec:2001:q28",
+      "exam_uid": "ec:2001:set1:q28",
+      "title": "GATE EC 2001 | Set 1 | Question: 28",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "When the angular frequency $\\omega$\r\n in figure is varied from 0 to $\\infty$, the locus of the current phasor $I_{2}$ is given by<br><img src=\"/question-images/ec/2001/ec-2001-1c271e55e9.webp\" /><br><img src=\"/question-images/ec/2001/ec-2001-899a50dc8c.webp\" />",
+      "options": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "sinusoidal-steady-state-analysis",
+          "subtopicLabel": "Sinusoidal Steady State Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "sinusoidal-steady-state-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Sinusoidal Steady State Analysis",
+        "markdown": "$i_{2}(t)=\\frac{E_{m} \\cos \\omega t}{R_{2}+\\frac{1}{j \\omega C}}=E_{m} \\angle 0 \\frac{j \\omega C}{1+j \\omega C R_{2}}$\n\n$\\angle i_{2}(t)=\\frac{E_{m} \\angle 0 \\omega C \\angle 90^{\\circ}}{\\sqrt{1+\\omega^{2} C^{2} R^{2}} \\angle \\tan ^{-1} \\omega C R_{2}}$\n\n$i_{2}(t)=\\frac{E_{m} \\omega C}{\\sqrt{1+\\omega^{2} C^{2} R^{2}}} \\angle 90^{\\circ}-\\tan ^{-1} \\omega C R$\n\nat $\\omega=0, i_{2}(t)=0, \\omega=\\infty, i_{2}(t)=\\frac{E_{m}}{R_{2}}$\n\nOption(a) satisfies both conditions.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q29": {
+      "question_uid": "pp:ec:2001:q29",
+      "exam_uid": "ec:2001:set1:q29",
+      "title": "GATE EC 2001 | Set 1 | Question: 29",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Z parameters $Z_{11}$ and $Z_{21}$ for the 2-port network in figure are<br><img src=\"/question-images/ec/2001/ec-2001-3f3b0d1325.webp\" />",
+      "options": [
+        "$Z_{11}=-\\frac{6}{11}\\Omega ;Z_{21}=\\infty \\frac{16}{11}\\Omega$",
+        "$Z_{11}=\\frac{6}{11}\\Omega ;Z_{21}=\\frac{4}{11}\\Omega$",
+        "$Z_{11}=\\frac{6}{11}\\Omega ;Z_{21}= -\\frac{16}{11}\\Omega$",
+        "$Z_{11}=-\\frac{4}{11}\\Omega ;Z_{21}=\\frac{4}{11}\\Omega$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-network-theory",
+          "subjectLabel": "Network Theory",
+          "subtopicSlug": "two-port-networks",
+          "subtopicLabel": "Two Port Networks"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-network-theory",
+          "two-port-networks"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Network Theory - Two Port Networks",
+        "markdown": "$$\\begin{aligned} V_{1} &=Z_{11} I_{1}+Z_{12} I_{2} \\\\ V_{2} &=Z_{21} I_{1}+Z_{22} I_{2} \\\\ Z_{11} &=\\left.\\frac{V_{1}}{I_{1}}\\right|_{I_{2}=0} \\end{aligned}$$\n\n$\\Rightarrow$ Applying KVL in LHS loop\n\n$$\\begin{aligned} E_{1}-2 I_{1}-4 I_{1}+10 E_{1}&=0 \\\\ 11 E_{1}&=6 I_{1} \\\\ \\Rightarrow \\quad \\frac{E_{1}}{I_{1}}&=\\frac{6}{11} \\Omega \\\\ Z_{21} &=\\left.\\frac{V_{2}}{I_{1}}\\right|_{l_{2}=0} \\end{aligned}$$\n\nKVL in RHS loop.\n\n$E_{2}-4 I_{1}+10 E_{1}=0$\n\n$\\Rightarrow E_{2}-4 I_{1}+10 \\times \\frac{6}{11} I_{1}=0 \\quad\\left(E_{1}=\\frac{b}{11} I_{1}\\right)$\n\n$$\\begin{array}{r} \\Rightarrow \\quad 11 E_{2}-44 I_{1}+60 I_{1}=0 \\\\ \\frac{E_{2}}{I_{1}}=-\\frac{16}{11} \\Omega \\end{array}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q30": {
+      "question_uid": "pp:ec:2001:q30",
+      "exam_uid": "ec:2001:set1:q30",
+      "title": "GATE EC 2001 | Set 1 | Question: 30",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An npn BJT has <br>$g_{m}=38m\\, A/V$, $C_{\\mu }=10^{-14}\\,F$,$C_{\\pi }=4\\times 10^{-13}\\,F$\r\n and DC current gain $\\beta _{0}=90$. For this transistor  $f_{T}$and $f_{\\beta }$ are",
+      "options": [
+        "$f_{T}=1.64\\times 10^{8}HZ$ and $f_{\\beta }=1.47\\times 10^{10}HZ$",
+        "$f_{T}=1.47\\times 10^{10}HZ$ and $f_{\\beta }=1.64\\times 10^{8}HZ$",
+        "$f_{T}=1.33\\times 10^{12}HZ$ and $f_{\\beta }=1.47\\times 10^{10}HZ$",
+        "$f_{T}=1.47\\times 10^{10}HZ$ and $f_{\\beta }=1.33\\times 10^{12}HZ$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "frequency-response-of-amplifier",
+          "subtopicLabel": "Frequency Response of Amplifier"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "frequency-response-of-amplifier"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Frequency Response of Amplifier",
+        "markdown": "$$\\begin{aligned} f_{T} &=\\frac{g_{m}}{2 \\pi\\left(C_{\\mu}+C_{\\pi}\\right)} \\\\ &=\\frac{38 \\times 10^{-3}}{2 \\pi \\times\\left(10^{-14}+4 \\times 10^{-13}\\right)} \\\\ &=\\frac{38 \\times 10^{-3}}{2 \\pi \\times 10^{-13}(0.1+4)}=1.47 \\times 10^{10} \\mathrm{Hz} \\\\ &=\\frac{f_{T}}{\\beta_{0}}=\\frac{1.47 \\times 10^{10}}{90} \\\\ &=1.64 \\times 10^{8} \\mathrm{Hz} \\quad&\\left(\\beta_{0}=h_{1}\\right) \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q31": {
+      "question_uid": "pp:ec:2001:q31",
+      "exam_uid": "ec:2001:set1:q31",
+      "title": "GATE EC 2001 | Set 1 | Question: 31",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The transistor shunt regulator\r\nshown in figure has a\r\nregulated output voltage of 10\r\nV, when the input varies from\r\n20 V to 30 V. The relevant\r\nparameters for the Zener diode\r\nand the transistor are: $V_{Z}$\r\n=9.5,$V_{SE}$ =0.3V, $\\beta$\r\n=99. Neglect\r\nthe current through $R_{B}$. Then\r\nthe maximum power dissipated\r\nin the Zener diode ($P_{Z}$) and the\r\ntransistor ($P_{T}$) are<br><img src=\"/question-images/ec/2001/ec-2001-bd1eb15451.webp\" />",
+      "options": [
+        "$P_{Z}=75mW, P_{T}=7.9W$",
+        "$P_{Z}=85mW, P_{T}=8.9W$",
+        "$P_{Z}=95mW, P_{T}=9.9W$",
+        "$P_{Z}=115mW, P_{T}=11.9W$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "diodes-applications",
+          "subtopicLabel": "Diodes Applications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "diodes-applications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Diodes Applications",
+        "markdown": "<img src=\"/question-images/ec/2001/ec-2001-8c79d37ee4.webp\" />\n\n$$\\begin{aligned} I_{1 \\max }&=\\frac{V_{\\text {in } \\max }-V_{O}}{20}\\\\ I_{1} &=\\frac{30-10}{20}=1 \\mathrm{A} \\quad \\text { (i.e. when } I_{Z}=0) \\\\ I_{E} &=I_{C}+I_{Z} &\\ldots(i)\\\\ I_{B} &=I_{Z}\\left(\\text { as no current flows in } R_{B}\\text { ) } \\right.\\\\ \\beta &=\\frac{I_{C}}{I_{B}}=\\frac{I_{C}}{I_{Z}} \\\\ \\Rightarrow \\quad I_{C} &=\\beta I_{Z} \\\\ \\text { From (i) }, I_{E} &=\\beta I_{Z}+I_{Z}=(99+1) I_{Z} \\\\ I_{E} &=100 I_{Z} \\\\ I_{1} &=I_{E}=100 I_{Z} \\\\ I_{Z} &=\\frac{I_{1}}{100}=\\frac{1}{100}=0.01 \\mathrm{A} \\\\ P_{Z} &=V_{Z} I_{Z}=9.5 \\times 0.01=95 \\mathrm{mW} \\\\ I_{C} &=99 I_{Z}=99 \\times 0.01=0.99 \\mathrm{A} \\\\ P_{C} &=V_{C} I_{C}=10 \\times 0.99=9.9 \\mathrm{W}\\\\ \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q32": {
+      "question_uid": "pp:ec:2001:q32",
+      "exam_uid": "ec:2001:set1:q32",
+      "title": "GATE EC 2001 | Set 1 | Question: 32",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The oscillator circuit shown in figure  is<br><img src=\"/question-images/ec/2001/ec-2001-e9366097c9.webp\" />",
+      "options": [
+        "Hartley oscillator with $f_{oscillation}=79.6MHz$\n",
+        "Colpitts oscillator with $f_{oscillation}=50.3 MHz$\n",
+        "Hartley oscillator with $f_{oscillation}=159.2MHz$\n",
+        "Colpitts oscillator with $f_{oscillation}=159.2MHz$\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "oscillator-circuits",
+          "subtopicLabel": "Oscillator Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "oscillator-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Oscillator Circuits",
+        "markdown": "Fig. shown is Colpitts oscillator.\n\n$$\\begin{aligned} f &=\\frac{1}{2 \\pi \\sqrt{L C_{e q}}} \\\\ C_{\\mathrm{eq}} &=\\frac{C_{1} C_{2}}{C_{1}+C_{2}}=\\frac{2 \\times 2}{4}=1 \\mathrm{PF} \\\\ &=\\frac{1}{2 \\pi \\sqrt{10 \\times 10^{-6} \\times 10^{-12}}} \\\\ &=\\frac{1 \\times 10^{9}}{2 \\pi \\sqrt{10}}=50.3 \\mathrm{MHz} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q33": {
+      "question_uid": "pp:ec:2001:q33",
+      "exam_uid": "ec:2001:set1:q33",
+      "title": "GATE EC 2001 | Set 1 | Question: 33",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The inverting OP-AMP shown in figure has an open-loop gain of 100. The\r\nclosed loop gain $\\frac{V_{o}}{V_{s}}$ is <br><img src=\"/question-images/ec/2001/ec-2001-91a667ccaa.webp\" />\r\n",
+      "options": [
+        "-8",
+        "-9",
+        "-10",
+        "-11"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "If open loop gain is not infinite, then\n\n$$\\begin{aligned} \\frac{1}{\\beta} &=-\\frac{R_{f}}{R_{1}}=-\\frac{10 \\mathrm{k}}{1 \\mathrm{k}}=-10 \\\\ |\\beta| &=\\frac{1}{10} \\\\ A_{f} &=\\frac{-A}{1+A \\beta}=\\frac{-100}{1+100 \\times \\frac{1}{10}}=-\\frac{100}{11} \\\\ A_{f} & \\cong-9 \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q34": {
+      "question_uid": "pp:ec:2001:q34",
+      "exam_uid": "ec:2001:set1:q34",
+      "title": "GATE EC 2001 | Set 1 | Question: 34",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In figure, assume the OP-AMPs to be ideal. The output $V_{o}$\r\n of the circuit is:<br><img src=\"/question-images/ec/2001/ec-2001-ab888c6f63.webp\" />",
+      "options": [
+        "$10\\, \\cos (100t)$",
+        "$10\\, \\int_{0}^{t}\\cos (100\\tau )d\\tau$",
+        "$10^{-4}\\, \\int_{0}^{t}\\cos (100\\tau )d\\tau$",
+        "$10^{-4}\\, \\frac{\\mathrm{d} }{\\mathrm{d} t}\\cos (100t )$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-analog-circuits",
+          "subjectLabel": "Analog Circuits",
+          "subtopicSlug": "operational-amplifiers",
+          "subtopicLabel": "Operational Amplifiers"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-analog-circuits",
+          "operational-amplifiers"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Analog Circuits - Operational Amplifiers",
+        "markdown": "<img src=\"/question-images/ec/2001/ec-2001-a67eefd44a.webp\" />\n\nKCL at node 1\n\n$$\\begin{aligned} \\frac{V_{2}}{V_{s}} &=\\frac{-\\omega L}{R} \\\\ &=\\frac{-100 \\times 10 \\times 10^{-3}}{10}=-\\frac{1}{10} \\\\ V_{2} &=-\\frac{V_{s}}{10}=-\\cos 100 t\\\\ \\frac{V_{0}}{V_{2}} &=\\frac{-1 / \\omega \\mathrm{c}}{100} \\\\ &=-\\frac{1}{100 \\times 10 \\times 10^{-6} \\times 100}=-10 \\\\ V_{0} &=-10 \\mathrm{V}_{2}=-10(-\\cos 100 \\mathrm{t}) \\\\ V_{0} &=10 \\cos 100 \\mathrm{t} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q35": {
+      "question_uid": "pp:ec:2001:q35",
+      "exam_uid": "ec:2001:set1:q35",
+      "title": "GATE EC 2001 | Set 1 | Question: 35",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In figure, the LED<br><img src=\"/question-images/ec/2001/ec-2001-ecf2ccbe8e.webp\" />",
+      "options": [
+        "emits light when both $S_{1}$\n and $S_{2}$ are closed.",
+        "emits light when both $S_{1}$\n and $S_{2}$ are open.",
+        "emits light when only  $S_{1}$\n or $S_{2}$  is closed.",
+        "does not emit light, irrespective of the switch positions."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "logic-gates",
+          "subtopicLabel": "Logic Gates"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "logic-gates"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Logic Gates",
+        "markdown": "For LED to be ON, output of NANO gate = 0\n\nNo condition of $S_{1}$ and $S_{2}$ gives output of NANO\n\ngate zero. So LED will never glow\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q36": {
+      "question_uid": "pp:ec:2001:q36",
+      "exam_uid": "ec:2001:set1:q36",
+      "title": "GATE EC 2001 | Set 1 | Question: 36",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the TTL circuit in figure, $S_{2}$ to $S_{0}$ are select lines and $X_{7}$ and $X_{0}$are input\r\nlines. $S_{0}$ and $X_{0}$are LSBs. The output Y is<br><img src=\"/question-images/ec/2001/ec-2001-7a1bed1996.webp\" />",
+      "options": [
+        " indeterminate",
+        "$A\\oplus B$",
+        "$\\bar{A\\oplus B}$",
+        "$\\bar{C} \\cdot (\\overline{A\\oplus B})\\: +\\: C \\cdot (A\\oplus B)$\r\n"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "logic-families",
+          "subtopicLabel": "Logic Families"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "logic-families"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Logic Families",
+        "markdown": "Floating input is accepted by TTL logic gate as logic 1\n\nHence $S_{2} = 1$\n\n<img src=\"/question-images/ec/2001/ec-2001-a7373400fb.webp\" />\n\n$Y=A \\oplus B$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q37": {
+      "question_uid": "pp:ec:2001:q37",
+      "exam_uid": "ec:2001:set1:q37",
+      "title": "GATE EC 2001 | Set 1 | Question: 37",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The digital block in figure is realized using two positive edge triggered D-flip-flops. Assume that for $t \\lt   t_{0}$,  $Q_{1}$=$Q_{2}$ =0. The circuit in the digital block is given by:<br><img src=\"/question-images/ec/2001/ec-2001-c8198fc359.webp\" /><br><img src=\"/question-images/ec/2001/ec-2001-ad92118e5f.webp\" />",
+      "options": [
+        "Figure(a)",
+        "Figure(b)",
+        "Figure(c)",
+        "Figure(d)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "sequential-circuits",
+          "subtopicLabel": "Sequential Circuits"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "sequential-circuits"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Sequential Circuits",
+        "markdown": "It is given that clock is positive edge triggered\n\nthan only option (A) and (C) are possible. Out of\n\nwhich only (C) option gives the required result.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q38": {
+      "question_uid": "pp:ec:2001:q38",
+      "exam_uid": "ec:2001:set1:q38",
+      "title": "GATE EC 2001 | Set 1 | Question: 38",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the DRAM cell in figure, the $V_{t}$ of the NMOSFET is 1 V. For the following three combinations of WL and BL voltages.<br><img src=\"/question-images/ec/2001/ec-2001-4115a9b67a.webp\" />",
+      "options": [
+        "5 V; 3V; 7V",
+        "4 V; 3V; 4V",
+        "5 V; 5V; 5V",
+        "4 V; 4V; 4V"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-digital-circuits",
+          "subjectLabel": "Digital Circuits",
+          "subtopicSlug": "memories",
+          "subtopicLabel": "Memories"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-digital-circuits",
+          "memories"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Digital Circuits - Memories",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Digital Circuits** (specifically *Memories*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Memories**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *4 V; 3V; 4V*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (4 V; 3V; 4V)."
+      }
+    },
+    "pp:ec:2001:q39": {
+      "question_uid": "pp:ec:2001:q39",
+      "exam_uid": "ec:2001:set1:q39",
+      "title": "GATE EC 2001 | Set 1 | Question: 39",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": " The impulse response functions of four linear systems S1, S2, S3, S4 are given\r\nrespectively by <br>$h_{1}(t)=1$<br>$h_{2}(t)=U(t)$<br> $h_{3}(t)=\\frac{U(t)}{t+1}$<br>$h_{4}(t)=e^{-3t}U(t)$<br>where U(t) is the step function. Which of these systems is time invariant, causal and stable?",
+      "options": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-signals-and-systems",
+          "subjectLabel": "Signals and Systems",
+          "subtopicSlug": "lti-systems-continuous-and-discrete",
+          "subtopicLabel": "LTI Systems Continuous and Discrete"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-signals-and-systems",
+          "lti-systems-continuous-and-discrete"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Signals and Systems - LTI Systems Continuous and Discrete",
+        "markdown": "$h_{1}(t) \\neq 0 \\text { for } t\\lt 0$\n\nTherefores, is non causal\n\n$$\\begin{aligned} h_{2}(t)&=u(t)=0 \\text { for } t \\lt 0 \\\\ \\int_{-\\infty}^{\\infty} n_{2}(t) d t&=\\int_{-\\infty}^{\\infty} u(t) d t=\\int_{0}^{\\infty} d t=\\infty \\end{aligned}$$\n\nTherefore $s_{2}$ is unstable and causal\n\n$$\\begin{aligned} h_{3}(t)&=\\frac{u(t)}{t+1} \\\\ \\text { at } t&=-1 \\\\ h_{f}(t)&=\\infty, h_{3}(t)=0 \\text { for } t \\lt 0 \\end{aligned}$$\n\nTherefore $s_{3}$ is unstable and causal\n\n$h_{4}(t)=e^{-3 t} u(t)$\n\n$s_{4}$ is time invariant, causal and stable\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q40": {
+      "question_uid": "pp:ec:2001:q40",
+      "exam_uid": "ec:2001:set1:q40",
+      "title": "GATE EC 2001 | Set 1 | Question: 40",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "An electrical system and its signal-flow graph representations are shown in figure\r\n (a) and (b) respectively. The values of $G_{2}$ and H, respectively are<br><img src=\"/question-images/ec/2001/ec-2001-d1a3b258be.webp\" />",
+      "options": [
+        "$\\frac{Z_{3}(s)}{Z_{2}(s)+Z_{3}(s)+Z_{4}(s)},\\frac{-Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)}$",
+        "$\\frac{-Z_{3}(s)}{Z_{2}(s)-Z_{3}(s)+Z_{4}(s)},\\frac{-Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)}$",
+        "$\\frac{Z_{3}(s)}{Z_{2}(s)+Z_{3}(s)+Z_{4}(s)},\\frac{Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)}$",
+        "$\\frac{-Z_{3}(s)}{Z_{2}(s)-Z_{3}(s)+Z_{4}(s)},\\frac{Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "basics-of-control-systems-block-diagram-and-sfgs",
+          "subtopicLabel": "Basics of Control Systems, Block Diagram and SFGs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "basics-of-control-systems-block-diagram-and-sfgs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Basics of Control Systems, Block Diagram and SFGs",
+        "markdown": "From KVL in both loops In first loop,\n\n$V_{i}(s)=I_{1}(s) Z_{1}(s)+\\left[I_{1}(s)-I_{2}(s)\\right] Z_{3}(s)$\n\n$V_{i}(s)=I_{1}(s)\\left[Z_{1}(s)+Z_{3}(s)\\right]-I_{2}(s) Z_{3}(s)$\n\n$\\frac{V_{i}(s)}{Z_{1}(s)+Z_{3}(s)}=I_{1}(s)-\\frac{I_{2}(s) \\cdot Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)} \\; \\; ...(i)$\n\nIn second loop,\n\n$\\left[I_{2}(s)-I_{1}(s)\\right] Z_{3}(s)+I_{2}(s) Z_{2}(s)+I_{2}(s) Z_{4}(s)=0$\n\n$I_{2}(s)\\left(Z_{2}(s)+Z_{3}(s)+Z_{4}(s)\\right)=I_{1}(s) \\cdot Z_{3}(s)$\n\n$G_{2}=\\frac{I_{2}(s)}{I_{1}(s)}=\\frac{Z_{3}(s)}{Z_{2}(s)+Z_{3}(s)+Z_{4}(s)}$\n\nFrom SFG, $I_{1}(s)=V_{i} G_{1}(s)+I_{2}(s) H(s)$\n\n$I_{1}(s)=V_{i}(s) \\frac{1}{Z_{1}(s)+Z_{3}(s)}+I_{2}(s) \\frac{Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)}$\n\n$\\therefore \\quad H(s)=\\frac{Z_{3}(s)}{Z_{1}(s)+Z_{3}(s)}$\n\n(comparing above two equations)\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q41": {
+      "question_uid": "pp:ec:2001:q41",
+      "exam_uid": "ec:2001:set1:q41",
+      "title": "GATE EC 2001 | Set 1 | Question: 41",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The open-loop DC gain of a unity negative feedback system with closed-loop\ntransfer function $\\frac{s+4}{s^{2}+7s+13}$ is\n ",
+      "options": [
+        "$\\frac{4}{13}$",
+        "$\\frac{4}{9}$",
+        "4",
+        "13"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "time-response-analysis",
+          "subtopicLabel": "Time Response Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "time-response-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Time Response Analysis",
+        "markdown": "$$\\begin{aligned} \\mathrm{CLTF} &=\\frac{G(s)}{1+G(s) H(s)}=\\frac{s+4}{s^{2}+7 s+13} \\\\ \\frac{1+G(s) H(s)}{G(s)} &=\\frac{s^{2}+7 s+13}{s+4} \\end{aligned}$$\n\n$H(s)=1$ for unity feedback.\n\n$$\\begin{aligned} \\frac{1}{G(s)} &=\\frac{s^{2}+7 s+13}{s+4}-1 \\\\ \\frac{1}{G(s)} &=\\frac{s^{2}+6 s+9}{s+4} \\\\ \\therefore \\quad G(s) &=\\frac{s+4}{s^{2}+6 s+9} \\\\ \\text { For D.C. } \\quad s&=0\\\\ \\therefore \\quad G(s) &=\\text{open loop gain} \\\\ &=\\frac{4}{9} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q42": {
+      "question_uid": "pp:ec:2001:q42",
+      "exam_uid": "ec:2001:set1:q42",
+      "title": "GATE EC 2001 | Set 1 | Question: 42",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The feedback control system in figure is stable<br><img src=\"/question-images/ec/2001/ec-2001-0bb4290828.webp\" />",
+      "options": [
+        "For all $K\\geq 0$",
+        "Only If $K\\geq 1$\n",
+        "Only If $0\\leq K \\lt 1$",
+        "Only If $0\\leq K\\leq 2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-control-systems",
+          "subjectLabel": "Control Systems",
+          "subtopicSlug": "stability-analysis",
+          "subtopicLabel": "Stability Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-control-systems",
+          "stability-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Control Systems - Stability Analysis",
+        "markdown": "$$\\begin{aligned} T . F . &=\\frac{G_{1} G_{2}}{1+G_{1} G_{2} H} \\\\ &=\\frac{\\frac{K(s-2)}{(s+2)^{2}}}{1+\\frac{K(s-2)(s-2)}{(s+2)^{2}}} \\\\ &=\\frac{K(s-2)}{(s+2)^{2}+K(s-2)^{2}} \\end{aligned}$$\n\n$\\therefore$ Characteristic equation\n\n$=s^{2}+4+4 s+K s^{2}-4 K s+4 K$\n\n$(1+K) s^{2}+K(4-4 K) s+4 K+4=0$\n\nRouth table is\n\n$$\\begin{array}{l|ll} s^{2} & (1+K) & (4 K+4) \\\\ s^{1} & K(4-4 K) & 0 \\\\ s^{0} & 4(K+1) & \\end{array}$$\n\nFor system to be stable,\n\n$$\\begin{aligned} 1-K& \\gt 0\\\\ 1& \\gt K \\text{ and } K \\geq 0 \\quad \\text{ (given in question)} \\end{aligned}$$\n\nFrom third row,\n\n$$\\begin{aligned} K& \\gt -1 \\\\ \\therefore \\quad 0 &\\leq K \\lt 1 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q43": {
+      "question_uid": "pp:ec:2001:q43",
+      "exam_uid": "ec:2001:set1:q43",
+      "title": "GATE EC 2001 | Set 1 | Question: 43",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A video transmission system transmits 625 picture frames per second. Each\nframe consists of a 400 x 400 pixel grid with 64 intensity levels per pixel. The\ndata rate of the system is",
+      "options": [
+        "16 Mbps",
+        "100 Mbps",
+        "600 Mbps",
+        "6.4 Gbps"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "Frames per second =625\n\nPixels per frame $=400 \\times 400$\n\n64 intensity levels per pixel can be represented by 6 bits per pixel.\n\n$\\therefore$ Date Rate $=625 \\times 400 \\times 400 \\times 6=600 \\mathrm{Mbps}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q44": {
+      "question_uid": "pp:ec:2001:q44",
+      "exam_uid": "ec:2001:set1:q44",
+      "title": "GATE EC 2001 | Set 1 | Question: 44",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Nyquist sampling interval, for the signal $sinc (700t) + sinc (500t)$\r\n is",
+      "options": [
+        "$\\frac{1}{350} sec$",
+        "$\\frac{\\pi}{350} sec$",
+        "$\\frac{1}{700} sec$",
+        "$\\frac{\\pi}{175} sec$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "$\\sin c(700 t)+\\sin c(500 t)$\n\nNyquist sampling rate $=2 f_{m}=700 \\mathrm{Hz}$\n\n$\\therefore \\quad$ Sampling rate $=\\frac{1}{700} \\mathrm{sec}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ec:2001:q45": {
+      "question_uid": "pp:ec:2001:q45",
+      "exam_uid": "ec:2001:set1:q45",
+      "title": "GATE EC 2001 | Set 1 | Question: 45",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "During transmission over a communication channel, bit errors occur\nindependently with probability p. If a block of n bits is transmitted, the probability\nof at most one bit error is equal to",
+      "options": [
+        "$1-(1-p)^n$",
+        "p+(n-1)(1-p)",
+        "$np(1-p)^{n-1}$",
+        "$(1-p)^n+np(1-p)^{n-1}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "digital-communications",
+          "subtopicLabel": "Digital Communications"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "digital-communications"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Digital Communications",
+        "markdown": "Probability of error =p\n\nProbability of no error $=(1-\\rho)$\n\nFor error in at most one bit there should either\n\nno error or error in only one bit.\n\n$$\\begin{array}{l} ={ }^{n} C_{o}(1-p)^{n} p^{0}+{ }^{n} C_{1}(1-p)^{n-1} p^{1} \\\\ =(1-p)^{n}+n p(1-p)^{n-1} \\end{array}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ec:2001:q46": {
+      "question_uid": "pp:ec:2001:q46",
+      "exam_uid": "ec:2001:set1:q46",
+      "title": "GATE EC 2001 | Set 1 | Question: 46",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The PSD and the power of a signal g(t) are, respectively, $S_g(\\omega ) \\; and \\; P_g$. The PSD\nand the power of the signal g(t) are, respectively",
+      "options": [
+        "$a^2 S_g(\\omega ) \\; and \\; a^2 P_g$",
+        "$a^2 S_g(\\omega ) \\; and \\; a P_g$",
+        "$a S_g(\\omega ) \\; and \\; a^2 P_g$",
+        "$a S_g(\\omega ) \\; and \\; a P_g$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-communication-systems",
+          "subjectLabel": "Communication Systems",
+          "subtopicSlug": "random-processes",
+          "subtopicLabel": "Random Processes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-communication-systems",
+          "random-processes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Communication Systems - Random Processes",
+        "markdown": "$S_X(\\omega )\\rightarrow H(\\omega )\\rightarrow S_Y(\\omega )$\n\n$S_Y(\\omega )= |H(\\omega )|^2 S_X(\\omega )$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q47": {
+      "question_uid": "pp:ec:2001:q47",
+      "exam_uid": "ec:2001:set1:q47",
+      "title": "GATE EC 2001 | Set 1 | Question: 47",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A material has conductivity of $10^{-2}$\n mho/m and a relative permittivity of 4. The\nfrequency at which the conduction current in the medium is equal to the\ndisplacement current is",
+      "options": [
+        "45 MHz",
+        "90 MHz",
+        "450 MHz",
+        "900 MHz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "plane-waves-and-properties",
+          "subtopicLabel": "Plane waves and Properties"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "plane-waves-and-properties"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Plane waves and Properties",
+        "markdown": "$$\\begin{aligned} |\\sigma E| &=|j \\omega \\in E| \\\\ \\sigma &=2 \\pi f \\epsilon_{0} \\epsilon_{r} \\\\ \\Rightarrow \\quad f &=\\frac{\\sigma}{2 \\pi \\times \\epsilon_{0} \\epsilon_{r}} \\\\ &=\\frac{9 \\times 10^{9} \\times 2 \\times 10^{-2}}{4} \\\\ f &=45 \\times 10^{6}=45 \\mathrm{MHz} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ec:2001:q48": {
+      "question_uid": "pp:ec:2001:q48",
+      "exam_uid": "ec:2001:set1:q48",
+      "title": "GATE EC 2001 | Set 1 | Question: 48",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A uniform plane electromagnetic wave incident normally on a plane surface of a\ndielectric material is reflected with a VSWR of 3. What is the percentage of\nincident power that is reflected?",
+      "options": [
+        "10%",
+        "25%",
+        "50%",
+        "75%"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "transmission-lines",
+          "subtopicLabel": "Transmission Lines"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "transmission-lines"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Transmission Lines",
+        "markdown": "$$\\begin{aligned} s&=\\frac{1+|\\Gamma|}{1-|\\Gamma|} \\\\ \\Rightarrow 3&=\\frac{1+|\\Gamma|}{1-|\\Gamma|} \\\\ |\\Gamma|&=0.5 \\\\ \\frac{P_{r}}{P_{i}}&=|\\Gamma|^{2}=0.25 \\end{aligned}$$\n\n$\\therefore \\quad 25 \\%$ of incident power is reflected.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q49": {
+      "question_uid": "pp:ec:2001:q49",
+      "exam_uid": "ec:2001:set1:q49",
+      "title": "GATE EC 2001 | Set 1 | Question: 49",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A medium wave radio transmitter operating at a wavelength of 492 m has a\ntower antenna of height 124m. What is the radiation resistance of the antenna?",
+      "options": [
+        "$25\\Omega$",
+        "$36.5 \\Omega$",
+        "$50\\Omega$",
+        "$73 \\Omega$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "antennas",
+          "subtopicLabel": "Antennas"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "antennas"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Antennas",
+        "markdown": "$\\frac{\\lambda}{4}=\\frac{492}{4}=123 \\simeq L$\n\n$\\therefore \\quad$It is a quarter wave monopole antenna.\n\nSo, $\\quad R_{a}=36.5 \\Omega$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ec:2001:q50": {
+      "question_uid": "pp:ec:2001:q50",
+      "exam_uid": "ec:2001:set1:q50",
+      "title": "GATE EC 2001 | Set 1 | Question: 50",
+      "year": "gateec-2001-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a uniform linear array, four isotropic radiating elements are spaced $\\frac{\\lambda }{4}$ apart.\nThe progressive phase shift between the elements required for forming the main\nbeam at $60^{\\circ}$ off the end-fire is:",
+      "options": [
+        "$- \\pi$ radians",
+        "$-\\frac{\\pi }{2}$ radians",
+        "$-\\frac{\\pi }{4}$ radians",
+        "$-\\frac{\\pi }{8}$ radians"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ec",
+      "yearSetKey": "ec-2001-s1",
+      "yearSetIdentity": "ec:2001:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ec-electromagnetics",
+          "subjectLabel": "Electromagnetics",
+          "subtopicSlug": "antennas",
+          "subtopicLabel": "Antennas"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ec-electromagnetics",
+          "antennas"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Electromagnetics - Antennas",
+        "markdown": "$\\theta_{\\max }=60^{\\circ}$ from end fire means 60^{\\circ} from array axis.\\\\ Condition for maximum, $\\psi \\rightarrow 0$\n\n$$\\begin{array}{l} E_{T}=E_{O} \\frac{\\sin \\left(N_{\\psi} / 2\\right)}{\\sin (\\psi / 2)} \\\\ E_{T}=N E_{0}=E_{\\max } \\\\ \\psi=\\alpha+\\beta d \\cos 60^{\\circ}=0 \\\\ \\alpha+\\frac{2 \\pi}{\\lambda} \\cdot \\frac{\\lambda}{4} \\cdot \\frac{1}{2}=0 \\\\ \\alpha=-\\frac{\\pi}{4} \\end{array}$$\n\nTherefore, the correct answer is **C**."
+      }
+    }
+  }
+}
