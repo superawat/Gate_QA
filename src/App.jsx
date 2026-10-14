@@ -39,8 +39,8 @@ import {
   BLOG_ROUTE,
   PROFILE_ROUTE,
 } from "./utils/routes";
-import BranchSelectionWall from "./components/Branch/BranchSelectionWall";
 import { readBranchPreferences, BRANCH_PREFERENCE_EVENT } from "./utils/branchPreference";
+const BranchSelectionWall = lazy(() => import("./components/Branch/BranchSelectionWall"));
 import {
   loadExploreRoute,
   loadTrackerRoute,
@@ -341,7 +341,9 @@ const PracticeRoutes = ({
     <>
       <ScrollToTop />
       <LegacyNavigationHandler loadQuestions={loadQuestions} resumeRoute={resumeRoute} />
-      <BranchSelectionWall />
+      <Suspense fallback={null}>
+        <BranchSelectionWall />
+      </Suspense>
 
       <Routes>
         <Route
