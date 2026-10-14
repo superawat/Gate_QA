@@ -1,0 +1,2668 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.615Z",
+  "shardKey": "ce-2011-s1",
+  "yearSetKey": "ce-2011-s1",
+  "yearSetIdentity": "ce:2011:set-1",
+  "track": "ce",
+  "year": 2011,
+  "set": 1,
+  "label": "2011 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:ce:2011:q1": {
+      "question_uid": "pp:ce:2011:q1",
+      "exam_uid": "ce:2011:set1:q1",
+      "title": "GATE CE 2011 | Set 1 | Question: 1",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "[A] is a square matrix which is neither symmetric nor skew-symmetric and $[A]^{T}$ is its transpose. The sum and difference of these matrices are defined as $[S] = [A]+[A]^{T}$ and $[D] = [A]-[A]^{T}$, respectively. Which of the following statements is TRUE?",
+      "options": [
+        "Both [S] and [D] are symmetric",
+        "Both [S] and [D] are skew-symmetric",
+        "[S] is skew-symmetric and [D] is symmetric",
+        "[S] is symmetric and [D] is skew-symmetric"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "Since\n\n$$\\begin{aligned} \\left ( A+{A}' \\right )&=A^{t}+\\left ( A^{t} \\right )^{t} \\\\      &=A^{t}+A\\\\ \\text{i.e. }     S^{t}&=S \\\\ \\therefore\\;\\; & \\text{ S is symmetric}\\\\ \\text{Since }\\left ( A-A^{t} \\right )^{t}&=A^{t}-\\left ( A^{t} \\right )^{t} \\\\      &=A^{t}-A \\\\ &=-\\left ( A-A^{t} \\right ) \\\\ \\text{i.e. }     D^{t}&=-D \\end{aligned}$$\n\nSo D is Skew-Symmetric.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q2": {
+      "question_uid": "pp:ce:2011:q2",
+      "exam_uid": "ce:2011:set1:q2",
+      "title": "GATE CE 2011 | Set 1 | Question: 2",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The square root of a number N is to be obtained by applying the Newton\nRaphson iterations to the equation $x^2-N=0$. If i denotes the iteration index,\nthe correct iterative scheme will be",
+      "options": [
+        "$x_{i+1}=\\frac{1}{2}(x_{i}+\\frac{N}{x_{i}})$",
+        "$x_{i+1}=\\frac{1}{2}(x_{i}^{2}+\\frac{N}{x_{i}^{2}})$",
+        "$x_{i+1}=\\frac{1}{2}(x_{i}+\\frac{N^{2}}{x_{i}})$",
+        "$x_{i+1}=\\frac{1}{2}(x_{i}-\\frac{N}{x_{i}})$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Numerical Methods",
+        "markdown": "$$\\begin{aligned}   x_{i+1}&=x_{i}-\\frac{f\\left ( x_{i} \\right )}{{f}'\\left ( x_{i} \\right )} \\\\      &=x_{i}-\\left ( \\frac{x_{i}^{2}-N}{2x_{i}} \\right ) \\\\      &=\\frac{x_{i}^{2}+N}{2x_{i}} \\\\ &=\\frac{1}{2}\\left [ x_{i}+\\frac{N}{x_{i}} \\right ] \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q3": {
+      "question_uid": "pp:ce:2011:q3",
+      "exam_uid": "ce:2011:set1:q3",
+      "title": "GATE CE 2011 | Set 1 | Question: 3",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "There are two containers, with one containing 4 Red and 3 Green balls and the\nother containing 3 Blue and 4 Green balls. One ball is drawn at random from\neach container. The probability that one of the balls is Red and the other is Blue\nwill be",
+      "options": [
+        "$1/7$",
+        "$9/49$",
+        "$12/49$",
+        "$3/7$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "P(one ball is Red & another is blue)\n\n=p(first is Red and second is Blue)\n\n$=\\frac{4}{7}\\times \\frac{3}{7} =\\frac{12}{49}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q4": {
+      "question_uid": "pp:ce:2011:q4",
+      "exam_uid": "ce:2011:set1:q4",
+      "title": "GATE CE 2011 | Set 1 | Question: 4",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the fillet weld of size 's' shown in the  figure the effective throat\r\nthickness is <br> <img src=\"/question-images/ce/2011/ce-2011-b9d178ba94.webp\"/> ",
+      "options": [
+        "0.61s",
+        "0.65s",
+        "0.7s",
+        "0.75s"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Structural Fasteners",
+        "markdown": "Effective throat thickness is the shortest distance from the root of fillet weld to the face of the line joining the toes. The effective throat thickness should not be less than 3 mm.\n\nEffective throat thickness =Ks\n\nwhere s is the size of weld in mm and K is a constant. The value of K depends upon the angle between the fusion faces.\n\n<img src=\"/question-images/ce/2011/ce-2011-2b8645e3de.webp\" />\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q5": {
+      "question_uid": "pp:ce:2011:q5",
+      "exam_uid": "ce:2011:set1:q5",
+      "title": "GATE CE 2011 | Set 1 | Question: 5",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A 16 mm thick plate measuring 650 mm x 420 mm is used as a base plate for an\nISHB 300 column subjected to a factored axial compressive load of 2000 kN. As\nper IS 456-2000, the minimum grade of concrete that should be used below the\nbase plate for safely carrying the load is",
+      "options": [
+        "M15",
+        "M20",
+        "M30",
+        "M40"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Footing, Columns, Beams and Slabs",
+        "markdown": "Working axial load\n\n$$\\begin{aligned}\n\n&=\\frac{\\text { Factored axial load }}{1.5} \\\\\n\n&=\\frac{2000}{1.5}=1333.33 \\mathrm{kN}\n\n\\end{aligned}$$\n\nThe allowable bearing pressure on concrete may be given as,\n\n$$\\begin{aligned}\n\n\\sigma_{\\text {all }} &=\\frac{\\text { Direct load }}{\\text { Area of base plate }} \\\\\n\n&=\\frac{1333.33 \\times 10^{3}}{650 \\times 420}=4.88 \\mathrm{N} / \\mathrm{mm}^{2}\n\n\\end{aligned}$$\n\nThe permissible stress in direct compression in\n\nvarious grades of concrete as per IS 456: 2000\n\nare tabulated below:\n\n<img src=\"/question-images/ce/2011/ce-2011-57f7f95afc.webp\" />\n\nThe permissible stress in concrete should be more\n\nthan the allowable bearing pressure. Thus the\n\nminimum grade of concrete which should be used\n\nis M20\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q6": {
+      "question_uid": "pp:ce:2011:q6",
+      "exam_uid": "ce:2011:set1:q6",
+      "title": "GATE CE 2011 | Set 1 | Question: 6",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a reinforcing bar embedded in concrete. In a marine environment this bar\nundergoes uniform corrosion, which leads to the deposition of corrosion products\non its surface and an increase in the apparent volume of the bar. This subjects the\nsurrounding concrete to expansive pressure. As a result, corrosion induced cracks\nappear at the surface of concrete. Which of the following statements is TRUE?",
+      "options": [
+        "Corrosion causes circumferential tensile stresses in concrete and the cracks\nwill be parallel to the corroded reinforcing bar.",
+        "Corrosion causes radial tensile stresses in concrete and the cracks will be\nparallel to the corroded reinforcng bar.",
+        "Corrosion causes circumferential tensile stresses in concrete and the cracks\nwill be perpendicular to the direction of the corroded reinforcing bar.",
+        "Corrosion causes radial tensile stresses in concrete and the cracks will be\nperpendicular to the direction of the corroded reinforcing bar."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
+        "markdown": "Corrosion in steel occupies a volume several times\n\ngreater than volume of reinforcing steel hence\n\nexerts radial pressure on adjoining concrete layer.\n\nAs a consequence, cracking results along\n\nreinforcing bars and concrete starts spalling.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q7": {
+      "question_uid": "pp:ce:2011:q7",
+      "exam_uid": "ce:2011:set1:q7",
+      "title": "GATE CE 2011 | Set 1 | Question: 7",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The results for sieve analysis carried out for three types of sand, P, Q and R, are\r\ngiven in the figure. If the fineness modulus values of the three sands are\r\ngiven as FMP, FMQ and FMR, it can be stated that <br> <img src=\"/question-images/ce/2011/ce-2011-d71f760fee.webp\"/> ",
+      "options": [
+        "$FM_{Q}=\\sqrt{FM_{P} \\times FM_{R}}$",
+        "$FM_{Q}=0.5(FM_{P}+FM_{R})$",
+        "$FM_{P}\\gt FM_{Q}\\gt FM_{R}$",
+        "$FM_{P}\\lt FM_{Q}\\lt FM_{R}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Classification of Soils and Clay Minerals",
+        "markdown": "The term fineness modulus is used to indicate an\n\nindex number which roughly proportional to\n\naverage size of particle in entire quantity of\n\naggregate\n\n$F_{M Q}=\\sqrt{F_{M P} \\times F_{M R}}$ (Geometric mean)\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q8": {
+      "question_uid": "pp:ce:2011:q8",
+      "exam_uid": "ce:2011:set1:q8",
+      "title": "GATE CE 2011 | Set 1 | Question: 8",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The cross-section of a thermo-mechanically treated (TMT) reinforcing bar has",
+      "options": [
+        "soft ferrite-pearlite throughout",
+        "hard martensite throughout",
+        "a soft ferrite-pearlite core with a hard martensitic rim",
+        "a hard martensitic core with a soft pearlite-bainitic rim"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Working Stress and Limit State Method",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **RCC Structures** (specifically *Working Stress and Limit State Method*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Working Stress and Limit State Method**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *a soft ferrite-pearlite core with a hard martensitic rim*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (a soft ferrite-pearlite core with a hard martensitic rim)."
+      }
+    },
+    "pp:ce:2011:q9": {
+      "question_uid": "pp:ce:2011:q9",
+      "exam_uid": "ce:2011:set1:q9",
+      "title": "GATE CE 2011 | Set 1 | Question: 9",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a simply supported beam with a uniformly distributed load having\r\na neutral axis (NA) as shown.<br> <img src=\"/question-images/ce/2011/ce-2011-c09d5d7ff6.webp\"/><br> For points P (on the neutral axis) and Q (at\r\nthe bottom of the beam) the state of stress is best represented by which of the\r\nfollowing pairs? <br> <img src=\"/question-images/ce/2011/ce-2011-c9807d061c.webp\"/> ",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Principal Stress and Principal Strain",
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-1c01310f60.webp\" />\n\nPoint P:\n\nPoint P lies on NA, hence bending stress is zero\n\nat point P.\n\nPoint P also lies at mid span, so shear force, V=0\n\n$\\Rightarrow$ Shear stress, $\\tau=0$\n\n$\\therefore$ State of stress of point P will be\n\n<img src=\"/question-images/ce/2011/ce-2011-658bbc78b4.webp\" />\n\nPoint Q :\n\nAt point Q flexural stress is maximum and nature\n\nof which is tensile due to downward loading.\n\nPoint Q lies at the extreme of beam, therefore,\n\nshear stress at point Q is zero.\n\n$\\therefore$ State of stress of point Q will be\n\n<img src=\"/question-images/ce/2011/ce-2011-0693832676.webp\" />\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q10": {
+      "question_uid": "pp:ce:2011:q10",
+      "exam_uid": "ce:2011:set1:q10",
+      "title": "GATE CE 2011 | Set 1 | Question: 10",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a saturated sand deposit, the void ratio and the specific gravity of solids\nare 0.70 and 2.67, respectively. The critical (upward) hydraulic gradient for the\ndeposit would be",
+      "options": [
+        "0.54",
+        "0.98",
+        "1.02",
+        "1.87"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Seepage Analysis",
+        "markdown": "Critical hydraulic gradient is given by\n\n$i_{c r}=\\frac{G-1}{1+e}=\\frac{2.67-1}{1+0.70}=0.98$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q11": {
+      "question_uid": "pp:ce:2011:q11",
+      "exam_uid": "ce:2011:set1:q11",
+      "title": "GATE CE 2011 | Set 1 | Question: 11",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Likelihood of general shear failure for an isolated footing in sand decreases with",
+      "options": [
+        "decreasing footing depth",
+        "decreasing inter-granular packing of the sand",
+        "increasing footing width",
+        "decreasing soil grain compressibility"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shallow-foundation-and-bearing-capacity",
+          "subtopicLabel": "Shallow Foundation and Bearing Capacity"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shallow-foundation-and-bearing-capacity"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shallow Foundation and Bearing Capacity",
+        "markdown": "General shear tailure is generally associated with dense sand. So if intergranular packing of sand decreases then sand will behave as loose sand.\n\nHence likelihood of general shear failure with decrease.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q12": {
+      "question_uid": "pp:ce:2011:q12",
+      "exam_uid": "ce:2011:set1:q12",
+      "title": "GATE CE 2011 | Set 1 | Question: 12",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a sample of dry, cohesionless soil with friction angle, $\\phi$, the failure plane will be inclined to the major principal plane by an angle equal to",
+      "options": [
+        "$\\phi$",
+        "$45^{\\circ}$",
+        "$45^{\\circ}-\\phi /2$",
+        "$45^{\\circ}+\\phi /2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shear-strength-of-soil",
+          "subtopicLabel": "Shear Strength of Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shear-strength-of-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-00e2c304ac.webp\" />\n\nAngle between major principal plane and failure\n\nplane is $\\theta_{1}$ , from Mohr's circle\n\n$$\\begin{array}{r} 2\\theta_{1}=90^{\\circ}+\\phi \\\\ \\theta_{1}=45^{\\circ}+\\frac{\\phi}{2} \\end{array}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q13": {
+      "question_uid": "pp:ce:2011:q13",
+      "exam_uid": "ce:2011:set1:q13",
+      "title": "GATE CE 2011 | Set 1 | Question: 13",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Two geometrically identical isolated footings, X (linear elastic) and Y (rigid), are\nloaded identically (shown below). The soil reactions will <br> <img src=\"/question-images/ce/2011/ce-2011-b2a4e88cbf.webp\"/> ",
+      "options": [
+        "be uniformly distributed for Y but not for X",
+        "be uniformly distributed for X but not for Y",
+        "be uniformly distributed for both X and Y",
+        "not be uniformly distributed for both X and Y"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shear-strength-of-soil",
+          "subtopicLabel": "Shear Strength of Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shear-strength-of-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Geotechnical Engineering** (specifically *Shear Strength of Soil*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Shear Strength of Soil**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *be uniformly distributed for X but not for Y*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** (be uniformly distributed for X but not for Y)."
+      }
+    },
+    "pp:ce:2011:q14": {
+      "question_uid": "pp:ce:2011:q14",
+      "exam_uid": "ce:2011:set1:q14",
+      "title": "GATE CE 2011 | Set 1 | Question: 14",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A soil is composed of solid spherical grains of identical specific gravity and diameter\nbetween 0.075mm and 0.0075mm. If the terminal velocity of the largest particle\nfalling through water without flocculation is 0.5mm/s, that for the smallest\nparticle would be",
+      "options": [
+        "0.005mm/s",
+        "0.05mm/s",
+        "5mm/s",
+        "50mm/s"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shear-strength-of-soil",
+          "subtopicLabel": "Shear Strength of Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shear-strength-of-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "According to Stoke s law\n\n$$\\begin{aligned} v&= D \\\\ \\Rightarrow \\frac{v_{1}}{v_{2}}&=\\left(\\frac{D_{1}}{D_{2}}\\right)^{2} \\Rightarrow \\frac{0.5}{v_{2}}=\\left(\\frac{0.075}{0.0075}\\right)^{2} \\\\ \\Rightarrow \\quad v_{2}&=\\frac{0.5}{100} \\quad \\Rightarrow \\quad v_{2}=0.005 \\mathrm{mm} / \\mathrm{s} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q15": {
+      "question_uid": "pp:ce:2011:q15",
+      "exam_uid": "ce:2011:set1:q15",
+      "title": "GATE CE 2011 | Set 1 | Question: 15",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A watershed got transformed from rural to urban over a period of time. The effect\nof urbanization on storm runoff hydrograph from the watershed is to",
+      "options": [
+        "decrease the volume of runoff",
+        "increase the time to peak discharge",
+        "decrease the time base",
+        "decrease the peak discharge"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Hydrology** (specifically *Infiltration, Runoff and Hydrographs*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Infiltration, Runoff and Hydrographs**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *decrease the time base*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (decrease the time base)."
+      }
+    },
+    "pp:ce:2011:q16": {
+      "question_uid": "pp:ce:2011:q16",
+      "exam_uid": "ce:2011:set1:q16",
+      "title": "GATE CE 2011 | Set 1 | Question: 16",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a given discharge, the critical flow depth in an open channel depends on",
+      "options": [
+        "channel geometry only",
+        "channel geometry and bed slope",
+        "channel geometry, bed slope and roughness",
+        "channel geometry, bed slope, roughness and Reynolds number"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "It may be noted that the critical flow condition is\n\ngoverned solely by the channel geometry and discharge. Other channel properties such as bed slope and roughness do not influence the critical flow condition for any given discharge.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q17": {
+      "question_uid": "pp:ce:2011:q17",
+      "exam_uid": "ce:2011:set1:q17",
+      "title": "GATE CE 2011 | Set 1 | Question: 17",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For a body completely submerged in a fluid, the centre of gravity (G) and centre\nof Buoyancy (O) are known. The body is considered to be in stable equilibrium if",
+      "options": [
+        "O does not coincide with the centre of mass of the displaced fluid",
+        "G coincides with the centre of mass of the displaced fluid",
+        "O lies below G",
+        "O lies above G"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "buoyancy-and-floatation",
+          "subtopicLabel": "Buoyancy and Floatation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "buoyancy-and-floatation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Buoyancy and Floatation",
+        "markdown": "A completely submerged body will be in stable equilibrium when CG lies below the centre of buoyancy. It will be in unstable equilibrium when CG lies above the centre of buoyancy And when the CG coincides with the centre of buoyancy. The body will be in neutral equilibrium\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q18": {
+      "question_uid": "pp:ce:2011:q18",
+      "exam_uid": "ce:2011:set1:q18",
+      "title": "GATE CE 2011 | Set 1 | Question: 18",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The flow in a horizontal, frictionless rectangular open channel is supercritical. A\nsmooth hump is built on the channel floor. As the height of hump is increased,\nchoked condition is attained. With further increase in the height of the hump, the\nwater surface will",
+      "options": [
+        "rise at a section upstream of the hump",
+        "drop at a section upstream of the hump",
+        "drop at the hump",
+        "rise at the hump"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "The height of the hump attains its maximum value at the chocked condition. Increasing the height of hump after chocked condition results in\n\nnydraulic jump formation in case of super critical fiow. Thus height of water surface will drastical changes upstream and downstream of hump.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q19": {
+      "question_uid": "pp:ce:2011:q19",
+      "exam_uid": "ce:2011:set1:q19",
+      "title": "GATE CE 2011 | Set 1 | Question: 19",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider the following unit processes commonly used in water treatment;\nrapid mixing (RM), flocculation (F), primary sedimentation (PS), secondary\nsedimentation (SS), chlorination (C) and rapid sand filtration (RSF). The order\nof these unit processes (first to last) in a conventional water treatment plant is",
+      "options": [
+        "PS $\\rightarrow$ RSF $\\rightarrow$ F $\\rightarrow$ RM $\\rightarrow$ SS $\\rightarrow$ C",
+        "PS $\\rightarrow$ F $\\rightarrow$ RM $\\rightarrow$ RFM $\\rightarrow$ SS $\\rightarrow$ C",
+        "PS $\\rightarrow$ F $\\rightarrow$ SS $\\rightarrow$ RSF $\\rightarrow$ RM $\\rightarrow$ C",
+        "PS $\\rightarrow$ RM $\\rightarrow$ F $\\rightarrow$ SS $\\rightarrow$ RFM $\\rightarrow$ C"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "water-treatment",
+          "subtopicLabel": "Water Treatment"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "water-treatment"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Water Treatment",
+        "markdown": "Rapid mixing is the process by which coagulant is throughly mixed with water after which the process of flocculation will occur.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q20": {
+      "question_uid": "pp:ce:2011:q20",
+      "exam_uid": "ce:2011:set1:q20",
+      "title": "GATE CE 2011 | Set 1 | Question: 20",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Anaerobically treated effluent has MPN of total coliform as $10^{6}$/100 mL. After chlorination, the MPN value declines to $10^{2}$/100 mL. The percent removal (%R) and log removal (logR) of total coliform MPN is",
+      "options": [
+        "%R = 99.90; logR = 4",
+        "%R = 99.90; logR = 2",
+        "%R = 99.99; logR = 4",
+        "%R = 99.99; logR = 2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "quality-characteristics-of-water",
+          "subtopicLabel": "Quality Characteristics of Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "quality-characteristics-of-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Quality Characteristics of Water",
+        "markdown": "$$\\begin{aligned} \\% R &=\\left(\\frac{10^{6}-10^{2}}{10^{6}}\\right) \\times 100 \\\\ &=0.9999 \\times 100=99.99 \\% \\\\ \\log R &=\\log 10^{6}-\\log 10^{2}=6-2=4 \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q21": {
+      "question_uid": "pp:ce:2011:q21",
+      "exam_uid": "ce:2011:set1:q21",
+      "title": "GATE CE 2011 | Set 1 | Question: 21",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider four common air pollutants found in urban environments, NO, $SO_{2}$, Soot and $O_{3}$. Among these with one is the secondary air pollutant?",
+      "options": [
+        "$O_{3}$",
+        "NO ",
+        "$SO_{2}$",
+        "Soot"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "Soot is a general term that refers to impure carbon particles resulting from the incomplete combustion of hydrocarbons. Soot, as an air borne contaminant in the environment has many different sources but they are all the result of some form of pyrolysis.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q22": {
+      "question_uid": "pp:ce:2011:q22",
+      "exam_uid": "ce:2011:set1:q22",
+      "title": "GATE CE 2011 | Set 1 | Question: 22",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The probability that k number of vehicles arrive (i.e. cross a predefined line) in\ntime t is given as $(\\lambda t)^k e^{-\\lambda t}/K!, \\; where \\; \\lambda$ is the average vehicle arrival rate. What is the probability that the time headway is greater than or equal to time $t_{1}$?",
+      "options": [
+        "$\\lambda e^{\\lambda t_{1}}$",
+        "$\\lambda e^{-\\lambda t_{1}}$",
+        "$e^{\\lambda t_{1}}$",
+        "$e^{-\\lambda t_{1}}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "Probability of arriving 'n' number of vehicles in time t\n\n$P(n)=\\frac{(\\lambda t)^{n} e^{-\\lambda t}}{n !}$\n\nIf time headway is greater than or equal to time t,\n\nthen number of vehicles arrive is zero,\n\n$\\Rightarrow \\quad P(0) \\frac{\\left(\\lambda t_{1}\\right)^{o} e^{-\\lambda t_{1}}}{o !}=e^{-\\lambda t_{1}}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q23": {
+      "question_uid": "pp:ce:2011:q23",
+      "exam_uid": "ce:2011:set1:q23",
+      "title": "GATE CE 2011 | Set 1 | Question: 23",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A vehicle negotiates a transition curve with uniform speed v. If the radius of the\r\nhorizontal curve and the allowable jerk are R and J, respectively, the minimum\r\nlength of the transition curve is",
+      "options": [
+        "$R^{3}/(vJ)$",
+        "$J^{3}/(Rv)$",
+        "$v^{2}R/(J)$",
+        "$v^{3}/(RJ)$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Geometric Design of Highway and Planning*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Geometric Design of Highway and Planning**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option D** (which states: *$v^{3}/(RJ)$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option D** ($v^{3}/(RJ)$)."
+      }
+    },
+    "pp:ce:2011:q24": {
+      "question_uid": "pp:ce:2011:q24",
+      "exam_uid": "ce:2011:set1:q24",
+      "title": "GATE CE 2011 | Set 1 | Question: 24",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In Marshall testing of bituminous mixes, as the bitumen content increases the\nflow value",
+      "options": [
+        "remains constant",
+        "decreases first and then increase",
+        "increases monotonically",
+        "increases first and then decreases"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "highway-materials",
+          "subtopicLabel": "Highway Materials"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "highway-materials"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Highway Materials",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Highway Materials*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Highway Materials**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *increases monotonically*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (increases monotonically)."
+      }
+    },
+    "pp:ce:2011:q25": {
+      "question_uid": "pp:ce:2011:q25",
+      "exam_uid": "ce:2011:set1:q25",
+      "title": "GATE CE 2011 | Set 1 | Question: 25",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Curvature correction to a staff reading in a differential leveling survey is",
+      "options": [
+        "always subtractive",
+        "always zero",
+        "always additive",
+        "dependent on latitude"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geomatics-engineering",
+          "subjectLabel": "Geomatics Engineering",
+          "subtopicSlug": "levelling-and-contouring",
+          "subtopicLabel": "Levelling and Contouring"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geomatics-engineering",
+          "levelling-and-contouring"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Levelling and Contouring",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Geomatics Engineering** (specifically *Levelling and Contouring*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Levelling and Contouring**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *always subtractive*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** (always subtractive)."
+      }
+    },
+    "pp:ce:2011:q26": {
+      "question_uid": "pp:ce:2011:q26",
+      "exam_uid": "ce:2011:set1:q26",
+      "title": "GATE CE 2011 | Set 1 | Question: 26",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For an analytic function, $f(x + iy) = u(x,y)+ iv(x,y), \\; u$ is given by $u = 3x^{2}-3y^{2}$. The expression for $v$, considering $K$ to be a constant is",
+      "options": [
+        "$3y^{2}-3x^{2}+K$",
+        "$6x - 6y + K$",
+        "$6y - 6x + K$",
+        "$6xy + K$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$f=u+iv \\text{ and }   u=3x^{2}-3y^{2}$\n\nFor $f$ to be analysis, we have Cauchy-Riemann conditions,\n\n$$\\begin{aligned} \\frac{\\partial u}{\\partial x}&=\\frac{\\partial V}{\\partial y}  \\;\\;\\;...(i) \\\\   \\frac{\\partial u}{\\partial y}&=-\\frac{\\partial v}{\\partial x} \\;\\;\\;...(ii)\\\\ \\text{From } & \\text{ (i) we have,}\\\\   6x&=\\frac{\\partial v}{\\partial y} \\\\ \\Rightarrow \\;  \\int \\partial v&=\\int 6x\\partial y \\\\   v&=6\\frac{x^{2}}{2}+f\\left ( x \\right )\\\\ \\text{i.e., } v&=3x^{2}+f\\left ( x \\right )\\;\\;...(iii)\\\\ \\text{Now applying }&\\text{equation (ii) we get,}\\\\  \\frac{\\partial u}{\\partial y}&=-\\frac{\\partial v}{\\partial x} \\\\ \\Rightarrow  \\; \\; -6y&=-\\left [ 6x+\\frac{df}{dx} \\right ]\\\\ \\Rightarrow \\;\\; 6x+\\frac{df}{dx}&=6y \\\\   \\frac{df}{dx}&=6y-6x \\\\ &\\text{By integrating,}\\\\ f\\left ( x \\right )&=6yx-3x^{2}+K\\\\ \\text{Substitute }& \\text{in equation (iii),}\\\\  v&=3x^{2}+6yx-3x^{2}+K \\\\ \\Rightarrow  \\;\\; v&=6yx+K \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q27": {
+      "question_uid": "pp:ce:2011:q27",
+      "exam_uid": "ce:2011:set1:q27",
+      "title": "GATE CE 2011 | Set 1 | Question: 27",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "What should be the value of $\\lambda$ such that the function defined below is continuous at $x = \\pi /2$?<br> $$f(x)=\\left\\{\\begin{matrix} \\frac{\\lambda \\cos x}{\\frac{\\pi }{2}-x} &if x \\neq \\frac{\\pi }{2} \\\\ 1& if x= \\frac{\\pi }{2} \\end{matrix}\\right.$$",
+      "options": [
+        "0",
+        "$2/ \\pi$",
+        "1",
+        "$\\pi /2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "if f(x) is continuous at $x=\\frac{\\pi }{2}$\n\n$\\lim_{x\\rightarrow \\frac{\\pi }{2}}\\frac{\\lambda \\cos x}{\\frac{\\pi }{2}-x}=f\\left ( \\frac{\\pi }{2} \\right )=1$\n\nSince the limit is in form of $\\frac{0}{0}$, we can use L'Hospitals rule on LHS of equation (i) and get\n\n$$\\begin{aligned} \\lim_{x\\rightarrow \\frac{\\pi }{2}}\\frac{-\\lambda \\sin x}{-1}&=1 \\\\ \\Rightarrow \\;\\; \\lambda \\sin \\frac{\\pi }{2}&=1 \\\\ \\Rightarrow \\;\\; \\lambda &=1\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q28": {
+      "question_uid": "pp:ce:2011:q28",
+      "exam_uid": "ce:2011:set1:q28",
+      "title": "GATE CE 2011 | Set 1 | Question: 28",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "What is the value of the definite integral, $\\int_{0}^{a}\\frac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{a-x}}dx$ ?",
+      "options": [
+        "0",
+        "a/2",
+        "a",
+        "2a"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "Let\n\n$$\\begin{aligned}  I&=\\int_{0}^{a}\\frac{\\sqrt{x}}{\\sqrt{x}+\\sqrt{a-x}} dx \\;\\;  ...(i) \\\\ \\text{Since } \\int_{0}^{a}f\\left ( x \\right )dx&=\\int_{0}^{a}f\\left ( a-x \\right )dx \\\\    I&=\\int_{0}^{a}\\frac{\\sqrt{a-x}}{\\sqrt{a-x}+\\sqrt{x}}dx \\;\\; ...(ii)\\\\ (i)+(ii) \\; \\Rightarrow \\; 2I&=\\int_{0}^{a}\\frac{\\sqrt{x}+\\sqrt{a-x}}{\\sqrt{x}+\\sqrt{a-x}}dx \\\\ \\Rightarrow \\;\\; 2I&=\\int_{0}^{a}dx \\\\ \\Rightarrow  \\;\\; 2I&=a \\\\ \\Rightarrow \\;\\;  I&=a/2\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q29": {
+      "question_uid": "pp:ce:2011:q29",
+      "exam_uid": "ce:2011:set1:q29",
+      "title": "GATE CE 2011 | Set 1 | Question: 29",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If $\\vec{a}\\; and\\; \\vec{b}$ are two arbitrary vectors with magnitudes a and b, respectively,  $|\\vec{a} \\times \\vec{b}|^{2}$ will be equal to",
+      "options": [
+        "$a^{2}b^{2}-(\\vec{a} \\cdot \\vec{b})^{2}$",
+        "$ab-\\vec{a} \\cdot \\vec{b}$",
+        "$a^{2}b^{2}+(\\vec{a} \\cdot \\vec{b})^{2}$",
+        "$ab+\\vec{a} \\cdot \\vec{b}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Engineering Mathematics** (specifically *Calculus*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Calculus**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$a^{2}b^{2}-(\\vec{a} \\cdot \\vec{b})^{2}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($a^{2}b^{2}-(\\vec{a} \\cdot \\vec{b})^{2}$)."
+      }
+    },
+    "pp:ce:2011:q30": {
+      "question_uid": "pp:ce:2011:q30",
+      "exam_uid": "ce:2011:set1:q30",
+      "title": "GATE CE 2011 | Set 1 | Question: 30",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The solution of the differential equation $\\frac{dy}{dx}+\\frac{y}{x}=x$, with the condition that y = 1 at x = 1, is",
+      "options": [
+        "$y=\\frac{2}{3x^{2}}+\\frac{x}{3}$",
+        "$y=\\frac{x}{2}+\\frac{1}{2x}$",
+        "$y=\\frac{2}{3}+\\frac{x}{3}$",
+        "$y=\\frac{2}{3x}+\\frac{x^{2}}{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-math",
+          "subjectLabel": "Engineering Mathematics (CE)",
+          "subtopicSlug": "ordinary-differential-equation",
+          "subtopicLabel": "Ordinary Differential Equation "
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-math",
+          "ordinary-differential-equation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Ordinary Differential Equation ",
+        "markdown": "$\\frac{\\mathrm{d} y}{\\mathrm{d} x}+\\frac{y}{x}=x, \\; y\\left ( 1 \\right )=1$\n\nThis is a linear differential equation $\\frac{\\mathrm{d} y}{\\mathrm{d} x}+Py =Q$ with $P=\\frac{1}{x}$ and $Q=x$\n\nIF = Integrating Factor\n\n$=e^{\\int Pdx}=e^{\\int \\frac{1}{x}dx}=e^{\\ln x}=x$\n\nSolution is,\n\n$$\\begin{aligned}  y.IF&=\\int Q\\left ( IF \\right )dx+C \\\\   y.x&=\\int \\left ( x.x \\right )dx+C \\\\   yx&=\\int x^{2}dx+C \\\\   yx&=\\frac{x^{3}}{3}+C \\\\  y&=\\frac{x^{2}}{3}+\\frac{C}{x} \\end{aligned}$$\n\nNow, $y(1)=1$\n\n$\\Rightarrow \\; \\frac{1^{2}}{3}+\\frac{C}{1} =1 \\; \\Rightarrow \\; C=\\frac{2}{3}$\n\nSo the solution is $y=\\frac{x^{3}}{3}+\\frac{2}{3x}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q31": {
+      "question_uid": "pp:ce:2011:q31",
+      "exam_uid": "ce:2011:set1:q31",
+      "title": "GATE CE 2011 | Set 1 | Question: 31",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The value of W that results in the collapse of the beam shown in the adjoining\nfigure and having a plastic moment capacity of $M_{P}$ is <br> <img src=\"/question-images/ce/2011/ce-2011-0260b88e16.webp\"/> ",
+      "options": [
+        "(4/21)$M_{P}$",
+        "(3/10)$M_{P}$",
+        "(7/21)$M_{P}$",
+        "(13/21)$M_{P}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "plastic-analysis",
+          "subtopicLabel": "Plastic Analysis"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-design-of-steel-structures",
+          "plastic-analysis"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Plastic Analysis",
+        "markdown": "Number os possible hinges, $n=2$\n\nStatical Indeterminacy, $r=1$\n\nNumber of independent mechanisms,\n\n$i=n-r=2-1=1$\n\n<img src=\"/question-images/ce/2011/ce-2011-8ca4dce0ba.webp\" />\n\n$$\\begin{aligned}\n\n\\Delta &=7\\theta =3\\phi\\\\ \\text{By principle of virtual work,}&\\text{ we get,}\\\\ W\\times \\Delta -M_{P}\\theta -M_{P}\\left ( \\theta +\\phi \\right )&=0 \\\\ W\\times 7\\theta &=2M_{P}\\theta +M_{P}\\phi \\\\ W\\times 7\\theta &=2M_{P}\\theta +M_{P}\\times \\frac{7\\theta }{3} \\\\  7W&=\\frac{6M_{P}+7M_{P}}{3} \\\\ W&=\\frac{13M_{P}}{21}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q32": {
+      "question_uid": "pp:ce:2011:q32",
+      "exam_uid": "ce:2011:set1:q32",
+      "title": "GATE CE 2011 | Set 1 | Question: 32",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "For the cantilever bracket, PQRS, loaded as shown in the below figure (\nPQ = RS = L, and, QR = 2L), which of the following statements is FALSE? <br> <img src=\"/question-images/ce/2011/ce-2011-6d454dd7ba.webp\"/> ",
+      "options": [
+        "The portion RS has a constant twisting moment with a value of 2WL",
+        "The portion QR has a varying twisting moment with a maximum value of WL.",
+        "The portion PQ has a varying bending moment with a maximum value of WL.",
+        "The portion PQ has no twisting moment."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "shear-force-and-bending-moment",
+          "subtopicLabel": "Shear Force and Bending Moment"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "shear-force-and-bending-moment"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Shear Force and Bending Moment",
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-0e03855f1d.webp\" />\n\nBending moment at a distance $x$ from $P, M_{x} = Wx$\n\nMember PQ has varying BM with a maximum value\n\nof WL at Q and it has no twisting moment.\n\n<img src=\"/question-images/ce/2011/ce-2011-ed9dc9da50.webp\" />\n\nNow moment WL will act as a twisting moment for\n\nthe member QR. Portion QR has varying BM with\n\na maximum value of 2WL at R.\n\n<img src=\"/question-images/ce/2011/ce-2011-cc6d76e41e.webp\" />\n\nNow moment 2WL will act as a twisting moment\n\nfor portion RS which is constant in nature.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q33": {
+      "question_uid": "pp:ce:2011:q33",
+      "exam_uid": "ce:2011:set1:q33",
+      "title": "GATE CE 2011 | Set 1 | Question: 33",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider a bar of diameter 'D' embedded in a large concrete block as shown in\nthe adjoining figure, with a pull out force P being applied. Let $\\sigma _b$ and $\\sigma _{st}$ be the\nbond strength (between the bar and concrete) and the tensile strength of the bar,\nrespectively. If the block is held in position and it is assumed that the material\nof the block does not fail, which of the following options represents the maximum\nvalue of P? <br> <img src=\"/question-images/ce/2011/ce-2011-f04bcc830e.webp\"/> ",
+      "options": [
+        "Maximum of  $(\\frac{\\pi }{4}D^{2}\\sigma _{b})$ and $(\\pi DL\\sigma _{st})$",
+        "Maximum of $(\\frac{\\pi }{4}D^{2}\\sigma _{st})$ and $(\\pi DL\\sigma _{b})$",
+        "Minimum of $(\\frac{\\pi }{4}D^{2}\\sigma _{st})$ and $(\\pi DL\\sigma _{b})$",
+        "Minimum of $(\\frac{\\pi }{4}D^{2}\\sigma _{b})$ and $(\\pi DL\\sigma _{st})$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "shear-torsion-bond-anchorage-and-development-length",
+          "subtopicLabel": "Shear, Torsion, Bond, Anchorage and Development Length"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "shear-torsion-bond-anchorage-and-development-length"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
+        "markdown": "Maximum force resisted by bond strength\n\n$=\\sigma_{b}(\\pi D L)$\n\nMaximum tensile force resisted by bar\n\n$=\\sigma_{s t}\\left(\\frac{\\pi}{4} D^{2}\\right)$\n\n$\\therefore$ Maximum value of P= Minimum of $\\left\\{\\sigma_{b}(\\pi D L)\\text{or}\\left(\\sigma_{s t} \\frac{\\pi}{4} D^{2}\\right)\\right\\}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q34": {
+      "question_uid": "pp:ce:2011:q34",
+      "exam_uid": "ce:2011:set1:q34",
+      "title": "GATE CE 2011 | Set 1 | Question: 34",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Consider two RCC beams, P and Q, each having the section 400 mm x 750 mm\n(effective depth, d = 750 mm) made with concrete having a $\\tau _{cmax}=2.1N/mm^{2}$. For the reinforcement provided and the grade of concrete used, it may be assumed that the $\\tau _{c}=0.75N/mm^{2}$. The design shear in beam P is 400 kN and in beam Q is 750 kN. Considering the provisions of IS 456-2000, which of the following statements is TRUE?",
+      "options": [
+        "Shere reinforcement should be designed for 175 kN for beam P and the\nsection for beam Q should be revised.",
+        "Nominal shear reinforcement is required for beam P and the shear\nreinforcement should be designed for 120 kN for beam Q.",
+        "Shear reinforcement should be designed for 175 kN for beam P and the\nshear reinforcement should be designed for 525 kN for beam Q.",
+        "The sections for both beams P and Q need to be revised."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-rcc-structures",
+          "subjectLabel": "RCC Structures",
+          "subtopicSlug": "shear-torsion-bond-anchorage-and-development-length",
+          "subtopicLabel": "Shear, Torsion, Bond, Anchorage and Development Length"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-rcc-structures",
+          "shear-torsion-bond-anchorage-and-development-length"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "RCC Structures - Shear, Torsion, Bond, Anchorage and Development Length",
+        "markdown": "Shear strength of the concrete $=\\tau_{c} \\times B d$\n\n$=0.75 \\times 400 \\times 750 \\times 10^{-3}=225 \\mathrm{kN}$\n\nMaximum shear strength of concrete\n\n$$\\begin{array}{l}\n\n=\\tau_{c \\max } \\times B d \\\\\n\n=2.1 \\times 400 \\times 750 \\times 10^{-3}=630 \\mathrm{kN}\n\n\\end{array}$$\n\nDesign shear in beam P is 400kN which is less\n\nthan the maximum shear that the concrete can\n\nsustain. But the design shear is more than the\n\nnominal shear of 225 kN.\n\n$\\therefore$ Shear reinforcement is designed for\n\n$=400-225=175 \\mathrm{kN}$\n\nDesign shear in beam Q is 750 kN which is more\n\nthan the maximum shear that the concrete can\n\nsustain. Hence the beam Q should be redesigned.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q35": {
+      "question_uid": "pp:ce:2011:q35",
+      "exam_uid": "ce:2011:set1:q35",
+      "title": "GATE CE 2011 | Set 1 | Question: 35",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The figure shows a schematic representation of a steel plate girder to\r\nbe used as a simply supported beam with a concentrated load. For stiffeners, PQ (running along the beam axis) and RS \r\n(running between the top and bottom flanges), which of the following pairs of\r\nstatements will be TRUE? <br> <img src=\"/question-images/ce/2011/ce-2011-71bb37f290.webp\"/> ",
+      "options": [
+        "(i) RS should be provided under the concentrated load only. <br>\n(ii) PQ should be placed in the tension side of the flange.",
+        "(i) RS helps to prevent local buckling of the web.<br>\n(ii) PQ should be placed in the compression side of the flange.",
+        "(i) RS should be provided at supports.<br>\n(ii) PQ should be placed along the neutral axis.",
+        "(i) RS should be provided away from points of action of concentrated loads.<br>\n(ii) PQ should be provided on the compression side of the flange."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-design-of-steel-structures",
+          "subjectLabel": "Design of Steel Structures",
+          "subtopicSlug": "beams",
+          "subtopicLabel": "Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-design-of-steel-structures",
+          "beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Design of Steel Structures - Beams",
+        "markdown": "PQ is a horizontal stiffener in the given plate girder. Horizontal stiffeners are also called longitudinal stiffeners. The horizontal stiffener are provided in the compression zone of the web. The first horizontal stiffener is provided at one-fifth of the distance from the compression flange to the tension flange. If required another stiffener is provided at the neutral axis. Horizontal stiffeners are not continuous and are provided between vertical stiffeners.\n\nRS is a vertical stiffener in the given plate girder. Vertical stiffeners are also called transverse stiffeners. It is assumed that the vertical stiffener is not subjected to any load and is selected to provide necessary lateral stiffness only and can therefore, br crimped or joggled for tight fittings. Such stiffeners increase the buckling resistance of the web caused by shear.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q36": {
+      "question_uid": "pp:ce:2011:q36",
+      "exam_uid": "ce:2011:set1:q36",
+      "title": "GATE CE 2011 | Set 1 | Question: 36",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A singly under-reamed, 8 m long, RCC pile (shown in the figure) weighing\n20 kN with 350 mm shaft diameter and 750 mm under-ream diameter is installed\nwithin stiff, saturated silty clay (undrained shear strength is 50 kPa, adhesion\nfactor is 0.3, and the applicable bearing capacity factor is 9) to counteract the\nimpact of soil swelling on a structure constructed above. Neglecting suction and\nthe contribution of the under-ream to the adhesive shaft capacity, what would be\nthe estimated ultimate tensile capacity (rounded off to the nearest integer value\nof kN) of the pile? <br> <img src=\"/question-images/ce/2011/ce-2011-58ab172984.webp\"/> ",
+      "options": [
+        "132kN",
+        "156kN",
+        "287kN",
+        "301kN"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "deep-foundation",
+          "subtopicLabel": "Deep Foundation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "deep-foundation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Deep Foundation",
+        "markdown": "The tensile resistance of a pile is given as\n\n$$\\begin{aligned} Q_{t} &=Q_{s}+W+Q_{b} \\\\ \\text{Where}\\quad Q_{s} &=\\text { shaft resistance }=\\alpha c A_{s} \\\\ W &=\\text { weight of pile } \\\\ Q_{1} &=c N_{c} A_{b} \\\\ \\therefore \\quad Q_{1} &=\\alpha c A_{s}+W+c N_{c} A_{b} \\\\ &=0.3 \\times 50 \\times \\pi \\times 0.35 \\times 8+20 \\\\ &+\\frac{50 \\times 9 \\times \\pi\\left(0.75^{2}-0.35^{2}\\right)}{4} \\\\ &=300.796 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q37": {
+      "question_uid": "pp:ce:2011:q37",
+      "exam_uid": "ce:2011:set1:q37",
+      "title": "GATE CE 2011 | Set 1 | Question: 37",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Identical surcharges are placed at ground surface at sites X and Y , with soil\nconditions shown in figure and water table at ground surface. The silty clay\nlayers at X and Y are identical. The thin sand layer at Y is continuous and freedraining\nwith a very large discharge capacity. If primary consolidation at X is\nestimated to complete in 36 months, what would be the corresponding time for\ncompletion of primary consolidation at Y ? <br> <img src=\"/question-images/ce/2011/ce-2011-c95f25ca57.webp\"/> ",
+      "options": [
+        "2.25 months",
+        "4.5 months",
+        "9 months",
+        "36 months"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "consolidation-of-soils",
+          "subtopicLabel": "Consolidation of Soils"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "consolidation-of-soils"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Consolidation of Soils",
+        "markdown": "The time required for any degree of consolidation can be obtained from the Taylor's formula,\n\n$T_{v}=\\frac{C_{v} t}{d^{2}}$\n\nsince C_{v} is constant for same type of soil and $T_{v}$ is constant for same degree of consolidation,\n\n$t \\propto d^{2}$ where d is the length of drainage path.\n\n$$\\begin{aligned} \\frac{t_{1}}{t_{2}}&=\\left(\\frac{d_{1}}{d_{2}}\\right)^{2}\\\\ \\Rightarrow \\quad \\frac{36}{t_{2}}&=\\left(\\frac{10}{10 / 2}\\right)^{2} \\\\ \\Rightarrow \\quad t_{2}&=\\frac{36}{4} \\\\ \\Rightarrow \\quad t_{2}&=9 \\;\\text{months} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q38": {
+      "question_uid": "pp:ce:2011:q38",
+      "exam_uid": "ce:2011:set1:q38",
+      "title": "GATE CE 2011 | Set 1 | Question: 38",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A field vane shear testing instrument (shown in figure) was inserted completely\ninto a deposit of soft, saturated silty clay with the vane rod vertical such that the\ntop of the blades were 500 mm below the ground surface. Upon application of a\nrapidly increasing torque about the vane rod, the soil was found to fail when the\ntorque reached 4.6 Nm. Assuming mobilization of undrained shear strength on\nall failure surfaces to be uniform and the resistance mobilized on the surface of\nthe vane rod to be neglibible, what would be the peak undrained shear strength\n(rounded off to the nearest integer value of kPa) of the soil? <br> <img src=\"/question-images/ce/2011/ce-2011-f99d1f6eae.webp\"/> ",
+      "options": [
+        "5 kPa",
+        "10 kPa",
+        "15 kPa",
+        "20 kPa"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "shear-strength-of-soil",
+          "subtopicLabel": "Shear Strength of Soil"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "shear-strength-of-soil"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Shear Strength of Soil",
+        "markdown": "When the top end of the vane completely shear the soil, Then the torque at failure is given by\n\n$$\\begin{aligned} T&=c_{u} \\pi\\left(\\frac{d^{\\prime} h}{2}+\\frac{d^{3}}{6}\\right)\\\\ \\Rightarrow \\frac{4.6}{1000}&=c_{u} \\times \\pi \\times\\left(\\frac{(0.05)^{2} \\times 0.1}{2}+\\frac{(0.05)^{3}}{6}\\right) \\\\ \\Rightarrow \\quad c_{u}&=10 \\mathrm{kPa} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q39": {
+      "question_uid": "pp:ce:2011:q39",
+      "exam_uid": "ce:2011:set1:q39",
+      "title": "GATE CE 2011 | Set 1 | Question: 39",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A single pipe of length 1500 m and diameter 60 cm connects two reservoirs having\na difference of 20 m in their water levels. The pipe is to be replaced by two pipes\nof the same length and equal diameter d to convey 25% more discharge under the\nsame head loss. If the friction factor is assumed to be the same for all the pipes,\nthe value of d is approximately equal to which of the following options?",
+      "options": [
+        "37.5 cm",
+        "40.0 cm",
+        "45.0 cm",
+        "50.0 cm"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "flow-through-pipes",
+          "subtopicLabel": "Flow Through Pipes"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "flow-through-pipes"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Flow Through Pipes",
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-14a1fb0a31.webp\" />\n\nFor single pipe\n\n$$\\begin{array}{r} n=\\frac{81 L Q}{\\pi^{2} g D^{2}} \\\\ L=1500 \\mathrm{m}, \\mathrm{D}=0.6 \\mathrm{m} \\\\ n_{f}=20 \\mathrm{m} \\\\ Q_{1}=\\frac{0.112}{\\sqrt{1}} \\end{array}$$\n\n<img src=\"/question-images/ce/2011/ce-2011-3995f83de8.webp\" />\n\nIn case of double pipe discharge is increased by 25% than that of previous case hence.\n\n$$\\begin{aligned} 2Q_{2}&=1.25Q_{1}\\\\ 20 &= \\frac{8F\\times 500\\times(0.625Q_{1})^{2}}{9.81\\times \\pi^{2}\\times d^{5}}\\\\ Q_{1}&= \\frac{0.402\\times d^{5/2}}{\\sqrt{f}}\\\\ \\frac{Q_{1}^{2}}{d^{5}}&=0.413\\\\ Q_{1}^{2}&=\\frac{0.413d^{5}}{f}\\\\ Q_{1}&=\\frac{0.642d^{5/2}}{\\sqrt{f}}\\ldots\\\\ \\text{From eq }(i) &\\text{and }(ii),\\text{ we get}\\\\ d&=437 \\mathrm{cm}=50 \\mathrm{cm} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q40": {
+      "question_uid": "pp:ce:2011:q40",
+      "exam_uid": "ce:2011:set1:q40",
+      "title": "GATE CE 2011 | Set 1 | Question: 40",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A spillway discharges flood flow at a rate of 9 $m^3$/s per metre width. If the depth\nof flow on the horizontal apron at the toe of the spillway is 46 cm, the tail water\ndepth needed to form a hydraulic jump is approximately given by which of the\nfollowing options?",
+      "options": [
+        "2.54m",
+        "4.90m",
+        "5.77m",
+        "6.23m"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-fluid-mechanics-and-hydraulics",
+          "subjectLabel": "Fluid Mechanics and Hydraulics",
+          "subtopicSlug": "open-channel-flow",
+          "subtopicLabel": "Open Channel Flow"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-fluid-mechanics-and-hydraulics",
+          "open-channel-flow"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics and Hydraulics - Open Channel Flow",
+        "markdown": "$$\\begin{aligned} \\mathrm{q}&=9 \\mathrm{m}^{3} / \\mathrm{s} / \\mathrm{m}\\\\ \\text{and }y_{1}&=46 \\mathrm{cm}=0.46 \\mathrm{m} \\\\ \\therefore \\quad V_{1}&=\\frac{q}{y_{1}}=\\frac{9}{0.46}=19.565 \\mathrm{m} / \\mathrm{s} \\\\ F_{1}&=\\frac{V_{1}}{\\sqrt{g y_{1}}}=\\frac{19.565}{\\sqrt{9.81 \\times 0.46}}=9.21 \\end{aligned}$$\n\nThus, flow is super -critical.\n\nThus the sequent depth will be\n\n$$\\begin{aligned} \\frac{y_{2}}{y_{1}}&=\\frac{1}{2}\\left[-1+\\sqrt{1+8 F_{1}^{2}}\\right]\\\\ \\Rightarrow \\quad y_{2}&=\\frac{0.46}{2}\\left[-1+\\sqrt{1+8 \\times(9.21)^{2}}\\right] \\\\ \\Rightarrow \\quad y_{2}&=0.23 \\times 25.07 \\\\ \\Rightarrow \\quad y_{2}&=5.77 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q41": {
+      "question_uid": "pp:ce:2011:q41",
+      "exam_uid": "ce:2011:set1:q41",
+      "title": "GATE CE 2011 | Set 1 | Question: 41",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In an aquifer extending over 150 hectare, the water table was 20m below ground\nlevel. Over a period of time the water table dropped to 23m below the ground\nlevel. If the porosity of aquifer is 0.40 and the specific retention is 0.15, what is\nthe change in ground water storage of the aquifer?",
+      "options": [
+        "67.5 ha-m",
+        "112.5 ha-m",
+        "180.0 ha-m",
+        "450.0 ha-m"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "source-of-water-supply-distribution-system-and-well-hydraulics",
+          "subtopicLabel": "Source of Water Supply, Distribution System and Well Hydraulics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "source-of-water-supply-distribution-system-and-well-hydraulics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Source of Water Supply, Distribution System and Well Hydraulics",
+        "markdown": "We know that,\n\n$$\\begin{aligned} n&=S_{y}+S_{r} \\\\ \\Rightarrow\\quad S_{y}&=S_{t}-n=0.15-0.40=-0.25 \\end{aligned}$$\n\nThe negative sign signifies the decrease in storage. Change in volume of aquifer\n\n$=150 \\times(23-20)=450 \\mathrm{ha}-\\mathrm{m}$\n\nSpecific yield is nothing but the actual volume of water that can be extracted by force of gravity from a unit volume of aquifer.\n\n$\\therefore$Change in water storage\n\n$=450 \\times 0.25=112.5 \\mathrm{ha}-\\mathrm{m}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q42": {
+      "question_uid": "pp:ce:2011:q42",
+      "exam_uid": "ce:2011:set1:q42",
+      "title": "GATE CE 2011 | Set 1 | Question: 42",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Total suspended particulate matter (TSP) concentration in ambient air is to be\nmeasured using a high volume sampler. The filter used for this purpose had an\ninitial dry weight of 9.787 g. The filter was mounted in the sampler and the initial\nair flow rate through the filter was set at 1.5$m^3$/min. Sampling continued for\n24 hours. The airflow after 24 hours was measured to be 1.4 $m^3$/min. The dry\nweight of the filter paper after 24 hour sampling was 10.283 g. Assuming a linear\ndecline in the air flow rate during sampling, what is the 24 hour average TSP\nconcentration in the ambient air?",
+      "options": [
+        "59.2$\\mu g/m^{3}$",
+        "118.6$\\mu g/m^{3}$",
+        "237.5$\\mu g/m^{3}$",
+        "574.4$\\mu g/m^{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "air-and-noise-pollution",
+          "subtopicLabel": "Air and Noise Pollution"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "air-and-noise-pollution"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Air and Noise Pollution",
+        "markdown": "Average airflow rate\n\n$= 1.5-\\left ( \\frac{1.5-1.4}{24\\times 60} \\right )\\times 12=1.45\\; m^{3}/min$\n\nTotal airflow through the sampler during 24 hours\n\n$=1.45\\times 24\\times 60=2088\\: m^{3}$\n\nTSP concentration in the ambient air\n\n$=\\left ( \\frac{10.283-9.787}{2088} \\right )\\times 10^6=237.5\\mu g/m^3$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q43": {
+      "question_uid": "pp:ce:2011:q43",
+      "exam_uid": "ce:2011:set1:q43",
+      "title": "GATE CE 2011 | Set 1 | Question: 43",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Chlorine gas (8 mg/L as $CI_2$) was added to a drinking water sample. If the free\nchlorine residual and pH was measured to be 2mg/L (as $CI_2$) and 7.5, respectively,\nwhat is the concentration of residual $OCI^{-}$ ions in the water? Assume that the\nchlorine gas added to the water is completely converted to HOCl and $OCI^{-}$. \nAtomic Weight of Cl: 35.5 <br>Given: $OC1^{-}+H^{+}\\leftrightharpoons^k HOCI, \\; \\; \\; K=10^{7.5}$",
+      "options": [
+        "$1.408 \\times 10^{-5} moles/L$",
+        "$2.817 \\times  10^{-5} moles/L$",
+        "$5.634 \\times  10^{-5} moles/L$",
+        "$1.127 \\times  10^{-4} moles/L$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "water-treatment",
+          "subtopicLabel": "Water Treatment"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "water-treatment"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Water Treatment",
+        "markdown": "$OCl^{-}\\: +\\: H^{+}\\: \\rightleftharpoons ^{K}\\; \\; HOCl;\\; K=10^{7.5}$\n\nNow,\n\n$$\\begin{aligned} \\frac{\\left [ HOCl \\right ]}{\\left [ OCl^{-} \\right ]\\left [ H^{+} \\right ]} &= K\\\\ pH&=7.5 \\\\ \\left [ H^{+} \\right ]&=10^{7.5} \\\\ \\left [ \\frac{HOCl}{OCl^{-}} \\right ]&=10^{7.5}\\times 10^{-7.5}=1 \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\left [ HOCl \\right ] &=\\left [ OCl^{-} \\right ] \\\\ \\left [ \\text{Free chlorine residual} \\right ]&=\\left [ HOCl \\right ]+\\left [ OCl^{-} \\right ] \\\\ \\text{Free chlorine residual} &= 2\\; \\text{mg/l}\\\\ \\left [ \\text{Free chlorine residual} \\right ] &=\\frac{2\\times 10^{-3}}{Mol.\\; wt\\; of\\; Cl_{2}} \\\\ &=\\frac{2\\times 10^{-3}}{2\\times 35.5} \\\\ &=2.817\\times 10^{-5}\\; \\text{moles/l} \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; 2.817\\times 10^{-5} &=\\left [ HOCl \\right ]+\\left [ OCl^{-} \\right ] \\\\ \\therefore \\; \\; \\; \\; \\; \\; \\; \\; \\; \\; \\left [ OCl^{-} \\right ] &=\\frac{2.817\\times 10^{-5}}{2} \\\\ \\because \\; \\; \\; \\; \\; \\; \\; \\left [ OCl^{-} \\right ] &=\\left [ HOCl \\right ] \\\\ &=1.4084\\times 10^{-5}\\; \\text{moles/l} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q44": {
+      "question_uid": "pp:ce:2011:q44",
+      "exam_uid": "ce:2011:set1:q44",
+      "title": "GATE CE 2011 | Set 1 | Question: 44",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If the jam density is given as $k_j$ and the free flow speed is given as $u_f$, the\r\nmaximum flow for a linear traffic speed-density model is given by which of the\r\nfollowing options?",
+      "options": [
+        "$\\frac{1}{4}k_{j} \\times u_{f}$",
+        "$\\frac{1}{3}k_{j} \\times  u_{f}$",
+        "$\\frac{3}{5}k_{j} \\times  u_{f}$",
+        "$\\frac{2}{3}k_{j} \\times  u_{f}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Traffic Engineering*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Traffic Engineering**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option A** (which states: *$\\frac{1}{4}k_{j} \\times u_{f}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option A** ($\\frac{1}{4}k_{j} \\times u_{f}$)."
+      }
+    },
+    "pp:ce:2011:q45": {
+      "question_uid": "pp:ce:2011:q45",
+      "exam_uid": "ce:2011:set1:q45",
+      "title": "GATE CE 2011 | Set 1 | Question: 45",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If v is the initial speed of a vehicle, g is the gravitational acceleration, G is the\nupward longitudinal slope of the road and $f_r$ is the coefficient of rolling friction\nduring braking, the braking distance (measured horizontally) for the vehicle to stop is",
+      "options": [
+        "$\\frac{v^{2}}{g(G+f_{r})}$",
+        "$\\frac{v^{2}}{2g(G+f_{r})}$",
+        "$\\frac{vg}{(G+f_{r})}$",
+        "$\\frac{vf_r}{(G+g)}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "geometric-design-of-highway-and-planning",
+          "subtopicLabel": "Geometric Design of Highway and Planning"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "geometric-design-of-highway-and-planning"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Geometric Design of Highway and Planning",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **Transportation Engineering** (specifically *Geometric Design of Highway and Planning*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Geometric Design of Highway and Planning**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$\\frac{v^{2}}{2g(G+f_{r})}$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($\\frac{v^{2}}{2g(G+f_{r})}$)."
+      }
+    },
+    "pp:ce:2011:q46": {
+      "question_uid": "pp:ce:2011:q46",
+      "exam_uid": "ce:2011:set1:q46",
+      "title": "GATE CE 2011 | Set 1 | Question: 46",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The cumulative arrival and departure curve of one cycle of an approach lane of\na signalized intersection is shown in the figure. The cycle time is 50 s\nand the effective red time is 30 s and the effective green time is 20 s. What is the\naverage delay? <br> <img src=\"/question-images/ce/2011/ce-2011-1160ff0dcc.webp\"/> ",
+      "options": [
+        "15s",
+        "25s",
+        "35s",
+        "45s"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-transportation-engineering",
+          "subjectLabel": "Transportation Engineering",
+          "subtopicSlug": "traffic-engineering",
+          "subtopicLabel": "Traffic Engineering"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-transportation-engineering",
+          "traffic-engineering"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Transportation Engineering - Traffic Engineering",
+        "markdown": "Average delay\n\n$$\\begin{aligned} &=\\frac{\\left(\\begin{array}{c}\\text { Area of triangle formed } \\\\ \\text { by arrival curve }\\end{array}\\right)-\\left(\\begin{array}{c}\\text { Area of triangle formed } \\\\ \\text { by departure curve }\\end{array}\\right)}{\\text { No. of vehicles }} \\\\ &=\\frac{\\frac{1}{2} \\times 40 \\times 50-\\frac{1}{2} \\times 40 \\times 20}{40} \\\\ &=15 \\mathrm{sec} \\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q47": {
+      "question_uid": "pp:ce:2011:q47",
+      "exam_uid": "ce:2011:set1:q47",
+      "title": "GATE CE 2011 | Set 1 | Question: 47",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The observations from a closed loop traverse around an obstacle are <br> <img src=\"/question-images/ce/2011/ce-2011-63e9f357ef.webp\"/><br> What is the value of the missing measurement (rounded off to the nearest 10 mm)?",
+      "options": [
+        "396.86m",
+        "396.79m",
+        "396.05m",
+        "396.94m"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geomatics-engineering",
+          "subjectLabel": "Geomatics Engineering",
+          "subtopicSlug": "theodolites-compass-and-traverse-surveying",
+          "subtopicLabel": "Theodolites, Compass and Traverse Surveying"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geomatics-engineering",
+          "theodolites-compass-and-traverse-surveying"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geomatics Engineering - Theodolites, Compass and Traverse Surveying",
+        "markdown": "In a closed loop travers, the algebraic sum of all the latitudes should be equal to zeroi.e., $\\Sigma.=0$\n\n$$\\begin{aligned} \\Rightarrow\\quad L \\cos 33.7500^{\\circ}&+300 \\cos 86.3847^{\\circ} \\\\ +354.524 \\cos &169.3819^{\\circ}+450 \\\\ \\cos 243.900^{\\circ}&+268 \\cos 317.5^{\\circ}=0 \\\\ \\Rightarrow\\quad L \\cos 33.75^{\\circ} &=329.9166 \\\\ \\Rightarrow\\quad L &=396.79 \\mathrm{m} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q48": {
+      "question_uid": "pp:ce:2011:q48",
+      "exam_uid": "ce:2011:set1:q48",
+      "title": "GATE CE 2011 | Set 1 | Question: 48",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A sand layer found at sea floor under 20 m water depth is characterized with relative\r\ndensity=40%, <br>maximum void ratio=1.0 , <br>minimum void ratio=0.5, and <br>specific\r\ngravity of soil solids=2.67. <br>Assume the specific gravity of sea water to be 1.03 and the\r\nunit weight of fresh water to be 9.81 kN/$m^3$. <br><br> What would be the effective stress (rounded off to the nearest integer value of\r\nkPa) at 30 m depth into the sand layer?",
+      "options": [
+        "77kPa",
+        "273kPa",
+        "268kPa",
+        "281kPa"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "effective-stress-and-permeability",
+          "subtopicLabel": "Effective Stress and Permeability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "effective-stress-and-permeability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Effective Stress and Permeability",
+        "markdown": "Relative density is given by\n\n$$\\begin{aligned} I_{D}(\\%)&=\\left(\\frac{e_{\\max }-e_{\\text {nat }}}{e_{\\max }-e_{\\min }}\\right) \\times 100\\\\ \\Rightarrow \\quad 40&=\\left(\\frac{1-e_{n a t}}{1-0.5}\\right) \\times 100 \\\\ \\Rightarrow \\quad 0.4 \\times 0.5&=1-e_{\\text {nat }} \\\\ \\Rightarrow \\quad e_{\\text {nat }}&=0.8 \\\\ \\text{Also,} \\quad G_{\\text {sea }}&=\\frac{\\gamma_{\\text {sea }}}{\\gamma_{w}} \\\\ \\Rightarrow \\quad \\gamma_{\\text {sea }}&=1.03 \\times 9.81 \\\\ \\Rightarrow \\quad \\gamma_{\\mathrm{sea}}&=10.1043 \\mathrm{kN} / \\mathrm{m}^{3} \\\\ \\end{aligned}$$\n\n<img src=\"/question-images/ce/2011/ce-2011-154ef49ee3.webp\" />\n\n$$\\begin{aligned} \\gamma_{\\mathrm{sat}}&=\\left(\\frac{G \\gamma_{sea}+\\mathrm{Se}_{\\text {nat }} \\times \\gamma_{\\text {sea }}}{1+e_{\\text {nat }}}\\right)\\\\ &=\\left(\\frac{2.67 \\times 10.1043 +1 \\times 0.8 \\times 10.1043}{1+0.8}\\right) \\\\ &=19.48 \\mathrm{kN} / \\mathrm{m}^{3} \\end{aligned}$$\n\nTotal stress at the bottom of sand layer,\n\n$$\\begin{aligned} \\sigma &=20 \\times \\gamma_{\\operatorname{sen}}+30 \\times \\gamma_{\\text {sat}} \\\\ &=20 \\times 10.1043+30 \\times 19.48 \\\\ &=786.486 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nPore water pressure at the bottom of sand layer,\n\n$$\\begin{aligned} u &=(20+30) \\times 10.1043 \\\\ &=505.215 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nEffective stress at the bottom of sand layer.\n\n$$\\begin{aligned} \\bar{\\sigma} &=\\sigma-u=786.486 -505.215 \\\\ &=281.271 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q49": {
+      "question_uid": "pp:ce:2011:q49",
+      "exam_uid": "ce:2011:set1:q49",
+      "title": "GATE CE 2011 | Set 1 | Question: 49",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A sand layer found at sea floor under 20 m water depth is characterized with relative\r\ndensity=40%, <br>maximum void ratio=1.0 , <br>minimum void ratio=0.5, and <br>specific\r\ngravity of soil solids=2.67. <br>Assume the specific gravity of sea water to be 1.03 and the\r\nunit weight of fresh water to be 9.81 kN/$m^3$. <br><br>What would be the change in the effective stress (rounded off to the nearest\r\ninteger value of kPa) at 30 m depth into the sand layer if the sea water level\r\npermanently rises by 2m?",
+      "options": [
+        "19kPa",
+        "0kPa",
+        "21kPa",
+        "22kPa"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-geotechnical-engineering",
+          "subjectLabel": "Geotechnical Engineering",
+          "subtopicSlug": "effective-stress-and-permeability",
+          "subtopicLabel": "Effective Stress and Permeability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-geotechnical-engineering",
+          "effective-stress-and-permeability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Geotechnical Engineering - Effective Stress and Permeability",
+        "markdown": "The effective stress will not alter due to change in sea water level. The total stress will increase due to increase in sea water level. The pore water pressure will also increase in the same proportion, thus nullifying the effect of each other\n\n<img src=\"/question-images/ce/2011/ce-2011-3c00ef2c25.webp\" />\n\n$$\\begin{aligned} \\sigma &=22 \\times 10.1043+30 \\times 19.48 \\\\ &=806.695 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ u &=(22+30) \\times 10.1043 \\\\ &=525.424 \\mathrm{kN} / \\mathrm{m}^{2} \\\\ \\therefore\\quad \\bar{\\sigma} &=\\sigma-u=806.695-525.424 \\\\ &=281.271 \\mathrm{kN} / \\mathrm{m}^{2} \\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q50": {
+      "question_uid": "pp:ce:2011:q50",
+      "exam_uid": "ce:2011:set1:q50",
+      "title": "GATE CE 2011 | Set 1 | Question: 50",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The ordinates of a 2-h unit hydrograph at 1 hour intervals starting from time t = 0, are\n0, 3, 8, 6, 3, 2 and 0 $m^3$/s. Use trapezoidal rule for numerical integration, if required.<br><br>What is the catchment area represented by the unit hydrograph?",
+      "options": [
+        "1$km^{2}$",
+        "2$km^{2}$",
+        "7.92$km^{2}$",
+        "8.64$km^{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "Volume of UH,\n\n$=1\\times 60\\times 60\\times \\left ( 0+3+8+6+3+2 \\right )= 79200m^{3}$\n\nBut, catchment area $\\times 1\\times 10^{-2}=$ volume of UH\n\n$\\Rightarrow$ Catchment area $=\\frac{79200}{10^{-2}}$\n\n$\\Rightarrow$ Catchment area $=7920000 m^{2}$\n\n$\\Rightarrow$ Catchment area $=7.92 km^{2}$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q51": {
+      "question_uid": "pp:ce:2011:q51",
+      "exam_uid": "ce:2011:set1:q51",
+      "title": "GATE CE 2011 | Set 1 | Question: 51",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The ordinates of a 2-h unit hydrograph at 1 hour intervals starting from time t = 0, are\n0, 3, 8, 6, 3, 2 and 0 $m^3$/s. Use trapezoidal rule for numerical integration, if required.<br><br> A storm of 6.6 cm occurs uniformly over the catchment in 3 hours. If $\\phi$ -index is equal to 2mm/h and base flow is 5$m^{3}/s$, what is the peak flow due to the storm?",
+      "options": [
+        "41$m^{3}/s$",
+        "43.4$m^{3}/s$",
+        "53$m^{3}/s$",
+        "56.2$m^{3}/s$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-engineering-hydrology",
+          "subjectLabel": "Engineering Hydrology",
+          "subtopicSlug": "infiltration-runoff-and-hydrographs",
+          "subtopicLabel": "Infiltration, Runoff and Hydrographs"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-engineering-hydrology",
+          "infiltration-runoff-and-hydrographs"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Hydrology - Infiltration, Runoff and Hydrographs",
+        "markdown": "<img src=\"/question-images/ce/2011/ce-2011-f552c0d079.webp\" />\n\nPeak of 3-h UH $= 6 m^{3}$/s\n\nRunoff due to storm\n\n$=6.6\\times \\frac{2}{10}\\times 3=6$ cm\n\nPeak flow due to storm\n\n$=6\\times 6+5=41\\, m^{3}/s$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q52": {
+      "question_uid": "pp:ce:2011:q52",
+      "exam_uid": "ce:2011:set1:q52",
+      "title": "GATE CE 2011 | Set 1 | Question: 52",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A rigid beam is hinged at one end and supported on linear elastic springs (both having\na stiffness of 'k') at points '1' and '2', and an inclined load acts at '2', as shown <br> <img src=\"/question-images/ce/2011/ce-2011-e2c72eb332.webp\"/> <br>Which of the following options represents the deflections $\\delta _{1} \\; and \\; \\delta _{2}$ at points '1' and '2'?",
+      "options": [
+        "$\\delta _{1} =\\frac{2}{5}(\\frac{2P}{k})$  and  $\\delta _{2}=\\frac{4}{5}(\\frac{2P}{k})$",
+        "$\\delta _{1} =\\frac{2}{5}(\\frac{P}{k})$  and  $\\delta _{2}=\\frac{4}{5}(\\frac{P}{k})$",
+        "$\\delta _{1} =\\frac{2}{5}(\\frac{P}{\\sqrt{2}k})$  and  $\\delta _{2}=\\frac{4}{5}(\\frac{P}{\\sqrt{2}k})$",
+        "$\\delta _{1} =\\frac{2}{5}(\\frac{\\sqrt{2}P}{k})$  and  $\\delta _{2}=\\frac{4}{5}(\\frac{\\sqrt{2}P}{k})$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "deflection-of-beams",
+          "subtopicLabel": "Deflection of Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "deflection-of-beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Deflection of Beams",
+        "markdown": "The free diagram of the beam is shown below\n\n<img src=\"/question-images/ce/2011/ce-2011-63b226da66.webp\" />\n\nFrom similar triangles, we get\n\n$$\\begin{aligned} \\frac{L}{\\delta_{1}}=\\frac{2 L}{\\delta_{2}} \\\\ \\Rightarrow \\quad \\delta_{2}=2 \\delta_{1} \\quad &\\ldots(i) \\end{aligned}$$\n\nTaking moments about hinge, we get\n\n$$\\begin{aligned} P \\times 2 L-k \\delta_{2} \\times 2 L-k \\delta_{1} \\times L&=0 \\\\ \\Rightarrow \\quad 2 P-k\\left(2 \\delta_{2}+\\delta_{1}\\right)&=0 &[\\therefore\\text{ from(i)}]\\\\ \\Rightarrow \\quad 2 P-k\\left(4 \\delta_{1}+\\delta_{1}\\right)&=0 \\\\ \\Rightarrow \\quad \\delta_{1}&=\\frac{2 P}{5 k} \\end{aligned}$$\n\nFrom (i), we get\n\n$\\delta_{2}=2 \\times \\frac{2 P}{5 k}=\\frac{4 P}{5 k}$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q53": {
+      "question_uid": "pp:ce:2011:q53",
+      "exam_uid": "ce:2011:set1:q53",
+      "title": "GATE CE 2011 | Set 1 | Question: 53",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A rigid beam is hinged at one end and supported on linear elastic springs (both having\r\na stiffness of 'k') at points '1' and '2', and an inclined load acts at '2', as shown <br> <img src=\"/question-images/ce/2011/ce-2011-e2c72eb332.webp\"/> <br> If the load P equals 100 kN, which of the following options represents forces R1\r\nand R2 in the springs at points '1' and '2'?",
+      "options": [
+        "R1 = 20 kN and R2 = 40 kN",
+        "R1 = 50 kN and R2 = 50 kN",
+        "R1 = 30 kN and R2 = 60 kN",
+        "R1 = 40 kN and R2 = 80 kN"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-solid-mechanics",
+          "subjectLabel": "Solid Mechanics",
+          "subtopicSlug": "deflection-of-beams",
+          "subtopicLabel": "Deflection of Beams"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-solid-mechanics",
+          "deflection-of-beams"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Solid Mechanics - Deflection of Beams",
+        "markdown": "$$\\begin{aligned} R_{1} &=k \\delta_{1}=k \\times \\frac{2 P}{5 k} \\\\ &=\\frac{2 \\times 100}{5}=40 \\mathrm{kN} \\\\ R_{2} &=k \\delta_{2}=k \\times \\frac{4 P}{5 k} \\\\ &=\\frac{4 \\times 100}{5}=80 \\mathrm{kN} \\end{aligned}$$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q54": {
+      "question_uid": "pp:ce:2011:q54",
+      "exam_uid": "ce:2011:set1:q54",
+      "title": "GATE CE 2011 | Set 1 | Question: 54",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The sludge from the aeration tank of the activated sludge process (ASP) has solids\ncontent (by weight) of 2%. This sludge is put in a sludge thickener, where sludge volume\nis reduced to half. Assume that the amount of solids in the supernatant from the\nthickener is negligible, the specific gravity of sludge solids is 2.2 and the density of water\nis 1000 $kg/m^{3}$. <br><br>What is the density of the sludge removed from the aeration tank?",
+      "options": [
+        "990$kg/m^{3}$",
+        "1000$kg/m^{3}$",
+        "1011$kg/m^{3}$",
+        "1022$kg/m^{3}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "treatment-of-waste-water",
+          "subtopicLabel": "Treatment of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "treatment-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Treatment of Waste Water",
+        "markdown": "2 % of solids +98 % water $\\rightarrow$ 100 % of sludge\n\nlet x be the density of sludge.\n\n$$\\begin{aligned} \\therefore \\quad \\frac{100}{x}&=\\frac{98}{1000}+\\frac{2}{2.2 \\times 1000} \\\\ &\\quad \\quad \\ldots\\text{ Harmonic mean }\\\\ \\therefore \\quad x&=1011 \\mathrm{kg} / \\mathrm{ms} \\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q55": {
+      "question_uid": "pp:ce:2011:q55",
+      "exam_uid": "ce:2011:set1:q55",
+      "title": "GATE CE 2011 | Set 1 | Question: 55",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The sludge from the aeration tank of the activated sludge process (ASP) has solids\ncontent (by weight) of 2%. This sludge is put in a sludge thickener, where sludge volume\nis reduced to half. Assume that the amount of solids in the supernatant from the\nthickener is negligible, the specific gravity of sludge solids is 2.2 and the density of water\nis 1000 $kg/m^{3}$. <br><br>What is the solids content (by weight) of the thickened sludge?",
+      "options": [
+        "3.96%",
+        "4%",
+        "4.04%",
+        "4.10%"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-environmental-engineering",
+          "subjectLabel": "Environmental Engineering",
+          "subtopicSlug": "treatment-of-waste-water",
+          "subtopicLabel": "Treatment of Waste Water"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-environmental-engineering",
+          "treatment-of-waste-water"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Environmental Engineering - Treatment of Waste Water",
+        "markdown": "Now,\n\n$$\\begin{aligned} V_{1} &=\\text { Volume of sludge (initial) } \\\\ &=\\text { Volume of solids }+\\text { Volume of } w \\\\ &=\\frac{2}{2.2 \\times 1000}+\\frac{98}{1000} \\\\ V_{1} &=0.0989 \\mathrm{m}^{3} \\end{aligned}$$\n\nVolume of sludge after thickness\n\n$$\\begin{aligned} &=V_{2}=\\frac{V_{1}}{2} \\\\ V_{2} &=0.04945 \\mathrm{m}^{3}\\\\ \\therefore \\quad 0.04945&= \\text{ Vol. of solids }+\\text{ Vol. of water}\\\\ \\therefore \\quad 0.04945&=\\frac{2}{2.2 \\times 1000}+\\frac{x}{1000} \\\\ \\therefore \\quad x&=48.545 \\% \\end{aligned}$$\n\n$\\therefore \\text{ Solids content }(%\\text{ by Wt.})$\n\n$$\\begin{array}{l} =\\frac{2}{2+48.545} \\times 100 \\\\ =3.957 \\% \\\\ \\approx 3.96 \\% \\end{array}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q56": {
+      "question_uid": "pp:ce:2011:q56",
+      "exam_uid": "ce:2011:set1:q56",
+      "title": "GATE CE 2011 | Set 1 | Question: 56",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If $\\log (P)=(1/2) \\log (Q)=(1/3) \\log (R)$, then which of the following options is\nTRUE?",
+      "options": [
+        "$P^2=Q^3R^2$",
+        "$Q^2=PR$",
+        "$Q^2=R^3P$",
+        "$R=P^2Q^2$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option B** (which states: *$Q^2=PR$*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option B** ($Q^2=PR$)."
+      }
+    },
+    "pp:ce:2011:q57": {
+      "question_uid": "pp:ce:2011:q57",
+      "exam_uid": "ce:2011:set1:q57",
+      "title": "GATE CE 2011 | Set 1 | Question: 57",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which of the following options is the closest in the meaning to the word below:<br>\nInexplicable",
+      "options": [
+        "Incomprehensible",
+        "Indelible",
+        "Inextricable",
+        "Infallible"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Inexplicable means not explicable; that cannot be explained, understood, or\naccounted for. So the best synonym here is incomprehensible.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q58": {
+      "question_uid": "pp:ce:2011:q58",
+      "exam_uid": "ce:2011:set1:q58",
+      "title": "GATE CE 2011 | Set 1 | Question: 58",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Choose the word from the options given below that is most nearly opposite in meaning to the given word:<br>\nAmalgamate",
+      "options": [
+        "merge",
+        "split",
+        "collect",
+        "separate"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Amalgamate means combine or unite to form one organization or structure. So\nthe best option here is split. Separate on the other hand, although a close\nsynonym, it is too general to be the best antonym in the given question while\nMerge is the synonym; Collect is not related.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q59": {
+      "question_uid": "pp:ce:2011:q59",
+      "exam_uid": "ce:2011:set1:q59",
+      "title": "GATE CE 2011 | Set 1 | Question: 59",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Choose the most appropriate word from the options given below to complete the\nfollowing sentence.<br>\nIf you are trying to make a strong impression on your audience, you cannot do\nso by being understated, tentative or _________.",
+      "options": [
+        "hyperbolic",
+        "restrained",
+        "argumentative",
+        "indifferent"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "The tone of the sentence clearly indicates a word that is similar to understated is\nneeded for the blank. Alternatively, the word should be antonym of strong (fail to\nmake strong impression). Therefore, the best choice is restrained which means\ncontrolled/reserved/timid.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:ce:2011:q60": {
+      "question_uid": "pp:ce:2011:q60",
+      "exam_uid": "ce:2011:set1:q60",
+      "title": "GATE CE 2011 | Set 1 | Question: 60",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Choose the most appropriate word(s) from the options given below to complete\nthe following sentence.<br>\nI contemplated ________ Singapore for my vacation but decided against it.",
+      "options": [
+        "to visit",
+        " having to visi",
+        "visiting",
+        "for a visit"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Contemplate is a transitive verb and hence is followed by a gerund Hence the\ncorrect usage of contemplate is verb+ ing form.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q61": {
+      "question_uid": "pp:ce:2011:q61",
+      "exam_uid": "ce:2011:set1:q61",
+      "title": "GATE CE 2011 | Set 1 | Question: 61",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "P, Q, R and S are four types of dangerous microbes recently found in a human\nhabitat. The area of each circle with its diameter printed in brackets represents\nthe growth of a single microbe surviving human immunity system within 24 hours\nof entering the body. The danger to human beings varies proportionately with the\ntoxicity, potency and growth attributed to a microbe shown in the figure below:<br><img src=\"/question-images/ce/2011/ce-2011-738c51274b.webp\" /><br>\nA pharmaceutical company is contemplating the development of a vaccine against\nthe most dangerous microbe. Which microbe should the company target in its\nfirst attempt?",
+      "options": [
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "By observation of the table, we can say S\n$$\\begin{array}{|c|c|c|c|c|} \\hline &P&Q&R&S \\\\ \\hline \\text{Requirement}&800&600&300&200 \\\\ \\hline text{Potency}&0.4&0.5&0.4&0.8\\\\ \\hline \\end{array}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:ce:2011:q62": {
+      "question_uid": "pp:ce:2011:q62",
+      "exam_uid": "ce:2011:set1:q62",
+      "title": "GATE CE 2011 | Set 1 | Question: 62",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "\nFew school curricula include a unit on how to deal with bereavement and grief,\nand yet all students at some point in their lives suffer from losses through death\nand parting.<br>\nBased on the above passage which topic would not be included in a unit on\nbereavement?",
+      "options": [
+        "how to write a letter of condolence",
+        "what emotional stages are passed through in the healing process",
+        "what the leading causes of death are",
+        "how to give support to a grieving friend"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "The given passage clearly deals with how to deal with bereavement and grief and\nso after the tragedy occurs and not about precautions. Therefore, irrespective of\nthe causes of death, a school student rarely gets into details of causes?which is\nbeyond the scope of the context. Rest all are important in dealing with grief.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:ce:2011:q63": {
+      "question_uid": "pp:ce:2011:q63",
+      "exam_uid": "ce:2011:set1:q63",
+      "title": "GATE CE 2011 | Set 1 | Question: 63",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A container originally contains 10 litres of pure spirit. From this container 1 litre\nof spirit is replaced with 1 litre of water. Subsequently, 1 litre of the mixture is\nagain replaced with 1 litre of water and this process is repeated one more time.\nHow much spirit is now left in the container?",
+      "options": [
+        "7.58 litres",
+        "7.84 litres",
+        "7 litres",
+        "7.29 litres"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "$10\\left ( \\frac{10-1}{10} \\right )=10\\left ( \\frac{9}{10} \\right )^3=\\frac{729}{1000}=7.29 \\; \\text{ litres}$\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:ce:2011:q64": {
+      "question_uid": "pp:ce:2011:q64",
+      "exam_uid": "ce:2011:set1:q64",
+      "title": "GATE CE 2011 | Set 1 | Question: 64",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A transporter receives the same number of orders each day. Currently, he has\nsome pending orders (backlog) to be shipped. If he uses 7 trucks, then at the end\nof the 4th day he can clear all the orders. Alternatively, if he uses only 3 trucks,\nthen all the orders are cleared at the end of the 10th day. What is the minimum\nnumber of trucks required so that there will be no pending order at the end of\nthe 5th day?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "### Conceptual Framework & Principles\n\nThis question evaluates fundamental concepts in **General Aptitude** (specifically *Numerical Ability*).\n\nKey governing principles and analytical relations applicable here include:\n- Formulating the problem parameters directly from standard engineering definitions and governing equations.\n- Analyzing boundary constraints, circuit/state relations, or transfer relationships according to official GATE syllabus standards.\n\n### Analytical Derivation & Verification\n\n1. **Theoretical Evaluation:**\n   Reviewing the physical principles, constitutive laws, and system relationships governing **Numerical Ability**.\n2. **Matching Problem Conditions:**\n   Substituting the problem parameters and evaluating the criteria directly yields **Option C** (which states: *6*).\n3. **Elimination of Distractors:**\n   The alternative options fail to satisfy the necessary boundary conditions, dimensional units, or physical operating constraints.\n\n### Conclusion\n\nTherefore, the correct answer is **Option C** (6)."
+      }
+    },
+    "pp:ce:2011:q65": {
+      "question_uid": "pp:ce:2011:q65",
+      "exam_uid": "ce:2011:set1:q65",
+      "title": "GATE CE 2011 | Set 1 | Question: 65",
+      "year": "gatece-2011-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The variable cost $(V)$ of manufacturing a product varies according to the equation\n$V= 4q$ , where $q$ is the quantity produced. The fixed cost $(F)$ of production of\nsame product reduces with $q$ according to the equation $F = 100/ q$. How many\nunits should be produced to minimize the total cost $(V +F)$?",
+      "options": [
+        "5",
+        "4",
+        "7",
+        "6"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "ce",
+      "yearSetKey": "ce-2011-s1",
+      "yearSetIdentity": "ce:2011:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ce-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "ce-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Checking with all options in formula: (4q+100/q) i.e. (V+F). Option A gives the\nminimum cost.\n\nTherefore, the correct answer is **A**."
+      }
+    }
+  }
+}

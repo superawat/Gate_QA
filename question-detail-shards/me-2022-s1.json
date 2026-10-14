@@ -1,0 +1,2620 @@
+{
+  "generatedAt": "2026-10-14T09:23:21.538Z",
+  "shardKey": "me-2022-s1",
+  "yearSetKey": "me-2022-s1",
+  "yearSetIdentity": "me:2022:set-1",
+  "track": "me",
+  "year": 2022,
+  "set": 1,
+  "label": "2022 Set 1",
+  "questionCount": 65,
+  "recordsByQuestionUid": {
+    "pp:me:2022:q1": {
+      "question_uid": "pp:me:2022:q1",
+      "exam_uid": "me:2022:set1:q1",
+      "title": "GATE ME 2022 | Set 1 | Question: 1",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The limit <br>$p=\\lim_{x \\to \\pi}\\left ( \\frac{x^2+\\alpha x+2\\pi ^2}{x-\\pi+2 \\sin x } \\right )$<br>\nhas a finite value for a real $\\alpha$. The value of $\\alpha$ and the\ncorresponding limit $p$ are",
+      "options": [
+        "$\\alpha =-3\\pi, \\text{ and }p= \\pi$",
+        "$\\alpha =-2\\pi, \\text{ and }p= 2\\pi$",
+        "$\\alpha =\\pi, \\text{ and }p= \\pi$",
+        "$\\alpha =2\\pi, \\text{ and }p= 3\\pi$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned}\n\np&=\\lim_{x \\to \\pi}\\left ( \\frac{x^2+\\alpha x+2 \\pi ^2}{x-\\pi+2 \\sin x} \\right ) \\\\\n\np&=\\left ( \\frac{\\pi ^2+\\alpha \\pi +2 \\pi ^2}{\\pi-\\pi+2 \\sin \\pi } \\right ) \\\\\n\n&= \\frac{3 \\pi ^2+\\alpha \\pi}{0}\\\\\n\n\\therefore \\;\\; \\alpha &= -3 \\pi\\\\\n\np&=\\lim_{x \\to \\pi}\\left ( \\frac{x^2- 3 \\pi x+2 \\pi ^2}{x-\\pi+2 \\sin x} \\right ) \\\\\n\n&=\\lim_{x \\to \\pi}\\left ( \\frac{2x- 3 \\pi }{1+2 \\cos \\pi} \\right ) \\\\\n\n&= \\frac{2 \\pi-3 \\pi}{1-2}=\\frac{-\\pi}{-1}=\\pi\\\\\n\n\\therefore \\; \\alpha &=-3 \\pi \\text{ and }p= \\pi\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q2": {
+      "question_uid": "pp:me:2022:q2",
+      "exam_uid": "me:2022:set1:q2",
+      "title": "GATE ME 2022 | Set 1 | Question: 2",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Solution of $\\triangledown^2T=0$ in a square domain ($0 \\lt x \\lt 1$\r\nand $0 \\lt y \\lt 1$) with boundary conditions:<br>\r\n$T(x, 0) = x; T(0, y) = y; T(x, 1) = 1 + x; T(1, y) = 1 + y$ is",
+      "options": [
+        "$T(x,y)=x-xy+y$",
+        "$T(x,y)=x+y$",
+        "$T(x,y)=-x+y$",
+        "$T(x,y)=x+xy+y$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Differential Equations",
+        "markdown": "T(x, 0) = x $\\Rightarrow$ option (c) is not correct.\n\nT(0, y) = y $\\Rightarrow$ all options satisfied.\n\nT(x, 1) = 1 + x; $\\Rightarrow$ only option (b) is satisfied.\n\nT(1, y) = 1 + y is $\\Rightarrow$ only option (b) is satisfied.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q3": {
+      "question_uid": "pp:me:2022:q3",
+      "exam_uid": "me:2022:set1:q3",
+      "title": "GATE ME 2022 | Set 1 | Question: 3",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Given a function $\\varphi =\\frac{1}{2}(x^2+y^2+z^2)$ in threedimensional Cartesian space, the value of the\r\nsurface integral<br>$\\oiint_{S}{\\hat{n}.\\triangledown \\varphi dS}$ <br>\r\nwhere S is the surface of a sphere of unit radius and\r\n$\\hat{n}$ is the outward unit normal vector on S, is\r\n",
+      "options": [
+        "$4 \\pi$",
+        "$3 \\pi$",
+        "$4 \\pi/3$",
+        "$0$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$$\\begin{aligned}\n\n\\varphi &=\\frac{1}{2}(x^2+y^2+z^2)\\\\\n\n\\triangledown \\varphi &=(x\\hat{i}+y\\hat{j}+z\\hat{k})=\\bar{F}\\\\\n\n\\oiint_{S}(\\triangledown \\varphi\\cdot \\bar{n})dS&=\\int \\int _v\\int Div\\; \\bar{F} dv\\\\\n\n&=\\int \\int \\int 3dv\\\\\n\n&=3v\\\\\n\n&=3\\left ( \\frac{4}{3} \\pi \\right )=4\\pi\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q4": {
+      "question_uid": "pp:me:2022:q4",
+      "exam_uid": "me:2022:set1:q4",
+      "title": "GATE ME 2022 | Set 1 | Question: 4",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Fourier series expansion of $x^3$ \n in the interval $-1\\leq x\\leq 1$ with periodic continuation has",
+      "options": [
+        "only sine terms",
+        "only cosine terms",
+        "both sine and cosine terms",
+        "only sine terms and a non-zero constant"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "$f(x)=x^3, \\;\\;  -1 \\leq x \\leq 1$\n\nIt is an odd function\n\nFourier series contains only sine terms.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q5": {
+      "question_uid": "pp:me:2022:q5",
+      "exam_uid": "me:2022:set1:q5",
+      "title": "GATE ME 2022 | Set 1 | Question: 5",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "If $$A=\\begin{bmatrix}\n10 &2k+5 \\\\ \n3k-3 & k+5\n\\end{bmatrix}$$  is a symmetric matrix, the\nvalue of $k$ is ___________.",
+      "options": [
+        "8",
+        "5",
+        "-0.4",
+        "$\\frac{1+\\sqrt{1561}}{12}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$A=\\begin{bmatrix}\n\n10 & 2k+5\\\\\n\n3k-3 & k+5\n\n\\end{bmatrix}$$\n\n$(2k + 5) = (3k - 3)$\n\n$k=8$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q6": {
+      "question_uid": "pp:me:2022:q6",
+      "exam_uid": "me:2022:set1:q6",
+      "title": "GATE ME 2022 | Set 1 | Question: 6",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A uniform light slender beam AB of section modulus\nEI is pinned by a frictionless joint A to the ground\nand supported by a light inextensible cable CB to\nhang a weight W as shown. If the maximum value\nof W to avoid buckling of the beam AB is obtained\nas $\\beta \\pi ^2 EI$, where $\\pi$ is the ratio of circumference to\ndiameter of a circle, then the value of $\\beta$ is <br><img src=\"/question-images/me/2022/me-2022-4592f0dfb4.webp\" /><br>",
+      "options": [
+        "$0.0924\\; m^{-2}$",
+        "$0.0713\\; m^{-2}$",
+        "$0.1261\\; m^{-2}$",
+        "$0.1417\\; m^{-2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Strength of Materials - Euler's Theory of Column",
+        "markdown": "Draw FBD of AB\n\n<img src=\"/question-images/me/2022/me-2022-4294662956.webp\" />\n\n$\\Sigma M_A=0$\n\n$W \\times 2.5=T \\sin 30^{\\circ} \\times 2.5$\n\n$T=2W$\n\nCompressive load acting on AB $=T \\cos 30^{\\circ}=2W \\times \\frac{\\sqrt{3}}{2}=\\sqrt{3}W$\n\nBuckling happens when $\\sqrt{3}W=P_{cr}=\\frac{\\pi ^2 EI}{L_e^2}$\n\n$\\sqrt{3}W=\\frac{\\pi ^2 EI}{L^2} \\;\\;(\\because L_e=L \\text{as both ends hinged})$\n\n$W=\\frac{1 \\times \\pi ^2 EI}{\\sqrt{3} \\times (2.5)^2}=0.0924 \\pi^2 EI$\n\n$W0.0924 \\pi^2 EI=\\beta  \\pi ^2 EI$\n\n$\\beta  =0.0924 m^{-2}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q7": {
+      "question_uid": "pp:me:2022:q7",
+      "exam_uid": "me:2022:set1:q7",
+      "title": "GATE ME 2022 | Set 1 | Question: 7",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The figure shows a schematic of a simple Watt\r\ngovernor mechanism with the spindle $O_1O_2$ rotating\r\nat an angular velocity $\\omega$ about a vertical axis. The\r\nballs at P and S have equal mass. Assume that there\r\nis no friction anywhere and all other components are\r\nmassless and rigid. The vertical distance between\r\nthe horizontal plane of rotation of the balls and the\r\npivot $O_1$\r\n is denoted by $h$. The value of $h=400$ mm\r\nat a certain $\\omega$. If $\\omega$ is doubled, the value of $h$ will be\r\n_________ mm.<br><img src=\"/question-images/me/2022/me-2022-d5b5cbc136.webp\" /><br>",
+      "options": [
+        "50",
+        "100",
+        "150",
+        "200"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Theory of Machine - Gyroscope",
+        "markdown": "$h_1\n\n= 400 mm, h_2\n\n= ?$\n\n$\\omega _1=\\omega \\;\\;\\;\\omega _2=2\\omega$\n\nFor Watt governor,\n\n$$\\begin{aligned}\n\nh&=\\frac{g}{\\omega ^2}\\\\\n\nh\\propto \\frac{1}{\\omega ^2}\\\\\n\n\\Rightarrow h_1\\omega _1^2&=h_2\\omega _2^2\\\\\n\n400 \\times \\omega ^2&=h_2 \\times (2\\omega )^2\\\\\n\nh_2&=100mm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q8": {
+      "question_uid": "pp:me:2022:q8",
+      "exam_uid": "me:2022:set1:q8",
+      "title": "GATE ME 2022 | Set 1 | Question: 8",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A square threaded screw is used to lift a load W\nby applying a force F. Efficiency of square threaded\nscrew is expressed as",
+      "options": [
+        "The ratio of work done by W per revolution to work done by F per revolution",
+        "W/F",
+        "F/W",
+        "The ratio of work done by F per revolution to work done by W per revolution"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Machine Design - Bolted, Riveted and Welded Joint",
+        "markdown": "$\\text{Screw efficiency}=\\frac{\\text{Work done by the applied force/rev}}{\\text{Work done in lifting the load/rev}}$\n\nEfficiency of screw jack $\\eta =\\frac{\\tan \\alpha }{\\tan(\\alpha +\\phi )}$\n\nEfficiency depends on helix angle and friction angle.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q9": {
+      "question_uid": "pp:me:2022:q9",
+      "exam_uid": "me:2022:set1:q9",
+      "title": "GATE ME 2022 | Set 1 | Question: 9",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A CNC worktable is driven in a linear direction by\na lead screw connected directly to a stepper motor.\nThe pitch of the lead screw is 5 mm. The stepper\nmotor completes one full revolution upon receiving\n600 pulses. If the worktable speed is 5 m/minute\nand there is no missed pulse, then the pulse rate\nbeing received by the stepper motor is",
+      "options": [
+        "20 KHz",
+        "10 kHz",
+        "3 kHz",
+        "15 kHz"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
+        "markdown": "No. of steps required for one full revolution of\n\nstepper motor shaft or lead screws $n_S= 600$\n\nPitch $(p) = 5 mm$\n\nLinear table speed $V_{table}= 5 m/min\n\n= 5000 mm/min$\n\nRPM of lead Screw $(N_S)= \\frac{V_{table}}{p}=1000 rpm$\n\nWe have equation of frequency of pulse generator\n\n$$\\begin{aligned}\n\nf_p&= N_s \\times n_S\\\\\n\nf_p&= 1000 \\times 600=600,000 pulses/min\\\\\n\nf_p&=\\frac{600000}{60}pulses/sec\\\\\n\nf_p&=10000 pulses/sec \\text{ or }Hz\\\\\n\nf_p&=10kHz\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q10": {
+      "question_uid": "pp:me:2022:q10",
+      "exam_uid": "me:2022:set1:q10",
+      "title": "GATE ME 2022 | Set 1 | Question: 10",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The type of fit between a mating shaft of diameter $$25.0^{\\begin{matrix}\n+0.010\\\\ \n-0.010\n\\end{matrix}}$$mm and a hole of diameter $$25.015^{\\begin{matrix}\n+0.015\\\\ \n-0.015\n\\end{matrix}}$$mm is __________.",
+      "options": [
+        "Clearance",
+        "Transition",
+        "Interference",
+        "Linear"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "ga",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "quantitative-aptitude",
+          "subtopicLabel": "Quantitative Aptitude"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "quantitative-aptitude"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Metrology and Inspection",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-fdb2a1f1d9.webp\" />\n\nIf,\n\n$D_{hole} = 25.00 mm,$\n\n$D_{shaft} = 25.01 mm$   ( Interference fit.)\n\n$D_{hole} = 25.03 mm,$\n\n$D_{shaft} = 24.99 mm$\n\n$$   (Clearance fit)\n\nSome of the assemblies provide clearance fit and\n\nsome provides interference fit.\n\nHence, It is transition fit\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q11": {
+      "question_uid": "pp:me:2022:q11",
+      "exam_uid": "me:2022:set1:q11",
+      "title": "GATE ME 2022 | Set 1 | Question: 11",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In a linear programming problem, if a resource is\nnot fully utilized, the shadow price of that resource\nis",
+      "options": [
+        "positive",
+        "negative",
+        "zero",
+        "infinity"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-industrial-engineering",
+          "subjectLabel": "Industrial Engineering",
+          "subtopicSlug": "linear-programming",
+          "subtopicLabel": "Linear Programming"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-industrial-engineering",
+          "linear-programming"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Industrial Engineering - Linear Programming",
+        "markdown": "In a Linear programming problem if a resource is\n\nnot fully utilized. The shadow price or dual price\n\nof the particular resource is zero.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:me:2022:q12": {
+      "question_uid": "pp:me:2022:q12",
+      "exam_uid": "me:2022:set1:q12",
+      "title": "GATE ME 2022 | Set 1 | Question: 12",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Which one of the following is NOT a form of\ninventory?",
+      "options": [
+        "Raw materials",
+        "Work-in-process materials",
+        "Finished goods ",
+        "CNC Milling Machines"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-industrial-engineering",
+          "subjectLabel": "Industrial Engineering",
+          "subtopicSlug": "inventory-control",
+          "subtopicLabel": "Inventory Control"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-industrial-engineering",
+          "inventory-control"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Industrial Engineering - Inventory Control",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-39afb0825a.webp\" />\n\nCNC milling machines will not be treated as\n\ninventory.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:me:2022:q13": {
+      "question_uid": "pp:me:2022:q13",
+      "exam_uid": "me:2022:set1:q13",
+      "title": "GATE ME 2022 | Set 1 | Question: 13",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The Clausius inequality holds good for",
+      "options": [
+        "any process",
+        "any cycle",
+        "only reversible process",
+        "only reversible cycle"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-thermodynamics",
+          "subjectLabel": "Thermodynamics",
+          "subtopicSlug": "availability-and-irreversibility",
+          "subtopicLabel": "Availability and Irreversibility"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-thermodynamics",
+          "availability-and-irreversibility"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Thermodynamics - Availability and Irreversibility",
+        "markdown": "The Clausius inequality holds good for any cycle.\n\n$\\oint \\frac{dQ}{T}=0\\Rightarrow$  Reversible cycle\n\n$\\oint \\frac{dQ}{T} \\lt 0\\Rightarrow$   Irreversible cycle\n\n$\\oint \\frac{dQ}{T} \\gt 0\\Rightarrow$ Impossible cycle\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q14": {
+      "question_uid": "pp:me:2022:q14",
+      "exam_uid": "me:2022:set1:q14",
+      "title": "GATE ME 2022 | Set 1 | Question: 14",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A tiny temperature probe is fully immersed in a\nflowing fluid and is moving with zero relative\nvelocity with respect to the fluid. The velocity\nfield in the fluid is $\\vec{V}=2x\\hat{i}+(y+3t)\\hat{j}$,and the\ntemperature field in the fluid is $T=2x^2+xy+4t$ where $x$ and $y$ are the spatial coordinates, and $t$ is\nthe time. The time rate of change of temperature\nrecorded by the probe at ($x=,y=1,t=1$) is\n_______.",
+      "options": [
+        "4",
+        "0",
+        "18",
+        "14"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "conduction",
+          "subtopicLabel": "Conduction"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-heat-transfer",
+          "conduction"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Heat Transfer - Conduction",
+        "markdown": "$$\\begin{aligned}\n\n\\frac{dT}{dt}&=? \\text{ at }x=1,y=1,t=1\\\\\n\n\\frac{dT}{dt}&=\\frac{\\partial T}{\\partial t}\\frac{dt}{dt}+\\frac{\\partial T}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial T}{\\partial y}\\frac{dy}{dt}\\\\\n\n&=\\frac{\\partial T}{\\partial t}+u\\frac{\\partial T}{\\partial x}+v\\frac{\\partial T}{\\partial y}\\\\\n\n&=4+(2x)(4x+y)+(y+3t)(x)\\\\\n\n&=4+8x^2+3xy+3xt\\\\\n\n&\\text{at }x=1,y=1,t=1\\\\\n\n\\frac{dT}{dt}&=4+8(1)^2+3(1)+3(1)\\\\\n\n&=18\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:me:2022:q15": {
+      "question_uid": "pp:me:2022:q15",
+      "exam_uid": "me:2022:set1:q15",
+      "title": "GATE ME 2022 | Set 1 | Question: 15",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "In the following two-dimensional momentum\nequation for natural convection over a surface\nimmersed in a quiescent fluid at temperature $T_\\infty ( g$ is the gravitational acceleration, $\\beta$ is the volumetric\nthermal expansion coefficient, $v$ is the kinematic\nviscosity, $u$  and $v$  are the velocities in $x$  and $y$ \ndirections, respectively, and $T$ is the temperature)<br>$u\\frac{\\partial u}{\\partial x}+v\\frac{\\partial u}{\\partial y}=g\\beta (T-T_\\infty )+v\\frac{\\partial u^2}{\\partial y^2}$<br>the term $g\\beta (T-T_\\infty )$ represents",
+      "options": [
+        "Ratio of inertial force to viscous force.",
+        "Ratio of buoyancy force to viscous force.",
+        "Viscous force per unit mass.",
+        " Buoyancy force per unit mass."
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "viscous-turbulent-flow-and-boundary-layer-theory",
+          "subtopicLabel": "Viscous, Turbulent Flow and Boundary Layer Theory"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-fluid-mechanics",
+          "viscous-turbulent-flow-and-boundary-layer-theory"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
+        "markdown": "$u\\frac{\\partial u}{\\partial x}+v\\frac{\\partial u}{\\partial y}=g\\beta (T-T_\\infty )+v\\frac{\\partial^2 u}{\\partial y^2}$\n\nThis is the equation that governs the fluid motion in\n\nthe boundary layer due to effect of Buoyancy\n\n$g\\beta (T-T_\\infty )=\\frac{m}{s^2} \\times \\frac{1}{K} \\times K=m/s^2$\n\nUnit of  $g\\beta (T-T_\\infty )= m/s^2$\n\nBuoyancy force is due to density difference and\n\ngravitational effect\n\n$g\\beta (T-T_\\infty )$ represents Buoyancy force per unit mass.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:me:2022:q16": {
+      "question_uid": "pp:me:2022:q16",
+      "exam_uid": "me:2022:set1:q16",
+      "title": "GATE ME 2022 | Set 1 | Question: 16",
+      "year": "gateme-2022-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Assuming the material considered in each statement\r\nis homogeneous, isotropic, linear elastic, and the\r\ndeformations are in the elastic range, which one or\r\nmore of the following statement(s) is/are TRUE?",
+      "options": [
+        "A body subjected to hydrostatic pressure has\nno shear stress",
+        "If a long solid steel rod is subjected to tensile\nload, then its volume increases.",
+        "Maximum shear stress theory is suitable for\nfailure analysis of brittle materials.",
+        "If a portion of a beam has zero shear force,\nthen the corresponding portion of the elastic\ncurve of the beam is always straight."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "stress-strain-relationship-and-elastic-constants",
+          "subtopicLabel": "Stress-strain Relationship and Elastic Constants"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-strength-of-materials",
+          "stress-strain-relationship-and-elastic-constants"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Strength of Materials - Stress-strain Relationship and Elastic Constants",
+        "markdown": "(c) Wrong : Maximum shear stress theory good for\n\nductile material.\n\n(d) If shear force = 0, M = C, But elastic curve is always\n\nnon-linear.\n\nTherefore, the correct option(s) are **A, B**."
+      }
+    },
+    "pp:me:2022:q17": {
+      "question_uid": "pp:me:2022:q17",
+      "exam_uid": "me:2022:set1:q17",
+      "title": "GATE ME 2022 | Set 1 | Question: 17",
+      "year": "gateme-2022-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Which of the following heat treatment processes is/\r\nare used for surface hardening of steels?",
+      "options": [
+        "Carburizing",
+        "Cyaniding",
+        "Annealing",
+        "Carbonitriding"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "engineering-materials",
+          "subtopicLabel": "Engineering Materials"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "engineering-materials"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Engineering Materials",
+        "markdown": "Case-hardening, also referred to as surfacehardening, commonly involves one of four different\n\nmethods: carburizing, nitriding, cyaniding, or\n\ncarbonitriding. Case- hardening is used on parts\n\nsuch as gear teeth, cutting wheels, and tools. These\n\ncase-hardened pieces represent a compromise\n\nbetween the hard, wear-resistant brittleness of\n\nhigh-carbon steel and the softer, more ductile, less\n\nwear-resistant low-carbon steels.\n\nTherefore, the correct option(s) are **A, B, D**."
+      }
+    },
+    "pp:me:2022:q18": {
+      "question_uid": "pp:me:2022:q18",
+      "exam_uid": "me:2022:set1:q18",
+      "title": "GATE ME 2022 | Set 1 | Question: 18",
+      "year": "gateme-2022-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Which of the following additive manufacturing technique(s) can use a wire as a feedstock material?",
+      "options": [
+        "Stereolithography",
+        "Fused deposition modeling",
+        "Selective laser sintering",
+        "Directed energy deposition processes"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "machining-and-machine-tool-operation",
+          "subtopicLabel": "Machining and Machine Tool Operation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "machining-and-machine-tool-operation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
+        "markdown": "Fused-deposition modeling consists of a computercontrolled extruder, through which a polymer\n\nfilament is deposited to produce a part slice by\n\nslice.\n\nSelective laser sintering uses a high-powered laser\n\nbeam to sinter powders or coatings on the powders\n\nin a desired pattern. Selective laser sintering has\n\nbeen applied to polymers, sand, ceramics, and\n\nmetals.\n\nStereolithography involves a computer-controlled\n\nlaser-focusing system, that cures a liquid\n\nthermosetting polymer containing a photosensitive\n\ncuring agent.\n\nDirected energy deposition (DED) processes\n\nenable the creation of parts by melting material as it is being deposited. Although this basic approach\n\ncan work for polymers, ceramics, and metal matrix\n\ncomposites, it is predominantly used for metal\n\npowders. Thus, this technology is often referred to\n\nas \"metal deposition\" technology.\n\nTherefore, the correct option(s) are **B, D**."
+      }
+    },
+    "pp:me:2022:q19": {
+      "question_uid": "pp:me:2022:q19",
+      "exam_uid": "me:2022:set1:q19",
+      "title": "GATE ME 2022 | Set 1 | Question: 19",
+      "year": "gateme-2022-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "Which of the following methods can improve the\r\nfatigue strength of a circular mild steel (MS) shaft?",
+      "options": [
+        "Enhancing surface finish",
+        "Shot peening of the shaft",
+        "Increasing relative humidity",
+        "Reducing relative humidity"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B, D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "engineering-materials",
+          "subtopicLabel": "Engineering Materials"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "engineering-materials"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Engineering Materials",
+        "markdown": "Surface Treatments:\n\nDuring machining operations,small scratches\n\nand grooves are invariably introduced into the\n\nworkpiece surface by cutting tool action. These\n\nsurface markings can limit the fatigue life. It has\n\nbeen observed that improving the surface finish by\n\npolishing will enhance fatigue life significantly.\n\nOne of the most effective methods of increasing\n\nfatigue performance is by imposing residual\n\ncompressive stresses within a thin outer surface\n\nlayer. Thus, a surface tensile stress of external\n\norigin will be partially nullified and reduced in\n\nmagnitude by the residual compressive stress. The\n\nnet effect is that the likelihood of crack formation\n\nand therefore of fatigue failure is reduced.\n\nResidual compressive stresses are commonly\n\nintroduced into ductile metals mechanically by\n\nlocalized plastic deformation within the outer\n\nsurface region. Commercially, this is often\n\naccomplished by a process termed shot peening.\n\nSmall, hard particles (shot) having diameters\n\nwithin the range of 0.1 to 1.0 mm are projected at\n\nhigh velocities onto the surface to be treated. The\n\nresulting deformation induces compressive stresses\n\nto a depth of between one-quarter and one-half of\n\nthe shot diameter.\n\nTherefore, the correct option(s) are **A, B, D**."
+      }
+    },
+    "pp:me:2022:q20": {
+      "question_uid": "pp:me:2022:q20",
+      "exam_uid": "me:2022:set1:q20",
+      "title": "GATE ME 2022 | Set 1 | Question: 20",
+      "year": "gateme-2022-set1",
+      "type": "MSQ",
+      "marks": 1,
+      "question": "The figure shows a purely convergent nozzle with\r\na steady, inviscid compressible flow of an ideal gas\r\nwith constant thermophysical properties operating\r\nunder choked condition. The exit plane shown in\r\nthe figure is located within the nozzle. If the inlet\r\npressure $(P_0)$ is increased while keeping the back\r\npressure $(P_{back})$ unchanged, which of the following\r\nstatements is/are true?<br><img src=\"/question-images/me/2022/me-2022-de9f449a77.webp\" /><br>",
+      "options": [
+        "Mass flow rate through the nozzle will remain unchanged.",
+        "Mach number at the exit plane of the nozzle will remain unchanged at unity",
+        "Mass flow rate through the nozzle will increase.",
+        "Mach number at the exit plane of the nozzle will become more than unity."
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "B, C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "viscous-turbulent-flow-and-boundary-layer-theory",
+          "subtopicLabel": "Viscous, Turbulent Flow and Boundary Layer Theory"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-fluid-mechanics",
+          "viscous-turbulent-flow-and-boundary-layer-theory"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
+        "markdown": "$$\\begin{aligned}\n\n\\frac{\\dot{m}}{A}&=\\sqrt{\\frac{\\gamma }{R}}\\frac{P_0}{\\sqrt{T_0}}\\frac{1}{\\left ( \\frac{\\gamma +1}{2} \\right )^{\\frac{\\gamma +1}{2(\\gamma -1)}}}\\\\\n\n\\frac{\\dot{m}}{A}&=0.685 \\times \\sqrt{P_0\\rho _0} \\;\\;\\;...\\text{ for Air}\\\\\n\n\\frac{T_c}{T_0}&=\\frac{T^*}{T_0}=\\frac{2}{\\gamma +1}=0.8333\\\\\n\n&(\\text{critical temp ratio})\\\\\n\n\\frac{P_c}{P_0}&=\\frac{P^*}{P_0}=\\left ( \\frac{2}{\\gamma +1} \\right )^{\\frac{\\gamma }{\\gamma -1}}=0.5282\\\\\n\n&(\\text{critical pressure ratio})\n\n\\end{aligned}$$\n\nwhere $\\gamma=$  Adiabatic index = 1.4\n\nIf $P_0$ increases , mass flow rate increases. Mach\n\nnumber at the exit plane of the nozzle will remain\n\nunchanged at unity.\n\nSince the maximum expected velocity from the\n\nconverging nozzle is sound velocity.\n\n$$\n\n$$\n\nTherefore, the correct option(s) are **B, C**."
+      }
+    },
+    "pp:me:2022:q21": {
+      "question_uid": "pp:me:2022:q21",
+      "exam_uid": "me:2022:set1:q21",
+      "title": "GATE ME 2022 | Set 1 | Question: 21",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "The plane of the figure represents a horizontal\nplane. A thin rigid rod at rest is pivoted without\nfriction about a fixed vertical axis passing through\nO. Its mass moment of inertia is equal to $0.1 kg.cm^2$\nabout O. A point mass of 0.001 kg hits it normally\nat 200 cm/s at the location shown, and sticks to it.\nImmediately after the impact, the angular velocity\nof the rod is ___________ rad/s (in integer).<br><img src=\"/question-images/me/2022/me-2022-0b6343c047.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "10",
+        "tolerance": {
+          "lower": 10,
+          "upper": 10
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "fbd-equilirbium-plane-trusses-and-virtual-work",
+          "subtopicLabel": "FBD, Equilirbium, Plane Trusses and Virtual work"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-engineering-mechanics",
+          "fbd-equilirbium-plane-trusses-and-virtual-work"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
+        "markdown": "Given,\n\n$I_{rod} = 0.1 kgcm^2 = 1\\times  10^{-5} kg m^2$\n\n$m_{point} = 10^{-3} kg$\n\n$V_{point} = 2 m/s$\n\n$\\omega _{o(rod)}=0 rad/s$\n\n$$\n\nTo find:  $\\omega _{final}$\n\nSince there is no external moment involved about\n\nO. Therefore the Angular momentum of the system\n\nabout O in conserved.\n\n$$\n\n$$\\begin{aligned}\n\n\\therefore \\; I_{rod}\\; \\omega _{initial}+(mV_0r)_{point}&=(I_{rod}+I_{point})\\omega _{final}\\\\\n\n10^{-3} \\times 2 \\times 0.1&=(10^{-5}+10^{-3}(10^{-1})^{2})\\omega _{final}\\\\\n\n2 \\times 10^{-4}&=2 \\times 10^{-5}\\omega _{final}\\\\\n\n\\omega _{final}&=10rad/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **10**."
+      }
+    },
+    "pp:me:2022:q22": {
+      "question_uid": "pp:me:2022:q22",
+      "exam_uid": "me:2022:set1:q22",
+      "title": "GATE ME 2022 | Set 1 | Question: 22",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A rigid uniform annular disc is pivoted on a knife\nedge $A$ in a uniform gravitational field as shown,\nsuch that it can execute small amplitude simple\nharmonic motion in the plane of the figure without\nslip at the pivot point. The inner radius $r$ and outer\nradius $R$ are such that $r^2=R^2/2$, and the acceleration\ndue to gravity is $g$. If the time period of small\namplitude simple harmonic motion is given by\n$T=\\beta \\pi \\sqrt{R/g}$, where $\\pi$ is the ratio of circumference to diameter of a circle, then $\\beta=$________ (round\noff to 2 decimal places).\n<br><img src=\"/question-images/me/2022/me-2022-73e85e3910.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2.66",
+        "tolerance": {
+          "lower": 2.62,
+          "upper": 2.7
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "vibration",
+          "subtopicLabel": "Vibration"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-theory-of-machine",
+          "vibration"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Theory of Machine - Vibration",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-be62cea24d.webp\" />\n\nConsidering the differential ring mass of differential\n\nring\n\n$$\\begin{aligned}\n\nd_m&=\\frac{\\text{mass of ring}}{\\text{volume of ring}}(dV)\\\\\n\n&=\\frac{M}{\\pi(R^2-r^2)t}2 \\pi ada \\times t\\\\\n\n&=\\frac{2Mada}{(R^2-r^2)}\\\\\n\nI_0&=\\bar{I}=\\int a^2 d_m\\\\\n\n&=\\int_{r}^{R}\\frac{2Ma^3da}{(R^2-r^2)}\\\\\n\n&=\\frac{2M}{(R^2-r^2)} \\times \\left [ \\frac{a^4}{4} \\right ]_r^R\\\\\n\n&=\\frac{M}{2}\\frac{R^4-r^4}{R^2-r^2}\\\\\n\n&=\\frac{M}{2}{R^2+r^2}\\\\\n\nI&=\\bar{I}+mr^2\\\\\n\n&=\\frac{M}{2}(R^2+r^2)+Mr^2=\\frac{5MR^2}{4}\n\n\\end{aligned}$$\n\n<img src=\"/question-images/me/2022/me-2022-460e012127.webp\" />\n\nTaking moments about A\n\n$$\\begin{aligned}\n\n\\Sigma M_A&=0\\\\\n\nI\\ddot{\\theta }+Mg(r \\sin \\theta )&=0\\\\\n\n\\frac{5MR^2}{4}\\ddot{\\theta }+Mg\\left ( \\frac{R}{\\sqrt{2}} \\right )\\theta &=0\\;\\;(\\because \\sin \\theta \\cong \\theta )\\\\\n\n\\ddot{\\theta }+\\frac{4g}{5\\sqrt{2}R}\\theta &=0\\\\\n\n\\omega _n&=\\sqrt{\\frac{4g}{5\\sqrt{2}R}}\\\\\n\nT&=\\frac{2 \\pi}{\\omega _n}= \\pi\\left ( 2 \\times \\sqrt{\\frac{5\\sqrt{2}}{5} \\times \\frac{R}{g}} \\right )\\\\\n\n\\beta &=2.65\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2.66** (acceptable range: [2.62, 2.7])."
+      }
+    },
+    "pp:me:2022:q23": {
+      "question_uid": "pp:me:2022:q23",
+      "exam_uid": "me:2022:set1:q23",
+      "title": "GATE ME 2022 | Set 1 | Question: 23",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "Electrochemical machining operations are\r\nperformed with tungsten as the tool, and copper and\r\naluminum as two different workpiece materials.\r\nProperties of copper and aluminum are given in the\r\ntable below.<br>$$\\begin{array}{|c|c|c|c|}\r\n\\hline\r\n\\text{Material} & \\text{Atomic mass (amu)} & \\text{Valency} & \\text{Density }(g/cm^3)\\\\ \\hline\r\nCopper &63  &2  & 9\\\\ \r\nAluminum &27  & 3 & 2.7 \\\\ \\hline\r\n\\end{array}$$<br>Ignore overpotentials, and assume that current\r\nefficiency is 100% for both the workpiece materials. Under identical conditions, if the material removal\r\nrate (MRR) of copper is 100 mg/s, the MRR of\r\naluminum will be ________________ mg/s (roundoff to two decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "28.5",
+        "tolerance": {
+          "lower": 27,
+          "upper": 30
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "machining-and-machine-tool-operation",
+          "subtopicLabel": "Machining and Machine Tool Operation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "machining-and-machine-tool-operation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
+        "markdown": "Copper At. Wt = 63, Valency = 2\n\n$e=\\frac{\\text{At.\\; Wt}}{\\text{Valency}}=\\frac{63}{2}=31.5$\n\nAluminium At. Wt = 27, Valency = 3\n\n$e=\\frac{27}{3}=9$\n\nMaterial Removal Rate in g/s is given by\n\n$MRR=\\frac{e.I}{F}$\n\ne = Chemical equivalent\n\nI = Current\n\nF = Faraday constant\n\nAt Constant current & Faraday's constant\n\n$$\\begin{aligned}\n\nMRR\\propto e\\\\\n\n\\frac{MRR_{Cu}}{MRR_{Al}}&=\\frac{e_{Cu}}{e_{Al}}\\\\\n\n\\frac{100}{MRR_{Al}}&=\\frac{31.5}{9}\\\\\n\nMRR_{Al}&=28.57 mg/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **28.5** (acceptable range: [27, 30])."
+      }
+    },
+    "pp:me:2022:q24": {
+      "question_uid": "pp:me:2022:q24",
+      "exam_uid": "me:2022:set1:q24",
+      "title": "GATE ME 2022 | Set 1 | Question: 24",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 1,
+      "question": "A polytropic process is carried out from an initial\npressure of 110 kPa and volume of 5 $m^3$\n to a final volume of 2.5 $m^3$. The polytropic index is given by\nn = 1.2. The absolute value of the work done during\nthe process is _______ kJ (round off to 2 decimal\nplaces). ",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "409",
+        "tolerance": {
+          "lower": 404,
+          "upper": 414
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-thermodynamics",
+          "subjectLabel": "Thermodynamics",
+          "subtopicSlug": "first-law-heat-work-and-energy",
+          "subtopicLabel": "First Law, Heat, Work and Energy"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-thermodynamics",
+          "first-law-heat-work-and-energy"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Thermodynamics - First Law, Heat, Work and Energy",
+        "markdown": "Polytropic process]\n\n$$\\begin{aligned}\n\nP_1 &= 110 kPa,\\\\\n\nV_1&= 5m^3,\\\\\n\nV_2&=2.5 m^3,\\\\\n\nn&=1.2\\\\\n\n\\Rightarrow \\; P_1V_1^n&=P_2V_2^n\\\\\n\nP_2&=P_1\\left ( \\frac{V_1}{V_2} \\right )^n\\\\\n\n&=110 \\times \\left ( \\frac{5}{2.5} \\right )^{1.2}\\\\\n\nP_2&=252.71 kPa\\\\\n\nW&=\\frac{P_1V_1=P_2V_2}{n-1}\\\\\n\n&=\\frac{110 \\times 5-252.71 \\times 2.5}{1.2-1}\\\\\n\nW&=-408.92kJ\\\\\n\n|W|&=408.92kJ\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **409** (acceptable range: [404, 414])."
+      }
+    },
+    "pp:me:2022:q25": {
+      "question_uid": "pp:me:2022:q25",
+      "exam_uid": "me:2022:set1:q25",
+      "title": "GATE ME 2022 | Set 1 | Question: 25",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A flat plate made of cast iron is exposed to a solar\r\nflux of $600 W/m^2$\r\n at an ambient temperature of  $25 ^{\\circ}C$. Assume that the entire solar flux is absorbed by\r\nthe plate.\r\nCast iron has a low temperature absorptivity of\r\n0.21. Use Stefan-Boltzmann constant $= 5.669 \\times 10^{-8}\r\nW/m^2-K^4$. Neglect all other modes of heat transfer\r\nexcept radiation.\r\nUnder the aforementioned conditions, the radiation\r\nequilibrium temperature of the plate is __________ $^{\\circ}C$ (round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "217.5",
+        "tolerance": {
+          "lower": 210,
+          "upper": 225
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "radiation",
+          "subtopicLabel": "Radiation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-heat-transfer",
+          "radiation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Heat Transfer - Radiation",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-602ec267e6.webp\" />\n\nEquilibrium Temperature $=T_S=?$\n\nIn this it is mentioned that entire flux is absorbed by\n\nthe plate it means for solar flux absorptivity is 1.\n\nKirchoff's law $\\alpha =\\varepsilon =0.21$\n\nSurface of cast iron and surrounding fluid\n\ntemperature difference is small due to this we can\n\nuse Kirchoff's law\n\nAt equilibrium condition\n\nEnergy absorbed = Energy leaving\n\n$$\\begin{aligned}\n\n\\alpha GA&=\\varepsilon A\\sigma (T_S^4-T_\\infty ^4)\\\\\n\n1 \\times 600 &=0.21 \\times 5.669 \\times 10^{-8}(T_S^4-298^4)\\\\\n\nT_S&=491.34K\\\\\n\nT_S&=218.34^{\\circ}C\\\\\n\nT_S&=218^{\\circ}C\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **217.5** (acceptable range: [210, 225])."
+      }
+    },
+    "pp:me:2022:q26": {
+      "question_uid": "pp:me:2022:q26",
+      "exam_uid": "me:2022:set1:q26",
+      "title": "GATE ME 2022 | Set 1 | Question: 26",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "The value of the integral<br>$\\oint \\left (\\frac{6z}{2z^4-3z^3+7z^2-3z+5}  \\right )dz$<br>evaluated over a counter-clockwise circular contour\nin the complex plane enclosing only the pole $z = i$,\nwhere $i$ is the imaginary unit, is",
+      "options": [
+        "$(-1+i)\\pi$",
+        "$(1+i)\\pi$",
+        "$2(1-i)\\pi$",
+        "$(2+i)\\pi$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "complex-variables",
+          "subtopicLabel": "Complex Variables"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-math",
+          "complex-variables"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Complex Variables",
+        "markdown": "$$\\begin{aligned}\n\nf(z)&=\\frac{6z}{(2z^4-3\\tau ^3+7\\tau ^2-3x+5)}\\\\\n\n&=\\frac{6z}{(2z^4+2z^2)(5z^2+5)-3z^3-3z}\\\\\n\n&=\\frac{6z}{qz^2(z^2+1)+5(z^2+1)-3z(z^2+1)}\\\\\n\n&=\\frac{6z}{(z^2+1)(2z^2-3z+5)}\\\\\n\n\\therefore \\oint f(z)dz&=2 \\pi i \\lim_{z \\to 1}(z-i)f(z)\\\\\n\n&=2\\pi i \\lim_{z \\to i}\\frac{6z}{(z+i)(2z^2-3z+5)}\\\\\n\n&=2 \\pi i \\frac{6i}{2i(3-3i)}\\\\\n\n&=\\frac{2 \\pi i}{(1-i)}\\\\\n\n&=\\pi(i-1)\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q27": {
+      "question_uid": "pp:me:2022:q27",
+      "exam_uid": "me:2022:set1:q27",
+      "title": "GATE ME 2022 | Set 1 | Question: 27",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An L-shaped elastic member ABC with slender\r\narms AB and BC of uniform cross-section is\r\nclamped at end A and connected to a pin at end C.\r\nThe pin remains in continuous contact with and is\r\nconstrained to move in a smooth horizontal slot.\r\nThe section modulus of the member is same in both\r\nthe arms. The end C is subjected to a horizontal\r\nforce P and all the deflections are in the plane of the\r\nfigure. Given the length AB is $4a$ and length BC is\r\n$a$, the magnitude and direction of the normal force\r\non the pin from the slot, respectively, are <br><img src=\"/question-images/me/2022/me-2022-be0f7ec040.webp\" /><br>\r\n",
+      "options": [
+        "3P/8, and downwards",
+        "5P/8, and upwards",
+        "P/4, and downwards",
+        "3P/4, and upwards"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "euler-s-theory-of-column",
+          "subtopicLabel": "Euler's Theory of Column"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-strength-of-materials",
+          "euler-s-theory-of-column"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Strength of Materials - Euler's Theory of Column",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-24b357328d.webp\" />\n\nNo vertical deflection allowed\n\n$\\delta _{VC}=\\delta _{VB}=0 \\text{   (Vertical deflection) }$\n\n<img src=\"/question-images/me/2022/me-2022-d6ae472f84.webp\" />\n\n$$\\begin{aligned}\n\n\\delta _B&=\\frac{ML^2}{2EI}-\\frac{NL^2}{3EI}=0\\\\\n\n\\frac{M}{2}&\\frac{NL}{3}\\\\\n\nN&=\\frac{3M}{2L}\\;\\;(\\because L=4a)\\\\\n\nN&=\\frac{3Pa}{2 \\times 4 a}\\\\\n\nN&=\\frac{3}{8}P \\text{   (downward)}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q28": {
+      "question_uid": "pp:me:2022:q28",
+      "exam_uid": "me:2022:set1:q28",
+      "title": "GATE ME 2022 | Set 1 | Question: 28",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A planar four-bar linkage mechanism with 3\nrevolute kinematic pairs and 1 prismatic kinematic\npair is shown in the figure, where AB$\\perp$CE and FD$\\perp$ CE. The T-shaped link CDEF is constructed such\nthat the slider B can cross the point D, and CE is\nsufficiently long. For the given lengths as shown,\nthe mechanism is<br><img src=\"/question-images/me/2022/me-2022-2550bea279.webp\" /><br>",
+      "options": [
+        "a Grashof chain with links AG, AB, and CDEF completely rotatable about the ground link FG",
+        "a non-Grashof chain with all oscillating links",
+        "a Grashof chain with AB completely rotatable about the ground link FG, and oscillatory links AG and CDEF",
+        "on the border of Grashof and non-Grashof chains with uncertain configuration(s)"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "planar-mechanisms",
+          "subtopicLabel": "Planar Mechanisms"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-theory-of-machine",
+          "planar-mechanisms"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Theory of Machine - Planar Mechanisms",
+        "markdown": "The given mechanism is\n\n<img src=\"/question-images/me/2022/me-2022-b31a6e1f91.webp\" />\n\nAs we know sliding pair is a special. Case of turning\n\npair with infinite lengths limit. So the equivalent\n\ndiagram would be. Since two parallel lines meets at\n\ninfinite point $O, 2O_2$  are same.\n\n<img src=\"/question-images/me/2022/me-2022-2685a343c9.webp\" />\n\n$l_1=3 cm$ shortest line,\n\n$l_2=5cm$\n\n$l_3=l_{3(\\infty )}=L_x+3 ,$ longest link\n\n$l_4=l_{4(\\infty )}=L_x+1.5$\n\nFor Grashoff's rule to satisfy\n\n$l_1+l_3 \\leq l_2 +l_4$\n\n$3+L_x+3 \\leq 5+L_x+1.5$\n\n$6 \\leq 6.5$\n\nLHS is less than RHS.\n\nHence, Grashoff's rule is satisfied in this\n\nmechanism. Since shortest link is fixed. It will be a\n\ndouble crank mechanism.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q29": {
+      "question_uid": "pp:me:2022:q29",
+      "exam_uid": "me:2022:set1:q29",
+      "title": "GATE ME 2022 | Set 1 | Question: 29",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a forced single degree-of-freedom system\r\ngoverned by<br>$\\ddot{x}(t)+2\\zeta \\omega _n\\dot{x}(t)+\\omega _n^2x(t)=\\omega _n^2 \\cos (\\omega t)$, <br> where $\\zeta$\r\nand $\\omega _n$\r\n are the damping ratio and undamped natural\r\nfrequency of the system, respectively, while $\\omega$ is\r\nthe forcing frequency. The amplitude of the forced\r\nsteady state response of this system is given by $[(1-r^2)^2+(2\\varsigma r)^2]^{-\\frac{1}{2}}$, where $r=\\omega /\\omega _n$. The peak\r\namplitude of this response occurs at a frequency $\\omega =\\omega _p$. If $\\omega _d$\r\n denotes the damped natural frequency of\r\nthis system, which one of the following options is\r\ntrue?",
+      "options": [
+        "$\\omega _p \\lt \\omega _d \\lt \\omega _n$",
+        "$\\omega _p = \\omega _d \\lt \\omega _n$",
+        "$\\omega _d \\lt \\omega _n = \\omega _p$",
+        "$\\omega _d \\lt \\omega _n \\lt \\omega _p$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "vibration",
+          "subtopicLabel": "Vibration"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-theory-of-machine",
+          "vibration"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Theory of Machine - Vibration",
+        "markdown": "The relation between the frequency at peak and\n\nnatural frequency is given\n\n$\\omega _p=\\omega _n\\sqrt{1-2\\zeta ^2}$\n\n$\\omega _p \\gt \\omega _n$\n\nThe relation between the damped frequency and\n\nnatural frequency\n\n$\\omega _d=\\omega _n\\sqrt{1-\\zeta ^2}$\n\n$\\omega _d \\gt \\omega _n$\n\n$\\frac{\\omega _p}{\\omega _d}=\\frac{\\sqrt{1-2\\zeta ^2}}{\\sqrt{1-\\zeta ^2}} \\lt 1$\n\nTherefore,\n\n$\\omega _p \\lt \\omega _d \\lt \\omega _n$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q30": {
+      "question_uid": "pp:me:2022:q30",
+      "exam_uid": "me:2022:set1:q30",
+      "title": "GATE ME 2022 | Set 1 | Question: 30",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A bracket is attached to a vertical column by\r\nmeans of two identical rivets $U$ and $V$ separated\r\nby a distance of $2a = 100 mm$, as shown in the\r\nfigure. The permissible shear stress of the rivet\r\nmaterial is $50 MPa$. If a load $P = 10 kN$ is applied\r\nat an eccentricity $e=3\\sqrt{7}a$, the minimum crosssectional area of each of the rivets to avoid failure\r\nis ___________ $mm^2$<br><img src=\"/question-images/me/2022/me-2022-f3a10eee23.webp\" /><br>\r\n.",
+      "options": [
+        "$800$",
+        "$25$",
+        "$100 \\sqrt{7}$",
+        "$200$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-machine-design",
+          "subjectLabel": "Machine Design",
+          "subtopicSlug": "bolted-riveted-and-welded-joint",
+          "subtopicLabel": "Bolted, Riveted and Welded Joint"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-machine-design",
+          "bolted-riveted-and-welded-joint"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Machine Design - Bolted, Riveted and Welded Joint",
+        "markdown": "The given load is eccentric lateral load which results\n\nin\n\n(i) primary shear due to direct loading\n\n(ii) secondary shear due to eccentricity\n\n(i) Primary shear:\n\n$F_p=\\frac{F}{n}=\\frac{10kN}{2}=5kN$\n\n(ii) Secondary shear:\n\n$F_s=\\frac{m}{r_1^2+r_2^2} \\times r =\\frac{10 \\times 3\\sqrt{7}a}{a^2+a^2} \\times a=15\\sqrt{7}kN   \\; \\; \\; \\; (\\because a=50mm)$\n\nFinding resultant:\n\n$R=\\sqrt{F_p^2+F_s^2+2F_pF_s \\cos \\theta }$\n\nHere,\n\n$\\theta \\text{ is }90^{\\circ}$\n\nAs secondary load is same on both rivets. Both are\n\ncritical due to loading.\n\n$$\n\n$\\therefore \\;\\;R_{max}=\\sqrt{F_p^2+F_s^2}=\\sqrt{5^2+(15\\sqrt{7})^2}=40kN$\n\nDesign of Rivet:\n\n$$\\begin{aligned}\n\n\\tau _{max} &=\\frac{S_{ys}}{FOS} \\\\\n\n\\frac{R_{max}}{A}&= \\frac{50}{1}\\\\\n\n\\frac{40 \\times 10^3}{A} &=50 \\\\\n\nA&= 800 mm^2\n\n\\end{aligned}$$\n\nAs FOS is considered as 1, A represents the\n\nminimum cross section area required.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q31": {
+      "question_uid": "pp:me:2022:q31",
+      "exam_uid": "me:2022:set1:q31",
+      "title": "GATE ME 2022 | Set 1 | Question: 31",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In $Fe-Fe_3C$ phase diagram, the eutectoid composition\nis 0.8 weight % of carbon at $725 ^{\\circ}C$. The maximum\nsolubility of carbon in $\\alpha$-ferrite phase is 0.025\nweight % of carbon. A steel sample, having no other\nalloying element except 0.5 weight % of carbon, is\nslowly cooled from  $1000 ^{\\circ}C$ to room temperature.\nThe fraction of pro-eutectoid $\\alpha$-ferrite in the above\nsteel sample at room temperature is",
+      "options": [
+        "0.387",
+        "0.864",
+        "0.475",
+        "0.775"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "engineering-materials",
+          "subtopicLabel": "Engineering Materials"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "engineering-materials"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Engineering Materials",
+        "markdown": "Fraction of pro eutectoid $\\alpha-$ Ferrite\n\n$=\\frac{0.8-0.5}{0.8-0.025}=0.387$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q32": {
+      "question_uid": "pp:me:2022:q32",
+      "exam_uid": "me:2022:set1:q32",
+      "title": "GATE ME 2022 | Set 1 | Question: 32",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Activities A to K are required to complete a project.\r\nThe time estimates and the immediate predecessors\r\nof these activities are given in the table. If the\r\nproject is to be completed in the minimum possible\r\ntime, the latest finish time for the activity G is\r\n_____ hours.<br>$$\\begin{array}{|c|c|c|}\\hline\r\n\\text{Activity} &\\text{Time (hours)}  & \\text{Immediate predecessors}\\\\ \\hline\r\nA &2  &- \\\\ \\hline\r\n B& 3 &- \\\\ \\hline\r\n C& 2 &- \\\\ \\hline\r\nD & 4 &A \\\\ \\hline\r\nE & 5 & B\\\\ \\hline\r\nF & 4 & B\\\\ \\hline\r\nG & 3 & C\\\\ \\hline\r\nH & 10 &D,E \\\\ \\hline\r\nI & 5 & F\\\\ \\hline\r\nJ & 8 & G\\\\ \\hline\r\nK & 3 &H,I,J\\\\ \\hline\r\n\\end{array}$$",
+      "options": [
+        "5",
+        "10",
+        "8",
+        "9"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-industrial-engineering",
+          "subjectLabel": "Industrial Engineering",
+          "subtopicSlug": "pert-and-cpm",
+          "subtopicLabel": "PERT and CPM"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-industrial-engineering",
+          "pert-and-cpm"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Industrial Engineering - PERT and CPM",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-e6c6dcf7a7.webp\" />\n\nActivity 'G'\n\n<img src=\"/question-images/me/2022/me-2022-5e3a36d9b5.webp\" />\n\nLFT of activity 'G' = 10 hours\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q33": {
+      "question_uid": "pp:me:2022:q33",
+      "exam_uid": "me:2022:set1:q33",
+      "title": "GATE ME 2022 | Set 1 | Question: 33",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A solid spherical bead of lead (uniform density $=11000\\; kg/m^3$) of diameter $d = 0.1 mm$ sinks with\r\na constant velocity $V$ in a large stagnant pool of a\r\nliquid (dynamic viscosity $=1.1 \\times 10^{-3} kg.m^{-1}.s^{-1}$).\r\nThe coefficient of drag is given by $C_D=\\frac{24}{Re}$, where\r\nthe Reynolds number ($Re$) is defined on the basis of\r\nthe diameter of the bead. The drag force acting on\r\nthe bead is expressed as $D=(C_D)(0.5 \\rho V^2)\\left ( \\frac{\\pi d^2}{4} \\right )$, where $\\rho$ is the density of the liquid. Neglect the\r\nbuoyancy force. Using $g = 10 m/s^2$, the velocity $V$\r\nis __________ m/s.",
+      "options": [
+        "$\\frac{1}{24}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{18}$",
+        "$\\frac{1}{12}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "viscous-turbulent-flow-and-boundary-layer-theory",
+          "subtopicLabel": "Viscous, Turbulent Flow and Boundary Layer Theory"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-fluid-mechanics",
+          "viscous-turbulent-flow-and-boundary-layer-theory"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics - Viscous, Turbulent Flow and Boundary Layer Theory",
+        "markdown": "As buoyancy force is neglected we can neglect\n\ndensity of fluid ($$) in the following equation.\n\n$$\\begin{aligned}\n\nV&=\\frac{1}{18\\mu _f}(\\rho _b-\\rho _f)gd^2\\\\\n\n&=\\frac{11000 \\times 10 \\times (10^{-4})^2}{18 \\times 1.1 \\times 10^{-3}}\\\\\n\n&=\\frac{1}{18}m/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:me:2022:q34": {
+      "question_uid": "pp:me:2022:q34",
+      "exam_uid": "me:2022:set1:q34",
+      "title": "GATE ME 2022 | Set 1 | Question: 34",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider steady, one-dimensional compressible\nflow of a gas in a pipe of diameter 1 m. At one\nlocation in the pipe, the density and velocity are 1 $kg/m^3$\n and 100 m/s, respectively. At a downstream\nlocation in the pipe, the velocity is 170 m/s. If the\npressure drop between these two locations is 10 kPa,\nthe force exerted by the gas on the pipe between\nthese two locations is ____________ N.",
+      "options": [
+        "$350 \\pi ^2$",
+        "$750 \\pi$",
+        "$1000 \\pi$",
+        "$3000$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "fluid-dynamics",
+          "subtopicLabel": "Fluid Dynamics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-fluid-mechanics",
+          "fluid-dynamics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics - Fluid Dynamics",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-b60e278687.webp\" />\n\nApplying momentum equation to the pipe flow,\n\n$\\Sigma \\vec{F}=(\\dot{m}\\vec{V})_{out}-(\\dot{m}\\vec{V})_{in}+\\frac{\\partial }{\\partial t}(m\\vec{V})_{e,v}$\n\n$P_1A-P_2A+F=\\dot{m}(V_2)-\\dot{m}(V_1)$\n\n$$\\begin{aligned}\n\n\\therefore \\; F&=\\dot{m}(V_2-V_1)-(P_1-P_2)A\\\\\n\n&=\\rho _1AV_1(V_2-V_1)-(P_1-P_2)A\\\\\n\n&=\\frac{ \\pi d^2}{4}\\left [ \\rho (V_1V_2-V_1^2)-(P_1-P_2) \\right ]\\\\\n\n&=\\frac{\\pi \\times 1^2}{4}\\left [ 1 \\times (100 \\times 170 -100^2)-(10 \\times 10^3) \\right ]\\\\\n\n&=-750 \\pi N\n\n\\end{aligned}$$\n\nNegative sign shows that assumed direction of\n\nforce is opposite of actual direction.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q35": {
+      "question_uid": "pp:me:2022:q35",
+      "exam_uid": "me:2022:set1:q35",
+      "title": "GATE ME 2022 | Set 1 | Question: 35",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Consider a rod of uniform thermal conductivity\nwhose one end $(x = 0)$ is insulated and the other\nend $(x = L)$ is exposed to flow of air at temperature\n$T_\\infty$ with convective heat transfer coefficient $h$. The\ncylindrical surface of the rod is insulated so that\nthe heat transfer is strictly along the axis of the rod.\nThe rate of internal heat generation per unit volume\ninside the rod is given as<br>$\\dot{q}=\\cos \\frac{2 \\pi x}{L}$\n<br>\nThe steady state temperature at the mid-location of\nthe rod is given as $T_A$. What will be the temperature\nat the same location, if the convective heat transfer\ncoefficient increases to $2h$?",
+      "options": [
+        "$T_A+\\frac{\\dot{q}L}{2h}$",
+        "$2T_A$",
+        "$T_A$",
+        "$T_A \\left (1-\\frac{\\dot{q}L}{4 \\pi h}  \\right )+\\frac{\\dot{q}L}{4 \\pi h}T_\\infty$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "fins-and-unsteady-heat-transfer",
+          "subtopicLabel": "Fins and Unsteady Heat Transfer"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-heat-transfer",
+          "fins-and-unsteady-heat-transfer"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Heat Transfer - Fins and Unsteady Heat Transfer",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-64176cfdd8.webp\" />\n\n$\\dot{q}=\\frac{\\cos 2 \\pi x}{L}$\n\nTotal heat generation $=Q_g=\\int_{o}^{L}\\dot{q}d(\\text{Volume})$\n\n$$\\begin{aligned}\n\nQ_g&=\\int_{o}^{L}\\dot{q}Adx\\\\\n\n&=\\int_{o}^{L}\\left ( \\frac{\\cos 2\\pi x}{L} \\right )Adx\\\\\n\n&=A\\left [ \\frac{\\sin \\left (\\frac{2 \\pi x}{L}  \\right ) }{\\frac{ 2 \\pi }{L}} \\right ]_{0}^{L}\\\\\n\n&=\\left ( \\frac{L}{2 \\pi} \\right )A\\left [  \\sin \\left (\\frac{2 \\pi x}{L} \\right )- \\sin (0) \\right ]\n\n\\end{aligned}$$\n\n$Q_g=0$\n\nAt steady state  $Q_{stored}=0$\n\n$Q_{in}+Q_{gen}-Q_{out}=Q_{stored}$\n\n$Q_{gen}=Q_{out}$\n\n$0=hA_S(T_S-T_\\infty$\n\n$h \\text{ and } A_S$ can't be zero it means $T_S=T_ \\infty$\n\nIt indicate that $T_S$ is independent of heat transfer\n\ncoefficient.\n\nSo it means temperature of body any where is\n\nindependent of heat transfer coefficient.\n\nSo by increasing heat transfer coefficient there is no\n\nchange in the temperature at mid location.\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:me:2022:q36": {
+      "question_uid": "pp:me:2022:q36",
+      "exam_uid": "me:2022:set1:q36",
+      "title": "GATE ME 2022 | Set 1 | Question: 36",
+      "year": "gateme-2022-set1",
+      "type": "MSQ",
+      "marks": 2,
+      "question": "The system of linear equations in real $(x, y)$ given\r\nby<br>$$(x\\;\\;y)\\begin{bmatrix}\r\n2 & 5-2\\alpha \\\\ \r\n \\alpha & 1\r\n\\end{bmatrix} =(0\\;\\;0)$$<br>involves a real parameter $\\alpha$ and has infinitely many\r\nnon-trivial solutions for special value(s) of $\\alpha$.\r\nWhich one or more among the following options is/\r\nare non-trivial solution(s) of $(x,y)$ for such special\r\nvalue(s) of $\\alpha$?",
+      "options": [
+        "$x=2,y=-2$",
+        "$x=-1,y=4$",
+        "$x=1,y=1$",
+        "$x=4,y=-2$"
+      ],
+      "answer_meta": {
+        "type": "MSQ",
+        "answer": "A, B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "linear-algebra",
+          "subtopicLabel": "Linear Algebra"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-math",
+          "linear-algebra"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Linear Algebra",
+        "markdown": "$$\\begin{aligned}\n\n\\begin{pmatrix}\n\nx &y\n\n\\end{pmatrix}\\begin{pmatrix}\n\n2 &5-2\\alpha  \\\\\n\n\\alpha & 1\n\n\\end{pmatrix}&=\\begin{pmatrix}\n\n0 &0\n\n\\end{pmatrix}\\\\\n\n2x+\\alpha y&=0\\\\\n\n(5-2\\alpha )x+y&=0\\\\\n\n\\therefore \\begin{pmatrix}\n\n2 & \\alpha \\\\\n\n5-2\\alpha  & 1\n\n\\end{pmatrix}\\begin{pmatrix}\n\nx\\\\y\n\n\\end{pmatrix}&=\\begin{pmatrix}\n\n0\\\\0\n\n\\end{pmatrix} \\;\\;\\; . . . . (1)\n\n\\end{aligned}$$\n\nTo get infinite number of non-trivial solutions $$\\begin{aligned}\n\n\\begin{vmatrix}\n\n2 &\\alpha  \\\\\n\n5-2\\alpha & 1\n\n\\end{vmatrix}&=0\\\\\n\n2-(5\\alpha -2\\alpha ^2)&=0\\\\\n\n(2\\alpha -1)(\\alpha -2)&=0\\\\\n\n\\therefore \\alpha =\\frac{1}{2},\\alpha &=2\\\\\n\n\\end{aligned}$$\n\nAt $\\alpha =\\frac{1}{2}$; eq. (1) gives $(4x+y)=0$  . . .(2)\n\noption (B) is satisfied by (2)\n\nAt $\\alpha =2$; eq. (1) gives $(x+y)=0$  . . .(3)\n\noption (A) is satisfied by (3)$$\n\nBoth options (A) and (B) are correct\n\nTherefore, the correct option(s) are **A, B**."
+      }
+    },
+    "pp:me:2022:q37": {
+      "question_uid": "pp:me:2022:q37",
+      "exam_uid": "me:2022:set1:q37",
+      "title": "GATE ME 2022 | Set 1 | Question: 37",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Let a random variable X follow Poisson distribution\nsuch that<br>\n$Prob(X = 1) = Prob(X = 2).$<br>\nThe value of $Prob(X = 3)$ is __________ (round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.18",
+        "tolerance": {
+          "lower": 0.17,
+          "upper": 0.19
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "probability-and-statistics",
+          "subtopicLabel": "Probability and Statistics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-math",
+          "probability-and-statistics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Probability and Statistics",
+        "markdown": "$$\\begin{aligned}\n\nP(x=1)&=P(x=2)\\\\\n\n\\frac{e^{-\\lambda }\\lambda }{1!}&=\\frac{e^{-\\lambda }\\lambda ^2}{2!}\\\\\n\n\\therefore \\lambda &=2\\\\\n\nP(x=3)&=\\frac{e^{-2}2^3}{3!}=0.18\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.18** (acceptable range: [0.17, 0.19])."
+      }
+    },
+    "pp:me:2022:q38": {
+      "question_uid": "pp:me:2022:q38",
+      "exam_uid": "me:2022:set1:q38",
+      "title": "GATE ME 2022 | Set 1 | Question: 38",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider two vectors:\n<br>$\\vec{a}=5i+7j+2k$<br>$\\vec{b}=3i-j+6k$<br>\nMagnitude of the component of $\\vec{a}$ orthogonal to $\\vec{b}$ in the plane containing the vectors $\\vec{a}$ and $\\vec{b}$ is\n__________ (round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "8.3",
+        "tolerance": {
+          "lower": 7.9,
+          "upper": 8.7
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-math",
+          "subjectLabel": "Engineering Mathematics (ME)",
+          "subtopicSlug": "calculus",
+          "subtopicLabel": "Calculus"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-math",
+          "calculus"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mathematics - Calculus",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-3c1fe547a7.webp\" />\n\nComponent of $\\vec{a}$ parallel to $\\vec{b}=\\frac{\\vec{a}\\cdot \\vec{b}}{|\\vec{b}|}=\\frac{20}{\\sqrt{46}}=2.95$\n\nNow,\n\n$$\\begin{aligned}\n\n|\\vec{a}|^2&=2.95^2+(a\\perp )^2\\\\\n\n78&=2.95^2+(a\\perp )^2\\\\\n\na\\perp&=8.32\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **8.3** (acceptable range: [7.9, 8.7])."
+      }
+    },
+    "pp:me:2022:q39": {
+      "question_uid": "pp:me:2022:q39",
+      "exam_uid": "me:2022:set1:q39",
+      "title": "GATE ME 2022 | Set 1 | Question: 39",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A structure, along with the loads applied on it, is\r\nshown in the figure. Self-weight of all the members\r\nis negligible and all the pin joints are frictionless. AE is a single member that contains pin C.\r\nLikewise, BE is a single member that contains\r\npin D. Members GI and FH are overlapping rigid\r\nmembers. The magnitude of the force carried by\r\nmember CI is ________ kN (in integer).<br><img src=\"/question-images/me/2022/me-2022-092eae67e4.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "18",
+        "tolerance": {
+          "lower": 18,
+          "upper": 18
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "fbd-equilirbium-plane-trusses-and-virtual-work",
+          "subtopicLabel": "FBD, Equilirbium, Plane Trusses and Virtual work"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-engineering-mechanics",
+          "fbd-equilirbium-plane-trusses-and-virtual-work"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mechanics - FBD, Equilirbium, Plane Trusses and Virtual work",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-93ff03e72f.webp\" />\n\nBy method of sections cut CI, EI and EF and prefer\n\nthe right hand side\n\nFor equilibrium:\n\n$\\Sigma M_E=0$ Anticlockwise positive\n\n$T_{CI}(1.5)-2(1.5)-4(6)=0$\n\n$\\Rightarrow  T_{CI}=\\frac{3+24}{1.5}=18kN$\n\nTherefore, the correct answer is **18**."
+      }
+    },
+    "pp:me:2022:q40": {
+      "question_uid": "pp:me:2022:q40",
+      "exam_uid": "me:2022:set1:q40",
+      "title": "GATE ME 2022 | Set 1 | Question: 40",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Two rigid massless rods PR and RQ are joined at\nfrictionless pin-joint R and are resting on ground\nat P and Q, respectively, as shown in the figure. A\nvertical force F acts on the pin R as shown. When\nthe included angle $\\theta \\lt 90^{\\circ}$, the rods remain in static\nequilibrium due to Coulomb friction between the\nrods and ground at locations P and Q. At $\\theta = 90^{\\circ}$,\nimpending slip occurs simultaneously at points P\nand Q. Then the ratio of the coefficient of friction\nat Q to that at P $P(\\mu _Q/\\mu _P)$ is _________ (round off to\ntwo decimal places).<br><img src=\"/question-images/me/2022/me-2022-a59c181fe9.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "5.75",
+        "tolerance": {
+          "lower": 5.7,
+          "upper": 5.8
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "friction",
+          "subtopicLabel": "Friction"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-engineering-mechanics",
+          "friction"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mechanics - Friction",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-e1b9327593.webp\" />\n\nBy pythagoras theorem:\n\n$PQ = 13 m$\n\nBy Geometry:\n\n$$\\begin{aligned}\n\n5^2-PR^{'2}&=10^2-AR^{'2}\\\\\n\nQR'&=13-PR'\\\\\n\n\\Rightarrow PR'&=\\frac{25}{13}m\\\\\n\n\\Rightarrow QR'&=\\frac{144}{13}m\\\\\n\n\\Sigma M_P&=0\\\\\n\n\\Rightarrow F(PR')&=N_Q(PQ)\\\\\n\n\\Rightarrow N_Q&=\\frac{25}{169}F\\\\\n\n\\Sigma F&=0\\\\\n\n\\Rightarrow N_P&=F-\\frac{25}{169}F\\\\\n\n&=\\frac{144}{169}F\n\n\\end{aligned}$$\n\nNow, $f_P=\\mu _PN_P, f_Q=\\mu _QN_Q, \\Sigma F_x=0$\n\n$$\\begin{aligned}\n\n\\mu _PN_P&=\\mu _QN_Q\\\\\n\n\\frac{\\mu _Q}{\\mu _P}&=\\frac{N_P}{N_Q}\\\\\n\n&=\\frac{144}{25}=5.76\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **5.75** (acceptable range: [5.7, 5.8])."
+      }
+    },
+    "pp:me:2022:q41": {
+      "question_uid": "pp:me:2022:q41",
+      "exam_uid": "me:2022:set1:q41",
+      "title": "GATE ME 2022 | Set 1 | Question: 41",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A cylindrical disc of mass $m=1 \\; kg$and radius $r=0.15\\;m$ was spinning at $\\omega =5 \\; rad/s$ when it was\r\nplaced on a flat horizontal surface and released\r\n(refer to the figure). Gravity $g$ acts vertically\r\ndownwards as shown in the figure. The coefficient\r\nof friction between the disc and the surface is finite\r\nand positive. Disregarding any other dissipation\r\nexcept that due to friction between the disc and the\r\nsurface, the horizontal velocity of the center of the\r\ndisc, when it starts rolling without slipping, will be\r\n_________ m/s (round off to 2 decimal places).<br><img src=\"/question-images/me/2022/me-2022-befb6425a6.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.25",
+        "tolerance": {
+          "lower": 0.24,
+          "upper": 0.26
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-engineering-mechanics",
+          "subjectLabel": "Engineering Mechanics",
+          "subtopicSlug": "friction",
+          "subtopicLabel": "Friction"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-engineering-mechanics",
+          "friction"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Engineering Mechanics - Friction",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-9a3141a6ac.webp\" />\n\nAbout point P there is no external torque.\n\n[Because Torques of N and 'mg' balances and\n\nfriction force pass through point P, hence its torque\n\nis zero]$$\n\n$\\therefore \\left [ \\frac{d\\vec{L}}{dt} =\\vec{\\tau }_{ext}\\right ]_{\\text{about P}}=0$\n\nwhere   $\\vec{\\tau }=$ Torque and $\\vec{L }=$ Angular momentum\n\n$$\\begin{aligned}\n\n\\vec{L_i}&=\\vec{L_f}\\\\\n\nI_0\\omega &=I_0\\omega '+mvr\\\\\n\n\\frac{mr^2}{2}\\omega &=\\frac{mr^2}{2}\\omega'+m\\omega 'r^2\\\\\n\n\\therefore \\omega '&=\\frac{\\omega }{3}=\\frac{5}{3}\\\\\n\n\\Rightarrow v&=\\omega ' \\times r\\\\&=\\frac{5}{3} \\times 0.15=0.25 m/s\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.25** (acceptable range: [0.24, 0.26])."
+      }
+    },
+    "pp:me:2022:q42": {
+      "question_uid": "pp:me:2022:q42",
+      "exam_uid": "me:2022:set1:q42",
+      "title": "GATE ME 2022 | Set 1 | Question: 42",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A thin-walled cylindrical pressure vessel has mean\nwall thickness of $t$ and nominal radius of $r$. The\nPoisson's ratio of the wall material is 1/3. When it\nwas subjected to some internal pressure, its nominal\nperimeter in the cylindrical portion increased by\n0.1% and the corresponding wall thickness became\n$\\bar{t}$. The corresponding change in the wall thickness\nof the cylindrical portion, i.e. $100\\times (\\bar{t}-t)/t$, is\n________%(round off to 3 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "-0.06",
+        "tolerance": {
+          "lower": -0.062,
+          "upper": -0.058
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-strength-of-materials",
+          "subjectLabel": "Strength of Materials",
+          "subtopicSlug": "thin-cylinder",
+          "subtopicLabel": "Thin Cylinder"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-strength-of-materials",
+          "thin-cylinder"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Strength of Materials - Thin Cylinder",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-e72839a476.webp\" />\n\n$\\pi(d+\\delta d)=1.001 \\pi d$\n\n$\\varepsilon _1=\\frac{\\delta d}{d}=0.001=\\frac{Pd}{4tE}(2-v)$\n\n$\\frac{Pd}{4tE}=\\frac{0.001}{(2-v)}=6 \\times 10^{-4}$\n\nRadial strain\n\n$\\varepsilon _2=\\frac{\\delta t}{t}=\\frac{1}{E}\\left [ \\sigma _r-v(\\sigma _h-\\sigma _L) \\right ]$\n\n$\\frac{\\delta t}{t}=\\frac{1}{E}\\left [ -v\\frac{Pd}{4t}(2+1) \\right ]$\n\n$\\frac{\\delta t}{t}=-\\frac{Pd}{4tE}v(3)=-6 \\times 10^{-4} \\times \\frac{1}{3}(3)=-6 \\times 10^{-4}$\n\nTherefore,\n\nThe corresponding change in the wall thickness of\n\nthe cylindrical portion\n\n$=100 \\times \\left [ \\frac{\\bar{t}-t}{t} \\right ]=100 \\times \\frac{\\delta t}{t}=100 \\times (-6) \\times 10^{-4}=-0.06 \\%$\n\nTherefore, the correct answer is **-0.06** (acceptable range: [-0.062, -0.058])."
+      }
+    },
+    "pp:me:2022:q43": {
+      "question_uid": "pp:me:2022:q43",
+      "exam_uid": "me:2022:set1:q43",
+      "title": "GATE ME 2022 | Set 1 | Question: 43",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A schematic of an epicyclic gear train is shown in\nthe figure. The sun (gear 1) and planet (gear 2) are\nexternal, and the ring gear (gear 3) is internal. Gear\n1, gear 3 and arm OP are pivoted to the ground at O.\nGear 2 is carried on the arm OP via the pivot joint\nat P, and is in mesh with the other two gears. Gear 2\nhas 20 teeth and gear 3 has 80 teeth. If gear 1 is kept\nfixed at 0 rpm and gear 3 rotates at 900 rpm counter\nclockwise (ccw), the magnitude of angular velocity\nof arm OP is __________rpm (in integer).<br><img src=\"/question-images/me/2022/me-2022-b0932e78a7.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "600",
+        "tolerance": {
+          "lower": 600,
+          "upper": 600
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-theory-of-machine",
+          "subjectLabel": "Theory of Machine",
+          "subtopicSlug": "gear-and-gear-train",
+          "subtopicLabel": "Gear and Gear Train"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-theory-of-machine",
+          "gear-and-gear-train"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Theory of Machine - Gear and Gear Train",
+        "markdown": "Speed of gear 1 $N_1 =0$,\n\nSpeed of gear 3 $N_3 =900rpm$,\n\nSpeed of Arm  $N_{arm} =?$,\n\nTeeth of gear 1 $z_1=?$\n\nTeeth of gear 2 $z_2=20$\n\nTeeth of gear 3 $z_3=80$\n\nTeeth of gear 2\n\n$$\\begin{aligned}\n\nz_3&=z_1+2z_2\\\\\n\n80&=z_1+2(20)\\\\\n\nz_1&=40\n\n\\end{aligned}$$\n\n$$\\begin{array}{|c|c|c|c|c|c|} \\hline\n\n\\text{S.No}&\\text{Condition of mtotion} &\\text{Speed of arm} &\\text{Speed of gear 1} &\\text{Speed of gear 2} &\\text{Speed of gear 3}\\\\ \\hline 1&\\text{Arm is fixed and gear 1 with +x rev}&0&+1&\\frac{-z_1}{z_2}(1)&\\frac{-z_1}{z_3}(1)\\\\ \\hline\n\n2&\\text{Arm is fixed and gear 1 with +x rev}&0&+x&\\frac{-z_1}{z_2}(x)&\\frac{-z_1}{z_3}(x)\\\\ \\hline\n\n3&\\text{Arm with +y rev}&+y&y&+y&+y\\\\ \\hline\n\n4&\\text{Total }&y&x+y &y-x\\frac{z_1}{z_2}&y-\\frac{z_1}{z_3}(x)\\\\ \\hline\n\n\\end{array}$$\n\n$$\\begin{aligned}\n\nN_1&=x+y=0\\\\\n\n\\Rightarrow x&=-y \\\\\n\nN_3&=y-\\frac{z_1}{z_3}(x)=900\\\\\n\n&=y-\\frac{40}{80}(x)=900\\\\\n\n\\Rightarrow y-\\frac{40}{80}(-y)=900\\\\\n\n1.5y&=900\\\\\n\ny&=600 rpm\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **600**."
+      }
+    },
+    "pp:me:2022:q44": {
+      "question_uid": "pp:me:2022:q44",
+      "exam_uid": "me:2022:set1:q44",
+      "title": "GATE ME 2022 | Set 1 | Question: 44",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Under orthogonal cutting condition, a turning\noperation is carried out on a metallic workpiece at a\ncutting speed of 4 m/s. The orthogonal rake angle of\nthe cutting tool is $5^{\\circ}$. The uncut chip thickness and\nwidth of cut are 0.2 mm and 3 mm, respectively. In\nthis turning operation, the resulting friction angle\nand shear angle are $45^{\\circ}$ and $25^{\\circ}$, respectively. If\nthe dynamic yield shear strength of the workpiece material under this cutting condition is 1000 MPa,\nthen the cutting force is ______________ N (round\noff to one decimal place).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2573",
+        "tolerance": {
+          "lower": 2570,
+          "upper": 2576
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "machining-and-machine-tool-operation",
+          "subtopicLabel": "Machining and Machine Tool Operation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "machining-and-machine-tool-operation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
+        "markdown": "Cutting speed $(V) = 4m/sec$\n\nOrthogonal rake angle $\\alpha =5^{\\circ}$\n\nUncut chip thickness ($(t_1)=.0.2mm$\n\nWidth of cut $(w) = 3 mm$\n\nFriction angle $\\beta =45^{\\circ}$\n\nShear angle $(\\phi ) =25^{\\circ}$\n\nShear strength $(\\tau _0 ) =1000MPa$\n\nCutting force $(F_c)=$____N\n\n$$\\begin{aligned}\n\nF_S &= R \\cos (\\phi +\\beta -\\alpha )\\\\\n\nR&=\\frac{\\tau _0 \\cdot A_S}{\\cos (\\phi +\\beta -\\alpha )} \\\\\n\nR&=\\frac{\\tau _0 \\cdot wt_1}{\\sin \\phi \\cos (\\phi +\\beta -\\alpha )} \\\\\n\nF_c&= R \\cdot \\cos (\\beta -\\alpha )\\\\\n\n&=\\frac{\\tau _0 \\cdot wt_1\\cdot \\cos (\\beta -\\alpha )}{\\sin \\phi \\cos (\\phi +\\beta -\\alpha )} \\\\\n\n&= \\frac{1000 \\times 3 \\times 0.2 \\times \\cos (45-5)}{\\sin 25\\cdot \\cos (25+45-5)}\\\\\n\n&=2573.4N\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2573** (acceptable range: [2570, 2576])."
+      }
+    },
+    "pp:me:2022:q45": {
+      "question_uid": "pp:me:2022:q45",
+      "exam_uid": "me:2022:set1:q45",
+      "title": "GATE ME 2022 | Set 1 | Question: 45",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 1 mm thick cylindrical tube, 100 mm in diameter,\r\nis orthogonally turned such that the entire wall\r\nthickness of the tube is cut in a single pass. The\r\naxial feed of the tool is 1 m/minute and the specific\r\ncutting energy (u) of the tube material is 6 $J/mm^3$.\r\nNeglect contribution of feed force towards power.\r\nThe power required to carry out this operation is\r\n_________ kW (round off to one decimal place).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "31",
+        "tolerance": {
+          "lower": 30,
+          "upper": 32
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "machining-and-machine-tool-operation",
+          "subtopicLabel": "Machining and Machine Tool Operation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "machining-and-machine-tool-operation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Machining and Machine Tool Operation",
+        "markdown": "Given data, cylindrical tube thickness $(t)$ = 1 mm\n\nDiameter $(D)$ = 100 mm\n\nOrthogonal cutting such that entire wall thickness\n\nof tube is cut in single pass.\n\nTherefore, Tube thickness = depth of cut = $d = 1 mm$\n\nAxial feed of the tool $= 1 m/min = f.N$\n\nSpecific cutting Energy $(U) = 6 \\; J/mm^3$\n\nPower _________ kW\n\nSpecific cutting energy$(U) = 6 \\; J/mm^3=\\frac{\\text{Power}}{\\text{MRR}}$\n\n$$\\begin{aligned}\n\nPower &= 6 \\times MRR \\\\\n\n&= 6 \\times f.d.v\\\\\n\n&= 6 \\times f.d. \\pi.D.N\\\\\n\n&= 6 \\times d \\times \\pi \\times D \\times f.N\\\\\n\n&= 6 \\times 1 \\times \\pi \\times 100 \\times 1 \\times \\frac{1000}{60}\\\\\n\n&= 31415.9\\;J/sec \\; or \\; Watt\\\\\n\n&=31.4 \\;kW\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **31** (acceptable range: [30, 32])."
+      }
+    },
+    "pp:me:2022:q46": {
+      "question_uid": "pp:me:2022:q46",
+      "exam_uid": "me:2022:set1:q46",
+      "title": "GATE ME 2022 | Set 1 | Question: 46",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A 4 mm thick aluminum sheet of width $w=100mm$\nis rolled in a two-roll mill of roll diameter 200 mm\neach. The workpiece is lubricated with a mineral\noil, which gives a coefficient of friction, $\\mu =0.1$.\nThe flow stress ($\\sigma$) of the material in MPa is $\\sigma=207+414\\varepsilon$ , where $\\varepsilon$ is the true strain. Assuming\nrolling to be a plane strain deformation process, the\nroll separation force (F) for maximum permissible\ndraft (thickness reduction) is _________ kN (round\noff to the nearest integer).<br>Use : $F=1.15 \\bar{\\sigma }\\left ( 1+\\frac{\\mu L}{2\\bar{h}} \\right )wL$<br>where $\\bar{\\sigma }$ is average flow stress, $L$ is roll-workpiece\ncontact length, and $\\bar{h}$ is the average sheet thickness.",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "350",
+        "tolerance": {
+          "lower": 340,
+          "upper": 360
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "forming-process",
+          "subtopicLabel": "Forming Process"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "forming-process"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Forming Process",
+        "markdown": "Initial thickness $h_1=4mm$\n\nWidth $w= 100 mm$\n\nRoll Diameter $D= 200 mm$\n\nRoll Radius $R= 100 mm$\n\nCoefficient of Friction $\\mu =0.1$\n\nFlow stress is given by $\\sigma =207+414\\varepsilon$\n\n<img src=\"/question-images/me/2022/me-2022-561363fab0.webp\" />\n\nWe have equation for maximum possible reduction\n\nis\n\n$$\\begin{aligned}\n\n\\Delta h&=\\mu ^2R\\\\\n\n\\Delta h&=(0.1)^2 \\times 100=1mm=h_1-h_2\\\\\n\nh_2&=h_1-\\Delta h=4-1=3mm\n\n\\end{aligned}$$\n\nNow True strain $\\varepsilon = \\ln\\left ( \\frac{h_1}{h_2} \\right )= \\ln \\left ( \\frac{4}{3} \\right )=0.2876$\n\nStress when no rolling $\\varepsilon =0, \\sigma _1=207 MPa$\n\nStress when material is rolled to maximum possible\n\nextent $\\varepsilon =0.2876, \\sigma _2=207+414(0.2876)=326.06 MPa$\n\nSince Strain hardening characteristics is linear the\n\naverage flow stress $\\bar{\\sigma }=\\frac{\\sigma _1+\\sigma _2}{2}=\\frac{207+326.06}{2}=266.53MPa$\n\nProjected length of contact\n\n$L=\\sqrt{R\\cdot \\Delta h}=\\sqrt{100 \\times 1}=10mm$\n\nRolls separation force,\n\n$$\\begin{aligned}\n\nF&=1.15\\bar{\\sigma }\\left ( 1+\\frac{\\mu L}{2\\bar{h}} \\right )wL\\\\\n\n&=1.15 \\times 266.53\\left ( 1+\\frac{0.1 \\times 10}{2 \\times \\frac{7}{2}} \\right ) \\times 100 \\times 10\\\\\n\nF&=350.3 N\\\\\n\nF&=0.350kN\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **350** (acceptable range: [340, 360])."
+      }
+    },
+    "pp:me:2022:q47": {
+      "question_uid": "pp:me:2022:q47",
+      "exam_uid": "me:2022:set1:q47",
+      "title": "GATE ME 2022 | Set 1 | Question: 47",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Two mild steel plates of similar thickness, in buttjoint configuration, are welded by gas tungsten\narc welding process using the following welding\nparameters.<br>$$\\begin{array}{|c|c|}\\hline\n \\text{Welding voltage}&20V \\\\ \\hline\n\\text{Welding current} & 150A\\\\ \\hline\n\\text{Welding speed}&5mm/s \\\\ \\hline\n\\end{array}$$<br>A filler wire of the same mild steel material having\n3 mm diameter is used in this welding process. The\nfiller wire feed rate is selected such that the final\nweld bead is composed of 60% volume of filler and\n40% volume of plate material. The heat required to melt the mild steel material is 10 $J/mm^3$. The heat\ntransfer factor is 0.7 and melting factor is 0.6. The\nfeed rate of the filler wire is __________ mm/s\n(round off to one decimal place).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "10.7",
+        "tolerance": {
+          "lower": 10.5,
+          "upper": 10.9
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-manufacturing-engineering",
+          "subjectLabel": "Manufacturing Engineering",
+          "subtopicSlug": "joining-welding",
+          "subtopicLabel": "Joining-Welding"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-manufacturing-engineering",
+          "joining-welding"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Manufacturing Engineering - Joining-Welding",
+        "markdown": "Welding current = 150A\n\nWelding voltage = 20V\n\nHeat Generated $Q_1 = V \\times I=150 \\times 20=3000 Watt$\n\nNet Heat supplied to the Work Piece $(Q_2)=Q_1 \\times \\eta _{HT} =300 \\times 0.7=2100 Watt$\n\nHeat Required to Melt the material $(Q_3)=Q_2 \\times \\eta _{m} =2100 \\times 0.6=1260 Watt$\n\nSince Heat Required to melt the material is given\n\ndirectly in the question $10^5 \\; J/mm^3$\n\nHence we can write\n\n$1260=10 \\times$ Volumetric metal Deposition Rate (VMDR)\n\n(VMDR) $=\\frac{1260}{10}=126 mm^3/s$\n\nIt means total $126 mm^3/s$ metal need to be deposited in the gap between Work Piece\n\nIt is given in the question that 60% of the total volume is to be filled by electrode.\n\nHence, effective volumetric metal deposition by electrode$=126 \\times 0.6=75.6 mm^3/s$\n\nVolumetric metal deposition rate = Cross section\n\nArea of electrode x Electrode feed rate\n\n$75.6=\\frac{\\pi}{4}d_e^2 \\times \\text{feed rate}$\n\n$\\text{feed rate}=\\frac{75.6}{\\frac{\\pi}{4}(3)^2}=10.69mm/s$\n\nTherefore, the correct answer is **10.7** (acceptable range: [10.5, 10.9])."
+      }
+    },
+    "pp:me:2022:q48": {
+      "question_uid": "pp:me:2022:q48",
+      "exam_uid": "me:2022:set1:q48",
+      "title": "GATE ME 2022 | Set 1 | Question: 48",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An assignment problem is solved to minimize\nthe total processing time of four jobs (1, 2, 3 and\n4) on four different machines such that each job\nis processed exactly by one machine and each\nmachine processes exactly one job. The minimum\ntotal processing time is found to be 500 minutes. Due to a change in design, the processing time of\nJob 4 on each machine has increased by 20 minutes.\nThe revised minimum total processing time will be\n_____________ minutes (in integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "520",
+        "tolerance": {
+          "lower": 520,
+          "upper": 520
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-industrial-engineering",
+          "subjectLabel": "Industrial Engineering",
+          "subtopicSlug": "queuing-theory-and-transportation",
+          "subtopicLabel": "Queuing Theory and Transportation"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-industrial-engineering",
+          "queuing-theory-and-transportation"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Industrial Engineering - Queuing Theory and Transportation",
+        "markdown": "Minimum total processing time = 500 min\n\nIf the processing time of job 4 each machine is\n\nincreased by 20 minutes then the revised minimum\n\ntotal processing time will be 520 minutes\n\nProof: Assume the following data\n\n$$\\begin{array}{|c|c|c|c|c|c|}\n\n\\hline\n\n&M_1&M_2&M_3&M_4& \\text{Row min}\\\\ \\hline\n\nJ_1& 80 & 150 & 100 & 130 & 80\\\\ \\hline\n\nJ_2& 240 & 250 & 300 & 160 & 160\\\\ \\hline\n\nJ_3& 130 & 80 & 170 & 190 & 80\\\\ \\hline\n\nJ_4& 190 & 220 & 180 & 180 & 180\\\\ \\hline\n\n\\end{array}$$\n\n$$\\begin{array}{|c|c|c|c|}\n\n\\hline\n\n\\underline{0}&70&20&50\\\\ \\hline\n\n80&90& 140&\\underline{0}\\\\ \\hline\n\n50&\\underline{0}&90&110\\\\ \\hline\n\n10&40&\\underline{0}&0\\\\ \\hline\n\n\\end{array}$$\n\nThe assignments are\n\n$J_1-M_1=80$\n\n$J_2-M_4=160$\n\n$J_3-M_2=80$\n\n$J_4-M_3=180$\n\nMinimum total processing time = 80+160+80+180 = 500 mins\n\nIf Job '4' times are increased by 20 mins then\n\n$$\\begin{array}{|c|c|c|c|c|c|}\n\n\\hline\n\n&M_1&M_2&M_3&M_4& \\text{Row min}\\\\ \\hline\n\nJ_1& 80 & 150 & 100 & 130 & 80\\\\ \\hline\n\nJ_2& 240 & 250 & 300 & 160 & 160\\\\ \\hline\n\nJ_3& 130 & 80 & 170 & 190 & 80\\\\ \\hline\n\nJ_4& 210 & 240 & 200 & 250 & 200\\\\ \\hline\n\n\\end{array}$$\n\n$$\\begin{array}{|c|c|c|c|}\n\n\\hline\n\n\\underline{0}&70&20&50\\\\ \\hline\n\n80&90& 140&\\underline{0}\\\\ \\hline\n\n50&\\underline{0}&90&110\\\\ \\hline\n\n10&40&\\underline{0}&0\\\\ \\hline\n\n\\end{array}$$\n\nThe assignments are\n\n$J_1-M_1=80$\n\n$J_2-M_4=160$\n\n$J_3-M_2=80$\n\n$J_4-M_3=200$\n\nMinimum total processing time = 80+160+80+200 = 520 mins\n\nTherefore, the correct answer is **520**."
+      }
+    },
+    "pp:me:2022:q49": {
+      "question_uid": "pp:me:2022:q49",
+      "exam_uid": "me:2022:set1:q49",
+      "title": "GATE ME 2022 | Set 1 | Question: 49",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "The product structure diagram shows the number\nof different components required at each level to\nproduce one unit of the final product P. If there are\n50 units of on-hand inventory of component A, the\nnumber of additional units of component A needed\nto produce 10 units of product P is _________ (in\ninteger).<br><img src=\"/question-images/me/2022/me-2022-9fea3bbb4b.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "110",
+        "tolerance": {
+          "lower": 110,
+          "upper": 110
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-industrial-engineering",
+          "subjectLabel": "Industrial Engineering",
+          "subtopicSlug": "inventory-control",
+          "subtopicLabel": "Inventory Control"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-industrial-engineering",
+          "inventory-control"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Industrial Engineering - Inventory Control",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-2ede3d41e9.webp\" />\n\nTo produce 10 units of 'P'\n\nNo. of units of 'A' required = (4x10)+(2x3x2x10)\n\n= 160 units\n\nNet requirement of 'A' = 160 - 50 = 110 units\n\nTherefore, the correct answer is **110**."
+      }
+    },
+    "pp:me:2022:q50": {
+      "question_uid": "pp:me:2022:q50",
+      "exam_uid": "me:2022:set1:q50",
+      "title": "GATE ME 2022 | Set 1 | Question: 50",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider a one-dimensional steady heat conduction\nprocess through a solid slab of thickness $0.1 m$. The\nhigher temperature side A has a surface temperature\nof $80^{\\circ}C$, and the heat transfer rate per unit area to\nlow temperature side B is $4.5 \\; kW/m^2$. The thermal\nconductivity of the slab is $15 \\; W/m.K$. The rate of\nentropy generation per unit area during the heat\ntransfer process is ________  $W/m^2.K$(round off to\n2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "1.18",
+        "tolerance": {
+          "lower": 1.12,
+          "upper": 1.24
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "conduction",
+          "subtopicLabel": "Conduction"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-heat-transfer",
+          "conduction"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Heat Transfer - Conduction",
+        "markdown": "1D Steady heat conduction\n\n<img src=\"/question-images/me/2022/me-2022-a5cf9f2f06.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{Q}{A} &=4.5\\frac{kW}{m^2}=4500 \\frac{W}{m^2}\\\\\n\nk&=15W/mk \\\\\n\nS_{gen}&=? \\\\\n\n\\frac{Q}{A} &= k\\left [ \\frac{T_1-T_2}{dx} \\right ]\\\\\n\n4500&= 15\\left [ \\frac{80-T_2}{0.1} \\right ]\\\\\n\nT_2 &=50^{\\circ}C=323K \\\\\n\nT_1 &=80^{\\circ}C=353K \\\\\n\n\\therefore \\;\\; \\frac{S_{gen}}{Area}&=\\frac{-Q}{AT_1}+\\frac{Q}{AT_2} \\\\\n\n&=\\frac{-4500}{353}+\\frac{4500}{323} \\\\\n\nS_{gen} &= 1.18\\frac{W}{m^2K}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **1.18** (acceptable range: [1.12, 1.24])."
+      }
+    },
+    "pp:me:2022:q51": {
+      "question_uid": "pp:me:2022:q51",
+      "exam_uid": "me:2022:set1:q51",
+      "title": "GATE ME 2022 | Set 1 | Question: 51",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "In a steam power plant based on Rankine cycle,\nsteam is initially expanded in a high-pressure\nturbine. The steam is then reheated in a reheater\nand finally expanded in a low-pressure turbine. The\nexpansion work in the high-pressure turbine is 400\nkJ/kg and in the low-pressure turbine is 850 kJ/kg,\nwhereas the pump work is 15 kJ/kg. If the cycle\nefficiency is 32%, the heat rejected in the condenser\nis ________ kJ/kg (round off to 2 decimal places).\n",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "2625",
+        "tolerance": {
+          "lower": 2620,
+          "upper": 2630
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-thermodynamics",
+          "subjectLabel": "Thermodynamics",
+          "subtopicSlug": "power-system",
+          "subtopicLabel": "Power System"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-thermodynamics",
+          "power-system"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Thermodynamics - Power System",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-374acc70d5.webp\" />\n\n$$\\begin{aligned}\n\nW_{HPT}&=400kJ/kg\\\\\n\nW_{LPT}&=850kJ/kg\\\\\n\nW_{P}&=15kJ/kg\\\\\n\n\\eta &=0.35=\\frac{W_{net}}{Q_S}\\\\\n\nQ_S&=3859.375 kJ/kg\\\\\n\n\\therefore \\; W_{net}&=Q_S-Q_R\\\\\n\nQ_R&=3859.375-1235\\\\\n\nQ_R&=2624.37 kJ/kg\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **2625** (acceptable range: [2620, 2630])."
+      }
+    },
+    "pp:me:2022:q52": {
+      "question_uid": "pp:me:2022:q52",
+      "exam_uid": "me:2022:set1:q52",
+      "title": "GATE ME 2022 | Set 1 | Question: 52",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "An engine running on an air standard Otto cycle\nhas a displacement volume 250 $cm^3$  and a clearance volume 35.7 $cm^3$. The pressure and temperature at\nthe beginning of the compression process are 100\nkPa and 300 K, respectively. Heat transfer during\nconstant-volume heat addition process is 800 kJ/kg. The specific heat at constant volume is 0.718 kJ/kg.K and the ratio of specific heats at constant\npressure and constant volume is 1.4. Assume the\nspecific heats to remain constant during the cycle.  The maximum pressure in the cycle is ______ kPa\n(round off to the nearest integer).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4802.5",
+        "tolerance": {
+          "lower": 4780,
+          "upper": 4825
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-thermodynamics",
+          "subjectLabel": "Thermodynamics",
+          "subtopicSlug": "ic-engine",
+          "subtopicLabel": "IC Engine"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-thermodynamics",
+          "ic-engine"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Thermodynamics - IC Engine",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-a456e2a7ab.webp\" />\n\n$$\\begin{aligned}\n\nV_S&=250cm^3\\\\\n\nV_C&=35.7 cm^3\\\\\n\nT_1&=300K\\\\\n\nP_1&=100kPa\\\\\n\nQ_S&=800kJ/kg\\\\\n\nC_v&=0.718kJ/kgK\\\\\n\n\\gamma &=1.4\\\\\n\nP_3&=\\_\\_\\_kPa\\\\\n\n\\frac{T_2}{T_1}&=\\left ( \\frac{P_2}{P_1} \\right )^{\\frac{\\gamma -1}{\\gamma }}=\\left ( \\frac{V_1}{V_2} \\right )^{\\gamma -1}=\\left ( \\frac{V_S+V_C}{V_C} \\right )^{\\gamma -1}\\\\\n\n\\frac{T_2}{300}&=\\left ( \\frac{P_2}{100} \\right )^{\\frac{1.4-1}{1.4 }}=\\left ( \\frac{250+35.7}{35.7} \\right )^{1.4 -1}\\\\\n\nT_2&=689.31K\\\\\n\nP_2&=1838.82kPa\\\\\n\nQ_S&=c_v \\times (T_3-T_2)\\\\\n\n800&=0.718(T_3-689.31)\\\\\n\nT_3&=1803.516K\\\\\n\n&\\text{For Process 2-3(Volume is constant)}\\\\\n\n\\frac{P_3}{P_2}&=\\frac{T_3}{T_2}\\\\\n\nP_3&=\\frac{1803.516}{689.31} \\times 1838.82\\\\\n\nP_3&=4811kPa\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4802.5** (acceptable range: [4780, 4825])."
+      }
+    },
+    "pp:me:2022:q53": {
+      "question_uid": "pp:me:2022:q53",
+      "exam_uid": "me:2022:set1:q53",
+      "title": "GATE ME 2022 | Set 1 | Question: 53",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "A steady two-dimensional flow field is specified by\nthe stream function<br>$\\psi =kx^3y$<br>where $x$ and $y$ are in meter and the constant $k = 1 \\; m^{-2}s^{-1}$. The magnitude of acceleration at a point $(x,y) = (1 m, 1 m)$ is ________ $m/s^2$  (round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "4.24",
+        "tolerance": {
+          "lower": 4.2,
+          "upper": 4.28
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-fluid-mechanics",
+          "subjectLabel": "Fluid Mechanics",
+          "subtopicSlug": "fluid-kinematics",
+          "subtopicLabel": "Fluid Kinematics"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-fluid-mechanics",
+          "fluid-kinematics"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Fluid Mechanics - Fluid Kinematics",
+        "markdown": "Given,\n\nStream function,\n\n$$\\begin{aligned}\n\n\\psi &=kx^3y; \\; k=1m^{-2}s^{-1}\\\\\n\nu&=-\\frac{\\partial \\psi }{\\partial y}\\Rightarrow u=-x^3\\\\\n\nv&=-\\frac{\\partial \\psi }{\\partial x}\\Rightarrow v=3x^2y\\\\\n\n\\vec{V}&=-x^3\\hat{i}+3x^2y\\hat{j}\\\\\n\na_x&=\\frac{\\partial u}{\\partial t}+u\\frac{\\partial u}{\\partial x}+v\\frac{\\partial u}{\\partial y}+w\\frac{\\partial u}{\\partial z}\\\\\n\na_x&=-x^3(-3x^2)\\Rightarrow a_x=3x^5\\\\\n\nAt\\; &(1,1), \\; a_x=3m/sec^2\\\\\n\na_y&=\\frac{\\partial v}{\\partial t}+u\\frac{\\partial v}{\\partial x}+v\\frac{\\partial v}{\\partial y}+w\\frac{\\partial v}{\\partial z}\\\\\n\na_y&=-x^3(6xy)+3(x^2y)(3x^2)\\\\\n\n&=-6x^4y+9x^4y=3x^4y\\\\\n\n\\vec{a}&=3x^5\\hat{i}+3x^4y\\hat{j}\\\\\n\nAt& \\;\\;(1,1)\\\\\n\n\\vec{a}&=3\\hat{i}+3\\hat{j}\\\\\n\n\\Rightarrow |a|=\\sqrt{3^2+3^2}&=4.24m/s^2\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **4.24** (acceptable range: [4.2, 4.28])."
+      }
+    },
+    "pp:me:2022:q54": {
+      "question_uid": "pp:me:2022:q54",
+      "exam_uid": "me:2022:set1:q54",
+      "title": "GATE ME 2022 | Set 1 | Question: 54",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "Consider a solid slab (thermal conductivity, $k =10 W \\dot m^{-1}\\dot  K^{-1}$) with thickness 0.2 m and of infinite extent in the other two directions as shown in the\nfigure. Surface 2, at 300 K, is exposed to a fluid\nflow at a free stream temperature ($T_\\infty$) of 293 K,\nwith a convective heat transfer coefficient (h) of\n$100 W\\dot m^{-2} \\dot K^{-1}$. Surface 2 is opaque, diffuse and\ngray with an emissivity ($\\varepsilon$) of 0.5 and exchanges\nheat by radiation with very large surroundings at\n0 K. Radiative heat transfer inside the solid slab\nis neglected. The Stefan-Boltzmann constant is\n$5.67 \\times 10^{-8} W \\dot m^{-2}\\dot K^{-4}$. The temperature $T_1$\n of Surface\n1 of the slab, under steady-state conditions, is\n_________ K (round off to the nearest integer).<br><img src=\"/question-images/me/2022/me-2022-c623a4f581.webp\" /><br>",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "319",
+        "tolerance": {
+          "lower": 315,
+          "upper": 323
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "conduction",
+          "subtopicLabel": "Conduction"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-heat-transfer",
+          "conduction"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Heat Transfer - Conduction",
+        "markdown": "$T_\\infty =293K,T_{surrounding}=0K, h=100W/m^2K, K_{slab}=10W/mK$\n\n<img src=\"/question-images/me/2022/me-2022-fb1c6f8744.webp\" />\n\nUnder steady state\n\n$$\\begin{aligned}\n\nQ_{stored}&=0\\\\\n\nQ_{in}&=Q_{out}\\\\\n\nQ_{cond}&=Q_{conv}+Q_{rad}\\\\\n\nK\\left [ \\frac{T_1-T_2}{L} \\right ]&=h(T_2-T_\\infty )+\\varepsilon \\sigma (T_2^4-T_{surr}^4)\\\\\n\n10\\left [ \\frac{T_1-300}{0.2} \\right ]&=100(300-293 )+0.5 \\times 5.67 \\times 10^{-8} (300^4-0^4)\\\\\n\nT_1-300&=\\frac{929.635}{50}\\\\\n\nT_1&=18.59+300\\\\\n\nT_1&=318.59\\\\\n\nT_1&=318.6K=319K\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **319** (acceptable range: [315, 323])."
+      }
+    },
+    "pp:me:2022:q55": {
+      "question_uid": "pp:me:2022:q55",
+      "exam_uid": "me:2022:set1:q55",
+      "title": "GATE ME 2022 | Set 1 | Question: 55",
+      "year": "gateme-2022-set1",
+      "type": "NAT",
+      "marks": 2,
+      "question": "During open-heart surgery, a patient?s blood is\ncooled down to $25^{\\circ}C$ from $37^{\\circ}C$ using a concentric\ntube counter-flow heat exchanger. Water enters the\nheat exchanger at $4^{\\circ}C$ and leaves at $18^{\\circ}C$. Blood\nflow rate during the surgery is 5 L/minute.\nUse the following fluid properties:<br>$$\\begin{array}{|c|c|c|} \\hline\n \\text{Fluid}&  \\text{Density }(kg/m^3)&\\text{Specific heat (J/kg-K)}\\\\ \\hline\n \\text{Blood}& 1050 & 3740\\\\ \\hline\n \\text{Water}& 1000 & 4200 \\\\ \\hline\n\\end{array}$$<br>Effectiveness of the heat exchanger is _________\n(round off to 2 decimal places).",
+      "options": [],
+      "answer_meta": {
+        "type": "NAT",
+        "answer": "0.42",
+        "tolerance": {
+          "lower": 0.4,
+          "upper": 0.44
+        },
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-heat-transfer",
+          "subjectLabel": "Heat Transfer",
+          "subtopicSlug": "heat-exchanger",
+          "subtopicLabel": "Heat Exchanger"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-heat-transfer",
+          "heat-exchanger"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "Heat Transfer - Heat Exchanger",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-91e7711f91.webp\" />\n\nFor preferred heat exchange between load and water.\n\n$$\\begin{aligned}\n\nQ_{blood}&=Q_{water}\\\\\n\n\\dot{m}_h c_h(T_{h_1}-T_{h_2})&=\\dot{m}_c c_c(T_{c_2}-T_{c_1})\\\\\n\n\\dot{m}_h c_h(37-25)&=\\dot{m}_c c_c(18-4)\\\\\n\n12\\dot{m}_h c_h&=14\\dot{m}_c c_c\\\\\n\n\\dot{m}_h c_h&=\\frac{14}{12}\\dot{m}_c c_c\\\\\n\n\\dot{m}_hc_h&=1.167\\dot{m}_cc_c\\\\\n\n\\dot{m}_hc_h& \\lt \\dot{m}_cc_c\\\\\n\n\\dot{m}_cc_c&=c_{min}, \\dot{m}_hc_h=c_{max}\\\\\n\n\\varepsilon &=\\frac{Q_{act}}{Q_{max}}=\\frac{\\dot{m}_cc_c(T_{c_2}-T_{c_1})}{c_{min}(T_{h_1}-T_{c_1})}=\\frac{T_{c_2}-T_{c_1}}{T_{h_1}-T_{c_1}}\\\\\n\n\\varepsilon &=\\frac{T_{c_2}-T_{c_1}}{T_{h_1}-T_{c_1}}=\\frac{18-4}{37-4}=0.424\\\\\n\n\\varepsilon &=0.42\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **0.42** (acceptable range: [0.4, 0.44])."
+      }
+    },
+    "pp:me:2022:q56": {
+      "question_uid": "pp:me:2022:q56",
+      "exam_uid": "me:2022:set1:q56",
+      "title": "GATE ME 2022 | Set 1 | Question: 56",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "After playing ________ hours of tennis, I am feeling _______ tired to walk back.",
+      "options": [
+        "too / too",
+        "too / two",
+        "two / two",
+        "two / too"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "D",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Two hours of tennis is time,\n\ntoo tired means to an excessive degree.\n\nTherefore, the correct answer is **D**."
+      }
+    },
+    "pp:me:2022:q57": {
+      "question_uid": "pp:me:2022:q57",
+      "exam_uid": "me:2022:set1:q57",
+      "title": "GATE ME 2022 | Set 1 | Question: 57",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "The average of the monthly salaries of M, N and S\nis Rs. 4000. The average of the monthly salaries of\nN, S and P is Rs. 5000. The monthly salary of P is Rs. 6000.<br>\nWhat is the monthly salary of M as a percentage of\nthe monthly salary of P?",
+      "options": [
+        "50%",
+        "75%",
+        "100%",
+        "125%"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "Sum of terms = Average x No. of terms\n\nM+N+S = 4000 x 3 = 12000\n\nN+S+P = 5000 x 3 = 15000\n\nP- M = 3000\n\nM = 6000 ? 3000 = 3000\n\nM is 50 % P\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q58": {
+      "question_uid": "pp:me:2022:q58",
+      "exam_uid": "me:2022:set1:q58",
+      "title": "GATE ME 2022 | Set 1 | Question: 58",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "A person travelled 80 km in 6 hours. If the person\ntravelled the first part with a uniform speed of 10\nkmph and the remaining part with a uniform speed\nof 18 kmph.<br>\nWhat percentage of the total distance is travelled at\na uniform speed of 10 kmph?",
+      "options": [
+        "28.25",
+        "37.25",
+        "43.75",
+        "50"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "C",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-9e3fd6d398.webp\" />\n\n$$\\begin{aligned}\n\nD&=S \\times T\\\\\n\n80&=10t+18(6-t)\\\\\n\n\\Rightarrow \\;\\; t&=3.5 hrs\\\\\n\nD_{10 \\; kmph}&=3.5 \\times 10=35kms\\\\\n\n35 & \\text{ km is what \\% of } 85 \\; kms?\\\\\n\n\\frac{35}{80} \\times 100% &= 43.75%\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **C**."
+      }
+    },
+    "pp:me:2022:q59": {
+      "question_uid": "pp:me:2022:q59",
+      "exam_uid": "me:2022:set1:q59",
+      "title": "GATE ME 2022 | Set 1 | Question: 59",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "Four girls P, Q, R and S are studying languages\nin a University. P is learning French and Dutch.\nQ is learning Chinese and Japanese. R is learning\nSpanish and French. S is learning Dutch and\nJapanese.<br>\nGiven that: French is easier than Dutch; Chinese is\nharder than Japanese; Dutch is easier than Japanese,\nand Spanish is easier than French.<br>\nBased on the above information, which girl is\nlearning the most difficult pair of languages?",
+      "options": [
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Difficulty level as per given statements\n\nFrench < Dutch\n\nJapanese < Chinese\n\nDutch < Japanese\n\nSpanish < French\n\nFrom above relation, we can conclude following relation\n\nFrench < Dutch < Japanese < Chinese\n\nQ leaving most difficult pair of languages.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q60": {
+      "question_uid": "pp:me:2022:q60",
+      "exam_uid": "me:2022:set1:q60",
+      "title": "GATE ME 2022 | Set 1 | Question: 60",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 1,
+      "question": "<br><img src=\"/question-images/me/2022/me-2022-2968504d59.webp\" /><br>A block with a trapezoidal cross-section is placed\r\nover a block with rectangular cross section as\r\nshown above.<br>\r\nWhich one of the following is the correct drawing of\r\nthe view of the 3D object as viewed in the direction\r\nindicated by an arrow in the above figure?<br><img src=\"/question-images/me/2022/me-2022-64e6601a78.webp\" /><br>",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "View from arrow direction is\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q61": {
+      "question_uid": "pp:me:2022:q61",
+      "exam_uid": "me:2022:set1:q61",
+      "title": "GATE ME 2022 | Set 1 | Question: 61",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Humans are naturally compassionate and honest.\nIn a study using strategically placed wallets that\nappear \"lost\", it was found that wallets with money\nare more likely to be returned than wallets without money. Similarly, wallets that had a key and money\nare more likely to be returned than wallets with the\nsame amount of money alone. This suggests that\nthe primary reason for this behavior is compassion\nand empathy.<br>\nWhich one of the following is the CORRECT\nlogical inference based on the information in the\nabove passage?",
+      "options": [
+        "Wallets with a key are more likely to be\nreturned because people do not care about\nmoney",
+        "Wallets with a key are more likely to be\nreturned because people relate to suffering of\nothers",
+        "Wallets used in experiments are more likely to\nbe returned than wallets that are really lost",
+        "Money is always more important than keys"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "Compassion and empathy refers to suffering of\n\nothers.\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q62": {
+      "question_uid": "pp:me:2022:q62",
+      "exam_uid": "me:2022:set1:q62",
+      "title": "GATE ME 2022 | Set 1 | Question: 62",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "A rhombus is formed by joining the midpoints of\nthe sides of a unit square.<br>\nWhat is the diameter of the largest circle that can be\ninscribed within the rhombus?",
+      "options": [
+        "$\\frac{1}{\\sqrt{2}}$",
+        "$\\frac{1}{2\\sqrt{2}}$",
+        "$\\sqrt{2}$",
+        "$2\\sqrt{2}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "<img src=\"/wp-content/uploads/GATE/ME/20221/a62a.jpg\" />\n\nFrom above diagram,\n\nClearly diameter of circle = side of Rhombus = a\n\n<img src=\"/question-images/me/2022/me-2022-a8c6036942.webp\" />\n\n$a=\\sqrt{\\left ( \\frac{1}{2} \\right )^2+\\left ( \\frac{1}{2} \\right )^2}=\\frac{1}{\\sqrt{2}}$\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q63": {
+      "question_uid": "pp:me:2022:q63",
+      "exam_uid": "me:2022:set1:q63",
+      "title": "GATE ME 2022 | Set 1 | Question: 63",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "An equilateral triangle, a square and a circle have\nequal areas.<br>\nWhat is the ratio of the perimeters of the equilateral\ntriangle to square to circle?",
+      "options": [
+        "$3\\sqrt{3}: 2: \\sqrt{\\pi}$",
+        "$\\sqrt{3\\sqrt{3}}: 2: \\sqrt{\\pi}$",
+        "$\\sqrt{3\\sqrt{3}}: 4: 2\\sqrt{\\pi}$",
+        "$\\sqrt{3\\sqrt{3}}: 2: 2\\sqrt{\\pi}$"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "B",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-338cb60a06.webp\" />\n\n$$\\begin{aligned}\n\n\\frac{\\sqrt{3}}{4}a^2 &=s^2 &=\\pi r^2&=k\\\\\n\na&=\\sqrt{\\frac{4k}{\\sqrt{3}}}&s=\\sqrt{k} &\\;\\;\\; r=\\sqrt{\\frac{\\pi}{k}}\\\\\n\n&\\text{Perimeters:}\\\\\n\n3a&:&4a&:&2 \\pi ^2\\\\\n\n3\\frac{2\\sqrt{k}}{3^{1/4}}&:&4\\sqrt{k}&:&2 \\pi \\frac{\\sqrt{k}}{\\sqrt{\\pi}}\\\\\n\n3^{3/4}&:&2&:&\\sqrt{\\pi}\n\n\\end{aligned}$$\n\nTherefore, the correct answer is **B**."
+      }
+    },
+    "pp:me:2022:q64": {
+      "question_uid": "pp:me:2022:q64",
+      "exam_uid": "me:2022:set1:q64",
+      "title": "GATE ME 2022 | Set 1 | Question: 64",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "Given below are three conclusions drawn based on\nthe following three statements.<br><br>\nStatement 1: All teachers are professors.<br>\nStatement 2: No professor is a male.<br>\nStatement 3: Some males are engineers.<br><br>\nConclusion I: No engineer is a professor.<br>\nConclusion II: Some engineers are professors.<br>\nConclusion III: No male is a teacher.<br><br>\nWhich one of the following options can be logically\ninferred?",
+      "options": [
+        "Only conclusion III is correct",
+        "Only conclusion I and conclusion II are correct",
+        "Only conclusion II and conclusion III are correct",
+        "Only conclusion I and conclusion III are correct"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "verbal-ability",
+          "subtopicLabel": "Verbal Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "verbal-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Verbal Ability",
+        "markdown": "<img src=\"/question-images/me/2022/me-2022-c08fac9e8b.webp\" />\n\nNo male is teacher is correct.\n\nEngineer and Professor relation not given.\n\nTherefore, the correct answer is **A**."
+      }
+    },
+    "pp:me:2022:q65": {
+      "question_uid": "pp:me:2022:q65",
+      "exam_uid": "me:2022:set1:q65",
+      "title": "GATE ME 2022 | Set 1 | Question: 65",
+      "year": "gateme-2022-set1",
+      "type": "MCQ",
+      "marks": 2,
+      "question": "In a 12-hour clock that runs correctly, how many\ntimes do the second, minute, and hour hands of the\nclock coincide, in a 12-hour duration from 3 PM in\na day to 3 AM the next day?",
+      "options": [
+        "11",
+        "12",
+        "144",
+        "2"
+      ],
+      "answer_meta": {
+        "type": "MCQ",
+        "answer": "A",
+        "tolerance": null,
+        "source": "official_key"
+      },
+      "track": "me",
+      "yearSetKey": "me-2022-s1",
+      "yearSetIdentity": "me:2022:set-1",
+      "taxonomy": {
+        "primary": {
+          "subjectSlug": "me-general-aptitude",
+          "subjectLabel": "General Aptitude",
+          "subtopicSlug": "numerical-ability",
+          "subtopicLabel": "Numerical Ability"
+        },
+        "secondary": [],
+        "conceptTags": [
+          "me-general-aptitude",
+          "numerical-ability"
+        ]
+      },
+      "detailed_solution": {
+        "concept": "General Aptitude - Numerical Ability",
+        "markdown": "3 pm - 3am = 12 hrs\n\nCoincide is\n\n11 times in 12 hours\n\nTherefore, the correct answer is **A**."
+      }
+    }
+  }
+}
