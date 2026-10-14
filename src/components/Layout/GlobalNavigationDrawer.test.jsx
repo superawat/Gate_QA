@@ -125,39 +125,32 @@ describe("GlobalNavigationDrawer", () => {
     expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
 
-  test("renders and toggles Special Aptitude Section switch", () => {
+  test("renders profile button at the top of slide and triggers onClose when clicked", () => {
+    const onCloseMock = vi.fn();
     render(
       <MemoryRouter>
-        <GlobalNavigationDrawer {...defaultProps} />
+        <GlobalNavigationDrawer {...defaultProps} onClose={onCloseMock} />
       </MemoryRouter>
     );
 
-    const aptitudeToggle = screen.getByRole("switch", { name: /toggle special aptitude section/i });
-    expect(aptitudeToggle).toBeTruthy();
-    expect(aptitudeToggle.getAttribute("aria-checked")).toBe("false");
+    const profileLink = screen.getByRole("link", { name: /profile & disciplines/i });
+    expect(profileLink).toBeTruthy();
+    expect(profileLink.getAttribute("href")).toBe("/profile");
 
-    fireEvent.click(aptitudeToggle);
-    expect(aptitudeToggle.getAttribute("aria-checked")).toBe("true");
-
-    fireEvent.click(aptitudeToggle);
-    expect(aptitudeToggle.getAttribute("aria-checked")).toBe("false");
+    fireEvent.click(profileLink);
+    expect(onCloseMock).toHaveBeenCalled();
   });
 
-  test("renders and toggles GATE DA Section switch", () => {
+  test("does not render removed section switches or save reminder in drawer", () => {
     render(
       <MemoryRouter>
         <GlobalNavigationDrawer {...defaultProps} />
       </MemoryRouter>
     );
 
-    const daToggle = screen.getByRole("switch", { name: /toggle gate da section/i });
-    expect(daToggle).toBeTruthy();
-    expect(daToggle.getAttribute("aria-checked")).toBe("false");
-
-    fireEvent.click(daToggle);
-    expect(daToggle.getAttribute("aria-checked")).toBe("true");
-
-    fireEvent.click(daToggle);
-    expect(daToggle.getAttribute("aria-checked")).toBe("false");
+    expect(screen.queryByRole("switch", { name: /toggle special aptitude section/i })).toBeNull();
+    expect(screen.queryByRole("switch", { name: /toggle gate da section/i })).toBeNull();
+    expect(screen.queryByRole("switch", { name: /toggle isro cs section/i })).toBeNull();
+    expect(screen.queryByText(/Save Reminder/i)).toBeNull();
   });
 });

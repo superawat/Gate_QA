@@ -403,19 +403,19 @@ describe("HomePage", () => {
     expect(loadStudyActivityFastMock.mock.calls.length).toBe(callCountBefore + 5);
   });
 
-  test("renders ISRO exam marquee ribbon in subHeader with clickable year chips and explore action", () => {
+  test("renders platform updates marquee ribbon in subHeader with announcement chips and profile action", () => {
     renderHomePage();
 
     // Verify marquee region and label
-    const marqueeRegion = screen.getByRole("region", { name: "ISRO CS exam papers — click a year to practice" });
+    const marqueeRegion = screen.getByRole("region", { name: "Platform Updates — Multi-branch support and Profile introduced" });
     expect(marqueeRegion).toBeTruthy();
-    expect(screen.getByText("ISRO CS")).toBeTruthy();
+    expect(screen.getByText("WHAT'S NEW")).toBeTruthy();
 
-    // Verify year chips are rendered
-    expect(screen.getByRole("button", { name: "ISRO CS 2007" })).toBeTruthy();
-    expect(screen.getByRole("button", { name: "ISRO CS 2025" })).toBeTruthy();
+    // Verify announcement items are rendered
+    expect(screen.getAllByText(/New Branches:/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Profile Hub:/i).length).toBeGreaterThan(0);
 
-    // Verify explore all action
-    expect(screen.getByRole("button", { name: "Explore all ISRO CS questions" })).toBeTruthy();
+    // Verify profile action
+    expect(screen.getByRole("button", { name: "Open Profile and Disciplines" })).toBeTruthy();
   });
 });

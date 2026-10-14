@@ -23,7 +23,7 @@ GateQA is a static, local-first React SPA hosted on GitHub Pages with an optiona
    - Candidate Profile Hub (`/profile` multi-branch management & data backup)
    - Mock setup shell
    - Mock exam shell
-9. Header, subHeader (`PageShell` slot for header-adjacent banners like `IsroMarquee`), calculator, and footer remain shared shell components.
+9. Header, subHeader (`PageShell` slot for header-adjacent banners like `HomeMarquee`), calculator, and footer remain shared shell components.
 
 ## User Authentication & Cloud Sync Architecture (FEAT-032)
 

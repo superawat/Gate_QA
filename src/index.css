@@ -5534,20 +5534,20 @@ footer {
   animation: exhaustion-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ── ISRO CS Marquee Strip ──────────────────────────────────────────────── */
-@keyframes isro-scroll {
+/* ── Platform Updates Marquee Strip (HomeMarquee) ────────────────────────── */
+@keyframes home-marquee-scroll {
   0%   { transform: translate3d(0, 0, 0); }
   100% { transform: translate3d(-50%, 0, 0); }
 }
 
-.isro-marquee-strip {
+.home-marquee-strip {
   display: flex;
   align-items: center;
   gap: 0;
   overflow: hidden;
-  background: linear-gradient(90deg, #fffdf2 0%, #fef3c7 35%, #fffbeb 70%, #fefdf2 100%);
-  border-top: 1px solid rgba(245, 158, 11, 0.22);
-  border-bottom: 1px solid rgba(245, 158, 11, 0.22);
+  background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 35%, #e0e7ff 70%, #eff6ff 100%);
+  border-top: 1px solid rgba(59, 130, 246, 0.22);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.22);
   height: 28px;
   position: relative;
   width: 100%;
@@ -5555,57 +5555,57 @@ footer {
   touch-action: pan-y;
 }
 
-:root[data-theme="dark"] .isro-marquee-strip {
-  background: linear-gradient(90deg, #120e06 0%, #1a1408 45%, #140f06 100%);
-  border-top: 1px solid rgba(245, 158, 11, 0.18);
-  border-bottom: 1px solid rgba(245, 158, 11, 0.18);
+:root[data-theme="dark"] .home-marquee-strip {
+  background: linear-gradient(90deg, #090e17 0%, #0d1527 45%, #090e17 100%);
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 /* Fixed label on the left */
-.isro-marquee-label {
+.home-marquee-label {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   flex-shrink: 0;
   padding: 0 10px 0 12px;
   height: 100%;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
   color: #ffffff;
   font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
-  border-right: 1px solid rgba(217, 119, 6, 0.35);
-  box-shadow: 2px 0 8px rgba(217, 119, 6, 0.15);
+  border-right: 1px solid rgba(79, 70, 229, 0.4);
+  box-shadow: 2px 0 8px rgba(37, 99, 235, 0.2);
   z-index: 2;
   user-select: none;
 }
 
-:root[data-theme="dark"] .isro-marquee-label {
-  background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
-  color: #fef3c7;
-  border-right-color: rgba(245, 158, 11, 0.2);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+:root[data-theme="dark"] .home-marquee-label {
+  background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
+  color: #e0e7ff;
+  border-right-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.isro-marquee-rocket {
+.home-marquee-icon {
   font-size: 0.65rem;
   flex-shrink: 0;
-  color: #fffbeb;
+  color: #93c5fd;
 }
 
-.isro-marquee-label-text {
+.home-marquee-label-text {
   font-size: 0.62rem;
   line-height: 1;
 }
 
-.isro-marquee-label-short {
+.home-marquee-label-short {
   display: none;
 }
 
 /* Scrolling overflow container with edge fade */
-.isro-marquee-overflow {
+.home-marquee-overflow {
   flex: 1 1 0;
   min-width: 0;
   overflow: hidden;
@@ -5629,14 +5629,14 @@ footer {
 }
 
 /* The scrolling track */
-.isro-marquee-track {
+.home-marquee-track {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   list-style: none;
   margin: 0;
-  padding: 0 6px;
-  animation: isro-scroll 30s linear infinite;
+  padding: 0 8px;
+  animation: home-marquee-scroll 80s linear infinite;
   width: max-content;
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -5644,30 +5644,29 @@ footer {
 }
 
 /* Pause scroll on hover, active touch, focus, or explicit pause state */
-.isro-marquee-strip:hover .isro-marquee-track,
-.isro-marquee-strip:active .isro-marquee-track,
-.isro-marquee-strip:focus-within .isro-marquee-track,
-.isro-marquee-strip--paused .isro-marquee-track {
+.home-marquee-strip:hover .home-marquee-track,
+.home-marquee-strip:active .home-marquee-track,
+.home-marquee-strip:focus-within .home-marquee-track,
+.home-marquee-strip--paused .home-marquee-track {
   animation-play-state: paused;
 }
 
-.isro-marquee-item {
+.home-marquee-item {
   flex-shrink: 0;
 }
 
-/* Individual year chip */
-.isro-marquee-chip {
+/* Individual announcement chip */
+.home-marquee-chip {
   display: inline-flex;
   align-items: center;
-  height: 18px;
-  padding: 0 7px;
+  height: 20px;
+  padding: 0 9px;
   border-radius: 9999px;
-  border: 1px solid rgba(217, 119, 6, 0.28);
-  background: rgba(254, 243, 199, 0.65);
-  color: #92400e;
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  background: rgba(219, 234, 254, 0.7);
+  color: #1e40af;
   font-size: 0.65rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
   white-space: nowrap;
@@ -5678,8 +5677,8 @@ footer {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Invisible touch padding expansion for mobile accessibility without inflating chip size */
-.isro-marquee-chip::after {
+/* Touch padding expansion for mobile accessibility */
+.home-marquee-chip::after {
   content: "";
   position: absolute;
   top: -5px;
@@ -5688,45 +5687,45 @@ footer {
   right: -2px;
 }
 
-.isro-marquee-chip:hover,
-.isro-marquee-chip:focus-visible {
-  background: #f59e0b;
+.home-marquee-chip:hover,
+.home-marquee-chip:focus-visible {
+  background: #2563eb;
   color: #ffffff;
-  border-color: #d97706;
+  border-color: #1d4ed8;
   transform: translateY(-0.5px);
-  box-shadow: 0 1px 4px rgba(217, 119, 6, 0.28);
+  box-shadow: 0 1px 6px rgba(37, 99, 235, 0.35);
   outline: none;
 }
 
-:root[data-theme="dark"] .isro-marquee-chip {
-  border-color: rgba(245, 158, 11, 0.2);
-  background: rgba(245, 158, 11, 0.08);
-  color: #fbbf24;
+:root[data-theme="dark"] .home-marquee-chip {
+  border-color: rgba(96, 165, 250, 0.25);
+  background: rgba(30, 58, 138, 0.28);
+  color: #bfdbfe;
 }
 
-:root[data-theme="dark"] .isro-marquee-chip:hover,
-:root[data-theme="dark"] .isro-marquee-chip:focus-visible {
-  background: rgba(245, 158, 11, 0.24);
-  color: #fffbeb;
-  border-color: #f59e0b;
-  box-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+:root[data-theme="dark"] .home-marquee-chip:hover,
+:root[data-theme="dark"] .home-marquee-chip:focus-visible {
+  background: rgba(59, 130, 246, 0.35);
+  color: #ffffff;
+  border-color: #60a5fa;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
-/* Right-side CTA button */
-.isro-marquee-cta {
+/* Right-side Profile CTA button */
+.home-marquee-cta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   flex-shrink: 0;
-  padding: 0 10px;
+  padding: 0 12px;
   height: 100%;
-  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
-  font-size: 0.63rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   border: none;
-  border-left: 1px solid rgba(217, 119, 6, 0.35);
+  border-left: 1px solid rgba(59, 130, 246, 0.35);
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.12s ease, opacity 0.12s ease;
@@ -5737,84 +5736,84 @@ footer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.isro-marquee-cta-label {
+.home-marquee-cta-label {
   display: inline-flex;
   align-items: center;
 }
 
-.isro-marquee-cta-text-short {
+.home-marquee-cta-text-short {
   display: none;
 }
 
-.isro-marquee-cta-arrow {
+.home-marquee-cta-arrow {
   display: inline-block;
   font-size: 0.68rem;
   transition: transform 0.12s ease;
 }
 
-.isro-marquee-cta:hover .isro-marquee-cta-arrow,
-.isro-marquee-cta:focus-visible .isro-marquee-cta-arrow {
+.home-marquee-cta:hover .home-marquee-cta-arrow,
+.home-marquee-cta:focus-visible .home-marquee-cta-arrow {
   transform: translateX(2px);
 }
 
-.isro-marquee-cta:hover,
-.isro-marquee-cta:focus-visible {
-  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+.home-marquee-cta:hover,
+.home-marquee-cta:focus-visible {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   outline: none;
 }
 
-:root[data-theme="dark"] .isro-marquee-cta {
-  background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
-  color: #fef3c7;
-  border-left-color: rgba(245, 158, 11, 0.25);
+:root[data-theme="dark"] .home-marquee-cta {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  color: #ffffff;
+  border-left-color: rgba(59, 130, 246, 0.3);
 }
 
-:root[data-theme="dark"] .isro-marquee-cta:hover,
-:root[data-theme="dark"] .isro-marquee-cta:focus-visible {
-  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+:root[data-theme="dark"] .home-marquee-cta:hover,
+:root[data-theme="dark"] .home-marquee-cta:focus-visible {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
 }
 
 /* Reduce motion — disable animation, show static track */
 @media (prefers-reduced-motion: reduce) {
-  .isro-marquee-track {
+  .home-marquee-track {
     animation: none;
   }
 }
 
 /* Mobile responsive optimizations (<= 540px) */
 @media (max-width: 540px) {
-  .isro-marquee-label-full {
+  .home-marquee-label-full {
     display: none;
   }
-  .isro-marquee-label-short {
+  .home-marquee-label-short {
     display: inline;
   }
-  .isro-marquee-label {
+  .home-marquee-label {
     padding: 0 7px 0 9px;
     font-size: 0.61rem;
     gap: 4px;
   }
-  .isro-marquee-rocket {
+  .home-marquee-icon {
     font-size: 0.6rem;
   }
-  .isro-marquee-cta-text-full {
+  .home-marquee-cta-text-full {
     display: none;
   }
-  .isro-marquee-cta-text-short {
+  .home-marquee-cta-text-short {
     display: inline;
   }
-  .isro-marquee-cta {
+  .home-marquee-cta {
     padding: 0 8px;
     font-size: 0.61rem;
     gap: 3px;
   }
-  .isro-marquee-chip {
+  .home-marquee-chip {
     height: 18px;
     padding: 0 6px;
     font-size: 0.63rem;
   }
-  .isro-marquee-overflow {
+  .home-marquee-overflow {
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0px,
@@ -5834,19 +5833,19 @@ footer {
 
 /* Ultra-compact screens (<= 360px, e.g. Galaxy Fold cover / 320px devices) */
 @media (max-width: 360px) {
-  .isro-marquee-strip {
+  .home-marquee-strip {
     height: 26px;
   }
-  .isro-marquee-label {
+  .home-marquee-label {
     padding: 0 5px 0 6px;
     font-size: 0.58rem;
     gap: 3px;
   }
-  .isro-marquee-cta {
+  .home-marquee-cta {
     padding: 0 6px;
     font-size: 0.58rem;
   }
-  .isro-marquee-chip {
+  .home-marquee-chip {
     height: 17px;
     padding: 0 5px;
     font-size: 0.6rem;

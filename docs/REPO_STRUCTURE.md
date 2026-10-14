@@ -88,8 +88,8 @@ Gate_QA/
 |   `-- components/
 |       |-- ErrorBoundary/ErrorBoundary.jsx
 |       |-- ErrorBoundary/ErrorBoundary.test.jsx
-|       |-- Home/IsroMarquee.jsx
-|       |-- Home/IsroMarquee.test.jsx
+|       |-- Home/HomeMarquee.jsx
+|       |-- Home/HomeMarquee.test.jsx
 |       |-- Home/StreakBanner.jsx
 |       |-- Home/ActivityHeatmap.jsx
 |       |-- Landing/ModeSelectionPage.jsx

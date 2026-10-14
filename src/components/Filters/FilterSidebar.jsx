@@ -4,12 +4,9 @@ import YearRangeFilter from './YearRangeFilter';
 import TopicFilter from './TopicFilter';
 import AptitudeTopicFilter from './AptitudeTopicFilter';
 import ProgressFilterToggles from './ProgressFilterToggles';
-import QuestionSearchInput from './QuestionSearchInput';
 import DaToggle from './DaToggle';
 import IsroToggle from './IsroToggle';
 import BranchTopicFilter from './BranchTopicFilter';
-import { DISCIPLINES } from '../Branch/BranchSelectionWall';
-import { setActiveBranch } from '../../utils/branchPreference';
 import { useFilterState, useFilterActions } from '../../contexts/FilterContext';
 
 const TYPE_BUTTON_STYLES = {
@@ -40,8 +37,6 @@ const FilterSidebar = ({ className = "", onClose }) => {
         isEeEnrolled = false,
         isMeEnrolled = false,
         isCeEnrolled = false,
-        selectedBranches = [],
-        activeBranch = 'cse',
     } = useFilterState();
 
     const {
@@ -100,43 +95,6 @@ const FilterSidebar = ({ className = "", onClose }) => {
                 </div>
             </div>
 
-            {/* ── Segmented Discipline Switcher (when multiple branches selected) ── */}
-            {selectedBranches.length > 1 && (
-                <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
-                    <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-[color:var(--color-text-muted)]">
-                        Enrolled Disciplines
-                    </div>
-                    <div className="flex gap-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-1">
-                        {selectedBranches.map((code) => {
-                            const meta = DISCIPLINES.find((d) => d.code === code) || { short: code.toUpperCase() };
-                            const isActive = activeBranch === code;
-                            return (
-                                <button
-                                    key={code}
-                                    type="button"
-                                    onClick={() => setActiveBranch(code)}
-                                    className={`flex-1 rounded-md px-2 py-1.5 text-xs font-bold uppercase tracking-wide transition-all ${
-                                        isActive
-                                            ? "border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-primary-text)] shadow-sm"
-                                            : "text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)]"
-                                    }`}
-                                >
-                                    {meta.short === "EC" ? "ECE" : meta.short}
-                                </button>
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
-
-            <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4">
-                <QuestionSearchInput
-                    id="practice-search"
-                    label="Search"
-                    placeholder="Search keywords..."
-                    compact
-                />
-            </div>
 
             <div className="z-10 flex-shrink-0 border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3">
                 <div className="flex-1 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)] p-3">

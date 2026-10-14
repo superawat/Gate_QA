@@ -26,6 +26,8 @@ describe("BranchSelectionWall", () => {
     expect(screen.getByText("Electrical Engineering")).toBeDefined();
     expect(screen.getByText("Mechanical Engineering")).toBeDefined();
     expect(screen.getByText("Civil Engineering")).toBeDefined();
+    // Reassurance badge rendered exactly once in the header (no duplication in footer)
+    expect(screen.getAllByText(/Don’t worry, you can change it later from/i).length).toBe(1);
   });
 
   test("enforces max 2 disciplines selection", () => {

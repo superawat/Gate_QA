@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   FaBookOpen,
-  FaDatabase,
   FaFilePdf,
   FaFileCsv,
   FaFileImport,
@@ -11,18 +10,14 @@ import {
   FaHeart,
   FaFire,
   FaNewspaper,
-  FaRocket,
 } from "react-icons/fa";
-import { FiGrid, FiMessageSquare } from "react-icons/fi";
+import { FiGrid, FiMessageSquare, FiUser, FiChevronRight } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import HamburgerButton from "./HamburgerButton";
 import SupportModal from "../Footer/SupportModal";
 
-import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, TRACKER_ROUTE, USER_MANUAL_ROUTE, BLOG_ROUTE } from "../../utils/routes";
+import { HIGH_PRIORITY_TOPICS_ROUTE, PRACTICE_ROUTE, TRACKER_ROUTE, USER_MANUAL_ROUTE, BLOG_ROUTE, PROFILE_ROUTE } from "../../utils/routes";
 import { EDITORIAL_PAGE_ROUTES as EDITORIAL_PAGES } from "../../data/editorialRoutes";
-import { useAptitudeEnabled } from "../../utils/aptitudePreference";
-import { useDaEnabled } from "../../utils/daPreference";
-import { useIsroEnabled } from "../../utils/isroPreference";
 import {
   preloadExploreRoute,
   preloadTrackerRoute,
@@ -126,9 +121,7 @@ const GlobalNavigationDrawer = ({
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [showTools, setShowTools] = useState(false);
   const [showStudyGuides, setShowStudyGuides] = useState(false);
-  const [aptitudeEnabled, setAptitudeEnabled] = useAptitudeEnabled();
-  const [daEnabled, setDaEnabled] = useDaEnabled();
-  const [isroEnabled, setIsroEnabled] = useIsroEnabled();
+
 
   const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
@@ -196,10 +189,6 @@ const GlobalNavigationDrawer = ({
     };
   }, [isOpen, onClose]);
 
-  // Save reminder: days since last backup
-  const lastBackupTime = readTimestamp("gateqa_last_backup_time");
-  const daysSinceBackup = lastBackupTime ? (Date.now() - lastBackupTime) / (1000 * 60 * 60 * 24) : 999;
-  const needsBackup = daysSinceBackup >= 7;
 
   // Per-tool last-used timestamps
   const pdfTs = readTimestamp(LAST_EXPORT_KEYS.pdf);
@@ -316,15 +305,28 @@ const GlobalNavigationDrawer = ({
 
         {/* Scrollable body */}
         <div className="min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5">
-          {/* Save Reminder — theme-safe amber using CSS vars */}
-          {needsBackup && (
-            <div className="rounded-xl border border-[color:var(--color-border)] bg-amber-100/60 p-3.5 dark:bg-amber-900/20">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-[color:var(--color-text)]">⚠ Save Reminder</p>
-              <p className="mt-1 text-xs leading-normal text-[color:var(--color-text-muted)]">
-                It has been <strong className="text-[color:var(--color-text)]">{lastBackupTime ? Math.floor(daysSinceBackup) : "many"} days</strong> since your last backup. Please save your progress regularly.
-              </p>
+          {/* Profile & Disciplines Button */}
+          <Link
+            to={PROFILE_ROUTE}
+            onClick={onClose}
+            className="flex items-center justify-between gap-3 rounded-xl border border-sky-500/25 bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent p-3 text-left transition hover:border-sky-500/40 hover:bg-sky-500/15 focus:outline-none focus:ring-2 focus:ring-sky-400 group"
+          >
+            <div className="flex items-center gap-3 min-w-0">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-500 text-white shadow-sm group-hover:scale-105 transition-transform">
+                <FiUser className="h-4.5 w-4.5" />
+              </span>
+              <div className="min-w-0">
+                <span className="block text-sm font-bold text-[color:var(--color-text)] truncate">
+                  Profile &amp; Disciplines
+                </span>
+                <span className="block text-xs text-[color:var(--color-text-muted)] truncate">
+                  Manage branches, target &amp; backup
+                </span>
+              </div>
             </div>
-          )}
+            <FiChevronRight className="h-4 w-4 shrink-0 text-sky-500 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+
 
           {/* 1. Resources */}
           <section className="space-y-2" aria-labelledby="global-resources-heading">
@@ -361,7 +363,7 @@ const GlobalNavigationDrawer = ({
             </Link>
           </section>
 
-          {/* 2. Options: Filters, Special Aptitude Section, and GATE DA Section Toggles */}
+          {/* 2. Options: Filters */}
           <section className="space-y-2" aria-labelledby="global-options-heading">
             <h2 id="global-options-heading" className={sectionHeadingClassName}>Options</h2>
             <Link
@@ -376,75 +378,6 @@ const GlobalNavigationDrawer = ({
               <FaFilter className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400" aria-hidden="true" />
               <span className="truncate">Filters</span>
             </Link>
-            <div className={`${actionButtonClassName} flex items-center justify-between gap-3`}>
-              <span className="flex min-w-0 items-center gap-3">
-                <FaBookOpen className="h-4 w-4 shrink-0 text-sky-700 dark:text-sky-300" aria-hidden="true" />
-                <span className="truncate font-extrabold text-sky-700 dark:text-sky-300">Special Aptitude Section</span>
-              </span>
-              <button
-                type="button"
-                role="switch"
-                aria-checked={aptitudeEnabled}
-                onClick={() => setAptitudeEnabled(!aptitudeEnabled)}
-                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 ${
-                  aptitudeEnabled ? "bg-sky-600" : "bg-slate-300 dark:bg-slate-700"
-                }`}
-              >
-                <span className="sr-only">Toggle Special Aptitude Section</span>
-                <span
-                  aria-hidden="true"
-                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                    aptitudeEnabled ? "translate-x-5" : "translate-x-0"
-                  }`}
-                />
-              </button>
-            </div>
-            <div className={`${actionButtonClassName} flex items-center justify-between gap-3`}>
-              <span className="flex min-w-0 items-center gap-3">
-                <FaDatabase className="h-4 w-4 shrink-0 text-purple-700 dark:text-purple-300" aria-hidden="true" />
-                <span className="truncate font-extrabold text-purple-700 dark:text-purple-300">GATE DA Section</span>
-              </span>
-              <button
-                type="button"
-                role="switch"
-                aria-checked={daEnabled}
-                onClick={() => setDaEnabled(!daEnabled)}
-                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-                  daEnabled ? "bg-purple-600" : "bg-slate-300 dark:bg-slate-700"
-                }`}
-              >
-                <span className="sr-only">Toggle GATE DA Section</span>
-                <span
-                  aria-hidden="true"
-                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                    daEnabled ? "translate-x-5" : "translate-x-0"
-                  }`}
-                />
-              </button>
-            </div>
-            <div className={`${actionButtonClassName} flex items-center justify-between gap-3`}>
-              <span className="flex min-w-0 items-center gap-3">
-                <FaRocket className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
-                <span className="truncate font-extrabold text-amber-700 dark:text-amber-400">ISRO CS Section</span>
-              </span>
-              <button
-                type="button"
-                role="switch"
-                aria-checked={isroEnabled}
-                onClick={() => setIsroEnabled(!isroEnabled)}
-                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-amber-500 ${
-                  isroEnabled ? "bg-amber-500" : "bg-slate-300 dark:bg-slate-700"
-                }`}
-              >
-                <span className="sr-only">Toggle ISRO CS Section</span>
-                <span
-                  aria-hidden="true"
-                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                    isroEnabled ? "translate-x-5" : "translate-x-0"
-                  }`}
-                />
-              </button>
-            </div>
           </section>
 
           {/* 3. Tools — Compressed expandable group */}

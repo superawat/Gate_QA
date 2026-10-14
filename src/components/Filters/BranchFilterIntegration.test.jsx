@@ -86,17 +86,9 @@ describe("BranchFilterIntegration in FilterSidebar", () => {
     expect(screen.queryByText("GATE ME")).toBeNull();
     expect(screen.queryByText("GATE CE")).toBeNull();
 
-    // Segmented discipline switcher at top of filter panel
-    expect(screen.getByText("Enrolled Disciplines")).toBeDefined();
-    const eceButton = screen.getByRole("button", { name: "ECE" });
-    const cseButton = screen.getByRole("button", { name: "CSE" });
-    expect(eceButton).toBeDefined();
-    expect(cseButton).toBeDefined();
-
-    // Clicking CSE in switcher sets active branch
-    fireEvent.click(cseButton);
-    const pref = readBranchPreferences();
-    expect(pref.activeBranch).toBe("cse");
+    // Redundant Enrolled Disciplines and Search bar are omitted from the filter window
+    expect(screen.queryByText("Enrolled Disciplines")).toBeNull();
+    expect(screen.queryByPlaceholderText("Search keywords...")).toBeNull();
 
     // EC subjects should be rendered in the EC section
     expect(screen.getByText("Analog Circuits")).toBeDefined();
@@ -186,9 +178,8 @@ describe("BranchFilterIntegration in FilterSidebar", () => {
     expect(screen.queryByText("GATE CSE")).toBeNull();
     expect(screen.queryByText("GATE EC (ECE)")).toBeNull();
 
-    // Segmented switcher has EE and ME
-    expect(screen.getByRole("button", { name: "EE" })).toBeDefined();
-    expect(screen.getByRole("button", { name: "ME" })).toBeDefined();
+    // Segmented switcher is omitted from the filter drawer
+    expect(screen.queryByText("Enrolled Disciplines")).toBeNull();
   });
 
   test("selecting an EC subject inside FilterSidebar triggers updateFilters with ec subject slug", () => {

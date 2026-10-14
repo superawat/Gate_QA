@@ -276,9 +276,9 @@ Rules:
 - **Scroll-Reactive Header (`AppHeader.jsx`)**: Auto-collapses on scroll down on mobile viewports while remaining firmly pinned on desktop (`-translate-y-full md:translate-y-0`).
 - **Drawer Swipe-to-Dismiss (`GlobalNavigationDrawer.jsx`)**: Supports horizontal swipe-to-dismiss gesture (`diffX < -50`) with vertical scroll disambiguation.
 - **Selective Bottom Navigation (`PageShell.jsx`)**: Provides `showMobileBottomNav` prop (defaults `true`). Disabled (`false`) on the active `/practice/question/:id` route to eliminate double navigation bars.
-- **SubHeader Slot (`PageShell.jsx`, DEC-145)**: Provides `subHeader` prop positioned directly between `<AppHeader />` and `<main>`, rendering full-width below the sticky header without requiring padding-breaking negative margins. Used on the homepage for the ISRO examination marquee ribbon.
-- **Mobile Marquee Touch Ergonomics (`IsroMarquee.jsx`, DEC-145)**:
-  - Touch-active scroll pause: touching or holding the marquee on mobile devices instantly freezes the scrolling track (`onTouchStart`/`onTouchEnd`, `:active`, `.isro-marquee-strip--paused`) to prevent mis-taps.
+- **SubHeader Slot (`PageShell.jsx`, DEC-145)**: Provides `subHeader` prop positioned directly between `<AppHeader />` and `<main>`, rendering full-width below the sticky header without requiring padding-breaking negative margins. Used on the homepage for the platform announcement marquee ribbon.
+- **Mobile Marquee Touch Ergonomics (`HomeMarquee.jsx`, DEC-145)**:
+  - Touch-active scroll pause: touching or holding the marquee on mobile devices instantly freezes the scrolling track (`onTouchStart`/`onTouchEnd`, `:active`, `.home-marquee-strip--paused`) to prevent mis-taps.
   - Responsive text contraction: automatically contracts `"ISRO CS"` -> `"ISRO"` and `"Explore all →"` -> `"All →"` on `<=540px` and `<=360px` screens, saving ~50px of horizontal room for multiple visible year chips.
   - Invisible touch target expansion: `5px` vertical and `2px` horizontal padding pseudo-element (`::after`) on chips ensures comfortable mobile touch targets without inflating the thin `18px` badge size.
   - GPU compositing: `transform: translate3d(...)` keyframe animations with `will-change: transform` and `backface-visibility: hidden` prevent mobile browser repaint jitter.

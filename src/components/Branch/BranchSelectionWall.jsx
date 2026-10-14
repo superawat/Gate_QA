@@ -141,27 +141,35 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
 
   return (
     <div
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#0B0D10] text-[#E8EDF4] flex flex-col justify-center items-center py-8 px-4 sm:px-6 lg:px-8 animate-fade-in font-sans"
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#0B0D10] text-[#E8EDF4] flex flex-col justify-start sm:justify-center items-center py-4 sm:py-8 px-3 sm:px-6 lg:px-8 animate-fade-in font-sans"
       role="dialog"
       aria-modal="true"
       aria-labelledby="branch-wall-title"
     >
-      <div className="w-full max-w-[1080px] mx-auto my-auto flex flex-col justify-between">
+      <div className="w-full max-w-[1080px] mx-auto my-0 sm:my-auto flex flex-col justify-between min-h-full sm:min-h-0">
         {/* Header / Intro typography */}
-        <div className="w-full flex items-start justify-between gap-4 mb-6 sm:mb-8 text-left">
-          <div>
+        <div className="w-full flex items-start justify-between gap-3 sm:gap-4 mb-3.5 sm:mb-8 text-left">
+          <div className="min-w-0 flex-1">
             <h1
               id="branch-wall-title"
-              className="text-[28px] sm:text-[32px] md:text-[34px] font-bold text-[#E8EDF4] tracking-tight leading-tight"
+              className="text-[20px] sm:text-[30px] md:text-[34px] font-bold text-[#E8EDF4] tracking-tight leading-tight"
             >
               Choose Your Preparation Disciplines
             </h1>
-            <p className="text-[14px] sm:text-[15px] text-[#9AA4B2] mt-1.5 leading-relaxed">
-              Choose 1–2 papers to personalize your preparation.
-            </p>
-            <div className="flex items-center gap-2 mt-3 text-xs text-[#9AA4B2]">
-              <FiAlertCircle className="w-3.5 h-3.5 text-[#6B9BFF] flex-shrink-0" />
-              <span>Official GATE Rule: Max 2 Papers Allowed. Practice, tests, and analytics scope strictly to your selection.</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2.5 mt-1 sm:mt-1.5">
+              <p className="text-[13px] sm:text-[15px] text-[#9AA4B2] leading-snug sm:leading-relaxed">
+                Choose 1–2 papers to personalize your preparation.
+              </p>
+              <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs text-[#93C5FD] bg-[#131B2A] border border-[#1D4ED8]/40 px-2 sm:px-2.5 py-0.5 rounded-full font-medium tracking-wide w-fit">
+                Don’t worry, you can change it later from Profile
+              </span>
+            </div>
+            <div className="flex items-start sm:items-center gap-1.5 sm:gap-2 mt-2 sm:mt-2.5 text-[11px] sm:text-xs text-[#9AA4B2]">
+              <FiAlertCircle className="w-3.5 h-3.5 text-[#6B9BFF] flex-shrink-0 mt-0.5 sm:mt-0" />
+              <span className="leading-tight sm:leading-normal">
+                Official GATE Rule: Max 2 Papers Allowed.
+                <span className="hidden sm:inline"> Practice, tests, and analytics scope strictly to your selection.</span>
+              </span>
             </div>
           </div>
 
@@ -172,7 +180,7 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                 setIsOpen(false);
                 onClose();
               }}
-              className="p-2 rounded-lg text-[#9AA4B2] hover:text-[#E8EDF4] hover:bg-[#1B2129] border border-transparent hover:border-[#2A313B] transition flex-shrink-0"
+              className="p-1.5 sm:p-2 rounded-lg text-[#9AA4B2] hover:text-[#E8EDF4] hover:bg-[#1B2129] border border-transparent hover:border-[#2A313B] transition flex-shrink-0"
               aria-label="Close"
             >
               <FiX className="w-5 h-5" />
@@ -181,7 +189,7 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
         </div>
 
         {/* Branch Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 mb-4 sm:mb-8">
           {DISCIPLINES.map((d) => {
             const isSelected = selected.includes(d.code);
             const isDisabled = isAtMax && !isSelected;
@@ -202,7 +210,7 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                     handleToggle(d.code);
                   }
                 }}
-                className={`group relative flex flex-col justify-between p-5 rounded-[12px] border transition-colors duration-150 select-none text-left min-h-[160px] sm:min-h-[170px] ${
+                className={`group relative flex flex-col justify-between p-3.5 sm:p-5 rounded-[12px] border transition-colors duration-150 select-none text-left min-h-0 sm:min-h-[170px] ${
                   isSelected
                     ? "bg-[#14181E] border-[#6B9BFF] ring-1 ring-[#6B9BFF]/30 cursor-pointer"
                     : isDisabled
@@ -211,12 +219,12 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                 } focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6B9BFF]`}
               >
                 {/* Header: Quiet Icon, Branch Code, Full Name, Checkmark Indicator */}
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <Icon className={`w-5 h-5 flex-shrink-0 ${d.accent}`} />
+                <div className="flex items-center justify-between gap-2.5 mb-1 sm:mb-2">
+                  <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                    <Icon className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${d.accent}`} />
                     <div className="min-w-0">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-[17px] sm:text-[18px] font-semibold text-[#E8EDF4] leading-tight">
+                      <div className="flex items-baseline gap-1.5 sm:gap-2">
+                        <span className="text-[16px] sm:text-[18px] font-semibold text-[#E8EDF4] leading-tight">
                           {d.short}
                         </span>
                         <span className="text-xs text-[#9AA4B2] font-normal truncate leading-tight">
@@ -226,7 +234,7 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                     </div>
                   </div>
                   <div
-                    className={`w-5 h-5 rounded-full flex items-center justify-center transition-colors flex-shrink-0 ${
+                    className={`w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center transition-colors flex-shrink-0 ${
                       isSelected
                         ? "bg-[#6B9BFF] text-[#0B0D10]"
                         : isDisabled
@@ -235,19 +243,19 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                     }`}
                     aria-hidden="true"
                   >
-                    {isSelected && <FiCheck className="w-3.5 h-3.5 stroke-[2.5]" />}
+                    {isSelected && <FiCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />}
                   </div>
                 </div>
 
-                {/* Description: full subject lists without truncation/ellipses */}
-                <p className="text-[13px] sm:text-[14px] leading-relaxed text-[#9AA4B2] mb-auto">
+                {/* Description: 2-line clamp on mobile, full on desktop */}
+                <p className="text-[12px] sm:text-[14px] leading-snug sm:leading-relaxed text-[#9AA4B2] mb-auto line-clamp-2 sm:line-clamp-none">
                   {d.description}
                 </p>
 
                 {/* Status / Actions / Explanation */}
                 {isSelected ? (
-                  <div className="mt-3 pt-2.5 border-t border-[#2A313B] flex items-center justify-between text-xs">
-                    <span className="text-[#9AA4B2] font-medium">
+                  <div className="mt-2.5 pt-2 sm:mt-3 sm:pt-2.5 border-t border-[#2A313B] flex items-center justify-between text-xs">
+                    <span className="text-[#9AA4B2] font-medium text-[11px] sm:text-xs">
                       {activeBranch === d.code ? "Primary paper" : "Secondary paper"}
                     </span>
                     {selected.length === 2 && activeBranch !== d.code ? (
@@ -257,7 +265,7 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                           e.stopPropagation();
                           setActiveBranch(d.code);
                         }}
-                        className="text-[#6B9BFF] hover:underline font-medium text-xs transition"
+                        className="text-[#6B9BFF] bg-[#6B9BFF]/10 hover:bg-[#6B9BFF]/20 border border-[#6B9BFF]/30 px-2 py-0.5 rounded font-medium text-[11px] sm:text-xs transition active:scale-95"
                       >
                         Set as primary
                       </button>
@@ -266,12 +274,12 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
                     )}
                   </div>
                 ) : isDisabled ? (
-                  <div className="mt-3 pt-2.5 border-t border-[#2A313B]/40 flex items-center justify-between text-[11px] text-[#9AA4B2]/60">
+                  <div className="mt-2 pt-1.5 sm:mt-3 sm:pt-2.5 border-t border-[#2A313B]/40 flex items-center justify-between text-[11px] text-[#9AA4B2]/60">
                     <span>Max 2 papers selected</span>
                     <span>Deselect one to swap</span>
                   </div>
                 ) : (
-                  <div className="mt-3 pt-2.5 border-t border-transparent text-[11px] text-[#9AA4B2]/40 select-none">
+                  <div className="mt-2 pt-1.5 sm:mt-3 sm:pt-2.5 border-t border-transparent text-[11px] text-[#9AA4B2]/40 select-none">
                     <span>Click to select</span>
                   </div>
                 )}
@@ -281,11 +289,11 @@ export default function BranchSelectionWall({ isOpen: forceOpen = false, onClose
         </div>
 
         {/* Simplified Compact Footer */}
-        <div className="w-full pt-4 pb-2 border-t border-[#2A313B] flex flex-col sm:flex-row items-center justify-between gap-4 sticky bottom-0 bg-[#0B0D10]/95 backdrop-blur-xs sm:static">
-          <div className="text-sm text-[#9AA4B2] text-center sm:text-left">
-            Selected: <strong className="text-[#E8EDF4] font-semibold">{selected.length}</strong> of {MAX_ALLOWED_BRANCHES} max disciplines
+        <div className="w-full pt-3 pb-3 sm:pt-4 sm:pb-2 border-t border-[#2A313B] flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 sticky bottom-0 bg-[#0B0D10]/95 backdrop-blur-md sm:static pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <div className="text-xs sm:text-sm text-[#9AA4B2] text-center sm:text-left">
+            <span>Selected: <strong className="text-[#E8EDF4] font-semibold">{selected.length}</strong> of {MAX_ALLOWED_BRANCHES} max disciplines</span>
             {isAtMax && (
-              <span className="ml-2 text-xs text-[#6B9BFF] font-medium hidden sm:inline">
+              <span className="ml-2 text-xs text-[#6B9BFF] font-medium">
                 (Maximum reached)
               </span>
             )}
