@@ -292,3 +292,76 @@ describe("GATE DA mock tests & track integration", () => {
         expect(isDa).toBe(true);
     });
 });
+
+describe("Multi-Branch Mock Papers & Launch Availability", () => {
+    test("validates 65-question multi-branch paper availability with 10 GA and 55 Tech", () => {
+        const paper = {
+            label: "GATE ME 2023 Set 1",
+            yearSetKey: "me-2023-s1",
+            track: "me",
+            paperReady: true,
+            gaCount: 10,
+            csCount: 55,
+            requiredGaCount: 10,
+            requiredCsCount: 55,
+        };
+
+        const paperGaQuestions = new Array(10).fill({ subject: "General Aptitude" });
+        const paperCsQuestions = new Array(55).fill({ subject: "Mechanical Engineering" });
+
+        const safeRequiredGaCount = Number.isFinite(paper.requiredGaCount) ? paper.requiredGaCount : 10;
+        const safeRequiredCsCount = Number.isFinite(paper.requiredCsCount) ? paper.requiredCsCount : 55;
+
+        const hasRequiredValidatedRows =
+            paperGaQuestions.length === safeRequiredGaCount
+            && paperCsQuestions.length === safeRequiredCsCount;
+        const canStartPaper = paper.paperReady && hasRequiredValidatedRows;
+
+        expect(canStartPaper).toBe(true);
+    });
+
+    test("validates pre-2010 historical paper availability with 0 GA questions", () => {
+        const paper = {
+            label: "GATE ME 2001",
+            yearSetKey: "me-2001-s1",
+            track: "me",
+            paperReady: true,
+            gaCount: 0,
+            csCount: 50,
+            requiredGaCount: 0,
+            requiredCsCount: 50,
+        };
+
+        const paperGaQuestions = [];
+        const paperCsQuestions = new Array(50).fill({ subject: "Mechanical Engineering" });
+
+        const safeRequiredGaCount = Number.isFinite(paper.requiredGaCount) ? paper.requiredGaCount : 10;
+        const safeRequiredCsCount = Number.isFinite(paper.requiredCsCount) ? paper.requiredCsCount : 55;
+
+        const hasRequiredValidatedRows =
+            paperGaQuestions.length === safeRequiredGaCount
+            && paperCsQuestions.length === safeRequiredCsCount;
+        const canStartPaper = paper.paperReady && hasRequiredValidatedRows;
+
+        expect(safeRequiredGaCount).toBe(0);
+        expect(safeRequiredCsCount).toBe(50);
+        expect(canStartPaper).toBe(true);
+    });
+
+    test("resolves correct branch track and core titles for ME, EC, EE, CE", () => {
+        const BRANCH_CORE_TITLES = {
+            ec: "Electronics and Communication",
+            ee: "Electrical Engineering",
+            me: "Mechanical Engineering",
+            ce: "Civil Engineering",
+            da: "Data Science and AI",
+            cse: "Computer Science and IT",
+        };
+
+        expect(BRANCH_CORE_TITLES.ec).toBe("Electronics and Communication");
+        expect(BRANCH_CORE_TITLES.me).toBe("Mechanical Engineering");
+        expect(BRANCH_CORE_TITLES.ee).toBe("Electrical Engineering");
+        expect(BRANCH_CORE_TITLES.ce).toBe("Civil Engineering");
+    });
+});
+

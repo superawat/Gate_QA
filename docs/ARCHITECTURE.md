@@ -477,8 +477,19 @@ To eliminate the 50x frequency skew and rare subtopic starvation caused by legac
   - **Single Subject**: 100% pure uniform random sampling across the pool ($P(q_i) = \text{targetCount} / |Pool|$).
   - **Multi-Subject**: Equal/balanced quota allocation across selected subjects, followed by 100% uniform random selection within each subject stratum ($P(q_i \mid q_i \in S) = \text{quota}(S) / |Pool_S|$).
   - **Small/Exhausted Pools**: Bounded by pool size; unfulfilled slots are redistributed across remaining active subjects.
-- **Canonical Subject Normalization**: Preserves track prefixes (`da:*`, `isro:*`) and special aptitude categories (`english`, `quant`, `reasoning`) via `getQuestionSubjectKey`.
 - **Empty Pool Guard**: When filtered pool count is 0, the attempt is blocked with clear resolution guidance.
+
+### 7. Multi-Branch Mock Exam Loading & Dynamic Section Title Resolution (DEC-182)
+
+- **Multi-Branch Context Loading**: `MockTestContext.tsx` integrates `BranchQuestionService` alongside `DaQuestionService` and `AptitudeQuestionService` to lazily hydrate `mockQuestionPool` for enrolled disciplines (`ec`, `ee`, `me`, `ce`). A dedicated `branchMockLoading` flag guards state transitions.
+- **Section 2 Dynamic Track Resolution**: Instead of hardcoding "Computer Science and Information Technology", Section 2 is dynamically derived via `resolveCoreSectionTrack({ currentQuestion, questions, attemptMeta })` and `getBranchSectionInfo(track)` (`src/utils/mockTest.js`).
+  - Maps `ec` -> "Electronics and Communication Engineering", `ee` -> "Electrical Engineering", `me` -> "Mechanical Engineering", `ce` -> "Civil Engineering", `da` -> "Data Science and Artificial Intelligence", and `cs`/`cse` -> "Computer Science and Information Technology".
+  - If the active question is General Aptitude (Section 1), the track falls back to the exam's overall paper track or technical questions pool; if the active question is technical (Section 2), it dynamically matches the question's authentic discipline.
+  - Rendered across `MockTestHeader.jsx` (desktop full name, mobile short badge), `QuestionPalette.jsx` (palette section header), and `MockTestResults.jsx`.
+- **Authentic Question Ordering & GA Distribution**:
+  - `build-branch-shards.mjs` categorizes questions strictly via tag-based GA detection (`/general\s*aptitude|aptitude/i`), ensuring all modern 65-Q papers feature exactly 10 GA (Q56–Q65) and 55 Technical (Q1–Q55) questions, with 0 GA for pre-2010 papers.
+  - `MockCatalogService.js` invalidates cache across branch switches (`lastBranchKey`) and respects authentic `orderIndex` parsed from UIDs.
+
 
 ## URL contract
 

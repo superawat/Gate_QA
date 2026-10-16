@@ -42,6 +42,14 @@ vi.mock("../../utils/analytics", () => ({
 
 vi.mock("../../utils/practiceProgress", () => ({
   recordPracticeAttempt: vi.fn(),
+  readPracticeProgress: vi.fn((storage, key) => {
+    try {
+      const raw = storage?.getItem(key || "gateqa_progress_v1");
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  }),
   PRACTICE_PROGRESS_STORAGE_KEY: "gateqa_progress_v1",
   APTITUDE_PROGRESS_STORAGE_KEY: "gateqa_apt_progress_v1",
   DA_PROGRESS_STORAGE_KEY: "gateqa_da_progress_v1",
@@ -727,6 +735,110 @@ describe("AnswerPanel", () => {
       expect(screen.getByRole("button", { name: "B" })).toBeTruthy();
       expect(screen.queryByPlaceholderText(/Enter numeric answer/i)).toBeNull();
       unmount();
+    });
+  });
+
+  describe("Detailed Solution button behavior", () => {
+    const questionWithDetailedSol = {
+      question_uid: "test:detailed-sol-1",
+      title: "Sample Question with Detailed Sol",
+      detailed_solution: {
+        concept: "Graph Theory",
+        markdown: "Step 1: Compute shortest path.",
+      },
+    };
+
+    beforeEach(() => {
+      AnswerService.answersByQuestionUid["test:detailed-sol-1"] = {
+        type: "MCQ",
+        answer: "A",
+      };
+      window.localStorage.clear();
+    });
+
+    test("does not render Detailed Solution button while feature is paused per user request", () => {
+      render(<AnswerPanel question={questionWithDetailedSol} />);
+      expect(screen.queryByRole("button", { name: /Detailed Solution/i })).toBeNull();
+    });
+
+    test("does not render Detailed Solution button if question has no detailed solution", () => {
+      const qWithoutSol = {
+        question_uid: "test:no-sol",
+        title: "No solution question",
+      };
+      render(<AnswerPanel question={qWithoutSol} />);
+      expect(screen.queryByRole("button", { name: /Detailed Solution/i })).toBeNull();
+    });
+
+    // Skipped while Detailed Solution button is temporarily removed per user request
+    test.skip("renders locked Detailed Solution button when user has not attempted the question", () => {
+      render(<AnswerPanel question={questionWithDetailedSol} />);
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn).toBeTruthy();
+      expect(btn.getAttribute("title")).toContain("Attempt the question at least once");
+    });
+
+    test.skip("shows toast warning when clicking Detailed Solution before attempting", () => {
+      const onToggle = vi.fn();
+      render(
+        <AnswerPanel
+          question={questionWithDetailedSol}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      fireEvent.click(btn);
+      expect(onToggle).not.toHaveBeenCalled();
+      expect(screen.getByText(/Please attempt the question at least once/i)).toBeTruthy();
+    });
+
+    test.skip("unlocks Detailed Solution and triggers onToggleDetailedSolution after user attempts the question", () => {
+      const onToggle = vi.fn();
+      render(
+        <AnswerPanel
+          question={questionWithDetailedSol}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+
+      // Select option A and submit
+      const optionA = screen.getByRole("button", { name: "A" });
+      fireEvent.click(optionA);
+
+      const submitBtn = screen.getAllByRole("button", { name: /Submit Answer/i })[0];
+      fireEvent.click(submitBtn);
+
+      // Detailed Solution button should now be unlocked
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn.getAttribute("title")).toBe("View Detailed Solution");
+
+      // Clicking calls onToggleDetailedSolution
+      fireEvent.click(btn);
+      expect(onToggle).toHaveBeenCalledTimes(1);
+    });
+
+    test.skip("is unlocked if question was already solved or attempted in storage", () => {
+      const onToggle = vi.fn();
+      // Record prior attempt in localStorage
+      window.localStorage.setItem(
+        "gateqa_progress_v1",
+        JSON.stringify({
+          "test:detailed-sol-1": { attempts: 1, correct: false },
+        })
+      );
+
+      render(
+        <AnswerPanel
+          question={questionWithDetailedSol}
+          onToggleDetailedSolution={onToggle}
+        />
+      );
+
+      const btn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+      expect(btn.getAttribute("title")).toBe("View Detailed Solution");
+
+      fireEvent.click(btn);
+      expect(onToggle).toHaveBeenCalledTimes(1);
     });
   });
 });

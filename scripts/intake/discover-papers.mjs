@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const BRANCHES = ["ec", "ee", "me", "ce"];
+const BRANCHES = ["cse", "da", "ec", "ee", "me", "ce"];
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)";
 
 async function discover() {

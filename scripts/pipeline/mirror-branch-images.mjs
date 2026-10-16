@@ -66,13 +66,14 @@ export async function mirrorImage(relativeOrAbsoluteUrl, branch, year) {
 export async function rewriteImageSourcesInHtml(htmlContent, branch, year, imageCache) {
   if (!htmlContent || typeof htmlContent !== "string") return htmlContent;
 
-  const imgRegex = /<img\s+[^>]*src=['"]([^'"]+)['"][^>]*>/gi;
+  const imgRegex = /<img\b([^>]*?)\bsrc[&]?\s*=\s*(?:["']([^"']+)["']|(\S+))([^>]*)>/gi;
   let match;
   let updatedHtml = htmlContent;
 
   while ((match = imgRegex.exec(htmlContent)) !== null) {
-    const rawSrc = match[1];
-    if (rawSrc.startsWith("/question-images/")) continue;
+    let rawSrc = match[2] || match[3] || "";
+    rawSrc = rawSrc.replace(/^["']|["']$/g, "").trim();
+    if (!rawSrc || rawSrc.startsWith("/question-images/")) continue;
 
     if (imageCache.has(rawSrc)) {
       const localPath = imageCache.get(rawSrc);

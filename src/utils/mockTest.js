@@ -1,7 +1,8 @@
 import { evaluateAnswer } from "./evaluateAnswer.js";
 import { countStructuredEmbeddedOptions, extractEmbeddedOptions, hasEmbeddedOptions } from "./stripEmbeddedOptions.js";
-import { getQuestionTrack, getQuestionYearSetIdentity, isDaQuestion } from "./examTrack.js";
+import { getQuestionTrack, getQuestionYearSetIdentity, isDaQuestion, isAptitudeQuestion } from "./examTrack.js";
 import { resolveQuestionType } from "./questionTypeResolution.js";
+import { normalizeBranchId } from "./branchEligibility";
 
 export const MOCK_SECTION_COUNTS = {
   GA: 10,
@@ -80,6 +81,25 @@ export const TECHNICAL_SUBJECT_NAMES = new Set([
   "artificial intelligence", "calculus & optimization", "dbms & warehousing",
   "linear algebra", "machine learning", "probability & statistics",
   "programming & dsa",
+  // EC Subjects
+  "network theory", "signals and systems", "analog circuits", "electronic devices",
+  "digital circuits", "microprocessors", "control systems", "communication systems",
+  "electromagnetics", "engineering mathematics (ec)",
+  // EE Subjects
+  "electric circuits", "electrical machines", "power systems", "power electronics",
+  "electromagnetic fields", "electrical and electronic measurements", "analog electronics",
+  "digital electronics", "electromagnetic theory", "engineering mathematics (ee)",
+  // ME Subjects
+  "fluid mechanics", "thermodynamics", "strength of materials", "theory of machine",
+  "theory of machines", "heat transfer", "manufacturing engineering", "industrial engineering",
+  "machine design", "refrigeration and air-conditioning", "engineering mechanics",
+  "engineering mathematics (me)",
+  // CE Subjects
+  "structural analysis", "solid mechanics", "design of steel structures",
+  "geotechnical engineering", "fluid mechanics and hydraulics", "engineering hydrology",
+  "environmental engineering", "transportation engineering", "rcc structures",
+  "irrigation engineering", "geomatics engineering", "construction materials and management",
+  "engineering mathematics (ce)",
 ]);
 
 export const TECHNICAL_SUBJECT_SLUGS = new Set([
@@ -101,6 +121,38 @@ export const TECHNICAL_SUBJECT_SLUGS = new Set([
   "machine-learning",
   "probability-and-statistics",
   "programming-data-structures-and-algorithms", "programming-in-python", "data-structures",
+  // EC Slugs
+  "network-theory", "ec-network-theory", "signals-and-systems", "ec-signals-and-systems",
+  "analog-circuits", "ec-analog-circuits", "electronic-devices", "ec-electronic-devices",
+  "digital-circuits", "ec-digital-circuits", "microprocessors", "ec-microprocessors",
+  "control-systems", "ec-control-systems", "communication-systems", "ec-communication-systems",
+  "electromagnetics", "ec-electromagnetics", "ec-math",
+  // EE Slugs
+  "electric-circuits", "ee-electric-circuits", "electrical-machines", "ee-electrical-machines",
+  "power-systems", "ee-power-systems", "ee-control-systems",
+  "electrical-and-electronic-measurements", "ee-electrical-and-electronic-measurements",
+  "analog-electronics", "ee-analog-electronics", "digital-electronics", "ee-digital-electronics",
+  "power-electronics", "ee-power-electronics", "electromagnetic-fields", "ee-electromagnetic-fields",
+  "electromagnetic-theory", "ee-electromagnetic-theory", "ee-signals-and-systems", "ee-math",
+  // ME Slugs
+  "fluid-mechanics", "me-fluid-mechanics", "thermodynamics", "me-thermodynamics",
+  "strength-of-materials", "me-strength-of-materials", "theory-of-machine", "theory-of-machines",
+  "me-theory-of-machine", "me-theory-of-machines", "heat-transfer", "me-heat-transfer",
+  "manufacturing-engineering", "me-manufacturing-engineering", "industrial-engineering",
+  "me-industrial-engineering", "machine-design", "me-machine-design",
+  "refrigeration-and-air-conditioning", "me-refrigeration-and-air-conditioning",
+  "engineering-mechanics", "me-engineering-mechanics", "me-math",
+  // CE Slugs
+  "structural-analysis", "ce-structural-analysis", "solid-mechanics", "ce-solid-mechanics",
+  "design-of-steel-structures", "ce-design-of-steel-structures", "steel-structures",
+  "geotechnical-engineering", "ce-geotechnical-engineering",
+  "fluid-mechanics-and-hydraulics", "ce-fluid-mechanics-and-hydraulics",
+  "engineering-hydrology", "ce-engineering-hydrology", "hydrology",
+  "environmental-engineering", "ce-environmental-engineering",
+  "transportation-engineering", "ce-transportation-engineering",
+  "rcc-structures", "ce-rcc-structures", "irrigation-engineering", "ce-irrigation-engineering",
+  "geomatics-engineering", "ce-geomatics-engineering", "geometics-engineering",
+  "construction-materials-and-management", "ce-construction-materials-and-management", "ce-math",
 ]);
 
 export const isTechnicalMockQuestion = (question = {}, questionMeta = null) => {
@@ -108,6 +160,14 @@ export const isTechnicalMockQuestion = (question = {}, questionMeta = null) => {
   const rawSlug = String(question?.subjectSlug || questionMeta?.subjectSlug || "").trim().toLowerCase();
   const subjectSlug = rawSlug.replace(/^da:/i, "");
   const tags = (Array.isArray(question?.tags) ? question.tags : []).map((t) => String(t || "").toLowerCase());
+
+  if (
+    /^(ec|ee|me|ce)-(?!ga\b|general-aptitude\b)/i.test(rawSlug)
+    || /^(ec|ee|me|ce)-(?!ga\b|general-aptitude\b)/i.test(subjectSlug)
+    || /\((?:ec|ee|me|ce)\)$/i.test(subject)
+  ) {
+    return true;
+  }
 
   if (TECHNICAL_SUBJECT_NAMES.has(subject) || TECHNICAL_SUBJECT_SLUGS.has(subjectSlug) || TECHNICAL_SUBJECT_SLUGS.has(rawSlug)) {
     return true;
@@ -300,8 +360,14 @@ const hasValidAnswerForType = (answerRecord = null, type = "") => {
   }
 
   if (normalizedType === "MSQ") {
-    return Array.isArray(answerRecord.answer)
-      && answerRecord.answer.map(normalizeOptionLabel).some(Boolean);
+    if (Array.isArray(answerRecord.answer)) {
+      return answerRecord.answer.map(normalizeOptionLabel).some(Boolean);
+    }
+    if (typeof answerRecord.answer === "string") {
+      const parts = answerRecord.answer.split(/[\s,;|]+/).map(normalizeOptionLabel).filter(Boolean);
+      return parts.length > 0;
+    }
+    return false;
   }
 
   if (normalizedType === "NAT") {
@@ -423,8 +489,11 @@ export const validateMockQuestionForPool = ({
     }
   }
 
-  if (objectiveType === "MSQ" && Array.isArray(answerRecord?.answer)) {
-    const missingAnswerLabels = answerRecord.answer
+  if (objectiveType === "MSQ") {
+    const rawAnswers = Array.isArray(answerRecord?.answer)
+      ? answerRecord.answer
+      : (typeof answerRecord?.answer === "string" ? answerRecord.answer.split(/[\s,;|]+/) : []);
+    const missingAnswerLabels = rawAnswers
       .map(normalizeOptionLabel)
       .filter((label) => label && optionLabels.size > 0 && !optionLabels.has(label));
     if (missingAnswerLabels.length > 0 && optionLabels.size > 0) {
@@ -860,3 +929,116 @@ export const buildMockResultSummary = ({
 
   return summary;
 };
+
+export const BRANCH_SECTION_INFO = Object.freeze({
+  ec: {
+    name: "GATE EC",
+    full: "Electronics and Communication Engineering",
+    short: "ECE",
+    status: "Electronics & Communication",
+    paletteTitle: "Electronics and Communication",
+  },
+  ee: {
+    name: "GATE EE",
+    full: "Electrical Engineering",
+    short: "EE",
+    status: "Electrical Engineering",
+    paletteTitle: "Electrical Engineering",
+  },
+  me: {
+    name: "GATE ME",
+    full: "Mechanical Engineering",
+    short: "ME",
+    status: "Mechanical Engineering",
+    paletteTitle: "Mechanical Engineering",
+  },
+  ce: {
+    name: "GATE CE",
+    full: "Civil Engineering",
+    short: "CE",
+    status: "Civil Engineering",
+    paletteTitle: "Civil Engineering",
+  },
+  da: {
+    name: "GATE DA",
+    full: "Data Science and AI",
+    short: "DA & AI",
+    status: "Data Science & AI",
+    paletteTitle: "Data Science and AI",
+  },
+  cse: {
+    name: "GATE CSE",
+    full: "Computer Science and Information Technology",
+    short: "CS & IT",
+    status: "Computer Science",
+    paletteTitle: "Computer Science and IT",
+  },
+  it: {
+    name: "GATE IT",
+    full: "Information Technology",
+    short: "IT",
+    status: "Information Technology",
+    paletteTitle: "Information Technology",
+  },
+});
+
+export function resolveCoreSectionTrack({ currentQuestion = null, questions = [], attemptMeta = null } = {}) {
+  // 1. If currentQuestion is technical (not GA), its track is primary
+  if (
+    currentQuestion &&
+    !isAptitudeQuestion(currentQuestion) &&
+    currentQuestion.subjectSlug !== "ga" &&
+    currentQuestion.subject !== "General Aptitude"
+  ) {
+    const qTrack = normalizeBranchId(getQuestionTrack(currentQuestion));
+    if (qTrack && qTrack !== "aptitude") {
+      return qTrack;
+    }
+  }
+
+  // 2. Inspect technical questions in the exam pool (Section 2)
+  if (Array.isArray(questions) && questions.length > 0) {
+    const coreQuestions = questions.filter(
+      (q) => !isAptitudeQuestion(q) && q?.subjectSlug !== "ga" && q?.subject !== "General Aptitude"
+    );
+    if (coreQuestions.length > 0) {
+      const trackCounts = {};
+      for (const q of coreQuestions) {
+        const tr = normalizeBranchId(getQuestionTrack(q));
+        if (tr && tr !== "aptitude") {
+          trackCounts[tr] = (trackCounts[tr] || 0) + 1;
+        }
+      }
+      const sorted = Object.entries(trackCounts).sort((a, b) => b[1] - a[1]);
+      if (sorted.length > 0 && sorted[0][0]) {
+        return sorted[0][0];
+      }
+    }
+  }
+
+  // 3. Fall back to attemptMeta
+  const metaTrack = normalizeBranchId(attemptMeta?.track);
+  if (metaTrack && metaTrack !== "aptitude") {
+    return metaTrack;
+  }
+
+  const paperKey = String(attemptMeta?.selectedPaperYearSetKey || "");
+  if (paperKey) {
+    const keyTrack = normalizeBranchId(paperKey.split(/[-:]/)[0]);
+    if (keyTrack && keyTrack !== "aptitude") {
+      return keyTrack;
+    }
+  }
+
+  if (attemptMeta?.isDa) {
+    return "da";
+  }
+
+  return "cse";
+}
+
+export function getBranchSectionInfo(trackOrBranch) {
+  const norm = normalizeBranchId(trackOrBranch) || "cse";
+  return BRANCH_SECTION_INFO[norm] || BRANCH_SECTION_INFO.cse;
+}
+

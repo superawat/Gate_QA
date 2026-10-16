@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useMockTest, useMockTimer } from "../../contexts/MockTestContext";
+import { resolveCoreSectionTrack, getBranchSectionInfo } from "../../utils/mockTest";
 
 const formatTime = (seconds) => {
     const safeSeconds = Math.max(0, Number(seconds) || 0);
@@ -45,7 +46,9 @@ const MockTestHeader = ({
 }) => {
     const {
         attemptMeta,
+        currentQuestion,
         currentSection,
+        questions,
         questionStates,
         sectionQuestionUids,
         setCurrentSection,
@@ -117,15 +120,13 @@ const MockTestHeader = ({
     const hasGaQuestions = Array.isArray(sectionQuestionUids?.GA) && sectionQuestionUids.GA.length > 0;
     const hasCsQuestions = Array.isArray(sectionQuestionUids?.CS) && sectionQuestionUids.CS.length > 0;
     const totalQuestions = (sectionQuestionUids?.GA?.length || 0) + (sectionQuestionUids?.CS?.length || 0);
-    const isDaAttempt = Boolean(
-        attemptMeta?.isDa
-        || attemptMeta?.track === "da"
-        || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
-    );
-    const trackName = isDaAttempt ? "GATE DA" : "GATE CSE";
-    const coreSectionFullName = isDaAttempt ? "Data Science and AI" : "Computer Science and Information Technology";
-    const coreSectionShortName = isDaAttempt ? "DA & AI" : "CS & IT";
-    const coreSectionStatusName = isDaAttempt ? "Data Science & AI" : "Computer Science";
+    const resolvedTrack = resolveCoreSectionTrack({ currentQuestion, questions, attemptMeta });
+    const isDaAttempt = resolvedTrack === "da";
+    const activeBranchInfo = getBranchSectionInfo(resolvedTrack);
+    const trackName = activeBranchInfo.name;
+    const coreSectionFullName = activeBranchInfo.full;
+    const coreSectionShortName = activeBranchInfo.short;
+    const coreSectionStatusName = activeBranchInfo.status;
 
     const attemptKindLabel = attemptMeta?.kindTitle
         || MOCK_KIND_LABELS[attemptMeta?.kindId]
@@ -290,7 +291,7 @@ const MockTestHeader = ({
                                             {hasCsQuestions && (
                                                 <button
                                                     type="button"
-                                                    aria-label={isDaAttempt ? "DA status" : "CS status"}
+                                                    aria-label={`${coreSectionShortName} status`}
                                                     className="mocktest-info-icon flex h-3 w-3 items-center justify-center rounded-full border border-[#98a6b5] text-[9px]"
                                                     onClick={(event) => handleInfoClick("CS", event)}
                                                 >

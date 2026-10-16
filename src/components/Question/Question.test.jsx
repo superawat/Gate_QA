@@ -177,4 +177,50 @@ describe("Question Component - Mobile & Responsive Layout", () => {
     fireEvent.click(img);
     expect(screen.queryByRole("dialog", { name: /enlarged diagram/i })).toBeNull();
   });
+
+  // Skipped while Detailed Solution button is temporarily removed per user request
+  test.skip("detailed solution is hidden until opened, and toggles when onToggleDetailedSolution is called", () => {
+    const questionWithSol = {
+      question_uid: "test:detailed-q",
+      title: "Test Question with Solution",
+      question: "<p>Stem</p>",
+      answer_meta: { type: "MCQ", answer: "A" },
+      detailed_solution: {
+        concept: "Dynamic Programming",
+        markdown: "Optimal substructure analysis.",
+      },
+    };
+
+    const { rerender } = render(<Question question={questionWithSol} />);
+    // Initially hidden
+    expect(screen.queryByText("Dynamic Programming")).toBeNull();
+
+    // Submit answer to unlock
+    const optA = screen.getByRole("button", { name: "A" });
+    fireEvent.click(optA);
+    const submitBtn = screen.getAllByRole("button", { name: /Submit Answer/i })[0];
+    fireEvent.click(submitBtn);
+
+    // Click Detailed Solution button
+    const detailedSolBtn = screen.getAllByRole("button", { name: /Detailed Solution/i })[0];
+    fireEvent.click(detailedSolBtn);
+
+    // Now visible
+    expect(screen.getByText("Dynamic Programming")).toBeTruthy();
+    expect(screen.getByText(/Optimal substructure analysis/i)).toBeTruthy();
+
+    // Rerendering with new question closes detailed solution
+    const newQuestion = {
+      question_uid: "test:detailed-q2",
+      title: "Test Question 2",
+      question: "<p>Stem 2</p>",
+      answer_meta: { type: "MCQ", answer: "B" },
+      detailed_solution: {
+        concept: "Graph Algorithms",
+        markdown: "Dijkstra algorithm analysis.",
+      },
+    };
+    rerender(<Question question={newQuestion} />);
+    expect(screen.queryByText("Graph Algorithms")).toBeNull();
+  });
 });

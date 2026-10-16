@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag, FaStickyNote } from "react-icons/fa";
+import { FaCheck, FaStar, FaRegStar, FaLink, FaFlag, FaStickyNote, FaLock } from "react-icons/fa";
 import { useFilterActions, useFilterState } from "../../contexts/FilterContext";
 import { useSession } from "../../contexts/SessionContext";
 import { evaluateAnswer, evaluateMultiNatPart } from "../../utils/evaluateAnswer";
@@ -14,6 +14,7 @@ import { QuestionService } from "../../services/QuestionService";
 import { DaQuestionService } from "../../services/DaQuestionService";
 import {
   recordPracticeAttempt,
+  readPracticeProgress,
   PRACTICE_PROGRESS_STORAGE_KEY,
   APTITUDE_PROGRESS_STORAGE_KEY,
   DA_PROGRESS_STORAGE_KEY,
@@ -33,6 +34,9 @@ export default function AnswerPanel({
   solutionLink: passedSolutionLink,
   onOpenNotes,
   hasNote = false,
+  isDetailedSolutionOpen = false,
+  onToggleDetailedSolution,
+  hasDetailedSolution = false,
 }) {
   const {
     toggleSolved,
@@ -128,6 +132,44 @@ export default function AnswerPanel({
     };
   }, [question, questionProgressId]);
 
+  const targetStorageKey = useMemo(
+    () => questionProgressId || storageKey || question?.question_uid || question?.id || "",
+    [questionProgressId, storageKey, question]
+  );
+
+  const progressStorageKey = useMemo(() => {
+    if (isDaQuestion(question)) return DA_PROGRESS_STORAGE_KEY;
+    if (String(targetStorageKey || "").startsWith("APT-")) return APTITUDE_PROGRESS_STORAGE_KEY;
+    return PRACTICE_PROGRESS_STORAGE_KEY;
+  }, [question, targetStorageKey]);
+
+  const hasDetailedSol = Boolean(hasDetailedSolution || question?.detailed_solution);
+
+  const hasAttempted = useMemo(() => {
+    if (result !== null) return true;
+    if (isSolved) return true;
+    if (!targetStorageKey) return false;
+    try {
+      const progress = readPracticeProgress(
+        typeof window !== "undefined" ? window.localStorage : null,
+        progressStorageKey
+      );
+      const entry = progress?.[targetStorageKey];
+      if (entry) {
+        const attempts = Number(entry.attempts || entry.attemptsCount || 0);
+        if (
+          attempts > 0 ||
+          entry.correct === true ||
+          entry.isSolved ||
+          (Array.isArray(entry.history) && entry.history.length > 0)
+        ) {
+          return true;
+        }
+      }
+    } catch (_) {}
+    return false;
+  }, [result, isSolved, targetStorageKey, progressStorageKey]);
+
   const solutionLink = useMemo(() => {
     if (passedSolutionLink) {
       return passedSolutionLink;
@@ -203,12 +245,6 @@ export default function AnswerPanel({
     }
 
     const submittedAt = new Date();
-    const targetStorageKey = questionProgressId || storageKey || question?.question_uid || question?.id || "";
-    const progressStorageKey = isDaQuestion(question)
-      ? DA_PROGRESS_STORAGE_KEY
-      : String(targetStorageKey || "").startsWith("APT-")
-        ? APTITUDE_PROGRESS_STORAGE_KEY
-        : PRACTICE_PROGRESS_STORAGE_KEY;
 
     recordPracticeAttempt({
       storageKey: targetStorageKey,
@@ -777,6 +813,30 @@ export default function AnswerPanel({
     </button>
   );
 
+  const handleToggleDetailedSolution = useCallback(() => {
+    if (!hasAttempted) {
+      showToast("Please attempt the question at least once to view the detailed solution.");
+      return;
+    }
+    if (typeof onToggleDetailedSolution === "function") {
+      const willOpen = !isDetailedSolutionOpen;
+      onToggleDetailedSolution();
+      if (willOpen) {
+        setTimeout(() => {
+          const el = document.getElementById("detailed-solution-section");
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      }
+    }
+  }, [hasAttempted, isDetailedSolutionOpen, onToggleDetailedSolution, showToast]);
+
+  const renderDetailedSolutionButton = (additionalClasses = "") => {
+    // Detailed solution button temporarily removed per user request while detailed solutions are being worked on
+    return null;
+  };
+
   const renderSolutionButton = (additionalClasses = "") => {
     const isSpecialAptitude = isSpecialAptitudeQuestion(question);
     const fallbackSearchLink = !isSpecialAptitude && !solutionLink && question?.title
@@ -917,6 +977,7 @@ export default function AnswerPanel({
             {renderIconTray()}
           </div>
           <div className="flex items-center gap-2">
+            {renderDetailedSolutionButton()}
             {renderSolutionButton()}
             <AskAIButton question={question} onNotification={showToast} />
             {renderPreviousButton()}
@@ -928,6 +989,12 @@ export default function AnswerPanel({
           <div>
             {renderSubmitButton("w-full")}
           </div>
+
+          {hasDetailedSol && (
+            <div>
+              {renderDetailedSolutionButton("w-full")}
+            </div>
+          )}
 
           <div className="grid w-full grid-cols-2 gap-2">
             {renderSolutionButton("w-full")}

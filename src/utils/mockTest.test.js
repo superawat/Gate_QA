@@ -14,6 +14,9 @@ import {
   isTechnicalMockQuestion,
   MOCK_SLOW_QUESTION_THRESHOLD_SECONDS,
   validateMockQuestionForPool,
+  resolveCoreSectionTrack,
+  getBranchSectionInfo,
+  BRANCH_SECTION_INFO,
 } from "./mockTest";
 
 describe("mockTest utilities", () => {
@@ -627,6 +630,17 @@ describe("mockTest utilities", () => {
       tags: ["english"],
     };
     expect(isTechnicalMockQuestion(standaloneAptQ)).toBe(false);
+
+    // Multi-branch technical questions
+    expect(isTechnicalMockQuestion({ subjectSlug: "me-fluid-mechanics", subject: "Fluid Mechanics" })).toBe(true);
+    expect(isTechnicalMockQuestion({ subjectSlug: "ec-signals-and-systems", subject: "Signals and Systems" })).toBe(true);
+    expect(isTechnicalMockQuestion({ subjectSlug: "ee-power-systems", subject: "Power Systems" })).toBe(true);
+    expect(isTechnicalMockQuestion({ subjectSlug: "ce-structural-analysis", subject: "Structural Analysis" })).toBe(true);
+    expect(isTechnicalMockQuestion({ subjectSlug: "me-math", subject: "Engineering Mathematics (ME)" })).toBe(true);
+
+    // Multi-branch General Aptitude questions must NOT be technical
+    expect(isTechnicalMockQuestion({ subjectSlug: "ga", subject: "General Aptitude" })).toBe(false);
+    expect(isTechnicalMockQuestion({ subjectSlug: "general-aptitude", subject: "General Aptitude" })).toBe(false);
   });
 
   test("enforces structural option invariant: questions with options never resolve to NAT even with numerical-answers tag", () => {
@@ -800,5 +814,47 @@ describe("mockTest utilities", () => {
     expect(staleNatResponse.scoreDelta).toBe(0);
     expect(staleNatResponse.negativeMarks).toBe(0);
   });
+
+  test("resolveCoreSectionTrack resolves correct track from current technical question", () => {
+    const currentQuestion = {
+      question_uid: "pp:ec:2023:q15",
+      track: "ec",
+      subjectSlug: "ec-edc",
+      subject: "Electronic Devices",
+    };
+    expect(resolveCoreSectionTrack({ currentQuestion })).toBe("ec");
+    const info = getBranchSectionInfo("ec");
+    expect(info.full).toBe("Electronics and Communication Engineering");
+    expect(info.short).toBe("ECE");
+  });
+
+  test("resolveCoreSectionTrack resolves track from exam questions when on General Aptitude", () => {
+    const currentQuestion = {
+      question_uid: "pp:me:2026:q60",
+      subjectSlug: "ga",
+      subject: "General Aptitude",
+    };
+    const questions = [
+      currentQuestion,
+      { question_uid: "pp:me:2026:q1", track: "me", subjectSlug: "me-thermo" },
+      { question_uid: "pp:me:2026:q2", track: "me", subjectSlug: "me-som" },
+    ];
+    expect(resolveCoreSectionTrack({ currentQuestion, questions })).toBe("me");
+    const info = getBranchSectionInfo("me");
+    expect(info.full).toBe("Mechanical Engineering");
+    expect(info.short).toBe("ME");
+  });
+
+  test("resolveCoreSectionTrack falls back to attemptMeta when questions empty", () => {
+    expect(resolveCoreSectionTrack({ attemptMeta: { track: "ee" } })).toBe("ee");
+    expect(getBranchSectionInfo("ee").full).toBe("Electrical Engineering");
+
+    expect(resolveCoreSectionTrack({ attemptMeta: { selectedPaperYearSetKey: "ce:2024:set-1" } })).toBe("ce");
+    expect(getBranchSectionInfo("ce").full).toBe("Civil Engineering");
+
+    expect(resolveCoreSectionTrack({ attemptMeta: { track: "da" } })).toBe("da");
+    expect(getBranchSectionInfo("da").full).toBe("Data Science and AI");
+  });
 });
+
 

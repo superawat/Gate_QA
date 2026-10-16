@@ -30,13 +30,13 @@ const CHECKPOINT_FILE = path.join(ROOT, "audit", "crawler-checkpoint.json");
 const LOG_FILE = path.join(ROOT, "audit", "overnight-crawl.log");
 const DISCOVERED_FILE = path.join(ROOT, "audit", "discovered-papers.json");
 
-const DEFAULT_BRANCHES = ["ec", "ee", "me", "ce"];
+const DEFAULT_BRANCHES = ["cse", "da", "ec", "ee", "me", "ce"];
 
 function parseArgs() {
   const args = process.argv.slice(2);
   const opts = {
     branches: DEFAULT_BRANCHES,
-    fromYear: 2001,
+    fromYear: 1987,
     toYear: 2026,
     limit: null,
   };
@@ -136,7 +136,7 @@ async function runSequential() {
 
       try {
         log(`[START] Ingesting GATE ${paper.branch.toUpperCase()} ${paper.year}${paper.set ? ` Set ${paper.set}` : ""}...`);
-        const result = await crawlPaper(paper.branch, paper.year, paper.set, 13, paper.baseUrl);
+        const result = await crawlPaper(paper.branch, paper.year, paper.set, 20, paper.baseUrl);
 
         if (result && result.questions && result.questions.length > 0) {
           log(`[MIRROR] Mirroring WebP diagrams for ${paperKey}...`);

@@ -51,8 +51,8 @@ function slugify(text = "") {
  * Maps question tags to canonical branch taxonomy
  */
 function mapTaxonomy(branch, qNum, tag1, tag2) {
-  // Questions 1 to 10 are universal General Aptitude in GATE papers
-  if (qNum <= 10) {
+  const isGa = /general\s*aptitude|aptitude/i.test(tag1 || "") || /general\s*aptitude|aptitude/i.test(tag2 || "");
+  if (isGa) {
     const rawTag = (tag2 || tag1 || "").toLowerCase();
     let subtopicSlug = "quantitative-aptitude";
     let subtopicLabel = "Quantitative Aptitude";

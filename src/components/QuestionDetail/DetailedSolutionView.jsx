@@ -49,7 +49,7 @@ export default function DetailedSolutionView({ solution, isVisible = true }) {
       {isExpanded && (
         <div className="p-5 sm:p-6 space-y-6 text-sm text-slate-800 dark:text-slate-200 leading-relaxed animate-fade-in">
           {/* Solution Body */}
-          <div className="prose prose-slate dark:prose-invert max-w-none text-sm space-y-4">
+          <div className="prose prose-slate dark:prose-invert max-w-none text-sm space-y-4 [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-3 [&_img]:bg-white [&_img]:p-1.5 [&_img]:border [&_img]:border-slate-200 dark:[&_img]:border-slate-700">
             <MathContent>
               <div
                 className="whitespace-pre-line font-sans"

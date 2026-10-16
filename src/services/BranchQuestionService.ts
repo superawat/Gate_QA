@@ -228,14 +228,15 @@ export class BranchQuestionService {
     const uid = typeof questionOrUid === "string" ? questionOrUid : questionOrUid?.question_uid;
     if (!uid) return null;
 
-    const baseQuestion = this.questionsByUid.get(uid);
+    const baseQuestion = (typeof questionOrUid === "object" && questionOrUid) || this.questionsByUid.get(uid);
     if (!baseQuestion) return null;
 
     if (baseQuestion.question && baseQuestion.options && baseQuestion.detailed_solution) {
       return baseQuestion;
     }
 
-    const shardKey = baseQuestion.detailShardKey || `${baseQuestion.track}-${baseQuestion.year}-s${baseQuestion.set || 1}`;
+    const track = baseQuestion.track || (uid.startsWith("pp:") ? uid.split(":")[1] : "");
+    const shardKey = baseQuestion.detailShardKey || `${track}-${baseQuestion.year}-s${baseQuestion.set || 1}`;
     try {
       const records = await this.loadDetailShard(shardKey);
       const detail = records[uid];
@@ -245,6 +246,7 @@ export class BranchQuestionService {
           question: detail.question || baseQuestion.question,
           options: detail.options || baseQuestion.options,
           answer_meta: detail.answer_meta || baseQuestion.answer_meta,
+          answerMeta: detail.answer_meta || baseQuestion.answer_meta || detail.answerMeta,
           detailed_solution: detail.detailed_solution || null,
         };
         this.questionsByUid.set(uid, merged);

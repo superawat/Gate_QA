@@ -16,6 +16,7 @@ import {
     isTechnicalMockQuestion,
     normalizeMockSubjectKey,
     validateMockQuestionForPool,
+    resolveCoreSectionTrack,
 } from "../../utils/mockTest";
 import { getMockPaperYearSetIdentity } from "../../services/MockCatalogService";
 import { BranchQuestionService } from "../../services/BranchQuestionService";
@@ -1422,6 +1423,15 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 }
             }
 
+            const track = String(question?.track || "").toLowerCase();
+            if (["ec", "ee", "me", "ce"].includes(track) || uid.startsWith("pp:")) {
+                try {
+                    return await BranchQuestionService.ensureQuestionDetail(question) || question;
+                } catch {
+                    return question;
+                }
+            }
+
             if (typeof QuestionService.ensureQuestionDetail === "function") {
                 try {
                     return await QuestionService.ensureQuestionDetail(question) || question;
@@ -1492,14 +1502,16 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
             const hydratedCsQuestions = await hydrateQuestions(csQuestions);
             const totalQuestions = gaQuestions.length + csQuestions.length;
             const startSection = hydratedGaQuestions.length > 0 ? "GA" : "CS";
-            const daCount = csQuestions.filter((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:")).length;
-            const cseCount = csQuestions.length - daCount;
-            const isDa = selectedPaper?.track === "da"
-                || (selectedKind.id === "paper_mode" && String(selectedPaperYearSetKey || "").toLowerCase().startsWith("da:"))
-                || (selectedKind.id === "custom" && (
-                    (!setupState.enabledTracks?.includes("cse") && setupState.enabledTracks?.includes("da"))
-                    || (daCount > 0 && daCount >= cseCount)
-                ));
+            const detectedTrack = resolveCoreSectionTrack({
+                questions: csQuestions,
+                attemptMeta: {
+                    track: selectedPaper?.track,
+                    selectedPaperYearSetKey,
+                    isDa: selectedPaper?.track === "da" || String(selectedPaperYearSetKey || "").toLowerCase().startsWith("da:"),
+                },
+            });
+            const isDa = detectedTrack === "da";
+            const resolvedTrack = isDa ? "da" : detectedTrack;
 
             const started = startTest({
                 gaQuestions: hydratedGaQuestions,
@@ -1509,7 +1521,7 @@ const MockTestShell = ({ onExit, initialStage = "setup", onStageChange }) => {
                 meta: {
                     kindId: selectedKind.id,
                     kindTitle: selectedKind.title,
-                    track: isDa ? "da" : "cse",
+                    track: resolvedTrack,
                     isDa,
                     strictSectionCounts,
                     durationMinutes,

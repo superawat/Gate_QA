@@ -1,6 +1,6 @@
 import React from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
-import { formatMockTimeSpent } from "../../utils/mockTest";
+import { formatMockTimeSpent, resolveCoreSectionTrack, getBranchSectionInfo } from "../../utils/mockTest";
 import GateStatusIcon, {
     GATE_VISUAL_STATUS,
     getGateStatusModifier,
@@ -10,6 +10,7 @@ import GateStatusIcon, {
 
 const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleCollapsed }) => {
     const {
+        currentQuestion,
         questions,
         sectionQuestions,
         currentSection,
@@ -21,12 +22,9 @@ const QuestionPalette = ({ isCollapsed = false, isReviewPhase = false, onToggleC
         attemptMeta,
     } = useMockTest();
 
-    const isDaAttempt = Boolean(
-        attemptMeta?.isDa
-        || attemptMeta?.track === "da"
-        || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
-    );
-    const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
+    const resolvedTrack = resolveCoreSectionTrack({ currentQuestion, questions, attemptMeta });
+    const activeBranchInfo = getBranchSectionInfo(resolvedTrack);
+    const coreSectionTitle = activeBranchInfo.paletteTitle || activeBranchInfo.full;
 
     const stats = isReviewPhase
         ? {

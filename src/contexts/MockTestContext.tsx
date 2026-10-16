@@ -3,6 +3,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { useFilterActions, useFilterState } from "./FilterContext";
 import { AnswerService } from "../services/AnswerService";
 import { AptitudeQuestionService } from "../services/AptitudeQuestionService";
+import { BranchQuestionService } from "../services/BranchQuestionService";
 import { DaQuestionService } from "../services/DaQuestionService";
 import { MockCatalogService } from "../services/MockCatalogService";
 import { QuestionService } from "../services/QuestionService";
@@ -672,6 +673,17 @@ export const MockTestProvider = ({ children }) => {
     !DaQuestionService.loaded && readBranchPreferences().selectedBranches.includes("da")
   ));
   const [daMockError, setDaMockError] = useState(() => DaQuestionService.loadError || "");
+  const [branchQuestions, setBranchQuestions] = useState(() => {
+    const prefs = readBranchPreferences();
+    const active = ["ec", "ee", "me", "ce"].filter((b) => prefs.selectedBranches.includes(b));
+    return normalizeQuestionList(active.flatMap((b) => BranchQuestionService.getQuestions(b)));
+  });
+  const [branchMockLoading, setBranchMockLoading] = useState(() => {
+    const prefs = readBranchPreferences();
+    const active = ["ec", "ee", "me", "ce"].filter((b) => prefs.selectedBranches.includes(b));
+    return active.some((b) => !BranchQuestionService.isLoaded(b));
+  });
+  const [branchMockError, setBranchMockError] = useState("");
 
   const [testActive, setTestActive] = useState(false);
   const [testSubmitted, setTestSubmitted] = useState(false);
@@ -727,8 +739,8 @@ export const MockTestProvider = ({ children }) => {
     [aptitudeQuestions]
   );
   const mockQuestionPool = useMemo(
-    () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions, ...daQuestions]),
-    [allQuestions, aptitudeQuestions, daQuestions]
+    () => normalizeQuestionList([...allQuestions, ...aptitudeQuestions, ...daQuestions, ...branchQuestions]),
+    [allQuestions, aptitudeQuestions, daQuestions, branchQuestions]
   );
   const fallbackQuestionMetaByUid = useMemo(
     () => buildFallbackMockMetaByUid(mockQuestionPool),
@@ -836,7 +848,7 @@ export const MockTestProvider = ({ children }) => {
       if (cancelled) return;
       setCatalogLoading(true);
       try {
-        const loadedCatalog = await MockCatalogService.init();
+        const loadedCatalog = await MockCatalogService.init({ force: true });
         if (cancelled) return;
         setCatalog(loadedCatalog);
         setCatalogError("");
@@ -952,6 +964,61 @@ export const MockTestProvider = ({ children }) => {
 
     const handleBranchChange = () => {
       void loadDa();
+    };
+    window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadBranches = async () => {
+      const prefs = readBranchPreferences();
+      const activeBranches = ["ec", "ee", "me", "ce"].filter((b) => prefs.selectedBranches.includes(b));
+      if (activeBranches.length === 0) {
+        setBranchQuestions([]);
+        setBranchMockLoading(false);
+        setBranchMockError("");
+        return;
+      }
+
+      const allLoaded = activeBranches.every((b) => BranchQuestionService.isLoaded(b));
+      if (allLoaded) {
+        const questions = activeBranches.flatMap((b) => BranchQuestionService.getQuestions(b));
+        setBranchQuestions(normalizeQuestionList(questions));
+        setBranchMockLoading(false);
+        setBranchMockError("");
+        return;
+      }
+
+      setBranchMockLoading(true);
+      setBranchMockError("");
+      try {
+        const branchLists = await Promise.all(
+          activeBranches.map((branch) => BranchQuestionService.init(branch))
+        );
+        if (cancelled) return;
+        const allBranchQuestions = branchLists.flat();
+        setBranchQuestions(normalizeQuestionList(allBranchQuestions));
+        setBranchMockError("");
+      } catch (error) {
+        if (cancelled) return;
+        setBranchMockError(error?.message || "Unable to load branch questions.");
+      } finally {
+        if (!cancelled) {
+          setBranchMockLoading(false);
+        }
+      }
+    };
+
+    void loadBranches();
+
+    const handleBranchChange = () => {
+      void loadBranches();
     };
     window.addEventListener(BRANCH_PREFERENCE_EVENT, handleBranchChange);
 
@@ -1214,7 +1281,7 @@ export const MockTestProvider = ({ children }) => {
       && rawAttempt.questions.length > 0
       && rawAttempt.questions.every((q) => isValidEmbeddedQuestion(q));
 
-    const isCatalogPending = catalogLoading;
+    const isCatalogPending = catalogLoading || aptitudeMockLoading || daMockLoading || branchMockLoading;
 
     if (!allEmbeddedValid && isCatalogPending) {
       return;
@@ -1286,7 +1353,7 @@ export const MockTestProvider = ({ children }) => {
   ]);
 
   const startTest = useCallback((config = {}) => {
-    if (catalogLoading || aptitudeMockLoading || !catalog) {
+    if (catalogLoading || aptitudeMockLoading || daMockLoading || branchMockLoading || !catalog) {
       return false;
     }
 
@@ -1913,6 +1980,8 @@ export const MockTestProvider = ({ children }) => {
       aptitudeMockLoading,
       daMockError,
       daMockLoading,
+      branchMockError,
+      branchMockLoading,
       clearAttemptError,
       currentQuestion,
       currentQuestionIndex,
@@ -1960,7 +2029,7 @@ export const MockTestProvider = ({ children }) => {
     return ctx;
   }, [
     attemptError, attemptMeta, catalog, catalogError, catalogLoading,
-    aptitudeMockError, aptitudeMockLoading, daMockError, daMockLoading, clearAttemptError,
+    aptitudeMockError, aptitudeMockLoading, daMockError, daMockLoading, branchMockError, branchMockLoading, clearAttemptError,
     currentQuestion, currentQuestionIndex, currentQuestionMeta,
     currentQuestionResult, currentQuestionUid, currentSection, currentSectionIndex,
     endMockTest, getQuestionMeta, mockQuestionPool, paperCatalog,

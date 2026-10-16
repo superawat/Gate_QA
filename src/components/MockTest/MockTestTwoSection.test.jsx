@@ -70,6 +70,46 @@ describe("Mock Test Two-Section Invariant & Custom Builder", () => {
         expect(csTab.textContent).toContain("Data Science and AI");
     });
 
+    test("displays Electronics and Communication Engineering for Section 2 when attempt or questions are EC", () => {
+        renderHeader({
+            attemptMeta: {
+                kindId: "paper_mode",
+                track: "ec",
+                selectedPaperLabel: "GATE EC 2023",
+                durationMinutes: 180,
+            },
+            currentQuestion: {
+                question_uid: "pp:ec:2023:q1",
+                track: "ec",
+                subjectSlug: "ec-edc",
+                subject: "Electronic Devices",
+            },
+        });
+
+        const csTab = screen.getByTestId("mock-section-tab-cs");
+        expect(csTab.textContent).toContain("Electronics and Communication Engineering");
+    });
+
+    test("displays Mechanical Engineering for Section 2 when questions are ME", () => {
+        renderHeader({
+            attemptMeta: {
+                kindId: "paper_mode",
+                track: "me",
+                selectedPaperLabel: "GATE ME 2026",
+                durationMinutes: 180,
+            },
+            currentQuestion: {
+                question_uid: "pp:me:2026:q1",
+                track: "me",
+                subjectSlug: "me-thermo",
+                subject: "Thermodynamics",
+            },
+        });
+
+        const csTab = screen.getByTestId("mock-section-tab-cs");
+        expect(csTab.textContent).toContain("Mechanical Engineering");
+    });
+
     test("makes General Aptitude disabled and unpressable when there are 0 GA questions", () => {
         const setCurrentSectionMock = vi.fn();
         renderHeader({

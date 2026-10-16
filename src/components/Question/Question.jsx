@@ -9,6 +9,7 @@ import { normalizeHtmlAssetUrls } from "../../utils/htmlAssets";
 import { cleanLatexHtml } from "../../utils/latexClean";
 import { getQuestionSolutionLink } from "../../utils/solutionLink";
 import { formatCodeSnippets } from "../../utils/codeSnippet";
+import DetailedSolutionView from "../QuestionDetail/DetailedSolutionView";
 
 function Question({
   question = {},
@@ -21,9 +22,11 @@ function Question({
   const { isQuestionSolved, isQuestionBookmarked, getQuestionProgressId } = useFilterActions();
   const [isEditingNote, setIsEditingNote] = useState(false);
   const [hasNote, setHasNote] = useState(false);
+  const [isDetailedSolutionOpen, setIsDetailedSolutionOpen] = useState(false);
 
   useEffect(() => {
     setIsEditingNote(false);
+    setIsDetailedSolutionOpen(false);
   }, [question?.question_uid]);
 
   const handleOpenNotes = () => {
@@ -145,7 +148,16 @@ function Question({
           solutionLink={solutionLink}
           onOpenNotes={handleOpenNotes}
           hasNote={hasNote}
+          isDetailedSolutionOpen={isDetailedSolutionOpen}
+          onToggleDetailedSolution={() => setIsDetailedSolutionOpen((prev) => !prev)}
+          hasDetailedSolution={Boolean(question?.detailed_solution)}
         />
+
+        {isDetailedSolutionOpen && question?.detailed_solution && (
+          <div id="detailed-solution-section" className="mt-6">
+            <DetailedSolutionView solution={question.detailed_solution} />
+          </div>
+        )}
 
         <QuestionNotes
           storageKey={questionProgressId}

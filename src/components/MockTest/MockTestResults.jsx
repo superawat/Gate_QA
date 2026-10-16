@@ -1,6 +1,6 @@
 import React from "react";
 import { useMockTest } from "../../contexts/MockTestContext";
-import { formatMockTimeSpent } from "../../utils/mockTest";
+import { formatMockTimeSpent, resolveCoreSectionTrack, getBranchSectionInfo } from "../../utils/mockTest";
 import { isDaQuestion } from "../../utils/examTrack";
 import { FaExclamationTriangle, FaCheckCircle, FaBook } from "react-icons/fa";
 
@@ -202,8 +202,9 @@ const generatePerformanceAnalysis = (questions = [], summary = {}) => {
         const gaAcc = ga.attempted > 0 ? (ga.correct / ga.attempted) : 0;
         const csAcc = cs.attempted > 0 ? (cs.correct / cs.attempted) : 0;
 
-        const isDaAttempt = questions.some((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:"));
-        const coreName = isDaAttempt ? "Data Science & AI" : "Computer Science";
+        const resolvedTrack = resolveCoreSectionTrack({ questions, attemptMeta });
+        const activeBranchInfo = getBranchSectionInfo(resolvedTrack);
+        const coreName = activeBranchInfo.status;
 
         if (gaAcc > csAcc + 0.25) {
             observations.push({
@@ -356,13 +357,9 @@ const StructuredReviewSection = ({ questions = [], summary = {} }) => {
 const MockTestResults = ({ onExit, onReview, onPracticeMistakes }) => {
     const { questions, resultSummary, attemptMeta } = useMockTest();
 
-    const isDaAttempt = Boolean(
-        attemptMeta?.isDa
-        || attemptMeta?.track === "da"
-        || String(attemptMeta?.selectedPaperYearSetKey || "").toLowerCase().startsWith("da:")
-        || (attemptMeta?.track !== "cse" && (questions || []).filter((q) => isDaQuestion(q) || String(q?.question_uid || "").startsWith("da:")).length > (questions || []).length / 2)
-    );
-    const coreSectionTitle = isDaAttempt ? "Data Science and AI" : "Computer Science and IT";
+    const resolvedTrack = resolveCoreSectionTrack({ questions, attemptMeta });
+    const activeBranchInfo = getBranchSectionInfo(resolvedTrack);
+    const coreSectionTitle = activeBranchInfo.paletteTitle || activeBranchInfo.full;
 
     const summary = resultSummary || {
         attempted: 0,

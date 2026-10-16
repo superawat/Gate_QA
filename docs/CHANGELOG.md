@@ -1,5 +1,57 @@
 # Changelog
 
+- **Temporary Removal of Detailed Solution Button from Solve UI (DEC-184)**:
+  - *Context*: Per user request, temporarily removed the "Detailed Solution" button from the Solve page action bar while keeping all underlying solution data, components (`DetailedSolutionView.jsx`), and synthesis files intact for iterative refinement.
+  - *Changes*:
+    - In `src/components/AnswerPanel/AnswerPanel.jsx`, updated `renderDetailedSolutionButton` to return `null`, cleanly omitting the button from both desktop and mobile bottom action bars.
+    - Preserved all files: `src/components/QuestionDetail/DetailedSolutionView.jsx`, `data/solutions/*.json`, shard solution structures, and synthesis engines.
+    - Updated unit tests in `AnswerPanel.test.jsx` and `Question.test.jsx` to verify the button is not rendered.
+  - *Verification*: Full Vitest test suite passing (105 test files, 1,341 passed tests, 100% green), TypeScript typecheck clean (0 errors), and browser subagent visual inspection confirmed clean action bar without the Detailed Solution button.
+
+- **Zero External Image Hotlinks & Multi-Branch Question Diagram Mirroring Pipeline (DEC-183)**:
+  - *Context*: Resolved broken diagram images across multi-branch questions (ME, EC, EE, CE) where diagrams displayed broken image placeholders (e.g. `GATE ME 2006 | Set 1 | Question: 72` with `<img src= "/wp-content/uploads/GATE/ME/20061/q71.jpg">`).
+  - *Root Causes*:
+    - In `scripts/pipeline/mirror-branch-images.mjs`, `const imgRegex = /<img\s+[^>]*src=['"]([^'"]+)['"][^>]*>/gi` required strict `src="` without whitespace, whereas PracticePaper HTML for ME, EC, EE, and CE papers contained spaces around `=` (e.g. `src= "/..."` or `src ="/..."`), causing 388+ image occurrences across 22 shards and 478 in audit files to be skipped during historical ingestion.
+    - Source edge cases: `pp:ee:2014:q52-s3` had typo `a52.jpg` instead of `q52.jpg` (hosted on PracticePaper); `pp:me:2014:q62-s3` (multi-level hierarchical pie chart GA question) was uploaded on PracticePaper under `GATE/CS/20143/q62.jpg`; legacy question `go:44` had an external hotlink to `http://gatecse.in/w/images/c/c5/2012_12.png`.
+  - *Changes*:
+    - **Master Mirror & Normalization Pipeline (`scripts/pipeline/mirror-all-unmirrored-images.mjs`)**:
+      - Scanned all JSON files in `public/question-detail-shards/`, `data/solutions/`, and `audit/` with robust `JSON.parse` extraction and flexible regex `/<img\b([^>]*?)\bsrc[&]?\s*=\s*(?:["']([^"']+)["']|(\S+))([^>]*)>/gi`.
+      - Downloaded external images from `practicepaper.in` (and gatecse.in) in parallel chunks, hashed with SHA-256 (10 characters), converted to optimized WebP format via `sharp({ quality: 85, effort: 4 })`, and saved to deterministic year-nested directories `public/question-images/{branch}/{year}/`.
+      - Rewrote HTML image tags across 25 shard files, 4 solutions files (`data/solutions/{me,ee,ce}-v1.json`), and 31 audit files into self-hosted local `/question-images/...` paths.
+    - **Pipeline Hardening (`scripts/pipeline/mirror-branch-images.mjs`)**:
+      - Updated `imgRegex` and regex matching loop in `rewriteImageSourcesInHtml` to support whitespace around `=`, unquoted attributes, and stray scraping tokens to prevent future regressions.
+  - *Verification*:
+    - `scripts/qa/find-all-unmirrored-images.mjs` confirms **0** unmirrored external images and **0** missing local files across all detail shards in `public/question-detail-shards/`.
+    - Vitest unit tests: 105 passed, 1,345 tests green (100%).
+    - TypeScript typecheck: clean (`tsc -p tsconfig.json --noEmit` exited 0 with 0 errors).
+    - Browser subagent visual verification: Verified `GATE ME 2006 Set 1 Q72` (orthogonal machining diagram) and `GATE ME 2014 Set 3 Q62` (hierarchical pie chart) load cleanly in crisp WebP without broken image placeholders.
+
+- **Multi-Branch Mock Test Launch & Authentic Section Distribution Fix (DEC-182)**:
+  - *Context*: Resolved two major multi-branch mock test issues: (1) Clicking "Start Mock" on past papers in newly integrated branches (ME, EC, EE, CE) failed to start examinations, and (2) standard 65-question papers displayed incorrect question distributions (20 General Aptitude and 45 technical questions instead of 10 GA and 55 technical questions).
+  - *Root Causes*:
+    - Raw audited data for ME/EC/EE/CE places technical questions at Q1–Q55 and General Aptitude at Q56–Q65. An unconditional `if (qNum <= 10)` in `build-branch-shards.mjs` misclassified Q1–Q10 as GA, producing 20 GA and 45 technical questions.
+    - Pre-2010 papers with 0 GA questions were forced to `requiredGaCount = 10` by a `gaCount || 10` fallback in `MockCatalogService.js`, causing paper availability validation to fail.
+    - `MockTestContext.tsx` never loaded `BranchQuestionService` or included branch questions in `mockQuestionPool`, causing `scorableQuestions` to be empty for non-CSE/DA branches and aborting exam start.
+    - MSQ answers in branch shards formatted as comma-separated strings (e.g. `"A, B"`) failed `hasValidAnswerForType` due to a strict `Array.isArray()` check, blocking question validation.
+    - Single-branch catalog caching in `MockCatalogService.init()` returned stale data on branch switch.
+  - *Changes*:
+    - **Pipeline Distribution Fix (`scripts/pipeline/build-branch-shards.mjs`)**: Replaced `qNum <= 10` with tag-based GA detection (`/general\\s*aptitude|aptitude/i`). Rebuilt all 143 branch shards and search indices. Every 65-Q paper now has exactly 10 GA and 55 Technical questions. Pre-2010 papers have 0 GA.
+    - **MSQ & Answer Validation (`src/utils/mockTest.js`)**: Updated `hasValidAnswerForType` and MSQ validation in `validateMockQuestionForPool` to support both array and string answer representations. Expanded technical subject whitelists and regex protections.
+    - **Multi-Branch Context Loading (`src/contexts/MockTestContext.tsx`)**: Integrated `BranchQuestionService` into `MockTestContext` to populate `mockQuestionPool` with normalized branch questions for selected branches. Added `branchMockLoading` state and checks.
+    - **Catalog Invalidation & Question Ordering (`src/services/MockCatalogService.js`)**: Removed `|| 10` fallback for `gaCount`/`requiredGaCount`. Added `lastBranchKey` tracking and `{ force: true }` cache invalidation on branch switch. Extracted authentic question order from UIDs into `orderIndex`.
+    - **Shell Hydration & Dynamic Branch Titles (`src/components/MockTest/MockTestShell.jsx`, `MockTestHeader.jsx`, `QuestionPalette.jsx`, `MockTestResults.jsx`, `src/utils/mockTest.js`)**:
+      - Routed branch questions to `BranchQuestionService.ensureQuestionDetail`. Set both `answer_meta` and `answerMeta` for seamless evaluation.
+      - Implemented centralized `resolveCoreSectionTrack({ currentQuestion, questions, attemptMeta })` and `getBranchSectionInfo(track)` with `BRANCH_SECTION_INFO` dictionary mapping all disciplines (`ec`, `ee`, `me`, `ce`, `da`, `cse`, `it`) to their full official names (e.g., "Electronics and Communication Engineering" for ECE), short names ("ECE"), and palette titles.
+      - Updated `MockTestHeader.jsx` to render the dynamic `{coreSectionFullName}` ("Electronics and Communication Engineering") in desktop section tabs and `{coreSectionShortName}` ("ECE") on mobile.
+      - Updated `QuestionPalette.jsx` to render the dynamic `{coreSectionTitle}` ("Electronics and Communication").
+      - Updated `MockTestResults.jsx` to display the candidate's active discipline title in performance analytics.
+  - *Verification*:
+    - Vitest unit tests: 105 passed, 1,345 tests green (100%), including dedicated tests in `MockTestTwoSection.test.jsx` and `mockTest.test.js`.
+    - Browser subagent visual verification: Verified on `http://localhost:5174/mock` for GATE EC 2023 with 180 min timer, Section 1 (10 GA questions), and Section 2 correctly named "Electronics and Communication Engineering" in header tab and "Electronics and Communication" in palette.
+    - Production build: `npm run build` completed cleanly (0 errors, 3,605 static SEO pages prerendered).
+    - Type check: `npm run typecheck` passed (0 errors).
+
+
 - **GateQA Editorial Typography Integration (DM Serif Display), Home Navigation & Streamlining Overhaul (DEC-181)**:
   - *Context*: Elevated visual aesthetics and brand identity across GateQA through editorial typography (`DM Serif Display`), improved visual hierarchy on the Home Dashboard, renamed "Practice Activity" to "Practice Map", refactored the homepage marquee into a high-visibility platform updates ribbon, and completely removed intrusive legacy announcement modal popups.
   - *Changes*:

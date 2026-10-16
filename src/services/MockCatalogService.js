@@ -51,8 +51,16 @@ export class MockCatalogService {
     };
   }
 
-  static async init() {
-    if (this.loaded && this.catalog) {
+  static lastBranchKey = "";
+
+  static async init(options = {}) {
+    const branchPrefs = readBranchPreferences();
+    const selected = (branchPrefs?.selectedBranches && branchPrefs.selectedBranches.length > 0)
+      ? branchPrefs.selectedBranches
+      : ["cse"];
+    const currentBranchKey = [...selected].sort().join(",");
+
+    if (this.loaded && this.catalog && !options?.force && this.lastBranchKey === currentBranchKey) {
       return this.catalog;
     }
 
@@ -65,11 +73,6 @@ export class MockCatalogService {
       : `${import.meta.env.BASE_URL}/`;
     const catalogUrl = `${baseUrl}mock_catalog_v1.json`;
     const daCatalogUrl = `${baseUrl}mock_catalog_da_v1.json`;
-
-    const branchPrefs = readBranchPreferences();
-    const selected = (branchPrefs?.selectedBranches && branchPrefs.selectedBranches.length > 0)
-      ? branchPrefs.selectedBranches
-      : ["cse"];
 
     this.pending = (async () => {
       let payload = { papers: [], byQuestionUid: {}, scorableQuestionUids: [] };
@@ -113,12 +116,14 @@ export class MockCatalogService {
                   const uid = String(q.question_uid || "").trim();
                   if (uid) {
                     const isGa = q.subjectSlug === "ga" || q.subject === "General Aptitude";
+                    const qNumMatch = uid.match(/[:\-q](\d+)$/i) || String(q.title || "").match(/question:\s*(\d+)/i);
+                    const qNum = qNumMatch ? parseInt(qNumMatch[1], 10) : (questionsByYearSet.get(ysKey)?.length || 1);
                     branchByQuestionUid[uid] = {
                       questionUid: uid,
                       track,
                       yearSetKey: q.yearSetKey || ysKey,
                       yearSetIdentity: q.yearSetIdentity || ysKey,
-                      orderIndex: q.orderIndex || 1,
+                      orderIndex: q.orderIndex || qNum,
                       section: isGa ? "GA" : "CS",
                       type: q.type || "MCQ",
                       marks: q.marks || 1,
@@ -141,15 +146,15 @@ export class MockCatalogService {
                     set: ys.set || 1,
                     label: `GATE ${(ys.track || track).toUpperCase()} ${ys.year}${ys.set && ys.set > 1 ? ` Set ${ys.set}` : ""}`,
                     paperReady: ysQuestions.length > 0,
-                    gaCount: gaCount || 10,
-                    csCount: csCount || 55,
-                    requiredQuestionCount: ysQuestions.length || 65,
-                    requiredGaCount: gaCount || 10,
-                    requiredCsCount: csCount || 55,
+                    gaCount: gaCount,
+                    csCount: csCount,
+                    requiredQuestionCount: ysQuestions.length,
+                    requiredGaCount: gaCount,
+                    requiredCsCount: csCount,
                     durationMinutes: 180,
-                    scorableCount: ysQuestions.length || 65,
-                    scorableGaCount: gaCount || 10,
-                    scorableCsCount: csCount || 55,
+                    scorableCount: ysQuestions.length,
+                    scorableGaCount: gaCount,
+                    scorableCsCount: csCount,
                     missingScorableCount: 0,
                     statusReason: "Release-ready.",
                     blockedQuestions: [],
@@ -189,12 +194,14 @@ export class MockCatalogService {
 
       this.catalog = catalog;
       this.loaded = true;
+      this.lastBranchKey = currentBranchKey;
       this.loadError = "";
       return catalog;
     })()
       .catch((error) => {
         this.catalog = null;
         this.loaded = false;
+        this.lastBranchKey = "";
         this.loadError = error.message || "Failed to load mock catalog.";
         throw error;
       })
@@ -208,6 +215,7 @@ export class MockCatalogService {
   static reset() {
     this.catalog = null;
     this.loaded = false;
+    this.lastBranchKey = "";
     this.loadError = "";
     this.pending = null;
   }
